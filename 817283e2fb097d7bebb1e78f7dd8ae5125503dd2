@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "811c2042_a5e8e141",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T19:49:55Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s easier to handle removing separately from setting in this function, or if the two should be different APIs.",
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd004f3e_00a5cd39",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T19:49:55Z",
+      "side": 1,
+      "message": "constexpr const char*",
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209d79f5_d66020c7",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T19:49:55Z",
+      "side": 1,
+      "message": "FX_ArraySize()",
+      "range": {
+        "startLine": 782,
+        "startChar": 15,
+        "endLine": 782,
+        "endChar": 60
+      },
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98a16bad_672d247a",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T19:49:55Z",
+      "side": 1,
+      "message": "auto?",
+      "range": {
+        "startLine": 792,
+        "startChar": 4,
+        "endLine": 792,
+        "endChar": 32
+      },
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
