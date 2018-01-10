@@ -47,6 +47,30 @@
       "revId": "89e5fe90101eb706d9b0c6afecfb847c888e0f8d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c50ea8f_74023654",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T19:24:18Z",
+      "side": 1,
+      "message": "I guess that works too.",
+      "parentUuid": "f25717c8_aa20ab4e",
+      "range": {
+        "startLine": 130,
+        "startChar": 13,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "89e5fe90101eb706d9b0c6afecfb847c888e0f8d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
