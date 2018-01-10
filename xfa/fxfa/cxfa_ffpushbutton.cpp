@@ -235,3 +235,7 @@ void CXFA_FFPushButton::OnDrawWidget(CXFA_Graphics* pGraphics,
     }
   }
 }
+
+FormFieldType CXFA_FFPushButton::GetFormFieldType() {
+  return FormFieldType::XFA_PushButton;
+}
