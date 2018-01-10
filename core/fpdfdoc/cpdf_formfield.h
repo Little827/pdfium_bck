@@ -18,14 +18,56 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/stl_util.h"
 
-#define FIELDTYPE_UNKNOWN 0
-#define FIELDTYPE_PUSHBUTTON 1
-#define FIELDTYPE_CHECKBOX 2
-#define FIELDTYPE_RADIOBUTTON 3
-#define FIELDTYPE_COMBOBOX 4
-#define FIELDTYPE_LISTBOX 5
-#define FIELDTYPE_TEXTFIELD 6
-#define FIELDTYPE_SIGNATURE 7
+// Do not change the order of these values, only append new ones
+enum class FormFieldType : int {
+  Unknown = 0,
+  PushButton = 1,
+  CheckBox = 2,
+  RadioButton = 3,
+  ComboBox = 4,
+  ListBox = 5,
+  TextField = 6,
+  Signature = 7,
+#ifdef PDF_ENABLE_XFA
+  XFA = 8,
+  XFA_CheckBox = 9,
+  XFA_ComboBox = 10,
+  XFA_ImageField = 11,
+  XFA_ListBox = 12,
+  XFA_PushButton = 13,
+  XFA_Signature = 14,
+  XFA_TextField = 15
+#endif  // PDF_ENABLE_XFA
+};
+
+// If values are added to FormFieldType, these will need to be updated.
+#ifdef PDF_ENABLE_XFA
+constexpr size_t kFormFieldTypeCount = 16;
+#else
+constexpr size_t kFormFieldTypeCount = 8;
+#endif  // PDF_ENABLE_XFA
+
+constexpr FormFieldType kFormFieldTypes[kFormFieldTypeCount] = {
+    FormFieldType::Unknown,
+    FormFieldType::PushButton,
+    FormFieldType::CheckBox,
+    FormFieldType::RadioButton,
+    FormFieldType::ComboBox,
+    FormFieldType::ListBox,
+    FormFieldType::TextField,
+    FormFieldType::Signature
+#ifdef PDF_ENABLE_XFA
+    ,
+    FormFieldType::XFA,
+    FormFieldType::XFA_CheckBox,
+    FormFieldType::XFA_ComboBox,
+    FormFieldType::XFA_ImageField,
+    FormFieldType::XFA_ListBox,
+    FormFieldType::XFA_PushButton,
+    FormFieldType::XFA_Signature,
+    FormFieldType::XFA_TextField
+#endif  // PDF_ENABLE_XFA
+};
 
 #define FORMFLAG_READONLY 0x01
 #define FORMFLAG_REQUIRED 0x02
@@ -79,7 +121,7 @@ class CPDF_FormField {
   }
 
   int GetControlIndex(const CPDF_FormControl* pControl) const;
-  int GetFieldType() const;
+  FormFieldType GetFieldType() const;
 
   CPDF_AAction GetAdditionalAction() const;
   WideString GetAlternateName() const;
