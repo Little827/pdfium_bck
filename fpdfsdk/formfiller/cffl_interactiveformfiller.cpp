@@ -228,9 +228,9 @@ bool CFFL_InteractiveFormFiller::OnLButtonUp(CPDFSDK_PageView* pPageView,
 
   bool bSetFocus;
   switch (pWidget->GetFieldType()) {
-    case FIELDTYPE_PUSHBUTTON:
-    case FIELDTYPE_CHECKBOX:
-    case FIELDTYPE_RADIOBUTTON: {
+    case FormFieldType::PushButton:
+    case FormFieldType::CheckBox:
+    case FormFieldType::RadioButton: {
       FX_RECT bbox = GetViewBBox(pPageView, pAnnot->Get());
       bSetFocus =
           bbox.Contains(static_cast<int>(point.x), static_cast<int>(point.y));
@@ -455,7 +455,7 @@ bool CFFL_InteractiveFormFiller::IsReadOnly(CPDFSDK_Widget* pWidget) {
 }
 
 bool CFFL_InteractiveFormFiller::IsFillingAllowed(CPDFSDK_Widget* pWidget) {
-  if (pWidget->GetFieldType() == FIELDTYPE_PUSHBUTTON)
+  if (pWidget->GetFieldType() == FormFieldType::PushButton)
     return false;
 
   CPDF_Page* pPage = pWidget->GetPDFPage();
@@ -477,28 +477,28 @@ CFFL_FormFiller* CFFL_InteractiveFormFiller::GetFormFiller(
 
   // TODO(thestig): How do we know |pAnnot| is a CPDFSDK_Widget?
   CPDFSDK_Widget* pWidget = static_cast<CPDFSDK_Widget*>(pAnnot);
-  int nFieldType = pWidget->GetFieldType();
+  FormFieldType fieldType = pWidget->GetFieldType();
   CFFL_FormFiller* pFormFiller;
-  switch (nFieldType) {
-    case FIELDTYPE_PUSHBUTTON:
+  switch (fieldType) {
+    case FormFieldType::PushButton:
       pFormFiller = new CFFL_PushButton(m_pFormFillEnv.Get(), pWidget);
       break;
-    case FIELDTYPE_CHECKBOX:
+    case FormFieldType::CheckBox:
       pFormFiller = new CFFL_CheckBox(m_pFormFillEnv.Get(), pWidget);
       break;
-    case FIELDTYPE_RADIOBUTTON:
+    case FormFieldType::RadioButton:
       pFormFiller = new CFFL_RadioButton(m_pFormFillEnv.Get(), pWidget);
       break;
-    case FIELDTYPE_TEXTFIELD:
+    case FormFieldType::TextField:
       pFormFiller = new CFFL_TextField(m_pFormFillEnv.Get(), pWidget);
       break;
-    case FIELDTYPE_LISTBOX:
+    case FormFieldType::ListBox:
       pFormFiller = new CFFL_ListBox(m_pFormFillEnv.Get(), pWidget);
       break;
-    case FIELDTYPE_COMBOBOX:
+    case FormFieldType::ComboBox:
       pFormFiller = new CFFL_ComboBox(m_pFormFillEnv.Get(), pWidget);
       break;
-    case FIELDTYPE_UNKNOWN:
+    case FormFieldType::Unknown:
     default:
       pFormFiller = nullptr;
       break;

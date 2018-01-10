@@ -43,7 +43,7 @@ bool CPDFSDK_WidgetHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
   if ((nFieldFlags & FIELDFLAG_READONLY) == FIELDFLAG_READONLY)
     return false;
 
-  if (pWidget->GetFieldType() == FIELDTYPE_PUSHBUTTON)
+  if (pWidget->GetFieldType() == FormFieldType::PushButton)
     return true;
 
   CPDF_Page* pPage = pWidget->GetPDFPage();
@@ -227,15 +227,16 @@ void CPDFSDK_WidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {
   if (!pWidget->IsAppearanceValid())
     pWidget->ResetAppearance(nullptr, false);
 
-  int nFieldType = pWidget->GetFieldType();
-  if (nFieldType == FIELDTYPE_TEXTFIELD || nFieldType == FIELDTYPE_COMBOBOX) {
+  FormFieldType fieldType = pWidget->GetFieldType();
+  if (fieldType == FormFieldType::TextField ||
+      fieldType == FormFieldType::ComboBox) {
     bool bFormatted = false;
     CPDFSDK_Annot::ObservedPtr pObserved(pWidget);
     WideString sValue = pWidget->OnFormat(bFormatted);
     if (!pObserved)
       return;
 
-    if (bFormatted && nFieldType == FIELDTYPE_COMBOBOX)
+    if (bFormatted && fieldType == FormFieldType::ComboBox)
       pWidget->ResetAppearance(&sValue, false);
   }
 

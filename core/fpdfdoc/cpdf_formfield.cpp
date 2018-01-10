@@ -243,28 +243,28 @@ int CPDF_FormField::GetControlIndex(const CPDF_FormControl* pControl) const {
   return it != m_ControlList.end() ? it - m_ControlList.begin() : -1;
 }
 
-int CPDF_FormField::GetFieldType() const {
+FormFieldType CPDF_FormField::GetFieldType() const {
   switch (m_Type) {
     case PushButton:
-      return FIELDTYPE_PUSHBUTTON;
+      return FormFieldType::PushButton;
     case CheckBox:
-      return FIELDTYPE_CHECKBOX;
+      return FormFieldType::CheckBox;
     case RadioButton:
-      return FIELDTYPE_RADIOBUTTON;
+      return FormFieldType::RadioButton;
     case ComboBox:
-      return FIELDTYPE_COMBOBOX;
+      return FormFieldType::ComboBox;
     case ListBox:
-      return FIELDTYPE_LISTBOX;
+      return FormFieldType::ListBox;
     case Text:
     case RichText:
     case File:
-      return FIELDTYPE_TEXTFIELD;
+      return FormFieldType::TextField;
     case Sign:
-      return FIELDTYPE_SIGNATURE;
+      return FormFieldType::Signature;
     default:
       break;
   }
-  return FIELDTYPE_UNKNOWN;
+  return FormFieldType::Unknown;
 }
 
 CPDF_AAction CPDF_FormField::GetAdditionalAction() const {
