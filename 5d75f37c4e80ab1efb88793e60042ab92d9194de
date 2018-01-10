@@ -16,6 +16,52 @@
       "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "532ac1b4_b7d2cc44",
+        "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T21:37:57Z",
+      "side": 1,
+      "message": "Can we do either \"iNormalLen\" or \"normal_len\" ? Let\u0027s avoid having a 3rd style.",
+      "range": {
+        "startLine": 903,
+        "startChar": 16,
+        "endLine": 903,
+        "endChar": 25
+      },
+      "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad47120e_645eadaa",
+        "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T21:37:57Z",
+      "side": 1,
+      "message": "Maybe just buf.size() here and below?",
+      "range": {
+        "startLine": 913,
+        "startChar": 48,
+        "endLine": 913,
+        "endChar": 61
+      },
+      "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
