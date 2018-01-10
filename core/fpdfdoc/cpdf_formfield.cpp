@@ -47,6 +47,65 @@ bool IsUnison(CPDF_FormField* pField) {
 
 }  // namespace
 
+#ifdef PDF_ENABLE_XFA
+bool IsFormFieldTypeXFA(FormFieldType fieldType) {
+  switch (fieldType) {
+    case FormFieldType::XFA:
+      return true;
+    case FormFieldType::XFA_CheckBox:
+    case FormFieldType::XFA_ComboBox:
+    case FormFieldType::XFA_ImageField:
+    case FormFieldType::XFA_ListBox:
+    case FormFieldType::XFA_PushButton:
+    case FormFieldType::XFA_Signature:
+    case FormFieldType::XFA_TextField:
+      return true;
+    default:
+      return false;
+  }
+}
+#endif  // PDF_ENABLE_XFA
+
+const char* FormFieldTypeToString(FormFieldType fieldType) {
+  switch (fieldType) {
+    case FormFieldType::Unknown:
+      return "Unknown";
+    case FormFieldType::PushButton:
+      return "PushButton";
+    case FormFieldType::CheckBox:
+      return "CheckBox";
+    case FormFieldType::RadioButton:
+      return "RadioButton";
+    case FormFieldType::ComboBox:
+      return "ComboBox";
+    case FormFieldType::ListBox:
+      return "ListBox";
+    case FormFieldType::TextField:
+      return "TextField";
+    case FormFieldType::Signature:
+      return "Signature";
+#ifdef PDF_ENABLE_XFA
+    case FormFieldType::XFA:
+      return "XFA";
+    case FormFieldType::XFA_CheckBox:
+      return "XFA CheckBox";
+    case FormFieldType::XFA_ComboBox:
+      return "XFA ComboBox";
+    case FormFieldType::XFA_ImageField:
+      return "XFA ImageField";
+    case FormFieldType::XFA_ListBox:
+      return "XFA ListBox";
+    case FormFieldType::XFA_PushButton:
+      return "XFA PushButton";
+    case FormFieldType::XFA_Signature:
+      return "XFA Signature";
+    case FormFieldType::XFA_TextField:
+      return "XFA TextField";
+#endif  // PDF_ENABLE_XFA
+  }
+  return "";
+}
+
 CPDF_Object* FPDF_GetFieldAttr(const CPDF_Dictionary* pFieldDict,
                                const char* name,
                                int nLevel) {
@@ -243,28 +302,28 @@ int CPDF_FormField::GetControlIndex(const CPDF_FormControl* pControl) const {
   return it != m_ControlList.end() ? it - m_ControlList.begin() : -1;
 }
 
-int CPDF_FormField::GetFieldType() const {
+FormFieldType CPDF_FormField::GetFieldType() const {
   switch (m_Type) {
     case PushButton:
-      return FIELDTYPE_PUSHBUTTON;
+      return FormFieldType::PushButton;
     case CheckBox:
-      return FIELDTYPE_CHECKBOX;
+      return FormFieldType::CheckBox;
     case RadioButton:
-      return FIELDTYPE_RADIOBUTTON;
+      return FormFieldType::RadioButton;
     case ComboBox:
-      return FIELDTYPE_COMBOBOX;
+      return FormFieldType::ComboBox;
     case ListBox:
-      return FIELDTYPE_LISTBOX;
+      return FormFieldType::ListBox;
     case Text:
     case RichText:
     case File:
-      return FIELDTYPE_TEXTFIELD;
+      return FormFieldType::TextField;
     case Sign:
-      return FIELDTYPE_SIGNATURE;
+      return FormFieldType::Signature;
     default:
       break;
   }
-  return FIELDTYPE_UNKNOWN;
+  return FormFieldType::Unknown;
 }
 
 CPDF_AAction CPDF_FormField::GetAdditionalAction() const {

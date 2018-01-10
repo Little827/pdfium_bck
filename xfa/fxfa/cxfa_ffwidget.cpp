@@ -1178,6 +1178,10 @@ void CXFA_FFWidget::Delete() {}
 
 void CXFA_FFWidget::DeSelect() {}
 
+FormFieldType CXFA_FFWidget::GetFormFieldType() {
+  return FormFieldType::XFA;
+}
+
 void CXFA_FFWidget::GetSuggestWords(CFX_PointF pointf,
                                     std::vector<ByteString>* pWords) {
   pWords->clear();

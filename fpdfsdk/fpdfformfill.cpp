@@ -44,6 +44,58 @@ static_assert(static_cast<int>(FormType::kXFAForeground) ==
               "XFA foreground form types must match");
 #endif  // PDF_ENABLE_XFA
 
+static_assert(static_cast<int>(FormFieldType::Unknown) ==
+                  FPDF_FORMFIELD_UNKNOWN,
+              "Unknown form field types must match");
+static_assert(static_cast<int>(FormFieldType::PushButton) ==
+                  FPDF_FORMFIELD_PUSHBUTTON,
+              "PushButton form field types must match");
+static_assert(static_cast<int>(FormFieldType::CheckBox) ==
+                  FPDF_FORMFIELD_CHECKBOX,
+              "CheckBox form field types must match");
+static_assert(static_cast<int>(FormFieldType::RadioButton) ==
+                  FPDF_FORMFIELD_RADIOBUTTON,
+              "RadioButton form field types must match");
+static_assert(static_cast<int>(FormFieldType::ComboBox) ==
+                  FPDF_FORMFIELD_COMBOBOX,
+              "ComboBox form field types must match");
+static_assert(static_cast<int>(FormFieldType::ListBox) ==
+                  FPDF_FORMFIELD_LISTBOX,
+              "ListBox form field types must match");
+static_assert(static_cast<int>(FormFieldType::TextField) ==
+                  FPDF_FORMFIELD_TEXTFIELD,
+              "TextField form field types must match");
+static_assert(static_cast<int>(FormFieldType::Signature) ==
+                  FPDF_FORMFIELD_SIGNATURE,
+              "Signature form field types must match");
+#ifdef PDF_ENABLE_XFA
+static_assert(static_cast<int>(FormFieldType::XFA) == FPDF_FORMFIELD_XFA,
+              "XFA form field types must match");
+static_assert(static_cast<int>(FormFieldType::XFA_CheckBox) ==
+                  FPDF_FORMFIELD_XFA_CHECKBOX,
+              "XFA CheckBox form field types must match");
+static_assert(static_cast<int>(FormFieldType::XFA_ComboBox) ==
+                  FPDF_FORMFIELD_XFA_COMBOBOX,
+              "XFA ComboBox form field types must match");
+static_assert(static_cast<int>(FormFieldType::XFA_ImageField) ==
+                  FPDF_FORMFIELD_XFA_IMAGEFIELD,
+              "XFA ImageField form field types must match");
+static_assert(static_cast<int>(FormFieldType::XFA_ListBox) ==
+                  FPDF_FORMFIELD_XFA_LISTBOX,
+              "XFA ListBox form field types must match");
+static_assert(static_cast<int>(FormFieldType::XFA_PushButton) ==
+                  FPDF_FORMFIELD_XFA_PUSHBUTTON,
+              "XFA PushButton form field types must match");
+static_assert(static_cast<int>(FormFieldType::XFA_Signature) ==
+                  FPDF_FORMFIELD_XFA_SIGNATURE,
+              "XFA Signature form field types must match");
+static_assert(static_cast<int>(FormFieldType::XFA_TextField) ==
+                  FPDF_FORMFIELD_XFA_TEXTFIELD,
+              "XFA TextField form field types must match");
+#endif  // PDF_ENABLE_XFA
+static_assert(kFormFieldTypeCount == FPDF_FORMFIELD_COUNT,
+              "Number of form field types must match");
+
 namespace {
 
 CPDFSDK_FormFillEnvironment* HandleToCPDFSDKEnvironment(
@@ -173,7 +225,7 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
     if (!pFormCtrl)
       return -1;
     CPDF_FormField* pFormField = pFormCtrl->GetField();
-    return pFormField ? pFormField->GetFieldType() : -1;
+    return pFormField ? static_cast<int>(pFormField->GetFieldType()) : -1;
   }
 
 #ifdef PDF_ENABLE_XFA
@@ -199,17 +251,15 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
   if (!pWidgetIterator)
     return -1;
 
-  CXFA_FFWidget* pXFAAnnot = pWidgetIterator->MoveToNext();
-  while (pXFAAnnot) {
+  CXFA_FFWidget* pXFAAnnot;
+  while ((pXFAAnnot = pWidgetIterator->MoveToNext()) != nullptr) {
     CFX_RectF rcBBox = pXFAAnnot->GetBBox(0);
     CFX_FloatRect rcWidget(rcBBox.left, rcBBox.top, rcBBox.left + rcBBox.width,
                            rcBBox.top + rcBBox.height);
     rcWidget.Inflate(1.0f, 1.0f);
-    if (rcWidget.Contains(CFX_PointF(static_cast<float>(page_x),
-                                     static_cast<float>(page_y)))) {
-      return FPDF_FORMFIELD_XFA;
-    }
-    pXFAAnnot = pWidgetIterator->MoveToNext();
+    if (rcWidget.Contains(
+            CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y))))
+      return static_cast<int>(pXFAAnnot->GetFormFieldType());
   }
 #endif  // PDF_ENABLE_XFA
   return -1;
@@ -663,8 +713,12 @@ FPDF_EXPORT void FPDF_CALLCONV
 FPDF_SetFormFieldHighlightColor(FPDF_FORMHANDLE hHandle,
                                 int fieldType,
                                 unsigned long color) {
-  if (CPDFSDK_InterForm* pInterForm = FormHandleToInterForm(hHandle))
-    pInterForm->SetHighlightColor(color, fieldType);
+  if (CPDFSDK_InterForm* pInterForm = FormHandleToInterForm(hHandle)) {
+    if (fieldType >= static_cast<int>(FormFieldType::Unknown) &&
+        static_cast<size_t>(fieldType) < kFormFieldTypeCount)
+      pInterForm->SetHighlightColor(color,
+                                    static_cast<FormFieldType>(fieldType));
+  }
 }
 
 FPDF_EXPORT void FPDF_CALLCONV
