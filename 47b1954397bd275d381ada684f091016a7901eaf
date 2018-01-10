@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "4631694f_345715da",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T19:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6256e84_f2edb9a1",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 67
+      },
+      "revId": "47b1954397bd275d381ada684f091016a7901eaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2636549a_0e8e59f4",
         "filename": "core/fxge/cfx_fontmgr.cpp",
         "patchSetId": 2
@@ -46,6 +70,30 @@
       "revId": "47b1954397bd275d381ada684f091016a7901eaf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adce436_12362fd7",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-10T19:18:38Z",
+      "side": 1,
+      "message": "Done. If we drop |temp_it| and use |it| instead, erase() below will invalidate it. Normally that would cause ++it to no longer make sense, but in our use, we break right after anyway.",
+      "parentUuid": "2636549a_0e8e59f4",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 24
+      },
+      "revId": "47b1954397bd275d381ada684f091016a7901eaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
