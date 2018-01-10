@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "128648cf_d62a552d",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T23:13:02Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good place for early return since the two cases are about equivalent in code and it\u0027s not an error or validation, but really a fork in logic.",
+      "parentUuid": "c2b29e23_48cd3e94",
+      "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "532ac1b4_b7d2cc44",
         "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
         "patchSetId": 11
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b5699423_5623b01c",
+        "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T23:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "532ac1b4_b7d2cc44",
+      "range": {
+        "startLine": 903,
+        "startChar": 16,
+        "endLine": 903,
+        "endChar": 25
+      },
+      "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad47120e_645eadaa",
         "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
         "patchSetId": 11
@@ -62,6 +104,30 @@
       "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afadbaf2_62f998f9",
+        "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T23:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad47120e_645eadaa",
+      "range": {
+        "startLine": 913,
+        "startChar": 48,
+        "endLine": 913,
+        "endChar": 61
+      },
+      "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
