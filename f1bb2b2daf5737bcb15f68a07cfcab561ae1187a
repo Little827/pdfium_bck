@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3dd7b307_886f6ea1",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T18:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "492088a7_ed942565",
+      "revId": "f1bb2b2daf5737bcb15f68a07cfcab561ae1187a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a443d631_1c40394d",
         "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "f1bb2b2daf5737bcb15f68a07cfcab561ae1187a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acbf15ee_8921f896",
+        "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T18:54:52Z",
+      "side": 1,
+      "message": "Done.\n\nI\u0027ve noticed there is no way to clear the AP. The AP dict is optional. If it exists, AP-\u003eN is required but AP-\u003eR and AP-\u003eD are optional.\n\nAdded functionality to remove the AP by setting Normal to nullptr or remove the optional AP-\u003eR and AP-\u003eD by setting Rollover and Down to nullptr. PTAL.",
+      "parentUuid": "a443d631_1c40394d",
+      "range": {
+        "startLine": 945,
+        "startChar": 6,
+        "endLine": 945,
+        "endChar": 15
+      },
+      "revId": "f1bb2b2daf5737bcb15f68a07cfcab561ae1187a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
