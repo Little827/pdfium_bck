@@ -26,6 +26,10 @@ class CXFA_FFImageEdit : public CXFA_FFField {
   void OnDrawWidget(CXFA_Graphics* pGraphics,
                     const CFX_Matrix& matrix) override;
 
+  FormFieldType GetFormFieldType() override {
+    return FormFieldType::XFA_ImageField;
+  }
+
  private:
   void SetFWLRect() override;
   bool UpdateFWLData() override;

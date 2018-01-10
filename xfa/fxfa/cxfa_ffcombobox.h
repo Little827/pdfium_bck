@@ -36,6 +36,10 @@ class CXFA_FFComboBox : public CXFA_FFField {
   void Delete() override;
   void DeSelect() override;
 
+  FormFieldType GetFormFieldType() override {
+    return FormFieldType::XFA_ComboBox;
+  }
+
   // IFWL_WidgetDelegate
   void OnProcessMessage(CFWL_Message* pMessage) override;
   void OnProcessEvent(CFWL_Event* pEvent) override;

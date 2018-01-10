@@ -58,6 +58,10 @@ class CXFA_FFTextEdit : public CXFA_FFField {
   void Delete() override;
   void DeSelect() override;
 
+  FormFieldType GetFormFieldType() override {
+    return FormFieldType::XFA_TextField;
+  }
+
  protected:
   uint32_t GetAlignment();
 

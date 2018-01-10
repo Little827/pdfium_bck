@@ -30,6 +30,10 @@ class CXFA_FFCheckButton : public CXFA_FFField {
   void OnDrawWidget(CXFA_Graphics* pGraphics,
                     const CFX_Matrix& matrix) override;
 
+  FormFieldType GetFormFieldType() override {
+    return FormFieldType::XFA_CheckBox;
+  }
+
   void SetFWLCheckState(XFA_CHECKSTATE eCheckState);
 
  private:

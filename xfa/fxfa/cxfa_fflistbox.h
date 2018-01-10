@@ -22,6 +22,10 @@ class CXFA_FFListBox : public CXFA_FFField {
   void OnDrawWidget(CXFA_Graphics* pGraphics,
                     const CFX_Matrix& matrix) override;
 
+  FormFieldType GetFormFieldType() override {
+    return FormFieldType::XFA_ListBox;
+  }
+
   void OnSelectChanged(CFWL_Widget* pWidget);
   void SetItemState(int32_t nIndex, bool bSelected);
   void InsertItem(const WideStringView& wsLabel, int32_t nIndex);

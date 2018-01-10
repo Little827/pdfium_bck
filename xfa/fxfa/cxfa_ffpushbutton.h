@@ -35,6 +35,10 @@ class CXFA_FFPushButton : public CXFA_FFField {
   void OnDrawWidget(CXFA_Graphics* pGraphics,
                     const CFX_Matrix& matrix) override;
 
+  FormFieldType GetFormFieldType() override {
+    return FormFieldType::XFA_PushButton;
+  }
+
  private:
   void LoadHighlightCaption();
   void LayoutHighlightCaption();
