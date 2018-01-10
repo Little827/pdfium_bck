@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bcfec048_51b1541d",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T20:38:18Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to split the API, but good point on the code being so different. Forked at this point the two cases.",
+      "parentUuid": "811c2042_a5e8e141",
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd004f3e_00a5cd39",
         "filename": "fpdfsdk/fpdfannot.cpp",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1540183_7e85422a",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T20:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd004f3e_00a5cd39",
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "10dd4254_fe799b44",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T20:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "209d79f5_d66020c7",
+      "range": {
+        "startLine": 782,
+        "startChar": 15,
+        "endLine": 782,
+        "endChar": 60
+      },
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a16bad_672d247a",
         "filename": "fpdfsdk/fpdfannot.cpp",
         "patchSetId": 9
@@ -79,6 +139,30 @@
       "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d0f958_6ec5a6a7",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-10T20:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98a16bad_672d247a",
+      "range": {
+        "startLine": 792,
+        "startChar": 4,
+        "endLine": 792,
+        "endChar": 32
+      },
+      "revId": "817283e2fb097d7bebb1e78f7dd8ae5125503dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
