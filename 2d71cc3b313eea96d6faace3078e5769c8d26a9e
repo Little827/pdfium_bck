@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "533dec40_af5e9c50",
+        "filename": "third_party/base/allocator/partition_allocator/page_allocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-11T21:11:41Z",
+      "side": 1,
+      "message": "Probably need to put these on 64K boundaries anyways given the 4:1 partition page to system page ratio below (unless changed).",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 66
+      },
+      "revId": "2d71cc3b313eea96d6faace3078e5769c8d26a9e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6347c9_4a94dbc7",
+        "filename": "third_party/base/allocator/partition_allocator/partition_alloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-11T21:11:41Z",
+      "side": 1,
+      "message": "do we need to bump this?  If we don\u0027t is it OK for partition pages and system pages to be 1:1 ?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 54
+      },
+      "revId": "2d71cc3b313eea96d6faace3078e5769c8d26a9e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
