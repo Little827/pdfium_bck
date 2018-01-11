@@ -1449,8 +1449,15 @@ FORM_ForceToKillFocus(FPDF_FORMHANDLE hHandle);
 #define FPDF_FORMFIELD_COMBOBOX 4     // combo box type.
 #define FPDF_FORMFIELD_LISTBOX 5      // list box type.
 #define FPDF_FORMFIELD_TEXTFIELD 6    // text field type.
+#define FPDF_FORMFIELD_SIGNATURE 7    // text field type.
 #ifdef PDF_ENABLE_XFA
-#define FPDF_FORMFIELD_XFA 7          // text field type.
+#define FPDF_FORMFIELD_XFA 8  // Generic XFA type.
+#endif                        // PDF_ENABLE_XFA
+
+#ifndef PDF_ENABLE_XFA
+#define FPDF_FORMFIELD_COUNT 8
+#else
+#define FPDF_FORMFIELD_COUNT 9
 #endif  // PDF_ENABLE_XFA
 
 /**
