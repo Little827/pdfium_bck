@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42c2b45c_319b45f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T20:56:08Z",
+      "side": 1,
+      "message": "Can you add a bit more description?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "0416e377ec63a65f46597abbbe90d337eb643286",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef630eba_f543b3bf",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T20:56:08Z",
+      "side": 1,
+      "message": "Why int and not FPDF_BOOL?",
+      "range": {
+        "startLine": 729,
+        "startChar": 12,
+        "endLine": 729,
+        "endChar": 14
+      },
+      "revId": "0416e377ec63a65f46597abbbe90d337eb643286",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa84f54_b100bb86",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T20:56:08Z",
+      "side": 1,
+      "message": "What if rect is a nullptr?",
+      "range": {
+        "startLine": 735,
+        "startChar": 2,
+        "endLine": 735,
+        "endChar": 25
+      },
+      "revId": "0416e377ec63a65f46597abbbe90d337eb643286",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45a22a8_f7996105",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T20:56:08Z",
+      "side": 1,
+      "message": "Drop this, just Experimental API. which matches all the other entries.",
+      "range": {
+        "startLine": 550,
+        "startChar": 20,
+        "endLine": 550,
+        "endChar": 39
+      },
+      "revId": "0416e377ec63a65f46597abbbe90d337eb643286",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba12c17_0d8d5610",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T20:56:08Z",
+      "side": 1,
+      "message": "What happens to |rect| on error?",
+      "range": {
+        "startLine": 558,
+        "startChar": 33,
+        "endLine": 558,
+        "endChar": 46
+      },
+      "revId": "0416e377ec63a65f46597abbbe90d337eb643286",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
