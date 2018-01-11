@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bf61f40_824b2910",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-11T23:00:35Z",
+      "side": 1,
+      "message": "Will this eventually go away? Or is it going to stay because there are XFA types not covered by the entries below?",
+      "revId": "c0f3f5fcabe7f1a4b0854c7912eb23a8b7acc6fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
