@@ -30,12 +30,19 @@ enum class FormFieldType : int {
   Signature = 7,
 #ifdef PDF_ENABLE_XFA
   XFA = 8,
+  XFA_CheckBox = 9,
+  XFA_ComboBox = 10,
+  XFA_ImageField = 11,
+  XFA_ListBox = 12,
+  XFA_PushButton = 13,
+  XFA_Signature = 14,
+  XFA_TextField = 15
 #endif  // PDF_ENABLE_XFA
 };
 
 // If values are added to FormFieldType, these will need to be updated.
 #ifdef PDF_ENABLE_XFA
-constexpr size_t kFormFieldTypeCount = 9;
+constexpr size_t kFormFieldTypeCount = 16;
 #else
 constexpr size_t kFormFieldTypeCount = 8;
 #endif  // PDF_ENABLE_XFA
@@ -52,6 +59,13 @@ constexpr FormFieldType kFormFieldTypes[kFormFieldTypeCount] = {
 #ifdef PDF_ENABLE_XFA
     ,
     FormFieldType::XFA,
+    FormFieldType::XFA_CheckBox,
+    FormFieldType::XFA_ComboBox,
+    FormFieldType::XFA_ImageField,
+    FormFieldType::XFA_ListBox,
+    FormFieldType::XFA_PushButton,
+    FormFieldType::XFA_Signature,
+    FormFieldType::XFA_TextField
 #endif  // PDF_ENABLE_XFA
 };
 
