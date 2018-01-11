@@ -7,6 +7,8 @@
 #include "core/fxcrt/fx_string.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
+void DoNothing(float* f) {}
+
 TEST(fxstring, FX_atonum) {
   int i;
   EXPECT_TRUE(FX_atonum("10", &i));
@@ -50,4 +52,8 @@ TEST(fxstring, FX_atonum) {
   float f;
   EXPECT_FALSE(FX_atonum("3.24", &f));
   EXPECT_FLOAT_EQ(3.24f, f);
+
+  float ff;
+  DoNothing(&ff);
+  EXPECT_FLOAT_EQ(3.24f, ff);
 }
