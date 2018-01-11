@@ -46,6 +46,30 @@
       "revId": "4780bbcbaf429a34698b480e8d5aa9edefd2684a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ba5b74_b4d2d23e",
+        "filename": "xfa/fxfa/parser/cxfa_stipple.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-11T22:40:40Z",
+      "side": 1,
+      "message": "Maybe ask mlamouri@ ? Another option is to replace |kDefaultRate| with CXFA_Stipple::GetDefaultRate().",
+      "parentUuid": "acd83f55_cd2572df",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "4780bbcbaf429a34698b480e8d5aa9edefd2684a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
