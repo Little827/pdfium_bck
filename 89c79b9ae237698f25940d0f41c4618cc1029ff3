@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c81c19_a8cb7cbf",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-11T16:40:20Z",
+      "side": 1,
+      "message": "What happens when we have to add a new value that\u0027s not XFA? Add as 16? Then kFormFieldTypeCount would be 9 but kFormFieldTypes[16] should be a valid value.",
+      "revId": "89c79b9ae237698f25940d0f41c4618cc1029ff3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1945e7c_9d77c7bd",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-11T16:40:20Z",
+      "side": 1,
+      "message": "What does this value mean? Add a comment.",
+      "revId": "89c79b9ae237698f25940d0f41c4618cc1029ff3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a44b17_2ce8bba3",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-11T16:40:20Z",
+      "side": 1,
+      "message": "Swap sides for consistency with the rest of the code: fieldType \u003d\u003d FormFieldType::TextField",
+      "range": {
+        "startLine": 722,
+        "startChar": 8,
+        "endLine": 722,
+        "endChar": 45
+      },
+      "revId": "89c79b9ae237698f25940d0f41c4618cc1029ff3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
