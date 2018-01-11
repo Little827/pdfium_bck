@@ -45,6 +45,19 @@
 #include "xfa/fxfa/cxfa_ffwidgethandler.h"
 #endif  // PDF_ENABLE_XFA
 
+namespace {
+
+bool IsFormFieldTypeComboOrText(FormFieldType fieldType) {
+  switch (fieldType) {
+    case FormFieldType::ComboBox:
+    case FormFieldType::TextField:
+    default:
+      return false;
+  }
+}
+
+}  // namespace
+
 CPDFSDK_InterForm::CPDFSDK_InterForm(CPDFSDK_FormFillEnvironment* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv),
       m_pInterForm(
@@ -55,10 +68,10 @@ CPDFSDK_InterForm::CPDFSDK_InterForm(CPDFSDK_FormFillEnvironment* pFormFillEnv)
 #endif  // PDF_ENABLE_XFA
       m_bCalculate(true),
       m_bBusy(false),
-      m_iHighlightAlpha(0) {
+      m_HighlightAlpha(0) {
   m_pInterForm->SetFormNotify(this);
-  for (int i = 0; i < kNumFieldTypes; ++i)
-    m_bNeedHightlight[i] = false;
+  for (FormFieldType type : kFormFieldTypes)
+    m_NeedsHighlight[type] = false;
 }
 
 CPDFSDK_InterForm::~CPDFSDK_InterForm() {
@@ -238,8 +251,8 @@ void CPDFSDK_InterForm::OnCalculate(CPDF_FormField* pFormField) {
     if (!pField)
       continue;
 
-    int nType = pField->GetFieldType();
-    if (nType != FIELDTYPE_COMBOBOX && nType != FIELDTYPE_TEXTFIELD)
+    FormFieldType fieldType = pField->GetFieldType();
+    if (!IsFormFieldTypeComboOrText(fieldType))
       continue;
 
     CPDF_AAction aAction = pField->GetAdditionalAction();
@@ -278,7 +291,7 @@ WideString CPDFSDK_InterForm::OnFormat(CPDF_FormField* pFormField,
   }
 
   IJS_Runtime* pRuntime = m_pFormFillEnv->GetJSRuntime();
-  if (pFormField->GetFieldType() == FIELDTYPE_COMBOBOX &&
+  if (pFormField->GetFieldType() == FormFieldType::ComboBox &&
       pFormField->CountSelectedItems() > 0) {
     int index = pFormField->GetSelectedIndex(0);
     if (index >= 0)
@@ -598,8 +611,8 @@ std::vector<CPDF_FormField*> CPDFSDK_InterForm::GetFieldFromObjects(
 
 int CPDFSDK_InterForm::BeforeValueChange(CPDF_FormField* pField,
                                          const WideString& csValue) {
-  int nType = pField->GetFieldType();
-  if (nType != FIELDTYPE_COMBOBOX && nType != FIELDTYPE_TEXTFIELD)
+  FormFieldType fieldType = pField->GetFieldType();
+  if (!IsFormFieldTypeComboOrText(fieldType))
     return 0;
 
   if (!OnKeyStrokeCommit(pField, csValue))
@@ -615,8 +628,8 @@ void CPDFSDK_InterForm::AfterValueChange(CPDF_FormField* pField) {
 #ifdef PDF_ENABLE_XFA
   SynchronizeField(pField, false);
 #endif  // PDF_ENABLE_XFA
-  int nType = pField->GetFieldType();
-  if (nType == FIELDTYPE_COMBOBOX || nType == FIELDTYPE_TEXTFIELD) {
+  FormFieldType fieldType = pField->GetFieldType();
+  if (IsFormFieldTypeComboOrText(fieldType)) {
     OnCalculate(pField);
     bool bFormatted = false;
     WideString sValue = OnFormat(pField, bFormatted);
@@ -627,7 +640,7 @@ void CPDFSDK_InterForm::AfterValueChange(CPDF_FormField* pField) {
 
 int CPDFSDK_InterForm::BeforeSelectionChange(CPDF_FormField* pField,
                                              const WideString& csValue) {
-  if (pField->GetFieldType() != FIELDTYPE_LISTBOX)
+  if (pField->GetFieldType() != FormFieldType::ListBox)
     return 0;
 
   if (!OnKeyStrokeCommit(pField, csValue))
@@ -640,7 +653,7 @@ int CPDFSDK_InterForm::BeforeSelectionChange(CPDF_FormField* pField,
 }
 
 void CPDFSDK_InterForm::AfterSelectionChange(CPDF_FormField* pField) {
-  if (pField->GetFieldType() != FIELDTYPE_LISTBOX)
+  if (pField->GetFieldType() != FormFieldType::ListBox)
     return;
 
   OnCalculate(pField);
@@ -649,8 +662,9 @@ void CPDFSDK_InterForm::AfterSelectionChange(CPDF_FormField* pField) {
 }
 
 void CPDFSDK_InterForm::AfterCheckedStatusChange(CPDF_FormField* pField) {
-  int nType = pField->GetFieldType();
-  if (nType != FIELDTYPE_CHECKBOX && nType != FIELDTYPE_RADIOBUTTON)
+  FormFieldType fieldType = pField->GetFieldType();
+  if (fieldType != FormFieldType::CheckBox &&
+      fieldType != FormFieldType::RadioButton)
     return;
 
   OnCalculate(pField);
@@ -673,40 +687,44 @@ void CPDFSDK_InterForm::AfterFormImportData(CPDF_InterForm* pForm) {
   OnCalculate(nullptr);
 }
 
-bool CPDFSDK_InterForm::IsNeedHighLight(int nFieldType) {
-  if (nFieldType < 1 || nFieldType > kNumFieldTypes)
+bool CPDFSDK_InterForm::IsNeedHighLight(FormFieldType fieldType) {
+  ASSERT(fieldType != FormFieldType::Unknown);
+  if (fieldType == FormFieldType::Unknown)
     return false;
-  return m_bNeedHightlight[nFieldType - 1];
+
+  auto result = m_NeedsHighlight.find(fieldType);
+  if (result != m_NeedsHighlight.end())
+    return result->second;
+  return false;
 }
 
 void CPDFSDK_InterForm::RemoveAllHighLight() {
-  for (int i = 0; i < kNumFieldTypes; ++i)
-    m_bNeedHightlight[i] = false;
+  m_NeedsHighlight.clear();
 }
 
-void CPDFSDK_InterForm::SetHighlightColor(FX_COLORREF clr, int nFieldType) {
-  if (nFieldType < 0 || nFieldType > kNumFieldTypes)
-    return;
-  switch (nFieldType) {
-    case 0: {
-      for (int i = 0; i < kNumFieldTypes; ++i) {
-        m_aHighlightColor[i] = clr;
-        m_bNeedHightlight[i] = true;
+void CPDFSDK_InterForm::SetHighlightColor(FX_COLORREF clr,
+                                          FormFieldType fieldType) {
+  switch (fieldType) {
+    case FormFieldType::Unknown:
+      for (auto type : kFormFieldTypes) {
+        m_HighlightColor[type] = clr;
+        m_NeedsHighlight[type] = true;
       }
       break;
-    }
-    default: {
-      m_aHighlightColor[nFieldType - 1] = clr;
-      m_bNeedHightlight[nFieldType - 1] = true;
+    default:
+      m_HighlightColor[fieldType] = clr;
+      m_NeedsHighlight[fieldType] = true;
       break;
-    }
   }
 }
 
-FX_COLORREF CPDFSDK_InterForm::GetHighlightColor(int nFieldType) {
-  if (nFieldType < 0 || nFieldType > kNumFieldTypes)
+FX_COLORREF CPDFSDK_InterForm::GetHighlightColor(FormFieldType fieldType) {
+  ASSERT(fieldType != FormFieldType::Unknown);
+  if (fieldType == FormFieldType::Unknown)
     return FXSYS_RGB(255, 255, 255);
-  if (nFieldType == 0)
-    return m_aHighlightColor[0];
-  return m_aHighlightColor[nFieldType - 1];
+
+  auto result = m_HighlightColor.find(fieldType);
+  if (result != m_HighlightColor.end())
+    return result->second;
+  return FXSYS_RGB(255, 255, 255);
 }
