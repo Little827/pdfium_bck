@@ -357,6 +357,8 @@ class CFX_FloatRect {
   float top;
 };
 
+std::ostream& operator<<(std::ostream& os, const CFX_FloatRect& rect);
+
 // LTWH rectangles (y-axis runs downwards).
 template <class BaseType>
 class CFX_RTemplate {
