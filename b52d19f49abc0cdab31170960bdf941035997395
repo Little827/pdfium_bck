@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1446a19c_00fa68be",
+        "filename": "xfa/fxfa/cxfa_ffimage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T19:33:05Z",
+      "side": 1,
+      "message": "Meh, in that case we\u0027ll end up with the code being longer to early return.",
+      "parentUuid": "d5ca7e0e_89d57d6d",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "b52d19f49abc0cdab31170960bdf941035997395",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21d536cc_e0fa9890",
         "filename": "xfa/fxfa/cxfa_ffline.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-11T19:24:08Z",
       "side": 1,
       "message": "That\u0027s weird, but... let\u0027s not change the functionality now.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "b52d19f49abc0cdab31170960bdf941035997395",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32007d7b_34016c83",
+        "filename": "xfa/fxfa/cxfa_ffline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T19:33:05Z",
+      "side": 1,
+      "message": "What functionality change?",
+      "parentUuid": "21d536cc_e0fa9890",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "b52d19f49abc0cdab31170960bdf941035997395",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47790bc5_5f8d62a2",
+        "filename": "xfa/fxfa/parser/cxfa_value.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T19:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d85857d1_330eb6a3",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 13
+      },
+      "revId": "b52d19f49abc0cdab31170960bdf941035997395",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
