@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c73e162_1cb57cf6",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-11T20:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c4623d_342fa093",
+      "range": {
+        "startLine": 722,
+        "startChar": 8,
+        "endLine": 722,
+        "endChar": 45
+      },
+      "revId": "a21a9606351ec13df97058993b0fb51a0f6779f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6daf7199_82081e51",
         "filename": "fpdfsdk/cpdfsdk_interform.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "59372805_34b3c402",
+        "filename": "fpdfsdk/cpdfsdk_interform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-11T20:03:51Z",
+      "side": 1,
+      "message": "Keeping Unknown, since there are other circumstances that Unknown really means Unknown. Unfortunately this behaviour is already in the public API and used. I have changed the internal implementation to have a separate AllHighlights method.",
+      "parentUuid": "6daf7199_82081e51",
+      "range": {
+        "startLine": 708,
+        "startChar": 9,
+        "endLine": 708,
+        "endChar": 31
+      },
+      "revId": "a21a9606351ec13df97058993b0fb51a0f6779f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7331a645_8d24d8f2",
         "filename": "fpdfsdk/cpdfsdk_interform.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-11T19:00:12Z",
       "side": 1,
       "message": "So ASSERT only crashes on debug? Sounds like we should have an ASSERT_OR_RETURN, in the rest of the code we mostly let it break on release.",
+      "range": {
+        "startLine": 722,
+        "startChar": 2,
+        "endLine": 722,
+        "endChar": 8
+      },
+      "revId": "a21a9606351ec13df97058993b0fb51a0f6779f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8732ba87_054d07a5",
+        "filename": "fpdfsdk/cpdfsdk_interform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-11T20:03:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7331a645_8d24d8f2",
       "range": {
         "startLine": 722,
         "startChar": 2,
@@ -91,6 +163,30 @@
       "revId": "a21a9606351ec13df97058993b0fb51a0f6779f0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f0b7b0_66f32e41",
+        "filename": "fpdfsdk/fpdfformfill.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-11T20:03:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c7a4da27_43930c54",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 61
+      },
+      "revId": "a21a9606351ec13df97058993b0fb51a0f6779f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
