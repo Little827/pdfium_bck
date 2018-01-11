@@ -18,7 +18,6 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/stl_util.h"
 
-// Do not change the order of these values, only append new ones
 enum class FormFieldType : int {
   Unknown = 0,
   PushButton = 1,
@@ -29,13 +28,20 @@ enum class FormFieldType : int {
   TextField = 6,
   Signature = 7,
 #ifdef PDF_ENABLE_XFA
-  XFA = 8,
+  XFA = 8,  // Generic XFA field, should use value below if possible.
+  XFA_CheckBox = 9,
+  XFA_ComboBox = 10,
+  XFA_ImageField = 11,
+  XFA_ListBox = 12,
+  XFA_PushButton = 13,
+  XFA_Signature = 14,
+  XFA_TextField = 15
 #endif  // PDF_ENABLE_XFA
 };
 
 // If values are added to FormFieldType, these will need to be updated.
 #ifdef PDF_ENABLE_XFA
-constexpr size_t kFormFieldTypeCount = 9;
+constexpr size_t kFormFieldTypeCount = 16;
 #else
 constexpr size_t kFormFieldTypeCount = 8;
 #endif  // PDF_ENABLE_XFA
@@ -52,6 +58,13 @@ constexpr FormFieldType kFormFieldTypes[kFormFieldTypeCount] = {
 #ifdef PDF_ENABLE_XFA
     ,
     FormFieldType::XFA,
+    FormFieldType::XFA_CheckBox,
+    FormFieldType::XFA_ComboBox,
+    FormFieldType::XFA_ImageField,
+    FormFieldType::XFA_ListBox,
+    FormFieldType::XFA_PushButton,
+    FormFieldType::XFA_Signature,
+    FormFieldType::XFA_TextField
 #endif  // PDF_ENABLE_XFA
 };
 
