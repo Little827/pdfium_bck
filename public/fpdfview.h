@@ -547,6 +547,18 @@ FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageWidth(FPDF_PAGE page);
 //          One point is 1/72 inch (around 0.3528 mm)
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageHeight(FPDF_PAGE page);
 
+// Experimental API. Subject to change.
+// Function: FPDF_GetPageBoundingBox
+//          Get the bounding box of the page. This is the intersection between
+//          its media box and its crop box.
+// Parameters:
+//          page        -   Handle to the page. Returned by FPDF_LoadPage.
+//          rect        -   Pointer to a rect to receive the page bounding box.
+// Return value:
+//          Non-zero for success. 0 for error.
+FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageBoundingBox(FPDF_PAGE page,
+                                                      FS_RECTF* rect);
+
 // Function: FPDF_GetPageSizeByIndex
 //          Get the size of the page at the given index.
 // Parameters:

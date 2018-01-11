@@ -331,6 +331,7 @@ int CheckPDFiumCApi() {
     CHK(FPDF_LoadPage);
     CHK(FPDF_GetPageWidth);
     CHK(FPDF_GetPageHeight);
+    CHK(FPDF_GetPageBoundingBox);
     CHK(FPDF_GetPageSizeByIndex);
 #ifdef _WIN32
     CHK(FPDF_RenderPage);
