@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "e3a4e2b3_f333a659",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-11T17:03:08Z",
+      "side": 1,
+      "message": "Since this is for printing, would this work?\n- Make the dest page size a parameter rather than assuming it\u0027s equal to the first src page size\n- Create an API that returns the possible layouts for that src/dest page size combination. The constraint are that the same scaling would be done in x and y (so pages maintain their form) and there would be no blank space that could fit a page.\n- This method would calculate the configurations for portrait and landscape using the same logic, just swapping width and height for the dest page. It would returns something like [(4, portrait), (9, portrait), (2, landscape), (6, landscape)]\n- A complication I see is that we might want to leave a margin instead of using the whole dest page size. Not sure if the caller or the library should handle that.\n- Change the API being introduced in this CL to receive the chosen layout instead of the number of pages as parameter. That way the library has the \"smart\" part but it is optional so the caller can do something different.\n\nI may be overcomplicating the problem, but I guess doesn\u0027t hurt to suggest.",
+      "parentUuid": "28e4707f_50286b14",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "9072173e35df2a62c0722f1d10ee73d24cbcbc67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32457bb2_3101d09a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 16
