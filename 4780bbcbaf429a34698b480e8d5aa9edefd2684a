@@ -22,6 +22,30 @@
       "revId": "4780bbcbaf429a34698b480e8d5aa9edefd2684a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd83f55_cd2572df",
+        "filename": "xfa/fxfa/parser/cxfa_stipple.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-11T20:46:43Z",
+      "side": 1,
+      "message": "thestig@ do you know what\u0027s going wrong here?",
+      "parentUuid": "138876e2_0021c9b1",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "4780bbcbaf429a34698b480e8d5aa9edefd2684a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
