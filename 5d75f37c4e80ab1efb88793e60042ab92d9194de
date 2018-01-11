@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "66560d59_e2ebf3e8",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-11T21:15:25Z",
+      "side": 1,
+      "message": "Sorry, I read and reread and don\u0027t understand.\n\nIsn\u0027t your suggestion to scrap the if/else structure in favor of an early return for the case \"!value\"?",
+      "parentUuid": "c4fa1a0d_e039a305",
+      "revId": "5d75f37c4e80ab1efb88793e60042ab92d9194de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "532ac1b4_b7d2cc44",
         "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
         "patchSetId": 11
