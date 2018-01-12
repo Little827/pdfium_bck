@@ -11,12 +11,13 @@
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_color.h"
+#include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/fx_dib.h"
-#include "core/fxge/fx_font.h"
 
 class CFX_Font;
 class CFX_GraphStateData;
 class CFX_ImageRenderer;
+class IFX_PauseIndicator;
 class IFX_RenderDeviceDriver;
 
 #define FXDC_DEVICE_CLASS 1

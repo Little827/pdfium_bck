@@ -15,7 +15,6 @@
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_renderdevice.h"
 #include "core/fxge/fx_dib.h"
-#include "core/fxge/fx_font.h"
 #include "xfa/fxgraphics/cxfa_gecolor.h"
 
 class CXFA_GEPath;
