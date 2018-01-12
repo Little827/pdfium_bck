@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1515792666 -0800\nnonce AGjzz3/br0bnrquzY46c9JMVtzqtKMehWMGi0MzGnO3n6GJamAiokymbpdrTb+A1IqR20udRJTvx\n\n0000000000000000000000000000000000000000 2d7bc2bdd76fb6ec2bd28f453b706052e2196b68 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase_correctly\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJaWSkaAAoJEKs2LWFaZv179OUIAMHdvrk8IgGOhSl9xjOXrEhA\nZmFUGw1fSeT2HgR84rvywvJOA9kbPFEwSFNsOrWzVqYy2fsZYFxVF5ipYutIfdiE\n0uVb6P2wgq+oo2P/bCOAROZEqJOsAMXVFZnWLCOr2YRO/TwCts+qs4gH3QEJsHOT\n/B4/48xqiFSlTbYezlS6uOrrBLsYElzGRJAEDhVUrWL2t60vYa0gB3sKpqmaMDtg\nKQX/qCC+TAcOuxQRCfoz00yBCUux+Gsn0EvZEpSMOZd0fYvqOijwhbmjDE+5eXau\naZhEb213fRmuS3YIvJRCHl8xRPHC9A3cuEh74HogBkCtXpsA0WULLCNWduF6X7k\u003d\n\u003df8Yk\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "386aed77_5b35b098",
+        "filename": "fxbarcode/oned/BC_OnedCodaBarWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-12T21:40:37Z",
+      "side": 1,
+      "message": "follow-up: nit: do we need the null terminator?  do we just want an array like below?",
+      "range": {
+        "startLine": 33,
+        "startChar": 33,
+        "endLine": 33,
+        "endChar": 58
+      },
+      "revId": "2d7bc2bdd76fb6ec2bd28f453b706052e2196b68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "213d4c63_4b0706f8",
+        "filename": "fxbarcode/oned/BC_OnedCodaBarWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-12T21:40:37Z",
+      "side": 1,
+      "message": "follow-up: methinks these are all uint8_t\u0027s (or uint16_t for consistency with other files requirements), could save some zero bytes in the binary and let the promotions happen to widen them upon use.  Also, should have four digits? eg. 0xNNN vs 0xNNNN (3 is kinda weird).",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "2d7bc2bdd76fb6ec2bd28f453b706052e2196b68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe13c074_f19c73a9",
+        "filename": "fxbarcode/oned/BC_OnedCodaBarWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-12T21:40:37Z",
+      "side": 1,
+      "message": "follow-up: [22] vs. [] and an assert for size?",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "2d7bc2bdd76fb6ec2bd28f453b706052e2196b68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad76ad7_fe7b1e1e",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-12T21:40:37Z",
+      "side": 1,
+      "message": "follow-up: uint16_t ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "2d7bc2bdd76fb6ec2bd28f453b706052e2196b68",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
