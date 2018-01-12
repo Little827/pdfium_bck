@@ -684,7 +684,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPageBitmap(FPDF_BITMAP bitmap,
 //                          user-interaction, which are all annotations except
 //                          widget and popup annotations.
 // Return value:
-//          None. Note that behavior is undefined if det of |matrix| is 0.
+//          None.
 FPDF_EXPORT void FPDF_CALLCONV
 FPDF_RenderPageBitmapWithMatrix(FPDF_BITMAP bitmap,
                                 FPDF_PAGE page,
