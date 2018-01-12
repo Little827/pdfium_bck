@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1515740468 -0800\nnonce AGjzz3/hmRel7uV6dlHMRap2wpf+7v+srDgM5UlnjzyvoGqnNRXB9KQMyH7MM04U1adlJIkRvSXo\n\n0000000000000000000000000000000000000000 129852b301d5380488ecd996c6ff9cf2c85d82c3 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJaWF00AAoJEKs2LWFaZv17u7UH/1z3LMNYGPntLw9W9esaRCpO\nL2HoQBu9oxtPi0Pe4nc112XjQppkzqHuqRZFkF1oPFoyDUJxvWUxlTKvrDZrYFtg\nw6vNUhB/jq4pDqL5UQze0qKpOG9P4uQT22NN45xFfbkZF6XoCJOP0kQhlTz2J379\ndo6hwKFpMubEe3+PEVuEsIt4Tif8ri3vlJ89V7JYXWD85+YWso8zt+BgyEm+7dRb\ngdBaMZc3A82hfBLb5P+zBcqyX6jHQf7MZqNF8NnStZQUsTrlCt6gDurp8PfsVPW/\nsIoz/pikSe+MNgVd+3aiOiZVWTQcVX5brpXCs5TgvBqm/u6vlaQN0IMuK/re70U\u003d\n\u003dxSxL\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "04ac6856_577e8ab0",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-12T07:14:19Z",
+      "side": 1,
+      "message": "I think these are ok and won\u0027t confuse other files in jumbo builds. Whereas names that are too generic, like \"Status\" and \"Ok\", have explicit namespaces below.",
+      "revId": "129852b301d5380488ecd996c6ff9cf2c85d82c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
