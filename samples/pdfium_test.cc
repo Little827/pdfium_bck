@@ -1251,6 +1251,10 @@ bool RenderPage(const std::string& name,
 
   auto width = static_cast<int>(FPDF_GetPageWidth(page) * scale);
   auto height = static_cast<int>(FPDF_GetPageHeight(page) * scale);
+  width *= 2;
+  height *= 2;
+  // std::swap(width, height);
+
   int alpha = FPDFPage_HasTransparency(page) ? 1 : 0;
   std::unique_ptr<void, FPDFBitmapDeleter> bitmap(
       FPDFBitmap_Create(width, height, alpha));
@@ -1258,13 +1262,23 @@ bool RenderPage(const std::string& name,
   if (bitmap) {
     FPDF_DWORD fill_color = alpha ? 0x00000000 : 0xFFFFFFFF;
     FPDFBitmap_FillRect(bitmap.get(), 0, 0, width, height, fill_color);
-
     if (options.render_oneshot) {
       // Note, client programs probably want to use this method instead of the
       // progressive calls. The progressive calls are if you need to pause the
       // rendering to update the UI, the PDF renderer will break when possible.
-      FPDF_RenderPageBitmap(bitmap.get(), page, 0, 0, width, height, 0,
-                            FPDF_ANNOT);
+      //       FPDF_RenderPageBitmap(bitmap.get(), page, 0, 0, width, height, 0,
+      //                             FPDF_ANNOT);
+      // FS_MATRIX matrix {2, 0, 0, 2, 0, 0};
+      FS_MATRIX matrix{1, 0, 0, 1, 0, 0};
+      // const float sqrt2 = 1.4142f;
+      // FS_MATRIX matrix {1.0/sqrt2, 1.0/sqrt2, -1.0/sqrt2, 1.0/sqrt2,
+      // width/2.5*sqrt2, 0}; FS_MATRIX matrix {1, 0, 0, -1, 0, height};
+      // FS_MATRIX matrix {0, 1, -1, 0, width, 0};
+      // FS_RECTF clippingRect {width / 4, height / 4, width * 3 / 4, height * 3
+      // / 4};
+      FS_RECTF clippingRect{0, 0, width, height};
+      FPDF_RenderPageBitmapWithMatrix(bitmap.get(), page, &matrix,
+                                      &clippingRect, FPDF_ANNOT);
     } else {
       IFSDK_PAUSE pause;
       pause.version = 1;

@@ -5,7 +5,6 @@
 #include <limits>
 #include <string>
 
-#include "core/fxcrt/fx_coordinates.h"
 #include "fpdfsdk/fpdfview_c_api_test.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
@@ -369,76 +368,50 @@ TEST_F(FPDFViewEmbeddertest, Hang_360) {
 }
 
 TEST_F(FPDFViewEmbeddertest, FPDF_RenderPageBitmapWithMatrix) {
-  const char* const kRotatedMD5[4] = {
-      "0a90de37f52127619c3dfb642b5fa2fe", "d599429574ff0dcad3bc898ea8b874ca",
-      "0113386bb0bd45125bacc6dee78bfe78", "051fcfa4c1f9de28765705633a8ef3a9"};
-  const char kTopLeftQuarterMD5[] = "4982be08db3f6d2e6409186ebbced9eb";
-  const char kHoriStretchedMD5[] = "004bf38f3c5c76a644e6fca204747f21";
-  const char kRotateandStretchMD5[] = "0ea95cacc716d003cf063a2c5ed6c8d7";
+  const char kOriginalMD5[] = "0a90de37f52127619c3dfb642b5fa2fe";
+  const char kTopLeftQuarterMD5[] = "f11a11137c8834389e31cf555a4a6979";
+  const char kTrimmedMD5[] = "48ef9205941ed19691ccfa00d717187e";
+  const char kRotatedMD5[] = "d8da2c7bf77521550d0f2752b9cf3482";
 
   EXPECT_TRUE(OpenDocument("rectangles.pdf"));
   FPDF_PAGE page = LoadPage(0);
   EXPECT_NE(nullptr, page);
-  const int initial_width = static_cast<int>(FPDF_GetPageWidth(page));
-  const int initial_height = static_cast<int>(FPDF_GetPageHeight(page));
-  EXPECT_EQ(200, initial_width);
-  EXPECT_EQ(300, initial_height);
+  const int width = static_cast<int>(FPDF_GetPageWidth(page));
+  const int height = static_cast<int>(FPDF_GetPageHeight(page));
+  EXPECT_EQ(200, width);
+  EXPECT_EQ(300, height);
 
   FPDF_BITMAP bitmap = RenderPage(page);
-  CompareBitmap(bitmap, initial_width, initial_height, kRotatedMD5[0]);
+  CompareBitmap(bitmap, width, height, kOriginalMD5);
   FPDFBitmap_Destroy(bitmap);
 
-  // Try the easy rotations: 0, 90, 180, 270 clockwise. The output should be the
-  // same as FPDF_RenderPageBitmap with the appropriate rotation flag. Per PDF
-  // spec section 4.2.2, a t degree rotation is represented by [cos(t) sin(t)
-  // -sin(t) cos(t) 0 0] (matrix goes on the right in the multiplication).
-  FS_RECTF rect = {0, 0, initial_width, initial_height};
-  CFX_Matrix rot_matrices[4] = {
-      CFX_Matrix(1, 0, 0, 1, 0, 0), CFX_Matrix(0, -1, 1, 0, 0, 0),
-      CFX_Matrix(-1, 0, 0, -1, 0, 0), CFX_Matrix(0, 1, -1, 0, 0, 0)};
-  for (int rot = 0; rot < 4; ++rot) {
-    int width;
-    int height;
-    FS_MATRIX matrix;
-    matrix.a = rot_matrices[rot].a;
-    matrix.b = rot_matrices[rot].b;
-    matrix.c = rot_matrices[rot].c;
-    matrix.d = rot_matrices[rot].d;
-    matrix.e = rot_matrices[rot].e;
-    matrix.f = rot_matrices[rot].f;
-    if (rot % 2 == 0) {
-      width = initial_width;
-      height = initial_height;
-    } else {
-      width = initial_height;
-      height = initial_width;
-    }
-    rect.right = width;
-    rect.bottom = height;
+  // Try rendering with an identity matrix. The output should be the same as
+  // the RenderPage() output.
+  FS_MATRIX matrix;
+  matrix.a = 1;
+  matrix.b = 0;
+  matrix.c = 0;
+  matrix.d = 1;
+  matrix.e = 0;
+  matrix.f = 0;
 
-    bitmap = FPDFBitmap_Create(width, height, 0);
-    FPDFBitmap_FillRect(bitmap, 0, 0, width, height, 0xFFFFFFFF);
-    FPDF_RenderPageBitmap(bitmap, page, 0, 0, width, height, rot, 0);
-    CompareBitmap(bitmap, width, height, kRotatedMD5[rot]);
-    FPDFBitmap_Destroy(bitmap);
-
-    bitmap = FPDFBitmap_Create(width, height, 0);
-    FPDFBitmap_FillRect(bitmap, 0, 0, width, height, 0xFFFFFFFF);
-    FPDF_RenderPageBitmapWithMatrix(bitmap, page, &matrix, &rect, 0);
-    CompareBitmap(bitmap, width, height, kRotatedMD5[rot]);
-    FPDFBitmap_Destroy(bitmap);
-  }
-  // TODO(npm): what to do with transformations that do not align the page with
-  // the axis, like a 45 degree rotation (currently, part of the page gets cut
-  // out). pdfium:849
-
-  // Now render again with the image scaled smaller.
-  int width = initial_width / 2;
-  int height = initial_height / 2;
-  FS_MATRIX matrix = {0.5, 0, 0, 0.5, 0, 0};
-
+  FS_RECTF rect;
+  rect.left = 0;
+  rect.top = 0;
   rect.right = width;
   rect.bottom = height;
+
+  bitmap = FPDFBitmap_Create(width, height, 0);
+  FPDFBitmap_FillRect(bitmap, 0, 0, width, height, 0xFFFFFFFF);
+  FPDF_RenderPageBitmapWithMatrix(bitmap, page, &matrix, &rect, 0);
+  CompareBitmap(bitmap, width, height, kOriginalMD5);
+  FPDFBitmap_Destroy(bitmap);
+
+  // Now render again with the image scaled smaller.
+  matrix.a = 0.5;
+  matrix.d = 0.5;
+  // >>>>>>> parent of 24b0733a7... Change behaviour of
+  // FPDF_RenderPageBitmapWithMatrix
 
   bitmap = FPDFBitmap_Create(width, height, 0);
   FPDFBitmap_FillRect(bitmap, 0, 0, width, height, 0xFFFFFFFF);
@@ -446,34 +419,26 @@ TEST_F(FPDFViewEmbeddertest, FPDF_RenderPageBitmapWithMatrix) {
   CompareBitmap(bitmap, width, height, kTopLeftQuarterMD5);
   FPDFBitmap_Destroy(bitmap);
 
-  // Now render again with the image scaled larger horizontally.
-  width = initial_width * 2;
-  height = initial_height;
+  // Now render again with the image scaled larger horizontally (will be
+  // trimmed).
   matrix.a = 2;
   matrix.d = 1;
-  rect.right = width;
-  rect.bottom = height;
   bitmap = FPDFBitmap_Create(width, height, 0);
   FPDFBitmap_FillRect(bitmap, 0, 0, width, height, 0xFFFFFFFF);
   FPDF_RenderPageBitmapWithMatrix(bitmap, page, &matrix, &rect, 0);
-  CompareBitmap(bitmap, width, height, kHoriStretchedMD5);
+  CompareBitmap(bitmap, width, height, kTrimmedMD5);
   FPDFBitmap_Destroy(bitmap);
 
-  // Test a rotation followed by a stretch.
-  width = initial_height * 2;
-  height = initial_width;
+  // Now try a 90 degree rotation
   matrix.a = 0;
-  matrix.b = -1;
-  matrix.c = 2;
+  matrix.b = 1;
+  matrix.c = -1;
   matrix.d = 0;
-  matrix.e = 0;
-  matrix.f = 0;
-  rect.right = width;
-  rect.bottom = height;
+  matrix.e = width;
   bitmap = FPDFBitmap_Create(width, height, 0);
   FPDFBitmap_FillRect(bitmap, 0, 0, width, height, 0xFFFFFFFF);
   FPDF_RenderPageBitmapWithMatrix(bitmap, page, &matrix, &rect, 0);
-  CompareBitmap(bitmap, width, height, kRotateandStretchMD5);
+  CompareBitmap(bitmap, width, height, kRotatedMD5);
   FPDFBitmap_Destroy(bitmap);
 
   UnloadPage(page);
