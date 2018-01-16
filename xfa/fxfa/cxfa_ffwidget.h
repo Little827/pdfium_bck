@@ -172,11 +172,11 @@ class CXFA_FFWidget : public CXFA_ContentLayoutItem {
                   CXFA_Box* box,
                   const CFX_RectF& rtBorder,
                   const CFX_Matrix& matrix);
-  void DrawBorderWithFlags(CXFA_Graphics* pGS,
-                           CXFA_Box* box,
-                           const CFX_RectF& rtBorder,
-                           const CFX_Matrix& matrix,
-                           uint32_t dwFlags);
+  void DrawBorderWithFlag(CXFA_Graphics* pGS,
+                          CXFA_Box* box,
+                          const CFX_RectF& rtBorder,
+                          const CFX_Matrix& matrix,
+                          bool forceRound);
 
   CFX_RectF GetRectWithoutRotate();
   bool IsMatchVisibleStatus(uint32_t dwStatus);
