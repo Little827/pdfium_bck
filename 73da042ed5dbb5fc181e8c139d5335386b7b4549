@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f53c76d2_2014201f",
+        "filename": "xfa/fxfa/cxfa_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-16T21:59:38Z",
+      "side": 0,
+      "message": "core/fxge/fx_dib.h:#define FXDIB_BLEND_NORMAL 0\n\nSo this becomes false.",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 38
+      },
+      "revId": "73da042ed5dbb5fc181e8c139d5335386b7b4549",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
