@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0302eb6b_81ae6c3c",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-16T22:34:10Z",
+      "side": 1,
+      "message": "This should be just _FX_OS_ \u003d\u003d _FX_OS_WASM_, to cover the case where it came in from the command line\u0027s -D.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "d154d58905b6409cb482fb74ca70ad005719bd26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
