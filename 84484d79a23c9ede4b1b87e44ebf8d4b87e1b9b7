@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb67797e_6fec1f57",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-16T18:36:48Z",
+      "side": 1,
+      "message": "remove?",
+      "revId": "84484d79a23c9ede4b1b87e44ebf8d4b87e1b9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0861874_0fd53e24",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-16T18:36:48Z",
+      "side": 1,
+      "message": "Make it NDEBUG so it will break the REL bots?",
+      "range": {
+        "startLine": 138,
+        "startChar": 14,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "84484d79a23c9ede4b1b87e44ebf8d4b87e1b9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
