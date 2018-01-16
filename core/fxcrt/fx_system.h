@@ -31,21 +31,34 @@
 #define _FX_PLATFORM_ANDROID_ 4  // _FX_OS_ANDROID_ always.
 
 #ifndef _FX_OS_
+
 #if defined(__ANDROID__)
 #define _FX_OS_ _FX_OS_ANDROID_
 #define _FX_PLATFORM_ _FX_PLATFORM_ANDROID_
+
 #elif defined(_WIN32)
 #define _FX_OS_ _FX_OS_WIN32_
 #define _FX_PLATFORM_ _FX_PLATFORM_WINDOWS_
+
 #elif defined(_WIN64)
 #define _FX_OS_ _FX_OS_WIN64_
 #define _FX_PLATFORM_ _FX_PLATFORM_WINDOWS_
+
 #elif defined(__linux__)
 #define _FX_OS_ _FX_OS_LINUX_
 #define _FX_PLATFORM_ _FX_PLATFORM_LINUX_
+
 #elif defined(__APPLE__)
 #define _FX_OS_ _FX_OS_MACOSX_
 #define _FX_PLATFORM_ _FX_PLATFORM_APPLE_
+
+#elif defined(__asmjs__) || defined(__wasm__)
+#define _FX_OS_ _FX_OS_WASM_
+#define _FX_PLATFORM_ _FX_PLATFORM_LINUX_
+#if defined(PDF_ENABLE_V8)
+#error can't compile v8 with wasm
+#endif  // PDF_ENABLE_V8
+
 #endif
 #endif  // _FX_OS_
 
