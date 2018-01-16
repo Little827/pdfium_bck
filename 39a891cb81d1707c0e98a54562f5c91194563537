@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a250ed1_17e0b049",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-16T19:36:40Z",
+      "side": 1,
+      "message": "You need to add _FX_OS_WASM_ here.  Otherwise it silently becomes 0.  And line 65 fires ... \n\nThe value doesn\u0027t matter at all, nothing depends on this really.",
+      "revId": "39a891cb81d1707c0e98a54562f5c91194563537",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9519eeb9_bcd85b13",
         "filename": "core/fxcrt/fx_system.h",
         "patchSetId": 3
