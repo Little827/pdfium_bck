@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "371acd25_dd7e1cad",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-16T17:04:10Z",
+      "side": 1,
+      "message": "This is from a comment in the original CL, but... it\u0027s contradictory with the if. Is this for asm.js or wasm?",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "bf89ce641f50f3efc0e4ab606cc1639ce2df2976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
