@@ -17,6 +17,7 @@
 #include "public/fpdf_text.h"
 #include "public/fpdfview.h"
 #include "testing/gmock/include/gmock/gmock.h"
+#include "testing/image_diff/image_diff_png.h"
 #include "testing/test_support.h"
 #include "testing/utils/path_service.h"
 #include "third_party/base/ptr_util.h"
@@ -424,6 +425,44 @@ std::string EmbedderTest::HashBitmap(FPDF_BITMAP bitmap) {
                         FPDFBitmap_GetHeight(bitmap),
                     digest);
   return CryptToBase16(digest);
+}
+
+// static
+void EmbedderTest::WriteBitmapToPng(FPDF_BITMAP bitmap,
+                                    const std::string& filename) {
+  // const char* buffer =
+  //     reinterpret_cast<const char*>(FPDFBitmap_GetBuffer(bitmap));
+  int stride = FPDFBitmap_GetStride(bitmap);
+  int width = FPDFBitmap_GetWidth(bitmap);
+  int height = FPDFBitmap_GetHeight(bitmap);
+
+  std::vector<unsigned char> png_encoding;
+  // const auto* buffer = static_cast<const unsigned char*>(buffer_void);
+  const auto* buffer =
+      static_cast<const unsigned char*>(FPDFBitmap_GetBuffer(bitmap));
+  if (!image_diff_png::EncodeBGRAPNG(buffer, width, height, stride, false,
+                                     &png_encoding)) {
+    fprintf(stderr, "Failed to convert bitmap to PNG\n");
+    return;
+  }
+
+  if (filename.size() >= 256) {
+    fprintf(stderr, "Filename %s is too long\n", filename.c_str());
+    return;
+  }
+
+  FILE* fp = fopen(filename.c_str(), "wb");
+  if (!fp) {
+    fprintf(stderr, "Failed to open %s for output\n", filename.c_str());
+    return;
+  }
+
+  size_t bytes_written =
+      fwrite(&png_encoding.front(), 1, png_encoding.size(), fp);
+  if (bytes_written != png_encoding.size())
+    fprintf(stderr, "Failed to write to %s\n", filename.c_str());
+
+  (void)fclose(fp);
 }
 
 // static
