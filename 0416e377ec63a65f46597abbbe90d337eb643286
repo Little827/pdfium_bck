@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6cd3cb6d_9e18e1c0",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-16T15:37:26Z",
+      "side": 1,
+      "message": "Some may need it, some maybe should be BOOL but aren\u0027t for historical reasons.",
+      "parentUuid": "6f954b44_b002a7cb",
+      "range": {
+        "startLine": 729,
+        "startChar": 12,
+        "endLine": 729,
+        "endChar": 14
+      },
+      "revId": "0416e377ec63a65f46597abbbe90d337eb643286",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa84f54_b100bb86",
         "filename": "fpdfsdk/fpdfview.cpp",
         "patchSetId": 3

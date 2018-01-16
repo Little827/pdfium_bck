@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ea09297_26370ae1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-16T15:37:26Z",
+      "side": 1,
+      "message": "Add?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "f21aeb5d3c1033f6b2dae29cd018cddd26c855fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e7fa83_9287778c",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-16T15:37:26Z",
+      "side": 1,
+      "message": "Remove as it\u0027s redundant.",
+      "range": {
+        "startLine": 566,
+        "startChar": 30,
+        "endLine": 566,
+        "endChar": 46
+      },
+      "revId": "f21aeb5d3c1033f6b2dae29cd018cddd26c855fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
