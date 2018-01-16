@@ -134,6 +134,9 @@ class EmbedderTest : public ::testing::Test,
   // Return the hash of |bitmap|.
   static std::string HashBitmap(FPDF_BITMAP bitmap);
 
+  // Write |bitmap| to a png file.
+  static void WriteBitmapToPng(FPDF_BITMAP bitmap, const std::string& filename);
+
   // Check |bitmap| to make sure it has the right dimensions and content.
   static void CompareBitmap(FPDF_BITMAP bitmap,
                             int expected_width,
