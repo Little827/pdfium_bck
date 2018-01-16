@@ -79,6 +79,30 @@
       "revId": "39a891cb81d1707c0e98a54562f5c91194563537",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "939ee8c8_8cd82c22",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-16T19:37:59Z",
+      "side": 1,
+      "message": "[In theory, there could be command line flags like -D_FX_OS_\u003d_FX_OS_WASM_, causing this block to be skipped at line 33, and we\u0027d still like to assert no v8 ...]",
+      "parentUuid": "b244ec2d_da71b96e",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "39a891cb81d1707c0e98a54562f5c91194563537",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
