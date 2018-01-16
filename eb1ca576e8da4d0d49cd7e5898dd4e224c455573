@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "59efbdfa_7320384f",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-16T22:24:06Z",
+      "side": 1,
+      "message": "Rotated how?",
+      "range": {
+        "startLine": 384,
+        "startChar": 13,
+        "endLine": 384,
+        "endChar": 24
+      },
+      "revId": "eb1ca576e8da4d0d49cd7e5898dd4e224c455573",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f7beb7_e6309117",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-16T22:24:06Z",
+      "side": 1,
+      "message": "Can we keep the basic rotations too? 90, 180, 270",
+      "revId": "eb1ca576e8da4d0d49cd7e5898dd4e224c455573",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17f2abe3_43c33da7",
         "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
         "patchSetId": 7
@@ -22,6 +62,75 @@
       "revId": "eb1ca576e8da4d0d49cd7e5898dd4e224c455573",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71a03317_f629909e",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-16T22:24:06Z",
+      "side": 1,
+      "message": "Specify that this is clockwise. Because that\u0027s not the default way to specify rotations",
+      "range": {
+        "startLine": 450,
+        "startChar": 15,
+        "endLine": 450,
+        "endChar": 33
+      },
+      "revId": "eb1ca576e8da4d0d49cd7e5898dd4e224c455573",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b50bd74_93fa39fd",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-16T22:24:06Z",
+      "side": 1,
+      "message": "Maybe we could use a helper method to avoid repeating these 5 lines over and over?",
+      "range": {
+        "startLine": 454,
+        "startChar": 3,
+        "endLine": 460,
+        "endChar": 0
+      },
+      "revId": "eb1ca576e8da4d0d49cd7e5898dd4e224c455573",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc227e0_c6b33ad1",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-16T22:24:06Z",
+      "side": 1,
+      "message": "Counted from where?",
+      "range": {
+        "startLine": 545,
+        "startChar": 16,
+        "endLine": 545,
+        "endChar": 27
+      },
+      "revId": "eb1ca576e8da4d0d49cd7e5898dd4e224c455573",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
