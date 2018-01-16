@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17f2abe3_43c33da7",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 7311
+      },
+      "writtenOn": "2018-01-16T22:05:21Z",
+      "side": 1,
+      "message": "nit: maybe say \"clipped\" instead of \"trimmed\"?",
+      "range": {
+        "startLine": 440,
+        "startChar": 5,
+        "endLine": 440,
+        "endChar": 12
+      },
+      "revId": "eb1ca576e8da4d0d49cd7e5898dd4e224c455573",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
