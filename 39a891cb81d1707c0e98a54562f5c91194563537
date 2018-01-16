@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9519eeb9_bcd85b13",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-16T19:33:50Z",
+      "side": 1,
+      "message": "nit: comment should now be \n  _FX_OS_LINUX_ or _FX_OS_WASM_",
+      "range": {
+        "startLine": 29,
+        "startChar": 34,
+        "endLine": 29,
+        "endChar": 57
+      },
+      "revId": "39a891cb81d1707c0e98a54562f5c91194563537",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b4b79e_bf6a113a",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-16T19:33:50Z",
+      "side": 1,
+      "message": "nit: not sure it reads any better with the blank lines.",
+      "revId": "39a891cb81d1707c0e98a54562f5c91194563537",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b244ec2d_da71b96e",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-16T19:33:50Z",
+      "side": 1,
+      "message": "nit: let\u0027s move this logic down a bit (say line 72), the block is confusing enough with just setting two values, eg. \n\n#if _FX_OS_ \u003d\u003d _FX_OS_WASM_ \u0026\u0026 defined(PDF_ENABLE_V8) \n...",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "39a891cb81d1707c0e98a54562f5c91194563537",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
