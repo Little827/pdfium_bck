@@ -16,6 +16,24 @@
       "revId": "76be47254b7e57384c38c4f19982f267c3812c4a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a82de1_78a3cf2f",
+        "filename": "fpdfsdk/fpdfview_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-16T18:45:35Z",
+      "side": 1,
+      "message": "Sorry, that was exported by accident. It\u0027s meant only for debugging as you said.",
+      "parentUuid": "25b1dd73_38486c2d",
+      "revId": "76be47254b7e57384c38c4f19982f267c3812c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
