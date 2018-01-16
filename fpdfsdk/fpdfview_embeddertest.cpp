@@ -474,6 +474,7 @@ TEST_F(FPDFViewEmbeddertest, FPDF_RenderPageBitmapWithMatrix) {
   FPDFBitmap_FillRect(bitmap, 0, 0, width, height, 0xFFFFFFFF);
   FPDF_RenderPageBitmapWithMatrix(bitmap, page, &matrix, &rect, 0);
   CompareBitmap(bitmap, width, height, kRotateandStretchMD5);
+  WriteBitmapToPng(bitmap, "rectangles_rotate_then_stretch.png");
   FPDFBitmap_Destroy(bitmap);
 
   UnloadPage(page);
