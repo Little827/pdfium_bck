@@ -260,8 +260,6 @@ void CFX_Matrix::Scale(float sx, float sy, bool bPrepended) {
 
   b *= sy;
   c *= sx;
-  e *= sx;
-  f *= sy;
 }
 
 void CFX_Matrix::Rotate(float fRadian, bool bPrepended) {
