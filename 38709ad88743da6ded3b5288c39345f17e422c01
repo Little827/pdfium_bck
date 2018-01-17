@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa577f81_879b351a",
+        "filename": "core/fxcodec/codec/fx_codec_jpeg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-17T16:53:28Z",
+      "side": 1,
+      "message": "Should this have {} around it?",
+      "revId": "38709ad88743da6ded3b5288c39345f17e422c01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93191e56_2eb6e520",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1873,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-17T16:53:28Z",
+      "side": 1,
+      "message": "What about pulling the setjmp up to this level? Do we really need to set the jump on every iteration of the while() below, or can we do it once and just have it always jump to here and return STATUS_ERROR? Then the StartScanline can go back to just returning a bool and doesn\u0027t need to be optional.",
+      "range": {
+        "startLine": 1873,
+        "startChar": 0,
+        "endLine": 1873,
+        "endChar": 34
+      },
+      "revId": "38709ad88743da6ded3b5288c39345f17e422c01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
