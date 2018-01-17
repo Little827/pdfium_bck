@@ -486,10 +486,7 @@ bool CCodec_JpegModule::StartScanline(Context* pContext, int down_scale) {
 bool CCodec_JpegModule::ReadScanline(Context* pContext,
                                      unsigned char* dest_buf) {
   auto* ctx = static_cast<CJpegContext*>(pContext);
-  if (setjmp(ctx->m_JumpMark) == -1)
-    return false;
-
-  int nlines = jpeg_read_scanlines(&ctx->m_Info, &dest_buf, 1);
+  unsigned int nlines = jpeg_read_scanlines(&ctx->m_Info, &dest_buf, 1);
   return nlines == 1;
 }
 

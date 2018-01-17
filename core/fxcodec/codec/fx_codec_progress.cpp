@@ -2020,6 +2020,11 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::ContinueDecode() {
   switch (m_imagType) {
     case FXCODEC_IMAGE_JPG: {
       CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
+      // Setting jump marker before calling ReadScanLine, since a longjmp to
+      // the marker indicates a fatal error.
+      if (setjmp(*m_pJpegContext->GetJumpMark()) == -1)
+        return FXCODEC_STATUS_ERROR;
+
       while (true) {
         bool readRes =
             pJpegModule->ReadScanline(m_pJpegContext.get(), m_pDecodeBuf);
