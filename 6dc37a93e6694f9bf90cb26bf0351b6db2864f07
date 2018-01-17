@@ -16,6 +16,24 @@
       "revId": "6dc37a93e6694f9bf90cb26bf0351b6db2864f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5554fe35_07ef9bff",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-17T16:40:35Z",
+      "side": 1,
+      "message": "Yes, it\u0027s inheritable.  But it\u0027s also a required field of a page object according to PDF reference 1.7.",
+      "parentUuid": "110abe08_01c6a3a2",
+      "revId": "6dc37a93e6694f9bf90cb26bf0351b6db2864f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
