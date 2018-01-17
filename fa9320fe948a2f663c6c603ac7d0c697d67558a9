@@ -22,6 +22,30 @@
       "revId": "fa9320fe948a2f663c6c603ac7d0c697d67558a9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3685b66_454cb7f7",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-17T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb6e2b07_f4ca2de4",
+      "range": {
+        "startLine": 1111,
+        "startChar": 8,
+        "endLine": 1111,
+        "endChar": 20
+      },
+      "revId": "fa9320fe948a2f663c6c603ac7d0c697d67558a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
