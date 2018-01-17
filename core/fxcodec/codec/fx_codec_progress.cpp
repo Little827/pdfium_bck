@@ -1094,6 +1094,13 @@ bool CCodec_ProgressiveDecoder::DetectImageType(FXCODEC_IMAGE_TYPE imageType,
     }
     case FXCODEC_IMAGE_JPG: {
       CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
+      // Setting jump marker before calling Start or ReadHeader, since a longjmp
+      // to the marker indicates a fatal error in these functions.
+      if (setjmp(*m_pJpegContext->GetJumpMark()) == -1) {
+        m_status = FXCODEC_STATUS_ERROR;
+        return false;
+      }
+
       m_pJpegContext = pJpegModule->Start();
       if (!m_pJpegContext) {
         m_status = FXCODEC_STATUS_ERR_MEMORY;
@@ -1105,10 +1112,6 @@ bool CCodec_ProgressiveDecoder::DetectImageType(FXCODEC_IMAGE_TYPE imageType,
       }
       m_offSet += size;
       pJpegModule->Input(m_pJpegContext.get(), m_pSrcBuf, size);
-      // Setting jump marker before calling ReadHeader, since a longjmp to
-      // the marker indicates a fatal error.
-      if (setjmp(*m_pJpegContext->GetJumpMark()) == -1)
-        return false;
 
       int32_t readResult =
           pJpegModule->ReadHeader(m_pJpegContext.get(), &m_SrcWidth,
@@ -1876,8 +1879,10 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::StartDecode(
       GetDownScale(down_scale);
       // Setting jump marker before calling StartScanLine, since a longjmp to
       // the marker indicates a fatal error.
-      if (setjmp(*m_pJpegContext->GetJumpMark()) == -1)
+      if (setjmp(*m_pJpegContext->GetJumpMark()) == -1) {
+        m_status = FXCODEC_STATUS_ERROR;
         return FXCODEC_STATUS_ERROR;
+      }
 
       CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
       bool startStatus =
@@ -2020,6 +2025,13 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::ContinueDecode() {
   switch (m_imagType) {
     case FXCODEC_IMAGE_JPG: {
       CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
+      // Setting jump marker before calling ReadScanLine, since a longjmp to
+      // the marker indicates a fatal error.
+      if (setjmp(*m_pJpegContext->GetJumpMark()) == -1) {
+        m_status = FXCODEC_STATUS_ERROR;
+        return FXCODEC_STATUS_ERROR;
+      }
+
       while (true) {
         bool readRes =
             pJpegModule->ReadScanline(m_pJpegContext.get(), m_pDecodeBuf);
