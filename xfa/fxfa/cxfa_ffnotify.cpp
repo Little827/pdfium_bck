@@ -117,7 +117,7 @@ CXFA_ContentLayoutItem* CXFA_FFNotify::OnCreateContentLayoutItem(
   ASSERT(eType != XFA_Element::ContentArea && eType != XFA_Element::PageArea);
 
   // We only need to create the widget for certain types of objects.
-  if (!XFA_IsCreateWidget(eType))
+  if (!pNode->HasCreatedUIWidget())
     return new CXFA_ContentLayoutItem(pNode);
 
   CXFA_FFWidget* pWidget;
@@ -343,13 +343,12 @@ void CXFA_FFNotify::OnNodeReady(CXFA_Node* pNode) {
   if (!pDocView)
     return;
 
-  XFA_Element eType = pNode->GetElementType();
-  if (XFA_IsCreateWidget(eType)) {
+  if (pNode->HasCreatedUIWidget()) {
     pNode->CreateWidgetAcc();
     return;
   }
 
-  switch (eType) {
+  switch (pNode->GetElementType()) {
     case XFA_Element::BindItems:
       pDocView->AddBindItem(static_cast<CXFA_BindItems*>(pNode));
       break;
