@@ -52,6 +52,24 @@
       "revId": "6dc37a93e6694f9bf90cb26bf0351b6db2864f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ce2203_08057400",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-17T17:29:55Z",
+      "side": 1,
+      "message": "That\u0027s true.  Thanks for pointing it out.",
+      "parentUuid": "e5bd5e20_1edaf3fa",
+      "revId": "6dc37a93e6694f9bf90cb26bf0351b6db2864f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
