@@ -34,6 +34,24 @@
       "revId": "6dc37a93e6694f9bf90cb26bf0351b6db2864f07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5bd5e20_1edaf3fa",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 6990
+      },
+      "writtenOn": "2018-01-17T17:00:58Z",
+      "side": 1,
+      "message": "Check section 7.7.3.4. Regarding inherited attributes: “If such  an  attribute is omitted from a  page  object, its value  shall be  inherited from  an  ancestor  node  in the page tree. If the  attribute  is  a required one,  a value shall be  supplied  in  an  ancestor  node.“\n\nDoesn’t that mean it could still be on the parent?",
+      "parentUuid": "5554fe35_07ef9bff",
+      "revId": "6dc37a93e6694f9bf90cb26bf0351b6db2864f07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
