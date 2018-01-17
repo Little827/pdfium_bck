@@ -7,10 +7,12 @@
 #ifndef CORE_FXCODEC_CODEC_CCODEC_JPEGMODULE_H_
 #define CORE_FXCODEC_CODEC_CCODEC_JPEGMODULE_H_
 
+#include <csetjmp>
 #include <memory>
 
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/optional.h"
 
 class CCodec_ScanlineDecoder;
 class CFX_DIBSource;
@@ -24,6 +26,7 @@ class CCodec_JpegModule {
   class Context {
    public:
     virtual ~Context() {}
+    virtual jmp_buf* GetJumpMark() = 0;
   };
 
   std::unique_ptr<CCodec_ScanlineDecoder> CreateDecoder(const uint8_t* src_buf,
