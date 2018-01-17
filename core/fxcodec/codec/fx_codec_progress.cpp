@@ -1870,9 +1870,12 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::StartDecode(
       int down_scale = 1;
       GetDownScale(down_scale);
       CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
-      bool bStart =
+      Optional<bool> startStatus =
           pJpegModule->StartScanline(m_pJpegContext.get(), down_scale);
-      while (!bStart) {
+      if (!startStatus)
+        return FXCODEC_STATUS_ERROR;
+
+      while (!startStatus.value()) {
         FXCODEC_STATUS error_status = FXCODEC_STATUS_ERROR;
         if (!JpegReadMoreData(pJpegModule, error_status)) {
           m_pDeviceBitmap = nullptr;
@@ -1880,7 +1883,10 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::StartDecode(
           m_status = error_status;
           return m_status;
         }
-        bStart = pJpegModule->StartScanline(m_pJpegContext.get(), down_scale);
+        startStatus =
+            pJpegModule->StartScanline(m_pJpegContext.get(), down_scale);
+        if (!startStatus)
+          return FXCODEC_STATUS_ERROR;
       }
       int scanline_size = (m_SrcWidth + down_scale - 1) / down_scale;
       scanline_size = (scanline_size * m_SrcComponents + 3) / 4 * 4;

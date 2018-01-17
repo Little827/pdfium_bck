@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/optional.h"
 
 class CCodec_ScanlineDecoder;
 class CFX_DIBSource;
@@ -53,7 +54,7 @@ class CCodec_JpegModule {
                  CFX_DIBAttribute* pAttribute);
 #endif  // PDF_ENABLE_XFA
 
-  bool StartScanline(Context* pContext, int down_scale);
+  Optional<bool> StartScanline(Context* pContext, int down_scale);
   bool ReadScanline(Context* pContext, uint8_t* dest_buf);
   uint32_t GetAvailInput(Context* pContext, uint8_t** avail_buf_ptr);
 

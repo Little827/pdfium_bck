@@ -475,12 +475,16 @@ int CCodec_JpegModule::ReadHeader(Context* pContext,
   return 0;
 }
 
-bool CCodec_JpegModule::StartScanline(Context* pContext, int down_scale) {
+Optional<bool> CCodec_JpegModule::StartScanline(Context* pContext,
+                                                int down_scale) {
+  if (down_scale < 0)
+    return {};
+
   auto* ctx = static_cast<CJpegContext*>(pContext);
   if (setjmp(ctx->m_JumpMark) == -1)
-    return false;
+    return {};
 
-  ctx->m_Info.scale_denom = down_scale;
+  ctx->m_Info.scale_denom = static_cast<unsigned int>(down_scale);
   return !!jpeg_start_decompress(&ctx->m_Info);
 }
 
