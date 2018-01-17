@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1f7f8e5f_5bfb3b0b",
+        "filename": "core/fxcodec/codec/fx_codec_jpeg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-17T17:24:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa577f81_879b351a",
+      "revId": "38709ad88743da6ded3b5288c39345f17e422c01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93191e56_2eb6e520",
         "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "38709ad88743da6ded3b5288c39345f17e422c01",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34930745_1780cb13",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1873,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-17T17:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93191e56_2eb6e520",
+      "range": {
+        "startLine": 1873,
+        "startChar": 0,
+        "endLine": 1873,
+        "endChar": 34
+      },
+      "revId": "38709ad88743da6ded3b5288c39345f17e422c01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
