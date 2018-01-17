@@ -222,7 +222,7 @@ CFX_Matrix CFWL_Widget::GetMatrix() {
       ctmOnParent.SetIdentity();
     rect = parent->GetWidgetRect();
     matrix.Concat(ctmOnParent, true);
-    matrix.Translate(rect.left, rect.top, true);
+    matrix.PrependTranslate(rect.left, rect.top);
   }
   CFX_Matrix m;
   m.SetIdentity();

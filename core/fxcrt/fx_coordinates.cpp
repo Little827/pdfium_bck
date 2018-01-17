@@ -227,8 +227,8 @@ void CFX_Matrix::Concat(const CFX_Matrix& m, bool bPrepended) {
   ConcatInternal(m, bPrepended);
 }
 
-void CFX_Matrix::ConcatInverse(const CFX_Matrix& src, bool bPrepended) {
-  Concat(src.GetInverse(), bPrepended);
+void CFX_Matrix::ConcatInverse(const CFX_Matrix& src) {
+  Concat(src.GetInverse(), false);
 }
 
 bool CFX_Matrix::Is90Rotated() const {
@@ -239,47 +239,41 @@ bool CFX_Matrix::IsScaled() const {
   return fabs(b * 1000) < fabs(a) && fabs(c * 1000) < fabs(d);
 }
 
-void CFX_Matrix::Translate(float x, float y, bool bPrepended) {
-  if (bPrepended) {
-    e += x * a + y * c;
-    f += y * d + x * b;
-    return;
-  }
+void CFX_Matrix::PrependTranslate(float x, float y) {
+  e += x * a + y * c;
+  f += y * d + x * b;
+}
+
+void CFX_Matrix::Translate(float x, float y) {
   e += x;
   f += y;
 }
 
-void CFX_Matrix::Scale(float sx, float sy, bool bPrepended) {
+void CFX_Matrix::Scale(float sx, float sy) {
   a *= sx;
   d *= sy;
-  if (bPrepended) {
-    b *= sx;
-    c *= sy;
-    return;
-  }
-
   b *= sy;
   c *= sx;
   e *= sx;
   f *= sy;
 }
 
-void CFX_Matrix::Rotate(float fRadian, bool bPrepended) {
+void CFX_Matrix::Rotate(float fRadian) {
   float cosValue = cos(fRadian);
   float sinValue = sin(fRadian);
   ConcatInternal(CFX_Matrix(cosValue, sinValue, -sinValue, cosValue, 0, 0),
-                 bPrepended);
+                 false);
 }
 
-void CFX_Matrix::RotateAt(float fRadian, float dx, float dy, bool bPrepended) {
-  Translate(dx, dy, bPrepended);
-  Rotate(fRadian, bPrepended);
-  Translate(-dx, -dy, bPrepended);
+void CFX_Matrix::RotateAt(float fRadian, float dx, float dy) {
+  Translate(dx, dy);
+  Rotate(fRadian);
+  Translate(-dx, -dy);
 }
 
-void CFX_Matrix::Shear(float fAlphaRadian, float fBetaRadian, bool bPrepended) {
+void CFX_Matrix::Shear(float fAlphaRadian, float fBetaRadian) {
   ConcatInternal(CFX_Matrix(1, tan(fAlphaRadian), tan(fBetaRadian), 1, 0, 0),
-                 bPrepended);
+                 false);
 }
 
 void CFX_Matrix::MatchRect(const CFX_FloatRect& dest,

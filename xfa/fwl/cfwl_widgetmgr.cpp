@@ -487,7 +487,7 @@ void CFWL_WidgetMgr::DrawChild(CFWL_Widget* parent,
       pGraphics->SaveGraphState();
       pGraphics->SetClipRect(clipBounds);
     }
-    widgetMatrix.Translate(rtWidget.left, rtWidget.top, true);
+    widgetMatrix.PrependTranslate(rtWidget.left, rtWidget.top);
 
     if (IFWL_WidgetDelegate* pDelegate = child->GetDelegate()) {
       if (IsFormDisabled() || IsNeedRepaint(child, &widgetMatrix, rtClip))
