@@ -8,7 +8,7 @@
 
 CFXJSE_ScopeUtil_IsolateHandle::CFXJSE_ScopeUtil_IsolateHandle(
     v8::Isolate* pIsolate)
-    : m_isolate(pIsolate), m_iscope(pIsolate), m_hscope(pIsolate) {}
+    : m_iscope(pIsolate), m_hscope(pIsolate) {}
 
 CFXJSE_ScopeUtil_IsolateHandle::~CFXJSE_ScopeUtil_IsolateHandle() = default;
 
