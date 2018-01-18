@@ -250,8 +250,11 @@ bool CFXJSE_Value::SetFunctionBind(CFXJSE_Value* lpOldFunction,
       v8::String::NewFromUtf8(m_pIsolate,
                               "(function (oldfunction, newthis) { return "
                               "oldfunction.bind(newthis); })");
+  v8::Local<v8::Script> hScript =
+      v8::Script::Compile(scope.GetRootContext(), hBinderFuncSource)
+          .ToLocalChecked();
   v8::Local<v8::Function> hBinderFunc =
-      v8::Script::Compile(hBinderFuncSource)->Run().As<v8::Function>();
+      hScript->Run(scope.GetRootContext()).ToLocalChecked().As<v8::Function>();
   v8::Local<v8::Value> hBoundFunction =
       hBinderFunc->Call(m_pIsolate->GetCurrentContext()->Global(), 2, rgArgs);
   if (hBoundFunction.IsEmpty() || !hBoundFunction->IsFunction())
