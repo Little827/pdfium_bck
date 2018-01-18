@@ -22,6 +22,29 @@
       "revId": "acc03908765411379ffd14d3db7224567312b941",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b2b126e_16a10a68",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-18T00:43:07Z",
+      "side": 1,
+      "message": "Oh, to have these as immutable types and just write a \u003d a.concat(b) or a \u003d b.concat(a) and lose the notion of prependability entirely (or a \u003d a * b vs. a \u003d b * a given overloads).  Thought we had a feature bug for this but didn\u0027t see it.",
+      "range": {
+        "startLine": 622,
+        "startChar": 7,
+        "endLine": 622,
+        "endChar": 60
+      },
+      "revId": "acc03908765411379ffd14d3db7224567312b941",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
