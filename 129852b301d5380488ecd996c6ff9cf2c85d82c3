@@ -71,6 +71,24 @@
       "revId": "129852b301d5380488ecd996c6ff9cf2c85d82c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57009f18_b0b547eb",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-18T21:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1183745_3118013f",
+      "revId": "129852b301d5380488ecd996c6ff9cf2c85d82c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
