@@ -37,9 +37,12 @@ class CFXJSE_ScopeUtil_IsolateHandleRootContext {
  public:
   explicit CFXJSE_ScopeUtil_IsolateHandleRootContext(v8::Isolate* pIsolate)
       : m_parent(pIsolate),
-        m_cscope(v8::Local<v8::Context>::New(
+        m_context(v8::Local<v8::Context>::New(
             pIsolate,
-            CFXJSE_RuntimeData::Get(pIsolate)->m_hRootContext)) {}
+            CFXJSE_RuntimeData::Get(pIsolate)->m_hRootContext)),
+        m_cscope(m_context) {}
+
+  v8::Local<v8::Context> GetRootContext() { return m_context; }
 
  private:
   CFXJSE_ScopeUtil_IsolateHandleRootContext(
@@ -49,6 +52,7 @@ class CFXJSE_ScopeUtil_IsolateHandleRootContext {
   void operator delete(void*, size_t) = delete;
 
   CFXJSE_ScopeUtil_IsolateHandle m_parent;
+  v8::Local<v8::Context> m_context;
   v8::Context::Scope m_cscope;
 };
 

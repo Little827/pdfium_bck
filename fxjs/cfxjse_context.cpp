@@ -232,9 +232,12 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
   v8::Local<v8::String> hScriptString =
       v8::String::NewFromUtf8(m_pIsolate, szScript);
   if (!lpNewThisObject) {
-    v8::Local<v8::Script> hScript = v8::Script::Compile(hScriptString);
+    v8::Local<v8::Script> hScript =
+        v8::Script::Compile(scope.GetLocalContext(), hScriptString)
+            .ToLocalChecked();
     if (!trycatch.HasCaught()) {
-      v8::Local<v8::Value> hValue = hScript->Run();
+      v8::Local<v8::Value> hValue =
+          hScript->Run(scope.GetLocalContext()).ToLocalChecked();
       if (!trycatch.HasCaught()) {
         if (lpRetValue)
           lpRetValue->m_hValue.Reset(m_pIsolate, hValue);
@@ -251,9 +254,14 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
   v8::Local<v8::Value> hNewThis =
       v8::Local<v8::Value>::New(m_pIsolate, lpNewThisObject->m_hValue);
   ASSERT(!hNewThis.IsEmpty());
-  v8::Local<v8::Script> hWrapper = v8::Script::Compile(v8::String::NewFromUtf8(
-      m_pIsolate, "(function () { return eval(arguments[0]); })"));
-  v8::Local<v8::Value> hWrapperValue = hWrapper->Run();
+  v8::Local<v8::Script> hWrapper =
+      v8::Script::Compile(
+          scope.GetLocalContext(),
+          v8::String::NewFromUtf8(
+              m_pIsolate, "(function () { return eval(arguments[0]); })"))
+          .ToLocalChecked();
+  v8::Local<v8::Value> hWrapperValue =
+      hWrapper->Run(scope.GetLocalContext()).ToLocalChecked();
   ASSERT(hWrapperValue->IsFunction());
   v8::Local<v8::Function> hWrapperFn = hWrapperValue.As<v8::Function>();
   if (!trycatch.HasCaught()) {
