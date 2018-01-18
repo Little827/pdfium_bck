@@ -7,20 +7,14 @@
 #ifndef FXJS_CFXJSE_ISOLATETRACKER_H_
 #define FXJS_CFXJSE_ISOLATETRACKER_H_
 
-#include <map>
-#include <memory>
-#include <vector>
-
+#include "fxjs/cfxjse_runtimedata.h"
 #include "v8/include/v8.h"
 
-#include "fxjs/cfxjse_runtimedata.h"
 
 class CFXJSE_ScopeUtil_IsolateHandle {
  public:
   explicit CFXJSE_ScopeUtil_IsolateHandle(v8::Isolate* pIsolate);
   ~CFXJSE_ScopeUtil_IsolateHandle();
-
-  v8::Isolate* GetIsolate() const { return m_isolate; }
 
  private:
   CFXJSE_ScopeUtil_IsolateHandle(const CFXJSE_ScopeUtil_IsolateHandle&) =
@@ -29,12 +23,12 @@ class CFXJSE_ScopeUtil_IsolateHandle {
   void* operator new(size_t size) = delete;
   void operator delete(void*, size_t) = delete;
 
-  v8::Isolate* m_isolate;
   v8::Isolate::Scope m_iscope;
   v8::HandleScope m_hscope;
 };
 
-class CFXJSE_ScopeUtil_IsolateHandleRootContext {
+class CFXJSE_ScopeUtil_IsolateHandleRootContext
+    : public CFXJSE_ScopeUtil_IsolateHandle {
  public:
   explicit CFXJSE_ScopeUtil_IsolateHandleRootContext(v8::Isolate* pIsolate);
   ~CFXJSE_ScopeUtil_IsolateHandleRootContext();
@@ -48,7 +42,6 @@ class CFXJSE_ScopeUtil_IsolateHandleRootContext {
   void* operator new(size_t size) = delete;
   void operator delete(void*, size_t) = delete;
 
-  CFXJSE_ScopeUtil_IsolateHandle m_parent;
   v8::Local<v8::Context> m_context;
   v8::Context::Scope m_cscope;
 };
