@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "643d7e34_bfe00e88",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-18T07:05:51Z",
+      "side": 1,
+      "message": "Given the range here, and |m_nWidth| has to be positive. It\u0027s not possible for |iChecked| to underflow. So |iChecked| will either be valid, or it would overflow. If it did overflow, then \"m_nWidth \u003e pDst-\u003em_nWidth - x\" becomes \"m_nWidth \u003e VALUE_LARGER_THAN_MAXINT\" and that cannot eval to true.",
+      "revId": "0aa8e04456702b7dd6314105e3eab6e0aba006d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
