@@ -21,6 +21,8 @@ CFWL_EditTP::CFWL_EditTP() {}
 CFWL_EditTP::~CFWL_EditTP() {}
 
 void CFWL_EditTP::DrawBackground(CFWL_ThemeBackground* pParams) {
+  ASSERT(pWidget->GetNode()->IsWidgetReady());
+
   if (CFWL_Part::CombTextLine == pParams->m_iPart) {
     CXFA_FFWidget* pWidget = XFA_ThemeGetOuterWidget(pParams->m_pWidget);
     CXFA_Border* borderUI = pWidget->GetNode()->GetWidgetAcc()->GetUIBorder();
