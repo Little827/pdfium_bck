@@ -8,13 +8,13 @@
 
 CFXJSE_ScopeUtil_IsolateHandle::CFXJSE_ScopeUtil_IsolateHandle(
     v8::Isolate* pIsolate)
-    : m_isolate(pIsolate), m_iscope(pIsolate), m_hscope(pIsolate) {}
+    : m_iscope(pIsolate), m_hscope(pIsolate) {}
 
 CFXJSE_ScopeUtil_IsolateHandle::~CFXJSE_ScopeUtil_IsolateHandle() = default;
 
 CFXJSE_ScopeUtil_IsolateHandleRootContext::
     CFXJSE_ScopeUtil_IsolateHandleRootContext(v8::Isolate* pIsolate)
-    : m_parent(pIsolate),
+    : CFXJSE_ScopeUtil_IsolateHandle(pIsolate),
       m_context(v8::Local<v8::Context>::New(
           pIsolate,
           CFXJSE_RuntimeData::Get(pIsolate)->m_hRootContext)),
