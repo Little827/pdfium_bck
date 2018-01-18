@@ -16,6 +16,24 @@
       "revId": "0aa8e04456702b7dd6314105e3eab6e0aba006d7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7de63c5_59aebf24",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-18T17:41:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "643d7e34_bfe00e88",
+      "revId": "0aa8e04456702b7dd6314105e3eab6e0aba006d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
