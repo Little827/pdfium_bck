@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b5bd3ab_ffe30e98",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-18T22:00:43Z",
+      "side": 1,
+      "message": "This just returns false if WidgetAcc is nullptr.",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 39
+      },
+      "revId": "34e8b69589bf49c655fb47fb46e9fb8a3691bff5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba50a01_d1e33220",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-18T22:00:43Z",
+      "side": 1,
+      "message": "This returns _NotExist if pAcc is nullptr.",
+      "range": {
+        "startLine": 280,
+        "startChar": 30,
+        "endLine": 280,
+        "endChar": 42
+      },
+      "revId": "34e8b69589bf49c655fb47fb46e9fb8a3691bff5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
