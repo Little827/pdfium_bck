@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b47d697b_bd8120b1",
+        "filename": "xfa/fxfa/parser/cxfa_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-19T15:32:24Z",
+      "side": 1,
+      "message": "Can you document here what ready means in this context. Feel free to use the description from the CL.",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "1419f07a9de059abe7f25ac388f9e8f45e50a95c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
