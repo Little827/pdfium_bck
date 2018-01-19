@@ -272,9 +272,9 @@ void CFX_Matrix::Rotate(float fRadian, bool bPrepended) {
 }
 
 void CFX_Matrix::RotateAt(float fRadian, float dx, float dy, bool bPrepended) {
-  Translate(dx, dy, bPrepended);
-  Rotate(fRadian, bPrepended);
   Translate(-dx, -dy, bPrepended);
+  Rotate(fRadian, bPrepended);
+  Translate(dx, dy, bPrepended);
 }
 
 void CFX_Matrix::Shear(float fAlphaRadian, float fBetaRadian, bool bPrepended) {
