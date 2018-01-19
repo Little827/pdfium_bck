@@ -22,6 +22,30 @@
       "revId": "3aebaa6ad5149773831201951b0fc5c46a8b24f5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fffbf61d_e5b9f27a",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-19T19:24:56Z",
+      "side": 1,
+      "message": "Done. Added tests for 90 degree. I really want to keep the 60 degree case.",
+      "parentUuid": "4f179e2f_363ff340",
+      "range": {
+        "startLine": 313,
+        "startChar": 4,
+        "endLine": 313,
+        "endChar": 23
+      },
+      "revId": "3aebaa6ad5149773831201951b0fc5c46a8b24f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
