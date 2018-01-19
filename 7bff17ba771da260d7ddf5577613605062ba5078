@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b15fba56_9c330cd0",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-19T20:40:11Z",
+      "side": 1,
+      "message": "nit: repeat these two blocks for b..f just because.",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 30
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "251d8664_bda89302",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-19T20:40:11Z",
+      "side": 1,
+      "message": "nit: TODO(hnakashima):",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 9
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
