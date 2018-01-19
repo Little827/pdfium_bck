@@ -45,6 +45,52 @@
       "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3b75d9_1c59722d",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-19T21:35:55Z",
+      "side": 1,
+      "message": "These can be EXPECT_FLOAT_EQ, right? In general the translates / scales by themselves shouldn\u0027t be a problem.",
+      "range": {
+        "startLine": 328,
+        "startChar": 2,
+        "endLine": 328,
+        "endChar": 25
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d7002d_6115a6e1",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-19T21:35:55Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment",
+      "range": {
+        "startLine": 406,
+        "startChar": 51,
+        "endLine": 406,
+        "endChar": 77
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
