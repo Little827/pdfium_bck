@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2adcbfe5_522cff13",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-19T21:53:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b15fba56_9c330cd0",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 30
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "251d8664_bda89302",
         "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-19T20:40:11Z",
       "side": 1,
       "message": "nit: TODO(hnakashima):",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 9
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03b905d8_f3fda3e0",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-19T21:53:52Z",
+      "side": 1,
+      "message": "This comes from https://pdfium-review.googlesource.com/c/pdfium/+/4492, and I don\u0027t really know what this means. I\u0027ll have to ask Dan.",
+      "parentUuid": "251d8664_bda89302",
       "range": {
         "startLine": 268,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "674119b2_eb35b240",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-19T21:53:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3b75d9_1c59722d",
+      "range": {
+        "startLine": 328,
+        "startChar": 2,
+        "endLine": 328,
+        "endChar": 25
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2d7002d_6115a6e1",
         "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-01-19T21:35:55Z",
       "side": 1,
       "message": "I don\u0027t understand this comment",
+      "range": {
+        "startLine": 406,
+        "startChar": 51,
+        "endLine": 406,
+        "endChar": 77
+      },
+      "revId": "7bff17ba771da260d7ddf5577613605062ba5078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85800351_8258ada6",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-19T21:53:52Z",
+      "side": 1,
+      "message": "Hope it\u0027s more clear now.",
+      "parentUuid": "e2d7002d_6115a6e1",
       "range": {
         "startLine": 406,
         "startChar": 51,
