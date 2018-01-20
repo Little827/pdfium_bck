@@ -381,6 +381,30 @@
     },
     {
       "key": {
+        "uuid": "9a7a70e0_ccf01406",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-20T01:34:32Z",
+      "side": 1,
+      "message": "I like Henrique\u0027s idea of letting the caller specify the (numPagesOnXAxis x numPagesOnYAxis) layout. PDFium, as a standalone library, should not be locked into product design decisions from Chromium.\n\nGiven the choices, the code already has to handle many possibilities. Extending it to handle more arbitrary layouts is not going to take that more effort. Plus, this method can go away.",
+      "parentUuid": "f40ad2d2_8a09c933",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "9072173e35df2a62c0722f1d10ee73d24cbcbc67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32457bb2_3101d09a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 16
