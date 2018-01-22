@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f1788e2_afc5912a",
+        "filename": "testing/resources/hello_world_multi_pages.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-22T20:43:31Z",
+      "side": 1,
+      "message": "Using coloured boxes, if possible, is better then text. With text we have issues with different baselines on different platforms that have to be rebased when freetype gets rolled.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "34b843e2698acf90342b3c77ef8e3e6d8552dd98",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
