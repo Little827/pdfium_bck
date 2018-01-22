@@ -11,18 +11,225 @@
 #include <utility>
 #include <vector>
 
+#include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
+#include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
+#include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
+#include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/fsdk_define.h"
 #include "third_party/base/ptr_util.h"
+#include "third_party/base/stl_util.h"
 
 namespace {
+
+enum class Axis {
+  X,
+  Y,
+};
+enum Position {
+  CENTER = 0,
+  LEFT = -1,
+  RIGHT = 1,
+  TOP = 1,
+  BOTTOM = -1,
+};
+
+struct NupPageSettings {
+  CFX_PointF point;
+  float scale;
+  CFX_RectF subPageRect;
+};
+
+/*
+ * Calculates the N-up parameters.
+ */
+class NupState {
+ public:
+  explicit NupState(size_t numPagesPerSheet, bool isSourceDocLandscape);
+  static bool IsPossible(size_t numPagesPerSheet);
+  void PresetParameters(size_t numPagesPerSheet);
+  void SetWidth(size_t width) { m_newPageWidth = width; }
+  void SetHeight(size_t height) { m_newPageHeight = height; }
+  bool IsLandscape() const { return m_isPageLandscape; }
+
+  // returns true, if a new output page needs to be created.
+  bool CreateNewPage(float in_width, float in_height, NupPageSettings& ret);
+
+ private:
+  size_t m_numPagesOnXAxis;
+  size_t m_numPagesOnYAxis;
+  float m_newPageWidth;
+  float m_newPageHeight;
+  bool m_isPageLandscape;
+  bool m_isSourceDocLandscape;
+  Axis m_first;
+  Position m_xStart;
+  Position m_yStart;
+  Position m_xAlign;
+  Position m_yAlign;
+
+  size_t m_inPages;
+  size_t m_outPages;
+  size_t m_numPagesPerSheet;
+  size_t m_subPage;
+  std::pair<size_t, size_t> ConvertPageOrder(size_t subPage) const;
+  void CalculatePageEdit(size_t subx, size_t suby, NupPageSettings& ret) const;
+  float CalculateCenterShift(Position pos, float size) const;
+};
+
+NupState::NupState(size_t numPagesPerSheet, bool isSourceDocLandscape)
+    : m_newPageWidth(NAN),
+      m_newPageHeight(NAN),
+      m_isPageLandscape(false),
+      m_isSourceDocLandscape(isSourceDocLandscape),
+      m_first(Axis::X),
+      m_xStart(LEFT),
+      m_yStart(TOP),
+      m_xAlign(CENTER),
+      m_yAlign(CENTER),
+      m_inPages(0),
+      m_outPages(0),
+      m_numPagesPerSheet(numPagesPerSheet),
+      m_subPage(numPagesPerSheet) {
+  PresetParameters(numPagesPerSheet);
+  ASSERT((m_numPagesOnXAxis > 0) && (m_numPagesOnYAxis > 0));
+}
+
+bool NupState::IsPossible(size_t numPagesPerSheet) {
+  // Supports 1 2 4 6 9 16
+
+  return numPagesPerSheet == 1 || numPagesPerSheet == 2 ||
+         numPagesPerSheet == 4 || numPagesPerSheet == 6 ||
+         numPagesPerSheet == 9 || numPagesPerSheet == 16;
+}
+
+/**
+ * Source document can have portrait or landscape layout.
+ * TODO(xlou): re-consider supported num_pages_per_sheet.
+ */
+void NupState::PresetParameters(size_t numPagesPerSheet) {
+  switch (numPagesPerSheet) {
+    case 1:
+      m_numPagesOnXAxis = 1;
+      m_numPagesOnYAxis = 1;
+      break;
+    case 2:
+      if (!m_isSourceDocLandscape) {
+        m_numPagesOnXAxis = 2;
+        m_numPagesOnYAxis = 1;
+        m_isPageLandscape = true;
+      } else {
+        m_numPagesOnXAxis = 1;
+        m_numPagesOnYAxis = 2;
+      }
+      break;
+    case 6:
+      if (!m_isSourceDocLandscape) {
+        m_numPagesOnXAxis = 3;
+        m_numPagesOnYAxis = 2;
+        m_isPageLandscape = true;
+      } else {
+        m_numPagesOnXAxis = 2;
+        m_numPagesOnYAxis = 3;
+      }
+      break;
+    case 4:
+    case 9:
+    case 16:
+      m_numPagesOnXAxis = sqrt(numPagesPerSheet);
+      m_numPagesOnYAxis = sqrt(numPagesPerSheet);
+      if (m_isSourceDocLandscape)
+        m_isPageLandscape = true;
+      break;
+    default:
+      m_numPagesOnXAxis = 1;
+      m_numPagesOnYAxis = 1;
+      break;
+  }
+}
+
+std::pair<size_t, size_t> NupState::ConvertPageOrder(size_t subPage) const {
+  size_t subX, subY;
+  if (m_first == Axis::X) {
+    subX = subPage % m_numPagesOnXAxis;
+    subY = subPage / m_numPagesOnXAxis;
+  } else {
+    subX = subPage / m_numPagesOnYAxis;
+    subY = subPage % m_numPagesOnYAxis;
+  }
+
+  subX = (m_numPagesOnXAxis - 1) * (m_xStart + 1) / 2 - m_xStart * subX;
+  subY = (m_numPagesOnYAxis - 1) * (m_yStart + 1) / 2 - m_yStart * subY;
+
+  return std::make_pair(subX, subY);
+}
+
+float NupState::CalculateCenterShift(Position pos, float size) const {
+  switch (pos) {
+    case LEFT:
+      return 0;
+    case CENTER:
+      return size / 2;
+    case RIGHT:
+      return size;
+    default:
+      return size * (pos + 1) / 2;
+  }
+}
+
+void NupState::CalculatePageEdit(size_t subXPos,
+                                 size_t subYPos,
+                                 NupPageSettings& pageEdit) const {
+  const float subPageWidth = m_newPageWidth / m_numPagesOnXAxis,
+              subPageHeight = m_newPageHeight / m_numPagesOnYAxis;
+
+  pageEdit.point.x = subXPos * subPageWidth;
+  pageEdit.point.y = subYPos * subPageHeight;
+
+  const float xScale = subPageWidth / pageEdit.subPageRect.width,
+              yScale = subPageHeight / pageEdit.subPageRect.height;
+
+  float subWidth = pageEdit.subPageRect.width * yScale,
+        subHeight = pageEdit.subPageRect.height * xScale;
+
+  if (xScale > yScale) {
+    pageEdit.scale = yScale;
+    subHeight = subPageHeight;
+    pageEdit.point.x += CalculateCenterShift(m_xAlign, subPageWidth - subWidth);
+  } else {
+    pageEdit.scale = xScale;
+    subWidth = subPageWidth;
+    pageEdit.point.y +=
+        CalculateCenterShift(m_yAlign, subPageHeight - subHeight);
+  }
+}
+
+bool NupState::CreateNewPage(float inWidth,
+                             float inHeight,
+                             NupPageSettings& pageEdit) {
+  ++m_inPages;
+  ++m_subPage;
+  if (m_subPage >= m_numPagesPerSheet) {
+    m_subPage = 0;
+    ++m_outPages;
+  }
+  pageEdit.subPageRect.width = inWidth;
+  pageEdit.subPageRect.height = inHeight;
+
+  size_t subX;
+  size_t subY;
+  std::tie(subX, subY) = ConvertPageOrder(m_subPage);
+  CalculatePageEdit(subX, subY, pageEdit);
+  return m_subPage == 0;
+}
 
 CPDF_Object* PageDictGetInheritableTag(CPDF_Dictionary* pDict,
                                        const ByteString& bsSrcTag) {
@@ -55,6 +262,31 @@ CPDF_Object* PageDictGetInheritableTag(CPDF_Dictionary* pDict,
   return nullptr;
 }
 
+CFX_FloatRect GetMediaBox(CPDF_Dictionary* pPageDict) {
+  CFX_FloatRect rect;
+  CPDF_Object* pMediaBox = PageDictGetInheritableTag(pPageDict, "MediaBox");
+  CPDF_Array* pArray = ToArray(pMediaBox->GetDirect());
+  if (pArray)
+    rect = pArray->GetRect();
+  return rect;
+}
+
+CFX_FloatRect GetCropBox(CPDF_Dictionary* pPageDict) {
+  if (pPageDict->KeyExist("CropBox"))
+    return pPageDict->GetRectFor("CropBox");
+  return GetMediaBox(pPageDict);
+}
+
+CFX_FloatRect GetTrimBox(CPDF_Dictionary* pPageDict) {
+  if (pPageDict->KeyExist("TrimBox"))
+    return pPageDict->GetRectFor("TrimBox");
+  return GetCropBox(pPageDict);
+}
+
+CPDF_Object* GetPageContent(CPDF_Dictionary* pPageDict) {
+  return pPageDict ? pPageDict->GetDirectObjectFor("Contents") : nullptr;
+}
+
 bool CopyInheritable(CPDF_Dictionary* pCurPageDict,
                      CPDF_Dictionary* pSrcPageDict,
                      const ByteString& key) {
@@ -71,7 +303,7 @@ bool CopyInheritable(CPDF_Dictionary* pCurPageDict,
 
 bool ParserPageRangeString(ByteString rangstring,
                            std::vector<uint16_t>* pageArray,
-                           int nCount) {
+                           uint16_t nCount) {
   if (rangstring.IsEmpty())
     return true;
 
@@ -124,6 +356,20 @@ bool ParserPageRangeString(ByteString rangstring,
   return true;
 }
 
+bool GetPageNumbers(ByteString pageRange,
+                    std::vector<uint16_t>* pageArray,
+                    uint16_t nCount) {
+  if (!pageRange.IsEmpty()) {
+    if (!ParserPageRangeString(pageRange, pageArray, nCount))
+      return false;
+  } else {
+    for (uint16_t i = 1; i <= nCount; ++i) {
+      pageArray->push_back(i);
+    }
+  }
+  return true;
+}
+
 }  // namespace
 
 class CPDF_PageOrganizer {
@@ -133,6 +379,21 @@ class CPDF_PageOrganizer {
 
   bool PDFDocInit();
   bool ExportPage(const std::vector<uint16_t>& pageNums, int nIndex);
+  bool ExportNPagesToOne(const std::vector<uint16_t>& pageNums,
+                         size_t nIndex,
+                         size_t numPagesPerSheet);
+  void AddSubPage(CPDF_Dictionary* pPageDict,
+                  CFX_PointF position,
+                  float scale,
+                  bool m_isPageLandscape,
+                  ByteString* content,
+                  const CFX_FloatRect* clipRect);
+  CPDF_Object* MakeXObject(CPDF_Dictionary* pSrcPageDict,
+                           CPDF_Document* pDestDoc);
+  void FinishPage(CPDF_Dictionary* pCurPageDict, const ByteString& content);
+  bool IsSourceDocLandscape();
+  void GetMaxPageSize(const std::vector<uint16_t>& pageNums);
+  void SetMediaBox(CPDF_Dictionary* pDectPageDict, bool landscape);
 
  private:
   using ObjectNumberMap = std::map<uint32_t, uint32_t>;
@@ -142,6 +403,10 @@ class CPDF_PageOrganizer {
 
   UnownedPtr<CPDF_Document> m_pDestPDFDoc;
   UnownedPtr<CPDF_Document> m_pSrcPDFDoc;
+  uint32_t m_xobjectNum = 0;
+  CFX_SizeF m_pageSize;
+  // Key is XObject name
+  std::map<ByteString, UnownedPtr<CPDF_Object>> m_xobjs;
 };
 
 CPDF_PageOrganizer::CPDF_PageOrganizer(CPDF_Document* pDestPDFDoc,
@@ -161,6 +426,20 @@ bool CPDF_PageOrganizer::PDFDocInit() {
   CPDF_Dictionary* pDocInfoDict = m_pDestPDFDoc->GetInfo();
   if (!pDocInfoDict)
     return false;
+
+  CPDF_Dictionary* pSrcDict = m_pSrcPDFDoc->GetPage(0);
+  if (!pSrcDict)
+    return false;
+
+  // TODO(xlou): calculate the maximum page size.
+  CPDF_Page page(m_pSrcPDFDoc.Get(), pSrcDict, true);
+  if (page.GetPageWidth() > page.GetPageHeight()) {
+    m_pageSize.width = page.GetPageHeight();
+    m_pageSize.height = page.GetPageWidth();
+  } else {
+    m_pageSize.width = page.GetPageWidth();
+    m_pageSize.height = page.GetPageHeight();
+  }
 
   pDocInfoDict->SetNewFor<CPDF_String>("Producer", "PDFium", false);
 
@@ -189,6 +468,118 @@ bool CPDF_PageOrganizer::PDFDocInit() {
   }
 
   return true;
+}
+
+void CPDF_PageOrganizer::AddSubPage(CPDF_Dictionary* pPageDict,
+                                    CFX_PointF position,
+                                    float scale,
+                                    bool isPageLandscape,
+                                    ByteString* content,
+                                    const CFX_FloatRect* clipRect) {
+  ++m_xobjectNum;
+  ByteString xobjectName = ByteString::Format("X%d", m_xobjectNum);
+
+  CFX_Matrix matrix;
+  matrix.Scale(scale, scale);
+  matrix.Translate(position.x, position.y);
+  // if (isPageLandscape) {
+  //   matrix.Rotate(FX_PI / 2);
+  //   matrix.Translate(m_pageSize.width, 0.0);
+  // }
+
+  m_xobjs[xobjectName] = MakeXObject(pPageDict, m_pDestPDFDoc.Get());
+  *content += ByteString::Format("q\n");
+  *content += ByteString::Format("%f %f %f %f %f %f cm\n", matrix.a, matrix.b,
+                                 matrix.c, matrix.d, matrix.e, matrix.f);
+  *content += ByteString::Format("/%s Do Q\n", xobjectName.c_str());
+}
+
+CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
+                                             CPDF_Document* pDestDoc) {
+  auto pObjNumberMap = pdfium::MakeUnique<ObjectNumberMap>();
+  if (!pSrcPageDict)
+    return nullptr;
+
+  CPDF_Object* pSrcContentObj = GetPageContent(pSrcPageDict);
+  CPDF_Stream* pNewXObject = pDestDoc->NewIndirect<CPDF_Stream>(
+      nullptr, 0,
+      pdfium::MakeUnique<CPDF_Dictionary>(pDestDoc->GetByteStringPool()));
+  CPDF_Dictionary* pNewXObjectDict = pNewXObject->GetDict();
+  const ByteString resourceString = "Resources";
+  if (!CopyInheritable(pNewXObjectDict, pSrcPageDict, resourceString)) {
+    // Use a default empty resources if it does not exist.
+    pNewXObjectDict->SetNewFor<CPDF_Dictionary>(resourceString);
+  }
+  uint32_t dwSrcPageResourcesObj =
+      pSrcPageDict->GetDictFor(resourceString)->GetObjNum();
+  uint32_t dwNewXobjectResourcesObj =
+      pNewXObjectDict->GetDictFor(resourceString)->GetObjNum();
+  (*pObjNumberMap)[dwSrcPageResourcesObj] = dwNewXobjectResourcesObj;
+  CPDF_Dictionary* pNewXORes = pNewXObjectDict->GetDictFor(resourceString);
+  UpdateReference(pNewXORes, pObjNumberMap.get());
+  pNewXObjectDict->SetNewFor<CPDF_Name>("Type", "XObject");
+  pNewXObjectDict->SetNewFor<CPDF_Name>("Subtype", "Form");
+  pNewXObjectDict->SetNewFor<CPDF_Number>("FormType", 1);
+  CFX_FloatRect rcBBox = GetTrimBox(pSrcPageDict);
+  pNewXObjectDict->SetRectFor("BBox", rcBBox);
+  // TODO(xlou): add matrix field.
+  CPDF_Stream* pStream;
+  std::ostringstream textBuf;
+
+  if (CPDF_Array* pSrcContentArray = ToArray(pSrcContentObj)) {
+    ByteString srcContentStream;
+    for (size_t i = 0; i < pSrcContentArray->GetCount(); i++) {
+      pStream = pSrcContentArray->GetStreamAt(i);
+      auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+      pAcc->LoadAllDataFiltered();
+      ByteString sStream(pAcc->GetData(), pAcc->GetSize());
+      srcContentStream += sStream;
+      srcContentStream += "\n";
+    }
+    pNewXObject->SetDataAndRemoveFilter(srcContentStream.raw_str(),
+                                        srcContentStream.GetLength());
+  } else {
+    pStream = pSrcContentObj->AsStream();
+    auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+    pAcc->LoadAllDataFiltered();
+    ByteString sStream(pAcc->GetData(), pAcc->GetSize());
+    pNewXObject->SetDataAndRemoveFilter(sStream.raw_str(), sStream.GetLength());
+  }
+
+  return pNewXObject;
+}
+
+void CPDF_PageOrganizer::GetMaxPageSize(const std::vector<uint16_t>& pageNums) {
+  for (size_t i = 0; i < pageNums.size(); ++i) {
+    CPDF_Dictionary* pSrcPageDict = m_pSrcPDFDoc->GetPage(pageNums[i] - 1);
+    if (!pSrcPageDict)
+      return;
+
+    CPDF_Page page(m_pSrcPDFDoc.Get(), pSrcPageDict, true);
+    float pageWidth = page.GetPageWidth();
+    float pageHeight = page.GetPageHeight();
+    if (IsSourceDocLandscape()) {
+      m_pageSize.width = std::max(
+          m_pageSize.width, pageHeight > pageWidth ? pageHeight : pageWidth);
+      m_pageSize.height = std::max(
+          m_pageSize.height, pageHeight < pageWidth ? pageHeight : pageWidth);
+    } else {
+      m_pageSize.width = std::max(
+          m_pageSize.width, pageHeight < pageWidth ? pageHeight : pageWidth);
+      m_pageSize.height = std::max(
+          m_pageSize.height, pageHeight > pageWidth ? pageHeight : pageWidth);
+    }
+  }
+}
+
+void CPDF_PageOrganizer::SetMediaBox(CPDF_Dictionary* pDestPageDict,
+                                     bool landscape) {
+  // Make the default size letter size (8.5"x11")
+  CPDF_Array* pArray = pDestPageDict->SetNewFor<CPDF_Array>("MediaBox");
+  pArray->AddNew<CPDF_Number>(0);
+  pArray->AddNew<CPDF_Number>(0);
+  pArray->AddNew<CPDF_Number>(landscape? m_pageSize.height : m_pageSize.width);
+  pArray->AddNew<CPDF_Number>(landscape? m_pageSize.width : m_pageSize.height);
 }
 
 bool CPDF_PageOrganizer::ExportPage(const std::vector<uint16_t>& pageNums,
@@ -251,6 +642,108 @@ bool CPDF_PageOrganizer::ExportPage(const std::vector<uint16_t>& pageNums,
     ++curpage;
   }
 
+  return true;
+}
+
+void CPDF_PageOrganizer::FinishPage(CPDF_Dictionary* pCurPageDict,
+                                    const ByteString& content) {
+  if (!pCurPageDict)
+    return;
+
+  CPDF_Dictionary* pRes = pCurPageDict->GetDictFor("Resources");
+  if (!pRes)
+    pRes = pCurPageDict->SetNewFor<CPDF_Dictionary>("Resources");
+
+  CPDF_Dictionary* pPageXObject = pRes->GetDictFor("XObject");
+  if (!pPageXObject)
+    pPageXObject = pRes->SetNewFor<CPDF_Dictionary>("XObject");
+
+  for (auto& it : m_xobjs) {
+    CPDF_Object* pObj = it.second.Get();
+    pPageXObject->SetNewFor<CPDF_Reference>(it.first, m_pDestPDFDoc.Get(),
+                                            pObj->GetObjNum());
+  }
+
+  auto pDict = pdfium::MakeUnique<CPDF_Dictionary>(
+      m_pDestPDFDoc.Get()->GetByteStringPool());
+  CPDF_Stream* pStream = m_pDestPDFDoc.Get()->NewIndirect<CPDF_Stream>(
+      nullptr, 0, std::move(pDict));
+  std::ostringstream textBuf;
+  textBuf << ByteString::Format("%s", content.c_str());
+  pStream->SetData(&textBuf);
+  pCurPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDestPDFDoc.Get(),
+                                          pStream->GetObjNum());
+}
+
+// TODO(xlou): A better way to decide whether portrait or landscape?
+bool CPDF_PageOrganizer::IsSourceDocLandscape() {
+  CPDF_Dictionary* pSrcDict = m_pSrcPDFDoc->GetPage(0);
+  if (!pSrcDict)
+    return false;
+
+  CPDF_Page page(m_pSrcPDFDoc.Get(), pSrcDict, true);
+
+  return page.GetPageWidth() > page.GetPageHeight();
+}
+
+bool CPDF_PageOrganizer::ExportNPagesToOne(
+    const std::vector<uint16_t>& pageNums,
+    size_t nIndex,
+    size_t numPagesPerSheet) {
+  ByteString content;
+  size_t m_inPages = 0;
+  CPDF_Dictionary* pCurPageDict = nullptr;
+
+  if (!NupState::IsPossible(numPagesPerSheet))
+    return false;
+
+  if (numPagesPerSheet == 1)
+    return ExportPage(pageNums, nIndex);
+
+  NupState nupState(numPagesPerSheet, IsSourceDocLandscape());
+  nupState.SetWidth(m_pageSize.width);
+  nupState.SetHeight(m_pageSize.height);
+  if (nupState.IsLandscape()) {
+    nupState.SetWidth(m_pageSize.height);
+    nupState.SetHeight(m_pageSize.width);
+  }
+
+  GetMaxPageSize(pageNums);
+  size_t curpage = nIndex;
+  NupPageSettings pgEdit;
+  for (size_t i = 0; i < pageNums.size(); ++i) {
+    CPDF_Dictionary* pSrcPageDict = m_pSrcPDFDoc->GetPage(pageNums[i] - 1);
+    if (!pSrcPageDict)
+      return false;
+
+    CPDF_Page page(m_pSrcPDFDoc.Get(), pSrcPageDict, true);
+    // If number of pages on a page = nup, create a new page.
+    bool newPage = nupState.CreateNewPage(page.GetPageWidth(),
+                                          page.GetPageHeight(), pgEdit);
+    if (newPage) {
+      if (i > 0) {
+        // Finish up the current page, and create a new page.
+        FinishPage(pCurPageDict, content);
+        // Create a new page
+        ++curpage;
+        content.clear();
+        m_xobjs.clear();
+        m_inPages = 0;
+      }
+      pCurPageDict = m_pDestPDFDoc->CreateNewPage(curpage);
+      SetMediaBox(pCurPageDict, nupState.IsLandscape());
+    }
+
+    if (!pCurPageDict)
+      return false;
+
+    AddSubPage(pSrcPageDict, CFX_PointF(pgEdit.point.x, pgEdit.point.y),
+               pgEdit.scale, nupState.IsLandscape(), &content, nullptr);
+    ++m_inPages;
+  }
+
+  // Finish the last page.
+  FinishPage(pCurPageDict, content);
   return true;
 }
 
@@ -358,18 +851,38 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_ImportPages(FPDF_DOCUMENT dest_doc,
     return false;
 
   std::vector<uint16_t> pageArray;
-  int nCount = pSrcDoc->GetPageCount();
-  if (pagerange) {
-    if (!ParserPageRangeString(pagerange, &pageArray, nCount))
-      return false;
-  } else {
-    for (int i = 1; i <= nCount; ++i) {
-      pageArray.push_back(i);
-    }
-  }
+  uint16_t nCount = pSrcDoc->GetPageCount();
+
+  if (!GetPageNumbers(pagerange, &pageArray, nCount))
+    return false;
 
   CPDF_PageOrganizer pageOrg(pDestDoc, pSrcDoc);
   return pageOrg.PDFDocInit() && pageOrg.ExportPage(pageArray, index);
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_ImportNPagesToOne(FPDF_DOCUMENT dest_doc,
+                       FPDF_DOCUMENT src_doc,
+                       FPDF_BYTESTRING pagerange,
+                       int index,
+                       int num_pages_per_page) {
+  CPDF_Document* pDestDoc = CPDFDocumentFromFPDFDocument(dest_doc);
+  if (!pDestDoc)
+    return false;
+
+  CPDF_Document* pSrcDoc = CPDFDocumentFromFPDFDocument(src_doc);
+  if (!pSrcDoc)
+    return false;
+
+  std::vector<uint16_t> pageArray;
+  uint16_t nCount = pSrcDoc->GetPageCount();
+
+  if (!GetPageNumbers(pagerange, &pageArray, nCount))
+    return false;
+
+  CPDF_PageOrganizer pageOrg(pDestDoc, pSrcDoc);
+  return pageOrg.PDFDocInit() &&
+         pageOrg.ExportNPagesToOne(pageArray, index, num_pages_per_page);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
