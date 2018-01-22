@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6dc593e_5013d07d",
+        "filename": "xfa/fxfa/cxfa_textprovider.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-22T20:40:44Z",
+      "side": 1,
+      "message": "if (!pIDNode || !pIDNode-\u003eIsWidgetReady())\n    return false;\n\n  wsValue \u003d pIDNode-\u003eGetWidgetAcc()-\u003eGetValue(XFA_VALUEPICTURE_Display);",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 73
+      },
+      "revId": "af166543c0c8ca6e81b2e128943cd826c1d05a80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
