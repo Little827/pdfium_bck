@@ -34,6 +34,70 @@
       "revId": "b1933a6a466b0bac557454c5a759042a80381eb0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de3496b7_ffcc5b0d",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-22T18:25:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "723c2ab5_88d22c57",
+      "revId": "b1933a6a466b0bac557454c5a759042a80381eb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0267ba9d_200b8821",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-22T18:25:38Z",
+      "side": 1,
+      "message": "Join the ifs",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 32
+      },
+      "revId": "b1933a6a466b0bac557454c5a759042a80381eb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b6f27c_e732012c",
+        "filename": "xfa/fxfa/cxfa_ffnotify.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-22T18:25:38Z",
+      "side": 1,
+      "message": "This sounds like it would only set a flag of something, but it does more than that. How about renaming to ReadyWidget()?",
+      "range": {
+        "startLine": 347,
+        "startChar": 11,
+        "endLine": 347,
+        "endChar": 25
+      },
+      "revId": "b1933a6a466b0bac557454c5a759042a80381eb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
