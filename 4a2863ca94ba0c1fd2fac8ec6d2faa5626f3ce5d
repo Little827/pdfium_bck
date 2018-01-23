@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d20f361_8e4a02cf",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3684,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-23T18:52:12Z",
+      "side": 0,
+      "message": "There was a stack overflow here, it seems. That was unused, right?",
+      "range": {
+        "startLine": 3684,
+        "startChar": 2,
+        "endLine": 3684,
+        "endChar": 44
+      },
+      "revId": "4a2863ca94ba0c1fd2fac8ec6d2faa5626f3ce5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
