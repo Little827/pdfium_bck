@@ -283,6 +283,29 @@
     },
     {
       "key": {
+        "uuid": "f8169659_d0e91645",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T17:27:11Z",
+      "side": 1,
+      "message": "Should be able to make this logic cleaner by precalculating number_of_dest_pages and switching the loop to:\n\nfor (size_t dest_page_index \u003d 0; dest_page_index \u003c number_of_dest_pages; dest_page_index++) {\n  [start a dest page]\n  for (size_t page_index_in_dest_page \u003d 0; page_index_in_dest_page \u003c pages_per_page; page_index_in_dest_page++) {\n    size_t source_page_index \u003d dest_page_index * pages_per_page + page_index_in_dest_page;\n    if (source_page_index \u003e\u003d pageNums.size())\n      break; // Last page may not be filled.\n    [...]\n  }\n  [finish a dest page]\n}",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 18
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf427fd6_3cbf60ea",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 36
