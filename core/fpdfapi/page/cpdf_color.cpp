@@ -153,7 +153,9 @@ bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
   float r = 0.0f;
   float g = 0.0f;
   float b = 0.0f;
-  if (!m_pCS->GetRGB(m_pBuffer, &r, &g, &b))
+  ColorBuffer color_buffer;
+  color_buffer.m_Comps = m_pBuffer;
+  if (!m_pCS->GetRGB(&color_buffer, &r, &g, &b))
     return false;
 
   *R = static_cast<int32_t>(r * 255 + 0.5f);
