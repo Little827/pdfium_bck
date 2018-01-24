@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7d2222d_837503ec",
+        "filename": "xfa/fxfa/parser/cxfa_ui.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T16:37:34Z",
+      "side": 0,
+      "message": "ExObject isn\u0027t listed as a child of Ui in the xfa spec.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "e82c1c60b9763a8a084f3d6cdc4c397083fdf324",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
