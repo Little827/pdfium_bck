@@ -313,6 +313,7 @@ class CXFA_Node : public CXFA_Object {
   Optional<int8_t> GetBarcodeAttribute_WideNarrowRatio();
 
   CXFA_Node* GetUIChild();
+  XFA_Element GetUIChildType();
   XFA_Element GetUIType();
   CFX_RectF GetUIMargin();
   CXFA_Border* GetUIBorder();
