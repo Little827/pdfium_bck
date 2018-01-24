@@ -2613,6 +2613,7 @@ std::pair<XFA_Element, CXFA_Node*> CXFA_Node::CreateUIChild() {
       valueNodeType = XFA_Element::TextEdit;
     pUIChild =
         pUI->JSObject()->GetOrCreateProperty<CXFA_Node>(0, valueNodeType);
+    ASSERT(pUIChild);
   }
 
   CreateValueNodeIfNeeded(value, pUIChild);
@@ -2655,6 +2656,11 @@ CXFA_Node* CXFA_Node::GetUIChild() {
     m_pUiChildNode = nullptr;
   }
   return m_pUiChildNode;
+}
+
+XFA_Element CXFA_Node::GetUIChildType() {
+  GetUIChild();
+  return m_pUiChildNode ? m_pUiChildNode->GetElementType() : GetElementType();
 }
 
 XFA_Element CXFA_Node::GetUIType() {
