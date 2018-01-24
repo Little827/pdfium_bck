@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9df2dc23_d97778fc",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T18:09:33Z",
+      "side": 0,
+      "message": "There was a side effect of creating nodes here, and this is not done on the new code.",
+      "range": {
+        "startLine": 2577,
+        "startChar": 0,
+        "endLine": 2578,
+        "endChar": 56
+      },
+      "revId": "e82c1c60b9763a8a084f3d6cdc4c397083fdf324",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7d2222d_837503ec",
         "filename": "xfa/fxfa/parser/cxfa_ui.cpp",
         "patchSetId": 1
