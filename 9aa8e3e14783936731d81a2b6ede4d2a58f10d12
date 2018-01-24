@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1006d0a4_c21fe511",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T17:18:37Z",
+      "side": 1,
+      "message": "Why are there items with the same int value?",
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60e379d7_eca81844",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 36
@@ -42,6 +59,40 @@
         "endLine": 93,
         "endChar": 20
       },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c505b3_ab8ef689",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T17:18:37Z",
+      "side": 1,
+      "message": "What does this do?",
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5816fb2a_99442998",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T17:18:37Z",
+      "side": 1,
+      "message": "What\u0027s this? With the current enum values this is never reached.",
       "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -341,6 +392,23 @@
         "endLine": 53,
         "endChar": 32
       },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b8d463_172f4031",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T17:18:37Z",
+      "side": 1,
+      "message": "Why do we still restrict the supported values? If I pass numPagesOnXAxis \u003d 4 and numPagesOnYAxis \u003d 2 with adequate destPage dimensions, what\u0027s stopping the library from doing what I want?",
       "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
