@@ -17,7 +17,7 @@ class CPDF_Color {
   CPDF_Color();
   ~CPDF_Color();
 
-  bool IsNull() const { return !m_pBuffer; }
+  bool IsNull() const { return !m_colorBuffer.m_Comps; }
   bool IsPattern() const;
 
   void Copy(const CPDF_Color* pSrc);
@@ -38,7 +38,8 @@ class CPDF_Color {
   // TODO(thestig): Convert this to a smart pointer or vector.
   // |m_pBuffer| is created by |m_pCS|, so if it is non-null, then so is
   // |m_pCS|.
-  float* m_pBuffer = nullptr;
+  // float* m_pBuffer = nullptr;
+  ColorBuffer m_colorBuffer;
   CPDF_ColorSpace* m_pCS = nullptr;
 };
 

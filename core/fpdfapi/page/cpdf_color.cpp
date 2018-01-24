@@ -11,7 +11,9 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_system.h"
 
-CPDF_Color::CPDF_Color() {}
+CPDF_Color::CPDF_Color() {
+  m_colorBuffer.m_Comps = nullptr;
+}
 
 CPDF_Color::~CPDF_Color() {
   ReleaseBuffer();
@@ -23,11 +25,11 @@ bool CPDF_Color::IsPattern() const {
 }
 
 void CPDF_Color::ReleaseBuffer() {
-  if (!m_pBuffer)
+  if (!m_colorBuffer.m_Comps)
     return;
 
   if (IsPatternInternal()) {
-    PatternValue* pvalue = reinterpret_cast<PatternValue*>(m_pBuffer);
+    PatternValue* pvalue = static_cast<PatternValue*>(&m_colorBuffer);
     CPDF_Pattern* pPattern =
         pvalue->m_pCountedPattern ? pvalue->m_pCountedPattern->get() : nullptr;
     if (pPattern) {
@@ -36,8 +38,8 @@ void CPDF_Color::ReleaseBuffer() {
         pPageData->ReleasePattern(pPattern->pattern_obj());
     }
   }
-  FX_Free(m_pBuffer);
-  m_pBuffer = nullptr;
+  FX_Free(m_colorBuffer.m_Comps);
+  m_colorBuffer.m_Comps = nullptr;
 }
 
 void CPDF_Color::ReleaseColorSpace() {
@@ -61,8 +63,8 @@ bool CPDF_Color::IsPatternInternal() const {
 
 void CPDF_Color::SetColorSpace(CPDF_ColorSpace* pCS) {
   if (m_pCS == pCS) {
-    if (!m_pBuffer)
-      m_pBuffer = pCS->CreateBuf();
+    if (!m_colorBuffer.m_Comps)
+      m_colorBuffer.m_Comps = pCS->CreateBuf();
 
     ReleaseColorSpace();
     m_pCS = pCS;
@@ -73,16 +75,16 @@ void CPDF_Color::SetColorSpace(CPDF_ColorSpace* pCS) {
 
   m_pCS = pCS;
   if (pCS) {
-    m_pBuffer = pCS->CreateBuf();
-    pCS->GetDefaultColor(m_pBuffer);
+    m_colorBuffer.m_Comps = pCS->CreateBuf();
+    pCS->GetDefaultColor(m_colorBuffer.m_Comps);
   }
 }
 
 void CPDF_Color::SetValue(const float* comps) {
-  if (!m_pBuffer)
+  if (!m_colorBuffer.m_Comps)
     return;
   if (!IsPatternInternal())
-    memcpy(m_pBuffer, comps, m_pCS->CountComponents() * sizeof(float));
+    memcpy(m_colorBuffer.m_Comps, comps, m_pCS->CountComponents() * sizeof(float));
 }
 
 void CPDF_Color::SetValue(CPDF_Pattern* pPattern,
@@ -92,13 +94,13 @@ void CPDF_Color::SetValue(CPDF_Pattern* pPattern,
     return;
 
   if (!IsPattern()) {
-    FX_Free(m_pBuffer);
+    FX_Free(m_colorBuffer.m_Comps);
     m_pCS = CPDF_ColorSpace::GetStockCS(PDFCS_PATTERN);
-    m_pBuffer = m_pCS->CreateBuf();
+    m_colorBuffer.m_Comps = m_pCS->CreateBuf();
   }
 
   CPDF_DocPageData* pDocPageData = nullptr;
-  PatternValue* pvalue = reinterpret_cast<PatternValue*>(m_pBuffer);
+  PatternValue* pvalue = static_cast<PatternValue*>(&m_colorBuffer);
   if (pvalue->m_pPattern) {
     pDocPageData = pvalue->m_pPattern->document()->GetPageData();
     pDocPageData->ReleasePattern(pvalue->m_pPattern->pattern_obj());
@@ -132,12 +134,12 @@ void CPDF_Color::Copy(const CPDF_Color* pSrc) {
     if (!m_pCS)
       return;
   }
-  m_pBuffer = m_pCS->CreateBuf();
-  memcpy(m_pBuffer, pSrc->m_pBuffer, m_pCS->GetBufSize());
+  m_colorBuffer.m_Comps = m_pCS->CreateBuf();
+  memcpy(m_colorBuffer.m_Comps, pSrc->m_colorBuffer.m_Comps, m_pCS->GetBufSize());
   if (!IsPatternInternal())
     return;
 
-  PatternValue* pValue = reinterpret_cast<PatternValue*>(m_pBuffer);
+  PatternValue* pValue = static_cast<PatternValue*>(&m_colorBuffer);
   CPDF_Pattern* pPattern = pValue->m_pPattern;
   if (!pPattern)
     return;
@@ -147,13 +149,13 @@ void CPDF_Color::Copy(const CPDF_Color* pSrc) {
 }
 
 bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
-  if (!m_pCS || !m_pBuffer)
+  if (!m_pCS || !m_colorBuffer.m_Comps)
     return false;
 
   float r = 0.0f;
   float g = 0.0f;
   float b = 0.0f;
-  if (!m_pCS->GetRGB(m_pBuffer, &r, &g, &b))
+  if (!m_pCS->GetRGB(&m_colorBuffer, &r, &g, &b))
     return false;
 
   *R = static_cast<int32_t>(r * 255 + 0.5f);
@@ -163,9 +165,9 @@ bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
 }
 
 CPDF_Pattern* CPDF_Color::GetPattern() const {
-  if (!m_pBuffer || !IsPatternInternal())
+  if (!m_colorBuffer.m_Comps || !IsPatternInternal())
     return nullptr;
 
-  PatternValue* pvalue = reinterpret_cast<PatternValue*>(m_pBuffer);
+  const PatternValue* pvalue = static_cast<const PatternValue*>(&m_colorBuffer);
   return pvalue->m_pPattern;
 }
