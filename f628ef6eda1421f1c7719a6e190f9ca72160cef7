@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4699c6f8_4df43c9b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2524,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T19:46:12Z",
+      "side": 1,
+      "message": "eValueNodeType to be consistent?",
+      "range": {
+        "startLine": 2524,
+        "startChar": 14,
+        "endLine": 2524,
+        "endChar": 27
+      },
+      "revId": "f628ef6eda1421f1c7719a6e190f9ca72160cef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d801a5_648ba9b5",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2597,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T19:46:12Z",
+      "side": 1,
+      "message": "Comment that it\u0027s a field.",
+      "revId": "f628ef6eda1421f1c7719a6e190f9ca72160cef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e080fa9_73e66e2c",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2602,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-24T19:46:12Z",
+      "side": 1,
+      "message": "Order the cases like in the other block for consistency.",
+      "revId": "f628ef6eda1421f1c7719a6e190f9ca72160cef7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
