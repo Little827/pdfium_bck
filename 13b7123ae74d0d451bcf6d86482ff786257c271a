@@ -22,6 +22,30 @@
       "revId": "13b7123ae74d0d451bcf6d86482ff786257c271a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd914e5b_02453561",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2571,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T18:17:55Z",
+      "side": 1,
+      "message": "GetOrCreate can return nullptr. In the case of you passing the first value to insert that isn\u0027t allowed we\u0027ll get a nullptr.",
+      "parentUuid": "08f437eb_3d3f8021",
+      "range": {
+        "startLine": 2570,
+        "startChar": 14,
+        "endLine": 2571,
+        "endChar": 0
+      },
+      "revId": "13b7123ae74d0d451bcf6d86482ff786257c271a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
