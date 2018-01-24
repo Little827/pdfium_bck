@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e379d7_eca81844",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "nit: put this before line 56 and a blank line after.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb235a0_31d88c80",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "For these, we\u0027ve been moving the assignment into the class definition instead of in the constructor.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb72c94_cafb6395",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Should this be an ASSERT? It should never happen right?  Do this before 436.",
+      "range": {
+        "startLine": 437,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 19
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c50cb76_6819bade",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to match the code?",
+      "range": {
+        "startLine": 490,
+        "startChar": 4,
+        "endLine": 490,
+        "endChar": 47
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62bb611_441f06a3",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Should this be an ASSERT? This should never happen right?",
+      "range": {
+        "startLine": 563,
+        "startChar": 2,
+        "endLine": 564,
+        "endChar": 11
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcfafe7_2b087960",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Can you file a bug for us to create a GetOrCreateDictFor(\"Resources\") call? Would clean up a few lines.",
+      "range": {
+        "startLine": 566,
+        "startChar": 25,
+        "endLine": 566,
+        "endChar": 50
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d477922_b5c795e6",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Unused, remove.",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 1
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da8b6895_0492b155",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "m_ is for members, not locals",
+      "range": {
+        "startLine": 607,
+        "startChar": 9,
+        "endLine": 607,
+        "endChar": 11
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058d74ad_7a866451",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Move this down to 622, closer to the first usage.",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 608,
+        "endChar": 40
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b8d4f0_4873bca2",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "nit {}s with multi-line conditional.",
+      "range": {
+        "startLine": 612,
+        "startChar": 3,
+        "endLine": 612,
+        "endChar": 16
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf427fd6_3cbf60ea",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Does this need to happen before the SetMediaBox on line 643?",
+      "range": {
+        "startLine": 646,
+        "startChar": 3,
+        "endLine": 647,
+        "endChar": 19
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d99232_04a01073",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Split these out into their own BadNupParams test, similar to the BadRangesNo test below.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02a815c_632c8964",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Can we at least make these unsigned int\u0027s?",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a98593bd_cffedafc",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Import pages into a FPDF_DOCUMENT. The pages of |src_doc| will be combined to provide |numPagseOnXAxis x numPagesOnYAxis|\npages per |dest_doc| page.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8c9c22a_593cc742",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "I\u0027d put this after the line below because that defines num_pages_per_page. I\u0027d also drop the _\u0027s as it isn\u0027t a parameter and change num to number of",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7996236_2444c219",
+        "filename": "testing/resources/hello_world_multi_pages.in",
+        "patchSetId": 36
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "Should we get rid of this text as well?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f0810d_63a0fccb",
+        "filename": "testing/resources/hello_world_multi_pages.in",
+        "patchSetId": 36
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-24T15:10:49Z",
+      "side": 1,
+      "message": "If we\u0027ve removed the text, can we remove the font entries as well?",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
