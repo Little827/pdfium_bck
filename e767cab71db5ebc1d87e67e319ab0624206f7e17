@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e4aec72_15f49445",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "I feel like this should be two separate enums. Or all names should have different values.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df6e4a4_fce9c16c",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Why is this initialized to numPagesOnXAxis * numPagesOnYAxis?",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 71
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e04c2e_72f67b43",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Out parameters should be passed by pointers. This makes it more visible in the caller code that this will be modified.",
+      "range": {
+        "startLine": 123,
+        "startChar": 33,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6d43440_9f1dfc9a",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Declare in separate statements.",
+      "range": {
+        "startLine": 131,
+        "startChar": 14,
+        "endLine": 131,
+        "endChar": 20
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866d7239_dbca52c5",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Is this right? width and yScale, height and xScale?",
+      "range": {
+        "startLine": 133,
+        "startChar": 28,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "605c0b9c_5a51da46",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Declare in separate statements.",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65d1279_faac84a3",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Out parameters should be passed by pointer.",
+      "range": {
+        "startLine": 150,
+        "startChar": 40,
+        "endLine": 150,
+        "endChar": 65
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ae2a74d_02333e6c",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Move declaration inside the for.",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 590,
+        "endChar": 31
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450c76dc_8e18ed0d",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "nit: \"Create\" with upper case.",
+      "range": {
+        "startLine": 595,
+        "startChar": 7,
+        "endLine": 595,
+        "endChar": 24
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95f416bc_f9425332",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "Could use a min macro. Better to calculate it outside too, to keep the for simple.",
+      "range": {
+        "startLine": 604,
+        "startChar": 9,
+        "endLine": 606,
+        "endChar": 57
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2c04098_2684962a",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "This seems to be in the wrong place?",
+      "range": {
+        "startLine": 614,
+        "startChar": 5,
+        "endLine": 614,
+        "endChar": 63
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

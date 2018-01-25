@@ -166,6 +166,41 @@
     },
     {
       "key": {
+        "uuid": "283c924b_9b65c912",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "If I understand this expression, this does the same thing as:\n\nif (m_xStart \u003d\u003d RIGHT)\n  subX \u003d (m_numPagesOnXAxis - 1) - subX;\nif (m_yStart \u003d\u003d TOP)\n  subY \u003d (m_numPagesOnYAxis - 1) - subY;\n\nWhich is a lot more readable.",
+      "parentUuid": "3b05cc84_6e8d9851",
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844a1534_db72cfd2",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 36
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "return {subX, subY};",
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5816fb2a_99442998",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 36
@@ -939,6 +974,24 @@
       "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e95a2619_ff8c80f5",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:08:41Z",
+      "side": 1,
+      "message": "But from the library\u0027s point of view, there\u0027s no reason to restrict to these values. This restriction belongs in the printing code, not in the library.",
+      "parentUuid": "fe589436_21ad8b3d",
+      "revId": "9aa8e3e14783936731d81a2b6ede4d2a58f10d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
