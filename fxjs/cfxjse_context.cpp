@@ -69,14 +69,13 @@ v8::Local<v8::Object> CreateReturnValue(v8::Isolate* pIsolate,
       hReturnValue->Set(1, hMessage->Get());
     }
     hReturnValue->Set(2, hException);
-    hReturnValue->Set(
-        3, v8::Integer::New(
-               pIsolate, hMessage->GetLineNumber(pIsolate->GetCurrentContext())
-                             .FromMaybe(0)));
-    hReturnValue->Set(4, hMessage->GetSourceLine(pIsolate->GetCurrentContext())
-                             .FromMaybe(v8::Local<v8::String>()));
-    v8::Maybe<int32_t> maybe_int =
-        hMessage->GetStartColumn(pIsolate->GetCurrentContext());
+    v8::Maybe<int> maybe_int =
+        hMessage->GetLineNumber(pIsolate->GetCurrentContext());
+    hReturnValue->Set(3, v8::Integer::New(pIsolate, maybe_int.FromMaybe(0)));
+    v8::MaybeLocal<v8::String> maybe_string =
+        hMessage->GetSourceLine(pIsolate->GetCurrentContext());
+    hReturnValue->Set(4, maybe_string.ToLocalChecked());
+    maybe_int = hMessage->GetStartColumn(pIsolate->GetCurrentContext());
     hReturnValue->Set(5, v8::Integer::New(pIsolate, maybe_int.FromMaybe(0)));
     maybe_int = hMessage->GetEndColumn(pIsolate->GetCurrentContext());
     hReturnValue->Set(6, v8::Integer::New(pIsolate, maybe_int.FromMaybe(0)));
