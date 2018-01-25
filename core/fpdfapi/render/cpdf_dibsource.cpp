@@ -686,7 +686,7 @@ int CPDF_DIBSource::StartLoadMask() {
   m_pMaskStream = m_pDict->GetStreamFor("SMask");
   if (m_pMaskStream) {
     CPDF_Array* pMatte = m_pMaskStream->GetDict()->GetArrayFor("Matte");
-    if (pMatte && m_pColorSpace &&
+    if (pMatte && m_pColorSpace && m_Family != PDFCS_PATTERN &&
         m_pColorSpace->CountComponents() <= m_nComponents) {
       float R, G, B;
       std::vector<float> colors(m_nComponents);
@@ -752,6 +752,9 @@ void CPDF_DIBSource::LoadPalette() {
   if (!m_pColorSpace) {
     return;
   }
+  if (m_Family == PDFCS_PATTERN)
+    return;
+
   if (m_bpc * m_nComponents == 1) {
     if (m_bDefaultDecode &&
         (m_Family == PDFCS_DEVICEGRAY || m_Family == PDFCS_DEVICERGB)) {
