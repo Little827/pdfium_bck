@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/page/cpdf_color.h"
 
+#include <iostream>
+
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -23,11 +25,13 @@ bool CPDF_Color::IsPattern() const {
 }
 
 void CPDF_Color::ReleaseBuffer() {
-  if (!m_pBuffer)
+  std::cerr << (void*)this << " ReleaseBuffer m_pColorBuffer " << (void*)m_pColorBuffer.get() << std::endl;
+  if (!m_pColorBuffer)
     return;
 
   if (IsPatternInternal()) {
-    PatternValue* pvalue = reinterpret_cast<PatternValue*>(m_pBuffer);
+    std::cerr << (void*)this << " ReleaseBuffer it's PatternInternal, use m_pColorBuffer as PatternValue" << std::endl;
+    PatternValue* pvalue = static_cast<PatternValue*>(m_pColorBuffer.get());
     CPDF_Pattern* pPattern =
         pvalue->m_pCountedPattern ? pvalue->m_pCountedPattern->get() : nullptr;
     if (pPattern) {
@@ -36,8 +40,11 @@ void CPDF_Color::ReleaseBuffer() {
         pPageData->ReleasePattern(pPattern->pattern_obj());
     }
   }
-  FX_Free(m_pBuffer);
-  m_pBuffer = nullptr;
+
+  std::cerr << (void*)this << " ReleaseBuffer FX_Free(m_pColorBuffer->m_Comps)" << std::endl;
+  FX_Free(m_pColorBuffer->m_Comps);
+  std::cerr << (void*)this << " ReleaseBuffer m_pColorBuffer = nullptr" << std::endl;
+  m_pColorBuffer = nullptr;
 }
 
 void CPDF_Color::ReleaseColorSpace() {
@@ -60,45 +67,60 @@ bool CPDF_Color::IsPatternInternal() const {
 }
 
 void CPDF_Color::SetColorSpace(CPDF_ColorSpace* pCS) {
+  std::cerr << (void*)this << " SetColorSpace " << pCS->GetFamily() << std::endl;
   if (m_pCS == pCS) {
-    if (!m_pBuffer)
-      m_pBuffer = pCS->CreateBuf();
+    std::cerr << (void*)this << " SetColorSpace m_pCS == pCS" << std::endl;
+    if (!m_pColorBuffer) {
+      std::cerr << (void*)this << " SetColorSpace m_pColorBuffer = pCS->CreateBuf() who knows why" << std::endl;
+      m_pColorBuffer = pCS->CreateBuf();
+    }
 
     ReleaseColorSpace();
     m_pCS = pCS;
     return;
   }
+  std::cerr << (void*)this << " SetColorSpace m_pCS != pCS" << std::endl;
   ReleaseBuffer();
   ReleaseColorSpace();
 
   m_pCS = pCS;
   if (pCS) {
-    m_pBuffer = pCS->CreateBuf();
-    pCS->GetDefaultColor(m_pBuffer);
+    std::cerr << (void*)this << " SetColorSpace m_pColorBuffer = pCS->CreateBuf()" << std::endl;
+    m_pColorBuffer = pCS->CreateBuf();
+    pCS->GetDefaultColor(m_pColorBuffer->m_Comps);
   }
 }
 
 void CPDF_Color::SetValue(const float* comps) {
-  if (!m_pBuffer)
+  std::cerr << (void*)this << " SetValue float* " << std::endl;
+  std::cerr << (void*)this << " SetValue float* m_pColorBuffer " << (void*) m_pColorBuffer.get() << std::endl;
+  if (!m_pColorBuffer)
     return;
-  if (!IsPatternInternal())
-    memcpy(m_pBuffer, comps, m_pCS->CountComponents() * sizeof(float));
+  std::cerr << (void*)this << " SetValue float* IsPatternInternal() " << IsPatternInternal() << std::endl;
+  if (!IsPatternInternal()) {
+    std::cerr << (void*)this << " SetValue float* memcpy m_pColorBuffer->m_Comps := comps" << std::endl;
+    memcpy(m_pColorBuffer->m_Comps, comps, m_pCS->CountComponents() * sizeof(float));
+  }
 }
 
 void CPDF_Color::SetValue(CPDF_Pattern* pPattern,
                           const float* comps,
                           uint32_t ncomps) {
+  std::cerr << (void*)this << " SetValue CPDF_Pattern*" << std::endl;
   if (ncomps > kMaxPatternColorComps)
     return;
 
   if (!IsPattern()) {
-    FX_Free(m_pBuffer);
+    std::cerr << (void*)this << " SetValue CPDF_Pattern* FX_Free(m_pColorBuffer->m_Comps)" << std::endl;
+    FX_Free(m_pColorBuffer->m_Comps);
     m_pCS = CPDF_ColorSpace::GetStockCS(PDFCS_PATTERN);
-    m_pBuffer = m_pCS->CreateBuf();
+    std::cerr << (void*)this << " SetValue CPDF_Pattern* m_pColorBuffer = m_pCS->CreateBuf()" << std::endl;
+    m_pColorBuffer = m_pCS->CreateBuf();
   }
 
   CPDF_DocPageData* pDocPageData = nullptr;
-  PatternValue* pvalue = reinterpret_cast<PatternValue*>(m_pBuffer);
+  std::cerr << (void*)this << " SetValue CPDF_Pattern*, use m_pColorBuffer as PatternValue" << std::endl;
+  PatternValue* pvalue = static_cast<PatternValue*>(m_pColorBuffer.get());
   if (pvalue->m_pPattern) {
     pDocPageData = pvalue->m_pPattern->document()->GetPageData();
     pDocPageData->ReleasePattern(pvalue->m_pPattern->pattern_obj());
@@ -132,12 +154,15 @@ void CPDF_Color::Copy(const CPDF_Color* pSrc) {
     if (!m_pCS)
       return;
   }
-  m_pBuffer = m_pCS->CreateBuf();
-  memcpy(m_pBuffer, pSrc->m_pBuffer, m_pCS->GetBufSize());
+  std::cerr << (void*)this << " Copy m_pColorBuffer = m_pCS->CreateBuf()" << std::endl;
+  m_pColorBuffer = m_pCS->CreateBuf();
+  std::cerr << (void*)this << " Copy m_pColorBuffer->m_Comps := pSrc->m_pColorBuffer->m_Comps" << std::endl;
+  memcpy(m_pColorBuffer->m_Comps, pSrc->m_pColorBuffer->m_Comps, m_pCS->GetBufSize());
   if (!IsPatternInternal())
     return;
 
-  PatternValue* pValue = reinterpret_cast<PatternValue*>(m_pBuffer);
+  std::cerr << (void*)this << " Copy CPDF_Pattern*, use m_pColorBuffer as PatternValue" << std::endl;
+  PatternValue* pValue = static_cast<PatternValue*>(m_pColorBuffer.get());
   CPDF_Pattern* pPattern = pValue->m_pPattern;
   if (!pPattern)
     return;
@@ -147,13 +172,15 @@ void CPDF_Color::Copy(const CPDF_Color* pSrc) {
 }
 
 bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
-  if (!m_pCS || !m_pBuffer)
+  std::cerr << (void*)this << " GetRGB m_pColorBuffer " << (void*)m_pColorBuffer.get() << std::endl;
+  if (!m_pCS || !m_pColorBuffer)
     return false;
 
   float r = 0.0f;
   float g = 0.0f;
   float b = 0.0f;
-  if (!m_pCS->GetRGB(m_pBuffer, &r, &g, &b))
+  std::cerr << (void*)this << " GetRGB m_pCS->GetRGB(" << (void*)m_pColorBuffer.get() << ")" << std::endl;
+  if (!m_pCS->GetRGB(m_pColorBuffer.get(), &r, &g, &b))
     return false;
 
   *R = static_cast<int32_t>(r * 255 + 0.5f);
@@ -163,9 +190,11 @@ bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
 }
 
 CPDF_Pattern* CPDF_Color::GetPattern() const {
-  if (!m_pBuffer || !IsPatternInternal())
+  std::cerr << (void*)this << " GetPattern m_pColorBuffer " << (void*)m_pColorBuffer.get() << std::endl;
+  if (!m_pColorBuffer || !IsPatternInternal())
     return nullptr;
 
-  PatternValue* pvalue = reinterpret_cast<PatternValue*>(m_pBuffer);
+  std::cerr << (void*)this << " GetPattern, use m_pColorBuffer as PatternValue" << std::endl;
+  const PatternValue* pvalue = static_cast<const PatternValue*>(m_pColorBuffer.get());
   return pvalue->m_pPattern;
 }

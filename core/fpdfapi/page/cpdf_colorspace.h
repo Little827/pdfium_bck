@@ -33,11 +33,14 @@ class CPDF_Object;
 
 constexpr size_t kMaxPatternColorComps = 16;
 
-struct PatternValue {
+struct ColorBuffer {
+  float* m_Comps;
+};
+
+struct PatternValue: public ColorBuffer {
   CPDF_Pattern* m_pPattern;
   CPDF_CountedPattern* m_pCountedPattern;
   int m_nComps;
-  float m_Comps[kMaxPatternColorComps];
 };
 
 class CPDF_ColorSpace {
@@ -54,7 +57,7 @@ class CPDF_ColorSpace {
   void Release();
 
   int GetBufSize() const;
-  float* CreateBuf();
+  std::unique_ptr<ColorBuffer> CreateBuf();
   void GetDefaultColor(float* buf) const;
   uint32_t CountComponents() const;
   int GetFamily() const { return m_Family; }
@@ -68,7 +71,7 @@ class CPDF_ColorSpace {
                                float* min,
                                float* max) const;
 
-  virtual bool GetRGB(float* pBuf, float* R, float* G, float* B) const = 0;
+  virtual bool GetRGB(const ColorBuffer* pBuf, float* R, float* G, float* B) const = 0;
 
   virtual void TranslateImageLine(uint8_t* dest_buf,
                                   const uint8_t* src_buf,

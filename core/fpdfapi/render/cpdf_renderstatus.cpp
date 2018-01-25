@@ -154,7 +154,9 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
     float R = 0.0f;
     float G = 0.0f;
     float B = 0.0f;
-    pCS->GetRGB(pResults, &R, &G, &B);
+    ColorBuffer color_buffer;
+    color_buffer.m_Comps = pResults;
+    pCS->GetRGB(&color_buffer, &R, &G, &B);
     rgb_array[i] =
         FXARGB_TODIB(FXARGB_MAKE(alpha, FXSYS_round(R * 255),
                                  FXSYS_round(G * 255), FXSYS_round(B * 255)));
@@ -236,7 +238,9 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
     float R = 0.0f;
     float G = 0.0f;
     float B = 0.0f;
-    pCS->GetRGB(pResults, &R, &G, &B);
+    ColorBuffer color_buffer;
+    color_buffer.m_Comps = pResults;
+    pCS->GetRGB(&color_buffer, &R, &G, &B);
     rgb_array[i] =
         FXARGB_TODIB(FXARGB_MAKE(alpha, FXSYS_round(R * 255),
                                  FXSYS_round(G * 255), FXSYS_round(B * 255)));
@@ -365,7 +369,9 @@ void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
       float R = 0.0f;
       float G = 0.0f;
       float B = 0.0f;
-      pCS->GetRGB(pResults, &R, &G, &B);
+      ColorBuffer color_buffer;
+      color_buffer.m_Comps = pResults;
+      pCS->GetRGB(&color_buffer, &R, &G, &B);
       dib_buf[column] = FXARGB_TODIB(FXARGB_MAKE(
           alpha, (int32_t)(R * 255), (int32_t)(G * 255), (int32_t)(B * 255)));
     }
@@ -2087,7 +2093,9 @@ void CPDF_RenderStatus::DrawShading(const CPDF_ShadingPattern* pPattern,
       float R = 0.0f;
       float G = 0.0f;
       float B = 0.0f;
-      pColorSpace->GetRGB(comps, &R, &G, &B);
+      ColorBuffer color_buffer;
+      color_buffer.m_Comps = comps;
+      pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
       background = ArgbEncode(255, (int32_t)(R * 255), (int32_t)(G * 255),
                               (int32_t)(B * 255));
     }
@@ -2630,7 +2638,9 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
         for (size_t i = 0; i < count; i++) {
           pFloats[i] = pBC->GetNumberAt(i);
         }
-        pCS->GetRGB(pFloats, &R, &G, &B);
+        ColorBuffer color_buffer;
+        color_buffer.m_Comps = pFloats;
+        pCS->GetRGB(&color_buffer, &R, &G, &B);
         back_color = 0xff000000 | ((int32_t)(R * 255) << 16) |
                      ((int32_t)(G * 255) << 8) | (int32_t)(B * 255);
         m_pContext->GetDocument()->GetPageData()->ReleaseColorSpace(pCSObj);
