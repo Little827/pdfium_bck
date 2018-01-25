@@ -71,6 +71,53 @@
     },
     {
       "key": {
+        "uuid": "e2989ecd_dba4dd26",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:21:47Z",
+      "side": 1,
+      "message": "Oh, this is both an in and out parameter. pageEdit.subPageRect is used, pageEdit.point and pageEdit.scale are modified. Can you clean this up and differentiate the out and in params?",
+      "parentUuid": "e1e04c2e_72f67b43",
+      "range": {
+        "startLine": 123,
+        "startChar": 33,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ece0a49_84ca4ba9",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:21:47Z",
+      "side": 1,
+      "message": "This can be calculated in the constructor.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 67
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6d43440_9f1dfc9a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 39
@@ -232,6 +279,29 @@
     },
     {
       "key": {
+        "uuid": "9c282a4f_1cbaa622",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:21:47Z",
+      "side": 1,
+      "message": "srcPage",
+      "range": {
+        "startLine": 613,
+        "startChar": 16,
+        "endLine": 613,
+        "endChar": 20
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2c04098_2684962a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 39
@@ -248,6 +318,29 @@
         "startChar": 5,
         "endLine": 614,
         "endChar": 63
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f535c9_63cae3fb",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-25T19:21:47Z",
+      "side": 1,
+      "message": "nupLayout or nup_layout",
+      "range": {
+        "startLine": 747,
+        "startChar": 46,
+        "endLine": 747,
+        "endChar": 55
       },
       "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
