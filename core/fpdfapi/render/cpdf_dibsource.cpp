@@ -760,6 +760,8 @@ void CPDF_DIBSource::LoadPalette() {
     if (m_pColorSpace->CountComponents() > 3) {
       return;
     }
+    if (m_Family == PDFCS_PATTERN)
+      return;
     float color_values[3];
     color_values[0] = m_pCompData[0].m_DecodeMin;
     color_values[1] = color_values[2] = color_values[0];
