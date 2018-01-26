@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "fbb276be_8e531360",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "ping for visibility",
+      "parentUuid": "a30b76b8_6defcab6",
+      "range": {
+        "startLine": 123,
+        "startChar": 33,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "e767cab71db5ebc1d87e67e319ab0624206f7e17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ece0a49_84ca4ba9",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 39

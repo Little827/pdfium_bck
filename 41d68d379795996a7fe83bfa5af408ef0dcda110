@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7515249_a31c1d31",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 47
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "Add a short comment documenting what this means.",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a50ec3f_617e6a08",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 47
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "Add extra line.",
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "338b246a_05c2c630",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 47
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "This is now unused. I\u0027m surprised the linter did not catch this.",
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eafdbb93_7376a983",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 47
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "This seems unnecessary.",
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d223a49e_ead7a109",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 47
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "No need to create the ostringstream, just:\n\npStream-\u003eSetData(content.raw_str(), content.GetLength());",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 29
+      },
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16369d00_86737afb",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 47
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "This can be moved below the \u003c\u003d 0 and \u003d\u003d 1 checks.",
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe8da1e2_eece5141",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 47
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "No brackets",
+      "range": {
+        "startLine": 569,
+        "startChar": 30,
+        "endLine": 569,
+        "endChar": 0
+      },
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a007bdc_6671bb89",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T22:00:13Z",
+      "side": 1,
+      "message": "Relaying Lei\u0027s comment which is lost as a message rather than a comment in the code:\n\nWe had agreed on VC the method would create a new document and return it, rather than adding pages to an existing doc at a certain index. It\u0027s not that I feel strongly about this myself, but did you change your mind?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "41d68d379795996a7fe83bfa5af408ef0dcda110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
