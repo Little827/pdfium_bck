@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1516951636 -0800\nnonce AGjzz3/VVr3BYW+IwFjjg09/2qeZZCRP7sEzZ1IAT+Mie+TjqdQTh8O0StcSHNgUzU0q6zy9Bk9z\n\n0000000000000000000000000000000000000000 c6f8da633657706f447069656c1e2dd43643fda6 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dremove-redundant-checks-in-cpvt-wordrange\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJaathUAAoJEKs2LWFaZv17xjwIAKKrbGnknDyhcWKz1cDSPR1V\nlYsb/U3O0YL0fBCsAxV0sFH5wZvEwxC/0YugWxkQmQjZWjH82PGUpPqVermOC1TI\n4vVhN/g6Xzix0w7cq4GENSskjKWWi5QqnZhC8Wi58Bbs51y/Ho00+CaItZiYDJYv\nupfrPVY2qS8gzcrgnKDjcvB61nwQp1pvw2F3DEgLdzhs0FGOm48wz9Fl3M5bVZA9\nJ/Jx+lRAQAi/OOccvbhgfqJJgaICKzmohWlxfGAda/cPkqiWnHY6brTOAzf2UGwG\nZ/TW92IaEbMp59HpbkiT5sphiyrXsxjpXjUrhyuhIm697kx0UVhBFGcjG7oWprE\u003d\n\u003dGeXW\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
