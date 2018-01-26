@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42a2d105_4b886060",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:14:15Z",
+      "side": 1,
+      "message": "Optional: this can return an Optional\u003cstd::unique_ptr\u003cstd::vector\u003cuint16_t\u003e\u003e\u003e to avoid the out param.\n\nOtherwise, reorder the params so the out param is not in the middle of the in params.",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 53
+      },
+      "revId": "3e827b86506c7b8e3678a17550f67776c2f49000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb105b4_4ee9fc21",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:14:15Z",
+      "side": 1,
+      "message": "This could be moved into GetPageNumbers().",
+      "range": {
+        "startLine": 375,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 42
+      },
+      "revId": "3e827b86506c7b8e3678a17550f67776c2f49000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3973577d_95854572",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:14:15Z",
+      "side": 1,
+      "message": "While you\u0027re at it, can you split these two statements so there isn\u0027t a single line doing too much?",
+      "revId": "3e827b86506c7b8e3678a17550f67776c2f49000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
