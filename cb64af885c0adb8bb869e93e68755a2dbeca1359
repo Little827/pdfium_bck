@@ -111,6 +111,144 @@
     },
     {
       "key": {
+        "uuid": "b91a1365_110d33d3",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T19:39:23Z",
+      "side": 1,
+      "message": "if (!pArray)\n  return CFX_FloatRect();\n\nreturn pArray-\u003eGetRect();\n\nThis avoids having the rect local variable.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 14
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e265ff_257d4c3e",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T19:39:23Z",
+      "side": 1,
+      "message": "Pass by const reference.",
+      "range": {
+        "startLine": 400,
+        "startChar": 36,
+        "endLine": 400,
+        "endChar": 46
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d939f0b5_eb89461f",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T19:39:23Z",
+      "side": 1,
+      "message": "This is unused.",
+      "range": {
+        "startLine": 403,
+        "startChar": 57,
+        "endLine": 403,
+        "endChar": 65
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9787ebed_3a825b9a",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T19:39:23Z",
+      "side": 1,
+      "message": "Declare \"content\" in here and you don\u0027t need to clear it.",
+      "range": {
+        "startLine": 608,
+        "startChar": 4,
+        "endLine": 608,
+        "endChar": 20
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904d56c7_391e4d41",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T19:39:23Z",
+      "side": 1,
+      "message": "Probably belongs in FinishPage().",
+      "range": {
+        "startLine": 609,
+        "startChar": 4,
+        "endLine": 609,
+        "endChar": 20
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9291cfac_fa088621",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T19:39:23Z",
+      "side": 1,
+      "message": "Isn\u0027t this the same as pgEdit.point?",
+      "range": {
+        "startLine": 621,
+        "startChar": 31,
+        "endLine": 621,
+        "endChar": 73
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347de197_869bbd05",
         "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
         "patchSetId": 46
@@ -127,6 +265,29 @@
         "startChar": 2,
         "endLine": 72,
         "endChar": 46
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10b27be_cdad03a4",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T19:39:23Z",
+      "side": 1,
+      "message": "Can you add a test with a more complex range? Like \"3-4,1,1-3\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 33,
+        "endLine": 73,
+        "endChar": 0
       },
       "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
