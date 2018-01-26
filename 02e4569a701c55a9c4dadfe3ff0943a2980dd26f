@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cbc0380_4f39a60c",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-26T23:58:15Z",
+      "side": 1,
+      "message": "Note: GetPage() takes an int, but we are passing in a uint32_t. So if page number is really, big, it will be interpreted as a negative integer. I don\u0027t expect PDFs to have 2^31 pages, because the PDF would have hit its file size limit first. So this is probably fine as is. GetPage() really should take a uint32_t anyway, but that\u0027s a separate issue for another day.",
+      "revId": "02e4569a701c55a9c4dadfe3ff0943a2980dd26f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
