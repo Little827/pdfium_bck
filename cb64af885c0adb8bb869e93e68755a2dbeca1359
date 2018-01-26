@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd8d43aa_05846712",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:48:59Z",
+      "side": 1,
+      "message": "Should be \"Returns true if\", but there\u0027s actually no return value.",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8873237e_256f29e1",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:48:59Z",
+      "side": 1,
+      "message": "There aren\u0027t actually set, so const for now? Can they be constexpr too?",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3484aad0_75920d07",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:48:59Z",
+      "side": 1,
+      "message": "Also assert the destPageWidth and Height are positive.",
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd8fcf4f_0ae68160",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:48:59Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027m wrong about how the output looks with this code. This is what I think happens:\nThe dest page is divided in equal \"cells\" and the src page is scaled down/up to fit that cell to as large as it can be, maintaining the same x and y scale. This means that usually there will be blank space in one dimension, not on the other. In the dimension that has blank space, it will be half as large on the edges as between the pages. If alignment is not CENTER in that dimension, the pages will be all shifted towards that direction but only inside their cell.\n\nI don\u0027t think the options for alignment should be left/top/right/bottom/center. I don\u0027t see why someone would use left/top/right/bottom, it would just look strange. What would look best IMO is putting all pages together and leaving all the extra space at the border of the new page.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 66
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101b49dc_3e6d1756",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-26T18:48:59Z",
+      "side": 1,
+      "message": "No need for brackets.",
+      "range": {
+        "startLine": 154,
+        "startChar": 38,
+        "endLine": 154,
+        "endChar": 40
+      },
+      "revId": "cb64af885c0adb8bb869e93e68755a2dbeca1359",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
