@@ -69,17 +69,18 @@ bool CopyInheritable(CPDF_Dictionary* pCurPageDict,
   return true;
 }
 
-bool ParserPageRangeString(ByteString rangstring,
-                           int nCount,
-                           std::vector<uint16_t>* pageArray) {
-  if (rangstring.IsEmpty())
+bool ParsePageRangeString(const ByteString& bsPageRange,
+                          int nCount,
+                          std::vector<uint16_t>* pageArray) {
+  ByteString bsStrippedPageRange = bsPageRange;
+  bsStrippedPageRange.Remove(' ');
+  size_t nLength = bsStrippedPageRange.GetLength();
+  if (nLength == 0)
     return true;
 
-  rangstring.Remove(' ');
-  size_t nLength = rangstring.GetLength();
-  ByteString cbCompareString("0123456789-,");
+  static const ByteString cbCompareString("0123456789-,");
   for (size_t i = 0; i < nLength; ++i) {
-    if (!cbCompareString.Contains(rangstring[i]))
+    if (!cbCompareString.Contains(bsStrippedPageRange[i]))
       return false;
   }
 
@@ -87,10 +88,11 @@ bool ParserPageRangeString(ByteString rangstring,
   size_t nStringFrom = 0;
   Optional<size_t> nStringTo = 0;
   while (nStringTo < nLength) {
-    nStringTo = rangstring.Find(',', nStringFrom);
+    nStringTo = bsStrippedPageRange.Find(',', nStringFrom);
     if (!nStringTo.has_value())
       nStringTo = nLength;
-    cbMidRange = rangstring.Mid(nStringFrom, nStringTo.value() - nStringFrom);
+    cbMidRange =
+        bsStrippedPageRange.Mid(nStringFrom, nStringTo.value() - nStringFrom);
     auto nMid = cbMidRange.Find('-');
     if (!nMid.has_value()) {
       uint16_t pageNum =
@@ -134,7 +136,7 @@ bool GetPageNumbers(const CPDF_Document& doc,
     return true;
   }
 
-  return ParserPageRangeString(bsPageRange, nCount, pageArray);
+  return ParsePageRangeString(bsPageRange, nCount, pageArray);
 }
 
 }  // namespace
