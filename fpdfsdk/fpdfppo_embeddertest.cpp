@@ -57,6 +57,48 @@ TEST_F(FPDFPPOEmbeddertest, ImportPages) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFPPOEmbeddertest, ImportNPages) {
+  ASSERT_TRUE(OpenDocument("hello_world_multi_pages.pdf"));
+
+  FPDF_DOCUMENT output_doc = FPDF_ImportNPagesToOne(document(), 612, 792, 2, 1);
+  ASSERT_TRUE(output_doc);
+  EXPECT_EQ(3, FPDF_GetPageCount(output_doc));
+  FPDF_CloseDocument(output_doc);
+  FPDF_DOCUMNT output_doc_2 =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 5, 1);
+  ASSERT_TRUE(output_doc_2);
+  EXPECT_EQ(1, FPDF_GetPageCount(output_doc_2));
+  FPDF_CloseDocument(output_doc_2);
+  FPDF_DOCUMNT output_doc_3 =
+      FPDF_ImportNPagesToOne(document(), 792, 612, 8, 1);
+  ASSERT_TRUE(output_doc_3);
+  EXPECT_EQ(1, FPDF_GetPageCount(output_doc_3));
+  FPDF_CloseDocument(output_doc_3);
+  FPDF_DOCUMNT output_doc_4 =
+      FPDF_ImportNPagesToOne(document(), 792, 612, 128, 1);
+  ASSERT_TRUE(output_doc_4);
+  EXPECT_EQ(1, FPDF_GetPageCount(output_doc_4));
+  FPDF_CloseDocument(output_doc_4);
+}
+
+TEST_F(FPDFPPOEmbeddertest, BadNupParams) {
+  ASSERT_TRUE(OpenDocument("hello_world_multi_pages.pdf"));
+
+  FPDF_DOCUMENT output_doc = FPDF_ImportNPagesToOne(document(), 612, 792, 0, 3);
+  ASSERT_FALSE(output_doc);
+  FPDF_CloseDocument(output_doc);
+  FPDF_DOCUMENT output_doc_2 =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 0);
+  ASSERT_FALSE(output_doc_2);
+  FPDF_CloseDocument(output_doc_2);
+  FPDF_DOCUMENT output_doc_3 = FPDF_ImportNPagesToOne(document(), 0, 792, 2, 1);
+  ASSERT_FALSE(output_doc_3);
+  FPDF_CloseDocument(output_doc_3);
+  FPDF_DOCUMENT output_doc_4 = FPDF_ImportNPagesToOne(document(), 612, 0, 7, 1);
+  ASSERT_FALSE(output_doc_4);
+  FPDF_CloseDocument(output_doc_4);
+}
+
 TEST_F(FPDFPPOEmbeddertest, BadRepeatViewerPref) {
   ASSERT_TRUE(OpenDocument("repeat_viewer_ref.pdf"));
 
