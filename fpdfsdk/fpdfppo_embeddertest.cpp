@@ -57,6 +57,56 @@ TEST_F(FPDFPPOEmbeddertest, ImportPages) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFPPOEmbeddertest, ImportNPages) {
+  ASSERT_TRUE(OpenDocument("hello_world_multi_pages.pdf"));
+
+  FPDF_DOCUMENT output_doc_2up =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 1);
+  ASSERT_TRUE(output_doc_2up);
+  EXPECT_EQ(3, FPDF_GetPageCount(output_doc_2up));
+  FPDF_CloseDocument(output_doc_2up);
+  FPDF_DOCUMENT output_doc_5up =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 5, 1);
+  ASSERT_TRUE(output_doc_5up);
+  EXPECT_EQ(1, FPDF_GetPageCount(output_doc_5up));
+  FPDF_CloseDocument(output_doc_5up);
+  FPDF_DOCUMENT output_doc_8up =
+      FPDF_ImportNPagesToOne(document(), 792, 612, 8, 1);
+  ASSERT_TRUE(output_doc_8up);
+  EXPECT_EQ(1, FPDF_GetPageCount(output_doc_8up));
+  FPDF_CloseDocument(output_doc_8up);
+  FPDF_DOCUMENT output_doc_128up =
+      FPDF_ImportNPagesToOne(document(), 792, 612, 128, 1);
+  ASSERT_TRUE(output_doc_128up);
+  EXPECT_EQ(1, FPDF_GetPageCount(output_doc_128up));
+  FPDF_CloseDocument(output_doc_128up);
+}
+
+TEST_F(FPDFPPOEmbeddertest, BadNupParams) {
+  ASSERT_TRUE(OpenDocument("hello_world_multi_pages.pdf"));
+
+  FPDF_DOCUMENT output_doc_zero_row =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 0, 3);
+  ASSERT_TRUE(output_doc_zero_row);
+  EXPECT_EQ(0, FPDF_GetPageCount(output_doc_zero_row));
+  FPDF_CloseDocument(output_doc_zero_row);
+  FPDF_DOCUMENT output_doc_zero_col =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 0);
+  ASSERT_TRUE(output_doc_zero_col);
+  EXPECT_EQ(0, FPDF_GetPageCount(output_doc_zero_col));
+  FPDF_CloseDocument(output_doc_zero_col);
+  FPDF_DOCUMENT output_doc_zero_width =
+      FPDF_ImportNPagesToOne(document(), 0, 792, 2, 1);
+  ASSERT_TRUE(output_doc_zero_width);
+  EXPECT_EQ(0, FPDF_GetPageCount(output_doc_zero_width));
+  FPDF_CloseDocument(output_doc_zero_width);
+  FPDF_DOCUMENT output_doc_zero_height =
+      FPDF_ImportNPagesToOne(document(), 612, 0, 7, 1);
+  ASSERT_TRUE(output_doc_zero_height);
+  EXPECT_EQ(0, FPDF_GetPageCount(output_doc_zero_height));
+  FPDF_CloseDocument(output_doc_zero_height);
+}
+
 TEST_F(FPDFPPOEmbeddertest, BadRepeatViewerPref) {
   ASSERT_TRUE(OpenDocument("repeat_viewer_ref.pdf"));
 
