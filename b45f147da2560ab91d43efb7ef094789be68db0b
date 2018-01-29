@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1516951275 -0800\nnonce AGjzz38bKBmAHcCBYNRIBN3DIJZkoSmDZlhlpCVNMIuVvcjK+TegfC0W3+ghN1Nvn08pFyov8Nbv\n\n0000000000000000000000000000000000000000 b45f147da2560ab91d43efb7ef094789be68db0b refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJaatbrAAoJEKs2LWFaZv17eOsH/3kEtsuk5Inqxx29+uggOHfP\npNlFXnVhAGPAxoYqWfO4/nW7se9XPaVPnbWjm9U2L9aaVPp//LYxAKEks3eGZ9is\nWu8y4DWk1rFUKWBTiPp49Zknp7+K5/jyionuxDSR/KvkSnw9sqPHi9OUwY6QB50F\nRHqYows8fkrWX+mbmInOP1hJ39Uw+n5AebMIDSuWu+jGgbsmznSItUkTyTrMV4NV\n2GMpuoraNCBa7ENCUI4a6GEUh1Cozgir6mm58PyujUMdKncoGdCDAMpLXq5xKMii\nzmNqfQEvSRegYDJX/S4SYcs9ktR44dzRyFNzsaWAkewphQ4kzB3A8aLjrTd89Fc\u003d\n\u003dr1vB\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c519e6c2_ded63d20",
+        "filename": "core/fxge/skia/fx_skia_device.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T14:43:19Z",
+      "side": 1,
+      "message": "Is this also the case in the other implementations of SetClip_PathStroke like the CFX_PSRenderer?",
+      "range": {
+        "startLine": 53,
+        "startChar": 40,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "b45f147da2560ab91d43efb7ef094789be68db0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
