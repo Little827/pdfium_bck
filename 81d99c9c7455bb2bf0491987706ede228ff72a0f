@@ -222,6 +222,23 @@
       "revId": "81d99c9c7455bb2bf0491987706ede228ff72a0f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26b4db45_ecf42d8d",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 54
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T19:02:38Z",
+      "side": 1,
+      "message": "If the document was successfully returned it must be Close\u0027d.",
+      "revId": "81d99c9c7455bb2bf0491987706ede228ff72a0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
