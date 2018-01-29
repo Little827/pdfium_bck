@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9e3fe5b_7b30b9db",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T22:19:16Z",
+      "side": 1,
+      "message": "Cache this.. oh, never mind.",
+      "range": {
+        "startLine": 384,
+        "startChar": 29,
+        "endLine": 384,
+        "endChar": 55
+      },
+      "revId": "340a79024d4f564a9428f7ad6cc4e5eb60be4993",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
