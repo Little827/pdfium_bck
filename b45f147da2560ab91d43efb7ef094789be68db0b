@@ -23,6 +23,30 @@
       "revId": "b45f147da2560ab91d43efb7ef094789be68db0b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f46c777_4589c36e",
+        "filename": "core/fxge/skia/fx_skia_device.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:23:34Z",
+      "side": 1,
+      "message": "Yes. It\u0027s been updated in this CL as well.",
+      "parentUuid": "c519e6c2_ded63d20",
+      "range": {
+        "startLine": 53,
+        "startChar": 40,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "b45f147da2560ab91d43efb7ef094789be68db0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
