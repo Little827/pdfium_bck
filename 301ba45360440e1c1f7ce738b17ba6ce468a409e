@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d99ec49_16876316",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 59
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T21:53:55Z",
+      "side": 1,
+      "message": "nit: internal ()\u0027s not needed.",
+      "revId": "301ba45360440e1c1f7ce738b17ba6ce468a409e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
