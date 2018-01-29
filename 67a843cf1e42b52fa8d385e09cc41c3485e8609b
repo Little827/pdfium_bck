@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "720e83e0_ce73b495",
+        "filename": "xfa/fxfa/cxfa_ffnotify.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T21:16:10Z",
+      "side": 1,
+      "message": "I think you can remove this.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "67a843cf1e42b52fa8d385e09cc41c3485e8609b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
