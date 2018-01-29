@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2a5eab_57dfaab7",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 60
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T22:27:53Z",
+      "side": 1,
+      "message": "Remove commented out code.",
+      "revId": "80b633eab377b5e72ec336a97327e651c74f2740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6351f9e6_3191d926",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 60
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T22:27:53Z",
+      "side": 1,
+      "message": "nit: no brackets",
+      "revId": "80b633eab377b5e72ec336a97327e651c74f2740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9585a87d_f1c769cf",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 60
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T22:27:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "80b633eab377b5e72ec336a97327e651c74f2740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a4e0d9_e3821c74",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 60
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T22:27:53Z",
+      "side": 1,
+      "message": "nit: removel brackets",
+      "revId": "80b633eab377b5e72ec336a97327e651c74f2740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b787cc5a_e7025578",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 60
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T22:27:53Z",
+      "side": 1,
+      "message": "Indent only +2 relative to previous line.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "80b633eab377b5e72ec336a97327e651c74f2740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02fde4c_b74c4011",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 60
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-29T22:27:53Z",
+      "side": 1,
+      "message": "Indent only +2 relative to previous line.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "80b633eab377b5e72ec336a97327e651c74f2740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
