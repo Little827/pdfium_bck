@@ -131,7 +131,7 @@ TEST(MaybeOwned, Release) {
       EXPECT_TRUE(ptr.IsOwned());
       stolen = ptr.Release();
       EXPECT_FALSE(ptr.IsOwned());
-      EXPECT_EQ(ptr, stolen);
+      EXPECT_EQ(nullptr, ptr.Get());
       EXPECT_EQ(0, delete_count);
     }
     EXPECT_EQ(0, delete_count);
