@@ -1,0 +1,283 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e91f0209_1fac11ba",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "No need for \"explicit\" keyword.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c463428e_4326f9ce",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Put methods above member variables.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ec16c6_789daa2c",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "If you need to ASSERT(cond1 \u0026\u0026 cond2), it\u0027s better to write ASSERT(cond1); ASSERT(cond2). That way, if either conditional fails, you know exactly which failed.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d56b8fef_13370b9e",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Just declare these where first used.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a05561a_66e54c54",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Passing by non-const ref is disallowed by the style guide. Either pass by const-ref or by pointer.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f8dead_02f55236",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Give each block below its own local |pStream| variable, since this variable is not needed at this scope level.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5bfaa4_71a6e6ba",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "If size_t is 32-bit, then this can easily overflow if the input |rows| or |columns| have large values.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c16b343_b0869553",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "I\u0027d ASSERT(pDestDoc) here. It\u0027s guaranteed to work.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6730a4f8_f2b33255",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Functions should validate input first. So if this is a nullptr, don\u0027t bother calling FPDF_CreateNewDocument(). Also validate the other arguments before doing anything else. (Not in ExportNPagesToOne()).",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa7ccdb6_aea85793",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Aren\u0027t we going with uint32_t?",
+      "range": {
+        "startLine": 725,
+        "startChar": 14,
+        "endLine": 725,
+        "endChar": 22
+      },
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03033d6_e652b270",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 55
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Extra parenthesis not needed.",
+      "range": {
+        "startLine": 731,
+        "startChar": 6,
+        "endLine": 731,
+        "endChar": 7
+      },
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b571d012_18570a2c",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "What unit is this in? \"measured in points.\"",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84eaa772_2ed27506",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "This parameter doesn\u0027t exist anymore.",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6260b8a3_0a1355d7",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "Add a comments section. e.g.\n\nReturn value:\n    ....\nComments:\n    .....",
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109b4f08_d85feda2",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-29T19:20:35Z",
+      "side": 1,
+      "message": "POD parameters don\u0027t need to be const. e.g. with |index| on line 30.",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "98a49fe85866c1a9763450a01bc1fee457127a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
