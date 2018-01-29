@@ -259,7 +259,8 @@ void* LoadSimpleFont(CPDF_Document* pDoc,
   fontDict->SetNewFor<CPDF_Number>("FirstChar", static_cast<int>(currentChar));
   CPDF_Array* widthsArray = pDoc->NewIndirect<CPDF_Array>();
   while (true) {
-    widthsArray->AddNew<CPDF_Number>(pFont->GetGlyphWidth(glyphIndex));
+    widthsArray->AddNew<CPDF_Number>(
+        static_cast<int>(pFont->GetGlyphWidth(glyphIndex)));
     uint32_t nextChar =
         FXFT_Get_Next_Char(pFont->GetFace(), currentChar, &glyphIndex);
     // Simple fonts have 1-byte charcodes only.
