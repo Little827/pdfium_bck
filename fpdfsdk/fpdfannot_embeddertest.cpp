@@ -4,6 +4,7 @@
 
 #include <cwchar>
 #include <memory>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -487,6 +488,11 @@ TEST_F(FPDFAnnotEmbeddertest, RemoveAnnotation) {
   FPDFPage_CloseAnnot(annot);
   FPDF_ClosePage(new_page);
   FPDF_CloseDocument(new_doc);
+}
+
+TEST_F(FPDFAnnotEmbeddertest, OStringStreamTellp) {
+  std::ostringstream s;
+  EXPECT_EQ(0, s.tellp());
 }
 
 TEST_F(FPDFAnnotEmbeddertest, AddAndModifyPath) {
