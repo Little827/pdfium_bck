@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27c365e9_8c1283c5",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 54
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T17:27:28Z",
+      "side": 1,
+      "message": "This doesn\u0027t change, remove and then remove the Axis struct.",
+      "revId": "81d99c9c7455bb2bf0491987706ede228ff72a0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a6e204_4c6865c7",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 54
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T17:27:28Z",
+      "side": 1,
+      "message": "ditto, which means we can remove the Position enum.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "81d99c9c7455bb2bf0491987706ede228ff72a0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556cdcd1_bcc4233f",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 54
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T17:27:28Z",
+      "side": 1,
+      "message": "We should put this in some kind of unique_ptr so it gets cleaned up in the error returns.",
+      "range": {
+        "startLine": 735,
+        "startChar": 16,
+        "endLine": 735,
+        "endChar": 25
+      },
+      "revId": "81d99c9c7455bb2bf0491987706ede228ff72a0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f2daea5_605bf5f9",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 54
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T17:27:28Z",
+      "side": 1,
+      "message": "These should all still return nullptr if we fail to make the document.",
+      "range": {
+        "startLine": 741,
+        "startChar": 11,
+        "endLine": 741,
+        "endChar": 21
+      },
+      "revId": "81d99c9c7455bb2bf0491987706ede228ff72a0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b19afb4b_4dd476fd",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 54
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-29T17:27:28Z",
+      "side": 1,
+      "message": "Only this one should make the output doc.",
+      "range": {
+        "startLine": 759,
+        "startChar": 9,
+        "endLine": 759,
+        "endChar": 20
+      },
+      "revId": "81d99c9c7455bb2bf0491987706ede228ff72a0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
