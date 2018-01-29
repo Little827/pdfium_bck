@@ -8,6 +8,7 @@
 #define PUBLIC_FPDF_PPO_H_
 
 // NOLINTNEXTLINE(build/include)
+#include "fpdf_edit.h"
 #include "fpdfview.h"
 
 #ifdef __cplusplus
@@ -27,6 +28,29 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_ImportPages(FPDF_DOCUMENT dest_doc,
                                                      FPDF_DOCUMENT src_doc,
                                                      FPDF_BYTESTRING pagerange,
                                                      int index);
+
+// Experimental API.
+// Import pages to a FPDF_DOCUMENT.  The pages of |src_doc| will be combined
+// to provide |columns x rows| pages per |output_doc| page.
+//
+//   src_doc            - The document to be imported.
+//   output_width       - The Output page width measured in pixels.
+//   output_height      - The Output page height measured in pixels.
+//   rows               - The number of pages on X Axis.
+//   columns            - The number of pages on Y Axis.
+//
+// Return value:
+//          A handle to the created document, or NULL on failure.
+//
+// Comments:
+//          num_pages_per_page = numPagesOnXAxis * numPagesOnYAxis
+//
+FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
+FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
+                       double output_width,
+                       double output_height,
+                       unsigned int rows,
+                       unsigned int columns);
 
 // Copy the viewer preferences from |src_doc| into |dest_doc|.
 //
