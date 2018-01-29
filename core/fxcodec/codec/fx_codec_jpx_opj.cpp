@@ -82,6 +82,9 @@ void sycc444_to_rgb(opj_image_t* img) {
   int* r = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* g = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* b = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
+  if (!r || !g || !b)
+    return;
+
   int* d0 = r;
   int* d1 = g;
   int* d2 = b;
@@ -141,6 +144,9 @@ void sycc422_to_rgb(opj_image_t* img) {
   int* r = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* g = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* b = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
+  if (!r || !g || !b)
+    return;
+
   int* d0 = r;
   int* d1 = g;
   int* d2 = b;
@@ -312,6 +318,9 @@ void sycc420_to_rgb(opj_image_t* img) {
   int* r = static_cast<int*>(opj_image_data_alloc(safeSize.ValueOrDie()));
   int* g = static_cast<int*>(opj_image_data_alloc(safeSize.ValueOrDie()));
   int* b = static_cast<int*>(opj_image_data_alloc(safeSize.ValueOrDie()));
+  if (!r || !g || !b)
+    return;
+
   int* d0 = r;
   int* d1 = g;
   int* d2 = b;
