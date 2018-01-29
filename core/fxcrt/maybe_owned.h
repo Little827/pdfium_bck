@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/unowned_ptr.h"
 
 namespace fxcrt {
 
@@ -41,8 +42,8 @@ class MaybeOwned {
     m_pObj = ptr;
   }
 
+  T* Get() const { return m_pObj.Get(); }
   bool IsOwned() const { return !!m_pOwnedObj; }
-  T* Get() const { return m_pObj; }
   std::unique_ptr<T, D> Release() {
     ASSERT(IsOwned());
     return std::move(m_pOwnedObj);
@@ -78,11 +79,11 @@ class MaybeOwned {
 
   explicit operator bool() const { return !!m_pObj; }
   T& operator*() const { return *m_pObj; }
-  T* operator->() const { return m_pObj; }
+  T* operator->() const { return m_pObj.Get(); }
 
  private:
   std::unique_ptr<T, D> m_pOwnedObj;
-  T* m_pObj;
+  UnownedPtr<T> m_pObj;
 };
 
 }  // namespace fxcrt
