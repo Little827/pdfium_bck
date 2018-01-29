@@ -501,7 +501,7 @@ void CFX_Font::ClearFaceCache() {
 }
 
 void CFX_Font::AdjustMMParams(int glyph_index,
-                              int dest_width,
+                              uint32_t dest_width,
                               int weight) const {
   FXFT_MM_Var pMasters = nullptr;
   FXFT_Get_MM_Var(m_Face, &pMasters);
@@ -544,7 +544,7 @@ void CFX_Font::AdjustMMParams(int glyph_index,
 }
 
 CFX_PathData* CFX_Font::LoadGlyphPathImpl(uint32_t glyph_index,
-                                          int dest_width) const {
+                                          uint32_t dest_width) const {
   if (!m_Face)
     return nullptr;
   FXFT_Set_Pixel_Sizes(m_Face, 0, 64);
@@ -613,7 +613,7 @@ CFX_PathData* CFX_Font::LoadGlyphPathImpl(uint32_t glyph_index,
 const CFX_GlyphBitmap* CFX_Font::LoadGlyphBitmap(uint32_t glyph_index,
                                                  bool bFontStyle,
                                                  const CFX_Matrix* pMatrix,
-                                                 int dest_width,
+                                                 uint32_t dest_width,
                                                  int anti_alias,
                                                  int& text_flags) const {
   return GetFaceCache()->LoadGlyphBitmap(this, glyph_index, bFontStyle, pMatrix,
@@ -621,7 +621,7 @@ const CFX_GlyphBitmap* CFX_Font::LoadGlyphBitmap(uint32_t glyph_index,
 }
 
 const CFX_PathData* CFX_Font::LoadGlyphPath(uint32_t glyph_index,
-                                            int dest_width) const {
+                                            uint32_t dest_width) const {
   return GetFaceCache()->LoadGlyphPath(this, glyph_index, dest_width);
 }
 
