@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5996a66_dc1fddb8",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T21:34:36Z",
+      "side": 1,
+      "message": "This table is small, can we reverse these numbers into strings, and then just do linear search over the strings instead of the hashes?\n\n(I\"m guessing they\u0027re em, ex, in, mm, pc, pt, px, cm or something similar)",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 45
+      },
+      "revId": "36116cd16591dce3cc4ff42bc46991d3aa4713ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
