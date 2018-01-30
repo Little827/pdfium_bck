@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "04c8358d_bf6d1050",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-30T21:12:24Z",
+      "side": 0,
+      "message": "Because if scalingFactor is a division of two unsigned values then the assert will trivially hold, so it is no longer necessary.",
+      "parentUuid": "1d2647a1_27e708a8",
+      "revId": "580f5dc88e3cbe8ed08661b829e2f560870e8b71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85bf09fc_6a7ef11f",
         "filename": "core/fpdftext/cpdf_textpage.cpp",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d4ed9a66_fce966ba",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-30T21:12:24Z",
+      "side": 0,
+      "message": "GetCharWidth now returns unsigned, so no.",
+      "parentUuid": "85bf09fc_6a7ef11f",
+      "range": {
+        "startLine": 1059,
+        "startChar": 25,
+        "endLine": 1059,
+        "endChar": 28
+      },
+      "revId": "580f5dc88e3cbe8ed08661b829e2f560870e8b71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "956efb0c_3691ff07",
         "filename": "core/fxge/cfx_font.cpp",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2018-01-30T20:08:30Z",
       "side": 0,
       "message": "Why did this one change to 0?",
+      "range": {
+        "startLine": 310,
+        "startChar": 20,
+        "endLine": 310,
+        "endChar": 37
+      },
+      "revId": "580f5dc88e3cbe8ed08661b829e2f560870e8b71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64b8319_2eb62dd0",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-01-30T21:12:24Z",
+      "side": 0,
+      "message": "To avoid returning a negative value when horiAdvance is negative. This is not equivalent to what we had before, but I believe should work because widths are not supposed to be negative.",
+      "parentUuid": "956efb0c_3691ff07",
       "range": {
         "startLine": 310,
         "startChar": 20,
