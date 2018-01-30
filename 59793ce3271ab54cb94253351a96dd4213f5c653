@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c20eef06_af989917",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T19:23:13Z",
+      "side": 1,
+      "message": "I wish, the code in another file was using it as a ref param. That\u0027s what prompted the changes from \u0026 to * in the other chunk of code. This, I believe will get modified through that code.",
+      "parentUuid": "68c9056a_0043c9fa",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 20
+      },
+      "revId": "59793ce3271ab54cb94253351a96dd4213f5c653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "651d8dfc_df81a5c1",
         "filename": "fxjs/xfa/cjx_eventpseudomodel.cpp",
         "patchSetId": 1
@@ -41,6 +65,53 @@
         "startChar": 36,
         "endLine": 193,
         "endChar": 49
+      },
+      "revId": "59793ce3271ab54cb94253351a96dd4213f5c653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2b1616_9d72962a",
+        "filename": "fxjs/xfa/cjx_eventpseudomodel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T19:23:13Z",
+      "side": 1,
+      "message": "Yea, cleaning this up in CJX will take a good chunk of work .... there are .... hundreds of these that will need to be changed and I\u0027ll need to understand how the v8 code for XFA works. I\u0027ve started, but ran down another rabbit hole chasing yaks.",
+      "parentUuid": "651d8dfc_df81a5c1",
+      "range": {
+        "startLine": 193,
+        "startChar": 36,
+        "endLine": 193,
+        "endChar": 49
+      },
+      "revId": "59793ce3271ab54cb94253351a96dd4213f5c653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc262849_b140d111",
+        "filename": "fxjs/xfa/cjx_eventpseudomodel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T19:23:13Z",
+      "side": 1,
+      "message": "Value is modified here ....",
+      "range": {
+        "startLine": 210,
+        "startChar": 28,
+        "endLine": 210,
+        "endChar": 54
       },
       "revId": "59793ce3271ab54cb94253351a96dd4213f5c653",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
