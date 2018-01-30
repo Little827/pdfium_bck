@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCRT_CSS_CFX_CSSDATATABLE_H_
-#define CORE_FXCRT_CSS_CFX_CSSDATATABLE_H_
+#ifndef CORE_FXCRT_CSS_CFX_CSSPROPERTYTABLE_H_
+#define CORE_FXCRT_CSS_CFX_CSSPROPERTYTABLE_H_
 
 #include <memory>
 #include <vector>
@@ -15,14 +15,17 @@
 #include "core/fxcrt/css/cfx_cssvalue.h"
 #include "core/fxcrt/fx_system.h"
 
-struct CFX_CSSPropertyTable {
-  CFX_CSSProperty eName;
-  const wchar_t* pszName;
-  uint32_t dwHash;
-  uint32_t dwType;
+class CFX_CSSPropertyTable {
+ public:
+  struct Entry {
+    CFX_CSSProperty eName;
+    const wchar_t* pszName;
+    uint32_t dwHash;
+    uint32_t dwType;
+  };
+
+  static const Entry* GetByName(WideStringView nam);
+  static const Entry* GetByEnum(CFX_CSSProperty property);
 };
 
-const CFX_CSSPropertyTable* CFX_GetCSSPropertyByName(WideStringView wsName);
-const CFX_CSSPropertyTable* CFX_GetCSSPropertyByEnum(CFX_CSSProperty eName);
-
-#endif  // CORE_FXCRT_CSS_CFX_CSSDATATABLE_H_
+#endif  // CORE_FXCRT_CSS_CFX_CSSPROPERTYTABLE_H_
