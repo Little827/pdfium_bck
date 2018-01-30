@@ -22,6 +22,29 @@
       "revId": "a44b977a999c5de508ee2f1d2ea4eb813ae203c7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cfa8eb1_0fb52cd7",
+        "filename": "fxjs/xfa/cjx_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T21:54:50Z",
+      "side": 1,
+      "message": "nit: prefer lambda inline.",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "a44b977a999c5de508ee2f1d2ea4eb813ae203c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
