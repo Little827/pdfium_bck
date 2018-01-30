@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "4ed85073_b41646b7",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "In this test, I care more about whether number of pages are calculated correctly.  I don\u0027t have a good way to render content and check for correctness, hence deferred that test case.  More tests can be added later on.",
+      "parentUuid": "6e16d09a_896f9c29",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3f095a7_09f9deb1",
         "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
         "patchSetId": 62
@@ -81,6 +99,24 @@
       "writtenOn": "2018-01-30T01:11:00Z",
       "side": 1,
       "message": "You can use FPDFDocumentDeleter so this is not needed.\n\n#include \"public/cpp/fpdf_deleters.h\"\n\n{\n  std::unique_ptr\u003cvoid, FPDFDocumentDeleter\u003e output_doc_2up(\n      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 1));\n  ASSERT_TRUE(output_doc_2up);\n  EXPECT_EQ(3, FPDF_GetPageCount(output_doc_2up.get()));\n}",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e7a1a8_f0a799e7",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "Why not simply close the document after using?  This is a simple case that we know we can close the document safely.",
+      "parentUuid": "c3f095a7_09f9deb1",
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -104,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "384cdcf2_115a5e9a",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9ea6b87_36002477",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bea3c39_6de694a8",
         "filename": "public/fpdf_ppo.h",
         "patchSetId": 62
@@ -121,6 +175,24 @@
     },
     {
       "key": {
+        "uuid": "ca80d4b4_f7ed79bd",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bea3c39_6de694a8",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68b25784_d678433d",
         "filename": "public/fpdf_ppo.h",
         "patchSetId": 62
@@ -135,6 +207,24 @@
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ceaf1a_72012fa0",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "I simply replaced the names.  At this place, it used to be numPagesOnXAxis, and when in terms of rows and columns, I am used to put rows in front of columns.  That\u0027s a habit problem.  The calculation should be correct, though the comments need to be swapped.",
+      "parentUuid": "68b25784_d678433d",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +274,54 @@
     },
     {
       "key": {
+        "uuid": "cb540402_5f0febc9",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7505316d_6eea78a4",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3015c58_d44c5630",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ac0fc13_c7486e41",
+      "range": {
+        "startLine": 46,
+        "startChar": 26,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3f15e4a_1ead38d0",
         "filename": "testing/resources/hello_world_multi_pages.in",
         "patchSetId": 62
@@ -201,6 +339,24 @@
     },
     {
       "key": {
+        "uuid": "44187386_f284ab9b",
+        "filename": "testing/resources/hello_world_multi_pages.in",
+        "patchSetId": 62
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f15e4a_1ead38d0",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0737780f_9fa0092c",
         "filename": "testing/resources/hello_world_multi_pages.in",
         "patchSetId": 62
@@ -215,6 +371,24 @@
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d76d74_931d2429",
+        "filename": "testing/resources/hello_world_multi_pages.in",
+        "patchSetId": 62
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T01:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0737780f_9fa0092c",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
