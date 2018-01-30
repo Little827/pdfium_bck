@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "5cd417a9_b803c18f",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "I don\u0027t quite get what you are asking for here?  Are you asking for comments?  Or are you asking for understanding what this struct does?",
+      "parentUuid": "863352c3_317ad7cb",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4e510a1_184fb99a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
@@ -412,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "edc36a15_589bfde3",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "in this case, I don\u0027t need to use double. as everything passed in is float.",
+      "parentUuid": "9194a6c5_7bb3aaa9",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e01e8606_1f56b5c6",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
@@ -462,6 +498,24 @@
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e14995e_2a27db12",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f975ae_f16e28d5",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -708,6 +762,30 @@
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77539c4e_af7a1dd2",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "747faabc_527bea23",
+      "range": {
+        "startLine": 366,
+        "startChar": 47,
+        "endLine": 366,
+        "endChar": 50
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {

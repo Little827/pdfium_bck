@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6c5d5fae_3f5f14cb",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c45bd78_9fd995c2",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e109d1a_6bc58275",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 65
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9dce15aa_606185bc",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e109d1a_6bc58275",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a553fa88_5eb9ec3a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 65
@@ -56,6 +98,42 @@
       "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3284029_9f7dff9f",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "From my experience, I often found that read comments of a class or a function will provide some idea of what it does, however I always needed to read the implementation in order to fully understand what it does.",
+      "parentUuid": "a553fa88_5eb9ec3a",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b655eb1b_7020fe0b",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a553fa88_5eb9ec3a",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "aeaf575b_ee7ba210",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628b14c9_95b509b0",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59dd5325_743c067d",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 65
@@ -99,6 +201,42 @@
     },
     {
       "key": {
+        "uuid": "c20f5a74_3f94e3c2",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59dd5325_743c067d",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac3d1150_29fbf94d",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59dd5325_743c067d",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d84266_70b11518",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 65
@@ -113,6 +251,24 @@
       "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc7592f_7af39658",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Since this is a helper function, if m_numPagesOnXAxix is zero, it will never reach this line.  But from public class point of view, you are right, it may cause problems.",
+      "parentUuid": "84d84266_70b11518",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "57b90351_8e698be5",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 65
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f133a778_0669b646",
+      "range": {
+        "startLine": 33,
+        "startChar": 69,
+        "endLine": 33,
+        "endChar": 79
+      },
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd130237_99d52cb0",
         "filename": "public/fpdf_ppo.h",
         "patchSetId": 65
@@ -153,6 +333,24 @@
       "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608bad33_fa92e798",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 65
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-30T22:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd130237_99d52cb0",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
