@@ -184,6 +184,30 @@
       "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec1f13f5_c0585223",
+        "filename": "fpdfsdk/fsdk_actionhandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T18:13:20Z",
+      "side": 1,
+      "message": "We actually use it already, looks like we have about 5 methods that accept a std::function as a param. Looks like thestig@ added a few of them in CFX_ImageTransformer.",
+      "parentUuid": "c3bbfb30_82c509b5",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
