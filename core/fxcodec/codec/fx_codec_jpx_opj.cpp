@@ -41,6 +41,19 @@ opj_stream_t* fx_opj_stream_create_memory_stream(DecodeData* data,
   return stream;
 }
 
+bool are_rgb_allocated(int* r, int* g, int* b) {
+  if (r && g && b)
+    return true;
+
+  if (r)
+    opj_image_data_free(r);
+  if (g)
+    opj_image_data_free(g);
+  if (b)
+    opj_image_data_free(b);
+  return false;
+}
+
 void sycc_to_rgb(int offset,
                  int upb,
                  int y,
@@ -82,6 +95,9 @@ void sycc444_to_rgb(opj_image_t* img) {
   int* r = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* g = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* b = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
+  if (!are_rgb_allocated(r, g, b))
+    return;
+
   int* d0 = r;
   int* d1 = g;
   int* d2 = b;
@@ -141,6 +157,9 @@ void sycc422_to_rgb(opj_image_t* img) {
   int* r = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* g = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
   int* b = static_cast<int*>(opj_image_data_alloc(max_size.ValueOrDie()));
+  if (!are_rgb_allocated(r, g, b))
+    return;
+
   int* d0 = r;
   int* d1 = g;
   int* d2 = b;
@@ -312,6 +331,9 @@ void sycc420_to_rgb(opj_image_t* img) {
   int* r = static_cast<int*>(opj_image_data_alloc(safeSize.ValueOrDie()));
   int* g = static_cast<int*>(opj_image_data_alloc(safeSize.ValueOrDie()));
   int* b = static_cast<int*>(opj_image_data_alloc(safeSize.ValueOrDie()));
+  if (!are_rgb_allocated(r, g, b))
+    return;
+
   int* d0 = r;
   int* d1 = g;
   int* d2 = b;
