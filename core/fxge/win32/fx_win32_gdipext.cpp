@@ -1395,6 +1395,8 @@ class GpStream final : public IStream {
         start = m_ReadPos;
         break;
       case STREAM_SEEK_END:
+        if (m_InterStream.tellp() < 0)
+          return STG_E_SEEKERROR;
         start = m_InterStream.tellp();
         break;
       default:
@@ -1416,6 +1418,10 @@ class GpStream final : public IStream {
       return STG_E_INVALIDFUNCTION;
 
     ZeroMemory(pStatstg, sizeof(STATSTG));
+
+    if (m_InterStream.tellp() < 0)
+      return STG_E_SEEKERROR;
+
     pStatstg->cbSize.QuadPart = m_InterStream.tellp();
     return S_OK;
   }
