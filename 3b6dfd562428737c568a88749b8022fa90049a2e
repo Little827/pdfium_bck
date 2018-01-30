@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72287943_bc1425d4",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:08:30Z",
+      "side": 1,
+      "message": "ewww....\n\nuint32_t w \u003d pFont-\u003eGetCharWidgetF(charCode);\nif (w \u003e 0)\n  return w;\n\nByteString str;\npFont-\u003eAppendChar(\u0026str, charCode);\nw \u003d pFont-\u003eGetStringWidth(str.c_str(), 1);\nif (w \u003e 0)\n  return w;",
+      "range": {
+        "startLine": 603,
+        "startChar": 3,
+        "endLine": 610,
+        "endChar": 0
+      },
+      "revId": "3b6dfd562428737c568a88749b8022fa90049a2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "036e3e26_f04a5350",
+        "filename": "fpdfsdk/fpdfedittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:08:30Z",
+      "side": 1,
+      "message": "Overflow?",
+      "range": {
+        "startLine": 263,
+        "startChar": 8,
+        "endLine": 263,
+        "endChar": 60
+      },
+      "revId": "3b6dfd562428737c568a88749b8022fa90049a2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b179a14_b1bb2437",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:08:30Z",
+      "side": 1,
+      "message": "stati cast (is this cast even needed?)",
+      "range": {
+        "startLine": 147,
+        "startChar": 17,
+        "endLine": 147,
+        "endChar": 25
+      },
+      "revId": "3b6dfd562428737c568a88749b8022fa90049a2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "065bd4ec_21e2a47a",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:08:30Z",
+      "side": 1,
+      "message": "Remove glyph_value brackets",
+      "range": {
+        "startLine": 147,
+        "startChar": 37,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "3b6dfd562428737c568a88749b8022fa90049a2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

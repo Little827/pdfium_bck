@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d2647a1_27e708a8",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:08:30Z",
+      "side": 0,
+      "message": "why remove?",
+      "revId": "580f5dc88e3cbe8ed08661b829e2f560870e8b71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85bf09fc_6a7ef11f",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:08:30Z",
+      "side": 0,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 1059,
+        "startChar": 25,
+        "endLine": 1059,
+        "endChar": 28
+      },
+      "revId": "580f5dc88e3cbe8ed08661b829e2f560870e8b71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956efb0c_3691ff07",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:08:30Z",
+      "side": 0,
+      "message": "Why did this one change to 0?",
+      "range": {
+        "startLine": 310,
+        "startChar": 20,
+        "endLine": 310,
+        "endChar": 37
+      },
+      "revId": "580f5dc88e3cbe8ed08661b829e2f560870e8b71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
