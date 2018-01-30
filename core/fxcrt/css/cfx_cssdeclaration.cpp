@@ -77,11 +77,11 @@ const CFX_CSSPropertyValueEntry propertyValueTable[] = {
     {CFX_CSSPropertyValue::TextTop, L"text-top", 0xFCB58D45},
 };
 
-struct CFX_CSSLengthUnitTable {
+struct CFX_CSSLengthUnitEntry {
   uint16_t wHash;
   CFX_CSSNumberType wValue;
 };
-const CFX_CSSLengthUnitTable g_CFX_CSSLengthUnits[] = {
+const CFX_CSSLengthUnitEntry lengthUnitTable[] = {
     {0x0672, CFX_CSSNumberType::EMS},
     {0x067D, CFX_CSSNumberType::EXS},
     {0x1AF7, CFX_CSSNumberType::Inches},
@@ -124,25 +124,19 @@ const CFX_CSSPropertyValueEntry* GetCSSPropertyValueByName(
   return nullptr;
 }
 
-const CFX_CSSLengthUnitTable* GetCSSLengthUnitByName(
-    const WideStringView& wsName) {
-  ASSERT(!wsName.IsEmpty());
-  uint16_t wHash = FX_HashCode_GetW(wsName, true);
-  int32_t iEnd =
-      sizeof(g_CFX_CSSLengthUnits) / sizeof(CFX_CSSLengthUnitTable) - 1;
-  int32_t iMid, iStart = 0;
-  uint16_t wMid;
-  do {
-    iMid = (iStart + iEnd) / 2;
-    wMid = g_CFX_CSSLengthUnits[iMid].wHash;
-    if (wHash == wMid) {
-      return g_CFX_CSSLengthUnits + iMid;
-    } else if (wHash > wMid) {
-      iStart = iMid + 1;
-    } else {
-      iEnd = iMid - 1;
-    }
-  } while (iStart <= iEnd);
+const CFX_CSSLengthUnitEntry* GetCSSLengthUnitByName(WideStringView wsName) {
+  if (wsName.IsEmpty())
+    return nullptr;
+
+  auto cmpFunc = [](const CFX_CSSLengthUnitEntry& iter, const uint16_t& hash) {
+    return iter.wHash < hash;
+  };
+
+  uint16_t hash = FX_HashCode_GetW(wsName, true);
+  auto* result = std::lower_bound(std::begin(lengthUnitTable),
+                                  std::end(lengthUnitTable), hash, cmpFunc);
+  if (result != std::end(lengthUnitTable) && result->wHash == hash)
+    return result;
   return nullptr;
 }
 
@@ -182,7 +176,7 @@ bool ParseCSSNumber(const wchar_t* pszValue,
   if (iValueLen >= 1 && *pszValue == '%') {
     eUnit = CFX_CSSNumberType::Percent;
   } else if (iValueLen == 2) {
-    const CFX_CSSLengthUnitTable* pUnit =
+    const CFX_CSSLengthUnitEntry* pUnit =
         GetCSSLengthUnitByName(WideStringView(pszValue, 2));
     if (pUnit)
       eUnit = pUnit->wValue;
