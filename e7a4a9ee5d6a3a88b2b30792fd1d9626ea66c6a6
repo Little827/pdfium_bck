@@ -160,6 +160,30 @@
       "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3bbfb30_82c509b5",
+        "filename": "fpdfsdk/fsdk_actionhandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T18:09:02Z",
+      "side": 1,
+      "message": "Actually, its banned in favor of base::Callback, which we don\u0027t have (nor probably want) here.  But its used in v8, so ... banned except in sub-projects?  Maybe ping nico?",
+      "parentUuid": "b6ee6e7d_4f13b0fe",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
