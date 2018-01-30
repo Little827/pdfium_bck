@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2d1e845_87f1dcda",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T21:35:36Z",
+      "side": 1,
+      "message": "ditto, can we reverse and use strings with linear search?",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "7f2b6d7b0c5b0fb28cd9d15bfbebc1687a9ce557",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a54429_c97b5d7c",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T21:35:36Z",
+      "side": 1,
+      "message": "Remove, handled by if below.",
+      "revId": "7f2b6d7b0c5b0fb28cd9d15bfbebc1687a9ce557",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
