@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d85a412c_32a0193e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 62
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "Part of this line can fit on the previous line. Re-wrap.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccfc2dff_43f9f701",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 62
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "The parameter names in the API has changed, so update here accordingly.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4fef2e_f26e8f2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 62
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "This note should go in the header file under the comments section as well.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e16d09a_896f9c29",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "Are you going to check the pages of the output document have the correct dimensions? Render the outputs in this test?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f095a7_09f9deb1",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "You can use FPDFDocumentDeleter so this is not needed.\n\n#include \"public/cpp/fpdf_deleters.h\"\n\n{\n  std::unique_ptr\u003cvoid, FPDFDocumentDeleter\u003e output_doc_2up(\n      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 1));\n  ASSERT_TRUE(output_doc_2up);\n  EXPECT_EQ(3, FPDF_GetPageCount(output_doc_2up.get()));\n}",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ea6b87_36002477",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bea3c39_6de694a8",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "How about:\n\nCreate a new document from |src_doc|. The pages of ...",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b25784_d678433d",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "If I call:\n\nFPDF_ImportNPagesToOne(src_doc, 792, 612, 2, 1);  // rows \u003d 2, columns \u003d 1\n\nI get back:\n\n +-----+-----+\n |     |     |\n |  1  |  2  |\n |     |     |\n +-----+-----+\n\nIsn\u0027t this 1 row and 2 columns?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7505316d_6eea78a4",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "There is no variable by this name that\u0027s visible to the reader. So write this in plain English.",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac0fc13_c7486e41",
+        "filename": "public/fpdf_ppo.h",
+        "patchSetId": 62
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "These names are ouf of date.",
+      "range": {
+        "startLine": 46,
+        "startChar": 26,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3f15e4a_1ead38d0",
+        "filename": "testing/resources/hello_world_multi_pages.in",
+        "patchSetId": 62
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "For testing, it may be more interesting to have pages where the width and height are not the same.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0737780f_9fa0092c",
+        "filename": "testing/resources/hello_world_multi_pages.in",
+        "patchSetId": 62
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T01:11:00Z",
+      "side": 1,
+      "message": "We have two types of objects: pages, and page contents.\n\nCan you order them one of the following ways?\n\n- the pages are objects 3-7, and the page contents are 8-12\n\n- the page + associated contents are consistently interleaved. e.g. page 1 is 3 and 4, page 2 is 5 and 6, etc.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
