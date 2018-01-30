@@ -20,6 +20,7 @@ class CPDFSDK_FormFillEnvironment;
 class CPDF_Bookmark;
 class CPDF_Dictionary;
 class CPDF_FormField;
+class IJS_EventContext;
 
 class CPDFSDK_ActionHandler {
  public:
@@ -56,6 +57,13 @@ class CPDFSDK_ActionHandler {
                                 PDFSDK_FieldAction& data);
 
  private:
+  void RunActionScript(const CPDF_Action& action,
+                       CPDFSDK_FormFillEnvironment* pFormFillEnv,
+                       std::function<void(IJS_EventContext* context)> cb);
+  void RunScript(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+                 const WideString& script,
+                 std::function<void(IJS_EventContext* context)> cb);
+
   bool ExecuteDocumentOpenAction(const CPDF_Action& action,
                                  CPDFSDK_FormFillEnvironment* pFormFillEnv,
                                  std::set<CPDF_Dictionary*>* visited);
