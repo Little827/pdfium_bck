@@ -28,6 +28,30 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_ImportPages(FPDF_DOCUMENT dest_doc,
                                                      FPDF_BYTESTRING pagerange,
                                                      int index);
 
+// Experimental API.
+// Create a new document from |src_doc|.  The pages of |src_doc| will be
+// combined to provide |numPagesOnXAxis x numPagesOnYAxis| pages per output_doc
+// page.
+//
+//   src_doc            - The document to be imported.
+//   output_width       - The Output page width measured in pixels.
+//   output_height      - The Output page height measured in pixels.
+//   numPagesOnXAxis    - The number of pages on X Axis.
+//   numPagesOnYAxis    - The number of pages on Y Axis.
+//
+// Return value:
+//   A handle to the created document, or NULL on failure.
+//
+// Comments:
+//   number of pages per page = numPagesOnXAxis * numPagesOnYAxis
+//
+FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
+FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
+                       double output_width,
+                       double output_height,
+                       unsigned int numPagesOnXAxis,
+                       unsigned int numPagesOnYAxis);
+
 // Copy the viewer preferences from |src_doc| into |dest_doc|.
 //
 //   dest_doc - Document to write the viewer preferences into.
