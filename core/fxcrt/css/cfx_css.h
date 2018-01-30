@@ -76,7 +76,6 @@ enum class CFX_CSSPropertyValue : uint8_t {
   Large,
   Left,
   TextTop,
-  LAST_MARKER
 };
 
 // Any entries added/removed here, will need to be mirrored in
