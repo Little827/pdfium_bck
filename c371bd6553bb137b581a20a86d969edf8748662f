@@ -526,6 +526,24 @@
     },
     {
       "key": {
+        "uuid": "ef99428b_266bd31e",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:18:14Z",
+      "side": 1,
+      "message": "Can you add TODOs for what\u0027s missing?",
+      "parentUuid": "4ed85073_b41646b7",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3f095a7_09f9deb1",
         "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
         "patchSetId": 62
@@ -555,6 +573,24 @@
       "side": 1,
       "message": "Why not simply close the document after using?  This is a simple case that we know we can close the document safely.",
       "parentUuid": "c3f095a7_09f9deb1",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66d82f5_0dc47827",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:18:14Z",
+      "side": 1,
+      "message": "Because unique_ptr is a useful tool to help with memory ownership. Which is why I suggest using it whenever possible. Haven\u0027t you seen first hand how easy it is to forget to close document and cause leaks?",
+      "parentUuid": "12e7a1a8_f0a799e7",
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
