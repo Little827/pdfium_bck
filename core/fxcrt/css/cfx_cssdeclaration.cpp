@@ -92,11 +92,11 @@ const CFX_CSSLengthUnitEntry lengthUnitTable[] = {
     {0xFC30, CFX_CSSNumberType::CentiMeters},
 };
 
-struct CFX_CSSColorTable {
+struct CFX_CSSColorEntry {
   uint32_t dwHash;
   FX_ARGB dwValue;
 };
-const CFX_CSSColorTable g_CFX_CSSColors[] = {
+const CFX_CSSColorEntry colorTable[] = {
     {0x031B47FE, 0xff000080}, {0x0BB8DF5B, 0xffff0000},
     {0x0D82A78C, 0xff800000}, {0x2ACC82E8, 0xff00ffff},
     {0x2D083986, 0xff008080}, {0x4A6A6195, 0xffc0c0c0},
@@ -140,23 +140,20 @@ const CFX_CSSLengthUnitEntry* GetCSSLengthUnitByName(WideStringView wsName) {
   return nullptr;
 }
 
-const CFX_CSSColorTable* GetCSSColorByName(const WideStringView& wsName) {
+const CFX_CSSColorEntry* GetCSSColorByName(WideStringView wsName) {
   ASSERT(!wsName.IsEmpty());
-  uint32_t dwHash = FX_HashCode_GetW(wsName, true);
-  int32_t iEnd = sizeof(g_CFX_CSSColors) / sizeof(CFX_CSSColorTable) - 1;
-  int32_t iMid, iStart = 0;
-  uint32_t dwMid;
-  do {
-    iMid = (iStart + iEnd) / 2;
-    dwMid = g_CFX_CSSColors[iMid].dwHash;
-    if (dwHash == dwMid) {
-      return g_CFX_CSSColors + iMid;
-    } else if (dwHash > dwMid) {
-      iStart = iMid + 1;
-    } else {
-      iEnd = iMid - 1;
-    }
-  } while (iStart <= iEnd);
+  if (wsName.IsEmpty())
+    return nullptr;
+
+  auto cmpFunc = [](const CFX_CSSColorEntry& iter, const uint32_t& hash) {
+    return iter.dwHash < hash;
+  };
+
+  uint32_t hash = FX_HashCode_GetW(wsName, true);
+  auto* result = std::lower_bound(std::begin(colorTable), std::end(colorTable),
+                                  hash, cmpFunc);
+  if (result != std::end(colorTable) && result->dwHash == hash)
+    return result;
   return nullptr;
 }
 
@@ -257,7 +254,7 @@ bool CFX_CSSDeclaration::ParseCSSColor(const wchar_t* pszValue,
     return true;
   }
 
-  const CFX_CSSColorTable* pColor =
+  const CFX_CSSColorEntry* pColor =
       GetCSSColorByName(WideStringView(pszValue, iValueLen));
   if (!pColor)
     return false;
@@ -594,7 +591,7 @@ bool CFX_CSSDeclaration::ParseBorderProperty(
         break;
       }
       case CFX_CSSPrimitiveType::String: {
-        const CFX_CSSColorTable* pColorItem =
+        const CFX_CSSColorEntry* pColorItem =
             GetCSSColorByName(WideStringView(pszValue, iValueLen));
         if (pColorItem)
           continue;
