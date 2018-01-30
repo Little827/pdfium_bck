@@ -7,6 +7,7 @@
 #include "core/fxcodec/codec/codec_int.h"
 
 #include <algorithm>
+#include <limits>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -40,8 +41,9 @@ static void my_free_func(void* opaque, void* address) {
 namespace {
 
 uint32_t FlateGetPossiblyTruncatedTotalOut(void* context) {
-  return pdfium::base::saturated_cast<uint32_t>(
-      static_cast<z_stream*>(context)->total_out);
+  return std::min(pdfium::base::saturated_cast<uint32_t>(
+                      static_cast<z_stream*>(context)->total_out),
+                  std::numeric_limits<uint32_t>::max() / 4);
 }
 
 uint32_t FlateGetPossiblyTruncatedTotalIn(void* context) {
