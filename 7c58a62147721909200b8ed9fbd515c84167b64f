@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a558156b_2b7be0a2",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T21:53:41Z",
+      "side": 1,
+      "message": "nit: prefer the lambda inline at time of call.",
+      "range": {
+        "startLine": 116,
+        "startChar": 15,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "7c58a62147721909200b8ed9fbd515c84167b64f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
