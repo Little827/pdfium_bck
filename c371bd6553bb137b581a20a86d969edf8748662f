@@ -394,6 +394,24 @@
     },
     {
       "key": {
+        "uuid": "9194a6c5_7bb3aaa9",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T21:58:50Z",
+      "side": 1,
+      "message": "What did you do to address the double to float issue I raised?\n\nI looked into this last night, and came to the conclusion that some of the public APIs are wrong to be using doubles in the first place. They should be using floats. I filed a bug to discuss this. Let\u0027s hold off on any changes on this CL until we come to a conclusion. https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d996",
+      "parentUuid": "45c6b0ae_cef75ab2",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e01e8606_1f56b5c6",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
