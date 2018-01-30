@@ -22,6 +22,29 @@
       "revId": "59793ce3271ab54cb94253351a96dd4213f5c653",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "651d8dfc_df81a5c1",
+        "filename": "fxjs/xfa/cjx_eventpseudomodel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T19:02:58Z",
+      "side": 1,
+      "message": "Ick.  You know how I feel about overloading setters and getters vs. separate methods ... later.",
+      "range": {
+        "startLine": 193,
+        "startChar": 36,
+        "endLine": 193,
+        "endChar": 49
+      },
+      "revId": "59793ce3271ab54cb94253351a96dd4213f5c653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
