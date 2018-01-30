@@ -2,6 +2,120 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c45bd78_9fd995c2",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "Do you really mean to say \"The space on the output page is evenly divided ...\"  ?",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e109d1a_6bc58275",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "Please consistently refer to variable foo as |foo|.",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a553fa88_5eb9ec3a",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "The newly added comments still don\u0027t make it clear what\u0027s going on.\n\nPlease approach writing comments from the viewpoint of someone who is just reading the header. One should be able to get an idea of what a function does, what the parameters mean, and what the return value, if any, represent.\n\nIn this case, what are the dimension values the dimensions of? Is |ret| an out parameter that stores the page origin and scale?",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628b14c9_95b509b0",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "Most const POD parameters.",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59dd5325_743c067d",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "What is the input? Is it the number of pages or a page index? What does the pair represent? Are they coordinates or something else?",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d84266_70b11518",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "BTW, this is a bit late. If |m_numPagesOnXAxis| is 0, line 82 would have already caused a SIGFPE.",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f133a778_0669b646",
         "filename": "public/fpdf_ppo.h",
         "patchSetId": 65

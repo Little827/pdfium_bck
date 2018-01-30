@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "863352c3_317ad7cb",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "Renaming the variable isn\u0027t that helpful either.\n\nFor a given page, its dimensions are a rectangle. A rectangle has infinite points inside, but likely this CFX_PointF points to one of the 4 corners. Which one?",
+      "parentUuid": "82dd3a3f_277de6b6",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4e510a1_184fb99a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
@@ -411,6 +429,24 @@
     },
     {
       "key": {
+        "uuid": "e6f975ae_f16e28d5",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "How about renaming the variable to m_subPageIndex then? You may also want to add a comment to say this is a 0-based index.",
+      "parentUuid": "1793ec1b_62c13e45",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fe67d75_f6478ceb",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
@@ -630,6 +666,30 @@
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "747faabc_527bea23",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T20:27:21Z",
+      "side": 1,
+      "message": "So are you going to actually solve this now, or add a TODO to solve it later?",
+      "parentUuid": "a373006c_40b74e94",
+      "range": {
+        "startLine": 366,
+        "startChar": 47,
+        "endLine": 366,
+        "endChar": 50
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
