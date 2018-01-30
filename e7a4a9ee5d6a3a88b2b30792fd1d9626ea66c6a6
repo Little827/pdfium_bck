@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a194172_ec0cbcd6",
+        "filename": "fpdfsdk/fsdk_actionhandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T17:54:43Z",
+      "side": 1,
+      "message": "it\u0027s a pointer?  Just capture by value.",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca85600c_ddfabc51",
+        "filename": "fpdfsdk/fsdk_actionhandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T17:54:43Z",
+      "side": 1,
+      "message": "same for these two",
+      "range": {
+        "startLine": 295,
+        "startChar": 21,
+        "endLine": 295,
+        "endChar": 46
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad22fcc_e2710997",
+        "filename": "fpdfsdk/fsdk_actionhandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T17:54:43Z",
+      "side": 1,
+      "message": "convert to const or pointer.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 29
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05efa91c_8a5030a0",
+        "filename": "fpdfsdk/fsdk_actionhandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T17:54:43Z",
+      "side": 1,
+      "message": "same here. Binding a widestring by value is cheap; no data copy, just a ref count bump to keep the storage alive longer.",
+      "range": {
+        "startLine": 452,
+        "startChar": 13,
+        "endLine": 452,
+        "endChar": 40
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3550167b_bdfa0139",
+        "filename": "fpdfsdk/fsdk_actionhandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T17:54:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 462,
+        "startChar": 13,
+        "endLine": 462,
+        "endChar": 33
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c23f9c_091b5fec",
+        "filename": "fpdfsdk/fsdk_actionhandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T17:54:43Z",
+      "side": 1,
+      "message": "nit: can we call this RunScriptForAction?  \"ActionScript\" is the name of the javascript variant that runs in Flash player, and there might be confusion.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 22
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6ee6e7d_4f13b0fe",
+        "filename": "fpdfsdk/fsdk_actionhandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-30T17:54:43Z",
+      "side": 1,
+      "message": "we allowed to use this per C++11 rules? (guess so, but doublecheck).",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "e7a4a9ee5d6a3a88b2b30792fd1d9626ea66c6a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
