@@ -53,6 +53,444 @@
     },
     {
       "key": {
+        "uuid": "e7711d4a_5fa4c7fb",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "What do these struct members represent? For instance, this is a point, but what does it point to?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e510a1_184fb99a",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "// style comments, since this is a C++ file and not a C header.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e97019a_f85c2c0e",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "More PODs that don\u0027t need to be const.",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce891e56_b4ae5d30",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "Can you add comments to all the methods in this class? If I only read the header and don\u0027t look at the implementations, I can\u0027t figure out what any of them are suppose to do.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69bcc75_5320c89b",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "Can the implementation here use |m_rows| and |m_columns|, so the entire file consistently works with rows and columns. Instead of switching the notation?",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28dbfd09_a395c07d",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "OTOH, member variables that can be const, should be const.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c33cdbe_a96b22b3",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "The input parameter to the ctor is a double, but this is a float. What happens when the input is a larger value than what float can represent?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e01e8606_1f56b5c6",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "The other member variables are fairly obvious. What does this do?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe67d75_f6478ceb",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "nit: no blank space, just like Get{Crop,Trim}Box() below.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27812822_6bf6fe54",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "From reading the header, it\u0027s not obvious that this method appends to |content|. Can you add a comment?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "620c1f93_aeb7b138",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "Why does this need to be public? It has one caller which is CPDF_PageOrganizer.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fda4ef3_d24cb21e",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "Is this really needed as a member variable? Why can\u0027t the SetMediaBox() caller just pass it to SetMediaBox() as a parameter?\n\nSimilarly, does |m_xobjectNum| and |m_xobjs| have to be member variables?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf29ec33_bbad819c",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "Why was it ok for FPDF_ImportPages() to not need this?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00a0b82_00433633",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "What happens if the input document already has an object name \"X1\"?",
+      "range": {
+        "startLine": 366,
+        "startChar": 47,
+        "endLine": 366,
+        "endChar": 50
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef9f9e4d_518dd573",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "Just combine with the next line, since |rcBBox| isn\u0027t used for anything else.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4855f981_16c0f2af",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "... to |pNewXObjectDict| ?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3cf7477_c57e0792",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "This variable is unused.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da0abe9_e0d78736",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "nit: ++i - pre-increment whenever possible.",
+      "range": {
+        "startLine": 418,
+        "startChar": 57,
+        "endLine": 418,
+        "endChar": 60
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e08ca36_129211d0",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "ExportPage() uses CopyInheritable() to look up the \"Resources\" key. Why does it need to do so, and why does this not need to do the same?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79783184_96839c46",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "This is not the right way to use FX_SAFE_SIZE_T. As is, the integer overflow still happens because rows * columns gets evaluated first, before the SafeNumerics code has a chance to do anything.\n\nInstead, the proper use is:\n\nFX_SAFE_SIZE_T safe_numPagesPerSheet \u003d rows;\nsafe_numPagesPerSheet *\u003d columns;",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c1ebc57_61fd164a",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "Move this down to the most inner scope where it\u0027s used.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee87278a_cfa8f317",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "nit: Can you check these in the same order as the parameters are declared?",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0923b2f0_d09da75a",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "nit: std::unique_ptr already have an \"operator bool\" so there\u0027s no need to use .get() here.",
+      "range": {
+        "startLine": 721,
+        "startChar": 17,
+        "endLine": 721,
+        "endChar": 23
+      },
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177d8199_66b28bce",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-30T02:08:05Z",
+      "side": 1,
+      "message": "nit: no blank line here. The declaration and use of |pageOrg| are closely related. So put them together.",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e16d09a_896f9c29",
         "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
         "patchSetId": 62
