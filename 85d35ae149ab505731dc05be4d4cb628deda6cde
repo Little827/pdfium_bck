@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ea2c223_56e946e7",
+        "filename": "fxjs/cjs_object.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-30T20:02:04Z",
+      "side": 1,
+      "message": "This seems redundant now?",
+      "revId": "85d35ae149ab505731dc05be4d4cb628deda6cde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
