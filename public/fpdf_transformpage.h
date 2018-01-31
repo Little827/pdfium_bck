@@ -103,17 +103,19 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
                            const FS_RECTF* clipRect);
 
 /**
-* Transform (scale, rotate, shear, move) the clip path of page object.
-* @param[in] page_object - Handle to a page object. Returned by
-* FPDFPageObj_NewImageObj.
-* @param[in] a  - The coefficient "a" of the matrix.
-* @param[in] b  - The coefficient "b" of the matrix.
-* @param[in] c  - The coefficient "c" of the matrix.
-* @param[in] d  - The coefficient "d" of the matrix.
-* @param[in] e  - The coefficient "e" of the matrix.
-* @param[in] f  - The coefficient "f" of the matrix.
-* @retval None.
-*/
+ * Transform (scale, rotate, shear, move) the clip path of page object.
+ * @param[in] page_object - Handle to a page object. Returned by
+ *                          FPDFPageObj_NewImageObj().
+ * @param[in] matrix      - The transformation matrix.
+ * @retval None.
+ */
+FPDF_EXPORT void FPDF_CALLCONV
+FPDFPageObj_TransformClipPathF(FPDF_PAGEOBJECT page_object,
+                               const FS_MATRIX* matrix);
+
+/**
+ * Deprecated version of FPDFPageObj_TransformClipPathF().
+ */
 FPDF_EXPORT void FPDF_CALLCONV
 FPDFPageObj_TransformClipPath(FPDF_PAGEOBJECT page_object,
                               double a,

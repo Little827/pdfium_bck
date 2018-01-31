@@ -307,6 +307,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFPage_GetMediaBox);
     CHK(FPDFPage_GetCropBox);
     CHK(FPDFPage_TransFormWithClip);
+    CHK(FPDFPageObj_TransformClipPathF);
     CHK(FPDFPageObj_TransformClipPath);
     CHK(FPDF_CreateClipPath);
     CHK(FPDF_DestroyClipPath);

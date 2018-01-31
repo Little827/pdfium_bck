@@ -189,6 +189,25 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
 }
 
 FPDF_EXPORT void FPDF_CALLCONV
+FPDFPageObj_TransformClipPathF(FPDF_PAGEOBJECT page_object,
+                               const FS_MATRIX* matrix) {
+  if (!matrix)
+    return;
+
+  CPDF_PageObject* pPageObj = (CPDF_PageObject*)page_object;
+  if (!pPageObj)
+    return;
+
+  CFX_Matrix cmatrix = CFXMatrixFromFSMatrix(*matrix);
+
+  // Special treatment to shading object, because the ClipPath for shading
+  // object is already transformed.
+  if (!pPageObj->IsShading())
+    pPageObj->TransformClipPath(cmatrix);
+  pPageObj->TransformGeneralState(cmatrix);
+}
+
+FPDF_EXPORT void FPDF_CALLCONV
 FPDFPageObj_TransformClipPath(FPDF_PAGEOBJECT page_object,
                               double a,
                               double b,
@@ -196,16 +215,8 @@ FPDFPageObj_TransformClipPath(FPDF_PAGEOBJECT page_object,
                               double d,
                               double e,
                               double f) {
-  CPDF_PageObject* pPageObj = (CPDF_PageObject*)page_object;
-  if (!pPageObj)
-    return;
-  CFX_Matrix matrix((float)a, (float)b, (float)c, (float)d, (float)e, (float)f);
-
-  // Special treatment to shading object, because the ClipPath for shading
-  // object is already transformed.
-  if (!pPageObj->IsShading())
-    pPageObj->TransformClipPath(matrix);
-  pPageObj->TransformGeneralState(matrix);
+  FS_MATRIX matrix = FSMatrixFromSixDoubles(a, b, c, d, e, f);
+  FPDFPageObj_TransformClipPathF(page_object, &matrix);
 }
 
 FPDF_EXPORT FPDF_CLIPPATH FPDF_CALLCONV FPDF_CreateClipPath(float left,
