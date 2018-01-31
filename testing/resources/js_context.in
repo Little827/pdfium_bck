@@ -1,0 +1,79 @@
+{{header}}
+
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 2
+  /Kids [
+    3 0 R
+     20 0 R
+  ]
+>>
+endobj
+
+% Page number 0.
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /AA 12 0 R
+>>
+
+{{object 12 0}} <<
+  /O 10 0 R
+>>
+endobj
+
+% OpenAction action
+{{object 10 0}} <<
+  /Type /Action
+  /S /JavaScript
+  /JS 11 0 R
+>>
+endobj
+
+% JS program to exexute
+{{object 11 0}} <<
+>>
+stream
+app.runtimeHighlight = true;
+app.alert("Page1: " + app.runtimeHighlight);
+endstream
+endobj
+
+% Page number 1.
+{{object 20 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /AA 22 0 R
+>>
+endobj
+
+% OpenAction action
+{{object 21 0}} <<
+  /Type /Action
+  /S /JavaScript
+  /JS 23 0 R
+>>
+endobj
+
+{{object 22 0}} <<
+  /O 21 0 R
+>>
+endobj
+
+% JS program to exexute
+{{object 23 0}} <<
+>>
+stream
+app.alert("Page2: " + app.runtimeHighlight);
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF

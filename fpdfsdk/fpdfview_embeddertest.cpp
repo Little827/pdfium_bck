@@ -599,3 +599,65 @@ TEST_F(FPDFViewEmbeddertest, UnSupportedOperations_LoadDocument) {
   FPDF_CloseDocument(doc);
   SetDelegate(nullptr);
 }
+
+class LogDelegate : public EmbedderTest::Delegate {
+ public:
+  LogDelegate() {}
+  ~LogDelegate() override {}
+
+  int Alert(FPDF_WIDESTRING message,
+            FPDF_WIDESTRING title,
+            int type,
+            int icon) override {
+    printf("%ls\n", GetPlatformWString(message).c_str());
+    return 0;
+  }
+};
+
+TEST_F(FPDFViewEmbeddertest, MultipleDocumentJSContexts) {
+  LogDelegate delegate;
+  SetDelegate(&delegate);
+
+  // We have a document which has 2 pages. On page 1 we will set the runtime
+  // highlight value to 1 when loaded. On page 2 we will read the runtime
+  // highlight value.  We will load the document twice which should give us two
+  // separate JS contexts. Then, we load page 1 in the first instance. This will
+  // set runtime highlight to true. We then load page 2 in the second instance
+  // which should read the false value of the highlight, we then load
+  // page 2 in the first document and get a true highlight value.
+  std::string file_path;
+  ASSERT_TRUE(PathService::GetTestFilePath("js_context.pdf", &file_path));
+
+  FPDF_DOCUMENT doc1 = FPDF_LoadDocument(file_path.c_str(), "");
+  ASSERT_TRUE(doc1 != nullptr);
+
+  FPDF_FORMHANDLE handle1 = SetupFormFillEnvironment(doc1);
+
+  FPDF_PAGE page1 = FPDF_LoadPage(doc1, 0);
+  FORM_OnAfterLoadPage(page1, handle1);
+  FORM_DoPageAAction(page1, handle1, FPDFPAGE_AACTION_OPEN);
+
+  FPDF_DOCUMENT doc2 = FPDF_LoadDocument(file_path.c_str(), "");
+  ASSERT_TRUE(doc2 != nullptr);
+
+  FPDF_FORMHANDLE handle2 = SetupFormFillEnvironment(doc2);
+
+  FPDF_PAGE page2 = FPDF_LoadPage(doc2, 1);
+  FORM_OnAfterLoadPage(page2, handle2);
+  FORM_DoPageAAction(page2, handle2, FPDFPAGE_AACTION_OPEN);
+
+  FPDF_PAGE page3 = FPDF_LoadPage(doc1, 1);
+  FORM_OnAfterLoadPage(page3, handle1);
+  FORM_DoPageAAction(page3, handle1, FPDFPAGE_AACTION_OPEN);
+
+  FPDF_ClosePage(page3);
+  FPDF_ClosePage(page2);
+  FPDF_ClosePage(page1);
+
+  // FPDFDOC_ExitFormFillEnvironment(doc2);
+  // FPDF_CloseDocument(doc2);
+  // FPDFDOC_ExitFormFillEnvironment(doc1);
+  // FPDF_CloseDocument(doc1);
+
+  SetDelegate(nullptr);
+}
