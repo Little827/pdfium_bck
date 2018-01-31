@@ -209,19 +209,17 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
 }  // namespace
 
 FPDF_EXPORT int FPDF_CALLCONV
-FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
-                             FPDF_PAGE page,
-                             double page_x,
-                             double page_y) {
+FPDFPage_HasFormFieldAtPointF(FPDF_FORMHANDLE hHandle,
+                              FPDF_PAGE page,
+                              float page_x,
+                              float page_y) {
   if (!hHandle)
     return -1;
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (pPage) {
     CPDF_InterForm interform(pPage->m_pDocument.Get());
-    CPDF_FormControl* pFormCtrl = interform.GetControlAtPoint(
-        pPage,
-        CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)),
-        nullptr);
+    CPDF_FormControl* pFormCtrl =
+        interform.GetControlAtPoint(pPage, CFX_PointF(page_x, page_y), nullptr);
     if (!pFormCtrl)
       return -1;
     CPDF_FormField* pFormField = pFormCtrl->GetField();
@@ -257,8 +255,7 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
     CFX_FloatRect rcWidget(rcBBox.left, rcBBox.top, rcBBox.left + rcBBox.width,
                            rcBBox.top + rcBBox.height);
     rcWidget.Inflate(1.0f, 1.0f);
-    if (rcWidget.Contains(CFX_PointF(static_cast<float>(page_x),
-                                     static_cast<float>(page_y)))) {
+    if (rcWidget.Contains(CFX_PointF(page_x, page_y))) {
       return static_cast<int>(pXFAAnnot->GetFormFieldType());
     }
   }
@@ -267,10 +264,19 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
 }
 
 FPDF_EXPORT int FPDF_CALLCONV
-FPDFPage_FormFieldZOrderAtPoint(FPDF_FORMHANDLE hHandle,
-                                FPDF_PAGE page,
-                                double page_x,
-                                double page_y) {
+FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
+                             FPDF_PAGE page,
+                             double page_x,
+                             double page_y) {
+  return FPDFPage_HasFormFieldAtPointF(
+      hHandle, page, static_cast<float>(page_x), static_cast<float>(page_y));
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPage_FormFieldZOrderAtPointF(FPDF_FORMHANDLE hHandle,
+                                 FPDF_PAGE page,
+                                 float page_x,
+                                 float page_y) {
   if (!hHandle)
     return -1;
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
@@ -278,10 +284,17 @@ FPDFPage_FormFieldZOrderAtPoint(FPDF_FORMHANDLE hHandle,
     return -1;
   CPDF_InterForm interform(pPage->m_pDocument.Get());
   int z_order = -1;
-  (void)interform.GetControlAtPoint(
-      pPage, CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)),
-      &z_order);
+  interform.GetControlAtPoint(pPage, CFX_PointF(page_x, page_y), &z_order);
   return z_order;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPage_FormFieldZOrderAtPoint(FPDF_FORMHANDLE hHandle,
+                                FPDF_PAGE page,
+                                double page_x,
+                                double page_y) {
+  return FPDFPage_FormFieldZOrderAtPointF(
+      hHandle, page, static_cast<float>(page_x), static_cast<float>(page_y));
 }
 
 FPDF_EXPORT FPDF_FORMHANDLE FPDF_CALLCONV
@@ -336,15 +349,35 @@ FPDFDOC_ExitFormFillEnvironment(FPDF_FORMHANDLE hHandle) {
   delete pFormFillEnv;
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMoveF(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      int modifier,
+                                                      float page_x,
+                                                      float page_y) {
+  CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
+  if (!pPageView)
+    return false;
+  return pPageView->OnMouseMove(CFX_PointF(page_x, page_y), modifier);
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
                                                      FPDF_PAGE page,
                                                      int modifier,
                                                      double page_x,
                                                      double page_y) {
+  return FORM_OnMouseMoveF(hHandle, page, modifier, static_cast<float>(page_x),
+                           static_cast<float>(page_y));
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnFocusF(FPDF_FORMHANDLE hHandle,
+                                                  FPDF_PAGE page,
+                                                  int modifier,
+                                                  float page_x,
+                                                  float page_y) {
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-  return pPageView->OnMouseMove(CFX_PointF(page_x, page_y), modifier);
+  return pPageView->OnFocus(CFX_PointF(page_x, page_y), modifier);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnFocus(FPDF_FORMHANDLE hHandle,
@@ -352,10 +385,19 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnFocus(FPDF_FORMHANDLE hHandle,
                                                  int modifier,
                                                  double page_x,
                                                  double page_y) {
+  return FORM_OnFocusF(hHandle, page, modifier, static_cast<float>(page_x),
+                       static_cast<float>(page_y));
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDownF(FPDF_FORMHANDLE hHandle,
+                                                        FPDF_PAGE page,
+                                                        int modifier,
+                                                        float page_x,
+                                                        float page_y) {
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-  return pPageView->OnFocus(CFX_PointF(page_x, page_y), modifier);
+  return pPageView->OnLButtonDown(CFX_PointF(page_x, page_y), modifier);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
@@ -363,10 +405,20 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
                                                        int modifier,
                                                        double page_x,
                                                        double page_y) {
+  return FORM_OnLButtonDownF(hHandle, page, modifier,
+                             static_cast<float>(page_x),
+                             static_cast<float>(page_y));
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUpF(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      int modifier,
+                                                      float page_x,
+                                                      float page_y) {
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-  return pPageView->OnLButtonDown(CFX_PointF(page_x, page_y), modifier);
+  return pPageView->OnLButtonUp(CFX_PointF(page_x, page_y), modifier);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
@@ -374,22 +426,41 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
                                                      int modifier,
                                                      double page_x,
                                                      double page_y) {
-  CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
-  if (!pPageView)
-    return false;
-  return pPageView->OnLButtonUp(CFX_PointF(page_x, page_y), modifier);
+  return FORM_OnLButtonUpF(hHandle, page, modifier, static_cast<float>(page_x),
+                           static_cast<float>(page_y));
 }
 
 #ifdef PDF_ENABLE_XFA
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDownF(FPDF_FORMHANDLE hHandle,
+                                                        FPDF_PAGE page,
+                                                        int modifier,
+                                                        float page_x,
+                                                        float page_y) {
+  CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
+  if (!pPageView)
+    return false;
+  return pPageView->OnRButtonDown(CFX_PointF(page_x, page_y), modifier);
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
                                                        FPDF_PAGE page,
                                                        int modifier,
                                                        double page_x,
                                                        double page_y) {
+  return FORM_OnRButtonDownF(hHandle, page, modifier,
+                             static_cast<float>(page_x),
+                             static_cast<float>(page_y));
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUpF(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      int modifier,
+                                                      float page_x,
+                                                      float page_y) {
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-  return pPageView->OnRButtonDown(CFX_PointF(page_x, page_y), modifier);
+  return pPageView->OnRButtonUp(CFX_PointF(page_x, page_y), modifier);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
@@ -397,10 +468,8 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
                                                      int modifier,
                                                      double page_x,
                                                      double page_y) {
-  CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
-  if (!pPageView)
-    return false;
-  return pPageView->OnRButtonUp(CFX_PointF(page_x, page_y), modifier);
+  return FORM_OnRButtonUpF(hHandle, page, modifier, static_cast<float>(page_x),
+                           static_cast<float>(page_y));
 }
 #endif  // PDF_ENABLE_XFA
 

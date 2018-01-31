@@ -1224,21 +1224,27 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
                                                   int aaType);
 
 /**
- * Function: FORM_OnMouseMove
- *          You can call this member function when the mouse cursor moves.
+ * Function: FORM_OnMouseMoveF
+ *          One can call this member function when the mouse cursor moves.
  * Parameters:
  *          hHandle     -   Handle to the form fill module. Returned by
- *FPDFDOC_InitFormFillEnvironment.
- *          page        -   Handle to the page. Returned by FPDF_LoadPage
- *function.
- *          modifier        -   Indicates whether various virtual keys are down.
+ *                          FPDFDOC_InitFormFillEnvironment().
+ *          page        -   Handle to the page. Returned by FPDF_LoadPage().
+ *          modifier    -   Indicates whether various virtual keys are down.
  *          page_x      -   Specifies the x-coordinate of the cursor in PDF user
- *space.
+ *                          space.
  *          page_y      -   Specifies the y-coordinate of the cursor in PDF user
- *space.
+ *                          space.
  * Return Value:
  *          TRUE indicates success; otherwise false.
  **/
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMoveF(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      int modifier,
+                                                      float page_x,
+                                                      float page_y);
+
+// Deprecation version of FORM_OnMouseMoveF().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
                                                      FPDF_PAGE page,
                                                      int modifier,
@@ -1246,14 +1252,14 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
                                                      double page_y);
 
 /**
- * Function: FORM_OnFocus
+ * Function: FORM_OnFocusF
  *          This function focuses the form annotation at a given point. If the
  *          annotation at the point already has focus, nothing happens. If there
  *          is no annotation at the point, remove form focus.
  * Parameters:
  *          hHandle     -   Handle to the form fill module. Returned by
- *                          FPDFDOC_InitFormFillEnvironment.
- *          page        -   Handle to the page. Returned by FPDF_LoadPage.
+ *                          FPDFDOC_InitFormFillEnvironment().
+ *          page        -   Handle to the page. Returned by FPDF_LoadPage().
  *          modifier    -   Indicates whether various virtual keys are down.
  *          page_x      -   Specifies the x-coordinate of the cursor in PDF user
  *                          space.
@@ -1262,6 +1268,13 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
  * Return Value:
  *          TRUE if there is an annotation at the given point and it has focus.
  **/
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnFocusF(FPDF_FORMHANDLE hHandle,
+                                                  FPDF_PAGE page,
+                                                  int modifier,
+                                                  float page_x,
+                                                  float page_y);
+
+// Deprecation version of FORM_OnFocusF().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnFocus(FPDF_FORMHANDLE hHandle,
                                                  FPDF_PAGE page,
                                                  int modifier,
@@ -1270,21 +1283,27 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnFocus(FPDF_FORMHANDLE hHandle,
 
 /**
  * Function: FORM_OnLButtonDown
- *          You can call this member function when the user presses the left
- *mouse button.
+ *          One can call this member function when the user presses the left
+ *          mouse button.
  * Parameters:
  *          hHandle     -   Handle to the form fill module. Returned by
- *FPDFDOC_InitFormFillEnvironment.
- *          page        -   Handle to the page. Returned by FPDF_LoadPage
- *function.
- *          modifier        -   Indicates whether various virtual keys are down.
+ *                          FPDFDOC_InitFormFillEnvironment().
+ *          page        -   Handle to the page. Returned by FPDF_LoadPage().
+ *          modifier    -   Indicates whether various virtual keys are down.
  *          page_x      -   Specifies the x-coordinate of the cursor in PDF user
- *space.
+ *                          space.
  *          page_y      -   Specifies the y-coordinate of the cursor in PDF user
- *space.
+ *                          space.
  * Return Value:
  *          TRUE indicates success; otherwise false.
  **/
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDownF(FPDF_FORMHANDLE hHandle,
+                                                        FPDF_PAGE page,
+                                                        int modifier,
+                                                        float page_x,
+                                                        float page_y);
+
+// Deprecation version of FORM_OnLButtonDownF().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
                                                        FPDF_PAGE page,
                                                        int modifier,
@@ -1293,19 +1312,25 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
 
 /**
  * Function: FORM_OnLButtonUp
- *          You can call this member function when the user releases the left
- *mouse button.
+ *          One can call this member function when the user releases the left
+ *          mouse button.
  * Parameters:
  *          hHandle     -   Handle to the form fill module. Returned by
- *FPDFDOC_InitFormFillEnvironment.
- *          page        -   Handle to the page. Returned by FPDF_LoadPage
- *function.
+ *                          FPDFDOC_InitFormFillEnvironment().
+ *          page        -   Handle to the page. Returned by FPDF_LoadPage().
  *          modifier    -   Indicates whether various virtual keys are down.
  *          page_x      -   Specifies the x-coordinate of the cursor in device.
  *          page_y      -   Specifies the y-coordinate of the cursor in device.
  * Return Value:
  *          TRUE indicates success; otherwise false.
  **/
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUpF(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      int modifier,
+                                                      float page_x,
+                                                      float page_y);
+
+// Deprecation version of FORM_OnLButtonUpF().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
                                                      FPDF_PAGE page,
                                                      int modifier,
@@ -1313,11 +1338,28 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
                                                      double page_y);
 
 #ifdef PDF_ENABLE_XFA
+// Same as FORM_OnLButtonDownF(), but for the right mouse button.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDownF(FPDF_FORMHANDLE hHandle,
+                                                        FPDF_PAGE page,
+                                                        int modifier,
+                                                        float page_x,
+                                                        float page_y);
+
+// Deprecated. Same as FORM_OnLButtonDown(), but for the right mouse button.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
                                                        FPDF_PAGE page,
                                                        int modifier,
                                                        double page_x,
                                                        double page_y);
+
+// Same as FORM_OnLButtonUpF(), but for the right mouse button.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUpF(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      int modifier,
+                                                      float page_x,
+                                                      float page_y);
+
+// Deprecated. Same as FORM_OnLButtonUp(), but for the right mouse button.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
                                                      FPDF_PAGE page,
                                                      int modifier,
@@ -1482,7 +1524,7 @@ FORM_ForceToKillFocus(FPDF_FORMHANDLE hHandle);
 #endif  // PDF_ENABLE_XFA
 
 /**
- * Function: FPDFPage_HasFormFieldAtPoint
+ * Function: FPDFPage_HasFormFieldAtPointF
  *     Get the form field type by point.
  * Parameters:
  *     hHandle     -   Handle to the form fill module. Returned by
@@ -1495,13 +1537,20 @@ FORM_ForceToKillFocus(FPDF_FORMHANDLE hHandle);
  *     See field types above.
  **/
 FPDF_EXPORT int FPDF_CALLCONV
+FPDFPage_HasFormFieldAtPointF(FPDF_FORMHANDLE hHandle,
+                              FPDF_PAGE page,
+                              float page_x,
+                              float page_y);
+
+// Deprecated version of FPDFPage_HasFormFieldAtPointF().
+FPDF_EXPORT int FPDF_CALLCONV
 FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
                              FPDF_PAGE page,
                              double page_x,
                              double page_y);
 
 /**
- * Function: FPDFPage_FormFieldZOrderAtPoint
+ * Function: FPDFPage_FormFieldZOrderAtPointF
  *     Get the form field z-order by point.
  * Parameters:
  *     hHandle     -   Handle to the form fill module. Returned by
@@ -1513,6 +1562,13 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
  *     Return the z-order of the form field; -1 indicates no field.
  *     Higher numbers are closer to the front.
  **/
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPage_FormFieldZOrderAtPointF(FPDF_FORMHANDLE hHandle,
+                                 FPDF_PAGE page,
+                                 float page_x,
+                                 float page_y);
+
+// Deprecated version of FPDFPage_FormFieldZOrderAtPointF().
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFPage_FormFieldZOrderAtPoint(FPDF_FORMHANDLE hHandle,
                                 FPDF_PAGE page,

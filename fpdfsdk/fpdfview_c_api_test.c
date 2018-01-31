@@ -201,12 +201,18 @@ int CheckPDFiumCApi() {
     CHK(FORM_DoDocumentOpenAction);
     CHK(FORM_DoDocumentAAction);
     CHK(FORM_DoPageAAction);
+    CHK(FORM_OnMouseMoveF);
     CHK(FORM_OnMouseMove);
+    CHK(FORM_OnFocusF);
     CHK(FORM_OnFocus);
+    CHK(FORM_OnLButtonDownF);
     CHK(FORM_OnLButtonDown);
+    CHK(FORM_OnLButtonUpF);
     CHK(FORM_OnLButtonUp);
 #ifdef PDF_ENABLE_XFA
+    CHK(FORM_OnRButtonDownF);
     CHK(FORM_OnRButtonDown);
+    CHK(FORM_OnRButtonUpF);
     CHK(FORM_OnRButtonUp);
 #endif
     CHK(FORM_OnKeyDown);
@@ -215,7 +221,9 @@ int CheckPDFiumCApi() {
     CHK(FORM_GetSelectedText);
     CHK(FORM_ReplaceSelection);
     CHK(FORM_ForceToKillFocus);
+    CHK(FPDFPage_HasFormFieldAtPointF);
     CHK(FPDFPage_HasFormFieldAtPoint);
+    CHK(FPDFPage_FormFieldZOrderAtPointF);
     CHK(FPDFPage_FormFieldZOrderAtPoint);
     CHK(FPDF_SetFormFieldHighlightColor);
     CHK(FPDF_SetFormFieldHighlightAlpha);
