@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "195a7e0c_4aa86412",
+        "filename": "core/fxcrt/css/cfx_csspropertytable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-31T15:34:51Z",
+      "side": 1,
+      "message": "Actually these were needed, I must have not actually saved the change when I ran a test build",
+      "parentUuid": "04e8be9b_8b56049d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "622135f33d438a78000915efc835283fd298e935",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5f945ab_b28079e1",
         "filename": "core/fxcrt/css/cfx_csspropertytable.h",
         "patchSetId": 1
