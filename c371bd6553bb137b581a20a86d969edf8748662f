@@ -785,6 +785,24 @@
     },
     {
       "key": {
+        "uuid": "42cdd3d4_7c0ed035",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-31T22:07:12Z",
+      "side": 1,
+      "message": "Yes, I thought we discussed we are not going to do it in the first version.  If later on, we decide to maximize paper usage, we will need to rotate the page.  I will change it to be local variable for now.  Rotating the same matrix twice is proven error prone, so if we decide the rotate mixed layout, we might need to revisit page size again.",
+      "parentUuid": "af9c5f8c_a9445126",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf29ec33_bbad819c",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
