@@ -183,8 +183,9 @@ FPDFAction_GetURIPath(FPDF_DOCUMENT document,
 //   dest     - handle to the destination.
 //
 // Returns the page index containing |dest|. Page indices start from 0.
-FPDF_EXPORT unsigned long FPDF_CALLCONV
-FPDFDest_GetPageIndex(FPDF_DOCUMENT document, FPDF_DEST dest);
+// On an error, returns -1.
+FPDF_EXPORT long FPDF_CALLCONV FPDFDest_GetPageIndex(FPDF_DOCUMENT document,
+                                                     FPDF_DEST dest);
 
 // Get the view (fit type) specified by |dest|.
 // Experimental API. Subject to change.
