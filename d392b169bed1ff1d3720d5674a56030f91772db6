@@ -46,6 +46,30 @@
       "revId": "d392b169bed1ff1d3720d5674a56030f91772db6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74cdc463_f9178eae",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-31T21:45:09Z",
+      "side": 1,
+      "message": "Changed to signed. I actually prefer this, but I thought not changing the return type would be a less drastic change. There already was a case in which we returned static_cast\u003cunsigned long\u003e(-1), so we\u0027re not _really_ changing the API without the type change.",
+      "parentUuid": "ebc4cddd_5f43d59b",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 25
+      },
+      "revId": "d392b169bed1ff1d3720d5674a56030f91772db6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
