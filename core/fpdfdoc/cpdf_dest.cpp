@@ -38,6 +38,10 @@ CPDF_Dest::CPDF_Dest(CPDF_Object* pObj) : m_pObj(pObj) {}
 
 CPDF_Dest::~CPDF_Dest() {}
 
+// Deprecated. Use GetDestPageIndex instead.
+// This method is wrong. It returns 0 for errors, when it could mean the first
+// page as well. It needs to be kept as it is as not avoid changing the
+// behavior of FPDFDest_GetPageIndex().
 int CPDF_Dest::GetPageIndex(CPDF_Document* pDoc) const {
   CPDF_Array* pArray = ToArray(m_pObj.Get());
   if (!pArray)
@@ -50,6 +54,21 @@ int CPDF_Dest::GetPageIndex(CPDF_Document* pDoc) const {
     return pPage->GetInteger();
   if (!pPage->IsDictionary())
     return 0;
+  return pDoc->GetPageIndex(pPage->GetObjNum());
+}
+
+int CPDF_Dest::GetDestPageIndex(CPDF_Document* pDoc) const {
+  CPDF_Array* pArray = ToArray(m_pObj.Get());
+  if (!pArray)
+    return -1;
+
+  CPDF_Object* pPage = pArray->GetDirectObjectAt(0);
+  if (!pPage)
+    return -1;
+  if (pPage->IsNumber())
+    return pPage->GetInteger();
+  if (!pPage->IsDictionary())
+    return -1;
   return pDoc->GetPageIndex(pPage->GetObjNum());
 }
 
