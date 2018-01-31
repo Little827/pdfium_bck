@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "a29d9710_c4bbb2ce",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "Please write a comment so I can understand what this CFX_PointF points to, and so future readers can too. Maybe a comment for the struct will be helpful as well.",
+      "parentUuid": "5cd417a9_b803c18f",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4e510a1_184fb99a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
@@ -442,6 +460,24 @@
       "side": 1,
       "message": "in this case, I don\u0027t need to use double. as everything passed in is float.",
       "parentUuid": "9194a6c5_7bb3aaa9",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7679e52d_f1940082",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "You\u0027ve pushed up the double to float conversion issue to ExportNPagesToOne() calling the NupState ctor. The problem still exists, but just in a different position.",
+      "parentUuid": "edc36a15_589bfde3",
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false

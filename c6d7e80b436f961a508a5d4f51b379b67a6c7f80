@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "ad2953bd_36900a14",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "I disagree, especially because you used the keyword \"always\". As a counterpoint, you have used std::unique_ptr, but have you looked at its implementation?",
+      "parentUuid": "b655eb1b_7020fe0b",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "628b14c9_95b509b0",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 65

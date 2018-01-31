@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03881700_86f389f7",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a557fb_16b4ef3e",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "There\u0027s an extra space in front. Grammar is awkward. This should be:\n\n// |subX| and |subY| are 0-based indices to indicate which allocation slot to\n// use.",
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3543c20a_12a175ae",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "Since this is a class method, it does not even need this parameter. It can just read |m_subPageIndex| directly.",
+      "range": {
+        "startLine": 60,
+        "startChar": 45,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb30b915_dd347f14",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "// Given the |subx| and |suby| subpage position within a page, and a source\n// page with dimensions of |inPageWidth| x |inPageHeight|, calculate the sub\n// page\u0027s origin and scale, and store them in |ret|.",
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647bc6ce_93f901c8",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "Yet more const POD parameters. Can you make a pass through the file and get rid of them?",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108baaef_3e3a0d60",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "This doesn\u0027t work. For example, when:\n\nsubPageIndex \u003d 6\nm_numPagesOnXAxis \u003d 2\nm_numPagesOnYAxis \u003d 3\n\nThe calculations are:\n\nsize_t subX \u003d 6 % 2;  // 0\nsize_t subY \u003d 6 / 2;  // 3\n\nsubY \u003d 3 - 3 - 1;  // integer underflow",
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706c88fc_c18740cf",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "Can you use std::make_pair() here? We\u0027ve gotten previous bug reports complaining this doesn\u0027t work with older compilers.",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4839ee5_9918baea",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T00:57:31Z",
+      "side": 1,
+      "message": "nit: braces",
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
