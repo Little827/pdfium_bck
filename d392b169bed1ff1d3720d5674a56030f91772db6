@@ -22,6 +22,30 @@
       "revId": "d392b169bed1ff1d3720d5674a56030f91772db6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc4cddd_5f43d59b",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-31T20:26:52Z",
+      "side": 1,
+      "message": "IIRC, we\u0027ve done small breaks like this in the past without a new API rev, so long as we blogged about it under \"news\" on https://pdfium.googlesource.com/pdfium/",
+      "parentUuid": "f71aaab6_1829f124",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 25
+      },
+      "revId": "d392b169bed1ff1d3720d5674a56030f91772db6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
