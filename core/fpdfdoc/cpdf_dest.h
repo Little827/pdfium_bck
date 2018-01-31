@@ -23,7 +23,10 @@ class CPDF_Dest {
 
   CPDF_Object* GetObject() const { return m_pObj.Get(); }
   ByteString GetRemoteName() const;
+
+  // Deprecated. Use GetDestPageIndex() instead.
   int GetPageIndex(CPDF_Document* pDoc) const;
+  int GetDestPageIndex(CPDF_Document* pDoc) const;
   uint32_t GetPageObjNum() const;
 
   // Returns the zoom mode, as one of the PDFDEST_VIEW_* values in fpdf_doc.h.
