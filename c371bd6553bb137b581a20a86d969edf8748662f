@@ -767,6 +767,24 @@
     },
     {
       "key": {
+        "uuid": "af9c5f8c_a9445126",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T18:58:23Z",
+      "side": 1,
+      "message": "- With |m_pageSize| especially, it\u0027s only initialized in ExportNPagesToOne() and only used in SetMediaBox(). With ExportNPagesToOne() being a direct caller to SetMediaBox(). Having |m_pageSize| as a member variable doesn\u0027t seem necessary unless its state needs to be preserved or shared among many methods.\n- Didn\u0027t we discuss not FPDF_ImportNPagesToOne() not rotating?",
+      "parentUuid": "c57efcae_4cb20568",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf29ec33_bbad819c",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62

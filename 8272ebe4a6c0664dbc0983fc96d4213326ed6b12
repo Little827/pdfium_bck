@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "81e72c6f_1ac45ac5",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T18:58:23Z",
+      "side": 1,
+      "message": "As written in this patch set, there\u0027s no way to know that unless one examines the callers. There\u0027s no comment and no ASSERTs to indicate this requirement. Which is why I repeatedly ask for more comments.",
+      "parentUuid": "3bcf8acd_d15578b7",
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706c88fc_c18740cf",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 66
