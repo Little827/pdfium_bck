@@ -23,6 +23,30 @@
       "revId": "a772bf939e387bfe6eaa39c579bccb962971a358",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4da9742e_b4cddf5e",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-31T16:41:39Z",
+      "side": 1,
+      "message": "Just saw you did that in the follow-up.",
+      "parentUuid": "37ebc55d_0366e65e",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "a772bf939e387bfe6eaa39c579bccb962971a358",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
