@@ -370,6 +370,26 @@ void FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect, FS_RECTF* out_rect) {
   out_rect->bottom = rect.bottom;
 }
 
+FS_MATRIX FSMatrixFromSixDoubles(double a,
+                                 double b,
+                                 double c,
+                                 double d,
+                                 double e,
+                                 double f) {
+  FS_MATRIX matrix;
+  matrix.a = static_cast<float>(a);
+  matrix.b = static_cast<float>(b);
+  matrix.c = static_cast<float>(c);
+  matrix.d = static_cast<float>(d);
+  matrix.e = static_cast<float>(e);
+  matrix.f = static_cast<float>(f);
+  return matrix;
+}
+
+CFX_Matrix CFXMatrixFromFSMatrix(const FS_MATRIX& matrix) {
+  return CFX_Matrix(matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f);
+}
+
 const FX_PATHPOINT* FXPathPointFromFPDFPathSegment(FPDF_PATHSEGMENT segment) {
   return static_cast<const FX_PATHPOINT*>(segment);
 }

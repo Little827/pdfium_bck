@@ -107,6 +107,12 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument();
 //
 // The page should be closed with FPDF_ClosePage() when finished as
 // with any other page in the document.
+FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_NewF(FPDF_DOCUMENT document,
+                                                  int page_index,
+                                                  float width,
+                                                  float height);
+
+// Deprecated version of FPDFPage_NewF().
 FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
                                                  int page_index,
                                                  double width,
@@ -218,17 +224,16 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPageObj_GetType(FPDF_PAGEOBJECT page_object);
 // Transform |page_object| by the given matrix.
 //
 //   page_object - handle to a page object.
-//   a           - matrix value.
-//   b           - matrix value.
-//   c           - matrix value.
-//   d           - matrix value.
-//   e           - matrix value.
-//   f           - matrix value.
+//   matrix      - matrix with a-f values.
 //
 // The matrix is composed as:
 //   |a c e|
 //   |b d f|
 // and can be used to scale, rotate, shear and translate the |page_object|.
+FPDF_EXPORT void FPDF_CALLCONV
+FPDFPageObj_TransformF(FPDF_PAGEOBJECT page_object, const FS_MATRIX* matrix);
+
+// Deprecated version of FPDFPageObj_TransformF().
 FPDF_EXPORT void FPDF_CALLCONV
 FPDFPageObj_Transform(FPDF_PAGEOBJECT page_object,
                       double a,
@@ -240,18 +245,17 @@ FPDFPageObj_Transform(FPDF_PAGEOBJECT page_object,
 
 // Transform all annotations in |page|.
 //
-//   page - handle to a page.
-//   a    - matrix value.
-//   b    - matrix value.
-//   c    - matrix value.
-//   d    - matrix value.
-//   e    - matrix value.
-//   f    - matrix value.
+//   page   - handle to a page.
+//   matrix - matrix with a-f values.
 //
 // The matrix is composed as:
 //   |a c e|
 //   |b d f|
 // and can be used to scale, rotate, shear and translate the |page| annotations.
+FPDF_EXPORT void FPDF_CALLCONV
+FPDFPage_TransformAnnotsF(FPDF_PAGE page, const FS_MATRIX* matrix);
+
+// Deprecated version of FPDFPage_TransformAnnotsF().
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_TransformAnnots(FPDF_PAGE page,
                                                         double a,
                                                         double b,
@@ -313,12 +317,7 @@ FPDFImageObj_LoadJpegFileInline(FPDF_PAGE* pages,
 // Set the transform matrix of |image_object|.
 //
 //   image_object - handle to an image object.
-//   a            - matrix value.
-//   b            - matrix value.
-//   c            - matrix value.
-//   d            - matrix value.
-//   e            - matrix value.
-//   f            - matrix value.
+//   matrix      - matrix with a-f values.
 //
 // The matrix is composed as:
 //   |a c e|
@@ -326,6 +325,10 @@ FPDFImageObj_LoadJpegFileInline(FPDF_PAGE* pages,
 // and can be used to scale, rotate, shear and translate the |page| annotations.
 //
 // Returns TRUE on success.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFImageObj_SetMatrixF(FPDF_PAGEOBJECT image_object, const FS_MATRIX* matrix);
+
+// Deprecated version of FPDFImageObj_SetMatrixF().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFImageObj_SetMatrix(FPDF_PAGEOBJECT image_object,
                        double a,

@@ -123,6 +123,7 @@ int CheckPDFiumCApi() {
 
     // fpdf_edit.h
     CHK(FPDF_CreateNewDocument);
+    CHK(FPDFPage_NewF);
     CHK(FPDFPage_New);
     CHK(FPDFPage_Delete);
     CHK(FPDFPage_GetRotation);
@@ -138,11 +139,14 @@ int CheckPDFiumCApi() {
     CHK(FPDFPageObj_GetBounds);
     CHK(FPDFPageObj_GetType);
     CHK(FPDFPageObj_SetBlendMode);
+    CHK(FPDFPageObj_TransformF);
     CHK(FPDFPageObj_Transform);
+    CHK(FPDFPage_TransformAnnotsF);
     CHK(FPDFPage_TransformAnnots);
     CHK(FPDFPageObj_NewImageObj);
     CHK(FPDFImageObj_LoadJpegFile);
     CHK(FPDFImageObj_LoadJpegFileInline);
+    CHK(FPDFImageObj_SetMatrixF);
     CHK(FPDFImageObj_SetMatrix);
     CHK(FPDFImageObj_SetBitmap);
     CHK(FPDFImageObj_GetBitmap);

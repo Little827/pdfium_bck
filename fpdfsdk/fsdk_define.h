@@ -78,6 +78,17 @@ CFX_DIBitmap* CFXBitmapFromFPDFBitmap(FPDF_BITMAP bitmap);
 CFX_FloatRect CFXFloatRectFromFSRECTF(const FS_RECTF& rect);
 void FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect, FS_RECTF* out_rect);
 
+// This causes a loss of precision, since FS_MATRIX represents matrix values
+// with floats.
+FS_MATRIX FSMatrixFromSixDoubles(double a,
+                                 double b,
+                                 double c,
+                                 double d,
+                                 double e,
+                                 double f);
+
+CFX_Matrix CFXMatrixFromFSMatrix(const FS_MATRIX& matrix);
+
 const FX_PATHPOINT* FXPathPointFromFPDFPathSegment(FPDF_PATHSEGMENT segment);
 
 unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,

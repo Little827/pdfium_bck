@@ -129,10 +129,10 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
     pDoc->DeletePage(page_index);
 }
 
-FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
-                                                 int page_index,
-                                                 double width,
-                                                 double height) {
+FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_NewF(FPDF_DOCUMENT document,
+                                                  int page_index,
+                                                  float width,
+                                                  float height) {
   CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   if (!pDoc)
     return nullptr;
@@ -145,8 +145,8 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
   CPDF_Array* pMediaBoxArray = pPageDict->SetNewFor<CPDF_Array>("MediaBox");
   pMediaBoxArray->AddNew<CPDF_Number>(0);
   pMediaBoxArray->AddNew<CPDF_Number>(0);
-  pMediaBoxArray->AddNew<CPDF_Number>(static_cast<float>(width));
-  pMediaBoxArray->AddNew<CPDF_Number>(static_cast<float>(height));
+  pMediaBoxArray->AddNew<CPDF_Number>(width);
+  pMediaBoxArray->AddNew<CPDF_Number>(height);
   pPageDict->SetNewFor<CPDF_Number>("Rotate", 0);
   pPageDict->SetNewFor<CPDF_Dictionary>("Resources");
 
@@ -160,6 +160,14 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
   pPage->ParseContent();
   return pPage.release();  // Caller takes ownership.
 #endif  // PDF_ENABLE_XFA
+}
+
+FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
+                                                 int page_index,
+                                                 double width,
+                                                 double height) {
+  return FPDFPage_NewF(document, page_index, static_cast<float>(width),
+                       static_cast<float>(height));
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_GetRotation(FPDF_PAGE page) {
@@ -263,6 +271,18 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GenerateContent(FPDF_PAGE page) {
 }
 
 FPDF_EXPORT void FPDF_CALLCONV
+FPDFPageObj_TransformF(FPDF_PAGEOBJECT page_object, const FS_MATRIX* matrix) {
+  if (!matrix)
+    return;
+
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return;
+
+  pPageObj->Transform(CFXMatrixFromFSMatrix(*matrix));
+}
+
+FPDF_EXPORT void FPDF_CALLCONV
 FPDFPageObj_Transform(FPDF_PAGEOBJECT page_object,
                       double a,
                       double b,
@@ -270,12 +290,8 @@ FPDFPageObj_Transform(FPDF_PAGEOBJECT page_object,
                       double d,
                       double e,
                       double f) {
-  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
-  if (!pPageObj)
-    return;
-
-  CFX_Matrix matrix((float)a, (float)b, (float)c, (float)d, (float)e, (float)f);
-  pPageObj->Transform(matrix);
+  FS_MATRIX matrix = FSMatrixFromSixDoubles(a, b, c, d, e, f);
+  FPDFPageObj_TransformF(page_object, &matrix);
 }
 
 FPDF_EXPORT void FPDF_CALLCONV
@@ -289,23 +305,20 @@ FPDFPageObj_SetBlendMode(FPDF_PAGEOBJECT page_object,
   pPageObj->SetDirty(true);
 }
 
-FPDF_EXPORT void FPDF_CALLCONV FPDFPage_TransformAnnots(FPDF_PAGE page,
-                                                        double a,
-                                                        double b,
-                                                        double c,
-                                                        double d,
-                                                        double e,
-                                                        double f) {
+FPDF_EXPORT void FPDF_CALLCONV
+FPDFPage_TransformAnnotsF(FPDF_PAGE page, const FS_MATRIX* matrix) {
+  if (!matrix)
+    return;
+
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (!pPage)
     return;
 
+  const CFX_Matrix cmatrix = CFXMatrixFromFSMatrix(*matrix);
   CPDF_AnnotList AnnotList(pPage);
   for (size_t i = 0; i < AnnotList.Count(); ++i) {
     CPDF_Annot* pAnnot = AnnotList.GetAt(i);
-    CFX_Matrix matrix((float)a, (float)b, (float)c, (float)d, (float)e,
-                      (float)f);
-    CFX_FloatRect rect = matrix.TransformRect(pAnnot->GetRect());
+    CFX_FloatRect rect = cmatrix.TransformRect(pAnnot->GetRect());
 
     CPDF_Dictionary* pAnnotDict = pAnnot->GetAnnotDict();
     CPDF_Array* pRectArray = pAnnotDict->GetArrayFor("Rect");
@@ -321,6 +334,17 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_TransformAnnots(FPDF_PAGE page,
 
     // TODO(unknown): Transform AP's rectangle
   }
+}
+
+FPDF_EXPORT void FPDF_CALLCONV FPDFPage_TransformAnnots(FPDF_PAGE page,
+                                                        double a,
+                                                        double b,
+                                                        double c,
+                                                        double d,
+                                                        double e,
+                                                        double f) {
+  FS_MATRIX matrix = FSMatrixFromSixDoubles(a, b, c, d, e, f);
+  FPDFPage_TransformAnnotsF(page, &matrix);
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_SetRotation(FPDF_PAGE page,
