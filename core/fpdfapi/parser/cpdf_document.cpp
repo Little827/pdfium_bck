@@ -566,13 +566,13 @@ int CPDF_Document::FindPageIndex(CPDF_Dictionary* pNode,
   return -1;
 }
 
-int CPDF_Document::GetPageIndex(uint32_t objnum) {
+Optional<int> CPDF_Document::GetPageIndex(uint32_t objnum) {
   uint32_t nPages = m_PageList.size();
   uint32_t skip_count = 0;
   bool bSkipped = false;
   for (uint32_t i = 0; i < nPages; i++) {
     if (m_PageList[i] == objnum)
-      return i;
+      return {i};
 
     if (!bSkipped && m_PageList[i] == 0) {
       skip_count = i;
@@ -581,17 +581,17 @@ int CPDF_Document::GetPageIndex(uint32_t objnum) {
   }
   CPDF_Dictionary* pPages = GetPagesDict();
   if (!pPages)
-    return -1;
+    return {};
 
   int start_index = 0;
   int found_index = FindPageIndex(pPages, &skip_count, objnum, &start_index);
 
   // Corrupt page tree may yield out-of-range results.
   if (!pdfium::IndexInBounds(m_PageList, found_index))
-    return -1;
+    return {};
 
   m_PageList[found_index] = objnum;
-  return found_index;
+  return {found_index};
 }
 
 int CPDF_Document::GetPageCount() const {

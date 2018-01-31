@@ -129,9 +129,9 @@ CPDFSDK_Widget* CPDFSDK_InterForm::GetWidget(CPDF_FormControl* pControl) const {
   CPDFSDK_PageView* pPage = nullptr;
 
   if (CPDF_Dictionary* pPageDict = pControlDict->GetDictFor("P")) {
-    int nPageIndex = pDocument->GetPageIndex(pPageDict->GetObjNum());
-    if (nPageIndex >= 0)
-      pPage = m_pFormFillEnv->GetPageView(nPageIndex);
+    Optional<int> nPageIndex = pDocument->GetPageIndex(pPageDict->GetObjNum());
+    if (nPageIndex)
+      pPage = m_pFormFillEnv->GetPageView(nPageIndex.value());
   }
 
   if (!pPage) {
