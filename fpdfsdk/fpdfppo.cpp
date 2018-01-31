@@ -6,6 +6,7 @@
 
 #include "public/fpdf_ppo.h"
 
+#include <algorithm>
 #include <map>
 #include <memory>
 #include <utility>
@@ -292,29 +293,36 @@ class CPDF_PageOrganizer {
                          const double destPageHeight,
                          const unsigned int numPagesOnXAxis,
                          const unsigned int numPagesOnYAxis);
+
+ private:
+  using ObjectNumberMap = std::map<uint32_t, uint32_t>;
+
+  // Key is XObject name
+  using XObjectMap = std::map<ByteString, UnownedPtr<CPDF_Object>>;
+
+  static void SetMediaBox(CPDF_Dictionary* pDectPageDict,
+                          const CFX_SizeF& pagesize);
+
+  bool UpdateReference(CPDF_Object* pObj, ObjectNumberMap* pObjNumberMap);
+  uint32_t GetNewObjId(ObjectNumberMap* pObjNumberMap, CPDF_Reference* pRef);
+
   // Creates a xobject from the source page dictionary, and appends the content
   // string with the xobject reference surrounded by the transformation matrix.
   void AddSubPage(CPDF_Dictionary* pPageDict,
                   const CFX_PointF& position,
                   float scale,
+                  XObjectMap* pXObjectMap,
                   ByteString* content);
   CPDF_Object* MakeXObject(CPDF_Dictionary* pSrcPageDict,
                            CPDF_Document* pDestDoc);
-  void SetMediaBox(CPDF_Dictionary* pDectPageDict);
-
- private:
-  using ObjectNumberMap = std::map<uint32_t, uint32_t>;
-
-  bool UpdateReference(CPDF_Object* pObj, ObjectNumberMap* pObjNumberMap);
-  uint32_t GetNewObjId(ObjectNumberMap* pObjNumberMap, CPDF_Reference* pRef);
-  void FinishPage(CPDF_Dictionary* pCurPageDict, const ByteString& content);
+  void FinishPage(CPDF_Dictionary* pCurPageDict,
+                  const ByteString& content,
+                  const XObjectMap& xobjs);
 
   UnownedPtr<CPDF_Document> m_pDestPDFDoc;
   UnownedPtr<CPDF_Document> m_pSrcPDFDoc;
+  // Used to give every XObject in the document a unique ID.
   uint32_t m_xobjectNum = 0;
-  CFX_SizeF m_pageSize;
-  // Key is XObject name
-  std::map<ByteString, UnownedPtr<CPDF_Object>> m_xobjs;
 };
 
 CPDF_PageOrganizer::CPDF_PageOrganizer(CPDF_Document* pDestPDFDoc,
@@ -367,16 +375,19 @@ bool CPDF_PageOrganizer::PDFDocInit() {
 void CPDF_PageOrganizer::AddSubPage(CPDF_Dictionary* pPageDict,
                                     const CFX_PointF& position,
                                     float scale,
+                                    XObjectMap* pXObjectMap,
                                     ByteString* content) {
+  ASSERT(pXObjectMap);
+  ASSERT(content);
+
   ++m_xobjectNum;
   // TODO(Xlou): A better name schema to avoid possible object name collision.
   ByteString xobjectName = ByteString::Format("X%d", m_xobjectNum);
+  (*pXObjectMap)[xobjectName] = MakeXObject(pPageDict, m_pDestPDFDoc.Get());
 
   CFX_Matrix matrix;
   matrix.Scale(scale, scale);
   matrix.Translate(position.x, position.y);
-
-  m_xobjs[xobjectName] = MakeXObject(pPageDict, m_pDestPDFDoc.Get());
 
   std::ostringstream contentStream;
   contentStream << "q\n"
@@ -441,12 +452,14 @@ CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
   return pNewXObject;
 }
 
-void CPDF_PageOrganizer::SetMediaBox(CPDF_Dictionary* pDestPageDict) {
+// static
+void CPDF_PageOrganizer::SetMediaBox(CPDF_Dictionary* pDestPageDict,
+                                     const CFX_SizeF& pagesize) {
   CPDF_Array* pArray = pDestPageDict->SetNewFor<CPDF_Array>("MediaBox");
   pArray->AddNew<CPDF_Number>(0);
   pArray->AddNew<CPDF_Number>(0);
-  pArray->AddNew<CPDF_Number>(m_pageSize.width);
-  pArray->AddNew<CPDF_Number>(m_pageSize.height);
+  pArray->AddNew<CPDF_Number>(pagesize.width);
+  pArray->AddNew<CPDF_Number>(pagesize.height);
 }
 
 bool CPDF_PageOrganizer::ExportPage(const std::vector<uint32_t>& pageNums,
@@ -513,7 +526,8 @@ bool CPDF_PageOrganizer::ExportPage(const std::vector<uint32_t>& pageNums,
 }
 
 void CPDF_PageOrganizer::FinishPage(CPDF_Dictionary* pCurPageDict,
-                                    const ByteString& content) {
+                                    const ByteString& content,
+                                    const XObjectMap& xobjs) {
   ASSERT(pCurPageDict);
 
   CPDF_Dictionary* pRes = pCurPageDict->GetDictFor("Resources");
@@ -524,7 +538,7 @@ void CPDF_PageOrganizer::FinishPage(CPDF_Dictionary* pCurPageDict,
   if (!pPageXObject)
     pPageXObject = pRes->SetNewFor<CPDF_Dictionary>("XObject");
 
-  for (auto& it : m_xobjs) {
+  for (auto& it : xobjs) {
     CPDF_Object* pObj = it.second.Get();
     pPageXObject->SetNewFor<CPDF_Reference>(it.first, m_pDestPDFDoc.Get(),
                                             pObj->GetObjNum());
@@ -537,7 +551,6 @@ void CPDF_PageOrganizer::FinishPage(CPDF_Dictionary* pCurPageDict,
   pStream->SetData(content.raw_str(), content.GetLength());
   pCurPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDestPDFDoc.Get(),
                                           pStream->GetObjNum());
-  m_xobjs.clear();
 }
 
 bool CPDF_PageOrganizer::ExportNPagesToOne(
@@ -556,13 +569,12 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
   if (numPagesPerSheet == 1)
     return ExportPage(pageNums, 0);
 
-  m_pageSize.width = destPageWidth;
-  m_pageSize.height = destPageHeight;
-
+  const CFX_SizeF pagesize(destPageWidth, destPageHeight);
   NupState nupState(destPageWidth, destPageHeight, numPagesOnXAxis,
                     numPagesOnYAxis);
 
   size_t curpage = 0;
+  XObjectMap xobjs;
   for (size_t outerPage = 0; outerPage < pageNums.size();
        outerPage += numPagesPerSheet) {
     // Create a new page
@@ -570,7 +582,7 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
     if (!pCurPageDict)
       return false;
 
-    SetMediaBox(pCurPageDict);
+    SetMediaBox(pCurPageDict, pagesize);
     ByteString content;
     size_t innerPageMax =
         std::min(outerPage + numPagesPerSheet, pageNums.size());
@@ -584,12 +596,12 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
       NupPageSettings pgEdit;
       nupState.CalculateNewPagePosition(srcPage.GetPageWidth(),
                                         srcPage.GetPageHeight(), &pgEdit);
-      AddSubPage(pSrcPageDict, pgEdit.subPageStartPoint, pgEdit.scale,
+      AddSubPage(pSrcPageDict, pgEdit.subPageStartPoint, pgEdit.scale, &xobjs,
                  &content);
     }
 
     // Finish up the current page.
-    FinishPage(pCurPageDict, content);
+    FinishPage(pCurPageDict, content, xobjs);
     ++curpage;
   }
 
