@@ -1868,22 +1868,15 @@ const FGAS_FontInfo g_XFAFontsMap[] = {
 
 }  // namespace
 
-const FGAS_FONTUSB* FGAS_GetUnicodeBitField(wchar_t wUnicode) {
-  int32_t iEnd = sizeof(g_FXGdiFontUSBTable) / sizeof(FGAS_FONTUSB) - 1;
-  ASSERT(iEnd >= 0);
-
-  int32_t iStart = 0;
-  int32_t iMid;
-  do {
-    iMid = (iStart + iEnd) / 2;
-    const FGAS_FONTUSB& usb = g_FXGdiFontUSBTable[iMid];
-    if (wUnicode < usb.wStartUnicode)
-      iEnd = iMid - 1;
-    else if (wUnicode > usb.wEndUnicode)
-      iStart = iMid + 1;
-    else
-      return &usb;
-  } while (iStart <= iEnd);
+const FGAS_FONTUSB* FGAS_GetUnicodeBitField(wchar_t unicode) {
+  auto* result = std::lower_bound(
+      std::begin(g_FXGdiFontUSBTable), std::end(g_FXGdiFontUSBTable), unicode,
+      [](const FGAS_FONTUSB& iter, const wchar_t unicode) {
+        return iter.wStartUnicode < unicode;
+      });
+  if (result != std::end(g_FXGdiFontUSBTable) &&
+      result->wStartUnicode <= unicode && result->wEndUnicode >= unicode)
+    return result;
   return nullptr;
 }
 
