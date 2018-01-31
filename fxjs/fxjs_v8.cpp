@@ -10,12 +10,8 @@
 
 #include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 
-// Keep this consistent with the values defined in gin/public/context_holder.h
-// (without actually requiring a dependency on gin itself for the standalone
-// embedders of PDFIum). The value we want to use is:
-//   kPerContextDataStartIndex + kEmbedderPDFium, which is 3.
-static const unsigned int kPerContextDataIndex = 3u;
 static unsigned int g_embedderDataSlot = 1u;
+static unsigned int g_CFXJSContextDataSlot = 2u;
 static v8::Isolate* g_isolate = nullptr;
 static size_t g_isolate_ref_count = 0;
 static FXJS_ArrayBufferAllocator* g_arrayBufferAllocator = nullptr;
@@ -262,9 +258,7 @@ CFXJS_Engine::~CFXJS_Engine() = default;
 
 // static
 CFXJS_Engine* CFXJS_Engine::CurrentEngineFromIsolate(v8::Isolate* pIsolate) {
-  return static_cast<CFXJS_Engine*>(
-      pIsolate->GetCurrentContext()->GetAlignedPointerFromEmbedderData(
-          kPerContextDataIndex));
+  return static_cast<CFXJS_Engine*>(pIsolate->GetData(g_CFXJSContextDataSlot));
 }
 
 // static
@@ -386,7 +380,7 @@ void CFXJS_Engine::InitializeEngine() {
       GetIsolate(), nullptr, GetGlobalObjectTemplate(GetIsolate()));
   v8::Context::Scope context_scope(v8Context);
 
-  v8Context->SetAlignedPointerInEmbedderData(kPerContextDataIndex, this);
+  GetIsolate()->SetData(g_CFXJSContextDataSlot, this);
 
   int maxID = CFXJS_ObjDefinition::MaxID(GetIsolate());
   m_StaticObjects.resize(maxID + 1);
