@@ -91,27 +91,28 @@ FPDFText_GetUnicode(FPDF_TEXTPAGE text_page, int index) {
   return charinfo.m_Unicode;
 }
 
-FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetFontSize(FPDF_TEXTPAGE text_page,
+FPDF_EXPORT float FPDF_CALLCONV FPDFText_GetFontSizeF(FPDF_TEXTPAGE text_page,
                                                       int index) {
   if (!text_page)
-    return 0;
-  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
+    return 0.0f;
 
+  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
   if (index < 0 || index >= textpage->CountChars())
-    return 0;
+    return 0.0f;
 
   FPDF_CHAR_INFO charinfo;
   textpage->GetCharInfo(index, &charinfo);
   return charinfo.m_FontSize;
 }
 
-FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetCharBox(FPDF_TEXTPAGE text_page,
-                                                        int index,
-                                                        double* left,
-                                                        double* right,
-                                                        double* bottom,
-                                                        double* top) {
-  if (!text_page || index < 0)
+FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetFontSize(FPDF_TEXTPAGE text_page,
+                                                      int index) {
+  return FPDFText_GetFontSizeF(text_page, index);
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetCharBoxF(FPDF_TEXTPAGE text_page, int index, FS_RECTF* rect) {
+  if (!text_page || index < 0 || !rect)
     return false;
 
   CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
@@ -120,10 +121,43 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetCharBox(FPDF_TEXTPAGE text_page,
 
   FPDF_CHAR_INFO charinfo;
   textpage->GetCharInfo(index, &charinfo);
-  *left = charinfo.m_CharBox.left;
-  *right = charinfo.m_CharBox.right;
-  *bottom = charinfo.m_CharBox.bottom;
-  *top = charinfo.m_CharBox.top;
+  *rect = FSRECTFFromCFXFloatRect(charinfo.m_CharBox);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetCharBox(FPDF_TEXTPAGE text_page,
+                                                        int index,
+                                                        double* left,
+                                                        double* right,
+                                                        double* bottom,
+                                                        double* top) {
+  FS_RECTF rect;
+  if (!FPDFText_GetCharBoxF(text_page, index, &rect))
+    return false;
+
+  *left = rect.left;
+  *right = rect.right;
+  *bottom = rect.bottom;
+  *top = rect.top;
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetCharOriginF(FPDF_TEXTPAGE text_page,
+                        int index,
+                        float* x,
+                        float* y) {
+  if (!text_page || !x || !y)
+    return false;
+
+  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
+  if (index < 0 || index >= textpage->CountChars())
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+  *x = charinfo.m_Origin.x;
+  *y = charinfo.m_Origin.y;
   return true;
 }
 
@@ -132,34 +166,39 @@ FPDFText_GetCharOrigin(FPDF_TEXTPAGE text_page,
                        int index,
                        double* x,
                        double* y) {
-  if (!text_page)
+  float float_x;
+  float float_y;
+  if (!FPDFText_GetCharOriginF(text_page, index, &float_x, &float_y))
     return false;
-  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
 
-  if (index < 0 || index >= textpage->CountChars())
-    return false;
-  FPDF_CHAR_INFO charinfo;
-  textpage->GetCharInfo(index, &charinfo);
-  *x = charinfo.m_Origin.x;
-  *y = charinfo.m_Origin.y;
+  *x = float_x;
+  *y = float_y;
   return true;
 }
 
-// select
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFText_GetCharIndexAtPosF(FPDF_TEXTPAGE text_page,
+                            float x,
+                            float y,
+                            float xTolerance,
+                            float yTolerance) {
+  if (!text_page)
+    return -3;
+
+  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
+  return textpage->GetIndexAtPos(CFX_PointF(x, y),
+                                 CFX_SizeF(xTolerance, yTolerance));
+}
+
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFText_GetCharIndexAtPos(FPDF_TEXTPAGE text_page,
                            double x,
                            double y,
                            double xTolerance,
                            double yTolerance) {
-  if (!text_page)
-    return -3;
-
-  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
-  return textpage->GetIndexAtPos(
-      CFX_PointF(static_cast<float>(x), static_cast<float>(y)),
-      CFX_SizeF(static_cast<float>(xTolerance),
-                static_cast<float>(yTolerance)));
+  return FPDFText_GetCharIndexAtPosF(
+      text_page, static_cast<float>(x), static_cast<float>(y),
+      static_cast<float>(xTolerance), static_cast<float>(yTolerance));
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetText(FPDF_TEXTPAGE page,
@@ -207,6 +246,19 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_CountRects(FPDF_TEXTPAGE text_page,
   return textpage->CountRects(start, count);
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRectF(FPDF_TEXTPAGE text_page,
+                                                      int rect_index,
+                                                      FS_RECTF* rect) {
+  if (!text_page || !rect)
+    return false;
+
+  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
+  CFX_FloatRect result_rect;
+  bool result = textpage->GetRect(rect_index, &result_rect);
+  *rect = FSRECTFFromCFXFloatRect(result_rect);
+  return result;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRect(FPDF_TEXTPAGE text_page,
                                                      int rect_index,
                                                      double* left,
@@ -216,10 +268,8 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRect(FPDF_TEXTPAGE text_page,
   if (!text_page)
     return false;
 
-  CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
-  CFX_FloatRect rect;
-  bool result = textpage->GetRect(rect_index, &rect);
-
+  FS_RECTF rect;
+  bool result = FPDFText_GetRectF(text_page, rect_index, &rect);
   *left = rect.left;
   *top = rect.top;
   *right = rect.right;
@@ -227,20 +277,15 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRect(FPDF_TEXTPAGE text_page,
   return result;
 }
 
-FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetBoundedText(FPDF_TEXTPAGE text_page,
-                                                      double left,
-                                                      double top,
-                                                      double right,
-                                                      double bottom,
-                                                      unsigned short* buffer,
-                                                      int buflen) {
-  if (!text_page)
+FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetBoundedTextF(FPDF_TEXTPAGE text_page,
+                                                       const FS_RECTF* rect,
+                                                       unsigned short* buffer,
+                                                       int buflen) {
+  if (!text_page || !rect)
     return 0;
 
   CPDF_TextPage* textpage = CPDFTextPageFromFPDFTextPage(text_page);
-  CFX_FloatRect rect((float)left, (float)bottom, (float)right, (float)top);
-  WideString str = textpage->GetTextByRect(rect);
-
+  WideString str = textpage->GetTextByRect(CFXFloatRectFromFSRECTF(*rect));
   if (buflen <= 0 || !buffer)
     return str.GetLength();
 
@@ -250,8 +295,23 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetBoundedText(FPDF_TEXTPAGE text_page,
   memcpy(buffer, cbUTF16Str.GetBuffer(size * sizeof(unsigned short)),
          size * sizeof(unsigned short));
   cbUTF16Str.ReleaseBuffer(size * sizeof(unsigned short));
-
   return size;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetBoundedText(FPDF_TEXTPAGE text_page,
+                                                      double left,
+                                                      double top,
+                                                      double right,
+                                                      double bottom,
+                                                      unsigned short* buffer,
+                                                      int buflen) {
+  FS_RECTF rect;
+  rect.left = static_cast<float>(left);
+  rect.top = static_cast<float>(top);
+  rect.right = static_cast<float>(right);
+  rect.bottom = static_cast<float>(bottom);
+
+  return FPDFText_GetBoundedTextF(text_page, &rect, buffer, buflen);
 }
 
 // Search
@@ -366,14 +426,11 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFLink_CountRects(FPDF_PAGELINK link_page,
   return pdfium::CollectionSize<int>(pageLink->GetRects(link_index));
 }
 
-FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRect(FPDF_PAGELINK link_page,
-                                                     int link_index,
-                                                     int rect_index,
-                                                     double* left,
-                                                     double* top,
-                                                     double* right,
-                                                     double* bottom) {
-  if (!link_page || link_index < 0 || rect_index < 0)
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRectF(FPDF_PAGELINK link_page,
+                                                      int link_index,
+                                                      int rect_index,
+                                                      FS_RECTF* rect) {
+  if (!link_page || link_index < 0 || rect_index < 0 || !rect)
     return false;
 
   CPDF_LinkExtract* pageLink = CPDFLinkExtractFromFPDFPageLink(link_page);
@@ -381,10 +438,25 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRect(FPDF_PAGELINK link_page,
   if (rect_index >= pdfium::CollectionSize<int>(rectArray))
     return false;
 
-  *left = rectArray[rect_index].left;
-  *right = rectArray[rect_index].right;
-  *top = rectArray[rect_index].top;
-  *bottom = rectArray[rect_index].bottom;
+  *rect = FSRECTFFromCFXFloatRect(rectArray[rect_index]);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRect(FPDF_PAGELINK link_page,
+                                                     int link_index,
+                                                     int rect_index,
+                                                     double* left,
+                                                     double* top,
+                                                     double* right,
+                                                     double* bottom) {
+  FS_RECTF rect;
+  if (!FPDFLink_GetRectF(link_page, link_index, rect_index, &rect))
+    return false;
+
+  *left = rect.left;
+  *right = rect.right;
+  *top = rect.top;
+  *bottom = rect.bottom;
   return true;
 }
 

@@ -76,7 +76,7 @@ ByteString CFXByteStringFromFPDFWideString(FPDF_WIDESTRING wide_string);
 CFX_DIBitmap* CFXBitmapFromFPDFBitmap(FPDF_BITMAP bitmap);
 
 CFX_FloatRect CFXFloatRectFromFSRECTF(const FS_RECTF& rect);
-void FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect, FS_RECTF* out_rect);
+FS_RECTF FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect);
 
 // This causes a loss of precision, since FS_MATRIX represents matrix values
 // with floats.

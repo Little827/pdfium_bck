@@ -686,7 +686,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetRect(FPDF_ANNOTATION annot,
   if (!pAnnotDict)
     return false;
 
-  FSRECTFFromCFXFloatRect(pAnnotDict->GetRectFor("Rect"), rect);
+  *rect = FSRECTFFromCFXFloatRect(pAnnotDict->GetRectFor("Rect"));
   return true;
 }
 

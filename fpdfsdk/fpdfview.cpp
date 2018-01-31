@@ -363,11 +363,13 @@ CFX_FloatRect CFXFloatRectFromFSRECTF(const FS_RECTF& rect) {
   return CFX_FloatRect(rect.left, rect.bottom, rect.right, rect.top);
 }
 
-void FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect, FS_RECTF* out_rect) {
-  out_rect->left = rect.left;
-  out_rect->top = rect.top;
-  out_rect->right = rect.right;
-  out_rect->bottom = rect.bottom;
+FS_RECTF FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect) {
+  FS_RECTF ret;
+  ret.left = rect.left;
+  ret.top = rect.top;
+  ret.right = rect.right;
+  ret.bottom = rect.bottom;
+  return ret;
 }
 
 FS_MATRIX FSMatrixFromSixDoubles(double a,
@@ -752,7 +754,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetPageBoundingBox(FPDF_PAGE page,
   if (!pPage)
     return false;
 
-  FSRECTFFromCFXFloatRect(pPage->GetPageBBox(), rect);
+  *rect = FSRECTFFromCFXFloatRect(pPage->GetPageBBox());
   return true;
 }
 

@@ -280,13 +280,19 @@ int CheckPDFiumCApi() {
     CHK(FPDFText_ClosePage);
     CHK(FPDFText_CountChars);
     CHK(FPDFText_GetUnicode);
+    CHK(FPDFText_GetFontSizeF);
     CHK(FPDFText_GetFontSize);
+    CHK(FPDFText_GetCharBoxF);
     CHK(FPDFText_GetCharBox);
+    CHK(FPDFText_GetCharOriginF);
     CHK(FPDFText_GetCharOrigin);
+    CHK(FPDFText_GetCharIndexAtPosF);
     CHK(FPDFText_GetCharIndexAtPos);
     CHK(FPDFText_GetText);
     CHK(FPDFText_CountRects);
+    CHK(FPDFText_GetRectF);
     CHK(FPDFText_GetRect);
+    CHK(FPDFText_GetBoundedTextF);
     CHK(FPDFText_GetBoundedText);
     CHK(FPDFText_FindStart);
     CHK(FPDFText_FindNext);
@@ -298,6 +304,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFLink_CountWebLinks);
     CHK(FPDFLink_GetURL);
     CHK(FPDFLink_CountRects);
+    CHK(FPDFLink_GetRectF);
     CHK(FPDFLink_GetRect);
     CHK(FPDFLink_CloseWebLinks);
 

@@ -345,9 +345,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetAnnotRect(FPDF_LINK linkAnnot,
                                                           FS_RECTF* rect) {
   if (!linkAnnot || !rect)
     return false;
+
   CPDF_Dictionary* pAnnotDict =
       ToDictionary(static_cast<CPDF_Object*>(linkAnnot));
-  FSRECTFFromCFXFloatRect(pAnnotDict->GetRectFor("Rect"), rect);
+  *rect = FSRECTFFromCFXFloatRect(pAnnotDict->GetRectFor("Rect"));
   return true;
 }
 

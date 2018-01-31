@@ -73,7 +73,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_CountChars(FPDF_TEXTPAGE text_page);
 FPDF_EXPORT unsigned int FPDF_CALLCONV
 FPDFText_GetUnicode(FPDF_TEXTPAGE text_page, int index);
 
-// Function: FPDFText_GetFontSize
+// Function: FPDFText_GetFontSizeF
 //          Get the font size of a particular character.
 // Parameters:
 //          text_page   -   Handle to a text page information structure.
@@ -84,30 +84,32 @@ FPDFText_GetUnicode(FPDF_TEXTPAGE text_page, int index);
 //          1/72 inch).
 //          This is the typographic size of the font (so called "em size").
 //
+FPDF_EXPORT float FPDF_CALLCONV FPDFText_GetFontSizeF(FPDF_TEXTPAGE text_page,
+                                                      int index);
+
+// Deprecated version of FPDFText_GetFontSizeF().
 FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetFontSize(FPDF_TEXTPAGE text_page,
                                                       int index);
 
-// Function: FPDFText_GetCharBox
+// Function: FPDFText_GetCharBoxF
 //          Get bounding box of a particular character.
 // Parameters:
 //          text_page   -   Handle to a text page information structure.
-//          Returned by FPDFText_LoadPage function.
+//                          Returned by FPDFText_LoadPage().
 //          index       -   Zero-based index of the character.
-//          left        -   Pointer to a double number receiving left position
-//          of the character box.
-//          right       -   Pointer to a double number receiving right position
-//          of the character box.
-//          bottom      -   Pointer to a double number receiving bottom position
-//          of the character box.
-//          top         -   Pointer to a double number receiving top position of
-//          the character box.
+//          rect        -   Pointer to rect to receive the LTRB positions of the
+//                          character box.
 // Return Value:
-//          On success, return TRUE and fill in |left|, |right|, |bottom|, and
-//          |top|. If |text_page| is invalid, or if |index| is out of bounds,
-//          then return FALSE, and the out parameters remain unmodified.
+//          On success, return TRUE and fill in |rect|. If |text_page| is
+//          invalid, or if |index| is out of bounds, then return FALSE, and
+//          |rect| remains unmodified.
 // Comments:
 //          All positions are measured in PDF "user space".
 //
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetCharBoxF(FPDF_TEXTPAGE text_page, int index, FS_RECTF* rect);
+
+// Deprecated version of FPDFText_GetCharBoxF().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetCharBox(FPDF_TEXTPAGE text_page,
                                                         int index,
                                                         double* left,
@@ -115,45 +117,56 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetCharBox(FPDF_TEXTPAGE text_page,
                                                         double* bottom,
                                                         double* top);
 
-// Function: FPDFText_GetCharOrigin
+// Function: FPDFText_GetCharOriginF
 //          Get origin of a particular character.
 // Parameters:
 //          text_page   -   Handle to a text page information structure.
-//          Returned by FPDFText_LoadPage function.
+//                          Returned by FPDFText_LoadPage().
 //          index       -   Zero-based index of the character.
-//          x           -   Pointer to a double number receiving x coordinate of
-//          the character origin.
-//          y           -   Pointer to a double number receiving y coordinate of
-//          the character origin.
+//          x           -   Pointer to a float number receiving x coordinate of
+//                          the character origin.
+//          y           -   Pointer to a float number receiving y coordinate of
+//                          the character origin.
 // Return Value:
 //          Whether the call succeeded. If false, x and y are unchanged.
 // Comments:
 //          All positions are measured in PDF "user space".
-//
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetCharOriginF(FPDF_TEXTPAGE text_page, int index, float* x, float* y);
+
+// Deprecated version of FPDFText_GetCharOrigin().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFText_GetCharOrigin(FPDF_TEXTPAGE text_page,
                        int index,
                        double* x,
                        double* y);
 
-// Function: FPDFText_GetCharIndexAtPos
+// Function: FPDFText_GetCharIndexAtPosF
 //          Get the index of a character at or nearby a certain position on the
 //          page.
 // Parameters:
 //          text_page   -   Handle to a text page information structure.
-//          Returned by FPDFText_LoadPage function.
+//                          Returned by FPDFText_LoadPage().
 //          x           -   X position in PDF "user space".
 //          y           -   Y position in PDF "user space".
 //          xTolerance  -   An x-axis tolerance value for character hit
-//          detection, in point unit.
+//                          detection, in point unit.
 //          yTolerance  -   A y-axis tolerance value for character hit
-//          detection, in point unit.
+//                          detection, in point unit.
 // Return Value:
 //          The zero-based index of the character at, or nearby the point (x,y).
 //          If there is no character at or nearby the point, return value will
 //          be -1.
 //          If an error occurs, -3 will be returned.
 //
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFText_GetCharIndexAtPosF(FPDF_TEXTPAGE text_page,
+                            float x,
+                            float y,
+                            float xTolerance,
+                            float yTolerance);
+
+// Deprecated version of FPDFText_GetCharIndexAtPosF().
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFText_GetCharIndexAtPos(FPDF_TEXTPAGE text_page,
                            double x,
@@ -207,26 +220,24 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_CountRects(FPDF_TEXTPAGE text_page,
 
 // Function: FPDFText_GetRect
 //          Get a rectangular area from the result generated by
-//          FPDFText_CountRects.
+//          FPDFText_CountRects().
 // Parameters:
 //          text_page   -   Handle to a text page information structure.
-//          Returned by FPDFText_LoadPage function.
+//                          Returned by FPDFText_LoadPage().
 //          rect_index  -   Zero-based index for the rectangle.
-//          left        -   Pointer to a double value receiving the rectangle
-//          left boundary.
-//          top         -   Pointer to a double value receiving the rectangle
-//          top boundary.
-//          right       -   Pointer to a double value receiving the rectangle
-//          right boundary.
-//          bottom      -   Pointer to a double value receiving the rectangle
-//          bottom boundary.
+//          rect        -   Pointer to a FS_RECTF receiving the rectangle
+//                          boundaries.
 // Return Value:
-//          On success, return TRUE and fill in |left|, |top|, |right|, and
-//          |bottom|. If |link_page| is invalid then return FALSE, and the out
-//          parameters remain unmodified. If |link_page| is valid but
-//          |link_index| is out of bounds, then return FALSE and set the out
-//          parameters to 0.
+//          On success, return TRUE and fill in |rect|. If |rect| is NULL, then
+//          return FALSE. If |link_page| is invalid then return FALSE, and
+//          rect| remains unmodified. If |link_page| is valid but |link_index|
+//          is out of bounds, then return FALSE and set the |rect| values to 0.
 //
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRectF(FPDF_TEXTPAGE text_page,
+                                                      int rect_index,
+                                                      FS_RECTF* rect);
+
+// Deprecated version of FPDFText_GetRect().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRect(FPDF_TEXTPAGE text_page,
                                                      int rect_index,
                                                      double* left,
@@ -234,32 +245,32 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetRect(FPDF_TEXTPAGE text_page,
                                                      double* right,
                                                      double* bottom);
 
-// Function: FPDFText_GetBoundedText
+// Function: FPDFText_GetBoundedTextF
 //          Extract unicode text within a rectangular boundary on the page.
 // Parameters:
 //          text_page   -   Handle to a text page information structure.
-//          Returned by FPDFText_LoadPage function.
-//          left        -   Left boundary.
-//          top         -   Top boundary.
-//          right       -   Right boundary.
-//          bottom      -   Bottom boundary.
+//                          Returned by FPDFText_LoadPage().
+//          rect        -   The boundaries.
 //          buffer      -   A unicode buffer.
 //          buflen      -   Number of characters (not bytes) for the buffer,
-//          excluding an additional terminator.
+//                          excluding an additional terminator.
 // Return Value:
 //          If buffer is NULL or buflen is zero, return number of characters
-//          (not bytes) of text present within
-//          the rectangle, excluding a terminating NUL.  Generally you should
-//          pass a buffer at least one larger
-//          than this if you want a terminating NUL, which will be provided if
-//          space is available.
+//          (not bytes) of text present within the rectangle, excluding a
+//          terminating NUL.  Generally one should pass a buffer at least one
+//          larger than this if one wants a terminating NUL, which will be
+//          provided if space is available.
 //          Otherwise, return number of characters copied into the buffer,
-//          including the terminating NUL
-//          when space for it is available.
+//          including the terminating NUL when space for it is available.
 // Comment:
 //          If the buffer is too small, as much text as will fit is copied into
 //          it.
-//
+FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetBoundedTextF(FPDF_TEXTPAGE text_page,
+                                                       const FS_RECTF* rect,
+                                                       unsigned short* buffer,
+                                                       int buflen);
+
+// Deprecated version of FPDFText_GetBoundedTextF().
 FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetBoundedText(FPDF_TEXTPAGE text_page,
                                                       double left,
                                                       double top,
@@ -413,26 +424,25 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetURL(FPDF_PAGELINK link_page,
 FPDF_EXPORT int FPDF_CALLCONV FPDFLink_CountRects(FPDF_PAGELINK link_page,
                                                   int link_index);
 
-// Function: FPDFLink_GetRect
+// Function: FPDFLink_GetRectF
 //          Fetch the boundaries of a rectangle for a link.
 // Parameters:
-//          link_page   -   Handle returned by FPDFLink_LoadWebLinks.
+//          link_page   -   Handle returned by FPDFLink_LoadWebLinks().
 //          link_index  -   Zero-based index for the link.
 //          rect_index  -   Zero-based index for a rectangle.
-//          left        -   Pointer to a double value receiving the rectangle
-//                          left boundary.
-//          top         -   Pointer to a double value receiving the rectangle
-//                          top boundary.
-//          right       -   Pointer to a double value receiving the rectangle
-//                          right boundary.
-//          bottom      -   Pointer to a double value receiving the rectangle
-//                          bottom boundary.
+//          rect        -   Pointer to a FS_RECTF receiving the rectangle
+//                          boundaries.
 // Return Value:
-//          On success, return TRUE and fill in |left|, |top|, |right|, and
-//          |bottom|. If |link_page| is invalid or if |link_index| does not
-//          correspond to a valid link, then return FALSE, and the out
-//          parameters remain unmodified.
-//
+//          On success, return TRUE and fill in |rect|. If |rect| is NULL,
+//          return FALSE. If |link_page| is invalid or if |link_index| does not
+//          correspond to a valid link, then return FALSE, and |rect| remains
+//          unmodified.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRectF(FPDF_PAGELINK link_page,
+                                                      int link_index,
+                                                      int rect_index,
+                                                      FS_RECTF* rect);
+
+// Deprecated version of FPDFLink_GetRectF().
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRect(FPDF_PAGELINK link_page,
                                                      int link_index,
                                                      int rect_index,
