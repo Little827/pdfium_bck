@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b49fa0b5_8076c973",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-31T16:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5996a66_dc1fddb8",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 45
+      },
+      "revId": "36116cd16591dce3cc4ff42bc46991d3aa4713ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96894ff6_13c3263a",
         "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "36116cd16591dce3cc4ff42bc46991d3aa4713ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e259755c_06bb00f1",
+        "filename": "core/fxcrt/css/cfx_cssdeclaration.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-31T16:21:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f223b38_d9b1d187",
+      "range": {
+        "startLine": 138,
+        "startChar": 45,
+        "endLine": 138,
+        "endChar": 65
+      },
+      "revId": "36116cd16591dce3cc4ff42bc46991d3aa4713ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
