@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1517302546 -0800\nnonce AGjzz3+W5t4+FwtC1HMkOiVfYbJUJ5cPLSqb+S0snl3yNKaB2ybgVzisAZrDLFw6DqxzfzsxzbSW\n\n0000000000000000000000000000000000000000 077631ed80e72e2df891819e3b9410981dffad74 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJacDMSAAoJEKs2LWFaZv17gtkIAIXnheqLVO/J+rcUWhxUw4K4\ngkkb4vxG1hO6JYblc1YZyxkK7KnDAZFt6XbmRwmtgIn8mU9kvj/V1OSgBvTvXcA8\nHmtrgKr8IoC2KHCOr7Wb0MbaYlax8D2NtLq8TbkKF4UxUTjD6ADyCBbNsAgluws3\n8sHTnJ7iSzqlaoc4FHaaB2uw8hTwQ8PNObexbhd1KtpwIHSfxUAUCkweTfO5cRy8\nDjKxN0kEAwKI7hX/Zn7Axi3TP9697Y95wgkyh9WApmclLAJXyLstwT1IkuRplS0d\n/ETgRVl00HPHAlQgRAMPzxuSoRY/dpRl+hbx20pSkxt7uXbC/qVY18+bVZbxc0E\u003d\n\u003d5s3/\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb6eea49_74f7b751",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-31T16:46:37Z",
+      "side": 1,
+      "message": "nStringTo \u003d bsStrippedPageRange.Find(\u0027,\u0027, nStringFrom).value_or(nLength);\n\nThen nStringTo can become simply size_t. It\u0027s not worth making it an Optional when it\u0027s always forced to have a value.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "077631ed80e72e2df891819e3b9410981dffad74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
