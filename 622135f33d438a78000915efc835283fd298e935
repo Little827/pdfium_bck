@@ -22,6 +22,30 @@
       "revId": "622135f33d438a78000915efc835283fd298e935",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a34f5ccb_fbe38bf1",
+        "filename": "core/fxcrt/css/cfx_css.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-31T15:52:48Z",
+      "side": 0,
+      "message": "This was being used as a proxy to determine the size of the table when iterating through it. It wasn\u0027t being handled correctly so it was possible to get an OOB. Switching to using std::being and std::end makes it unused, so removing. This pattern shows up multiple places.",
+      "parentUuid": "7f2e2923_21d116b8",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "622135f33d438a78000915efc835283fd298e935",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
