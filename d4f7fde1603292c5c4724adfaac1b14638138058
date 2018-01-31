@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f16ca618_bf0c8312",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-31T20:07:28Z",
+      "side": 1,
+      "message": "pnCurStage if we\u0027re going to keep the hungarian notation.",
+      "range": {
+        "startLine": 124,
+        "startChar": 60,
+        "endLine": 124,
+        "endChar": 69
+      },
+      "revId": "d4f7fde1603292c5c4724adfaac1b14638138058",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
