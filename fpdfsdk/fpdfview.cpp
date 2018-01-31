@@ -735,14 +735,22 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
 #endif  // PDF_ENABLE_XFA
 }
 
-FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageWidth(FPDF_PAGE page) {
+FPDF_EXPORT float FPDF_CALLCONV FPDF_GetPageWidthF(FPDF_PAGE page) {
   UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
-  return pPage ? pPage->GetPageWidth() : 0.0;
+  return pPage ? pPage->GetPageWidth() : 0.0f;
+}
+
+FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageWidth(FPDF_PAGE page) {
+  return FPDF_GetPageWidthF(page);
+}
+
+FPDF_EXPORT float FPDF_CALLCONV FPDF_GetPageHeightF(FPDF_PAGE page) {
+  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  return pPage ? pPage->GetPageHeight() : 0.0;
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageHeight(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
-  return pPage ? pPage->GetPageHeight() : 0.0;
+  return FPDF_GetPageHeightF(page);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetPageBoundingBox(FPDF_PAGE page,
@@ -1128,6 +1136,36 @@ FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError() {
   return GetLastError();
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPageF(FPDF_PAGE page,
+                                                       int start_x,
+                                                       int start_y,
+                                                       int size_x,
+                                                       int size_y,
+                                                       int rotate,
+                                                       int device_x,
+                                                       int device_y,
+                                                       float* page_x,
+                                                       float* page_y) {
+  if (!page || !page_x || !page_y)
+    return false;
+
+  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+#ifdef PDF_ENABLE_XFA
+  return pPage->DeviceToPage(start_x, start_y, size_x, size_y, rotate, device_x,
+                             device_y, page_x, page_y);
+#else   // PDF_ENABLE_XFA
+  CFX_Matrix page2device =
+      pPage->GetDisplayMatrix(start_x, start_y, size_x, size_y, rotate);
+
+  CFX_PointF pos = page2device.GetInverse().Transform(
+      CFX_PointF(static_cast<float>(device_x), static_cast<float>(device_y)));
+
+  *page_x = pos.x;
+  *page_y = pos.y;
+  return true;
+#endif  // PDF_ENABLE_XFA
+}
+
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
                                                  int start_x,
                                                  int start_y,
@@ -1138,21 +1176,43 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
                                                  int device_y,
                                                  double* page_x,
                                                  double* page_y) {
-  if (!page || !page_x || !page_y)
+  float float_page_x;
+  float float_page_y;
+  if (!FPDF_DeviceToPageF(page, start_x, start_y, size_x, size_y, rotate,
+                          device_x, device_y, &float_page_x, &float_page_y)) {
     return;
+  }
+
+  *page_x = float_page_x;
+  *page_y = float_page_y;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDeviceF(FPDF_PAGE page,
+                                                       int start_x,
+                                                       int start_y,
+                                                       int size_x,
+                                                       int size_y,
+                                                       int rotate,
+                                                       float page_x,
+                                                       float page_y,
+                                                       int* device_x,
+                                                       int* device_y) {
+  if (!device_x || !device_y)
+    return false;
   UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  if (!pPage)
+    return false;
 #ifdef PDF_ENABLE_XFA
-  pPage->DeviceToPage(start_x, start_y, size_x, size_y, rotate, device_x,
-                      device_y, page_x, page_y);
+  return pPage->PageToDevice(start_x, start_y, size_x, size_y, rotate, page_x,
+                             page_y, device_x, device_y);
 #else   // PDF_ENABLE_XFA
   CFX_Matrix page2device =
       pPage->GetDisplayMatrix(start_x, start_y, size_x, size_y, rotate);
+  CFX_PointF pos = page2device.Transform(CFX_PointF(page_x, page_y));
 
-  CFX_PointF pos = page2device.GetInverse().Transform(
-      CFX_PointF(static_cast<float>(device_x), static_cast<float>(device_y)));
-
-  *page_x = pos.x;
-  *page_y = pos.y;
+  *device_x = FXSYS_round(pos.x);
+  *device_y = FXSYS_round(pos.y);
+  return true;
 #endif  // PDF_ENABLE_XFA
 }
 
@@ -1166,23 +1226,9 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
                                                  double page_y,
                                                  int* device_x,
                                                  int* device_y) {
-  if (!device_x || !device_y)
-    return;
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
-  if (!pPage)
-    return;
-#ifdef PDF_ENABLE_XFA
-  pPage->PageToDevice(start_x, start_y, size_x, size_y, rotate, page_x, page_y,
-                      device_x, device_y);
-#else   // PDF_ENABLE_XFA
-  CFX_Matrix page2device =
-      pPage->GetDisplayMatrix(start_x, start_y, size_x, size_y, rotate);
-  CFX_PointF pos = page2device.Transform(
-      CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)));
-
-  *device_x = FXSYS_round(pos.x);
-  *device_y = FXSYS_round(pos.y);
-#endif  // PDF_ENABLE_XFA
+  FPDF_PageToDeviceF(page, start_x, start_y, size_x, size_y, rotate,
+                     static_cast<float>(page_x), static_cast<float>(page_y),
+                     device_x, device_y);
 }
 
 FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV FPDFBitmap_Create(int width,
@@ -1302,10 +1348,11 @@ void FPDF_RenderPage_Retail(CPDF_PageRenderContext* pContext,
                  flags, bNeedToRestore, pause);
 }
 
-FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
-                                                      int page_index,
-                                                      double* width,
-                                                      double* height) {
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_GetPageSizeByIndexF(FPDF_DOCUMENT document,
+                         int page_index,
+                         float* width,
+                         float* height) {
   UnderlyingDocumentType* pDoc = UnderlyingFromFPDFDocument(document);
   if (!pDoc)
     return false;
@@ -1330,6 +1377,22 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
 #endif  // PDF_ENABLE_XFA
 
   return true;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
+                                                      int page_index,
+                                                      double* width,
+                                                      double* height) {
+  float float_width;
+  float float_height;
+  FPDF_BOOL ret = FPDF_GetPageSizeByIndexF(document, page_index, &float_width,
+                                           &float_height);
+  if (!ret)
+    return 0;
+
+  *width = float_width;
+  *height = float_height;
+  return 1;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV

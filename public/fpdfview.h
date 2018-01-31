@@ -536,22 +536,28 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageCount(FPDF_DOCUMENT document);
 FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
                                                   int page_index);
 
-// Function: FPDF_GetPageWidth
+// Function: FPDF_GetPageWidthF
 //          Get page width.
 // Parameters:
-//          page        -   Handle to the page. Returned by FPDF_LoadPage.
+//          page        -   Handle to the page. Returned by FPDF_LoadPage().
 // Return value:
 //          Page width (excluding non-displayable area) measured in points.
 //          One point is 1/72 inch (around 0.3528 mm).
+FPDF_EXPORT float FPDF_CALLCONV FPDF_GetPageWidthF(FPDF_PAGE page);
+
+// Deprecated version of FPDF_GetPageWidthF().
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageWidth(FPDF_PAGE page);
 
-// Function: FPDF_GetPageHeight
+// Function: FPDF_GetPageHeightF
 //          Get page height.
 // Parameters:
-//          page        -   Handle to the page. Returned by FPDF_LoadPage.
+//          page        -   Handle to the page. Returned by FPDF_LoadPage().
 // Return value:
 //          Page height (excluding non-displayable area) measured in points.
 //          One point is 1/72 inch (around 0.3528 mm)
+FPDF_EXPORT float FPDF_CALLCONV FPDF_GetPageHeightF(FPDF_PAGE page);
+
+// Deprecated version of FPDF_GetPageHeightF().
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageHeight(FPDF_PAGE page);
 
 // Experimental API.
@@ -567,17 +573,24 @@ FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageHeight(FPDF_PAGE page);
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetPageBoundingBox(FPDF_PAGE page,
                                                             FS_RECTF* rect);
 
-// Function: FPDF_GetPageSizeByIndex
+// Function: FPDF_GetPageSizeByIndexF
 //          Get the size of the page at the given index.
 // Parameters:
-//          document    -   Handle to document. Returned by FPDF_LoadDocument.
+//          document    -   Handle to document. Returned by FPDF_LoadDocument().
 //          page_index  -   Page index, zero for the first page.
-//          width       -   Pointer to a double to receive the page width
+//          width       -   Pointer to a float to receive the page width
 //                          (in points).
-//          height      -   Pointer to a double to receive the page height
+//          height      -   Pointer to a float to receive the page height
 //                          (in points).
 // Return value:
-//          Non-zero for success. 0 for error (document or page not found).
+//          True for success. False for failure. (document or page not found)
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_GetPageSizeByIndexF(FPDF_DOCUMENT document,
+                         int page_index,
+                         float* width,
+                         float* height);
+
+// Deprecated version of FPDF_GetPageSizeByIndexF().
 FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
                                                       int page_index,
                                                       double* width,
@@ -727,10 +740,10 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page);
 //          None.
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document);
 
-// Function: FPDF_DeviceToPage
+// Function: FPDF_DeviceToPageF
 //          Convert the screen coordinates of a point to page coordinates.
 // Parameters:
-//          page        -   Handle to the page. Returned by FPDF_LoadPage.
+//          page        -   Handle to the page. Returned by FPDF_LoadPage().
 //          start_x     -   Left pixel position of the display area in
 //                          device coordinates.
 //          start_y     -   Top pixel position of the display area in device
@@ -744,19 +757,21 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document);
 //                            3 (rotated 90 degrees counter-clockwise)
 //          device_x    -   X value in device coordinates to be converted.
 //          device_y    -   Y value in device coordinates to be converted.
-//          page_x      -   A pointer to a double receiving the converted X
-//                          value in page coordinates.
-//          page_y      -   A pointer to a double receiving the converted Y
-//                          value in page coordinates.
+//          page_x      -   A pointer to a float receiving the converted X value
+//                          in page coordinates.
+//          page_y      -   A pointer to a float receiving the converted Y value
+//                          in page coordinates.
 // Return value:
-//          None.
+//          True on success.
 // Comments:
+//          |page_x| and |page_y| are only filled on success.
+//
 //          The page coordinate system has its origin at the left-bottom corner
 //          of the page, with the X-axis on the bottom going to the right, and
 //          the Y-axis on the left side going up.
 //
-//          NOTE: this coordinate system can be altered when you zoom, scroll,
-//          or rotate a page, however, a point on the page should always have
+//          NOTE: this coordinate system can be altered when one zooms, scrolls,
+//          or rotates a page, however, a point on the page should always have
 //          the same coordinate values in the page coordinate system.
 //
 //          The device coordinate system is device dependent. For screen device,
@@ -764,9 +779,21 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document);
 //          origin can be altered by the Windows coordinate transformation
 //          utilities.
 //
-//          You must make sure the start_x, start_y, size_x, size_y
-//          and rotate parameters have exactly same values as you used in
+//          One must make sure the start_x, start_y, size_x, size_y
+//          and rotate parameters have exactly same values as one used in
 //          the FPDF_RenderPage() function call.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPageF(FPDF_PAGE page,
+                                                       int start_x,
+                                                       int start_y,
+                                                       int size_x,
+                                                       int size_y,
+                                                       int rotate,
+                                                       int device_x,
+                                                       int device_y,
+                                                       float* page_x,
+                                                       float* page_y);
+
+// Deprecated version of FPDF_DeviceToPageF().
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
                                                  int start_x,
                                                  int start_y,
@@ -778,10 +805,10 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
                                                  double* page_x,
                                                  double* page_y);
 
-// Function: FPDF_PageToDevice
+// Function: FPDF_PageToDeviceF
 //          Convert the page coordinates of a point to screen coordinates.
 // Parameters:
-//          page        -   Handle to the page. Returned by FPDF_LoadPage.
+//          page        -   Handle to the page. Returned by FPDF_LoadPage().
 //          start_x     -   Left pixel position of the display area in
 //                          device coordinates.
 //          start_y     -   Top pixel position of the display area in device
@@ -800,9 +827,23 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
 //          device_y    -   A pointer to an integer receiving the result Y
 //                          value in device coordinates.
 // Return value:
-//          None.
+//          True on success.
 // Comments:
 //          See comments for FPDF_DeviceToPage().
+//
+//          |device_x| and |device_y| are only filled on success.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDeviceF(FPDF_PAGE page,
+                                                       int start_x,
+                                                       int start_y,
+                                                       int size_x,
+                                                       int size_y,
+                                                       int rotate,
+                                                       float page_x,
+                                                       float page_y,
+                                                       int* device_x,
+                                                       int* device_y);
+
+// Deprecated version of FPDF_PageToDeviceF().
 FPDF_EXPORT void FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
                                                  int start_x,
                                                  int start_y,

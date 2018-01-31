@@ -344,9 +344,12 @@ int CheckPDFiumCApi() {
     CHK(FPDF_GetSecurityHandlerRevision);
     CHK(FPDF_GetPageCount);
     CHK(FPDF_LoadPage);
+    CHK(FPDF_GetPageWidthF);
     CHK(FPDF_GetPageWidth);
+    CHK(FPDF_GetPageHeightF);
     CHK(FPDF_GetPageHeight);
     CHK(FPDF_GetPageBoundingBox);
+    CHK(FPDF_GetPageSizeByIndexF);
     CHK(FPDF_GetPageSizeByIndex);
 #ifdef _WIN32
     CHK(FPDF_RenderPage);
@@ -358,7 +361,9 @@ int CheckPDFiumCApi() {
 #endif
     CHK(FPDF_ClosePage);
     CHK(FPDF_CloseDocument);
+    CHK(FPDF_DeviceToPageF);
     CHK(FPDF_DeviceToPage);
+    CHK(FPDF_PageToDeviceF);
     CHK(FPDF_PageToDevice);
     CHK(FPDFBitmap_Create);
     CHK(FPDFBitmap_CreateEx);

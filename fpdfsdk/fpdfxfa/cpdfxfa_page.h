@@ -38,22 +38,22 @@ class CPDFXFA_Page : public Retainable {
   float GetPageWidth() const;
   float GetPageHeight() const;
 
-  void DeviceToPage(int start_x,
+  bool DeviceToPage(int start_x,
                     int start_y,
                     int size_x,
                     int size_y,
                     int rotate,
                     int device_x,
                     int device_y,
-                    double* page_x,
-                    double* page_y);
-  void PageToDevice(int start_x,
+                    float* page_x,
+                    float* page_y);
+  bool PageToDevice(int start_x,
                     int start_y,
                     int size_x,
                     int size_y,
                     int rotate,
-                    double page_x,
-                    double page_y,
+                    float page_x,
+                    float page_y,
                     int* device_x,
                     int* device_y);
 
