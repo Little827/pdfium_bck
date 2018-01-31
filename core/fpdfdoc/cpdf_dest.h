@@ -10,6 +10,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/base/optional.h"
 
 class CPDF_Document;
 class CPDF_Object;
@@ -23,7 +24,7 @@ class CPDF_Dest {
 
   CPDF_Object* GetObject() const { return m_pObj.Get(); }
   ByteString GetRemoteName() const;
-  int GetPageIndex(CPDF_Document* pDoc) const;
+  Optional<int> GetPageIndex(CPDF_Document* pDoc) const;
   uint32_t GetPageObjNum() const;
 
   // Returns the zoom mode, as one of the PDFDEST_VIEW_* values in fpdf_doc.h.

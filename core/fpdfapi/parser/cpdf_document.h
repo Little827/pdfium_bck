@@ -54,7 +54,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
   CPDF_Dictionary* GetPage(int iPage);
-  int GetPageIndex(uint32_t objnum);
+  Optional<int> GetPageIndex(uint32_t objnum);
   uint32_t GetUserPermissions() const;
 
   // Returns a valid pointer, unless it is called during destruction.

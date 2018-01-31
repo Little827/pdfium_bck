@@ -362,7 +362,7 @@ void CPDFSDK_ActionHandler::DoAction_GoTo(
   ASSERT(pPDFDocument);
 
   CPDF_Dest MyDest = action.GetDest(pPDFDocument);
-  int nPageIndex = MyDest.GetPageIndex(pPDFDocument);
+  int nPageIndex = MyDest.GetPageIndex(pPDFDocument).value_or(0);
   int nFitType = MyDest.GetZoomMode();
   const CPDF_Array* pMyArray = ToArray(MyDest.GetObject());
   std::vector<float> posArray;

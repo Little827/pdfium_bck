@@ -207,7 +207,7 @@ FPDFDest_GetPageIndex(FPDF_DOCUMENT document, FPDF_DEST pDict) {
   if (!pDoc)
     return 0;
   CPDF_Dest dest(static_cast<CPDF_Array*>(pDict));
-  return dest.GetPageIndex(pDoc);
+  return dest.GetPageIndex(pDoc).value_or(0);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV

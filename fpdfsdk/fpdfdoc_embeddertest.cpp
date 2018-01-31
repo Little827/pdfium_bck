@@ -132,8 +132,7 @@ TEST_F(FPDFDocEmbeddertest, BUG_680376) {
   // Page number directly in item from Dests NameTree.
   FPDF_DEST dest = FPDF_GetNamedDestByName(document(), "First");
   EXPECT_TRUE(dest);
-  EXPECT_EQ(static_cast<unsigned long>(-1),
-            FPDFDest_GetPageIndex(document(), dest));
+  EXPECT_EQ(0u, FPDFDest_GetPageIndex(document(), dest));
 }
 
 TEST_F(FPDFDocEmbeddertest, ActionGetFilePath) {
