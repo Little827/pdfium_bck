@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e7bc329_6f3936e8",
+        "filename": "fxjs/fxjs_v8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-31T19:53:41Z",
+      "side": 1,
+      "message": "That will require passing the CFXJS_Engine around to a lot of places because it\u0027s possible for the CFXJSE_Class and CFXJSE_Context classes to create the PerIsolateData.\n\nIt maybe possible, but it will be a lot more work keeping track of where the engine has been passed.",
+      "parentUuid": "64533554_13504900",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "8da3bc53f77406c48b85a7360fa8c4fc561d0593",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13cb67f4_122910ba",
         "filename": "fxjs/fxjs_v8.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-31T19:44:22Z",
       "side": 1,
       "message": "e.g. pass |this| here for its use.",
+      "range": {
+        "startLine": 377,
+        "startChar": 2,
+        "endLine": 377,
+        "endChar": 43
+      },
+      "revId": "8da3bc53f77406c48b85a7360fa8c4fc561d0593",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d89530_c37a10b1",
+        "filename": "fxjs/fxjs_v8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-31T19:53:41Z",
+      "side": 1,
+      "message": "Here it works, but CFXJSE_RuntimeData::Get calls CXJS_PerIsolateData::SetUp, which means we need the engine in the callers which are CFXJSE_IsolateTracker and CFXJSE_Context .... and it probably ripples out from there. I started going down this route originally but we expanded quickly.",
+      "parentUuid": "13cb67f4_122910ba",
       "range": {
         "startLine": 377,
         "startChar": 2,
