@@ -695,6 +695,24 @@
     },
     {
       "key": {
+        "uuid": "11b49164_b0c9dbec",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T02:01:00Z",
+      "side": 1,
+      "message": "Given my understanding of the need for unique XObject IDs, here\u0027s my suggestion on what we can do here: https://pdfium-review.googlesource.com/#/c/pdfium/+/24750",
+      "parentUuid": "c4b47047_80622df7",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf29ec33_bbad819c",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62

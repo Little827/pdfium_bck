@@ -145,6 +145,87 @@
     },
     {
       "key": {
+        "uuid": "be60c32f_8085a9f6",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T02:01:00Z",
+      "side": 1,
+      "message": "Maybe I was thinking of std::make_tuple problems. Nevermind.",
+      "parentUuid": "706c88fc_c18740cf",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2655a8aa_688c09ae",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T02:01:00Z",
+      "side": 1,
+      "message": "All the new methods can be private, except for ExportNPagesToOne().",
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e274c2f_ff247406",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T02:01:00Z",
+      "side": 1,
+      "message": "typo: Is this suppose to be Dest?",
+      "range": {
+        "startLine": 303,
+        "startChar": 37,
+        "endLine": 303,
+        "endChar": 41
+      },
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d0bd1f_a9f8f9d4",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 66
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T02:01:00Z",
+      "side": 1,
+      "message": "Finish inserting into |m_xobjs| here before moving on to calculating |matrix|.",
+      "revId": "8272ebe4a6c0664dbc0983fc96d4213326ed6b12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4839ee5_9918baea",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 66
