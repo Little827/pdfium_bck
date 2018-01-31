@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "974f4c9d_f4caf848",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-31T21:53:15Z",
+      "side": 1,
+      "message": "pre-existing nit: This should be called pDest.",
+      "range": {
+        "startLine": 204,
+        "startChar": 63,
+        "endLine": 204,
+        "endChar": 68
+      },
+      "revId": "d3c6db3ae07e61704ef44ef00ae4cf6764de4bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c977fc2_f8b29ab8",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-31T21:53:15Z",
+      "side": 1,
+      "message": "... then the cast to array from \"pdest\" make me less anxious than from \"dict\"",
+      "range": {
+        "startLine": 210,
+        "startChar": 17,
+        "endLine": 210,
+        "endChar": 48
+      },
+      "revId": "d3c6db3ae07e61704ef44ef00ae4cf6764de4bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f78518_3123115d",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-01-31T21:53:15Z",
+      "side": 1,
+      "message": "can this return, like, other negative values?",
+      "range": {
+        "startLine": 212,
+        "startChar": 9,
+        "endLine": 212,
+        "endChar": 19
+      },
+      "revId": "d3c6db3ae07e61704ef44ef00ae4cf6764de4bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
