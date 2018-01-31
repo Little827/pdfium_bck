@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55a8e138_9b98c207",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-31T20:01:47Z",
+      "side": 0,
+      "message": "Always returned false.",
+      "range": {
+        "startLine": 1582,
+        "startChar": 1,
+        "endLine": 1587,
+        "endChar": 1
+      },
+      "revId": "7cd5bb2bb3687cb1bfbe7759d186e8cd8e7e97d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869cdc34_23c07dcc",
+        "filename": "xfa/fxfa/parser/cxfa_layoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-01-31T20:01:47Z",
+      "side": 0,
+      "message": "Since IncrementRelayoutNode returns false, this would always trigger the if() if we have change containers which means this would always return false if we have children.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "7cd5bb2bb3687cb1bfbe7759d186e8cd8e7e97d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
