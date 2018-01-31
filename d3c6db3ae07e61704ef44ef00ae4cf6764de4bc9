@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f2cd996_88cfd9ce",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-31T22:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "974f4c9d_f4caf848",
+      "range": {
+        "startLine": 204,
+        "startChar": 63,
+        "endLine": 204,
+        "endChar": 68
+      },
+      "revId": "d3c6db3ae07e61704ef44ef00ae4cf6764de4bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c977fc2_f8b29ab8",
         "filename": "fpdfsdk/fpdfdoc.cpp",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "91851bff_542623f9",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-31T22:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c977fc2_f8b29ab8",
+      "range": {
+        "startLine": 210,
+        "startChar": 17,
+        "endLine": 210,
+        "endChar": 48
+      },
+      "revId": "d3c6db3ae07e61704ef44ef00ae4cf6764de4bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f78518_3123115d",
         "filename": "fpdfsdk/fpdfdoc.cpp",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "d3c6db3ae07e61704ef44ef00ae4cf6764de4bc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f9e1c1_726d5920",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-01-31T22:23:19Z",
+      "side": 1,
+      "message": "I guess if the page is a negative number, CPDF_Dest::GetPageIndex() could.",
+      "parentUuid": "63f78518_3123115d",
+      "range": {
+        "startLine": 212,
+        "startChar": 9,
+        "endLine": 212,
+        "endChar": 19
+      },
+      "revId": "d3c6db3ae07e61704ef44ef00ae4cf6764de4bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
