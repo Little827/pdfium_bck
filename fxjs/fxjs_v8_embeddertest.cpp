@@ -62,8 +62,6 @@ TEST_F(FXJSV8EmbedderTest, MultipleEngines) {
     CheckAssignmentInCurrentContext(kExpected1);
   }
 
-  engine1.ReleaseEngine();
-
   {
     v8::Local<v8::Context> context2 = engine2.NewLocalContext();
     v8::Context::Scope context_scope2(context2);
@@ -71,6 +69,35 @@ TEST_F(FXJSV8EmbedderTest, MultipleEngines) {
     CheckAssignmentInCurrentContext(kExpected2);
   }
 
+  {
+    v8::Local<v8::Context> context1 = engine1.NewLocalContext();
+    v8::Context::Scope context_scope1(context1);
+    CheckAssignmentInCurrentContext(kExpected1);
+  }
+
+  {
+    v8::Local<v8::Context> context2 = engine2.NewLocalContext();
+    v8::Context::Scope context_scope2(context2);
+    CheckAssignmentInCurrentContext(kExpected2);
+  }
+
+  {
+    v8::Local<v8::Context> context1 = engine1.NewLocalContext();
+    v8::Local<v8::Context> context2 = engine2.NewLocalContext();
+    v8::Context::Scope context_scope1(context1);
+    v8::Context::Scope context_scope2(context2);
+    CheckAssignmentInCurrentContext(kExpected2);
+  }
+
+  {
+    v8::Local<v8::Context> context2 = engine2.NewLocalContext();
+    v8::Local<v8::Context> context1 = engine1.NewLocalContext();
+    v8::Context::Scope context_scope2(context2);
+    v8::Context::Scope context_scope1(context1);
+    CheckAssignmentInCurrentContext(kExpected1);
+  }
+
+  engine1.ReleaseEngine();
   engine2.ReleaseEngine();
   CheckAssignmentInCurrentContext(kExpected0);
 }
