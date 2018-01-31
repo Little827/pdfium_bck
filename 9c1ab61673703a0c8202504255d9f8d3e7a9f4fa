@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "45766ef2_59d0ff7a",
+        "filename": "core/fpdfdoc/cpdf_dest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T23:07:21Z",
+      "side": 1,
+      "message": "Group this wit the comment in the header?",
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5aeafd80_4538a7b7",
         "filename": "core/fpdfdoc/cpdf_dest.cpp",
         "patchSetId": 3
@@ -13,6 +30,30 @@
       "writtenOn": "2018-01-31T22:51:27Z",
       "side": 1,
       "message": "I don\u0027t particularly like the name, but I couldn\u0027t think of anything better.",
+      "range": {
+        "startLine": 60,
+        "startChar": 15,
+        "endLine": 60,
+        "endChar": 31
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a8e3da4_66be175e",
+        "filename": "core/fpdfdoc/cpdf_dest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-01-31T23:07:21Z",
+      "side": 1,
+      "message": "Probably the best we can do given the most obvious name is taken.",
+      "parentUuid": "5aeafd80_4538a7b7",
       "range": {
         "startLine": 60,
         "startChar": 15,
