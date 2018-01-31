@@ -22,6 +22,30 @@
       "revId": "d51b2d99d3b95307d88b6901e63ff570a20dfe74",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f80a9663_731fbfd7",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-01-31T16:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c7c44fb_af0d0ec7",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "d51b2d99d3b95307d88b6901e63ff570a20dfe74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
