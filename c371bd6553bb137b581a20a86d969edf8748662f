@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "bd3912a2_03046ffd",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-31T06:45:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a29d9710_c4bbb2ce",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4e510a1_184fb99a",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
@@ -484,6 +502,24 @@
     },
     {
       "key": {
+        "uuid": "992283c0_9a31f285",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-31T06:45:03Z",
+      "side": 1,
+      "message": "Actually, I think I took the function signature from one of the review comments I received.  I should have checked the data type.  float is sufficient in this case, why shall we define page width and height to be double?",
+      "parentUuid": "7679e52d_f1940082",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e01e8606_1f56b5c6",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 62
@@ -707,6 +743,24 @@
       "side": 1,
       "message": "Given my understanding of the need for unique XObject IDs, here\u0027s my suggestion on what we can do here: https://pdfium-review.googlesource.com/#/c/pdfium/+/24750",
       "parentUuid": "c4b47047_80622df7",
+      "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c57efcae_4cb20568",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 62
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-31T06:45:03Z",
+      "side": 1,
+      "message": "I will think about it.  From what I see, you are suggesting not to use member variables, rather using local variables.  Why is that?  I prefer to keep m_PageSize as member variable, because I know later on I might use it when I needed to rotate pages.",
+      "parentUuid": "11b49164_b0c9dbec",
       "revId": "c371bd6553bb137b581a20a86d969edf8748662f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false

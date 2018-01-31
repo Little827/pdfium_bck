@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "4c31e143_2c64e6f9",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-01-31T06:45:03Z",
+      "side": 1,
+      "message": "In this case, implementation are not easily reachable to me.  But I did look at examples to understand how it was used.  For example, it took two tries for me to release the object when needed to return the newly created FPDF_Document object.",
+      "parentUuid": "ad2953bd_36900a14",
+      "revId": "c6d7e80b436f961a508a5d4f51b379b67a6c7f80",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "628b14c9_95b509b0",
         "filename": "fpdfsdk/fpdfppo.cpp",
         "patchSetId": 65
