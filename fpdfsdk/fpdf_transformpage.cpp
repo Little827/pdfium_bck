@@ -104,8 +104,8 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GetCropBox(FPDF_PAGE page,
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPage_TransFormWithClip(FPDF_PAGE page,
-                           FS_MATRIX* matrix,
-                           FS_RECTF* clipRect) {
+                           const FS_MATRIX* matrix,
+                           const FS_RECTF* clipRect) {
   if (!matrix && !clipRect)
     return false;
 

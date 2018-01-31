@@ -48,17 +48,17 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_SetCropBox(FPDF_PAGE page,
                                                    float top);
 
 /**  Get "MediaBox" entry from the page dictionary.
-* @param[in] page   - Handle to a page.
-* @param[in] left   - Pointer to a double value receiving the left of the
-* rectangle.
-* @param[in] bottom - Pointer to a double value receiving the bottom of the
-* rectangle.
-* @param[in] right  - Pointer to a double value receiving the right of the
-* rectangle.
-* @param[in] top    - Pointer to a double value receiving the top of the
-* rectangle.
-* @retval True if success,else fail.
-*/
+ * @param[in] page   - Handle to a page.
+ * @param[in] left   - Pointer to a float value receiving the left of the
+ *                     rectangle.
+ * @param[in] bottom - Pointer to a float value receiving the bottom of the
+ *                     rectangle.
+ * @param[in] right  - Pointer to a float value receiving the right of the
+ *                     rectangle.
+ * @param[in] top    - Pointer to a float value receiving the top of the
+ *                     rectangle.
+ * @retval True if successful, else false.
+ */
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GetMediaBox(FPDF_PAGE page,
                                                          float* left,
                                                          float* bottom,
@@ -66,17 +66,17 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GetMediaBox(FPDF_PAGE page,
                                                          float* top);
 
 /**  Get "CropBox" entry from the page dictionary.
-* @param[in] page   - Handle to a page.
-* @param[in] left   - Pointer to a double value receiving the left of the
-* rectangle.
-* @param[in] bottom - Pointer to a double value receiving the bottom of the
-* rectangle.
-* @param[in] right  - Pointer to a double value receiving the right of the
-* rectangle.
-* @param[in] top    - Pointer to a double value receiving the top of the
-* rectangle.
-* @retval True if success,else fail.
-*/
+ * @param[in] page   - Handle to a page.
+ * @param[in] left   - Pointer to a float value receiving the left of the
+ *                     rectangle.
+ * @param[in] bottom - Pointer to a float value receiving the bottom of the
+ *                     rectangle.
+ * @param[in] right  - Pointer to a float value receiving the right of the
+ *                     rectangle.
+ * @param[in] top    - Pointer to a float value receiving the top of the
+ *                     rectangle.
+ * @retval True if successful, else false.
+ */
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GetCropBox(FPDF_PAGE page,
                                                         float* left,
                                                         float* bottom,
@@ -99,8 +99,8 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GetCropBox(FPDF_PAGE page,
  */
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPage_TransFormWithClip(FPDF_PAGE page,
-                           FS_MATRIX* matrix,
-                           FS_RECTF* clipRect);
+                           const FS_MATRIX* matrix,
+                           const FS_RECTF* clipRect);
 
 /**
 * Transform (scale, rotate, shear, move) the clip path of page object.
