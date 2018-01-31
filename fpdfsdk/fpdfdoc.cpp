@@ -254,9 +254,9 @@ FPDFDest_GetLocationInPage(FPDF_DEST pDict,
   return true;
 }
 
-FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFLink_GetLinkAtPoint(FPDF_PAGE page,
-                                                            double x,
-                                                            double y) {
+FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFLink_GetLinkAtPointF(FPDF_PAGE page,
+                                                             float x,
+                                                             float y) {
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (!pPage)
     return nullptr;
@@ -265,16 +265,19 @@ FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFLink_GetLinkAtPoint(FPDF_PAGE page,
   if (!pLinkList)
     return nullptr;
 
-  return pLinkList
-      ->GetLinkAtPoint(pPage,
-                       CFX_PointF(static_cast<float>(x), static_cast<float>(y)),
-                       nullptr)
-      .GetDict();
+  return pLinkList->GetLinkAtPoint(pPage, CFX_PointF(x, y), nullptr).GetDict();
 }
 
-FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetLinkZOrderAtPoint(FPDF_PAGE page,
+FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFLink_GetLinkAtPoint(FPDF_PAGE page,
                                                             double x,
                                                             double y) {
+  return FPDFLink_GetLinkAtPointF(page, static_cast<float>(x),
+                                  static_cast<float>(y));
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetLinkZOrderAtPointF(FPDF_PAGE page,
+                                                             float x,
+                                                             float y) {
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (!pPage)
     return -1;
@@ -284,10 +287,15 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetLinkZOrderAtPoint(FPDF_PAGE page,
     return -1;
 
   int z_order = -1;
-  pLinkList->GetLinkAtPoint(
-      pPage, CFX_PointF(static_cast<float>(x), static_cast<float>(y)),
-      &z_order);
+  pLinkList->GetLinkAtPoint(pPage, CFX_PointF(x, y), &z_order);
   return z_order;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetLinkZOrderAtPoint(FPDF_PAGE page,
+                                                            double x,
+                                                            double y) {
+  return FPDFLink_GetLinkZOrderAtPointF(page, static_cast<float>(x),
+                                        static_cast<float>(y));
 }
 
 FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDFLink_GetDest(FPDF_DOCUMENT document,

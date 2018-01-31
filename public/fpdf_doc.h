@@ -229,8 +229,13 @@ FPDFDest_GetLocationInPage(FPDF_DEST dest,
 //
 // Returns a handle to the link, or NULL if no link found at the given point.
 //
-// You can convert coordinates from screen coordinates to page coordinates using
-// |FPDF_DeviceToPage|.
+// One can convert coordinates from screen coordinates to page coordinates using
+// FPDF_DeviceToPage().
+FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFLink_GetLinkAtPointF(FPDF_PAGE page,
+                                                             float x,
+                                                             float y);
+
+// Deprecated version of FPDFLink_GetLinkAtPointF().
 FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFLink_GetLinkAtPoint(FPDF_PAGE page,
                                                             double x,
                                                             double y);
@@ -244,8 +249,13 @@ FPDF_EXPORT FPDF_LINK FPDF_CALLCONV FPDFLink_GetLinkAtPoint(FPDF_PAGE page,
 // Returns the Z-order of the link, or -1 if no link found at the given point.
 // Larger Z-order numbers are closer to the front.
 //
-// You can convert coordinates from screen coordinates to page coordinates using
-// |FPDF_DeviceToPage|.
+// One can convert coordinates from screen coordinates to page coordinates using
+// FPDF_DeviceToPage().
+FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetLinkZOrderAtPointF(FPDF_PAGE page,
+                                                             float x,
+                                                             float y);
+
+// Deprecated version of FPDFLink_GetLinkZOrderAtPointF().
 FPDF_EXPORT int FPDF_CALLCONV FPDFLink_GetLinkZOrderAtPoint(FPDF_PAGE page,
                                                             double x,
                                                             double y);

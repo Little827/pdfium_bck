@@ -110,7 +110,9 @@ int CheckPDFiumCApi() {
     CHK(FPDFDest_GetPageIndex);
     CHK(FPDFDest_GetLocationInPage);
     CHK(FPDFDest_GetView);
+    CHK(FPDFLink_GetLinkAtPointF);
     CHK(FPDFLink_GetLinkAtPoint);
+    CHK(FPDFLink_GetLinkZOrderAtPointF);
     CHK(FPDFLink_GetLinkZOrderAtPoint);
     CHK(FPDFLink_GetDest);
     CHK(FPDFLink_GetAction);
