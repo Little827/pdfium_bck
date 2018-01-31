@@ -41,15 +41,15 @@ CPDF_Dest::~CPDF_Dest() {}
 int CPDF_Dest::GetPageIndex(CPDF_Document* pDoc) const {
   CPDF_Array* pArray = ToArray(m_pObj.Get());
   if (!pArray)
-    return 0;
+    return -1;
 
   CPDF_Object* pPage = pArray->GetDirectObjectAt(0);
   if (!pPage)
-    return 0;
+    return -1;
   if (pPage->IsNumber())
     return pPage->GetInteger();
   if (!pPage->IsDictionary())
-    return 0;
+    return -1;
   return pDoc->GetPageIndex(pPage->GetObjNum());
 }
 

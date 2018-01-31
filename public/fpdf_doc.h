@@ -183,6 +183,7 @@ FPDFAction_GetURIPath(FPDF_DOCUMENT document,
 //   dest     - handle to the destination.
 //
 // Returns the page index containing |dest|. Page indices start from 0.
+// On an error, returns -1 cast to unsigned long.
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFDest_GetPageIndex(FPDF_DOCUMENT document, FPDF_DEST dest);
 
