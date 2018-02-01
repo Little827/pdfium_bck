@@ -984,9 +984,10 @@ bool CPDFXFA_DocEnvironment::SubmitInternal(CXFA_FFDoc* hDoc,
   return true;
 }
 
-bool CPDFXFA_DocEnvironment::SetGlobalProperty(CXFA_FFDoc* hDoc,
-                                               const ByteStringView& szPropName,
-                                               CFXJSE_Value* pValue) {
+bool CPDFXFA_DocEnvironment::SetPropertyInNonXFAGlobalObject(
+    CXFA_FFDoc* hDoc,
+    const ByteStringView& szPropName,
+    CFXJSE_Value* pValue) {
   if (hDoc != m_pContext->GetXFADoc())
     return false;
   if (!m_pContext->GetFormFillEnv() ||
@@ -995,14 +996,16 @@ bool CPDFXFA_DocEnvironment::SetGlobalProperty(CXFA_FFDoc* hDoc,
   }
   CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
   IJS_EventContext* pContext = pFormFillEnv->GetIJSRuntime()->NewEventContext();
-  bool bRet = pFormFillEnv->GetIJSRuntime()->SetValueByName(szPropName, pValue);
+  bool bRet = pFormFillEnv->GetIJSRuntime()->SetValueByNameInGlobalObject(
+      szPropName, pValue);
   pFormFillEnv->GetIJSRuntime()->ReleaseEventContext(pContext);
   return bRet;
 }
 
-bool CPDFXFA_DocEnvironment::GetGlobalProperty(CXFA_FFDoc* hDoc,
-                                               const ByteStringView& szPropName,
-                                               CFXJSE_Value* pValue) {
+bool CPDFXFA_DocEnvironment::GetPropertyFromNonXFAGlobalObject(
+    CXFA_FFDoc* hDoc,
+    const ByteStringView& szPropName,
+    CFXJSE_Value* pValue) {
   if (hDoc != m_pContext->GetXFADoc())
     return false;
   if (!m_pContext->GetFormFillEnv() ||
@@ -1011,7 +1014,8 @@ bool CPDFXFA_DocEnvironment::GetGlobalProperty(CXFA_FFDoc* hDoc,
   }
   CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
   IJS_EventContext* pContext = pFormFillEnv->GetIJSRuntime()->NewEventContext();
-  bool bRet = pFormFillEnv->GetIJSRuntime()->GetValueByName(szPropName, pValue);
+  bool bRet = pFormFillEnv->GetIJSRuntime()->GetValueByNameFromGlobalObject(
+      szPropName, pValue);
   pFormFillEnv->GetIJSRuntime()->ReleaseEventContext(pContext);
   return bRet;
 }
