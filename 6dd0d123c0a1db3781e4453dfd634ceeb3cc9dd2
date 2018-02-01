@@ -16,6 +16,24 @@
       "revId": "6dd0d123c0a1db3781e4453dfd634ceeb3cc9dd2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a339b4_cb4e6b17",
+        "filename": "fpdfsdk/fsdk_actionhandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-01T20:16:38Z",
+      "side": 1,
+      "message": "It calls FFI_DoGoToAction with -1. I guess we should avoid that. We take away some flexibility from clients to handle a \"go to\" to an invalid dest, but FFI_DoGoToAction can\u0027t really do anything without a page.",
+      "parentUuid": "0985e7f1_5a07436a",
+      "revId": "6dd0d123c0a1db3781e4453dfd634ceeb3cc9dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
