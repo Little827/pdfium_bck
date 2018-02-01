@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8cdc698_bee298c5",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-01T20:34:37Z",
+      "side": 1,
+      "message": "Assuming we are going to go with the check, then it\u0027s probably better to do this at line 1463 right after creating |dest|, like in fpdfsdk/fsdk_actionhandler.cpp.",
+      "revId": "cf25c945d1a3feba2e8ededdce7eec621fdeeb41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

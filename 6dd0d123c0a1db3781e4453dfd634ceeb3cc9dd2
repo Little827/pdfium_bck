@@ -52,6 +52,24 @@
       "revId": "6dd0d123c0a1db3781e4453dfd634ceeb3cc9dd2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdf83fe8_48ee1476",
+        "filename": "fpdfsdk/fsdk_actionhandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-01T20:34:37Z",
+      "side": 1,
+      "message": "FFI_DoGoToAction actually take an int for its |nPageIndex|. Yay! At least the Chromium PDF Viewer will handle the negative value correctly by doing bounds checking.\n\nI\u0027m wondering if we should take this flexibility away from the client though. e.g. When the user triggers this action for a negative page index. As is, the client does not get a FFI_DoGoToAction callback at all. If the client got FFI_DoGoToAction with a negative page index, it can potentially inform the user their action resulted in an error.",
+      "parentUuid": "4bc1c68c_8e52b6fb",
+      "revId": "6dd0d123c0a1db3781e4453dfd634ceeb3cc9dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
