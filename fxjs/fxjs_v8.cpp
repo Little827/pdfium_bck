@@ -177,8 +177,8 @@ void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
   if (!pObjDef)
     return;
   if (pObjDef->m_pDestructor) {
-    pObjDef->m_pDestructor(CFXJS_Engine::CurrentEngineFromIsolate(isolate),
-                           obj);
+    pObjDef->m_pDestructor(
+        CFXJS_Engine::EngineFromIsolateCurrentContext(isolate), obj);
   }
   CFXJS_Engine::FreeObjectPrivate(obj);
 }
@@ -261,10 +261,14 @@ CFXJS_Engine::CFXJS_Engine(v8::Isolate* pIsolate) : CJS_V8(pIsolate) {}
 CFXJS_Engine::~CFXJS_Engine() = default;
 
 // static
-CFXJS_Engine* CFXJS_Engine::CurrentEngineFromIsolate(v8::Isolate* pIsolate) {
+CFXJS_Engine* CFXJS_Engine::EngineFromIsolateCurrentContext(
+    v8::Isolate* pIsolate) {
+  return EngineFromContext(pIsolate->GetCurrentContext());
+}
+
+CFXJS_Engine* CFXJS_Engine::EngineFromContext(v8::Local<v8::Context> pContext) {
   return static_cast<CFXJS_Engine*>(
-      pIsolate->GetCurrentContext()->GetAlignedPointerFromEmbedderData(
-          kPerContextDataIndex));
+      pContext->GetAlignedPointerFromEmbedderData(kPerContextDataIndex));
 }
 
 // static

@@ -137,7 +137,8 @@ class CFXJS_Engine : public CJS_V8 {
                                v8::Local<v8::Object> obj);
   using Destructor = void (*)(CFXJS_Engine* pEngine, v8::Local<v8::Object> obj);
 
-  static CFXJS_Engine* CurrentEngineFromIsolate(v8::Isolate* pIsolate);
+  static CFXJS_Engine* EngineFromIsolateCurrentContext(v8::Isolate* pIsolate);
+  static CFXJS_Engine* EngineFromContext(v8::Local<v8::Context> pContext);
   static int GetObjDefnID(v8::Local<v8::Object> pObj);
 
   // Always returns a valid, newly-created objDefnID.
