@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "b6b76363_8b0bea5d",
+        "filename": "core/fpdfdoc/cpdf_dest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-01T02:15:51Z",
+      "side": 1,
+      "message": "Can we rename this to GetPageIndexDeprecated so we can see if we ever call it accidentally?",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5aeafd80_4538a7b7",
         "filename": "core/fpdfdoc/cpdf_dest.cpp",
         "patchSetId": 3
@@ -63,6 +86,98 @@
       "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fb1a8dd_29a4cc31",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-01T02:15:51Z",
+      "side": 1,
+      "message": "Should this be an int to be consistent with dest.GetDestPageIndex?",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4072e4_58717022",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-01T02:15:51Z",
+      "side": 1,
+      "message": "nit: blank line above",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 10
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fec89483_ed491fb5",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-01T02:15:51Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 220,
+        "startChar": 4,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1ce87a_720ce398",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-01T02:15:51Z",
+      "side": 1,
+      "message": "Returns the 0-based page index containing |dest|. Returns -1 on error.",
+      "range": {
+        "startLine": 198,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 71
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
