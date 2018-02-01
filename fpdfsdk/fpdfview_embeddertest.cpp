@@ -4,9 +4,11 @@
 
 #include <cmath>
 #include <limits>
+#include <memory>
 #include <string>
 
 #include "fpdfsdk/fpdfview_c_api_test.h"
+#include "fxjs/fxjs_v8.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -34,6 +36,26 @@ TEST(fpdf, CApiTest) {
 }
 
 class FPDFViewEmbeddertest : public EmbedderTest {
+ public:
+  FPDFViewEmbeddertest()
+      : array_buffer_allocator_(
+            pdfium::MakeUnique<FXJS_ArrayBufferAllocator>()) {}
+
+  void SetUp() override {
+    v8::Isolate::CreateParams params;
+    params.array_buffer_allocator = array_buffer_allocator_.get();
+    isolate_ = v8::Isolate::New(params);
+
+    EmbedderTest::SetExternalIsolate(isolate_);
+    EmbedderTest::SetUp();
+  }
+
+  void TearDown() override {
+    EmbedderTest::TearDown();
+    isolate_->Dispose();
+    isolate_ = nullptr;
+  }
+
  protected:
   void TestRenderPageBitmapWithMatrix(FPDF_PAGE page,
                                       const int bitmap_width,
@@ -41,6 +63,10 @@ class FPDFViewEmbeddertest : public EmbedderTest {
                                       const FS_MATRIX& matrix,
                                       const FS_RECTF& rect,
                                       const char* expected_md5);
+
+ private:
+  std::unique_ptr<FXJS_ArrayBufferAllocator> array_buffer_allocator_;
+  v8::Isolate* isolate_ = nullptr;
 };
 
 TEST_F(FPDFViewEmbeddertest, Document) {
@@ -597,5 +623,76 @@ TEST_F(FPDFViewEmbeddertest, UnSupportedOperations_LoadDocument) {
   EXPECT_TRUE(doc != nullptr);
   EXPECT_EQ(FPDF_UNSP_DOC_PORTABLECOLLECTION, delegate.type_);
   FPDF_CloseDocument(doc);
+  SetDelegate(nullptr);
+}
+
+class LogDelegate : public EmbedderTest::Delegate {
+ public:
+  LogDelegate() {}
+  ~LogDelegate() override {}
+
+  int Alert(FPDF_WIDESTRING message,
+            FPDF_WIDESTRING title,
+            int type,
+            int icon) override {
+    output_ += GetPlatformString(message) + "\n";
+    return 0;
+  }
+
+  std::string GetOutput() const { return output_; }
+
+ private:
+  std::string output_;
+};
+
+TEST_F(FPDFViewEmbeddertest, MultipleDocumentJSContexts) {
+  LogDelegate delegate;
+  SetDelegate(&delegate);
+
+  // We have a document which has 2 pages. On page 1 we will set the runtime
+  // highlight value to 1 when loaded. On page 2 we will read the runtime
+  // highlight value.  We will load the document twice which should give us two
+  // separate JS contexts. Then, we load page 1 in the first instance. This will
+  // set runtime highlight to true. We then load page 2 in the second instance
+  // which should read the false value of the highlight, we then load
+  // page 2 in the first document and get a true highlight value.
+  std::string file_path;
+  ASSERT_TRUE(PathService::GetTestFilePath("js_context.pdf", &file_path));
+
+  FPDF_DOCUMENT doc1 = FPDF_LoadDocument(file_path.c_str(), "");
+  ASSERT_TRUE(doc1 != nullptr);
+
+  FPDF_FORMHANDLE handle1 = SetupFormFillEnvironment(doc1);
+
+  FPDF_PAGE page1 = FPDF_LoadPage(doc1, 0);
+  FORM_OnAfterLoadPage(page1, handle1);
+  FORM_DoPageAAction(page1, handle1, FPDFPAGE_AACTION_OPEN);
+
+  FPDF_DOCUMENT doc2 = FPDF_LoadDocument(file_path.c_str(), "");
+  ASSERT_TRUE(doc2 != nullptr);
+
+  FPDF_FORMHANDLE handle2 = SetupFormFillEnvironment(doc2);
+
+  FPDF_PAGE page2 = FPDF_LoadPage(doc2, 1);
+  FORM_OnAfterLoadPage(page2, handle2);
+  FORM_DoPageAAction(page2, handle2, FPDFPAGE_AACTION_OPEN);
+
+  FPDF_PAGE page3 = FPDF_LoadPage(doc1, 1);
+  FORM_OnAfterLoadPage(page3, handle1);
+  FORM_DoPageAAction(page3, handle1, FPDFPAGE_AACTION_OPEN);
+
+  FPDF_ClosePage(page3);
+  FPDF_ClosePage(page2);
+  FPDF_ClosePage(page1);
+
+  FPDFDOC_ExitFormFillEnvironment(handle2);
+  FPDF_CloseDocument(doc2);
+
+  FPDFDOC_ExitFormFillEnvironment(handle1);
+  FPDF_CloseDocument(doc1);
+
+  EXPECT_STREQ("Page1: true\nPage2: false\nPage2: true\n",
+               delegate.GetOutput().c_str());
+
   SetDelegate(nullptr);
 }
