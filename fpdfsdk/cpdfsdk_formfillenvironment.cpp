@@ -206,8 +206,8 @@ void CPDFSDK_FormFillEnvironment::JS_docgotoPage(int nPageNum) {
   m_pInfo->m_pJsPlatform->Doc_gotoPage(m_pInfo->m_pJsPlatform, nPageNum);
 }
 
-IJS_Runtime* CPDFSDK_FormFillEnvironment::GetJSRuntime() {
-  if (!IsJSInitiated())
+IJS_Runtime* CPDFSDK_FormFillEnvironment::GetIJSRuntime() {
+  if (!IsJSPlatformPresent())
     return nullptr;
   if (!m_pJSRuntime)
     m_pJSRuntime.reset(IJS_Runtime::Create(this));
