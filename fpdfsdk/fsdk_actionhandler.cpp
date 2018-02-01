@@ -540,7 +540,7 @@ void CPDFSDK_ActionHandler::RunScript(
     CPDFSDK_FormFillEnvironment* pFormFillEnv,
     const WideString& script,
     std::function<void(IJS_EventContext* context)> cb) {
-  IJS_Runtime* pRuntime = pFormFillEnv->GetJSRuntime();
+  IJS_Runtime* pRuntime = pFormFillEnv->GetIJSRuntime();
   IJS_EventContext* pContext = pRuntime->NewEventContext();
 
   cb(pContext);
