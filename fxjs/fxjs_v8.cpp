@@ -258,7 +258,9 @@ CFXJS_Engine::CFXJS_Engine() : CJS_V8(nullptr) {}
 
 CFXJS_Engine::CFXJS_Engine(v8::Isolate* pIsolate) : CJS_V8(pIsolate) {}
 
-CFXJS_Engine::~CFXJS_Engine() = default;
+CFXJS_Engine::~CFXJS_Engine() {
+  m_V8PersistentContext.Reset();
+}
 
 // static
 CFXJS_Engine* CFXJS_Engine::EngineFromIsolateCurrentContext(
@@ -429,7 +431,7 @@ void CFXJS_Engine::InitializeEngine() {
 void CFXJS_Engine::ReleaseEngine() {
   v8::Isolate::Scope isolate_scope(GetIsolate());
   v8::HandleScope handle_scope(GetIsolate());
-  v8::Local<v8::Context> context = NewLocalContext();
+  v8::Local<v8::Context> context = GetV8Context();
   v8::Context::Scope context_scope(context);
   FXJS_PerIsolateData* pData = FXJS_PerIsolateData::Get(GetIsolate());
   if (!pData)

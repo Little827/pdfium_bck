@@ -178,7 +178,6 @@ class CFXJS_Engine : public CJS_V8 {
   int Execute(const WideString& script, FXJSErr* perror);
 
   v8::Local<v8::Object> GetThisObj();
-
   v8::Local<v8::Object> NewFxDynamicObj(int nObjDefnID, bool bStatic = false);
 
   // Native object binding.
@@ -189,10 +188,20 @@ class CFXJS_Engine : public CJS_V8 {
 
   void Error(const WideString& message);
 
+  v8::Local<v8::Context> GetV8Context() {
+    return v8::Local<v8::Context>::New(GetIsolate(), m_V8PersistentContext);
+  }
+
  protected:
   CFXJS_Engine();
 
+  void ResetPersistentContext(v8::Local<v8::Context> context) {
+    m_V8PersistentContext.Reset(GetIsolate(), context);
+  }
+  void ReleasePersistentContext() { m_V8PersistentContext.Reset(); }
+
  private:
+  v8::Global<v8::Context> m_V8PersistentContext;
   std::vector<v8::Global<v8::Object>*> m_StaticObjects;
 };
 
