@@ -195,10 +195,6 @@ CFX_FloatRect GetTrimBox(CPDF_Dictionary* pPageDict) {
   return GetCropBox(pPageDict);
 }
 
-CPDF_Object* GetPageContent(CPDF_Dictionary* pPageDict) {
-  return pPageDict ? pPageDict->GetDirectObjectFor("Contents") : nullptr;
-}
-
 bool CopyInheritable(CPDF_Dictionary* pCurPageDict,
                      CPDF_Dictionary* pSrcPageDict,
                      const ByteString& key) {
@@ -304,6 +300,7 @@ class CPDF_PageOrganizer {
   static void SetMediaBox(CPDF_Dictionary* pDestPageDict,
                           const CFX_SizeF& pagesize);
 
+  static CPDF_Object* GetPageContent(CPDF_Dictionary* pPageDict);
   bool UpdateReference(CPDF_Object* pObj, ObjectNumberMap* pObjNumberMap);
   uint32_t GetNewObjId(ObjectNumberMap* pObjNumberMap, CPDF_Reference* pRef);
   // Creates a xobject from the source page dictionary, and appends the content
@@ -600,6 +597,10 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
   }
 
   return true;
+}
+
+CPDF_Object* CPDF_PageOrganizer::GetPageContent(CPDF_Dictionary* pPageDict) {
+  return pPageDict ? pPageDict->GetDirectObjectFor("Contents") : nullptr;
 }
 
 bool CPDF_PageOrganizer::UpdateReference(CPDF_Object* pObj,
