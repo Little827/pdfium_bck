@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "629edbeb_20150c19",
+        "filename": "core/fpdfdoc/cpdf_dest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7337
+      },
+      "writtenOn": "2018-02-01T16:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45766ef2_59d0ff7a",
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6b76363_8b0bea5d",
         "filename": "core/fpdfdoc/cpdf_dest.cpp",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ac7f25_fd7fdf3d",
+        "filename": "core/fpdfdoc/cpdf_dest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7337
+      },
+      "writtenOn": "2018-02-01T16:54:19Z",
+      "side": 1,
+      "message": "Done. This introduces some changes in other files that use this.",
+      "parentUuid": "b6b76363_8b0bea5d",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "47089dc9_f29461e5",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 7337
+      },
+      "writtenOn": "2018-02-01T16:54:19Z",
+      "side": 1,
+      "message": "Better keep it consistent with the other APIs. The int-\u003elong conversion will never lose information.",
+      "parentUuid": "2fb1a8dd_29a4cc31",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf4072e4_58717022",
         "filename": "fpdfsdk/fpdfdoc.cpp",
         "patchSetId": 3
@@ -132,6 +198,30 @@
       "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655dbffe_523a2614",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 7337
+      },
+      "writtenOn": "2018-02-01T16:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf4072e4_58717022",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 10
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "acf7fffb_0f594596",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 7337
+      },
+      "writtenOn": "2018-02-01T16:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec89483_ed491fb5",
+      "range": {
+        "startLine": 220,
+        "startChar": 4,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e1ce87a_720ce398",
         "filename": "public/fpdf_doc.h",
         "patchSetId": 3
@@ -178,6 +292,30 @@
       "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f288a68a_66b60c01",
+        "filename": "public/fpdf_doc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 7337
+      },
+      "writtenOn": "2018-02-01T16:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e1ce87a_720ce398",
+      "range": {
+        "startLine": 198,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 71
+      },
+      "revId": "9c1ab61673703a0c8202504255d9f8d3e7a9f4fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
