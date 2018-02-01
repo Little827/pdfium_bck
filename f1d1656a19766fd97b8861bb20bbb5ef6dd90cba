@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1517436942 -0800\nnonce AGjzz39YbprXhAUeV42gbhi9/HgmvsKu6wKK3yREdS7IlX/E4YF+ilRx/akKrZipipRrbw3lkBI1\n\n0000000000000000000000000000000000000000 f1d1656a19766fd97b8861bb20bbb5ef6dd90cba refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJackAOAAoJEKs2LWFaZv172mEH/jJyYu8lCZ1g38MvlEmb/Zxy\nJxG1mvCbwL0O2AgaymdvG7FG4SBzBRWJv39OISOKOHZz6jP1MAIp7G5jYU071Nw+\nzMBWskpfFLFFWfXQYFuEE4CBudLqMuKM3pMtL7hHtIKwkxS7dYqNfGx3Y8OYlpYe\nWXypqPoARMHyisjJ7AIbgrc2+IL2Bp2ZJwrYDGkwhjMz/UyDjsq0KMQZlLlqeeZf\nohVSYSkZHcA480Qi5O5A1ZA/kAsFc4PylRHkEmEqBYk2KeOzxnvT74N7HUXPB1Fu\ntkzJl635UOkcRfjKydWUqSmpEE8Q1IN2bl1/o+2DbhH7mKExZjNkEjrBb/keJTY\u003d\n\u003dQiSo\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbb3cc95_07382dde",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2018-02-01T01:55:20Z",
+      "side": 1,
+      "message": "nit: no ; at line end in python",
+      "revId": "f1d1656a19766fd97b8861bb20bbb5ef6dd90cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516f070c_1ef16841",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2018-02-01T01:55:20Z",
+      "side": 1,
+      "message": "for pdfium-in-chromium checkouts, you still want pdfium to be in the path too, not just chromium, yes?",
+      "revId": "f1d1656a19766fd97b8861bb20bbb5ef6dd90cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
