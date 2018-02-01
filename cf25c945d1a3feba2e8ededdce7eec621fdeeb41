@@ -16,6 +16,24 @@
       "revId": "cf25c945d1a3feba2e8ededdce7eec621fdeeb41",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d058b58_78a4ae1e",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-01T21:35:08Z",
+      "side": 1,
+      "message": "Removed the check, so reverted to inline.",
+      "parentUuid": "a8cdc698_bee298c5",
+      "revId": "cf25c945d1a3feba2e8ededdce7eec621fdeeb41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
