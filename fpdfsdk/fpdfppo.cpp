@@ -4,8 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "public/fpdf_ppo.h"
-
+#include <algorithm>
 #include <map>
 #include <memory>
 #include <utility>
@@ -26,6 +25,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/fsdk_define.h"
 #include "public/cpp/fpdf_deleters.h"
+#include "public/fpdf_ppo.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
