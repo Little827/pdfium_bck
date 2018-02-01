@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d1db172_a4a27c82",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-01T01:22:53Z",
+      "side": 0,
+      "message": "Having something other than fpdfsdk/fpdfppo.h here really confuses the linter. Using NOLINT / NOLINTNEXTLINE feels like a losing battle.",
+      "revId": "66ce22c6cdb38ca5941c175aea371df92ae9cb8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
