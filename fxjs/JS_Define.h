@@ -55,9 +55,12 @@ static void JSConstructor(CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
   pObj->InitInstance(static_cast<CJS_Runtime*>(pEngine));
 }
 
+// TODO(tsepez): CJS_Object has vitual dtor, template not required.
 template <class T>
 static void JSDestructor(CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
-  delete static_cast<T*>(pEngine->GetObjectPrivate(obj));
+  CJS_Object* p = pEngine->GetObjectPrivate(obj);
+  pEngine->SetObjectPrivate(obj, nullptr);
+  delete p;
 }
 
 template <class C, CJS_Return (C::*M)(CJS_Runtime*)>
@@ -70,8 +73,7 @@ void JSPropGetter(const char* prop_name_string,
   if (!pRuntime)
     return;
 
-  CJS_Object* pJSObj =
-      static_cast<CJS_Object*>(pRuntime->GetObjectPrivate(info.Holder()));
+  CJS_Object* pJSObj = pRuntime->GetObjectPrivate(info.Holder());
   if (!pJSObj)
     return;
 
@@ -98,8 +100,7 @@ void JSPropSetter(const char* prop_name_string,
   if (!pRuntime)
     return;
 
-  CJS_Object* pJSObj =
-      static_cast<CJS_Object*>(pRuntime->GetObjectPrivate(info.Holder()));
+  CJS_Object* pJSObj = pRuntime->GetObjectPrivate(info.Holder());
   if (!pJSObj)
     return;
 
@@ -122,8 +123,7 @@ void JSMethod(const char* method_name_string,
   if (!pRuntime)
     return;
 
-  CJS_Object* pJSObj =
-      static_cast<CJS_Object*>(pRuntime->GetObjectPrivate(info.Holder()));
+  CJS_Object* pJSObj = pRuntime->GetObjectPrivate(info.Holder());
   if (!pJSObj)
     return;
 

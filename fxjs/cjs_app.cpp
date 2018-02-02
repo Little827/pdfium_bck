@@ -376,8 +376,7 @@ void app::ClearTimerCommon(CJS_Runtime* pRuntime, v8::Local<v8::Value> param) {
   if (CFXJS_Engine::GetObjDefnID(pObj) != CJS_TimerObj::GetObjDefnID())
     return;
 
-  CJS_Object* pJSObj =
-      static_cast<CJS_Object*>(pRuntime->GetObjectPrivate(pObj));
+  CJS_Object* pJSObj = pRuntime->GetObjectPrivate(pObj);
   if (!pJSObj)
     return;
 
