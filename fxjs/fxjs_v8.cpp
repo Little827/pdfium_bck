@@ -561,3 +561,12 @@ void* CFXJS_Engine::GetObjectPrivate(v8::Local<v8::Object> pObj) {
   }
   return pData ? pData->m_pPrivate : nullptr;
 }
+
+void CFXJS_Engine::SetConstArray(const WideString& name,
+                                 v8::Local<v8::Array> array) {
+  m_ConstArrays[name] = v8::Global<v8::Array>(GetIsolate(), array);
+}
+
+v8::Local<v8::Array> CFXJS_Engine::GetConstArray(const WideString& name) {
+  return v8::Local<v8::Array>::New(GetIsolate(), m_ConstArrays[name]);
+}
