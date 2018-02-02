@@ -409,15 +409,10 @@ CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
     // Use a default empty resources if it does not exist.
     pNewXObjectDict->SetNewFor<CPDF_Dictionary>(resourceString);
   }
-  CPDF_Dictionary* pSrcRes = pSrcPageDict->GetDictFor(resourceString);
-  if (pSrcRes) {
-    uint32_t dwSrcPageResourcesObj = pSrcRes->GetObjNum();
-    uint32_t dwNewXobjectResourcesObj =
-        pNewXObjectDict->GetDictFor(resourceString)->GetObjNum();
-    (*pObjNumberMap)[dwSrcPageResourcesObj] = dwNewXobjectResourcesObj;
-    CPDF_Dictionary* pNewXORes = pNewXObjectDict->GetDictFor(resourceString);
-    UpdateReference(pNewXORes, pObjNumberMap.get());
-  }
+  uint32_t dwSrcPageObj = pSrcPageDict->GetObjNum();
+  uint32_t dwNewXobjectObj = pNewXObjectDict->GetObjNum();
+  (*pObjNumberMap)[dwSrcPageObj] = dwNewXobjectObj;
+  UpdateReference(pNewXObjectDict, pObjNumberMap.get());
 
   pNewXObjectDict->SetNewFor<CPDF_Name>("Type", "XObject");
   pNewXObjectDict->SetNewFor<CPDF_Name>("Subtype", "Form");
