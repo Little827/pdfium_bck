@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8999a0e2_226c6cc2",
+        "filename": "fxjs/cjs_v8.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-02T03:50:04Z",
+      "side": 1,
+      "message": "\u003d default;?",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "3a47ad4a071f24c9a5c1c8a469d6c3386b4075a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bae3e84_a7438586",
+        "filename": "fxjs/fxjs_v8.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-02T03:50:04Z",
+      "side": 1,
+      "message": "Does the v8::Global need this cleanup? Won\u0027t it just get destroyed anyway?",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 22
+      },
+      "revId": "3a47ad4a071f24c9a5c1c8a469d6c3386b4075a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca38ccb_cfe1deb4",
+        "filename": "fxjs/fxjs_v8.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-02T03:50:04Z",
+      "side": 1,
+      "message": "This isn\u0027t really a Get as it\u0027s creating a new context",
+      "range": {
+        "startLine": 191,
+        "startChar": 25,
+        "endLine": 191,
+        "endChar": 28
+      },
+      "revId": "3a47ad4a071f24c9a5c1c8a469d6c3386b4075a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
