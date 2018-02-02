@@ -167,6 +167,12 @@ int DateFromTime(double t) {
 
 }  // namespace
 
+void JSDestructor(CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
+  CJS_Object* p = pEngine->GetObjectPrivate(obj);
+  pEngine->SetObjectPrivate(obj, nullptr);
+  delete p;
+}
+
 double JS_GetDateTime() {
   if (!FSDK_IsSandBoxPolicyEnabled(FPDF_POLICY_MACHINETIME_ACCESS))
     return 0;
