@@ -23,6 +23,30 @@
       "revId": "4355fff97e9108d97f739b82b8a14fb7d269367e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd895758_1ccd965f",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-02T03:14:37Z",
+      "side": 1,
+      "message": "This is pass by value, not pass by reference. So what\u0027s being modified is a copy and the not original. Of course this can be confusing and is also against the Google C++ style guide. So there is a follow up to this CL to fix it, which you already looked at. https://pdfium-review.googlesource.com/c/pdfium/+/24290/",
+      "parentUuid": "9e37eaf9_270e9ba1",
+      "range": {
+        "startLine": 217,
+        "startChar": 27,
+        "endLine": 217,
+        "endChar": 48
+      },
+      "revId": "4355fff97e9108d97f739b82b8a14fb7d269367e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
