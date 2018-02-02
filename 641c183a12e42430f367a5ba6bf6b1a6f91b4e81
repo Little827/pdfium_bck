@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58806d54_36c748ac",
+        "filename": "testing/test_support.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-02T21:40:54Z",
+      "side": 1,
+      "message": "Most code I\u0027ve seen returns nullptr for cases like this.",
+      "range": {
+        "startLine": 189,
+        "startChar": 13,
+        "endLine": 189,
+        "endChar": 15
+      },
+      "revId": "641c183a12e42430f367a5ba6bf6b1a6f91b4e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
