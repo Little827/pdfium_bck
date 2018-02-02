@@ -23,6 +23,30 @@
       "revId": "9d20f4f52604b2b959be4396e6cce667a4376d5d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1c34d0_2ffad504",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-02T21:47:41Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I\u0027d like to think so but there are no guarantees. Do you want to run safetynet on this CL and see if it makes a difference?",
+      "parentUuid": "d2361020_2d8bc2c3",
+      "range": {
+        "startLine": 919,
+        "startChar": 6,
+        "endLine": 919,
+        "endChar": 23
+      },
+      "revId": "9d20f4f52604b2b959be4396e6cce667a4376d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
