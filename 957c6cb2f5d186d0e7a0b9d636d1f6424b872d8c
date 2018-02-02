@@ -16,6 +16,24 @@
       "revId": "957c6cb2f5d186d0e7a0b9d636d1f6424b872d8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d570e42c_921449ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-02T02:33:37Z",
+      "side": 1,
+      "message": "The grammar on the latest patchset is still weird. I would recommend finding someone nearby and get them to help with it in person. It\u0027s way faster to talk it through. As part of this, not sure why \"Font\" is capitalized. Did you mean \"the font dictionary\" ?",
+      "parentUuid": "67c1afd3_82297119",
+      "revId": "957c6cb2f5d186d0e7a0b9d636d1f6424b872d8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
