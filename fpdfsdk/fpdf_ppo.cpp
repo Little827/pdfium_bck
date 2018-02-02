@@ -269,19 +269,17 @@ bool ParserPageRangeString(ByteString rangstring,
   return true;
 }
 
-bool GetPageNumbers(ByteString pageRange,
-                    CPDF_Document* pSrcDoc,
+bool GetPageNumbers(const CPDF_Document& doc,
+                    const ByteString& bsPageRange,
                     std::vector<uint32_t>* pageArray) {
-  uint32_t nCount = pSrcDoc->GetPageCount();
-  if (!pageRange.IsEmpty()) {
-    if (!ParserPageRangeString(pageRange, nCount, pageArray))
-      return false;
-  } else {
-    for (uint32_t i = 1; i <= nCount; ++i) {
+  uint32_t nCount = doc.GetPageCount();
+  if (bsPageRange.IsEmpty()) {
+    for (uint32_t i = 1; i <= nCount; ++i)
       pageArray->push_back(i);
-    }
+    return true;
   }
-  return true;
+
+  return ParserPageRangeString(bsPageRange, nCount, pageArray);
 }
 
 }  // namespace
@@ -707,7 +705,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_ImportPages(FPDF_DOCUMENT dest_doc,
     return false;
 
   std::vector<uint32_t> pageArray;
-  if (!GetPageNumbers(pagerange, pSrcDoc, &pageArray))
+  if (!GetPageNumbers(*pSrcDoc, pagerange, &pageArray))
     return false;
 
   CPDF_PageOrganizer pageOrg(pDestDoc, pSrcDoc);
