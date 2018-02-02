@@ -29,6 +29,7 @@ class CFXJSE_RuntimeData;
 #endif  // PDF_ENABLE_XFA
 
 class CFXJS_ObjDefinition;
+class CJS_Object;
 
 // FXJS_V8 places no restrictions on this class; it merely passes it
 // on to caller-provided methods.
@@ -178,8 +179,8 @@ class CFXJS_Engine : public CJS_V8 {
   v8::Local<v8::Object> NewFxDynamicObj(int nObjDefnID, bool bStatic = false);
 
   // Native object binding.
-  void SetObjectPrivate(v8::Local<v8::Object> pObj, void* p);
-  void* GetObjectPrivate(v8::Local<v8::Object> pObj);
+  void SetObjectPrivate(v8::Local<v8::Object> pObj, CJS_Object* p);
+  CJS_Object* GetObjectPrivate(v8::Local<v8::Object> pObj);
   static void FreeObjectPrivate(void* p);
   static void FreeObjectPrivate(v8::Local<v8::Object> pObj);
 
@@ -189,12 +190,16 @@ class CFXJS_Engine : public CJS_V8 {
     return v8::Local<v8::Context>::New(GetIsolate(), m_V8Context);
   }
 
+  v8::Local<v8::Array> GetConstArray(const WideString& name);
+  void SetConstArray(const WideString& name, v8::Local<v8::Array> array);
+
  protected:
   CFXJS_Engine();
 
  private:
   v8::Global<v8::Context> m_V8Context;
   std::vector<v8::Global<v8::Object>*> m_StaticObjects;
+  std::map<WideString, v8::Global<v8::Array>> m_ConstArrays;
 };
 
 #endif  // FXJS_FXJS_V8_H_

@@ -8,7 +8,9 @@
 
 #include <vector>
 
+#include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/cfxjse_runtimedata.h"
+#include "fxjs/cjs_object.h"
 #include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 
 // Keep this consistent with the values defined in gin/public/context_holder.h
@@ -48,7 +50,7 @@ class CFXJS_PerObjectData {
   }
 
   const int m_ObjDefID;
-  void* m_pPrivate;
+  UnownedPtr<CJS_Object> m_pPrivate;
 };
 
 class CFXJS_ObjDefinition {
@@ -436,7 +438,7 @@ void CFXJS_Engine::ReleaseEngine() {
   if (!pData)
     return;
 
-  ClearConstArray();
+  m_ConstArrays.clear();
 
   int maxID = CFXJS_ObjDefinition::MaxID(GetIsolate());
   for (int i = 0; i < maxID; ++i) {
@@ -540,7 +542,7 @@ void CFXJS_Engine::Error(const WideString& message) {
   GetIsolate()->ThrowException(NewString(message.AsStringView()));
 }
 
-void CFXJS_Engine::SetObjectPrivate(v8::Local<v8::Object> pObj, void* p) {
+void CFXJS_Engine::SetObjectPrivate(v8::Local<v8::Object> pObj, CJS_Object* p) {
   CFXJS_PerObjectData* pPerObjectData =
       CFXJS_PerObjectData::GetFromObject(pObj);
   if (!pPerObjectData)
@@ -548,7 +550,7 @@ void CFXJS_Engine::SetObjectPrivate(v8::Local<v8::Object> pObj, void* p) {
   pPerObjectData->m_pPrivate = p;
 }
 
-void* CFXJS_Engine::GetObjectPrivate(v8::Local<v8::Object> pObj) {
+CJS_Object* CFXJS_Engine::GetObjectPrivate(v8::Local<v8::Object> pObj) {
   CFXJS_PerObjectData* pData = CFXJS_PerObjectData::GetFromObject(pObj);
   if (!pData && !pObj.IsEmpty()) {
     // It could be a global proxy object.
@@ -559,5 +561,14 @@ void* CFXJS_Engine::GetObjectPrivate(v8::Local<v8::Object> pObj) {
           v->ToObject(context).ToLocalChecked());
     }
   }
-  return pData ? pData->m_pPrivate : nullptr;
+  return pData ? pData->m_pPrivate.Get() : nullptr;
+}
+
+v8::Local<v8::Array> CFXJS_Engine::GetConstArray(const WideString& name) {
+  return v8::Local<v8::Array>::New(GetIsolate(), m_ConstArrays[name]);
+}
+
+void CFXJS_Engine::SetConstArray(const WideString& name,
+                                 v8::Local<v8::Array> array) {
+  m_ConstArrays[name] = v8::Global<v8::Array>(GetIsolate(), array);
 }
