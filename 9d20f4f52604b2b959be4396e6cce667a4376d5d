@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1517012873 -0800\nnonce AGjzz3/pgf5WcPYmaNw8RrovzW3iLTthUoNkZYulxMKjlLsi6J7yJF0bpKIvXN2Eh2/IerckHQlB\n\n0000000000000000000000000000000000000000 9d20f4f52604b2b959be4396e6cce667a4376d5d refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJaa8eJAAoJEKs2LWFaZv17wvoIANGBYSG8B+DxA9h12/9bVjx9\nOEpJSd127VEEh94FGzRSrgOlrI6lh6U51P9PCpNmvkKR+9LlX6COoXV2wcxmIXz4\n4C9jtLTdWbCd5D10DJhGMkXnCI5s7PyZQ8Xv3g1DZ4Zhh6xxTCeQJhmsAgvBS4iM\nBVHZjMTVaIqhP5uHdSkVaev3I//uiUgcNAQ4lVSaH7Bcykw9/S4bty3/uYZpDvkf\ndnTchd//uB74U/aGEtNx7Tr/qttox+1luDU16CQ5TsGlevbjCQGlhmFDgBoLgzIa\nfXWD38WX++qVMe0ly5bhzKzY2DySedqT0MH1nYbdp0S5bL7rBDllM5z9+guQnq8\u003d\n\u003dYpbd\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2361020_2d8bc2c3",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-02T21:16:21Z",
+      "side": 1,
+      "message": "Will the compiler be smart enough to know this won\u0027t change from iteration to iteration? This is a big loop.",
+      "range": {
+        "startLine": 919,
+        "startChar": 6,
+        "endLine": 919,
+        "endChar": 23
+      },
+      "revId": "9d20f4f52604b2b959be4396e6cce667a4376d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
