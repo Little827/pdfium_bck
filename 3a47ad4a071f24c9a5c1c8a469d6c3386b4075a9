@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2727a8f4_9b2f4fd4",
+        "filename": "fxjs/cjs_v8.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-02T17:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8999a0e2_226c6cc2",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "3a47ad4a071f24c9a5c1c8a469d6c3386b4075a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bae3e84_a7438586",
         "filename": "fxjs/fxjs_v8.cpp",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6594f3c2_0477d905",
+        "filename": "fxjs/fxjs_v8.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-02T17:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bae3e84_a7438586",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 22
+      },
+      "revId": "3a47ad4a071f24c9a5c1c8a469d6c3386b4075a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bca38ccb_cfe1deb4",
         "filename": "fxjs/fxjs_v8.h",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2018-02-02T03:50:04Z",
       "side": 1,
       "message": "This isn\u0027t really a Get as it\u0027s creating a new context",
+      "range": {
+        "startLine": 191,
+        "startChar": 25,
+        "endLine": 191,
+        "endChar": 28
+      },
+      "revId": "3a47ad4a071f24c9a5c1c8a469d6c3386b4075a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69c1c696_07f0c2ba",
+        "filename": "fxjs/fxjs_v8.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-02T17:22:43Z",
+      "side": 1,
+      "message": "This is one of the most confusing things about reading v8.  We\u0027re calling v8::Local\u003c\u003e::New() (the new method of local) not v8::Context::New(). So we\u0027re making a new handle (e.g. pointer) to an existing context, not a new context.  I confuse myself all the time reading this ... hence the name Get() is accurate as in \"get a handle\".",
+      "parentUuid": "bca38ccb_cfe1deb4",
       "range": {
         "startLine": 191,
         "startChar": 25,
