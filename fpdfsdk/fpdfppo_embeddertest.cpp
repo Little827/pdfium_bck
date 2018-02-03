@@ -1,6 +1,7 @@
 // Copyright 2016 PDFium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+#include <memory>
 #include <string>
 
 #include "public/cpp/fpdf_deleters.h"
@@ -98,6 +99,25 @@ TEST_F(FPDFPPOEmbeddertest, BadNupParams) {
 
 // TODO(Xlou): Add more tests to check output doc content of
 // FPDF_ImportNPagesToOne()
+TEST_F(FPDFPPOEmbeddertest, NupRenderImage) {
+  ASSERT_TRUE(OpenDocument("hello_world_multi_pages.pdf"));
+  const int kPageCount = 2;
+  std::string expected_md5[kPageCount] = {"4d225b961da0f1bced7c83273e64c9b6",
+                                          "fb18142190d770cfbc329d2b071aee4d"};
+  std::unique_ptr<void, FPDFDocumentDeleter> output_doc_3up(
+      FPDF_ImportNPagesToOne(document(), 792, 612, 3, 1));
+  ASSERT_TRUE(output_doc_3up);
+  EXPECT_EQ(2, FPDF_GetPageCount(output_doc_3up.get()));
+  for (int i = 0; i < kPageCount; ++i) {
+    FPDF_PAGE page = FPDF_LoadPage(output_doc_3up.get(), i);
+    FPDF_BITMAP bitmap = RenderPage(page);
+    EXPECT_EQ(792, FPDFBitmap_GetWidth(bitmap));
+    EXPECT_EQ(612, FPDFBitmap_GetHeight(bitmap));
+    EXPECT_EQ(expected_md5[i], HashBitmap(bitmap));
+    FPDFBitmap_Destroy(bitmap);
+    FPDF_ClosePage(page);
+  }
+}
 
 TEST_F(FPDFPPOEmbeddertest, BadRepeatViewerPref) {
   ASSERT_TRUE(OpenDocument("repeat_viewer_ref.pdf"));
