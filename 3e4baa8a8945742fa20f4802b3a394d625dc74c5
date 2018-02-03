@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fdabb314_5e6aaabb",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-02-03T06:36:32Z",
+      "side": 1,
+      "message": "The result for 2-up of such a document is that two pages showed up in one page.  Below is the contents of the new page.\n\n4 0 obj^M\n\u003c\u003c/Contents 9 0 R /MediaBox[ 0 0 792 612]/Parent 2 0 R /Resources\u003c\u003c/XObject\u003c\u003c/X1 5 0 R /X2 8 0 R \u003e\u003e\u003e\u003e/Type/Page\u003e\u003e^M\nendobj^M\n\nFonts are copied correctly too.\n\n5 0 obj^M\n\u003c\u003c/BBox[ 0 0 200 200]/Filter/FlateDecode/FormType 1/Length 68/Resources\u003c\u003c/Font\u003c\u003c/F1 6 0 R /F2 7 0 R \u003e\u003e\u003e\u003e/Subtype/Form/Type/XObject\u003e\u003estream^M\nx\u003c9c\u003es\ná22P05P^HIáÒw3T04R^HIãÒðHÍÉÉ×Q(Ï/ÊIQÔT^HÉâB(2R04^C+rÏÏOIªLEQæ^Z^B^@:^E^U^R^M\nendstream^M\nendobj^M\n6 0 obj^M\n\u003c\u003c/BaseFont/Times-Roman/Subtype/Type1/Type/Font\u003e\u003e^M\nendobj^M\n7 0 obj^M\n\u003c\u003c/BaseFont/Helvetica/Subtype/Type1/Type/Font\u003e\u003e^M\nendobj^M\n8 0 obj^M\n\u003c\u003c/BBox[ 0 0 200 200]/Filter/FlateDecode/FormType 1/Length 68/Resources\u003c\u003c/Font\u003c\u003c/F1 6 0 R /F2 7 0 R \u003e\u003e\u003e\u003e/Subtype/Form/Type/XObject\u003e\u003estream^M",
+      "parentUuid": "c83c25b0_fc18960b",
+      "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e09c871f_c14bc33b",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-03T02:49:38Z",
       "side": 1,
       "message": "It just occurred to me, why even bother using MakeUnique()? I realize this is copy CPDF_PageOrganizer::ExportPage(), but the existing code is not always sensible. Why don\u0027t we just declare:\n\nObjectNumberMap objectNumberMap;\n\nand pass \u0026objectNumberMap to AddSubPage()?",
+      "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6204c5_b513ba44",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-02-03T06:36:32Z",
+      "side": 1,
+      "message": "Are we all agree to change the existing one in ExportPage() too?",
+      "parentUuid": "e09c871f_c14bc33b",
       "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
