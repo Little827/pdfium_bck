@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72dc0380_33bb18a9",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:18:28Z",
+      "side": 1,
+      "message": "nit: Can you also add a blank line above this one?",
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3faa0d51_47230082",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:18:28Z",
+      "side": 1,
+      "message": "BTW, this PDF doesn\u0027t actually say \"hello world\" anymore. Maybe rename it later?",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85aace9b_92c10047",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:18:28Z",
+      "side": 1,
+      "message": "This should be a constant as well. Constants should be POD whenever possible.\n\nconstexpr const char* kExpectedMD5s[kPageCount] \u003d { ... };",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025527a2_40ecdb34",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:18:28Z",
+      "side": 1,
+      "message": "I would use ASSERT_EQ() here instead of EXPECT_EQ(). If the page number is wrong, the rest of the test is invalid and it may crash if one is not careful.",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec417d6_ff57d8f2",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:18:28Z",
+      "side": 1,
+      "message": "Is this suppose to be |kPageCount| ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24b41a25_9abef77a",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:18:28Z",
+      "side": 1,
+      "message": "ASSERT_TRUE(page) after this line, because you have no idea if the page will actually load succesfully or not. It should always pass, but in the event it does not, just give up.",
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a24be35_07e045e1",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:18:28Z",
+      "side": 1,
+      "message": "FPDFPageDeleter is a friend of FPDFDocumentDeleter. So is FPDFBitmapDeleter.",
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
