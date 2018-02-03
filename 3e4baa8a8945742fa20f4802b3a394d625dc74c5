@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c83c25b0_fc18960b",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:49:38Z",
+      "side": 1,
+      "message": "Does it work correctly if two pages have the same page object number? e.g. take testing/resources/hello_world.in, and update the Pages object to:\n\n{{object 2 0}} \u003c\u003c\n  /Type /Pages\n  /MediaBox [ 0 0 200 200 ]\n  /Count 2\n  /Kids [ 3 0 R 3 0 R ]\n\u003e\u003e\n\nand generate a new PDF out of it.",
+      "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e09c871f_c14bc33b",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-03T02:49:38Z",
+      "side": 1,
+      "message": "It just occurred to me, why even bother using MakeUnique()? I realize this is copy CPDF_PageOrganizer::ExportPage(), but the existing code is not always sensible. Why don\u0027t we just declare:\n\nObjectNumberMap objectNumberMap;\n\nand pass \u0026objectNumberMap to AddSubPage()?",
+      "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
