@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "df83b527_84cb8a04",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-02-04T06:36:08Z",
+      "side": 1,
+      "message": "In the current design, two pages will be converted to two XObjects.  Future enhancement can save a mapping between page object number and Xobject number, every time before converting a page to an XObject, if there is a mapping existing already, we use the already created XObject.",
+      "parentUuid": "fdabb314_5e6aaabb",
+      "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e09c871f_c14bc33b",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 10
