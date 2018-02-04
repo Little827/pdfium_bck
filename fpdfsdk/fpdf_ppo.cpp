@@ -301,6 +301,7 @@ class CPDF_PageOrganizer {
 
  private:
   using ObjectNumberMap = std::map<uint32_t, uint32_t>;
+  using PageXObjectMap = std::map<uint32_t, ByteString>;
 
   static void SetMediaBox(CPDF_Dictionary* pDestPageDict,
                           const CFX_SizeF& pagesize);
@@ -312,8 +313,11 @@ class CPDF_PageOrganizer {
   void AddSubPage(CPDF_Dictionary* pPageDict,
                   const CFX_PointF& position,
                   float scale,
+                  ObjectNumberMap* pObjNumberMap,
+                  PageXObjectMap* pPageXObjectMap,
                   ByteString* content);
   CPDF_Object* MakeXObject(CPDF_Dictionary* pSrcPageDict,
+                           ObjectNumberMap* pObjNumberMap,
                            CPDF_Document* pDestDoc);
   void FinishPage(CPDF_Dictionary* pCurPageDict, const ByteString& content);
 
@@ -375,11 +379,22 @@ bool CPDF_PageOrganizer::PDFDocInit() {
 void CPDF_PageOrganizer::AddSubPage(CPDF_Dictionary* pPageDict,
                                     const CFX_PointF& position,
                                     float scale,
+                                    ObjectNumberMap* pObjNumberMap,
+                                    PageXObjectMap* pPageXObjectMap,
                                     ByteString* content) {
-  ++m_xobjectNum;
-  // TODO(Xlou): A better name schema to avoid possible object name collision.
-  ByteString xobjectName = ByteString::Format("X%d", m_xobjectNum);
-  m_xobjs[xobjectName] = MakeXObject(pPageDict, m_pDestPDFDoc.Get());
+  uint32_t dwPageObjnum = pPageDict->GetObjNum();
+  ByteString xobjectName;
+  const auto it = pPageXObjectMap->find(dwPageObjnum);
+  if (it != pPageXObjectMap->end()) {
+    xobjectName = it->second;
+  } else {
+    ++m_xobjectNum;
+    // TODO(Xlou): A better name schema to avoid possible object name collision.
+    xobjectName = ByteString::Format("X%d", m_xobjectNum);
+    m_xobjs[xobjectName] =
+        MakeXObject(pPageDict, pObjNumberMap, m_pDestPDFDoc.Get());
+    (*pPageXObjectMap)[dwPageObjnum] = xobjectName;
+  }
 
   CFX_Matrix matrix;
   matrix.Scale(scale, scale);
@@ -394,10 +409,9 @@ void CPDF_PageOrganizer::AddSubPage(CPDF_Dictionary* pPageDict,
 }
 
 CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
+                                             ObjectNumberMap* pObjNumberMap,
                                              CPDF_Document* pDestDoc) {
   ASSERT(pSrcPageDict);
-
-  auto pObjNumberMap = pdfium::MakeUnique<ObjectNumberMap>();
 
   CPDF_Object* pSrcContentObj = GetPageOrganizerPageContent(pSrcPageDict);
   CPDF_Stream* pNewXObject = pDestDoc->NewIndirect<CPDF_Stream>(
@@ -409,15 +423,10 @@ CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
     // Use a default empty resources if it does not exist.
     pNewXObjectDict->SetNewFor<CPDF_Dictionary>(resourceString);
   }
-  CPDF_Dictionary* pSrcRes = pSrcPageDict->GetDictFor(resourceString);
-  if (pSrcRes) {
-    uint32_t dwSrcPageResourcesObj = pSrcRes->GetObjNum();
-    uint32_t dwNewXobjectResourcesObj =
-        pNewXObjectDict->GetDictFor(resourceString)->GetObjNum();
-    (*pObjNumberMap)[dwSrcPageResourcesObj] = dwNewXobjectResourcesObj;
-    CPDF_Dictionary* pNewXORes = pNewXObjectDict->GetDictFor(resourceString);
-    UpdateReference(pNewXORes, pObjNumberMap.get());
-  }
+  uint32_t dwSrcPageObj = pSrcPageDict->GetObjNum();
+  uint32_t dwNewXobjectObj = pNewXObjectDict->GetObjNum();
+  (*pObjNumberMap)[dwSrcPageObj] = dwNewXobjectObj;
+  UpdateReference(pNewXObjectDict, pObjNumberMap);
 
   pNewXObjectDict->SetNewFor<CPDF_Name>("Type", "XObject");
   pNewXObjectDict->SetNewFor<CPDF_Name>("Subtype", "Form");
@@ -565,6 +574,8 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
   if (numPagesPerSheet == 1)
     return ExportPage(pageNums, 0);
 
+  ObjectNumberMap objectNumberMap;
+  PageXObjectMap pageXObjectMap;
   const CFX_SizeF pagesize(destPageWidth, destPageHeight);
   NupState nupState(destPageWidth, destPageHeight, numPagesOnXAxis,
                     numPagesOnYAxis);
@@ -592,7 +603,7 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
       nupState.CalculateNewPagePosition(srcPage.GetPageWidth(),
                                         srcPage.GetPageHeight(), &pgEdit);
       AddSubPage(pSrcPageDict, pgEdit.subPageStartPoint, pgEdit.scale,
-                 &content);
+                 &objectNumberMap, &pageXObjectMap, &content);
     }
 
     // Finish up the current page.
