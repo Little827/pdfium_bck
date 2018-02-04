@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "eb26591d_9f6d5dc9",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-02-04T07:20:51Z",
+      "side": 1,
+      "message": "Added a map to store page to xobject map.  So if the same pages is used more than once in a document, we only create one xobject for the page.",
+      "parentUuid": "df83b527_84cb8a04",
+      "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e09c871f_c14bc33b",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 10
@@ -87,6 +105,24 @@
       "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98cc4f00_5ac1f014",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-02-04T07:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea6204c5_b513ba44",
+      "revId": "3e4baa8a8945742fa20f4802b3a394d625dc74c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
