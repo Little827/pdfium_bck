@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "424787e7_fe92b417",
+        "filename": "fxjs/cjs_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-05T20:38:19Z",
+      "side": 1,
+      "message": "nit: put into .cpp file.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "0173b9d491220a4533d26c309a5dab7d945a5f5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
