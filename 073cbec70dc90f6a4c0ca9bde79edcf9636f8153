@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37586cf8_3285593d",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-05T20:12:08Z",
+      "side": 1,
+      "message": "Are we sure none of the tests use this without calling OpenDocumentWithOptions? Is it safer to leave in the constructor?",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 49
+      },
+      "revId": "073cbec70dc90f6a4c0ca9bde79edcf9636f8153",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
