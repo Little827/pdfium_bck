@@ -22,6 +22,30 @@
       "revId": "608e8dd6b87b15772862dca9b7b2e6791a25dab6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a7a96b_fc879a93",
+        "filename": "testing/test_support.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-05T19:00:48Z",
+      "side": 1,
+      "message": "Actually, looks like this won\u0027t even compile given change at 63.",
+      "parentUuid": "1dfb929f_60090b13",
+      "range": {
+        "startLine": 201,
+        "startChar": 31,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "608e8dd6b87b15772862dca9b7b2e6791a25dab6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
