@@ -1,6 +1,8 @@
 // Copyright 2016 PDFium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+
+#include <memory>
 #include <string>
 
 #include "public/cpp/fpdf_deleters.h"
@@ -195,7 +197,7 @@ TEST_F(FPDFPPOEmbeddertest, BUG_750568) {
     FPDF_PAGE page = LoadPage(i);
     ASSERT_NE(nullptr, page);
 
-    FPDF_BITMAP bitmap = RenderPage(page);
+    FPDF_BITMAP bitmap = RenderPageDeprecated(page);
     ASSERT_EQ(200, FPDFBitmap_GetWidth(bitmap));
     ASSERT_EQ(200, FPDFBitmap_GetHeight(bitmap));
     ASSERT_EQ(800, FPDFBitmap_GetStride(bitmap));
@@ -214,7 +216,7 @@ TEST_F(FPDFPPOEmbeddertest, BUG_750568) {
     FPDF_PAGE page = FPDF_LoadPage(output_doc, i);
     ASSERT_NE(nullptr, page);
 
-    FPDF_BITMAP bitmap = RenderPage(page);
+    FPDF_BITMAP bitmap = RenderPageDeprecated(page);
     ASSERT_EQ(200, FPDFBitmap_GetWidth(bitmap));
     ASSERT_EQ(200, FPDFBitmap_GetHeight(bitmap));
     ASSERT_EQ(800, FPDFBitmap_GetStride(bitmap));
@@ -232,7 +234,7 @@ TEST_F(FPDFPPOEmbeddertest, ImportWithZeroLengthStream) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_NE(nullptr, page);
 
-  FPDF_BITMAP bitmap = RenderPage(page);
+  FPDF_BITMAP bitmap = RenderPageDeprecated(page);
   ASSERT_EQ(200, FPDFBitmap_GetWidth(bitmap));
   ASSERT_EQ(200, FPDFBitmap_GetHeight(bitmap));
   ASSERT_EQ(800, FPDFBitmap_GetStride(bitmap));
@@ -248,7 +250,7 @@ TEST_F(FPDFPPOEmbeddertest, ImportWithZeroLengthStream) {
   EXPECT_EQ(1, FPDF_GetPageCount(new_doc));
   FPDF_PAGE new_page = FPDF_LoadPage(new_doc, 0);
   ASSERT_NE(nullptr, new_page);
-  FPDF_BITMAP new_bitmap = RenderPage(new_page);
+  FPDF_BITMAP new_bitmap = RenderPageDeprecated(new_page);
   ASSERT_EQ(200, FPDFBitmap_GetWidth(new_bitmap));
   ASSERT_EQ(200, FPDFBitmap_GetHeight(new_bitmap));
   ASSERT_EQ(800, FPDFBitmap_GetStride(new_bitmap));
