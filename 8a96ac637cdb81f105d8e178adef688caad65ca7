@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b941e7e0_395e5650",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-05T21:38:40Z",
+      "side": 1,
+      "message": "Unfortunately EmbedderTest::RenderPage() is misleading and is really meant to be used with pages returned by EmbedderTest::LoadPage(). For now, I recommend calling:\n\nRenderPageWithFlags(page.get(), nullptr, 0));\n\ninstead. I will fix EmbedderTest in a later CL so it\u0027s not as confusing to use.",
+      "range": {
+        "startLine": 116,
+        "startChar": 52,
+        "endLine": 116,
+        "endChar": 62
+      },
+      "revId": "8a96ac637cdb81f105d8e178adef688caad65ca7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

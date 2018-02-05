@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "7dead032_ff71211c",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-05T21:38:40Z",
+      "side": 1,
+      "message": "Looks like you decided to do the rename in this CL. hello_world_multi_pages.in has been renamed to rectangles_multi_pages.in, but hello_world_multi_pages.pdf did not get renamed to rectangles_multi_pages.pdf. Instead, a new rectangles_multi_pages.pdf has been added instead. If you look at the file list in this CL, rectangles_multi_pages.in as \u0027R\u0027 next to it whereas rectangles_multi_pages.pdf has \u0027A\u0027.",
+      "parentUuid": "2e4a9d2a_2ffe8dc0",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85aace9b_92c10047",
         "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
         "patchSetId": 2
