@@ -301,6 +301,8 @@ class CPDF_PageOrganizer {
 
  private:
   using ObjectNumberMap = std::map<uint32_t, uint32_t>;
+  using PageXObjectMap = std::map<uint32_t, ByteString>;
+  using XObjectNameNumberMap = std::map<ByteString, uint32_t>;
 
   static void SetMediaBox(CPDF_Dictionary* pDestPageDict,
                           const CFX_SizeF& pagesize);
@@ -312,17 +314,24 @@ class CPDF_PageOrganizer {
   void AddSubPage(CPDF_Dictionary* pPageDict,
                   const CFX_PointF& position,
                   float scale,
+                  ObjectNumberMap* pObjNumberMap,
+                  PageXObjectMap* pPageXObjectMap,
+                  XObjectNameNumberMap* pXObjNameNumberMap,
                   ByteString* content);
-  CPDF_Object* MakeXObject(CPDF_Dictionary* pSrcPageDict,
-                           CPDF_Document* pDestDoc);
-  void FinishPage(CPDF_Dictionary* pCurPageDict, const ByteString& content);
+  uint32_t MakeXObject(CPDF_Dictionary* pSrcPageDict,
+                       ObjectNumberMap* pObjNumberMap,
+                       CPDF_Document* pDestDoc);
+  void FinishPage(CPDF_Dictionary* pCurPageDict,
+                  const ByteString& content,
+                  XObjectNameNumberMap* pXObjNameNumberMap);
 
   UnownedPtr<CPDF_Document> m_pDestPDFDoc;
   UnownedPtr<CPDF_Document> m_pSrcPDFDoc;
   uint32_t m_xobjectNum = 0;
   CFX_SizeF m_pageSize;
-  // Key is XObject name
-  std::map<ByteString, UnownedPtr<CPDF_Object>> m_xobjs;
+  // Mapping of XObject name and XObject object number of the entire document.
+  // Key is XObject name.
+  std::map<ByteString, uint32_t> m_xobjs;
 };
 
 CPDF_PageOrganizer::CPDF_PageOrganizer(CPDF_Document* pDestPDFDoc,
@@ -375,11 +384,24 @@ bool CPDF_PageOrganizer::PDFDocInit() {
 void CPDF_PageOrganizer::AddSubPage(CPDF_Dictionary* pPageDict,
                                     const CFX_PointF& position,
                                     float scale,
+                                    ObjectNumberMap* pObjNumberMap,
+                                    PageXObjectMap* pPageXObjectMap,
+                                    XObjectNameNumberMap* pXObjNameNumberMap,
                                     ByteString* content) {
-  ++m_xobjectNum;
-  // TODO(Xlou): A better name schema to avoid possible object name collision.
-  ByteString xobjectName = ByteString::Format("X%d", m_xobjectNum);
-  m_xobjs[xobjectName] = MakeXObject(pPageDict, m_pDestPDFDoc.Get());
+  uint32_t dwPageObjnum = pPageDict->GetObjNum();
+  ByteString xobjectName;
+  const auto it = pPageXObjectMap->find(dwPageObjnum);
+  if (it != pPageXObjectMap->end()) {
+    xobjectName = it->second;
+  } else {
+    ++m_xobjectNum;
+    // TODO(Xlou): A better name schema to avoid possible object name collision.
+    xobjectName = ByteString::Format("X%d", m_xobjectNum);
+    m_xobjs[xobjectName] =
+        MakeXObject(pPageDict, pObjNumberMap, m_pDestPDFDoc.Get());
+    (*pPageXObjectMap)[dwPageObjnum] = xobjectName;
+  }
+  (*pXObjNameNumberMap)[xobjectName] = m_xobjs[xobjectName];
 
   CFX_Matrix matrix;
   matrix.Scale(scale, scale);
@@ -393,11 +415,10 @@ void CPDF_PageOrganizer::AddSubPage(CPDF_Dictionary* pPageDict,
   *content += ByteString(contentStream);
 }
 
-CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
-                                             CPDF_Document* pDestDoc) {
+uint32_t CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
+                                         ObjectNumberMap* pObjNumberMap,
+                                         CPDF_Document* pDestDoc) {
   ASSERT(pSrcPageDict);
-
-  auto pObjNumberMap = pdfium::MakeUnique<ObjectNumberMap>();
 
   CPDF_Object* pSrcContentObj = GetPageOrganizerPageContent(pSrcPageDict);
   CPDF_Stream* pNewXObject = pDestDoc->NewIndirect<CPDF_Stream>(
@@ -409,15 +430,10 @@ CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
     // Use a default empty resources if it does not exist.
     pNewXObjectDict->SetNewFor<CPDF_Dictionary>(resourceString);
   }
-  CPDF_Dictionary* pSrcRes = pSrcPageDict->GetDictFor(resourceString);
-  if (pSrcRes) {
-    uint32_t dwSrcPageResourcesObj = pSrcRes->GetObjNum();
-    uint32_t dwNewXobjectResourcesObj =
-        pNewXObjectDict->GetDictFor(resourceString)->GetObjNum();
-    (*pObjNumberMap)[dwSrcPageResourcesObj] = dwNewXobjectResourcesObj;
-    CPDF_Dictionary* pNewXORes = pNewXObjectDict->GetDictFor(resourceString);
-    UpdateReference(pNewXORes, pObjNumberMap.get());
-  }
+  uint32_t dwSrcPageObj = pSrcPageDict->GetObjNum();
+  uint32_t dwNewXobjectObj = pNewXObjectDict->GetObjNum();
+  (*pObjNumberMap)[dwSrcPageObj] = dwNewXobjectObj;
+  UpdateReference(pNewXObjectDict, pObjNumberMap);
 
   pNewXObjectDict->SetNewFor<CPDF_Name>("Type", "XObject");
   pNewXObjectDict->SetNewFor<CPDF_Name>("Subtype", "Form");
@@ -445,7 +461,7 @@ CPDF_Object* CPDF_PageOrganizer::MakeXObject(CPDF_Dictionary* pSrcPageDict,
     pNewXObject->SetDataAndRemoveFilter(sStream.raw_str(), sStream.GetLength());
   }
 
-  return pNewXObject;
+  return pNewXObject->GetObjNum();
 }
 
 // static
@@ -522,7 +538,8 @@ bool CPDF_PageOrganizer::ExportPage(const std::vector<uint32_t>& pageNums,
 }
 
 void CPDF_PageOrganizer::FinishPage(CPDF_Dictionary* pCurPageDict,
-                                    const ByteString& content) {
+                                    const ByteString& content,
+                                    XObjectNameNumberMap* pXObjNameNumberMap) {
   ASSERT(pCurPageDict);
 
   CPDF_Dictionary* pRes = pCurPageDict->GetDictFor("Resources");
@@ -533,10 +550,9 @@ void CPDF_PageOrganizer::FinishPage(CPDF_Dictionary* pCurPageDict,
   if (!pPageXObject)
     pPageXObject = pRes->SetNewFor<CPDF_Dictionary>("XObject");
 
-  for (auto& it : m_xobjs) {
-    CPDF_Object* pObj = it.second.Get();
+  for (auto& it : (*pXObjNameNumberMap)) {
     pPageXObject->SetNewFor<CPDF_Reference>(it.first, m_pDestPDFDoc.Get(),
-                                            pObj->GetObjNum());
+                                            it.second);
   }
 
   auto pDict = pdfium::MakeUnique<CPDF_Dictionary>(
@@ -546,7 +562,6 @@ void CPDF_PageOrganizer::FinishPage(CPDF_Dictionary* pCurPageDict,
   pStream->SetData(content.raw_str(), content.GetLength());
   pCurPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDestPDFDoc.Get(),
                                           pStream->GetObjNum());
-  m_xobjs.clear();
 }
 
 bool CPDF_PageOrganizer::ExportNPagesToOne(
@@ -564,7 +579,13 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
   size_t numPagesPerSheet = safe_numPagesPerSheet.ValueOrDie();
   if (numPagesPerSheet == 1)
     return ExportPage(pageNums, 0);
-
+  // Mapping of source page object number and XObject object number.
+  // Used to update refernece.
+  ObjectNumberMap objectNumberMap;
+  // Mapping of source page object number and XObject name of the entire doc.
+  // If there are two pages that are identical and have the same object number,
+  // we can reuse one created XObject.
+  PageXObjectMap pageXObjectMap;
   const CFX_SizeF pagesize(destPageWidth, destPageHeight);
   NupState nupState(destPageWidth, destPageHeight, numPagesOnXAxis,
                     numPagesOnYAxis);
@@ -581,6 +602,8 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
     ByteString content;
     size_t innerPageMax =
         std::min(outerPage + numPagesPerSheet, pageNums.size());
+    // Mapping of XObject name and XObject object number of one page.
+    XObjectNameNumberMap pXObjectNameNumberMap;
     for (size_t innerPage = outerPage; innerPage < innerPageMax; ++innerPage) {
       CPDF_Dictionary* pSrcPageDict =
           m_pSrcPDFDoc->GetPage(pageNums[innerPage] - 1);
@@ -592,11 +615,12 @@ bool CPDF_PageOrganizer::ExportNPagesToOne(
       nupState.CalculateNewPagePosition(srcPage.GetPageWidth(),
                                         srcPage.GetPageHeight(), &pgEdit);
       AddSubPage(pSrcPageDict, pgEdit.subPageStartPoint, pgEdit.scale,
+                 &objectNumberMap, &pageXObjectMap, &pXObjectNameNumberMap,
                  &content);
     }
 
     // Finish up the current page.
-    FinishPage(pCurPageDict, content);
+    FinishPage(pCurPageDict, content, &pXObjectNameNumberMap);
     ++curpage;
   }
 
