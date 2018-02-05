@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "da1aa26a_9c99e59b",
+        "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-02-05T23:38:53Z",
+      "side": 1,
+      "message": "Done.\nYes.  Since it\u0027s a simple change, I decided to do it in this CL.  I used the script fixup_pdf_template.py to generate rectangles_multi_pages.pdf, was hesitating whether I should delete the hello_world_multi_pages.pdf.",
+      "parentUuid": "7dead032_ff71211c",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "c8ae33e465cd5b331a2d83e46c02c11551e31d73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85aace9b_92c10047",
         "filename": "fpdfsdk/fpdfppo_embeddertest.cpp",
         "patchSetId": 2
