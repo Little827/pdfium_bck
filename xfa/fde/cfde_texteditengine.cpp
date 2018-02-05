@@ -1072,7 +1072,6 @@ std::pair<int32_t, CFX_RectF> CFDE_TextEditEngine::GetCharacterInfo(
       break;
   }
   if (it == text_piece_info_.end()) {
-    NOTREACHED();
     return {0, CFX_RectF()};
   }
 

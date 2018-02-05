@@ -8,6 +8,7 @@
 
 #include <memory>
 #include <utility>
+#include <iostream>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfdoc/cpdf_docjsactions.h"
@@ -331,7 +332,10 @@ void CPDFSDK_FormFillEnvironment::DisplayCaret(CPDFXFA_Page* page,
                                                double top,
                                                double right,
                                                double bottom) {
+
+  std::cerr << "CPDFSDK_FormFillEnvironment::DisplayCaret" << std::endl;
   if (m_pInfo && m_pInfo->FFI_DisplayCaret) {
+  std::cerr << "CPDFSDK_FormFillEnvironment::DisplayCaret call m_pInfo->FFI_DisplayCaret" << std::endl;
     m_pInfo->FFI_DisplayCaret(m_pInfo, page, bVisible, left, top, right,
                               bottom);
   }

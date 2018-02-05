@@ -7,6 +7,7 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 
 #include <memory>
+#include <iostream>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
@@ -74,6 +75,7 @@ void CPDFXFA_DocEnvironment::InvalidateRect(CXFA_FFPageView* pPageView,
 void CPDFXFA_DocEnvironment::DisplayCaret(CXFA_FFWidget* hWidget,
                                           bool bVisible,
                                           const CFX_RectF* pRtAnchor) {
+  std::cerr << "CPDFXFA_DocEnvironment::DisplayCaret" << std::endl;
   if (!hWidget || !pRtAnchor || !m_pContext->GetXFADoc() ||
       !m_pContext->GetFormFillEnv() || !m_pContext->GetXFADocView())
     return;
@@ -99,6 +101,7 @@ void CPDFXFA_DocEnvironment::DisplayCaret(CXFA_FFWidget* hWidget,
     return;
 
   CFX_FloatRect rcCaret = pRtAnchor->ToFloatRect();
+  std::cerr << "CPDFXFA_DocEnvironment::DisplayCaret call pFormFillEnv->DisplayCaret" << std::endl;
   pFormFillEnv->DisplayCaret(pPage.Get(), bVisible, rcCaret.left, rcCaret.top,
                              rcCaret.right, rcCaret.bottom);
 }

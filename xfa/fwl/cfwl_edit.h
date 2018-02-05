@@ -36,6 +36,7 @@
 #define FWL_STYLEEXT_EDT_HAlignMask (3L << 18)
 #define FWL_STYLEEXT_EDT_VAlignMask (3L << 20)
 #define FWL_STYLEEXT_EDT_HAlignModeMask (3L << 22)
+#define FWL_STYLEEXT_EDT_InnerCaret (1L << 24)
 #define FWL_STYLEEXT_EDT_ShowScrollbarFocus (1L << 25)
 #define FWL_STYLEEXT_EDT_OuterScrollbar (1L << 26)
 

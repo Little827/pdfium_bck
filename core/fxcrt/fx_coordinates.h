@@ -357,9 +357,9 @@ class CFX_FloatRect {
   float top;
 };
 
-#ifndef NDEBUG
+// #ifndef NDEBUG
 std::ostream& operator<<(std::ostream& os, const CFX_FloatRect& rect);
-#endif
+// #endif
 
 // LTWH rectangles (y-axis runs downwards).
 template <class BaseType>
@@ -580,6 +580,11 @@ class CFX_RTemplate {
 };
 using CFX_Rect = CFX_RTemplate<int32_t>;
 using CFX_RectF = CFX_RTemplate<float>;
+
+// #ifndef NDEBUG
+std::ostream& operator<<(std::ostream& os, const CFX_Rect& rect);
+std::ostream& operator<<(std::ostream& os, const CFX_RectF& rect);
+// #endif
 
 // The matrix is of the form:
 // | a  b  0 |

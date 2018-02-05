@@ -10,6 +10,7 @@
 #include <memory>
 #include <utility>
 #include <vector>
+#include <iostream>
 
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
@@ -79,7 +80,7 @@ CFWL_Edit::CFWL_Edit(const CFWL_App* app,
   m_rtEngine.Reset();
   m_rtStatic.Reset();
 
-  InitCaret();
+  // InitCaret();
   m_EdtEngine.SetDelegate(this);
 }
 
@@ -371,6 +372,7 @@ void CFWL_Edit::NotifyTextFull() {
 }
 
 void CFWL_Edit::OnCaretChanged() {
+  std::cerr << (void*)this << "CFWL_Edit::OnCaretChanged" << std::endl;
   if (m_rtEngine.IsEmpty())
     return;
   if ((m_pProperties->m_dwStates & FWL_WGTSTATE_Focused) == 0)
@@ -732,22 +734,32 @@ void CFWL_Edit::UpdateVAlignment() {
 }
 
 void CFWL_Edit::UpdateCaret() {
+  std::cerr << (void*)this << "CFWL_Edit::UpdateCaret" << std::endl;
+  std::cerr << (void*)this << "CFWL_Edit::UpdateCaret m_rtCaret " << m_rtCaret << std::endl;
   CFX_RectF rtCaret = m_rtCaret;
   rtCaret.Offset(m_rtEngine.left - m_fScrollOffsetX,
                  m_rtEngine.top - m_fScrollOffsetY + m_fVAlignOffset);
+  std::cerr << (void*)this << "CFWL_Edit::UpdateCaret after offset m_rtCaret " << m_rtCaret << std::endl;
 
   CFX_RectF rtClient = GetClientRect();
+  std::cerr << (void*)this << "CFWL_Edit::UpdateCaret rtClient " << rtClient << std::endl;
   rtCaret.Intersect(rtClient);
+  std::cerr << (void*)this << "CFWL_Edit::UpdateCaret rtCaret.Intersect(rtClient) " << rtCaret << std::endl;
   if (rtCaret.left > rtClient.right()) {
     float right = rtCaret.right();
     rtCaret.left = rtClient.right() - 1;
     rtCaret.width = right - rtCaret.left;
   }
 
-  if (m_pProperties->m_dwStates & FWL_WGTSTATE_Focused && !rtCaret.IsEmpty())
+    std::cerr << (void*)this << "CFWL_Edit::UpdateCaret m_pProperties->m_dwStates " << m_pProperties->m_dwStates << std::endl;
+    std::cerr << (void*)this << "CFWL_Edit::UpdateCaret rtCaret.IsEmpty() " << rtCaret.IsEmpty() << std::endl;
+  if (m_pProperties->m_dwStates & FWL_WGTSTATE_Focused && !rtCaret.IsEmpty()) {
+    std::cerr << (void*)this << "CFWL_Edit::UpdateCaret call ShowCaret" << std::endl;
     ShowCaret(&rtCaret);
-  else
+  } else {
+    std::cerr << (void*)this << "CFWL_Edit::UpdateCaret call HideCaret" << std::endl;
     HideCaret(&rtCaret);
+  }
 }
 
 CFWL_ScrollBar* CFWL_Edit::UpdateScroll() {
@@ -991,7 +1003,9 @@ void CFWL_Edit::InitHorizontalScrollBar() {
 }
 
 void CFWL_Edit::ShowCaret(CFX_RectF* pRect) {
+  std::cerr << (void*)this << "CFWL_Edit::ShowCaret" << std::endl;
   if (m_pCaret) {
+    std::cerr << (void*)this << "CFWL_Edit::ShowCaret m_pCaret not null, so show it" << std::endl;
     m_pCaret->ShowCaret();
     if (!pRect->IsEmpty())
       m_pCaret->SetWidgetRect(*pRect);
@@ -999,6 +1013,7 @@ void CFWL_Edit::ShowCaret(CFX_RectF* pRect) {
     return;
   }
 
+    std::cerr << (void*)this << "CFWL_Edit::ShowCaret m_pCaret is NULL" << std::endl;
   CFWL_Widget* pOuter = this;
   pRect->Offset(m_pProperties->m_rtWidget.left, m_pProperties->m_rtWidget.top);
   while (pOuter->GetOuter()) {
@@ -1018,10 +1033,12 @@ void CFWL_Edit::ShowCaret(CFX_RectF* pRect) {
     return;
 
   CFX_RectF rt = pXFAWidget->GetRotateMatrix().TransformRect(*pRect);
+    std::cerr << (void*)this << "CFWL_Edit::ShowCaret call pDocEnvironment->DisplayCaret" << std::endl;
   pDocEnvironment->DisplayCaret(pXFAWidget, true, &rt);
 }
 
 void CFWL_Edit::HideCaret(CFX_RectF* pRect) {
+  std::cerr << (void*)this << "CFWL_Edit::HideCaret" << std::endl;
   if (m_pCaret) {
     m_pCaret->HideCaret();
     RepaintRect(m_rtEngine);
@@ -1065,11 +1082,21 @@ bool CFWL_Edit::ValidateNumberChar(wchar_t cNum) {
 }
 
 void CFWL_Edit::InitCaret() {
-  m_pCaret.reset();
-  m_rtCaret = CFX_RectF();
+  std::cerr << (void*)this << "CFWL_Edit::InitCaret" << std::endl;
+  if (!m_pCaret) {
+    m_pCaret = pdfium::MakeUnique<CFWL_Caret>(
+        m_pOwnerApp.Get(), pdfium::MakeUnique<CFWL_WidgetProperties>(), this);
+    m_pCaret->SetParent(this);
+    m_pCaret->SetStates(m_pProperties->m_dwStates);
+    UpdateCursorRect();
+  }
+  // m_pCaret.reset();
+  // m_rtCaret = CFX_RectF();
+  // std::cerr << (void*)this << "CFWL_Edit::InitCaret m_rtCaret is now " << m_rtCaret << std::endl;
 }
 
 void CFWL_Edit::UpdateCursorRect() {
+  std::cerr << (void*)this << "CFWL_Edit::UpdateCursorRect" << std::endl;
   int32_t bidi_level = 0;
   m_rtCaret = CFX_RectF();
   std::tie(bidi_level, m_rtCaret) =
@@ -1080,9 +1107,13 @@ void CFWL_Edit::UpdateCursorRect() {
     m_rtCaret.left -= 1.0f;
 
   m_rtCaret.width = 1.0f;
+  if (m_rtCaret.height == 0)
+    m_rtCaret.height = 8.0f;
+  std::cerr << (void*)this << "CFWL_Edit::UpdateCursorRect m_rtCaret is now " << m_rtCaret << std::endl;
 }
 
 void CFWL_Edit::SetCursorPosition(size_t position) {
+  std::cerr << (void*)this << "CFWL_Edit::SetCursorPosition(" << position << ")" << std::endl;
   if (m_CursorPosition == position)
     return;
 
