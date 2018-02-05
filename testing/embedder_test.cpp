@@ -8,6 +8,7 @@
 
 #include <fstream>
 #include <list>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -261,21 +262,31 @@ FPDF_PAGE EmbedderTest::LoadPage(int page_number) {
   return page;
 }
 
-FPDF_BITMAP EmbedderTest::RenderPage(FPDF_PAGE page) {
-  return RenderPageWithFlags(page, form_handle_, 0);
+FPDF_BITMAP EmbedderTest::RenderPageDeprecated(FPDF_PAGE page) {
+  return RenderPageWithFlagsDeprecated(page, form_handle_, 0);
 }
 
-FPDF_BITMAP EmbedderTest::RenderPageWithFlags(FPDF_PAGE page,
-                                              FPDF_FORMHANDLE handle,
-                                              int flags) {
+// static
+FPDF_BITMAP EmbedderTest::RenderPageWithFlagsDeprecated(FPDF_PAGE page,
+                                                        FPDF_FORMHANDLE handle,
+                                                        int flags) {
+  return RenderPageWithFlags(page, handle, flags).release();
+}
+
+// static
+std::unique_ptr<void, FPDFBitmapDeleter> EmbedderTest::RenderPageWithFlags(
+    FPDF_PAGE page,
+    FPDF_FORMHANDLE handle,
+    int flags) {
   int width = static_cast<int>(FPDF_GetPageWidth(page));
   int height = static_cast<int>(FPDF_GetPageHeight(page));
   int alpha = FPDFPage_HasTransparency(page) ? 1 : 0;
-  FPDF_BITMAP bitmap = FPDFBitmap_Create(width, height, alpha);
+  std::unique_ptr<void, FPDFBitmapDeleter> bitmap(
+      FPDFBitmap_Create(width, height, alpha));
   FPDF_DWORD fill_color = alpha ? 0x00000000 : 0xFFFFFFFF;
-  FPDFBitmap_FillRect(bitmap, 0, 0, width, height, fill_color);
-  FPDF_RenderPageBitmap(bitmap, page, 0, 0, width, height, 0, flags);
-  FPDF_FFLDraw(handle, bitmap, page, 0, 0, width, height, 0, flags);
+  FPDFBitmap_FillRect(bitmap.get(), 0, 0, width, height, fill_color);
+  FPDF_RenderPageBitmap(bitmap.get(), page, 0, 0, width, height, 0, flags);
+  FPDF_FFLDraw(handle, bitmap.get(), page, 0, 0, width, height, 0, flags);
   return bitmap;
 }
 
@@ -331,7 +342,7 @@ FPDF_PAGE EmbedderTest::LoadSavedPage(int page_number) {
 }
 
 FPDF_BITMAP EmbedderTest::RenderSavedPage(FPDF_PAGE page) {
-  return RenderPageWithFlags(page, saved_form_handle_, 0);
+  return RenderPageWithFlagsDeprecated(page, saved_form_handle_, 0);
 }
 
 void EmbedderTest::CloseSavedPage(FPDF_PAGE page) {
@@ -347,7 +358,7 @@ void EmbedderTest::VerifySavedRendering(FPDF_PAGE page,
   ASSERT(page);
 
   FPDF_BITMAP new_bitmap =
-      RenderPageWithFlags(page, saved_form_handle_, FPDF_ANNOT);
+      RenderPageWithFlagsDeprecated(page, saved_form_handle_, FPDF_ANNOT);
   CompareBitmap(new_bitmap, width, height, md5);
   FPDFBitmap_Destroy(new_bitmap);
 }

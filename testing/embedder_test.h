@@ -9,6 +9,7 @@
 #include <memory>
 #include <string>
 
+#include "public/cpp/fpdf_deleters.h"
 #include "public/fpdf_dataavail.h"
 #include "public/fpdf_ext.h"
 #include "public/fpdf_formfill.h"
@@ -109,13 +110,24 @@ class EmbedderTest : public ::testing::Test,
   FPDF_PAGE LoadPage(int page_number);
 
   // Convert a loaded page into a bitmap.
-  FPDF_BITMAP RenderPage(FPDF_PAGE page);
+  // DEPRECATED. Use some one of the methods below instead.
+  FPDF_BITMAP RenderPageDeprecated(FPDF_PAGE page);
 
-  // Convert a loaded page into a bitmap with page rendering flags specified.
+  // DEPRECATED. Use RenderPageWithFlags() instead.
+  // Caller takes ownership of the returned bitmap.
+  //
   // See public/fpdfview.h for a list of page rendering flags.
-  FPDF_BITMAP RenderPageWithFlags(FPDF_PAGE page,
-                                  FPDF_FORMHANDLE handle,
-                                  int flags);
+  static FPDF_BITMAP RenderPageWithFlagsDeprecated(FPDF_PAGE page,
+                                                   FPDF_FORMHANDLE handle,
+                                                   int flags);
+
+  // Convert |page| into a bitmap with page rendering |flags| specified.
+  // The form handle associated with |page| should be passed in via |handle|.
+  // If |handle| is nullptr, then forms on the page will not be rendered.
+  //
+  // See public/fpdfview.h for a list of page rendering flags.
+  static std::unique_ptr<void, FPDFBitmapDeleter>
+  RenderPageWithFlags(FPDF_PAGE page, FPDF_FORMHANDLE handle, int flags);
 
   // Relese the resources obtained from LoadPage(). Further use of |page|
   // is prohibited after this call is made.

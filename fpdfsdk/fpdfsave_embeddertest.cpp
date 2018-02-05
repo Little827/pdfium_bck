@@ -66,7 +66,7 @@ TEST_F(FPDFSaveEmbedderTest, SaveLinearizedDoc) {
   EXPECT_TRUE(OpenDocument("linearized.pdf"));
   for (int i = 0; i < kPageCount; ++i) {
     FPDF_PAGE page = LoadPage(i);
-    FPDF_BITMAP bitmap = RenderPage(page);
+    FPDF_BITMAP bitmap = RenderPageDeprecated(page);
     EXPECT_EQ(612, FPDFBitmap_GetWidth(bitmap));
     EXPECT_EQ(792, FPDFBitmap_GetHeight(bitmap));
     original_md5[i] = HashBitmap(bitmap);
