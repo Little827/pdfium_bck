@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d4b0b1f8_7c286a42",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-06T17:16:58Z",
+      "side": 1,
+      "message": "The problem with that is, I couldn\u0027t figure out why you were passing the |page| into a method which is rendering a loaded page. Shouldn\u0027t the method have the page already? The signature reads as something different from what it\u0027s doing.",
+      "parentUuid": "4ce07141_ca1b35a6",
+      "range": {
+        "startLine": 312,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 22
+      },
+      "revId": "afc5afe49089face11be05c7fb08de4087fdbaba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8417f454_3b7d9f4f",
         "filename": "testing/embedder_test.h",
         "patchSetId": 5
