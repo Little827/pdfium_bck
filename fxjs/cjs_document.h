@@ -23,7 +23,7 @@ class CJS_Document : public CJS_Object {
   static int GetObjDefnID();
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
-  explicit CJS_Document(v8::Local<v8::Object> pObject);
+  CJS_Document(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject);
   ~CJS_Document() override;
 
   // CJS_Object

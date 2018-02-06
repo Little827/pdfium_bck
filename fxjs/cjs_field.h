@@ -34,7 +34,7 @@ class CJS_Field : public CJS_Object {
   static void DoDelay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                       CJS_DelayData* pData);
 
-  explicit CJS_Field(v8::Local<v8::Object> pObject);
+  CJS_Field(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject);
   ~CJS_Field() override;
 
   // CJS_Object

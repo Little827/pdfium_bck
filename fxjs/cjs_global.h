@@ -35,7 +35,7 @@ class CJS_Global : public CJS_Object {
   static void setPersistent_static(
       const v8::FunctionCallbackInfo<v8::Value>& info);
 
-  explicit CJS_Global(v8::Local<v8::Object> pObject);
+  CJS_Global(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject);
   ~CJS_Global() override;
 
   // CJS_Object

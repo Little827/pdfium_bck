@@ -29,3 +29,8 @@ void CJS_Font::DefineJSObjects(CFXJS_Engine* pEngine) {
   ObjDefnID = pEngine->DefineObj("font", FXJSOBJTYPE_STATIC, nullptr, nullptr);
   DefineConsts(pEngine, ObjDefnID, ConstSpecs, FX_ArraySize(ConstSpecs));
 }
+
+CJS_Font::CJS_Font(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject) {}
+
+CJS_Font::~CJS_Font() = default;

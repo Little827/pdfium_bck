@@ -189,8 +189,8 @@ void CJS_Global::DefineJSObjects(CFXJS_Engine* pEngine) {
   DefineAllProperties(pEngine);
 }
 
-CJS_Global::CJS_Global(v8::Local<v8::Object> pObject)
-    : CJS_Object(pObject), m_pFormFillEnv(nullptr) {}
+CJS_Global::CJS_Global(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject), m_pFormFillEnv(nullptr) {}
 
 CJS_Global::~CJS_Global() {
   DestroyGlobalPersisitentVariables();

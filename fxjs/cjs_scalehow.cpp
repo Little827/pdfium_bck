@@ -18,3 +18,8 @@ void CJS_ScaleHow::DefineJSObjects(CFXJS_Engine* pEngine) {
       pEngine->DefineObj("scaleHow", FXJSOBJTYPE_STATIC, nullptr, nullptr);
   DefineConsts(pEngine, ObjDefnID, ConstSpecs, FX_ArraySize(ConstSpecs));
 }
+
+CJS_ScaleHow::CJS_ScaleHow(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject) {}
+
+CJS_ScaleHow::~CJS_ScaleHow() = default;

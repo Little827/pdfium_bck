@@ -21,8 +21,8 @@ void CJS_TimerObj::DefineJSObjects(CFXJS_Engine* pEngine) {
                                  JSConstructor<CJS_TimerObj>, JSDestructor);
 }
 
-CJS_TimerObj::CJS_TimerObj(v8::Local<v8::Object> pObject)
-    : CJS_Object(pObject), m_nTimerID(0) {}
+CJS_TimerObj::CJS_TimerObj(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject), m_nTimerID(0) {}
 
 CJS_TimerObj::~CJS_TimerObj() = default;
 

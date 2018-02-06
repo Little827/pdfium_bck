@@ -10,6 +10,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/fsdk_define.h"
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/fxjs_v8.h"
@@ -49,17 +50,18 @@ class CJS_Object {
                             const JSMethodSpec methods[],
                             size_t count);
 
-  explicit CJS_Object(v8::Local<v8::Object> pObject);
+  CJS_Object(CJS_Runtime* pCJSRuntime, v8::Local<v8::Object> pObject);
   virtual ~CJS_Object();
 
   virtual void InitInstance(IJS_Runtime* pIRuntime);
 
-  v8::Local<v8::Object> ToV8Object() { return m_pV8Object.Get(m_pIsolate); }
-  v8::Isolate* GetIsolate() const { return m_pIsolate; }
+  v8::Local<v8::Object> ToV8Object() { return m_pV8Object.Get(GetIsolate()); }
+  v8::Isolate* GetIsolate() const { return GetCJSRuntime()->GetIsolate(); }
+  CJS_Runtime* GetCJSRuntime() const { return m_pCJSRuntime.Get(); }
 
  protected:
   v8::Global<v8::Object> m_pV8Object;
-  v8::Isolate* m_pIsolate;
+  UnownedPtr<CJS_Runtime> m_pCJSRuntime;
 };
 
 #endif  // FXJS_CJS_OBJECT_H_

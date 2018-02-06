@@ -204,8 +204,9 @@ bool IsValidSecond(int s) {
 
 }  // namespace
 
-CJS_PublicMethods::CJS_PublicMethods(v8::Local<v8::Object> pObject)
-    : CJS_Object(pObject) {}
+CJS_PublicMethods::CJS_PublicMethods(CJS_Runtime* pRuntime,
+                                     v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject) {}
 
 CJS_PublicMethods::~CJS_PublicMethods() {}
 

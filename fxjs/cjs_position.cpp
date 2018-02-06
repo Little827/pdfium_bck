@@ -23,3 +23,8 @@ void CJS_Position::DefineJSObjects(CFXJS_Engine* pEngine) {
       pEngine->DefineObj("position", FXJSOBJTYPE_STATIC, nullptr, nullptr);
   DefineConsts(pEngine, ObjDefnID, ConstSpecs, FX_ArraySize(ConstSpecs));
 }
+
+CJS_Position::CJS_Position(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject) {}
+
+CJS_Position::~CJS_Position() = default;

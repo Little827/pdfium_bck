@@ -50,7 +50,7 @@ std::vector<v8::Local<v8::Value>> ExpandKeywordParams(
 
 template <class T>
 static void JSConstructor(CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
-  auto pObj = pdfium::MakeUnique<T>(obj);
+  auto pObj = pdfium::MakeUnique<T>(static_cast<CJS_Runtime*>(pEngine), obj);
   pObj->InitInstance(static_cast<CJS_Runtime*>(pEngine));
   pEngine->SetObjectPrivate(obj, std::move(pObj));
 }

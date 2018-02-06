@@ -20,7 +20,8 @@ void CJS_PrintParamsObj::DefineJSObjects(CFXJS_Engine* pEngine) {
                          JSConstructor<CJS_PrintParamsObj>, JSDestructor);
 }
 
-CJS_PrintParamsObj::CJS_PrintParamsObj(v8::Local<v8::Object> pObject)
-    : CJS_Object(pObject) {}
+CJS_PrintParamsObj::CJS_PrintParamsObj(CJS_Runtime* pRuntime,
+                                       v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject) {}
 
 CJS_PrintParamsObj::~CJS_PrintParamsObj() = default;

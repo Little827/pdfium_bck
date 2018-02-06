@@ -40,7 +40,8 @@ void CJS_Annot::DefineJSObjects(CFXJS_Engine* pEngine) {
   DefineProps(pEngine, ObjDefnID, PropertySpecs, FX_ArraySize(PropertySpecs));
 }
 
-CJS_Annot::CJS_Annot(v8::Local<v8::Object> pObject) : CJS_Object(pObject) {}
+CJS_Annot::CJS_Annot(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject) {}
 
 CJS_Annot::~CJS_Annot() = default;
 

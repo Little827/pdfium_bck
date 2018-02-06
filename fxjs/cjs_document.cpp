@@ -123,8 +123,8 @@ void CJS_Document::DefineJSObjects(CFXJS_Engine* pEngine) {
   DefineMethods(pEngine, ObjDefnID, MethodSpecs, FX_ArraySize(MethodSpecs));
 }
 
-CJS_Document::CJS_Document(v8::Local<v8::Object> pObject)
-    : CJS_Object(pObject),
+CJS_Document::CJS_Document(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject),
       m_pFormFillEnv(nullptr),
       m_cwBaseURL(L""),
       m_bDelay(false) {}

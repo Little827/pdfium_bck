@@ -85,8 +85,10 @@ void CJS_App::DefineJSObjects(CFXJS_Engine* pEngine) {
   DefineMethods(pEngine, ObjDefnID, MethodSpecs, FX_ArraySize(MethodSpecs));
 }
 
-CJS_App::CJS_App(v8::Local<v8::Object> pObject)
-    : CJS_Object(pObject), m_bCalculate(true), m_bRuntimeHighLight(false) {}
+CJS_App::CJS_App(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject),
+      m_bCalculate(true),
+      m_bRuntimeHighLight(false) {}
 
 CJS_App::~CJS_App() = default;
 

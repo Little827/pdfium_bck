@@ -23,3 +23,8 @@ void CJS_Zoomtype::DefineJSObjects(CFXJS_Engine* pEngine) {
       pEngine->DefineObj("zoomtype", FXJSOBJTYPE_STATIC, nullptr, nullptr);
   DefineConsts(pEngine, ObjDefnID, ConstSpecs, FX_ArraySize(ConstSpecs));
 }
+
+CJS_Zoomtype::CJS_Zoomtype(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject) {}
+
+CJS_Zoomtype::~CJS_Zoomtype() = default;

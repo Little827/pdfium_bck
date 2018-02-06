@@ -13,8 +13,8 @@ class CJS_Font : public CJS_Object {
  public:
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
-  explicit CJS_Font(v8::Local<v8::Object> pObject) : CJS_Object(pObject) {}
-  ~CJS_Font() override {}
+  explicit CJS_Font(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject);
+  ~CJS_Font() override;
 
  private:
   static int ObjDefnID;

@@ -171,8 +171,8 @@ void CJS_Field::DefineJSObjects(CFXJS_Engine* pEngine) {
   DefineMethods(pEngine, ObjDefnID, MethodSpecs, FX_ArraySize(MethodSpecs));
 }
 
-CJS_Field::CJS_Field(v8::Local<v8::Object> pObject)
-    : CJS_Object(pObject),
+CJS_Field::CJS_Field(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject)
+    : CJS_Object(pRuntime, pObject),
       m_pJSDoc(nullptr),
       m_pFormFillEnv(nullptr),
       m_nFormControlIndex(-1),

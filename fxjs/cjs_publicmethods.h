@@ -14,9 +14,6 @@
 
 class CJS_PublicMethods : public CJS_Object {
  public:
-  explicit CJS_PublicMethods(v8::Local<v8::Object> pObject);
-  ~CJS_PublicMethods() override;
-
   static void DefineJSObjects(CFXJS_Engine* pEngine);
   static double MakeRegularDate(const WideString& value,
                                 const WideString& format,
@@ -155,6 +152,9 @@ class CJS_PublicMethods : public CJS_Object {
                           double dValue2);
   static v8::Local<v8::Array> AF_MakeArrayFromList(CJS_Runtime* pRuntime,
                                                    v8::Local<v8::Value> val);
+
+  CJS_PublicMethods(CJS_Runtime* pRuntime, v8::Local<v8::Object> pObject);
+  ~CJS_PublicMethods() override;
 };
 
 #endif  // FXJS_CJS_PUBLICMETHODS_H_
