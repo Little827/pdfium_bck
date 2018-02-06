@@ -47,6 +47,29 @@
       "revId": "4355fff97e9108d97f739b82b8a14fb7d269367e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b62bc5_f7420a3f",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-06T17:04:33Z",
+      "side": 1,
+      "message": "We pass these objects by pointer usually. Do we want to change that?",
+      "range": {
+        "startLine": 272,
+        "startChar": 43,
+        "endLine": 272,
+        "endChar": 61
+      },
+      "revId": "4355fff97e9108d97f739b82b8a14fb7d269367e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
