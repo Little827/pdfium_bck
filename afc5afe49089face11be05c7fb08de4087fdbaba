@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fe9cc323_6355adc2",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T16:56:59Z",
+      "side": 1,
+      "message": "Too long? I think the caller mainly want a saved page to render correctly. No need to expose the details of how that\u0027s done in the method name.",
+      "parentUuid": "1dbcdadb_fd0ff161",
+      "range": {
+        "startLine": 293,
+        "startChar": 55,
+        "endLine": 293,
+        "endChar": 70
+      },
+      "revId": "afc5afe49089face11be05c7fb08de4087fdbaba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17c02c72_71da9159",
         "filename": "testing/embedder_test.cpp",
         "patchSetId": 5
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ce07141_ca1b35a6",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T16:56:59Z",
+      "side": 1,
+      "message": "It\u0027s too easy for the caller to pass in the wrong handle. Which is why I created all these methods. In this CL, I\u0027d like callers in common cases to use this like:\n\nFPDF_PAGE page \u003d LoadPage(0);\nstd::unique_ptr\u003c...\u003e \u003d RenderLoadedPage(page);\nUnloadPage(page);\n\nFPDF_PAGE saved_page \u003d LoadSavedPage(0);\nstd::unique_ptr\u003c...\u003e \u003d RenderSavedPage(page);\nUnloadPage(saved_page);\n\nRenderPageWithFlags() still exists as a fallback for cases where the page does not come from either the main or saved document. I have a follow up CL to use |page_map_| to make sure RenderLoadedPage() only takes pages from LoadPage(), and similarly add |saved_page_map_| to track pages handed out via LoadSavedPage().\n\nA possible alternative is to first add |saved_page_map_|. EmbedderTest now knows whether any given page came from LoadPage(), LoadSavedPage(), or neither. Then we can just have:\n\n// Just RenderPageWithFlags(page, 0)\nRenderPage(FPDF_PAGE page);\n\n// Uses the page maps to automatically figure out what form handle to use, or\n// nullptr as the form handle if EmbedderTest did not load the page\nRenderPageWithFlags(FPDF_PAGE page, int flags);\n\n// Do whatever you want in manual mode. Be careful.\nRenderPageWithHandleAndFlags(FPDF_PAGE page, FPDF_FORMHANDLE handle, int flags);",
+      "parentUuid": "e1c30fcc_6e54d269",
+      "range": {
+        "startLine": 312,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 22
+      },
+      "revId": "afc5afe49089face11be05c7fb08de4087fdbaba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8417f454_3b7d9f4f",
         "filename": "testing/embedder_test.h",
         "patchSetId": 5
@@ -106,6 +154,30 @@
       "writtenOn": "2018-02-06T15:06:42Z",
       "side": 1,
       "message": "Should this be:\n\nDEPRECATED. Use RenderLoadedPage instead.\n\n?",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 59
+      },
+      "revId": "afc5afe49089face11be05c7fb08de4087fdbaba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a51a7dd_41dc48be",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T16:56:59Z",
+      "side": 1,
+      "message": "No. Callers need to pick the right function depending on where they got |page| from.",
+      "parentUuid": "8417f454_3b7d9f4f",
       "range": {
         "startLine": 117,
         "startChar": 16,
