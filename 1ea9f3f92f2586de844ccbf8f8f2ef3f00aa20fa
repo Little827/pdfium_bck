@@ -22,6 +22,30 @@
       "revId": "1ea9f3f92f2586de844ccbf8f8f2ef3f00aa20fa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b617296_a73449e2",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-06T18:12:29Z",
+      "side": 0,
+      "message": "When I figure how to get the actual char rect, it will probably be passed through this method. Changing the caller to check if the field is empty could only lead to the same behavior for all edits, while the caret should be differently positioned depending in the edit.",
+      "parentUuid": "01a2b650_a4e2d0c3",
+      "range": {
+        "startLine": 1075,
+        "startChar": 4,
+        "endLine": 1075,
+        "endChar": 17
+      },
+      "revId": "1ea9f3f92f2586de844ccbf8f8f2ef3f00aa20fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
