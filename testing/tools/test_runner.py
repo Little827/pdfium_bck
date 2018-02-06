@@ -89,6 +89,15 @@ class TestRunner:
                                        self.working_dir, platform_only)
         return False, results
     else:
+      if (self.options.regenerate_expected
+          and not self.test_suppressor.IsResultSuppressed(input_filename)
+          and not self.test_suppressor.IsImageDiffSuppressed(input_filename)):
+        platform_only = (self.options.regenerate_expected == 'platform')
+        self.image_differ.Regenerate(input_filename, source_dir,
+                                     self.working_dir, platform_only)
+        print 'Regenerated images for %s' % input_filename
+        return True, results
+
       if (self.enforce_expected_images
           and not self.test_suppressor.IsImageDiffSuppressed(input_filename)):
         print 'FAILURE: %s; Missing expected images' % input_filename
