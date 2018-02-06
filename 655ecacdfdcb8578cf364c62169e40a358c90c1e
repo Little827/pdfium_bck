@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aeb4b54_ff8cce0a",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T00:51:34Z",
+      "side": 1,
+      "message": "It\u0027s better to document what the mapping is here, than to document it where used. Since there can be multiple uses.",
+      "revId": "655ecacdfdcb8578cf364c62169e40a358c90c1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ddb7eea_e957223f",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T00:51:34Z",
+      "side": 1,
+      "message": "Is this XObjectNameNumberMap, or something that\u0027s identical by coincidence?",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 32
+      },
+      "revId": "655ecacdfdcb8578cf364c62169e40a358c90c1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e3649c_4b9eaca4",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T00:51:34Z",
+      "side": 1,
+      "message": "Oftentimes ByteStrings are named bsFoo, and WideStrings are named wsBar.",
+      "range": {
+        "startLine": 392,
+        "startChar": 13,
+        "endLine": 392,
+        "endChar": 24
+      },
+      "revId": "655ecacdfdcb8578cf364c62169e40a358c90c1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cda2fd3_74db0133",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T00:51:34Z",
+      "side": 1,
+      "message": "No need for extra parenthesis.",
+      "range": {
+        "startLine": 553,
+        "startChar": 18,
+        "endLine": 553,
+        "endChar": 19
+      },
+      "revId": "655ecacdfdcb8578cf364c62169e40a358c90c1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca68948b_4cc49fd4",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-06T00:51:34Z",
+      "side": 1,
+      "message": "nit: This map is not a pointer, so it shouldn\u0027t be named pFoo.",
+      "revId": "655ecacdfdcb8578cf364c62169e40a358c90c1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
