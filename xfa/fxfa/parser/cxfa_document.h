@@ -9,7 +9,6 @@
 
 #include <map>
 #include <memory>
-#include <set>
 #include <vector>
 
 #include "xfa/fxfa/fxfa.h"
@@ -64,7 +63,7 @@ class CXFA_Document {
 
   CFXJSE_Engine* InitScriptContext(CFXJS_Engine* fxjs_engine);
 
-  CXFA_Node* GetRoot() const { return m_pRootNode; }
+  CXFA_Node* GetRoot() const { return m_pRootNode.get(); }
 
   CFX_XMLDoc* GetXMLDoc() const;
   CXFA_FFNotify* GetNotify() const;
@@ -76,10 +75,9 @@ class CXFA_Document {
   CXFA_LayoutProcessor* GetDocLayout();
   CFXJSE_Engine* GetScriptContext();
 
-  void SetRoot(CXFA_Node* pNewRoot);
+  void SetRoot(std::unique_ptr<CXFA_Node> pNewRoot);
 
-  void AddPurgeNode(CXFA_Node* pNode);
-  bool RemovePurgeNode(CXFA_Node* pNode);
+  void AddPurgeNode(std::unique_ptr<CXFA_Node> pNode);
 
   bool HasFlag(uint32_t dwFlag) { return (m_dwDocFlags & dwFlag) == dwFlag; }
   void SetFlag(uint32_t dwFlag, bool bOn);
@@ -88,7 +86,8 @@ class CXFA_Document {
   XFA_VERSION GetCurVersionMode() { return m_eCurVersionMode; }
   XFA_VERSION RecognizeXFAVersionNumber(const WideString& wsTemplateNS);
 
-  CXFA_Node* CreateNode(XFA_PacketType packet, XFA_Element eElement);
+  std::unique_ptr<CXFA_Node> CreateNode(XFA_PacketType packet,
+                                        XFA_Element eElement);
 
   void DoProtoMerge();
   void DoDataMerge();
@@ -108,7 +107,7 @@ class CXFA_Document {
 
  private:
   CXFA_DocumentParser* m_pParser;
-  CXFA_Node* m_pRootNode;
+  std::unique_ptr<CXFA_Node> m_pRootNode;
   std::unique_ptr<CFXJSE_Engine> m_pScriptContext;
   std::unique_ptr<CXFA_LayoutProcessor> m_pLayoutProcessor;
   std::unique_ptr<CXFA_LocaleMgr> m_pLocalMgr;
@@ -118,7 +117,7 @@ class CXFA_Document {
   std::unique_ptr<CScript_LogPseudoModel> m_pScriptLog;
   std::unique_ptr<CScript_LayoutPseudoModel> m_pScriptLayout;
   std::unique_ptr<CScript_SignaturePseudoModel> m_pScriptSignature;
-  std::set<CXFA_Node*> m_PurgeNodes;
+  std::vector<std::unique_ptr<CXFA_Node>> m_PurgeNodes;
   XFA_VERSION m_eCurVersionMode;
   uint32_t m_dwDocFlags;
 };

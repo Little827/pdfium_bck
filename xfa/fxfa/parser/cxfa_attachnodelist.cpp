@@ -22,19 +22,25 @@ size_t CXFA_AttachNodeList::GetLength() {
 }
 
 void CXFA_AttachNodeList::Append(CXFA_Node* pNode) {
+  std::unique_ptr<CXFA_Node> node;
   CXFA_Node* pParent = pNode->GetParent();
   if (pParent)
-    pParent->RemoveChild(pNode, true);
+    node = pParent->RemoveChild(pNode, true);
+  else
+    node = pdfium::WrapUnique<CXFA_Node>(pNode);
 
-  m_pAttachNode->InsertChild(pNode, nullptr);
+  m_pAttachNode->InsertChild(std::move(node), nullptr);
 }
 
 void CXFA_AttachNodeList::Insert(CXFA_Node* pNewNode, CXFA_Node* pBeforeNode) {
+  std::unique_ptr<CXFA_Node> node;
   CXFA_Node* pParent = pNewNode->GetParent();
   if (pParent)
-    pParent->RemoveChild(pNewNode, true);
+    node = pParent->RemoveChild(pNewNode, true);
+  else
+    node = pdfium::WrapUnique<CXFA_Node>(pNewNode);
 
-  m_pAttachNode->InsertChild(pNewNode, pBeforeNode);
+  m_pAttachNode->InsertChild(std::move(node), pBeforeNode);
 }
 
 void CXFA_AttachNodeList::Remove(CXFA_Node* pNode) {

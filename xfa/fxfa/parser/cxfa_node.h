@@ -118,11 +118,12 @@ class CXFA_Node : public CXFA_Object {
   void SetFlag(uint32_t dwFlag, bool bNotify);
   void ClearFlag(uint32_t dwFlag);
 
-  CXFA_Node* CreateInstanceIfPossible(bool bDataMerge);
+  std::unique_ptr<CXFA_Node> CreateInstanceIfPossible(bool bDataMerge);
   int32_t GetCount();
   CXFA_Node* GetItemIfExists(int32_t iIndex);
-  void RemoveItem(CXFA_Node* pRemoveInstance, bool bRemoveDataBinding);
-  void InsertItem(CXFA_Node* pNewInstance,
+  std::unique_ptr<CXFA_Node> RemoveItem(CXFA_Node* pRemoveInstance,
+                                        bool bRemoveDataBinding);
+  void InsertItem(std::unique_ptr<CXFA_Node> pNewInstance,
                   int32_t iPos,
                   int32_t iCount,
                   bool bMoveDataBindingNodes);
@@ -172,11 +173,11 @@ class CXFA_Node : public CXFA_Object {
     return static_cast<T*>(GetChildInternal(index, eType, bOnlyChild));
   }
 
-  void InsertChild(int32_t index, CXFA_Node* pNode);
-  void InsertChild(CXFA_Node* pNode, CXFA_Node* pBeforeNode);
-  void RemoveChild(CXFA_Node* pNode, bool bNotify);
+  void InsertChild(int32_t index, std::unique_ptr<CXFA_Node> pNode);
+  void InsertChild(std::unique_ptr<CXFA_Node> pNode, CXFA_Node* pBeforeNode);
+  std::unique_ptr<CXFA_Node> RemoveChild(CXFA_Node* pNode, bool bNotify);
 
-  CXFA_Node* Clone(bool bRecursive);
+  std::unique_ptr<CXFA_Node> Clone(bool bRecursive);
 
   CXFA_Node* GetNextSibling() const { return m_pNext; }
   CXFA_Node* GetPrevSibling() const;
@@ -190,8 +191,8 @@ class CXFA_Node : public CXFA_Object {
 
   std::vector<CXFA_Node*> GetNodeList(uint32_t dwTypeFilter,
                                       XFA_Element eTypeFilter);
-  CXFA_Node* CreateSamePacketNode(XFA_Element eType);
-  CXFA_Node* CloneTemplateToForm(bool bRecursive);
+  std::unique_ptr<CXFA_Node> CreateSamePacketNode(XFA_Element eType);
+  std::unique_ptr<CXFA_Node> CloneTemplateToForm(bool bRecursive);
   CXFA_Node* GetTemplateNodeIfExists() const;
   void SetTemplateNode(CXFA_Node* pTemplateNode);
   CXFA_Node* GetDataDescriptionNode();

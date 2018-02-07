@@ -47,7 +47,8 @@ CJS_Return CJX_Model::createNode(
 
   WideString tagName = runtime->ToWideString(params[0]);
   XFA_Element eType = CXFA_Node::NameToElement(tagName);
-  CXFA_Node* pNewNode = GetXFANode()->CreateSamePacketNode(eType);
+  std::unique_ptr<CXFA_Node> pNewNode =
+      GetXFANode()->CreateSamePacketNode(eType);
   if (!pNewNode)
     return CJS_Return(runtime->NewNull());
 
@@ -62,7 +63,9 @@ CJS_Return CJX_Model::createNode(
   }
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNewNode);
+      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNewNode.get());
+
+  GetXFANode()->GetDocument()->AddPurgeNode(std::move(pNewNode));
   if (!value)
     return CJS_Return(runtime->NewNull());
 

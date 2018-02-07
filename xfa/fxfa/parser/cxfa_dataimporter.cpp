@@ -32,11 +32,11 @@ bool CXFA_DataImporter::ImportData(
           pDataDocument, XFA_PacketType::Datasets) != XFA_PARSESTATUS_Ready) {
     return false;
   }
-  if (pDataDocumentParser->DoParse() < XFA_PARSESTATUS_Done)
-    return false;
 
-  CXFA_Node* pImportDataRoot = pDataDocumentParser->GetRootNode();
-  if (!pImportDataRoot)
+  int status;
+  std::unique_ptr<CXFA_Node> node;
+  std::tie(status, node) = pDataDocumentParser->DoParse();
+  if (status < XFA_PARSESTATUS_Done || !node)
     return false;
 
   CXFA_Node* pDataModel =
@@ -48,17 +48,17 @@ bool CXFA_DataImporter::ImportData(
   if (pDataNode)
     pDataModel->RemoveChild(pDataNode, true);
 
-  if (pImportDataRoot->GetElementType() == XFA_Element::DataModel) {
-    while (CXFA_Node* pChildNode = pImportDataRoot->GetFirstChild()) {
-      pImportDataRoot->RemoveChild(pChildNode, true);
-      pDataModel->InsertChild(pChildNode, nullptr);
+  if (node->GetElementType() == XFA_Element::DataModel) {
+    while (CXFA_Node* pChildNode = node->GetFirstChild()) {
+      std::unique_ptr<CXFA_Node> child = node->RemoveChild(pChildNode, true);
+      pDataModel->InsertChild(std::move(child), nullptr);
     }
   } else {
-    CFX_XMLNode* pXMLNode = pImportDataRoot->GetXMLMappingNode();
+    CFX_XMLNode* pXMLNode = node->GetXMLMappingNode();
     CFX_XMLNode* pParentXMLNode = pXMLNode->GetNodeItem(CFX_XMLNode::Parent);
     if (pParentXMLNode)
       pParentXMLNode->RemoveChildNode(pXMLNode);
-    pDataModel->InsertChild(pImportDataRoot, nullptr);
+    pDataModel->InsertChild(std::move(node), nullptr);
   }
   m_pDocument->DoDataRemerge(false);
   return true;

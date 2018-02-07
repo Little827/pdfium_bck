@@ -136,11 +136,14 @@ void CXFA_Validate::SetMessageText(const WideString& wsMessageType,
     }
   }
 
-  CXFA_Node* pTextNode = pNode->CreateSamePacketNode(XFA_Element::Text);
-  pNode->InsertChild(pTextNode, nullptr);
-  pTextNode->JSObject()->SetCData(XFA_Attribute::Name, wsMessageType, false,
-                                  false);
-  pTextNode->JSObject()->SetContent(wsMessage, wsMessage, false, false, true);
+  std::unique_ptr<CXFA_Node> pTextNode =
+      pNode->CreateSamePacketNode(XFA_Element::Text);
+
+  CXFA_Node* text_ref = pTextNode.get();
+  pNode->InsertChild(std::move(pTextNode), nullptr);
+  text_ref->JSObject()->SetCData(XFA_Attribute::Name, wsMessageType, false,
+                                 false);
+  text_ref->JSObject()->SetContent(wsMessage, wsMessage, false, false, true);
 }
 
 WideString CXFA_Validate::GetPicture() {

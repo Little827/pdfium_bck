@@ -331,23 +331,26 @@ bool CXFA_LayoutPageMgr::InitLayoutPage(CXFA_Node* pFormNode) {
   pPageArea = m_pTemplatePageSetRoot->GetChild<CXFA_Node>(
       0, XFA_Element::PageArea, false);
   if (!pPageArea) {
-    pPageArea = pDocument->CreateNode(m_pTemplatePageSetRoot->GetPacketType(),
-                                      XFA_Element::PageArea);
-    if (!pPageArea)
+    std::unique_ptr<CXFA_Node> new_area = pDocument->CreateNode(
+        m_pTemplatePageSetRoot->GetPacketType(), XFA_Element::PageArea);
+    if (!new_area)
       return false;
 
-    m_pTemplatePageSetRoot->InsertChild(pPageArea, nullptr);
+    pPageArea = new_area.get();
+    m_pTemplatePageSetRoot->InsertChild(std::move(new_area), nullptr);
     pPageArea->SetFlag(XFA_NodeFlag_Initialized, true);
   }
+
   CXFA_ContentArea* pContentArea =
       pPageArea->GetChild<CXFA_ContentArea>(0, XFA_Element::ContentArea, false);
   if (!pContentArea) {
-    pContentArea = static_cast<CXFA_ContentArea*>(pDocument->CreateNode(
-        pPageArea->GetPacketType(), XFA_Element::ContentArea));
-    if (!pContentArea)
+    std::unique_ptr<CXFA_Node> new_area = pDocument->CreateNode(
+        pPageArea->GetPacketType(), XFA_Element::ContentArea);
+    if (!new_area)
       return false;
 
-    pPageArea->InsertChild(pContentArea, nullptr);
+    pContentArea = static_cast<CXFA_ContentArea*>(new_area.get());
+    pPageArea->InsertChild(std::move(new_area), nullptr);
     pContentArea->SetFlag(XFA_NodeFlag_Initialized, true);
     pContentArea->JSObject()->SetMeasure(
         XFA_Attribute::X, CXFA_Measurement(0.25f, XFA_Unit::In), false);
@@ -358,15 +361,17 @@ bool CXFA_LayoutPageMgr::InitLayoutPage(CXFA_Node* pFormNode) {
     pContentArea->JSObject()->SetMeasure(
         XFA_Attribute::H, CXFA_Measurement(10.5f, XFA_Unit::In), false);
   }
+
   CXFA_Medium* pMedium =
       pPageArea->GetChild<CXFA_Medium>(0, XFA_Element::Medium, false);
   if (!pMedium) {
-    pMedium = static_cast<CXFA_Medium*>(
-        pDocument->CreateNode(pPageArea->GetPacketType(), XFA_Element::Medium));
-    if (!pContentArea)
+    std::unique_ptr<CXFA_Node> new_medium =
+        pDocument->CreateNode(pPageArea->GetPacketType(), XFA_Element::Medium);
+    if (!new_medium)
       return false;
 
-    pPageArea->InsertChild(pMedium, nullptr);
+    pMedium = static_cast<CXFA_Medium*>(new_medium.get());
+    pPageArea->InsertChild(std::move(new_medium), nullptr);
     pMedium->SetFlag(XFA_NodeFlag_Initialized, true);
     pMedium->JSObject()->SetMeasure(
         XFA_Attribute::Short, CXFA_Measurement(8.5f, XFA_Unit::In), false);
@@ -1708,6 +1713,7 @@ void CXFA_LayoutPageMgr::MergePageSetContents() {
   int32_t iIndex = 0;
   for (; pRootLayout; pRootLayout = static_cast<CXFA_ContainerLayoutItem*>(
                           pRootLayout->m_pNextSibling)) {
+    std::unique_ptr<CXFA_Node> created_page_set;
     CXFA_Node* pPendingPageSet = nullptr;
     CXFA_NodeIteratorTemplate<
         CXFA_ContainerLayoutItem,
@@ -1724,8 +1730,9 @@ void CXFA_LayoutPageMgr::MergePageSetContents() {
     if (!pPendingPageSet) {
       if (pRootPageSetContainerItem->m_pFormNode->GetPacketType() ==
           XFA_PacketType::Template) {
-        pPendingPageSet =
+        created_page_set =
             pRootPageSetContainerItem->m_pFormNode->CloneTemplateToForm(false);
+        pPendingPageSet = created_page_set.get();
       } else {
         pPendingPageSet = pRootPageSetContainerItem->m_pFormNode;
       }
@@ -1816,12 +1823,12 @@ void CXFA_LayoutPageMgr::MergePageSetContents() {
           break;
       }
     }
-    if (!pPendingPageSet->GetParent()) {
+    if (created_page_set) {
       CXFA_Node* pFormToplevelSubform =
           pDocument->GetXFAObject(XFA_HASHCODE_Form)
               ->AsNode()
               ->GetFirstChildByClass<CXFA_Subform>(XFA_Element::Subform);
-      pFormToplevelSubform->InsertChild(pPendingPageSet, nullptr);
+      pFormToplevelSubform->InsertChild(std::move(created_page_set), nullptr);
     }
     pDocument->DataMerge_UpdateBindingRelations(pPendingPageSet);
     pPendingPageSet->SetFlag(XFA_NodeFlag_Initialized, true);

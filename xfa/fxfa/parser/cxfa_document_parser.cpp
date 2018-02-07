@@ -10,6 +10,7 @@
 #include "third_party/base/ptr_util.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
+#include "xfa/fxfa/parser/cxfa_node.h"
 
 CXFA_DocumentParser::CXFA_DocumentParser(CXFA_FFNotify* pNotify)
     : m_pNotify(pNotify) {}
@@ -32,10 +33,12 @@ int32_t CXFA_DocumentParser::StartParse(
 }
 
 int32_t CXFA_DocumentParser::DoParse() {
-  int32_t nRetStatus = m_nodeParser.DoParse();
+  int32_t nRetStatus;
+  std::unique_ptr<CXFA_Node> node;
+  std::tie(nRetStatus, node) = m_nodeParser.DoParse();
   if (nRetStatus >= XFA_PARSESTATUS_Done) {
     ASSERT(m_pDocument);
-    m_pDocument->SetRoot(m_nodeParser.GetRootNode());
+    m_pDocument->SetRoot(std::move(node));
   }
   return nRetStatus;
 }

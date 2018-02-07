@@ -133,9 +133,12 @@ CJS_Return CJX_Node::clone(CJS_V8* runtime,
   if (params.size() != 1)
     return CJS_Return(JSGetStringFromID(JSMessage::kParamError));
 
-  CXFA_Node* pCloneNode = GetXFANode()->Clone(runtime->ToBoolean(params[0]));
+  std::unique_ptr<CXFA_Node> pCloneNode =
+      GetXFANode()->Clone(runtime->ToBoolean(params[0]));
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pCloneNode);
+      GetDocument()->GetScriptContext()->GetJSValueFromMap(pCloneNode.get());
+  GetXFANode()->GetDocument()->AddPurgeNode(std::move(pCloneNode));
+
   if (!value)
     return CJS_Return(runtime->NewNull());
   return CJS_Return(value->DirectGetValue().Get(runtime->GetIsolate()));
@@ -228,7 +231,7 @@ CJS_Return CJX_Node::loadXML(CJS_V8* runtime,
     bIgnoreRoot = false;
   }
 
-  CXFA_Node* pFakeRoot = GetXFANode()->Clone(false);
+  std::unique_ptr<CXFA_Node> pFakeRoot = GetXFANode()->Clone(false);
   WideString wsContentType = GetCData(XFA_Attribute::ContentType);
   if (!wsContentType.IsEmpty()) {
     pFakeRoot->JSObject()->SetCData(XFA_Attribute::ContentType,
@@ -262,27 +265,29 @@ CJS_Return CJX_Node::loadXML(CJS_V8* runtime,
     pFakeXMLRoot->InsertChildNode(pXMLNode);
   }
 
-  pParser->ConstructXFANode(pFakeRoot, pFakeXMLRoot.get());
-  pFakeRoot = pParser->GetRootNode();
-  if (!pFakeRoot)
+  CXFA_Node* fakeRoot =
+      pParser->ConstructXFANode(pFakeRoot.get(), pFakeXMLRoot.get());
+  if (!fakeRoot)
     return CJS_Return(true);
 
   if (bOverwrite) {
     CXFA_Node* pChild = GetXFANode()->GetFirstChild();
-    CXFA_Node* pNewChild = pFakeRoot->GetFirstChild();
+    CXFA_Node* pNewChild = fakeRoot->GetFirstChild();
     int32_t index = 0;
     while (pNewChild) {
       CXFA_Node* pItem = pNewChild->GetNextSibling();
-      pFakeRoot->RemoveChild(pNewChild, true);
-      GetXFANode()->InsertChild(index++, pNewChild);
-      pNewChild->SetFlag(XFA_NodeFlag_Initialized, true);
+      std::unique_ptr<CXFA_Node> node = fakeRoot->RemoveChild(pNewChild, true);
+
+      CXFA_Node* child_ref = node.get();
+      GetXFANode()->InsertChild(index++, std::move(node));
+      child_ref->SetFlag(XFA_NodeFlag_Initialized, true);
       pNewChild = pItem;
     }
 
     while (pChild) {
       CXFA_Node* pItem = pChild->GetNextSibling();
-      GetXFANode()->RemoveChild(pChild, true);
-      pFakeRoot->InsertChild(pChild, nullptr);
+      std::unique_ptr<CXFA_Node> node = GetXFANode()->RemoveChild(pChild, true);
+      fakeRoot->InsertChild(std::move(node), nullptr);
       pChild = pItem;
     }
 
@@ -296,23 +301,23 @@ CJS_Return CJX_Node::loadXML(CJS_V8* runtime,
       else
         pFakeXMLRoot = nullptr;
     }
-    MoveBufferMapData(pFakeRoot, GetXFANode());
+    MoveBufferMapData(fakeRoot, GetXFANode());
   } else {
-    CXFA_Node* pChild = pFakeRoot->GetFirstChild();
+    CXFA_Node* pChild = fakeRoot->GetFirstChild();
     while (pChild) {
       CXFA_Node* pItem = pChild->GetNextSibling();
-      pFakeRoot->RemoveChild(pChild, true);
-      GetXFANode()->InsertChild(pChild, nullptr);
+      std::unique_ptr<CXFA_Node> node = fakeRoot->RemoveChild(pChild, true);
+      GetXFANode()->InsertChild(std::move(node), nullptr);
       pChild->SetFlag(XFA_NodeFlag_Initialized, true);
       pChild = pItem;
     }
   }
 
   if (pFakeXMLRoot) {
-    pFakeRoot->SetXMLMappingNode(pFakeXMLRoot.release());
-    pFakeRoot->SetFlag(XFA_NodeFlag_OwnXMLNode, false);
+    fakeRoot->SetXMLMappingNode(pFakeXMLRoot.release());
+    fakeRoot->SetFlag(XFA_NodeFlag_OwnXMLNode, false);
   }
-  pFakeRoot->SetFlag(XFA_NodeFlag_HasRemovedChildren, false);
+  fakeRoot->SetFlag(XFA_NodeFlag_HasRemovedChildren, false);
 
   return CJS_Return(true);
 }

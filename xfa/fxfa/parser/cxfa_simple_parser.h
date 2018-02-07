@@ -28,10 +28,9 @@ class CXFA_SimpleParser {
 
   int32_t StartParse(const RetainPtr<IFX_SeekableStream>& pStream,
                      XFA_PacketType ePacketID);
-  int32_t DoParse();
+  std::pair<int32_t, std::unique_ptr<CXFA_Node>> DoParse();
   CFX_XMLNode* ParseXMLData(const ByteString& wsXML);
-  void ConstructXFANode(CXFA_Node* pXFANode, CFX_XMLNode* pXMLNode);
-  CXFA_Node* GetRootNode() const;
+  CXFA_Node* ConstructXFANode(CXFA_Node* pXFANode, CFX_XMLNode* pXMLNode);
   CFX_XMLDoc* GetXMLDoc() const;
   void CloseParser();
 
@@ -39,19 +38,26 @@ class CXFA_SimpleParser {
   void SetFactory(CXFA_Document* pFactory);
 
  private:
-  CXFA_Node* ParseAsXDPPacket(CFX_XMLNode* pXMLDocumentNode,
-                              XFA_PacketType ePacketID);
-  CXFA_Node* ParseAsXDPPacket_XDP(CFX_XMLNode* pXMLDocumentNode);
-  CXFA_Node* ParseAsXDPPacket_Config(CFX_XMLNode* pXMLDocumentNode);
-  CXFA_Node* ParseAsXDPPacket_Template(CFX_XMLNode* pXMLDocumentNode);
-  CXFA_Node* ParseAsXDPPacket_Form(CFX_XMLNode* pXMLDocumentNode);
-  CXFA_Node* ParseAsXDPPacket_Data(CFX_XMLNode* pXMLDocumentNode);
-  CXFA_Node* ParseAsXDPPacket_LocaleConnectionSourceSet(
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket(CFX_XMLNode* pXMLDocumentNode,
+                                              XFA_PacketType ePacketID);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_XDP(
+      CFX_XMLNode* pXMLDocumentNode);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_Config(
+      CFX_XMLNode* pXMLDocumentNode);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_Template(
+      CFX_XMLNode* pXMLDocumentNode);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_Form(
+      CFX_XMLNode* pXMLDocumentNode);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_Data(
+      CFX_XMLNode* pXMLDocumentNode);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_LocaleConnectionSourceSet(
       CFX_XMLNode* pXMLDocumentNode,
       XFA_PacketType packet_type,
       XFA_Element element);
-  CXFA_Node* ParseAsXDPPacket_Xdc(CFX_XMLNode* pXMLDocumentNode);
-  CXFA_Node* ParseAsXDPPacket_User(CFX_XMLNode* pXMLDocumentNode);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_Xdc(
+      CFX_XMLNode* pXMLDocumentNode);
+  std::unique_ptr<CXFA_Node> ParseAsXDPPacket_User(
+      CFX_XMLNode* pXMLDocumentNode);
   CXFA_Node* NormalLoader(CXFA_Node* pXFANode,
                           CFX_XMLNode* pXMLDoc,
                           XFA_PacketType ePacketID,

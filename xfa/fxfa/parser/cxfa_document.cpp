@@ -55,9 +55,9 @@ void MergeNodeRecurse(CXFA_Document* pDocument,
     }
     return;
   }
-  CXFA_Node* pNewNode = pProtoNode->Clone(true);
+  std::unique_ptr<CXFA_Node> pNewNode = pProtoNode->Clone(true);
   pNewNode->SetTemplateNode(pProtoNode);
-  pDestNodeParent->InsertChild(pNewNode, nullptr);
+  pDestNodeParent->InsertChild(std::move(pNewNode), nullptr);
 }
 
 void MergeNode(CXFA_Document* pDocument,
@@ -88,7 +88,6 @@ void MergeNode(CXFA_Document* pDocument,
 
 CXFA_Document::CXFA_Document(CXFA_DocumentParser* pParser)
     : m_pParser(pParser),
-      m_pRootNode(nullptr),
       m_eCurVersionMode(XFA_VERSION_DEFAULT),
       m_dwDocFlags(0) {
   ASSERT(m_pParser);
@@ -98,12 +97,6 @@ CXFA_Document::~CXFA_Document() {
   // Remove all the bindings before freeing the node as the ownership is wonky.
   if (m_pRootNode)
     m_pRootNode->ReleaseBindingNodes();
-
-  delete m_pRootNode;
-
-  for (CXFA_Node* pNode : m_PurgeNodes)
-    delete pNode;
-  m_PurgeNodes.clear();
 }
 
 CXFA_LayoutProcessor* CXFA_Document::GetLayoutProcessor() {
@@ -128,12 +121,8 @@ void CXFA_Document::ClearLayoutData() {
   m_pScriptSignature.reset();
 }
 
-void CXFA_Document::SetRoot(CXFA_Node* pNewRoot) {
-  if (m_pRootNode)
-    AddPurgeNode(m_pRootNode);
-
-  m_pRootNode = pNewRoot;
-  RemovePurgeNode(pNewRoot);
+void CXFA_Document::SetRoot(std::unique_ptr<CXFA_Node> pNewRoot) {
+  m_pRootNode = std::move(pNewRoot);
 }
 
 CFX_XMLDoc* CXFA_Document::GetXMLDoc() const {
@@ -217,26 +206,15 @@ CXFA_Object* CXFA_Document::GetXFAObject(XFA_HashCode dwNodeNameHash) {
   }
 }
 
-CXFA_Node* CXFA_Document::CreateNode(XFA_PacketType packet,
-                                     XFA_Element eElement) {
+std::unique_ptr<CXFA_Node> CXFA_Document::CreateNode(XFA_PacketType packet,
+                                                     XFA_Element eElement) {
   if (eElement == XFA_Element::Unknown)
     return nullptr;
-
-  std::unique_ptr<CXFA_Node> pNode = CXFA_Node::Create(this, eElement, packet);
-  if (!pNode)
-    return nullptr;
-
-  // TODO(dsinclair): AddPrugeNode should take ownership of the pointer.
-  AddPurgeNode(pNode.get());
-  return pNode.release();
+  return CXFA_Node::Create(this, eElement, packet);
 }
 
-void CXFA_Document::AddPurgeNode(CXFA_Node* pNode) {
-  m_PurgeNodes.insert(pNode);
-}
-
-bool CXFA_Document::RemovePurgeNode(CXFA_Node* pNode) {
-  return !!m_PurgeNodes.erase(pNode);
+void CXFA_Document::AddPurgeNode(std::unique_ptr<CXFA_Node> pNode) {
+  m_PurgeNodes.push_back(std::move(pNode));
 }
 
 void CXFA_Document::SetFlag(uint32_t dwFlag, bool bOn) {

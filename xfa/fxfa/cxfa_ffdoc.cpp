@@ -223,8 +223,9 @@ void XFA_XPDPacket_MergeRootNode(CXFA_Node* pOriginRoot, CXFA_Node* pNewRoot) {
       pChildNode = pChildNode->GetNextSibling();
     } else {
       CXFA_Node* pNextSibling = pChildNode->GetNextSibling();
-      pNewRoot->RemoveChild(pChildNode, true);
-      pOriginRoot->InsertChild(pChildNode, nullptr);
+      std::unique_ptr<CXFA_Node> child =
+          pNewRoot->RemoveChild(pChildNode, true);
+      pOriginRoot->InsertChild(std::move(child), nullptr);
       pChildNode = pNextSibling;
       pNextSibling = nullptr;
     }

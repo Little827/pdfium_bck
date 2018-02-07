@@ -446,8 +446,9 @@ void ReorderDataNodes(const std::set<CXFA_Node*>& sSet1,
           pBeforeNode = pLastNode->GetNextSibling();
         }
         for (auto* pCurNode : rgNodeArray1) {
-          pParentNode->RemoveChild(pCurNode, true);
-          pParentNode->InsertChild(pCurNode, pBeforeNode);
+          std::unique_ptr<CXFA_Node> node =
+              pParentNode->RemoveChild(pCurNode, true);
+          pParentNode->InsertChild(std::move(node), pBeforeNode);
         }
       }
     }
@@ -548,12 +549,13 @@ CXFA_Node::~CXFA_Node() {
     delete m_pXMLNode;
 }
 
-CXFA_Node* CXFA_Node::Clone(bool bRecursive) {
-  CXFA_Node* pClone = m_pDocument->CreateNode(m_ePacket, m_elementType);
+std::unique_ptr<CXFA_Node> CXFA_Node::Clone(bool bRecursive) {
+  std::unique_ptr<CXFA_Node> pClone =
+      m_pDocument->CreateNode(m_ePacket, m_elementType);
   if (!pClone)
     return nullptr;
 
-  JSObject()->MergeAllData(pClone);
+  JSObject()->MergeAllData(pClone.get());
   pClone->UpdateNameHash();
   if (IsNeedSavingXMLNode()) {
     std::unique_ptr<CFX_XMLNode> pCloneXML;
@@ -763,25 +765,29 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeList(uint32_t dwTypeFilter,
   if (!property)
     return nodes;
 
-  CXFA_Node* pNewNode = m_pDocument->CreateNode(GetPacketType(), *property);
+  std::unique_ptr<CXFA_Node> pNewNode =
+      m_pDocument->CreateNode(GetPacketType(), *property);
   if (pNewNode) {
-    InsertChild(pNewNode, nullptr);
-    pNewNode->SetFlag(XFA_NodeFlag_Initialized, true);
-    nodes.push_back(pNewNode);
+    CXFA_Node* node_ref = pNewNode.get();
+    InsertChild(std::move(pNewNode), nullptr);
+    node_ref->SetFlag(XFA_NodeFlag_Initialized, true);
+    nodes.push_back(node_ref);
   }
   return nodes;
 }
 
-CXFA_Node* CXFA_Node::CreateSamePacketNode(XFA_Element eType) {
-  CXFA_Node* pNode = m_pDocument->CreateNode(m_ePacket, eType);
+std::unique_ptr<CXFA_Node> CXFA_Node::CreateSamePacketNode(XFA_Element eType) {
+  std::unique_ptr<CXFA_Node> pNode = m_pDocument->CreateNode(m_ePacket, eType);
   pNode->SetFlag(XFA_NodeFlag_Initialized, true);
   return pNode;
 }
 
-CXFA_Node* CXFA_Node::CloneTemplateToForm(bool bRecursive) {
+std::unique_ptr<CXFA_Node> CXFA_Node::CloneTemplateToForm(bool bRecursive) {
   ASSERT(m_ePacket == XFA_PacketType::Template);
-  CXFA_Node* pClone =
+
+  std::unique_ptr<CXFA_Node> pClone =
       m_pDocument->CreateNode(XFA_PacketType::Form, m_elementType);
+printf("CLone %p\n", pClone.get());
   if (!pClone)
     return nullptr;
 
@@ -1118,23 +1124,22 @@ CXFA_Node* CXFA_Node::GetChildInternal(size_t index,
   return nullptr;
 }
 
-void CXFA_Node::InsertChild(int32_t index, CXFA_Node* pNode) {
+void CXFA_Node::InsertChild(int32_t index, std::unique_ptr<CXFA_Node> pNode) {
+  ASSERT(pNode.get() != this);
   ASSERT(!pNode->parent_);
+
   pNode->parent_ = this;
 
-  bool ret = m_pDocument->RemovePurgeNode(pNode);
-  ASSERT(ret);
-  (void)ret;  // Avoid unused variable warning.
-
+  CXFA_Node* node_ref = pNode.get();
   if (!m_pChild || index == 0) {
     if (index > 0)
       return;
 
     pNode->m_pNext = m_pChild;
-    m_pChild = pNode;
+    m_pChild = pNode.release();
     index = 0;
   } else if (index < 0) {
-    m_pLastChild->m_pNext = pNode;
+    m_pLastChild->m_pNext = pNode.release();
   } else {
     CXFA_Node* pPrev = m_pChild;
     int32_t iCount = 0;
@@ -1145,48 +1150,47 @@ void CXFA_Node::InsertChild(int32_t index, CXFA_Node* pNode) {
       return;
 
     pNode->m_pNext = pPrev->m_pNext;
-    pPrev->m_pNext = pNode;
+    pPrev->m_pNext = pNode.release();
     index = iCount;
   }
-  if (!pNode->m_pNext)
-    m_pLastChild = pNode;
+  if (!node_ref->m_pNext)
+    m_pLastChild = node_ref;
 
   ASSERT(m_pLastChild);
   ASSERT(!m_pLastChild->m_pNext);
 
-  pNode->ClearFlag(XFA_NodeFlag_HasRemovedChildren);
+  node_ref->ClearFlag(XFA_NodeFlag_HasRemovedChildren);
   CXFA_FFNotify* pNotify = m_pDocument->GetNotify();
   if (pNotify)
     pNotify->OnChildAdded(this);
 
-  if (IsNeedSavingXMLNode() && pNode->m_pXMLNode) {
-    ASSERT(!pNode->m_pXMLNode->GetNodeItem(CFX_XMLNode::Parent));
+  if (IsNeedSavingXMLNode() && node_ref->m_pXMLNode) {
+    ASSERT(!node_ref->m_pXMLNode->GetNodeItem(CFX_XMLNode::Parent));
 
-    m_pXMLNode->InsertChildNode(pNode->m_pXMLNode, index);
-    pNode->ClearFlag(XFA_NodeFlag_OwnXMLNode);
+    m_pXMLNode->InsertChildNode(node_ref->m_pXMLNode, index);
+    node_ref->ClearFlag(XFA_NodeFlag_OwnXMLNode);
   }
 }
 
-void CXFA_Node::InsertChild(CXFA_Node* pNode, CXFA_Node* pBeforeNode) {
+void CXFA_Node::InsertChild(std::unique_ptr<CXFA_Node> pNode,
+                            CXFA_Node* pBeforeNode) {
+  ASSERT(pNode.get() != this);
   if (!pNode || pNode->parent_ ||
       (pBeforeNode && pBeforeNode->parent_ != this)) {
     NOTREACHED();
     return;
   }
 
-  bool ret = m_pDocument->RemovePurgeNode(pNode);
-  ASSERT(ret);
-  (void)ret;  // Avoid unused variable warning.
-
   int32_t nIndex = -1;
   pNode->parent_ = this;
+  CXFA_Node* node_ref = pNode.get();
   if (!m_pChild || pBeforeNode == m_pChild) {
     pNode->m_pNext = m_pChild;
-    m_pChild = pNode;
+    m_pChild = pNode.release();
     nIndex = 0;
   } else if (!pBeforeNode) {
     pNode->m_pNext = m_pLastChild->m_pNext;
-    m_pLastChild->m_pNext = pNode;
+    m_pLastChild->m_pNext = pNode.release();
   } else {
     nIndex = 1;
     CXFA_Node* pPrev = m_pChild;
@@ -1195,24 +1199,23 @@ void CXFA_Node::InsertChild(CXFA_Node* pNode, CXFA_Node* pBeforeNode) {
       nIndex++;
     }
     pNode->m_pNext = pPrev->m_pNext;
-    pPrev->m_pNext = pNode;
+    pPrev->m_pNext = pNode.release();
   }
-  if (!pNode->m_pNext) {
-    m_pLastChild = pNode;
-  }
+  if (!node_ref->m_pNext)
+    m_pLastChild = node_ref;
 
   ASSERT(m_pLastChild);
   ASSERT(!m_pLastChild->m_pNext);
 
-  pNode->ClearFlag(XFA_NodeFlag_HasRemovedChildren);
+  node_ref->ClearFlag(XFA_NodeFlag_HasRemovedChildren);
   CXFA_FFNotify* pNotify = m_pDocument->GetNotify();
   if (pNotify)
     pNotify->OnChildAdded(this);
 
-  if (IsNeedSavingXMLNode() && pNode->m_pXMLNode) {
-    ASSERT(!pNode->m_pXMLNode->GetNodeItem(CFX_XMLNode::Parent));
-    m_pXMLNode->InsertChildNode(pNode->m_pXMLNode, nIndex);
-    pNode->ClearFlag(XFA_NodeFlag_OwnXMLNode);
+  if (IsNeedSavingXMLNode() && node_ref->m_pXMLNode) {
+    ASSERT(!node_ref->m_pXMLNode->GetNodeItem(CFX_XMLNode::Parent));
+    m_pXMLNode->InsertChildNode(node_ref->m_pXMLNode, nIndex);
+    node_ref->ClearFlag(XFA_NodeFlag_OwnXMLNode);
   }
 }
 
@@ -1229,10 +1232,13 @@ CXFA_Node* CXFA_Node::Deprecated_GetPrevSibling() {
   return nullptr;
 }
 
-void CXFA_Node::RemoveChild(CXFA_Node* pNode, bool bNotify) {
+std::unique_ptr<CXFA_Node> CXFA_Node::RemoveChild(CXFA_Node* pNode,
+                                                  bool bNotify) {
+  ASSERT(pNode != this);
+
   if (!pNode || pNode->parent_ != this) {
     NOTREACHED();
-    return;
+    return nullptr;
   }
 
   if (m_pChild == pNode) {
@@ -1252,7 +1258,7 @@ void CXFA_Node::RemoveChild(CXFA_Node* pNode, bool bNotify) {
 
   OnRemoved(bNotify);
   pNode->SetFlag(XFA_NodeFlag_HasRemovedChildren, true);
-  m_pDocument->AddPurgeNode(pNode);
+
   if (IsNeedSavingXMLNode() && pNode->m_pXMLNode) {
     if (pNode->IsAttributeInXML()) {
       ASSERT(pNode->m_pXMLNode == m_pXMLNode &&
@@ -1281,6 +1287,8 @@ void CXFA_Node::RemoveChild(CXFA_Node* pNode, bool bNotify) {
     }
     pNode->SetFlag(XFA_NodeFlag_OwnXMLNode, false);
   }
+
+  return pdfium::WrapUnique<CXFA_Node>(pNode);
 }
 
 CXFA_Node* CXFA_Node::GetFirstChildByName(const WideStringView& wsName) const {
@@ -1490,7 +1498,7 @@ int32_t CXFA_Node::GetCount() {
   return iCount;
 }
 
-void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
+void CXFA_Node::InsertItem(std::unique_ptr<CXFA_Node> pNewInstance,
                            int32_t iPos,
                            int32_t iCount,
                            bool bMoveDataBindingNodes) {
@@ -1498,6 +1506,8 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
     iCount = GetCount();
   if (iPos < 0)
     iPos = iCount;
+
+  CXFA_Node* node_ref = pNewInstance.get();
   if (iPos == iCount) {
     CXFA_Node* item = GetItemIfExists(iCount - 1);
     if (!item)
@@ -1505,13 +1515,13 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
 
     CXFA_Node* pNextSibling =
         iCount > 0 ? item->GetNextSibling() : GetNextSibling();
-    GetParent()->InsertChild(pNewInstance, pNextSibling);
+    GetParent()->InsertChild(std::move(pNewInstance), pNextSibling);
     if (bMoveDataBindingNodes) {
       std::set<CXFA_Node*> sNew;
       std::set<CXFA_Node*> sAfter;
       CXFA_NodeIteratorTemplate<CXFA_Node,
                                 CXFA_TraverseStrategy_XFAContainerNode>
-          sIteratorNew(pNewInstance);
+          sIteratorNew(node_ref);
       for (CXFA_Node* pNode = sIteratorNew.GetCurrent(); pNode;
            pNode = sIteratorNew.MoveToNext()) {
         CXFA_Node* pDataNode = pNode->GetBindData();
@@ -1540,13 +1550,13 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
       return;
     }
 
-    GetParent()->InsertChild(pNewInstance, pBeforeInstance);
+    GetParent()->InsertChild(std::move(pNewInstance), pBeforeInstance);
     if (bMoveDataBindingNodes) {
       std::set<CXFA_Node*> sNew;
       std::set<CXFA_Node*> sBefore;
       CXFA_NodeIteratorTemplate<CXFA_Node,
                                 CXFA_TraverseStrategy_XFAContainerNode>
-          sIteratorNew(pNewInstance);
+          sIteratorNew(node_ref);
       for (CXFA_Node* pNode = sIteratorNew.GetCurrent(); pNode;
            pNode = sIteratorNew.MoveToNext()) {
         CXFA_Node* pDataNode = pNode->GetBindData();
@@ -1571,11 +1581,12 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
   }
 }
 
-void CXFA_Node::RemoveItem(CXFA_Node* pRemoveInstance,
-                           bool bRemoveDataBinding) {
-  GetParent()->RemoveChild(pRemoveInstance, true);
+std::unique_ptr<CXFA_Node> CXFA_Node::RemoveItem(CXFA_Node* pRemoveInstance,
+                                                 bool bRemoveDataBinding) {
+  std::unique_ptr<CXFA_Node> node =
+      GetParent()->RemoveChild(pRemoveInstance, true);
   if (!bRemoveDataBinding)
-    return;
+    return node;
 
   CXFA_NodeIteratorTemplate<CXFA_Node, CXFA_TraverseStrategy_XFAContainerNode>
       sIterator(pRemoveInstance);
@@ -1592,9 +1603,12 @@ void CXFA_Node::RemoveItem(CXFA_Node* pRemoveInstance,
     }
     pFormNode->SetBindingNode(nullptr);
   }
+
+  return node;
 }
 
-CXFA_Node* CXFA_Node::CreateInstanceIfPossible(bool bDataMerge) {
+std::unique_ptr<CXFA_Node> CXFA_Node::CreateInstanceIfPossible(
+    bool bDataMerge) {
   CXFA_Document* pDocument = GetDocument();
   CXFA_Node* pTemplateNode = GetTemplateNodeIfExists();
   if (!pTemplateNode)
@@ -1616,11 +1630,12 @@ CXFA_Node* CXFA_Node::CreateInstanceIfPossible(bool bDataMerge) {
 
   CXFA_Node* pInstance = pDocument->DataMerge_CopyContainer(
       pTemplateNode, pFormParent, pDataScope, true, bDataMerge, true);
+  std::unique_ptr<CXFA_Node> node_ref;
   if (pInstance) {
     pDocument->DataMerge_UpdateBindingRelations(pInstance);
-    pFormParent->RemoveChild(pInstance, true);
+    node_ref = pFormParent->RemoveChild(pInstance, true);
   }
-  return pInstance;
+  return node_ref;
 }
 
 Optional<bool> CXFA_Node::GetDefaultBoolean(XFA_Attribute attr) const {
@@ -4026,13 +4041,18 @@ void CXFA_Node::InsertItem(const WideString& wsLabel,
       listitems.push_back(pItem);
   }
   if (listitems.empty()) {
-    CXFA_Node* pItems = CreateSamePacketNode(XFA_Element::Items);
-    InsertChild(-1, pItems);
-    InsertListTextItem(pItems, wsLabel, nIndex);
-    CXFA_Node* pSaveItems = CreateSamePacketNode(XFA_Element::Items);
-    InsertChild(-1, pSaveItems);
-    pSaveItems->JSObject()->SetBoolean(XFA_Attribute::Save, true, false);
-    InsertListTextItem(pSaveItems, wsNewValue, nIndex);
+    std::unique_ptr<CXFA_Node> pItems =
+        CreateSamePacketNode(XFA_Element::Items);
+    CXFA_Node* node_ref = pItems.get();
+    InsertChild(-1, std::move(pItems));
+    InsertListTextItem(node_ref, wsLabel, nIndex);
+
+    std::unique_ptr<CXFA_Node> pSaveItems =
+        CreateSamePacketNode(XFA_Element::Items);
+    node_ref = pSaveItems.get();
+    InsertChild(-1, std::move(pSaveItems));
+    node_ref->JSObject()->SetBoolean(XFA_Attribute::Save, true, false);
+    InsertListTextItem(node_ref, wsNewValue, nIndex);
   } else if (listitems.size() > 1) {
     for (int32_t i = 0; i < 2; i++) {
       CXFA_Node* pNode = listitems[i];
@@ -4047,22 +4067,24 @@ void CXFA_Node::InsertItem(const WideString& wsLabel,
     pNode->JSObject()->SetBoolean(XFA_Attribute::Save, false, false);
     pNode->JSObject()->SetEnum(XFA_Attribute::Presence,
                                XFA_AttributeEnum::Visible, false);
-    CXFA_Node* pSaveItems = CreateSamePacketNode(XFA_Element::Items);
-    InsertChild(-1, pSaveItems);
-    pSaveItems->JSObject()->SetBoolean(XFA_Attribute::Save, true, false);
-    pSaveItems->JSObject()->SetEnum(XFA_Attribute::Presence,
-                                    XFA_AttributeEnum::Hidden, false);
+
+    std::unique_ptr<CXFA_Node> pSaveItems =
+        CreateSamePacketNode(XFA_Element::Items);
+    CXFA_Node* node_ref = pSaveItems.get();
+    InsertChild(-1, std::move(pSaveItems));
+    node_ref->JSObject()->SetBoolean(XFA_Attribute::Save, true, false);
+    node_ref->JSObject()->SetEnum(XFA_Attribute::Presence,
+                                  XFA_AttributeEnum::Hidden, false);
     CXFA_Node* pListNode = pNode->GetFirstChild();
     int32_t i = 0;
     while (pListNode) {
-      InsertListTextItem(pSaveItems, pListNode->JSObject()->GetContent(false),
-                         i);
+      InsertListTextItem(node_ref, pListNode->JSObject()->GetContent(false), i);
       ++i;
 
       pListNode = pListNode->GetNextSibling();
     }
     InsertListTextItem(pNode, wsLabel, nIndex);
-    InsertListTextItem(pSaveItems, wsNewValue, nIndex);
+    InsertListTextItem(node_ref, wsNewValue, nIndex);
   }
   if (!bNotify)
     return;
@@ -4625,9 +4647,11 @@ WideString CXFA_Node::FormatNumStr(const WideString& wsValue,
 void CXFA_Node::InsertListTextItem(CXFA_Node* pItems,
                                    const WideString& wsText,
                                    int32_t nIndex) {
-  CXFA_Node* pText = pItems->CreateSamePacketNode(XFA_Element::Text);
-  pItems->InsertChild(nIndex, pText);
-  pText->JSObject()->SetContent(wsText, wsText, false, false, false);
+  std::unique_ptr<CXFA_Node> pText =
+      pItems->CreateSamePacketNode(XFA_Element::Text);
+  CXFA_Node* node_ref = pText.get();
+  pItems->InsertChild(nIndex, std::move(pText));
+  node_ref->JSObject()->SetContent(wsText, wsText, false, false, false);
 }
 
 WideString CXFA_Node::NumericLimit(const WideString& wsValue) {

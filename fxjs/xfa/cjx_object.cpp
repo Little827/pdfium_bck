@@ -666,21 +666,18 @@ bool CJX_Object::SetContent(const WideString& wsContent,
             size_t iDatas = valueNodes.size();
             if (iDatas < iSize) {
               size_t iAddNodes = iSize - iDatas;
-              CXFA_Node* pValueNodes = nullptr;
               while (iAddNodes-- > 0) {
-                pValueNodes =
+                std::unique_ptr<CXFA_Node> pValueNodes =
                     pBind->CreateSamePacketNode(XFA_Element::DataValue);
                 pValueNodes->JSObject()->SetCData(XFA_Attribute::Name, L"value",
                                                   false, false);
                 pValueNodes->CreateXMLMappingNode();
-                pBind->InsertChild(pValueNodes, nullptr);
+                pBind->InsertChild(std::move(pValueNodes), nullptr);
               }
-              pValueNodes = nullptr;
             } else if (iDatas > iSize) {
               size_t iDelNodes = iDatas - iSize;
-              while (iDelNodes-- > 0) {
+              while (iDelNodes-- > 0)
                 pBind->RemoveChild(pBind->GetFirstChild(), true);
-              }
             }
             int32_t i = 0;
             for (CXFA_Node* pValueNode = pBind->GetFirstChild(); pValueNode;
@@ -742,12 +739,13 @@ bool CJX_Object::SetContent(const WideString& wsContent,
 
       CXFA_Node* pContentRawDataNode = ToNode(GetXFAObject())->GetFirstChild();
       if (!pContentRawDataNode) {
-        pContentRawDataNode =
+        std::unique_ptr<CXFA_Node> node =
             ToNode(GetXFAObject())
                 ->CreateSamePacketNode((wsContentType == L"text/xml")
                                            ? XFA_Element::Sharpxml
                                            : XFA_Element::Sharptext);
-        ToNode(GetXFAObject())->InsertChild(pContentRawDataNode, nullptr);
+        pContentRawDataNode = node.get();
+        ToNode(GetXFAObject())->InsertChild(std::move(node), nullptr);
       }
       return pContentRawDataNode->JSObject()->SetContent(
           wsContent, wsXMLValue, bNotify, bScriptModify, bSyncData);
@@ -837,9 +835,10 @@ Optional<WideString> CJX_Object::TryContent(bool bScriptModify, bool bProto) {
               element = XFA_Element::Sharpxml;
           }
         }
-        pContentRawDataNode =
+        std::unique_ptr<CXFA_Node> node =
             ToNode(GetXFAObject())->CreateSamePacketNode(element);
-        ToNode(GetXFAObject())->InsertChild(pContentRawDataNode, nullptr);
+        pContentRawDataNode = node.get();
+        ToNode(GetXFAObject())->InsertChild(std::move(node), nullptr);
       }
       return pContentRawDataNode->JSObject()->TryContent(bScriptModify, true);
     }
@@ -937,11 +936,13 @@ CXFA_Node* CJX_Object::GetOrCreatePropertyInternal(int32_t index,
 
   CXFA_Node* pNewNode = nullptr;
   for (; iCount <= index; ++iCount) {
-    pNewNode = GetDocument()->CreateNode(xfaNode->GetPacketType(), eProperty);
-    if (!pNewNode)
+    std::unique_ptr<CXFA_Node> node =
+        GetDocument()->CreateNode(xfaNode->GetPacketType(), eProperty);
+    if (!node)
       return nullptr;
 
-    xfaNode->InsertChild(pNewNode, nullptr);
+    pNewNode = node.get();
+    xfaNode->InsertChild(std::move(node), nullptr);
     pNewNode->SetFlag(XFA_NodeFlag_Initialized, true);
   }
   return pNewNode;
@@ -1265,12 +1266,10 @@ void CJX_Object::Script_Attribute_String(CFXJSE_Value* pValue,
   pHeadChild = pProtoForm->GetFirstChild();
   while (pHeadChild) {
     CXFA_Node* pSibling = pHeadChild->GetNextSibling();
-    pProtoForm->RemoveChild(pHeadChild, true);
-    ToNode(GetXFAObject())->InsertChild(pHeadChild, nullptr);
+    std::unique_ptr<CXFA_Node> node = pProtoForm->RemoveChild(pHeadChild, true);
+    ToNode(GetXFAObject())->InsertChild(std::move(node), nullptr);
     pHeadChild = pSibling;
   }
-
-  GetDocument()->RemovePurgeNode(pProtoForm.get());
 }
 
 void CJX_Object::Script_Attribute_BOOL(CFXJSE_Value* pValue,

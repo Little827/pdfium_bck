@@ -490,10 +490,15 @@ CXFA_Node* CXFA_FFWidgetHandler::CreateFormItem(XFA_Element eElement,
   if (!pTemplateParent)
     return nullptr;
 
-  CXFA_Node* pNewFormItem = pTemplateParent->CloneTemplateToForm(false);
+  std::unique_ptr<CXFA_Node> pNewFormItem =
+      pTemplateParent->CloneTemplateToForm(false);
+  CXFA_Node* item_ref = pNewFormItem.get();
   if (pParent)
-    pParent->InsertChild(pNewFormItem, pBefore);
-  return pNewFormItem;
+    pParent->InsertChild(std::move(pNewFormItem), pBefore);
+  else
+    pTemplateParent->GetDocument()->AddPurgeNode(std::move(pNewFormItem));
+
+  return item_ref;
 }
 
 CXFA_Node* CXFA_FFWidgetHandler::CreateCopyNode(XFA_Element eElement,
@@ -503,24 +508,34 @@ CXFA_Node* CXFA_FFWidgetHandler::CreateCopyNode(XFA_Element eElement,
     return nullptr;
 
   CXFA_Node* pTemplateParent = pParent->GetTemplateNodeIfExists();
-  CXFA_Node* pNewNode =
+  std::unique_ptr<CXFA_Node> pNewNode =
       CreateTemplateNode(eElement, pTemplateParent,
                          pBefore ? pBefore->GetTemplateNodeIfExists() : nullptr)
           ->Clone(false);
+
+  CXFA_Node* node_ref = pNewNode.get();
   if (pParent)
-    pParent->InsertChild(pNewNode, pBefore);
-  return pNewNode;
+    pParent->InsertChild(std::move(pNewNode), pBefore);
+  else
+    pTemplateParent->GetDocument()->AddPurgeNode(std::move(pNewNode));
+
+  return node_ref;
 }
 
 CXFA_Node* CXFA_FFWidgetHandler::CreateTemplateNode(XFA_Element eElement,
                                                     CXFA_Node* pParent,
                                                     CXFA_Node* pBefore) const {
   CXFA_Document* pXFADoc = GetXFADoc();
-  CXFA_Node* pNewTemplateNode =
+  std::unique_ptr<CXFA_Node> pNewTemplateNode =
       pXFADoc->CreateNode(XFA_PacketType::Template, eElement);
+
+  CXFA_Node* node_ref = pNewTemplateNode.get();
   if (pParent)
-    pParent->InsertChild(pNewTemplateNode, pBefore);
-  return pNewTemplateNode;
+    pParent->InsertChild(std::move(pNewTemplateNode), pBefore);
+  else
+    pXFADoc->AddPurgeNode(std::move(pNewTemplateNode));
+
+  return node_ref;
 }
 
 CXFA_Node* CXFA_FFWidgetHandler::CreateFontNode(CXFA_Node* pParent) const {

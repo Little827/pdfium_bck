@@ -102,8 +102,10 @@ bool FormValueNode_SetChildContent(CXFA_Node* pValueNode,
               element = XFA_Element::Sharpxml;
           }
         }
-        pContentRawDataNode = pChildNode->CreateSamePacketNode(element);
-        pChildNode->InsertChild(pContentRawDataNode, nullptr);
+        std::unique_ptr<CXFA_Node> child =
+            pChildNode->CreateSamePacketNode(element);
+        pContentRawDataNode = child.get();
+        pChildNode->InsertChild(std::move(child), nullptr);
       }
       pContentRawDataNode->JSObject()->SetCData(XFA_Attribute::Value, wsContent,
                                                 false, false);
@@ -167,14 +169,16 @@ void CreateDataBinding(CXFA_Node* pFormNode,
               pFormNode->GetSelectedItemsValue();
           if (!wsSelTextArray.empty()) {
             for (const auto& text : wsSelTextArray) {
-              CXFA_Node* pValue =
+              std::unique_ptr<CXFA_Node> pValue =
                   pDataNode->CreateSamePacketNode(XFA_Element::DataValue);
               pValue->JSObject()->SetCData(XFA_Attribute::Name, L"value", false,
                                            false);
               pValue->CreateXMLMappingNode();
-              pDataNode->InsertChild(pValue, nullptr);
-              pValue->JSObject()->SetCData(XFA_Attribute::Value, text, false,
-                                           false);
+
+              CXFA_Node* value_ref = pValue.get();
+              pDataNode->InsertChild(std::move(pValue), nullptr);
+              value_ref->JSObject()->SetCData(XFA_Attribute::Value, text, false,
+                                              false);
             }
           } else {
             CFX_XMLNode* pXMLNode = pDataNode->GetXMLMappingNode();
@@ -530,26 +534,29 @@ CXFA_Node* CloneOrMergeInstanceManager(CXFA_Document* pDocument,
         break;
 
       CXFA_Node* pNextNode = pNode->GetNextSibling();
-      pFormParent->RemoveChild(pNode, true);
-      subforms->push_back(pNode);
+      std::unique_ptr<CXFA_Node> node = pFormParent->RemoveChild(pNode, true);
+      subforms->push_back(node.release());
       pNode = pNextNode;
     }
-    pFormParent->RemoveChild(pExistingNode, true);
-    pFormParent->InsertChild(pExistingNode, nullptr);
+
+    std::unique_ptr<CXFA_Node> node =
+        pFormParent->RemoveChild(pExistingNode, true);
+    pFormParent->InsertChild(std::move(node), nullptr);
     pExistingNode->ClearFlag(XFA_NodeFlag_UnusedNode);
     pExistingNode->SetTemplateNode(pTemplateNode);
     return pExistingNode;
   }
 
-  CXFA_Node* pNewNode =
+  std::unique_ptr<CXFA_Node> pNewNode =
       pDocument->CreateNode(XFA_PacketType::Form, XFA_Element::InstanceManager);
   wsInstMgrNodeName =
       L"_" + pTemplateNode->JSObject()->GetCData(XFA_Attribute::Name);
   pNewNode->JSObject()->SetCData(XFA_Attribute::Name, wsInstMgrNodeName, false,
                                  false);
-  pFormParent->InsertChild(pNewNode, nullptr);
-  pNewNode->SetTemplateNode(pTemplateNode);
-  return pNewNode;
+  CXFA_Node* node_ref = pNewNode.get();
+  pFormParent->InsertChild(std::move(pNewNode), nullptr);
+  node_ref->SetTemplateNode(pTemplateNode);
+  return node_ref;
 }
 
 CXFA_Node* FindMatchingDataNode(
@@ -1024,13 +1031,15 @@ CXFA_Node* MaybeCreateDataNode(CXFA_Document* pDocument,
 
   CXFA_Node* pParentDDNode = pDataParent->GetDataDescriptionNode();
   if (!pParentDDNode) {
-    CXFA_Node* pDataNode =
+    std::unique_ptr<CXFA_Node> pDataNode =
         pDocument->CreateNode(XFA_PacketType::Datasets, eNodeType);
     pDataNode->JSObject()->SetCData(XFA_Attribute::Name, wsName, false, false);
     pDataNode->CreateXMLMappingNode();
-    pDataParent->InsertChild(pDataNode, nullptr);
-    pDataNode->SetFlag(XFA_NodeFlag_Initialized, false);
-    return pDataNode;
+
+    CXFA_Node* node_ref = pDataNode.get();
+    pDataParent->InsertChild(std::move(pDataNode), nullptr);
+    node_ref->SetFlag(XFA_NodeFlag_Initialized, false);
+    return node_ref;
   }
 
   CXFA_NodeIteratorTemplate<CXFA_Node, CXFA_TraverseStrategy_DDGroup> sIterator(
@@ -1053,7 +1062,7 @@ CXFA_Node* MaybeCreateDataNode(CXFA_Document* pDocument,
     if (pDDNode->GetElementType() != eNodeType)
       break;
 
-    CXFA_Node* pDataNode =
+    std::unique_ptr<CXFA_Node> pDataNode =
         pDocument->CreateNode(XFA_PacketType::Datasets, eNodeType);
     pDataNode->JSObject()->SetCData(XFA_Attribute::Name, wsName, false, false);
     pDataNode->CreateXMLMappingNode();
@@ -1063,10 +1072,12 @@ CXFA_Node* MaybeCreateDataNode(CXFA_Document* pDocument,
       pDataNode->JSObject()->SetEnum(XFA_Attribute::Contains,
                                      XFA_AttributeEnum::MetaData, false);
     }
-    pDataParent->InsertChild(pDataNode, nullptr);
-    pDataNode->SetDataDescriptionNode(pDDNode);
-    pDataNode->SetFlag(XFA_NodeFlag_Initialized, false);
-    return pDataNode;
+
+    CXFA_Node* node_ref = pDataNode.get();
+    pDataParent->InsertChild(std::move(pDataNode), nullptr);
+    node_ref->SetDataDescriptionNode(pDDNode);
+    node_ref->SetFlag(XFA_NodeFlag_Initialized, false);
+    return node_ref;
   }
   return nullptr;
 }
@@ -1119,8 +1130,9 @@ void UpdateBindingRelations(CXFA_Document* pDocument,
             CXFA_Node* pDataParent = pDataNode->GetParent();
             if (pDataParent != pDataScope) {
               ASSERT(pDataParent);
-              pDataParent->RemoveChild(pDataNode, true);
-              pDataScope->InsertChild(pDataNode, nullptr);
+              std::unique_ptr<CXFA_Node> node =
+                  pDataParent->RemoveChild(pDataNode, true);
+              pDataScope->InsertChild(std::move(node), nullptr);
             }
           }
         }
@@ -1269,10 +1281,13 @@ CXFA_Node* XFA_NodeMerge_CloneOrMergeContainer(
   }
   if (pExistingNode) {
     if (pSubformArray) {
-      pFormParent->InsertChild(pExistingNode, nullptr);
+      std::unique_ptr<CXFA_Node> node =
+          pExistingNode->GetParent()->RemoveChild(pExistingNode, false);
+      pFormParent->InsertChild(std::move(node), nullptr);
     } else if (pExistingNode->IsContainerNode()) {
-      pFormParent->RemoveChild(pExistingNode, true);
-      pFormParent->InsertChild(pExistingNode, nullptr);
+      std::unique_ptr<CXFA_Node> node =
+          pFormParent->RemoveChild(pExistingNode, true);
+      pFormParent->InsertChild(std::move(node), nullptr);
     }
     pExistingNode->ClearFlag(XFA_NodeFlag_UnusedNode);
     pExistingNode->SetTemplateNode(pTemplateNode);
@@ -1289,18 +1304,25 @@ CXFA_Node* XFA_NodeMerge_CloneOrMergeContainer(
     return pExistingNode;
   }
 
-  CXFA_Node* pNewNode = pTemplateNode->CloneTemplateToForm(false);
-  pFormParent->InsertChild(pNewNode, nullptr);
+  std::unique_ptr<CXFA_Node> pNewNode =
+      pTemplateNode->CloneTemplateToForm(false);
+  CXFA_Node* node_ref = pNewNode.get();
+
+printf("Parent %p, node %p\n", pFormParent, node_ref);
+
+  pFormParent->InsertChild(std::move(pNewNode), nullptr);
+
   if (bRecursive) {
     for (CXFA_Node* pTemplateChild = pTemplateNode->GetFirstChild();
          pTemplateChild; pTemplateChild = pTemplateChild->GetNextSibling()) {
       if (NeedGenerateForm(pTemplateChild, true)) {
-        CXFA_Node* pNewChild = pTemplateChild->CloneTemplateToForm(true);
-        pNewNode->InsertChild(pNewChild, nullptr);
+        std::unique_ptr<CXFA_Node> pNewChild =
+            pTemplateChild->CloneTemplateToForm(true);
+        node_ref->InsertChild(std::move(pNewChild), nullptr);
       }
     }
   }
-  return pNewNode;
+  return node_ref;
 }
 
 CXFA_Node* XFA_DataMerge_FindDataScope(CXFA_Node* pParentFormNode) {
@@ -1371,12 +1393,14 @@ void CXFA_Document::DoDataMerge() {
     CFX_XMLElement* pDatasetsXMLNode = new CFX_XMLElement(L"xfa:datasets");
     pDatasetsXMLNode->SetString(L"xmlns:xfa",
                                 L"http://www.xfa.org/schema/xfa-data/1.0/");
-    pDatasetsRoot =
+    std::unique_ptr<CXFA_Node> node =
         CreateNode(XFA_PacketType::Datasets, XFA_Element::DataModel);
+    pDatasetsRoot = node.get();
+
     pDatasetsRoot->JSObject()->SetCData(XFA_Attribute::Name, L"datasets", false,
                                         false);
     m_pRootNode->GetXMLMappingNode()->InsertChildNode(pDatasetsXMLNode);
-    m_pRootNode->InsertChild(pDatasetsRoot, nullptr);
+    m_pRootNode->InsertChild(std::move(node), nullptr);
     pDatasetsRoot->SetXMLMappingNode(pDatasetsXMLNode);
   }
   CXFA_Node *pDataRoot = nullptr, *pDDRoot = nullptr;
@@ -1408,10 +1432,12 @@ void CXFA_Document::DoDataMerge() {
 
   if (!pDataRoot) {
     CFX_XMLElement* pDataRootXMLNode = new CFX_XMLElement(L"xfa:data");
-    pDataRoot = CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
+    std::unique_ptr<CXFA_Node> node =
+        CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
+    pDataRoot = node.get();
     pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, L"data", false, false);
     pDataRoot->SetXMLMappingNode(pDataRootXMLNode);
-    pDatasetsRoot->InsertChild(pDataRoot, nullptr);
+    pDatasetsRoot->InsertChild(std::move(node), nullptr);
   }
 
   CXFA_DataGroup* pDataTopLevel =
@@ -1438,11 +1464,13 @@ void CXFA_Document::DoDataMerge() {
   bool bEmptyForm = false;
   if (!pFormRoot) {
     bEmptyForm = true;
-    pFormRoot = static_cast<CXFA_Form*>(
-        CreateNode(XFA_PacketType::Form, XFA_Element::Form));
+    std::unique_ptr<CXFA_Node> node =
+        CreateNode(XFA_PacketType::Form, XFA_Element::Form);
+    pFormRoot = static_cast<CXFA_Form*>(node.get());
+
     ASSERT(pFormRoot);
     pFormRoot->JSObject()->SetCData(XFA_Attribute::Name, L"form", false, false);
-    m_pRootNode->InsertChild(pFormRoot, nullptr);
+    m_pRootNode->InsertChild(std::move(node), nullptr);
   } else {
     CXFA_NodeIteratorTemplate<CXFA_Node, CXFA_TraverseStrategy_XFANode>
         sIterator(pFormRoot);
@@ -1462,13 +1490,14 @@ void CXFA_Document::DoDataMerge() {
     CFX_XMLElement* pDataTopLevelXMLNode =
         new CFX_XMLElement(wsDataTopLevelName);
 
-    pDataTopLevel = static_cast<CXFA_DataGroup*>(
-        CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup));
+    std::unique_ptr<CXFA_Node> node =
+        CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
+    pDataTopLevel = static_cast<CXFA_DataGroup*>(node.get());
     pDataTopLevel->JSObject()->SetCData(XFA_Attribute::Name, wsDataTopLevelName,
                                         false, false);
     pDataTopLevel->SetXMLMappingNode(pDataTopLevelXMLNode);
     CXFA_Node* pBeforeNode = pDataRoot->GetFirstChild();
-    pDataRoot->InsertChild(pDataTopLevel, pBeforeNode);
+    pDataRoot->InsertChild(std::move(node), pBeforeNode);
   }
 
   ASSERT(pDataTopLevel);

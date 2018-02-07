@@ -84,18 +84,20 @@ int32_t CJX_InstanceManager::SetInstances(int32_t iDesired) {
     }
   } else {
     while (iCount < iDesired) {
-      CXFA_Node* pNewInstance = GetXFANode()->CreateInstanceIfPossible(true);
+      std::unique_ptr<CXFA_Node> pNewInstance =
+          GetXFANode()->CreateInstanceIfPossible(true);
       if (!pNewInstance)
         return 0;
 
-      GetXFANode()->InsertItem(pNewInstance, iCount, iCount, false);
+      CXFA_Node* node_ref = pNewInstance.get();
+      GetXFANode()->InsertItem(std::move(pNewInstance), iCount, iCount, false);
       ++iCount;
 
       CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
       if (!pNotify)
         return 0;
 
-      pNotify->RunNodeInitialize(pNewInstance);
+      pNotify->RunNodeInitialize(node_ref);
     }
   }
 
@@ -122,8 +124,9 @@ int32_t CJX_InstanceManager::MoveInstance(int32_t iTo, int32_t iFrom) {
     return 1;
   }
 
-  GetXFANode()->RemoveItem(pMoveInstance, false);
-  GetXFANode()->InsertItem(pMoveInstance, iTo, iCount - 1, true);
+  std::unique_ptr<CXFA_Node> node =
+      GetXFANode()->RemoveItem(pMoveInstance, false);
+  GetXFANode()->InsertItem(std::move(node), iTo, iCount - 1, true);
   CXFA_LayoutProcessor* pLayoutPro = GetDocument()->GetLayoutProcessor();
   if (pLayoutPro) {
     pLayoutPro->AddChangedContainer(
@@ -225,15 +228,17 @@ CJS_Return CJX_InstanceManager::addInstance(
   if (iMax >= 0 && iCount >= iMax)
     return CJS_Return(JSGetStringFromID(JSMessage::kTooManyOccurances));
 
-  CXFA_Node* pNewInstance = GetXFANode()->CreateInstanceIfPossible(fFlags);
+  std::unique_ptr<CXFA_Node> pNewInstance =
+      GetXFANode()->CreateInstanceIfPossible(fFlags);
   if (!pNewInstance)
     return CJS_Return(runtime->NewNull());
 
-  GetXFANode()->InsertItem(pNewInstance, iCount, iCount, false);
+  CXFA_Node* node_ref = pNewInstance.get();
+  GetXFANode()->InsertItem(std::move(pNewInstance), iCount, iCount, false);
 
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (pNotify) {
-    pNotify->RunNodeInitialize(pNewInstance);
+    pNotify->RunNodeInitialize(node_ref);
 
     CXFA_LayoutProcessor* pLayoutPro = GetDocument()->GetLayoutProcessor();
     if (pLayoutPro) {
@@ -243,7 +248,7 @@ CJS_Return CJX_InstanceManager::addInstance(
   }
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNewInstance);
+      GetDocument()->GetScriptContext()->GetJSValueFromMap(node_ref);
   if (!value)
     return CJS_Return(runtime->NewNull());
 
@@ -270,15 +275,17 @@ CJS_Return CJX_InstanceManager::insertInstance(
   if (iMax >= 0 && iCount >= iMax)
     return CJS_Return(JSGetStringFromID(JSMessage::kInvalidInputError));
 
-  CXFA_Node* pNewInstance = GetXFANode()->CreateInstanceIfPossible(bBind);
+  std::unique_ptr<CXFA_Node> pNewInstance =
+      GetXFANode()->CreateInstanceIfPossible(bBind);
   if (!pNewInstance)
     return CJS_Return(runtime->NewNull());
 
-  GetXFANode()->InsertItem(pNewInstance, iIndex, iCount, true);
+  CXFA_Node* node_ref = pNewInstance.get();
+  GetXFANode()->InsertItem(std::move(pNewInstance), iIndex, iCount, true);
 
   CXFA_FFNotify* pNotify = GetDocument()->GetNotify();
   if (pNotify) {
-    pNotify->RunNodeInitialize(pNewInstance);
+    pNotify->RunNodeInitialize(node_ref);
     CXFA_LayoutProcessor* pLayoutPro = GetDocument()->GetLayoutProcessor();
     if (pLayoutPro) {
       pLayoutPro->AddChangedContainer(
@@ -287,7 +294,7 @@ CJS_Return CJX_InstanceManager::insertInstance(
   }
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNewInstance);
+      GetDocument()->GetScriptContext()->GetJSValueFromMap(node_ref);
   if (!value)
     return CJS_Return(runtime->NewNull());
 

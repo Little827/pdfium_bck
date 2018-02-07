@@ -334,12 +334,14 @@ bool CXFA_NodeHelper::ResolveNodes_CreateNode(WideString wsName,
       return false;
 
     for (int32_t iIndex = 0; iIndex < m_iCreateCount; iIndex++) {
-      CXFA_Node* pNewNode = m_pCreateParent->CreateSamePacketNode(eType);
+      std::unique_ptr<CXFA_Node> pNewNode =
+          m_pCreateParent->CreateSamePacketNode(eType);
       if (pNewNode) {
-        m_pCreateParent->InsertChild(pNewNode, nullptr);
-        if (iIndex == m_iCreateCount - 1) {
-          m_pCreateParent = pNewNode;
-        }
+        CXFA_Node* node_ref = pNewNode.get();
+        m_pCreateParent->InsertChild(std::move(pNewNode), nullptr);
+        if (iIndex == m_iCreateCount - 1)
+          m_pCreateParent = node_ref;
+
         bResult = true;
       }
     }
@@ -349,15 +351,18 @@ bool CXFA_NodeHelper::ResolveNodes_CreateNode(WideString wsName,
       eClassType = m_eLastCreateType;
     }
     for (int32_t iIndex = 0; iIndex < m_iCreateCount; iIndex++) {
-      CXFA_Node* pNewNode = m_pCreateParent->CreateSamePacketNode(eClassType);
+      std::unique_ptr<CXFA_Node> pNewNode =
+          m_pCreateParent->CreateSamePacketNode(eClassType);
       if (pNewNode) {
         pNewNode->JSObject()->SetAttribute(XFA_Attribute::Name,
                                            wsName.AsStringView(), false);
         pNewNode->CreateXMLMappingNode();
-        m_pCreateParent->InsertChild(pNewNode, nullptr);
-        if (iIndex == m_iCreateCount - 1) {
-          m_pCreateParent = pNewNode;
-        }
+
+        CXFA_Node* node_ref = pNewNode.get();
+        m_pCreateParent->InsertChild(std::move(pNewNode), nullptr);
+        if (iIndex == m_iCreateCount - 1)
+          m_pCreateParent = node_ref;
+
         bResult = true;
       }
     }
