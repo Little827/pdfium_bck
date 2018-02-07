@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "22110799_77fa4dbd",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-07T02:24:31Z",
+      "side": 1,
+      "message": "Because the existing RenderPage() method took a page handle? Does RenderLoadedPage(int page_number) make more sense to you then? e.g.\n\nFPDF_PAGE page \u003d LoadPage(0);\nstd::unique_ptr\u003c...\u003e bitmap \u003d RenderLoadedPage(0);\nUnloadPage(page);\n\nStill feels a bit weird in its own way, as |page| now goes unused. Maybe if all the methods are aligned?\n\n\nbool loaded \u003d LoadPage(0);\nASSERT_TRUE(loaded);\n// Call GetLoadPage(0) to get the handle instead.\nstd::unique_ptr\u003c...\u003e bitmap \u003d RenderLoadedPage(0);\nUnloadPage(0);",
+      "parentUuid": "d4b0b1f8_7c286a42",
+      "range": {
+        "startLine": 312,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 22
+      },
+      "revId": "afc5afe49089face11be05c7fb08de4087fdbaba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8417f454_3b7d9f4f",
         "filename": "testing/embedder_test.h",
         "patchSetId": 5
