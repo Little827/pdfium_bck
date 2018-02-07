@@ -181,10 +181,8 @@ void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
   CFXJS_ObjDefinition* pObjDef = CFXJS_ObjDefinition::ForID(isolate, id);
   if (!pObjDef)
     return;
-  if (pObjDef->m_pDestructor) {
-    pObjDef->m_pDestructor(
-        CFXJS_Engine::EngineFromIsolateCurrentContext(isolate), obj);
-  }
+  if (pObjDef->m_pDestructor)
+    pObjDef->m_pDestructor(obj);
   CFXJS_Engine::FreeObjectPrivate(obj);
 }
 
@@ -449,7 +447,7 @@ void CFXJS_Engine::ReleaseEngine() {
 
     if (!pObj.IsEmpty()) {
       if (pObjDef->m_pDestructor)
-        pObjDef->m_pDestructor(this, pObj);
+        pObjDef->m_pDestructor(pObj);
       FreeObjectPrivate(pObj);
     }
   }
@@ -527,15 +525,6 @@ void CFXJS_Engine::Error(const WideString& message) {
   GetIsolate()->ThrowException(NewString(message.AsStringView()));
 }
 
-void CFXJS_Engine::SetObjectPrivate(v8::Local<v8::Object> pObj,
-                                    std::unique_ptr<CJS_Object> p) {
-  CFXJS_PerObjectData* pPerObjectData =
-      CFXJS_PerObjectData::GetFromObject(pObj);
-  if (!pPerObjectData)
-    return;
-  pPerObjectData->m_pPrivate = std::move(p);
-}
-
 CJS_Object* CFXJS_Engine::GetObjectPrivate(v8::Local<v8::Object> pObj) {
   CFXJS_PerObjectData* pData = CFXJS_PerObjectData::GetFromObject(pObj);
   if (!pData && !pObj.IsEmpty()) {
@@ -548,6 +537,16 @@ CJS_Object* CFXJS_Engine::GetObjectPrivate(v8::Local<v8::Object> pObj) {
     }
   }
   return pData ? pData->m_pPrivate.get() : nullptr;
+}
+
+// static
+void CFXJS_Engine::SetObjectPrivate(v8::Local<v8::Object> pObj,
+                                    std::unique_ptr<CJS_Object> p) {
+  CFXJS_PerObjectData* pPerObjectData =
+      CFXJS_PerObjectData::GetFromObject(pObj);
+  if (!pPerObjectData)
+    return;
+  pPerObjectData->m_pPrivate = std::move(p);
 }
 
 v8::Local<v8::Array> CFXJS_Engine::GetConstArray(const WideString& name) {
