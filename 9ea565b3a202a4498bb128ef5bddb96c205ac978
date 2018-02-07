@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "243a2c59_ec6a4444",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-07T19:57:17Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "9ea565b3a202a4498bb128ef5bddb96c205ac978",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c30acf_5c51d9c2",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-07T19:57:17Z",
+      "side": 1,
+      "message": "Put this back and remove the above line.",
+      "range": {
+        "startLine": 475,
+        "startChar": 5,
+        "endLine": 476,
+        "endChar": 0
+      },
+      "revId": "9ea565b3a202a4498bb128ef5bddb96c205ac978",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
