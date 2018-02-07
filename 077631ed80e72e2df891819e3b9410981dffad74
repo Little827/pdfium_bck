@@ -23,6 +23,30 @@
       "revId": "077631ed80e72e2df891819e3b9410981dffad74",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83c3d128_03eaaee5",
+        "filename": "fpdfsdk/fpdfppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-07T19:56:57Z",
+      "side": 1,
+      "message": "Done. I think we lost sight of this because this code was mechanically refactored repeatedly.",
+      "parentUuid": "fb6eea49_74f7b751",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "077631ed80e72e2df891819e3b9410981dffad74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
