@@ -70,6 +70,30 @@
       "revId": "4355fff97e9108d97f739b82b8a14fb7d269367e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc28f8d_f12fa100",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-07T02:09:35Z",
+      "side": 1,
+      "message": "The \"const CPDF.**\" to \"const CPDF.*\u0026\" ratio on CodeSearch is about 4:1. In some pointer usage, the pointer param can be a nullptr. In cases where it must not be, a const ref makes that condition obvious.",
+      "parentUuid": "36b62bc5_f7420a3f",
+      "range": {
+        "startLine": 272,
+        "startChar": 43,
+        "endLine": 272,
+        "endChar": 61
+      },
+      "revId": "4355fff97e9108d97f739b82b8a14fb7d269367e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
