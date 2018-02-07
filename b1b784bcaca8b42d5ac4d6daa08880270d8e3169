@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38888ac0_3c8755d2",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-07T18:07:17Z",
+      "side": 1,
+      "message": "nit: no _ trailing.",
+      "range": {
+        "startLine": 633,
+        "startChar": 76,
+        "endLine": 633,
+        "endChar": 77
+      },
+      "revId": "b1b784bcaca8b42d5ac4d6daa08880270d8e3169",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93bf431_34eaf2ac",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-07T18:07:17Z",
+      "side": 1,
+      "message": "nit: prefer ... \u003d data_size;",
+      "range": {
+        "startLine": 634,
+        "startChar": 45,
+        "endLine": 634,
+        "endChar": 58
+      },
+      "revId": "b1b784bcaca8b42d5ac4d6daa08880270d8e3169",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
