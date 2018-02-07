@@ -471,7 +471,8 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* cfg) {
   FXMEM_InitializePartitionAlloc();
 
   CFX_GEModule* pModule = CFX_GEModule::Get();
-  pModule->Init(cfg ? cfg->m_pUserFontPaths : nullptr);
+  pModule->Init(nullptr);
+  //  pModule->Init(cfg ? cfg->m_pUserFontPaths : nullptr);
 
   CPDF_ModuleMgr* pModuleMgr = CPDF_ModuleMgr::Get();
   pModuleMgr->Init();
