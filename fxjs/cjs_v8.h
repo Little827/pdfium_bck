@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
 #include "v8/include/v8-util.h"
 #include "v8/include/v8.h"
@@ -25,7 +26,7 @@ class CJS_V8 {
   explicit CJS_V8(v8::Isolate* pIsolate);
   virtual ~CJS_V8();
 
-  v8::Isolate* GetIsolate() const { return m_isolate; }
+  v8::Isolate* GetIsolate() const { return m_isolate.Get(); }
 
   v8::Local<v8::Value> NewNull();
   v8::Local<v8::Value> NewUndefined();
@@ -71,9 +72,10 @@ class CJS_V8 {
 
  protected:
   void SetIsolate(v8::Isolate* pIsolate) { m_isolate = pIsolate; }
+  void DisposeIsolate() { m_isolate.Release()->Dispose(); }
 
  private:
-  v8::Isolate* m_isolate;
+  UnownedPtr<v8::Isolate> m_isolate;
 };
 
 #endif  // FXJS_CJS_V8_H_
