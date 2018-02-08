@@ -4,28 +4,23 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef FXJS_CJS_V8_H_
-#define FXJS_CJS_V8_H_
+#ifndef FXJS_CFX_V8_H_
+#define FXJS_CFX_V8_H_
 
 #include <map>
 #include <vector>
 
-#include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_string.h"
-#include "core/fxcrt/widestring.h"
+#include "core/fxcrt/unowned_ptr.h"
 #include "v8/include/v8-util.h"
 #include "v8/include/v8.h"
 
-#ifdef PDF_ENABLE_XFA
-class CXFA_Object;
-#endif  // PDF_ENABLE_XFA
-
-class CJS_V8 {
+class CFX_V8 {
  public:
-  explicit CJS_V8(v8::Isolate* pIsolate);
-  virtual ~CJS_V8();
+  explicit CFX_V8(v8::Isolate* pIsolate);
+  virtual ~CFX_V8();
 
-  v8::Isolate* GetIsolate() const { return m_isolate; }
+  v8::Isolate* GetIsolate() const { return m_isolate.Get(); }
 
   v8::Local<v8::Value> NewNull();
   v8::Local<v8::Value> NewUndefined();
@@ -47,12 +42,6 @@ class CJS_V8 {
   v8::Local<v8::Object> ToObject(v8::Local<v8::Value> pValue);
   v8::Local<v8::Array> ToArray(v8::Local<v8::Value> pValue);
 
-#ifdef PDF_ENABLE_XFA
-  CXFA_Object* ToXFAObject(v8::Local<v8::Value> obj);
-  v8::Local<v8::Value> NewXFAObject(CXFA_Object* obj,
-                                    v8::Global<v8::FunctionTemplate>& tmpl);
-#endif  // PDF_ENABLE_XFA
-
   // Arrays.
   unsigned GetArrayLength(v8::Local<v8::Array> pArray);
   v8::Local<v8::Value> GetArrayElement(v8::Local<v8::Array> pArray,
@@ -73,7 +62,7 @@ class CJS_V8 {
   void SetIsolate(v8::Isolate* pIsolate) { m_isolate = pIsolate; }
 
  private:
-  v8::Isolate* m_isolate;
+  UnownedPtr<v8::Isolate> m_isolate;
 };
 
-#endif  // FXJS_CJS_V8_H_
+#endif  // FXJS_CFX_V8_H_
