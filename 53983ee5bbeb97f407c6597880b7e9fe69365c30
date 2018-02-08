@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1518057987 -0800\nnonce AFD2Vu2F3rQ0fRuSGpFwYdGhIAvlI3jhZUB95LeGvVtkP0Rj2ZxJ+lee2jOCLJliqq86kk7i8shJ\n\n0000000000000000000000000000000000000000 53983ee5bbeb97f407c6597880b7e9fe69365c30 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJae7oDAAoJEKs2LWFaZv17MwAIAKS1pz/XtAkOql38W0odIMDL\nwKbSI7ktP3BnaCmgELjQsJ1di555+/7V1VHKsOYJZ6rXtdSJfbyZ516PUOolYt8B\nTBfIvNitimFlA/QZKT2q1wRD1rs5Y6GUvaruun4H5pxkZ07DSLa3frkwe3yYAVXH\nUDfCkijzZRPMHSnz7kMxzX0BGwsdCP5VqQWoGacXI7YXwS2BOb5Z2GrcmJwDdk+L\niNNFqpm301Jgz+XKCmb0ZXvIqwQlxxPXDaCpowXHklegLT9lOYJS2fdFcWS6bN1e\nf4RmXsmu2xrNwUUC5OIFmV8BDR0Qhm9pTDu3DJGdA4m5DPTqEEicDfWLJUEx+Lo\u003d\n\u003dMS6S\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5d494ea_5c570ff2",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-08T21:49:06Z",
+      "side": 1,
+      "message": "Added a comment here. Also note PDFDocInit() is now protected, so only the subclasses can call it.",
+      "revId": "53983ee5bbeb97f407c6597880b7e9fe69365c30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c0ebea_091934bd",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-08T21:49:06Z",
+      "side": 1,
+      "message": "Since the code has been separated, this check has been moved out.",
+      "revId": "53983ee5bbeb97f407c6597880b7e9fe69365c30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
