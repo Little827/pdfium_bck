@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "935906de_04b92ea1",
+        "filename": "fpdfsdk/fpdfedit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-08T23:09:05Z",
+      "side": 1,
+      "message": "Let me know if you think this is too much scoping. We could reuse the |page_bitmap| from line 245 above. It\u0027s mostly harmless to let a bitmap live a bit longer. But I did much of this CL mechanically, so everything got scoped.",
+      "revId": "b67e6045ff1ed493bf9d03b516843ef1dd829857",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
