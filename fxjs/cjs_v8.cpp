@@ -57,11 +57,11 @@ void CJS_V8::PutObjectProperty(v8::Local<v8::Object> pObj,
 }
 
 v8::Local<v8::Array> CJS_V8::NewArray() {
-  return v8::Array::New(m_isolate);
+  return v8::Array::New(m_isolate.Get());
 }
 
 v8::Local<v8::Object> CJS_V8::NewObject() {
-  return v8::Object::New(m_isolate);
+  return v8::Object::New(m_isolate.Get());
 }
 
 unsigned CJS_V8::PutArrayElement(v8::Local<v8::Array> pArray,
@@ -91,23 +91,24 @@ unsigned CJS_V8::GetArrayLength(v8::Local<v8::Array> pArray) {
 }
 
 v8::Local<v8::Number> CJS_V8::NewNumber(int number) {
-  return v8::Int32::New(m_isolate, number);
+  return v8::Int32::New(m_isolate.Get(), number);
 }
 
 v8::Local<v8::Number> CJS_V8::NewNumber(double number) {
-  return v8::Number::New(m_isolate, number);
+  return v8::Number::New(m_isolate.Get(), number);
 }
 
 v8::Local<v8::Number> CJS_V8::NewNumber(float number) {
-  return v8::Number::New(m_isolate, (float)number);
+  return v8::Number::New(m_isolate.Get(), (float)number);
 }
 
 v8::Local<v8::Boolean> CJS_V8::NewBoolean(bool b) {
-  return v8::Boolean::New(m_isolate, b);
+  return v8::Boolean::New(m_isolate.Get(), b);
 }
 
 v8::Local<v8::String> CJS_V8::NewString(const ByteStringView& str) {
-  v8::Isolate* pIsolate = m_isolate ? m_isolate : v8::Isolate::GetCurrent();
+  v8::Isolate* pIsolate =
+      m_isolate ? m_isolate.Get() : v8::Isolate::GetCurrent();
   return v8::String::NewFromUtf8(pIsolate, str.unterminated_c_str(),
                                  v8::NewStringType::kNormal, str.GetLength())
       .ToLocalChecked();
@@ -121,11 +122,11 @@ v8::Local<v8::String> CJS_V8::NewString(const WideStringView& str) {
 }
 
 v8::Local<v8::Value> CJS_V8::NewNull() {
-  return v8::Null(m_isolate);
+  return v8::Null(m_isolate.Get());
 }
 
 v8::Local<v8::Value> CJS_V8::NewUndefined() {
-  return v8::Undefined(m_isolate);
+  return v8::Undefined(m_isolate.Get());
 }
 
 v8::Local<v8::Date> CJS_V8::NewDate(double d) {
@@ -171,7 +172,7 @@ WideString CJS_V8::ToWideString(v8::Local<v8::Value> pValue) {
   v8::MaybeLocal<v8::String> maybe_string = pValue->ToString(context);
   if (maybe_string.IsEmpty())
     return WideString();
-  v8::String::Utf8Value s(m_isolate, maybe_string.ToLocalChecked());
+  v8::String::Utf8Value s(m_isolate.Get(), maybe_string.ToLocalChecked());
   return WideString::FromUTF8(ByteStringView(*s, s.length()));
 }
 
@@ -182,7 +183,7 @@ ByteString CJS_V8::ToByteString(v8::Local<v8::Value> pValue) {
   v8::MaybeLocal<v8::String> maybe_string = pValue->ToString(context);
   if (maybe_string.IsEmpty())
     return ByteString();
-  v8::String::Utf8Value s(m_isolate, maybe_string.ToLocalChecked());
+  v8::String::Utf8Value s(m_isolate.Get(), maybe_string.ToLocalChecked());
   return ByteString(*s);
 }
 
@@ -217,9 +218,9 @@ CXFA_Object* CJS_V8::ToXFAObject(v8::Local<v8::Value> obj) {
 v8::Local<v8::Value> CJS_V8::NewXFAObject(
     CXFA_Object* obj,
     v8::Global<v8::FunctionTemplate>& tmpl) {
-  v8::EscapableHandleScope scope(m_isolate);
+  v8::EscapableHandleScope scope(m_isolate.Get());
   v8::Local<v8::FunctionTemplate> klass =
-      v8::Local<v8::FunctionTemplate>::New(m_isolate, tmpl);
+      v8::Local<v8::FunctionTemplate>::New(m_isolate.Get(), tmpl);
   v8::Local<v8::Object> object = klass->InstanceTemplate()->NewInstance();
   FXJSE_UpdateObjectBinding(object, obj);
   return scope.Escape(object);

@@ -11,6 +11,7 @@
 #include <memory>
 #include <vector>
 
+#include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/JS_Define.h"
 #include "fxjs/cjs_keyvalue.h"
 
@@ -86,7 +87,7 @@ class CJS_Global : public CJS_Object {
 
   std::map<ByteString, std::unique_ptr<JSGlobalData>> m_MapGlobal;
   WideString m_sFilePath;
-  CJS_GlobalData* m_pGlobalData;
+  UnownedPtr<CJS_GlobalData> m_pGlobalData;
   CPDFSDK_FormFillEnvironment::ObservedPtr m_pFormFillEnv;
 };
 

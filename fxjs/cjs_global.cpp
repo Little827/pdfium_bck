@@ -194,7 +194,7 @@ CJS_Global::CJS_Global(v8::Local<v8::Object> pObject)
 
 CJS_Global::~CJS_Global() {
   DestroyGlobalPersisitentVariables();
-  m_pGlobalData->Release();
+  m_pGlobalData.Release()->Release();
 }
 
 void CJS_Global::InitInstance(IJS_Runtime* pIRuntime) {
