@@ -84,6 +84,10 @@ class CFXJSE_Engine : public CJS_V8 {
   std::vector<CXFA_Node*>* GetUpObjectArray() { return &m_upObjectArray; }
   CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
 
+  CXFA_Object* ToXFAObject(v8::Local<v8::Value> obj);
+  v8::Local<v8::Value> NewXFAObject(CXFA_Object* obj,
+                                    v8::Global<v8::FunctionTemplate>& tmpl);
+
  private:
   CFXJSE_Context* CreateVariablesContext(CXFA_Node* pScriptNode,
                                          CXFA_Node* pSubform);
