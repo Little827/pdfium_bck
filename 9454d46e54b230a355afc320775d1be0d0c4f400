@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1518129088 -0800\nnonce AFD2Vu0ZG9lDrN47AiszL9SAfWTzENpU+bkJViP+PexP5y8mCJqbMtvwirumdrXxWkHNrhQqqn8p\n\n0000000000000000000000000000000000000000 9454d46e54b230a355afc320775d1be0d0c4f400 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJafM/AAAoJEKs2LWFaZv17XD4H/02v7eU61OHHPdR1ZpcBrr1R\n0W+c+JQ4mQyyH48GUDWJpGlQwdrh13Mqi7g5kfa0I78/tHjbWbroceDy5nSmy0Da\nKr9rCUDChwIeS3eLF5lxUpVgk6ghf/VsFHcJoa4FxOCQyrGJYQNYynkXJtPUdlDk\n5M0ldqUTRGa1Cm36oNSq+owQnWbUpIDIx+0sWeuIt8Fwozg8hsAwO12HbQ0SkweU\nLeGsizjpVTDvIQAC3tzsDBmgVP0A8zhQV1lXa+XgnPyQwkSYfpgIreuLw5bc/Tgy\nLRuKBgYs+L0tLsOeKJ7FMeGPIV5EGuBQjMaz4/5cogIoddpCCDM3m77fFsseGrE\u003d\n\u003dZ4H7\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "09a95713_8519e587",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-08T23:39:00Z",
+      "side": 1,
+      "message": "Does this actually make a difference? Should we be using that when returning entity classes? For example NupPageSettings in the other files in this cl.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "9454d46e54b230a355afc320775d1be0d0c4f400",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e53304_6023ffa8",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-08T23:39:00Z",
+      "side": 1,
+      "message": "nit: Move down to assignment.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "9454d46e54b230a355afc320775d1be0d0c4f400",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
