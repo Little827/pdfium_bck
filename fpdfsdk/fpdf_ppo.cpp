@@ -554,8 +554,7 @@ class CPDF_NPageToOneExporter : public CPDF_PageOrganizer {
                   XObjectNameNumberMap* pXObjNameNumberMap,
                   ByteString* bsContent);
   uint32_t MakeXObject(CPDF_Dictionary* pSrcPageDict,
-                       ObjectNumberMap* pObjNumberMap,
-                       CPDF_Document* pDestDoc);
+                       ObjectNumberMap* pObjNumberMap);
 
   void FinishPage(CPDF_Dictionary* pCurPageDict,
                   const ByteString& bsContent,
@@ -647,7 +646,7 @@ void CPDF_NPageToOneExporter::AddSubPage(
     ++m_xobjectNum;
     // TODO(Xlou): A better name schema to avoid possible object name collision.
     bsXObjectName = ByteString::Format("X%d", m_xobjectNum);
-    m_xobjs[bsXObjectName] = MakeXObject(pPageDict, pObjNumberMap, dest());
+    m_xobjs[bsXObjectName] = MakeXObject(pPageDict, pObjNumberMap);
     (*pPageXObjectMap)[dwPageObjnum] = bsXObjectName;
   }
   (*pXObjNameNumberMap)[bsXObjectName] = m_xobjs[bsXObjectName];
@@ -665,14 +664,13 @@ void CPDF_NPageToOneExporter::AddSubPage(
 }
 
 uint32_t CPDF_NPageToOneExporter::MakeXObject(CPDF_Dictionary* pSrcPageDict,
-                                              ObjectNumberMap* pObjNumberMap,
-                                              CPDF_Document* pDestDoc) {
+                                              ObjectNumberMap* pObjNumberMap) {
   ASSERT(pSrcPageDict);
 
   CPDF_Object* pSrcContentObj = GetPageOrganizerPageContent(pSrcPageDict);
-  CPDF_Stream* pNewXObject = pDestDoc->NewIndirect<CPDF_Stream>(
+  CPDF_Stream* pNewXObject = dest()->NewIndirect<CPDF_Stream>(
       nullptr, 0,
-      pdfium::MakeUnique<CPDF_Dictionary>(pDestDoc->GetByteStringPool()));
+      pdfium::MakeUnique<CPDF_Dictionary>(dest()->GetByteStringPool()));
   CPDF_Dictionary* pNewXObjectDict = pNewXObject->GetDict();
   const ByteString bsResourceString = "Resources";
   if (!CopyInheritable(pNewXObjectDict, pSrcPageDict, bsResourceString)) {
