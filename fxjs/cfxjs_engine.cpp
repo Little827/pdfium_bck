@@ -4,7 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "fxjs/fxjs_v8.h"
+#include "fxjs/cfxjs_engine.h"
 
 #include <memory>
 #include <utility>
@@ -12,7 +12,6 @@
 
 #include "fxjs/cfxjse_runtimedata.h"
 #include "fxjs/cjs_object.h"
-#include "third_party/base/allocator/partition_allocator/partition_alloc.h"
 
 // Keep this consistent with the values defined in gin/public/context_holder.h
 // (without actually requiring a dependency on gin itself for the standalone
@@ -22,9 +21,59 @@ static const unsigned int kPerContextDataIndex = 3u;
 static unsigned int g_embedderDataSlot = 1u;
 static v8::Isolate* g_isolate = nullptr;
 static size_t g_isolate_ref_count = 0;
-static FXJS_ArrayBufferAllocator* g_arrayBufferAllocator = nullptr;
+static CFX_V8ArrayBufferAllocator* g_arrayBufferAllocator = nullptr;
 static v8::Global<v8::ObjectTemplate>* g_DefaultGlobalObjectTemplate = nullptr;
 static wchar_t kPerObjectDataTag[] = L"CFXJS_PerObjectData";
+
+// Global weak map to save dynamic objects.
+class V8TemplateMapTraits : public v8::StdMapTraits<void*, v8::Object> {
+ public:
+  using MapType = v8::GlobalValueMap<void*, v8::Object, V8TemplateMapTraits>;
+  using WeakCallbackDataType = void;
+
+  static WeakCallbackDataType*
+  WeakCallbackParameter(MapType* map, void* key, v8::Local<v8::Object> value) {
+    return key;
+  }
+  static MapType* MapFromWeakCallbackInfo(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>&);
+
+  static void* KeyFromWeakCallbackInfo(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {
+    return data.GetParameter();
+  }
+  static const v8::PersistentContainerCallbackType kCallbackType =
+      v8::kWeakWithInternalFields;
+  static void DisposeWeak(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {}
+  static void OnWeakCallback(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {}
+  static void Dispose(v8::Isolate* isolate,
+                      v8::Global<v8::Object> value,
+                      void* key);
+  static void DisposeCallbackData(WeakCallbackDataType* callbackData) {}
+};
+
+class V8TemplateMap {
+ public:
+  using MapType = v8::GlobalValueMap<void*, v8::Object, V8TemplateMapTraits>;
+
+  explicit V8TemplateMap(v8::Isolate* isolate) : m_map(isolate) {}
+  ~V8TemplateMap() = default;
+
+  void SetAndMakeWeak(void* key, v8::Local<v8::Object> handle) {
+    ASSERT(!m_map.Contains(key));
+
+    // Inserting an object into a GlobalValueMap with the appropriate traits
+    // has the side-effect of making the object weak deep in the guts of V8.
+    m_map.Set(key, handle);
+  }
+
+  friend class V8TemplateMapTraits;
+
+ private:
+  MapType m_map;
+};
 
 class CFXJS_PerObjectData {
  public:
@@ -148,27 +197,6 @@ static v8::Local<v8::ObjectTemplate> GetGlobalObjectTemplate(
   return g_DefaultGlobalObjectTemplate->Get(pIsolate);
 }
 
-void* FXJS_ArrayBufferAllocator::Allocate(size_t length) {
-  if (length > kMaxAllowedBytes)
-    return nullptr;
-  void* p = AllocateUninitialized(length);
-  if (p)
-    memset(p, 0, length);
-  return p;
-}
-
-void* FXJS_ArrayBufferAllocator::AllocateUninitialized(size_t length) {
-  if (length > kMaxAllowedBytes)
-    return nullptr;
-  return pdfium::base::PartitionAllocGeneric(
-      gArrayBufferPartitionAllocator.root(), length, "FXJS_ArrayBuffer");
-}
-
-void FXJS_ArrayBufferAllocator::Free(void* data, size_t length) {
-  pdfium::base::PartitionFreeGeneric(gArrayBufferPartitionAllocator.root(),
-                                     data);
-}
-
 void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
                                   v8::Global<v8::Object> value,
                                   void* key) {
@@ -220,7 +248,7 @@ bool FXJS_GetIsolate(v8::Isolate** pResultIsolate) {
   }
   // Provide backwards compatibility when no external isolate.
   if (!g_arrayBufferAllocator)
-    g_arrayBufferAllocator = new FXJS_ArrayBufferAllocator();
+    g_arrayBufferAllocator = new CFX_V8ArrayBufferAllocator();
   v8::Isolate::CreateParams params;
   params.array_buffer_allocator = g_arrayBufferAllocator;
   *pResultIsolate = v8::Isolate::New(params);
@@ -229,15 +257,6 @@ bool FXJS_GetIsolate(v8::Isolate** pResultIsolate) {
 
 size_t FXJS_GlobalIsolateRefCount() {
   return g_isolate_ref_count;
-}
-
-V8TemplateMap::V8TemplateMap(v8::Isolate* isolate) : m_map(isolate) {}
-
-V8TemplateMap::~V8TemplateMap() {}
-
-void V8TemplateMap::set(void* key, v8::Local<v8::Object> handle) {
-  ASSERT(!m_map.Contains(key));
-  m_map.Set(key, handle);
 }
 
 FXJS_PerIsolateData::~FXJS_PerIsolateData() {}
@@ -514,10 +533,11 @@ v8::Local<v8::Object> CFXJS_Engine::NewFXJSBoundObject(int nObjDefnID,
   if (pObjDef->m_pConstructor)
     pObjDef->m_pConstructor(this, obj);
 
-  if (!bStatic && FXJS_PerIsolateData::Get(GetIsolate())->m_pDynamicObjsMap)
-    FXJS_PerIsolateData::Get(GetIsolate())
-        ->m_pDynamicObjsMap->set(pObjData, obj);
-
+  if (!bStatic) {
+    auto* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
+    if (pIsolateData->m_pDynamicObjsMap)
+      pIsolateData->m_pDynamicObjsMap->SetAndMakeWeak(pObjData, obj);
+  }
   return obj;
 }
 
