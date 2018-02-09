@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "b3fcb216_544d0bd9",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-09T00:02:22Z",
+      "side": 1,
+      "message": "Not sure what you mean. It\u0027s nicer to make just 1 call to get a const CFX_SizeF\u0026 and pass that around, than to make 2 calls to get 2 floats, or worse, get 2 calls to get 2 floats, and then reassemble them into a CFX_SizeF again.\n\nThe GetPage{Width,Height}() callers can all be converted to use GetPageSize(), but that\u0027ll have to be another day.",
+      "parentUuid": "09a95713_8519e587",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "9454d46e54b230a355afc320775d1be0d0c4f400",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4e53304_6023ffa8",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 1
