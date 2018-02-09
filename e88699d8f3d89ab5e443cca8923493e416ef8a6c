@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce039bb9_0615bcc2",
+        "filename": "fxjs/cfx_v8_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-09T18:01:43Z",
+      "side": 1,
+      "message": "Chromium style array_buffer_allocator_? (and below)",
+      "range": {
+        "startLine": 37,
+        "startChar": 45,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "e88699d8f3d89ab5e443cca8923493e416ef8a6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e4585e_97928ebd",
+        "filename": "fxjs/cfx_v8_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-09T18:01:43Z",
+      "side": 1,
+      "message": "Can these scopes move into the FXV8UnitTest class in SetUp, stored as members and cleaned up in TearDown? Or, do they have to work this way?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "e88699d8f3d89ab5e443cca8923493e416ef8a6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5eab751_b52f651f",
+        "filename": "fxjs/cfx_v8_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-09T18:01:43Z",
+      "side": 1,
+      "message": "Add a NewBooleanFalse test, makes sure ToWideString is correct",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "e88699d8f3d89ab5e443cca8923493e416ef8a6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
