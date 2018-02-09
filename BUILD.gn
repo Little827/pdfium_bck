@@ -3028,8 +3028,8 @@ test("pdfium_embeddertests") {
 
   if (pdf_enable_v8) {
     sources += [
+      "fxjs/cfxjs_engine_embeddertest.cpp",
       "fxjs/cjs_publicmethods_embeddertest.cpp",
-      "fxjs/fxjs_v8_embeddertest.cpp",
       "testing/js_embedder_test.cpp",
       "testing/js_embedder_test.h",
     ]
