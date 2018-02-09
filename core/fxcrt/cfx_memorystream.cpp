@@ -148,6 +148,17 @@ bool CFX_MemoryStream::WriteBlock(const void* buffer,
   return true;
 }
 
+bool CFX_MemoryStream::Seek(FX_FILESIZE offset, bool is_relative) {
+  FX_SAFE_SIZE_T newPos;
+  newPos += is_relative ? m_nCurPos : 0;
+  newPos += offset;
+  if (!newPos.IsValid() || newPos.ValueOrDie() > m_nCurSize)
+    return false;
+
+  m_nCurPos = newPos.ValueOrDie();
+  return true;
+}
+
 void CFX_MemoryStream::EstimateSize(size_t nInitSize, size_t nGrowSize) {
   if (m_dwFlags & Type::kConsecutive) {
     if (m_Blocks.empty()) {
