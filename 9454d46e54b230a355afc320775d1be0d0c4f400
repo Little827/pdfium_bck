@@ -74,6 +74,30 @@
     },
     {
       "key": {
+        "uuid": "8a79ed2c_b796b31c",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-09T21:47:39Z",
+      "side": 1,
+      "message": "Yes. The caller then has the option of receiving it as a const CFX_SizeF\u0026, if that is appropriate, and save a copy. Returning CFX_SizeF means callers don\u0027t have that option.",
+      "parentUuid": "a1d79856_89e79064",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "9454d46e54b230a355afc320775d1be0d0c4f400",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4e53304_6023ffa8",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 1
