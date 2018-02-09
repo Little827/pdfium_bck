@@ -4,15 +4,15 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-// FXJS_V8 is a layer that makes it easier to define native objects in V8, but
-// has no knowledge of PDF-specific native objects. It could in theory be used
-// to implement other sets of native objects.
+// CFXJS_ENGINE is a layer that makes it easier to define native objects in V8,
+// but has no knowledge of PDF-specific native objects. It could in theory be
+// used to implement other sets of native objects.
 
 // PDFium code should include this file rather than including V8 headers
 // directly.
 
-#ifndef FXJS_FXJS_V8_H_
-#define FXJS_FXJS_V8_H_
+#ifndef FXJS_CFXJS_ENGINE_H_
+#define FXJS_CFXJS_ENGINE_H_
 
 #include <functional>
 #include <map>
@@ -25,14 +25,14 @@
 #include "v8/include/v8.h"
 
 #ifdef PDF_ENABLE_XFA
-// FXJS_V8 doesn't interpret this class, it is just passed along to XFA.
+// CFXJS_ENGINE doesn't interpret this class, it is just passed along to XFA.
 class CFXJSE_RuntimeData;
 #endif  // PDF_ENABLE_XFA
 
 class CFXJS_ObjDefinition;
 class CJS_Object;
 
-// FXJS_V8 places no restrictions on this class; it merely passes it
+// CFXJS_ENGINE places no restrictions on this class; it merely passes it
 // on to caller-provided methods.
 class IJS_EventContext;  // A description of the event that caused JS execution.
 
@@ -197,4 +197,4 @@ class CFXJS_Engine : public CFX_V8 {
   std::map<WideString, v8::Global<v8::Array>> m_ConstArrays;
 };
 
-#endif  // FXJS_FXJS_V8_H_
+#endif  // FXJS_CFXJS_ENGINE_H_

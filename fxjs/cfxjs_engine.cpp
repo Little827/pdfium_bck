@@ -4,7 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "fxjs/fxjs_v8.h"
+#include "fxjs/cfxjs_engine.h"
 
 #include <memory>
 #include <utility>
