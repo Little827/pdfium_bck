@@ -25,59 +25,6 @@ static CFX_V8ArrayBufferAllocator* g_arrayBufferAllocator = nullptr;
 static v8::Global<v8::ObjectTemplate>* g_DefaultGlobalObjectTemplate = nullptr;
 static wchar_t kPerObjectDataTag[] = L"CFXJS_PerObjectData";
 
-// Global weak map to save dynamic objects.
-class V8TemplateMapTraits : public v8::StdMapTraits<void*, v8::Object> {
- public:
-  using MapType = v8::GlobalValueMap<void*, v8::Object, V8TemplateMapTraits>;
-  using WeakCallbackDataType = void;
-
-  static const v8::PersistentContainerCallbackType kCallbackType =
-      v8::kWeakWithInternalFields;
-
-  static WeakCallbackDataType*
-  WeakCallbackParameter(MapType* map, void* key, v8::Local<v8::Object> value) {
-    return key;
-  }
-  static MapType* MapFromWeakCallbackInfo(
-      const v8::WeakCallbackInfo<WeakCallbackDataType>&);
-  static void* KeyFromWeakCallbackInfo(
-      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {
-    return data.GetParameter();
-  }
-  static void OnWeakCallback(
-      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {}
-  static void DisposeWeak(
-      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {
-    // TODO(tsepez): this is expected be called during GC.
-  }
-  static void Dispose(v8::Isolate* isolate,
-                      v8::Global<v8::Object> value,
-                      void* key);
-  static void DisposeCallbackData(WeakCallbackDataType* callbackData) {}
-};
-
-class V8TemplateMap {
- public:
-  using MapType = v8::GlobalValueMap<void*, v8::Object, V8TemplateMapTraits>;
-
-  explicit V8TemplateMap(v8::Isolate* isolate) : m_map(isolate) {}
-  ~V8TemplateMap() = default;
-
-  void SetAndMakeWeak(void* key, v8::Local<v8::Object> handle) {
-    ASSERT(!m_map.Contains(key));
-
-    // Inserting an object into a GlobalValueMap with the appropriate traits
-    // has the side-effect of making the object weak deep in the guts of V8,
-    // and arranges for it to be cleaned up by the methods in the traits.
-    m_map.Set(key, handle);
-  }
-
-  friend class V8TemplateMapTraits;
-
- private:
-  MapType m_map;
-};
-
 class CFXJS_PerObjectData {
  public:
   explicit CFXJS_PerObjectData(int nObjDefID) : m_ObjDefID(nObjDefID) {}
@@ -105,6 +52,64 @@ class CFXJS_PerObjectData {
 
   const int m_ObjDefID;
   std::unique_ptr<CJS_Object> m_pPrivate;
+};
+
+// Global weak map to save dynamic objects.
+class V8TemplateMapTraits
+    : public v8::StdMapTraits<CFXJS_PerObjectData*, v8::Object> {
+ public:
+  using MapType =
+      v8::GlobalValueMap<CFXJS_PerObjectData*, v8::Object, V8TemplateMapTraits>;
+  using WeakCallbackDataType = CFXJS_PerObjectData;
+
+  static const v8::PersistentContainerCallbackType kCallbackType =
+      v8::kWeakWithInternalFields;
+
+  static WeakCallbackDataType* WeakCallbackParameter(
+      MapType* map,
+      CFXJS_PerObjectData* key,
+      v8::Local<v8::Object> value) {
+    return key;
+  }
+  static MapType* MapFromWeakCallbackInfo(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>&);
+  static CFXJS_PerObjectData* KeyFromWeakCallbackInfo(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {
+    return data.GetParameter();
+  }
+  static void OnWeakCallback(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {}
+  static void DisposeWeak(
+      const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {
+    // TODO(tsepez): this is expected be called during GC.
+  }
+  static void Dispose(v8::Isolate* isolate,
+                      v8::Global<v8::Object> value,
+                      CFXJS_PerObjectData* key);
+  static void DisposeCallbackData(WeakCallbackDataType* callbackData) {}
+};
+
+class V8TemplateMap {
+ public:
+  using MapType =
+      v8::GlobalValueMap<CFXJS_PerObjectData*, v8::Object, V8TemplateMapTraits>;
+
+  explicit V8TemplateMap(v8::Isolate* isolate) : m_map(isolate) {}
+  ~V8TemplateMap() = default;
+
+  void SetAndMakeWeak(CFXJS_PerObjectData* key, v8::Local<v8::Object> handle) {
+    ASSERT(!m_map.Contains(key));
+
+    // Inserting an object into a GlobalValueMap with the appropriate traits
+    // has the side-effect of making the object weak deep in the guts of V8,
+    // and arranges for it to be cleaned up by the methods in the traits.
+    m_map.Set(key, handle);
+  }
+
+  friend class V8TemplateMapTraits;
+
+ private:
+  MapType m_map;
 };
 
 class CFXJS_ObjDefinition {
@@ -202,7 +207,7 @@ static v8::Local<v8::ObjectTemplate> GetGlobalObjectTemplate(
 
 void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
                                   v8::Global<v8::Object> value,
-                                  void* key) {
+                                  CFXJS_PerObjectData* key) {
   v8::Local<v8::Object> obj = value.Get(isolate);
   if (obj.IsEmpty())
     return;
@@ -220,7 +225,7 @@ void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
 V8TemplateMapTraits::MapType* V8TemplateMapTraits::MapFromWeakCallbackInfo(
     const v8::WeakCallbackInfo<WeakCallbackDataType>& data) {
   V8TemplateMap* pMap =
-      (FXJS_PerIsolateData::Get(data.GetIsolate()))->m_pDynamicObjsMap.get();
+      FXJS_PerIsolateData::Get(data.GetIsolate())->m_pDynamicObjsMap.get();
   return pMap ? &pMap->m_map : nullptr;
 }
 
