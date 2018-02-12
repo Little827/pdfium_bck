@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "814256f4_76726e38",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T18:21:16Z",
+      "side": 1,
+      "message": "nit: this (and the one above) may read easier as\n\nfor (auto* pNode \u003d prev_sibling_; pNode; pNode \u003d pNode-\u003eprev_sibling_) {\n  if (pNode-\u003eGetObjectType() \u003d\u003d XFA_ObjectType::ContainerNode)\n    return pNode;\n}\nreturn nullptr;",
+      "range": {
+        "startLine": 598,
+        "startChar": 1,
+        "endLine": 598,
+        "endChar": 34
+      },
+      "revId": "560dd9abf244ddacca160d4d22bb0423815d599c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89743143_15b82381",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T18:21:16Z",
+      "side": 1,
+      "message": "note: the typical DOM methods are insertBefore, and appendChild (with insertAfter typcially being concocted in JS itself as a combination of insertBefore(node, other.nextSibling)).  This covers all these cases.  At some point we may want to split this up into the more typical approach.",
+      "range": {
+        "startLine": 1109,
+        "startChar": 16,
+        "endLine": 1109,
+        "endChar": 41
+      },
+      "revId": "560dd9abf244ddacca160d4d22bb0423815d599c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67fceac5_10ff2491",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T18:21:16Z",
+      "side": 1,
+      "message": "nit: maybe assert no last child, neither.",
+      "range": {
+        "startLine": 1120,
+        "startChar": 1,
+        "endLine": 1120,
+        "endChar": 33
+      },
+      "revId": "560dd9abf244ddacca160d4d22bb0423815d599c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1c6c29_d02736bc",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T18:21:16Z",
+      "side": 1,
+      "message": "might help to have a nthSibling helper ?",
+      "range": {
+        "startLine": 1137,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 35
+      },
+      "revId": "560dd9abf244ddacca160d4d22bb0423815d599c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3a452f_4cc79c3a",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T18:21:16Z",
+      "side": 1,
+      "message": "probably simpler to do the insertion here, and make the indexed version call into this, rather than trying to make this call into the indexed version. Except that you need the index later for the m_pXMLNode manipulation at 1163.",
+      "range": {
+        "startLine": 1173,
+        "startChar": 3,
+        "endLine": 1186,
+        "endChar": 28
+      },
+      "revId": "560dd9abf244ddacca160d4d22bb0423815d599c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94596fa1_114c7961",
+        "filename": "xfa/fxfa/parser/cxfa_node.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T18:21:16Z",
+      "side": 1,
+      "message": "nit: I\u0027d make this one be the first one at line 500. The others are in the traditional order.",
+      "range": {
+        "startLine": 504,
+        "startChar": 2,
+        "endLine": 504,
+        "endChar": 21
+      },
+      "revId": "560dd9abf244ddacca160d4d22bb0423815d599c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
