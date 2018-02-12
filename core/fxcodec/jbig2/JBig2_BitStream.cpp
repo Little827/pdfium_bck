@@ -7,6 +7,7 @@
 #include "core/fxcodec/jbig2/JBig2_BitStream.h"
 
 #include <algorithm>
+#include <limits>
 
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
@@ -100,6 +101,27 @@ int32_t CJBig2_BitStream::read1Byte(uint8_t* cResult) {
 int32_t CJBig2_BitStream::readInteger(uint32_t* dwResult) {
   if (m_dwByteIdx + 3 >= m_dwLength)
     return -1;
+
+  *dwResult = (m_pBuf[m_dwByteIdx] << 24) | (m_pBuf[m_dwByteIdx + 1] << 16) |
+              (m_pBuf[m_dwByteIdx + 2] << 8) | m_pBuf[m_dwByteIdx + 3];
+  m_dwByteIdx += 4;
+  return 0;
+}
+
+int32_t CJBig2_BitStream::readSignedInteger(int32_t* dwResult) {
+  if (m_dwByteIdx + 3 >= m_dwLength)
+    return -1;
+
+  if (m_pBuf[m_dwByteIdx] & (1 << 3)) {
+    // Negative number in two's complement form.
+    // Read all but the highest bit.
+    uint8_t buf = m_pBuf[m_dwByteIdx] & ~(1 << 3);
+    *dwResult = (buf << 24) | (m_pBuf[m_dwByteIdx + 1] << 16) |
+                (m_pBuf[m_dwByteIdx + 2] << 8) | m_pBuf[m_dwByteIdx + 3];
+    // Set the highest bit to 1.
+    *dwResult |= std::numeric_limits<int>::min();
+    *dwResult = ~(*dwResult) + 1;
+  }
 
   *dwResult = (m_pBuf[m_dwByteIdx] << 24) | (m_pBuf[m_dwByteIdx + 1] << 16) |
               (m_pBuf[m_dwByteIdx + 2] << 8) | m_pBuf[m_dwByteIdx + 3];

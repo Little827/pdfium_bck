@@ -50,22 +50,17 @@ bool CJBig2_HuffmanTable::ParseFromCodedBuffer(CJBig2_BitStream* pStream) {
   HTOOB = !!(cTemp & 0x01);
   unsigned char HTPS = ((cTemp >> 1) & 0x07) + 1;
   unsigned char HTRS = ((cTemp >> 4) & 0x07) + 1;
-  uint32_t HTLOW;
-  uint32_t HTHIGH;
-  if (pStream->readInteger(&HTLOW) == -1 ||
-      pStream->readInteger(&HTHIGH) == -1 ||
-      HTLOW > static_cast<uint32_t>(std::numeric_limits<int>::max()) ||
-      HTHIGH > static_cast<uint32_t>(std::numeric_limits<int>::max())) {
+  int32_t HTLOW;
+  int32_t HTHIGH;
+  if (pStream->readSignedInteger(&HTLOW) == -1 ||
+      pStream->readSignedInteger(&HTHIGH) == -1) {
     return false;
   }
-
-  const int low = static_cast<int>(HTLOW);
-  const int high = static_cast<int>(HTHIGH);
-  if (low > high)
+  if (HTLOW > HTHIGH)
     return false;
 
   ExtendBuffers(false);
-  pdfium::base::CheckedNumeric<int> cur_low = low;
+  pdfium::base::CheckedNumeric<int> cur_low = HTLOW;
   do {
     if ((pStream->readNBits(HTPS, &PREFLEN[NTEMP]) == -1) ||
         (pStream->readNBits(HTRS, &RANGELEN[NTEMP]) == -1) ||
@@ -81,20 +76,20 @@ bool CJBig2_HuffmanTable::ParseFromCodedBuffer(CJBig2_BitStream* pStream) {
     if (!cur_low.IsValid())
       return false;
     ExtendBuffers(true);
-  } while (cur_low.ValueOrDie() < high);
+  } while (cur_low.ValueOrDie() < HTHIGH);
 
   if (pStream->readNBits(HTPS, &PREFLEN[NTEMP]) == -1)
     return false;
 
   RANGELEN[NTEMP] = 32;
-  RANGELOW[NTEMP] = low - 1;
+  RANGELOW[NTEMP] = HTLOW - 1;
   ExtendBuffers(true);
 
   if (pStream->readNBits(HTPS, &PREFLEN[NTEMP]) == -1)
     return false;
 
   RANGELEN[NTEMP] = 32;
-  RANGELOW[NTEMP] = high;
+  RANGELOW[NTEMP] = HTHIGH;
   ExtendBuffers(true);
 
   if (HTOOB) {
