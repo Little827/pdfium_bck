@@ -1269,8 +1269,6 @@ void CJX_Object::Script_Attribute_String(CFXJSE_Value* pValue,
     ToNode(GetXFAObject())->InsertChild(pHeadChild, nullptr);
     pHeadChild = pSibling;
   }
-
-  GetDocument()->RemovePurgeNode(pProtoForm.get());
 }
 
 void CJX_Object::Script_Attribute_BOOL(CFXJSE_Value* pValue,
