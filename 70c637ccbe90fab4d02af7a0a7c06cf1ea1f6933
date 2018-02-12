@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39d4ac0b_edd73945",
+        "filename": "core/fxcrt/cfx_memorystream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-12T19:26:18Z",
+      "side": 1,
+      "message": "You don\u0027t need |newPos| anymore. It\u0027s always going to be safe.",
+      "revId": "70c637ccbe90fab4d02af7a0a7c06cf1ea1f6933",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af9189b_2aaf8dcf",
+        "filename": "core/fxcrt/cfx_memorystream.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-12T19:26:18Z",
+      "side": 1,
+      "message": "Add a comment to indicate |offset| is absolute?",
+      "revId": "70c637ccbe90fab4d02af7a0a7c06cf1ea1f6933",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
