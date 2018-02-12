@@ -22,6 +22,30 @@
       "revId": "f75f28d842d3c8fe1ed694e2f3e3ca4adfd82318",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1948207e_06560edc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7314
+      },
+      "writtenOn": "2018-02-12T09:18:59Z",
+      "side": 1,
+      "message": "Well, there is less code (one return statement instead of two per function), and there used to be lines of unreachable code and now no source is unreachable. That seems like a removal to me.\n\nAnd there is no convincing involved. All source code is now reachable which it wasn\u0027t before.",
+      "parentUuid": "dd1a324b_4fee29e5",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "f75f28d842d3c8fe1ed694e2f3e3ca4adfd82318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
