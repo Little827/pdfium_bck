@@ -9,10 +9,13 @@ There are several places in a PDF file where byte-offsets are required. This
 script replaces {{name}}-style variables in the input with calculated results
 
   {{header}}     - expands to the header comment required for PDF files.
+  {{xfaheader}}  - expands to the header comment required for XFA files.
   {{xref}}       - expands to a generated xref table, noting the offset.
   {{trailer}}    - expands to a standard trailer with "1 0 R" as the /Root.
   {{startxref}   - expands to a startxref directive followed by correct offset.
   {{object x y}} - expands to |x y obj| declaration, noting the offset.
+
+  - If generating an XFA file {{xref}} and {{trailer}} should omitted.
 """
 
 import optparse
@@ -23,6 +26,9 @@ import sys
 class TemplateProcessor:
   HEADER_TOKEN = '{{header}}'
   HEADER_REPLACEMENT = '%PDF-1.7\n%\xa0\xf2\xa4\xf4'
+
+  XFA_HEADER_TOKEN = '{{xfaheader}}'
+  XFA_HEADER_REPLACEMENT = '%PDF-1.7\n%\xbf\xf7\xa2\xfe'
 
   XREF_TOKEN = '{{xref}}'
   XREF_REPLACEMENT = 'xref\n%d %d\n'
@@ -43,9 +49,10 @@ class TemplateProcessor:
 
   def __init__(self):
     self.offset = 0
-    self.xref_offset = 0
+    self.xref_offset = None
     self.max_object_number = 0
     self.objects = { }
+    self.last_object_offset = None
 
   def insert_xref_entry(self, object_number, generation_number):
     self.objects[object_number] = (self.offset, generation_number)
@@ -63,6 +70,8 @@ class TemplateProcessor:
   def process_line(self, line):
     if self.HEADER_TOKEN in line:
       line = line.replace(self.HEADER_TOKEN, self.HEADER_REPLACEMENT)
+    if self.XFA_HEADER_TOKEN in line:
+      line = line.replace(self.XFA_HEADER_TOKEN, self.XFA_HEADER_REPLACEMENT)
     if self.XREF_TOKEN in line:
       self.xref_offset = self.offset
       line = self.generate_xref_table()
@@ -70,12 +79,15 @@ class TemplateProcessor:
       replacement = self.TRAILER_REPLACEMENT % (self.max_object_number + 1)
       line = line.replace(self.TRAILER_TOKEN, replacement)
     if self.STARTXREF_TOKEN in line:
+      if not self.xref_offset:
+        self.xref_offset = self.last_object_offset
       replacement = self.STARTXREF_REPLACEMENT % self.xref_offset
       line = line.replace(self.STARTXREF_TOKEN, replacement)
     match = re.match(self.OBJECT_PATTERN, line)
     if match:
       self.insert_xref_entry(int(match.group(1)), int(match.group(2)))
       line = re.sub(self.OBJECT_PATTERN, self.OBJECT_REPLACEMENT, line)
+      self.last_object_offset = self.offset
     self.offset += len(line)
     return line
 
