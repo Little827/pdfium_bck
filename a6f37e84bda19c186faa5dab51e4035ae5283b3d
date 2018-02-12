@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3450007c_6d8b6f5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-12T19:27:29Z",
+      "side": 1,
+      "message": "implemented",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "a6f37e84bda19c186faa5dab51e4035ae5283b3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8977d31_3a32553e",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-12T19:27:29Z",
+      "side": 1,
+      "message": "This seems really weird to mean, since this will mean it isn\u0027t a valid PDF document anymore?",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 69
+      },
+      "revId": "a6f37e84bda19c186faa5dab51e4035ae5283b3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd85156_3a90ae8d",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-12T19:27:29Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 18,
+        "startChar": 61,
+        "endLine": 18,
+        "endChar": 62
+      },
+      "revId": "a6f37e84bda19c186faa5dab51e4035ae5283b3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
