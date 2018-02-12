@@ -9,6 +9,7 @@ There are several places in a PDF file where byte-offsets are required. This
 script replaces {{name}}-style variables in the input with calculated results
 
   {{header}}     - expands to the header comment required for PDF files.
+  {{xfaheader}}  - expands to the header comment required for XFA files.
   {{xref}}       - expands to a generated xref table, noting the offset.
   {{trailer}}    - expands to a standard trailer with "1 0 R" as the /Root.
   {{startxref}   - expands to a startxref directive followed by correct offset.
@@ -23,6 +24,9 @@ import sys
 class TemplateProcessor:
   HEADER_TOKEN = '{{header}}'
   HEADER_REPLACEMENT = '%PDF-1.7\n%\xa0\xf2\xa4\xf4'
+
+  XFA_HEADER_TOKEN = '{{xfaheader}}'
+  XFA_HEADER_REPLACEMENT = '%PDF-1.7\n%\xbf\xf7\xa2\xfe'
 
   XREF_TOKEN = '{{xref}}'
   XREF_REPLACEMENT = 'xref\n%d %d\n'
@@ -63,6 +67,8 @@ class TemplateProcessor:
   def process_line(self, line):
     if self.HEADER_TOKEN in line:
       line = line.replace(self.HEADER_TOKEN, self.HEADER_REPLACEMENT)
+    if self.XFA_HEADER_TOKEN in line:
+      line = line.replace(self.XFA_HEADER_TOKEN, self.XFA_HEADER_REPLACEMENT)
     if self.XREF_TOKEN in line:
       self.xref_offset = self.offset
       line = self.generate_xref_table()
