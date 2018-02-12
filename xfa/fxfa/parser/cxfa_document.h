@@ -9,11 +9,11 @@
 
 #include <map>
 #include <memory>
-#include <set>
 #include <vector>
 
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/parser/cxfa_localemgr.h"
+#include "xfa/fxfa/parser/cxfa_nodeowner.h"
 
 enum XFA_VERSION {
   XFA_VERSION_UNKNOWN = 0,
@@ -57,10 +57,10 @@ class CXFA_LayoutProcessor;
 class CXFA_Node;
 class CXFA_Object;
 
-class CXFA_Document {
+class CXFA_Document : public CXFA_NodeOwner {
  public:
   explicit CXFA_Document(CXFA_DocumentParser* pParser);
-  virtual ~CXFA_Document();
+  ~CXFA_Document() override;
 
   CFXJSE_Engine* InitScriptContext(CFXJS_Engine* fxjs_engine);
 
@@ -76,10 +76,7 @@ class CXFA_Document {
   CXFA_LayoutProcessor* GetDocLayout();
   CFXJSE_Engine* GetScriptContext();
 
-  void SetRoot(CXFA_Node* pNewRoot);
-
-  void AddPurgeNode(CXFA_Node* pNode);
-  bool RemovePurgeNode(CXFA_Node* pNode);
+  void SetRoot(CXFA_Node* pNewRoot) { m_pRootNode = pNewRoot; }
 
   bool HasFlag(uint32_t dwFlag) { return (m_dwDocFlags & dwFlag) == dwFlag; }
   void SetFlag(uint32_t dwFlag, bool bOn);
@@ -118,7 +115,6 @@ class CXFA_Document {
   std::unique_ptr<CScript_LogPseudoModel> m_pScriptLog;
   std::unique_ptr<CScript_LayoutPseudoModel> m_pScriptLayout;
   std::unique_ptr<CScript_SignaturePseudoModel> m_pScriptSignature;
-  std::set<CXFA_Node*> m_PurgeNodes;
   XFA_VERSION m_eCurVersionMode;
   uint32_t m_dwDocFlags;
 };
