@@ -28,6 +28,8 @@ class CFX_MemoryStream : public IFX_SeekableStream {
   bool WriteBlock(const void* buffer, FX_FILESIZE offset, size_t size) override;
   bool Flush() override;
 
+  bool Seek(FX_FILESIZE offset);
+
   bool IsConsecutive() const { return !!(m_dwFlags & Type::kConsecutive); }
 
   uint8_t* GetBuffer() const {
