@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7129bd4a_4957090e",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T19:35:28Z",
+      "side": 1,
+      "message": "nit: no {}",
+      "range": {
+        "startLine": 1115,
+        "startChar": 43,
+        "endLine": 1115,
+        "endChar": 44
+      },
+      "revId": "3428a985d0e8e80d81e3ceb7269aef99df154b4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff2a9cf_f54e84e5",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T19:35:28Z",
+      "side": 1,
+      "message": "return not needed?",
+      "range": {
+        "startLine": 1179,
+        "startChar": 0,
+        "endLine": 1179,
+        "endChar": 11
+      },
+      "revId": "3428a985d0e8e80d81e3ceb7269aef99df154b4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241b18f9_02f571a0",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T19:35:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1199,
+        "startChar": 39,
+        "endLine": 1199,
+        "endChar": 41
+      },
+      "revId": "3428a985d0e8e80d81e3ceb7269aef99df154b4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "114efd2a_db4c9e63",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T19:35:28Z",
+      "side": 1,
+      "message": "EXPECT_DEATH_IF_SUPPORTED() ?",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 14
+      },
+      "revId": "3428a985d0e8e80d81e3ceb7269aef99df154b4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
