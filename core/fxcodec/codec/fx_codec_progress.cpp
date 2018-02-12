@@ -836,33 +836,38 @@ bool CCodec_ProgressiveDecoder::BmpReadMoreData(CCodec_BmpModule* pBmpModule,
     return false;
 
   dwSize = dwSize - m_offSet;
-  uint32_t dwAvail = pBmpModule->GetAvailInput(m_pBmpContext.get(), nullptr);
+  FX_FILESIZE dwAvail = pBmpModule->GetAvailInput(m_pBmpContext.get(), nullptr);
+  if (dwAvail < 0)
+    return false;
   if (dwAvail == m_SrcSize) {
     if (dwSize > FXCODEC_BLOCK_SIZE) {
       dwSize = FXCODEC_BLOCK_SIZE;
     }
-    m_SrcSize = (dwSize + dwAvail + FXCODEC_BLOCK_SIZE - 1) /
-                FXCODEC_BLOCK_SIZE * FXCODEC_BLOCK_SIZE;
+    m_SrcSize =
+        (dwSize + static_cast<uint32_t>(dwAvail) + FXCODEC_BLOCK_SIZE - 1) /
+        FXCODEC_BLOCK_SIZE * FXCODEC_BLOCK_SIZE;
     m_pSrcBuf = FX_Realloc(uint8_t, m_pSrcBuf, m_SrcSize);
     if (!m_pSrcBuf) {
       err_status = FXCODEC_STATUS_ERR_MEMORY;
       return false;
     }
   } else {
-    uint32_t dwConsume = m_SrcSize - dwAvail;
+    uint32_t dwConsume = m_SrcSize - static_cast<uint32_t>(dwAvail);
     if (dwAvail) {
-      memmove(m_pSrcBuf, m_pSrcBuf + dwConsume, dwAvail);
+      memmove(m_pSrcBuf, m_pSrcBuf + dwConsume, static_cast<uint32_t>(dwAvail));
     }
     if (dwSize > dwConsume) {
       dwSize = dwConsume;
     }
   }
-  if (!m_pFile->ReadBlock(m_pSrcBuf + dwAvail, m_offSet, dwSize)) {
+  if (!m_pFile->ReadBlock(m_pSrcBuf + static_cast<uint32_t>(dwAvail), m_offSet,
+                          dwSize)) {
     err_status = FXCODEC_STATUS_ERR_READ;
     return false;
   }
   m_offSet += dwSize;
-  pBmpModule->Input(m_pBmpContext.get(), m_pSrcBuf, dwSize + dwAvail);
+  pBmpModule->Input(m_pBmpContext.get(), m_pSrcBuf,
+                    dwSize + static_cast<uint32_t>(dwAvail));
   return true;
 }
 
