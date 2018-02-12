@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "912649e6_b4c568c0",
+        "filename": "core/fxcodec/jbig2/JBig2_BitStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T22:13:56Z",
+      "side": 1,
+      "message": "You shouldn\u0027t really need to to this.  Assembling the bit pattern as if it were unsinged, and then just casting to signed at the end should do the trick.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "ebcf8c04c44a278929dea057dbe459d31843ab16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
