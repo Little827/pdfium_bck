@@ -97,8 +97,8 @@ typedef enum FPDFANNOT_COLORTYPE {
 
 // Experimental API.
 // Check if an annotation subtype is currently supported for creation.
-// Currently supported subtypes: circle, highlight, ink, popup, square,
-// squiggly, stamp, strikeout, text, and underline.
+// Currently supported subtypes: circle, freetext, highlight, ink, popup,
+// square, squiggly, stamp, strikeout, text, and underline.
 //
 //   subtype   - the subtype to be checked.
 //
@@ -179,7 +179,7 @@ FPDFAnnot_GetSubtype(FPDF_ANNOTATION annot);
 // Experimental API.
 // Check if an annotation subtype is currently supported for object extraction,
 // update, and removal.
-// Currently supported subtypes: ink and stamp.
+// Currently supported subtypes: freetext, ink and stamp.
 //
 //   subtype   - the subtype to be checked.
 //
@@ -189,10 +189,10 @@ FPDFAnnot_IsObjectSupportedSubtype(FPDF_ANNOTATION_SUBTYPE subtype);
 
 // Experimental API.
 // Update |obj| in |annot|. |obj| must be in |annot| already and must have
-// been retrieved by FPDFAnnot_GetObject(). Currently, only ink and stamp
-// annotations are supported by this API. Also note that only path, image, and
-// text objects have APIs for modification; see FPDFPath_*(), FPDFText_*(), and
-// FPDFImageObj_*().
+// been retrieved by FPDFAnnot_GetObject(). Currently, only freetext, ink and
+// stamp annotations are supported by this API. Also note that only path, image,
+// and text objects have APIs for modification; see FPDFPath_*(), FPDFText_*(),
+// and FPDFImageObj_*().
 //
 //   annot  - handle to an annotation.
 //   obj    - handle to the object that |annot| needs to update.
@@ -205,8 +205,9 @@ FPDFAnnot_UpdateObject(FPDF_ANNOTATION annot, FPDF_PAGEOBJECT obj);
 // Add |obj| to |annot|. |obj| must have been created by
 // FPDFPageObj_CreateNew{Path|Rect}() or FPDFPageObj_New{Text|Image}Obj(), and
 // will be owned by |annot|. Note that an |obj| cannot belong to more than one
-// |annot|. Currently, only ink and stamp annotations are supported by this API.
-// Also note that only path, image, and text objects have APIs for creation.
+// |annot|. Currently, only freetext, ink and stamp annotations are supported by
+// this API. Also note that only path, image, and text objects have APIs for
+// creation.
 //
 //   annot  - handle to an annotation.
 //   obj    - handle to the object that is to be added to |annot|.
