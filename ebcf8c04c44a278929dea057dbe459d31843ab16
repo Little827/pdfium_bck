@@ -22,6 +22,30 @@
       "revId": "ebcf8c04c44a278929dea057dbe459d31843ab16",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c61ebac_512724e6",
+        "filename": "core/fxcodec/jbig2/JBig2_BitStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-02-12T22:16:43Z",
+      "side": 1,
+      "message": "Oh never mind I thought the CF bug was about this cast but it\u0027s not.",
+      "parentUuid": "912649e6_b4c568c0",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "ebcf8c04c44a278929dea057dbe459d31843ab16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
