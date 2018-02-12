@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "42f644b0_a5f12898",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-12T19:29:49Z",
+      "side": 1,
+      "message": "You can shorten this to:\n\nreturn input_buffer_ \u0026\u0026 input_buffer_-\u003eReadBlock(destination, size);",
+      "revId": "70c637ccbe90fab4d02af7a0a7c06cf1ea1f6933",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff87e8cc_97ac072e",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-12T19:29:49Z",
+      "side": 1,
+      "message": "For a separate CL... Can this be changed to return FX_FILESIZE?",
+      "revId": "70c637ccbe90fab4d02af7a0a7c06cf1ea1f6933",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39d4ac0b_edd73945",
         "filename": "core/fxcrt/cfx_memorystream.cpp",
         "patchSetId": 2
