@@ -355,7 +355,6 @@ TEST_F(CXFA_NodeTest, RemoveChild) {
   EXPECT_EQ(nullptr, child1->GetPrevSibling());
 }
 
-#ifndef NDEBUG
 TEST_F(CXFA_NodeTest, InsertChildWithParent) {
   CXFA_Node* child0 =
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
@@ -363,15 +362,15 @@ TEST_F(CXFA_NodeTest, InsertChildWithParent) {
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   child0->InsertChild(-1, child1);
 
-  EXPECT_DEATH(GetNode()->InsertChild(0, child1), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->InsertChild(0, child1), "");
 }
 
 TEST_F(CXFA_NodeTest, InsertNullChild) {
-  EXPECT_DEATH(GetNode()->InsertChild(0, nullptr), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->InsertChild(0, nullptr), "");
 }
 
 TEST_F(CXFA_NodeTest, InsertBeforeWithNullChild) {
-  EXPECT_DEATH(GetNode()->InsertChild(nullptr, nullptr), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->InsertChild(nullptr, nullptr), "");
 }
 
 TEST_F(CXFA_NodeTest, InsertBeforeWithBeforeInAnotherParent) {
@@ -385,7 +384,7 @@ TEST_F(CXFA_NodeTest, InsertBeforeWithBeforeInAnotherParent) {
 
   CXFA_Node* child =
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
-  EXPECT_DEATH(GetNode()->InsertChild(child, child1), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->InsertChild(child, child1), "");
 }
 
 TEST_F(CXFA_NodeTest, InsertBeforeWithNodeInAnotherParent) {
@@ -397,11 +396,11 @@ TEST_F(CXFA_NodeTest, InsertBeforeWithNodeInAnotherParent) {
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   child0->InsertChild(-1, child1);
 
-  EXPECT_DEATH(GetNode()->InsertChild(child1, nullptr), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->InsertChild(child1, nullptr), "");
 }
 
 TEST_F(CXFA_NodeTest, RemoveChildNullptr) {
-  EXPECT_DEATH(GetNode()->RemoveChild(nullptr, false), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->RemoveChild(nullptr, false), "");
 }
 
 TEST_F(CXFA_NodeTest, RemoveChildAnotherParent) {
@@ -413,6 +412,5 @@ TEST_F(CXFA_NodeTest, RemoveChildAnotherParent) {
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   child0->InsertChild(-1, child1);
 
-  EXPECT_DEATH(GetNode()->RemoveChild(child1, false), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->RemoveChild(child1, false), "");
 }
-#endif  // NDEBUG
