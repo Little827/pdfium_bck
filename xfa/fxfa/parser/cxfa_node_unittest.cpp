@@ -355,7 +355,6 @@ TEST_F(CXFA_NodeTest, RemoveChild) {
   EXPECT_EQ(nullptr, child1->GetPrevSibling());
 }
 
-#ifndef NDEBUG
 TEST_F(CXFA_NodeTest, InsertChildWithParent) {
   CXFA_Node* child0 =
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
@@ -415,4 +414,3 @@ TEST_F(CXFA_NodeTest, RemoveChildAnotherParent) {
 
   EXPECT_DEATH(GetNode()->RemoveChild(child1, false), "");
 }
-#endif  // NDEBUG

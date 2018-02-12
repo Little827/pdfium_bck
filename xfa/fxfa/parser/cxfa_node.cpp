@@ -1112,8 +1112,10 @@ CXFA_Node* CXFA_Node::GetChildInternal(size_t index,
 }
 
 void CXFA_Node::InsertChild(int32_t index, CXFA_Node* pNode) {
-  ASSERT(pNode);
-  ASSERT(!pNode->parent_);
+  if (!pNode || pNode->parent_ != nullptr) {
+    PDFIUM_IMMEDIATE_CRASH();
+  }
+
   pNode->parent_ = this;
   pNode->ClearFlag(XFA_NodeFlag_HasRemovedChildren);
 
@@ -1173,7 +1175,7 @@ void CXFA_Node::InsertChild(int32_t index, CXFA_Node* pNode) {
 
 void CXFA_Node::InsertChild(CXFA_Node* pNode, CXFA_Node* pBeforeNode) {
   if (pBeforeNode && pBeforeNode->parent_ != this) {
-    NOTREACHED();
+    PDFIUM_IMMEDIATE_CRASH();
     return;
   }
 
@@ -1194,8 +1196,9 @@ void CXFA_Node::InsertChild(CXFA_Node* pNode, CXFA_Node* pBeforeNode) {
 }
 
 void CXFA_Node::RemoveChild(CXFA_Node* pNode, bool bNotify) {
-  ASSERT(pNode);
-  ASSERT(pNode->parent_ == this);
+  if (!pNode || pNode->parent_ != this) {
+    PDFIUM_IMMEDIATE_CRASH();
+  }
 
   pNode->SetFlag(XFA_NodeFlag_HasRemovedChildren, true);
 
