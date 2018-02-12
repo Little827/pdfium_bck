@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b1e5f76_2914ba2c",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-12T21:43:11Z",
+      "side": 1,
+      "message": "maybe cast it safely once and go from there?",
+      "revId": "a1ee2499f325cba56d89fa1c76bf993add5777a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
