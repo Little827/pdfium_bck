@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85e15021_d6e3170d",
+        "filename": "core/fxcodec/jbig2/JBig2_HuffmanTable.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T22:24:23Z",
+      "side": 0,
+      "message": "note: two consecutive assignments to the same [NTEMP] Index?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "2334660053e044ca79a1831a6c73f69891f039e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
