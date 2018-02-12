@@ -68,6 +68,29 @@
       "revId": "a6f37e84bda19c186faa5dab51e4035ae5283b3d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9d359e_fcf17dc2",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-12T19:28:58Z",
+      "side": 1,
+      "message": "If self.xref_offset is 0, this will be true. I think you want \"self.xref_offset is None\", which will be false for 0, and true for None.",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "a6f37e84bda19c186faa5dab51e4035ae5283b3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
