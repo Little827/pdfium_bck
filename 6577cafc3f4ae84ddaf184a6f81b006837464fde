@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54d87f7e_b7415bdb",
+        "filename": "xfa/fxfa/parser/cxfa_node.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-12T18:39:45Z",
+      "side": 1,
+      "message": "nit: same comment from other CL, I\u0027d stick the parent first, then the siblings, then the children. Esp. since in the real world, parent + siblings are in one class, but children are in \"container\" sub-class.",
+      "range": {
+        "startLine": 502,
+        "startChar": 2,
+        "endLine": 502,
+        "endChar": 11
+      },
+      "revId": "6577cafc3f4ae84ddaf184a6f81b006837464fde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
