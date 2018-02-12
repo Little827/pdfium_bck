@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d06a7281_7a34feed",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-12T19:11:04Z",
+      "side": 1,
+      "message": "Well, see, that depends. When first created, the Document has them in the Purge list. When we do InsertChild the ownership moves to the parent node.",
+      "parentUuid": "13bf5297_080ba6e7",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "3073ad8b5bbbdf224cc190c9e1211a9bff8aa6ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cddf3fed_8daeee81",
         "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "3073ad8b5bbbdf224cc190c9e1211a9bff8aa6ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb47ff92_b804957f",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-12T19:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cddf3fed_8daeee81",
+      "revId": "3073ad8b5bbbdf224cc190c9e1211a9bff8aa6ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "3073ad8b5bbbdf224cc190c9e1211a9bff8aa6ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1eb53c6_7e29d913",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-12T19:11:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9a87d11_23840e91",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 54
+      },
+      "revId": "3073ad8b5bbbdf224cc190c9e1211a9bff8aa6ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
