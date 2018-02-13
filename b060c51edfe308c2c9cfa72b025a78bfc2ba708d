@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0894295b_9852067c",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-13T19:52:39Z",
+      "side": 1,
+      "message": "It is, but i wanted to make it clear that after FreeOwnedNode the pointer is gone, in case someone adds code after this point.",
+      "parentUuid": "070de79c_96a0ba1e",
+      "range": {
+        "startLine": 1273,
+        "startChar": 2,
+        "endLine": 1273,
+        "endChar": 12
+      },
+      "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51496544_d1c56362",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "be23068a_253a1051",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-13T19:52:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51496544_d1c56362",
+      "range": {
+        "startLine": 540,
+        "startChar": 20,
+        "endLine": 540,
+        "endChar": 25
+      },
+      "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1dad594_06569c0e",
         "filename": "xfa/fxfa/parser/cxfa_nodeowner.h",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c541b2e_ef4ff291",
+        "filename": "xfa/fxfa/parser/cxfa_nodeowner.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-13T19:52:39Z",
+      "side": 1,
+      "message": "Done.\n\nHad to add a FakeUniquePtr in there to do the erase, please take a look.",
+      "parentUuid": "a1dad594_06569c0e",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
