@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca979474_68fe23b4",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-13T21:47:15Z",
+      "side": 1,
+      "message": "false",
+      "range": {
+        "startLine": 842,
+        "startChar": 11,
+        "endLine": 842,
+        "endChar": 12
+      },
+      "revId": "1af889b687cf953993b9f83f7c5d7f1d1fcea31b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
