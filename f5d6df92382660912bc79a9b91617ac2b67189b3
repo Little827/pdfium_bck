@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6834461_f9ad99a0",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T22:15:51Z",
+      "side": 1,
+      "message": "pre-existing: can we move these outside the function to say, line 22? I\u0027m reading through this trying to figure out how big ifh_size might be, and this is unrelated to it.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 50
+      },
+      "revId": "f5d6df92382660912bc79a9b91617ac2b67189b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb80daf3_f949e486",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T22:15:51Z",
+      "side": 1,
+      "message": "wouldn\u0027t this be redundant given the static asserts above?  I\u0027d just use sizeof throughout.  \n\nAlso sizeof() -\u003e size_t, so the static_cast is a no-op.",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 65
+      },
+      "revId": "f5d6df92382660912bc79a9b91617ac2b67189b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3eab25_5975cf2e",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T22:15:51Z",
+      "side": 1,
+      "message": "nit: can we move this block down to right before the seek?  We have to capture the value here, but the computation isn\u0027t used until the seek, and if it is insanely large, the seek will fail and all is good. \n\nAnd you\u0027re right to protect against overflow here.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "f5d6df92382660912bc79a9b91617ac2b67189b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
