@@ -206,6 +206,17 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPageObj_Destroy(FPDF_PAGEOBJECT page_obj) {
   delete CPDFPageObjectFromFPDFPageObject(page_obj);
 }
 
+FPDF_EXPORT FPDF_PAGEOBJECT_ARRAY FPDF_CALLCONV
+FPDFPageObj_GetAllPageObjects(FPDF_DOCUMENT document) {
+  return nullptr;
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_ArrayGetPageObject(FPDF_DOCUMENT document,
+                               FPDF_PAGEOBJECT_ARRAY array) {
+  return nullptr;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObj_HasTransparency(FPDF_PAGEOBJECT pageObject) {
   if (!pageObject)
