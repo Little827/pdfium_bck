@@ -20,3 +20,8 @@ FX_XMLNODETYPE CFX_XMLText::GetType() const {
 std::unique_ptr<CFX_XMLNode> CFX_XMLText::Clone() {
   return pdfium::MakeUnique<CFX_XMLText>(m_wsText);
 }
+
+void CFX_XMLText::Save(const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
+  WideString ws = EncodeValue(GetText());
+  pXMLStream->WriteString(ws.AsStringView());
+}
