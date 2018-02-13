@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbb5364c_7140c361",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-13T19:02:40Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "821b67bc7ff3fc9986270b22b6ecbdadac167d47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea2cdc9_f3752319",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-13T19:02:40Z",
+      "side": 1,
+      "message": "This isn\u0027t safe though. FX_FILESIZE is off_t on non-Windows, and off_t can be 64-bit. Let\u0027s use FX_SAFE_UINT32 to safely get a uint32_t, and worry about things like |dwSize| not being of type FX_FILESIZE later.",
+      "revId": "821b67bc7ff3fc9986270b22b6ecbdadac167d47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
