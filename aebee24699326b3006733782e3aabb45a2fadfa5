@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aecf0920_843fd829",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-13T20:10:43Z",
+      "side": 1,
+      "message": "chromium:806746",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "aebee24699326b3006733782e3aabb45a2fadfa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7da801f_28ed3806",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-13T20:10:43Z",
+      "side": 1,
+      "message": "static constexpr kEpsilon \u003d 0.01;\nif (std::fabs(font_size) \u003c kEpsilon))  // fabs is fabulous\n  return true;",
+      "revId": "aebee24699326b3006733782e3aabb45a2fadfa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08cfcdc9_d5543c46",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-13T20:10:43Z",
+      "side": 1,
+      "message": "We may want to take the scaling factor in |pObject2Device| into account when making this decision. e.g. If |font_size| is very small, but |pObject2Device| will make it very big, maaaaaybe we want to take that into account?",
+      "range": {
+        "startLine": 643,
+        "startChar": 19,
+        "endLine": 643,
+        "endChar": 23
+      },
+      "revId": "aebee24699326b3006733782e3aabb45a2fadfa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
