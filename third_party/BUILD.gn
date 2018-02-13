@@ -566,5 +566,7 @@ jumbo_source_set("pdfium_base") {
     "base/sys_byteorder.h",
     "base/template_util.h",
     "build/build_config.h",
+    "skia_shared/SkFloatToDecimal.cpp",
+    "skia_shared/SkFloatToDecimal.h",
   ]
 }
