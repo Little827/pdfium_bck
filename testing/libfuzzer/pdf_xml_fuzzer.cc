@@ -23,15 +23,12 @@ CFX_XMLNode* XFA_FDEExtension_GetDocumentNode(
     return nullptr;
   }
   CFX_XMLNode* pXMLFakeRoot = pXMLDoc->GetRoot();
-  for (CFX_XMLNode* pXMLNode =
-           pXMLFakeRoot->GetNodeItem(CFX_XMLNode::FirstChild);
-       pXMLNode; pXMLNode = pXMLNode->GetNodeItem(CFX_XMLNode::NextSibling)) {
+  for (CFX_XMLNode* pXMLNode = pXMLFakeRoot->GetFirstChild(); pXMLNode;
+       pXMLNode = pXMLNode->GetNextSibling()) {
     if (pXMLNode->GetType() == FX_XMLNODE_Element) {
       if (bVerifyWellFormness) {
-        for (CFX_XMLNode* pNextNode =
-                 pXMLNode->GetNodeItem(CFX_XMLNode::NextSibling);
-             pNextNode;
-             pNextNode = pNextNode->GetNodeItem(CFX_XMLNode::NextSibling)) {
+        for (CFX_XMLNode* pNextNode = pXMLNode->GetNextSibling(); pNextNode;
+             pNextNode = pNextNode->GetNextSibling()) {
           if (pNextNode->GetType() == FX_XMLNODE_Element) {
             return nullptr;
           }
