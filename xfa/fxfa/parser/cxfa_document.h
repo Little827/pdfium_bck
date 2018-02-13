@@ -50,7 +50,6 @@ class CScript_LayoutPseudoModel;
 class CScript_LogPseudoModel;
 class CScript_SignaturePseudoModel;
 class CXFA_ContainerLayoutItem;
-class CXFA_DocumentParser;
 class CXFA_FFNotify;
 class CXFA_LayoutItem;
 class CXFA_LayoutProcessor;
@@ -59,14 +58,13 @@ class CXFA_Object;
 
 class CXFA_Document : public CXFA_NodeOwner {
  public:
-  explicit CXFA_Document(CXFA_DocumentParser* pParser);
+  explicit CXFA_Document(CXFA_FFNotify* notify);
   ~CXFA_Document() override;
 
   CFXJSE_Engine* InitScriptContext(CFXJS_Engine* fxjs_engine);
 
   CXFA_Node* GetRoot() const { return m_pRootNode; }
 
-  CFX_XMLDoc* GetXMLDoc() const;
   virtual CXFA_FFNotify* GetNotify() const;
   CXFA_LocaleMgr* GetLocalMgr();
   CXFA_Object* GetXFAObject(XFA_HashCode wsNodeNameHash);
@@ -104,7 +102,7 @@ class CXFA_Document : public CXFA_NodeOwner {
   std::vector<CXFA_Node*> m_pPendingPageSet;
 
  private:
-  CXFA_DocumentParser* m_pParser;
+  CXFA_FFNotify* notify_;
   CXFA_Node* m_pRootNode;
   std::unique_ptr<CFXJSE_Engine> m_pScriptContext;
   std::unique_ptr<CXFA_LayoutProcessor> m_pLayoutProcessor;
