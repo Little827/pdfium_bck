@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a61b883_88460bde",
+        "filename": "core/fxcrt/xml/cfx_xmlelement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:41:15Z",
+      "side": 1,
+      "message": "nit: local not needed, shadows above.",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "df3d91449ea0928c0e896bfe7b9dd46a4ebb7f36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54eb7699_69f09d51",
+        "filename": "core/fxcrt/xml/cfx_xmlinstruction.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:41:15Z",
+      "side": 1,
+      "message": "same.",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 17
+      },
+      "revId": "df3d91449ea0928c0e896bfe7b9dd46a4ebb7f36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c340a47_b0416511",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:41:15Z",
+      "side": 1,
+      "message": "super-nit: these are \"entities\", I\u0027d like the name of the method to include that term.  EncodeEntities() maybe.",
+      "range": {
+        "startLine": 100,
+        "startChar": 23,
+        "endLine": 100,
+        "endChar": 30
+      },
+      "revId": "df3d91449ea0928c0e896bfe7b9dd46a4ebb7f36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21421eeb_3c8e8701",
+        "filename": "core/fxcrt/xml/cfx_xmltext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:41:15Z",
+      "side": 1,
+      "message": "nit: local not needed.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "df3d91449ea0928c0e896bfe7b9dd46a4ebb7f36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
