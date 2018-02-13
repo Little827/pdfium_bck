@@ -537,6 +537,8 @@ jumbo_static_library("fpdfapi") {
     "core/fpdfapi/page/cpdf_pagemodule.h",
     "core/fpdfapi/page/cpdf_pageobject.cpp",
     "core/fpdfapi/page/cpdf_pageobject.h",
+    "core/fpdfapi/page/cpdf_pageobjectarray.cpp",
+    "core/fpdfapi/page/cpdf_pageobjectarray.h",
     "core/fpdfapi/page/cpdf_pageobjectholder.cpp",
     "core/fpdfapi/page/cpdf_pageobjectholder.h",
     "core/fpdfapi/page/cpdf_pageobjectlist.cpp",

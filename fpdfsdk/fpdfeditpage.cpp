@@ -16,6 +16,7 @@
 #include "core/fpdfapi/page/cpdf_imageobject.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
+#include "core/fpdfapi/page/cpdf_pageobjectarray.h"
 #include "core/fpdfapi/page/cpdf_pathobject.h"
 #include "core/fpdfapi/page/cpdf_shadingobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -204,6 +205,36 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_HasTransparency(FPDF_PAGE page) {
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPageObj_Destroy(FPDF_PAGEOBJECT page_obj) {
   delete CPDFPageObjectFromFPDFPageObject(page_obj);
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECTARRAY FPDF_CALLCONV
+FPDFPageObj_GetAllPageObjects(FPDF_PAGE page) {
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!IsPageObject(pPage))
+    return nullptr;
+
+  auto pResult = pdfium::MakeUnique<CPDF_PageObjectArray>();
+  for (int i = 0; i < pdfium::CollectionSize<int>(*pPage->GetPageObjectList());
+       ++i) {
+    pResult->Add(pPage->GetPageObjectList()->GetPageObjectByIndex(i));
+  }
+
+  return pResult.release();
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObj_ArrayGetCount(FPDF_PAGEOBJECTARRAY array) {
+  CPDF_PageObjectArray* pPageObjectArray =
+      static_cast<CPDF_PageObjectArray*>(array);
+  return pPageObjectArray->GetCount();
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_ArrayGetPageObject(FPDF_PAGEOBJECTARRAY array,
+                               unsigned long index) {
+  CPDF_PageObjectArray* pPageObjectArray =
+      static_cast<CPDF_PageObjectArray*>(array);
+  return static_cast<FPDF_PAGEOBJECT>(pPageObjectArray->GetObject(index));
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV

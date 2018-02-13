@@ -1074,6 +1074,15 @@ void DumpMetaData(FPDF_DOCUMENT doc) {
   }
 }
 
+void PrintPageObjects(FPDF_PAGE page) {
+  fprintf(stderr, "Got %d page objects from FPDFPage_CountObjects.\n",
+          FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECTARRAY page_objects = FPDFPageObj_GetAllPageObjects(page);
+  unsigned long object_count = FPDFPageObj_ArrayGetCount(page_objects);
+  fprintf(stderr, "Got %lu page objects from FPDFPageObj_ArrayGetCount.\n",
+          object_count);
+}
+
 void SaveAttachments(FPDF_DOCUMENT doc, const std::string& name) {
   for (int i = 0; i < FPDFDoc_GetAttachmentCount(doc); ++i) {
     FPDF_ATTACHMENT attachment = FPDFDoc_GetAttachment(doc, i);
@@ -1246,7 +1255,12 @@ bool RenderPage(const std::string& name,
     return true;
   }
 
+  fprintf(stderr, "page %d before\n", page_index);
+  PrintPageObjects(page);
+
   std::unique_ptr<void, FPDFTextPageDeleter> text_page(FPDFText_LoadPage(page));
+  fprintf(stderr, "page %d after\n", page_index);
+  PrintPageObjects(page);
 
   double scale = 1.0;
   if (!options.scale_factor_as_string.empty())
