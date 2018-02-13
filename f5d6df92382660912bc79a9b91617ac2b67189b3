@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "a5450182_f3f36a71",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T22:22:43Z",
+      "side": 1,
+      "message": "this is OK, but we should use the sizeof() version here.",
+      "range": {
+        "startLine": 109,
+        "startChar": 22,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "f5d6df92382660912bc79a9b91617ac2b67189b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052e1064_4fb65f2f",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T22:22:43Z",
+      "side": 1,
+      "message": "nit: same here. just feels safer somehow.",
+      "range": {
+        "startLine": 125,
+        "startChar": 22,
+        "endLine": 125,
+        "endChar": 35
+      },
+      "revId": "f5d6df92382660912bc79a9b91617ac2b67189b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb80daf3_f949e486",
         "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
         "patchSetId": 1
@@ -64,6 +110,29 @@
         "startChar": 1,
         "endLine": 150,
         "endChar": 34
+      },
+      "revId": "f5d6df92382660912bc79a9b91617ac2b67189b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2048c874_e19699ad",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T22:22:43Z",
+      "side": 1,
+      "message": "nit: can we invert this test?  break here is weird.",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 21
       },
       "revId": "f5d6df92382660912bc79a9b91617ac2b67189b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
