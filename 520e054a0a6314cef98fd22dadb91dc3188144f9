@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86acc495_d9bed2f7",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T19:01:23Z",
+      "side": 1,
+      "message": "nit: might I be UnownedPtr\u003c\u003e ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 16
+      },
+      "revId": "520e054a0a6314cef98fd22dadb91dc3188144f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
