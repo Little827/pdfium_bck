@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7707a20f_72fa1ead",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 1,
+      "message": "nit: maybe pull virtual out by itself into a new block at say line 78",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 43
+      },
+      "revId": "dd834fee428f3dd45f68666663074699bb83c4a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1f81df_7224ff13",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 1,
+      "message": "pre-existing: any of these const methods?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "dd834fee428f3dd45f68666663074699bb83c4a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002fb942_453eefe2",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 1,
+      "message": "nit: I thought I\u0027d been squeezing the |_| out of the test names used in the test macros ...",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "dd834fee428f3dd45f68666663074699bb83c4a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae94143a_55c89c79",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 1,
+      "message": "do we want to test child-\u003eparent \u003d\u003d getnode()?",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "dd834fee428f3dd45f68666663074699bb83c4a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca0155e_d3749767",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 1,
+      "message": "nit: me no like |child0| and |child|.  child1 and child2 maybe?",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "dd834fee428f3dd45f68666663074699bb83c4a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c17b72c_2b795e07",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 1,
+      "message": "nit: we already tested this case in the previous test.  You could avoid it here if you liked.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 47
+      },
+      "revId": "dd834fee428f3dd45f68666663074699bb83c4a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4b2314_0c42baff",
+        "filename": "xfa/fxfa/parser/cxfa_node_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 1,
+      "message": "nit: maybe run through the whole chain forwards.\nnit: maybe then run through the whole chain backwards.",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 45
+      },
+      "revId": "dd834fee428f3dd45f68666663074699bb83c4a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

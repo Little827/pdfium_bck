@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "730845fe_c938d774",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:21:41Z",
+      "side": 0,
+      "message": "what if it comes up short?  Looks like we used to just give up.",
+      "range": {
+        "startLine": 1152,
+        "startChar": 22,
+        "endLine": 1152,
+        "endChar": 37
+      },
+      "revId": "c075f402136890a7d458e7cbc321e47ba2f5396f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
