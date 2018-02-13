@@ -146,11 +146,21 @@ int32_t CFX_BmpDecompressor::ReadHeader() {
         if (img_ifh_size_ >
             std::min(kBmpInfoHeaderSize,
                      static_cast<size_t>(sizeof(BmpInfoHeader)))) {
+          FX_SAFE_SIZE_T new_pos = input_buffer_->GetPosition();
+          new_pos += img_ifh_size_;
+          if (!new_pos.IsValid()) {
+            Error();
+            NOTREACHED();
+          }
+
           BmpInfoHeader bmp_info_header;
           if (!ReadData(reinterpret_cast<uint8_t*>(&bmp_info_header),
-                        img_ifh_size_)) {
+                        sizeof(bmp_info_header))) {
             return 2;
           }
+
+          if (!input_buffer_->Seek(new_pos.ValueOrDie()))
+            return 2;
 
           uint16_t biPlanes;
           width_ = FXDWORD_GET_LSBFIRST(
