@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "070de79c_96a0ba1e",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:57:22Z",
+      "side": 1,
+      "message": "pointless?",
+      "range": {
+        "startLine": 1273,
+        "startChar": 2,
+        "endLine": 1273,
+        "endChar": 12
+      },
+      "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51496544_d1c56362",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:57:22Z",
+      "side": 1,
+      "message": "nit: means  \"IsOwnedXMLNode()\" ?",
+      "range": {
+        "startLine": 540,
+        "startChar": 20,
+        "endLine": 540,
+        "endChar": 25
+      },
+      "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1dad594_06569c0e",
+        "filename": "xfa/fxfa/parser/cxfa_nodeowner.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:57:22Z",
+      "side": 1,
+      "message": "nit: std::set or unordered_set, else potentially N^2 on removal?",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
