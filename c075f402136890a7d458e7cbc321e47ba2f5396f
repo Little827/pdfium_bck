@@ -22,6 +22,30 @@
       "revId": "c075f402136890a7d458e7cbc321e47ba2f5396f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ba7ab01_4df05be6",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-13T18:38:36Z",
+      "side": 0,
+      "message": "Yea, this strikes me as wrong. Previously we\u0027d leak the node as it\u0027s already been removed from the Purge list but not added as a child. There is  no return value so the caller has no idea.\n\nWe will now append to the end, which I think makes sense, if you pass an index too big, make it the last index.",
+      "parentUuid": "730845fe_c938d774",
+      "range": {
+        "startLine": 1152,
+        "startChar": 22,
+        "endLine": 1152,
+        "endChar": 37
+      },
+      "revId": "c075f402136890a7d458e7cbc321e47ba2f5396f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
