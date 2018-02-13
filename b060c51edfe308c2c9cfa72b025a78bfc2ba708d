@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b46b5455_ac9957bc",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-13T18:33:37Z",
+      "side": 0,
+      "message": "In addition to roo, I\u0027d expect to see exactly 5 of these corresponding to the traditional 5 of parent, {first,last}child, {next,prev}sibling.",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "b060c51edfe308c2c9cfa72b025a78bfc2ba708d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
