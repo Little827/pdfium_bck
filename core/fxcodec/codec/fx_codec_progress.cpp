@@ -836,7 +836,12 @@ bool CCodec_ProgressiveDecoder::BmpReadMoreData(CCodec_BmpModule* pBmpModule,
     return false;
 
   dwSize = dwSize - m_offSet;
-  uint32_t dwAvail = pBmpModule->GetAvailInput(m_pBmpContext.get(), nullptr);
+  FX_FILESIZE avail_input =
+      pBmpModule->GetAvailInput(m_pBmpContext.get(), nullptr);
+  if (avail_input < 0)
+    return false;
+
+  uint32_t dwAvail = static_cast<uint32_t>(avail_input);
   if (dwAvail == m_SrcSize) {
     if (dwSize > FXCODEC_BLOCK_SIZE) {
       dwSize = FXCODEC_BLOCK_SIZE;
