@@ -639,8 +639,8 @@ bool CFX_PSRenderer::DrawText(int nChars,
                               const CFX_Matrix* pObject2Device,
                               float font_size,
                               uint32_t color) {
-  // Do not send zero or negative font sizes to printers. See crbug.com/767343.
-  if (font_size <= 0.0)
+  // Do not send near zero font sizes to printers. See crbug.com/767343.
+  if (font_size <= 0.01 && font_size >= -0.01)
     return true;
 
   if ((pObject2Device->a == 0 && pObject2Device->b == 0) ||
