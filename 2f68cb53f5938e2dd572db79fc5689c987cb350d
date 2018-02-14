@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8080956_44d51919",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-14T15:01:49Z",
+      "side": 0,
+      "message": "This wasn\u0027t useful, the notify code only fired if the flag was Initialized. So,this can just become SetFlag().",
+      "range": {
+        "startLine": 72,
+        "startChar": 20,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "2f68cb53f5938e2dd572db79fc5689c987cb350d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
