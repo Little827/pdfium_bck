@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "341a8fef_03c5abe7",
+        "filename": "third_party/freetype/roll-freetype.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-02-14T18:23:29Z",
+      "side": 1,
+      "message": "This is just to prevent presubmit error, is there a better way to prevent presubmit from complaining about third_party/freetype/include/pstables.h when it is modified? Requiring running git cl upload --bypass-hooks, or ignoring the presubmit error when the file changes is another option.",
+      "revId": "b1ec67afe67ae6a41dfa9aabc289c1c8ed958145",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
