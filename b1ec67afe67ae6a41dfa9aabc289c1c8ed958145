@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bfc63e6f_9f2cb293",
+        "filename": "third_party/freetype/include/pstables.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-02-14T19:06:20Z",
+      "side": 1,
+      "message": "This is the result from copying the file.",
+      "parentUuid": "0ddc14de_7276e30d",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b1ec67afe67ae6a41dfa9aabc289c1c8ed958145",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "341a8fef_03c5abe7",
         "filename": "third_party/freetype/roll-freetype.sh",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "I\u0027d just do upload --bypass-hooks instead of reformatting the copied file.",
       "parentUuid": "341a8fef_03c5abe7",
+      "revId": "b1ec67afe67ae6a41dfa9aabc289c1c8ed958145",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d37a21_c232808c",
+        "filename": "third_party/freetype/roll-freetype.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-02-14T19:06:20Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "5f2da835_0db50058",
       "revId": "b1ec67afe67ae6a41dfa9aabc289c1c8ed958145",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
