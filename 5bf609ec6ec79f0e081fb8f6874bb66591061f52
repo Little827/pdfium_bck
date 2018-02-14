@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "381d0928_408b4327",
+        "filename": "fxjs/xfa/cjx_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-14T20:37:49Z",
+      "side": 1,
+      "message": "\u003d nullptr;",
+      "range": {
+        "startLine": 281,
+        "startChar": 32,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "5bf609ec6ec79f0e081fb8f6874bb66591061f52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
