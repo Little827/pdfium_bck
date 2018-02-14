@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9edc027c_71f2eb98",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-02-14T16:16:38Z",
+      "side": 1,
+      "message": "Should this be AndNotify?",
+      "range": {
+        "startLine": 1555,
+        "startChar": 11,
+        "endLine": 1555,
+        "endChar": 44
+      },
+      "revId": "aa6719246104cd8c741a871175ab52e96243463b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a083d7_d17ad1f2",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-02-14T16:16:38Z",
+      "side": 1,
+      "message": "Should this be AndNotify?",
+      "range": {
+        "startLine": 1704,
+        "startChar": 6,
+        "endLine": 1704,
+        "endChar": 46
+      },
+      "revId": "aa6719246104cd8c741a871175ab52e96243463b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68df2feb_bc6b607b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-02-14T16:16:38Z",
+      "side": 1,
+      "message": "Should this be AndNotify?",
+      "range": {
+        "startLine": 1189,
+        "startChar": 9,
+        "endLine": 1189,
+        "endChar": 16
+      },
+      "revId": "aa6719246104cd8c741a871175ab52e96243463b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2ac7cc_db026567",
+        "filename": "xfa/fxfa/parser/xfa_document_datamerger_imp.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-02-14T16:16:38Z",
+      "side": 1,
+      "message": "AndNotify?",
+      "range": {
+        "startLine": 1451,
+        "startChar": 14,
+        "endLine": 1451,
+        "endChar": 20
+      },
+      "revId": "aa6719246104cd8c741a871175ab52e96243463b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
