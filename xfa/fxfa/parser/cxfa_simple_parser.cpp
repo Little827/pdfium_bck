@@ -758,9 +758,11 @@ CXFA_Node* CXFA_SimpleParser::ParseAsXDPPacket_Data(
     if (!DataLoader(pNode, pDataXMLNode, true))
       return nullptr;
 
-    pNode->SetXMLMappingNode(pDataXMLNode);
-    if (pDataXMLNode != pXMLDocumentNode)
-      pNode->SetFlag(XFA_NodeFlag_OwnXMLNode);
+    if (pDataXMLNode == pXMLDocumentNode)
+      pNode->SetXMLMappingNode(pDataXMLNode);
+    else
+      pNode->SetXMLMappingNode(pdfium::WrapUnique<CFX_XMLNode>(pDataXMLNode));
+
     return pNode;
   }
   return nullptr;
