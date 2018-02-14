@@ -14,7 +14,8 @@ FTVERSION=`git -C third_party/freetype/src/ describe --long`
 FTCOMMIT=`git -C third_party/freetype/src/ rev-parse HEAD`
 
 # Make sure our copy of pstables.h matches the one in freetype/src.
-cmp third_party/freetype/src/src/psnames/pstables.h \
+# May need to --bypass-hooks to prevent formatting of this file.
+cp third_party/freetype/src/src/psnames/pstables.h \
   third_party/freetype/include/pstables.h
 
 sed -i "s/^Version: .*\$/Version: ${FTVERSION%-*}/" \
