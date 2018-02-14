@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b507d7d_3bcbb04a",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-14T20:07:05Z",
+      "side": 1,
+      "message": "Isn\u0027t there a missing: \n\nif (img_ifh_size \u003c\u003d sizeof(BmpInfoHeader)) {\n  Error();\n  NOTREACHED();\n}",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 52
+      },
+      "revId": "89f496ae6895750f122a801cae8a824f5088cb03",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
