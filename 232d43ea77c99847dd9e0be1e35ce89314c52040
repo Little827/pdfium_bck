@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a38d797_e687c915",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-14T18:55:10Z",
+      "side": 1,
+      "message": "Add something like:\n\nCurrently the BMP decompressor doesn\u0027t verify the returned data length was the amount requested. This means we may end up with part of our structure uninitialized if we didn\u0027t copy in enough data. \n\nThis CL verifies the length of data copied is the size we require.",
+      "revId": "232d43ea77c99847dd9e0be1e35ce89314c52040",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
