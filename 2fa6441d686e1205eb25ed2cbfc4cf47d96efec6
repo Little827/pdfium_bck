@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd49ec07_0e005c26",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-14T17:19:24Z",
+      "side": 1,
+      "message": "why pass it, then?",
+      "range": {
+        "startLine": 1329,
+        "startChar": 3,
+        "endLine": 1329,
+        "endChar": 45
+      },
+      "revId": "2fa6441d686e1205eb25ed2cbfc4cf47d96efec6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
