@@ -45,6 +45,30 @@
       "revId": "21eb05fff1ef514e7eeeec9f3acff7548f458a8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75c04b2f_1aba98e9",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-14T17:34:57Z",
+      "side": 1,
+      "message": "I don\u0027t know if any other nodes point to this nodes owned XML node. So, if we clear it, we may get other Lifetime probes firing since the destruction order isn\u0027t defined.",
+      "parentUuid": "c0c848aa_c5d85e00",
+      "range": {
+        "startLine": 541,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 4
+      },
+      "revId": "21eb05fff1ef514e7eeeec9f3acff7548f458a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
