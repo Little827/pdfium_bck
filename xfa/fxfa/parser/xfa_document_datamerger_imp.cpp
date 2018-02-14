@@ -7,6 +7,7 @@
 #include "xfa/fxfa/parser/xfa_document_datamerger_imp.h"
 
 #include <map>
+#include <utility>
 #include <vector>
 
 #include "core/fxcrt/fx_extension.h"
@@ -1407,11 +1408,10 @@ void CXFA_Document::DoDataMerge() {
   }
 
   if (!pDataRoot) {
-    CFX_XMLElement* pDataRootXMLNode = new CFX_XMLElement(L"xfa:data");
+    auto pDataRootXMLNode = pdfium::MakeUnique<CFX_XMLElement>(L"xfa:data");
     pDataRoot = CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
     pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, L"data", false, false);
-    pDataRoot->SetXMLMappingNode(pDataRootXMLNode);
-    pDataRoot->SetFlag(XFA_NodeFlag_OwnXMLNode);
+    pDataRoot->SetXMLMappingNode(std::move(pDataRootXMLNode));
     pDatasetsRoot->InsertChild(pDataRoot, nullptr);
   }
 

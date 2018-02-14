@@ -41,6 +41,10 @@ class MaybeOwned {
     m_pObj = ptr;
     m_pOwnedObj.reset();
   }
+  void ResetIfUnowned() {
+    if (!IsOwned())
+      Reset();
+  }
 
   T* Get() const { return m_pObj.Get(); }
   bool IsOwned() const { return !!m_pOwnedObj; }
