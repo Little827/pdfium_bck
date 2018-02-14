@@ -1074,6 +1074,27 @@ void DumpMetaData(FPDF_DOCUMENT doc) {
   }
 }
 
+void PrintPageObjects(FPDF_PAGE page) {
+  constexpr const char* kTag = "Foo";
+  FPDF_PAGEOBJECTARRAY page_objects =
+      FPDFPageObj_GetAllMarkedPageObjects(page, kTag);
+
+  unsigned long object_count = FPDFPageObj_ArrayGetCount(page_objects);
+  fprintf(stderr,
+          "Got %lu page objects from FPDFPageObj_ArrayGetCount matching %s. "
+          "Will delete them all.\n",
+          object_count, kTag);
+  for (unsigned long i = 0; i < object_count; ++i) {
+    FPDF_PAGEOBJECT page_object =
+        FPDFPageObj_ArrayGetPageObject(page_objects, i);
+    FPDF_BOOL removed = FPDFPage_RemoveObject(page, page_object);
+    if (!removed)
+      fprintf(stderr, "Unable to remove a page object.\n");
+
+    FPDFPageObj_Destroy(page_object);
+  }
+}
+
 void SaveAttachments(FPDF_DOCUMENT doc, const std::string& name) {
   for (int i = 0; i < FPDFDoc_GetAttachmentCount(doc); ++i) {
     FPDF_ATTACHMENT attachment = FPDFDoc_GetAttachment(doc, i);
@@ -1245,6 +1266,8 @@ bool RenderPage(const std::string& name,
     DumpPageStructure(page, page_index);
     return true;
   }
+
+  PrintPageObjects(page);
 
   std::unique_ptr<void, FPDFTextPageDeleter> text_page(FPDFText_LoadPage(page));
 

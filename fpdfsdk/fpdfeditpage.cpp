@@ -16,6 +16,7 @@
 #include "core/fpdfapi/page/cpdf_imageobject.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
+#include "core/fpdfapi/page/cpdf_pageobjectarray.h"
 #include "core/fpdfapi/page/cpdf_pathobject.h"
 #include "core/fpdfapi/page/cpdf_shadingobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -178,6 +179,29 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_InsertObject(FPDF_PAGE page,
   CalcBoundingBox(pPageObj);
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPage_RemoveObject(FPDF_PAGE page, FPDF_PAGEOBJECT page_obj) {
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_obj);
+  if (!pPageObj)
+    return false;
+
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!IsPageObject(pPage))
+    return false;
+
+  pdfium::FakeUniquePtr<CPDF_PageObject> p(pPageObj);
+
+  auto pPageObjectList = pPage->GetPageObjectList();
+  auto it =
+      std::find(std::begin(*pPageObjectList), std::end(*pPageObjectList), p);
+  if (it == std::end(*pPageObjectList))
+    return false;
+
+  it->release();
+  pPageObjectList->erase(it);
+  return true;
+}
+
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_CountObject(FPDF_PAGE page) {
   return FPDFPage_CountObjects(page);
 }
@@ -204,6 +228,58 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_HasTransparency(FPDF_PAGE page) {
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPageObj_Destroy(FPDF_PAGEOBJECT page_obj) {
   delete CPDFPageObjectFromFPDFPageObject(page_obj);
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECTARRAY FPDF_CALLCONV
+FPDFPageObj_GetAllPageObjects(FPDF_PAGE page) {
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!IsPageObject(pPage))
+    return nullptr;
+
+  auto pResult = pdfium::MakeUnique<CPDF_PageObjectArray>();
+  for (int i = 0; i < pdfium::CollectionSize<int>(*pPage->GetPageObjectList());
+       ++i) {
+    pResult->Add(pPage->GetPageObjectList()->GetPageObjectByIndex(i));
+  }
+
+  return pResult.release();
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECTARRAY FPDF_CALLCONV
+FPDFPageObj_GetAllMarkedPageObjects(FPDF_PAGE page, FPDF_BYTESTRING tag) {
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!IsPageObject(pPage))
+    return nullptr;
+
+  auto pResult = pdfium::MakeUnique<CPDF_PageObjectArray>();
+  for (int i = 0; i < pdfium::CollectionSize<int>(*pPage->GetPageObjectList());
+       ++i) {
+    CPDF_PageObject* pPageObject =
+        pPage->GetPageObjectList()->GetPageObjectByIndex(i);
+    if (pPageObject->m_ContentMark.HasRef()) {
+      for (size_t j = 0; j < pPageObject->m_ContentMark.CountItems(); ++j) {
+        if (pPageObject->m_ContentMark.GetItem(j).GetName() == tag)
+          pResult->Add(pPageObject);
+      }
+    }
+  }
+
+  return pResult.release();
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObj_ArrayGetCount(FPDF_PAGEOBJECTARRAY array) {
+  CPDF_PageObjectArray* pPageObjectArray =
+      static_cast<CPDF_PageObjectArray*>(array);
+  return pPageObjectArray->GetCount();
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_ArrayGetPageObject(FPDF_PAGEOBJECTARRAY array,
+                               unsigned long index) {
+  CPDF_PageObjectArray* pPageObjectArray =
+      static_cast<CPDF_PageObjectArray*>(array);
+  return static_cast<FPDF_PAGEOBJECT>(pPageObjectArray->GetObject(index));
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
