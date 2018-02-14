@@ -22,6 +22,29 @@
       "revId": "21eb05fff1ef514e7eeeec9f3acff7548f458a8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c848aa_c5d85e00",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-14T17:16:09Z",
+      "side": 1,
+      "message": "Is there a harm in zapping the pointer in the unowned case? Ideally, we\u0027d like to avoid checking IsOwned(), we simply assign to the MaybeOwned in one form or another and then just forget about it and let it handle the differences.",
+      "range": {
+        "startLine": 541,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 4
+      },
+      "revId": "21eb05fff1ef514e7eeeec9f3acff7548f458a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
