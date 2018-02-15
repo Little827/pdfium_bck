@@ -148,6 +148,18 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_SetRotation(FPDF_PAGE page, int rotate);
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_InsertObject(FPDF_PAGE page,
                                                      FPDF_PAGEOBJECT page_obj);
 
+// Remove |page_obj| from |page|.
+//
+//   page     - handle to a page
+//   page_obj - handle to a page object to be removed.
+//
+// Returns TRUE on success.
+//
+// Ownership is transferred to the caller. Call FPDFPageObj_Destroy() to free
+// it.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPage_RemoveObject(FPDF_PAGE page, FPDF_PAGEOBJECT page_obj);
+
 // Get number of page objects inside |page|.
 //
 //   page - handle to a page.
@@ -267,6 +279,18 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_TransformAnnots(FPDF_PAGE page,
 // Returns a handle to a new image object.
 FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
 FPDFPageObj_NewImageObj(FPDF_DOCUMENT document);
+
+FPDF_EXPORT FPDF_PAGEOBJECTARRAY FPDF_CALLCONV
+FPDFPageObj_GetAllPageObjects(FPDF_PAGE page);
+
+FPDF_EXPORT FPDF_PAGEOBJECTARRAY FPDF_CALLCONV
+FPDFPageObj_GetAllMarkedPageObjects(FPDF_PAGE page, FPDF_BYTESTRING tag);
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObj_ArrayGetCount(FPDF_PAGEOBJECTARRAY array);
+
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_ArrayGetPageObject(FPDF_PAGEOBJECTARRAY array, unsigned long index);
 
 // Load an image from a JPEG image file and then set it into |image_object|.
 //
