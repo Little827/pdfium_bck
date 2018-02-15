@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -283,8 +284,13 @@ void CXFA_FFWidget::ModifyStatus(uint32_t dwAdded, uint32_t dwRemoved) {
 }
 
 CFX_RectF CXFA_FFWidget::GetBBox(uint32_t dwStatus, bool bDrawFocus) {
-  if (bDrawFocus || !m_pPageView)
+  if (bDrawFocus || !m_pPageView) {
+    std::cerr << "CXFA_FFWidget::GetBBox will return " << CFX_RectF()
+              << std::endl;
     return CFX_RectF();
+  }
+  std::cerr << "CXFA_FFWidget::GetBBox will return "
+            << m_pPageView->GetPageViewRect() << std::endl;
   return m_pPageView->GetPageViewRect();
 }
 

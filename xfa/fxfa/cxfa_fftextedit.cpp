@@ -126,6 +126,12 @@ bool CXFA_FFTextEdit::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   return true;
 }
 
+CFX_RectF CXFA_FFTextEdit::GetBBox(uint32_t dwStatus, bool bDrawFocus) {
+  std::cerr << "CXFA_FFTextEdit::GetBBox will return "
+            << CXFA_FFWidget::GetBBox(dwStatus, bDrawFocus) << std::endl;
+  return CXFA_FFWidget::GetBBox(dwStatus, bDrawFocus);
+}
+
 bool CXFA_FFTextEdit::OnRButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   if (!m_pNode->IsOpenAccess())
     return false;

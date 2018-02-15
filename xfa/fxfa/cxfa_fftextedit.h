@@ -11,6 +11,8 @@
 #include "core/fxcrt/fx_string.h"
 #include "xfa/fxfa/cxfa_fffield.h"
 
+#include <iostream>
+
 class CFWL_Event;
 class CFWL_Widget;
 class CFX_Matrix;
@@ -23,6 +25,7 @@ class CXFA_FFTextEdit : public CXFA_FFField {
   ~CXFA_FFTextEdit() override;
 
   // CXFA_FFField
+  CFX_RectF GetBBox(uint32_t dwStatus, bool bDrawFocus = false) override;
   bool LoadWidget() override;
   void UpdateWidgetProperty() override;
   bool OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) override;

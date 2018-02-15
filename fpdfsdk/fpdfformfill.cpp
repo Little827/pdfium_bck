@@ -6,6 +6,7 @@
 
 #include "public/fpdf_formfill.h"
 
+#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -213,6 +214,8 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
                              FPDF_PAGE page,
                              double page_x,
                              double page_y) {
+  std::cerr << "FPDFPage_HasFormFieldAtPoint " << page_x << ", " << page_y
+            << std::endl;
   if (!hHandle)
     return -1;
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
@@ -252,14 +255,43 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
     return -1;
 
   CXFA_FFWidget* pXFAAnnot;
+
+  // std::cerr << "  let me show all form fields " << std::endl;
+  // while ((pXFAAnnot = pWidgetIterator->MoveToNext()) != nullptr) {
+  //   CFX_RectF rcBBox = pXFAAnnot->GetBBox(0);
+  //   CFX_FloatRect rcWidget(rcBBox.left, rcBBox.top, rcBBox.left + rcBBox.width,
+  //                          rcBBox.top + rcBBox.height);
+  //   rcWidget.Inflate(1.0f, 1.0f);
+  //   bool contains = rcWidget.Contains(
+  //       CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)));
+  //   std::cerr << "    BBox FormFieldType " << (int)pXFAAnnot->GetFormFieldType()
+  //             << ", rcWidget " << rcWidget << ", contains " << contains
+  //             << std::endl;
+
+  //   CFX_RectF rcWidgetRect = pXFAAnnot->GetWidgetRect();
+  //   CFX_FloatRect rcWidgetRect2(rcWidgetRect.left, rcWidgetRect.top, rcWidgetRect.left + rcWidgetRect.width,
+  //                          rcWidgetRect.top + rcWidgetRect.height);
+  //   rcWidgetRect2.Inflate(1.0f, 1.0f);
+  //   bool contains2 = rcWidgetRect2.Contains(
+  //       CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)));
+  //   std::cerr << "    WdgR FormFieldType " << (int)pXFAAnnot->GetFormFieldType()
+  //             << ", rcWidget " << rcWidgetRect2 << ", contains " << contains2
+  //             << std::endl;
+  // }
+
   while ((pXFAAnnot = pWidgetIterator->MoveToNext()) != nullptr) {
-    CFX_RectF rcBBox = pXFAAnnot->GetBBox(0);
+    CFX_RectF rcBBox = pXFAAnnot->GetWidgetRect();
+
     CFX_FloatRect rcWidget(rcBBox.left, rcBBox.top, rcBBox.left + rcBBox.width,
                            rcBBox.top + rcBBox.height);
     rcWidget.Inflate(1.0f, 1.0f);
     if (rcWidget.Contains(CFX_PointF(static_cast<float>(page_x),
                                      static_cast<float>(page_y)))) {
-      return static_cast<int>(pXFAAnnot->GetFormFieldType());
+      if (pXFAAnnot->GetFormFieldType() != FormFieldType::kXFA) {
+        std::cerr << "  XFA code will return "
+                  << (int)pXFAAnnot->GetFormFieldType() << std::endl;
+        return static_cast<int>(pXFAAnnot->GetFormFieldType());
+      }
     }
   }
 #endif  // PDF_ENABLE_XFA
