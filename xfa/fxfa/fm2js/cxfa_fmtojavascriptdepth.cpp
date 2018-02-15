@@ -6,9 +6,9 @@
 
 namespace {
 
-// Arbitarily picked by looking at how deep a translation got before hitting
+// Arbitrarily picked by looking at how deep a translation got before hitting
 // the getting fuzzer memory limits. Should be larger then |kMaxParseDepth| in
-// cxfa_fmparser.cpp.
+// parser.cpp.
 const unsigned int kMaxDepth = 5000;
 
 }  // namespace

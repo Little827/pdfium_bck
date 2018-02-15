@@ -682,6 +682,7 @@ bool CXFA_FMCallExpression::ToJavaScript(CFX_WideTextBuf& javascript) {
       // transpile to fail.
       return false;
     }
+
     javascript << L"(";
     if (isExistsFunc) {
       javascript << L"\n(\nfunction ()\n{\ntry\n{\n";

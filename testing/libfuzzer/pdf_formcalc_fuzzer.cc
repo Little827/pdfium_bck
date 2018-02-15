@@ -4,12 +4,12 @@
 
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_string.h"
-#include "xfa/fxfa/fm2js/cxfa_fmparser.h"
+#include "xfa/fxfa/fm2js/parser.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   WideString input = WideString::FromUTF8(ByteStringView(data, size));
 
-  CXFA_FMParser parser(input.AsStringView());
+  xfa::formcalc::Parser parser(input.AsStringView());
   parser.Parse();
 
   return 0;

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "xfa/fxfa/fm2js/cxfa_fmparser.h"
+#include "xfa/fxfa/fm2js/parser.h"
 
 #include <vector>
 
@@ -12,8 +12,11 @@
 #include "third_party/base/ptr_util.h"
 #include "xfa/fxfa/fm2js/cxfa_fmtojavascriptdepth.h"
 
-TEST(CXFA_FMParserTest, Empty) {
-  auto parser = pdfium::MakeUnique<CXFA_FMParser>(L"");
+namespace xfa {
+namespace formcalc {
+
+TEST(ParserTest, Empty) {
+  auto parser = pdfium::MakeUnique<Parser>(L"");
   std::unique_ptr<CXFA_FMFunctionDefinition> ast = parser->Parse();
   ASSERT(ast != nullptr);
   EXPECT_FALSE(parser->HasError());
@@ -25,8 +28,8 @@ TEST(CXFA_FMParserTest, Empty) {
   EXPECT_EQ(L"// comments only", buf.AsStringView());
 }
 
-TEST(CXFA_FMParserTest, CommentOnlyIsError) {
-  auto parser = pdfium::MakeUnique<CXFA_FMParser>(L"; Just comment");
+TEST(ParserTest, CommentOnlyIsError) {
+  auto parser = pdfium::MakeUnique<Parser>(L"; Just comment");
   std::unique_ptr<CXFA_FMFunctionDefinition> ast = parser->Parse();
   ASSERT(ast != nullptr);
   // TODO(dsinclair): This isn't allowed per the spec.
@@ -39,7 +42,7 @@ TEST(CXFA_FMParserTest, CommentOnlyIsError) {
   EXPECT_EQ(L"// comments only", buf.AsStringView());
 }
 
-TEST(CXFA_FMParserTest, CommentThenValue) {
+TEST(ParserTest, CommentThenValue) {
   const wchar_t ret[] =
       L"(\nfunction ()\n{\n"
       L"var pfm_ret = null;\n"
@@ -47,7 +50,7 @@ TEST(CXFA_FMParserTest, CommentThenValue) {
       L"return pfm_rt.get_val(pfm_ret);\n"
       L"}\n).call(this);\n";
 
-  auto parser = pdfium::MakeUnique<CXFA_FMParser>(L"; Just comment\n12");
+  auto parser = pdfium::MakeUnique<Parser>(L"; Just comment\n12");
   std::unique_ptr<CXFA_FMFunctionDefinition> ast = parser->Parse();
   ASSERT(ast != nullptr);
   EXPECT_FALSE(parser->HasError());
@@ -58,7 +61,7 @@ TEST(CXFA_FMParserTest, CommentThenValue) {
   EXPECT_EQ(ret, buf.AsStringView());
 }
 
-TEST(CXFA_FMParserTest, Parse) {
+TEST(ParserTest, Parse) {
   const wchar_t input[] =
       L"$ = Avg (-3, 5, -6, 12, -13);\n"
       L"$ = Avg (Table2..Row[*].Cell1);\n"
@@ -103,7 +106,7 @@ TEST(CXFA_FMParserTest, Parse) {
       L"return pfm_rt.get_val(pfm_ret);\n"
       L"}\n).call(this);\n";
 
-  auto parser = pdfium::MakeUnique<CXFA_FMParser>(input);
+  auto parser = pdfium::MakeUnique<Parser>(input);
   std::unique_ptr<CXFA_FMFunctionDefinition> ast = parser->Parse();
   ASSERT(ast != nullptr);
   EXPECT_FALSE(parser->HasError());
@@ -114,18 +117,21 @@ TEST(CXFA_FMParserTest, Parse) {
   EXPECT_EQ(ret, buf.AsStringView());
 }
 
-TEST(CXFA_FMParserTest, MaxParseDepth) {
-  auto parser = pdfium::MakeUnique<CXFA_FMParser>(L"foo(bar[baz(fizz[0])])");
+TEST(ParserTest, MaxParseDepth) {
+  auto parser = pdfium::MakeUnique<Parser>(L"foo(bar[baz(fizz[0])])");
   parser->SetMaxParseDepthForTest(5);
   EXPECT_EQ(nullptr, parser->Parse());
   EXPECT_TRUE(parser->HasError());
 }
 
 TEST(CFXA_FMParserTest, chromium752201) {
-  auto parser = pdfium::MakeUnique<CXFA_FMParser>(
+  auto parser = pdfium::MakeUnique<Parser>(
       L"fTep a\n"
       L".#\n"
       L"fo@ =[=l");
   EXPECT_EQ(nullptr, parser->Parse());
   EXPECT_TRUE(parser->HasError());
 }
+
+}  // namespace formcalc
+}  // namespace xfa

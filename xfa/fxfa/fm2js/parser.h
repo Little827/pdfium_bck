@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef XFA_FXFA_FM2JS_CXFA_FMPARSER_H_
-#define XFA_FXFA_FM2JS_CXFA_FMPARSER_H_
+#ifndef XFA_FXFA_FM2JS_PARSER_H_
+#define XFA_FXFA_FM2JS_PARSER_H_
 
 #include <memory>
 #include <vector>
@@ -13,10 +13,13 @@
 #include "xfa/fxfa/fm2js/cxfa_fmexpression.h"
 #include "xfa/fxfa/fm2js/cxfa_fmlexer.h"
 
-class CXFA_FMParser {
+namespace xfa {
+namespace formcalc {
+
+class Parser {
  public:
-  explicit CXFA_FMParser(const WideStringView& wsFormcalc);
-  ~CXFA_FMParser();
+  explicit Parser(const WideStringView& wsFormcalc);
+  ~Parser();
 
   std::unique_ptr<CXFA_FMFunctionDefinition> Parse();
   bool HasError() const;
@@ -63,4 +66,7 @@ class CXFA_FMParser {
   unsigned long m_max_parse_depth;
 };
 
-#endif  // XFA_FXFA_FM2JS_CXFA_FMPARSER_H_
+}  // namespace formcalc
+}  // namespace xfa
+
+#endif  // XFA_FXFA_FM2JS_PARSER_H_
