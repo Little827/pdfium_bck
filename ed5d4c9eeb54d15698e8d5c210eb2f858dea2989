@@ -46,6 +46,30 @@
       "revId": "ed5d4c9eeb54d15698e8d5c210eb2f858dea2989",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b6e9bec_454fcc37",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-15T17:43:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "90eb2698_98773b9e",
+      "range": {
+        "startLine": 162,
+        "startChar": 10,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "ed5d4c9eeb54d15698e8d5c210eb2f858dea2989",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
