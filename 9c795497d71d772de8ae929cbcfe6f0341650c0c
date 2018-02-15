@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "719c0da5_20bf1fc9",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-15T19:34:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 6
+      },
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f572e03_beb20d44",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-15T19:34:03Z",
+      "side": 1,
+      "message": "#endif  // NDEBUG",
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "418dbe98_c41235a6",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-15T19:34:03Z",
+      "side": 1,
+      "message": "Could probably drop the w and h, just 4x3 (left 10, top 20).",
+      "range": {
+        "startLine": 222,
+        "startChar": 21,
+        "endLine": 222,
+        "endChar": 31
+      },
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a550c204_441f4431",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-15T19:34:03Z",
+      "side": 1,
+      "message": "// NDEBUG",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 6
+      },
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
