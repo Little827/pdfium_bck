@@ -70,6 +70,30 @@
       "revId": "ed5d4c9eeb54d15698e8d5c210eb2f858dea2989",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e15606e1_205691d4",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-02-15T17:47:02Z",
+      "side": 1,
+      "message": "I agree, pdfium:910.",
+      "parentUuid": "5b6e9bec_454fcc37",
+      "range": {
+        "startLine": 162,
+        "startChar": 10,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "ed5d4c9eeb54d15698e8d5c210eb2f858dea2989",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
