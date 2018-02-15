@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "497c9a9c_5885e9a0",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-15T19:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "719c0da5_20bf1fc9",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 6
+      },
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f572e03_beb20d44",
         "filename": "core/fxcrt/fx_coordinates.h",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "69c54a3c_ea961fa7",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-15T19:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f572e03_beb20d44",
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418dbe98_c41235a6",
         "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2018-02-15T19:34:03Z",
       "side": 1,
       "message": "Could probably drop the w and h, just 4x3 (left 10, top 20).",
+      "range": {
+        "startLine": 222,
+        "startChar": 21,
+        "endLine": 222,
+        "endChar": 31
+      },
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2986adb_7d7d428e",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-15T19:45:07Z",
+      "side": 1,
+      "message": "That\u0027s how it was before, but I always found myself taking a second to confirm which was which, and adding \u0027w\u0027 and \u0027h\u0027 makes removes this bump.",
+      "parentUuid": "418dbe98_c41235a6",
       "range": {
         "startLine": 222,
         "startChar": 21,
@@ -85,6 +151,30 @@
       "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c13e0e1_e3ea8856",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-15T19:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a550c204_441f4431",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 6
+      },
+      "revId": "9c795497d71d772de8ae929cbcfe6f0341650c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
