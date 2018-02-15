@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "353564fc_fb661897",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-15T23:01:52Z",
+      "side": 1,
+      "message": "Does keeping 100 \"blank\" entries around seem like a good idea? we only ever push-back",
+      "range": {
+        "startLine": 203,
+        "startChar": 45,
+        "endLine": 203,
+        "endChar": 48
+      },
+      "revId": "8952a90b6a9cb6541c909607bba16ca2dfff0be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
