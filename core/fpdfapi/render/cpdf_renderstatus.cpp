@@ -1766,7 +1766,7 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
         // Already handled above, but the compiler is not smart enough to
         // realize it. Fall through.
         NOTREACHED();
-        FX_FALLTHROUGH;
+        FX_ FALLTHROUGH;
       case TextRenderingMode::MODE_CLIP:
         return true;
     }
