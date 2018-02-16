@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca6e97b1_be7cf7f8",
+        "filename": "fpdfsdk/fpdfformfill.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-02-16T17:30:01Z",
+      "side": 1,
+      "message": "There are some widgets that are page-wide of type GetWidgetRect. Ignore them.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 15
+      },
+      "revId": "49f3ff55e706318f1c930120fe695b3aad1860eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
