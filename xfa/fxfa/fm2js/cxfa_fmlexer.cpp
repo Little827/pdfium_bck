@@ -102,7 +102,7 @@ const XFA_FMKeyword keyWords[] = {
 const XFA_FM_TOKEN KEYWORD_START = TOKdo;
 const XFA_FM_TOKEN KEYWORD_END = TOKendif;
 
-const wchar_t* tokenStrings[] = {
+const wchar_t* const tokenStrings[] = {
     L"TOKand",        L"TOKlparen",     L"TOKrparen",   L"TOKmul",
     L"TOKplus",       L"TOKcomma",      L"TOKminus",    L"TOKdot",
     L"TOKdiv",        L"TOKlt",         L"TOKassign",   L"TOKgt",
