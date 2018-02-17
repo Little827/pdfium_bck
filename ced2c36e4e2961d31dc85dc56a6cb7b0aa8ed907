@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29d28a70_1194aa3d",
+        "filename": "xfa/fxfa/fxfa_basic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-02-17T00:30:26Z",
+      "side": 1,
+      "message": "Dan, was there a reason we didn\u0027t do this off the bat?",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 39
+      },
+      "revId": "ced2c36e4e2961d31dc85dc56a6cb7b0aa8ed907",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
