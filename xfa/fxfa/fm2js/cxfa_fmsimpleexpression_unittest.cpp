@@ -21,7 +21,7 @@ TEST(FMCallExpressionTest, more_than_32_arguments) {
 
   std::vector<std::unique_ptr<CXFA_FMSimpleExpression>> args;
   for (size_t i = 0; i < 50; i++)
-    args.push_back(pdfium::MakeUnique<CXFA_FMSimpleExpression>(0, TOKnan));
+    args.push_back(pdfium::MakeUnique<CXFA_FMNullExpression>(0));
 
   CXFA_FMToJavaScriptDepth::Reset();
   CXFA_FMCallExpression callExp(0, std::move(exp), std::move(args), true);
