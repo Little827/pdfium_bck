@@ -24,7 +24,7 @@
 
 namespace {
 
-static bool kSkipFontLoadForTesting = false;
+bool kSkipFontLoadForTesting = false;
 
 }  // namespace
 
