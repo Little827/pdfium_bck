@@ -8,6 +8,8 @@
 #ifndef SkFloatToDecimal_DEFINED
 #define SkFloatToDecimal_DEFINED
 
+namespace pdfium {
+namespace skia {
 constexpr unsigned kMaximumSkFloatToDecimalLength = 49;
 
 /** \fn SkFloatToDecimal
@@ -30,5 +32,7 @@ constexpr unsigned kMaximumSkFloatToDecimalLength = 49;
     @return strlen(output)
 */
 unsigned SkFloatToDecimal(float value, char output[kMaximumSkFloatToDecimalLength]);
+}  // namespace skia
+}  // namespace pdfium
 
 #endif  // SkFloatToDecimal_DEFINED
