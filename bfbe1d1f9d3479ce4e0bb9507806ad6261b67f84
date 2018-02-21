@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1dd9b8_4b7cea04",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmexpression.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-21T21:47:46Z",
+      "side": 0,
+      "message": "This doesn\u0027t make sense, an if without a conditional, removed.",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 22
+      },
+      "revId": "bfbe1d1f9d3479ce4e0bb9507806ad6261b67f84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
