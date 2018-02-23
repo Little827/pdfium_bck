@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "675ab8d8_c104245a",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-23T20:09:36Z",
+      "side": 1,
+      "message": "nit: Pick a consistent style and go with it.",
+      "revId": "eeaea590c52f6fd427e68ab1d132e8bcaa876d3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af1edf85_98a3c180",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-23T20:09:36Z",
+      "side": 1,
+      "message": "Just to make sure - are we going with Chinese here? The first \u003cmonth\u003e below is \"一月\" AKA first month AKA January.",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "eeaea590c52f6fd427e68ab1d132e8bcaa876d3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "512232d0_5cdc4b05",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-02-23T20:09:36Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mean for a given .in file, the .pdf output will never be the same with 2 different runs?",
+      "revId": "eeaea590c52f6fd427e68ab1d132e8bcaa876d3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
