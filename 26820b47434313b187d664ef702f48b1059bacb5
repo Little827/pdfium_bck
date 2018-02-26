@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19a08627_c2fbb8d8",
+        "filename": "testing/tools/run_xfa_tests.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-26T14:50:07Z",
+      "side": 1,
+      "message": "Instead of adding a new test runner, these look like pixel tests, so why about moving the testing/resources/xfa director to testing/resources/pixel/xfa_specific. They suppressor will already keep them from running on non-xfa bots and we don\u0027t have to add a new runner?",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "26820b47434313b187d664ef702f48b1059bacb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
