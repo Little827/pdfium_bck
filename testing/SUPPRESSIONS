@@ -322,13 +322,16 @@ bug_735912.in * * noxfa
 bug_492.in * nov8 *
 
 #
-# XFA Tests
-#
+# xfa_specific
+
 # TODO(rharrison): Create expectations for existing files.
 barcode_test.pdf * * *
 dynamic_list_box_allow_multiple_selection.pdf * * *
 dynamic_password_field_background_fill.pdf * * *
-email_recommended.pdf * * *
+dynamic_table_color_and_width.pdf * * noxfa
 resolve_nodes.pdf * * *
 standard_symbols.pdf * * *
+static_list_box_caption.pdf * * noxfa
+static_password_field_rotate.pdf * * noxfa
+xfa_example.in * * noxfa
 xfa_node_caption.pdf * * *
