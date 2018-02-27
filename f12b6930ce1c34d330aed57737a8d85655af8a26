@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5be3b08f_bdb96951",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-02-27T21:04:41Z",
+      "side": 1,
+      "message": "I believe we should be auto-suppressing things in the xfa_specific/ folder on non-xfa runs by default. The suppressions.py script checks for that folder. So, these may not be needed.",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 24
+      },
+      "revId": "f12b6930ce1c34d330aed57737a8d85655af8a26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
