@@ -130,6 +130,9 @@ bool CXFA_FFText::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
 }
 
 FWL_WidgetHit CXFA_FFText::OnHitTest(const CFX_PointF& point) {
+  fprintf(stderr, "CXFA_FFText: left = %f, top = %f, right = %f, bottom = %f\n",
+          GetRectWithoutRotate().left, GetRectWithoutRotate().top,
+          GetRectWithoutRotate().right(), GetRectWithoutRotate().bottom());
   if (!GetRectWithoutRotate().Contains(point))
     return FWL_WidgetHit::Unknown;
   if (!GetLinkURLAtPoint(point))
