@@ -906,6 +906,7 @@ void SendPageEvents(FPDF_FORMHANDLE form,
                     const std::string& events) {
   auto lines = StringSplit(events, '\n');
   for (auto line : lines) {
+    fprintf(stderr, "Running event '%s'\n", line.c_str());
     auto command = StringSplit(line, '#');
     if (command[0].empty())
       continue;
@@ -1237,6 +1238,8 @@ bool RenderPage(const std::string& name,
   FPDF_PAGE page = GetPageForIndex(form_fill_info, doc, page_index);
   if (!page)
     return false;
+  fprintf(stderr, "options.send_events = %s\n",
+          options.send_events ? "true" : "false");
   if (options.send_events)
     SendPageEvents(form, page, events);
   if (options.save_images)

@@ -569,6 +569,10 @@ FWL_WidgetHit CXFA_FFField::OnHitTest(const CFX_PointF& point) {
     return FWL_WidgetHit::Client;
   }
 
+  fprintf(stderr,
+          "CXFA_FFField: left = %f, top = %f, right = %f, bottom = %f\n",
+          GetRectWithoutRotate().left, GetRectWithoutRotate().top,
+          GetRectWithoutRotate().right(), GetRectWithoutRotate().bottom());
   if (!GetRectWithoutRotate().Contains(point))
     return FWL_WidgetHit::Unknown;
   if (m_rtCaption.Contains(point))

@@ -366,6 +366,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
                                                        int modifier,
                                                        double page_x,
                                                        double page_y) {
+  fprintf(stderr, "FORM_OnLButtonDown: x = %f, y = %f\n", page_x, page_y);
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
