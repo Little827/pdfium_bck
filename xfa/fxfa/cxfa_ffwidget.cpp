@@ -432,6 +432,10 @@ bool CXFA_FFWidget::OnChar(uint32_t dwChar, uint32_t dwFlags) {
 }
 
 FWL_WidgetHit CXFA_FFWidget::OnHitTest(const CFX_PointF& point) {
+  fprintf(stderr,
+          "CXFA_FFWidget: left = %f, top = %f, right = %f, bottom = %f\n",
+          GetRectWithoutRotate().left, GetRectWithoutRotate().top,
+          GetRectWithoutRotate().right(), GetRectWithoutRotate().bottom());
   return FWL_WidgetHit::Unknown;
 }
 
