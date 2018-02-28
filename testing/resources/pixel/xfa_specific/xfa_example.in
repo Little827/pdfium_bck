@@ -51,6 +51,7 @@ stream
     </pageSet>
     <subform w="576pt" h="756pt" name="Page1">
       <draw name="HelloWorld" y="0.5in" x="0.5in" w="5in" h="2in">
+       <font typeface="Helvetica" size="32pt"/>
         <value>
           <text>Hello, world.</text>
         </value>
