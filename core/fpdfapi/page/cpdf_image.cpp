@@ -331,6 +331,15 @@ RetainPtr<CFX_DIBSource> CPDF_Image::LoadDIBSource() const {
   if (!source->Load(m_pDocument.Get(), m_pStream.Get()))
     return nullptr;
 
+  if (source->IsJBigImage()) {
+    int status = 2;
+    while (status == 2)
+      status = source->ContinueLoadDIBSource(nullptr);
+    if (status == 0)
+      return nullptr;
+    ASSERT(status == 1);
+  }
+
   return source;
 }
 
