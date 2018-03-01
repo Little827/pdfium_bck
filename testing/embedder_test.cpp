@@ -473,11 +473,20 @@ std::string EmbedderTest::HashBitmap(FPDF_BITMAP bitmap) {
 // static
 void EmbedderTest::WriteBitmapToPng(FPDF_BITMAP bitmap,
                                     const std::string& filename) {
-  const int stride = FPDFBitmap_GetStride(bitmap);
   const int width = FPDFBitmap_GetWidth(bitmap);
   const int height = FPDFBitmap_GetHeight(bitmap);
   const auto* buffer =
       static_cast<const unsigned char*>(FPDFBitmap_GetBuffer(bitmap));
+  int stride = FPDFBitmap_GetStride(bitmap);
+
+  std::vector<uint32_t> bgra_conversion;
+  if (FPDFBitmap_GetFormat(bitmap) == FPDFBitmap_Gray) {
+    bgra_conversion.resize(width * height);
+    for (int i = 0; i < width * height; ++i)
+      bgra_conversion[i] = buffer[i] ? 0xffffffff : 0x000000ff;
+    buffer = reinterpret_cast<const unsigned char*>(bgra_buffer.data());
+    stride *= 4;
+  }
 
   std::vector<unsigned char> png_encoding;
   bool encoded = image_diff_png::EncodeBGRAPNG(buffer, width, height, stride,
