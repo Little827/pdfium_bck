@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1519864382 -0800\nnonce APUGfEKunIutyH590moIFaqH/+ky4c8W1gHsp5psfYnUpIRjzjBOWOKIkiZyzlIFzvRlC5Y4gluv\n\n0000000000000000000000000000000000000000 c077f3bba554911c0d167d047a5fde2844d6ad26 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCAAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqXSj4ACgkQqzYtYVpm\n/Xt8rQf+MeKR/eSCFGeiriVn+b1XvKFZdaVfljzmDmuRv/JK+ZFKDkkGqyHPsXZp\n0ULn6CqFCUJcH6ni5nNWHxJynLHaCuCPjhtCqeglsedeDAT/TSssqIvlf6NK3vvy\nEVrmG/TsVV2vwjkZwQSkQeOXSVHWTq+ID1LtydzaXsk4SS5XEUUK17so6Sm730Sn\nlpuboKiSevTZYrpf4pFj8fwuMHAkTGXmLymxHEGzhRDGO3XCMeAr7zUmzC/uxtva\nV2qqAXqyKL8MOm0iBtK66x5yrTyNW8bcoZdC6y3fmHvw6SOqycxhfoHV7u1WrQTD\n6xJZ5l1OaTzKZNwc5dyNQLOuL7rTng\u003d\u003d\n\u003dudPv\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8232043a_00200ea4",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-01T01:24:09Z",
+      "side": 1,
+      "message": "In the test, bug_631912.pdf has a JBIG2Globals key. The only code that reads it is in ContinueLoadDIBSource(). So this is the \"I have no idea what I\u0027m doing, but hey it works\" code.\n\nIf we don\u0027t make this call, CPDF_DIBSource will never modify its |m_pCachedBitmap|. As a result, the test will appear to pass with a different checksum, but the output will be blank.",
+      "revId": "c077f3bba554911c0d167d047a5fde2844d6ad26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
