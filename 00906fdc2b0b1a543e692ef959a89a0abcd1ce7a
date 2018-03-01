@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1519867686 -0800\nnonce APUGfEKbu0r0Iq5q8kv755DqJ5k5yXDQ3SRQhPO6QTNKLgzA6z/NngnBExHHe1Eb4kLat6vWX07W\n\n0000000000000000000000000000000000000000 00906fdc2b0b1a543e692ef959a89a0abcd1ce7a refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCAAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqXVyYACgkQqzYtYVpm\n/XuaCQgAvWBVJu+vku37nYysnvUnSN77EV5HxMMkAbvNodhDxKENLExP8hrvDJOK\nomT7Nf13/DGtzTYBsWjyZPAP7pU+s1n7WTlRVeW6KyM/pk4hJbcGZg4qsDFdMv7V\n27mZ60ZMJ/qqpVzNE92uXvVqne/dzBnA8zgBFpi5+hz/L1VvQv8FdL4dud4wgmyV\nqMUrKKC0atGH6cLD7Oz0mR47WXPXik6xyKae9yQVHO3KLn5n4HDR0MpjedlOhxoJ\n9Ops3Q70y1u/bkBsEjP36MF/x/h+mxgnXShuk0D0bILb41ueuMYE/6D+nnD2a2Ic\nvci8zHOTElTB+Mvz/jTok/1pZLdu3g\u003d\u003d\n\u003d1wwx\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ad38405_c1985273",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-01T15:24:39Z",
+      "side": 1,
+      "message": "if (dest_Bpp !\u003d 1 \u0026\u0026 m_pPalette) ?",
+      "range": {
+        "startLine": 1211,
+        "startChar": 5,
+        "endLine": 1211,
+        "endChar": 13
+      },
+      "revId": "00906fdc2b0b1a543e692ef959a89a0abcd1ce7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
