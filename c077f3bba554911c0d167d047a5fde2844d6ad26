@@ -3,6 +3,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "0c883595_ad687b1e",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-01T15:18:52Z",
+      "side": 1,
+      "message": "if (!source-\u003eIsJBigImage())\n  return source;",
+      "revId": "c077f3bba554911c0d167d047a5fde2844d6ad26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d29282fe_9269af3a",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-01T15:18:52Z",
+      "side": 1,
+      "message": "Does 2 have a meaning? Is there an enum we can use here?  (Ditto for 0 and 1 below)",
+      "range": {
+        "startLine": 336,
+        "startChar": 21,
+        "endLine": 336,
+        "endChar": 22
+      },
+      "revId": "c077f3bba554911c0d167d047a5fde2844d6ad26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8232043a_00200ea4",
         "filename": "core/fpdfapi/page/cpdf_image.cpp",
         "patchSetId": 1
