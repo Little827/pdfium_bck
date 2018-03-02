@@ -726,6 +726,10 @@ RetainPtr<CPDF_DIBSource> CPDF_DIBSource::DetachMask() {
   return std::move(m_pMask);
 }
 
+bool CPDF_DIBSource::IsJBigImage() const {
+  return m_pStreamAcc->GetImageDecoder() == "JBIG2Decode";
+}
+
 int CPDF_DIBSource::StartLoadMaskDIB() {
   m_pMask = pdfium::MakeRetain<CPDF_DIBSource>();
   int ret = m_pMask->StartLoadDIBSource(m_pDocument.Get(), m_pMaskStream.Get(),
