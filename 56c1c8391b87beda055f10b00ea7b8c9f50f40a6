@@ -23,6 +23,30 @@
       "revId": "56c1c8391b87beda055f10b00ea7b8c9f50f40a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8407a944_bc53fab3",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-02T22:40:39Z",
+      "side": 1,
+      "message": "Because I was working with a test case that had bpp\u003d1, so I was too focused on my own use case.\n\nThen I found EncodeGrayPNG() so this is twice as silly.",
+      "parentUuid": "0c607cc9_e3c6db54",
+      "range": {
+        "startLine": 486,
+        "startChar": 27,
+        "endLine": 486,
+        "endChar": 62
+      },
+      "revId": "56c1c8391b87beda055f10b00ea7b8c9f50f40a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
