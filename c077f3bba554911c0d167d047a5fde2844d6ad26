@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "51791156_c6d94a53",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-03T00:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c883595_ad687b1e",
+      "revId": "c077f3bba554911c0d167d047a5fde2844d6ad26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d29282fe_9269af3a",
         "filename": "core/fpdfapi/page/cpdf_image.cpp",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2018-03-01T15:18:52Z",
       "side": 1,
       "message": "Does 2 have a meaning? Is there an enum we can use here?  (Ditto for 0 and 1 below)",
+      "range": {
+        "startLine": 336,
+        "startChar": 21,
+        "endLine": 336,
+        "endChar": 22
+      },
+      "revId": "c077f3bba554911c0d167d047a5fde2844d6ad26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b50f436a_c22b6e80",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-03T00:06:00Z",
+      "side": 1,
+      "message": "Yes. Chained 4 CLs in front to answer this question. :)",
+      "parentUuid": "d29282fe_9269af3a",
       "range": {
         "startLine": 336,
         "startChar": 21,
