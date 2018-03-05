@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "5ba1bb14_bb7d57d8",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:29:51Z",
+      "side": 1,
+      "message": "just wonder about the naming here,\n\nclass MetricsHandler : public MetricsHandlerIface {\n\nwould be more normal.",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "937623fe_31613f18",
         "filename": "fpdfsdk/fpdf_metrics.cpp",
         "patchSetId": 5
