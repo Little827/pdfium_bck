@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "374f698e_0daf64f5",
+        "filename": "core/fxcrt/ifx_metrics_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db95a7e8_94cb35f3",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "583211d0_4d59b176",
         "filename": "core/fxcrt/ifx_metrics_handler.h",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b7c4aa_7a8b4ca0",
+        "filename": "core/fxcrt/ifx_metrics_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "583211d0_4d59b176",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "61de9369_13c5aa76",
+        "filename": "core/fxcrt/metrics_processor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6a34bc4_9c947b7f",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "034929ae_a490eda0",
         "filename": "core/fxcrt/metrics_processor.h",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0da16e_55ca9a8c",
+        "filename": "core/fxcrt/metrics_processor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "034929ae_a490eda0",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "7469735e_a8ebd6fc",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done. Was originally thinking this was proxying the data between core and public.",
+      "parentUuid": "5ba1bb14_bb7d57d8",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "937623fe_31613f18",
         "filename": "fpdfsdk/fpdf_metrics.cpp",
         "patchSetId": 5
@@ -160,6 +280,30 @@
       "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c7ef21_57577595",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "937623fe_31613f18",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "4de3692e_6b75979d",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dab9044_1650883f",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 0
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0288f268_2fa9fb2d",
         "filename": "public/fpdf_metrics.h",
         "patchSetId": 5
@@ -206,6 +374,30 @@
       "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f859734a_c3c56f16",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0288f268_2fa9fb2d",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "351e6549_8b4e892f",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcc12e9c_7daacd26",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 60
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad864be6_1cd82c24",
         "filename": "samples/pdfium_test.cc",
         "patchSetId": 5
@@ -246,6 +462,24 @@
       "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40ca9cd_e7c731d2",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:03:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad864be6_1cd82c24",
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
