@@ -94,55 +94,51 @@ std::unique_ptr<CXFA_FMExpression> CXFA_FMParser::ParseFunction() {
   AutoRestorer<unsigned long> restorer(&m_parse_depth);
   if (HasError() || !IncrementParseDepthAndCheck())
     return nullptr;
-
-  WideStringView ident;
-  std::vector<std::unique_ptr<CXFA_FMExpression>> expressions;
   if (!CheckThenNext(TOKfunc))
     return nullptr;
-
   if (m_token.m_type != TOKidentifier)
     return nullptr;
 
-  ident = m_token.m_string;
+  WideStringView ident = m_token.m_string;
   if (!NextToken())
     return nullptr;
   if (!CheckThenNext(TOKlparen))
     return nullptr;
 
   std::vector<WideStringView> arguments;
-  if (m_token.m_type == TOKrparen) {
+  while (1) {
+    if (m_token.m_type == TOKrparen)
+      break;
+    if (m_token.m_type != TOKidentifier)
+      return nullptr;
+
+    arguments.push_back(m_token.m_string);
     if (!NextToken())
       return nullptr;
-  } else {
-    while (1) {
-      if (m_token.m_type != TOKidentifier)
-        return nullptr;
 
-      arguments.push_back(m_token.m_string);
-      if (!NextToken())
-        return nullptr;
-      if (m_token.m_type == TOKcomma) {
-        if (!NextToken())
-          return nullptr;
-        continue;
-      }
-      if (!CheckThenNext(TOKrparen))
-        return nullptr;
+    // If we found a comma we skip over it to whatever is next. If we don't
+    // have a comma then use the checking at the start of the loop. Technically
+    // this would allow (foo,) but I think that's OK.
+    if (m_token.m_type != TOKcomma)
+      continue;
 
-      break;
-    }
+    if (!NextToken())
+      return nullptr;
   }
-
+  if (!CheckThenNext(TOKrparen))
+    return nullptr;
   if (!CheckThenNext(TOKdo))
     return nullptr;
-  if (m_token.m_type == TOKendfunc) {
-    if (!NextToken())
-      return nullptr;
-  } else {
+
+  std::vector<std::unique_ptr<CXFA_FMExpression>> expressions;
+  if (m_token.m_type != TOKendfunc) {
     expressions = ParseExpressionList();
-    if (!expressions.size() || !CheckThenNext(TOKendfunc))
+    if (expressions.empty())
       return nullptr;
   }
+
+  if (!CheckThenNext(TOKendfunc))
+    return nullptr;
 
   return pdfium::MakeUnique<CXFA_FMFunctionDefinition>(
       ident, std::move(arguments), std::move(expressions));
