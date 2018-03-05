@@ -30,6 +30,7 @@
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_stream.h"
+#include "core/fxcrt/metrics_processor.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -495,8 +496,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
 
   CPDF_ModuleMgr::Destroy();
   CFX_GEModule::Destroy();
-
   IJS_Runtime::Destroy();
+  MetricsProcessor::Destroy();
 
   g_bLibraryInitialized = false;
 }
