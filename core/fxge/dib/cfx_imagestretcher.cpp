@@ -7,6 +7,8 @@
 #include "core/fxge/dib/cfx_imagestretcher.h"
 
 #include <climits>
+#include <csignal>
+#include <iostream>
 #include <tuple>
 
 #include "core/fxge/dib/cfx_dibitmap.h"
@@ -131,18 +133,27 @@ bool CFX_ImageStretcher::Continue(IFX_PauseIndicator* pPause) {
 }
 
 bool CFX_ImageStretcher::StartStretch() {
+  std::cerr << "CFX_ImageStretcher::StartStretch" << std::endl;
   m_pStretchEngine = pdfium::MakeUnique<CStretchEngine>(
       m_pDest.Get(), m_DestFormat, m_DestWidth, m_DestHeight, m_ClipRect,
       m_pSource, m_Flags);
   m_pStretchEngine->StartStretchHorz();
   if (SourceSizeWithinLimit(m_pSource->GetWidth(), m_pSource->GetHeight())) {
+  std::cerr << "  -> call m_pStretchEngine->Continue()" << std::endl;
     m_pStretchEngine->Continue(nullptr);
     return false;
   }
   return true;
 }
 
+// static int kill_switch = 0;
+
 bool CFX_ImageStretcher::ContinueStretch(IFX_PauseIndicator* pPause) {
+  std::cerr << "CFX_ImageStretcher::ContinueStretch" << std::endl;
+  std::cerr << "  -> call m_pStretchEngine->Continue()" << std::endl;
+  // kill_switch++;
+  // if (kill_switch >= 10)
+  //   raise(SIGSEGV);
   return m_pStretchEngine && m_pStretchEngine->Continue(pPause);
 }
 

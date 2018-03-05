@@ -155,7 +155,7 @@ void CFWL_WidgetTP::DrawAxialShading(CXFA_Graphics* pGraphics,
   CXFA_GEShading shading(begPoint, endPoint, false, false, beginColor,
                          endColor);
   pGraphics->SaveGraphState();
-  pGraphics->SetFillColor(CXFA_GEColor(&shading));
+  pGraphics->SetFillColor(CXFA_GEColor(/*&shading*/endColor));
   pGraphics->FillPath(path, fillMode, pMatrix);
   pGraphics->RestoreGraphState();
 }
@@ -181,6 +181,7 @@ void CFWL_WidgetTP::DrawArrow(CXFA_Graphics* pGraphics,
                               FWLTHEME_DIRECTION eDict,
                               FX_ARGB argSign,
                               CFX_Matrix* pMatrix) {
+
   bool bVert =
       (eDict == FWLTHEME_DIRECTION_Up || eDict == FWLTHEME_DIRECTION_Down);
   float fLeft =
@@ -237,9 +238,9 @@ void CFWL_WidgetTP::DrawBtn(CXFA_Graphics* pGraphics,
   InitializeArrowColorData();
 
   CXFA_GEPath path;
+  path.AddRectangle(pRect->left, pRect->top, pRect->width, pRect->height);
   float fRight = pRect->right();
   float fBottom = pRect->bottom();
-  path.AddRectangle(pRect->left, pRect->top, pRect->width, pRect->height);
   DrawAxialShading(pGraphics, pRect->left, pRect->top, fRight, fBottom,
                    m_pColorData->clrStart[eState - 1],
                    m_pColorData->clrEnd[eState - 1], &path, FXFILL_WINDING,
