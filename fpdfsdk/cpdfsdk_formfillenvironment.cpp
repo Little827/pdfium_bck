@@ -16,20 +16,10 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
+#include "fpdfsdk/fpdf_string.h"
 #include "fpdfsdk/fsdk_actionhandler.h"
 #include "fxjs/ijs_runtime.h"
 #include "third_party/base/ptr_util.h"
-
-namespace {
-
-// NOTE: |bsUTF16LE| must outlive the use of the result. Care must be taken
-// since modifying the result would impact |bsUTF16LE|.
-FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
-  return reinterpret_cast<FPDF_WIDESTRING>(
-      bsUTF16LE->GetBuffer(bsUTF16LE->GetLength()));
-}
-
-}  // namespace
 
 CPDFSDK_FormFillEnvironment::CPDFSDK_FormFillEnvironment(
     UnderlyingDocumentType* pDoc,

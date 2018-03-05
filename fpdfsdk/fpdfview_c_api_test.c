@@ -19,6 +19,7 @@
 #include "public/fpdf_flatten.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
+#include "public/fpdf_metrics.h"
 #include "public/fpdf_ppo.h"
 #include "public/fpdf_progressive.h"
 #include "public/fpdf_save.h"
@@ -235,6 +236,9 @@ int CheckPDFiumCApi() {
     CHK(FPDF_StringHandleRelease);
     CHK(FPDF_StringHandleAddString);
 #endif
+
+    // fpdf_metrics.h
+    CHK(FPDF_SetMetricsHandler);
 
     // fpdf_ppo.h
     CHK(FPDF_ImportPages);
