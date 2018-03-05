@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "199b560c_cf1c4fc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda061c5_31b951a6",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "0ca61d68d7007b4cbc5f270a905b96fb73780f96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebf951f5_bac2d9c0",
         "filename": "fxjs/cfxjs_engine.cpp",
         "patchSetId": 7
@@ -36,6 +60,24 @@
       "writtenOn": "2018-03-05T21:43:08Z",
       "side": 1,
       "message": "What are 0 and 2 here? Define an enum?",
+      "revId": "0ca61d68d7007b4cbc5f270a905b96fb73780f96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5e762a_48e03540",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-05T21:47:32Z",
+      "side": 1,
+      "message": "They\u0027re sample value and max sample value. The 2 is annoying, but apparently if you say 1 you\u0027ll hit a DCHECK inside Chrome. I could define an enum like:\n\nenum class ExecJSReporting {\n  kExecutedJS \u003d 0,\n  kMaxSamples \u003d 2\n};\n\nor something?",
+      "parentUuid": "ebf951f5_bac2d9c0",
       "revId": "0ca61d68d7007b4cbc5f270a905b96fb73780f96",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
