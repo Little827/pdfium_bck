@@ -181,6 +181,7 @@ void CFWL_WidgetTP::DrawArrow(CXFA_Graphics* pGraphics,
                               FWLTHEME_DIRECTION eDict,
                               FX_ARGB argSign,
                               CFX_Matrix* pMatrix) {
+
   bool bVert =
       (eDict == FWLTHEME_DIRECTION_Up || eDict == FWLTHEME_DIRECTION_Down);
   float fLeft =
@@ -254,11 +255,11 @@ void CFWL_WidgetTP::DrawArrowBtn(CXFA_Graphics* pGraphics,
                                  FWLTHEME_DIRECTION eDict,
                                  FWLTHEME_STATE eState,
                                  CFX_Matrix* pMatrix) {
-  DrawBtn(pGraphics, pRect, eState, pMatrix);
+  // DrawBtn(pGraphics, pRect, eState, pMatrix);
 
-  InitializeArrowColorData();
-  DrawArrow(pGraphics, pRect, eDict, m_pColorData->clrSign[eState - 1],
-            pMatrix);
+  // InitializeArrowColorData();
+  // DrawArrow(pGraphics, pRect, eDict, m_pColorData->clrSign[eState - 1],
+  //           pMatrix);
 }
 
 CFWL_FontData::CFWL_FontData() : m_dwStyles(0), m_dwCodePage(0) {}

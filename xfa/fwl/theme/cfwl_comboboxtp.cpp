@@ -6,6 +6,8 @@
 
 #include "xfa/fwl/theme/cfwl_comboboxtp.h"
 
+#include <iostream>
+
 #include "xfa/fwl/cfwl_combobox.h"
 #include "xfa/fwl/cfwl_themebackground.h"
 #include "xfa/fwl/cfwl_widget.h"
@@ -48,7 +50,9 @@ void CFWL_ComboBoxTP::DrawBackground(CFWL_ThemeBackground* pParams) {
       break;
     }
     case CFWL_Part::DropDownButton: {
+  // std::cout << "CFWL_ComboBoxTP::DrawBackground CFWL_Part::DropDownButton" << std::endl;
       DrawDropDownButton(pParams, pParams->m_dwStates, &pParams->m_matrix);
+  // std::cout << "CFWL_ComboBoxTP::DrawBackground end" << std::endl;
       break;
     }
     case CFWL_Part::StretchHandler: {

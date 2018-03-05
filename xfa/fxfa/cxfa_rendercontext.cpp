@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/cxfa_rendercontext.h"
 
+#include <iostream>
+
 #include "xfa/fxfa/cxfa_ffpageview.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxgraphics/cxfa_graphics.h"
@@ -25,6 +27,7 @@ CXFA_RenderContext::CXFA_RenderContext(CXFA_FFPageView* pPageView,
 CXFA_RenderContext::~CXFA_RenderContext() {}
 
 void CXFA_RenderContext::DoRender(CXFA_Graphics* gs) {
+  std::cout << "CXFA_RenderContext::DoRender start" << std::endl;
   while (m_pWidget) {
     CFX_RectF rtWidgetBox = m_pWidget->GetBBox(XFA_WidgetStatus_Visible);
     rtWidgetBox.width += 1;
@@ -34,4 +37,5 @@ void CXFA_RenderContext::DoRender(CXFA_Graphics* gs) {
 
     m_pWidget = m_pWidgetIterator->MoveToNext();
   }
+  std::cout << "CXFA_RenderContext::DoRender end" << std::endl;
 }
