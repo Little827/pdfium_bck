@@ -16,20 +16,10 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
+#include "fpdfsdk/fpdf_string.h"
 #include "fpdfsdk/fsdk_actionhandler.h"
 #include "fxjs/ijs_runtime.h"
 #include "third_party/base/ptr_util.h"
-
-namespace {
-
-// NOTE: |bsUTF16LE| must outlive the use of the result. Care must be taken
-// since modifying the result would impact |bsUTF16LE|.
-FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
-  return reinterpret_cast<FPDF_WIDESTRING>(
-      bsUTF16LE->GetBuffer(bsUTF16LE->GetLength()));
-}
-
-}  // namespace
 
 CPDFSDK_FormFillEnvironment::CPDFSDK_FormFillEnvironment(
     UnderlyingDocumentType* pDoc,
@@ -72,8 +62,8 @@ int CPDFSDK_FormFillEnvironment::JS_appAlert(const wchar_t* Msg,
   ByteString bsMsg = WideString(Msg).UTF16LE_Encode();
   ByteString bsTitle = WideString(Title).UTF16LE_Encode();
   return m_pInfo->m_pJsPlatform->app_alert(
-      m_pInfo->m_pJsPlatform, AsFPDFWideString(&bsMsg),
-      AsFPDFWideString(&bsTitle), Type, Icon);
+      m_pInfo->m_pJsPlatform, AsFPDFWideString(bsMsg),
+      AsFPDFWideString(bsTitle), Type, Icon);
 }
 
 int CPDFSDK_FormFillEnvironment::JS_appResponse(const wchar_t* Question,
@@ -92,9 +82,9 @@ int CPDFSDK_FormFillEnvironment::JS_appResponse(const wchar_t* Question,
   ByteString bsDefault = WideString(Default).UTF16LE_Encode();
   ByteString bsLabel = WideString(cLabel).UTF16LE_Encode();
   return m_pInfo->m_pJsPlatform->app_response(
-      m_pInfo->m_pJsPlatform, AsFPDFWideString(&bsQuestion),
-      AsFPDFWideString(&bsTitle), AsFPDFWideString(&bsDefault),
-      AsFPDFWideString(&bsLabel), bPassword, response, length);
+      m_pInfo->m_pJsPlatform, AsFPDFWideString(bsQuestion),
+      AsFPDFWideString(bsTitle), AsFPDFWideString(bsDefault),
+      AsFPDFWideString(bsLabel), bPassword, response, length);
 }
 
 void CPDFSDK_FormFillEnvironment::JS_appBeep(int nType) {
@@ -155,7 +145,7 @@ void CPDFSDK_FormFillEnvironment::JS_docSubmitForm(void* formData,
   ByteString bsDestination = WideString(URL).UTF16LE_Encode();
   m_pInfo->m_pJsPlatform->Doc_submitForm(m_pInfo->m_pJsPlatform, formData,
                                          length,
-                                         AsFPDFWideString(&bsDestination));
+                                         AsFPDFWideString(bsDestination));
 }
 
 void CPDFSDK_FormFillEnvironment::JS_docmailForm(void* mailData,
@@ -176,9 +166,9 @@ void CPDFSDK_FormFillEnvironment::JS_docmailForm(void* mailData,
   ByteString bsBcc = WideString(BCC).UTF16LE_Encode();
   ByteString bsMsg = WideString(Msg).UTF16LE_Encode();
   m_pInfo->m_pJsPlatform->Doc_mail(
-      m_pInfo->m_pJsPlatform, mailData, length, bUI, AsFPDFWideString(&bsTo),
-      AsFPDFWideString(&bsSubject), AsFPDFWideString(&bsCC),
-      AsFPDFWideString(&bsBcc), AsFPDFWideString(&bsMsg));
+      m_pInfo->m_pJsPlatform, mailData, length, bUI, AsFPDFWideString(bsTo),
+      AsFPDFWideString(bsSubject), AsFPDFWideString(bsCC),
+      AsFPDFWideString(bsBcc), AsFPDFWideString(bsMsg));
 }
 
 void CPDFSDK_FormFillEnvironment::JS_docprint(FPDF_BOOL bUI,
