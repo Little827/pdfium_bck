@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "099f47ef_1c2477c8",
+        "filename": "fpdfsdk/fpdf_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T21:09:41Z",
+      "side": 1,
+      "message": "nit: I\u0027d put this comment in the header to give callers a heads-up.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 55
+      },
+      "revId": "7b20a3283a9dea88950f27dc5c0df7cf1d1ec994",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
