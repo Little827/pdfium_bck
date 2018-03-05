@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcrt/metrics_processor.h"
 #include "fxjs/cfxjse_runtimedata.h"
 #include "fxjs/cjs_object.h"
 
@@ -505,6 +506,8 @@ void CFXJS_Engine::ReleaseEngine() {
 }
 
 int CFXJS_Engine::Execute(const WideString& script, FXJSErr* pError) {
+  MetricsProcessor::Instance()->SendEnum(L"ExecJavaScript", 0, 2);
+
   v8::Isolate::Scope isolate_scope(GetIsolate());
   v8::TryCatch try_catch(GetIsolate());
   v8::Local<v8::Context> context = GetIsolate()->GetCurrentContext();
