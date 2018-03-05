@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db55b22e_682c7866",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-05T21:01:29Z",
+      "side": 1,
+      "message": "You could avoid allowing (foo,) by having a last token type seen variable local to the while loop, and for the rparan case check that is isn\u0027t a comma.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 53
+      },
+      "revId": "4ec963cbf162f05df73012d44d3b2071ae10a459",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
