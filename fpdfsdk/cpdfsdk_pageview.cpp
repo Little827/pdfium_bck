@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/cpdfsdk_pageview.h"
 
+#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -81,6 +82,10 @@ void CPDFSDK_PageView::PageView_OnDraw(CFX_RenderDevice* pDevice,
 #else
                                        CPDF_RenderOptions* pOptions) {
 #endif  // PDF_ENABLE_XFA
+  // int* a = nullptr;
+  std::cout << "CPDFSDK_PageView::PageView_OnDraw " << std::endl;
+  std::cout << "pClip (" << pClip.left << ", " << pClip.top << ") " << pClip.Width() << "x" << pClip.Height() << std::endl;
+  // *a = 1;
   m_curMatrix = *pUser2Device;
 
 #ifdef PDF_ENABLE_XFA
@@ -405,11 +410,14 @@ bool CPDFSDK_PageView::OnChar(int nChar, uint32_t nFlag) {
 }
 
 bool CPDFSDK_PageView::OnKeyDown(int nKeyCode, int nFlag) {
+  std::cout << "CPDFSDK_PageView::OnKeyDown 1 " << nKeyCode << " " << nFlag << std::endl;
   if (CPDFSDK_Annot* pAnnot = GetFocusAnnot()) {
     CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
         m_pFormFillEnv->GetAnnotHandlerMgr();
+    std::cout << "CPDFSDK_PageView::OnKeyDown 2a " << nKeyCode << " " << nFlag << std::endl;
     return pAnnotHandlerMgr->Annot_OnKeyDown(pAnnot, nKeyCode, nFlag);
   }
+    std::cout << "CPDFSDK_PageView::OnKeyDown 2b " << nKeyCode << " " << nFlag << std::endl;
   return false;
 }
 

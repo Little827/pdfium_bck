@@ -6,6 +6,7 @@
 
 #include "public/fpdf_formfill.h"
 
+#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -411,9 +412,13 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnKeyDown(FPDF_FORMHANDLE hHandle,
                                                    FPDF_PAGE page,
                                                    int nKeyCode,
                                                    int modifier) {
+  // std::cout << "FORM_OnKeyDown 1 " << nKeyCode << " " << modifier << std::endl;
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
-  if (!pPageView)
+  if (!pPageView) {
+    // std::cout << "FORM_OnKeyDown 2a " << nKeyCode << " " << modifier << std::endl;
     return false;
+  }
+    // std::cout << "FORM_OnKeyDown 2b " << nKeyCode << " " << modifier << std::endl;
   return pPageView->OnKeyDown(nKeyCode, modifier);
 }
 
@@ -421,9 +426,13 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnKeyUp(FPDF_FORMHANDLE hHandle,
                                                  FPDF_PAGE page,
                                                  int nKeyCode,
                                                  int modifier) {
+  // std::cout << "FORM_OnKeyUp 1 " << nKeyCode << " " << modifier << std::endl;
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
-  if (!pPageView)
+  if (!pPageView) {
+    // std::cout << "FORM_OnKeyUp 2a " << nKeyCode << " " << modifier << std::endl;
     return false;
+  }
+  // std::cout << "FORM_OnKeyUp 2b " << nKeyCode << " " << modifier << std::endl;
   return pPageView->OnKeyUp(nKeyCode, modifier);
 }
 
@@ -431,9 +440,13 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnChar(FPDF_FORMHANDLE hHandle,
                                                 FPDF_PAGE page,
                                                 int nChar,
                                                 int modifier) {
+  // std::cout << "FORM_OnChar 1 " << nChar << " " << modifier << std::endl;
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
-  if (!pPageView)
+  if (!pPageView) {
+    // std::cout << "FORM_OnChar 2a " << nChar << " " << modifier << std::endl;
     return false;
+  }
+  // std::cout << "FORM_OnChar 2b " << nChar << " " << modifier << std::endl;
   return pPageView->OnChar(nChar, modifier);
 }
 

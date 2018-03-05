@@ -7,6 +7,8 @@
 #include "core/fxge/dib/cstretchengine.h"
 
 #include <algorithm>
+#include <ctime>
+#include <iostream>
 #include <utility>
 
 #include "core/fxcrt/ifx_pauseindicator.h"
@@ -349,8 +351,12 @@ bool CStretchEngine::StartStretchHorz() {
 }
 
 bool CStretchEngine::ContinueStretchHorz(IFX_PauseIndicator* pPause) {
+  std::cout << "ContinueStretchHorz " << m_TransMethod << std::endl;
+  clock_t c = clock();
   if (!m_DestWidth)
     return false;
+  // if (m_DestWidth)
+  //   return false;
   if (m_pSource->SkipToScanline(m_CurRow, pPause))
     return true;
 
@@ -585,10 +591,13 @@ bool CStretchEngine::ContinueStretchHorz(IFX_PauseIndicator* pPause) {
     }
     rows_to_go--;
   }
+  std::cout << "Clock delta: " << (clock() - c) << std::endl;
   return false;
 }
 
 void CStretchEngine::StretchVert() {
+  std::cout << "StretchVert " << m_TransMethod << std::endl;
+  clock_t c = clock();
   if (m_DestHeight == 0)
     return;
 
@@ -597,8 +606,15 @@ void CStretchEngine::StretchVert() {
                         m_SrcHeight, m_SrcClip.top, m_SrcClip.bottom, m_Flags);
   if (!ret)
     return;
+  // if (ret)
+  //   return;
 
   const int DestBpp = m_DestBpp / 8;
+
+  // int dim0 = (m_DestClip.bottom - m_DestClip.top);
+  // int dim1 = (m_DestClip.right - m_DestClip.left);
+  // std::cout << "for loop iterations: " << dim0 * dim1 << " (" << dim0 << "x" << dim1 << ")" << std::endl;
+
   for (int row = m_DestClip.top; row < m_DestClip.bottom; ++row) {
     unsigned char* dest_scan = m_DestScanline.data();
     unsigned char* dest_scan_mask = m_DestMaskScanline.data();
@@ -706,6 +722,7 @@ void CStretchEngine::StretchVert() {
               return;
 
             int pixel_weight = *pWeight;
+            // std::cout << "j=" << j << " pixel_weight=" << pixel_weight << std::endl;
             const uint8_t* src_pixel =
                 src_scan + (j - m_SrcClip.top) * m_InterPitch;
             int mask_v = 255;
@@ -714,21 +731,31 @@ void CStretchEngine::StretchVert() {
             dest_b_c += pixel_weight * (*src_pixel++);
             dest_g_m += pixel_weight * (*src_pixel++);
             dest_r_y += pixel_weight * (*src_pixel);
-            if (m_DestFormat == FXDIB_Argb)
+            if (m_DestFormat == FXDIB_Argb) {
+              // std::cout << "FXDIB_Argb *(src_pixel + 1)=" << (int)(*(src_pixel + 1)) << std::endl;
               dest_a += pixel_weight * (*(src_pixel + 1));
-            else
+            } else {
+              // std::cout << "NOT FXDIB_Argb mask_v=" << mask_v << std::endl;
               dest_a += pixel_weight * mask_v;
+            }
           }
+          // std::cout << dest_r_y << ", " << dest_g_m << ", " << dest_b_c << " (" << dest_a << ")" << std::endl;
           if (m_Flags & FXDIB_BICUBIC_INTERPOL) {
+           std::cout << "BICUBIC" << std::endl;
             dest_r_y = pdfium::clamp(dest_r_y, 0, kMaxDestValue);
             dest_g_m = pdfium::clamp(dest_g_m, 0, kMaxDestValue);
             dest_b_c = pdfium::clamp(dest_b_c, 0, kMaxDestValue);
             dest_a = pdfium::clamp(dest_a, 0, kMaxDestValue);
           }
-          if (dest_a) {
+          /*if (!dest_r_y && !dest_g_m && !dest_b_c) {
+            dest_scan[0] = 0;
+            dest_scan[1] = 0;
+            dest_scan[2] = 0;
+          } else*/ if (dest_a) {
             int r = static_cast<uint32_t>(dest_r_y) * 255 / dest_a;
             int g = static_cast<uint32_t>(dest_g_m) * 255 / dest_a;
             int b = static_cast<uint32_t>(dest_b_c) * 255 / dest_a;
+          // std::cout << r << ", " << g << ", " << b << std::endl;
             dest_scan[0] = pdfium::clamp(b, 0, 255);
             dest_scan[1] = pdfium::clamp(g, 0, 255);
             dest_scan[2] = pdfium::clamp(r, 0, 255);
@@ -747,4 +774,5 @@ void CStretchEngine::StretchVert() {
     m_pDestBitmap->ComposeScanline(row - m_DestClip.top, m_DestScanline.data(),
                                    m_DestMaskScanline.data());
   }
+  std::cout << "Clock delta: " << (clock() - c) << std::endl;
 }
