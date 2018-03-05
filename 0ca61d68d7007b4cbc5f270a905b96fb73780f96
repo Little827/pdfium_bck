@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "6bc0eacb_c2ba4e85",
+        "filename": "core/fxcrt/metrics_handler_iface.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-05T21:50:05Z",
+      "side": 1,
+      "message": "Did we agree on \"Iface\" at some point? Google C++ style says to use \"Interface\" and Chromium style says don\u0027t bother, and tend to have Foo and FooImpl instead.",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "0ca61d68d7007b4cbc5f270a905b96fb73780f96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0713d114_171d6266",
+        "filename": "core/fxcrt/metrics_handler_iface.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-05T21:50:05Z",
+      "side": 1,
+      "message": "const ref?",
+      "range": {
+        "startLine": 14,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "0ca61d68d7007b4cbc5f270a905b96fb73780f96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebf951f5_bac2d9c0",
         "filename": "fxjs/cfxjs_engine.cpp",
         "patchSetId": 7
@@ -78,6 +124,24 @@
       "side": 1,
       "message": "They\u0027re sample value and max sample value. The 2 is annoying, but apparently if you say 1 you\u0027ll hit a DCHECK inside Chrome. I could define an enum like:\n\nenum class ExecJSReporting {\n  kExecutedJS \u003d 0,\n  kMaxSamples \u003d 2\n};\n\nor something?",
       "parentUuid": "ebf951f5_bac2d9c0",
+      "revId": "0ca61d68d7007b4cbc5f270a905b96fb73780f96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25779df1_d3b0fee1",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-05T21:50:05Z",
+      "side": 1,
+      "message": "Where does it DCHECK?\n\nYou probably just want a regular enum so you can avoid casting. In Chromium metrics folks would also ask that you write a comment like:\n\n// These values are persisted to logs. Entries should not be renumbered and\n// numeric values should never be reused.",
+      "parentUuid": "2a5e762a_48e03540",
       "revId": "0ca61d68d7007b4cbc5f270a905b96fb73780f96",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
