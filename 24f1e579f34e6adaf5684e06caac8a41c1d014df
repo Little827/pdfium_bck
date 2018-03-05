@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db95a7e8_94cb35f3",
+        "filename": "core/fxcrt/ifx_metrics_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "If you want to get a jump on the world without clunky prefixes, this is called MetricsHandlerIface",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583211d0_4d59b176",
+        "filename": "core/fxcrt/ifx_metrics_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "nit: not really neeeded, the pure virtuals are enough in themselves to prevent anyone from instantiating an instance of the abstract class.",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a34bc4_9c947b7f",
+        "filename": "core/fxcrt/metrics_processor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "nit: maybe a case where inverting the test saves some lines, eg. but a single return.\n\n  if (!g)\n    g \u003d new\n  return g",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034929ae_a490eda0",
+        "filename": "core/fxcrt/metrics_processor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "nit: maybe GetInstance() to match most of chrome?",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "589a83a5_840d992f",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "maybe put into some common file to avoid dup w/ formfill from whence this came?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937623fe_31613f18",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "this is implied even if you don\u0027t write it.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dab9044_1650883f",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "nit: no blank line here or at 501, but 503 ok.  It reads just fine with them clumped",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 0
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0288f268_2fa9fb2d",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "do we want a stupid _ at the end to match all the other stupid structs in public ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc12e9c_7daacd26",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "must remain",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 60
+      },
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad864be6_1cd82c24",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-05T20:27:05Z",
+      "side": 1,
+      "message": "nice.",
+      "revId": "24f1e579f34e6adaf5684e06caac8a41c1d014df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
