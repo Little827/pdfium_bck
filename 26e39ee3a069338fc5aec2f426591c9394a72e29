@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "acd6f1b4_6b4acdb4",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-06T21:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba9590a_a4c44278",
+      "range": {
+        "startLine": 1012,
+        "startChar": 46,
+        "endLine": 1012,
+        "endChar": 53
+      },
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b96b8ecb_e9d91a98",
         "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48e98ec9_9d29adff",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-06T21:55:11Z",
+      "side": 1,
+      "message": "Ack\n\nWe need a lot more tests in here, we\u0027ll have to figure out a clearer way to write them going forward.",
+      "parentUuid": "b96b8ecb_e9d91a98",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "9afecf30_0d4e0173",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-06T21:55:11Z",
+      "side": 1,
+      "message": "In this case, we care about the value in Rc. It\u0027s almost like there are 2 parallel return paths. Added the error and return checks for ret, though they\u0027re used very little in AFNumber_Keystroke.",
+      "parentUuid": "60859455_192335cc",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d563655_330bd1c4",
         "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2018-03-06T21:49:00Z",
       "side": 1,
       "message": "Curious what these do / if they are necessary.",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc66c9c_c1e24f4e",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-06T21:55:11Z",
+      "side": 1,
+      "message": "They need to be set as that\u0027s where AFNumber_Keystroke pulls the data it uses. It only uses parmas to get the second param. Otherwise, we get the string from m_pValue and the return is in m_pbRc. The m_pWideStrChange holds the change value .... whatever that is. For this purpose, we want it empty anyway.",
+      "parentUuid": "4d563655_330bd1c4",
       "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
