@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ba9590a_a4c44278",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T21:49:00Z",
+      "side": 1,
+      "message": "BTW, there\u0027s a typo here and the grammar is wonky.",
+      "range": {
+        "startLine": 1012,
+        "startChar": 46,
+        "endLine": 1012,
+        "endChar": 53
+      },
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b96b8ecb_e9d91a98",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T21:49:00Z",
+      "side": 1,
+      "message": "Add SetUp() / TearDown() at some point?",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60859455_192335cc",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T21:49:00Z",
+      "side": 1,
+      "message": "Is there anything interesting to check with |ret|? How about |result| and |change| ?",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d563655_330bd1c4",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T21:49:00Z",
+      "side": 1,
+      "message": "Curious what these do / if they are necessary.",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
