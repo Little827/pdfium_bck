@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "b0b95640_88c9fa7e",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T22:23:00Z",
+      "side": 1,
+      "message": "Just to check - is this test suppose to cover the use case in bug 817433? I reverted the fix locally but kept the test, and it still ran successfully.",
+      "parentUuid": "9afecf30_0d4e0173",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d563655_330bd1c4",
         "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
         "patchSetId": 2
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "They need to be set as that\u0027s where AFNumber_Keystroke pulls the data it uses. It only uses parmas to get the second param. Otherwise, we get the string from m_pValue and the return is in m_pbRc. The m_pWideStrChange holds the change value .... whatever that is. For this purpose, we want it empty anyway.",
       "parentUuid": "4d563655_330bd1c4",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "766ad7bb_38c1dae8",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T22:23:00Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why this matters at the end of the test case. I commented these out locally and the test still runs fine.",
+      "parentUuid": "abc66c9c_c1e24f4e",
       "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
