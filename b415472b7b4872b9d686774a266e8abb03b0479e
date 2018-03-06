@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f26229c_05c9c68b",
+        "filename": "fxjs/cfx_v8.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T22:02:20Z",
+      "side": 1,
+      "message": "Need some kind of a \"These values are persisted to logs\" comment, as mentioned previously, so future changes don\u0027t mess with UMA\u0027s expectations.",
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
