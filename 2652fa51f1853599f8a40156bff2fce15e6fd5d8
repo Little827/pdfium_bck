@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df3e8f83_367ba42d",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-06T14:38:32Z",
+      "side": 1,
+      "message": "I find the original clearer.",
+      "parentUuid": "530dc20e_211ae697",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 69
+      },
+      "revId": "2652fa51f1853599f8a40156bff2fce15e6fd5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2347217c_419e5361",
         "filename": "public/fpdf_metrics.h",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bd66499d_a299cdd8",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-06T14:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2347217c_419e5361",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "2652fa51f1853599f8a40156bff2fce15e6fd5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9270230c_0317ea54",
         "filename": "public/fpdf_metrics.h",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "2652fa51f1853599f8a40156bff2fce15e6fd5d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bc9b9a_36b17064",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-06T14:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9270230c_0317ea54",
+      "range": {
+        "startLine": 43,
+        "startChar": 45,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "2652fa51f1853599f8a40156bff2fce15e6fd5d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
