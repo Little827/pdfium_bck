@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5f937b_e51398b8",
+        "filename": "core/fxcrt/fx_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-06T18:58:56Z",
+      "side": 0,
+      "message": "Dunno pure virtual, kinda like having parallelism with writestream.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "b610ca3c0145159a6e2cdcb56f782abeeee2600d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6302cd75_4ec09fb5",
+        "filename": "core/fxcrt/fx_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-06T18:58:56Z",
+      "side": 0,
+      "message": "the real problem with this set of classes is that they should be pure virtuals, just adding methods .. don\u0027t automatically tunnel one form of write block into the other, the impl can do that if it chooses.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "b610ca3c0145159a6e2cdcb56f782abeeee2600d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
