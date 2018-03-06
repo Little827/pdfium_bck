@@ -27,6 +27,7 @@
 #include "public/fpdf_edit.h"
 #include "public/fpdf_ext.h"
 #include "public/fpdf_formfill.h"
+#include "public/fpdf_metrics.h"
 #include "public/fpdf_progressive.h"
 #include "public/fpdf_structtree.h"
 #include "public/fpdf_text.h"
@@ -89,6 +90,7 @@ struct Options {
         render_oneshot(false),
         save_attachments(false),
         save_images(false),
+        show_metrics(false),
 #ifdef ENABLE_CALLGRIND
         callgrind_delimiters(false),
 #endif  // ENABLE_CALLGRIND
@@ -103,6 +105,7 @@ struct Options {
   bool render_oneshot;
   bool save_attachments;
   bool save_images;
+  bool show_metrics;
 #ifdef ENABLE_CALLGRIND
   bool callgrind_delimiters;
 #endif  // ENABLE_CALLGRIND
@@ -671,6 +674,24 @@ void ExampleDocMail(IPDF_JSPLATFORM*,
          GetPlatformWString(Msg).c_str());
 }
 
+void SendHistogramHandler(FPDF_MetricsHandler* handler,
+                          FPDF_WIDESTRING name,
+                          unsigned int sample,
+                          unsigned int min,
+                          unsigned int max,
+                          unsigned int num_buckets) {
+  printf("Metric Histogram: %ls, sample %d (min %d, max %d), %d buckets\n",
+         GetPlatformWString(name).c_str(), sample, min, max, num_buckets);
+}
+
+void SendEnumHandler(FPDF_MetricsHandler* handler,
+                     FPDF_WIDESTRING name,
+                     unsigned int sample,
+                     unsigned int max) {
+  printf("Metric Enum: %ls, sample %d (max %d)\n",
+         GetPlatformWString(name).c_str(), sample, max);
+}
+
 void ExampleUnsupportedHandler(UNSUPPORT_INFO*, int type) {
   std::string feature = "Unknown";
   switch (type) {
@@ -737,6 +758,8 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       options->save_attachments = true;
     } else if (cur_arg == "--save-images") {
       options->save_images = true;
+    } else if (cur_arg == "--show-metrics") {
+      options->show_metrics = true;
 #ifdef ENABLE_CALLGRIND
     } else if (cur_arg == "--callgrind-delim") {
       options->callgrind_delimiters = true;
@@ -1520,6 +1543,7 @@ constexpr char kUsageString[] =
     "<pdf-name>.attachment.<attachment-name>\n"
     "  --save-images       - write embedded images "
     "<pdf-name>.<page-number>.<object-number>.png\n"
+    "  --show-metrics      - write metric data to stdout\n"
 #ifdef ENABLE_CALLGRIND
     "  --callgrind-delim   - delimit interesting section when using callgrind\n"
 #endif  // ENABLE_CALLGRIND
@@ -1564,6 +1588,14 @@ int main(int argc, const char* argv[]) {
   if (files.empty()) {
     fprintf(stderr, "No input files.\n");
     return 1;
+  }
+
+  FPDF_MetricsHandler metrics_handler;
+  if (options.show_metrics) {
+    memset(&metrics_handler, 0, sizeof(FPDF_MetricsHandler));
+    metrics_handler.SendHistogram = SendHistogramHandler;
+    metrics_handler.SendEnum = SendEnumHandler;
+    FPDF_SetMetricsHandler(&metrics_handler);
   }
 
 #ifdef PDF_ENABLE_V8

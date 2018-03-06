@@ -15,6 +15,11 @@
 #include "v8/include/v8-util.h"
 #include "v8/include/v8.h"
 
+enum ExecJSReporting {
+  kExecJSReporting_ExecutedJS = 0,
+  kExecJSReporting_MaxSamples = 2
+};
+
 class CFX_V8 {
  public:
   explicit CFX_V8(v8::Isolate* pIsolate);

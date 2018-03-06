@@ -8,6 +8,7 @@
 
 #include <utility>
 
+#include "core/fxcrt/metrics_processor.h"
 #include "fxjs/cfxjs_engine.h"
 #include "fxjs/cfxjse_class.h"
 #include "fxjs/cfxjse_value.h"
@@ -239,6 +240,10 @@ void CFXJSE_Context::EnableCompatibleMode() {
 bool CFXJSE_Context::ExecuteScript(const char* szScript,
                                    CFXJSE_Value* lpRetValue,
                                    CFXJSE_Value* lpNewThisObject) {
+  MetricsProcessor::GetInstance()->SendEnum(L"ExecJavaScript",
+                                            kExecJSReporting_ExecutedJS,
+                                            kExecJSReporting_MaxSamples);
+
   CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
   v8::Local<v8::Context> hContext = m_pIsolate->GetCurrentContext();
   v8::TryCatch trycatch(m_pIsolate);
