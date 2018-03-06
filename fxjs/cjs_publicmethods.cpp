@@ -1010,7 +1010,7 @@ CJS_Return CJS_PublicMethods::AFNumber_Keystroke(
   bool bHasSign = wstrValue.Contains(L'-') && !wstrSelected.Contains(L'-');
   if (bHasSign) {
     // can't insert "change" in front to sign postion.
-    if (pEvent->SelStart() == 0) {
+    if (!wstrSelected.IsEmpty() && pEvent->SelStart() == 0) {
       pEvent->Rc() = false;
       return CJS_Return(true);
     }
