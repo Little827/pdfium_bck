@@ -186,6 +186,30 @@
     },
     {
       "key": {
+        "uuid": "0421bf9e_51fc2ff2",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T23:49:28Z",
+      "side": 1,
+      "message": "PDFium, as a standalone project, has not adopted C++14.",
+      "parentUuid": "26ce322a_3a68b35b",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f26229c_05c9c68b",
         "filename": "fxjs/cfx_v8.h",
         "patchSetId": 9
@@ -301,6 +325,30 @@
       "writtenOn": "2018-03-06T23:43:30Z",
       "side": 1,
       "message": "Please use fixed-width types, e.g. uint32_t",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caadd2f5_f34c3be4",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-06T23:49:28Z",
+      "side": 1,
+      "message": "We traditionally did not but it is in stdint.h on Linux at least. My stdint.h says uint32_t and friends are C99.",
+      "parentUuid": "15683a7c_cb52095d",
       "range": {
         "startLine": 28,
         "startChar": 24,
