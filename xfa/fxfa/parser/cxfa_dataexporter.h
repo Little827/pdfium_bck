@@ -12,7 +12,7 @@
 
 class CXFA_Document;
 class CXFA_Node;
-class IFX_SeekableStream;
+class SeekableStreamIface;
 class CFX_SeekableStreamProxy;
 
 class CXFA_DataExporter {
@@ -20,8 +20,8 @@ class CXFA_DataExporter {
   explicit CXFA_DataExporter(CXFA_Document* pDocument);
   ~CXFA_DataExporter();
 
-  bool Export(const RetainPtr<IFX_SeekableStream>& pWrite);
-  bool Export(const RetainPtr<IFX_SeekableStream>& pWrite,
+  bool Export(const RetainPtr<SeekableStreamIface>& pWrite);
+  bool Export(const RetainPtr<SeekableStreamIface>& pWrite,
               CXFA_Node* pNode,
               uint32_t dwFlag,
               const char* pChecksum);

@@ -8,7 +8,7 @@
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
 #include "core/fxcrt/fx_stream.h"
 
-class CPDF_ReadValidator : public IFX_SeekableReadStream {
+class CPDF_ReadValidator : public SeekableReadStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
@@ -42,12 +42,12 @@ class CPDF_ReadValidator : public IFX_SeekableReadStream {
   bool CheckDataRangeAndRequestIfUnavailable(FX_FILESIZE offset, size_t size);
   bool CheckWholeFileAndRequestIfUnavailable();
 
-  // IFX_SeekableReadStream overrides:
+  // SeekableReadStreamIface overrides:
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override;
   FX_FILESIZE GetSize() override;
 
  protected:
-  CPDF_ReadValidator(const RetainPtr<IFX_SeekableReadStream>& file_read,
+  CPDF_ReadValidator(const RetainPtr<SeekableReadStreamIface>& file_read,
                      CPDF_DataAvail::FileAvail* file_avail);
   ~CPDF_ReadValidator() override;
 
@@ -55,7 +55,7 @@ class CPDF_ReadValidator : public IFX_SeekableReadStream {
   void ScheduleDownload(FX_FILESIZE offset, size_t size);
   bool IsDataRangeAvailable(FX_FILESIZE offset, size_t size) const;
 
-  RetainPtr<IFX_SeekableReadStream> file_read_;
+  RetainPtr<SeekableReadStreamIface> file_read_;
   UnownedPtr<CPDF_DataAvail::FileAvail> file_avail_;
 
   UnownedPtr<CPDF_DataAvail::DownloadHints> hints_;

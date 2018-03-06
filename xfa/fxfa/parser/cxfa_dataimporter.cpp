@@ -25,7 +25,7 @@ CXFA_DataImporter::CXFA_DataImporter(CXFA_Document* pDocument)
 CXFA_DataImporter::~CXFA_DataImporter() {}
 
 bool CXFA_DataImporter::ImportData(
-    const RetainPtr<IFX_SeekableStream>& pDataDocument) {
+    const RetainPtr<SeekableStreamIface>& pDataDocument) {
   auto pDataDocumentParser =
       pdfium::MakeUnique<CXFA_SimpleParser>(m_pDocument.Get());
   if (pDataDocumentParser->StartParse(

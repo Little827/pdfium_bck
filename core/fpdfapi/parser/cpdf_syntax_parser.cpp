@@ -652,7 +652,7 @@ std::unique_ptr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
 }
 
 void CPDF_SyntaxParser::InitParser(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+    const RetainPtr<SeekableReadStreamIface>& pFileAccess,
     uint32_t HeaderOffset) {
   ASSERT(pFileAccess);
   return InitParserWithValidator(
@@ -770,7 +770,7 @@ FX_FILESIZE CPDF_SyntaxParser::FindTag(const ByteStringView& tag,
   return -1;
 }
 
-RetainPtr<IFX_SeekableReadStream> CPDF_SyntaxParser::GetFileAccess() const {
+RetainPtr<SeekableReadStreamIface> CPDF_SyntaxParser::GetFileAccess() const {
   return m_pFileAccess;
 }
 

@@ -17,7 +17,7 @@ class CFX_XMLDoc;
 class CFX_XMLInstruction;
 class CFX_XMLNode;
 class CFX_XMLParser;
-class IFX_SeekableStream;
+class SeekableStreamIface;
 class CFX_SeekableStreamProxy;
 
 class CXFA_SimpleParser {
@@ -26,7 +26,7 @@ class CXFA_SimpleParser {
   explicit CXFA_SimpleParser(CXFA_Document* pFactory);
   ~CXFA_SimpleParser();
 
-  int32_t StartParse(const RetainPtr<IFX_SeekableStream>& pStream,
+  int32_t StartParse(const RetainPtr<SeekableStreamIface>& pStream,
                      XFA_PacketType ePacketID);
   int32_t DoParse();
   CFX_XMLNode* ParseXMLData(const ByteString& wsXML);
@@ -75,7 +75,7 @@ class CXFA_SimpleParser {
   std::unique_ptr<CFX_XMLDoc> m_pXMLDoc;
   UnownedPtr<CFX_XMLParser> m_pXMLParser;  // Owned by |m_pXMLDoc|
   RetainPtr<CFX_SeekableStreamProxy> m_pStream;
-  RetainPtr<IFX_SeekableStream> m_pFileRead;
+  RetainPtr<SeekableStreamIface> m_pFileRead;
   UnownedPtr<CXFA_Document> m_pFactory;
   // TODO(dsinclair): Figure out who owns this.
   CXFA_Node* m_pRootNode = nullptr;

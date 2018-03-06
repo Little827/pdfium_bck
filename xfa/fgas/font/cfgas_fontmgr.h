@@ -100,7 +100,7 @@ class CFX_FontSourceEnum_File {
   ~CFX_FontSourceEnum_File();
 
   bool HasStartPosition();
-  std::pair<bool, RetainPtr<IFX_SeekableStream>> GetNext();
+  std::pair<bool, RetainPtr<SeekableStreamIface>> GetNext();
 
  private:
   struct HandleParentPath {
@@ -154,7 +154,7 @@ class CFGAS_FontMgr : public Observable<CFGAS_FontMgr> {
   bool EnumFontsFromFontMapper();
   bool EnumFontsFromFiles();
   void RegisterFace(FXFT_Face pFace, const WideString* pFaceName);
-  void RegisterFaces(const RetainPtr<IFX_SeekableReadStream>& pFontStream,
+  void RegisterFaces(const RetainPtr<SeekableReadStreamIface>& pFontStream,
                      const WideString* pFaceName);
   void GetNames(const uint8_t* name_table, std::vector<WideString>& Names);
   std::vector<uint16_t> GetCharsets(FXFT_Face pFace) const;
@@ -175,20 +175,20 @@ class CFGAS_FontMgr : public Observable<CFGAS_FontMgr> {
   RetainPtr<CFGAS_GEFont> LoadFont(const WideString& wsFaceName,
                                    int32_t iFaceIndex,
                                    int32_t* pFaceCount);
-  FXFT_Face LoadFace(const RetainPtr<IFX_SeekableReadStream>& pFontStream,
+  FXFT_Face LoadFace(const RetainPtr<SeekableReadStreamIface>& pFontStream,
                      int32_t iFaceIndex);
-  RetainPtr<IFX_SeekableReadStream> CreateFontStream(
+  RetainPtr<SeekableReadStreamIface> CreateFontStream(
       CFX_FontMapper* pFontMapper,
       SystemFontInfoIface* pSystemFontInfo,
       uint32_t index);
-  RetainPtr<IFX_SeekableReadStream> CreateFontStream(
+  RetainPtr<SeekableReadStreamIface> CreateFontStream(
       const ByteString& bsFaceName);
 
   std::unique_ptr<CFX_FontSourceEnum_File> m_pFontSource;
   std::vector<std::unique_ptr<CFX_FontDescriptor>> m_InstalledFonts;
   std::map<uint32_t, std::unique_ptr<std::vector<CFX_FontDescriptorInfo>>>
       m_Hash2CandidateList;
-  std::map<RetainPtr<CFGAS_GEFont>, RetainPtr<IFX_SeekableReadStream>>
+  std::map<RetainPtr<CFGAS_GEFont>, RetainPtr<SeekableReadStreamIface>>
       m_IFXFont2FileRead;
   std::set<wchar_t> m_FailedUnicodesSet;
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_

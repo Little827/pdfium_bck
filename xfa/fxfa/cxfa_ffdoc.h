@@ -78,15 +78,15 @@ class CXFA_FFDoc {
   CFGAS_PDFFontMgr* GetPDFFontMgr() const { return m_pPDFFontMgr.get(); }
 
   bool SavePackage(CXFA_Node* pNode,
-                   const RetainPtr<IFX_SeekableStream>& pFile,
+                   const RetainPtr<SeekableStreamIface>& pFile,
                    CFX_ChecksumContext* pCSContext);
-  bool ImportData(const RetainPtr<IFX_SeekableStream>& pStream,
+  bool ImportData(const RetainPtr<SeekableStreamIface>& pStream,
                   bool bXDP = true);
 
  private:
   UnownedPtr<IXFA_DocEnvironment> const m_pDocEnvironment;
   std::unique_ptr<CXFA_DocumentParser> m_pDocumentParser;
-  RetainPtr<IFX_SeekableStream> m_pStream;
+  RetainPtr<SeekableStreamIface> m_pStream;
   UnownedPtr<CXFA_FFApp> const m_pApp;
   std::unique_ptr<CXFA_FFNotify> m_pNotify;
   UnownedPtr<CPDF_Document> m_pPDFDoc;

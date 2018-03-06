@@ -14,7 +14,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 
 class CPDF_Dictionary;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 class CFDF_Document : public CPDF_IndirectObjectHolder {
  public:
@@ -29,10 +29,10 @@ class CFDF_Document : public CPDF_IndirectObjectHolder {
   CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
 
  protected:
-  void ParseStream(const RetainPtr<IFX_SeekableReadStream>& pFile);
+  void ParseStream(const RetainPtr<SeekableReadStreamIface>& pFile);
 
   UnownedPtr<CPDF_Dictionary> m_pRootDict;
-  RetainPtr<IFX_SeekableReadStream> m_pFile;
+  RetainPtr<SeekableReadStreamIface> m_pFile;
 };
 
 #endif  // CORE_FPDFAPI_PARSER_CFDF_DOCUMENT_H_

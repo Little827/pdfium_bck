@@ -188,7 +188,7 @@ RetainPtr<CFX_DIBitmap> XFA_LoadImageData(CXFA_FFDoc* pDoc,
   FXCODEC_IMAGE_TYPE type = XFA_GetImageType(pImage->GetContentType());
   ByteString bsContent;
   uint8_t* pImageBuffer = nullptr;
-  RetainPtr<IFX_SeekableReadStream> pImageFileRead;
+  RetainPtr<SeekableReadStreamIface> pImageFileRead;
   if (wsImage.GetLength() > 0) {
     XFA_AttributeEnum iEncoding = pImage->GetTransferEncoding();
     if (iEncoding == XFA_AttributeEnum::Base64) {

@@ -12,12 +12,12 @@
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/fx_system.h"
 
-class CPSOutput : public IFX_WriteStream {
+class CPSOutput : public WriteStreamIface {
  public:
   explicit CPSOutput(HDC hDC);
   ~CPSOutput() override;
 
-  // IFX_Writestream
+  // WriteStreamIface
   bool WriteBlock(const void* str, size_t len) override;
   bool WriteString(const ByteStringView& str) override;
 

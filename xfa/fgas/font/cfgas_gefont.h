@@ -86,7 +86,7 @@ class CFGAS_GEFont : public Retainable {
   CFGAS_FontMgr::ObservedPtr m_pFontMgr;
   CFGAS_PDFFontMgr::ObservedPtr m_pProvider;
   RetainPtr<CFX_SeekableStreamProxy> m_pStream;
-  RetainPtr<IFX_SeekableReadStream> m_pFileRead;
+  RetainPtr<SeekableReadStreamIface> m_pFileRead;
   std::unique_ptr<CFX_UnicodeEncoding> m_pFontEncoding;
   std::map<wchar_t, int32_t> m_CharWidthMap;
   std::map<wchar_t, CFX_Rect> m_BBoxMap;

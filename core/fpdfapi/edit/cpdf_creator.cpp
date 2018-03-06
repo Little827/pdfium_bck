@@ -25,9 +25,9 @@ namespace {
 
 const size_t kArchiveBufferSize = 32768;
 
-class CFX_FileBufferArchive : public IFX_ArchiveStream {
+class CFX_FileBufferArchive : public ArchiveStreamIface {
  public:
-  explicit CFX_FileBufferArchive(const RetainPtr<IFX_WriteStream>& archive);
+  explicit CFX_FileBufferArchive(const RetainPtr<WriteStreamIface>& archive);
   ~CFX_FileBufferArchive() override;
 
   bool WriteBlock(const void* pBuf, size_t size) override;
@@ -43,11 +43,11 @@ class CFX_FileBufferArchive : public IFX_ArchiveStream {
   FX_FILESIZE offset_;
   size_t current_length_;
   std::vector<uint8_t> buffer_;
-  RetainPtr<IFX_WriteStream> backing_file_;
+  RetainPtr<WriteStreamIface> backing_file_;
 };
 
 CFX_FileBufferArchive::CFX_FileBufferArchive(
-    const RetainPtr<IFX_WriteStream>& file)
+    const RetainPtr<WriteStreamIface>& file)
     : offset_(0),
       current_length_(0),
       buffer_(kArchiveBufferSize),
@@ -125,7 +125,7 @@ std::vector<uint8_t> GenerateFileID(uint32_t dwSeed1, uint32_t dwSeed2) {
   return buffer;
 }
 
-int32_t OutputIndex(IFX_ArchiveStream* archive, FX_FILESIZE offset) {
+int32_t OutputIndex(ArchiveStreamIface* archive, FX_FILESIZE offset) {
   if (!archive->WriteByte(static_cast<uint8_t>(offset >> 24)) ||
       !archive->WriteByte(static_cast<uint8_t>(offset >> 16)) ||
       !archive->WriteByte(static_cast<uint8_t>(offset >> 8)) ||
@@ -139,7 +139,7 @@ int32_t OutputIndex(IFX_ArchiveStream* archive, FX_FILESIZE offset) {
 }  // namespace
 
 CPDF_Creator::CPDF_Creator(CPDF_Document* pDoc,
-                           const RetainPtr<IFX_WriteStream>& archive)
+                           const RetainPtr<WriteStreamIface>& archive)
     : m_pDocument(pDoc),
       m_pParser(pDoc->GetParser()),
       m_bSecurityChanged(false),
@@ -434,7 +434,7 @@ int32_t CPDF_Creator::WriteDoc_Stage1() {
   }
   if (m_iStage == 15) {
     if (IsOriginal() && m_SavedOffset > 0) {
-      RetainPtr<IFX_SeekableReadStream> pSrcFile = m_pParser->GetFileAccess();
+      RetainPtr<SeekableReadStreamIface> pSrcFile = m_pParser->GetFileAccess();
       std::vector<uint8_t> buffer(4096);
       FX_FILESIZE src_size = m_SavedOffset;
       while (src_size) {

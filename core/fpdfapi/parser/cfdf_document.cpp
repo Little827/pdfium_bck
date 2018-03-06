@@ -37,7 +37,7 @@ std::unique_ptr<CFDF_Document> CFDF_Document::ParseMemory(uint8_t* pData,
 }
 
 void CFDF_Document::ParseStream(
-    const RetainPtr<IFX_SeekableReadStream>& pFile) {
+    const RetainPtr<SeekableReadStreamIface>& pFile) {
   m_pFile = pFile;
   CPDF_SyntaxParser parser;
   parser.InitParser(m_pFile, 0);

@@ -18,7 +18,7 @@ std::unique_ptr<CPDF_Object> CPDF_Null::Clone() const {
   return pdfium::MakeUnique<CPDF_Null>();
 }
 
-bool CPDF_Null::WriteTo(IFX_ArchiveStream* archive) const {
+bool CPDF_Null::WriteTo(ArchiveStreamIface* archive) const {
   return archive->WriteString(" null");
 }
 

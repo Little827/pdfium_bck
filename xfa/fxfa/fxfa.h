@@ -20,7 +20,7 @@ class CXFA_FFPageView;
 class CXFA_FFWidget;
 class CXFA_Submit;
 class IFWL_AdapterTimerMgr;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 #define XFA_MBICON_Error 0
 #define XFA_MBICON_Warning 1
@@ -170,7 +170,7 @@ class IXFA_AppProvider {
    * @param[in] wsURL - http, ftp, such as
    * "http://www.w3.org/TR/REC-xml-names/".
    */
-  virtual RetainPtr<IFX_SeekableReadStream> DownloadURL(
+  virtual RetainPtr<SeekableReadStreamIface> DownloadURL(
       const WideString& wsURL) = 0;
 
   /**
@@ -258,7 +258,7 @@ class IXFA_DocEnvironment {
   virtual bool SetPropertyInNonXFAGlobalObject(CXFA_FFDoc* hDoc,
                                                const ByteStringView& szPropName,
                                                CFXJSE_Value* pValue) = 0;
-  virtual RetainPtr<IFX_SeekableReadStream> OpenLinkedFile(
+  virtual RetainPtr<SeekableReadStreamIface> OpenLinkedFile(
       CXFA_FFDoc* hDoc,
       const WideString& wsLink) = 0;
 };

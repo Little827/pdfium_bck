@@ -147,7 +147,7 @@ void XFA_DrawImage(CXFA_Graphics* pGS,
 }
 
 RetainPtr<CFX_DIBitmap> XFA_LoadImageFromBuffer(
-    const RetainPtr<IFX_SeekableReadStream>& pImageFileRead,
+    const RetainPtr<SeekableReadStreamIface>& pImageFileRead,
     FXCODEC_IMAGE_TYPE type,
     int32_t& iImageXDpi,
     int32_t& iImageYDpi) {

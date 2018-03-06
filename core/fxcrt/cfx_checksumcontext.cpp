@@ -105,7 +105,7 @@ void CFX_ChecksumContext::StartChecksum() {
 }
 
 bool CFX_ChecksumContext::UpdateChecksum(
-    const RetainPtr<IFX_SeekableReadStream>& pSrcFile,
+    const RetainPtr<SeekableReadStreamIface>& pSrcFile,
     FX_FILESIZE offset,
     size_t size) {
   if (!m_pSAXReader || !pSrcFile)

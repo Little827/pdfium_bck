@@ -433,7 +433,7 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
   if (!pFileHandler)
     return;
 
-  RetainPtr<IFX_SeekableStream> fileWrite = MakeSeekableStream(pFileHandler);
+  RetainPtr<SeekableStreamIface> fileWrite = MakeSeekableStream(pFileHandler);
   if (fileType == FXFA_SAVEAS_XML) {
     ByteString content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
     fileWrite->WriteBlock(content.c_str(), fileWrite->GetSize(),
@@ -693,7 +693,7 @@ bool CPDFXFA_DocEnvironment::Submit(CXFA_FFDoc* hDoc, CXFA_Submit* submit) {
   return ret;
 }
 
-RetainPtr<IFX_SeekableReadStream> CPDFXFA_DocEnvironment::OpenLinkedFile(
+RetainPtr<SeekableReadStreamIface> CPDFXFA_DocEnvironment::OpenLinkedFile(
     CXFA_FFDoc* hDoc,
     const WideString& wsLink) {
   CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
@@ -723,7 +723,7 @@ bool CPDFXFA_DocEnvironment::ExportSubmitFile(FPDF_FILEHANDLER* pFileHandler,
     return false;
 
   CXFA_FFDoc* ffdoc = m_pContext->GetXFADocView()->GetDoc();
-  RetainPtr<IFX_SeekableStream> fileStream = MakeSeekableStream(pFileHandler);
+  RetainPtr<SeekableStreamIface> fileStream = MakeSeekableStream(pFileHandler);
   if (fileType == FXFA_SAVEAS_XML) {
     static constexpr char kContent[] =
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";

@@ -71,7 +71,7 @@ class CPDFXFA_DocEnvironment : public IXFA_DocEnvironment {
                                        const ByteStringView& szPropName,
                                        CFXJSE_Value* pValue) override;
 
-  RetainPtr<IFX_SeekableReadStream> OpenLinkedFile(
+  RetainPtr<SeekableReadStreamIface> OpenLinkedFile(
       CXFA_FFDoc* hDoc,
       const WideString& wsLink) override;
 

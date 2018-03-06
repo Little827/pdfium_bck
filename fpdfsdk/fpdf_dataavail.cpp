@@ -59,7 +59,7 @@ class FPDF_FileAvailContext : public CPDF_DataAvail::FileAvail {
   FX_FILEAVAIL* m_pfileAvail;
 };
 
-class FPDF_FileAccessContext : public IFX_SeekableReadStream {
+class FPDF_FileAccessContext : public SeekableReadStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
@@ -68,7 +68,7 @@ class FPDF_FileAccessContext : public IFX_SeekableReadStream {
 
   void Set(FPDF_FILEACCESS* pFile) { m_pFileAccess = pFile; }
 
-  // IFX_SeekableReadStream
+  // SeekableReadStreamIface
   FX_FILESIZE GetSize() override { return m_pFileAccess->m_FileLen; }
 
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override {
@@ -90,7 +90,7 @@ class FPDF_DownloadHintsContext : public CPDF_DataAvail::DownloadHints {
   ~FPDF_DownloadHintsContext() override {}
 
  public:
-  // IFX_DownloadHints
+  // CPDF_DataAvail::DownloadHints
   void AddSegment(FX_FILESIZE offset, size_t size) override {
     if (m_pDownloadHints)
       m_pDownloadHints->AddSegment(m_pDownloadHints, offset, size);

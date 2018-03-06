@@ -74,7 +74,7 @@ class CPDFXFA_Context : public IXFA_AppProvider {
                       const WideString& wsTitle,
                       const WideString& wsDefaultAnswer,
                       bool bMark) override;
-  RetainPtr<IFX_SeekableReadStream> DownloadURL(
+  RetainPtr<SeekableReadStreamIface> DownloadURL(
       const WideString& wsURL) override;
   bool PostRequestURL(const WideString& wsURL,
                       const WideString& wsData,

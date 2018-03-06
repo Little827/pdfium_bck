@@ -199,7 +199,7 @@ CPDF_Object* CPDF_Array::Add(std::unique_ptr<CPDF_Object> pObj) {
   return pRet;
 }
 
-bool CPDF_Array::WriteTo(IFX_ArchiveStream* archive) const {
+bool CPDF_Array::WriteTo(ArchiveStreamIface* archive) const {
   if (!archive->WriteString("["))
     return false;
 

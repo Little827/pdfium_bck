@@ -15,12 +15,12 @@
 class CPDF_Stream;
 class CPDF_StreamAcc;
 
-class CFX_SeekableMultiStream : public IFX_SeekableStream {
+class CFX_SeekableMultiStream : public SeekableStreamIface {
  public:
   explicit CFX_SeekableMultiStream(const std::vector<CPDF_Stream*>& streams);
   ~CFX_SeekableMultiStream() override;
 
-  // IFX_SeekableReadStream
+  // SeekableReadStreamIface
   FX_FILESIZE GetPosition() override;
   FX_FILESIZE GetSize() override;
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override;

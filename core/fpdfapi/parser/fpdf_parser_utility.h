@@ -10,7 +10,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
 
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 class CPDF_Dictionary;
 class CPDF_Object;
 
@@ -39,7 +39,7 @@ constexpr int32_t kInvalidHeaderOffset = -1;
 // On success, return a positive offset value to the PDF header.. If the header
 // cannot be found, or if there is an error reading from |pFile|, then return
 // |kInvalidHeaderOffset|.
-int32_t GetHeaderOffset(const RetainPtr<IFX_SeekableReadStream>& pFile);
+int32_t GetHeaderOffset(const RetainPtr<SeekableReadStreamIface>& pFile);
 
 int32_t GetDirectInteger(CPDF_Dictionary* pDict, const ByteString& key);
 

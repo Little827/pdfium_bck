@@ -381,7 +381,7 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   pAcc->LoadAllDataFiltered();
 
-  RetainPtr<IFX_SeekableStream> pImageFileRead =
+  RetainPtr<SeekableStreamIface> pImageFileRead =
       pdfium::MakeRetain<CFX_MemoryStream>(
           const_cast<uint8_t*>(pAcc->GetData()), pAcc->GetSize(), false);
 
@@ -392,7 +392,7 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(
 }
 
 bool CXFA_FFDoc::SavePackage(CXFA_Node* pNode,
-                             const RetainPtr<IFX_SeekableStream>& pFile,
+                             const RetainPtr<SeekableStreamIface>& pFile,
                              CFX_ChecksumContext* pCSContext) {
   auto pExport = pdfium::MakeUnique<CXFA_DataExporter>(GetXFADoc());
   if (!pNode)
@@ -406,7 +406,7 @@ bool CXFA_FFDoc::SavePackage(CXFA_Node* pNode,
       pFile, pNode, 0, bsChecksum.GetLength() ? bsChecksum.c_str() : nullptr);
 }
 
-bool CXFA_FFDoc::ImportData(const RetainPtr<IFX_SeekableStream>& pStream,
+bool CXFA_FFDoc::ImportData(const RetainPtr<SeekableStreamIface>& pStream,
                             bool bXDP) {
   auto importer =
       pdfium::MakeUnique<CXFA_DataImporter>(m_pDocumentParser->GetDocument());

@@ -13,12 +13,12 @@
 // Output stream operator so GTEST macros work with CFX_DateTime objects.
 std::ostream& operator<<(std::ostream& os, const CFX_DateTime& dt);
 
-class CFX_InvalidSeekableReadStream : public IFX_SeekableReadStream {
+class CFX_InvalidSeekableReadStream : public SeekableReadStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
-  // IFX_SeekableReadStream overrides:
+  // SeekableReadStreamIface overrides:
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override {
     return false;
   }
@@ -31,12 +31,12 @@ class CFX_InvalidSeekableReadStream : public IFX_SeekableReadStream {
   FX_FILESIZE data_size_;
 };
 
-class CFX_BufferSeekableReadStream : public IFX_SeekableReadStream {
+class CFX_BufferSeekableReadStream : public SeekableReadStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
-  // IFX_SeekableReadStream:
+  // SeekableReadStreamIface:
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override {
     if (offset < 0 || static_cast<size_t>(offset) >= data_size_)
       return false;

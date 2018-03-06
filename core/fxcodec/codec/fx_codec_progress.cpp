@@ -1278,7 +1278,7 @@ bool CCodec_ProgressiveDecoder::TifDetectImageType(CFX_DIBAttribute* pAttribute,
 }
 
 FXCODEC_STATUS CCodec_ProgressiveDecoder::LoadImageInfo(
-    const RetainPtr<IFX_SeekableReadStream>& pFile,
+    const RetainPtr<SeekableReadStreamIface>& pFile,
     FXCODEC_IMAGE_TYPE imageType,
     CFX_DIBAttribute* pAttribute,
     bool bSkipImageTypeCheck) {

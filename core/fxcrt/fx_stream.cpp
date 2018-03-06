@@ -17,12 +17,12 @@
 
 namespace {
 
-class CFX_CRTFileStream final : public IFX_SeekableStream {
+class CFX_CRTFileStream final : public SeekableStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
-  // IFX_SeekableStream:
+  // SeekableStreamIface:
   FX_FILESIZE GetSize() override { return m_pFile->GetSize(); }
   bool IsEOF() override { return GetPosition() >= GetSize(); }
   FX_FILESIZE GetPosition() override { return m_pFile->GetPosition(); }
@@ -50,7 +50,7 @@ class CFX_CRTFileStream final : public IFX_SeekableStream {
 }  // namespace
 
 // static
-RetainPtr<IFX_SeekableStream> IFX_SeekableStream::CreateFromFilename(
+RetainPtr<SeekableStreamIface> SeekableStreamIface::CreateFromFilename(
     const char* filename,
     uint32_t dwModes) {
   std::unique_ptr<FileAccessIface> pFA = FileAccessIface::Create();
@@ -60,7 +60,7 @@ RetainPtr<IFX_SeekableStream> IFX_SeekableStream::CreateFromFilename(
 }
 
 // static
-RetainPtr<IFX_SeekableStream> IFX_SeekableStream::CreateFromFilename(
+RetainPtr<SeekableStreamIface> SeekableStreamIface::CreateFromFilename(
     const wchar_t* filename,
     uint32_t dwModes) {
   std::unique_ptr<FileAccessIface> pFA = FileAccessIface::Create();
@@ -70,28 +70,29 @@ RetainPtr<IFX_SeekableStream> IFX_SeekableStream::CreateFromFilename(
 }
 
 // static
-RetainPtr<IFX_SeekableReadStream> IFX_SeekableReadStream::CreateFromFilename(
+RetainPtr<SeekableReadStreamIface> SeekableReadStreamIface::CreateFromFilename(
     const char* filename) {
-  return IFX_SeekableStream::CreateFromFilename(filename, FX_FILEMODE_ReadOnly);
+  return SeekableStreamIface::CreateFromFilename(filename,
+                                                 FX_FILEMODE_ReadOnly);
 }
 
-bool IFX_SeekableReadStream::IsEOF() {
+bool SeekableReadStreamIface::IsEOF() {
   return false;
 }
 
-FX_FILESIZE IFX_SeekableReadStream::GetPosition() {
+FX_FILESIZE SeekableReadStreamIface::GetPosition() {
   return 0;
 }
 
-size_t IFX_SeekableReadStream::ReadBlock(void* buffer, size_t size) {
+size_t SeekableReadStreamIface::ReadBlock(void* buffer, size_t size) {
   return 0;
 }
 
-bool IFX_SeekableStream::WriteBlock(const void* buffer, size_t size) {
+bool SeekableStreamIface::WriteBlock(const void* buffer, size_t size) {
   return WriteBlock(buffer, GetSize(), size);
 }
 
-bool IFX_SeekableStream::WriteString(const ByteStringView& str) {
+bool SeekableStreamIface::WriteString(const ByteStringView& str) {
   return WriteBlock(str.unterminated_c_str(), str.GetLength());
 }
 

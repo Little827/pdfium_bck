@@ -29,7 +29,7 @@ class CPDF_Object;
 class CPDF_SecurityHandler;
 class CPDF_StreamAcc;
 class CPDF_SyntaxParser;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 class CPDF_Parser {
  public:
@@ -50,9 +50,9 @@ class CPDF_Parser {
   CPDF_Parser();
   ~CPDF_Parser();
 
-  Error StartParse(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  Error StartParse(const RetainPtr<SeekableReadStreamIface>& pFile,
                    CPDF_Document* pDocument);
-  Error StartLinearizedParse(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  Error StartLinearizedParse(const RetainPtr<SeekableReadStreamIface>& pFile,
                              CPDF_Document* pDocument);
 
   void SetPassword(const char* password) { m_Password = password; }
@@ -85,7 +85,7 @@ class CPDF_Parser {
   CPDF_SecurityHandler* GetSecurityHandler() const {
     return m_pSecurityHandler.get();
   }
-  RetainPtr<IFX_SeekableReadStream> GetFileAccess() const;
+  RetainPtr<SeekableReadStreamIface> GetFileAccess() const;
   bool IsObjectFree(uint32_t objnum) const;
 
   FX_FILESIZE GetObjectOffset(uint32_t objnum) const;
@@ -195,7 +195,7 @@ class CPDF_Parser {
       CPDF_SyntaxParser::ParseType parse_type,
       FX_FILESIZE* pResultPos);
 
-  bool InitSyntaxParser(const RetainPtr<IFX_SeekableReadStream>& file_access);
+  bool InitSyntaxParser(const RetainPtr<SeekableReadStreamIface>& file_access);
   bool ParseFileVersion();
 
   UnownedPtr<CPDF_Document> m_pDocument;

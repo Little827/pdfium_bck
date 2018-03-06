@@ -14,7 +14,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 
 class CFX_DIBAttribute;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 class CCodec_TiffModule {
  public:
@@ -24,7 +24,7 @@ class CCodec_TiffModule {
   };
 
   std::unique_ptr<Context> CreateDecoder(
-      const RetainPtr<IFX_SeekableReadStream>& file_ptr);
+      const RetainPtr<SeekableReadStreamIface>& file_ptr);
   bool LoadFrameInfo(Context* ctx,
                      int32_t frame,
                      int32_t* width,

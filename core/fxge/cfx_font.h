@@ -23,7 +23,7 @@ class CFX_FaceCache;
 class CFX_GlyphBitmap;
 class CFX_PathData;
 class CFX_SubstFont;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 class CFX_Font {
  public:
@@ -43,7 +43,8 @@ class CFX_Font {
   CFX_SubstFont* GetSubstFont() const { return m_pSubstFont.get(); }
 
 #ifdef PDF_ENABLE_XFA
-  bool LoadFile(const RetainPtr<IFX_SeekableReadStream>& pFile, int nFaceIndex);
+  bool LoadFile(const RetainPtr<SeekableReadStreamIface>& pFile,
+                int nFaceIndex);
 
   void SetFace(FXFT_Face face);
   void SetSubstFont(std::unique_ptr<CFX_SubstFont> subst);

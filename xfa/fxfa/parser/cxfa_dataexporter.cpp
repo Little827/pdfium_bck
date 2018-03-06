@@ -22,11 +22,11 @@ CXFA_DataExporter::CXFA_DataExporter(CXFA_Document* pDocument)
 
 CXFA_DataExporter::~CXFA_DataExporter() {}
 
-bool CXFA_DataExporter::Export(const RetainPtr<IFX_SeekableStream>& pWrite) {
+bool CXFA_DataExporter::Export(const RetainPtr<SeekableStreamIface>& pWrite) {
   return Export(pWrite, m_pDocument->GetRoot(), 0, nullptr);
 }
 
-bool CXFA_DataExporter::Export(const RetainPtr<IFX_SeekableStream>& pWrite,
+bool CXFA_DataExporter::Export(const RetainPtr<SeekableStreamIface>& pWrite,
                                CXFA_Node* pNode,
                                uint32_t dwFlag,
                                const char* pChecksum) {

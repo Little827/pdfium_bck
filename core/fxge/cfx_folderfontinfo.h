@@ -22,7 +22,7 @@ class CFX_FolderFontInfo : public SystemFontInfoIface {
 
   void AddPath(const ByteString& path);
 
-  // IFX_SytemFontInfo:
+  // SystemFontInfoIface:
   bool EnumFontList(CFX_FontMapper* pMapper) override;
   void* MapFont(int weight,
                 bool bItalic,

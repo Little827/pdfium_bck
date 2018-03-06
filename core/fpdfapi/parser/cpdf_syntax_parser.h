@@ -20,7 +20,7 @@ class CPDF_IndirectObjectHolder;
 class CPDF_Object;
 class CPDF_ReadValidator;
 class CPDF_Stream;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 class CPDF_SyntaxParser {
  public:
@@ -30,7 +30,7 @@ class CPDF_SyntaxParser {
   explicit CPDF_SyntaxParser(const WeakPtr<ByteStringPool>& pPool);
   ~CPDF_SyntaxParser();
 
-  void InitParser(const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+  void InitParser(const RetainPtr<SeekableReadStreamIface>& pFileAccess,
                   uint32_t HeaderOffset);
 
   void InitParserWithValidator(const RetainPtr<CPDF_ReadValidator>& pValidator,
@@ -56,7 +56,7 @@ class CPDF_SyntaxParser {
   ByteString GetNextWord(bool* bIsNumber);
   ByteString PeekNextWord(bool* bIsNumber);
 
-  RetainPtr<IFX_SeekableReadStream> GetFileAccess() const;
+  RetainPtr<SeekableReadStreamIface> GetFileAccess() const;
 
   const RetainPtr<CPDF_ReadValidator>& GetValidator() const {
     return m_pFileAccess;

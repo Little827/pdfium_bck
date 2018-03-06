@@ -180,7 +180,7 @@ void CPDF_Parser::SetEncryptDictionary(CPDF_Dictionary* pDict) {
   m_pEncryptDict = pDict;
 }
 
-RetainPtr<IFX_SeekableReadStream> CPDF_Parser::GetFileAccess() const {
+RetainPtr<SeekableReadStreamIface> CPDF_Parser::GetFileAccess() const {
   return m_pSyntax->GetFileAccess();
 }
 
@@ -201,7 +201,7 @@ void CPDF_Parser::ShrinkObjectMap(uint32_t objnum) {
 }
 
 bool CPDF_Parser::InitSyntaxParser(
-    const RetainPtr<IFX_SeekableReadStream>& file_access) {
+    const RetainPtr<SeekableReadStreamIface>& file_access) {
   const int32_t header_offset = GetHeaderOffset(file_access);
   if (header_offset == kInvalidHeaderOffset)
     return false;
@@ -230,7 +230,7 @@ bool CPDF_Parser::ParseFileVersion() {
 }
 
 CPDF_Parser::Error CPDF_Parser::StartParse(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+    const RetainPtr<SeekableReadStreamIface>& pFileAccess,
     CPDF_Document* pDocument) {
   if (!InitSyntaxParser(pFileAccess))
     return FORMAT_ERROR;
@@ -1327,7 +1327,7 @@ std::unique_ptr<CPDF_LinearizedHeader> CPDF_Parser::ParseLinearizedHeader() {
 }
 
 CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+    const RetainPtr<SeekableReadStreamIface>& pFileAccess,
     CPDF_Document* pDocument) {
   ASSERT(!m_bHasParsed);
   m_bXRefStream = false;

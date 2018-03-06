@@ -30,7 +30,7 @@ class CFX_PSRenderer {
   CFX_PSRenderer();
   ~CFX_PSRenderer();
 
-  void Init(const RetainPtr<IFX_WriteStream>& stream,
+  void Init(const RetainPtr<WriteStreamIface>& stream,
             int pslevel,
             int width,
             int height,
@@ -87,7 +87,7 @@ class CFX_PSRenderer {
   void WritePSBinary(const uint8_t* data, int len);
   void WriteToStream(std::ostringstream* stringStream);
 
-  RetainPtr<IFX_WriteStream> m_pStream;
+  RetainPtr<WriteStreamIface> m_pStream;
   int m_PSLevel;
   CFX_GraphStateData m_CurGraphState;
   bool m_bGraphStateSet;

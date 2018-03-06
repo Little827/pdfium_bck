@@ -24,7 +24,7 @@ std::unique_ptr<CPDF_DataAvail> MakeDataAvailFromFile(
   if (!PathService::GetTestFilePath(file_name, &file_path))
     return nullptr;
   return pdfium::MakeUnique<CPDF_DataAvail>(
-      nullptr, IFX_SeekableReadStream::CreateFromFilename(file_path.c_str()),
+      nullptr, SeekableReadStreamIface::CreateFromFilename(file_path.c_str()),
       true);
 }
 

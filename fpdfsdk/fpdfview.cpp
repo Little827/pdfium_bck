@@ -131,12 +131,12 @@ void RenderPageImpl(CPDF_PageRenderContext* pContext,
     pContext->m_pDevice->RestoreState(false);
 }
 
-class CPDF_CustomAccess final : public IFX_SeekableReadStream {
+class CPDF_CustomAccess final : public SeekableReadStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
-  // IFX_SeekableReadStream
+  // SeekableReadStreamIface
   FX_FILESIZE GetSize() override;
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override;
 
@@ -170,14 +170,14 @@ bool CPDF_CustomAccess::ReadBlock(void* buffer,
 }
 
 #ifdef PDF_ENABLE_XFA
-class FPDF_FileHandlerContext : public IFX_SeekableStream {
+class FPDF_FileHandlerContext : public SeekableStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
   ~FPDF_FileHandlerContext() override;
 
-  // IFX_SeekableStream:
+  // SeekableStreamIface:
   FX_FILESIZE GetSize() override;
   bool IsEOF() override;
   FX_FILESIZE GetPosition() override;
@@ -275,7 +275,7 @@ bool FPDF_FileHandlerContext::Flush() {
 #endif  // PDF_ENABLE_XFA
 
 FPDF_DOCUMENT LoadDocumentImpl(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+    const RetainPtr<SeekableReadStreamIface>& pFileAccess,
     FPDF_BYTESTRING password) {
   if (!pFileAccess) {
     ProcessParseError(CPDF_Parser::FILE_ERROR);
@@ -422,13 +422,13 @@ unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
   return len;
 }
 
-RetainPtr<IFX_SeekableReadStream> MakeSeekableReadStream(
+RetainPtr<SeekableReadStreamIface> MakeSeekableReadStream(
     FPDF_FILEACCESS* pFileAccess) {
   return pdfium::MakeRetain<CPDF_CustomAccess>(pFileAccess);
 }
 
 #ifdef PDF_ENABLE_XFA
-RetainPtr<IFX_SeekableStream> MakeSeekableStream(
+RetainPtr<SeekableStreamIface> MakeSeekableStream(
     FPDF_FILEHANDLER* pFilehandler) {
   return pdfium::MakeRetain<FPDF_FileHandlerContext>(pFilehandler);
 }
@@ -569,8 +569,8 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_LoadDocument(FPDF_STRING file_path, FPDF_BYTESTRING password) {
   // NOTE: the creation of the file needs to be by the embedder on the
   // other side of this API.
-  return LoadDocumentImpl(IFX_SeekableReadStream::CreateFromFilename(file_path),
-                          password);
+  return LoadDocumentImpl(
+      SeekableReadStreamIface::CreateFromFilename(file_path), password);
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
@@ -600,7 +600,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
 }
 #endif  // PDF_ENABLE_XFA
 
-class CMemFile final : public IFX_SeekableReadStream {
+class CMemFile final : public SeekableReadStreamIface {
  public:
   static RetainPtr<CMemFile> Create(const uint8_t* pBuf, FX_FILESIZE size) {
     return RetainPtr<CMemFile>(new CMemFile(pBuf, size));

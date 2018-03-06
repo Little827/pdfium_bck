@@ -30,7 +30,7 @@ class CPDF_Parser;
 class CPDF_Creator {
  public:
   explicit CPDF_Creator(CPDF_Document* pDoc,
-                        const RetainPtr<IFX_WriteStream>& archive);
+                        const RetainPtr<WriteStreamIface>& archive);
   ~CPDF_Creator();
 
   void RemoveSecurity();
@@ -38,7 +38,7 @@ class CPDF_Creator {
   int32_t Continue();
   bool SetFileVersion(int32_t fileVersion);
 
-  IFX_ArchiveStream* GetArchive() { return m_Archive.get(); }
+  ArchiveStreamIface* GetArchive() { return m_Archive.get(); }
 
   uint32_t GetNextObjectNumber() { return ++m_dwLastObjNum; }
   uint32_t GetLastObjectNumber() const { return m_dwLastObjNum; }
@@ -90,7 +90,7 @@ class CPDF_Creator {
   fxcrt::MaybeOwned<CPDF_SecurityHandler> m_pSecurityHandler;
   UnownedPtr<CPDF_Object> m_pMetadata;
   uint32_t m_dwLastObjNum;
-  std::unique_ptr<IFX_ArchiveStream> m_Archive;
+  std::unique_ptr<ArchiveStreamIface> m_Archive;
   FX_FILESIZE m_SavedOffset;
   int32_t m_iStage;
   uint32_t m_dwFlags;

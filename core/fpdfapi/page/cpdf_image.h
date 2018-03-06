@@ -20,7 +20,7 @@ class CFX_DIBitmap;
 class CPDF_Document;
 class CPDF_Page;
 class PauseIndicatorIface;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 class CPDF_Image : public Retainable {
  public:
@@ -44,8 +44,8 @@ class CPDF_Image : public Retainable {
   RetainPtr<CFX_DIBSource> LoadDIBSource() const;
 
   void SetImage(const RetainPtr<CFX_DIBitmap>& pDIBitmap);
-  void SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile);
-  void SetJpegImageInline(const RetainPtr<IFX_SeekableReadStream>& pFile);
+  void SetJpegImage(const RetainPtr<SeekableReadStreamIface>& pFile);
+  void SetJpegImageInline(const RetainPtr<SeekableReadStreamIface>& pFile);
 
   void ResetCache(CPDF_Page* pPage, const RetainPtr<CFX_DIBitmap>& pDIBitmap);
 

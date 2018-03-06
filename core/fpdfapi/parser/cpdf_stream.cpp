@@ -60,7 +60,7 @@ void CPDF_Stream::InitStream(const uint8_t* pData,
 }
 
 void CPDF_Stream::InitStreamFromFile(
-    const RetainPtr<IFX_SeekableReadStream>& pFile,
+    const RetainPtr<SeekableReadStreamIface>& pFile,
     std::unique_ptr<CPDF_Dictionary> pDict) {
   m_pDict = std::move(pDict);
   m_bMemoryBased = false;
@@ -161,7 +161,7 @@ WideString CPDF_Stream::GetUnicodeText() const {
   return PDF_DecodeText(pAcc->GetData(), pAcc->GetSize());
 }
 
-bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive) const {
+bool CPDF_Stream::WriteTo(ArchiveStreamIface* archive) const {
   if (!GetDict()->WriteTo(archive) || !archive->WriteString("stream\r\n"))
     return false;
 

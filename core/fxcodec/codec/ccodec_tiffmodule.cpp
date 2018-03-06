@@ -27,7 +27,7 @@ class CTiffContext : public CCodec_TiffModule::Context {
   CTiffContext();
   ~CTiffContext() override;
 
-  bool InitDecoder(const RetainPtr<IFX_SeekableReadStream>& file_ptr);
+  bool InitDecoder(const RetainPtr<SeekableReadStreamIface>& file_ptr);
   bool LoadFrameInfo(int32_t frame,
                      int32_t* width,
                      int32_t* height,
@@ -36,7 +36,7 @@ class CTiffContext : public CCodec_TiffModule::Context {
                      CFX_DIBAttribute* pAttribute);
   bool Decode(const RetainPtr<CFX_DIBitmap>& pDIBitmap);
 
-  RetainPtr<IFX_SeekableReadStream> io_in() const { return m_io_in; }
+  RetainPtr<SeekableReadStreamIface> io_in() const { return m_io_in; }
   uint32_t offset() const { return m_offset; }
   void set_offset(uint32_t offset) { m_offset = offset; }
 
@@ -59,7 +59,7 @@ class CTiffContext : public CCodec_TiffModule::Context {
                       uint16_t bps,
                       uint16_t spp);
 
-  RetainPtr<IFX_SeekableReadStream> m_io_in;
+  RetainPtr<SeekableReadStreamIface> m_io_in;
   uint32_t m_offset;
   TIFF* m_tif_ctx;
 };
@@ -229,7 +229,7 @@ CTiffContext::~CTiffContext() {
 }
 
 bool CTiffContext::InitDecoder(
-    const RetainPtr<IFX_SeekableReadStream>& file_ptr) {
+    const RetainPtr<SeekableReadStreamIface>& file_ptr) {
   m_io_in = file_ptr;
   m_tif_ctx = tiff_open(this, "r");
   return !!m_tif_ctx;
@@ -480,7 +480,7 @@ bool CTiffContext::Decode(const RetainPtr<CFX_DIBitmap>& pDIBitmap) {
 }
 
 std::unique_ptr<CCodec_TiffModule::Context> CCodec_TiffModule::CreateDecoder(
-    const RetainPtr<IFX_SeekableReadStream>& file_ptr) {
+    const RetainPtr<SeekableReadStreamIface>& file_ptr) {
   auto pDecoder = pdfium::MakeUnique<CTiffContext>();
   if (!pDecoder->InitDecoder(file_ptr))
     return nullptr;

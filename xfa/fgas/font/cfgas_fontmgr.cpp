@@ -425,8 +425,8 @@ unsigned long ftStreamRead(FXFT_Stream stream,
   if (count == 0)
     return 0;
 
-  IFX_SeekableReadStream* pFile =
-      static_cast<IFX_SeekableReadStream*>(stream->descriptor.pointer);
+  SeekableReadStreamIface* pFile =
+      static_cast<SeekableReadStreamIface*>(stream->descriptor.pointer);
   if (!pFile->ReadBlock(buffer, offset, count))
     return 0;
 
@@ -505,13 +505,13 @@ bool CFX_FontSourceEnum_File::HasStartPosition() {
 }
 
 // <next exists, stream for next>
-std::pair<bool, RetainPtr<IFX_SeekableStream>>
+std::pair<bool, RetainPtr<SeekableStreamIface>>
 CFX_FontSourceEnum_File::GetNext() {
   if (m_wsNext.GetLength() == 0)
     return {false, nullptr};
 
-  auto stream = IFX_SeekableStream::CreateFromFilename(m_wsNext.c_str(),
-                                                       FX_FILEMODE_ReadOnly);
+  auto stream = SeekableStreamIface::CreateFromFilename(m_wsNext.c_str(),
+                                                        FX_FILEMODE_ReadOnly);
   m_wsNext = GetNextFile().UTF8Decode();
   return {true, stream};
 }
@@ -533,7 +533,7 @@ bool CFGAS_FontMgr::EnumFontsFromFontMapper() {
 
   pSystemFontInfo->EnumFontList(pFontMapper);
   for (int32_t i = 0; i < pFontMapper->GetFaceSize(); ++i) {
-    RetainPtr<IFX_SeekableReadStream> pFontStream =
+    RetainPtr<SeekableReadStreamIface> pFontStream =
         CreateFontStream(pFontMapper, pSystemFontInfo, i);
     if (!pFontStream)
       continue;
@@ -551,7 +551,7 @@ bool CFGAS_FontMgr::EnumFontsFromFiles() {
     return !m_InstalledFonts.empty();
 
   bool has_next;
-  RetainPtr<IFX_SeekableStream> stream;
+  RetainPtr<SeekableStreamIface> stream;
   std::tie(has_next, stream) = m_pFontSource->GetNext();
   while (has_next) {
     if (stream)
@@ -567,7 +567,7 @@ bool CFGAS_FontMgr::EnumFonts() {
 
 bool CFGAS_FontMgr::VerifyUnicode(CFX_FontDescriptor* pDesc,
                                   wchar_t wcUnicode) {
-  RetainPtr<IFX_SeekableReadStream> pFileRead =
+  RetainPtr<SeekableReadStreamIface> pFileRead =
       CreateFontStream(pDesc->m_wsFaceName.UTF8Encode());
   if (!pFileRead)
     return false;
@@ -597,7 +597,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFont(const WideString& wsFaceName,
   if (!pSystemFontInfo)
     return nullptr;
 
-  RetainPtr<IFX_SeekableReadStream> pFontStream =
+  RetainPtr<SeekableReadStreamIface> pFontStream =
       CreateFontStream(wsFaceName.UTF8Encode());
   if (!pFontStream)
     return nullptr;
@@ -618,7 +618,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_FontMgr::LoadFont(const WideString& wsFaceName,
 }
 
 FXFT_Face CFGAS_FontMgr::LoadFace(
-    const RetainPtr<IFX_SeekableReadStream>& pFontStream,
+    const RetainPtr<SeekableReadStreamIface>& pFontStream,
     int32_t iFaceIndex) {
   if (!pFontStream)
     return nullptr;
@@ -659,7 +659,7 @@ FXFT_Face CFGAS_FontMgr::LoadFace(
   return pFace;
 }
 
-RetainPtr<IFX_SeekableReadStream> CFGAS_FontMgr::CreateFontStream(
+RetainPtr<SeekableReadStreamIface> CFGAS_FontMgr::CreateFontStream(
     CFX_FontMapper* pFontMapper,
     SystemFontInfoIface* pSystemFontInfo,
     uint32_t index) {
@@ -678,7 +678,7 @@ RetainPtr<IFX_SeekableReadStream> CFGAS_FontMgr::CreateFontStream(
   return pdfium::MakeRetain<CFX_MemoryStream>(pBuffer, dwFileSize, true);
 }
 
-RetainPtr<IFX_SeekableReadStream> CFGAS_FontMgr::CreateFontStream(
+RetainPtr<SeekableReadStreamIface> CFGAS_FontMgr::CreateFontStream(
     const ByteString& bsFaceName) {
   CFX_FontMgr* pFontMgr = CFX_GEModule::Get()->GetFontMgr();
   CFX_FontMapper* pFontMapper = pFontMgr->GetBuiltinMapper();
@@ -820,7 +820,7 @@ void CFGAS_FontMgr::RegisterFace(FXFT_Face pFace, const WideString* pFaceName) {
 }
 
 void CFGAS_FontMgr::RegisterFaces(
-    const RetainPtr<IFX_SeekableReadStream>& pFontStream,
+    const RetainPtr<SeekableReadStreamIface>& pFontStream,
     const WideString* pFaceName) {
   int32_t index = 0;
   int32_t num_faces = 0;

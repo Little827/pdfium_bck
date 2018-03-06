@@ -19,7 +19,7 @@ CXFA_DocumentParser::~CXFA_DocumentParser() {
 }
 
 int32_t CXFA_DocumentParser::StartParse(
-    const RetainPtr<IFX_SeekableStream>& pStream,
+    const RetainPtr<SeekableStreamIface>& pStream,
     XFA_PacketType ePacketID) {
   m_pDocument.reset();
   m_nodeParser.CloseParser();

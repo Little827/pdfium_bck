@@ -51,7 +51,7 @@ bool LoadJpegHelper(FPDF_PAGE* pages,
   if (!image_object || !fileAccess)
     return false;
 
-  RetainPtr<IFX_SeekableReadStream> pFile = MakeSeekableReadStream(fileAccess);
+  RetainPtr<SeekableReadStreamIface> pFile = MakeSeekableReadStream(fileAccess);
   CPDF_ImageObject* pImgObj = static_cast<CPDF_ImageObject*>(image_object);
 
   if (pages) {

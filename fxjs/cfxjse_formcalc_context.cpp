@@ -4665,7 +4665,7 @@ void CFXJSE_FormCalcContext::Get(CFXJSE_Value* pThis,
 
   std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
   ByteString urlString = ValueToUTF8String(argOne.get());
-  RetainPtr<IFX_SeekableReadStream> pFile =
+  RetainPtr<SeekableReadStreamIface> pFile =
       pAppProvider->DownloadURL(WideString::FromUTF8(urlString.AsStringView()));
   if (!pFile)
     return;

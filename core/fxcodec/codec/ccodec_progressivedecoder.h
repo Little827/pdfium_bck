@@ -24,7 +24,7 @@
 
 class CCodec_ModuleMgr;
 class CFX_DIBAttribute;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 class CCodec_ProgressiveDecoder : public CCodec_BmpModule::Delegate,
                                   public CCodec_GifModule::Delegate,
@@ -45,7 +45,7 @@ class CCodec_ProgressiveDecoder : public CCodec_BmpModule::Delegate,
   explicit CCodec_ProgressiveDecoder(CCodec_ModuleMgr* pCodecMgr);
   virtual ~CCodec_ProgressiveDecoder();
 
-  FXCODEC_STATUS LoadImageInfo(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  FXCODEC_STATUS LoadImageInfo(const RetainPtr<SeekableReadStreamIface>& pFile,
                                FXCODEC_IMAGE_TYPE imageType,
                                CFX_DIBAttribute* pAttribute,
                                bool bSkipImageTypeCheck);
@@ -201,7 +201,7 @@ class CCodec_ProgressiveDecoder : public CCodec_BmpModule::Delegate,
   FXCODEC_STATUS BmpContinueDecode();
   FXCODEC_STATUS TifContinueDecode();
 
-  RetainPtr<IFX_SeekableReadStream> m_pFile;
+  RetainPtr<SeekableReadStreamIface> m_pFile;
   RetainPtr<CFX_DIBitmap> m_pDeviceBitmap;
   UnownedPtr<CCodec_ModuleMgr> m_pCodecMgr;
   std::unique_ptr<CCodec_JpegModule::Context> m_pJpegContext;

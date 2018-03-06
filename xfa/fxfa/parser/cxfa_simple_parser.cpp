@@ -340,7 +340,7 @@ void CXFA_SimpleParser::SetFactory(CXFA_Document* pFactory) {
 }
 
 int32_t CXFA_SimpleParser::StartParse(
-    const RetainPtr<IFX_SeekableStream>& pStream,
+    const RetainPtr<SeekableStreamIface>& pStream,
     XFA_PacketType ePacketID) {
   CloseParser();
   m_pFileRead = pStream;

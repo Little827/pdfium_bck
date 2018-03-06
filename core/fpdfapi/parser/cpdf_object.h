@@ -23,7 +23,7 @@ class CPDF_Number;
 class CPDF_Reference;
 class CPDF_Stream;
 class CPDF_String;
-class IFX_ArchiveStream;
+class ArchiveStreamIface;
 
 class CPDF_Object {
  public:
@@ -92,7 +92,7 @@ class CPDF_Object {
   virtual CPDF_String* AsString();
   virtual const CPDF_String* AsString() const;
 
-  virtual bool WriteTo(IFX_ArchiveStream* archive) const = 0;
+  virtual bool WriteTo(ArchiveStreamIface* archive) const = 0;
 
   // Create a deep copy of the object with the option to either
   // copy a reference object or directly copy the object it refers to

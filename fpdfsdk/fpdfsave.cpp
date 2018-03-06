@@ -44,8 +44,9 @@
 namespace {
 
 #ifdef PDF_ENABLE_XFA
-bool SaveXFADocumentData(CPDFXFA_Context* pContext,
-                         std::vector<RetainPtr<IFX_SeekableStream>>* fileList) {
+bool SaveXFADocumentData(
+    CPDFXFA_Context* pContext,
+    std::vector<RetainPtr<SeekableStreamIface>>* fileList) {
   if (!pContext)
     return false;
 
@@ -100,7 +101,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
     CPDF_Stream* pTemplateStream = pArray->GetStreamAt(iTemplate);
     auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pTemplateStream);
     pAcc->LoadAllDataFiltered();
-    RetainPtr<IFX_SeekableStream> pTemplate =
+    RetainPtr<SeekableStreamIface> pTemplate =
         pdfium::MakeRetain<CFX_MemoryStream>(
             const_cast<uint8_t*>(pAcc->GetData()), pAcc->GetSize(), false);
     pChecksum->UpdateChecksum(pTemplate);
@@ -135,7 +136,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   }
   // L"datasets"
   {
-    RetainPtr<IFX_SeekableStream> pDsfileWrite =
+    RetainPtr<SeekableStreamIface> pDsfileWrite =
         pdfium::MakeRetain<CFX_MemoryStream>(false);
     CXFA_FFDoc* ffdoc = pXFADocView->GetDoc();
     if (ffdoc->SavePackage(
@@ -165,7 +166,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   }
   // L"form"
   {
-    RetainPtr<IFX_SeekableStream> pfileWrite =
+    RetainPtr<SeekableStreamIface> pfileWrite =
         pdfium::MakeRetain<CFX_MemoryStream>(false);
 
     CXFA_FFDoc* ffdoc = pXFADocView->GetDoc();
@@ -215,8 +216,9 @@ bool SendPostSaveToXFADoc(CPDFXFA_Context* pContext) {
   return true;
 }
 
-bool SendPreSaveToXFADoc(CPDFXFA_Context* pContext,
-                         std::vector<RetainPtr<IFX_SeekableStream>>* fileList) {
+bool SendPreSaveToXFADoc(
+    CPDFXFA_Context* pContext,
+    std::vector<RetainPtr<SeekableStreamIface>>* fileList) {
   if (!pContext->ContainsXFAForm())
     return true;
 
@@ -247,7 +249,7 @@ bool FPDF_Doc_Save(FPDF_DOCUMENT document,
 
 #ifdef PDF_ENABLE_XFA
   CPDFXFA_Context* pContext = static_cast<CPDFXFA_Context*>(document);
-  std::vector<RetainPtr<IFX_SeekableStream>> fileList;
+  std::vector<RetainPtr<SeekableStreamIface>> fileList;
   SendPreSaveToXFADoc(pContext, &fileList);
 #endif  // PDF_ENABLE_XFA
 

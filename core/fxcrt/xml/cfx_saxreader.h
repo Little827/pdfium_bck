@@ -16,7 +16,7 @@
 
 class CFX_SAXCommentContext;
 class CFX_SAXContext;
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 enum class CFX_SaxMode;
 
 class CFX_SAXItem {
@@ -45,13 +45,13 @@ class CFX_SAXFile {
   CFX_SAXFile();
   ~CFX_SAXFile();
 
-  bool StartFile(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  bool StartFile(const RetainPtr<SeekableReadStreamIface>& pFile,
                  uint32_t dwStart,
                  uint32_t dwLen);
   bool ReadNextBlock();
   void Reset();
 
-  RetainPtr<IFX_SeekableReadStream> m_pFile;
+  RetainPtr<SeekableReadStreamIface> m_pFile;
   uint32_t m_dwStart;
   uint32_t m_dwEnd;
   uint32_t m_dwCur;
@@ -99,7 +99,7 @@ class CFX_SAXReader {
   CFX_SAXReader();
   ~CFX_SAXReader();
 
-  int32_t StartParse(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  int32_t StartParse(const RetainPtr<SeekableReadStreamIface>& pFile,
                      uint32_t dwStart = 0,
                      uint32_t dwLen = -1,
                      uint32_t dwParseMode = 0);

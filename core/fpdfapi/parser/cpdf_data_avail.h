@@ -92,7 +92,7 @@ class CPDF_DataAvail final {
   };
 
   CPDF_DataAvail(FileAvail* pFileAvail,
-                 const RetainPtr<IFX_SeekableReadStream>& pFileRead,
+                 const RetainPtr<SeekableReadStreamIface>& pFileRead,
                  bool bSupportHintTable);
   ~CPDF_DataAvail();
 
@@ -100,7 +100,7 @@ class CPDF_DataAvail final {
   DocAvailStatus IsPageAvail(uint32_t dwPage, DownloadHints* pHints);
   DocFormStatus IsFormAvail(DownloadHints* pHints);
   DocLinearizationStatus IsLinearizedPDF();
-  RetainPtr<IFX_SeekableReadStream> GetFileRead() const;
+  RetainPtr<SeekableReadStreamIface> GetFileRead() const;
   int GetPageCount() const;
   CPDF_Dictionary* GetPage(int index);
   RetainPtr<CPDF_ReadValidator> GetValidator() const;

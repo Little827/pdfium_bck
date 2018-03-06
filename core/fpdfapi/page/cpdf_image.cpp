@@ -116,7 +116,7 @@ std::unique_ptr<CPDF_Dictionary> CPDF_Image::InitJPEG(uint8_t* pData,
   return pDict;
 }
 
-void CPDF_Image::SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile) {
+void CPDF_Image::SetJpegImage(const RetainPtr<SeekableReadStreamIface>& pFile) {
   uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
   if (!size)
     return;
@@ -140,7 +140,7 @@ void CPDF_Image::SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile) {
 }
 
 void CPDF_Image::SetJpegImageInline(
-    const RetainPtr<IFX_SeekableReadStream>& pFile) {
+    const RetainPtr<SeekableReadStreamIface>& pFile) {
   uint32_t size = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
   if (!size)
     return;

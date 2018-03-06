@@ -22,8 +22,8 @@ class CPDF_TestParser : public CPDF_Parser {
 
   // Setup reading from a file and initial states.
   bool InitTestFromFile(const char* path) {
-    RetainPtr<IFX_SeekableReadStream> pFileAccess =
-        IFX_SeekableReadStream::CreateFromFilename(path);
+    RetainPtr<SeekableReadStreamIface> pFileAccess =
+        SeekableReadStreamIface::CreateFromFilename(path);
     if (!pFileAccess)
       return false;
 

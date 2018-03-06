@@ -78,7 +78,7 @@ CPDF_DataAvail::DownloadHints::~DownloadHints() {}
 
 CPDF_DataAvail::CPDF_DataAvail(
     FileAvail* pFileAvail,
-    const RetainPtr<IFX_SeekableReadStream>& pFileRead,
+    const RetainPtr<SeekableReadStreamIface>& pFileRead,
     bool bSupportHintTable)
     : m_pFileAvail(pFileAvail),
       m_pFileRead(
@@ -924,7 +924,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::CheckResources(
   return resource_avail->CheckAvail();
 }
 
-RetainPtr<IFX_SeekableReadStream> CPDF_DataAvail::GetFileRead() const {
+RetainPtr<SeekableReadStreamIface> CPDF_DataAvail::GetFileRead() const {
   return m_pFileRead;
 }
 

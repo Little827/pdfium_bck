@@ -12,14 +12,14 @@
 #include "core/fxcrt/unowned_ptr.h"
 
 class CXFA_Document;
-class IFX_SeekableStream;
+class SeekableStreamIface;
 
 class CXFA_DataImporter {
  public:
   explicit CXFA_DataImporter(CXFA_Document* pDocument);
   ~CXFA_DataImporter();
 
-  bool ImportData(const RetainPtr<IFX_SeekableStream>& pDataDocument);
+  bool ImportData(const RetainPtr<SeekableStreamIface>& pDataDocument);
 
  private:
   UnownedPtr<CXFA_Document> const m_pDocument;

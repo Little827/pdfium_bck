@@ -304,7 +304,7 @@ WideString CPDFXFA_Context::Response(const WideString& wsQuestion,
                                  nLength / sizeof(uint16_t));
 }
 
-RetainPtr<IFX_SeekableReadStream> CPDFXFA_Context::DownloadURL(
+RetainPtr<SeekableReadStreamIface> CPDFXFA_Context::DownloadURL(
     const WideString& wsURL) {
   return m_pFormFillEnv ? m_pFormFillEnv->DownloadFromURL(wsURL.c_str())
                         : nullptr;

@@ -47,8 +47,8 @@ unsigned long FTStreamRead(FXFT_Stream stream,
   if (count == 0)
     return 0;
 
-  IFX_SeekableReadStream* pFile =
-      static_cast<IFX_SeekableReadStream*>(stream->descriptor.pointer);
+  SeekableReadStreamIface* pFile =
+      static_cast<SeekableReadStreamIface*>(stream->descriptor.pointer);
   return pFile && pFile->ReadBlock(buffer, offset, count) ? count : 0;
 }
 
@@ -56,7 +56,7 @@ void FTStreamClose(FXFT_Stream stream) {}
 
 bool LoadFileImp(FXFT_Library library,
                  FXFT_Face* Face,
-                 const RetainPtr<IFX_SeekableReadStream>& pFile,
+                 const RetainPtr<SeekableReadStreamIface>& pFile,
                  int32_t faceIndex,
                  std::unique_ptr<FXFT_StreamRec>* stream) {
   auto stream1 = pdfium::MakeUnique<FXFT_StreamRec>();
@@ -277,7 +277,7 @@ void CFX_Font::LoadSubst(const ByteString& face_name,
 }
 
 #ifdef PDF_ENABLE_XFA
-bool CFX_Font::LoadFile(const RetainPtr<IFX_SeekableReadStream>& pFile,
+bool CFX_Font::LoadFile(const RetainPtr<SeekableReadStreamIface>& pFile,
                         int nFaceIndex) {
   m_bEmbedded = false;
 

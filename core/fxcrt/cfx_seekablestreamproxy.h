@@ -37,7 +37,7 @@ class CFX_SeekableStreamProxy : public Retainable {
   void SetCodePage(uint16_t wCodePage);
 
  private:
-  CFX_SeekableStreamProxy(const RetainPtr<IFX_SeekableStream>& stream,
+  CFX_SeekableStreamProxy(const RetainPtr<SeekableStreamIface>& stream,
                           bool isWriteSteam);
   CFX_SeekableStreamProxy(uint8_t* data, size_t size);
   ~CFX_SeekableStreamProxy() override;
@@ -48,7 +48,7 @@ class CFX_SeekableStreamProxy : public Retainable {
   uint16_t m_wCodePage;
   size_t m_wBOMLength;
   FX_FILESIZE m_iPosition;
-  RetainPtr<IFX_SeekableStream> m_pStream;
+  RetainPtr<SeekableStreamIface> m_pStream;
 };
 
 #endif  // CORE_FXCRT_CFX_SEEKABLESTREAMPROXY_H_

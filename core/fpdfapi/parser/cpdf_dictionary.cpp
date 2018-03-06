@@ -242,7 +242,7 @@ ByteString CPDF_Dictionary::MaybeIntern(const ByteString& str) {
   return m_pPool ? m_pPool->Intern(str) : str;
 }
 
-bool CPDF_Dictionary::WriteTo(IFX_ArchiveStream* archive) const {
+bool CPDF_Dictionary::WriteTo(ArchiveStreamIface* archive) const {
   if (!archive->WriteString("<<"))
     return false;
 

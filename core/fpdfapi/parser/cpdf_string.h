@@ -31,7 +31,7 @@ class CPDF_String : public CPDF_Object {
   bool IsString() const override;
   CPDF_String* AsString() override;
   const CPDF_String* AsString() const override;
-  bool WriteTo(IFX_ArchiveStream* archive) const override;
+  bool WriteTo(ArchiveStreamIface* archive) const override;
 
   bool IsHex() const { return m_bHex; }
 

@@ -35,22 +35,22 @@ void FX_CloseFolder(FX_FileHandle* handle);
 #define FX_FILEMODE_ReadOnly 1
 #define FX_FILEMODE_Truncate 2
 
-class IFX_WriteStream : virtual public Retainable {
+class WriteStreamIface : virtual public Retainable {
  public:
   virtual bool WriteBlock(const void* pData, size_t size) = 0;
   virtual bool WriteString(const ByteStringView& str) = 0;
 };
 
-class IFX_ArchiveStream : public IFX_WriteStream {
+class ArchiveStreamIface : public WriteStreamIface {
  public:
   virtual bool WriteByte(uint8_t byte) = 0;
   virtual bool WriteDWord(uint32_t i) = 0;
   virtual FX_FILESIZE CurrentOffset() const = 0;
 };
 
-class IFX_SeekableReadStream : virtual public Retainable {
+class SeekableReadStreamIface : virtual public Retainable {
  public:
-  static RetainPtr<IFX_SeekableReadStream> CreateFromFilename(
+  static RetainPtr<SeekableReadStreamIface> CreateFromFilename(
       const char* filename);
 
   virtual bool IsEOF();
@@ -61,23 +61,23 @@ class IFX_SeekableReadStream : virtual public Retainable {
   virtual FX_FILESIZE GetSize() = 0;
 };
 
-class IFX_SeekableStream : public IFX_SeekableReadStream,
-                           public IFX_WriteStream {
+class SeekableStreamIface : public SeekableReadStreamIface,
+                            public WriteStreamIface {
  public:
-  static RetainPtr<IFX_SeekableStream> CreateFromFilename(const char* filename,
-                                                          uint32_t dwModes);
-  static RetainPtr<IFX_SeekableStream> CreateFromFilename(
+  static RetainPtr<SeekableStreamIface> CreateFromFilename(const char* filename,
+                                                           uint32_t dwModes);
+  static RetainPtr<SeekableStreamIface> CreateFromFilename(
       const wchar_t* filename,
       uint32_t dwModes);
 
-  // IFX_SeekableReadStream:
+  // SeekableReadStreamIface:
   bool IsEOF() override = 0;
   FX_FILESIZE GetPosition() override = 0;
   size_t ReadBlock(void* buffer, size_t size) override = 0;
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override = 0;
   FX_FILESIZE GetSize() override = 0;
 
-  // IFX_WriteStream:
+  // WriteStreamIface:
   bool WriteBlock(const void* pData, size_t size) override;
   bool WriteString(const ByteStringView& str) override;
 

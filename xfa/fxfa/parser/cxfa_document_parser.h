@@ -15,14 +15,14 @@ class CFX_XMLDoc;
 class CXFA_Document;
 class CXFA_FFNotify;
 class CXFA_Notify;
-class IFX_SeekableStream;
+class SeekableStreamIface;
 
 class CXFA_DocumentParser {
  public:
   explicit CXFA_DocumentParser(CXFA_FFNotify* pNotify);
   ~CXFA_DocumentParser();
 
-  int32_t StartParse(const RetainPtr<IFX_SeekableStream>& pStream,
+  int32_t StartParse(const RetainPtr<SeekableStreamIface>& pStream,
                      XFA_PacketType ePacketID);
   int32_t DoParse();
 

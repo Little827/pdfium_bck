@@ -10,7 +10,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/android/cfpf_skiafontdescriptor.h"
 
-class IFX_SeekableReadStream;
+class SeekableReadStreamIface;
 
 #define FPF_SKIAFONTTYPE_File 2
 
@@ -22,7 +22,7 @@ class CFPF_SkiaFileFont : public CFPF_SkiaFontDescriptor {
   // CFPF_SkiaFontDescriptor
   int32_t GetType() const override;
 
-  RetainPtr<IFX_SeekableReadStream> m_pFile;
+  RetainPtr<SeekableReadStreamIface> m_pFile;
 };
 
 #endif  // CORE_FXGE_ANDROID_CFPF_SKIAFILEFONT_H_

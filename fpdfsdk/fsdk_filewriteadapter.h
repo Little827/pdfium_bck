@@ -11,7 +11,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "public/fpdf_save.h"
 
-class FSDK_FileWriteAdapter : public IFX_WriteStream {
+class FSDK_FileWriteAdapter : public WriteStreamIface {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
