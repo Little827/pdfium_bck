@@ -75,10 +75,6 @@ RetainPtr<IFX_SeekableReadStream> IFX_SeekableReadStream::CreateFromFilename(
   return IFX_SeekableStream::CreateFromFilename(filename, FX_FILEMODE_ReadOnly);
 }
 
-bool IFX_SeekableWriteStream::WriteBlock(const void* pData, size_t size) {
-  return WriteBlock(pData, GetSize(), size);
-}
-
 bool IFX_SeekableReadStream::IsEOF() {
   return false;
 }

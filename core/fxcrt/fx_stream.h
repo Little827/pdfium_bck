@@ -48,18 +48,6 @@ class IFX_ArchiveStream : public IFX_WriteStream {
   virtual FX_FILESIZE CurrentOffset() const = 0;
 };
 
-class IFX_SeekableWriteStream : public IFX_WriteStream {
- public:
-  // IFX_WriteStream:
-  bool WriteBlock(const void* pData, size_t size) override;
-
-  virtual FX_FILESIZE GetSize() = 0;
-  virtual bool Flush() = 0;
-  virtual bool WriteBlock(const void* pData,
-                          FX_FILESIZE offset,
-                          size_t size) = 0;
-};
-
 class IFX_SeekableReadStream : virtual public Retainable {
  public:
   static RetainPtr<IFX_SeekableReadStream> CreateFromFilename(
@@ -74,11 +62,10 @@ class IFX_SeekableReadStream : virtual public Retainable {
 };
 
 class IFX_SeekableStream : public IFX_SeekableReadStream,
-                           public IFX_SeekableWriteStream {
+                           public IFX_WriteStream {
  public:
   static RetainPtr<IFX_SeekableStream> CreateFromFilename(const char* filename,
                                                           uint32_t dwModes);
-
   static RetainPtr<IFX_SeekableStream> CreateFromFilename(
       const wchar_t* filename,
       uint32_t dwModes);
@@ -90,14 +77,14 @@ class IFX_SeekableStream : public IFX_SeekableReadStream,
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override = 0;
   FX_FILESIZE GetSize() override = 0;
 
-  // IFX_SeekableWriteStream:
-  bool WriteBlock(const void* buffer,
-                  FX_FILESIZE offset,
-                  size_t size) override = 0;
-  bool WriteBlock(const void* buffer, size_t size) override;
+  // IFX_WriteStream:
+  bool WriteBlock(const void* pData, size_t size) override;
   bool WriteString(const ByteStringView& str) override;
 
-  bool Flush() override = 0;
+  virtual bool WriteBlock(const void* pData,
+                          FX_FILESIZE offset,
+                          size_t size) = 0;
+  virtual bool Flush() = 0;
 };
 
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
