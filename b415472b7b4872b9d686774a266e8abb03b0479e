@@ -2,6 +2,190 @@
   "comments": [
     {
       "key": {
+        "uuid": "87359832_a530ab50",
+        "filename": "core/fxcrt/metrics_handler_iface.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "nit: I would suggest naming this \"RecordCustomCountHistogram\". In general, I\u0027d suggest following a parallel naming scheme to https://cs.chromium.org/chromium/src/base/android/java/src/org/chromium/base/metrics/RecordHistogram.java",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d5af89_b920a146",
+        "filename": "core/fxcrt/metrics_handler_iface.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "Why are these unsigned? I believe that the corresponding value in the Chromium histogram implementation code is signed. (Note, however, that the bucket count is correctly unsigned.)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333d6058_83f1298a",
+        "filename": "core/fxcrt/metrics_handler_iface.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "\"max\" is a misleading name, since the sample has to be strictly less than this value.  \"count\" or \"bucket_count\" or \"boundary\" are preferred.",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9467bb8a_29c755e1",
+        "filename": "core/fxcrt/metrics_handler_iface.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "Please provide documentation for this class and its methods.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076741c8_f1170bc1",
+        "filename": "core/fxcrt/metrics_processor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "This class and its methods need documentation.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60cd9db_3c89f8d4",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "Why is this check needed?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569419c5_1897c821",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "Why is this check needed?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 13
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ce322a_3a68b35b",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "Should this use std::make_unique, as Chromium code would?",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f26229c_05c9c68b",
         "filename": "fxjs/cfx_v8.h",
         "patchSetId": 9
@@ -13,6 +197,116 @@
       "writtenOn": "2018-03-06T22:02:20Z",
       "side": 1,
       "message": "Need some kind of a \"These values are persisted to logs\" comment, as mentioned previously, so future changes don\u0027t mess with UMA\u0027s expectations.",
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc4bc04d_8297894a",
+        "filename": "fxjs/cfx_v8.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "nit: enum class?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8c9b4c_417eb859",
+        "filename": "fxjs/cfx_v8.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "+1\n\nThe best practices documentation lives here: https://chromium.googlesource.com/chromium/src/+/HEAD/tools/metrics/histograms/README.md#enum-histograms",
+      "parentUuid": "0f26229c_05c9c68b",
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd148580_9d7bcc8c",
+        "filename": "fxjs/cfx_v8.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "Why is there a gap here? Perhaps it would be helpful to provide a RecordBooleanHistogram wrapper?",
+      "range": {
+        "startLine": 20,
+        "startChar": 33,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc4554d_f223e545",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "What\u0027s the reason for using wide strings, rather than UTF8?",
+      "range": {
+        "startLine": 509,
+        "startChar": 44,
+        "endLine": 509,
+        "endChar": 61
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15683a7c_cb52095d",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-06T23:43:30Z",
+      "side": 1,
+      "message": "Please use fixed-width types, e.g. uint32_t",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 36
+      },
       "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
