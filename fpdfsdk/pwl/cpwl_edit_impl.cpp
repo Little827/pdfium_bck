@@ -241,7 +241,8 @@ void CPWL_EditImpl_Undo::Redo() {
   m_bWorking = false;
 }
 
-void CPWL_EditImpl_Undo::AddItem(std::unique_ptr<IFX_Edit_UndoItem> pItem) {
+void CPWL_EditImpl_Undo::AddItem(
+    std::unique_ptr<CPWL_EditUndoItemIface> pItem) {
   ASSERT(!m_bWorking);
   ASSERT(pItem);
   if (CanRedo())
@@ -1838,7 +1839,7 @@ int32_t CPWL_EditImpl::GetCharSetFromUnicode(uint16_t word,
 }
 
 void CPWL_EditImpl::AddEditUndoItem(
-    std::unique_ptr<IFX_Edit_UndoItem> pEditUndoItem) {
+    std::unique_ptr<CPWL_EditUndoItemIface> pEditUndoItem) {
   m_Undo.AddItem(std::move(pEditUndoItem));
 }
 

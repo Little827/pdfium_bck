@@ -28,7 +28,7 @@ class CFX_RenderDevice;
 class CFX_SystemHandler;
 class CPWL_Edit;
 class CPWL_EditCtrl;
-class IFX_Edit_UndoItem;
+class CPWL_EditUndoItemIface;
 
 struct CPWL_EditImpl_LineRect {
   CPWL_EditImpl_LineRect(const CPVT_WordRange& wrLine,
@@ -79,7 +79,7 @@ class CPWL_EditImpl_Undo {
   CPWL_EditImpl_Undo();
   ~CPWL_EditImpl_Undo();
 
-  void AddItem(std::unique_ptr<IFX_Edit_UndoItem> pItem);
+  void AddItem(std::unique_ptr<CPWL_EditUndoItemIface> pItem);
   void Undo();
   void Redo();
   bool CanUndo() const;
@@ -89,20 +89,20 @@ class CPWL_EditImpl_Undo {
   void RemoveHeads();
   void RemoveTails();
 
-  std::deque<std::unique_ptr<IFX_Edit_UndoItem>> m_UndoItemStack;
+  std::deque<std::unique_ptr<CPWL_EditUndoItemIface>> m_UndoItemStack;
   size_t m_nCurUndoPos;
   bool m_bWorking;
 };
 
-class IFX_Edit_UndoItem {
+class CPWL_EditUndoItemIface {
  public:
-  virtual ~IFX_Edit_UndoItem() {}
+  virtual ~CPWL_EditUndoItemIface() {}
 
   virtual void Undo() = 0;
   virtual void Redo() = 0;
 };
 
-class CFXEU_InsertWord : public IFX_Edit_UndoItem {
+class CFXEU_InsertWord : public CPWL_EditUndoItemIface {
  public:
   CFXEU_InsertWord(CPWL_EditImpl* pEdit,
                    const CPVT_WordPlace& wpOldPlace,
@@ -111,7 +111,7 @@ class CFXEU_InsertWord : public IFX_Edit_UndoItem {
                    int32_t charset);
   ~CFXEU_InsertWord() override;
 
-  // IFX_Edit_UndoItem:
+  // CPWL_EditUndoItemIface:
   void Redo() override;
   void Undo() override;
 
@@ -124,14 +124,14 @@ class CFXEU_InsertWord : public IFX_Edit_UndoItem {
   int32_t m_nCharset;
 };
 
-class CFXEU_InsertReturn : public IFX_Edit_UndoItem {
+class CFXEU_InsertReturn : public CPWL_EditUndoItemIface {
  public:
   CFXEU_InsertReturn(CPWL_EditImpl* pEdit,
                      const CPVT_WordPlace& wpOldPlace,
                      const CPVT_WordPlace& wpNewPlace);
   ~CFXEU_InsertReturn() override;
 
-  // IFX_Edit_UndoItem:
+  // CPWL_EditUndoItemIface:
   void Redo() override;
   void Undo() override;
 
@@ -142,7 +142,7 @@ class CFXEU_InsertReturn : public IFX_Edit_UndoItem {
   CPVT_WordPlace m_wpNew;
 };
 
-class CFXEU_Backspace : public IFX_Edit_UndoItem {
+class CFXEU_Backspace : public CPWL_EditUndoItemIface {
  public:
   CFXEU_Backspace(CPWL_EditImpl* pEdit,
                   const CPVT_WordPlace& wpOldPlace,
@@ -151,7 +151,7 @@ class CFXEU_Backspace : public IFX_Edit_UndoItem {
                   int32_t charset);
   ~CFXEU_Backspace() override;
 
-  // IFX_Edit_UndoItem:
+  // CPWL_EditUndoItemIface:
   void Redo() override;
   void Undo() override;
 
@@ -164,7 +164,7 @@ class CFXEU_Backspace : public IFX_Edit_UndoItem {
   int32_t m_nCharset;
 };
 
-class CFXEU_Delete : public IFX_Edit_UndoItem {
+class CFXEU_Delete : public CPWL_EditUndoItemIface {
  public:
   CFXEU_Delete(CPWL_EditImpl* pEdit,
                const CPVT_WordPlace& wpOldPlace,
@@ -174,7 +174,7 @@ class CFXEU_Delete : public IFX_Edit_UndoItem {
                bool bSecEnd);
   ~CFXEU_Delete() override;
 
-  // IFX_Edit_UndoItem:
+  // CPWL_EditUndoItemIface:
   void Redo() override;
   void Undo() override;
 
@@ -188,14 +188,14 @@ class CFXEU_Delete : public IFX_Edit_UndoItem {
   bool m_bSecEnd;
 };
 
-class CFXEU_Clear : public IFX_Edit_UndoItem {
+class CFXEU_Clear : public CPWL_EditUndoItemIface {
  public:
   CFXEU_Clear(CPWL_EditImpl* pEdit,
               const CPVT_WordRange& wrSel,
               const WideString& swText);
   ~CFXEU_Clear() override;
 
-  // IFX_Edit_UndoItem:
+  // CPWL_EditUndoItemIface:
   void Redo() override;
   void Undo() override;
 
@@ -206,7 +206,7 @@ class CFXEU_Clear : public IFX_Edit_UndoItem {
   WideString m_swText;
 };
 
-class CFXEU_InsertText : public IFX_Edit_UndoItem {
+class CFXEU_InsertText : public CPWL_EditUndoItemIface {
  public:
   CFXEU_InsertText(CPWL_EditImpl* pEdit,
                    const CPVT_WordPlace& wpOldPlace,
@@ -215,7 +215,7 @@ class CFXEU_InsertText : public IFX_Edit_UndoItem {
                    int32_t charset);
   ~CFXEU_InsertText() override;
 
-  // IFX_Edit_UndoItem:
+  // CPWL_EditUndoItemIface:
   void Redo() override;
   void Undo() override;
 
@@ -372,7 +372,7 @@ class CPWL_EditImpl {
   void SetCaretInfo();
   void SetCaretOrigin();
 
-  void AddEditUndoItem(std::unique_ptr<IFX_Edit_UndoItem> pEditUndoItem);
+  void AddEditUndoItem(std::unique_ptr<CPWL_EditUndoItemIface> pEditUndoItem);
 
   std::unique_ptr<CPDF_VariableText> m_pVT;
   UnownedPtr<CPWL_EditCtrl> m_pNotify;
