@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "125bad52_c9857825",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-06T17:42:49Z",
+      "side": 1,
+      "message": "Nah, the C in CPWL stands for Concrete, so this name doesn\u0027t make sense to me.  pdfium::pwl::EditIface someday?",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "c69f7e92601196ae3ec288a4c048239ba73e73c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
