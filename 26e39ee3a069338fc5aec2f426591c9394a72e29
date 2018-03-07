@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "6e5e66dd_7220b895",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-07T14:41:00Z",
+      "side": 1,
+      "message": "Yes? If I remove the empty check and rerun the test I\"ll get:\n\n[ RUN      ] CJS_PublicMethodsEmbedderTest.AFNumber_Keystroke\n../../fxjs/cjs_publicmethods_embeddertest.cpp:231: Failure\nValue of: valid\n  Actual: false\nExpected: true\n[  FAILED  ] CJS_PublicMethodsEmbedderTest.AFNumber_Keystroke (58 ms)\n\nAdding the empty check back I get:\n\n[ RUN      ] CJS_PublicMethodsEmbedderTest.AFNumber_Keystroke\n[       OK ] CJS_PublicMethodsEmbedderTest.AFNumber_Keystroke (114 ms)",
+      "parentUuid": "b0b95640_88c9fa7e",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d563655_330bd1c4",
         "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
         "patchSetId": 2
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "I still don\u0027t understand why this matters at the end of the test case. I commented these out locally and the test still runs fine.",
       "parentUuid": "abc66c9c_c1e24f4e",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a3ff16_454dd1b6",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-07T14:41:00Z",
+      "side": 1,
+      "message": "Because *SAN. The m_pValue is an unowned ptr. So, not freeing it causes the stack variable to go out of scope before the UnownedPtr does causing a MSAN issue.\n\nThe m_pWideStrChange seems to be accessed in the destructor, or somewhere, of the EventHandler, so when this goes out of scope, the stack variable is destroyed and the EventHandler causes an MSAN issue.\n\nI freed m_pbRc just for consistency and to be safe in case it becomes an UnownedPtr in the future.",
+      "parentUuid": "766ad7bb_38c1dae8",
       "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
