@@ -238,3 +238,13 @@ TEST(CXFA_FMParserTest, ParseBadElseIfExpression) {
   ASSERT_TRUE(ast == nullptr);
   EXPECT_TRUE(parser->HasError());
 }
+
+TEST(CXFA_FMParserTest, ParseDepthWithWideTree) {
+  const wchar_t input[] = {L"a <> b <> c <> d <> e <> f <> g <> h <> i <> j"};
+
+  auto parser = pdfium::MakeUnique<CXFA_FMParser>(input);
+  parser->SetMaxParseDepthForTest(5);
+  std::unique_ptr<CXFA_FMAST> ast = parser->Parse();
+  ASSERT_TRUE(ast == nullptr);
+  EXPECT_TRUE(parser->HasError());
+}
