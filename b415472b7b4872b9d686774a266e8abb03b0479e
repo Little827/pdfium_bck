@@ -188,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "a86c184e_e5bae3b2",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-07T23:53:05Z",
+      "side": 1,
+      "message": "That... seems super hacky? In Chromium code, I would have the embedder implement an interface, and possibly provide empty definitions for code they don\u0027t want to handle.\n\nAgain, I\u0027m clearly well out of my comfort zone in the PDFium codebase, so if this design pattern is for some reason preferred in this codebase, please ignore my comment. But, also, color me surprised – it seems much easier to get wrong \u003d/",
+      "parentUuid": "4a72574d_91c32132",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "569419c5_1897c821",
         "filename": "fpdfsdk/fpdf_metrics.cpp",
         "patchSetId": 9
@@ -364,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "7226fe73_84a678ae",
+        "filename": "fxjs/cfx_v8.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-07T23:53:05Z",
+      "side": 1,
+      "message": "In the Chromium implementation, we implement the enum recording function so that it can accept \"enum class\" values. Perhaps the same would be appropriate here? It might depend on the extent to which \"enum class\" is preferred within PDFium in general.\n\nhttps://cs.chromium.org/chromium/src/base/metrics/histogram_functions.h?l\u003d37-60\u0026rcl\u003d65fc192779b75ce1ce1f2af0bf7376a39b6c4d81",
+      "parentUuid": "109b2d3e_31560d6c",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd148580_9d7bcc8c",
         "filename": "fxjs/cfx_v8.h",
         "patchSetId": 9
@@ -422,6 +470,30 @@
       "side": 1,
       "message": "PDFium uses an internal WideString class in most places.",
       "parentUuid": "ebc4554d_f223e545",
+      "range": {
+        "startLine": 509,
+        "startChar": 44,
+        "endLine": 509,
+        "endChar": 61
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38dc695_d5cbf3aa",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-07T23:53:05Z",
+      "side": 1,
+      "message": "Okay, but for histograms, you\u0027re just going to end up converting back and forth. Is there a strict rule/guideline within PDFium to always prefer WideString, even when it\u0027s not really the most appropriate data type? (I\u0027m obviously not very familiar with the PDFium codebase, so this is a genuine question, not a rhetorical one.)",
+      "parentUuid": "ccbb14c7_68bdd393",
       "range": {
         "startLine": 509,
         "startChar": 44,
@@ -493,6 +565,30 @@
       "side": 1,
       "message": "For API consistency I prefer to leave this as unsigned int. We don\u0027t use uint32_t anywhere else in the public/ API.",
       "parentUuid": "caadd2f5_f34c3be4",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7319e280_f4c69dae",
+        "filename": "public/fpdf_metrics.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-07T23:53:05Z",
+      "side": 1,
+      "message": "If you do use unsigned int rather than fixed-width types, then I think it\u0027s important to add some code to validate that it\u0027s safe to convert between them. It would be problematic if the widths did not match and this resulted in silent truncation sometimes.",
+      "parentUuid": "99dcef51_30bbe06d",
       "range": {
         "startLine": 28,
         "startChar": 24,
