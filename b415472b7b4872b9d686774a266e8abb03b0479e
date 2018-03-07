@@ -212,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "9e344ea0_f3bedba5",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-07T23:56:21Z",
+      "side": 1,
+      "message": "PDFium is callable by plain old C programs in addition to C++.  The entire API is expressed as C.",
+      "parentUuid": "a86c184e_e5bae3b2",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "569419c5_1897c821",
         "filename": "fpdfsdk/fpdf_metrics.cpp",
         "patchSetId": 9
