@@ -9,7 +9,7 @@
 #include <algorithm>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 
 namespace {
 
@@ -84,21 +84,21 @@ CFX_Color CFX_Color::ParseColor(const CPDF_Array& array) {
 
 // Static.
 CFX_Color CFX_Color::ParseColor(const ByteString& str) {
-  CPDF_SimpleParser syntax(str.AsStringView());
-  if (syntax.FindTagParamFromStart("g", 1))
-    return CFX_Color(CFX_Color::kGray, FX_atof(syntax.GetWord()));
+  CPDF_Lexer lexer(str.AsStringView());
+  if (lexer.FindTagParamFromStart("g", 1))
+    return CFX_Color(CFX_Color::kGray, FX_atof(lexer.GetWord()));
 
-  if (syntax.FindTagParamFromStart("rg", 3)) {
-    float f1 = FX_atof(syntax.GetWord());
-    float f2 = FX_atof(syntax.GetWord());
-    float f3 = FX_atof(syntax.GetWord());
+  if (lexer.FindTagParamFromStart("rg", 3)) {
+    float f1 = FX_atof(lexer.GetWord());
+    float f2 = FX_atof(lexer.GetWord());
+    float f3 = FX_atof(lexer.GetWord());
     return CFX_Color(CFX_Color::kRGB, f1, f2, f3);
   }
-  if (syntax.FindTagParamFromStart("k", 4)) {
-    float f1 = FX_atof(syntax.GetWord());
-    float f2 = FX_atof(syntax.GetWord());
-    float f3 = FX_atof(syntax.GetWord());
-    float f4 = FX_atof(syntax.GetWord());
+  if (lexer.FindTagParamFromStart("k", 4)) {
+    float f1 = FX_atof(lexer.GetWord());
+    float f2 = FX_atof(lexer.GetWord());
+    float f3 = FX_atof(lexer.GetWord());
+    float f4 = FX_atof(lexer.GetWord());
     return CFX_Color(CFX_Color::kCMYK, f1, f2, f3, f4);
   }
   return CFX_Color(CFX_Color::kTransparent);

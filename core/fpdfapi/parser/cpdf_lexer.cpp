@@ -4,19 +4,19 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 
 #include <vector>
 
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 
-CPDF_SimpleParser::CPDF_SimpleParser(const uint8_t* pData, uint32_t dwSize)
+CPDF_Lexer::CPDF_Lexer(const uint8_t* pData, uint32_t dwSize)
     : m_pData(pData), m_dwSize(dwSize), m_dwCurPos(0) {}
 
-CPDF_SimpleParser::CPDF_SimpleParser(const ByteStringView& str)
+CPDF_Lexer::CPDF_Lexer(const ByteStringView& str)
     : m_pData(str.raw_str()), m_dwSize(str.GetLength()), m_dwCurPos(0) {}
 
-std::pair<const uint8_t*, uint32_t> CPDF_SimpleParser::ParseWord() {
+std::pair<const uint8_t*, uint32_t> CPDF_Lexer::ParseWord() {
   const uint8_t* pStart = nullptr;
   uint8_t dwSize = 0;
   uint8_t ch;
@@ -103,7 +103,7 @@ std::pair<const uint8_t*, uint32_t> CPDF_SimpleParser::ParseWord() {
   return std::make_pair(pStart, dwSize);
 }
 
-ByteStringView CPDF_SimpleParser::GetWord() {
+ByteStringView CPDF_Lexer::GetWord() {
   const uint8_t* pStart;
   uint32_t dwSize;
   std::tie(pStart, dwSize) = ParseWord();
@@ -153,8 +153,8 @@ ByteStringView CPDF_SimpleParser::GetWord() {
   return ByteStringView(pStart, dwSize);
 }
 
-bool CPDF_SimpleParser::FindTagParamFromStart(const ByteStringView& token,
-                                              int nParams) {
+bool CPDF_Lexer::FindTagParamFromStart(const ByteStringView& token,
+                                       int nParams) {
   nParams++;
 
   std::vector<uint32_t> pBuf(nParams);

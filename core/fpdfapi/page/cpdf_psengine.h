@@ -15,7 +15,7 @@
 
 class CPDF_PSEngine;
 class CPDF_PSProc;
-class CPDF_SimpleParser;
+class CPDF_Lexer;
 
 enum PDF_PSOP : uint8_t {
   PSOP_ADD,
@@ -86,7 +86,7 @@ class CPDF_PSProc {
   CPDF_PSProc();
   ~CPDF_PSProc();
 
-  bool Parse(CPDF_SimpleParser* parser, int depth);
+  bool Parse(CPDF_Lexer* lexer, int depth);
   bool Execute(CPDF_PSEngine* pEngine);
 
   // These methods are exposed for testing.

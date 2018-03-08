@@ -13,9 +13,9 @@
 #include "core/fpdfapi/parser/cfdf_document.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
@@ -914,15 +914,15 @@ void CPDF_FormField::LoadDA() {
   if (!pFont)
     return;
 
-  CPDF_SimpleParser syntax(DA.AsStringView());
-  syntax.FindTagParamFromStart("Tf", 2);
-  ByteString font_name(syntax.GetWord());
+  CPDF_Lexer lexer(DA.AsStringView());
+  lexer.FindTagParamFromStart("Tf", 2);
+  ByteString font_name(lexer.GetWord());
   CPDF_Dictionary* pFontDict = pFont->GetDictFor(font_name);
   if (!pFontDict)
     return;
 
   m_pFont = m_pForm->GetDocument()->LoadFont(pFontDict);
-  m_FontSize = FX_atof(syntax.GetWord());
+  m_FontSize = FX_atof(lexer.GetWord());
 }
 
 bool CPDF_FormField::NotifyBeforeSelectionChange(const WideString& value) {

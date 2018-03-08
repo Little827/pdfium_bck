@@ -13,7 +13,7 @@
 #include "core/fpdfapi/cmaps/cmap_int.h"
 #include "core/fpdfapi/font/cpdf_cmapmanager.h"
 #include "core/fpdfapi/font/cpdf_cmapparser.h"
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 
 namespace {
 
@@ -293,9 +293,9 @@ void CPDF_CMap::LoadPredefined(CPDF_CMapManager* pMgr,
 void CPDF_CMap::LoadEmbedded(const uint8_t* pData, uint32_t size) {
   m_DirectCharcodeToCIDTable = std::vector<uint16_t>(65536);
   CPDF_CMapParser parser(this);
-  CPDF_SimpleParser syntax(pData, size);
+  CPDF_Lexer lexer(pData, size);
   while (1) {
-    ByteStringView word = syntax.GetWord();
+    ByteStringView word = lexer.GetWord();
     if (word.IsEmpty()) {
       break;
     }

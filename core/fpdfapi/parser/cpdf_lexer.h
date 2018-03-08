@@ -4,18 +4,18 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FPDFAPI_PARSER_CPDF_SIMPLE_PARSER_H_
-#define CORE_FPDFAPI_PARSER_CPDF_SIMPLE_PARSER_H_
+#ifndef CORE_FPDFAPI_PARSER_CPDF_LEXER_H_
+#define CORE_FPDFAPI_PARSER_CPDF_LEXER_H_
 
 #include <utility>
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 
-class CPDF_SimpleParser {
+class CPDF_Lexer {
  public:
-  CPDF_SimpleParser(const uint8_t* pData, uint32_t dwSize);
-  explicit CPDF_SimpleParser(const ByteStringView& str);
+  CPDF_Lexer(const uint8_t* pData, uint32_t dwSize);
+  explicit CPDF_Lexer(const ByteStringView& str);
 
   ByteStringView GetWord();
 
@@ -34,4 +34,4 @@ class CPDF_SimpleParser {
   uint32_t m_dwCurPos;
 };
 
-#endif  // CORE_FPDFAPI_PARSER_CPDF_SIMPLE_PARSER_H_
+#endif  // CORE_FPDFAPI_PARSER_CPDF_LEXER_H_

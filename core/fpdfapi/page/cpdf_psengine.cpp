@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <utility>
 
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
 #include "third_party/base/logging.h"
@@ -103,12 +103,12 @@ bool CPDF_PSEngine::Execute() {
 CPDF_PSProc::CPDF_PSProc() {}
 CPDF_PSProc::~CPDF_PSProc() {}
 
-bool CPDF_PSProc::Parse(CPDF_SimpleParser* parser, int depth) {
+bool CPDF_PSProc::Parse(CPDF_Lexer* lexer, int depth) {
   if (depth > kMaxDepth)
     return false;
 
   while (1) {
-    ByteStringView word = parser->GetWord();
+    ByteStringView word = lexer->GetWord();
     if (word.IsEmpty())
       return false;
 
@@ -117,7 +117,7 @@ bool CPDF_PSProc::Parse(CPDF_SimpleParser* parser, int depth) {
 
     if (word == "{") {
       m_Operators.push_back(pdfium::MakeUnique<CPDF_PSOP>());
-      if (!m_Operators.back()->GetProc()->Parse(parser, depth + 1))
+      if (!m_Operators.back()->GetProc()->Parse(lexer, depth + 1))
         return false;
       continue;
     }
@@ -191,9 +191,9 @@ int CPDF_PSEngine::PopInt() {
 }
 
 bool CPDF_PSEngine::Parse(const char* str, int size) {
-  CPDF_SimpleParser parser(reinterpret_cast<const uint8_t*>(str), size);
-  ByteStringView word = parser.GetWord();
-  return word == "{" ? m_MainProc.Parse(&parser, 0) : false;
+  CPDF_Lexer lexer(reinterpret_cast<const uint8_t*>(str), size);
+  ByteStringView word = lexer.GetWord();
+  return word == "{" ? m_MainProc.Parse(&lexer, 0) : false;
 }
 
 bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {

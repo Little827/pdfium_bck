@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 
 #include <string>
 
@@ -10,7 +10,7 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
 
-TEST(SimpleParserTest, GetWord) {
+TEST(LexerTest, GetWord) {
   static const pdfium::StrFuncTestData test_data[] = {
       // Empty src string.
       STR_IN_OUT_CASE("", ""),
@@ -49,8 +49,8 @@ TEST(SimpleParserTest, GetWord) {
   };
   for (size_t i = 0; i < FX_ArraySize(test_data); ++i) {
     const pdfium::StrFuncTestData& data = test_data[i];
-    CPDF_SimpleParser parser(data.input, data.input_size);
-    ByteStringView word = parser.GetWord();
+    CPDF_Lexer lexer(data.input, data.input_size);
+    ByteStringView word = lexer.GetWord();
     EXPECT_EQ(data.expected_size, word.GetLength()) << " for case " << i;
     if (data.expected_size != word.GetLength())
       continue;
@@ -60,7 +60,7 @@ TEST(SimpleParserTest, GetWord) {
   }
 }
 
-TEST(SimpleParserTest, FindTagParamFromStart) {
+TEST(LexerTest, FindTagParamFromStart) {
   static const struct FindTagTestStruct {
     const unsigned char* input;
     unsigned int input_size;
@@ -88,10 +88,10 @@ TEST(SimpleParserTest, FindTagParamFromStart) {
   };
   for (size_t i = 0; i < FX_ArraySize(test_data); ++i) {
     const FindTagTestStruct& data = test_data[i];
-    CPDF_SimpleParser parser(data.input, data.input_size);
+    CPDF_Lexer lexer(data.input, data.input_size);
     EXPECT_EQ(data.result,
-              parser.FindTagParamFromStart(data.token, data.num_params))
+              lexer.FindTagParamFromStart(data.token, data.num_params))
         << " for case " << i;
-    EXPECT_EQ(data.result_pos, parser.GetCurPos()) << " for case " << i;
+    EXPECT_EQ(data.result_pos, lexer.GetCurPos()) << " for case " << i;
   }
 }

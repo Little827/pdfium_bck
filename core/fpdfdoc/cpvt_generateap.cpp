@@ -16,10 +16,10 @@
 #include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
@@ -901,14 +901,14 @@ void CPVT_GenerateAP::GenerateFormAP(Type type,
   if (DA.IsEmpty())
     return;
 
-  CPDF_SimpleParser syntax(DA.AsStringView());
-  syntax.FindTagParamFromStart("Tf", 2);
-  ByteString sFontName(syntax.GetWord());
+  CPDF_Lexer lexer(DA.AsStringView());
+  lexer.FindTagParamFromStart("Tf", 2);
+  ByteString sFontName(lexer.GetWord());
   sFontName = PDF_NameDecode(sFontName);
   if (sFontName.IsEmpty())
     return;
 
-  float fFontSize = FX_atof(syntax.GetWord());
+  float fFontSize = FX_atof(lexer.GetWord());
   CFX_Color crText = CFX_Color::ParseColor(DA);
   CPDF_Dictionary* pDRDict = pFormDict->GetDictFor("DR");
   if (!pDRDict)

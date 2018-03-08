@@ -11,8 +11,8 @@
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfdoc/cpdf_formfield.h"
@@ -216,10 +216,10 @@ CPDF_Font* CBA_FontMap::GetAnnotDefaultFont(ByteString* sAlias) {
   if (sDA.IsEmpty())
     return nullptr;
 
-  CPDF_SimpleParser syntax(sDA.AsStringView());
-  syntax.FindTagParamFromStart("Tf", 2);
+  CPDF_Lexer lexer(sDA.AsStringView());
+  lexer.FindTagParamFromStart("Tf", 2);
 
-  ByteString sFontName(syntax.GetWord());
+  ByteString sFontName(lexer.GetWord());
   ByteString sDecodedFontName = PDF_NameDecode(sFontName);
   *sAlias = sDecodedFontName.Right(sDecodedFontName.GetLength() - 1);
 

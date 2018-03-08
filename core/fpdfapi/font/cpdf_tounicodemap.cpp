@@ -9,7 +9,7 @@
 #include "core/fpdfapi/cpdf_modulemgr.h"
 #include "core/fpdfapi/font/cpdf_cid2unicodemap.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
-#include "core/fpdfapi/parser/cpdf_simple_parser.h"
+#include "core/fpdfapi/parser/cpdf_lexer.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/numerics/safe_conversions.h"
@@ -126,20 +126,20 @@ void CPDF_ToUnicodeMap::Load(CPDF_Stream* pStream) {
   CIDSet cid_set = CIDSET_UNKNOWN;
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   pAcc->LoadAllDataFiltered();
-  CPDF_SimpleParser parser(pAcc->GetData(), pAcc->GetSize());
+  CPDF_Lexer lexer(pAcc->GetData(), pAcc->GetSize());
   while (1) {
-    ByteStringView word = parser.GetWord();
+    ByteStringView word = lexer.GetWord();
     if (word.IsEmpty()) {
       break;
     }
     if (word == "beginbfchar") {
       while (1) {
-        word = parser.GetWord();
+        word = lexer.GetWord();
         if (word.IsEmpty() || word == "endbfchar") {
           break;
         }
         uint32_t srccode = StringToCode(word);
-        word = parser.GetWord();
+        word = lexer.GetWord();
         WideString destcode = StringToWideString(word);
         int len = destcode.GetLength();
         if (len == 0) {
@@ -156,21 +156,21 @@ void CPDF_ToUnicodeMap::Load(CPDF_Stream* pStream) {
     } else if (word == "beginbfrange") {
       while (1) {
         ByteString low, high;
-        low = parser.GetWord();
+        low = lexer.GetWord();
         if (low.IsEmpty() || low == "endbfrange") {
           break;
         }
-        high = parser.GetWord();
+        high = lexer.GetWord();
         uint32_t lowcode = StringToCode(low.AsStringView());
         uint32_t highcode =
             (lowcode & 0xffffff00) | (StringToCode(high.AsStringView()) & 0xff);
         if (highcode == (uint32_t)-1) {
           break;
         }
-        ByteString start(parser.GetWord());
+        ByteString start(lexer.GetWord());
         if (start == "[") {
           for (uint32_t code = lowcode; code <= highcode; code++) {
-            ByteString dest(parser.GetWord());
+            ByteString dest(lexer.GetWord());
             WideString destcode = StringToWideString(dest.AsStringView());
             int len = destcode.GetLength();
             if (len == 0) {
@@ -184,7 +184,7 @@ void CPDF_ToUnicodeMap::Load(CPDF_Stream* pStream) {
               m_MultiCharBuf << destcode;
             }
           }
-          parser.GetWord();
+          lexer.GetWord();
         } else {
           WideString destcode = StringToWideString(start.AsStringView());
           int len = destcode.GetLength();
