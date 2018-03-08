@@ -91,6 +91,29 @@
       "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d5a14d4_cf8602be",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-08T18:38:54Z",
+      "side": 1,
+      "message": "follow-up: we should kill the ByteString version of namedecode and use only the ByteStringView.  It\u0027s easy enough to add .AsStringView(), and doing so would flag places like this where we malloc a new string at 222, then flatten it back to a view, then never use it again.",
+      "range": {
+        "startLine": 223,
+        "startChar": 31,
+        "endLine": 223,
+        "endChar": 58
+      },
+      "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
