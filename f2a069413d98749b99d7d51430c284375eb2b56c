@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a412345_0a302754",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-08T17:53:21Z",
+      "side": 0,
+      "message": "This block, with GetPopupPosComboBox() inlined, becomes CFWL_ComboBox::GetPopupPos().",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 67
+      },
+      "revId": "f2a069413d98749b99d7d51430c284375eb2b56c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da37f7c2_80919f77",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-08T17:53:21Z",
+      "side": 0,
+      "message": "This block, with CFWL_ComboBox::GetPopupPos(() inlined, becomes CFWL_DateTimePicker::GetPopupPos().",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 64
+      },
+      "revId": "f2a069413d98749b99d7d51430c284375eb2b56c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cadf328e_7843fa0a",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-08T17:53:21Z",
+      "side": 0,
+      "message": "This was unused.",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 1
+      },
+      "revId": "f2a069413d98749b99d7d51430c284375eb2b56c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
