@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6055188_2c330d05",
+        "filename": "core/fpdfapi/parser/cpdf_lexer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-08T18:34:40Z",
+      "side": 1,
+      "message": "follow-up: let\u0027s get rid of this form, its easy enough to pass a bytestringview i\u0027d imagine.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d096e97_54fc28f1",
+        "filename": "core/fpdfapi/parser/cpdf_lexer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-08T18:34:40Z",
+      "side": 1,
+      "message": "std::pair\u003cconst uint8_t*, uint32_t\u003e is pretty much bytestringview?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fdd9df4_0524093f",
+        "filename": "core/fpdfapi/parser/cpdf_lexer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-08T18:34:40Z",
+      "side": 1,
+      "message": "then this becomes a bytestringview member.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b92434_786741fe",
+        "filename": "core/fpdfdoc/cpdf_defaultappearance.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-08T18:34:40Z",
+      "side": 1,
+      "message": "nit: over () ?",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 60
+      },
+      "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
