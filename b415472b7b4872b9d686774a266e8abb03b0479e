@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "d6f357e6_71ac0529",
+        "filename": "fpdfsdk/fpdf_metrics.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7359
+      },
+      "writtenOn": "2018-03-08T00:03:08Z",
+      "side": 1,
+      "message": "I C. Fair enough. Thanks for the clarification!",
+      "parentUuid": "9e344ea0_f3bedba5",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "b415472b7b4872b9d686774a266e8abb03b0479e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "569419c5_1897c821",
         "filename": "fpdfsdk/fpdf_metrics.cpp",
         "patchSetId": 9
