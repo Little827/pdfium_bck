@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d4df631f_a9e71fc8",
+        "filename": "core/fpdfapi/page/cpdf_psengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-08T18:40:30Z",
+      "side": 1,
+      "message": "nit: this is a bytestringview.",
+      "range": {
+        "startLine": 193,
+        "startChar": 26,
+        "endLine": 193,
+        "endChar": 51
+      },
+      "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2722c19d_a9ed70f3",
+        "filename": "core/fpdfapi/page/cpdf_psengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-08T18:40:30Z",
+      "side": 1,
+      "message": "nit: return word \u003d\u003d \"{\" \u0026\u0026 m_MainProc.Parse(...)",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 59
+      },
+      "revId": "cc75eca33a664ed4152700e260e134dba241fddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6055188_2c330d05",
         "filename": "core/fpdfapi/parser/cpdf_lexer.h",
         "patchSetId": 1
