@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dffc3d18_25c980be",
+        "filename": "core/fpdftext/cpdf_linkextract.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-09T20:12:48Z",
+      "side": 1,
+      "message": "The PDF spec is silent on what constitutes a valid email address. The original email RFC specifies a ASCII, but modern RFCs that add support for Unicode domains specify Unicode support for both sides, so I am going with that.",
+      "range": {
+        "startLine": 249,
+        "startChar": 36,
+        "endLine": 249,
+        "endChar": 54
+      },
+      "revId": "f1b856f53ac514a42f622fd7ffed29378d07ba06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039d542b_d4e8653d",
+        "filename": "core/fxcrt/css/cfx_cssselector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-09T20:12:48Z",
+      "side": 1,
+      "message": "My understanding of the CSS documentation is that all of the current valid selectors are ASCII.",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "f1b856f53ac514a42f622fd7ffed29378d07ba06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f639d31_eb1c905b",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-09T20:12:48Z",
+      "side": 1,
+      "message": "Can someone more familiar with the JS side of things confirm that what we want here is ASCII testing? and not Unicode",
+      "range": {
+        "startLine": 288,
+        "startChar": 13,
+        "endLine": 288,
+        "endChar": 52
+      },
+      "revId": "f1b856f53ac514a42f622fd7ffed29378d07ba06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c0ef56a_c0250bb0",
+        "filename": "fxjs/cjs_util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-09T20:12:48Z",
+      "side": 1,
+      "message": "Can someone more familiar with the JS side of things confirm that what we want here is ASCII testing? and not Unicode",
+      "range": {
+        "startLine": 314,
+        "startChar": 14,
+        "endLine": 314,
+        "endChar": 76
+      },
+      "revId": "f1b856f53ac514a42f622fd7ffed29378d07ba06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
