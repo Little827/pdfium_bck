@@ -130,6 +130,7 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
   int t2;
   CFX_FloatRect rcAnchor = rtAnchor.ToFloatRect();
   int nRotate = hWidget->GetNode()->GetRotate();
+  int pageHeight = pPage->GetPageHeight();
   switch (nRotate) {
     case 90: {
       t1 = (int)(pageViewRect.right - rcAnchor.right);
@@ -154,8 +155,8 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
     }
     case 0:
     default: {
-      t1 = (int)(pageViewRect.top - rcAnchor.top);
-      t2 = (int)(rcAnchor.bottom - pageViewRect.bottom);
+      t1 = static_cast<int>(pageHeight - rcAnchor.bottom);
+      t2 = static_cast<int>(rcAnchor.top);
       if (rcAnchor.right > pageViewRect.right)
         rtPopup.left -= rcAnchor.right - pageViewRect.right;
       break;
