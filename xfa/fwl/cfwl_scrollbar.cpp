@@ -7,6 +7,7 @@
 #include "xfa/fwl/cfwl_scrollbar.h"
 
 #include <algorithm>
+#include <iostream>
 #include <memory>
 #include <utility>
 
@@ -385,6 +386,8 @@ void CFWL_ScrollBar::OnLButtonDown(const CFX_PointF& point) {
 }
 
 void CFWL_ScrollBar::OnLButtonUp(const CFX_PointF& point) {
+  std::cerr << "CFWL_ScrollBar::OnLButtonUp m_pTimerInfo "
+            << (void*)m_pTimerInfo << std::endl;
   if (m_pTimerInfo) {
     m_pTimerInfo->StopTimer();
     m_pTimerInfo = nullptr;
@@ -490,6 +493,10 @@ CFWL_ScrollBar::Timer::Timer(CFWL_ScrollBar* pToolTip) : CFWL_Timer(pToolTip) {}
 
 void CFWL_ScrollBar::Timer::Run(CFWL_TimerInfo* pTimerInfo) {
   CFWL_ScrollBar* pScrollBar = static_cast<CFWL_ScrollBar*>(m_pWidget.Get());
+  std::cerr << "CFWL_ScrollBar::Timer::Run pScrollBar " << (void*)pScrollBar
+            << std::endl;
+  std::cerr << "CFWL_ScrollBar::Timer::Run pScrollBar->m_pTimerInfo "
+            << (void*)pScrollBar->m_pTimerInfo << std::endl;
   if (pScrollBar->m_pTimerInfo) {
     pScrollBar->m_pTimerInfo->StopTimer();
     pScrollBar->m_pTimerInfo = nullptr;

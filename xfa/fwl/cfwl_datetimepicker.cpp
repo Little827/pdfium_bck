@@ -616,12 +616,10 @@ void CFWL_DateTimePicker::GetPopupPos(float fMinHeight,
   }
 
   CFX_PointF point = TransformTo(nullptr, CFX_PointF());
-  if (rtAnchor.bottom() + point.y > 0.0f) {
-    rtPopup = CFX_RectF(rtAnchor.left, rtAnchor.top - rtPopup.height,
-                        rtPopup.width, rtPopup.height);
-  } else {
-    rtPopup = CFX_RectF(rtAnchor.left, rtAnchor.bottom(), rtPopup.width,
-                        rtPopup.height);
-  }
-  rtPopup.Offset(point.x, point.y);
+  float fLeft = rtAnchor.left + point.x;
+  float fTop = rtAnchor.bottom() + point.y;
+  if (fTop > 0.0f)
+    fTop = rtAnchor.top - rtPopup.height + point.y;
+
+  rtPopup = CFX_RectF(fLeft, fTop, rtPopup.width, rtPopup.height);
 }

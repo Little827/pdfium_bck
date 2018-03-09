@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 
+#include <iostream>
 #include <memory>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -106,8 +107,11 @@ void CPDFXFA_DocEnvironment::DisplayCaret(CXFA_FFWidget* hWidget,
 bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
                                          float fMinPopup,
                                          float fMaxPopup,
-                                         const CFX_RectF& rtAnchor,
+                                         CFX_RectF& rtAnchor,
                                          CFX_RectF& rtPopup) {
+  std::cerr << "CPDFXFA_DocEnvironment::GetPopupPos(" << fMinPopup << ", "
+            << fMaxPopup << ", " << rtAnchor << ", " << rtPopup << ")"
+            << std::endl;
   if (!hWidget)
     return false;
 
@@ -123,13 +127,23 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
   if (!pFormFillEnv)
     return false;
 
+  std::cerr << "  -> still alive" << std::endl;
+
   FS_RECTF pageViewRect = {0.0f, 0.0f, 0.0f, 0.0f};
   pFormFillEnv->GetPageViewRect(pPage.Get(), pageViewRect);
 
   int t1;
   int t2;
-  CFX_FloatRect rcAnchor = rtAnchor.ToFloatRect();
+  CFX_FloatRect rcAnchor(rtAnchor.left, rtAnchor.bottom(), rtAnchor.right(),
+                         rtAnchor.top);
   int nRotate = hWidget->GetNode()->GetRotate();
+  std::cerr << "  -> nRotate " << nRotate << std::endl;
+  std::cerr << "  -> pageViewRect lt rb (" << pageViewRect.left << ", "
+            << pageViewRect.top << ") (" << pageViewRect.right << ", "
+            << pageViewRect.bottom << ") " << std::endl;
+  std::cerr << "  -> alternative " << pPage->GetPageHeight() << std::endl;
+  std::cerr << "  -> rcAnchor " << rcAnchor << std::endl;
+  int pageHeight = pPage->GetPageHeight();
   switch (nRotate) {
     case 90: {
       t1 = (int)(pageViewRect.right - rcAnchor.right);
@@ -154,13 +168,18 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
     }
     case 0:
     default: {
-      t1 = (int)(pageViewRect.top - rcAnchor.top);
-      t2 = (int)(rcAnchor.bottom - pageViewRect.bottom);
+      // t1 = (int)(pageViewRect.top - rcAnchor.top);
+      // t2 = (int)(rcAnchor.bottom - pageViewRect.bottom);
+      t1 = (int)(pageHeight - 20 - rcAnchor.bottom);
+      t2 = (int)(rcAnchor.top - 0);
       if (rcAnchor.right > pageViewRect.right)
         rtPopup.left -= rcAnchor.right - pageViewRect.right;
       break;
     }
   }
+  std::cerr << "  -> t1 " << t1 << std::endl;
+  std::cerr << "  -> t2 " << t2 << std::endl;
+  std::cerr << "  -> rtPopup " << rtPopup << std::endl;
 
   int t;
   uint32_t dwPos;
@@ -180,6 +199,12 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
     dwPos = 1;
   }
 
+  // Force to be down, todo consider extreme cases for up.
+  t = t1;
+  dwPos = 0;
+  std::cerr << "  -> t " << t << std::endl;
+  std::cerr << "  -> dwPos " << dwPos << std::endl;
+
   float fPopupHeight;
   if (t < fMinPopup)
     fPopupHeight = fMinPopup;
@@ -187,6 +212,7 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
     fPopupHeight = fMaxPopup;
   else
     fPopupHeight = static_cast<float>(t);
+  std::cerr << "  -> fPopupHeight " << fPopupHeight << std::endl;
 
   switch (nRotate) {
     case 0:
@@ -215,6 +241,7 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
       break;
   }
 
+  std::cerr << "  -> return rtPopup: " << rtPopup << std::endl;
   return true;
 }
 
