@@ -433,6 +433,8 @@ class CFX_RTemplate {
     top -= p.y;
     return *this;
   }
+  BaseType left() const { return left; }
+  BaseType top() const { return top; }
   BaseType right() const { return left + width; }
   BaseType bottom() const { return top + height; }
   void Normalize() {
