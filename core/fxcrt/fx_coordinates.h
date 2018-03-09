@@ -568,9 +568,7 @@ class CFX_RTemplate {
   }
 
   CFX_FloatRect ToFloatRect() const {
-    // Note, we flip top/bottom here because the CFX_FloatRect has the
-    // y-axis running in the opposite direction.
-    return CFX_FloatRect(left, top, right(), bottom());
+    return CFX_FloatRect(left, bottom(), right(), top);
   }
 
   BaseType left;

@@ -130,32 +130,37 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
   int t2;
   CFX_FloatRect rcAnchor = rtAnchor.ToFloatRect();
   int nRotate = hWidget->GetNode()->GetRotate();
+  int pageHeight = pPage->GetPageHeight();
   switch (nRotate) {
     case 90: {
-      t1 = (int)(pageViewRect.right - rcAnchor.right);
-      t2 = (int)(rcAnchor.left - pageViewRect.left);
+      t1 = static_cast<int>(pageViewRect.right - rcAnchor.right);
+      t2 = static_cast<int>(rcAnchor.left - pageViewRect.left);
       if (rcAnchor.bottom < pageViewRect.bottom)
         rtPopup.left += rcAnchor.bottom - pageViewRect.bottom;
       break;
     }
     case 180: {
-      t2 = (int)(pageViewRect.top - rcAnchor.top);
-      t1 = (int)(rcAnchor.bottom - pageViewRect.bottom);
+      t2 = static_cast<int>(pageViewRect.top - rcAnchor.top);
+      t1 = static_cast<int>(rcAnchor.bottom - pageViewRect.bottom);
       if (rcAnchor.left < pageViewRect.left)
         rtPopup.left += rcAnchor.left - pageViewRect.left;
       break;
     }
     case 270: {
-      t1 = (int)(rcAnchor.left - pageViewRect.left);
-      t2 = (int)(pageViewRect.right - rcAnchor.right);
+      t1 = static_cast<int>(rcAnchor.left - pageViewRect.left);
+      t2 = static_cast<int>(pageViewRect.right - rcAnchor.right);
       if (rcAnchor.top > pageViewRect.top)
         rtPopup.left -= rcAnchor.top - pageViewRect.top;
       break;
     }
     case 0:
     default: {
-      t1 = (int)(pageViewRect.top - rcAnchor.top);
-      t2 = (int)(rcAnchor.bottom - pageViewRect.bottom);
+      // Top of the page is 0, bottom of the page is pageHeight.
+      // t1 is the space available below the anchor up to the bottom of the
+      // page.
+      t1 = static_cast<int>(pageHeight - rcAnchor.bottom);
+      // t2 is the space available above the anchor up to the top of the page.
+      t2 = static_cast<int>(rcAnchor.top);
       if (rcAnchor.right > pageViewRect.right)
         rtPopup.left -= rcAnchor.right - pageViewRect.right;
       break;
