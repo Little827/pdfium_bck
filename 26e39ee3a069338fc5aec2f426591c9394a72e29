@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "13f6b4db_aacbc991",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-09T07:43:43Z",
+      "side": 1,
+      "message": "Maybe I did something wrong. @_@",
+      "parentUuid": "6e5e66dd_7220b895",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d563655_330bd1c4",
         "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
         "patchSetId": 2
@@ -220,6 +238,24 @@
       "side": 1,
       "message": "Because *SAN. The m_pValue is an unowned ptr. So, not freeing it causes the stack variable to go out of scope before the UnownedPtr does causing a MSAN issue.\n\nThe m_pWideStrChange seems to be accessed in the destructor, or somewhere, of the EventHandler, so when this goes out of scope, the stack variable is destroyed and the EventHandler causes an MSAN issue.\n\nI freed m_pbRc just for consistency and to be safe in case it becomes an UnownedPtr in the future.",
       "parentUuid": "766ad7bb_38c1dae8",
+      "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca1597cc_cb8197b7",
+        "filename": "fxjs/cjs_publicmethods_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-09T07:43:43Z",
+      "side": 1,
+      "message": "I tried ASAN and it didn\u0027t complain. Weird that MSAN ended up complaining. Maybe a comment here will make it more obvious to readers?",
+      "parentUuid": "34a3ff16_454dd1b6",
       "revId": "26e39ee3a069338fc5aec2f426591c9394a72e29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
