@@ -123,49 +123,53 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
   if (!pFormFillEnv)
     return false;
 
-  FS_RECTF pageViewRect = {0.0f, 0.0f, 0.0f, 0.0f};
-  pFormFillEnv->GetPageViewRect(pPage.Get(), pageViewRect);
+  CFX_RectF rtPageBounds(0, 0, pPage->GetPageWidth(), pPage->GetPageHeight());
 
+  // t1 is the space available in the page below the anchor.
   int t1;
+  // t2 is the space available in the page above the anchor.
   int t2;
-  CFX_FloatRect rcAnchor = rtAnchor.ToFloatRect();
+  // CFX_FloatRect rcAnchor = rtAnchor.ToFloatRect();
   int nRotate = hWidget->GetNode()->GetRotate();
   switch (nRotate) {
     case 90: {
-      t1 = (int)(pageViewRect.right - rcAnchor.right);
-      t2 = (int)(rcAnchor.left - pageViewRect.left);
-      if (rcAnchor.bottom < pageViewRect.bottom)
-        rtPopup.left += rcAnchor.bottom - pageViewRect.bottom;
+      t1 = static_cast<int>(rtPageBounds.right() - rtAnchor.right());
+      t2 = static_cast<int>(rtAnchor.left - rtPageBounds.left);
+      if (rtAnchor.bottom() < rtPageBounds.bottom())
+        rtPopup.left += rtAnchor.bottom() - rtPageBounds.bottom();
       break;
     }
     case 180: {
-      t2 = (int)(pageViewRect.top - rcAnchor.top);
-      t1 = (int)(rcAnchor.bottom - pageViewRect.bottom);
-      if (rcAnchor.left < pageViewRect.left)
-        rtPopup.left += rcAnchor.left - pageViewRect.left;
+      t1 = static_cast<int>(rtAnchor.top - rtPageBounds.top);
+      t2 = static_cast<int>(rtPageBounds.bottom() - rtAnchor.bottom());
+      if (rtAnchor.left < rtPageBounds.left)
+        rtPopup.left += rtAnchor.left - rtPageBounds.left;
       break;
     }
     case 270: {
-      t1 = (int)(rcAnchor.left - pageViewRect.left);
-      t2 = (int)(pageViewRect.right - rcAnchor.right);
-      if (rcAnchor.top > pageViewRect.top)
-        rtPopup.left -= rcAnchor.top - pageViewRect.top;
+      t1 = static_cast<int>(rtAnchor.left - rtPageBounds.left);
+      t2 = static_cast<int>(rtPageBounds.right() - rtAnchor.right());
+      if (rtAnchor.top > rtPageBounds.top)
+        rtPopup.left -= rtAnchor.top - rtPageBounds.top;
       break;
     }
     case 0:
     default: {
-      t1 = (int)(pageViewRect.top - rcAnchor.top);
-      t2 = (int)(rcAnchor.bottom - pageViewRect.bottom);
-      if (rcAnchor.right > pageViewRect.right)
-        rtPopup.left -= rcAnchor.right - pageViewRect.right;
+      t1 = static_cast<int>(rtPageBounds.bottom() - rtAnchor.bottom());
+      t2 = static_cast<int>(rtAnchor.top - rtPageBounds.top);
+      if (rtAnchor.right() > rtPageBounds.right())
+        rtPopup.left -= rtAnchor.right() - rtPageBounds.right();
       break;
     }
   }
 
   int t;
   uint32_t dwPos;
-  if (t1 <= 0 && t2 <= 0)
+  if (t1 <= 0 && t2 <= 0) {
+    // No space on either side, popup can't be rendered.
     return false;
+  }
+
   if (t1 <= 0) {
     t = t2;
     dwPos = 1;
