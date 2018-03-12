@@ -178,6 +178,29 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_InsertObject(FPDF_PAGE page,
   CalcBoundingBox(pPageObj);
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPage_RemoveObject(FPDF_PAGE page, FPDF_PAGEOBJECT page_obj) {
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_obj);
+  if (!pPageObj)
+    return false;
+
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!IsPageObject(pPage))
+    return false;
+
+  pdfium::FakeUniquePtr<CPDF_PageObject> p(pPageObj);
+
+  auto pPageObjectList = pPage->GetPageObjectList();
+  auto it =
+      std::find(std::begin(*pPageObjectList), std::end(*pPageObjectList), p);
+  if (it == std::end(*pPageObjectList))
+    return false;
+
+  it->release();
+  pPageObjectList->erase(it);
+  return true;
+}
+
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_CountObject(FPDF_PAGE page) {
   return FPDFPage_CountObjects(page);
 }
