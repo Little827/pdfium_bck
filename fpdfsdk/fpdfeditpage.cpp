@@ -178,6 +178,19 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_InsertObject(FPDF_PAGE page,
   CalcBoundingBox(pPageObj);
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPage_RemoveObject(FPDF_PAGE page, FPDF_PAGEOBJECT page_obj) {
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_obj);
+  if (!pPageObj)
+    return false;
+
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!IsPageObject(pPage))
+    return false;
+
+  return pPage->RemoveObject(pPageObj);
+}
+
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_CountObject(FPDF_PAGE page) {
   return FPDFPage_CountObjects(page);
 }
