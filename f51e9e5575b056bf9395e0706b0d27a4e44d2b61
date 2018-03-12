@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebc94a56_f7742a71",
+        "filename": "fpdfsdk/fpdfedit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-12T20:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3191dea_46d2d136",
+      "range": {
+        "startLine": 384,
+        "startChar": 29,
+        "endLine": 384,
+        "endChar": 46
+      },
+      "revId": "f51e9e5575b056bf9395e0706b0d27a4e44d2b61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bc8ccb0_ee08c255",
         "filename": "fpdfsdk/fpdfedit_embeddertest.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "600efc15_c3085740",
+        "filename": "fpdfsdk/fpdfedit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-12T20:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc8ccb0_ee08c255",
+      "range": {
+        "startLine": 412,
+        "startChar": 31,
+        "endLine": 412,
+        "endChar": 37
+      },
+      "revId": "f51e9e5575b056bf9395e0706b0d27a4e44d2b61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8d73e96_a12ca3b1",
         "filename": "fpdfsdk/fpdfeditpage.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-03-12T18:07:45Z",
       "side": 1,
       "message": "What happens if I remove a path that\u0027s part of an annotation? Does this cleanup the annotation pointers as needed?\n\nIf we expose other page objects like fonts, will there be dangling pointers when removed?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 21
+      },
+      "revId": "f51e9e5575b056bf9395e0706b0d27a4e44d2b61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c44c174_ce09cdd9",
+        "filename": "fpdfsdk/fpdfeditpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-12T20:24:58Z",
+      "side": 1,
+      "message": "Regarding annotations, they have separate arrays that contain page objects. FPDFAnnot_RemoveObject() should be used to do it. Therefore, we\u0027re fine in this front. Added some asserts to an annot test making this explicit.\n\nFonts do not appear as page objects currently, and I don\u0027t think that\u0027s a bug.\n\nI\u0027m taking a look at the other case we discussed offline, which is the same page object belonging to more than one page.",
+      "parentUuid": "e8d73e96_a12ca3b1",
       "range": {
         "startLine": 182,
         "startChar": 0,
@@ -91,6 +163,30 @@
       "revId": "f51e9e5575b056bf9395e0706b0d27a4e44d2b61",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9933707e_3d67ec47",
+        "filename": "fpdfsdk/fpdfeditpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-12T20:24:58Z",
+      "side": 1,
+      "message": "Done. All the other FPDFPage_* methods do this as well, but it looks off and the right way to be consistent is probably move their code into CPDF_Page as well. Added TODOs.",
+      "parentUuid": "bb4db800_05ea2f39",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 29
+      },
+      "revId": "f51e9e5575b056bf9395e0706b0d27a4e44d2b61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
