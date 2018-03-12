@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e76740f_5c51d9b7",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2018-03-12T16:33:23Z",
+      "side": 1,
+      "message": "Just wondering - could this could be made a UTF-16 string literal instead?\ne.g., u\"METADATA table....\";\nIt would be easier to read that way, but not sure if it would work/is supported in all the necessary build environments/has proper endianness.",
+      "revId": "64c664387d71ed01d18ab2b23327bbdd9757bd46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
