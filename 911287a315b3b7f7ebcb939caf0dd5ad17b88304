@@ -22,6 +22,30 @@
       "revId": "911287a315b3b7f7ebcb939caf0dd5ad17b88304",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2a4a8d_caba5504",
+        "filename": "core/fxge/cfx_color.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-12T15:43:02Z",
+      "side": 1,
+      "message": "Meh, this is shorter.",
+      "parentUuid": "75e80e85_4fa95c8f",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "911287a315b3b7f7ebcb939caf0dd5ad17b88304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
