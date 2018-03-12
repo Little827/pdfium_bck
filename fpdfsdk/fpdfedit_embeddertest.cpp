@@ -381,6 +381,42 @@ TEST_F(FPDFEditEmbeddertest, AddPaths) {
   VerifySavedDocument(612, 792, kLastMD5);
 }
 
+TEST_F(FPDFEditEmbeddertest, AddAndRemovePaths) {
+  // Start with a blank page.
+  FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
+  ASSERT_TRUE(page);
+
+  // Render the blank page and verify it's a blank bitmap.
+  const char kBlankMD5[] = "1940568c9ba33bac5d0b1ee9558c76b3";
+  {
+    std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
+        RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kBlankMD5);
+  }
+
+  // Add a red rectangle.
+  FPDF_PAGEOBJECT red_rect = FPDFPageObj_CreateNewRect(10, 10, 20, 20);
+  ASSERT_TRUE(red_rect);
+  EXPECT_TRUE(FPDFPath_SetFillColor(red_rect, 255, 0, 0, 255));
+  EXPECT_TRUE(FPDFPath_SetDrawMode(red_rect, FPDF_FILLMODE_ALTERNATE, 0));
+  FPDFPage_InsertObject(page, red_rect);
+  const char kRedRectangleMD5[] = "66d02eaa6181e2c069ce2ea99beda497";
+  {
+    std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
+        RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kRedRectangleMD5);
+  }
+
+  // Remove rectangle and verify it does not render anymore and the bitmap is
+  // back to a blank one.
+  FPDFPage_RemoveObject(page, red_rect);
+  {
+    std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
+        RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kBlankMD5);
+  }
+}
+
 TEST_F(FPDFEditEmbeddertest, PathsPoints) {
   CreateNewDocument();
   FPDF_PAGEOBJECT img = FPDFPageObj_NewImageObj(document_);
