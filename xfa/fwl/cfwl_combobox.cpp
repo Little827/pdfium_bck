@@ -7,6 +7,7 @@
 #include "xfa/fwl/cfwl_combobox.h"
 
 #include <algorithm>
+#include <iostream>
 #include <memory>
 #include <utility>
 
@@ -332,6 +333,7 @@ void CFWL_ComboBox::ShowDropList(bool bActivate) {
   m_rtList.width = std::max(m_rtList.width, m_rtClient.width);
   m_rtProxy = m_rtList;
 
+  std::cerr << "GetPopupPos called from ShowDropList" << std::endl;
   GetPopupPos(0, m_rtProxy.height, rtAnchor, m_rtProxy);
 
   m_pComboBoxProxy->SetWidgetRect(m_rtProxy);
@@ -551,7 +553,11 @@ void CFWL_ComboBox::DisForm_ShowDropList(bool bActivate) {
 
     float fPopupMax = fItemHeight * iItems + fBorder * 2;
     CFX_RectF rtList(m_rtClient.left, 0, m_pProperties->m_rtWidget.width, 0);
+    std::cerr << "GetPopupPos called from DisForm_ShowDropList" << std::endl;
+    std::cerr << "  -> m_pProperties->m_rtWidget " << m_pProperties->m_rtWidget
+              << std::endl;
     GetPopupPos(fPopupMin, fPopupMax, m_pProperties->m_rtWidget, rtList);
+    // rtList.height /= 4;
 
     m_pListBox->SetWidgetRect(rtList);
     m_pListBox->Update();
@@ -1019,27 +1025,30 @@ void CFWL_ComboBox::GetPopupPos(float fMinHeight,
                                 float fMaxHeight,
                                 const CFX_RectF& rtAnchor,
                                 CFX_RectF& rtPopup) {
+  std::cerr << "CFWL_ComboBox::GetPopupPos(" << fMinHeight << ", " << fMaxHeight
+            << ", " << rtAnchor << ")" << std::endl;
   if (m_pWidgetMgr->IsFormDisabled()) {
     m_pWidgetMgr->GetAdapterPopupPos(this, fMinHeight, fMaxHeight, rtAnchor,
                                      rtPopup);
+    std::cerr << "  -> IsFormDisabled, GetAdapterPopupPos returns rtPopup: "
+              << rtPopup << std::endl;
     return;
   }
 
-  float fPopHeight = rtPopup.height;
+  float fPopHeight;
   if (rtPopup.height > fMaxHeight)
     fPopHeight = fMaxHeight;
   else if (rtPopup.height < fMinHeight)
     fPopHeight = fMinHeight;
+  else
+    fPopHeight = rtPopup.height;
 
+  CFX_PointF point = TransformTo(nullptr, CFX_PointF());
   float fWidth = std::max(rtAnchor.width, rtPopup.width);
   float fBottom = rtAnchor.bottom() + fPopHeight;
-  CFX_PointF point = TransformTo(nullptr, CFX_PointF());
-  if (fBottom + point.y > 0.0f) {
-    rtPopup =
-        CFX_RectF(rtAnchor.left, rtAnchor.top - fPopHeight, fWidth, fPopHeight);
-  } else {
-    rtPopup = CFX_RectF(rtAnchor.left, rtAnchor.bottom(), fWidth, fPopHeight);
-  }
-
-  rtPopup.Offset(point.x, point.y);
+  float fLeft = rtAnchor.left + point.x;
+  float fTop = (fBottom + point.y > 0.0f) ? rtAnchor.top - fPopHeight + point.y
+                                          : rtAnchor.bottom() + point.y;
+  rtPopup = CFX_RectF(fLeft, fTop, fWidth, fPopHeight);
+  std::cerr << "  -> return rtPopup: " << rtPopup << std::endl;
 }
