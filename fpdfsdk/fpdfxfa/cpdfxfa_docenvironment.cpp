@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 
+#include <iostream>
 #include <memory>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -106,8 +107,11 @@ void CPDFXFA_DocEnvironment::DisplayCaret(CXFA_FFWidget* hWidget,
 bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
                                          float fMinPopup,
                                          float fMaxPopup,
-                                         const CFX_RectF& rtAnchor,
+                                         CFX_RectF& rtAnchor,
                                          CFX_RectF& rtPopup) {
+  std::cerr << "CPDFXFA_DocEnvironment::GetPopupPos(" << fMinPopup << ", "
+            << fMaxPopup << ", " << rtAnchor << ", " << rtPopup << ")"
+            << std::endl;
   if (!hWidget)
     return false;
 
@@ -123,45 +127,56 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
   if (!pFormFillEnv)
     return false;
 
-  CFX_RectF rtPageBounds(0, 0, pPage->GetPageWidth(), pPage->GetPageHeight());
+  FS_RECTF pageViewRect = {0.0f, 0.0f, 0.0f, 0.0f};
+  pFormFillEnv->GetPageViewRect(pPage.Get(), pageViewRect);
 
+  CFX_RectF rtPageBounds(0, 0, pPage->GetPageWidth(), pPage->GetPageHeight());
   // t1 is the space available in the page below the anchor.
   int t1;
   // t2 is the space available in the page above the anchor.
   int t2;
   // CFX_FloatRect rcAnchor = rtAnchor.ToFloatRect();
   int nRotate = hWidget->GetNode()->GetRotate();
+  std::cerr << "  -> nRotate " << nRotate << std::endl;
+  std::cerr << "  -> pageViewRect lt rb (" << pageViewRect.left << ", "
+            << pageViewRect.top << ") (" << pageViewRect.right << ", "
+            << pageViewRect.bottom << ") " << std::endl;
+  std::cerr << "  -> rtPageBounds " << rtPageBounds << std::endl;
+  std::cerr << "  -> rtAnchor " << rtAnchor << std::endl;
   switch (nRotate) {
     case 90: {
-      t1 = static_cast<int>(rtPageBounds.right() - rtAnchor.right());
-      t2 = static_cast<int>(rtAnchor.left - rtPageBounds.left);
-      if (rtAnchor.bottom() < rtPageBounds.bottom())
-        rtPopup.left += rtAnchor.bottom() - rtPageBounds.bottom();
+      t1 = static_cast<int>(pageViewRect.right - rtAnchor.right());
+      t2 = static_cast<int>(rtAnchor.left - pageViewRect.left);
+      if (rtAnchor.bottom() < pageViewRect.bottom)
+        rtPopup.left += rtAnchor.bottom() - pageViewRect.bottom;
       break;
     }
     case 180: {
-      t1 = static_cast<int>(rtAnchor.top - rtPageBounds.top);
-      t2 = static_cast<int>(rtPageBounds.bottom() - rtAnchor.bottom());
-      if (rtAnchor.left < rtPageBounds.left)
-        rtPopup.left += rtAnchor.left - rtPageBounds.left;
+      t1 = static_cast<int>(rtAnchor.top - pageViewRect.top);
+      t2 = static_cast<int>(pageViewRect.bottom - rtAnchor.bottom());
+      if (rtAnchor.left < pageViewRect.left)
+        rtPopup.left += rtAnchor.left - pageViewRect.left;
       break;
     }
     case 270: {
-      t1 = static_cast<int>(rtAnchor.left - rtPageBounds.left);
-      t2 = static_cast<int>(rtPageBounds.right() - rtAnchor.right());
-      if (rtAnchor.top > rtPageBounds.top)
-        rtPopup.left -= rtAnchor.top - rtPageBounds.top;
+      t1 = static_cast<int>(rtAnchor.left - pageViewRect.left);
+      t2 = static_cast<int>(pageViewRect.right - rtAnchor.right());
+      if (rtAnchor.top > pageViewRect.top)
+        rtPopup.left -= rtAnchor.top - pageViewRect.top;
       break;
     }
     case 0:
     default: {
-      t1 = static_cast<int>(rtPageBounds.bottom() - rtAnchor.bottom());
-      t2 = static_cast<int>(rtAnchor.top - rtPageBounds.top);
-      if (rtAnchor.right() > rtPageBounds.right())
-        rtPopup.left -= rtAnchor.right() - rtPageBounds.right();
+      t1 = static_cast<int>(pageViewRect.bottom - rtAnchor.bottom());
+      t2 = static_cast<int>(rtAnchor.top - pageViewRect.top);
+      if (rtAnchor.right() > pageViewRect.right)
+        rtPopup.left -= rtAnchor.right() - pageViewRect.right;
       break;
     }
   }
+  std::cerr << "  -> t1 " << t1 << std::endl;
+  std::cerr << "  -> t2 " << t2 << std::endl;
+  std::cerr << "  -> rtPopup " << rtPopup << std::endl;
 
   int t;
   uint32_t dwPos;
@@ -184,6 +199,9 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
     dwPos = 1;
   }
 
+  std::cerr << "  -> t " << t << std::endl;
+  std::cerr << "  -> dwPos " << dwPos << std::endl;
+
   float fPopupHeight;
   if (t < fMinPopup)
     fPopupHeight = fMinPopup;
@@ -191,6 +209,7 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
     fPopupHeight = fMaxPopup;
   else
     fPopupHeight = static_cast<float>(t);
+  std::cerr << "  -> fPopupHeight " << fPopupHeight << std::endl;
 
   switch (nRotate) {
     case 0:
@@ -219,6 +238,7 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
       break;
   }
 
+  std::cerr << "  -> return rtPopup: " << rtPopup << std::endl;
   return true;
 }
 
