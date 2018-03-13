@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13545848_71dff35c",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-13T21:15:11Z",
+      "side": 1,
+      "message": "You are only using 256 chars anyway. Another reason to try to subset the font.",
+      "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b7aa04_2bc35e7e",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-13T21:15:11Z",
+      "side": 1,
+      "message": "roboto_font_binary?",
+      "range": {
+        "startLine": 548,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 15
+      },
+      "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae34b88_5f01b531",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-13T21:15:11Z",
+      "side": 1,
+      "message": "Just call insert_delta_xref_entry(object_number, generation_number, 0) ?",
+      "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee5a0c5_4b89d6da",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-13T21:15:11Z",
+      "side": 1,
+      "message": "Would an insert_blob() helper method be useful here?",
+      "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94199974_fa64544e",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-13T21:15:11Z",
+      "side": 1,
+      "message": "|SCRIPT_PATH| should be a \"constant\" and not initialized here. I think you may just want:\n\nSCRIPT_PATH \u003d os.path.abspath(__file__)\n\nabove.",
+      "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
