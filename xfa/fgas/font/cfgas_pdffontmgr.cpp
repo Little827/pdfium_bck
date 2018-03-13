@@ -94,7 +94,6 @@ RetainPtr<CFGAS_GEFont> CFGAS_PDFFontMgr::GetFont(
 
   return pFont;
 }
-
 ByteString CFGAS_PDFFontMgr::PsNameToFontName(const ByteString& strPsName,
                                               bool bBold,
                                               bool bItalic) {
@@ -118,6 +117,7 @@ bool CFGAS_PDFFontMgr::PsNameMatchDRFontName(const ByteStringView& bsPsName,
                                              bool bStrictMatch) {
   ByteString bsDRName = bsDRFontName;
   bsDRName.Remove('-');
+  fprintf(stderr, "DRName = '%s'\n", bsDRName.raw_str());
   size_t iPsLen = bsPsName.GetLength();
   auto nIndex = bsDRName.Find(bsPsName);
   if (nIndex.has_value() && !bStrictMatch)
