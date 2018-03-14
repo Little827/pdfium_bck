@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521046278 -0700\nnonce APUGfELWQybpMk0Wuso6be4rcQ62ZZd7rGn2nAtNnarLnLaebmsjV4xluijkg6Nc4HVIMuXSNxTS\n\n0000000000000000000000000000000000000000 813fe0e4f564e71ca6947f6e0fe68b9b0f8c28cb refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dfix-bad-return-value-in-widestring\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqpUwYACgkQqzYtYVpm\n/Xt18AgAjzMotjYYS2Lqh5lT41qnL0cXBGpaMzMyN8pRZQrymnCG6X9vuMNbbw8w\nb48jsdXhFDERvGHj+FDw56tA1m3dhcY3/LEhsX2mKhDpgkfg85OYfeMf8BDzIG9t\nrhVguYc7QMzucCyl6VFpo4fi5JhVmdLMBfQkeElOdWsXJ+7f+9K2Tdw1RHXWPc0c\nFNlebBSNe93yGFkDeJemuVUGvGLlZK6it8cSaEyGFP+dzEGi6cm62PBgaW4kgGkD\ndDfQkBeKgHMKiT3XU68ukNDynMeI3YClogJOk8uK4b3ACDECfrna3rI84c730p7v\ni8WJDWUBbTmR5BXCSAV0TapRDJqDNQ\u003d\u003d\n\u003dj2P2\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
