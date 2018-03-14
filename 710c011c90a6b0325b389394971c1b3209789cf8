@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "19d1767e_fc6770f2",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-14T15:31:18Z",
+      "side": 1,
+      "message": "Move \u0027\u0027\u0027%d %d obj to next line and add a \u0027\\\u0027 to this one so it works. same in other declarations",
+      "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0b7aa04_2bc35e7e",
         "filename": "testing/tools/fixup_pdf_template.py",
         "patchSetId": 7
@@ -53,6 +70,23 @@
       "writtenOn": "2018-03-13T21:15:11Z",
       "side": 1,
       "message": "Just call insert_delta_xref_entry(object_number, generation_number, 0) ?",
+      "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47af194f_8c500e74",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-14T15:31:18Z",
+      "side": 1,
+      "message": "Contents of this if are quite long, can you extract to a separate method?",
       "revId": "710c011c90a6b0325b389394971c1b3209789cf8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
