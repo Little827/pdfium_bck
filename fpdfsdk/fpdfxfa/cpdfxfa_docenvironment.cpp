@@ -123,97 +123,155 @@ bool CPDFXFA_DocEnvironment::GetPopupPos(CXFA_FFWidget* hWidget,
   if (!pFormFillEnv)
     return false;
 
-  FS_RECTF pageViewRect = {0.0f, 0.0f, 0.0f, 0.0f};
-  pFormFillEnv->GetPageViewRect(pPage.Get(), pageViewRect);
+  FS_RECTF page_view_rect = {0.0f, 0.0f, 0.0f, 0.0f};
+  pFormFillEnv->GetPageViewRect(pPage.Get(), page_view_rect);
 
-  int t1;
-  int t2;
-  CFX_FloatRect rcAnchor = rtAnchor.ToFloatRect();
   int nRotate = hWidget->GetNode()->GetRotate();
+
+  float relative_view_top;
+  float relative_view_bottom;
+  float relative_view_left;
+  float relative_view_right;
+
+  float relative_anchor_top;
+  float relative_anchor_bottom;
+  float relative_anchor_left;
+  float relative_anchor_right;
+
+  bool invert_horizontal_axis;
+  bool invert_vertical_axis;
+
   switch (nRotate) {
     case 90: {
-      t1 = (int)(pageViewRect.right - rcAnchor.right);
-      t2 = (int)(rcAnchor.left - pageViewRect.left);
-      if (rcAnchor.bottom < pageViewRect.bottom)
-        rtPopup.left += rcAnchor.bottom - pageViewRect.bottom;
+      relative_view_top = page_view_rect.left;
+      relative_view_bottom = page_view_rect.right;
+      relative_view_left = page_view_rect.bottom;
+      relative_view_right = page_view_rect.top;
+      relative_anchor_top = rtAnchor.left;
+      relative_anchor_bottom = rtAnchor.right();
+      relative_anchor_left = rtAnchor.bottom();
+      relative_anchor_right = rtAnchor.top;
+      invert_horizontal_axis = true;
+      invert_vertical_axis = false;
       break;
     }
     case 180: {
-      t2 = (int)(pageViewRect.top - rcAnchor.top);
-      t1 = (int)(rcAnchor.bottom - pageViewRect.bottom);
-      if (rcAnchor.left < pageViewRect.left)
-        rtPopup.left += rcAnchor.left - pageViewRect.left;
+      relative_view_top = page_view_rect.bottom;
+      relative_view_bottom = page_view_rect.top;
+      relative_view_left = page_view_rect.right;
+      relative_view_right = page_view_rect.left;
+      relative_anchor_top = rtAnchor.bottom();
+      relative_anchor_bottom = rtAnchor.top;
+      relative_anchor_left = rtAnchor.right();
+      relative_anchor_right = rtAnchor.left;
+      invert_horizontal_axis = true;
+      invert_vertical_axis = true;
       break;
     }
     case 270: {
-      t1 = (int)(rcAnchor.left - pageViewRect.left);
-      t2 = (int)(pageViewRect.right - rcAnchor.right);
-      if (rcAnchor.top > pageViewRect.top)
-        rtPopup.left -= rcAnchor.top - pageViewRect.top;
+      relative_view_top = page_view_rect.right;
+      relative_view_bottom = page_view_rect.left;
+      relative_view_left = page_view_rect.top;
+      relative_view_right = page_view_rect.bottom;
+      relative_anchor_top = rtAnchor.right();
+      relative_anchor_bottom = rtAnchor.left;
+      relative_anchor_left = rtAnchor.top;
+      relative_anchor_right = rtAnchor.bottom();
+      invert_horizontal_axis = false;
+      invert_vertical_axis = true;
       break;
     }
     case 0:
     default: {
-      t1 = (int)(pageViewRect.top - rcAnchor.top);
-      t2 = (int)(rcAnchor.bottom - pageViewRect.bottom);
-      if (rcAnchor.right > pageViewRect.right)
-        rtPopup.left -= rcAnchor.right - pageViewRect.right;
+      relative_view_top = page_view_rect.top;
+      relative_view_bottom = page_view_rect.bottom;
+      relative_view_left = page_view_rect.left;
+      relative_view_right = page_view_rect.right;
+      relative_anchor_top = rtAnchor.top;
+      relative_anchor_bottom = rtAnchor.bottom();
+      relative_anchor_left = rtAnchor.left;
+      relative_anchor_right = rtAnchor.right();
+      invert_horizontal_axis = false;
+      invert_vertical_axis = false;
       break;
     }
   }
 
-  int t;
-  uint32_t dwPos;
-  if (t1 <= 0 && t2 <= 0)
-    return false;
-  if (t1 <= 0) {
-    t = t2;
-    dwPos = 1;
-  } else if (t2 <= 0) {
-    t = t1;
-    dwPos = 0;
-  } else if (t1 > t2) {
-    t = t1;
-    dwPos = 0;
-  } else {
-    t = t2;
-    dwPos = 1;
+  // Calculate how much space is available for the popup if it's rendered
+  // below and above the anchor.
+  int space_available_below_anchor =
+      static_cast<int>(relative_view_bottom - relative_anchor_bottom);
+  int space_available_above_anchor =
+      static_cast<int>(relative_anchor_top - relative_view_top);
+  if (invert_vertical_axis) {
+    space_available_below_anchor = -space_available_below_anchor;
+    space_available_above_anchor = -space_available_above_anchor;
   }
 
-  float fPopupHeight;
-  if (t < fMinPopup)
-    fPopupHeight = fMinPopup;
-  else if (t > fMaxPopup)
-    fPopupHeight = fMaxPopup;
+  // If there is no space on either side, the popup can't be rendered.
+  if (space_available_below_anchor <= 0 && space_available_above_anchor <= 0)
+    return false;
+
+  // Determine whether to draw above or below the anchor.
+  bool draw_below_anchor;
+  if (space_available_below_anchor <= 0)
+    draw_below_anchor = false;
+  else if (space_available_above_anchor <= 0)
+    draw_below_anchor = true;
+  else if (space_available_below_anchor > space_available_above_anchor)
+    draw_below_anchor = true;
   else
-    fPopupHeight = static_cast<float>(t);
+    draw_below_anchor = false;
+
+  int space_available = (draw_below_anchor ? space_available_below_anchor
+                                           : space_available_above_anchor);
+
+  // Set the popup height and y position according to what was decided above.
+  float popup_height;
+  if (space_available < fMinPopup)
+    popup_height = fMinPopup;
+  else if (space_available > fMaxPopup)
+    popup_height = fMaxPopup;
+  else
+    popup_height = static_cast<float>(space_available);
 
   switch (nRotate) {
     case 0:
     case 180: {
-      if (dwPos == 0) {
+      if (draw_below_anchor)
         rtPopup.top = rtAnchor.height;
-        rtPopup.height = fPopupHeight;
-      } else {
-        rtPopup.top = -fPopupHeight;
-        rtPopup.height = fPopupHeight;
-      }
+      else
+        rtPopup.top = -popup_height;
       break;
     }
     case 90:
     case 270: {
-      if (dwPos == 0) {
+      if (draw_below_anchor)
         rtPopup.top = rtAnchor.width;
-        rtPopup.height = fPopupHeight;
-      } else {
-        rtPopup.top = -fPopupHeight;
-        rtPopup.height = fPopupHeight;
-      }
+      else
+        rtPopup.top = -popup_height;
       break;
     }
     default:
       break;
   }
+
+  rtPopup.height = popup_height;
+
+  // Shift the popup left or right such that all of it is visible in the screen,
+  // even if part of the anchor is not.
+  float space_hidden_left_of_anchor = relative_view_left - relative_anchor_left;
+  float space_hidden_right_of_anchor =
+      relative_anchor_right - relative_view_right;
+  if (invert_horizontal_axis) {
+    space_hidden_left_of_anchor = -space_hidden_left_of_anchor;
+    space_hidden_right_of_anchor = -space_hidden_right_of_anchor;
+  }
+
+  if (space_hidden_left_of_anchor > 0)
+    rtPopup.left += space_hidden_left_of_anchor;
+  if (space_hidden_right_of_anchor > 0)
+    rtPopup.left -= space_hidden_right_of_anchor;
 
   return true;
 }
