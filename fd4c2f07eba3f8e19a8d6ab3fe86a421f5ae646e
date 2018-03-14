@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cf3c614_df032c35",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-14T21:38:16Z",
+      "side": 1,
+      "message": "This is not currently correct in Chrome, which is part of the problem. https://chromium-review.googlesource.com/c/chromium/src/+/961249 will fix it.",
+      "revId": "fd4c2f07eba3f8e19a8d6ab3fe86a421f5ae646e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
