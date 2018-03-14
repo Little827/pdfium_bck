@@ -226,8 +226,8 @@ CStretchEngine::CStretchEngine(ScanlineComposerIface* pDestBitmap,
                                int flags) {
   m_State = 0;
   m_DestFormat = dest_format;
-  m_DestBpp = dest_format & 0xff;
-  m_SrcBpp = pSrcBitmap->GetFormat() & 0xff;
+  m_DestBpp = GetBppFromFormat(dest_format);
+  m_SrcBpp = GetBppFromFormat(pSrcBitmap->GetFormat());
   m_bHasAlpha = pSrcBitmap->GetFormat() & 0x200;
   m_pSrcPalette = pSrcBitmap->GetPalette();
   m_pDestBitmap = pDestBitmap;

@@ -37,9 +37,10 @@ struct PixelWeight {
   int m_Weights[1];
 };
 
-typedef uint32_t FX_ARGB;
-typedef uint32_t FX_COLORREF;
-typedef uint32_t FX_CMYK;
+using FX_ARGB = uint32_t;
+using FX_COLORREF = uint32_t;
+using FX_CMYK = uint32_t;
+
 class CFX_ClipRgn;
 class CFX_DIBSource;
 class CStretchEngine;
@@ -79,6 +80,14 @@ extern const int16_t SDP_Table[513];
 #define FXSYS_GetMValue(cmyk) ((uint8_t)((cmyk) >> 16) & 0xff)
 #define FXSYS_GetYValue(cmyk) ((uint8_t)((cmyk) >> 8) & 0xff)
 #define FXSYS_GetKValue(cmyk) ((uint8_t)(cmyk)&0xff)
+
+inline int GetBppFromFormat(FXDIB_Format format) {
+  return format & 0xff;
+}
+
+inline int GetCompsFromFormat(FXDIB_Format format) {
+  return (format & 0xff) / 8;
+}
 
 inline FX_CMYK CmykEncode(int c, int m, int y, int k) {
   return (c << 24) | (m << 16) | (y << 8) | k;
@@ -130,7 +139,7 @@ FX_ARGB StringToFXARGB(const WideStringView& view);
   ((uint8_t)(argb >> 16) | ((uint8_t)(argb >> 8)) << 8 | \
    ((uint8_t)(argb)) << 16 | ((uint8_t)(argb >> 24) << 24))
 
-FX_RECT FXDIB_SwapClipBox(FX_RECT& clip,
+FX_RECT FXDIB_SwapClipBox(const FX_RECT& clip,
                           int width,
                           int height,
                           bool bFlipX,

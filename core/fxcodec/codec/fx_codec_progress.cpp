@@ -1478,10 +1478,8 @@ void CCodec_ProgressiveDecoder::ReSampleScanline(
   int des_left = m_startX;
   uint8_t* des_scan =
       pDeviceBitmap->GetBuffer() + des_line * pDeviceBitmap->GetPitch();
-  int src_bpp = src_format & 0xff;
-  int des_bpp = pDeviceBitmap->GetBPP();
-  int src_Bpp = src_bpp >> 3;
-  int des_Bpp = des_bpp >> 3;
+  int src_Bpp = (src_format & 0xff) / 8;
+  int des_Bpp = pDeviceBitmap->GetBPP() / 8;
   src_scan += src_left * src_Bpp;
   des_scan += des_left * des_Bpp;
   for (int des_col = 0; des_col < m_sizeX; des_col++) {
