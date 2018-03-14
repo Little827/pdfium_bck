@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1433cc34_2d5f66d9",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T07:24:25Z",
+      "side": 1,
+      "message": "Does this matter? The PDF spec says it\u0027s optional. Then again, it also says \"FormType\" above is optional.",
+      "revId": "7533b9d73df594f4702dd9cdee0b3fadd18a12c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
