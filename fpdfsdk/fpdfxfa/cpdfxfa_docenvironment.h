@@ -32,7 +32,7 @@ class CPDFXFA_DocEnvironment : public IXFA_DocEnvironment {
   bool GetPopupPos(CXFA_FFWidget* hWidget,
                    float fMinPopup,
                    float fMaxPopup,
-                   const CFX_RectF& rtAnchor,
+                   CFX_RectF& rtAnchor,
                    CFX_RectF& rtPopup) override;
   bool PopupMenu(CXFA_FFWidget* hWidget, CFX_PointF ptPopup) override;
 
