@@ -87,7 +87,7 @@ FX_COLORREF ArgbToColorRef(FX_ARGB argb) {
   return FXSYS_RGB(FXARGB_R(argb), FXARGB_G(argb), FXARGB_B(argb));
 }
 
-uint32_t ArgbEncode(int a, FX_COLORREF bgr) {
+FX_ARGB AlphaAndColorRefToArgb(int a, FX_COLORREF bgr) {
   return FXARGB_MAKE(a, FXSYS_GetRValue(bgr), FXSYS_GetGValue(bgr),
                      FXSYS_GetBValue(bgr));
 }
