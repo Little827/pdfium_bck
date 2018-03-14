@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c67b0e8a_54f5e011",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:55:14Z",
+      "side": 1,
+      "message": "It would be nice if you can reference Jane\u0027s CL for attribution purposes.",
+      "revId": "868aa69dc58c3807af9fa4e5564b311ebed0b151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831ce7b9_3cbc697a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:55:14Z",
+      "side": 1,
+      "message": "Can you use either BUG\u003dfoo or Bug: foo, but not fix the two?",
+      "revId": "868aa69dc58c3807af9fa4e5564b311ebed0b151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4cf415b_c542ed6b",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:55:14Z",
+      "side": 1,
+      "message": "++i -\u003e prefer pre-increment when possible.",
+      "range": {
+        "startLine": 229,
+        "startChar": 56,
+        "endLine": 229,
+        "endChar": 59
+      },
+      "revId": "868aa69dc58c3807af9fa4e5564b311ebed0b151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ccb3a5_562e216e",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:55:14Z",
+      "side": 1,
+      "message": "Use size_t here since that\u0027s what GetCount() returns. There\u0027s a few more instances of this.",
+      "range": {
+        "startLine": 229,
+        "startChar": 7,
+        "endLine": 229,
+        "endChar": 20
+      },
+      "revId": "868aa69dc58c3807af9fa4e5564b311ebed0b151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23c7133_6378a5a9",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:55:14Z",
+      "side": 1,
+      "message": "Let\u0027s add a small helper function for this and use it all over. So it\u0027s more obvious why this needs to divide by 8. e.g.\n\nsize_t GetQuadPointCount(const CPDF_Array\u0026 array);",
+      "range": {
+        "startLine": 229,
+        "startChar": 32,
+        "endLine": 229,
+        "endChar": 54
+      },
+      "revId": "868aa69dc58c3807af9fa4e5564b311ebed0b151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91421c42_be40fd3e",
+        "filename": "core/fpdfdoc/cpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:55:14Z",
+      "side": 1,
+      "message": "We usually don\u0027t bother making pass-by-value params const.",
+      "range": {
+        "startLine": 71,
+        "startChar": 42,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "868aa69dc58c3807af9fa4e5564b311ebed0b151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7484d6be_c3b83318",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:55:14Z",
+      "side": 1,
+      "message": "static constexpr float kLineWidth \u003d 1.0f;\n\nSimilar changes on line 831-832, etc.",
+      "revId": "868aa69dc58c3807af9fa4e5564b311ebed0b151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
