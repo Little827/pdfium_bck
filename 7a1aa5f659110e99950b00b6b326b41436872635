@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e63a60fa_28d21ece",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-14T21:36:40Z",
+      "side": 0,
+      "message": "This was swapping top and bottom to swap back with ToFloatRect(). The result doesn\u0027t even make sense, it\u0027s a negative height rect.",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 27
+      },
+      "revId": "7a1aa5f659110e99950b00b6b326b41436872635",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
