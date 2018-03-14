@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "802a16f0_154ed8a5",
+        "filename": "core/fxge/dib/fx_dib_main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-14T19:54:39Z",
+      "side": 1,
+      "message": "drive-by: can we flip these checks around in all places?\nstr, in theory, might not be terminated, and might have been allocated right up to a guard page at the end of the heap, say, so that str[len] could segv.",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 4
+      },
+      "revId": "0c6b98182403868334b4dfe4852caa4d0e2ba272",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
