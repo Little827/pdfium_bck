@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521046301 -0700\nnonce APUGfEJmXc1TztSIzuzerQSi/JNJ6Y9c8kMJDUMPxrhdPjmPRZW1BpwdWqqFOR2h6U3WBMZzOLzq\n\n0000000000000000000000000000000000000000 45f8a3609b1b323919e1fd1c372c8c6d3d70a209 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqpUx0ACgkQqzYtYVpm\n/XsR+gf+JoP3CSwxf7g2pdOIX5UDjr5kc/OGIJRfwG2UCgPOlC6JnZ7T1uMJBCXI\nOmYqLvx/41nMwDbG2Sojvf6qwk1SX2GUagOUTuyasD1NDwH2gGqBYhd+IIWe2zhz\nMsx3cfGQMNsNAip2PdTFFMMYR/ye2XiAZcdzcxHe/QoRAG8vijo0OqvDsaEoracN\nAk1GNZ3m6MdaxLPt9ZYaiW7aQdTzzxqTlglFHMbMJebifR9jRvVRrEHh+vJz0ICe\nF+RLkMUNJ5gBaTSh2wIBxoyrUXCaav3H4Cy6c7Of+TgbTO3/7NnLRferuB1X5N3O\nftAyB4MdChbDw2ffrCB3qYa+3BgE9w\u003d\u003d\n\u003dzl73\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "34121b97_c55cd8d0",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-14T18:38:16Z",
+      "side": 1,
+      "message": "Should these values be named consts or are they a natural product of something like values being 32 bit encoded?",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "45f8a3609b1b323919e1fd1c372c8c6d3d70a209",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
