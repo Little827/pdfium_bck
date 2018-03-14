@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521062919 -0700\nnonce APUGfEIyv8EvtPf3FI9c0DmANPq8yKoJKH3uZQwdrd39tCtKmpFHkmSZ/QXUcoNRimaK6jCYPCz/\n\n0000000000000000000000000000000000000000 d358493ae20fb5e166a63d3638260c10a6ed0445 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqplAcACgkQqzYtYVpm\n/XsSSwgAw/xRFVS1mpFsVgwHq8VUW/qmSTglHqdzMz1CIb7gWdG6HZJG+O+82Y23\nkwPoM55u+UzGU3fdqFvbf+OK+Q02a1nIz3KbwGgSsKH+3p+44Zc67DUBbAlKMw7D\ndWWmhJg+wYjnsgSqLbklxEzmc1BBaHIEWg/iM0X2IlvmRJVY0pcUL6o1i/vl5qgD\ncd0ql/9uRIeRZMl0lgRQI/JdVaZPf0Ns9ZQRTxOb6HsRxiY+eR8vxGa5LX/PSpyq\np8YlII1xov1RDUYjDp6lfnX9G3m520yU1fOAU8+fR6MhZShUebHVoQ1Aq8x0IXtn\nOSm3NSzkOu8naTfAh15UzYJrouumeQ\u003d\u003d\n\u003dG6i7\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "9591915c_07a685a3",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-14T22:27:55Z",
+      "side": 1,
+      "message": "This is a bit confusing. The value that gets written here by ArgbToColorRef() is actually BGR. Which is why switching from raw CreateSolidBrush() to CreateBrush() below works.\n\nI\u0027ll rename things in a follow up CL, but that\u0027s a deep rabbit hole...",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 17
+      },
+      "revId": "d358493ae20fb5e166a63d3638260c10a6ed0445",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
