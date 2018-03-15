@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521076889 -0700\nnonce APUGfEJ1+X/vb6QZ4dr0SR0rlKYkUa81XRY1Ja8VtH7zoQyQZ2lr/kCVLBMOgxX3mDn+nkBcglmD\n\n0000000000000000000000000000000000000000 10f9a8db2b208e1b9867bcfa01fecd4db09894db refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dadd-a-cfx-pathdata\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqpypkACgkQqzYtYVpm\n/XsHnAf/fXLa2RWX8vvmEwnwqH4j0NtvL85UARfh34ntJ35Of/wm6NkLCpYJkbTw\nsAK8VTWTWoS+2zP4pe657tukxkGKHIFi46WN6ktMSeTjYEr7Hhy4eAiPZLI1nqVu\n5X7WwlUY/15A+bZfkEm0XGalD8MLsJBdqapwxMeSTKrpS7Id0dCLYatZL9KYcN8U\nheFBjC6TF5ktsRqUIqiGWRVDbjxiVEeY1GlujPOF+z4PeR9aRAYlBSmNOUOrHQut\nC2Hdi+wGxDprBgPhP475ZXK/Qaq2DTqur+xz5C0+QnJvDuqHcCMXGxmpsKSbA9JS\n9JEdcDBzl1jj/wGEy+8KhhqEgPEFSA\u003d\u003d\n\u003d7X05\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
