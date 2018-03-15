@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b5d31e4_eed54c77",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-15T15:16:14Z",
+      "side": 1,
+      "message": "Do we really want to do this? This seems like a window-ism that we\u0027re now rippling out all over the code? Would it not be better to just add a FX_COLORREFToCOLORREF method that we call in the windows specific code, and leave all of our code working in the more usual  RGB?",
+      "range": {
+        "startLine": 1360,
+        "startChar": 2,
+        "endLine": 1361,
+        "endChar": 24
+      },
+      "revId": "c2d9e2d00ee871fa538bc46c8209e98ab9a30c44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
