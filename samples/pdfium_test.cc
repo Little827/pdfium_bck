@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if defined __linux__ || (defined __APPLE__ && defined __MACH__)
+#include <wordexp.h>
+#endif  // #if defined __linux__ || (defined __APPLE__ && defined __MACH__)
 
 #include <bitset>
 #include <iterator>
@@ -779,7 +782,21 @@ bool ParseCommandLine(const std::vector<std::string>& args,
         fprintf(stderr, "Duplicate --font-dir argument\n");
         return false;
       }
-      options->font_directory = cur_arg.substr(11);
+      std::string font_directory = cur_arg.substr(11);
+#if defined __linux__ || (defined __APPLE__ && defined __MACH__)
+      wordexp_t expansion;
+      if (wordexp(font_directory.c_str(), &expansion, 0) != 0 ||
+          expansion.we_wordc < 1) {
+        fprintf(stderr, "Failed to expand --font-dir argument\n");
+        wordfree(&expansion);
+        return false;
+      }
+      options->font_directory = expansion.we_wordv[0];
+      wordfree(&expansion);
+#else
+      options->font_directory = font_directory;
+#endif  // #if defined __linux__ || (defined __APPLE__ && defined __MACH__)
+
 #ifdef _WIN32
     } else if (cur_arg == "--emf") {
       if (options->output_format != OUTPUT_NONE) {
@@ -815,7 +832,20 @@ bool ParseCommandLine(const std::vector<std::string>& args,
         fprintf(stderr, "Duplicate --bin-dir argument\n");
         return false;
       }
-      options->bin_directory = cur_arg.substr(10);
+      std::string bin_directory = cur_arg.substr(10);
+#if defined __linux__ || (defined __APPLE__ && defined __MACH__)
+      wordexp_t expansion;
+      if (wordexp(bin_directory.c_str(), &expansion, 0) != 0 ||
+          expansion.we_wordc < 1) {
+        fprintf(stderr, "Failed to expand --bin-dir argument\n");
+        wordfree(&expansion);
+        return false;
+      }
+      options->bin_directory = expansion.we_wordv[0];
+      wordfree(&expansion);
+#else
+      options->bin_directory = bin_directory;
+#endif  // #if defined __linux__ || (defined __APPLE__ && defined __MACH__)
 #endif  // V8_USE_EXTERNAL_STARTUP_DATA
 #endif  // PDF_ENABLE_V8
 
