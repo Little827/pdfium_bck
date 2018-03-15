@@ -47,6 +47,30 @@
       "revId": "d358493ae20fb5e166a63d3638260c10a6ed0445",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b561e9_90538a88",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-15T14:59:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3259081_283a3a3d",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 17
+      },
+      "revId": "d358493ae20fb5e166a63d3638260c10a6ed0445",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
