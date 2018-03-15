@@ -23,6 +23,30 @@
       "revId": "3dc3f37c56d10674850528868e91ec2ed615b492",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d21198de_724dd3fe",
+        "filename": "core/fxge/dib/fx_dib_main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-15T19:22:14Z",
+      "side": 1,
+      "message": "Yes, will be fixed soon in this CL chain.",
+      "parentUuid": "4d91a6f4_56547a68",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "3dc3f37c56d10674850528868e91ec2ed615b492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
