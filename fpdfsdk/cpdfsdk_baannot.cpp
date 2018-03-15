@@ -265,23 +265,25 @@ void CPDFSDK_BAAnnot::RemoveColor() {
 }
 
 bool CPDFSDK_BAAnnot::GetColor(FX_COLORREF& color) const {
-  if (CPDF_Array* pEntry = m_pAnnot->GetAnnotDict()->GetArrayFor("C")) {
-    size_t nCount = pEntry->GetCount();
-    if (nCount == 1) {
+  CPDF_Array* pEntry = m_pAnnot->GetAnnotDict()->GetArrayFor("C");
+  if (!pEntry)
+    return false;
+
+  size_t nCount = pEntry->GetCount();
+  switch (nCount) {
+    case 1: {
       float g = pEntry->GetNumberAt(0) * 255;
-
       color = FXSYS_RGB((int)g, (int)g, (int)g);
-
       return true;
-    } else if (nCount == 3) {
+    };
+    case 3: {
       float r = pEntry->GetNumberAt(0) * 255;
       float g = pEntry->GetNumberAt(1) * 255;
       float b = pEntry->GetNumberAt(2) * 255;
-
       color = FXSYS_RGB((int)r, (int)g, (int)b);
-
       return true;
-    } else if (nCount == 4) {
+    };
+    case 4: {
       float c = pEntry->GetNumberAt(0);
       float m = pEntry->GetNumberAt(1);
       float y = pEntry->GetNumberAt(2);
@@ -290,14 +292,12 @@ bool CPDFSDK_BAAnnot::GetColor(FX_COLORREF& color) const {
       float r = 1.0f - std::min(1.0f, c + k);
       float g = 1.0f - std::min(1.0f, m + k);
       float b = 1.0f - std::min(1.0f, y + k);
-
       color = FXSYS_RGB((int)(r * 255), (int)(g * 255), (int)(b * 255));
-
       return true;
-    }
+    };
+    default:
+      return false;
   }
-
-  return false;
 }
 
 bool CPDFSDK_BAAnnot::IsVisible() const {
