@@ -45,6 +45,24 @@ TEST_F(FPDFAnnotEmbeddertest, RenderAnnotWithOnlyRolloverAP) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFAnnotEmbeddertest, RenderMultilineMarkupAnnotWithoutAP) {
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  const char md5_hash[] = "06b408e12afe208c17202fe509018a37";
+#else
+  const char md5_hash[] = "f2c8aa7f4960229df083ca1090926c71";
+#endif
+  // Open a file with two multiline markup annotations.
+  ASSERT_TRUE(OpenDocument("annotation_markup_multiline_no_ap.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  std::unique_ptr<void, FPDFBitmapDeleter> bitmap =
+      RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+  CompareBitmap(bitmap.get(), 595, 842, md5_hash);
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbeddertest, ExtractHighlightLongContent) {
   // Open a file with one annotation and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_highlight_long_content.pdf"));
