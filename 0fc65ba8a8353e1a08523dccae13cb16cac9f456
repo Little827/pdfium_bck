@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31f7fa6d_596ecc14",
+        "filename": "samples/DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-15T19:21:11Z",
+      "side": 1,
+      "message": "Extra spaces/tab at the end.",
+      "revId": "0fc65ba8a8353e1a08523dccae13cb16cac9f456",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b141942b_1ee2870e",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-15T19:21:11Z",
+      "side": 1,
+      "message": "It would be nice if we don\u0027t reach into core/. How about using \"#ifndef _WIN32\" ?",
+      "revId": "0fc65ba8a8353e1a08523dccae13cb16cac9f456",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
