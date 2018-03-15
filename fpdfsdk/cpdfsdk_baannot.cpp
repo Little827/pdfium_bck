@@ -20,6 +20,18 @@
 #include "fpdfsdk/cpdfsdk_datetime.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 
+namespace {
+
+uint8_t ColorEntryToComponent(float entry) {
+  return static_cast<uint8_t>(entry * 255);
+}
+
+float ComponentToColorEntry(uint8_t component) {
+  return static_cast<float>(component) / 255.0f;
+}
+
+}  // namespace
+
 CPDFSDK_BAAnnot::CPDFSDK_BAAnnot(CPDF_Annot* pAnnot,
                                  CPDFSDK_PageView* pPageView)
     : CPDFSDK_Annot(pPageView), m_pAnnot(pAnnot) {}
@@ -252,12 +264,9 @@ BorderStyle CPDFSDK_BAAnnot::GetBorderStyle() const {
 
 void CPDFSDK_BAAnnot::SetColor(FX_COLORREF color) {
   CPDF_Array* pArray = m_pAnnot->GetAnnotDict()->SetNewFor<CPDF_Array>("C");
-  pArray->AddNew<CPDF_Number>(static_cast<float>(FXSYS_GetRValue(color)) /
-                              255.0f);
-  pArray->AddNew<CPDF_Number>(static_cast<float>(FXSYS_GetGValue(color)) /
-                              255.0f);
-  pArray->AddNew<CPDF_Number>(static_cast<float>(FXSYS_GetBValue(color)) /
-                              255.0f);
+  pArray->AddNew<CPDF_Number>(ComponentToColorEntry(FXSYS_GetRValue(color)));
+  pArray->AddNew<CPDF_Number>(ComponentToColorEntry(FXSYS_GetGValue(color)));
+  pArray->AddNew<CPDF_Number>(ComponentToColorEntry(FXSYS_GetBValue(color)));
 }
 
 void CPDFSDK_BAAnnot::RemoveColor() {
@@ -272,15 +281,15 @@ bool CPDFSDK_BAAnnot::GetColor(FX_COLORREF& color) const {
   size_t nCount = pEntry->GetCount();
   switch (nCount) {
     case 1: {
-      float g = pEntry->GetNumberAt(0) * 255;
-      color = FXSYS_RGB((int)g, (int)g, (int)g);
+      uint8_t g = ColorEntryToComponent(pEntry->GetNumberAt(0));
+      color = FXSYS_BGR(g, g, g);
       return true;
     };
     case 3: {
-      float r = pEntry->GetNumberAt(0) * 255;
-      float g = pEntry->GetNumberAt(1) * 255;
-      float b = pEntry->GetNumberAt(2) * 255;
-      color = FXSYS_RGB((int)r, (int)g, (int)b);
+      uint8_t r = ColorEntryToComponent(pEntry->GetNumberAt(0));
+      uint8_t g = ColorEntryToComponent(pEntry->GetNumberAt(1));
+      uint8_t b = ColorEntryToComponent(pEntry->GetNumberAt(2));
+      color = FXSYS_BGR(b, g, r);
       return true;
     };
     case 4: {
@@ -292,7 +301,8 @@ bool CPDFSDK_BAAnnot::GetColor(FX_COLORREF& color) const {
       float r = 1.0f - std::min(1.0f, c + k);
       float g = 1.0f - std::min(1.0f, m + k);
       float b = 1.0f - std::min(1.0f, y + k);
-      color = FXSYS_RGB((int)(r * 255), (int)(g * 255), (int)(b * 255));
+      color = FXSYS_BGR(ColorEntryToComponent(b), ColorEntryToComponent(g),
+                        ColorEntryToComponent(r));
       return true;
     };
     default:

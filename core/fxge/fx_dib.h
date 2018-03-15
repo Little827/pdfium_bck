@@ -70,8 +70,9 @@ extern const int16_t SDP_Table[513];
 #define FXDIB_BLEND_LUMINOSITY 24
 #define FXDIB_BLEND_UNSUPPORTED -1
 
-// TODO(thestig): Rename to FXSYS_BGR() and check callers.
-#define FXSYS_RGB(r, g, b) ((r) | ((g) << 8) | ((b) << 16))
+constexpr uint32_t FXSYS_BGR(uint8_t b, uint8_t g, uint8_t r) {
+  return r | (g << 8) | (b << 16);
+}
 
 constexpr uint8_t FXSYS_GetRValue(uint32_t bgr) {
   return bgr & 0xff;
