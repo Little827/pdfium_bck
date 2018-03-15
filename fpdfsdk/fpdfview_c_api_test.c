@@ -143,6 +143,10 @@ int CheckPDFiumCApi() {
     CHK(FPDFPageObj_Transform);
     CHK(FPDFPage_TransformAnnots);
     CHK(FPDFPageObj_NewImageObj);
+    CHK(FPDFPageObj_GetAllPageObjects);
+    CHK(FPDFPageObj_GetAllMarkedPageObjects);
+    CHK(FPDFPageObj_ArrayGetCount);
+    CHK(FPDFPageObj_ArrayGetPageObject);
     CHK(FPDFImageObj_LoadJpegFile);
     CHK(FPDFImageObj_LoadJpegFileInline);
     CHK(FPDFImageObj_SetMatrix);
