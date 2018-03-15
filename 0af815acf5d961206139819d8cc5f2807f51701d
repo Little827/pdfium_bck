@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baca92ba_79341bd2",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-15T09:12:22Z",
+      "side": 1,
+      "message": "If you add a RectFromQuadPointsArray(const CPDF_Array* pArray, size_t nIndex) helper method, then:\n\n- RectFromQuadPoints() can just call it.\n- BoundingRectFromQuadPoints() becomes:\n\nCFX_FloatRect ret \u003d RectFromQuadPointsArray(pArray, 0);\nfor (size_t i \u003d 1; i \u003c  QuadPointCount(pArray); ++i) {\n    CFX_FloatRect rect \u003d RectFromQuadPointsArray(pArray, i); \n    // CFX_FloatRect::Union() does almost the same thing, but it normalizes.\n    ret.left \u003d std::min(ret.left, rect.left);\n    ...\n}\nreturn ret;",
+      "revId": "0af815acf5d961206139819d8cc5f2807f51701d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
