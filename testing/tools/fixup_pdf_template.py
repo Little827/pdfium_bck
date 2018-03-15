@@ -22,6 +22,9 @@ script replaces {{name}}-style variables in the input with calculated results
                       block to be used in XFA docs.
   {{xfapostamble x y}} - expands to an object |x y obj| containing a XML
                          posteamble to be used in XFA docs.
+  {{embedroboto x y}} - expands to a set of objects (x, y), (x+1, y), (x+2, y),
+                        and (x+3, y) that contain an embedded version of the
+                        Roboto-Regular font.
 """
 
 import cStringIO
@@ -29,6 +32,8 @@ import optparse
 import os
 import re
 import sys
+
+SCRIPT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 class StreamLenState:
   START = 1
@@ -207,6 +212,335 @@ class TemplateProcessor:
   </locale>
 </localeSet>'''
 
+  EMBED_ROBOTO_PATTERN = r'\{\{embedroboto\s+(\d+)\s+(\d+)\}\}'
+
+  ROBOTO_SPECIFICATION_BLOB = \
+'''%d %d obj
+<<
+  /BaseFont /Roboto
+  /Encoding %d %d R
+  /FirstChar 0
+  /FontDescriptor %d %d R
+  /LastChar 255
+  /Name /Roboto
+  /Subtype /TrueType
+  /Type /Font
+  /Widths [
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    443
+    248
+    257
+    320
+    616
+    562
+    732
+    622
+    174
+    342
+    348
+    431
+    567
+    196
+    276
+    263
+    412
+    562
+    562
+    562
+    562
+    562
+    562
+    562
+    562
+    562
+    562
+    242
+    211
+    508
+    549
+    522
+    472
+    898
+    652
+    623
+    651
+    656
+    568
+    553
+    681
+    713
+    272
+    552
+    627
+    538
+    873
+    713
+    688
+    631
+    688
+    616
+    593
+    597
+    648
+    636
+    887
+    627
+    601
+    599
+    265
+    410
+    265
+    418
+    451
+    309
+    544
+    561
+    523
+    564
+    530
+    347
+    561
+    551
+    243
+    239
+    507
+    243
+    876
+    552
+    570
+    561
+    568
+    338
+    516
+    327
+    551
+    484
+    751
+    496
+    473
+    496
+    338
+    244
+    338
+    680
+    443
+    652
+    652
+    651
+    568
+    713
+    688
+    648
+    544
+    544
+    544
+    544
+    544
+    544
+    523
+    530
+    530
+    530
+    530
+    247
+    247
+    247
+    247
+    552
+    570
+    570
+    570
+    570
+    570
+    551
+    551
+    551
+    551
+    551
+    374
+    547
+    581
+    613
+    337
+    489
+    595
+    786
+    786
+    625
+    313
+    418
+    443
+    935
+    688
+    443
+    534
+    443
+    443
+    525
+    566
+    443
+    443
+    443
+    443
+    443
+    447
+    455
+    443
+    844
+    566
+    473
+    244
+    554
+    443
+    340
+    443
+    443
+    469
+    469
+    669
+    443
+    652
+    652
+    688
+    954
+    908
+    656
+    781
+    354
+    357
+    200
+    200
+    571
+    443
+    473
+    601
+    455
+    562
+    300
+    300
+    554
+    568
+    570
+    261
+    199
+    344
+    958
+    652
+    568
+    652
+    568
+    568
+    272
+    272
+    272
+    272
+    688
+    688
+    443
+    688
+    648
+    648
+    648
+    247
+    471
+    472
+    458
+    427
+    243
+    334
+    248
+    373
+    271
+    444
+  ]
+>>
+endobj
+'''
+
+  ROBOTO_ENCODING_BLOB = \
+'''%d %d obj
+<<
+  /BaseEncoding /MacRomanEncoding
+  /Differences [
+    65
+    /A
+    219
+    /Euro
+  ]
+  /Type /Encoding
+>>
+endobj
+'''
+
+  ROBOTO_DESCRIPTOR_BLOB = \
+'''%d %d obj
+<<
+  /Ascent 1056
+  /CapHeight 711
+  /Descent -271
+  /Flags 32
+  /FontBBox [
+    -891
+    -271
+    2045
+    1056
+  ]
+  /FontFamily (Roboto)
+  /FontFile2 %d %d R
+  /FontName /Roboto
+  /FontStretch /Normal
+  /FontWeight 400
+  /ItalicAngle 0
+  /StemV 92
+  /Type /FontDescriptor
+  /XHeight 528
+>>
+endobj
+'''
+
+  ROBOTO_FONT_FILE = 'font_roboto.stream'
+  ROBOTO_FONT_BLOB = 'stream\n%s\nendstream'
+  ROBOTO_STREAM_BLOB = \
+'''%d %d obj
+<<
+  /Length1 %d
+  /Length %d
+>>
+%s
+endobj
+'''
+
+
   def __init__(self):
     self.streamlen_state = StreamLenState.START
     self.streamlens = []
@@ -214,10 +548,27 @@ class TemplateProcessor:
     self.xref_offset = 0
     self.max_object_number = 0
     self.objects = {}
+    roboto_font_path = os.path.join(SCRIPT_PATH, self.ROBOTO_FONT_FILE)
+    roboto_font_binary = None
+    try:
+      with open(roboto_font_path, 'rb') as f:
+        roboto_font_binary = f.read()
+    except IOError:
+      print >> sys.stderr, 'failed to process %s' % roboto_font_path
+    self.roboto_font_stream = self.ROBOTO_FONT_BLOB % roboto_font_binary
 
   def insert_xref_entry(self, object_number, generation_number):
-    self.objects[object_number] = (self.offset, generation_number)
+    self.insert_delta_xref_entry(object_number, generation_number, 0)
+
+  def insert_delta_xref_entry(self, object_number, generation_number, delta):
+    self.objects[object_number] = (self.offset + delta, generation_number)
     self.max_object_number = max(self.max_object_number, object_number)
+
+  def insert_obj_str(self, line, delta, object_number, generation_number, object_str):
+    self.insert_xref_entry(object_number, generation_number)
+    line += object_str
+    delta += len(object_str)
+    return line, delta
 
   def generate_xref_table(self):
     result = self.XREF_REPLACEMENT % (0, self.max_object_number + 1)
@@ -282,6 +633,10 @@ class TemplateProcessor:
                                 self.XFAPOSTAMBLE_REPLACEMENT,
                                 self.XFAPOSTAMBLE_STREAM)
 
+    match = re.match(self.EMBED_ROBOTO_PATTERN, line)
+    if match:
+      line = self.replace_embed_roboto_tag(int(match.group(1)), int(match.group(2)))
+
     self.offset += len(line)
     return line
 
@@ -292,6 +647,40 @@ class TemplateProcessor:
       y = int(match.group(2))
       self.insert_xref_entry(x, y)
       line = replacement % (x, y, len(stream), stream)
+    return line
+
+  def replace_embed_roboto_tag(self, x, y):
+    encoding_x = x + 1
+    encoding_y = y + 1
+    descriptor_x = x + 2
+    descriptor_y = y + 2
+    stream_x = x + 3
+    stream_y = y + 3
+    line = ""
+    delta = 0
+    specification_str = self.ROBOTO_SPECIFICATION_BLOB % (x,
+                                                          y,
+                                                          encoding_x,
+                                                          encoding_y,
+                                                          descriptor_x,
+                                                          descriptor_y)
+    (line, delta) = self.insert_obj_str(line, delta, x, y, specification_str)
+    encoding_str = self.ROBOTO_ENCODING_BLOB % (encoding_x, encoding_y)
+    (line, delta) = self.insert_obj_str(line, delta, encoding_x, encoding_y,
+                                        encoding_str)
+    descriptor_str = self.ROBOTO_DESCRIPTOR_BLOB % (descriptor_x,
+                                                    descriptor_y,
+                                                    stream_x,
+                                                    stream_y)
+    (line, delta) = self.insert_obj_str(line, delta, descriptor_x, descriptor_y,
+                                        descriptor_str)
+    stream_str = self.ROBOTO_STREAM_BLOB % (stream_x,
+                                            stream_y,
+                                            len(self.roboto_font_stream),
+                                            len(self.roboto_font_stream),
+                                            self.roboto_font_stream)
+    (line, delta) = self.insert_obj_str(line, delta, stream_x, stream_y,
+                                        stream_str)
     return line
 
 
