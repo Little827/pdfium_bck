@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521070982 -0700\nnonce APUGfEJc1eRL+9QKjrdqMGm+Y/3XvO5UBr/D5bF5PWn6EEzNK5mE93HOF1Mbt+Lt6hChRBG0C3/H\n\n0000000000000000000000000000000000000000 3dc3f37c56d10674850528868e91ec2ed615b492 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqps4YACgkQqzYtYVpm\n/XsUXQf/UK2IcQVSZjcwZB0L/ThJPkbp0TBqWUX70QohvSt13DnxtT/gyzNAkhnw\nOOQLH+rueaMI8Uo6w+f6oi6h0iI/HHAhzHHg4h+svnqxej1sWdkxCxJP8GgGLIeg\ntbVsTGtd1uMEncOTPdzAANAe+yQwYf60FQUxw2RmlthQ8fji86oj1wFhRVxa7Gky\nmUGihDLcL3swP1jdRSKWalt5VhyYM1nD70nKNClAntYDpXE9niM0cHhvkcc+mBeQ\njMRgyThvbd/qDFatw2brBKzdn5t/Zo5qY3gQgrmZvX71PXLFpNa00E7uqxqE6BQt\nry9VmCM1UlNFJRt1Ud+FbjSAJpI+Eg\u003d\u003d\n\u003dZY9d\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d91a6f4_56547a68",
+        "filename": "core/fxge/dib/fx_dib_main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-15T15:18:50Z",
+      "side": 1,
+      "message": "I am pretty sure this is going to return BGR correctly, but man that is a horribly named function.",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "3dc3f37c56d10674850528868e91ec2ed615b492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
