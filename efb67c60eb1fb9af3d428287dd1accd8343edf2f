@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91defb8d_d6d75dd6",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-15T20:44:36Z",
+      "side": 1,
+      "message": "All the \"y\" values are really generation numbers, right? Can\u0027t we just make them all 0?",
+      "revId": "efb67c60eb1fb9af3d428287dd1accd8343edf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
