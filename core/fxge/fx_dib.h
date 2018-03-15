@@ -95,11 +95,11 @@ std::pair<int, FX_COLORREF> ArgbToAlphaAndColorRef(FX_ARGB argb);
 // Returns FX_COLORREF, which is BGR.
 FX_COLORREF ArgbToColorRef(FX_ARGB argb);
 
-inline FX_ARGB ArgbEncode(int a, int r, int g, int b) {
+constexpr FX_ARGB ArgbEncode(int a, int r, int g, int b) {
   return (a << 24) | (r << 16) | (g << 8) | b;
 }
-// TODO(thestig): Rename to AlphaAndColorRefToArgb().
-FX_ARGB ArgbEncode(int a, FX_COLORREF bgr);
+
+FX_ARGB AlphaAndColorRefToArgb(int a, FX_COLORREF bgr);
 
 FX_ARGB StringToFXARGB(const WideStringView& view);
 
