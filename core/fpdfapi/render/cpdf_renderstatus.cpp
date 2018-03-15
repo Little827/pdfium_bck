@@ -1046,14 +1046,14 @@ bool CPDF_RenderStatus::Initialize(CPDF_RenderContext* pContext,
     m_InitialStates.CopyStates(*pInitialStates);
     if (pParentState) {
       if (!m_InitialStates.m_ColorState.HasFillColor()) {
-        m_InitialStates.m_ColorState.SetFillRGB(
-            pParentState->m_InitialStates.m_ColorState.GetFillRGB());
+        m_InitialStates.m_ColorState.SetFillBGR(
+            pParentState->m_InitialStates.m_ColorState.GetFillBGR());
         m_InitialStates.m_ColorState.GetMutableFillColor()->Copy(
             pParentState->m_InitialStates.m_ColorState.GetFillColor());
       }
       if (!m_InitialStates.m_ColorState.HasStrokeColor()) {
-        m_InitialStates.m_ColorState.SetStrokeRGB(
-            pParentState->m_InitialStates.m_ColorState.GetFillRGB());
+        m_InitialStates.m_ColorState.SetStrokeBGR(
+            pParentState->m_InitialStates.m_ColorState.GetFillBGR());
         m_InitialStates.m_ColorState.GetMutableStrokeColor()->Copy(
             pParentState->m_InitialStates.m_ColorState.GetStrokeColor());
       }
@@ -1357,7 +1357,7 @@ FX_ARGB CPDF_RenderStatus::GetFillArgb(CPDF_PageObject* pObj,
   if (MissingFillColor(pColorState))
     pColorState = &m_InitialStates.m_ColorState;
 
-  FX_COLORREF bgr = pColorState->GetFillRGB();
+  FX_COLORREF bgr = pColorState->GetFillBGR();
   if (bgr == 0xFFFFFFFF)
     return 0;
 
@@ -1382,7 +1382,7 @@ FX_ARGB CPDF_RenderStatus::GetStrokeArgb(CPDF_PageObject* pObj) const {
   if (MissingStrokeColor(pColorState))
     pColorState = &m_InitialStates.m_ColorState;
 
-  FX_COLORREF bgr = pColorState->GetStrokeRGB();
+  FX_COLORREF bgr = pColorState->GetStrokeBGR();
   if (bgr == 0xFFFFFFFF)
     return 0;
 
@@ -1710,10 +1710,10 @@ std::unique_ptr<CPDF_GraphicStates> CPDF_RenderStatus::CloneObjStates(
                                     ? pSrcStates->m_ColorState.GetStrokeColor()
                                     : pSrcStates->m_ColorState.GetFillColor();
   if (!pObjColor->IsNull()) {
-    pStates->m_ColorState.SetFillRGB(
-        bStroke ? pSrcStates->m_ColorState.GetStrokeRGB()
-                : pSrcStates->m_ColorState.GetFillRGB());
-    pStates->m_ColorState.SetStrokeRGB(pStates->m_ColorState.GetFillRGB());
+    pStates->m_ColorState.SetFillBGR(
+        bStroke ? pSrcStates->m_ColorState.GetStrokeBGR()
+                : pSrcStates->m_ColorState.GetFillBGR());
+    pStates->m_ColorState.SetStrokeBGR(pStates->m_ColorState.GetFillBGR());
   }
   return pStates;
 }

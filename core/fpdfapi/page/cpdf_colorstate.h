@@ -24,11 +24,11 @@ class CPDF_ColorState {
   void Emplace();
   void SetDefault();
 
-  uint32_t GetFillRGB() const;
-  void SetFillRGB(uint32_t rgb);
+  uint32_t GetFillBGR() const;
+  void SetFillBGR(uint32_t bgr);
 
-  uint32_t GetStrokeRGB() const;
-  void SetStrokeRGB(uint32_t rgb);
+  uint32_t GetStrokeBGR() const;
+  void SetStrokeBGR(uint32_t bgr);
 
   const CPDF_Color* GetFillColor() const;
   CPDF_Color* GetMutableFillColor();
@@ -54,15 +54,14 @@ class CPDF_ColorState {
 
     void SetDefault();
 
-    // TODO(thestig): Rename these to BGR.
-    uint32_t m_FillRGB;
-    uint32_t m_StrokeRGB;
+    uint32_t m_FillBGR;
+    uint32_t m_StrokeBGR;
     CPDF_Color m_FillColor;
     CPDF_Color m_StrokeColor;
   };
 
   void SetColor(CPDF_Color& color,
-                uint32_t& rgb,
+                uint32_t* rgb,
                 CPDF_ColorSpace* pCS,
                 float* pValue,
                 uint32_t nValues);
