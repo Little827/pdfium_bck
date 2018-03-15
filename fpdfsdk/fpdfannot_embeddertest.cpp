@@ -45,6 +45,19 @@ TEST_F(FPDFAnnotEmbeddertest, RenderAnnotWithOnlyRolloverAP) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFAnnotEmbeddertest, RenderMultilineMarkupAnnotWithoutAP) {
+  // Open a file with two multiline markup annotations.
+  ASSERT_TRUE(OpenDocument("annotation_markup_multiline_no_ap.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  std::unique_ptr<void, FPDFBitmapDeleter> bitmap =
+      RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+  CompareBitmap(bitmap.get(), 595, 842, "06b408e12afe208c17202fe509018a37");
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbeddertest, ExtractHighlightLongContent) {
   // Open a file with one annotation and load its first page.
   ASSERT_TRUE(OpenDocument("annotation_highlight_long_content.pdf"));
