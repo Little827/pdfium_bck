@@ -136,11 +136,11 @@ CFX_Matrix CPDF_Page::GetDisplayMatrix(int xPos,
   switch (iRotate) {
     case 0:
       x0 = xPos;
-      y0 = yPos + ySize;
+      y0 = yPos;
       x1 = xPos;
-      y1 = yPos;
+      y1 = yPos + ySize;
       x2 = xPos + xSize;
-      y2 = yPos + ySize;
+      y2 = yPos;
       break;
     case 1:
       x0 = xPos;
