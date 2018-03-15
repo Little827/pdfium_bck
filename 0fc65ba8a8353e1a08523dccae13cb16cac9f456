@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1aeb5df9_6d187581",
+        "filename": "samples/DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-15T19:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f7fa6d_596ecc14",
+      "revId": "0fc65ba8a8353e1a08523dccae13cb16cac9f456",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b141942b_1ee2870e",
         "filename": "samples/pdfium_test.cc",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "0fc65ba8a8353e1a08523dccae13cb16cac9f456",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fafd67b_a254338f",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-03-15T19:55:18Z",
+      "side": 1,
+      "message": "It would be nice to avoid this, but Android isn\u0027t POSIX compliant in this regard, so the check work have to be not Windows \u0026\u0026 not Android. I also think there would be some issues wrt making sure wasm and win64 are properly included/excluded. Dan suggested using the FX_PLATFORM macros since they already abstract this complexity away and in theory should pick up any future platform changes.",
+      "parentUuid": "b141942b_1ee2870e",
+      "revId": "0fc65ba8a8353e1a08523dccae13cb16cac9f456",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
