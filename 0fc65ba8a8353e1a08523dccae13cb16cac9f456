@@ -69,6 +69,24 @@
       "revId": "0fc65ba8a8353e1a08523dccae13cb16cac9f456",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7223ce91_9a54f2b0",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-16T22:04:05Z",
+      "side": 1,
+      "message": "Let\u0027s not. pdfium_test is a sample program that exercises PDFium APIs. If I was a developer starting my own project that uses PDFium, I wouldn\u0027t reach into PDFium internals to get at these macros.",
+      "parentUuid": "2fafd67b_a254338f",
+      "revId": "0fc65ba8a8353e1a08523dccae13cb16cac9f456",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
