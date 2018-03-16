@@ -16,6 +16,24 @@
       "revId": "efb67c60eb1fb9af3d428287dd1accd8343edf2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad4a236_cb628fb5",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-16T18:34:37Z",
+      "side": 1,
+      "message": "I realize this is less consistent with the other macros, but really we are rarely going to use the generation number. So let\u0027s just do this, as it is a bit simpler. If someone really needs the generation number, they can add it in later.",
+      "parentUuid": "91defb8d_d6d75dd6",
+      "revId": "efb67c60eb1fb9af3d428287dd1accd8343edf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
