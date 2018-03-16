@@ -50,6 +50,30 @@
     },
     {
       "key": {
+        "uuid": "dd5b9c02_584648b8",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-16T22:33:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a4bbe38_f88137fa",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 24
+      },
+      "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcc89bbd_12192998",
         "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
         "patchSetId": 3
