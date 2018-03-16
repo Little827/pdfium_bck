@@ -426,6 +426,29 @@ TEST_F(FPDFEditEmbeddertest, RemovePageObject) {
   FPDFPageObj_Destroy(page_object);
 }
 
+TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjects) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("text_in_page_marked.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+// Show how the original file looks like.
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  const char kOriginalMD5[] = "mac md5";
+#elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+  const char kOriginalMD5[] = "windows md5";
+#else
+  const char kOriginalMD5[] = "9b85f3e036084bd8397a93c590e65115";
+#endif
+  {
+    std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
+        RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 200, 200, kOriginalMD5);
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbeddertest, AddAndRemovePaths) {
   // Start with a blank page.
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
