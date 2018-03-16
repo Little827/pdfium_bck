@@ -387,7 +387,7 @@ TEST_F(FPDFEditEmbeddertest, RemovePageObject) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
 
-// Show how the original file looks like.
+// Show what the original file looks like.
 #if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
   const char kOriginalMD5[] = "b90475ca64d1348c3bf5e2b77ad9187a";
 #elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
@@ -424,6 +424,89 @@ TEST_F(FPDFEditEmbeddertest, RemovePageObject) {
 
   UnloadPage(page);
   FPDFPageObj_Destroy(page_object);
+}
+
+TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("text_in_page_marked.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+// Show what the original file looks like.
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  const char kOriginalMD5[] = "5a5eb63cb21cc15084fea1f14284b8df";
+#elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+  const char kOriginalMD5[] = "windwos md5 before";
+#else
+  const char kOriginalMD5[] = "2edc6e70d54889aa0c0b7bdf3e168f86";
+#endif
+  {
+    std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
+        RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 200, 200, kOriginalMD5);
+  }
+
+  // Iterate over all objects, counting the number of times each content mark
+  // name appears.
+  int object_count = FPDFPage_CountObjects(page);
+  EXPECT_EQ(19, object_count);
+
+  unsigned long prime_count = 0;
+  unsigned long square_count = 0;
+  unsigned long greater_than_ten_count = 0;
+  std::vector<FPDF_PAGEOBJECT> primes;
+  for (int i = 0; i < object_count; ++i) {
+    FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
+
+    unsigned long mark_count = FPDFPageObj_CountMarks(page_object);
+    for (unsigned long j = 0; j < mark_count; ++j) {
+      FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
+
+      char buffer[256];
+      EXPECT_GT(FPDFPageObjMark_GetName(mark, buffer, 256), 0u);
+      std::wstring name =
+          GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+      if (name == L"Prime") {
+        prime_count++;
+        primes.push_back(page_object);
+      } else if (name == L"Square") {
+        square_count++;
+      } else if (name == L"GreaterThanTen") {
+        greater_than_ten_count++;
+      } else {
+        FAIL();
+      }
+    }
+  }
+
+  // Expect certain number of tagged objects. The test file contains strings
+  // from 1 to 19.
+  EXPECT_EQ(8u, prime_count);
+  EXPECT_EQ(4u, square_count);
+  EXPECT_EQ(9u, greater_than_ten_count);
+
+  // Remove all objects marked with "Prime".
+  for (FPDF_PAGEOBJECT page_object : primes) {
+    EXPECT_TRUE(FPDFPage_RemoveObject(page, page_object));
+    FPDFPageObj_Destroy(page_object);
+  }
+
+  EXPECT_EQ(11, FPDFPage_CountObjects(page));
+
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  const char kNonPrimesMD5[] = "57e76dc7375d896704f0fd6d6d1b9e65";
+#elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+  const char kNonPrimesMD5[] = "windows md5 after";
+#else
+  const char kNonPrimesMD5[] = "33d9c45bec41ead92a295e252f6b7922";
+#endif
+  {
+    std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
+        RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 200, 200, kNonPrimesMD5);
+  }
+
+  UnloadPage(page);
 }
 
 TEST_F(FPDFEditEmbeddertest, AddAndRemovePaths) {
