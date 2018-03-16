@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "8a4bbe38_f88137fa",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-16T22:26:08Z",
+      "side": 1,
+      "message": "Copy + paste from above. I\u0027ll fix both...",
+      "parentUuid": "a924e2a7_311966a7",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 24
+      },
+      "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcc89bbd_12192998",
         "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5b835468_38fd2b98",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-16T22:26:08Z",
+      "side": 1,
+      "message": "NUL \u003d \u0027\\0\u0027\n\nNULL ~\u003d nullptr?",
+      "parentUuid": "bcc89bbd_12192998",
+      "range": {
+        "startLine": 693,
+        "startChar": 48,
+        "endLine": 693,
+        "endChar": 51
+      },
+      "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9b0d2da_2db181f5",
         "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
         "patchSetId": 3
@@ -60,6 +108,24 @@
       "writtenOn": "2018-03-16T22:05:12Z",
       "side": 1,
       "message": "File a bug? Or do you already have the CLs?",
+      "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec07f020_ecdba7fa",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-16T22:26:08Z",
+      "side": 1,
+      "message": "There\u0027s already a bug for this CL. The fixes are chained to this CL. These TODOs will be gone shortly.",
+      "parentUuid": "d9b0d2da_2db181f5",
       "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
