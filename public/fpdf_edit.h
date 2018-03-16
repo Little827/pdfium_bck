@@ -281,6 +281,17 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_TransformAnnots(FPDF_PAGE page,
 FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
 FPDFPageObj_NewImageObj(FPDF_DOCUMENT document);
 
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObj_CountMarks(FPDF_PAGEOBJECT page_object);
+
+FPDF_EXPORT FPDF_PAGEOBJECTMARK FPDF_CALLCONV
+FPDFPageObj_GetMark(FPDF_PAGEOBJECT page_object, unsigned long index);
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObjMark_GetName(FPDF_PAGEOBJECTMARK mark,
+                        void* buffer,
+                        unsigned long buflen);
+
 // Load an image from a JPEG image file and then set it into |image_object|.
 //
 //   pages        - pointer to the start of all loaded pages, may be NULL.

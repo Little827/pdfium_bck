@@ -1508,8 +1508,9 @@ uint32_t CPDF_StreamContentParser::Parse(const uint8_t* pData,
                                          uint32_t dwSize,
                                          uint32_t max_cost) {
   if (m_ParsedSet->size() > kMaxFormLevel ||
-      pdfium::ContainsKey(*m_ParsedSet, pData))
+      pdfium::ContainsKey(*m_ParsedSet, pData)) {
     return dwSize;
+  }
 
   pdfium::ScopedSetInsertion<const uint8_t*> scopedInsert(m_ParsedSet.Get(),
                                                           pData);
