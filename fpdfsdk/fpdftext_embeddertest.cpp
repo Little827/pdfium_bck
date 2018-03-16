@@ -680,3 +680,82 @@ TEST_F(FPDFTextEmbeddertest, bug_1029) {
   FPDFText_ClosePage(textpage);
   UnloadPage(page);
 }
+
+TEST_F(FPDFTextEmbeddertest, CountRects) {
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+
+  FPDF_TEXTPAGE textpage = FPDFText_LoadPage(page);
+  EXPECT_TRUE(textpage);
+
+  // Sanity check hello_world.pdf.
+  // |num_chars| check includes the terminating NUL that is provided.
+  static const char kExpected[] = "Hello, world!\r\nGoodbye, world!";
+  {
+    unsigned short buffer[128];
+    int num_chars = FPDFText_GetText(textpage, 0, 128, buffer);
+    ASSERT_GE(num_chars, 0);
+    EXPECT_EQ(sizeof(kExpected), static_cast<size_t>(num_chars));
+    EXPECT_TRUE(check_unsigned_shorts(kExpected, buffer, sizeof(kExpected)));
+  }
+
+  // Now test FPDFText_CountRects().
+  static const int kHelloWorldEnd = strlen("Hello, world!");
+  static const int kGoodbyeWorldStart = kHelloWorldEnd + 2;  // "\r\n"
+  for (int start = 0; start < kHelloWorldEnd; ++start) {
+    // Always grab some part of "hello world" and some part of "goodbye world"
+    // Since -1 means "all".
+    EXPECT_EQ(2, FPDFText_CountRects(textpage, start, -1));
+
+    // No characters always means 0 rects.
+    EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 0));
+
+    // 1 character stays within "hello world"
+    EXPECT_EQ(1, FPDFText_CountRects(textpage, start, 1));
+
+    // When |start| is 0, Having |kGoodbyeWorldStart| char count does not reach
+    // "goodbye world".
+    int expected_value = start ? 2 : 1;
+    EXPECT_EQ(expected_value,
+              FPDFText_CountRects(textpage, start, kGoodbyeWorldStart));
+
+    // Extremely large character count will always return 2 rects because
+    // |start| starts inside "hello world".
+    EXPECT_EQ(2, FPDFText_CountRects(textpage, start, 500));
+  }
+
+#if 0
+  // TODO(thestig): This crashes. Fix and enable.
+  // Now test negative counts.
+  for (int start = 0; start < kHelloWorldEnd; ++start) {
+    EXPECT_EQ(2, FPDFText_CountRects(textpage, start, -100));
+    EXPECT_EQ(2, FPDFText_CountRects(textpage, start, -2));
+  }
+#endif
+
+  // Now test larger start values.
+  const int kExpectedLength = strlen(kExpected);
+  for (int start = kGoodbyeWorldStart + 1; start < kExpectedLength; ++start) {
+    EXPECT_EQ(1, FPDFText_CountRects(textpage, start, -1));
+    EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 0));
+    EXPECT_EQ(1, FPDFText_CountRects(textpage, start, 1));
+    EXPECT_EQ(1, FPDFText_CountRects(textpage, start, 2));
+    EXPECT_EQ(1, FPDFText_CountRects(textpage, start, 500));
+  }
+
+#if 0
+  // TODO(thestig): This crashes. Fix and enable.
+  // Now test start values that starts beyond the end of the text.
+  for (int start = kExpectedLength; start < 100; ++start) {
+    EXPECT_EQ(0, FPDFText_CountRects(textpage, start, -1));
+    EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 0));
+    EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 1));
+    EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 2));
+    EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 500));
+  }
+#endif
+
+  FPDFText_ClosePage(textpage);
+  UnloadPage(page);
+}
