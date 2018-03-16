@@ -1,4 +1,68 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521236715 -0700\nnonce APUGfEL+yDBnJeb1WpyEQQT/5qdcdq6tIpJ1wJGgyqf/IFmNcSsit32EbYliBM1hmWPXLoPDJ0A6\n\n0000000000000000000000000000000000000000 ff9afd5fe7f5019f266cec5f417222e02012fe58 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase%2C_fix_test_expectations_for_disabled_tests\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqsOusACgkQqzYtYVpm\n/XtyRAf/Q330MCykdUsozuHVOQp4JL/QH4a/Ycv7e3OZ1nTroz27wdVv2dgmoj9V\nkHtXSNuDyhJ7l3OzIABdfoCQUeWdHoSSwu9lnAqI5pGlRi+9Dt7JgRmxxnndF925\nb5ChokdBgfE5nkpvvXmKW87PyrF+xYvGcezVOGtZrBMyMlnBjY/6MMtN5vve0chh\nJ7NsZ9MmzCDogBePuEP8OM7H1Iolx9AhHPWRXoqcb5FSYvrBK69zPx80+ZIo2Jz6\njXKTYs89gIZixY/psOYXgJYXcAX5pAHvVYl0GiMzo2AtyCiryJw9Xsqps2aejlJg\nZb5ifZYolBM7oRHYYrkbv5TqTAfCJA\u003d\u003d\n\u003dXq7y\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a924e2a7_311966a7",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-16T22:05:12Z",
+      "side": 1,
+      "message": "Why not ASSERT_TRUE instead of the EXPECT_TRUEs?",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 24
+      },
+      "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc89bbd_12192998",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-16T22:05:12Z",
+      "side": 1,
+      "message": "NULL",
+      "range": {
+        "startLine": 693,
+        "startChar": 48,
+        "endLine": 693,
+        "endChar": 51
+      },
+      "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b0d2da_2db181f5",
+        "filename": "fpdfsdk/fpdftext_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-16T22:05:12Z",
+      "side": 1,
+      "message": "File a bug? Or do you already have the CLs?",
+      "revId": "ff9afd5fe7f5019f266cec5f417222e02012fe58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
