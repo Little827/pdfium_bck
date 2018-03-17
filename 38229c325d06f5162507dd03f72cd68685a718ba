@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dccfdbb2_b4206398",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-17T11:19:09Z",
+      "side": 1,
+      "message": "Makes sense, even more so if it occurs in a total of 5 for loops 😉",
+      "parentUuid": "dddcad1d_de44e343",
+      "range": {
+        "startLine": 235,
+        "startChar": 25,
+        "endLine": 235,
+        "endChar": 47
+      },
+      "revId": "38229c325d06f5162507dd03f72cd68685a718ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e87387cb_43f605af",
         "filename": "core/fpdfdoc/cpdf_annot.cpp",
         "patchSetId": 7
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c92709ae_3575cb38",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-17T11:19:09Z",
+      "side": 1,
+      "message": "I don\u0027t see why normalizing should cause any issue here, so let\u0027s make use of it.",
+      "parentUuid": "77bde325_413bdf4b",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 42
+      },
+      "revId": "38229c325d06f5162507dd03f72cd68685a718ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "333e7905_87f0733f",
         "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
         "patchSetId": 7
@@ -83,6 +131,24 @@
       "writtenOn": "2018-03-16T21:05:22Z",
       "side": 1,
       "message": "You can use WriteBitmapToPng() to validate the result visually.",
+      "revId": "38229c325d06f5162507dd03f72cd68685a718ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "403e95e2_0c205f50",
+        "filename": "fpdfsdk/fpdfannot_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-17T11:19:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "333e7905_87f0733f",
       "revId": "38229c325d06f5162507dd03f72cd68685a718ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
