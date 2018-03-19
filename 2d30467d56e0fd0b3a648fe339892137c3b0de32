@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "60d43331_32785bdc",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-19T23:01:06Z",
+      "side": 1,
+      "message": "I just use VIM. We have some other tools for mass rewriting that we applied to Blink, and can adapt to PDFium.",
+      "parentUuid": "f5e26294_3e5f0009",
+      "range": {
+        "startLine": 235,
+        "startChar": 9,
+        "endLine": 235,
+        "endChar": 23
+      },
+      "revId": "2d30467d56e0fd0b3a648fe339892137c3b0de32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b37f0405_fa4de351",
         "filename": "testing/resources/annotation_markup_multiline_no_ap.in",
         "patchSetId": 10
