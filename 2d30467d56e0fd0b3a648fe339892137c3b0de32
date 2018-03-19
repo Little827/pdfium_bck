@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4394d914_670dd217",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-19T23:15:35Z",
+      "side": 1,
+      "message": "\"Mass rewriting\" sounds like refactoring minus the fun :) If you think I can help with some refactoring tasks, just file a bug report and let me know.",
+      "parentUuid": "60d43331_32785bdc",
+      "range": {
+        "startLine": 235,
+        "startChar": 9,
+        "endLine": 235,
+        "endChar": 23
+      },
+      "revId": "2d30467d56e0fd0b3a648fe339892137c3b0de32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b37f0405_fa4de351",
         "filename": "testing/resources/annotation_markup_multiline_no_ap.in",
         "patchSetId": 10
