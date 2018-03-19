@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/cxfa_ffdocview.h"
 
+#include <iostream>
+
 #include "core/fxcrt/fx_extension.h"
 #include "fxjs/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
@@ -264,17 +266,23 @@ CXFA_FFDocView::CreateReadyNodeIterator() {
 
 bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* hWidget) {
   CXFA_FFWidget* pNewFocus = hWidget;
-  if (m_pOldFocusWidget == pNewFocus)
+  std::cerr << "  CXFA_FFDocView::SetFocus pNewFocus" << (void*)pNewFocus << std::endl;
+  if (m_pOldFocusWidget == pNewFocus) {
+    std::cerr << "    -> pNewFocus == m_pOldFocusWidget" << std::endl;
     return false;
+  }
 
   CXFA_FFWidget* pOldFocus = m_pOldFocusWidget.Get();
   m_pOldFocusWidget = pNewFocus;
   if (pOldFocus) {
+    std::cerr << "    -> pOldFocus true" << std::endl;
     if (m_pFocusWidget != m_pOldFocusWidget &&
         (pOldFocus->GetStatus() & XFA_WidgetStatus_Focused)) {
+      std::cerr << "    -> pOldFocus true 1" << std::endl;
       m_pFocusWidget = pOldFocus;
       pOldFocus->OnKillFocus(pNewFocus);
     } else if ((pOldFocus->GetStatus() & XFA_WidgetStatus_Visible)) {
+      std::cerr << "    -> pOldFocus true 2" << std::endl;
       if (!pOldFocus->IsLoaded())
         pOldFocus->LoadWidget();
 
@@ -283,23 +291,29 @@ bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* hWidget) {
       pOldFocus->OnKillFocus(pNewFocus);
     }
   }
-  if (m_pFocusWidget == m_pOldFocusWidget)
+  if (m_pFocusWidget == m_pOldFocusWidget) {
+    std::cerr << "    -> m_pFocusWidget == m_pOldFocusWidget" << std::endl;
     return false;
+  }
 
   pNewFocus = m_pOldFocusWidget.Get();
   if (pNewFocus && (pNewFocus->GetStatus() & XFA_WidgetStatus_Visible)) {
+      std::cerr << "    -> new focus and visible" << std::endl;
     if (!pNewFocus->IsLoaded())
       pNewFocus->LoadWidget();
     pNewFocus->OnSetFocus(m_pFocusWidget.Get());
   }
   if (pNewFocus) {
+      std::cerr << "    -> new focus" << std::endl;
     CXFA_Node* node = pNewFocus->GetNode();
     m_pFocusNode = node->IsWidgetReady() ? node : nullptr;
   } else {
+      std::cerr << "    -> not new focus" << std::endl;
     m_pFocusNode = nullptr;
   }
   m_pFocusWidget = pNewFocus;
   m_pOldFocusWidget = m_pFocusWidget;
+  std::cerr << "    -> set m_pFocusWidget to " << (void*)m_pFocusWidget.Get() << " and m_pOldFocusWidget to " << (void*)m_pOldFocusWidget.Get() << " and return true" << std::endl;
   return true;
 }
 

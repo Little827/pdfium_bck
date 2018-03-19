@@ -6,6 +6,8 @@
 
 #include "fpdfsdk/cpdfsdk_xfawidgethandler.h"
 
+#include <iostream>
+
 #include "core/fpdfdoc/cpdf_interform.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -302,7 +304,20 @@ bool CPDFSDK_XFAWidgetHandler::OnSetFocus(CPDFSDK_Annot::ObservedPtr* pAnnot,
 
 bool CPDFSDK_XFAWidgetHandler::OnKillFocus(CPDFSDK_Annot::ObservedPtr* pAnnot,
                                            uint32_t nFlag) {
-  return true;
+  CXFA_FFWidget* hWidget = *pAnnot ? (*pAnnot)->GetXFAWidget() : nullptr;
+  std::cerr << "CPDFSDK_XFAWidgetHandler::OnKillFocus " << (void*)hWidget << std::endl;
+  if (!hWidget)
+    return true;
+
+  CXFA_FFPageView* pXFAPageView = hWidget->GetPageView();
+  if (!pXFAPageView)
+    return true;
+
+  std::cerr << "XFAPageView->GetDocView()->SetFocus(nullptr)" << std::endl;
+  // return pXFAPageView->GetDocView()->SetFocus(nullptr);
+  bool ret = pXFAPageView->GetDocView()->SetFocus(nullptr);
+  std::cerr << "  -> ret would be " << ret << std::endl;
+  return !ret;
 }
 
 bool CPDFSDK_XFAWidgetHandler::OnXFAChangedFocus(
