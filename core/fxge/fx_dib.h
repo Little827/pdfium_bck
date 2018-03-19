@@ -86,11 +86,14 @@ inline FX_CMYK CmykEncode(int c, int m, int y, int k) {
   return (c << 24) | (m << 16) | (y << 8) | k;
 }
 
-// Returns tuple a, r, g, b
+// Returns (a, r, g, b)
 std::tuple<int, int, int, int> ArgbDecode(FX_ARGB argb);
 
-// Returns pair a, rgb
-std::pair<int, FX_COLORREF> ArgbToColorRef(FX_ARGB argb);
+// Returns (a, bgr)
+std::pair<int, FX_COLORREF> ArgbToAlphaAndColorRef(FX_ARGB argb);
+
+// Returns FX_COLORREF, which is BGR.
+FX_COLORREF ArgbToColorRef(FX_ARGB argb);
 
 inline FX_ARGB ArgbEncode(int a, int r, int g, int b) {
   return (a << 24) | (r << 16) | (g << 8) | b;
