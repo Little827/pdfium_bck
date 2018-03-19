@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dc6c4bb_9ebdd4b2",
+        "filename": "testing/resources/combobox_form.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-19T20:12:01Z",
+      "side": 1,
+      "message": "This is just a repeat of watermelon. ;-)",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "5c891117aa6ec97ff9a5ff4ffa069ceb65549d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a082680_81a237fa",
+        "filename": "testing/resources/combobox_form.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-19T20:12:01Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 70,
+        "startChar": 51,
+        "endLine": 70,
+        "endChar": 59
+      },
+      "revId": "5c891117aa6ec97ff9a5ff4ffa069ceb65549d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
