@@ -8,6 +8,7 @@
 #include <string.h>
 
 #include <bitset>
+#include <cwchar>
 #include <iterator>
 #include <map>
 #include <memory>
@@ -1074,6 +1075,40 @@ void DumpMetaData(FPDF_DOCUMENT doc) {
   }
 }
 
+void RemovePageObjectsWithTag(FPDF_PAGE page, const wchar_t* tag) {
+  unsigned long object_count = FPDFPage_CountObjects(page);
+  fprintf(stderr,
+          "Got %lu page objects from FPDFPageObj_ArrayGetCount. "
+          "Will delete those matching \"%ls\".\n",
+          object_count, tag);
+  std::vector<FPDF_PAGEOBJECT> objects_to_remove;
+  for (unsigned long i = 0; i < object_count; ++i) {
+    FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
+
+    unsigned long mark_count = FPDFPageObj_CountMarks(page_object);
+    for (unsigned long j = 0; j < mark_count; ++j) {
+      FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
+
+      wchar_t buffer[256];
+      FPDFPageObjMark_GetName(mark, buffer, 256);
+      if (GetPlatformWString(reinterpret_cast<unsigned short*>(buffer)) == tag)
+        objects_to_remove.push_back(page_object);
+    }
+  }
+
+  for (auto rit = objects_to_remove.rbegin(); rit != objects_to_remove.rend();
+       ++rit) {
+    FPDF_PAGEOBJECT page_object = *rit;
+    fprintf(stderr, "Removing a page object.\n");
+    FPDF_BOOL removed = FPDFPage_RemoveObject(page, page_object);
+
+    if (removed)
+      FPDFPageObj_Destroy(page_object);
+    else
+      fprintf(stderr, "Unable to remove a page object.\n");
+  }
+}
+
 void SaveAttachments(FPDF_DOCUMENT doc, const std::string& name) {
   for (int i = 0; i < FPDFDoc_GetAttachmentCount(doc); ++i) {
     FPDF_ATTACHMENT attachment = FPDFDoc_GetAttachment(doc, i);
@@ -1245,6 +1280,8 @@ bool RenderPage(const std::string& name,
     DumpPageStructure(page, page_index);
     return true;
   }
+
+  RemovePageObjectsWithTag(page, L"Foo");
 
   std::unique_ptr<void, FPDFTextPageDeleter> text_page(FPDFText_LoadPage(page));
 
