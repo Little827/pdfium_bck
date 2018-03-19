@@ -65,7 +65,10 @@ endobj
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 100 200 130 ]
   /Subtype /Widget
-  /Opt [(Apple) (Banana) (Cherry)]
+  /Opt [(Apple) (Banana) (Cherry) (Date) (Elderberry) (Fig) (Guava) (Honeydew)
+        (Indian Fig) (Jackfruit) (Kiwi) (Lemon) (Mango) (Nectarine) (Orange)
+        (Persimmon) (Quince) (Raspberry) (Strawberry) (Tamarind) (Ugli Fruit)
+        (Voavanga) (Watermelon) (Xigua) (Yangmei) (Zuchinni)]
   /V (Banana)
 >>
 endobj
@@ -93,8 +96,8 @@ xref
 0000000475 00000 n 
 0000000575 00000 n 
 0000000779 00000 n 
-0000000975 00000 n 
+0000001236 00000 n 
 trailer<< /Root 1 0 R /Size 11 >>
 startxref
-1164
+1425
 %%EOF
