@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5e26294_3e5f0009",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-19T22:57:31Z",
+      "side": 1,
+      "message": "I\u0027m using CLion as IDE, which has pretty good refactoring support, changes like these are a snap. If needed, I could help improve variable naming consistency. BTW, I was wondering what OS and IDE (if any) is most popular among PDFium developers.",
+      "parentUuid": "89bfcc8a_4034af7b",
+      "range": {
+        "startLine": 235,
+        "startChar": 9,
+        "endLine": 235,
+        "endChar": 23
+      },
+      "revId": "2d30467d56e0fd0b3a648fe339892137c3b0de32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b37f0405_fa4de351",
         "filename": "testing/resources/annotation_markup_multiline_no_ap.in",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "2d30467d56e0fd0b3a648fe339892137c3b0de32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa02a31e_e425b3e5",
+        "filename": "testing/resources/annotation_markup_multiline_no_ap.in",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-19T22:57:31Z",
+      "side": 1,
+      "message": "Sure. Dropping those digits doesn\u0027t even seem to break the test (md5 stays the same).",
+      "parentUuid": "b37f0405_fa4de351",
+      "revId": "2d30467d56e0fd0b3a648fe339892137c3b0de32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
