@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89bfcc8a_4034af7b",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-19T19:20:59Z",
+      "side": 1,
+      "message": "nit: Let\u0027s try to match the surrounding code w.r.t. to naming. In this case, how about \"nQuadPointCount\" ?\n\nOur variable naming scheme is a bit of a mess, since we inherited this code base.",
+      "range": {
+        "startLine": 235,
+        "startChar": 9,
+        "endLine": 235,
+        "endChar": 23
+      },
+      "revId": "2d30467d56e0fd0b3a648fe339892137c3b0de32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37f0405_fa4de351",
+        "filename": "testing/resources/annotation_markup_multiline_no_ap.in",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-19T19:20:59Z",
+      "side": 1,
+      "message": "Can we format this like lines 20-25, so we have 1 QuadPoint per line?\n\nAfter doing the above, if it doesn\u0027t make much of a difference, can we drop some of the digits after the decimal point, so each QuadPoint fits within 80 columns? e.g.\n\n/QuadPoints [\n  107.7896 639.9486 505.8939 639.9486 107.7896 629.1634 505.8939 629.1634\n  107.7896 626.2871 505.8939 626.2871 107.7896 615.5011 505.8939 615.5011\n  107.7896 612.6248 380.1389 612.6248 107.7896 601.8397 380.1389 601.8397\n]",
+      "revId": "2d30467d56e0fd0b3a648fe339892137c3b0de32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
