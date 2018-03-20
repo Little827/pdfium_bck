@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521517522 -0700\nnonce APUGfEL4WMCkGKIjgqjFanbBhMxn6FKDfN10zo8BCLnu1+YfG45I9FMazGRKKNoh0gikqK9nOIkO\n\n0000000000000000000000000000000000000000 eff1a1e4ad6da9081f09b9f22ae2ec4a8b2985c4 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqwg9IACgkQqzYtYVpm\n/XuNdwf+NPaTUqpGmKER/VVRkrID8biKu9SKAQ9jR/lENklj80cEWIidVbysocEY\nBUZ0AjtTeq4NoWALGiKGkVXObbOOJpRmuIlciwHzv+BpbpOnnwMfYE33LX8XuJLM\n2xWsTxB3F3PEseZt3mxBAabpvb9QHoWnTppvMHvFep6f40YLC32OtB5v4d10zjXp\nFG5XpuVi3W3ort4KXiKe1+n4V0+yxWd+27ydjRb+Ev5kdHx2TFzqTmasxNY5C00M\nIjakQeUQaGa448dBjvU5I1Y2EKsOHKrfQ0hxoUtyVSqRaHXIhqdIp4rCj1beU8bk\nBZidCClFm2y/Fj6GMMiQRAGAjyogwQ\u003d\u003d\n\u003dW+82\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d4428e_d1645ce9",
+        "filename": "testing/gmock/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-20T13:09:55Z",
+      "side": 1,
+      "message": "Could we try to get build/secondary/testing/gmock updated? Or, add a build/secondary/third_party/googletest and share that with chromium instead of duplicating the files?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 59
+      },
+      "revId": "eff1a1e4ad6da9081f09b9f22ae2ec4a8b2985c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
