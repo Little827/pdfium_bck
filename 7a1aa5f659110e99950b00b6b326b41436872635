@@ -45,6 +45,30 @@
       "revId": "7a1aa5f659110e99950b00b6b326b41436872635",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20df2123_9c7e0123",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-20T19:55:47Z",
+      "side": 0,
+      "message": "The client is sending coords with y going down instead of up, while page coords are normally y going up. The problems are:\n- This is not the right way to invert the coords. It should be new_y \u003d (page_height - y). This just creates a broken rect with negative height.\n- XFA widget rects are in these page coords that go down rather than up, too. Comparing in CPDFXFA_DocEnvironment::GetPopupPos() is more natural when this rect is returned the way it is.",
+      "parentUuid": "453423e0_a2094417",
+      "range": {
+        "startLine": 391,
+        "startChar": 76,
+        "endLine": 393,
+        "endChar": 18
+      },
+      "revId": "7a1aa5f659110e99950b00b6b326b41436872635",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
