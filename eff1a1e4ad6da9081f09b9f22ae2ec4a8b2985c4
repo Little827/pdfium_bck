@@ -47,6 +47,30 @@
       "revId": "eff1a1e4ad6da9081f09b9f22ae2ec4a8b2985c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4573386b_bf0239b5",
+        "filename": "testing/gmock/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6505
+      },
+      "writtenOn": "2018-03-20T20:19:28Z",
+      "side": 1,
+      "message": "//build/secondary/testing was only there because we wanted a specific directory structure and specific targets, and we couldn\u0027t get GN / GYP configurations in the places we wanted them in the main tree. I should have bumped googletest on all related projects and removed it, but that fell off my radar.\n\nRegarding the duplication -- as far as I know, googletest is the only third_party whose build configurations were shared between Chromium, V8 and PDFium. While sharing seems attractive in theory, I can see it introducing unwanted friction to getting things updated. Even if we\u0027d share the build configs, projects would still have to carry the header stubs until googletest\u0027s layout stabilizes.\n\nSo, for the time being, I think it\u0027s easier to reason about a state where each project carries its googletest configuration.",
+      "parentUuid": "32d49cf1_fa5a190c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 59
+      },
+      "revId": "eff1a1e4ad6da9081f09b9f22ae2ec4a8b2985c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
