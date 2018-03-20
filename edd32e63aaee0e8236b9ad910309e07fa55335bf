@@ -190,6 +190,30 @@
       "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481df302_3730520f",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-20T21:57:22Z",
+      "side": 1,
+      "message": "Maybe? As is, there is an UnownedPtr, so you would need to deep copy that too. FPDF_PAGEOBJECTMARK would need to become a pointer to a struct that holds on to both the CPDF_ContentMarkItem and the property dictionary.\n\nI don\u0027t know the life cycle of CPDF_ContentMarkItem, so I don\u0027t know off the top of my head whether not-copying is a feasible solution.",
+      "parentUuid": "242bed7b_ce9b2354",
+      "range": {
+        "startLine": 298,
+        "startChar": 14,
+        "endLine": 298,
+        "endChar": 27
+      },
+      "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
