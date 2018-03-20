@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd746d5f_1c98112c",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-20T15:39:03Z",
+      "side": 1,
+      "message": "Add a line that the FPDF_PAGEOBJECTMARK does not need to be free\u0027d and is owned by the library? Something about when it will become invalid? (Page closed? Document closed?)",
+      "range": {
+        "startLine": 298,
+        "startChar": 14,
+        "endLine": 298,
+        "endChar": 27
+      },
+      "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
