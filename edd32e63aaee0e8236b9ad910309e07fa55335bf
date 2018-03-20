@@ -118,6 +118,30 @@
       "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6c649f_8ed2d89a",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-20T20:33:52Z",
+      "side": 1,
+      "message": "Another option is copying the CPDF_ContentMarkItem and transfer ownership of the copy to the caller. That was what a previous version of the CL did. It would avoid the problem you\u0027re raising. Do we have guarantees, though, in the rest of the API, that editing the .pdf will maintain the handles passed to callers valid? I don\u0027t think this is a problem specific to this cl.",
+      "parentUuid": "5a384057_193ebf27",
+      "range": {
+        "startLine": 298,
+        "startChar": 14,
+        "endLine": 298,
+        "endChar": 27
+      },
+      "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
