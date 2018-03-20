@@ -166,6 +166,30 @@
       "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242bed7b_ce9b2354",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-20T21:47:02Z",
+      "side": 1,
+      "message": "So, deep copy?",
+      "parentUuid": "89472ec7_ce150063",
+      "range": {
+        "startLine": 298,
+        "startChar": 14,
+        "endLine": 298,
+        "endChar": 27
+      },
+      "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
