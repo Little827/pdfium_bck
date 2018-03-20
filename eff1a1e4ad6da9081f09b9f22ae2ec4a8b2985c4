@@ -23,6 +23,30 @@
       "revId": "eff1a1e4ad6da9081f09b9f22ae2ec4a8b2985c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d49cf1_fa5a190c",
+        "filename": "testing/gmock/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-20T18:53:01Z",
+      "side": 1,
+      "message": "pwnall: What\u0027s the plan here. I see the V8 CL is duplicating these files too. Is build/secondary/testing suppose to go away?",
+      "parentUuid": "a3d4428e_d1645ce9",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 59
+      },
+      "revId": "eff1a1e4ad6da9081f09b9f22ae2ec4a8b2985c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
