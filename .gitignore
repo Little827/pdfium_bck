@@ -10,6 +10,7 @@
 /third_party/catapult
 /third_party/depot_tools
 /third_party/freetype/src
+/third_party/googletest/src
 /third_party/icu
 /third_party/instrumented_libraries
 /third_party/jinja2
