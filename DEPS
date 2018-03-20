@@ -53,10 +53,10 @@ deps = {
   "testing/corpus":
     Var('pdfium_git') + "/pdfium_tests@" + Var('pdfium_tests_revision'),
 
-  "testing/gmock":
+  "testing/gmock_old":
     Var('chromium_git') + "/external/googlemock.git@" + Var('gmock_revision'),
 
-  "testing/gtest":
+  "testing/gtest_old":
     Var('chromium_git') + "/external/googletest.git@" + Var('gtest_revision'),
 
   "third_party/binutils":

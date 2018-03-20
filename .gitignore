@@ -3,8 +3,8 @@
 /buildtools
 /out
 /testing/corpus
-/testing/gmock
-/testing/gtest
+/testing/gmock_old
+/testing/gtest_old
 /third_party/android_ndk
 /third_party/binutils
 /third_party/catapult
