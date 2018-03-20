@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521486430 -0700\nnonce APUGfEIPblF2dFAJz2vsf8XnRmYRRHf+WEQ3hPDLQYJC2CpdBXi3UTbtYoSzxTA5Y62Zr3bVbQQY\n\n0000000000000000000000000000000000000000 06f2aaba33ec09165e5250fb7a1dfe0696ae39a5 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqwCl4ACgkQqzYtYVpm\n/XuVLggA1X/nCdQyY8iUvhdThjtez1EnOhllztwWKMJ6B2QbnHOyQKotJ4HQuE0L\nrlkZUfkL6aoBvdwXRFtrp7/hEBX8cuixl2yZYESrRpeY3HWIgAFZlwbEJ4ddGrKS\nZAlfddZHCDtemIZSyCsVm3UQtx+6k5CMJql8dImG5gy8lYCkjmC/Zhzcv9Hcc7rF\nL4gADv3cYukQpa0YEpIgtsIJYF/v3jP4yqdUFa5Pc/8qA8VR1aJ/yq8w0RH5ziTN\n7VKQGv9iUNpMfTkKCYyYi3GAXpRBcRYoWUTYWuzjvi3EyxlPd6hyX50RHn3Nq2OF\n5gqUyCoOtLb8busIuDhE1AwssM9QLA\u003d\u003d\n\u003dkzoc\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "de5348e8_fcfcfe6d",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-20T17:05:08Z",
+      "side": 1,
+      "message": "This could be a for (int pos \u003d 0; int pos \u003d 0; ++pos) to avoid the increments before continue.",
+      "range": {
+        "startLine": 326,
+        "startChar": 2,
+        "endLine": 326,
+        "endChar": 22
+      },
+      "revId": "06f2aaba33ec09165e5250fb7a1dfe0696ae39a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
