@@ -22,6 +22,29 @@
       "revId": "7a1aa5f659110e99950b00b6b326b41436872635",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "453423e0_a2094417",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-20T15:32:01Z",
+      "side": 0,
+      "message": "Why is this not needed? What happens if the client sends back inverted coords?",
+      "range": {
+        "startLine": 391,
+        "startChar": 76,
+        "endLine": 393,
+        "endChar": 18
+      },
+      "revId": "7a1aa5f659110e99950b00b6b326b41436872635",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
