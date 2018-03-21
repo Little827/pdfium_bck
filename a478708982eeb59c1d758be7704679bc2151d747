@@ -53,6 +53,24 @@
       "revId": "a478708982eeb59c1d758be7704679bc2151d747",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3694acf9_cec751cc",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-21T22:17:47Z",
+      "side": 1,
+      "message": "I\u0027d like to think any decent optimizing compiler can figure that out. But you never know. How about this?\n\nquad_index *\u003d 8;\nquad_points-\u003ex1 \u003d pArray-\u003eGetNumberAt(quad_index);\nquad_points-\u003ex1 \u003d pArray-\u003eGetNumberAt(quad_index + 1);\n...",
+      "parentUuid": "b59393c8_c0573862",
+      "revId": "a478708982eeb59c1d758be7704679bc2151d747",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
