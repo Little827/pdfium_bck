@@ -547,24 +547,39 @@ class CPDF_NPageToOneExporter : public CPDF_PageOrganizer {
   // Map XObject's object name to it's object number.
   using XObjectNameNumberMap = std::map<ByteString, uint32_t>;
 
-  // Creates a xobject from the source page dictionary, and appends the
-  // bsContent string with the xobject reference surrounded by the
-  // transformation matrix.
-  void AddSubPage(const CPDF_Dictionary* pSrcPageDict,
-                  const NupPageSettings& settings,
-                  ObjectNumberMap* pObjNumberMap,
-                  PageXObjectMap* pPageXObjectMap,
-                  XObjectNameNumberMap* pXObjNameNumberMap,
-                  ByteString* bsContent);
-  uint32_t MakeXObject(const CPDF_Dictionary* pSrcPageDict,
-                       ObjectNumberMap* pObjNumberMap);
+  // Creates an XObject from |pSrcPageDict|, or find an existing XObject that
+  // represents |pSrcPageDict|. Then appends the XObject reference surrounded by
+  // the transformation matrix to |bsContent|. The transformation matrix is
+  // specified in |settings|.
+  // Returns the name of the XObject that represents |pSrcPageDict|.
+  ByteString AddSubPage(const CPDF_Dictionary* pSrcPageDict,
+                        const NupPageSettings& settings,
+                        ByteString* bsContent);
 
+  // Creates an XObject from |pSrcPageDict|.
+  // Returns the name of the newly created XObject.
+  ByteString MakeXObject(const CPDF_Dictionary* pSrcPageDict);
+
+  // Adds |bsContent| as the Contents key in |pDestPageDict|.
+  // Adds the objects in |xObjNameNumberMap| to the XObject dictionary in
+  // |pDestPageDict|'s Resources dictionary.
   void FinishPage(CPDF_Dictionary* pDestPageDict,
                   const ByteString& bsContent,
                   const XObjectNameNumberMap& xObjNameNumberMap);
 
-  uint32_t m_xobjectNum = 0;
-  XObjectNameNumberMap m_xobjs;
+  // Counter for giving new XObjects unique names.
+  uint32_t m_nObjectNumber = 0;
+
+  // Keeps track of the created XObjects.
+  XObjectNameNumberMap m_XObjectNameToNumberMap;
+
+  // Used to update references.
+  ObjectNumberMap m_ObjectNumberMap;
+
+  // Mapping of source page object number and XObject name of the entire doc.
+  // If there are multiple source pages that reference the same object number,
+  // they can also share the same created XObject.
+  PageXObjectMap m_SrcPageXObjectMap;
 };
 
 CPDF_NPageToOneExporter::CPDF_NPageToOneExporter(CPDF_Document* pDestPDFDoc,
@@ -588,13 +603,6 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
 
   size_t numPagesPerSheet = safe_numPagesPerSheet.ValueOrDie();
 
-  // Mapping of source page object number and XObject object number.
-  // Used to update refernece.
-  ObjectNumberMap objectNumberMap;
-  // Mapping of source page object number and XObject name of the entire doc.
-  // If there are two pages that are identical and have the same object number,
-  // we can reuse one created XObject.
-  PageXObjectMap pageXObjectMap;
   NupState nupState(destPageSize, numPagesOnXAxis, numPagesOnYAxis);
 
   size_t curpage = 0;
@@ -612,7 +620,7 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
     size_t innerPageMax =
         std::min(outerPage + numPagesPerSheet, pageNums.size());
     // Mapping of XObject name and XObject object number of one page.
-    XObjectNameNumberMap xObjNameNumberMap;
+    XObjectNameNumberMap map;
     for (size_t innerPage = outerPage; innerPage < innerPageMax; ++innerPage) {
       CPDF_Dictionary* pSrcPageDict = src()->GetPage(pageNums[innerPage] - 1);
       if (!pSrcPageDict)
@@ -621,38 +629,25 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
       CPDF_Page srcPage(src(), pSrcPageDict, true);
       NupPageSettings settings =
           nupState.CalculateNewPagePosition(srcPage.GetPageSize());
-      AddSubPage(pSrcPageDict, settings, &objectNumberMap, &pageXObjectMap,
-                 &xObjNameNumberMap, &bsContent);
+      ByteString bsXObjectName = AddSubPage(pSrcPageDict, settings, &bsContent);
+      map[bsXObjectName] = m_XObjectNameToNumberMap[bsXObjectName];
     }
 
-    // Finish up the current page.
-    FinishPage(pDestPageDict, bsContent, xObjNameNumberMap);
+    FinishPage(pDestPageDict, bsContent, map);
     ++curpage;
   }
 
   return true;
 }
 
-void CPDF_NPageToOneExporter::AddSubPage(
+ByteString CPDF_NPageToOneExporter::AddSubPage(
     const CPDF_Dictionary* pSrcPageDict,
     const NupPageSettings& settings,
-    ObjectNumberMap* pObjNumberMap,
-    PageXObjectMap* pPageXObjectMap,
-    XObjectNameNumberMap* pXObjNameNumberMap,
     ByteString* bsContent) {
-  uint32_t dwPageObjnum = pSrcPageDict->GetObjNum();
-  ByteString bsXObjectName;
-  const auto it = pPageXObjectMap->find(dwPageObjnum);
-  if (it != pPageXObjectMap->end()) {
-    bsXObjectName = it->second;
-  } else {
-    ++m_xobjectNum;
-    // TODO(Xlou): A better name schema to avoid possible object name collision.
-    bsXObjectName = ByteString::Format("X%d", m_xobjectNum);
-    m_xobjs[bsXObjectName] = MakeXObject(pSrcPageDict, pObjNumberMap);
-    (*pPageXObjectMap)[dwPageObjnum] = bsXObjectName;
-  }
-  (*pXObjNameNumberMap)[bsXObjectName] = m_xobjs[bsXObjectName];
+  uint32_t dwSrcPageObjnum = pSrcPageDict->GetObjNum();
+  const auto it = m_SrcPageXObjectMap.find(dwSrcPageObjnum);
+  ByteString bsXObjectName =
+      it != m_SrcPageXObjectMap.end() ? it->second : MakeXObject(pSrcPageDict);
 
   CFX_Matrix matrix;
   matrix.Scale(settings.scale, settings.scale);
@@ -664,11 +659,11 @@ void CPDF_NPageToOneExporter::AddSubPage(
                 << matrix.d << " " << matrix.e << " " << matrix.f << " cm\n"
                 << "/" << bsXObjectName << " Do Q\n";
   *bsContent += ByteString(contentStream);
+  return bsXObjectName;
 }
 
-uint32_t CPDF_NPageToOneExporter::MakeXObject(
-    const CPDF_Dictionary* pSrcPageDict,
-    ObjectNumberMap* pObjNumberMap) {
+ByteString CPDF_NPageToOneExporter::MakeXObject(
+    const CPDF_Dictionary* pSrcPageDict) {
   ASSERT(pSrcPageDict);
 
   const CPDF_Object* pSrcContentObj = GetPageOrganizerPageContent(pSrcPageDict);
@@ -683,8 +678,8 @@ uint32_t CPDF_NPageToOneExporter::MakeXObject(
   }
   uint32_t dwSrcPageObj = pSrcPageDict->GetObjNum();
   uint32_t dwNewXobjectObj = pNewXObjectDict->GetObjNum();
-  (*pObjNumberMap)[dwSrcPageObj] = dwNewXobjectObj;
-  UpdateReference(pNewXObjectDict, pObjNumberMap);
+  m_ObjectNumberMap[dwSrcPageObj] = dwNewXobjectObj;
+  UpdateReference(pNewXObjectDict, &m_ObjectNumberMap);
 
   pNewXObjectDict->SetNewFor<CPDF_Name>("Type", "XObject");
   pNewXObjectDict->SetNewFor<CPDF_Name>("Subtype", "Form");
@@ -713,7 +708,13 @@ uint32_t CPDF_NPageToOneExporter::MakeXObject(
                                         bsStream.GetLength());
   }
 
-  return pNewXObject->GetObjNum();
+  // TODO(xlou): Use a better name schema to avoid possible object name
+  // collision.
+  ++m_nObjectNumber;
+  ByteString bsXObjectName = ByteString::Format("X%d", m_nObjectNumber);
+  m_XObjectNameToNumberMap[bsXObjectName] = pNewXObject->GetObjNum();
+  m_SrcPageXObjectMap[pSrcPageDict->GetObjNum()] = bsXObjectName;
+  return bsXObjectName;
 }
 
 void CPDF_NPageToOneExporter::FinishPage(
