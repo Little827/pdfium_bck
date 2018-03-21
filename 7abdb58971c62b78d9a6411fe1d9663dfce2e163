@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f046bc57_5623e210",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-21T19:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a719d93_2f0e9d11",
+      "revId": "7abdb58971c62b78d9a6411fe1d9663dfce2e163",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1761cf8_e211d241",
         "filename": "fpdfsdk/fpdfdoc.cpp",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "7abdb58971c62b78d9a6411fe1d9663dfce2e163",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1aeafdd_936c1bb9",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-21T19:26:31Z",
+      "side": 1,
+      "message": "Yes. I blame the original code. :)",
+      "parentUuid": "d1761cf8_e211d241",
+      "range": {
+        "startLine": 95,
+        "startChar": 6,
+        "endLine": 95,
+        "endChar": 46
+      },
+      "revId": "7abdb58971c62b78d9a6411fe1d9663dfce2e163",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
