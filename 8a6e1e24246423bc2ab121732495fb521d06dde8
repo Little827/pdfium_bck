@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521611514 -0700\nnonce APUGfEI3yu2UlZKyBIb6rhF65edrAnIvtcCJ1/1TsJYhUVJYYGYzJRQcNd2VBTvIt+H0mjJpKrUJ\n\n0000000000000000000000000000000000000000 8a6e1e24246423bc2ab121732495fb521d06dde8 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbump\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqx8voACgkQqzYtYVpm\n/XvJRgf/WA4NxJnI+eAjatk+EIalOeooXOvPxz+nuPCgDpJzlAKMRZ6NJAlx5z77\nROFU/UZrZW/erypMvm/17V+tWEYi4AiSLdVPuGKVcO3BauPc8n2vuMI0Nb6yLFCb\n87hXRQS9f4nHGVuvAGa5lSqZUwGQ2XxQnp5+R217cO0lCf30tkdiSjHxQ1IUNZzW\nxVCWN7o1xdHr/RSJ5kkq5Z407NYp7w/R/sTcdzT1OaPJJX4Sl1gV9wseHsv35TXW\nt4AU7wjzF+gsOXw6a1W83z7ibETylBJtTkWOQLr1z7NXWgaHgvVHBoYqCgIa4qF6\nSk9zvglUnXAocReH6JoWgbxp7uaQIA\u003d\u003d\n\u003diNpB\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c3cd9d1_19b24a83",
+        "filename": "third_party/googletest/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-21T13:33:52Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "8a6e1e24246423bc2ab121732495fb521d06dde8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
