@@ -17,6 +17,24 @@
       "revId": "ab2c5ade5157eb59411a9c7f2d84c2219f890275",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f1062f_d6035ab1",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-21T05:06:49Z",
+      "side": 1,
+      "message": "Turned out this was dead code. So I deleted it in a separate CL.",
+      "parentUuid": "875abbf4_f9776f8e",
+      "revId": "ab2c5ade5157eb59411a9c7f2d84c2219f890275",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
