@@ -71,6 +71,24 @@
       "revId": "a478708982eeb59c1d758be7704679bc2151d747",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5643e58_e10cc8e5",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-21T22:33:48Z",
+      "side": 1,
+      "message": "Looks good. A GetNumberAt(++quad_index) would look even better, and would be infinitely faster ;). We could also get rid of the division above with something like\nquad_index *\u003d 8;\nsize_t last_index \u003d quad_index + 7;\nif (last_index \u003e\u003d pArray-\u003eGetCount())\n  return false;\nthen use last_index as argument in the last GetNumberAt call.\nOTOH, let\u0027s stop this right now :)",
+      "parentUuid": "3694acf9_cec751cc",
+      "revId": "a478708982eeb59c1d758be7704679bc2151d747",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
