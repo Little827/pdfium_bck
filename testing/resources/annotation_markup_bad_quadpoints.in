@@ -1,0 +1,60 @@
+{{header}}
+
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /Kids [ 3 0 R ]
+>>
+endobj
+
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 595 842]
+  /Annots [
+    4 0 R
+    5 0 R
+  ]
+  /Tabs /R
+>>
+endobj
+
+{{object 4 0}} <<
+  /Type /Annot
+  /Subtype /Highlight
+  /Rect [ 108 602 506 640 ]
+  /NM (Hilight-QP-no-multiple-of-8)
+  /F 4
+  /QuadPoints [
+    107.7896 639.9486 505.8939 639.9486 107.7896 629.1634 505.8939 629.1634
+    107.7896 626.2871
+  ]
+  /C [ 1 1 0 ]
+  /Contents ()
+>>
+endobj
+
+{{object 5 0}} <<
+  /Type /Annot
+  /Subtype /Underline
+  /Rect [ 108 552 506 590 ]
+  /NM (Underline-QP-less-than-8)
+  /F 4
+  /QuadPoints [
+    107.7896 589.9486 505.8939 589.9486 107.7896 579.1634
+  ]
+  /C [ 0 0 0 ]
+  /Contents ()
+>>
+endobj
+
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF

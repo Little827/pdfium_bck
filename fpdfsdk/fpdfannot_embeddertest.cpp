@@ -134,7 +134,7 @@ TEST_F(FPDFAnnotEmbeddertest, ExtractHighlightLongContent) {
 
     // Check that the quadpoints are correct.
     FS_QUADPOINTSF quadpoints;
-    ASSERT_TRUE(FPDFAnnot_GetAttachmentPoints(annot.get(), &quadpoints));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot.get(), 0, &quadpoints));
     EXPECT_EQ(115.802643f, quadpoints.x1);
     EXPECT_EQ(718.913940f, quadpoints.y1);
     EXPECT_EQ(157.211182f, quadpoints.x4);
@@ -303,7 +303,7 @@ TEST_F(FPDFAnnotEmbeddertest, AddAndSaveUnderlineAnnotation) {
     std::unique_ptr<void, FPDFAnnotationDeleter> annot(
         FPDFPage_GetAnnot(page, 0));
     ASSERT_TRUE(annot);
-    ASSERT_TRUE(FPDFAnnot_GetAttachmentPoints(annot.get(), &quadpoints));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot.get(), 0, &quadpoints));
     EXPECT_EQ(115.802643f, quadpoints.x1);
     EXPECT_EQ(718.913940f, quadpoints.y1);
     EXPECT_EQ(157.211182f, quadpoints.x4);
@@ -317,7 +317,7 @@ TEST_F(FPDFAnnotEmbeddertest, AddAndSaveUnderlineAnnotation) {
     ASSERT_TRUE(annot);
     quadpoints.x1 = 140.802643f;
     quadpoints.x3 = 140.802643f;
-    ASSERT_TRUE(FPDFAnnot_SetAttachmentPoints(annot.get(), &quadpoints));
+    ASSERT_TRUE(FPDFAnnot_SetQuadPoints(annot.get(), 0, &quadpoints));
   }
 
   // Save the document, closing the page and document.
@@ -342,8 +342,7 @@ TEST_F(FPDFAnnotEmbeddertest, AddAndSaveUnderlineAnnotation) {
     ASSERT_TRUE(new_annot);
     EXPECT_EQ(FPDF_ANNOT_UNDERLINE, FPDFAnnot_GetSubtype(new_annot.get()));
     FS_QUADPOINTSF new_quadpoints;
-    ASSERT_TRUE(
-        FPDFAnnot_GetAttachmentPoints(new_annot.get(), &new_quadpoints));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(new_annot.get(), 0, &new_quadpoints));
     EXPECT_NEAR(quadpoints.x1, new_quadpoints.x1, 0.001f);
     EXPECT_NEAR(quadpoints.y1, new_quadpoints.y1, 0.001f);
     EXPECT_NEAR(quadpoints.x4, new_quadpoints.x4, 0.001f);
@@ -352,6 +351,114 @@ TEST_F(FPDFAnnotEmbeddertest, AddAndSaveUnderlineAnnotation) {
 
   CloseSavedPage(page);
   CloseSavedDocument();
+}
+
+TEST_F(FPDFAnnotEmbeddertest, GetAndSetQuadPoints) {
+  // Open a file with four annotations and load its first page.
+  ASSERT_TRUE(OpenDocument("annotation_highlight_square_with_ap.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  EXPECT_EQ(4, FPDFPage_GetAnnotCount(page));
+
+  // Retrieve the highlight annotation.
+  FPDF_ANNOTATION annot = FPDFPage_GetAnnot(page, 0);
+  ASSERT_TRUE(annot);
+  ASSERT_EQ(FPDF_ANNOT_HIGHLIGHT, FPDFAnnot_GetSubtype(annot));
+
+  FS_QUADPOINTSF quadpoints;
+  ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot, 0, &quadpoints));
+
+  {
+    // Verify the current one set of quadpoints.
+    ASSERT_EQ(1, FPDFAnnot_GetQuadPointCount(annot));
+
+    EXPECT_NEAR(72.0000f, quadpoints.x1, 0.001f);
+    EXPECT_NEAR(720.792f, quadpoints.y1, 0.001f);
+    EXPECT_NEAR(132.055f, quadpoints.x4, 0.001f);
+    EXPECT_NEAR(704.796f, quadpoints.y4, 0.001f);
+  }
+
+  // Add a second set of quadpoints.
+  FS_QUADPOINTSF new_quadpoints = quadpoints;
+  new_quadpoints.y1 -= 20.f;
+  new_quadpoints.y2 -= 20.f;
+  new_quadpoints.y3 -= 20.f;
+  new_quadpoints.y4 -= 20.f;
+  ASSERT_TRUE(FPDFAnnot_SetQuadPoints(annot, 1, &new_quadpoints));
+
+  {
+    // Verify added quadpoint set
+    ASSERT_EQ(2, FPDFAnnot_GetQuadPointCount(annot));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot, 1, &quadpoints));
+    EXPECT_NEAR(new_quadpoints.x1, quadpoints.x1, 0.001f);
+    EXPECT_NEAR(new_quadpoints.y1, quadpoints.y1, 0.001f);
+    EXPECT_NEAR(new_quadpoints.x4, quadpoints.x4, 0.001f);
+    EXPECT_NEAR(new_quadpoints.y4, quadpoints.y4, 0.001f);
+  }
+
+  {
+    // Adding/getting quadpoints at out-of-bound or negative index should fail
+    EXPECT_FALSE(FPDFAnnot_GetQuadPoints(annot, 2, &quadpoints));
+    EXPECT_FALSE(FPDFAnnot_SetQuadPoints(annot, 3, &quadpoints));
+    EXPECT_FALSE(FPDFAnnot_GetQuadPoints(annot, -1, &quadpoints));
+    EXPECT_FALSE(FPDFAnnot_SetQuadPoints(annot, -2, &quadpoints));
+  }
+
+  FPDFPage_CloseAnnot(annot);
+
+  // Retrieve the square annotation
+  FPDF_ANNOTATION squareAnnot = FPDFPage_GetAnnot(page, 2);
+
+  {
+    // Check that attempting to set its quadpoints would fail
+    ASSERT_TRUE(squareAnnot);
+    EXPECT_EQ(FPDF_ANNOT_SQUARE, FPDFAnnot_GetSubtype(squareAnnot));
+    EXPECT_EQ(0, FPDFAnnot_GetQuadPointCount(squareAnnot));
+    EXPECT_FALSE(FPDFAnnot_SetQuadPoints(squareAnnot, 0, &quadpoints));
+  }
+
+  FPDFPage_CloseAnnot(squareAnnot);
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFAnnotEmbeddertest, GetAndSetBadQuadPoints) {
+  // Open file with annotations with malformed quadpoints (no multiples of 8)
+  ASSERT_TRUE(OpenDocument("annotation_markup_bad_quadpoints.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  EXPECT_EQ(2, FPDFPage_GetAnnotCount(page));
+
+  FS_QUADPOINTSF new_quadpoints{107.7896f, 612.6248f, 380.1389f, 612.6248f,
+                                107.7896f, 601.8397f, 380.1389f, 601.8397f};
+  FS_QUADPOINTSF quadpoints;
+
+  {
+    // First annotation: quadpoints have 10 coords, i.e. one full set
+    FPDF_ANNOTATION annot = FPDFPage_GetAnnot(page, 0);
+    EXPECT_EQ(1, FPDFAnnot_GetQuadPointCount(annot));
+    ASSERT_TRUE(FPDFAnnot_SetQuadPoints(annot, 1, &new_quadpoints));
+    EXPECT_EQ(2, FPDFAnnot_GetQuadPointCount(annot));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot, 1, &quadpoints));
+    EXPECT_NEAR(new_quadpoints.x1, quadpoints.x1, 0.001f);
+    EXPECT_NEAR(new_quadpoints.y4, quadpoints.y4, 0.001f);
+    FPDFPage_CloseAnnot(annot);
+  }
+
+  {
+    // Second annotation: quadpoints have 6 coords, i.e. zero full sets
+    FPDF_ANNOTATION annot = FPDFPage_GetAnnot(page, 1);
+    ASSERT_TRUE(FPDFAnnot_HasQuadPoints(annot));
+    EXPECT_EQ(0, FPDFAnnot_GetQuadPointCount(annot));
+    ASSERT_TRUE(FPDFAnnot_SetQuadPoints(annot, 0, &new_quadpoints));
+    EXPECT_EQ(1, FPDFAnnot_GetQuadPointCount(annot));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot, 0, &quadpoints));
+    EXPECT_NEAR(new_quadpoints.x1, quadpoints.x1, 0.001f);
+    EXPECT_NEAR(new_quadpoints.y4, quadpoints.y4, 0.001f);
+    FPDFPage_CloseAnnot(annot);
+  }
+
+  UnloadPage(page);
 }
 
 TEST_F(FPDFAnnotEmbeddertest, ModifyRectQuadpointsWithAP) {
@@ -398,7 +505,7 @@ TEST_F(FPDFAnnotEmbeddertest, ModifyRectQuadpointsWithAP) {
 
     // Verify its attachment points.
     FS_QUADPOINTSF quadpoints;
-    ASSERT_TRUE(FPDFAnnot_GetAttachmentPoints(annot.get(), &quadpoints));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot.get(), 0, &quadpoints));
     EXPECT_NEAR(72.0000f, quadpoints.x1, 0.001f);
     EXPECT_NEAR(720.792f, quadpoints.y1, 0.001f);
     EXPECT_NEAR(132.055f, quadpoints.x4, 0.001f);
@@ -409,9 +516,9 @@ TEST_F(FPDFAnnotEmbeddertest, ModifyRectQuadpointsWithAP) {
     quadpoints.x2 -= 50.f;
     quadpoints.x3 -= 50.f;
     quadpoints.x4 -= 50.f;
-    ASSERT_TRUE(FPDFAnnot_SetAttachmentPoints(annot.get(), &quadpoints));
+    ASSERT_TRUE(FPDFAnnot_SetQuadPoints(annot.get(), 0, &quadpoints));
     FS_QUADPOINTSF new_quadpoints;
-    ASSERT_TRUE(FPDFAnnot_GetAttachmentPoints(annot.get(), &new_quadpoints));
+    ASSERT_TRUE(FPDFAnnot_GetQuadPoints(annot.get(), 0, &new_quadpoints));
     EXPECT_EQ(quadpoints.x1, new_quadpoints.x1);
     EXPECT_EQ(quadpoints.y1, new_quadpoints.y1);
     EXPECT_EQ(quadpoints.x4, new_quadpoints.x4);
