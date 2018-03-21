@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1521660324 -0700\nnonce APUGfEL1ZqMDXIFUwlUfyZVvQWL+R58iYR358dArOCdjggxcXr+eQNc3lUdFlNcYNnOg0rH/1v43\n\n0000000000000000000000000000000000000000 a478708982eeb59c1d758be7704679bc2151d747 refs/for/refs/heads/master%notify\u003dNONE,m\u003daddress_comments\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlqysaQACgkQqzYtYVpm\n/XvT9QgAhRVqqiVrP0tdjT65Vb/IsUzNPH62gxiU/DY1YOe0d37QFJoqrPVUe1OI\nheRapgLRgmOI04xlUCKj5F5FsticBCsSLUMFjQnicVwjkR6Oo10uvPrID//7EpqA\nFQew9dIqFOKWceqWGlFEQKz07DC/3Bj6hwjZEC2fOsdvoBQo+0IvwkBDEMPR91oC\n+j6RuEE0O6bMllSpCBs8C9hiAUYXfGLQRuUZl3ZdVVVQ35jRmy9tOv/NIBXRMcrR\nXRbGAMDSSdH21HkpSb/XdctvqyX8D0KogU76vsD4FPSMkozJP+DJjQLqvItLcOb9\nt2sk/ASOJuD0GicB0hI/YLshh8f0Xw\u003d\u003d\n\u003doDTJ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "412d6e06_87133369",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-21T21:47:18Z",
+      "side": 1,
+      "message": "IIUC we\u0027ll be calling this from several places, so it may pay off to optimize it. How about we store quad_index * 8 in a local var, which we pass to GetNumberAt, with a pre-increment in all but the first call?",
+      "revId": "a478708982eeb59c1d758be7704679bc2151d747",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
