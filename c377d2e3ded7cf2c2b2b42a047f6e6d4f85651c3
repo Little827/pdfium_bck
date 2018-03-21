@@ -22,6 +22,30 @@
       "revId": "c377d2e3ded7cf2c2b2b42a047f6e6d4f85651c3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86064ab_0a5e7c9f",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-21T19:36:13Z",
+      "side": 1,
+      "message": "I think it was just wrong before? Though I\u0027m not using rtAnchor rather than rcAnchor, which had a negative height whatever that meant...\n\nI\u0027ve tested these by forcing rotation in CXFA_Node::GetRotate(), they are the right signs. I also tested that it doesn\u0027t work without this CL when it\u0027s rotated.",
+      "parentUuid": "ec12f60b_705cd619",
+      "range": {
+        "startLine": 140,
+        "startChar": 25,
+        "endLine": 140,
+        "endChar": 31
+      },
+      "revId": "c377d2e3ded7cf2c2b2b42a047f6e6d4f85651c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
