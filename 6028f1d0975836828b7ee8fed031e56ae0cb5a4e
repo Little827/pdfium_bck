@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4b3b678_9eff240e",
+        "filename": "fpdfsdk/fsdk_define.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-21T18:42:12Z",
+      "side": 1,
+      "message": "These aren\u0027t related, so add blank lines between them to conform with the rest.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "6028f1d0975836828b7ee8fed031e56ae0cb5a4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
