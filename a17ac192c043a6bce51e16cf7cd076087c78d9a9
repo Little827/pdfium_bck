@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f7c0459_0ceb5667",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-21T16:36:21Z",
+      "side": 0,
+      "message": "I\u0027m not sure if this BBox update makes sense in the context of multiple quadpoints, if it should be done here automatically, or rather manually outside this API call, that\u0027s why I removed it for now. What do you think?",
+      "revId": "a17ac192c043a6bce51e16cf7cd076087c78d9a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
