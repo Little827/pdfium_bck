@@ -176,8 +176,13 @@ class CPDF_AnnotContext {
   UnownedPtr<CPDF_Page> m_pPage;
 };
 
-CPDF_AnnotContext* CPDFAnnotContextFromFPDFAnnotation(FPDF_ANNOTATION annot) {
+CPDF_AnnotContext* CPDFAnnotContextFromFPDFAnnotation(
+    const FPDF_ANNOTATION annot) {
   return static_cast<CPDF_AnnotContext*>(annot);
+}
+
+CPDF_Dictionary* CPDFDictionaryFromFPDFAnnotation(const FPDF_ANNOTATION annot) {
+  return CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
 }
 
 bool HasAPStream(const CPDF_Dictionary* pAnnotDict) {
@@ -301,8 +306,7 @@ FPDFAnnot_GetSubtype(FPDF_ANNOTATION annot) {
   if (!annot)
     return FPDF_ANNOT_UNKNOWN;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return FPDF_ANNOT_UNKNOWN;
 
@@ -474,8 +478,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetColor(FPDF_ANNOTATION annot,
   if (!annot || R > 255 || G > 255 || B > 255 || A > 255)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -512,8 +515,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetColor(FPDF_ANNOTATION annot,
   if (!annot || !R || !G || !B || !A)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -582,30 +584,17 @@ FPDFAnnot_HasAttachmentPoints(FPDF_ANNOTATION annot) {
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_SetAttachmentPoints(FPDF_ANNOTATION annot,
+                              size_t quad_index,
                               const FS_QUADPOINTSF* quad_points) {
   if (!annot || !quad_points || !FPDFAnnot_HasAttachmentPoints(annot))
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
-  // Update the "QuadPoints" entry in the annotation dictionary.
-  CPDF_Array* pQuadPoints = pAnnotDict->GetArrayFor("QuadPoints");
-  if (pQuadPoints)
-    pQuadPoints->Clear();
-  else
-    pQuadPoints = pAnnotDict->SetNewFor<CPDF_Array>("QuadPoints");
-
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->x1);
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->y1);
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->x2);
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->y2);
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->x3);
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->y3);
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->x4);
-  pQuadPoints->AddNew<CPDF_Number>(quad_points->y4);
+  if (!SetQuadPointsInDictionary(pAnnotDict, quad_index, quad_points))
+    return false;
 
   // If the annotation's appearance stream is defined, and the new quadpoints
   // defines a bigger bounding box than the appearance stream currently
@@ -621,15 +610,24 @@ FPDFAnnot_SetAttachmentPoints(FPDF_ANNOTATION annot,
   return true;
 }
 
+FPDF_EXPORT size_t FPDF_CALLCONV
+FPDFAnnot_CountAttachmentPoints(FPDF_ANNOTATION annot) {
+  CPDF_Dictionary* pAnnotDict =
+      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  const CPDF_Array* pArray = GetQuadPointsArrayFromDictionary(pAnnotDict);
+  return pArray ? pArray->GetCount() / 8 : 0;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_GetAttachmentPoints(FPDF_ANNOTATION annot,
+                              size_t quad_index,
                               FS_QUADPOINTSF* quad_points) {
-  if (!annot || !quad_points || !FPDFAnnot_HasAttachmentPoints(annot))
+  if (!annot || quad_index < 0 || !quad_points ||
+      !FPDFAnnot_HasAttachmentPoints(annot))
     return false;
 
-  return GetQuadPointsFromDictionary(
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict(), 0,
-      quad_points);
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
+  return GetQuadPointsFromDictionary(pAnnotDict, quad_index, quad_points);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetRect(FPDF_ANNOTATION annot,
@@ -637,8 +635,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetRect(FPDF_ANNOTATION annot,
   if (!annot || !rect)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -667,8 +664,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetRect(FPDF_ANNOTATION annot,
   if (!annot || !rect)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -681,8 +677,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_HasKey(FPDF_ANNOTATION annot,
   if (!annot)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -706,8 +701,7 @@ FPDFAnnot_SetStringValue(FPDF_ANNOTATION annot,
   if (!annot)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -724,8 +718,7 @@ FPDFAnnot_GetStringValue(FPDF_ANNOTATION annot,
   if (!annot)
     return 0;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return 0;
 
@@ -743,8 +736,7 @@ FPDFAnnot_SetAP(FPDF_ANNOTATION annot,
   if (!annot)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -789,8 +781,7 @@ FPDFAnnot_GetAP(FPDF_ANNOTATION annot,
   if (!annot)
     return 0;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return 0;
 
@@ -821,8 +812,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetFlags(FPDF_ANNOTATION annot) {
   if (!annot)
     return FPDF_ANNOT_FLAG_NONE;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   return pAnnotDict ? pAnnotDict->GetIntegerFor("F") : FPDF_ANNOT_FLAG_NONE;
 }
 
@@ -831,8 +821,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetFlags(FPDF_ANNOTATION annot,
   if (!annot)
     return false;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return false;
 
@@ -846,8 +835,7 @@ FPDFAnnot_GetFormFieldFlags(FPDF_PAGE page, FPDF_ANNOTATION annot) {
   if (!pPage || !annot)
     return FPDF_FORMFLAG_NONE;
 
-  CPDF_Dictionary* pAnnotDict =
-      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  CPDF_Dictionary* pAnnotDict = CPDFDictionaryFromFPDFAnnotation(annot);
   if (!pAnnotDict)
     return FPDF_FORMFLAG_NONE;
 

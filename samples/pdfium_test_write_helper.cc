@@ -311,7 +311,7 @@ void WriteAnnot(FPDF_PAGE page, const char* pdf_name, int num) {
     // Retrieve the annotation's quadpoints if it is a markup annotation.
     if (FPDFAnnot_HasAttachmentPoints(annot.get())) {
       FS_QUADPOINTSF quadpoints;
-      if (FPDFAnnot_GetAttachmentPoints(annot.get(), &quadpoints)) {
+      if (FPDFAnnot_GetAttachmentPoints(annot.get(), 0, &quadpoints)) {
         fprintf(fp,
                 "Quadpoints: (%.3f, %.3f), (%.3f, %.3f), (%.3f, %.3f), (%.3f, "
                 "%.3f)\n",
