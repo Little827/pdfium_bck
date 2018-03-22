@@ -397,6 +397,7 @@ TEST_F(FPDFAnnotEmbeddertest, ModifyRectQuadpointsWithAP) {
                                     102, 153, 204));
 
     // Verify its attachment points.
+    EXPECT_EQ(1u, FPDFAnnot_CountAttachmentPoints(annot.get()));
     FS_QUADPOINTSF quadpoints;
     ASSERT_TRUE(FPDFAnnot_GetAttachmentPoints(annot.get(), &quadpoints));
     EXPECT_NEAR(72.0000f, quadpoints.x1, 0.001f);
