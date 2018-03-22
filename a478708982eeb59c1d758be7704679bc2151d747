@@ -89,6 +89,24 @@
       "revId": "a478708982eeb59c1d758be7704679bc2151d747",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6148bc27_1d530f0b",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-22T18:02:17Z",
+      "side": 1,
+      "message": "The current divide by 8 check avoids potential integer overflows with |quad_index| and removes the need for the \"+ 7\" check. So I like that to stay as is. The function multiplies by 8 after passing the divide by 8 check, when it is known to be safe.",
+      "parentUuid": "e5643e58_e10cc8e5",
+      "revId": "a478708982eeb59c1d758be7704679bc2151d747",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
