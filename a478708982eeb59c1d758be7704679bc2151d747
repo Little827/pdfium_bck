@@ -125,6 +125,24 @@
       "revId": "a478708982eeb59c1d758be7704679bc2151d747",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "235f6d8b_aef74483",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-22T18:45:16Z",
+      "side": 1,
+      "message": "A caller can just randomly pass in a very large |quad_index| value. We\u0027d like to just avoid the possibility of integer overflow altogether.",
+      "parentUuid": "8c0bed75_2b5027a4",
+      "revId": "a478708982eeb59c1d758be7704679bc2151d747",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
