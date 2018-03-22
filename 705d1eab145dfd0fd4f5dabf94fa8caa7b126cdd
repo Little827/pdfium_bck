@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c1c96da_f59dacf5",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-22T18:18:29Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "705d1eab145dfd0fd4f5dabf94fa8caa7b126cdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4fff54_926476f9",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-22T18:18:29Z",
+      "side": 1,
+      "message": "I actually want to eventually have header(s) for names from the PDF spec. Then if one wants to look for QuadPoints usage, they can just click the constant variable in our code search tool, and see all the cross references. Instead of currently where one has to search for the string and filter out comments, etc.",
+      "revId": "705d1eab145dfd0fd4f5dabf94fa8caa7b126cdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1302492b_c66bff25",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-22T18:18:29Z",
+      "side": 1,
+      "message": "No else after return.\n\nif (cond1)\n  return;\n\nif (cond2)\n...",
+      "revId": "705d1eab145dfd0fd4f5dabf94fa8caa7b126cdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
