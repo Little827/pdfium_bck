@@ -297,28 +297,46 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_HasAttachmentPoints(FPDF_ANNOTATION annot);
 
 // Experimental API.
-// Set the attachment points (i.e. quadpoints) of an annotation. If the
-// annotation's appearance stream is defined and this annotation is of a type
-// with quadpoints, then update the bounding box too if the new quadpoints
+// Set the attachment points (i.e. quadpoints) of an annotation. Note that
+// if |quad_index| is within the result of FPDFAnnot_CountAttachmentPoints(),
+// then an existing set of quadpoints will be modified;
+// if |quad_index| is equal to the count, then a new set of quadpoints will be
+// appended to the existing quadpoints array;
+// otherwise, the index is out-of-bounds and no quadpoints will be modified.
+// If the annotation's appearance stream is defined and this annotation is of a
+// type with quadpoints, then update the bounding box too if the new quadpoints
 // define a bigger one.
 //
 //   annot       - handle to an annotation.
+//   quad_index  - index of the set of quadpoints.
 //   quad_points - the quadpoints to be set.
 //
 // Returns true if successful.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_SetAttachmentPoints(FPDF_ANNOTATION annot,
+                              int quad_index,
                               const FS_QUADPOINTSF* quad_points);
+
+// Experimental API.
+// Get the number of sets of quadpoints of an annotation.
+//
+//   annot  - handle to an annotation.
+//
+// Returns the number of sets of quadpoints.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFAnnot_CountAttachmentPoints(FPDF_ANNOTATION annot);
 
 // Experimental API.
 // Get the attachment points (i.e. quadpoints) of an annotation.
 //
 //   annot       - handle to an annotation.
+//   quad_index  - index of the set of quadpoints.
 //   quad_points - receives the quadpoints; must not be NULL.
 //
 // Returns true if successful.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_GetAttachmentPoints(FPDF_ANNOTATION annot,
+                              int quad_index,
                               FS_QUADPOINTSF* quad_points);
 
 // Experimental API.
