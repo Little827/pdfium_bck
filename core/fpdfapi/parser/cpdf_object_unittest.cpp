@@ -7,6 +7,7 @@
 #include <utility>
 #include <vector>
 
+#include "constants/stream_dict_common.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -789,22 +790,30 @@ TEST(PDFStreamTest, SetData) {
   auto stream = pdfium::MakeUnique<CPDF_Stream>();
   stream->InitStream(data.data(), data.size(),
                      pdfium::MakeUnique<CPDF_Dictionary>());
-  EXPECT_EQ(static_cast<int>(data.size()),
-            stream->GetDict()->GetIntegerFor("Length"));
+  EXPECT_EQ(
+      static_cast<int>(data.size()),
+      stream->GetDict()->GetIntegerFor(pdfium::constants::stream::kLength));
 
-  stream->GetDict()->SetNewFor<CPDF_String>("Filter", L"SomeFilter");
-  stream->GetDict()->SetNewFor<CPDF_String>("DecodeParms", L"SomeParams");
+  stream->GetDict()->SetNewFor<CPDF_String>(pdfium::constants::stream::kFilter,
+                                            L"SomeFilter");
+  stream->GetDict()->SetNewFor<CPDF_String>(
+      pdfium::constants::stream::kDecodeParms, L"SomeParams");
 
   std::vector<uint8_t> new_data(data.size() * 2);
   stream->SetData(new_data.data(), new_data.size());
 
   // The "Length" field should be updated for new data size.
-  EXPECT_EQ(static_cast<int>(new_data.size()),
-            stream->GetDict()->GetIntegerFor("Length"));
+  EXPECT_EQ(
+      static_cast<int>(new_data.size()),
+      stream->GetDict()->GetIntegerFor(pdfium::constants::stream::kLength));
 
   // The "Filter" and "DecodeParms" fields should not be changed.
-  EXPECT_EQ(stream->GetDict()->GetUnicodeTextFor("Filter"), L"SomeFilter");
-  EXPECT_EQ(stream->GetDict()->GetUnicodeTextFor("DecodeParms"), L"SomeParams");
+  EXPECT_EQ(
+      stream->GetDict()->GetUnicodeTextFor(pdfium::constants::stream::kFilter),
+      L"SomeFilter");
+  EXPECT_EQ(stream->GetDict()->GetUnicodeTextFor(
+                pdfium::constants::stream::kDecodeParms),
+            L"SomeParams");
 }
 
 TEST(PDFStreamTest, SetDataAndRemoveFilter) {
@@ -812,21 +821,26 @@ TEST(PDFStreamTest, SetDataAndRemoveFilter) {
   auto stream = pdfium::MakeUnique<CPDF_Stream>();
   stream->InitStream(data.data(), data.size(),
                      pdfium::MakeUnique<CPDF_Dictionary>());
-  EXPECT_EQ(static_cast<int>(data.size()),
-            stream->GetDict()->GetIntegerFor("Length"));
+  EXPECT_EQ(
+      static_cast<int>(data.size()),
+      stream->GetDict()->GetIntegerFor(pdfium::constants::stream::kLength));
 
-  stream->GetDict()->SetNewFor<CPDF_String>("Filter", L"SomeFilter");
-  stream->GetDict()->SetNewFor<CPDF_String>("DecodeParms", L"SomeParams");
+  stream->GetDict()->SetNewFor<CPDF_String>(pdfium::constants::stream::kFilter,
+                                            L"SomeFilter");
+  stream->GetDict()->SetNewFor<CPDF_String>(
+      pdfium::constants::stream::kDecodeParms, L"SomeParams");
 
   std::vector<uint8_t> new_data(data.size() * 2);
   stream->SetDataAndRemoveFilter(new_data.data(), new_data.size());
   // The "Length" field should be updated for new data size.
-  EXPECT_EQ(static_cast<int>(new_data.size()),
-            stream->GetDict()->GetIntegerFor("Length"));
+  EXPECT_EQ(
+      static_cast<int>(new_data.size()),
+      stream->GetDict()->GetIntegerFor(pdfium::constants::stream::kLength));
 
   // The "Filter" and "DecodeParms" should be removed.
-  EXPECT_FALSE(stream->GetDict()->KeyExist("Filter"));
-  EXPECT_FALSE(stream->GetDict()->KeyExist("DecodeParms"));
+  EXPECT_FALSE(stream->GetDict()->KeyExist(pdfium::constants::stream::kFilter));
+  EXPECT_FALSE(
+      stream->GetDict()->KeyExist(pdfium::constants::stream::kDecodeParms));
 }
 
 TEST(PDFStreamTest, LengthInDictionaryOnCreate) {
@@ -837,19 +851,21 @@ TEST(PDFStreamTest, LengthInDictionaryOnCreate) {
     data.reset(FX_Alloc(uint8_t, kBufSize));
     auto stream = pdfium::MakeUnique<CPDF_Stream>(
         std::move(data), kBufSize, pdfium::MakeUnique<CPDF_Dictionary>());
-    EXPECT_EQ(static_cast<int>(kBufSize),
-              stream->GetDict()->GetIntegerFor("Length"));
+    EXPECT_EQ(
+        static_cast<int>(kBufSize),
+        stream->GetDict()->GetIntegerFor(pdfium::constants::stream::kLength));
   }
   // The length field should be corrected on stream create.
   {
     std::unique_ptr<uint8_t, FxFreeDeleter> data;
     data.reset(FX_Alloc(uint8_t, kBufSize));
     auto dict = pdfium::MakeUnique<CPDF_Dictionary>();
-    dict->SetNewFor<CPDF_Number>("Length", 30000);
+    dict->SetNewFor<CPDF_Number>(pdfium::constants::stream::kLength, 30000);
     auto stream = pdfium::MakeUnique<CPDF_Stream>(std::move(data), kBufSize,
                                                   std::move(dict));
-    EXPECT_EQ(static_cast<int>(kBufSize),
-              stream->GetDict()->GetIntegerFor("Length"));
+    EXPECT_EQ(
+        static_cast<int>(kBufSize),
+        stream->GetDict()->GetIntegerFor(pdfium::constants::stream::kLength));
   }
 }
 
