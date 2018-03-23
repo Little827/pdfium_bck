@@ -12,6 +12,7 @@
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfdoc/cpdf_bookmark.h"
 #include "core/fpdfdoc/cpdf_bookmarktree.h"
 #include "core/fpdfdoc/cpdf_dest.h"
@@ -78,11 +79,12 @@ CPDF_Dictionary* CPDFDictionaryFromFPDFLink(FPDF_LINK link) {
   return ToDictionary(static_cast<CPDF_Object*>(link));
 }
 
-const CPDF_Array* GetQuadPointsArrayFromDictionary(CPDF_Dictionary* dict) {
+const CPDF_Array* GetQuadPointsArrayFromDictionary(
+    const CPDF_Dictionary* dict) {
   return dict ? dict->GetArrayFor("QuadPoints") : nullptr;
 }
 
-bool GetQuadPointsFromDictionary(CPDF_Dictionary* dict,
+bool GetQuadPointsFromDictionary(const CPDF_Dictionary* dict,
                                  size_t quad_index,
                                  FS_QUADPOINTSF* quad_points) {
   ASSERT(quad_points);
@@ -100,6 +102,52 @@ bool GetQuadPointsFromDictionary(CPDF_Dictionary* dict,
   quad_points->y3 = pArray->GetNumberAt(quad_index + 5);
   quad_points->x4 = pArray->GetNumberAt(quad_index + 6);
   quad_points->y4 = pArray->GetNumberAt(quad_index + 7);
+  return true;
+}
+
+bool SetQuadPointsInDictionary(CPDF_Dictionary* dict,
+                               size_t quad_index,
+                               const FS_QUADPOINTSF* quad_points) {
+  ASSERT(quad_points);
+
+  static constexpr char kQuadPoints[] = "QuadPoints";
+  CPDF_Array* pQuadPoints = dict->GetArrayFor(kQuadPoints);
+  if (!pQuadPoints)
+    pQuadPoints = dict->SetNewFor<CPDF_Array>(kQuadPoints);
+
+  size_t nCoordsCount = pQuadPoints->GetCount();
+  auto nQuadPointCount = nCoordsCount / 8;
+  if (quad_index > nQuadPointCount)
+    // index is out of bounds
+    return false;
+
+  // fix existing quadpoint coords if broken: count must be multiple of 8
+  size_t nCoordsToRemove = nCoordsCount % 8;
+  for (size_t i = 0; i < nCoordsToRemove; ++i)
+    pQuadPoints->RemoveAt(nCoordsCount - i - 1);
+
+  if (quad_index == nQuadPointCount) {
+    // Add a new set of quadpoints
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->x1);
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->y1);
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->x2);
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->y2);
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->x3);
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->y3);
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->x4);
+    pQuadPoints->AddNew<CPDF_Number>(quad_points->y4);
+  } else {
+    // Update an existing set of quadpoints
+    quad_index *= 8;
+    pQuadPoints->SetNewAt<CPDF_Number>(quad_index, quad_points->x1);
+    pQuadPoints->SetNewAt<CPDF_Number>(++quad_index, quad_points->y1);
+    pQuadPoints->SetNewAt<CPDF_Number>(++quad_index, quad_points->x2);
+    pQuadPoints->SetNewAt<CPDF_Number>(++quad_index, quad_points->y2);
+    pQuadPoints->SetNewAt<CPDF_Number>(++quad_index, quad_points->x3);
+    pQuadPoints->SetNewAt<CPDF_Number>(++quad_index, quad_points->y3);
+    pQuadPoints->SetNewAt<CPDF_Number>(++quad_index, quad_points->x4);
+    pQuadPoints->SetNewAt<CPDF_Number>(++quad_index, quad_points->y4);
+  }
   return true;
 }
 
