@@ -238,6 +238,30 @@
       "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c6e5991_0db7ae0f",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-23T20:29:27Z",
+      "side": 1,
+      "message": "CPDF_ContentMark::m_Ref is type SharedCopyOnWrite\u003cMarkData\u003e, and MarkData::m_Marks is type std::vector\u003cCPDF_ContentMarkItem\u003e. SharedCopyOnWrite\u003c\u003e only resets its value in CPDF_ContentMark::DeleteLastMark(), which is only called during parsing, a window that has passed when the API returns this handle.\n\nAs for when CPDF_ContentMark is destroyed, it\u0027s a member of CPDF_PageObject. When (and only when) the object is freed, the mark will be freed as well. But for all the page object API, you can get a handle, and have it invalidated when it\u0027s freed.",
+      "parentUuid": "5d3bb45f_8142ba6f",
+      "range": {
+        "startLine": 298,
+        "startChar": 14,
+        "endLine": 298,
+        "endChar": 27
+      },
+      "revId": "edd32e63aaee0e8236b9ad910309e07fa55335bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
