@@ -1,0 +1,53 @@
+%PDF-1.7
+% ò¤ô
+
+1 0 obj <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+
+2 0 obj <<
+  /Type /Pages
+  /Count 1
+  /Kids [ 3 0 R ]
+>>
+endobj
+
+3 0 obj <<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 595 842]
+  /Annots [
+    4 0 R
+  ]
+  /Tabs /R
+>>
+endobj
+
+4 0 obj <<
+  /Type /Annot
+  /Subtype /Highlight
+  /Rect [ 108 602 506 640 ]
+  /NM (Hilight-QP-no-multiple-of-8)
+  /F 4
+  /QuadPoints [
+    107.7896 639.9486 505.8939 639.9486 107.7896 629.1634 505.8939 629.1634
+    107.7896 626.2871
+  ]
+  /C [ 1 1 0 ]
+  /Contents ()
+>>
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000016 00000 n 
+0000000070 00000 n 
+0000000136 00000 n 
+0000000251 00000 n 
+trailer<< /Root 1 0 R /Size 5 >>
+startxref
+529
+%%EOF
