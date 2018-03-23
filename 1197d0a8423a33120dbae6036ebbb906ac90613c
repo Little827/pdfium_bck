@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "abd9bfcc_fdadcd24",
+        "filename": "fpdfsdk/fpdfannot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-23T01:14:45Z",
+      "side": 1,
+      "message": "I believe I had removed that at some point, seems that change got lost while splitting CLs :)",
+      "parentUuid": "5c016724_70c6dd6c",
+      "range": {
+        "startLine": 626,
+        "startChar": 6,
+        "endLine": 626,
+        "endChar": 16
+      },
+      "revId": "1197d0a8423a33120dbae6036ebbb906ac90613c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6863eaad_bd684fb5",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "1197d0a8423a33120dbae6036ebbb906ac90613c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b831e1cf_e17098be",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-23T01:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6863eaad_bd684fb5",
+      "revId": "1197d0a8423a33120dbae6036ebbb906ac90613c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
