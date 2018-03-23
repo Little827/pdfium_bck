@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77c762d3_4fbb01e8",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-23T21:21:48Z",
+      "side": 1,
+      "message": "ASSERT(dict) as well.",
+      "revId": "4964e93bae2e5213e4c8d9cf3426746cd12a583d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd78dda2_cc1113bb",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-23T21:21:48Z",
+      "side": 1,
+      "message": "size_t should be fine here. Use auto when it\u0027s tedious to write out the type.",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 6
+      },
+      "revId": "4964e93bae2e5213e4c8d9cf3426746cd12a583d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113d578a_0b54415a",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-23T21:21:48Z",
+      "side": 1,
+      "message": "Add braces with the comment written as is.",
+      "revId": "4964e93bae2e5213e4c8d9cf3426746cd12a583d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fee43628_88484d53",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-23T21:21:48Z",
+      "side": 1,
+      "message": "This block should be updated to print all the QuadPoints.",
+      "revId": "4964e93bae2e5213e4c8d9cf3426746cd12a583d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
