@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c921cde_c8366ffb",
+        "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-23T21:14:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether to put these here or move further into CPDF_PageObjectList.",
+      "revId": "13ab87fec0d71fa98642c9e49e43b8d670b28f8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
