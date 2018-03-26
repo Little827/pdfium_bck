@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "1324255b_adf74c10",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-26T20:38:40Z",
+      "side": 1,
+      "message": "You\u0027re right, currently it\u0027s used only there. OTOH, take a look at GetQuadPointsFromDictionary, it\u0027s being called from FPDFAnnot_GetAttachmentPoints and FPDFLink_GetQuadPoints. In the next CL, I\u0027ll add the missing FPDFLink_SetQuadPoints, which will call this function.",
+      "parentUuid": "914c2fa7_5f070362",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 30
+      },
+      "revId": "21f9446f8de00378cdf15bfbe628f7e02c22d626",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57791226_7eab5e67",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-26T20:38:40Z",
+      "side": 1,
+      "message": "Makes sense. Shouldn\u0027t we also change GetQuadPointsFromDictionary to GetQuadPointsAtIndex, for consistency?",
+      "parentUuid": "790cd08b_71357337",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "21f9446f8de00378cdf15bfbe628f7e02c22d626",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beb99fde_cfc89eb6",
         "filename": "fpdfsdk/fpdfdoc.cpp",
         "patchSetId": 3
@@ -139,6 +187,30 @@
       "revId": "21f9446f8de00378cdf15bfbe628f7e02c22d626",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22ab9d1_b4690fb5",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-03-26T20:38:40Z",
+      "side": 1,
+      "message": "I don\u0027t know, either, if this doesn\u0027t really happen, but the check (and the fix) doesn\u0027t seem expensive to me.",
+      "parentUuid": "2be73c63_e0a0b677",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 44
+      },
+      "revId": "21f9446f8de00378cdf15bfbe628f7e02c22d626",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
