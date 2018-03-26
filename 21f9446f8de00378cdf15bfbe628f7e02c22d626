@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "d48c2f10_0928f7e6",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-26T18:29:06Z",
+      "side": 1,
+      "message": "Same 8 as line 94 and many other places that involve QuadPoints.",
+      "parentUuid": "beb99fde_cfc89eb6",
+      "range": {
+        "startLine": 121,
+        "startChar": 39,
+        "endLine": 121,
+        "endChar": 43
+      },
+      "revId": "21f9446f8de00378cdf15bfbe628f7e02c22d626",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dba1feb_a4d0f9ab",
         "filename": "fpdfsdk/fpdfdoc.cpp",
         "patchSetId": 3
@@ -82,6 +106,30 @@
       "writtenOn": "2018-03-26T18:08:40Z",
       "side": 1,
       "message": "Is this a thing that can happen? Should we be attempting to \u0027fix\u0027 or should we just fail here?",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 44
+      },
+      "revId": "21f9446f8de00378cdf15bfbe628f7e02c22d626",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be73c63_e0a0b677",
+        "filename": "fpdfsdk/fpdfdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-03-26T18:29:06Z",
+      "side": 1,
+      "message": "I have no idea how often this happens in real life. PDF generators certainly can have bugs.",
+      "parentUuid": "3dba1feb_a4d0f9ab",
       "range": {
         "startLine": 128,
         "startChar": 1,
