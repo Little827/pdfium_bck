@@ -37,6 +37,11 @@ static_assert(static_cast<int>(FXPT_TYPE::MoveTo) == FPDF_SEGMENT_MOVETO,
 
 namespace {
 
+CPDF_PathObject* CPDFPathObjectFromFPDFPageObject(FPDF_PAGEOBJECT page_object) {
+  auto* obj = CPDFPageObjectFromFPDFPageObject(page_object);
+  return obj ? obj->AsPath() : nullptr;
+}
+
 unsigned int GetAlphaAsUnsignedInt(float alpha) {
   return static_cast<unsigned int>(alpha * 255.f + 0.5f);
 }
