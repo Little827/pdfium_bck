@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ef7d3ed_a640cdd7",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-27T15:55:34Z",
+      "side": 1,
+      "message": "This sounds like a method, can we change to m_isLocaleNameSet?",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "d2a2a24b06a4477508de689684fbc0a7074107d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
