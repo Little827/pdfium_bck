@@ -22,6 +22,30 @@
       "revId": "8eac5ad73918818569859cd0453a1d5a44a1f81b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6eff3b6_90cfab82",
+        "filename": "core/fpdfapi/parser/cpdf_simple_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T17:10:44Z",
+      "side": 0,
+      "message": "This is a merging of this and the method below. Previously we\u0027d detect the \u003c or ( below and then extend the selection range to include the whole string. That got tricky with the BSV as I didn\u0027t have the original string to \u0027extend\u0027. So, i mashed the logic below to handle \u003c and ( into the code here and renamed this method to be the one below.",
+      "parentUuid": "aab80409_911249c5",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "8eac5ad73918818569859cd0453a1d5a44a1f81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

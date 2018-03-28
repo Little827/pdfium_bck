@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c6302a1_dc810619",
+        "filename": "core/fpdfapi/page/cpdf_psengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T17:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4530093_362d1aa0",
+      "range": {
+        "startLine": 195,
+        "startChar": 17,
+        "endLine": 195,
+        "endChar": 21
+      },
+      "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03e11b3f_723f1048",
         "filename": "testing/libfuzzer/pdf_cmap_fuzzer.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f284a389_0989b8ff",
+        "filename": "testing/libfuzzer/pdf_cmap_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T17:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e11b3f_723f1048",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
