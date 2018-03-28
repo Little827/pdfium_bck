@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff14bbf2_0377b1fe",
+        "filename": "core/fxge/cfx_color.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T19:56:06Z",
+      "side": 1,
+      "message": "Can you make this a pointer in a follow-up?",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "7c54ab382b34331d935224368f2e30641bcc99b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1eb01a_351977ce",
+        "filename": "core/fxge/cfx_color.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T19:56:06Z",
+      "side": 1,
+      "message": "That\u0027s new, right? Did it get called before?",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 46
+      },
+      "revId": "7c54ab382b34331d935224368f2e30641bcc99b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
