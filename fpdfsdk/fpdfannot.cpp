@@ -22,6 +22,8 @@
 #include "core/fpdfdoc/cpdf_interform.h"
 #include "core/fpdfdoc/cpvt_generateap.h"
 #include "core/fxge/cfx_color.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/fsdk_define.h"
 
 namespace {
@@ -140,6 +142,22 @@ static_assert(static_cast<int>(CPDF_Object::Type::NULLOBJ) ==
 static_assert(static_cast<int>(CPDF_Object::Type::REFERENCE) ==
                   FPDF_OBJECT_REFERENCE,
               "CPDF_Object::REFERENCE value mismatch");
+
+CPDFSDK_FormFillEnvironment* HandleToCPDFSDKEnvironment(
+    FPDF_FORMHANDLE handle) {
+  return static_cast<CPDFSDK_FormFillEnvironment*>(handle);
+}
+
+CPDFSDK_PageView* FormHandleToPageView(FPDF_FORMHANDLE hHandle,
+                                       FPDF_PAGE page) {
+  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  if (!pPage)
+    return nullptr;
+
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      HandleToCPDFSDKEnvironment(hHandle);
+  return pFormFillEnv ? pFormFillEnv->GetPageView(pPage, true) : nullptr;
+}
 
 class CPDF_AnnotContext {
  public:
@@ -884,4 +902,43 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
   if (!pFormCtrl || annot_index == -1)
     return nullptr;
   return FPDFPage_GetAnnot(page, annot_index);
+}
+
+FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV
+FPDFAnnot_GetFocusedAnnot(FPDF_FORMHANDLE hHandle, FPDF_PAGE page) {
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+
+  if (!hHandle || !pPage)
+    return nullptr;
+
+  CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
+  if (!pPageView)
+    return nullptr;
+
+  CPDFSDK_Annot* pAnnot = pPageView->GetFocusAnnot();
+  if (!pAnnot)
+    return nullptr;
+
+  CPDF_Dictionary* pAnnotDict = pAnnot->GetPDFAnnot()->GetAnnotDict();
+
+  auto pAnnotContext =
+      pdfium::MakeUnique<CPDF_AnnotContext>(pAnnotDict, pPage, nullptr);
+  return pAnnotContext.release();
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetWidgetType(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      FPDF_ANNOTATION annot) {
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  CPDF_AnnotContext* pAnnotContext = CPDFAnnotContextFromFPDFAnnotation(annot);
+  if (!hHandle || !pPage || !pAnnotContext)
+    return -1;
+
+  CPDF_Dictionary* pAnnotDict = pAnnotContext->GetAnnotDict();
+  if (!pAnnotDict)
+    return -1;
+
+  CPDF_InterForm interform(pPage->m_pDocument.Get());
+  CPDF_FormControl* pFormControl = interform.GetControlByDict(pAnnotDict);
+  return pFormControl ? pFormControl->GetType() : -1;
 }

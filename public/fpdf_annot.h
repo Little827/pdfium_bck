@@ -513,6 +513,13 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
                               double page_x,
                               double page_y);
 
+FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV
+FPDFAnnot_GetFocusedAnnot(FPDF_FORMHANDLE hHandle, FPDF_PAGE page);
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetWidgetType(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      FPDF_ANNOTATION annot);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus
