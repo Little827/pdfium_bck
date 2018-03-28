@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b38be636_ac088b0d",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T15:57:08Z",
+      "side": 1,
+      "message": "Are all the includes (apart from cpdf_contentmarkitem.h, already removed) still needed?",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c77c77d8_1517dc81",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T15:57:08Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4aa46a5_5f791e37",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T15:57:08Z",
+      "side": 1,
+      "message": "This was only used in fpdf_ext.cpp.",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01d3ccb_ef6ed153",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T15:57:08Z",
+      "side": 1,
+      "message": "This should be in a separate file like the other extracted classes.",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289789bb_1bbdb257",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T15:57:08Z",
+      "side": 1,
+      "message": "This should be in fpdfeditpath.cpp",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a21e876_1c49f0e3",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T15:57:08Z",
+      "side": 1,
+      "message": "This should be in fpdfannot.cpp. Ditto for GetQuadPointsFromDictionary below.",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54180f07_d9e02f8b",
+        "filename": "fpdfsdk/fsdk_define.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T15:57:08Z",
+      "side": 1,
+      "message": "I think it makes sense to rename this file, it\u0027s definitely not just defines anymore, if it ever was. Do in a follow up to maintain simpler diffs?",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
