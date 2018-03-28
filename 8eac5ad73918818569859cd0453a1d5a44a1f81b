@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aab80409_911249c5",
+        "filename": "core/fpdfapi/parser/cpdf_simple_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-28T16:44:09Z",
+      "side": 0,
+      "message": "I\u0027m having trouble following the logic changes here.  what happened?",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "8eac5ad73918818569859cd0453a1d5a44a1f81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

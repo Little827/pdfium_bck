@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4530093_362d1aa0",
+        "filename": "core/fpdfapi/page/cpdf_psengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-28T16:44:09Z",
+      "side": 1,
+      "message": "nit: local not needed (presuming GetWord() returns BSV and no hidden promotions)?",
+      "range": {
+        "startLine": 195,
+        "startChar": 17,
+        "endLine": 195,
+        "endChar": 21
+      },
+      "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e11b3f_723f1048",
+        "filename": "testing/libfuzzer/pdf_cmap_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-03-28T16:44:09Z",
+      "side": 1,
+      "message": "nit: local not needed.",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
