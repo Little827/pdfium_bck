@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa53975c_8b294aaa",
+        "filename": "core/fpdfdoc/cpdf_defaultappearance.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-03-28T20:22:41Z",
+      "side": 1,
+      "message": "Can we use the enum instead? Same in the std::pair version.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "eda15f3d3e76b4b019db896c6eaa06580c02f2b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
