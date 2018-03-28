@@ -52,5 +52,6 @@ WideString CPDF_Name::GetUnicodeText() const {
 
 bool CPDF_Name::WriteTo(IFX_ArchiveStream* archive) const {
   return archive->WriteString("/") &&
-         archive->WriteString(PDF_NameEncode(GetString()).AsStringView());
+         archive->WriteString(
+             PDF_NameEncode(m_Name.AsStringView()).AsStringView());
 }

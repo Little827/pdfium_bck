@@ -247,10 +247,10 @@ bool CPDF_Dictionary::WriteTo(IFX_ArchiveStream* archive) const {
     return false;
 
   for (const auto& it : *this) {
-    const ByteString& key = it.first;
     CPDF_Object* pValue = it.second.get();
     if (!archive->WriteString("/") ||
-        !archive->WriteString(PDF_NameEncode(key).AsStringView())) {
+        !archive->WriteString(
+            PDF_NameEncode(it.first.AsStringView()).AsStringView())) {
       return false;
     }
 

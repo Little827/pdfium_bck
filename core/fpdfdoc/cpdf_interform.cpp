@@ -88,7 +88,7 @@ void InitDict(CPDF_Dictionary*& pFormDict, CPDF_Document* pDocument) {
       }
     }
     if (pFont)
-      csDA = "/" + PDF_NameEncode(csBaseName) + " 0 Tf";
+      csDA = "/" + PDF_NameEncode(csBaseName.AsStringView()) + " 0 Tf";
   }
   if (!csDA.IsEmpty())
     csDA += " ";

@@ -290,7 +290,8 @@ bool CPDF_Creator::WriteDirectObj(uint32_t objnum,
         const ByteString& key = it.first;
         CPDF_Object* pValue = it.second.get();
         if (!m_Archive->WriteString("/") ||
-            !m_Archive->WriteString(PDF_NameEncode(key).AsStringView())) {
+            !m_Archive->WriteString(
+                PDF_NameEncode(key.AsStringView()).AsStringView())) {
           return false;
         }
 
@@ -631,7 +632,8 @@ int32_t CPDF_Creator::WriteDoc_Stage4() {
         continue;
       }
       if (!m_Archive->WriteString(("/")) ||
-          !m_Archive->WriteString(PDF_NameEncode(key).AsStringView())) {
+          !m_Archive->WriteString(
+              PDF_NameEncode(key.AsStringView()).AsStringView())) {
         return -1;
       }
       if (!pValue->IsInline()) {

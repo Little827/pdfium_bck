@@ -110,8 +110,8 @@ ByteString PDF_NameDecode(const ByteStringView& bstr) {
   return result;
 }
 
-ByteString PDF_NameEncode(const ByteString& orig) {
-  uint8_t* src_buf = (uint8_t*)orig.c_str();
+ByteString PDF_NameEncode(const ByteStringView& orig) {
+  uint8_t* src_buf = (uint8_t*)orig.raw_str();
   int src_len = orig.GetLength();
   int dest_len = 0;
   int i;
@@ -125,7 +125,7 @@ ByteString PDF_NameEncode(const ByteString& orig) {
     }
   }
   if (dest_len == src_len)
-    return orig;
+    return ByteString(orig);
 
   ByteString res;
   char* dest_buf = res.GetBuffer(dest_len);
@@ -163,8 +163,7 @@ std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj) {
       buf << PDF_EncodeString(pObj->GetString(), pObj->AsString()->IsHex());
       break;
     case CPDF_Object::NAME: {
-      ByteString str = pObj->GetString();
-      buf << "/" << PDF_NameEncode(str);
+      buf << "/" << PDF_NameEncode(pObj->GetString().AsStringView());
       break;
     }
     case CPDF_Object::REFERENCE: {
@@ -189,9 +188,8 @@ std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj) {
       const CPDF_Dictionary* p = pObj->AsDictionary();
       buf << "<<";
       for (const auto& it : *p) {
-        const ByteString& key = it.first;
         CPDF_Object* pValue = it.second.get();
-        buf << "/" << PDF_NameEncode(key);
+        buf << "/" << PDF_NameEncode(it.first.AsStringView());
         if (pValue && !pValue->IsInline()) {
           buf << " " << pValue->GetObjNum() << " 0 R ";
         } else {
