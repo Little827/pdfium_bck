@@ -6,8 +6,6 @@
 
 #include "core/fpdfapi/parser/cpdf_simple_parser.h"
 
-#include <vector>
-
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 
 CPDF_SimpleParser::CPDF_SimpleParser(const uint8_t* pData, uint32_t dwSize)
@@ -151,36 +149,4 @@ ByteStringView CPDF_SimpleParser::GetWord() {
                           static_cast<size_t>(m_dwCurPos - (pStart - m_pData)));
   }
   return ByteStringView(pStart, dwSize);
-}
-
-bool CPDF_SimpleParser::FindTagParamFromStart(const ByteStringView& token,
-                                              int nParams) {
-  nParams++;
-
-  std::vector<uint32_t> pBuf(nParams);
-  int buf_index = 0;
-  int buf_count = 0;
-  m_dwCurPos = 0;
-  while (1) {
-    pBuf[buf_index++] = m_dwCurPos;
-    if (buf_index == nParams)
-      buf_index = 0;
-
-    buf_count++;
-    if (buf_count > nParams)
-      buf_count = nParams;
-
-    ByteStringView word = GetWord();
-    if (word.IsEmpty())
-      return false;
-
-    if (word == token) {
-      if (buf_count < nParams)
-        continue;
-
-      m_dwCurPos = pBuf[buf_index];
-      return true;
-    }
-  }
-  return false;
 }
