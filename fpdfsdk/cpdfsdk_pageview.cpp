@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/cpdfsdk_pageview.h"
 
+#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -332,6 +333,15 @@ bool CPDFSDK_PageView::OnLButtonUp(const CFX_PointF& point, uint32_t nFlag) {
   }
   return pFXAnnot &&
          pAnnotHandlerMgr->Annot_OnLButtonUp(this, &pFXAnnot, nFlag, point);
+}
+
+void CPDFSDK_PageView::PrintFocus() {
+  CPDFSDK_Annot* pAnnot = GetFocusAnnot();
+  if (pAnnot)
+    std::cerr << "PrintFocus -> " << (int)pAnnot->GetAnnotSubtype()
+              << std::endl;
+  else
+    std::cerr << "PrintFocus {}" << std::endl;
 }
 
 bool CPDFSDK_PageView::OnMouseMove(const CFX_PointF& point, int nFlag) {

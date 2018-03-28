@@ -6,6 +6,8 @@
 
 #include "public/fpdf_formfill.h"
 
+#include <iostream>
+
 #include <memory>
 #include <vector>
 
@@ -213,8 +215,10 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
                              FPDF_PAGE page,
                              double page_x,
                              double page_y) {
-  if (!hHandle)
+  if (!hHandle) {
+    // std::cerr << "FPDFPage_HasFormFieldAtPoint return [1]" << std::endl;
     return -1;
+  }
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (pPage) {
     CPDF_InterForm interform(pPage->m_pDocument.Get());
@@ -222,9 +226,12 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
         pPage,
         CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)),
         nullptr);
-    if (!pFormCtrl)
+    if (!pFormCtrl) {
+      // std::cerr << "FPDFPage_HasFormFieldAtPoint return [2]" << std::endl;
       return -1;
+    }
     CPDF_FormField* pFormField = pFormCtrl->GetField();
+    // std::cerr << "FPDFPage_HasFormFieldAtPoint return [3]" << std::endl;
     return pFormField ? static_cast<int>(pFormField->GetFieldType()) : -1;
   }
 
@@ -266,6 +273,7 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
     }
   }
 #endif  // PDF_ENABLE_XFA
+  std::cerr << "FPDFPage_HasFormFieldAtPoint return [4]" << std::endl;
   return -1;
 }
 

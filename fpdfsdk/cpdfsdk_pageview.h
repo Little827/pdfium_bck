@@ -63,7 +63,7 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
 
   WideString GetSelectedText();
   void ReplaceSelection(const WideString& text);
-
+  void PrintFocus();
   bool OnFocus(const CFX_PointF& point, uint32_t nFlag);
   bool OnLButtonDown(const CFX_PointF& point, uint32_t nFlag);
   bool OnLButtonUp(const CFX_PointF& point, uint32_t nFlag);

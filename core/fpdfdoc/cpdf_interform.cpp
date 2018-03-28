@@ -6,6 +6,8 @@
 
 #include "core/fpdfdoc/cpdf_interform.h"
 
+#include <iostream>
+
 #include <utility>
 #include <vector>
 
@@ -817,22 +819,33 @@ CPDF_FormControl* CPDF_InterForm::GetControlAtPoint(CPDF_Page* pPage,
   if (!pAnnotList)
     return nullptr;
 
+  // std::cerr << "CPDF_InterForm::GetControlAtPoint " << std::endl;
   for (size_t i = pAnnotList->GetCount(); i > 0; --i) {
+    // std::cerr << "  -> i " << i << std::endl;
+
     size_t annot_index = i - 1;
+    // std::cerr << "  -> annot_index " << annot_index << std::endl;
     CPDF_Dictionary* pAnnot = pAnnotList->GetDictAt(annot_index);
-    if (!pAnnot)
+    if (!pAnnot) {
+      // std::cerr << "    -> !pAnnot" << std::endl;
       continue;
+    }
 
     const auto it = m_ControlMap.find(pAnnot);
-    if (it == m_ControlMap.end())
+    if (it == m_ControlMap.end()) {
+      // std::cerr << "    -> m_ControlMap.end()" << std::endl;
       continue;
+    }
 
     CPDF_FormControl* pControl = it->second.get();
-    if (!pControl->GetRect().Contains(point))
+    if (!pControl->GetRect().Contains(point)) {
+      // std::cerr << "    -> !rect contains point" << std::endl;
       continue;
+    }
 
     if (z_order)
       *z_order = static_cast<int>(annot_index);
+    // std::cerr << "    -> @return " << pControl << std::endl;
     return pControl;
   }
   return nullptr;
