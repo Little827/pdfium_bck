@@ -435,8 +435,7 @@ std::unique_ptr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
       if (key[0] != '/')
         continue;
 
-      key = PDF_NameDecode(key);
-
+      key = PDF_NameDecode(key.AsStringView());
       if (key.IsEmpty() && parse_type == ParseType::kLoose)
         continue;
 
