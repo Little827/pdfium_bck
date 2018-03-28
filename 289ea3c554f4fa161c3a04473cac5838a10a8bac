@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fcd74af7_4f28dac0",
+        "filename": "fpdfsdk/fpdfview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T16:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b38be636_ac088b0d",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c77c77d8_1517dc81",
         "filename": "fpdfsdk/fsdk_define.cpp",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "eea1a857_b917985f",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T16:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c77c77d8_1517dc81",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4aa46a5_5f791e37",
         "filename": "fpdfsdk/fsdk_define.cpp",
         "patchSetId": 4
@@ -53,6 +95,24 @@
       "writtenOn": "2018-03-28T15:57:08Z",
       "side": 1,
       "message": "This was only used in fpdf_ext.cpp.",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0236497_5aa77f52",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T16:25:54Z",
+      "side": 1,
+      "message": "Sure, but the method it was used in is used in here now ....?",
+      "parentUuid": "b4aa46a5_5f791e37",
       "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "272e719a_11f7eca7",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T16:25:54Z",
+      "side": 1,
+      "message": "Only used in this file so left in anonymous namespace.",
+      "parentUuid": "b01d3ccb_ef6ed153",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "289789bb_1bbdb257",
         "filename": "fpdfsdk/fsdk_define.cpp",
         "patchSetId": 4
@@ -90,6 +168,24 @@
       "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e3a682_a5326c97",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T16:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "289789bb_1bbdb257",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "03355b77_373fe21a",
+        "filename": "fpdfsdk/fsdk_define.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T16:25:54Z",
+      "side": 1,
+      "message": "It\u0027s also used in fpdfdoc.cpp.",
+      "parentUuid": "1a21e876_1c49f0e3",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54180f07_d9e02f8b",
         "filename": "fpdfsdk/fsdk_define.h",
         "patchSetId": 4
@@ -124,6 +238,24 @@
       "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db33453_10946959",
+        "filename": "fpdfsdk/fsdk_define.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T16:25:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54180f07_d9e02f8b",
+      "revId": "289ea3c554f4fa161c3a04473cac5838a10a8bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
