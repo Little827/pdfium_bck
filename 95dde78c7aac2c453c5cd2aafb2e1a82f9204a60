@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9054949a_8cef68b8",
+        "filename": "core/fpdfapi/parser/cpdf_simple_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T17:42:22Z",
+      "side": 1,
+      "message": "Too much going on in one statement for my tiny brain.",
+      "parentUuid": "87e3b60e_1ee449b3",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ebb34c4_88e3c7c8",
         "filename": "core/fpdfapi/parser/cpdf_simple_parser.cpp",
         "patchSetId": 1
@@ -92,6 +116,30 @@
       "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67937bb6_af6d9c12",
+        "filename": "core/fpdfapi/parser/cpdf_simple_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-03-28T17:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebb34c4_88e3c7c8",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "95dde78c7aac2c453c5cd2aafb2e1a82f9204a60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
