@@ -156,11 +156,11 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
       static_cast<CPDFXFA_Context*>(document), page_index);
   pXFAPage->LoadPDFPage(pPageDict);
   return pXFAPage.Leak();  // Caller takes ownership.
-#else   // PDF_ENABLE_XFA
+#else                      // PDF_ENABLE_XFA
   auto pPage = pdfium::MakeUnique<CPDF_Page>(pDoc, pPageDict, true);
   pPage->ParseContent();
   return pPage.release();  // Caller takes ownership.
-#endif  // PDF_ENABLE_XFA
+#endif                     // PDF_ENABLE_XFA
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_GetRotation(FPDF_PAGE page) {

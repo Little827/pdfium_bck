@@ -1011,7 +1011,7 @@ TEST_F(FPDFAnnotEmbeddertest, GetSetStringValue) {
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
   UnloadPage(page);
 
-  // Open the saved annotation.
+// Open the saved annotation.
 #if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
   const char md5[] = "4d64e61c9c0f8c60ab3cc3234bb73b1c";
 #else
