@@ -4,6 +4,8 @@
 
 #include "public/fpdf_annot.h"
 
+#include <iostream>
+
 #include <memory>
 #include <utility>
 
@@ -22,6 +24,8 @@
 #include "core/fpdfdoc/cpdf_interform.h"
 #include "core/fpdfdoc/cpvt_generateap.h"
 #include "core/fxge/cfx_color.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/fsdk_define.h"
 
 namespace {
@@ -141,6 +145,22 @@ static_assert(static_cast<int>(CPDF_Object::Type::REFERENCE) ==
                   FPDF_OBJECT_REFERENCE,
               "CPDF_Object::REFERENCE value mismatch");
 
+CPDFSDK_FormFillEnvironment* HandleToCPDFSDKEnvironment(
+    FPDF_FORMHANDLE handle) {
+  return static_cast<CPDFSDK_FormFillEnvironment*>(handle);
+}
+
+CPDFSDK_PageView* FormHandleToPageView(FPDF_FORMHANDLE hHandle,
+                                       FPDF_PAGE page) {
+  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  if (!pPage)
+    return nullptr;
+
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      HandleToCPDFSDKEnvironment(hHandle);
+  return pFormFillEnv ? pFormFillEnv->GetPageView(pPage, true) : nullptr;
+}
+
 class CPDF_AnnotContext {
  public:
   CPDF_AnnotContext(CPDF_Dictionary* pAnnotDict,
@@ -231,9 +251,12 @@ FPDFPage_CreateAnnot(FPDF_PAGE page, FPDF_ANNOTATION_SUBTYPE subtype) {
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_GetAnnotCount(FPDF_PAGE page) {
+    std::cerr << "FPDFPage_GetAnnotCount" << std::endl;
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
-  if (!pPage || !pPage->m_pFormDict)
+  if (!pPage || !pPage->m_pFormDict) {
+    std::cerr << "FPDFPage_GetAnnotCount return 0, pPage " << (void*)pPage << std::endl;
     return 0;
+  }
 
   CPDF_Array* pAnnots = pPage->m_pFormDict->GetArrayFor("Annots");
   return pAnnots ? pAnnots->GetCount() : 0;
@@ -885,3 +908,94 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
     return nullptr;
   return FPDFPage_GetAnnot(page, annot_index);
 }
+
+FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV
+FPDFAnnot_GetFocusedAnnot(FPDF_FORMHANDLE hHandle, FPDF_PAGE page) {
+    std::cerr << "  -> hHandle " << (void*)hHandle << "page " << (void*)page << std::endl;
+  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+
+  if (!hHandle || !pPage) {
+    std::cerr << "  -> hHandle " << (void*)hHandle << ", pPage " << (void*)pPage << std::endl;
+    return nullptr;
+  }
+
+  CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
+  if (!pPageView) {
+    std::cerr << "  -> pPageView " << (void*)pPageView << std::endl;
+    return nullptr;
+  }
+
+  CPDFSDK_Annot* pAnnot = pPageView->GetFocusAnnot();
+  if (!pAnnot) {
+    std::cerr << "  -> return null pAnnot " << (void*)pAnnot << std::endl;
+    return nullptr;
+  }
+
+  CPDF_Dictionary* pAnnotDict = nullptr;
+  std::cerr << "  -> pAnnot " << (void*)pAnnot << std::endl;
+  CPDF_Annot* pPDFAnnot = pAnnot->GetPDFAnnot();
+  if (pPDFAnnot) {
+    pAnnotDict = pPDFAnnot->GetAnnotDict();
+  } else {
+
+#ifdef PDF_ENABLE_XFA
+    CXFA_FFWidget* pXFAAnnot = pAnnot->GetXFAWidget();
+    if (pXFAAnnot) {
+      pAnnotDict = pXFAAnnot->GetAnnotDict();
+    }
+#endif  // PDF_ENABLE_XFA
+  }
+
+  if (!pAnnotDict)
+    return nullptr;
+
+  // auto pAnnotContext =
+  //     pdfium::MakeUnique<CPDF_AnnotContext>(pAnnotDict, pPage, nullptr);
+  auto pAnnotContext =
+      pdfium::MakeUnique<CPDF_AnnotContext>(pAnnotDict, nullptr, nullptr);
+  return pAnnotContext.release();
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetWidgetType(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_PAGE page,
+                                                      FPDF_ANNOTATION annot) {
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  CPDF_AnnotContext* pAnnotContext = CPDFAnnotContextFromFPDFAnnotation(annot);
+  if (!hHandle || !pPage || !pAnnotContext)
+    return -1;
+
+  CPDF_Dictionary* pAnnotDict = pAnnotContext->GetAnnotDict();
+  if (!pAnnotDict)
+    return -1;
+
+  CPDF_InterForm interform(pPage->m_pDocument.Get());
+  CPDF_FormControl* pFormControl = interform.GetControlByDict(pAnnotDict);
+  return pFormControl ? pFormControl->GetType() : -1;
+}
+
+// FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetFocusedAnnotType(FPDF_FORMHANDLE hHandle,
+//                                                       FPDF_PAGE page) {
+
+//   UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+
+//   if (!hHandle || !pPage) {
+//     return nullptr;
+//   }
+
+//   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
+//   if (!pPageView) {
+//     return nullptr;
+//   }
+
+//   CPDFSDK_Annot* pAnnot = pPageView->GetFocusAnnot();
+//   if (!pAnnot) {
+//     return nullptr;
+//   }
+
+//   CPDF_Dictionary* pAnnotDict = pAnnot->GetPDFAnnot()->GetAnnotDict();
+
+//   // ???
+//   CPDF_InterForm interform(pPage->m_pDocument.Get());
+//   CPDF_FormControl* pFormControl = interform.GetControlByDict(pAnnotDict);
+//   return pFormControl ? pFormControl->GetType() : -1;
+// }

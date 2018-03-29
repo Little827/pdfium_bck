@@ -7,6 +7,7 @@
 #ifndef FPDFSDK_FPDFXFA_CPDFXFA_PAGE_H_
 #define FPDFSDK_FPDFXFA_CPDFXFA_PAGE_H_
 
+#include <iostream>
 #include <memory>
 
 #include "core/fxcrt/fx_system.h"
@@ -28,7 +29,7 @@ class CPDFXFA_Page : public Retainable {
   bool LoadPDFPage(CPDF_Dictionary* pageDict);
   CPDFXFA_Context* GetContext() const { return m_pContext.Get(); }
   int GetPageIndex() const { return m_iPageIndex; }
-  CPDF_Page* GetPDFPage() const { return m_pPDFPage.get(); }
+  CPDF_Page* GetPDFPage() const { std::cerr << "CPDFXFA_Page->GetPDFPage() ret " << m_pPDFPage.get() << std::endl; return m_pPDFPage.get(); }
   CXFA_FFPageView* GetXFAPageView() const { return m_pXFAPageView; }
 
   void SetXFAPageView(CXFA_FFPageView* pPageView) {

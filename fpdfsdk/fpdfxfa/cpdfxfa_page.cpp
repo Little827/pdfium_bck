@@ -18,30 +18,41 @@
 #include "xfa/fxfa/cxfa_ffpageview.h"
 
 CPDFXFA_Page::CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index)
-    : m_pXFAPageView(nullptr), m_pContext(pContext), m_iPageIndex(page_index) {}
+    : m_pXFAPageView(nullptr), m_pContext(pContext), m_iPageIndex(page_index) {
+      std::cerr << (void*)this << "::constructor" << std::endl;
+    }
 
 CPDFXFA_Page::~CPDFXFA_Page() {}
 
 bool CPDFXFA_Page::LoadPDFPage() {
-  if (!m_pContext)
+  std::cerr << (void*)this << "::LoadPDFPage" << std::endl;
+  if (!m_pContext) {
+  std::cerr << (void*)this << "::LoadPDFPage ret false [1]" << std::endl;
     return false;
+  }
 
   CPDF_Document* pPDFDoc = m_pContext->GetPDFDoc();
-  if (!pPDFDoc)
+  if (!pPDFDoc) {
+  std::cerr << (void*)this << "::LoadPDFPage ret false [2]" << std::endl;
     return false;
+  }
 
   CPDF_Dictionary* pDict = pPDFDoc->GetPage(m_iPageIndex);
-  if (!pDict)
+  if (!pDict) {
+  std::cerr << (void*)this << "::LoadPDFPage ret false [3]" << std::endl;
     return false;
+  }
 
   if (!m_pPDFPage || m_pPDFPage->m_pFormDict != pDict) {
     m_pPDFPage = pdfium::MakeUnique<CPDF_Page>(pPDFDoc, pDict, true);
     m_pPDFPage->ParseContent();
   }
+  std::cerr << (void*)this << "::LoadPDFPage ret true [4], GetPDFPage() = " << (void*)GetPDFPage() << std::endl;
   return true;
 }
 
 bool CPDFXFA_Page::LoadXFAPageView() {
+  std::cerr << (void*)this << "::LoadXFAPageView" << std::endl;
   if (!m_pContext)
     return false;
 
@@ -62,6 +73,7 @@ bool CPDFXFA_Page::LoadXFAPageView() {
 }
 
 bool CPDFXFA_Page::LoadPage() {
+  std::cerr << (void*)this << "::LoadPage" << std::endl;
   if (!m_pContext || m_iPageIndex < 0)
     return false;
 
@@ -77,9 +89,11 @@ bool CPDFXFA_Page::LoadPage() {
 }
 
 bool CPDFXFA_Page::LoadPDFPage(CPDF_Dictionary* pageDict) {
+  std::cerr << (void*)this << "::LoadPDFPage " << (void*)pageDict << std::endl;
   if (!m_pContext || m_iPageIndex < 0 || !pageDict)
     return false;
 
+  std::cerr << (void*)this << "::LoadPDFPage overload set" << std::endl;
   m_pPDFPage =
       pdfium::MakeUnique<CPDF_Page>(m_pContext->GetPDFDoc(), pageDict, true);
   m_pPDFPage->ParseContent();

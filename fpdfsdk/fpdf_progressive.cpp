@@ -42,7 +42,9 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPageBitmap_Start(FPDF_BITMAP bitmap,
   if (!bitmap || !pause || pause->version != 1)
     return FPDF_RENDER_FAILED;
 
+  std::cerr << "FPDF_RenderPageBitmap_Start page " << (void*)page <<std::endl;
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  std::cerr << "FPDF_RenderPageBitmap_Start pPage " << (void*)pPage <<std::endl;
   if (!pPage)
     return FPDF_RENDER_FAILED;
 
