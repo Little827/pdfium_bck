@@ -15,13 +15,36 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #endif  // PDF_ENABLE_XFA
 
+namespace {
+
+class UnsupportedDelegateAdaptor : public UnsupportedFeatureIface {
+ public:
+  explicit UnsupportedDelegateAdaptor(UNSUPPORT_INFO* info) : info_(info) {
+    ASSERT(info_);
+  }
+
+  ~UnsupportedDelegateAdaptor() override = default;
+
+  void Handle(int error) const override {
+    if (!info_->FSDK_UnSupport_Handler)
+      return;
+
+    info_->FSDK_UnSupport_Handler(info_.Get(), error);
+  }
+
+ private:
+  UnownedPtr<UNSUPPORT_INFO> info_ = nullptr;
+};
+
+}  // namespace
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FSDK_SetUnSpObjProcessHandler(UNSUPPORT_INFO* unsp_info) {
   if (!unsp_info || unsp_info->version != 1)
     return false;
 
-  CPDF_ModuleMgr::Get()->SetUnsupportInfoAdapter(
-      pdfium::MakeUnique<CFSDK_UnsupportInfo_Adapter>(unsp_info));
+  CPDF_ModuleMgr::Get()->SetUnsupportFeatureHandler(
+      pdfium::MakeUnique<UnsupportedDelegateAdaptor>(unsp_info));
   return true;
 }
 

@@ -7,6 +7,7 @@
 #include "public/fpdf_sysfontinfo.h"
 
 #include <memory>
+#include <vector>
 
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_fontmapper.h"
@@ -196,7 +197,7 @@ static void DefaultDeleteFont(struct _FPDF_SYSFONTINFO* pThis, void* hFont) {
 
 FPDF_EXPORT FPDF_SYSFONTINFO* FPDF_CALLCONV FPDF_GetDefaultSystemFontInfo() {
   std::unique_ptr<SystemFontInfoIface> pFontInfo =
-      SystemFontInfoIface::CreateDefault(nullptr);
+      SystemFontInfoIface::CreateDefault(std::vector<ByteString>());
   if (!pFontInfo)
     return nullptr;
 

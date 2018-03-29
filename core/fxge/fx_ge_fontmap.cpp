@@ -5,6 +5,7 @@
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
 #include <memory>
+#include <vector>
 
 #include "core/fxge/cfx_fontmapper.h"
 #include "core/fxge/systemfontinfo_iface.h"
@@ -74,7 +75,7 @@ void _FTStreamClose(FXFT_Stream stream);
 
 #if _FX_OS_ == _FX_OS_ANDROID_
 std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
-    const char** pUnused) {
+    const std::vector<ByteString>& pUnused) {
   return nullptr;
 }
 #endif

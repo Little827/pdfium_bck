@@ -8,6 +8,9 @@
 #define CORE_FXGE_CFX_GEMODULE_H_
 
 #include <memory>
+#include <vector>
+
+#include "core/fxcrt/bytestring.h"
 
 class CFX_FontCache;
 class CFX_FontMgr;
@@ -17,7 +20,7 @@ class CFX_GEModule {
   static CFX_GEModule* Get();
   static void Destroy();
 
-  void Init(const char** pUserFontPaths);
+  void Init(const std::vector<ByteString>& user_font_paths);
   CFX_FontCache* GetFontCache();
   CFX_FontMgr* GetFontMgr() { return m_pFontMgr.get(); }
 
@@ -32,8 +35,8 @@ class CFX_GEModule {
 
   std::unique_ptr<CFX_FontCache> m_pFontCache;
   std::unique_ptr<CFX_FontMgr> m_pFontMgr;
-  void* m_pPlatformData;
-  const char** m_pUserFontPaths;
+  void* m_pPlatformData = nullptr;
+  std::vector<ByteString> m_pUserFontPaths;
 };
 
 #endif  // CORE_FXGE_CFX_GEMODULE_H_

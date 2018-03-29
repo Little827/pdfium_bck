@@ -6,6 +6,7 @@
 
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_folderfontinfo.h"
@@ -131,19 +132,20 @@ void* CFX_LinuxFontInfo::MapFont(int weight,
   return FindFont(weight, bItalic, charset, pitch_family, cstr_face, !bCJK);
 }
 
-bool CFX_LinuxFontInfo::ParseFontCfg(const char** pUserPaths) {
-  if (!pUserPaths)
+bool CFX_LinuxFontInfo::ParseFontCfg(
+    const std::vector<ByteString>& pUserPaths) {
+  if (pUserPaths.empty())
     return false;
 
-  for (const char** pPath = pUserPaths; *pPath; ++pPath)
-    AddPath(*pPath);
+  for (const auto& path : pUserPaths)
+    AddPath(path.c_str());
   return true;
 }
 
 }  // namespace
 
 std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
-    const char** pUserPaths) {
+    const std::vector<ByteString>& pUserPaths) {
   auto pInfo = pdfium::MakeUnique<CFX_LinuxFontInfo>();
   if (!pInfo->ParseFontCfg(pUserPaths)) {
     pInfo->AddPath("/usr/share/fonts");

@@ -19,15 +19,14 @@ class CCodec_JpxModule;
 class CCodec_ModuleMgr;
 class CPDF_PageModule;
 
-class CFSDK_UnsupportInfo_Adapter {
+class UnsupportedFeatureIface {
  public:
-  explicit CFSDK_UnsupportInfo_Adapter(void* unsp_info)
-      : m_unsp_info(unsp_info) {}
+  virtual ~UnsupportedFeatureIface() = default;
 
-  void* GetUnspInfo() const { return m_unsp_info; }
+  virtual void Handle(int error) const = 0;
 
- private:
-  void* const m_unsp_info;
+ protected:
+  UnsupportedFeatureIface() = default;
 };
 
 class CPDF_ModuleMgr {
@@ -38,12 +37,12 @@ class CPDF_ModuleMgr {
 
   void Init();
 
-  void SetUnsupportInfoAdapter(
-      std::unique_ptr<CFSDK_UnsupportInfo_Adapter> pAdapter) {
-    m_pUnsupportInfoAdapter = std::move(pAdapter);
+  void SetUnsupportFeatureHandler(
+      std::unique_ptr<UnsupportedFeatureIface> pAdapter) {
+    m_pUnsupportFeatureHandler = std::move(pAdapter);
   }
-  CFSDK_UnsupportInfo_Adapter* GetUnsupportInfoAdapter() const {
-    return m_pUnsupportInfoAdapter.get();
+  UnsupportedFeatureIface* GetUnsupportFeatureHandler() const {
+    return m_pUnsupportFeatureHandler.get();
   }
 
   CCodec_ModuleMgr* GetCodecModule() const { return m_pCodecModule.get(); }
@@ -72,7 +71,7 @@ class CPDF_ModuleMgr {
 
   std::unique_ptr<CCodec_ModuleMgr> m_pCodecModule;
   std::unique_ptr<CPDF_PageModule> m_pPageModule;
-  std::unique_ptr<CFSDK_UnsupportInfo_Adapter> m_pUnsupportInfoAdapter;
+  std::unique_ptr<UnsupportedFeatureIface> m_pUnsupportFeatureHandler;
 };
 
 #endif  // CORE_FPDFAPI_CPDF_MODULEMGR_H_
