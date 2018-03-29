@@ -6,6 +6,7 @@
 
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/apple/apple_int.h"
@@ -121,7 +122,7 @@ void* CFX_MacFontInfo::MapFont(int weight,
 }  // namespace
 
 std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
-    const char** pUnused) {
+    const std::vector<ByteString>& pUnused) {
   auto pInfo = pdfium::MakeUnique<CFX_MacFontInfo>();
   pInfo->AddPath("~/Library/Fonts");
   pInfo->AddPath("/Library/Fonts");
@@ -131,7 +132,8 @@ std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
 
 void CFX_GEModule::InitPlatform() {
   m_pPlatformData = new CApplePlatform;
-  m_pFontMgr->SetSystemFontInfo(SystemFontInfoIface::CreateDefault(nullptr));
+  m_pFontMgr->SetSystemFontInfo(
+      SystemFontInfoIface::CreateDefault(std::vector<ByteString>()));
 }
 
 void CFX_GEModule::DestroyPlatform() {

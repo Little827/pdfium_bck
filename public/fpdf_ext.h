@@ -64,6 +64,8 @@ typedef struct _UNSUPPORT_INFO {
 //   unsp_info - Pointer to an UNSUPPORT_INFO structure.
 //
 // Returns TRUE on success.
+//
+// New API: pdfium::SetUnsupportedFeatureDelegate();
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FSDK_SetUnSpObjProcessHandler(UNSUPPORT_INFO* unsp_info);
 

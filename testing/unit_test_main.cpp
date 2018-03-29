@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "core/fxcrt/fx_memory.h"
 #include "testing/gmock/include/gmock/gmock.h"
@@ -32,7 +33,7 @@ class Environment : public testing::Environment {
     // TODO(dsinclair): This font loading is slow. We should make a test font
     // loader which loads up a single font we use in all tests.
     CFX_GEModule::Get()->GetFontMgr()->SetSystemFontInfo(
-        SystemFontInfoIface::CreateDefault(nullptr));
+        SystemFontInfoIface::CreateDefault(std::vector<ByteString>()));
 
     font_mgr_ = pdfium::MakeUnique<CFGAS_FontMgr>();
     if (!font_mgr_->EnumFonts())
