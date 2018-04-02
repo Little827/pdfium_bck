@@ -50,13 +50,13 @@ class CPDF_StreamParser {
   ByteString ReadHexString();
   bool PositionIsInBounds() const;
 
+  uint32_t m_Size;      // Length in bytes of m_pBuf.
+  uint32_t m_Pos;       // Current byte position within m_pBuf.
+  uint32_t m_WordSize;  // Current byte position within m_WordBuffer.
   const uint8_t* m_pBuf;
-  uint32_t m_Size;  // Length in bytes of m_pBuf.
-  uint32_t m_Pos;   // Current byte position within m_pBuf.
-  uint8_t m_WordBuffer[256];
-  uint32_t m_WordSize;
   std::unique_ptr<CPDF_Object> m_pLastObj;
   WeakPtr<ByteStringPool> m_pPool;
+  uint8_t m_WordBuffer[256];
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_STREAMPARSER_H_

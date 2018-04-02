@@ -103,12 +103,12 @@ uint32_t DecodeInlineStream(const uint8_t* src_buf,
 }  // namespace
 
 CPDF_StreamParser::CPDF_StreamParser(const uint8_t* pData, uint32_t dwSize)
-    : m_pBuf(pData), m_Size(dwSize), m_Pos(0), m_pPool(nullptr) {}
+    : m_Size(dwSize), m_Pos(0), m_WordSize(0), m_pBuf(pData) {}
 
 CPDF_StreamParser::CPDF_StreamParser(const uint8_t* pData,
                                      uint32_t dwSize,
                                      const WeakPtr<ByteStringPool>& pPool)
-    : m_pBuf(pData), m_Size(dwSize), m_Pos(0), m_pPool(pPool) {}
+    : m_Size(dwSize), m_Pos(0), m_WordSize(0), m_pBuf(pData), m_pPool(pPool) {}
 
 CPDF_StreamParser::~CPDF_StreamParser() {}
 
