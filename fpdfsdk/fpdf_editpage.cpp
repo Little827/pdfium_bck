@@ -26,6 +26,7 @@
 #include "core/fpdfdoc/cpdf_annotlist.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/fpdf_formfill.h"
+#include "public/pdfium/document.h"
 #include "third_party/base/logging.h"
 #include "third_party/base/stl_util.h"
 
@@ -101,31 +102,8 @@ void CalcBoundingBox(CPDF_PageObject* pPageObj) {
 }  // namespace
 
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument() {
-  auto pDoc = pdfium::MakeUnique<CPDF_Document>(nullptr);
-  pDoc->CreateNewDoc();
-
-  time_t currentTime;
-  ByteString DateStr;
-  if (FSDK_IsSandBoxPolicyEnabled(FPDF_POLICY_MACHINETIME_ACCESS)) {
-    if (time(&currentTime) != -1) {
-      tm* pTM = localtime(&currentTime);
-      if (pTM) {
-        DateStr = ByteString::Format(
-            "D:%04d%02d%02d%02d%02d%02d", pTM->tm_year + 1900, pTM->tm_mon + 1,
-            pTM->tm_mday, pTM->tm_hour, pTM->tm_min, pTM->tm_sec);
-      }
-    }
-  }
-
-  CPDF_Dictionary* pInfoDict = pDoc->GetInfo();
-  if (pInfoDict) {
-    if (FSDK_IsSandBoxPolicyEnabled(FPDF_POLICY_MACHINETIME_ACCESS))
-      pInfoDict->SetNewFor<CPDF_String>("CreationDate", DateStr, false);
-    pInfoDict->SetNewFor<CPDF_String>("Creator", L"PDFium");
-  }
-
-  // Caller takes ownership of pDoc.
-  return FPDFDocumentFromCPDFDocument(pDoc.release());
+  auto doc = pdfium::MakeUnique<pdfium::Document>();
+  return doc.release();
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,

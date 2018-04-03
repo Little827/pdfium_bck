@@ -9,10 +9,12 @@
 #include "core/fpdfapi/cpdf_modulemgr.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
+#include "public/pdfium/document.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
+#include "fpdfsdk/cpdfsdk_helpers.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
@@ -26,6 +28,10 @@ class CPDF_TestDocument : public CPDF_Document {
     m_pRootDict = root;
     GetRoot();
   }
+
+  CPDF_Document* doc() {
+    return this;
+  }
 };
 
 #ifdef PDF_ENABLE_XFA
@@ -36,6 +42,10 @@ class CPDF_TestXFAContext : public CPDFXFA_Context {
 
   void SetRoot(CPDF_Dictionary* root) {
     reinterpret_cast<CPDF_TestDocument*>(GetPDFDoc())->SetRoot(root);
+  }
+
+  CPDF_Document* doc() {
+    return GetPDFDoc();
   }
 
   CPDF_IndirectObjectHolder* GetHolder() { return GetPDFDoc(); }
@@ -50,7 +60,12 @@ class PDFCatalogTest : public testing::Test {
   void SetUp() override {
     CPDF_ModuleMgr::Get()->Init();
 
-    m_pDoc = pdfium::MakeUnique<CPDF_TestPdfDocument>();
+    auto test_doc = pdfium::MakeUnique<CPDF_TestPdfDocument>();
+    m_pTestDoc = test_doc.get();
+
+    m_pDoc = pdfium::MakeUnique<pdfium::Document>();
+    m_pDoc->SetUnderlyingForTesting(pdfium::WrapUnique<FPDF_DOCUMENT>(
+        FPDFDocumentFromCPDFDocument((test_doc.release())->doc())));
 
     // Setup the root directory.
     m_pRootObj = pdfium::MakeUnique<CPDF_Dictionary>();
@@ -62,7 +77,8 @@ class PDFCatalogTest : public testing::Test {
   }
 
  protected:
-  std::unique_ptr<CPDF_TestPdfDocument> m_pDoc;
+  CPDF_TestPdfDocument* m_pTestDoc;
+  std::unique_ptr<pdfium::Document> m_pDoc;
   std::unique_ptr<CPDF_Dictionary> m_pRootObj;
 };
 
@@ -71,11 +87,11 @@ TEST_F(PDFCatalogTest, IsTagged) {
   EXPECT_FALSE(FPDFCatalog_IsTagged(nullptr));
 
   // No root
-  m_pDoc->SetRoot(nullptr);
+  m_pTestDoc->SetRoot(nullptr);
   EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
 
   // Empty root
-  m_pDoc->SetRoot(m_pRootObj.get());
+  m_pTestDoc->SetRoot(m_pRootObj.get());
   EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
 
   // Root with other key

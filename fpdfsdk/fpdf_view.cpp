@@ -28,7 +28,6 @@
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
-#include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/cpdfsdk_customaccess.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -36,14 +35,13 @@
 #include "fpdfsdk/cpdfsdk_memoryaccess.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/ipdfsdk_pauseadapter.h"
-#include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
+#include "public/pdfium/pdfium.h"
 #include "third_party/base/ptr_util.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
-#include "fxbarcode/BC_Library.h"
 #endif  // PDF_ENABLE_XFA
 
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
@@ -62,8 +60,6 @@ static_assert(WindowsPrintMode::kModePostScript3 == FPDF_PRINTMODE_POSTSCRIPT3,
 #endif
 
 namespace {
-
-bool g_bLibraryInitialized = false;
 
 void RenderPageImpl(CPDF_PageRenderContext* pContext,
                     CPDF_Page* pPage,
@@ -126,28 +122,6 @@ void RenderPageImpl(CPDF_PageRenderContext* pContext,
     pContext->m_pDevice->RestoreState(false);
 }
 
-FPDF_DOCUMENT LoadDocumentImpl(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
-    FPDF_BYTESTRING password) {
-  if (!pFileAccess) {
-    ProcessParseError(CPDF_Parser::FILE_ERROR);
-    return nullptr;
-  }
-
-  auto pParser = pdfium::MakeUnique<CPDF_Parser>();
-  pParser->SetPassword(password);
-
-  auto pDocument = pdfium::MakeUnique<CPDF_Document>(std::move(pParser));
-  CPDF_Parser::Error error =
-      pDocument->GetParser()->StartParse(pFileAccess, pDocument.get());
-  if (error != CPDF_Parser::SUCCESS) {
-    ProcessParseError(error);
-    return nullptr;
-  }
-  CheckUnSupportError(pDocument.get(), error);
-  return FPDFDocumentFromCPDFDocument(pDocument.release());
-}
-
 }  // namespace
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary() {
@@ -156,40 +130,21 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary() {
 
 FPDF_EXPORT void FPDF_CALLCONV
 FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* cfg) {
-  if (g_bLibraryInitialized)
-    return;
+  pdfium::Config config;
+  if (cfg) {
+    if (cfg->m_pUserFontPaths) {
+      for (const char** pPath = cfg->m_pUserFontPaths; *pPath; ++pPath)
+        config.user_font_paths.push_back(*pPath);
+    }
 
-  FXMEM_InitializePartitionAlloc();
-
-  CFX_GEModule* pModule = CFX_GEModule::Get();
-  pModule->Init(cfg ? cfg->m_pUserFontPaths : nullptr);
-
-  CPDF_ModuleMgr* pModuleMgr = CPDF_ModuleMgr::Get();
-  pModuleMgr->Init();
-
-#ifdef PDF_ENABLE_XFA
-  BC_Library_Init();
-#endif  // PDF_ENABLE_XFA
-  if (cfg && cfg->version >= 2)
-    IJS_Runtime::Initialize(cfg->m_v8EmbedderSlot, cfg->m_pIsolate);
-
-  g_bLibraryInitialized = true;
+    config.js_isolate = cfg->m_pIsolate;
+    config.js_embedder_slot = cfg->m_v8EmbedderSlot;
+  }
+  pdfium::Initialize(config);
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
-  if (!g_bLibraryInitialized)
-    return;
-
-#ifdef PDF_ENABLE_XFA
-  BC_Library_Destroy();
-#endif  // PDF_ENABLE_XFA
-
-  CPDF_ModuleMgr::Destroy();
-  CFX_GEModule::Destroy();
-
-  IJS_Runtime::Destroy();
-
-  g_bLibraryInitialized = false;
+  pdfium::Shutdown();
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_SetSandBoxPolicy(FPDF_DWORD policy,
@@ -224,10 +179,8 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_SetPrintMode(int mode) {
 
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_LoadDocument(FPDF_STRING file_path, FPDF_BYTESTRING password) {
-  // NOTE: the creation of the file needs to be by the embedder on the
-  // other side of this API.
-  return LoadDocumentImpl(IFX_SeekableReadStream::CreateFromFilename(file_path),
-                          password);
+  auto doc = pdfium::Document::LoadFile(file_path, password);
+  return doc.release();
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
@@ -259,16 +212,20 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
 
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_LoadMemDocument(const void* data_buf, int size, FPDF_BYTESTRING password) {
-  return LoadDocumentImpl(pdfium::MakeRetain<CPDFSDK_MemoryAccess>(
-                              static_cast<const uint8_t*>(data_buf), size),
-                          password);
+  if (size <= 0)
+    return nullptr;
+
+  auto doc = pdfium::Document::LoadMemory(
+      static_cast<const uint8_t*>(data_buf), static_cast<size_t>(size), password);
+  return doc.release();
 }
 
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_LoadCustomDocument(FPDF_FILEACCESS* pFileAccess,
                         FPDF_BYTESTRING password) {
-  return LoadDocumentImpl(pdfium::MakeRetain<CPDFSDK_CustomAccess>(pFileAccess),
-                          password);
+  // return pdfium::Document::LoadFromFileAccess(pFileAccess, password);
+  // TODO(dsinclair): Fix me
+  return nullptr;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetFileVersion(FPDF_DOCUMENT doc,
@@ -729,11 +686,11 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document) {
-  delete UnderlyingFromFPDFDocument(document);
+  delete static_cast<pdfium::Document*>(document);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError() {
-  return GetLastError();
+  return static_cast<unsigned long>(pdfium::GetLastStatus());
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,

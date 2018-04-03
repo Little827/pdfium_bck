@@ -675,7 +675,7 @@ bool CFX_Win32FontInfo::GetFontCharset(void* hFont, int* charset) {
 int g_pdfium_print_mode = WindowsPrintMode::kModeEmf;
 
 std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
-    const char** pUnused) {
+    const std::vector<ByteString>& pUnused) {
   if (IsGDIEnabled())
     return std::unique_ptr<SystemFontInfoIface>(new CFX_Win32FontInfo);
 
@@ -702,7 +702,8 @@ void CFX_GEModule::InitPlatform() {
   if (IsGDIEnabled())
     pPlatformData->m_GdiplusExt.Load();
   m_pPlatformData = pPlatformData;
-  m_pFontMgr->SetSystemFontInfo(SystemFontInfoIface::CreateDefault(nullptr));
+  m_pFontMgr->SetSystemFontInfo(
+      SystemFontInfoIface::CreateDefault(std::vector<ByteString>()));
 }
 
 void CFX_GEModule::DestroyPlatform() {

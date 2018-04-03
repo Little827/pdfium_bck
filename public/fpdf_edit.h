@@ -92,6 +92,8 @@ extern "C" {
 // Create a new PDF document.
 //
 // Returns a handle to a new document, or NULL on failure.
+//
+// New API: pdfium::Document()
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument();
 
 // Create a new PDF page.

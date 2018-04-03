@@ -16,6 +16,7 @@
 #include "core/fxcrt/xml/cxml_content.h"
 #include "core/fxcrt/xml/cxml_element.h"
 #include "public/fpdf_ext.h"
+#include "public/pdfium/document.h"
 
 namespace {
 
@@ -24,14 +25,12 @@ FPDF_DOCUMENT FPDFDocumentFromUnderlying(UnderlyingDocumentType* doc) {
 }
 
 bool RaiseUnSupportError(int nError) {
-  CFSDK_UnsupportInfo_Adapter* pAdapter =
-      CPDF_ModuleMgr::Get()->GetUnsupportInfoAdapter();
-  if (!pAdapter)
+  UnsupportedFeatureIface* handler =
+      CPDF_ModuleMgr::Get()->GetUnsupportFeatureHandler();
+  if (!handler)
     return false;
 
-  UNSUPPORT_INFO* info = static_cast<UNSUPPORT_INFO*>(pAdapter->GetUnspInfo());
-  if (info && info->FSDK_UnSupport_Handler)
-    info->FSDK_UnSupport_Handler(info, nError);
+  handler->Handle(nError);
   return true;
 }
 
@@ -190,10 +189,16 @@ UnderlyingPageType* UnderlyingFromFPDFPage(FPDF_PAGE page) {
 }
 
 CPDF_Document* CPDFDocumentFromFPDFDocument(FPDF_DOCUMENT doc) {
+  if (!doc)
+    return nullptr;
+
+  auto* local_doc =
+    UnderlyingFromFPDFDocument(static_cast<pdfium::Document*>(doc)->AsUnderlyingDocument());
+
 #ifdef PDF_ENABLE_XFA
-  return doc ? UnderlyingFromFPDFDocument(doc)->GetPDFDoc() : nullptr;
+  return local_doc->GetPDFDoc();
 #else   // PDF_ENABLE_XFA
-  return UnderlyingFromFPDFDocument(doc);
+  return local_doc;
 #endif  // PDF_ENABLE_XFA
 }
 

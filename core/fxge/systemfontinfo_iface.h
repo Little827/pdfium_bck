@@ -8,6 +8,7 @@
 #define CORE_FXGE_SYSTEMFONTINFO_IFACE_H_
 
 #include <memory>
+#include <vector>
 
 #include "core/fxge/cfx_fontmapper.h"
 
@@ -17,7 +18,7 @@ const uint32_t kTableTTCF = FXDWORD_GET_MSBFIRST("ttcf");
 class SystemFontInfoIface {
  public:
   static std::unique_ptr<SystemFontInfoIface> CreateDefault(
-      const char** pUserPaths);
+      const std::vector<ByteString>& pUserPaths);
 
   virtual ~SystemFontInfoIface() = default;
 

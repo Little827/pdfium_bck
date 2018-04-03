@@ -175,9 +175,13 @@ extern "C" {
 // Comments:
 //          Convenience function to call FPDF_InitLibraryWithConfig() for
 //          backwards comatibility purposes.
+//
+// New API: Use config variant
 FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary();
 
 // Process-wide options for initializing the library.
+//
+// New API: pdfium::Config
 typedef struct FPDF_LIBRARY_CONFIG_ {
   // Version number of the interface. Currently must be 2.
   int version;
@@ -209,6 +213,8 @@ typedef struct FPDF_LIBRARY_CONFIG_ {
 // Comments:
 //          You have to call this function before you can call any PDF
 //          processing functions.
+//
+// New API: pdfium::Initialize()
 FPDF_EXPORT void FPDF_CALLCONV
 FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config);
 
@@ -223,6 +229,8 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config);
 //          the library.
 //          After this function is called, you should not call any PDF
 //          processing functions.
+//
+// New API: pdfium::Shutdown()
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary();
 
 // Policy for accessing the local machine time.
@@ -236,6 +244,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary();
 //          enable -   True to enable, false to disable the policy.
 // Return value:
 //          None.
+//
+// New API: Dropped.
 FPDF_EXPORT void FPDF_CALLCONV FPDF_SetSandBoxPolicy(FPDF_DWORD policy,
                                                      FPDF_BOOL enable);
 
@@ -492,6 +502,8 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetFileVersion(FPDF_DOCUMENT doc,
 // Comments:
 //          If the previous SDK call succeeded, the return value of this
 //          function is not defined.
+//
+// New API: pdfium::GetLastStatus()
 FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError();
 
 // Function: FPDF_GetDocPermission
@@ -522,6 +534,8 @@ FPDF_GetSecurityHandlerRevision(FPDF_DOCUMENT document);
 //          document    -   Handle to document. Returned by FPDF_LoadDocument.
 // Return value:
 //          Total number of pages in the document.
+//
+// New API: Document::PageCount()
 FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageCount(FPDF_DOCUMENT document);
 
 // Function: FPDF_LoadPage
