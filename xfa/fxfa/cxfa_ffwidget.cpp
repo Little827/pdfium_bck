@@ -349,7 +349,7 @@ void CXFA_FFWidget::DrawBorderWithFlag(CXFA_Graphics* pGS,
 void CXFA_FFWidget::AddInvalidateRect() {
   CFX_RectF rtWidget = GetBBox(XFA_WidgetStatus_Focused);
   rtWidget.Inflate(2, 2);
-  m_pDocView->AddInvalidateRect(m_pPageView, rtWidget);
+  m_pDocView->InvalidateRect(m_pPageView, rtWidget);
 }
 
 bool CXFA_FFWidget::OnMouseEnter() {
