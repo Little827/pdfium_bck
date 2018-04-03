@@ -1098,7 +1098,11 @@ void CFWL_Edit::SetCursorPosition(size_t position) {
   if (m_CursorPosition == position)
     return;
 
-  m_CursorPosition = position;
+  if (position <= m_EdtEngine.GetLength())
+    m_CursorPosition = position;
+  else
+    m_CursorPosition = m_EdtEngine.GetLength();
+
   UpdateCursorRect();
   OnCaretChanged();
 }
