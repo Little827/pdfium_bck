@@ -414,12 +414,7 @@ bool CPDF_CIDFont::Load() {
         m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
         m_pStreamAcc->LoadAllDataFiltered();
       } else if (pmap->GetString() == "Identity") {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
-        if (m_pFontFile)
-          m_bCIDIsGID = true;
-#else
         m_bCIDIsGID = true;
-#endif
       }
     }
   }

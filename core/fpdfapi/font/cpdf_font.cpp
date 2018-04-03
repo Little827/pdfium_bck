@@ -50,15 +50,7 @@ void GetPredefinedEncoding(const ByteString& value, int* basemap) {
 
 }  // namespace
 
-CPDF_Font::CPDF_Font()
-    : m_pFontFile(nullptr),
-      m_pFontDict(nullptr),
-      m_bToUnicodeLoaded(false),
-      m_Flags(0),
-      m_StemV(0),
-      m_Ascent(0),
-      m_Descent(0),
-      m_ItalicAngle(0) {}
+CPDF_Font::CPDF_Font() {}
 
 CPDF_Font::~CPDF_Font() {
   if (m_pFontFile) {
