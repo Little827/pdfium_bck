@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a64aec4_56cb1fbb",
+        "filename": "xfa/fwl/cfwl_edit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-03T20:52:42Z",
+      "side": 1,
+      "message": "Use std::min",
+      "range": {
+        "startLine": 1101,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 47
+      },
+      "revId": "0f6b54628de8e46e39a00a67cc9f1877b7925b0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
