@@ -68,6 +68,11 @@ class CPDF_DocPageData {
  private:
   using CPDF_CountedFont = CPDF_CountedObject<CPDF_Font>;
 
+  CPDF_ColorSpace* GetColorSpaceGuarded2(CPDF_Object* pCSObj,
+                                         const CPDF_Dictionary* pResources,
+                                         std::set<CPDF_Object*>* pVisited,
+                                         std::set<CPDF_Object*>* pVisitedLocal);
+
   bool m_bForceClear;
   UnownedPtr<CPDF_Document> const m_pPDFDoc;
   std::map<ByteString, CPDF_Stream*> m_HashProfileMap;
