@@ -22,6 +22,30 @@
       "revId": "2234b1ffffdb61ada9e308bcbe1df183d4a53039",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd2a0c8_3aae47b5",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-04T16:51:48Z",
+      "side": 1,
+      "message": "Intention of use and code clarity, basically.  Here\u0027s a philosophy, which we really don\u0027t adhere to ...\n\nByteString is in some sense a specialization (narrowing) of a span\u003cuint8_t\u003e; all ByteStrings are spans, but not all spans are necessarily ByteStrings. Bytestrings, having operations like Upcase/Downcase imply some sort of encoding be present, that the string conforms to the encoding (which we don\u0027t check, embedded 0s, codepoints in range, etc.) and that the contents represents text sensible to a user. \n\nA row of an image, for example, could be held in a bytestring as far as\nthe computer is concerned, but it wouldn\u0027t make sense to humans to do so. Which is why, perhaps, that there are so many pointer/len pairs throughout the code.\n\nHere, the input to the parser could be any sequence of crap which has not\nyet been proven to be a ByteString.  As the parser validates stuff, the result may well be ByteString ... if its legit.",
+      "parentUuid": "34b5ef85_d856c0bd",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "2234b1ffffdb61ada9e308bcbe1df183d4a53039",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
