@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d615ede9_69f8259c",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-04T13:40:44Z",
+      "side": 1,
+      "message": "Why not just do options-\u003efont_directory \u003d cur_arg.substr(11) and then you don\u0027t need the else below?",
+      "range": {
+        "startLine": 786,
+        "startChar": 6,
+        "endLine": 786,
+        "endChar": 32
+      },
+      "revId": "30e718bb5790007cec00b60709355ef138b18f4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d6581a_53d43330",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-04T13:40:44Z",
+      "side": 1,
+      "message": ": %s\\n\", font_directory.c_str());",
+      "range": {
+        "startLine": 791,
+        "startChar": 61,
+        "endLine": 791,
+        "endChar": 64
+      },
+      "revId": "30e718bb5790007cec00b60709355ef138b18f4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717ac14a_e1772a6d",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-04T13:40:44Z",
+      "side": 1,
+      "message": "We\u0027re doing this twice should we move it to an expandPath method?",
+      "range": {
+        "startLine": 838,
+        "startChar": 5,
+        "endLine": 847,
+        "endChar": 5
+      },
+      "revId": "30e718bb5790007cec00b60709355ef138b18f4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
