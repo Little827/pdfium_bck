@@ -17,7 +17,7 @@
 
 namespace {
 
-const uint32_t kFrequency = 400;
+const uint32_t kFrequency = 600;
 
 constexpr int kStateHighlight = (1 << 0);
 
