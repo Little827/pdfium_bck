@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93bd9182_0cf576ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-04T13:31:04Z",
+      "side": 1,
+      "message": "Can you add a bit to the description along the lines of:\n\nCurrently XFA invalidations are only sent to the embedder when RunInvalidations is executed.\nFor things which redraw on a timer, there was nothing to trigger RunInvalidations so the page\nwould not redraw until an interaction by the user. This CL changes the XFA code to send the\ninvalidations to the embedder immediately and expects the embedder to combine the invalidations\nto limit overdraw.",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "abe82204c34437e4c5db30458e7e6f3a34a20217",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
