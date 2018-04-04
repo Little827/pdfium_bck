@@ -400,6 +400,9 @@ std::unique_ptr<CPDF_ColorSpace> CPDF_ColorSpace::Load(
   if (!pObj)
     return nullptr;
 
+  if (pdfium::ContainsKey(*pVisited, pObj))
+    return nullptr;
+
   if (pObj->IsName()) {
     return std::unique_ptr<CPDF_ColorSpace>(
         ColorspaceFromName(pObj->GetString()));
