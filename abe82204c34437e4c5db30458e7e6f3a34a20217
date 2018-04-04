@@ -22,6 +22,29 @@
       "revId": "abe82204c34437e4c5db30458e7e6f3a34a20217",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74185d02_14f168c1",
+        "filename": "xfa/fxfa/cxfa_ffwidget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-04T13:31:33Z",
+      "side": 1,
+      "message": "Should this also be renamed to ::InvalidateRect(), since it now actually does the invalidation, instead of just adding the rect to a data structure?",
+      "range": {
+        "startLine": 349,
+        "startChar": 20,
+        "endLine": 349,
+        "endChar": 37
+      },
+      "revId": "abe82204c34437e4c5db30458e7e6f3a34a20217",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
