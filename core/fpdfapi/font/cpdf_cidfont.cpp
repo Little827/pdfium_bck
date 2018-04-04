@@ -213,11 +213,7 @@ bool IsMetricForCID(const uint32_t* pEntry, uint16_t CID) {
 
 }  // namespace
 
-CPDF_CIDFont::CPDF_CIDFont()
-    : m_pCID2UnicodeMap(nullptr),
-      m_bCIDIsGID(false),
-      m_bAnsiWidthsFixed(false),
-      m_bAdobeCourierStd(false) {
+CPDF_CIDFont::CPDF_CIDFont() {
   for (size_t i = 0; i < FX_ArraySize(m_CharBBox); ++i)
     m_CharBBox[i] = FX_RECT(-1, -1, -1, -1);
 }
@@ -414,12 +410,7 @@ bool CPDF_CIDFont::Load() {
         m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
         m_pStreamAcc->LoadAllDataFiltered();
       } else if (pmap->GetString() == "Identity") {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
-        if (m_pFontFile)
-          m_bCIDIsGID = true;
-#else
         m_bCIDIsGID = true;
-#endif
       }
     }
   }

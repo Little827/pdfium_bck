@@ -113,15 +113,15 @@ class CPDF_Font {
   std::vector<std::unique_ptr<CFX_Font>> m_FontFallbacks;
   ByteString m_BaseFont;
   RetainPtr<CPDF_StreamAcc> m_pFontFile;
-  CPDF_Dictionary* m_pFontDict;
+  CPDF_Dictionary* m_pFontDict = nullptr;
   mutable std::unique_ptr<CPDF_ToUnicodeMap> m_pToUnicodeMap;
-  mutable bool m_bToUnicodeLoaded;
-  int m_Flags;
+  mutable bool m_bToUnicodeLoaded = false;
+  int m_Flags = 0;
   FX_RECT m_FontBBox;
-  int m_StemV;
-  int m_Ascent;
-  int m_Descent;
-  int m_ItalicAngle;
+  int m_StemV = 0;
+  int m_Ascent = 0;
+  int m_Descent = 0;
+  int m_ItalicAngle = 0;
 };
 
 #endif  // CORE_FPDFAPI_FONT_CPDF_FONT_H_
