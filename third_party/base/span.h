@@ -13,6 +13,7 @@
 #include <type_traits>
 #include <utility>
 
+#include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/logging.h"
 
 namespace pdfium {
@@ -241,13 +242,13 @@ class span {
   // [span.elem], span element access
   const T& operator[](size_t index) const noexcept {
     CHECK(index < size_);
-    return data_[index];
+    return data_.Get()[index];
   }
-  constexpr T* data() const noexcept { return data_; }
+  constexpr T* data() const noexcept { return data_.Get(); }
 
   // [span.iter], span iterator support
-  constexpr iterator begin() const noexcept { return data_; }
-  constexpr iterator end() const noexcept { return data_ + size_; }
+  constexpr iterator begin() const noexcept { return data_.Get(); }
+  constexpr iterator end() const noexcept { return data_.Get() + size_; }
 
   constexpr const_iterator cbegin() const noexcept { return begin(); }
   constexpr const_iterator cend() const noexcept { return end(); }
@@ -267,7 +268,7 @@ class span {
   }
 
  private:
-  T* data_;
+  UnownedPtr<T> data_;
   size_t size_;
 };
 
