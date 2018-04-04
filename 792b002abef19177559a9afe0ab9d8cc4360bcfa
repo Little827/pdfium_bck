@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5912bd14_283c110a",
+        "filename": "xfa/fwl/cfwl_caret.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-04T18:26:17Z",
+      "side": 1,
+      "message": "What units is this in? Is actually frequency or is this a time delay interval?",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "792b002abef19177559a9afe0ab9d8cc4360bcfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
