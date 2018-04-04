@@ -349,45 +349,6 @@ TEST(ByteString, OperatorNE) {
   EXPECT_TRUE(c_string3 != byte_string);
 }
 
-TEST(ByteStringView, Null) {
-  ByteStringView null_string;
-  EXPECT_FALSE(null_string.raw_str());
-  EXPECT_EQ(0u, null_string.GetLength());
-  EXPECT_TRUE(null_string.IsEmpty());
-
-  ByteStringView another_null_string;
-  EXPECT_EQ(null_string, another_null_string);
-
-  ByteStringView copied_null_string(null_string);
-  EXPECT_FALSE(copied_null_string.raw_str());
-  EXPECT_EQ(0u, copied_null_string.GetLength());
-  EXPECT_TRUE(copied_null_string.IsEmpty());
-  EXPECT_EQ(null_string, copied_null_string);
-
-  ByteStringView empty_string("");  // Pointer to NUL, not NULL pointer.
-  EXPECT_TRUE(empty_string.raw_str());
-  EXPECT_EQ(0u, empty_string.GetLength());
-  EXPECT_TRUE(empty_string.IsEmpty());
-  EXPECT_EQ(null_string, empty_string);
-
-  ByteStringView assigned_null_string("initially not nullptr");
-  assigned_null_string = null_string;
-  EXPECT_FALSE(assigned_null_string.raw_str());
-  EXPECT_EQ(0u, assigned_null_string.GetLength());
-  EXPECT_TRUE(assigned_null_string.IsEmpty());
-  EXPECT_EQ(null_string, assigned_null_string);
-
-  ByteStringView assigned_nullptr_string("initially not nullptr");
-  assigned_nullptr_string = nullptr;
-  EXPECT_FALSE(assigned_nullptr_string.raw_str());
-  EXPECT_EQ(0u, assigned_nullptr_string.GetLength());
-  EXPECT_TRUE(assigned_nullptr_string.IsEmpty());
-  EXPECT_EQ(null_string, assigned_nullptr_string);
-
-  ByteStringView non_null_string("a");
-  EXPECT_NE(null_string, non_null_string);
-}
-
 TEST(ByteString, Concat) {
   ByteString fred;
   fred.Concat("FRED", 4);
@@ -999,6 +960,45 @@ TEST(ByteString, MultiCharReverseIterator) {
   EXPECT_EQ('d', ch);
   EXPECT_EQ('d', *iter);
   EXPECT_TRUE(iter == multi_str.rbegin());
+}
+
+TEST(ByteStringView, Null) {
+  ByteStringView null_string;
+  EXPECT_FALSE(null_string.raw_str());
+  EXPECT_EQ(0u, null_string.GetLength());
+  EXPECT_TRUE(null_string.IsEmpty());
+
+  ByteStringView another_null_string;
+  EXPECT_EQ(null_string, another_null_string);
+
+  ByteStringView copied_null_string(null_string);
+  EXPECT_FALSE(copied_null_string.raw_str());
+  EXPECT_EQ(0u, copied_null_string.GetLength());
+  EXPECT_TRUE(copied_null_string.IsEmpty());
+  EXPECT_EQ(null_string, copied_null_string);
+
+  ByteStringView empty_string("");  // Pointer to NUL, not NULL pointer.
+  EXPECT_TRUE(empty_string.raw_str());
+  EXPECT_EQ(0u, empty_string.GetLength());
+  EXPECT_TRUE(empty_string.IsEmpty());
+  EXPECT_EQ(null_string, empty_string);
+
+  ByteStringView assigned_null_string("initially not nullptr");
+  assigned_null_string = null_string;
+  EXPECT_FALSE(assigned_null_string.raw_str());
+  EXPECT_EQ(0u, assigned_null_string.GetLength());
+  EXPECT_TRUE(assigned_null_string.IsEmpty());
+  EXPECT_EQ(null_string, assigned_null_string);
+
+  ByteStringView assigned_nullptr_string("initially not nullptr");
+  assigned_nullptr_string = nullptr;
+  EXPECT_FALSE(assigned_nullptr_string.raw_str());
+  EXPECT_EQ(0u, assigned_nullptr_string.GetLength());
+  EXPECT_TRUE(assigned_nullptr_string.IsEmpty());
+  EXPECT_EQ(null_string, assigned_nullptr_string);
+
+  ByteStringView non_null_string("a");
+  EXPECT_NE(null_string, non_null_string);
 }
 
 TEST(ByteStringView, NotNull) {
