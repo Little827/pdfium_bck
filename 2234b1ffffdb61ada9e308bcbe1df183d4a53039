@@ -46,6 +46,30 @@
       "revId": "2234b1ffffdb61ada9e308bcbe1df183d4a53039",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ddd6d3a_bd20349d",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-04T17:20:45Z",
+      "side": 1,
+      "message": "s/ByteString/ByteStringView/.  Sorry for confusion.",
+      "parentUuid": "3bd2a0c8_3aae47b5",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "2234b1ffffdb61ada9e308bcbe1df183d4a53039",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
