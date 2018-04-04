@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdae3385_bd9b5f08",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-04T20:21:55Z",
+      "side": 1,
+      "message": "NOTE: diff against PS1 for this, which has just the move.",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 966,
+        "endChar": 4
+      },
+      "revId": "d9b838afaffbf29088eb63164e3dd3280c3e59a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
