@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f44c2a65_787a40cc",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-04T21:56:36Z",
+      "side": 1,
+      "message": "Do these do anything? Could we remove them in a followup?",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "d58df75d7349080184f62458c3b5d51447da453e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
