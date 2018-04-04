@@ -22,6 +22,30 @@
       "revId": "792b002abef19177559a9afe0ab9d8cc4360bcfa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1adda813_a5eaf237",
+        "filename": "xfa/fwl/cfwl_caret.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-04T18:49:38Z",
+      "side": 1,
+      "message": "You\u0027re right, it\u0027s actually a period. Renamed. CL description said \"lower frequency\" and kFrequency was being increased :)",
+      "parentUuid": "5912bd14_283c110a",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "792b002abef19177559a9afe0ab9d8cc4360bcfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
