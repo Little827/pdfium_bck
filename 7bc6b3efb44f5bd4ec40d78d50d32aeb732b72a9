@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1522952352 -0700\nnonce AFN+CTJlQpuXJ/R2SUpCn+1XU8Aef2+7tJUA7BRB2POs+eQeEBt6iky9e0n7JQtZCKoEtztlQnYk\n\n0000000000000000000000000000000000000000 7bc6b3efb44f5bd4ec40d78d50d32aeb732b72a9 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrGaKAACgkQqzYtYVpm\n/XvJIwf7Bc8bc8vDy2dbYpHilM0kXrKniOosuqbJ0COMNIc0gn1KvCncy1yoCFVo\n/39R01UB7+Fgz46WERXLCZ+cKqyryMp6pUBpAoQvj49SsafwsfvbvbId2JAXlFHH\n0gtaG9oY+JTh2BU2cY2sxS4yRF6FANqQ3mEvf8DDzPV9rdTh5tkJeVFZA2gAsi1p\nstRp5oJ/o/bFl269XMLepO6Z2wvmwAt0cbeeM28kks3tBnrJa7gb9DGgH1xjNRbg\n2J+CAl6xNx/FXRZ2ET0nbpygakOVGPNhSCdP8s7zMFONQnZaDmbXODQR1/VV/f2G\n3zY4o2s6MRiazzvR+cSh3lsIYjPuMw\u003d\u003d\n\u003dxBEO\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbb4c1e2_041a00f8",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-05T18:52:21Z",
+      "side": 1,
+      "message": "Can\u0027t use MaybeOwned because this is const and |m_pNewBuf| is not.",
+      "revId": "7bc6b3efb44f5bd4ec40d78d50d32aeb732b72a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
