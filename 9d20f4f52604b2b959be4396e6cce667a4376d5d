@@ -122,6 +122,30 @@
     },
     {
       "key": {
+        "uuid": "30dbfa28_825a2e68",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-05T19:02:24Z",
+      "side": 1,
+      "message": "Finally got back to trying this out. I didn\u0027t see a big increase locally. I also changed the code to assign \"m_bpc \u003d\u003d 8\" to a const bool outside of the loop. Hopefully that helps compilers figure out how to best optimize this?",
+      "parentUuid": "3a683592_3fd74361",
+      "range": {
+        "startLine": 919,
+        "startChar": 6,
+        "endLine": 919,
+        "endChar": 23
+      },
+      "revId": "9d20f4f52604b2b959be4396e6cce667a4376d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2100086_c49c69d0",
         "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
         "patchSetId": 1
@@ -136,6 +160,24 @@
       "revId": "9d20f4f52604b2b959be4396e6cce667a4376d5d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4119ce40_d9489b66",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-05T19:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2100086_c49c69d0",
+      "revId": "9d20f4f52604b2b959be4396e6cce667a4376d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
