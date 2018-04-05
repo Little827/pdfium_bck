@@ -22,6 +22,30 @@
       "revId": "d58df75d7349080184f62458c3b5d51447da453e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8023ba68_b5b1ad1e",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-05T14:42:19Z",
+      "side": 1,
+      "message": "Doesn\u0027t look like it",
+      "parentUuid": "f44c2a65_787a40cc",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "d58df75d7349080184f62458c3b5d51447da453e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
