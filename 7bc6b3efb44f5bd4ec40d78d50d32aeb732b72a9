@@ -17,6 +17,24 @@
       "revId": "7bc6b3efb44f5bd4ec40d78d50d32aeb732b72a9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744dc821_4d1672a2",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-05T19:25:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbb4c1e2_041a00f8",
+      "revId": "7bc6b3efb44f5bd4ec40d78d50d32aeb732b72a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
