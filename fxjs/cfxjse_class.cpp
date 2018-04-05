@@ -47,8 +47,9 @@ void V8ConstructorCallback_Wrapper(
   if (!lpClassDefinition)
     return;
 
-  ASSERT(info.Holder()->InternalFieldCount());
+  ASSERT(info.Holder()->InternalFieldCount() == 2);
   info.Holder()->SetAlignedPointerInInternalField(0, nullptr);
+  info.Holder()->SetAlignedPointerInInternalField(1, nullptr);
 }
 
 void Context_GlobalObjToString(
