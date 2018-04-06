@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e1c6601_5908ef16",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-06T16:54:05Z",
+      "side": 1,
+      "message": "Is this just for testing? Should it be inside a #ifndef NDEBUG?",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 3
+      },
+      "revId": "c9d0a63f9be1f0092ec1dd8d998aab35530aba96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6047a68_c42b75ed",
+        "filename": "fxjs/cfxjse_runtimedata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-06T16:54:05Z",
+      "side": 1,
+      "message": "So, why are these ones 0 and the ones above 2? Something to do with how they\u0027re created?",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 47
+      },
+      "revId": "c9d0a63f9be1f0092ec1dd8d998aab35530aba96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
