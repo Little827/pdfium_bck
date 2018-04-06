@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a363365_b2a2cb4c",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-06T19:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f2258a5_f4cb639c",
+      "range": {
+        "startLine": 206,
+        "startChar": 7,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "624dd08f_20784030",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 7
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "86b8b7f3_0234bcfd",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-06T19:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caa5aa8b_36ce7355",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 6
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e53cb8f_3d31e26b",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-06T19:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "624dd08f_20784030",
+      "range": {
+        "startLine": 210,
+        "startChar": 38,
+        "endLine": 210,
+        "endChar": 73
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b22fb039_55ee36af",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 7
@@ -85,6 +157,24 @@
       "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142fa706_7afe7a7d",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-06T19:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22fb039_55ee36af",
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +198,30 @@
       "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8e02b7_c79adeed",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-06T19:57:58Z",
+      "side": 1,
+      "message": "That would look better, OTOH the ++ in the last line would be unnecessary (and maybe confusing). If you don\u0027t mind, let\u0027s leave it as it is.",
+      "parentUuid": "7e9b2c72_12a59bf7",
+      "range": {
+        "startLine": 228,
+        "startChar": 33,
+        "endLine": 228,
+        "endChar": 43
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
