@@ -118,7 +118,7 @@ class CXFA_FFDocView {
   CXFA_LayoutProcessor* m_pXFADocLayout = nullptr;  // Not owned.
   UnownedPtr<CXFA_Node> m_pFocusNode;
   UnownedPtr<CXFA_FFWidget> m_pFocusWidget;
-  UnownedPtr<CXFA_FFWidget> m_pOldFocusWidget;
+  // UnownedPtr<CXFA_FFWidget> m_pOldFocusWidget;
   std::vector<CXFA_Node*> m_ValidateNodes;
   std::vector<CXFA_Node*> m_CalculateNodes;
   std::vector<CXFA_BindItems*> m_BindItems;
