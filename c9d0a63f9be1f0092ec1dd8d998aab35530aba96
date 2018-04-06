@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "56d94902_431aeaee",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-06T17:40:13Z",
+      "side": 1,
+      "message": "Would you like it better if I killed the comment and just put:\n\nfor (int i \u003d 0; i \u003c pThisProxy-\u003eInternalFieldCount(); ++i)\n  pThisProxy-\u003eSetAlignedPointerInInternalField(i, nullptr)\n\nSo it handles whatever number of internal fields the caller inflicts on us?\n\nI think I\u0027ll let this be ... it seems a better fix would be to not have any internal fields in our global in the first place if we can get away with it.",
+      "parentUuid": "58127ce3_95aacc77",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 3
+      },
+      "revId": "c9d0a63f9be1f0092ec1dd8d998aab35530aba96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6047a68_c42b75ed",
         "filename": "fxjs/cfxjse_runtimedata.cpp",
         "patchSetId": 2
