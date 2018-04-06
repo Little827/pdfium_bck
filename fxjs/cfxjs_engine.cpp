@@ -437,6 +437,17 @@ void CFXJS_Engine::InitializeEngine() {
 
   v8::Local<v8::Context> v8Context = v8::Context::New(
       GetIsolate(), nullptr, GetGlobalObjectTemplate(GetIsolate()));
+
+  v8::Local<v8::Object> pThisProxy = v8Context->Global();
+  ASSERT(pThisProxy->InternalFieldCount() == 2);
+  pThisProxy->SetAlignedPointerInInternalField(0, nullptr);
+  pThisProxy->SetAlignedPointerInInternalField(1, nullptr);
+
+  v8::Local<v8::Object> pThis = pThisProxy->GetPrototype().As<v8::Object>();
+  ASSERT(pThis->InternalFieldCount() == 2);
+  pThis->SetAlignedPointerInInternalField(0, nullptr);
+  pThis->SetAlignedPointerInInternalField(1, nullptr);
+
   v8::Context::Scope context_scope(v8Context);
   SetIntoContext(v8Context);
 
