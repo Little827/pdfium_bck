@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f2258a5_f4cb639c",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-06T18:23:42Z",
+      "side": 1,
+      "message": "nit: Upper case",
+      "range": {
+        "startLine": 206,
+        "startChar": 7,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624dd08f_20784030",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-06T18:23:42Z",
+      "side": 1,
+      "message": "\"not a multiple of 8\"",
+      "range": {
+        "startLine": 210,
+        "startChar": 38,
+        "endLine": 210,
+        "endChar": 73
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caa5aa8b_36ce7355",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-06T18:23:42Z",
+      "side": 1,
+      "message": "nit: Upper case",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 6
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22fb039_55ee36af",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-06T18:23:42Z",
+      "side": 1,
+      "message": "Use another variable instead of re-purposing quad_index.",
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9b2c72_12a59bf7",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-06T18:23:42Z",
+      "side": 1,
+      "message": "quad_index++ in all 8 lines would work too. Up to you.",
+      "range": {
+        "startLine": 228,
+        "startChar": 33,
+        "endLine": 228,
+        "endChar": 43
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
