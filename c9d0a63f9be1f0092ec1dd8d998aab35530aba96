@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "58127ce3_95aacc77",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-06T17:04:28Z",
+      "side": 1,
+      "message": "Ah, then I find the comment a bit misleading. Maybe:\n\n// In testing the internal field count will be 0. In production it will be 2 so\n// only reset the fields in production.\n\nSomething like that?",
+      "parentUuid": "28f710d1_76b0ddf6",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 3
+      },
+      "revId": "c9d0a63f9be1f0092ec1dd8d998aab35530aba96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6047a68_c42b75ed",
         "filename": "fxjs/cfxjse_runtimedata.cpp",
         "patchSetId": 2
