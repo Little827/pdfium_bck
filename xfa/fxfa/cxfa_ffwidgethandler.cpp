@@ -48,9 +48,12 @@ bool CXFA_FFWidgetHandler::OnLButtonDown(CXFA_FFWidget* hWidget,
                                          const CFX_PointF& point) {
   m_pDocView->LockUpdate();
   bool bRet = hWidget->OnLButtonDown(dwFlags, hWidget->Rotate2Normal(point));
-  if (bRet && m_pDocView->SetFocus(hWidget)) {
-    m_pDocView->GetDoc()->GetDocEnvironment()->SetFocusWidget(
-        m_pDocView->GetDoc(), hWidget);
+  if (bRet) {
+    if (m_pDocView->SetFocus(hWidget)) {
+      m_pDocView->GetDoc()->GetDocEnvironment()->SetFocusWidget(
+          m_pDocView->GetDoc(), hWidget);
+    }
+    hWidget->OnPostLButtonDown(dwFlags, hWidget->Rotate2Normal(point));
   }
   m_pDocView->UnlockUpdate();
   m_pDocView->UpdateDocView();

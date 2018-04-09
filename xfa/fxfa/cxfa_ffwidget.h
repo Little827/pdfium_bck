@@ -102,6 +102,7 @@ class CXFA_FFWidget : public CXFA_ContentLayoutItem {
   virtual bool OnMouseEnter();
   virtual bool OnMouseExit();
   virtual bool OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point);
+  virtual void OnPostLButtonDown(uint32_t dwFlags, const CFX_PointF& point);
   virtual bool OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point);
   virtual bool OnLButtonDblClk(uint32_t dwFlags, const CFX_PointF& point);
   virtual bool OnMouseMove(uint32_t dwFlags, const CFX_PointF& point);
