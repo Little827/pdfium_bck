@@ -63,8 +63,7 @@ CFX_GifDecodeStatus CCodec_GifModule::LoadFrame(Context* pContext,
   pAttribute->m_nGifLeft = context->images_[frame_num]->image_info.left;
   pAttribute->m_nGifTop = context->images_[frame_num]->image_info.top;
   pAttribute->m_fAspectRatio = context->pixel_aspect_;
-  const uint8_t* buf =
-      reinterpret_cast<const uint8_t*>(context->cmt_data_.GetBuffer(0));
+  auto* buf = reinterpret_cast<const uint8_t*>(context->cmt_data_.c_str());
   uint32_t len = context->cmt_data_.GetLength();
   if (len > 21) {
     uint8_t size = *buf++;

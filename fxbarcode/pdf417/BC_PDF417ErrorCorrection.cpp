@@ -157,7 +157,7 @@ bool CBC_PDF417ErrorCorrection::generateErrorCorrection(
     t3 = 929 - t2;
     ech[0] = (wchar_t)(t3 % 929);
   }
-  result->Reserve(k);
+  result->GetBuffer(k);
   for (int32_t j = k - 1; j >= 0; j--) {
     if (ech[j] != 0)
       ech[j] = static_cast<wchar_t>(929) - ech[j];

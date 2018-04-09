@@ -133,8 +133,8 @@ void CFX_ChecksumContext::FinishChecksum() {
     memset(digest, 0, 20);
     CRYPT_SHA1Finish(m_pByteContext.get(), digest);
     int32_t nLen = Base64EncodeA(digest, 20, nullptr);
-    char* pBuffer = m_bsChecksum.GetBuffer(nLen);
-    Base64EncodeA(digest, 20, pBuffer);
+    pdfium::span<char> pBuffer = m_bsChecksum.GetBuffer(nLen);
+    Base64EncodeA(digest, 20, pBuffer.data());
     m_bsChecksum.ReleaseBuffer(nLen);
     m_pByteContext.reset();
   }

@@ -17,7 +17,7 @@
 #include "core/fxcrt/string_data_template.h"
 #include "core/fxcrt/string_view_template.h"
 #include "third_party/base/optional.h"
-
+#include "third_party/base/span.h"
 
 namespace fxcrt {
 
@@ -162,8 +162,14 @@ class WideString {
   void TrimRight(wchar_t target);
   void TrimRight(const WideStringView& targets);
 
-  void Reserve(size_t len);
-  wchar_t* GetBuffer(size_t len);
+  // Adds space to the backing store for |len| wide characters in total, but
+  // does not yet include them as part of the string value. The returned span
+  // represents the current backing store, any modification to the string
+  // invalidates it.
+  pdfium::span<wchar_t> GetBuffer(size_t len);
+
+  // Includes all |len| wide characters from the backing store as part of the
+  // string value.
   void ReleaseBuffer(size_t len);
 
   int GetInteger() const;

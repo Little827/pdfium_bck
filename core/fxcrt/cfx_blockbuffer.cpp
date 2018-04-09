@@ -9,6 +9,8 @@
 #include <algorithm>
 #include <utility>
 
+#include "third_party/base/span.h"
+
 namespace {
 
 const size_t kAllocStep = 1024 * 1024;
@@ -80,8 +82,8 @@ WideString CFX_BlockBuffer::GetTextData(size_t start, size_t length) const {
   length = std::min(length, maybeDataLength);
 
   WideString wsTextData;
-  wchar_t* pBuf = wsTextData.GetBuffer(length);
-  if (!pBuf)
+  pdfium::span<wchar_t> pBuf = wsTextData.GetBuffer(length);
+  if (pBuf.empty())
     return WideString();
 
   size_t startBlock = 0;
@@ -104,7 +106,7 @@ WideString CFX_BlockBuffer::GetTextData(size_t start, size_t length) const {
       copyLength -= ((kAllocStep - 1) - endInner);
 
     wchar_t* pBlockBuf = m_BlockArray[i].get();
-    memcpy(pBuf + pointer, pBlockBuf + bufferPointer,
+    memcpy(&pBuf[pointer], pBlockBuf + bufferPointer,
            copyLength * sizeof(wchar_t));
     pointer += copyLength;
   }

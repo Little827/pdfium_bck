@@ -372,15 +372,16 @@ WideString CJS_PublicMethods::ParseStringString(const WideString& str,
                                                 size_t nStart,
                                                 size_t* pSkip) {
   WideString swRet;
-  swRet.Reserve(str.GetLength());
+  pdfium::span<wchar_t> wspan = swRet.GetBuffer(str.GetLength());
+  size_t iCount = 0;
   for (size_t i = nStart; i < str.GetLength(); ++i) {
     wchar_t c = str[i];
     if (!std::iswdigit(c))
       break;
 
-    swRet += c;
+    wspan[iCount++] = c;
   }
-
+  swRet.ReleaseBuffer(iCount);
   *pSkip = swRet.GetLength();
   return swRet;
 }
@@ -1094,17 +1095,15 @@ CJS_Return CJS_PublicMethods::AFPercent_Format(
 
   if (iDec2 < 0) {
     ByteString zeros;
-    char* zeros_ptr = zeros.GetBuffer(abs(iDec2));
-    memset(zeros_ptr, '0', abs(iDec2));
+    pdfium::span<char> zeros_ptr = zeros.GetBuffer(abs(iDec2));
+    memset(zeros_ptr.data(), '0', abs(iDec2));
     strValue = zeros + strValue;
-
     iDec2 = 0;
   }
   int iMax = strValue.GetLength();
   if (iDec2 > iMax) {
     for (int iNum = 0; iNum <= iDec2 - iMax; iNum++)
       strValue += '0';
-
     iMax = iDec2 + 1;
   }
 

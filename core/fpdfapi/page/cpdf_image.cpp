@@ -200,13 +200,13 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
       pCS->AddNew<CPDF_Name>("DeviceRGB");
       pCS->AddNew<CPDF_Number>(1);
       ByteString ct;
-      char* pBuf = ct.GetBuffer(6);
-      pBuf[0] = (char)reset_r;
-      pBuf[1] = (char)reset_g;
-      pBuf[2] = (char)reset_b;
-      pBuf[3] = (char)set_r;
-      pBuf[4] = (char)set_g;
-      pBuf[5] = (char)set_b;
+      pdfium::span<char> pBuf = ct.GetBuffer(6);
+      pBuf[0] = static_cast<char>(reset_r);
+      pBuf[1] = static_cast<char>(reset_g);
+      pBuf[2] = static_cast<char>(reset_b);
+      pBuf[3] = static_cast<char>(set_r);
+      pBuf[4] = static_cast<char>(set_g);
+      pBuf[5] = static_cast<char>(set_b);
       ct.ReleaseBuffer(6);
       pCS->AddNew<CPDF_String>(ct, true);
     }

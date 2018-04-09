@@ -490,7 +490,6 @@ FPDF_BOOL CPDFSDK_FormFillEnvironment::PutRequestURL(const wchar_t* wsURL,
   ByteString bsURL = WideString(wsURL).UTF16LE_Encode();
   ByteString bsData = WideString(wsData).UTF16LE_Encode();
   ByteString bsEncode = WideString(wsEncode).UTF16LE_Encode();
-
   return m_pInfo->FFI_PutRequestURL(
       m_pInfo, reinterpret_cast<FPDF_WIDESTRING>(bsURL.c_str()),
       reinterpret_cast<FPDF_WIDESTRING>(bsData.c_str()),

@@ -817,41 +817,23 @@ TEST(ByteString, TrimRightCopies) {
   }
 }
 
-TEST(ByteString, Reserve) {
-  {
-    ByteString str;
-    str.Reserve(6);
-    const char* old_buffer = str.c_str();
-    str += "ABCDEF";
-    EXPECT_EQ(old_buffer, str.c_str());
-    str += "Blah Blah Blah Blah Blah Blah";
-    EXPECT_NE(old_buffer, str.c_str());
-  }
-  {
-    ByteString str("A");
-    str.Reserve(6);
-    const char* old_buffer = str.c_str();
-    str += "BCDEF";
-    EXPECT_EQ(old_buffer, str.c_str());
-    str += "Blah Blah Blah Blah Blah Blah";
-    EXPECT_NE(old_buffer, str.c_str());
-  }
-}
-
 TEST(ByteString, GetBuffer) {
   {
     ByteString str;
-    char* buffer = str.GetBuffer(12);
+    pdfium::span<char> buffer = str.GetBuffer(12);
     // NOLINTNEXTLINE(runtime/printf)
-    strcpy(buffer, "clams");
+    strcpy(buffer.data(), "clams");
+    EXPECT_EQ("", str);
     str.ReleaseBuffer(str.GetStringLength());
     EXPECT_EQ("clams", str);
   }
   {
     ByteString str("cl");
-    char* buffer = str.GetBuffer(12);
+    pdfium::span<char> buffer = str.GetBuffer(12);
+    EXPECT_EQ("cl", str);
     // NOLINTNEXTLINE(runtime/printf)
-    strcpy(buffer + 2, "ams");
+    strcpy(&buffer[2], "ams");
+    EXPECT_EQ("cl", str);
     str.ReleaseBuffer(str.GetStringLength());
     EXPECT_EQ("clams", str);
   }
@@ -860,7 +842,7 @@ TEST(ByteString, GetBuffer) {
 TEST(ByteString, ReleaseBuffer) {
   {
     ByteString str;
-    str.Reserve(12);
+    str.GetBuffer(12);
     str += "clams";
     const char* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
@@ -869,7 +851,7 @@ TEST(ByteString, ReleaseBuffer) {
   }
   {
     ByteString str("c");
-    str.Reserve(12);
+    str.GetBuffer(12);
     str += "lams";
     const char* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
@@ -878,7 +860,7 @@ TEST(ByteString, ReleaseBuffer) {
   }
   {
     ByteString str;
-    str.Reserve(200);
+    str.GetBuffer(200);
     str += "clams";
     const char* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
@@ -887,7 +869,7 @@ TEST(ByteString, ReleaseBuffer) {
   }
   {
     ByteString str("c");
-    str.Reserve(200);
+    str.GetBuffer(200);
     str += "lams";
     const char* old_buffer = str.c_str();
     str.ReleaseBuffer(4);

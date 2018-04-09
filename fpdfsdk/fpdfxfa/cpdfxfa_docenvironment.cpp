@@ -404,7 +404,7 @@ void CPDFXFA_DocEnvironment::GetTitle(CXFA_FFDoc* hDoc, WideString& wsTitle) {
     return;
 
   ByteString csTitle = pInfoDict->GetStringFor("Title");
-  wsTitle = WideString::FromLocal(csTitle.c_str());
+  wsTitle = WideString::FromLocal(csTitle.AsStringView());
 }
 
 void CPDFXFA_DocEnvironment::SetTitle(CXFA_FFDoc* hDoc,
@@ -648,9 +648,7 @@ bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
     return true;
 
   (void)it->MoveToNext();
-  CXFA_Node* pNode = it->MoveToNext();
-
-  while (pNode) {
+  while (CXFA_Node* pNode = it->MoveToNext()) {
     int fRet = pNode->ProcessValidate(docView, -1);
     if (fRet == XFA_EVENTERROR_Error) {
       CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
@@ -661,9 +659,9 @@ bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
       ByteString bs = ws.UTF16LE_Encode();
       pFormFillEnv->Alert(reinterpret_cast<FPDF_WIDESTRING>(bs.c_str()),
                           reinterpret_cast<FPDF_WIDESTRING>(L""), 0, 1);
+
       return false;
     }
-    pNode = it->MoveToNext();
   }
 
   docView->UpdateDocView();
@@ -912,8 +910,8 @@ bool CPDFXFA_DocEnvironment::SubmitInternal(CXFA_FFDoc* hDoc,
   if (csURL.IsEmpty()) {
     WideString ws = WideString::FromLocal("Submit cancelled.");
     ByteString bs = ws.UTF16LE_Encode();
-    pFormFillEnv->Alert(reinterpret_cast<FPDF_WIDESTRING>(bs.c_str()),
-                        reinterpret_cast<FPDF_WIDESTRING>(L""), 0, 4);
+    pFormFillEnv->Alert(reinterpret_cast<const FPDF_WIDESTRING>(bs.c_str()),
+                        reinterpret_cast<const FPDF_WIDESTRING>(L""), 0, 4);
     return false;
   }
 

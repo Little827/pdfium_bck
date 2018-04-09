@@ -791,39 +791,22 @@ TEST(WideString, TrimRightCopies) {
   }
 }
 
-TEST(WideString, Reserve) {
-  {
-    WideString str;
-    str.Reserve(6);
-    const wchar_t* old_buffer = str.c_str();
-    str += L"ABCDEF";
-    EXPECT_EQ(old_buffer, str.c_str());
-    str += L"Blah Blah Blah Blah Blah Blah";
-    EXPECT_NE(old_buffer, str.c_str());
-  }
-  {
-    WideString str(L"A");
-    str.Reserve(6);
-    const wchar_t* old_buffer = str.c_str();
-    str += L"BCDEF";
-    EXPECT_EQ(old_buffer, str.c_str());
-    str += L"Blah Blah Blah Blah Blah Blah";
-    EXPECT_NE(old_buffer, str.c_str());
-  }
-}
-
 TEST(WideString, GetBuffer) {
+  WideString str;
+  EXPECT_EQ(L"", str);
+
   {
-    WideString str;
-    wchar_t* buffer = str.GetBuffer(12);
-    wcscpy(buffer, L"clams");
-    str.ReleaseBuffer(str.GetStringLength());
-    EXPECT_EQ(L"clams", str);
+    pdfium::span<wchar_t> buffer = str.GetBuffer(2);
+    wcscpy(buffer.data(), L"cl");
+    EXPECT_EQ(L"", str);
+
+    str.ReleaseBuffer(2);
+    EXPECT_EQ(L"cl", str);
   }
   {
-    WideString str(L"cl");
-    wchar_t* buffer = str.GetBuffer(12);
-    wcscpy(buffer + 2, L"ams");
+    pdfium::span<wchar_t> buffer = str.GetBuffer(12);
+    wcscpy(&buffer[2], L"ams");
+    EXPECT_EQ(L"cl", str);
     str.ReleaseBuffer(str.GetStringLength());
     EXPECT_EQ(L"clams", str);
   }
@@ -832,7 +815,7 @@ TEST(WideString, GetBuffer) {
 TEST(WideString, ReleaseBuffer) {
   {
     WideString str;
-    str.Reserve(12);
+    str.GetBuffer(12);
     str += L"clams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
@@ -841,7 +824,7 @@ TEST(WideString, ReleaseBuffer) {
   }
   {
     WideString str(L"c");
-    str.Reserve(12);
+    str.GetBuffer(12);
     str += L"lams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
@@ -850,7 +833,7 @@ TEST(WideString, ReleaseBuffer) {
   }
   {
     WideString str;
-    str.Reserve(200);
+    str.GetBuffer(200);
     str += L"clams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
@@ -859,7 +842,7 @@ TEST(WideString, ReleaseBuffer) {
   }
   {
     WideString str(L"c");
-    str.Reserve(200);
+    str.GetBuffer(200);
     str += L"lams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);

@@ -36,9 +36,10 @@ CFX_Char* CFX_BreakPiece::GetChar(int32_t index) const {
 
 WideString CFX_BreakPiece::GetString() const {
   WideString ret;
-  ret.Reserve(m_iChars);
-  for (int32_t i = m_iStartChar; i < m_iStartChar + m_iChars; i++)
-    ret += static_cast<wchar_t>((*m_pChars)[i].char_code());
+  pdfium::span<wchar_t> wspan = ret.GetBuffer(m_iChars);
+  for (int32_t i = 0; i < m_iChars; i++)
+    wspan[i] += static_cast<wchar_t>((*m_pChars)[i + m_iStartChar].char_code());
+  ret.ReleaseBuffer(m_iChars);
   return ret;
 }
 

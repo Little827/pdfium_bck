@@ -246,6 +246,13 @@ class span {
   }
   constexpr T* data() const noexcept { return data_.Get(); }
 
+  // Non-const versions are a pdfium extension.
+  T& operator[](size_t index) noexcept {
+    CHECK(index < size_);
+    return data_.Get()[index];
+  }
+  T* data() noexcept { return data_.Get(); }
+
   // [span.iter], span iterator support
   constexpr iterator begin() const noexcept { return data_.Get(); }
   constexpr iterator end() const noexcept { return data_.Get() + size_; }
