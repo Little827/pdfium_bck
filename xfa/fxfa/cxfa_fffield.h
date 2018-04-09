@@ -36,6 +36,7 @@ class CXFA_FFField : public CXFA_FFWidget, public IFWL_WidgetDelegate {
   bool OnMouseEnter() override;
   bool OnMouseExit() override;
   bool OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) override;
+  void OnPostLButtonDown(uint32_t dwFlags, const CFX_PointF& point) override;
   bool OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) override;
   bool OnLButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) override;
   bool OnMouseMove(uint32_t dwFlags, const CFX_PointF& point) override;
