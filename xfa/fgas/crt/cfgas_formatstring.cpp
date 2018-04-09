@@ -256,7 +256,7 @@ bool ParseLocaleDate(const WideString& wsDate,
     }
 
     WideString symbol;
-    symbol.Reserve(4);
+    symbol.GetBuffer(4);
     symbol += strf[ccf++];
     while (ccf < lenf && strf[ccf] == symbol[0])
       symbol += strf[ccf++];
@@ -377,7 +377,7 @@ bool ParseLocaleTime(const WideString& wsTime,
     }
 
     WideString symbol;
-    symbol.Reserve(4);
+    symbol.GetBuffer(4);
     symbol += strf[ccf++];
     while (ccf < lenf && strf[ccf] == symbol[0])
       symbol += strf[ccf++];
@@ -582,7 +582,7 @@ WideString DateFormat(const WideString& wsDatePattern,
     }
 
     WideString symbol;
-    symbol.Reserve(4);
+    symbol.GetBuffer(4);
     symbol += strf[ccf++];
     while (ccf < lenf && strf[ccf] == symbol[0])
       symbol += strf[ccf++];
@@ -652,7 +652,7 @@ WideString TimeFormat(const WideString& wsTimePattern,
     }
 
     WideString symbol;
-    symbol.Reserve(4);
+    symbol.GetBuffer(4);
     symbol += strf[ccf++];
     while (ccf < lenf && strf[ccf] == symbol[0])
       symbol += strf[ccf++];

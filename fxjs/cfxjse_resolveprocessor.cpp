@@ -499,8 +499,8 @@ int32_t CFXJSE_ResolveProcessor::GetFilter(const WideStringView& wsExpression,
 
   WideString& wsName = rnd.m_wsName;
   WideString& wsCondition = rnd.m_wsCondition;
-  wchar_t* pNameBuf = wsName.GetBuffer(iLength - nStart);
-  wchar_t* pConditionBuf = wsCondition.GetBuffer(iLength - nStart);
+  pdfium::span<wchar_t> pNameBuf = wsName.GetBuffer(iLength - nStart);
+  pdfium::span<wchar_t> pConditionBuf = wsCondition.GetBuffer(iLength - nStart);
   int32_t nNameCount = 0;
   int32_t nConditionCount = 0;
   std::vector<int32_t> stack;

@@ -7,6 +7,7 @@
 #include "core/fxge/cfx_folderfontinfo.h"
 
 #include <limits>
+#include <string>
 #include <utility>
 
 #include "core/fxcrt/fx_codepage.h"
@@ -44,11 +45,12 @@ const struct {
 };
 
 ByteString FPDF_ReadStringFromFile(FILE* pFile, uint32_t size) {
-  ByteString buffer;
-  if (!fread(buffer.GetBuffer(size), size, 1, pFile))
+  ByteString string;
+  pdfium::span<char> buffer = string.GetBuffer(size);
+  if (!fread(buffer.data(), size, 1, pFile))
     return ByteString();
-  buffer.ReleaseBuffer(size);
-  return buffer;
+  string.ReleaseBuffer(size);
+  return string;
 }
 
 ByteString FPDF_LoadTableFromTT(FILE* pFile,

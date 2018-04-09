@@ -911,11 +911,11 @@ void CXFA_TextLayout::ProcessText(WideString& wsText) {
   if (iLen == 0)
     return;
 
-  wchar_t* psz = wsText.GetBuffer(iLen);
+  pdfium::span<wchar_t> psz = wsText.GetBuffer(iLen);
   int32_t iTrimLeft = 0;
-  wchar_t wch = 0, wPrev = 0;
+  wchar_t wPrev = 0;
   for (int32_t i = 0; i < iLen; i++) {
-    wch = psz[i];
+    wchar_t wch = psz[i];
     if (wch < 0x20)
       wch = 0x20;
     if (wch == 0x20 && wPrev == 0x20)
