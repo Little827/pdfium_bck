@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd2f0b1a_988a1cd8",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-09T18:39:31Z",
+      "side": 1,
+      "message": "Only functional change is executing these after what used to be StopLoad(). I looked at it and I think this is fine.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "ebe8524402a7c35451108de4199ee624a1715b48",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
