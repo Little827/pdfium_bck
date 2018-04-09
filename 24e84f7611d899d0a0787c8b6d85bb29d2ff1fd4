@@ -246,6 +246,30 @@
       "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e1f8ae2_49da45fc",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-09T23:24:50Z",
+      "side": 1,
+      "message": "I don\u0027t get the point of replacing efficient pre-increments (++index) with sums (index + 1, index + 2 etc.). If this is about consistency, then we should also avoid re-purposing quad_index in GetQuadPointsAtIndex, like we\u0027re doing here. OTOH, I really need to have multi-line annotation support ready before the month is over, so forgive me if I\u0027m trying to avoid any more code cosmetics here in this CL.",
+      "parentUuid": "b92d7afd_45860b82",
+      "range": {
+        "startLine": 228,
+        "startChar": 33,
+        "endLine": 228,
+        "endChar": 43
+      },
+      "revId": "24e84f7611d899d0a0787c8b6d85bb29d2ff1fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

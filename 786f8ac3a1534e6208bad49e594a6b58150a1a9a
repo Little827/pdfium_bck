@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0bd435f0_df8fe686",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-09T23:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c02eac3_4aa5c1e0",
+      "revId": "786f8ac3a1534e6208bad49e594a6b58150a1a9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb2c758c_aa0ba2e6",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "786f8ac3a1534e6208bad49e594a6b58150a1a9a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0024dab0_e95ed600",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-09T23:24:50Z",
+      "side": 1,
+      "message": "That makes sense.",
+      "parentUuid": "bb2c758c_aa0ba2e6",
+      "revId": "786f8ac3a1534e6208bad49e594a6b58150a1a9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
