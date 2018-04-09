@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ae72b7b_837f63d8",
+        "filename": "xfa/fxfa/parser/cxfa_document_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-09T18:43:13Z",
+      "side": 1,
+      "message": "The early return makes this less clear.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "e2a980ce059c8c9ffaa693e9fd9e46b4c2cfab70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
