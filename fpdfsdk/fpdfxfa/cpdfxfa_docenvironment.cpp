@@ -404,8 +404,7 @@ void CPDFXFA_DocEnvironment::GetTitle(CXFA_FFDoc* hDoc, WideString& wsTitle) {
     return;
 
   ByteString csTitle = pInfoDict->GetStringFor("Title");
-  wsTitle = wsTitle.FromLocal(csTitle.GetBuffer(csTitle.GetLength()));
-  csTitle.ReleaseBuffer(csTitle.GetLength());
+  wsTitle = WideString::FromLocal(csTitle.c_str());
 }
 
 void CPDFXFA_DocEnvironment::SetTitle(CXFA_FFDoc* hDoc,
@@ -442,11 +441,9 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
     WideString filepath = pFormFillEnv->JS_fieldBrowse();
     bs = filepath.UTF16LE_Encode();
   }
-  int len = bs.GetLength();
-  FPDF_FILEHANDLER* pFileHandler =
-      pFormFillEnv->OpenFile(bXDP ? FXFA_SAVEAS_XDP : FXFA_SAVEAS_XML,
-                             (FPDF_WIDESTRING)bs.GetBuffer(len), "wb");
-  bs.ReleaseBuffer(len);
+  FPDF_FILEHANDLER* pFileHandler = pFormFillEnv->OpenFile(
+      bXDP ? FXFA_SAVEAS_XDP : FXFA_SAVEAS_XML,
+      reinterpret_cast<FPDF_WIDESTRING>(bs.c_str()), "wb");
   if (!pFileHandler)
     return;
 
@@ -662,16 +659,14 @@ bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
 
       WideString ws = WideString::FromLocal(IDS_XFA_Validate_Input);
       ByteString bs = ws.UTF16LE_Encode();
-      int len = bs.GetLength();
-      pFormFillEnv->Alert((FPDF_WIDESTRING)bs.GetBuffer(len),
-                          (FPDF_WIDESTRING)L"", 0, 1);
-      bs.ReleaseBuffer(len);
+      pFormFillEnv->Alert(reinterpret_cast<FPDF_WIDESTRING>(bs.c_str()),
+                          reinterpret_cast<FPDF_WIDESTRING>(L""), 0, 1);
       return false;
     }
     pNode = it->MoveToNext();
   }
-  docView->UpdateDocView();
 
+  docView->UpdateDocView();
   return true;
 }
 
@@ -719,10 +714,8 @@ RetainPtr<IFX_SeekableReadStream> CPDFXFA_DocEnvironment::OpenLinkedFile(
     return nullptr;
 
   ByteString bs = wsLink.UTF16LE_Encode();
-  int len = bs.GetLength();
-  FPDF_FILEHANDLER* pFileHandler =
-      pFormFillEnv->OpenFile(0, (FPDF_WIDESTRING)bs.GetBuffer(len), "rb");
-  bs.ReleaseBuffer(len);
+  FPDF_FILEHANDLER* pFileHandler = pFormFillEnv->OpenFile(
+      0, reinterpret_cast<FPDF_WIDESTRING>(bs.c_str()), "rb");
   if (!pFileHandler)
     return nullptr;
 
@@ -919,10 +912,8 @@ bool CPDFXFA_DocEnvironment::SubmitInternal(CXFA_FFDoc* hDoc,
   if (csURL.IsEmpty()) {
     WideString ws = WideString::FromLocal("Submit cancelled.");
     ByteString bs = ws.UTF16LE_Encode();
-    int len = bs.GetLength();
-    pFormFillEnv->Alert(reinterpret_cast<FPDF_WIDESTRING>(bs.GetBuffer(len)),
+    pFormFillEnv->Alert(reinterpret_cast<FPDF_WIDESTRING>(bs.c_str()),
                         reinterpret_cast<FPDF_WIDESTRING>(L""), 0, 4);
-    bs.ReleaseBuffer(len);
     return false;
   }
 
@@ -978,27 +969,19 @@ bool CPDFXFA_DocEnvironment::SubmitInternal(CXFA_FFDoc* hDoc,
     ByteString bsBcc = WideString(csBCCAddress).UTF16LE_Encode();
     ByteString bsSubject = WideString(csSubject).UTF16LE_Encode();
     ByteString bsMsg = WideString(csMsg).UTF16LE_Encode();
-    FPDF_WIDESTRING pTo = (FPDF_WIDESTRING)bsTo.GetBuffer(bsTo.GetLength());
-    FPDF_WIDESTRING pCC = (FPDF_WIDESTRING)bsCC.GetBuffer(bsCC.GetLength());
-    FPDF_WIDESTRING pBcc = (FPDF_WIDESTRING)bsBcc.GetBuffer(bsBcc.GetLength());
-    FPDF_WIDESTRING pSubject =
-        (FPDF_WIDESTRING)bsSubject.GetBuffer(bsSubject.GetLength());
-    FPDF_WIDESTRING pMsg = (FPDF_WIDESTRING)bsMsg.GetBuffer(bsMsg.GetLength());
-    pFormFillEnv->EmailTo(pFileHandler, pTo, pSubject, pCC, pBcc, pMsg);
-    bsTo.ReleaseBuffer(bsTo.GetStringLength());
-    bsCC.ReleaseBuffer(bsCC.GetStringLength());
-    bsBcc.ReleaseBuffer(bsBcc.GetStringLength());
-    bsSubject.ReleaseBuffer(bsSubject.GetStringLength());
-    bsMsg.ReleaseBuffer(bsMsg.GetStringLength());
-  } else {
-    // HTTP or FTP
-    WideString ws;
-    ByteString bs = csURL.UTF16LE_Encode();
-    int len = bs.GetLength();
-    pFormFillEnv->UploadTo(pFileHandler, fileFlag,
-                           (FPDF_WIDESTRING)bs.GetBuffer(len));
-    bs.ReleaseBuffer(len);
+    pFormFillEnv->EmailTo(pFileHandler,
+                          reinterpret_cast<FPDF_WIDESTRING>(bsTo.c_str()),
+                          reinterpret_cast<FPDF_WIDESTRING>(bsSubject.c_str()),
+                          reinterpret_cast<FPDF_WIDESTRING>(bsCC.c_str()),
+                          reinterpret_cast<FPDF_WIDESTRING>(bsBcc.c_str()),
+                          reinterpret_cast<FPDF_WIDESTRING>(bsMsg.c_str()));
+    return true;
   }
+
+  // HTTP or FTP
+  ByteString bs = csURL.UTF16LE_Encode();
+  pFormFillEnv->UploadTo(pFileHandler, fileFlag,
+                         reinterpret_cast<FPDF_WIDESTRING>(bs.c_str()));
   return true;
 }
 
