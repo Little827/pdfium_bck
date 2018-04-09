@@ -390,13 +390,17 @@ bool CXFA_FFField::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   if (!PtInActiveRect(point))
     return false;
 
+  return true;
+}
+
+void CXFA_FFField::OnPostLButtonDown(uint32_t dwFlags,
+                                     const CFX_PointF& point) {
   SetButtonDown(true);
   CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
   ms.m_dwCmd = FWL_MouseCommand::LeftButtonDown;
   ms.m_dwFlags = dwFlags;
   ms.m_pos = FWLToClient(point);
   TranslateFWLMessage(&ms);
-  return true;
 }
 
 bool CXFA_FFField::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
