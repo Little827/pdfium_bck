@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46f7191b_a1807825",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-09T18:52:27Z",
+      "side": 1,
+      "message": "Note: there\u0027s only one char in the str, so we can let it just use actual lenght rather than hardcoding it.",
+      "range": {
+        "startLine": 613,
+        "startChar": 2,
+        "endLine": 613,
+        "endChar": 3
+      },
+      "revId": "b21800eedeccfad67ed491806c9427bc923436bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
