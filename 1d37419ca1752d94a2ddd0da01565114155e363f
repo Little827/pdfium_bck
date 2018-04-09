@@ -22,6 +22,30 @@
       "revId": "1d37419ca1752d94a2ddd0da01565114155e363f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d925028_8b452e5c",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-09T15:46:03Z",
+      "side": 1,
+      "message": "Either that or rename the other nFoo locals in this method to make their naming consistent.",
+      "parentUuid": "34c68d61_dd0c8137",
+      "range": {
+        "startLine": 227,
+        "startChar": 11,
+        "endLine": 227,
+        "endChar": 16
+      },
+      "revId": "1d37419ca1752d94a2ddd0da01565114155e363f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
