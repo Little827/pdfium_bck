@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "e18f5f13_d8384364",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-10T20:48:33Z",
+      "side": 1,
+      "message": "stddef.h, which is pretty much everywhere in pdfium code.",
+      "parentUuid": "bebe94d8_c532dd30",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "041877e77dee0415e357620fc988ee5addfa71c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03c2b509_6c1f5741",
         "filename": "core/fxcrt/fx_coordinates.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2018-04-10T19:43:21Z",
       "side": 1,
       "message": "can we get away with something like:\n\nstatic_assert( sizeof(((FX_RECT*)0)-\u003etop) \u003d\u003d sizeof(((RECT*)0)-\u003etop) , \"fooey\");\n\njust so struct like {short, float, short, float} would get flagged?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "041877e77dee0415e357620fc988ee5addfa71c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a48d6dc_d0476488",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-10T20:48:33Z",
+      "side": 1,
+      "message": "I can also check sizeof(FX_RECT::top) and other members if you\u0027d like. In addition to offsetof().",
+      "parentUuid": "03c2b509_6c1f5741",
       "range": {
         "startLine": 30,
         "startChar": 0,
