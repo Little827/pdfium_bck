@@ -2,8 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef PDFIUM_THIRD_PARTY_BASE_SPAN_H_
-#define PDFIUM_THIRD_PARTY_BASE_SPAN_H_
+// This is base::span<> taken from chromium, but modified to be more
+// useful for the PDFium environment.
+
+#ifndef CORE_FXCRT_UNOWNED_SPAN_H_
+#define CORE_FXCRT_UNOWNED_SPAN_H_
 
 #include <stddef.h>
 
@@ -16,10 +19,10 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/logging.h"
 
-namespace pdfium {
+namespace fxcrt {
 
 template <typename T>
-class span;
+class UnownedSpan;
 
 namespace internal {
 
@@ -27,7 +30,7 @@ template <typename T>
 struct IsSpanImpl : std::false_type {};
 
 template <typename T>
-struct IsSpanImpl<span<T>> : std::true_type {};
+struct IsSpanImpl<UnownedSpan<T>> : std::true_type {};
 
 template <typename T>
 using IsSpan = IsSpanImpl<typename std::decay<T>::type>;
@@ -182,7 +185,7 @@ using EnableIfConstSpanCompatibleContainer =
 
 // [span], class template span
 template <typename T>
-class span {
+class UnownedSpan {
  public:
   using value_type = typename std::remove_cv<T>::type;
   using pointer = T*;
@@ -193,78 +196,120 @@ class span {
   using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
   // [span.cons], span constructors, copy, assignment, and destructor
-  constexpr span() noexcept : data_(nullptr), size_(0) {}
-  constexpr span(T* data, size_t size) noexcept : data_(data), size_(size) {}
-  // TODO(dcheng): Implement construction from a |begin| and |end| pointer.
+  constexpr UnownedSpan() noexcept : data_(nullptr), size_(0) {}
+  constexpr UnownedSpan(T* data, size_t size) noexcept
+      : data_(data), size_(size) {}
+
   template <size_t N>
-  constexpr span(T (&array)[N]) noexcept : span(array, N) {}
-  // TODO(dcheng): Implement construction from std::array.
+  constexpr UnownedSpan(T (&array)[N]) noexcept  // NOLINT(runtime/explicit)
+      : UnownedSpan(array, N) {}
+
   // Conversion from a container that provides |T* data()| and |integral_type
   // size()|.
   template <typename Container,
             typename = internal::EnableIfSpanCompatibleContainer<Container, T>>
-  constexpr span(Container& container)
-      : span(container.data(), container.size()) {}
+  constexpr UnownedSpan(Container& container)  // NOLINT(runtime/explicit)
+      : UnownedSpan(container.data(), container.size()) {}
+
   template <
       typename Container,
       typename = internal::EnableIfConstSpanCompatibleContainer<Container, T>>
-  span(const Container& container) : span(container.data(), container.size()) {}
-  constexpr span(const span& other) noexcept = default;
+  UnownedSpan(const Container& container)  // NOLINT(runtime/explicit)
+      : UnownedSpan(container.data(), container.size()) {}
+
+  constexpr UnownedSpan(const UnownedSpan& other) noexcept = default;
+
   // Conversions from spans of compatible types: this allows a span<T> to be
   // seamlessly used as a span<const T>, but not the other way around.
   template <typename U, typename = internal::EnableIfLegalSpanConversion<U, T>>
-  constexpr span(const span<U>& other) : span(other.data(), other.size()) {}
-  span& operator=(const span& other) noexcept = default;
-  ~span() noexcept = default;
+  constexpr UnownedSpan(const UnownedSpan<U>& other)
+      : UnownedSpan(other.data(), other.size()) {}
+
+  // TODO(dcheng): Implement construction from a |begin| and |end| pointer.
+  // TODO(dcheng): Implement construction from std::array.
+
+  UnownedSpan& operator=(const UnownedSpan& other) noexcept = default;
+  ~UnownedSpan() noexcept = default;
 
   // [span.sub], span subviews
-  const span first(size_t count) const {
+  UnownedSpan first(size_t count) const {
     CHECK(count <= size_);
-    return span(data_, count);
+    return count ? UnownedSpan(data_, count) : UnownedSpan();
   }
 
-  const span last(size_t count) const {
+  UnownedSpan last(size_t count) const {
     CHECK(count <= size_);
-    return span(data_.Get() + (size_ - count), count);
+    return count ? UnownedSpan(data_.Get() + (size_ - count), count)
+                 : UnownedSpan();
   }
 
-  const span subspan(size_t pos, size_t count = -1) const {
+  UnownedSpan subspan(size_t pos, size_t count = -1) const {
     const auto npos = static_cast<size_t>(-1);
     CHECK(pos <= size_);
     CHECK(count == npos || count <= size_ - pos);
-    return span(data_.Get() + pos, count == npos ? size_ - pos : count);
+    return count ? UnownedSpan(data_.Get() + pos,
+                               count == npos ? size_ - pos : count)
+                 : UnownedSpan();
   }
 
   // [span.obs], span observers
   constexpr size_t size() const noexcept { return size_; }
   constexpr bool empty() const noexcept { return size_ == 0; }
 
+  // bool conversion is a PDFium extension.
+  explicit operator bool() const noexcept { return !empty(); }
+
   // [span.elem], span element access
-  const T& operator[](size_t index) const noexcept {
+  // Non-const span element access is a PDFium extension.
+  T& operator[](size_t index) const noexcept {
     CHECK(index < size_);
     return data_.Get()[index];
   }
-  constexpr T* data() const noexcept { return data_.Get(); }
+  T* data() const noexcept { return data_.Get(); }
+
+  // Checked dereference is a PDFium extension.
+  T& operator*() const noexcept {
+    CHECK(size_);
+    return *data_;
+  }
+
+  // Increment operations are a PDFium extension
+  UnownedSpan operator+(size_t count) {
+    CHECK(count <= size_);
+    return count == size_ ? UnownedSpan()
+                          : UnownedSpan(data_.Get() + count, size_ - count);
+  }
+  UnownedSpan operator+=(size_t count) {
+    *this = *this + count;
+    return *this;
+  }
+  UnownedSpan& operator++() {
+    // Pre-increment as indicated by lack of dummy arg.
+    *this += 1;
+    return *this;
+  }
+  UnownedSpan<T> operator++(int) {
+    UnownedSpan that = *this;
+    *this += 1;
+    return that;
+  }
 
   // [span.iter], span iterator support
-  constexpr iterator begin() const noexcept { return data_.Get(); }
-  constexpr iterator end() const noexcept { return data_.Get() + size_; }
+  // Non-const iterator access is a PDFium extension.
+  iterator begin() noexcept { return data_.Get(); }
+  iterator end() noexcept { return data_.Get() + size_; }
 
-  constexpr const_iterator cbegin() const noexcept { return begin(); }
-  constexpr const_iterator cend() const noexcept { return end(); }
+  const_iterator begin() const noexcept { return data_.Get(); }
+  const_iterator end() const noexcept { return data_.Get() + size_; }
 
-  constexpr reverse_iterator rbegin() const noexcept {
-    return reverse_iterator(end());
-  }
-  constexpr reverse_iterator rend() const noexcept {
-    return reverse_iterator(begin());
-  }
+  reverse_iterator rbegin() noexcept { return reverse_iterator(end()); }
+  reverse_iterator rend() noexcept { return reverse_iterator(begin()); }
 
-  constexpr const_reverse_iterator crbegin() const noexcept {
-    return const_reverse_iterator(cend());
+  const_reverse_iterator rbegin() const noexcept {
+    return const_reverse_iterator(end());
   }
-  constexpr const_reverse_iterator crend() const noexcept {
-    return const_reverse_iterator(cbegin());
+  const_reverse_iterator rend() const noexcept {
+    return const_reverse_iterator(begin());
   }
 
  private:
@@ -275,63 +320,71 @@ class span {
 // [span.comparison], span comparison operators
 // Relational operators. Equality is a element-wise comparison.
 template <typename T>
-constexpr bool operator==(span<T> lhs, span<T> rhs) noexcept {
+constexpr bool operator==(UnownedSpan<T> lhs, UnownedSpan<T> rhs) noexcept {
   return lhs.size() == rhs.size() &&
-         std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin());
+         std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template <typename T>
-constexpr bool operator!=(span<T> lhs, span<T> rhs) noexcept {
+constexpr bool operator!=(UnownedSpan<T> lhs, UnownedSpan<T> rhs) noexcept {
   return !(lhs == rhs);
 }
 
 template <typename T>
-constexpr bool operator<(span<T> lhs, span<T> rhs) noexcept {
+constexpr bool operator<(UnownedSpan<T> lhs, UnownedSpan<T> rhs) noexcept {
   return std::lexicographical_compare(lhs.cbegin(), lhs.cend(), rhs.cbegin(),
                                       rhs.cend());
 }
 
 template <typename T>
-constexpr bool operator<=(span<T> lhs, span<T> rhs) noexcept {
+constexpr bool operator<=(UnownedSpan<T> lhs, UnownedSpan<T> rhs) noexcept {
   return !(rhs < lhs);
 }
 
 template <typename T>
-constexpr bool operator>(span<T> lhs, span<T> rhs) noexcept {
+constexpr bool operator>(UnownedSpan<T> lhs, UnownedSpan<T> rhs) noexcept {
   return rhs < lhs;
 }
 
 template <typename T>
-constexpr bool operator>=(span<T> lhs, span<T> rhs) noexcept {
+constexpr bool operator>=(UnownedSpan<T> lhs, UnownedSpan<T> rhs) noexcept {
   return !(lhs < rhs);
 }
 
-// Type-deducing helpers for constructing a span.
+}  // namespace fxcrt
+
+using fxcrt::UnownedSpan;
+
+namespace pdfium {
+
+// Type-deducing helpers for constructing a UnownedSpan.
 template <typename T>
-constexpr span<T> make_span(T* data, size_t size) noexcept {
-  return span<T>(data, size);
+constexpr UnownedSpan<T> MakeUnownedSpan(T* data, size_t size) noexcept {
+  return UnownedSpan<T>(data, size);
 }
 
 template <typename T, size_t N>
-constexpr span<T> make_span(T (&array)[N]) noexcept {
-  return span<T>(array);
+constexpr UnownedSpan<T> MakeUnownedSpan(T (&array)[N]) noexcept {
+  return UnownedSpan<T>(array);
 }
 
-template <typename Container,
-          typename T = typename Container::value_type,
-          typename = internal::EnableIfSpanCompatibleContainer<Container, T>>
-constexpr span<T> make_span(Container& container) {
-  return span<T>(container);
+template <
+    typename Container,
+    typename T = typename Container::value_type,
+    typename = fxcrt::internal::EnableIfSpanCompatibleContainer<Container, T>>
+constexpr UnownedSpan<T> MakeUnownedSpan(Container& container) {
+  return UnownedSpan<T>(container);
 }
 
 template <
     typename Container,
     typename T = typename std::add_const<typename Container::value_type>::type,
-    typename = internal::EnableIfConstSpanCompatibleContainer<Container, T>>
-constexpr span<T> make_span(const Container& container) {
-  return span<T>(container);
+    typename =
+        fxcrt::internal::EnableIfConstSpanCompatibleContainer<Container, T>>
+constexpr UnownedSpan<T> MakeUnownedSpan(const Container& container) {
+  return UnownedSpan<T>(container);
 }
 
 }  // namespace pdfium
 
-#endif  // PDFIUM_THIRD_PARTY_BASE_SPAN_H_
+#endif  // CORE_FXCRT_UNOWNED_SPAN_H_

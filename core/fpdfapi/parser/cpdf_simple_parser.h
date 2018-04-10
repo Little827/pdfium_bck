@@ -11,11 +11,11 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/span.h"
+#include "core/fxcrt/unowned_span.h"
 
 class CPDF_SimpleParser {
  public:
-  explicit CPDF_SimpleParser(pdfium::span<const uint8_t> input);
+  explicit CPDF_SimpleParser(UnownedSpan<const uint8_t> input);
   ~CPDF_SimpleParser();
 
   ByteStringView GetWord();
@@ -24,7 +24,7 @@ class CPDF_SimpleParser {
   uint32_t GetCurPos() const { return cur_pos_; }
 
  private:
-  const pdfium::span<const uint8_t> data_;
+  const UnownedSpan<const uint8_t> data_;
   uint32_t cur_pos_ = 0;
 };
 
