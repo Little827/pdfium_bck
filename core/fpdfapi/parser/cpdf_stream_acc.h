@@ -14,7 +14,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/span.h"
+#include "core/fxcrt/unowned_span.h"
 
 class CPDF_StreamAcc : public Retainable {
  public:
@@ -33,8 +33,8 @@ class CPDF_StreamAcc : public Retainable {
 
   uint8_t* GetData() const;
   uint32_t GetSize() const;
-  pdfium::span<uint8_t> GetSpan() const {
-    return pdfium::make_span(GetData(), GetSize());
+  UnownedSpan<uint8_t> GetSpan() const {
+    return pdfium::MakeUnownedSpan(GetData(), GetSize());
   }
   const ByteString& GetImageDecoder() const { return m_ImageDecoder; }
   const CPDF_Dictionary* GetImageParam() const { return m_pImageParam; }
