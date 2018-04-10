@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f01bdb45_4ac9bb37",
+        "filename": "third_party/base/span.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 5625
+      },
+      "writtenOn": "2018-04-10T23:25:55Z",
+      "side": 0,
+      "message": "Yeah this was a mistake, but similar to data(), this could be constexpr if you want.",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 8
+      },
+      "revId": "bdcd6bf72ef7dd682b9f144d2b438d60fd598f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2949a8_c110e655",
+        "filename": "third_party/base/span.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5625
+      },
+      "writtenOn": "2018-04-10T23:25:55Z",
+      "side": 0,
+      "message": "I think it should be OK to leave constexpr here: it just means that data() can be evaluated at compile-time.",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 12
+      },
+      "revId": "bdcd6bf72ef7dd682b9f144d2b438d60fd598f09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

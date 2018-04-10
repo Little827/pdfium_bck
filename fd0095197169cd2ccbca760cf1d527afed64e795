@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a137d555_c0559fe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5625
+      },
+      "writtenOn": "2018-04-10T23:25:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this.",
+      "revId": "fd0095197169cd2ccbca760cf1d527afed64e795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5153ae60_477c547c",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5625
+      },
+      "writtenOn": "2018-04-10T23:25:55Z",
+      "side": 1,
+      "message": "To me, it would logically make more sense to just use an index here. I think this will probably compile out to the same amount of code.\n\nAlternatively, something like this is nearly as terse and seems acceptable to me:\n\nfor (auto\u0026 c : pDst) {\n  if (n-- \u003d\u003d 0) break;\n  c \u003d *pMap++;\n}",
+      "revId": "fd0095197169cd2ccbca760cf1d527afed64e795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0aa6397_585f3158",
+        "filename": "third_party/base/span.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5625
+      },
+      "writtenOn": "2018-04-10T23:25:55Z",
+      "side": 1,
+      "message": "Nit: omit, unless pdfium style doesn\u0027t allow\n\n(if you\u0027re curious about the background of why std::span doesn\u0027t have a nullptr_t overload, see https://github.com/Microsoft/GSL/issues/202)",
+      "range": {
+        "startLine": 202,
+        "startChar": 32,
+        "endLine": 202,
+        "endChar": 35
+      },
+      "revId": "fd0095197169cd2ccbca760cf1d527afed64e795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
