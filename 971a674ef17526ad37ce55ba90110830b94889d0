@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2037fe6a_06989787",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-10T23:30:11Z",
+      "side": 1,
+      "message": "Do we want to rename fpdfview.h to fpdf_view.h now? Rename fpdf_view.cpp back to fpdfview.cpp?",
+      "revId": "971a674ef17526ad37ce55ba90110830b94889d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
