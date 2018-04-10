@@ -11,8 +11,8 @@
 #include "core/fpdfapi/parser/cpdf_linearized_header.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fxcrt/cfx_bitstream.h"
+#include "core/fxcrt/unowned_span.h"
 #include "third_party/base/ptr_util.h"
-#include "third_party/base/span.h"
 
 int32_t GetData(const int32_t** data32, const uint8_t** data, size_t* size) {
   const int32_t* ret = *data32;
@@ -37,7 +37,7 @@ class HintTableForFuzzing : public CPDF_HintTables {
     if (size < static_cast<size_t>(shared_hint_table_offset_))
       return;
 
-    CFX_BitStream bs(pdfium::make_span(data, size));
+    CFX_BitStream bs(pdfium::MakeUnownedSpan(data, size));
     if (!ReadPageHintTable(&bs))
       return;
     ReadSharedObjHintTable(&bs, shared_hint_table_offset_);

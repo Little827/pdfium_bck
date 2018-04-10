@@ -18,8 +18,8 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/cfx_bitstream.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "core/fxcrt/unowned_span.h"
 #include "third_party/base/numerics/safe_conversions.h"
-#include "third_party/base/span.h"
 
 namespace {
 
@@ -489,7 +489,7 @@ bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
     return false;
   }
 
-  CFX_BitStream bs(pdfium::make_span(pAcc->GetData(), size));
+  CFX_BitStream bs(pdfium::MakeUnownedSpan(pAcc->GetData(), size));
   return ReadPageHintTable(&bs) &&
          ReadSharedObjHintTable(&bs, shared_hint_table_offset);
 }

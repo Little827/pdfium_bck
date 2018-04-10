@@ -8,8 +8,8 @@
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/unowned_span.h"
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/span.h"
 #include "third_party/base/stl_util.h"
 
 namespace fxcrt {
@@ -978,7 +978,7 @@ TEST(ByteStringView, Null) {
   EXPECT_TRUE(copied_null_string.IsEmpty());
   EXPECT_EQ(null_string, copied_null_string);
 
-  ByteStringView span_null_string = pdfium::span<const uint8_t>();
+  ByteStringView span_null_string = UnownedSpan<const uint8_t>();
   EXPECT_FALSE(span_null_string.raw_str());
   EXPECT_EQ(0u, span_null_string.GetLength());
   EXPECT_TRUE(span_null_string.IsEmpty());
@@ -1005,7 +1005,7 @@ TEST(ByteStringView, Null) {
   EXPECT_EQ(null_string, assigned_nullptr_string);
 
   ByteStringView assigned_span_null_string("initially not null span");
-  assigned_span_null_string = pdfium::span<const uint8_t>();
+  assigned_span_null_string = UnownedSpan<const uint8_t>();
   EXPECT_FALSE(assigned_span_null_string.raw_str());
   EXPECT_EQ(0u, assigned_span_null_string.GetLength());
   EXPECT_TRUE(assigned_span_null_string.IsEmpty());
@@ -1020,7 +1020,7 @@ TEST(ByteStringView, NotNull) {
   ByteStringView string6("abcdef");
   ByteStringView alternate_string3("abcdef", 3);
   ByteStringView span_string4(
-      pdfium::span<const uint8_t>(reinterpret_cast<const uint8_t*>("abcd"), 4));
+      UnownedSpan<const uint8_t>(reinterpret_cast<const uint8_t*>("abcd"), 4));
   ByteStringView embedded_nul_string7("abc\0def", 7);
   ByteStringView illegal_string7("abcdef", 7);
 
@@ -1314,8 +1314,8 @@ TEST(ByteStringView, OperatorEQ) {
   EXPECT_FALSE(c_string2 == byte_string_c);
   EXPECT_FALSE(c_string3 == byte_string_c);
 
-  pdfium::span<const uint8_t> span5(reinterpret_cast<const uint8_t*>("hello"),
-                                    5);
+  UnownedSpan<const uint8_t> span5(reinterpret_cast<const uint8_t*>("hello"),
+                                   5);
   EXPECT_EQ(byte_string_c.span(), span5);
 }
 

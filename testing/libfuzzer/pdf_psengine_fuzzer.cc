@@ -5,11 +5,11 @@
 #include <cstdint>
 
 #include "core/fpdfapi/page/cpdf_psengine.h"
-#include "third_party/base/span.h"
+#include "core/fxcrt/unowned_span.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   CPDF_PSEngine engine;
-  if (engine.Parse(pdfium::make_span(data, size)))
+  if (engine.Parse(pdfium::MakeUnownedSpan(data, size)))
     engine.Execute();
   return 0;
 }
