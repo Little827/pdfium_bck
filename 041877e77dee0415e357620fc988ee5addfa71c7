@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1523386410 -0700\nnonce AFN+CTIl/YPJ1ypcIO5xGdOcg/gOH4fCR3oPWg8fxizJMgWY/l+y6FYdS8SE0FCeqbV+HMS7WJWo\n\n0000000000000000000000000000000000000000 041877e77dee0415e357620fc988ee5addfa71c7 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrNCCoACgkQqzYtYVpm\n/Xsf0Af/XYVmdk2Q03I5M8fZNTWWDeWgd/noC/5e060tkIfuhQRBfjEXhWldzjVx\ncd2h4Q6czTvpcsMQ58vJ2p6oTUDtRhzYPYXiSKPyh74sjJ6bsUfdR5tff4USYgWC\nZKeXI+h+xUBc0xio45Puu476tMLhId/4jEg7KOfA+2seh36mqI4M1b0viDGOZJL5\nnXpnNJNI0b115yiWTyizace5MfcNTXObGCKbbB7L/AU6WgdkdsJHLj0jyq7DWsry\nJ9tVEefrUwbmP53QJAnbHBevtQZlC3KN2FKrc5MTLxhOuBOrrvHeqn1DUgjrkwIO\nziDVAK9xqHudkyvKQyh7T2edgDQs8w\u003d\u003d\n\u003d7WuT\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "bebe94d8_c532dd30",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-10T19:43:21Z",
+      "side": 1,
+      "message": "nit: include something or other .h for offsetof?  stdlib.h ? stddef.h ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "041877e77dee0415e357620fc988ee5addfa71c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c2b509_6c1f5741",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-10T19:43:21Z",
+      "side": 1,
+      "message": "can we get away with something like:\n\nstatic_assert( sizeof(((FX_RECT*)0)-\u003etop) \u003d\u003d sizeof(((RECT*)0)-\u003etop) , \"fooey\");\n\njust so struct like {short, float, short, float} would get flagged?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "041877e77dee0415e357620fc988ee5addfa71c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
