@@ -101,10 +101,10 @@ uint32_t DecodeInlineStream(const uint8_t* src_buf,
 
 }  // namespace
 
-CPDF_StreamParser::CPDF_StreamParser(pdfium::span<const uint8_t> span)
+CPDF_StreamParser::CPDF_StreamParser(UnownedSpan<const uint8_t> span)
     : m_pBuf(span) {}
 
-CPDF_StreamParser::CPDF_StreamParser(pdfium::span<const uint8_t> span,
+CPDF_StreamParser::CPDF_StreamParser(UnownedSpan<const uint8_t> span,
                                      const WeakPtr<ByteStringPool>& pPool)
     : m_pPool(pPool), m_pBuf(span) {}
 

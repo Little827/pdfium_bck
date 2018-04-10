@@ -15,15 +15,15 @@
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fxcrt/string_pool_template.h"
+#include "core/fxcrt/unowned_span.h"
 #include "core/fxcrt/weak_ptr.h"
-#include "third_party/base/span.h"
 
 class CPDF_StreamParser {
  public:
   enum SyntaxType { EndOfData, Number, Keyword, Name, Others };
 
-  explicit CPDF_StreamParser(pdfium::span<const uint8_t> span);
-  CPDF_StreamParser(pdfium::span<const uint8_t> span,
+  explicit CPDF_StreamParser(UnownedSpan<const uint8_t> span);
+  CPDF_StreamParser(UnownedSpan<const uint8_t> span,
                     const WeakPtr<ByteStringPool>& pPool);
   ~CPDF_StreamParser();
 
@@ -55,7 +55,7 @@ class CPDF_StreamParser {
   uint32_t m_WordSize = 0;  // Current byte position within m_WordBuffer.
   WeakPtr<ByteStringPool> m_pPool;
   std::unique_ptr<CPDF_Object> m_pLastObj;
-  pdfium::span<const uint8_t> m_pBuf;
+  UnownedSpan<const uint8_t> m_pBuf;
   uint8_t m_WordBuffer[kMaxWordLength + 1];  // Include space for NUL.
 };
 

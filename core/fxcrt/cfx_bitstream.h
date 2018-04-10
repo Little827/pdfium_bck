@@ -10,11 +10,11 @@
 #include <stdint.h>
 
 #include "core/fxcrt/unowned_ptr.h"
-#include "third_party/base/span.h"
+#include "core/fxcrt/unowned_span.h"
 
 class CFX_BitStream {
  public:
-  explicit CFX_BitStream(pdfium::span<const uint8_t> pData);
+  explicit CFX_BitStream(UnownedSpan<const uint8_t> pData);
   ~CFX_BitStream();
 
   void ByteAlign();
