@@ -14,6 +14,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 
 class CFX_Matrix;
+class CFX_PointF;
 class CPDFXFA_Context;
 class CPDF_Dictionary;
 class CPDF_Page;
@@ -39,19 +40,12 @@ class CPDFXFA_Page : public Retainable {
   float GetPageWidth() const;
   float GetPageHeight() const;
 
-  void DeviceToPage(int start_x,
-                    int start_y,
-                    int size_x,
-                    int size_y,
+  void DeviceToPage(const FX_RECT& rect,
                     int rotate,
-                    int device_x,
-                    int device_y,
+                    const CFX_PointF& device_point,
                     double* page_x,
                     double* page_y);
-  void PageToDevice(int start_x,
-                    int start_y,
-                    int size_x,
-                    int size_y,
+  void PageToDevice(const FX_RECT& rect,
                     int rotate,
                     double page_x,
                     double page_y,
