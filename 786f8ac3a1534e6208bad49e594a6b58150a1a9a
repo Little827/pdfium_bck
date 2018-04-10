@@ -69,6 +69,24 @@
       "revId": "786f8ac3a1534e6208bad49e594a6b58150a1a9a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7d12ec6_a4f41038",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-10T13:36:20Z",
+      "side": 1,
+      "message": "Done. This makes the API cleaner and more straightforward to use.",
+      "parentUuid": "0024dab0_e95ed600",
+      "revId": "786f8ac3a1534e6208bad49e594a6b58150a1a9a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
