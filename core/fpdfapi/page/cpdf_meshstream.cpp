@@ -9,7 +9,7 @@
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_function.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
-#include "third_party/base/span.h"
+#include "core/fxcrt/unowned_span.h"
 
 namespace {
 
@@ -119,7 +119,7 @@ CPDF_MeshStream::~CPDF_MeshStream() {}
 bool CPDF_MeshStream::Load() {
   m_pStream->LoadAllDataFiltered();
   m_BitStream = pdfium::MakeUnique<CFX_BitStream>(
-      pdfium::make_span(m_pStream->GetData(), m_pStream->GetSize()));
+      pdfium::MakeUnownedSpan(m_pStream->GetData(), m_pStream->GetSize()));
   CPDF_Dictionary* pDict = m_pShadingStream->GetDict();
   m_nCoordBits = pDict->GetIntegerFor("BitsPerCoordinate");
   m_nComponentBits = pDict->GetIntegerFor("BitsPerComponent");
