@@ -9,6 +9,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cstddef>
 #include <iterator>
 #include <type_traits>
 #include <utility>
@@ -194,7 +195,12 @@ class span {
 
   // [span.cons], span constructors, copy, assignment, and destructor
   constexpr span() noexcept : data_(nullptr), size_(0) {}
-  constexpr span(T* data, size_t size) noexcept : data_(data), size_(size) {}
+  constexpr span(T* data, size_t size) noexcept
+      : data_(size ? data : nullptr), size_(size) {}
+
+  // Implicit promotion of nullptr is a pdfium extension.
+  constexpr span(std::nullptr_t prt) noexcept : span() {}
+
   // TODO(dcheng): Implement construction from a |begin| and |end| pointer.
   template <size_t N>
   constexpr span(T (&array)[N]) noexcept : span(array, N) {}
@@ -240,11 +246,11 @@ class span {
   constexpr bool empty() const noexcept { return size_ == 0; }
 
   // [span.elem], span element access
-  const T& operator[](size_t index) const noexcept {
+  T& operator[](size_t index) const noexcept {
     CHECK(index < size_);
     return data_.Get()[index];
   }
-  constexpr T* data() const noexcept { return data_.Get(); }
+  T* data() const noexcept { return data_.Get(); }
 
   // [span.iter], span iterator support
   constexpr iterator begin() const noexcept { return data_.Get(); }
