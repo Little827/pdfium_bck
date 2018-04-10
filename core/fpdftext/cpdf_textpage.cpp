@@ -22,6 +22,7 @@
 #include "core/fxcrt/fx_bidi.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_unicode.h"
+#include "third_party/base/span.h"
 #include "third_party/base/stl_util.h"
 
 namespace {
@@ -68,12 +69,12 @@ float CalculateBaseSpace(const CPDF_TextObject* pTextObj,
   return baseSpace;
 }
 
-size_t Unicode_GetNormalization(wchar_t wch, wchar_t* pDst) {
+size_t Unicode_GetNormalization(wchar_t wch, pdfium::span<wchar_t> pDst) {
   wch = wch & 0xFFFF;
   wchar_t wFind = g_UnicodeData_Normalization[wch];
   if (!wFind) {
-    if (pDst)
-      *pDst = wch;
+    if (!pDst.empty())
+      pDst[0] = wch;
     return 1;
   }
   if (wFind >= 0x8000) {
@@ -90,10 +91,12 @@ size_t Unicode_GetNormalization(wchar_t wch, wchar_t* pDst) {
   } else {
     pMap += wch;
   }
-  if (pDst) {
+  if (!pDst.empty()) {
     wchar_t n = wFind;
-    while (n--)
-      *pDst++ = *pMap++;
+    while (n--) {
+      pDst[0] = *pMap++;
+      pDst = pDst.subspan(1);
+    }
   }
   return static_cast<size_t>(wFind);
 }
@@ -628,10 +631,9 @@ void CPDF_TextPage::AddCharInfoByLRDirection(wchar_t wChar,
 
   info.m_Index = m_TextBuf.GetLength();
   if (wChar >= 0xFB00 && wChar <= 0xFB06) {
-    wchar_t* pDst = nullptr;
-    size_t nCount = Unicode_GetNormalization(wChar, pDst);
-    if (nCount >= 1) {
-      pDst = FX_Alloc(wchar_t, nCount);
+    size_t nCount = Unicode_GetNormalization(wChar, nullptr);
+    if (nCount) {
+      std::vector<wchar_t> pDst(nCount);
       Unicode_GetNormalization(wChar, pDst);
       for (size_t nIndex = 0; nIndex < nCount; nIndex++) {
         PAGECHAR_INFO info2 = info;
@@ -640,7 +642,6 @@ void CPDF_TextPage::AddCharInfoByLRDirection(wchar_t wChar,
         m_TextBuf.AppendChar(info2.m_Unicode);
         m_CharList.push_back(info2);
       }
-      FX_Free(pDst);
       return;
     }
   }
@@ -658,10 +659,9 @@ void CPDF_TextPage::AddCharInfoByRLDirection(wchar_t wChar,
 
   info.m_Index = m_TextBuf.GetLength();
   wChar = FX_GetMirrorChar(wChar);
-  wchar_t* pDst = nullptr;
-  size_t nCount = Unicode_GetNormalization(wChar, pDst);
+  size_t nCount = Unicode_GetNormalization(wChar, nullptr);
   if (nCount >= 1) {
-    pDst = FX_Alloc(wchar_t, nCount);
+    std::vector<wchar_t> pDst(nCount);
     Unicode_GetNormalization(wChar, pDst);
     for (size_t nIndex = 0; nIndex < nCount; nIndex++) {
       PAGECHAR_INFO info2 = info;
@@ -670,7 +670,6 @@ void CPDF_TextPage::AddCharInfoByRLDirection(wchar_t wChar,
       m_TextBuf.AppendChar(info2.m_Unicode);
       m_CharList.push_back(info2);
     }
-    FX_Free(pDst);
     return;
   }
   info.m_Unicode = wChar;
