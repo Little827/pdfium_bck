@@ -94,6 +94,30 @@
       "revId": "041877e77dee0415e357620fc988ee5addfa71c7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c388163_9ed102c2",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-10T21:00:23Z",
+      "side": 1,
+      "message": "Ah, thats what I was going for, but I didn\u0027t think sizeof(FX_RECT::top) was legal syntax.",
+      "parentUuid": "1a48d6dc_d0476488",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "041877e77dee0415e357620fc988ee5addfa71c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
