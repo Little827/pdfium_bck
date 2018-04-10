@@ -3,8 +3,9 @@
 // found in the LICENSE file.
 
 #include "core/fpdfapi/page/cpdf_streamparser.h"
+
+#include "core/fxcrt/unowned_span.h"
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/span.h"
 
 TEST(cpdf_streamparser, ReadHexString) {
   {

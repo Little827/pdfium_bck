@@ -190,7 +190,7 @@ int CPDF_PSEngine::PopInt() {
   return static_cast<int>(Pop());
 }
 
-bool CPDF_PSEngine::Parse(pdfium::span<const uint8_t> input) {
+bool CPDF_PSEngine::Parse(UnownedSpan<const uint8_t> input) {
   CPDF_SimpleParser parser(input);
   return parser.GetWord() == "{" && m_MainProc.Parse(&parser, 0);
 }
