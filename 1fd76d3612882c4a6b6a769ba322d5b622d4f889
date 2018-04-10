@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "935c7344_3f17c4fd",
+        "filename": "pdfium.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-10T17:45:55Z",
+      "side": 1,
+      "message": "Is this ever so slightly better?\n\n\"pdf_is_complete_lib\u003dtrue requires is_component_build\u003dfalse\"",
+      "revId": "1fd76d3612882c4a6b6a769ba322d5b622d4f889",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
