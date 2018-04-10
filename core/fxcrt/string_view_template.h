@@ -15,8 +15,8 @@
 
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "core/fxcrt/unowned_span.h"
 #include "third_party/base/optional.h"
-#include "third_party/base/span.h"
 #include "third_party/base/stl_util.h"
 
 namespace fxcrt {
@@ -46,7 +46,7 @@ class StringViewTemplate {
       : m_Span(reinterpret_cast<const UnsignedType*>(ptr), len) {}
 
   explicit constexpr StringViewTemplate(
-      const pdfium::span<CharType>& other) noexcept
+      const UnownedSpan<CharType>& other) noexcept
       : m_Span(reinterpret_cast<const UnsignedType*>(other.data()),
                other.size()) {}
 
@@ -60,7 +60,7 @@ class StringViewTemplate {
 
   template <typename U = UnsignedType>
   StringViewTemplate(
-      const pdfium::span<U> other,
+      const UnownedSpan<U> other,
       typename std::enable_if<!std::is_same<U, CharType>::value>::type* =
           0) noexcept
       : m_Span(other) {}
@@ -76,7 +76,7 @@ class StringViewTemplate {
       : m_Span(vec.size() ? vec.data() : nullptr, vec.size()) {}
 
   StringViewTemplate& operator=(const CharType* src) {
-    m_Span = pdfium::span<const UnsignedType>(
+    m_Span = UnownedSpan<const UnsignedType>(
         reinterpret_cast<const UnsignedType*>(src), src ? FXSYS_len(src) : 0);
     return *this;
   }
@@ -120,7 +120,7 @@ class StringViewTemplate {
     return strid << ((4 - size) * 8);
   }
 
-  pdfium::span<const UnsignedType> span() const { return m_Span; }
+  UnownedSpan<const UnsignedType> span() const { return m_Span; }
   const UnsignedType* raw_str() const { return m_Span.data(); }
   const CharType* unterminated_c_str() const {
     return reinterpret_cast<const CharType*>(m_Span.data());
@@ -212,7 +212,7 @@ class StringViewTemplate {
   }
 
  protected:
-  pdfium::span<const UnsignedType> m_Span;
+  UnownedSpan<const UnsignedType> m_Span;
 
  private:
   void* operator new(size_t) throw() { return nullptr; }

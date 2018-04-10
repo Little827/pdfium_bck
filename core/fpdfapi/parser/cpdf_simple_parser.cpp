@@ -8,7 +8,7 @@
 
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 
-CPDF_SimpleParser::CPDF_SimpleParser(pdfium::span<const uint8_t> input)
+CPDF_SimpleParser::CPDF_SimpleParser(UnownedSpan<const uint8_t> input)
     : data_(input) {}
 
 CPDF_SimpleParser::~CPDF_SimpleParser() = default;
