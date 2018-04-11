@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c04308_57bacd03",
+        "filename": "testing/libfuzzer/pdf_xml_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-11T21:44:56Z",
+      "side": 1,
+      "message": "optional: \"CFX_XMLNode root;\"",
+      "revId": "415c5fa43fecf41830db4bb544459b04f2875f56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
