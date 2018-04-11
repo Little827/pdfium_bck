@@ -164,15 +164,13 @@ CXFA_FFDoc::~CXFA_FFDoc() {
   CloseDoc();
 }
 
-int32_t CXFA_FFDoc::Load() {
+bool CXFA_FFDoc::Load() {
   m_pNotify = pdfium::MakeUnique<CXFA_FFNotify>(this);
   m_pDocumentParser = pdfium::MakeUnique<CXFA_DocumentParser>(m_pNotify.get());
-
-  int32_t iStatus = m_pDocumentParser->Parse(m_pStream, XFA_PacketType::Xdp);
-  if (iStatus != XFA_PARSESTATUS_Done)
-    return iStatus;
+  if (!m_pDocumentParser->Parse(m_pStream, XFA_PacketType::Xdp))
+    return false;
   if (!m_pPDFDoc)
-    return XFA_PARSESTATUS_SyntaxErr;
+    return false;
 
   m_pPDFFontMgr = pdfium::MakeUnique<CFGAS_PDFFontMgr>(
       GetPDFDoc(), GetApp()->GetFDEFontMgr());
@@ -181,29 +179,29 @@ int32_t CXFA_FFDoc::Load() {
   CXFA_Node* pConfig = ToNode(
       m_pDocumentParser->GetDocument()->GetXFAObject(XFA_HASHCODE_Config));
   if (!pConfig)
-    return iStatus;
+    return false;
 
   CXFA_Acrobat* pAcrobat =
       pConfig->GetFirstChildByClass<CXFA_Acrobat>(XFA_Element::Acrobat);
   if (!pAcrobat)
-    return iStatus;
+    return false;
 
   CXFA_Acrobat7* pAcrobat7 =
       pAcrobat->GetFirstChildByClass<CXFA_Acrobat7>(XFA_Element::Acrobat7);
   if (!pAcrobat7)
-    return iStatus;
+    return false;
 
   CXFA_DynamicRender* pDynamicRender =
       pAcrobat7->GetFirstChildByClass<CXFA_DynamicRender>(
           XFA_Element::DynamicRender);
   if (!pDynamicRender)
-    return iStatus;
+    return false;
 
   WideString wsType = pDynamicRender->JSObject()->GetContent(false);
   if (wsType == L"required")
     m_FormType = FormType::kXFAFull;
 
-  return iStatus;
+  return true;
 }
 
 bool XFA_GetPDFContentsFromPDFXML(CFX_XMLNode* pPDFElement,
