@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "61243e4f_0f5e304f",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-11T09:01:34Z",
+      "side": 1,
+      "message": "Hmm, ok. I can\u0027t think of a scenario which would need FPDFAnnot_SetAttachmentPoints() (I think a remove API would make more sense), but maybe there is one I don\u0027t know of, so I\u0027m reverting my change.",
+      "parentUuid": "0d39ea68_c389b6dd",
+      "revId": "87c1668974e5d25fd2317e185ef71260a48dadb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b80eb384_60fc3e20",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 14
