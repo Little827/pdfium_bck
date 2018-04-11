@@ -22,6 +22,30 @@
       "revId": "66c35444d404165645b790cd350796b0a00e70a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee3ac04f_8807615b",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T20:59:36Z",
+      "side": 1,
+      "message": "Looks like ASCII whitespace to me. As far as I know XML doesn\u0027t have a special whitespace consideration.",
+      "parentUuid": "c56ff1e3_30cae44d",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "66c35444d404165645b790cd350796b0a00e70a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
