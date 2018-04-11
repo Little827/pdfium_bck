@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c56ff1e3_30cae44d",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-11T20:37:49Z",
+      "side": 1,
+      "message": "Question for a possible follow up: Is this specified in the spec somewhere or is this another example of using ASCII white space?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "66c35444d404165645b790cd350796b0a00e70a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
