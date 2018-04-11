@@ -457,8 +457,7 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
                           content.GetLength());
     CXFA_FFDoc* ffdoc = m_pContext->GetXFADocView()->GetDoc();
     ffdoc->SavePackage(
-        ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Data)), fileWrite,
-        nullptr);
+        ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Data)), fileWrite);
   } else if (fileType == FXFA_SAVEAS_XDP) {
     if (!m_pContext->GetPDFDoc())
       return;
@@ -491,14 +490,14 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
         CXFA_FFDoc* ffdoc = m_pContext->GetXFADocView()->GetDoc();
         ffdoc->SavePackage(
             ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Form)),
-            fileWrite, nullptr);
+            fileWrite);
         continue;
       }
       if (pPrePDFObj->GetString() == "datasets") {
         CXFA_FFDoc* ffdoc = m_pContext->GetXFADocView()->GetDoc();
         ffdoc->SavePackage(
             ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Datasets)),
-            fileWrite, nullptr);
+            fileWrite);
         continue;
       }
       if (i == size - 1) {
@@ -748,8 +747,8 @@ bool CPDFXFA_DocEnvironment::ExportSubmitFile(FPDF_FILEHANDLER* pFileHandler,
     fileStream->WriteBlock(kContent, 0, strlen(kContent));
 
     ffdoc->SavePackage(
-        ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Data)), fileStream,
-        nullptr);
+        ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Data)),
+        fileStream);
     return true;
   }
 
@@ -813,11 +812,11 @@ bool CPDFXFA_DocEnvironment::ExportSubmitFile(FPDF_FILEHANDLER* pFileHandler,
     if (pPrePDFObj->GetString() == "form") {
       ffdoc->SavePackage(
           ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Form)),
-          fileStream, nullptr);
+          fileStream);
     } else if (pPrePDFObj->GetString() == "datasets") {
       ffdoc->SavePackage(
           ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Datasets)),
-          fileStream, nullptr);
+          fileStream);
     }
   }
   return true;
