@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "556a5f8b_bfbb3edd",
+        "filename": "core/fxcrt/xml/cfx_xmldoc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-11T21:00:26Z",
+      "side": 1,
+      "message": "Can you merge this with GetTree()?",
+      "revId": "9f135732d1205c747205f94fea3f849639b58ec2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca47c28_57db01d5",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-11T21:00:26Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 699,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 7
+      },
+      "revId": "9f135732d1205c747205f94fea3f849639b58ec2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
