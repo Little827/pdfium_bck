@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f10e8549_53e945be",
+        "filename": "core/fxcrt/unowned_span.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-11T16:44:31Z",
+      "side": 1,
+      "message": "Nah.\n\nconst char *foo \u003d \"abcd\" + 2;\ngive \"cd\" with strlen(foo) \u003d\u003d 2.",
+      "parentUuid": "dcdeeb51_97fff7a5",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 3
+      },
+      "revId": "b17abbb37667b4623ed71dfce145aabbff3d5aba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21ed71d5_c2c7cb36",
         "filename": "core/fxcrt/unowned_span.h",
         "patchSetId": 7
@@ -53,6 +77,30 @@
       "writtenOn": "2018-04-11T00:21:18Z",
       "side": 1,
       "message": "This is ... scary? It creates a new span and replaces itself with the new span?",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 17
+      },
+      "revId": "b17abbb37667b4623ed71dfce145aabbff3d5aba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae7b86d_c3f325f8",
+        "filename": "core/fxcrt/unowned_span.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-11T16:44:31Z",
+      "side": 1,
+      "message": "Implements operator+\u003d in terms of operator+ and operator\u003d, written as infix ops.",
+      "parentUuid": "21ed71d5_c2c7cb36",
       "range": {
         "startLine": 283,
         "startChar": 4,
