@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3da2c678_b188af6c",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T00:11:47Z",
+      "side": 1,
+      "message": "If I read GetBuffer correctly, in this case we would have created a new StringData object and done a copy? In that case, should we still do the same here as this string is getting shoved over to the embedder?",
+      "revId": "821cf4f2e905d6b7a034e504e57181bad75363b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d653b280_3039c3fe",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T00:11:47Z",
+      "side": 1,
+      "message": "AsFPDFWideString?",
+      "range": {
+        "startLine": 377,
+        "startChar": 23,
+        "endLine": 377,
+        "endChar": 56
+      },
+      "revId": "821cf4f2e905d6b7a034e504e57181bad75363b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2633bbe_ba42e1cb",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T00:11:47Z",
+      "side": 1,
+      "message": "AsFPDFWideString",
+      "range": {
+        "startLine": 447,
+        "startChar": 15,
+        "endLine": 447,
+        "endChar": 48
+      },
+      "revId": "821cf4f2e905d6b7a034e504e57181bad75363b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c52e4ea_0f919305",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T00:11:47Z",
+      "side": 1,
+      "message": "ditto (and below)",
+      "range": {
+        "startLine": 471,
+        "startChar": 6,
+        "endLine": 471,
+        "endChar": 22
+      },
+      "revId": "821cf4f2e905d6b7a034e504e57181bad75363b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
