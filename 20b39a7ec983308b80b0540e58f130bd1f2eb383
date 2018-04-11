@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88abefa7_2ddd0550",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T20:46:45Z",
+      "side": 1,
+      "message": "You can probably omit this part.",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eebd9447_c6e464d0",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T20:46:45Z",
+      "side": 1,
+      "message": "maybe b_value?",
+      "range": {
+        "startLine": 113,
+        "startChar": 17,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57364d09_15acb18c",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T20:46:45Z",
+      "side": 1,
+      "message": "Can we use a local |i| of the right type in each for loop instead?",
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f1c6b8_cbf50a8e",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T20:46:45Z",
+      "side": 1,
+      "message": "Maybe we can use a size_t and count up, and do a subtraction to get the right |tmp| index?",
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3122310b_d28a8a24",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T20:46:45Z",
+      "side": 1,
+      "message": "I would get rid of |e| parameter altogether. and use the return value to indicate failure. In the caller, set their |e| to BCExceptionNonEncodableCharacterDetected instead.\n\nI started getting rid of the exceptions at some point but never finished.",
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
