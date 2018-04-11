@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "26974d7b_9fb56c7a",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-11T20:33:16Z",
+      "side": 1,
+      "message": "If we did create a new stringdata, the only difference would be if the embedder were to write to the string buffer, in a situation where the string buffer was shared.  Sounds like bad embedder behaviour, but maybe worth defending against.\n\nI\u0027ll restore the old behaviour, add a comment about this protection, and convert the other casts to use this instead.",
+      "parentUuid": "3da2c678_b188af6c",
+      "revId": "821cf4f2e905d6b7a034e504e57181bad75363b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d653b280_3039c3fe",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 1
