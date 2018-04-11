@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aabd573c_44bdda02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-11T18:06:17Z",
+      "side": 1,
+      "message": "Ah. This is a consequence of using UnownedPtr to point at the base of the span.  I\u0027ll CC you on the follow-up.",
+      "parentUuid": "a137d555_c0559fe5",
+      "revId": "fd0095197169cd2ccbca760cf1d527afed64e795",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5153ae60_477c547c",
         "filename": "core/fpdftext/cpdf_textpage.cpp",
         "patchSetId": 2
