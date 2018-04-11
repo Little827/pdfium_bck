@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6059e7b6_0e2d85f6",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T07:20:49Z",
+      "side": 1,
+      "message": "This code probably should check |quad_index| first before making any modifications. It would be slightly weird to modify |annotDict| and then decide to fail.",
+      "revId": "87c1668974e5d25fd2317e185ef71260a48dadb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b80eb384_60fc3e20",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T07:20:49Z",
+      "side": 1,
+      "message": "If you want to update the style, please use \"annot_dict\" here.\n\nSame issue elsewhere. e.g. \"nFooBar\" should become \"foo_bar\", not \"fooBar\".",
+      "range": {
+        "startLine": 697,
+        "startChar": 19,
+        "endLine": 697,
+        "endChar": 28
+      },
+      "revId": "87c1668974e5d25fd2317e185ef71260a48dadb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
