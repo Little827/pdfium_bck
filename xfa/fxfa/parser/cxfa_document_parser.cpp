@@ -20,9 +20,6 @@ CXFA_DocumentParser::~CXFA_DocumentParser() {
 
 int32_t CXFA_DocumentParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
                                    XFA_PacketType ePacketID) {
-  m_pDocument.reset();
-  m_nodeParser.CloseParser();
-
   m_pDocument = pdfium::MakeUnique<CXFA_Document>(GetNotify());
   m_nodeParser.SetFactory(m_pDocument.get());
 
