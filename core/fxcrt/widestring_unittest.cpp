@@ -815,15 +815,15 @@ TEST(WideString, Reserve) {
 TEST(WideString, GetBuffer) {
   {
     WideString str;
-    wchar_t* buffer = str.GetBuffer(12);
-    wcscpy(buffer, L"clams");
+    pdfium::span<wchar_t> buffer = str.GetBuffer(12);
+    wcscpy(buffer.data(), L"clams");
     str.ReleaseBuffer(str.GetStringLength());
     EXPECT_EQ(L"clams", str);
   }
   {
     WideString str(L"cl");
-    wchar_t* buffer = str.GetBuffer(12);
-    wcscpy(buffer + 2, L"ams");
+    pdfium::span<wchar_t> buffer = str.GetBuffer(12);
+    wcscpy(buffer.data() + 2, L"ams");
     str.ReleaseBuffer(str.GetStringLength());
     EXPECT_EQ(L"clams", str);
   }
