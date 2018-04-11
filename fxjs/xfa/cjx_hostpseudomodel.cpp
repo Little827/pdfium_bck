@@ -29,12 +29,11 @@ int32_t FilterName(const WideStringView& wsExpression,
   if (nStart >= iLength)
     return iLength;
 
-  wchar_t* pBuf = wsFilter.GetBuffer(iLength - nStart);
-  int32_t nCount = 0;
   const wchar_t* pSrc = wsExpression.unterminated_c_str();
-  wchar_t wCur;
+  pdfium::span<wchar_t> pBuf = wsFilter.GetBuffer(iLength - nStart);
+  int32_t nCount = 0;
   while (nStart < iLength) {
-    wCur = pSrc[nStart++];
+    wchar_t wCur = pSrc[nStart++];
     if (wCur == ',')
       break;
 

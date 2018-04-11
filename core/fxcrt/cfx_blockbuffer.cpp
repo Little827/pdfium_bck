@@ -77,13 +77,13 @@ WideString CFX_BlockBuffer::GetTextData(size_t start, size_t length) const {
   size_t maybeDataLength = m_BufferSize - 1 - m_StartPosition;
   if (start > maybeDataLength)
     return WideString();
-  length = std::min(length, maybeDataLength);
 
-  WideString wsTextData;
-  wchar_t* pBuf = wsTextData.GetBuffer(length);
-  if (!pBuf)
+  length = std::min(length, maybeDataLength);
+  if (!length)
     return WideString();
 
+  WideString wsTextData;
+  pdfium::span<wchar_t> pBuf = wsTextData.GetBuffer(length);
   size_t startBlock = 0;
   size_t startInner = 0;
   std::tie(startBlock, startInner) = TextDataIndex2BufIndex(start);
@@ -104,7 +104,7 @@ WideString CFX_BlockBuffer::GetTextData(size_t start, size_t length) const {
       copyLength -= ((kAllocStep - 1) - endInner);
 
     wchar_t* pBlockBuf = m_BlockArray[i].get();
-    memcpy(pBuf + pointer, pBlockBuf + bufferPointer,
+    memcpy(&pBuf[pointer], pBlockBuf + bufferPointer,
            copyLength * sizeof(wchar_t));
     pointer += copyLength;
   }
