@@ -18,17 +18,21 @@ CXFA_DocumentParser::~CXFA_DocumentParser() {
   m_pDocument->ReleaseXMLNodesIfNeeded();
 }
 
-int32_t CXFA_DocumentParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
-                                   XFA_PacketType ePacketID) {
-  m_pDocument = pdfium::MakeUnique<CXFA_Document>(GetNotify());
-  m_nodeParser.SetFactory(m_pDocument.get());
+bool CXFA_DocumentParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
+                                XFA_PacketType ePacketID) {
+  // Note, we don't pass the document into the constructor as currently that
+  // triggers different behaviour in the parser.
+  CXFA_SimpleParser parser;
+  parser.SetFactory(m_pDocument.get());
 
-  int32_t nRetStatus = m_nodeParser.Parse(pStream, ePacketID);
-  if (nRetStatus == XFA_PARSESTATUS_Done) {
-    ASSERT(m_pDocument);
-    m_pDocument->SetRoot(m_nodeParser.GetRootNode());
-  }
-  return nRetStatus;
+  if (!parser.Parse(pStream, ePacketID))
+    return false;
+
+  m_pXMLRoot = parser.GetXMLRoot();
+
+  m_pDocument = pdfium::MakeUnique<CXFA_Document>(GetNotify());
+  m_pDocument->SetRoot(parser.GetRootNode());
+  return true;
 }
 
 CXFA_FFNotify* CXFA_DocumentParser::GetNotify() const {

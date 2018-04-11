@@ -347,15 +347,11 @@ bool CXFA_SimpleParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
 
   CFX_XMLDoc doc;
   if (!doc.Load(pStreamProxy))
-    return XFA_PARSESTATUS_SyntaxErr;
+    return false;
 
   m_pNodeTree = doc.GetTree();
   m_pRootNode = ParseAsXDPPacket(GetDocumentNode(m_pNodeTree.get()), ePacketID);
-
-  if (!m_pRootNode)
-    return XFA_PARSESTATUS_StatusErr;
-
-  return XFA_PARSESTATUS_Done;
+  return !!m_pRootNode;
 }
 
 CFX_XMLNode* CXFA_SimpleParser::ParseXMLData(const ByteString& wsXML) {
