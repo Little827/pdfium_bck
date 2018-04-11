@@ -22,6 +22,103 @@
       "revId": "0440559c13cd070f431aa188fdc92c621a8b7c86",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b85f214_bcf03040",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T18:29:28Z",
+      "side": 1,
+      "message": "const CPDF_Array*, since you have been making pointers const?",
+      "range": {
+        "startLine": 197,
+        "startChar": 28,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "0440559c13cd070f431aa188fdc92c621a8b7c86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b578b5_5db495c2",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T18:29:28Z",
+      "side": 1,
+      "message": "Shorten function body to:\n\nreturn array \u0026\u0026 index \u003c array-\u003eGetCount() / 8;",
+      "revId": "0440559c13cd070f431aa188fdc92c621a8b7c86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "761936af_b5bfdd5a",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T18:29:28Z",
+      "side": 1,
+      "message": "Let\u0027s make this an ASSERT():\n\nASSERT(array);\nASSERT(quad_points);\nASSERT(IsValidQuadPointsIndex(array, quad_index));",
+      "revId": "0440559c13cd070f431aa188fdc92c621a8b7c86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963a2535_ec6e1ec0",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T18:29:28Z",
+      "side": 1,
+      "message": "Naming style needs updating.",
+      "range": {
+        "startLine": 687,
+        "startChar": 19,
+        "endLine": 687,
+        "endChar": 28
+      },
+      "revId": "0440559c13cd070f431aa188fdc92c621a8b7c86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdea31ed_d7127def",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-11T18:29:28Z",
+      "side": 1,
+      "message": "Maybe use IsValidQuadPointsIndex() here too?",
+      "revId": "0440559c13cd070f431aa188fdc92c621a8b7c86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
