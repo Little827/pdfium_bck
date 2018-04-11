@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "de22202e_09e5709a",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-11T09:52:32Z",
+      "side": 1,
+      "message": "I had to re-structure the code a bit to be able to check the quad_index.",
+      "parentUuid": "61243e4f_0f5e304f",
+      "revId": "87c1668974e5d25fd2317e185ef71260a48dadb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b80eb384_60fc3e20",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 14
@@ -93,6 +111,30 @@
       "revId": "87c1668974e5d25fd2317e185ef71260a48dadb0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a53efe3_18713df4",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-11T09:52:32Z",
+      "side": 1,
+      "message": "I reverted the style to \"nFooBar\" for now.",
+      "parentUuid": "b80eb384_60fc3e20",
+      "range": {
+        "startLine": 697,
+        "startChar": 19,
+        "endLine": 697,
+        "endChar": 28
+      },
+      "revId": "87c1668974e5d25fd2317e185ef71260a48dadb0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
