@@ -433,7 +433,7 @@ WideString PDF_DecodeText(const uint8_t* src_data, uint32_t src_len) {
       return result;
 
     bool bBE = src_data[0] == 0xfe || (src_data[0] == 0xff && !src_data[2]);
-    wchar_t* dest_buf = result.GetBuffer(max_chars);
+    pdfium::span<wchar_t> dest_buf = result.GetBuffer(max_chars);
     const uint8_t* uni_str = src_data + 2;
     int dest_pos = 0;
     for (uint32_t i = 0; i < max_chars * 2; i += 2) {
@@ -442,7 +442,6 @@ WideString PDF_DecodeText(const uint8_t* src_data, uint32_t src_len) {
         dest_buf[dest_pos++] = unicode;
         continue;
       }
-
       i += 2;
       while (i < max_chars * 2) {
         uint16_t unicode2 = GetUnicodeFromBytes(uni_str + i, bBE);
@@ -452,12 +451,13 @@ WideString PDF_DecodeText(const uint8_t* src_data, uint32_t src_len) {
       }
     }
     result.ReleaseBuffer(dest_pos);
-  } else {
-    wchar_t* dest_buf = result.GetBuffer(src_len);
-    for (uint32_t i = 0; i < src_len; ++i)
-      dest_buf[i] = PDFDocEncoding[src_data[i]];
-    result.ReleaseBuffer(src_len);
+    return result;
   }
+
+  pdfium::span<wchar_t> dest_buf = result.GetBuffer(src_len);
+  for (uint32_t i = 0; i < src_len; ++i)
+    dest_buf[i] = PDFDocEncoding[src_data[i]];
+  result.ReleaseBuffer(src_len);
   return result;
 }
 

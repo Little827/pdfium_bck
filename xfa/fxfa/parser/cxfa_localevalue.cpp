@@ -685,7 +685,7 @@ void CXFA_LocaleValue::GetNumericFormat(WideString& wsFormat,
 
   int32_t nTotalLen = (nIntLen >= 0 ? nIntLen : 2) + 1 +
                       (nDecLen >= 0 ? nDecLen : 2) + (nDecLen == 0 ? 0 : 1);
-  wchar_t* lpBuf = wsFormat.GetBuffer(nTotalLen);
+  pdfium::span<wchar_t> lpBuf = wsFormat.GetBuffer(nTotalLen);
   int32_t nPos = 0;
   lpBuf[nPos++] = L's';
 
