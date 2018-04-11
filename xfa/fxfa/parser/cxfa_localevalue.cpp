@@ -685,31 +685,35 @@ void CXFA_LocaleValue::GetNumericFormat(WideString& wsFormat,
 
   int32_t nTotalLen = (nIntLen >= 0 ? nIntLen : 2) + 1 +
                       (nDecLen >= 0 ? nDecLen : 2) + (nDecLen == 0 ? 0 : 1);
-  wchar_t* lpBuf = wsFormat.GetBuffer(nTotalLen);
-  int32_t nPos = 0;
-  lpBuf[nPos++] = L's';
 
-  if (nIntLen == -1) {
-    lpBuf[nPos++] = L'z';
-    lpBuf[nPos++] = L'*';
-  } else {
-    while (nIntLen) {
+  {
+    pdfium::span<wchar_t> lpBuf = wsFormat.GetBuffer(nTotalLen);
+    int32_t nPos = 0;
+    lpBuf[nPos++] = L's';
+
+    if (nIntLen == -1) {
       lpBuf[nPos++] = L'z';
-      nIntLen--;
+      lpBuf[nPos++] = L'*';
+    } else {
+      while (nIntLen) {
+        lpBuf[nPos++] = L'z';
+        nIntLen--;
+      }
+    }
+    if (nDecLen != 0) {
+      lpBuf[nPos++] = L'.';
+    }
+    if (nDecLen == -1) {
+      lpBuf[nPos++] = L'z';
+      lpBuf[nPos++] = L'*';
+    } else {
+      while (nDecLen) {
+        lpBuf[nPos++] = L'z';
+        nDecLen--;
+      }
     }
   }
-  if (nDecLen != 0) {
-    lpBuf[nPos++] = L'.';
-  }
-  if (nDecLen == -1) {
-    lpBuf[nPos++] = L'z';
-    lpBuf[nPos++] = L'*';
-  } else {
-    while (nDecLen) {
-      lpBuf[nPos++] = L'z';
-      nDecLen--;
-    }
-  }
+
   wsFormat.ReleaseBuffer(nTotalLen);
 }
 
