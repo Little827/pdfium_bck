@@ -12,6 +12,7 @@
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfdoc/cpdf_bookmark.h"
 #include "core/fpdfdoc/cpdf_bookmarktree.h"
 #include "core/fpdfdoc/cpdf_dest.h"
@@ -21,6 +22,8 @@
 #include "third_party/base/stl_util.h"
 
 namespace {
+
+constexpr char kQuadPoints[] = "QuadPoints";
 
 CPDF_Bookmark FindBookmark(const CPDF_BookmarkTree& tree,
                            CPDF_Bookmark bookmark,
@@ -77,6 +80,37 @@ CPDF_Dictionary* CPDFDictionaryFromFPDFLink(FPDF_LINK link) {
 }
 
 }  // namespace
+
+CPDF_Array* GetQuadPointsArrayFromDictionary(const CPDF_Dictionary* dict) {
+  return dict ? dict->GetArrayFor(kQuadPoints) : nullptr;
+}
+
+CPDF_Array* AddQuadPointsArrayToDictionary(CPDF_Dictionary* dict) {
+  if (!dict)
+    return nullptr;
+  return dict->SetNewFor<CPDF_Array>(kQuadPoints);
+}
+
+bool GetQuadPointsAtIndex(const CPDF_Array* array,
+                          size_t quad_index,
+                          FS_QUADPOINTSF* quad_points) {
+  ASSERT(quad_points);
+  ASSERT(array);
+
+  if (quad_index >= array->GetCount() / 8)
+    return false;
+
+  quad_index *= 8;
+  quad_points->x1 = array->GetNumberAt(quad_index);
+  quad_points->y1 = array->GetNumberAt(quad_index + 1);
+  quad_points->x2 = array->GetNumberAt(quad_index + 2);
+  quad_points->y2 = array->GetNumberAt(quad_index + 3);
+  quad_points->x3 = array->GetNumberAt(quad_index + 4);
+  quad_points->y3 = array->GetNumberAt(quad_index + 5);
+  quad_points->x4 = array->GetNumberAt(quad_index + 6);
+  quad_points->y4 = array->GetNumberAt(quad_index + 7);
+  return true;
+}
 
 FPDF_EXPORT FPDF_BOOKMARK FPDF_CALLCONV
 FPDFBookmark_GetFirstChild(FPDF_DOCUMENT document, FPDF_BOOKMARK pDict) {
@@ -390,9 +424,17 @@ FPDFLink_GetQuadPoints(FPDF_LINK link_annot,
                        FS_QUADPOINTSF* quad_points) {
   if (!quad_points || quad_index < 0)
     return false;
-  return GetQuadPointsFromDictionary(CPDFDictionaryFromFPDFLink(link_annot),
-                                     static_cast<size_t>(quad_index),
-                                     quad_points);
+
+  CPDF_Dictionary* pLinkDict = CPDFDictionaryFromFPDFLink(link_annot);
+  if (!pLinkDict)
+    return false;
+
+  const CPDF_Array* pArray = GetQuadPointsArrayFromDictionary(pLinkDict);
+  if (!pArray)
+    return false;
+
+  return GetQuadPointsAtIndex(pArray, static_cast<size_t>(quad_index),
+                              quad_points);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetMetaText(FPDF_DOCUMENT document,
