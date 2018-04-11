@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9cd654a_83f47330",
+        "filename": "xfa/fxfa/parser/cxfa_document_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-11T21:17:30Z",
+      "side": 1,
+      "message": "Can you fix that in a follow up? It\u0027s really unintuitive.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "5a1785424188cb88f540d3fffc6752dc2e1e90c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb8f94b_94d6ba26",
+        "filename": "xfa/fxfa/parser/cxfa_simple_parser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-11T21:17:30Z",
+      "side": 1,
+      "message": "Maybe call RetrieveXMLRoot() to make it clear there\u0027s an ownership transfer, as opposed to GetRootNode().",
+      "range": {
+        "startLine": 35,
+        "startChar": 31,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "5a1785424188cb88f540d3fffc6752dc2e1e90c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
