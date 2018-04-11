@@ -16,6 +16,24 @@
       "revId": "971a674ef17526ad37ce55ba90110830b94889d0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b70f4f7_3db0be2c",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T00:05:43Z",
+      "side": 1,
+      "message": "So, we can\u0027t rename fpdfview.h as it\u0027s the file all embedders depend on. I like having the cpp file named fpdf_view.cpp as its consistent with the rest of the files in the fpdfsdk/ directory.",
+      "parentUuid": "2037fe6a_06989787",
+      "revId": "971a674ef17526ad37ce55ba90110830b94889d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
