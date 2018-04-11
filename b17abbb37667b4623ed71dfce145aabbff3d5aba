@@ -16,6 +16,52 @@
       "revId": "b17abbb37667b4623ed71dfce145aabbff3d5aba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcdeeb51_97fff7a5",
+        "filename": "core/fxcrt/unowned_span.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T00:21:18Z",
+      "side": 1,
+      "message": "This seems kinda awkward\n\nSpan(\"abcd\", 4) + 2 \u003d\u003d Span(\"cd\", 2)?\n\nAlmost feels like there should just be a SpanIterator and begin()/end() on span or something?",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 3
+      },
+      "revId": "b17abbb37667b4623ed71dfce145aabbff3d5aba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ed71d5_c2c7cb36",
+        "filename": "core/fxcrt/unowned_span.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-11T00:21:18Z",
+      "side": 1,
+      "message": "This is ... scary? It creates a new span and replaces itself with the new span?",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 17
+      },
+      "revId": "b17abbb37667b4623ed71dfce145aabbff3d5aba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
