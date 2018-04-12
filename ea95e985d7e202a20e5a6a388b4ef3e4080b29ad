@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d15d1d3_0a4b81bc",
+        "filename": "core/fxcrt/xml/cfx_xmlinstruction.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-12T21:13:25Z",
+      "side": 1,
+      "message": "Use a format function instead of avoid many objects to be created.",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "ea95e985d7e202a20e5a6a388b4ef3e4080b29ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
