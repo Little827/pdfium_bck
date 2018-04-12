@@ -16,6 +16,7 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/maybe_owned.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/base/span.h"
 
 class CPDF_AllStates;
 class CPDF_Form;
@@ -53,9 +54,9 @@ class CPDF_ContentParser {
   uint32_t m_nStreams = 0;
   RetainPtr<CPDF_StreamAcc> m_pSingleStream;
   std::vector<RetainPtr<CPDF_StreamAcc>> m_StreamArray;
-  MaybeOwned<uint8_t, FxFreeDeleter> m_pData;
-  uint32_t m_Size = 0;
-  uint32_t m_CurrentOffset = 0;
+  std::vector<uint8_t> m_BackingStore;
+  pdfium::span<uint8_t> m_pData;  // Must not outlive m_BackingStore.
+  size_t m_CurrentOffset = 0;
 
   // Only used when parsing pages.
   std::unique_ptr<std::set<const uint8_t*>> m_parsedSet;
