@@ -5,6 +5,7 @@
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
 #include <algorithm>
+#include <iterator>
 #include <memory>
 #include <vector>
 
@@ -504,7 +505,7 @@ CCodec_FaxDecoder::CCodec_FaxDecoder(const uint8_t* src_buf,
 CCodec_FaxDecoder::~CCodec_FaxDecoder() {}
 
 bool CCodec_FaxDecoder::v_Rewind() {
-  memset(m_RefBuf.data(), 0xff, m_RefBuf.size());
+  std::fill(std::begin(m_RefBuf), std::end(m_RefBuf), 0xff);
   m_bitpos = 0;
   return true;
 }
@@ -515,7 +516,7 @@ uint8_t* CCodec_FaxDecoder::v_GetNextLine() {
   if (m_bitpos >= bitsize)
     return nullptr;
 
-  memset(m_ScanlineBuf.data(), 0xff, m_ScanlineBuf.size());
+  std::fill(std::begin(m_ScanlineBuf), std::end(m_ScanlineBuf), 0xff);
   if (m_Encoding < 0) {
     FaxG4GetRow(m_pSrcBuf, bitsize, &m_bitpos, m_ScanlineBuf.data(), m_RefBuf,
                 m_OrigWidth);
@@ -756,9 +757,11 @@ CCodec_FaxEncoder::CCodec_FaxEncoder(const uint8_t* src_buf,
                                      int width,
                                      int height,
                                      int pitch)
-    : m_Cols(width), m_Rows(height), m_Pitch(pitch), m_pSrcBuf(src_buf) {
-  m_RefLine.resize(m_Pitch);
-  memset(m_RefLine.data(), 0xff, m_Pitch);
+    : m_RefLine(pitch, 0xff),
+      m_Cols(width),
+      m_Rows(height),
+      m_Pitch(pitch),
+      m_pSrcBuf(src_buf) {
   m_pLineBuf = FX_Alloc2D(uint8_t, m_Pitch, 8);
   m_DestBuf.EstimateSize(0, 10240);
 }
