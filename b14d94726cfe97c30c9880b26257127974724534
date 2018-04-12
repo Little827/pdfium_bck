@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c7112f4_ceb3c864",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-12T15:09:00Z",
+      "side": 1,
+      "message": "I think it makes more sense to deal with finding the stream outside of Metadata as it isn\u0027t related to metadata at all.",
+      "range": {
+        "startLine": 260,
+        "startChar": 3,
+        "endLine": 262,
+        "endChar": 24
+      },
+      "revId": "b14d94726cfe97c30c9880b26257127974724534",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
