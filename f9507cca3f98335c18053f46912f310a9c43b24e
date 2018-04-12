@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52747b2e_8b2874b4",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-12T22:55:47Z",
+      "side": 1,
+      "message": "Why do we multiply fraction by 4294967296 on 239 and then divide here? We don\u0027t seem to modify dwFractional in between, so isn\u0027t this, basically just making dValue \u003d\u003d fraction?",
+      "range": {
+        "startLine": 261,
+        "startChar": 18,
+        "endLine": 261,
+        "endChar": 45
+      },
+      "revId": "f9507cca3f98335c18053f46912f310a9c43b24e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
