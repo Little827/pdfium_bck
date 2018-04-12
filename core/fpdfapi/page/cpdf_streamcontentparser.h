@@ -90,9 +90,11 @@ class CPDF_StreamContentParser {
   int GetNextParamPos();
   void ClearAllParams();
   CPDF_Object* GetObject(uint32_t index);
-  ByteString GetString(uint32_t index);
-  float GetNumber(uint32_t index);
-  int GetInteger(uint32_t index) { return (int32_t)(GetNumber(index)); }
+  ByteString GetString(uint32_t index) const;
+  float GetNumber(uint32_t index) const;
+  int GetInteger(uint32_t index) const {
+    return static_cast<int>(GetNumber(index));
+  }
   void OnOperator(const ByteStringView& op);
   void AddTextObject(ByteString* pText,
                      float fInitKerning,
@@ -119,6 +121,9 @@ class CPDF_StreamContentParser {
 
   // Takes ownership of |pImageObj|, returns unowned pointer to it.
   CPDF_ImageObject* AddImageObject(std::unique_ptr<CPDF_ImageObject> pImageObj);
+
+  std::vector<float> GetColors() const;
+  std::vector<float> GetNamedColors() const;
 
   void Handle_CloseFillStrokePath();
   void Handle_FillStrokePath();
