@@ -383,7 +383,7 @@ CPDF_Object* CPDF_StreamContentParser::GetObject(uint32_t index) {
   return nullptr;
 }
 
-ByteString CPDF_StreamContentParser::GetString(uint32_t index) {
+ByteString CPDF_StreamContentParser::GetString(uint32_t index) const {
   if (index >= m_ParamCount) {
     return ByteString();
   }
@@ -391,7 +391,7 @@ ByteString CPDF_StreamContentParser::GetString(uint32_t index) {
   if (real_index >= kParamBufSize) {
     real_index -= kParamBufSize;
   }
-  ContentParam& param = m_ParamBuf[real_index];
+  const ContentParam& param = m_ParamBuf[real_index];
   if (param.m_Type == ContentParam::NAME) {
     return ByteString(param.m_Name.m_Buffer, param.m_Name.m_Len);
   }
@@ -401,7 +401,7 @@ ByteString CPDF_StreamContentParser::GetString(uint32_t index) {
   return ByteString();
 }
 
-float CPDF_StreamContentParser::GetNumber(uint32_t index) {
+float CPDF_StreamContentParser::GetNumber(uint32_t index) const {
   if (index >= m_ParamCount) {
     return 0;
   }
@@ -409,7 +409,7 @@ float CPDF_StreamContentParser::GetNumber(uint32_t index) {
   if (real_index >= kParamBufSize) {
     real_index -= kParamBufSize;
   }
-  ContentParam& param = m_ParamBuf[real_index];
+  const ContentParam& param = m_ParamBuf[real_index];
   if (param.m_Type == ContentParam::NUMBER) {
     return param.m_Number.m_bInteger
                ? static_cast<float>(param.m_Number.m_Integer)
@@ -832,6 +832,16 @@ CPDF_ImageObject* CPDF_StreamContentParser::AddImageObject(
   return pRet;
 }
 
+std::vector<float> CPDF_StreamContentParser::GetColors(bool bIsName) const {
+  ASSERT(m_ParamCount > 0);
+  const uint32_t nvalues = bIsName ? m_ParamCount - 1 : m_ParamCount;
+
+  std::vector<float> values(nvalues);
+  for (size_t i = 0; i < nvalues; ++i)
+    values[i] = GetNumber(m_ParamCount - i - 1);
+  return values;
+}
+
 void CPDF_StreamContentParser::Handle_MarkPlace_Dictionary() {}
 
 void CPDF_StreamContentParser::Handle_EndImage() {}
@@ -1048,58 +1058,47 @@ void CPDF_StreamContentParser::Handle_SetColor_Stroke() {
 }
 
 void CPDF_StreamContentParser::Handle_SetColorPS_Fill() {
+  // A valid |pLastParam| implies |m_ParamCount| > 0, so GetColors() calls
+  // below are safe.
   CPDF_Object* pLastParam = GetObject(0);
-  if (!pLastParam) {
+  if (!pLastParam)
+    return;
+
+  const bool bIsName = pLastParam->IsName();
+  if (!bIsName) {
+    std::vector<float> values = GetColors(/*bIsName=*/false);
+    m_pCurStates->m_ColorState.SetFillColor(nullptr, values.data(),
+                                            values.size());
     return;
   }
-  uint32_t nargs = m_ParamCount;
-  uint32_t nvalues = nargs;
-  if (pLastParam->IsName())
-    nvalues--;
-  float* values = nullptr;
-  if (nvalues) {
-    values = FX_Alloc(float, nvalues);
-    for (uint32_t i = 0; i < nvalues; i++) {
-      values[i] = GetNumber(nargs - i - 1);
-    }
+
+  CPDF_Pattern* pPattern = FindPattern(GetString(0), false);
+  if (pPattern) {
+    m_pCurStates->m_ColorState.SetFillPattern(pPattern,
+                                              GetColors(/*bIsName=*/true));
   }
-  if (nvalues != nargs) {
-    CPDF_Pattern* pPattern = FindPattern(GetString(0), false);
-    if (pPattern) {
-      m_pCurStates->m_ColorState.SetFillPattern(pPattern, values, nvalues);
-    }
-  } else {
-    m_pCurStates->m_ColorState.SetFillColor(nullptr, values, nvalues);
-  }
-  FX_Free(values);
 }
 
 void CPDF_StreamContentParser::Handle_SetColorPS_Stroke() {
   CPDF_Object* pLastParam = GetObject(0);
-  if (!pLastParam) {
+  if (!pLastParam)
+    return;
+
+  // A valid |pLastParam| implies |m_ParamCount| > 0, so GetColors() calls
+  // below are safe.
+  const bool bIsName = pLastParam->IsName();
+  if (!bIsName) {
+    std::vector<float> values = GetColors(/*bIsName=*/false);
+    m_pCurStates->m_ColorState.SetStrokeColor(nullptr, values.data(),
+                                              values.size());
     return;
   }
-  int nargs = m_ParamCount;
-  int nvalues = nargs;
-  if (pLastParam->IsName())
-    nvalues--;
 
-  float* values = nullptr;
-  if (nvalues) {
-    values = FX_Alloc(float, nvalues);
-    for (int i = 0; i < nvalues; i++) {
-      values[i] = GetNumber(nargs - i - 1);
-    }
+  CPDF_Pattern* pPattern = FindPattern(GetString(0), false);
+  if (pPattern) {
+    m_pCurStates->m_ColorState.SetStrokePattern(pPattern,
+                                                GetColors(/*bIsName=*/true));
   }
-  if (nvalues != nargs) {
-    CPDF_Pattern* pPattern = FindPattern(GetString(0), false);
-    if (pPattern) {
-      m_pCurStates->m_ColorState.SetStrokePattern(pPattern, values, nvalues);
-    }
-  } else {
-    m_pCurStates->m_ColorState.SetStrokeColor(nullptr, values, nvalues);
-  }
-  FX_Free(values);
 }
 
 void CPDF_StreamContentParser::Handle_ShadeFill() {
