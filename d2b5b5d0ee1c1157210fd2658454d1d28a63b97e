@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b0c4ae8_2d8de4a2",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-12T19:47:29Z",
+      "side": 1,
+      "message": "You need to update the implementation to return a non-const pointer as well. Surprisingly, the non-jumbo bots didn\u0027t complain.\n\nI would move all the implementations into fpdfsdk/cpdfsdk_helpers.cpp.",
+      "revId": "d2b5b5d0ee1c1157210fd2658454d1d28a63b97e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
