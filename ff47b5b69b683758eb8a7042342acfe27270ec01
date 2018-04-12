@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61be5047_9a421a1e",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-12T17:18:46Z",
+      "side": 1,
+      "message": "This was int64_t before. Is it safe to make this smaller on 32-bit systems given the next for-block?",
+      "range": {
+        "startLine": 277,
+        "startChar": 6,
+        "endLine": 277,
+        "endChar": 12
+      },
+      "revId": "ff47b5b69b683758eb8a7042342acfe27270ec01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a23e257_25a7bbb8",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-12T17:18:46Z",
+      "side": 1,
+      "message": "Not needed since |i| is already size_t.",
+      "range": {
+        "startLine": 280,
+        "startChar": 28,
+        "endLine": 280,
+        "endChar": 47
+      },
+      "revId": "ff47b5b69b683758eb8a7042342acfe27270ec01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0028aa64_781e607d",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-12T17:18:46Z",
+      "side": 1,
+      "message": "Also not needed.",
+      "range": {
+        "startLine": 316,
+        "startChar": 16,
+        "endLine": 316,
+        "endChar": 35
+      },
+      "revId": "ff47b5b69b683758eb8a7042342acfe27270ec01",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
