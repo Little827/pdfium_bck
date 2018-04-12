@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f0e718a2_0d797df1",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T17:02:35Z",
+      "side": 1,
+      "message": "Also, pdfium::make_span(pout, dwSize) is your friend and does type deduction so you don\u0027t have to write the \u003c\u003es",
+      "parentUuid": "2a36710b_88e82fc8",
+      "range": {
+        "startLine": 1082,
+        "startChar": 41,
+        "endLine": 1082,
+        "endChar": 62
+      },
+      "revId": "4e7b8a2829b3f2a986b5587f185f6a7ce842ce58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddff2eb2_fe5c3400",
         "filename": "xfa/fxfa/parser/cxfa_xmllocale.h",
         "patchSetId": 1
