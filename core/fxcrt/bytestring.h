@@ -84,6 +84,14 @@ class ByteString {
     return ByteStringView(raw_str(), GetLength());
   }
 
+  // Explicit conversion to span.
+  // Note: Any subsequent modification of |this| will invalidate the result.
+  pdfium::span<char> AsSpan() const {
+    return m_pData
+               ? pdfium::span<char>(m_pData->m_String, m_pData->m_nDataLength)
+               : pdfium::span<char>();
+  }
+
   // Note: Any subsequent modification of |this| will invalidate iterators.
   const_iterator begin() const { return m_pData ? m_pData->m_String : nullptr; }
   const_iterator end() const {
