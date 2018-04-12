@@ -46,6 +46,30 @@
       "revId": "7023b8877475dda639a15d623b5a552f88a6812f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75414068_ed7b3af7",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-12T20:08:35Z",
+      "side": 0,
+      "message": "Doh, it won\u0027t return true, but the recursion still has to happen so we can add the errors for sub elements. Will fix.",
+      "parentUuid": "7997710b_54c2f6f8",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "7023b8877475dda639a15d623b5a552f88a6812f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
