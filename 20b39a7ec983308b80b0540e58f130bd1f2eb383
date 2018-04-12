@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea4f130e_6ae078a3",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-12T16:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88abefa7_2ddd0550",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eebd9447_c6e464d0",
         "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ac905396_f6237a53",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-12T16:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eebd9447_c6e464d0",
+      "range": {
+        "startLine": 113,
+        "startChar": 17,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57364d09_15acb18c",
         "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da899b7a_b8751b74",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-12T16:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57364d09_15acb18c",
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "7a691ed5_17fb6b28",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-12T16:22:50Z",
+      "side": 1,
+      "message": "Since the code was already doing a -1 to length, I decided to shift the range if i by one and do a -1 when using the value.",
+      "parentUuid": "f9f1c6b8_cbf50a8e",
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3122310b_d28a8a24",
         "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
         "patchSetId": 2
@@ -96,6 +180,24 @@
       "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74df22be_535188d2",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-12T16:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3122310b_d28a8a24",
+      "revId": "20b39a7ec983308b80b0540e58f130bd1f2eb383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
