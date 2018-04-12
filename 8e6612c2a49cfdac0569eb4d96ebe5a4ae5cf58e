@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1523555803 -0700\nnonce AFN+CTLTy5PDn8a9GADxlUR5xx5PzH5KC46VGVw/9ie5zdU9n2ZdFg07rduC5iw8eLMqwDeOR/M6\n\n0000000000000000000000000000000000000000 8e6612c2a49cfdac0569eb4d96ebe5a4ae5cf58e refs/for/refs/heads/master%notify\u003dNONE,m\u003dfix\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrPndsACgkQqzYtYVpm\n/XtttQgAlgwDx3DU/ruKXLZ25qwzQF2zcOIDy9pwayKTWIoWK+A9skhhHoiAGc/B\nlAKUjNSGWZbXSK/j4jBGCidYePC6p2I0cotrttmeWAP9mATj6Kbj1ePxxb7Vp9Ud\nEChK90n4j4Xi6+Djw2mIHoUTSrbGOvtQn8r5ahnelfZrFGc4csHk/yGH2TD6KrG6\npJjCoiXJ3qfPRKXHkrqfELNsUwmqOQNht/0ksqjtXjVqqujxqQ5HXf3ooTza8RnJ\nFt7RwdjvqC5vlnGTx/VxGryOk6wRWOI6Ulsg9agQvc1EYiElfN6dVm+aDEUuOrvB\nVJs/snCtk+0P0KlDzUqBdjgr3WqMMg\u003d\u003d\n\u003d2OlK\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f6fe78_0f21de23",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-12T19:39:14Z",
+      "side": 1,
+      "message": "Dan hates that. I\u0027m fine with it, but for consistency...",
+      "range": {
+        "startLine": 1069,
+        "startChar": 42,
+        "endLine": 1069,
+        "endChar": 54
+      },
+      "revId": "8e6612c2a49cfdac0569eb4d96ebe5a4ae5cf58e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
