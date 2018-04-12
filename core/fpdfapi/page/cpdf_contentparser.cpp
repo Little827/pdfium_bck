@@ -103,8 +103,7 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
   m_pSingleStream =
       pdfium::MakeRetain<CPDF_StreamAcc>(pForm->m_pFormStream.Get());
   m_pSingleStream->LoadAllDataFiltered();
-  m_pData.Reset(m_pSingleStream->GetData());
-  m_Size = m_pSingleStream->GetSize();
+  m_pData = m_pSingleStream->GetSpan();
 }
 
 CPDF_ContentParser::~CPDF_ContentParser() {}
@@ -126,19 +125,17 @@ bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
             m_bIsDone = true;
             return false;
           }
-          m_Size = safeSize.ValueOrDie();
-          m_pData.Reset(std::unique_ptr<uint8_t, FxFreeDeleter>(
-              FX_Alloc(uint8_t, m_Size)));
-          uint32_t pos = 0;
+          m_BackingStore.resize(safeSize.ValueOrDie());
+          m_pData = m_BackingStore;
+          size_t pos = 0;
           for (const auto& stream : m_StreamArray) {
-            memcpy(m_pData.Get() + pos, stream->GetData(), stream->GetSize());
+            memcpy(&m_pData[pos], stream->GetData(), stream->GetSize());
             pos += stream->GetSize();
-            m_pData.Get()[pos++] = ' ';
+            m_pData[pos++] = ' ';
           }
           m_StreamArray.clear();
         } else {
-          m_pData.Reset(m_pSingleStream->GetData());
-          m_Size = m_pSingleStream->GetSize();
+          m_pData = m_pSingleStream->GetSpan();
         }
         m_InternalStage = STAGE_PARSE;
         m_CurrentOffset = 0;
@@ -163,12 +160,12 @@ bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
             m_pObjectHolder->m_BBox, nullptr, m_parsedSet.get());
         m_pParser->GetCurStates()->m_ColorState.SetDefault();
       }
-      if (m_CurrentOffset >= m_Size) {
+      if (m_CurrentOffset >= m_pData.size()) {
         m_InternalStage = STAGE_CHECKCLIP;
       } else {
-        m_CurrentOffset +=
-            m_pParser->Parse(m_pData.Get() + m_CurrentOffset,
-                             m_Size - m_CurrentOffset, PARSE_STEP_LIMIT);
+        m_CurrentOffset += m_pParser->Parse(&m_pData[m_CurrentOffset],
+                                            m_pData.size() - m_CurrentOffset,
+                                            PARSE_STEP_LIMIT);
       }
     }
     if (m_InternalStage == STAGE_CHECKCLIP) {
