@@ -23,6 +23,30 @@
       "revId": "dd5dcf4dbf97cf2d5f681a51fe577dd200a94b75",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39692848_c2f56654",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-12T15:40:12Z",
+      "side": 1,
+      "message": "I can get to it in a follow-up CL. Just taking smaller steps.",
+      "parentUuid": "95b64538_43e6aae4",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "dd5dcf4dbf97cf2d5f681a51fe577dd200a94b75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
