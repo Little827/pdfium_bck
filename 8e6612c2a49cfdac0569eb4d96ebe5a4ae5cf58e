@@ -23,6 +23,30 @@
       "revId": "8e6612c2a49cfdac0569eb4d96ebe5a4ae5cf58e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f717a7_18cc3a64",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-12T19:42:21Z",
+      "side": 1,
+      "message": "Bleh, if it needs to be named make a name, or make a second function GetColours and GetNamedColour? or something depending on what the flag does.",
+      "parentUuid": "e8f6fe78_0f21de23",
+      "range": {
+        "startLine": 1069,
+        "startChar": 42,
+        "endLine": 1069,
+        "endChar": 54
+      },
+      "revId": "8e6612c2a49cfdac0569eb4d96ebe5a4ae5cf58e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
