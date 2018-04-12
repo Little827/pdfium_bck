@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "739118ab_144990ef",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-04-12T21:58:33Z",
+      "side": 1,
+      "message": "Should this be m_xObjectNumber?",
+      "range": {
+        "startLine": 571,
+        "startChar": 11,
+        "endLine": 571,
+        "endChar": 26
+      },
+      "revId": "ca2545e59619c3d8ebccc887e89f0369f1a4c6f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

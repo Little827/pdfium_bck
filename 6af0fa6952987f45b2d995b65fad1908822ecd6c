@@ -85,6 +85,30 @@
     },
     {
       "key": {
+        "uuid": "af308ce3_da1a0f31",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-04-12T21:58:33Z",
+      "side": 1,
+      "message": "I used xObjNameNumberMap to remind myself what it is since there are several maps in the code, and each of them serves a different purpose.  I prefer to keep the name semantics, xObjNameToNumberMap is ok.",
+      "parentUuid": "df9166a4_1caa9c8a",
+      "range": {
+        "startLine": 623,
+        "startChar": 25,
+        "endLine": 623,
+        "endChar": 42
+      },
+      "revId": "6af0fa6952987f45b2d995b65fad1908822ecd6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d35ef4a_880d5782",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 2
@@ -238,6 +262,30 @@
       "side": 1,
       "message": "Can you point to a URL for this readability review? I don\u0027t think that\u0027s the right style. For the same reason you don\u0027t typically use \"Username@google.com\".",
       "parentUuid": "afbb3b0b_0b678411",
+      "range": {
+        "startLine": 711,
+        "startChar": 10,
+        "endLine": 711,
+        "endChar": 14
+      },
+      "revId": "6af0fa6952987f45b2d995b65fad1908822ecd6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d02eb0_ddc0c3ee",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-04-12T21:58:33Z",
+      "side": 1,
+      "message": "https://engdoc.corp.google.com/eng/doc/devguide/py/style/index.md?cl\u003dhead#312-todo-comments\n\nHowever I found the style changed since I acquired python readability.  During my process to get python readability I clearly remember that I was asked to change from xlou to Xlou many times.",
+      "parentUuid": "7ed48860_adf68ee5",
       "range": {
         "startLine": 711,
         "startChar": 10,
