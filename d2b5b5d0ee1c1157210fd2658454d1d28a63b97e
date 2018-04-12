@@ -16,6 +16,41 @@
       "revId": "d2b5b5d0ee1c1157210fd2658454d1d28a63b97e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50895f86_412defe2",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-12T20:22:57Z",
+      "side": 1,
+      "message": "My implementation (fpdf_doc.cpp, line 84) does return a non-const pointer, but I just found out that there\u0027s another GetQuadPointsArrayFromDictionary function in cpdfsdk_helpers.cpp, line 432 -- returning, guess what? A \"const CPDF_Array*\"...",
+      "parentUuid": "7b0c4ae8_2d8de4a2",
+      "revId": "d2b5b5d0ee1c1157210fd2658454d1d28a63b97e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c937f5a0_04832e10",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-12T20:22:57Z",
+      "side": 1,
+      "message": "This has the same signature as GetQuadPointsArrayFromDictionary in cpdfsdk_helpers.h (i.e., a non-const pointer as return type):\nCPDF_Array* GetQuadPointsArrayFromDictionary(const CPDF_Dictionary* dict);",
+      "revId": "d2b5b5d0ee1c1157210fd2658454d1d28a63b97e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
