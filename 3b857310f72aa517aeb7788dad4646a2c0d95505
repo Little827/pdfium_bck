@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34b6561d_ca647e87",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T21:24:12Z",
+      "side": 0,
+      "message": "NOTE: without reversing this check, the span asserts on empty input.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 1
+      },
+      "revId": "3b857310f72aa517aeb7788dad4646a2c0d95505",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe0d5e05_4b911ad8",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T21:24:12Z",
+      "side": 0,
+      "message": "NOTE: we used the wrong byte here if we consumed any whitespace at 206.",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 24
+      },
+      "revId": "3b857310f72aa517aeb7788dad4646a2c0d95505",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0618077e_f5b663ca",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T21:24:12Z",
+      "side": 0,
+      "message": "NOTE: this is wrong if not a digit, haven\u0027t checked this byte yet.",
+      "range": {
+        "startLine": 234,
+        "startChar": 53,
+        "endLine": 234,
+        "endChar": 66
+      },
+      "revId": "3b857310f72aa517aeb7788dad4646a2c0d95505",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e5431e_9e5059f2",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T21:24:12Z",
+      "side": 0,
+      "message": "NOTE: this is another out-of-bounds read if the string ends early.",
+      "range": {
+        "startLine": 238,
+        "startChar": 12,
+        "endLine": 238,
+        "endChar": 43
+      },
+      "revId": "3b857310f72aa517aeb7788dad4646a2c0d95505",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d6aaf49_6f6a8b5f",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T21:24:12Z",
+      "side": 0,
+      "message": "NOTE: this is wrong if the integral part is 0, eg. \"-0.5\" returns 0.5, not -0.5.",
+      "range": {
+        "startLine": 265,
+        "startChar": 4,
+        "endLine": 265,
+        "endChar": 10
+      },
+      "revId": "3b857310f72aa517aeb7788dad4646a2c0d95505",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
