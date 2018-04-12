@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e14a14ee_17c3a930",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T16:42:55Z",
+      "side": 1,
+      "message": "So ... pOut is getting FX_Alloc\u0027d, in an ideal world FlateOrLZWDecode() would return std::vector\u003cuint8_t\u003e.  Then you can pass the vector directly where the span is expected (implicit contruction, copy-free).",
+      "range": {
+        "startLine": 1078,
+        "startChar": 60,
+        "endLine": 1078,
+        "endChar": 65
+      },
+      "revId": "4e7b8a2829b3f2a986b5587f185f6a7ce842ce58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a36710b_88e82fc8",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T16:42:55Z",
+      "side": 1,
+      "message": "this is fine as the temporary spans lifetime ends at the ; at the end of this line and the subsequent free is OK.",
+      "range": {
+        "startLine": 1082,
+        "startChar": 41,
+        "endLine": 1082,
+        "endChar": 62
+      },
+      "revId": "4e7b8a2829b3f2a986b5587f185f6a7ce842ce58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddff2eb2_fe5c3400",
+        "filename": "xfa/fxfa/parser/cxfa_xmllocale.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-12T16:42:55Z",
+      "side": 1,
+      "message": "nit:  I\u0027d call this Create() since it does far more than just \"promote\" the span to some other typw.",
+      "range": {
+        "startLine": 20,
+        "startChar": 42,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "4e7b8a2829b3f2a986b5587f185f6a7ce842ce58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
