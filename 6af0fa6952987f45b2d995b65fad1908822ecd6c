@@ -109,6 +109,30 @@
     },
     {
       "key": {
+        "uuid": "7c9cf4d1_a0247837",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-13T17:21:50Z",
+      "side": 1,
+      "message": "Yes, but there are already several redundant mechanism here:\n- Its type is declared on the same line.\n- There is a comment on the previous line to explain what this does.\n- It is a local variable, so its scope is limited.",
+      "parentUuid": "af308ce3_da1a0f31",
+      "range": {
+        "startLine": 623,
+        "startChar": 25,
+        "endLine": 623,
+        "endChar": 42
+      },
+      "revId": "6af0fa6952987f45b2d995b65fad1908822ecd6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d35ef4a_880d5782",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 2
