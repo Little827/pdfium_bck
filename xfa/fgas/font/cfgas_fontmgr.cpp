@@ -229,8 +229,9 @@ const FX_FONTDESCRIPTOR* CFGAS_FontMgr::FindFont(const wchar_t* pszFontFamily,
   if (!pszFontFamily)
     return nullptr;
 
+  std::deque<FX_FONTDESCRIPTOR> namedFonts = EnumGdiFonts(pszFontFamily, wUnicode);
   params.pwsFamily = nullptr;
-  pDesc = MatchDefaultFont(&params, EnumGdiFonts(pszFontFamily, wUnicode));
+  pDesc = MatchDefaultFont(&params, namedFonts);
   if (!pDesc)
     return nullptr;
 
