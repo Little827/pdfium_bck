@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5359fc0_eda6b7bf",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-13T02:28:14Z",
+      "side": 1,
+      "message": "nit: |var_name|",
+      "range": {
+        "startLine": 58,
+        "startChar": 54,
+        "endLine": 58,
+        "endChar": 68
+      },
+      "revId": "a0d0166406b49066afd8ff60728c3d008835bd56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
