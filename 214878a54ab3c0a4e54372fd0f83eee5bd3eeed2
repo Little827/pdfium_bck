@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ccde1c6_a0dd5a67",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-13T17:56:21Z",
+      "side": 1,
+      "message": "Because of the way CFX_XML works currently we need a fake root node.",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "214878a54ab3c0a4e54372fd0f83eee5bd3eeed2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f56c8acf_9d7d5c4e",
+        "filename": "core/fpdfdoc/cpdf_metadata_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-13T17:56:21Z",
+      "side": 1,
+      "message": "New parser is more strict.",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "214878a54ab3c0a4e54372fd0f83eee5bd3eeed2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
