@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52e499f8_2e0662dd",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 6485
+      },
+      "writtenOn": "2018-04-13T17:07:53Z",
+      "side": 1,
+      "message": "I\u0027m building PDFium with CMake and different toolchains on Mac. When using Clang from Xcode, this line causes a link error:\n\nUndefined symbols for architecture x86_64:\n  \"fxcrt::StringViewTemplate\u003cchar\u003e::operator\u003d(fxcrt::StringViewTemplate\u003cchar\u003e const\u0026)\", referenced from:\n      (anonymous namespace)::SplitQualifiedName(fxcrt::StringViewTemplate\u003cchar\u003e const\u0026, fxcrt::StringViewTemplate\u003cchar\u003e*, fxcrt::StringViewTemplate\u003cchar\u003e*) in libpdfium.a(cxml_element.cpp.o)\n      CPDF_ToUnicodeMap::Load(CPDF_Stream*) in libpdfium.a(cpdf_tounicodemap.cpp.o)\n      (anonymous namespace)::ReplaceAbbr(CPDF_Object*) in libpdfium.a(cpdf_streamcontentparser.cpp.o)\n  \"fxcrt::StringViewTemplate\u003cwchar_t\u003e::operator\u003d(fxcrt::StringViewTemplate\u003cwchar_t\u003e const\u0026)\", referenced from:\n      CPDF_TextPage::IsHyphen(wchar_t) const in libpdfium.a(cpdf_textpage.cpp.o)\nld: symbol(s) not found for architecture x86_64\n\nIf I remove this line, everything\u0027s fine. With Clang 6, it builds fine with this line, too. Any idea what\u0027s wrong?",
+      "revId": "d45f9980995af5c6e4c68e32df89d3cccb0231ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
