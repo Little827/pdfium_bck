@@ -16,37 +16,35 @@ namespace {
 
 void CheckForSharedFormInternal(CFX_XMLElement* element,
                                 std::vector<UnsupportedFeature>* unsupported) {
-  for (const auto& pair : element->GetAttributes()) {
-    if (pair.first != L"xmlns:adhocwf" ||
-        pair.second != L"http://ns.adobe.com/AcrobatAdhocWorkflow/1.0/") {
+  WideString attr = element->GetAttribute(L"xmlns:adhocwf");
+  if (attr.IsEmpty() ||
+      attr != L"http://ns.adobe.com/AcrobatAdhocWorkflow/1.0/") {
+    return;
+  }
+
+  for (const auto* child = element->GetFirstChild(); child;
+       child = child->GetNextSibling()) {
+    if (child->GetType() != FX_XMLNODE_Element)
       continue;
+
+    const auto* child_elem = static_cast<const CFX_XMLElement*>(child);
+    if (child_elem->GetName() != L"adhocwf:workflowType")
+      continue;
+
+    switch (child_elem->GetTextData().GetInteger()) {
+      case 0:
+        unsupported->push_back(UnsupportedFeature::kDocumentSharedFormEmail);
+        break;
+      case 1:
+        unsupported->push_back(UnsupportedFeature::kDocumentSharedFormAcrobat);
+        break;
+      case 2:
+        unsupported->push_back(
+            UnsupportedFeature::kDocumentSharedFormFilesystem);
+        break;
     }
-
-    for (const auto* child = element->GetFirstChild(); child;
-         child = child->GetNextSibling()) {
-      if (child->GetType() != FX_XMLNODE_Element)
-        continue;
-
-      const auto* child_elem = static_cast<const CFX_XMLElement*>(child);
-      if (child_elem->GetName() != L"adhocwf:workflowType")
-        continue;
-
-      switch (child_elem->GetTextData().GetInteger()) {
-        case 0:
-          unsupported->push_back(UnsupportedFeature::kDocumentSharedFormEmail);
-          break;
-        case 1:
-          unsupported->push_back(
-              UnsupportedFeature::kDocumentSharedFormAcrobat);
-          break;
-        case 2:
-          unsupported->push_back(
-              UnsupportedFeature::kDocumentSharedFormFilesystem);
-          break;
-      }
-      // We only care about the first one we find.
-      break;
-    }
+    // We only care about the first one we find.
+    break;
   }
 
   for (auto* child = element->GetFirstChild(); child;
