@@ -43,16 +43,17 @@ bool CFX_XMLInstruction::IsAcrobat() const {
 void CFX_XMLInstruction::Save(
     const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
   if (name_.CompareNoCase(L"xml") == 0) {
-    WideString ws = L"<?xml version=\"1.0\" encoding=\"";
+    WideString ws = L"<?xml version=\"1.0\" encoding=\"UTF-";
+
     uint16_t wCodePage = pXMLStream->GetCodePage();
     if (wCodePage == FX_CODEPAGE_UTF16LE)
-      ws += L"UTF-16";
+      ws += L"16";
     else if (wCodePage == FX_CODEPAGE_UTF16BE)
-      ws += L"UTF-16be";
+      ws += L"16be";
     else
-      ws += L"UTF-8";
+      ws += L"8";
 
-    ws += L"\"?>";
+    ws += L"\"?>\n";
     pXMLStream->WriteString(ws.AsStringView());
     return;
   }
@@ -66,5 +67,5 @@ void CFX_XMLInstruction::Save(
     pXMLStream->WriteString(L"\"");
   }
 
-  pXMLStream->WriteString(WideStringView(L"?>"));
+  pXMLStream->WriteString(WideStringView(L"?>\n"));
 }

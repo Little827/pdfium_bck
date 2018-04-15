@@ -11,7 +11,7 @@
 CFX_XMLCharData::CFX_XMLCharData(const WideString& wsCData)
     : CFX_XMLText(wsCData) {}
 
-CFX_XMLCharData::~CFX_XMLCharData() {}
+CFX_XMLCharData::~CFX_XMLCharData() = default;
 
 FX_XMLNODETYPE CFX_XMLCharData::GetType() const {
   return FX_XMLNODE_CharData;
@@ -23,8 +23,7 @@ std::unique_ptr<CFX_XMLNode> CFX_XMLCharData::Clone() {
 
 void CFX_XMLCharData::Save(
     const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
-  WideString ws = L"<![CDATA[";
-  ws += GetText();
-  ws += L"]]>";
-  pXMLStream->WriteString(ws.AsStringView());
+  pXMLStream->WriteString(L"<![CDATA[");
+  pXMLStream->WriteString(GetText().AsStringView());
+  pXMLStream->WriteString(L"]]>");
 }

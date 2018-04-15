@@ -44,32 +44,6 @@ const FX_XMLNAMECHAR g_XMLNameChars[] = {
     {0xF900, 0xFDCF, true}, {0xFDF0, 0xFFFD, true},
 };
 
-int32_t GetUTF8EncodeLength(const std::vector<wchar_t>& src,
-                            FX_FILESIZE iSrcLen) {
-  uint32_t unicode = 0;
-  int32_t iDstNum = 0;
-  const wchar_t* pSrc = src.data();
-  while (iSrcLen-- > 0) {
-    unicode = *pSrc++;
-    int nbytes = 0;
-    if ((uint32_t)unicode < 0x80) {
-      nbytes = 1;
-    } else if ((uint32_t)unicode < 0x800) {
-      nbytes = 2;
-    } else if ((uint32_t)unicode < 0x10000) {
-      nbytes = 3;
-    } else if ((uint32_t)unicode < 0x200000) {
-      nbytes = 4;
-    } else if ((uint32_t)unicode < 0x4000000) {
-      nbytes = 5;
-    } else {
-      nbytes = 6;
-    }
-    iDstNum += nbytes;
-  }
-  return iDstNum;
-}
-
 }  // namespace
 
 // static
@@ -88,15 +62,10 @@ CFX_XMLParser::CFX_XMLParser(CFX_XMLNode* pParent,
       m_pStream(pStream),
       m_iXMLPlaneSize(1024),
       m_iCurrentPos(0),
-      m_iCurrentNodeNum(-1),
-      m_iLastNodeNum(-1),
-      m_iParsedBytes(0),
-      m_ParsedChars(0),
-      m_iBufferChars(0),
       m_bEOS(false),
       m_Start(0),
       m_End(0),
-      m_iAllocStep(m_BlockBuffer.GetAllocStep()),
+      m_CurNode(FX_XMLNODE_Unknown),
       m_pCurrentBlock(nullptr),
       m_iIndexInBlock(0),
       m_iTextDataLength(0),
@@ -108,9 +77,6 @@ CFX_XMLParser::CFX_XMLParser(CFX_XMLNode* pParent,
   ASSERT(pStream);
 
   m_NodeStack.push(m_pParent);
-
-  m_CurNode.iNodeNum = -1;
-  m_CurNode.eNodeType = FX_XMLNODE_Unknown;
 
   m_iXMLPlaneSize =
       std::min(m_iXMLPlaneSize,
@@ -131,7 +97,7 @@ CFX_XMLParser::CFX_XMLParser(CFX_XMLNode* pParent,
       m_BlockBuffer.GetAvailableBlock();
 }
 
-CFX_XMLParser::~CFX_XMLParser() {}
+CFX_XMLParser::~CFX_XMLParser() = default;
 
 bool CFX_XMLParser::Parse() {
   int32_t iCount = 0;
@@ -169,7 +135,7 @@ bool CFX_XMLParser::Parse() {
         iCount++;
         break;
       case FX_XmlSyntaxResult::TargetName:
-        m_ws1 = GetTargetName();
+        m_ws1 = m_BlockBuffer.GetTextData(0, m_iTextDataLength);
         if (m_ws1 == L"originalXFAVersion" || m_ws1 == L"acrobat") {
           auto child = pdfium::MakeUnique<CFX_XMLInstruction>(m_ws1);
           m_pChild = child.get();
@@ -223,7 +189,8 @@ bool CFX_XMLParser::Parse() {
           if (!m_ws1.IsEmpty())
             instruction->AppendData(m_ws1);
 
-          instruction->AppendData(GetTargetData());
+          instruction->AppendData(
+              m_BlockBuffer.GetTextData(0, m_iTextDataLength));
         }
         m_ws1.clear();
         break;
@@ -253,22 +220,20 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
         m_syntaxParserResult = FX_XmlSyntaxResult::EndOfString;
         return m_syntaxParserResult;
       }
-      m_ParsedChars += m_End;
-      m_iParsedBytes = m_iCurrentPos;
       if (m_pStream->GetPosition() != m_iCurrentPos)
         m_pStream->Seek(CFX_SeekableStreamProxy::From::Begin, m_iCurrentPos);
 
-      m_iBufferChars =
+      size_t buffer_chars =
           m_pStream->ReadString(m_Buffer.data(), m_iXMLPlaneSize, &m_bEOS);
       iPos = m_pStream->GetPosition();
-      if (m_iBufferChars < 1) {
+      if (buffer_chars == 0) {
         m_iCurrentPos = iStreamLength;
         m_syntaxParserResult = FX_XmlSyntaxResult::EndOfString;
         return m_syntaxParserResult;
       }
       m_iCurrentPos = iPos;
       m_Start = 0;
-      m_End = m_iBufferChars;
+      m_End = buffer_chars;
     }
 
     while (m_Start < m_End) {
@@ -299,19 +264,13 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
             m_Start++;
             m_syntaxParserState = FDE_XmlSyntaxState::CloseElement;
           } else if (ch == L'?') {
-            m_iLastNodeNum++;
-            m_iCurrentNodeNum = m_iLastNodeNum;
-            m_CurNode.iNodeNum = m_iLastNodeNum;
-            m_CurNode.eNodeType = FX_XMLNODE_Instruction;
+            m_CurNode = FX_XMLNODE_Instruction;
             m_XMLNodeStack.push(m_CurNode);
             m_Start++;
             m_syntaxParserState = FDE_XmlSyntaxState::Target;
             syntaxParserResult = FX_XmlSyntaxResult::InstructionOpen;
           } else {
-            m_iLastNodeNum++;
-            m_iCurrentNodeNum = m_iLastNodeNum;
-            m_CurNode.iNodeNum = m_iLastNodeNum;
-            m_CurNode.eNodeType = FX_XMLNODE_Element;
+            m_CurNode = FX_XMLNODE_Element;
             m_XMLNodeStack.push(m_CurNode);
             m_syntaxParserState = FDE_XmlSyntaxState::Tag;
             syntaxParserResult = FX_XmlSyntaxResult::ElementOpen;
@@ -336,12 +295,11 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
 
             m_syntaxParserState = FDE_XmlSyntaxState::AttriName;
           } else {
-            if (m_iIndexInBlock == m_iAllocStep) {
+            if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
               std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                   m_BlockBuffer.GetAvailableBlock();
-              if (!m_pCurrentBlock) {
+              if (!m_pCurrentBlock)
                 return FX_XmlSyntaxResult::Error;
-              }
             }
             m_pCurrentBlock[m_iIndexInBlock++] = ch;
             m_BlockBuffer.IncrementDataLength();
@@ -355,12 +313,12 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
           }
           if (!IsXMLNameChar(ch, m_BlockBuffer.IsEmpty())) {
             if (m_BlockBuffer.IsEmpty()) {
-              if (m_CurNode.eNodeType == FX_XMLNODE_Element) {
+              if (m_CurNode == FX_XMLNODE_Element) {
                 if (ch == L'>' || ch == L'/') {
                   m_syntaxParserState = FDE_XmlSyntaxState::BreakElement;
                   break;
                 }
-              } else if (m_CurNode.eNodeType == FX_XMLNODE_Instruction) {
+              } else if (m_CurNode == FX_XMLNODE_Instruction) {
                 if (ch == L'?') {
                   m_syntaxParserState = FDE_XmlSyntaxState::CloseInstruction;
                   m_Start++;
@@ -372,7 +330,7 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
               m_syntaxParserResult = FX_XmlSyntaxResult::Error;
               return m_syntaxParserResult;
             } else {
-              if (m_CurNode.eNodeType == FX_XMLNODE_Instruction) {
+              if (m_CurNode == FX_XMLNODE_Instruction) {
                 if (ch != '=' && !IsXMLWhiteSpace(ch)) {
                   m_syntaxParserState = FDE_XmlSyntaxState::TargetData;
                   break;
@@ -386,12 +344,11 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
               syntaxParserResult = FX_XmlSyntaxResult::AttriName;
             }
           } else {
-            if (m_iIndexInBlock == m_iAllocStep) {
+            if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
               std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                   m_BlockBuffer.GetAvailableBlock();
-              if (!m_pCurrentBlock) {
+              if (!m_pCurrentBlock)
                 return FX_XmlSyntaxResult::Error;
-              }
             }
             m_pCurrentBlock[m_iIndexInBlock++] = ch;
             m_BlockBuffer.IncrementDataLength();
@@ -404,7 +361,7 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
             break;
           }
           if (ch != L'=') {
-            if (m_CurNode.eNodeType == FX_XMLNODE_Instruction) {
+            if (m_CurNode == FX_XMLNODE_Instruction) {
               m_syntaxParserState = FDE_XmlSyntaxState::TargetData;
               break;
             }
@@ -423,11 +380,11 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
           if (ch != L'\"' && ch != L'\'') {
             m_syntaxParserResult = FX_XmlSyntaxResult::Error;
             return m_syntaxParserResult;
-          } else {
-            m_wQuotationMark = ch;
-            m_syntaxParserState = FDE_XmlSyntaxState::AttriValue;
-            m_Start++;
           }
+
+          m_wQuotationMark = ch;
+          m_syntaxParserState = FDE_XmlSyntaxState::AttriValue;
+          m_Start++;
           break;
         case FDE_XmlSyntaxState::AttriValue:
           if (ch == m_wQuotationMark) {
@@ -449,13 +406,13 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
           break;
         case FDE_XmlSyntaxState::CloseInstruction:
           if (ch != L'>') {
-            if (m_iIndexInBlock == m_iAllocStep) {
+            if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
               std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                   m_BlockBuffer.GetAvailableBlock();
-              if (!m_pCurrentBlock) {
+              if (!m_pCurrentBlock)
                 return FX_XmlSyntaxResult::Error;
-              }
             }
+
             m_pCurrentBlock[m_iIndexInBlock++] = ch;
             m_BlockBuffer.IncrementDataLength();
             m_syntaxParserState = FDE_XmlSyntaxState::TargetData;
@@ -472,13 +429,12 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
               return m_syntaxParserResult;
             }
             m_XMLNodeStack.pop();
-            if (!m_XMLNodeStack.empty()) {
+
+            if (!m_XMLNodeStack.empty())
               m_CurNode = m_XMLNodeStack.top();
-            } else {
-              m_CurNode.iNodeNum = -1;
-              m_CurNode.eNodeType = FX_XMLNODE_Unknown;
-            }
-            m_iCurrentNodeNum = m_CurNode.iNodeNum;
+            else
+              m_CurNode = FX_XMLNODE_Unknown;
+
             m_BlockBuffer.Reset(true);
             std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                 m_BlockBuffer.GetAvailableBlock();
@@ -506,13 +462,12 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
                 return m_syntaxParserResult;
               }
               m_XMLNodeStack.pop();
-              if (!m_XMLNodeStack.empty()) {
+
+              if (!m_XMLNodeStack.empty())
                 m_CurNode = m_XMLNodeStack.top();
-              } else {
-                m_CurNode.iNodeNum = -1;
-                m_CurNode.eNodeType = FX_XMLNODE_Unknown;
-              }
-              m_iCurrentNodeNum = m_CurNode.iNodeNum;
+              else
+                m_CurNode = FX_XMLNODE_Unknown;
+
               m_iTextDataLength = m_BlockBuffer.GetDataLength();
               m_BlockBuffer.Reset(true);
               std::tie(m_pCurrentBlock, m_iIndexInBlock) =
@@ -524,12 +479,11 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
               return m_syntaxParserResult;
             }
           } else {
-            if (m_iIndexInBlock == m_iAllocStep) {
+            if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
               std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                   m_BlockBuffer.GetAvailableBlock();
-              if (!m_pCurrentBlock) {
+              if (!m_pCurrentBlock)
                 return FX_XmlSyntaxResult::Error;
-              }
             }
             m_pCurrentBlock[m_iIndexInBlock++] = ch;
             m_BlockBuffer.IncrementDataLength();
@@ -560,7 +514,7 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
                 m_BlockBuffer.GetAvailableBlock();
             m_syntaxParserState = FDE_XmlSyntaxState::Text;
           } else {
-            if (m_iIndexInBlock == m_iAllocStep) {
+            if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
               std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                   m_BlockBuffer.GetAvailableBlock();
               if (!m_pCurrentBlock)
@@ -624,7 +578,7 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
                 break;
             }
             if (!m_SkipStack.empty()) {
-              if (m_iIndexInBlock == m_iAllocStep) {
+              if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
                 std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                     m_BlockBuffer.GetAvailableBlock();
                 if (!m_pCurrentBlock) {
@@ -682,12 +636,11 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
               return m_syntaxParserResult;
             }
           } else {
-            if (m_iIndexInBlock == m_iAllocStep) {
+            if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
               std::tie(m_pCurrentBlock, m_iIndexInBlock) =
                   m_BlockBuffer.GetAvailableBlock();
-              if (!m_pCurrentBlock) {
+              if (!m_pCurrentBlock)
                 return FX_XmlSyntaxResult::Error;
-              }
             }
             m_pCurrentBlock[m_iIndexInBlock++] = ch;
             m_BlockBuffer.IncrementDataLength();
@@ -714,16 +667,8 @@ bool CFX_XMLParser::GetStatus() const {
   return m_syntaxParserResult != FX_XmlSyntaxResult::Error;
 }
 
-FX_FILESIZE CFX_XMLParser::GetCurrentBinaryPos() const {
-  if (!m_pStream)
-    return 0;
-
-  int32_t nDstLen = GetUTF8EncodeLength(m_Buffer, m_Start);
-  return m_iParsedBytes + nDstLen;
-}
-
 void CFX_XMLParser::ParseTextChar(wchar_t character) {
-  if (m_iIndexInBlock == m_iAllocStep) {
+  if (m_iIndexInBlock == m_BlockBuffer.GetAllocStep()) {
     std::tie(m_pCurrentBlock, m_iIndexInBlock) =
         m_BlockBuffer.GetAvailableBlock();
     if (!m_pCurrentBlock)
@@ -758,6 +703,7 @@ void CFX_XMLParser::ParseTextChar(wchar_t character) {
             w = csEntity[i];
             if (!std::iswdigit(w))
               break;
+
             ch = ch * 10 + w - L'0';
           }
         }
