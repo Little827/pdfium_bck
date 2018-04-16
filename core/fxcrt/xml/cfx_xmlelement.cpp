@@ -93,30 +93,29 @@ void CFX_XMLElement::SetTextData(const WideString& wsText) {
   AppendChild(new CFX_XMLText(wsText));
 }
 
-void CFX_XMLElement::Save(
-    const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
-  pXMLStream->WriteString(L"<");
-  pXMLStream->WriteString(name_.AsStringView());
+void CFX_XMLElement::Save(const RetainPtr<IFX_SeekableStream>& pXMLStream) {
+  pXMLStream->WriteString("<");
+  pXMLStream->WriteString(name_.UTF8Encode().AsStringView());
 
   for (auto it : attrs_) {
     pXMLStream->WriteString(
-        AttributeToString(it.first, it.second).AsStringView());
+        AttributeToString(it.first, it.second).UTF8Encode().AsStringView());
   }
 
   if (!GetFirstChild()) {
-    pXMLStream->WriteString(L" />");
+    pXMLStream->WriteString(" />\n");
     return;
   }
 
-  pXMLStream->WriteString(L">");
+  pXMLStream->WriteString(">\n");
 
   for (CFX_XMLNode* pChild = GetFirstChild(); pChild;
        pChild = pChild->GetNextSibling()) {
     pChild->Save(pXMLStream);
   }
-  pXMLStream->WriteString(L"</");
-  pXMLStream->WriteString(name_.AsStringView());
-  pXMLStream->WriteString(L"\n>");
+  pXMLStream->WriteString("</");
+  pXMLStream->WriteString(name_.UTF8Encode().AsStringView());
+  pXMLStream->WriteString(">\n");
 }
 
 CFX_XMLElement* CFX_XMLElement::GetFirstChildNamed(
