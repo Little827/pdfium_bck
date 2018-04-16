@@ -8,6 +8,8 @@
 
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 
+#include <iostream>
+
 CPDF_StreamAcc::CPDF_StreamAcc(const CPDF_Stream* pStream)
     : m_pStream(pStream) {}
 
@@ -23,30 +25,44 @@ void CPDF_StreamAcc::LoadAllData(bool bRawAccess,
   if (!m_pStream)
     return;
 
+  // std::cerr << "CPDF_StreamAcc::LoadAllData estimated_size " <<
+  // estimated_size << std::endl;
+
   bool bProcessRawData = bRawAccess || !m_pStream->HasFilter();
   if (bProcessRawData && m_pStream->IsMemoryBased()) {
+    // std::cerr << "  -> raw" << std::endl;
     m_dwSize = m_pStream->GetRawSize();
     m_pData = m_pStream->GetRawData();
+    // std::cerr.write(reinterpret_cast<char*>(m_pData), m_dwSize);
+    // std::cerr << std::endl;
     return;
   }
   uint32_t dwSrcSize = m_pStream->GetRawSize();
-  if (dwSrcSize == 0)
+  if (dwSrcSize == 0) {
+    // std::cerr << "  -> dwSrcSize == 0" << std::endl;
     return;
+  }
 
   uint8_t* pSrcData;
   if (m_pStream->IsMemoryBased()) {
+    // std::cerr << "  -> IsMemoryBased" << std::endl;
     pSrcData = m_pStream->GetRawData();
   } else {
+    // std::cerr << "  -> NOT IsMemoryBased" << std::endl;
     pSrcData = m_pSrcData = FX_Alloc(uint8_t, dwSrcSize);
-    if (!m_pStream->ReadRawData(0, pSrcData, dwSrcSize))
+    if (!m_pStream->ReadRawData(0, pSrcData, dwSrcSize)) {
+      // std::cerr << "    -> raw2" << std::endl;
       return;
+    }
   }
   if (bProcessRawData) {
+    // std::cerr << "  -> bProcessRawData" << std::endl;
     m_pData = pSrcData;
     m_dwSize = dwSrcSize;
   } else if (!PDF_DataDecode(pSrcData, dwSrcSize, m_pStream->GetDict(),
                              estimated_size, bImageAcc, &m_pData, &m_dwSize,
                              &m_ImageDecoder, &m_pImageParam)) {
+    // std::cerr << "  -> NOT bProcessRawData && PDF_DataDecode" << std::endl;
     m_pData = pSrcData;
     m_dwSize = dwSrcSize;
   }

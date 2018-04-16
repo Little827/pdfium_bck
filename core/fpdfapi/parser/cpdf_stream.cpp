@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/parser/cpdf_stream.h"
 
+#include <iostream>
 #include <utility>
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -110,6 +111,10 @@ void CPDF_Stream::SetDataAndRemoveFilter(std::ostringstream* stream) {
 }
 
 void CPDF_Stream::SetData(const uint8_t* pData, uint32_t size) {
+  // std::cerr << "CPDF_Stream::SetData" << std::endl;
+  // std::cerr.write(reinterpret_cast<const char*>(pData), size);
+  // std::cerr << std::endl;
+
   std::unique_ptr<uint8_t, FxFreeDeleter> data_copy;
   if (pData) {
     data_copy.reset(FX_Alloc(uint8_t, size));

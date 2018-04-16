@@ -7,11 +7,17 @@
 #include "core/fpdfapi/edit/cpdf_encryptor.h"
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
 
+#include <iostream>
+
 CPDF_Encryptor::CPDF_Encryptor(CPDF_CryptoHandler* pHandler,
                                int objnum,
                                uint8_t* src_data,
                                uint32_t src_size)
     : m_pData(nullptr), m_dwSize(0), m_bNewBuf(false) {
+  // std::cerr << "CPDF_Encryptor::CPDF_Encryptor src_size " << src_size <<
+  // std::endl; std::cerr.write(reinterpret_cast<char*>(src_data), src_size);
+  // std::cerr << std::endl;
+
   if (src_size == 0)
     return;
 

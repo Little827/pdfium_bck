@@ -426,6 +426,68 @@ TEST_F(FPDFEditEmbeddertest, RemovePageObject) {
   FPDFPageObj_Destroy(page_object);
 }
 
+TEST_F(FPDFEditEmbeddertest, RemoveExistingPageObject) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Get the "Hello, world!" text object and remove it.
+  ASSERT_EQ(2, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(page_object);
+  EXPECT_TRUE(FPDFPage_RemoveObject(page, page_object));
+
+  // Verify the "Hello, world!" text is gone.
+  ASSERT_EQ(1, FPDFPage_CountObjects(page));
+
+  // Save the file
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  filestream_.open("remove_existing_save.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
+  UnloadPage(page);
+  FPDFPageObj_Destroy(page_object);
+
+  // Re-open the file and check the page object count is still 1.
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_EQ(1, FPDFPage_CountObjects(saved_page));
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
+TEST_F(FPDFEditEmbeddertest, InsertPageObjectAndSave) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Add a red rectangle.
+  ASSERT_EQ(2, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT red_rect = FPDFPageObj_CreateNewRect(20, 100, 50, 50);
+  EXPECT_TRUE(FPDFPath_SetFillColor(red_rect, 255, 0, 0, 255));
+  EXPECT_TRUE(FPDFPath_SetDrawMode(red_rect, FPDF_FILLMODE_ALTERNATE, 0));
+  FPDFPage_InsertObject(page, red_rect);
+
+  // Verify the red rectangle was added.
+  ASSERT_EQ(3, FPDFPage_CountObjects(page));
+
+  // Save the file
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  filestream_.open("insert_page_object_and_save.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
+  UnloadPage(page);
+
+  // Re-open the file and check the page object count is still 3.
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_EQ(3, FPDFPage_CountObjects(saved_page));
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
 TEST_F(FPDFEditEmbeddertest, AddAndRemovePaths) {
   // Start with a blank page.
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
@@ -1148,10 +1210,13 @@ TEST_F(FPDFEditEmbeddertest, SaveAndRender) {
     std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
         RenderLoadedPage(page);
     CompareBitmap(page_bitmap.get(), 612, 792, md5);
+    WriteBitmapToPng(page_bitmap.get(), "SaveAndRender.png");
 
     // Now save the result, closing the page and document
     EXPECT_TRUE(FPDFPage_GenerateContent(page));
+    filestream_.open("SaveAndRender_saved.pdf");
     EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+    filestream_.close();
     UnloadPage(page);
   }
 
