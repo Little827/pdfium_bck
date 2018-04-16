@@ -9,21 +9,14 @@
 
 CPDF_Encryptor::CPDF_Encryptor(CPDF_CryptoHandler* pHandler,
                                int objnum,
-                               const uint8_t* src_data,
-                               uint32_t src_size) {
-  if (src_size == 0)
+                               pdfium::span<const uint8_t> src_data)
+    : m_pData(src_data) {
+  if (!pHandler)
     return;
 
-  if (!pHandler) {
-    m_pData = src_data;
-    m_dwSize = src_size;
-    return;
-  }
-  m_dwSize = pHandler->EncryptGetSize(objnum, 0, src_data, src_size);
-  m_pNewBuf.reset(FX_Alloc(uint8_t, m_dwSize));
-  pHandler->EncryptContent(objnum, 0, src_data, src_size, m_pNewBuf.get(),
-                           m_dwSize);
-  m_pData = m_pNewBuf.get();
+  m_pNewBuf.resize(pHandler->EncryptGetSize(m_pData));
+  m_pNewBuf.resize(pHandler->EncryptContent(objnum, 0, m_pData, m_pNewBuf));
+  m_pData = m_pNewBuf;
 }
 
-CPDF_Encryptor::~CPDF_Encryptor() {}
+CPDF_Encryptor::~CPDF_Encryptor() = default;
