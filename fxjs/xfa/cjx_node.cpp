@@ -351,7 +351,7 @@ CJS_Return CJX_Node::saveXML(CFX_V8* runtime,
 
   auto pMemoryStream = pdfium::MakeRetain<CFX_MemoryStream>(true);
   auto pStream =
-      pdfium::MakeRetain<CFX_SeekableStreamProxy>(pMemoryStream, true);
+      pdfium::MakeRetain<CFX_UTFConvertingStream>(pMemoryStream, true);
   pStream->SetCodePage(FX_CODEPAGE_UTF8);
   pStream->WriteString(bsXMLHeader.AsStringView());
 

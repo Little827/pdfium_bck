@@ -4,7 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "core/fxcrt/cfx_seekablestreamproxy.h"
+#include "core/fxcrt/cfx_utfconvertingstream.h"
 
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 #include <io.h>
@@ -133,7 +133,7 @@ void SwapByteOrder(wchar_t* pStr, size_t iLength) {
 #define BOM_UTF16_BE 0x0000FFFE
 #define BOM_UTF16_LE 0x0000FEFF
 
-CFX_SeekableStreamProxy::CFX_SeekableStreamProxy(
+CFX_UTFConvertingStream::CFX_UTFConvertingStream(
     const RetainPtr<IFX_SeekableStream>& stream,
     bool isWriteStream)
     : m_IsWriteStream(isWriteStream),
@@ -174,14 +174,14 @@ CFX_SeekableStreamProxy::CFX_SeekableStreamProxy(
   Seek(From::Begin, static_cast<FX_FILESIZE>(m_wBOMLength));
 }
 
-CFX_SeekableStreamProxy::CFX_SeekableStreamProxy(uint8_t* data, size_t size)
-    : CFX_SeekableStreamProxy(
+CFX_UTFConvertingStream::CFX_UTFConvertingStream(uint8_t* data, size_t size)
+    : CFX_UTFConvertingStream(
           pdfium::MakeRetain<CFX_MemoryStream>(data, size, false),
           false) {}
 
-CFX_SeekableStreamProxy::~CFX_SeekableStreamProxy() {}
+CFX_UTFConvertingStream::~CFX_UTFConvertingStream() {}
 
-void CFX_SeekableStreamProxy::Seek(From eSeek, FX_FILESIZE iOffset) {
+void CFX_UTFConvertingStream::Seek(From eSeek, FX_FILESIZE iOffset) {
   switch (eSeek) {
     case From::Begin:
       m_iPosition = iOffset;
@@ -197,13 +197,13 @@ void CFX_SeekableStreamProxy::Seek(From eSeek, FX_FILESIZE iOffset) {
       pdfium::clamp(m_iPosition, static_cast<FX_FILESIZE>(0), GetLength());
 }
 
-void CFX_SeekableStreamProxy::SetCodePage(uint16_t wCodePage) {
+void CFX_UTFConvertingStream::SetCodePage(uint16_t wCodePage) {
   if (m_wBOMLength > 0)
     return;
   m_wCodePage = wCodePage;
 }
 
-size_t CFX_SeekableStreamProxy::ReadData(uint8_t* pBuffer, size_t iBufferSize) {
+size_t CFX_UTFConvertingStream::ReadData(uint8_t* pBuffer, size_t iBufferSize) {
   ASSERT(pBuffer && iBufferSize > 0);
 
   if (m_IsWriteStream)
@@ -223,7 +223,7 @@ size_t CFX_SeekableStreamProxy::ReadData(uint8_t* pBuffer, size_t iBufferSize) {
   return new_pos.IsValid() ? iBufferSize : 0;
 }
 
-size_t CFX_SeekableStreamProxy::ReadString(wchar_t* pStr,
+size_t CFX_UTFConvertingStream::ReadString(wchar_t* pStr,
                                            size_t iMaxLength,
                                            bool* bEOS) {
   if (!pStr || iMaxLength == 0)
@@ -268,7 +268,7 @@ size_t CFX_SeekableStreamProxy::ReadString(wchar_t* pStr,
   return iMaxLength;
 }
 
-void CFX_SeekableStreamProxy::WriteString(const WideStringView& str) {
+void CFX_UTFConvertingStream::WriteString(const WideStringView& str) {
   if (!m_IsWriteStream || str.GetLength() == 0 ||
       m_wCodePage != FX_CODEPAGE_UTF8) {
     return;

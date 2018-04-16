@@ -108,7 +108,7 @@ std::unique_ptr<CFX_XMLNode> CFX_XMLNode::Clone() {
   return nullptr;
 }
 
-void CFX_XMLNode::Save(const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {}
+void CFX_XMLNode::Save(const RetainPtr<CFX_UTFConvertingStream>& pXMLStream) {}
 
 WideString CFX_XMLNode::EncodeEntities(const WideString& value) {
   WideString ret = value;

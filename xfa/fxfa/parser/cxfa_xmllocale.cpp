@@ -22,7 +22,7 @@ std::unique_ptr<CXFA_XMLLocale> CXFA_XMLLocale::Create(
     pdfium::span<uint8_t> data) {
   auto root = pdfium::MakeUnique<CFX_XMLElement>(L"root");
   auto proxy =
-      pdfium::MakeRetain<CFX_SeekableStreamProxy>(data.data(), data.size());
+      pdfium::MakeRetain<CFX_UTFConvertingStream>(data.data(), data.size());
   proxy->SetCodePage(FX_CODEPAGE_UTF8);
 
   CFX_XMLParser parser(root.get(), proxy);

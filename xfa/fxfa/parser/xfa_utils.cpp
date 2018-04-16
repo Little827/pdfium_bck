@@ -217,7 +217,7 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
 
         auto pMemStream = pdfium::MakeRetain<CFX_MemoryStream>(true);
         auto pTempStream =
-            pdfium::MakeRetain<CFX_SeekableStreamProxy>(pMemStream, true);
+            pdfium::MakeRetain<CFX_UTFConvertingStream>(pMemStream, true);
 
         pTempStream->SetCodePage(FX_CODEPAGE_UTF8);
         pRichTextXML->Save(pTempStream);
@@ -336,7 +336,7 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
 
 void RegenerateFormFile_Container(
     CXFA_Node* pNode,
-    const RetainPtr<CFX_SeekableStreamProxy>& pStream,
+    const RetainPtr<CFX_UTFConvertingStream>& pStream,
     bool bSaveXML) {
   XFA_Element eType = pNode->GetElementType();
   if (eType == XFA_Element::Field || eType == XFA_Element::Draw ||
@@ -519,7 +519,7 @@ void XFA_DataExporter_DealWithDataGroupNode(CXFA_Node* pDataNode) {
 
 void XFA_DataExporter_RegenerateFormFile(
     CXFA_Node* pNode,
-    const RetainPtr<CFX_SeekableStreamProxy>& pStream,
+    const RetainPtr<CFX_UTFConvertingStream>& pStream,
     bool bSaveXML) {
   if (pNode->IsModelNode()) {
     pStream->WriteString(L"<form xmlns=\"");

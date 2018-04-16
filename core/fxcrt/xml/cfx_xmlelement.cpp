@@ -93,7 +93,7 @@ void CFX_XMLElement::SetTextData(const WideString& wsText) {
 }
 
 void CFX_XMLElement::Save(
-    const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
+    const RetainPtr<CFX_UTFConvertingStream>& pXMLStream) {
   WideString ws(L"<");
   ws += GetName();
   pXMLStream->WriteString(ws.AsStringView());

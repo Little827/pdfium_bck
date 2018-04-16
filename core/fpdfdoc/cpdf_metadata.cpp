@@ -72,7 +72,7 @@ std::vector<UnsupportedFeature> CPDF_Metadata::CheckForSharedForm() const {
   pAcc->LoadAllDataFiltered();
 
   auto root = pdfium::MakeUnique<CFX_XMLElement>(L"root");
-  auto proxy = pdfium::MakeRetain<CFX_SeekableStreamProxy>(pAcc->GetData(),
+  auto proxy = pdfium::MakeRetain<CFX_UTFConvertingStream>(pAcc->GetData(),
                                                            pAcc->GetSize());
   proxy->SetCodePage(FX_CODEPAGE_UTF8);
 
