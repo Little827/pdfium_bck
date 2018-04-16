@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07adc4d2_439129ea",
+        "filename": "core/fxcrt/xml/cfx_xmlelement.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T17:34:06Z",
+      "side": 1,
+      "message": "That\u0027s a functional change, right? It used to be \"\\n/\u003e\". It\u0027s better, but you might want to separate refactor from functional so it\u0027s easier to bisect/fix/revert cls.",
+      "revId": "a5056d332d5f5f3c0879f3e8cb1da372c914d368",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
