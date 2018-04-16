@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "344250df_8a469597",
+        "filename": "core/fxcrt/xml/cfx_xmlelement.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-16T17:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa3e5b3f_723b5461",
+      "revId": "39ec15e875674a834e405bbc009545c695e0af38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4246b594_bfa18e0c",
         "filename": "xfa/fxfa/parser/cxfa_xmllocale.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-16T17:14:08Z",
       "side": 1,
       "message": "Why do we now have to search for \"locale\" where before we just assumed the data passed had the locale at the root?",
+      "revId": "39ec15e875674a834e405bbc009545c695e0af38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1cab704_6e78fbe7",
+        "filename": "xfa/fxfa/parser/cxfa_xmllocale.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-16T17:44:25Z",
+      "side": 1,
+      "message": "Because CFX_XML has this weird thing were we have to force a root node. So, our root element is now ROOT and locale is a child of ROOT.",
+      "parentUuid": "4246b594_bfa18e0c",
       "revId": "39ec15e875674a834e405bbc009545c695e0af38",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
