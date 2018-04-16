@@ -252,6 +252,8 @@ class span {
     return data_.Get()[index];
   }
   constexpr T* data() const noexcept { return data_.Get(); }
+  T front() const noexcept { return (*this)[0]; }
+  T back() const noexcept { return (*this)[size() - 1]; }
 
   // [span.iter], span iterator support
   constexpr iterator begin() const noexcept { return data_.Get(); }

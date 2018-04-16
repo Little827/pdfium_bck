@@ -164,23 +164,17 @@ bool CPDF_Creator::WriteStream(const CPDF_Object* pStream,
                                uint32_t objnum,
                                CPDF_CryptoHandler* pCrypto) {
   CPDF_FlateEncoder encoder(pStream->AsStream(), pStream != m_pMetadata);
-  CPDF_Encryptor encryptor(pCrypto, objnum, encoder.GetData(),
-                           encoder.GetSize());
-  if (static_cast<uint32_t>(encoder.GetDict()->GetIntegerFor("Length")) !=
-      encryptor.GetSize()) {
-    encoder.CloneDict();
-    encoder.GetDict()->SetNewFor<CPDF_Number>(
-        "Length", static_cast<int>(encryptor.GetSize()));
-  }
-
+  CPDF_Encryptor encryptor(pCrypto, objnum, encoder.GetData());
+  encoder.UpdateSizeInDict(encryptor.GetData().size());
   if (!WriteDirectObj(objnum, encoder.GetDict(), true) ||
       !m_Archive->WriteString("stream\r\n")) {
     return false;
   }
 
   // Allow for empty streams.
-  if (encryptor.GetSize() > 0 &&
-      !m_Archive->WriteBlock(encryptor.GetData(), encryptor.GetSize())) {
+  if (encryptor.GetData().size() > 0 &&
+      !m_Archive->WriteBlock(encryptor.GetData().data(),
+                             encryptor.GetData().size())) {
     return false;
   }
 
@@ -224,28 +218,23 @@ bool CPDF_Creator::WriteDirectObj(uint32_t objnum,
           return false;
         break;
       }
-      CPDF_Encryptor encryptor(GetCryptoHandler(), objnum,
-                               reinterpret_cast<const uint8_t*>(str.c_str()),
-                               str.GetLength());
-      ByteString content = PDF_EncodeString(
-          ByteString(encryptor.GetData(), encryptor.GetSize()), bHex);
+      CPDF_Encryptor encryptor(
+          GetCryptoHandler(), objnum,
+          pdfium::ReinterpretSpan<const uint8_t>(str.AsSpan()));
+      ByteString content =
+          PDF_EncodeString(ByteString(encryptor.GetData()), bHex);
       if (!m_Archive->WriteString(content.AsStringView()))
         return false;
       break;
     }
     case CPDF_Object::STREAM: {
       CPDF_FlateEncoder encoder(pObj->AsStream(), true);
-      CPDF_Encryptor encryptor(GetCryptoHandler(), objnum, encoder.GetData(),
-                               encoder.GetSize());
-      if (static_cast<uint32_t>(encoder.GetDict()->GetIntegerFor("Length")) !=
-          encryptor.GetSize()) {
-        encoder.CloneDict();
-        encoder.GetDict()->SetNewFor<CPDF_Number>(
-            "Length", static_cast<int>(encryptor.GetSize()));
-      }
+      CPDF_Encryptor encryptor(GetCryptoHandler(), objnum, encoder.GetData());
+      encoder.UpdateSizeInDict(encryptor.GetData().size());
       if (!WriteDirectObj(objnum, encoder.GetDict(), true) ||
           !m_Archive->WriteString("stream\r\n") ||
-          !m_Archive->WriteBlock(encryptor.GetData(), encryptor.GetSize()) ||
+          !m_Archive->WriteBlock(encryptor.GetData().data(),
+                                 encryptor.GetData().size()) ||
           !m_Archive->WriteString("\r\nendstream")) {
         return false;
       }

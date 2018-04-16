@@ -46,12 +46,12 @@ CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
   m_pDict->RemoveFor("DecodeParms");
 }
 
-CPDF_FlateEncoder::~CPDF_FlateEncoder() {}
+CPDF_FlateEncoder::~CPDF_FlateEncoder() = default;
 
-void CPDF_FlateEncoder::CloneDict() {
-  if (m_pDict.IsOwned())
-    return;
-
-  m_pDict = ToDictionary(m_pDict->Clone());
-  ASSERT(m_pDict.IsOwned());
+void CPDF_FlateEncoder::UpdateSizeInDict(size_t new_size) {
+  if (new_size != static_cast<size_t>(m_pDict->GetIntegerFor("Length"))) {
+    if (!m_pDict.IsOwned())
+      m_pDict = ToDictionary(m_pDict->Clone());
+    m_pDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(new_size));
+  }
 }

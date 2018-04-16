@@ -45,16 +45,15 @@ bool CPDF_CryptoHandler::IsSignatureDictionary(
   return type_obj && type_obj->GetString() == kSignTypeValue;
 }
 
-void CPDF_CryptoHandler::CryptBlock(bool bEncrypt,
-                                    uint32_t objnum,
-                                    uint32_t gennum,
-                                    const uint8_t* src_buf,
-                                    uint32_t src_size,
-                                    uint8_t* dest_buf,
-                                    uint32_t& dest_size) {
+size_t CPDF_CryptoHandler::CryptBlock(bool bEncrypt,
+                                      uint32_t objnum,
+                                      uint32_t gennum,
+                                      pdfium::span<const uint8_t> src_buf,
+                                      pdfium::span<uint8_t> dest_buf) {
   if (m_Cipher == FXCIPHER_NONE) {
-    memcpy(dest_buf, src_buf, src_size);
-    return;
+    ASSERT(dest_buf.size() >= src_buf.size());
+    memcpy(dest_buf.data(), src_buf.data(), src_buf.size());
+    return src_buf.size();
   }
   uint8_t realkey[16];
   int realkeylen = 16;
@@ -82,30 +81,29 @@ void CPDF_CryptoHandler::CryptBlock(bool bEncrypt,
         iv[i] = (uint8_t)rand();
       }
       CRYPT_AESSetIV(m_pAESContext.get(), iv);
-      memcpy(dest_buf, iv, 16);
-      int nblocks = src_size / 16;
-      CRYPT_AESEncrypt(m_pAESContext.get(), dest_buf + 16, src_buf,
+      memcpy(dest_buf.data(), iv, 16);
+
+      size_t nblocks = src_buf.size() / 16;
+      uint8_t residual = src_buf.size() % 16;
+      CRYPT_AESEncrypt(m_pAESContext.get(), &dest_buf[16], src_buf.data(),
                        nblocks * 16);
       uint8_t padding[16];
-      memcpy(padding, src_buf + nblocks * 16, src_size % 16);
-      memset(padding + src_size % 16, 16 - src_size % 16, 16 - src_size % 16);
-      CRYPT_AESEncrypt(m_pAESContext.get(), dest_buf + nblocks * 16 + 16,
+      memcpy(padding, &src_buf[nblocks * 16], residual);
+      memset(padding + residual, 16 - residual, 16 - residual);
+      CRYPT_AESEncrypt(m_pAESContext.get(), &dest_buf[nblocks * 16 + 16],
                        padding, 16);
-      dest_size = 32 + nblocks * 16;
-    } else {
-      CRYPT_AESSetIV(m_pAESContext.get(), src_buf);
-      CRYPT_AESDecrypt(m_pAESContext.get(), dest_buf, src_buf + 16,
-                       src_size - 16);
-      dest_size = src_size - 16;
-      dest_size -= dest_buf[dest_size - 1];
+      return 32 + nblocks * 16;
     }
-  } else {
-    ASSERT(dest_size == src_size);
-    if (dest_buf != src_buf) {
-      memcpy(dest_buf, src_buf, src_size);
-    }
-    CRYPT_ArcFourCryptBlock(dest_buf, dest_size, realkey, realkeylen);
+    CRYPT_AESSetIV(m_pAESContext.get(), src_buf.data());
+    CRYPT_AESDecrypt(m_pAESContext.get(), dest_buf.data(), &src_buf[16],
+                     src_buf.size() - 16);
+    return src_buf.size() - 16 - dest_buf.back();
   }
+  ASSERT(dest_buf.size() == src_buf.size());
+  memmove(dest_buf.data(), src_buf.data(), src_buf.size());
+  CRYPT_ArcFourCryptBlock(dest_buf.data(), dest_buf.size(), realkey,
+                          realkeylen);
+  return src_buf.size();
 }
 
 struct AESCryptContext {
@@ -375,24 +373,16 @@ bool CPDF_CryptoHandler::DecryptStream(void* context,
 bool CPDF_CryptoHandler::DecryptFinish(void* context, CFX_BinaryBuf& dest_buf) {
   return CryptFinish(context, dest_buf, false);
 }
-uint32_t CPDF_CryptoHandler::EncryptGetSize(uint32_t objnum,
-                                            uint32_t version,
-                                            const uint8_t* src_buf,
-                                            uint32_t src_size) {
-  if (m_Cipher == FXCIPHER_AES) {
-    return src_size + 32;
-  }
-  return src_size;
+
+size_t CPDF_CryptoHandler::EncryptGetSize(pdfium::span<const uint8_t> src_buf) {
+  return m_Cipher == FXCIPHER_AES ? src_buf.size() + 32 : src_buf.size();
 }
 
-bool CPDF_CryptoHandler::EncryptContent(uint32_t objnum,
-                                        uint32_t gennum,
-                                        const uint8_t* src_buf,
-                                        uint32_t src_size,
-                                        uint8_t* dest_buf,
-                                        uint32_t& dest_size) {
-  CryptBlock(true, objnum, gennum, src_buf, src_size, dest_buf, dest_size);
-  return true;
+size_t CPDF_CryptoHandler::EncryptContent(uint32_t objnum,
+                                          uint32_t gennum,
+                                          pdfium::span<const uint8_t> src_buf,
+                                          pdfium::span<uint8_t> dest_buf) {
+  return CryptBlock(true, objnum, gennum, src_buf, dest_buf);
 }
 
 CPDF_CryptoHandler::CPDF_CryptoHandler(int cipher,
