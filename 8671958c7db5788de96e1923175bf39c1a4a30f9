@@ -22,6 +22,30 @@
       "revId": "8671958c7db5788de96e1923175bf39c1a4a30f9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf9820d_f0f7c20a",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-16T18:32:54Z",
+      "side": 1,
+      "message": "Done. I split this CL into several.",
+      "parentUuid": "75dcc1df_655952c6",
+      "range": {
+        "startLine": 78,
+        "startChar": 41,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "8671958c7db5788de96e1923175bf39c1a4a30f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
