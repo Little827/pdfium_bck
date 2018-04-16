@@ -11,6 +11,7 @@
 #include <set>
 
 #include "third_party/base/numerics/safe_conversions.h"
+#include "third_party/base/span.h"
 
 namespace pdfium {
 
@@ -72,6 +73,13 @@ class ScopedSetInsertion {
 template <class T>
 constexpr const T& clamp(const T& v, const T& lo, const T& hi) {
   return std::min(std::max(v, lo), hi);
+}
+
+// Automatically apply a reinterpret cast to a span, adjusting for size.
+template <typename T, typename U>
+span<T> ReinterpretSpan(span<U> arg) {
+  return span<T>(reinterpret_cast<T*>(arg.data()),
+                 arg.size() * sizeof(U) / sizeof(T));
 }
 
 }  // namespace pdfium

@@ -15,6 +15,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/span.h"
 
 class CPDF_Dictionary;
 class CPDF_Object;
@@ -30,16 +31,14 @@ class CPDF_CryptoHandler {
   std::unique_ptr<CPDF_Object> DecryptObjectTree(
       std::unique_ptr<CPDF_Object> object);
 
-  uint32_t EncryptGetSize(uint32_t objnum,
-                          uint32_t version,
-                          const uint8_t* src_buf,
-                          uint32_t src_size);
-  bool EncryptContent(uint32_t objnum,
-                      uint32_t version,
-                      const uint8_t* src_buf,
-                      uint32_t src_size,
-                      uint8_t* dest_buf,
-                      uint32_t& dest_size);
+  // Returns upper bound on space required to perform the operation.
+  size_t EncryptGetSize(pdfium::span<const uint8_t> src_buf);
+
+  // Returns actual size of result.
+  size_t EncryptContent(uint32_t objnum,
+                        uint32_t version,
+                        pdfium::span<const uint8_t> src_buf,
+                        pdfium::span<uint8_t> dest_buf);
 
   bool IsCipherAES() const;
 
