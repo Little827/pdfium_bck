@@ -92,8 +92,7 @@ void CFX_XMLElement::SetTextData(const WideString& wsText) {
   AppendChild(new CFX_XMLText(wsText));
 }
 
-void CFX_XMLElement::Save(
-    const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
+void CFX_XMLElement::Save(const RetainPtr<CFX_UnicodeStreamProxy>& pXMLStream) {
   WideString ws(L"<");
   ws += GetName();
   pXMLStream->WriteString(ws.AsStringView());

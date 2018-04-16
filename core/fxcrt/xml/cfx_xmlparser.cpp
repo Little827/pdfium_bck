@@ -81,7 +81,7 @@ bool CFX_XMLParser::IsXMLNameChar(wchar_t ch, bool bFirstChar) {
 }
 
 CFX_XMLParser::CFX_XMLParser(CFX_XMLNode* pParent,
-                             const RetainPtr<CFX_SeekableStreamProxy>& pStream)
+                             const RetainPtr<CFX_UnicodeStreamProxy>& pStream)
     : m_pParent(pParent),
       m_pChild(nullptr),
       m_pStream(pStream),
@@ -248,7 +248,7 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
       m_ParsedChars += m_End;
       m_iParsedBytes = m_iCurrentPos;
       if (m_pStream->GetPosition() != m_iCurrentPos)
-        m_pStream->Seek(CFX_SeekableStreamProxy::From::Begin, m_iCurrentPos);
+        m_pStream->Seek(CFX_UnicodeStreamProxy::From::Begin, m_iCurrentPos);
 
       m_iBufferChars =
           m_pStream->ReadString(m_Buffer.data(), m_iXMLPlaneSize, &m_bEOS);

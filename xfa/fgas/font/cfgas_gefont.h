@@ -12,6 +12,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcrt/cfx_unicodestreamproxy.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -67,7 +68,7 @@ class CFGAS_GEFont : public Retainable {
                         uint32_t dwFontStyles,
                         uint16_t wCodePage);
   bool LoadFontInternal(const uint8_t* pBuffer, int32_t length);
-  bool LoadFontInternal(const RetainPtr<CFX_SeekableStreamProxy>& pFontStream,
+  bool LoadFontInternal(const RetainPtr<CFX_UnicodeStreamProxy>& pFontStream,
                         bool bSaveStream);
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
   bool LoadFontInternal(std::unique_ptr<CFX_Font> pInternalFont);
@@ -85,7 +86,7 @@ class CFGAS_GEFont : public Retainable {
   RetainPtr<CFGAS_GEFont> m_pSrcFont;  // Only set by ctor, so no cycles.
   CFGAS_FontMgr::ObservedPtr m_pFontMgr;
   CFGAS_PDFFontMgr::ObservedPtr m_pProvider;
-  RetainPtr<CFX_SeekableStreamProxy> m_pStream;
+  RetainPtr<CFX_UnicodeStreamProxy> m_pStream;
   RetainPtr<IFX_SeekableReadStream> m_pFileRead;
   std::unique_ptr<CFX_UnicodeEncoding> m_pFontEncoding;
   std::map<wchar_t, int32_t> m_CharWidthMap;

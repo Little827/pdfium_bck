@@ -6,7 +6,7 @@
 #include <cstdint>
 #include <memory>
 
-#include "core/fxcrt/cfx_seekablestreamproxy.h"
+#include "core/fxcrt/cfx_unicodestreamproxy.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/xml/cfx_xmlnode.h"
@@ -18,9 +18,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   if (!safe_size.IsValid())
     return 0;
 
-  RetainPtr<CFX_SeekableStreamProxy> stream =
-      pdfium::MakeRetain<CFX_SeekableStreamProxy>(const_cast<uint8_t*>(data),
-                                                  size);
+  auto stream = pdfium::MakeRetain<CFX_UnicodeStreamProxy>(
+      const_cast<uint8_t*>(data), size);
 
   auto root = pdfium::MakeUnique<CFX_XMLNode>();
   CFX_XMLParser parser(root.get(), stream);

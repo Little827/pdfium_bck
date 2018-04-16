@@ -21,6 +21,6 @@ std::unique_ptr<CFX_XMLNode> CFX_XMLText::Clone() {
   return pdfium::MakeUnique<CFX_XMLText>(m_wsText);
 }
 
-void CFX_XMLText::Save(const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
+void CFX_XMLText::Save(const RetainPtr<CFX_UnicodeStreamProxy>& pXMLStream) {
   pXMLStream->WriteString(EncodeEntities(GetText()).AsStringView());
 }

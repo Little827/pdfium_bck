@@ -22,7 +22,7 @@ std::unique_ptr<CFX_XMLNode> CFX_XMLCharData::Clone() {
 }
 
 void CFX_XMLCharData::Save(
-    const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
+    const RetainPtr<CFX_UnicodeStreamProxy>& pXMLStream) {
   WideString ws = L"<![CDATA[";
   ws += GetText();
   ws += L"]]>";

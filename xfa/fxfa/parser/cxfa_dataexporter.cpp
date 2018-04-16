@@ -24,14 +24,13 @@ bool CXFA_DataExporter::Export(const RetainPtr<IFX_SeekableStream>& pWrite,
   if (!pWrite)
     return false;
 
-  auto pStream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(pWrite, true);
+  auto pStream = pdfium::MakeRetain<CFX_UnicodeStreamProxy>(pWrite, true);
   pStream->SetCodePage(FX_CODEPAGE_UTF8);
   return Export(pStream, pNode);
 }
 
-bool CXFA_DataExporter::Export(
-    const RetainPtr<CFX_SeekableStreamProxy>& pStream,
-    CXFA_Node* pNode) {
+bool CXFA_DataExporter::Export(const RetainPtr<CFX_UnicodeStreamProxy>& pStream,
+                               CXFA_Node* pNode) {
   if (pNode->IsModelNode()) {
     switch (pNode->GetPacketType()) {
       case XFA_PacketType::Xdp: {
