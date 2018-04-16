@@ -197,33 +197,7 @@ bool CFX_DIBitmap::TransferBitmap(int dest_left,
 
   FXDIB_Format dest_format = GetFormat();
   FXDIB_Format src_format = pSrcBitmap->GetFormat();
-  if (dest_format == src_format) {
-    if (GetBPP() == 1) {
-      for (int row = 0; row < height; row++) {
-        uint8_t* dest_scan = m_pBuffer.Get() + (dest_top + row) * m_Pitch;
-        const uint8_t* src_scan = pSrcBitmap->GetScanline(src_top + row);
-        for (int col = 0; col < width; col++) {
-          if (src_scan[(src_left + col) / 8] &
-              (1 << (7 - (src_left + col) % 8))) {
-            dest_scan[(dest_left + col) / 8] |= 1
-                                                << (7 - (dest_left + col) % 8);
-          } else {
-            dest_scan[(dest_left + col) / 8] &=
-                ~(1 << (7 - (dest_left + col) % 8));
-          }
-        }
-      }
-    } else {
-      int Bpp = GetBPP() / 8;
-      for (int row = 0; row < height; row++) {
-        uint8_t* dest_scan =
-            m_pBuffer.Get() + (dest_top + row) * m_Pitch + dest_left * Bpp;
-        const uint8_t* src_scan =
-            pSrcBitmap->GetScanline(src_top + row) + src_left * Bpp;
-        memcpy(dest_scan, src_scan, width * Bpp);
-      }
-    }
-  } else {
+  if (dest_format != src_format) {
     if (m_pPalette)
       return false;
 
@@ -236,6 +210,32 @@ bool CFX_DIBitmap::TransferBitmap(int dest_left,
     if (!ConvertBuffer(dest_format, dest_buf, m_Pitch, width, height,
                        pSrcBitmap, src_left, src_top, &d_plt)) {
       return false;
+    }
+    return true;
+  }
+
+  if (GetBPP() != 1) {
+    int Bpp = GetBPP() / 8;
+    for (int row = 0; row < height; ++row) {
+      uint8_t* dest_scan =
+          m_pBuffer.Get() + (dest_top + row) * m_Pitch + dest_left * Bpp;
+      const uint8_t* src_scan =
+          pSrcBitmap->GetScanline(src_top + row) + src_left * Bpp;
+      memcpy(dest_scan, src_scan, width * Bpp);
+    }
+    return true;
+  }
+
+  for (int row = 0; row < height; ++row) {
+    uint8_t* dest_scan = m_pBuffer.Get() + (dest_top + row) * m_Pitch;
+    const uint8_t* src_scan = pSrcBitmap->GetScanline(src_top + row);
+    for (int col = 0; col < width; ++col) {
+      int src_idx = src_left + col;
+      int dest_idx = dest_left + col;
+      if (src_scan[(src_idx) / 8] & (1 << (7 - (src_idx) % 8)))
+        dest_scan[(dest_idx) / 8] |= 1 << (7 - (dest_idx) % 8);
+      else
+        dest_scan[(dest_idx) / 8] &= ~(1 << (7 - (dest_idx) % 8));
     }
   }
   return true;
