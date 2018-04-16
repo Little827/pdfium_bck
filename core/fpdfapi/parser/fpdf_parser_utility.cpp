@@ -146,9 +146,8 @@ ByteString PDF_NameEncode(const ByteString& orig) {
       }
       dest_buf[dest_len++] = ch;
     }
-    dest_buf[dest_len] = 0;
   }
-  res.ReleaseBuffer(res.GetStringLength());
+  res.ReleaseBuffer(dest_len);
   return res;
 }
 
