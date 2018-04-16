@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4adea00d_645587be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T17:17:59Z",
+      "side": 1,
+      "message": "It\u0027s not really removing, more like splitting.",
+      "revId": "9347fd98a9f972ca3f07dc6b426ea6240a6805fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
