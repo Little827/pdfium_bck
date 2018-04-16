@@ -100,7 +100,7 @@ ByteString PDF_NameDecode(const ByteStringView& bstr) {
     // Span's lifetime must end before ReleaseBuffer() below.
     pdfium::span<char> pDest = result.GetBuffer(src_size);
     for (size_t i = 0; i < src_size; i++) {
-      if (bstr[i] == '#' && i < src_size - 2) {
+      if (bstr[i] == '#' && i + 2 < src_size) {
         pDest[out_index++] = FXSYS_HexCharToInt(bstr[i + 1]) * 16 +
                              FXSYS_HexCharToInt(bstr[i + 2]);
         i += 2;
