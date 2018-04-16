@@ -9,6 +9,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcrt/cfx_memorystream.h"
 #include "core/fxcrt/cfx_unicodestreamproxy.h"
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_codepage.h"
@@ -347,7 +348,9 @@ bool CXFA_DocumentParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
 
 CFX_XMLNode* CXFA_DocumentParser::ParseXMLData(const ByteString& wsXML) {
   auto pStream = pdfium::MakeRetain<CFX_UnicodeStreamProxy>(
-      const_cast<uint8_t*>(wsXML.raw_str()), wsXML.GetLength());
+      pdfium::MakeRetain<CFX_MemoryStream>(
+          const_cast<uint8_t*>(wsXML.raw_str()), wsXML.GetLength(), false),
+      false);
   m_pNodeTree = LoadXML(pStream);
   return m_pNodeTree ? GetDocumentNode(m_pNodeTree.get()) : nullptr;
 }

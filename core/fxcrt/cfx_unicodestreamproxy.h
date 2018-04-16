@@ -39,7 +39,6 @@ class CFX_UnicodeStreamProxy : public Retainable {
  private:
   CFX_UnicodeStreamProxy(const RetainPtr<IFX_SeekableStream>& stream,
                          bool isWriteSteam);
-  CFX_UnicodeStreamProxy(uint8_t* data, size_t size);
   ~CFX_UnicodeStreamProxy() override;
 
   size_t ReadData(uint8_t* pBuffer, size_t iBufferSize);

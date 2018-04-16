@@ -16,7 +16,6 @@
 #include <utility>
 #include <vector>
 
-#include "core/fxcrt/cfx_memorystream.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
 #include "third_party/base/ptr_util.h"
@@ -174,12 +173,7 @@ CFX_UnicodeStreamProxy::CFX_UnicodeStreamProxy(
   Seek(From::Begin, static_cast<FX_FILESIZE>(m_wBOMLength));
 }
 
-CFX_UnicodeStreamProxy::CFX_UnicodeStreamProxy(uint8_t* data, size_t size)
-    : CFX_UnicodeStreamProxy(
-          pdfium::MakeRetain<CFX_MemoryStream>(data, size, false),
-          false) {}
-
-CFX_UnicodeStreamProxy::~CFX_UnicodeStreamProxy() {}
+CFX_UnicodeStreamProxy::~CFX_UnicodeStreamProxy() = default;
 
 void CFX_UnicodeStreamProxy::Seek(From eSeek, FX_FILESIZE iOffset) {
   switch (eSeek) {
