@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCRT_CFX_SEEKABLESTREAMPROXY_H_
-#define CORE_FXCRT_CFX_SEEKABLESTREAMPROXY_H_
+#ifndef CORE_FXCRT_CFX_UTFCONVERTINGSTREAM_H_
+#define CORE_FXCRT_CFX_UTFCONVERTINGSTREAM_H_
 
 #include <algorithm>
 
@@ -13,7 +13,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 
-class CFX_SeekableStreamProxy : public Retainable {
+class CFX_UTFConvertingStream : public Retainable {
  public:
   enum class From {
     Begin = 0,
@@ -37,10 +37,10 @@ class CFX_SeekableStreamProxy : public Retainable {
   void SetCodePage(uint16_t wCodePage);
 
  private:
-  CFX_SeekableStreamProxy(const RetainPtr<IFX_SeekableStream>& stream,
+  CFX_UTFConvertingStream(const RetainPtr<IFX_SeekableStream>& stream,
                           bool isWriteSteam);
-  CFX_SeekableStreamProxy(uint8_t* data, size_t size);
-  ~CFX_SeekableStreamProxy() override;
+  CFX_UTFConvertingStream(uint8_t* data, size_t size);
+  ~CFX_UTFConvertingStream() override;
 
   size_t ReadData(uint8_t* pBuffer, size_t iBufferSize);
 
@@ -51,4 +51,4 @@ class CFX_SeekableStreamProxy : public Retainable {
   RetainPtr<IFX_SeekableStream> m_pStream;
 };
 
-#endif  // CORE_FXCRT_CFX_SEEKABLESTREAMPROXY_H_
+#endif  // CORE_FXCRT_CFX_UTFCONVERTINGSTREAM_H_

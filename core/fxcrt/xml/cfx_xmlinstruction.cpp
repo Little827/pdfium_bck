@@ -41,7 +41,7 @@ bool CFX_XMLInstruction::IsAcrobat() const {
 }
 
 void CFX_XMLInstruction::Save(
-    const RetainPtr<CFX_SeekableStreamProxy>& pXMLStream) {
+    const RetainPtr<CFX_UTFConvertingStream>& pXMLStream) {
   if (name_.CompareNoCase(L"xml") == 0) {
     WideString ws = L"<?xml version=\"1.0\" encoding=\"";
     uint16_t wCodePage = pXMLStream->GetCodePage();

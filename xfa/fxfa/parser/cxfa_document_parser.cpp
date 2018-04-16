@@ -9,7 +9,7 @@
 #include <utility>
 #include <vector>
 
-#include "core/fxcrt/cfx_seekablestreamproxy.h"
+#include "core/fxcrt/cfx_utfconvertingstream.h"
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
@@ -330,7 +330,7 @@ CXFA_DocumentParser::~CXFA_DocumentParser() {}
 bool CXFA_DocumentParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
                                 XFA_PacketType ePacketID) {
   auto pStreamProxy =
-      pdfium::MakeRetain<CFX_SeekableStreamProxy>(pStream, false);
+      pdfium::MakeRetain<CFX_UTFConvertingStream>(pStream, false);
   uint16_t wCodePage = pStreamProxy->GetCodePage();
   if (wCodePage != FX_CODEPAGE_UTF16LE && wCodePage != FX_CODEPAGE_UTF16BE &&
       wCodePage != FX_CODEPAGE_UTF8) {
@@ -346,14 +346,14 @@ bool CXFA_DocumentParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
 }
 
 CFX_XMLNode* CXFA_DocumentParser::ParseXMLData(const ByteString& wsXML) {
-  auto pStream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
+  auto pStream = pdfium::MakeRetain<CFX_UTFConvertingStream>(
       const_cast<uint8_t*>(wsXML.raw_str()), wsXML.GetLength());
   m_pNodeTree = LoadXML(pStream);
   return m_pNodeTree ? GetDocumentNode(m_pNodeTree.get()) : nullptr;
 }
 
 std::unique_ptr<CFX_XMLNode> CXFA_DocumentParser::LoadXML(
-    const RetainPtr<CFX_SeekableStreamProxy>& pStream) {
+    const RetainPtr<CFX_UTFConvertingStream>& pStream) {
   ASSERT(pStream);
 
   auto root = pdfium::MakeUnique<CFX_XMLNode>();

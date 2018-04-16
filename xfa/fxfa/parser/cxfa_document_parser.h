@@ -18,7 +18,7 @@ class CXFA_Node;
 class CFX_XMLDoc;
 class CFX_XMLInstruction;
 class IFX_SeekableStream;
-class CFX_SeekableStreamProxy;
+class CFX_UTFConvertingStream;
 
 class CXFA_DocumentParser {
  public:
@@ -36,7 +36,7 @@ class CXFA_DocumentParser {
 
  private:
   std::unique_ptr<CFX_XMLNode> LoadXML(
-      const RetainPtr<CFX_SeekableStreamProxy>& pStream);
+      const RetainPtr<CFX_UTFConvertingStream>& pStream);
 
   CXFA_Node* ParseAsXDPPacket(CFX_XMLNode* pXMLDocumentNode,
                               XFA_PacketType ePacketID);

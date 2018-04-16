@@ -12,14 +12,13 @@
 #include <vector>
 
 #include "core/fxcrt/cfx_blockbuffer.h"
-#include "core/fxcrt/cfx_seekablestreamproxy.h"
+#include "core/fxcrt/cfx_utfconvertingstream.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/xml/cfx_xmlnode.h"
 
 class CFX_XMLElement;
 class CFX_XMLNode;
-class CFX_SeekableStreamProxy;
 
 enum class FX_XmlSyntaxResult {
   None,
@@ -44,7 +43,7 @@ class CFX_XMLParser {
   static bool IsXMLNameChar(wchar_t ch, bool bFirstChar);
 
   CFX_XMLParser(CFX_XMLNode* pParent,
-                const RetainPtr<CFX_SeekableStreamProxy>& pStream);
+                const RetainPtr<CFX_UTFConvertingStream>& pStream);
   virtual ~CFX_XMLParser();
 
   bool Parse();
@@ -113,7 +112,7 @@ class CFX_XMLParser {
   std::stack<CFX_XMLNode*> m_NodeStack;
   WideString m_ws1;
 
-  RetainPtr<CFX_SeekableStreamProxy> m_pStream;
+  RetainPtr<CFX_UTFConvertingStream> m_pStream;
   size_t m_iXMLPlaneSize;
   FX_FILESIZE m_iCurrentPos;
   int32_t m_iCurrentNodeNum;
