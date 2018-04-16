@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9553e012_e572871e",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T21:06:20Z",
+      "side": 0,
+      "message": "Check moved into CPDF_PageObjectHolder::ErasePageObjectAtIndex()",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 17
+      },
+      "revId": "08a027cba39d5cb28dafd4280f1ad00c030f1ebf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}

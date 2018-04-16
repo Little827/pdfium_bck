@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6f9d628_bc8509ff",
+        "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T21:06:20Z",
+      "side": 1,
+      "message": "This could be achieved by a combination of pPageObj \u003d GetPageObjectByIndex(index); RemovePageObject(pPageObj); delete pPageObj; but it would be much slower since RemovePageObject() needs to search for the passed object.",
+      "revId": "776ece34ad52280248ccac2a7ba60fc3c844e735",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
