@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf491a2_006b4abc",
+        "filename": "core/fxcrt/cfx_utfconvertingstream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-16T19:10:24Z",
+      "side": 1,
+      "message": "Follow-up: this should be the only form.  If you only have a uint8_t buffer, make some other stream out of it first, then wrap it with the proxy.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "d689227f52b6e0e3dccf5d91113853aff3b1cbbe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
