@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa5714a4_37c6f796",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 6635
+      },
+      "writtenOn": "2018-04-16T03:03:44Z",
+      "side": 1,
+      "message": "\u003e Follow-up: long-term, this might all be happier returning Optional\u003cFX_FONTDESCRIPTOR\u003e and avoiding references altogether\n\nThanks for the advice. This may be done in another CL by a pdfium developer.",
+      "parentUuid": "e9f0feef_f516c0e7",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 25
+      },
+      "revId": "7370ef668ad20cbfdfb53cc505de9e9034b68188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "359f2f76_89251963",
         "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "7370ef668ad20cbfdfb53cc505de9e9034b68188",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b7079d_8234dc59",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 6635
+      },
+      "writtenOn": "2018-04-16T03:03:44Z",
+      "side": 1,
+      "message": "\u003e Please add a comment to mention why we need a variable here. Otherwise it is too easy for someone to try to inline the call.\n\nThanks for the advice. Comments have been added.",
+      "parentUuid": "359f2f76_89251963",
+      "revId": "7370ef668ad20cbfdfb53cc505de9e9034b68188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
