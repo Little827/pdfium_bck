@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cb2772e_b98ab64b",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T15:29:44Z",
+      "side": 1,
+      "message": "It\u0027s really \"There can only be one.\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "9a9e4ff397b835445ca63683e8702df75202990c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603c01d6_6bc78373",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T15:29:44Z",
+      "side": 1,
+      "message": "Do you know why this loop and the previous are not combined? Maybe they could be.",
+      "revId": "9a9e4ff397b835445ca63683e8702df75202990c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
