@@ -16,6 +16,75 @@
       "revId": "d185437e37e6b5304a00b4b0e2bf0ae3d8ca42a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ce3c1b_34b3d473",
+        "filename": "xfa/fxfa/parser/cxfa_xmllocale_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T16:20:26Z",
+      "side": 1,
+      "message": "make_span doesn\u0027t accept a const array as parameter?",
+      "range": {
+        "startLine": 90,
+        "startChar": 51,
+        "endLine": 90,
+        "endChar": 68
+      },
+      "revId": "d185437e37e6b5304a00b4b0e2bf0ae3d8ca42a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb04e2c_058aaaaa",
+        "filename": "xfa/fxfa/parser/cxfa_xmllocale_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T16:20:26Z",
+      "side": 1,
+      "message": "EXPECT_EQ(nullptr, locale);",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "d185437e37e6b5304a00b4b0e2bf0ae3d8ca42a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03608087_9fcbfbef",
+        "filename": "xfa/fxfa/parser/cxfa_xmllocale_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T16:20:26Z",
+      "side": 1,
+      "message": "Extract to helper function.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "d185437e37e6b5304a00b4b0e2bf0ae3d8ca42a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
