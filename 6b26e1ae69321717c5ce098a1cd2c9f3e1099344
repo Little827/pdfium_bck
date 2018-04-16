@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f375679_b4270bfc",
+        "filename": "core/fxcrt/xml/cfx_xmlinstruction.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-16T23:12:05Z",
+      "side": 0,
+      "message": "The SeekableStreamProxy WriteString only worked if the proxy was in UTF8 mode ....",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "6b26e1ae69321717c5ce098a1cd2c9f3e1099344",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
