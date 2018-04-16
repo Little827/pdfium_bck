@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42bcb0e4_f6577781",
+        "filename": "xfa/fxfa/parser/cxfa_xmllocale_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-16T15:34:17Z",
+      "side": 1,
+      "message": "Can you format with some indentation?",
+      "revId": "d185437e37e6b5304a00b4b0e2bf0ae3d8ca42a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
