@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4f8cdc91_8fa367b2",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-17T20:52:43Z",
+      "side": 1,
+      "message": "Is this really necessary? The dangling pointer is only checked in the destructor after the method is done, isn\u0027t it?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54d18a3f_357b1c1a",
         "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
         "patchSetId": 4
@@ -33,6 +56,24 @@
       "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec40052c_84c864e9",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-17T20:52:43Z",
+      "side": 1,
+      "message": "Nvm, read this wrong. This is the old first child.",
+      "parentUuid": "7bfec9d5_afec25ef",
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
