@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db9bfc0b_f6ba41ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-17T16:39:52Z",
+      "side": 1,
+      "message": "nit: Remove unused CFX_SeekableStreamProxy from CFGAS_GEFont\n\n(because otherwise it sounds like we\u0027re killing the class entirely, it still exists elsewhere, right?)",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "78a155d1f6ef2b42b2a99706e06adf8e7212a26c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
