@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81dc5839_a7a1c28a",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-17T21:06:04Z",
+      "side": 0,
+      "message": "Why did you remove that?",
+      "revId": "884b33e78f8f12e143a0ebef725cb6a4b784ce43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
