@@ -5,6 +5,7 @@
 #ifndef TESTING_EMBEDDER_TEST_H_
 #define TESTING_EMBEDDER_TEST_H_
 
+#include <fstream>
 #include <map>
 #include <memory>
 #include <string>
@@ -251,6 +252,9 @@ class EmbedderTest : public ::testing::Test,
   int GetPageNumberForSavedPage(FPDF_PAGE page) const;
 
   std::string data_string_;
+
+ protected:
+  std::ofstream filestream_;
 };
 
 #endif  // TESTING_EMBEDDER_TEST_H_

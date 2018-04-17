@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 
+#include <iostream>
 #include <tuple>
 #include <utility>
 
@@ -86,38 +87,54 @@ void CPDF_PageContentGenerator::GenerateContent() {
       pPageDict ? pPageDict->GetObjectFor("Contents") : nullptr;
   CPDF_Stream* pStream = pDoc->NewIndirect<CPDF_Stream>();
   pStream->SetData(&buf);
+  // std::cerr << "CPDF_PageContentGenerator::GenerateContent going on with it"
+  // << std::endl;
   if (pContent) {
+    // std::cerr << "  -> pContent exists" << std::endl;
     CPDF_Array* pArray = ToArray(pContent);
     if (pArray) {
+      // std::cerr << "  -> pArray exists" << std::endl;
+
+      // toggle new is on
+      pArray->Clear();
+
       pArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
       return;
     }
     CPDF_Reference* pReference = ToReference(pContent);
     if (!pReference) {
+      // std::cerr << "  -> pReference does not exist" << std::endl;
       pPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDocument.Get(),
                                            pStream->GetObjNum());
       return;
     }
     CPDF_Object* pDirectObj = pReference->GetDirect();
     if (!pDirectObj) {
+      // std::cerr << "  -> pDirectObj does not exist" << std::endl;
       pPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDocument.Get(),
                                            pStream->GetObjNum());
       return;
     }
     CPDF_Array* pObjArray = pDirectObj->AsArray();
     if (pObjArray) {
+      // std::cerr << "  -> pObjArray exists" << std::endl;
       pObjArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
       return;
     }
     if (pDirectObj->IsStream()) {
+      // std::cerr << "  -> pDirectObj->IsStream()" << std::endl;
       CPDF_Array* pContentArray = pDoc->NewIndirect<CPDF_Array>();
-      pContentArray->AddNew<CPDF_Reference>(pDoc, pDirectObj->GetObjNum());
+
+      // toggle new is off
+      // pContentArray->AddNew<CPDF_Reference>(pDoc, pDirectObj->GetObjNum());
+
       pContentArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
       pPageDict->SetNewFor<CPDF_Reference>("Contents", pDoc,
                                            pContentArray->GetObjNum());
       return;
     }
   }
+  // std::cerr << "  -> all else failed" << std::endl;
   pPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDocument.Get(),
                                        pStream->GetObjNum());
 }
@@ -151,10 +168,18 @@ ByteString CPDF_PageContentGenerator::RealizeResource(
 }
 
 bool CPDF_PageContentGenerator::ProcessPageObjects(std::ostringstream* buf) {
+  // std::cerr << "CPDF_PageContentGenerator::ProcessPageObjects" << std::endl;
   bool bDirty = false;
   for (auto& pPageObj : m_pageObjects) {
-    if (m_pObjHolder->IsPage() && !pPageObj->IsDirty())
-      continue;
+    // std::cerr << "  -> process" << std::endl;
+
+    // toggle new is off
+    // if (m_pObjHolder->IsPage() && !pPageObj->IsDirty()) {
+    //   // std::cerr << "    -> skip" << std::endl;
+    //   continue;
+    // }
+
+    // std::cerr << "    -> DO IT" << std::endl;
 
     bDirty = true;
     if (CPDF_ImageObject* pImageObject = pPageObj->AsImage())
