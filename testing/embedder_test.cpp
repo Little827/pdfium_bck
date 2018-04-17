@@ -528,6 +528,13 @@ int EmbedderTest::WriteBlockCallback(FPDF_FILEWRITE* pFileWrite,
                                      unsigned long size) {
   EmbedderTest* pThis = static_cast<EmbedderTest*>(pFileWrite);
   pThis->data_string_.append(static_cast<const char*>(data), size);
+
+  // New
+
+  pThis->filestream_.write(reinterpret_cast<const char*>(data), size);
+
+  // End new
+
   return 1;
 }
 

@@ -510,7 +510,7 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
 }
 
 // Fails due to pdfium:1051.
-TEST_F(FPDFEditEmbeddertest, DISABLED_RemoveExistingPageObject) {
+TEST_F(FPDFEditEmbeddertest, RemoveExistingPageObject) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -527,7 +527,9 @@ TEST_F(FPDFEditEmbeddertest, DISABLED_RemoveExistingPageObject) {
 
   // Save the file
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  filestream_.open("RemoveExistingPageObject.pdf");
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
   UnloadPage(page);
   FPDFPageObj_Destroy(page_object);
 
@@ -557,7 +559,9 @@ TEST_F(FPDFEditEmbeddertest, InsertPageObjectAndSave) {
 
   // Save the file
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  filestream_.open("InsertPageObjectAndSave.pdf");
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
   UnloadPage(page);
 
   // Re-open the file and check the page object count is still 3.
@@ -692,10 +696,13 @@ TEST_F(FPDFEditEmbeddertest, EditOverExistingContent) {
 
   std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 612, 792, "ad04e5bd0f471a9a564fb034bd0fb073");
+  WriteBitmapToPng(bitmap.get(), "EditOverExistingContent1.png");
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
 
   // Now save the result, closing the page and document
+  filestream_.open("EditOverExistingContent1.pdf");
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
   UnloadPage(page);
 
   OpenSavedDocument();
@@ -720,11 +727,14 @@ TEST_F(FPDFEditEmbeddertest, EditOverExistingContent) {
     std::unique_ptr<void, FPDFBitmapDeleter> new_bitmap =
         RenderSavedPage(saved_page);
     CompareBitmap(new_bitmap.get(), 612, 792, kLastMD5);
+    WriteBitmapToPng(new_bitmap.get(), "EditOverExistingContent2.png");
   }
   EXPECT_TRUE(FPDFPage_GenerateContent(saved_page));
 
   // Now save the result, closing the page and document
+  filestream_.open("EditOverExistingContent2.pdf");
   EXPECT_TRUE(FPDF_SaveAsCopy(saved_document_, this, 0));
+  filestream_.close();
 
   CloseSavedPage(saved_page);
   CloseSavedDocument();
@@ -1290,10 +1300,13 @@ TEST_F(FPDFEditEmbeddertest, SaveAndRender) {
     std::unique_ptr<void, FPDFBitmapDeleter> page_bitmap =
         RenderLoadedPage(page);
     CompareBitmap(page_bitmap.get(), 612, 792, md5);
+    WriteBitmapToPng(page_bitmap.get(), "SaveAndRender.png");
 
     // Now save the result, closing the page and document
     EXPECT_TRUE(FPDFPage_GenerateContent(page));
+    filestream_.open("SaveAndRender.pdf");
     EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+    filestream_.close();
     UnloadPage(page);
   }
 
