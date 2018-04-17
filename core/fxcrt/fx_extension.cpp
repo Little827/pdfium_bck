@@ -125,7 +125,7 @@ size_t FXSYS_ToUTF16BE(uint32_t unicode, char* buf) {
   return 8;
 }
 
-uint32_t GetBits32(const uint8_t* pData, int bitpos, int nbits) {
+uint32_t GetBits32(pdfium::span<const uint8_t> pData, int bitpos, int nbits) {
   ASSERT(0 < nbits && nbits <= 32);
   const uint8_t* dataPtr = &pData[bitpos / 8];
   int bitShift;
