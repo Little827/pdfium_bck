@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4ebf1c_21323f13",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-17T21:31:56Z",
+      "side": 1,
+      "message": "can this be CFX_SeekableReadStreamProxy : pubic IFX_SeekableReadStream",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "bddc60d0977068fbe89a1dad403f2e6ddd7ff1a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef4c960_49ea61d9",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-17T21:31:56Z",
+      "side": 1,
+      "message": "wonder if this can be IFX_SeekableReadStream.",
+      "range": {
+        "startLine": 38,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "bddc60d0977068fbe89a1dad403f2e6ddd7ff1a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
