@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f2949f0_82f61a49",
+        "filename": "core/fxcrt/xml/cfx_xmlelement.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-17T17:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baff8eab_af2d3f33",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "8b72df86aa0c63077faaed041453b2486a6651f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6fd7366_691531f2",
         "filename": "xfa/fxfa/parser/cxfa_dataexporter.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-17T17:12:00Z",
       "side": 1,
       "message": "can these ever happen?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "8b72df86aa0c63077faaed041453b2486a6651f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49a34fff_259f29e0",
+        "filename": "xfa/fxfa/parser/cxfa_dataexporter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-17T17:55:40Z",
+      "side": 1,
+      "message": "I don\u0027t think so, but there are a bunch of ways to get into the method which calls this method so leaving to be safe.",
+      "parentUuid": "d6fd7366_691531f2",
       "range": {
         "startLine": 23,
         "startChar": 2,
