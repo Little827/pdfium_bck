@@ -17,6 +17,24 @@
       "revId": "09389dc387e5c43025bd78fc4c185b1698925143",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f8a96c_407c3172",
+        "filename": "core/fpdfapi/page/cpdf_function.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-17T15:57:45Z",
+      "side": 1,
+      "message": "|pFunc| is not a default constructor CPDF_Function class instance. It is an empty std::unique_ptr\u003cCPDF_Function\u003e.",
+      "parentUuid": "49875287_66e2fd65",
+      "revId": "09389dc387e5c43025bd78fc4c185b1698925143",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
