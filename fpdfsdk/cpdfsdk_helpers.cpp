@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/cpdfsdk_helpers.h"
 
+#include "constants/stream_dict_common.h"
 #include "core/fpdfapi/cpdf_modulemgr.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -350,8 +351,9 @@ unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
     uint32_t decoded_len = 0;
     ByteString dummy_last_decoder;
     CPDF_Dictionary* dummy_last_param;
-    if (PDF_DataDecode(data, len, dict, dict->GetIntegerFor("DL"), false,
-                       &decoded_data, &decoded_len, &dummy_last_decoder,
+    if (PDF_DataDecode(data, len, dict,
+                       dict->GetIntegerFor(pdfium::constants::stream::kDL),
+                       false, &decoded_data, &decoded_len, &dummy_last_decoder,
                        &dummy_last_param)) {
       if (buffer && buflen >= decoded_len)
         memcpy(buffer, decoded_data, decoded_len);
