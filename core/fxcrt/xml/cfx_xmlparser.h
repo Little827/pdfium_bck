@@ -12,11 +12,11 @@
 #include <vector>
 
 #include "core/fxcrt/cfx_blockbuffer.h"
-#include "core/fxcrt/cfx_seekablestreamproxy.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/xml/cfx_xmlnode.h"
 
+class CFX_SeekableStreamProxy;
 class CFX_XMLElement;
 class CFX_XMLNode;
 class IFX_SeekableStream;
