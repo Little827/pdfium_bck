@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fffb1f40_c5b60385",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-17T21:25:36Z",
+      "side": 1,
+      "message": "Should probably rename this and m_XMLNodeStack to m_CurNodeType and m_XMLNodeTypeStack",
+      "range": {
+        "startLine": 110,
+        "startChar": 17,
+        "endLine": 110,
+        "endChar": 26
+      },
+      "revId": "f495afe6aa4ac5cfd04cf7c9d80a0c1e97b62565",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
