@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baff8eab_af2d3f33",
+        "filename": "core/fxcrt/xml/cfx_xmlelement.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-17T17:12:00Z",
+      "side": 1,
+      "message": "nit: maybe save the result in a local so that we don\u0027t have to call encode twice later on.",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "8b72df86aa0c63077faaed041453b2486a6651f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fd7366_691531f2",
+        "filename": "xfa/fxfa/parser/cxfa_dataexporter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-17T17:12:00Z",
+      "side": 1,
+      "message": "can these ever happen?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "8b72df86aa0c63077faaed041453b2486a6651f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
