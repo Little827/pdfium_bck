@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ec188b0_2adc5586",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-17T21:13:18Z",
+      "side": 1,
+      "message": "Yes because of the UnownedPtrs. If we don\u0027t do this early the unowned ptr goes bad.",
+      "parentUuid": "4f8cdc91_8fa367b2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54d18a3f_357b1c1a",
         "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f1dbae6_d7f2b0e2",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-17T21:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d18a3f_357b1c1a",
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "10f99d8d_05dd73ce",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-17T21:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb34a3f2_75fef129",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91869f66_bd9908ae",
         "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
         "patchSetId": 4
@@ -120,6 +186,30 @@
       "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f239fa09_7289dc53",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-17T21:13:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "91869f66_bd9908ae",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 45
+      },
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
