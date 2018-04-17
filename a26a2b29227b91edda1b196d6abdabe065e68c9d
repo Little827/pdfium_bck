@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54d18a3f_357b1c1a",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-17T20:49:44Z",
+      "side": 1,
+      "message": "Add a comment saying this is the case when there are no children, and this will be the first one.",
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bfec9d5_afec25ef",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-17T20:49:44Z",
+      "side": 1,
+      "message": "I don\u0027t get this. Shouldn\u0027t it be nullptr?",
+      "revId": "a26a2b29227b91edda1b196d6abdabe065e68c9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
