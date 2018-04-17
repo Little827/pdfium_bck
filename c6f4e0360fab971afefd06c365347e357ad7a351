@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab8ffeab_5a31d7d6",
+        "filename": "constants/stream_dict_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-17T15:54:26Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter too much to me. I\u0027ll drop the constants namespace level.\n\npdfium::stream::kLength and pdfium::something_else::kLength should remain distinct.",
+      "parentUuid": "658f7f28_ff02f740",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "c6f4e0360fab971afefd06c365347e357ad7a351",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54063c3d_be6b4ce1",
         "filename": "constants/stream_dict_common.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-22T19:51:29Z",
       "side": 1,
       "message": "Or, pdfium::constants::kLength and drop the specialization? Would solve the problem of kLength as it would be shared.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c6f4e0360fab971afefd06c365347e357ad7a351",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9960707_4b6c2682",
+        "filename": "constants/stream_dict_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-17T15:54:26Z",
+      "side": 1,
+      "message": "I don\u0027t want to share them though. \"Foo\" in spec section A and section B may share the same name but have different meaning. I would like code xref tools to be able to find them separately.",
+      "parentUuid": "54063c3d_be6b4ce1",
       "range": {
         "startLine": 10,
         "startChar": 1,
