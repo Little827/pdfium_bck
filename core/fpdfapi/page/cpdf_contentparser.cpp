@@ -103,8 +103,8 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
   m_pSingleStream =
       pdfium::MakeRetain<CPDF_StreamAcc>(pForm->m_pFormStream.Get());
   m_pSingleStream->LoadAllDataFiltered();
-  m_pData.Reset(m_pSingleStream->GetData());
-  m_Size = m_pSingleStream->GetSize();
+  m_pData.Reset(m_pSingleStream->GetSpan().data());
+  m_Size = m_pSingleStream->GetSpan().size();
 }
 
 CPDF_ContentParser::~CPDF_ContentParser() {}
@@ -119,7 +119,7 @@ bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
         if (!m_StreamArray.empty()) {
           FX_SAFE_UINT32 safeSize = 0;
           for (const auto& stream : m_StreamArray) {
-            safeSize += stream->GetSize();
+            safeSize += stream->GetSpan().size();
             safeSize += 1;
           }
           if (!safeSize.IsValid()) {
@@ -131,14 +131,15 @@ bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
               FX_Alloc(uint8_t, m_Size)));
           uint32_t pos = 0;
           for (const auto& stream : m_StreamArray) {
-            memcpy(m_pData.Get() + pos, stream->GetData(), stream->GetSize());
-            pos += stream->GetSize();
+            pdfium::span<const uint8_t> cspan = stream->GetSpan();
+            memcpy(m_pData.Get() + pos, cspan.data(), cspan.size());
+            pos += cspan.size();
             m_pData.Get()[pos++] = ' ';
           }
           m_StreamArray.clear();
         } else {
-          m_pData.Reset(m_pSingleStream->GetData());
-          m_Size = m_pSingleStream->GetSize();
+          m_pData.Reset(m_pSingleStream->GetSpan().data());
+          m_Size = m_pSingleStream->GetSpan().size();
         }
         m_InternalStage = STAGE_PARSE;
         m_CurrentOffset = 0;

@@ -1097,8 +1097,7 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   pAcc->LoadAllDataFiltered();
 
-  const uint8_t* pData = pAcc->GetData();
-  uint32_t dwTotalSize = pAcc->GetSize();
+  pdfium::span<const uint8_t> pData = pAcc->GetSpan();
   uint32_t segindex = 0;
   for (uint32_t i = 0; i < arrIndex.size(); i++) {
     int32_t startnum = arrIndex[i].first;
@@ -1110,11 +1109,11 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
     dwCaculatedSize += count;
     dwCaculatedSize *= totalWidth;
     if (!dwCaculatedSize.IsValid() ||
-        dwCaculatedSize.ValueOrDie() > dwTotalSize) {
+        dwCaculatedSize.ValueOrDie() > pData.size()) {
       continue;
     }
 
-    const uint8_t* segstart = pData + segindex * totalWidth;
+    pdfium::span<const uint8_t> segstart = pData.subspan(segindex * totalWidth);
     FX_SAFE_UINT32 dwMaxObjNum = startnum;
     dwMaxObjNum += count;
     uint32_t dwV5Size = m_ObjectInfo.empty() ? 0 : GetLastObjNum() + 1;
@@ -1123,16 +1122,16 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
 
     for (uint32_t j = 0; j < count; j++) {
       ObjectType type = ObjectType::kNotCompressed;
-      const uint8_t* entrystart = segstart + j * totalWidth;
+      pdfium::span<const uint8_t> entrystart = segstart.subspan(j * totalWidth);
       if (WidthArray[0]) {
         const int cross_ref_stream_obj_type =
-            GetVarInt(entrystart, WidthArray[0]);
+            GetVarInt(entrystart.data(), WidthArray[0]);
         type = GetObjectTypeFromCrossRefStreamType(cross_ref_stream_obj_type);
       }
 
       if (GetObjectType(startnum + j) == ObjectType::kNull) {
         FX_FILESIZE offset =
-            GetVarInt(entrystart + WidthArray[0], WidthArray[1]);
+            GetVarInt(&entrystart[WidthArray[0]], WidthArray[1]);
         m_ObjectInfo[startnum + j].pos = offset;
         continue;
       }
@@ -1147,7 +1146,7 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
         info.pos = 0;
       } else {
         const FX_FILESIZE entry_value =
-            GetVarInt(entrystart + WidthArray[0], WidthArray[1]);
+            GetVarInt(&entrystart[WidthArray[0]], WidthArray[1]);
         if (type == ObjectType::kNotCompressed) {
           const auto object_offset = entry_value;
           info.pos = object_offset;
@@ -1211,10 +1210,8 @@ std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObject(
   if (!pObjStream)
     return nullptr;
 
-  auto file = pdfium::MakeRetain<CFX_MemoryStream>(
-      const_cast<uint8_t*>(pObjStream->GetData()),
-      static_cast<size_t>(pObjStream->GetSize()), false);
   CPDF_SyntaxParser syntax;
+  auto file = pdfium::MakeRetain<CFX_MemoryStream>(pObjStream->GetSpan());
   syntax.InitParser(file, 0);
   const int32_t offset = GetStreamFirst(pObjStream);
 

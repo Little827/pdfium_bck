@@ -31,8 +31,6 @@ class CPDF_StreamAcc : public Retainable {
   const CPDF_Stream* GetStream() const { return m_pStream.Get(); }
   CPDF_Dictionary* GetDict() const;
 
-  uint8_t* GetData() const;
-  uint32_t GetSize() const;
   pdfium::span<uint8_t> GetSpan() const {
     return pdfium::make_span(GetData(), GetSize());
   }
@@ -43,6 +41,9 @@ class CPDF_StreamAcc : public Retainable {
  protected:
   explicit CPDF_StreamAcc(const CPDF_Stream* pStream);
   ~CPDF_StreamAcc() override;
+
+  uint8_t* GetData() const;
+  uint32_t GetSize() const;
 
  private:
   uint8_t* m_pData = nullptr;

@@ -211,8 +211,8 @@ std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj) {
       buf << p->GetDict() << "stream\r\n";
       auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(p);
       pAcc->LoadAllDataRaw();
-      buf.write(reinterpret_cast<const char*>(pAcc->GetData()),
-                pAcc->GetSize());
+      pdfium::span<uint8_t> cspan = pAcc->GetSpan();
+      buf.write(reinterpret_cast<const char*>(cspan.data()), cspan.size());
       buf << "\r\nendstream";
       break;
     }

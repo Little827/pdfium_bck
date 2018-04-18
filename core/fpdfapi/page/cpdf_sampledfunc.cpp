@@ -75,7 +75,7 @@ bool CPDF_SampledFunc::v_Init(CPDF_Object* pObj,
   nTotalSampleBytes += 7;
   nTotalSampleBytes /= 8;
   if (!nTotalSampleBytes.IsValid() || nTotalSampleBytes.ValueOrDie() == 0 ||
-      nTotalSampleBytes.ValueOrDie() > m_pSampleStream->GetSize()) {
+      nTotalSampleBytes.ValueOrDie() > m_pSampleStream->GetSpan().size()) {
     return false;
   }
   m_DecodeInfo.resize(m_nOutputs);
@@ -125,8 +125,8 @@ bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
   if (!range_check.IsValid())
     return false;
 
-  const uint8_t* pSampleData = m_pSampleStream->GetData();
-  if (!pSampleData)
+  pdfium::span<const uint8_t> pSampleData = m_pSampleStream->GetSpan();
+  if (pSampleData.empty())
     return false;
 
   for (uint32_t j = 0; j < m_nOutputs; j++, bitpos += m_nBitsPerSample) {

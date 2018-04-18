@@ -83,7 +83,7 @@ std::unique_ptr<CPDF_Object> CPDF_Stream::CloneNonCyclic(
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
   pAcc->LoadAllDataRaw();
 
-  uint32_t streamSize = pAcc->GetSize();
+  uint32_t streamSize = pAcc->GetSpan().size();
   CPDF_Dictionary* pDict = GetDict();
   std::unique_ptr<CPDF_Dictionary> pNewDict;
   if (pDict && !pdfium::ContainsKey(*pVisited, pDict)) {
@@ -159,7 +159,7 @@ bool CPDF_Stream::HasFilter() const {
 WideString CPDF_Stream::GetUnicodeText() const {
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
   pAcc->LoadAllDataFiltered();
-  return PDF_DecodeText(pAcc->GetData(), pAcc->GetSize());
+  return PDF_DecodeText(pAcc->GetSpan().data(), pAcc->GetSpan().size());
 }
 
 bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive) const {
@@ -168,6 +168,6 @@ bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive) const {
 
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
   pAcc->LoadAllDataRaw();
-  return archive->WriteBlock(pAcc->GetData(), pAcc->GetSize()) &&
+  return archive->WriteBlock(pAcc->GetSpan().data(), pAcc->GetSpan().size()) &&
          archive->WriteString("\r\nendstream");
 }

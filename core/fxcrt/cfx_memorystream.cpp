@@ -34,6 +34,9 @@ CFX_MemoryStream::CFX_MemoryStream(uint8_t* pBuffer,
   m_Blocks.push_back(pBuffer);
 }
 
+CFX_MemoryStream::CFX_MemoryStream(pdfium::span<uint8_t> pData)
+    : CFX_MemoryStream(pData.data(), pData.size(), false) {}
+
 CFX_MemoryStream::~CFX_MemoryStream() {
   if (m_dwFlags & Type::kTakeOver) {
     for (uint8_t* pBlock : m_Blocks)

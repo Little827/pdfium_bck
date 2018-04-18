@@ -737,11 +737,11 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
     return GetGlyphIndex(charcode, pVertGlyph);
   }
   uint32_t byte_pos = cid * 2;
-  if (byte_pos + 2 > m_pStreamAcc->GetSize())
+  pdfium::span<const uint8_t> pdata = m_pStreamAcc->GetSpan();
+  if (byte_pos + 2 > pdata.size())
     return -1;
 
-  const uint8_t* pdata = m_pStreamAcc->GetData() + byte_pos;
-  return pdata[0] * 256 + pdata[1];
+  return pdata[byte_pos] * 256 + pdata[byte_pos + 1];
 }
 
 uint32_t CPDF_CIDFont::GetNextChar(const ByteStringView& pString,

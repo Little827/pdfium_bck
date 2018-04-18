@@ -429,9 +429,10 @@ RetainPtr<CPDF_IccProfile> CPDF_DocPageData::GetIccProfile(
 
   auto pAccessor = pdfium::MakeRetain<CPDF_StreamAcc>(pProfileStream);
   pAccessor->LoadAllDataFiltered();
+  pdfium::span<const uint8_t> cspan = pAccessor->GetSpan();
 
   uint8_t digest[20];
-  CRYPT_SHA1Generate(pAccessor->GetData(), pAccessor->GetSize(), digest);
+  CRYPT_SHA1Generate(cspan.data(), cspan.size(), digest);
 
   ByteString bsDigest(digest, 20);
   auto hash_it = m_HashProfileMap.find(bsDigest);
@@ -441,7 +442,7 @@ RetainPtr<CPDF_IccProfile> CPDF_DocPageData::GetIccProfile(
       return it_copied_stream->second;
   }
   auto pProfile = pdfium::MakeRetain<CPDF_IccProfile>(
-      pProfileStream, pAccessor->GetData(), pAccessor->GetSize());
+      pProfileStream, cspan.data(), cspan.size());
   m_IccProfileMap[pProfileStream] = pProfile;
   m_HashProfileMap[bsDigest] = pProfileStream;
   return pProfile;
