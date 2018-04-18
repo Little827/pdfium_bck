@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1524085085 -0700\nnonce AFN+CTL0mW3Bb+gjlZbytTLcxlCi8uaFLTIb585xJrde3O/qZ7piww2W9x451m8YvfRuTJYhdopg\n\n0000000000000000000000000000000000000000 3e6349fbffaaf69e7deea5ea8116e50e548ab9bc refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003ddo-a-bit-more-validation-in-cpdf-expintfunc\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrXsV0ACgkQqzYtYVpm\n/XsYiAf/YQNeNLbxTJ2V2fhMniRzhAC8rt4+6L9WEnNHpiJm9mTzhzyz5/FrMG8e\naMiuXhZtHcH/uculQU03EZH+Wcjw275kpCp/pDygoW8QIa7MBJxdGWfd6+/LtDyJ\nprtUCBBPtcq6qBMM8rXmFGwclOTt0PUT7wbV7q97+iqwj2hKIkM2xl0mqVE3cDI+\nlXlyN0Lz8l+iSuhfQvs4wLgzrb9/yrLAmnElbJ3jORZWMO+BpNiSNxF5i0dcnESS\n0tCJCiqtbr7vZR22aH/Sfo2ATrIwWuoYza8kvlnA0wz6pOj9QnMAKdfKklrwrydo\nZS1A6q+rITbPXlo4Y/6Y84+y59vxLg\u003d\u003d\n\u003dD6bw\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
