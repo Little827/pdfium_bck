@@ -36,14 +36,6 @@ class CFWLEditEmbeddertest : public EmbedderTest {
   EmbedderTestTimerHandlingDelegate delegate_;
 };
 
-TEST_F(CFWLEditEmbeddertest, Trivial) {
-  ASSERT_EQ(1u, delegate().GetAlerts().size());
-  auto alert = delegate().GetAlerts()[0];
-  EXPECT_STREQ(L"PDFium", alert.title.c_str());
-  EXPECT_STREQ(L"The value you entered for Text Field is invalid.",
-               alert.message.c_str());
-}
-
 TEST_F(CFWLEditEmbeddertest, LeftClickMouseSelection) {
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
   for (size_t i = 0; i < 10; ++i)
