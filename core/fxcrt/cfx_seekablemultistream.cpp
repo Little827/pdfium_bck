@@ -25,7 +25,7 @@ CFX_SeekableMultiStream::~CFX_SeekableMultiStream() {}
 FX_FILESIZE CFX_SeekableMultiStream::GetSize() {
   uint32_t dwSize = 0;
   for (const auto& acc : m_Data)
-    dwSize += acc->GetSize();
+    dwSize += acc->GetSpan().size();
   return dwSize;
 }
 
@@ -36,7 +36,7 @@ bool CFX_SeekableMultiStream::ReadBlock(void* buffer,
   int32_t index = 0;
   while (index < iCount) {
     const auto& acc = m_Data[index];
-    FX_FILESIZE dwSize = acc->GetSize();
+    FX_FILESIZE dwSize = acc->GetSpan().size();
     if (offset < dwSize)
       break;
 
@@ -45,9 +45,9 @@ bool CFX_SeekableMultiStream::ReadBlock(void* buffer,
   }
   while (index < iCount) {
     const auto& acc = m_Data[index];
-    uint32_t dwSize = acc->GetSize();
+    uint32_t dwSize = acc->GetSpan().size();
     size_t dwRead = std::min(size, static_cast<size_t>(dwSize - offset));
-    memcpy(buffer, acc->GetData() + offset, dwRead);
+    memcpy(buffer, &acc->GetSpan()[offset], dwRead);
     size -= dwRead;
     if (size == 0)
       return true;

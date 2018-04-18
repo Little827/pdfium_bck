@@ -43,6 +43,7 @@ class CFX_MemoryStream : public IFX_SeekableStream {
 
  private:
   explicit CFX_MemoryStream(bool bConsecutive);
+  explicit CFX_MemoryStream(pdfium::span<uint8_t> pData);
   CFX_MemoryStream(uint8_t* pBuffer, size_t nSize, bool bTakeOver);
   ~CFX_MemoryStream() override;
 

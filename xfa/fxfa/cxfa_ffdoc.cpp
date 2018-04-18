@@ -207,11 +207,11 @@ RetainPtr<CFX_DIBitmap> CXFA_FFDoc::GetPDFNamedImage(
   pAcc->LoadAllDataFiltered();
 
   RetainPtr<IFX_SeekableStream> pImageFileRead =
-      pdfium::MakeRetain<CFX_MemoryStream>(
-          const_cast<uint8_t*>(pAcc->GetData()), pAcc->GetSize(), false);
+      pdfium::MakeRetain<CFX_MemoryStream>(pAcc->GetSpan());
 
   RetainPtr<CFX_DIBitmap> pDibSource = XFA_LoadImageFromBuffer(
       pImageFileRead, FXCODEC_IMAGE_UNKNOWN, iImageXDpi, iImageYDpi);
+
   m_HashToDibDpiMap[dwHash] = {pDibSource, iImageXDpi, iImageYDpi};
   return pDibSource;
 }

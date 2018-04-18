@@ -329,18 +329,18 @@ std::unique_ptr<CPDF_Object> CPDF_CryptoHandler::DecryptObjectTree(
         auto stream_access = pdfium::MakeRetain<CPDF_StreamAcc>(stream);
         stream_access->LoadAllDataRaw();
 
-        if (IsCipherAES() && stream_access->GetSize() < 16) {
+        pdfium::span<const uint8_t> stream_span = stream_access->GetSpan();
+        if (IsCipherAES() && stream_span.size() < 16) {
           stream->SetData(nullptr, 0);
           continue;
         }
 
         CFX_BinaryBuf decrypted_buf;
-        decrypted_buf.EstimateSize(DecryptGetSize(stream_access->GetSize()));
+        decrypted_buf.EstimateSize(DecryptGetSize(stream_span.size()));
 
         void* context = DecryptStart(obj_num, gen_num);
-        bool decrypt_result =
-            DecryptStream(context, stream_access->GetData(),
-                          stream_access->GetSize(), decrypted_buf);
+        bool decrypt_result = DecryptStream(context, stream_span.data(),
+                                            stream_span.size(), decrypted_buf);
         decrypt_result &= DecryptFinish(context, decrypted_buf);
         if (decrypt_result) {
           const uint32_t decrypted_size = decrypted_buf.GetSize();

@@ -61,7 +61,7 @@ CJBig2_Context::CJBig2_Context(const RetainPtr<CPDF_StreamAcc>& pGlobalStream,
       m_dwOffset(0),
       m_pSymbolDictCache(pSymbolDictCache),
       m_bIsGlobal(bIsGlobal) {
-  if (pGlobalStream && pGlobalStream->GetSize() > 0) {
+  if (pGlobalStream && !pGlobalStream->GetSpan().empty()) {
     m_pGlobalContext = pdfium::MakeUnique<CJBig2_Context>(
         nullptr, pGlobalStream, pSymbolDictCache, true);
   }

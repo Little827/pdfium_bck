@@ -164,7 +164,7 @@ bool CPDF_DIBSource::Load(CPDF_Document* pDoc, const CPDF_Stream* pStream) {
 
   m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   m_pStreamAcc->LoadAllData(false, src_size.ValueOrDie(), true);
-  if (m_pStreamAcc->GetSize() == 0 || !m_pStreamAcc->GetData())
+  if (m_pStreamAcc->GetSpan().empty())
     return false;
 
   if (CreateDecoder() == LoadState::kFail)
@@ -277,7 +277,7 @@ CPDF_DIBSource::LoadState CPDF_DIBSource::StartLoadDIBSource(
 
   m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
   m_pStreamAcc->LoadAllData(false, src_size.ValueOrDie(), true);
-  if (m_pStreamAcc->GetSize() == 0 || !m_pStreamAcc->GetData())
+  if (m_pStreamAcc->GetSpan().empty())
     return LoadState::kFail;
 
   LoadState iCreatedDecoder = CreateDecoder();
@@ -490,21 +490,22 @@ CPDF_DIBSource::LoadState CPDF_DIBSource::CreateDecoder() {
     return LoadState::kContinue;
   }
 
-  const uint8_t* src_data = m_pStreamAcc->GetData();
-  uint32_t src_size = m_pStreamAcc->GetSize();
+  pdfium::span<const uint8_t> src_data = m_pStreamAcc->GetSpan();
   const CPDF_Dictionary* pParams = m_pStreamAcc->GetImageParam();
   if (decoder == "CCITTFaxDecode") {
-    m_pDecoder = FPDFAPI_CreateFaxDecoder(src_data, src_size, m_Width, m_Height,
-                                          pParams);
+    m_pDecoder = FPDFAPI_CreateFaxDecoder(src_data.data(), src_data.size(),
+                                          m_Width, m_Height, pParams);
   } else if (decoder == "FlateDecode") {
-    m_pDecoder = FPDFAPI_CreateFlateDecoder(
-        src_data, src_size, m_Width, m_Height, m_nComponents, m_bpc, pParams);
+    m_pDecoder =
+        FPDFAPI_CreateFlateDecoder(src_data.data(), src_data.size(), m_Width,
+                                   m_Height, m_nComponents, m_bpc, pParams);
   } else if (decoder == "RunLengthDecode") {
     CCodec_ModuleMgr* pEncoders = CPDF_ModuleMgr::Get()->GetCodecModule();
     m_pDecoder = pEncoders->GetBasicModule()->CreateRunLengthDecoder(
-        src_data, src_size, m_Width, m_Height, m_nComponents, m_bpc);
+        src_data.data(), src_data.size(), m_Width, m_Height, m_nComponents,
+        m_bpc);
   } else if (decoder == "DCTDecode") {
-    if (!CreateDCTDecoder(src_data, src_size, pParams))
+    if (!CreateDCTDecoder(src_data.data(), src_data.size(), pParams))
       return LoadState::kFail;
   }
   if (!m_pDecoder)
@@ -599,8 +600,9 @@ bool CPDF_DIBSource::CreateDCTDecoder(const uint8_t* src_data,
 RetainPtr<CFX_DIBitmap> CPDF_DIBSource::LoadJpxBitmap() {
   CCodec_JpxModule* pJpxModule = CPDF_ModuleMgr::Get()->GetJpxModule();
   auto context = pdfium::MakeUnique<JpxBitMapContext>(pJpxModule);
-  context->set_decoder(pJpxModule->CreateDecoder(
-      m_pStreamAcc->GetData(), m_pStreamAcc->GetSize(), m_pColorSpace));
+  pdfium::span<const uint8_t> cspan = m_pStreamAcc->GetSpan();
+  context->set_decoder(
+      pJpxModule->CreateDecoder(cspan.data(), cspan.size(), m_pColorSpace));
   if (!context->decoder())
     return nullptr;
 
@@ -969,6 +971,7 @@ const uint8_t* CPDF_DIBSource::GetScanline(int line) const {
   uint32_t src_pitch_value = src_pitch.ValueOrDie();
 
   const uint8_t* pSrcLine = nullptr;
+  pdfium::span<const uint8_t> cspan = m_pStreamAcc->GetSpan();
   if (m_pCachedBitmap && src_pitch_value <= m_pCachedBitmap->GetPitch()) {
     if (line >= m_pCachedBitmap->GetHeight()) {
       line = m_pCachedBitmap->GetHeight() - 1;
@@ -976,8 +979,8 @@ const uint8_t* CPDF_DIBSource::GetScanline(int line) const {
     pSrcLine = m_pCachedBitmap->GetScanline(line);
   } else if (m_pDecoder) {
     pSrcLine = m_pDecoder->GetScanline(line);
-  } else if (m_pStreamAcc->GetSize() >= (line + 1) * src_pitch_value) {
-    pSrcLine = m_pStreamAcc->GetData() + line * src_pitch_value;
+  } else if (cspan.size() >= (line + 1) * src_pitch_value) {
+    pSrcLine = &cspan[line * src_pitch_value];
   }
   if (!pSrcLine) {
     uint8_t* pLineBuf = m_pMaskedLine ? m_pMaskedLine : m_pLineBuf;
@@ -1111,9 +1114,9 @@ void CPDF_DIBSource::DownSampleScanline(int line,
     if (!pitch.IsValid()) {
       return;
     }
-
-    if (m_pStreamAcc->GetSize() >= pitch.ValueOrDie()) {
-      pSrcLine = m_pStreamAcc->GetData() + line * src_pitch;
+    pdfium::span<const uint8_t> cspan = m_pStreamAcc->GetSpan();
+    if (pitch.ValueOrDie() < cspan.size()) {
+      pSrcLine = &cspan[line * src_pitch];
     }
   }
   int orig_Bpp = m_bpc * m_nComponents / 8;

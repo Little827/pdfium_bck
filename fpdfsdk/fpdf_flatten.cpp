@@ -200,7 +200,7 @@ void SetPageContents(const ByteString& key,
     auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pContentsStream);
     pAcc->LoadAllDataFiltered();
     ByteString sStream = "q\n";
-    ByteString sBody = ByteString(pAcc->GetData(), pAcc->GetSize());
+    ByteString sBody = ByteString(pAcc->GetSpan());
     sStream = sStream + sBody + "\nQ";
     pContentsStream->SetDataAndRemoveFilter(sStream.raw_str(),
                                             sStream.GetLength());
@@ -385,7 +385,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
 
     auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pNewXObject);
     pAcc->LoadAllDataFiltered();
-    ByteString sStream(pAcc->GetData(), pAcc->GetSize());
+    ByteString sStream(pAcc->GetSpan());
     CFX_Matrix matrix = pAPDic->GetMatrixFor("Matrix");
     CFX_Matrix m = GetMatrix(rcAnnot, rcStream, matrix);
     sStream += ByteString::Format("q %f 0 0 %f %f %f cm /%s Do Q\n", m.a, m.d,

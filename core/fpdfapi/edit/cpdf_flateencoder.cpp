@@ -23,22 +23,23 @@ CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
     auto pDestAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
     pDestAcc->LoadAllDataFiltered();
 
-    m_dwSize = pDestAcc->GetSize();
+    m_dwSize = pDestAcc->GetSpan().size();
     m_pData = pDestAcc->DetachData();
     m_pDict = ToDictionary(pStream->GetDict()->Clone());
     m_pDict->RemoveFor("Filter");
     return;
   }
   if (bHasFilter || !bFlateEncode) {
-    m_pData = m_pAcc->GetData();
-    m_dwSize = m_pAcc->GetSize();
+    m_pData = m_pAcc->GetSpan().data();
+    m_dwSize = m_pAcc->GetSpan().size();
     m_pDict = pStream->GetDict();
     return;
   }
 
   // TODO(thestig): Move to Init() and check return value.
   uint8_t* buffer = nullptr;
-  ::FlateEncode(m_pAcc->GetData(), m_pAcc->GetSize(), &buffer, &m_dwSize);
+  ::FlateEncode(m_pAcc->GetSpan().data(), m_pAcc->GetSpan().size(), &buffer,
+                &m_dwSize);
 
   m_pData = std::unique_ptr<uint8_t, FxFreeDeleter>(buffer);
   m_pDict = ToDictionary(pStream->GetDict()->Clone());

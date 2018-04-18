@@ -8,6 +8,7 @@
 #define CORE_FXCODEC_JBIG2_JBIG2_BITSTREAM_H_
 
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/base/span.h"
 
 class CPDF_StreamAcc;
 
@@ -34,7 +35,7 @@ class CJBig2_BitStream {
   uint32_t getBitPos() const;
   void setBitPos(uint32_t dwBitPos);
   const uint8_t* getBuf() const;
-  uint32_t getLength() const { return m_dwLength; }
+  size_t getLength() const { return m_pBuf.size(); }
   const uint8_t* getPointer() const;
   void offset(uint32_t dwOffset);
   uint32_t getByteLeft() const;
@@ -46,11 +47,10 @@ class CJBig2_BitStream {
   void AdvanceBit();
   uint32_t LengthInBits() const;
 
-  const uint8_t* m_pBuf;
-  uint32_t m_dwLength;
+  pdfium::span<const uint8_t> m_pBuf;
   uint32_t m_dwByteIdx;
   uint32_t m_dwBitIdx;
-  const uint32_t m_dwObjNum;
+  uint32_t m_dwObjNum;
 
   CJBig2_BitStream(const CJBig2_BitStream&) = delete;
   void operator=(const CJBig2_BitStream&) = delete;
