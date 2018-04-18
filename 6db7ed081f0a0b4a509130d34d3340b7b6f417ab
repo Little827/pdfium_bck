@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1524079420 -0700\nnonce AFN+CTKL7QZhLoPmYICFIHG00bQLH9tlWAySH1zBD0i/MVbDpT7tLhg1mOphxEtMzzEFOXNzzom4\n\n0000000000000000000000000000000000000000 6db7ed081f0a0b4a509130d34d3340b7b6f417ab refs/for/refs/heads/master%notify\u003dNONE,m\u003dupload_again\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrXmzwACgkQqzYtYVpm\n/XszbQf+NmdeBPddvQKpwAdCbHQTWOsoqeR6VSg/KUEuDG6ADcWLh3rmVHb85YOv\nO8PcHeIS2g11vzpr8dkFeE2pSoMO71Cwz/emdK443r/DBT0zYiPpzjIbt+hm2jR8\neCqGinIP/N0r6FDXlgUUj7vT/HNgmHQ25kIf1RI88fCI1VS5UlpVoxfHFx7VeYg1\nOS1KcEd5g9T9whMAroZA7GUWBqbjeoOQ0uVvK1apuYZK5BC1LrRmgPokD8Yp+gGA\n9YG/1+fEickQLYxsg83vPIuEwV8yq9VL81sQZgCSAQAsXx4nn5oTM83VeNW4wN4D\nfriQtQoyeNKQcjK1lEZ24WjpTttzcQ\u003d\u003d\n\u003dFAl4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b28b4f_7ad9d0c0",
+        "filename": "core/fpdfapi/page/cpdf_function.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-18T22:19:33Z",
+      "side": 1,
+      "message": "Add a comment saying \"Ranges are required for type 0 and type 4 functions. The number of outputs\nshould not be 0.\"",
+      "revId": "6db7ed081f0a0b4a509130d34d3340b7b6f417ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
