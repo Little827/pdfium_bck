@@ -227,16 +227,24 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary();
 // Policy for accessing the local machine time.
 #define FPDF_POLICY_MACHINETIME_ACCESS 0
 
+// Policy to allow operations requiring a "privleged context".
+#define FPDF_POLICY_PRIVILEGED_CONTEXT 1
+
+// Policy for executing JavaScript.
+#define FPDF_POLICY_JAVASCRIPT_EXECUTION 2
+
 // Function: FPDF_SetSandBoxPolicy
 //          Set the policy for the sandbox environment.
 // Parameters:
-//          policy -   The specified policy for setting, for example:
-//                     FPDF_POLICY_MACHINETIME_ACCESS.
+//          policy -   The specified policy for setting, one of:
+//                       FPDF_POLICY_MACHINETIME_ACCESS
+//                       FPDF_POLICY_PRIVILEGED_CONTEXT
+//                       FPDF_POLICY_JAVASCRIPT_EXECUTION
 //          enable -   True to enable, false to disable the policy.
 // Return value:
-//          None.
-FPDF_EXPORT void FPDF_CALLCONV FPDF_SetSandBoxPolicy(FPDF_DWORD policy,
-                                                     FPDF_BOOL enable);
+//          True on success, false if the policy was not recognized.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_SetSandBoxPolicy(FPDF_DWORD policy,
+                                                          FPDF_BOOL enable);
 
 #if defined(_WIN32)
 #if defined(PDFIUM_PRINT_TEXT_WITH_GDI)

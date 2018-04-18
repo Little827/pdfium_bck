@@ -80,8 +80,8 @@ unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
                                                    void* buffer,
                                                    unsigned long buflen);
 
-void FSDK_SetSandBoxPolicy(FPDF_DWORD policy, FPDF_BOOL enable);
-FPDF_BOOL FSDK_IsSandBoxPolicyEnabled(FPDF_DWORD policy);
+bool FSDK_SetSandBoxPolicy(FPDF_DWORD policy, FPDF_BOOL enable);
+bool FSDK_IsSandBoxPolicyEnabled(FPDF_DWORD policy);
 
 // TODO(dsinclair): Where should this live?
 void FPDF_RenderPage_Retail(CPDF_PageRenderContext* pContext,
