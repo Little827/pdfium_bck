@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f0fb328_fe65f735",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-18T18:31:52Z",
+      "side": 1,
+      "message": "Can we make a test where raw_str !\u003d str to make sure the spans are different?",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "ff7c1c6ecaee123ae81ffac5ab0089352c267180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
