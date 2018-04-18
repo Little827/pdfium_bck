@@ -1157,6 +1157,9 @@ void CXFA_Node::InsertChild(int32_t index, CXFA_Node* pNode) {
   if (!IsNeedSavingXMLNode() || !pNode->xml_node_)
     return;
 
+  if (pNode->xml_node_->GetParent())
+    pNode->xml_node_->GetParent()->RemoveChildNode(pNode->xml_node_.Get());
+
   ASSERT(!pNode->xml_node_->GetParent());
   ASSERT(pNode->xml_node_.IsOwned());
   xml_node_->InsertChildNode(pNode->xml_node_.Release(), index);
