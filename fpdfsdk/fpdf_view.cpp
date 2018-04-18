@@ -192,8 +192,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   g_bLibraryInitialized = false;
 }
 
-FPDF_EXPORT void FPDF_CALLCONV FPDF_SetSandBoxPolicy(FPDF_DWORD policy,
-                                                     FPDF_BOOL enable) {
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_SetSandBoxPolicy(FPDF_DWORD policy,
+                                                          FPDF_BOOL enable) {
   return FSDK_SetSandBoxPolicy(policy, enable);
 }
 

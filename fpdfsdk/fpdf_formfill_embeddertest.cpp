@@ -12,6 +12,7 @@
 #include "public/cpp/fpdf_deleters.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
+#include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_mock_delegate.h"
 #include "testing/embedder_test_timer_handling_delegate.h"
@@ -368,6 +369,39 @@ TEST_F(FPDFFormFillEmbeddertest, BUG_514690) {
 }
 
 #ifdef PDF_ENABLE_V8
+TEST_F(FPDFFormFillEmbeddertest, DisablingV8DisablesTimers) {
+  FPDF_SetSandBoxPolicy(FPDF_POLICY_JAVASCRIPT_EXECUTION, false);
+
+  EmbedderTestTimerHandlingDelegate delegate;
+  SetDelegate(&delegate);
+
+  EXPECT_TRUE(OpenDocument("bug_551248.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+  DoOpenActions();
+
+  const auto& alerts = delegate.GetAlerts();
+  EXPECT_EQ(0U, alerts.size());
+
+  delegate.AdvanceTime(1000);
+  EXPECT_EQ(0U, alerts.size());  // nothing fired.
+  delegate.AdvanceTime(1000);
+  EXPECT_EQ(0U, alerts.size());  // nothing fired.
+  delegate.AdvanceTime(1000);
+  EXPECT_EQ(0U, alerts.size());  // nothing fired.
+  delegate.AdvanceTime(1000);
+  EXPECT_EQ(0U, alerts.size());  // nothing fired.
+  delegate.AdvanceTime(1000);
+  EXPECT_EQ(0U, alerts.size());  // nothing fired.
+  delegate.AdvanceTime(1000);
+  EXPECT_EQ(0U, alerts.size());  // nothing fired.
+  delegate.AdvanceTime(1000);
+  EXPECT_EQ(0U, alerts.size());  // nothing fired.
+  UnloadPage(page);
+
+  FPDF_SetSandBoxPolicy(FPDF_POLICY_JAVASCRIPT_EXECUTION, true);
+}
+
 TEST_F(FPDFFormFillEmbeddertest, BUG_551248) {
   // Test that timers fire once and intervals fire repeatedly.
   EmbedderTestTimerHandlingDelegate delegate;

@@ -312,26 +312,30 @@ void ProcessParseError(CPDF_Parser::Error err) {
   SetLastError(err_code);
 }
 
-// 0 bit: FPDF_POLICY_MACHINETIME_ACCESS
+// Initially, all on.
 static uint32_t foxit_sandbox_policy = 0xFFFFFFFF;
 
-void FSDK_SetSandBoxPolicy(FPDF_DWORD policy, FPDF_BOOL enable) {
+bool FSDK_SetSandBoxPolicy(FPDF_DWORD policy, FPDF_BOOL enable) {
   switch (policy) {
-    case FPDF_POLICY_MACHINETIME_ACCESS: {
+    case FPDF_POLICY_MACHINETIME_ACCESS:
+    case FPDF_POLICY_PRIVILEGED_CONTEXT:
+    case FPDF_POLICY_JAVASCRIPT_EXECUTION:
       if (enable)
-        foxit_sandbox_policy |= 0x01;
+        foxit_sandbox_policy |= (1 << policy);
       else
-        foxit_sandbox_policy &= 0xFFFFFFFE;
-    } break;
+        foxit_sandbox_policy &= ~(1 << policy);
+      return true;
     default:
-      break;
+      return false;
   }
 }
 
-FPDF_BOOL FSDK_IsSandBoxPolicyEnabled(FPDF_DWORD policy) {
+bool FSDK_IsSandBoxPolicyEnabled(FPDF_DWORD policy) {
   switch (policy) {
+    case FPDF_POLICY_PRIVILEGED_CONTEXT:
+    case FPDF_POLICY_JAVASCRIPT_EXECUTION:
     case FPDF_POLICY_MACHINETIME_ACCESS:
-      return !!(foxit_sandbox_policy & 0x01);
+      return !!(foxit_sandbox_policy & (1 << policy));
     default:
       return false;
   }
