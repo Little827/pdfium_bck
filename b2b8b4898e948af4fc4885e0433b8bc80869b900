@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ea14971c_c0a1219e",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-18T18:42:59Z",
+      "side": 1,
+      "message": "It is awkward, but without it the text layout code will have perf issues. We need to rewrite the text layout to not need sibling pointers.",
+      "parentUuid": "83dfd5bb_3af1287b",
+      "revId": "b2b8b4898e948af4fc4885e0433b8bc80869b900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3144a1e3_7ea91beb",
         "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cd9674d3_a1eaeeb1",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-18T18:42:59Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "3144a1e3_7ea91beb",
+      "revId": "b2b8b4898e948af4fc4885e0433b8bc80869b900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "266b5753_45e243e4",
         "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2018-04-18T18:28:06Z",
       "side": 1,
       "message": "From the method name, you wouldn\u0027t expect this to be a requirement.",
+      "revId": "b2b8b4898e948af4fc4885e0433b8bc80869b900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733d8ef3_0471f431",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-18T18:42:59Z",
+      "side": 1,
+      "message": "True, I did add a note in the header, heh. Naming is hard.",
+      "parentUuid": "266b5753_45e243e4",
       "revId": "b2b8b4898e948af4fc4885e0433b8bc80869b900",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
