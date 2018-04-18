@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a31bfe81_2f461953",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-18T19:12:55Z",
+      "side": 1,
+      "message": "Having problems with Optional:\n\n../../third_party/base/optional.h:41:26: error: call to implicitly-deleted copy constructor of \u0027const std::__1::pair\u003cconst fxcrt::ByteString, std::__1::unique_ptr\u003cCPDF_Object, std::__1::default_delete\u003cCPDF_Object\u003e \u003e \u003e\u0027",
+      "parentUuid": "b0588354_28f45a14",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7c04774_077d995e",
         "filename": "fpdfsdk/fpdf_editpage.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2b9f4de4_1e422fb7",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-18T19:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c04774_077d995e",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a505aa8e_958d2727",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30b40cd_1278ef3d",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-18T19:12:55Z",
+      "side": 1,
+      "message": "Done. Marked some others from previous CLs that should have been experimental too.",
+      "parentUuid": "a505aa8e_958d2727",
+      "range": {
+        "startLine": 327,
+        "startChar": 25,
+        "endLine": 328,
+        "endChar": 9
+      },
+      "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
