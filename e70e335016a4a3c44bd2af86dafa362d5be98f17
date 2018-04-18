@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02b9af5_f8acaaad",
+        "filename": "testing/resources/text_in_page_marked.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-18T18:11:29Z",
+      "side": 1,
+      "message": "It was wrong before, the test caught it.",
+      "revId": "e70e335016a4a3c44bd2af86dafa362d5be98f17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
