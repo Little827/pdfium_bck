@@ -99,13 +99,17 @@ bool CPDF_Function::Init(CPDF_Object* pObj, std::set<CPDF_Object*>* pVisited) {
 
   CPDF_Array* pRanges = pDict->GetArrayFor("Range");
   m_nOutputs = 0;
-  if (pRanges) {
+  if (pRanges && !pRanges->IsEmpty()) {
     m_nOutputs = pRanges->GetCount() / 2;
     size_t nOutputs = m_nOutputs * 2;
     m_pRanges = FX_Alloc(float, nOutputs);
     for (size_t i = 0; i < nOutputs; ++i)
       m_pRanges[i] = pRanges->GetFloatAt(i);
+  } else if (m_Type == Type::kType0Sampled ||
+             m_Type == Type::kType4PostScript) {
+    return false;
   }
+
   uint32_t old_outputs = m_nOutputs;
   if (!v_Init(pObj, pVisited))
     return false;
