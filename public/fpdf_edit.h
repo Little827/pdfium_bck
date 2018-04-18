@@ -324,6 +324,40 @@ FPDFPageObjMark_GetName(FPDF_PAGEOBJECTMARK mark,
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFPageObjMark_CountParams(FPDF_PAGEOBJECTMARK mark);
 
+// Get the key of a property in a content mark. |buffer| is only modified if
+// |buflen| is longer than the length of the key.
+//
+//   mark   - handle to a content mark.
+//   index  - index of the property.
+//   buffer - buffer for holding the returned key in UTF16-LE.
+//   buflen - length of the buffer.
+//
+// Returns the length of the key.
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObjMark_GetParamKey(FPDF_PAGEOBJECTMARK mark,
+                            unsigned long index,
+                            void* buffer,
+                            unsigned long buflen);
+
+// Get type of the value of a property in a content mark.
+//
+//   mark   - handle to a content mark.
+//   index  - index of the property.
+//
+// Returns the type of the value, or FPDF_OBJECT_UNKNOWN in case of failure.
+FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
+FPDFPageObjMark_GetParamValueType(FPDF_PAGEOBJECTMARK mark,
+                                  unsigned long index);
+
+// Get value of a int property in a content mark.
+//
+//   mark   - handle to a content mark.
+//   index  - index of the property.
+//
+// Returns the int value, 0 in case of failure.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObjMark_GetParamIntValue(FPDF_PAGEOBJECTMARK mark, unsigned long index);
+
 // Load an image from a JPEG image file and then set it into |image_object|.
 //
 //   pages        - pointer to the start of all loaded pages, may be NULL.
