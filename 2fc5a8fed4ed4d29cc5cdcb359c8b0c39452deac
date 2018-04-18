@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0588354_28f45a14",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-18T18:38:42Z",
+      "side": 1,
+      "message": "Optional instead of *?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c04774_077d995e",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-18T18:38:42Z",
+      "side": 1,
+      "message": "for (auto it : pParams) {\n  if (index \u003d\u003d 0)\n    return \u0026(*it);\n  -- index;\n}\nreturn nullptr;",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a505aa8e_958d2727",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-18T18:38:42Z",
+      "side": 1,
+      "message": "Mark these APIs as Experimental.",
+      "range": {
+        "startLine": 327,
+        "startChar": 25,
+        "endLine": 328,
+        "endChar": 9
+      },
+      "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
