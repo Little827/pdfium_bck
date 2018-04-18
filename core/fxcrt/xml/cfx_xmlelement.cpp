@@ -97,10 +97,16 @@ void CFX_XMLElement::SetTextData(const WideString& wsText) {
 }
 
 void CFX_XMLElement::Save(const RetainPtr<IFX_SeekableStream>& pXMLStream) {
-  ByteStringView name_encoded = name_.UTF8Encode().AsStringView();
+  // Do not use ByteStringView object to store the returned value of
+  // WideString.UTF8Encode().AsStringView(), use-after-free issues will
+  // be triggered if the ByteStringView object is used later since it will
+  // reference the internal string buffer of the temporary ByteString object
+  // returned by UTF8Encode(). However, the temporary ByteString object
+  // will be freed once we reach the next line.
+  ByteString bsNameEncoded = name_.UTF8Encode();
 
   pXMLStream->WriteString("<");
-  pXMLStream->WriteString(name_encoded);
+  pXMLStream->WriteString(bsNameEncoded.AsStringView());
 
   for (auto it : attrs_) {
     // Note, the space between attributes is added by AttributeToString which
@@ -121,7 +127,7 @@ void CFX_XMLElement::Save(const RetainPtr<IFX_SeekableStream>& pXMLStream) {
     pChild->Save(pXMLStream);
   }
   pXMLStream->WriteString("</");
-  pXMLStream->WriteString(name_encoded);
+  pXMLStream->WriteString(bsNameEncoded.AsStringView());
   pXMLStream->WriteString(">\n");
 }
 
