@@ -315,6 +315,28 @@ FPDFPageObjMark_GetName(FPDF_PAGEOBJECTMARK mark,
                         void* buffer,
                         unsigned long buflen);
 
+// Get number of key/value pair parameters in |mark|.
+//
+//   mark   - handle to a content mark.
+//
+// Returns the number of key/value pair parameters |mark|, or -1 in case of
+// failure.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObjMark_CountParams(FPDF_PAGEOBJECTMARK mark);
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObjMark_GetParamKey(FPDF_PAGEOBJECTMARK mark,
+                            unsigned long index,
+                            void* buffer,
+                            unsigned long buflen);
+
+FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
+FPDFPageObjMark_GetParamValueType(FPDF_PAGEOBJECTMARK mark,
+                                  unsigned long index);
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObjMark_GetParamIntValue(FPDF_PAGEOBJECTMARK mark, unsigned long index);
+
 // Load an image from a JPEG image file and then set it into |image_object|.
 //
 //   pages        - pointer to the start of all loaded pages, may be NULL.
