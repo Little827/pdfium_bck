@@ -38,8 +38,7 @@ CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
 
   // TODO(thestig): Move to Init() and check return value.
   uint8_t* buffer = nullptr;
-  ::FlateEncode(m_pAcc->GetSpan().data(), m_pAcc->GetSpan().size(), &buffer,
-                &m_dwSize);
+  ::FlateEncode(m_pAcc->GetSpan(), &buffer, &m_dwSize);
 
   m_pData = std::unique_ptr<uint8_t, FxFreeDeleter>(buffer);
   m_pDict = ToDictionary(pStream->GetDict()->Clone());
@@ -48,7 +47,7 @@ CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
   m_pDict->RemoveFor(pdfium::stream::kDecodeParms);
 }
 
-CPDF_FlateEncoder::~CPDF_FlateEncoder() {}
+CPDF_FlateEncoder::~CPDF_FlateEncoder() = default;
 
 void CPDF_FlateEncoder::CloneDict() {
   if (m_pDict.IsOwned())

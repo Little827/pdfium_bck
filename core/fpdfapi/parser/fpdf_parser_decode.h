@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "core/fxcrt/fx_string.h"
+#include "third_party/base/span.h"
 
 class CCodec_ScanlineDecoder;
 class CPDF_Dictionary;
@@ -23,8 +24,7 @@ WideString PDF_DecodeText(const ByteString& bstr);
 ByteString PDF_EncodeText(const wchar_t* pString, int len);
 ByteString PDF_EncodeText(const WideString& str);
 
-bool FlateEncode(const uint8_t* src_buf,
-                 uint32_t src_size,
+bool FlateEncode(pdfium::span<const uint8_t> src_buf,
                  uint8_t** dest_buf,
                  uint32_t* dest_size);
 
