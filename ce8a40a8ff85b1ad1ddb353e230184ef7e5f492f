@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a21c63d7_57f912ea",
+        "filename": "core/fpdfapi/page/cpdf_expintfunc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-18T22:25:12Z",
+      "side": 1,
+      "message": "The new version forces m_nOutputs to 1 if [pArray-\u003eGetCount() \u003d\u003d 0]. Is this intended?\n\nCleaner equivalent to the old version is:\nif (m_nOutputs \u003d\u003d 0)\n  m_nOutputs \u003d (pArray0 ? pArray0-\u003eGetCount() : 1);",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "ce8a40a8ff85b1ad1ddb353e230184ef7e5f492f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
