@@ -550,22 +550,18 @@ ByteString PDF_EncodeString(const ByteString& src, bool bHex) {
   return ByteString(result);
 }
 
-bool FlateEncode(const uint8_t* src_buf,
-                 uint32_t src_size,
+bool FlateEncode(pdfium::span<const uint8_t> src_span,
                  uint8_t** dest_buf,
                  uint32_t* dest_size) {
   CCodec_ModuleMgr* pEncoders = CPDF_ModuleMgr::Get()->GetCodecModule();
-  return pEncoders->GetFlateModule()->Encode(src_buf, src_size, dest_buf,
-                                             dest_size);
+  return pEncoders->GetFlateModule()->Encode(src_span, dest_buf, dest_size);
 }
 
-bool PngEncode(const uint8_t* src_buf,
-               uint32_t src_size,
+bool PngEncode(pdfium::span<const uint8_t> src_span,
                uint8_t** dest_buf,
                uint32_t* dest_size) {
   CCodec_ModuleMgr* pEncoders = CPDF_ModuleMgr::Get()->GetCodecModule();
-  return pEncoders->GetFlateModule()->PngEncode(src_buf, src_size, dest_buf,
-                                                dest_size);
+  return pEncoders->GetFlateModule()->PngEncode(src_span, dest_buf, dest_size);
 }
 
 uint32_t FlateDecode(const uint8_t* src_buf,

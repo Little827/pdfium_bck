@@ -55,9 +55,8 @@ uint32_t FlateGetPossiblyTruncatedTotalIn(void* context) {
 
 bool FlateCompress(unsigned char* dest_buf,
                    unsigned long* dest_size,
-                   const unsigned char* src_buf,
-                   uint32_t src_size) {
-  return compress(dest_buf, dest_size, src_buf, src_size) == Z_OK;
+                   pdfium::span<const uint8_t> src_buf) {
+  return compress(dest_buf, dest_size, src_buf.data(), src_buf.size()) == Z_OK;
 }
 
 void* FlateInit() {
@@ -814,28 +813,27 @@ uint32_t CCodec_FlateModule::FlateOrLZWDecode(bool bLZW,
   return ret ? offset : FX_INVALID_OFFSET;
 }
 
-bool CCodec_FlateModule::Encode(const uint8_t* src_buf,
-                                uint32_t src_size,
+bool CCodec_FlateModule::Encode(pdfium::span<const uint8_t> src_buf,
                                 uint8_t** dest_buf,
                                 uint32_t* dest_size) {
-  *dest_size = src_size + src_size / 1000 + 12;
+  *dest_size = src_buf.size() + src_buf.size() / 1000 + 12;
   *dest_buf = FX_Alloc(uint8_t, *dest_size);
   unsigned long temp_size = *dest_size;
-  if (!FlateCompress(*dest_buf, &temp_size, src_buf, src_size))
+  if (!FlateCompress(*dest_buf, &temp_size, src_buf))
     return false;
 
   *dest_size = (uint32_t)temp_size;
   return true;
 }
 
-bool CCodec_FlateModule::PngEncode(const uint8_t* src_buf,
-                                   uint32_t src_size,
+bool CCodec_FlateModule::PngEncode(pdfium::span<const uint8_t> src_span,
                                    uint8_t** dest_buf,
                                    uint32_t* dest_size) {
-  uint8_t* pSrcBuf = FX_Alloc(uint8_t, src_size);
-  memcpy(pSrcBuf, src_buf, src_size);
+  uint8_t* pSrcBuf = FX_Alloc(uint8_t, src_span.size());
+  uint32_t src_size = static_cast<uint32_t>(src_span.size());
+  memcpy(pSrcBuf, src_span.data(), src_span.size());
   PNG_PredictorEncode(&pSrcBuf, &src_size);
-  bool ret = Encode(pSrcBuf, src_size, dest_buf, dest_size);
+  bool ret = Encode(pdfium::make_span(pSrcBuf, src_size), dest_buf, dest_size);
   FX_Free(pSrcBuf);
   return ret;
 }
