@@ -70,6 +70,30 @@
       "revId": "a079d40b902427943b7f7859d616ecace6d25a55",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109555d2_3500d1a7",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-19T21:16:59Z",
+      "side": 1,
+      "message": "Done, tweaked it a bit.",
+      "parentUuid": "63fff793_7b143461",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 51
+      },
+      "revId": "a079d40b902427943b7f7859d616ecace6d25a55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
