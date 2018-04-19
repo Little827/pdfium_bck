@@ -22,6 +22,30 @@
       "revId": "11e5882fbb03bec43956ae0ea4a2a5d9593ccb34",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647832bc_0e15904b",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-19T21:15:10Z",
+      "side": 0,
+      "message": "But it\u0027s so much more concise, heh.",
+      "parentUuid": "504cdb75_9d52b825",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 7
+      },
+      "revId": "11e5882fbb03bec43956ae0ea4a2a5d9593ccb34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
