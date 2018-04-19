@@ -17,6 +17,24 @@
       "revId": "6db7ed081f0a0b4a509130d34d3340b7b6f417ab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db86d9fd_cd3bcc81",
+        "filename": "core/fpdfapi/page/cpdf_function.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-19T06:37:48Z",
+      "side": 1,
+      "message": "I shuffled the code around a bit. I realized |pRanges| can end up with 1 element and cause |m_nOutputs| to be 0.",
+      "parentUuid": "e2b28b4f_7ad9d0c0",
+      "revId": "6db7ed081f0a0b4a509130d34d3340b7b6f417ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
