@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3adcbe4c_4cf1bb06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-19T21:07:00Z",
+      "side": 1,
+      "message": "Can you add some text around what the problem / fix was? It looks like something like:\n\nWhen calculating the character to show we neglected to add the run offset so we would always \ngrab the first line characters instead of the currently displayed line?",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "c4691943b2099e763a3614b3dadf94dad895c5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2180a50a_008fa834",
         "filename": "xfa/fgas/layout/cfx_txtbreak.cpp",
         "patchSetId": 1
