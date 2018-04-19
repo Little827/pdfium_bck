@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b23c1fe1_74edd0b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-19T21:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3adcbe4c_4cf1bb06",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "c4691943b2099e763a3614b3dadf94dad895c5d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2180a50a_008fa834",
         "filename": "xfa/fgas/layout/cfx_txtbreak.cpp",
         "patchSetId": 1
