@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "069ef412_bbfbfd27",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-19T20:54:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand why this is needed? Why does this only happen when the click is close to the left side?",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 51
+      },
+      "revId": "a079d40b902427943b7f7859d616ecace6d25a55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
