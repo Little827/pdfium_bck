@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "bc2910c5_aee3c165",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-19T21:22:50Z",
+      "side": 1,
+      "message": "Apparently base::Optional assigns the passed value to a copy inside it, so with a deleted constructor there isn\u0027t much we can do. Please correct me if I\u0027m wrong.",
+      "parentUuid": "2d12728b_7506f76f",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 64
+      },
+      "revId": "2fc5a8fed4ed4d29cc5cdcb359c8b0c39452deac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7c04774_077d995e",
         "filename": "fpdfsdk/fpdf_editpage.cpp",
         "patchSetId": 4
