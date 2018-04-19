@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73424217_c2559104",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-19T20:48:38Z",
+      "side": 1,
+      "message": "So, why don\u0027t the regular Contains methods work here? If this piece doesn\u0027t contain horizontally we want to bail our as well, no?",
+      "range": {
+        "startLine": 902,
+        "startChar": 8,
+        "endLine": 905,
+        "endChar": 16
+      },
+      "revId": "982469bb2894d7f5a6763237f31732e191e12678",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
