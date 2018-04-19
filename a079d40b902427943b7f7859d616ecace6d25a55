@@ -46,6 +46,30 @@
       "revId": "a079d40b902427943b7f7859d616ecace6d25a55",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63fff793_7b143461",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-19T21:03:45Z",
+      "side": 1,
+      "message": "Can you add a comment?\n\n// When clicking on the left side of a character, the user probably wants to go before the\n// character they are clicking on. So, place the cursor to the left, otherwise, place to the\n// right.",
+      "parentUuid": "40ae6d16_d330e2e6",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 51
+      },
+      "revId": "a079d40b902427943b7f7859d616ecace6d25a55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
