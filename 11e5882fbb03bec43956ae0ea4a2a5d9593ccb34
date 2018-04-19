@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "504cdb75_9d52b825",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-19T16:46:31Z",
+      "side": 0,
+      "message": "this pattern is so common in dom-related code of any sort that moving away from it kinda feels wrong.",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 7
+      },
+      "revId": "11e5882fbb03bec43956ae0ea4a2a5d9593ccb34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
