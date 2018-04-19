@@ -911,7 +911,11 @@ size_t CFDE_TextEditEngine::GetIndexForPoint(const CFX_PointF& point) {
           (point.x >= rects[i].left && point.x < rects[i].right());
       if (!character_contains_point_horizontally)
         continue;
-      size_t pos = start_it->nStart + i;
+
+      bool closer_to_left =
+          (point.x - rects[i].left < rects[i].right() - point.x);
+      int caret_pos = (closer_to_left ? i : i + 1);
+      size_t pos = start_it->nStart + caret_pos;
       if (pos >= text_length_)
         return text_length_;
 
