@@ -22,6 +22,30 @@
       "revId": "a079d40b902427943b7f7859d616ecace6d25a55",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ae6d16_d330e2e6",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-19T20:57:05Z",
+      "side": 1,
+      "message": "Currently clicking anywhere on a character causes the caret to move to its left. Even if it\u0027s close to the right boundary of the character, when the caret should move to the right of the cursor. It\u0027s \"round to nearest\" instead of \"truncating\" and feel much better in the UI.",
+      "parentUuid": "069ef412_bbfbfd27",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 51
+      },
+      "revId": "a079d40b902427943b7f7859d616ecace6d25a55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
