@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "98e4846a_180fca02",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-19T21:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b49956f3_38be920d",
+      "range": {
+        "startLine": 902,
+        "startChar": 8,
+        "endLine": 905,
+        "endChar": 16
+      },
+      "revId": "982469bb2894d7f5a6763237f31732e191e12678",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31335e3d_f06f3a40",
         "filename": "xfa/fde/cfde_texteditengine.cpp",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "writtenOn": "2018-04-19T21:02:22Z",
       "side": 1,
       "message": "So, why don\u0027t this one be contained if we just care about the given character?",
+      "range": {
+        "startLine": 910,
+        "startChar": 6,
+        "endLine": 911,
+        "endChar": 67
+      },
+      "revId": "982469bb2894d7f5a6763237f31732e191e12678",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f9464b_59460135",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-19T21:13:39Z",
+      "side": 1,
+      "message": "It could, but we\u0027ve already checked the vertical position. From what I\u0027ve tested the vertical boundaries of all rects on the same line are the same. Need to dig deeper to really know if the \"for (; start_it \u003c\u003d end_it; ++start_it)\" loop could be unrolled into a single iteration, but it seems like it.",
+      "parentUuid": "31335e3d_f06f3a40",
       "range": {
         "startLine": 910,
         "startChar": 6,
