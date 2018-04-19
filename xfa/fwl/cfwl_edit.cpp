@@ -7,6 +7,7 @@
 #include "xfa/fwl/cfwl_edit.h"
 
 #include <algorithm>
+#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -1109,6 +1110,7 @@ void CFWL_Edit::OnFocusChanged(CFWL_Message* pMsg, bool bSet) {
 }
 
 void CFWL_Edit::OnLButtonDown(CFWL_MessageMouse* pMsg) {
+  std::cerr << "CFWL_Edit::OnLButtonDown" << std::endl;
   if (m_pProperties->m_dwStates & FWL_WGTSTATE_Disabled)
     return;
 
@@ -1124,8 +1126,11 @@ void CFWL_Edit::OnLButtonDown(CFWL_MessageMouse* pMsg) {
     bRepaint = true;
   }
 
+  std::cerr << "  -> pMsg->m_pos " << pMsg->m_pos.x << ", " << pMsg->m_pos.y << std::endl;
+  std::cerr << "  -> DeviceToEngine(pMsg->m_pos) " << DeviceToEngine(pMsg->m_pos).x << ", " << DeviceToEngine(pMsg->m_pos).y << std::endl;
   size_t index_at_click =
       m_EdtEngine.GetIndexForPoint(DeviceToEngine(pMsg->m_pos));
+  std::cerr << "  -> index_at_click " << index_at_click << std::endl;
 
   if (index_at_click != m_CursorPosition &&
       !!(pMsg->m_dwFlags & FWL_KEYFLAG_Shift)) {
@@ -1135,9 +1140,12 @@ void CFWL_Edit::OnLButtonDown(CFWL_MessageMouse* pMsg) {
     m_EdtEngine.SetSelection(start, end - start);
     bRepaint = true;
   } else {
-    m_CursorPosition = index_at_click;
+  std::cerr << "  -> m_CursorPosition was " << m_CursorPosition << std::endl;
+    SetCursorPosition(index_at_click);
+  std::cerr << "  -> m_CursorPosition is now " << m_CursorPosition << std::endl;
   }
 
+  // std::cerr << "  -> bRepaint " << bRepaint << std::endl;
   if (bRepaint)
     RepaintRect(m_rtEngine);
 }
