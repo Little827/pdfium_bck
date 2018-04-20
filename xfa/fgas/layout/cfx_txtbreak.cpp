@@ -7,6 +7,7 @@
 #include "xfa/fgas/layout/cfx_txtbreak.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "core/fxcrt/fx_arabic.h"
 #include "core/fxcrt/fx_bidi.h"
@@ -903,6 +904,7 @@ int32_t CFX_TxtBreak::GetDisplayPos(const FX_TXTRUN* pTxtRun,
 
 std::vector<CFX_RectF> CFX_TxtBreak::GetCharRects(const FX_TXTRUN* pTxtRun,
                                                   bool bCharBBox) const {
+  std::cerr << "  CFX_TxtBreak::GetCharRects" << std::endl;
   if (!pTxtRun || pTxtRun->iLength < 1)
     return std::vector<CFX_RectF>();
 
@@ -933,6 +935,7 @@ std::vector<CFX_RectF> CFX_TxtBreak::GetCharRects(const FX_TXTRUN* pTxtRun,
   float fStart = bRTLPiece ? rect.right() : rect.left;
 
   std::vector<CFX_RectF> rtArray(iLength);
+  std::cerr << "    -> iLength " << iLength << std::endl;
   for (int32_t i = 0; i < iLength; i++) {
     int32_t iAbsolute = i + pTxtRun->iStart;
     if (pEngine) {
