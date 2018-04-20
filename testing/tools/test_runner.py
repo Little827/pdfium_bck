@@ -118,6 +118,13 @@ class TestRunner:
   def TestText(self, input_root, expected_txt_path, pdf_path):
     txt_path = os.path.join(self.working_dir, input_root + '.txt')
 
+    # Test first with JS disabled to ensure no crashes.
+    with open(txt_path, 'w') as outfile:
+      cmd_to_run = [self.pdfium_test_path, '--send-events',
+                       '--disable-javascript', pdf_path]
+      subprocess.check_call(cmd_to_run, stdout=outfile)
+
+    # Test again with JS enabled to ensure output as expected.
     with open(txt_path, 'w') as outfile:
       cmd_to_run = [self.pdfium_test_path, '--send-events', pdf_path]
       subprocess.check_call(cmd_to_run, stdout=outfile)
