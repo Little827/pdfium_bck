@@ -87,6 +87,24 @@
       "revId": "ce11f336e4464c65df92a7a872f0ecff939a352c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fda1ccf_b4b67584",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-20T18:49:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0bb7c39_79144568",
+      "revId": "ce11f336e4464c65df92a7a872f0ecff939a352c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
