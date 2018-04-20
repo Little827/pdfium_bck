@@ -7,6 +7,7 @@
 #include "xfa/fde/cfde_texteditengine.h"
 
 #include <algorithm>
+#include <iostream>
 #include <limits>
 
 #include "xfa/fde/cfde_textout.h"
@@ -872,8 +873,18 @@ size_t CFDE_TextEditEngine::GetWidthOfChar(size_t idx) {
 }
 
 size_t CFDE_TextEditEngine::GetIndexForPoint(const CFX_PointF& point) {
+  std::cerr << "CFDE_TextEditEngine::GetIndexForPoint point=" << point.x << "," << point.y << std::endl;
   // Recalculate the widths if necessary.
   Layout();
+
+  auto i = text_piece_info_.begin();
+  for (; i < text_piece_info_.end(); ++i) {
+    std::cerr << "  -> piece[" << (i - text_piece_info_.begin()) << "]: nStart=" << i->nStart << " , nCount=" << i->nCount << std::endl;
+    for (int j = 0; j < i->nCount; ++j) {
+      int j_idx = i ->nStart + j;
+      std::cerr << "    -> [" << j_idx << "]: = " << GetChar(j_idx) << std::endl;
+    }
+  }
 
   auto start_it = text_piece_info_.begin();
   for (; start_it < text_piece_info_.end(); ++start_it) {
@@ -883,8 +894,11 @@ size_t CFDE_TextEditEngine::GetIndexForPoint(const CFX_PointF& point) {
   }
   // We didn't find the point before getting to the end of the text, return
   // end of text.
-  if (start_it == text_piece_info_.end())
+  std::cerr << "  -> 1000 start_it = " << (start_it - text_piece_info_.begin()) << std::endl;
+  if (start_it == text_piece_info_.end()) {
+    std::cerr << "  -> return 1 text_length_ = " << text_length_ << std::endl;
     return text_length_;
+  }
 
   auto end_it = start_it;
   for (; end_it < text_piece_info_.end(); ++end_it) {
@@ -897,16 +911,23 @@ size_t CFDE_TextEditEngine::GetIndexForPoint(const CFX_PointF& point) {
   if (end_it == text_piece_info_.end())
     --end_it;
 
+  std::cerr << "  -> 2000 end_it = " << (end_it - text_piece_info_.begin()) << std::endl;
   size_t start_it_idx = start_it->nStart;
   for (; start_it <= end_it; ++start_it) {
+    std::cerr << "  -> 3000 start_it = " << (start_it - text_piece_info_.begin()) << std::endl;
     bool piece_contains_point_vertically =
         (point.y >= start_it->rtPiece.top &&
          point.y < start_it->rtPiece.bottom());
-    if (!piece_contains_point_vertically)
+    if (!piece_contains_point_vertically) {
+      std::cerr << "  -> 3100 !contains point, continue" << std::endl;
+      std::cerr << "  -> start_it->rtPiece " << start_it->rtPiece << std::endl;
       continue;
+    }
 
     std::vector<CFX_RectF> rects = GetCharRects(*start_it);
+    std::cerr << "  -> 3500 rects.size() = " << rects.size() << std::endl;
     for (size_t i = 0; i < rects.size(); ++i) {
+      std::cerr << "  -> 4000 i = " << (i) << std::endl;
       bool character_contains_point_horizontally =
           (point.x >= rects[i].left && point.x < rects[i].right());
       if (!character_contains_point_horizontally)
@@ -919,17 +940,23 @@ size_t CFDE_TextEditEngine::GetIndexForPoint(const CFX_PointF& point) {
           (point.x - rects[i].left < rects[i].right() - point.x);
       int caret_pos = (closer_to_left ? i : i + 1);
       size_t pos = start_it->nStart + caret_pos;
-      if (pos >= text_length_)
+      if (pos >= text_length_) {
+        std::cerr << "  -> return 2 text_length_ = " << text_length_ << std::endl;
         return text_length_;
+      }
 
       wchar_t wch = GetChar(pos);
       if (wch == L'\n' || wch == L'\r') {
         if (wch == L'\n' && pos > 0 && GetChar(pos - 1) == L'\r')
           --pos;
+    std::cerr << "  -> return 3 pos = " << pos << std::endl;
         return pos;
       }
+      std::cerr << "Q pos " << pos << std::endl;
+      std::cerr << "Q wch " << wch << std::endl;
 
       // TODO(dsinclair): Old code had a before flag set based on bidi?
+    std::cerr << "  -> return 4 pos = " << pos << std::endl;
       return pos;
     }
 
@@ -937,17 +964,32 @@ size_t CFDE_TextEditEngine::GetIndexForPoint(const CFX_PointF& point) {
     // afterwards. Return the position after the the last character.
     // The last line has nCount equal to the number of characters + 1 (sentinel
     // character maybe?). Restrict to the text_length_ to account for that.
-    return std::min(static_cast<size_t>(start_it->nStart + start_it->nCount),
+    size_t pos = std::min(static_cast<size_t>(start_it->nStart + start_it->nCount),
                     text_length_);
+    wchar_t wch = GetChar(pos);
+    std::cerr << "Z pos " << pos << std::endl;
+    std::cerr << "Z wch " << wch << std::endl;
+    bool is_last_line = (std::next(start_it) == text_piece_info_.end());
+    if (!is_last_line && pos > 0 && GetChar(pos - 1) == L' ')
+      --pos;
+    std::cerr << "  -> return 99 pos = " << pos << std::endl;
+    return pos;
   }
 
-  if (start_it == text_piece_info_.end())
+  std::cerr << "  -> 5000 start_it = " << (start_it - text_piece_info_.begin()) << std::endl;
+  if (start_it == text_piece_info_.end()) {
+
+    std::cerr << "  -> return 5 start_it_idx = " << start_it_idx << std::endl;
     return start_it_idx;
-  if (start_it == end_it)
+  }
+  if (start_it == end_it) {
+    std::cerr << "  -> return 6 start_it->nStart = " << start_it->nStart << std::endl;
     return start_it->nStart;
+  }
 
   // We didn't find the point before going over all of the pieces, we want to
   // return the start of the piece after the point.
+    std::cerr << "  -> return 7 end_it->nStart = " << end_it->nStart << std::endl;
   return end_it->nStart;
 }
 
@@ -989,6 +1031,7 @@ std::vector<FXTEXT_CHARPOS> CFDE_TextEditEngine::GetDisplayPos(
 }
 
 void CFDE_TextEditEngine::RebuildPieces() {
+  std::cerr << "CFDE_TextEditEngine::RebuildPieces" << std::endl;
   text_break_.EndBreak(CFX_BreakType::Paragraph);
   text_break_.ClearBreakPieces();
 
@@ -1033,6 +1076,7 @@ void CFDE_TextEditEngine::RebuildPieces() {
       txtEdtPiece.rtPiece.top = current_line_start;
       txtEdtPiece.rtPiece.width = piece->m_iWidth / 20000.0f;
       txtEdtPiece.rtPiece.height = line_spacing_;
+  std::cerr << "  -> text_piece_info_.push_back " << txtEdtPiece.nCount << std::endl;
       text_piece_info_.push_back(txtEdtPiece);
 
       if (initialized_bounding_box) {
