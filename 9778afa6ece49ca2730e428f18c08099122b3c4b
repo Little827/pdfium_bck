@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "503a357e_d727329d",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-20T18:22:34Z",
+      "side": 1,
+      "message": "NOTE: Just because.  It feels wrong to return early without ensuring this ever.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "9778afa6ece49ca2730e428f18c08099122b3c4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
