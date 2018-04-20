@@ -71,28 +71,28 @@ uint32_t CPDF_DeviceCS::v_Load(CPDF_Document* pDoc,
   return 0;
 }
 
-bool CPDF_DeviceCS::GetRGB(float* pBuf, float* R, float* G, float* B) const {
+bool CPDF_DeviceCS::GetRGB(const ColorBuffer* pBuf, float* R, float* G, float* B) const {
   switch (m_Family) {
     case PDFCS_DEVICEGRAY:
-      *R = NormalizeChannel(*pBuf);
+      *R = NormalizeChannel(*(pBuf->m_Comps));
       *G = *R;
       *B = *R;
       return true;
     case PDFCS_DEVICERGB:
-      *R = NormalizeChannel(pBuf[0]);
-      *G = NormalizeChannel(pBuf[1]);
-      *B = NormalizeChannel(pBuf[2]);
+      *R = NormalizeChannel(pBuf->m_Comps[0]);
+      *G = NormalizeChannel(pBuf->m_Comps[1]);
+      *B = NormalizeChannel(pBuf->m_Comps[2]);
       return true;
     case PDFCS_DEVICECMYK:
       if (m_dwStdConversion) {
-        float k = pBuf[3];
-        *R = 1.0f - std::min(1.0f, pBuf[0] + k);
-        *G = 1.0f - std::min(1.0f, pBuf[1] + k);
-        *B = 1.0f - std::min(1.0f, pBuf[2] + k);
+        float k = pBuf->m_Comps[3];
+        *R = 1.0f - std::min(1.0f, pBuf->m_Comps[0] + k);
+        *G = 1.0f - std::min(1.0f, pBuf->m_Comps[1] + k);
+        *B = 1.0f - std::min(1.0f, pBuf->m_Comps[2] + k);
       } else {
         std::tie(*R, *G, *B) = AdobeCMYK_to_sRGB(
-            NormalizeChannel(pBuf[0]), NormalizeChannel(pBuf[1]),
-            NormalizeChannel(pBuf[2]), NormalizeChannel(pBuf[3]));
+            NormalizeChannel(pBuf->m_Comps[0]), NormalizeChannel(pBuf->m_Comps[1]),
+            NormalizeChannel(pBuf->m_Comps[2]), NormalizeChannel(pBuf->m_Comps[3]));
       }
       return true;
     default:

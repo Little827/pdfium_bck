@@ -693,7 +693,9 @@ int CPDF_DIBSource::StartLoadMask() {
       for (uint32_t i = 0; i < m_nComponents; i++)
         colors[i] = pMatte->GetFloatAt(i);
 
-      m_pColorSpace->GetRGB(colors.data(), &R, &G, &B);
+      ColorBuffer color_buffer;
+      color_buffer.m_Comps = colors.data();
+      m_pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
       m_MatteColor = FXARGB_MAKE(0, FXSYS_round(R * 255), FXSYS_round(G * 255),
                                  FXSYS_round(B * 255));
     }
@@ -764,13 +766,15 @@ void CPDF_DIBSource::LoadPalette() {
     color_values[0] = m_pCompData[0].m_DecodeMin;
     color_values[1] = color_values[2] = color_values[0];
     float R = 0.0f, G = 0.0f, B = 0.0f;
-    m_pColorSpace->GetRGB(color_values, &R, &G, &B);
+    ColorBuffer color_buffer;
+    color_buffer.m_Comps = color_values;
+    m_pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
     FX_ARGB argb0 = ArgbEncode(255, FXSYS_round(R * 255), FXSYS_round(G * 255),
                                FXSYS_round(B * 255));
     color_values[0] += m_pCompData[0].m_DecodeStep;
     color_values[1] += m_pCompData[0].m_DecodeStep;
     color_values[2] += m_pCompData[0].m_DecodeStep;
-    m_pColorSpace->GetRGB(color_values, &R, &G, &B);
+    m_pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
     FX_ARGB argb1 = ArgbEncode(255, FXSYS_round(R * 255), FXSYS_round(G * 255),
                                FXSYS_round(B * 255));
     if (argb0 != 0xFF000000 || argb1 != 0xFFFFFFFF) {
@@ -801,9 +805,13 @@ void CPDF_DIBSource::LoadPalette() {
         for (int k = 0; k < nComponents; k++) {
           temp_buf[k] = *color_value;
         }
-        m_pColorSpace->GetRGB(temp_buf.data(), &R, &G, &B);
+        ColorBuffer color_buffer;
+        color_buffer.m_Comps = temp_buf.data();
+        m_pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
       } else {
-        m_pColorSpace->GetRGB(color_value, &R, &G, &B);
+        ColorBuffer color_buffer;
+        color_buffer.m_Comps = color_value;
+        m_pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
       }
       SetPaletteArgb(i, ArgbEncode(255, FXSYS_round(R * 255),
                                    FXSYS_round(G * 255), FXSYS_round(B * 255)));
@@ -923,7 +931,9 @@ void CPDF_DIBSource::TranslateScanline24bpp(uint8_t* dest_scan,
         G = (1.0f - color_values[1]) * k;
         B = (1.0f - color_values[2]) * k;
       } else {
-        m_pColorSpace->GetRGB(color_values, &R, &G, &B);
+        ColorBuffer color_buffer;
+        color_buffer.m_Comps = color_values;
+        m_pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
       }
       R = ClampValue(R, 1.0f);
       G = ClampValue(G, 1.0f);
@@ -949,7 +959,9 @@ void CPDF_DIBSource::TranslateScanline24bpp(uint8_t* dest_scan,
         G = (1.0f - color_values[1]) * k;
         B = (1.0f - color_values[2]) * k;
       } else {
-        m_pColorSpace->GetRGB(color_values, &R, &G, &B);
+        ColorBuffer color_buffer;
+        color_buffer.m_Comps = color_values;
+        m_pColorSpace->GetRGB(&color_buffer, &R, &G, &B);
       }
       R = ClampValue(R, 1.0f);
       G = ClampValue(G, 1.0f);
