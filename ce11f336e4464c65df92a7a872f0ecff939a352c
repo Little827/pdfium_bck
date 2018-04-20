@@ -69,6 +69,24 @@
       "revId": "ce11f336e4464c65df92a7a872f0ecff939a352c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0bb7c39_79144568",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-20T18:35:03Z",
+      "side": 1,
+      "message": "I looked through the callers and they all avoid calling GetRGB() for patterns. If they did, they would be interpreting some buffer as a PatternValue and that is bad too. With this change, that would hit a NOTREACHED(), instead of silently continuing.",
+      "parentUuid": "0959a4d3_15ba5df1",
+      "revId": "ce11f336e4464c65df92a7a872f0ecff939a352c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
