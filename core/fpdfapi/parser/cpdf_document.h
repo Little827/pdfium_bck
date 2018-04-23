@@ -30,6 +30,7 @@ class CPDF_LinearizedHeader;
 class CPDF_Parser;
 class CPDF_Pattern;
 class CPDF_StreamAcc;
+class CPDFSDK_FormFillEnvironment;
 class JBig2_DocumentContext;
 
 #define FPDFPERM_MODIFY 0x0008
@@ -41,10 +42,20 @@ class JBig2_DocumentContext;
 
 class CPDF_Document : public CPDF_IndirectObjectHolder {
  public:
-  class Extension {};  // Something for XFA to subclass.
+  // Something opaque for XFA to subclass.
+  class Extension {
+   public:
+    Extension() = default;
+    virtual ~Extension() = default;
+  };
 
   explicit CPDF_Document(std::unique_ptr<CPDF_Parser> pParser);
   ~CPDF_Document() override;
+
+  Extension* GetExtension() const { return m_pExtension.get(); }
+  void SetExtension(std::unique_ptr<Extension> extension) {
+    m_pExtension = std::move(extension);
+  }
 
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
   const CPDF_Dictionary* GetRoot() const { return m_pRootDict; }
@@ -155,6 +166,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   std::unique_ptr<JBig2_DocumentContext> m_pCodecContext;
   std::unique_ptr<CPDF_LinkList> m_pLinksContext;
   std::vector<uint32_t> m_PageList;
+  std::unique_ptr<Extension> m_pExtension;
 };
 
 #endif  // CORE_FPDFAPI_PARSER_CPDF_DOCUMENT_H_

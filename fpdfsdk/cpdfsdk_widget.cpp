@@ -60,7 +60,8 @@ CPDFSDK_Widget::~CPDFSDK_Widget() {}
 
 #ifdef PDF_ENABLE_XFA
 CXFA_FFWidget* CPDFSDK_Widget::GetMixXFAWidget() const {
-  CPDFXFA_Extension* pContext = m_pPageView->GetFormFillEnv()->GetXFAContext();
+  auto* pExtension = static_cast<CPDFXFA_Extension*>(
+      m_pPageView->GetFormFillEnv()->GetDocumentExtension());
   if (pContext->GetFormType() == FormType::kXFAForeground) {
     if (!m_hMixXFAWidget) {
       if (CXFA_FFDocView* pDocView = pContext->GetXFADocView()) {
@@ -83,7 +84,8 @@ CXFA_FFWidget* CPDFSDK_Widget::GetMixXFAWidget() const {
 }
 
 CXFA_FFWidget* CPDFSDK_Widget::GetGroupMixXFAWidget() {
-  CPDFXFA_Extension* pContext = m_pPageView->GetFormFillEnv()->GetXFAContext();
+  auto* pExtension = static_cast<CPDFXFA_Extension*>(
+      m_pPageView->GetFormFillEnv()->GetDocumentExtension());
   if (pContext->GetFormType() != FormType::kXFAForeground)
     return nullptr;
 
@@ -96,7 +98,8 @@ CXFA_FFWidget* CPDFSDK_Widget::GetGroupMixXFAWidget() {
 }
 
 CXFA_FFWidgetHandler* CPDFSDK_Widget::GetXFAWidgetHandler() const {
-  CPDFXFA_Extension* pContext = m_pPageView->GetFormFillEnv()->GetXFAContext();
+  auto* pExtension = static_cast<CPDFXFA_Extension*>(
+      m_pPageView->GetFormFillEnv()->GetDocumentExtension());
   if (pContext->GetFormType() != FormType::kXFAForeground)
     return nullptr;
 
@@ -212,7 +215,8 @@ bool CPDFSDK_Widget::HasXFAAAction(PDFSDK_XFAAActionType eXFAAAT) {
 bool CPDFSDK_Widget::OnXFAAAction(PDFSDK_XFAAActionType eXFAAAT,
                                   CPDFSDK_FieldAction* data,
                                   CPDFSDK_PageView* pPageView) {
-  CPDFXFA_Extension* pContext = m_pPageView->GetFormFillEnv()->GetXFAContext();
+  auto* pExtension = static_cast<CPDFXFA_Extension*>(
+      m_pPageView->GetFormFillEnv()->GetDocumentExtension());
 
   CXFA_FFWidget* hWidget = GetMixXFAWidget();
   if (!hWidget)
@@ -265,7 +269,7 @@ bool CPDFSDK_Widget::OnXFAAAction(PDFSDK_XFAAActionType eXFAAAT,
     param.m_pTarget = node;
     nRet = pXFAWidgetHandler->ProcessEvent(node, &param);
   }
-  if (CXFA_FFDocView* pDocView = pContext->GetXFADocView())
+  if (CXFA_FFDocView* pDocView = pExtension->GetXFADocView())
     pDocView->UpdateDocView();
 
   return nRet == XFA_EVENTERROR_Success;
@@ -311,8 +315,9 @@ void CPDFSDK_Widget::Synchronize(bool bSynchronizeElse) {
   }
 
   if (bSynchronizeElse) {
-    CPDFXFA_Extension* context = m_pPageView->GetFormFillEnv()->GetXFAContext();
-    context->GetXFADocView()->ProcessValueChanged(node);
+    auto* pExtension = static_cast<CPDFXFA_Extension*>(
+        m_pPageView->GetFormFillEnv()->GetDocumentExtension());
+    pExtension->GetXFADocView()->ProcessValueChanged(node);
   }
 }
 #endif  // PDF_ENABLE_XFA
@@ -362,8 +367,9 @@ FormFieldType CPDFSDK_Widget::GetFieldType() const {
 
 bool CPDFSDK_Widget::IsAppearanceValid() {
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Extension* pContext = m_pPageView->GetFormFillEnv()->GetXFAContext();
-  FormType formType = pContext->GetFormType();
+  auto* pExtension = static_cast<CPDFXFA_Extension*>(
+      m_pPageView->GetFormFillEnv()->GetDocumentExtension());
+  FormType formType = pExtension->GetFormType();
   if (formType == FormType::kXFAFull)
     return true;
 #endif  // PDF_ENABLE_XFA
@@ -819,7 +825,8 @@ bool CPDFSDK_Widget::OnAAction(CPDF_AAction::AActionType type,
   CPDFSDK_FormFillEnvironment* pFormFillEnv = pPageView->GetFormFillEnv();
 
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Extension* pContext = pFormFillEnv->GetXFAContext();
+  auto* pExtension =
+      static_cast<CPDFXFA_Extension*>(pFormFillEnv->GetDocumentExtension());
   if (CXFA_FFWidget* hWidget = GetMixXFAWidget()) {
     XFA_EVENTTYPE eEventType = GetXFAEventType(type, data->bWillCommit);
 
@@ -850,7 +857,7 @@ bool CPDFSDK_Widget::OnAAction(CPDF_AAction::AActionType type,
           nRet = pXFAWidgetHandler->ProcessEvent(node, &param);
         }
 
-        if (CXFA_FFDocView* pDocView = pContext->GetXFADocView())
+        if (CXFA_FFDocView* pDocView = pExtension->GetXFADocView())
           pDocView->UpdateDocView();
 
         if (nRet == XFA_EVENTERROR_Success)

@@ -117,14 +117,13 @@ class CPDFSDK_FormFillEnvironment
     return m_pUnderlyingDoc.Get();
   }
 
-#ifdef PDF_ENABLE_XFA
-  CPDF_Document* GetPDFDocument() const {
-    return m_pUnderlyingDoc ? m_pUnderlyingDoc->GetPDFDoc() : nullptr;
+  CPDF_Document* GetPDFDocument() const { return m_pUnderlyingDoc.Get(); }
+  CPDF_Document::Extension* GetDocumentExtension() const {
+    return m_pUnderlyingDoc->GetExtension();
   }
+  void ResetDocumentExtension() { m_pUnderlyingDoc->SetExtension(nullptr); }
 
-  CPDFXFA_Extension* GetXFAContext() const { return m_pUnderlyingDoc.Get(); }
-  void ResetXFADocument() { m_pUnderlyingDoc = nullptr; }
-
+#ifdef PDF_ENABLE_XFA
   int GetPageViewCount() const { return m_PageMap.size(); }
 
   void DisplayCaret(CPDFXFA_Page* page,
