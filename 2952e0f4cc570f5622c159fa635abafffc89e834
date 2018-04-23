@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e8e2929_773fd4a7",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-23T22:47:22Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any requirement that we actually complete this anywhere.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 7
+      },
+      "revId": "2952e0f4cc570f5622c159fa635abafffc89e834",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
