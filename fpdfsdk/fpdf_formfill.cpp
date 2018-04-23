@@ -185,7 +185,9 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
 #else   // PDF_ENABLE_XFA
     options.SetOCContext(pdfium::MakeRetain<CPDF_OCContext>(
         pPage->m_pDocument.Get(), CPDF_OCContext::View));
-    if (CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, pPage))
+    CPDFSDK_PageView* pPageView =
+        FormHandleToPageView(hHandle, FPDFPageFromUnderlying(pPage));
+    if (pPageView)
       pPageView->PageView_OnDraw(pDevice.get(), &matrix, &options);
 #endif  // PDF_ENABLE_XFA
   }

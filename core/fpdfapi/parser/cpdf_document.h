@@ -39,7 +39,11 @@ class JBig2_DocumentContext;
 
 #define FPDF_PAGE_MAX_NUM 0xFFFFF
 
-class CPDF_Document : public CPDF_IndirectObjectHolder {
+class CPDF_Document :
+#ifndef PDF_ENABLE_XFA
+    public fpdf_document__,  // FPDF API public object.
+#endif                       // PDF_ENABLE_XFA
+    public CPDF_IndirectObjectHolder {
  public:
   explicit CPDF_Document(std::unique_ptr<CPDF_Parser> pParser);
   ~CPDF_Document() override;

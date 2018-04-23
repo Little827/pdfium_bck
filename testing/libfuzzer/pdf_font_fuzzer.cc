@@ -4,6 +4,7 @@
 
 #include <cstring>
 #include <memory>
+#include <type_traits>
 
 #include "public/cpp/fpdf_deleters.h"
 #include "public/fpdf_edit.h"
@@ -13,8 +14,9 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   if (size < 2)
     return 0;
 
-  std::unique_ptr<void, FPDFDocumentDeleter> doc(FPDF_CreateNewDocument());
-  std::unique_ptr<void, FPDFPageDeleter> page(
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      doc(FPDF_CreateNewDocument());
+  std::unique_ptr<std::remove_pointer<FPDF_PAGE>::type, FPDFPageDeleter> page(
       FPDFPage_New(doc.get(), 0, 612, 792));
   int font_type = data[0];
   FPDF_BOOL cid = data[1];
