@@ -36,8 +36,7 @@ class CPDF_TestDocument : public CPDF_Document {
 #ifdef PDF_ENABLE_XFA
 class CPDF_TestXFAContext : public CPDFXFA_Extension {
  public:
-  CPDF_TestXFAContext()
-      : CPDFXFA_Extension(pdfium::MakeUnique<CPDF_TestDocument>()) {}
+  CPDF_TestXFAContext() : CPDFXFA_Extension(new CPDF_TestDocument()) {}
 
   void SetRoot(CPDF_Dictionary* root) {
     reinterpret_cast<CPDF_TestDocument*>(GetPDFDoc())->SetRoot(root);

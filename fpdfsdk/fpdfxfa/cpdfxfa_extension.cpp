@@ -36,10 +36,12 @@ extern void SetLastError(int err);
 extern int GetLastError();
 #endif
 
-CPDFXFA_Extension::CPDFXFA_Extension(std::unique_ptr<CPDF_Document> pPDFDoc)
-    : m_pPDFDoc(std::move(pPDFDoc)),
+CPDFXFA_Extension::CPDFXFA_Extension(CPDF_Document* pPDFDoc)
+    : m_pPDFDoc(pPDFDoc),
       m_pXFAApp(pdfium::MakeUnique<CXFA_FFApp>(this)),
-      m_DocEnv(this) {}
+      m_DocEnv(this) {
+  m_pPDFDoc->SetExtension(pdfium::WrapUnique(this));
+}
 
 CPDFXFA_Extension::~CPDFXFA_Extension() {
   m_nLoadStatus = FXFA_LOADSTATUS_CLOSING;
@@ -51,7 +53,7 @@ CPDFXFA_Extension::~CPDFXFA_Extension() {
     m_pFormFillEnv->ClearAllFocusedAnnots();
     // Once we're deleted the FormFillEnvironment will point at a bad underlying
     // doc so we need to reset it ...
-    m_pFormFillEnv->ResetXFADocument();
+    m_pFormFillEnv->ResetDocumentExtension();
     m_pFormFillEnv.Reset();
   }
 
@@ -90,7 +92,7 @@ bool CPDFXFA_Extension::LoadXFADoc() {
     return false;
 
   m_pXFADoc = pdfium::MakeUnique<CXFA_FFDoc>(pApp, &m_DocEnv);
-  if (!m_pXFADoc->OpenDoc(m_pPDFDoc.get())) {
+  if (!m_pXFADoc->OpenDoc(m_pPDFDoc.Get())) {
     SetLastError(FPDF_ERR_XFALOAD);
     return false;
   }
