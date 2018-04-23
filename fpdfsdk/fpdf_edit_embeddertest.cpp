@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <string>
+#include <type_traits>
 #include <utility>
 #include <vector>
 
@@ -888,7 +889,7 @@ TEST_F(FPDFEditEmbeddertest, AddStandardFontText) {
 
 TEST_F(FPDFEditEmbeddertest, GraphicsData) {
   // New page
-  std::unique_ptr<void, FPDFPageDeleter> page(
+  std::unique_ptr<std::remove_pointer<FPDF_PAGE>::type, FPDFPageDeleter> page(
       FPDFPage_New(CreateNewDocument(), 0, 612, 792));
 
   // Create a rect with nontrivial graphics
