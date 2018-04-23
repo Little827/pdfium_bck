@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e97d36d_3199c133",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-23T21:01:54Z",
+      "side": 1,
+      "message": "Should there be a TODO about getting rid of these bare pointers?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "4d8fdd937c20d1f0ce31811914a0bffc452dd3e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19da58d4_7fc07f23",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-23T21:01:54Z",
+      "side": 1,
+      "message": "This guy too",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 36
+      },
+      "revId": "4d8fdd937c20d1f0ce31811914a0bffc452dd3e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
