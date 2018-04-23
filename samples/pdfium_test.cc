@@ -12,6 +12,7 @@
 #include <memory>
 #include <sstream>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 #if defined PDF_ENABLE_SKIA && !defined _SKIA_SUPPORT_
@@ -136,7 +137,10 @@ Optional<std::string> ExpandDirectoryPath(const std::string& path) {
 struct FPDF_FORMFILLINFO_PDFiumTest : public FPDF_FORMFILLINFO {
   // Hold a map of the currently loaded pages in order to avoid them
   // to get loaded twice.
-  std::map<int, std::unique_ptr<void, FPDFPageDeleter>> loaded_pages;
+  std::map<
+      int,
+      std::unique_ptr<std::remove_pointer<FPDF_PAGE>::type, FPDFPageDeleter>>
+      loaded_pages;
 
   // Hold a pointer of FPDF_FORMHANDLE so that PDFium app hooks can
   // make use of it.
@@ -473,7 +477,8 @@ FPDF_PAGE GetPageForIndex(FPDF_FORMFILLINFO* param,
   if (iter != loaded_pages.end())
     return iter->second.get();
 
-  std::unique_ptr<void, FPDFPageDeleter> page(FPDF_LoadPage(doc, index));
+  std::unique_ptr<std::remove_pointer<FPDF_PAGE>::type, FPDFPageDeleter> page(
+      FPDF_LoadPage(doc, index));
   if (!page)
     return nullptr;
 
@@ -641,7 +646,8 @@ void RenderPdf(const std::string& name,
       FPDFAvail_Create(&file_avail, &file_access));
 
   // The document must outlive |form_callbacks.loaded_pages|.
-  std::unique_ptr<void, FPDFDocumentDeleter> doc;
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      doc;
 
   int nRet = PDF_DATA_NOTAVAIL;
   bool bIsLinearized = false;

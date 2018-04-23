@@ -248,7 +248,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
 
 #ifdef PDF_ENABLE_XFA
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
-  return document && static_cast<CPDFXFA_Context*>(document)->LoadXFADoc();
+  return document && UnderlyingFromFPDFDocument(document)->LoadXFADoc();
 }
 #endif  // PDF_ENABLE_XFA
 
