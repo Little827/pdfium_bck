@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <map>
 #include <memory>
+#include <type_traits>
 #include <utility>
 #include <vector>
 
@@ -778,8 +779,8 @@ FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
     return nullptr;
   }
 
-  std::unique_ptr<void, FPDFDocumentDeleter> output_doc(
-      FPDF_CreateNewDocument());
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      output_doc(FPDF_CreateNewDocument());
   if (!output_doc)
     return nullptr;
 

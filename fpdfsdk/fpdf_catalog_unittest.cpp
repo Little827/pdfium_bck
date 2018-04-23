@@ -11,6 +11,7 @@
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
+#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
 
@@ -72,26 +73,26 @@ TEST_F(PDFCatalogTest, IsTagged) {
 
   // No root
   m_pDoc->SetRoot(nullptr);
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(FPDFCatalog_IsTagged(FPDFDocumentFromUnderlying(m_pDoc.get())));
 
   // Empty root
   m_pDoc->SetRoot(m_pRootObj.get());
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(FPDFCatalog_IsTagged(FPDFDocumentFromUnderlying(m_pDoc.get())));
 
   // Root with other key
   m_pRootObj->SetNewFor<CPDF_String>("OTHER_KEY", "other value", false);
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(FPDFCatalog_IsTagged(FPDFDocumentFromUnderlying(m_pDoc.get())));
 
   // Root with empty MarkInfo
   CPDF_Dictionary* markInfoDict =
       m_pRootObj->SetNewFor<CPDF_Dictionary>("MarkInfo");
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(FPDFCatalog_IsTagged(FPDFDocumentFromUnderlying(m_pDoc.get())));
 
   // MarkInfo present but Marked is 0
   markInfoDict->SetNewFor<CPDF_Number>("Marked", 0);
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(FPDFCatalog_IsTagged(FPDFDocumentFromUnderlying(m_pDoc.get())));
 
   // MarkInfo present and Marked is 1, PDF is considered tagged.
   markInfoDict->SetNewFor<CPDF_Number>("Marked", 1);
-  EXPECT_TRUE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_TRUE(FPDFCatalog_IsTagged(FPDFDocumentFromUnderlying(m_pDoc.get())));
 }

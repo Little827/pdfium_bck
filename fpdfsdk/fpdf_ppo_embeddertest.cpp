@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 
+#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_deleters.h"
 #include "public/fpdf_edit.h"
 #include "public/fpdf_ppo.h"
@@ -63,20 +64,20 @@ TEST_F(FPDFPPOEmbeddertest, ImportPages) {
 TEST_F(FPDFPPOEmbeddertest, ImportNPages) {
   ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
 
-  std::unique_ptr<void, FPDFDocumentDeleter> output_doc_2up(
-      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 1));
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      output_doc_2up(FPDF_ImportNPagesToOne(document(), 612, 792, 2, 1));
   ASSERT_TRUE(output_doc_2up);
   EXPECT_EQ(3, FPDF_GetPageCount(output_doc_2up.get()));
-  std::unique_ptr<void, FPDFDocumentDeleter> output_doc_5up(
-      FPDF_ImportNPagesToOne(document(), 612, 792, 5, 1));
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      output_doc_5up(FPDF_ImportNPagesToOne(document(), 612, 792, 5, 1));
   ASSERT_TRUE(output_doc_5up);
   EXPECT_EQ(1, FPDF_GetPageCount(output_doc_5up.get()));
-  std::unique_ptr<void, FPDFDocumentDeleter> output_doc_8up(
-      FPDF_ImportNPagesToOne(document(), 792, 612, 8, 1));
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      output_doc_8up(FPDF_ImportNPagesToOne(document(), 792, 612, 8, 1));
   ASSERT_TRUE(output_doc_8up);
   EXPECT_EQ(1, FPDF_GetPageCount(output_doc_8up.get()));
-  std::unique_ptr<void, FPDFDocumentDeleter> output_doc_128up(
-      FPDF_ImportNPagesToOne(document(), 792, 612, 128, 1));
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      output_doc_128up(FPDF_ImportNPagesToOne(document(), 792, 612, 128, 1));
   ASSERT_TRUE(output_doc_128up);
   EXPECT_EQ(1, FPDF_GetPageCount(output_doc_128up.get()));
 }
@@ -105,12 +106,12 @@ TEST_F(FPDFPPOEmbeddertest, NupRenderImage) {
   const int kPageCount = 2;
   constexpr const char* kExpectedMD5s[kPageCount] = {
       "4d225b961da0f1bced7c83273e64c9b6", "fb18142190d770cfbc329d2b071aee4d"};
-  std::unique_ptr<void, FPDFDocumentDeleter> output_doc_3up(
-      FPDF_ImportNPagesToOne(document(), 792, 612, 3, 1));
+  std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type, FPDFDocumentDeleter>
+      output_doc_3up(FPDF_ImportNPagesToOne(document(), 792, 612, 3, 1));
   ASSERT_TRUE(output_doc_3up);
   ASSERT_EQ(kPageCount, FPDF_GetPageCount(output_doc_3up.get()));
   for (int i = 0; i < kPageCount; ++i) {
-    std::unique_ptr<void, FPDFPageDeleter> page(
+    std::unique_ptr<std::remove_pointer<FPDF_PAGE>::type, FPDFPageDeleter> page(
         FPDF_LoadPage(output_doc_3up.get(), i));
     ASSERT_TRUE(page);
     std::unique_ptr<void, FPDFBitmapDeleter> bitmap(

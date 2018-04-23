@@ -17,6 +17,7 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfdoc/cpdf_dest.h"
+#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
 #include "third_party/base/ptr_util.h"
@@ -96,20 +97,28 @@ TEST_F(PDFDocTest, FindBookmark) {
     // No bookmark information.
     std::unique_ptr<unsigned short, pdfium::FreeDeleter> title =
         GetFPDFWideString(L"");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
 
     title = GetFPDFWideString(L"Preface");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
   }
   {
     // Empty bookmark tree.
     m_pRootObj->SetNewFor<CPDF_Dictionary>("Outlines");
     std::unique_ptr<unsigned short, pdfium::FreeDeleter> title =
         GetFPDFWideString(L"");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
 
     title = GetFPDFWideString(L"Preface");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
   }
   {
     // Check on a regular bookmark tree.
@@ -140,19 +149,27 @@ TEST_F(PDFDocTest, FindBookmark) {
     // Title with no match.
     std::unique_ptr<unsigned short, pdfium::FreeDeleter> title =
         GetFPDFWideString(L"Chapter 3");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
 
     // Title with partial match only.
     title = GetFPDFWideString(L"Chapter");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
 
     // Title with a match.
     title = GetFPDFWideString(L"Chapter 2");
-    EXPECT_EQ(bookmarks[2].obj, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(bookmarks[2].obj,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
 
     // Title match is case insensitive.
     title = GetFPDFWideString(L"cHaPter 2");
-    EXPECT_EQ(bookmarks[2].obj, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(bookmarks[2].obj,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
   }
   {
     // Circular bookmarks in depth.
@@ -183,11 +200,15 @@ TEST_F(PDFDocTest, FindBookmark) {
     // Title with no match.
     std::unique_ptr<unsigned short, pdfium::FreeDeleter> title =
         GetFPDFWideString(L"Chapter 3");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
 
     // Title with a match.
     title = GetFPDFWideString(L"Chapter 2");
-    EXPECT_EQ(bookmarks[2].obj, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(bookmarks[2].obj,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
   }
   {
     // Circular bookmarks in breadth.
@@ -224,11 +245,15 @@ TEST_F(PDFDocTest, FindBookmark) {
     // Title with no match.
     std::unique_ptr<unsigned short, pdfium::FreeDeleter> title =
         GetFPDFWideString(L"Chapter 8");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
 
     // Title with a match.
     title = GetFPDFWideString(L"Chapter 3");
-    EXPECT_EQ(bookmarks[3].obj, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(bookmarks[3].obj,
+              FPDFBookmark_Find(FPDFDocumentFromUnderlying(m_pDoc.get()),
+                                title.get()));
   }
 }
 
