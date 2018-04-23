@@ -8,6 +8,7 @@
 
 #include "constants/stream_dict_common.h"
 #include "core/fpdfapi/cpdf_modulemgr.h"
+#include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
@@ -16,13 +17,13 @@
 #include "core/fpdfdoc/cpdf_metadata.h"
 #include "public/fpdf_ext.h"
 
+#ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#endif
+
 namespace {
 
 constexpr char kQuadPoints[] = "QuadPoints";
-
-FPDF_DOCUMENT FPDFDocumentFromUnderlying(UnderlyingDocumentType* doc) {
-  return static_cast<FPDF_DOCUMENT>(doc);
-}
 
 bool RaiseUnSupportError(int nError) {
   CFSDK_UnsupportInfo_Adapter* pAdapter =
@@ -161,11 +162,9 @@ CPDF_Document* CPDFDocumentFromFPDFDocument(FPDF_DOCUMENT doc) {
 
 FPDF_DOCUMENT FPDFDocumentFromCPDFDocument(CPDF_Document* doc) {
 #ifdef PDF_ENABLE_XFA
-  return doc ? FPDFDocumentFromUnderlying(
-                   new CPDFXFA_Context(pdfium::WrapUnique(doc)))
-             : nullptr;
+  return doc ? new CPDFXFA_Context(pdfium::WrapUnique(doc)) : nullptr;
 #else   // PDF_ENABLE_XFA
-  return FPDFDocumentFromUnderlying(doc);
+  return doc;
 #endif  // PDF_ENABLE_XFA
 }
 
