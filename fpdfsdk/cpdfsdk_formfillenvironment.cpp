@@ -332,13 +332,13 @@ void CPDFSDK_FormFillEnvironment::DisplayCaret(CPDFXFA_Page* page,
 }
 
 int CPDFSDK_FormFillEnvironment::GetCurrentPageIndex(
-    CPDFXFA_Context* document) {
+    CPDFXFA_Extension* document) {
   if (!m_pInfo || !m_pInfo->FFI_GetCurrentPageIndex)
     return -1;
   return m_pInfo->FFI_GetCurrentPageIndex(m_pInfo, document);
 }
 
-void CPDFSDK_FormFillEnvironment::SetCurrentPage(CPDFXFA_Context* document,
+void CPDFSDK_FormFillEnvironment::SetCurrentPage(CPDFXFA_Extension* document,
                                                  int iCurPage) {
   if (m_pInfo && m_pInfo->FFI_SetCurrentPage)
     m_pInfo->FFI_SetCurrentPage(m_pInfo, document, iCurPage);
@@ -362,7 +362,7 @@ WideString CPDFSDK_FormFillEnvironment::GetPlatform() {
                                  nActualLen / sizeof(uint16_t));
 }
 
-void CPDFSDK_FormFillEnvironment::GotoURL(CPDFXFA_Context* document,
+void CPDFSDK_FormFillEnvironment::GotoURL(CPDFXFA_Extension* document,
                                           const WideStringView& wsURL) {
   if (!m_pInfo || !m_pInfo->FFI_GotoURL)
     return;

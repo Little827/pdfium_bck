@@ -15,7 +15,7 @@
 #include "testing/test_support.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #endif  // PDF_ENABLE_XFA
 
 class CPDF_TestDocument : public CPDF_Document {
@@ -29,10 +29,10 @@ class CPDF_TestDocument : public CPDF_Document {
 };
 
 #ifdef PDF_ENABLE_XFA
-class CPDF_TestXFAContext : public CPDFXFA_Context {
+class CPDF_TestXFAContext : public CPDFXFA_Extension {
  public:
   CPDF_TestXFAContext()
-      : CPDFXFA_Context(pdfium::MakeUnique<CPDF_TestDocument>()) {}
+      : CPDFXFA_Extension(pdfium::MakeUnique<CPDF_TestDocument>()) {}
 
   void SetRoot(CPDF_Dictionary* root) {
     reinterpret_cast<CPDF_TestDocument*>(GetPDFDoc())->SetRoot(root);

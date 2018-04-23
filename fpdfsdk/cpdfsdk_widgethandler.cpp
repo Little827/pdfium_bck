@@ -20,7 +20,7 @@
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #endif  // PDF_ENABLE_XFA
 
 CPDFSDK_WidgetHandler::CPDFSDK_WidgetHandler(
@@ -242,7 +242,7 @@ void CPDFSDK_WidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {
 
 #ifdef PDF_ENABLE_XFA
   CPDFSDK_PageView* pPageView = pAnnot->GetPageView();
-  CPDFXFA_Context* pContext = pPageView->GetFormFillEnv()->GetXFAContext();
+  CPDFXFA_Extension* pContext = pPageView->GetFormFillEnv()->GetXFAContext();
   if (pContext->GetFormType() == FormType::kXFAForeground) {
     if (!pWidget->IsAppearanceValid() && !pWidget->GetValue().IsEmpty())
       pWidget->ResetAppearance(false);

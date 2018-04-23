@@ -12,7 +12,7 @@
 #include "fpdfsdk/cpdfsdk_interform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_xfawidget.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fwl/fwl_widgethit.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
@@ -163,7 +163,7 @@ bool CPDFSDK_XFAWidgetHandler::HitTest(CPDFSDK_PageView* pPageView,
   if (!pFormFillEnv)
     return false;
 
-  CPDFXFA_Context* pContext = pFormFillEnv->GetXFAContext();
+  CPDFXFA_Extension* pContext = pFormFillEnv->GetXFAContext();
   if (!pContext)
     return false;
 
@@ -390,7 +390,7 @@ CXFA_FFWidgetHandler* CPDFSDK_XFAWidgetHandler::GetXFAWidgetHandler(
   if (!pFormFillEnv)
     return nullptr;
 
-  CPDFXFA_Context* pDoc = pFormFillEnv->GetXFAContext();
+  CPDFXFA_Extension* pDoc = pFormFillEnv->GetXFAContext();
   if (!pDoc)
     return nullptr;
 

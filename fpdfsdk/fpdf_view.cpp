@@ -41,7 +41,7 @@
 #include "third_party/base/ptr_util.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "fxbarcode/BC_Library.h"
 #endif  // PDF_ENABLE_XFA
@@ -248,7 +248,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
 
 #ifdef PDF_ENABLE_XFA
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
-  return document && static_cast<CPDFXFA_Context*>(document)->LoadXFADoc();
+  return document && static_cast<CPDFXFA_Extension*>(document)->LoadXFADoc();
 }
 #endif  // PDF_ENABLE_XFA
 

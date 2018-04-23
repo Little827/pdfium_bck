@@ -14,7 +14,7 @@
 #include "public/fpdfview.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #endif  // PDF_ENABLE_XFA
 
 #ifdef _WIN32
@@ -38,7 +38,7 @@ class FX_PATHPOINT;
 using UnderlyingDocumentType = CPDF_Document;
 using UnderlyingPageType = CPDF_Page;
 #else   // PDF_ENABLE_XFA
-using UnderlyingDocumentType = CPDFXFA_Context;
+using UnderlyingDocumentType = CPDFXFA_Extension;
 using UnderlyingPageType = CPDFXFA_Page;
 #endif  // PDF_ENABLE_XFA
 

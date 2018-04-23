@@ -36,7 +36,7 @@
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/cpdfsdk_xfawidget.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cxfa_fwladaptertimermgr.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"

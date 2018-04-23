@@ -15,7 +15,7 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_interform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "fxjs/ijs_runtime.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
@@ -40,7 +40,7 @@
 #define FXFA_PDF 0x10000000
 #define FXFA_XFA_ALL 0x01111111
 
-CPDFXFA_DocEnvironment::CPDFXFA_DocEnvironment(CPDFXFA_Context* pContext)
+CPDFXFA_DocEnvironment::CPDFXFA_DocEnvironment(CPDFXFA_Extension* pContext)
     : m_pContext(pContext) {
   ASSERT(m_pContext);
 }

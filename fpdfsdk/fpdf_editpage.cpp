@@ -31,7 +31,7 @@
 #include "third_party/base/stl_util.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #endif  // PDF_ENABLE_XFA
 
@@ -176,7 +176,7 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
 
 #ifdef PDF_ENABLE_XFA
   auto pXFAPage = pdfium::MakeRetain<CPDFXFA_Page>(
-      static_cast<CPDFXFA_Context*>(document), page_index);
+      static_cast<CPDFXFA_Extension*>(document), page_index);
   pXFAPage->LoadPDFPage(pPageDict);
   return pXFAPage.Leak();  // Caller takes ownership.
 #else  // PDF_ENABLE_XFA

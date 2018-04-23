@@ -10,14 +10,14 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_fallthrough.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cxfa_fwladaptertimermgr.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/ptr_util.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
 #include "xfa/fxfa/cxfa_ffpageview.h"
 
-CPDFXFA_Page::CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index)
+CPDFXFA_Page::CPDFXFA_Page(CPDFXFA_Extension* pContext, int page_index)
     : m_pXFAPageView(nullptr), m_pContext(pContext), m_iPageIndex(page_index) {}
 
 CPDFXFA_Page::~CPDFXFA_Page() {}

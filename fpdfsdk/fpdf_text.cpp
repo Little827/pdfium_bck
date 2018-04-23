@@ -19,7 +19,7 @@
 #include "third_party/base/stl_util.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #endif  // PDF_ENABLE_XFA
 
@@ -52,7 +52,7 @@ FPDF_EXPORT FPDF_TEXTPAGE FPDF_CALLCONV FPDFText_LoadPage(FPDF_PAGE page) {
 
 #ifdef PDF_ENABLE_XFA
   CPDFXFA_Page* pPage = (CPDFXFA_Page*)page;
-  CPDFXFA_Context* pContext = pPage->GetContext();
+  CPDFXFA_Extension* pContext = pPage->GetContext();
   CPDF_ViewerPreferences viewRef(pContext->GetPDFDoc());
 #else  // PDF_ENABLE_XFA
   CPDF_ViewerPreferences viewRef(pPDFPage->m_pDocument.Get());

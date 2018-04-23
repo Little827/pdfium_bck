@@ -13,7 +13,7 @@
 #include "fpdfsdk/cpdfsdk_helpers.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #endif  // PDF_ENABLE_XFA
 
 static_assert(static_cast<int>(UnsupportedFeature::kDocumentXFAForm) ==

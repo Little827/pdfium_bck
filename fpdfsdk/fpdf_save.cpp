@@ -23,7 +23,7 @@
 #include "public/fpdf_edit.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cxfa_fwladaptertimermgr.h"
 #include "public/fpdf_formfill.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
@@ -43,7 +43,7 @@
 namespace {
 
 #ifdef PDF_ENABLE_XFA
-bool SaveXFADocumentData(CPDFXFA_Context* pContext,
+bool SaveXFADocumentData(CPDFXFA_Extension* pContext,
                          std::vector<RetainPtr<IFX_SeekableStream>>* fileList) {
   if (!pContext)
     return false;
@@ -173,7 +173,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   return true;
 }
 
-bool SendPostSaveToXFADoc(CPDFXFA_Context* pContext) {
+bool SendPostSaveToXFADoc(CPDFXFA_Extension* pContext) {
   if (!pContext)
     return false;
 
@@ -196,7 +196,7 @@ bool SendPostSaveToXFADoc(CPDFXFA_Context* pContext) {
   return true;
 }
 
-bool SendPreSaveToXFADoc(CPDFXFA_Context* pContext,
+bool SendPreSaveToXFADoc(CPDFXFA_Extension* pContext,
                          std::vector<RetainPtr<IFX_SeekableStream>>* fileList) {
   if (!pContext->ContainsXFAForm())
     return true;
@@ -227,7 +227,7 @@ bool FPDF_Doc_Save(FPDF_DOCUMENT document,
     return 0;
 
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Context* pContext = static_cast<CPDFXFA_Context*>(document);
+  CPDFXFA_Extension* pContext = static_cast<CPDFXFA_Extension*>(document);
   std::vector<RetainPtr<IFX_SeekableStream>> fileList;
   SendPreSaveToXFADoc(pContext, &fileList);
 #endif  // PDF_ENABLE_XFA

@@ -4,12 +4,13 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef FPDFSDK_FPDFXFA_CPDFXFA_CONTEXT_H_
-#define FPDFSDK_FPDFXFA_CPDFXFA_CONTEXT_H_
+#ifndef FPDFSDK_FPDFXFA_CPDFXFA_EXTENSION_H_
+#define FPDFSDK_FPDFXFA_CPDFXFA_EXTENSION_H_
 
 #include <memory>
 #include <vector>
 
+#include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/observable.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -31,10 +32,11 @@ enum LoadStatus {
   FXFA_LOADSTATUS_CLOSED
 };
 
-class CPDFXFA_Context : public IXFA_AppProvider {
+class CPDFXFA_Extension : public CPDF_Document::Extension,
+                          public IXFA_AppProvider {
  public:
-  explicit CPDFXFA_Context(std::unique_ptr<CPDF_Document> pPDFDoc);
-  ~CPDFXFA_Context() override;
+  explicit CPDFXFA_Extension(std::unique_ptr<CPDF_Document> pPDFDoc);
+  ~CPDFXFA_Extension() override;
 
   bool LoadXFADoc();
   CPDF_Document* GetPDFDoc() { return m_pPDFDoc.get(); }
@@ -120,4 +122,4 @@ class CPDFXFA_Context : public IXFA_AppProvider {
   CPDFXFA_DocEnvironment m_DocEnv;
 };
 
-#endif  // FPDFSDK_FPDFXFA_CPDFXFA_CONTEXT_H_
+#endif  // FPDFSDK_FPDFXFA_CPDFXFA_EXTENSION_H_

@@ -41,6 +41,8 @@ class JBig2_DocumentContext;
 
 class CPDF_Document : public CPDF_IndirectObjectHolder {
  public:
+  class Extension {};  // Something for XFA to subclass.
+
   explicit CPDF_Document(std::unique_ptr<CPDF_Parser> pParser);
   ~CPDF_Document() override;
 

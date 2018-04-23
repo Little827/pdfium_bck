@@ -1637,10 +1637,10 @@ jumbo_static_library("formfiller") {
 if (pdf_enable_xfa) {
   jumbo_static_library("fpdfxfa") {
     sources = [
-      "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
-      "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
       "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
       "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h",
+      "fpdfsdk/fpdfxfa/cpdfxfa_extension.cpp",
+      "fpdfsdk/fpdfxfa/cpdfxfa_extension.h",
       "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
       "fpdfsdk/fpdfxfa/cpdfxfa_page.h",
       "fpdfsdk/fpdfxfa/cxfa_fwladaptertimermgr.cpp",

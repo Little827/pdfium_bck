@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "core/fxcrt/unowned_ptr.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "xfa/fwl/cfwl_timerinfo.h"
 #include "xfa/fwl/ifwl_adaptertimermgr.h"
 

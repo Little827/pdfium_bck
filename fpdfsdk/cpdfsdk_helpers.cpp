@@ -162,7 +162,7 @@ CPDF_Document* CPDFDocumentFromFPDFDocument(FPDF_DOCUMENT doc) {
 FPDF_DOCUMENT FPDFDocumentFromCPDFDocument(CPDF_Document* doc) {
 #ifdef PDF_ENABLE_XFA
   return doc ? FPDFDocumentFromUnderlying(
-                   new CPDFXFA_Context(pdfium::WrapUnique(doc)))
+                   new CPDFXFA_Extension(pdfium::WrapUnique(doc)))
              : nullptr;
 #else   // PDF_ENABLE_XFA
   return FPDFDocumentFromUnderlying(doc);

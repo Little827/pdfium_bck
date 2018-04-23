@@ -12,12 +12,12 @@
 #include "public/fpdfview.h"
 #include "xfa/fxfa/fxfa.h"
 
-class CPDFXFA_Context;
+class CPDFXFA_Extension;
 class IJS_EventContext;
 
 class CPDFXFA_DocEnvironment : public IXFA_DocEnvironment {
  public:
-  explicit CPDFXFA_DocEnvironment(CPDFXFA_Context*);
+  explicit CPDFXFA_DocEnvironment(CPDFXFA_Extension*);
   ~CPDFXFA_DocEnvironment() override;
 
   // IXFA_DocEnvironment
@@ -92,7 +92,7 @@ class CPDFXFA_DocEnvironment : public IXFA_DocEnvironment {
                         FPDF_DWORD flag);
   void ToXFAContentFlags(WideString csSrcContent, FPDF_DWORD& flag);
 
-  UnownedPtr<CPDFXFA_Context> const m_pContext;
+  UnownedPtr<CPDFXFA_Extension> const m_pContext;
 };
 
 #endif  // FPDFSDK_FPDFXFA_CPDFXFA_DOCENVIRONMENT_H_

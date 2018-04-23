@@ -27,7 +27,7 @@
 #include "third_party/base/stl_util.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
 #include "xfa/fxfa/cxfa_ffpageview.h"
@@ -138,7 +138,7 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
     return;
 
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Context* pContext = pPage->GetContext();
+  CPDFXFA_Extension* pContext = pPage->GetContext();
   if (!pContext)
     return;
   CPDF_Document* pPDFDoc = pContext->GetPDFDoc();
@@ -292,7 +292,7 @@ FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
     return nullptr;
 
 #ifdef PDF_ENABLE_XFA
-  // If the CPDFXFA_Context has a FormFillEnvironment already then we've done
+  // If the CPDFXFA_Extension has a FormFillEnvironment already then we've done
   // this and can just return the old Env. Otherwise, we'll end up setting a new
   // environment into the XFADocument and, that could get weird.
   if (pDocument->GetFormFillEnv())

@@ -15,7 +15,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/optional.h"
 
-class CPDFXFA_Context;
+class CPDFXFA_Extension;
 class CPDF_Dictionary;
 class CPDF_Page;
 class CXFA_FFPageView;
@@ -27,7 +27,7 @@ class CPDFXFA_Page : public Retainable {
 
   bool LoadPage();
   bool LoadPDFPage(CPDF_Dictionary* pageDict);
-  CPDFXFA_Context* GetContext() const { return m_pContext.Get(); }
+  CPDFXFA_Extension* GetContext() const { return m_pContext.Get(); }
   int GetPageIndex() const { return m_iPageIndex; }
   CPDF_Page* GetPDFPage() const { return m_pPDFPage.get(); }
   CXFA_FFPageView* GetXFAPageView() const { return m_pXFAPageView; }
@@ -50,7 +50,7 @@ class CPDFXFA_Page : public Retainable {
 
  protected:
   // Refcounted class.
-  CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index);
+  CPDFXFA_Page(CPDFXFA_Extension* pContext, int page_index);
   ~CPDFXFA_Page() override;
 
   bool LoadPDFPage();
@@ -59,7 +59,7 @@ class CPDFXFA_Page : public Retainable {
  private:
   std::unique_ptr<CPDF_Page> m_pPDFPage;
   CXFA_FFPageView* m_pXFAPageView;
-  UnownedPtr<CPDFXFA_Context> const m_pContext;
+  UnownedPtr<CPDFXFA_Extension> const m_pContext;
   const int m_iPageIndex;
 };
 

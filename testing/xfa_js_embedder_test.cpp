@@ -7,7 +7,7 @@
 #include <string>
 
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_extension.h"
 #include "fxjs/cfxjse_engine.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/ptr_util.h"
