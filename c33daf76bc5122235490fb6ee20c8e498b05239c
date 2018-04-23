@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1a80192_af434aee",
+        "filename": "fxjs/ijs_runtime.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-23T15:52:24Z",
+      "side": 1,
+      "message": "\u003d 0?",
+      "range": {
+        "startLine": 34,
+        "startChar": 28,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "c33daf76bc5122235490fb6ee20c8e498b05239c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1e7077_764fdba3",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-23T15:52:24Z",
+      "side": 1,
+      "message": "These aren\u0027t needed either if we don\u0027t have JS I believe.",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 52
+      },
+      "revId": "c33daf76bc5122235490fb6ee20c8e498b05239c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937bef52_c8876986",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-23T15:52:24Z",
+      "side": 1,
+      "message": "enum class",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "c33daf76bc5122235490fb6ee20c8e498b05239c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7515460d_8d6f374a",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-23T15:52:24Z",
+      "side": 1,
+      "message": "Why flip to bool instead of using the enum?",
+      "range": {
+        "startLine": 163,
+        "startChar": 26,
+        "endLine": 164,
+        "endChar": 42
+      },
+      "revId": "c33daf76bc5122235490fb6ee20c8e498b05239c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
