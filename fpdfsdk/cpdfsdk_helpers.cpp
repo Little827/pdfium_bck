@@ -20,10 +20,6 @@ namespace {
 
 constexpr char kQuadPoints[] = "QuadPoints";
 
-FPDF_DOCUMENT FPDFDocumentFromUnderlying(UnderlyingDocumentType* doc) {
-  return static_cast<FPDF_DOCUMENT>(doc);
-}
-
 bool RaiseUnSupportError(int nError) {
   CFSDK_UnsupportInfo_Adapter* pAdapter =
       CPDF_ModuleMgr::Get()->GetUnsupportInfoAdapter();
@@ -144,11 +140,19 @@ bool FPDF_FileHandlerContext::Flush() {
 }  // namespace
 
 UnderlyingDocumentType* UnderlyingFromFPDFDocument(FPDF_DOCUMENT doc) {
-  return static_cast<UnderlyingDocumentType*>(doc);
+  return reinterpret_cast<UnderlyingDocumentType*>(doc);
+}
+
+FPDF_DOCUMENT FPDFDocumentFromUnderlying(UnderlyingDocumentType* doc) {
+  return reinterpret_cast<FPDF_DOCUMENT>(doc);
 }
 
 UnderlyingPageType* UnderlyingFromFPDFPage(FPDF_PAGE page) {
-  return static_cast<UnderlyingPageType*>(page);
+  return reinterpret_cast<UnderlyingPageType*>(page);
+}
+
+FPDF_PAGE FPDFPageFromUnderlying(UnderlyingPageType* page) {
+  return reinterpret_cast<FPDF_PAGE>(page);
 }
 
 CPDF_Document* CPDFDocumentFromFPDFDocument(FPDF_DOCUMENT doc) {

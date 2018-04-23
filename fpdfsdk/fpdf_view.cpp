@@ -248,7 +248,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetFormType(FPDF_DOCUMENT document) {
 
 #ifdef PDF_ENABLE_XFA
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
-  return document && static_cast<CPDFXFA_Context*>(document)->LoadXFADoc();
+  return document && UnderlyingFromFPDFDocument(document)->LoadXFADoc();
 }
 #endif  // PDF_ENABLE_XFA
 
@@ -326,7 +326,7 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
     return nullptr;
 
 #ifdef PDF_ENABLE_XFA
-  return pDoc->GetXFAPage(page_index).Leak();
+  return FPDFPageFromUnderlying(pDoc->GetXFAPage(page_index).Leak());
 #else   // PDF_ENABLE_XFA
   CPDF_Dictionary* pDict = pDoc->GetPage(page_index);
   if (!pDict)
@@ -334,7 +334,7 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
 
   CPDF_Page* pPage = new CPDF_Page(pDoc, pDict, true);
   pPage->ParseContent();
-  return pPage;
+  return FPDFPageFromUnderlying(pPage);
 #endif  // PDF_ENABLE_XFA
 }
 
