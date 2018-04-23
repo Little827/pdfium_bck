@@ -176,7 +176,7 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
 
 #ifdef PDF_ENABLE_XFA
   auto pXFAPage = pdfium::MakeRetain<CPDFXFA_Page>(
-      static_cast<CPDFXFA_Context*>(document), page_index);
+      UnderlyingFromFPDFDocument(document), page_index);
   pXFAPage->LoadPDFPage(pPageDict);
   return pXFAPage.Leak();  // Caller takes ownership.
 #else  // PDF_ENABLE_XFA
