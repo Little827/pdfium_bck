@@ -22,6 +22,30 @@
       "revId": "e61e2f3d34efee51b69838646dd4e7462989ca08",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af5fa26_98eff4a9",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-23T17:15:18Z",
+      "side": 0,
+      "message": "Nope. We might have built with XFA, but be running with neither V8 nor XFA, in which case this will be a stub, and the virtual asCJS method will rturn nullptr.",
+      "parentUuid": "8b4c6881_af044a5c",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 80
+      },
+      "revId": "e61e2f3d34efee51b69838646dd4e7462989ca08",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
