@@ -33,6 +33,14 @@
 #define FPDF_OBJECT_REFERENCE 9
 
 // PDF types
+#ifdef PDF_STRICT_TYPES
+typedef void* FPDF_PAGE;
+typedef void* FPDF_DOCUMENT;
+#else
+typedef struct fpdf_page_t__* FPDF_PAGE;
+typedef struct fpdf_document_t__* FPDF_DOCUMENT;
+#endif
+
 typedef void* FPDF_ACTION;
 typedef void* FPDF_ANNOTATION;
 typedef void* FPDF_ATTACHMENT;
@@ -40,10 +48,8 @@ typedef void* FPDF_BITMAP;
 typedef void* FPDF_BOOKMARK;
 typedef void* FPDF_CLIPPATH;
 typedef void* FPDF_DEST;
-typedef void* FPDF_DOCUMENT;
 typedef void* FPDF_FONT;
 typedef void* FPDF_LINK;
-typedef void* FPDF_PAGE;
 typedef void* FPDF_PAGELINK;
 typedef void* FPDF_PAGEOBJECT;  // Page object(text, path, etc)
 typedef void const* FPDF_PAGEOBJECTMARK;
