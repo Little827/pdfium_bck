@@ -242,8 +242,9 @@ void CPDFSDK_WidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {
 
 #ifdef PDF_ENABLE_XFA
   CPDFSDK_PageView* pPageView = pAnnot->GetPageView();
-  CPDFXFA_Extension* pContext = pPageView->GetFormFillEnv()->GetXFAContext();
-  if (pContext->GetFormType() == FormType::kXFAForeground) {
+  auto* pExtension = static_cast<CPDFXFA_Extension*>(
+      pPageView->GetFormFillEnv()->GetDocumentExtension());
+  if (pExtension->GetFormType() == FormType::kXFAForeground) {
     if (!pWidget->IsAppearanceValid() && !pWidget->GetValue().IsEmpty())
       pWidget->ResetAppearance(false);
   }

@@ -472,7 +472,9 @@ void CPDFSDK_PageView::LoadFXAnnots() {
 
 #ifdef PDF_ENABLE_XFA
   RetainPtr<CPDFXFA_Page> protector(m_page);
-  if (m_pFormFillEnv->GetXFAContext()->GetFormType() == FormType::kXFAFull) {
+  auto* pExtension =
+      static_cast<CPDFXFA_Extension*>(m_pFormFillEnv->GetDocumentExtension());
+  if (pExtension->GetFormType() == FormType::kXFAFull) {
     CXFA_FFPageView* pageView = m_page->GetXFAPageView();
     std::unique_ptr<IXFA_WidgetIterator> pWidgetHandler(
         pageView->CreateWidgetIterator(
@@ -481,7 +483,6 @@ void CPDFSDK_PageView::LoadFXAnnots() {
     if (!pWidgetHandler) {
       return;
     }
-
     while (CXFA_FFWidget* pXFAAnnot = pWidgetHandler->MoveToNext()) {
       CPDFSDK_Annot* pAnnot = pAnnotHandlerMgr->NewAnnot(pXFAAnnot, this);
       if (!pAnnot)

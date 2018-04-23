@@ -35,12 +35,12 @@ enum LoadStatus {
 class CPDFXFA_Extension : public CPDF_Document::Extension,
                           public IXFA_AppProvider {
  public:
-  explicit CPDFXFA_Extension(std::unique_ptr<CPDF_Document> pPDFDoc);
+  explicit CPDFXFA_Extension(CPDF_Document* pPDFDoc);
   ~CPDFXFA_Extension() override;
 
   bool LoadXFADoc();
-  CPDF_Document* GetPDFDoc() { return m_pPDFDoc.get(); }
-  CXFA_FFDoc* GetXFADoc() { return m_pXFADoc.get(); }
+  CPDF_Document* GetPDFDoc() const { return m_pPDFDoc.Get(); }
+  CXFA_FFDoc* GetXFADoc() const { return m_pXFADoc.get(); }
   CXFA_FFDocView* GetXFADocView() { return m_pXFADocView.Get(); }
   FormType GetFormType() const { return m_FormType; }
   bool ContainsXFAForm() const {
@@ -108,7 +108,7 @@ class CPDFXFA_Extension : public CPDF_Document::Extension,
   void CloseXFADoc();
 
   FormType m_FormType = FormType::kNone;
-  std::unique_ptr<CPDF_Document> m_pPDFDoc;
+  UnownedPtr<CPDF_Document> m_pPDFDoc;
   std::unique_ptr<CXFA_FFDoc> m_pXFADoc;
   Observable<CPDFSDK_FormFillEnvironment>::ObservedPtr m_pFormFillEnv;
   UnownedPtr<CXFA_FFDocView> m_pXFADocView;
