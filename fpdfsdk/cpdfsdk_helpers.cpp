@@ -152,21 +152,15 @@ UnderlyingPageType* UnderlyingFromFPDFPage(FPDF_PAGE page) {
 }
 
 CPDF_Document* CPDFDocumentFromFPDFDocument(FPDF_DOCUMENT doc) {
-#ifdef PDF_ENABLE_XFA
-  return doc ? UnderlyingFromFPDFDocument(doc)->GetPDFDoc() : nullptr;
-#else   // PDF_ENABLE_XFA
   return UnderlyingFromFPDFDocument(doc);
-#endif  // PDF_ENABLE_XFA
 }
 
 FPDF_DOCUMENT FPDFDocumentFromCPDFDocument(CPDF_Document* doc) {
 #ifdef PDF_ENABLE_XFA
-  return doc ? FPDFDocumentFromUnderlying(
-                   new CPDFXFA_Context(pdfium::WrapUnique(doc)))
-             : nullptr;
-#else   // PDF_ENABLE_XFA
+  if (!doc->GetExtension())
+    doc->SetExtension(pdfium::MakeUnique<CPDFXFA_Context>(doc));
+#endif
   return FPDFDocumentFromUnderlying(doc);
-#endif  // PDF_ENABLE_XFA
 }
 
 CPDF_Page* CPDFPageFromFPDFPage(FPDF_PAGE page) {

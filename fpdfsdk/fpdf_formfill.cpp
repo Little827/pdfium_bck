@@ -295,15 +295,16 @@ FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
   // If the CPDFXFA_Context has a FormFillEnvironment already then we've done
   // this and can just return the old Env. Otherwise, we'll end up setting a new
   // environment into the XFADocument and, that could get weird.
-  if (pDocument->GetFormFillEnv())
-    return pDocument->GetFormFillEnv();
+  auto* pContext = static_cast<CPDFXFA_Context*>(pDocument->GetExtension());
+  if (pContext->GetFormFillEnv())
+    return pContext->GetFormFillEnv();
 #endif
 
   auto pFormFillEnv =
       pdfium::MakeUnique<CPDFSDK_FormFillEnvironment>(pDocument, formInfo);
 
 #ifdef PDF_ENABLE_XFA
-  pDocument->SetFormFillEnv(pFormFillEnv.get());
+  pContext->SetFormFillEnv(pFormFillEnv.get());
 #endif  // PDF_ENABLE_XFA
 
   return pFormFillEnv.release();  // Caller takes ownership.
@@ -322,8 +323,10 @@ FPDFDOC_ExitFormFillEnvironment(FPDF_FORMHANDLE hHandle) {
   pFormFillEnv->ClearAllFocusedAnnots();
   // If the document was closed first, it's possible the XFA document
   // is now a nullptr.
-  if (pFormFillEnv->GetXFAContext())
-    pFormFillEnv->GetXFAContext()->SetFormFillEnv(nullptr);
+  auto* pExtension =
+      static_cast<CPDFXFA_Context*>(pFormFillEnv->GetXFAContext());
+  if (pExtension)
+    pExtension->SetFormFillEnv(nullptr);
 #endif  // PDF_ENABLE_XFA
   delete pFormFillEnv;
 }

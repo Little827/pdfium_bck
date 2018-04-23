@@ -10,6 +10,7 @@
 #include <memory>
 #include <vector>
 
+#include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/observable.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -31,14 +32,15 @@ enum LoadStatus {
   FXFA_LOADSTATUS_CLOSED
 };
 
-class CPDFXFA_Context : public IXFA_AppProvider {
+class CPDFXFA_Context : public CPDF_Document::Extension,
+                        public IXFA_AppProvider {
  public:
-  explicit CPDFXFA_Context(std::unique_ptr<CPDF_Document> pPDFDoc);
+  explicit CPDFXFA_Context(CPDF_Document* pPDFDoc);
   ~CPDFXFA_Context() override;
 
   bool LoadXFADoc();
-  CPDF_Document* GetPDFDoc() { return m_pPDFDoc.get(); }
-  CXFA_FFDoc* GetXFADoc() { return m_pXFADoc.get(); }
+  CPDF_Document* GetPDFDoc() const { return m_pPDFDoc.Get(); }
+  CXFA_FFDoc* GetXFADoc() const { return m_pXFADoc.get(); }
   CXFA_FFDocView* GetXFADocView() { return m_pXFADocView.Get(); }
   FormType GetFormType() const { return m_FormType; }
   bool ContainsXFAForm() const {
@@ -106,7 +108,7 @@ class CPDFXFA_Context : public IXFA_AppProvider {
   void CloseXFADoc();
 
   FormType m_FormType = FormType::kNone;
-  std::unique_ptr<CPDF_Document> m_pPDFDoc;
+  UnownedPtr<CPDF_Document> m_pPDFDoc;
   std::unique_ptr<CXFA_FFDoc> m_pXFADoc;
   Observable<CPDFSDK_FormFillEnvironment>::ObservedPtr m_pFormFillEnv;
   UnownedPtr<CXFA_FFDocView> m_pXFADocView;

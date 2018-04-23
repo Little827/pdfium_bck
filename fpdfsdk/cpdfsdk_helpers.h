@@ -34,11 +34,10 @@ class FX_PATHPOINT;
 // Object types for public FPDF_ types; these correspond to next layer down
 // from fpdfsdk. For master, these are CPDF_ types, but for XFA, these are
 // CPDFXFA_ types.
-#ifndef PDF_ENABLE_XFA
 using UnderlyingDocumentType = CPDF_Document;
+#ifndef PDF_ENABLE_XFA
 using UnderlyingPageType = CPDF_Page;
 #else   // PDF_ENABLE_XFA
-using UnderlyingDocumentType = CPDFXFA_Context;
 using UnderlyingPageType = CPDFXFA_Page;
 #endif  // PDF_ENABLE_XFA
 
