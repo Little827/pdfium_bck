@@ -22,6 +22,30 @@
       "revId": "040020c7228b931d8f35e765d062b220b3ec9fc8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1b342a9_c8967729",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-24T17:22:05Z",
+      "side": 0,
+      "message": "No, this isn\u0027t actually resetting the buffer, it doesn\u0027t get \u0027reset\u0027 we set the length to the previously length so we\u0027ll then end up copying that data out later.",
+      "parentUuid": "edea3124_f01c6807",
+      "range": {
+        "startLine": 231,
+        "startChar": 14,
+        "endLine": 231,
+        "endChar": 40
+      },
+      "revId": "040020c7228b931d8f35e765d062b220b3ec9fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
