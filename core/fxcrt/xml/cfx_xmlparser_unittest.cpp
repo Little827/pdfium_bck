@@ -434,6 +434,12 @@ TEST(CFX_XMLParserTest, Entities) {
       "&#x00000000000000000048;"
       "&#x0000000000000000AB48;"
       "&#x0000000000000000000;"
+      "&amp;"
+      "&lt;"
+      "&gt;"
+      "&apos;"
+      "&quot;"
+      "&something_else;"
       "</script>";
 
   auto stream = MakeProxy(input);
@@ -451,7 +457,7 @@ TEST(CFX_XMLParserTest, Entities) {
 
   ASSERT_EQ(FX_XmlSyntaxResult::ElementBreak, parser.DoSyntaxParse());
   ASSERT_EQ(FX_XmlSyntaxResult::Text, parser.DoSyntaxParse());
-  ASSERT_EQ(L"BTH\xab48", parser.GetTextData());
+  ASSERT_EQ(L"BTH\xab48&<>'\"", parser.GetTextData());
 
   ASSERT_EQ(FX_XmlSyntaxResult::ElementClose, parser.DoSyntaxParse());
   ASSERT_EQ(L"script", parser.GetTextData());
