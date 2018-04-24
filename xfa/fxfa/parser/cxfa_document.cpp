@@ -1511,12 +1511,15 @@ void CXFA_Document::DoProtoMerge() {
   }
 
   for (CXFA_Node* pUseHrefNode : sUseNodes) {
+    // This needs to appear first in scope to make sure the destruction when
+    // going out of scope doesn't free it before the WideStringViews.
+    WideString wsUseVal =
+        pUseHrefNode->JSObject()->GetCData(XFA_Attribute::Usehref);
+
     WideStringView wsURI;
     WideStringView wsID;
     WideStringView wsSOM;
 
-    WideString wsUseVal =
-        pUseHrefNode->JSObject()->GetCData(XFA_Attribute::Usehref);
     if (!wsUseVal.IsEmpty()) {
       auto uSharpPos = wsUseVal.Find('#');
       if (!uSharpPos.has_value()) {
