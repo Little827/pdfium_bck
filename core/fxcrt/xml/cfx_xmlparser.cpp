@@ -73,6 +73,7 @@ CFX_XMLParser::CFX_XMLParser(CFX_XMLNode* pParent,
   m_pStream = proxy;
 
   m_NodeStack.push(m_pParent);
+  m_XMLNodeTypeStack.push(FX_XMLNODE_Unknown);
 
   m_iXMLPlaneSize =
       std::min(m_iXMLPlaneSize,
@@ -242,14 +243,12 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
             m_Start++;
             m_syntaxParserState = FDE_XmlSyntaxState::CloseElement;
           } else if (ch == L'?') {
-            m_CurNodeType = FX_XMLNODE_Instruction;
-            m_XMLNodeTypeStack.push(m_CurNodeType);
+            m_XMLNodeTypeStack.push(FX_XMLNODE_Instruction);
             m_Start++;
             m_syntaxParserState = FDE_XmlSyntaxState::Target;
             syntaxParserResult = FX_XmlSyntaxResult::InstructionOpen;
           } else {
-            m_CurNodeType = FX_XMLNODE_Element;
-            m_XMLNodeTypeStack.push(m_CurNodeType);
+            m_XMLNodeTypeStack.push(FX_XMLNODE_Element);
             m_syntaxParserState = FDE_XmlSyntaxState::Tag;
             syntaxParserResult = FX_XmlSyntaxResult::ElementOpen;
           }
@@ -280,12 +279,12 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
           }
           if (!IsXMLNameChar(ch, current_text_.empty())) {
             if (current_text_.empty()) {
-              if (m_CurNodeType == FX_XMLNODE_Element) {
+              if (m_XMLNodeTypeStack.top() == FX_XMLNODE_Element) {
                 if (ch == L'>' || ch == L'/') {
                   m_syntaxParserState = FDE_XmlSyntaxState::BreakElement;
                   break;
                 }
-              } else if (m_CurNodeType == FX_XMLNODE_Instruction) {
+              } else if (m_XMLNodeTypeStack.top() == FX_XMLNODE_Instruction) {
                 if (ch == L'?') {
                   m_syntaxParserState = FDE_XmlSyntaxState::CloseInstruction;
                   m_Start++;
@@ -297,7 +296,7 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
               m_syntaxParserResult = FX_XmlSyntaxResult::Error;
               return m_syntaxParserResult;
             } else {
-              if (m_CurNodeType == FX_XMLNODE_Instruction) {
+              if (m_XMLNodeTypeStack.top() == FX_XMLNODE_Instruction) {
                 if (ch != '=' && !IsXMLWhiteSpace(ch)) {
                   m_syntaxParserState = FDE_XmlSyntaxState::TargetData;
                   break;
@@ -317,7 +316,7 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
             break;
           }
           if (ch != L'=') {
-            if (m_CurNodeType == FX_XMLNODE_Instruction) {
+            if (m_XMLNodeTypeStack.top() == FX_XMLNODE_Instruction) {
               m_syntaxParserState = FDE_XmlSyntaxState::TargetData;
               break;
             }
@@ -364,16 +363,11 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
             syntaxParserResult = FX_XmlSyntaxResult::TargetData;
           } else {
             m_Start++;
-            if (m_XMLNodeTypeStack.empty()) {
+            if (m_XMLNodeTypeStack.size() < 2) {
               m_syntaxParserResult = FX_XmlSyntaxResult::Error;
               return m_syntaxParserResult;
             }
             m_XMLNodeTypeStack.pop();
-
-            if (!m_XMLNodeTypeStack.empty())
-              m_CurNodeType = m_XMLNodeTypeStack.top();
-            else
-              m_CurNodeType = FX_XMLNODE_Unknown;
 
             m_syntaxParserState = FDE_XmlSyntaxState::Text;
             syntaxParserResult = FX_XmlSyntaxResult::InstructionClose;
@@ -394,16 +388,11 @@ FX_XmlSyntaxResult CFX_XMLParser::DoSyntaxParse() {
         case FDE_XmlSyntaxState::CloseElement:
           if (!IsXMLNameChar(ch, current_text_.empty())) {
             if (ch == L'>') {
-              if (m_XMLNodeTypeStack.empty()) {
+              if (m_XMLNodeTypeStack.size() < 2) {
                 m_syntaxParserResult = FX_XmlSyntaxResult::Error;
                 return m_syntaxParserResult;
               }
               m_XMLNodeTypeStack.pop();
-
-              if (!m_XMLNodeTypeStack.empty())
-                m_CurNodeType = m_XMLNodeTypeStack.top();
-              else
-                m_CurNodeType = FX_XMLNODE_Unknown;
 
               m_syntaxParserState = FDE_XmlSyntaxState::Text;
               syntaxParserResult = FX_XmlSyntaxResult::ElementClose;
