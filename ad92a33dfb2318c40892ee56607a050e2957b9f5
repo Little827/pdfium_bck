@@ -22,6 +22,30 @@
       "revId": "ad92a33dfb2318c40892ee56607a050e2957b9f5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa154515_c0b77528",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-24T17:44:32Z",
+      "side": 1,
+      "message": "So we can strip the \u0026 ; from the \u0026amp; string.",
+      "parentUuid": "e3e551a9_08ba2a85",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 67
+      },
+      "revId": "ad92a33dfb2318c40892ee56607a050e2957b9f5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
