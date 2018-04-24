@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c96b5f04_c1fdb1f5",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-24T00:44:46Z",
+      "side": 1,
+      "message": "Please some of these changes into their own CL?",
+      "revId": "7119132f853054d9b7fc810c41dd110060885037",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a387c6d_4bd4da15",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-24T00:44:46Z",
+      "side": 1,
+      "message": "Is this change plus the changes in public/ going to cause pdfium-deps-roller to fail in Chromium?",
+      "range": {
+        "startLine": 782,
+        "startChar": 18,
+        "endLine": 782,
+        "endChar": 58
+      },
+      "revId": "7119132f853054d9b7fc810c41dd110060885037",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
