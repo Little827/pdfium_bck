@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "89e86b03_f62df80a",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-24T19:39:03Z",
+      "side": 1,
+      "message": "Done.  I\u0027ve backed out the change in the public header file, so this CL should just prep for the flip between void* and fpdf_document_t__* by making the codebase work with either type.  Then we\u0027ll flip it in a smaller cl.",
+      "parentUuid": "c96b5f04_c1fdb1f5",
+      "revId": "7119132f853054d9b7fc810c41dd110060885037",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a387c6d_4bd4da15",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 10
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "a5fa030d_0320b404",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-24T19:39:03Z",
+      "side": 1,
+      "message": "I really hope not, but we\u0027ll have to watch it.",
+      "parentUuid": "6a387c6d_4bd4da15",
+      "range": {
+        "startLine": 782,
+        "startChar": 18,
+        "endLine": 782,
+        "endChar": 58
+      },
+      "revId": "7119132f853054d9b7fc810c41dd110060885037",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee062c92_379c21ad",
         "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
         "patchSetId": 10
@@ -76,6 +118,30 @@
       "writtenOn": "2018-04-24T13:41:03Z",
       "side": 1,
       "message": "This is a lot uglier then what we had before, is there some way we can hide this in the cpp file that gives us FPDFDocumentDeleter?",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "7119132f853054d9b7fc810c41dd110060885037",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6895ea1b_58cabc9b",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-24T19:39:03Z",
+      "side": 1,
+      "message": "Sounds good.  Will do as a prequel CL.  Stay tuned.",
+      "parentUuid": "ee062c92_379c21ad",
       "range": {
         "startLine": 79,
         "startChar": 18,
