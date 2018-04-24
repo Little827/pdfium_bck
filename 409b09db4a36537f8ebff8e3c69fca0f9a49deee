@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4228e2fc_9bd52115",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-24T18:09:09Z",
+      "side": 1,
+      "message": "nit: just say\n// Must outlive the WideStringViews below.",
+      "range": {
+        "startLine": 1514,
+        "startChar": 6,
+        "endLine": 1515,
+        "endChar": 69
+      },
+      "revId": "409b09db4a36537f8ebff8e3c69fca0f9a49deee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
