@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af1ef317_0904c331",
+        "filename": "xfa/fwl/cfwl_edit.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-24T20:51:55Z",
+      "side": 1,
+      "message": "Why don\u0027t these use the FWL_VKEY anymore?",
+      "range": {
+        "startLine": 1253,
+        "startChar": 0,
+        "endLine": 1253,
+        "endChar": 15
+      },
+      "revId": "afddb719986c44bcffbdd56dd2fc3e8d0262777f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
