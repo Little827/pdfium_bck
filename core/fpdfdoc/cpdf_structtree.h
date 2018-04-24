@@ -18,7 +18,10 @@ class CPDF_Dictionary;
 class CPDF_Document;
 class CPDF_StructElement;
 
-class CPDF_StructTree {
+// CPDF_StructTree is a FPDF API object.
+struct fpdf_structtree_t__ {};
+
+class CPDF_StructTree : public fpdf_structtree_t__ {
  public:
   static std::unique_ptr<CPDF_StructTree> LoadPage(
       const CPDF_Document* pDoc,

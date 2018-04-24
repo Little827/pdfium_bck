@@ -28,7 +28,10 @@ class CPDF_Type1Font;
 class CPDF_Type3Font;
 class CPDF_ToUnicodeMap;
 
-class CPDF_Font {
+// CPDF_Font is an FPDF API object.
+struct fpdf_font_t__ {};
+
+class CPDF_Font : public fpdf_font_t__ {
  public:
   static std::unique_ptr<CPDF_Font> Create(CPDF_Document* pDoc,
                                            CPDF_Dictionary* pFontDict);

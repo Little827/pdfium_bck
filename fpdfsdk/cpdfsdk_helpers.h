@@ -7,6 +7,8 @@
 #ifndef FPDFSDK_CPDFSDK_HELPERS_H_
 #define FPDFSDK_CPDFSDK_HELPERS_H_
 
+#include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/fx_dib.h"
@@ -23,8 +25,6 @@
 #endif
 
 class CPDF_Annot;
-class CPDF_Page;
-class CPDF_PageObject;
 class CPDF_PageRenderContext;
 class CPDF_PathObject;
 class CPDF_Stream;

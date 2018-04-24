@@ -13,7 +13,10 @@
 #include "core/fxge/dib/cfx_dibsource.h"
 #include "third_party/base/stl_util.h"
 
-class CFX_DIBitmap : public CFX_DIBSource {
+// CFX_DIBitmap is an FPDF API object.
+struct fpdf_bitmap_t__ {};
+
+class CFX_DIBitmap : public fpdf_bitmap_t__, public CFX_DIBSource {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
