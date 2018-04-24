@@ -5,6 +5,9 @@
 #ifndef PUBLIC_CPP_FPDF_DELETERS_H_
 #define PUBLIC_CPP_FPDF_DELETERS_H_
 
+#include <memory>
+#include <type_traits>
+
 #include "public/fpdf_annot.h"
 #include "public/fpdf_dataavail.h"
 #include "public/fpdf_edit.h"
@@ -52,5 +55,37 @@ struct FPDFStructTreeDeleter {
 struct FPDFFontDeleter {
   inline void operator()(FPDF_FONT font) { FPDFFont_Close(font); }
 };
+
+using UniqueFPDFAnnotation =
+    std::unique_ptr<std::remove_pointer<FPDF_ANNOTATION>::type,
+                    FPDFAnnotationDeleter>;
+
+using UniqueFPDFAvail =
+    std::unique_ptr<std::remove_pointer<FPDF_AVAIL>::type, FPDFAvailDeleter>;
+
+using UniqueFPDFBitmap =
+    std::unique_ptr<std::remove_pointer<FPDF_BITMAP>::type, FPDFBitmapDeleter>;
+
+using UniqueFPDFDocument =
+    std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type,
+                    FPDFDocumentDeleter>;
+
+using UniqueFPDFFormHandle =
+    std::unique_ptr<std::remove_pointer<FPDF_FORMHANDLE>::type,
+                    FPDFFormHandleDeleter>;
+
+using UniqueFPDFTextPage =
+    std::unique_ptr<std::remove_pointer<FPDF_TEXTPAGE>::type,
+                    FPDFTextPageDeleter>;
+
+using UniqueFPDFPage =
+    std::unique_ptr<std::remove_pointer<FPDF_PAGE>::type, FPDFPageDeleter>;
+
+using UniqueFPDFStructTree =
+    std::unique_ptr<std::remove_pointer<FPDF_STRUCTTREE>::type,
+                    FPDFStructTreeDeleter>;
+
+using UniqueFPDFFont =
+    std::unique_ptr<std::remove_pointer<FPDF_FONT>::type, FPDFFontDeleter>;
 
 #endif  // PUBLIC_CPP_FPDF_DELETERS_H_
