@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6094b543_4108fc09",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-24T13:41:03Z",
+      "side": 1,
+      "message": "The double _ is kinda ugly ....",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "7119132f853054d9b7fc810c41dd110060885037",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c96b5f04_c1fdb1f5",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 10
@@ -34,6 +57,29 @@
         "startLine": 782,
         "startChar": 18,
         "endLine": 782,
+        "endChar": 58
+      },
+      "revId": "7119132f853054d9b7fc810c41dd110060885037",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee062c92_379c21ad",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-24T13:41:03Z",
+      "side": 1,
+      "message": "This is a lot uglier then what we had before, is there some way we can hide this in the cpp file that gives us FPDFDocumentDeleter?",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
         "endChar": 58
       },
       "revId": "7119132f853054d9b7fc810c41dd110060885037",
