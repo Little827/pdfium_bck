@@ -16,7 +16,10 @@
 
 class CPDF_Dictionary;
 
-class CPDF_ContentMarkItem {
+// CPDF_ContentMarkItem is an FPDF API object.
+struct fpdf_pageobjectmark_t__ {};
+
+class CPDF_ContentMarkItem : public fpdf_pageobjectmark_t__ {
  public:
   enum ParamType { None, PropertiesDict, DirectDict };
 
