@@ -22,6 +22,30 @@
       "revId": "de9380ea68a7974891fce92fba4de7dcdb456393",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bab8f75_d191146a",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-24T20:54:00Z",
+      "side": 1,
+      "message": "Yes, theres a reference to a stream at 67 that only occurs in xfa-cases.",
+      "parentUuid": "6f3e15fa_0f3325c2",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "de9380ea68a7974891fce92fba4de7dcdb456393",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
