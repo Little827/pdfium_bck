@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f64b7be3_8d6ead2d",
+        "filename": "xfa/fwl/cfwl_caret.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-24T20:51:04Z",
+      "side": 1,
+      "message": "If this shows immediately, should we flip what the timer is doing to hide on the first timeout? Otherwise, won\u0027t you get a double \u0027show\u0027 at the start?",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "d5f55db36f4d735175a0d16deb2c73d1fcd99e3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
