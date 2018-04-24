@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46eec4e7_6d25b40d",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-24T14:14:06Z",
+      "side": 0,
+      "message": "This doesn\u0027t do anything ... as far as I can tell there are no side effects from GetTextData.",
+      "range": {
+        "startLine": 553,
+        "startChar": 29,
+        "endLine": 553,
+        "endChar": 60
+      },
+      "revId": "2dca1cbf595618e06547a2c464d82c47b6acace6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
