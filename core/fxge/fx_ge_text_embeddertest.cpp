@@ -14,7 +14,7 @@ TEST_F(FXGETextEmbedderTest, BadItalic) {
   EXPECT_TRUE(OpenDocument("bug_601362.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
-  std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
+  UniqueFPDFBitmap bitmap = RenderLoadedPage(page);
   EXPECT_EQ(612, FPDFBitmap_GetWidth(bitmap.get()));
   EXPECT_EQ(792, FPDFBitmap_GetHeight(bitmap.get()));
   UnloadPage(page);

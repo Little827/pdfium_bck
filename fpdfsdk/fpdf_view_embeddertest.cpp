@@ -439,7 +439,7 @@ TEST_F(FPDFViewEmbeddertest, FPDF_RenderPageBitmapWithMatrix) {
   EXPECT_EQ(200, page_width);
   EXPECT_EQ(300, page_height);
 
-  std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
+  UniqueFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), page_width, page_height, kOriginalMD5);
 
   FS_RECTF page_rect{0, 0, page_width, page_height};

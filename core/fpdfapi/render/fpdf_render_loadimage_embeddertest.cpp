@@ -15,7 +15,7 @@ TEST_F(FPDFRenderLoadImageEmbeddertest, Bug_554151) {
   EXPECT_TRUE(OpenDocument("bug_554151.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
-  std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
+  UniqueFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 612, 792, "a14d7ee573c1b2456d7bf6b7762823cf");
   UnloadPage(page);
 }
@@ -25,7 +25,7 @@ TEST_F(FPDFRenderLoadImageEmbeddertest, Bug_557223) {
   EXPECT_TRUE(OpenDocument("bug_557223.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
-  std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
+  UniqueFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 24, 24, "dc0ea1b743c2edb22c597cadc8537f7b");
   UnloadPage(page);
 }
@@ -35,7 +35,7 @@ TEST_F(FPDFRenderLoadImageEmbeddertest, Bug_603518) {
   EXPECT_TRUE(OpenDocument("bug_603518.pdf"));
   FPDF_PAGE page = LoadPage(0);
   EXPECT_NE(nullptr, page);
-  std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
+  UniqueFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 749, 749, "b9e75190cdc5edf0069a408744ca07dc");
   UnloadPage(page);
 }

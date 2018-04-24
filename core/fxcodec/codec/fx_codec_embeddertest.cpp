@@ -15,7 +15,7 @@ TEST_F(FXCodecEmbeddertest, Bug_631912) {
   EXPECT_TRUE(OpenDocument("bug_631912.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
-  std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
+  UniqueFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 691, 432, "24d75af646f8772c5ee7ced260452ae4");
   UnloadPage(page);
 }

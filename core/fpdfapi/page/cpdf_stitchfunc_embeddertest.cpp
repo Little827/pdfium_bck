@@ -16,7 +16,7 @@ TEST_F(FPDFPageFuncEmbeddertest, Bug_551460) {
   EXPECT_TRUE(OpenDocument("bug_551460.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
-  std::unique_ptr<void, FPDFBitmapDeleter> bitmap = RenderLoadedPage(page);
+  UniqueFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 612, 792, "1940568c9ba33bac5d0b1ee9558c76b3");
   UnloadPage(page);
 }
