@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1524639629 -0700\nnonce AFN+CTIAd7AvkWyW/hmD+akj6P3VqGXUJI5wvT5C3R4N5QB3mINCr32P8kij44tJtnVaTBmiTYbU\n\n0000000000000000000000000000000000000000 81cb7badc05b71ec254c79a51d87cb3bd6733f17 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrgJ40ACgkQqzYtYVpm\n/Xuwlgf+I1Y7VIMWVAWcEYwJ9Ce/qgb00noG6oPjLqozLXCoknQQ4x8/JRZ5zl6z\n8H3DY9uZmb9lz+XAD09pEOKT01rFoQy6qOm0sghJM5J8c/ANKW5USMjyMQ1EqP0d\naYn0Mt1NQIyqJp2UCtyjQhffF4/hCA5nZ0N8d/uTPRbPgJy/bw3q3yh7H73Tw67U\nQV61Lm0CUQ+9USnefJT1/t6FtWRCLkn5cs/S6CM3XPxLTtSqSq5pzPw9eBO3Adew\nDbjQUdYQWhkZjE9jMCVEJfg+y2jMPOf6FNYlxCtPb2o/OaNa0kYd3oSw2el4Pj2k\noYRyu9uib7OlwaT+PFwYIt/FAIiaIw\u003d\u003d\n\u003dRdQo\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "386410d6_e75245d9",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 6675
+      },
+      "writtenOn": "2018-04-25T17:44:08Z",
+      "side": 1,
+      "message": "Maybe we should note here that these modes output the PostScript as comments in an EMF file to further clarify the difference between the modes. WDYT?",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 74
+      },
+      "revId": "81cb7badc05b71ec254c79a51d87cb3bd6733f17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
