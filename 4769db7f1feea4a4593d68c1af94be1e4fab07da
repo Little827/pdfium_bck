@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87ebe25_527194a1",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:26:46Z",
+      "side": 1,
+      "message": "AHA! this was likely the cast that forced my fpdf_foo_t__ to fail; it becomes a reinterpret which is wrong in face of multiple inheritence when there is a type botch (this should be returning an array).",
+      "range": {
+        "startLine": 1153,
+        "startChar": 2,
+        "endLine": 1153,
+        "endChar": 8
+      },
+      "revId": "4769db7f1feea4a4593d68c1af94be1e4fab07da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
