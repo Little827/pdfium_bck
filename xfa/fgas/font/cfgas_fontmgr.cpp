@@ -1127,17 +1127,19 @@ void CFGAS_FontMgr::RemoveFont(const RetainPtr<CFGAS_GEFont>& pEFont) {
   m_IFXFont2FileRead.erase(pEFont);
 #endif  // _FX_PLATFORM_ != _FX_PLATFORM_WINDOWS_
 
-  auto iter = m_Hash2Fonts.begin();
-  while (iter != m_Hash2Fonts.end()) {
-    auto old_iter = iter++;
+  std::set<uint32_t> to_remove;
+  for (auto iter : m_Hash2Fonts) {
     bool all_empty = true;
-    for (size_t i = 0; i < old_iter->second.size(); i++) {
-      if (old_iter->second[i] == pEFont)
-        old_iter->second[i].Reset();
-      else if (old_iter->second[i])
+    for (size_t i = 0; i < iter.second.size(); i++) {
+      if (iter.second[i] == pEFont)
+        iter.second[i].Reset();
+      else if (iter.second[i])
         all_empty = false;
     }
     if (all_empty)
-      m_Hash2Fonts.erase(old_iter);
+      to_remove.insert(iter.first);
   }
+
+  for (auto key : to_remove)
+    m_Hash2Fonts.erase(key);
 }
