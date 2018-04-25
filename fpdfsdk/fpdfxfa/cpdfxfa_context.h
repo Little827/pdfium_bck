@@ -32,7 +32,10 @@ enum LoadStatus {
   FXFA_LOADSTATUS_CLOSED
 };
 
-class CPDFXFA_Context : public IXFA_AppProvider {
+// CPDFXFA_Context is an FPDF API public object.
+struct fpdf_document_t__ {};
+
+class CPDFXFA_Context : public fpdf_document_t__, public IXFA_AppProvider {
  public:
   explicit CPDFXFA_Context(std::unique_ptr<CPDF_Document> pPDFDoc);
   ~CPDFXFA_Context() override;
