@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c542e32_77e91b50",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-25T14:17:33Z",
+      "side": 1,
+      "message": "It\u0027s hard to wrap my head around why this is named \"m_pChild\". m_pChild-\u003eGetParent() should be \u003d this...",
+      "range": {
+        "startLine": 118,
+        "startChar": 13,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "a2479efa2d20d05a377e877d413b356eddedd5ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb767fa9_b651ace9",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-25T14:17:33Z",
+      "side": 1,
+      "message": "So m_NodeStack used to have the stack of parents, and we\u0027re keeping the behavior of \"if is only one level from the top\"?",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 45
+      },
+      "revId": "a2479efa2d20d05a377e877d413b356eddedd5ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
