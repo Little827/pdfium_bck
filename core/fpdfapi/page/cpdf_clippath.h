@@ -18,7 +18,10 @@
 class CPDF_Path;
 class CPDF_TextObject;
 
-class CPDF_ClipPath {
+// CPDF_ClipPath is an FPDF API object.
+struct fpdf_clippath_t__ {};
+
+class CPDF_ClipPath : public fpdf_clippath_t__ {
  public:
   CPDF_ClipPath();
   CPDF_ClipPath(const CPDF_ClipPath& that);

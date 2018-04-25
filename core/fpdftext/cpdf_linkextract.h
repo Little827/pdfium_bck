@@ -15,7 +15,10 @@
 
 class CPDF_TextPage;
 
-class CPDF_LinkExtract {
+// CPDF_LinkExtract is an FPDF API object.
+struct fpdf_pagelink_t__ {};
+
+class CPDF_LinkExtract : public fpdf_pagelink_t__ {
  public:
   explicit CPDF_LinkExtract(const CPDF_TextPage* pTextPage);
   ~CPDF_LinkExtract();
