@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22d4c312_c291152e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-25T16:39:24Z",
+      "side": 1,
+      "message": "I agree with your reading of the documentation. I must have misread/glossed of that, I thought all iterators could be potentially invalidated when modifying the contents of a map.",
+      "parentUuid": "655d4c9f_61f47acd",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "3af13dfcf77c21c563406a87cfedfffde714df78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b23d81fd_b407cb1e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
