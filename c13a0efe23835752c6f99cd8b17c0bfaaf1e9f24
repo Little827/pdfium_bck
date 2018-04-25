@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a649f911_ba785652",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-25T20:46:14Z",
+      "side": 1,
+      "message": "What is CE? I searched for that but couldn\u0027t figure what it was.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "c13a0efe23835752c6f99cd8b17c0bfaaf1e9f24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca496f31_58044127",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -34,6 +57,29 @@
         "id": 5045
       },
       "writtenOn": "2018-04-25T20:45:20Z",
+      "side": 1,
+      "message": "care",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "c13a0efe23835752c6f99cd8b17c0bfaaf1e9f24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297fe55b_c7905c96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-25T20:46:14Z",
       "side": 1,
       "message": "care",
       "range": {
