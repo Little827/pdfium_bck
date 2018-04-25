@@ -539,12 +539,6 @@ CXFA_Node::CXFA_Node(CXFA_Document* pDoc,
 
 CXFA_Node::~CXFA_Node() = default;
 
-void CXFA_Node::ReleaseXMLNodeIfUnowned() {
-  // Note, this is intentionally non-recursive. The caller is responsible for
-  // triggering this on all the nodes which need it.
-  xml_node_.ResetIfUnowned();
-}
-
 CXFA_Node* CXFA_Node::Clone(bool bRecursive) {
   CXFA_Node* pClone = m_pDocument->CreateNode(m_ePacket, m_elementType);
   if (!pClone)
@@ -560,16 +554,22 @@ CXFA_Node* CXFA_Node::Clone(bool bRecursive) {
                               .value_or(WideString());
       auto pCloneXMLElement = pdfium::MakeUnique<CFX_XMLElement>(wsName);
       WideString wsValue = JSObject()->GetCData(XFA_Attribute::Value);
-      if (!wsValue.IsEmpty())
-        pCloneXMLElement->SetTextData(WideString(wsValue));
+      if (!wsValue.IsEmpty()) {
+        auto text = pdfium::MakeUnique<CFX_XMLText>(wsValue);
+        pCloneXMLElement->AppendChild(text.get());
+        GetDocument()->GetNotify()->GetHDOC()->GetXMLDocument()->AddNode(
+            std::move(text));
+      }
 
-      pCloneXML.reset(pCloneXMLElement.release());
+      pCloneXML = std::move(pCloneXMLElement);
       pClone->JSObject()->SetEnum(XFA_Attribute::Contains,
                                   XFA_AttributeEnum::Unknown, false);
     } else {
       pCloneXML = xml_node_->Clone();
     }
-    pClone->SetXMLMappingNode(std::move(pCloneXML));
+    pClone->SetXMLMappingNode(pCloneXML.get());
+    GetDocument()->GetNotify()->GetHDOC()->GetXMLDocument()->AddNode(
+        std::move(pCloneXML));
   }
   if (bRecursive) {
     for (CXFA_Node* pChild = GetFirstChild(); pChild;
@@ -1158,8 +1158,7 @@ void CXFA_Node::InsertChild(int32_t index, CXFA_Node* pNode) {
     return;
 
   ASSERT(!pNode->xml_node_->GetParent());
-  ASSERT(pNode->xml_node_.IsOwned());
-  xml_node_->InsertChildNode(pNode->xml_node_.Release(), index);
+  xml_node_->InsertChildNode(pNode->xml_node_.Get(), index);
 }
 
 void CXFA_Node::InsertChild(CXFA_Node* pNode, CXFA_Node* pBeforeNode) {
@@ -1214,13 +1213,7 @@ void CXFA_Node::RemoveChild(CXFA_Node* pNode, bool bNotify) {
     return;
 
   if (!pNode->IsAttributeInXML()) {
-    // This XML node _must_ be in the xml tree if we arrived here, so it is
-    // unowned by the XFA_Node. We turn the nodes pointer into a unique_ptr,
-    // remove from the XML tree and then assign the owned pointer back onto the
-    // XFA_Node.
-    auto node = pdfium::WrapUnique<CFX_XMLNode>(pNode->xml_node_.Get());
-    xml_node_->RemoveChildNode(node.get());
-    pNode->xml_node_.Reset(std::move(node));
+    xml_node_->RemoveChildNode(pNode->xml_node_.Get());
     return;
   }
 
@@ -1239,10 +1232,16 @@ void CXFA_Node::RemoveChild(CXFA_Node* pNode, bool bNotify) {
                           .value_or(WideString());
   auto pNewXMLElement = pdfium::MakeUnique<CFX_XMLElement>(wsName);
   WideString wsValue = JSObject()->GetCData(XFA_Attribute::Value);
-  if (!wsValue.IsEmpty())
-    pNewXMLElement->SetTextData(WideString(wsValue));
+  if (!wsValue.IsEmpty()) {
+    auto text = pdfium::MakeUnique<CFX_XMLText>(wsValue);
+    pNewXMLElement->AppendChild(text.get());
+    GetDocument()->GetNotify()->GetHDOC()->GetXMLDocument()->AddNode(
+        std::move(text));
+  }
 
-  pNode->xml_node_.Reset(std::move(pNewXMLElement));
+  pNode->xml_node_ = pNewXMLElement.get();
+  GetDocument()->GetNotify()->GetHDOC()->GetXMLDocument()->AddNode(
+      std::move(pNewXMLElement));
   pNode->JSObject()->SetEnum(XFA_Attribute::Contains,
                              XFA_AttributeEnum::Unknown, false);
 }
@@ -1384,8 +1383,11 @@ void CXFA_Node::UpdateNameHash() {
 
 CFX_XMLNode* CXFA_Node::CreateXMLMappingNode() {
   if (!xml_node_) {
-    xml_node_ = pdfium::MakeUnique<CFX_XMLElement>(
+    auto elem = pdfium::MakeUnique<CFX_XMLElement>(
         JSObject()->GetCData(XFA_Attribute::Name));
+    xml_node_ = elem.get();
+    GetDocument()->GetNotify()->GetHDOC()->GetXMLDocument()->AddNode(
+        std::move(elem));
   }
   return xml_node_.Get();
 }
@@ -4674,7 +4676,10 @@ void CXFA_Node::SetToXML(const WideString& value) {
       if (bDeleteChildren)
         elem->DeleteChildren();
 
-      elem->SetTextData(value);
+      auto text = pdfium::MakeUnique<CFX_XMLText>(value);
+      elem->AppendChild(text.get());
+      GetDocument()->GetNotify()->GetHDOC()->GetXMLDocument()->AddNode(
+          std::move(text));
       break;
     }
     case FX_XMLNODE_Text:

@@ -10,6 +10,7 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/cfx_memorystream.h"
 #include "core/fxcrt/fx_codepage.h"
+#include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmlparser.h"
 
@@ -68,14 +69,14 @@ std::vector<UnsupportedFeature> CPDF_Metadata::CheckForSharedForm() const {
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(stream_.Get());
   pAcc->LoadAllDataFiltered();
 
-  auto root = pdfium::MakeUnique<CFX_XMLElement>(L"root");
   auto stream = pdfium::MakeRetain<CFX_MemoryStream>(pAcc->GetData(),
                                                      pAcc->GetSize(), false);
-  CFX_XMLParser parser(root.get(), stream);
-  if (!parser.Parse())
+  CFX_XMLParser parser(stream);
+  auto doc = parser.Parse();
+  if (!doc || !doc->GetRoot())
     return {};
 
   std::vector<UnsupportedFeature> unsupported;
-  CheckForSharedFormInternal(root.get(), &unsupported);
+  CheckForSharedFormInternal(doc->GetRoot(), &unsupported);
   return unsupported;
 }

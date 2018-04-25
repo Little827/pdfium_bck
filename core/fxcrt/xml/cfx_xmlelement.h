@@ -44,7 +44,6 @@ class CFX_XMLElement : public CFX_XMLNode {
   WideString GetNamespaceURI() const;
 
   WideString GetTextData() const;
-  void SetTextData(const WideString& wsText);
 
  private:
   WideString AttributeToString(const WideString& name, const WideString& value);

@@ -11,7 +11,9 @@
 
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_fallthrough.h"
+#include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "fxjs/cfxjse_engine.h"
+#include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/parser/cscript_datawindow.h"
 #include "xfa/fxfa/parser/cscript_eventpseudomodel.h"
@@ -1633,10 +1635,11 @@ void CXFA_Document::DoDataMerge() {
     pDatasetsRoot->JSObject()->SetCData(XFA_Attribute::Name, L"datasets", false,
                                         false);
 
-    CFX_XMLElement* ref = pDatasetsXMLNode.get();
-    m_pRootNode->GetXMLMappingNode()->AppendChild(std::move(pDatasetsXMLNode));
+    m_pRootNode->GetXMLMappingNode()->AppendChild(pDatasetsXMLNode.get());
     m_pRootNode->InsertChild(pDatasetsRoot, nullptr);
-    pDatasetsRoot->SetXMLMappingNode(ref);
+
+    pDatasetsRoot->SetXMLMappingNode(pDatasetsXMLNode.get());
+    notify_->GetHDOC()->GetXMLDocument()->AddNode(std::move(pDatasetsXMLNode));
   }
 
   CXFA_Node *pDataRoot = nullptr, *pDDRoot = nullptr;
@@ -1669,8 +1672,10 @@ void CXFA_Document::DoDataMerge() {
   if (!pDataRoot) {
     pDataRoot = CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
     pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, L"data", false, false);
-    pDataRoot->SetXMLMappingNode(
-        pdfium::MakeUnique<CFX_XMLElement>(L"xfa:data"));
+    auto elem = pdfium::MakeUnique<CFX_XMLElement>(L"xfa:data");
+    pDataRoot->SetXMLMappingNode(elem.get());
+    notify_->GetHDOC()->GetXMLDocument()->AddNode(std::move(elem));
+
     pDatasetsRoot->InsertChild(pDataRoot, nullptr);
   }
 
@@ -1724,8 +1729,9 @@ void CXFA_Document::DoDataMerge() {
         CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup));
     pDataTopLevel->JSObject()->SetCData(XFA_Attribute::Name, wsDataTopLevelName,
                                         false, false);
-    pDataTopLevel->SetXMLMappingNode(
-        pdfium::MakeUnique<CFX_XMLElement>(wsDataTopLevelName));
+    auto elem = pdfium::MakeUnique<CFX_XMLElement>(wsDataTopLevelName);
+    pDataTopLevel->SetXMLMappingNode(elem.get());
+    notify_->GetHDOC()->GetXMLDocument()->AddNode(std::move(elem));
 
     CXFA_Node* pBeforeNode = pDataRoot->GetFirstChild();
     pDataRoot->InsertChild(pDataTopLevel, pBeforeNode);
