@@ -18,7 +18,10 @@ class CPDF_ImageObject;
 class CPDF_ShadingObject;
 class CPDF_FormObject;
 
-class CPDF_PageObject : public CPDF_GraphicStates {
+// CPDF_PageObject is an FPDF API object.
+struct fpdf_pageobject_t__ {};
+
+class CPDF_PageObject : public fpdf_pageobject_t__, public CPDF_GraphicStates {
  public:
   enum Type {
     TEXT = 1,

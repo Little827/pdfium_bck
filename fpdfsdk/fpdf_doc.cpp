@@ -134,13 +134,13 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDFBookmark_GetDest(FPDF_DOCUMENT document,
   CPDF_Bookmark bookmark(CPDFDictionaryFromFPDFBookmark(pDict));
   CPDF_Dest dest = bookmark.GetDest(pDoc);
   if (dest.GetObject())
-    return dest.GetObject();
+    return ToArray(dest.GetObject());
   // If this bookmark is not directly associated with a dest, we try to get
   // action
   CPDF_Action action = bookmark.GetAction();
   if (!action.GetDict())
     return nullptr;
-  return action.GetDest(pDoc).GetObject();
+  return ToArray(action.GetDest(pDoc).GetObject());
 }
 
 FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV
@@ -179,7 +179,7 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDFAction_GetDest(FPDF_DOCUMENT document,
   if (!pDoc)
     return nullptr;
   CPDF_Action action(CPDFDictionaryFromFPDFAction(pDict));
-  return action.GetDest(pDoc).GetObject();
+  return ToArray(action.GetDest(pDoc).GetObject());
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
@@ -328,14 +328,14 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDFLink_GetDest(FPDF_DOCUMENT document,
   if (!pDoc)
     return nullptr;
   CPDF_Link link(CPDFDictionaryFromFPDFLink(pDict));
-  FPDF_DEST dest = link.GetDest(pDoc).GetObject();
+  FPDF_DEST dest = ToArray(link.GetDest(pDoc).GetObject());
   if (dest)
     return dest;
   // If this link is not directly associated with a dest, we try to get action
   CPDF_Action action = link.GetAction();
   if (!action.GetDict())
     return nullptr;
-  return action.GetDest(pDoc).GetObject();
+  return ToArray(action.GetDest(pDoc).GetObject());
 }
 
 FPDF_EXPORT FPDF_ACTION FPDF_CALLCONV FPDFLink_GetAction(FPDF_LINK pDict) {

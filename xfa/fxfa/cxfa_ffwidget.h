@@ -85,7 +85,10 @@ enum class XFA_FFWidgetType {
   kExclGroup
 };
 
-class CXFA_FFWidget : public CXFA_ContentLayoutItem {
+// CXFA_Widget is an FPDF API object.
+struct fpdf_widget_t__ {};
+
+class CXFA_FFWidget : public fpdf_widget_t__, public CXFA_ContentLayoutItem {
  public:
   explicit CXFA_FFWidget(CXFA_Node* pNode);
   ~CXFA_FFWidget() override;

@@ -13,7 +13,10 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/cfx_renderdevice.h"
 
-class FX_PATHPOINT {
+// FX_PATHPOINT is an FPDF API object.
+struct fpdf_pathsegment_t__ {};
+
+class FX_PATHPOINT : public fpdf_pathsegment_t__ {
  public:
   FX_PATHPOINT();
   FX_PATHPOINT(const CFX_PointF& point, FXPT_TYPE type, bool close);

@@ -25,7 +25,16 @@ class CPDF_Stream;
 class CPDF_String;
 class IFX_ArchiveStream;
 
-class CPDF_Object {
+// CPDF_Object is several FPDF API objects.
+struct fpdf_action_t__ {};
+struct fpdf_attachment_t__ {};
+struct fpdf_bookmark_t__ {};
+struct fpdf_link_t__ {};
+
+class CPDF_Object : public fpdf_action_t__,
+                    public fpdf_attachment_t__,
+                    public fpdf_bookmark_t__,
+                    public fpdf_link_t__ {
  public:
   static const uint32_t kInvalidObjNum = static_cast<uint32_t>(-1);
   enum Type {

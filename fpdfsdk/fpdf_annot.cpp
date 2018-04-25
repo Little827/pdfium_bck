@@ -141,45 +141,6 @@ static_assert(static_cast<int>(CPDF_Object::Type::REFERENCE) ==
                   FPDF_OBJECT_REFERENCE,
               "CPDF_Object::REFERENCE value mismatch");
 
-class CPDF_AnnotContext {
- public:
-  CPDF_AnnotContext(CPDF_Dictionary* pAnnotDict,
-                    CPDF_Page* pPage,
-                    CPDF_Stream* pStream)
-      : m_pAnnotDict(pAnnotDict), m_pPage(pPage) {
-    SetForm(pStream);
-  }
-  ~CPDF_AnnotContext() {}
-
-  bool HasForm() const { return !!m_pAnnotForm; }
-
-  void SetForm(CPDF_Stream* pStream) {
-    if (!pStream)
-      return;
-
-    // Reset the annotation matrix to be the identity matrix, since the
-    // appearance stream already takes matrix into account.
-    pStream->GetDict()->SetMatrixFor("Matrix", CFX_Matrix());
-
-    m_pAnnotForm = pdfium::MakeUnique<CPDF_Form>(
-        m_pPage->m_pDocument.Get(), m_pPage->m_pResources.Get(), pStream);
-    m_pAnnotForm->ParseContent();
-  }
-
-  CPDF_Form* GetForm() const { return m_pAnnotForm.get(); }
-  CPDF_Dictionary* GetAnnotDict() const { return m_pAnnotDict.Get(); }
-  CPDF_Page* GetPage() const { return m_pPage.Get(); }
-
- private:
-  std::unique_ptr<CPDF_Form> m_pAnnotForm;
-  UnownedPtr<CPDF_Dictionary> m_pAnnotDict;
-  UnownedPtr<CPDF_Page> m_pPage;
-};
-
-CPDF_AnnotContext* CPDFAnnotContextFromFPDFAnnotation(FPDF_ANNOTATION annot) {
-  return static_cast<CPDF_AnnotContext*>(annot);
-}
-
 bool HasAPStream(const CPDF_Dictionary* pAnnotDict) {
   return !!FPDFDOC_GetAnnotAP(pAnnotDict, CPDF_Annot::AppearanceMode::Normal);
 }
@@ -240,6 +201,48 @@ void UpdateBBox(const CPDF_Dictionary* annot_dict) {
 }
 
 }  // namespace
+
+// CPDF_AnnotContext is an FPDF API object.
+struct fpdf_annotation_t__ {};
+
+class CPDF_AnnotContext : public fpdf_annotation_t__ {
+ public:
+  CPDF_AnnotContext(CPDF_Dictionary* pAnnotDict,
+                    CPDF_Page* pPage,
+                    CPDF_Stream* pStream)
+      : m_pAnnotDict(pAnnotDict), m_pPage(pPage) {
+    SetForm(pStream);
+  }
+  ~CPDF_AnnotContext() {}
+
+  bool HasForm() const { return !!m_pAnnotForm; }
+
+  void SetForm(CPDF_Stream* pStream) {
+    if (!pStream)
+      return;
+
+    // Reset the annotation matrix to be the identity matrix, since the
+    // appearance stream already takes matrix into account.
+    pStream->GetDict()->SetMatrixFor("Matrix", CFX_Matrix());
+
+    m_pAnnotForm = pdfium::MakeUnique<CPDF_Form>(
+        m_pPage->m_pDocument.Get(), m_pPage->m_pResources.Get(), pStream);
+    m_pAnnotForm->ParseContent();
+  }
+
+  CPDF_Form* GetForm() const { return m_pAnnotForm.get(); }
+  CPDF_Dictionary* GetAnnotDict() const { return m_pAnnotDict.Get(); }
+  CPDF_Page* GetPage() const { return m_pPage.Get(); }
+
+ private:
+  std::unique_ptr<CPDF_Form> m_pAnnotForm;
+  UnownedPtr<CPDF_Dictionary> m_pAnnotDict;
+  UnownedPtr<CPDF_Page> m_pPage;
+};
+
+CPDF_AnnotContext* CPDFAnnotContextFromFPDFAnnotation(FPDF_ANNOTATION annot) {
+  return static_cast<CPDF_AnnotContext*>(annot);
+}
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_IsSupportedSubtype(FPDF_ANNOTATION_SUBTYPE subtype) {

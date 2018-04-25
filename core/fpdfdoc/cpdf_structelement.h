@@ -34,7 +34,10 @@ class CPDF_StructKid {
   uint32_t m_ContentId;   // For PageContent, StreamContent.
 };
 
-class CPDF_StructElement : public Retainable {
+// CPDF_StructElement is an FPDF API object.
+struct fpdf_structelement_t__ {};
+
+class CPDF_StructElement : public fpdf_structelement_t__, public Retainable {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);

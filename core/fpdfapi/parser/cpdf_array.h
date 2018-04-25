@@ -18,7 +18,13 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "third_party/base/ptr_util.h"
 
-class CPDF_Array : public CPDF_Object {
+// CPDF_Array is several FPDF API objects.
+struct fpdf_dest_t__ {};
+struct fpdf_pagerange_t__ {};
+
+class CPDF_Array : public fpdf_dest_t__,
+                   public fpdf_pagerange_t__,
+                   public CPDF_Object {
  public:
   using const_iterator =
       std::vector<std::unique_ptr<CPDF_Object>>::const_iterator;

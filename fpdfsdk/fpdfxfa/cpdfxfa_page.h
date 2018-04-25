@@ -20,7 +20,10 @@ class CPDF_Dictionary;
 class CPDF_Page;
 class CXFA_FFPageView;
 
-class CPDFXFA_Page : public Retainable {
+// CPDFXFA_Page is an FPDF API public object.
+struct fpdf_page_t__ {};
+
+class CPDFXFA_Page : public fpdf_page_t__, public Retainable {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);

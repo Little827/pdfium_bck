@@ -17,7 +17,10 @@
 
 class CPDF_TextPage;
 
-class CPDF_TextPageFind {
+// CPDF_TextPageFind is an FPDF API object.
+struct fpdf_schandle_t__ {};
+
+class CPDF_TextPageFind : public fpdf_schandle_t__ {
  public:
   explicit CPDF_TextPageFind(const CPDF_TextPage* pTextPage);
   ~CPDF_TextPageFind();
