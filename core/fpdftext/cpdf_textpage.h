@@ -89,7 +89,10 @@ struct PDFTEXT_Obj {
   CFX_Matrix m_formMatrix;
 };
 
-class CPDF_TextPage {
+// CPDF_TextPage is a FPDF API object.
+struct fpdf_textpage_t__ {};
+
+class CPDF_TextPage : public fpdf_textpage_t__ {
  public:
   CPDF_TextPage(const CPDF_Page* pPage, FPDFText_Direction flags);
   ~CPDF_TextPage();
