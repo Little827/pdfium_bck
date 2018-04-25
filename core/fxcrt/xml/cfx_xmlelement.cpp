@@ -32,13 +32,11 @@ std::unique_ptr<CFX_XMLNode> CFX_XMLElement::Clone() {
 
   // TODO(dsinclair): This clone is wrong. It doesn't clone child nodes just
   // copies text nodes?
-  WideString wsText;
   for (CFX_XMLNode* pChild = GetFirstChild(); pChild;
        pChild = pChild->GetNextSibling()) {
     if (pChild->GetType() == FX_XMLNODE_Text)
-      wsText += static_cast<CFX_XMLText*>(pChild)->GetText();
+      pClone->AppendChild(pChild);
   }
-  pClone->SetTextData(wsText);
   return std::move(pClone);
 }
 
@@ -60,7 +58,6 @@ WideString CFX_XMLElement::GetNamespaceURI() const {
     attr += L":";
     attr += wsPrefix;
   }
-
   const CFX_XMLNode* pNode = this;
   while (pNode) {
     if (pNode->GetType() != FX_XMLNODE_Element)
@@ -87,13 +84,6 @@ WideString CFX_XMLElement::GetTextData() const {
     }
   }
   return buffer.MakeString();
-}
-
-void CFX_XMLElement::SetTextData(const WideString& wsText) {
-  // TODO(dsinclair): Shouldn't this remove the children if you set blank text?
-  if (wsText.IsEmpty())
-    return;
-  AppendChild(pdfium::MakeUnique<CFX_XMLText>(wsText));
 }
 
 void CFX_XMLElement::Save(
