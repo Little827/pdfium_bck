@@ -23,6 +23,30 @@
       "revId": "81cb7badc05b71ec254c79a51d87cb3bd6733f17",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e76edf42_77c6f6c1",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-25T20:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "386410d6_e75245d9",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 74
+      },
+      "revId": "81cb7badc05b71ec254c79a51d87cb3bd6733f17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
