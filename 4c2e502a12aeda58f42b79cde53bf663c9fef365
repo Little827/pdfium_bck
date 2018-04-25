@@ -46,6 +46,30 @@
       "revId": "4c2e502a12aeda58f42b79cde53bf663c9fef365",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7053a1_70c7041a",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T17:58:46Z",
+      "side": 1,
+      "message": "(In general, if we apply it to all FPDF_ types, there\u0027s a bunch of stuff in core/fxge that needs to be \"tagged\" that shouldn\u0027t know about fpdfsdk).\n\nSee https://pdfium-review.googlesource.com/c/pdfium/+/31296",
+      "parentUuid": "7456b475_a3150c9c",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "4c2e502a12aeda58f42b79cde53bf663c9fef365",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
