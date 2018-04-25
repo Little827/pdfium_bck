@@ -307,7 +307,7 @@ void CXFA_FFTextEdit::OnTextChanged(CFWL_Widget* pWidget,
   eParam.m_wsPrevText = wsPrevText;
   CFWL_Edit* pEdit = ToEdit(m_pNormalWidget.get());
   if (m_pNode->GetFFWidgetType() == XFA_FFWidgetType::kDateTimeEdit) {
-    CFWL_DateTimePicker* pDateTime = (CFWL_DateTimePicker*)pEdit;
+    CFWL_DateTimePicker* pDateTime = static_cast<CFWL_DateTimePicker*>(pEdit);
     eParam.m_wsNewText = pDateTime->GetEditText();
     if (pDateTime->HasSelection()) {
       size_t count;
