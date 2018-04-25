@@ -74,7 +74,7 @@ bool CFFL_ComboBox::OnChar(CPDFSDK_Annot* pAnnot,
 }
 
 bool CFFL_ComboBox::IsDataChanged(CPDFSDK_PageView* pPageView) {
-  CPWL_ComboBox* pWnd = (CPWL_ComboBox*)GetPDFWindow(pPageView, false);
+  auto* pWnd = static_cast<CPWL_ComboBox*>(GetPDFWindow(pPageView, false));
   if (!pWnd)
     return false;
 
@@ -252,8 +252,8 @@ WideString CFFL_ComboBox::GetSelectExportText() {
 
   int nExport = -1;
   CPDFSDK_PageView* pPageView = GetCurPageView(true);
-  if (CPWL_ComboBox* pComboBox =
-          (CPWL_ComboBox*)GetPDFWindow(pPageView, false)) {
+  if (auto* pComboBox =
+          static_cast<CPWL_ComboBox*>(GetPDFWindow(pPageView, false))) {
     nExport = pComboBox->GetSelect();
   }
 
