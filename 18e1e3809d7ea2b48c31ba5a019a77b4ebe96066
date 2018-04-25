@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "30c507f3_1a42b930",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "nit: write it out, since it isn\u0027t obvious to the reader what the type is without this.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d40c9e6a_d7981484",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "I\u0027m surprised we cant just \n  AddNode(std::move(instruction));\n\nsince unique_ptr has implicit move ctors from convertible types.",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c3129b_082f6c49",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "Is this all ours?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 80
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8045bbe7_3dca2bc1",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "Note: per the comment below, I think what you want is along the lines of:\n\ntemplate \u003ctypename T, typename... Args\u003e\nT* CreateNode(Args\u0026\u0026... args) {\n  nodes_.push_back(pdfium::MakeUnique\u003cT\u003e(std::forward\u003cArgs\u003e(args)...));\n  return nodes_.back().get();\n}",
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d9d54a2_56d590a9",
         "filename": "core/fxcrt/xml/cfx_xmldocument.h",
         "patchSetId": 1
@@ -37,6 +123,30 @@
       "side": 1,
       "message": "I don\u0027t think it matters in this case as they\u0027re both owned in the nodes_ list above.",
       "parentUuid": "3d9d54a2_56d590a9",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1bdba7_2ced05bd",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "probably worth using unowned in case we mix nodes from two docs somehow.",
+      "parentUuid": "84e630de_d3ae1652",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -89,6 +199,121 @@
         "startChar": 43,
         "endLine": 34,
         "endChar": 23
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2e032f_51dcf226",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "nit: comment that the destruction order is not known.",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d3f12a6_bfc7045c",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "where did this come from?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53073c09_9e3e762b",
+        "filename": "testing/libfuzzer/pdf_xml_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "same here, write it out.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39c0d2f_fbf5ab82",
+        "filename": "xfa/fxfa/parser/cxfa_document_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 6
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfbe0bbb_240465b7",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T21:16:06Z",
+      "side": 1,
+      "message": "this pattern is kinda common, maybe document should have a templated method that forwards its arguments onto the appropriate constructor and adds the node to itself.",
+      "range": {
+        "startLine": 1386,
+        "startChar": 1,
+        "endLine": 1390,
+        "endChar": 25
       },
       "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
