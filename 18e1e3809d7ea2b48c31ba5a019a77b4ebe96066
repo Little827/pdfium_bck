@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84e630de_d3ae1652",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-25T20:56:17Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters in this case as they\u0027re both owned in the nodes_ list above.",
+      "parentUuid": "3d9d54a2_56d590a9",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f702664_f49179c8",
         "filename": "core/fxcrt/xml/cfx_xmlelement.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-25T20:51:37Z",
       "side": 1,
       "message": "Now it shallow copies?",
+      "range": {
+        "startLine": 33,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "18e1e3809d7ea2b48c31ba5a019a77b4ebe96066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956623b1_7c91cf2c",
+        "filename": "core/fxcrt/xml/cfx_xmlelement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-25T20:56:17Z",
+      "side": 1,
+      "message": "Actually this is wrong (it would trigger an ASSERT if it was ever actually called) .... sigh. Can\u0027t appendChild(pChild) because pChild already has a Parent. We need to clone pChild and stick it into the CFX_XMLDocument somehow ...",
+      "parentUuid": "4f702664_f49179c8",
       "range": {
         "startLine": 33,
         "startChar": 43,
