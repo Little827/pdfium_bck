@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab5e8922_294ea774",
+        "filename": "xfa/fxfa/cxfa_ffapp.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T18:48:28Z",
+      "side": 1,
+      "message": "nit: does LoadCalendarFont() reach back around and try to use m_pFWLTheme? Otherwise, a better pattern is to put the theme into a local, and then std::move() it into m_pFWLTheme upon success.",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "7e6450fe69bf4c3e358bd6a20f44c55e0c8fd82c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
