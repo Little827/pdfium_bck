@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b3b448d_4761b11f",
+        "filename": "public/cpp/fpdf_deleters.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-25T17:18:41Z",
+      "side": 1,
+      "message": "Q. Should these go into a separate public/cpp/fpdf_scopers.h file instead?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "31ba058f96e26b278f89549038161b48edd6e34c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
