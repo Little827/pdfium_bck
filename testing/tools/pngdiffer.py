@@ -47,6 +47,10 @@ class PNGDiffer():
           not os.path.exists(platform_expected_path)):
         if i == 0:
           print "WARNING: no expected results files for " + input_filename
+        if os.path.exists(actual_path):
+          print ('FAILURE: Missing expected result for 0-based page %d of %s'
+                 % (i, input_filename))
+          return True
         break
       print "Checking " + actual_path
       sys.stdout.flush()
@@ -90,7 +94,7 @@ class PNGDiffer():
       else:
         expected_path = None
 
-      if expected_path is not None and os.path.exists(expected_path):
+      if expected_path is not None:
         shutil.copyfile(actual_path, expected_path)
 
       page += 1
