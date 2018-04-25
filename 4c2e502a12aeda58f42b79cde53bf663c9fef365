@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5b28769_239edf26",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-25T17:46:11Z",
+      "side": 1,
+      "message": "I guess there is no good way to contain this to the fpdfsdk/ directory?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "4c2e502a12aeda58f42b79cde53bf663c9fef365",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
