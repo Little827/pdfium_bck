@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "655d4c9f_61f47acd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-25T16:33:10Z",
+      "side": 1,
+      "message": "Are you sure? Isn\u0027t only |old_iter| being invalidated here, while |iter| remains valid? See http://www.cplusplus.com/reference/map/map/erase/",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "3af13dfcf77c21c563406a87cfedfffde714df78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23d81fd_b407cb1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-25T16:33:10Z",
+      "side": 1,
+      "message": "chromium:NNNNNN",
+      "revId": "3af13dfcf77c21c563406a87cfedfffde714df78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a993337_375f3677",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-25T16:33:10Z",
+      "side": 1,
+      "message": "const auto\u0026",
+      "range": {
+        "startLine": 1131,
+        "startChar": 7,
+        "endLine": 1131,
+        "endChar": 11
+      },
+      "revId": "3af13dfcf77c21c563406a87cfedfffde714df78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5198aed2_3b4124fe",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-25T16:33:10Z",
+      "side": 1,
+      "message": "maybe just uint32_t here, so it is obvious it doesn\u0027t need to be const auto\u0026.",
+      "range": {
+        "startLine": 1143,
+        "startChar": 7,
+        "endLine": 1143,
+        "endChar": 11
+      },
+      "revId": "3af13dfcf77c21c563406a87cfedfffde714df78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
