@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "214a3adf_ffb4ecfb",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-25T14:23:02Z",
+      "side": 1,
+      "message": "it won\u0027t \u003d this because this is an XML Parser, not a node? The naming of child and parent are bad and I haven\u0027t figured out a better way to deal with them yet.",
+      "parentUuid": "3c542e32_77e91b50",
+      "range": {
+        "startLine": 118,
+        "startChar": 13,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "a2479efa2d20d05a377e877d413b356eddedd5ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb767fa9_b651ace9",
         "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-25T14:17:33Z",
       "side": 1,
       "message": "So m_NodeStack used to have the stack of parents, and we\u0027re keeping the behavior of \"if is only one level from the top\"?",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 45
+      },
+      "revId": "a2479efa2d20d05a377e877d413b356eddedd5ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf674156_bdcb9789",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-25T14:23:02Z",
+      "side": 1,
+      "message": "I haven\u0027t seen any XML docs we have to parse which are of the form:\n\n\u003ca\u003e\u003c/a\u003e\n\u003cb\u003e\u003c/b\u003e\n\nthey all seem to be of the form\n\n\u003cparent\u003e\n  \u003ca\u003e\u003c/a\u003e\n  \u003cb\u003e\u003c/b\u003e\n\u003c/parent\u003e\n\nThe old parser would force the second form by requiring you to pass in the root node, so we\u0027d end up with something like\n\n\u003cROOT\u003e\n \u003ca\u003e\u003c/a\u003e\n \u003cb\u003e\u003c/b\u003e\n\u003c/ROOT\u003e\n\n\u003cROOT\u003e\n \u003cparent\u003e\n  \u003ca\u003e\u003c/a\u003e\n  \u003cb\u003e\u003c/b\u003e\n \u003c/parent\u003e\n\u003c/ROOT\u003e\n\nwhich you\u0027d then have to make sure you skipped over",
+      "parentUuid": "bb767fa9_b651ace9",
       "range": {
         "startLine": 189,
         "startChar": 3,
