@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "59a35250_c3d1620b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-25T20:53:20Z",
+      "side": 1,
+      "message": "Comments? No, that won\u0027t be missed...",
+      "parentUuid": "5a2f757d_368e41a9",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "c13a0efe23835752c6f99cd8b17c0bfaaf1e9f24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca496f31_58044127",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
