@@ -20,7 +20,17 @@ class CPDF_Object;
 class CPDF_PageRenderCache;
 class CPDF_PageRenderContext;
 
-class CPDF_Page : public CPDF_PageObjectHolder {
+#ifndef PDF_ENABLE_XFA
+// CPDF_Page is an FPDF API public object when not XFA.
+typedef struct fpdf_page_t__ {
+} fpdf_page__;
+#endif  // PDF_ENABLE_XFA
+
+class CPDF_Page :
+#ifndef PDF_ENABLE_XFA
+    public fpdf_page__,
+#endif  // PDF_ENABLE_XFA
+    public CPDF_PageObjectHolder {
  public:
   class View {};  // Caller implements as desired, empty here due to layering.
 
