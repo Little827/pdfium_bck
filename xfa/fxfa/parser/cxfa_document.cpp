@@ -11,7 +11,9 @@
 
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_fallthrough.h"
+#include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "fxjs/cfxjse_engine.h"
+#include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/parser/cscript_datawindow.h"
 #include "xfa/fxfa/parser/cscript_eventpseudomodel.h"
@@ -1625,7 +1627,9 @@ void CXFA_Document::DoDataMerge() {
   CXFA_Node* pDatasetsRoot = ToNode(GetXFAObject(XFA_HASHCODE_Datasets));
   if (!pDatasetsRoot) {
     // Ownership will be passed in the AppendChild below to the XML tree.
-    auto pDatasetsXMLNode = pdfium::MakeUnique<CFX_XMLElement>(L"xfa:datasets");
+    auto* pDatasetsXMLNode =
+        notify_->GetHDOC()->GetXMLDocument()->CreateNode<CFX_XMLElement>(
+            L"xfa:datasets");
     pDatasetsXMLNode->SetAttribute(L"xmlns:xfa",
                                    L"http://www.xfa.org/schema/xfa-data/1.0/");
     pDatasetsRoot =
@@ -1633,10 +1637,10 @@ void CXFA_Document::DoDataMerge() {
     pDatasetsRoot->JSObject()->SetCData(XFA_Attribute::Name, L"datasets", false,
                                         false);
 
-    CFX_XMLElement* ref = pDatasetsXMLNode.get();
-    m_pRootNode->GetXMLMappingNode()->AppendChild(std::move(pDatasetsXMLNode));
+    m_pRootNode->GetXMLMappingNode()->AppendChild(pDatasetsXMLNode);
     m_pRootNode->InsertChild(pDatasetsRoot, nullptr);
-    pDatasetsRoot->SetXMLMappingNode(ref);
+
+    pDatasetsRoot->SetXMLMappingNode(pDatasetsXMLNode);
   }
 
   CXFA_Node *pDataRoot = nullptr, *pDDRoot = nullptr;
@@ -1669,8 +1673,11 @@ void CXFA_Document::DoDataMerge() {
   if (!pDataRoot) {
     pDataRoot = CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup);
     pDataRoot->JSObject()->SetCData(XFA_Attribute::Name, L"data", false, false);
-    pDataRoot->SetXMLMappingNode(
-        pdfium::MakeUnique<CFX_XMLElement>(L"xfa:data"));
+
+    auto* elem =
+        notify_->GetHDOC()->GetXMLDocument()->CreateNode<CFX_XMLElement>(
+            L"xfa:data");
+    pDataRoot->SetXMLMappingNode(elem);
     pDatasetsRoot->InsertChild(pDataRoot, nullptr);
   }
 
@@ -1724,8 +1731,11 @@ void CXFA_Document::DoDataMerge() {
         CreateNode(XFA_PacketType::Datasets, XFA_Element::DataGroup));
     pDataTopLevel->JSObject()->SetCData(XFA_Attribute::Name, wsDataTopLevelName,
                                         false, false);
-    pDataTopLevel->SetXMLMappingNode(
-        pdfium::MakeUnique<CFX_XMLElement>(wsDataTopLevelName));
+
+    auto* elem =
+        notify_->GetHDOC()->GetXMLDocument()->CreateNode<CFX_XMLElement>(
+            wsDataTopLevelName);
+    pDataTopLevel->SetXMLMappingNode(elem);
 
     CXFA_Node* pBeforeNode = pDataRoot->GetFirstChild();
     pDataRoot->InsertChild(pDataTopLevel, pBeforeNode);
