@@ -946,8 +946,13 @@ size_t CFDE_TextEditEngine::GetIndexForPoint(const CFX_PointF& point) {
     // cursor is moved after the space, it goes to the beginning of the next
     // line.
     bool is_last_line = (std::next(start_it) == text_piece_info_.end());
-    if (!is_last_line && pos > 0 && GetChar(pos - 1) == L' ')
-      --pos;
+    if (!is_last_line && pos > 0) {
+      wchar_t previous_char = GetChar(pos - 1);
+      if (previous_char == L' ' || previous_char == L'\n' ||
+          previous_char == L'\r') {
+        --pos;
+      }
+    }
 
     return pos;
   }
