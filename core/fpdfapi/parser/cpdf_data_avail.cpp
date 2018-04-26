@@ -699,8 +699,8 @@ bool CPDF_DataAvail::CheckPageNode(const CPDF_DataAvail::PageNode& pageNode,
 bool CPDF_DataAvail::LoadDocPage(uint32_t dwPage) {
   FX_SAFE_INT32 safePage = pdfium::base::checked_cast<int32_t>(dwPage);
   int32_t iPage = safePage.ValueOrDie();
-  if (m_pDocument->GetPageCount() <= iPage ||
-      m_pDocument->IsPageLoaded(iPage)) {
+  if (m_pDocument->GetPDFPageCount() <= iPage ||
+      m_pDocument->IsPDFPageLoaded(iPage)) {
     m_docStatus = PDF_DATAAVAIL_DONE;
     return true;
   }
@@ -812,7 +812,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
   if (!safePage.IsValid())
     return DataError;
 
-  if (safePage.ValueOrDie() >= m_pDocument->GetPageCount()) {
+  if (safePage.ValueOrDie() >= m_pDocument->GetPDFPageCount()) {
     // This is XFA page.
     return DataAvailable;
   }
@@ -940,7 +940,7 @@ CPDF_SyntaxParser* CPDF_DataAvail::GetSyntaxParser() const {
 int CPDF_DataAvail::GetPageCount() const {
   if (m_pLinearized)
     return m_pLinearized->GetPageCount();
-  return m_pDocument ? m_pDocument->GetPageCount() : 0;
+  return m_pDocument ? m_pDocument->GetPDFPageCount() : 0;
 }
 
 CPDF_Dictionary* CPDF_DataAvail::GetPage(int index) {

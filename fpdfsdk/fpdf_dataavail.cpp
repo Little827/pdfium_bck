@@ -155,7 +155,7 @@ FPDFAvail_GetDocument(FPDF_AVAIL avail, FPDF_BYTESTRING password) {
     return nullptr;
   }
   CheckUnSupportError(document.get(), FPDF_ERR_SUCCESS);
-  return FPDFDocumentFromCPDFDocument(document.release());
+  return document.release();
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFAvail_GetFirstPageNum(FPDF_DOCUMENT doc) {

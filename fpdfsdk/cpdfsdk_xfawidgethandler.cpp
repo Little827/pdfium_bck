@@ -163,7 +163,7 @@ bool CPDFSDK_XFAWidgetHandler::HitTest(CPDFSDK_PageView* pPageView,
   if (!pFormFillEnv)
     return false;
 
-  CPDFXFA_Context* pContext = pFormFillEnv->GetXFAContext();
+  auto* pContext = CPDFXFA_Context::FromFormFillEnvironment(pFormFillEnv);
   if (!pContext)
     return false;
 
@@ -390,15 +390,12 @@ CXFA_FFWidgetHandler* CPDFSDK_XFAWidgetHandler::GetXFAWidgetHandler(
   if (!pFormFillEnv)
     return nullptr;
 
-  CPDFXFA_Context* pDoc = pFormFillEnv->GetXFAContext();
+  auto* pDoc = CPDFXFA_Context::FromFormFillEnvironment(pFormFillEnv);
   if (!pDoc)
     return nullptr;
 
   CXFA_FFDocView* pDocView = pDoc->GetXFADocView();
-  if (!pDocView)
-    return nullptr;
-
-  return pDocView->GetWidgetHandler();
+  return pDocView ? pDocView->GetWidgetHandler() : nullptr;
 }
 
 uint32_t CPDFSDK_XFAWidgetHandler::GetFWLFlags(uint32_t dwFlag) {

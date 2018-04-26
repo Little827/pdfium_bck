@@ -36,7 +36,6 @@
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/cpdfsdk_xfawidget.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #include "fpdfsdk/fpdfxfa/cxfa_fwladaptertimermgr.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
@@ -80,8 +79,8 @@ bool IsFormFieldTypeXFA(FormFieldType fieldType) {
 
 CPDFSDK_InterForm::CPDFSDK_InterForm(CPDFSDK_FormFillEnvironment* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv),
-      m_pInterForm(
-          pdfium::MakeUnique<CPDF_InterForm>(m_pFormFillEnv->GetPDFDocument())),
+      m_pInterForm(pdfium::MakeUnique<CPDF_InterForm>(
+          m_pFormFillEnv->GetCPDFDocument())),
 #ifdef PDF_ENABLE_XFA
       m_bXfaCalculate(true),
       m_bXfaValidationsEnabled(true),
@@ -127,7 +126,7 @@ CPDFSDK_Widget* CPDFSDK_InterForm::GetWidget(CPDF_FormControl* pControl) const {
     return pWidget;
 
   CPDF_Dictionary* pControlDict = pControl->GetWidget();
-  CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
+  CPDF_Document* pDocument = m_pFormFillEnv->GetCPDFDocument();
   CPDFSDK_PageView* pPage = nullptr;
 
   if (CPDF_Dictionary* pPageDict = pControlDict->GetDictFor("P")) {

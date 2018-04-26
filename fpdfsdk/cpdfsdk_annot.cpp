@@ -11,10 +11,6 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "third_party/base/stl_util.h"
 
-#ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#endif  // PDF_ENABLE_XFA
-
 namespace {
 
 const float kMinWidth = 1.0f;

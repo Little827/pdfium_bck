@@ -36,11 +36,21 @@ extern void SetLastError(int err);
 extern int GetLastError();
 #endif
 
-CPDFXFA_Context::CPDFXFA_Context(std::unique_ptr<CPDF_Document> pPDFDoc)
-    : m_pPDFDoc(std::move(pPDFDoc)),
-      m_pXFAApp(pdfium::MakeUnique<CXFA_FFApp>(this)),
-      m_DocEnv(this) {
+// static
+CPDFXFA_Context* CPDFXFA_Context::FromCPDFDocument(CPDF_Document* pDoc) {
+  return static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
 }
+
+// static
+CPDFXFA_Context* CPDFXFA_Context::FromFormFillEnvironment(
+    CPDFSDK_FormFillEnvironment* pEnv) {
+  return FromCPDFDocument(pEnv->GetCPDFDocument());
+}
+
+CPDFXFA_Context::CPDFXFA_Context(CPDF_Document* pPDFDoc)
+    : m_pPDFDoc(pPDFDoc),
+      m_pXFAApp(pdfium::MakeUnique<CXFA_FFApp>(this)),
+      m_DocEnv(this) {}
 
 CPDFXFA_Context::~CPDFXFA_Context() {
   m_nLoadStatus = FXFA_LOADSTATUS_CLOSING;
@@ -52,7 +62,7 @@ CPDFXFA_Context::~CPDFXFA_Context() {
     m_pFormFillEnv->ClearAllFocusedAnnots();
     // Once we're deleted the FormFillEnvironment will point at a bad underlying
     // doc so we need to reset it ...
-    m_pFormFillEnv->ResetXFADocument();
+    m_pFormFillEnv->GetCPDFDocument()->SetExtension(nullptr);
     m_pFormFillEnv.Reset();
   }
 
@@ -91,7 +101,7 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
 
   m_pXFADoc = pdfium::MakeUnique<CXFA_FFDoc>(pApp, &m_DocEnv);
-  if (!m_pXFADoc->OpenDoc(m_pPDFDoc.get())) {
+  if (!m_pXFADoc->OpenDoc(m_pPDFDoc.Get())) {
     SetLastError(FPDF_ERR_XFALOAD);
     return false;
   }
@@ -130,7 +140,7 @@ int CPDFXFA_Context::GetPageCount() const {
     case FormType::kAcroForm:
     case FormType::kXFAForeground:
       if (m_pPDFDoc)
-        return m_pPDFDoc->GetPageCount();
+        return 0;
       FX_FALLTHROUGH;
     case FormType::kXFAFull:
       if (m_pXFADoc)
@@ -181,12 +191,6 @@ RetainPtr<CPDFXFA_Page> CPDFXFA_Context::GetXFAPage(
 }
 
 void CPDFXFA_Context::DeletePage(int page_index) {
-  // Delete from the document first because, if GetPage was never called for
-  // this |page_index| then |m_XFAPageList| may have size < |page_index| even
-  // if it's a valid page in the document.
-  if (m_pPDFDoc)
-    m_pPDFDoc->DeletePage(page_index);
-
   if (pdfium::IndexInBounds(m_XFAPageList, page_index))
     m_XFAPageList[page_index].Reset();
 }

@@ -236,11 +236,11 @@ TEST_F(cpdf_document_test, UseCachedPageObjNumIfHaveNotPagesDict) {
   const uint32_t obj_num = page_stub->GetObjNum();
   const int test_page_num = 33;
 
-  EXPECT_FALSE(document.IsPageLoaded(test_page_num));
+  EXPECT_FALSE(document.IsPDFPageLoaded(test_page_num));
   EXPECT_EQ(nullptr, document.GetPage(test_page_num));
 
   document.SetPageObjNum(test_page_num, obj_num);
-  EXPECT_TRUE(document.IsPageLoaded(test_page_num));
+  EXPECT_TRUE(document.IsPDFPageLoaded(test_page_num));
   EXPECT_EQ(page_stub, document.GetPage(test_page_num));
 }
 

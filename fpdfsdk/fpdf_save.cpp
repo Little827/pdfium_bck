@@ -227,7 +227,7 @@ bool FPDF_Doc_Save(FPDF_DOCUMENT document,
     return 0;
 
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Context* pContext = static_cast<CPDFXFA_Context*>(document);
+  auto* pContext = CPDFXFA_Context::FromCPDFDocument(pPDFDoc);
   std::vector<RetainPtr<IFX_SeekableStream>> fileList;
   SendPreSaveToXFADoc(pContext, &fileList);
 #endif  // PDF_ENABLE_XFA

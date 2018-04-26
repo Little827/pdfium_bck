@@ -12,10 +12,6 @@
 #include "core/fpdfdoc/cpdf_metadata.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 
-#ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#endif  // PDF_ENABLE_XFA
-
 static_assert(static_cast<int>(UnsupportedFeature::kDocumentXFAForm) ==
                   FPDF_UNSP_DOC_XFAFORM,
               "UnsupportedFeature::kDocumentXFAForm value mismatch");
