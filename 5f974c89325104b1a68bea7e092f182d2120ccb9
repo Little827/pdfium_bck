@@ -16,6 +16,24 @@
       "revId": "5f974c89325104b1a68bea7e092f182d2120ccb9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010ecae6_a99db655",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-26T15:43:04Z",
+      "side": 1,
+      "message": "Done. Using itertools.count() too now, so the loop increment happens with continue.",
+      "parentUuid": "3ac7de16_c29fa31f",
+      "revId": "5f974c89325104b1a68bea7e092f182d2120ccb9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
