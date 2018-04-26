@@ -473,7 +473,9 @@ void CPDFSDK_PageView::LoadFXAnnots() {
 
 #ifdef PDF_ENABLE_XFA
   RetainPtr<CPDFXFA_Page> protector(m_page);
-  if (m_pFormFillEnv->GetXFAContext()->GetFormType() == FormType::kXFAFull) {
+  auto* pContext =
+      CPDFXFA_Context::FromFormFillEnvironment(m_pFormFillEnv.Get());
+  if (pContext->GetFormType() == FormType::kXFAFull) {
     CXFA_FFPageView* pageView = m_page->GetXFAPageView();
     std::unique_ptr<IXFA_WidgetIterator> pWidgetHandler(
         pageView->CreateWidgetIterator(
@@ -569,6 +571,6 @@ CPDFSDK_Annot* CPDFSDK_PageView::GetFocusAnnot() {
 
 int CPDFSDK_PageView::GetPageIndexForStaticPDF() const {
   CPDF_Dictionary* pDict = GetPDFPage()->m_pFormDict.Get();
-  CPDF_Document* pDoc = m_pFormFillEnv->GetPDFDocument();
+  CPDF_Document* pDoc = m_pFormFillEnv->GetCPDFDocument();
   return (pDoc && pDict) ? pDoc->GetPageIndex(pDict->GetObjNum()) : -1;
 }

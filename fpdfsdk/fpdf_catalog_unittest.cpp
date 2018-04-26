@@ -15,10 +15,6 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
 
-#ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#endif  // PDF_ENABLE_XFA
-
 class CPDF_TestDocument : public CPDF_Document {
  public:
   CPDF_TestDocument() : CPDF_Document(nullptr) {}
@@ -29,29 +25,12 @@ class CPDF_TestDocument : public CPDF_Document {
   }
 };
 
-#ifdef PDF_ENABLE_XFA
-class CPDF_TestXFAContext : public CPDFXFA_Context {
- public:
-  CPDF_TestXFAContext()
-      : CPDFXFA_Context(pdfium::MakeUnique<CPDF_TestDocument>()) {}
-
-  void SetRoot(CPDF_Dictionary* root) {
-    static_cast<CPDF_TestDocument*>(GetPDFDoc())->SetRoot(root);
-  }
-
-  CPDF_IndirectObjectHolder* GetHolder() { return GetPDFDoc(); }
-};
-using CPDF_TestPdfDocument = CPDF_TestXFAContext;
-#else   // PDF_ENABLE_XFA
-using CPDF_TestPdfDocument = CPDF_TestDocument;
-#endif  // PDF_ENABLE_XFA
-
 class PDFCatalogTest : public testing::Test {
  public:
   void SetUp() override {
     CPDF_ModuleMgr::Get()->Init();
 
-    m_pDoc = pdfium::MakeUnique<CPDF_TestPdfDocument>();
+    m_pDoc = pdfium::MakeUnique<CPDF_TestDocument>();
 
     // Setup the root directory.
     m_pRootObj = pdfium::MakeUnique<CPDF_Dictionary>();
@@ -63,7 +42,7 @@ class PDFCatalogTest : public testing::Test {
   }
 
  protected:
-  std::unique_ptr<CPDF_TestPdfDocument> m_pDoc;
+  std::unique_ptr<CPDF_TestDocument> m_pDoc;
   std::unique_ptr<CPDF_Dictionary> m_pRootObj;
 };
 

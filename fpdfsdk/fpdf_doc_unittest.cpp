@@ -22,10 +22,6 @@
 #include "testing/test_support.h"
 #include "third_party/base/ptr_util.h"
 
-#ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#endif  // PDF_ENABLE_XFA
-
 class CPDF_TestDocument : public CPDF_Document {
  public:
   CPDF_TestDocument() : CPDF_Document(nullptr) {}
@@ -33,23 +29,6 @@ class CPDF_TestDocument : public CPDF_Document {
   void SetRoot(CPDF_Dictionary* root) { m_pRootDict = root; }
   CPDF_IndirectObjectHolder* GetHolder() { return this; }
 };
-
-#ifdef PDF_ENABLE_XFA
-class CPDF_TestXFAContext : public CPDFXFA_Context {
- public:
-  CPDF_TestXFAContext()
-      : CPDFXFA_Context(pdfium::MakeUnique<CPDF_TestDocument>()) {}
-
-  void SetRoot(CPDF_Dictionary* root) {
-    static_cast<CPDF_TestDocument*>(GetPDFDoc())->SetRoot(root);
-  }
-
-  CPDF_IndirectObjectHolder* GetHolder() { return GetPDFDoc(); }
-};
-using CPDF_TestPdfDocument = CPDF_TestXFAContext;
-#else   // PDF_ENABLE_XFA
-using CPDF_TestPdfDocument = CPDF_TestDocument;
-#endif  // PDF_ENABLE_XFA
 
 class PDFDocTest : public testing::Test {
  public:
@@ -61,7 +40,7 @@ class PDFDocTest : public testing::Test {
   void SetUp() override {
     CPDF_ModuleMgr::Get()->Init();
 
-    m_pDoc = pdfium::MakeUnique<CPDF_TestPdfDocument>();
+    m_pDoc = pdfium::MakeUnique<CPDF_TestDocument>();
     m_pIndirectObjs = m_pDoc->GetHolder();
 
     // Setup the root directory.
@@ -87,7 +66,7 @@ class PDFDocTest : public testing::Test {
   }
 
  protected:
-  std::unique_ptr<CPDF_TestPdfDocument> m_pDoc;
+  std::unique_ptr<CPDF_TestDocument> m_pDoc;
   UnownedPtr<CPDF_IndirectObjectHolder> m_pIndirectObjs;
   std::unique_ptr<CPDF_Dictionary> m_pRootObj;
 };
