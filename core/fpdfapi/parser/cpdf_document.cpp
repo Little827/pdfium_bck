@@ -595,6 +595,9 @@ int CPDF_Document::GetPageIndex(uint32_t objnum) {
 }
 
 int CPDF_Document::GetPageCount() const {
+  if (m_pExtension)
+    return m_pExtension->GetPageCount();
+
   return pdfium::CollectionSize<int>(m_PageList);
 }
 
@@ -753,6 +756,11 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
 }
 
 void CPDF_Document::DeletePage(int iPage) {
+  if (m_pExtension) {
+    m_pExtension->DeletePage(iPage);
+    return;
+  }
+
   CPDF_Dictionary* pPages = GetPagesDict();
   if (!pPages)
     return;

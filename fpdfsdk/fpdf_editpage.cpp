@@ -148,12 +148,12 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument() {
   }
 
   // Caller takes ownership of pDoc.
-  return FPDFDocumentFromCPDFDocument(pDoc.release());
+  return pDoc.release();
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
                                                int page_index) {
-  if (UnderlyingDocumentType* pDoc = UnderlyingFromFPDFDocument(document))
+  if (CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document))
     pDoc->DeletePage(page_index);
 }
 

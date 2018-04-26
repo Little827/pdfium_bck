@@ -40,21 +40,16 @@ class CPDFXFA_Page;
 // from fpdfsdk. For master, these are CPDF_ types, but for XFA, these are
 // CPDFXFA_ types.
 #ifndef PDF_ENABLE_XFA
-using UnderlyingDocumentType = CPDF_Document;
 using UnderlyingPageType = CPDF_Page;
 #else   // PDF_ENABLE_XFA
-using UnderlyingDocumentType = CPDFXFA_Context;
 using UnderlyingPageType = CPDFXFA_Page;
 #endif  // PDF_ENABLE_XFA
 
 // Conversions to/from underlying types.
-UnderlyingDocumentType* UnderlyingFromFPDFDocument(FPDF_DOCUMENT doc);
-
 UnderlyingPageType* UnderlyingFromFPDFPage(FPDF_PAGE page);
 
 // Conversions to/from FPDF_ types.
 CPDF_Document* CPDFDocumentFromFPDFDocument(FPDF_DOCUMENT doc);
-FPDF_DOCUMENT FPDFDocumentFromCPDFDocument(CPDF_Document* doc);
 
 CPDF_Page* CPDFPageFromFPDFPage(FPDF_PAGE page);
 CPDF_PageObject* CPDFPageObjectFromFPDFPageObject(FPDF_PAGEOBJECT page_object);

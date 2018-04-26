@@ -151,7 +151,7 @@ FPDF_DOCUMENT LoadDocumentImpl(
     return nullptr;
   }
   CheckUnSupportError(pDocument.get(), error);
-  return FPDFDocumentFromCPDFDocument(pDocument.release());
+  return pDocument.release();
 }
 
 }  // namespace
@@ -320,13 +320,13 @@ FPDF_GetSecurityHandlerRevision(FPDF_DOCUMENT document) {
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageCount(FPDF_DOCUMENT document) {
-  UnderlyingDocumentType* pDoc = UnderlyingFromFPDFDocument(document);
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   return pDoc ? pDoc->GetPageCount() : 0;
 }
 
 FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
                                                   int page_index) {
-  UnderlyingDocumentType* pDoc = UnderlyingFromFPDFDocument(document);
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   if (!pDoc)
     return nullptr;
 
@@ -334,7 +334,7 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
     return nullptr;
 
 #ifdef PDF_ENABLE_XFA
-  return pDoc->GetXFAPage(page_index).Leak();
+  return CPDFXFA_Context::FromCPDFDocument(pDoc)->GetXFAPage(page_index).Leak();
 #else   // PDF_ENABLE_XFA
   CPDF_Dictionary* pDict = pDoc->GetPage(page_index);
   if (!pDict)
@@ -740,7 +740,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document) {
-  delete UnderlyingFromFPDFDocument(document);
+  delete CPDFDocumentFromFPDFDocument(document);
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError() {
@@ -918,7 +918,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
                                                       int page_index,
                                                       double* width,
                                                       double* height) {
-  UnderlyingDocumentType* pDoc = UnderlyingFromFPDFDocument(document);
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   if (!pDoc)
     return false;
 
@@ -926,7 +926,8 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
   int count = pDoc->GetPageCount();
   if (page_index < 0 || page_index >= count)
     return false;
-  RetainPtr<CPDFXFA_Page> pPage = pDoc->GetXFAPage(page_index);
+  auto* pContext = CPDFXFA_Context::FromCPDFDocument(pDoc);
+  RetainPtr<CPDFXFA_Page> pPage = pContext->GetXFAPage(page_index);
   if (!pPage)
     return false;
   *width = pPage->GetPageWidth();
