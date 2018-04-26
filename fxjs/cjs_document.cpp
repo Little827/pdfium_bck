@@ -655,7 +655,7 @@ CJS_Return CJS_Document::get_info(CJS_Runtime* pRuntime) {
   if (!m_pFormFillEnv)
     CJS_Return(JSGetStringFromID(JSMessage::kBadObjectError));
 
-  const auto* pDictionary = m_pFormFillEnv->GetPDFDocument()->GetInfo();
+  const auto* pDictionary = m_pFormFillEnv->GetCPDFDocument()->GetInfo();
   if (!pDictionary)
     return CJS_Return(false);
 
@@ -720,7 +720,7 @@ CJS_Return CJS_Document::getPropertyInternal(CJS_Runtime* pRuntime,
   if (!m_pFormFillEnv)
     return CJS_Return(JSGetStringFromID(JSMessage::kBadObjectError));
 
-  CPDF_Dictionary* pDictionary = m_pFormFillEnv->GetPDFDocument()->GetInfo();
+  CPDF_Dictionary* pDictionary = m_pFormFillEnv->GetCPDFDocument()->GetInfo();
   if (!pDictionary)
     return CJS_Return(false);
   return CJS_Return(
@@ -733,7 +733,7 @@ CJS_Return CJS_Document::setPropertyInternal(CJS_Runtime* pRuntime,
   if (!m_pFormFillEnv)
     return CJS_Return(JSGetStringFromID(JSMessage::kBadObjectError));
 
-  CPDF_Dictionary* pDictionary = m_pFormFillEnv->GetPDFDocument()->GetInfo();
+  CPDF_Dictionary* pDictionary = m_pFormFillEnv->GetCPDFDocument()->GetInfo();
   if (!pDictionary)
     return CJS_Return(false);
 
@@ -829,14 +829,14 @@ CJS_Return CJS_Document::set_subject(CJS_Runtime* pRuntime,
 }
 
 CJS_Return CJS_Document::get_title(CJS_Runtime* pRuntime) {
-  if (!m_pFormFillEnv || !m_pFormFillEnv->GetUnderlyingDocument())
+  if (!m_pFormFillEnv || !m_pFormFillEnv->GetCPDFDocument())
     return CJS_Return(JSGetStringFromID(JSMessage::kBadObjectError));
   return getPropertyInternal(pRuntime, "Title");
 }
 
 CJS_Return CJS_Document::set_title(CJS_Runtime* pRuntime,
                                    v8::Local<v8::Value> vp) {
-  if (!m_pFormFillEnv || !m_pFormFillEnv->GetUnderlyingDocument())
+  if (!m_pFormFillEnv || !m_pFormFillEnv->GetCPDFDocument())
     return CJS_Return(JSGetStringFromID(JSMessage::kBadObjectError));
   return setPropertyInternal(pRuntime, vp, "Title");
 }
@@ -1244,7 +1244,7 @@ CJS_Return CJS_Document::getPageNthWord(
   int nWordNo = params.size() > 1 ? pRuntime->ToInt32(params[1]) : 0;
   bool bStrip = params.size() > 2 ? pRuntime->ToBoolean(params[2]) : true;
 
-  CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
+  CPDF_Document* pDocument = m_pFormFillEnv->GetCPDFDocument();
   if (!pDocument)
     return CJS_Return(false);
 
@@ -1296,7 +1296,7 @@ CJS_Return CJS_Document::getPageNumWords(
     return CJS_Return(JSGetStringFromID(JSMessage::kPermissionError));
 
   int nPageNo = params.size() > 0 ? pRuntime->ToInt32(params[0]) : 0;
-  CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
+  CPDF_Document* pDocument = m_pFormFillEnv->GetCPDFDocument();
   if (nPageNo < 0 || nPageNo >= pDocument->GetPageCount())
     return CJS_Return(JSGetStringFromID(JSMessage::kValueError));
 
@@ -1463,7 +1463,7 @@ CJS_Return CJS_Document::gotoNamedDest(
     return CJS_Return(JSGetStringFromID(JSMessage::kBadObjectError));
 
   WideString wideName = pRuntime->ToWideString(params[0]);
-  CPDF_Document* pDocument = m_pFormFillEnv->GetPDFDocument();
+  CPDF_Document* pDocument = m_pFormFillEnv->GetCPDFDocument();
   if (!pDocument)
     return CJS_Return(false);
 

@@ -595,6 +595,11 @@ int CPDF_Document::GetPageIndex(uint32_t objnum) {
 }
 
 int CPDF_Document::GetPageCount() const {
+  if (m_pExtension) {
+    int count = m_pExtension->GetPageCount();
+    if (count > 0)
+      return count;
+  }
   return pdfium::CollectionSize<int>(m_PageList);
 }
 
@@ -766,6 +771,9 @@ void CPDF_Document::DeletePage(int iPage) {
     return;
 
   m_PageList.erase(m_PageList.begin() + iPage);
+
+  if (m_pExtension)
+    m_pExtension->DeletePage(iPage);
 }
 
 CPDF_Font* CPDF_Document::AddStandardFont(const char* font,

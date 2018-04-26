@@ -358,7 +358,7 @@ void CPDFSDK_ActionHandler::DoAction_GoTo(
     const CPDF_Action& action) {
   ASSERT(action.GetDict());
 
-  CPDF_Document* pPDFDocument = pFormFillEnv->GetPDFDocument();
+  CPDF_Document* pPDFDocument = pFormFillEnv->GetCPDFDocument();
   ASSERT(pPDFDocument);
 
   CPDF_Dest MyDest = action.GetDest(pPDFDocument);
@@ -379,7 +379,7 @@ void CPDFSDK_ActionHandler::DoAction_URI(
     const CPDF_Action& action) {
   ASSERT(action.GetDict());
 
-  ByteString sURI = action.GetURI(pFormFillEnv->GetPDFDocument());
+  ByteString sURI = action.GetURI(pFormFillEnv->GetCPDFDocument());
   pFormFillEnv->DoURIAction(sURI.c_str());
 }
 

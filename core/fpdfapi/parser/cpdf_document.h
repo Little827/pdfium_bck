@@ -41,8 +41,20 @@ class JBig2_DocumentContext;
 
 class CPDF_Document : public CPDF_IndirectObjectHolder {
  public:
+  class Extension {
+   public:
+    virtual int GetPageCount() const = 0;
+    virtual void DeletePage(int page_index) = 0;
+    virtual ~Extension() {}
+  };
+
   explicit CPDF_Document(std::unique_ptr<CPDF_Parser> pParser);
   ~CPDF_Document() override;
+
+  Extension* GetExtension() const { return m_pExtension.get(); }
+  void SetExtension(std::unique_ptr<Extension> pExtension) {
+    m_pExtension = std::move(pExtension);
+  }
 
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
   const CPDF_Dictionary* GetRoot() const { return m_pRootDict; }
@@ -153,6 +165,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   std::unique_ptr<JBig2_DocumentContext> m_pCodecContext;
   std::unique_ptr<CPDF_LinkList> m_pLinksContext;
   std::vector<uint32_t> m_PageList;
+  std::unique_ptr<Extension> m_pExtension;
 };
 
 #endif  // CORE_FPDFAPI_PARSER_CPDF_DOCUMENT_H_

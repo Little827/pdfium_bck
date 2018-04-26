@@ -33,7 +33,7 @@ FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
 }
 
 CPDFSDK_FormFillEnvironment::CPDFSDK_FormFillEnvironment(
-    UnderlyingDocumentType* pDoc,
+    CPDF_Document* pDoc,
     FPDF_FORMFILLINFO* pFFinfo)
     : m_pInfo(pFFinfo),
       m_pUnderlyingDoc(pDoc),
@@ -287,8 +287,7 @@ void CPDFSDK_FormFillEnvironment::OnChange() {
     m_pInfo->FFI_OnChange(m_pInfo);
 }
 
-FPDF_PAGE CPDFSDK_FormFillEnvironment::GetCurrentPage(
-    UnderlyingDocumentType* document) {
+FPDF_PAGE CPDFSDK_FormFillEnvironment::GetCurrentPage(CPDF_Document* document) {
   if (m_pInfo && m_pInfo->FFI_GetCurrentPage)
     return m_pInfo->FFI_GetCurrentPage(m_pInfo, document);
   return nullptr;
@@ -335,14 +334,13 @@ void CPDFSDK_FormFillEnvironment::DisplayCaret(CPDFXFA_Page* page,
   }
 }
 
-int CPDFSDK_FormFillEnvironment::GetCurrentPageIndex(
-    CPDFXFA_Context* document) {
+int CPDFSDK_FormFillEnvironment::GetCurrentPageIndex(CPDF_Document* document) {
   if (!m_pInfo || !m_pInfo->FFI_GetCurrentPageIndex)
     return -1;
   return m_pInfo->FFI_GetCurrentPageIndex(m_pInfo, document);
 }
 
-void CPDFSDK_FormFillEnvironment::SetCurrentPage(CPDFXFA_Context* document,
+void CPDFSDK_FormFillEnvironment::SetCurrentPage(CPDF_Document* document,
                                                  int iCurPage) {
   if (m_pInfo && m_pInfo->FFI_SetCurrentPage)
     m_pInfo->FFI_SetCurrentPage(m_pInfo, document, iCurPage);
@@ -366,7 +364,7 @@ WideString CPDFSDK_FormFillEnvironment::GetPlatform() {
                                  nActualLen / sizeof(uint16_t));
 }
 
-void CPDFSDK_FormFillEnvironment::GotoURL(CPDFXFA_Context* document,
+void CPDFSDK_FormFillEnvironment::GotoURL(CPDF_Document* document,
                                           const WideStringView& wsURL) {
   if (!m_pInfo || !m_pInfo->FFI_GotoURL)
     return;
@@ -560,7 +558,7 @@ CPDFSDK_PageView* CPDFSDK_FormFillEnvironment::GetPageView(int nIndex) {
 }
 
 void CPDFSDK_FormFillEnvironment::ProcJavascriptFun() {
-  CPDF_Document* pPDFDoc = GetPDFDocument();
+  CPDF_Document* pPDFDoc = GetCPDFDocument();
   CPDF_DocJSActions docJS(pPDFDoc);
   int iCount = docJS.CountJSActions();
   for (int i = 0; i < iCount; i++) {
@@ -574,7 +572,7 @@ bool CPDFSDK_FormFillEnvironment::ProcOpenAction() {
   if (!m_pUnderlyingDoc)
     return false;
 
-  const CPDF_Dictionary* pRoot = GetPDFDocument()->GetRoot();
+  const CPDF_Dictionary* pRoot = GetCPDFDocument()->GetRoot();
   if (!pRoot)
     return false;
 
@@ -708,16 +706,10 @@ bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(uint32_t nFlag) {
   return !m_pFocusAnnot;
 }
 
-#ifdef PDF_ENABLE_XFA
-CPDF_Document* CPDFSDK_FormFillEnvironment::GetPDFDocument() const {
-  return m_pUnderlyingDoc ? m_pUnderlyingDoc->GetPDFDoc() : nullptr;
-}
-#endif  // PDF_ENABLE_XFA
-
 int CPDFSDK_FormFillEnvironment::GetPageCount() const {
   return m_pUnderlyingDoc->GetPageCount();
 }
 
 bool CPDFSDK_FormFillEnvironment::GetPermissions(int nFlag) const {
-  return !!(GetPDFDocument()->GetUserPermissions() & nFlag);
+  return !!(GetCPDFDocument()->GetUserPermissions() & nFlag);
 }
