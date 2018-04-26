@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9039625d_59f1cd20",
+        "filename": "core/fxcrt/xml/cfx_xmlinstruction.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-26T23:00:59Z",
+      "side": 1,
+      "message": "It shouldn\u0027t have included the in the first place. We want write out:\n\u003c? originalXFAVersion http://blah/xfa ?\u003e\n\nnot\n\u003c? originalXFAVersion \"http://blah/xfa\" ?\u003e",
+      "parentUuid": "65d76c12_1b688cc9",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 64
+      },
+      "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46ccd1b_11c87ded",
         "filename": "core/fxcrt/xml/cfx_xmlnode.h",
         "patchSetId": 4
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "58a6826b_d0f9bb25",
+        "filename": "core/fxcrt/xml/cfx_xmlnode.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-26T23:00:59Z",
+      "side": 1,
+      "message": "Nope, see comment above.",
+      "parentUuid": "a46ccd1b_11c87ded",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b834bf7_31585171",
         "filename": "core/fxcrt/xml/cfx_xmlnode_unittest.cpp",
         "patchSetId": 4
@@ -85,6 +133,30 @@
       "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837aefe8_2ee107a7",
+        "filename": "core/fxcrt/xml/cfx_xmlnode_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-26T23:00:59Z",
+      "side": 1,
+      "message": "Either EQ or NE doesn\u0027t work with nullptr so I prefer to do this explicitly.",
+      "parentUuid": "6b834bf7_31585171",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "c872504b_318d3bb5",
+        "filename": "core/fxcrt/xml/cfx_xmlnode_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-26T23:00:59Z",
+      "side": 1,
+      "message": "Don\u0027t need to be, the lines will pass even if any individual one fails.",
+      "parentUuid": "83da792f_2d05f91a",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 49
+      },
+      "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe45de44_f60a9fbd",
         "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
         "patchSetId": 4
@@ -145,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "84fa3145_aa0128e3",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-26T23:00:59Z",
+      "side": 1,
+      "message": "This is where we create the actual Elements.",
+      "parentUuid": "fe45de44_f60a9fbd",
+      "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6842f777_8f93b11c",
         "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
         "patchSetId": 4
@@ -156,6 +270,24 @@
       "writtenOn": "2018-04-26T21:07:16Z",
       "side": 1,
       "message": "Is this supposed to ignore this case, and not blow up?",
+      "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db88e047_88a902e5",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-26T23:00:59Z",
+      "side": 1,
+      "message": "Not sure what you mean? We only store attributes on Elements, so we have to have attributes. I could ASSERT(current_node_) but left the code similar to how it was before.",
+      "parentUuid": "6842f777_8f93b11c",
       "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
