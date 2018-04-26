@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1524768798 -0700\nnonce AFN+CTLWm6piNLPu9vb5J1D22hBglBt8XtZ61YvtNqS4Hi6/1LWID4GvTtfH6P6Bqk03518fkFpq\n\n0000000000000000000000000000000000000000 30cd4d264b3404c0f985774aac60f9a97c1a4a92 refs/for/refs/heads/master%notify\u003dNONE,m\u003dmore\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlriIB4ACgkQqzYtYVpm\n/XshmwgAi1zbnrCEbUqgmQ+Tsl30A6YlDxJYn+aq2axNN6i3XT5x/53sIDg3+6YO\nc7mlFbJ5k5esvkXiO8V0UG0SlUSeVxdGdYeM+toYnNczWK3SSyjPbtESIAkFsK/s\nI1QMY6xI1ciXlPxIzzdk4OHZn+kcz1EyMLS/ba7v6tXNV7xsS2tSb5y9rYiGOJfK\nKzeEhrg/8/6Bkh40XWP1UlT2c+MYC3r4D4kfjgaCs1qcyOjpjTJwRZs3C7CFJth/\nX8pka2hiW2k+wqUECR88FU0/ABgClSXzFI+csjDDVRECijgG31Z9mYXIts4DBzFT\nhvHBrQoKfAwZBnbZ6vH9XXlKTicgWQ\u003d\u003d\n\u003dxa4x\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "27730ffc_9674fe8a",
+        "filename": "xfa/fxfa/DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-26T19:47:01Z",
+      "side": 1,
+      "message": "Should we only add the bug number here as this is the only one that needs to be fixed, yea?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 62
+      },
+      "revId": "30cd4d264b3404c0f985774aac60f9a97c1a4a92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
