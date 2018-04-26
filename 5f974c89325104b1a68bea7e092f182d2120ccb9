@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ac7de16_c29fa31f",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-26T00:27:52Z",
+      "side": 1,
+      "message": "Are the two assignments above expected to ever return None? If not, maybe just change this line to \"continue\" and get rid of line 97?",
+      "revId": "5f974c89325104b1a68bea7e092f182d2120ccb9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
