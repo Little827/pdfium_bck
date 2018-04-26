@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00737e73_fcd5e2e3",
+        "filename": "xfa/fde/cfde_texteditengine_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-26T17:45:44Z",
+      "side": 1,
+      "message": "Will fix in a follow-up: https://pdfium-review.googlesource.com/c/pdfium/+/31410",
+      "revId": "7625e6af7dff738eb22715365164beed6e39be10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
