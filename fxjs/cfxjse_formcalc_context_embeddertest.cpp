@@ -431,6 +431,15 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_IsoTime2Num) {
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, LocalDateFmt) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
 
+  auto page = LoadPage(0);
+
+  const char kBlankMD5[] = "kBlankMD5";
+  if (page) {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kBlankMD5);
+    WriteBitmapToPng(page_bitmap.get(), "kBlankMD5.png");
+  }
+
   struct {
     const char* program;
     const char* result;
