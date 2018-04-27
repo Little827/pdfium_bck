@@ -97,6 +97,10 @@ int _TIFFIfMultiplicationOverflow(tmsize_t op1, tmsize_t op2) {
   return op1 > std::numeric_limits<tmsize_t>::max() / op2;
 }
 
+int _TIFFIfMultiplicationOverflow(tmsize_t op1, tmsize_t op2) {
+  return op1 > std::numeric_limits<tmsize_t>::max() / op2;
+}
+
 TIFFErrorHandler _TIFFwarningHandler = nullptr;
 TIFFErrorHandler _TIFFerrorHandler = nullptr;
 
