@@ -42,13 +42,18 @@ class JBig2_DocumentContext;
 class CPDF_Document : public CPDF_IndirectObjectHolder {
  public:
   // Type from which the XFA extension can subclass itself.
-  class Extension {};
+  class Extension {
+   public:
+    virtual ~Extension() {}
+  };
 
   explicit CPDF_Document(std::unique_ptr<CPDF_Parser> pParser);
   ~CPDF_Document() override;
 
-  Extension* GetExtension() const { return m_pExtension.Get(); }
-  void SetExtension(Extension* pExt) { m_pExtension = pExt; }
+  Extension* GetExtension() const { return m_pExtension.get(); }
+  void SetExtension(std::unique_ptr<Extension> pExt) {
+    m_pExtension = std::move(pExt);
+  }
 
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
   const CPDF_Dictionary* GetRoot() const { return m_pRootDict; }
@@ -159,7 +164,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   std::unique_ptr<JBig2_DocumentContext> m_pCodecContext;
   std::unique_ptr<CPDF_LinkList> m_pLinksContext;
   std::vector<uint32_t> m_PageList;
-  UnownedPtr<Extension> m_pExtension;
+  std::unique_ptr<Extension> m_pExtension;
 };
 
 #endif  // CORE_FPDFAPI_PARSER_CPDF_DOCUMENT_H_
