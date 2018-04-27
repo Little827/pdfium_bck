@@ -123,7 +123,8 @@ TEST_F(CFWLEditEmbeddertest, FillWithNewLineWithoutMultiline) {
   }
 }
 
-TEST_F(CFWLEditEmbeddertest, FillWithNewLineWithMultiline) {
+// Disabled due to flakiness.
+TEST_F(CFWLEditEmbeddertest, DISABLED_FillWithNewLineWithMultiline) {
   CreateAndInitializeFormPDF("xfa/xfa_multiline_textfield.pdf");
   FORM_OnLButtonDown(form_handle(), page(), 0, 115, 58);
 
