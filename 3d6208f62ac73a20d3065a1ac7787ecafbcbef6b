@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1524818576 -0700\nnonce AFN+CTL5AU9hgYb2FMOuvhxW+lmlkNE+oZesUmNFEwFP/M7CJWYlFWYcxy3kKvgzCM9f4MtCVJPh\n\n0000000000000000000000000000000000000000 3d6208f62ac73a20d3065a1ac7787ecafbcbef6b refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dadjust-cjbig2-context\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlri4pAACgkQqzYtYVpm\n/Xv1PAf/X5NXyI+rtbmpL8kG+yVAa+krnkgPHC72wDnl8TdfEYlwToJyNGQOD9r+\ngeVg5lap0+niv6egWXqkOFxBhBdLNeC0lB3XC8GbswxtML/wAm1LxmO8yqpomqtq\nRLIAT3g43liWa6qOBm9Rq80ta6YoVViZzAcHdM5A1oh4bkCFT5csUiAKlLD1HPfH\nGyUcDy9Ijwj5gJjrO1jCNH93MPGIUM+ShjLYBWXLO+9pNqaYAa2vlDCHy4fvL9RC\nvEpkagO/4epeXzCfpsi+TwRodRGiYzt5CH/cbGqubgPl0C9eNblX0k3Y5fS1V9bI\n69GnbhaGrk9VqEJjxXfPHEkxDTj/pw\u003d\u003d\n\u003dAKc8\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f41ac98_eddb43c4",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-27T17:12:59Z",
+      "side": 1,
+      "message": "Change the naming of all locals or none so it\u0027s consistent in the same method.",
+      "range": {
+        "startLine": 1315,
+        "startChar": 6,
+        "endLine": 1315,
+        "endChar": 12
+      },
+      "revId": "3d6208f62ac73a20d3065a1ac7787ecafbcbef6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9036d442_15b902a6",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-27T17:12:59Z",
+      "side": 1,
+      "message": "Curlen was more descriptive.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 11,
+        "endLine": 1325,
+        "endChar": 12
+      },
+      "revId": "3d6208f62ac73a20d3065a1ac7787ecafbcbef6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
