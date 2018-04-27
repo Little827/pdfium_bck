@@ -17,6 +17,24 @@
       "revId": "682e1f59bf44c0567ab1023e15e8cf9c96ad550f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05dc9c59_71fd1741",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-27T20:35:52Z",
+      "side": 1,
+      "message": "Yes, it\u0027s fine. In fact, it\u0027s not necessary since the vectors are initialized.",
+      "parentUuid": "2927342d_4a637e35",
+      "revId": "682e1f59bf44c0567ab1023e15e8cf9c96ad550f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
