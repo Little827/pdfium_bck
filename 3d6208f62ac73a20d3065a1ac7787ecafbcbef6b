@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "6ec248f2_cc1364c5",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-27T19:31:11Z",
+      "side": 1,
+      "message": "I\u0027ll put it back.",
+      "parentUuid": "7f41ac98_eddb43c4",
+      "range": {
+        "startLine": 1315,
+        "startChar": 6,
+        "endLine": 1315,
+        "endChar": 12
+      },
+      "revId": "3d6208f62ac73a20d3065a1ac7787ecafbcbef6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9036d442_15b902a6",
         "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2018-04-27T17:12:59Z",
       "side": 1,
       "message": "Curlen was more descriptive.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 11,
+        "endLine": 1325,
+        "endChar": 12
+      },
+      "revId": "3d6208f62ac73a20d3065a1ac7787ecafbcbef6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577e1bd5_5d0dfa73",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-27T19:31:11Z",
+      "side": 1,
+      "message": "But it\u0027s just an iterator.",
+      "parentUuid": "9036d442_15b902a6",
       "range": {
         "startLine": 1325,
         "startChar": 11,
