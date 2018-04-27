@@ -70,7 +70,7 @@ class CFX_BidiString {
   const_iterator end() const { return m_Order.end(); }
 
  private:
-  const WideString m_Str;
+  const WideString& m_Str;
   std::unique_ptr<CFX_BidiChar> m_pBidiChar;
   std::vector<CFX_BidiChar::Segment> m_Order;
   CFX_BidiChar::Direction m_eOverallDirection;

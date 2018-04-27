@@ -581,7 +581,7 @@ CFX_BidiString::CFX_BidiString(const WideString& str)
     : m_Str(str),
       m_pBidiChar(pdfium::MakeUnique<CFX_BidiChar>()),
       m_eOverallDirection(CFX_BidiChar::LEFT) {
-  for (const auto& c : m_Str) {
+  for (wchar_t c : m_Str) {
     if (m_pBidiChar->AppendChar(c))
       m_Order.push_back(m_pBidiChar->GetSegmentInfo());
   }
