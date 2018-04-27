@@ -294,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "254e0c3c_0657db5a",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-27T15:54:54Z",
+      "side": 1,
+      "message": "Yeah, I meant that it\u0027s weird for this to be called with current_node_ \u003d\u003d nullptr, but I suppose it\u0027s better not to change the behavior further.",
+      "parentUuid": "db88e047_88a902e5",
+      "revId": "6508ee9c703496dd84877ce715abf72b60a6f116",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e29ec367_9e2d5f45",
         "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
         "patchSetId": 4
