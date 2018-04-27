@@ -36,74 +36,86 @@ extern const char kGifSignature89[];
 #define GIF_D_STATUS_IMG_DATA 0x0A
 
 #pragma pack(1)
-typedef struct {
+struct CFX_GifGlobalFlags {
   uint8_t pal_bits : 3;
   uint8_t sort_flag : 1;
   uint8_t color_resolution : 3;
   uint8_t global_pal : 1;
-} CFX_GifGlobalFlags;
+};
+static_assert(sizeof(CFX_GifGlobalFlags) == 1, "CFX_GifGlobalFlags not packed");
 
-typedef struct {
+struct CFX_GifLocalFlags {
   uint8_t pal_bits : 3;
   uint8_t reserved : 2;
   uint8_t sort_flag : 1;
   uint8_t interlace : 1;
   uint8_t local_pal : 1;
-} CFX_GifLocalFlags;
+};
+static_assert(sizeof(CFX_GifLocalFlags) == 1, "CFX_GifLocalFlags not packed");
 
-typedef struct { char signature[6]; } CFX_GifHeader;
+struct CFX_GifHeader {
+  char signature[6];
+};
+static_assert(sizeof(CFX_GifHeader) == 6, "CFX_GifHeader not packed");
 
-typedef struct {
+struct CFX_GifLocalScreenDescriptor {
   uint16_t width;
   uint16_t height;
   CFX_GifGlobalFlags global_flags;
   uint8_t bc_index;
   uint8_t pixel_aspect;
-} CFX_GifLocalScreenDescriptor;
+};
 
-typedef struct {
+struct CFX_CFX_GifImageInfo {
   uint16_t left;
   uint16_t top;
   uint16_t width;
   uint16_t height;
   CFX_GifLocalFlags local_flags;
-} CFX_CFX_GifImageInfo;
+};
 
-typedef struct {
+struct CFX_GifControlExtensionFlags {
   uint8_t transparency : 1;
   uint8_t user_input : 1;
   uint8_t disposal_method : 3;
   uint8_t reserved : 3;
-} CFX_GifControlExtensionFlags;
+};
+static_assert(sizeof(CFX_GifControlExtensionFlags) == 1,
+              "CFX_GifControlExtensionFlags not packed");
 
-typedef struct {
+struct CFX_GifGraphicControlExtension {
   uint8_t block_size;
   CFX_GifControlExtensionFlags gce_flags;
   uint16_t delay_time;
   uint8_t trans_index;
-} CFX_GifGraphicControlExtension;
+};
 
-typedef struct {
+struct CFX_GifPlainTextExtension {
   uint8_t block_size;
   uint16_t grid_left;
   uint16_t grid_top;
   uint16_t grid_width;
   uint16_t grid_height;
-
   uint8_t char_width;
   uint8_t char_height;
-
   uint8_t fc_index;
   uint8_t bc_index;
-} CFX_GifPlainTextExtension;
+};
 
-typedef struct {
+struct GifApplicationExtension {
   uint8_t block_size;
   uint8_t app_identify[8];
   uint8_t app_authentication[3];
-} GifApplicationExtension;
+};
+static_assert(sizeof(GifApplicationExtension) == 12,
+              "GifApplicationExtension not packed");
 
-typedef struct { uint8_t r, g, b; } CFX_GifPalette;
+struct CFX_GifPalette {
+  uint8_t r;
+  uint8_t g;
+  uint8_t b;
+};
+static_assert(sizeof(CFX_GifPalette) == 3, "CFX_GifPalette not packed");
 #pragma pack()
 
 enum class CFX_GifDecodeStatus {
