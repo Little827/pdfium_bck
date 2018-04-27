@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1bb56f9_e06cdbbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-27T21:39:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e36d67c_efc59d80",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "0b01927e82f447196ca710258d5ed99f9dc6f426",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67a10aac_a2a71d9e",
         "filename": "core/fxcodec/gif/cfx_gif.h",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-27T21:37:13Z",
       "side": 1,
       "message": "For later: I wonder if they can be moved down for better alignment.",
+      "revId": "0b01927e82f447196ca710258d5ed99f9dc6f426",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3771de74_c9c05670",
+        "filename": "core/fxcodec/gif/cfx_gif.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-27T21:39:49Z",
+      "side": 1,
+      "message": "Yeah, not sure if the map to an on-disk structure in the file format.",
+      "parentUuid": "67a10aac_a2a71d9e",
       "revId": "0b01927e82f447196ca710258d5ed99f9dc6f426",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
