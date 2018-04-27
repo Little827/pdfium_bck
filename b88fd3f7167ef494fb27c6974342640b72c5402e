@@ -16,6 +16,24 @@
       "revId": "b88fd3f7167ef494fb27c6974342640b72c5402e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9debb3e_f581ce47",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-27T21:14:31Z",
+      "side": 1,
+      "message": "D\u0027oh.  Joy of batch programming. Fixing.",
+      "parentUuid": "c859c4af_bc9973f3",
+      "revId": "b88fd3f7167ef494fb27c6974342640b72c5402e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
