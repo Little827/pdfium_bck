@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be2cdd7_c7b59810",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-04-30T21:27:35Z",
+      "side": 1,
+      "message": "Do we need to check if pDoc-\u003eGetExtension() is NULL? (Here and for other callers)",
+      "revId": "977dc954bb7a429ca7f5521653c78f6c05d918af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
