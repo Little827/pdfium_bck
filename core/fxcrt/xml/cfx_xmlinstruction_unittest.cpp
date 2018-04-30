@@ -4,7 +4,7 @@
 
 #include "core/fxcrt/xml/cfx_xmlinstruction.h"
 #include "core/fxcrt/cfx_memorystream.h"
-#include "core/fxcrt/xml/cfx_xmlelement.h"
+#include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "core/fxcrt/xml/cfx_xmlparser.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/string_write_stream.h"
@@ -41,15 +41,17 @@ TEST(CFX_XMLInstructionTest, TargetData) {
 }
 
 TEST(CFX_XMLInstructionTest, Clone) {
+  CFX_XMLDocument doc;
+
   CFX_XMLInstruction node(L"acrobat");
   node.AppendData(L"firstString");
   node.AppendData(L"secondString");
 
-  auto clone = node.Clone();
+  CFX_XMLNode* clone = node.Clone(&doc);
   EXPECT_TRUE(clone != nullptr);
 
   ASSERT_EQ(FX_XMLNODE_Instruction, clone->GetType());
-  CFX_XMLInstruction* inst = static_cast<CFX_XMLInstruction*>(clone.get());
+  CFX_XMLInstruction* inst = static_cast<CFX_XMLInstruction*>(clone);
 
   EXPECT_TRUE(inst->IsAcrobat());
 
@@ -87,14 +89,11 @@ TEST(CFX_XMLInstructionTest, ParseAndReSave) {
       reinterpret_cast<uint8_t*>(const_cast<char*>(input)), strlen(input),
       false);
 
-  CFX_XMLElement root(L"root");
-  CFX_XMLParser parser(&root, in_stream);
-  ASSERT_TRUE(parser.Parse());
-  ASSERT_TRUE(root.GetFirstChild() != nullptr);
-  ASSERT_EQ(FX_XMLNODE_Instruction, root.GetFirstChild()->GetType());
+  CFX_XMLParser parser(in_stream);
+  std::unique_ptr<CFX_XMLDocument> doc = parser.Parse();
+  ASSERT_TRUE(doc != nullptr);
 
-  CFX_XMLInstruction* node =
-      static_cast<CFX_XMLInstruction*>(root.GetFirstChild());
+  CFX_XMLInstruction* node = doc->GetInstruction();
   ASSERT_TRUE(node != nullptr);
   EXPECT_TRUE(node->IsAcrobat());
 
