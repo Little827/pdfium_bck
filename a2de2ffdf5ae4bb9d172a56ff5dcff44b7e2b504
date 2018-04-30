@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11a508f1_c6329109",
+        "filename": "xfa/fgas/layout/cfx_txtbreak.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-30T19:45:54Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "46f126cb_773dc753",
+      "range": {
+        "startLine": 187,
+        "startChar": 37,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "a2de2ffdf5ae4bb9d172a56ff5dcff44b7e2b504",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7372bd0b_29e4b15c",
         "filename": "xfa/fgas/layout/cfx_txtbreak.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-30T19:35:32Z",
       "side": 1,
       "message": "I wonder if this could be changed to just be:\n\niCharWidth \u003d m_pFont-\u003eGetCharWidth(wForm, m_iDefChar);\n\nThen change GetCharWidth to return m_iDefChar when it would return false and whatever it would assign to iCharWidthOut instead of true.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 5
+      },
+      "revId": "a2de2ffdf5ae4bb9d172a56ff5dcff44b7e2b504",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a033da5_3cc045ec",
+        "filename": "xfa/fgas/layout/cfx_txtbreak.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-30T19:45:54Z",
+      "side": 1,
+      "message": "I don\u0027t know. This method is used in other places and the returns value isn\u0027t checked in all of them. It\u0027s also not possible to derive the return value from the out param value.",
+      "parentUuid": "7372bd0b_29e4b15c",
       "range": {
         "startLine": 186,
         "startChar": 2,
