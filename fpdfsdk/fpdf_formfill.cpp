@@ -296,7 +296,7 @@ FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
   // this and can just return the old Env. Otherwise, we'll end up setting a new
   // environment into the XFADocument and, that could get weird.
   auto* pContext = static_cast<CPDFXFA_Context*>(pDocument->GetExtension());
-  if (pContext->GetFormFillEnv())
+  if (pContext && pContext->GetFormFillEnv())
     return pContext->GetFormFillEnv();
 #endif
 
@@ -304,7 +304,8 @@ FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
       CPDFDocumentFromFPDFDocument(document), formInfo);
 
 #ifdef PDF_ENABLE_XFA
-  pContext->SetFormFillEnv(pFormFillEnv.get());
+  if (pContext)
+    pContext->SetFormFillEnv(pFormFillEnv.get());
 #endif  // PDF_ENABLE_XFA
 
   return pFormFillEnv.release();  // Caller takes ownership.
