@@ -153,8 +153,20 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument() {
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
                                                int page_index) {
-  if (UnderlyingDocumentType* pDoc = UnderlyingFromFPDFDocument(document))
-    pDoc->DeletePage(page_index);
+  auto* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return;
+
+#ifdef PDF_ENABLE_XFA
+  CPDFXFA_Context* pContext =
+      static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
+  if (pContext) {
+    pContext->DeletePage(page_index);
+    return;
+  }
+#endif  // PDF_ENABLE_XFA
+
+  pDoc->DeletePage(page_index);
 }
 
 FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
@@ -175,15 +187,17 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
   pPageDict->SetNewFor<CPDF_Dictionary>("Resources");
 
 #ifdef PDF_ENABLE_XFA
-  auto pXFAPage = pdfium::MakeRetain<CPDFXFA_Page>(
-      static_cast<CPDFXFA_Context*>(document), page_index);
-  pXFAPage->LoadPDFPage(pPageDict);
-  return pXFAPage.Leak();  // Caller takes ownership.
-#else  // PDF_ENABLE_XFA
+  auto* pContext = static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
+  if (pContext) {
+    auto pXFAPage = pdfium::MakeRetain<CPDFXFA_Page>(pContext, page_index);
+    pXFAPage->LoadPDFPage(pPageDict);
+    return pXFAPage.Leak();  // Caller takes ownership.
+  }
+#endif  // PDF_ENABLE_XFA
+
   auto pPage = pdfium::MakeUnique<CPDF_Page>(pDoc, pPageDict, true);
   pPage->ParseContent();
   return pPage.release();  // Caller takes ownership.
-#endif  // PDF_ENABLE_XFA
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_GetRotation(FPDF_PAGE page) {
