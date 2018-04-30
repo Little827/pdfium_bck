@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6edad51_4507893d",
+        "filename": "xfa/fgas/font/cfgas_gefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-30T20:23:26Z",
+      "side": 1,
+      "message": "This feels like a magic number/something that should be a constant. Any thoughts on there this comes from?",
+      "range": {
+        "startLine": 161,
+        "startChar": 17,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "f38887958040cbfdb3b590da12a0dace2608b348",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
