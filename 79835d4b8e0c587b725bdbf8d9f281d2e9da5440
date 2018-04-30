@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "296ab865_535b54e9",
+        "filename": "core/fxcrt/xml/cfx_xmlelement_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-04-30T21:00:10Z",
+      "side": 1,
+      "message": "nit: Don\u0027t use \u0027we\u0027 in comments.\n\n// Only Text nodes should be cloned, so expect only 1 child.",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 7
+      },
+      "revId": "79835d4b8e0c587b725bdbf8d9f281d2e9da5440",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
