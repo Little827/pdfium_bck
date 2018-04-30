@@ -22,6 +22,30 @@
       "revId": "f38887958040cbfdb3b590da12a0dace2608b348",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1527dcd_608e825c",
+        "filename": "xfa/fgas/font/cfgas_gefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-04-30T20:29:11Z",
+      "side": 1,
+      "message": "m_CharWidthMap is only filled in line 184 below, so the value would need to come from m_pProvider-\u003eGetCharWidth(), m_pFont-\u003eGetGlyphWidth(), pFont-\u003eGetCharWidth(). I couldn\u0027t find it  being set explicitly to 65535 there. So no, no idea.",
+      "parentUuid": "d6edad51_4507893d",
+      "range": {
+        "startLine": 161,
+        "startChar": 17,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "f38887958040cbfdb3b590da12a0dace2608b348",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
