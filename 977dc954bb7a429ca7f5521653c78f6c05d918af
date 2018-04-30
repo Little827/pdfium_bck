@@ -16,6 +16,24 @@
       "revId": "977dc954bb7a429ca7f5521653c78f6c05d918af",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a79fa42_532acf1e",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-04-30T21:35:48Z",
+      "side": 1,
+      "message": "Eventually, yes.  But for now, whenever we compile with XFA, we always will make a context as a side-effect of CPDFDocumentFromFPDFDocument.  A subsequent CL will make the context only int FPDF_LoadXFA() and will hunt down the nullptrs at that time.",
+      "parentUuid": "0be2cdd7_c7b59810",
+      "revId": "977dc954bb7a429ca7f5521653c78f6c05d918af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
