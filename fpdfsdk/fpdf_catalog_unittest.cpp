@@ -29,31 +29,11 @@ class CPDF_TestDocument : public CPDF_Document {
   }
 };
 
-#ifdef PDF_ENABLE_XFA
-class CPDF_TestXFAContext : public CPDFXFA_Context {
- public:
-  CPDF_TestXFAContext()
-      : CPDFXFA_Context(pdfium::MakeUnique<CPDF_TestDocument>()) {}
-
-  void SetRoot(CPDF_Dictionary* root) {
-    static_cast<CPDF_TestDocument*>(GetPDFDoc())->SetRoot(root);
-  }
-
-  CPDF_IndirectObjectHolder* GetHolder() { return GetPDFDoc(); }
-};
-using CPDF_TestPdfDocument = CPDF_TestXFAContext;
-#else   // PDF_ENABLE_XFA
-using CPDF_TestPdfDocument = CPDF_TestDocument;
-#endif  // PDF_ENABLE_XFA
-
 class PDFCatalogTest : public testing::Test {
  public:
   void SetUp() override {
     CPDF_ModuleMgr::Get()->Init();
-
-    m_pDoc = pdfium::MakeUnique<CPDF_TestPdfDocument>();
-
-    // Setup the root directory.
+    m_pDoc = pdfium::MakeUnique<CPDF_TestDocument>();
     m_pRootObj = pdfium::MakeUnique<CPDF_Dictionary>();
   }
 
@@ -63,7 +43,7 @@ class PDFCatalogTest : public testing::Test {
   }
 
  protected:
-  std::unique_ptr<CPDF_TestPdfDocument> m_pDoc;
+  std::unique_ptr<CPDF_TestDocument> m_pDoc;
   std::unique_ptr<CPDF_Dictionary> m_pRootObj;
 };
 
@@ -73,26 +53,31 @@ TEST_F(PDFCatalogTest, IsTagged) {
 
   // No root
   m_pDoc->SetRoot(nullptr);
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(
+      FPDFCatalog_IsTagged(FPDFDocumentFromCPDFDocument(m_pDoc.get())));
 
   // Empty root
   m_pDoc->SetRoot(m_pRootObj.get());
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(
+      FPDFCatalog_IsTagged(FPDFDocumentFromCPDFDocument(m_pDoc.get())));
 
   // Root with other key
   m_pRootObj->SetNewFor<CPDF_String>("OTHER_KEY", "other value", false);
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(
+      FPDFCatalog_IsTagged(FPDFDocumentFromCPDFDocument(m_pDoc.get())));
 
   // Root with empty MarkInfo
   CPDF_Dictionary* markInfoDict =
       m_pRootObj->SetNewFor<CPDF_Dictionary>("MarkInfo");
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(
+      FPDFCatalog_IsTagged(FPDFDocumentFromCPDFDocument(m_pDoc.get())));
 
   // MarkInfo present but Marked is 0
   markInfoDict->SetNewFor<CPDF_Number>("Marked", 0);
-  EXPECT_FALSE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_FALSE(
+      FPDFCatalog_IsTagged(FPDFDocumentFromCPDFDocument(m_pDoc.get())));
 
   // MarkInfo present and Marked is 1, PDF is considered tagged.
   markInfoDict->SetNewFor<CPDF_Number>("Marked", 1);
-  EXPECT_TRUE(FPDFCatalog_IsTagged(m_pDoc.get()));
+  EXPECT_TRUE(FPDFCatalog_IsTagged(FPDFDocumentFromCPDFDocument(m_pDoc.get())));
 }
