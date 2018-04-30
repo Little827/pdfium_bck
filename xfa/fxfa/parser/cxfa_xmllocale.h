@@ -13,13 +13,14 @@
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
 
+class CFX_XMLDocument;
 class CFX_XMLElement;
 
 class CXFA_XMLLocale : public LocaleIface {
  public:
   static std::unique_ptr<CXFA_XMLLocale> Create(pdfium::span<uint8_t> data);
 
-  explicit CXFA_XMLLocale(std::unique_ptr<CFX_XMLElement> root,
+  explicit CXFA_XMLLocale(std::unique_ptr<CFX_XMLDocument> root,
                           CFX_XMLElement* locale);
   ~CXFA_XMLLocale() override;
 
@@ -49,8 +50,7 @@ class CXFA_XMLLocale : public LocaleIface {
                                size_t index,
                                bool bAbbr) const;
 
-  std::unique_ptr<CFX_XMLElement> xml_root_;
-  UnownedPtr<CFX_XMLElement> locale_;
+  std::unique_ptr<CFX_XMLDocument> xml_doc_;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_XMLLOCALE_H_
