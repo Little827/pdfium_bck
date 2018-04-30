@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46f126cb_773dc753",
+        "filename": "xfa/fgas/layout/cfx_txtbreak.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-30T19:35:32Z",
+      "side": 1,
+      "message": "followup: make this a pointer param.",
+      "range": {
+        "startLine": 187,
+        "startChar": 37,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "a2de2ffdf5ae4bb9d172a56ff5dcff44b7e2b504",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7372bd0b_29e4b15c",
+        "filename": "xfa/fgas/layout/cfx_txtbreak.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-04-30T19:35:32Z",
+      "side": 1,
+      "message": "I wonder if this could be changed to just be:\n\niCharWidth \u003d m_pFont-\u003eGetCharWidth(wForm, m_iDefChar);\n\nThen change GetCharWidth to return m_iDefChar when it would return false and whatever it would assign to iCharWidthOut instead of true.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 5
+      },
+      "revId": "a2de2ffdf5ae4bb9d172a56ff5dcff44b7e2b504",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
