@@ -304,7 +304,7 @@ bool XFA_RecognizeRichText(CFX_XMLElement* pRichTextXMLNode) {
 CXFA_DocumentParser::CXFA_DocumentParser(CXFA_Document* pFactory)
     : m_pFactory(pFactory) {}
 
-CXFA_DocumentParser::~CXFA_DocumentParser() {}
+CXFA_DocumentParser::~CXFA_DocumentParser() = default;
 
 bool CXFA_DocumentParser::Parse(const RetainPtr<IFX_SeekableStream>& pStream,
                                 XFA_PacketType ePacketID) {
