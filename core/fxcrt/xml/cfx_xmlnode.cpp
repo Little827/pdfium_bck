@@ -27,9 +27,17 @@ void CFX_XMLNode::DeleteChildren() {
   last_child_ = nullptr;
   while (child) {
     child = child->prev_sibling_.Get();
-    if (child)
+    if (child) {
+      if (child->next_sibling_) {
+        child->next_sibling_->prev_sibling_ = nullptr;
+        child->next_sibling_->parent_ = nullptr;
+      }
+
       child->next_sibling_ = nullptr;
+    }
   }
+  if (first_child_)
+    first_child_->parent_ = nullptr;
   first_child_ = nullptr;
 }
 
@@ -81,6 +89,9 @@ void CFX_XMLNode::InsertChildNode(std::unique_ptr<CFX_XMLNode> pNode,
 void CFX_XMLNode::RemoveChildNode(CFX_XMLNode* pNode) {
   ASSERT(first_child_);
   ASSERT(pNode);
+
+  if (pNode->GetParent() != this)
+    return;
 
   if (first_child_.get() == pNode) {
     first_child_.release();
