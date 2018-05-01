@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02ca2293_1cde52f0",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-01T16:24:30Z",
+      "side": 1,
+      "message": "too hard to get right without forcing the complier to check for us.",
+      "parentUuid": "6f57a997_daf72e1f",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "5c896d4718ac3e2eeb960b456bc79903285a0953",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c46a5653_8ef5dd0b",
         "filename": "public/fpdfview.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-01T14:49:52Z",
       "side": 1,
       "message": "This makes the pointer const or the thing it points to const? const void const* ? More const more better?",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "5c896d4718ac3e2eeb960b456bc79903285a0953",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4769a61e_a4324fab",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-01T16:24:30Z",
+      "side": 1,
+      "message": "No change in meaming, it just makes it conform to our style. See \"where to put the const\" under https://google.github.io/styleguide/cppguide.html#Use_of_const",
+      "parentUuid": "c46a5653_8ef5dd0b",
       "range": {
         "startLine": 49,
         "startChar": 8,
