@@ -1137,6 +1137,7 @@ void CXFA_DocumentParser::ParseInstruction(CXFA_Node* pXFANode,
                                            CFX_XMLInstruction* pXMLInstruction,
                                            XFA_PacketType ePacketID) {
   const std::vector<WideString>& target_data = pXMLInstruction->GetTargetData();
+
   if (pXMLInstruction->IsOriginalXFAVersion()) {
     if (target_data.size() > 1 &&
         (pXFANode->GetDocument()->RecognizeXFAVersionNumber(target_data[0]) !=
