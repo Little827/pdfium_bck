@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45925a4f_c16b320a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-01T20:50:59Z",
+      "side": 1,
+      "message": "maybe add something that this should only affect full XFA documents and not foreground documents?",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "5f8532d39aeed1151167b937973aa9a96654f03c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
