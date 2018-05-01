@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c0856d1_523b2d46",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2943,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-01T21:18:29Z",
+      "side": 1,
+      "message": "Think this should be auto? Inline? I like explicit types, and I like doing a single thing per line, but it would get shorter.",
+      "revId": "2a6d49bf0f7d652bc088c0e34824baeb5a1df191",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
