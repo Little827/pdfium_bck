@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/cxfa_ffimage.h"
 
+#include <utility>
+
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "xfa/fxfa/cxfa_ffapp.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
@@ -65,14 +67,12 @@ void CXFA_FFImage::RenderWidget(CXFA_Graphics* pGS,
     iVertAlign = para->GetVerticalAlign();
   }
 
-  int32_t iImageXDpi = 0;
-  int32_t iImageYDpi = 0;
-  m_pNode->GetImageDpi(iImageXDpi, iImageYDpi);
+  std::pair<int32_t, int32_t> dpi = m_pNode->GetImageDpi();
 
   auto* value = m_pNode->GetFormValueIfExists();
   CXFA_Image* image = value ? value->GetImageIfExists() : nullptr;
   if (image) {
     XFA_DrawImage(pGS, rtImage, mtRotate, pDIBitmap, image->GetAspect(),
-                  iImageXDpi, iImageYDpi, iHorzAlign, iVertAlign);
+                  dpi.first, dpi.second, iHorzAlign, iVertAlign);
   }
 }
