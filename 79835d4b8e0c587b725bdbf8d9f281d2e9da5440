@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d916039e_ae1ca1c4",
+        "filename": "core/fxcrt/xml/cfx_xmlelement_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-01T12:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296ab865_535b54e9",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 7
+      },
+      "revId": "79835d4b8e0c587b725bdbf8d9f281d2e9da5440",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e9fee9_5405899e",
         "filename": "core/fxcrt/xml/cfx_xmlinstruction.cpp",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-30T21:09:10Z",
       "side": 1,
       "message": "Wait, this cl doesn\u0027t just add tests then. Can you split these changes out?",
+      "revId": "79835d4b8e0c587b725bdbf8d9f281d2e9da5440",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae35f6b1_1e99b35e",
+        "filename": "core/fxcrt/xml/cfx_xmlinstruction.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-01T12:52:06Z",
+      "side": 1,
+      "message": "Not really, part of adding tests is that they actually work. Without these changes the tests fail, I don\u0027t want to write broken tests just to do this in a second CL.",
+      "parentUuid": "c0e9fee9_5405899e",
       "revId": "79835d4b8e0c587b725bdbf8d9f281d2e9da5440",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
