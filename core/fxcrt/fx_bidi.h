@@ -58,22 +58,19 @@ class CFX_BidiString {
   ~CFX_BidiString();
 
   // Overall direction is always LEFT or RIGHT, never NEUTRAL.
-  CFX_BidiChar::Direction OverallDirection() const {
-    return m_eOverallDirection;
-  }
+  CFX_BidiChar::Direction OverallDirection() const;
 
   // Force the overall direction to be R2L regardless of what was detected.
   void SetOverallDirectionRight();
 
-  wchar_t CharAt(size_t x) const { return m_Str[x]; }
   const_iterator begin() const { return m_Order.begin(); }
   const_iterator end() const { return m_Order.end(); }
 
  private:
-  const WideString m_Str;
-  std::unique_ptr<CFX_BidiChar> m_pBidiChar;
+  const WideString& m_Str;
+  CFX_BidiChar m_pBidiChar;
   std::vector<CFX_BidiChar::Segment> m_Order;
-  CFX_BidiChar::Direction m_eOverallDirection;
+  CFX_BidiChar::Direction m_eOverallDirection = CFX_BidiChar::LEFT;
 };
 
 #if PDF_ENABLE_XFA
