@@ -261,7 +261,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
     return false;
 
   auto* pContext = static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
-  return pContext && pContext->LoadXFADoc();
+  return pContext->LoadXFADoc();
 }
 #endif  // PDF_ENABLE_XFA
 
