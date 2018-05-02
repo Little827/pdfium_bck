@@ -26,10 +26,6 @@ namespace {
 
 constexpr char kChecksumKey[] = "CheckSum";
 
-CPDF_Object* CPDFObjectFromFPDFAttachment(FPDF_ATTACHMENT attachment) {
-  return static_cast<CPDF_Object*>(attachment);
-}
-
 ByteString CFXByteStringHexDecode(const ByteString& bsHex) {
   uint8_t* result = nullptr;
   uint32_t size = 0;
@@ -101,7 +97,7 @@ FPDFDoc_AddAttachment(FPDF_DOCUMENT document, FPDF_WIDESTRING name) {
     return nullptr;
   }
 
-  return pFile;
+  return FPDFAttachmentFromCPDFDictionary(pFile);
 }
 
 FPDF_EXPORT FPDF_ATTACHMENT FPDF_CALLCONV
@@ -115,7 +111,8 @@ FPDFDoc_GetAttachment(FPDF_DOCUMENT document, int index) {
     return nullptr;
 
   WideString csName;
-  return nameTree.LookupValueAndName(index, &csName);
+  return FPDFAttachmentFromCPDFDictionary(
+      ToDictionary(nameTree.LookupValueAndName(index, &csName)));
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -135,7 +132,7 @@ FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFAttachment_GetName(FPDF_ATTACHMENT attachment,
                        void* buffer,
                        unsigned long buflen) {
-  CPDF_Object* pFile = CPDFObjectFromFPDFAttachment(attachment);
+  CPDF_Object* pFile = CPDFDictionaryFromFPDFAttachment(attachment);
   if (!pFile)
     return 0;
 
@@ -145,7 +142,7 @@ FPDFAttachment_GetName(FPDF_ATTACHMENT attachment,
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAttachment_HasKey(FPDF_ATTACHMENT attachment, FPDF_BYTESTRING key) {
-  CPDF_Object* pFile = CPDFObjectFromFPDFAttachment(attachment);
+  CPDF_Object* pFile = CPDFDictionaryFromFPDFAttachment(attachment);
   if (!pFile)
     return 0;
 
@@ -158,7 +155,7 @@ FPDFAttachment_GetValueType(FPDF_ATTACHMENT attachment, FPDF_BYTESTRING key) {
   if (!FPDFAttachment_HasKey(attachment, key))
     return FPDF_OBJECT_UNKNOWN;
 
-  CPDF_FileSpec spec(CPDFObjectFromFPDFAttachment(attachment));
+  CPDF_FileSpec spec(CPDFDictionaryFromFPDFAttachment(attachment));
   CPDF_Object* pObj = spec.GetParamsDict()->GetObjectFor(key);
   return pObj ? pObj->GetType() : FPDF_OBJECT_UNKNOWN;
 }
@@ -167,7 +164,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAttachment_SetStringValue(FPDF_ATTACHMENT attachment,
                               FPDF_BYTESTRING key,
                               FPDF_WIDESTRING value) {
-  CPDF_Object* pFile = CPDFObjectFromFPDFAttachment(attachment);
+  CPDF_Object* pFile = CPDFDictionaryFromFPDFAttachment(attachment);
   if (!pFile)
     return false;
 
@@ -190,7 +187,7 @@ FPDFAttachment_GetStringValue(FPDF_ATTACHMENT attachment,
                               FPDF_BYTESTRING key,
                               void* buffer,
                               unsigned long buflen) {
-  CPDF_Object* pFile = CPDFObjectFromFPDFAttachment(attachment);
+  CPDF_Object* pFile = CPDFDictionaryFromFPDFAttachment(attachment);
   if (!pFile)
     return 0;
 
@@ -216,7 +213,7 @@ FPDFAttachment_SetFile(FPDF_ATTACHMENT attachment,
                        FPDF_DOCUMENT document,
                        const void* contents,
                        const unsigned long len) {
-  CPDF_Object* pFile = CPDFObjectFromFPDFAttachment(attachment);
+  CPDF_Object* pFile = CPDFDictionaryFromFPDFAttachment(attachment);
   CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   if (!pFile || !pFile->IsDictionary() || !pDoc || len > INT_MAX)
     return false;
@@ -265,7 +262,7 @@ FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFAttachment_GetFile(FPDF_ATTACHMENT attachment,
                        void* buffer,
                        unsigned long buflen) {
-  CPDF_Object* pFile = CPDFObjectFromFPDFAttachment(attachment);
+  CPDF_Object* pFile = CPDFDictionaryFromFPDFAttachment(attachment);
   if (!pFile)
     return 0;
 
