@@ -22,6 +22,30 @@
       "revId": "51818f96d8419aa34296e03e93ec093974865712",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bafa229_d494091c",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3082,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-02T15:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4358dd90_a6e5025e",
+      "range": {
+        "startLine": 3082,
+        "startChar": 54,
+        "endLine": 3082,
+        "endChar": 62
+      },
+      "revId": "51818f96d8419aa34296e03e93ec093974865712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
