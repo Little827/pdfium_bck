@@ -22,6 +22,30 @@
       "revId": "d6b54b7d1aef9619044da850e3346ebebfa7d384",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40508710_76efba42",
+        "filename": "core/fxcodec/gif/cfx_gifcontext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-02T18:45:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b206a872_3ab410ea",
+      "range": {
+        "startLine": 354,
+        "startChar": 14,
+        "endLine": 354,
+        "endChar": 23
+      },
+      "revId": "d6b54b7d1aef9619044da850e3346ebebfa7d384",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
