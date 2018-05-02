@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b31af949_51e2a878",
+        "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-02T17:04:56Z",
+      "side": 1,
+      "message": "There\u0027s a functional change here, szToday is now large enough to contain the whole text, rather than just the variable part. This looks more correct to me than it was before and doesn\u0027t cause visual changes.",
+      "revId": "2743ca197e1b2b0ccabd0f1bb6ab6b20c2647705",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
