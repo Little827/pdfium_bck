@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f34186e5_97a8a82e",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-02T19:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6d52e8_65b27875",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 15
+      },
+      "revId": "7db7e28a33652ad204b8e7dd5a0cdd3700d7e9f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e72b4109_780c1f3d",
         "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-02T13:39:50Z",
       "side": 1,
       "message": "if (!m_page)\n  return nullptr;\n\nreturn m_page-\u003eGetDocumentExtension() ? m_page-\u003eGetDocumentExtension()-\u003eGetPDFDoc() : m_page-\u003em_pDocument.Get();\n\nThen don\u0027t need the ifdef.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 3
+      },
+      "revId": "7db7e28a33652ad204b8e7dd5a0cdd3700d7e9f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17a34c5_c44325b4",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-02T19:33:15Z",
+      "side": 1,
+      "message": "actually typeof(m_page) is different in each branch of the #ifdef and hence doesn\u0027t have the same methods. so we have to hide it from the compiler.",
+      "parentUuid": "e72b4109_780c1f3d",
       "range": {
         "startLine": 210,
         "startChar": 0,
