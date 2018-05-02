@@ -58,7 +58,8 @@ bool LoadJpegHelper(FPDF_PAGE* pages,
     return false;
 
   RetainPtr<IFX_SeekableReadStream> pFile = MakeSeekableReadStream(fileAccess);
-  CPDF_ImageObject* pImgObj = static_cast<CPDF_ImageObject*>(image_object);
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(image_object);
+  CPDF_ImageObject* pImgObj = static_cast<CPDF_ImageObject*>(pPageObj);
 
   if (pages) {
     for (int index = 0; index < nCount; index++) {
@@ -86,7 +87,9 @@ FPDFPageObj_NewImageObj(FPDF_DOCUMENT document) {
 
   auto pImageObj = pdfium::MakeUnique<CPDF_ImageObject>();
   pImageObj->SetImage(pdfium::MakeRetain<CPDF_Image>(pDoc));
-  return pImageObj.release();
+
+  // Caller takes ownership.
+  return FPDFPageObjectFromCPDFPageObject(pImageObj.release());
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -116,7 +119,8 @@ FPDFImageObj_SetMatrix(FPDF_PAGEOBJECT image_object,
   if (!image_object)
     return false;
 
-  CPDF_ImageObject* pImgObj = static_cast<CPDF_ImageObject*>(image_object);
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(image_object);
+  CPDF_ImageObject* pImgObj = static_cast<CPDF_ImageObject*>(pPageObj);
   pImgObj->set_matrix(CFX_Matrix(static_cast<float>(a), static_cast<float>(b),
                                  static_cast<float>(c), static_cast<float>(d),
                                  static_cast<float>(e), static_cast<float>(f)));
@@ -133,13 +137,14 @@ FPDFImageObj_SetBitmap(FPDF_PAGE* pages,
   if (!image_object || !bitmap || !pages)
     return false;
 
-  CPDF_ImageObject* pImgObj = static_cast<CPDF_ImageObject*>(image_object);
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(image_object);
+  CPDF_ImageObject* pImgObj = static_cast<CPDF_ImageObject*>(pPageObj);
   for (int index = 0; index < nCount; index++) {
     CPDF_Page* pPage = CPDFPageFromFPDFPage(pages[index]);
     if (pPage)
       pImgObj->GetImage()->ResetCache(pPage, nullptr);
   }
-  RetainPtr<CFX_DIBitmap> holder(CFXBitmapFromFPDFBitmap(bitmap));
+  RetainPtr<CFX_DIBitmap> holder(CFXDIBitmapFromFPDFBitmap(bitmap));
   pImgObj->GetImage()->SetImage(holder);
   pImgObj->CalcBoundingBox();
   pImgObj->SetDirty(true);
@@ -170,7 +175,7 @@ FPDFImageObj_GetBitmap(FPDF_PAGEOBJECT image_object) {
   else
     pBitmap = pSource->Clone(nullptr);
 
-  return pBitmap.Leak();
+  return FPDFBitmapFromCFXDIBitmap(pBitmap.Leak());
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV

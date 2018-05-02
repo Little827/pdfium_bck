@@ -141,45 +141,6 @@ static_assert(static_cast<int>(CPDF_Object::Type::REFERENCE) ==
                   FPDF_OBJECT_REFERENCE,
               "CPDF_Object::REFERENCE value mismatch");
 
-class CPDF_AnnotContext {
- public:
-  CPDF_AnnotContext(CPDF_Dictionary* pAnnotDict,
-                    CPDF_Page* pPage,
-                    CPDF_Stream* pStream)
-      : m_pAnnotDict(pAnnotDict), m_pPage(pPage) {
-    SetForm(pStream);
-  }
-  ~CPDF_AnnotContext() {}
-
-  bool HasForm() const { return !!m_pAnnotForm; }
-
-  void SetForm(CPDF_Stream* pStream) {
-    if (!pStream)
-      return;
-
-    // Reset the annotation matrix to be the identity matrix, since the
-    // appearance stream already takes matrix into account.
-    pStream->GetDict()->SetMatrixFor("Matrix", CFX_Matrix());
-
-    m_pAnnotForm = pdfium::MakeUnique<CPDF_Form>(
-        m_pPage->m_pDocument.Get(), m_pPage->m_pResources.Get(), pStream);
-    m_pAnnotForm->ParseContent();
-  }
-
-  CPDF_Form* GetForm() const { return m_pAnnotForm.get(); }
-  CPDF_Dictionary* GetAnnotDict() const { return m_pAnnotDict.Get(); }
-  CPDF_Page* GetPage() const { return m_pPage.Get(); }
-
- private:
-  std::unique_ptr<CPDF_Form> m_pAnnotForm;
-  UnownedPtr<CPDF_Dictionary> m_pAnnotDict;
-  UnownedPtr<CPDF_Page> m_pPage;
-};
-
-CPDF_AnnotContext* CPDFAnnotContextFromFPDFAnnotation(FPDF_ANNOTATION annot) {
-  return static_cast<CPDF_AnnotContext*>(annot);
-}
-
 bool HasAPStream(const CPDF_Dictionary* pAnnotDict) {
   return !!FPDFDOC_GetAnnotAP(pAnnotDict, CPDF_Annot::AppearanceMode::Normal);
 }
@@ -241,6 +202,41 @@ void UpdateBBox(const CPDF_Dictionary* annot_dict) {
 
 }  // namespace
 
+class CPDF_AnnotContext {
+ public:
+  CPDF_AnnotContext(CPDF_Dictionary* pAnnotDict,
+                    CPDF_Page* pPage,
+                    CPDF_Stream* pStream)
+      : m_pAnnotDict(pAnnotDict), m_pPage(pPage) {
+    SetForm(pStream);
+  }
+  ~CPDF_AnnotContext() {}
+
+  bool HasForm() const { return !!m_pAnnotForm; }
+
+  void SetForm(CPDF_Stream* pStream) {
+    if (!pStream)
+      return;
+
+    // Reset the annotation matrix to be the identity matrix, since the
+    // appearance stream already takes matrix into account.
+    pStream->GetDict()->SetMatrixFor("Matrix", CFX_Matrix());
+
+    m_pAnnotForm = pdfium::MakeUnique<CPDF_Form>(
+        m_pPage->m_pDocument.Get(), m_pPage->m_pResources.Get(), pStream);
+    m_pAnnotForm->ParseContent();
+  }
+
+  CPDF_Form* GetForm() const { return m_pAnnotForm.get(); }
+  CPDF_Dictionary* GetAnnotDict() const { return m_pAnnotDict.Get(); }
+  CPDF_Page* GetPage() const { return m_pPage.Get(); }
+
+ private:
+  std::unique_ptr<CPDF_Form> m_pAnnotForm;
+  UnownedPtr<CPDF_Dictionary> m_pAnnotDict;
+  UnownedPtr<CPDF_Page> m_pPage;
+};
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_IsSupportedSubtype(FPDF_ANNOTATION_SUBTYPE subtype) {
   // The supported subtypes must also be communicated in the user doc.
@@ -270,9 +266,10 @@ FPDFPage_CreateAnnot(FPDF_PAGE page, FPDF_ANNOTATION_SUBTYPE subtype) {
   CPDF_Array* pAnnotList = pPage->m_pFormDict->GetArrayFor("Annots");
   if (!pAnnotList)
     pAnnotList = pPage->m_pFormDict->SetNewFor<CPDF_Array>("Annots");
-
   pAnnotList->Add(std::move(pDict));
-  return pNewAnnot.release();
+
+  // Caller takes ownership.
+  return FPDFAnnotationFromCPDFAnnotContext(pNewAnnot.release());
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_GetAnnotCount(FPDF_PAGE page) {
@@ -296,7 +293,9 @@ FPDF_EXPORT FPDF_ANNOTATION FPDF_CALLCONV FPDFPage_GetAnnot(FPDF_PAGE page,
 
   CPDF_Dictionary* pDict = ToDictionary(pAnnots->GetDirectObjectAt(index));
   auto pNewAnnot = pdfium::MakeUnique<CPDF_AnnotContext>(pDict, pPage, nullptr);
-  return pNewAnnot.release();
+
+  // Caller takes ownership.
+  return FPDFAnnotationFromCPDFAnnotContext(pNewAnnot.release());
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_GetAnnotIndex(FPDF_PAGE page,
@@ -480,7 +479,8 @@ FPDFAnnot_GetObject(FPDF_ANNOTATION annot, int index) {
     pAnnot->SetForm(pStream);
   }
 
-  return pAnnot->GetForm()->GetPageObjectByIndex(index);
+  return FPDFPageObjectFromCPDFPageObject(
+      pAnnot->GetForm()->GetPageObjectByIndex(index));
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -868,7 +868,9 @@ FPDFAnnot_GetLinkedAnnot(FPDF_ANNOTATION annot, FPDF_BYTESTRING key) {
 
   auto pLinkedAnnot = pdfium::MakeUnique<CPDF_AnnotContext>(
       pLinkedDict, pAnnot->GetPage(), nullptr);
-  return pLinkedAnnot.release();
+
+  // Caller takes ownership.
+  return FPDFAnnotationFromCPDFAnnotContext(pLinkedAnnot.release());
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetFlags(FPDF_ANNOTATION annot) {
