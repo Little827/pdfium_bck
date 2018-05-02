@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bac2c54c_5f7902b2",
+        "filename": "core/fxcrt/xml/cfx_xmlparser_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-02T15:52:43Z",
+      "side": 1,
+      "message": "This one changed from building a doc to failing which I think makes more sense. The \u003cp\u003e is unclosed so which node would the ; thing be attached too?",
+      "range": {
+        "startLine": 341,
+        "startChar": 14,
+        "endLine": 341,
+        "endChar": 19
+      },
+      "revId": "0d5384967d59551d4036f22a902df6208f6ab780",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
