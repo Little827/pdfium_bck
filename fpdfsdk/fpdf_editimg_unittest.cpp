@@ -15,6 +15,10 @@ class PDFEditTest : public testing::Test {
 
 TEST_F(PDFEditTest, InsertObjectWithInvalidPage) {
   FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
+#ifdef PDF_ENABLE_XFA
+  EXPECT_TRUE(FPDF_AddXFAExtension(doc));
+#endif
+
   FPDF_PAGE page = FPDFPage_New(doc, 0, 100, 100);
   EXPECT_EQ(0, FPDFPage_CountObjects(page));
 
@@ -34,6 +38,10 @@ TEST_F(PDFEditTest, InsertObjectWithInvalidPage) {
 
 TEST_F(PDFEditTest, NewImageObj) {
   FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
+#ifdef PDF_ENABLE_XFA
+  EXPECT_TRUE(FPDF_AddXFAExtension(doc));
+#endif
+
   FPDF_PAGE page = FPDFPage_New(doc, 0, 100, 100);
   EXPECT_EQ(0, FPDFPage_CountObjects(page));
 
@@ -48,6 +56,10 @@ TEST_F(PDFEditTest, NewImageObj) {
 
 TEST_F(PDFEditTest, NewImageObjGenerateContent) {
   FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
+#ifdef PDF_ENABLE_XFA
+  EXPECT_TRUE(FPDF_AddXFAExtension(doc));
+#endif
+
   FPDF_PAGE page = FPDFPage_New(doc, 0, 100, 100);
   EXPECT_EQ(0, FPDFPage_CountObjects(page));
 

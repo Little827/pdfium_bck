@@ -126,6 +126,9 @@ int CheckPDFiumCApi() {
 
     // fpdf_edit.h
     CHK(FPDF_CreateNewDocument);
+#ifdef PDF_ENABLE_XFA
+    CHK(FPDF_AddXFAExtension);
+#endif
     CHK(FPDFPage_New);
     CHK(FPDFPage_Delete);
     CHK(FPDFPage_GetRotation);

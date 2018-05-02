@@ -37,6 +37,7 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/ipdfsdk_pauseadapter.h"
 #include "fxjs/ijs_runtime.h"
+#include "public/fpdf_edit.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/ptr_util.h"
 
@@ -48,7 +49,6 @@
 
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 #include "core/fxge/cfx_windowsrenderdevice.h"
-#include "public/fpdf_edit.h"
 
 // These checks are here because core/ and public/ cannot depend on each other.
 static_assert(WindowsPrintMode::kModeEmf == FPDF_PRINTMODE_EMF,
@@ -260,8 +260,11 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
   if (!pDoc)
     return false;
 
+  if (!FPDF_AddXFAExtension(document))
+    return false;
+
   auto* pContext = static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
-  return pContext && pContext->LoadXFADoc();
+  return pContext->LoadXFADoc();
 }
 #endif  // PDF_ENABLE_XFA
 

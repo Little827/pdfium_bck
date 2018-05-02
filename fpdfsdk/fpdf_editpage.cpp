@@ -151,6 +151,18 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument() {
   return FPDFDocumentFromCPDFDocument(pDoc.release());
 }
 
+#ifdef PDF_ENABLE_XFA
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_AddXFAExtension(FPDF_DOCUMENT document) {
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return false;
+
+  pDoc->SetExtension(new CPDFXFA_Context(pdfium::WrapUnique(pDoc)));
+  return true;
+}
+#endif  // PDF_ENABLE_XFA
+
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
                                                int page_index) {
   auto* pDoc = CPDFDocumentFromFPDFDocument(document);

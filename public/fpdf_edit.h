@@ -96,6 +96,19 @@ extern "C" {
 // Returns a handle to a new document, or NULL on failure.
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument();
 
+#ifdef PDF_ENABLE_XFA
+// Adds an optional XFA extension to a newly-created document.
+//
+//   document   - handle to document.
+//
+// Returns true on success, false otherwise.
+//
+// Note that this function should only be called on documents created
+// via FPDF_CreateNewDocument().  In other case, use FPDF_LoadXFA.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_AddXFAExtension(FPDF_DOCUMENT document);
+#endif  // PDF_ENABLE_XFA
+
 // Create a new PDF page.
 //
 //   document   - handle to document.
