@@ -26,8 +26,6 @@ class CPDFXFA_Page : public CPDF_Page::Extension {
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
   bool LoadPage();
-  bool LoadPDFPage(CPDF_Dictionary* pageDict);
-
   CPDFXFA_Context* GetContext() const { return m_pContext.Get(); }
   int GetPageIndex() const { return m_iPageIndex; }
   CPDF_Page* GetPDFPage() const { return m_pPDFPage.get(); }
@@ -54,7 +52,6 @@ class CPDFXFA_Page : public CPDF_Page::Extension {
   CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index);
   ~CPDFXFA_Page() override;
 
-  bool LoadPDFPage();
   bool LoadXFAPageView();
 
  private:

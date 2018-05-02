@@ -43,10 +43,10 @@ void CPDF_PageObjectHolder::ContinueParse(PauseIndicatorIface* pPause) {
   if (m_pParser->Continue(pPause))
     return;
 
-  m_ParseState = CONTENT_PARSED;
   if (m_pParser->GetCurStates())
     m_LastCTM = m_pParser->GetCurStates()->m_CTM;
   m_pParser.reset();
+  m_ParseState = CONTENT_PARSED;
 }
 
 void CPDF_PageObjectHolder::AddImageMaskBoundingBox(const CFX_FloatRect& box) {
