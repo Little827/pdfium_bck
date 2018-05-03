@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a578d951_d6f4fb50",
+        "filename": "third_party/base/allocator/partition_allocator/partition_alloc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-03T13:51:07Z",
+      "side": 1,
+      "message": "GenericWithFlags?",
+      "range": {
+        "startLine": 435,
+        "startChar": 27,
+        "endLine": 435,
+        "endChar": 55
+      },
+      "revId": "9c9f78a839ceac3e3abeb2e0f5d4cd291306eba2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
