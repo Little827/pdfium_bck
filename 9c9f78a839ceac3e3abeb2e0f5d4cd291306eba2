@@ -22,6 +22,30 @@
       "revId": "9c9f78a839ceac3e3abeb2e0f5d4cd291306eba2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41bfa93b_61d8fb24",
+        "filename": "third_party/base/allocator/partition_allocator/partition_alloc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-03T14:33:20Z",
+      "side": 1,
+      "message": "I am following the existing convention set by PartitionAllocGeneric and PartitionAllocGenericFlags.\n\nIf we want to change this naming, I would recommend leaving it to a follow up.",
+      "parentUuid": "a578d951_d6f4fb50",
+      "range": {
+        "startLine": 435,
+        "startChar": 27,
+        "endLine": 435,
+        "endChar": 55
+      },
+      "revId": "9c9f78a839ceac3e3abeb2e0f5d4cd291306eba2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
