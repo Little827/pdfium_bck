@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf6f6a4c_831fd343",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-03T17:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7499f13_45cdceef",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1efe80d_26ba93df",
         "filename": "fpdfsdk/fpdf_attachment.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ca66f2ae_c4a55305",
+        "filename": "fpdfsdk/fpdf_attachment.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-03T17:07:53Z",
+      "side": 1,
+      "message": "There ya go.  We\u0027re finding issues already. Done",
+      "parentUuid": "a1efe80d_26ba93df",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 62
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8772edaa_d93cfd28",
         "filename": "fpdfsdk/fpdf_doc.cpp",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-03T15:26:16Z",
       "side": 1,
       "message": "Why do these all return the Dictionary instead of the CPDF_Bookmark itself?",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 75
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7fcf7d_56b38727",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-03T17:07:53Z",
+      "side": 1,
+      "message": "Probably because FPDF_ types should be used as shallowly as possible?  Maybe followup.",
+      "parentUuid": "8772edaa_d93cfd28",
       "range": {
         "startLine": 112,
         "startChar": 6,
@@ -91,6 +163,30 @@
       "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05838e43_c4221ce2",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-03T17:07:53Z",
+      "side": 1,
+      "message": "agreed.",
+      "parentUuid": "6ef96f41_9a19ab22",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 22
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
