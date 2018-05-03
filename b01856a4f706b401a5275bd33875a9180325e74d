@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "0010994e_d2ab1933",
+        "filename": "core/fxge/dib/cfx_imagestretcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-03T21:01:02Z",
+      "side": 1,
+      "message": "That doesn\u0027t do what you want. You want to first multiply then divide. The way it is, int rounding is creating error.",
+      "range": {
+        "startLine": 190,
+        "startChar": 6,
+        "endLine": 190,
+        "endChar": 41
+      },
+      "revId": "b01856a4f706b401a5275bd33875a9180325e74d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cdccf0f_3d1878ca",
         "filename": "core/fxge/dib/cfx_imagestretcher.cpp",
         "patchSetId": 1
