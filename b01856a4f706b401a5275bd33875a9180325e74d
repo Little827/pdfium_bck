@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cdccf0f_3d1878ca",
+        "filename": "core/fxge/dib/cfx_imagestretcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-03T20:59:28Z",
+      "side": 1,
+      "message": "beware of quantization here!  suppose we had a ration of 4 to 3, in the old case we multiply by 4 nd then divide the whole mess by 3.  Here we multiply by 4/3 \u003d\u003d 1.\n\n(Unless these are floats).",
+      "range": {
+        "startLine": 195,
+        "startChar": 15,
+        "endLine": 195,
+        "endChar": 41
+      },
+      "revId": "b01856a4f706b401a5275bd33875a9180325e74d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
