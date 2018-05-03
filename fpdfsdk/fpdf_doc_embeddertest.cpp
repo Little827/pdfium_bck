@@ -4,8 +4,10 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "core/fxcrt/fx_string.h"
+#include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdf_edit.h"
 #include "public/fpdfview.h"
@@ -14,6 +16,27 @@
 #include "testing/test_support.h"
 
 class FPDFDocEmbeddertest : public EmbedderTest {};
+
+TEST_F(FPDFDocEmbeddertest, MultipleSamePage) {
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+
+  std::vector<ScopedFPDFPage> pages(4);
+  for (auto& ref : pages)
+    ref.reset(FPDF_LoadPage(document(), 0));
+
+#ifdef PDF_ENABLE_XFA
+  EXPECT_EQ(pages[0], pages[1]);
+  EXPECT_EQ(pages[1], pages[2]);
+  EXPECT_EQ(pages[2], pages[3]);
+#else   // PDF_ENABLE_XFA
+  EXPECT_NE(pages[0], pages[1]);
+  EXPECT_NE(pages[0], pages[2]);
+  EXPECT_NE(pages[0], pages[3]);
+  EXPECT_NE(pages[1], pages[2]);
+  EXPECT_NE(pages[1], pages[3]);
+  EXPECT_NE(pages[2], pages[3]);
+#endif  // PDF_ENABLE_XFA
+}
 
 TEST_F(FPDFDocEmbeddertest, DestGetPageIndex) {
   EXPECT_TRUE(OpenDocument("named_dests.pdf"));
