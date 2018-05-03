@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7499f13_45cdceef",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-03T15:26:16Z",
+      "side": 1,
+      "message": "This should be in a cpdf_annotcontext file if we\u0027re moving it out of the anonymous namespace.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1efe80d_26ba93df",
+        "filename": "fpdfsdk/fpdf_attachment.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-03T15:26:16Z",
+      "side": 1,
+      "message": "According to the spec, this doesn\u0027t have to be a dictionary:\n\nPDF 32000 7.9.6 Name Trees\n\nThe values associated with the keys may be objects of any type. Stream objects shall be specified by\nindirect object references (7.3.8, \"Stream Objects\"). The dictionary, array, and string objects should be\nspecified by indirect object references, and other PDF objects (nulls, numbers, booleans, and names)\nshould be specified as direct objects.",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 62
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8772edaa_d93cfd28",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-03T15:26:16Z",
+      "side": 1,
+      "message": "Why do these all return the Dictionary instead of the CPDF_Bookmark itself?",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 75
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef96f41_9a19ab22",
+        "filename": "fpdfsdk/fpdf_doc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-03T15:26:16Z",
+      "side": 1,
+      "message": "Can we break this apart into two calls so we don\u0027t get such horrible wrapping?",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 22
+      },
+      "revId": "dc813e19d25a611846fd76ee739a13a17a7df800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
