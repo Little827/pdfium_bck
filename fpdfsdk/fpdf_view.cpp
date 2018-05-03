@@ -27,6 +27,7 @@
 #include "core/fpdfdoc/cpdf_viewerpreferences.h"
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/cfx_renderdevice.h"
@@ -854,11 +855,12 @@ FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV FPDFBitmap_CreateEx(int width,
     default:
       return nullptr;
   }
+
+  UnownedPtr<uint8_t> pChecker = static_cast<uint8_t*>(first_scan);
   auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!pBitmap->Create(width, height, fx_format,
-                       static_cast<uint8_t*>(first_scan), stride)) {
+  if (!pBitmap->Create(width, height, fx_format, pChecker.Get(), stride))
     return nullptr;
-  }
+
   return FPDFBitmapFromCFXDIBitmap(pBitmap.Leak());
 }
 
