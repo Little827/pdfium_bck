@@ -180,26 +180,33 @@ bool CFX_ImageStretcher::ContinueQuickStretch(PauseIndicatorIface* pPause) {
   int src_height = m_pSource->GetHeight();
   for (; m_LineIndex < result_height; ++m_LineIndex) {
     int dest_y;
-    int src_y;
+    FX_SAFE_INT32 src_y;
     if (m_bFlipY) {
       dest_y = result_height - m_LineIndex - 1;
-      src_y = (m_DestHeight - (dest_y + m_ClipRect.top) - 1) * src_height /
-              m_DestHeight;
+      src_y = m_DestHeight;
+      src_y -= dest_y;
+      src_y -= m_ClipRect.top;
+      src_y -= 1;
+      src_y *= src_height / m_DestHeight;
     } else {
       dest_y = m_LineIndex;
-      src_y = (dest_y + m_ClipRect.top) * src_height / m_DestHeight;
+      src_y = dest_y;
+      src_y += m_ClipRect.top;
+      src_y *= src_height / m_DestHeight;
     }
-    src_y = pdfium::clamp(src_y, 0, src_height - 1);
 
-    if (m_pSource->SkipToScanline(src_y, pPause))
+    src_y =
+        !src_y.IsValid() ? src_height - 1 : src_y.Max(0).Min(src_height - 1);
+
+    if (m_pSource->SkipToScanline(src_y.ValueOrDie(), pPause))
       return true;
 
-    m_pSource->DownSampleScanline(src_y, m_pScanline.get(), m_DestBPP,
-                                  m_DestWidth, m_bFlipX, m_ClipRect.left,
-                                  result_width);
+    m_pSource->DownSampleScanline(src_y.ValueOrDie(), m_pScanline.get(),
+                                  m_DestBPP, m_DestWidth, m_bFlipX,
+                                  m_ClipRect.left, result_width);
     if (m_pMaskScanline) {
       m_pSource->m_pAlphaMask->DownSampleScanline(
-          src_y, m_pMaskScanline.get(), 1, m_DestWidth, m_bFlipX,
+          src_y.ValueOrDie(), m_pMaskScanline.get(), 1, m_DestWidth, m_bFlipX,
           m_ClipRect.left, result_width);
     }
     m_pDest->ComposeScanline(dest_y, m_pScanline.get(), m_pMaskScanline.get());
