@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58994ea0_73b412bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-03T18:56:08Z",
+      "side": 1,
+      "message": "empty line",
+      "revId": "3bc9124a2ed7573c72ce7dd7686be12598089d19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b82d8cc_66dc1356",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-03T18:56:08Z",
+      "side": 1,
+      "message": "current_buffer_idx",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "3bc9124a2ed7573c72ce7dd7686be12598089d19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f367b85_562cf520",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-03T18:56:08Z",
+      "side": 1,
+      "message": "How can it be \u003c\u003d 0 if it\u0027s a size_t that\u0027s just been incremented?",
+      "range": {
+        "startLine": 95,
+        "startChar": 36,
+        "endLine": 95,
+        "endChar": 69
+      },
+      "revId": "3bc9124a2ed7573c72ce7dd7686be12598089d19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c872af39_fc410ed7",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-03T18:56:08Z",
+      "side": 1,
+      "message": "s/too/to",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "3bc9124a2ed7573c72ce7dd7686be12598089d19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
