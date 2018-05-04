@@ -42,10 +42,6 @@ CPDF_PathObject* CPDFPathObjectFromFPDFPageObject(FPDF_PAGEOBJECT page_object) {
   return obj ? obj->AsPath() : nullptr;
 }
 
-unsigned int GetAlphaAsUnsignedInt(float alpha) {
-  return static_cast<unsigned int>(alpha * 255.f + 0.5f);
-}
-
 }  // namespace
 
 FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV FPDFPageObj_CreateNewPath(float x,
@@ -76,16 +72,7 @@ FPDFPath_SetStrokeColor(FPDF_PAGEOBJECT path,
                         unsigned int G,
                         unsigned int B,
                         unsigned int A) {
-  auto* pPathObj = CPDFPathObjectFromFPDFPageObject(path);
-  if (!pPathObj || R > 255 || G > 255 || B > 255 || A > 255)
-    return false;
-
-  std::vector<float> rgb = {R / 255.f, G / 255.f, B / 255.f};
-  pPathObj->m_GeneralState.SetStrokeAlpha(A / 255.f);
-  pPathObj->m_ColorState.SetStrokeColor(
-      CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB), rgb);
-  pPathObj->SetDirty(true);
-  return true;
+  return FPDFPageObj_SetStrokeColor(path, R, G, B, A);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -94,27 +81,12 @@ FPDFPath_GetStrokeColor(FPDF_PAGEOBJECT path,
                         unsigned int* G,
                         unsigned int* B,
                         unsigned int* A) {
-  auto* pPathObj = CPDFPathObjectFromFPDFPageObject(path);
-  if (!pPathObj || !R || !G || !B || !A)
-    return false;
-
-  FX_COLORREF strokeColor = pPathObj->m_ColorState.GetStrokeColorRef();
-  *R = FXSYS_GetRValue(strokeColor);
-  *G = FXSYS_GetGValue(strokeColor);
-  *B = FXSYS_GetBValue(strokeColor);
-  *A = GetAlphaAsUnsignedInt(pPathObj->m_GeneralState.GetStrokeAlpha());
-  return true;
+  return FPDFPageObj_GetStrokeColor(path, R, G, B, A);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPath_SetStrokeWidth(FPDF_PAGEOBJECT path, float width) {
-  auto* pPathObj = CPDFPathObjectFromFPDFPageObject(path);
-  if (!pPathObj || width < 0.0f)
-    return false;
-
-  pPathObj->m_GraphState.SetLineWidth(width);
-  pPathObj->SetDirty(true);
-  return true;
+  return FPDFPageObj_SetStrokeWidth(path, width);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_SetFillColor(FPDF_PAGEOBJECT path,
@@ -130,16 +102,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_GetFillColor(FPDF_PAGEOBJECT path,
                                                           unsigned int* G,
                                                           unsigned int* B,
                                                           unsigned int* A) {
-  auto* pPathObj = CPDFPathObjectFromFPDFPageObject(path);
-  if (!pPathObj || !R || !G || !B || !A)
-    return false;
-
-  FX_COLORREF fillColor = pPathObj->m_ColorState.GetFillColorRef();
-  *R = FXSYS_GetRValue(fillColor);
-  *G = FXSYS_GetGValue(fillColor);
-  *B = FXSYS_GetBValue(fillColor);
-  *A = GetAlphaAsUnsignedInt(pPathObj->m_GeneralState.GetFillAlpha());
-  return true;
+  return FPDFPageObj_GetFillColor(path, R, G, B, A);
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPath_CountSegments(FPDF_PAGEOBJECT path) {
@@ -237,34 +200,12 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_SetDrawMode(FPDF_PAGEOBJECT path,
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPath_SetLineJoin(FPDF_PAGEOBJECT path,
                                                     int line_join) {
-  if (!path)
-    return;
-  if (line_join <
-          static_cast<int>(CFX_GraphStateData::LineJoin::LineJoinMiter) ||
-      line_join >
-          static_cast<int>(CFX_GraphStateData::LineJoin::LineJoinBevel)) {
-    return;
-  }
-  auto* pPathObj = CPDFPageObjectFromFPDFPageObject(path);
-  CFX_GraphStateData::LineJoin lineJoin =
-      static_cast<CFX_GraphStateData::LineJoin>(line_join);
-  pPathObj->m_GraphState.SetLineJoin(lineJoin);
-  pPathObj->SetDirty(true);
+  FPDFPageObj_SetLineJoin(path, line_join);
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFPath_SetLineCap(FPDF_PAGEOBJECT path,
                                                    int line_cap) {
-  if (!path)
-    return;
-  if (line_cap < static_cast<int>(CFX_GraphStateData::LineCap::LineCapButt) ||
-      line_cap > static_cast<int>(CFX_GraphStateData::LineCap::LineCapSquare)) {
-    return;
-  }
-  auto* pPathObj = CPDFPageObjectFromFPDFPageObject(path);
-  CFX_GraphStateData::LineCap lineCap =
-      static_cast<CFX_GraphStateData::LineCap>(line_cap);
-  pPathObj->m_GraphState.SetLineCap(lineCap);
-  pPathObj->SetDirty(true);
+  FPDFPageObj_SetLineCap(path, line_cap);
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
