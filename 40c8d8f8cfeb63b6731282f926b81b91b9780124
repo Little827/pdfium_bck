@@ -81,6 +81,24 @@
       "revId": "40c8d8f8cfeb63b6731282f926b81b91b9780124",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9792b7df_049a49e0",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-04T17:53:52Z",
+      "side": 1,
+      "message": "Or did you mean having both an owning vector and an unowning set?  I took this to mean replace the vector with the set.",
+      "parentUuid": "3c0807ba_d9ecbf4a",
+      "revId": "40c8d8f8cfeb63b6731282f926b81b91b9780124",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
