@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd77cd3b_e4cd571b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2429,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-04T22:26:57Z",
+      "side": 1,
+      "message": "Here there used to be\n\"\"\"\nelse {\n  eWidgetType \u003d valueNodeType;\n}\n\"\"\"\n\nNot sure how to handle this case or if it even matters. The XFA_FFWidgetType enum does not all possible values to do a conversion.",
+      "revId": "5052bc0f85112d88db49b1f3ecfe299594e45384",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
