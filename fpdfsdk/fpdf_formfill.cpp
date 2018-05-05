@@ -648,7 +648,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
     return;
 
   CPDFSDK_ActionHandler* pActionHandler = pFormFillEnv->GetActionHandler();
-  CPDF_Dictionary* pPageDict = pPDFPage->m_pFormDict.Get();
+  CPDF_Dictionary* pPageDict = pPDFPage->GetFormDict();
   CPDF_AAction aa(pPageDict->GetDictFor("AA"));
   CPDF_AAction::AActionType type = aaType == FPDFPAGE_AACTION_OPEN
                                        ? CPDF_AAction::OpenPage
