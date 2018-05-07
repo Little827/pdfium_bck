@@ -262,7 +262,6 @@ CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
     m_pTreeTraversal.pop_back();
     if (*nPagesToGo != 1)
       return nullptr;
-    m_PageList[iPage] = pPages->GetObjNum();
     return pPages;
   }
   if (level >= FX_MAX_PAGE_LEVEL) {
@@ -287,7 +286,6 @@ CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
       continue;
     }
     if (!pKid->KeyExist("Kids")) {
-      m_PageList[iPage - (*nPagesToGo) + 1] = pKid->GetObjNum();
       (*nPagesToGo)--;
       m_pTreeTraversal[level].second++;
       if (*nPagesToGo == 0) {
