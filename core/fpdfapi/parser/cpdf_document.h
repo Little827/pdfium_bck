@@ -27,6 +27,7 @@ class CPDF_Font;
 class CPDF_FontEncoding;
 class CPDF_IccProfile;
 class CPDF_LinearizedHeader;
+class CPDF_Page;
 class CPDF_Parser;
 class CPDF_Pattern;
 class CPDF_StreamAcc;
@@ -164,7 +165,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   std::unique_ptr<CPDF_DocRenderData> m_pDocRender;
   std::unique_ptr<JBig2_DocumentContext> m_pCodecContext;
   std::unique_ptr<CPDF_LinkList> m_pLinksContext;
-  std::vector<uint32_t> m_PageList;
+  std::vector<std::pair<uint32_t, CPDF_Page*>> m_PageList;
   UnownedPtr<Extension> m_pExtension;
 };
 
