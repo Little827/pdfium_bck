@@ -16,6 +16,24 @@
       "revId": "4cf7e4f405d96d25570e41153319503745233246",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd6bce3_55789fe3",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-07T15:00:46Z",
+      "side": 1,
+      "message": "Sure, I can do that.",
+      "parentUuid": "72d4b73d_74081cef",
+      "revId": "4cf7e4f405d96d25570e41153319503745233246",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
