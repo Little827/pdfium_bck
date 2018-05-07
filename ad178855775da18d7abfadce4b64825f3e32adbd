@@ -34,6 +34,24 @@
       "revId": "ad178855775da18d7abfadce4b64825f3e32adbd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8590fa30_6b55215f",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-07T22:13:21Z",
+      "side": 0,
+      "message": "That\u0027s just how it exists. If you want to sort it alphabetically, let\u0027s do that in a separate CL, and do it consistently for all the entries, not just the ones in fpdf_edit.h. We can bikeshed on which way is better in that CL.",
+      "parentUuid": "5ac8db6b_4fe11643",
+      "revId": "ad178855775da18d7abfadce4b64825f3e32adbd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
