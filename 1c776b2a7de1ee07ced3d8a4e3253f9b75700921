@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1525724358 -0700\nnonce ACQuaLDjIqk1ee1uIB5pxDQzrZdBRbSQupr1Yui+TJjbKMFyfT4R8g1/s9+EEVTVpA5l3Dx/K8q4\n\n0000000000000000000000000000000000000000 1c776b2a7de1ee07ced3d8a4e3253f9b75700921 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrwtMYACgkQqzYtYVpm\n/Xu3TQf9GZr2/HM38kApQ1Tjo7qQDD8F4FgBicpf7yiVFw4v1ALn4WkRLWp/uOnW\n9IzbirDfUEljro3wujom2Yly8V7VQhXLpbYOBoyPMys7DAP1Ly4lpR4TNoTyLutg\nLsmYf1BA7zwur1dTGFPRtaUzy72BC6mNRsxrPjXkYuZezGJ5TmHhq5eq1cw9iZZW\n2UQgdNkOHTPcxmmVfgyDgzNQVy9PYqariSA7S8eGKYGFOvMWGiVWMygUe7SwuuT8\nVxkEnQflkY430Bh1dx8VEGWWZjzguwS62+5/UpGSGWXr626bS5GYQgALuZ+yA49h\nuDRgdgEATZGB+TWx3XMoRxrkz4ZpyQ\u003d\u003d\n\u003ds+vh\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "341de8a0_5ca6ae4e",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-07T20:34:11Z",
+      "side": 1,
+      "message": "Added a Reserve() call there.",
+      "revId": "1c776b2a7de1ee07ced3d8a4e3253f9b75700921",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
