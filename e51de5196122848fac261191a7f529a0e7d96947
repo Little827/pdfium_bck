@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c56fa69_cb84b271",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "the cost of one-time zero initialization isn\u0027t terrribly high given the loop over pixels, so just\n\nstd::vector\u003cfloat\u003e src(m_nComponents);",
+      "range": {
+        "startLine": 576,
+        "startChar": 3,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23fe41a5_75945834",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "not strictly legal, should give a container violation from asan.",
+      "range": {
+        "startLine": 1157,
+        "startChar": 3,
+        "endLine": 1157,
+        "endChar": 14
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b43590_d2eeea03",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "pre-existing:  there\u0027s probably a way to pull this out earlier.  All paths look like they lead to false if !m_pALTCS ???",
+      "range": {
+        "startLine": 1222,
+        "startChar": 2,
+        "endLine": 1223,
+        "endChar": 19
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17dff1e_c39b1e44",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "illegal here too.\n\nWe can probably avoid the loop entirely if we pick the right constructor, eg\nstd::vector\u003cfloat\u003e results(nComps, *pbuf);",
+      "range": {
+        "startLine": 1226,
+        "startChar": 4,
+        "endLine": 1229,
+        "endChar": 25
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80293987_700f3af7",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "nit: nearly a shadowing of the same name above.",
+      "range": {
+        "startLine": 1233,
+        "startChar": 21,
+        "endLine": 1233,
+        "endChar": 28
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122e705b_fdf4995a",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "pre-existing: This is pointless.  Either we mean *R \u003d 0; but note that we can return false earlier without setting these.  Let\u0027s just lose them, because currently they just null the local pointer which is not used again.",
+      "range": {
+        "startLine": 1241,
+        "startChar": 1,
+        "endLine": 1243,
+        "endChar": 8
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "532e860d_e07d15e4",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "then, having removed 1241-1243, we can just\nreturn m_pAltCS \u0026\u0026 m_pAltCS-\u003e...;",
+      "range": {
+        "startLine": 1244,
+        "startChar": 9,
+        "endLine": 1244,
+        "endChar": 14
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b861b17_a59da5e0",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 792,
+        "startChar": 6,
+        "endLine": 792,
+        "endChar": 27
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c455187_3f95b25e",
+        "filename": "core/fxcodec/codec/fx_codec_icc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-07T22:04:42Z",
+      "side": 1,
+      "message": "there\u0027s a constructor from iterators that will do the work for us here.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
