@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47421c5b_98c91368",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-07T20:34:10Z",
+      "side": 1,
+      "message": "Create fewer CFX_WideTextBuf instances",
+      "revId": "a0052b981b80365ac1b20c084e20dc83ceaa499e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de0c9ed0_7904c161",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-07T20:34:10Z",
+      "side": 1,
+      "message": "Nice",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "a0052b981b80365ac1b20c084e20dc83ceaa499e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90f7ae5b_951445f6",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmexpression.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-07T20:34:10Z",
+      "side": 1,
+      "message": "Can you change this to a pointer in a followup?",
+      "range": {
+        "startLine": 366,
+        "startChar": 35,
+        "endLine": 366,
+        "endChar": 37
+      },
+      "revId": "a0052b981b80365ac1b20c084e20dc83ceaa499e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7c0f16_11b6dd93",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-07T20:34:10Z",
+      "side": 1,
+      "message": "Could move this outside of the if, since it\u0027s the same in the if and in the else cases.",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 21
+      },
+      "revId": "a0052b981b80365ac1b20c084e20dc83ceaa499e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
