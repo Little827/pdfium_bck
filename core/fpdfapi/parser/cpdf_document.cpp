@@ -415,7 +415,7 @@ CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
     m_pTreeTraversal.pop_back();
     if (*nPagesToGo != 1)
       return nullptr;
-    m_PageList[iPage] = pPages->GetObjNum();
+    m_PageList[iPage] = {pPages->GetObjNum(), nullptr};
     return pPages;
   }
   if (level >= FX_MAX_PAGE_LEVEL) {
@@ -440,7 +440,7 @@ CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
       continue;
     }
     if (!pKid->KeyExist("Kids")) {
-      m_PageList[iPage - (*nPagesToGo) + 1] = pKid->GetObjNum();
+      m_PageList[iPage - (*nPagesToGo) + 1] = {pKid->GetObjNum(), nullptr};
       (*nPagesToGo)--;
       m_pTreeTraversal[level].second++;
       if (*nPagesToGo == 0) {
@@ -481,7 +481,7 @@ CPDF_Dictionary* CPDF_Document::GetPagesDict() const {
 }
 
 bool CPDF_Document::IsPageLoaded(int iPage) const {
-  return !!m_PageList[iPage];
+  return !!m_PageList[iPage].first;
 }
 
 CPDF_Dictionary* CPDF_Document::GetPage(int iPage) {
@@ -494,7 +494,7 @@ CPDF_Dictionary* CPDF_Document::GetPage(int iPage) {
       return pDict;
     }
   }
-  uint32_t objnum = m_PageList[iPage];
+  uint32_t objnum = m_PageList[iPage].first;
   if (objnum)
     return ToDictionary(GetOrParseIndirectObject(objnum));
 
@@ -513,7 +513,7 @@ CPDF_Dictionary* CPDF_Document::GetPage(int iPage) {
 }
 
 void CPDF_Document::SetPageObjNum(int iPage, uint32_t objNum) {
-  m_PageList[iPage] = objNum;
+  m_PageList[iPage] = {objNum, nullptr};
 }
 
 int CPDF_Document::FindPageIndex(CPDF_Dictionary* pNode,
@@ -571,10 +571,10 @@ int CPDF_Document::GetPageIndex(uint32_t objnum) {
   uint32_t skip_count = 0;
   bool bSkipped = false;
   for (uint32_t i = 0; i < nPages; i++) {
-    if (m_PageList[i] == objnum)
+    if (m_PageList[i].first == objnum)
       return i;
 
-    if (!bSkipped && m_PageList[i] == 0) {
+    if (!bSkipped && m_PageList[i].first == 0) {
       skip_count = i;
       bSkipped = true;
     }
@@ -590,7 +590,7 @@ int CPDF_Document::GetPageIndex(uint32_t objnum) {
   if (!pdfium::IndexInBounds(m_PageList, found_index))
     return -1;
 
-  m_PageList[found_index] = objnum;
+  m_PageList[found_index] = {objnum, nullptr};
   return found_index;
 }
 
@@ -748,7 +748,8 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
     if (!InsertDeletePDFPage(pPages, iPage, pPageDict, true, &stack))
       return false;
   }
-  m_PageList.insert(m_PageList.begin() + iPage, pPageDict->GetObjNum());
+  m_PageList.insert(m_PageList.begin() + iPage,
+                    {pPageDict->GetObjNum(), nullptr});
   return true;
 }
 
