@@ -139,7 +139,7 @@ CXFA_FMToken CXFA_FMLexer::NextToken() {
   if (m_lexer_error)
     return CXFA_FMToken();
 
-  while (m_cursor < m_end && *m_cursor) {
+  while (!IsComplete() && *m_cursor) {
     if (!IsFormCalcCharacter(*m_cursor)) {
       RaiseError();
       return CXFA_FMToken();
@@ -323,7 +323,7 @@ CXFA_FMToken CXFA_FMLexer::AdvanceForString() {
 
   const wchar_t* start = m_cursor;
   ++m_cursor;
-  while (m_cursor < m_end && *m_cursor) {
+  while (!IsComplete() && *m_cursor) {
     if (!IsFormCalcCharacter(*m_cursor))
       break;
 
@@ -357,7 +357,7 @@ CXFA_FMToken CXFA_FMLexer::AdvanceForString() {
 CXFA_FMToken CXFA_FMLexer::AdvanceForIdentifier() {
   const wchar_t* start = m_cursor;
   ++m_cursor;
-  while (m_cursor < m_end && *m_cursor) {
+  while (!IsComplete() && *m_cursor) {
     if (!IsFormCalcCharacter(*m_cursor)) {
       RaiseError();
       return CXFA_FMToken();
@@ -377,7 +377,7 @@ CXFA_FMToken CXFA_FMLexer::AdvanceForIdentifier() {
 
 void CXFA_FMLexer::AdvanceForComment() {
   m_cursor++;
-  while (m_cursor < m_end && *m_cursor) {
+  while (!IsComplete() && *m_cursor) {
     if (!IsFormCalcCharacter(*m_cursor)) {
       RaiseError();
       return;
