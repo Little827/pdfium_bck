@@ -23,6 +23,30 @@
       "revId": "52ffae68b7a7cb945321d84df59179a2cc03773d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c086a532_4bd2104d",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-07T18:38:04Z",
+      "side": 1,
+      "message": "Can do as a follow-up.",
+      "parentUuid": "70267727_65c93e05",
+      "range": {
+        "startLine": 389,
+        "startChar": 11,
+        "endLine": 390,
+        "endChar": 20
+      },
+      "revId": "52ffae68b7a7cb945321d84df59179a2cc03773d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
