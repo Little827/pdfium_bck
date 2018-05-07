@@ -27,6 +27,7 @@ class CPDF_Font;
 class CPDF_FontEncoding;
 class CPDF_IccProfile;
 class CPDF_LinearizedHeader;
+class CPDF_Page;
 class CPDF_Parser;
 class CPDF_Pattern;
 class CPDF_StreamAcc;
@@ -65,7 +66,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   void DeletePage(int iPage);
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
-  CPDF_Dictionary* GetPage(int iPage);
+  CPDF_Dictionary* GetPageDictionary(int iPage);
   int GetPageIndex(uint32_t objnum);
   uint32_t GetUserPermissions() const;
 
