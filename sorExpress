@@ -1,0 +1,199 @@
+[1mdiff --git a/core/fxcrt/cfx_binarybuf.cpp b/core/fxcrt/cfx_binarybuf.cpp[m
+[1mindex 1243593a7..5ef907cb8 100644[m
+[1m--- a/core/fxcrt/cfx_binarybuf.cpp[m
+[1m+++ b/core/fxcrt/cfx_binarybuf.cpp[m
+[36m@@ -12,7 +12,7 @@[m
+ CFX_BinaryBuf::CFX_BinaryBuf()[m
+     : m_AllocStep(0), m_AllocSize(0), m_DataSize(0) {}[m
+ [m
+[31m-CFX_BinaryBuf::~CFX_BinaryBuf() {}[m
+[32m+[m[32mCFX_BinaryBuf::~CFX_BinaryBuf() = default;[m
+ [m
+ void CFX_BinaryBuf::Delete(size_t start_index, size_t count) {[m
+   if (!m_pBuffer || count > m_DataSize || start_index > m_DataSize - count)[m
+[1mdiff --git a/xfa/fxfa/fm2js/cxfa_fmexpression.cpp b/xfa/fxfa/fm2js/cxfa_fmexpression.cpp[m
+[1mindex b2995cae4..a3c65a220 100644[m
+[1m--- a/xfa/fxfa/fm2js/cxfa_fmexpression.cpp[m
+[1m+++ b/xfa/fxfa/fm2js/cxfa_fmexpression.cpp[m
+[36m@@ -362,24 +362,23 @@[m [mbool CXFA_FMForExpression::ToJavaScript(CFX_WideTextBuf& js, ReturnType type) {[m
+   WideString tmpName = IdentifierToName(m_wsVariant);[m
+   js << L"var " << tmpName << L" = null;\n";[m
+ [m
+[31m-  CFX_WideTextBuf assign_txt;[m
+[31m-  if (!m_pAssignment->ToJavaScript(assign_txt, ReturnType::kInfered))[m
+[32m+[m[32m  js << L"for (" << tmpName << L" = pfm_rt.get_val(";[m
+[32m+[m[32m  if (!m_pAssignment->ToJavaScript(js, ReturnType::kInfered))[m
+     return false;[m
+[32m+[m[32m  js << L"); ";[m
+ [m
+[31m-  CFX_WideTextBuf accessor_txt;[m
+[31m-  if (!m_pAccessor->ToJavaScript(accessor_txt, ReturnType::kInfered))[m
+[32m+[m[32m  js << tmpName << (m_bDirection ? kLessEqual : kGreaterEqual);[m
+[32m+[m[32m  js << L"pfm_rt.get_val(";[m
+[32m+[m[32m  if (!m_pAccessor->ToJavaScript(js, ReturnType::kInfered))[m
+     return false;[m
+[32m+[m[32m  js << L"); ";[m
+ [m
+[31m-  js << L"for (" << tmpName << L" = pfm_rt.get_val(" << assign_txt << L"); ";[m
+[31m-  js << tmpName << (m_bDirection ? kLessEqual : kGreaterEqual);[m
+[31m-  js << L"pfm_rt.get_val(" << accessor_txt << L"); ";[m
+   js << tmpName << (m_bDirection ? kPlusEqual : kMinusEqual);[m
+   if (m_pStep) {[m
+[31m-    CFX_WideTextBuf step_txt;[m
+[31m-    if (!m_pStep->ToJavaScript(step_txt, ReturnType::kInfered))[m
+[32m+[m[32m    js << L"pfm_rt.get_val(";[m
+[32m+[m[32m    if (!m_pStep->ToJavaScript(js, ReturnType::kInfered))[m
+       return false;[m
+[31m-[m
+[31m-    js << L"pfm_rt.get_val(" << step_txt << L")";[m
+[32m+[m[32m    js << L")";[m
+   } else {[m
+     js << L"1";[m
+   }[m
+[1mdiff --git a/xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp b/xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp[m
+[1mindex 82aada643..3847269bb 100644[m
+[1m--- a/xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp[m
+[1m+++ b/xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp[m
+[36m@@ -239,15 +239,13 @@[m [mbool CXFA_FMBinExpression::ToJavaScript(CFX_WideTextBuf& js, ReturnType type) {[m
+   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())[m
+     return false;[m
+ [m
+[31m-  CFX_WideTextBuf exp1_txt;[m
+[31m-  if (!m_pExp1->ToJavaScript(exp1_txt, ReturnType::kInfered))[m
+[32m+[m[32m  js << L"pfm_rt." << m_OpName << L"(";[m
+[32m+[m[32m  if (!m_pExp1->ToJavaScript(js, ReturnType::kInfered))[m
+     return false;[m
+[31m-[m
+[31m-  CFX_WideTextBuf exp2_txt;[m
+[31m-  if (!m_pExp2->ToJavaScript(exp2_txt, ReturnType::kInfered))[m
+[32m+[m[32m  js << L", ";[m
+[32m+[m[32m  if (!m_pExp2->ToJavaScript(js, ReturnType::kInfered))[m
+     return false;[m
+[31m-[m
+[31m-  js << L"pfm_rt." << m_OpName << L"(" << exp1_txt << L", " << exp2_txt << L")";[m
+[32m+[m[32m  js << L")";[m
+   return !CXFA_IsTooBig(js);[m
+ }[m
+ [m
+[36m@@ -373,11 +371,10 @@[m [mbool CXFA_FMUnaryExpression::ToJavaScript(CFX_WideTextBuf& js,[m
+   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())[m
+     return false;[m
+ [m
+[31m-  CFX_WideTextBuf exp_txt;[m
+[31m-  if (!m_pExp->ToJavaScript(exp_txt, ReturnType::kInfered))[m
+[32m+[m[32m  js << L"pfm_rt." << m_OpName.c_str() << L"(";[m
+[32m+[m[32m  if (!m_pExp->ToJavaScript(js, ReturnType::kInfered))[m
+     return false;[m
+[31m-[m
+[31m-  js << L"pfm_rt." << m_OpName.c_str() << L"(" << exp_txt << L")";[m
+[32m+[m[32m  js << L")";[m
+   return !CXFA_IsTooBig(js);[m
+ }[m
+ [m
+[36m@@ -451,28 +448,30 @@[m [mbool CXFA_FMCallExpression::ToJavaScript(CFX_WideTextBuf& js, ReturnType type) {[m
+     uint32_t methodPara = IsMethodWithObjParam(funcName.MakeString());[m
+     if (methodPara > 0) {[m
+       for (size_t i = 0; i < m_Arguments.size(); ++i) {[m
+[31m-        CFX_WideTextBuf expr_txt;[m
+[31m-        if (!m_Arguments[i]->ToJavaScript(expr_txt, ReturnType::kInfered))[m
+[31m-          return false;[m
+[31m-[m
+         // Currently none of our expressions use objects for a parameter over[m
+         // the 6th. Make sure we don't overflow the shift when doing this[m
+         // check. If we ever need more the 32 object params we can revisit.[m
+[31m-        if (i < 32 && (methodPara & (0x01 << i)) > 0)[m
+[31m-          js << L"pfm_rt.get_jsobj(" << expr_txt << L")";[m
+[31m-        else[m
+[31m-          js << L"pfm_rt.get_val(" << expr_txt << L")";[m
+[32m+[m[32m        if (i < 32 && (methodPara & (0x01 << i)) > 0) {[m
+[32m+[m[32m          js << L"pfm_rt.get_jsobj(";[m
+[32m+[m[32m          if (!m_Arguments[i]->ToJavaScript(js, ReturnType::kInfered))[m
+[32m+[m[32m            return false;[m
+[32m+[m[32m          js << L")";[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m          js << L"pfm_rt.get_val(";[m
+[32m+[m[32m          if (!m_Arguments[i]->ToJavaScript(js, ReturnType::kInfered))[m
+[32m+[m[32m            return false;[m
+[32m+[m[32m          js << L")";[m
+[32m+[m[32m        }[m
+ [m
+         if (i + 1 < m_Arguments.size())[m
+           js << L", ";[m
+       }[m
+     } else {[m
+       for (const auto& expr : m_Arguments) {[m
+[31m-        CFX_WideTextBuf expr_txt;[m
+[31m-        if (!expr->ToJavaScript(expr_txt, ReturnType::kInfered))[m
+[32m+[m[32m        js << L"pfm_rt.get_val(";[m
+[32m+[m[32m        if (!expr->ToJavaScript(js, ReturnType::kInfered))[m
+           return false;[m
+[31m-[m
+[31m-        js << L"pfm_rt.get_val(" << expr_txt << L")";[m
+[32m+[m[32m        js << L")";[m
+         if (expr != m_Arguments.back())[m
+           js << L", ";[m
+       }[m
+[36m@@ -505,11 +504,10 @@[m [mbool CXFA_FMCallExpression::ToJavaScript(CFX_WideTextBuf& js, ReturnType type) {[m
+   if (isExistsFunc) {[m
+     js << L"\n(\nfunction ()\n{\ntry\n{\n";[m
+     if (!m_Arguments.empty()) {[m
+[31m-      CFX_WideTextBuf expr_txt;[m
+[31m-      if (!m_Arguments[0]->ToJavaScript(expr_txt, ReturnType::kInfered))[m
+[32m+[m[32m      js << L"return ";[m
+[32m+[m[32m      if (!m_Arguments[0]->ToJavaScript(js, ReturnType::kInfered))[m
+         return false;[m
+[31m-[m
+[31m-      js << L"return " << expr_txt << L";\n}\n";[m
+[32m+[m[32m      js << L";\n}\n";[m
+     } else {[m
+       js << L"return 0;\n}\n";[m
+     }[m
+[36m@@ -645,19 +643,17 @@[m [mbool CXFA_FMDotDotAccessorExpression::ToJavaScript(CFX_WideTextBuf& js,[m
+   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())[m
+     return false;[m
+ [m
+[31m-  CFX_WideTextBuf exp1_txt;[m
+[31m-  if (!m_pExp1->ToJavaScript(exp1_txt, ReturnType::kInfered))[m
+[31m-    return false;[m
+[31m-[m
+[31m-  CFX_WideTextBuf exp2_txt;[m
+[31m-  if (!m_pExp2->ToJavaScript(exp2_txt, ReturnType::kInfered))[m
+[32m+[m[32m  js << L"pfm_rt.dotdot_acc(";[m
+[32m+[m[32m  if (!m_pExp1->ToJavaScript(js, ReturnType::kInfered))[m
+     return false;[m
+[31m-[m
+[31m-  js << L"pfm_rt.dotdot_acc(" << exp1_txt << L", " << L"\"";[m
+[32m+[m[32m  js << L", " << L"\"";[m
+   if (m_pExp1->GetOperatorToken() == TOKidentifier)[m
+     js << exp1_txt;[m
+ [m
+[31m-  js << L"\", \"" << m_wsIdentifier << L"\", " << exp2_txt << L")";[m
+[32m+[m[32m  js << L"\", \"" << m_wsIdentifier << L"\", ";[m
+[32m+[m[32m  if (!m_pExp2->ToJavaScript(js, ReturnType::kInfered))[m
+[32m+[m[32m    return false;[m
+[32m+[m[32m  js << L")";[m
+   return !CXFA_IsTooBig(js);[m
+ }[m
+ [m
+[36m@@ -676,17 +672,16 @@[m [mbool CXFA_FMMethodCallExpression::ToJavaScript(CFX_WideTextBuf& js,[m
+   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())[m
+     return false;[m
+ [m
+[31m-  CFX_WideTextBuf exp1_txt;[m
+[31m-  if (!m_pExp1->ToJavaScript(exp1_txt, ReturnType::kInfered))[m
+[31m-    return false;[m
+[31m-[m
+   CFX_WideTextBuf exp2_txt;[m
+   if (!m_pExp2->ToJavaScript(exp2_txt, ReturnType::kInfered))[m
+     return false;[m
+ [m
+   js << L"(\nfunction ()\n{\n";[m
+   js << L"var method_return_value = null;\n";[m
+[31m-  js << L"var accessor_object = " << exp1_txt << L";\n";[m
+[32m+[m[32m  js << L"var accessor_object = ";[m
+[32m+[m[32m  if (!m_pExp1->ToJavaScript(js, ReturnType::kInfered))[m
+[32m+[m[32m    return false;[m
+[32m+[m[32m  js << L";\n";[m
+   js << L"if (pfm_rt.is_ary(accessor_object))\n{\n";[m
+   js << L"for(var index = accessor_object.length - 1; index > 1; "[m
+         L"index--)\n{\n";[m
