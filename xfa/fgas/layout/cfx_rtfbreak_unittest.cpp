@@ -7,7 +7,10 @@
 #include "xfa/fgas/layout/cfx_rtfbreak.h"
 
 #include <memory>
+#include <utility>
 
+#include "core/fxcrt/fx_bidi.h"
+#include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
@@ -71,4 +74,24 @@ TEST_F(CFX_RTFBreakTest, ControlCharacters) {
 
   ASSERT_EQ(1, b->CountBreakPieces());
   EXPECT_EQ(L"\v", b->GetBreakPieceUnstable(0)->GetString());
+}
+
+TEST_F(CFX_RTFBreakTest, BidiLine) {
+  auto fontmgr = pdfium::MakeUnique<CFGAS_FontMgr>();
+
+  auto font = pdfium::MakeUnique<CFX_Font>();
+  font->LoadSubst("Arial", true, 0, FXFONT_FW_NORMAL, 0, 0, 0);
+  assert(font);
+
+  CFX_RTFBreak rtf_break(FX_LAYOUTSTYLE_ExpandTab);
+  rtf_break.SetLineBreakTolerance(1);
+  rtf_break.SetFont(CFGAS_GEFont::LoadFont(std::move(font), fontmgr.get()));
+  rtf_break.SetFontSize(12);
+
+  WideString input = WideString::FromUTF8(ByteStringView("\xa\x0\xa\xa", 4));
+  for (auto& ch : input)
+    rtf_break.AppendChar(ch);
+
+  auto chars = rtf_break.GetCurrentLineForTesting()->m_LineChars;
+  EXPECT_TRUE(FX_BidiLine(&chars, chars.size()));
 }
