@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e8850f4_c7c53086",
+        "filename": "testing/libfuzzer/pdf_bidi_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T21:17:53Z",
+      "side": 1,
+      "message": "Maybe the fuzzer will run a bit faster if this doesn\u0027t convert from UTF8? i.e. Call WideString::FromUTF16LE().",
+      "revId": "6be685b6842e6d282d53a5588478d9fc3157d2a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fee092a9_ee4c4b9d",
+        "filename": "xfa/fgas/layout/cfx_break.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T21:17:53Z",
+      "side": 1,
+      "message": "Return a const pointer?",
+      "revId": "6be685b6842e6d282d53a5588478d9fc3157d2a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22df076_6372e87e",
+        "filename": "xfa/fgas/layout/cfx_txtbreak_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T21:17:53Z",
+      "side": 1,
+      "message": "This is all new code?",
+      "revId": "6be685b6842e6d282d53a5588478d9fc3157d2a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ae76d8a_dd202da3",
+        "filename": "xfa/fgas/layout/cfx_txtbreak_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T21:17:53Z",
+      "side": 1,
+      "message": "Not needed?",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "6be685b6842e6d282d53a5588478d9fc3157d2a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
