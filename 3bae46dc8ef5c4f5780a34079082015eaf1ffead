@@ -23,6 +23,30 @@
       "revId": "3bae46dc8ef5c4f5780a34079082015eaf1ffead",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dec95f68_27fda571",
+        "filename": "core/fpdfdoc/cpdf_viewerpreferences.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T19:06:04Z",
+      "side": 1,
+      "message": "Likely using this ctor: constexpr Optional(const T\u0026 value)",
+      "parentUuid": "5f11fd47_d281c441",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "3bae46dc8ef5c4f5780a34079082015eaf1ffead",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
