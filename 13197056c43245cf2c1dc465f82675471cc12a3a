@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1525807464 -0700\nnonce ACQuaLASzVjuJc/bgvxGwxuvzBNoLMI85sOP4NJY8P4/z+suEJNE5vBCtk4DMx99W1cpenSi+H9T\n\n0000000000000000000000000000000000000000 13197056c43245cf2c1dc465f82675471cc12a3a refs/for/refs/heads/master%notify\u003dNONE,m\u003dresolve_conflict\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrx+WgACgkQqzYtYVpm\n/XskUAf/XWt0AgFqn6WiviJIzuHe5pK5NJZVrrogR6xLqzHT49TRNRo/WYuJ95MI\nJKjrHfKloYeYWnKvCS9tWXk1tEc90R+so6V8X6CafHKSi8OwV28ZaUcJxbCoNQNT\nc8k9xlry020jAdUNPIkcv1nRg63mda6bnG5e1yQuKIe+lVLUQQheXOaXKz44bh5M\nxgC3qmkPWARSd3a2NAnPOU++RPVIonhfuRFWtjUfxXTvTDlsiVwieEuugZ27r3Y0\nfAdZovYUHz66V069LpZgE6Fk92lRk1lEiUZd9AX09ZaPACy/AJ5XNU9hPsPFw3ps\nfHAh13OEx2g58IQuprH0vxwdENnNXA\u003d\u003d\n\u003dPe/b\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7733a719_f26dbcad",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T20:07:50Z",
+      "side": 1,
+      "message": "Do you need to store this, can you can do bitmap.Clean(GetBackColor(...))",
+      "range": {
+        "startLine": 2567,
+        "startChar": 0,
+        "endLine": 2567,
+        "endChar": 64
+      },
+      "revId": "13197056c43245cf2c1dc465f82675471cc12a3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a536d541_b44e3fb4",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2582,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T20:07:50Z",
+      "side": 1,
+      "message": "Why the name change?",
+      "range": {
+        "startLine": 2582,
+        "startChar": 32,
+        "endLine": 2582,
+        "endChar": 41
+      },
+      "revId": "13197056c43245cf2c1dc465f82675471cc12a3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
