@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "060c4030_23ef846f",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T13:44:34Z",
+      "side": 1,
+      "message": "This can just be push_back I think?",
+      "parentUuid": "23fe41a5_75945834",
+      "range": {
+        "startLine": 1157,
+        "startChar": 3,
+        "endLine": 1157,
+        "endChar": 14
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21b43590_d2eeea03",
         "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
         "patchSetId": 2
@@ -186,6 +210,52 @@
     },
     {
       "key": {
+        "uuid": "48c9165c_2ec6e207",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T13:44:34Z",
+      "side": 1,
+      "message": "These ones too I think should be push_back",
+      "range": {
+        "startLine": 868,
+        "startChar": 14,
+        "endLine": 872,
+        "endChar": 36
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7326bcc8_3b20c01e",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2053,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T13:44:34Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2053,
+        "startChar": 11,
+        "endLine": 2053,
+        "endChar": 23
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c455187_3f95b25e",
         "filename": "core/fxcodec/codec/fx_codec_icc.cpp",
         "patchSetId": 2
@@ -202,6 +272,29 @@
         "startChar": 4,
         "endLine": 130,
         "endChar": 31
+      },
+      "revId": "e51de5196122848fac261191a7f529a0e7d96947",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e425040d_16948437",
+        "filename": "core/fxge/apple/fx_apple_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T13:44:34Z",
+      "side": 1,
+      "message": "push_backs",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 19
       },
       "revId": "e51de5196122848fac261191a7f529a0e7d96947",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
