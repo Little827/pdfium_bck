@@ -25,8 +25,8 @@ CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
 
     m_dwSize = pDestAcc->GetSize();
     m_pData = pDestAcc->DetachData();
-    m_pDict = ToDictionary(pStream->GetDict()->Clone());
-    m_pDict->RemoveFor("Filter");
+    m_pClonedDict = ToDictionary(pStream->GetDict()->Clone());
+    m_pClonedDict->RemoveFor("Filter");
     return;
   }
   if (bHasFilter || !bFlateEncode) {
@@ -41,18 +41,22 @@ CPDF_FlateEncoder::CPDF_FlateEncoder(const CPDF_Stream* pStream,
   ::FlateEncode(m_pAcc->GetData(), m_pAcc->GetSize(), &buffer, &m_dwSize);
 
   m_pData = std::unique_ptr<uint8_t, FxFreeDeleter>(buffer);
-  m_pDict = ToDictionary(pStream->GetDict()->Clone());
-  m_pDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(m_dwSize));
-  m_pDict->SetNewFor<CPDF_Name>("Filter", "FlateDecode");
-  m_pDict->RemoveFor(pdfium::stream::kDecodeParms);
+  m_pClonedDict = ToDictionary(pStream->GetDict()->Clone());
+  m_pClonedDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(m_dwSize));
+  m_pClonedDict->SetNewFor<CPDF_Name>("Filter", "FlateDecode");
+  m_pClonedDict->RemoveFor(pdfium::stream::kDecodeParms);
 }
 
 CPDF_FlateEncoder::~CPDF_FlateEncoder() {}
 
 void CPDF_FlateEncoder::CloneDict() {
-  if (m_pDict.IsOwned())
+  if (m_pClonedDict)
     return;
 
-  m_pDict = ToDictionary(m_pDict->Clone());
-  ASSERT(m_pDict.IsOwned());
+  m_pClonedDict = ToDictionary(m_pDict->Clone());
+  ASSERT(m_pClonedDict);
+}
+
+const CPDF_Dictionary* CPDF_FlateEncoder::GetDict() const {
+  return m_pClonedDict ? m_pClonedDict.get() : m_pDict.Get();
 }
