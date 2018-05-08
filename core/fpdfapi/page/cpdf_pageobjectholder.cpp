@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <utility>
 
+#include "constants/transparency.h"
 #include "core/fpdfapi/page/cpdf_allstates.h"
 #include "core/fpdfapi/page/cpdf_contentparser.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
@@ -69,23 +70,22 @@ CFX_FloatRect CPDF_PageObjectHolder::CalcBoundingBox() const {
 }
 
 void CPDF_PageObjectHolder::LoadTransInfo() {
-  if (!m_pFormDict) {
+  if (!m_pFormDict)
     return;
-  }
+
   CPDF_Dictionary* pGroup = m_pFormDict->GetDictFor("Group");
-  if (!pGroup) {
+  if (!pGroup)
     return;
-  }
-  if (pGroup->GetStringFor("S") != "Transparency") {
+
+  if (pGroup->GetStringFor(pdfium::transparency::kGroupSubType) !=
+      pdfium::transparency::kTransparency) {
     return;
   }
   m_iTransparency |= PDFTRANS_GROUP;
-  if (pGroup->GetIntegerFor("I")) {
+  if (pGroup->GetIntegerFor(pdfium::transparency::kI))
     m_iTransparency |= PDFTRANS_ISOLATED;
-  }
-  if (pGroup->GetIntegerFor("K")) {
+  if (pGroup->GetIntegerFor(pdfium::transparency::kK))
     m_iTransparency |= PDFTRANS_KNOCKOUT;
-  }
 }
 
 size_t CPDF_PageObjectHolder::GetPageObjectCount() const {
