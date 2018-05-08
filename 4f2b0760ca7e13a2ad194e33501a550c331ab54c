@@ -34,6 +34,24 @@
       "revId": "4f2b0760ca7e13a2ad194e33501a550c331ab54c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1ae114_66968995",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T15:01:14Z",
+      "side": 1,
+      "message": "It\u0027s a \\0 in the middle of the string which causes the lexer to \u0027complete\u0027. Our input is a WideStringView so we should be processing all of the length of the widestring.",
+      "parentUuid": "2cbf3fb6_041caf0c",
+      "revId": "4f2b0760ca7e13a2ad194e33501a550c331ab54c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
