@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fef2011_000d2d7f",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-08T21:17:21Z",
+      "side": 1,
+      "message": "nit: It\u0027s ok to pull these out of the alphabetized lists when they are ifdef\u0027d.  It can go at line 27, say, with a blank line before and after the 3-line block.",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "f5af53613c0d27fc0b964358f0edfa3ccc8751ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "828d97ae_bd0ef884",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-08T21:17:21Z",
+      "side": 1,
+      "message": "no longer needed when we converted to unique_ptr.",
+      "revId": "f5af53613c0d27fc0b964358f0edfa3ccc8751ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
