@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "811a007e_1dfa23fb",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T20:38:47Z",
+      "side": 1,
+      "message": "GetBackColor() also writes into |nCSFamily|. I didn\u0027t want one statement to do too many things.",
+      "parentUuid": "7733a719_f26dbcad",
+      "range": {
+        "startLine": 2567,
+        "startChar": 0,
+        "endLine": 2567,
+        "endChar": 64
+      },
+      "revId": "13197056c43245cf2c1dc465f82675471cc12a3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a536d541_b44e3fb4",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2018-05-08T20:07:50Z",
       "side": 1,
       "message": "Why the name change?",
+      "range": {
+        "startLine": 2582,
+        "startChar": 32,
+        "endLine": 2582,
+        "endChar": 41
+      },
+      "revId": "13197056c43245cf2c1dc465f82675471cc12a3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b7f66ba_9fecb743",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2582,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T20:38:47Z",
+      "side": 1,
+      "message": "Make it blend in with the surrounding code.",
+      "parentUuid": "a536d541_b44e3fb4",
       "range": {
         "startLine": 2582,
         "startChar": 32,
