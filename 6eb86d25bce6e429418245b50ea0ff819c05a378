@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "074474e6_24366722",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T18:59:44Z",
+      "side": 1,
+      "message": "To convince myself this is correct:\n\nStart with:\n\nif ((pos.x - last_pos - last_width) \u003e threshold ||\n    (last_pos - pos.x - last_width) \u003e threshold) { \n  return true;\n} \nif (pos.x \u003c 0 \u0026\u0026 (last_pos - pos.x - last_width) \u003e threshold)\n  return true;\nif ((pos.x - last_pos - last_width) \u003e this_width ||\n    (pos.x - last_pos - this_width) \u003e last_width) {\n  return true;\n}\n\n----\n\nMove some subtractions to the right side of the equations:\n\n\nif ((pos.x - last_pos) \u003e threshold + last_width ||\n    (last_pos - pos.x) \u003e threshold + last_width) {\n  return true;\n} \nif (pos.x \u003c 0 \u0026\u0026 (last_pos - pos.x) \u003e threshold + last_width)\n  return true;\nif ((pos.x - last_pos) \u003e this_width + last_width ||\n    (pos.x - last_pos) \u003e last_width + this_width) {\n  return true;                       \n}\n\n----\n\nSubstitute in |threshold_pos| and |pos_difference|:\n\nfloat threshold_pos \u003d threshold + last_width;\nfloat pos_difference \u003d pos.x - last_pos;\nif (pos_difference \u003e threshold_pos ||\n    -pos_difference \u003e threshold_pos) {\n  return true;          \n}                       \nif (pos.x \u003c 0 \u0026\u0026 -pos_difference \u003e threshold_pos)\n  return true;                    \nif (pos_difference \u003e this_width + last_width ||\n    pos_difference \u003e last_width + this_width) {\n  return true;                    \n}\n\n----\n\nSimplify the equations gets the final result.",
+      "revId": "6eb86d25bce6e429418245b50ea0ff819c05a378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
