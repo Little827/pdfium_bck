@@ -34,6 +34,41 @@
       "revId": "b74d61c33a7682722db0cd945afabb7f9b643315",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1283ad81_67c5b273",
+        "filename": "core/fxcrt/fx_bidi.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T20:47:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t tests examine |chars| instead?",
+      "parentUuid": "f36ea795_39941ecb",
+      "revId": "b74d61c33a7682722db0cd945afabb7f9b643315",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d8d3d39_2acfe1a6",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T20:47:01Z",
+      "side": 1,
+      "message": "Maybe also test CFX_TxtBreak?",
+      "revId": "b74d61c33a7682722db0cd945afabb7f9b643315",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
