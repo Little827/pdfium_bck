@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1525766252 -0700\nnonce ACQuaLCt6ZGMlvUHhPLiINjYl9JrCUbHvM2vsYNoYI3gX0pNzNqW40NWjBFxLR0w7FPYDqTIMPYZ\n\n0000000000000000000000000000000000000000 3bae46dc8ef5c4f5780a34079082015eaf1ffead refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlrxWGwACgkQqzYtYVpm\n/XsIdQf+Lmwzu9AmSjObWRijJifMVo7AVa9LwLbbs3vM8oquuuliRPiSswvzqWq8\nD+M9Q5nX2H9U0GnGrXMM56qcSYK7kHKFnK5W6RqsgNCzIEtEFHfOf2gNSK+6yD8w\nd8WDLkAMqylpgB5RQL3039n4TZ+fBYgoisKv1XOXCa+5Eo5YimhZwJN6Lu9X/ntU\nihCuXnhJ6iBHE19S+GxTMTLMqN+AewoCuHKpc3m6NpUsFLWUPW5cPMsF8RgSJqbK\nDxZ0JWX9CNftg8EGyErl9WcrsMikFIIrqI+marj6qxZl8r4IE5vkKJjpNMaNNx9L\nlVc5S5Vw+7wy9w/o8SFKVjzuMBDYyg\u003d\u003d\n\u003dL0+1\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f11fd47_d281c441",
+        "filename": "core/fpdfdoc/cpdf_viewerpreferences.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-08T19:03:54Z",
+      "side": 1,
+      "message": "Cool, I thought you\u0027d have to do return {pName-\u003eGetString()}; to create the optional.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "3bae46dc8ef5c4f5780a34079082015eaf1ffead",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
