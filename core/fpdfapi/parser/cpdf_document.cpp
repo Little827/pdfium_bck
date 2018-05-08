@@ -470,7 +470,7 @@ uint32_t CPDF_Document::GetUserPermissions() const {
   return m_pParser->GetPermissions();
 }
 
-CPDF_Font* CPDF_Document::LoadFont(CPDF_Dictionary* pFontDict) {
+CPDF_Font* CPDF_Document::LoadFont(const CPDF_Dictionary* pFontDict) {
   ASSERT(pFontDict);
   return m_pDocPage->GetFont(pFontDict);
 }
