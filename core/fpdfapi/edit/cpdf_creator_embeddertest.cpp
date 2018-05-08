@@ -12,6 +12,7 @@
 #include "public/fpdf_edit.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
+#include "testing/gmock/include/gmock/gmock-matchers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 class CPDF_CreatorEmbedderTest : public EmbedderTest {};
@@ -41,4 +42,15 @@ TEST_F(CPDF_CreatorEmbedderTest, SavedDocsAreEqualAfterParse) {
 
   // The sizes of saved docs should be equal.
   EXPECT_EQ(saved_doc_1.size(), saved_doc_2.size());
+}
+
+TEST_F(CPDF_CreatorEmbedderTest, BUG_873) {
+  EXPECT_TRUE(OpenDocument("embedded_attachments.pdf"));
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  // Cannot match second part of the ID since it is randomly generated.
+  EXPECT_THAT(GetString(),
+              testing::HasSubstr("trailer\r\n<</Info 9 0 R /Root 11 0 R /Size "
+                                 "36/ID[<D889EB6B9ADF88E5EDA7DC08FE85978B><"));
+  EXPECT_EQ(11045u, GetString().length());
 }
