@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1525815655 -0700\nnonce ACQuaLCXY96jyH5cmLq65exwqngTD0yWggBtLlmS4K8r9gYe0wj0RezTPaMn3Y5LJ56i10KtjVrN\n\n0000000000000000000000000000000000000000 d81cfdc1200780113bf651bf7f1d3516a39103d8 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlryGWcACgkQqzYtYVpm\n/XuWygf/V+cgdtyq2gaG5Uc1arhJmxPvOUBRN+MjuFMRmkZCUbk7VMaZgKUMuw+B\nsjRm7x4o+nx1suuvZadPkcX0F1w7wLuI0rcbsckVcQSsXXj39mqDbfMoFch4UhTF\nIpmoA7rz+4EaqsXe5OZOcL2XYCnt7/D0YFiLy49Hja9EmhKb9uR6avRdQW2jU8fX\nCm1bZzLX9LkJgSdF1xi1dkfQDR8A4L5c6wkhXfTZaKHBp7k5ilAhxc3Yqgy5r8Fs\neUTVtCmphErDN2nuApwhvyO95+tEMT54MyNyeewtelc2k+9y2j6Ljs6NGa+U2jmJ\nLs7pOQ+sSvhbaxfIsX3R8q71yE00Jg\u003d\u003d\n\u003ddA2b\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "80b727eb_497d3e3a",
+        "filename": "core/fpdfapi/render/cpdf_transparency.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-08T21:45:29Z",
+      "side": 1,
+      "message": "Do I need an explicit copy constructor? Even if it\u0027s just going to be \"\u003d default\"? Probably yes?",
+      "revId": "d81cfdc1200780113bf651bf7f1d3516a39103d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
