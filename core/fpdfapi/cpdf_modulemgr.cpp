@@ -15,7 +15,7 @@
 #endif
 
 #ifdef PDF_ENABLE_XFA_GIF
-#include "core/fxcodec/codec/ccodec_gifmodule.h"
+#include "core/fxcodec/codec/ccodec_module.h"
 #endif
 
 #ifdef PDF_ENABLE_XFA_PNG
