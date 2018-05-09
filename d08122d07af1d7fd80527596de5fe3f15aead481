@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ad15597_20fe82a4",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-09T19:37:16Z",
+      "side": 1,
+      "message": "follow-up: wonder if we can make this CCoded_ProgressiveBase, and move the\nnon-delegate methods and members into it ...",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "d08122d07af1d7fd80527596de5fe3f15aead481",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
