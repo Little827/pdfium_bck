@@ -257,3 +257,34 @@ TEST(CXFA_FMParserTest, ParseDepthWithWideTree) {
     EXPECT_TRUE(parser->HasError());
   }
 }
+
+TEST(CXFA_FMParserTest, ParseCall) {
+  const wchar_t input[] = {L"i.f(O.e(O.e(O)))"};
+  const wchar_t ret[] = {
+      L"(function() {\n"
+      L"var pfm_ret = null;\n"
+      L"pfm_ret = pfm_rt.get_val((function () {\n"
+      L"if (pfm_rt.is_ary(i))\n"
+      L"return null;\n"
+      L"return i.f(pfm_rt.get_val((function () {\n"
+      L"if (pfm_rt.is_ary(O))\n"
+      L"return null;\n"
+      L"return O.e(pfm_rt.get_val((function () {\n"
+      L"if (pfm_rt.is_ary(O))\n"
+      L"return null;\n"
+      L"return O.e(pfm_rt.get_val(O));\n"
+      L"}).call(this)));\n"
+      L"}).call(this)));\n"
+      L"}).call(this));\n"
+      L"return pfm_rt.get_val(pfm_ret);\n"
+      L"}).call(this);"};
+
+  auto parser = pdfium::MakeUnique<CXFA_FMParser>(input);
+  std::unique_ptr<CXFA_FMAST> ast = parser->Parse();
+  EXPECT_FALSE(parser->HasError());
+
+  CXFA_FMToJavaScriptDepth::Reset();
+  CFX_WideTextBuf buf;
+  EXPECT_TRUE(ast->ToJavaScript(buf));
+  EXPECT_EQ(ret, buf.AsStringView());
+}
