@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "708624b2_c556fff6",
+        "filename": "fpdfsdk/fpdf_save.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-09T23:26:26Z",
+      "side": 0,
+      "message": "This doesn\u0027t really work. |pAcroForm|, |pXFA|, and |pArray| below all comes out of |pRoot| and they are all non-const. Eventually |pFormStream| comes out of |pArray| and pFormStream-\u003eInitStreamFromFile() gets called.",
+      "revId": "3774c7a452886b9c8beeb5fa1b54a34611551180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
