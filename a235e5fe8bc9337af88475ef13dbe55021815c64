@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1525813495 -0700\nnonce ACQuaLAlR6cwhGIq3Q8fk87QYbejs6eSD1LsgH0HTDHrRmxCbWqML6Lky/DJf/HNrKfYIDGvRpwn\n\n0000000000000000000000000000000000000000 a235e5fe8bc9337af88475ef13dbe55021815c64 refs/for/refs/heads/master%notify\u003dNONE,m\u003dMore_asserts\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlryEPcACgkQqzYtYVpm\n/XtpFQf/dmPCs+381wtz5Zrj/4a5Y6/doM7mgNLT0kYQG+wDezDTuBomBgsI/vZW\nk1cE1SQXk8c7sm02B1vWReIeQaFnw4gEx67Ti7rvu5YSQqb6zWFQtUrx7DBI9Lrf\ny1b36tR8ExAFdB1vxfYLcGqSSC/wvZERl+Lz7ju/kfzMkU3YgoWdYRaARBNEf74Y\nGQotrZi6PKSeNciu2diF7tFPKuaTFGjoT7LMbPBgEkYmmqqlcWWv5ApU7WVuT61t\nA+nz7PSk6NKr873iI6WbomdLQfkfcccV+jl877jl3BxAoOf4qag3rQlTlH7jVNlH\nmC8lf/w9AxR4oArx8BzA0QI/SXrrvw\u003d\u003d\n\u003dN6Ft\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d50bbb5_90290ad1",
+        "filename": "core/fpdfapi/edit/cpdf_flateencoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-09T15:32:30Z",
+      "side": 1,
+      "message": "This API is still pretty weird, but I suppose it\u0027s better than before. At least it\u0027s straightforward about being weird \u003d)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "a235e5fe8bc9337af88475ef13dbe55021815c64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
