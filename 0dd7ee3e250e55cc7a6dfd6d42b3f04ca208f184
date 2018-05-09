@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "04f70f56_36c0f558",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-09T17:33:37Z",
+      "side": 1,
+      "message": "nit: comma not needed (git cl format will then make it single-line ).",
+      "range": {
+        "startLine": 288,
+        "startChar": 21,
+        "endLine": 288,
+        "endChar": 22
+      },
+      "revId": "0dd7ee3e250e55cc7a6dfd6d42b3f04ca208f184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16377de4_f50c1371",
         "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
         "patchSetId": 1
