@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16377de4_f50c1371",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-09T17:33:00Z",
+      "side": 1,
+      "message": "We\u0027re going to paint ourselves into a corner if we conditionalize all of these.  There are a couple of options for syntax, but in the long run, its usually easiest if we have a dummy class to go last, just to deal with the C++ syntax not tolerating the trailing comma or an empty list after the colon.  As in\n\nclass CCodec_Dummy {};  // Placeholder to work around C++ syntax issues.\n\nclass CCodec_ProgressiveDecoder :\n#ifdef PDF_ENABLE_XFA_BMP\n   public CCodec_BmpModule::Delegate,\n#endif\n#ifdef PDF_ENABLE_XFA_GIF\n   public CCodec_GifModule::Delegate,\n#endif\n#ifdef PDF_ENABLE_XFA_PNG\n    public CCodec_PngModule::Delegate,\n#endif\n    public CCodec_Dummy {",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "0dd7ee3e250e55cc7a6dfd6d42b3f04ca208f184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63c5f34_fe00eb24",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-09T17:33:00Z",
+      "side": 1,
+      "message": "nit: let\u0027s change the older so that these are all grouped by codec type, rather than similar functionality.  Fewer ifdefs.",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "0dd7ee3e250e55cc7a6dfd6d42b3f04ca208f184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f7b186_8b22a630",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-09T17:33:00Z",
+      "side": 1,
+      "message": "probably we can re-order these as suggested in the header to get a common contiguous section.",
+      "range": {
+        "startLine": 2038,
+        "startChar": 7,
+        "endLine": 2038,
+        "endChar": 25
+      },
+      "revId": "0dd7ee3e250e55cc7a6dfd6d42b3f04ca208f184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
