@@ -3,6 +3,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "79c80450_49aa0b6a",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-09T13:28:09Z",
+      "side": 1,
+      "message": "followup: Remove Initialize and make this the constructor.",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1020,
+        "endChar": 46
+      },
+      "revId": "d81cfdc1200780113bf651bf7f1d3516a39103d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a907ff58_d812decb",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-09T13:28:09Z",
+      "side": 1,
+      "message": "Why keep this one and not bGroup?",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 45
+      },
+      "revId": "d81cfdc1200780113bf651bf7f1d3516a39103d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80b727eb_497d3e3a",
         "filename": "core/fpdfapi/render/cpdf_transparency.h",
         "patchSetId": 1
@@ -14,6 +60,29 @@
       "writtenOn": "2018-05-08T21:45:29Z",
       "side": 1,
       "message": "Do I need an explicit copy constructor? Even if it\u0027s just going to be \"\u003d default\"? Probably yes?",
+      "revId": "d81cfdc1200780113bf651bf7f1d3516a39103d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29fc9d23_c8b3aeb9",
+        "filename": "core/fpdfapi/render/cpdf_transparency.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-09T13:28:09Z",
+      "side": 1,
+      "message": "Why not doing:\n\nbool group_ \u003d false;\nbool isolated_ \u003d false;\n\nThen the above methods can all be inlined in the header as they\u0027re simple.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 26
+      },
       "revId": "d81cfdc1200780113bf651bf7f1d3516a39103d8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
