@@ -22,6 +22,30 @@
       "revId": "27924e6c9d43f0eba57d14004853d5a8ba47de26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc82989b_178b91fb",
+        "filename": "core/fxcodec/jbig2/JBig2_GrrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-09T15:41:47Z",
+      "side": 0,
+      "message": "Hmm the decoder can sometimes decode values indefinitely because it doesn\u0027t always increase the stream index... but yea it seems breaking also works (in that it does not entirely vanish the JBig2 image from the PDF. Maybe we should consider switching to that in some of the others too... maybe later.",
+      "parentUuid": "d6d51763_695b8bf3",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 211,
+        "endChar": 27
+      },
+      "revId": "27924e6c9d43f0eba57d14004853d5a8ba47de26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
