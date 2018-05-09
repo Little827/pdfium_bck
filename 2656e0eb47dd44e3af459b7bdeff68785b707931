@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4bfca22_47f6969b",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-09T20:41:26Z",
+      "side": 1,
+      "message": "This is really what git cl format wants this to be. I think because it is an \u003d not a +\u003d. Cannot make it a +\u003d, since apparently deps doesn\u0027t have a value yet at this point.",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 3
+      },
+      "revId": "2656e0eb47dd44e3af459b7bdeff68785b707931",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
