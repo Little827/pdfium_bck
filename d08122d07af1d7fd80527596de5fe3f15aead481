@@ -22,6 +22,30 @@
       "revId": "d08122d07af1d7fd80527596de5fe3f15aead481",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8edb28ac_65e3ddac",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-09T20:27:13Z",
+      "side": 1,
+      "message": "I have been pondering that as as cleanup for this code. I have now filed https://crbug.com/pdfium/1082.",
+      "parentUuid": "5ad15597_20fe82a4",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "d08122d07af1d7fd80527596de5fe3f15aead481",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
