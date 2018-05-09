@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2df32732_93dc4935",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-09T21:08:01Z",
+      "side": 1,
+      "message": "follow-on: If you want some fun, (you like fun, right?) there\u0027s no reason for these nested classes to have CFXCODEC_ prefixes.  They are already qualified by CCodec_ProgressiveDecoder, and CCodec_ProgressiveDecoder::WeightTable is much saner than CCodec_ProgressiveDecoder::CFXCODEC_WeightTable",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "c13a28a9cb2acc94875e0fa8406e964d55f878ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
