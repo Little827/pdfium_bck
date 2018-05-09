@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8da4043e_a97b8901",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-09T21:09:37Z",
+      "side": 1,
+      "message": "Can we figure that out, and see if we can just go straight to a bool everywhere?",
+      "revId": "f7169094391113740ce744a487933840d6667eef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
