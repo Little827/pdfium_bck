@@ -23,11 +23,13 @@
 
 namespace {
 
+#ifdef PDF_ENABLE_XFA_PNG
 #if _FX_OS_ == _FX_OS_MACOSX_
 const double kPngGamma = 1.7;
 #else   // _FX_OS_ == _FX_OS_MACOSX_
 const double kPngGamma = 2.2;
 #endif  // _FX_OS_ == _FX_OS_MACOSX_
+#endif  // PDF_ENABLE_XFA_PNG
 
 void RGB2BGR(uint8_t* buffer, int width = 1) {
   if (buffer && width > 0) {
@@ -325,6 +327,7 @@ bool CCodec_ProgressiveDecoder::JpegReadMoreData(CCodec_JpegModule* pJpegModule,
   return true;
 }
 
+#ifdef PDF_ENABLE_XFA_PNG
 bool CCodec_ProgressiveDecoder::PngReadHeader(int width,
                                               int height,
                                               int bpc,
@@ -558,6 +561,7 @@ void CCodec_ProgressiveDecoder::PngFillScanlineBufCompleted(int pass,
     }
   }
 }
+#endif  // PDF_ENABLE_XFA_PNG
 
 bool CCodec_ProgressiveDecoder::GifReadMoreData(CCodec_GifModule* pGifModule,
                                                 FXCODEC_STATUS& err_status) {
@@ -1037,8 +1041,10 @@ bool CCodec_ProgressiveDecoder::DetectImageType(FXCODEC_IMAGE_TYPE imageType,
       return BmpDetectImageType(pAttribute, size);
     case FXCODEC_IMAGE_JPG:
       return JpegDetectImageType(pAttribute, size);
+#ifdef PDF_ENABLE_XFA_PNG
     case FXCODEC_IMAGE_PNG:
       return PngDetectImageType(pAttribute, size);
+#endif  // PDF_ENABLE_XFA_PNG
     case FXCODEC_IMAGE_GIF:
       return GifDetectImageType(pAttribute, size);
 #ifdef PDF_ENABLE_XFA_TIFF
@@ -1187,6 +1193,7 @@ bool CCodec_ProgressiveDecoder::JpegDetectImageType(
   return false;
 }
 
+#ifdef PDF_ENABLE_XFA_PNG
 bool CCodec_ProgressiveDecoder::PngDetectImageType(CFX_DIBAttribute* pAttribute,
                                                    uint32_t size) {
   CCodec_PngModule* pPngModule = m_pCodecMgr->GetPngModule();
@@ -1239,6 +1246,7 @@ bool CCodec_ProgressiveDecoder::PngDetectImageType(CFX_DIBAttribute* pAttribute,
   }
   return true;
 }
+#endif  // PDF_ENABLE_XFA_PNG
 
 bool CCodec_ProgressiveDecoder::GifDetectImageType(CFX_DIBAttribute* pAttribute,
                                                    uint32_t size) {
@@ -1862,7 +1870,9 @@ std::pair<FXCODEC_STATUS, size_t> CCodec_ProgressiveDecoder::GetFrames() {
   switch (m_imagType) {
     case FXCODEC_IMAGE_JPG:
     case FXCODEC_IMAGE_BMP:
+#ifdef PDF_ENABLE_XFA_PNG
     case FXCODEC_IMAGE_PNG:
+#endif  // PDF_ENABLE_XFA_PNG
 #ifdef PDF_ENABLE_XFA_TIFF
     case FXCODEC_IMAGE_TIFF:
 #endif  // PDF_ENABLE_XFA_TIFF
@@ -1957,8 +1967,10 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::StartDecode(
   switch (m_imagType) {
     case FXCODEC_IMAGE_JPG:
       return JpegStartDecode(pDIBitmap);
+#ifdef PDF_ENABLE_XFA_PNG
     case FXCODEC_IMAGE_PNG:
       return PngStartDecode(pDIBitmap);
+#endif  // PDF_ENABLE_XFA_PNG
     case FXCODEC_IMAGE_GIF:
       return GifStartDecode(pDIBitmap);
     case FXCODEC_IMAGE_BMP:
@@ -2023,6 +2035,7 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::JpegStartDecode(
   return m_status;
 }
 
+#ifdef PDF_ENABLE_XFA_PNG
 FXCODEC_STATUS CCodec_ProgressiveDecoder::PngStartDecode(
     const RetainPtr<CFX_DIBitmap>& pDIBitmap) {
   CCodec_PngModule* pPngModule = m_pCodecMgr->GetPngModule();
@@ -2072,6 +2085,7 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::PngStartDecode(
   m_status = FXCODEC_STATUS_DECODE_TOBECONTINUE;
   return m_status;
 }
+#endif  // PDF_ENABLE_XFA_PNG
 
 FXCODEC_STATUS CCodec_ProgressiveDecoder::GifStartDecode(
     const RetainPtr<CFX_DIBitmap>& pDIBitmap) {
@@ -2124,8 +2138,10 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::ContinueDecode() {
   switch (m_imagType) {
     case FXCODEC_IMAGE_JPG:
       return JpegContinueDecode();
+#ifdef PDF_ENABLE_XFA_PNG
     case FXCODEC_IMAGE_PNG:
       return PngContinueDecode();
+#endif  // PDF_ENABLE_XFA_PNG
     case FXCODEC_IMAGE_GIF:
       return GifContinueDecode();
     case FXCODEC_IMAGE_BMP:
@@ -2177,6 +2193,7 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::JpegContinueDecode() {
   }
 }
 
+#ifdef PDF_ENABLE_XFA_PNG
 FXCODEC_STATUS CCodec_ProgressiveDecoder::PngContinueDecode() {
   CCodec_PngModule* pPngModule = m_pCodecMgr->GetPngModule();
   if (!pPngModule) {
@@ -2218,6 +2235,7 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::PngContinueDecode() {
     }
   }
 }
+#endif  // PDF_ENABLE_XFA_PNG
 
 FXCODEC_STATUS CCodec_ProgressiveDecoder::GifContinueDecode() {
   CCodec_GifModule* pGifModule = m_pCodecMgr->GetGifModule();
