@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e0e3e73_e3a4b1e8",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-09T14:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fef2011_000d2d7f",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "f5af53613c0d27fc0b964358f0edfa3ccc8751ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "828d97ae_bd0ef884",
         "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "f5af53613c0d27fc0b964358f0edfa3ccc8751ee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eea67e2_88e68fb5",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-09T14:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "828d97ae_bd0ef884",
+      "revId": "f5af53613c0d27fc0b964358f0edfa3ccc8751ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
