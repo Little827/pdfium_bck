@@ -138,7 +138,8 @@ class JobRun(object):
            '--this-repo',
            '--machine-readable',
            '--branch-before=%s' % last_revision_covered,
-           '--output-dir=%s' % self.context.run_output_dir]
+           '--output-dir=%s' % self.context.run_output_dir,
+           '--png-dir=%s' % self.context.run_output_dir]
     cmd.extend(self.args.input_paths)
 
     json_output = RunCommandPropagateErr(cmd)
