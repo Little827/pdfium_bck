@@ -5,6 +5,7 @@
 #include <cstring>
 #include <memory>
 
+#include "public/cpp/fpdf_creators.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_edit.h"
 #include "public/fpdfview.h"
@@ -19,7 +20,9 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   FPDF_BOOL cid = data[1];
   data += 2;
   size -= 2;
-  ScopedFPDFFont font(FPDFText_LoadFont(doc.get(), data, size, font_type, cid));
+
+  ScopedFPDFFont font =
+      CreateScopedFPDFFont(doc.get(), data, size, font_type, cid);
   if (!font)
     return 0;
 

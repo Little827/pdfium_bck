@@ -9,6 +9,7 @@
 #include <memory>
 #include <vector>
 
+#include "public/cpp/fpdf_creators.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
 #include "public/fpdf_attachment.h"
@@ -215,7 +216,7 @@ void WriteText(FPDF_PAGE page, const char* pdf_name, int num) {
     return;
   }
 
-  ScopedFPDFTextPage textpage(FPDFText_LoadPage(page));
+  ScopedFPDFTextPage textpage = CreateScopedFPDFTextPage(page);
   for (int i = 0; i < FPDFText_CountChars(textpage.get()); i++) {
     uint32_t c = FPDFText_GetUnicode(textpage.get(), i);
     if (fwrite(&c, sizeof(c), 1, fp) != 1) {

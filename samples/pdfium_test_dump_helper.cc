@@ -11,6 +11,7 @@
 #include <string>
 #include <utility>
 
+#include "public/cpp/fpdf_creators.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "testing/test_support.h"
 
@@ -55,7 +56,7 @@ void DumpChildStructure(FPDF_STRUCTELEMENT child, int indent) {
 }
 
 void DumpPageStructure(FPDF_PAGE page, const int page_idx) {
-  ScopedFPDFStructTree tree(FPDF_StructTree_GetForPage(page));
+  ScopedFPDFStructTree tree = CreateScopedFPDFStructTree(page);
   if (!tree) {
     fprintf(stderr, "Failed to load struct tree for page %d\n", page_idx);
     return;
