@@ -116,24 +116,33 @@ class JobRun(object):
     Returns:
       Exit code for the script.
     """
-    current = self.git.GetCurrentBranchHash()
+    current_revision = self.git.GetCurrentBranchHash()
 
     PrintWithTime('Incremental run, current is %s, last is %s'
-                  % (current, last_revision_covered))
+                  % (current_revision, last_revision_covered))
 
     if not os.path.exists(self.context.run_output_dir):
       os.makedirs(self.context.run_output_dir)
 
-    if current == last_revision_covered:
+    if current_revision == last_revision_covered:
       PrintWithTime('No changes seen, finishing job')
       output_info = {
           'metadata': self._BuildRunMetadata(last_revision_covered,
-                                             current,
+                                             current_revision,
                                              False)}
       self._WriteRawJson(output_info)
       return 0
 
-    # Run compare
+    performance_status = self._ComparePerformance(last_revision_covered,
+                                                  current_revision)
+
+    self._CompareImages(last_revision_covered, current_revision)
+
+    self._WriteCheckpoint(current_revision)
+
+    return performance_status
+
+  def _ComparePerformance(self, last_revision_covered, current_revision):
     cmd = ['testing/tools/safetynet_compare.py',
            '--this-repo',
            '--machine-readable',
@@ -149,7 +158,7 @@ class JobRun(object):
     output_info = json.loads(json_output)
 
     run_metadata = self._BuildRunMetadata(last_revision_covered,
-                                          current,
+                                          current_revision,
                                           True)
     output_info.setdefault('metadata', {}).update(run_metadata)
     self._WriteRawJson(output_info)
@@ -172,9 +181,36 @@ class JobRun(object):
     if status == 0:
       PrintWithTime('Nothing detected.')
 
-    self._WriteCheckpoint(current)
-
     return status
+
+
+  def _CompareImages(self, last_revision_covered, current_revision):
+    cmd = ['testing/tools/safetynet_compare.py',
+           '--this-repo',
+           '--machine-readable',
+           '--profiler=none',
+           '--branch-before=%s' % last_revision_covered,
+           '--output-dir=%s' % self.context.run_output_dir,
+           '--png-dir=%s' % self.context.run_output_dir]
+    cmd.extend(self.args.input_paths)
+
+    json_output = RunCommandPropagateErr(cmd)
+
+    if json_output is None:
+      return
+
+    output_info = json.loads(json_output)
+
+    run_metadata = self._BuildRunMetadata(last_revision_covered,
+                                          current_revision,
+                                          True)
+    output_info.setdefault('metadata', {}).update(run_metadata)
+
+    PrintConclusionsDictHumanReadable(output_info,
+                                      colored=(not self.args.output_to_log
+                                               and not self.args.no_color),
+                                      key='after')
+
 
   def _WriteRawJson(self, output_info):
     json_output_file = os.path.join(self.context.run_output_dir, 'raw.json')
