@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "772414f8_749138c5",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 6770
+      },
+      "writtenOn": "2018-05-10T17:52:16Z",
+      "side": 1,
+      "message": "super nit: just to make this easier to understand maybe change the top of the function to something like: \n\n  def __init__(self, test_type):\n    self.test_dir \u003d test_type\n    self.test_type \u003d test_type \n    ....\n\nand then this line to:\n  ... \n  self.gold_results \u003d gold.GoldResults(self.test_type,\n  ... \n\njust to make it clearer that we are not passing  directory information but a sort of label for the test.\nJust a thought.",
+      "range": {
+        "startLine": 275,
+        "startChar": 41,
+        "endLine": 275,
+        "endChar": 57
+      },
+      "revId": "c87baa303456504c71359731037f6de30b827c32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
