@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a63b44da_53e6bb7a",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T18:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779a18f1_59ccb815",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 2
+      },
+      "revId": "95061379c9453b941783398826acff674d2bbfd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e58fd8a_dbb4d541",
         "filename": "core/fxcodec/codec/fx_codec.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "95061379c9453b941783398826acff674d2bbfd7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c76a0d7_7632a95a",
+        "filename": "core/fxcodec/codec/fx_codec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T18:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e58fd8a_dbb4d541",
+      "range": {
+        "startLine": 1515,
+        "startChar": 6,
+        "endLine": 1515,
+        "endChar": 24
+      },
+      "revId": "95061379c9453b941783398826acff674d2bbfd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "821e0ba4_44291846",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T18:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22dad150_70f04ff3",
+      "range": {
+        "startLine": 1748,
+        "startChar": 2,
+        "endLine": 1748,
+        "endChar": 3
+      },
+      "revId": "95061379c9453b941783398826acff674d2bbfd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3e25e80_f8fbfa69",
         "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "95061379c9453b941783398826acff674d2bbfd7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce0ad314_5db7d505",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T18:40:58Z",
+      "side": 1,
+      "message": "I agree that should work, but I am getting issues with attempting assign an int to a FX_CODEC_IMAGE_TYPE and ++ being invalid on an enum. I can squash the first issue using a static cast and second by going from type++ to type \u003d static_cast\u003cFXCODEC_IMAGE_TYPE\u003e(type + 1).\n\nIt isn\u0027t an enum class, so I am assuming we have a flag turned on to make implicit int -\u003e enum invalid. Having to add those casts removes any of the benefit to changing the types.",
+      "parentUuid": "b3e25e80_f8fbfa69",
+      "range": {
+        "startLine": 1803,
+        "startChar": 7,
+        "endLine": 1803,
+        "endChar": 10
+      },
+      "revId": "95061379c9453b941783398826acff674d2bbfd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dc046535_b27e2b87",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2456,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T18:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b6ae43b_68e0814d",
+      "range": {
+        "startLine": 2455,
+        "startChar": 0,
+        "endLine": 2456,
+        "endChar": 0
+      },
+      "revId": "95061379c9453b941783398826acff674d2bbfd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bec0fa71_110fe766",
         "filename": "core/fxcodec/fx_codec_def.h",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "04770df2_5eda7232",
+        "filename": "core/fxcodec/fx_codec_def.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T18:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec0fa71_110fe766",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "95061379c9453b941783398826acff674d2bbfd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85985208_21edaa9c",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 3
@@ -160,6 +304,30 @@
       "revId": "95061379c9453b941783398826acff674d2bbfd7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c40de97_1ce5149e",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T18:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85985208_21edaa9c",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "95061379c9453b941783398826acff674d2bbfd7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
