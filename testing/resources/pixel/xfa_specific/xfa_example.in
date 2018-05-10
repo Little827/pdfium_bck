@@ -1,6 +1,5 @@
 {{header}}
 
-%% Original object ID: 24 0
 {{object 1 0}}
 <<
   /AcroForm 2 0 R
@@ -15,9 +14,13 @@
 >>
 endobj
 
-%% Original object ID: 32 0
 {{object 2 0}}
 <<
+  /DR <<
+    /Font <<
+      /Roboto 10 0 R
+    >>
+  >>
   /XFA [
     (preamble)
     3 0 R
@@ -51,6 +54,7 @@ stream
     </pageSet>
     <subform w="576pt" h="756pt" name="Page1">
       <draw name="HelloWorld" y="0.5in" x="0.5in" w="5in" h="2in">
+       <font typeface="Roboto" size="32pt"/>
         <value>
           <text>Hello, world.</text>
         </value>
@@ -64,6 +68,8 @@ endobj
 {{xfalocale 6 0}}
 
 {{xfapostamble 7 0}}
+
+{{embedroboto 10}}
 
 {{xref}}
 {{trailer}}
