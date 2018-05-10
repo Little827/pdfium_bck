@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8931f8ff_4cecc925",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-10T19:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da4a65a_413a21b9",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "769f89d6e98f5afd27e5b2cff92fdb93eb4ac2aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68bec96f_6b4e6d1b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "99100632_ad7650ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-10T19:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68bec96f_6b4e6d1b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "769f89d6e98f5afd27e5b2cff92fdb93eb4ac2aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a2d49f0_271829ba",
         "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-10T19:17:09Z",
       "side": 1,
       "message": "Can you put this somewhere common and reference from each test? You\u0027ll probably need to make a wrapper with this code and compare against \"wrapper(ret)\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "769f89d6e98f5afd27e5b2cff92fdb93eb4ac2aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6576c8e1_d4414f7d",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-10T19:20:03Z",
+      "side": 1,
+      "message": "I\u0027d rather have the code here show the full response instead of having to look in two places to see what\u0027s going on.",
+      "parentUuid": "6a2d49f0_271829ba",
       "range": {
         "startLine": 45,
         "startChar": 0,
