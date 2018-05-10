@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a69152b9_6b2664cc",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T16:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40b72717_41452d1f",
+      "range": {
+        "startLine": 1803,
+        "startChar": 18,
+        "endLine": 1803,
+        "endChar": 39
+      },
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf8eb41e_b80ad994",
         "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4ab4a2f0_ac31077a",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T16:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf8eb41e_b80ad994",
+      "range": {
+        "startLine": 1804,
+        "startChar": 24,
+        "endLine": 1804,
+        "endChar": 48
+      },
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d483c58_97ab066b",
         "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "5b6a2a2f_04cc067b",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T16:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d483c58_97ab066b",
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9894390_234cae6f",
         "filename": "core/fxcodec/fx_codec.h",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640af0e0_8b087d23",
+        "filename": "core/fxcodec/fx_codec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T16:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9894390_234cae6f",
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +186,30 @@
       "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aef5b36_78d87b6b",
+        "filename": "core/fxcodec/fx_codec_def.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-10T16:25:58Z",
+      "side": 1,
+      "message": "Nope, JPG is available outside of XFA, so there isn\u0027t a flag to enable/disable it.",
+      "parentUuid": "2d0739a6_e3b69f36",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
