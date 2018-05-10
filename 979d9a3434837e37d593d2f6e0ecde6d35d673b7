@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40b72717_41452d1f",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-10T16:02:01Z",
+      "side": 1,
+      "message": "This change is so that FXCODEC_IMAGE_BMP isn\u0027t directly referenced, but the first iteration will always fail? Could start at FXCODEC_IMAGE_UNKNOWN + 1.",
+      "range": {
+        "startLine": 1803,
+        "startChar": 18,
+        "endLine": 1803,
+        "endChar": 39
+      },
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8eb41e_b80ad994",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-10T16:02:01Z",
+      "side": 1,
+      "message": "static_cast here and below",
+      "range": {
+        "startLine": 1804,
+        "startChar": 24,
+        "endLine": 1804,
+        "endChar": 48
+      },
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d483c58_97ab066b",
+        "filename": "core/fxcodec/codec/fx_codec_progress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-10T16:02:01Z",
+      "side": 1,
+      "message": "Break here and remove the tiny ifdef block with the bracket close below.",
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9894390_234cae6f",
+        "filename": "core/fxcodec/fx_codec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-10T16:02:01Z",
+      "side": 1,
+      "message": "Add blank line",
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0739a6_e3b69f36",
+        "filename": "core/fxcodec/fx_codec_def.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-10T16:02:01Z",
+      "side": 1,
+      "message": "Do you intend to do the same with jpg?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "979d9a3434837e37d593d2f6e0ecde6d35d673b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
