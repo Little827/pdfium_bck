@@ -272,7 +272,7 @@ class TestRunner:
     # Collect Gold results if an output directory was named.
     self.gold_results = None
     if self.options.gold_output_dir:
-      self.gold_results = gold.GoldResults('pdfium',
+      self.gold_results = gold.GoldResults(self.test_dir,
                                            self.options.gold_output_dir,
                                            self.options.gold_properties,
                                            self.options.gold_key,
