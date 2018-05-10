@@ -138,13 +138,16 @@ class JobRun(object):
            '--this-repo',
            '--machine-readable',
            '--branch-before=%s' % last_revision_covered,
-           '--output-dir=%s' % self.context.run_output_dir]
+           '--output-dir=%s' % self.context.run_output_dir,
+           '--png-dir=%s' % self.context.run_output_dir]
     cmd.extend(self.args.input_paths)
 
     json_output = RunCommandPropagateErr(cmd)
 
     if json_output is None:
       return 1
+    with open("json_output.txt", "w") as f:
+      f.write(json_output)
 
     output_info = json.loads(json_output)
 
