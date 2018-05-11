@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a86c_d44644ae",
+        "filename": "xfa/fwl/cfwl_combobox.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T16:43:44Z",
+      "side": 1,
+      "message": "pre-existing: are these pointless as the default rect ctor sets em to 0 already?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412d8ea5_6eec22c5",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T16:43:44Z",
+      "side": 1,
+      "message": "If non-virtual, we can just kill this and all its callers.",
+      "range": {
+        "startLine": 323,
+        "startChar": 5,
+        "endLine": 323,
+        "endChar": 26
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6821ee3a_f8f3ef78",
+        "filename": "xfa/fwl/cfwl_widgetmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T16:43:44Z",
+      "side": 1,
+      "message": "follow-up: can this happen given the assert at 33? Also we can kill that assert since the getfwladapaterwidgetmgr does a make_unique\u003c\u003e if the obj isn\u0027t present. so its all redundant.",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff91ca76_d4390cca",
+        "filename": "xfa/fwl/cfwl_widgetmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T16:43:44Z",
+      "side": 1,
+      "message": "nit: {} no longer needed.",
+      "range": {
+        "startLine": 448,
+        "startChar": 63,
+        "endLine": 448,
+        "endChar": 64
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f003e8be_7f965227",
+        "filename": "xfa/fwl/cfwl_widgetmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T16:43:44Z",
+      "side": 1,
+      "message": "This now becomes unused as well.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eccf519_84d2ed27",
+        "filename": "xfa/fwl/cfwl_widgetmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T16:43:44Z",
+      "side": 1,
+      "message": "follow-up: this looks to be spectacularly unused, too, but double-check.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
