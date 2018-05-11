@@ -19,7 +19,6 @@
 #define FWL_ITEMSTATE_MCD_Selected (1L << 1)
 
 class CFWL_MessageMouse;
-class CFWL_Widget;
 
 class CFWL_MonthCalendar : public CFWL_Widget {
  public:
@@ -159,8 +158,6 @@ class CFWL_MonthCalendar : public CFWL_Widget {
   CFX_RectF m_rtHeadText;
   CFX_RectF m_rtToday;
   CFX_RectF m_rtTodayFlag;
-  CFX_RectF m_rtWeekNum;
-  CFX_RectF m_rtWeekNumSep;
   WideString m_wsHead;
   WideString m_wsToday;
   std::vector<std::unique_ptr<DATEINFO>> m_arrDates;
@@ -179,7 +176,6 @@ class CFWL_MonthCalendar : public CFWL_Widget {
   CFX_SizeF m_szToday;
   std::vector<int32_t> m_arrSelDays;
   CFX_RectF m_rtClient;
-  bool m_bFlag;
 };
 
 #endif  // XFA_FWL_CFWL_MONTHCALENDAR_H_
