@@ -97,8 +97,7 @@ CFWL_MonthCalendar::CFWL_MonthCalendar(
       m_iDay(1),
       m_iHovered(-1),
       m_iLBtnPartStates(CFWL_PartState_Normal),
-      m_iRBtnPartStates(CFWL_PartState_Normal),
-      m_bFlag(false) {
+      m_iRBtnPartStates(CFWL_PartState_Normal) {
   m_rtHead.Reset();
   m_rtWeek.Reset();
   m_rtLBtn.Reset();
@@ -109,8 +108,6 @@ CFWL_MonthCalendar::CFWL_MonthCalendar(
   m_rtToday.Reset();
   m_rtTodayFlag.Reset();
   m_rtClient.Reset();
-  m_rtWeekNum.Reset();
-  m_rtWeekNumSep.Reset();
 }
 
 CFWL_MonthCalendar::~CFWL_MonthCalendar() {
@@ -757,10 +754,6 @@ void CFWL_MonthCalendar::OnLButtonDown(CFWL_MessageMouse* pMsg) {
   } else if (m_rtToday.Contains(pMsg->m_pos)) {
     JumpToToday();
     RepaintRect(m_rtClient);
-  } else {
-    CFWL_DateTimePicker* pIPicker = static_cast<CFWL_DateTimePicker*>(m_pOuter);
-    if (pIPicker->IsMonthCalendarVisible())
-      m_bFlag = true;
   }
 }
 
