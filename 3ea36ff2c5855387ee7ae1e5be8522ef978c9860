@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83f9d44d_66a83206",
+        "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T21:39:12Z",
+      "side": 1,
+      "message": "nit: these kinds of const intializers are now better served in the .h where the member is declared.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 48
+      },
+      "revId": "3ea36ff2c5855387ee7ae1e5be8522ef978c9860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e1d66c_925365fe",
+        "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T21:39:12Z",
+      "side": 1,
+      "message": "nit: these have not been required since we added a ctor for CFX_RectF, right?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "3ea36ff2c5855387ee7ae1e5be8522ef978c9860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59d0c68_3f8c0705",
+        "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-11T21:39:12Z",
+      "side": 1,
+      "message": "no need to clear a vector\u003cuint32_t\u003e",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "3ea36ff2c5855387ee7ae1e5be8522ef978c9860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
