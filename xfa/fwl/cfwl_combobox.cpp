@@ -237,8 +237,6 @@ void CFWL_ComboBox::ShowDropList(bool bActivate) {
 
     m_pListBox->SetWidgetRect(rtList);
     m_pListBox->Update();
-  } else {
-    SetFocus(true);
   }
 
   if (bActivate) {
