@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd291c62_7382c4ff",
+        "filename": "xfa/fwl/cfwl_combobox.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T17:06:30Z",
+      "side": 1,
+      "message": "This is not a pure copy paste, as \u0026matrix was passed in, as pMatrix. The \"if (pMatrix)\" checks become moot and are removed. The temporary |mtOrg| is also removed by inlining |matrix| directly, which should be fine with the places it\u0027s passed to do not modify it.",
+      "revId": "bda2b7cc0b3ee5860ca1fe42d2602fd6cd0b6030",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
