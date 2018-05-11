@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840b8ec8_93796501",
+        "filename": "xfa/fwl/cfwl_datetimepicker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T19:55:20Z",
+      "side": 0,
+      "message": "Unused",
+      "revId": "1b176d67d6bb45be9644d4bf4405b8fb09abd3d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c99ae10e_e63fa180",
+        "filename": "xfa/fwl/cfwl_datetimepicker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T19:55:20Z",
+      "side": 0,
+      "message": "Unused",
+      "revId": "1b176d67d6bb45be9644d4bf4405b8fb09abd3d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
