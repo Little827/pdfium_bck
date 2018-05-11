@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f1a3ee5f_e44fe8ca",
+        "filename": "xfa/fwl/cfwl_combobox.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T19:38:12Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/c/pdfium/+/32392",
+      "parentUuid": "1d25053b_3197557e",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "412d8ea5_6eec22c5",
         "filename": "xfa/fwl/cfwl_widget.cpp",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2aaeb149_aa3fc233",
+        "filename": "xfa/fwl/cfwl_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T19:38:12Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/c/pdfium/+/32412",
+      "parentUuid": "fd29f1e4_1ba144bb",
+      "range": {
+        "startLine": 323,
+        "startChar": 5,
+        "endLine": 323,
+        "endChar": 26
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6821ee3a_f8f3ef78",
         "filename": "xfa/fwl/cfwl_widgetmgr.cpp",
         "patchSetId": 1
@@ -140,6 +188,30 @@
       "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc44b88a_a2c9e889",
+        "filename": "xfa/fwl/cfwl_widgetmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T19:38:12Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/c/pdfium/+/32413",
+      "parentUuid": "1f78222b_7554fe9c",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "10e9b1f4_339eaf64",
+        "filename": "xfa/fwl/cfwl_widgetmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T19:38:12Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/c/pdfium/+/32413",
+      "parentUuid": "df0fc591_560166b5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eccf519_84d2ed27",
         "filename": "xfa/fwl/cfwl_widgetmgr.h",
         "patchSetId": 1
@@ -281,6 +377,30 @@
       "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a6f1251_2b5847e1",
+        "filename": "xfa/fwl/cfwl_widgetmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-11T19:38:12Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/c/pdfium/+/32413",
+      "parentUuid": "435c478c_f6239321",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "cc63ab8210a1d2e9ce8c0751ab4b1806e0d92079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
