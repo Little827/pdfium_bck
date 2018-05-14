@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7f1dabe_5015328c",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-14T17:48:19Z",
+      "side": 1,
+      "message": "nit: Please  mention in the CL description how you are changing the implementation of FXSYS_wcstof, since currently it sounds like your change would only affect the formcalc lexer",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "8338e0ebf8f0a28ec4b404f3562338a90bf1c850",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
