@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "186643ad_1db5bae5",
+        "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T15:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83f9d44d_66a83206",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 48
+      },
+      "revId": "3ea36ff2c5855387ee7ae1e5be8522ef978c9860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93e1d66c_925365fe",
         "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7bc62068_814621ea",
+        "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T15:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93e1d66c_925365fe",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "3ea36ff2c5855387ee7ae1e5be8522ef978c9860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d59d0c68_3f8c0705",
         "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "3ea36ff2c5855387ee7ae1e5be8522ef978c9860",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf239bb8_a5e18fe2",
+        "filename": "xfa/fwl/cfwl_monthcalendar.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T15:31:40Z",
+      "side": 1,
+      "message": "Done, removed ClearDateItem() too as it\u0027s just clearing a vector\u003cunique_ptr\u003cDATEINFO\u003e\u003e, which will be destroyed anyways. Destructor can be then made default.",
+      "parentUuid": "d59d0c68_3f8c0705",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "3ea36ff2c5855387ee7ae1e5be8522ef978c9860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
