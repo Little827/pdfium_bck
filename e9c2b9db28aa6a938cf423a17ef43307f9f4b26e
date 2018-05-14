@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "519b31a0_a132a634",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T19:04:52Z",
+      "side": 1,
+      "message": "Is it guaranteed that eventually IsParsed() will return true, even in error cases?",
+      "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
