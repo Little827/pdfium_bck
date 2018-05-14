@@ -34,6 +34,24 @@
       "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1167557e_889405f1",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T20:20:20Z",
+      "side": 1,
+      "message": "The problem is adding an infinite loop here, if there is no guarantee. The way it is, if it fails, it fails rather than hang.",
+      "parentUuid": "bf85ad17_ce656dad",
+      "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
