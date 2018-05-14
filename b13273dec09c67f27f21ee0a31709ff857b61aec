@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "2849df88_d8a0df72",
+        "filename": "core/fxcodec/codec/fx_codec_fax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-14T21:36:25Z",
+      "side": 1,
+      "message": "I tried multiples of 2 all the way up to 64. It\u0027s not significantly better to use larger values, and the cost paid if memcmp() fails is higher with larger values. Whereas going down to 4 was slower.",
+      "parentUuid": "450e83dc_c190ff7b",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "b13273dec09c67f27f21ee0a31709ff857b61aec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98b2513a_bd64f3b4",
         "filename": "core/fxcodec/codec/fx_codec_fax.cpp",
         "patchSetId": 1
