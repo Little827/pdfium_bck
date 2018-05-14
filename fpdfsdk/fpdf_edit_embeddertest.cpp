@@ -510,7 +510,7 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
 }
 
 // Fails due to pdfium:1051.
-TEST_F(FPDFEditEmbeddertest, DISABLED_RemoveExistingPageObject) {
+TEST_F(FPDFEditEmbeddertest, RemoveExistingPageObject) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
