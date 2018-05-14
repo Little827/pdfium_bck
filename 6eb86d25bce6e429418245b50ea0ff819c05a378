@@ -57,6 +57,30 @@
       "revId": "6eb86d25bce6e429418245b50ea0ff819c05a378",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeae7c53_0ad663d4",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-14T23:54:03Z",
+      "side": 1,
+      "message": "I actually don\u0027t have a better idea right now. I just wanted to rename it, since this variable really has nothing to do with |threshold| above.",
+      "parentUuid": "7690f9e8_8f75dbc4",
+      "range": {
+        "startLine": 1353,
+        "startChar": 8,
+        "endLine": 1353,
+        "endChar": 18
+      },
+      "revId": "6eb86d25bce6e429418245b50ea0ff819c05a378",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
