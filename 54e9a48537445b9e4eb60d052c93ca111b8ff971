@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b8810a7_48807f89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T21:12:06Z",
+      "side": 1,
+      "message": "CPDF_ContentParser",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "54e9a48537445b9e4eb60d052c93ca111b8ff971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba162dc5_71b61b24",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T21:12:06Z",
+      "side": 1,
+      "message": "I\u0027ll suggest to change this to a DONE state. You can then have each state return the next state - the same if no change, STAGE_DONE when it would set m_bIsDone to true, or the next stage if we\u0027re progressing.",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 17
+      },
+      "revId": "54e9a48537445b9e4eb60d052c93ca111b8ff971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a57b5d6_02317875",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-14T21:12:06Z",
+      "side": 1,
+      "message": "It\u0027s a bit weird that this code is after the previous block, since it\u0027s sort of the previous stage.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 20
+      },
+      "revId": "54e9a48537445b9e4eb60d052c93ca111b8ff971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
