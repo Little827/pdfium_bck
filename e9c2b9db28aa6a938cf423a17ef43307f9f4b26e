@@ -16,6 +16,24 @@
       "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf85ad17_ce656dad",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-14T19:35:41Z",
+      "side": 1,
+      "message": "There are about 4 layers of parsers under this call. The best I can give is a .... maybe? The other option being we do something like force cleanup m_pParser if !IsParsed() to make sure it\u0027s clean but we have no current way to propagate an error from here.",
+      "parentUuid": "519b31a0_a132a634",
+      "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
