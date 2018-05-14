@@ -52,6 +52,24 @@
       "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ae1ef0_a7ebc667",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-14T20:25:37Z",
+      "side": 1,
+      "message": "The other option is possibly adding a crasher when I free the m_pParser .... Not sure which is the better option.",
+      "parentUuid": "1167557e_889405f1",
+      "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
