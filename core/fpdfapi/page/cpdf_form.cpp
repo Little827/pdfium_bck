@@ -48,5 +48,11 @@ void CPDF_Form::ParseContent(CPDF_AllStates* pGraphicStates,
       this, pGraphicStates, pParentMatrix, pType3Char, parsedSet);
   m_ParseState = CONTENT_PARSING;
 
-  ContinueParse(nullptr);
+  while (!IsParsed())
+    ContinueParse(nullptr);
+
+  // Make sure the parser is cleaned up as the parser has a unowned ptr to the
+  // pType3Char parameter. We don't know the lifetime of that parameter so we
+  // have to make sure we cleanup the parser as early as possible.
+  ASSERT(!m_pParser);
 }
