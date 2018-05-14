@@ -70,6 +70,24 @@
       "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e3a46d_24a08cdf",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-14T21:01:31Z",
+      "side": 1,
+      "message": "Chatting offline and digging through the various parsers, it looks like ContentParser::Continue will run to completion in the case where we pass nullptr. So we should always be finished in the first call and not need to loop here ....",
+      "parentUuid": "51ae1ef0_a7ebc667",
+      "revId": "e9c2b9db28aa6a938cf423a17ef43307f9f4b26e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
