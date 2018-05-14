@@ -16,6 +16,24 @@
       "revId": "e20f0c4938f8f03467944ed0e71c0feb130e95f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b9a222_c6b81712",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-14T19:18:07Z",
+      "side": 0,
+      "message": "Code is simpler. Having StartParse doesn\u0027t gain us anything that I can see. The extra indirection through ParseContent() just makes it an extra hop to figure out what\u0027s going on.",
+      "parentUuid": "97a54d73_433ffde3",
+      "revId": "e20f0c4938f8f03467944ed0e71c0feb130e95f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
