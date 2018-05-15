@@ -64,6 +64,9 @@ declare_args() {
 
   # Don't build against bundled libpng.
   use_system_libpng = false
+
+  # Don't build against bundled icuuc.
+  use_system_icuuc = false
 }
 
 if (pdf_use_skia && pdf_use_skia_paths) {

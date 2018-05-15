@@ -356,6 +356,23 @@ group("lcms2") {
   }
 }
 
+if (use_system_icuuc) {
+  pkg_config("icuuc_from_pkgconfig") {
+    defines = [ "USE_SYSTEM_ICUUC" ]
+    packages = [ "icu-uc" ]
+  }
+}
+
+group("icuuc") {
+  if (use_system_icuuc) {
+    public_configs = [ ":icuuc_from_pkgconfig" ]
+  } else {
+    public_deps = [
+      "//third_party/icu:icuuc",
+    ]
+  }
+}
+
 config("fx_libopenjpeg_warnings") {
   visibility = [ ":*" ]
   if (is_win) {

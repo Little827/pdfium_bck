@@ -924,8 +924,8 @@ jumbo_static_library("fxcrt") {
   ]
   public_deps = [
     ":freetype_common",
+    "third_party:icuuc",
     "third_party:pdfium_base",
-    "//third_party/icu:icuuc",
   ]
 
   if (pdf_enable_xfa) {
@@ -2119,7 +2119,7 @@ if (pdf_enable_xfa) {
       "xfa/fxfa/fm2js/cxfa_fmtojavascriptdepth.h",
     ]
     deps = [
-      "//third_party/icu:icuuc",
+      "third_party:icuuc",
     ]
     configs += [
       ":pdfium_core_config",
