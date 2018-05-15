@@ -7,6 +7,7 @@
 #include "core/fxcrt/fx_bidi.h"
 
 #include <algorithm>
+#include <limits>
 
 #include "core/fxcrt/fx_unicode.h"
 #include "third_party/base/ptr_util.h"
@@ -531,8 +532,12 @@ class CFX_BidiLine {
   }
 
   void Position(std::vector<CFX_Char>* chars, size_t iCount) {
-    for (size_t i = 0; i < iCount; ++i)
+    for (size_t i = 0; i < iCount; ++i) {
+      if ((*chars)[i].m_iBidiPos > std::numeric_limits<uint16_t>::max())
+        continue;
+
       (*chars)[(*chars)[i].m_iBidiPos].m_iBidiOrder = i;
+    }
   }
 };
 
