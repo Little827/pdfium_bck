@@ -35,6 +35,24 @@
       "revId": "8f97a4901e43cd6411b2405a22d6de0d6508b636",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "780265d9_0aa2564f",
+        "filename": "fxbarcode/datamatrix/BC_ASCIIEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-15T00:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd0bf06_df365cd6",
+      "revId": "8f97a4901e43cd6411b2405a22d6de0d6508b636",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
