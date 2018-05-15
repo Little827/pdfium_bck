@@ -167,10 +167,10 @@ bool CPDF_Creator::WriteStream(const CPDF_Object* pStream,
   CPDF_Encryptor encryptor(pCrypto, objnum, encoder.GetData(),
                            encoder.GetSize());
   if (static_cast<uint32_t>(encoder.GetDict()->GetIntegerFor("Length")) !=
-      encryptor.GetSize()) {
+      encryptor.GetSpan().size()) {
     encoder.CloneDict();
     encoder.GetClonedDict()->SetNewFor<CPDF_Number>(
-        "Length", static_cast<int>(encryptor.GetSize()));
+        "Length", static_cast<int>(encryptor.GetSpan().size()));
   }
 
   if (!WriteDirectObj(objnum, encoder.GetDict(), true) ||
@@ -179,8 +179,9 @@ bool CPDF_Creator::WriteStream(const CPDF_Object* pStream,
   }
 
   // Allow for empty streams.
-  if (encryptor.GetSize() > 0 &&
-      !m_Archive->WriteBlock(encryptor.GetData(), encryptor.GetSize())) {
+  if (encryptor.GetSpan().size() > 0 &&
+      !m_Archive->WriteBlock(encryptor.GetSpan().data(),
+                             encryptor.GetSpan().size())) {
     return false;
   }
 
@@ -228,7 +229,8 @@ bool CPDF_Creator::WriteDirectObj(uint32_t objnum,
                                reinterpret_cast<const uint8_t*>(str.c_str()),
                                str.GetLength());
       ByteString content = PDF_EncodeString(
-          ByteString(encryptor.GetData(), encryptor.GetSize()), bHex);
+          ByteString(encryptor.GetSpan().data(), encryptor.GetSpan().size()),
+          bHex);
       if (!m_Archive->WriteString(content.AsStringView()))
         return false;
       break;
@@ -238,14 +240,15 @@ bool CPDF_Creator::WriteDirectObj(uint32_t objnum,
       CPDF_Encryptor encryptor(GetCryptoHandler(), objnum, encoder.GetData(),
                                encoder.GetSize());
       if (static_cast<uint32_t>(encoder.GetDict()->GetIntegerFor("Length")) !=
-          encryptor.GetSize()) {
+          encryptor.GetSpan().size()) {
         encoder.CloneDict();
         encoder.GetClonedDict()->SetNewFor<CPDF_Number>(
-            "Length", static_cast<int>(encryptor.GetSize()));
+            "Length", static_cast<int>(encryptor.GetSpan().size()));
       }
       if (!WriteDirectObj(objnum, encoder.GetDict(), true) ||
           !m_Archive->WriteString("stream\r\n") ||
-          !m_Archive->WriteBlock(encryptor.GetData(), encryptor.GetSize()) ||
+          !m_Archive->WriteBlock(encryptor.GetSpan().data(),
+                                 encryptor.GetSpan().size()) ||
           !m_Archive->WriteString("\r\nendstream")) {
         return false;
       }
