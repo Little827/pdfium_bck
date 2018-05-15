@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "341f67cd_125ef014",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-15T18:28:53Z",
+      "side": 1,
+      "message": "Don\u0027t you want min_exponent10 and man_exponent10?",
+      "range": {
+        "startLine": 76,
+        "startChar": 52,
+        "endLine": 76,
+        "endChar": 64
+      },
+      "revId": "8b7f9b421300e8d6b1ca8b88db4236295bf3f8d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
