@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c08ece6_e07c4e1e",
+        "filename": "testing/resources/javascript/bug_679642.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-15T18:24:44Z",
+      "side": 1,
+      "message": "These probably need carriage returns.",
+      "revId": "43f4d3b4bfca1ce463e5584ebfcf3940c9cd71bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b669adce_7669810c",
+        "filename": "testing/resources/javascript/bug_679642.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-15T18:24:44Z",
+      "side": 1,
+      "message": "Needs streamlen.",
+      "revId": "43f4d3b4bfca1ce463e5584ebfcf3940c9cd71bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
