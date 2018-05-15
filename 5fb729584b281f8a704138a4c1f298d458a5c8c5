@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b95085ee_bd600b3e",
+        "filename": "testing/resources/javascript/app_beep.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-15T16:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b3ef5b_3577ceb3",
+      "revId": "5fb729584b281f8a704138a4c1f298d458a5c8c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e9f8b01_ed204446",
         "filename": "testing/resources/javascript/app_beep.in",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5fb729584b281f8a704138a4c1f298d458a5c8c5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0569f07_e6f7aada",
+        "filename": "testing/resources/javascript/app_beep.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-15T16:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9f8b01_ed204446",
+      "revId": "5fb729584b281f8a704138a4c1f298d458a5c8c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
