@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b114bd78_aaf2867b",
+        "filename": "testing/resources/javascript/bug_679642.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-15T18:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c08ece6_e07c4e1e",
+      "revId": "43f4d3b4bfca1ce463e5584ebfcf3940c9cd71bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b669adce_7669810c",
         "filename": "testing/resources/javascript/bug_679642.in",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "43f4d3b4bfca1ce463e5584ebfcf3940c9cd71bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "336d5205_4d819032",
+        "filename": "testing/resources/javascript/bug_679642.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-15T18:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b669adce_7669810c",
+      "revId": "43f4d3b4bfca1ce463e5584ebfcf3940c9cd71bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

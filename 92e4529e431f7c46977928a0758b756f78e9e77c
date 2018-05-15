@@ -16,6 +16,24 @@
       "revId": "92e4529e431f7c46977928a0758b756f78e9e77c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f98234e_d153c033",
+        "filename": "testing/resources/javascript/bug_679642.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-15T18:36:39Z",
+      "side": 1,
+      "message": "crap.  thanks.",
+      "parentUuid": "66372424_e92e679c",
+      "revId": "92e4529e431f7c46977928a0758b756f78e9e77c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
