@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "46f61e10_339aa0f3",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-15T17:02:06Z",
+      "side": 1,
+      "message": "Followup. Let\u0027s keep this as, mostly, the moves for now and then do the refactoring later.",
+      "parentUuid": "ba162dc5_71b61b24",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 17
+      },
+      "revId": "54e9a48537445b9e4eb60d052c93ca111b8ff971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a57b5d6_02317875",
         "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "54e9a48537445b9e4eb60d052c93ca111b8ff971",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e7e4455_d4bfa728",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-15T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a57b5d6_02317875",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 20
+      },
+      "revId": "54e9a48537445b9e4eb60d052c93ca111b8ff971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
