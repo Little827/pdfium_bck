@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1526493294 -0700\nnonce ACQuaLBc6plQdQ2S2R639ILHp4zsF0o/HQyhmwVf84rzIleQixB6crHK5JKeqKAUVKcbcWAs9JrT\n\n0000000000000000000000000000000000000000 5343f2acf91ccbcfe7502ee8f2b9cc689a89b267 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlr8cG4ACgkQqzYtYVpm\n/XsNZggAlzIJADxcmV2qOCWw6nAcgcj5yciTB0Q+Lfkk08KEQZ5S1X8b0W1RqSam\nnZeZ0EOyuT/YWYdGaY9s1u6HxMX9KGeRC609LWVFuIL3klsAtt+rTsDjcJPlzetA\n81VWmTp1uDtxGo5HWsgHmMcb23SxkRplbmryvhe7RdoDvFDvklP6KLVAiU5yoh0/\nIjiKQzCYRIVsP3YBqz0VEQ+pAq4OhNtEc5l11yOvF78wab0GsxY1/6pMZ6XZGurP\nU36Zb2x2nTRs6I+MXTqdyzOZGLrKloLtYf7PXy9kthZ35SQu1aetqgriwdeMslIP\nu35+DK3khbDgebIsi3ZxSrTju+guzA\u003d\u003d\n\u003dWktd\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa1c11e8_519fd775",
+        "filename": "core/fxcodec/codec/fx_codec_fax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-16T18:00:01Z",
+      "side": 1,
+      "message": "This replaces 3 checks against |bit| with 1.",
+      "revId": "5343f2acf91ccbcfe7502ee8f2b9cc689a89b267",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }

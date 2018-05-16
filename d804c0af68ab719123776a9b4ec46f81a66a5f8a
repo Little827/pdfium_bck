@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "490a0abf_e3f72432",
+        "filename": "core/fxcodec/codec/fx_codec_fax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-16T18:00:01Z",
+      "side": 0,
+      "message": "This is just |OneLeadPos| reversed.",
+      "revId": "d804c0af68ab719123776a9b4ec46f81a66a5f8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4778136d_eabfdc0a",
+        "filename": "core/fxcodec/codec/fx_codec_fax.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-16T18:00:01Z",
+      "side": 0,
+      "message": "This effectively means \"don\u0027t access OneLeadPos[0] or ZeroLeadPos[255]\", so it is the same as checking: data !\u003d skip.",
+      "revId": "d804c0af68ab719123776a9b4ec46f81a66a5f8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
