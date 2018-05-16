@@ -34,6 +34,24 @@
       "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca7c3df_11134272",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-16T15:36:31Z",
+      "side": 1,
+      "message": "Some stages don\u0027t repeat because they don\u0027t need too. The ones that repeat need to repeat. We don\u0027t pause after the non-repeating ones as I don\u0027t think it matters that much. I\u0027m more worried about getting into a long loop that doing something fairly quick. So, I pause after the things that can take a long time.",
+      "parentUuid": "a91bc08b_df0a1075",
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
