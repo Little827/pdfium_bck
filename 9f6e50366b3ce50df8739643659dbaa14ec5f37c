@@ -52,6 +52,24 @@
       "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36a6485_432c57c0",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-16T15:49:12Z",
+      "side": 1,
+      "message": "It\u0027s weird that the logic of whether they repeat or not is present both here in ::Continue and inside the stage method. It\u0027s duplicated logic.",
+      "parentUuid": "aca7c3df_11134272",
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
