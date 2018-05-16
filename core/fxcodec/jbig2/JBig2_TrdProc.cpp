@@ -182,31 +182,33 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeHuffman(
       if (TRANSPOSED == 0) {
         switch (REFCORNER) {
           case JBIG2_CORNER_TOPLEFT:
-            SBREG->ComposeFrom(SI, TI, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), SI, TI, SBCOMBOP);
             break;
           case JBIG2_CORNER_TOPRIGHT:
-            SBREG->ComposeFrom(SI - WI + 1, TI, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), SI - WI + 1, TI, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMLEFT:
-            SBREG->ComposeFrom(SI, TI - HI + 1, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), SI, TI - HI + 1, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMRIGHT:
-            SBREG->ComposeFrom(SI - WI + 1, TI - HI + 1, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), SI - WI + 1, TI - HI + 1,
+                                 SBCOMBOP);
             break;
         }
       } else {
         switch (REFCORNER) {
           case JBIG2_CORNER_TOPLEFT:
-            SBREG->ComposeFrom(TI, SI, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), TI, SI, SBCOMBOP);
             break;
           case JBIG2_CORNER_TOPRIGHT:
-            SBREG->ComposeFrom(TI - WI + 1, SI, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), TI - WI + 1, SI, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMLEFT:
-            SBREG->ComposeFrom(TI, SI - HI + 1, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), TI, SI - HI + 1, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMRIGHT:
-            SBREG->ComposeFrom(TI - WI + 1, SI - HI + 1, IBI.Get(), SBCOMBOP);
+            IBI.Get()->ComposeTo(SBREG.get(), TI - WI + 1, SI - HI + 1,
+                                 SBCOMBOP);
             break;
         }
       }
@@ -382,31 +384,33 @@ std::unique_ptr<CJBig2_Image> CJBig2_TRDProc::DecodeArith(
       if (TRANSPOSED == 0) {
         switch (REFCORNER) {
           case JBIG2_CORNER_TOPLEFT:
-            SBREG->ComposeFrom(SI, TI, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), SI, TI, SBCOMBOP);
             break;
           case JBIG2_CORNER_TOPRIGHT:
-            SBREG->ComposeFrom(SI - WI + 1, TI, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), SI - WI + 1, TI, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMLEFT:
-            SBREG->ComposeFrom(SI, TI - HI + 1, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), SI, TI - HI + 1, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMRIGHT:
-            SBREG->ComposeFrom(SI - WI + 1, TI - HI + 1, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), SI - WI + 1, TI - HI + 1,
+                                  SBCOMBOP);
             break;
         }
       } else {
         switch (REFCORNER) {
           case JBIG2_CORNER_TOPLEFT:
-            SBREG->ComposeFrom(TI, SI, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), TI, SI, SBCOMBOP);
             break;
           case JBIG2_CORNER_TOPRIGHT:
-            SBREG->ComposeFrom(TI - WI + 1, SI, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), TI - WI + 1, SI, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMLEFT:
-            SBREG->ComposeFrom(TI, SI - HI + 1, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), TI, SI - HI + 1, SBCOMBOP);
             break;
           case JBIG2_CORNER_BOTTOMRIGHT:
-            SBREG->ComposeFrom(TI - WI + 1, SI - HI + 1, pIBI.Get(), SBCOMBOP);
+            pIBI.Get()->ComposeTo(pIBI.Get(), TI - WI + 1, SI - HI + 1,
+                                  SBCOMBOP);
             break;
         }
       }
