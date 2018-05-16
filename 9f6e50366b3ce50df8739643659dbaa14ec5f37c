@@ -88,6 +88,64 @@
       "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3cc7b8e_38293a8c",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-16T16:14:11Z",
+      "side": 1,
+      "message": "What I don\u0027t like about it is how each method can return some states as \"next\" and not others, and the contract for that is embedded in the order they are called here and whether they are wrapped in a loop or not...\n\nI wish we could use coroutines here.\n\nBut fine, I think having the explicit order of the stage here is a positive trade-off.",
+      "parentUuid": "3685d197_776ef853",
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18cab3cb_4c34d249",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-16T16:14:11Z",
+      "side": 1,
+      "message": "You can remove this.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b3c6f83_ef5279a2",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-16T16:14:11Z",
+      "side": 1,
+      "message": "For a follow-up. We should probably store somewhere that an error happened. How do we know that, currently?",
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
