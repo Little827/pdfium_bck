@@ -24,9 +24,8 @@ class CFXJSEngineEmbedderTest : public JSEmbedderTest {
   void ExecuteInCurrentContext(const WideString& script) {
     auto* current_engine =
         CFXJS_Engine::EngineFromIsolateCurrentContext(isolate());
-    FXJSErr error;
-    int sts = current_engine->Execute(script, &error);
-    EXPECT_EQ(0, sts);
+    WideString sts = current_engine->Execute(script);
+    EXPECT_EQ(L"", sts);
   }
   void CheckAssignmentInCurrentContext(double expected) {
     auto* current_engine =

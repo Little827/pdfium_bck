@@ -43,12 +43,6 @@ enum FXJSOBJTYPE {
   FXJSOBJTYPE_GLOBAL,       // The global object itself (may only appear once).
 };
 
-struct FXJSErr {
-  const wchar_t* message;
-  const wchar_t* srcline;
-  unsigned linnum;
-};
-
 class FXJS_PerIsolateData {
  public:
   ~FXJS_PerIsolateData();
@@ -128,7 +122,7 @@ class CFXJS_Engine : public CFX_V8 {
   void ReleaseEngine();
 
   // Called after FXJS_InitializeEngine call made.
-  int Execute(const WideString& script, FXJSErr* perror);
+  WideString Execute(const WideString& script);
 
   v8::Local<v8::Object> GetThisObj();
   v8::Local<v8::Object> NewFXJSBoundObject(int nObjDefnID,

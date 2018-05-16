@@ -48,18 +48,17 @@ bool CJS_EventContext::RunScript(const WideString& script, WideString* info) {
   }
 
   WideString sErrorMessage;
-  int nRet = 0;
   if (script.GetLength() > 0)
-    nRet = m_pRuntime->ExecuteScript(script.c_str(), &sErrorMessage);
+    sErrorMessage = m_pRuntime->ExecuteScript(script.c_str());
 
-  if (nRet < 0)
+  if (!sErrorMessage.IsEmpty())
     *info += sErrorMessage;
   else
     *info = JSGetStringFromID(JSMessage::kRunSuccess);
 
   m_pRuntime->RemoveEventFromSet(event);
   m_pEventHandler->Destroy();
-  return nRet >= 0;
+  return sErrorMessage.IsEmpty();
 }
 
 void CJS_EventContext::OnApp_Init() {
