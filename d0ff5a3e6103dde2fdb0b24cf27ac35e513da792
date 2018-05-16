@@ -140,6 +140,30 @@
       "revId": "d0ff5a3e6103dde2fdb0b24cf27ac35e513da792",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "451c8f5c_f02f1862",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T19:10:16Z",
+      "side": 1,
+      "message": "actually, it does have GetLineNumber(), I saw only the methods about the character position within the script.  So it does have what we want after all.  Oops.",
+      "parentUuid": "722077e1_44fe3f2d",
+      "range": {
+        "startLine": 536,
+        "startChar": 46,
+        "endLine": 536,
+        "endChar": 56
+      },
+      "revId": "d0ff5a3e6103dde2fdb0b24cf27ac35e513da792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
