@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac24fdb4_837a16d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T16:46:31Z",
+      "side": 1,
+      "message": "nit: ah, return as a noun.  I parsed it as a verb in my tiny head.  How about:\n\nMake CJS_Runtime::ExecuteScript return string value.",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "d0ff5a3e6103dde2fdb0b24cf27ac35e513da792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb5f6bad_4f78aceb",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T16:46:31Z",
+      "side": 1,
+      "message": "Not happy about overloading an emtpy string value to mean \"no error\".\nOptional\u003cWideString\u003e seems wrong, too, since the !has_value() case is success.  Maybe std::pair\u003cbool, WideString\u003e return? Maybe add |bool m_success| to FXJSErr, and tweak its fields to hold PDFium strings, and then just\n\nFXJSErr CFXJS_Engine::Execute(const WideString\u0026 script)",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 11
+      },
+      "revId": "d0ff5a3e6103dde2fdb0b24cf27ac35e513da792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
