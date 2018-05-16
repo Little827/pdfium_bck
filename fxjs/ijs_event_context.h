@@ -9,6 +9,8 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
+#include "fxjs/cfxjs_error.h"
+#include "third_party/base/optional.h"
 
 class CPDF_Bookmark;
 class CPDF_FormField;
@@ -22,7 +24,7 @@ class IJS_EventContext {
  public:
   virtual ~IJS_EventContext() {}
 
-  virtual bool RunScript(const WideString& script, WideString* info) = 0;
+  virtual Optional<CFXJS_Error> RunScript(const WideString& script) = 0;
 
   virtual void OnApp_Init() = 0;
 

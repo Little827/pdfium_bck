@@ -1214,6 +1214,8 @@ jumbo_static_library("fxjs") {
       "fxjs/cfx_v8.h",
       "fxjs/cfxjs_engine.cpp",
       "fxjs/cfxjs_engine.h",
+      "fxjs/cfxjs_error.cpp",
+      "fxjs/cfxjs_error.h",
       "fxjs/cjs_annot.cpp",
       "fxjs/cjs_annot.h",
       "fxjs/cjs_app.cpp",
