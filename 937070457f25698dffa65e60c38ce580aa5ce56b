@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0e293673_7f73ea45",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-16T21:13:26Z",
+      "side": 1,
+      "message": "apparently not ....",
+      "parentUuid": "76021b2b_a25622b3",
+      "range": {
+        "startLine": 535,
+        "startChar": 12,
+        "endLine": 535,
+        "endChar": 23
+      },
+      "revId": "937070457f25698dffa65e60c38ce580aa5ce56b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "014afeb1_3ded532c",
         "filename": "fxjs/cfxjs_engine.cpp",
         "patchSetId": 4
@@ -68,6 +92,30 @@
       "revId": "937070457f25698dffa65e60c38ce580aa5ce56b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e80611a_98e614b1",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-16T21:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "014afeb1_3ded532c",
+      "range": {
+        "startLine": 547,
+        "startChar": 10,
+        "endLine": 547,
+        "endChar": 11
+      },
+      "revId": "937070457f25698dffa65e60c38ce580aa5ce56b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "fab5e575_c0236cf5",
+        "filename": "fxjs/cfxjs_engine.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-16T21:13:26Z",
+      "side": 1,
+      "message": "IJS_EventContext is not defined in the ijs_runtime header.",
+      "parentUuid": "3cf3e128_2696daad",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "937070457f25698dffa65e60c38ce580aa5ce56b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a313e547_d14d24fe",
         "filename": "fxjs/ijs_runtime.h",
         "patchSetId": 4
@@ -105,6 +177,30 @@
       "writtenOn": "2018-05-16T20:46:37Z",
       "side": 1,
       "message": "nit: maybe ErrorMessage sounds better?",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "937070457f25698dffa65e60c38ce580aa5ce56b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d950a98_92fc758c",
+        "filename": "fxjs/ijs_runtime.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-16T21:13:26Z",
+      "side": 1,
+      "message": "It isn\u0027t just an error message, it\u0027s a message plus some extra context. I think Error makes sense in this case.",
+      "parentUuid": "a313e547_d14d24fe",
       "range": {
         "startLine": 29,
         "startChar": 10,
