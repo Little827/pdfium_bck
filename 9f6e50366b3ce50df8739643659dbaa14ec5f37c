@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "454cceca_b91910ec",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-16T16:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18cab3cb_4c34d249",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b3c6f83_ef5279a2",
         "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
         "patchSetId": 1
@@ -143,6 +167,24 @@
       "writtenOn": "2018-05-16T16:14:11Z",
       "side": 1,
       "message": "For a follow-up. We should probably store somewhere that an error happened. How do we know that, currently?",
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af1a9110_845d1ab6",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-16T16:20:23Z",
+      "side": 1,
+      "message": "As far as I can tell, we don\u0027t care. Nothing looks for any error handling .... So, until we have a usage for the error flag I\u0027m going to skip it.",
+      "parentUuid": "0b3c6f83_ef5279a2",
       "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
