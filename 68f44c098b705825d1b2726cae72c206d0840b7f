@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1526506887 -0700\nnonce ACQuaLAju5yxdPO1fOCgOqvz4te2SS+hqfniaYez+JHWH0xkU2/yg47J9HKQ6eUUy3jbHCZzxvmy\n\n0000000000000000000000000000000000000000 68f44c098b705825d1b2726cae72c206d0840b7f refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlr8pYcACgkQqzYtYVpm\n/XvgmAf/We8xcV+0S/WSafCu4rfXL0yuSljJAEZWYKgOl+5o5SUDKZ3TjV+IE2fc\noEYL4QFuAcgyauB2W2bTu//YoBJ4JAioDMkQuJMXuLp17527aPtILWjZ93upl+iw\nHWN85kbBwXkHc2sKaEo543thjijExS9wdRqsWyls5YZImQF1tpLe9vEXyfdWzpbd\n9AOhQCIlizJRM0bxU2ZcgRBhev/hpMVUOqm3akgwRezAarVq64TpyXAhqm1UsLPV\nvKpy0Eatm0WLXep1G+xrh6QS9Gc7JU+4StmrAmiv1iuUkCxoEWzrCWMO+knGnd4F\nBE5U8Od8yoqlcW1pStQk0ZGiBeYztA\u003d\u003d\n\u003d7MWp\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d7e5ef3_309edcf4",
+        "filename": "core/fxcodec/jbig2/JBig2_TrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-16T21:58:40Z",
+      "side": 1,
+      "message": "Alternatively, this can be done separately.",
+      "revId": "68f44c098b705825d1b2726cae72c206d0840b7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
