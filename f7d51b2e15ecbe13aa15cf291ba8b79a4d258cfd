@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de40d6ed_6861e2e5",
+        "filename": "fxjs/cfxjs_error.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T19:12:23Z",
+      "side": 1,
+      "message": "Maybe this is class CFXJS_Engine::Error to avoid small files.",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "f7d51b2e15ecbe13aa15cf291ba8b79a4d258cfd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
