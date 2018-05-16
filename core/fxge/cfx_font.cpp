@@ -209,30 +209,7 @@ const uint8_t CFX_Font::s_WeightPow_SHIFTJIS[] = {
     59, 59, 59, 59, 59, 59, 59, 60, 60, 60, 60, 60, 60, 60, 60,
 };
 
-CFX_Font::CFX_Font()
-    :
-      m_Face(nullptr),
-      m_FaceCache(nullptr),
-      m_pFontData(nullptr),
-      m_pGsubData(nullptr),
-      m_dwSize(0),
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
-      m_pPlatformFont(nullptr),
-#endif
-      m_bEmbedded(false),
-      m_bVertical(false) {
-}
-
-#ifdef PDF_ENABLE_XFA
-void CFX_Font::SetFace(FXFT_Face face) {
-  ClearFaceCache();
-  m_Face = face;
-}
-
-void CFX_Font::SetSubstFont(std::unique_ptr<CFX_SubstFont> subst) {
-  m_pSubstFont = std::move(subst);
-}
-#endif  // PDF_ENABLE_XFA
+CFX_Font::CFX_Font() = default;
 
 CFX_Font::~CFX_Font() {
   if (m_Face) {
@@ -247,6 +224,17 @@ CFX_Font::~CFX_Font() {
   ReleasePlatformResource();
 #endif
 }
+
+#ifdef PDF_ENABLE_XFA
+void CFX_Font::SetFace(FXFT_Face face) {
+  ClearFaceCache();
+  m_Face = face;
+}
+
+void CFX_Font::SetSubstFont(std::unique_ptr<CFX_SubstFont> subst) {
+  m_pSubstFont = std::move(subst);
+}
+#endif  // PDF_ENABLE_XFA
 
 void CFX_Font::DeleteFace() {
   ClearFaceCache();
@@ -271,8 +259,8 @@ void CFX_Font::LoadSubst(const ByteString& face_name,
       face_name, bTrueType, flags, weight, italic_angle, CharsetCP,
       m_pSubstFont.get());
   if (m_Face) {
-    m_pFontData = FXFT_Get_Face_Stream_Base(m_Face);
-    m_dwSize = FXFT_Get_Face_Stream_Size(m_Face);
+    m_pFontData = pdfium::make_span(FXFT_Get_Face_Stream_Base(m_Face),
+                                    FXFT_Get_Face_Stream_Size(m_Face));
   }
 }
 
@@ -313,13 +301,13 @@ uint32_t CFX_Font::GetGlyphWidth(uint32_t glyph_index) {
   return EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face), horiAdvance);
 }
 
-bool CFX_Font::LoadEmbedded(const uint8_t* data, uint32_t size) {
-  std::vector<uint8_t> temp(data, data + size);
-  m_pFontDataAllocation.swap(temp);
-  m_Face = FT_LoadFont(m_pFontDataAllocation.data(), size);
-  m_pFontData = m_pFontDataAllocation.data();
+bool CFX_Font::LoadEmbedded(pdfium::span<const uint8_t> data) {
+  m_pFontDataAllocation =
+      std::vector<uint8_t>(std::begin(data), std::end(data));
+  m_Face =
+      FT_LoadFont(m_pFontDataAllocation.data(), m_pFontDataAllocation.size());
+  m_pFontData = m_pFontDataAllocation;
   m_bEmbedded = true;
-  m_dwSize = size;
   return !!m_Face;
 }
 
