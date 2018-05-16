@@ -45,6 +45,29 @@
       "revId": "d0ff5a3e6103dde2fdb0b24cf27ac35e513da792",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722077e1_44fe3f2d",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T16:58:54Z",
+      "side": 1,
+      "message": "v8::TryCatch::Message() will return information about where the error occurred in the script if we want to fillout an FXJSErr-like structure; naturally, the fields it contains are almost useless for determining a line number as we\u0027d like to report ...",
+      "range": {
+        "startLine": 536,
+        "startChar": 46,
+        "endLine": 536,
+        "endChar": 56
+      },
+      "revId": "d0ff5a3e6103dde2fdb0b24cf27ac35e513da792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
