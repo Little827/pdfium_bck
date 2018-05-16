@@ -52,6 +52,24 @@
       "revId": "cd440c463f48af1704f093380a5713e1f13788c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39cb9d45_9f780e1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-05-16T16:08:59Z",
+      "side": 1,
+      "message": "Sorry, I did local git commit --amend, then git cl upload and forgot to verify it shows up here. Fixed now.",
+      "parentUuid": "2386ae87_28864a50",
+      "revId": "cd440c463f48af1704f093380a5713e1f13788c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
