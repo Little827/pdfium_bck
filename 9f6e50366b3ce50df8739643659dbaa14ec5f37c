@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5920b3e3_399d7db2",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-16T15:31:06Z",
+      "side": 1,
+      "message": "I find this harder to understand unrolled like this than with a while/switch structure. Specifically, it\u0027s weird that:\n- Some stages cannot repeat themselves because they are inside an if, not a while. If the stage method returns itself, we\u0027ll hit an assert that doesn\u0027t make it clear that it was forbidden.\n- There is no pause after these stages.",
+      "revId": "9f6e50366b3ce50df8739643659dbaa14ec5f37c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
