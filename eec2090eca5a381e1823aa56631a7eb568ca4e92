@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62b792ee_8467a443",
+        "filename": "core/fxcodec/jbig2/JBig2_HuffmanTable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-16T21:57:45Z",
+      "side": 1,
+      "message": "FX_ArraySize(kHuffmanTables)",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "eec2090eca5a381e1823aa56631a7eb568ca4e92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a08c73_18fb9ae3",
+        "filename": "core/fxcodec/jbig2/JBig2_HuffmanTable.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-16T21:57:45Z",
+      "side": 1,
+      "message": "Surprised this works.",
+      "revId": "eec2090eca5a381e1823aa56631a7eb568ca4e92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
