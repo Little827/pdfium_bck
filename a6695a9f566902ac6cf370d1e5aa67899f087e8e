@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03a8a17e_0b511d56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5540
+      },
+      "writtenOn": "2018-05-16T17:29:37Z",
+      "side": 1,
+      "message": "Nit: 0 -\u003e nullptr",
+      "revId": "a6695a9f566902ac6cf370d1e5aa67899f087e8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21aaa850_e0fcca18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5540
+      },
+      "writtenOn": "2018-05-16T17:29:37Z",
+      "side": 1,
+      "message": "Nit: \"...will only exit, with no...\"",
+      "revId": "a6695a9f566902ac6cf370d1e5aa67899f087e8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e5207f_21eea62c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5540
+      },
+      "writtenOn": "2018-05-16T17:29:37Z",
+      "side": 1,
+      "message": "Nit: \"is a\"",
+      "revId": "a6695a9f566902ac6cf370d1e5aa67899f087e8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
