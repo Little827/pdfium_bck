@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 
 #include <iterator>
 #include <map>
@@ -338,6 +339,15 @@ bool ParseCommandLine(const std::vector<std::string>& args,
         fprintf(stderr, "Failed to expand --font-dir, %s\n", path.c_str());
         return false;
       }
+
+      struct stat sb;
+      if (stat(expanded_path.value().c_str(), &sb) != 0 ||
+          !S_ISDIR(sb.st_mode)) {
+        fprintf(stderr, "--font-dir, %s, appears to not be a directory\n",
+                path.c_str());
+        return false;
+      }
+
       options->font_directory = expanded_path.value();
 
 #ifdef _WIN32
