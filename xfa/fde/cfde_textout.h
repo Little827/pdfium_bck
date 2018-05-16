@@ -84,7 +84,8 @@ class CFDE_TextOut {
   bool RetrieveLineWidth(CFX_BreakType dwBreakStatus,
                          float* pStartPos,
                          float* pWidth,
-                         float* pHeight);
+                         float* pHeight,
+                         const WideString& str);
   void LoadText(const WideString& str, const CFX_RectF& rect);
 
   void Reload(const CFX_RectF& rect);

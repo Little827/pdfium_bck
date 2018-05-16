@@ -138,22 +138,24 @@ void CFX_RTFBreak::AppendChar_Combination(CFX_Char* pCurChar) {
   int32_t iCharWidthValid = iCharWidth.ValueOrDefault(0);
   pCurChar->m_iCharWidth = iCharWidthValid;
   if (iCharWidthValid > 0)
-    m_pCurLine->m_iWidth += iCharWidthValid;
+    m_pCurLine->IncreaseWidth(iCharWidthValid);
 }
 
 void CFX_RTFBreak::AppendChar_Tab(CFX_Char* pCurChar) {
   if (!(m_dwLayoutStyles & FX_LAYOUTSTYLE_ExpandTab))
     return;
 
-  int32_t& iLineWidth = m_pCurLine->m_iWidth;
-  int32_t iCharWidth = iLineWidth;
+  // int32_t& iLineWidth = m_pCurLine->GetWidth();
+  auto savedCurLine = m_pCurLine;
+  int32_t iCharWidth = savedCurLine->GetWidth();
   if (GetPositionedTab(&iCharWidth))
-    iCharWidth -= iLineWidth;
+    iCharWidth -= savedCurLine->GetWidth();
   else
-    iCharWidth = m_iTabWidth * (iLineWidth / m_iTabWidth + 1) - iLineWidth;
+    iCharWidth = m_iTabWidth * (savedCurLine->GetWidth() / m_iTabWidth + 1) -
+                 savedCurLine->GetWidth();
 
   pCurChar->m_iCharWidth = iCharWidth;
-  iLineWidth += iCharWidth;
+  savedCurLine->IncreaseWidth(iCharWidth);
 }
 
 CFX_BreakType CFX_RTFBreak::AppendChar_Control(CFX_Char* pCurChar) {
@@ -188,7 +190,7 @@ CFX_BreakType CFX_RTFBreak::AppendChar_Arabic(CFX_Char* pCurChar) {
       m_eCharType <= FX_CHARTYPE_ArabicDistortion) {
     pLastChar = GetLastChar(1, false, true);
     if (pLastChar) {
-      m_pCurLine->m_iWidth -= pLastChar->m_iCharWidth;
+      m_pCurLine->IncreaseWidth(-pLastChar->m_iCharWidth);
       CFX_Char* pPrevChar = GetLastChar(2, false, true);
       wForm = pdfium::arabic::GetFormChar(pLastChar, pPrevChar, pCurChar);
       bAlef = (wForm == 0xFEFF &&
@@ -208,7 +210,7 @@ CFX_BreakType CFX_RTFBreak::AppendChar_Arabic(CFX_Char* pCurChar) {
 
       int iCharWidthValid = iCharWidth.ValueOrDefault(0);
       pLastChar->m_iCharWidth = iCharWidthValid;
-      m_pCurLine->m_iWidth += iCharWidthValid;
+      m_pCurLine->IncreaseWidth(iCharWidthValid);
       iCharWidth = 0;
     }
   }
@@ -230,7 +232,7 @@ CFX_BreakType CFX_RTFBreak::AppendChar_Arabic(CFX_Char* pCurChar) {
 
   int iCharWidthValid = iCharWidth.ValueOrDefault(0);
   pCurChar->m_iCharWidth = iCharWidthValid;
-  m_pCurLine->m_iWidth += iCharWidthValid;
+  m_pCurLine->IncreaseWidth(iCharWidthValid);
   m_pCurLine->m_iArabicChars++;
 
   if (m_pCurLine->GetLineEnd() > m_iLineWidth + m_iTolerance)
@@ -255,7 +257,7 @@ CFX_BreakType CFX_RTFBreak::AppendChar_Others(CFX_Char* pCurChar) {
 
   int iCharWidthValid = iCharWidth.ValueOrDefault(0);
   pCurChar->m_iCharWidth = iCharWidthValid;
-  m_pCurLine->m_iWidth += iCharWidthValid;
+  m_pCurLine->IncreaseWidth(iCharWidthValid);
   if (chartype != FX_CHARTYPE_Space &&
       m_pCurLine->GetLineEnd() > m_iLineWidth + m_iTolerance) {
     return EndBreak(CFX_BreakType::Line);
@@ -474,7 +476,7 @@ void CFX_RTFBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
 void CFX_RTFBreak::EndBreak_Alignment(const std::deque<FX_TPO>& tpos,
                                       bool bAllChars,
                                       CFX_BreakType dwStatus) {
-  int32_t iNetWidth = m_pCurLine->m_iWidth;
+  int32_t iNetWidth = m_pCurLine->GetWidth();
   int32_t iGapChars = 0;
   bool bFind = false;
   for (auto it = tpos.rbegin(); it != tpos.rend(); it++) {
@@ -670,8 +672,8 @@ void CFX_RTFBreak::SplitTextLine(CFX_BreakLine* pCurLine,
       std::vector<CFX_Char>(curChars.begin() + iCharPos, curChars.end());
   curChars.erase(curChars.begin() + iCharPos, curChars.end());
   pNextLine->m_iStart = pCurLine->m_iStart;
-  pNextLine->m_iWidth = pCurLine->GetLineEnd() - iEndPos;
-  pCurLine->m_iWidth = iEndPos;
+  pNextLine->SetWidth(pCurLine->GetLineEnd() - iEndPos);
+  pCurLine->SetWidth(iEndPos);
   curChars[iCharPos - 1].m_nBreakType = FX_LBT_UNKNOWN;
 
   for (size_t i = 0; i < pNextLine->m_LineChars.size(); ++i) {

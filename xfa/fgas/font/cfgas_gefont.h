@@ -7,6 +7,8 @@
 #ifndef XFA_FGAS_FONT_CFGAS_GEFONT_H_
 #define XFA_FGAS_FONT_CFGAS_GEFONT_H_
 
+#include <csignal>
+#include <iostream>
 #include <map>
 #include <memory>
 #include <utility>
@@ -19,6 +21,8 @@
 #include "xfa/fgas/font/cfgas_pdffontmgr.h"
 
 class CFX_UnicodeEncoding;
+
+static int m_iii = 0;
 
 class CFGAS_GEFont : public Retainable {
  public:
@@ -38,7 +42,7 @@ class CFGAS_GEFont : public Retainable {
       CFGAS_FontMgr* pFontMgr);
 
   uint32_t GetFontStyles() const;
-  bool GetCharWidth(wchar_t wUnicode, int32_t* pWidth);
+  bool GetCharWidth(wchar_t wUnicode, int32_t* pWidth, bool print=false);
   int32_t GetGlyphIndex(wchar_t wUnicode);
   int32_t GetAscent() const;
   int32_t GetDescent() const;
@@ -50,7 +54,11 @@ class CFGAS_GEFont : public Retainable {
   CFX_Font* GetDevFont() const { return m_pFont; }
 
   void SetFontProvider(CFGAS_PDFFontMgr* pProvider) {
+    m_iii++;
+    std::cerr << (void*)this << " SetFontProvider " << (void*)pProvider << std::endl;
     m_pProvider.Reset(pProvider);
+    if (m_iii >= 4)
+      raise(SIGSEGV);
   }
 
   void SetLogicalFontStyle(uint32_t dwLogFontStyle) {

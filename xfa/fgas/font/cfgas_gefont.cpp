@@ -6,6 +6,8 @@
 
 #include "xfa/fgas/font/cfgas_gefont.h"
 
+#include <csignal>
+#include <iostream>
 #include <memory>
 #include <utility>
 
@@ -155,8 +157,15 @@ uint32_t CFGAS_GEFont::GetFontStyles() const {
   return dwStyles;
 }
 
-bool CFGAS_GEFont::GetCharWidth(wchar_t wUnicode, int32_t* pWidth) {
+bool CFGAS_GEFont::GetCharWidth(wchar_t wUnicode, int32_t* pWidth, bool print) {
   auto it = m_CharWidthMap.find(wUnicode);
+  if (print) {
+    if (it != m_CharWidthMap.end()) {
+      // std::cerr << "GetCharWidth it->second " << it->second << std::endl;
+    } else {
+      // std::cerr << "GetCharWidth not found in map " << wUnicode << std::endl;
+    }
+  }
   *pWidth = it != m_CharWidthMap.end() ? it->second : 0;
   if (*pWidth == 65535)
     return false;
@@ -180,6 +189,24 @@ bool CFGAS_GEFont::GetCharWidth(wchar_t wUnicode, int32_t* pWidth) {
     } else {
       *pWidth = -1;
     }
+    if (wUnicode == 32) {
+      if (!m_pProvider) {
+        std::cerr << (void*)this << " !provider " << std::endl;
+      } else {
+        std::cerr << (void*)this << " !provider->GetCharWidth *pWidth " << std::endl;
+      }
+    }
+  } else {
+    if (wUnicode == 32)
+      std::cerr << (void*)this << " provider && provider->GetCharWidth *pWidth " << *pWidth << std::endl;
+  }
+  if (wUnicode == 32) {
+    static int counter = 0;
+    counter++;
+    std::cerr << (void*)this << " m_CharWidthMap[" << wUnicode << "] = " << *pWidth << std::endl;
+    // if (counter >= 5) {
+    //   raise(SIGSEGV);
+    // }
   }
   m_CharWidthMap[wUnicode] = *pWidth;
   return *pWidth > 0;

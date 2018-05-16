@@ -7,6 +7,7 @@
 #include "xfa/fde/cfde_textout.h"
 
 #include <algorithm>
+#include <iostream>
 #include <utility>
 
 #include "core/fxcrt/fx_coordinates.h"
@@ -229,12 +230,12 @@ void CFDE_TextOut::CalcLogicSize(const WideString& str, CFX_RectF* pRect) {
     }
     dwBreakStatus = m_pTxtBreak->AppendChar(wch);
     if (!CFX_BreakTypeNoneOrPiece(dwBreakStatus))
-      RetrieveLineWidth(dwBreakStatus, &fStartPos, &fWidth, &fHeight);
+      RetrieveLineWidth(dwBreakStatus, &fStartPos, &fWidth, &fHeight, str);
   }
 
   dwBreakStatus = m_pTxtBreak->EndBreak(CFX_BreakType::Paragraph);
   if (!CFX_BreakTypeNoneOrPiece(dwBreakStatus))
-    RetrieveLineWidth(dwBreakStatus, &fStartPos, &fWidth, &fHeight);
+    RetrieveLineWidth(dwBreakStatus, &fStartPos, &fWidth, &fHeight, str);
 
   m_pTxtBreak->Reset();
   float fInc = pRect->Height() - fHeight;
@@ -254,7 +255,11 @@ void CFDE_TextOut::CalcLogicSize(const WideString& str, CFX_RectF* pRect) {
 bool CFDE_TextOut::RetrieveLineWidth(CFX_BreakType dwBreakStatus,
                                      float* pStartPos,
                                      float* pWidth,
-                                     float* pHeight) {
+                                     float* pHeight,
+                                     const WideString& str) {
+  if (str == L"Western Sahara")
+    std::cerr << "CFDE_TextOut::RetrieveLineWidth(" << *pStartPos << ")"
+              << std::endl;
   if (CFX_BreakTypeNoneOrPiece(dwBreakStatus))
     return false;
 
@@ -263,6 +268,10 @@ bool CFDE_TextOut::RetrieveLineWidth(CFX_BreakType dwBreakStatus,
   for (int32_t i = 0; i < m_pTxtBreak->CountBreakPieces(); i++) {
     const CFX_BreakPiece* pPiece = m_pTxtBreak->GetBreakPieceUnstable(i);
     fLineWidth += static_cast<float>(pPiece->m_iWidth) / 20000.0f;
+    if (str == L"Western Sahara")
+      std::cerr << "  fLineWidth += [i=" << i << "] "
+                << (static_cast<float>(pPiece->m_iWidth) / 20000.0f)
+                << ", now is " << fLineWidth << std::endl;
     *pStartPos = std::min(*pStartPos,
                           static_cast<float>(pPiece->m_iStartPos) / 20000.0f);
   }
@@ -272,8 +281,14 @@ bool CFDE_TextOut::RetrieveLineWidth(CFX_BreakType dwBreakStatus,
     m_pTxtBreak->Reset();
   if (!m_Styles.line_wrap_ && dwBreakStatus == CFX_BreakType::Line) {
     *pWidth += fLineWidth;
+    if (str == L"Western Sahara")
+      std::cerr << "  *pWidth += fLineWidth " << fLineWidth << ", now is "
+                << *pWidth << std::endl;
   } else {
     *pWidth = std::max(*pWidth, fLineWidth);
+    if (str == L"Western Sahara")
+      std::cerr << "  *pWidth = max(itself, fLineWidth " << fLineWidth
+                << "), now is " << *pWidth << std::endl;
     *pHeight += fLineStep;
   }
   ++m_iTotalLines;

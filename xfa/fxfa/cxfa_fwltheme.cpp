@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/cxfa_fwltheme.h"
 
+#include <iostream>
+
 #include "core/fxcrt/fx_codepage.h"
 #include "xfa/fde/cfde_textout.h"
 #include "xfa/fgas/font/cfgas_gefont.h"
@@ -228,7 +230,13 @@ CFX_SizeF CXFA_FWLTheme::GetSpaceAboveBelow(CFWL_ThemePart* pThemePart) const {
 }
 
 void CXFA_FWLTheme::CalcTextRect(CFWL_ThemeText* pParams, CFX_RectF* pRect) {
+  if (pParams->m_wsText == L"Western Sahara")
+    std::cerr << "  CXFA_FWLTheme::CalcTextRect "
+              << (int)pParams->m_pWidget->GetClassID() << std::endl;
   if (pParams->m_pWidget->GetClassID() == FWL_Type::MonthCalendar) {
+    if (pParams->m_wsText == L"Western Sahara")
+      std::cerr << "FWL_Type::MonthCalendar! "
+                << (int)pParams->m_pWidget->GetClassID() << std::endl;
     CXFA_FFWidget* pWidget = XFA_ThemeGetOuterWidget(pParams->m_pWidget);
     if (!pWidget || !pParams || !m_pTextOut)
       return;
@@ -239,6 +247,16 @@ void CXFA_FWLTheme::CalcTextRect(CFWL_ThemeText* pParams, CFX_RectF* pRect) {
     m_pTextOut->SetAlignment(pParams->m_iTTOAlign);
     m_pTextOut->SetStyles(pParams->m_dwTTOStyles);
     m_pTextOut->CalcLogicSize(pParams->m_wsText, pRect);
+
+    // duplicated starts
+    pWidget = XFA_ThemeGetOuterWidget(pParams->m_pWidget);
+    if (!pWidget)
+      return;
+
+    CXFA_Node* pNode = pWidget->GetNode();
+    m_pTextOut->SetFont(pNode->GetFDEFont(pWidget->GetDoc()));
+    // m_pTextOut->CalcLogicSize(pParams->m_wsText, pRect);
+
     return;
   }
 
@@ -255,7 +273,13 @@ void CXFA_FWLTheme::CalcTextRect(CFWL_ThemeText* pParams, CFX_RectF* pRect) {
 
   m_pTextOut->SetAlignment(pParams->m_iTTOAlign);
   m_pTextOut->SetStyles(pParams->m_dwTTOStyles);
+  if (pParams->m_wsText == L"Western Sahara")
+    std::cerr << "  BEFORE CalcLogicSize(" << pParams->m_wsText << ") -> pRect "
+              << *pRect << std::endl;
   m_pTextOut->CalcLogicSize(pParams->m_wsText, pRect);
+  if (pParams->m_wsText == L"Western Sahara")
+    std::cerr << "  AFTER  CalcLogicSize(" << pParams->m_wsText << ") -> pRect "
+              << *pRect << std::endl;
 }
 
 CFWL_WidgetTP* CXFA_FWLTheme::GetTheme(CFWL_Widget* pWidget) const {
