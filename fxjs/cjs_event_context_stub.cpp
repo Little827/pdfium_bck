@@ -6,7 +6,7 @@
 
 #include "fxjs/cjs_event_context_stub.h"
 
-bool CJS_EventContextStub::RunScript(const WideString& script,
-                                     WideString* info) {
-  return false;
+Optional<CFXJS_Error> CJS_EventContextStub::RunScript(
+    const WideString& script) {
+  return {CFXJS_Error(1, 1, L"Not implemented in Stub context")};
 }
