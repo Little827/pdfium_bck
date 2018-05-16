@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1417740c_88745a5f",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "nit: maybe write it out since it isn\u0027t obvious that this is a v8::local of some flavor (4 places).",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 532,
+        "endChar": 9
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bebda91_6a826ce1",
+        "filename": "fxjs/cfxjs_engine_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "check return result.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9d3bad_530ab211",
+        "filename": "fxjs/cjs_event_context.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "nit: no {} and below.",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f196575_a4396b29",
+        "filename": "fxjs/cjs_event_context_stub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "nit: no {}",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ca98d8_c1ba9dad",
+        "filename": "fxjs/cjs_event_context_stub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "Maybe \"JavaScript support not present\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 71
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a9c18a5_f1b18c69",
+        "filename": "fxjs/cjs_runtime.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "Hmm. this doesn\u0027t seem that useful any more.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 8
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e507a37a_b41841ae",
+        "filename": "fxjs/cjs_runtimestub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "return pdfium::nullopt;",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d3900ac_2d5a012a",
+        "filename": "fxjs/ijs_runtime.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-16T21:22:16Z",
+      "side": 1,
+      "message": "nit:  Scoper IJS_Runtime:: not needed in this context.",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
