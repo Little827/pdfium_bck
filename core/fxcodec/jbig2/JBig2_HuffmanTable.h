@@ -13,13 +13,14 @@
 #include "core/fxcrt/fx_system.h"
 
 class CJBig2_BitStream;
+
+namespace {
 struct JBig2TableLine;
+}  // namespace
 
 class CJBig2_HuffmanTable {
  public:
-  CJBig2_HuffmanTable(const JBig2TableLine* pTable,
-                      uint32_t nLines,
-                      bool bHTOOB);
+  CJBig2_HuffmanTable(size_t idx);
   explicit CJBig2_HuffmanTable(CJBig2_BitStream* pStream);
   ~CJBig2_HuffmanTable();
 
