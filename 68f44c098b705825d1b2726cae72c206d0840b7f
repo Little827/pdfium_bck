@@ -17,6 +17,24 @@
       "revId": "68f44c098b705825d1b2726cae72c206d0840b7f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa769a37_74e0a3e9",
+        "filename": "core/fxcodec/jbig2/JBig2_TrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-17T15:05:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d7e5ef3_309edcf4",
+      "revId": "68f44c098b705825d1b2726cae72c206d0840b7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
