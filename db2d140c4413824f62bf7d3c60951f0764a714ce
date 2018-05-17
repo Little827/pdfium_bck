@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8c2c226f_d79a7992",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-17T18:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc56ebe_f34500c4",
+      "revId": "db2d140c4413824f62bf7d3c60951f0764a714ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3b2960_12761bad",
         "filename": "fpdfsdk/fpdf_editpath.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-17T18:12:49Z",
       "side": 1,
       "message": "Do we need this check?",
+      "revId": "db2d140c4413824f62bf7d3c60951f0764a714ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26518388_94a592ad",
+        "filename": "fpdfsdk/fpdf_editpath.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-17T18:18:13Z",
+      "side": 1,
+      "message": "Yes. The method also checks where the CPDF_Object-\u003eAsPath() does not return nullptr.",
+      "parentUuid": "3f3b2960_12761bad",
       "revId": "db2d140c4413824f62bf7d3c60951f0764a714ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
