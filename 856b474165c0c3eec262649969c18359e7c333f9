@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "eec2de98_7dd492dd",
+        "filename": "fxjs/cjs_runtime.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-17T13:43:36Z",
+      "side": 1,
+      "message": "Actually, can\u0027t easily be removed. ExecuteScript is the override from IJS_Runtime we use. Execute is defined in CFXJS_Engine. So, we need to proxy from the interface call where is used externally to the parent class Execute method.",
+      "parentUuid": "3ba23d6b_3e3f012c",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 8
+      },
+      "revId": "856b474165c0c3eec262649969c18359e7c333f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e507a37a_b41841ae",
         "filename": "fxjs/cjs_runtimestub.cpp",
         "patchSetId": 6
