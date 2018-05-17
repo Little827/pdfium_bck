@@ -47,6 +47,30 @@
       "revId": "3ff22c22dc0ce024663c6a222887e1b8a0121b89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843b9075_b0c852ea",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-17T07:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a6bcd12_f90ebf37",
+      "range": {
+        "startLine": 197,
+        "startChar": 13,
+        "endLine": 197,
+        "endChar": 16
+      },
+      "revId": "3ff22c22dc0ce024663c6a222887e1b8a0121b89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
