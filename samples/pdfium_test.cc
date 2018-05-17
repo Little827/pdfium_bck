@@ -67,6 +67,14 @@
 #include <wordexp.h>
 #endif  // WORDEXP_AVAILABLE
 
+// For checking if a path is directory, use PathIsDirectory on Windows and stat
+// everywhere else.
+#ifdef _WIN32
+#include "Shlwapi.h"
+#else
+#include <sys/stat.h>
+#endif  // _WIN32
+
 enum OutputFormat {
   OUTPUT_NONE,
   OUTPUT_STRUCTURE,
@@ -325,7 +333,7 @@ bool ParseCommandLine(const std::vector<std::string>& args,
         return false;
       }
       options->output_format = OUTPUT_SKP;
-#endif
+#endif  // PDF_ENABLE_SKIA
     } else if (cur_arg.size() > 11 &&
                cur_arg.compare(0, 11, "--font-dir=") == 0) {
       if (!options->font_directory.empty()) {
@@ -336,6 +344,18 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       auto expanded_path = ExpandDirectoryPath(path);
       if (!expanded_path) {
         fprintf(stderr, "Failed to expand --font-dir, %s\n", path.c_str());
+        return false;
+      }
+
+#ifdef _WIN32
+      if (!PathIsDirectory(expanded_path)) {
+#else
+      struct stat sb;
+      if (stat(expanded_path.value().c_str(), &sb) != 0 ||
+          !S_ISDIR(sb.st_mode)) {
+#endif  // _WIN32
+        fprintf(stderr, "--font-dir, %s, appears to not be a directory\n",
+                path.c_str());
         return false;
       }
       options->font_directory = expanded_path.value();
