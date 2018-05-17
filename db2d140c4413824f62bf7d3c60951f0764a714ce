@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fc56ebe_f34500c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-17T18:12:49Z",
+      "side": 1,
+      "message": "swap line 10 and 11?",
+      "revId": "db2d140c4413824f62bf7d3c60951f0764a714ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f3b2960_12761bad",
+        "filename": "fpdfsdk/fpdf_editpath.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-17T18:12:49Z",
+      "side": 1,
+      "message": "Do we need this check?",
+      "revId": "db2d140c4413824f62bf7d3c60951f0764a714ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
