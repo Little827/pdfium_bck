@@ -16,6 +16,24 @@
       "revId": "93ebded5d74fd4ba6118e338bcac644fa43347f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9dbccd9_62a634d0",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-17T15:03:20Z",
+      "side": 1,
+      "message": "yeah... Windows, why do you have to be the odd one out? Obviously we should just move to using C++17, since that has an OS agnostic call to check if directory :-D",
+      "parentUuid": "be3ff078_ca5b0a71",
+      "revId": "93ebded5d74fd4ba6118e338bcac644fa43347f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
