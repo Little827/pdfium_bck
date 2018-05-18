@@ -30,10 +30,10 @@ void IJS_Runtime::Destroy() {
 // static
 std::unique_ptr<IJS_Runtime> IJS_Runtime::Create(
     CPDFSDK_FormFillEnvironment* pFormFillEnv) {
-#ifdef PDF_ENABLE_V8
-  if (pFormFillEnv->IsJSPlatformPresent())
-    return pdfium::MakeUnique<CJS_Runtime>(pFormFillEnv);
-#endif
+// #ifdef PDF_ENABLE_V8
+//   if (pFormFillEnv->IsJSPlatformPresent())
+//     return pdfium::MakeUnique<CJS_Runtime>(pFormFillEnv);
+// #endif
   return pdfium::MakeUnique<CJS_RuntimeStub>(pFormFillEnv);
 }
 

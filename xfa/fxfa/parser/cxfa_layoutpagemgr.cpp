@@ -183,6 +183,9 @@ CXFA_Node* ResolveBreakTarget(CXFA_Node* pPageSetRoot,
         wsProcessedTarget = wsExpr.Mid(4, wsExpr.GetLength() - 5);
       }
       XFA_RESOLVENODE_RS rs;
+      if (!pDocument->GetScriptContext())
+        return nullptr;
+
       bool iRet = pDocument->GetScriptContext()->ResolveObjects(
           pPageSetRoot, wsProcessedTarget.AsStringView(), &rs,
           XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |

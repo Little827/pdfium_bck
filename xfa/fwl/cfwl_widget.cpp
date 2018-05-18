@@ -7,6 +7,7 @@
 #include "xfa/fwl/cfwl_widget.h"
 
 #include <algorithm>
+#include <iostream>
 #include <utility>
 #include <vector>
 
@@ -45,6 +46,7 @@ CFWL_Widget::CFWL_Widget(const CFWL_App* app,
       m_pLayoutItem(nullptr),
       m_nEventKey(0),
       m_pDelegate(nullptr) {
+  std::cerr << "CFWL_Widget::CFWL_Widget" << std::endl;
   ASSERT(m_pWidgetMgr);
 
   CFWL_Widget* pParent = m_pProperties->m_pParent;

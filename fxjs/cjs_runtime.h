@@ -66,6 +66,7 @@ class CJS_Runtime : public IJS_Runtime,
   void SetFormFillEnvToDocument();
 
   std::vector<std::unique_ptr<CJS_EventContext>> m_EventContextArray;
+  std::unique_ptr<IJS_EventContext> m_pContext;
   CPDFSDK_FormFillEnvironment::ObservedPtr m_pFormFillEnv;
   bool m_bBlocking;
   bool m_isolateManaged;

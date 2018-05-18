@@ -104,13 +104,13 @@ bool CPDFXFA_Context::LoadXFADoc() {
     return false;
   }
 
-  CJS_Runtime* actual_runtime = GetCJSRuntime();  // Null if a stub.
-  if (!actual_runtime) {
-    SetLastError(FPDF_ERR_XFALOAD);
-    return false;
-  }
+  // CJS_Runtime* actual_runtime = GetCJSRuntime();  // Null if a stub.
+  // if (!actual_runtime) {
+  //   SetLastError(FPDF_ERR_XFALOAD);
+  //   return false;
+  // }
 
-  m_pXFADoc->GetXFADoc()->InitScriptContext(actual_runtime);
+  // m_pXFADoc->GetXFADoc()->InitScriptContext(actual_runtime);
   if (m_pXFADoc->GetFormType() == FormType::kXFAFull)
     m_FormType = FormType::kXFAFull;
   else
