@@ -41,7 +41,7 @@ class CJBig2_GRRDProc {
                                     uint32_t* lines,
                                     uint32_t w,
                                     uint32_t h,
-                                    int bVal);
+                                    bool bVal);
 
   std::unique_ptr<CJBig2_Image> DecodeTemplate0Opt(
       CJBig2_ArithDecoder* pArithDecoder,
