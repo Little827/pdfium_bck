@@ -74,26 +74,17 @@ bool CJBig2_Image::IsValidImageSize(int32_t w, int32_t h) {
          h <= JBIG2_MAX_IMAGE_SIZE;
 }
 
-int CJBig2_Image::GetPixel(int32_t x, int32_t y) const {
-  if (!m_pData)
-    return 0;
-
-  if (x < 0 || x >= m_nWidth)
-    return 0;
-
-  if (y < 0 || y >= m_nHeight)
-    return 0;
+bool CJBig2_Image::GetPixel(int32_t x, int32_t y) const {
+  if (!m_pData || x < 0 || x >= m_nWidth || y < 0 || y >= m_nHeight)
+    return false;
 
   int32_t m = y * m_nStride + (x >> 3);
-  int32_t n = x & 7;
-  return ((data()[m] >> (7 - n)) & 1);
+  int32_t n = 7 - (x & 7);
+  return !!((data()[m] >> n) & 1);
 }
 
-void CJBig2_Image::SetPixel(int32_t x, int32_t y, int v) {
-  if (!m_pData)
-    return;
-
-  if (x < 0 || x >= m_nWidth || y < 0 || y >= m_nHeight)
+void CJBig2_Image::SetPixel(int32_t x, int32_t y, bool v) {
+  if (!m_pData || x < 0 || x >= m_nWidth || y < 0 || y >= m_nHeight)
     return;
 
   int32_t m = y * m_nStride + (x >> 3);

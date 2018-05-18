@@ -25,12 +25,9 @@ std::unique_ptr<CJBig2_Image> CJBig2_HTRDProc::DecodeArith(
       for (uint32_t ng = 0; ng < HGW; ++ng) {
         int32_t x = (HGX + mg * HRY + ng * HRX) >> 8;
         int32_t y = (HGY + mg * HRX - ng * HRY) >> 8;
-        if ((x + HPW <= 0) | (x >= static_cast<int32_t>(HBW)) | (y + HPH <= 0) |
-            (y >= static_cast<int32_t>(HPH))) {
-          HSKIP->SetPixel(ng, mg, 1);
-        } else {
-          HSKIP->SetPixel(ng, mg, 0);
-        }
+        bool bVal = ((x + HPW <= 0) | (x >= static_cast<int32_t>(HBW)) |
+                     (y + HPH <= 0) | (y >= static_cast<int32_t>(HPH)));
+        HSKIP->SetPixel(ng, mg, bVal);
       }
     }
   }
