@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0bdea8d_1929d785",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-18T00:54:04Z",
+      "side": 1,
+      "message": "Can we use FX_ArraySize(kHuffmanTables) somehow?",
+      "revId": "2cac5ba70d2857af1a1c5c246d4ef5b83cb91ac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37698e6_89dcf882",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-18T00:54:04Z",
+      "side": 1,
+      "message": "Break this into 2 ASSERT() statements, so if something fails, one can easily see which condition failed.",
+      "revId": "2cac5ba70d2857af1a1c5c246d4ef5b83cb91ac3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
