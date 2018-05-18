@@ -602,6 +602,10 @@ void CXFA_FFDocView::RunBindItems() {
 
     CFXJSE_Engine* pScriptContext =
         pWidgetNode->GetDocument()->GetScriptContext();
+
+    if (!pScriptContext)
+      return;
+
     WideString wsRef = item->GetRef();
     uint32_t dwStyle = XFA_RESOLVENODE_Children | XFA_RESOLVENODE_Properties |
                        XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent |

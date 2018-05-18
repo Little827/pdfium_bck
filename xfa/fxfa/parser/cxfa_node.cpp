@@ -2290,6 +2290,8 @@ std::pair<int32_t, bool> CXFA_Node::ExecuteBoolScript(
 
   CXFA_FFDoc* pDoc = docView->GetDoc();
   CFXJSE_Engine* pContext = pDoc->GetXFADoc()->GetScriptContext();
+  if (!pContext)
+    return {XFA_EVENTERROR_Disabled, false};
   pContext->SetEventParam(*pEventParam);
   pContext->SetRunAtType(script->GetRunAt());
 
