@@ -148,6 +148,8 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
       HandleToCPDFSDKEnvironment(hHandle);
   if (!pFormFillEnv)
     return;
+#else   // PDF_ENABLE_XFA
+  CPDF_Document* pPDFDoc = pPage->GetDocument();
 #endif  // PDF_ENABLE_XFA
 
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
@@ -176,19 +178,20 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
       options.SetColorMode(CPDF_RenderOptions::kGray);
 
     options.SetDrawAnnots(flags & FPDF_ANNOT);
-
-#ifdef PDF_ENABLE_XFA
     options.SetOCContext(
         pdfium::MakeRetain<CPDF_OCContext>(pPDFDoc, CPDF_OCContext::View));
-    if (CPDFSDK_PageView* pPageView = pFormFillEnv->GetPageView(pPage, true))
-      pPageView->PageView_OnDraw(pDevice.get(), &matrix, &options, rect);
+
+#ifdef PDF_ENABLE_XFA
+    const FX_RECT* pRect = &rect;
+    CPDFSDK_PageView* pPageView = pFormFillEnv->GetPageView(pPage, true);
 #else   // PDF_ENABLE_XFA
-    options.SetOCContext(pdfium::MakeRetain<CPDF_OCContext>(
-        pPage->GetDocument(), CPDF_OCContext::View));
-    if (CPDFSDK_PageView* pPageView =
-            FormHandleToPageView(hHandle, FPDFPageFromUnderlying(pPage)))
-      pPageView->PageView_OnDraw(pDevice.get(), &matrix, &options);
+    const FX_RECT* pRect = nullptr;
+    CPDFSDK_PageView* pPageView =
+        FormHandleToPageView(hHandle, FPDFPageFromUnderlying(pPage));
 #endif  // PDF_ENABLE_XFA
+
+    if (pPageView)
+      pPageView->PageView_OnDraw(pDevice.get(), &matrix, &options, pRect);
   }
 #ifdef _SKIA_SUPPORT_PATHS_
   pDevice->Flush(true);
