@@ -601,6 +601,18 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   return true;
 }
 
+RetainPtr<CPDF_Page> CPDF_Document::GetOrCreatePDFPage(
+    CPDF_Dictionary* pPageDict) {
+  uint32_t objnum = pPageDict->GetObjNum();
+  if (m_PageMap[objnum])
+    return RetainPtr<CPDF_Page>(m_PageMap[objnum].Get());
+
+  auto pPage = pdfium::MakeRetain<CPDF_Page>(this, pPageDict, true);
+  pPage->ParseContent();
+  m_PageMap[objnum].Reset(pPage.Get());
+  return pPage;
+}
+
 void CPDF_Document::DeletePage(int iPage) {
   CPDF_Dictionary* pPages = GetPagesDict();
   if (!pPages)
