@@ -162,12 +162,10 @@ class CPDF_FormField {
   bool IsOptionSelected(int iOptIndex) const;
 
   bool SelectOption(int iOptIndex, bool bSelected, bool bNotify = false);
-
   bool ClearSelectedOptions(bool bNotify = false);
 
 #ifdef PDF_ENABLE_XFA
   bool ClearOptions(bool bNotify = false);
-
   int InsertOption(WideString csOptLabel, int index = -1, bool bNotify = false);
 #endif  // PDF_ENABLE_XFA
 
