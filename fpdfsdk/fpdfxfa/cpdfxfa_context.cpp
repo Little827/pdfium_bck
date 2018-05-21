@@ -203,6 +203,10 @@ void CPDFXFA_Context::DeletePage(int page_index) {
     m_XFAPageList[page_index].Reset();
 }
 
+uint32_t CPDFXFA_Context::GetUserPermissions() const {
+  return 0xFFFFFFFF;
+}
+
 void CPDFXFA_Context::ClearChangeMark() {
   if (m_pFormFillEnv)
     m_pFormFillEnv->ClearChangeMark();
