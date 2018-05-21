@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40573d50_7eb12767",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-21T18:09:55Z",
+      "side": 1,
+      "message": "NOTE: comment below applies here as well.",
+      "range": {
+        "startLine": 969,
+        "startChar": 2,
+        "endLine": 969,
+        "endChar": 6
+      },
+      "revId": "bc29947adca240ba6b6876498c04a7781af7bf33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce4d47a2_323bad54",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-21T18:09:55Z",
+      "side": 1,
+      "message": "NOTE: comment below applies here, too.",
+      "range": {
+        "startLine": 1258,
+        "startChar": 7,
+        "endLine": 1258,
+        "endChar": 11
+      },
+      "revId": "bc29947adca240ba6b6876498c04a7781af7bf33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe2f5bc_6cb71ec9",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-21T18:09:55Z",
+      "side": 1,
+      "message": "Note: this call here is particularly unfortunate, in that we will re-layout the page, count it, and throw it away.  Down the road, refcnts should save a ton of work ...",
+      "range": {
+        "startLine": 1307,
+        "startChar": 2,
+        "endLine": 1307,
+        "endChar": 6
+      },
+      "revId": "bc29947adca240ba6b6876498c04a7781af7bf33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
