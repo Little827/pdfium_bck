@@ -8,6 +8,7 @@
 #define CORE_FPDFAPI_PARSER_CPDF_DOCUMENT_H_
 
 #include <functional>
+#include <map>
 #include <memory>
 #include <set>
 #include <utility>
@@ -63,6 +64,8 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   const CPDF_Dictionary* GetInfo() const { return m_pInfoDict.Get(); }
   CPDF_Dictionary* GetInfo() { return m_pInfoDict.Get(); }
 
+  RetainPtr<CPDF_Page> GetOrCreatePDFPage(CPDF_Dictionary* pPageDict,
+                                          bool bUseRenderCache);
   void DeletePage(int iPage);
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
@@ -166,6 +169,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   std::unique_ptr<JBig2_DocumentContext> m_pCodecContext;
   std::unique_ptr<CPDF_LinkList> m_pLinksContext;
   std::vector<uint32_t> m_PageList;  // Page number to page's dict objnum.
+  std::map<uint32_t, CPDF_Page::ObservedPtr> m_PageMap;  // Dict objnum to page.
   UnownedPtr<Extension> m_pExtension;
 };
 

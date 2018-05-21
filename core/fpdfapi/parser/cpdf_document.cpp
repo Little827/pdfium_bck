@@ -601,6 +601,14 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   return true;
 }
 
+RetainPtr<CPDF_Page> CPDF_Document::GetOrCreatePDFPage(
+    CPDF_Dictionary* pPageDict,
+    bool bUseRenderCache) {
+  auto pPage = pdfium::MakeRetain<CPDF_Page>(this, pPageDict, bUseRenderCache);
+  pPage->ParseContent();
+  return pPage;
+}
+
 void CPDF_Document::DeletePage(int iPage) {
   CPDF_Dictionary* pPages = GetPagesDict();
   if (!pPages)
