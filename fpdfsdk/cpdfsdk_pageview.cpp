@@ -76,12 +76,8 @@ CPDFSDK_PageView::~CPDFSDK_PageView() {
 
 void CPDFSDK_PageView::PageView_OnDraw(CFX_RenderDevice* pDevice,
                                        CFX_Matrix* pUser2Device,
-#ifdef PDF_ENABLE_XFA
                                        CPDF_RenderOptions* pOptions,
-                                       const FX_RECT& pClip) {
-#else
-                                       CPDF_RenderOptions* pOptions) {
-#endif  // PDF_ENABLE_XFA
+                                       const FX_RECT* pClip) {
   m_curMatrix = *pUser2Device;
 
 #ifdef PDF_ENABLE_XFA
@@ -91,9 +87,10 @@ void CPDFSDK_PageView::PageView_OnDraw(CFX_RenderDevice* pDevice,
 
   auto* pContext = static_cast<CPDFXFA_Context*>(pPage->GetDocumentExtension());
   if (pContext->GetFormType() == FormType::kXFAFull) {
-    CFX_RectF rectClip(
-        static_cast<float>(pClip.left), static_cast<float>(pClip.top),
-        static_cast<float>(pClip.Width()), static_cast<float>(pClip.Height()));
+    CFX_RectF rectClip(static_cast<float>(pClip->left),
+                       static_cast<float>(pClip->top),
+                       static_cast<float>(pClip->Width()),
+                       static_cast<float>(pClip->Height()));
 
     CXFA_Graphics gs(pDevice);
     gs.SetClipRect(rectClip);
