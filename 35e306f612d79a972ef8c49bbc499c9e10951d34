@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fece214a_ce48fc25",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-21T22:57:05Z",
+      "side": 1,
+      "message": "Actually, I\u0027m going to move the comment to the XFA virtual method impl.",
+      "parentUuid": "a278e497_4b3d83e3",
+      "revId": "35e306f612d79a972ef8c49bbc499c9e10951d34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79ada106_7c3c1c1d",
         "filename": "core/fxge/fx_font.h",
         "patchSetId": 6
