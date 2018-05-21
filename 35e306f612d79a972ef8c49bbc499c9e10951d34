@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79ada106_7c3c1c1d",
+        "filename": "core/fxge/fx_font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-21T22:16:44Z",
+      "side": 1,
+      "message": "NOTE: the bit flags above are defined by the spec, but these arent.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 7
+      },
+      "revId": "35e306f612d79a972ef8c49bbc499c9e10951d34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
