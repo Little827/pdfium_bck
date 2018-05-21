@@ -219,7 +219,6 @@ void CheckUnSupportError(CPDF_Document* pDoc, uint32_t err_code) {
   // Portfolios and Packages
   const CPDF_Dictionary* pRootDict = pDoc->GetRoot();
   if (pRootDict) {
-    ByteString cbString;
     if (pRootDict->KeyExist("Collection")) {
       RaiseUnSupportError(FPDF_UNSP_DOC_PORTABLECOLLECTION);
       return;
@@ -244,12 +243,7 @@ void CheckUnSupportError(CPDF_Document* pDoc, uint32_t err_code) {
         }
       }
     }
-  }
-
-  // SharedForm
-  const CPDF_Dictionary* pRoot = pDoc->GetRoot();
-  if (pRoot) {
-    CPDF_Stream* pStream = pRoot->GetStreamFor("Metadata");
+    CPDF_Stream* pStream = pRootDict->GetStreamFor("Metadata");
     if (pStream) {
       CPDF_Metadata metaData(pStream);
       for (const auto& err : metaData.CheckForSharedForm())
