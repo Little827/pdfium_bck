@@ -23,6 +23,30 @@
       "revId": "0a22b7ae89ae4de6d1c555f1e7a6cd65ccd0307b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b430d600_fada4cdd",
+        "filename": "core/fpdfapi/page/cpdf_shadingpattern.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T17:15:24Z",
+      "side": 1,
+      "message": "Reverted.",
+      "parentUuid": "ed9baefd_d512359e",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "0a22b7ae89ae4de6d1c555f1e7a6cd65ccd0307b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
