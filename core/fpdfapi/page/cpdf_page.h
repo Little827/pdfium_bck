@@ -27,9 +27,22 @@ class CPDF_Page : public CPDF_PageObjectHolder {
  public:
   class View {};  // Caller implements as desired, empty here due to layering.
 
-  // XFA page parent class, layering.
+  // Handle for embedder, also XFA page parent class.
   class Extension : public Retainable {
-    virtual CPDF_Document::Extension* GetDocumentExtension() const = 0;
+   public:
+    template <typename T, typename... Args>
+    friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
+    virtual CPDF_Document::Extension* GetDocumentExtension() const;
+
+    CPDF_Page* GetPDFPage() const { return m_pPDFPage.get(); }
+    void SetPDFPage(std::unique_ptr<CPDF_Page> pPage);
+
+   protected:
+    explicit Extension(std::unique_ptr<CPDF_Page> pPage);
+    ~Extension() override;
+
+    std::unique_ptr<CPDF_Page> m_pPDFPage;
   };
 
   CPDF_Page(CPDF_Document* pDocument,
