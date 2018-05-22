@@ -69,16 +69,31 @@ def _GetFunctionsFromPublicHeaders(src_path):
       functions.extend(_GetExportsFromHeader(public_path, filename))
   return functions
 
+def CheckSorted(functions):
+  sorted_functions = sorted(functions);
+  for i in range(0, len(functions) - 1):
+    if functions[i] > functions[i+1]
+      print ('Make sure %s is in alphabetical order within its file.'
+             % functions[i]);
+      return False
+  return True
 
 def _GetFunctionsFromTest(api_test_path):
   chk_regex = re.compile('^    CHK\((.*)\);\n$')
+  file_regex = re.compile('^    //.*\.h\n$')
   with open(api_test_path) as f:
     contents = f.readlines()
     functions = []
+    functions_in_file = []
     for line in contents:
+      if (file_regex.match(line))
+        assert CheckSorted(functions_in_file)
+        functions_in_file = []
       match = chk_regex.match(line)
       if match:
         functions.append(match.groups()[0])
+        functions_in_file.append(match.groups()[0])
+    assert CheckSorted(functions_in_file)
     return functions
 
 
