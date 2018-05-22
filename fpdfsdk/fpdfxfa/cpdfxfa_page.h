@@ -21,7 +21,7 @@ class CPDF_Dictionary;
 class CPDFXFA_Context;
 class CXFA_FFPageView;
 
-class CPDFXFA_Page : public CPDF_Page::Extension {
+class CPDFXFA_Page : public CPDF_Page::Handle {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
@@ -29,7 +29,8 @@ class CPDFXFA_Page : public CPDF_Page::Extension {
   bool LoadPage();
   bool LoadPDFPage(CPDF_Dictionary* pageDict);
 
-  // CPDF_Page::Extension:
+  // CPDF_Page::Handle:
+  CPDFXFA_Page* AsXFAPage() override;
   CPDF_Document::Extension* GetDocumentExtension() const override;
 
   int GetPageIndex() const { return m_iPageIndex; }

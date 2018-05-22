@@ -47,18 +47,9 @@ class CPDFXFA_Page;
 class CXFA_FFWidget;
 #endif  // PDF_ENABLE_XFA
 
-// Object types for public FPDF_ types; these correspond to next layer down
-// from fpdfsdk. For master, these are CPDF_ types, but for XFA, these are
-// CPDFXFA_ types.
-#ifndef PDF_ENABLE_XFA
-using UnderlyingPageType = CPDF_Page::Extension;
-#else   // PDF_ENABLE_XFA
-using UnderlyingPageType = CPDFXFA_Page;
-#endif  // PDF_ENABLE_XFA
-
 // Conversions to/from underlying types.
-UnderlyingPageType* UnderlyingFromFPDFPage(FPDF_PAGE page);
-FPDF_PAGE FPDFPageFromUnderlying(UnderlyingPageType* page);
+CPDF_Page::Handle* UnderlyingFromFPDFPage(FPDF_PAGE page);
+FPDF_PAGE FPDFPageFromUnderlying(CPDF_Page::Handle* page);
 CPDF_Page* CPDFPageFromFPDFPage(FPDF_PAGE page);
 FPDF_DOCUMENT FPDFDocumentFromCPDFDocument(CPDF_Document* doc);
 CPDF_Document* CPDFDocumentFromFPDFDocument(FPDF_DOCUMENT doc);
