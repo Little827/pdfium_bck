@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "898dd9e7_2da9d3a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-05-22T14:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e3afdbf_30504de5",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "349a5abd033560bdc35bac526b28634f4e67afda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e70b26f_1366feb4",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "30a67ff4_4087410a",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-05-22T14:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e70b26f_1366feb4",
+      "range": {
+        "startLine": 694,
+        "startChar": 2,
+        "endLine": 694,
+        "endChar": 0
+      },
+      "revId": "349a5abd033560bdc35bac526b28634f4e67afda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27151d1a_2495bd80",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-22T13:32:19Z",
       "side": 1,
       "message": "What happens if I pass in something which doesn\u0027t have a stroke width like an image?",
+      "range": {
+        "startLine": 695,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 26
+      },
+      "revId": "349a5abd033560bdc35bac526b28634f4e67afda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136dd23b_a18de5c1",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-05-22T14:11:50Z",
+      "side": 1,
+      "message": "My understanding is that a page object always has a graphic state and that always has a stroke width. So you can set and get a stroke width also for image (currently internally, after this patch also externally), though it won\u0027t affect the rendering result. If you don\u0027t set it and you get it, then you get the default \"1\".\n\nThat\u0027s what I would expect, but if wanted, I could limit the getter to paths, but then that would be inconsistent with the setter which works also on non-paths.",
+      "parentUuid": "27151d1a_2495bd80",
       "range": {
         "startLine": 695,
         "startChar": 0,
