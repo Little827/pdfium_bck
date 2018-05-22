@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 #include "core/fxcrt/cfx_bitstream.h"
-#include "core/fxcrt/fx_extension.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(fxcrt, BitStream) {
@@ -104,16 +103,4 @@ TEST(fxcrt, BitStream) {
   EXPECT_TRUE(bitstream.IsEOF());
   EXPECT_EQ(1063U, bitstream.GetPos());
   EXPECT_EQ(0U, bitstream.BitsRemaining());
-}
-
-TEST(fxcrt, BitStreamSameAsGetBit32) {
-  unsigned char kData[] = {0xDE, 0x3F, 0xB1, 0x7C, 0x12, 0x9A, 0x04, 0x56};
-  CFX_BitStream bitstream(kData);
-  for (uint32_t nbits = 1; nbits <= 32; ++nbits) {
-    for (size_t bitpos = 0; bitpos < sizeof(kData) * 8 - nbits; ++bitpos) {
-      bitstream.Rewind();
-      bitstream.SkipBits(bitpos);
-      EXPECT_EQ(bitstream.GetBits(nbits), GetBits32(kData, bitpos, nbits));
-    }
-  }
 }
