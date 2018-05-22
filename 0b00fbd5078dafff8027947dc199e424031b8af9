@@ -22,6 +22,30 @@
       "revId": "0b00fbd5078dafff8027947dc199e424031b8af9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f19e90a_32e25e30",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-22T17:11:31Z",
+      "side": 0,
+      "message": "We return a single object ref-counted 4 times rather than 4 unique objects. Either way, it takes 4 \"frees\" to clean up.",
+      "parentUuid": "f4933748_6dc5381a",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 31
+      },
+      "revId": "0b00fbd5078dafff8027947dc199e424031b8af9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
