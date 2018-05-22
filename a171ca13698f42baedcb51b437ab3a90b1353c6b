@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71193ab5_c67ea469",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T22:04:28Z",
+      "side": 1,
+      "message": "section?",
+      "range": {
+        "startLine": 12,
+        "startChar": 51,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70dbea73_eab7ad5b",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T22:04:28Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80544f84_ea0a4df2",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T22:04:28Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123d9ea7_b121c325",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T22:04:28Z",
+      "side": 1,
+      "message": "Be specific about which file.",
+      "range": {
+        "startLine": 77,
+        "startChar": 67,
+        "endLine": 77,
+        "endChar": 75
+      },
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846be289_5d2d65bd",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T22:04:28Z",
+      "side": 1,
+      "message": "Would it be slightly easier to gather a list of lists, and then process it later? Then you can do that inside main(), and not rely on asserts here.",
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
