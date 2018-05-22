@@ -74,6 +74,14 @@ CPDF_Page::CPDF_Page(CPDF_Document* pDocument,
 
 CPDF_Page::~CPDF_Page() {}
 
+CPDF_Page* CPDF_Page::AsPDFPage() {
+  return this;
+}
+
+CPDFXFA_Page* CPDF_Page::AsXFAPage() {
+  return nullptr;
+}
+
 bool CPDF_Page::IsPage() const {
   return true;
 }

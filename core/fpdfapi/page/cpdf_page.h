@@ -20,18 +20,39 @@
 class CPDF_Dictionary;
 class CPDF_Document;
 class CPDF_Object;
+class CPDF_Page;
 class CPDF_PageRenderCache;
 class CPDF_PageRenderContext;
 
-class CPDF_Page : public Retainable,
+// Small layering violation, incomplete type and always null if non-XFA.
+class CPDFXFA_Page;
+
+class IPDF_PageBase : public Retainable {
+ public:
+  virtual CPDF_Page* AsPDFPage() = 0;
+  virtual CPDFXFA_Page* AsXFAPage() = 0;
+};
+
+inline CPDF_Page* ToPDFPage(IPDF_PageBase* pBase) {
+  return pBase ? pBase->AsPDFPage() : nullptr;
+}
+
+inline CPDFXFA_Page* ToXFAPage(IPDF_PageBase* pBase) {
+  return pBase ? pBase->AsXFAPage() : nullptr;
+}
+
+class CPDF_Page : public IPDF_PageBase,
                   public Observable<CPDF_Page>,
                   public CPDF_PageObjectHolder {
  public:
   class View {};  // Caller implements as desired, empty here due to layering.
-  class Extension : public Retainable {};  // XFA page parent class, layering.
 
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
+  // IPDF_PageBase:
+  CPDF_Page* AsPDFPage() override;
+  CPDFXFA_Page* AsXFAPage() override;
 
   // CPDF_PageObjectHolder:
   bool IsPage() const override;
@@ -63,8 +84,6 @@ class CPDF_Page : public Retainable,
   CPDF_Document* GetPDFDocument() const { return m_pPDFDocument.Get(); }
   View* GetView() const { return m_pView.Get(); }
   void SetView(View* pView) { m_pView = pView; }
-  Extension* GetPageExtension() const { return m_pPageExtension.Get(); }
-  void SetPageExtension(Extension* pExt) { m_pPageExtension = pExt; }
 
  private:
   CPDF_Page(CPDF_Document* pDocument,
@@ -80,7 +99,6 @@ class CPDF_Page : public Retainable,
   CFX_SizeF m_PageSize;
   CFX_Matrix m_PageMatrix;
   UnownedPtr<CPDF_Document> m_pPDFDocument;
-  UnownedPtr<Extension> m_pPageExtension;
   std::unique_ptr<CPDF_PageRenderCache> m_pPageRender;
   std::unique_ptr<CPDF_PageRenderContext> m_pRenderContext;
   UnownedPtr<View> m_pView;

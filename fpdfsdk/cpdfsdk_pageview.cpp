@@ -36,8 +36,8 @@ CPDFSDK_PageView::CPDFSDK_PageView(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   CPDFSDK_InterForm* pInterForm = pFormFillEnv->GetInterForm();
   CPDF_InterForm* pPDFInterForm = pInterForm->GetInterForm();
 #ifdef PDF_ENABLE_XFA
-  if (page->GetPDFPage())
-    pPDFInterForm->FixPageFields(page->GetPDFPage());
+  if (page->AsPDFPage())
+    pPDFInterForm->FixPageFields(page->AsPDFPage());
 #else   // PDF_ENABLE_XFA
   pPDFInterForm->FixPageFields(page);
   m_page->SetView(this);
@@ -206,7 +206,7 @@ CPDF_Document* CPDFSDK_PageView::GetPDFDocument() {
 
 CPDF_Page* CPDFSDK_PageView::GetPDFPage() const {
 #ifdef PDF_ENABLE_XFA
-  return m_page ? m_page->GetPDFPage() : nullptr;
+  return m_page ? m_page->AsPDFPage() : nullptr;
 #else   // PDF_ENABLE_XFA
   return m_page;
 #endif  // PDF_ENABLE_XFA
