@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1527008777 -0700\nnonce ACQuaLD8CEUkHCU3Qt04zc68anuVNLAfQ3iq7SH4xlxe9As3CQPh5VS8RySZvKZfR3YIIuu/+LV4\n\n0000000000000000000000000000000000000000 8e2aba87270669318e581c33cac2d24d36cc9909 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003davoid-repeated-calculations-in-cfx-bitstream\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlsETgkACgkQqzYtYVpm\n/XuQSQf/anPZ0Xj7Qc7Dx68Fqmv8TarAuV3iIy9LWf+ncL1KPuD4Lut+29znLpDX\nLl5ZeZGPVhkLb+Xpe3bFIYckBn4/YRZTDz8beGJOIIVdNDPKd58GMXyzQI/wIB2o\ndeWENGvNyY1XTpQ9K9VahS6LiFTm0fqlCr56bQDW9NKA5x/cS1319yeBR2mL1pPX\nF/XplrKrLqABMv4QldRBwXvoyC0sZ+pRk0JbyTFhD6TSEP0hQRd47P74oe50VbC4\nScF2xx1OouHrqQDJGNXvIxwGAS+uEBMQFMfbWRivXGp20+1N2hyKcprAK5S1HsPQ\nq+XJ4Y0aTXurcYXMY7FrYAncwswFKA\u003d\u003d\n\u003dSTOr\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
