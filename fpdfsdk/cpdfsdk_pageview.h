@@ -23,7 +23,7 @@ class CPDF_RenderOptions;
 class CPDFSDK_PageView final : public CPDF_Page::View {
  public:
   CPDFSDK_PageView(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                   UnderlyingPageType* page);
+                   CPDF_Page::Handle* page);
   ~CPDFSDK_PageView();
 
 #ifdef PDF_ENABLE_XFA
@@ -51,8 +51,7 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   bool DeleteAnnot(CPDFSDK_Annot* pAnnot);
   CPDFSDK_Annot* AddAnnot(CXFA_FFWidget* pPDFAnnot);
   CPDFSDK_Annot* GetAnnotByXFAWidget(CXFA_FFWidget* hWidget);
-
-  CPDFXFA_Page* GetPDFXFAPage() { return m_page; }
+  CPDFXFA_Page* GetPDFXFAPage() { return ToXFAPage(m_page); }
 #endif  // PDF_ENABLE_XFA
 
   CPDF_Page* GetPDFPage() const;
@@ -119,8 +118,8 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
                   uint32_t nFlag);
 
   CFX_Matrix m_curMatrix;
-  RetainPtr<CPDF_Page::Extension> m_pOwnsPage;
-  UnderlyingPageType* const m_page;
+  RetainPtr<CPDF_Page::Handle> m_pOwnsPage;
+  CPDF_Page::Handle* const m_page;
   std::unique_ptr<CPDF_AnnotList> m_pAnnotList;
   std::vector<CPDFSDK_Annot*> m_SDKAnnotArray;
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;

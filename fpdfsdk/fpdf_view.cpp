@@ -358,24 +358,26 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
   auto pPage = pdfium::MakeUnique<CPDF_Page>(pDoc, pDict, true);
   pPage->ParseContent();
 
-  auto pExtension = pdfium::MakeRetain<CPDF_Page::Extension>(std::move(pPage));
+  auto pExtension = pdfium::MakeRetain<CPDF_Page::Handle>(std::move(pPage));
   return FPDFPageFromUnderlying(pExtension.Leak());
 #endif  // PDF_ENABLE_XFA
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageWidth(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  CPDF_Page::Handle* pPage = UnderlyingFromFPDFPage(page);
 #ifdef PDF_ENABLE_XFA
-  return pPage ? pPage->GetPageWidth() : 0.0;
+  CPDFXFA_Page* pXFAPage = ToXFAPage(pPage);
+  return pXFAPage ? pXFAPage->GetPageWidth() : 0.0;
 #else  // PDF_ENABLE_XFA
   return pPage ? pPage->GetPDFPage()->GetPageWidth() : 0.0;
 #endif  // PDF_ENABLE_XFA
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageHeight(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  CPDF_Page::Handle* pPage = UnderlyingFromFPDFPage(page);
 #ifdef PDF_ENABLE_XFA
-  return pPage ? pPage->GetPageHeight() : 0.0;
+  CPDFXFA_Page* pXFAPage = ToXFAPage(pPage);
+  return pXFAPage ? pXFAPage->GetPageHeight() : 0.0;
 #else  // PDF_ENABLE_XFA
   return pPage ? pPage->GetPDFPage()->GetPageHeight() : 0.0;
 #endif  // PDF_ENABLE_XFA
@@ -733,12 +735,12 @@ FPDF_EXPORT FPDF_RECORDER FPDF_CALLCONV FPDF_RenderPageSkp(FPDF_PAGE page,
 #endif
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  CPDF_Page::Handle* pPage = UnderlyingFromFPDFPage(page);
   if (!page)
     return;
 
   // Take it back across the API and hold for duration of function.
-  RetainPtr<CPDF_Page::Extension> holder;
+  RetainPtr<CPDF_Page::Handle> holder;
   holder.Unleak(pPage);
 
 #ifndef PDF_ENABLE_XFA
@@ -793,11 +795,11 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
   if (!page || !page_x || !page_y)
     return false;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  CPDF_Page::Handle* pPage = UnderlyingFromFPDFPage(page);
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
 #ifdef PDF_ENABLE_XFA
-  Optional<CFX_PointF> pos =
-      pPage->DeviceToPage(rect, rotate, CFX_PointF(device_x, device_y));
+  Optional<CFX_PointF> pos = pPage->AsXFAPage()->DeviceToPage(
+      rect, rotate, CFX_PointF(device_x, device_y));
 #else   // PDF_ENABLE_XFA
   Optional<CFX_PointF> pos = pPage->GetPDFPage()->DeviceToPage(
       rect, rotate, CFX_PointF(device_x, device_y));
@@ -823,12 +825,13 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
   if (!page || !device_x || !device_y)
     return false;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  CPDF_Page::Handle* pPage = UnderlyingFromFPDFPage(page);
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
   CFX_PointF page_point(static_cast<float>(page_x), static_cast<float>(page_y));
 
 #ifdef PDF_ENABLE_XFA
-  Optional<CFX_PointF> pos = pPage->PageToDevice(rect, rotate, page_point);
+  Optional<CFX_PointF> pos =
+      pPage->AsXFAPage()->PageToDevice(rect, rotate, page_point);
 #else   // PDF_ENABLE_XFA
   Optional<CFX_PointF> pos =
       pPage->GetPDFPage()->PageToDevice(rect, rotate, page_point);
