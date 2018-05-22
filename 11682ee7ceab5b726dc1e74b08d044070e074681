@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1527008684 -0700\nnonce ACQuaLAFUNQ5g2PWqgHClpB9j9I486/n18Sua2cXK4oYT28r4h5xNc4Cbn/KlmO9L0phAMH+vT5Q\n\n0000000000000000000000000000000000000000 11682ee7ceab5b726dc1e74b08d044070e074681 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlsETa0ACgkQqzYtYVpm\n/XsRDQf/d1vmlzcUB9tOljKJH3gtgBj9K3qur2PQqbKtvYQYaeHQUc7Qoxpzl+eZ\nrz2a0GkKFSep5gP4iw6d1zykhGEoehWic9kC8iU3eUHK6MgSacUkpn+qrguUvqJz\n2e9bqOZpdooYnv8ZHbrto4VFoP/O5yK9l6XJzWiCPKCnNezHda03jvJytLMe1ZaD\n6d3d+LutXOz8Nh4xEVgtV7uDfexT9KNuUu+MmAh9NMqYVW2cUHqFDnbRSliW0lGN\nV8fwBlt2quMW6OOTUGfi48rGjn3hSZ4zwgcYDEwPQC9/cejoSRPZOCf88fA8NtM6\nZb3zppYGUQyaSmT9GXCOqxtQPeW+QQ\u003d\u003d\n\u003dHr8P\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce16fc87_27bb87ad",
+        "filename": "core/fxcrt/cfx_bitstream_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T17:27:24Z",
+      "side": 1,
+      "message": "Showing they are equivalent, so we can remove GetBits32() soon. As I\u0027m writing this, I noticed there is a typo. Whoops. We\u0027ll soon be removing this anyway in https://pdfium-review.googlesource.com/c/pdfium/+/32852/",
+      "revId": "11682ee7ceab5b726dc1e74b08d044070e074681",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
