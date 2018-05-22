@@ -23,9 +23,6 @@ class CXFA_FFPageView;
 
 class CPDFXFA_Page : public CPDF_Page::Extension {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   bool LoadPage();
   bool LoadPDFPage(CPDF_Dictionary* pageDict);
 
@@ -53,6 +50,9 @@ class CPDFXFA_Page : public CPDF_Page::Extension {
   CFX_Matrix GetDisplayMatrix(const FX_RECT& rect, int iRotate) const;
 
  protected:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   // Refcounted class.
   CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index);
   ~CPDFXFA_Page() override;

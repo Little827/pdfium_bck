@@ -24,12 +24,12 @@ namespace {
 
 class TestReadValidator : public CPDF_ReadValidator {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   void SimulateReadError() { ReadBlock(nullptr, 0, 1); }
 
  protected:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   TestReadValidator()
       : CPDF_ReadValidator(
             pdfium::MakeRetain<CFX_InvalidSeekableReadStream>(100),

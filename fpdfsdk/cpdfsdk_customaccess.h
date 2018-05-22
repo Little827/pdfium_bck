@@ -12,15 +12,16 @@
 
 class CPDFSDK_CustomAccess final : public IFX_SeekableReadStream {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   // IFX_SeekableReadStream
   FX_FILESIZE GetSize() override;
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override;
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CPDFSDK_CustomAccess(FPDF_FILEACCESS* pFileAccess);
+  ~CPDFSDK_CustomAccess() override;
 
   FPDF_FILEACCESS m_FileAccess;
 };

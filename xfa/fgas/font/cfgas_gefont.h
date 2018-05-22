@@ -22,11 +22,6 @@ class CFX_UnicodeEncoding;
 
 class CFGAS_GEFont : public Retainable {
  public:
-  template <typename T>
-  friend class RetainPtr;
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   static RetainPtr<CFGAS_GEFont> LoadFont(const wchar_t* pszFontFamily,
                                           uint32_t dwFontStyles,
                                           uint16_t wCodePage,
@@ -55,6 +50,11 @@ class CFGAS_GEFont : public Retainable {
   }
 
  private:
+  template <typename T>
+  friend class RetainPtr;
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CFGAS_GEFont(CFGAS_FontMgr* pFontMgr);
   ~CFGAS_GEFont() override;
 

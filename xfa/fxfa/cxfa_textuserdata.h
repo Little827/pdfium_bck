@@ -14,13 +14,13 @@ class CXFA_LinkUserData;
 
 class CXFA_TextUserData : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   RetainPtr<CFX_CSSComputedStyle> m_pStyle;
   RetainPtr<CXFA_LinkUserData> m_pLinkData;
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CXFA_TextUserData(const RetainPtr<CFX_CSSComputedStyle>& pStyle);
   CXFA_TextUserData(const RetainPtr<CFX_CSSComputedStyle>& pStyle,
                     const RetainPtr<CXFA_LinkUserData>& pLinkData);

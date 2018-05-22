@@ -17,9 +17,6 @@ class CPDF_Stream;
 
 class CPDF_IccProfile : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   const CPDF_Stream* GetStream() const { return m_pStream.Get(); }
   bool IsValid() const { return IsSRGB() || IsSupported(); }
   bool IsSRGB() const { return m_bsRGB; }
@@ -28,6 +25,9 @@ class CPDF_IccProfile : public Retainable {
   uint32_t GetComponents() const { return m_nSrcComponents; }
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CPDF_IccProfile(const CPDF_Stream* pStream,
                   const uint8_t* pData,
                   uint32_t dwSize);

@@ -19,15 +19,15 @@ class CPDF_PageObject;
 
 class CPDF_OCContext : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   enum UsageType { View = 0, Design, Print, Export };
 
   bool CheckOCGVisible(const CPDF_Dictionary* pOCGDict);
   bool CheckObjectVisible(const CPDF_PageObject* pObj);
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CPDF_OCContext(CPDF_Document* pDoc, UsageType eUsageType);
   ~CPDF_OCContext() override;
 

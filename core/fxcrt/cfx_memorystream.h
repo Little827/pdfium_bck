@@ -16,9 +16,6 @@ class CFX_MemoryStream : public IFX_SeekableStream {
  public:
   enum Type { kConsecutive = 1 << 0, kTakeOver = 1 << 1 };
 
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   // IFX_SeekableStream
   FX_FILESIZE GetSize() override;
   FX_FILESIZE GetPosition() override;
@@ -42,6 +39,9 @@ class CFX_MemoryStream : public IFX_SeekableStream {
   void DetachBuffer();
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CFX_MemoryStream(bool bConsecutive);
   CFX_MemoryStream(uint8_t* pBuffer, size_t nSize, bool bTakeOver);
   ~CFX_MemoryStream() override;

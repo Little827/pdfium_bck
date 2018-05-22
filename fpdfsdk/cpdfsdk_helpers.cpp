@@ -40,11 +40,6 @@ bool RaiseUnSupportError(int nError) {
 #ifdef PDF_ENABLE_XFA
 class FPDF_FileHandlerContext : public IFX_SeekableStream {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
-  ~FPDF_FileHandlerContext() override;
-
   // IFX_SeekableStream:
   FX_FILESIZE GetSize() override;
   bool IsEOF() override;
@@ -57,7 +52,11 @@ class FPDF_FileHandlerContext : public IFX_SeekableStream {
   void SetPosition(FX_FILESIZE pos) { m_nCurPos = pos; }
 
  protected:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit FPDF_FileHandlerContext(FPDF_FILEHANDLER* pFS);
+  ~FPDF_FileHandlerContext() override;
 
   FPDF_FILEHANDLER* m_pFS;
   FX_FILESIZE m_nCurPos;

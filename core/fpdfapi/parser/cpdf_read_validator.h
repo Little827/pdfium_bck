@@ -10,9 +10,6 @@
 
 class CPDF_ReadValidator : public IFX_SeekableReadStream {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   class Session {
    public:
     explicit Session(CPDF_ReadValidator* validator);
@@ -47,6 +44,9 @@ class CPDF_ReadValidator : public IFX_SeekableReadStream {
   FX_FILESIZE GetSize() override;
 
  protected:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CPDF_ReadValidator(const RetainPtr<IFX_SeekableReadStream>& file_read,
                      CPDF_DataAvail::FileAvail* file_avail);
   ~CPDF_ReadValidator() override;
