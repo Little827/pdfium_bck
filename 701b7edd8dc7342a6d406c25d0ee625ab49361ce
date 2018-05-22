@@ -17,6 +17,70 @@
       "revId": "701b7edd8dc7342a6d406c25d0ee625ab49361ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "048a035e_5b7ba5c6",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-22T19:54:47Z",
+      "side": 1,
+      "message": "Should this be bitpos.ValueOrDefault(-1) or something instead of Die? Seems weird to have the Die variant in a conditional.",
+      "parentUuid": "2f65ee7f_f7f6e974",
+      "revId": "701b7edd8dc7342a6d406c25d0ee625ab49361ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0c3cff_b790211b",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-22T19:54:47Z",
+      "side": 1,
+      "message": "Should we just pull out bitpos into a local (same with bitpos2) so we can drop the .ValueOrDie calls except for the first one?",
+      "range": {
+        "startLine": 137,
+        "startChar": 21,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "701b7edd8dc7342a6d406c25d0ee625ab49361ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d454d2a_d4949d68",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-22T19:54:47Z",
+      "side": 1,
+      "message": "Will this do the correct skipping? Previously it was (i * 3 + j) * sampleSize, this is going to get sampleSize bits?",
+      "range": {
+        "startLine": 414,
+        "startChar": 50,
+        "endLine": 414,
+        "endChar": 57
+      },
+      "revId": "701b7edd8dc7342a6d406c25d0ee625ab49361ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
