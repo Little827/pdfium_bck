@@ -7,8 +7,8 @@
 #include "core/fpdfapi/page/cpdf_sampledfunc.h"
 
 #include "core/fpdfapi/parser/cpdf_array.h"
+#include "core/fxcrt/cfx_bitstream.h"
 #include "core/fxcrt/cfx_fixedbufgrow.h"
-#include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 
 namespace {
@@ -121,7 +121,7 @@ bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
 
   FX_SAFE_INT32 bitpos = pos;
   bitpos *= bits_to_output.ValueOrDie();
-  if (!bitpos.IsValid())
+  if (!bitpos.IsValid() || bitpos.ValueOrDie() < 0)
     return false;
 
   FX_SAFE_INT32 range_check = bitpos;
@@ -133,31 +133,36 @@ bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
   if (pSampleData.empty())
     return false;
 
-  for (uint32_t j = 0; j < m_nOutputs; j++, bitpos += m_nBitsPerSample) {
-    uint32_t sample =
-        GetBits32(pSampleData, bitpos.ValueOrDie(), m_nBitsPerSample);
+  CFX_BitStream bitstream(pSampleData);
+  int bits_to_skip = bitpos.ValueOrDie();
+  bitstream.SkipBits(bits_to_skip);
+  for (uint32_t i = 0; i < m_nOutputs; ++i) {
+    uint32_t sample = bitstream.GetBits(m_nBitsPerSample);
     float encoded = sample;
-    for (uint32_t i = 0; i < m_nInputs; i++) {
-      if (index[i] == m_EncodeInfo[i].sizes - 1) {
-        if (index[i] == 0)
-          encoded = encoded_input[i] * sample;
+    for (uint32_t j = 0; j < m_nInputs; ++j) {
+      if (index[j] == m_EncodeInfo[j].sizes - 1) {
+        if (index[j] == 0)
+          encoded = encoded_input[j] * sample;
       } else {
-        FX_SAFE_INT32 bitpos2 = blocksize[i];
+        FX_SAFE_INT32 bitpos2 = blocksize[j];
         bitpos2 += pos;
         bitpos2 *= m_nOutputs;
-        bitpos2 += j;
+        bitpos2 += i;
         bitpos2 *= m_nBitsPerSample;
-        if (!bitpos2.IsValid())
+        if (!bitpos2.IsValid() || bitpos2.ValueOrDie() < 0)
           return false;
-        uint32_t sample1 =
-            GetBits32(pSampleData, bitpos2.ValueOrDie(), m_nBitsPerSample);
-        encoded += (encoded_input[i] - index[i]) *
-                   (static_cast<float>(sample1) - sample);
+
+        CFX_BitStream bitstream2(pSampleData);
+        int bits_to_skip2 = bitpos2.ValueOrDie();
+        bitstream2.SkipBits(bits_to_skip2);
+        float sample2 =
+            static_cast<float>(bitstream2.GetBits(m_nBitsPerSample));
+        encoded += (encoded_input[j] - index[j]) * (sample2 - sample);
       }
     }
-    results[j] =
-        Interpolate(encoded, 0, m_SampleMax, m_DecodeInfo[j].decode_min,
-                    m_DecodeInfo[j].decode_max);
+    results[i] =
+        Interpolate(encoded, 0, m_SampleMax, m_DecodeInfo[i].decode_min,
+                    m_DecodeInfo[i].decode_max);
   }
   return true;
 }
