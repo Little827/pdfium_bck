@@ -19,6 +19,23 @@
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
+CPDF_Page::Extension::Extension(std::unique_ptr<CPDF_Page> pPage) {
+  SetPDFPage(std::move(pPage));
+}
+
+CPDF_Page::Extension::~Extension() = default;
+
+void CPDF_Page::Extension::SetPDFPage(std::unique_ptr<CPDF_Page> pPage) {
+  if (pPage)
+    pPage->SetPageExtension(this);
+
+  m_pPDFPage = std::move(pPage);
+}
+
+CPDF_Document::Extension* CPDF_Page::Extension::GetDocumentExtension() const {
+  return nullptr;
+}
+
 CPDF_Page::CPDF_Page(CPDF_Document* pDocument,
                      CPDF_Dictionary* pPageDict,
                      bool bPageCache)

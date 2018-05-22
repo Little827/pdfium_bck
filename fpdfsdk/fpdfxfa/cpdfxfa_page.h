@@ -33,7 +33,6 @@ class CPDFXFA_Page : public CPDF_Page::Extension {
   CPDF_Document::Extension* GetDocumentExtension() const override;
 
   int GetPageIndex() const { return m_iPageIndex; }
-  CPDF_Page* GetPDFPage() const { return m_pPDFPage.get(); }
   CXFA_FFPageView* GetXFAPageView() const { return m_pXFAPageView; }
 
   void SetXFAPageView(CXFA_FFPageView* pPageView) {
@@ -61,7 +60,6 @@ class CPDFXFA_Page : public CPDF_Page::Extension {
   bool LoadXFAPageView();
 
  private:
-  std::unique_ptr<CPDF_Page> m_pPDFPage;
   CXFA_FFPageView* m_pXFAPageView;
   UnownedPtr<CPDFXFA_Context> const m_pContext;
   const int m_iPageIndex;
