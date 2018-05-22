@@ -38,6 +38,24 @@
     },
     {
       "key": {
+        "uuid": "13f4d2f6_9ebc1181",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T21:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048a035e_5b7ba5c6",
+      "revId": "701b7edd8dc7342a6d406c25d0ee625ab49361ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f0c3cff_b790211b",
         "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
         "patchSetId": 2
@@ -61,6 +79,30 @@
     },
     {
       "key": {
+        "uuid": "659795ac_cbd1fdac",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T21:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0c3cff_b790211b",
+      "range": {
+        "startLine": 137,
+        "startChar": 21,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "701b7edd8dc7342a6d406c25d0ee625ab49361ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d454d2a_d4949d68",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 2
@@ -72,6 +114,30 @@
       "writtenOn": "2018-05-22T19:54:47Z",
       "side": 1,
       "message": "Will this do the correct skipping? Previously it was (i * 3 + j) * sampleSize, this is going to get sampleSize bits?",
+      "range": {
+        "startLine": 414,
+        "startChar": 50,
+        "endLine": 414,
+        "endChar": 57
+      },
+      "revId": "701b7edd8dc7342a6d406c25d0ee625ab49361ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639eac2d_67aae086",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T21:23:28Z",
+      "side": 1,
+      "message": "Previously, it was calculating ((i * 3 + j) * sampleSize) from the start of |pSampleData|. Now, it increments by |sampleSize| within the inner loop on every call.",
+      "parentUuid": "5d454d2a_d4949d68",
       "range": {
         "startLine": 414,
         "startChar": 50,
