@@ -2530,7 +2530,7 @@ CJS_Return CJS_Field::setFocus(
   if (nCount == 1) {
     pWidget = pInterForm->GetWidget(pFormField->GetControl(0));
   } else {
-    UnderlyingPageType* pPage =
+    IPDF_PageBase* pPage =
         UnderlyingFromFPDFPage(m_pFormFillEnv->GetCurrentPage());
     if (!pPage)
       return CJS_Return(false);
