@@ -19,20 +19,24 @@
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
-CPDF_Page::Extension::Extension(std::unique_ptr<CPDF_Page> pPage) {
+CPDF_Page::Handle::Handle(std::unique_ptr<CPDF_Page> pPage) {
   SetPDFPage(std::move(pPage));
 }
 
-CPDF_Page::Extension::~Extension() = default;
+CPDF_Page::Handle::~Handle() = default;
 
-void CPDF_Page::Extension::SetPDFPage(std::unique_ptr<CPDF_Page> pPage) {
+void CPDF_Page::Handle::SetPDFPage(std::unique_ptr<CPDF_Page> pPage) {
   if (pPage)
-    pPage->SetPageExtension(this);
+    pPage->SetPageHandle(this);
 
   m_pPDFPage = std::move(pPage);
 }
 
-CPDF_Document::Extension* CPDF_Page::Extension::GetDocumentExtension() const {
+CPDFXFA_Page* CPDF_Page::Handle::AsXFAPage() {
+  return nullptr;
+}
+
+CPDF_Document::Extension* CPDF_Page::Handle::GetDocumentExtension() const {
   return nullptr;
 }
 

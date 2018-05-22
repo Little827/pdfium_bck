@@ -144,11 +144,11 @@ bool FPDF_FileHandlerContext::Flush() {
 
 }  // namespace
 
-UnderlyingPageType* UnderlyingFromFPDFPage(FPDF_PAGE page) {
-  return reinterpret_cast<UnderlyingPageType*>(page);
+CPDF_Page::Handle* CPDFPageHandleFromFPDFPage(FPDF_PAGE page) {
+  return reinterpret_cast<CPDF_Page::Handle*>(page);
 }
 
-FPDF_PAGE FPDFPageFromUnderlying(UnderlyingPageType* page) {
+FPDF_PAGE FPDFPageFromCPDFPageHandle(CPDF_Page::Handle* page) {
   return reinterpret_cast<FPDF_PAGE>(page);
 }
 
@@ -165,7 +165,7 @@ FPDF_DOCUMENT FPDFDocumentFromCPDFDocument(CPDF_Document* doc) {
 }
 
 CPDF_Page* CPDFPageFromFPDFPage(FPDF_PAGE page) {
-  return page ? UnderlyingFromFPDFPage(page)->GetPDFPage() : nullptr;
+  return page ? CPDFPageHandleFromFPDFPage(page)->GetPDFPage() : nullptr;
 }
 
 ByteString CFXByteStringFromFPDFWideString(FPDF_WIDESTRING wide_string) {

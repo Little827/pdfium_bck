@@ -18,7 +18,7 @@
 #include "xfa/fxfa/cxfa_ffpageview.h"
 
 CPDFXFA_Page::CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index)
-    : CPDF_Page::Extension(nullptr),
+    : CPDF_Page::Handle(nullptr),
       m_pXFAPageView(nullptr),
       m_pContext(pContext),
       m_iPageIndex(page_index) {}
@@ -87,6 +87,10 @@ bool CPDFXFA_Page::LoadPDFPage(CPDF_Dictionary* pageDict) {
       pdfium::MakeUnique<CPDF_Page>(m_pContext->GetPDFDoc(), pageDict, true);
   m_pPDFPage->ParseContent();
   return true;
+}
+
+CPDFXFA_Page* CPDFXFA_Page::AsXFAPage() {
+  return this;
 }
 
 CPDF_Document::Extension* CPDFXFA_Page::GetDocumentExtension() const {
