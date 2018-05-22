@@ -45,7 +45,7 @@ class CPDFSDK_Annot : public Observable<CPDFSDK_Annot> {
   virtual CFX_FloatRect GetRect() const;
   virtual void SetRect(const CFX_FloatRect& rect);
 
-  UnderlyingPageType* GetUnderlyingPage();
+  CPDF_Page::Extension* GetUnderlyingPage();
   CPDF_Page* GetPDFPage();
 #ifdef PDF_ENABLE_XFA
   CPDFXFA_Page* GetPDFXFAPage();

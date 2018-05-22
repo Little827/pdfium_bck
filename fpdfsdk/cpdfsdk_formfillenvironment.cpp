@@ -231,7 +231,7 @@ CPDFSDK_FormFillEnvironment::GetInteractiveFormFiller() {
   return m_pFormFiller.get();
 }
 
-void CPDFSDK_FormFillEnvironment::Invalidate(UnderlyingPageType* page,
+void CPDFSDK_FormFillEnvironment::Invalidate(CPDF_Page::Extension* page,
                                              const FX_RECT& rect) {
   if (m_pInfo && m_pInfo->FFI_Invalidate) {
     m_pInfo->FFI_Invalidate(m_pInfo, FPDFPageFromUnderlying(page), rect.left,
@@ -240,7 +240,7 @@ void CPDFSDK_FormFillEnvironment::Invalidate(UnderlyingPageType* page,
 }
 
 void CPDFSDK_FormFillEnvironment::OutputSelectedRect(
-    UnderlyingPageType* page,
+    CPDF_Page::Extension* page,
     const CFX_FloatRect& rect) {
   if (m_pInfo && m_pInfo->FFI_OutputSelectedRect) {
     m_pInfo->FFI_OutputSelectedRect(m_pInfo, FPDFPageFromUnderlying(page),
@@ -531,7 +531,7 @@ void CPDFSDK_FormFillEnvironment::ClearAllFocusedAnnots() {
 }
 
 CPDFSDK_PageView* CPDFSDK_FormFillEnvironment::GetPageView(
-    UnderlyingPageType* pUnderlyingPage,
+    CPDF_Page::Extension* pUnderlyingPage,
     bool renew) {
   auto it = m_PageMap.find(pUnderlyingPage);
   if (it != m_PageMap.end())
@@ -550,12 +550,12 @@ CPDFSDK_PageView* CPDFSDK_FormFillEnvironment::GetPageView(
 }
 
 CPDFSDK_PageView* CPDFSDK_FormFillEnvironment::GetCurrentView() {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(GetCurrentPage());
+  CPDF_Page::Extension* pPage = UnderlyingFromFPDFPage(GetCurrentPage());
   return pPage ? GetPageView(pPage, true) : nullptr;
 }
 
 CPDFSDK_PageView* CPDFSDK_FormFillEnvironment::GetPageView(int nIndex) {
-  UnderlyingPageType* pTempPage = GetPage(nIndex);
+  CPDF_Page::Extension* pTempPage = GetPage(nIndex);
   if (!pTempPage)
     return nullptr;
 
@@ -600,7 +600,7 @@ bool CPDFSDK_FormFillEnvironment::ProcOpenAction() {
 }
 
 void CPDFSDK_FormFillEnvironment::RemovePageView(
-    UnderlyingPageType* pUnderlyingPage) {
+    CPDF_Page::Extension* pUnderlyingPage) {
   auto it = m_PageMap.find(pUnderlyingPage);
   if (it == m_PageMap.end())
     return;
@@ -626,7 +626,7 @@ void CPDFSDK_FormFillEnvironment::RemovePageView(
   m_PageMap.erase(it);
 }
 
-UnderlyingPageType* CPDFSDK_FormFillEnvironment::GetPage(int nIndex) {
+CPDF_Page::Extension* CPDFSDK_FormFillEnvironment::GetPage(int nIndex) {
   if (!m_pInfo || !m_pInfo->FFI_GetPage)
     return nullptr;
   return UnderlyingFromFPDFPage(m_pInfo->FFI_GetPage(

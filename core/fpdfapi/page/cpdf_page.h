@@ -23,6 +23,9 @@ class CPDF_Object;
 class CPDF_PageRenderCache;
 class CPDF_PageRenderContext;
 
+// Small layering violation, type not completed and always nullptr if not XFA.
+class CPDFXFA_Page;
+
 class CPDF_Page : public CPDF_PageObjectHolder {
  public:
   class View {};  // Caller implements as desired, empty here due to layering.
@@ -33,6 +36,7 @@ class CPDF_Page : public CPDF_PageObjectHolder {
     template <typename T, typename... Args>
     friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
+    virtual CPDFXFA_Page* AsXFAPage();
     virtual CPDF_Document::Extension* GetDocumentExtension() const;
 
     CPDF_Page* GetPDFPage() const { return m_pPDFPage.get(); }
@@ -97,5 +101,9 @@ class CPDF_Page : public CPDF_PageObjectHolder {
   std::unique_ptr<CPDF_PageRenderContext> m_pRenderContext;
   UnownedPtr<View> m_pView;
 };
+
+inline CPDFXFA_Page* ToXFAPage(CPDF_Page::Extension* pExtension) {
+  return pExtension ? pExtension->AsXFAPage() : nullptr;
+}
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_PAGE_H_

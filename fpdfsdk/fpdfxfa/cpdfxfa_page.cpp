@@ -89,6 +89,10 @@ bool CPDFXFA_Page::LoadPDFPage(CPDF_Dictionary* pageDict) {
   return true;
 }
 
+CPDFXFA_Page* CPDFXFA_Page::AsXFAPage() {
+  return this;
+}
+
 CPDF_Document::Extension* CPDFXFA_Page::GetDocumentExtension() const {
   return m_pContext.Get();
 }

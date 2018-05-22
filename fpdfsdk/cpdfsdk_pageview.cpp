@@ -31,7 +31,7 @@
 #endif  // PDF_ENABLE_XFA
 
 CPDFSDK_PageView::CPDFSDK_PageView(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                                   UnderlyingPageType* page)
+                                   CPDF_Page::Extension* page)
     : m_page(page),
       m_pFormFillEnv(pFormFillEnv),
       m_bOnWidget(false),
@@ -462,9 +462,9 @@ void CPDFSDK_PageView::LoadFXAnnots() {
   m_bLocked = true;
 
 #ifdef PDF_ENABLE_XFA
-  RetainPtr<CPDFXFA_Page> protector(m_page);
+  RetainPtr<CPDFXFA_Page> protector(ToXFAPage(m_page));
   if (m_pFormFillEnv->GetXFAContext()->GetFormType() == FormType::kXFAFull) {
-    CXFA_FFPageView* pageView = m_page->GetXFAPageView();
+    CXFA_FFPageView* pageView = protector->GetXFAPageView();
     std::unique_ptr<IXFA_WidgetIterator> pWidgetHandler(
         pageView->CreateWidgetIterator(
             XFA_TRAVERSEWAY_Form,
@@ -524,7 +524,7 @@ int CPDFSDK_PageView::GetPageIndex() const {
       static_cast<CPDFXFA_Context*>(m_page->GetDocumentExtension());
   switch (pContext->GetFormType()) {
     case FormType::kXFAFull: {
-      CXFA_FFPageView* pPageView = m_page->GetXFAPageView();
+      CXFA_FFPageView* pPageView = m_page->AsXFAPage()->GetXFAPageView();
       return pPageView ? pPageView->GetPageIndex() : -1;
     }
     case FormType::kNone:

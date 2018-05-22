@@ -32,6 +32,10 @@ void CPDF_Page::Extension::SetPDFPage(std::unique_ptr<CPDF_Page> pPage) {
   m_pPDFPage = std::move(pPage);
 }
 
+CPDFXFA_Page* CPDF_Page::Extension::AsXFAPage() {
+  return nullptr;
+}
+
 CPDF_Document::Extension* CPDF_Page::Extension::GetDocumentExtension() const {
   return nullptr;
 }

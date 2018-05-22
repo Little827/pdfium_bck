@@ -30,6 +30,7 @@ class CPDFXFA_Page : public CPDF_Page::Extension {
   bool LoadPDFPage(CPDF_Dictionary* pageDict);
 
   // CPDF_Page::Extension:
+  CPDFXFA_Page* AsXFAPage() override;
   CPDF_Document::Extension* GetDocumentExtension() const override;
 
   int GetPageIndex() const { return m_iPageIndex; }
