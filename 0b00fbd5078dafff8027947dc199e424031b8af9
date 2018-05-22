@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a25a874a_c4a2b6ce",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-22T17:36:06Z",
+      "side": 1,
+      "message": "Private? Like most \"friend class base::RefCountedThreadSafe\u003cT\u003e\" statements in Chromium.",
+      "revId": "0b00fbd5078dafff8027947dc199e424031b8af9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
