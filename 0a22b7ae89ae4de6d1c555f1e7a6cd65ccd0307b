@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1526675629 -0700\nnonce ACQuaLDUozSYgYMBEe37IGCX8+hWppMLrIv74N3GydS+eaKpElZHoHFpleP38Fi9NCIzAYp6rfRK\n\n0000000000000000000000000000000000000000 0a22b7ae89ae4de6d1c555f1e7a6cd65ccd0307b refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dsimplify-cpdf-shadingpattern\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlr/OK0ACgkQqzYtYVpm\n/XvclQgAp+GSc7pMmFTha/PLjPWMB1GgxBLFGtXP16eYrc6dHy5lLjy2QhGA1mQ2\nqCfKwwXcUgppEJJVJVlfNl9Rd8YA/oth7jsnCNkicOegr/AtCeE4PiRsGGreXXDo\nDXm0WYaKkH0MGRwUSpBk7CJPy9HE+AnkxEZEWhSa70rPRsl5Rll0NcU9FBZyDaGe\nIee6wW2ggOf0CsX2F1ou9NIx+iYqicG2rg4AzwZ37PM9kjIKrxx7Iu3fAwwtkuSt\nb3OyZgXSXbFQyp9wvaQUesYAbCNekrO0cBXI2td9YS/A2mFkQPlOXWzXO/13UP4U\n7f2789QIQJf/ZgUM47iYdNTWngph6Q\u003d\u003d\n\u003drc3b\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed9baefd_d512359e",
+        "filename": "core/fpdfapi/page/cpdf_shadingpattern.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-22T13:30:24Z",
+      "side": 1,
+      "message": "This case is now different is it now as we\u0027ll early exit if Family() \u003d\u003d PDFCS_INDEXED but we should only return false if pFunctions is not empty.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "0a22b7ae89ae4de6d1c555f1e7a6cd65ccd0307b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
