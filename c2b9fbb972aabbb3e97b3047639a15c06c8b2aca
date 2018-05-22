@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "097c2ad4_54f7bca9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-22T13:51:00Z",
+      "side": 1,
+      "message": "Can this just be obj number or does it have to be some combination of \u003cobj number, generation number\u003e? PDF file can reuse obj numbers with new generation numbers but I\u0027m not sure how we handle those. We probably don\u0027t want to hold the pointer to the wrong Page dictionary based on a new generation number.",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "c2b9fbb972aabbb3e97b3047639a15c06c8b2aca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6980ccc2_bd6c72e0",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-22T13:51:00Z",
+      "side": 1,
+      "message": "Do we know what the performance/memory hit is for things like this where we couldn\u0027t parse the content previously? Same with the cases where we didn\u0027t create the render context?",
+      "range": {
+        "startLine": 965,
+        "startChar": 36,
+        "endLine": 965,
+        "endChar": 54
+      },
+      "revId": "c2b9fbb972aabbb3e97b3047639a15c06c8b2aca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
