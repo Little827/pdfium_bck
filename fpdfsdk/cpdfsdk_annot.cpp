@@ -77,7 +77,7 @@ UnderlyingPageType* CPDFSDK_Annot::GetUnderlyingPage() {
 #ifdef PDF_ENABLE_XFA
   return GetPDFXFAPage();
 #else   // PDF_ENABLE_XFA
-  return GetPDFPage();
+  return GetPDFPage()->GetPageExtension();
 #endif  // PDF_ENABLE_XFA
 }
 
