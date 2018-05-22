@@ -19,9 +19,6 @@ namespace {
 
 class CFX_CRTFileStream final : public IFX_SeekableStream {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   // IFX_SeekableStream:
   FX_FILESIZE GetSize() override { return m_pFile->GetSize(); }
   bool IsEOF() override { return GetPosition() >= GetSize(); }
@@ -40,6 +37,9 @@ class CFX_CRTFileStream final : public IFX_SeekableStream {
   bool Flush() override { return m_pFile->Flush(); }
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CFX_CRTFileStream(std::unique_ptr<FileAccessIface> pFA)
       : m_pFile(std::move(pFA)) {}
   ~CFX_CRTFileStream() override {}

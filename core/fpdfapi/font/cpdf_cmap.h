@@ -48,9 +48,6 @@ class CPDF_CMap : public Retainable {
     uint16_t m_StartCID;
   };
 
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   void LoadPredefined(CPDF_CMapManager* pMgr,
                       const ByteString& name,
                       bool bPromptCJK);
@@ -85,6 +82,9 @@ class CPDF_CMap : public Retainable {
   }
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CPDF_CMap();
   ~CPDF_CMap() override;
 

@@ -11,16 +11,15 @@
 
 class CPDFSDK_MemoryAccess final : public IFX_SeekableReadStream {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
-  ~CPDFSDK_MemoryAccess() override;
-
   FX_FILESIZE GetSize() override;
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override;
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CPDFSDK_MemoryAccess(const uint8_t* pBuf, FX_FILESIZE size);
+  ~CPDFSDK_MemoryAccess() override;
 
   const uint8_t* const m_pBuf;
   const FX_FILESIZE m_size;

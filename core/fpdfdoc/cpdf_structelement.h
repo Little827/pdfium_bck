@@ -36,9 +36,6 @@ class CPDF_StructKid {
 
 class CPDF_StructElement : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   const ByteString& GetType() const { return m_Type; }
   const ByteString& GetTitle() const { return m_Title; }
   CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
@@ -48,6 +45,9 @@ class CPDF_StructElement : public Retainable {
   std::vector<CPDF_StructKid>* GetKids() { return &m_Kids; }
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CPDF_StructElement(CPDF_StructTree* pTree,
                      CPDF_StructElement* pParent,
                      CPDF_Dictionary* pDict);

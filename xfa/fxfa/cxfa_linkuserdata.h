@@ -13,12 +13,12 @@
 
 class CXFA_LinkUserData : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   const wchar_t* GetLinkURL() const { return m_wsURLContent.c_str(); }
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CXFA_LinkUserData(const wchar_t* pszText);
   ~CXFA_LinkUserData() override;
 

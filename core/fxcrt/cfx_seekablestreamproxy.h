@@ -20,9 +20,6 @@ class CFX_SeekableStreamProxy : public IFX_SeekableReadStream {
     Current,
   };
 
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   FX_FILESIZE GetSize() override;
   FX_FILESIZE GetPosition() override;
   bool IsEOF() override;
@@ -34,6 +31,9 @@ class CFX_SeekableStreamProxy : public IFX_SeekableReadStream {
   void SetCodePage(uint16_t wCodePage);
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CFX_SeekableStreamProxy(
       const RetainPtr<IFX_SeekableReadStream>& stream);
   ~CFX_SeekableStreamProxy() override;

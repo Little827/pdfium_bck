@@ -16,9 +16,6 @@ class CFX_DIBSource;
 
 class CPDF_TransferFunc : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   FX_COLORREF TranslateColor(FX_COLORREF colorref) const;
   RetainPtr<CFX_DIBSource> TranslateImage(const RetainPtr<CFX_DIBSource>& pSrc);
 
@@ -31,6 +28,9 @@ class CPDF_TransferFunc : public Retainable {
   void SetIdentity(bool identity) { m_bIdentity = identity; }
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CPDF_TransferFunc(CPDF_Document* pDoc);
   ~CPDF_TransferFunc() override;
 

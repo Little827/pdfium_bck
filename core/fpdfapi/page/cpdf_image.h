@@ -24,9 +24,6 @@ class IFX_SeekableReadStream;
 
 class CPDF_Image : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   void ConvertStreamToIndirectObject();
 
   CPDF_Stream* GetStream() const { return m_pStream.Get(); }
@@ -67,6 +64,9 @@ class CPDF_Image : public Retainable {
   uint32_t m_MatteColor = 0;
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CPDF_Image(CPDF_Document* pDoc);
   CPDF_Image(CPDF_Document* pDoc, std::unique_ptr<CPDF_Stream> pStream);
   CPDF_Image(CPDF_Document* pDoc, uint32_t dwStreamObjNum);

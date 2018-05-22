@@ -41,12 +41,7 @@ struct DIB_COMP_DATA {
 
 class CPDF_DIBSource : public CFX_DIBSource {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   enum class LoadState : uint8_t { kFail, kSuccess, kContinue };
-
-  ~CPDF_DIBSource() override;
 
   bool Load(CPDF_Document* pDoc, const CPDF_Stream* pStream);
 
@@ -79,7 +74,11 @@ class CPDF_DIBSource : public CFX_DIBSource {
   bool IsJBigImage() const;
 
  private:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CPDF_DIBSource();
+  ~CPDF_DIBSource() override;
 
   LoadState StartLoadMask();
   LoadState StartLoadMaskDIB();

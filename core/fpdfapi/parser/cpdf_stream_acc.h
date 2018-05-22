@@ -18,9 +18,6 @@
 
 class CPDF_StreamAcc : public Retainable {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   CPDF_StreamAcc(const CPDF_StreamAcc&) = delete;
   CPDF_StreamAcc& operator=(const CPDF_StreamAcc&) = delete;
 
@@ -41,6 +38,9 @@ class CPDF_StreamAcc : public Retainable {
   std::unique_ptr<uint8_t, FxFreeDeleter> DetachData();
 
  protected:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   explicit CPDF_StreamAcc(const CPDF_Stream* pStream);
   ~CPDF_StreamAcc() override;
 

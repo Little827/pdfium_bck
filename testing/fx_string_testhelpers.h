@@ -15,9 +15,6 @@ std::ostream& operator<<(std::ostream& os, const CFX_DateTime& dt);
 
 class CFX_InvalidSeekableReadStream : public IFX_SeekableReadStream {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   // IFX_SeekableReadStream overrides:
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override {
     return false;
@@ -25,17 +22,17 @@ class CFX_InvalidSeekableReadStream : public IFX_SeekableReadStream {
   FX_FILESIZE GetSize() override { return data_size_; }
 
  private:
-  explicit CFX_InvalidSeekableReadStream(FX_FILESIZE data_size)
-      : data_size_(data_size) {}
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
-  FX_FILESIZE data_size_;
+  explicit CFX_InvalidSeekableReadStream(FX_FILESIZE data_size);
+  ~CFX_InvalidSeekableReadStream() override;
+
+  const FX_FILESIZE data_size_;
 };
 
 class CFX_BufferSeekableReadStream : public IFX_SeekableReadStream {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
   // IFX_SeekableReadStream:
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override {
     if (offset < 0 || static_cast<size_t>(offset) >= data_size_)
@@ -55,8 +52,11 @@ class CFX_BufferSeekableReadStream : public IFX_SeekableReadStream {
   }
 
  private:
-  CFX_BufferSeekableReadStream(const unsigned char* src, size_t src_size)
-      : data_(src), data_size_(src_size) {}
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
+  CFX_BufferSeekableReadStream(const unsigned char* src, size_t src_size);
+  ~CFX_BufferSeekableReadStream() override;
 
   const unsigned char* data_;
   size_t data_size_;

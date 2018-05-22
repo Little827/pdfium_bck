@@ -29,11 +29,6 @@ typedef struct WINDIB_Open_Args_ {
 
 class CFX_WindowsDIB : public CFX_DIBitmap {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
-
-  ~CFX_WindowsDIB() override;
-
   static ByteString GetBitmapInfo(const RetainPtr<CFX_DIBitmap>& pBitmap);
   static HBITMAP GetDDBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap, HDC hDC);
 
@@ -48,7 +43,11 @@ class CFX_WindowsDIB : public CFX_DIBitmap {
   void SetToDevice(HDC hDC, int left, int top);
 
  protected:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   CFX_WindowsDIB(HDC hDC, int width, int height);
+  ~CFX_WindowsDIB() override;
 
   HDC m_hMemDC;
   HBITMAP m_hBitmap;
