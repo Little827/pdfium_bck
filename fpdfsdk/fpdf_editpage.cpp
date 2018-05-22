@@ -198,7 +198,9 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
 #else  // PDF_ENABLE_XFA
   auto pPage = pdfium::MakeUnique<CPDF_Page>(pDoc, pPageDict, true);
   pPage->ParseContent();
-  return FPDFPageFromUnderlying(pPage.release());  // Caller takes ownership.
+  auto pExtension = pdfium::MakeRetain<CPDF_Page::Extension>();
+  pExtension->SetPDFPage(std::move(pPage));
+  return FPDFPageFromUnderlying(pExtension.Leak());  // Caller takes ownership.
 #endif  // PDF_ENABLE_XFA
 }
 

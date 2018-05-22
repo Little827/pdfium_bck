@@ -165,11 +165,7 @@ FPDF_DOCUMENT FPDFDocumentFromCPDFDocument(CPDF_Document* doc) {
 }
 
 CPDF_Page* CPDFPageFromFPDFPage(FPDF_PAGE page) {
-#ifdef PDF_ENABLE_XFA
   return page ? UnderlyingFromFPDFPage(page)->GetPDFPage() : nullptr;
-#else   // PDF_ENABLE_XFA
-  return UnderlyingFromFPDFPage(page);
-#endif  // PDF_ENABLE_XFA
 }
 
 ByteString CFXByteStringFromFPDFWideString(FPDF_WIDESTRING wide_string) {
