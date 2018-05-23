@@ -8,7 +8,8 @@
 This script gathers a list of functions from public/*.h that contain
 FPDF_EXPORT. It then gathers a list of functions from
 fpdfsdk/fpdf_view_c_api_test.c. It then verifies both lists do not contain
-duplicates, and they match each other.
+duplicates, and they match each other. It also checks that the order in
+fpdf_view_c_api_test.c is alphabetical within each section.
 
 """
 
@@ -69,16 +70,30 @@ def _GetFunctionsFromPublicHeaders(src_path):
       functions.extend(_GetExportsFromHeader(public_path, filename))
   return functions
 
+def _CheckSorted(functions, api_test_path):
+  for i in range(len(functions) - 1):
+    if functions[i] > functions[i+1]:
+      print ('Make sure %s and %s CHKs are in alphabetical order within the section of the %s file'
+             % (functions[i], functions[i+1], api_test_path));
+      return False
+  return True
 
 def _GetFunctionsFromTest(api_test_path):
   chk_regex = re.compile('^    CHK\((.*)\);\n$')
+  file_regex = re.compile('^    //.*\.h\n$')
   with open(api_test_path) as f:
     contents = f.readlines()
     functions = []
+    functions_in_file = []
     for line in contents:
+      if (file_regex.match(line)):
+        assert _CheckSorted(functions_in_file, api_test_path)
+        functions_in_file = []
       match = chk_regex.match(line)
       if match:
         functions.append(match.groups()[0])
+        functions_in_file.append(match.groups()[0])
+    assert _CheckSorted(functions_in_file, api_test_path)
     return functions
 
 
