@@ -3094,12 +3094,21 @@ if (pdf_is_standalone) {
 group("pdfium_all") {
   testonly = true
   deps = [
+    ":pdfium_dev",
+  ]
+  if (pdf_is_standalone) {
+    deps += [ ":fuzzers" ]
+  }
+}
+
+group("pdfium_dev") {
+  testonly = true
+  deps = [
     ":pdfium_embeddertests",
     ":pdfium_unittests",
   ]
   if (pdf_is_standalone) {
     deps += [
-      ":fuzzers",
       ":pdfium_diff",
       ":samples",
     ]
