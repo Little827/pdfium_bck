@@ -46,6 +46,30 @@
       "revId": "603711c2c2573ad9418524e27edb1c3fc3231f54",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abe835b_62e748f6",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-23T19:53:15Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "a4e2d7d8_030d4a84",
+      "range": {
+        "startLine": 279,
+        "startChar": 37,
+        "endLine": 280,
+        "endChar": 18
+      },
+      "revId": "603711c2c2573ad9418524e27edb1c3fc3231f54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
