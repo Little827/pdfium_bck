@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "63075223_5c2bebb4",
+        "filename": "DEPS",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-23T23:29:11Z",
+      "side": 1,
+      "message": "third_party/libFuzzer !\u003d testing/libfuzzer\n\nThis is what\u0027s being pulled in here: https://chromium.googlesource.com/chromium/src/testing/libfuzzer/",
+      "parentUuid": "b08f231c_83de725e",
+      "revId": "2df76ff6449c7dd1dd30f4e7ef217e9d741b528a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1762132_2b3a8cdb",
         "filename": "testing/fuzzers/BUILD.gn",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2018-05-23T23:21:36Z",
       "side": 1,
       "message": "Instead of is_linux, can you rely on use_libfuzzer flag ?",
+      "revId": "2df76ff6449c7dd1dd30f4e7ef217e9d741b528a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c268b20_8f527ae3",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-23T23:29:11Z",
+      "side": 1,
+      "message": "I tried using use_libfuzzer, but that means I have to pull in third_party/LibFuzzer as well.",
+      "parentUuid": "e1762132_2b3a8cdb",
       "revId": "2df76ff6449c7dd1dd30f4e7ef217e9d741b528a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
