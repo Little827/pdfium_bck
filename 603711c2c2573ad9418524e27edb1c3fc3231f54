@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "351e10ee_4eb64c8a",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-23T19:40:48Z",
+      "side": 1,
+      "message": "Do fields that perform formatting always clear the text before inserting? or is there the possibility of entering a value, it being formatted \u0026 appearing, then changing it and things start failing at that point?",
+      "range": {
+        "startLine": 279,
+        "startChar": 37,
+        "endLine": 280,
+        "endChar": 18
+      },
+      "revId": "603711c2c2573ad9418524e27edb1c3fc3231f54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
