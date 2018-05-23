@@ -210,6 +210,24 @@
       "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd38af5_3b335ffe",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-23T23:17:13Z",
+      "side": 1,
+      "message": "The existing asserts are more to make sure the header parsing is sane. If those asserts go away, the checks will still continue to work. Whereas the new asserts are required to do the check.",
+      "parentUuid": "b2342f35_23a4aac3",
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
