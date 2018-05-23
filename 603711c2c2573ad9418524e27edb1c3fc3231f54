@@ -22,6 +22,30 @@
       "revId": "603711c2c2573ad9418524e27edb1c3fc3231f54",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e2d7d8_030d4a84",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-23T19:49:59Z",
+      "side": 1,
+      "message": "At least in the path I traced, we call CFWL_Edit::SetText when doing the formatting which does a Clear(); Insert() on the edit engine.",
+      "parentUuid": "351e10ee_4eb64c8a",
+      "range": {
+        "startLine": 279,
+        "startChar": 37,
+        "endLine": 280,
+        "endChar": 18
+      },
+      "revId": "603711c2c2573ad9418524e27edb1c3fc3231f54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
