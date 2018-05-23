@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "044403b2_cfffc876",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-23T19:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71193ab5_c67ea469",
+      "range": {
+        "startLine": 12,
+        "startChar": 51,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70dbea73_eab7ad5b",
         "filename": "testing/tools/api_check.py",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0baa96_fc37e18a",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-23T19:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70dbea73_eab7ad5b",
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1ed2ec2a_2b0faf29",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-23T19:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80544f84_ea0a4df2",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "123d9ea7_b121c325",
         "filename": "testing/tools/api_check.py",
         "patchSetId": 3
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "0927bb35_a488ddc3",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-23T19:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "123d9ea7_b121c325",
+      "range": {
+        "startLine": 77,
+        "startChar": 67,
+        "endLine": 77,
+        "endChar": 75
+      },
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "846be289_5d2d65bd",
         "filename": "testing/tools/api_check.py",
         "patchSetId": 3
@@ -99,6 +189,24 @@
       "writtenOn": "2018-05-22T22:04:28Z",
       "side": 1,
       "message": "Would it be slightly easier to gather a list of lists, and then process it later? Then you can do that inside main(), and not rely on asserts here.",
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2342f35_23a4aac3",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-23T19:45:21Z",
+      "side": 1,
+      "message": "List of lists feels more convoluted than just having a \u0027current\u0027 list and checking every time we get to the end of it. We already use asserts in other places of this file. And this function also needs to return |functions|, which is better suited to the other checks outside of this function.",
+      "parentUuid": "846be289_5d2d65bd",
       "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
