@@ -20,7 +20,7 @@ config("libfuzzer_config") {
   }
 }
 
-group("libfuzzer") {
+group("fuzzers") {
   testonly = true
   deps = [
     ":pdf_cmap_fuzzer",
