@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86d49b38_ce83e0cc",
+        "filename": "core/fxcodec/jbig2/JBig2_Context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-23T23:08:01Z",
+      "side": 1,
+      "message": "Follow up: Change the return value to a const pointer and fix the callers. Looks like it should work on first glance.",
+      "revId": "52c98ab3e38c6d2fe8e48696234efcdca47ed808",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b811d4_6c0c7104",
+        "filename": "core/fxcodec/jbig2/JBig2_HuffmanTable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-23T23:08:01Z",
+      "side": 1,
+      "message": "You can static_assert() this.",
+      "revId": "52c98ab3e38c6d2fe8e48696234efcdca47ed808",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
