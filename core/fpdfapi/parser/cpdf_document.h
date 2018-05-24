@@ -82,7 +82,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   CPDF_DocRenderData* GetRenderData() const { return m_pDocRender.get(); }
 
   // |pFontDict| must not be null.
-  CPDF_Font* LoadFont(CPDF_Dictionary* pFontDict);
+  CPDF_Font* LoadFont(const CPDF_Dictionary* pFontDict);
   CPDF_ColorSpace* LoadColorSpace(const CPDF_Object* pCSObj,
                                   const CPDF_Dictionary* pResources = nullptr);
 
