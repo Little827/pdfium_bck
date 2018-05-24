@@ -228,6 +228,24 @@
       "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a47a54_26f59ad9",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-24T16:20:59Z",
+      "side": 1,
+      "message": "It will still show up as a presubmit error so I think the only functional difference is that the asserts will cause the remaining checks to not be considered. Fine I\u0027ll return a list of lists.",
+      "parentUuid": "3bd38af5_3b335ffe",
+      "revId": "a171ca13698f42baedcb51b437ab3a90b1353c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
