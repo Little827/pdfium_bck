@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "c6188552_98a38ca8",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7262
+      },
+      "writtenOn": "2018-05-24T15:34:37Z",
+      "side": 1,
+      "message": "Actually the most correct flag to rely on would be use_fuzzing_engine, it\u0027s defined in https://cs.chromium.org/chromium/src/build/config/sanitizers/sanitizers.gni?type\u003dcs\u0026q\u003duse_fuzzing_engine\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d139\n\nRe: Dan\u0027s question, Yes, I think you can do that, and that would make sense, e.g. you can even run those fuzzers over existing corpus as part of the regression testing.",
+      "parentUuid": "06397af2_ba53ecb3",
+      "revId": "2df76ff6449c7dd1dd30f4e7ef217e9d741b528a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cda1604_92dc9767",
         "filename": "testing/fuzzers/BUILD.gn",
         "patchSetId": 5
