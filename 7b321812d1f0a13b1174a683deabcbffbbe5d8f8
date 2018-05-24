@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1527150319 -0700\nnonce ACQuaLBU35RTpyj8GpwPHhF2BJID5aTohTpsrxUAC2ABZopD5AWBgGTXbicnqj4jtz6VWJSwirmM\n\n0000000000000000000000000000000000000000 7b321812d1f0a13b1174a683deabcbffbbe5d8f8 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlsGdu8ACgkQqzYtYVpm\n/Xuk8Qf/T2zAhhbv/nvtHjvAG8JJSdp4cROFyFdYz/zdZz5ANHlHGMX8xCWiRYYB\ncSaOw76WZU7zRUdgDsaVZPI1ywil0//KTkdgm7yYy/Y1r8CJOzVCC9h0URzjmL8w\nPfb8RSo5Fx+14MDzV/v4kz+34JT7TTytNGZO6ML7VmtpxbHQEYu3pXrXzVVtDsDo\nphmoI+Utm1ZkIrTL6m84CFn/w7+vYAEo7jeDlqbOcLeQab0jDLOx9fMN8/m1tRZu\na1QLMLndu/8xKxAH/07uOqQjHbovsvtcMogc7DytOJW4nkwkRy5APLR8lV33Fqvh\ngSJLpJtfXepo4+oMsZCGd4Nw0AinKw\u003d\u003d\n\u003dyF7K\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "64d441d6_5d779e05",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-24T17:38:46Z",
+      "side": 1,
+      "message": "Hmm, I missed GetDirectObjectFor() and GetObjectFor(). Will get to those in the next round.",
+      "revId": "7b321812d1f0a13b1174a683deabcbffbbe5d8f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
