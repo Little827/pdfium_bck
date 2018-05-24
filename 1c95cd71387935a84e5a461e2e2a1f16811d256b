@@ -16,6 +16,24 @@
       "revId": "1c95cd71387935a84e5a461e2e2a1f16811d256b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316a2950_fdb90e7a",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-24T21:04:29Z",
+      "side": 0,
+      "message": "My hunch was that a long time ago at Foxit, XFA forked off of main and then this got added on the main branch only.  So when I merged the two, I dutifully excluded it for the XFA case.  But that\u0027s just a guess.",
+      "parentUuid": "6d5b3f2a_9eeccf30",
+      "revId": "1c95cd71387935a84e5a461e2e2a1f16811d256b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
