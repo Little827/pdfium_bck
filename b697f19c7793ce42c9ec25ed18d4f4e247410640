@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1527103617 -0700\nnonce ACQuaLCJHIx6Eu+FeahDS1cVwU5MrNgZbThH9p3+BSSOYPT80n8WR+krSivd3JBcwrV0oDMj34lk\n\n0000000000000000000000000000000000000000 b697f19c7793ce42c9ec25ed18d4f4e247410640 refs/for/refs/heads/master%notify\u003dNONE,m\u003drename\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlsFwIEACgkQqzYtYVpm\n/XtsLAf+Lu4V2tmC9YFDiE7gZnY/wUibLGZgoTdeCBXLSn+BQczuww476KkqTPdk\nzYisGYz2UATrpl/oJAyrJbo9dcRbE2+Z4Z8YJNKer5o8b2wORhVbQcITdT0MCH/v\ngXwXADam+bnLCsNE5T7YTRXDxTMxSHWPkG4H5676KSc1IrMoQuqFDatzVlxFtV7/\nV7NABRLjlZ4Rl9IBcdq2Um0WEWHqcyJim1raQdsdc0UlrtLWXIWmim2b9yudK40x\n57z3IfCjGl0DUOzqtdLAw1bKpL9fe1UbbJlaRXRZNhwWmhCfXtRCvZsvDEWJo8QZ\nyLyQYcK/fhtpjSl4ffKjGdiyIfEbhg\u003d\u003d\n\u003djQ6Y\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "aef6b757_d5fe177d",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-24T13:18:05Z",
+      "side": 1,
+      "message": "fuzzer_config?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "b697f19c7793ce42c9ec25ed18d4f4e247410640",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
