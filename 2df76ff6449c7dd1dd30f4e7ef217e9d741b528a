@@ -70,6 +70,47 @@
       "revId": "2df76ff6449c7dd1dd30f4e7ef217e9d741b528a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06397af2_ba53ecb3",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-24T13:20:14Z",
+      "side": 1,
+      "message": "If we pull in LibFuzzer does that mean we can build and run the fuzzers from PDFium? If we do it this way is that also true?",
+      "parentUuid": "8c268b20_8f527ae3",
+      "revId": "2df76ff6449c7dd1dd30f4e7ef217e9d741b528a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cda1604_92dc9767",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-24T13:20:14Z",
+      "side": 1,
+      "message": "Can we break this into two groups? group(\"fuzzers\") and group(\"fuzzer_src\")?",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "2df76ff6449c7dd1dd30f4e7ef217e9d741b528a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
