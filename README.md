@@ -111,7 +111,13 @@ use\_sysroot as indicated above.
 ## Building the code
 
 You can build the sample program by running: `ninja -C <directory> pdfium_test`
-You can build the entire product (which includes a few unit tests) by running:
+
+You can build a set of programs for PDFium developers, which includes unit
+tests, by running:
+`ninja -C <directory> pdfium_dev`.
+
+You can build the entire product (which includes everything in the pdfium\_dev
+target and all the fuzzers) by running:
 `ninja -C <directory> pdfium_all`.
 
 ## Running the sample program
