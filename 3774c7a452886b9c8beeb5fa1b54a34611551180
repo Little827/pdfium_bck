@@ -34,6 +34,24 @@
       "revId": "3774c7a452886b9c8beeb5fa1b54a34611551180",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f098c86_5ed16602",
+        "filename": "fpdfsdk/fpdf_save.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-24T01:03:13Z",
+      "side": 0,
+      "message": "Yes, the end result should be:\n\nCPDF_Dictionary* GetDictFor(const ByteString\u0026 key);\nconst CPDF_Dictionary* GetDictFor(const ByteString\u0026 key) const;",
+      "parentUuid": "27615818_91d05864",
+      "revId": "3774c7a452886b9c8beeb5fa1b54a34611551180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
