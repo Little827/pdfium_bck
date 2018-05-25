@@ -22,6 +22,14 @@ CPDFXFA_Page::CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index)
 
 CPDFXFA_Page::~CPDFXFA_Page() {}
 
+CPDF_Page* CPDFXFA_Page::AsPDFPage() {
+  return m_pPDFPage.Get();
+}
+
+CPDFXFA_Page* CPDFXFA_Page::AsXFAPage() {
+  return this;
+}
+
 bool CPDFXFA_Page::LoadPDFPage() {
   if (!m_pContext)
     return false;
