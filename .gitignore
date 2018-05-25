@@ -3,6 +3,7 @@
 /buildtools
 /out
 /testing/corpus
+/testing/libfuzzer
 /third_party/android_ndk
 /third_party/binutils
 /third_party/catapult
