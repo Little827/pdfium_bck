@@ -1,4 +1,90 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1527280245 -0700\nnonce ACQuaLBNtb3gLHZalALh54RL51zyXgbBM58QEAhzvA7UPY2K4gFhPS9rUn+jHCd9NokkHHR3g6TJ\n\n0000000000000000000000000000000000000000 d947833e099b1fec4be8d18c592a0a6dd9f946d2 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlsIcnUACgkQqzYtYVpm\n/XsVzAgAsaoEuSQLLsxIEXSCUxJA7sBgoYy08pLZ+pD13SLZIk6/Cl6RIe0ixfdN\nQ5+vA/wVtLsHTjbBIxjVUdzZIbaw7oKmWrOafSW/PWnjocjdRSZao0eXi6X/QFMj\nNzPtMv8AMzqfFCXk+WZIfGTXIzOLhZ0mr65LO7uAaMPwIZCRdetTEJ5fkcK2W8ne\nod/QD7eVyJK5j2jVFJFMV/VfQtr2e4xK84a9Lyq60LKlBpgwT6APaO8o/VTWHgxh\nnMomFy3D45EPiOFY8Ie+Fu+zEMHKqbXYQ4lDwDj35FYyByoH/phe5WhsOsN88UV1\nRVpgeqw6I2vbNWSZ+tbeQliKvpaRFA\u003d\u003d\n\u003dpGL9\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d76c8dcf_02d2737e",
+        "filename": "core/fpdfdoc/cpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-25T20:40:28Z",
+      "side": 1,
+      "message": "The result gets passed CPDF_Form, which needs a non-const stream.",
+      "revId": "d947833e099b1fec4be8d18c592a0a6dd9f946d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9e408b_c0b6d54c",
+        "filename": "core/fpdfdoc/cpdf_filespec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-25T20:40:28Z",
+      "side": 1,
+      "message": "Most callers want to read out of |pObj|, but there are a few callers that want to write to it vis SetFileName(). So now we have to store |pObj| twice, and provide const/non-const versions of some methods.",
+      "revId": "d947833e099b1fec4be8d18c592a0a6dd9f946d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de038092_a9f8dfa5",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-25T20:40:28Z",
+      "side": 1,
+      "message": "FPDF_GetFieldAttr() is used in many places, but some callers will want to read out of the returned result, and others want to wrote to it.",
+      "revId": "d947833e099b1fec4be8d18c592a0a6dd9f946d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962f892f_46300919",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-25T20:40:28Z",
+      "side": 1,
+      "message": "There is a caller that wants to set something inside the dict.",
+      "revId": "d947833e099b1fec4be8d18c592a0a6dd9f946d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d945d1f_2db8d9fb",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-25T20:40:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t have been const because we call SetRectFor() for something inside.",
+      "revId": "d947833e099b1fec4be8d18c592a0a6dd9f946d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
