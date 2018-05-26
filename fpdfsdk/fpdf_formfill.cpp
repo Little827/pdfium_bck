@@ -111,7 +111,7 @@ CPDFSDK_InterForm* FormHandleToInterForm(FPDF_FORMHANDLE hHandle) {
 
 CPDFSDK_PageView* FormHandleToPageView(FPDF_FORMHANDLE hHandle,
                                        FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   if (!pPage)
     return nullptr;
 
@@ -133,12 +133,13 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
   if (!hHandle)
     return;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   if (!pPage)
     return;
 
 #ifdef PDF_ENABLE_XFA
-  CPDF_Document::Extension* pExtension = pPage->GetDocumentExtension();
+  CPDF_Document::Extension* pExtension =
+      pPage->AsXFAPage()->GetDocumentExtension();
   if (!pExtension)
     return;
   CPDF_Document* pPDFDoc = pExtension->GetPDFDoc();
@@ -220,7 +221,7 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
   }
 
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Page* pXFAPage = UnderlyingFromFPDFPage(page);
+  CPDFXFA_Page* pXFAPage = ToXFAPage(UnderlyingFromFPDFPage(page));
   if (!pXFAPage)
     return -1;
 
@@ -582,7 +583,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_OnBeforeClosePage(FPDF_PAGE page,
   if (!pFormFillEnv)
     return;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   if (!pPage)
     return;
 
@@ -640,7 +641,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
   if (!pFormFillEnv)
     return;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   CPDF_Page* pPDFPage = CPDFPageFromFPDFPage(page);
   if (!pPDFPage)
     return;

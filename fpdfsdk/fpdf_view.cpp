@@ -360,12 +360,12 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageWidth(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   return pPage ? pPage->GetPageWidth() : 0.0;
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageHeight(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   return pPage ? pPage->GetPageHeight() : 0.0;
 }
 
@@ -725,12 +725,12 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
     return;
 
   // Take it back across the API and hold for duration of this function.
-  RetainPtr<UnderlyingPageType> pPage;
+  RetainPtr<IPDF_PageBase> pPage;
   pPage.Unleak(UnderlyingFromFPDFPage(page));
 
 #ifndef PDF_ENABLE_XFA
   CPDFSDK_PageView* pPageView =
-      static_cast<CPDFSDK_PageView*>(pPage->GetView());
+      static_cast<CPDFSDK_PageView*>(pPage->AsPDFPage()->GetView());
   if (!pPageView || pPageView->IsBeingDestroyed())
     return;
 
@@ -777,7 +777,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
   if (!page || !page_x || !page_y)
     return false;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
   Optional<CFX_PointF> pos =
       pPage->DeviceToPage(rect, rotate, CFX_PointF(device_x, device_y));
@@ -802,7 +802,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
   if (!page || !device_x || !device_y)
     return false;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_PageBase* pPage = UnderlyingFromFPDFPage(page);
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
   CFX_PointF page_point(static_cast<float>(page_x), static_cast<float>(page_y));
   Optional<CFX_PointF> pos = pPage->PageToDevice(rect, rotate, page_point);
