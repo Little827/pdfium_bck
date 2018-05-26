@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d57aa44_659286e9",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-26T02:31:46Z",
+      "side": 1,
+      "message": "nit: blank line above.",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab97955_0bfaf56d",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-26T02:31:46Z",
+      "side": 1,
+      "message": "Does this work for standalone PDFium builds?",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4045ee10_80021261",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-26T02:31:46Z",
+      "side": 1,
+      "message": "test \u003d args[\u0027tests\u0027] if args[\u0027tests\u0027] else COVERAGE_TESTS.keys()",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7fbbe2c_79918de6",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-26T02:31:46Z",
+      "side": 1,
+      "message": "Do we care?",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
