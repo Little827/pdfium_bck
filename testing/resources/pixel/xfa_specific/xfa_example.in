@@ -1,6 +1,5 @@
 {{header}}
 
-%% Original object ID: 24 0
 {{object 1 0}}
 <<
   /AcroForm 2 0 R
@@ -15,7 +14,6 @@
 >>
 endobj
 
-%% Original object ID: 32 0
 {{object 2 0}}
 <<
   /XFA [
@@ -51,6 +49,7 @@ stream
     </pageSet>
     <subform w="576pt" h="756pt" name="Page1">
       <draw name="HelloWorld" y="0.5in" x="0.5in" w="5in" h="2in">
+       <font typeface="Ahem" size="20pt"/>
         <value>
           <text>Hello, world.</text>
         </value>
