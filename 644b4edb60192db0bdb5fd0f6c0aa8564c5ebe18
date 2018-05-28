@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc77e3d5_b94b7846",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2577,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-28T18:40:24Z",
+      "side": 1,
+      "message": "The code from this new method originally used CFX_FixedBufGrow. But it currently does the std::max when computing the vector size, so no need to bother changing it to CFX_FixedBufGrow.",
+      "range": {
+        "startLine": 2577,
+        "startChar": 8,
+        "endLine": 2577,
+        "endChar": 20
+      },
+      "revId": "644b4edb60192db0bdb5fd0f6c0aa8564c5ebe18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
