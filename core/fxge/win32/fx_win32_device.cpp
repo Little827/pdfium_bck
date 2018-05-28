@@ -674,20 +674,25 @@ bool CFX_Win32FontInfo::GetFontCharset(void* hFont, int* charset) {
 WindowsPrintMode g_pdfium_print_mode = WindowsPrintMode::kModeEmf;
 
 std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
-    const char** pUnused) {
-  if (IsGDIEnabled())
+    const char** pUserPaths) {
+  if (!pUserPaths && IsGDIEnabled())
     return std::unique_ptr<SystemFontInfoIface>(new CFX_Win32FontInfo);
 
-  // Select the fallback font information class if GDI is disabled.
+  // Select the fallback font information class if GDI is not being used.
   CFX_Win32FallbackFontInfo* pInfoFallback = new CFX_Win32FallbackFontInfo;
   // Construct the font path manually, SHGetKnownFolderPath won't work under
   // a restrictive sandbox.
-  CHAR windows_path[MAX_PATH] = {};
-  DWORD path_len = ::GetWindowsDirectoryA(windows_path, MAX_PATH);
-  if (path_len > 0 && path_len < MAX_PATH) {
-    ByteString fonts_path(windows_path);
-    fonts_path += "\\Fonts";
-    pInfoFallback->AddPath(fonts_path);
+  if (!pUserPaths) {
+    CHAR windows_path[MAX_PATH] = {};
+    DWORD path_len = ::GetWindowsDirectoryA(windows_path, MAX_PATH);
+    if (path_len > 0 && path_len < MAX_PATH) {
+      ByteString fonts_path(windows_path);
+      fonts_path += "\\Fonts";
+      pInfoFallback->AddPath(fonts_path);
+    }
+  } else {
+    for (const char** pPath = pUserPaths; *pPath; ++pPath)
+      pInfoFallback->AddPath(*pPath);
   }
   return std::unique_ptr<SystemFontInfoIface>(pInfoFallback);
 }
@@ -698,10 +703,11 @@ void CFX_GEModule::InitPlatform() {
   ver.dwOSVersionInfoSize = sizeof(ver);
   GetVersionEx(&ver);
   pPlatformData->m_bHalfTone = ver.dwMajorVersion >= 5;
-  if (IsGDIEnabled())
+  if (!m_pUserFontPaths && IsGDIEnabled())
     pPlatformData->m_GdiplusExt.Load();
   m_pPlatformData = pPlatformData;
-  m_pFontMgr->SetSystemFontInfo(SystemFontInfoIface::CreateDefault(nullptr));
+  m_pFontMgr->SetSystemFontInfo(
+      SystemFontInfoIface::CreateDefault(m_pUserFontPaths));
 }
 
 void CFX_GEModule::DestroyPlatform() {
