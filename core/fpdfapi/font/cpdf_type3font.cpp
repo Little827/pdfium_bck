@@ -129,7 +129,7 @@ CPDF_Type3Char* CPDF_Type3Font::LoadChar(uint32_t charcode) {
   return pCachedChar;
 }
 
-uint32_t CPDF_Type3Font::GetCharWidthF(uint32_t charcode) {
+int CPDF_Type3Font::GetCharWidthF(uint32_t charcode) {
   if (charcode >= FX_ArraySize(m_CharWidthL))
     charcode = 0;
 

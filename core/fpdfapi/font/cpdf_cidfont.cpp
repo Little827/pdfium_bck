@@ -507,7 +507,7 @@ FX_RECT CPDF_CIDFont::GetCharBBox(uint32_t charcode) {
   return rect;
 }
 
-uint32_t CPDF_CIDFont::GetCharWidthF(uint32_t charcode) {
+int CPDF_CIDFont::GetCharWidthF(uint32_t charcode) {
   if (charcode < 0x80 && m_bAnsiWidthsFixed)
     return (charcode >= 32 && charcode < 127) ? 500 : 0;
 
@@ -517,7 +517,7 @@ uint32_t CPDF_CIDFont::GetCharWidthF(uint32_t charcode) {
   for (size_t i = 0; i < size; i += 3) {
     const uint32_t* pEntry = pList + i;
     if (IsMetricForCID(pEntry, cid))
-      return pEntry[2];
+      return static_cast<int>(pEntry[2]);
   }
   return m_DefaultWidth;
 }

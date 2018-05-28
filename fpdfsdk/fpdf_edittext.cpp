@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include <algorithm>
-#include <limits>
 #include <map>
 #include <memory>
 #include <utility>
@@ -256,10 +254,7 @@ CPDF_Font* LoadSimpleFont(CPDF_Document* pDoc,
   fontDict->SetNewFor<CPDF_Number>("FirstChar", static_cast<int>(currentChar));
   CPDF_Array* widthsArray = pDoc->NewIndirect<CPDF_Array>();
   while (true) {
-    uint32_t width =
-        std::min(pFont->GetGlyphWidth(glyphIndex),
-                 static_cast<uint32_t>(std::numeric_limits<int>::max()));
-    widthsArray->AddNew<CPDF_Number>(static_cast<int>(width));
+    widthsArray->AddNew<CPDF_Number>(pFont->GetGlyphWidth(glyphIndex));
     uint32_t nextChar =
         FXFT_Get_Next_Char(pFont->GetFace(), currentChar, &glyphIndex);
     // Simple fonts have 1-byte charcodes only.

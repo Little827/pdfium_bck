@@ -746,7 +746,7 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
       continue;
     }
 
-    uint32_t iCharWidth = abs(iWidth);
+    int32_t iCharWidth = abs(iWidth);
     bool bEmptyChar =
         (dwCharType >= FX_CHARTYPE_Tab && dwCharType <= FX_CHARTYPE_Control);
     if (!bEmptyChar)

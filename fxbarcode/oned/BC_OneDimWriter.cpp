@@ -143,8 +143,8 @@ void CBC_OneDimWriter::CalcTextInfo(const ByteString& text,
   for (size_t j = 0; j < length; j++) {
     pCharCode[j] = encoding->CharCodeFromUnicode(text[j]);
     int32_t glyph_code = encoding->GlyphFromCharCode(pCharCode[j]);
-    uint32_t glyph_value = cFont->GetGlyphWidth(glyph_code);
-    float temp = glyph_value * fontSize / 1000.0;
+    int32_t glyph_value = cFont->GetGlyphWidth(glyph_code);
+    float temp = (float)glyph_value * fontSize / 1000.0;
     charWidth += temp;
   }
   charsLen = charWidth;
