@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c95e4e1a_cd3dfb73",
+        "filename": "fpdfsdk/fpdf_editpath.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-05-28T20:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d331474_3a49afc5",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 18
+      },
+      "revId": "d47bb94dc82bed6c9210c2f13d100e47741eec03",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d79f694_22ee0382",
         "filename": "fpdfsdk/fpdf_editpath.cpp",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "d47bb94dc82bed6c9210c2f13d100e47741eec03",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec6c8de_6f8c5edb",
+        "filename": "fpdfsdk/fpdf_editpath.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-05-28T20:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d79f694_22ee0382",
+      "revId": "d47bb94dc82bed6c9210c2f13d100e47741eec03",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "d47bb94dc82bed6c9210c2f13d100e47741eec03",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc964292_865761e2",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-05-28T20:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e490de8a_a827f1d8",
+      "range": {
+        "startLine": 923,
+        "startChar": 42,
+        "endLine": 924,
+        "endChar": 11
+      },
+      "revId": "d47bb94dc82bed6c9210c2f13d100e47741eec03",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
