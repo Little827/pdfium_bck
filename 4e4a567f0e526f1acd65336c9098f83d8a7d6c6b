@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e319218b_1088ce72",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-28T13:48:34Z",
+      "side": 1,
+      "message": "Can we drop the base and just make it IPDF_Page?",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d92b05f5_7a0e6eed",
+        "filename": "fpdfsdk/cfx_systemhandler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-28T13:48:34Z",
+      "side": 1,
+      "message": "followup: Rename this to just GetPage?",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9e110e_78150e9b",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-28T13:48:34Z",
+      "side": 1,
+      "message": "IPDFPageFromFPDFPage",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14316b66_22b9922a",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-28T13:48:34Z",
+      "side": 1,
+      "message": "FPDFPageFromIPDFPage",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d7179f_d1744050",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-28T13:48:34Z",
+      "side": 1,
+      "message": "Make SetView a method on IPDF_Page and make it do nothing in XFA?",
+      "range": {
+        "startLine": 42,
+        "startChar": 14,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a22a0c4_9306b0dc",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-28T13:48:34Z",
+      "side": 1,
+      "message": "Would adding a IPDF_Page GetDocument clean this one up?",
+      "range": {
+        "startLine": 197,
+        "startChar": 11,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
