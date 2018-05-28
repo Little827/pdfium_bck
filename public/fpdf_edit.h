@@ -929,6 +929,18 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_SetDrawMode(FPDF_PAGEOBJECT path,
                                                          int fillmode,
                                                          FPDF_BOOL stroke);
 
+// Experimental API.
+// Get the drawing mode of a path.
+//
+// path     - the handle to the path object.
+// fillmode - the filling mode of the path: one of the FPDF_FILLMODE_* values.
+// stroke   - a boolean specifying if the path is stroked or not.
+//
+// Returns TRUE on success
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_GetDrawMode(FPDF_PAGEOBJECT path,
+                                                         int* fillmode,
+                                                         FPDF_BOOL* stroke);
+
 // Create a new text object using one of the standard PDF fonts.
 //
 // document   - handle to the document.
