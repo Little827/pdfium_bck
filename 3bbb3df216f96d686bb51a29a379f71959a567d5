@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9852b7a2_aa7c6df7",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-28T15:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d57aa44_659286e9",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cab97955_0bfaf56d",
         "filename": "testing/tools/coverage/coverage_report.py",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "218960cb_8861f1ab",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-28T15:16:18Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "cab97955_0bfaf56d",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "56857c36_26144f2f",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-28T15:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4045ee10_80021261",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7fbbe2c_79918de6",
         "filename": "testing/tools/coverage/coverage_report.py",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d619c0_6bb8d660",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-28T15:16:18Z",
+      "side": 1,
+      "message": "Probably not? The primary reason this was included is that the existing tools include v8/ in the report, so they could be directly compared.\n\nLooking at the repo, I don\u0027t think we are carrying any patches against v8/, so we can skip it in the report. Is there a reason why v8 isn\u0027t under third_party/?",
+      "parentUuid": "f7fbbe2c_79918de6",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
