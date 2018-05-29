@@ -46,6 +46,30 @@
       "revId": "7623fa86ed79be54dfc022ff731a14faf098af4f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "395a1cd5_be0c97ee",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-29T23:43:02Z",
+      "side": 1,
+      "message": "By that, I mean, in a future CL we may not always create an extension even if XFA ...",
+      "parentUuid": "1b031ccf_c44648dd",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 21
+      },
+      "revId": "7623fa86ed79be54dfc022ff731a14faf098af4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
