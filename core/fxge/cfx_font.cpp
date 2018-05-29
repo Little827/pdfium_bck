@@ -535,7 +535,8 @@ void CFX_Font::AdjustMMParams(int glyph_index,
       FXFT_Free(m_Face, pMasters);
       return;
     }
-    int param = min_param + (max_param - min_param) * (dest_width - min_width) /
+    int param = min_param + (max_param - min_param) *
+                                (static_cast<int>(dest_width) - min_width) /
                                 (max_width - min_width);
     coords[1] = param;
   }
