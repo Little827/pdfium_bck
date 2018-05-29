@@ -29,13 +29,17 @@ CPVT_FontMap::~CPVT_FontMap() {}
 CPDF_Font* CPVT_FontMap::GetAnnotSysPDFFont(CPDF_Document* pDoc,
                                             CPDF_Dictionary* pResDict,
                                             ByteString* sSysFontAlias) {
-  if (!pDoc || !pResDict)
+  if (!pDoc)
     return nullptr;
 
-  CPDF_Dictionary* pFormDict = pDoc->GetRoot()->GetDictFor("AcroForm");
-  CPDF_Font* pPDFFont = AddNativeInterFormFont(pFormDict, pDoc, sSysFontAlias);
+  CPDF_Font* pPDFFont = CPDF_InterForm::GetDefaultFontForDoc(pDoc);
   if (!pPDFFont)
     return nullptr;
+
+  *sSysFontAlias = pPDFFont->GetBaseFont();
+
+  if (!pResDict)
+    return pPDFFont;
 
   CPDF_Dictionary* pFontList = pResDict->GetDictFor("Font");
   if (pFontList && !pFontList->KeyExist(*sSysFontAlias)) {
