@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7ca5ca5_a3e01bb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-29T23:27:03Z",
+      "side": 1,
+      "message": "These don\u0027t math the DEPS file changes. Can you also shorten the hash to 8 digits? I can\u0027t edit the commit message, or I would have just done it.",
+      "revId": "3e12dd8d7178ff16c7d0c962b7588592d9e460de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f85aa3a6_074ced4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-29T23:27:03Z",
+      "side": 1,
+      "message": "PDFium CLs need to specify the project:\n\nBUG\u003dchromium:845700",
+      "revId": "3e12dd8d7178ff16c7d0c962b7588592d9e460de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
