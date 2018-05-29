@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c96fe9df_15d7c6ba",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7262
+      },
+      "writtenOn": "2018-05-29T14:50:43Z",
+      "side": 1,
+      "message": "this is not a requirement anymore, but still a preferred option",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb30660b_cf0fd7ee",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 7262
+      },
+      "writtenOn": "2018-05-29T14:50:43Z",
+      "side": 1,
+      "message": "To get this binary downloaded, we need to run coverage.py script at least once, as per https://cs.chromium.org/chromium/src/tools/code_coverage/coverage.py?q\u003dcoverage.py\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d475\n\nOtherwise, after every clang roll llvm-cov and llvm-profdata binaries get removed, as they are not included in the default clang bundle.\n\nTo download the binaries, it\u0027s enough to just launch the script once, e.g. https://chrome-internal.googlesource.com/chrome/tools/code-coverage/+/master/scripts/code_coverage_loop.bash#36",
+      "range": {
+        "startLine": 199,
+        "startChar": 59,
+        "endLine": 199,
+        "endChar": 72
+      },
+      "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91eaadba_3e55d98a",
+        "filename": "tools/code_coverage/coverage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7262
+      },
+      "writtenOn": "2018-05-29T14:50:43Z",
+      "side": 1,
+      "message": "Do you plan to update this and other files from Chromium repo? Does it require a manual roll, or is it like DEPS thing?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
