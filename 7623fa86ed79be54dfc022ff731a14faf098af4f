@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e467b520_e449b05e",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-29T23:24:02Z",
+      "side": 1,
+      "message": "Why not have this in the constructor of the CPDF_Document?",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 21
+      },
+      "revId": "7623fa86ed79be54dfc022ff731a14faf098af4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
