@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18618a5e_bb5a0603",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-29T21:15:29Z",
+      "side": 1,
+      "message": "nit: maybe set to FPDF_FILLMODE_NONE? Just so that it\u0027s clear that it is not initially set to Alternate",
+      "range": {
+        "startLine": 245,
+        "startChar": 17,
+        "endLine": 245,
+        "endChar": 18
+      },
+      "revId": "0af78abfc59be20cf7de14e9850ea34e5550dfda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
