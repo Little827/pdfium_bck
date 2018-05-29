@@ -23,6 +23,10 @@
 #include "core/fpdfdoc/cpdf_filespec.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "core/fxcrt/fx_codepage.h"
+#include "core/fxcrt/fx_system.h"
+#include "core/fxge/cfx_fontmapper.h"
+#include "core/fxge/cfx_fontmgr.h"
+#include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/fx_font.h"
 #include "third_party/base/ptr_util.h"
@@ -80,7 +84,8 @@ void InitDict(CPDF_Dictionary*& pFormDict, CPDF_Document* pDocument) {
       AddFont(pFormDict, pDocument, pFont, &csBaseName);
 
     if (charSet != FX_CHARSET_ANSI) {
-      ByteString csFontName = CPDF_InterForm::GetNativeFont(charSet, nullptr);
+      ByteString csFontName =
+          CPDF_InterForm::GetDefaultFontNameForCharset(charSet);
       if (!pFont || csFontName != "Helvetica") {
         pFont = CPDF_InterForm::AddNativeFont(pDocument);
         if (pFont) {
@@ -288,7 +293,7 @@ CPDF_Font* AddNativeFont(CPDF_Dictionary*& pFormDict,
     *csNameTag = csTemp;
     return pFont;
   }
-  ByteString csFontName = CPDF_InterForm::GetNativeFont(charSet, nullptr);
+  ByteString csFontName = CPDF_InterForm::GetDefaultFontNameForCharset(charSet);
   if (!csFontName.IsEmpty() &&
       FindFont(pFormDict, pDocument, csFontName, pFont, csNameTag)) {
     return pFont;
@@ -324,53 +329,81 @@ class CFieldNameExtractor {
   const wchar_t* m_pEnd;
 };
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-typedef struct {
-  bool bFind;
-  LOGFONTA lf;
-} PDF_FONTDATA;
+bool FindNativeTrueTypeFont(const ByteString& sFontFaceName) {
+  CFX_FontMgr* pFontMgr = CFX_GEModule::Get()->GetFontMgr();
+  if (!pFontMgr)
+    return false;
 
-static int CALLBACK EnumFontFamExProc(ENUMLOGFONTEXA* lpelfe,
-                                      NEWTEXTMETRICEX* lpntme,
-                                      DWORD FontType,
-                                      LPARAM lParam) {
-  if (FontType != 0x004 || strchr(lpelfe->elfLogFont.lfFaceName, '@'))
-    return 1;
+  CFX_FontMapper* pFontMapper = pFontMgr->GetBuiltinMapper();
+  if (!pFontMapper)
+    return false;
 
-  PDF_FONTDATA* pData = (PDF_FONTDATA*)lParam;
-  memcpy(&pData->lf, &lpelfe->elfLogFont, sizeof(LOGFONTA));
-  pData->bFind = true;
-  return 0;
-}
+  if (pFontMapper->m_InstalledTTFonts.empty())
+    pFontMapper->LoadInstalledFonts();
 
-bool RetrieveSpecificFont(LOGFONTA& lf) {
-  PDF_FONTDATA fd;
-  memset(&fd, 0, sizeof(PDF_FONTDATA));
-  HDC hDC = ::GetDC(nullptr);
-  EnumFontFamiliesExA(hDC, &lf, (FONTENUMPROCA)EnumFontFamExProc, (LPARAM)&fd,
-                      0);
-  ::ReleaseDC(nullptr, hDC);
-  if (fd.bFind)
-    memcpy(&lf, &fd.lf, sizeof(LOGFONTA));
-
-  return fd.bFind;
-}
-
-bool RetrieveSpecificFont(uint8_t charSet,
-                          uint8_t pitchAndFamily,
-                          LPCSTR pcsFontName,
-                          LOGFONTA& lf) {
-  memset(&lf, 0, sizeof(LOGFONTA));
-  lf.lfCharSet = charSet;
-  lf.lfPitchAndFamily = pitchAndFamily;
-  if (pcsFontName) {
-    // TODO(dsinclair): Should this be strncpy?
-    // NOLINTNEXTLINE(runtime/printf)
-    strcpy(lf.lfFaceName, pcsFontName);
+  for (const auto& font : pFontMapper->m_InstalledTTFonts) {
+    if (font.Compare(sFontFaceName.AsStringView()))
+      return true;
   }
-  return RetrieveSpecificFont(lf);
+  for (const auto& fontPair : pFontMapper->m_LocalizedTTFonts) {
+    if (fontPair.first.Compare(sFontFaceName.AsStringView()))
+      return true;
+  }
+  return false;
 }
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+
+struct FX_CHARSET_MAP {
+  uint16_t charset;
+  uint16_t codepage;
+};
+
+const FX_CHARSET_MAP g_FXCharset2CodePageTable[] = {
+    {FX_CHARSET_ANSI, FX_CODEPAGE_MSWin_WesternEuropean},
+    {FX_CHARSET_Default, FX_CODEPAGE_DefANSI},
+    {FX_CHARSET_Symbol, FX_CODEPAGE_Symbol},
+    {FX_CHARSET_MAC_Roman, FX_CODEPAGE_MAC_Roman},
+    {FX_CHARSET_MAC_ShiftJIS, FX_CODEPAGE_MAC_ShiftJIS},
+    {FX_CHARSET_MAC_Korean, FX_CODEPAGE_MAC_Korean},
+    {FX_CHARSET_MAC_ChineseSimplified, FX_CODEPAGE_MAC_ChineseSimplified},
+    {FX_CHARSET_MAC_ChineseTraditional, FX_CODEPAGE_MAC_ChineseTraditional},
+    {FX_CHARSET_MAC_Hebrew, FX_CODEPAGE_MAC_Hebrew},
+    {FX_CHARSET_MAC_Arabic, FX_CODEPAGE_MAC_Arabic},
+    {FX_CHARSET_MAC_Greek, FX_CODEPAGE_MAC_Greek},
+    {FX_CHARSET_MAC_Turkish, FX_CODEPAGE_MAC_Turkish},
+    {FX_CHARSET_MAC_Thai, FX_CODEPAGE_MAC_Thai},
+    {FX_CHARSET_MAC_EasternEuropean, FX_CODEPAGE_MAC_EasternEuropean},
+    {FX_CHARSET_MAC_Cyrillic, FX_CODEPAGE_MAC_Cyrillic},
+    {FX_CHARSET_ShiftJIS, FX_CODEPAGE_ShiftJIS},
+    {FX_CHARSET_Hangul, FX_CODEPAGE_Hangul},
+    {FX_CHARSET_Johab, FX_CODEPAGE_Johab},
+    {FX_CHARSET_ChineseSimplified, FX_CODEPAGE_ChineseSimplified},
+    {FX_CHARSET_ChineseTraditional, FX_CODEPAGE_ChineseTraditional},
+    {FX_CHARSET_MSWin_Greek, FX_CODEPAGE_MSWin_Greek},
+    {FX_CHARSET_MSWin_Turkish, FX_CODEPAGE_MSWin_Turkish},
+    {FX_CHARSET_MSWin_Vietnamese, FX_CODEPAGE_MSWin_Vietnamese},
+    {FX_CHARSET_MSWin_Hebrew, FX_CODEPAGE_MSWin_Hebrew},
+    {FX_CHARSET_MSWin_Arabic, FX_CODEPAGE_MSWin_Arabic},
+    {FX_CHARSET_MSWin_Baltic, FX_CODEPAGE_MSWin_Baltic},
+    {FX_CHARSET_MSWin_Cyrillic, FX_CODEPAGE_MSWin_Cyrillic},
+    {FX_CHARSET_Thai, FX_CODEPAGE_MSDOS_Thai},
+    {FX_CHARSET_MSWin_EasternEuropean, FX_CODEPAGE_MSWin_EasternEuropean},
+    {FX_CHARSET_US, FX_CODEPAGE_MSDOS_US},
+    {FX_CHARSET_OEM, FX_CODEPAGE_MSDOS_WesternEuropean},
+};
+
+int CharSet2CP(int charset) {
+  auto* result =
+      std::lower_bound(std::begin(g_FXCharset2CodePageTable),
+                       std::end(g_FXCharset2CodePageTable), charset,
+                       [](const FX_CHARSET_MAP& iter, const uint16_t& charset) {
+                         return iter.charset < charset;
+                       });
+  if (result != std::end(g_FXCharset2CodePageTable) &&
+      result->charset == charset) {
+    return result->codepage;
+  }
+  return 0xFFFF;
+}
 
 }  // namespace
 
@@ -564,9 +597,8 @@ CPDF_Font* AddNativeInterFormFont(CPDF_Dictionary*& pFormDict,
 
 // static
 uint8_t CPDF_InterForm::GetNativeCharSet() {
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
   uint8_t charSet = FX_CHARSET_ANSI;
-  UINT iCodePage = ::GetACP();
+  const int iCodePage = FXSYS_GetACP();
   switch (iCodePage) {
     case FX_CODEPAGE_ShiftJIS:
       charSet = FX_CHARSET_ShiftJIS;
@@ -618,9 +650,6 @@ uint8_t CPDF_InterForm::GetNativeCharSet() {
       break;
   }
   return charSet;
-#else
-  return 0;
-#endif
 }
 
 CPDF_InterForm::CPDF_InterForm(CPDF_Document* pDocument)
@@ -722,46 +751,60 @@ CPDF_Font* CPDF_InterForm::AddStandardFont(CPDF_Document* pDocument,
   return pDocument->AddStandardFont(csFontName.c_str(), &encoding);
 }
 
-ByteString CPDF_InterForm::GetNativeFont(uint8_t charSet, void* pLogFont) {
-  ByteString csFontName;
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-  LOGFONTA lf = {};
-  if (charSet == FX_CHARSET_ANSI) {
-    csFontName = "Helvetica";
-    return csFontName;
-  }
-  bool bRet = false;
-  if (charSet == FX_CHARSET_ShiftJIS) {
-    bRet = RetrieveSpecificFont(charSet, DEFAULT_PITCH | FF_DONTCARE,
-                                "MS Mincho", lf);
-  } else if (charSet == FX_CHARSET_ChineseSimplified) {
-    bRet = RetrieveSpecificFont(charSet, DEFAULT_PITCH | FF_DONTCARE, "SimSun",
-                                lf);
-  } else if (charSet == FX_CHARSET_ChineseTraditional) {
-    bRet = RetrieveSpecificFont(charSet, DEFAULT_PITCH | FF_DONTCARE, "MingLiU",
-                                lf);
-  }
-  if (!bRet) {
-    bRet = RetrieveSpecificFont(charSet, DEFAULT_PITCH | FF_DONTCARE,
-                                "Arial Unicode MS", lf);
-  }
-  if (!bRet) {
-    bRet = RetrieveSpecificFont(charSet, DEFAULT_PITCH | FF_DONTCARE,
-                                "Microsoft Sans Serif", lf);
-  }
-  if (!bRet) {
-    bRet =
-        RetrieveSpecificFont(charSet, DEFAULT_PITCH | FF_DONTCARE, nullptr, lf);
-  }
-  if (bRet) {
-    if (pLogFont)
-      memcpy(pLogFont, &lf, sizeof(LOGFONTA));
+// static
+CPDF_Font* CPDF_InterForm::GetDefaultFontForDoc(CPDF_Document* pDocument) {
+  const auto charSet = GetNativeCharSet();
+  const ByteString csFontName =
+      CPDF_InterForm::GetDefaultFontNameForCharset(charSet);
+  if (csFontName.IsEmpty())
+    return CPDF_Font::GetStockFont(pDocument, "Helvetica");
 
-    csFontName = lf.lfFaceName;
-    return csFontName;
+  CPDF_Dictionary* pFormDict = nullptr;
+
+  InitDict(pFormDict, pDocument);
+  CPDF_Font* pFont = nullptr;
+  ByteString csNameTag;
+  if (FindFont(pFormDict, pDocument, csFontName, pFont, &csNameTag)) {
+    return pFont;
   }
-#endif
-  return csFontName;
+  pFont = CPDF_InterForm::AddNativeFont(charSet, pDocument);
+  if (pFont) {
+    AddFont(pFormDict, pDocument, pFont, &csNameTag);
+    return pFont;
+  }
+
+  return CPDF_Font::GetStockFont(pDocument, "Helvetica");
+}
+
+ByteString CPDF_InterForm::GetDefaultFontNameForCharset(uint8_t iCharSet) {
+  if (iCharSet == FX_CHARSET_ShiftJIS && FindNativeTrueTypeFont("MS Mincho"))
+    return "MS Mincho";
+
+  if (iCharSet == FX_CHARSET_ChineseSimplified &&
+      FindNativeTrueTypeFont("SimSun")) {
+    return "SimSun";
+  }
+
+  if (iCharSet == FX_CHARSET_ChineseTraditional &&
+      FindNativeTrueTypeFont("MingLiU")) {
+    return "SimSun";
+  }
+
+  if (FindNativeTrueTypeFont("Arial Unicode MS"))
+    return "Arial Unicode MS";
+
+  if (FindNativeTrueTypeFont("Arial"))
+    return "Arial";
+
+  if (FindNativeTrueTypeFont("Microsoft Sans Serif"))
+    return "Microsoft Sans Serif";
+
+  auto* pFontMapper = CFX_GEModule::Get()->GetFontMgr()->GetBuiltinMapper();
+  pFontMapper->LoadInstalledFonts();
+  if (!pFontMapper->m_InstalledTTFonts.empty())
+    return pFontMapper->m_InstalledTTFonts[0];
+
+  return "";
 }
 
 CPDF_Font* CPDF_InterForm::AddNativeFont(uint8_t charSet,
@@ -769,15 +812,14 @@ CPDF_Font* CPDF_InterForm::AddNativeFont(uint8_t charSet,
   if (!pDocument)
     return nullptr;
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-  LOGFONTA lf;
-  ByteString csFontName = GetNativeFont(charSet, &lf);
+  ByteString csFontName = GetDefaultFontNameForCharset(charSet);
   if (!csFontName.IsEmpty()) {
     if (csFontName == "Helvetica")
       return AddStandardFont(pDocument, csFontName);
-    return pDocument->AddWindowsFont(&lf, false, true);
+    auto pFXFont = pdfium::MakeUnique<CFX_Font>();
+    pFXFont->LoadSubst(csFontName, true, 0, 0, 0, CharSet2CP(charSet), false);
+    return pDocument->AddFont(pFXFont.get(), charSet, false);
   }
-#endif
   return nullptr;
 }
 
