@@ -19,7 +19,7 @@ class MockIndirectObjectHolder : public CPDF_IndirectObjectHolder {
   MockIndirectObjectHolder() {}
   ~MockIndirectObjectHolder() override {}
 
-  MOCK_METHOD1(ParseIndirectObject,
+  MOCK_METHOD1(MockParseIndirectObject,
                std::unique_ptr<CPDF_Object>(uint32_t objnum));
 };
 
@@ -27,9 +27,9 @@ class MockIndirectObjectHolder : public CPDF_IndirectObjectHolder {
 
 TEST(CPDF_IndirectObjectHolderTest, RecursiveParseOfSameObject) {
   MockIndirectObjectHolder mock_holder;
-  // ParseIndirectObject should not be called again on recursively same object
-  // parse request.
-  EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_))
+  // MockParseIndirectObject should not be called again on recursively same
+  // object parse request.
+  EXPECT_CALL(mock_holder, MockParseIndirectObject(::testing::_))
       .WillOnce(::testing::WithArg<0>(::testing::Invoke(
           [&mock_holder](uint32_t objnum) -> std::unique_ptr<CPDF_Object> {
             const CPDF_Object* same_parse =
@@ -45,11 +45,11 @@ TEST(CPDF_IndirectObjectHolderTest, GetObjectMethods) {
   static constexpr uint32_t kObjNum = 1000;
   MockIndirectObjectHolder mock_holder;
 
-  EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_)).Times(0);
+  EXPECT_CALL(mock_holder, MockParseIndirectObject(::testing::_)).Times(0);
   EXPECT_FALSE(mock_holder.GetIndirectObject(kObjNum));
   ::testing::Mock::VerifyAndClearExpectations(&mock_holder);
 
-  EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_))
+  EXPECT_CALL(mock_holder, MockParseIndirectObject(::testing::_))
       .WillOnce(::testing::WithArg<0>(::testing::Invoke(
           [](uint32_t objnum) -> std::unique_ptr<CPDF_Object> {
             return pdfium::MakeUnique<CPDF_Null>();
@@ -57,7 +57,7 @@ TEST(CPDF_IndirectObjectHolderTest, GetObjectMethods) {
   EXPECT_TRUE(mock_holder.GetOrParseIndirectObject(kObjNum));
   ::testing::Mock::VerifyAndClearExpectations(&mock_holder);
 
-  EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_)).Times(0);
+  EXPECT_CALL(mock_holder, MockParseIndirectObject(::testing::_)).Times(0);
   ASSERT_TRUE(mock_holder.GetIndirectObject(kObjNum));
   ::testing::Mock::VerifyAndClearExpectations(&mock_holder);
 
@@ -67,7 +67,7 @@ TEST(CPDF_IndirectObjectHolderTest, GetObjectMethods) {
 TEST(CPDF_IndirectObjectHolderTest, ParseInvalidObjNum) {
   MockIndirectObjectHolder mock_holder;
 
-  EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_)).Times(0);
+  EXPECT_CALL(mock_holder, MockParseIndirectObject(::testing::_)).Times(0);
   EXPECT_FALSE(
       mock_holder.GetOrParseIndirectObject(CPDF_Object::kInvalidObjNum));
 }
@@ -75,7 +75,7 @@ TEST(CPDF_IndirectObjectHolderTest, ParseInvalidObjNum) {
 TEST(CPDF_IndirectObjectHolderTest, ReplaceObjectWithInvalidObjNum) {
   MockIndirectObjectHolder mock_holder;
 
-  EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_)).Times(0);
+  EXPECT_CALL(mock_holder, MockParseIndirectObject(::testing::_)).Times(0);
   EXPECT_FALSE(mock_holder.ReplaceIndirectObjectIfHigherGeneration(
       CPDF_Object::kInvalidObjNum, pdfium::MakeUnique<CPDF_Null>()));
 }
