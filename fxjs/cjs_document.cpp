@@ -442,7 +442,7 @@ CJS_Return CJS_Document::removeField(
     ++rcAnnot.top;
 
     std::vector<CFX_FloatRect> aRefresh(1, rcAnnot);
-    UnderlyingPageType* pPage = pWidget->GetUnderlyingPage();
+    IPDF_Page* pPage = pWidget->GetPage();
     ASSERT(pPage);
 
     // If there is currently no pageview associated with the page being used
@@ -1256,8 +1256,7 @@ CJS_Return CJS_Document::getPageNthWord(
   if (!pPageDict)
     return CJS_Return(false);
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, pPageDict, true);
-  page->ParseContent();
+  RetainPtr<CPDF_Page> page = pDocument->GetOrCreatePDFPage(pPageDict);
 
   int nWords = 0;
   WideString swRet;
@@ -1305,8 +1304,7 @@ CJS_Return CJS_Document::getPageNumWords(
   if (!pPageDict)
     return CJS_Return(false);
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, pPageDict, true);
-  page->ParseContent();
+  RetainPtr<CPDF_Page> page = pDocument->GetOrCreatePDFPage(pPageDict);
 
   int nWords = 0;
   for (auto& pPageObj : *page->GetPageObjectList()) {

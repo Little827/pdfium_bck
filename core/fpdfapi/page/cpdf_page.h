@@ -10,8 +10,10 @@
 #include <memory>
 
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
+#include "core/fpdfapi/page/ipdf_page.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/observable.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/optional.h"
@@ -19,39 +21,50 @@
 class CPDF_Dictionary;
 class CPDF_Document;
 class CPDF_Object;
+class CPDF_Page;
 class CPDF_PageRenderCache;
 class CPDF_PageRenderContext;
 
-class CPDF_Page : public Retainable, public CPDF_PageObjectHolder {
+// Small layering violation, incomplete type and always null if non-XFA.
+class CPDFXFA_Page;
+
+class CPDF_Page : public IPDF_Page,
+                  public Observable<CPDF_Page>,
+                  public CPDF_PageObjectHolder {
  public:
   class View {};  // Caller implements as desired, empty here due to layering.
-  class Extension : public Retainable {};  // XFA page parent class, layering.
 
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
+  // IPDF_Page:
+  CPDF_Page* AsPDFPage() override;
+  CPDFXFA_Page* AsXFAPage() override;
+  CPDF_Document* GetDocument() const override;
+  float GetPageWidth() const override;
+  float GetPageHeight() const override;
+  CFX_Matrix GetDisplayMatrix(const FX_RECT& rect, int iRotate) const override;
+  Optional<CFX_PointF> DeviceToPage(
+      const FX_RECT& rect,
+      int rotate,
+      const CFX_PointF& device_point) const override;
+  Optional<CFX_PointF> PageToDevice(
+      const FX_RECT& rect,
+      int rotate,
+      const CFX_PointF& page_point) const override;
 
   // CPDF_PageObjectHolder:
   bool IsPage() const override;
 
   void ParseContent();
 
-  Optional<CFX_PointF> DeviceToPage(const FX_RECT& rect,
-                                    int rotate,
-                                    const CFX_PointF& device_point) const;
-  Optional<CFX_PointF> PageToDevice(const FX_RECT& rect,
-                                    int rotate,
-                                    const CFX_PointF& page_point) const;
 
-  CFX_Matrix GetDisplayMatrix(const FX_RECT& rect, int iRotate) const;
 
-  float GetPageWidth() const { return m_PageSize.width; }
-  float GetPageHeight() const { return m_PageSize.height; }
   const CFX_SizeF& GetPageSize() const { return m_PageSize; }
-
   const CFX_FloatRect& GetPageBBox() const { return m_BBox; }
   int GetPageRotation() const;
-  CPDF_PageRenderCache* GetRenderCache() const { return m_pPageRender.get(); }
 
+  CPDF_PageRenderCache* GetRenderCache() const { return m_pPageRender.get(); }
   CPDF_PageRenderContext* GetRenderContext() const {
     return m_pRenderContext.get();
   }
@@ -60,13 +73,11 @@ class CPDF_Page : public Retainable, public CPDF_PageObjectHolder {
   CPDF_Document* GetPDFDocument() const { return m_pPDFDocument.Get(); }
   View* GetView() const { return m_pView.Get(); }
   void SetView(View* pView) { m_pView = pView; }
-  Extension* GetPageExtension() const { return m_pPageExtension.Get(); }
-  void SetPageExtension(Extension* pExt) { m_pPageExtension = pExt; }
 
  private:
   CPDF_Page(CPDF_Document* pDocument,
             CPDF_Dictionary* pPageDict,
-            bool bPageCache);
+            bool bUseRenderCache);
   ~CPDF_Page() override;
 
   void StartParse();
@@ -77,7 +88,6 @@ class CPDF_Page : public Retainable, public CPDF_PageObjectHolder {
   CFX_SizeF m_PageSize;
   CFX_Matrix m_PageMatrix;
   UnownedPtr<CPDF_Document> m_pPDFDocument;
-  UnownedPtr<Extension> m_pPageExtension;
   std::unique_ptr<CPDF_PageRenderCache> m_pPageRender;
   std::unique_ptr<CPDF_PageRenderContext> m_pRenderContext;
   UnownedPtr<View> m_pView;

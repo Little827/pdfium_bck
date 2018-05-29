@@ -345,7 +345,7 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
 #ifdef PDF_ENABLE_XFA
   auto* pContext = static_cast<CPDFXFA_Context*>(pDoc->GetExtension());
   if (pContext)
-    return FPDFPageFromUnderlying(pContext->GetXFAPage(page_index).Leak());
+    return FPDFPageFromIPDFPage(pContext->GetXFAPage(page_index).Leak());
 
   // Eventually, fallthrough into non-xfa case once page type made consistent.
   return nullptr;
@@ -354,19 +354,18 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
   if (!pDict)
     return nullptr;
 
-  auto pPage = pdfium::MakeRetain<CPDF_Page>(pDoc, pDict, true);
-  pPage->ParseContent();
-  return FPDFPageFromUnderlying(pPage.Leak());
+  RetainPtr<CPDF_Page> pPage = pDoc->GetOrCreatePDFPage(pDict);
+  return FPDFPageFromIPDFPage(pPage.Leak());
 #endif  // PDF_ENABLE_XFA
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageWidth(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
   return pPage ? pPage->GetPageWidth() : 0.0;
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDF_GetPageHeight(FPDF_PAGE page) {
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
   return pPage ? pPage->GetPageHeight() : 0.0;
 }
 
@@ -726,12 +725,14 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
     return;
 
   // Take it back across the API and hold for duration of this function.
-  RetainPtr<UnderlyingPageType> pPage;
-  pPage.Unleak(UnderlyingFromFPDFPage(page));
+  RetainPtr<IPDF_Page> pPage;
+  pPage.Unleak(IPDFPageFromFPDFPage(page));
 
-#ifndef PDF_ENABLE_XFA
+  if (pPage->AsXFAPage())
+    return;
+
   CPDFSDK_PageView* pPageView =
-      static_cast<CPDFSDK_PageView*>(pPage->GetView());
+      static_cast<CPDFSDK_PageView*>(pPage->AsPDFPage()->GetView());
   if (!pPageView || pPageView->IsBeingDestroyed())
     return;
 
@@ -744,19 +745,18 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
   // first because it will attempt to reset the View on the |pPage| during
   // destruction.
   pPageView->GetFormFillEnv()->RemovePageView(pPage.Get());
-#endif  // PDF_ENABLE_XFA
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document) {
   auto* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return;
 
-#if PDF_ENABLE_XFA
   // Deleting the extension will delete the document
-  if (pDoc && pDoc->GetExtension()) {
+  if (pDoc->GetExtension()) {
     delete pDoc->GetExtension();
     return;
   }
-#endif  // PDF_ENABLE_XFA
 
   delete pDoc;
 }
@@ -778,7 +778,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
   if (!page || !page_x || !page_y)
     return false;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
   Optional<CFX_PointF> pos =
       pPage->DeviceToPage(rect, rotate, CFX_PointF(device_x, device_y));
@@ -803,7 +803,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
   if (!page || !device_x || !device_y)
     return false;
 
-  UnderlyingPageType* pPage = UnderlyingFromFPDFPage(page);
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
   CFX_PointF page_point(static_cast<float>(page_x), static_cast<float>(page_y));
   Optional<CFX_PointF> pos = pPage->PageToDevice(rect, rotate, page_point);
@@ -962,7 +962,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
   if (!pDict)
     return false;
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDoc, pDict, true);
+  RetainPtr<CPDF_Page> page = pDoc->GetOrCreatePDFPage(pDict);
   *width = page->GetPageWidth();
   *height = page->GetPageHeight();
   return true;

@@ -21,11 +21,11 @@
 
 CPDF_Page::CPDF_Page(CPDF_Document* pDocument,
                      CPDF_Dictionary* pPageDict,
-                     bool bPageCache)
+                     bool bUseRenderCache)
     : CPDF_PageObjectHolder(pDocument, pPageDict),
       m_PageSize(100, 100),
       m_pPDFDocument(pDocument) {
-  if (bPageCache)
+  if (bUseRenderCache)
     m_pPageRender = pdfium::MakeUnique<CPDF_PageRenderCache>(this);
   if (!pPageDict)
     return;
@@ -73,6 +73,26 @@ CPDF_Page::CPDF_Page(CPDF_Document* pDocument,
 }
 
 CPDF_Page::~CPDF_Page() {}
+
+CPDF_Page* CPDF_Page::AsPDFPage() {
+  return this;
+}
+
+CPDFXFA_Page* CPDF_Page::AsXFAPage() {
+  return nullptr;
+}
+
+CPDF_Document* CPDF_Page::GetDocument() const {
+  return GetPDFDocument();
+}
+
+float CPDF_Page::GetPageWidth() const {
+  return m_PageSize.width;
+}
+
+float CPDF_Page::GetPageHeight() const {
+  return m_PageSize.height;
+}
 
 bool CPDF_Page::IsPage() const {
   return true;
