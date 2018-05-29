@@ -3076,7 +3076,6 @@ if (pdf_is_standalone) {
     deps = [
       ":image_diff",
       ":pdfium",
-      "//build/config:exe_and_shlib_deps",
       "//build/win:default_exe_manifest",
     ]
     configs -= [ "//build/config/compiler:chromium_code" ]
