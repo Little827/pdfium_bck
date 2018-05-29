@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e62115f2_6b0cef8e",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-29T19:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c96fe9df_15d7c6ba",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb30660b_cf0fd7ee",
         "filename": "testing/tools/coverage/coverage_report.py",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5168fb25_af282498",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-29T19:28:22Z",
+      "side": 1,
+      "message": "Added an explicit call at the beginning of run to make sure that coverage.py gets called.",
+      "parentUuid": "bb30660b_cf0fd7ee",
+      "range": {
+        "startLine": 199,
+        "startChar": 59,
+        "endLine": 199,
+        "endChar": 72
+      },
+      "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91eaadba_3e55d98a",
         "filename": "tools/code_coverage/coverage.py",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-29T14:50:43Z",
       "side": 1,
       "message": "Do you plan to update this and other files from Chromium repo? Does it require a manual roll, or is it like DEPS thing?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706ec577_0fd3eeb0",
+        "filename": "tools/code_coverage/coverage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-29T19:28:22Z",
+      "side": 1,
+      "message": "The intent is to periodically pull from upstream, especially as a I work on modularizing the upstream code. It will be a manual roll at this point. DEPS I think requires the coverage code to be in a repo that we can directly reference, like https://chromium.googlesource.com/chromium/tools/build, but probably called something like https://chromium.googlesource.com/chromium/tools/code_coverage",
+      "parentUuid": "91eaadba_3e55d98a",
       "range": {
         "startLine": 1,
         "startChar": 0,
