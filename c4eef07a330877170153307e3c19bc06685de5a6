@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfa79f0f_4ee2511f",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_textfield.in",
+        "patchSetId": 28
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 7401
+      },
+      "writtenOn": "2018-05-29T23:12:07Z",
+      "side": 1,
+      "message": "Alright, Tricium ran :-)\n\nWere these comments useful in this case?",
+      "parentUuid": "c312ba1b_8f869fb3",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "c4eef07a330877170153307e3c19bc06685de5a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
