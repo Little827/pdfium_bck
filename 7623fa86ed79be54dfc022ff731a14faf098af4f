@@ -22,6 +22,30 @@
       "revId": "7623fa86ed79be54dfc022ff731a14faf098af4f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b031ccf_c44648dd",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-29T23:42:16Z",
+      "side": 1,
+      "message": "Because, in a new CL, we may choose not to wrap it as such.",
+      "parentUuid": "e467b520_e449b05e",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 21
+      },
+      "revId": "7623fa86ed79be54dfc022ff731a14faf098af4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
