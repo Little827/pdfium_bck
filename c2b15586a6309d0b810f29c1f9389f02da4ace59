@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1527290942 -0700\nnonce ACQuaLBeziAKczMewZC/PwQT7AUhYHe2GGepQGcitePi9qSzWXMlFuI73M8FNhkjb6WjuxSeERcs\n\n0000000000000000000000000000000000000000 c2b15586a6309d0b810f29c1f9389f02da4ace59 refs/for/refs/heads/master%notify\u003dNONE,m\u003dDelete_fuzzers%5Fsrc\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlsInD4ACgkQqzYtYVpm\n/XvP4QgAtpyNq5KJ4o6HKxA9NUXS68MC9d5/T7W7K3TX7XdgkR5OOGIewCiSt80V\nM7+0dn4A49a1+KQ909y9i+rjBQmm1LmZ2wYQNJixEXxmIvNFPFy3NVeKGCdrsuKj\nWysvnzSE+nND8TVFKnOVmRalo6x7u2KdM2Q5a8DOz+V7+jf/L3QHUpuTlVUuQ/Ie\ngsimFMpyS/VqHJQuW7ik7KR5wLTwBcDvdhGb4ypgk2I6r49PONIlj8zpBjHuiOqT\neYZEZ9q0zUnAv7kJUb7EgsqeHwr7gxfHMsUfmimXVUOCBfi00hdIWO+Km6TqxZkQ\nilcS/ZhLayxiUVd1DTCgdNkBgvOSxg\u003d\u003d\n\u003dbMwJ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c2d823_e3648cbf",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T18:55:56Z",
+      "side": 1,
+      "message": "Just need to figure out what to do here.",
+      "revId": "c2b15586a6309d0b810f29c1f9389f02da4ace59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
