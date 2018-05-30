@@ -157,6 +157,24 @@
       "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d00fbe8_d2e4f776",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-30T18:08:26Z",
+      "side": 1,
+      "message": "Thanks for the clarification",
+      "parentUuid": "7110a058_e5047730",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
