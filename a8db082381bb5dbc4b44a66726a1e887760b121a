@@ -22,6 +22,30 @@
       "revId": "a8db082381bb5dbc4b44a66726a1e887760b121a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cd74113_b2865ec7",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 6000
+      },
+      "writtenOn": "2018-05-30T22:18:13Z",
+      "side": 1,
+      "message": "It will return kFail in case of error. This status doesn\u0027t matter unless it is kContinue which means we need to continue the loading process. A similar case happens on line 716 -- we continue loading even if the mask loading error happens.",
+      "parentUuid": "568ff5a3_6d7d770a",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 35
+      },
+      "revId": "a8db082381bb5dbc4b44a66726a1e887760b121a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
