@@ -547,10 +547,7 @@ FXFT_Face CFX_FontMapper::FindSubstFont(const ByteString& name,
     Charset = GetCharsetFromCodePage(WindowCP);
   else if (iBaseFont == kNumStandardFonts && FontStyleIsSymbolic(flags))
     Charset = FX_CHARSET_Symbol;
-  const bool bCJK = (Charset == FX_CHARSET_ShiftJIS ||
-                     Charset == FX_CHARSET_ChineseSimplified ||
-                     Charset == FX_CHARSET_Hangul ||
-                     Charset == FX_CHARSET_ChineseTraditional);
+  const bool bCJK = FX_CharSetIsCJK(Charset);
   bool bItalic = FontStyleIsItalic(nStyle);
 
   GetFontFamily(nStyle, &family);
