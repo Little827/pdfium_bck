@@ -140,6 +140,30 @@
       "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722e5c38_9e09fe3c",
+        "filename": "tools/code_coverage/coverage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-30T18:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "706ec577_0fd3eeb0",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "f178aa9a4b5a2df5005ce23f4544fb68f42a3175",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
