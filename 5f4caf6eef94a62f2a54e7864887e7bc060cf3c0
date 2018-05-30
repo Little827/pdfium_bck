@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "713104ec_1c30e007",
+        "filename": "testing/tools/api_check.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:15:31Z",
+      "side": 1,
+      "message": "no semicolon",
+      "range": {
+        "startLine": 136,
+        "startChar": 32,
+        "endLine": 136,
+        "endChar": 33
+      },
+      "revId": "5f4caf6eef94a62f2a54e7864887e7bc060cf3c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
