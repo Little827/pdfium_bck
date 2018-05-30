@@ -111,6 +111,24 @@
       "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62857b24_f6f3a5cb",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T18:53:10Z",
+      "side": 1,
+      "message": "Or restructure the function:\n\nif (pUserPaths) {\n  ...\n  return;\n}\n\nif (IsGDIEnabled())\n  ...\n\n// fallback",
+      "parentUuid": "997318bf_8eff92b3",
+      "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
