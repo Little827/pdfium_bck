@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26cb2ace_aace97e4",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 35
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:28:33Z",
+      "side": 1,
+      "message": "Is it worth commenting to reference the bug for this?",
+      "revId": "514361eddf3b2ae18661752127e43123b54c42b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46f5ef64_770f9ee9",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 35
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:28:33Z",
+      "side": 1,
+      "message": "No longer called?",
+      "revId": "514361eddf3b2ae18661752127e43123b54c42b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0909aec_8926d757",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 35
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:28:33Z",
+      "side": 1,
+      "message": "Does |use_ahem| make a difference with TestText()?",
+      "revId": "514361eddf3b2ae18661752127e43123b54c42b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14f33f4_f6727ac6",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 35
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:28:33Z",
+      "side": 1,
+      "message": "Maybe remove this here and in other places with the same pattern, and just always call LoadInstalledFonts(). CFX_FontMapper::LoadInstalledFonts() already has a boolean to keep track of whether it has been called or not.",
+      "revId": "514361eddf3b2ae18661752127e43123b54c42b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
