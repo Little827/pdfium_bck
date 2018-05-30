@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac94ed70_4f0c73bd",
+        "filename": "core/fpdfapi/render/cpdf_type3cache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T22:24:21Z",
+      "side": 1,
+      "message": "std::swap",
+      "revId": "abe93353bd11a274705988940ccc0727e9a2756d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb69c51_5b38bdbe",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T22:24:21Z",
+      "side": 1,
+      "message": "Not needed? Or reduce the math down to 0.8f? Or reduce the entire conditional to: distance \u003c std::min(0.8f, min_distance)",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "abe93353bd11a274705988940ccc0727e9a2756d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8791d22_7f287e63",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T22:24:21Z",
+      "side": 1,
+      "message": "Flip the logic and only use 1 return.",
+      "revId": "abe93353bd11a274705988940ccc0727e9a2756d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "562af373_6dbcaa95",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T22:24:21Z",
+      "side": 1,
+      "message": "A comment may be helpful. It\u0027s not obvious the return values are top and bottom.",
+      "revId": "abe93353bd11a274705988940ccc0727e9a2756d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b0d2f2a_5f2c1a8f",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T22:24:21Z",
+      "side": 1,
+      "message": "WDYT about making these vectors?",
+      "revId": "abe93353bd11a274705988940ccc0727e9a2756d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
