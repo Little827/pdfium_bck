@@ -6,6 +6,7 @@
 
 #include "public/fpdfview.h"
 
+#include <memory>
 #include <utility>
 #include <vector>
 
@@ -747,17 +748,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document) {
-  auto* pDoc = CPDFDocumentFromFPDFDocument(document);
-
-#if PDF_ENABLE_XFA
-  // Deleting the extension will delete the document
-  if (pDoc && pDoc->GetExtension()) {
-    delete pDoc->GetExtension();
-    return;
-  }
-#endif  // PDF_ENABLE_XFA
-
-  delete pDoc;
+  // Take it back across the API and throw it away,
+  std::unique_ptr<CPDF_Document>(CPDFDocumentFromFPDFDocument(document));
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError() {
