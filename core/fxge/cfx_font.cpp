@@ -501,7 +501,7 @@ void CFX_Font::ClearFaceCache() {
 }
 
 void CFX_Font::AdjustMMParams(int glyph_index,
-                              uint32_t dest_width,
+                              int dest_width,
                               int weight) const {
   FXFT_MM_Var pMasters = nullptr;
   FXFT_Get_MM_Var(m_Face, &pMasters);
