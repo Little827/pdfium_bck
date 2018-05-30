@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2714501d_d5e13749",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T22:13:24Z",
+      "side": 1,
+      "message": "Should we sanity check |dest_width|, when calculated as a uint32_t, isn\u0027t larger than INT_MAX?",
+      "revId": "289b831d0c448ddbb2c21219532281d85d8da7fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
