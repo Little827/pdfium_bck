@@ -9,6 +9,7 @@
 
 #include <map>
 #include <memory>
+#include <utility>
 
 #include "core/fxcrt/fx_system.h"
 
@@ -21,9 +22,11 @@ class CPDF_Type3Glyphs {
   CPDF_Type3Glyphs();
   ~CPDF_Type3Glyphs();
 
-  void AdjustBlue(float top, float bottom, int& top_line, int& bottom_line);
+  std::pair<int, int> AdjustBlue(float top, float bottom);
 
   std::map<uint32_t, std::unique_ptr<CFX_GlyphBitmap>> m_GlyphMap;
+
+ private:
   int m_TopBlueCount;
   int m_BottomBlueCount;
   int m_TopBlue[TYPE3_MAX_BLUES];
