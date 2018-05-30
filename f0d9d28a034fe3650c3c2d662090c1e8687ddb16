@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77a25ff7_3430ba34",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-30T18:29:20Z",
+      "side": 0,
+      "message": "Yaa, this code was wonky.",
+      "range": {
+        "startLine": 753,
+        "startChar": 0,
+        "endLine": 757,
+        "endChar": 3
+      },
+      "revId": "f0d9d28a034fe3650c3c2d662090c1e8687ddb16",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
