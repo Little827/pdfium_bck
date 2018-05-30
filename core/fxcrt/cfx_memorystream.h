@@ -38,8 +38,6 @@ class CFX_MemoryStream : public IFX_SeekableStream {
   }
 
   void EstimateSize(size_t nInitSize, size_t nGrowSize);
-  void AttachBuffer(uint8_t* pBuffer, size_t nSize);
-  void DetachBuffer();
 
  private:
   explicit CFX_MemoryStream(bool bConsecutive);

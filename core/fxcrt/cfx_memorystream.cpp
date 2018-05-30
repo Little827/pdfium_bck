@@ -168,29 +168,6 @@ void CFX_MemoryStream::EstimateSize(size_t nInitSize, size_t nGrowSize) {
   }
 }
 
-void CFX_MemoryStream::AttachBuffer(uint8_t* pBuffer, size_t nSize) {
-  if (!(m_dwFlags & Type::kConsecutive))
-    return;
-
-  m_Blocks.clear();
-  m_Blocks.push_back(pBuffer);
-  m_nTotalSize = nSize;
-  m_nCurSize = nSize;
-  m_nCurPos = 0;
-  m_dwFlags = Type::kConsecutive;
-}
-
-void CFX_MemoryStream::DetachBuffer() {
-  if (!(m_dwFlags & Type::kConsecutive))
-    return;
-
-  m_Blocks.clear();
-  m_nTotalSize = 0;
-  m_nCurSize = 0;
-  m_nCurPos = 0;
-  m_dwFlags = Type::kTakeOver;
-}
-
 bool CFX_MemoryStream::ExpandBlocks(size_t size) {
   m_nCurSize = std::max(m_nCurSize, size);
   if (size <= m_nTotalSize)
