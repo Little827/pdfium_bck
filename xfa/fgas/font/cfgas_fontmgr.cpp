@@ -531,6 +531,9 @@ bool CFGAS_FontMgr::EnumFontsFromFontMapper() {
   if (!pFontMapper)
     return false;
 
+  if (pFontMapper->m_InstalledTTFonts.empty())
+    pFontMapper->LoadInstalledFonts();
+
   SystemFontInfoIface* pSystemFontInfo = pFontMapper->GetSystemFontInfo();
   if (!pSystemFontInfo)
     return false;
@@ -546,6 +549,7 @@ bool CFGAS_FontMgr::EnumFontsFromFontMapper() {
         WideString::FromLocal(pFontMapper->GetFaceName(i).c_str());
     RegisterFaces(pFontStream, &wsFaceName);
   }
+
   return !m_InstalledFonts.empty();
 }
 
