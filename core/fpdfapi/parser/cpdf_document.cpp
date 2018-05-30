@@ -56,32 +56,11 @@ void InsertWidthArrayImpl(int* widths, int size, CPDF_Array* pWidthArray) {
   FX_Free(widths);
 }
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-void InsertWidthArray(HDC hDC, int start, int end, CPDF_Array* pWidthArray) {
-  int size = end - start + 1;
-  int* widths = FX_Alloc(int, size);
-  GetCharWidth(hDC, start, end, widths);
-  InsertWidthArrayImpl(widths, size, pWidthArray);
-}
-
-ByteString FPDF_GetPSNameFromTT(HDC hDC) {
-  ByteString result;
-  DWORD size = ::GetFontData(hDC, 'eman', 0, nullptr, 0);
-  if (size != GDI_ERROR) {
-    LPBYTE buffer = FX_Alloc(BYTE, size);
-    ::GetFontData(hDC, 'eman', 0, buffer, size);
-    result = GetNameFromTT(buffer, size, 6);
-    FX_Free(buffer);
-  }
-  return result;
-}
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-
-void InsertWidthArray1(CFX_Font* pFont,
-                       CFX_UnicodeEncoding* pEncoding,
-                       wchar_t start,
-                       wchar_t end,
-                       CPDF_Array* pWidthArray) {
+void InsertWidthArray(CFX_Font* pFont,
+                      CFX_UnicodeEncoding* pEncoding,
+                      wchar_t start,
+                      wchar_t end,
+                      CPDF_Array* pWidthArray) {
   int size = end - start + 1;
   int* widths = FX_Alloc(int, size);
   int i;
@@ -766,7 +745,7 @@ CPDF_Font* CPDF_Document::AddFont(CFX_Font* pFont, int charset, bool bVert) {
     pFontDict = ProcessbCJK(
         pBaseDict, charset, bVert, basefont,
         [pFont, &pEncoding](wchar_t start, wchar_t end, CPDF_Array* widthArr) {
-          InsertWidthArray1(pFont, pEncoding.get(), start, end, widthArr);
+          InsertWidthArray(pFont, pEncoding.get(), start, end, widthArr);
         });
   }
   int italicangle =
@@ -800,101 +779,3 @@ CPDF_Font* CPDF_Document::AddFont(CFX_Font* pFont, int charset, bool bVert) {
                                        pFontDesc->GetObjNum());
   return LoadFont(pBaseDict);
 }
-
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-CPDF_Font* CPDF_Document::AddWindowsFont(LOGFONTW* pLogFont,
-                                         bool bVert,
-                                         bool bTranslateName) {
-  LOGFONTA lfa;
-  memcpy(&lfa, pLogFont, (char*)lfa.lfFaceName - (char*)&lfa);
-  ByteString face = ByteString::FromUnicode(pLogFont->lfFaceName);
-  if (face.GetLength() >= LF_FACESIZE)
-    return nullptr;
-
-  strncpy(lfa.lfFaceName, face.c_str(),
-          (face.GetLength() + 1) * sizeof(ByteString::CharType));
-  return AddWindowsFont(&lfa, bVert, bTranslateName);
-}
-
-CPDF_Font* CPDF_Document::AddWindowsFont(LOGFONTA* pLogFont,
-                                         bool bVert,
-                                         bool bTranslateName) {
-  pLogFont->lfHeight = -1000;
-  pLogFont->lfWidth = 0;
-  HGDIOBJ hFont = CreateFontIndirectA(pLogFont);
-  HDC hDC = CreateCompatibleDC(nullptr);
-  hFont = SelectObject(hDC, hFont);
-  int tm_size = GetOutlineTextMetrics(hDC, 0, nullptr);
-  if (tm_size == 0) {
-    hFont = SelectObject(hDC, hFont);
-    DeleteObject(hFont);
-    DeleteDC(hDC);
-    return nullptr;
-  }
-
-  LPBYTE tm_buf = FX_Alloc(BYTE, tm_size);
-  OUTLINETEXTMETRIC* ptm = reinterpret_cast<OUTLINETEXTMETRIC*>(tm_buf);
-  GetOutlineTextMetrics(hDC, tm_size, ptm);
-  int flags = CalculateFlags(false, pLogFont->lfItalic != 0,
-                             (pLogFont->lfPitchAndFamily & 3) == FIXED_PITCH,
-                             (pLogFont->lfPitchAndFamily & 0xf8) == FF_ROMAN,
-                             (pLogFont->lfPitchAndFamily & 0xf8) == FF_SCRIPT,
-                             pLogFont->lfCharSet == FX_CHARSET_Symbol);
-
-  const bool bCJK = FX_CharSetIsCJK(pLogFont->lfCharSet);
-  ByteString basefont;
-  if (bTranslateName && bCJK)
-    basefont = FPDF_GetPSNameFromTT(hDC);
-
-  if (basefont.IsEmpty())
-    basefont = pLogFont->lfFaceName;
-
-  int italicangle = ptm->otmItalicAngle / 10;
-  int ascend = ptm->otmrcFontBox.top;
-  int descend = ptm->otmrcFontBox.bottom;
-  int capheight = ptm->otmsCapEmHeight;
-  int bbox[4] = {ptm->otmrcFontBox.left, ptm->otmrcFontBox.bottom,
-                 ptm->otmrcFontBox.right, ptm->otmrcFontBox.top};
-  FX_Free(tm_buf);
-  basefont.Replace(" ", "");
-  CPDF_Dictionary* pBaseDict = NewIndirect<CPDF_Dictionary>();
-  pBaseDict->SetNewFor<CPDF_Name>("Type", "Font");
-  CPDF_Dictionary* pFontDict = pBaseDict;
-  if (!bCJK) {
-    if (pLogFont->lfCharSet == FX_CHARSET_ANSI ||
-        pLogFont->lfCharSet == FX_CHARSET_Default ||
-        pLogFont->lfCharSet == FX_CHARSET_Symbol) {
-      pBaseDict->SetNewFor<CPDF_Name>("Encoding", "WinAnsiEncoding");
-    } else {
-      CalculateEncodingDict(pLogFont->lfCharSet, pBaseDict);
-    }
-    int char_widths[224];
-    GetCharWidth(hDC, 32, 255, char_widths);
-    auto pWidths = pdfium::MakeUnique<CPDF_Array>();
-    for (size_t i = 0; i < 224; i++)
-      pWidths->AddNew<CPDF_Number>(char_widths[i]);
-    ProcessNonbCJK(pBaseDict, pLogFont->lfWeight > FW_MEDIUM,
-                   pLogFont->lfItalic != 0, basefont, std::move(pWidths));
-  } else {
-    pFontDict =
-        ProcessbCJK(pBaseDict, pLogFont->lfCharSet, bVert, basefont,
-                    [&hDC](wchar_t start, wchar_t end, CPDF_Array* widthArr) {
-                      InsertWidthArray(hDC, start, end, widthArr);
-                    });
-  }
-  auto pBBox = pdfium::MakeUnique<CPDF_Array>();
-  for (int i = 0; i < 4; i++)
-    pBBox->AddNew<CPDF_Number>(bbox[i]);
-  std::unique_ptr<CPDF_Dictionary> pFontDesc =
-      CalculateFontDesc(this, basefont, flags, italicangle, ascend, descend,
-                        std::move(pBBox), pLogFont->lfWeight / 5);
-  pFontDesc->SetNewFor<CPDF_Number>("CapHeight", capheight);
-  pFontDict->SetNewFor<CPDF_Reference>(
-      "FontDescriptor", this,
-      AddIndirectObject(std::move(pFontDesc))->GetObjNum());
-  hFont = SelectObject(hDC, hFont);
-  DeleteObject(hFont);
-  DeleteDC(hDC);
-  return LoadFont(pBaseDict);
-}
-#endif  //  _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_

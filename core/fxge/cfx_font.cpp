@@ -227,7 +227,8 @@ const CFX_Font::CharsetFontMap CFX_Font::defaultTTFMap[] = {
 // static
 const char CFX_Font::kDefaultAnsiFontName[] = "Helvetica";
 // static
-const char CFX_Font::kUniversalDefaultFontName[] = "Arial Unicode MS";
+const char* CFX_Font::kAdditionaFontNames[] = {
+    "Arial Unicode MS", "Microsoft Sans Serif", "Times New Roman", nullptr};
 
 // static
 ByteString CFX_Font::GetDefaultFontNameByCharset(uint8_t nCharset) {
@@ -237,7 +238,7 @@ ByteString CFX_Font::GetDefaultFontNameByCharset(uint8_t nCharset) {
       return defaultTTFMap[i].fontname;
     ++i;
   }
-  return kUniversalDefaultFontName;
+  return kAdditionaFontNames[0];
 }
 
 // static
@@ -289,6 +290,30 @@ uint8_t CFX_Font::GetCharSetFromUnicode(uint16_t word) {
     return FX_CHARSET_MSWin_Vietnamese;
 
   return FX_CHARSET_ANSI;
+}
+
+// static
+bool CFX_Font::FindNativeTrueTypeFont(ByteString sFontFaceName) {
+  CFX_FontMgr* pFontMgr = CFX_GEModule::Get()->GetFontMgr();
+  if (!pFontMgr)
+    return false;
+
+  CFX_FontMapper* pFontMapper = pFontMgr->GetBuiltinMapper();
+  if (!pFontMapper)
+    return false;
+
+  if (pFontMapper->m_InstalledTTFonts.empty())
+    pFontMapper->LoadInstalledFonts();
+
+  for (const auto& font : pFontMapper->m_InstalledTTFonts) {
+    if (font.Compare(sFontFaceName.AsStringView()))
+      return true;
+  }
+  for (const auto& fontPair : pFontMapper->m_LocalizedTTFonts) {
+    if (fontPair.first.Compare(sFontFaceName.AsStringView()))
+      return true;
+  }
+  return false;
 }
 
 CFX_Font::CFX_Font()
