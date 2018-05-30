@@ -4,6 +4,9 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
+#if defined(__GNUC__) && __GNUCC__ < 7
+#define DECLARED_STRING_VIEW_TEMPLATE_WCHAR_T
+#endif
 #include "core/fxcrt/widestring.h"
 
 #include <stddef.h>

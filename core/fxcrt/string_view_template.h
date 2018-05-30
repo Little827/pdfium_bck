@@ -234,8 +234,15 @@ inline bool operator<(const T* lhs, const StringViewTemplate<T>& rhs) {
   return rhs > lhs;
 }
 
+// DECLARED_STRING_VIEW_TEMPLATE_* is defined only as a workaround for
+// g++ < 7 with -O0, failing to include the template constructors in
+// the explicitely declared files.
+#ifndef DECLARED_STRING_VIEW_TEMPLATE_CHAR
 extern template class StringViewTemplate<char>;
+#endif
+#ifndef DECLARED_STRING_VIEW_TEMPLATE_WCHAR_T
 extern template class StringViewTemplate<wchar_t>;
+#endif
 
 using ByteStringView = StringViewTemplate<char>;
 using WideStringView = StringViewTemplate<wchar_t>;
