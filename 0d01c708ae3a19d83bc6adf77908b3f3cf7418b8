@@ -46,6 +46,30 @@
       "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f2b715f_c79bd5e6",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T18:47:13Z",
+      "side": 1,
+      "message": "I think IsGDIEnabled() will likely return false only when PDFium is sandboxed. In which case, PDFium won\u0027t be able to access any file path either. Can you check to see if this is the case?",
+      "parentUuid": "f5dbddb8_e8548d5e",
+      "range": {
+        "startLine": 678,
+        "startChar": 7,
+        "endLine": 678,
+        "endChar": 17
+      },
+      "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
