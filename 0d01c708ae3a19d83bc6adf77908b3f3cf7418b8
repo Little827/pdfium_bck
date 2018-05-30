@@ -22,6 +22,30 @@
       "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5dbddb8_e8548d5e",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-05-30T18:19:44Z",
+      "side": 1,
+      "message": "That is the intent. On other platforms --font-dir overrides the system font directories. My understanding is that GDI provides font management as well text rendering, so the correct behaviour would be to bypass GDI entirely if the user has passed in --font-dir.",
+      "parentUuid": "22abce94_57f8598a",
+      "range": {
+        "startLine": 678,
+        "startChar": 7,
+        "endLine": 678,
+        "endChar": 17
+      },
+      "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
