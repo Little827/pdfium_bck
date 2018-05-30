@@ -151,6 +151,12 @@ FPDF_DOCUMENT LoadDocumentImpl(
     return nullptr;
   }
   CheckUnSupportError(pDocument.get(), error);
+
+#ifdef PDF_ENABLE_XFA
+  pDocument->SetExtension(
+      new CPDFXFA_Context(pdfium::WrapUnique(pDocument.get())));
+#endif  // PDF_ENABLE_XFA
+
   return FPDFDocumentFromCPDFDocument(pDocument.release());
 }
 
@@ -302,16 +308,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetFileVersion(FPDF_DOCUMENT doc,
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDF_GetDocPermissions(FPDF_DOCUMENT document) {
   CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
-  // https://bugs.chromium.org/p/pdfium/issues/detail?id=499
-  if (!pDoc) {
-#ifndef PDF_ENABLE_XFA
-    return 0;
-#else   // PDF_ENABLE_XFA
-    return 0xFFFFFFFF;
-#endif  // PDF_ENABLE_XFA
-  }
-
-  return pDoc->GetUserPermissions();
+  return pDoc ? pDoc->GetUserPermissions() : 0;
 }
 
 FPDF_EXPORT int FPDF_CALLCONV
@@ -728,7 +725,9 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
   RetainPtr<IPDF_Page> pPage;
   pPage.Unleak(IPDFPageFromFPDFPage(page));
 
-#ifndef PDF_ENABLE_XFA
+  if (pPage->AsXFAPage())
+    return;
+
   CPDFSDK_PageView* pPageView =
       static_cast<CPDFSDK_PageView*>(pPage->AsPDFPage()->GetView());
   if (!pPageView || pPageView->IsBeingDestroyed())
@@ -743,19 +742,18 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_ClosePage(FPDF_PAGE page) {
   // first because it will attempt to reset the View on the |pPage| during
   // destruction.
   pPageView->GetFormFillEnv()->RemovePageView(pPage.Get());
-#endif  // PDF_ENABLE_XFA
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_CloseDocument(FPDF_DOCUMENT document) {
   auto* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return;
 
-#if PDF_ENABLE_XFA
   // Deleting the extension will delete the document
-  if (pDoc && pDoc->GetExtension()) {
+  if (pDoc->GetExtension()) {
     delete pDoc->GetExtension();
     return;
   }
-#endif  // PDF_ENABLE_XFA
 
   delete pDoc;
 }
