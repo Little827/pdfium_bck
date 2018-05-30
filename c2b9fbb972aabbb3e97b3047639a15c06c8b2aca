@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "dec01fac_08f24deb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T22:39:25Z",
+      "side": 1,
+      "message": "From yesterday\u0027s incremental update PDF writing session:\n\n- One can write out an updated object 3 0 in an incremental update. This does not increment the generation number. The newest xref table should then point to the updated object, and the original object 3 0 effectively goes unused.\n- The generation number only increments at deletion time. So if an incremental update deletes object 3 0, then there should be no more references to object 3 0. After this, a second incremental update can add a new object and either number it N 0, for a never used value of N, or 3 1. Given this, object 3 0 and 3 1 cannot co-exist.\n\nAt least I think that\u0027s how it works in theory. What (damaged) PDFs contain and how PDFium\u0027s parser does is another story.",
+      "parentUuid": "ff10b938_0cbce176",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "c2b9fbb972aabbb3e97b3047639a15c06c8b2aca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6980ccc2_bd6c72e0",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 6
