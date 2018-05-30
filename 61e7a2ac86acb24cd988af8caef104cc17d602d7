@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "595c1b13_feaa9cb3",
+        "filename": "core/fpdfdoc/cpdf_interform.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-30T18:27:03Z",
+      "side": 1,
+      "message": "Duplicated from cfx_systemhandler?",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 0
+      },
+      "revId": "61e7a2ac86acb24cd988af8caef104cc17d602d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e06a25_2599dac1",
+        "filename": "core/fpdfdoc/cpdf_interform.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-30T18:27:03Z",
+      "side": 1,
+      "message": "I believe this exists elsewhere (cfgas_fontmgr?) Can we move it to a common location and remove the duplication.  Preferrably, do a CL to move it to a common location from cfgas and then rebase this on top of that CL.",
+      "range": {
+        "startLine": 294,
+        "startChar": 21,
+        "endLine": 326,
+        "endChar": 2
+      },
+      "revId": "61e7a2ac86acb24cd988af8caef104cc17d602d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
