@@ -70,6 +70,47 @@
       "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa4f7ab0_3cfa060a",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T18:51:54Z",
+      "side": 1,
+      "message": "Hmm, PDFium won\u0027t be able to access paths directly, but maybe in Chromium, it uses MapFont and friends to get the PDF plugin to do the work somehow.",
+      "parentUuid": "1f2b715f_c79bd5e6",
+      "range": {
+        "startLine": 678,
+        "startChar": 7,
+        "endLine": 678,
+        "endChar": 17
+      },
+      "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "997318bf_8eff92b3",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T18:51:54Z",
+      "side": 1,
+      "message": "Remove the \"!\" and flip the two blocks?",
+      "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
