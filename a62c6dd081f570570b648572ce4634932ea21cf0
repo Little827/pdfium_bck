@@ -24,6 +24,30 @@
       "revId": "a62c6dd081f570570b648572ce4634932ea21cf0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2d37a27_36310db6",
+        "filename": "testing/resources/pixel/generation_numbers1.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T18:42:18Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "59e1d4c4_5367b754",
+      "range": {
+        "startLine": 55,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "a62c6dd081f570570b648572ce4634932ea21cf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
