@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "568ff5a3_6d7d770a",
+        "filename": "core/fpdfapi/render/cpdf_dibsource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-30T20:35:42Z",
+      "side": 1,
+      "message": "What does the ContinueLoadMaskDIB method return if something goes wrong? How do we differentiate it being complete vs it hitting an error?",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 35
+      },
+      "revId": "a8db082381bb5dbc4b44a66726a1e887760b121a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
