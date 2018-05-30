@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22abce94_57f8598a",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-30T18:14:13Z",
+      "side": 1,
+      "message": "So, we never use GDI if a font dir is provided?",
+      "range": {
+        "startLine": 678,
+        "startChar": 7,
+        "endLine": 678,
+        "endChar": 17
+      },
+      "revId": "0d01c708ae3a19d83bc6adf77908b3f3cf7418b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
