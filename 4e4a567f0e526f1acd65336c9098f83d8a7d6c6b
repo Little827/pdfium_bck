@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9e64120_19d83812",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-30T16:53:17Z",
+      "side": 1,
+      "message": "Done, moved to ipdf_page.h",
+      "parentUuid": "e319218b_1088ce72",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d92b05f5_7a0e6eed",
         "filename": "fpdfsdk/cfx_systemhandler.cpp",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30d5d7f_a3d4709b",
+        "filename": "fpdfsdk/cfx_systemhandler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-30T16:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d92b05f5_7a0e6eed",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1c035a4e_73312810",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-30T16:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de9e110e_78150e9b",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14316b66_22b9922a",
         "filename": "fpdfsdk/cpdfsdk_helpers.h",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07247e2_90064a1f",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-30T16:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14316b66_22b9922a",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "606a6b36_e569eb19",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-30T16:53:17Z",
+      "side": 1,
+      "message": "follow-up:  means IPDF_Page needs to know about views.",
+      "parentUuid": "40d7179f_d1744050",
+      "range": {
+        "startLine": 42,
+        "startChar": 14,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a22a0c4_9306b0dc",
         "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2018-05-28T13:48:34Z",
       "side": 1,
       "message": "Would adding a IPDF_Page GetDocument clean this one up?",
+      "range": {
+        "startLine": 197,
+        "startChar": 11,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "4e4a567f0e526f1acd65336c9098f83d8a7d6c6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b489854d_de264c1b",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-30T16:53:17Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7a22a0c4_9306b0dc",
       "range": {
         "startLine": 197,
         "startChar": 11,
