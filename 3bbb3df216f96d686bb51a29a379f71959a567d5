@@ -139,6 +139,24 @@
       "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7110a058_e5047730",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T03:09:34Z",
+      "side": 1,
+      "message": "v8 isn\u0027t under third_party in Chromium either. It likely expects itself to be where it is, so it can be referenced as //v8.",
+      "parentUuid": "30d619c0_6bb8d660",
+      "revId": "3bbb3df216f96d686bb51a29a379f71959a567d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
