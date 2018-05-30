@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72143c5b_60004788",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:06:21Z",
+      "side": 1,
+      "message": "Shouldn\u0027t need this - ipdf_page.h already forward declared this.",
+      "revId": "d06cc38b76685b002c51b227ae43b8314d926ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89009502_5ec2c3fb",
+        "filename": "core/fpdfapi/page/ipdf_page.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:06:21Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "d06cc38b76685b002c51b227ae43b8314d926ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f0f852_91857434",
+        "filename": "core/fpdfapi/page/ipdf_page.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-30T23:06:21Z",
+      "side": 1,
+      "message": "We really should decide if we want IPDF_Foo or FooIface.",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "d06cc38b76685b002c51b227ae43b8314d926ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
