@@ -16,6 +16,24 @@
       "revId": "2e9ac0492978957e1b4f2f8832671877f2e5264d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f857bd_d6b60bf4",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-05-31T14:55:47Z",
+      "side": 1,
+      "message": "Oh, yes. Sorry. Done!",
+      "parentUuid": "0c486581_447d9e05",
+      "revId": "2e9ac0492978957e1b4f2f8832671877f2e5264d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
