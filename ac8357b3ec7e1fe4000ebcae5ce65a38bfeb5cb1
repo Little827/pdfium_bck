@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42093111_04d1cea9",
+        "filename": "core/fpdfdoc/cpdf_interform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-31T13:37:43Z",
+      "side": 0,
+      "message": "This used to return 0 on non-windows, now it returns a value, is that going to cause issues?",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 0
+      },
+      "revId": "ac8357b3ec7e1fe4000ebcae5ce65a38bfeb5cb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
