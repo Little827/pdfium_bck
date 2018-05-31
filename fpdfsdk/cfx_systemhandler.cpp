@@ -74,29 +74,6 @@ void CFX_SystemHandler::SetCursor(int32_t nCursorType) {
   m_pFormFillEnv->SetCursor(nCursorType);
 }
 
-bool CFX_SystemHandler::FindNativeTrueTypeFont(ByteString sFontFaceName) {
-  CFX_FontMgr* pFontMgr = CFX_GEModule::Get()->GetFontMgr();
-  if (!pFontMgr)
-    return false;
-
-  CFX_FontMapper* pFontMapper = pFontMgr->GetBuiltinMapper();
-  if (!pFontMapper)
-    return false;
-
-  if (pFontMapper->m_InstalledTTFonts.empty())
-    pFontMapper->LoadInstalledFonts();
-
-  for (const auto& font : pFontMapper->m_InstalledTTFonts) {
-    if (font.Compare(sFontFaceName.AsStringView()))
-      return true;
-  }
-  for (const auto& fontPair : pFontMapper->m_LocalizedTTFonts) {
-    if (fontPair.first.Compare(sFontFaceName.AsStringView()))
-      return true;
-  }
-  return false;
-}
-
 CPDF_Font* CFX_SystemHandler::AddNativeTrueTypeFontToPDF(
     CPDF_Document* pDoc,
     ByteString sFontFaceName,
