@@ -16,6 +16,24 @@
       "revId": "99de9b44d2101d5754d7c41566d6b04a341944d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "376a7b8b_de6f77af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-31T17:38:02Z",
+      "side": 1,
+      "message": "Yeah, in fact\n  https://cs.chromium.org/chromium/src/third_party/freetype/src/include/freetype/freetype.h?rcl\u003d0589f6e6ee6e9bfe0c7139374fc8812e849e7bf7\u0026l\u003d1187\n\nsays not to muck with this flag.",
+      "parentUuid": "4373bca8_48db488b",
+      "revId": "99de9b44d2101d5754d7c41566d6b04a341944d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
