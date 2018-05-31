@@ -46,6 +46,30 @@
       "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c700bc_a7dc627b",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 7290
+      },
+      "writtenOn": "2018-05-31T07:31:44Z",
+      "side": 1,
+      "message": "That\u0027s the reason for the solution I took. Instead of removing the external declaration always, I only set it for the files where it is not actually explicitely instantiated. This way we still get it one time, and not one per compilation unit.\n\nThe problem is that the constructors extern declaration are masking the non extern declaration because of the gcc bug. If, in the compilation unit that does the explicit declaration we don\u0027t add the extern declaration, and only the explicit declaration, things work as they should:\n- Other users of the template use extern declaration, no additional implementation in their build unit.\n- The build unit that declares explicitely the template, does not get extern declaration, but explicit template declaration, so this is the only point the build unit is instantiated.",
+      "parentUuid": "b21dfcf1_8df33a30",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
