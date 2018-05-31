@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ffcea374_37a3cdd7",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 17
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-05-31T18:42:29Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure the buildbots are just debian machines and standard mac machines so you should be able to generate new images for them. thestig@ is that correct?",
+      "parentUuid": "8c204087_60667a27",
+      "range": {
+        "startLine": 86,
+        "startChar": 40,
+        "endLine": 86,
+        "endChar": 45
+      },
+      "revId": "8f7ec7ea6d1778cb52a169fe1e0c00adcdc6fe81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40f83e51_7569c2ce",
         "filename": "testing/SUPPRESSIONS",
         "patchSetId": 17
