@@ -22,6 +22,30 @@
       "revId": "ac8357b3ec7e1fe4000ebcae5ce65a38bfeb5cb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e01a09d9_a91a79bf",
+        "filename": "core/fpdfdoc/cpdf_interform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-05-31T13:55:23Z",
+      "side": 0,
+      "message": "On windows the FXSYS_GetACP return value from WinApi ::GetACP\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcrt/fx_system.h?rcl\u003d8f7ee98e2c622c21f452cd9fd5956fe85bcb2b7c\u0026l\u003d156\nBut on other OSs returns 0\nSee\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcrt/fx_system.cpp?rcl\u003d8f7ee98e2c622c21f452cd9fd5956fe85bcb2b7c\u0026l\u003d111\nwhich equals to FX_CODEPAGE_DefANSI\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcrt/fx_codepage.h?rcl\u003d8f7ee98e2c622c21f452cd9fd5956fe85bcb2b7c\u0026l\u003d12\nFX_GetCharsetFromCodePage for FX_CODEPAGE_DefANSI\nreturns FX_CHARSET_ANSI, which value is 0\n\nAs result on non Windows platforms we have same result of this method, like before.",
+      "parentUuid": "42093111_04d1cea9",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 0
+      },
+      "revId": "ac8357b3ec7e1fe4000ebcae5ce65a38bfeb5cb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
