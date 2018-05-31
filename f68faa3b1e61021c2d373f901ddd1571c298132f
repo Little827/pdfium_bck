@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d6fe601_b9cc90a1",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 36
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-31T18:21:31Z",
+      "side": 1,
+      "message": "You can fold this back into insert_xref_entry(), since it has no more direct callers.",
+      "revId": "f68faa3b1e61021c2d373f901ddd1571c298132f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
