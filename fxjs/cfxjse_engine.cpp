@@ -96,6 +96,7 @@ CXFA_Object* CFXJSE_Engine::ToObject(CFXJSE_Value* pValue,
 CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
                              CFXJS_Engine* fxjs_engine)
     : CFX_V8(fxjs_engine->GetIsolate()),
+      m_pJSEngine(fxjs_engine),
       m_pDocument(pDocument),
       m_JsContext(CFXJSE_Context::Create(fxjs_engine->GetIsolate(),
                                          fxjs_engine,
@@ -215,6 +216,7 @@ void CFXJSE_Engine::GlobalPropertyGetter(CFXJSE_Value* pObject,
   CXFA_Document* pDoc = pOriginalObject->GetDocument();
   CFXJSE_Engine* lpScriptContext = pDoc->GetScriptContext();
   WideString wsPropName = WideString::FromUTF8(szPropName);
+
   if (lpScriptContext->GetType() == CXFA_Script::Type::Formcalc) {
     if (szPropName == kFormCalcRuntime) {
       lpScriptContext->m_FM2JSContext->GlobalPropertyGetter(pValue);
@@ -338,7 +340,20 @@ void CFXJSE_Engine::NormalPropertyGetter(CFXJSE_Value* pOriginalValue,
         return;
       }
     }
+
+    CXFA_FFNotify* pNotify = pObject->GetDocument()->GetNotify();
+    if (!pNotify) {
+      pReturnValue->SetUndefined();
+      return;
+    }
+
+    CXFA_FFDoc* hDoc = pNotify->GetHDOC();
+    if (hDoc->GetDocEnvironment()->GetPropertyFromNonXFAGlobalObject(
+            hDoc, szPropName, pReturnValue)) {
+      return;
+    }
   }
+
   if (!bRet)
     pReturnValue->SetUndefined();
 }
@@ -447,9 +462,9 @@ CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
   if (!pScriptNode || !pSubform)
     return nullptr;
 
-  auto pNewContext =
-      CFXJSE_Context::Create(GetIsolate(), nullptr, &VariablesClassDescriptor,
-                             new CXFA_ThisProxy(pSubform, pScriptNode));
+  auto pNewContext = CFXJSE_Context::Create(
+      GetIsolate(), m_pJSEngine.Get(), &VariablesClassDescriptor,
+      new CXFA_ThisProxy(pSubform, pScriptNode));
   RemoveBuiltInObjs(pNewContext.get());
   pNewContext->EnableCompatibleMode();
   CFXJSE_Context* pResult = pNewContext.get();
