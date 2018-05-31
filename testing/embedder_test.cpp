@@ -235,16 +235,16 @@ FPDF_FORMHANDLE EmbedderTest::SetupFormFillEnvironment(
 
   FPDF_FORMFILLINFO* formfillinfo = static_cast<FPDF_FORMFILLINFO*>(this);
   memset(formfillinfo, 0, sizeof(FPDF_FORMFILLINFO));
-#ifdef PDF_ENABLE_XFA
-  formfillinfo->version = 2;
-#else   // PDF_ENABLE_XFA
   formfillinfo->version = 1;
-#endif  // PDF_ENABLE_XFA
   formfillinfo->FFI_SetTimer = SetTimerTrampoline;
   formfillinfo->FFI_KillTimer = KillTimerTrampoline;
   formfillinfo->FFI_GetPage = GetPageTrampoline;
   if (javascript_option == JavaScriptOption::kEnableJavaScript)
     formfillinfo->m_pJsPlatform = platform;
+
+#ifdef PDF_ENABLE_XFA
+  formfillinfo->version = 2;
+#endif  // PDF_ENABLE_XFA
 
   FPDF_FORMHANDLE form_handle =
       FPDFDOC_InitFormFillEnvironment(doc, formfillinfo);
