@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c486581_447d9e05",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-31T00:10:24Z",
+      "side": 1,
+      "message": "I was hoping we can get rid of this and just use m_TopBlue.size().",
+      "revId": "2e9ac0492978957e1b4f2f8832671877f2e5264d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
