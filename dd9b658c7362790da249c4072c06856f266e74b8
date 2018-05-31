@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c45e4a1f_ee4a7692",
+        "filename": "xfa/fxfa/parser/cxfa_value.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-05-31T21:19:54Z",
+      "side": 1,
+      "message": "Don\u0027t you want the negated version \"node \u0026\u0026 node-\u003eGetElementType() !\u003d XFA_Element::Arc\"?",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 58
+      },
+      "revId": "dd9b658c7362790da249c4072c06856f266e74b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
