@@ -94,6 +94,30 @@
       "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec48870_00c8716f",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 7290
+      },
+      "writtenOn": "2018-05-31T17:23:21Z",
+      "side": 1,
+      "message": "Right now Debian stretch is still shipping 6.x series.\n\nMy own use is fortunately baselining with GCC 7.2 and 7.3, but the GCC buildbot and other builds are using libstdc++ and GCC 6.x.\n\nHopefully we could drop GCC 6.x workarounds once new Ubuntu LTS is more widely deployed. Also, Debian Buster is not expected to be released anytime soon.\n\nBut yes, I like the approach of taking small workarounds, the minimal needed. Even more when GCC is not our main compiler, and things like Yocto stable releases are already shipping 7.x+.\n\nWill propose the updated patch minimizing the workaround.",
+      "parentUuid": "72ff557d_26de0480",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
