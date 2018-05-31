@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4373bca8_48db488b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-05-31T00:06:42Z",
+      "side": 1,
+      "message": "Skia\u0027s FT code doesn\u0027t call FT_Clear_Face_External_Stream() either, so I guess this should be ok.",
+      "revId": "99de9b44d2101d5754d7c41566d6b04a341944d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
