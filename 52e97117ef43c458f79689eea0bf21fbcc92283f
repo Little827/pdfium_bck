@@ -70,6 +70,30 @@
       "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ff557d_26de0480",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-31T16:12:21Z",
+      "side": 1,
+      "message": "Ah.  I\u0027m not sure the additional complexity of that approach is warranted, though.  This is a work-around, eventually it will be removed when GCC 6 is a distant memory.  As such, we want to make it as small and simple as possible in order to get the job done, even if it makes the build less efficient for this one corner case.\n\nThe larger issue is that I\u0027m not certain that there is value in supporting this one compiler version, though. Is there some reason you can\u0027t move to gcc 7, and leave the code unchanged?",
+      "parentUuid": "43c700bc_a7dc627b",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
