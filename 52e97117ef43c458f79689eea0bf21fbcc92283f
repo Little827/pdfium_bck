@@ -118,6 +118,30 @@
       "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d40414bb_df7bf350",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-05-31T17:25:30Z",
+      "side": 1,
+      "message": "Great, thanks.  While you\u0027re at it could you also put a comment along the lines of:\n\n// Extern templates not properly supported in GCC before version 7.",
+      "parentUuid": "0ec48870_00c8716f",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "52e97117ef43c458f79689eea0bf21fbcc92283f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
