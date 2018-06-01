@@ -20,6 +20,8 @@
 #include "core/fxcrt/pauseindicator_iface.h"
 #include "third_party/base/ptr_util.h"
 
+#include <iostream>
+
 #define PARSE_STEP_LIMIT 100
 
 CPDF_ContentParser::CPDF_ContentParser(CPDF_Page* pPage)
@@ -62,7 +64,7 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
                                        const CFX_Matrix* pParentMatrix,
                                        CPDF_Type3Char* pType3Char,
                                        std::set<const uint8_t*>* parsedSet)
-    : m_CurrentStage(Stage::kParse),
+    : m_CurrentStage(Stage::kPrepareContent),
       m_pObjectHolder(pForm),
       m_pType3Char(pType3Char) {
   CFX_Matrix form_matrix = pForm->GetFormDict()->GetMatrixFor("Matrix");
@@ -117,10 +119,14 @@ CPDF_ContentParser::~CPDF_ContentParser() {}
 // Continue() should be called again. Returning |false| means that we've
 // completed the parse and Continue() is complete.
 bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
+  std::cerr << "CPDF_ContentParser::Continue m_CurrentStage="
+            << (int)m_CurrentStage << std::endl;
   while (m_CurrentStage == Stage::kGetContent) {
     m_CurrentStage = GetContent();
-    if (pPause && pPause->NeedToPauseNow())
+    if (pPause && pPause->NeedToPauseNow()) {
+      std::cerr << "CPDF_ContentParser::Continue pause!" << std::endl;
       return true;
+    }
   }
 
   if (m_CurrentStage == Stage::kPrepareContent)
@@ -128,18 +134,22 @@ bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
 
   while (m_CurrentStage == Stage::kParse) {
     m_CurrentStage = Parse();
-    if (pPause && pPause->NeedToPauseNow())
+    if (pPause && pPause->NeedToPauseNow()) {
+      std::cerr << "CPDF_ContentParser::Continue pause!" << std::endl;
       return true;
+    }
   }
 
   if (m_CurrentStage == Stage::kCheckClip)
     m_CurrentStage = CheckClip();
 
   ASSERT(m_CurrentStage == Stage::kComplete);
+  std::cerr << "CPDF_ContentParser::Continue finish!" << std::endl;
   return false;
 }
 
 CPDF_ContentParser::Stage CPDF_ContentParser::GetContent() {
+  std::cerr << "CPDF_ContentParser::GetContent" << std::endl;
   CPDF_Array* pContent =
       m_pObjectHolder->GetFormDict()->GetArrayFor("Contents");
   CPDF_Stream* pStreamObj = ToStream(
@@ -154,39 +164,47 @@ CPDF_ContentParser::Stage CPDF_ContentParser::GetContent() {
 }
 
 CPDF_ContentParser::Stage CPDF_ContentParser::PrepareContent() {
+  std::cerr << "CPDF_ContentParser::PrepareContent" << std::endl;
   m_CurrentOffset = 0;
+  m_CurrentStream = 0;
 
   if (m_StreamArray.empty()) {
-    m_pData.Reset(m_pSingleStream->GetData());
-    m_Size = m_pSingleStream->GetSize();
+    // m_pData.Reset(m_pSingleStream->GetData());
+    // m_Size = m_pSingleStream->GetSize();
+    m_StreamArray.push_back(m_pSingleStream);
+    std::cerr << "A m_StreamArray.size() " << m_StreamArray.size() << std::endl;
     return Stage::kParse;
   }
 
-  FX_SAFE_UINT32 safeSize = 0;
-  for (const auto& stream : m_StreamArray) {
-    safeSize += stream->GetSize();
-    safeSize += 1;
-  }
-  if (!safeSize.IsValid())
-    return Stage::kComplete;
+  // FX_SAFE_UINT32 safeSize = 0;
+  // for (const auto& stream : m_StreamArray) {
+  //   safeSize += stream->GetSize();
+  //   safeSize += 1;
+  // }
+  // if (!safeSize.IsValid())
+  //   return Stage::kComplete;
 
-  m_Size = safeSize.ValueOrDie();
-  m_pData.Reset(
-      std::unique_ptr<uint8_t, FxFreeDeleter>(FX_Alloc(uint8_t, m_Size)));
+  // m_Size = safeSize.ValueOrDie();
+  // m_pData.Reset(
+  //     std::unique_ptr<uint8_t, FxFreeDeleter>(FX_Alloc(uint8_t, m_Size)));
 
-  uint32_t pos = 0;
-  for (const auto& stream : m_StreamArray) {
-    memcpy(m_pData.Get() + pos, stream->GetData(), stream->GetSize());
-    pos += stream->GetSize();
-    m_pData.Get()[pos++] = ' ';
-  }
-  m_StreamArray.clear();
+  // uint32_t pos = 0;
+  // for (const auto& stream : m_StreamArray) {
+  //   memcpy(m_pData.Get() + pos, stream->GetData(), stream->GetSize());
+  //   pos += stream->GetSize();
+  //   m_pData.Get()[pos++] = ' ';
+  // }
+  // m_StreamArray.clear();
+
+  std::cerr << "B m_StreamArray.size() " << m_StreamArray.size() << std::endl;
 
   return Stage::kParse;
 }
 
 CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
+  std::cerr << "CPDF_ContentParser::Parse" << std::endl;
   if (!m_pParser) {
+    std::cerr << "CPDF_ContentParser::Parse !m_pParser, so init" << std::endl;
     m_parsedSet = pdfium::MakeUnique<std::set<const uint8_t*>>();
     m_pParser = pdfium::MakeUnique<CPDF_StreamContentParser>(
         m_pObjectHolder->GetDocument(), m_pObjectHolder->m_pPageResources.Get(),
@@ -195,16 +213,32 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
         nullptr, m_parsedSet.get());
     m_pParser->GetCurStates()->m_ColorState.SetDefault();
   }
-  if (m_CurrentOffset >= m_Size)
-    return Stage::kCheckClip;
 
-  m_CurrentOffset +=
-      m_pParser->Parse(m_pData.Get() + m_CurrentOffset,
-                       m_Size - m_CurrentOffset, PARSE_STEP_LIMIT);
+  std::cerr << "m_StreamArray.size() " << m_StreamArray.size() << std::endl;
+  std::cerr << "m_CurrentStream " << m_CurrentStream << std::endl;
+  std::cerr << "m_StreamArray[m_CurrentStream]->GetSize() "
+            << m_StreamArray[m_CurrentStream]->GetSize() << std::endl;
+  std::cerr << "m_CurrentOffset " << m_CurrentOffset << std::endl;
+
+  if (m_CurrentOffset >= m_StreamArray[m_CurrentStream]->GetSize()) {
+    m_CurrentOffset = 0;
+    ++m_CurrentStream;
+    if (m_CurrentStream >= m_StreamArray.size()) {
+      return Stage::kCheckClip;
+    } else {
+      return Stage::kParse;
+    }
+  }
+
+  m_CurrentOffset += m_pParser->Parse(
+      m_StreamArray[m_CurrentStream]->GetData() + m_CurrentOffset,
+      m_StreamArray[m_CurrentStream]->GetSize() - m_CurrentOffset,
+      PARSE_STEP_LIMIT);
   return Stage::kParse;
 }
 
 CPDF_ContentParser::Stage CPDF_ContentParser::CheckClip() {
+  std::cerr << "CPDF_ContentParser::CheckClip" << std::endl;
   if (m_pType3Char) {
     m_pType3Char->InitializeFromStreamData(m_pParser->IsColored(),
                                            m_pParser->GetType3Data());
