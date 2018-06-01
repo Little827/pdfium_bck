@@ -6,7 +6,8 @@
 
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 
-CPDF_PageObject::CPDF_PageObject() : m_bDirty(false) {}
+CPDF_PageObject::CPDF_PageObject(int iContentStream)
+    : m_bDirty(false), m_ContentStream(iContentStream) {}
 
 CPDF_PageObject::~CPDF_PageObject() {}
 
