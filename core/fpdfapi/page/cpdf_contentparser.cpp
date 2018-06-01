@@ -110,6 +110,7 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
       pdfium::MakeRetain<CPDF_StreamAcc>(pForm->m_pFormStream.Get());
   m_pSingleStream->LoadAllDataFiltered();
   m_pData.Reset(m_pSingleStream->GetData());
+  m_CurrentContentStream = 9876;
   m_Size = m_pSingleStream->GetSize();
 }
 
@@ -230,7 +231,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
 
   m_CurrentOffset +=
       m_pParser->Parse(m_StreamArray[m_CurrentStream]->GetData() + m_CurrentOffset,
-                       m_StreamArray[m_CurrentStream]->GetSize() - m_CurrentOffset, PARSE_STEP_LIMIT);
+                       m_StreamArray[m_CurrentStream]->GetSize() - m_CurrentOffset, PARSE_STEP_LIMIT, m_CurrentStream);
   return Stage::kParse;
 }
 
