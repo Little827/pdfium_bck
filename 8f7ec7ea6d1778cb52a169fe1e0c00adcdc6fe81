@@ -141,6 +141,30 @@
       "revId": "8f7ec7ea6d1778cb52a169fe1e0c00adcdc6fe81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbea0bf7_1d2a48ae",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 17
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-01T11:42:16Z",
+      "side": 1,
+      "message": "The text objects in this files are not contain embedded fonts.\nAs result, its use CPDF_InterForm::GetDefaultFontForDoc (See CPDF_StreamContentParser::FindFont).\nAnd on linux this method find the \"Arial Unicode MS\" TTF Font, which installed in buildbot.\n\nBut before this CL, in case when an object is not contains embedded, was always used the \"Helvetica\" stock font.\nNow it is used only in case, when no any other font (specified in CFX_Font) found.\n\nAs i say before, this is depend on installed fonts and its versions.",
+      "parentUuid": "0d0243bb_7b946e9d",
+      "range": {
+        "startLine": 257,
+        "startChar": 15,
+        "endLine": 257,
+        "endChar": 20
+      },
+      "revId": "8f7ec7ea6d1778cb52a169fe1e0c00adcdc6fe81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
