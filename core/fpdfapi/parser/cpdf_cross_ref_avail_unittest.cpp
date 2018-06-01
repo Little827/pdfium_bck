@@ -136,10 +136,9 @@ TEST(CPDF_CrossRefAvailTest, IncorrectData) {
 
 TEST(CPDF_CrossRefAvailTest, ThreeCrossRefV4) {
   char int_buffer[100];
-  int prev_offset = 0;
+  int prev_offset;
   int cur_offset = 0;
   std::string table = "pdf blah blah blah\n";
-  prev_offset = cur_offset;
   cur_offset = static_cast<int>(table.size());
   table +=
       "xref \n"
@@ -188,10 +187,9 @@ TEST(CPDF_CrossRefAvailTest, ThreeCrossRefV4) {
 
 TEST(CPDF_CrossRefAvailTest, ThreeCrossRefV5) {
   char int_buffer[100];
-  int prev_offset = 0;
+  int prev_offset;
   int cur_offset = 0;
   std::string table = "pdf blah blah blah\n";
-  prev_offset = cur_offset;
   cur_offset = static_cast<int>(table.size());
   table +=
       "16 0 obj\n"
