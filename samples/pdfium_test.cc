@@ -699,12 +699,13 @@ void RenderPdf(const std::string& name,
   platform_callbacks.Doc_mail = ExampleDocMail;
 
   FPDF_FORMFILLINFO_PDFiumTest form_callbacks = {};
-#ifdef PDF_ENABLE_XFA
-  form_callbacks.version = 2;
-#else   // PDF_ENABLE_XFA
   form_callbacks.version = 1;
-#endif  // PDF_ENABLE_XFA
   form_callbacks.FFI_GetPage = GetPageForIndex;
+
+#ifdef PDF_ENABLE_XFA
+  if (!options.disable_xfa && !options.disable_javascript)
+    form_callbacks.version = 2;
+#endif  // PDF_ENABLE_XFA
 
 #ifdef PDF_ENABLE_V8
   if (!options.disable_javascript)
