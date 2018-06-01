@@ -62,6 +62,7 @@ class CPDF_ContentParser {
   uint32_t m_nStreams = 0;
   uint32_t m_Size = 0;
   uint32_t m_CurrentOffset = 0;
+  uint32_t m_CurrentStream = 0;
 
   // Only used when parsing pages.
   std::unique_ptr<std::set<const uint8_t*>> m_parsedSet;
