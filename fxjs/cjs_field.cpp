@@ -2281,10 +2281,9 @@ CJS_Return CJS_Field::buttonGetIcon(
   if (pObj.IsEmpty())
     return CJS_Return(false);
 
-  CJS_Icon* pJS_Icon = static_cast<CJS_Icon*>(pRuntime->GetObjectPrivate(pObj));
-  if (!pJS_Icon)
-    return CJS_Return(false);
-  return CJS_Return(pJS_Icon->ToV8Object());
+  CJS_Icon* pJS_Icon = static_cast<CJS_Icon*>(
+      CFXJS_Engine::GetObjectPrivate(pObj, pRuntime->GetIsolate()));
+  return pJS_Icon ? CJS_Return(pJS_Icon->ToV8Object()) : CJS_Return(false);
 }
 
 CJS_Return CJS_Field::buttonImportIcon(
@@ -2401,8 +2400,8 @@ CJS_Return CJS_Field::getArray(
     if (pObj.IsEmpty())
       return CJS_Return(false);
 
-    CJS_Field* pJSField =
-        static_cast<CJS_Field*>(pRuntime->GetObjectPrivate(pObj));
+    CJS_Field* pJSField = static_cast<CJS_Field*>(
+        CFXJS_Engine::GetObjectPrivate(pObj, pRuntime->GetIsolate()));
     pJSField->AttachField(m_pJSDoc, *pStr);
     pRuntime->PutArrayElement(FormFieldArray, j++,
                               pJSField

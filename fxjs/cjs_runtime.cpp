@@ -178,8 +178,8 @@ void CJS_Runtime::SetFormFillEnvToDocument() {
   if (CFXJS_Engine::GetObjDefnID(pThis) != CJS_Document::GetObjDefnID())
     return;
 
-  CJS_Document* pJSDocument =
-      static_cast<CJS_Document*>(GetObjectPrivate(pThis));
+  CJS_Document* pJSDocument = static_cast<CJS_Document*>(
+      CFXJS_Engine::GetObjectPrivate(pThis, GetIsolate()));
   if (!pJSDocument)
     return;
 
