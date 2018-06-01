@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "967feef4_58859640",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-01T16:12:48Z",
+      "side": 1,
+      "message": "since ch is assigned as the first thing in the loop, and isn\u0027t used outside it, can this move to line 445 as \n   wchar_t ch \u003d GetChar(pos - 1);",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "bd86f24ed091f4231e511a252fce09cbfeb72bb7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
