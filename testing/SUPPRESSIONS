@@ -83,9 +83,9 @@ all_trigger_newdoc.pdf * * *
 all_trigger_print.pdf * * *
 all_trigger_run_js_lunchurl.pdf mac * *
 all_trigger_run_js_maildoc.pdf mac * *
-annotation_highlight_author_content.pdf mac * *
-annotation_highlight_long_content.pdf mac * *
-annotation_highlight_no_author.pdf mac * *
+annotation_highlight_author_content.pdf * * *
+annotation_highlight_long_content.pdf * * *
+annotation_highlight_no_author.pdf * * *
 app_launchurl.pdf mac * *
 appstoredescription3.1_en_updated.pdf mac * *
 bookmark.pdf * * *
@@ -254,8 +254,8 @@ new_textmarkup8_hidden.pdf mac * *
 number.pdf * * *
 octest.pdf mac * *
 open_a_weblink.pdf mac * *
-path_10_jd.pdf mac * *
-path_5_pattern.pdf mac * *
+path_10_jd.pdf linux,mac * *
+path_5_pattern.pdf linux,mac * *
 path_6_graphics4.5.5.pdf mac * *
 path_7.pdf mac * *
 path_9.pdf mac * *
