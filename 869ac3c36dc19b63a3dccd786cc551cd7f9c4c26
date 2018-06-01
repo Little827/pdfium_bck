@@ -22,6 +22,30 @@
       "revId": "869ac3c36dc19b63a3dccd786cc551cd7f9c4c26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc8300a0_8d8dad95",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-01T17:50:35Z",
+      "side": 1,
+      "message": "That is correct. The issue is the memset that occurs after. Without the alloc here, it is possible that if the first text piece has 0 characters, then pCharPos would be still nullptr at line 592. This issue is actually what Clang was warning me about. The change over to Realloc is just getting rid of an anti-pattern I noticed.\n\nThe first textpiece having 0 characters is probably indicative of a bug somewhere else, but there doesn\u0027t appear to any guarantee that it cannot be 0.",
+      "parentUuid": "0a74677a_f6ff8360",
+      "range": {
+        "startLine": 563,
+        "startChar": 29,
+        "endLine": 563,
+        "endChar": 37
+      },
+      "revId": "869ac3c36dc19b63a3dccd786cc551cd7f9c4c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
