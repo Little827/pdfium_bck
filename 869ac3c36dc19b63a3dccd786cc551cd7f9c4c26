@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a74677a_f6ff8360",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-01T16:23:42Z",
+      "side": 1,
+      "message": "realloc on nullptr should be ok?",
+      "range": {
+        "startLine": 563,
+        "startChar": 29,
+        "endLine": 563,
+        "endChar": 37
+      },
+      "revId": "869ac3c36dc19b63a3dccd786cc551cd7f9c4c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
