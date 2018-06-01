@@ -108,6 +108,7 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
       pdfium::MakeRetain<CPDF_StreamAcc>(pForm->m_pFormStream.Get());
   m_pSingleStream->LoadAllDataFiltered();
   m_pData.Reset(m_pSingleStream->GetData());
+  m_CurrentContentStream = 9876;
   m_Size = m_pSingleStream->GetSize();
 }
 
@@ -158,6 +159,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::PrepareContent() {
 
   if (m_StreamArray.empty()) {
     m_pData.Reset(m_pSingleStream->GetData());
+    m_CurrentContentStream = 9877;
     m_Size = m_pSingleStream->GetSize();
     return Stage::kParse;
   }
@@ -173,6 +175,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::PrepareContent() {
   m_Size = safeSize.ValueOrDie();
   m_pData.Reset(
       std::unique_ptr<uint8_t, FxFreeDeleter>(FX_Alloc(uint8_t, m_Size)));
+  m_CurrentContentStream = 9878;
 
   uint32_t pos = 0;
   for (const auto& stream : m_StreamArray) {
@@ -198,9 +201,9 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
   if (m_CurrentOffset >= m_Size)
     return Stage::kCheckClip;
 
-  m_CurrentOffset +=
-      m_pParser->Parse(m_pData.Get() + m_CurrentOffset,
-                       m_Size - m_CurrentOffset, PARSE_STEP_LIMIT);
+  m_CurrentOffset += m_pParser->Parse(m_pData.Get() + m_CurrentOffset,
+                                      m_Size - m_CurrentOffset,
+                                      PARSE_STEP_LIMIT, m_CurrentContentStream);
   return Stage::kParse;
 }
 
