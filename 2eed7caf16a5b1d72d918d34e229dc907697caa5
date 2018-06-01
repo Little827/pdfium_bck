@@ -22,6 +22,30 @@
       "revId": "2eed7caf16a5b1d72d918d34e229dc907697caa5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39102b3_cca9a41b",
+        "filename": "testing/unit_test_main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-01T15:18:46Z",
+      "side": 1,
+      "message": "I wrote a little test where I have a print statement in a #if PDF_ENABLE_XFA block. And  it is running. Dug into this a little more, apparently Clang is defaulting it to 1. I could have sworn the default was 0, but apparently I am either thinking of a different toolchain or misremembering.",
+      "parentUuid": "4360ea45_f537901b",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 33
+      },
+      "revId": "2eed7caf16a5b1d72d918d34e229dc907697caa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
