@@ -16,7 +16,9 @@ class CPDF_Form;
 
 class CPDF_FormObject : public CPDF_PageObject {
  public:
-  CPDF_FormObject(std::unique_ptr<CPDF_Form> pForm, const CFX_Matrix& matrix);
+  CPDF_FormObject(int iContentStream,
+                  std::unique_ptr<CPDF_Form> pForm,
+                  const CFX_Matrix& matrix);
   ~CPDF_FormObject() override;
 
   // CPDF_PageObject:

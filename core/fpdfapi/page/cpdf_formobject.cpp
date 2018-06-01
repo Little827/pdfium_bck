@@ -10,9 +10,12 @@
 
 #include "core/fpdfapi/page/cpdf_form.h"
 
-CPDF_FormObject::CPDF_FormObject(std::unique_ptr<CPDF_Form> pForm,
+CPDF_FormObject::CPDF_FormObject(int iContentStream,
+                                 std::unique_ptr<CPDF_Form> pForm,
                                  const CFX_Matrix& matrix)
-    : m_pForm(std::move(pForm)), m_FormMatrix(matrix) {}
+    : CPDF_PageObject(iContentStream),
+      m_pForm(std::move(pForm)),
+      m_FormMatrix(matrix) {}
 
 CPDF_FormObject::~CPDF_FormObject() {}
 

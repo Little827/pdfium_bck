@@ -14,7 +14,7 @@
 
 class CPDF_PathObject : public CPDF_PageObject {
  public:
-  CPDF_PathObject();
+  explicit CPDF_PathObject(int iContentStream);
   ~CPDF_PathObject() override;
 
   // CPDF_PageObject

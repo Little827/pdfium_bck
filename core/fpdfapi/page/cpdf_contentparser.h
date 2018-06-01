@@ -59,6 +59,7 @@ class CPDF_ContentParser {
   RetainPtr<CPDF_StreamAcc> m_pSingleStream;
   std::vector<RetainPtr<CPDF_StreamAcc>> m_StreamArray;
   MaybeOwned<uint8_t, FxFreeDeleter> m_pData;
+  int m_nContentStreamIndex;
   uint32_t m_nStreams = 0;
   uint32_t m_Size = 0;
   uint32_t m_CurrentOffset = 0;
