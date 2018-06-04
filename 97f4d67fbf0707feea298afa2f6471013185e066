@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ae7bef6_3584bed7",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-04T15:28:29Z",
+      "side": 1,
+      "message": "The matrix_* variables should probably be set to 0 before this call to ensure they are actually set by the method.",
+      "revId": "97f4d67fbf0707feea298afa2f6471013185e066",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
