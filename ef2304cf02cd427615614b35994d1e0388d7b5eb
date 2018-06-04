@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4cadebc_64c5d4c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-06-04T14:01:08Z",
+      "side": 1,
+      "message": "In other words this is a getter, not a setter. Too much \"it\", now I realize. :-)",
+      "parentUuid": "f84f7fa0_05d0352b",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "ef2304cf02cd427615614b35994d1e0388d7b5eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "644dac13_61cd6af8",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-04T13:45:02Z",
       "side": 1,
       "message": "Should we make a test where each value in the matrix is different and then make sure they all come out in the right spot? It\u0027s hard to tell from this test if each field is getting filled in correctly.",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "ef2304cf02cd427615614b35994d1e0388d7b5eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4027413e_ddac8f52",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-06-04T14:01:08Z",
+      "side": 1,
+      "message": "Do you have a preference if I should create a test PDF that has all 6 variables with different values or should I add an FPDFPath_SetMatrix(), so the in-memory PDF created in the test can have the setup without the need to load a file?\n\nI think the later would be better, but I don\u0027t have a strong opinion on this.",
+      "parentUuid": "644dac13_61cd6af8",
       "range": {
         "startLine": 261,
         "startChar": 5,
