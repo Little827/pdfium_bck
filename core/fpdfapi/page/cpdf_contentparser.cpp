@@ -62,7 +62,7 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Form* pForm,
                                        const CFX_Matrix* pParentMatrix,
                                        CPDF_Type3Char* pType3Char,
                                        std::set<const uint8_t*>* parsedSet)
-    : m_CurrentStage(Stage::kParse),
+    : m_CurrentStage(Stage::kPrepareContent),
       m_pObjectHolder(pForm),
       m_pType3Char(pType3Char) {
   CFX_Matrix form_matrix = pForm->GetFormDict()->GetMatrixFor("Matrix");
@@ -155,32 +155,12 @@ CPDF_ContentParser::Stage CPDF_ContentParser::GetContent() {
 
 CPDF_ContentParser::Stage CPDF_ContentParser::PrepareContent() {
   m_CurrentOffset = 0;
+  m_CurrentStream = 0;
 
   if (m_StreamArray.empty()) {
-    m_pData.Reset(m_pSingleStream->GetData());
-    m_Size = m_pSingleStream->GetSize();
+    m_StreamArray.push_back(m_pSingleStream);
     return Stage::kParse;
   }
-
-  FX_SAFE_UINT32 safeSize = 0;
-  for (const auto& stream : m_StreamArray) {
-    safeSize += stream->GetSize();
-    safeSize += 1;
-  }
-  if (!safeSize.IsValid())
-    return Stage::kComplete;
-
-  m_Size = safeSize.ValueOrDie();
-  m_pData.Reset(
-      std::unique_ptr<uint8_t, FxFreeDeleter>(FX_Alloc(uint8_t, m_Size)));
-
-  uint32_t pos = 0;
-  for (const auto& stream : m_StreamArray) {
-    memcpy(m_pData.Get() + pos, stream->GetData(), stream->GetSize());
-    pos += stream->GetSize();
-    m_pData.Get()[pos++] = ' ';
-  }
-  m_StreamArray.clear();
 
   return Stage::kParse;
 }
@@ -195,12 +175,19 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
         nullptr, m_parsedSet.get());
     m_pParser->GetCurStates()->m_ColorState.SetDefault();
   }
-  if (m_CurrentOffset >= m_Size)
-    return Stage::kCheckClip;
 
-  m_CurrentOffset +=
-      m_pParser->Parse(m_pData.Get() + m_CurrentOffset,
-                       m_Size - m_CurrentOffset, PARSE_STEP_LIMIT);
+  m_CurrentOffset += m_pParser->Parse(
+      m_StreamArray[m_CurrentStream]->GetData() + m_CurrentOffset,
+      m_StreamArray[m_CurrentStream]->GetSize() - m_CurrentOffset,
+      PARSE_STEP_LIMIT);
+
+  if (m_CurrentOffset >= m_StreamArray[m_CurrentStream]->GetSize()) {
+    m_CurrentOffset = 0;
+    ++m_CurrentStream;
+    if (m_CurrentStream >= m_StreamArray.size())
+      return Stage::kCheckClip;
+  }
+
   return Stage::kParse;
 }
 
