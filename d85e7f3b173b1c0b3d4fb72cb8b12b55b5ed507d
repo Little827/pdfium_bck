@@ -69,6 +69,30 @@
       "revId": "d85e7f3b173b1c0b3d4fb72cb8b12b55b5ed507d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7439e656_8a733678",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-04T15:26:40Z",
+      "side": 1,
+      "message": "This is related to IFX_SeekableReadStream::ReadBlock.\nI think it is should leave buffer unmodified too.",
+      "parentUuid": "27103726_afde72e1",
+      "range": {
+        "startLine": 228,
+        "startChar": 9,
+        "endLine": 228,
+        "endChar": 70
+      },
+      "revId": "d85e7f3b173b1c0b3d4fb72cb8b12b55b5ed507d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
