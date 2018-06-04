@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d28ba081_48a5cca4",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-04T20:58:13Z",
+      "side": 1,
+      "message": "Oops, looks like I forgot to actually check it.",
+      "revId": "1c8064e50bc27876a1162ca4a9b9faf8b43d4253",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
