@@ -218,7 +218,7 @@ uint8_t* CBC_OnedCode39Writer::EncodeImpl(const ByteString& contents,
       return nullptr;
   }
   ToIntArray(kOnedCode39CharacterEncoding[39], widths);
-  pos += AppendPattern(result.get(), pos, widths, 9, 1, e);
+  static_cast<void>(AppendPattern(result.get(), pos, widths, 9, 1, e));
   if (e != BCExceptionNO)
     return nullptr;
 
