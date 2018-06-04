@@ -129,7 +129,8 @@ uint8_t* CBC_OnedEAN8Writer::EncodeImpl(const ByteString& contents,
     if (e != BCExceptionNO)
       return nullptr;
   }
-  pos += AppendPattern(result.get(), pos, kOnedEAN8StartPattern, 3, 1, e);
+  static_cast<void>(
+      AppendPattern(result.get(), pos, kOnedEAN8StartPattern, 3, 1, e));
   if (e != BCExceptionNO)
     return nullptr;
   return result.release();
