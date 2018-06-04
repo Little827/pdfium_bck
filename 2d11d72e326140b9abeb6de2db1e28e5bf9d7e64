@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bd9a6f5_eca4739d",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-04T15:14:18Z",
+      "side": 0,
+      "message": "This seems like it only compared memory streams whereas now it always compares? This will end up doing more work in the non-memory case as, I\u0027m assuming, we\u0027re loading data in from somewhere else?",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 163,
+        "endChar": 23
+      },
+      "revId": "2d11d72e326140b9abeb6de2db1e28e5bf9d7e64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d021d23e_d73df04c",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-04T15:14:18Z",
+      "side": 0,
+      "message": "Is this all happening inside the LoadAllDataFiltered method now?",
+      "range": {
+        "startLine": 327,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "2d11d72e326140b9abeb6de2db1e28e5bf9d7e64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
