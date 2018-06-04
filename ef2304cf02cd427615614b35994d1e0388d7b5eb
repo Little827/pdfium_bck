@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "414560c0_54ad494c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-06-04T14:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4cadebc_64c5d4c5",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "ef2304cf02cd427615614b35994d1e0388d7b5eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "644dac13_61cd6af8",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 1
@@ -117,6 +141,30 @@
       "revId": "ef2304cf02cd427615614b35994d1e0388d7b5eb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296028d1_74229166",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-06-04T14:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ade1ab10_e5547bf0",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "ef2304cf02cd427615614b35994d1e0388d7b5eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
