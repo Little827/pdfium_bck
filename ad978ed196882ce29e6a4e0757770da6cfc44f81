@@ -34,6 +34,24 @@
       "revId": "ad978ed196882ce29e6a4e0757770da6cfc44f81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76e426a0_fdf6e0c8",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-04T20:45:56Z",
+      "side": 0,
+      "message": "Sorry, didn\u0027t mean to say this \"instance\", but all these instances where we increment \"pos\" whenever we call AppendPattern().",
+      "parentUuid": "f0a35963_981d4d5a",
+      "revId": "ad978ed196882ce29e6a4e0757770da6cfc44f81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
