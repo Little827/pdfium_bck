@@ -46,16 +46,15 @@ class CPDF_PageObjectHolder {
 
   virtual bool IsPage() const;
 
+  void StartParse(std::unique_ptr<CPDF_ContentParser> pParser);
   void ContinueParse(PauseIndicatorIface* pPause);
   bool IsParsed() const { return m_ParseState == CONTENT_PARSED; }
 
-  const CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  CPDF_Document* GetDocument() { return m_pDocument.Get(); }
+  CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
 
   // TODO(thestig): Can this return nullptr? If not, audit callers and simplify
   // the ones that assume it can.
-  const CPDF_Dictionary* GetFormDict() const { return m_pFormDict.Get(); }
-  CPDF_Dictionary* GetFormDict() { return m_pFormDict.Get(); }
+  CPDF_Dictionary* GetFormDict() const { return m_pFormDict.Get(); }
 
   const CPDF_PageObjectList* GetPageObjectList() const {
     return &m_PageObjectList;
@@ -92,17 +91,23 @@ class CPDF_PageObjectHolder {
   std::map<FontData, ByteString> m_FontsMap;
 
  protected:
-  enum ParseState { CONTENT_NOT_PARSED, CONTENT_PARSING, CONTENT_PARSED };
-
   void LoadTransInfo();
 
-  const UnownedPtr<CPDF_Dictionary> m_pFormDict;
-  UnownedPtr<CPDF_Document> m_pDocument;
   CFX_FloatRect m_BBox;
   CPDF_Transparency m_Transparency;
+
+ private:
+  enum ParseState : uint8_t {
+    CONTENT_NOT_PARSED,
+    CONTENT_PARSING,
+    CONTENT_PARSED
+  };
+
   bool m_bBackgroundAlphaNeeded = false;
-  std::vector<CFX_FloatRect> m_MaskBoundingBoxes;
   ParseState m_ParseState = CONTENT_NOT_PARSED;
+  const UnownedPtr<CPDF_Dictionary> m_pFormDict;
+  UnownedPtr<CPDF_Document> m_pDocument;
+  std::vector<CFX_FloatRect> m_MaskBoundingBoxes;
   std::unique_ptr<CPDF_ContentParser> m_pParser;
   CPDF_PageObjectList m_PageObjectList;
   CFX_Matrix m_LastCTM;
