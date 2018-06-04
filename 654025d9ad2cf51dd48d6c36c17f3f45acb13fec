@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3698bf2f_6a3c609f",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-04T20:54:30Z",
+      "side": 1,
+      "message": "#ifdef PDF_ENABLE_XFA\n  // Information was obtained without full page parse.\n  // TODO(tsepez): XFA should obtain size without parsing.\n  EXPECT_EQ(1u, pDoc-\u003eGetParsedPageCountForTesting());\n#else\n  EXPECT_EQ(0u, pDoc-\u003eGetParsedPageCountForTesting());\n#endif  // PDF_ENABLE_XFA\n\nThat way, we\u0027ll remember to fix the test when we fix xfa?",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 6
+      },
+      "revId": "654025d9ad2cf51dd48d6c36c17f3f45acb13fec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
