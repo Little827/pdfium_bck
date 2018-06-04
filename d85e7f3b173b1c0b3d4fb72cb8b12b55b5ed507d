@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9a36c69_80027e32",
+        "filename": "core/fpdfapi/parser/cpdf_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-04T14:23:03Z",
+      "side": 1,
+      "message": "We\u0027ve been removing friend entries as we find them. I\u0027d prefer to have the two methods as public then add friends.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 30
+      },
+      "revId": "d85e7f3b173b1c0b3d4fb72cb8b12b55b5ed507d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
