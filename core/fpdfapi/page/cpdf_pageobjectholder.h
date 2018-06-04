@@ -9,6 +9,7 @@
 
 #include <map>
 #include <memory>
+#include <set>
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_pageobjectlist.h"
@@ -106,6 +107,7 @@ class CPDF_PageObjectHolder {
   std::unique_ptr<CPDF_ContentParser> m_pParser;
   CPDF_PageObjectList m_PageObjectList;
   CFX_Matrix m_LastCTM;
+  std::set<uint32_t> m_DirtyStreams;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_PAGEOBJECTHOLDER_H_
