@@ -362,6 +362,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
+#ifdef PDF_ENABLE_CLICK_LOGGING
+  fprintf(stderr, "LButtonDown(%f, %f)\n", page_x, page_y);
+#endif  // PDF_ENABLE_CLICK_LOGGING
   return pPageView->OnLButtonDown(CFX_PointF(page_x, page_y), modifier);
 }
 
@@ -373,6 +376,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
+#ifdef PDF_ENABLE_CLICK_LOGGING
+  fprintf(stderr, "LButtonUp(%f, %f)\n", page_x, page_y);
+#endif  // PDF_ENABLE_CLICK_LOGGING
   return pPageView->OnLButtonUp(CFX_PointF(page_x, page_y), modifier);
 }
 
@@ -385,6 +391,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
+#ifdef PDF_ENABLE_CLICK_LOGGING
+  fprintf(stderr, "RButtonDown(%f, %f)\n", page_x, page_y);
+#endif  // PDF_ENABLE_CLICK_LOGGING
   return pPageView->OnRButtonDown(CFX_PointF(page_x, page_y), modifier);
 }
 
@@ -396,6 +405,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
+#ifdef PDF_ENABLE_CLICK_LOGGING
+  fprintf(stderr, "RButtonUp(%f, %f)\n", page_x, page_y);
+#endif  // PDF_ENABLE_CLICK_LOGGING
   return pPageView->OnRButtonUp(CFX_PointF(page_x, page_y), modifier);
 }
 #endif  // PDF_ENABLE_XFA
