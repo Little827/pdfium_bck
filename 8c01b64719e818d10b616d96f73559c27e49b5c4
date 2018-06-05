@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "456054ff_3d083820",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-05T14:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5457aff2_9fa3ba79",
+      "revId": "8c01b64719e818d10b616d96f73559c27e49b5c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "781bebb5_f96306b4",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "8c01b64719e818d10b616d96f73559c27e49b5c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2332e190_85703320",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-05T14:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781bebb5_f96306b4",
+      "revId": "8c01b64719e818d10b616d96f73559c27e49b5c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "8c01b64719e818d10b616d96f73559c27e49b5c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665e3424_6f74b53b",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-05T14:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d473bae_f0c26eee",
+      "range": {
+        "startLine": 667,
+        "startChar": 8,
+        "endLine": 667,
+        "endChar": 12
+      },
+      "revId": "8c01b64719e818d10b616d96f73559c27e49b5c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
