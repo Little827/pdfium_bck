@@ -564,7 +564,7 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
 }
 
 // Fails due to pdfium:1051.
-TEST_F(FPDFEditEmbeddertest, DISABLED_RemoveExistingPageObject) {
+TEST_F(FPDFEditEmbeddertest, RemoveExistingPageObject) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -581,7 +581,9 @@ TEST_F(FPDFEditEmbeddertest, DISABLED_RemoveExistingPageObject) {
 
   // Save the file
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  filestream_.open("RemoveExistingPageObject.pdf");
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
   UnloadPage(page);
   FPDFPageObj_Destroy(page_object);
 
@@ -591,6 +593,53 @@ TEST_F(FPDFEditEmbeddertest, DISABLED_RemoveExistingPageObject) {
   EXPECT_EQ(1, FPDFPage_CountObjects(saved_page));
   CloseSavedPage(saved_page);
   CloseSavedDocument();
+}
+
+// Fails due to pdfium:1051.
+TEST_F(FPDFEditEmbeddertest, RemoveExistingPageObjectSplitStreams) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("hello_world_split_streams.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Get the "Hello, world!" text object and remove it.
+  ASSERT_EQ(3, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(page_object);
+  EXPECT_TRUE(FPDFPage_RemoveObject(page, page_object));
+
+  // Verify the "Hello, world!" text is gone.
+  ASSERT_EQ(2, FPDFPage_CountObjects(page));
+
+  // Save the file
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  filestream_.open("RemoveExistingPageObjectSplitStreams.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
+  UnloadPage(page);
+  FPDFPageObj_Destroy(page_object);
+
+  // Re-open the file and check the page object count is still 1.
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_EQ(2, FPDFPage_CountObjects(saved_page));
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
+TEST_F(FPDFEditEmbeddertest, TestSplitStreams) {
+  EXPECT_TRUE(OpenDocument("split_streams.pdf"));
+
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+
+  filestream_.open("TestSplitStreams.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  filestream_.close();
+
+  UnloadPage(page);
 }
 
 TEST_F(FPDFEditEmbeddertest, InsertPageObjectAndSave) {

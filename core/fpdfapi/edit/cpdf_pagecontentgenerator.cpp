@@ -6,9 +6,11 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 
+#include <iostream>
 #include <tuple>
 #include <utility>
 
+#include "core/fpdfapi/edit/cpdf_generatedstreams.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_image.h"
@@ -65,27 +67,31 @@ void CPDF_PageContentGenerator::GenerateContent() {
   ASSERT(m_pObjHolder->IsPage());
 
   CPDF_Document* pDoc = m_pDocument.Get();
-  std::ostringstream buf;
+
+  CPDF_GeneratedStreams generated_streams(m_pageObjects);
+
+  if (generated_streams.GetBuffer(0) == nullptr)
+    return;
 
   // Set the default graphic state values
-  buf << "q\n";
+  *generated_streams.GetBuffer(0) << "q\n";
   if (!m_pObjHolder->GetLastCTM().IsIdentity())
-    buf << m_pObjHolder->GetLastCTM().GetInverse() << " cm\n";
-  ProcessDefaultGraphics(&buf);
+    *generated_streams.GetBuffer(0) << m_pObjHolder->GetLastCTM().GetInverse() << " cm\n";
+  ProcessDefaultGraphics(generated_streams.GetBuffer(0));
 
   // Process the page objects
-  if (!ProcessPageObjects(&buf))
+  if (!ProcessPageObjects(generated_streams.GetBuffer(0)))
     return;
 
   // Return graphics to original state
-  buf << "Q\n";
+  *generated_streams.GetBuffer(0) << "Q\n";
 
   // Add buffer to a stream in page's 'Contents'
   CPDF_Dictionary* pPageDict = m_pObjHolder->GetFormDict();
   CPDF_Object* pContent =
       pPageDict ? pPageDict->GetObjectFor("Contents") : nullptr;
   CPDF_Stream* pStream = pDoc->NewIndirect<CPDF_Stream>();
-  pStream->SetData(&buf);
+  pStream->SetData(generated_streams.GetBuffer(0));
   if (pContent) {
     CPDF_Array* pArray = ToArray(pContent);
     if (pArray) {
@@ -153,6 +159,8 @@ ByteString CPDF_PageContentGenerator::RealizeResource(
 bool CPDF_PageContentGenerator::ProcessPageObjects(std::ostringstream* buf) {
   bool bDirty = false;
   for (auto& pPageObj : m_pageObjects) {
+    int32_t nContentStream = pPageObj->GetContentStream();
+    std::cerr << "nContentStream " << nContentStream << std::endl;
     if (m_pObjHolder->IsPage() && !pPageObj->IsDirty())
       continue;
 
