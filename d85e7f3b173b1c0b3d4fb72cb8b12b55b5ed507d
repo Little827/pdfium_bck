@@ -141,6 +141,30 @@
       "revId": "d85e7f3b173b1c0b3d4fb72cb8b12b55b5ed507d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb939191_9b494dd2",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-05T14:49:25Z",
+      "side": 1,
+      "message": "I think that\u0027s the safest way to maintain the contract. thestig@ any thoughts?",
+      "parentUuid": "5ca050a1_f06468f4",
+      "range": {
+        "startLine": 228,
+        "startChar": 9,
+        "endLine": 228,
+        "endChar": 70
+      },
+      "revId": "d85e7f3b173b1c0b3d4fb72cb8b12b55b5ed507d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
