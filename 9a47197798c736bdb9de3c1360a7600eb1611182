@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e6ddc87_afa14a82",
+        "filename": "fxjs/cfxjse_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-05T15:34:39Z",
+      "side": 1,
+      "message": "IJS_EventContext",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27368e8b_a657217a",
+        "filename": "fxjs/cfxjse_engine.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-05T15:34:39Z",
+      "side": 1,
+      "message": "It\u0027s not an Engine anymore, but a Runtime. I don\u0027t know what the difference is, but looks misleading.",
+      "range": {
+        "startLine": 110,
+        "startChar": 46,
+        "endLine": 110,
+        "endChar": 52
+      },
+      "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
