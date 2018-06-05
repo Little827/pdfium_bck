@@ -141,15 +141,14 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
   pEndStream->SetData((const uint8_t*)" Q", 2);
 
   if (CPDF_Array* pContentArray = ToArray(pContentObj)) {
-    pContentArray->InsertNewAt<CPDF_Reference>(0, pDoc, pStream->GetObjNum());
-    pContentArray->AddNew<CPDF_Reference>(pDoc, pEndStream->GetObjNum());
+    pContentArray->InsertAt(0, pStream->MakeReference(pDoc));
+    pContentArray->Add(pEndStream->MakeReference(pDoc));
   } else if (pContentObj->IsStream() && !pContentObj->IsInline()) {
     CPDF_Array* pContentArray = pDoc->NewIndirect<CPDF_Array>();
-    pContentArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
-    pContentArray->AddNew<CPDF_Reference>(pDoc, pContentObj->GetObjNum());
-    pContentArray->AddNew<CPDF_Reference>(pDoc, pEndStream->GetObjNum());
-    pPageDict->SetNewFor<CPDF_Reference>("Contents", pDoc,
-                                         pContentArray->GetObjNum());
+    pContentArray->Add(pStream->MakeReference(pDoc));
+    pContentArray->Add(pContentObj->MakeReference(pDoc));
+    pContentArray->Add(pEndStream->MakeReference(pDoc));
+    pPageDict->SetFor("Contents", pContentArray->MakeReference(pDoc));
   }
 
   // Need to transform the patterns as well.
@@ -294,12 +293,11 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_InsertClipPath(FPDF_PAGE page,
   pStream->SetData(&strClip);
 
   if (CPDF_Array* pArray = ToArray(pContentObj)) {
-    pArray->InsertNewAt<CPDF_Reference>(0, pDoc, pStream->GetObjNum());
+    pArray->InsertAt(0, pStream->MakeReference(pDoc));
   } else if (pContentObj->IsStream() && !pContentObj->IsInline()) {
     CPDF_Array* pContentArray = pDoc->NewIndirect<CPDF_Array>();
-    pContentArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
-    pContentArray->AddNew<CPDF_Reference>(pDoc, pContentObj->GetObjNum());
-    pPageDict->SetNewFor<CPDF_Reference>("Contents", pDoc,
-                                         pContentArray->GetObjNum());
+    pContentArray->Add(pStream->MakeReference(pDoc));
+    pContentArray->Add(pContentObj->MakeReference(pDoc));
+    pPageDict->SetFor("Contents", pContentArray->MakeReference(pDoc));
   }
 }
