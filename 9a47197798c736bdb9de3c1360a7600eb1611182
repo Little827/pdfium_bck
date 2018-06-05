@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "761b647c_f3d2ecb2",
+        "filename": "fxjs/cfxjse_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-05T17:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f72e03f_35d4cb97",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27368e8b_a657217a",
         "filename": "fxjs/cfxjse_engine.h",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d81b53a5_fc054f58",
+        "filename": "fxjs/cfxjse_engine.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-05T17:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27368e8b_a657217a",
+      "range": {
+        "startLine": 110,
+        "startChar": 46,
+        "endLine": 110,
+        "endChar": 52
+      },
+      "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84f8a3cb_ea0f3e19",
         "filename": "fxjs/cjs_event.cpp",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2018-06-05T16:45:27Z",
       "side": 1,
       "message": "Meh, you get the segv for free, so the assert doesn\u0027t really add anything.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2e2759_0a239859",
+        "filename": "fxjs/cjs_event.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-05T17:24:47Z",
+      "side": 1,
+      "message": "It wasn\u0027t clear from the stack that this was the issue, so this makes it a lot clearer.",
+      "parentUuid": "84f8a3cb_ea0f3e19",
       "range": {
         "startLine": 53,
         "startChar": 2,
