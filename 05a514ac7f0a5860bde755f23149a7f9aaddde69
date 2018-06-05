@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0084190e_5f96d3a2",
+        "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T16:58:05Z",
+      "side": 1,
+      "message": "Done, also enum class to increase verbosity, err clarity.",
+      "parentUuid": "10383fc2_5bafb8ad",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 4
+      },
+      "revId": "05a514ac7f0a5860bde755f23149a7f9aaddde69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae7d76b_efe94c6a",
         "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7d7a3517_48a756e3",
+        "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T16:58:05Z",
+      "side": 1,
+      "message": "No, that was a mistake, the dict is its own object, its not like we\u0027re returning \u0026m_InlineStructOfSomeSort;",
+      "parentUuid": "bae7d76b_efe94c6a",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "05a514ac7f0a5860bde755f23149a7f9aaddde69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d33cc68b_c4483dd2",
         "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-05T14:04:07Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "05a514ac7f0a5860bde755f23149a7f9aaddde69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd657026_d8b733e5",
+        "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T16:58:05Z",
+      "side": 1,
+      "message": "as above.",
+      "parentUuid": "d33cc68b_c4483dd2",
       "range": {
         "startLine": 63,
         "startChar": 2,
