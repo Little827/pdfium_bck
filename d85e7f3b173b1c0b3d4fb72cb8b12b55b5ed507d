@@ -93,6 +93,30 @@
       "revId": "d85e7f3b173b1c0b3d4fb72cb8b12b55b5ed507d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524693ff_e65c7981",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-05T13:55:43Z",
+      "side": 1,
+      "message": "I don\u0027t know if that\u0027s a safe assumption. Some of these ReadBlocks can call back to the embedder so we have no idea what will happen.",
+      "parentUuid": "7439e656_8a733678",
+      "range": {
+        "startLine": 228,
+        "startChar": 9,
+        "endLine": 228,
+        "endChar": 70
+      },
+      "revId": "d85e7f3b173b1c0b3d4fb72cb8b12b55b5ed507d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
