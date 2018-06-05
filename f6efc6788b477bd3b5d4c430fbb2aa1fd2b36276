@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d81e109_4ac2c782",
+        "filename": "core/fpdfapi/parser/cpdf_object.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T18:37:28Z",
+      "side": 1,
+      "message": "in which case this becomes ASSERT().",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 19
+      },
+      "revId": "f6efc6788b477bd3b5d4c430fbb2aa1fd2b36276",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4620bc4d_2f947a11",
+        "filename": "core/fpdfapi/parser/cpdf_object.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T18:37:28Z",
+      "side": 1,
+      "message": "I\u0027d insist that it it be inlined, esp. since NOTREACHED().",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "f6efc6788b477bd3b5d4c430fbb2aa1fd2b36276",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2539c1b2_7477ca3d",
+        "filename": "core/fpdfapi/parser/cpdf_reference.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T18:37:28Z",
+      "side": 1,
+      "message": "This should probably return a unique_ptr\u003cCPDF_Reference\u003e.",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "f6efc6788b477bd3b5d4c430fbb2aa1fd2b36276",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a9ee441_b9234e1d",
+        "filename": "core/fpdfapi/parser/cpdf_reference.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T18:37:28Z",
+      "side": 1,
+      "message": "Theoretically, there could be multiple holders (though this doesn\u0027t happen as far as I can tell), and it might be sensible in that case to make a reference in this object holder that refers to the same object as the reference in the other object holder ...",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "f6efc6788b477bd3b5d4c430fbb2aa1fd2b36276",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
