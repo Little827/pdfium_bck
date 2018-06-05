@@ -11,10 +11,10 @@
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
-#include "fxjs/cfxjs_engine.h"
 #include "fxjs/cfxjse_class.h"
 #include "fxjs/cfxjse_resolveprocessor.h"
 #include "fxjs/cfxjse_value.h"
+#include "fxjs/cjs_runtime.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
@@ -93,8 +93,7 @@ CXFA_Object* CFXJSE_Engine::ToObject(CFXJSE_Value* pValue,
   return static_cast<CXFA_Object*>(pHostObj);
 }
 
-CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
-                             CFXJS_Engine* fxjs_engine)
+CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument, CJS_Runtime* fxjs_engine)
     : CFX_V8(fxjs_engine->GetIsolate()),
       m_pSubordinateEngine(fxjs_engine),
       m_pDocument(pDocument),
@@ -146,7 +145,12 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
   AutoRestorer<CXFA_Object*> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
   CFXJSE_Value* pValue = pThisObject ? GetJSValueFromMap(pThisObject) : nullptr;
-  return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
+
+  auto* ctx = m_pSubordinateEngine->NewEventContext();
+  bool ret = m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
+  m_pSubordinateEngine->ReleaseEventContext(ctx);
+
+  return ret;
 }
 
 bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
