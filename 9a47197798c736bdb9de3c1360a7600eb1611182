@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f72e03f_35d4cb97",
+        "filename": "fxjs/cfxjse_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T16:45:27Z",
+      "side": 1,
+      "message": "follow-up: we should make a \u0027scoper for this someday.",
+      "parentUuid": "7e6ddc87_afa14a82",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27368e8b_a657217a",
         "filename": "fxjs/cfxjse_engine.h",
         "patchSetId": 1
@@ -41,6 +65,29 @@
         "startChar": 46,
         "endLine": 110,
         "endChar": 52
+      },
+      "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f8a3cb_ea0f3e19",
+        "filename": "fxjs/cjs_event.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-05T16:45:27Z",
+      "side": 1,
+      "message": "Meh, you get the segv for free, so the assert doesn\u0027t really add anything.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 0
       },
       "revId": "9a47197798c736bdb9de3c1360a7600eb1611182",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
