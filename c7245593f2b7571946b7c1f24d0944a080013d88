@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81c6bbb0_f6046cb8",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-06T18:13:29Z",
+      "side": 1,
+      "message": "do we want to write these in a format that matches the whacky .evt file syntax we came up with?",
+      "range": {
+        "startLine": 366,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 9
+      },
+      "revId": "c7245593f2b7571946b7c1f24d0944a080013d88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
