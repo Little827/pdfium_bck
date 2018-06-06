@@ -2279,7 +2279,7 @@ CJS_Return CJS_Field::buttonGetIcon(
   if (pObj.IsEmpty())
     return CJS_Return(false);
 
-  auto* pJS_Icon = static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectPrivate(pObj));
+  auto* pJS_Icon = static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectBinding(pObj));
   return pJS_Icon ? CJS_Return(pJS_Icon->ToV8Object()) : CJS_Return(false);
 }
 
@@ -2398,7 +2398,7 @@ CJS_Return CJS_Field::getArray(
       return CJS_Return(false);
 
     auto* pJSField =
-        static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pObj));
+        static_cast<CJS_Field*>(CFXJS_Engine::GetObjectBinding(pObj));
     pJSField->AttachField(m_pJSDoc, *pStr);
     pRuntime->PutArrayElement(FormFieldArray, j++,
                               pJSField

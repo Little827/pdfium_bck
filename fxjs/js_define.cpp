@@ -168,7 +168,7 @@ int DateFromTime(double t) {
 }  // namespace
 
 void JSDestructor(v8::Local<v8::Object> obj) {
-  CFXJS_Engine::SetObjectPrivate(obj, nullptr);
+  CFXJS_Engine::SetObjectBinding(obj, nullptr);
 }
 
 double JS_GetDateTime() {
