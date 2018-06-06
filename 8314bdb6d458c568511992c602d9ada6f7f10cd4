@@ -22,6 +22,30 @@
       "revId": "8314bdb6d458c568511992c602d9ada6f7f10cd4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38172858_a3598490",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-06T14:50:10Z",
+      "side": 1,
+      "message": "The zero object number is incorrect too.\nFrom PDF specification:\n\"The first entry in the table (object number 0) shall always be free and shall have a generation number of 65,535; it is shall be the head of the linked list of free objects.\" \n(See http://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#G6.1839814 page 41)\n\nIn this case the \"0\" is empty value for info obj num.\n(See https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.cpp?rcl\u003dc22d671728605bc614dc84ec6a42a5647808b30d\u0026l\u003d93)",
+      "parentUuid": "350df63b_3e565850",
+      "range": {
+        "startLine": 231,
+        "startChar": 7,
+        "endLine": 231,
+        "endChar": 19
+      },
+      "revId": "8314bdb6d458c568511992c602d9ada6f7f10cd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
