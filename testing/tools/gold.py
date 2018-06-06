@@ -65,30 +65,42 @@ class GoldBaseline(object):
     Download the baseline json and return a list of the two baselines that
     should be used to match hashes (master and cl#).
     """
-    GOLD_BASELINE_URL = ('https://storage.googleapis.com/skia-infra-gm/'
-                         'hash_files/gold-pdfium-baseline.json')
+    GOLD_BASELINE_URL = 'https://pdfium-gold.skia.org/json/baseline'
+
+    # If we have an issue number add it to the baseline URL
+    cl_number_str = self._properties.get('issue', None)
+    url = GOLD_BASELINE_URL + ('/' + cl_number_str) if cl_number_str else ''
+
+    REMOVE_GOLD_BASELINE_URL = ('https://storage.googleapis.com/skia-infra-gm/'
+                                'hash_files/gold-pdfium-baseline.json')
+    url = REMOVE_GOLD_BASELINE_URL
     try:
-      response = urllib2.urlopen(GOLD_BASELINE_URL, timeout=2)
+      print 'Baseline URL: %s' % url
+      response = urllib2.urlopen(url, timeout=2)
+      c_type = response.headers.get('Content-type', '')
+      if c_type != 'application/json':
+        raise ValueError('Invalid content type. Got %s instead of %s' % (
+          c_type, 'application/json'))
       json_data = response.read()
     except (urllib2.HTTPError, urllib2.URLError) as e:
       print ('Error: Unable to read skia gold json from %s: %s'
-             % (GOLD_BASELINE_URL, e))
+             % (url, e))
       return None
 
     try:
       data = json.loads(json_data)
-    except ValueError:
-      print 'Error: Malformed json read from %s: %s' % (GOLD_BASELINE_URL, e)
+    except ValueError as e:
+      print 'Error: Malformed json read from %s: %s' % (url, e)
       return None
 
     try:
       master_baseline = data['master']
     except (KeyError, TypeError):
       print ('Error: "master" key not in json read from %s: %s'
-             % (GOLD_BASELINE_URL, e))
+             % (url, e))
       return None
 
-    cl_number_str = self._properties.get('issue')
+
     if cl_number_str is None:
       return [master_baseline]
 
@@ -195,6 +207,7 @@ class GoldResults(object):
     self._properties = _ParseKeyValuePairs(propertiesStr)
     self._properties["key"] = _ParseKeyValuePairs(keyStr)
     self._results =  []
+    self._passfail = []
     self._outputDir = outputDir
 
     # make sure the output directory exists and is empty.
@@ -208,7 +221,7 @@ class GoldResults(object):
         hashes=[x.strip() for x in ig_file.readlines() if x.strip()]
         self._ignore_hashes = set(hashes)
 
-  def AddTestResult(self, testName, md5Hash, outputImagePath):
+  def AddTestResult(self, testName, md5Hash, outputImagePath, matchResult):
     # If the hash is in the list of hashes to ignore then we don'try
     # make a copy, but add it to the result.
     imgExt = os.path.splitext(outputImagePath)[1].lstrip(".")
@@ -232,6 +245,8 @@ class GoldResults(object):
       }
     })
 
+    self._passfail.append((testName, matchResult))
+
   def WriteResults(self):
     self._properties.update({
       "results": self._results
@@ -240,6 +255,11 @@ class GoldResults(object):
     outputFileName = os.path.join(self._outputDir, "dm.json")
     with open(outputFileName, 'wb') as outfile:
       json.dump(self._properties, outfile, indent=1)
+      outfile.write("\n")
+
+    outputFileName = os.path.join(self._outputDir, "passfail.json")
+    with open(outputFileName, 'wb') as outfile:
+      json.dump(self._passfail, outfile, indent=1)
       outfile.write("\n")
 
 # Produce example output for manual testing.
