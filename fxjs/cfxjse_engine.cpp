@@ -134,11 +134,13 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
       m_FM2JSContext = pdfium::MakeUnique<CFXJSE_FormCalcContext>(
           GetIsolate(), m_JsContext.get(), m_pDocument.Get());
     }
+
     CFX_WideTextBuf wsJavaScript;
     if (!CFXJSE_FormCalcContext::Translate(wsScript, &wsJavaScript)) {
       hRetValue->SetUndefined();
       return false;
     }
+
     btScript = FX_UTF8Encode(wsJavaScript.AsStringView());
   } else {
     btScript = FX_UTF8Encode(wsScript);
