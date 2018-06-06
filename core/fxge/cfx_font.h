@@ -31,9 +31,10 @@ class CFX_Font {
   ~CFX_Font();
 
   static const char kDefaultAnsiFontName[];
-  static const char kUniversalDefaultFontName[];
+  static const char* const kAdditionaFontNames[];
   static ByteString GetDefaultFontNameByCharset(uint8_t nCharset);
   static uint8_t GetCharSetFromUnicode(uint16_t word);
+  static bool FindNativeTrueTypeFont(ByteString sFontFaceName);
 
   void LoadSubst(const ByteString& face_name,
                  bool bTrueType,
