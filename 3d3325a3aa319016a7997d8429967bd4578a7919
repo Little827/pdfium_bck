@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3cd8874_7d5b112e",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-06T14:35:18Z",
+      "side": 1,
+      "message": "!\u003d CPDF_Object::kInvalidObjNum?",
+      "range": {
+        "startLine": 246,
+        "startChar": 7,
+        "endLine": 246,
+        "endChar": 19
+      },
+      "revId": "3d3325a3aa319016a7997d8429967bd4578a7919",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8423e474_413d68f9",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-06T14:35:18Z",
+      "side": 1,
+      "message": "This would have been _LOADALLFILE previously, are we guaranteed to have loaded the file which is why this is now _ERROR?",
+      "range": {
+        "startLine": 247,
+        "startChar": 32,
+        "endLine": 247,
+        "endChar": 37
+      },
+      "revId": "3d3325a3aa319016a7997d8429967bd4578a7919",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68206ca9_7751183b",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-06T14:35:18Z",
+      "side": 1,
+      "message": "Should we have a:\n\nif (!m_pRoot) {\n  m_docStatus \u003d PDF_DATAAVAIL_Error;\n  return;\n}\n\nor something here? What if there is not dwRootObjNum in the file?",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 78
+      },
+      "revId": "3d3325a3aa319016a7997d8429967bd4578a7919",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
