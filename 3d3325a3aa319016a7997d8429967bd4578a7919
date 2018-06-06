@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "82bd48fa_1984d54c",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-06T14:55:17Z",
+      "side": 1,
+      "message": "yes, we are guaranteed too.\nIn case PDF_DATAAVAIL_ERROR we call LoadAllFile\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_data_avail.cpp?rcl\u003dc22d671728605bc614dc84ec6a42a5647808b30d\u0026l\u003d133",
+      "parentUuid": "8423e474_413d68f9",
+      "range": {
+        "startLine": 247,
+        "startChar": 32,
+        "endLine": 247,
+        "endChar": 37
+      },
+      "revId": "3d3325a3aa319016a7997d8429967bd4578a7919",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68206ca9_7751183b",
         "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2018-06-06T14:35:18Z",
       "side": 1,
       "message": "Should we have a:\n\nif (!m_pRoot) {\n  m_docStatus \u003d PDF_DATAAVAIL_Error;\n  return;\n}\n\nor something here? What if there is not dwRootObjNum in the file?",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 78
+      },
+      "revId": "3d3325a3aa319016a7997d8429967bd4578a7919",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a62b859_79d946bc",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-06T14:55:17Z",
+      "side": 1,
+      "message": "We will set error on line 259. Because in case, if we have not m_pRoot, we have not \"Pages\" reference too.",
+      "parentUuid": "68206ca9_7751183b",
       "range": {
         "startLine": 252,
         "startChar": 1,
