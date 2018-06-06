@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038f763_e7eb74ed",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-06T04:13:42Z",
+      "side": 1,
+      "message": "The code was much more compact before. This just ends up doing an extra check when |len| is valid, since memcpy() has to check |len| anyway.",
+      "revId": "2d7c5059974f3df1d42f3eb90a6305af0d520774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
