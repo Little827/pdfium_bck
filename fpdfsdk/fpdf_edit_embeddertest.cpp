@@ -427,6 +427,66 @@ TEST_F(FPDFEditEmbeddertest, AddPaths) {
   VerifySavedDocument(612, 792, kLastMD5);
 }
 
+TEST_F(FPDFEditEmbeddertest, SetText) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Get the "Hello, world!" text object and remove it.
+  ASSERT_EQ(2, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(page_object);
+  std::unique_ptr<unsigned short, pdfium::FreeDeleter> text1 =
+      GetFPDFWideString(L"Changed for SetText test");
+  EXPECT_TRUE(FPDFText_SetText(page_object, text1.get()));
+
+  // Verify the "Hello, world!" text is gone and "Changed for SetText test" is
+  // now displayed.
+  ASSERT_EQ(2, FPDFPage_CountObjects(page));
+  {
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+    const char kChangedMD5[] = "kChangedMD5OSX";
+#elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+    const char kChangedMD5[] = "kChangedMD5WIN";
+#else
+    const char kChangedMD5[] = "kChangedMD5LINUX";
+#endif
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 200, 200, kChangedMD5);
+    WriteBitmapToPng(page_bitmap.get(), "AfterSetText.png");
+  }
+
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+
+  // Now save the result, closing the page and document
+  OpenPDFFileForWrite("SetText.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  ClosePDFFileForWrite();
+
+  UnloadPage(page);
+
+  // Re-open the file and check the page object count is still 2.
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_EQ(2, FPDFPage_CountObjects(saved_page));
+  {
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+    const char kReloadedMD5[] = "kReloadedMD5OSX";
+#elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+    const char kReloadedMD5[] = "kReloadedMD5WIN";
+#else
+    const char kReloadedMD5[] = "kReloadedMD5LINUX";
+#endif
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 200, 200, kReloadedMD5);
+    WriteBitmapToPng(page_bitmap.get(), "Reloaded.png");
+  }
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
 TEST_F(FPDFEditEmbeddertest, RemovePageObject) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
