@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00c8d03e_192d0c56",
+        "filename": "core/fpdfapi/parser/cpdf_object.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-06T18:26:42Z",
+      "side": 1,
+      "message": "there\u0027s a cpdf_object_unittest.cpp - is there a way we can add a test to that file to call this directly?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "f228fc20dd0c4058de01716fc5c01cc41b03b579",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
