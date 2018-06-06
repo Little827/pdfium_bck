@@ -16,6 +16,24 @@
       "revId": "5995cf976e717be166a01bdbb5d1132722bda60f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82715585_d05dc64b",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-06T18:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82c5e817_955fd2b9",
+      "revId": "5995cf976e717be166a01bdbb5d1132722bda60f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
