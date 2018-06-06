@@ -98,11 +98,14 @@ int32_t CPWL_FontMap::GetWordFontIndex(uint16_t word,
     if (KnowWord(nNewFontIndex, word))
       return nNewFontIndex;
   }
-  nNewFontIndex = GetFontIndex(CFX_Font::kUniversalDefaultFontName,
-                               FX_CHARSET_Default, false);
-  if (nNewFontIndex >= 0) {
-    if (KnowWord(nNewFontIndex, word))
-      return nNewFontIndex;
+  for (const char* const* additinal_font_name = CFX_Font::kAdditionaFontNames;
+       additinal_font_name; ++additinal_font_name) {
+    nNewFontIndex =
+        GetFontIndex(*additinal_font_name, FX_CHARSET_Default, false);
+    if (nNewFontIndex >= 0) {
+      if (KnowWord(nNewFontIndex, word))
+        return nNewFontIndex;
+    }
   }
   return -1;
 }
@@ -210,7 +213,7 @@ ByteString CPWL_FontMap::GetNativeFont(int32_t nCharset) {
     nCharset = GetNativeCharset();
 
   ByteString sFontName = CFX_Font::GetDefaultFontNameByCharset(nCharset);
-  if (!m_pSystemHandler->FindNativeTrueTypeFont(sFontName))
+  if (!CFX_Font::FindNativeTrueTypeFont(sFontName))
     return ByteString();
 
   return sFontName;
