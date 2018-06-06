@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33edd20b_14920609",
+        "filename": "fxjs/cfxjse_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-06T17:49:18Z",
+      "side": 1,
+      "message": "Purposeful, but reverted.",
+      "parentUuid": "e150dbef_0eb65b09",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "d17889c757076cab59c300644dfde1c9a293d526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "477d5383_d890cdc8",
         "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0d5258dc_c5d7bf19",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-06T17:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477d5383_d890cdc8",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 4
+      },
+      "revId": "d17889c757076cab59c300644dfde1c9a293d526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc09e5e5_f06dd304",
         "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-06T17:29:45Z",
       "side": 1,
       "message": "Raw string literals our are friends.",
+      "range": {
+        "startLine": 377,
+        "startChar": 2,
+        "endLine": 377,
+        "endChar": 7
+      },
+      "revId": "d17889c757076cab59c300644dfde1c9a293d526",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3cbc70_8869a904",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-06T17:49:18Z",
+      "side": 1,
+      "message": "This file in general could use a string update as it\u0027s a little wonky.",
+      "parentUuid": "cc09e5e5_f06dd304",
       "range": {
         "startLine": 377,
         "startChar": 2,
