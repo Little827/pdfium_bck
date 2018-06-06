@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e76b9247_49084204",
+        "filename": "fxjs/cfxjse_context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-06T15:12:23Z",
+      "side": 1,
+      "message": "As a note, this made it really obvious what was happening with the two other JS errors from the i-9 document and figure out: https://pdfium-review.googlesource.com/c/pdfium/+/34110.\n\nThanks.",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 59
+      },
+      "revId": "8ae320912348c162d2b90f1dc7b7528999bbb305",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
