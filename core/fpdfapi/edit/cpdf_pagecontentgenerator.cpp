@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 
+#include <iostream>
 #include <tuple>
 #include <utility>
 
@@ -156,6 +157,7 @@ bool CPDF_PageContentGenerator::ProcessPageObjects(std::ostringstream* buf) {
     if (m_pObjHolder->IsPage() && !pPageObj->IsDirty())
       continue;
 
+    std::cerr << "ProcessPageObjects found a dirty object!" << std::endl;
     bDirty = true;
     if (CPDF_ImageObject* pImageObject = pPageObj->AsImage())
       ProcessImage(buf, pImageObject);
@@ -360,6 +362,7 @@ void CPDF_PageContentGenerator::ProcessDefaultGraphics(
 // Tj sets the actual text, <####...> is used when specifying charcodes.
 void CPDF_PageContentGenerator::ProcessText(std::ostringstream* buf,
                                             CPDF_TextObject* pTextObj) {
+  std::cerr << "ProcessText" << std::endl;
   ProcessGraphics(buf, pTextObj);
   *buf << "BT " << pTextObj->GetTextMatrix() << " Tm ";
   CPDF_Font* pFont = pTextObj->GetFont();
