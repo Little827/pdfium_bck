@@ -189,6 +189,30 @@
       "revId": "8f7ec7ea6d1778cb52a169fe1e0c00adcdc6fe81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1653d9_0859864a",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 17
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-06T13:57:56Z",
+      "side": 1,
+      "message": "I have fixed fonts resources in this pdf files:\nhttps://pdfium-review.googlesource.com/c/pdfium_tests/+/34070/2",
+      "parentUuid": "8108e772_c09c137d",
+      "range": {
+        "startLine": 257,
+        "startChar": 15,
+        "endLine": 257,
+        "endChar": 20
+      },
+      "revId": "8f7ec7ea6d1778cb52a169fe1e0c00adcdc6fe81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
