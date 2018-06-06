@@ -255,7 +255,7 @@ CJS_Return CJS_Document::getField(
     return CJS_Return(false);
 
   auto* pJSField =
-      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pFieldObj));
+      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectBinding(pFieldObj));
   if (!pJSField)
     return CJS_Return(false);
 
@@ -362,7 +362,7 @@ CJS_Return CJS_Document::print(
       if (CFXJS_Engine::GetObjDefnID(pObj) ==
           CJS_PrintParamsObj::GetObjDefnID()) {
         v8::Local<v8::Object> pObj = pRuntime->ToObject(params[8]);
-        CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(pObj);
+        CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(pObj);
         if (pJSObj) {
           CJS_PrintParamsObj* printObj =
               static_cast<CJS_PrintParamsObj*>(pJSObj);
@@ -1028,7 +1028,7 @@ CJS_Return CJS_Document::getAnnot(
     return CJS_Return(false);
 
   auto* pJS_Annot =
-      static_cast<CJS_Annot*>(CFXJS_Engine::GetObjectPrivate(pObj));
+      static_cast<CJS_Annot*>(CFXJS_Engine::GetObjectBinding(pObj));
   if (!pJS_Annot)
     return CJS_Return(false);
 
@@ -1063,7 +1063,7 @@ CJS_Return CJS_Document::getAnnots(
         return CJS_Return(false);
 
       auto* pJS_Annot =
-          static_cast<CJS_Annot*>(CFXJS_Engine::GetObjectPrivate(pObj));
+          static_cast<CJS_Annot*>(CFXJS_Engine::GetObjectBinding(pObj));
       pJS_Annot->SetSDKAnnot(static_cast<CPDFSDK_BAAnnot*>(pSDKAnnotCur.Get()));
       pRuntime->PutArrayElement(
           annots, i,
@@ -1118,7 +1118,7 @@ CJS_Return CJS_Document::addIcon(
     return CJS_Return(JSGetStringFromID(JSMessage::kTypeError));
 
   v8::Local<v8::Object> pObj = pRuntime->ToObject(params[1]);
-  CJS_Object* obj = CFXJS_Engine::GetObjectPrivate(pObj);
+  CJS_Object* obj = CFXJS_Engine::GetObjectBinding(pObj);
   if (!obj)
     return CJS_Return(JSGetStringFromID(JSMessage::kTypeError));
 
@@ -1140,7 +1140,7 @@ CJS_Return CJS_Document::get_icons(CJS_Runtime* pRuntime) {
       return CJS_Return(false);
 
     auto* pJS_Icon =
-        static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectPrivate(pObj));
+        static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectBinding(pObj));
     pJS_Icon->SetIconName(name);
     pRuntime->PutArrayElement(Icons, i++,
                               pJS_Icon
@@ -1171,7 +1171,7 @@ CJS_Return CJS_Document::getIcon(
   if (pObj.IsEmpty())
     return CJS_Return(false);
 
-  auto* pJSIcon = static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectPrivate(pObj));
+  auto* pJSIcon = static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectBinding(pObj));
   if (!pJSIcon)
     return CJS_Return(false);
 

@@ -32,7 +32,7 @@ template <class Alt>
 void JSSpecialPropQuery(const char*,
                         v8::Local<v8::String> property,
                         const v8::PropertyCallbackInfo<v8::Integer>& info) {
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(info.Holder());
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(info.Holder());
   if (!pJSObj)
     return;
 
@@ -50,7 +50,7 @@ template <class Alt>
 void JSSpecialPropGet(const char* class_name,
                       v8::Local<v8::String> property,
                       const v8::PropertyCallbackInfo<v8::Value>& info) {
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(info.Holder());
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(info.Holder());
   if (!pJSObj)
     return;
 
@@ -75,7 +75,7 @@ void JSSpecialPropPut(const char* class_name,
                       v8::Local<v8::String> property,
                       v8::Local<v8::Value> value,
                       const v8::PropertyCallbackInfo<v8::Value>& info) {
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(info.Holder());
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(info.Holder());
   if (!pJSObj)
     return;
 
@@ -96,7 +96,7 @@ template <class Alt>
 void JSSpecialPropDel(const char* class_name,
                       v8::Local<v8::String> property,
                       const v8::PropertyCallbackInfo<v8::Boolean>& info) {
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(info.Holder());
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(info.Holder());
   if (!pJSObj)
     return;
 

@@ -581,10 +581,10 @@ CJS_Field* CJS_EventHandler::Source() {
     return nullptr;
 
   auto* pJSDocument =
-      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectPrivate(pDocObj));
+      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectBinding(pDocObj));
 
   auto* pJSField =
-      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pFieldObj));
+      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectBinding(pFieldObj));
 
   pJSDocument->SetFormFillEnv(m_pTargetFormFillEnv
                                   ? m_pTargetFormFillEnv.Get()
@@ -607,10 +607,10 @@ CJS_Field* CJS_EventHandler::Target_Field() {
     return nullptr;
 
   auto* pJSDocument =
-      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectPrivate(pDocObj));
+      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectBinding(pDocObj));
 
   auto* pJSField =
-      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pFieldObj));
+      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectBinding(pFieldObj));
 
   pJSDocument->SetFormFillEnv(m_pTargetFormFillEnv
                                   ? m_pTargetFormFillEnv.Get()

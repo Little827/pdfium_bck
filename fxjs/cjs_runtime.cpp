@@ -173,7 +173,7 @@ void CJS_Runtime::SetFormFillEnvToDocument() {
     return;
   }
   auto* pJSDocument =
-      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectPrivate(pThis));
+      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectBinding(pThis));
   if (!pJSDocument)
     return;
 

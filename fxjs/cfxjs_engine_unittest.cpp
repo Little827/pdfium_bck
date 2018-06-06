@@ -42,25 +42,25 @@ TEST_F(FXJSEngineUnitTest, GC) {
   // Object: 0
   engine()->DefineObj("perm", FXJSOBJTYPE_DYNAMIC,
                       [](CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
-                        pEngine->SetObjectPrivate(
+                        pEngine->SetObjectBinding(
                             obj, pdfium::MakeUnique<CJS_Object>(obj, nullptr));
                         perm_created = true;
                       },
                       [](v8::Local<v8::Object> obj) {
                         perm_destroyed = true;
-                        CFXJS_Engine::SetObjectPrivate(obj, nullptr);
+                        CFXJS_Engine::SetObjectBinding(obj, nullptr);
                       });
 
   // Object: 1
   engine()->DefineObj("temp", FXJSOBJTYPE_DYNAMIC,
                       [](CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
-                        pEngine->SetObjectPrivate(
+                        pEngine->SetObjectBinding(
                             obj, pdfium::MakeUnique<CJS_Object>(obj, nullptr));
                         temp_created = true;
                       },
                       [](v8::Local<v8::Object> obj) {
                         temp_destroyed = true;
-                        CFXJS_Engine::SetObjectPrivate(obj, nullptr);
+                        CFXJS_Engine::SetObjectBinding(obj, nullptr);
                       });
 
   engine()->InitializeEngine();

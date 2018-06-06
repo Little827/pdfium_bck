@@ -101,7 +101,7 @@ CJS_Return CJS_App::get_active_docs(CJS_Runtime* pRuntime) {
   v8::Local<v8::Object> pObj = pRuntime->GetThisObj();
   if (CFXJS_Engine::GetObjDefnID(pObj) == CJS_Document::GetObjDefnID()) {
     pJSDocument =
-        static_cast<CJS_Document*>(CFXJS_Engine::GetObjectPrivate(pObj));
+        static_cast<CJS_Document*>(CFXJS_Engine::GetObjectBinding(pObj));
   }
   v8::Local<v8::Array> aDocs = pRuntime->NewArray();
   pRuntime->PutArrayElement(
@@ -328,7 +328,7 @@ CJS_Return CJS_App::setInterval(
     return CJS_Return(false);
 
   auto* pJS_TimerObj =
-      static_cast<CJS_TimerObj*>(CFXJS_Engine::GetObjectPrivate(pRetObj));
+      static_cast<CJS_TimerObj*>(CFXJS_Engine::GetObjectBinding(pRetObj));
 
   pJS_TimerObj->SetTimer(pTimerRef);
   return CJS_Return(pRetObj);
@@ -357,7 +357,7 @@ CJS_Return CJS_App::setTimeOut(
     return CJS_Return(false);
 
   auto* pJS_TimerObj =
-      static_cast<CJS_TimerObj*>(CFXJS_Engine::GetObjectPrivate(pRetObj));
+      static_cast<CJS_TimerObj*>(CFXJS_Engine::GetObjectBinding(pRetObj));
 
   pJS_TimerObj->SetTimer(pTimerRef);
   return CJS_Return(pRetObj);
@@ -392,7 +392,7 @@ void CJS_App::ClearTimerCommon(CJS_Runtime* pRuntime,
   if (CFXJS_Engine::GetObjDefnID(pObj) != CJS_TimerObj::GetObjDefnID())
     return;
 
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(pObj);
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(pObj);
   if (!pJSObj)
     return;
 

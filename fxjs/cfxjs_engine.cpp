@@ -220,7 +220,7 @@ void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
     return;
   if (pObjDef->m_pDestructor)
     pObjDef->m_pDestructor(obj);
-  CFXJS_Engine::FreeObjectPrivate(obj);
+  CFXJS_Engine::FreeObjectBinding(obj);
 }
 
 void V8TemplateMapTraits::DisposeWeak(
@@ -315,7 +315,7 @@ int CFXJS_Engine::GetObjDefnID(v8::Local<v8::Object> pObj) {
 }
 
 // static
-void CFXJS_Engine::SetObjectPrivate(v8::Local<v8::Object> pObj,
+void CFXJS_Engine::SetObjectBinding(v8::Local<v8::Object> pObj,
                                     std::unique_ptr<CJS_Object> p) {
   CFXJS_PerObjectData* pPerObjectData =
       CFXJS_PerObjectData::GetFromObject(pObj);
@@ -325,7 +325,7 @@ void CFXJS_Engine::SetObjectPrivate(v8::Local<v8::Object> pObj,
 }
 
 // static
-void CFXJS_Engine::FreeObjectPrivate(v8::Local<v8::Object> pObj) {
+void CFXJS_Engine::FreeObjectBinding(v8::Local<v8::Object> pObj) {
   CFXJS_PerObjectData* pData = CFXJS_PerObjectData::GetFromObject(pObj);
   pObj->SetAlignedPointerInInternalField(0, nullptr);
   pObj->SetAlignedPointerInInternalField(1, nullptr);
@@ -507,7 +507,7 @@ void CFXJS_Engine::ReleaseEngine() {
     if (!pObj.IsEmpty()) {
       if (pObjDef->m_pDestructor)
         pObjDef->m_pDestructor(pObj);
-      FreeObjectPrivate(pObj);
+      FreeObjectBinding(pObj);
     }
   }
 
@@ -592,7 +592,7 @@ void CFXJS_Engine::Error(const WideString& message) {
 }
 
 // static
-CJS_Object* CFXJS_Engine::GetObjectPrivate(v8::Local<v8::Object> pObj) {
+CJS_Object* CFXJS_Engine::GetObjectBinding(v8::Local<v8::Object> pObj) {
   CFXJS_PerObjectData* pData = CFXJS_PerObjectData::GetFromObject(pObj);
   if (!pData && !pObj.IsEmpty()) {
     // It could be a global proxy object.

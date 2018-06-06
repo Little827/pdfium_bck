@@ -52,7 +52,7 @@ template <class T>
 static void JSConstructor(CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
   auto pObj = pdfium::MakeUnique<T>(obj, static_cast<CJS_Runtime*>(pEngine));
   pObj->InitInstance();
-  pEngine->SetObjectPrivate(obj, std::move(pObj));
+  pEngine->SetObjectBinding(obj, std::move(pObj));
 }
 
 // CJS_Object has vitual dtor, template not required.
@@ -63,7 +63,7 @@ void JSPropGetter(const char* prop_name_string,
                   const char* class_name_string,
                   v8::Local<v8::String> property,
                   const v8::PropertyCallbackInfo<v8::Value>& info) {
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(info.Holder());
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(info.Holder());
   if (!pJSObj)
     return;
 
@@ -89,7 +89,7 @@ void JSPropSetter(const char* prop_name_string,
                   v8::Local<v8::String> property,
                   v8::Local<v8::Value> value,
                   const v8::PropertyCallbackInfo<void>& info) {
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(info.Holder());
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(info.Holder());
   if (!pJSObj)
     return;
 
@@ -111,7 +111,7 @@ template <class C,
 void JSMethod(const char* method_name_string,
               const char* class_name_string,
               const v8::FunctionCallbackInfo<v8::Value>& info) {
-  CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(info.Holder());
+  CJS_Object* pJSObj = CFXJS_Engine::GetObjectBinding(info.Holder());
   if (!pJSObj)
     return;
 
