@@ -167,6 +167,10 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
 
   const FX_FILESIZE nOffsetE = m_pLinearized->GetFirstPageEndOffset();
   const uint32_t nFirstPageNum = m_pLinearized->GetFirstPageNo();
+
+  if (nFirstPageNum >= nPages)
+    return false;
+
   for (uint32_t i = 0; i < nPages; ++i) {
     if (i == nFirstPageNum) {
       m_szPageOffsetArray.push_back(m_szFirstPageObjOffset);
