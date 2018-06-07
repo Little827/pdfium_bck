@@ -6,6 +6,10 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 
+#include <iostream>
+#include <map>
+#include <memory>
+#include <set>
 #include <tuple>
 #include <utility>
 
@@ -61,10 +65,82 @@ CPDF_PageContentGenerator::CPDF_PageContentGenerator(
 
 CPDF_PageContentGenerator::~CPDF_PageContentGenerator() {}
 
+bool CPDF_PageContentGenerator::GenerateStream(int32_t dirty_stream,
+                                               std::ostringstream* buf) {
+  // Set the default graphic state values
+  *buf << "q\n";
+  if (!m_pObjHolder->GetLastCTM().IsIdentity())
+    *buf << m_pObjHolder->GetLastCTM().GetInverse() << " cm\n";
+  ProcessDefaultGraphics(buf);
+
+  // Process the page objects
+  bool stream_has_any_object = false;
+  for (auto& pPageObj : m_pageObjects) {
+    if (pPageObj->GetContentStream() != dirty_stream)
+      continue;
+
+    stream_has_any_object = true;
+
+    if (CPDF_ImageObject* pImageObject = pPageObj->AsImage())
+      ProcessImage(buf, pImageObject);
+    else if (CPDF_PathObject* pPathObj = pPageObj->AsPath())
+      ProcessPath(buf, pPathObj);
+    else if (CPDF_TextObject* pTextObj = pPageObj->AsText())
+      ProcessText(buf, pTextObj);
+
+    pPageObj->SetDirty(false);
+  }
+
+  if (!stream_has_any_object)
+    return false;
+
+  // Return graphics to original state
+  *buf << "Q\n";
+  return true;
+}
+
 void CPDF_PageContentGenerator::GenerateContent() {
   ASSERT(m_pObjHolder->IsPage());
 
   CPDF_Document* pDoc = m_pDocument.Get();
+
+  // NEW
+
+  // Figure out which streams are dirty.
+  std::set<int32_t> all_dirty_streams;
+  for (auto& pPageObj : m_pageObjects) {
+    if (pPageObj->IsDirty())
+      all_dirty_streams.insert(pPageObj->GetContentStream());
+  }
+  const std::set<int32_t>* marked_dirty_streams =
+      m_pObjHolder->GetDirtyStreams();
+  all_dirty_streams.insert(marked_dirty_streams->begin(),
+                           marked_dirty_streams->end());
+
+  std::cerr << "Dirty streams:" << std::endl;
+  for (int32_t dirty_stream : all_dirty_streams)
+    std::cerr << "  -> dirty (" << dirty_stream << ")" << std::endl;
+
+  // Regenerate dirty streams.
+  std::map<int32_t, std::unique_ptr<std::ostringstream>> new_streams;
+  for (int32_t dirty_stream : all_dirty_streams) {
+    std::unique_ptr<std::ostringstream> new_stream =
+        pdfium::MakeUnique<std::ostringstream>();
+
+    bool stream_still_exists = GenerateStream(dirty_stream, new_stream.get());
+    std::cerr << "  -> stream_still_exists: " << stream_still_exists << " ("
+              << dirty_stream << ")" << std::endl;
+    if (stream_still_exists) {
+      std::cerr << "    " << new_stream->str() << std::endl;
+      new_streams[dirty_stream] = std::move(new_stream);
+    }
+  }
+
+  // Clear dirty streams in m_pObjHolder
+  m_pObjHolder->ClearDirtyStreams();
+
+  // END NEW
+
   std::ostringstream buf;
 
   // Set the default graphic state values
