@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0ab938e_7c59c7c7",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-07T18:30:02Z",
+      "side": 0,
+      "message": "This will crash if pPageDict is null.",
+      "revId": "e769ab578af3cf646f6268c992fd9c9dcd494708",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
