@@ -32,6 +32,7 @@ class CPDF_PageContentGenerator {
  private:
   friend class CPDF_PageContentGeneratorTest;
 
+  bool GenerateStream(int32_t dirty_stream, std::ostringstream* buf);
   void ProcessPath(std::ostringstream* buf, CPDF_PathObject* pPathObj);
   void ProcessImage(std::ostringstream* buf, CPDF_ImageObject* pImageObj);
   void ProcessGraphics(std::ostringstream* buf, CPDF_PageObject* pPageObj);
