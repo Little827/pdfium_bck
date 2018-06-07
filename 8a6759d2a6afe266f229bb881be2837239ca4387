@@ -34,6 +34,24 @@
       "revId": "8a6759d2a6afe266f229bb881be2837239ca4387",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f8d3d8_d50a4e8f",
+        "filename": "testing/resources/javascript/xfa_specific/resolve_nodes_1_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-07T19:05:28Z",
+      "side": 1,
+      "message": "So I guess my doubts more specifically are: What is this test case testing? What prints this expected \".txt\"? Why doesn\u0027t this say \"Alert: \\Find 1 items\" like other examples of *_expected.txt in the codebase?\n\nI never dealt with these tests, so maybe I\u0027m asking basic things, but without reading test code, I don\u0027t know what this is doing.",
+      "parentUuid": "ae1546d7_e6383146",
+      "revId": "8a6759d2a6afe266f229bb881be2837239ca4387",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
