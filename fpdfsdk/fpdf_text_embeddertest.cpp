@@ -2,10 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <algorithm>
 #include <memory>
+#include <utility>
 
 #include "core/fxcrt/fx_memory.h"
 #include "public/fpdf_text.h"
+#include "public/fpdf_transformpage.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -159,7 +162,8 @@ TEST_F(FPDFTextEmbeddertest, Text) {
   EXPECT_EQ(0.0, bottom);
   EXPECT_EQ(0.0, top);
 
-  EXPECT_EQ(9, FPDFText_GetBoundedText(textpage, 41.0, 56.0, 82.0, 48.0, 0, 0));
+  EXPECT_EQ(
+      9, FPDFText_GetBoundedText(textpage, 41.0, 56.0, 82.0, 48.0, nullptr, 0));
 
   // Extract starting at character 4 as above.
   memset(buffer, 0xbd, sizeof(buffer));
@@ -750,4 +754,81 @@ TEST_F(FPDFTextEmbeddertest, CountRects) {
 
   FPDFText_ClosePage(textpage);
   UnloadPage(page);
+}
+
+TEST_F(FPDFTextEmbeddertest, CroppedText) {
+  static constexpr int kPageCount = 4;
+  static constexpr float kLeft[kPageCount] = {50.0f, 50.0f, 60.0f, 60.0f};
+  static constexpr float kBottom[kPageCount] = {50.0f, 50.0f, 60.0f, 60.0f};
+  static constexpr float kRight[kPageCount] = {150.0f, 150.0f, 150.0f, 150.0f};
+  static constexpr float kTop[kPageCount] = {150.0f, 150.0f, 150.0f, 150.0f};
+  static constexpr const char* kExpectedText[kPageCount] = {
+      " world!\r\ndbye, world!", " world!\r\ndbye, world!", "bye, world!",
+      "bye, world!",
+  };
+
+  ASSERT_TRUE(OpenDocument("cropped_text.pdf"));
+  ASSERT_EQ(kPageCount, FPDF_GetPageCount(document()));
+
+  for (int i = 0; i < kPageCount; ++i) {
+    FPDF_PAGE page = LoadPage(i);
+    ASSERT_TRUE(page);
+
+    float mediabox_left;
+    float mediabox_bottom;
+    float mediabox_right;
+    float mediabox_top;
+    EXPECT_TRUE(FPDFPage_GetMediaBox(page, &mediabox_left, &mediabox_bottom,
+                                     &mediabox_right, &mediabox_top));
+    if (mediabox_left > mediabox_right)
+      std::swap(mediabox_left, mediabox_right);
+    if (mediabox_bottom > mediabox_top)
+      std::swap(mediabox_bottom, mediabox_top);
+
+    float cropbox_left;
+    float cropbox_bottom;
+    float cropbox_right;
+    float cropbox_top;
+    EXPECT_TRUE(FPDFPage_GetCropBox(page, &cropbox_left, &cropbox_bottom,
+                                    &cropbox_right, &cropbox_top));
+    if (cropbox_left > cropbox_right)
+      std::swap(cropbox_left, cropbox_right);
+    if (cropbox_bottom > cropbox_top)
+      std::swap(cropbox_bottom, cropbox_top);
+
+    float left = std::max(mediabox_left, cropbox_left);
+    float bottom = std::max(mediabox_bottom, cropbox_bottom);
+    float right = std::min(mediabox_right, cropbox_right);
+    float top = std::min(mediabox_top, cropbox_top);
+    EXPECT_EQ(kLeft[i], left);
+    EXPECT_EQ(kBottom[i], bottom);
+    EXPECT_EQ(kRight[i], right);
+    EXPECT_EQ(kTop[i], top);
+
+    {
+      ScopedFPDFTextPage textpage(FPDFText_LoadPage(page));
+      ASSERT_TRUE(textpage);
+
+      unsigned short buffer[128];
+      memset(buffer, 0xbd, sizeof(buffer));
+      int num_chars = FPDFText_GetText(textpage.get(), 0, 128, buffer);
+      ASSERT_EQ(kHelloGoodbyeTextSize, num_chars);
+      EXPECT_TRUE(check_unsigned_shorts(kHelloGoodbyeText, buffer,
+                                        kHelloGoodbyeTextSize));
+
+      int expected_char_count = strlen(kExpectedText[i]);
+      ASSERT_EQ(expected_char_count,
+                FPDFText_GetBoundedText(textpage.get(), left, top, right,
+                                        bottom, nullptr, 0));
+
+      memset(buffer, 0xbd, sizeof(buffer));
+      ASSERT_EQ(expected_char_count + 1,
+                FPDFText_GetBoundedText(textpage.get(), left, top, right,
+                                        bottom, buffer, 128));
+      EXPECT_TRUE(
+          check_unsigned_shorts(kExpectedText[i], buffer, expected_char_count));
+    }
+
+    UnloadPage(page);
+  }
 }
