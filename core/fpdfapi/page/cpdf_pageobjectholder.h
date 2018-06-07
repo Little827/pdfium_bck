@@ -44,7 +44,7 @@ class CPDF_PageObjectHolder {
  public:
   enum class ParseState : uint8_t { kNotParsed, kParsing, kParsed };
 
-  CPDF_PageObjectHolder(CPDF_Document* pDoc, CPDF_Dictionary* pFormDict);
+  CPDF_PageObjectHolder(CPDF_Document* pDoc, CPDF_Dictionary* pDict);
   virtual ~CPDF_PageObjectHolder();
 
   virtual bool IsPage() const;
@@ -57,7 +57,7 @@ class CPDF_PageObjectHolder {
 
   // TODO(thestig): Can this return nullptr? If not, audit callers and simplify
   // the ones that assume it can.
-  CPDF_Dictionary* GetFormDict() const { return m_pFormDict.Get(); }
+  CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
 
   const CPDF_PageObjectList* GetPageObjectList() const {
     return &m_PageObjectList;
@@ -85,6 +85,8 @@ class CPDF_PageObjectHolder {
   void AddImageMaskBoundingBox(const CFX_FloatRect& box);
   void Transform(const CFX_Matrix& matrix);
   CFX_FloatRect CalcBoundingBox() const;
+  const std::set<int32_t>* GetDirtyStreams() const { return &m_DirtyStreams; }
+  void ClearDirtyStreams() { m_DirtyStreams.clear(); }
 
   UnownedPtr<CPDF_Dictionary> m_pPageResources;
   UnownedPtr<CPDF_Dictionary> m_pResources;
@@ -100,7 +102,7 @@ class CPDF_PageObjectHolder {
  private:
   bool m_bBackgroundAlphaNeeded = false;
   ParseState m_ParseState = ParseState::kNotParsed;
-  const UnownedPtr<CPDF_Dictionary> m_pFormDict;
+  const UnownedPtr<CPDF_Dictionary> m_pDict;
   UnownedPtr<CPDF_Document> m_pDocument;
   std::vector<CFX_FloatRect> m_MaskBoundingBoxes;
   std::unique_ptr<CPDF_ContentParser> m_pParser;
