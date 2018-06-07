@@ -52,6 +52,24 @@
       "revId": "8a6759d2a6afe266f229bb881be2837239ca4387",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7fff15f_c5be3ce8",
+        "filename": "testing/resources/javascript/xfa_specific/resolve_nodes_1_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-07T19:24:02Z",
+      "side": 1,
+      "message": "The _expected.txt is being compared to logging messages that come out of pdfium_test while it is rendering. The logging messages are primarily information about what dialogues are being shown and things like beeps being fired from JS. It is a log of interesting JS activities. This is instead of having to do some sort of super complex pixel testing where we pause rendering and generate a snap shot at each event or something like that.\n\nThe string that is actually being printed by pdfium_test is \"\u003ctitle\u003e \u003cicon|type\u003e?:\u003cmessage\u003e\". In this case there is no title, icon, or type being set, so it becomes \":\u003cmessage\u003e\". \n\nWhat this test is specifically testing is using .ResolveNodes() to get another node by name, \"x.y.z\" if I recall correctly. There is only one instance of this in the PDF, so I am not exactly sure why it is returning a list of 12 items. I have filed a bug about this and suppressed the test.",
+      "parentUuid": "75f8d3d8_d50a4e8f",
+      "revId": "8a6759d2a6afe266f229bb881be2837239ca4387",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
