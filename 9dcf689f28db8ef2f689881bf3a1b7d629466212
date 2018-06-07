@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e3f8461_089c4bb4",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-07T18:06:22Z",
+      "side": 1,
+      "message": "Yes. Because i have added same check in IsLinearizedHeaderValid before. To remove this checks in much places.\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_linearized_header.h?rcl\u003dd5c4ab1ef458d158e268b5293c231928c59aacb9\u0026l\u003d41",
+      "parentUuid": "3a72d252_8c8a0da8",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 66
+      },
+      "revId": "9dcf689f28db8ef2f689881bf3a1b7d629466212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b006901_ceebb5b2",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-07T18:00:35Z",
       "side": 1,
       "message": "Is nStreamLen guaranteed to be !\u003d 0? What if is?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 61
+      },
+      "revId": "9dcf689f28db8ef2f689881bf3a1b7d629466212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7b0281_bc49b8d5",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-07T18:06:22Z",
+      "side": 1,
+      "message": "Yes\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_linearized_header.h?rcl\u003dd5c4ab1ef458d158e268b5293c231928c59aacb9\u0026l\u003d41",
+      "parentUuid": "8b006901_ceebb5b2",
       "range": {
         "startLine": 66,
         "startChar": 1,
@@ -71,6 +119,54 @@
     },
     {
       "key": {
+        "uuid": "c74a1e9b_9392df49",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-07T18:06:22Z",
+      "side": 1,
+      "message": "Yes\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_linearized_header.h?rcl\u003dd5c4ab1ef458d158e268b5293c231928c59aacb9\u0026l\u003d34",
+      "parentUuid": "de6494ad_eee8357f",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 70
+      },
+      "revId": "9dcf689f28db8ef2f689881bf3a1b7d629466212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c7ee8c_57cc9e6a",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-07T18:06:22Z",
+      "side": 1,
+      "message": "Yes\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_linearized_header.h?rcl\u003dd5c4ab1ef458d158e268b5293c231928c59aacb9\u0026l\u003d34",
+      "parentUuid": "de6494ad_eee8357f",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 70
+      },
+      "revId": "9dcf689f28db8ef2f689881bf3a1b7d629466212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39fe7396_ea157064",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 2
@@ -82,6 +178,30 @@
       "writtenOn": "2018-06-07T18:00:35Z",
       "side": 1,
       "message": "Are we sure that removing the check on nStreamOffset is safe/correct? FX_FILESIZE resolves to a signed value.\n\nAre we guaranteed that nStreamLen !\u003d 0? Is the following code safe it is?",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 61
+      },
+      "revId": "9dcf689f28db8ef2f689881bf3a1b7d629466212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b909e9d0_95289696",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-07T18:06:22Z",
+      "side": 1,
+      "message": "Yes\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_linearized_header.h?rcl\u003dd5c4ab1ef458d158e268b5293c231928c59aacb9\u0026l\u003d42\n(and IsLinearizedHeaderValid https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_linearized_header.cpp?rcl\u003dd5c4ab1ef458d158e268b5293c231928c59aacb9\u0026l\u003d40)",
+      "parentUuid": "39fe7396_ea157064",
       "range": {
         "startLine": 241,
         "startChar": 0,
