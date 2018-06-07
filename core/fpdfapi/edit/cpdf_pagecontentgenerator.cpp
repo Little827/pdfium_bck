@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 
+#include <iostream>
+#include <set>
 #include <tuple>
 #include <utility>
 
@@ -65,6 +67,25 @@ void CPDF_PageContentGenerator::GenerateContent() {
   ASSERT(m_pObjHolder->IsPage());
 
   CPDF_Document* pDoc = m_pDocument.Get();
+
+  // NEW
+
+  std::set<int32_t> all_dirty_streams;
+  for (auto& pPageObj : m_pageObjects) {
+    if (pPageObj->IsDirty())
+      all_dirty_streams.insert(pPageObj->GetContentStream());
+  }
+  const std::set<int32_t>* marked_dirty_streams =
+      m_pObjHolder->GetDirtyStreams();
+  all_dirty_streams.insert(marked_dirty_streams->begin(),
+                           marked_dirty_streams->end());
+
+  std::cerr << "Dirty streams:" << std::endl;
+  for (int32_t pDirtyStream : all_dirty_streams)
+    std::cerr << "  -> dirty: " << pDirtyStream << std::endl;
+
+  // END NEW
+
   std::ostringstream buf;
 
   // Set the default graphic state values
