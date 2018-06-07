@@ -16,6 +16,24 @@
       "revId": "8a6759d2a6afe266f229bb881be2837239ca4387",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae1546d7_e6383146",
+        "filename": "testing/resources/javascript/xfa_specific/resolve_nodes_1_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-07T18:56:19Z",
+      "side": 1,
+      "message": "The specific value is derived from what I see in the pop up in Acrobat when I click the appropriate element. The equivalent popup in PDFium has \u0027Find 12 items\u0027. Looking at the PDF details, the string is actually \\Find, so we are dropping the \u0027\\\u0027. The number is derived from the length of the list returned by .ResolvedNodes. So either PDFium is returning 12 items, or is returning something else that looks like a list that is 12 elements long, maybe a string? Looking at the code/document, I am pretty sure 1 is the correct value.",
+      "parentUuid": "33595a8e_fe0d74c1",
+      "revId": "8a6759d2a6afe266f229bb881be2837239ca4387",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
