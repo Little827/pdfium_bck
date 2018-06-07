@@ -64,7 +64,6 @@ CPDF_PageContentGenerator::~CPDF_PageContentGenerator() {}
 void CPDF_PageContentGenerator::GenerateContent() {
   ASSERT(m_pObjHolder->IsPage());
 
-  CPDF_Document* pDoc = m_pDocument.Get();
   std::ostringstream buf;
 
   // Set the default graphic state values
@@ -80,48 +79,52 @@ void CPDF_PageContentGenerator::GenerateContent() {
   // Return graphics to original state
   buf << "Q\n";
 
-  // Add buffer to a stream in page's 'Contents'
+  // Add buffer as a stream in page's 'Contents'
+  ModifyContentStreams(&buf);
+}
+
+void CPDF_PageContentGenerator::ModifyContentStreams(std::ostringstream* buf) {
+  CPDF_Document* doc = m_pDocument.Get();
+  CPDF_Stream* new_stream = doc->NewIndirect<CPDF_Stream>();
+  new_stream->SetData(buf);
+  uint32_t new_stream_objnum = new_stream->GetObjNum();
+
   CPDF_Dictionary* pPageDict = m_pObjHolder->GetDict();
   if (!pPageDict)
     return;
 
   CPDF_Object* pContent = pPageDict->GetObjectFor("Contents");
-  CPDF_Stream* pStream = pDoc->NewIndirect<CPDF_Stream>();
-  pStream->SetData(&buf);
   if (pContent) {
     CPDF_Array* pArray = ToArray(pContent);
     if (pArray) {
-      pArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
+      pArray->AddNew<CPDF_Reference>(doc, new_stream_objnum);
       return;
     }
     CPDF_Reference* pReference = ToReference(pContent);
     if (!pReference) {
-      pPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDocument.Get(),
-                                           pStream->GetObjNum());
+      pPageDict->SetNewFor<CPDF_Reference>("Contents", doc, new_stream_objnum);
       return;
     }
     CPDF_Object* pDirectObj = pReference->GetDirect();
     if (!pDirectObj) {
-      pPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDocument.Get(),
-                                           pStream->GetObjNum());
+      pPageDict->SetNewFor<CPDF_Reference>("Contents", doc, new_stream_objnum);
       return;
     }
     CPDF_Array* pObjArray = pDirectObj->AsArray();
     if (pObjArray) {
-      pObjArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
+      pObjArray->AddNew<CPDF_Reference>(doc, new_stream_objnum);
       return;
     }
     if (pDirectObj->IsStream()) {
-      CPDF_Array* pContentArray = pDoc->NewIndirect<CPDF_Array>();
-      pContentArray->AddNew<CPDF_Reference>(pDoc, pDirectObj->GetObjNum());
-      pContentArray->AddNew<CPDF_Reference>(pDoc, pStream->GetObjNum());
-      pPageDict->SetNewFor<CPDF_Reference>("Contents", pDoc,
+      CPDF_Array* pContentArray = doc->NewIndirect<CPDF_Array>();
+      pContentArray->AddNew<CPDF_Reference>(doc, pDirectObj->GetObjNum());
+      pContentArray->AddNew<CPDF_Reference>(doc, new_stream_objnum);
+      pPageDict->SetNewFor<CPDF_Reference>("Contents", doc,
                                            pContentArray->GetObjNum());
       return;
     }
   }
-  pPageDict->SetNewFor<CPDF_Reference>("Contents", m_pDocument.Get(),
-                                       pStream->GetObjNum());
+  pPageDict->SetNewFor<CPDF_Reference>("Contents", doc, new_stream_objnum);
 }
 
 ByteString CPDF_PageContentGenerator::RealizeResource(

@@ -39,6 +39,7 @@ class CPDF_PageContentGenerator {
   void ProcessText(std::ostringstream* buf, CPDF_TextObject* pTextObj);
   ByteString RealizeResource(uint32_t dwResourceObjNum,
                              const ByteString& bsType);
+  void ModifyContentStreams(std::ostringstream* buf);
 
   UnownedPtr<CPDF_PageObjectHolder> const m_pObjHolder;
   UnownedPtr<CPDF_Document> const m_pDocument;
