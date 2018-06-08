@@ -42,7 +42,8 @@ const char szCompatibleModeScript[] =
     "  }\n"
     "}(this, {String: ['substr', 'toUpperCase']}));";
 
-wchar_t g_FXJSETagString[] = L"FXJSE_HostObject";
+wchar_t g_FXJSEHostObjectTag[] = L"FXJSE_HostObject";
+wchar_t g_FXJSEProxyObjectTag[] = L"FXJSE_HostObject";
 
 v8::Local<v8::Object> CreateReturnValue(v8::Isolate* pIsolate,
                                         v8::TryCatch& trycatch) {
@@ -112,7 +113,7 @@ void FXJSE_UpdateObjectBinding(v8::Local<v8::Object>& hObject,
                                CFXJSE_HostObject* lpNewBinding) {
   ASSERT(!hObject.IsEmpty());
   ASSERT(hObject->InternalFieldCount() == 2);
-  hObject->SetAlignedPointerInInternalField(0, g_FXJSETagString);
+  hObject->SetAlignedPointerInInternalField(0, g_FXJSEHostObjectTag);
   hObject->SetAlignedPointerInInternalField(1, lpNewBinding);
 }
 
@@ -123,7 +124,8 @@ CFXJSE_HostObject* FXJSE_RetrieveObjectBinding(v8::Local<v8::Object> hJSObject,
     return nullptr;
 
   v8::Local<v8::Object> hObject = hJSObject;
-  if (hObject->InternalFieldCount() != 2) {
+  if (hObject->InternalFieldCount() != 2 ||
+      hObject->GetAlignedPointerFromInternalField(0) == g_FXJSEProxyObjectTag) {
     v8::Local<v8::Value> hProtoObject = hObject->GetPrototype();
     if (hProtoObject.IsEmpty() || !hProtoObject->IsObject())
       return nullptr;
@@ -132,8 +134,9 @@ CFXJSE_HostObject* FXJSE_RetrieveObjectBinding(v8::Local<v8::Object> hJSObject,
     if (hObject->InternalFieldCount() != 2)
       return nullptr;
   }
-  if (hObject->GetAlignedPointerFromInternalField(0) != g_FXJSETagString)
+  if (hObject->GetAlignedPointerFromInternalField(0) != g_FXJSEHostObjectTag)
     return nullptr;
+
   if (lpClass) {
     v8::Local<v8::FunctionTemplate> hClass =
         v8::Local<v8::FunctionTemplate>::New(
@@ -175,21 +178,15 @@ std::unique_ptr<CFXJSE_Context> CFXJSE_Context::Create(
       v8::Context::New(pIsolate, nullptr, hObjectTemplate);
 
   v8::Local<v8::Object> pThisProxy = hNewContext->Global();
-  ASSERT(pThisProxy->InternalFieldCount() == 2);
-  pThisProxy->SetAlignedPointerInInternalField(0, nullptr);
+  pThisProxy->SetAlignedPointerInInternalField(0, g_FXJSEProxyObjectTag);
   pThisProxy->SetAlignedPointerInInternalField(1, nullptr);
 
   v8::Local<v8::Object> pThis = pThisProxy->GetPrototype().As<v8::Object>();
-  ASSERT(pThis->InternalFieldCount() == 2);
-  pThis->SetAlignedPointerInInternalField(0, nullptr);
-  pThis->SetAlignedPointerInInternalField(1, nullptr);
+  FXJSE_UpdateObjectBinding(pThis, pGlobalObject);
 
   v8::Local<v8::Context> hRootContext = v8::Local<v8::Context>::New(
       pIsolate, CFXJSE_RuntimeData::Get(pIsolate)->m_hRootContext);
   hNewContext->SetSecurityToken(hRootContext->GetSecurityToken());
-
-  v8::Local<v8::Object> hGlobalObject = GetGlobalObjectFromContext(hNewContext);
-  FXJSE_UpdateObjectBinding(hGlobalObject, pGlobalObject);
   pContext->m_hContext.Reset(pIsolate, hNewContext);
   return pContext;
 }
