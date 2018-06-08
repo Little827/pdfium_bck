@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00c14b1_680131b3",
+        "filename": "public/fpdf_transformpage.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-08T18:29:43Z",
+      "side": 1,
+      "message": "nit: grammar police would complain that |would| (subjunctive) doesn\u0027t match prior |will|, and that |take effect to| really means |affect|, i.e.\n\nThis function will transform the whole page, and will affect all the ...",
+      "range": {
+        "startLine": 94,
+        "startChar": 52,
+        "endLine": 94,
+        "endChar": 69
+      },
+      "revId": "f958f35d23bf58a58cdde4629f6b600afb5e5e76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
