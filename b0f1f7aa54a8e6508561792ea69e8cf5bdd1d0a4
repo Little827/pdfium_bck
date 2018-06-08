@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a88d5314_5d88e72f",
+        "filename": "core/fpdfapi/edit/cpdf_creator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-08T20:25:25Z",
+      "side": 1,
+      "message": "Maybe change to an enum eventually?",
+      "revId": "b0f1f7aa54a8e6508561792ea69e8cf5bdd1d0a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
