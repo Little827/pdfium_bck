@@ -110,15 +110,6 @@ class CFXJS_PerObjectData {
 
 class CFXJS_ObjDefinition {
  public:
-  static int MaxID(v8::Isolate* pIsolate) {
-    return FXJS_PerIsolateData::Get(pIsolate)->m_ObjectDefnArray.size();
-  }
-
-  static CFXJS_ObjDefinition* ForID(v8::Isolate* pIsolate, int id) {
-    // Note: GetAt() halts if out-of-range even in release builds.
-    return FXJS_PerIsolateData::Get(pIsolate)->m_ObjectDefnArray[id].get();
-  }
-
   CFXJS_ObjDefinition(v8::Isolate* isolate,
                       const char* sObjName,
                       FXJSOBJTYPE eObjType,
@@ -182,9 +173,9 @@ class CFXJS_ObjDefinition {
 
 static v8::Local<v8::ObjectTemplate> GetGlobalObjectTemplate(
     v8::Isolate* pIsolate) {
-  int maxID = CFXJS_ObjDefinition::MaxID(pIsolate);
-  for (int i = 0; i < maxID; ++i) {
-    CFXJS_ObjDefinition* pObjDef = CFXJS_ObjDefinition::ForID(pIsolate, i);
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(pIsolate);
+  for (int i = 0; i < pIsolateData->MaxID(); ++i) {
+    CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(i);
     if (pObjDef->m_ObjType == FXJSOBJTYPE_GLOBAL)
       return pObjDef->GetInstanceTemplate();
   }
@@ -210,7 +201,8 @@ void V8TemplateMapTraits::Dispose(v8::Isolate* isolate,
   int id = CFXJS_Engine::GetObjDefnID(obj);
   if (id == -1)
     return;
-  CFXJS_ObjDefinition* pObjDef = CFXJS_ObjDefinition::ForID(isolate, id);
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(isolate);
+  CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(id);
   if (!pObjDef)
     return;
   if (pObjDef->m_pDestructor)
@@ -332,8 +324,8 @@ void CFXJS_Engine::DefineObjMethod(int nObjDefnID,
                                    v8::FunctionCallback pMethodCall) {
   v8::Isolate::Scope isolate_scope(GetIsolate());
   v8::HandleScope handle_scope(GetIsolate());
-  CFXJS_ObjDefinition* pObjDef =
-      CFXJS_ObjDefinition::ForID(GetIsolate(), nObjDefnID);
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
+  CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(nObjDefnID);
   v8::Local<v8::FunctionTemplate> fun = v8::FunctionTemplate::New(
       GetIsolate(), pMethodCall, v8::Local<v8::Value>(),
       pObjDef->GetSignature());
@@ -348,8 +340,8 @@ void CFXJS_Engine::DefineObjProperty(int nObjDefnID,
                                      v8::AccessorSetterCallback pPropPut) {
   v8::Isolate::Scope isolate_scope(GetIsolate());
   v8::HandleScope handle_scope(GetIsolate());
-  CFXJS_ObjDefinition* pObjDef =
-      CFXJS_ObjDefinition::ForID(GetIsolate(), nObjDefnID);
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
+  CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(nObjDefnID);
   pObjDef->GetInstanceTemplate()->SetAccessor(NewString(sPropName), pPropGet,
                                               pPropPut);
 }
@@ -362,8 +354,8 @@ void CFXJS_Engine::DefineObjAllProperties(
     v8::GenericNamedPropertyDeleterCallback pPropDel) {
   v8::Isolate::Scope isolate_scope(GetIsolate());
   v8::HandleScope handle_scope(GetIsolate());
-  CFXJS_ObjDefinition* pObjDef =
-      CFXJS_ObjDefinition::ForID(GetIsolate(), nObjDefnID);
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
+  CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(nObjDefnID);
   pObjDef->GetInstanceTemplate()->SetHandler(
       v8::NamedPropertyHandlerConfiguration(
           pPropGet, pPropPut, pPropQurey, pPropDel, nullptr,
@@ -376,8 +368,8 @@ void CFXJS_Engine::DefineObjConst(int nObjDefnID,
                                   v8::Local<v8::Value> pDefault) {
   v8::Isolate::Scope isolate_scope(GetIsolate());
   v8::HandleScope handle_scope(GetIsolate());
-  CFXJS_ObjDefinition* pObjDef =
-      CFXJS_ObjDefinition::ForID(GetIsolate(), nObjDefnID);
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
+  CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(nObjDefnID);
   pObjDef->GetInstanceTemplate()->Set(GetIsolate(), sConstName, pDefault);
 }
 
@@ -430,11 +422,11 @@ void CFXJS_Engine::InitializeEngine() {
   }
 
   v8::Context::Scope context_scope(v8Context);
-
-  int maxID = CFXJS_ObjDefinition::MaxID(GetIsolate());
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
+  int maxID = pIsolateData->MaxID();
   m_StaticObjects.resize(maxID + 1);
   for (int i = 0; i < maxID; ++i) {
-    CFXJS_ObjDefinition* pObjDef = CFXJS_ObjDefinition::ForID(GetIsolate(), i);
+    CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(i);
     if (pObjDef->m_ObjType == FXJSOBJTYPE_GLOBAL) {
       CFXJS_PerObjectData::SetInObject(new CFXJS_PerObjectData(i),
                                        v8Context->Global()
@@ -464,15 +456,14 @@ void CFXJS_Engine::ReleaseEngine() {
   v8::HandleScope handle_scope(GetIsolate());
   v8::Local<v8::Context> context = GetV8Context();
   v8::Context::Scope context_scope(context);
-  FXJS_PerIsolateData* pData = FXJS_PerIsolateData::Get(GetIsolate());
-  if (!pData)
+  FXJS_PerIsolateData* pIsolateData = FXJS_PerIsolateData::Get(GetIsolate());
+  if (!pIsolateData)
     return;
 
   m_ConstArrays.clear();
 
-  int maxID = CFXJS_ObjDefinition::MaxID(GetIsolate());
-  for (int i = 0; i < maxID; ++i) {
-    CFXJS_ObjDefinition* pObjDef = CFXJS_ObjDefinition::ForID(GetIsolate(), i);
+  for (int i = 0; i < pIsolateData->MaxID(); ++i) {
+    CFXJS_ObjDefinition* pObjDef = pIsolateData->ObjDefinitionForID(i);
     v8::Local<v8::Object> pObj;
     if (pObjDef->m_ObjType == FXJSOBJTYPE_GLOBAL) {
       pObj =
@@ -481,7 +472,6 @@ void CFXJS_Engine::ReleaseEngine() {
       pObj = v8::Local<v8::Object>::New(GetIsolate(), m_StaticObjects[i]);
       m_StaticObjects[i].Reset();
     }
-
     if (!pObj.IsEmpty()) {
       if (pObjDef->m_pDestructor)
         pObjDef->m_pDestructor(pObj);
@@ -494,7 +484,7 @@ void CFXJS_Engine::ReleaseEngine() {
   if (GetIsolate() == g_isolate && --g_isolate_ref_count > 0)
     return;
 
-  delete pData;
+  delete pIsolateData;
   GetIsolate()->SetData(g_embedderDataSlot, nullptr);
 }
 
@@ -533,11 +523,10 @@ v8::Local<v8::Object> CFXJS_Engine::NewFXJSBoundObject(int nObjDefnID,
   if (!pData)
     return v8::Local<v8::Object>();
 
-  if (nObjDefnID < 0 || nObjDefnID >= CFXJS_ObjDefinition::MaxID(GetIsolate()))
+  CFXJS_ObjDefinition* pObjDef = pData->ObjDefinitionForID(nObjDefnID);
+  if (!pObjDef)
     return v8::Local<v8::Object>();
 
-  CFXJS_ObjDefinition* pObjDef =
-      CFXJS_ObjDefinition::ForID(GetIsolate(), nObjDefnID);
   v8::Local<v8::Object> obj;
   if (!pObjDef->GetInstanceTemplate()->NewInstance(context).ToLocal(&obj))
     return v8::Local<v8::Object>();
