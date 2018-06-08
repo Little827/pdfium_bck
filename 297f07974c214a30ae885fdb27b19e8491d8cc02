@@ -23,6 +23,30 @@
       "revId": "297f07974c214a30ae885fdb27b19e8491d8cc02",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04877dc3_b8523e8b",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-08T21:37:47Z",
+      "side": 1,
+      "message": "For the input of \"-2147483648\", |uValue| is 2147483648. when it gets casted to |value| it becomes -2147483648.",
+      "parentUuid": "c3732291_f51bc286",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "297f07974c214a30ae885fdb27b19e8491d8cc02",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
