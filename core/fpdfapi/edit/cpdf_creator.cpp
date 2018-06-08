@@ -7,6 +7,7 @@
 #include "core/fpdfapi/edit/cpdf_creator.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "core/fpdfapi/edit/cpdf_encryptor.h"
 #include "core/fpdfapi/edit/cpdf_flateencoder.h"
@@ -165,6 +166,8 @@ bool CPDF_Creator::WriteStream(const CPDF_Object* pStream,
                                CPDF_CryptoHandler* pCrypto) {
   CPDF_FlateEncoder encoder(pStream->AsStream(), pStream != m_pMetadata);
   CPDF_Encryptor encryptor(pCrypto, objnum, encoder.GetSpan());
+  std::cerr << "CPDF_Creator::WriteStream objnum=" << objnum
+            << " len=" << encryptor.GetSpan().size() << std::endl;
   if (static_cast<uint32_t>(encoder.GetDict()->GetIntegerFor("Length")) !=
       encryptor.GetSpan().size()) {
     encoder.CloneDict();
@@ -309,6 +312,8 @@ bool CPDF_Creator::WriteOldIndirectObject(uint32_t objnum) {
 
   bool bExistInMap = !!m_pDocument->GetIndirectObject(objnum);
   CPDF_Object* pObj = m_pDocument->GetOrParseIndirectObject(objnum);
+  std::cerr << "WriteOldIndirectObject pObj " << (void*)pObj << ", objnum "
+            << objnum << std::endl;
   if (!pObj) {
     m_ObjectOffsets.erase(objnum);
     return true;
