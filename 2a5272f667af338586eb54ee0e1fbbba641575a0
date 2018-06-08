@@ -47,6 +47,30 @@
       "revId": "2a5272f667af338586eb54ee0e1fbbba641575a0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a713ba1_95e6907a",
+        "filename": "constants/page_object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-08T20:34:31Z",
+      "side": 1,
+      "message": "Ack, though in our case there is a bit of ambiguity since CPDF_PageObject exists and does not have these members. Your call.",
+      "parentUuid": "b3f79abc_e6c79afc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "2a5272f667af338586eb54ee0e1fbbba641575a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
