@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84cec3e3_86d26379",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-08T02:25:48Z",
+      "side": 1,
+      "message": "typo: s/kAdditiona/kAdditional/",
+      "revId": "71ffa3cd172d82845c0f49fe273e34eccfa49721",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "318b3cf5_afc5b0ad",
+        "filename": "fpdfsdk/pwl/cpwl_font_map.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-08T02:25:48Z",
+      "side": 1,
+      "message": "typo: s/additinal/additional/",
+      "range": {
+        "startLine": 101,
+        "startChar": 26,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "71ffa3cd172d82845c0f49fe273e34eccfa49721",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c93181b_35d94b21",
+        "filename": "fpdfsdk/pwl/cpwl_font_map.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-08T02:25:48Z",
+      "side": 1,
+      "message": "This condition should be: *additional_font_name\n\n|additional_font_name| starts out pointing to kAdditionalFontNames[0]. Then it points to kAdditionalFontNames[1], kAdditionalFontNames[2] and so on. It won\u0027t be a nullptr for a long time.",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "71ffa3cd172d82845c0f49fe273e34eccfa49721",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
