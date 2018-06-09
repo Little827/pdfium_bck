@@ -34,33 +34,40 @@ bool IsIgnoreSpaceCharacter(wchar_t curChar) {
 }  // namespace
 
 CPDF_TextPageFind::CPDF_TextPageFind(const CPDF_TextPage* pTextPage,
+                                     const WideString& findwhat,
                                      bool bMatchCase,
                                      bool bMatchWholeWord)
     : m_pTextPage(pTextPage),
+      m_strText(m_pTextPage->GetAllPageText()),
+      m_findWhat(findwhat),
       m_bMatchCase(bMatchCase),
       m_bMatchWholeWord(bMatchWholeWord) {
   ASSERT(m_pTextPage);
 
-  m_strText = m_pTextPage->GetAllPageText();
-  int nCount = pTextPage->CountChars();
+  if (!m_bMatchCase) {
+    m_findWhat.MakeLower();
+    m_strText.MakeLower();
+  }
+
+  int nCount = m_pTextPage->CountChars();
   if (nCount)
     m_CharIndex.push_back(0);
   for (int i = 0; i < nCount; i++) {
     FPDF_CHAR_INFO info;
-    pTextPage->GetCharInfo(i, &info);
+    m_pTextPage->GetCharInfo(i, &info);
     int indexSize = pdfium::CollectionSize<int>(m_CharIndex);
     if (info.m_Flag == FPDFTEXT_CHAR_NORMAL ||
         info.m_Flag == FPDFTEXT_CHAR_GENERATED) {
       if (indexSize % 2) {
         m_CharIndex.push_back(1);
       } else {
-        if (indexSize <= 0)
+        if (indexSize == 0)
           continue;
         m_CharIndex[indexSize - 1] += 1;
       }
     } else {
       if (indexSize % 2) {
-        if (indexSize <= 0)
+        if (indexSize == 0)
           continue;
         m_CharIndex[indexSize - 1] = i + 1;
       } else {
@@ -79,23 +86,15 @@ int CPDF_TextPageFind::GetCharIndex(int index) const {
   return m_pTextPage->CharIndexFromTextIndex(index);
 }
 
-bool CPDF_TextPageFind::FindFirst(const WideString& findwhat,
-                                  Optional<size_t> startPos) {
-  m_findWhat = findwhat;
+bool CPDF_TextPageFind::FindFirst(Optional<size_t> startPos) {
   if (m_strText.IsEmpty())
     return true;
 
-  if (!m_bMatchCase) {
-    m_findWhat.MakeLower();
-    m_strText.MakeLower();
-  }
   m_findNextStart = startPos;
-  if (!startPos.has_value()) {
-    if (!m_strText.IsEmpty())
-      m_findPreStart = m_strText.GetLength() - 1;
-  } else {
+  if (startPos)
     m_findPreStart = startPos;
-  }
+  else
+    m_findPreStart = m_strText.GetLength() - 1;
 
   size_t len = m_findWhat.GetLength();
   size_t i = 0;
@@ -200,8 +199,9 @@ bool CPDF_TextPageFind::FindPrev() {
   if (m_strText.IsEmpty() || !m_findPreStart.has_value())
     return false;
 
-  CPDF_TextPageFind find(m_pTextPage.Get(), m_bMatchCase, m_bMatchWholeWord);
-  if (!find.FindFirst(m_findWhat, 0))
+  CPDF_TextPageFind find(m_pTextPage.Get(), m_findWhat, m_bMatchCase,
+                         m_bMatchWholeWord);
+  if (!find.FindFirst(0))
     return false;
 
   int order = -1;

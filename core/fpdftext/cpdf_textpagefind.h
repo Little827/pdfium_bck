@@ -20,11 +20,12 @@ class CPDF_TextPage;
 class CPDF_TextPageFind {
  public:
   CPDF_TextPageFind(const CPDF_TextPage* pTextPage,
+                    const WideString& findwhat,
                     bool bMatchCase,
                     bool bMatchWholeWord);
   ~CPDF_TextPageFind();
 
-  bool FindFirst(const WideString& findwhat, Optional<size_t> startPos);
+  bool FindFirst(Optional<size_t> startPos);
   bool FindNext();
   bool FindPrev();
   int GetCurOrder() const;

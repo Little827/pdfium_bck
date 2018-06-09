@@ -247,11 +247,11 @@ FPDFText_FindStart(FPDF_TEXTPAGE text_page,
   bool bMatchCase = flags & FPDF_MATCHCASE;
   bool bMatchWholeWord = flags & FPDF_MATCHWHOLEWORD;
   auto find = pdfium::MakeUnique<CPDF_TextPageFind>(
-      CPDFTextPageFromFPDFTextPage(text_page), bMatchCase, bMatchWholeWord);
-  size_t len = WideString::WStringLength(findwhat);
-  find->FindFirst(
-      WideString::FromUTF16LE(findwhat, len),
-      start_index >= 0 ? Optional<size_t>(start_index) : Optional<size_t>());
+      CPDFTextPageFromFPDFTextPage(text_page),
+      WideString::FromUTF16LE(findwhat, WideString::WStringLength(findwhat)),
+      bMatchCase, bMatchWholeWord);
+  find->FindFirst(start_index >= 0 ? Optional<size_t>(start_index)
+                                   : Optional<size_t>());
   return FPDFSchHandleFromCPDFTextPageFind(find.release());
 }
 
