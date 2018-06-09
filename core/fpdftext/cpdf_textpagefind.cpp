@@ -212,13 +212,8 @@ bool CPDF_TextPageFind::FindNext() {
   int resStart = GetCharIndex(m_resStart);
   int resEnd = GetCharIndex(m_resEnd);
   m_resArray = m_pTextPage->GetRectArray(resStart, resEnd - resStart + 1);
-  if (m_flags & FPDFTEXT_CONSECUTIVE) {
-    m_findNextStart = m_resStart + 1;
-    m_findPreStart = m_resEnd - 1;
-  } else {
-    m_findNextStart = m_resEnd + 1;
-    m_findPreStart = m_resStart - 1;
-  }
+  m_findNextStart = m_resEnd + 1;
+  m_findPreStart = m_resStart - 1;
   return m_IsFind;
 }
 
@@ -258,13 +253,8 @@ bool CPDF_TextPageFind::FindPrev() {
   m_resEnd = m_pTextPage->TextIndexFromCharIndex(order + MatchedCount - 1);
   m_IsFind = true;
   m_resArray = m_pTextPage->GetRectArray(order, MatchedCount);
-  if (m_flags & FPDFTEXT_CONSECUTIVE) {
-    m_findNextStart = m_resStart + 1;
-    m_findPreStart = m_resEnd - 1;
-  } else {
-    m_findNextStart = m_resEnd + 1;
-    m_findPreStart = m_resStart - 1;
-  }
+  m_findNextStart = m_resEnd + 1;
+  m_findPreStart = m_resStart - 1;
   return m_IsFind;
 }
 
