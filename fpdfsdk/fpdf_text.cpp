@@ -244,8 +244,10 @@ FPDFText_FindStart(FPDF_TEXTPAGE text_page,
   if (!text_page)
     return nullptr;
 
+  bool bMatchCase = flags & FPDF_MATCHCASE;
+  bool bMatchWholeWord = flags & FPDF_MATCHWHOLEWORD;
   auto find = pdfium::MakeUnique<CPDF_TextPageFind>(
-      CPDFTextPageFromFPDFTextPage(text_page), flags);
+      CPDFTextPageFromFPDFTextPage(text_page), bMatchCase, bMatchWholeWord);
   size_t len = WideString::WStringLength(findwhat);
   find->FindFirst(
       WideString::FromUTF16LE(findwhat, len),

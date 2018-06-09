@@ -33,11 +33,12 @@ bool IsIgnoreSpaceCharacter(wchar_t curChar) {
 
 }  // namespace
 
-CPDF_TextPageFind::CPDF_TextPageFind(const CPDF_TextPage* pTextPage, int flags)
+CPDF_TextPageFind::CPDF_TextPageFind(const CPDF_TextPage* pTextPage,
+                                     bool bMatchCase,
+                                     bool bMatchWholeWord)
     : m_pTextPage(pTextPage),
-      m_flags(flags),
-      m_bMatchCase(flags & FPDFTEXT_MATCHCASE),
-      m_bMatchWholeWord(flags & FPDFTEXT_MATCHWHOLEWORD) {
+      m_bMatchCase(bMatchCase),
+      m_bMatchWholeWord(bMatchWholeWord) {
   ASSERT(m_pTextPage);
 
   m_strText = m_pTextPage->GetAllPageText();
@@ -199,7 +200,7 @@ bool CPDF_TextPageFind::FindPrev() {
   if (m_strText.IsEmpty() || !m_findPreStart.has_value())
     return false;
 
-  CPDF_TextPageFind find(m_pTextPage.Get(), m_flags);
+  CPDF_TextPageFind find(m_pTextPage.Get(), m_bMatchCase, m_bMatchWholeWord);
   if (!find.FindFirst(m_findWhat, 0))
     return false;
 
