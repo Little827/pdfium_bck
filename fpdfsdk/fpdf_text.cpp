@@ -245,10 +245,10 @@ FPDFText_FindStart(FPDF_TEXTPAGE text_page,
     return nullptr;
 
   auto find = pdfium::MakeUnique<CPDF_TextPageFind>(
-      CPDFTextPageFromFPDFTextPage(text_page));
+      CPDFTextPageFromFPDFTextPage(text_page), flags);
   size_t len = WideString::WStringLength(findwhat);
   find->FindFirst(
-      WideString::FromUTF16LE(findwhat, len), flags,
+      WideString::FromUTF16LE(findwhat, len),
       start_index >= 0 ? Optional<size_t>(start_index) : Optional<size_t>());
   return FPDFSchHandleFromCPDFTextPageFind(find.release());
 }

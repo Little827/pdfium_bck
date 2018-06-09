@@ -33,8 +33,11 @@ bool IsIgnoreSpaceCharacter(wchar_t curChar) {
 
 }  // namespace
 
-CPDF_TextPageFind::CPDF_TextPageFind(const CPDF_TextPage* pTextPage)
-    : m_pTextPage(pTextPage) {
+CPDF_TextPageFind::CPDF_TextPageFind(const CPDF_TextPage* pTextPage, int flags)
+    : m_pTextPage(pTextPage),
+      m_flags(flags),
+      m_bMatchCase(flags & FPDFTEXT_MATCHCASE),
+      m_bMatchWholeWord(flags & FPDFTEXT_MATCHWHOLEWORD) {
   ASSERT(m_pTextPage);
 
   m_strText = m_pTextPage->GetAllPageText();
@@ -76,23 +79,15 @@ int CPDF_TextPageFind::GetCharIndex(int index) const {
 }
 
 bool CPDF_TextPageFind::FindFirst(const WideString& findwhat,
-                                  int flags,
                                   Optional<size_t> startPos) {
-  if (m_strText.IsEmpty() || m_bMatchCase != (flags & FPDFTEXT_MATCHCASE))
-    m_strText = m_pTextPage->GetAllPageText();
-  WideString findwhatStr = findwhat;
-  m_findWhat = findwhatStr;
-  m_flags = flags;
-  m_bMatchCase = flags & FPDFTEXT_MATCHCASE;
+  m_findWhat = findwhat;
   if (m_strText.IsEmpty())
     return true;
 
-  size_t len = findwhatStr.GetLength();
   if (!m_bMatchCase) {
-    findwhatStr.MakeLower();
+    m_findWhat.MakeLower();
     m_strText.MakeLower();
   }
-  m_bMatchWholeWord = !!(flags & FPDFTEXT_MATCHWHOLEWORD);
   m_findNextStart = startPos;
   if (!startPos.has_value()) {
     if (!m_strText.IsEmpty())
@@ -101,21 +96,17 @@ bool CPDF_TextPageFind::FindFirst(const WideString& findwhat,
     m_findPreStart = startPos;
   }
 
-  m_csFindWhatArray.clear();
+  size_t len = m_findWhat.GetLength();
   size_t i = 0;
-  for (i = 0; i < len; ++i)
-    if (findwhatStr[i] != ' ')
+  for (i = 0; i < len; ++i) {
+    if (m_findWhat[i] != ' ')
       break;
+  }
   if (i < len)
-    ExtractFindWhat(findwhatStr);
+    ExtractFindWhat(m_findWhat);
   else
-    m_csFindWhatArray.push_back(findwhatStr);
-  if (m_csFindWhatArray.empty())
-    return false;
-
-  m_resStart = 0;
-  m_resEnd = -1;
-  return true;
+    m_csFindWhatArray.push_back(m_findWhat);
+  return !m_csFindWhatArray.empty();
 }
 
 bool CPDF_TextPageFind::FindNext() {
@@ -208,8 +199,8 @@ bool CPDF_TextPageFind::FindPrev() {
   if (m_strText.IsEmpty() || !m_findPreStart.has_value())
     return false;
 
-  CPDF_TextPageFind find(m_pTextPage.Get());
-  if (!find.FindFirst(m_findWhat, m_flags, 0))
+  CPDF_TextPageFind find(m_pTextPage.Get(), m_flags);
+  if (!find.FindFirst(m_findWhat, 0))
     return false;
 
   int order = -1;
