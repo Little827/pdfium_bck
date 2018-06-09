@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1528534202 -0700\nnonce ADrMV7ZYLVn/gNudWo2YoG+I5jRx+rq+HO+GAKIELPnP9ZIeguyQlGCpLNBVEEbmFrKDnICeI16Y\n\n0000000000000000000000000000000000000000 e483319cce9048b9c1f6b323c870e50104556f90 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dconsolidate-code-into-cpdf-textpagefind\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlsblLoACgkQqzYtYVpm\n/XsTogf/XOcpU5a4XAqKcGuzLAfH1y5AQatqwqMed4ATerHeeGCx3x8UOIXRJFqx\nnmUmHJQXQ6Z3VtIHdJ4u0WY83KOuhh81QM2VcioAeR50tQ8Sjbfi5xctjeiGGT0h\nNrv1yfwmpxa5gfmrQPey48Ugnrs2fRidzRMy6487WjH3r2e1nY0hoWbfb5O7n75N\njRgSNlIhnQ3YTGIbVpsyYaiwQnowKa2lvSQH4fA95r+zihbhv7BZvLmAGqJ3xqcC\nin+35x/sOWHIU3pUnAyZrKMMo4sFD6mL+eb8I/COFCSGrPmX6SvHx5XsIhmeTNHM\nUkwy8EKkUEjWalKAzAKU+PivK6Nzcg\u003d\u003d\n\u003dUitg\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
