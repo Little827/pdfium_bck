@@ -34,13 +34,9 @@ class CPDF_TextPageFind {
   int GetCurOrder() const;
   int GetMatchedCount() const;
 
- protected:
-  bool IsMatchWholeWord(const WideString& csPageText,
-                        size_t startPos,
-                        size_t endPos);
+ private:
   int GetCharIndex(int index) const;
 
- private:
   UnownedPtr<const CPDF_TextPage> const m_pTextPage;
   WideString m_strText;
   std::vector<uint16_t> m_CharIndex;

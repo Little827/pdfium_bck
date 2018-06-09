@@ -53,6 +53,46 @@ Optional<WideString> ExtractSubString(const wchar_t* lpszFullString,
   return {WideString(lpszFullString, static_cast<size_t>(nLen))};
 }
 
+bool IsMatchWholeWord(const WideString& csPageText,
+                      size_t startPos,
+                      size_t endPos) {
+  if (startPos > endPos)
+    return false;
+  wchar_t char_left = 0;
+  wchar_t char_right = 0;
+  size_t char_count = endPos - startPos + 1;
+  if (char_count == 0)
+    return false;
+  if (char_count == 1 && csPageText[startPos] > 255)
+    return true;
+  if (startPos >= 1)
+    char_left = csPageText[startPos - 1];
+  if (startPos + char_count < csPageText.GetLength())
+    char_right = csPageText[startPos + char_count];
+  if ((char_left > 'A' && char_left < 'a') ||
+      (char_left > 'a' && char_left < 'z') ||
+      (char_left > 0xfb00 && char_left < 0xfb06) || std::iswdigit(char_left) ||
+      (char_right > 'A' && char_right < 'a') ||
+      (char_right > 'a' && char_right < 'z') ||
+      (char_right > 0xfb00 && char_right < 0xfb06) ||
+      std::iswdigit(char_right)) {
+    return false;
+  }
+  if (!(('A' > char_left || char_left > 'Z') &&
+        ('a' > char_left || char_left > 'z') &&
+        ('A' > char_right || char_right > 'Z') &&
+        ('a' > char_right || char_right > 'z'))) {
+    return false;
+  }
+  if (char_count > 0) {
+    if (std::iswdigit(char_left) && std::iswdigit(csPageText[startPos]))
+      return false;
+    if (std::iswdigit(char_right) && std::iswdigit(csPageText[endPos]))
+      return false;
+  }
+  return true;
+}
+
 Optional<size_t> GetPreStart(Optional<size_t> pos, const WideString& text) {
   if (pos)
     return pos;
@@ -124,9 +164,7 @@ bool CPDF_TextPageFind::FindFirst() const {
 }
 
 bool CPDF_TextPageFind::FindNext() {
-  if (!m_findNextStart.has_value())
-    return false;
-  if (m_strText.IsEmpty())
+  if (m_strText.IsEmpty() || !m_findNextStart)
     return false;
 
   size_t strLen = m_strText.GetLength();
@@ -154,7 +192,7 @@ bool CPDF_TextPageFind::FindNext() {
       continue;
     }
     nResultPos = m_strText.Find(csWord.c_str(), nStartPos);
-    if (!nResultPos.has_value())
+    if (!nResultPos)
       return false;
 
     size_t endIndex = nResultPos.value() + csWord.GetLength() - 1;
@@ -191,16 +229,14 @@ bool CPDF_TextPageFind::FindNext() {
         }
       }
     }
-    if (m_bMatchWholeWord && bMatch) {
+    if (m_bMatchWholeWord && bMatch)
       bMatch = IsMatchWholeWord(m_strText, nResultPos.value(), endIndex);
-    }
+
     nStartPos = endIndex + 1;
     if (!bMatch) {
       iWord = -1;
-      if (bSpaceStart)
-        nStartPos = m_resStart + m_csFindWhatArray[1].GetLength();
-      else
-        nStartPos = m_resStart + m_csFindWhatArray[0].GetLength();
+      size_t index = bSpaceStart ? 1 : 0;
+      nStartPos = m_resStart + m_csFindWhatArray[index].GetLength();
     }
   }
   m_resEnd = nResultPos.value() + m_csFindWhatArray.back().GetLength() - 1;
@@ -210,7 +246,7 @@ bool CPDF_TextPageFind::FindNext() {
 }
 
 bool CPDF_TextPageFind::FindPrev() {
-  if (m_strText.IsEmpty() || !m_findPreStart.has_value())
+  if (m_strText.IsEmpty() || !m_findPreStart)
     return false;
 
   CPDF_TextPageFind find(m_pTextPage.Get(), m_csFindWhatArray, m_bMatchCase,
@@ -299,46 +335,6 @@ std::vector<WideString> CPDF_TextPageFind::ExtractFindWhat(
     index++;
   }
   return findwhat_array;
-}
-
-bool CPDF_TextPageFind::IsMatchWholeWord(const WideString& csPageText,
-                                         size_t startPos,
-                                         size_t endPos) {
-  if (startPos > endPos)
-    return false;
-  wchar_t char_left = 0;
-  wchar_t char_right = 0;
-  size_t char_count = endPos - startPos + 1;
-  if (char_count == 0)
-    return false;
-  if (char_count == 1 && csPageText[startPos] > 255)
-    return true;
-  if (startPos >= 1)
-    char_left = csPageText[startPos - 1];
-  if (startPos + char_count < csPageText.GetLength())
-    char_right = csPageText[startPos + char_count];
-  if ((char_left > 'A' && char_left < 'a') ||
-      (char_left > 'a' && char_left < 'z') ||
-      (char_left > 0xfb00 && char_left < 0xfb06) || std::iswdigit(char_left) ||
-      (char_right > 'A' && char_right < 'a') ||
-      (char_right > 'a' && char_right < 'z') ||
-      (char_right > 0xfb00 && char_right < 0xfb06) ||
-      std::iswdigit(char_right)) {
-    return false;
-  }
-  if (!(('A' > char_left || char_left > 'Z') &&
-        ('a' > char_left || char_left > 'z') &&
-        ('A' > char_right || char_right > 'Z') &&
-        ('a' > char_right || char_right > 'z'))) {
-    return false;
-  }
-  if (char_count > 0) {
-    if (std::iswdigit(char_left) && std::iswdigit(csPageText[startPos]))
-      return false;
-    if (std::iswdigit(char_right) && std::iswdigit(csPageText[endPos]))
-      return false;
-  }
-  return true;
 }
 
 int CPDF_TextPageFind::GetCurOrder() const {
