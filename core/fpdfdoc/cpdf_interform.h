@@ -28,10 +28,6 @@ class CPDF_Object;
 class CPDF_Page;
 class IPDF_FormNotify;
 
-CPDF_Font* AddNativeInterFormFont(CPDF_Dictionary*& pFormDict,
-                                  CPDF_Document* pDocument,
-                                  ByteString* csNameTag);
-
 class CPDF_InterForm {
  public:
   explicit CPDF_InterForm(CPDF_Document* pDocument);
@@ -45,7 +41,8 @@ class CPDF_InterForm {
                                             const char* csPrefix);
   static CPDF_Font* AddStandardFont(CPDF_Document* pDocument,
                                     ByteString csFontName);
-  static ByteString GetNativeFont(uint8_t iCharSet, void* pLogFont);
+  static CPDF_Font* GetDefaultFontForDoc(CPDF_Document* pDocument);
+  static ByteString GetDefaultFontNameForCharset(uint8_t iCharSet);
   static uint8_t GetNativeCharSet();
   static CPDF_Font* AddNativeFont(uint8_t iCharSet, CPDF_Document* pDocument);
   static CPDF_Font* AddNativeFont(CPDF_Document* pDocument);

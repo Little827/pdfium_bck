@@ -358,13 +358,11 @@ ByteString GetDashPatternString(const CPDF_Dictionary& pAnnotDict) {
 }
 
 ByteString GetPopupContentsString(CPDF_Document* pDoc,
-                                  const CPDF_Dictionary& pAnnotDict,
-                                  CPDF_Font* pDefFont,
-                                  const ByteString& sFontName) {
+                                  const CPDF_Dictionary& pAnnotDict) {
   WideString swValue(pAnnotDict.GetUnicodeTextFor("T"));
   swValue += L'\n';
   swValue += pAnnotDict.GetUnicodeTextFor("Contents");
-  CPVT_FontMap map(pDoc, nullptr, pDefFont, sFontName);
+  CPVT_FontMap map(pDoc, nullptr, nullptr, ByteString());
 
   CPDF_VariableText::Provider prd(&map);
   CPDF_VariableText vt;
@@ -391,22 +389,6 @@ ByteString GetPopupContentsString(CPDF_Document* pDoc,
              << sContent << "ET\n"
              << "Q\n";
   return ByteString(sAppStream);
-}
-
-std::unique_ptr<CPDF_Dictionary> GenerateResourceFontDict(
-    CPDF_Document* pDoc,
-    const ByteString& sFontDictName) {
-  CPDF_Dictionary* pFontDict = pDoc->NewIndirect<CPDF_Dictionary>();
-  pFontDict->SetNewFor<CPDF_Name>("Type", "Font");
-  pFontDict->SetNewFor<CPDF_Name>("Subtype", "Type1");
-  pFontDict->SetNewFor<CPDF_Name>("BaseFont", CFX_Font::kDefaultAnsiFontName);
-  pFontDict->SetNewFor<CPDF_Name>("Encoding", "WinAnsiEncoding");
-
-  auto pResourceFontDict =
-      pdfium::MakeUnique<CPDF_Dictionary>(pDoc->GetByteStringPool());
-  pResourceFontDict->SetNewFor<CPDF_Reference>(sFontDictName, pDoc,
-                                               pFontDict->GetObjNum());
-  return pResourceFontDict;
 }
 
 ByteString GetPaintOperatorString(bool bIsStrokeRect, bool bIsFillRect) {
@@ -756,18 +738,12 @@ bool GeneratePopupAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
   sAppStream << rect.left << " " << rect.bottom << " " << rect.Width() << " "
              << rect.Height() << " re b\n";
 
-  ByteString sFontName = "FONT";
-  auto pResourceFontDict = GenerateResourceFontDict(pDoc, sFontName);
-  CPDF_Font* pDefFont = pDoc->LoadFont(pResourceFontDict.get());
-  if (!pDefFont)
-    return false;
-
   auto pExtGStateDict =
       GenerateExtGStateDict(*pAnnotDict, sExtGSDictName, "Normal");
-  auto pResourceDict = GenerateResourceDict(pDoc, std::move(pResourceFontDict),
-                                            std::move(pExtGStateDict));
+  auto pResourceDict =
+      GenerateResourceDict(pDoc, nullptr, std::move(pExtGStateDict));
 
-  sAppStream << GetPopupContentsString(pDoc, *pAnnotDict, pDefFont, sFontName);
+  sAppStream << GetPopupContentsString(pDoc, *pAnnotDict);
   GenerateAndSetAPDict(pDoc, pAnnotDict, &sAppStream, std::move(pResourceDict),
                        false /*IsTextMarkupAnnotation*/);
   return true;
