@@ -53,15 +53,26 @@ Optional<WideString> ExtractSubString(const wchar_t* lpszFullString,
   return {WideString(lpszFullString, static_cast<size_t>(nLen))};
 }
 
+Optional<size_t> GetPreStart(Optional<size_t> pos, const WideString& text) {
+  if (pos)
+    return pos;
+  if (text.IsEmpty())
+    return {};
+  return text.GetLength() - 1;
+}
+
 }  // namespace
 
 CPDF_TextPageFind::CPDF_TextPageFind(const CPDF_TextPage* pTextPage,
                                      const std::vector<WideString>& findwhat,
                                      bool bMatchCase,
-                                     bool bMatchWholeWord)
+                                     bool bMatchWholeWord,
+                                     Optional<size_t> startPos)
     : m_pTextPage(pTextPage),
       m_strText(m_pTextPage->GetAllPageText()),
       m_csFindWhatArray(findwhat),
+      m_findNextStart(startPos),
+      m_findPreStart(GetPreStart(startPos, m_strText)),
       m_bMatchCase(bMatchCase),
       m_bMatchWholeWord(bMatchWholeWord) {
   ASSERT(m_pTextPage);
@@ -106,16 +117,9 @@ int CPDF_TextPageFind::GetCharIndex(int index) const {
   return m_pTextPage->CharIndexFromTextIndex(index);
 }
 
-bool CPDF_TextPageFind::FindFirst(Optional<size_t> startPos) {
+bool CPDF_TextPageFind::FindFirst() const {
   if (m_strText.IsEmpty())
     return true;
-
-  m_findNextStart = startPos;
-  if (startPos)
-    m_findPreStart = startPos;
-  else
-    m_findPreStart = m_strText.GetLength() - 1;
-
   return !m_csFindWhatArray.empty();
 }
 
@@ -210,8 +214,8 @@ bool CPDF_TextPageFind::FindPrev() {
     return false;
 
   CPDF_TextPageFind find(m_pTextPage.Get(), m_csFindWhatArray, m_bMatchCase,
-                         m_bMatchWholeWord);
-  if (!find.FindFirst(0))
+                         m_bMatchWholeWord, 0);
+  if (!find.FindFirst())
     return false;
 
   int order = -1;

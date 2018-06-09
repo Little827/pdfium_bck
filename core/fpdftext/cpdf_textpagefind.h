@@ -22,12 +22,13 @@ class CPDF_TextPageFind {
   CPDF_TextPageFind(const CPDF_TextPage* pTextPage,
                     const std::vector<WideString>& findwhat,
                     bool bMatchCase,
-                    bool bMatchWholeWord);
+                    bool bMatchWholeWord,
+                    Optional<size_t> startPos);
   ~CPDF_TextPageFind();
 
   static std::vector<WideString> ExtractFindWhat(const WideString& findwhat);
 
-  bool FindFirst(Optional<size_t> startPos);
+  bool FindFirst() const;
   bool FindNext();
   bool FindPrev();
   int GetCurOrder() const;
