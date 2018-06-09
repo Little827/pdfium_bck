@@ -246,10 +246,17 @@ FPDFText_FindStart(FPDF_TEXTPAGE text_page,
 
   bool bMatchCase = flags & FPDF_MATCHCASE;
   bool bMatchWholeWord = flags & FPDF_MATCHWHOLEWORD;
+
+  WideString findwhat_wstr =
+      WideString::FromUTF16LE(findwhat, WideString::WStringLength(findwhat));
+  if (!bMatchCase)
+    findwhat_wstr.MakeLower();
+
+  std::vector<WideString> findwhat_array =
+      CPDF_TextPageFind::ExtractFindWhat(findwhat_wstr);
   auto find = pdfium::MakeUnique<CPDF_TextPageFind>(
-      CPDFTextPageFromFPDFTextPage(text_page),
-      WideString::FromUTF16LE(findwhat, WideString::WStringLength(findwhat)),
-      bMatchCase, bMatchWholeWord);
+      CPDFTextPageFromFPDFTextPage(text_page), findwhat_array, bMatchCase,
+      bMatchWholeWord);
   find->FindFirst(start_index >= 0 ? Optional<size_t>(start_index)
                                    : Optional<size_t>());
   return FPDFSchHandleFromCPDFTextPageFind(find.release());

@@ -20,10 +20,12 @@ class CPDF_TextPage;
 class CPDF_TextPageFind {
  public:
   CPDF_TextPageFind(const CPDF_TextPage* pTextPage,
-                    const WideString& findwhat,
+                    const std::vector<WideString>& findwhat,
                     bool bMatchCase,
                     bool bMatchWholeWord);
   ~CPDF_TextPageFind();
+
+  static std::vector<WideString> ExtractFindWhat(const WideString& findwhat);
 
   bool FindFirst(Optional<size_t> startPos);
   bool FindNext();
@@ -32,7 +34,6 @@ class CPDF_TextPageFind {
   int GetMatchedCount() const;
 
  protected:
-  void ExtractFindWhat();
   bool IsMatchWholeWord(const WideString& csPageText,
                         size_t startPos,
                         size_t endPos);
@@ -41,9 +42,8 @@ class CPDF_TextPageFind {
  private:
   UnownedPtr<const CPDF_TextPage> const m_pTextPage;
   WideString m_strText;
-  WideString m_findWhat;
   std::vector<uint16_t> m_CharIndex;
-  std::vector<WideString> m_csFindWhatArray;
+  const std::vector<WideString> m_csFindWhatArray;
   Optional<size_t> m_findNextStart;
   Optional<size_t> m_findPreStart;
   int m_resStart = 0;
