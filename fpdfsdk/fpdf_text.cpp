@@ -256,9 +256,9 @@ FPDFText_FindStart(FPDF_TEXTPAGE text_page,
       CPDF_TextPageFind::ExtractFindWhat(findwhat_wstr);
   auto find = pdfium::MakeUnique<CPDF_TextPageFind>(
       CPDFTextPageFromFPDFTextPage(text_page), findwhat_array, bMatchCase,
-      bMatchWholeWord);
-  find->FindFirst(start_index >= 0 ? Optional<size_t>(start_index)
-                                   : Optional<size_t>());
+      bMatchWholeWord,
+      start_index >= 0 ? Optional<size_t>(start_index) : Optional<size_t>());
+  find->FindFirst();
   return FPDFSchHandleFromCPDFTextPageFind(find.release());
 }
 
