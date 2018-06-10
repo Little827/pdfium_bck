@@ -971,3 +971,18 @@ TEST(PDFDictionaryTest, ExtractObjectOnRemove) {
   extracted_object = dict->RemoveFor("non_exists_object");
   EXPECT_FALSE(extracted_object);
 }
+
+TEST(PDFRefernceTest, MakeReferenceToReference) {
+  auto obj_holder = std::make_unique<CPDF_IndirectObjectHolder>();
+  auto original_ref = std::make_unique<CPDF_Reference>(obj_holder.get(), 42);
+  original_ref->SetObjNum(1952);
+  ASSERT_FALSE(original_ref->IsInline());
+
+  auto ref_obj = original_ref->MakeReference(obj_holder.get());
+
+  ASSERT_TRUE(ref_obj->IsReference());
+  // We do not allow reference to reference.
+  // New reference should have same RefObjNum.
+  EXPECT_EQ(original_ref->GetRefObjNum(),
+            ToReference(ref_obj.get())->GetRefObjNum());
+}
