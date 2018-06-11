@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d7240d3_214a9b3f",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-11T17:32:30Z",
+      "side": 1,
+      "message": "Okay, maybe where possible newline up top and indent the rest to match? And some punctuation to disambiguate the ()s used as delimters (per spec) eg.\n  \nconst wchar_t ret[] \u003d LR\"****(\n(function() {\n  let pfm_method_runner \u003d function(obj, cb) {\n    if ... \n}).call(this);\n)****\";",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "21de9ffbae74075043efbfbefe59f157ed128c63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
