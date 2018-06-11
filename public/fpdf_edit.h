@@ -284,6 +284,28 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_TransformAnnots(FPDF_PAGE page,
 FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
 FPDFPageObj_NewImageObj(FPDF_DOCUMENT document);
 
+// Create a new image object with bitmap.
+//
+//   document - handle to a document.
+//   bitmap   - handle of the bitmap.
+//
+// Returns a handle to a new image object or NULL on failure.
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_NewBitmapImageObj(FPDF_DOCUMENT document, FPDF_BITMAP bitmap);
+
+// Create a new image object with jpeg.
+//
+//   document     - handle to a document.
+//   bitmap       - handle of the bitmap.
+//   data         - pointer to the jpeg data buffer.
+//   data_size    - the size of jpeg data buffer.
+//
+// Returns a handle to a new image object or NULL on failure.
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_NewJpegImageObjInline(FPDF_DOCUMENT document,
+                                  const void* data,
+                                  unsigned long data_size);
+
 // Experimental API.
 // Get number of content marks in |page_object|.
 //

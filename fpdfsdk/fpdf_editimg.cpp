@@ -17,6 +17,7 @@
 #include "core/fpdfapi/render/cpdf_dibsource.h"
 #include "fpdfsdk/cpdfsdk_customaccess.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/cpdfsdk_memoryaccess.h"
 #include "third_party/base/ptr_util.h"
 
 namespace {
@@ -91,6 +92,47 @@ FPDFPageObj_NewImageObj(FPDF_DOCUMENT document) {
   auto pImageObj = pdfium::MakeUnique<CPDF_ImageObject>();
   pImageObj->SetImage(pdfium::MakeRetain<CPDF_Image>(pDoc));
 
+  // Caller takes ownership.
+  return FPDFPageObjectFromCPDFPageObject(pImageObj.release());
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_NewBitmapImageObj(FPDF_DOCUMENT document, FPDF_BITMAP bitmap) {
+  if (!bitmap)
+    return nullptr;
+
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return nullptr;
+
+  auto pImageObj = pdfium::MakeUnique<CPDF_ImageObject>();
+  pImageObj->SetImage(pdfium::MakeRetain<CPDF_Image>(pDoc));
+  RetainPtr<CFX_DIBitmap> holder(CFXDIBitmapFromFPDFBitmap(bitmap));
+  pImageObj->GetImage()->SetImage(holder);
+  pImageObj->CalcBoundingBox();
+  pImageObj->SetDirty(true);
+  // Caller takes ownership.
+  return FPDFPageObjectFromCPDFPageObject(pImageObj.release());
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
+FPDFPageObj_NewJpegImageObjInline(FPDF_DOCUMENT document,
+                                  const void* data,
+                                  unsigned long data_size) {
+  if (!data || !data_size)
+    return nullptr;
+
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return nullptr;
+
+  auto pImageObj = pdfium::MakeUnique<CPDF_ImageObject>();
+  pImageObj->SetImage(pdfium::MakeRetain<CPDF_Image>(pDoc));
+
+  auto pFile = pdfium::MakeRetain<CPDFSDK_MemoryAccess>(
+      static_cast<const uint8_t*>(data), data_size);
+  pImageObj->GetImage()->SetJpegImageInline(pFile);
+  pImageObj->SetDirty(true);
   // Caller takes ownership.
   return FPDFPageObjectFromCPDFPageObject(pImageObj.release());
 }
