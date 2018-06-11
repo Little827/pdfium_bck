@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1adcf79f_d79163ee",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-11T22:52:33Z",
+      "side": 0,
+      "message": "The new logic is way more complex, but it\u0027s impossible to do anything besides adding new streams with this, for example modify existing streams or remove them.",
+      "revId": "fb72726e51bfd0c7bfc61c9b354e2b60f46adac5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
