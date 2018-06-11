@@ -7,6 +7,8 @@
 #ifndef CORE_FPDFAPI_EDIT_CPDF_PAGECONTENTGENERATOR_H_
 #define CORE_FPDFAPI_EDIT_CPDF_PAGECONTENTGENERATOR_H_
 
+#include <map>
+#include <memory>
 #include <sstream>
 #include <vector>
 
@@ -14,6 +16,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
 
+class CPDF_Array;
 class CPDF_Document;
 class CPDF_ImageObject;
 class CPDF_PageObject;
@@ -39,6 +42,18 @@ class CPDF_PageContentGenerator {
   void ProcessText(std::ostringstream* buf, CPDF_TextObject* pTextObj);
   ByteString RealizeResource(uint32_t dwResourceObjNum,
                              const ByteString& bsType);
+
+  // Returns a map from content stream index to new stream data. Unmodified
+  // streams are not touched.
+  std::map<int32_t, std::unique_ptr<std::ostringstream>>
+  GenerateModifiedStreams();
+
+  // Generate new stream data with all dirty page objects.
+  bool GenerateStreamWithNewObjects(std::ostringstream* buf);
+
+  // Add buffer as a stream in page's 'Contents'
+  void UpdateContentStreams(
+      std::map<int32_t, std::unique_ptr<std::ostringstream>>* buf);
 
   UnownedPtr<CPDF_PageObjectHolder> const m_pObjHolder;
   UnownedPtr<CPDF_Document> const m_pDocument;
