@@ -22,6 +22,30 @@
       "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f5cb586_f281da7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-11T23:00:04Z",
+      "side": 1,
+      "message": "1) This is not works for bitmaps:\nsee https://cs.chromium.org/chromium/src/third_party/pdfium/fpdfsdk/fpdf_editimg.cpp?rcl\u003de3b782fe20282fd3ccde0ca8a47d8e7fcd9b8dcc\u0026l\u003d143\n2) Also that is implicit solution, when i should think about \"should i specify loaded pages and its count, or not?\". In case when i want just add the new image into page.\n\nAnd as result i want add more explicit and simple solution for that case.",
+      "parentUuid": "4c5d3276_0407b4d2",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
