@@ -22,6 +22,30 @@
       "revId": "21de9ffbae74075043efbfbefe59f157ed128c63",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a3b284d_629d004f",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-11T17:39:52Z",
+      "side": 1,
+      "message": "New line at the top won\u0027t match as we don\u0027t have that in the output. I\u0027ll add the punctuation.",
+      "parentUuid": "0d7240d3_214a9b3f",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "21de9ffbae74075043efbfbefe59f157ed128c63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
