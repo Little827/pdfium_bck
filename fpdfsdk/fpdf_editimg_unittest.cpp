@@ -46,6 +46,60 @@ TEST_F(PDFEditTest, NewImageObj) {
   FPDF_CloseDocument(doc);
 }
 
+TEST_F(PDFEditTest, NewBitmapImageObj) {
+  FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
+  FPDF_PAGE page = FPDFPage_New(doc, 0, 100, 100);
+  EXPECT_EQ(0, FPDFPage_CountObjects(page));
+  FPDF_BITMAP bitmap = FPDFBitmap_Create(100, 100, false);
+
+  FPDF_PAGEOBJECT page_image = FPDFPageObj_NewBitmapImageObj(doc, bitmap);
+  {
+    FPDF_BITMAP created_bitmap = FPDFImageObj_GetBitmap(page_image);
+    EXPECT_EQ(100, FPDFBitmap_GetWidth(created_bitmap));
+    EXPECT_EQ(100, FPDFBitmap_GetHeight(created_bitmap));
+    FPDFBitmap_Destroy(created_bitmap);
+  }
+  FPDFPage_InsertObject(page, page_image);
+  EXPECT_EQ(1, FPDFPage_CountObjects(page));
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+
+  FPDFBitmap_Destroy(bitmap);
+  FPDF_ClosePage(page);
+  FPDF_CloseDocument(doc);
+}
+
+TEST_F(PDFEditTest, NewJpegImageObjInline) {
+  FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
+  FPDF_PAGE page = FPDFPage_New(doc, 0, 100, 100);
+  EXPECT_EQ(0, FPDFPage_CountObjects(page));
+
+  static const char kJpegFile[] =
+      "\xFF\xD8\xFF\xE0\x00\x10\x4A\x46\x49\x46\x00\x01\x01\x01\x00\x48\x00\x48"
+      "\x00\x00\xFF\xDB\x00\x43\x00\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+      "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+      "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+      "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+      "\xC2\x00\x0B\x08\x00\x01\x00\x01\x01\x01\x11\x00\xFF\xC4\x00\x14\x10\x01"
+      "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xFF\xDA"
+      "\x00\x08\x01\x01\x00\x01\x3F\x10";
+  static const uint32_t kJpegSize = sizeof(kJpegFile) - 1;
+  FPDF_PAGEOBJECT page_image =
+      FPDFPageObj_NewJpegImageObjInline(doc, kJpegFile, kJpegSize);
+  {
+    char buffer[kJpegSize];
+    ASSERT_EQ(kJpegSize,
+              FPDFImageObj_GetImageDataRaw(page_image, buffer, kJpegSize));
+    EXPECT_FALSE(memcmp(kJpegFile, buffer, kJpegSize));
+  }
+
+  FPDFPage_InsertObject(page, page_image);
+  EXPECT_EQ(1, FPDFPage_CountObjects(page));
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+
+  FPDF_ClosePage(page);
+  FPDF_CloseDocument(doc);
+}
+
 TEST_F(PDFEditTest, NewImageObjGenerateContent) {
   FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
   FPDF_PAGE page = FPDFPage_New(doc, 0, 100, 100);

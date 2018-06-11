@@ -155,6 +155,8 @@ int CheckPDFiumCApi() {
     CHK(FPDFPageObj_GetType);
     CHK(FPDFPageObj_HasTransparency);
     CHK(FPDFPageObj_NewImageObj);
+    CHK(FPDFPageObj_NewBitmapImageObj);
+    CHK(FPDFPageObj_NewJpegImageObjInline);
     CHK(FPDFPageObj_NewTextObj);
     CHK(FPDFPageObj_SetBlendMode);
     CHK(FPDFPageObj_SetFillColor);
