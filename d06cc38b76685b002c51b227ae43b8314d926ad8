@@ -62,6 +62,30 @@
       "revId": "d06cc38b76685b002c51b227ae43b8314d926ad8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba64a56c_b47b6b0c",
+        "filename": "core/fpdfapi/page/ipdf_page.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-11T22:53:35Z",
+      "side": 1,
+      "message": "Getting back to this, I think we want FooIface, but we first need namespace pdfium {} surrounding it to avoid polluting the global namespace.  The ugly CPDF_ prefixes make for pretty collision-resistant class names.",
+      "parentUuid": "a1f0f852_91857434",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "d06cc38b76685b002c51b227ae43b8314d926ad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
