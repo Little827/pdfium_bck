@@ -40,6 +40,7 @@ class CPDF_PageContentGenerator {
   void ProcessGraphics(std::ostringstream* buf, CPDF_PageObject* pPageObj);
   void ProcessDefaultGraphics(std::ostringstream* buf);
   void ProcessText(std::ostringstream* buf, CPDF_TextObject* pTextObj);
+  ByteString GetOrCreateDefaultGraphics();
   ByteString RealizeResource(const CPDF_Object* pResource,
                              const ByteString& bsType);
 
@@ -48,8 +49,8 @@ class CPDF_PageContentGenerator {
   std::map<int32_t, std::unique_ptr<std::ostringstream>>
   GenerateModifiedStreams();
 
-  // Generate new stream data with all dirty page objects.
-  bool GenerateStreamWithNewObjects(std::ostringstream* buf);
+  // Generate new stream data.
+  bool GenerateStream(int32_t dirty_stream, std::ostringstream* buf);
 
   // Add buffer as a stream in page's 'Contents'
   void UpdateContentStreams(
