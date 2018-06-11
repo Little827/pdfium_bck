@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c5d3276_0407b4d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-11T20:09:30Z",
+      "side": 1,
+      "message": "It appears you can pass nullptr for the pages parameter, does that solve your use case without adding a new API?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
