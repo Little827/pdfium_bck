@@ -28,6 +28,8 @@ class CPDF_PageObject : public CPDF_GraphicStates {
     FORM,
   };
 
+  static constexpr int32_t kNoContentStream = -1;
+
   CPDF_PageObject();
   ~CPDF_PageObject() override;
 
