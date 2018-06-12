@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e5d8e52_70254bcc",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T17:52:38Z",
+      "side": 1,
+      "message": "I think so, if this overflows here it will definitely overflow at line 175 anyway.",
+      "parentUuid": "47cc6344_bba28aa7",
+      "range": {
+        "startLine": 167,
+        "startChar": 44,
+        "endLine": 167,
+        "endChar": 54
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74f22568_830cf1ae",
         "filename": "core/fpdfapi/page/cpdf_contentparser.h",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67795102_65fef0c3",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T17:52:38Z",
+      "side": 1,
+      "message": "Done, m_StreamSegmentOffsets",
+      "parentUuid": "74f22568_830cf1ae",
+      "range": {
+        "startLine": 61,
+        "startChar": 24,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6865f64a_d7d3c30b",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T17:52:38Z",
+      "side": 1,
+      "message": "Done, though I instead create a constant to make explicit that when creating one of these, the content stream needs to be filled.",
+      "parentUuid": "18f5499a_3c0f197c",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1285bbd6_96b6000c",
         "filename": "core/fpdfapi/page/cpdf_pageobject.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c673fca_a34fdedc",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T17:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1285bbd6_96b6000c",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3817076c_c971a5db",
+        "filename": "core/fpdfapi/page/cpdf_pathobject.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T17:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db032c6_c9fe3fb3",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2af5decf_ac5963b4",
         "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831447be_9d2bc0eb",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T17:52:38Z",
+      "side": 1,
+      "message": "Done, GetCurrentStreamIndex.",
+      "parentUuid": "2af5decf_ac5963b4",
+      "range": {
+        "startLine": 1264,
+        "startChar": 34,
+        "endLine": 1264,
+        "endChar": 50
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
