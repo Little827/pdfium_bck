@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 
+constexpr int32_t CPDF_PageObject::kNoContentStream;
+
 CPDF_PageObject::CPDF_PageObject() : m_bDirty(false) {}
 
 CPDF_PageObject::~CPDF_PageObject() {}
