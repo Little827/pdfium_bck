@@ -408,7 +408,7 @@ FPDFPageObj_NewTextObj(FPDF_DOCUMENT document,
   if (!pFont)
     return nullptr;
 
-  auto pTextObj = pdfium::MakeUnique<CPDF_TextObject>();
+  auto pTextObj = pdfium::MakeUnique<CPDF_TextObject>(-1);
   pTextObj->m_TextState.SetFont(pFont);
   pTextObj->m_TextState.SetFontSize(font_size);
   pTextObj->DefaultStates();
@@ -494,7 +494,7 @@ FPDFPageObj_CreateTextObj(FPDF_DOCUMENT document,
   if (!pDoc || !pFont)
     return nullptr;
 
-  auto pTextObj = pdfium::MakeUnique<CPDF_TextObject>();
+  auto pTextObj = pdfium::MakeUnique<CPDF_TextObject>(-1);
   pTextObj->m_TextState.SetFont(pDoc->LoadFont(pFont->GetFontDict()));
   pTextObj->m_TextState.SetFontSize(font_size);
   pTextObj->DefaultStates();
