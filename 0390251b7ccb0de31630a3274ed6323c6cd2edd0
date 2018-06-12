@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aac90155_fe0badb8",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-12T17:29:18Z",
+      "side": 0,
+      "message": "Note:  Here we\u0027re actually passing the wrong type ... the routine expects a uint32_t representing an FPDF_ERR_Something, and we\u0027re passing it a CPDF_Parser::Error enum, but the check at 150 ensures we only ever pass a constant that happens to have a 0 value, as does FPDF_ERR_SUCCESS. So 0 \u003d\u003d 0 in all cases.  Remove it.",
+      "range": {
+        "startLine": 159,
+        "startChar": 39,
+        "endLine": 159,
+        "endChar": 45
+      },
+      "revId": "0390251b7ccb0de31630a3274ed6323c6cd2edd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
