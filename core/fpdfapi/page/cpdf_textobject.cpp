@@ -103,7 +103,7 @@ void CPDF_TextObject::GetCharInfo(size_t index,
 }
 
 std::unique_ptr<CPDF_TextObject> CPDF_TextObject::Clone() const {
-  auto obj = pdfium::MakeUnique<CPDF_TextObject>();
+  auto obj = pdfium::MakeUnique<CPDF_TextObject>(-1);
   obj->CopyData(this);
   obj->m_CharCodes = m_CharCodes;
   obj->m_CharPos = m_CharPos;
