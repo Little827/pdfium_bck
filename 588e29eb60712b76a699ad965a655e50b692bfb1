@@ -70,6 +70,30 @@
       "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e4de0c_943fe25a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-12T15:00:33Z",
+      "side": 1,
+      "message": "I think, that addition of FPDFImageObj_LoadJpegData and FPDFImageObj_LoadBitmapData will be implicit too, because is not seen differents bitween curent methods (FPDFImageObj_LoadJpegFileInline  and FPDFImageObj_SetBitmap) on first look. But in case when we should change the image of already exists (not just created) FPDF_PAGEOBJECT we always should specify the pages, and this may confuse the developers, which want use this methods. And them can not detect this on compilation step.\n\nMy new api without this defect.",
+      "parentUuid": "321641fd_e24dc3c0",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
