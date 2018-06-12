@@ -118,7 +118,7 @@ CPDF_MeshStream::~CPDF_MeshStream() {}
 
 bool CPDF_MeshStream::Load() {
   m_pStream->LoadAllDataFiltered();
-  m_BitStream = pdfium::MakeUnique<CFX_BitStream>(
+  m_BitStream = pdfium::MakeUnique<Bitstream>(
       pdfium::make_span(m_pStream->GetData(), m_pStream->GetSize()));
   const CPDF_Dictionary* pDict = m_pShadingStream->GetDict();
   m_nCoordBits = pDict->GetIntegerFor("BitsPerCoordinate");

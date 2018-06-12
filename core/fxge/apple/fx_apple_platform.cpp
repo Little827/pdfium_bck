@@ -6,7 +6,7 @@
 
 #include <memory>
 
-#include "core/fxcrt/cfx_fixedbufgrow.h"
+#include "core/fxcrt/fixedbufgrow.h"
 #include "core/fxcrt/fx_system.h"
 
 #ifndef _SKIA_SUPPORT_
@@ -57,8 +57,8 @@ bool CGDrawGlyphRun(CGContextRef pContext,
     if (!pFont->GetPlatformFont())
       return false;
   }
-  CFX_FixedBufGrow<uint16_t, 32> glyph_indices(nChars);
-  CFX_FixedBufGrow<CGPoint, 32> glyph_positions(nChars);
+  FixedBufGrow<uint16_t, 32> glyph_indices(nChars);
+  FixedBufGrow<CGPoint, 32> glyph_positions(nChars);
   for (int i = 0; i < nChars; i++) {
     glyph_indices[i] =
         pCharPos[i].m_ExtGID ? pCharPos[i].m_ExtGID : pCharPos[i].m_GlyphIndex;

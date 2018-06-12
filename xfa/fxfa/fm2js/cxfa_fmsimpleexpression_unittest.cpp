@@ -7,8 +7,8 @@
 #include <memory>
 #include <utility>
 
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
 #include "third_party/base/ptr_util.h"
@@ -26,7 +26,7 @@ TEST(FMCallExpressionTest, more_than_32_arguments) {
   CXFA_FMToJavaScriptDepth::Reset();
   CXFA_FMCallExpression callExp(std::move(exp), std::move(args), true);
 
-  CFX_WideTextBuf js;
+  WideTextBuf js;
   callExp.ToJavaScript(&js, ReturnType::kInfered);
 
   // Generate the result javascript string.
@@ -49,14 +49,14 @@ TEST(FMCallExpressionTest, more_than_32_arguments) {
 
 TEST(FMStringExpressionTest, Empty) {
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf accumulator;
+  WideTextBuf accumulator;
   CXFA_FMStringExpression(L"").ToJavaScript(&accumulator, ReturnType::kInfered);
   EXPECT_EQ(L"", accumulator.AsStringView());
 }
 
 TEST(FMStringExpressionTest, Short) {
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf accumulator;
+  WideTextBuf accumulator;
   CXFA_FMStringExpression(L"a").ToJavaScript(&accumulator,
                                              ReturnType::kInfered);
   EXPECT_EQ(L"a", accumulator.AsStringView());
@@ -64,7 +64,7 @@ TEST(FMStringExpressionTest, Short) {
 
 TEST(FMStringExpressionTest, Medium) {
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf accumulator;
+  WideTextBuf accumulator;
   CXFA_FMStringExpression(L".abcd.").ToJavaScript(&accumulator,
                                                   ReturnType::kInfered);
   EXPECT_EQ(L"\"abcd\"", accumulator.AsStringView());
@@ -72,7 +72,7 @@ TEST(FMStringExpressionTest, Medium) {
 
 TEST(FMStringExpressionTest, Long) {
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf accumulator;
+  WideTextBuf accumulator;
   std::vector<WideStringView::UnsignedType> vec(140000, L'A');
   CXFA_FMStringExpression(WideStringView(vec))
       .ToJavaScript(&accumulator, ReturnType::kInfered);
@@ -81,7 +81,7 @@ TEST(FMStringExpressionTest, Long) {
 
 TEST(FMStringExpressionTest, Quoted) {
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf accumulator;
+  WideTextBuf accumulator;
   CXFA_FMStringExpression(L".Simon says \"\"run\"\".")
       .ToJavaScript(&accumulator, ReturnType::kInfered);
   EXPECT_EQ(L"\"Simon says \\\"run\\\"\"", accumulator.AsStringView());

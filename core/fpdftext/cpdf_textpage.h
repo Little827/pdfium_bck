@@ -11,10 +11,10 @@
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_pageobjectlist.h"
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "third_party/base/optional.h"
 
 class CPDF_Font;
@@ -156,8 +156,8 @@ class CPDF_TextPage {
   std::vector<uint16_t> m_CharIndex;
   std::deque<PAGECHAR_INFO> m_CharList;
   std::deque<PAGECHAR_INFO> m_TempCharList;
-  CFX_WideTextBuf m_TextBuf;
-  CFX_WideTextBuf m_TempTextBuf;
+  WideTextBuf m_TextBuf;
+  WideTextBuf m_TempTextBuf;
   const FPDFText_Direction m_parserflag;
   UnownedPtr<CPDF_TextObject> m_pPreTextObj;
   CFX_Matrix m_perMatrix;

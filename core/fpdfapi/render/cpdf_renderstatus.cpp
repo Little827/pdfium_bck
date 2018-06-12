@@ -49,7 +49,7 @@
 #include "core/fpdfapi/render/cpdf_type3cache.h"
 #include "core/fpdfdoc/cpdf_occontext.h"
 #include "core/fxcrt/autorestorer.h"
-#include "core/fxcrt/cfx_fixedbufgrow.h"
+#include "core/fxcrt/fixedbufgrow.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/maybe_owned.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
@@ -152,7 +152,7 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   float y_span = end_y - start_y;
   float axis_len_square = (x_span * x_span) + (y_span * y_span);
 
-  CFX_FixedBufGrow<float, 16> result_array(total_results);
+  FixedBufGrow<float, 16> result_array(total_results);
   float* pResults = result_array;
   memset(pResults, 0, total_results * sizeof(float));
   uint32_t rgb_array[kShadingSteps];
@@ -238,7 +238,7 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
     bEndExtend = !!pArray->GetIntegerAt(1);
   }
 
-  CFX_FixedBufGrow<float, 16> result_array(total_results);
+  FixedBufGrow<float, 16> result_array(total_results);
   float* pResults = result_array;
   memset(pResults, 0, total_results * sizeof(float));
   uint32_t rgb_array[kShadingSteps];
@@ -367,7 +367,7 @@ void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   int height = pBitmap->GetHeight();
   int pitch = pBitmap->GetPitch();
 
-  CFX_FixedBufGrow<float, 16> result_array(total_results);
+  FixedBufGrow<float, 16> result_array(total_results);
   float* pResults = result_array;
   memset(pResults, 0, total_results * sizeof(float));
   for (int row = 0; row < height; row++) {
@@ -2054,7 +2054,7 @@ void CPDF_RenderStatus::DrawShading(const CPDF_ShadingPattern* pPattern,
     const CPDF_Array* pBackColor = pDict->GetArrayFor("Background");
     if (pBackColor &&
         pBackColor->GetCount() >= pColorSpace->CountComponents()) {
-      CFX_FixedBufGrow<float, 16> comps(pColorSpace->CountComponents());
+      FixedBufGrow<float, 16> comps(pColorSpace->CountComponents());
       for (uint32_t i = 0; i < pColorSpace->CountComponents(); i++)
         comps[i] = pBackColor->GetNumberAt(i);
       float R = 0.0f;
@@ -2600,7 +2600,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
   int src_pitch = bitmap.GetPitch();
   std::vector<uint8_t> transfers(256);
   if (pFunc) {
-    CFX_FixedBufGrow<float, 16> results(pFunc->CountOutputs());
+    FixedBufGrow<float, 16> results(pFunc->CountOutputs());
     for (int i = 0; i < 256; i++) {
       float input = (float)i / 255.0f;
       int nresult;

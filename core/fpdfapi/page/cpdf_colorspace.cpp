@@ -31,7 +31,7 @@
 #include "core/fpdfdoc/cpdf_action.h"
 #include "core/fxcodec/codec/ccodec_iccmodule.h"
 #include "core/fxcodec/fx_codec.h"
-#include "core/fxcrt/cfx_fixedbufgrow.h"
+#include "core/fxcrt/fixedbufgrow.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/maybe_owned.h"
 #include "third_party/base/stl_util.h"
@@ -574,7 +574,7 @@ void CPDF_ColorSpace::TranslateImageLine(uint8_t* dest_buf,
                                          int image_width,
                                          int image_height,
                                          bool bTransMask) const {
-  CFX_FixedBufGrow<float, 16> srcbuf(m_nComponents);
+  FixedBufGrow<float, 16> srcbuf(m_nComponents);
   float* src = srcbuf;
   float R;
   float G;
@@ -1153,7 +1153,7 @@ bool CPDF_IndexedCS::GetRGB(const float* pBuf,
       return false;
     }
   }
-  CFX_FixedBufGrow<float, 16> Comps(m_nBaseComponents);
+  FixedBufGrow<float, 16> Comps(m_nBaseComponents);
   float* comps = Comps;
   const uint8_t* pTable = m_Table.raw_str();
   for (uint32_t i = 0; i < m_nBaseComponents; i++) {
@@ -1226,13 +1226,13 @@ bool CPDF_SeparationCS::GetRGB(const float* pBuf,
       return false;
 
     int nComps = m_pAltCS->CountComponents();
-    CFX_FixedBufGrow<float, 16> results(nComps);
+    FixedBufGrow<float, 16> results(nComps);
     for (int i = 0; i < nComps; i++)
       results[i] = *pBuf;
     return m_pAltCS->GetRGB(results, R, G, B);
   }
 
-  CFX_FixedBufGrow<float, 16> results(m_pFunc->CountOutputs());
+  FixedBufGrow<float, 16> results(m_pFunc->CountOutputs());
   int nresults = 0;
   if (!m_pFunc->Call(pBuf, 1, results, &nresults) || nresults == 0)
     return false;
@@ -1298,7 +1298,7 @@ bool CPDF_DeviceNCS::GetRGB(const float* pBuf,
   if (!m_pFunc)
     return false;
 
-  CFX_FixedBufGrow<float, 16> results(m_pFunc->CountOutputs());
+  FixedBufGrow<float, 16> results(m_pFunc->CountOutputs());
   int nresults = 0;
   if (!m_pFunc->Call(pBuf, CountComponents(), results, &nresults) ||
       nresults == 0) {

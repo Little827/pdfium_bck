@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCRT_CFX_BINARYBUF_H_
-#define CORE_FXCRT_CFX_BINARYBUF_H_
+#ifndef CORE_FXCRT_BINARYBUF_H_
+#define CORE_FXCRT_BINARYBUF_H_
 
 #include <memory>
 
@@ -13,10 +13,12 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 
-class CFX_BinaryBuf {
+namespace fxcrt {
+
+class BinaryBuf {
  public:
-  CFX_BinaryBuf();
-  virtual ~CFX_BinaryBuf();
+  BinaryBuf();
+  virtual ~BinaryBuf();
 
   uint8_t* GetBuffer() const { return m_pBuffer.get(); }
   size_t GetSize() const { return m_DataSize; }
@@ -49,4 +51,8 @@ class CFX_BinaryBuf {
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pBuffer;
 };
 
-#endif  // CORE_FXCRT_CFX_BINARYBUF_H_
+}  // namespace fxcrt
+
+using fxcrt::BinaryBuf;
+
+#endif  // CORE_FXCRT_BINARYBUF_H_

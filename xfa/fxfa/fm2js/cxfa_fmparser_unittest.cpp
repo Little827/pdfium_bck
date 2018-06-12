@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#include "core/fxcrt/cfx_widetextbuf.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
 #include "third_party/base/ptr_util.h"
@@ -19,7 +19,7 @@ TEST(CXFA_FMParserTest, Empty) {
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   // TODO(dsinclair): This is a little weird .....
   EXPECT_STREQ(L"// comments only", buf.MakeString().c_str());
@@ -34,7 +34,7 @@ TEST(CXFA_FMParserTest, CommentOnlyIsError) {
   // EXPECT_TRUE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(L"// comments only", buf.MakeString().c_str());
 }
@@ -63,7 +63,7 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(ret, buf.MakeString().c_str());
 }
@@ -132,7 +132,7 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_EQ(ret, buf.AsStringView());
 }
@@ -194,7 +194,7 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(ret, buf.MakeString().c_str());
 }
@@ -232,7 +232,7 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(ret, buf.MakeString().c_str());
 }
@@ -316,7 +316,7 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(ret, buf.MakeString().c_str());
 }
@@ -357,7 +357,7 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(ret, buf.MakeString().c_str());
 }
@@ -388,7 +388,7 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_FALSE(parser->HasError());
 
   CXFA_FMToJavaScriptDepth::Reset();
-  CFX_WideTextBuf buf;
+  WideTextBuf buf;
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(ret, buf.MakeString().c_str());
 }

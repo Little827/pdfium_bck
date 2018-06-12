@@ -10,7 +10,7 @@
 #include "core/fpdfapi/parser/cpdf_hint_tables.h"
 #include "core/fpdfapi/parser/cpdf_linearized_header.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
-#include "core/fxcrt/cfx_bitstream.h"
+#include "core/fxcrt/bitstream.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
 
@@ -37,7 +37,7 @@ class HintTableForFuzzing : public CPDF_HintTables {
     if (size < static_cast<size_t>(shared_hint_table_offset_))
       return;
 
-    CFX_BitStream bs(pdfium::make_span(data, size));
+    Bitstream bs(pdfium::make_span(data, size));
     if (!ReadPageHintTable(&bs))
       return;
     ReadSharedObjHintTable(&bs, shared_hint_table_offset_);

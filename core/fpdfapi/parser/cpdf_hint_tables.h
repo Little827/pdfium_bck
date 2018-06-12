@@ -10,10 +10,10 @@
 #include <vector>
 
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
+#include "core/fxcrt/bitstream.h"
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/unowned_ptr.h"
 
-class CFX_BitStream;
 class CPDF_LinearizedHeader;
 class CPDF_Stream;
 class CPDF_ReadValidator;
@@ -34,8 +34,8 @@ class CPDF_HintTables {
   bool LoadHintStream(CPDF_Stream* pHintStream);
 
  protected:
-  bool ReadPageHintTable(CFX_BitStream* hStream);
-  bool ReadSharedObjHintTable(CFX_BitStream* hStream, uint32_t offset);
+  bool ReadPageHintTable(Bitstream* hStream);
+  bool ReadSharedObjHintTable(Bitstream* hStream, uint32_t offset);
 
  private:
   uint32_t GetItemLength(uint32_t index,

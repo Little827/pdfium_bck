@@ -7,8 +7,8 @@
 #include "core/fpdfapi/page/cpdf_sampledfunc.h"
 
 #include "core/fpdfapi/parser/cpdf_array.h"
-#include "core/fxcrt/cfx_bitstream.h"
-#include "core/fxcrt/cfx_fixedbufgrow.h"
+#include "core/fxcrt/bitstream.h"
+#include "core/fxcrt/fixedbufgrow.h"
 #include "core/fxcrt/fx_safe_types.h"
 
 namespace {
@@ -97,9 +97,9 @@ bool CPDF_SampledFunc::v_Init(const CPDF_Object* pObj,
 
 bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
   int pos = 0;
-  CFX_FixedBufGrow<float, 16> encoded_input_buf(m_nInputs);
+  FixedBufGrow<float, 16> encoded_input_buf(m_nInputs);
   float* encoded_input = encoded_input_buf;
-  CFX_FixedBufGrow<uint32_t, 32> int_buf(m_nInputs * 2);
+  FixedBufGrow<uint32_t, 32> int_buf(m_nInputs * 2);
   uint32_t* index = int_buf;
   uint32_t* blocksize = index + m_nInputs;
   for (uint32_t i = 0; i < m_nInputs; i++) {
@@ -137,7 +137,7 @@ bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
   if (pSampleData.empty())
     return false;
 
-  CFX_BitStream bitstream(pSampleData);
+  Bitstream bitstream(pSampleData);
   bitstream.SkipBits(bits_to_skip);
   for (uint32_t i = 0; i < m_nOutputs; ++i) {
     uint32_t sample = bitstream.GetBits(m_nBitsPerSample);
@@ -156,7 +156,7 @@ bool CPDF_SampledFunc::v_Call(const float* inputs, float* results) const {
         if (bits_to_skip2 < 0)
           return false;
 
-        CFX_BitStream bitstream2(pSampleData);
+        Bitstream bitstream2(pSampleData);
         bitstream2.SkipBits(bits_to_skip2);
         float sample2 =
             static_cast<float>(bitstream2.GetBits(m_nBitsPerSample));

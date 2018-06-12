@@ -16,14 +16,14 @@
 #include "core/fpdfapi/parser/cpdf_read_validator.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
-#include "core/fxcrt/cfx_bitstream.h"
+#include "core/fxcrt/bitstream.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/span.h"
 
 namespace {
 
-bool CanReadFromBitStream(const CFX_BitStream* hStream,
+bool CanReadFromBitStream(const Bitstream* hStream,
                           const FX_SAFE_UINT32& bits) {
   return bits.IsValid() && hStream->BitsRemaining() >= bits.ValueOrDie();
 }
@@ -58,7 +58,7 @@ uint32_t CPDF_HintTables::GetItemLength(
   return szArray[index + 1] - szArray[index];
 }
 
-bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
+bool CPDF_HintTables::ReadPageHintTable(Bitstream* hStream) {
   if (!hStream || hStream->IsEOF())
     return false;
 
@@ -233,7 +233,7 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   return true;
 }
 
-bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
+bool CPDF_HintTables::ReadSharedObjHintTable(Bitstream* hStream,
                                              uint32_t offset) {
   if (!hStream || hStream->IsEOF())
     return false;
@@ -460,7 +460,7 @@ bool CPDF_HintTables::LoadHintStream(CPDF_Stream* pHintStream) {
     return false;
   }
 
-  CFX_BitStream bs(pdfium::make_span(pAcc->GetData(), size));
+  Bitstream bs(pdfium::make_span(pAcc->GetData(), size));
   return ReadPageHintTable(&bs) &&
          ReadSharedObjHintTable(&bs, shared_hint_table_offset);
 }

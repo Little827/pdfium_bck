@@ -10,7 +10,7 @@
 #include <memory>
 
 #include "core/fdrm/crypto/fx_crypt.h"
-#include "core/fxcrt/cfx_binarybuf.h"
+#include "core/fxcrt/binarybuf.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
@@ -46,8 +46,8 @@ class CPDF_CryptoHandler {
   ByteString Decrypt(uint32_t objnum, uint32_t gennum, const ByteString& str);
   bool DecryptStream(void* context,
                      pdfium::span<const uint8_t> source,
-                     CFX_BinaryBuf& dest_buf);
-  bool DecryptFinish(void* context, CFX_BinaryBuf& dest_buf);
+                     BinaryBuf& dest_buf);
+  bool DecryptFinish(void* context, BinaryBuf& dest_buf);
 
   void PopulateKey(uint32_t objnum, uint32_t gennum, uint8_t* key);
   void CryptBlock(bool bEncrypt,
@@ -59,9 +59,9 @@ class CPDF_CryptoHandler {
   void* CryptStart(uint32_t objnum, uint32_t gennum, bool bEncrypt);
   bool CryptStream(void* context,
                    pdfium::span<const uint8_t> source,
-                   CFX_BinaryBuf& dest_buf,
+                   BinaryBuf& dest_buf,
                    bool bEncrypt);
-  bool CryptFinish(void* context, CFX_BinaryBuf& dest_buf, bool bEncrypt);
+  bool CryptFinish(void* context, BinaryBuf& dest_buf, bool bEncrypt);
 
   int m_KeyLen;
   int m_Cipher;

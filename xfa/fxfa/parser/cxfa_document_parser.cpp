@@ -10,9 +10,9 @@
 #include <vector>
 
 #include "core/fxcrt/cfx_memorystream.h"
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "core/fxcrt/xml/cfx_xmlchardata.h"
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmlinstruction.h"
@@ -1042,8 +1042,8 @@ void CXFA_DocumentParser::ParseDataGroup(CXFA_Node* pXFANode,
 void CXFA_DocumentParser::ParseDataValue(CXFA_Node* pXFANode,
                                          CFX_XMLNode* pXMLNode,
                                          XFA_PacketType ePacketID) {
-  CFX_WideTextBuf wsValueTextBuf;
-  CFX_WideTextBuf wsCurValueTextBuf;
+  WideTextBuf wsValueTextBuf;
+  WideTextBuf wsCurValueTextBuf;
   bool bMarkAsCompound = false;
   CFX_XMLNode* pXMLCurValueNode = nullptr;
   for (CFX_XMLNode* pXMLChild = pXMLNode->GetFirstChild(); pXMLChild;

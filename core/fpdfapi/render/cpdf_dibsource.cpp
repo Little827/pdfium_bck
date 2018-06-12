@@ -28,7 +28,7 @@
 #include "core/fxcodec/codec/ccodec_scanlinedecoder.h"
 #include "core/fxcodec/codec/cjpx_decoder.h"
 #include "core/fxcodec/fx_codec.h"
-#include "core/fxcrt/cfx_fixedbufgrow.h"
+#include "core/fxcrt/fixedbufgrow.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "third_party/base/ptr_util.h"
@@ -763,7 +763,7 @@ void CPDF_DIBSource::LoadPalette() {
   }
 
   int palette_count = 1 << (m_bpc * m_nComponents);
-  CFX_FixedBufGrow<float, 16> color_values(m_nComponents);
+  FixedBufGrow<float, 16> color_values(m_nComponents);
   float* color_value = color_values;
   for (int i = 0; i < palette_count; i++) {
     int color_data = i;
@@ -833,7 +833,7 @@ void CPDF_DIBSource::TranslateScanline24bpp(uint8_t* dest_scan,
   if (TranslateScanline24bppDefaultDecode(dest_scan, src_scan))
     return;
 
-  CFX_FixedBufGrow<float, 16> color_values1(m_nComponents);
+  FixedBufGrow<float, 16> color_values1(m_nComponents);
   float* color_values = color_values1;
   float R = 0.0f;
   float G = 0.0f;
@@ -1272,7 +1272,7 @@ void CPDF_DIBSource::DownSampleScanline32Bit(int orig_Bpp,
     if (src_x == last_src_x) {
       argb = last_argb;
     } else {
-      CFX_FixedBufGrow<uint8_t, 16> extracted_components(m_nComponents);
+      FixedBufGrow<uint8_t, 16> extracted_components(m_nComponents);
       const uint8_t* pSrcPixel = nullptr;
       if (m_bpc % 8 != 0) {
         // No need to check for 32-bit overflow, as |src_x| is bounded by

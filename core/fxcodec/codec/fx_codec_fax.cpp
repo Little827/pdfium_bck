@@ -11,7 +11,7 @@
 #include "core/fxcodec/codec/ccodec_faxmodule.h"
 #include "core/fxcodec/codec/ccodec_scanlinedecoder.h"
 #include "core/fxcodec/codec/codec_int.h"
-#include "core/fxcrt/cfx_binarybuf.h"
+#include "core/fxcrt/binarybuf.h"
 #include "core/fxcrt/fx_memory.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
@@ -742,7 +742,7 @@ class CCodec_FaxEncoder {
               uint32_t* dest_size);
 
  private:
-  CFX_BinaryBuf m_DestBuf;
+  BinaryBuf m_DestBuf;
   std::vector<uint8_t> m_RefLine;
   uint8_t* m_pLineBuf;
   const int m_Cols;

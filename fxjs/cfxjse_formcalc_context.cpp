@@ -13,10 +13,10 @@
 #include <utility>
 
 #include "core/fxcrt/cfx_decimal.h"
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_random.h"
 #include "core/fxcrt/locale_iface.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "fxjs/cfxjse_class.h"
 #include "fxjs/cfxjse_engine.h"
 #include "fxjs/cfxjse_value.h"
@@ -2830,7 +2830,7 @@ void CFXJSE_FormCalcContext::Eval(CFXJSE_Value* pThis,
     return;
   }
 
-  CFX_WideTextBuf wsJavaScriptBuf;
+  WideTextBuf wsJavaScriptBuf;
   if (!CFXJSE_FormCalcContext::Translate(
           WideString::FromUTF8(utf8ScriptString.AsStringView()).AsStringView(),
           &wsJavaScriptBuf)) {
@@ -3262,7 +3262,7 @@ void CFXJSE_FormCalcContext::Decode(CFXJSE_Value* pThis,
 WideString CFXJSE_FormCalcContext::DecodeURL(const WideString& wsURLString) {
   const wchar_t* pData = wsURLString.c_str();
   size_t i = 0;
-  CFX_WideTextBuf wsResultBuf;
+  WideTextBuf wsResultBuf;
   while (i < wsURLString.GetLength()) {
     wchar_t ch = pData[i];
     if ('%' != ch) {
@@ -3303,7 +3303,7 @@ WideString CFXJSE_FormCalcContext::DecodeHTML(const WideString& wsHTMLString) {
   size_t i = 0;
   int32_t iCode = 0;
   const wchar_t* pData = wsHTMLString.c_str();
-  CFX_WideTextBuf wsResultBuf;
+  WideTextBuf wsResultBuf;
   while (i < iLen) {
     wchar_t ch = pData[i];
     if (ch != '&') {
@@ -3375,7 +3375,7 @@ WideString CFXJSE_FormCalcContext::DecodeXML(const WideString& wsXMLString) {
   int32_t iCode = 0;
   wchar_t ch = 0;
   const wchar_t* pData = wsXMLString.c_str();
-  CFX_WideTextBuf wsResultBuf;
+  WideTextBuf wsResultBuf;
   while (i < iLen) {
     ch = pData[i];
     if (ch != '&') {
@@ -3508,7 +3508,7 @@ void CFXJSE_FormCalcContext::Encode(CFXJSE_Value* pThis,
 // static
 WideString CFXJSE_FormCalcContext::EncodeURL(const ByteString& szURLString) {
   WideString wsURLString = WideString::FromUTF8(szURLString.AsStringView());
-  CFX_WideTextBuf wsResultBuf;
+  WideTextBuf wsResultBuf;
   wchar_t strEncode[4];
   strEncode[0] = '%';
   strEncode[3] = 0;
@@ -3615,7 +3615,7 @@ WideString CFXJSE_FormCalcContext::EncodeHTML(const ByteString& szHTMLString) {
   strEncode[6] = 0;
   strEncode[7] = ';';
   strEncode[8] = 0;
-  CFX_WideTextBuf wsResultBuf;
+  WideTextBuf wsResultBuf;
   int32_t iLen = wsHTMLString.GetLength();
   int32_t i = 0;
   const wchar_t* pData = wsHTMLString.c_str();
@@ -3653,7 +3653,7 @@ WideString CFXJSE_FormCalcContext::EncodeHTML(const ByteString& szHTMLString) {
 // static
 WideString CFXJSE_FormCalcContext::EncodeXML(const ByteString& szXMLString) {
   WideString wsXMLString = WideString::FromUTF8(szXMLString.AsStringView());
-  CFX_WideTextBuf wsResultBuf;
+  WideTextBuf wsResultBuf;
   wchar_t strEncode[9];
   strEncode[0] = '&';
   strEncode[1] = '#';
@@ -3890,7 +3890,7 @@ void CFXJSE_FormCalcContext::Lower(CFXJSE_Value* pThis,
     return;
   }
 
-  CFX_WideTextBuf lowStringBuf;
+  WideTextBuf lowStringBuf;
   ByteString argString = ValueToUTF8String(argOne.get());
   WideString wsArgString = WideString::FromUTF8(argString.AsStringView());
   const wchar_t* pData = wsArgString.c_str();
@@ -4430,7 +4430,7 @@ void CFXJSE_FormCalcContext::Upper(CFXJSE_Value* pThis,
     return;
   }
 
-  CFX_WideTextBuf upperStringBuf;
+  WideTextBuf upperStringBuf;
   ByteString argString = ValueToUTF8String(argOne.get());
   WideString wsArgString = WideString::FromUTF8(argString.AsStringView());
   const wchar_t* pData = wsArgString.c_str();
@@ -5477,7 +5477,7 @@ void CFXJSE_FormCalcContext::eval_translation(CFXJSE_Value* pThis,
   }
 
   WideString scriptString = WideString::FromUTF8(argString.AsStringView());
-  CFX_WideTextBuf wsJavaScriptBuf;
+  WideTextBuf wsJavaScriptBuf;
   if (!CFXJSE_FormCalcContext::Translate(scriptString.AsStringView(),
                                          &wsJavaScriptBuf)) {
     pContext->ThrowCompilerErrorException();
@@ -6173,7 +6173,7 @@ ByteString CFXJSE_FormCalcContext::ValueToUTF8String(CFXJSE_Value* arg) {
 
 // static.
 bool CFXJSE_FormCalcContext::Translate(const WideStringView& wsFormcalc,
-                                       CFX_WideTextBuf* wsJavascript) {
+                                       WideTextBuf* wsJavascript) {
   if (wsFormcalc.IsEmpty()) {
     wsJavascript->Clear();
     return true;

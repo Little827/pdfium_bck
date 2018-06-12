@@ -307,10 +307,10 @@ void CJS_GlobalData::LoadGlobalPersistentVariables() {
 
 void CJS_GlobalData::SaveGlobalPersisitentVariables() {
   uint32_t nCount = 0;
-  CFX_BinaryBuf sData;
+  BinaryBuf sData;
   for (const auto& pElement : m_arrayGlobalData) {
     if (pElement->bPersistent) {
-      CFX_BinaryBuf sElement;
+      BinaryBuf sElement;
       MakeByteString(pElement->data.sKey, &pElement->data, sElement);
       if (sData.GetSize() + sElement.GetSize() > JS_MAXGLOBALDATA)
         break;
@@ -320,7 +320,7 @@ void CJS_GlobalData::SaveGlobalPersisitentVariables() {
     }
   }
 
-  CFX_BinaryBuf sFile;
+  BinaryBuf sFile;
   uint16_t wType = (uint16_t)(('X' << 8) | 'F');
   sFile.AppendBlock(&wType, sizeof(uint16_t));
   uint16_t wVersion = 2;
@@ -351,7 +351,7 @@ void CJS_GlobalData::WriteFileBuffer(const wchar_t* sFilePath,
 
 void CJS_GlobalData::MakeByteString(const ByteString& name,
                                     CJS_KeyValue* pData,
-                                    CFX_BinaryBuf& sData) {
+                                    BinaryBuf& sData) {
   switch (pData->nType) {
     case JS_GlobalDataType::NUMBER: {
       uint32_t dwNameLen = (uint32_t)name.GetLength();

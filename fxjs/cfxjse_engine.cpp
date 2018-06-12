@@ -9,8 +9,8 @@
 #include <utility>
 
 #include "core/fxcrt/autorestorer.h"
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "fxjs/cfxjse_class.h"
 #include "fxjs/cfxjse_resolveprocessor.h"
 #include "fxjs/cfxjse_value.h"
@@ -133,7 +133,7 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
       m_FM2JSContext = pdfium::MakeUnique<CFXJSE_FormCalcContext>(
           GetIsolate(), m_JsContext.get(), m_pDocument.Get());
     }
-    CFX_WideTextBuf wsJavaScript;
+    WideTextBuf wsJavaScript;
     if (!CFXJSE_FormCalcContext::Translate(wsScript, &wsJavaScript)) {
       hRetValue->SetUndefined();
       return false;

@@ -10,7 +10,7 @@
 #include <memory>
 #include <vector>
 
-#include "core/fxcrt/cfx_binarybuf.h"
+#include "core/fxcrt/binarybuf.h"
 #include "fxjs/cjs_keyvalue.h"
 
 class CPDFSDK_FormFillEnvironment;
@@ -67,7 +67,7 @@ class CJS_GlobalData {
                        int32_t nLength);
   void MakeByteString(const ByteString& name,
                       CJS_KeyValue* pData,
-                      CFX_BinaryBuf& sData);
+                      BinaryBuf& sData);
 
   size_t m_RefCount;
   std::vector<std::unique_ptr<CJS_GlobalData_Element>> m_arrayGlobalData;

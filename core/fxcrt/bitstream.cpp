@@ -4,24 +4,24 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "core/fxcrt/cfx_bitstream.h"
+#include "core/fxcrt/bitstream.h"
 
 #include <limits>
 
 #include "core/fxcrt/fx_system.h"
 
-CFX_BitStream::CFX_BitStream(pdfium::span<const uint8_t> pData)
+Bitstream::Bitstream(pdfium::span<const uint8_t> pData)
     : m_BitPos(0), m_BitSize(pData.size() * 8), m_pData(pData.data()) {
   ASSERT(pData.size() <= std::numeric_limits<uint32_t>::max() / 8);
 }
 
-CFX_BitStream::~CFX_BitStream() {}
+Bitstream::~Bitstream() {}
 
-void CFX_BitStream::ByteAlign() {
+void Bitstream::ByteAlign() {
   m_BitPos = (m_BitPos + 7) & ~7;
 }
 
-uint32_t CFX_BitStream::GetBits(uint32_t nBits) {
+uint32_t Bitstream::GetBits(uint32_t nBits) {
   ASSERT(nBits > 0);
   ASSERT(nBits <= 32);
   if (nBits > m_BitSize || m_BitPos > m_BitSize - nBits)

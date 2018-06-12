@@ -8,8 +8,8 @@
 
 #include <utility>
 
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "core/fxcrt/xml/cfx_xmlchardata.h"
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
@@ -75,7 +75,7 @@ WideString CFX_XMLElement::GetNamespaceURI() const {
 }
 
 WideString CFX_XMLElement::GetTextData() const {
-  CFX_WideTextBuf buffer;
+  WideTextBuf buffer;
 
   for (CFX_XMLNode* pChild = GetFirstChild(); pChild;
        pChild = pChild->GetNextSibling()) {

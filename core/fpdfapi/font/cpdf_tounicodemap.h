@@ -10,8 +10,8 @@
 #include <map>
 
 #include "core/fpdfapi/parser/cpdf_stream.h"
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "core/fxcrt/widetextbuf.h"
 
 class CPDF_CID2UnicodeMap;
 
@@ -36,7 +36,7 @@ class CPDF_ToUnicodeMap {
 
   std::map<uint32_t, uint32_t> m_Map;
   UnownedPtr<CPDF_CID2UnicodeMap> m_pBaseMap;
-  CFX_WideTextBuf m_MultiCharBuf;
+  WideTextBuf m_MultiCharBuf;
 };
 
 #endif  // CORE_FPDFAPI_FONT_CPDF_TOUNICODEMAP_H_

@@ -167,7 +167,7 @@ void* CPDF_CryptoHandler::CryptStart(uint32_t objnum,
 
 bool CPDF_CryptoHandler::CryptStream(void* context,
                                      pdfium::span<const uint8_t> source,
-                                     CFX_BinaryBuf& dest_buf,
+                                     BinaryBuf& dest_buf,
                                      bool bEncrypt) {
   if (!context)
     return false;
@@ -225,7 +225,7 @@ bool CPDF_CryptoHandler::CryptStream(void* context,
   return true;
 }
 bool CPDF_CryptoHandler::CryptFinish(void* context,
-                                     CFX_BinaryBuf& dest_buf,
+                                     BinaryBuf& dest_buf,
                                      bool bEncrypt) {
   if (!context) {
     return false;
@@ -264,7 +264,7 @@ bool CPDF_CryptoHandler::CryptFinish(void* context,
 ByteString CPDF_CryptoHandler::Decrypt(uint32_t objnum,
                                        uint32_t gennum,
                                        const ByteString& str) {
-  CFX_BinaryBuf dest_buf;
+  BinaryBuf dest_buf;
   void* context = DecryptStart(objnum, gennum);
   DecryptStream(context, str.AsRawSpan(), dest_buf);
   DecryptFinish(context, dest_buf);
@@ -333,7 +333,7 @@ std::unique_ptr<CPDF_Object> CPDF_CryptoHandler::DecryptObjectTree(
           continue;
         }
 
-        CFX_BinaryBuf decrypted_buf;
+        BinaryBuf decrypted_buf;
         decrypted_buf.EstimateSize(DecryptGetSize(stream_access->GetSize()));
 
         void* context = DecryptStart(obj_num, gen_num);
@@ -368,11 +368,11 @@ std::unique_ptr<CPDF_Object> CPDF_CryptoHandler::DecryptObjectTree(
 
 bool CPDF_CryptoHandler::DecryptStream(void* context,
                                        pdfium::span<const uint8_t> source,
-                                       CFX_BinaryBuf& dest_buf) {
+                                       BinaryBuf& dest_buf) {
   return CryptStream(context, source, dest_buf, false);
 }
 
-bool CPDF_CryptoHandler::DecryptFinish(void* context, CFX_BinaryBuf& dest_buf) {
+bool CPDF_CryptoHandler::DecryptFinish(void* context, BinaryBuf& dest_buf) {
   return CryptFinish(context, dest_buf, false);
 }
 

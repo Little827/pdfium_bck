@@ -7,7 +7,7 @@
 #ifndef CORE_FXCRT_CFX_UTF8DECODER_H_
 #define CORE_FXCRT_CFX_UTF8DECODER_H_
 
-#include "core/fxcrt/cfx_widetextbuf.h"
+#include "core/fxcrt/widetextbuf.h"
 
 class CFX_UTF8Decoder {
  public:
@@ -22,7 +22,7 @@ class CFX_UTF8Decoder {
  private:
   int m_PendingBytes;
   uint32_t m_PendingChar;
-  CFX_WideTextBuf m_Buffer;
+  WideTextBuf m_Buffer;
 };
 
 #endif  // CORE_FXCRT_CFX_UTF8DECODER_H_

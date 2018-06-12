@@ -8,7 +8,7 @@
 
 #include "core/fxcodec/codec/ccodec_iccmodule.h"
 #include "core/fxcodec/codec/codec_int.h"
-#include "core/fxcrt/cfx_fixedbufgrow.h"
+#include "core/fxcrt/fixedbufgrow.h"
 
 namespace {
 
@@ -124,13 +124,13 @@ void CCodec_IccModule::Translate(CLcmsCmm* pTransform,
   uint32_t nSrcComponents = m_nComponents;
   uint8_t output[4];
   if (pTransform->m_bLab) {
-    CFX_FixedBufGrow<double, 16> inputs(nSrcComponents);
+    FixedBufGrow<double, 16> inputs(nSrcComponents);
     double* input = inputs;
     for (uint32_t i = 0; i < nSrcComponents; ++i)
       input[i] = pSrcValues[i];
     cmsDoTransform(pTransform->m_hTransform, input, output, 1);
   } else {
-    CFX_FixedBufGrow<uint8_t, 16> inputs(nSrcComponents);
+    FixedBufGrow<uint8_t, 16> inputs(nSrcComponents);
     uint8_t* input = inputs;
     for (uint32_t i = 0; i < nSrcComponents; ++i) {
       input[i] =

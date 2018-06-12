@@ -4,17 +4,19 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCRT_CFX_FIXEDBUFGROW_H_
-#define CORE_FXCRT_CFX_FIXEDBUFGROW_H_
+#ifndef CORE_FXCRT_FIXEDBUFGROW_H_
+#define CORE_FXCRT_FIXEDBUFGROW_H_
 
 #include <memory>
 
 #include "core/fxcrt/fx_memory.h"
 
+namespace fxcrt {
+
 template <class DataType, int FixedSize>
-class CFX_FixedBufGrow {
+class FixedBufGrow {
  public:
-  explicit CFX_FixedBufGrow(int data_size) {
+  explicit FixedBufGrow(int data_size) {
     if (data_size > FixedSize) {
       m_pGrowData.reset(FX_Alloc(DataType, data_size));
       return;
@@ -28,4 +30,8 @@ class CFX_FixedBufGrow {
   DataType m_FixedData[FixedSize];
 };
 
-#endif  // CORE_FXCRT_CFX_FIXEDBUFGROW_H_
+}  // namespace fxcrt
+
+using fxcrt::FixedBufGrow;
+
+#endif  // CORE_FXCRT_FIXEDBUFGROW_H_

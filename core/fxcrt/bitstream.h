@@ -4,18 +4,20 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCRT_CFX_BITSTREAM_H_
-#define CORE_FXCRT_CFX_BITSTREAM_H_
+#ifndef CORE_FXCRT_BITSTREAM_H_
+#define CORE_FXCRT_BITSTREAM_H_
 
 #include <stdint.h>
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/span.h"
 
-class CFX_BitStream {
+namespace fxcrt {
+
+class Bitstream {
  public:
-  explicit CFX_BitStream(pdfium::span<const uint8_t> pData);
-  ~CFX_BitStream();
+  explicit Bitstream(pdfium::span<const uint8_t> pData);
+  ~Bitstream();
 
   void ByteAlign();
 
@@ -36,4 +38,8 @@ class CFX_BitStream {
   UnownedPtr<const uint8_t> m_pData;
 };
 
-#endif  // CORE_FXCRT_CFX_BITSTREAM_H_
+}  // namespace fxcrt
+
+using fxcrt::Bitstream;
+
+#endif  // CORE_FXCRT_BITSTREAM_H_

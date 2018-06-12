@@ -8,7 +8,7 @@
 
 #include <utility>
 
-#include "core/fxcrt/cfx_widetextbuf.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.h"
 #include "xfa/fxfa/fm2js/cxfa_fmtojavascriptdepth.h"
 
@@ -44,8 +44,7 @@ CXFA_FMFunctionDefinition::CXFA_FMFunctionDefinition(
 
 CXFA_FMFunctionDefinition::~CXFA_FMFunctionDefinition() = default;
 
-bool CXFA_FMFunctionDefinition::ToJavaScript(CFX_WideTextBuf* js,
-                                             ReturnType type) {
+bool CXFA_FMFunctionDefinition::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -82,7 +81,7 @@ CXFA_FMAST::CXFA_FMAST(
 
 CXFA_FMAST::~CXFA_FMAST() = default;
 
-bool CXFA_FMAST::ToJavaScript(CFX_WideTextBuf* js) {
+bool CXFA_FMAST::ToJavaScript(WideTextBuf* js) {
   if (expressions_.empty()) {
     *js << L"// comments only";
     return !CXFA_IsTooBig(js);
@@ -120,7 +119,7 @@ CXFA_FMVarExpression::CXFA_FMVarExpression(
 
 CXFA_FMVarExpression::~CXFA_FMVarExpression() = default;
 
-bool CXFA_FMVarExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
+bool CXFA_FMVarExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -149,7 +148,7 @@ CXFA_FMExpExpression::CXFA_FMExpExpression(
 
 CXFA_FMExpExpression::~CXFA_FMExpExpression() = default;
 
-bool CXFA_FMExpExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
+bool CXFA_FMExpExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -192,8 +191,7 @@ CXFA_FMBlockExpression::CXFA_FMBlockExpression(
 
 CXFA_FMBlockExpression::~CXFA_FMBlockExpression() = default;
 
-bool CXFA_FMBlockExpression::ToJavaScript(CFX_WideTextBuf* js,
-                                          ReturnType type) {
+bool CXFA_FMBlockExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -222,7 +220,7 @@ CXFA_FMDoExpression::CXFA_FMDoExpression(
 
 CXFA_FMDoExpression::~CXFA_FMDoExpression() = default;
 
-bool CXFA_FMDoExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
+bool CXFA_FMDoExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -245,7 +243,7 @@ CXFA_FMIfExpression::CXFA_FMIfExpression(
 
 CXFA_FMIfExpression::~CXFA_FMIfExpression() = default;
 
-bool CXFA_FMIfExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
+bool CXFA_FMIfExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -291,8 +289,7 @@ CXFA_FMWhileExpression::CXFA_FMWhileExpression(
 
 CXFA_FMWhileExpression::~CXFA_FMWhileExpression() = default;
 
-bool CXFA_FMWhileExpression::ToJavaScript(CFX_WideTextBuf* js,
-                                          ReturnType type) {
+bool CXFA_FMWhileExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -318,8 +315,7 @@ CXFA_FMBreakExpression::CXFA_FMBreakExpression() : CXFA_FMExpression() {}
 
 CXFA_FMBreakExpression::~CXFA_FMBreakExpression() = default;
 
-bool CXFA_FMBreakExpression::ToJavaScript(CFX_WideTextBuf* js,
-                                          ReturnType type) {
+bool CXFA_FMBreakExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -332,8 +328,7 @@ CXFA_FMContinueExpression::CXFA_FMContinueExpression() : CXFA_FMExpression() {}
 
 CXFA_FMContinueExpression::~CXFA_FMContinueExpression() = default;
 
-bool CXFA_FMContinueExpression::ToJavaScript(CFX_WideTextBuf* js,
-                                             ReturnType type) {
+bool CXFA_FMContinueExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -359,7 +354,7 @@ CXFA_FMForExpression::CXFA_FMForExpression(
 
 CXFA_FMForExpression::~CXFA_FMForExpression() = default;
 
-bool CXFA_FMForExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
+bool CXFA_FMForExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;
@@ -414,8 +409,7 @@ CXFA_FMForeachExpression::CXFA_FMForeachExpression(
 
 CXFA_FMForeachExpression::~CXFA_FMForeachExpression() = default;
 
-bool CXFA_FMForeachExpression::ToJavaScript(CFX_WideTextBuf* js,
-                                            ReturnType type) {
+bool CXFA_FMForeachExpression::ToJavaScript(WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
     return false;

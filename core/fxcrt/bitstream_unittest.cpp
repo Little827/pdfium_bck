@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "core/fxcrt/cfx_bitstream.h"
+#include "core/fxcrt/bitstream.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace {
@@ -21,7 +21,7 @@ uint32_t ReferenceGetBits32(const uint8_t* pData, int bitpos, int nbits) {
 TEST(fxcrt, BitStream) {
   static const uint8_t kData[] = {0x00, 0x11, 0x22, 0x33,
                                   0x44, 0x55, 0x66, 0x77};
-  CFX_BitStream bitstream(kData);
+  Bitstream bitstream(kData);
 
   // Initial state.
   EXPECT_FALSE(bitstream.IsEOF());
@@ -120,7 +120,7 @@ TEST(fxcrt, BitStream) {
 
 TEST(fxcrt, BitStreamSameAsReferenceGetBits32) {
   unsigned char kData[] = {0xDE, 0x3F, 0xB1, 0x7C, 0x12, 0x9A, 0x04, 0x56};
-  CFX_BitStream bitstream(kData);
+  Bitstream bitstream(kData);
   for (int nbits = 1; nbits <= 32; ++nbits) {
     for (size_t bitpos = 0; bitpos < sizeof(kData) * 8 - nbits; ++bitpos) {
       bitstream.Rewind();

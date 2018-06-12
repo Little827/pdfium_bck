@@ -4,17 +4,18 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "core/fxcrt/cfx_binarybuf.h"
+#include "core/fxcrt/binarybuf.h"
 
 #include <algorithm>
 #include <utility>
 
-CFX_BinaryBuf::CFX_BinaryBuf()
-    : m_AllocStep(0), m_AllocSize(0), m_DataSize(0) {}
+namespace fxcrt {
 
-CFX_BinaryBuf::~CFX_BinaryBuf() = default;
+BinaryBuf::BinaryBuf() : m_AllocStep(0), m_AllocSize(0), m_DataSize(0) {}
 
-void CFX_BinaryBuf::Delete(size_t start_index, size_t count) {
+BinaryBuf::~BinaryBuf() = default;
+
+void BinaryBuf::Delete(size_t start_index, size_t count) {
   if (!m_pBuffer || count > m_DataSize || start_index > m_DataSize - count)
     return;
 
@@ -23,27 +24,27 @@ void CFX_BinaryBuf::Delete(size_t start_index, size_t count) {
   m_DataSize -= count;
 }
 
-size_t CFX_BinaryBuf::GetLength() const {
+size_t BinaryBuf::GetLength() const {
   return m_DataSize;
 }
 
-void CFX_BinaryBuf::Clear() {
+void BinaryBuf::Clear() {
   m_DataSize = 0;
 }
 
-std::unique_ptr<uint8_t, FxFreeDeleter> CFX_BinaryBuf::DetachBuffer() {
+std::unique_ptr<uint8_t, FxFreeDeleter> BinaryBuf::DetachBuffer() {
   m_DataSize = 0;
   m_AllocSize = 0;
   return std::move(m_pBuffer);
 }
 
-void CFX_BinaryBuf::EstimateSize(size_t size, size_t step) {
+void BinaryBuf::EstimateSize(size_t size, size_t step) {
   m_AllocStep = step;
   if (m_AllocSize < size)
     ExpandBuf(size - m_DataSize);
 }
 
-void CFX_BinaryBuf::ExpandBuf(size_t add_size) {
+void BinaryBuf::ExpandBuf(size_t add_size) {
   FX_SAFE_SIZE_T new_size = m_DataSize;
   new_size += add_size;
   if (m_AllocSize >= new_size.ValueOrDie())
@@ -60,7 +61,7 @@ void CFX_BinaryBuf::ExpandBuf(size_t add_size) {
                       : FX_Alloc(uint8_t, m_AllocSize));
 }
 
-void CFX_BinaryBuf::AppendBlock(const void* pBuf, size_t size) {
+void BinaryBuf::AppendBlock(const void* pBuf, size_t size) {
   if (size == 0)
     return;
 
@@ -72,3 +73,5 @@ void CFX_BinaryBuf::AppendBlock(const void* pBuf, size_t size) {
   }
   m_DataSize += size;
 }
+
+}  // namespace fxcrt

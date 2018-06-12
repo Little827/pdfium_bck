@@ -5,9 +5,9 @@
 #include <cstddef>
 #include <cstdint>
 
-#include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/widetextbuf.h"
 #include "fxjs/cfxjse_formcalc_context.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
@@ -15,7 +15,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   if (!safe_size.IsValid())
     return 0;
 
-  CFX_WideTextBuf js;
+  WideTextBuf js;
   WideString input =
       WideString::FromUTF8(ByteStringView(data, safe_size.ValueOrDie()));
   CFXJSE_FormCalcContext::Translate(input.AsStringView(), &js);

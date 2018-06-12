@@ -14,7 +14,7 @@
 #include "fxjs/cfxjse_context.h"
 #include "xfa/fxfa/parser/xfa_resolvenode_rs.h"
 
-class CFX_WideTextBuf;
+class WideTextBuf;
 class CXFA_Document;
 
 class CFXJSE_FormCalcContext : public CFXJSE_HostObject {
@@ -418,7 +418,7 @@ class CFXJSE_FormCalcContext : public CFXJSE_HostObject {
                               bool* ret);
 
   static bool Translate(const WideStringView& wsFormcalc,
-                        CFX_WideTextBuf* wsJavascript);
+                        WideTextBuf* wsJavascript);
 
   void GlobalPropertyGetter(CFXJSE_Value* pValue);
 

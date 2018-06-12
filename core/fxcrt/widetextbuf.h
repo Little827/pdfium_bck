@@ -4,14 +4,16 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCRT_CFX_WIDETEXTBUF_H_
-#define CORE_FXCRT_CFX_WIDETEXTBUF_H_
+#ifndef CORE_FXCRT_WIDETEXTBUF_H_
+#define CORE_FXCRT_WIDETEXTBUF_H_
 
-#include "core/fxcrt/cfx_binarybuf.h"
+#include "core/fxcrt/binarybuf.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 
-class CFX_WideTextBuf : public CFX_BinaryBuf {
+namespace fxcrt {
+
+class WideTextBuf : public BinaryBuf {
  public:
   void AppendChar(wchar_t wch);
   size_t GetLength() const override;
@@ -29,16 +31,19 @@ class CFX_WideTextBuf : public CFX_BinaryBuf {
   }
 
   void Delete(int start_index, int count) {
-    CFX_BinaryBuf::Delete(start_index * sizeof(wchar_t),
-                          count * sizeof(wchar_t));
+    BinaryBuf::Delete(start_index * sizeof(wchar_t), count * sizeof(wchar_t));
   }
 
-  CFX_WideTextBuf& operator<<(int i);
-  CFX_WideTextBuf& operator<<(double f);
-  CFX_WideTextBuf& operator<<(const wchar_t* lpsz);
-  CFX_WideTextBuf& operator<<(const WideStringView& str);
-  CFX_WideTextBuf& operator<<(const WideString& str);
-  CFX_WideTextBuf& operator<<(const CFX_WideTextBuf& buf);
+  WideTextBuf& operator<<(int i);
+  WideTextBuf& operator<<(double f);
+  WideTextBuf& operator<<(const wchar_t* lpsz);
+  WideTextBuf& operator<<(const WideStringView& str);
+  WideTextBuf& operator<<(const WideString& str);
+  WideTextBuf& operator<<(const WideTextBuf& buf);
 };
 
-#endif  // CORE_FXCRT_CFX_WIDETEXTBUF_H_
+}  // namespace fxcrt
+
+using fxcrt::WideTextBuf;
+
+#endif  // CORE_FXCRT_WIDETEXTBUF_H_
