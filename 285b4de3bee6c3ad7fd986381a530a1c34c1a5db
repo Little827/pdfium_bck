@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ece306e1_5c03f16e",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T19:22:21Z",
+      "side": 1,
+      "message": "Should we rename this one too?",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 24
+      },
+      "revId": "285b4de3bee6c3ad7fd986381a530a1c34c1a5db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
