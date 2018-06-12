@@ -46,6 +46,30 @@
       "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321641fd_e24dc3c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T13:43:46Z",
+      "side": 1,
+      "message": "The bitmap case in (1) should be fixed to be consistent with the Jpeg case. Creating new methods to make this clearer makes sense but I\u0027d rather see us add something like:\n\nFPDFImageObj_LoadJpegData(FPDF_PAGEOBJECT image_object, const void* data, unsigned long data_size)\nFPDFImageObj_LoadBitmapData(FPDF_PAGEOBJECT image_object, FPDF_BITMAP bitmap)\n\nThose two calls are just wrappers around the existing methods which pass nullptr to the pages parameter.",
+      "parentUuid": "9f5cb586_f281da7c",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
