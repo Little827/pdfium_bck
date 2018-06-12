@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47cc6344_bba28aa7",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T14:24:02Z",
+      "side": 1,
+      "message": "Do we really want to OrDie here?",
+      "range": {
+        "startLine": 167,
+        "startChar": 44,
+        "endLine": 167,
+        "endChar": 54
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f22568_830cf1ae",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T14:24:02Z",
+      "side": 1,
+      "message": "Not a huge fan of this name ....\n\nm_OffsetForEachStreamSegment?\nm_StreamSegmentOffsets?\nm_StreamSegmentStartOffsets?\n\nsomething?",
+      "range": {
+        "startLine": 61,
+        "startChar": 24,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f5499a_3c0f197c",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T14:24:02Z",
+      "side": 1,
+      "message": "Make a no-argument version and default m_ContentStream \u003d -1 below?",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1285bbd6_96b6000c",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T14:24:02Z",
+      "side": 1,
+      "message": "stream",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db032c6_c9fe3fb3",
+        "filename": "core/fpdfapi/page/cpdf_pathobject.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T14:24:02Z",
+      "side": 1,
+      "message": "What about making the -1 the default value for for CPDF_PageObject and then having a no-argument constructor. Would remove the need to do CPDF_PathObject(-1) everywhere.",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af5decf_ac5963b4",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T14:24:02Z",
+      "side": 1,
+      "message": "const?\n\nGetPositionOfCurrentStream?",
+      "range": {
+        "startLine": 1264,
+        "startChar": 34,
+        "endLine": 1264,
+        "endChar": 50
+      },
+      "revId": "98e14b5f47c2f018c111e1216133c58208f7ff96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
