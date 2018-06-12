@@ -44,7 +44,6 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   bool DeleteAnnot(CPDFSDK_Annot* pAnnot);
   CPDFSDK_Annot* AddAnnot(CXFA_FFWidget* pPDFAnnot);
   CPDFSDK_Annot* GetAnnotByXFAWidget(CXFA_FFWidget* hWidget);
-
   CPDFXFA_Page* GetPDFXFAPage() { return ToXFAPage(m_page); }
 #endif  // PDF_ENABLE_XFA
 
@@ -66,10 +65,12 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   bool OnFocus(const CFX_PointF& point, uint32_t nFlag);
   bool OnLButtonDown(const CFX_PointF& point, uint32_t nFlag);
   bool OnLButtonUp(const CFX_PointF& point, uint32_t nFlag);
+
 #ifdef PDF_ENABLE_XFA
   bool OnRButtonDown(const CFX_PointF& point, uint32_t nFlag);
   bool OnRButtonUp(const CFX_PointF& point, uint32_t nFlag);
 #endif  // PDF_ENABLE_XFA
+
   bool OnChar(int nChar, uint32_t nFlag);
   bool OnKeyDown(int nKeyCode, int nFlag);
   bool OnKeyUp(int nKeyCode, int nFlag);
@@ -88,15 +89,17 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
 
   void SetValid(bool bValid) { m_bValid = bValid; }
   bool IsValid() { return m_bValid; }
-
   bool IsLocked() { return m_bLocked; }
-
   void SetBeingDestroyed() { m_bBeingDestroyed = true; }
   bool IsBeingDestroyed() const { return m_bBeingDestroyed; }
+<<<<<<< HEAD
+  void TakePageOwnership() { m_pOwnsPage.Reset(ToPDFPage(m_page)); }
+=======
 
 #ifndef PDF_ENABLE_XFA
   void TakePageOwnership() { m_pOwnsPage.Reset(ToPDFPage(m_page)); }
 #endif  // PDF_ENABLE_XFA
+>>>>>>> 82c730bf83c7582d360fc4080c7729115b0a9550
 
  private:
   CPDFSDK_Annot* GetFXAnnotAtPoint(const CFX_PointF& point);
@@ -117,9 +120,7 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   std::vector<CPDFSDK_Annot*> m_SDKAnnotArray;
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
   CPDFSDK_Annot::ObservedPtr m_pCaptureWidget;
-#ifndef PDF_ENABLE_XFA
   RetainPtr<CPDF_Page> m_pOwnsPage;
-#endif  // PDF_ENABLE_XFA
   bool m_bOnWidget = false;
   bool m_bValid = false;
   bool m_bLocked = false;
