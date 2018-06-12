@@ -22,6 +22,30 @@
       "revId": "285b4de3bee6c3ad7fd986381a530a1c34c1a5db",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a9f00eb_80e74dfe",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-12T19:25:07Z",
+      "side": 1,
+      "message": "No idea what that does at the moment, but probably yes, someday ...",
+      "parentUuid": "ece306e1_5c03f16e",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 24
+      },
+      "revId": "285b4de3bee6c3ad7fd986381a530a1c34c1a5db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
