@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4fcb73cd_b5167e30",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "I\u0027d rather leave separate on the philosophy to do one thing per line. page_content_manager.AddStream() is one operation, UpdateStreamlessPageObjects() is another, and they separate consequences.",
+      "parentUuid": "925a66b2_7387c4bb",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da19f90a_22856de3",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
         "patchSetId": 16
@@ -86,6 +110,24 @@
       "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377b67f7_3f78dc4c",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da19f90a_22856de3",
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "22bf36e6_b731b889",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "It really shouldn\u0027t happen. I\u0027ll assert here instead.",
+      "parentUuid": "36cbd660_4b9635e3",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 16
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b971df07_fa73f05f",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.h",
         "patchSetId": 16
@@ -135,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "a03e99d2_7c25db7b",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Changed this a bit.",
+      "parentUuid": "b971df07_fa73f05f",
+      "range": {
+        "startLine": 58,
+        "startChar": 69,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80b63062_e04a1cb8",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 16
@@ -152,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "364a1644_67ccda6f",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80b63062_e04a1cb8",
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0be0ea29_958e6e3d",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 16
@@ -163,6 +271,30 @@
       "writtenOn": "2018-06-12T15:45:58Z",
       "side": 1,
       "message": "if (!contents_reference)\n  return;",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1e787e2_95b206ff",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "I think this reads better because of the structure:\n\n\"\"\"\nif (contents_array) {\n  do a thing;\n  return;\n}\n\nif (contents_reference) {\n  do another thing;\n}\n\"\"\"\n\nIt conveys better the message that \"either there is a contents array, or a contents reference, or nothing will be set\".\n\nAs opposed to:\n\n\"\"\"\nif (contents_array) {\n  do a thing;\n  return;\n}\n\nif (!contents_reference)\n  return;\n\ndo another thing;\n\"\"\"\n\nWhich does not tie together well the fact that \"another thing\" is only possible if contents_reference exists.\n\nI like early return for error cases, but this is not it. It\u0027s valid for a page to have no Contents.",
+      "parentUuid": "0be0ea29_958e6e3d",
       "range": {
         "startLine": 26,
         "startChar": 4,
@@ -198,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "08be1396_04d07804",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Done. This is an actual error case.",
+      "parentUuid": "e60d3692_69bac1bb",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44872980_75787563",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 16
@@ -221,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "1471028a_95b0584a",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44872980_75787563",
+      "range": {
+        "startLine": 38,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b62857ed_d0aa3e22",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 16
@@ -232,6 +412,30 @@
       "writtenOn": "2018-06-12T15:45:58Z",
       "side": 1,
       "message": "if (!content_array_) return nullptr;",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a386d124_10b854a2",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Same as comment above. This order makes more sense.",
+      "parentUuid": "b62857ed_d0aa3e22",
       "range": {
         "startLine": 44,
         "startChar": 6,
@@ -267,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "348356e6_a0503b40",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901cae4f_0c87bc03",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "137eb42c_470998c9",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 16
@@ -290,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "d6fe7c84_473a671d",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "I inlined this and forgot to remove it.",
+      "parentUuid": "137eb42c_470998c9",
+      "range": {
+        "startLine": 89,
+        "startChar": 34,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e2cc9e_966af61b",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.h",
         "patchSetId": 16
@@ -310,6 +562,30 @@
       "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "485dcfca_c7fe9313",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-12T20:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e2cc9e_966af61b",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
