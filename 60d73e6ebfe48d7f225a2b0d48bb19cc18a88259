@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb78e87a_24dc243d",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-12T17:12:09Z",
+      "side": 1,
+      "message": "NOTE: follow-up CL: this is always passed as CPDF_Parser::SUCCESS, both here and in the only other caller, so remove the argument entirely ...",
+      "range": {
+        "startLine": 159,
+        "startChar": 39,
+        "endLine": 159,
+        "endChar": 44
+      },
+      "revId": "60d73e6ebfe48d7f225a2b0d48bb19cc18a88259",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
