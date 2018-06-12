@@ -110,8 +110,8 @@ CPDFSDK_InterForm* FormHandleToInterForm(FPDF_FORMHANDLE hHandle) {
 }
 
 CPDFSDK_PageView* FormHandleToPageView(FPDF_FORMHANDLE hHandle,
-                                       FPDF_PAGE page) {
-  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
+                                       FPDF_PAGE fpdf_page) {
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(fpdf_page);
   if (!pPage)
     return nullptr;
 
@@ -137,21 +137,8 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
   if (!pPage)
     return;
 
-#ifdef PDF_ENABLE_XFA
-  CPDF_Document::Extension* pExtension =
-      pPage->AsXFAPage()->GetDocumentExtension();
-  if (!pExtension)
-    return;
-  CPDF_Document* pPDFDoc = pExtension->GetPDFDoc();
-  if (!pPDFDoc)
-    return;
-  CPDFSDK_FormFillEnvironment* pFormFillEnv =
-      HandleToCPDFSDKEnvironment(hHandle);
-  if (!pFormFillEnv)
-    return;
-#else   // PDF_ENABLE_XFA
   CPDF_Document* pPDFDoc = pPage->GetDocument();
-#endif  // PDF_ENABLE_XFA
+  CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, fpdf_page);
 
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
   CFX_Matrix matrix = pPage->GetDisplayMatrix(rect, rotate);
@@ -160,6 +147,7 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
 #ifdef _SKIA_SUPPORT_
   pDevice->AttachRecorder(static_cast<SkPictureRecorder*>(recorder));
 #endif
+
   RetainPtr<CFX_DIBitmap> holder(CFXDIBitmapFromFPDFBitmap(bitmap));
   pDevice->Attach(holder, false, nullptr, false);
   {
@@ -182,16 +170,10 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
     options.SetOCContext(
         pdfium::MakeRetain<CPDF_OCContext>(pPDFDoc, CPDF_OCContext::View));
 
-#ifdef PDF_ENABLE_XFA
-    CPDFSDK_PageView* pPageView = pFormFillEnv->GetPageView(pPage, true);
-#else   // PDF_ENABLE_XFA
-    CPDFSDK_PageView* pPageView =
-        FormHandleToPageView(hHandle, FPDFPageFromIPDFPage(pPage));
-#endif  // PDF_ENABLE_XFA
-
     if (pPageView)
       pPageView->PageView_OnDraw(pDevice.get(), &matrix, &options, rect);
   }
+
 #ifdef _SKIA_SUPPORT_PATHS_
   pDevice->Flush(true);
   holder->UnPreMultiply();
