@@ -312,6 +312,7 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetNextAnnot(CPDFSDK_Annot* pSDKAnnot,
   if (!pPage)
     return nullptr;
   if (pPage->AsPDFPage()) {  // for pdf annots.
+    ASSERT(pSDKAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::WIDGET);
     CPDFSDK_AnnotIterator ai(pSDKAnnot->GetPageView(),
                              pSDKAnnot->GetAnnotSubtype());
     CPDFSDK_Annot* pNext =
@@ -335,6 +336,7 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetNextAnnot(CPDFSDK_Annot* pSDKAnnot,
 
   return pPageView->GetAnnotByXFAWidget(hNextFocus);
 #else   // PDF_ENABLE_XFA
+  ASSERT(pSDKAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::WIDGET);
   CPDFSDK_AnnotIterator ai(pSDKAnnot->GetPageView(),
                            CPDF_Annot::Subtype::WIDGET);
   return bNext ? ai.GetNextAnnot(pSDKAnnot) : ai.GetPrevAnnot(pSDKAnnot);
