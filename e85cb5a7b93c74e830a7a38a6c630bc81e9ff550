@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c09cae97_3fd68b9c",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "Should we turn this into a const? CPDF_PageObject::kNewStreamIndex or something?",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "925a66b2_7387c4bb",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "Don\u0027t need the temporary, just do this inline below?",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da19f90a_22856de3",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "continue() and remove else?",
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36cbd660_4b9635e3",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "What does it mean if the stream is missing?",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 16
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b971df07_fa73f05f",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "those that?",
+      "range": {
+        "startLine": 58,
+        "startChar": 69,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b63062_e04a1cb8",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be0ea29_958e6e3d",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "if (!contents_reference)\n  return;",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60d3692_69bac1bb",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "if (!...)return",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44872980_75787563",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "\u003d default;",
+      "range": {
+        "startLine": 38,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62857ed_d0aa3e22",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "if (!content_array_) return nullptr;",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901cae4f_0c87bc03",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "137eb42c_470998c9",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "Do we need to change contents_stream_ or contents_array_ after this? Won\u0027t this mean that what is set in Contents doesn\u0027t\u0027 necessarily match the internal data now?",
+      "range": {
+        "startLine": 89,
+        "startChar": 34,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e2cc9e_966af61b",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-12T15:45:58Z",
+      "side": 1,
+      "message": "Why not size_t?",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "e85cb5a7b93c74e830a7a38a6c630bc81e9ff550",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
