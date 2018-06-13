@@ -22,6 +22,30 @@
       "revId": "39411719de7c4ec43f8047f99d61c18c78cc7567",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f52056b_43deab81",
+        "filename": "core/fxcodec/codec/fx_codec_icc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-13T18:26:07Z",
+      "side": 1,
+      "message": "I added the TODO because maybe it\u0027s possible that the 16 is not needed but it\u0027s convoluted: cmsDoTransform is in LCMS (third party code) and applies some member of m_hTransform to the input. So we\u0027d have to go over all places where the transform is set, check all functions it\u0027s set to, and make sure that they never assume that the input size is more than |nSrcComponents|... if |nSrcComponents| was part of the input then I\u0027d be happy to just assume that, but it\u0027s not so I rather err on the side of caution.",
+      "parentUuid": "690b98e6_085f9790",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 61
+      },
+      "revId": "39411719de7c4ec43f8047f99d61c18c78cc7567",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
