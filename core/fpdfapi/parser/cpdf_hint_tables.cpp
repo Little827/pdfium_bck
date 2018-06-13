@@ -53,16 +53,6 @@ CPDF_HintTables::CPDF_HintTables(CPDF_ReadValidator* pValidator,
 
 CPDF_HintTables::~CPDF_HintTables() {}
 
-uint32_t CPDF_HintTables::GetItemLength(
-    uint32_t index,
-    const std::vector<FX_FILESIZE>& szArray) const {
-  if (szArray.size() < 2 || index > szArray.size() - 2 ||
-      szArray[index] > szArray[index + 1]) {
-    return 0;
-  }
-  return szArray[index + 1] - szArray[index];
-}
-
 bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   if (!hStream || hStream->IsEOF())
     return false;
