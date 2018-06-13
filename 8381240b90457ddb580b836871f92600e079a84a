@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b8e398d_f4cedd3b",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-13T17:13:21Z",
+      "side": 1,
+      "message": "Add something like \"Arial-Whatever\"",
+      "revId": "8381240b90457ddb580b836871f92600e079a84a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca0e8636_623889f0",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-13T17:13:21Z",
+      "side": 1,
+      "message": "Can you reference the page?",
+      "range": {
+        "startLine": 1035,
+        "startChar": 42,
+        "endLine": 1035,
+        "endChar": 54
+      },
+      "revId": "8381240b90457ddb580b836871f92600e079a84a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82712fdb_f5cb7830",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-13T17:13:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t exit. Please fix in 1025 as well?",
+      "range": {
+        "startLine": 1042,
+        "startChar": 46,
+        "endLine": 1042,
+        "endChar": 61
+      },
+      "revId": "8381240b90457ddb580b836871f92600e079a84a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
