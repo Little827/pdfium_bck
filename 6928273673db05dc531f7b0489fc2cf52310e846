@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8baec12a_cb4ac3a8",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-13T19:05:18Z",
+      "side": 1,
+      "message": "Actually I change my mind. If not 0, |total_results| is the max of CountOutputsFromFunctions(funcs) and pCS-\u003eCountComponents() so this max should not be needed. I\u0027ve added asserts right before vector creation to make this clearer.",
+      "parentUuid": "d2f7f76b_4b598670",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 64
+      },
+      "revId": "6928273673db05dc531f7b0489fc2cf52310e846",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83f9d102_ddb15bcf",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-13T18:36:36Z",
       "side": 1,
       "message": "How do we know this is safe? Should we be verifying that offset is \u003c (max(total_results, 16)) ?",
+      "range": {
+        "startLine": 163,
+        "startChar": 10,
+        "endLine": 163,
+        "endChar": 28
+      },
+      "revId": "6928273673db05dc531f7b0489fc2cf52310e846",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51eac6e_1aa4ccb9",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-13T19:05:18Z",
+      "side": 1,
+      "message": "Because |offset| is the sum of number of outputs from functions so far, and |total_results| \u003e\u003d CountOutputsFromFunctions(funcs)",
+      "parentUuid": "83f9d102_ddb15bcf",
       "range": {
         "startLine": 163,
         "startChar": 10,
