@@ -70,6 +70,30 @@
       "revId": "39411719de7c4ec43f8047f99d61c18c78cc7567",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb409ae_6a2a7186",
+        "filename": "core/fxcodec/codec/fx_codec_icc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-13T18:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e99180a1_213c7509",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 61
+      },
+      "revId": "39411719de7c4ec43f8047f99d61c18c78cc7567",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
