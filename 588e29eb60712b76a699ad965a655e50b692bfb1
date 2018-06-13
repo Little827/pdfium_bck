@@ -194,6 +194,24 @@
       "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d16348d_1a5b47e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T21:00:40Z",
+      "side": 1,
+      "message": "Again. Existing api is implicit and confused me. Why should i specify anything except image data to create non assigned image object? Why should i think in what case i should specify the pages and in what case not?",
+      "parentUuid": "54f89170_ba4e4159",
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
