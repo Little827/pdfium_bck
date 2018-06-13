@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "690b98e6_085f9790",
+        "filename": "core/fxcodec/codec/fx_codec_icc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T18:20:16Z",
+      "side": 1,
+      "message": "If we check cmsDoTransform, we may not need the max check as we just set nSrcComponents items below",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 61
+      },
+      "revId": "39411719de7c4ec43f8047f99d61c18c78cc7567",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
