@@ -177,6 +177,23 @@
       "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f89170_ba4e4159",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T20:26:05Z",
+      "side": 1,
+      "message": "In which case, I\u0027d have to go back to make nullptr valid for the bitmap case, and then document that pages can be a nullptr to add to a new image object. I\u0027m not sure if we need new api to handle this as it can already be done with the existing api.",
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
