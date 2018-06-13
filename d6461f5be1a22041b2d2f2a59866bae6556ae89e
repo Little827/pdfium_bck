@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "639b876c_fcdd2909",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T17:56:23Z",
+      "side": 1,
+      "message": "There are 3 CLs at the moment with Unityf CPDF_HintTables as the title. Can you update the titles to better describe the CLs?",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "d6461f5be1a22041b2d2f2a59866bae6556ae89e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
