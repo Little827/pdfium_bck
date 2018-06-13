@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08251e32_7848cd4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T18:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066abb11_9cda1e18",
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c5d3276_0407b4d2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -126,6 +144,30 @@
       "side": 1,
       "message": "We should be able to tell if an image obj is already existing as it will have a object number yea? If that\u0027s the case, can we just clear the page cache that object is part of automatically?",
       "parentUuid": "23e4de0c_943fe25a",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec65abb_5b932afe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T18:37:23Z",
+      "side": 1,
+      "message": "No, we can not clear the page cache automatically, because we don\u0027t know about already loaded pages. Only caller know about its. \nSee:\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/fpdfsdk/fpdf_view.cpp?rcl\u003d81a3085b250deafd18a2183a311cc57e2ec1c6f0\u0026l\u003d352\nAs you can see, we do not store loaded pages (which contains the images cache) on pdfium side.",
+      "parentUuid": "407656d4_3d31d772",
       "range": {
         "startLine": 13,
         "startChar": 4,
