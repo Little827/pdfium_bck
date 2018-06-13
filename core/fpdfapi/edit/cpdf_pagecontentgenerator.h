@@ -40,6 +40,7 @@ class CPDF_PageContentGenerator {
   void ProcessGraphics(std::ostringstream* buf, CPDF_PageObject* pPageObj);
   void ProcessDefaultGraphics(std::ostringstream* buf);
   void ProcessText(std::ostringstream* buf, CPDF_TextObject* pTextObj);
+  ByteString GetOrCreateDefaultGraphics();
   ByteString RealizeResource(const CPDF_Object* pResource,
                              const ByteString& bsType);
 
