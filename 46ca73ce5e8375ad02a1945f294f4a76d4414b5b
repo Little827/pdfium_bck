@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b930ad5_95c60484",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T10:48:00Z",
+      "side": 1,
+      "message": "\u003e Is this change necessary to fix the bug?\n\nYes, this is main fix.\n\n\u003e think this is the source of the rendering differences that caused you to fix the PDFs in the testing corpus.\n\nYes. Anyway if we have not font we should use system font, not stock Helvetica. Because the Helvetica have not support for non latin symbols. \nFor example:\nIf we change text in problem pdfs from corpus tests to non latin symbols (russian for example), the acroreader will draw its correctly, but pdfium without this CL, will not.\n\nAs i say before:\nWith this CL pdfium is working same as AcroReader for windows. But on linux we can not check what font choised by acroreader, because it is missing on linux OS, and can not compare.\n\n\u003e What does CPDF_StreamContentParser::FindFont(), uses for handling the \"Tf\" operator, have to do with CPDF_Interform?\n\nIt is load annotaions.\n\n\u003e Calling CPDF_Interform::GetDefaultFontForDoc() will have the side effect of adding an Acroform dictionary to |m_pDocument| if it does not have one. Feels like a slightly weird thing to do.\n\nThis will be just once. But current implementation required font dictionary within document to using font.",
+      "parentUuid": "b5960cff_c70f33a0",
+      "revId": "46ca73ce5e8375ad02a1945f294f4a76d4414b5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82a7d87d_82268491",
         "filename": "core/fpdfdoc/cpdf_interform.cpp",
         "patchSetId": 25
@@ -39,6 +57,30 @@
       "revId": "46ca73ce5e8375ad02a1945f294f4a76d4414b5b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd44eec6_7b4db900",
+        "filename": "core/fpdfdoc/cpdf_interform.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T10:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82a7d87d_82268491",
+      "range": {
+        "startLine": 568,
+        "startChar": 26,
+        "endLine": 568,
+        "endChar": 45
+      },
+      "revId": "46ca73ce5e8375ad02a1945f294f4a76d4414b5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
