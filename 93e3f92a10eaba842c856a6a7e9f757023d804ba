@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33de4811_aa8bffa0",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T20:14:08Z",
+      "side": 1,
+      "message": "This seems like it could get expensive, we loop over all_dirty_streams in GenerateModifiedStreams() and then we loop over |m_pageObjects| here inside that loop. Is there a way we can do this without the double looping? Like, set all_dirty_streams to the pPageObj on 86 instead of the GetContentStream()?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 53
+      },
+      "revId": "93e3f92a10eaba842c856a6a7e9f757023d804ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71098ee8_42a3fde5",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T20:14:08Z",
+      "side": 1,
+      "message": "Can we share this with ProcesssPageObjects below instead of duplicating somehow?",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "93e3f92a10eaba842c856a6a7e9f757023d804ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
