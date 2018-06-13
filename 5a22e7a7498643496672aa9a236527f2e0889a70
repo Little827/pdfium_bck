@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "b1164739_aea47d37",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T20:06:19Z",
+      "side": 1,
+      "message": "On line 184 we setup the m_dwNSharedObjsArray, we won\u0027t do that now as we\u0027ve returned false here. That didn\u0027t happen before, we would have initialized all of the things previously (and returned true)",
+      "parentUuid": "2165cf65_f1915a8b",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "5a22e7a7498643496672aa9a236527f2e0889a70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a94708a9_fdd7d456",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 7
