@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "95991124_6f2ad121",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T18:12:04Z",
+      "side": 1,
+      "message": "Previously we would have set m_szPageOffsetArray to have values from the else condition. With the new logic, won\u0027t m_szPageOffsetArray be emtpy in this case? We also won\u0027t setup the m_dwNSharedObjsArray or anything else below this point?",
+      "parentUuid": "2fbeb5f6_c517f697",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "5a22e7a7498643496672aa9a236527f2e0889a70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a94708a9_fdd7d456",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 7
