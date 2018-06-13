@@ -22,6 +22,30 @@
       "revId": "6ebbb909e2c3ec2fa2d74733271e3522668e7544",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2214316d_2d96cf1b",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-13T18:27:17Z",
+      "side": 1,
+      "message": "It\u0027s not for the method call , it\u0027s because I don\u0027t know the number of inputs expected in m_pAltCS-\u003eGetRGB().",
+      "parentUuid": "8c9f453f_dcac446e",
+      "range": {
+        "startLine": 1233,
+        "startChar": 63,
+        "endLine": 1233,
+        "endChar": 66
+      },
+      "revId": "6ebbb909e2c3ec2fa2d74733271e3522668e7544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
