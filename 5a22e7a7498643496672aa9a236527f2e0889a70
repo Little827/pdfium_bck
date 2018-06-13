@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "2165cf65_f1915a8b",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T18:24:36Z",
+      "side": 1,
+      "message": "The logic is.\nThe page with nFirstPageNum is always first in file, all other pages are going one by one after (exlude nFirstPageNum)\ni.e example:\n\nSet nFirstPageNum \u003d 2\n\nThe page #2 (nFirstPageNum) - starts at 200 ends at 400\n/*other pages*/\nThe page #1 - starts at 400 (start from prev page end) ends at 600\n/* the page #2 skipped because it have nFirstPageNum, and placed at start)\nThe page #3 - starts at 600 (start from prev page end) ends at 800\nThe page #4 - starts at 800 (start from prev page end) ends at 1000\netc...\n\nThe new for loop do same as old for loop. \nIn \"else\" of \"Old for loop\" was needed only for just skip nFirstPageNum.\nI have implement same, but more cleared.\n\n\u003e We also won\u0027t setup the m_dwNSharedObjsArray or anything else below this point?\n\nWhat do you mean? the m_dwNSharedObjsArray is not related to this code (old and new).",
+      "parentUuid": "95991124_6f2ad121",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "5a22e7a7498643496672aa9a236527f2e0889a70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a94708a9_fdd7d456",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 7
