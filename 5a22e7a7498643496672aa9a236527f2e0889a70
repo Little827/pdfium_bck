@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "74465f0a_206a8988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T18:09:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f26bba_ba77f231",
+      "revId": "5a22e7a7498643496672aa9a236527f2e0889a70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de183a29_37f3b951",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2018-06-13T18:03:59Z",
       "side": 1,
       "message": "Why is it safe to skip all the code from 173 down when we ran it before?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "5a22e7a7498643496672aa9a236527f2e0889a70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fbeb5f6_c517f697",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T18:09:20Z",
+      "side": 1,
+      "message": "This is other implementation of same logic. The result of old and new will be same.",
+      "parentUuid": "de183a29_37f3b951",
       "range": {
         "startLine": 160,
         "startChar": 0,
@@ -62,6 +104,30 @@
       "revId": "5a22e7a7498643496672aa9a236527f2e0889a70",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71033137_c668f7aa",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-13T18:09:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a94708a9_fdd7d456",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 31
+      },
+      "revId": "5a22e7a7498643496672aa9a236527f2e0889a70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
