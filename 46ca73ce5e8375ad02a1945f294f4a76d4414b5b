@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5960cff_c70f33a0",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-13T05:55:53Z",
+      "side": 1,
+      "message": "Is this change necessary to fix the bug? I think this is the source of the rendering differences that caused you to fix the PDFs in the testing corpus. What does CPDF_StreamContentParser::FindFont(), uses for handling the \"Tf\" operator, have to do with CPDF_Interform? Calling CPDF_Interform::GetDefaultFontForDoc() will have the side effect of adding an Acroform dictionary to |m_pDocument| if it does not have one. Feels like a slightly weird thing to do.",
+      "revId": "46ca73ce5e8375ad02a1945f294f4a76d4414b5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a7d87d_82268491",
+        "filename": "core/fpdfdoc/cpdf_interform.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-13T05:55:53Z",
+      "side": 1,
+      "message": "Still got a typo. Missing an \u0027o\u0027 in \"additional\".",
+      "range": {
+        "startLine": 568,
+        "startChar": 26,
+        "endLine": 568,
+        "endChar": 45
+      },
+      "revId": "46ca73ce5e8375ad02a1945f294f4a76d4414b5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
