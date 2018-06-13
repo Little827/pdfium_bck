@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312e73ea_055160d6",
+        "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-13T17:55:35Z",
+      "side": 1,
+      "message": "Pulled these from the next cl. They will be necessary, and this better demonstrates what will be done with the new field.",
+      "revId": "ad4add65056a7f6cb9114983771dd4570081e470",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
