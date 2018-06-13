@@ -58,7 +58,6 @@ class CFX_SystemHandler {
   void OutputSelectedRect(CFFL_FormFiller* pFormFiller, CFX_FloatRect& rect);
   bool IsSelectionImplemented() const;
   void SetCursor(int32_t nCursorType);
-  bool FindNativeTrueTypeFont(ByteString sFontFaceName);
   CPDF_Font* AddNativeTrueTypeFontToPDF(CPDF_Document* pDoc,
                                         ByteString sFontFaceName,
                                         uint8_t nCharset);
