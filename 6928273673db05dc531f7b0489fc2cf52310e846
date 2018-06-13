@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2f7f76b_4b598670",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T18:36:36Z",
+      "side": 1,
+      "message": "Comment on why we need to keep the 16 (I\u0027m assuming the pCS-\u003eGetRGB call below?)",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 64
+      },
+      "revId": "6928273673db05dc531f7b0489fc2cf52310e846",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f9d102_ddb15bcf",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T18:36:36Z",
+      "side": 1,
+      "message": "How do we know this is safe? Should we be verifying that offset is \u003c (max(total_results, 16)) ?",
+      "range": {
+        "startLine": 163,
+        "startChar": 10,
+        "endLine": 163,
+        "endChar": 28
+      },
+      "revId": "6928273673db05dc531f7b0489fc2cf52310e846",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
