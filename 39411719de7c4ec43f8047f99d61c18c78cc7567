@@ -46,6 +46,30 @@
       "revId": "39411719de7c4ec43f8047f99d61c18c78cc7567",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e99180a1_213c7509",
+        "filename": "core/fxcodec/codec/fx_codec_icc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-13T18:29:38Z",
+      "side": 1,
+      "message": "Ah, can you write that as a comment then so we don\u0027t make that mistake, maybe right below the TODO add something like:\n\nCurrently the CmsDoTransform method is part of LCMS and it will apply some member of m_hTransform to the input. We need to go over all the places which set transform to verify that only nSrcComponents are used.\n\nOr, something like that?",
+      "parentUuid": "2f52056b_43deab81",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 61
+      },
+      "revId": "39411719de7c4ec43f8047f99d61c18c78cc7567",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
