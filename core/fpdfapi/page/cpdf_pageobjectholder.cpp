@@ -7,6 +7,7 @@
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
 
 #include <algorithm>
+#include <cmath>
 #include <utility>
 
 #include "constants/transparency.h"
@@ -15,6 +16,28 @@
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+
+bool GraphicsData::operator<(const GraphicsData& other) const {
+  if (!(std::isnan(fillAlpha) && std::isnan(other.fillAlpha))) {
+    if (std::isnan(fillAlpha) || std::isnan(other.fillAlpha))
+      return std::isnan(fillAlpha) < std::isnan(other.fillAlpha);
+    if (fillAlpha != other.fillAlpha)
+      return fillAlpha < other.fillAlpha;
+  }
+  if (!(std::isnan(strokeAlpha) && std::isnan(other.strokeAlpha))) {
+    if (std::isnan(strokeAlpha) || std::isnan(other.strokeAlpha))
+      return std::isnan(strokeAlpha) < std::isnan(other.strokeAlpha);
+    if (strokeAlpha != other.strokeAlpha)
+      return strokeAlpha < other.strokeAlpha;
+  }
+  return blendType < other.blendType;
+}
+
+bool FontData::operator<(const FontData& other) const {
+  if (baseFont != other.baseFont)
+    return baseFont < other.baseFont;
+  return type < other.type;
+}
 
 CPDF_PageObjectHolder::CPDF_PageObjectHolder(CPDF_Document* pDoc,
                                              CPDF_Dictionary* pDict)
