@@ -16,6 +16,20 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 
+bool GraphicsData::operator<(const GraphicsData& other) const {
+  if (fillAlpha != other.fillAlpha)
+    return fillAlpha < other.fillAlpha;
+  if (strokeAlpha != other.strokeAlpha)
+    return strokeAlpha < other.strokeAlpha;
+  return blendType < other.blendType;
+}
+
+bool FontData::operator<(const FontData& other) const {
+  if (baseFont != other.baseFont)
+    return baseFont < other.baseFont;
+  return type < other.type;
+}
+
 CPDF_PageObjectHolder::CPDF_PageObjectHolder(CPDF_Document* pDoc,
                                              CPDF_Dictionary* pDict)
     : m_pDict(pDict), m_pDocument(pDoc) {
