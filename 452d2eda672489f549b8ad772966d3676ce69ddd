@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afd27484_364beab3",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-14T20:51:49Z",
+      "side": 1,
+      "message": "d\u0027we wanna flag an error here?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "452d2eda672489f549b8ad772966d3676ce69ddd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
