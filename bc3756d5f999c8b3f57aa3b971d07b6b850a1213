@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a0ff4201_b4f93bb2",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-14T15:35:25Z",
+      "side": 1,
+      "message": "Rename to stream_is_not_empty as I think it\u0027s a bit clearer?",
+      "parentUuid": "030c2db2_7989130c",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e0f8bf8_19d6ef52",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
         "patchSetId": 26
@@ -81,6 +105,24 @@
       "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1fbf067_a87ed277",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-14T15:35:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15914f77_8feeb0af",
+      "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
