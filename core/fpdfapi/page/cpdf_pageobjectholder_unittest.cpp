@@ -25,17 +25,17 @@ TEST(CPDFPageObjectHolder, GraphicsDataAsKey) {
 
   std::map<GraphicsData, int> graphics_map;
 
-  // Insert in reverse index permuted order.
-  size_t x = 0;
-  for (int c3 : {2, 1}) {
-    for (float c2 : {fNan, fInf, fMax, 2.0f, 1.0f, fMin}) {
-      for (float c1 : {fNan, fInf, fMax, 2.0f, 1.0f, fMin}) {
-        graphics_map[{c1, c2, c3}] = x++;
+  for (int i = 0; i < 100; ++i) {
+    // Insert in reverse index permuted order.
+    size_t x = 0;
+    for (int c3 : {2, 1}) {
+      for (float c2 : {fNan, fInf, fMax, 2.0f, 1.0f, fMin}) {
+        for (float c1 : {fNan, fInf, fMax, 2.0f, 1.0f, fMin}) {
+          graphics_map[{c1, c2, c3}] = x++;
+        }
       }
     }
   }
-  EXPECT_EQ(72u, x);
-  EXPECT_EQ(72u, graphics_map.size());
 
   // clang-format off
   const int expected[72] = {
@@ -48,7 +48,7 @@ TEST(CPDFPageObjectHolder, GraphicsDataAsKey) {
   };
   // clang-format on
 
-  x = 0;
+  size_t x = 0;
   for (const auto& item : graphics_map) {
     EXPECT_EQ(expected[x], item.second) << " for position " << x;
     ++x;
