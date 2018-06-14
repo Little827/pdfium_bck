@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "030c2db2_7989130c",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-14T15:33:25Z",
+      "side": 1,
+      "message": "It\u0027s stream_is_not_empty, or stream_has_any_object. The objects being dirty or not is only used to determine if the stream is dirty or not. That was already determined in lines 83-91.",
+      "parentUuid": "2a3d2667_2d50605f",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e0f8bf8_19d6ef52",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
         "patchSetId": 26
@@ -36,6 +60,24 @@
       "writtenOn": "2018-06-14T13:38:56Z",
       "side": 1,
       "message": "What happens if we get here and all the dirty streams were deleted? We\u0027ll end up with a bunch of hanging q\u0027s won\u0027t we?",
+      "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15914f77_8feeb0af",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-14T15:33:25Z",
+      "side": 1,
+      "message": "buf-\u003estr(\"\") will clear those q\u0027s, we will end up with empty bufs. Next CL will deal with that (replacing comment at 164-166), for now we\u0027re just writing empty streams.",
+      "parentUuid": "2e0f8bf8_19d6ef52",
       "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
