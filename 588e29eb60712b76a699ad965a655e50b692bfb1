@@ -212,6 +212,24 @@
       "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd56a80_843ca8b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-14T13:40:28Z",
+      "side": 1,
+      "message": "Updating the documentation for the existing API should help clarify things I think. Having the API get too large will make it confusing, if we can figure out how the existing API fits our needs I think that\u0027s a better solution then adding more and more public surface.",
+      "parentUuid": "6d16348d_1a5b47e1",
+      "revId": "588e29eb60712b76a699ad965a655e50b692bfb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
