@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1ecaa6ac_78cae867",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-14T16:10:42Z",
+      "side": 1,
+      "message": "Switched to stream_is_empty and negated everything to avoid double negatives.",
+      "parentUuid": "a0ff4201_b4f93bb2",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e0f8bf8_19d6ef52",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
         "patchSetId": 26
