@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3d2667_2d50605f",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-14T13:38:56Z",
+      "side": 1,
+      "message": "Is this stream_has_any_dirty_objects? Or stream_is_empty?",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0f8bf8_19d6ef52",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-14T13:38:56Z",
+      "side": 1,
+      "message": "What happens if we get here and all the dirty streams were deleted? We\u0027ll end up with a bunch of hanging q\u0027s won\u0027t we?",
+      "revId": "bc3756d5f999c8b3f57aa3b971d07b6b850a1213",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
