@@ -7,6 +7,7 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 
 #include <memory>
+#include <utility>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
@@ -860,14 +861,12 @@ bool CPDFXFA_DocEnvironment::MailToInfo(WideString& csURL,
     tmp = tmp.Right(tmp.GetLength() - 7);
   }
   tmp.Trim();
-
-  csToAddress = tmp;
+  csToAddress = std::move(tmp);
 
   srcURL = srcURL.Right(srcURL.GetLength() - (pos.value() + 1));
   while (!srcURL.IsEmpty()) {
     srcURL.Trim();
     pos = srcURL.Find(L'&');
-
     tmp = (!pos.has_value()) ? srcURL : srcURL.Left(pos.value());
     tmp.Trim();
     if (tmp.GetLength() >= 3 && tmp.Left(3).CompareNoCase(L"cc=") == 0) {
