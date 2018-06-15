@@ -85,3 +85,28 @@ size_t CPDF_PageContentManager::AddStream(std::ostringstream* buf) {
   contents_stream_ = new_stream;
   return 0;
 }
+
+void CPDF_PageContentManager::ScheduleRemoveStreamByIndex(size_t stream_index) {
+  streams_to_remove_.insert(stream_index);
+}
+
+void CPDF_PageContentManager::ExecuteScheduledRemovals() {
+  if (contents_stream_) {
+    // Only stream that can be removed is 0.
+    if (streams_to_remove_.find(0) != streams_to_remove_.end()) {
+      doc_->DeleteIndirectObject(contents_stream_->GetObjNum());
+      contents_stream_ = nullptr;
+    }
+  } else if (contents_array_) {
+    // TODO: In reverse order, remove the elements
+    for (size_t stream_index : streams_to_remove_) {
+      CPDF_Dictionary* page_dict = obj_holder_->GetDict();
+      CPDF_Object* contents_obj = page_dict->GetObjectFor("Contents");
+    }
+
+    // Even if there is a single content stream now, keep the array with a
+    // single element. It's valid, a second stream might be added soon, and the
+    // complexity of removing it is not worth it.
+  }
+  streams_to_remove_.clear();
+}
