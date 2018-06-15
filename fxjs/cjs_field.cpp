@@ -228,9 +228,8 @@ bool CJS_Field::AttachField(CJS_Document* pDocument,
     return true;
   }
 
-  m_FieldName = swFieldNameTemp;
+  m_FieldName = std::move(swFieldNameTemp);
   m_nFormControlIndex = -1;
-
   return true;
 }
 
@@ -447,11 +446,11 @@ CJS_Return CJS_Field::set_border_style(CJS_Runtime* pRuntime,
 
   ByteString byte_str = ByteString::FromUnicode(pRuntime->ToWideString(vp));
   if (m_bDelay) {
-    AddDelay_String(FP_BORDERSTYLE, byte_str);
-  } else {
-    CJS_Field::SetBorderStyle(m_pFormFillEnv.Get(), m_FieldName,
-                              m_nFormControlIndex, byte_str);
+    AddDelay_String(FP_BORDERSTYLE, std::move(byte_str));
+    return CJS_Return();
   }
+  CJS_Field::SetBorderStyle(m_pFormFillEnv.Get(), m_FieldName,
+                            m_nFormControlIndex, byte_str);
   return CJS_Return();
 }
 
@@ -832,11 +831,11 @@ CJS_Return CJS_Field::set_current_value_indices(CJS_Runtime* pRuntime,
   }
 
   if (m_bDelay) {
-    AddDelay_WordArray(FP_CURRENTVALUEINDICES, array);
-  } else {
-    CJS_Field::SetCurrentValueIndices(m_pFormFillEnv.Get(), m_FieldName,
-                                      m_nFormControlIndex, array);
+    AddDelay_WordArray(FP_CURRENTVALUEINDICES, std::move(array));
+    return CJS_Return();
   }
+  CJS_Field::SetCurrentValueIndices(m_pFormFillEnv.Get(), m_FieldName,
+                                    m_nFormControlIndex, std::move(array));
   return CJS_Return();
 }
 
@@ -2161,11 +2160,12 @@ CJS_Return CJS_Field::set_value(CJS_Runtime* pRuntime,
   }
 
   if (m_bDelay) {
-    AddDelay_WideStringArray(FP_VALUE, strArray);
-  } else {
-    CJS_Field::SetValue(m_pFormFillEnv.Get(), m_FieldName, m_nFormControlIndex,
-                        strArray);
+    AddDelay_WideStringArray(FP_VALUE, std::move(strArray));
+    return CJS_Return();
   }
+
+  CJS_Field::SetValue(m_pFormFillEnv.Get(), m_FieldName, m_nFormControlIndex,
+                      strArray);
   return CJS_Return();
 }
 
@@ -2678,10 +2678,10 @@ void CJS_Field::AddDelay_Bool(FIELD_PROP prop, bool b) {
   m_pJSDoc->AddDelayData(std::move(pNewData));
 }
 
-void CJS_Field::AddDelay_String(FIELD_PROP prop, const ByteString& string) {
+void CJS_Field::AddDelay_String(FIELD_PROP prop, ByteString string) {
   auto pNewData =
       pdfium::MakeUnique<CJS_DelayData>(prop, m_nFormControlIndex, m_FieldName);
-  pNewData->string = string;
+  pNewData->string = std::move(string);
   m_pJSDoc->AddDelayData(std::move(pNewData));
 }
 
@@ -2693,18 +2693,18 @@ void CJS_Field::AddDelay_Rect(FIELD_PROP prop, const CFX_FloatRect& rect) {
 }
 
 void CJS_Field::AddDelay_WordArray(FIELD_PROP prop,
-                                   const std::vector<uint32_t>& array) {
+                                   std::vector<uint32_t> array) {
   auto pNewData =
       pdfium::MakeUnique<CJS_DelayData>(prop, m_nFormControlIndex, m_FieldName);
-  pNewData->wordarray = array;
+  pNewData->wordarray = std::move(array);
   m_pJSDoc->AddDelayData(std::move(pNewData));
 }
 
 void CJS_Field::AddDelay_WideStringArray(FIELD_PROP prop,
-                                         const std::vector<WideString>& array) {
+                                         std::vector<WideString> array) {
   auto pNewData =
       pdfium::MakeUnique<CJS_DelayData>(prop, m_nFormControlIndex, m_FieldName);
-  pNewData->widestringarray = array;
+  pNewData->widestringarray = std::move(array);
   m_pJSDoc->AddDelayData(std::move(pNewData));
 }
 

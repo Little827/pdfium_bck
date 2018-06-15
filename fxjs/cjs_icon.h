@@ -18,7 +18,7 @@ class CJS_Icon : public CJS_Object {
   ~CJS_Icon() override;
 
   WideString GetIconName() const { return m_swIconName; }
-  void SetIconName(WideString name) { m_swIconName = name; }
+  void SetIconName(WideString name) { m_swIconName = std::move(name); }
 
   JS_STATIC_PROP(name, name, CJS_Icon);
 

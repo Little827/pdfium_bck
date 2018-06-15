@@ -8,6 +8,7 @@
 #define CORE_FXCRT_XML_CFX_XMLTEXT_H_
 
 #include <memory>
+#include <utility>
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/xml/cfx_xmlnode.h"
@@ -25,7 +26,7 @@ class CFX_XMLText : public CFX_XMLNode {
   void Save(const RetainPtr<IFX_SeekableWriteStream>& pXMLStream) override;
 
   WideString GetText() const { return m_wsText; }
-  void SetText(const WideString& wsText) { m_wsText = wsText; }
+  void SetText(WideString wsText) { m_wsText = std::move(wsText); }
 
  private:
   WideString m_wsText;

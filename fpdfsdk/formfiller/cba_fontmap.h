@@ -20,7 +20,7 @@ class CBA_FontMap : public CPWL_FontMap {
 
   void Reset();
   void SetDefaultFont(CPDF_Font* pFont, const ByteString& sFontName);
-  void SetAPType(const ByteString& sAPType);
+  void SetAPType(ByteString sAPType);
 
  private:
   // CPWL_FontMap:

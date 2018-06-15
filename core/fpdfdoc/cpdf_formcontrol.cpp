@@ -153,7 +153,7 @@ void CPDF_FormControl::CheckControl(bool bChecked) {
   ByteString csOldAS = m_pWidgetDict->GetStringFor("AS", "Off");
   ByteString csAS = "Off";
   if (bChecked)
-    csAS = csOn;
+    csAS = std::move(csOn);
   if (csOldAS == csAS)
     return;
   m_pWidgetDict->SetNewFor<CPDF_Name>("AS", csAS);

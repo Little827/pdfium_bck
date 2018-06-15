@@ -244,8 +244,8 @@ CPDF_Font* CBA_FontMap::GetAnnotDefaultFont(ByteString* sAlias) {
   return pFontDict ? m_pDocument->LoadFont(pFontDict) : nullptr;
 }
 
-void CBA_FontMap::SetAPType(const ByteString& sAPType) {
-  m_sAPType = sAPType;
+void CBA_FontMap::SetAPType(ByteString sAPType) {
+  m_sAPType = std::move(sAPType);
 
   Reset();
   Initialize();

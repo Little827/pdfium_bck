@@ -36,7 +36,7 @@ CPDF_StructElement::CPDF_StructElement(CPDF_StructTree* pTree,
   if (pTree->GetRoleMap()) {
     ByteString mapped = pTree->GetRoleMap()->GetStringFor(m_Type);
     if (!mapped.IsEmpty())
-      m_Type = mapped;
+      m_Type = std::move(mapped);
   }
   LoadKids(pDict);
 }

@@ -95,7 +95,7 @@ class CXFA_TextParser {
 
     WideString GetTagName() { return m_wsTagName; }
 
-    void SetTagName(const WideString& wsName) { m_wsTagName = wsName; }
+    void SetTagName(WideString wsName) { m_wsTagName = std::move(wsName); }
     void SetAttribute(const WideString& wsAttr, const WideString& wsValue) {
       m_Attributes.insert({wsAttr, wsValue});
     }

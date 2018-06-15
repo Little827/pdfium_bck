@@ -84,10 +84,9 @@ CJS_Return CJX_LayoutPseudoModel::HWXY(
   if (params.size() >= 2) {
     WideString tmp_unit = runtime->ToWideString(params[1]);
     if (!tmp_unit.IsEmpty())
-      unit = tmp_unit;
+      unit = std::move(tmp_unit);
   }
   int32_t iIndex = params.size() >= 3 ? runtime->ToInt32(params[2]) : 0;
-
   CXFA_LayoutProcessor* pDocLayout = GetDocument()->GetLayoutProcessor();
   if (!pDocLayout)
     return CJS_Return();

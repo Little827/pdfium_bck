@@ -32,7 +32,7 @@ class CFX_XMLElement : public CFX_XMLNode {
     return attrs_;
   }
   bool HasAttribute(const WideString& name) const;
-  void SetAttribute(const WideString& name, const WideString& value);
+  void SetAttribute(const WideString& name, WideString value);
   WideString GetAttribute(const WideString& name) const;
 
   void RemoveAttribute(const WideString& name);

@@ -67,7 +67,7 @@ class CJS_EventHandler {
   void OnApp_Init();
 
   void OnDoc_Open(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                  const WideString& strTargetName);
+                  WideString strTargetName);
   void OnDoc_WillPrint(CPDFSDK_FormFillEnvironment* pFormFillEnv);
   void OnDoc_DidPrint(CPDFSDK_FormFillEnvironment* pFormFillEnv);
   void OnDoc_WillSave(CPDFSDK_FormFillEnvironment* pFormFillEnv);
@@ -87,7 +87,7 @@ class CJS_EventHandler {
                       WideString& Value,
                       bool bWillCommit);
   void OnField_Keystroke(WideString& strChange,
-                         const WideString& strChangeEx,
+                         WideString strChangeEx,
                          bool KeyDown,
                          bool bModifier,
                          int& nSelEnd,
@@ -99,7 +99,7 @@ class CJS_EventHandler {
                          bool bFieldFull,
                          bool& bRc);
   void OnField_Validate(WideString& strChange,
-                        const WideString& strChangeEx,
+                        WideString strChangeEx,
                         bool bKeyDown,
                         bool bModifier,
                         bool bShift,
@@ -135,7 +135,7 @@ class CJS_EventHandler {
   void OnLink_MouseUp(CPDFSDK_FormFillEnvironment* pFormFillEnv);
 
   void OnMenu_Exec(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                   const WideString& strTargetName);
+                   WideString strTargetName);
   void OnBatchExec(CPDFSDK_FormFillEnvironment* pFormFillEnv);
   void OnConsole_Exec();
   void OnExternal_Exec();
@@ -159,7 +159,7 @@ class CJS_EventHandler {
   bool Shift() const;
   CJS_Field* Source();
   CJS_Field* Target_Field();
-  WideString& Value();
+  WideString Value() const;
   bool WillCommit() const;
   const WideString& TargetName() const;
 

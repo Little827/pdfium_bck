@@ -24,10 +24,10 @@ void CJS_EventHandler::OnApp_Init() {
 }
 
 void CJS_EventHandler::OnDoc_Open(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                                  const WideString& strTargetName) {
+                                  WideString strTargetName) {
   Initialize(JET_DOC_OPEN);
   m_pTargetFormFillEnv.Reset(pFormFillEnv);
-  m_strTargetName = strTargetName;
+  m_strTargetName = std::move(strTargetName);
 }
 
 void CJS_EventHandler::OnDoc_WillPrint(
@@ -149,7 +149,7 @@ void CJS_EventHandler::OnField_Blur(bool bModifier,
 }
 
 void CJS_EventHandler::OnField_Keystroke(WideString& strChange,
-                                         const WideString& strChangeEx,
+                                         WideString strChangeEx,
                                          bool KeyDown,
                                          bool bModifier,
                                          int& nSelEnd,
@@ -164,7 +164,7 @@ void CJS_EventHandler::OnField_Keystroke(WideString& strChange,
 
   m_nCommitKey = 0;
   m_pWideStrChange = &strChange;
-  m_WideStrChangeEx = strChangeEx;
+  m_WideStrChangeEx = std::move(strChangeEx);
   m_bKeyDown = KeyDown;
   m_bModifier = bModifier;
   m_pISelEnd = &nSelEnd;
@@ -178,7 +178,7 @@ void CJS_EventHandler::OnField_Keystroke(WideString& strChange,
 }
 
 void CJS_EventHandler::OnField_Validate(WideString& strChange,
-                                        const WideString& strChangeEx,
+                                        WideString strChangeEx,
                                         bool bKeyDown,
                                         bool bModifier,
                                         bool bShift,
@@ -188,7 +188,7 @@ void CJS_EventHandler::OnField_Validate(WideString& strChange,
   Initialize(JET_FIELD_VALIDATE);
 
   m_pWideStrChange = &strChange;
-  m_WideStrChangeEx = strChangeEx;
+  m_WideStrChangeEx = std::move(strChangeEx);
   m_bKeyDown = bKeyDown;
   m_bModifier = bModifier;
   m_bShift = bShift;
@@ -332,10 +332,10 @@ void CJS_EventHandler::OnBookmark_MouseUp(CPDF_Bookmark* pBookMark) {
 
 void CJS_EventHandler::OnMenu_Exec(
     CPDFSDK_FormFillEnvironment* pTargetFormFillEnv,
-    const WideString& strTargetName) {
+    WideString strTargetName) {
   Initialize(JET_MENU_EXEC);
   m_pTargetFormFillEnv.Reset(pTargetFormFillEnv);
-  m_strTargetName = strTargetName;
+  m_strTargetName = std::move(strTargetName);
 }
 
 void CJS_EventHandler::OnExternal_Exec() {
@@ -620,7 +620,7 @@ CJS_Field* CJS_EventHandler::Target_Field() {
   return pJSField;
 }
 
-WideString& CJS_EventHandler::Value() {
+WideString CJS_EventHandler::Value() const {
   return *m_pValue;
 }
 

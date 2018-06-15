@@ -31,7 +31,7 @@ class CPDF_ContentMarkItem {
   const CPDF_Dictionary* GetParam() const;
   bool HasMCID() const;
 
-  void SetName(const ByteString& name) { m_MarkName = name; }
+  void SetName(ByteString name) { m_MarkName = std::move(name); }
   void SetDirectDict(std::unique_ptr<CPDF_Dictionary> pDict);
   void SetPropertiesDict(const CPDF_Dictionary* pDict);
 

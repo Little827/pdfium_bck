@@ -618,7 +618,7 @@ bool CXFA_LocaleValue::ParsePatternValue(const WideString& wsValue,
         WideString fNum;
         bRet = pFormat->ParseNum(wsValue, wsFormat, &fNum);
         if (bRet)
-          m_wsValue = fNum;
+          m_wsValue = std::move(fNum);
         break;
       }
       case FX_LOCALECATEGORY_Text:

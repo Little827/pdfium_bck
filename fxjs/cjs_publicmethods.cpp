@@ -879,7 +879,7 @@ CJS_Return CJS_PublicMethods::AFNumber_Format(
   if (!pEvent->m_pValue)
     return CJS_Return(L"No event handler");
 
-  WideString& Value = pEvent->Value();
+  WideString Value = pEvent->Value();
   ByteString strValue = StrTrim(ByteString::FromUnicode(Value));
   if (strValue.IsEmpty())
     return CJS_Return();
@@ -986,7 +986,7 @@ CJS_Return CJS_PublicMethods::AFNumber_Keystroke(
   if (!pEvent->m_pValue)
     return CJS_Return(JSMessage::kBadObjectError);
 
-  WideString& val = pEvent->Value();
+  WideString val = pEvent->Value();
   WideString& wstrChange = pEvent->Change();
   WideString wstrValue = val;
 
@@ -1075,7 +1075,7 @@ CJS_Return CJS_PublicMethods::AFPercent_Format(
   if (!pEvent->m_pValue)
     return CJS_Return(JSMessage::kBadObjectError);
 
-  WideString& Value = pEvent->Value();
+  WideString Value = pEvent->Value();
   ByteString strValue = StrTrim(ByteString::FromUnicode(Value));
   if (strValue.IsEmpty())
     return CJS_Return();
@@ -1161,7 +1161,7 @@ CJS_Return CJS_PublicMethods::AFDate_FormatEx(
   if (!pEvent->m_pValue)
     return CJS_Return(JSMessage::kBadObjectError);
 
-  WideString& val = pEvent->Value();
+  WideString val = pEvent->Value();
   WideString strValue = val;
   if (strValue.IsEmpty())
     return CJS_Return();
@@ -1192,13 +1192,12 @@ double CJS_PublicMethods::MakeInterDate(const WideString& strValue) {
   WideString sTemp;
   for (const auto& c : strValue) {
     if (c == L' ' || c == L':') {
-      wsArray.push_back(sTemp);
-      sTemp.clear();
+      wsArray.push_back(std::move(sTemp));
       continue;
     }
     sTemp += c;
   }
-  wsArray.push_back(sTemp);
+  wsArray.push_back(std::move(sTemp));
   if (wsArray.size() != 8)
     return 0;
 
@@ -1471,7 +1470,7 @@ CJS_Return CJS_PublicMethods::AFSpecial_KeystrokeEx(
     }
     iIndexMask++;
   }
-  wideChange = wChange;
+  wideChange = std::move(wChange);
   return CJS_Return();
 }
 

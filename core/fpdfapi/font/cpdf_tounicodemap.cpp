@@ -198,14 +198,14 @@ void CPDF_ToUnicodeMap::Load(const CPDF_Stream* pStream) {
             for (uint32_t code = lowcode; code <= highcode; code++) {
               WideString retcode;
               if (code == lowcode) {
-                retcode = destcode;
+                retcode = std::move(destcode);
               } else {
                 retcode = StringDataAdd(destcode);
               }
               m_Map[code] = GetUnicode();
               m_MultiCharBuf.AppendChar(retcode.GetLength());
               m_MultiCharBuf << retcode;
-              destcode = retcode;
+              destcode = std::move(retcode);
             }
           }
         }

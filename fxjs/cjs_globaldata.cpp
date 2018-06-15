@@ -102,7 +102,7 @@ void CJS_GlobalData::SetGlobalVariableNumber(const ByteString& propname,
     return;
   }
   auto pNewData = pdfium::MakeUnique<CJS_GlobalData_Element>();
-  pNewData->data.sKey = sPropName;
+  pNewData->data.sKey = std::move(sPropName);
   pNewData->data.nType = JS_GlobalDataType::NUMBER;
   pNewData->data.dData = dData;
   m_arrayGlobalData.push_back(std::move(pNewData));
@@ -120,7 +120,7 @@ void CJS_GlobalData::SetGlobalVariableBoolean(const ByteString& propname,
     return;
   }
   auto pNewData = pdfium::MakeUnique<CJS_GlobalData_Element>();
-  pNewData->data.sKey = sPropName;
+  pNewData->data.sKey = std::move(sPropName);
   pNewData->data.nType = JS_GlobalDataType::BOOLEAN;
   pNewData->data.bData = bData;
   m_arrayGlobalData.push_back(std::move(pNewData));
@@ -138,7 +138,7 @@ void CJS_GlobalData::SetGlobalVariableString(const ByteString& propname,
     return;
   }
   auto pNewData = pdfium::MakeUnique<CJS_GlobalData_Element>();
-  pNewData->data.sKey = sPropName;
+  pNewData->data.sKey = std::move(sPropName);
   pNewData->data.nType = JS_GlobalDataType::STRING;
   pNewData->data.sData = sData;
   m_arrayGlobalData.push_back(std::move(pNewData));
@@ -157,7 +157,7 @@ void CJS_GlobalData::SetGlobalVariableObject(
     return;
   }
   auto pNewData = pdfium::MakeUnique<CJS_GlobalData_Element>();
-  pNewData->data.sKey = sPropName;
+  pNewData->data.sKey = std::move(sPropName);
   pNewData->data.nType = JS_GlobalDataType::OBJECT;
   pNewData->data.objData.Copy(array);
   m_arrayGlobalData.push_back(std::move(pNewData));
@@ -173,7 +173,7 @@ void CJS_GlobalData::SetGlobalVariableNull(const ByteString& propname) {
     return;
   }
   auto pNewData = pdfium::MakeUnique<CJS_GlobalData_Element>();
-  pNewData->data.sKey = sPropName;
+  pNewData->data.sKey = std::move(sPropName);
   pNewData->data.nType = JS_GlobalDataType::NULLOBJ;
   m_arrayGlobalData.push_back(std::move(pNewData));
 }

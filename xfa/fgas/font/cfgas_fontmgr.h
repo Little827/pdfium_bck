@@ -106,7 +106,8 @@ class CFX_FontSourceEnum_File {
     HandleParentPath() = default;
     HandleParentPath(const HandleParentPath& x) {
       pFileHandle = x.pFileHandle;
-      bsParentPath = x.bsParentPath;
+      // FIXME:: DO NOT CI
+      // bsParentPath = x.bsParentPath;
     }
     FX_FileHandle* pFileHandle;
     ByteString bsParentPath;

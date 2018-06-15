@@ -148,9 +148,8 @@ WideString CFX_XMLElement::GetAttribute(const WideString& name) const {
   return it != attrs_.end() ? it->second : L"";
 }
 
-void CFX_XMLElement::SetAttribute(const WideString& name,
-                                  const WideString& value) {
-  attrs_[name] = value;
+void CFX_XMLElement::SetAttribute(const WideString& name, WideString value) {
+  attrs_[name] = std::move(value);
 }
 
 void CFX_XMLElement::RemoveAttribute(const WideString& name) {
