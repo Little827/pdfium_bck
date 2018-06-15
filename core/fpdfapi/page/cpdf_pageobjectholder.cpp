@@ -16,6 +16,13 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 
+using shmoo = std::_Tree<std::_Tmap_traits<
+    GraphicsData,
+    fxcrt::ByteString,
+    std::less<GraphicsData>,
+    std::allocator<std::pair<const GraphicsData, fxcrt::ByteString> >,
+    0> >;
+
 CPDF_PageObjectHolder::CPDF_PageObjectHolder(CPDF_Document* pDoc,
                                              CPDF_Dictionary* pDict)
     : m_pDict(pDict), m_pDocument(pDoc) {
