@@ -4,6 +4,9 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentmanager.h"
 
+#include <iostream>
+
+#include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -84,4 +87,50 @@ size_t CPDF_PageContentManager::AddStream(std::ostringstream* buf) {
   page_dict->SetFor("Contents", new_stream->MakeReference(doc_.Get()));
   contents_stream_ = new_stream;
   return 0;
+}
+
+void CPDF_PageContentManager::ScheduleRemoveStreamByIndex(size_t stream_index) {
+  streams_to_remove_.insert(stream_index);
+}
+
+void CPDF_PageContentManager::ExecuteScheduledRemovals() {
+  // This method assumes there are no dirty stream in the CPDF_PageObjectHolder.
+  // If there were, their indexes would need to be updated.
+  // Since this is only called by CPDF_PageContentGenerator::GenerateContent(),
+  // which cleans up the dirty streams first, this should always be true.
+  ASSERT(obj_holder_->GetDirtyStreams()->empty());
+
+  if (contents_stream_) {
+    // Only stream that can be removed is 0.
+    if (streams_to_remove_.find(0) != streams_to_remove_.end()) {
+      doc_->DeleteIndirectObject(contents_stream_->GetObjNum());
+      contents_stream_ = nullptr;
+
+      ASSERT(obj_holder_->GetPageObjectList()->empty());
+    }
+  } else if (contents_array_) {
+    // In reverse order as to not change the indexes in the middle of the loop,
+    // remove the streams.
+    for (auto it = streams_to_remove_.rbegin(); it != streams_to_remove_.rend();
+         ++it) {
+      size_t stream_index = *it;
+      contents_array_->RemoveAt(stream_index);
+
+      // Update the page objects' content stream indexes.
+      for (const auto& obj : *obj_holder_->GetPageObjectList()) {
+        int32_t old_stream_index = obj->GetContentStream();
+        std::cerr << "obj " << (void*)(obj.get()) << " is at stream "
+                  << old_stream_index << std::endl;
+        ASSERT(old_stream_index != static_cast<int32_t>(stream_index));
+        if (old_stream_index > static_cast<int32_t>(stream_index))
+          obj->SetContentStream(old_stream_index - 1);
+      }
+    }
+
+    // Even if there is a single content stream now, keep the array with a
+    // single element. It's valid, a second stream might be added soon, and the
+    // complexity of removing it is not worth it.
+  }
+
+  streams_to_remove_.clear();
 }
