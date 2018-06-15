@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd27b6c0_109f63e4",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-15T21:28:38Z",
+      "side": 0,
+      "message": "Got rid of 30, stage is never set to anything in [30, 80). Checking \"stage \u003c 30\" is therefore equivalent to \"stage \u003c 80\".",
+      "range": {
+        "startLine": 765,
+        "startChar": 24,
+        "endLine": 765,
+        "endChar": 26
+      },
+      "revId": "ee3e3a4f3cbaa99ae3609f575ff9b2c329c5df2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed703e25_20ef3144",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-15T21:28:38Z",
+      "side": 0,
+      "message": "Got rid of some bounds like 1 and 99 by using ge/le. Also exploded that nested ternary.",
+      "range": {
+        "startLine": 776,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 3
+      },
+      "revId": "ee3e3a4f3cbaa99ae3609f575ff9b2c329c5df2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}

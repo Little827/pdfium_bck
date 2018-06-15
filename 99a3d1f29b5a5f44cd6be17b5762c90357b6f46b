@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f3c9fb8_f6e33627",
+        "filename": "core/fpdfapi/edit/cpdf_creator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-15T21:28:38Z",
+      "side": 1,
+      "message": "I want to keep the numbers to make it clear these states have an order, and therefore are acyclic.",
+      "revId": "99a3d1f29b5a5f44cd6be17b5762c90357b6f46b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
