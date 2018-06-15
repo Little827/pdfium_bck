@@ -748,8 +748,6 @@ TEST_F(FPDFEditEmbeddertest, RemoveExistingPageObjectSplitStreamsLonely) {
   CloseSavedDocument();
 }
 
-// TODO(pdfium:1051): Extend this test to remove some elements and verify
-// saving works.
 TEST_F(FPDFEditEmbeddertest, GetContentStream) {
   // Load document with some text split across streams.
   EXPECT_TRUE(OpenDocument("split_streams.pdf"));
@@ -774,6 +772,108 @@ TEST_F(FPDFEditEmbeddertest, GetContentStream) {
   }
 
   UnloadPage(page);
+}
+
+TEST_F(FPDFEditEmbeddertest, RemoveAllFromStream) {
+  // Load document with some text split across streams.
+  EXPECT_TRUE(OpenDocument("split_streams.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Content stream 0: page objects 0-14.
+  // Content stream 1: page objects 15-17.
+  // Content stream 2: page object 18.
+  ASSERT_EQ(19, FPDFPage_CountObjects(page));
+
+  // Loop backwards because objects will being removed, which shifts the indexes
+  // after the removed position.
+  for (int i = 18; i >= 0; i--) {
+    FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
+    ASSERT_TRUE(page_object);
+    CPDF_PageObject* cpdf_page_object =
+        CPDFPageObjectFromFPDFPageObject(page_object);
+
+    // Empty content stream 1.
+    if (cpdf_page_object->GetContentStream() == 1) {
+      EXPECT_TRUE(FPDFPage_RemoveObject(page, page_object));
+      FPDFPageObj_Destroy(page_object);
+    }
+  }
+
+  // Content stream 0: page objects 0-14.
+  // Content stream 2: page object 15.
+  ASSERT_EQ(16, FPDFPage_CountObjects(page));
+  for (int i = 0; i < 16; i++) {
+    FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
+    ASSERT_TRUE(page_object);
+    CPDF_PageObject* cpdf_page_object =
+        CPDFPageObjectFromFPDFPageObject(page_object);
+    if (i < 15)
+      EXPECT_EQ(0, cpdf_page_object->GetContentStream()) << i;
+    else
+      EXPECT_EQ(2, cpdf_page_object->GetContentStream()) << i;
+  }
+
+  // Generate contents should remove the empty stream and update the page
+  // objects' contents stream indexes.
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+
+  // Content stream 0: page objects 0-14.
+  // Content stream 1: page object 15.
+  ASSERT_EQ(16, FPDFPage_CountObjects(page));
+  for (int i = 0; i < 16; i++) {
+    FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
+    ASSERT_TRUE(page_object);
+    CPDF_PageObject* cpdf_page_object =
+        CPDFPageObjectFromFPDFPageObject(page_object);
+    if (i < 15)
+      EXPECT_EQ(0, cpdf_page_object->GetContentStream()) << i;
+    else
+      EXPECT_EQ(1, cpdf_page_object->GetContentStream()) << i;
+  }
+
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  const char kStream1RemovedMD5[] = "kStream1RemovedMD5_osx";
+#elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+  const char kStream1RemovedMD5[] = "kStream1RemovedMD5_win";
+#else
+  const char kStream1RemovedMD5[] = "e86a3efc160ede6cfcb1f59bcacf1105";
+#endif
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 200, 200, kStream1RemovedMD5);
+  }
+
+  // Save the file
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  UnloadPage(page);
+
+  // Re-open the file and check the page object count is still 16, and that
+  // content stream 1 was removed.
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+
+  // Content stream 0: page objects 0-14.
+  // Content stream 1: page object 15.
+  EXPECT_EQ(16, FPDFPage_CountObjects(page));
+  for (int i = 0; i < 16; i++) {
+    FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(saved_page, i);
+    ASSERT_TRUE(page_object);
+    CPDF_PageObject* cpdf_page_object =
+        CPDFPageObjectFromFPDFPageObject(page_object);
+    if (i < 15)
+      EXPECT_EQ(0, cpdf_page_object->GetContentStream()) << i;
+    else
+      EXPECT_EQ(1, cpdf_page_object->GetContentStream()) << i;
+  }
+
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 200, 200, kStream1RemovedMD5);
+  }
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
 }
 
 TEST_F(FPDFEditEmbeddertest, InsertPageObjectAndSave) {
