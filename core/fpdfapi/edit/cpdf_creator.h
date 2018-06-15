@@ -29,6 +29,23 @@ class CPDF_Parser;
 
 class CPDF_Creator {
  public:
+  enum class Stage {
+    kInvalid = -1,
+    kZero0 = 0,
+    kTen10 = 10,
+    kFifteen15 = 15,
+    kTwenty20 = 20,
+    kTwentyOne21 = 21,
+    kTwentyFive25 = 25,
+    kTwentySix26 = 26,
+    kTwentySeven27 = 27,
+    kEighty80 = 80,
+    kEightyOne81 = 81,
+    kEightyTwo82 = 82,
+    kNinety90 = 90,
+    kHundred100 = 100,
+  };
+
   explicit CPDF_Creator(CPDF_Document* pDoc,
                         const RetainPtr<IFX_WriteStream>& archive);
   ~CPDF_Creator();
@@ -38,16 +55,16 @@ class CPDF_Creator {
   bool SetFileVersion(int32_t fileVersion);
 
  private:
-  int32_t Continue();
+  CPDF_Creator::Stage Continue();
   void Clear();
 
   void InitNewObjNumOffsets();
   void InitID();
 
-  int32_t WriteDoc_Stage1();
-  int32_t WriteDoc_Stage2();
-  int32_t WriteDoc_Stage3();
-  int32_t WriteDoc_Stage4();
+  CPDF_Creator::Stage WriteDoc_Stage1();
+  CPDF_Creator::Stage WriteDoc_Stage2();
+  CPDF_Creator::Stage WriteDoc_Stage3();
+  CPDF_Creator::Stage WriteDoc_Stage4();
 
   bool WriteOldIndirectObject(uint32_t objnum);
   bool WriteOldObjs();
@@ -67,7 +84,7 @@ class CPDF_Creator {
   uint32_t m_dwLastObjNum;
   std::unique_ptr<IFX_ArchiveStream> m_Archive;
   FX_FILESIZE m_SavedOffset = 0;
-  int32_t m_iStage = -1;
+  Stage m_iStage = Stage::kInvalid;
   uint32_t m_CurObjNum = 0;
   FX_FILESIZE m_XrefStart = 0;
   std::map<uint32_t, FX_FILESIZE> m_ObjectOffsets;
