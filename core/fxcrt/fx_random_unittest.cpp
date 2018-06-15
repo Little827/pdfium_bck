@@ -5,6 +5,7 @@
 #include "core/fxcrt/fx_random.h"
 
 #include <array>
+#include <map>
 #include <set>
 
 #include "testing/gtest/include/gtest/gtest.h"
@@ -20,5 +21,19 @@ TEST(FX_Random, GenerateMT3600times) {
   for (int i = 0; i < 3600; ++i) {
     FX_Random_GenerateMT(current.data(), 16);
     EXPECT_TRUE(seen.insert(current).second);
+  }
+}
+
+struct WackyKey {
+  bool operator<(const WackyKey& that) const { return !!(rand() & 0x40); }
+
+  int x = 0;
+};
+
+TEST(FX_Random, CrappyMaps) {
+  for (int j = 0; j < 10; ++j) {
+    std::map<WackyKey, int> wacky_map;
+    for (int i = 0; i < 1000000; ++i)
+      wacky_map[WackyKey()] = 4;
   }
 }
