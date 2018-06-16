@@ -161,6 +161,15 @@ bool CPDF_Stream::HasFilter() const {
   return m_pDict && m_pDict->KeyExist("Filter");
 }
 
+std::unique_ptr<uint8_t, FxFreeDeleter> CPDF_Stream::DetachMemoryBasedData() {
+  if (!IsMemoryBased()) {
+    NOTREACHED();
+    return nullptr;
+  }
+  m_dwSize = 0;
+  return std::move(m_pDataBuf);
+}
+
 WideString CPDF_Stream::GetUnicodeText() const {
   auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
   pAcc->LoadAllDataFiltered();

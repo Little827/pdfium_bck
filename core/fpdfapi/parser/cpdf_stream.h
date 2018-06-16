@@ -63,6 +63,13 @@ class CPDF_Stream : public CPDF_Object {
   bool IsMemoryBased() const { return m_bMemoryBased; }
   bool HasFilter() const;
 
+  // Will be null for memory based streams.
+  const RetainPtr<IFX_SeekableReadStream>& FileStream() const {
+    return m_pFile;
+  }
+
+  std::unique_ptr<uint8_t, FxFreeDeleter> DetachMemoryBasedData();
+
  protected:
   std::unique_ptr<CPDF_Object> CloneNonCyclic(
       bool bDirect,
