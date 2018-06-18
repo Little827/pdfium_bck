@@ -16,6 +16,24 @@
       "revId": "38092b8a6c94604989863a449efe433e6d9da179",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5475d5da_08b138ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-06-18T13:40:52Z",
+      "side": 1,
+      "message": "FPDFPath_GetMatrix() works with CPDF_PathObject::m_Matrix, this proposed FPDFText_GetMatrix() exposes CPDF_GraphicStates::m_TextState, so internally they are not the same.\n\nDo we want to hide this complexity? If so, then sure, I can add an FPDFPageObj_GetMatrix() which handles both cases (and possibly more types in the future).",
+      "parentUuid": "445756ff_092b85b2",
+      "revId": "38092b8a6c94604989863a449efe433e6d9da179",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
