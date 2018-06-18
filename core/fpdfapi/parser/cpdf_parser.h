@@ -59,7 +59,8 @@ class CPDF_Parser {
   void SetPassword(const char* password) { m_Password = password; }
   ByteString GetPassword() { return m_Password; }
 
-  CPDF_Dictionary* GetTrailer() const;
+  const CPDF_Dictionary* GetTrailer() const;
+  CPDF_Dictionary* GetTrailer();
 
   // Returns a new trailer which combines the last read trailer with the /Root
   // and /Info from previous ones.
@@ -72,7 +73,7 @@ class CPDF_Parser {
   uint32_t GetInfoObjNum();
   const CPDF_Array* GetIDArray() const;
 
-  CPDF_Dictionary* GetEncryptDict() const { return m_pEncryptDict.Get(); }
+  CPDF_Dictionary* GetEncryptDict() const { return m_pEncryptDict.get(); }
 
   std::unique_ptr<CPDF_Object> ParseIndirectObject(
       CPDF_IndirectObjectHolder* pObjList,
@@ -174,7 +175,7 @@ class CPDF_Parser {
   Error LoadLinearizedMainXRefTable();
   RetainPtr<CPDF_StreamAcc> GetObjectStream(uint32_t number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
-  void SetEncryptDictionary(CPDF_Dictionary* pDict);
+  void SetEncryptDictionary(const CPDF_Dictionary* pDict);
   void ShrinkObjectMap(uint32_t size);
   // A simple check whether the cross reference table matches with
   // the objects.
@@ -211,7 +212,7 @@ class CPDF_Parser {
   // m_TrailerData must be destroyed after m_pSecurityHandler due to the
   // ownership of the ID array data.
   std::unique_ptr<TrailerData> m_TrailerData;
-  UnownedPtr<CPDF_Dictionary> m_pEncryptDict;
+  std::unique_ptr<CPDF_Dictionary> m_pEncryptDict;
   FX_FILESIZE m_LastXRefOffset;
   std::unique_ptr<CPDF_SecurityHandler> m_pSecurityHandler;
   ByteString m_Password;

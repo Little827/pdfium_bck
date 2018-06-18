@@ -177,8 +177,8 @@ bool CPDF_Parser::IsObjectFree(uint32_t objnum) const {
   return GetObjectType(objnum) == ObjectType::kFree;
 }
 
-void CPDF_Parser::SetEncryptDictionary(CPDF_Dictionary* pDict) {
-  m_pEncryptDict = pDict;
+void CPDF_Parser::SetEncryptDictionary(const CPDF_Dictionary* pDict) {
+  m_pEncryptDict = pDict ? ToDictionary(pDict->Clone()) : nullptr;
 }
 
 RetainPtr<IFX_SeekableReadStream> CPDF_Parser::GetFileAccess() const {
@@ -332,11 +332,11 @@ CPDF_Parser::Error CPDF_Parser::SetEncryptHandler() {
   if (!GetTrailer())
     return FORMAT_ERROR;
 
-  CPDF_Object* pEncryptObj = GetTrailer()->GetObjectFor("Encrypt");
+  const CPDF_Object* pEncryptObj = GetTrailer()->GetObjectFor("Encrypt");
   if (pEncryptObj) {
-    if (CPDF_Dictionary* pEncryptDict = pEncryptObj->AsDictionary()) {
+    if (const CPDF_Dictionary* pEncryptDict = pEncryptObj->AsDictionary()) {
       SetEncryptDictionary(pEncryptDict);
-    } else if (CPDF_Reference* pRef = pEncryptObj->AsReference()) {
+    } else if (const CPDF_Reference* pRef = pEncryptObj->AsReference()) {
       pEncryptObj = m_pDocument->GetOrParseIndirectObject(pRef->GetRefObjNum());
       if (pEncryptObj)
         SetEncryptDictionary(pEncryptObj->GetDict());
@@ -350,7 +350,7 @@ CPDF_Parser::Error CPDF_Parser::SetEncryptHandler() {
 
     std::unique_ptr<CPDF_SecurityHandler> pSecurityHandler =
         pdfium::MakeUnique<CPDF_SecurityHandler>();
-    if (!pSecurityHandler->OnInit(m_pEncryptDict.Get(), GetIDArray(),
+    if (!pSecurityHandler->OnInit(m_pEncryptDict.get(), GetIDArray(),
                                   m_Password))
       return PASSWORD_ERROR;
 
@@ -1171,7 +1171,11 @@ const CPDF_Array* CPDF_Parser::GetIDArray() const {
   return GetTrailer() ? GetTrailer()->GetArrayFor("ID") : nullptr;
 }
 
-CPDF_Dictionary* CPDF_Parser::GetTrailer() const {
+const CPDF_Dictionary* CPDF_Parser::GetTrailer() const {
+  return m_TrailerData->GetMainTrailer();
+}
+
+CPDF_Dictionary* CPDF_Parser::GetTrailer() {
   return m_TrailerData->GetMainTrailer();
 }
 
