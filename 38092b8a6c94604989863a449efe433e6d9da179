@@ -34,6 +34,47 @@
       "revId": "38092b8a6c94604989863a449efe433e6d9da179",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0168e79_29e9be66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-18T13:57:56Z",
+      "side": 1,
+      "message": "No, I don\u0027t think we want a method returning those two different matrices. If this is confusing, we may want to name this GetTextMatrix.",
+      "parentUuid": "5475d5da_08b138ae",
+      "revId": "38092b8a6c94604989863a449efe433e6d9da179",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2c6742_4cd1fbb5",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-06-18T13:57:56Z",
+      "side": 1,
+      "message": "text object",
+      "range": {
+        "startLine": 1071,
+        "startChar": 24,
+        "endLine": 1071,
+        "endChar": 28
+      },
+      "revId": "38092b8a6c94604989863a449efe433e6d9da179",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
