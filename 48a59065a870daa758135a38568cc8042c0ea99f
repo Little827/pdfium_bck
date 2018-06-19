@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2ba1ef46_7346fe80",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:25:25Z",
+      "side": 1,
+      "message": "It\u0027s confusing that we have m_pInfoDict here which will sometimes be set (if you make a new document) but others not. We should either consistently store the pointer, or not.  Storing it means we don\u0027t have to remake the CPDF_Reference and call GetDirect on it every time.",
+      "parentUuid": "43657d97_712e8425",
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d94f32c4_e4fe68e5",
         "filename": "core/fpdfapi/parser/cpdf_document.h",
         "patchSetId": 3
@@ -119,6 +137,30 @@
       "side": 1,
       "message": "If is is on first page, we should load only first page.",
       "parentUuid": "ceaec0db_23ed0a3a",
+      "range": {
+        "startLine": 275,
+        "startChar": 34,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4ee39e_0d26e680",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:25:25Z",
+      "side": 1,
+      "message": "Can we have a test for that?",
+      "parentUuid": "6253850a_479c556d",
       "range": {
         "startLine": 275,
         "startChar": 34,
