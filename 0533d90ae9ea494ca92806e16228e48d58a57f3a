@@ -352,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "cb712b28_faf73bdd",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:45:48Z",
+      "side": 1,
+      "message": "Ok, makes sense.  As a follow-on, could this all then live in an anonymous namespace in cpdf_syntax_parser.cpp (if that\u0027s the associated parser)?",
+      "parentUuid": "3401cd23_c1356584",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "998d34d9_97487f23",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
         "patchSetId": 5
