@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9da2f1a4_1a148b93",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T16:18:23Z",
+      "side": 1,
+      "message": "streams",
+      "range": {
+        "startLine": 99,
+        "startChar": 44,
+        "endLine": 99,
+        "endChar": 50
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30de7a1a_35fe7454",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T16:18:23Z",
+      "side": 1,
+      "message": "ASSERT(contents_stream_ || contents_array_) ?",
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d226536_babf28d8",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T16:18:23Z",
+      "side": 1,
+      "message": "streams_to_remove_.clear();\nreturn;\n\n?",
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97fb950_b892d1f3",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T16:18:23Z",
+      "side": 1,
+      "message": "Cool, never seen that before.",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea04bdcd_272ea517",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T16:18:23Z",
+      "side": 1,
+      "message": "so as",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b54891_de663572",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T16:18:23Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 128,
+        "startChar": 13,
+        "endLine": 128,
+        "endChar": 20
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f317ad8d_4213b01e",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T16:18:23Z",
+      "side": 1,
+      "message": "Does this test the content_stream_ vs content_array_ code?\n\nMaybe a test for:\n\n- Remove one object from stream\n- Remove last object from stream\n- Remove first object from stream\n\n?",
+      "range": {
+        "startLine": 777,
+        "startChar": 29,
+        "endLine": 777,
+        "endChar": 48
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
