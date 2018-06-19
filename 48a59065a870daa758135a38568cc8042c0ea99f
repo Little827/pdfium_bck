@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "88de14d4_8756464d",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T15:35:51Z",
+      "side": 1,
+      "message": "We can not store it, because we don\u0027t know in what moment it is will be available.\nBut i can fill |m_pInfoDict| once in this method, to cache it, if it becomes available.\nI mean:\n  m_pInfoDict \u003d ToDictionary(CPDF_Reference(this, m_pParser-\u003eGetInfoObjNum()).GetDirect());\n  return m_pInfoDict;\nAre you agree?",
+      "parentUuid": "2ba1ef46_7346fe80",
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d94f32c4_e4fe68e5",
         "filename": "core/fpdfapi/parser/cpdf_document.h",
         "patchSetId": 3
@@ -161,6 +179,30 @@
       "side": 1,
       "message": "Can we have a test for that?",
       "parentUuid": "6253850a_479c556d",
+      "range": {
+        "startLine": 275,
+        "startChar": 34,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ae4e0c_da2adb19",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T15:35:51Z",
+      "side": 1,
+      "message": "I have not seen linearized pdfs with this case. I need it to write test.",
+      "parentUuid": "fe4ee39e_0d26e680",
       "range": {
         "startLine": 275,
         "startChar": 34,
