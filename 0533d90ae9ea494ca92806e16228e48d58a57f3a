@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7c8f4357_b07de1ff",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T17:18:21Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "3ac5bb5a_5da41edf",
+      "range": {
+        "startLine": 901,
+        "startChar": 25,
+        "endLine": 903,
+        "endChar": 66
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13177dd2_4a075dc8",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -178,6 +202,30 @@
       "side": 0,
       "message": "this is impossible case, because we just added \"size\" (line 1001) to pos.\nAlso i have checked manualy this BIG state machine, it is correct, and finite in all cases.",
       "parentUuid": "75b99e17_844072a9",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 12
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6288a092_3a70177b",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T17:18:21Z",
+      "side": 0,
+      "message": "Can you please test with the PDF in https://bugs.chromium.org/p/chromium/issues/detail?id\u003d401189 to verify it still works correctly?",
+      "parentUuid": "f620546b_bc470344",
       "range": {
         "startLine": 1002,
         "startChar": 0,
