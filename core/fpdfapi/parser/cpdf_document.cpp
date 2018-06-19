@@ -219,17 +219,6 @@ void CPDF_Document::LoadDocInternal() {
   m_pRootDict = pRootObj->GetDict();
   if (!m_pRootDict)
     return;
-
-  LoadDocumentInfo();
-}
-
-void CPDF_Document::LoadDocumentInfo() {
-  if (!m_pParser)
-    return;
-
-  CPDF_Object* pInfoObj = GetOrParseIndirectObject(m_pParser->GetInfoObjNum());
-  if (pInfoObj)
-    m_pInfoDict = pInfoObj->GetDict();
 }
 
 void CPDF_Document::LoadDoc() {
@@ -247,7 +236,7 @@ void CPDF_Document::LoadLinearizedDoc(
 }
 
 void CPDF_Document::LoadPages() {
-  m_PageList.resize(RetrievePageCount());
+  m_PageList.resize(RetrievePageCount(GetPagesDict()));
 }
 
 CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
@@ -450,8 +439,8 @@ int CPDF_Document::GetPageCount() const {
   return pdfium::CollectionSize<int>(m_PageList);
 }
 
-int CPDF_Document::RetrievePageCount() {
-  CPDF_Dictionary* pPages = GetPagesDict();
+// static
+int CPDF_Document::RetrievePageCount(CPDF_Dictionary* pPages) {
   if (!pPages)
     return 0;
 
@@ -599,6 +588,21 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   }
   m_PageList.insert(m_PageList.begin() + iPage, pPageDict->GetObjNum());
   return true;
+}
+
+const CPDF_Dictionary* CPDF_Document::GetInfo() const {
+  return const_cast<CPDF_Document*>(this)->GetInfo();
+}
+
+CPDF_Dictionary* CPDF_Document::GetInfo() {
+  if (m_pInfoDict)
+    return m_pInfoDict.Get();
+
+  if (!m_pParser || !m_pParser->GetInfoObjNum())
+    return nullptr;
+
+  CPDF_Reference ref(this, m_pParser->GetInfoObjNum());
+  return ToDictionary(ref.GetDirect());
 }
 
 void CPDF_Document::DeletePage(int iPage) {
