@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9f82c59d_5539e3c7",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:33:40Z",
+      "side": 1,
+      "message": "If we\u0027re complete, why do we become invalid? That\u0027s .... existing and weird ....",
+      "range": {
+        "startLine": 779,
+        "startChar": 6,
+        "endLine": 779,
+        "endChar": 31
+      },
+      "revId": "99a3d1f29b5a5f44cd6be17b5762c90357b6f46b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a03b6dc_9aa47fbe",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:33:40Z",
+      "side": 1,
+      "message": "Huh? This class is wonky",
+      "range": {
+        "startLine": 780,
+        "startChar": 21,
+        "endLine": 781,
+        "endChar": 27
+      },
+      "revId": "99a3d1f29b5a5f44cd6be17b5762c90357b6f46b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f3c9fb8_f6e33627",
         "filename": "core/fpdfapi/edit/cpdf_creator.h",
         "patchSetId": 2
@@ -13,6 +59,24 @@
       "writtenOn": "2018-06-15T21:28:38Z",
       "side": 1,
       "message": "I want to keep the numbers to make it clear these states have an order, and therefore are acyclic.",
+      "revId": "99a3d1f29b5a5f44cd6be17b5762c90357b6f46b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1564314a_72b99fd1",
+        "filename": "core/fpdfapi/edit/cpdf_creator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:33:40Z",
+      "side": 1,
+      "message": "I\u0027d say drop the numbers and use the the fact that you\u0027ve assigned values to show the ordering. The numbers on the names seem redundant and weird to read.",
+      "parentUuid": "8f3c9fb8_f6e33627",
       "revId": "99a3d1f29b5a5f44cd6be17b5762c90357b6f46b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
