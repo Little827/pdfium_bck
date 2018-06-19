@@ -75,12 +75,12 @@ class CPWL_FontMap : public IPVT_FontMap {
 
   ByteString GetNativeFont(int32_t nCharset);
   CPDF_Font* AddFontToDocument(CPDF_Document* pDoc,
-                               ByteString& sFontName,
+                               const ByteString& sFontName,
                                uint8_t nCharset);
   bool IsStandardFont(const ByteString& sFontName);
-  CPDF_Font* AddStandardFont(CPDF_Document* pDoc, ByteString& sFontName);
+  CPDF_Font* AddStandardFont(CPDF_Document* pDoc, const ByteString& sFontName);
   CPDF_Font* AddSystemFont(CPDF_Document* pDoc,
-                           ByteString& sFontName,
+                           ByteString sFontName,
                            uint8_t nCharset);
 
   std::unique_ptr<CPDF_Document> m_pPDFDoc;

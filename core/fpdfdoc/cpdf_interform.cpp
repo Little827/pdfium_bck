@@ -630,15 +630,15 @@ ByteString CPDF_InterForm::GenerateNewResourceName(
 }
 
 CPDF_Font* CPDF_InterForm::AddStandardFont(CPDF_Document* pDocument,
-                                           ByteString csFontName) {
+                                           const ByteString& csFontName) {
   if (!pDocument || csFontName.IsEmpty())
     return nullptr;
 
   if (csFontName == "ZapfDingbats")
-    return pDocument->AddStandardFont(csFontName.c_str(), nullptr);
+    return pDocument->AddStandardFont(csFontName, nullptr);
 
   CPDF_FontEncoding encoding(PDFFONT_ENCODING_WINANSI);
-  return pDocument->AddStandardFont(csFontName.c_str(), &encoding);
+  return pDocument->AddStandardFont(csFontName, &encoding);
 }
 
 ByteString CPDF_InterForm::GetNativeFont(uint8_t charSet, void* pLogFont) {
