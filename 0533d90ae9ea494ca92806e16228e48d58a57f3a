@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "179b1b2a_c4135a0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "No. As before, we decopress objects only once. But now, we destroy original compressed stream, as big and useless.",
+      "parentUuid": "8f258e53_54e417c0",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de44ca30_454225d2",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "5b2b6e32_78579bf5",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed6f65f_725b9f69",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 66
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97f56ea4_b2ee7db6",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
@@ -155,6 +203,30 @@
       "writtenOn": "2018-06-19T17:14:50Z",
       "side": 1,
       "message": "nit: rendundant, perhaps, given the nullptr check in IsObjectStream() itself?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e52c3f97_8b7d26df",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Teoreticaly it may be subclassed (in test for example). Just added to consistency.",
+      "parentUuid": "97f56ea4_b2ee7db6",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "2df0ee3d_13da4114",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d12fdf_7e89d282",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f492e0f3_36c654b1",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
@@ -210,6 +306,30 @@
       "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7cec57d_68157ebf",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f492e0f3_36c654b1",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "0831f540_cd29bc73",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e15a95ad_e5843eb8",
+      "range": {
+        "startLine": 89,
+        "startChar": 13,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfa7503b_6a6b0ea5",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
@@ -247,6 +391,30 @@
       "writtenOn": "2018-06-19T16:40:55Z",
       "side": 1,
       "message": "Init doesn\u0027t really take ownership of the stream.  In fact, it destroys it upon return.  There isn\u0027t really any reason to do this -- stream, could in theory, outlive the ObjStream, and we could, in fact, make several objstreams from each stream, right?  (Not that its useful to do so, but it gives insight into lifetimes).\n\nI suspect that we may just want to pass a CPDF_Stream* here.\n\nAlso, is this the only call to Init() in the ctor?  maybe move it there?",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1df78a_e378d424",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "\u003e Init doesn\u0027t really take ownership of the stream.  In fact, it destroys it upon return.\n\nYes, because after parsing, we do not need it.\n\n\u003e  There isn\u0027t really any reason to do this -- stream, could in theory, outlive the ObjStream, and we could, in fact, make several objstreams from each stream, right? \n\nYes, we can, but instead using raw CPDF_Stream(which is useless without CPDF_ObjStream),  more best share CPDF_ObjStream.\nAlso destroying of the source CPDF_Stream, reduce memory usage so much.\n\n\u003c I suspect that we may just want to pass a CPDF_Stream* here.\n\nNo, Why we need big useless data in memory?\n\n\u003e Also, is this the only call to Init() in the ctor?  maybe move it there?\n\nI do not like big constructors. If we will add something other into big it, will be muddle.",
+      "parentUuid": "bfa7503b_6a6b0ea5",
       "range": {
         "startLine": 99,
         "startChar": 6,
@@ -282,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "9eec1ef9_54174e3a",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "This was original logic.",
+      "parentUuid": "b7212289_26b991b2",
+      "range": {
+        "startLine": 121,
+        "startChar": 7,
+        "endLine": 121,
+        "endChar": 44
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10a868aa_1ce30070",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
@@ -305,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "b7bff0c4_016d666e",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a868aa_1ce30070",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 65
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d7c75f5_5b125a85",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
@@ -325,6 +541,30 @@
       "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4e0483_6cf6e5e6",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d7c75f5_5b125a85",
+      "range": {
+        "startLine": 137,
+        "startChar": 29,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -387,6 +627,30 @@
       "side": 1,
       "message": "ah, OK. Maybe spell out Object to match the way it\u0027s referred to in the documentation?  Its unfortunate that we have CPDF_Objects and CPDF_Streams, which sound so similar to this, but then that\u0027s how they named it ...",
       "parentUuid": "970595bc_31cfb4ba",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8f8a3c_39cd7fd6",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Them named \"Object Stream\"\nSee http://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#53",
+      "parentUuid": "da3ed752_5cadb823",
       "range": {
         "startLine": 20,
         "startChar": 6,
@@ -494,6 +758,30 @@
     },
     {
       "key": {
+        "uuid": "14267876_104ec870",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "\u003e Ok, makes sense.  As a follow-on, could this all then live in an anonymous namespace in cpdf_syntax_parser.cpp (if that\u0027s the associated parser)?\n\nThe associated parser is CPDF_Parser (not Syntax). But it is use this class, and will be strange, that the class ask its utilizer about is it itself. I want that CPDF_Parser is dependend on CPDF_ObjStream. Not both from each other.\n\nAlso i want reuse it, when will refactore the cross ref rebuilding. Currently we have not support of objects streams, when we rebuilding crossrefs.\n\nAnd in far way, use it to write correctly (not reduced like now) support of hint tables.\n\n\u003e Alternatively, can we make a unit test for all this if we keep it in its own files?  That would be a good justification for keeping it as you have it.\n\nYes, but before i want to finish review, and make related changes.\nBTW: Currently this logic is tested by corpus_tests.\n\n\u003e Can IsObjectsStreamObject() be private?\n\nI want to store it for tests and future use.",
+      "parentUuid": "cb712b28_faf73bdd",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "998d34d9_97487f23",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
         "patchSetId": 5
@@ -505,6 +793,30 @@
       "writtenOn": "2018-06-19T16:40:55Z",
       "side": 1,
       "message": "nit: is this uint32_t to match object_offests_ second type?",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bfce1e4_c5cc8a77",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "I have moved this type from original code. Store it for now.",
+      "parentUuid": "998d34d9_97487f23",
       "range": {
         "startLine": 50,
         "startChar": 2,
@@ -540,6 +852,30 @@
     },
     {
       "key": {
+        "uuid": "59a41897_9cb0772b",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d338ea_2fb19b99",
+      "range": {
+        "startLine": 1222,
+        "startChar": 2,
+        "endLine": 1222,
+        "endChar": 6
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f0797a2_24edf65c",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 5
@@ -560,6 +896,30 @@
       "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8755d54f_5dcd59a4",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T20:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f0797a2_24edf65c",
+      "range": {
+        "startLine": 1227,
+        "startChar": 10,
+        "endLine": 1228,
+        "endChar": 28
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
