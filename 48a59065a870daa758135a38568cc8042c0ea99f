@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "43657d97_712e8425",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T15:19:05Z",
+      "side": 1,
+      "message": "We do not create it every time.\nIt is always stored in the document as one of the objects.",
+      "parentUuid": "35244f72_05c043b4",
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d94f32c4_e4fe68e5",
         "filename": "core/fpdfapi/parser/cpdf_document.h",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "f7beb8ce_73417c2b",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T15:19:05Z",
+      "side": 1,
+      "message": "Oops, sorry, this is changes from other CL.",
+      "parentUuid": "d94f32c4_e4fe68e5",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ceaec0db_23ed0a3a",
         "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2018-06-19T14:57:19Z",
       "side": 1,
       "message": "If the Info is on the first page, do we still have to load the whole document or just the first page?",
+      "range": {
+        "startLine": 275,
+        "startChar": 34,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6253850a_479c556d",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T15:19:05Z",
+      "side": 1,
+      "message": "If is is on first page, we should load only first page.",
+      "parentUuid": "ceaec0db_23ed0a3a",
       "range": {
         "startLine": 275,
         "startChar": 34,

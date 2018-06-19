@@ -22,6 +22,30 @@
       "revId": "c2b34d2adc6c987d882b4173265697917df74f54",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0dc396b_0269ebef",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T15:19:05Z",
+      "side": 0,
+      "message": "Not quite, we just do not cache pointer to it, for loaded documents.",
+      "parentUuid": "39d0ac97_0aeb2f4f",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 27
+      },
+      "revId": "c2b34d2adc6c987d882b4173265697917df74f54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
