@@ -72,6 +72,144 @@
     },
     {
       "key": {
+        "uuid": "f8d12fdf_7e89d282",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: third_party/base/stl_util.h has pdfium::ContainsKey() helper for these exact cases.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f492e0f3_36c654b1",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: maybe spell out type fully since it isn\u0027t obvious from context.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15a95ad_e5843eb8",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: const auto\u0026 avoids a (small) copy.",
+      "range": {
+        "startLine": 89,
+        "startChar": 13,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa7503b_6a6b0ea5",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "Init doesn\u0027t really take ownership of the stream.  In fact, it destroys it upon return.  There isn\u0027t really any reason to do this -- stream, could in theory, outlive the ObjStream, and we could, in fact, make several objstreams from each stream, right?  (Not that its useful to do so, but it gives insight into lifetimes).\n\nI suspect that we may just want to pass a CPDF_Stream* here.\n\nAlso, is this the only call to Init() in the ctor?  maybe move it there?",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7212289_26b991b2",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: we don\u0027t use i within this loop, so why count down?",
+      "range": {
+        "startLine": 121,
+        "startChar": 7,
+        "endLine": 121,
+        "endChar": 44
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a868aa_1ce30070",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: object_offsets_[obj_num] \u003d obj_offset;",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 65
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "241a4e06_af976039",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
         "patchSetId": 5
@@ -111,6 +249,75 @@
         "startChar": 13,
         "endLine": 22,
         "endChar": 16
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998d34d9_97487f23",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: is this uint32_t to match object_offests_ second type?",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d338ea_2fb19b99",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: probably want to spell out the full type information here since it isn\u0027t immediately obvious from the context.",
+      "range": {
+        "startLine": 1222,
+        "startChar": 2,
+        "endLine": 1222,
+        "endChar": 6
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0797a2_24edf65c",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:40:55Z",
+      "side": 1,
+      "message": "nit: generally, the m_ObjectStreamMap[object_number] \u003d std::move(objs_stream) syntax is clearer.",
+      "range": {
+        "startLine": 1227,
+        "startChar": 10,
+        "endLine": 1228,
+        "endChar": 28
       },
       "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
