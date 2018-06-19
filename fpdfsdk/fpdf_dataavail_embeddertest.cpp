@@ -9,6 +9,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcrt/bytestring.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -86,6 +87,9 @@ class TestAsyncLoader : public FX_DOWNLOADHINTS, FX_FILEAVAIL {
     }
     ClearRequestedSegments();
   }
+
+  char* file_contents() { return file_contents_.get(); }
+  size_t file_length() const { return file_length_; }
 
  private:
   void SetDataAvailable(size_t start, size_t size) {
@@ -270,4 +274,50 @@ TEST_F(FPDFDataAvailEmbeddertest, LoadSecondPageIfLinearizedWithHints) {
   FPDF_PAGE page = FPDF_LoadPage(document(), kSecondPageNum);
   EXPECT_TRUE(page);
   FPDF_ClosePage(page);
+}
+
+TEST_F(FPDFDataAvailEmbeddertest, LoadInfoAfterReceivingWholeDocument) {
+  TestAsyncLoader loader("linearized.pdf");
+  loader.set_is_new_data_available(false);
+  avail_ = FPDFAvail_Create(loader.file_avail(), loader.file_access());
+  while (PDF_DATA_AVAIL != FPDFAvail_IsDocAvail(avail_, loader.hints())) {
+    loader.FlushRequestedData();
+  }
+
+  document_ = FPDFAvail_GetDocument(avail_, nullptr);
+  ASSERT_TRUE(document_);
+
+  // The "info" dictionary still unavailable.
+  EXPECT_FALSE(FPDF_GetMetaText(document_, "CreationDate", nullptr, 0));
+
+  // Simulate receiving whole file.
+  loader.set_is_new_data_available(true);
+  // Load second page, to parse additional crossref sections.
+  EXPECT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsPageAvail(avail_, 1, loader.hints()));
+
+  EXPECT_TRUE(FPDF_GetMetaText(document_, "CreationDate", nullptr, 0));
+}
+
+TEST_F(FPDFDataAvailEmbeddertest, LoadInfoAfterReceivingFirstPage) {
+  TestAsyncLoader loader("linearized.pdf");
+  // Trick, remap Info ref to object within first section, without break of
+  // linearization.
+  ByteString data(loader.file_contents(), loader.file_length());
+  Optional<size_t> index = data.Find("/Info 27 0 R");
+  ASSERT_TRUE(index);
+  memcpy(loader.file_contents() + *index, "/Info 29 0 R", 12);
+
+  loader.set_is_new_data_available(false);
+  avail_ = FPDFAvail_Create(loader.file_avail(), loader.file_access());
+  while (PDF_DATA_AVAIL != FPDFAvail_IsDocAvail(avail_, loader.hints())) {
+    loader.FlushRequestedData();
+  }
+
+  document_ = FPDFAvail_GetDocument(avail_, nullptr);
+  ASSERT_TRUE(document_);
+
+  // The "info" dictionary should available for linearized document, if it is
+  // located in first page section.
+  // Info was remapped to Dictionary with Type "Catalog"
+  EXPECT_TRUE(FPDF_GetMetaText(document_, "Type", nullptr, 0));
 }
