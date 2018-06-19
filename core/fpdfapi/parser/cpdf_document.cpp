@@ -617,9 +617,8 @@ void CPDF_Document::DeletePage(int iPage) {
   m_PageList.erase(m_PageList.begin() + iPage);
 }
 
-CPDF_Font* CPDF_Document::AddStandardFont(const char* font,
+CPDF_Font* CPDF_Document::AddStandardFont(ByteString name,
                                           CPDF_FontEncoding* pEncoding) {
-  ByteString name(font);
   if (PDF_GetStandardFontName(&name) < 0)
     return nullptr;
   return GetPageData()->GetStandardFont(name, pEncoding);
