@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35244f72_05c043b4",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T14:57:19Z",
+      "side": 1,
+      "message": "This should probably store m_pInfoDict so we can avoid re-creating it each time.",
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d94f32c4_e4fe68e5",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T14:57:19Z",
+      "side": 1,
+      "message": "Why is this static and why does it need to receive the pages now?",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceaec0db_23ed0a3a",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T14:57:19Z",
+      "side": 1,
+      "message": "If the Info is on the first page, do we still have to load the whole document or just the first page?",
+      "range": {
+        "startLine": 275,
+        "startChar": 34,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "48a59065a870daa758135a38568cc8042c0ea99f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

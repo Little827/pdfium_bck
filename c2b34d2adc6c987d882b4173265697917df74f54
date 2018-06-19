@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39d0ac97_0aeb2f4f",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T14:57:19Z",
+      "side": 0,
+      "message": "We\u0027ll never set the info dict for loaded documents now?",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 27
+      },
+      "revId": "c2b34d2adc6c987d882b4173265697917df74f54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
