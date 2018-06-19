@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1df4645_84f0866b",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 0,
+      "message": "Why doesn\u0027t this use the doc anymore?",
+      "range": {
+        "startLine": 882,
+        "startChar": 43,
+        "endLine": 882,
+        "endChar": 60
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563e6001_1ad1d185",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 0,
+      "message": "What happened to this bit?",
+      "range": {
+        "startLine": 901,
+        "startChar": 25,
+        "endLine": 903,
+        "endChar": 66
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13177dd2_4a075dc8",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 0,
+      "message": "Doesn\u0027t this need a SetPos?",
+      "range": {
+        "startLine": 928,
+        "startChar": 13,
+        "endLine": 928,
+        "endChar": 16
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b99e17_844072a9",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 0,
+      "message": "Why did we lose this safety check?",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 12
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

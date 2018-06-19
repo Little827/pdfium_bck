@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92aadd01_9d63d820",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "Can you please add a description of what this is simplifying?",
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c2e6ca_2b5b7c54",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "Why is this wrapped in {}\u0027s?",
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a90173e_da0dfb6c",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "Please write the type here.",
+      "range": {
+        "startLine": 835,
+        "startChar": 16,
+        "endLine": 835,
+        "endChar": 20
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de34c71_6a8a7e72",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "This doesn\u0027t have to be true in a hand crafted PDF file. I don\u0027t think this is a safe assumption to make.",
+      "range": {
+        "startLine": 839,
+        "startChar": 21,
+        "endLine": 840,
+        "endChar": 29
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d563d0_50c102ba",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "Why is this wrapped in {}\u0027s?",
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9591924_896f7092",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "pObj-\u003eAsStream()-\u003eGetDict()",
+      "range": {
+        "startLine": 865,
+        "startChar": 46,
+        "endLine": 865,
+        "endChar": 57
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bdaaf0_85728295",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "pObj-\u003eAsDictionary()",
+      "range": {
+        "startLine": 866,
+        "startChar": 45,
+        "endLine": 866,
+        "endChar": 61
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd847a58_def76a12",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "Merge",
+      "range": {
+        "startLine": 873,
+        "startChar": 61,
+        "endLine": 873,
+        "endChar": 65
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c758abf9_c1d3b47f",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-19T15:23:09Z",
+      "side": 1,
+      "message": "ByteString\u0026",
+      "range": {
+        "startLine": 877,
+        "startChar": 32,
+        "endLine": 877,
+        "endChar": 36
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
