@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "460bfadc_91037888",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 0,
+      "message": "We do not need document, to parse trailer.\nIn all places all refs from trailer are fixed for document.\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.cpp?rcl\u003dee3e3a4f3cbaa99ae3609f575ff9b2c329c5df2a\u0026l\u003d339 for example.\n\nI want remove deps from document, to move parsing into separate class, and unify it.",
+      "parentUuid": "b1df4645_84f0866b",
+      "range": {
+        "startLine": 882,
+        "startChar": 43,
+        "endLine": 882,
+        "endChar": 60
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "563e6001_1ad1d185",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-19T15:23:09Z",
       "side": 0,
       "message": "What happened to this bit?",
+      "range": {
+        "startLine": 901,
+        "startChar": 25,
+        "endLine": 903,
+        "endChar": 66
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ac5bb5a_5da41edf",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 0,
+      "message": "If we have dwObjNum, that mean, that it is no inlined object, but this is imposible in this case, because all values in current object are inlined,\nI have added  DCHECK(it-\u003esecond-\u003eIsInline()); as note for this.\nIn case |IsInline()| i move data instead clone.",
+      "parentUuid": "563e6001_1ad1d185",
       "range": {
         "startLine": 901,
         "startChar": 25,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1a4ec21a_ed6e96b1",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 0,
+      "message": "This is moved to line 859. In case when we have parsed trailer, we can continue after it.",
+      "parentUuid": "13177dd2_4a075dc8",
+      "range": {
+        "startLine": 928,
+        "startChar": 13,
+        "endLine": 928,
+        "endChar": 16
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75b99e17_844072a9",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2018-06-19T15:23:09Z",
       "side": 0,
       "message": "Why did we lose this safety check?",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 12
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f620546b_bc470344",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 0,
+      "message": "this is impossible case, because we just added \"size\" (line 1001) to pos.\nAlso i have checked manualy this BIG state machine, it is correct, and finite in all cases.",
+      "parentUuid": "75b99e17_844072a9",
       "range": {
         "startLine": 1002,
         "startChar": 0,

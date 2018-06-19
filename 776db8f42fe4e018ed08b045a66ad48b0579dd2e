@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "ac8c50d3_d6edb57d",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a90173e_da0dfb6c",
+      "range": {
+        "startLine": 835,
+        "startChar": 16,
+        "endLine": 835,
+        "endChar": 20
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5de34c71_6a8a7e72",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -70,6 +94,30 @@
       "writtenOn": "2018-06-19T15:23:09Z",
       "side": 1,
       "message": "This doesn\u0027t have to be true in a hand crafted PDF file. I don\u0027t think this is a safe assumption to make.",
+      "range": {
+        "startLine": 839,
+        "startChar": 21,
+        "endLine": 840,
+        "endChar": 29
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf333f6_e34e7c00",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 1,
+      "message": "This is just comment about, how this work. Old logic same.",
+      "parentUuid": "5de34c71_6a8a7e72",
       "range": {
         "startLine": 839,
         "startChar": 21,
@@ -99,6 +147,24 @@
     },
     {
       "key": {
+        "uuid": "30eafff8_ab5bec3d",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 1,
+      "message": "To reduce changes in this CL, i store some \"{}\". In other case, the diff will be enormous, and non understandable.\nI will fix this later in other CL, without other changes expect removing this \"{}\"",
+      "parentUuid": "d9d563d0_50c102ba",
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9591924_896f7092",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -122,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "3a488073_02bea416",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9591924_896f7092",
+      "range": {
+        "startLine": 865,
+        "startChar": 46,
+        "endLine": 865,
+        "endChar": 57
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06bdaaf0_85728295",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -142,6 +232,30 @@
       "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc3cfda_7505f56e",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06bdaaf0_85728295",
+      "range": {
+        "startLine": 866,
+        "startChar": 45,
+        "endLine": 866,
+        "endChar": 61
+      },
+      "revId": "776db8f42fe4e018ed08b045a66ad48b0579dd2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
