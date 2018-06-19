@@ -214,10 +214,7 @@ bool CPDF_Creator::WriteDirectObj(uint32_t objnum,
           return false;
         break;
       }
-      CPDF_Encryptor encryptor(
-          GetCryptoHandler(), objnum,
-          pdfium::make_span(reinterpret_cast<const uint8_t*>(str.c_str()),
-                            str.GetLength()));
+      CPDF_Encryptor encryptor(GetCryptoHandler(), objnum, str.AsRawSpan());
       ByteString content = PDF_EncodeString(
           ByteString(encryptor.GetSpan().data(), encryptor.GetSpan().size()),
           bHex);
