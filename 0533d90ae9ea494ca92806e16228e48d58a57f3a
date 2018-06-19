@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "8ed6f65f_725b9f69",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T16:55:46Z",
+      "side": 1,
+      "message": "Ack.  Maybe add comment to that effect, WrapUnique() is almost always wrong otherwise.",
+      "parentUuid": "01f2b166_b3ce5e33",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 66
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8d12fdf_7e89d282",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
