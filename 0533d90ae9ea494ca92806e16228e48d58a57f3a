@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "01f2b166_b3ce5e33",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:41:27Z",
+      "side": 1,
+      "message": "It have protected constructor, can not use with pdfium::MakeUnique",
+      "parentUuid": "de44ca30_454225d2",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 66
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8d12fdf_7e89d282",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
@@ -233,6 +257,30 @@
     },
     {
       "key": {
+        "uuid": "970595bc_31cfb4ba",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:41:27Z",
+      "side": 1,
+      "message": "No, this is like CPDF_Image, the typed wrapper of CPDF_Stream.",
+      "parentUuid": "241a4e06_af976039",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d23ca9f_5f72ab7c",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
         "patchSetId": 5
@@ -244,6 +292,30 @@
       "writtenOn": "2018-06-19T16:23:50Z",
       "side": 1,
       "message": "Nit: Rather than being static, this is probably a method of CPDF_Stream.  Given a CPDF_Stream, it seems reasonable to ask it if it is an object stream vs. some other kind of stream.",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3401cd23_c1356584",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T16:41:27Z",
+      "side": 1,
+      "message": "This is special case of CPDF_Stream, which is used only for parsing, and i do not want to make this method common. This is internal parsing object.",
+      "parentUuid": "3d23ca9f_5f72ab7c",
       "range": {
         "startLine": 22,
         "startChar": 13,
