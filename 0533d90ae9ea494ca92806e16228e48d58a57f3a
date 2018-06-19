@@ -22,6 +22,30 @@
       "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c262c848_b8dd836c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-19T15:43:13Z",
+      "side": 1,
+      "message": "\u003e Do you have numbers on the reduced memory usage?\n\nI have just example:\nOn this PDF i have reduced for ~7 Mb  http://www.nasa.gov/pdf/750614main_NASA_FY_2014_Budget_Estimates-508.pdf \n\n\u003e Is the savings just from removing the two maps?\n\nNo, after this CL, we do not store compressed (useless after decompress) data for \"objects streams\" \n(See http://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#53).",
+      "parentUuid": "761e1ea6_e49b8114",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
