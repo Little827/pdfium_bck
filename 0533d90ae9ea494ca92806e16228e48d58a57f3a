@@ -423,6 +423,30 @@
     },
     {
       "key": {
+        "uuid": "6f0a35a1_4c628541",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T17:02:25Z",
+      "side": 1,
+      "message": "Alternatively, can we make a unit test for all this if we keep it in its own files?  That would be a good justification for keeping it as you have it.\n\nCan IsObjectsStreamObject() be private?",
+      "parentUuid": "cb712b28_faf73bdd",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "998d34d9_97487f23",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
         "patchSetId": 5
