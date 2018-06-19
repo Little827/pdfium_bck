@@ -427,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "52029bfb_f80457ec",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-19T20:41:26Z",
+      "side": 1,
+      "message": "Re: No, Why we need big useless data in memory?\n\nWe wont, it\u0027s just that I think I\u0027d might like it better if the caller destroyed it.",
+      "parentUuid": "cc1df78a_e378d424",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "0533d90ae9ea494ca92806e16228e48d58a57f3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7212289_26b991b2",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 5
