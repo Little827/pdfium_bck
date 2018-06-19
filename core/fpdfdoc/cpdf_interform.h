@@ -44,7 +44,7 @@ class CPDF_InterForm {
                                             int iMinLen,
                                             const char* csPrefix);
   static CPDF_Font* AddStandardFont(CPDF_Document* pDocument,
-                                    ByteString csFontName);
+                                    const ByteString& csFontName);
   static ByteString GetNativeFont(uint8_t iCharSet, void* pLogFont);
   static uint8_t GetNativeCharSet();
   static CPDF_Font* AddNativeFont(uint8_t iCharSet, CPDF_Document* pDocument);

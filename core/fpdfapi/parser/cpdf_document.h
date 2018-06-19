@@ -109,7 +109,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   void IncrementParsedPageCount() { ++m_ParsedPageCount; }
   uint32_t GetParsedPageCountForTesting() { return m_ParsedPageCount; }
 
-  CPDF_Font* AddStandardFont(const char* font, CPDF_FontEncoding* pEncoding);
+  CPDF_Font* AddStandardFont(ByteString name, CPDF_FontEncoding* pEncoding);
   CPDF_Font* AddFont(CFX_Font* pFont, int charset, bool bVert);
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
   CPDF_Font* AddWindowsFont(LOGFONTA* pLogFont,

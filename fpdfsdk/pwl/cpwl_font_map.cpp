@@ -217,7 +217,7 @@ ByteString CPWL_FontMap::GetNativeFont(int32_t nCharset) {
 }
 
 CPDF_Font* CPWL_FontMap::AddFontToDocument(CPDF_Document* pDoc,
-                                           ByteString& sFontName,
+                                           const ByteString& sFontName,
                                            uint8_t nCharset) {
   if (IsStandardFont(sFontName))
     return AddStandardFont(pDoc, sFontName);
@@ -226,24 +226,19 @@ CPDF_Font* CPWL_FontMap::AddFontToDocument(CPDF_Document* pDoc,
 }
 
 CPDF_Font* CPWL_FontMap::AddStandardFont(CPDF_Document* pDoc,
-                                         ByteString& sFontName) {
+                                         const ByteString& sFontName) {
   if (!pDoc)
     return nullptr;
 
-  CPDF_Font* pFont = nullptr;
+  if (sFontName == "ZapfDingbats")
+    return pDoc->AddStandardFont(sFontName, nullptr);
 
-  if (sFontName == "ZapfDingbats") {
-    pFont = pDoc->AddStandardFont(sFontName.c_str(), nullptr);
-  } else {
-    CPDF_FontEncoding fe(PDFFONT_ENCODING_WINANSI);
-    pFont = pDoc->AddStandardFont(sFontName.c_str(), &fe);
-  }
-
-  return pFont;
+  CPDF_FontEncoding fe(PDFFONT_ENCODING_WINANSI);
+  return pDoc->AddStandardFont(sFontName, &fe);
 }
 
 CPDF_Font* CPWL_FontMap::AddSystemFont(CPDF_Document* pDoc,
-                                       ByteString& sFontName,
+                                       ByteString sFontName,
                                        uint8_t nCharset) {
   if (!pDoc)
     return nullptr;
