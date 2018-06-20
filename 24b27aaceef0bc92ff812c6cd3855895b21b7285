@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6254750c_c55acdb3",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-20T20:53:02Z",
+      "side": 0,
+      "message": "This was accidentally changed from 4 in a previous CL.",
+      "range": {
+        "startLine": 912,
+        "startChar": 32,
+        "endLine": 912,
+        "endChar": 34
+      },
+      "revId": "24b27aaceef0bc92ff812c6cd3855895b21b7285",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
