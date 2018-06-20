@@ -35,7 +35,18 @@ class CPDF_Parser {
  public:
   class ParsedObjectsHolder : public CPDF_IndirectObjectHolder {
    public:
+    ~ParsedObjectsHolder() override;
     virtual bool TryInit() = 0;
+
+   private:
+    // Only CPDF_Parser should register itself.
+    friend class CPDF_Parser;
+    void SetParser(CPDF_Parser* parser);
+
+   private:
+    std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum) override;
+
+    UnownedPtr<CPDF_Parser> m_pParser;
   };
 
   enum Error {
@@ -80,8 +91,6 @@ class CPDF_Parser {
 
   CPDF_Dictionary* GetEncryptDict() const { return m_pEncryptDict.Get(); }
 
-  std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum);
-
   uint32_t GetLastObjNum() const;
   bool IsValidObjectNumber(uint32_t objnum) const;
   FX_FILESIZE GetObjectPositionOrZero(uint32_t objnum) const;
@@ -114,6 +123,8 @@ class CPDF_Parser {
 
   void SetLinearizedHeader(std::unique_ptr<CPDF_LinearizedHeader> pLinearized);
 
+  CPDF_Object* GetOrParseIndirectObject(uint32_t objnum);
+
  protected:
   enum class ObjectType : uint8_t {
     kFree = 0x00,
@@ -134,6 +145,8 @@ class CPDF_Parser {
     ObjectType type;
     uint16_t gennum;
   };
+
+  std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum);
 
   std::unique_ptr<CPDF_SyntaxParser> m_pSyntax;
   std::map<uint32_t, ObjectInfo> m_ObjectInfo;

@@ -131,6 +131,18 @@ class CPDF_Parser::TrailerData {
   uint32_t last_root_obj_num_ = CPDF_Object::kInvalidObjNum;
 };
 
+CPDF_Parser::ParsedObjectsHolder::~ParsedObjectsHolder() = default;
+
+void CPDF_Parser::ParsedObjectsHolder::SetParser(CPDF_Parser* parser) {
+  DCHECK(!m_pParser || !parser);
+  m_pParser = parser;
+}
+
+std::unique_ptr<CPDF_Object>
+CPDF_Parser::ParsedObjectsHolder::ParseIndirectObject(uint32_t objnum) {
+  return m_pParser ? m_pParser->ParseIndirectObject(objnum) : nullptr;
+}
+
 CPDF_Parser::CPDF_Parser(ParsedObjectsHolder* holder)
     : m_pSyntax(pdfium::MakeUnique<CPDF_SyntaxParser>()),
       m_pObjectsHolder(holder),
@@ -142,12 +154,14 @@ CPDF_Parser::CPDF_Parser(ParsedObjectsHolder* holder)
     m_pOwnedObjectsHolder = pdfium::MakeUnique<ObjectsHolderStub>();
     m_pObjectsHolder = m_pOwnedObjectsHolder.get();
   }
+  m_pObjectsHolder->SetParser(this);
 }
 
 CPDF_Parser::CPDF_Parser() : CPDF_Parser(nullptr) {}
 
 CPDF_Parser::~CPDF_Parser() {
   ReleaseEncryptHandler();
+  m_pObjectsHolder->SetParser(nullptr);
 }
 
 uint32_t CPDF_Parser::GetLastObjNum() const {
@@ -1320,6 +1334,10 @@ uint32_t CPDF_Parser::GetFirstPageNo() const {
 void CPDF_Parser::SetLinearizedHeader(
     std::unique_ptr<CPDF_LinearizedHeader> pLinearized) {
   m_pLinearized = std::move(pLinearized);
+}
+
+CPDF_Object* CPDF_Parser::GetOrParseIndirectObject(uint32_t objnum) {
+  return m_pObjectsHolder->GetOrParseIndirectObject(objnum);
 }
 
 std::unique_ptr<CPDF_Dictionary> CPDF_Parser::LoadTrailerV4() {

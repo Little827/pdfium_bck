@@ -198,11 +198,6 @@ CPDF_Document::~CPDF_Document() {
   CPDF_ModuleMgr::Get()->GetPageModule()->ClearStockFont(this);
 }
 
-std::unique_ptr<CPDF_Object> CPDF_Document::ParseIndirectObject(
-    uint32_t objnum) {
-  return m_pParser ? m_pParser->ParseIndirectObject(objnum) : nullptr;
-}
-
 void CPDF_Document::LoadDocInternal() {
   SetLastObjNum(m_pParser->GetLastObjNum());
 
