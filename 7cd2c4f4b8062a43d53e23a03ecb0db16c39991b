@@ -16,6 +16,24 @@
       "revId": "7cd2c4f4b8062a43d53e23a03ecb0db16c39991b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c432aadc_f6b000a5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2055,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-06-20T15:15:30Z",
+      "side": 1,
+      "message": "I\u0027m somewhat confused about this request. As this is the swaps are obviously the right swaps and will continue to be whatever the types are, I expect ADL to do its thing.\n\nWithout the using I need to consider what the types are and if std::swap is the right swap. In the case of the \u0027clips\u0027 they appear to be \u0027bool\u0027 so std::swap should be fine, but the \u0027fY\u0027 and fX\u0027 are SkScaler which is a typename which comes from some header. SkScaler happens to currently be a \u0027float\u0027 so std::swap seems ok, and it\u0027s unlikely it will change any time soon, so maybe this code can get away with that.\n\nIn short, as a reader of this code with the using I don\u0027t need to think too hard, without the using I need to think harder. It would be nice if the standard allowed partial specialization of function templates and avoided this mess, but as things stand I think this is the correct way to swap.\n\nAll that being said, I see that PDFium likes using std::swap directly and I really do wish to remove SkTSwap. So uploading a new change to use std::swap directly.",
+      "parentUuid": "44f77492_d5a33a98",
+      "revId": "7cd2c4f4b8062a43d53e23a03ecb0db16c39991b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
