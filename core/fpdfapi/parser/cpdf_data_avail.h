@@ -140,8 +140,7 @@ class CPDF_DataAvail final {
       FX_FILESIZE pos,
       uint32_t objnum,
       CPDF_IndirectObjectHolder* pObjList = nullptr) const;
-  std::unique_ptr<CPDF_Object> GetObject(uint32_t objnum,
-                                         bool* pExistInFile);
+  CPDF_Object* GetObject(uint32_t objnum, bool* pExistInFile);
   bool GetPageKids(CPDF_Object* pPages);
   bool PreparePageItem();
   bool LoadPages();
@@ -182,7 +181,7 @@ class CPDF_DataAvail final {
   bool m_bPagesLoad = false;
   CPDF_Parser* m_pCurrentParser = nullptr;
   std::unique_ptr<CPDF_PageObjectAvail> m_pFormAvail;
-  std::vector<std::unique_ptr<CPDF_Object>> m_PagesArray;
+  std::vector<CPDF_Object*> m_PagesArray;
   uint32_t m_dwEncryptObjNum = 0;
   bool m_bTotalLoadPageTree = false;
   bool m_bCurPageDictLoadOK = false;
