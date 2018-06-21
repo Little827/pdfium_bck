@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "627e97cc_620a0bf3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-21T16:20:00Z",
+      "side": 1,
+      "message": "nit: ((type) \u003d\u003d JSPLATFORM_ALERT_BUTTON_OK || \\ \nand so forth to ensure correctness when |type| is expanded.\n\nAlso, do the embedders need this Macro?  Maybe it goes in the .cpp file where we make these tests rather than the public API.",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 7
+      },
+      "revId": "1c60989d98caa5f7b1a4492d35c0160868251514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59427a4e_eb14f16d",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 3
