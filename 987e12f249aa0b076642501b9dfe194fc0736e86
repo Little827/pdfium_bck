@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "367f6cc0_c4bbb6f5",
+        "filename": "fxjs/cjs_app.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-21T21:02:19Z",
+      "side": 1,
+      "message": "Do you know what the possible |params| values are? Are there menu items that have more parameters?",
+      "revId": "987e12f249aa0b076642501b9dfe194fc0736e86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21dd4cd1_00af5775",
+        "filename": "fxjs/cjs_app.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-21T21:02:19Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "987e12f249aa0b076642501b9dfe194fc0736e86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca365c63_fbff4ae8",
+        "filename": "fxjs/cjs_app.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-21T21:02:19Z",
+      "side": 1,
+      "message": "Probably needs localization somehow.",
+      "revId": "987e12f249aa0b076642501b9dfe194fc0736e86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
