@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcb68b97_efe543a8",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T16:15:46Z",
+      "side": 1,
+      "message": "first_object_offset",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41dc3cea_0ff091ab",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T16:15:46Z",
+      "side": 1,
+      "message": "This can go in the ctor initializer list",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 15
+      },
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd4af4f_1c6eaa3f",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T16:15:46Z",
+      "side": 1,
+      "message": "Can go in the ctor initializer list",
+      "range": {
+        "startLine": 116,
+        "startChar": 13,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
