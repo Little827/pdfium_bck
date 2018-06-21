@@ -3892,8 +3892,8 @@ void CFXJSE_FormCalcContext::Lower(CFXJSE_Value* pThis,
   ByteString argString = ValueToUTF8String(argOne.get());
   WideString wsArgString = WideString::FromUTF8(argString.AsStringView());
   const wchar_t* pData = wsArgString.c_str();
-  size_t i = 0;
-  while (i < argString.GetLength()) {
+  size_t data_length = wcslen(pData);
+  for (size_t i = 0; i < data_length; i++) {
     int32_t ch = pData[i];
     if ((ch >= 0x41 && ch <= 0x5A) || (ch >= 0xC0 && ch <= 0xDE))
       ch += 32;
@@ -3901,7 +3901,6 @@ void CFXJSE_FormCalcContext::Lower(CFXJSE_Value* pThis,
       ch += 1;
 
     lowStringBuf.AppendChar(ch);
-    ++i;
   }
   lowStringBuf.AppendChar(0);
 
