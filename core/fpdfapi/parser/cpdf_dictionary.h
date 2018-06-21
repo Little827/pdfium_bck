@@ -41,10 +41,8 @@ class CPDF_Dictionary : public CPDF_Object {
   bool WriteTo(IFX_ArchiveStream* archive) const override;
 
   size_t GetCount() const { return m_Map.size(); }
-  const CPDF_Object* GetObjectFor(const ByteString& key) const;
-  CPDF_Object* GetObjectFor(const ByteString& key);
-  const CPDF_Object* GetDirectObjectFor(const ByteString& key) const;
-  CPDF_Object* GetDirectObjectFor(const ByteString& key);
+  CPDF_Object* GetObjectFor(const ByteString& key) const;
+  CPDF_Object* GetDirectObjectFor(const ByteString& key) const;
   ByteString GetStringFor(const ByteString& key) const;
   ByteString GetStringFor(const ByteString& key,
                           const ByteString& default_str) const;
@@ -53,12 +51,9 @@ class CPDF_Dictionary : public CPDF_Object {
   int GetIntegerFor(const ByteString& key, int default_int) const;
   bool GetBooleanFor(const ByteString& key, bool bDefault = false) const;
   float GetNumberFor(const ByteString& key) const;
-  const CPDF_Dictionary* GetDictFor(const ByteString& key) const;
-  CPDF_Dictionary* GetDictFor(const ByteString& key);
-  const CPDF_Stream* GetStreamFor(const ByteString& key) const;
-  CPDF_Stream* GetStreamFor(const ByteString& key);
-  const CPDF_Array* GetArrayFor(const ByteString& key) const;
-  CPDF_Array* GetArrayFor(const ByteString& key);
+  CPDF_Dictionary* GetDictFor(const ByteString& key) const;
+  CPDF_Stream* GetStreamFor(const ByteString& key) const;
+  CPDF_Array* GetArrayFor(const ByteString& key) const;
   CFX_FloatRect GetRectFor(const ByteString& key) const;
   CFX_Matrix GetMatrixFor(const ByteString& key) const;
   float GetFloatFor(const ByteString& key) const { return GetNumberFor(key); }

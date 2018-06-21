@@ -126,35 +126,13 @@ WideString CPDF_FileSpec::GetFileName() const {
   return DecodeFileName(csFileName);
 }
 
-const CPDF_Stream* CPDF_FileSpec::GetFileStream() const {
+CPDF_Stream* CPDF_FileSpec::GetFileStream() const {
   const CPDF_Dictionary* pDict = m_pObj->AsDictionary();
   if (!pDict)
     return nullptr;
 
   // Get the embedded files dictionary.
   const CPDF_Dictionary* pFiles = pDict->GetDictFor("EF");
-  if (!pFiles)
-    return nullptr;
-
-  size_t end = pDict->GetStringFor("FS") == "URL" ? 2 : FX_ArraySize(kKeys);
-  for (size_t i = 0; i < end; ++i) {
-    ByteString key = kKeys[i];
-    if (!pDict->GetUnicodeTextFor(key).IsEmpty()) {
-      const CPDF_Stream* pStream = pFiles->GetStreamFor(key);
-      if (pStream)
-        return pStream;
-    }
-  }
-  return nullptr;
-}
-
-CPDF_Stream* CPDF_FileSpec::GetFileStream() {
-  CPDF_Dictionary* pDict = m_pWritableObj->AsDictionary();
-  if (!pDict)
-    return nullptr;
-
-  // Get the embedded files dictionary.
-  CPDF_Dictionary* pFiles = pDict->GetDictFor("EF");
   if (!pFiles)
     return nullptr;
 
@@ -170,21 +148,12 @@ CPDF_Stream* CPDF_FileSpec::GetFileStream() {
   return nullptr;
 }
 
-const CPDF_Dictionary* CPDF_FileSpec::GetParamsDict() const {
+CPDF_Dictionary* CPDF_FileSpec::GetParamsDict() const {
   const CPDF_Stream* pStream = GetFileStream();
   if (!pStream)
     return nullptr;
 
   const CPDF_Dictionary* pDict = pStream->GetDict();
-  return pDict ? pDict->GetDictFor("Params") : nullptr;
-}
-
-CPDF_Dictionary* CPDF_FileSpec::GetParamsDict() {
-  CPDF_Stream* pStream = GetFileStream();
-  if (!pStream)
-    return nullptr;
-
-  CPDF_Dictionary* pDict = pStream->GetDict();
   return pDict ? pDict->GetDictFor("Params") : nullptr;
 }
 

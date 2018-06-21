@@ -81,23 +81,12 @@ std::unique_ptr<CPDF_Object> CPDF_Dictionary::CloneNonCyclic(
   return std::move(pCopy);
 }
 
-const CPDF_Object* CPDF_Dictionary::GetObjectFor(const ByteString& key) const {
+CPDF_Object* CPDF_Dictionary::GetObjectFor(const ByteString& key) const {
   auto it = m_Map.find(key);
   return it != m_Map.end() ? it->second.get() : nullptr;
 }
 
-CPDF_Object* CPDF_Dictionary::GetObjectFor(const ByteString& key) {
-  auto it = m_Map.find(key);
-  return it != m_Map.end() ? it->second.get() : nullptr;
-}
-
-const CPDF_Object* CPDF_Dictionary::GetDirectObjectFor(
-    const ByteString& key) const {
-  const CPDF_Object* p = GetObjectFor(key);
-  return p ? p->GetDirect() : nullptr;
-}
-
-CPDF_Object* CPDF_Dictionary::GetDirectObjectFor(const ByteString& key) {
+CPDF_Object* CPDF_Dictionary::GetDirectObjectFor(const ByteString& key) const {
   CPDF_Object* p = GetObjectFor(key);
   return p ? p->GetDirect() : nullptr;
 }
@@ -141,19 +130,7 @@ bool CPDF_Dictionary::GetBooleanFor(const ByteString& key,
   return ToBoolean(p) ? p->GetInteger() != 0 : bDefault;
 }
 
-const CPDF_Dictionary* CPDF_Dictionary::GetDictFor(
-    const ByteString& key) const {
-  const CPDF_Object* p = GetDirectObjectFor(key);
-  if (!p)
-    return nullptr;
-  if (const CPDF_Dictionary* pDict = p->AsDictionary())
-    return pDict;
-  if (const CPDF_Stream* pStream = p->AsStream())
-    return pStream->GetDict();
-  return nullptr;
-}
-
-CPDF_Dictionary* CPDF_Dictionary::GetDictFor(const ByteString& key) {
+CPDF_Dictionary* CPDF_Dictionary::GetDictFor(const ByteString& key) const {
   CPDF_Object* p = GetDirectObjectFor(key);
   if (!p)
     return nullptr;
@@ -164,19 +141,11 @@ CPDF_Dictionary* CPDF_Dictionary::GetDictFor(const ByteString& key) {
   return nullptr;
 }
 
-const CPDF_Array* CPDF_Dictionary::GetArrayFor(const ByteString& key) const {
+CPDF_Array* CPDF_Dictionary::GetArrayFor(const ByteString& key) const {
   return ToArray(GetDirectObjectFor(key));
 }
 
-CPDF_Array* CPDF_Dictionary::GetArrayFor(const ByteString& key) {
-  return ToArray(GetDirectObjectFor(key));
-}
-
-const CPDF_Stream* CPDF_Dictionary::GetStreamFor(const ByteString& key) const {
-  return ToStream(GetDirectObjectFor(key));
-}
-
-CPDF_Stream* CPDF_Dictionary::GetStreamFor(const ByteString& key) {
+CPDF_Stream* CPDF_Dictionary::GetStreamFor(const ByteString& key) const {
   return ToStream(GetDirectObjectFor(key));
 }
 

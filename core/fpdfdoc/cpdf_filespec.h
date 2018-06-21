@@ -29,12 +29,9 @@ class CPDF_FileSpec {
   static WideString DecodeFileName(const WideString& filepath);
 
   const CPDF_Object* GetObj() const { return m_pObj.Get(); }
-  CPDF_Object* GetObj() { return m_pWritableObj.Get(); }
   WideString GetFileName() const;
-  const CPDF_Stream* GetFileStream() const;
-  CPDF_Stream* GetFileStream();
-  const CPDF_Dictionary* GetParamsDict() const;
-  CPDF_Dictionary* GetParamsDict();
+  CPDF_Stream* GetFileStream() const;
+  CPDF_Dictionary* GetParamsDict() const;
 
   // Set this file spec to refer to a file name (not a url).
   void SetFileName(const WideString& wsFileName);
