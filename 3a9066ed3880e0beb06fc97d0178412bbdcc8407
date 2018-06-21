@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31df34c3_d54ad818",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T18:45:31Z",
+      "side": 1,
+      "message": "if (!m_pParser-\u003eGetLinearizedHeader()) {\n  m_PageList.resize(RetrievePageCount());\n  return;\n}",
+      "revId": "3a9066ed3880e0beb06fc97d0178412bbdcc8407",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c0b6fe_92854c6f",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T18:45:31Z",
+      "side": 1,
+      "message": "Let\u0027s store the LinearizedHeader into a variable so we don\u0027t have to get it each time.",
+      "range": {
+        "startLine": 242,
+        "startChar": 15,
+        "endLine": 242,
+        "endChar": 47
+      },
+      "revId": "3a9066ed3880e0beb06fc97d0178412bbdcc8407",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
