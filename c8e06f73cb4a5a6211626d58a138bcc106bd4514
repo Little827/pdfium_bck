@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3581992c_c80d24dc",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T17:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da2f1a4_1a148b93",
+      "range": {
+        "startLine": 99,
+        "startChar": 44,
+        "endLine": 99,
+        "endChar": 50
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30de7a1a_35fe7454",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 8
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "d18025ba_6582c59b",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T17:56:47Z",
+      "side": 1,
+      "message": "It\u0027s valid to have neither, though this method won\u0027t do anything.",
+      "parentUuid": "30de7a1a_35fe7454",
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d226536_babf28d8",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 8
@@ -56,6 +98,24 @@
       "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b313352_d5e9dbce",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T17:56:47Z",
+      "side": 1,
+      "message": "Nack, repeating this twice might have been be worth it, but not 3 times. \"if (contents_stream_)\" is not an error case, it\u0027s a normal code path.",
+      "parentUuid": "4d226536_babf28d8",
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "29f1648d_1d6116c9",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T17:56:47Z",
+      "side": 1,
+      "message": "Yeah, I just wanted to do \"streams_left \u003d range(n)\" and was surprised the C++ equivalent was called \"iota\" and I\u0027d never seen it before.",
+      "parentUuid": "b97fb950_b892d1f3",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea04bdcd_272ea517",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
         "patchSetId": 8
@@ -102,6 +186,30 @@
       "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d80456_ceefefed",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T17:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea04bdcd_272ea517",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "6eb2d76d_c18352e5",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentmanager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T17:56:47Z",
+      "side": 1,
+      "message": "obj-\u003eGetContentStream() returns int32_t, since -1 is meaningful. In this case it can\u0027t be -1, but since we\u0027re in the same space, casting back and forth would be required here.",
+      "parentUuid": "e5b54891_de663572",
+      "range": {
+        "startLine": 128,
+        "startChar": 13,
+        "endLine": 128,
+        "endChar": 20
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f317ad8d_4213b01e",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 8
@@ -148,6 +280,30 @@
       "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc22b00_ae0a96a9",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T17:56:47Z",
+      "side": 1,
+      "message": "Good call. Found a bug when removing all objects from a page with only one content stream and fixed it. Thank you.",
+      "parentUuid": "f317ad8d_4213b01e",
+      "range": {
+        "startLine": 777,
+        "startChar": 29,
+        "endLine": 777,
+        "endChar": 48
+      },
+      "revId": "c8e06f73cb4a5a6211626d58a138bcc106bd4514",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
