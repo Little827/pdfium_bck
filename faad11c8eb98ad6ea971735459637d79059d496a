@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c641ba8_20ce3b33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T15:07:40Z",
+      "side": 1,
+      "message": "references",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "faad11c8eb98ad6ea971735459637d79059d496a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac9ba65_2aa89db9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T15:07:40Z",
+      "side": 1,
+      "message": "ptrs",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "faad11c8eb98ad6ea971735459637d79059d496a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8f30eb_463cccbd",
+        "filename": "fxjs/cjs_eventhandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T15:07:40Z",
+      "side": 1,
+      "message": "Do we care about nSelEnd, nSelStart and pbRc?",
+      "revId": "faad11c8eb98ad6ea971735459637d79059d496a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93cd94c2_4ce7419d",
+        "filename": "fxjs/cjs_eventhandler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T15:07:40Z",
+      "side": 1,
+      "message": "Do we care about pbRc? (and others below)",
+      "revId": "faad11c8eb98ad6ea971735459637d79059d496a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b97b967_7b330305",
+        "filename": "fxjs/cjs_eventhandler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-21T15:07:40Z",
+      "side": 1,
+      "message": "Should we group these in a followup to get the memory to fit nicely together?",
+      "revId": "faad11c8eb98ad6ea971735459637d79059d496a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
