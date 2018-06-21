@@ -108,10 +108,6 @@ void CPDF_Parser::SetEncryptDictionary(CPDF_Dictionary* pDict) {
   m_pEncryptDict = pDict;
 }
 
-RetainPtr<IFX_SeekableReadStream> CPDF_Parser::GetFileAccess() const {
-  return m_pSyntax->GetFileAccess();
-}
-
 void CPDF_Parser::ShrinkObjectMap(uint32_t objnum) {
   m_CrossRefTable->ShrinkObjectMap(objnum);
 }
@@ -221,8 +217,7 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal(CPDF_Document* pDocument) {
 
 FX_FILESIZE CPDF_Parser::ParseStartXRef() {
   static constexpr char kStartXRefKeyword[] = "startxref";
-  m_pSyntax->SetPos(m_pSyntax->m_FileLen - m_pSyntax->m_HeaderOffset -
-                    strlen(kStartXRefKeyword));
+  m_pSyntax->SetPos(m_pSyntax->GetDocumentSize() - strlen(kStartXRefKeyword));
   if (!m_pSyntax->BackwardsSearchToWord(kStartXRefKeyword, 4096))
     return 0;
 
@@ -236,7 +231,7 @@ FX_FILESIZE CPDF_Parser::ParseStartXRef() {
     return 0;
 
   const FX_SAFE_FILESIZE result = FXSYS_atoi64(xrefpos_str.c_str());
-  if (!result.IsValid() || result.ValueOrDie() >= GetFileAccess()->GetSize())
+  if (!result.IsValid() || result.ValueOrDie() >= m_pSyntax->GetDocumentSize())
     return 0;
 
   return result.ValueOrDie();
@@ -456,7 +451,7 @@ bool CPDF_Parser::ParseAndAppendCrossRefSubsectionData(
     return false;
 
   const size_t max_entries_in_file =
-      m_pSyntax->GetFileAccess()->GetSize() / kEntryConstSize;
+      m_pSyntax->GetDocumentSize() / kEntryConstSize;
   if (new_size.ValueOrDie() > max_entries_in_file)
     return false;
 
@@ -614,7 +609,6 @@ bool CPDF_Parser::RebuildCrossRef() {
   FX_FILESIZE start_pos1 = 0;
   FX_FILESIZE last_obj = -1;
   FX_FILESIZE last_xref = -1;
-  FX_FILESIZE last_trailer = -1;
 
   uint8_t byte = 0;
   m_pSyntax->SetPos(0);
@@ -773,7 +767,6 @@ bool CPDF_Parser::RebuildCrossRef() {
         case ParserState::kTrailer:
           if (inside_index == 7) {
             if (PDFCharIsWhitespace(byte) || PDFCharIsDelimiter(byte)) {
-              last_trailer = current_char_pos - 7;
               m_pSyntax->SetPos(current_char_pos);
               std::unique_ptr<CPDF_Object> pObj =
                   m_pSyntax->GetObjectBody(nullptr);
@@ -866,11 +859,6 @@ bool CPDF_Parser::RebuildCrossRef() {
       }
     }
   }
-
-  if (last_xref != -1 && last_xref > last_obj)
-    last_trailer = last_xref;
-  else if (last_trailer == -1 || last_xref < last_obj)
-    last_trailer = m_pSyntax->m_FileLen;
 
   m_CrossRefTable = CPDF_CrossRefTable::MergeUp(std::move(m_CrossRefTable),
                                                 std::move(cross_ref_table));
