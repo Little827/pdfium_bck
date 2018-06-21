@@ -106,6 +106,9 @@ class CPDF_Parser {
       FX_FILESIZE* pResultPos);
 
   uint32_t GetFirstPageNo() const;
+  const CPDF_LinearizedHeader* GetLinearizedHeader() const {
+    return m_pLinearized.get();
+  }
 
  protected:
   enum class ObjectType : uint8_t {

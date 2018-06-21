@@ -1371,7 +1371,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   if (eRet != SUCCESS)
     return eRet;
 
-  m_pDocument->LoadLinearizedDoc(m_pLinearized.get());
+  m_pDocument->LoadDoc();
   if (!m_pDocument->GetRoot() || m_pDocument->GetPageCount() == 0) {
     if (bXRefRebuilt)
       return FORMAT_ERROR;
@@ -1384,7 +1384,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
     if (eRet != SUCCESS)
       return eRet;
 
-    m_pDocument->LoadLinearizedDoc(m_pLinearized.get());
+    m_pDocument->LoadDoc();
     if (!m_pDocument->GetRoot())
       return FORMAT_ERROR;
   }
