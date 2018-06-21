@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b63df5e6_061fe9ce",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-21T21:37:26Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 320,
+        "startChar": 19,
+        "endLine": 320,
+        "endChar": 20
+      },
+      "revId": "88247ea811ced62d9c7ce1d0a2c819538cddd86c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
