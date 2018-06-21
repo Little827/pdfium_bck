@@ -15,6 +15,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
+#include "core/fpdfapi/parser/cpdf_read_validator.h"
 #include "core/fpdfapi/parser/cpdf_security_handler.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
@@ -380,13 +381,14 @@ int32_t CPDF_Creator::WriteDoc_Stage1() {
       }
       m_iStage = 20;
     } else {
-      m_SavedOffset = m_pParser->GetFileAccess()->GetSize();
+      m_SavedOffset = m_pParser->GetSyntax()->GetValidator()->GetSize();
       m_iStage = 15;
     }
   }
   if (m_iStage == 15) {
     if (m_IsOriginal && m_SavedOffset > 0) {
-      RetainPtr<IFX_SeekableReadStream> pSrcFile = m_pParser->GetFileAccess();
+      RetainPtr<IFX_SeekableReadStream> pSrcFile =
+          m_pParser->GetSyntax()->GetValidator();
       std::vector<uint8_t> buffer(4096);
       FX_FILESIZE src_size = m_SavedOffset;
       while (src_size) {
