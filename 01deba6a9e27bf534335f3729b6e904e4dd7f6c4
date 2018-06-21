@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a93b0218_7507412d",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-21T20:57:58Z",
+      "side": 1,
+      "message": "Can these remain unsigned since there are no negative values?",
+      "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ca3061_b844ae79",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-21T20:57:58Z",
+      "side": 1,
+      "message": "Can these be real functions instead of macros?",
+      "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d829f5c_57a4d544",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 5
@@ -46,6 +80,29 @@
       "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2aa5dc5_5100b6c9",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-21T20:57:58Z",
+      "side": 1,
+      "message": "typo, also line 78.",
+      "range": {
+        "startLine": 74,
+        "startChar": 69,
+        "endLine": 74,
+        "endChar": 76
+      },
+      "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
