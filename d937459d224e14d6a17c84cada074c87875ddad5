@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1529651135 -0700\nnonce ADrMV7bI0ZO5JgGC6x6shPw+5Pcxp1QMYx+IFjHSAdr1wChs2shVPc5wgUVuB++XeFvuScV89a5P\n\n0000000000000000000000000000000000000000 d937459d224e14d6a17c84cada074c87875ddad5 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlssn78ACgkQqzYtYVpm\n/Xs2pAf/Rp7mR22tW0u9omNFCJRybCENDKmVGJGxLhfNLYlqlatrxdBguJXMT2ds\na0GKKVFB5S9YTNwz+hFtaRcdm29+xoEEGCtwYYivf36wHbt4oDbdktWeIRxdDzck\nLFshNDB5YAb8EgZ6gI2cMSLrS5FO43787PUY7hoi5dMDBUa0Tw5evcrOGoCVC++3\ntJWgUb8ThSwtfBSKBEgXAXd6ErXqkry4/th/54MijrsDZngEmcI+hnbKyBu9AUGS\nRgFiiqrvzfZUoliFjVPLS9k+8BE2J6VKgfJcRuyVuS4cyfvkEUnE100Ulc4SMMme\niiMiRpo7QWyisNCKVkGoWfJsAVqquA\u003d\u003d\n\u003dS9gv\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8954021_447e6051",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-22T17:09:13Z",
+      "side": 1,
+      "message": "Is that against the style guide? I like it here since it says \"normally this is called to get a return value, but in this case only its collateral effect matters\".",
+      "revId": "d937459d224e14d6a17c84cada074c87875ddad5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ff4a24_ecb390f6",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-22T17:09:13Z",
+      "side": 1,
+      "message": "empty_streams, now",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "d937459d224e14d6a17c84cada074c87875ddad5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
