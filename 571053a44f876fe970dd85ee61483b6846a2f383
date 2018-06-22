@@ -16,6 +16,24 @@
       "revId": "571053a44f876fe970dd85ee61483b6846a2f383",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f0b96c8_288936f6",
+        "filename": "core/fpdfapi/page/cpdf_pageobjectholder.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-22T14:40:46Z",
+      "side": 1,
+      "message": "Yeah, I suppose it would be better so it can\u0027t be deleted. https://pdfium-review.googlesource.com/c/pdfium/+/35950",
+      "parentUuid": "d700bdb5_d1a12cc7",
+      "revId": "571053a44f876fe970dd85ee61483b6846a2f383",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
