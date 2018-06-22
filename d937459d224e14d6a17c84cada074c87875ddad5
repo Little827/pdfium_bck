@@ -38,6 +38,24 @@
     },
     {
       "key": {
+        "uuid": "845e9fab_33c52ad5",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-22T19:23:20Z",
+      "side": 1,
+      "message": "I mean \"does the style guide tell me not to do this?\" I think it\u0027s useful as documentation. Though I don\u0027t feel strongly about it, so fell free to remove.",
+      "parentUuid": "a66f873f_e9669f91",
+      "revId": "d937459d224e14d6a17c84cada074c87875ddad5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0ff4a24_ecb390f6",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
         "patchSetId": 1
