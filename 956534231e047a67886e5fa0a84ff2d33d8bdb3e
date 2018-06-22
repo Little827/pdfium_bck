@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25614f78_905d5d71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T22:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e6b22e_4aa34825",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c40547_c4c6942f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734e81dd_2d237f01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T22:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c40547_c4c6942f",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "27e8720b_0dd4cbf6",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T22:09:07Z",
+      "side": 1,
+      "message": "Nohow. The CFX_SeekableStreamProxy do something else, which related to code page.",
+      "parentUuid": "0605b3f2_4a619b09",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88474240_c4618e11",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T22:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e761300_18f7b037",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13c5dfc5_5fb5fd78",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 2
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a1ce34ee_1135308e",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T22:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c5dfc5_5fb5fd78",
+      "range": {
+        "startLine": 612,
+        "startChar": 2,
+        "endLine": 612,
+        "endChar": 11
+      },
+      "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b7e58c5_e8774a4d",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2018-06-22T18:10:09Z",
       "side": 1,
       "message": "nit: The word \"should\" may be changing the meaning of this comment in a way you didn\u0027t intend. When I read this sentence, it sounds like you are saying that we are *not* doing this check with the present code, but someday we might add the check to make things better. Instead, we are actually doing the check, right?  If we just write,\n\n// Check data availability first to allow the Validator to request data smoothly, without jumps.\n\nthen I think it means what you intended.",
+      "range": {
+        "startLine": 621,
+        "startChar": 9,
+        "endLine": 621,
+        "endChar": 18
+      },
+      "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0071df0a_dae36d28",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T22:09:07Z",
+      "side": 1,
+      "message": "Yes it is. thank you.",
+      "parentUuid": "3b7e58c5_e8774a4d",
       "range": {
         "startLine": 621,
         "startChar": 9,
@@ -160,6 +304,30 @@
       "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9e8b40_3d520933",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T22:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9df0644_5a74428d",
+      "range": {
+        "startLine": 646,
+        "startChar": 5,
+        "endLine": 647,
+        "endChar": 0
+      },
+      "revId": "956534231e047a67886e5fa0a84ff2d33d8bdb3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
