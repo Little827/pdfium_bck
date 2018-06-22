@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fd961c88_4f2b4209",
+        "filename": "BUILD.gn",
+        "patchSetId": 8
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T01:02:23Z",
+      "side": 1,
+      "message": "nit: Can you name this cpdf_object_stream.cpp, like all the other cpdf_object_* files?",
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcb68b97_efe543a8",
         "filename": "core/fpdfapi/parser/cpdf_obj_stream.cpp",
         "patchSetId": 8
@@ -64,6 +81,86 @@
         "startChar": 13,
         "endLine": 116,
         "endChar": 25
+      },
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3ec2e8_379bbe54",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T01:02:23Z",
+      "side": 1,
+      "message": "Sort these 4 lines.",
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a457c822_378933fe",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T01:02:23Z",
+      "side": 1,
+      "message": "There are no virtual methods.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36537852_689fb225",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T01:02:23Z",
+      "side": 1,
+      "message": "This has no callers.",
+      "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83c9cbb7_c950123c",
+        "filename": "core/fpdfapi/parser/cpdf_obj_stream.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T01:02:23Z",
+      "side": 1,
+      "message": "Did I miss the memo about \"foo_\" vs \"m_foo\"?",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 19
       },
       "revId": "72c73aad23b200cad0303e48bc49920c9dc5d3a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
