@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8050a1bc_bad8c7f2",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-22T14:59:59Z",
+      "side": 1,
+      "message": "On the API exposed to the PDF the spec doesn\u0027t specify if they are signed or unsigned, just the valid values, so that probably would be safe to change. On the embedder API side though, the function that is called uses signed ints, so that would mean propagating an API change to embedders or adding a new callback to the API.\n\nThe current implementation interprets the values coming from the API as signed, so I am mostly removing the unneeded intermediate signed -\u003e unsigned -\u003e signed conversion that is happening.\n\nAlso just to make life fun, the XFA version, MsgBox, treats the PDF API inputs as unsigned :-/",
+      "parentUuid": "a93b0218_7507412d",
+      "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44ca3061_b844ae79",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06688798_63eb91b9",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-22T14:59:59Z",
+      "side": 1,
+      "message": "Yes, will do in a followup CL",
+      "parentUuid": "44ca3061_b844ae79",
+      "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -103,6 +139,30 @@
       "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b249e124_2fc27604",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-22T14:59:59Z",
+      "side": 1,
+      "message": "Will fix in follow up CL.",
+      "parentUuid": "e2aa5dc5_5100b6c9",
+      "range": {
+        "startLine": 74,
+        "startChar": 69,
+        "endLine": 74,
+        "endChar": 76
+      },
+      "revId": "01deba6a9e27bf534335f3729b6e904e4dd7f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
