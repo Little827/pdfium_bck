@@ -44,6 +44,8 @@ extern "C" {
 #define FPDF_UNSP_ANNOT_ATTACHMENT 16
 // Unsupported signature annotation.
 #define FPDF_UNSP_ANNOT_SIG 17
+// Unsupported menu item SavaAs
+#define FPDF_UNSP_DOC_XFAFORM_SAVE 18
 
 // Interface for unsupported feature notifications.
 typedef struct _UNSUPPORT_INFO {

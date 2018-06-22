@@ -26,18 +26,6 @@ namespace {
 
 constexpr char kQuadPoints[] = "QuadPoints";
 
-bool RaiseUnSupportError(int nError) {
-  CFSDK_UnsupportInfo_Adapter* pAdapter =
-      CPDF_ModuleMgr::Get()->GetUnsupportInfoAdapter();
-  if (!pAdapter)
-    return false;
-
-  UNSUPPORT_INFO* info = static_cast<UNSUPPORT_INFO*>(pAdapter->GetUnspInfo());
-  if (info && info->FSDK_UnSupport_Handler)
-    info->FSDK_UnSupport_Handler(info, nError);
-  return true;
-}
-
 #ifdef PDF_ENABLE_XFA
 class FPDF_FileHandlerContext : public IFX_SeekableStream {
  public:
@@ -197,6 +185,18 @@ void CheckUnSupportAnnot(CPDF_Document* pDoc, const CPDF_Annot* pPDFAnnot) {
     if (cbString.Compare("Sig") == 0)
       RaiseUnSupportError(FPDF_UNSP_ANNOT_SIG);
   }
+}
+
+bool RaiseUnSupportError(int nError) {
+  CFSDK_UnsupportInfo_Adapter* pAdapter =
+      CPDF_ModuleMgr::Get()->GetUnsupportInfoAdapter();
+  if (!pAdapter)
+    return false;
+
+  UNSUPPORT_INFO* info = static_cast<UNSUPPORT_INFO*>(pAdapter->GetUnspInfo());
+  if (info && info->FSDK_UnSupport_Handler)
+    info->FSDK_UnSupport_Handler(info, nError);
+  return true;
 }
 
 void ReportUnsupportedFeatures(CPDF_Document* pDoc) {
