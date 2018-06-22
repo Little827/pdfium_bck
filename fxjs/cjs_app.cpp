@@ -406,6 +406,16 @@ void CJS_App::ClearTimerCommon(CJS_Runtime* pRuntime,
 CJS_Return CJS_App::execMenuItem(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
+  if (IsTypeKnown(params[0])) {
+    WideString item = pRuntime->ToWideString(params[0]);
+    if (item == L"SaveAs") {
+      pRuntime->GetFormFillEnv()->JS_appAlert(
+          L"Saving content entered into XFA forms is currently not supported. "
+          L"Please print to retain entered data.",
+          L"", JSPLATFORM_ALERT_BUTTON_OK, JSPLATFORM_ALERT_ICON_WARNING);
+    }
+  }
+
   return CJS_Return(JSMessage::kNotSupportedError);
 }
 
