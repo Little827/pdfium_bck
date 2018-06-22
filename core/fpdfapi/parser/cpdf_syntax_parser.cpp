@@ -454,12 +454,10 @@ std::unique_ptr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
       }
     }
 
-    FX_FILESIZE SavedPos = m_Pos;
-    ByteString nextword = GetNextWord(nullptr);
-    if (nextword != "stream") {
-      m_Pos = SavedPos;
+    AutoRestorer<FX_FILESIZE> restorer(&m_Pos);
+    if (GetNextWord(nullptr) != "stream")
       return std::move(pDict);
-    }
+    restorer.Abdicate();
     return ReadStream(std::move(pDict));
   }
   if (word == ">>")
