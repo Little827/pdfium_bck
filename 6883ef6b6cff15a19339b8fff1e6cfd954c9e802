@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "157d31ca_941600ca",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T21:46:49Z",
+      "side": 1,
+      "message": "No, Like in original code\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_syntax_parser.cpp?rcl\u003d0a49103801e322656eeacf8764cc0cb557059cea\u0026l\u003d592\nWe should not restore position.",
+      "parentUuid": "731438d8_54ff74a3",
+      "range": {
+        "startLine": 596,
+        "startChar": 6,
+        "endLine": 596,
+        "endChar": 12
+      },
+      "revId": "6883ef6b6cff15a19339b8fff1e6cfd954c9e802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa02e1c1_7db0ae90",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-22T19:40:54Z",
       "side": 1,
       "message": "Doesn\u0027t the second one always override the first one?  Missing return above?",
+      "range": {
+        "startLine": 614,
+        "startChar": 4,
+        "endLine": 617,
+        "endChar": 33
+      },
+      "revId": "6883ef6b6cff15a19339b8fff1e6cfd954c9e802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad464c42_5a8f8b3d",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-22T21:46:49Z",
+      "side": 1,
+      "message": "NO, this is wrong line, i have removed it.",
+      "parentUuid": "aa02e1c1_7db0ae90",
       "range": {
         "startLine": 614,
         "startChar": 4,
