@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fdbd72d_cdc86d97",
+        "filename": "testing/tools/eval_gold_results.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T06:48:42Z",
+      "side": 1,
+      "message": "Needs copyright blurb.",
+      "revId": "5b2244bdc4da2cefd3ee16d49e2b4fb4aa25c7bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d30d84df_1942be38",
+        "filename": "testing/tools/eval_gold_results.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T06:48:42Z",
+      "side": 1,
+      "message": "Probably not needed.",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "5b2244bdc4da2cefd3ee16d49e2b4fb4aa25c7bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c162cb_9aac0476",
+        "filename": "testing/tools/eval_gold_results.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T06:48:42Z",
+      "side": 1,
+      "message": "test_names",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 17
+      },
+      "revId": "5b2244bdc4da2cefd3ee16d49e2b4fb4aa25c7bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8837389_da047fe9",
+        "filename": "testing/tools/eval_gold_results.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T06:48:42Z",
+      "side": 1,
+      "message": "Should this be NO_BASELINE from gold.py, or does this script intentionally avoid importing gold.py?",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "5b2244bdc4da2cefd3ee16d49e2b4fb4aa25c7bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
