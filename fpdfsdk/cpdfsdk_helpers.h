@@ -246,6 +246,8 @@ void FPDF_RenderPage_Retail(CPDF_PageRenderContext* pContext,
                             bool bNeedToRestore,
                             IPDFSDK_PauseAdapter* pause);
 
+bool RaiseUnSupportError(int nError);
+
 void ReportUnsupportedFeatures(CPDF_Document* pDoc);
 void CheckUnSupportAnnot(CPDF_Document* pDoc, const CPDF_Annot* pPDFAnnot);
 

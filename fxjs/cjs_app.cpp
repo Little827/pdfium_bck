@@ -8,12 +8,14 @@
 
 #include <utility>
 
+#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interform.h"
 #include "fxjs/cjs_document.h"
 #include "fxjs/cjs_timerobj.h"
 #include "fxjs/global_timer.h"
 #include "fxjs/ijs_event_context.h"
 #include "fxjs/js_resources.h"
+#include "public/fpdf_ext.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
@@ -406,6 +408,12 @@ void CJS_App::ClearTimerCommon(CJS_Runtime* pRuntime,
 CJS_Return CJS_App::execMenuItem(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
+  if (params.size() > 0 && IsTypeKnown(params[0])) {
+    WideString item = pRuntime->ToWideString(params[0]);
+    if (item == L"SaveAs")
+      RaiseUnSupportError(FPDF_UNSP_DOC_XFAFORM_SAVE);
+  }
+
   return CJS_Return(JSMessage::kNotSupportedError);
 }
 
