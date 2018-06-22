@@ -56,6 +56,24 @@
     },
     {
       "key": {
+        "uuid": "c809e811_b82bd5eb",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-22T21:00:28Z",
+      "side": 1,
+      "message": "There are lots of functions that return bools, and callers that don\u0027t check the return values. We don\u0027t usually stick \"(void)\" in front.",
+      "parentUuid": "845e9fab_33c52ad5",
+      "revId": "d937459d224e14d6a17c84cada074c87875ddad5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0ff4a24_ecb390f6",
         "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
         "patchSetId": 1
