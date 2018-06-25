@@ -154,7 +154,7 @@ void CPDF_GeneralState::SetSoftMask(CPDF_Object* pObject) {
   m_Ref.GetPrivateCopy()->m_pSoftMask = pObject;
 }
 
-CPDF_Object* CPDF_GeneralState::GetTR() const {
+const CPDF_Object* CPDF_GeneralState::GetTR() const {
   const StateData* pData = m_Ref.GetObject();
   return pData ? pData->m_pTR.Get() : nullptr;
 }
@@ -262,9 +262,9 @@ CFX_Matrix* CPDF_GeneralState::GetMutableMatrix() {
 CPDF_GeneralState::StateData::StateData()
     : m_BlendMode(pdfium::transparency::kNormal),
       m_BlendType(0),
-      m_pSoftMask(nullptr),
       m_StrokeAlpha(1.0),
       m_FillAlpha(1.0f),
+      m_pSoftMask(nullptr),
       m_pTR(nullptr),
       m_pTransferFunc(nullptr),
       m_RenderIntent(0),
@@ -286,9 +286,9 @@ CPDF_GeneralState::StateData::StateData()
 CPDF_GeneralState::StateData::StateData(const StateData& that)
     : m_BlendMode(that.m_BlendMode),
       m_BlendType(that.m_BlendType),
-      m_pSoftMask(that.m_pSoftMask),
       m_StrokeAlpha(that.m_StrokeAlpha),
       m_FillAlpha(that.m_FillAlpha),
+      m_pSoftMask(that.m_pSoftMask),
       m_pTR(that.m_pTR),
       m_pTransferFunc(that.m_pTransferFunc),
       m_RenderIntent(that.m_RenderIntent),

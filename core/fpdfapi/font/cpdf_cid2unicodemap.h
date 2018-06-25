@@ -16,9 +16,9 @@ class CPDF_CID2UnicodeMap {
   CPDF_CID2UnicodeMap();
   ~CPDF_CID2UnicodeMap();
 
-  bool IsLoaded();
+  bool IsLoaded() const;
   void Load(CPDF_CMapManager* pMgr, CIDSet charset, bool bPromptCJK);
-  wchar_t UnicodeFromCID(uint16_t CID);
+  wchar_t UnicodeFromCID(uint16_t CID) const;
 
  private:
   CIDSet m_Charset;
