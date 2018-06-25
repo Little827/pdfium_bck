@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b3e747b_99a73c07",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: ,",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982518ad_08e9eb4d",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: Prequisites section above.",
+      "range": {
+        "startLine": 27,
+        "startChar": 33,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5edf606_9e8bad44",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: ;",
+      "range": {
+        "startLine": 49,
+        "startChar": 74,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c337813_29abeb61",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: \ns/finally//\ns/nice//",
+      "range": {
+        "startLine": 57,
+        "startChar": 38,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88281164_09db7785",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: it will",
+      "range": {
+        "startLine": 58,
+        "startChar": 57,
+        "endLine": 58,
+        "endChar": 61
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0fbfa1_cbe83e7f",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: |styles of reports|, or |style of report| for agreement.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6ad5f6_6d5c01da",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: than",
+      "range": {
+        "startLine": 84,
+        "startChar": 23,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73991b6_6d91ddc9",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: For example,",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ae9678_6731bba1",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit |all of the tests| or just |all tests|",
+      "range": {
+        "startLine": 88,
+        "startChar": 19,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea6ca6c_60908eae",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: ,",
+      "range": {
+        "startLine": 95,
+        "startChar": 54,
+        "endLine": 95,
+        "endChar": 55
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33268c2_7c35755b",
+        "filename": "docs/code-coverage.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-25T16:38:41Z",
+      "side": 1,
+      "message": "nit: maybe just |Alternatively, |",
+      "range": {
+        "startLine": 96,
+        "startChar": 62,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "9e925303cdf24d6b5d7370860f9b5682e4295d30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
