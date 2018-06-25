@@ -8,6 +8,7 @@
 #define CORE_FPDFAPI_FONT_CPDF_CID2UNICODEMAP_H_
 
 #include "core/fpdfapi/font/cpdf_cidfont.h"
+#include "third_party/base/span.h"
 
 class CPDF_CMapManager;
 
@@ -22,8 +23,7 @@ class CPDF_CID2UnicodeMap {
 
  private:
   CIDSet m_Charset;
-  const uint16_t* m_pEmbeddedMap;
-  uint32_t m_EmbeddedCount;
+  pdfium::span<const uint16_t> m_pEmbeddedMap;
 };
 
 #endif  // CORE_FPDFAPI_FONT_CPDF_CID2UNICODEMAP_H_
