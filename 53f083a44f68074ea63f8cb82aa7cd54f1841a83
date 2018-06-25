@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edf96920_46b872fc",
+        "filename": "testing/resources/pixel/xfa_specific/dynamic_list_box_allow_multiple_selection_expected_mac.pdf.0.png",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-25T20:59:37Z",
+      "side": 1,
+      "message": "This whitespace on mac is not quite right, but I think that\u0027s minor. Alternatively I can disable the test on mac.",
+      "revId": "53f083a44f68074ea63f8cb82aa7cd54f1841a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}

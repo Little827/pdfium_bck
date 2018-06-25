@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e27063a_d9c7d448",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-25T20:59:37Z",
+      "side": 1,
+      "message": "Changed to early returns in all these functions.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "f9383b0cf1dace0fe38291ace9f5d9e959095079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b1d9ca7_807052a0",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-25T20:59:37Z",
+      "side": 1,
+      "message": "This is new.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "f9383b0cf1dace0fe38291ace9f5d9e959095079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a73ddae_ac529b51",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-25T20:59:37Z",
+      "side": 1,
+      "message": "This check now accepts 4 or 5, for the optional modifiers parameter. Same in SendMouseUpEvent.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "f9383b0cf1dace0fe38291ace9f5d9e959095079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a534e7d_9be863f6",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-25T20:59:37Z",
+      "side": 1,
+      "message": "Modifiers are now sent to FORM_On(L|R)Button(Down|Up).",
+      "revId": "f9383b0cf1dace0fe38291ace9f5d9e959095079",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
