@@ -13,12 +13,9 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 
 CPDF_ObjectAvail::CPDF_ObjectAvail(CPDF_ReadValidator* validator,
-                                   CPDF_IndirectObjectHolder* holder,
                                    const CPDF_Object* root)
-    : validator_(validator), holder_(holder), root_(root) {
+    : validator_(validator), root_(root) {
   ASSERT(validator_);
-  ASSERT(holder);
-  ASSERT(root_);
   if (!root_->IsInline())
     parsed_objnums_.insert(root_->GetObjNum());
 }
@@ -27,26 +24,25 @@ CPDF_ObjectAvail::CPDF_ObjectAvail(CPDF_ReadValidator* validator,
                                    CPDF_IndirectObjectHolder* holder,
                                    uint32_t obj_num)
     : validator_(validator),
-      holder_(holder),
       root_(pdfium::MakeUnique<CPDF_Reference>(holder, obj_num)) {
   ASSERT(validator_);
-  ASSERT(holder);
 }
 
 CPDF_ObjectAvail::~CPDF_ObjectAvail() {}
 
-CPDF_DataAvail::DocAvailStatus CPDF_ObjectAvail::CheckAvail() {
-  if (!LoadRootObject())
+CPDF_DataAvail::DocAvailStatus CPDF_ObjectAvail::CheckAvail(
+    CPDF_IndirectObjectHolder* holder) {
+  if (!LoadRootObject(holder))
     return CPDF_DataAvail::DocAvailStatus::DataNotAvailable;
 
-  if (CheckObjects()) {
+  if (CheckObjects(holder)) {
     CleanMemory();
     return CPDF_DataAvail::DocAvailStatus::DataAvailable;
   }
   return CPDF_DataAvail::DocAvailStatus::DataNotAvailable;
 }
 
-bool CPDF_ObjectAvail::LoadRootObject() {
+bool CPDF_ObjectAvail::LoadRootObject(CPDF_IndirectObjectHolder* holder) {
   if (!non_parsed_objects_.empty())
     return true;
 
@@ -58,7 +54,7 @@ bool CPDF_ObjectAvail::LoadRootObject() {
     }
 
     const CPDF_ReadValidator::Session parse_session(validator_.Get());
-    const CPDF_Object* direct = holder_->GetOrParseIndirectObject(ref_obj_num);
+    const CPDF_Object* direct = holder->GetOrParseIndirectObject(ref_obj_num);
     if (validator_->has_read_problems())
       return false;
 
@@ -73,7 +69,7 @@ bool CPDF_ObjectAvail::LoadRootObject() {
   return false;
 }
 
-bool CPDF_ObjectAvail::CheckObjects() {
+bool CPDF_ObjectAvail::CheckObjects(CPDF_IndirectObjectHolder* holder) {
   std::stack<uint32_t> objects_to_check = std::move(non_parsed_objects_);
   std::set<uint32_t> checked_objects;
   while (!objects_to_check.empty()) {
@@ -87,7 +83,7 @@ bool CPDF_ObjectAvail::CheckObjects() {
       continue;
 
     const CPDF_ReadValidator::Session parse_session(validator_.Get());
-    const CPDF_Object* direct = holder_->GetOrParseIndirectObject(obj_num);
+    const CPDF_Object* direct = holder->GetOrParseIndirectObject(obj_num);
     if (direct == root_.Get())
       continue;
 

@@ -22,29 +22,26 @@ class CPDF_ReadValidator;
 class CPDF_ObjectAvail {
  public:
   CPDF_ObjectAvail(CPDF_ReadValidator* validator,
-                   CPDF_IndirectObjectHolder* holder,
                    const CPDF_Object* root);
   CPDF_ObjectAvail(CPDF_ReadValidator* validator,
                    CPDF_IndirectObjectHolder* holder,
                    uint32_t obj_num);
   virtual ~CPDF_ObjectAvail();
 
-  CPDF_DataAvail::DocAvailStatus CheckAvail();
+  CPDF_DataAvail::DocAvailStatus CheckAvail(CPDF_IndirectObjectHolder* holder);
 
  protected:
   virtual bool ExcludeObject(const CPDF_Object* object) const;
 
  private:
-  bool LoadRootObject();
-  bool CheckObjects();
+  bool LoadRootObject(CPDF_IndirectObjectHolder* holder);
+  bool CheckObjects(CPDF_IndirectObjectHolder* holder);
   bool AppendObjectSubRefs(const CPDF_Object* object,
                            std::stack<uint32_t>* refs) const;
   void CleanMemory();
   bool HasObjectParsed(uint32_t obj_num) const;
 
   UnownedPtr<CPDF_ReadValidator> validator_;
-  // TODO(art-snake): Make it UnownedPtr<, after fix document owning issue.
-  CPDF_IndirectObjectHolder* holder_;
   MaybeOwned<const CPDF_Object> root_;
   std::set<uint32_t> parsed_objnums_;
   std::stack<uint32_t> non_parsed_objects_;
