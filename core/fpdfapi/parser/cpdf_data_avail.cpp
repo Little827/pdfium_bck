@@ -814,14 +814,14 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
       if (!pPageDict)
         return DataError;
 
-      auto page_num_obj = std::make_pair(
-          dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
-                      GetValidator().Get(), m_pDocument, pPageDict));
+      auto page_num_obj =
+          std::make_pair(dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
+                                     GetValidator().Get(), pPageDict));
 
       CPDF_PageObjectAvail* page_obj_avail =
           m_PagesObjAvail.insert(std::move(page_num_obj)).first->second.get();
       // TODO(art-snake): Check resources.
-      return page_obj_avail->CheckAvail();
+      return page_obj_avail->CheckAvail(m_pDocument);
     }
 
     DocAvailStatus nResult = CheckLinearizedData();
@@ -866,12 +866,12 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
     return DataError;
 
   {
-    auto page_num_obj = std::make_pair(
-        dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
-                    GetValidator().Get(), m_pDocument, pPageDict));
+    auto page_num_obj =
+        std::make_pair(dwPage, pdfium::MakeUnique<CPDF_PageObjectAvail>(
+                                   GetValidator().Get(), pPageDict));
     CPDF_PageObjectAvail* page_obj_avail =
         m_PagesObjAvail.insert(std::move(page_num_obj)).first->second.get();
-    const DocAvailStatus status = page_obj_avail->CheckAvail();
+    const DocAvailStatus status = page_obj_avail->CheckAvail(m_pDocument);
     if (status != DocAvailStatus::DataAvailable)
       return status;
   }
@@ -899,11 +899,11 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::CheckResources(
 
   CPDF_PageObjectAvail* resource_avail =
       m_PagesResourcesAvail
-          .insert(std::make_pair(
-              resources, pdfium::MakeUnique<CPDF_PageObjectAvail>(
-                             GetValidator().Get(), m_pDocument, resources)))
+          .insert(std::make_pair(resources,
+                                 pdfium::MakeUnique<CPDF_PageObjectAvail>(
+                                     GetValidator().Get(), resources)))
           .first->second.get();
-  return resource_avail->CheckAvail();
+  return resource_avail->CheckAvail(m_pDocument);
 }
 
 RetainPtr<CPDF_ReadValidator> CPDF_DataAvail::GetValidator() const {
@@ -979,9 +979,9 @@ CPDF_DataAvail::DocFormStatus CPDF_DataAvail::CheckAcroForm() {
       return FormNotExist;
 
     m_pFormAvail = pdfium::MakeUnique<CPDF_PageObjectAvail>(
-        GetValidator().Get(), m_pDocument, pAcroForm);
+        GetValidator().Get(), pAcroForm);
   }
-  switch (m_pFormAvail->CheckAvail()) {
+  switch (m_pFormAvail->CheckAvail(m_pDocument)) {
     case DocAvailStatus::DataError:
       return DocFormStatus::FormError;
     case DocAvailStatus::DataNotAvailable:
@@ -999,8 +999,8 @@ bool CPDF_DataAvail::ValidatePage(uint32_t dwPage) const {
   auto* pPageDict = m_pDocument->GetPageDictionary(safePage.ValueOrDie());
   if (!pPageDict)
     return false;
-  CPDF_PageObjectAvail obj_avail(GetValidator().Get(), m_pDocument, pPageDict);
-  return obj_avail.CheckAvail() == DocAvailStatus::DataAvailable;
+  CPDF_PageObjectAvail obj_avail(GetValidator().Get(), pPageDict);
+  return obj_avail.CheckAvail(m_pDocument) == DocAvailStatus::DataAvailable;
 }
 
 std::pair<CPDF_Parser::Error, std::unique_ptr<CPDF_Document>>
