@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab2c0947_a55c949f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T19:58:49Z",
+      "side": 1,
+      "message": "How about something like:\n\n\nFix relationship between CPDF_DDocument and CPDF_Parser.\n\nThis CL changes CPDF_Document to internally create the CPDF_Parser and removes the need\nfor the CPDF_Parser to know about the CPDF_Document.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "51309edd103fcf77fa79377cb83dbb5d0d3938a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abee44be_60041ffc",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T19:58:49Z",
+      "side": 1,
+      "message": "Can we make the needed methods public with a ForTesting appended? Or make a ForTesting proxy method instead of adding friends?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 77
+      },
+      "revId": "51309edd103fcf77fa79377cb83dbb5d0d3938a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
