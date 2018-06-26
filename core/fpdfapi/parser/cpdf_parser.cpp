@@ -1304,6 +1304,11 @@ uint32_t CPDF_Parser::GetFirstPageNo() const {
   return m_pLinearized ? m_pLinearized->GetFirstPageNo() : 0;
 }
 
+void CPDF_Parser::SetLinearizedHeader(
+    std::unique_ptr<CPDF_LinearizedHeader> pLinearized) {
+  m_pLinearized = std::move(pLinearized);
+}
+
 std::unique_ptr<CPDF_Dictionary> CPDF_Parser::LoadTrailerV4() {
   if (m_pSyntax->GetKeyword() != "trailer")
     return nullptr;
@@ -1371,7 +1376,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   if (eRet != SUCCESS)
     return eRet;
 
-  m_pDocument->LoadLinearizedDoc(m_pLinearized.get());
+  m_pDocument->LoadDoc();
   if (!m_pDocument->GetRoot() || m_pDocument->GetPageCount() == 0) {
     if (bXRefRebuilt)
       return FORMAT_ERROR;
@@ -1384,7 +1389,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
     if (eRet != SUCCESS)
       return eRet;
 
-    m_pDocument->LoadLinearizedDoc(m_pLinearized.get());
+    m_pDocument->LoadDoc();
     if (!m_pDocument->GetRoot())
       return FORMAT_ERROR;
   }
