@@ -337,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "996010c9_a3d90c28",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T18:35:05Z",
+      "side": 1,
+      "message": "In terms of PDF specification this is applying of incremental update.",
+      "parentUuid": "f2981fca_6fe08ee4",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47d38b0d_ad65ef62",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
@@ -396,6 +420,30 @@
       "side": 1,
       "message": "Right, but aren\u0027t you copying now? This should be a ref or a pointer to keep from copying no?",
       "parentUuid": "23991e37_26abb307",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d164b3b3_da8dd668",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T18:35:05Z",
+      "side": 1,
+      "message": "I use move semantics for this. (See line 70)",
+      "parentUuid": "48aaf317_fbd621cc",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -608,6 +656,30 @@
       "side": 1,
       "message": "How big is the given Dict? Do we know how much memory it will be to Clone() it? If we could pass the Dict straight into the CPDF_CrossReftable could we not save cloning the pDict?",
       "parentUuid": "63295e98_05856fa8",
+      "range": {
+        "startLine": 830,
+        "startChar": 38,
+        "endLine": 833,
+        "endChar": 23
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdde838b_577bd741",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T18:35:05Z",
+      "side": 1,
+      "message": "About ~5 keys with numbers.",
+      "parentUuid": "60315c48_9f8b19e0",
       "range": {
         "startLine": 830,
         "startChar": 38,
