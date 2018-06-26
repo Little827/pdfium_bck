@@ -16,11 +16,11 @@ CPDF_CID2UnicodeMap::CPDF_CID2UnicodeMap() {
 
 CPDF_CID2UnicodeMap::~CPDF_CID2UnicodeMap() {}
 
-bool CPDF_CID2UnicodeMap::IsLoaded() {
+bool CPDF_CID2UnicodeMap::IsLoaded() const {
   return m_EmbeddedCount != 0;
 }
 
-wchar_t CPDF_CID2UnicodeMap::UnicodeFromCID(uint16_t CID) {
+wchar_t CPDF_CID2UnicodeMap::UnicodeFromCID(uint16_t CID) const {
   if (m_Charset == CIDSET_UNICODE) {
     return CID;
   }
