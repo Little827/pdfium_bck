@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5062d04b_1a1a5d88",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-26T18:58:21Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/36191",
+      "parentUuid": "4d5d4404_be27982b",
+      "revId": "3d9070cd73349db57937810383431fbb63f3737c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64ec6a35_aa922838",
         "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
         "patchSetId": 2
@@ -56,6 +74,30 @@
       "revId": "3d9070cd73349db57937810383431fbb63f3737c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a90e633_cec1afec",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-06-26T18:58:21Z",
+      "side": 1,
+      "message": "It means iLineWidth was large enough that adding m_iTabWidth to it overflowed an int.",
+      "parentUuid": "64ec6a35_aa922838",
+      "range": {
+        "startLine": 166,
+        "startChar": 15,
+        "endLine": 166,
+        "endChar": 29
+      },
+      "revId": "3d9070cd73349db57937810383431fbb63f3737c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
