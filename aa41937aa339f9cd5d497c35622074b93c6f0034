@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d99d7ed0_f646ce33",
+        "filename": "core/fpdfapi/font/cpdf_cid2unicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-26T16:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50fdb510_29e2f22e",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "aa41937aa339f9cd5d497c35622074b93c6f0034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b1f767d_04df8049",
         "filename": "core/fpdfapi/font/cpdf_cid2unicodemap.cpp",
         "patchSetId": 1
@@ -41,6 +65,53 @@
         "startChar": 43,
         "endLine": 15,
         "endChar": 46
+      },
+      "revId": "aa41937aa339f9cd5d497c35622074b93c6f0034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d216da_9501f604",
+        "filename": "core/fpdfapi/font/cpdf_cid2unicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-26T16:58:35Z",
+      "side": 1,
+      "message": "Done. Also made this const method.",
+      "parentUuid": "2b1f767d_04df8049",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "aa41937aa339f9cd5d497c35622074b93c6f0034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a6fee45_e69a6c9f",
+        "filename": "core/fpdfapi/font/cpdf_cid2unicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-26T16:58:35Z",
+      "side": 1,
+      "message": "Note: also made this const method.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
       },
       "revId": "aa41937aa339f9cd5d497c35622074b93c6f0034",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
