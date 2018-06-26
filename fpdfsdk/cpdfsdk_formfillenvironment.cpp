@@ -325,6 +325,13 @@ void CPDFSDK_FormFillEnvironment::DoGoToAction(int nPageIndex,
   }
 }
 
+void CPDFSDK_FormFillEnvironment::SaveCalled() {
+  if (!m_pInfo || !m_pInfo->FFI_SaveCalled)
+    return;
+
+  m_pInfo->FFI_SaveCalled(m_pInfo);
+}
+
 #ifdef PDF_ENABLE_XFA
 void CPDFSDK_FormFillEnvironment::DisplayCaret(CPDFXFA_Page* page,
                                                FPDF_BOOL bVisible,

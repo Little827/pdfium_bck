@@ -1083,6 +1083,28 @@ typedef struct _FPDF_FORMFILLINFO {
                                    FPDF_WIDESTRING wsData,
                                    FPDF_WIDESTRING wsEncode);
 #endif  // PDF_ENABLE_XFA
+
+  /**
+   * Experimental API
+   * Method: FFI_SaveCalled
+   *           Signal to the embedder that a save operation was attempted.
+   * Interface Version:
+   *           1
+   * Implementation Required:
+   *           No
+   * Parameters:
+   *       pThis           -   Pointer to the interface structure itself.
+   *
+   * Return value:
+   *       None.
+   *
+   * Comment:
+   *       If the emedding environment is user intereactive then a warning
+   *       should be displayed to the user that saving isn't currently
+   *       implemented. Once the proper PDF saving implementation is completed
+   *       this API should be removed.
+   **/
+  void (*FFI_SaveCalled)(struct _FPDF_FORMFILLINFO* pThis);
 } FPDF_FORMFILLINFO;
 
 /**

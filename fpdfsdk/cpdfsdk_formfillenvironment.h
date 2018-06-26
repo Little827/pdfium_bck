@@ -112,6 +112,7 @@ class CPDFSDK_FormFillEnvironment
                     int sizeOfArray);
 
   CPDF_Document* GetPDFDocument() const { return m_pCPDFDoc.Get(); }
+  void SaveCalled();
 
 #ifdef PDF_ENABLE_XFA
   CPDFXFA_Context* GetXFAContext() const;
