@@ -63,6 +63,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
   const CPDF_Dictionary* GetRoot() const { return m_pRootDict; }
   CPDF_Dictionary* GetRoot() { return m_pRootDict; }
+  const CPDF_Dictionary* GetInfo() const;
   CPDF_Dictionary* GetInfo();
 
   void DeletePage(int iPage);

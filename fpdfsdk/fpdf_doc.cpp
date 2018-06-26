@@ -397,7 +397,7 @@ FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetMetaText(FPDF_DOCUMENT document,
                                                          unsigned long buflen) {
   if (!tag)
     return 0;
-  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  const CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
   if (!pDoc)
     return 0;
 

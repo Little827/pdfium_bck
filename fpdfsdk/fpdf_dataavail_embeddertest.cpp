@@ -10,7 +10,6 @@
 #include <vector>
 
 #include "core/fxcrt/bytestring.h"
-#include "core/fxcrt/widestring.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -288,7 +287,7 @@ TEST_F(FPDFDataAvailEmbeddertest, LoadInfoAfterReceivingWholeDocument) {
   document_ = FPDFAvail_GetDocument(avail_, nullptr);
   ASSERT_TRUE(document_);
 
-  // The "info" dictionary should still be unavailable.
+  // The "info" dictionary still unavailable.
   EXPECT_FALSE(FPDF_GetMetaText(document_, "CreationDate", nullptr, 0));
 
   // Simulate receiving whole file.
@@ -301,7 +300,7 @@ TEST_F(FPDFDataAvailEmbeddertest, LoadInfoAfterReceivingWholeDocument) {
 
 TEST_F(FPDFDataAvailEmbeddertest, LoadInfoAfterReceivingFirstPage) {
   TestAsyncLoader loader("linearized.pdf");
-  // Map "Info" to an object within the first section without breaking
+  // Trick, remap Info ref to object within first section, without break of
   // linearization.
   ByteString data(loader.file_contents(), loader.file_length());
   Optional<size_t> index = data.Find("/Info 27 0 R");
@@ -317,64 +316,8 @@ TEST_F(FPDFDataAvailEmbeddertest, LoadInfoAfterReceivingFirstPage) {
   document_ = FPDFAvail_GetDocument(avail_, nullptr);
   ASSERT_TRUE(document_);
 
-  // The "Info" dictionary should be available for the linearized document, if
-  // it is located in the first page section.
-  // Info was remapped to a dictionary with Type "Catalog"
-  unsigned short buffer[100] = {0};
-  EXPECT_TRUE(FPDF_GetMetaText(document_, "Type", buffer, sizeof(buffer)));
-  constexpr wchar_t kExpectedValue[] = L"Catalog";
-  EXPECT_EQ(WideString(kExpectedValue),
-            WideString::FromUTF16LE(buffer, FXSYS_len(kExpectedValue)));
-}
-
-TEST_F(FPDFDataAvailEmbeddertest, TryLoadInvalidInfo) {
-  TestAsyncLoader loader("linearized.pdf");
-  // Map "Info" to an invalid object without breaking linearization.
-  ByteString data(loader.file_contents(), loader.file_length());
-  Optional<size_t> index = data.Find("/Info 27 0 R");
-  ASSERT_TRUE(index);
-  memcpy(loader.file_contents() + *index, "/Info 99 0 R", 12);
-
-  loader.set_is_new_data_available(false);
-  avail_ = FPDFAvail_Create(loader.file_avail(), loader.file_access());
-  while (PDF_DATA_AVAIL != FPDFAvail_IsDocAvail(avail_, loader.hints())) {
-    loader.FlushRequestedData();
-  }
-
-  document_ = FPDFAvail_GetDocument(avail_, nullptr);
-  ASSERT_TRUE(document_);
-
-  // Set all data available.
-  loader.set_is_new_data_available(true);
-  // Check second page, to load additional crossrefs.
-  ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsPageAvail(avail_, 0, loader.hints()));
-
-  // Test that api is robust enough to handle the bad case.
-  EXPECT_FALSE(FPDF_GetMetaText(document_, "Type", nullptr, 0));
-}
-
-TEST_F(FPDFDataAvailEmbeddertest, TryLoadNonExistsInfo) {
-  TestAsyncLoader loader("linearized.pdf");
-  // Break the "Info" parameter without breaking linearization.
-  ByteString data(loader.file_contents(), loader.file_length());
-  Optional<size_t> index = data.Find("/Info 27 0 R");
-  ASSERT_TRUE(index);
-  memcpy(loader.file_contents() + *index, "/I_fo 27 0 R", 12);
-
-  loader.set_is_new_data_available(false);
-  avail_ = FPDFAvail_Create(loader.file_avail(), loader.file_access());
-  while (PDF_DATA_AVAIL != FPDFAvail_IsDocAvail(avail_, loader.hints())) {
-    loader.FlushRequestedData();
-  }
-
-  document_ = FPDFAvail_GetDocument(avail_, nullptr);
-  ASSERT_TRUE(document_);
-
-  // Set all data available.
-  loader.set_is_new_data_available(true);
-  // Check second page, to load additional crossrefs.
-  ASSERT_EQ(PDF_DATA_AVAIL, FPDFAvail_IsPageAvail(avail_, 0, loader.hints()));
-
-  // Test that api is robust enough to handle the bad case.
-  EXPECT_FALSE(FPDF_GetMetaText(document_, "Type", nullptr, 0));
+  // The "info" dictionary should available for linearized document, if it is
+  // located in first page section.
+  // Info was remapped to Dictionary with Type "Catalog"
+  EXPECT_TRUE(FPDF_GetMetaText(document_, "Type", nullptr, 0));
 }

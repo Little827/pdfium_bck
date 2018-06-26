@@ -590,6 +590,10 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   return true;
 }
 
+const CPDF_Dictionary* CPDF_Document::GetInfo() const {
+  return const_cast<CPDF_Document*>(this)->GetInfo();
+}
+
 CPDF_Dictionary* CPDF_Document::GetInfo() {
   if (m_pInfoDict)
     return m_pInfoDict.Get();
