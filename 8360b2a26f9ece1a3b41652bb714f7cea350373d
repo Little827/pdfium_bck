@@ -1,0 +1,337 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1033a933_a1ceaddd",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Why do compressed objects not have a generation number?",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f060b551_dcb9fa20",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "What does normal mean?\n\nAddCrossRef maybe?",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e434c4d8_7703e852",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "What happens if we have a file with objects, [1, 2, 200000, 300000]  we\u0027re going to get a huge array with few elements in it and a lot of free space.",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c2a0a98_5915efc7",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "ShrinkObjectMapToObjectNumber? Or something? The title doesn\u0027t let me know what the map is shrinking too.",
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a7c6a7_c48a2d6f",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "This feels more like it should be a ClearObjectMap call instead of overriding what 0 does.",
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219e0d16_010363f8",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Why do we check the key before the given number?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa2c017_0a691ca4",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "This seems more like MergeInfoObject or something?",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d38b0d_ad65ef62",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Can this be a ref or something otherwise we end up copying the map when calling UpdateInfo",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4235b88b_06b72efe",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Does this happen or is this just a safety check?",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69ae0e0_41f73bb8",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Why do we copy the keys instead of just std::move(new_trailer)? What happens if trailer_ has keys that new_trailer doesn\u0027t? Won\u0027t we end up with a  mix of the two trailers?",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0be467_f8ab7091",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Instead of a union, would using subclasses make this clearer.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f996b01_b3bb4c41",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "So, this creates a cross ref table, then passes it to the old cross ref table and destroys this one? Could we just pass in the dict instead of doing the Clone and get the information directly?",
+      "range": {
+        "startLine": 830,
+        "startChar": 38,
+        "endLine": 833,
+        "endChar": 23
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9225e9e_3a543e93",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Do we need m_TrailerData now or can we just store the cross ref table and get the trailer from there?",
+      "range": {
+        "startLine": 947,
+        "startChar": 12,
+        "endLine": 948,
+        "endChar": 38
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aadece2d_a8324cae",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "This would also go away if we stored the CrossRefTable.",
+      "range": {
+        "startLine": 949,
+        "startChar": 9,
+        "endLine": 949,
+        "endChar": 18
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b574409d_89f7e7ae",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T14:56:53Z",
+      "side": 1,
+      "message": "Can we drop these and just spell out the names below? Makes things easier to read.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 52
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
