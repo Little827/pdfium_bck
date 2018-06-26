@@ -456,6 +456,30 @@
     },
     {
       "key": {
+        "uuid": "147a85bc_6c0260c3",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T20:00:05Z",
+      "side": 1,
+      "message": "Can me make this \u0026\u0026 to force it to be a move then? My concern is we\u0027ll call this in the future and forget to std::move which will invoke a copy.",
+      "parentUuid": "d164b3b3_da8dd668",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4235b88b_06b72efe",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
