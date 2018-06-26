@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "cd68db96_cd03c486",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T17:24:46Z",
+      "side": 1,
+      "message": "Sorry, was thinking it was a vector.",
+      "parentUuid": "f549b7c5_f0240a58",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c2a0a98_5915efc7",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
@@ -289,6 +313,30 @@
     },
     {
       "key": {
+        "uuid": "f2981fca_6fe08ee4",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T17:24:46Z",
+      "side": 1,
+      "message": "I\u0027m nto sure what you mean by A-\u003eB. We\u0027re merging the objects_info into new_objects_info and then replacing objects_info. So, in the long run we\u0027re merging the provided map with the existing one.",
+      "parentUuid": "94fa0f24_5ed76b5d",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47d38b0d_ad65ef62",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
@@ -324,6 +372,30 @@
       "side": 1,
       "message": "We should not copy to avoid  performance degradation, because this maps is big.",
       "parentUuid": "47d38b0d_ad65ef62",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48aaf317_fbd621cc",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T17:24:46Z",
+      "side": 1,
+      "message": "Right, but aren\u0027t you copying now? This should be a ref or a pointer to keep from copying no?",
+      "parentUuid": "23991e37_26abb307",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -512,6 +584,30 @@
       "side": 1,
       "message": "I want to stay with logic, that only other cross ref table can update cross ref table.\nAnd do not want to allow the mix of types. (i.e. the dictionary can not allow to update crossref table)",
       "parentUuid": "7f996b01_b3bb4c41",
+      "range": {
+        "startLine": 830,
+        "startChar": 38,
+        "endLine": 833,
+        "endChar": 23
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60315c48_9f8b19e0",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-06-26T17:24:46Z",
+      "side": 1,
+      "message": "How big is the given Dict? Do we know how much memory it will be to Clone() it? If we could pass the Dict straight into the CPDF_CrossReftable could we not save cloning the pDict?",
+      "parentUuid": "63295e98_05856fa8",
       "range": {
         "startLine": 830,
         "startChar": 38,
