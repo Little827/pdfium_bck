@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f1f51a4_a6a74c27",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "The objects with a generation number other than zero shall not be stored in an object stream.\nSee PDF Spec. 32000-1:2008 Sec. 7.5.7 (Object Streams)\nhttp://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#45\n\nAlso we have not gen num in cross ref v5 format for compressed objects\nSee PDF Spec. 32000-1:2008 Sec. 7.5.8.3 (Cross-Reference Stream Data)\nwwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#58",
+      "parentUuid": "1033a933_a1ceaddd",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f060b551_dcb9fa20",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-26T14:56:53Z",
       "side": 1,
       "message": "What does normal mean?\n\nAddCrossRef maybe?",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5380b37c_3f644739",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "We have three types of objects.\n1) Normal\n2) Compressed.\n3) Free\n\nand also special type kObjStream, which is particular case of Normal object.",
+      "parentUuid": "f060b551_dcb9fa20",
       "range": {
         "startLine": 34,
         "startChar": 25,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f549b7c5_f0240a58",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "what do you mean?\nobjects_info_ is map.",
+      "parentUuid": "e434c4d8_7703e852",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c2a0a98_5915efc7",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
@@ -82,6 +154,24 @@
       "writtenOn": "2018-06-26T14:56:53Z",
       "side": 1,
       "message": "ShrinkObjectMapToObjectNumber? Or something? The title doesn\u0027t let me know what the map is shrinking too.",
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6d1e26_a3fa596e",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "This is original logic and name\nSee\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.cpp?rcl\u003d76fb29d5ebae4fea2e5d1221f77e218a9b4b309a\u0026l\u003d188",
+      "parentUuid": "5c2a0a98_5915efc7",
       "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "89ccb953_31920f24",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "This is original logic.\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.cpp?rcl\u003d76fb29d5ebae4fea2e5d1221f77e218a9b4b309a\u0026l\u003d188\n\nAlso this is implicit solution, which is used for creating new objects.\nThe CPDF_Parser::GetLastObjNum use last object in map to return value.\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.cpp?rcl\u003d76fb29d5ebae4fea2e5d1221f77e218a9b4b309a\u0026l\u003d138\n\nI have store it for now.",
+      "parentUuid": "219e0d16_010363f8",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afa2c017_0a691ca4",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
@@ -139,6 +253,30 @@
       "writtenOn": "2018-06-26T14:56:53Z",
       "side": 1,
       "message": "This seems more like MergeInfoObject or something?",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94fa0f24_5ed76b5d",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "This is not merge.\nBecause the merging of A--\u003eB is not equal to B--\u003eA\nThis is update.\nFrom Spec \"The subsection structure is useful for incremental updates\"\nSee wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#40\nPDF Spec. 32000-1:2008 Sec. 7.5.4 (Cross-Reference Table)",
+      "parentUuid": "afa2c017_0a691ca4",
       "range": {
         "startLine": 86,
         "startChar": 25,
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "23991e37_26abb307",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "We should not copy to avoid  performance degradation, because this maps is big.",
+      "parentUuid": "47d38b0d_ad65ef62",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4235b88b_06b72efe",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
         "patchSetId": 5
@@ -185,6 +347,30 @@
       "writtenOn": "2018-06-26T14:56:53Z",
       "side": 1,
       "message": "Does this happen or is this just a safety check?",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41960c9c_a8c3507f",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "Yes, this can happened on rebuilding crossrefs, which i want rework to use this class.",
+      "parentUuid": "4235b88b_06b72efe",
       "range": {
         "startLine": 113,
         "startChar": 5,
@@ -220,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "9eb9a830_7fedd70c",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "We should mix trailers, because new trailer is incremental update for current trailer.",
+      "parentUuid": "e69ae0e0_41f73bb8",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f0be467_f8ab7091",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
         "patchSetId": 5
@@ -231,6 +441,30 @@
       "writtenOn": "2018-06-26T14:56:53Z",
       "side": 1,
       "message": "Instead of a union, would using subclasses make this clearer.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215020e8_d55b601f",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "This is original logic. I want to store it for now, while i\u0027m reworking the CPDF_Parser to use this class. \nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.h?rcl\u003d76fb29d5ebae4fea2e5d1221f77e218a9b4b309a\u0026l\u003d118",
+      "parentUuid": "6f0be467_f8ab7091",
       "range": {
         "startLine": 31,
         "startChar": 4,
@@ -266,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "63295e98_05856fa8",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "I want to stay with logic, that only other cross ref table can update cross ref table.\nAnd do not want to allow the mix of types. (i.e. the dictionary can not allow to update crossref table)",
+      "parentUuid": "7f996b01_b3bb4c41",
+      "range": {
+        "startLine": 830,
+        "startChar": 38,
+        "endLine": 833,
+        "endChar": 23
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9225e9e_3a543e93",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 5
@@ -277,6 +535,30 @@
       "writtenOn": "2018-06-26T14:56:53Z",
       "side": 1,
       "message": "Do we need m_TrailerData now or can we just store the cross ref table and get the trailer from there?",
+      "range": {
+        "startLine": 947,
+        "startChar": 12,
+        "endLine": 948,
+        "endChar": 38
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bde8d0f_eea96b14",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "We still need it, because other parsers of cross ref table still use it.\nBut in plans replace it with CPDF_CrossRefTable in next CLS in chain (see https://pdfium-review.googlesource.com/c/pdfium/+/35433/3).",
+      "parentUuid": "d9225e9e_3a543e93",
       "range": {
         "startLine": 947,
         "startChar": 12,
@@ -312,6 +594,30 @@
     },
     {
       "key": {
+        "uuid": "c825c07a_5094c64b",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "Yes. This is temporary solition to allow to me split the CLs.",
+      "parentUuid": "aadece2d_a8324cae",
+      "range": {
+        "startLine": 949,
+        "startChar": 9,
+        "endLine": 949,
+        "endChar": 18
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b574409d_89f7e7ae",
         "filename": "core/fpdfapi/parser/cpdf_parser.h",
         "patchSetId": 5
@@ -323,6 +629,30 @@
       "writtenOn": "2018-06-26T14:56:53Z",
       "side": 1,
       "message": "Can we drop these and just spell out the names below? Makes things easier to read.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 52
+      },
+      "revId": "8360b2a26f9ece1a3b41652bb714f7cea350373d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f799c6a_0eff2f49",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-26T15:47:49Z",
+      "side": 1,
+      "message": "I will drop this after fully reworked of CPDF_Parser to use CPDF_CrossRefStream\nStore it for now, to reduce changes in CL and do not change other files, which use this types. (for example cpdf_parser_uinttests.cpp)\nI will do this in separate CL after.",
+      "parentUuid": "b574409d_89f7e7ae",
       "range": {
         "startLine": 112,
         "startChar": 2,
