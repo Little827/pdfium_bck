@@ -26,7 +26,7 @@ class CPDF_Document;
 class CPDF_IndirectObjectHolder;
 class CPDF_LinearizedHeader;
 class CPDF_Object;
-class CPDF_ObjectStream;
+class CPDF_ObjStream;
 class CPDF_ReadValidator;
 class CPDF_SecurityHandler;
 class CPDF_SyntaxParser;
@@ -172,8 +172,8 @@ class CPDF_Parser {
   bool LoadLinearizedAllCrossRefV4(FX_FILESIZE pos);
   bool LoadLinearizedAllCrossRefV5(FX_FILESIZE pos);
   Error LoadLinearizedMainXRefTable();
-  const CPDF_ObjectStream* GetObjectStream(CPDF_IndirectObjectHolder* pObjList,
-                                           uint32_t object_number);
+  const CPDF_ObjStream* GetObjectStream(CPDF_IndirectObjectHolder* pObjList,
+                                        uint32_t object_number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
   void SetEncryptDictionary(CPDF_Dictionary* pDict);
   void ShrinkObjectMap(uint32_t size);
@@ -219,7 +219,7 @@ class CPDF_Parser {
   std::unique_ptr<CPDF_LinearizedHeader> m_pLinearized;
 
   // A map of object numbers to indirect streams.
-  std::map<uint32_t, std::unique_ptr<CPDF_ObjectStream>> m_ObjectStreamMap;
+  std::map<uint32_t, std::unique_ptr<CPDF_ObjStream>> m_ObjectStreamMap;
 
   // All indirect object numbers that are being parsed.
   std::set<uint32_t> m_ParsingObjNums;
