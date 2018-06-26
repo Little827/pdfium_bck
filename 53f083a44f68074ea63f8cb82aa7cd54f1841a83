@@ -16,6 +16,24 @@
       "revId": "53f083a44f68074ea63f8cb82aa7cd54f1841a83",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d480e420_51c5851c",
+        "filename": "testing/resources/pixel/xfa_specific/dynamic_list_box_allow_multiple_selection_expected_mac.pdf.0.png",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-06-26T15:28:16Z",
+      "side": 1,
+      "message": "I would leave the Mac specific .png in and file a bug about fixing the whitespace for after XFA launches.",
+      "parentUuid": "edf96920_46b872fc",
+      "revId": "53f083a44f68074ea63f8cb82aa7cd54f1841a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
