@@ -54,6 +54,13 @@ int32_t GetStreamFirst(const RetainPtr<CPDF_StreamAcc>& pObjStream) {
   return pObjStream->GetDict()->GetIntegerFor("First");
 }
 
+class ObjectsHolderStub : public CPDF_Parser::ParsedObjectsHolder {
+ public:
+  ObjectsHolderStub() = default;
+  ~ObjectsHolderStub() override = default;
+  bool TryInit() override { return true; }
+};
+
 }  // namespace
 
 class CPDF_Parser::TrailerData {
@@ -124,12 +131,20 @@ class CPDF_Parser::TrailerData {
   uint32_t last_root_obj_num_ = CPDF_Object::kInvalidObjNum;
 };
 
-CPDF_Parser::CPDF_Parser()
+CPDF_Parser::CPDF_Parser(ParsedObjectsHolder* holder)
     : m_pSyntax(pdfium::MakeUnique<CPDF_SyntaxParser>()),
+      m_pObjectsHolder(holder),
       m_bHasParsed(false),
       m_bXRefStream(false),
       m_FileVersion(0),
-      m_TrailerData(pdfium::MakeUnique<TrailerData>()) {}
+      m_TrailerData(pdfium::MakeUnique<TrailerData>()) {
+  if (!holder) {
+    m_pOwnedObjectsHolder = pdfium::MakeUnique<ObjectsHolderStub>();
+    m_pObjectsHolder = m_pOwnedObjectsHolder.get();
+  }
+}
+
+CPDF_Parser::CPDF_Parser() : CPDF_Parser(nullptr) {}
 
 CPDF_Parser::~CPDF_Parser() {
   ReleaseEncryptHandler();
@@ -232,19 +247,18 @@ bool CPDF_Parser::ParseFileVersion() {
 
 CPDF_Parser::Error CPDF_Parser::StartParse(
     const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
-    CPDF_Document* pDocument) {
+    const char* password) {
   if (!InitSyntaxParser(
           pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr)))
     return FORMAT_ERROR;
-  return StartParseInternal(pDocument);
+  SetPassword(password);
+  return StartParseInternal();
 }
 
-CPDF_Parser::Error CPDF_Parser::StartParseInternal(CPDF_Document* pDocument) {
+CPDF_Parser::Error CPDF_Parser::StartParseInternal() {
   ASSERT(!m_bHasParsed);
   m_bHasParsed = true;
   m_bXRefStream = false;
-
-  m_pDocument = pDocument;
 
   bool bXRefRebuilt = false;
 
@@ -269,8 +283,7 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal(CPDF_Document* pDocument) {
   if (eRet != SUCCESS)
     return eRet;
 
-  m_pDocument->LoadDoc();
-  if (!m_pDocument->GetRoot() || m_pDocument->GetPageCount() == 0) {
+  if (!GetRoot() || !m_pObjectsHolder->TryInit()) {
     if (bXRefRebuilt)
       return FORMAT_ERROR;
 
@@ -282,8 +295,8 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal(CPDF_Document* pDocument) {
     if (eRet != SUCCESS)
       return eRet;
 
-    m_pDocument->LoadDoc();
-    if (!m_pDocument->GetRoot())
+    m_pObjectsHolder->TryInit();
+    if (!GetRoot())
       return FORMAT_ERROR;
   }
   if (GetRootObjNum() == CPDF_Object::kInvalidObjNum) {
@@ -297,7 +310,7 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal(CPDF_Document* pDocument) {
   }
   if (m_pSecurityHandler && !m_pSecurityHandler->IsMetadataEncrypted()) {
     CPDF_Reference* pMetadata =
-        ToReference(m_pDocument->GetRoot()->GetObjectFor("Metadata"));
+        ToReference(GetRoot()->GetObjectFor("Metadata"));
     if (pMetadata)
       m_MetadataObjnum = pMetadata->GetRefObjNum();
   }
@@ -337,7 +350,8 @@ CPDF_Parser::Error CPDF_Parser::SetEncryptHandler() {
     if (CPDF_Dictionary* pEncryptDict = pEncryptObj->AsDictionary()) {
       SetEncryptDictionary(pEncryptDict);
     } else if (CPDF_Reference* pRef = pEncryptObj->AsReference()) {
-      pEncryptObj = m_pDocument->GetOrParseIndirectObject(pRef->GetRefObjNum());
+      pEncryptObj =
+          m_pObjectsHolder->GetOrParseIndirectObject(pRef->GetRefObjNum());
       if (pEncryptObj)
         SetEncryptDictionary(pEncryptObj->GetDict());
     }
@@ -828,8 +842,7 @@ bool CPDF_Parser::RebuildCrossRef() {
                 last_obj = start_pos;
                 FX_FILESIZE obj_end = 0;
                 std::unique_ptr<CPDF_Object> pObject =
-                    ParseIndirectObjectAtByStrict(m_pDocument.Get(), obj_pos,
-                                                  objnum, &obj_end);
+                    ParseIndirectObjectAtByStrict(obj_pos, objnum, &obj_end);
                 if (CPDF_Stream* pStream = ToStream(pObject.get())) {
                   if (CPDF_Dictionary* pDict = pStream->GetDict()) {
                     if ((pDict->KeyExist("Type")) &&
@@ -886,7 +899,7 @@ bool CPDF_Parser::RebuildCrossRef() {
               m_pSyntax->SetPos(pos + i - m_pSyntax->m_HeaderOffset);
 
               std::unique_ptr<CPDF_Object> pObj =
-                  m_pSyntax->GetObjectBody(m_pDocument.Get());
+                  m_pSyntax->GetObjectBody(m_pObjectsHolder.Get());
               if (pObj) {
                 if (pObj->IsDictionary() || pObj->AsStream()) {
                   CPDF_Stream* pStream = pObj->AsStream();
@@ -907,7 +920,7 @@ bool CPDF_Parser::RebuildCrossRef() {
                               pElement ? pElement->GetObjNum() : 0;
                           if (dwObjNum) {
                             GetTrailer()->SetNewFor<CPDF_Reference>(
-                                key, m_pDocument.Get(), dwObjNum);
+                                key, m_pObjectsHolder.Get(), dwObjNum);
                           } else {
                             GetTrailer()->SetFor(key, pElement->Clone());
                           }
@@ -1022,8 +1035,7 @@ bool CPDF_Parser::RebuildCrossRef() {
 }
 
 bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
-  std::unique_ptr<CPDF_Object> pObject(
-      ParseIndirectObjectAt(m_pDocument.Get(), *pos, 0));
+  std::unique_ptr<CPDF_Object> pObject(ParseIndirectObjectAt(*pos, 0));
   if (!pObject)
     return false;
 
@@ -1032,14 +1044,12 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
     return false;
 
   CPDF_Object* pUnownedObject = pObject.get();
-  if (m_pDocument) {
-    const CPDF_Dictionary* pRootDict = m_pDocument->GetRoot();
-    if (pRootDict && pRootDict->GetObjNum() == objnum)
-      return false;
-    if (!m_pDocument->ReplaceIndirectObjectIfHigherGeneration(
-            objnum, std::move(pObject))) {
-      return false;
-    }
+  const CPDF_Dictionary* pRootDict = GetRoot();
+  if (pRootDict && pRootDict->GetObjNum() == objnum)
+    return false;
+  if (!m_pObjectsHolder->ReplaceIndirectObjectIfHigherGeneration(
+          objnum, std::move(pObject))) {
+    return false;
   }
 
   CPDF_Stream* pStream = pUnownedObject->AsStream();
@@ -1171,6 +1181,12 @@ const CPDF_Array* CPDF_Parser::GetIDArray() const {
   return GetTrailer() ? GetTrailer()->GetArrayFor("ID") : nullptr;
 }
 
+CPDF_Dictionary* CPDF_Parser::GetRoot() const {
+  CPDF_Object* obj =
+      m_pObjectsHolder->GetOrParseIndirectObject(GetRootObjNum());
+  return obj ? obj->GetDict() : nullptr;
+}
+
 CPDF_Dictionary* CPDF_Parser::GetTrailer() const {
   return m_TrailerData->GetMainTrailer();
 }
@@ -1183,12 +1199,11 @@ uint32_t CPDF_Parser::GetInfoObjNum() {
   return m_TrailerData->GetInfoObjNum();
 }
 
-uint32_t CPDF_Parser::GetRootObjNum() {
+uint32_t CPDF_Parser::GetRootObjNum() const {
   return m_TrailerData->GetRootObjNum();
 }
 
 std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObject(
-    CPDF_IndirectObjectHolder* pObjList,
     uint32_t objnum) {
   if (!IsValidObjectNumber(objnum))
     return nullptr;
@@ -1203,7 +1218,7 @@ std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObject(
     FX_FILESIZE pos = m_ObjectInfo[objnum].pos;
     if (pos <= 0)
       return nullptr;
-    return ParseIndirectObjectAt(pObjList, pos, objnum);
+    return ParseIndirectObjectAt(pos, objnum);
   }
   if (GetObjectType(objnum) != ObjectType::kCompressed)
     return nullptr;
@@ -1234,7 +1249,7 @@ std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObject(
     return nullptr;
 
   syntax.SetPos(offset + it->second);
-  return syntax.GetObjectBody(pObjList);
+  return syntax.GetObjectBody(m_pObjectsHolder.Get());
 }
 
 RetainPtr<CPDF_StreamAcc> CPDF_Parser::GetObjectStream(uint32_t objnum) {
@@ -1242,11 +1257,11 @@ RetainPtr<CPDF_StreamAcc> CPDF_Parser::GetObjectStream(uint32_t objnum) {
   if (it != m_ObjectStreamMap.end())
     return it->second;
 
-  if (!m_pDocument)
+  if (!m_pObjectsHolder)
     return nullptr;
 
   const CPDF_Stream* pStream =
-      ToStream(m_pDocument->GetOrParseIndirectObject(objnum));
+      ToStream(m_pObjectsHolder->GetOrParseIndirectObject(objnum));
   if (!pStream)
     return nullptr;
 
@@ -1257,22 +1272,21 @@ RetainPtr<CPDF_StreamAcc> CPDF_Parser::GetObjectStream(uint32_t objnum) {
 }
 
 std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObjectAt(
-    CPDF_IndirectObjectHolder* pObjList,
     FX_FILESIZE pos,
     uint32_t objnum) {
   return ParseIndirectObjectAtInternal(
-      pObjList, pos, objnum, CPDF_SyntaxParser::ParseType::kLoose, nullptr);
+      pos, objnum, CPDF_SyntaxParser::ParseType::kLoose, nullptr);
 }
 
 std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObjectAtInternal(
-    CPDF_IndirectObjectHolder* pObjList,
     FX_FILESIZE pos,
     uint32_t objnum,
     CPDF_SyntaxParser::ParseType parse_type,
     FX_FILESIZE* pResultPos) {
   const FX_FILESIZE saved_pos = m_pSyntax->GetPos();
   m_pSyntax->SetPos(pos);
-  auto result = m_pSyntax->GetIndirectObject(pObjList, parse_type);
+  auto result =
+      m_pSyntax->GetIndirectObject(m_pObjectsHolder.Get(), parse_type);
 
   if (pResultPos)
     *pResultPos = m_pSyntax->GetPos();
@@ -1292,12 +1306,11 @@ std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObjectAtInternal(
 }
 
 std::unique_ptr<CPDF_Object> CPDF_Parser::ParseIndirectObjectAtByStrict(
-    CPDF_IndirectObjectHolder* pObjList,
     FX_FILESIZE pos,
     uint32_t objnum,
     FX_FILESIZE* pResultPos) {
   return ParseIndirectObjectAtInternal(
-      pObjList, pos, objnum, CPDF_SyntaxParser::ParseType::kStrict, pResultPos);
+      pos, objnum, CPDF_SyntaxParser::ParseType::kStrict, pResultPos);
 }
 
 uint32_t CPDF_Parser::GetFirstPageNo() const {
@@ -1313,7 +1326,7 @@ std::unique_ptr<CPDF_Dictionary> CPDF_Parser::LoadTrailerV4() {
   if (m_pSyntax->GetKeyword() != "trailer")
     return nullptr;
 
-  return ToDictionary(m_pSyntax->GetObjectBody(m_pDocument.Get()));
+  return ToDictionary(m_pSyntax->GetObjectBody(m_pObjectsHolder.Get()));
 }
 
 uint32_t CPDF_Parser::GetPermissions() const {
@@ -1335,8 +1348,9 @@ std::unique_ptr<CPDF_LinearizedHeader> CPDF_Parser::ParseLinearizedHeader() {
 
 CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
     const RetainPtr<CPDF_ReadValidator>& validator,
-    CPDF_Document* pDocument) {
+    const char* password) {
   ASSERT(!m_bHasParsed);
+  SetPassword(password);
   m_bXRefStream = false;
   m_LastXRefOffset = 0;
 
@@ -1345,10 +1359,9 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
 
   m_pLinearized = ParseLinearizedHeader();
   if (!m_pLinearized)
-    return StartParseInternal(std::move(pDocument));
+    return StartParseInternal();
 
   m_bHasParsed = true;
-  m_pDocument = pDocument;
 
   m_LastXRefOffset = m_pLinearized->GetLastXRefOffset();
   FX_FILESIZE dwFirstXRefOffset = m_LastXRefOffset;
@@ -1376,8 +1389,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   if (eRet != SUCCESS)
     return eRet;
 
-  m_pDocument->LoadDoc();
-  if (!m_pDocument->GetRoot() || m_pDocument->GetPageCount() == 0) {
+  if (!GetRoot() || !m_pObjectsHolder->TryInit()) {
     if (bXRefRebuilt)
       return FORMAT_ERROR;
 
@@ -1389,8 +1401,8 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
     if (eRet != SUCCESS)
       return eRet;
 
-    m_pDocument->LoadDoc();
-    if (!m_pDocument->GetRoot())
+    m_pObjectsHolder->TryInit();
+    if (!GetRoot())
       return FORMAT_ERROR;
   }
 
@@ -1406,7 +1418,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
 
   if (m_pSecurityHandler && m_pSecurityHandler->IsMetadataEncrypted()) {
     if (CPDF_Reference* pMetadata =
-            ToReference(m_pDocument->GetRoot()->GetObjectFor("Metadata")))
+            ToReference(GetRoot()->GetObjectFor("Metadata")))
       m_MetadataObjnum = pMetadata->GetRefObjNum();
   }
   return SUCCESS;
