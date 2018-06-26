@@ -22,6 +22,30 @@
       "revId": "55f419ea795c110c0124d28bcf09504d6aa19bb5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f143780b_6584b4fe",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-26T20:37:16Z",
+      "side": 1,
+      "message": "Yep.  Its the location of the thing we want to clear.",
+      "parentUuid": "906bdf7a_c29f1afc",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "55f419ea795c110c0124d28bcf09504d6aa19bb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
