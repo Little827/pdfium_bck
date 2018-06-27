@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "a8e32e21_81fe931a",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-27T22:51:54Z",
+      "side": 1,
+      "message": "I think yes. But i have stored original logic, because we have some tests, with malformed pdfs, in which expected, that its are loaded. i will deal with this later.",
+      "parentUuid": "2482ab38_4b844f97",
+      "revId": "20eca1e383b7dce69cd791d42bda3558a3966301",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d724dbf_4c863ba7",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 9
