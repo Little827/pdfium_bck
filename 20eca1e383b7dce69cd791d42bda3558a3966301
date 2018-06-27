@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62c4dd31_130e2244",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-27T22:46:43Z",
+      "side": 1,
+      "message": "Is this parser being used for anything?",
+      "revId": "20eca1e383b7dce69cd791d42bda3558a3966301",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38979e06_6dedaf52",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-27T22:46:43Z",
+      "side": 1,
+      "message": "No longer needed, given line 19.",
+      "revId": "20eca1e383b7dce69cd791d42bda3558a3966301",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2482ab38_4b844f97",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-27T22:46:43Z",
+      "side": 1,
+      "message": "Would checking the TryInit() return value be better?",
+      "revId": "20eca1e383b7dce69cd791d42bda3558a3966301",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d724dbf_4c863ba7",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-27T22:46:43Z",
+      "side": 1,
+      "message": "Ditto. BTW, this method has a lot in common with StartParseInternal().",
+      "revId": "20eca1e383b7dce69cd791d42bda3558a3966301",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
