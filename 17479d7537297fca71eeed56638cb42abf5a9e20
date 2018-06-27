@@ -22,6 +22,30 @@
       "revId": "17479d7537297fca71eeed56638cb42abf5a9e20",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b9673f6_c4bbeeab",
+        "filename": "core/fxcodec/codec/fx_codec_jpx_opj.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-27T17:36:55Z",
+      "side": 1,
+      "message": "Kept const, removed superfluous cast at 484 because the DecodeData() already takes a const ...",
+      "parentUuid": "c51cdd49_041e4f6b",
+      "range": {
+        "startLine": 475,
+        "startChar": 37,
+        "endLine": 475,
+        "endChar": 42
+      },
+      "revId": "17479d7537297fca71eeed56638cb42abf5a9e20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
