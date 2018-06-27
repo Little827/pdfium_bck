@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "598906c5_ecca4832",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-27T22:55:06Z",
+      "side": 1,
+      "message": "FIxed in https://pdfium-review.googlesource.com/c/pdfium/+/36351",
+      "parentUuid": "62c4dd31_130e2244",
+      "revId": "20eca1e383b7dce69cd791d42bda3558a3966301",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38979e06_6dedaf52",
         "filename": "core/fpdfapi/parser/cpdf_document.h",
         "patchSetId": 9
