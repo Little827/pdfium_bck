@@ -394,11 +394,6 @@ CPDF_Font* LoadCompositeFont(CPDF_Document* pDoc,
   return pDoc->LoadFont(fontDict);
 }
 
-CPDF_TextObject* CPDFTextObjectFromFPDFPageObject(FPDF_PAGEOBJECT page_object) {
-  auto* obj = CPDFPageObjectFromFPDFPageObject(page_object);
-  return obj ? obj->AsText() : nullptr;
-}
-
 }  // namespace
 
 FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV
@@ -467,16 +462,6 @@ FPDF_EXPORT FPDF_FONT FPDF_CALLCONV FPDFText_LoadFont(FPDF_DOCUMENT document,
           : LoadSimpleFont(pDoc, std::move(pFont), data, size, font_type));
 }
 
-FPDF_EXPORT FPDF_FONT FPDF_CALLCONV
-FPDFText_LoadStandardFont(FPDF_DOCUMENT document, FPDF_BYTESTRING font) {
-  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
-  if (!pDoc)
-    return nullptr;
-
-  return FPDFFontFromCPDFFont(
-      CPDF_Font::GetStockFont(pDoc, ByteStringView(font)));
-}
-
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFText_SetFillColor(FPDF_PAGEOBJECT text_object,
                       unsigned int R,
@@ -484,42 +469,6 @@ FPDFText_SetFillColor(FPDF_PAGEOBJECT text_object,
                       unsigned int B,
                       unsigned int A) {
   return FPDFPageObj_SetFillColor(text_object, R, G, B, A);
-}
-
-FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetMatrix(FPDF_PAGEOBJECT text,
-                                                       double* a,
-                                                       double* b,
-                                                       double* c,
-                                                       double* d,
-                                                       double* e,
-                                                       double* f) {
-  if (!text || !a || !b || !c || !d || !e || !f)
-    return false;
-
-  CPDF_TextObject* pTextObj = CPDFTextObjectFromFPDFPageObject(text);
-  if (!pTextObj)
-    return false;
-
-  CFX_Matrix text_matrix = pTextObj->GetTextMatrix();
-  *a = text_matrix.a;
-  *b = text_matrix.b;
-  *c = text_matrix.c;
-  *d = text_matrix.d;
-  *e = text_matrix.e;
-  *f = text_matrix.f;
-
-  return true;
-}
-
-FPDF_EXPORT double FPDF_CALLCONV FPDFTextObj_GetFontSize(FPDF_PAGEOBJECT text) {
-  if (!text)
-    return 0;
-
-  CPDF_TextObject* pTextObj = CPDFTextObjectFromFPDFPageObject(text);
-  if (!pTextObj)
-    return 0;
-
-  return pTextObj->GetFontSize();
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDFFont_Close(FPDF_FONT font) {

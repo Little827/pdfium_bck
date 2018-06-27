@@ -143,5 +143,7 @@ int32_t CPDF_PageLabel::GetPageByLabel(const ByteStringView& bsLabel) const {
 }
 
 int32_t CPDF_PageLabel::GetPageByLabel(const WideStringView& wsLabel) const {
-  return GetPageByLabel(PDF_EncodeText(WideString(wsLabel)).AsStringView());
+  // TODO(tsepez): check usage of c_str() below.
+  return GetPageByLabel(
+      PDF_EncodeText(wsLabel.unterminated_c_str()).AsStringView());
 }

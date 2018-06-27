@@ -73,14 +73,19 @@ class CJBig2_GRDProc {
   FXCODEC_STATUS ProgressiveDecodeArithTemplate3Unopt(
       ProgressiveArithDecodeState* pState);
 
-  std::unique_ptr<CJBig2_Image> DecodeArithOpt3(
+  std::unique_ptr<CJBig2_Image> DecodeArithTemplate0Opt3(
       CJBig2_ArithDecoder* pArithDecoder,
-      JBig2ArithCtx* gbContext,
-      int OPT);
+      JBig2ArithCtx* gbContext);
   std::unique_ptr<CJBig2_Image> DecodeArithTemplate0Unopt(
       CJBig2_ArithDecoder* pArithDecoder,
       JBig2ArithCtx* gbContext);
+  std::unique_ptr<CJBig2_Image> DecodeArithTemplate1Opt3(
+      CJBig2_ArithDecoder* pArithDecoder,
+      JBig2ArithCtx* gbContext);
   std::unique_ptr<CJBig2_Image> DecodeArithTemplate1Unopt(
+      CJBig2_ArithDecoder* pArithDecoder,
+      JBig2ArithCtx* gbContext);
+  std::unique_ptr<CJBig2_Image> DecodeArithTemplate2Opt3(
       CJBig2_ArithDecoder* pArithDecoder,
       JBig2ArithCtx* gbContext);
   std::unique_ptr<CJBig2_Image> DecodeArithTemplate2Unopt(

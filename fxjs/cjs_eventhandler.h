@@ -81,31 +81,32 @@ class CJS_EventHandler {
 
   void OnField_Calculate(CPDF_FormField* pSource,
                          CPDF_FormField* pTarget,
-                         WideString* Value,
-                         bool* pbRc);
+                         WideString& Value,
+                         bool& bRc);
   void OnField_Format(CPDF_FormField* pTarget,
-                      WideString* Value,
+                      WideString& Value,
                       bool bWillCommit);
-  void OnField_Keystroke(WideString* strChange,
+  void OnField_Keystroke(WideString& strChange,
                          const WideString& strChangeEx,
                          bool KeyDown,
                          bool bModifier,
-                         int* nSelEnd,
-                         int* nSelStart,
+                         int& nSelEnd,
+                         int& nSelStart,
                          bool bShift,
                          CPDF_FormField* pTarget,
-                         WideString* Value,
+                         WideString& Value,
                          bool bWillCommit,
                          bool bFieldFull,
-                         bool* bRc);
-  void OnField_Validate(WideString* strChange,
+                         bool& bRc);
+  void OnField_Validate(WideString& strChange,
                         const WideString& strChangeEx,
                         bool bKeyDown,
                         bool bModifier,
                         bool bShift,
                         CPDF_FormField* pTarget,
-                        WideString* Value,
-                        bool* bRc);
+                        WideString& Value,
+                        bool& bRc);
+
   void OnField_MouseDown(bool bModifier, bool bShift, CPDF_FormField* pTarget);
   void OnField_MouseEnter(bool bModifier, bool bShift, CPDF_FormField* pTarget);
   void OnField_MouseExit(bool bModifier, bool bShift, CPDF_FormField* pTarget);
@@ -113,11 +114,11 @@ class CJS_EventHandler {
   void OnField_Blur(bool bModifier,
                     bool bShift,
                     CPDF_FormField* pTarget,
-                    WideString* Value);
+                    const WideString& Value);
   void OnField_Focus(bool bModifier,
                      bool bShift,
                      CPDF_FormField* pTarget,
-                     WideString* Value);
+                     const WideString& Value);
 
   void OnScreen_Focus(bool bModifier, bool bShift, CPDFSDK_Annot* pScreen);
   void OnScreen_Blur(bool bModifier, bool bShift, CPDFSDK_Annot* pScreen);
@@ -143,7 +144,7 @@ class CJS_EventHandler {
   bool IsValid() const;
 
   WideString& Change();
-  WideString ChangeEx() const;
+  const WideString& ChangeEx();
   int CommitKey() const;
   bool FieldFull() const;
   bool KeyDown() const;
@@ -160,7 +161,7 @@ class CJS_EventHandler {
   CJS_Field* Target_Field();
   WideString& Value();
   bool WillCommit() const;
-  WideString TargetName() const;
+  const WideString& TargetName() const;
 
   JS_EVENT_T EventType() const { return m_eEventType; }
 
@@ -189,13 +190,13 @@ class CJS_EventHandler {
   bool m_bKeyDown = false;
   bool m_bModifier = false;
   bool m_bShift = false;
-  UnownedPtr<int> m_pISelEnd;
+  int* m_pISelEnd = nullptr;
   int m_nSelEndDu = 0;
-  UnownedPtr<int> m_pISelStart;
+  int* m_pISelStart = nullptr;
   int m_nSelStartDu = 0;
   bool m_bWillCommit = false;
   bool m_bFieldFull = false;
-  UnownedPtr<bool> m_pbRc;
+  bool* m_pbRc = nullptr;
   bool m_bRcDu = false;
 
   UnownedPtr<CPDF_Bookmark> m_pTargetBookMark;

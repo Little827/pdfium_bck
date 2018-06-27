@@ -7,7 +7,6 @@
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 
 #include <memory>
-#include <utility>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
@@ -405,7 +404,7 @@ void CPDFXFA_DocEnvironment::GetTitle(CXFA_FFDoc* hDoc, WideString& wsTitle) {
     return;
 
   ByteString csTitle = pInfoDict->GetStringFor("Title");
-  wsTitle = WideString::FromLocal(csTitle.AsStringView());
+  wsTitle = WideString::FromLocal(csTitle.c_str());
 }
 
 void CPDFXFA_DocEnvironment::SetTitle(CXFA_FFDoc* hDoc,
@@ -655,9 +654,10 @@ bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
       if (!pFormFillEnv)
         return false;
 
-      pFormFillEnv->JS_appAlert(WideString::FromLocal(IDS_XFA_Validate_Input),
-                                L"", JSPLATFORM_ALERT_BUTTON_OK,
-                                JSPLATFORM_ALERT_ICON_WARNING);
+      WideString ws = WideString::FromLocal(IDS_XFA_Validate_Input);
+      ByteString bs = ws.UTF16LE_Encode();
+      pFormFillEnv->Alert(AsFPDFWideString(&bs),
+                          reinterpret_cast<FPDF_WIDESTRING>(L""), 0, 1);
       return false;
     }
     pNode = it->MoveToNext();
@@ -848,28 +848,27 @@ bool CPDFXFA_DocEnvironment::MailToInfo(WideString& csURL,
     return false;
 
   auto pos = srcURL.Find(L'?');
+  WideString tmp;
+  if (!pos.has_value()) {
+    pos = srcURL.Find(L'@');
+    if (!pos.has_value())
+      return false;
 
-  {
-    WideString tmp;
-    if (!pos.has_value()) {
-      pos = srcURL.Find(L'@');
-      if (!pos.has_value())
-        return false;
-
-      tmp = srcURL.Right(csURL.GetLength() - 7);
-    } else {
-      tmp = srcURL.Left(pos.value());
-      tmp = tmp.Right(tmp.GetLength() - 7);
-    }
-    tmp.Trim();
-    csToAddress = std::move(tmp);
+    tmp = srcURL.Right(csURL.GetLength() - 7);
+  } else {
+    tmp = srcURL.Left(pos.value());
+    tmp = tmp.Right(tmp.GetLength() - 7);
   }
+  tmp.Trim();
+
+  csToAddress = tmp;
 
   srcURL = srcURL.Right(srcURL.GetLength() - (pos.value() + 1));
   while (!srcURL.IsEmpty()) {
     srcURL.Trim();
     pos = srcURL.Find(L'&');
-    WideString tmp = (!pos.has_value()) ? srcURL : srcURL.Left(pos.value());
+
+    tmp = (!pos.has_value()) ? srcURL : srcURL.Left(pos.value());
     tmp.Trim();
     if (tmp.GetLength() >= 3 && tmp.Left(3).CompareNoCase(L"cc=") == 0) {
       tmp = tmp.Right(tmp.GetLength() - 3);
@@ -909,9 +908,10 @@ bool CPDFXFA_DocEnvironment::SubmitInternal(CXFA_FFDoc* hDoc,
 
   WideString csURL = submit->GetSubmitTarget();
   if (csURL.IsEmpty()) {
-    pFormFillEnv->JS_appAlert(WideString::FromLocal("Submit cancelled."), L"",
-                              JSPLATFORM_ALERT_BUTTON_OK,
-                              JSPLATFORM_ALERT_ICON_ASTERISK);
+    WideString ws = WideString::FromLocal("Submit cancelled.");
+    ByteString bs = ws.UTF16LE_Encode();
+    pFormFillEnv->Alert(AsFPDFWideString(&bs),
+                        reinterpret_cast<FPDF_WIDESTRING>(L""), 0, 4);
     return false;
   }
 

@@ -6,8 +6,6 @@
 
 #include "core/fpdfdoc/cpdf_structelement.h"
 
-#include <utility>
-
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
@@ -38,7 +36,7 @@ CPDF_StructElement::CPDF_StructElement(CPDF_StructTree* pTree,
   if (pTree->GetRoleMap()) {
     ByteString mapped = pTree->GetRoleMap()->GetStringFor(m_Type);
     if (!mapped.IsEmpty())
-      m_Type = std::move(mapped);
+      m_Type = mapped;
   }
   LoadKids(pDict);
 }

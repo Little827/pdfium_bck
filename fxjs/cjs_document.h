@@ -11,13 +11,14 @@
 #include <memory>
 #include <vector>
 
-#include "core/fxcrt/observable.h"
 #include "fxjs/js_define.h"
 
+class CJS_Document;
 class CPDF_TextObject;
+
 struct CJS_DelayData;
 
-class CJS_Document : public CJS_Object, public Observable<CJS_Document> {
+class CJS_Document : public CJS_Object {
  public:
   static int GetObjDefnID();
   static void DefineJSObjects(CFXJS_Engine* pEngine);

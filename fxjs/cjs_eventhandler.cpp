@@ -127,103 +127,97 @@ void CJS_EventHandler::OnField_MouseUp(bool bModifier,
 void CJS_EventHandler::OnField_Focus(bool bModifier,
                                      bool bShift,
                                      CPDF_FormField* pTarget,
-                                     WideString* pValue) {
-  ASSERT(pValue);
+                                     const WideString& Value) {
   Initialize(JET_FIELD_FOCUS);
 
   m_bModifier = bModifier;
   m_bShift = bShift;
   m_strTargetName = pTarget->GetFullName();
-  m_pValue = pValue;
+  m_pValue = const_cast<WideString*>(&Value);
 }
 
 void CJS_EventHandler::OnField_Blur(bool bModifier,
                                     bool bShift,
                                     CPDF_FormField* pTarget,
-                                    WideString* pValue) {
-  ASSERT(pValue);
+                                    const WideString& Value) {
   Initialize(JET_FIELD_BLUR);
 
   m_bModifier = bModifier;
   m_bShift = bShift;
   m_strTargetName = pTarget->GetFullName();
-  m_pValue = pValue;
+  m_pValue = const_cast<WideString*>(&Value);
 }
 
-void CJS_EventHandler::OnField_Keystroke(WideString* strChange,
+void CJS_EventHandler::OnField_Keystroke(WideString& strChange,
                                          const WideString& strChangeEx,
                                          bool KeyDown,
                                          bool bModifier,
-                                         int* pSelEnd,
-                                         int* pSelStart,
+                                         int& nSelEnd,
+                                         int& nSelStart,
                                          bool bShift,
                                          CPDF_FormField* pTarget,
-                                         WideString* pValue,
+                                         WideString& Value,
                                          bool bWillCommit,
                                          bool bFieldFull,
-                                         bool* pbRc) {
-  ASSERT(pValue && pbRc && pSelEnd && pSelStart);
+                                         bool& bRc) {
   Initialize(JET_FIELD_KEYSTROKE);
 
   m_nCommitKey = 0;
-  m_pWideStrChange = strChange;
+  m_pWideStrChange = &strChange;
   m_WideStrChangeEx = strChangeEx;
   m_bKeyDown = KeyDown;
   m_bModifier = bModifier;
-  m_pISelEnd = pSelEnd;
-  m_pISelStart = pSelStart;
+  m_pISelEnd = &nSelEnd;
+  m_pISelStart = &nSelStart;
   m_bShift = bShift;
   m_strTargetName = pTarget->GetFullName();
-  m_pValue = pValue;
+  m_pValue = &Value;
   m_bWillCommit = bWillCommit;
-  m_pbRc = pbRc;
+  m_pbRc = &bRc;
   m_bFieldFull = bFieldFull;
 }
 
-void CJS_EventHandler::OnField_Validate(WideString* strChange,
+void CJS_EventHandler::OnField_Validate(WideString& strChange,
                                         const WideString& strChangeEx,
                                         bool bKeyDown,
                                         bool bModifier,
                                         bool bShift,
                                         CPDF_FormField* pTarget,
-                                        WideString* pValue,
-                                        bool* pbRc) {
-  ASSERT(pValue && pbRc);
+                                        WideString& Value,
+                                        bool& bRc) {
   Initialize(JET_FIELD_VALIDATE);
 
-  m_pWideStrChange = strChange;
+  m_pWideStrChange = &strChange;
   m_WideStrChangeEx = strChangeEx;
   m_bKeyDown = bKeyDown;
   m_bModifier = bModifier;
   m_bShift = bShift;
   m_strTargetName = pTarget->GetFullName();
-  m_pValue = pValue;
-  m_pbRc = pbRc;
+  m_pValue = &Value;
+  m_pbRc = &bRc;
 }
 
 void CJS_EventHandler::OnField_Calculate(CPDF_FormField* pSource,
                                          CPDF_FormField* pTarget,
-                                         WideString* pValue,
-                                         bool* pRc) {
-  ASSERT(pValue && pRc);
+                                         WideString& Value,
+                                         bool& bRc) {
   Initialize(JET_FIELD_CALCULATE);
 
   if (pSource)
     m_strSourceName = pSource->GetFullName();
   m_strTargetName = pTarget->GetFullName();
-  m_pValue = pValue;
-  m_pbRc = pRc;
+  m_pValue = &Value;
+  m_pbRc = &bRc;
 }
 
 void CJS_EventHandler::OnField_Format(CPDF_FormField* pTarget,
-                                      WideString* pValue,
+                                      WideString& Value,
                                       bool bWillCommit) {
-  ASSERT(pValue);
   Initialize(JET_FIELD_FORMAT);
 
   m_nCommitKey = 0;
   m_strTargetName = pTarget->GetFullName();
-  m_pValue = pValue;
+  m_pValue = &Value;
   m_bWillCommit = bWillCommit;
 }
 
@@ -402,7 +396,7 @@ WideString& CJS_EventHandler::Change() {
   return m_WideStrChangeDu;
 }
 
-WideString CJS_EventHandler::ChangeEx() const {
+const WideString& CJS_EventHandler::ChangeEx() {
   return m_WideStrChangeEx;
 }
 
@@ -634,6 +628,6 @@ bool CJS_EventHandler::WillCommit() const {
   return m_bWillCommit;
 }
 
-WideString CJS_EventHandler::TargetName() const {
+const WideString& CJS_EventHandler::TargetName() const {
   return m_strTargetName;
 }

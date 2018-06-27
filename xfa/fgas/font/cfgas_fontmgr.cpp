@@ -492,7 +492,7 @@ bool CFGAS_FontMgr::EnumFontsFromFontMapper() {
       continue;
 
     WideString wsFaceName =
-        WideString::FromLocal(pFontMapper->GetFaceName(i).AsStringView());
+        WideString::FromLocal(pFontMapper->GetFaceName(i).c_str());
     RegisterFaces(pFontStream, &wsFaceName);
   }
 
@@ -690,10 +690,11 @@ int32_t CFGAS_FontMgr::CalcPenalty(CFX_FontDescriptor* pInstalled,
     } else {
       nPenalty -= 30000;
     }
-    if (nPenalty == 30000 && !IsPartName(pInstalled->m_wsFaceName, FontName)) {
+    if (30000 == nPenalty &&
+        0 == IsPartName(pInstalled->m_wsFaceName, FontName)) {
       size_t i;
       for (i = 0; i < pInstalled->m_wsFamilyNames.size(); i++) {
-        if (IsPartName(pInstalled->m_wsFamilyNames[i], FontName))
+        if (IsPartName(pInstalled->m_wsFamilyNames[i], FontName) != 0)
           break;
       }
       if (i == pInstalled->m_wsFamilyNames.size())
@@ -883,9 +884,11 @@ void CFGAS_FontMgr::GetUSBCSB(FXFT_Face pFace, uint32_t* USB, uint32_t* CSB) {
   CSB[1] = pOS2->ulCodePageRange2;
 }
 
-bool CFGAS_FontMgr::IsPartName(const WideString& name1,
-                               const WideString& name2) {
-  return name1.Contains(name2.AsStringView());
+int32_t CFGAS_FontMgr::IsPartName(const WideString& Name1,
+                                  const WideString& Name2) {
+  if (Name1.Contains(Name2.c_str()))
+    return 1;
+  return 0;
 }
 
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_

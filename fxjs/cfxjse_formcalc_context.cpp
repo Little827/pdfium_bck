@@ -3807,14 +3807,16 @@ void CFXJSE_FormCalcContext::Format(CFXJSE_Value* pThis,
         wsPattern = L"num{" + wsPattern + L"}";
       } break;
       default: {
-        WideString wsTestPattern = L"num{" + wsPattern + L"}";
+        WideString wsTestPattern;
+        wsTestPattern = L"num{" + wsPattern + L"}";
         CXFA_LocaleValue tempLocaleValue(XFA_VT_FLOAT, wsValue, wsTestPattern,
                                          pLocale, pMgr);
         if (tempLocaleValue.IsValid()) {
-          wsPattern = std::move(wsTestPattern);
+          wsPattern = wsTestPattern;
           patternType = XFA_VT_FLOAT;
         } else {
-          wsPattern = L"text{" + wsPattern + L"}";
+          wsTestPattern = L"text{" + wsPattern + L"}";
+          wsPattern = wsTestPattern;
           patternType = XFA_VT_TEXT;
         }
       } break;
@@ -3891,12 +3893,17 @@ void CFXJSE_FormCalcContext::Lower(CFXJSE_Value* pThis,
   CFX_WideTextBuf lowStringBuf;
   ByteString argString = ValueToUTF8String(argOne.get());
   WideString wsArgString = WideString::FromUTF8(argString.AsStringView());
-  for (auto ch : wsArgString) {
+  const wchar_t* pData = wsArgString.c_str();
+  size_t i = 0;
+  while (i < argString.GetLength()) {
+    int32_t ch = pData[i];
     if ((ch >= 0x41 && ch <= 0x5A) || (ch >= 0xC0 && ch <= 0xDE))
       ch += 32;
     else if (ch == 0x100 || ch == 0x102 || ch == 0x104)
       ch += 1;
+
     lowStringBuf.AppendChar(ch);
+    ++i;
   }
   lowStringBuf.AppendChar(0);
 

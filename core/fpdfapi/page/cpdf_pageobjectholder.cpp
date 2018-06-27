@@ -15,21 +15,6 @@
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
-#include "core/fxcrt/fx_extension.h"
-
-bool GraphicsData::operator<(const GraphicsData& other) const {
-  if (!FXSYS_SafeEQ(fillAlpha, other.fillAlpha))
-    return FXSYS_SafeLT(fillAlpha, other.fillAlpha);
-  if (!FXSYS_SafeEQ(strokeAlpha, other.strokeAlpha))
-    return FXSYS_SafeLT(strokeAlpha, other.strokeAlpha);
-  return blendType < other.blendType;
-}
-
-bool FontData::operator<(const FontData& other) const {
-  if (baseFont != other.baseFont)
-    return baseFont < other.baseFont;
-  return type < other.type;
-}
 
 CPDF_PageObjectHolder::CPDF_PageObjectHolder(CPDF_Document* pDoc,
                                              CPDF_Dictionary* pDict)
@@ -134,11 +119,6 @@ bool CPDF_PageObjectHolder::RemovePageObject(CPDF_PageObject* pPageObj) {
 
   it->release();
   m_PageObjectList.erase(it);
-
-  int32_t content_stream = pPageObj->GetContentStream();
-  if (content_stream >= 0)
-    m_DirtyStreams.insert(content_stream);
-
   return true;
 }
 

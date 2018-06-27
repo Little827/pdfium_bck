@@ -23,7 +23,6 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "third_party/base/numerics/safe_math.h"
 #include "third_party/base/ptr_util.h"
-#include "third_party/base/span.h"
 #include "third_party/base/stl_util.h"
 
 namespace {
@@ -151,9 +150,12 @@ wchar_t EmbeddedUnicodeFromCharcode(const FXCMAP_CMap* pEmbedMap,
   if (!cid)
     return 0;
 
-  pdfium::span<const uint16_t> map =
-      GetFontGlobals()->GetEmbeddedToUnicode(charset);
-  return cid < map.size() ? map[cid] : 0;
+  const uint16_t* map;
+  uint32_t count;
+  std::tie(count, map) = GetFontGlobals()->GetEmbeddedToUnicode(charset);
+  if (map && cid < count)
+    return map[cid];
+  return 0;
 }
 
 uint32_t EmbeddedCharcodeFromUnicode(const FXCMAP_CMap* pEmbedMap,
@@ -162,9 +164,13 @@ uint32_t EmbeddedCharcodeFromUnicode(const FXCMAP_CMap* pEmbedMap,
   if (!IsValidEmbeddedCharcodeFromUnicodeCharset(charset))
     return 0;
 
-  pdfium::span<const uint16_t> map =
-      GetFontGlobals()->GetEmbeddedToUnicode(charset);
-  for (uint32_t i = 0; i < map.size(); ++i) {
+  const uint16_t* map;
+  uint32_t count;
+  std::tie(count, map) = GetFontGlobals()->GetEmbeddedToUnicode(charset);
+  if (!map)
+    return 0;
+
+  for (uint32_t i = 0; i < count; ++i) {
     if (map[i] == unicode) {
       uint32_t charCode = FPDFAPI_CharCodeFromCID(pEmbedMap, i);
       if (charCode)

@@ -7,7 +7,6 @@
 #include "xfa/fgas/crt/cfgas_formatstring.h"
 
 #include <algorithm>
-#include <utility>
 #include <vector>
 
 #include "core/fxcrt/cfx_decimal.h"
@@ -1648,11 +1647,11 @@ FX_DATETIMETYPE CFGAS_FormatString::GetDateTimeFormat(
       bBraceOpen = false;
       if (!wsTempPattern.IsEmpty()) {
         if (eCategory == FX_LOCALECATEGORY_Time)
-          *wsTimePattern = std::move(wsTempPattern);
+          *wsTimePattern = wsTempPattern;
         else if (eCategory == FX_LOCALECATEGORY_Date)
-          *wsDatePattern = std::move(wsTempPattern);
-        else
-          wsTempPattern.clear();
+          *wsDatePattern = wsTempPattern;
+
+        wsTempPattern.clear();
       }
     } else {
       wsTempPattern += pStr[ccf];
@@ -2247,13 +2246,14 @@ bool CFGAS_FormatString::FormatDateTime(const WideString& wsSrcDateTime,
     return false;
 
   if (eCategory == FX_DATETIMETYPE_Unknown) {
-    if (eDateTimeType == FX_DATETIMETYPE_Time)
-      wsTimePattern = std::move(wsDatePattern);
-
+    if (eDateTimeType == FX_DATETIMETYPE_Time) {
+      wsTimePattern = wsDatePattern;
+      wsDatePattern.clear();
+    }
     eCategory = eDateTimeType;
-    if (eCategory == FX_DATETIMETYPE_Unknown)
-      return false;
   }
+  if (eCategory == FX_DATETIMETYPE_Unknown)
+    return false;
 
   CFX_DateTime dt;
   auto iT = wsSrcDateTime.Find(L"T");

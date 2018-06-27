@@ -64,8 +64,10 @@ class CPDF_Document : public CPDF_Parser::ParsedObjectsHolder {
   }
 
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
-  CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
-  CPDF_Dictionary* GetInfo();
+  const CPDF_Dictionary* GetRoot() const { return m_pRootDict; }
+  CPDF_Dictionary* GetRoot() { return m_pRootDict; }
+  const CPDF_Dictionary* GetInfo() const { return m_pInfoDict.Get(); }
+  CPDF_Dictionary* GetInfo() { return m_pInfoDict.Get(); }
 
   void DeletePage(int iPage);
   int GetPageCount() const;
@@ -110,6 +112,7 @@ class CPDF_Document : public CPDF_Parser::ParsedObjectsHolder {
       const char* password);
 
   void LoadPages();
+  void LoadDocumentInfo();
 
   void CreateNewDoc();
   CPDF_Dictionary* CreateNewPage(int iPage);
@@ -129,8 +132,6 @@ class CPDF_Document : public CPDF_Parser::ParsedObjectsHolder {
 #endif
 
  protected:
-  friend class cpdf_document_test_UseCachedPageObjNumIfHaveNotPagesDict_Test;
-
   // Retrieve page count information by getting count value from the tree nodes
   int RetrievePageCount();
   // When this method is called, m_pTreeTraversal[level] exists.
@@ -140,7 +141,6 @@ class CPDF_Document : public CPDF_Parser::ParsedObjectsHolder {
                     uint32_t objnum,
                     int* index,
                     int level = 0) const;
-  std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum) override;
   void LoadDocInternal();
   size_t CalculateEncodingDict(int charset, CPDF_Dictionary* pBaseDict);
   const CPDF_Dictionary* GetPagesDict() const;
@@ -161,7 +161,10 @@ class CPDF_Document : public CPDF_Parser::ParsedObjectsHolder {
   void SetParser(std::unique_ptr<CPDF_Parser> pParser);
 
   std::unique_ptr<CPDF_Parser> m_pParser;
-  UnownedPtr<CPDF_Dictionary> m_pRootDict;
+
+  // TODO(tsepez): figure out why tests break if this is an UnownedPtr.
+  CPDF_Dictionary* m_pRootDict;  // Not owned.
+
   UnownedPtr<CPDF_Dictionary> m_pInfoDict;
 
   // Vector of pairs to know current position in the page tree. The index in the
