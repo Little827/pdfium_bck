@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "83a0fe1a_97a6ca9c",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-27T23:32:32Z",
+      "side": 1,
+      "message": "Thats a nice distinction.  One way to get keep the distinction and still get what we want is to that is to create a virtual class nested in CPDF_Document called CPDF_Document::Observer that has a method\n  virtual void BeforeDocumentDestroyed() \u003d 0;\n\nand then have the availability provider implement that method as you have done below.\n\nThe the document destructor just has to check if it has one of these, and call it.\n\ncore/fxcrt/observable.h may be a starting point.  There\u0027s probably a way to adapt that to the need.",
+      "parentUuid": "fca36b08_18071526",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "7ad4ae9151599b0a8b8bce96f9d9f9b484edac3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b0ab832_dbde969b",
         "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
         "patchSetId": 1
