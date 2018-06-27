@@ -873,7 +873,7 @@ bool CPDF_Parser::RebuildCrossRef() {
                         // This is newer version of trailer. Merge it with old.
                         for (auto it = pTrailer->begin();
                              it != pTrailer->end();) {
-                          DCHECK(it->second->IsInline());
+                          ASSERT(it->second->IsInline());
                           const ByteString key = it->first;
                           ++it;
                           GetTrailer()->SetFor(key, pTrailer->RemoveFor(key));
