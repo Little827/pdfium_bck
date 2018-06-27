@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "c4d0a4a2_8319cc33",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-27T23:40:13Z",
+      "side": 1,
+      "message": "I do think this falls quite nicely into the Observer design pattern.\nAnyway, observable.h doesn\u0027t quite give us what we need. I can hack it up to be more general and extensible for this case.",
+      "parentUuid": "83a0fe1a_97a6ca9c",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "7ad4ae9151599b0a8b8bce96f9d9f9b484edac3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b0ab832_dbde969b",
         "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
         "patchSetId": 1
