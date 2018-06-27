@@ -138,7 +138,7 @@ bool GetAttributeLocalName(const WideStringView& wsAttributeName,
   WideString wsAttrName(wsAttributeName);
   auto pos = wsAttrName.Find(L':', 0);
   if (!pos.has_value()) {
-    wsLocalAttrName = std::move(wsAttrName);
+    wsLocalAttrName = wsAttrName;
     return false;
   }
   wsLocalAttrName = wsAttrName.Right(wsAttrName.GetLength() - pos.value() - 1);
@@ -254,7 +254,7 @@ void ConvertXMLToPlainText(CFX_XMLElement* pRootXMLNode, WideString& wsOutput) {
         if (IsStringAllWhitespace(wsText))
           continue;
 
-        wsOutput = std::move(wsText);
+        wsOutput = wsText;
         break;
       }
       default:
@@ -1000,9 +1000,10 @@ void CXFA_DocumentParser::ParseDataGroup(CXFA_Node* pXFANode,
           pXFAMetaData->SetFlag(XFA_NodeFlag_Initialized);
         }
 
-        if (!bNeedValue)
-          pXMLElement->RemoveAttribute(L"xsi:nil");
-
+        if (!bNeedValue) {
+          WideString wsNilName(L"xsi:nil");
+          pXMLElement->RemoveAttribute(wsNilName.c_str());
+        }
         pXFANode->InsertChild(pXFAChild, nullptr);
         if (eNodeType == XFA_Element::DataGroup)
           ParseDataGroup(pXFAChild, pXMLElement, ePacketID);

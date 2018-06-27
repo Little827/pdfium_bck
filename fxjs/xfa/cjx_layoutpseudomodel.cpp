@@ -7,7 +7,6 @@
 #include "fxjs/xfa/cjx_layoutpseudomodel.h"
 
 #include <set>
-#include <utility>
 
 #include "core/fxcrt/fx_coordinates.h"
 #include "fxjs/cfxjse_engine.h"
@@ -85,9 +84,10 @@ CJS_Return CJX_LayoutPseudoModel::HWXY(
   if (params.size() >= 2) {
     WideString tmp_unit = runtime->ToWideString(params[1]);
     if (!tmp_unit.IsEmpty())
-      unit = std::move(tmp_unit);
+      unit = tmp_unit;
   }
   int32_t iIndex = params.size() >= 3 ? runtime->ToInt32(params[2]) : 0;
+
   CXFA_LayoutProcessor* pDocLayout = GetDocument()->GetLayoutProcessor();
   if (!pDocLayout)
     return CJS_Return();

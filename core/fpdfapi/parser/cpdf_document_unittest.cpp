@@ -87,16 +87,20 @@ class CPDF_TestDocumentForPages : public CPDF_Document {
     CPDF_Dictionary* pagesDict =
         CreatePageTreeNode(std::move(allPages), this, kNumTestPages);
 
-    m_pRootDict = NewIndirect<CPDF_Dictionary>();
-    m_pRootDict->SetNewFor<CPDF_Reference>("Pages", this,
-                                           pagesDict->GetObjNum());
+    m_pOwnedRootDict = pdfium::MakeUnique<CPDF_Dictionary>();
+    m_pOwnedRootDict->SetNewFor<CPDF_Reference>("Pages", this,
+                                                pagesDict->GetObjNum());
+    m_pRootDict = m_pOwnedRootDict.get();
     m_PageList.resize(kNumTestPages);
   }
 
   void SetTreeSize(int size) {
-    m_pRootDict->SetNewFor<CPDF_Number>("Count", size);
+    m_pOwnedRootDict->SetNewFor<CPDF_Number>("Count", size);
     m_PageList.resize(size);
   }
+
+ private:
+  std::unique_ptr<CPDF_Dictionary> m_pOwnedRootDict;
 };
 
 class CPDF_TestDocumentWithPageWithoutPageNum : public CPDF_Document {
@@ -112,15 +116,17 @@ class CPDF_TestDocumentWithPageWithoutPageNum : public CPDF_Document {
     inlined_page_ = allPages->Add(CreateNumberedPage(2));
     CPDF_Dictionary* pagesDict =
         CreatePageTreeNode(std::move(allPages), this, 3);
-    m_pRootDict = NewIndirect<CPDF_Dictionary>();
-    m_pRootDict->SetNewFor<CPDF_Reference>("Pages", this,
-                                           pagesDict->GetObjNum());
+    m_pOwnedRootDict = pdfium::MakeUnique<CPDF_Dictionary>();
+    m_pOwnedRootDict->SetNewFor<CPDF_Reference>("Pages", this,
+                                                pagesDict->GetObjNum());
+    m_pRootDict = m_pOwnedRootDict.get();
     m_PageList.resize(3);
   }
 
   const CPDF_Object* inlined_page() const { return inlined_page_; }
 
  private:
+  std::unique_ptr<CPDF_Dictionary> m_pOwnedRootDict;
   const CPDF_Object* inlined_page_;
 };
 
@@ -137,12 +143,15 @@ class CPDF_TestDocPagesWithoutKids : public CPDF_Document {
     pagesDict->SetNewFor<CPDF_Name>("Type", "Pages");
     pagesDict->SetNewFor<CPDF_Number>("Count", 3);
     m_PageList.resize(10);
-    m_pRootDict = NewIndirect<CPDF_Dictionary>();
-    m_pRootDict->SetNewFor<CPDF_Reference>("Pages", this,
-                                           pagesDict->GetObjNum());
+    m_pOwnedRootDict = pdfium::MakeUnique<CPDF_Dictionary>();
+    m_pOwnedRootDict->SetNewFor<CPDF_Reference>("Pages", this,
+                                                pagesDict->GetObjNum());
+    m_pRootDict = m_pOwnedRootDict.get();
   }
-};
 
+ private:
+  std::unique_ptr<CPDF_Dictionary> m_pOwnedRootDict;
+};
 }  // namespace
 
 class cpdf_document_test : public testing::Test {

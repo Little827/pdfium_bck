@@ -25,7 +25,9 @@ class CPDF_ContentMark {
   size_t CountItems() const;
   const CPDF_ContentMarkItem& GetItem(size_t i) const;
 
-  void AddMark(ByteString name, const CPDF_Dictionary* pDict, bool bDirect);
+  void AddMark(const ByteString& name,
+               const CPDF_Dictionary* pDict,
+               bool bDirect);
   void DeleteLastMark();
 
   bool HasRef() const { return !!m_Ref; }
@@ -41,7 +43,7 @@ class CPDF_ContentMark {
     const CPDF_ContentMarkItem& GetItem(size_t index) const;
 
     int GetMarkedContentID() const;
-    void AddMark(ByteString name,
+    void AddMark(const ByteString& name,
                  const CPDF_Dictionary* pDict,
                  bool bDictNeedClone);
     void DeleteLastMark();

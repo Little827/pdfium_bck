@@ -632,24 +632,21 @@ bool CFX_RenderDevice::DrawFillStrokePath(const CFX_PathData* pPathData,
     bbox = pObject2Device->TransformRect(bbox);
 
   FX_RECT rect = bbox.GetOuterRect();
-  if (!rect.Valid())
-    return false;
-
   auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  auto backdrop = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto Backdrop = pdfium::MakeRetain<CFX_DIBitmap>();
   if (!CreateCompatibleBitmap(bitmap, rect.Width(), rect.Height()))
     return false;
 
   if (bitmap->HasAlpha()) {
     bitmap->Clear(0);
-    backdrop->Copy(bitmap);
+    Backdrop->Copy(bitmap);
   } else {
     if (!m_pDeviceDriver->GetDIBits(bitmap, rect.left, rect.top))
       return false;
-    backdrop->Copy(bitmap);
+    Backdrop->Copy(bitmap);
   }
   CFX_DefaultRenderDevice bitmap_device;
-  bitmap_device.Attach(bitmap, false, backdrop, true);
+  bitmap_device.Attach(bitmap, false, Backdrop, true);
 
   CFX_Matrix matrix;
   if (pObject2Device)

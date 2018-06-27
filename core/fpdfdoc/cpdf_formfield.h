@@ -170,8 +170,10 @@ class CPDF_FormField {
   float GetFontSize() const { return m_FontSize; }
   CPDF_Font* GetFont() const { return m_pFont.Get(); }
 
-  CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
-  CPDF_InterForm* GetForm() const { return m_pForm.Get(); }
+  const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
+  CPDF_Dictionary* GetDict() { return m_pDict.Get(); }
+
+  const CPDF_InterForm* GetForm() const { return m_pForm.Get(); }
 
   WideString GetCheckValue(bool bDefault) const;
 

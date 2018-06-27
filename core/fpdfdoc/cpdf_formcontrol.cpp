@@ -149,10 +149,11 @@ bool CPDF_FormControl::IsDefaultChecked() const {
 void CPDF_FormControl::CheckControl(bool bChecked) {
   ASSERT(GetType() == CPDF_FormField::CheckBox ||
          GetType() == CPDF_FormField::RadioButton);
+  ByteString csOn = GetOnStateName();
   ByteString csOldAS = m_pWidgetDict->GetStringFor("AS", "Off");
   ByteString csAS = "Off";
   if (bChecked)
-    csAS = GetOnStateName();
+    csAS = csOn;
   if (csOldAS == csAS)
     return;
   m_pWidgetDict->SetNewFor<CPDF_Name>("AS", csAS);

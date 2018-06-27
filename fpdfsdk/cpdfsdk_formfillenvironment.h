@@ -66,7 +66,7 @@ class CPDFSDK_FormFillEnvironment
   void RemovePageView(IPDF_Page* pPage);
   void UpdateAllViews(CPDFSDK_PageView* pSender, CPDFSDK_Annot* pAnnot);
 
-  CPDFSDK_Annot* GetFocusAnnot() const { return m_pFocusAnnot.Get(); }
+  CPDFSDK_Annot* GetFocusAnnot() { return m_pFocusAnnot.Get(); }
   bool SetFocusAnnot(CPDFSDK_Annot::ObservedPtr* pAnnot);
   bool KillFocusAnnot(uint32_t nFlag);
   void ClearAllFocusedAnnots();
@@ -137,6 +137,7 @@ class CPDFSDK_FormFillEnvironment
                  int menuFlag,
                  CFX_PointF pt);
 
+  void Alert(FPDF_WIDESTRING Msg, FPDF_WIDESTRING Title, int Type, int Icon);
   void EmailTo(FPDF_FILEHANDLER* fileHandler,
                FPDF_WIDESTRING pTo,
                FPDF_WIDESTRING pSubject,
@@ -165,8 +166,8 @@ class CPDFSDK_FormFillEnvironment
 
   int JS_appAlert(const WideString& Msg,
                   const WideString& Title,
-                  int Type,
-                  int Icon);
+                  uint32_t Type,
+                  uint32_t Icon);
   int JS_appResponse(const WideString& Question,
                      const WideString& Title,
                      const WideString& Default,

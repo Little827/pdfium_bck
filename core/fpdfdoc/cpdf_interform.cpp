@@ -206,7 +206,8 @@ bool FindFont(CPDF_Dictionary* pFormDict,
     if (!pFont)
       continue;
 
-    ByteString csBaseFont = pFont->GetBaseFont();
+    ByteString csBaseFont;
+    csBaseFont = pFont->GetBaseFont();
     csBaseFont.Remove(' ');
     if (csBaseFont == csFontName) {
       *csNameTag = csKey;
@@ -227,7 +228,7 @@ void AddFont(CPDF_Dictionary*& pFormDict,
 
   ByteString csTag;
   if (FindFont(pFormDict, pFont, &csTag)) {
-    *csNameTag = std::move(csTag);
+    *csNameTag = csTag;
     return;
   }
   if (!pFormDict)
@@ -260,7 +261,7 @@ CPDF_Font* AddNativeFont(CPDF_Dictionary*& pFormDict,
   ByteString csTemp;
   CPDF_Font* pFont = GetNativeFont(pFormDict, pDocument, charSet, &csTemp);
   if (pFont) {
-    *csNameTag = std::move(csTemp);
+    *csNameTag = csTemp;
     return pFont;
   }
   ByteString csFontName = CPDF_InterForm::GetNativeFont(charSet, nullptr);
@@ -379,7 +380,9 @@ class CFieldTree {
     }
 
     CPDF_FormField* GetField() const { return m_pField.get(); }
-    WideString GetShortName() const { return m_ShortName; }
+
+    const WideString& GetShortName() const { return m_ShortName; }
+
     int GetLevel() const { return m_level; }
 
    private:

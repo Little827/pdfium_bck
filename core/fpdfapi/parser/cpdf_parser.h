@@ -13,6 +13,7 @@
 #include <set>
 #include <vector>
 
+#include "core/fpdfapi/parser/cpdf_cross_ref_table.h"
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
@@ -26,7 +27,7 @@ class CPDF_Document;
 class CPDF_IndirectObjectHolder;
 class CPDF_LinearizedHeader;
 class CPDF_Object;
-class CPDF_ObjectStream;
+class CPDF_ObjStream;
 class CPDF_ReadValidator;
 class CPDF_SecurityHandler;
 class CPDF_SyntaxParser;
@@ -108,25 +109,8 @@ class CPDF_Parser {
   uint32_t GetFirstPageNo() const;
 
  protected:
-  enum class ObjectType : uint8_t {
-    kFree = 0x00,
-    kNotCompressed = 0x01,
-    kCompressed = 0x02,
-    kNull = 0xFF,
-  };
-
-  struct ObjectInfo {
-    ObjectInfo() : pos(0), type(ObjectType::kFree), gennum(0) {}
-    // if type is ObjectType::kCompressed the archive_obj_num should be used.
-    // if type is ObjectType::kNotCompressed the pos should be used.
-    // In other cases its are unused.
-    union {
-      FX_FILESIZE pos;
-      FX_FILESIZE archive_obj_num;
-    };
-    ObjectType type;
-    uint16_t gennum;
-  };
+  using ObjectType = CPDF_CrossRefTable::ObjectType;
+  using ObjectInfo = CPDF_CrossRefTable::ObjectInfo;
 
   std::unique_ptr<CPDF_SyntaxParser> m_pSyntax;
   std::map<uint32_t, ObjectInfo> m_ObjectInfo;
@@ -172,8 +156,8 @@ class CPDF_Parser {
   bool LoadLinearizedAllCrossRefV4(FX_FILESIZE pos);
   bool LoadLinearizedAllCrossRefV5(FX_FILESIZE pos);
   Error LoadLinearizedMainXRefTable();
-  const CPDF_ObjectStream* GetObjectStream(CPDF_IndirectObjectHolder* pObjList,
-                                           uint32_t object_number);
+  const CPDF_ObjStream* GetObjectStream(CPDF_IndirectObjectHolder* pObjList,
+                                        uint32_t object_number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
   void SetEncryptDictionary(CPDF_Dictionary* pDict);
   void ShrinkObjectMap(uint32_t size);
@@ -219,7 +203,7 @@ class CPDF_Parser {
   std::unique_ptr<CPDF_LinearizedHeader> m_pLinearized;
 
   // A map of object numbers to indirect streams.
-  std::map<uint32_t, std::unique_ptr<CPDF_ObjectStream>> m_ObjectStreamMap;
+  std::map<uint32_t, std::unique_ptr<CPDF_ObjStream>> m_ObjectStreamMap;
 
   // All indirect object numbers that are being parsed.
   std::set<uint32_t> m_ParsingObjNums;

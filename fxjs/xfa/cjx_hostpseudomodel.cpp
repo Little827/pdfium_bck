@@ -502,18 +502,18 @@ CJS_Return CJX_HostPseudoModel::messageBox(
   if (params.size() >= 2)
     title = runtime->ToWideString(params[1]);
 
-  uint32_t messageType = static_cast<uint32_t>(AlertIcon::kDefault);
+  uint32_t messageType = XFA_MBICON_Error;
   if (params.size() >= 3) {
     messageType = runtime->ToInt32(params[2]);
-    if (messageType > static_cast<uint32_t>(AlertIcon::kStatus))
-      messageType = static_cast<uint32_t>(AlertIcon::kDefault);
+    if (messageType > XFA_MBICON_Status)
+      messageType = XFA_MBICON_Error;
   }
 
-  uint32_t buttonType = static_cast<uint32_t>(AlertButton::kDefault);
+  uint32_t buttonType = XFA_MB_OK;
   if (params.size() >= 4) {
     buttonType = runtime->ToInt32(params[3]);
-    if (buttonType > static_cast<uint32_t>(AlertButton::kYesNoCancel))
-      buttonType = static_cast<uint32_t>(AlertButton::kDefault);
+    if (buttonType > XFA_MB_YesNoCancel)
+      buttonType = XFA_MB_OK;
   }
 
   int32_t iValue = pNotify->GetAppProvider()->MsgBox(message, title,

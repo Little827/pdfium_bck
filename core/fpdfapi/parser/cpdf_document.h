@@ -61,8 +61,10 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   }
 
   CPDF_Parser* GetParser() const { return m_pParser.get(); }
-  CPDF_Dictionary* GetRoot() const { return m_pRootDict.Get(); }
-  CPDF_Dictionary* GetInfo();
+  const CPDF_Dictionary* GetRoot() const { return m_pRootDict; }
+  CPDF_Dictionary* GetRoot() { return m_pRootDict; }
+  const CPDF_Dictionary* GetInfo() const { return m_pInfoDict.Get(); }
+  CPDF_Dictionary* GetInfo() { return m_pInfoDict.Get(); }
 
   void DeletePage(int iPage);
   int GetPageCount() const;
@@ -99,6 +101,7 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   void LoadDoc();
   void LoadLinearizedDoc(const CPDF_LinearizedHeader* pLinearizationParams);
   void LoadPages();
+  void LoadDocumentInfo();
 
   void CreateNewDoc();
   CPDF_Dictionary* CreateNewPage(int iPage);
@@ -147,7 +150,10 @@ class CPDF_Document : public CPDF_IndirectObjectHolder {
   void ResetTraversal();
 
   std::unique_ptr<CPDF_Parser> m_pParser;
-  UnownedPtr<CPDF_Dictionary> m_pRootDict;
+
+  // TODO(tsepez): figure out why tests break if this is an UnownedPtr.
+  CPDF_Dictionary* m_pRootDict;  // Not owned.
+
   UnownedPtr<CPDF_Dictionary> m_pInfoDict;
 
   // Vector of pairs to know current position in the page tree. The index in the

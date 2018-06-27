@@ -288,7 +288,8 @@ CPDF_DIBSource::LoadState CPDF_DIBSource::ContinueLoadDIBSource(
   if (m_Status == LoadState::kFail)
     return LoadState::kFail;
 
-  if (m_pStreamAcc->GetImageDecoder() == "JPXDecode")
+  const ByteString& decoder = m_pStreamAcc->GetImageDecoder();
+  if (decoder == "JPXDecode")
     return LoadState::kFail;
 
   FXCODEC_STATUS iDecodeStatus;
@@ -447,7 +448,7 @@ bool CPDF_DIBSource::GetDecodeAndMaskArray(bool* bDefaultDecode,
 }
 
 CPDF_DIBSource::LoadState CPDF_DIBSource::CreateDecoder() {
-  ByteString decoder = m_pStreamAcc->GetImageDecoder();
+  const ByteString& decoder = m_pStreamAcc->GetImageDecoder();
   if (decoder.IsEmpty())
     return LoadState::kSuccess;
 
@@ -762,15 +763,15 @@ void CPDF_DIBSource::LoadPalette() {
   }
 
   int palette_count = 1 << (m_bpc * m_nComponents);
-  // Using at least 16 elements due to the call m_pColorSpace->GetRGB().
-  std::vector<float> color_values(std::max(m_nComponents, 16u));
+  CFX_FixedBufGrow<float, 16> color_values(m_nComponents);
+  float* color_value = color_values;
   for (int i = 0; i < palette_count; i++) {
     int color_data = i;
     for (uint32_t j = 0; j < m_nComponents; j++) {
       int encoded_component = color_data % (1 << m_bpc);
       color_data /= 1 << m_bpc;
-      color_values[j] = m_CompData[j].m_DecodeMin +
-                        m_CompData[j].m_DecodeStep * encoded_component;
+      color_value[j] = m_CompData[j].m_DecodeMin +
+                       m_CompData[j].m_DecodeStep * encoded_component;
     }
     float R = 0;
     float G = 0;
@@ -779,11 +780,12 @@ void CPDF_DIBSource::LoadPalette() {
         m_pColorSpace->CountComponents() > 1) {
       int nComponents = m_pColorSpace->CountComponents();
       std::vector<float> temp_buf(nComponents);
-      for (int k = 0; k < nComponents; ++k)
-        temp_buf[k] = color_values[0];
+      for (int k = 0; k < nComponents; k++) {
+        temp_buf[k] = *color_value;
+      }
       m_pColorSpace->GetRGB(temp_buf.data(), &R, &G, &B);
     } else {
-      m_pColorSpace->GetRGB(color_values.data(), &R, &G, &B);
+      m_pColorSpace->GetRGB(color_value, &R, &G, &B);
     }
     SetPaletteArgb(i, ArgbEncode(255, FXSYS_round(R * 255),
                                  FXSYS_round(G * 255), FXSYS_round(B * 255)));
@@ -831,8 +833,8 @@ void CPDF_DIBSource::TranslateScanline24bpp(uint8_t* dest_scan,
   if (TranslateScanline24bppDefaultDecode(dest_scan, src_scan))
     return;
 
-  // Using at least 16 elements due to the call m_pColorSpace->GetRGB().
-  std::vector<float> color_values(std::max(m_nComponents, 16u));
+  CFX_FixedBufGrow<float, 16> color_values1(m_nComponents);
+  float* color_values = color_values1;
   float R = 0.0f;
   float G = 0.0f;
   float B = 0.0f;
@@ -860,7 +862,7 @@ void CPDF_DIBSource::TranslateScanline24bpp(uint8_t* dest_scan,
       G = (1.0f - color_values[1]) * k;
       B = (1.0f - color_values[2]) * k;
     } else if (m_Family != PDFCS_PATTERN) {
-      m_pColorSpace->GetRGB(color_values.data(), &R, &G, &B);
+      m_pColorSpace->GetRGB(color_values, &R, &G, &B);
     }
     R = pdfium::clamp(R, 0.0f, 1.0f);
     G = pdfium::clamp(G, 0.0f, 1.0f);
