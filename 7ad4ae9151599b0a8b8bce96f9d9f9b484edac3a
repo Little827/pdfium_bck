@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fca36b08_18071526",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-27T23:18:41Z",
+      "side": 1,
+      "message": "I do not want mix Availability and document. I think, that in regular loading (FPDF_LoadCustomDocument), we should not know about availability.\n\nIn this implementation the availability logic is hidden for clients of CPDF_Document.\n\nBut, if You wish, i can do this.",
+      "parentUuid": "94ca296d_cf67838b",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "7ad4ae9151599b0a8b8bce96f9d9f9b484edac3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b0ab832_dbde969b",
         "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
         "patchSetId": 1
