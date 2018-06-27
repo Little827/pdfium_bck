@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "525a52b6_905b0232",
+        "filename": "core/fxcrt/autorestorer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-27T17:47:21Z",
+      "side": 1,
+      "message": "We still segv initializing m_OldValue(*location) in the ctor, just as before.",
+      "parentUuid": "ed0ce0df_e3dc7d74",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "3b974f19cd639ac3327d61052ce5a4bdba379071",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82e97b71_4d5886f5",
         "filename": "core/fxcrt/autorestorer.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-27T17:43:14Z",
       "side": 1,
       "message": "Reset? Abandon? SkipRestore?",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "3b974f19cd639ac3327d61052ce5a4bdba379071",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b27848c_ad6ecf70",
+        "filename": "core/fxcrt/autorestorer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-27T17:47:21Z",
+      "side": 1,
+      "message": "AbandonRestoration() it is.",
+      "parentUuid": "82e97b71_4d5886f5",
       "range": {
         "startLine": 19,
         "startChar": 7,
