@@ -47,12 +47,15 @@ bool CBC_Code128::Encode(const WideStringView& contents) {
   if (contents.GetLength() % 2 && pWriter->GetType() == BC_CODE128_C)
     content += '0';
 
-  m_renderContents = pWriter->FilterContents(content.AsStringView());
-  ByteString byteString = m_renderContents.UTF8Encode();
+  WideString encodeContents = pWriter->FilterContents(content.AsStringView());
+  m_renderContents = encodeContents;
+  ByteString byteString = encodeContents.UTF8Encode();
   std::unique_ptr<uint8_t, FxFreeDeleter> data(
       pWriter->Encode(byteString, format, outWidth, outHeight));
-  return data && pWriter->RenderResult(m_renderContents.AsStringView(),
-                                       data.get(), outWidth);
+  if (!data)
+    return false;
+  return pWriter->RenderResult(encodeContents.AsStringView(), data.get(),
+                               outWidth);
 }
 
 bool CBC_Code128::RenderDevice(CFX_RenderDevice* device,

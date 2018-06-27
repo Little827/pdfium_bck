@@ -18,7 +18,7 @@
 CXFA_FFImage::CXFA_FFImage(CXFA_Node* pNode) : CXFA_FFWidget(pNode) {}
 
 CXFA_FFImage::~CXFA_FFImage() {
-  GetNode()->SetImageImage(nullptr);
+  CXFA_FFImage::UnloadWidget();
 }
 
 bool CXFA_FFImage::IsLoaded() {
@@ -29,7 +29,12 @@ bool CXFA_FFImage::LoadWidget() {
   if (GetNode()->GetImageImage())
     return true;
 
-  return GetNode()->LoadImageImage(GetDoc()) && CXFA_FFWidget::LoadWidget();
+  return GetNode()->LoadImageImage(GetDoc()) ? CXFA_FFWidget::LoadWidget()
+                                             : false;
+}
+
+void CXFA_FFImage::UnloadWidget() {
+  GetNode()->SetImageImage(nullptr);
 }
 
 void CXFA_FFImage::RenderWidget(CXFA_Graphics* pGS,

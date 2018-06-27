@@ -64,13 +64,12 @@ CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
 
 int CPDFSDK_FormFillEnvironment::JS_appAlert(const WideString& Msg,
                                              const WideString& Title,
-                                             int Type,
-                                             int Icon) {
+                                             uint32_t Type,
+                                             uint32_t Icon) {
   if (!m_pInfo || !m_pInfo->m_pJsPlatform ||
       !m_pInfo->m_pJsPlatform->app_alert) {
     return -1;
   }
-
   ByteString bsMsg = Msg.UTF16LE_Encode();
   ByteString bsTitle = Title.UTF16LE_Encode();
   return m_pInfo->m_pJsPlatform->app_alert(
@@ -404,6 +403,16 @@ bool CPDFSDK_FormFillEnvironment::PopupMenu(CPDFXFA_Page* page,
   return m_pInfo && m_pInfo->FFI_PopupMenu &&
          m_pInfo->FFI_PopupMenu(m_pInfo, FPDFPageFromIPDFPage(page), hWidget,
                                 menuFlag, pt.x, pt.y);
+}
+
+void CPDFSDK_FormFillEnvironment::Alert(FPDF_WIDESTRING Msg,
+                                        FPDF_WIDESTRING Title,
+                                        int Type,
+                                        int Icon) {
+  if (m_pInfo && m_pInfo->m_pJsPlatform && m_pInfo->m_pJsPlatform->app_alert) {
+    m_pInfo->m_pJsPlatform->app_alert(m_pInfo->m_pJsPlatform, Msg, Title, Type,
+                                      Icon);
+  }
 }
 
 void CPDFSDK_FormFillEnvironment::EmailTo(FPDF_FILEHANDLER* fileHandler,

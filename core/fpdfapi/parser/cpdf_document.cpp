@@ -198,11 +198,6 @@ CPDF_Document::~CPDF_Document() {
   CPDF_ModuleMgr::Get()->GetPageModule()->ClearStockFont(this);
 }
 
-std::unique_ptr<CPDF_Object> CPDF_Document::ParseIndirectObject(
-    uint32_t objnum) {
-  return m_pParser ? m_pParser->ParseIndirectObject(objnum) : nullptr;
-}
-
 void CPDF_Document::LoadDocInternal() {
   SetLastObjNum(m_pParser->GetLastObjNum());
 
@@ -213,6 +208,17 @@ void CPDF_Document::LoadDocInternal() {
   m_pRootDict = pRootObj->GetDict();
   if (!m_pRootDict)
     return;
+
+  LoadDocumentInfo();
+}
+
+void CPDF_Document::LoadDocumentInfo() {
+  if (!m_pParser)
+    return;
+
+  CPDF_Object* pInfoObj = GetOrParseIndirectObject(m_pParser->GetInfoObjNum());
+  if (pInfoObj)
+    m_pInfoDict = pInfoObj->GetDict();
 }
 
 bool CPDF_Document::TryInit() {
@@ -240,17 +246,15 @@ CPDF_Parser::Error CPDF_Document::LoadLinearizedDoc(
 }
 
 void CPDF_Document::LoadPages() {
-  const CPDF_LinearizedHeader* linearized_header =
-      m_pParser->GetLinearizedHeader();
-  if (!linearized_header) {
+  if (m_pParser->GetLinearizedHeader()) {
+    m_PageList.resize(m_pParser->GetLinearizedHeader()->GetPageCount());
+    DCHECK(m_pParser->GetLinearizedHeader()->GetFirstPageNo() <
+           m_PageList.size());
+    m_PageList[m_pParser->GetLinearizedHeader()->GetFirstPageNo()] =
+        m_pParser->GetLinearizedHeader()->GetFirstPageObjNum();
+  } else {
     m_PageList.resize(RetrievePageCount());
-    return;
   }
-
-  m_PageList.resize(linearized_header->GetPageCount());
-  DCHECK(linearized_header->GetFirstPageNo() < m_PageList.size());
-  m_PageList[linearized_header->GetFirstPageNo()] =
-      linearized_header->GetFirstPageObjNum();
 }
 
 CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,
@@ -604,18 +608,6 @@ bool CPDF_Document::InsertNewPage(int iPage, CPDF_Dictionary* pPageDict) {
   }
   m_PageList.insert(m_PageList.begin() + iPage, pPageDict->GetObjNum());
   return true;
-}
-
-CPDF_Dictionary* CPDF_Document::GetInfo() {
-  if (m_pInfoDict)
-    return m_pInfoDict.Get();
-
-  if (!m_pParser || !m_pParser->GetInfoObjNum())
-    return nullptr;
-
-  CPDF_Reference ref(this, m_pParser->GetInfoObjNum());
-  m_pInfoDict = ToDictionary(ref.GetDirect());
-  return m_pInfoDict.Get();
 }
 
 void CPDF_Document::DeletePage(int iPage) {

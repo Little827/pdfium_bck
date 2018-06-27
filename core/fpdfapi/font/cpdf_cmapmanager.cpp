@@ -29,13 +29,15 @@ RetainPtr<CPDF_CMap> CPDF_CMapManager::GetPredefinedCMap(const ByteString& name,
   return pCMap;
 }
 
-RetainPtr<CPDF_CMap> CPDF_CMapManager::LoadPredefinedCMap(ByteString name,
-                                                          bool bPromptCJK) {
-  if (!name.IsEmpty() && name[0] == '/')
-    name = name.Right(name.GetLength() - 1);
+RetainPtr<CPDF_CMap> CPDF_CMapManager::LoadPredefinedCMap(
+    const ByteString& name,
+    bool bPromptCJK) {
+  const char* pname = name.c_str();
+  if (*pname == '/')
+    pname++;
 
   auto pCMap = pdfium::MakeRetain<CPDF_CMap>();
-  pCMap->LoadPredefined(this, name, bPromptCJK);
+  pCMap->LoadPredefined(this, pname, bPromptCJK);
   return pCMap;
 }
 

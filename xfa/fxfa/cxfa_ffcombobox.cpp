@@ -120,7 +120,7 @@ bool CXFA_FFComboBox::IsDataChanged() {
   if (m_pNode->GetValue(XFA_VALUEPICTURE_Raw) == wsText)
     return false;
 
-  m_wsNewValue = std::move(wsText);
+  m_wsNewValue = wsText;
   return true;
 }
 

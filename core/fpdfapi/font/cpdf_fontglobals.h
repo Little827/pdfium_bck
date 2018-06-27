@@ -14,7 +14,6 @@
 #include "core/fpdfapi/cmaps/cmap_int.h"
 #include "core/fpdfapi/font/cfx_stockfontarray.h"
 #include "core/fpdfapi/font/cpdf_cmapmanager.h"
-#include "third_party/base/span.h"
 
 class CPDF_FontGlobals {
  public:
@@ -29,25 +28,36 @@ class CPDF_FontGlobals {
                  uint32_t index,
                  std::unique_ptr<CPDF_Font> pFont);
 
-  void SetEmbeddedCharset(size_t idx, pdfium::span<const FXCMAP_CMap> map) {
-    m_EmbeddedCharsets[idx] = map;
+  void SetEmbeddedCharset(size_t idx, const FXCMAP_CMap* map, uint32_t count) {
+    m_EmbeddedCharsets[idx].m_pMapList = map;
+    m_EmbeddedCharsets[idx].m_Count = count;
   }
-  pdfium::span<const FXCMAP_CMap> GetEmbeddedCharset(size_t idx) const {
-    return m_EmbeddedCharsets[idx];
+  std::pair<uint32_t, const FXCMAP_CMap*> GetEmbeddedCharset(size_t idx) const {
+    return {m_EmbeddedCharsets[idx].m_Count,
+            m_EmbeddedCharsets[idx].m_pMapList.Get()};
   }
-  void SetEmbeddedToUnicode(size_t idx, pdfium::span<const uint16_t> map) {
-    m_EmbeddedToUnicodes[idx] = map;
+  void SetEmbeddedToUnicode(size_t idx, const uint16_t* map, uint32_t count) {
+    m_EmbeddedToUnicodes[idx].m_pMap = map;
+    m_EmbeddedToUnicodes[idx].m_Count = count;
   }
-  pdfium::span<const uint16_t> GetEmbeddedToUnicode(size_t idx) {
-    return m_EmbeddedToUnicodes[idx];
+  std::pair<uint32_t, const uint16_t*> GetEmbeddedToUnicode(size_t idx) {
+    return {m_EmbeddedToUnicodes[idx].m_Count,
+            m_EmbeddedToUnicodes[idx].m_pMap};
   }
 
   CPDF_CMapManager* GetCMapManager() { return &m_CMapManager; }
 
  private:
   CPDF_CMapManager m_CMapManager;
-  pdfium::span<const FXCMAP_CMap> m_EmbeddedCharsets[CIDSET_NUM_SETS];
-  pdfium::span<const uint16_t> m_EmbeddedToUnicodes[CIDSET_NUM_SETS];
+  struct {
+    UnownedPtr<const FXCMAP_CMap> m_pMapList;
+    uint32_t m_Count;
+  } m_EmbeddedCharsets[CIDSET_NUM_SETS];
+  struct {
+    const uint16_t* m_pMap;
+    uint32_t m_Count;
+  } m_EmbeddedToUnicodes[CIDSET_NUM_SETS];
+
   std::map<CPDF_Document*, std::unique_ptr<CFX_StockFontArray>> m_StockMap;
 };
 

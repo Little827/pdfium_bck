@@ -183,7 +183,7 @@ CJS_Return CJS_Util::printd(CJS_Runtime* pRuntime,
         return CJS_Return(JSMessage::kValueError);
     }
 
-    return CJS_Return(pRuntime->NewString(swResult.AsStringView()));
+    return CJS_Return(pRuntime->NewString(swResult.c_str()));
   }
 
   if (params[0]->IsString()) {
@@ -259,7 +259,7 @@ CJS_Return CJS_Util::printx(CJS_Runtime* pRuntime,
   return CJS_Return(
       pRuntime->NewString(printx(pRuntime->ToWideString(params[0]),
                                  pRuntime->ToWideString(params[1]))
-                              .AsStringView()));
+                              .c_str()));
 }
 
 enum CaseMode { kPreserveCase, kUpperCase, kLowerCase };
@@ -387,7 +387,7 @@ CJS_Return CJS_Util::byteToChar(
     return CJS_Return(JSMessage::kValueError);
 
   WideString wStr(static_cast<wchar_t>(arg));
-  return CJS_Return(pRuntime->NewString(wStr.AsStringView()));
+  return CJS_Return(pRuntime->NewString(wStr.c_str()));
 }
 
 // Ensure that sFormat contains at most one well-understood printf formatting

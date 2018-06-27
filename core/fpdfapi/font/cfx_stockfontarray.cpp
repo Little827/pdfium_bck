@@ -15,10 +15,8 @@ CFX_StockFontArray::CFX_StockFontArray() {}
 
 CFX_StockFontArray::~CFX_StockFontArray() {
   for (size_t i = 0; i < FX_ArraySize(m_StockFonts); ++i) {
-    if (m_StockFonts[i]) {
-      std::unique_ptr<CPDF_Dictionary> destroy(m_StockFonts[i]->GetFontDict());
-      m_StockFonts[i]->ClearFontDict();
-    }
+    if (m_StockFonts[i])
+      delete m_StockFonts[i]->GetFontDict();
   }
 }
 

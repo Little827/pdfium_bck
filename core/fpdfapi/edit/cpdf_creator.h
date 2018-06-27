@@ -38,33 +38,16 @@ class CPDF_Creator {
   bool SetFileVersion(int32_t fileVersion);
 
  private:
-  enum class Stage {
-    kInvalid = -1,
-    kInit0 = 0,
-    kWriteHeader10 = 10,
-    kWriteIncremental15 = 15,
-    kInitWriteObjs20 = 20,
-    kWriteOldObjs21 = 21,
-    kInitWriteNewObjs25 = 25,
-    kWriteNewObjs26 = 26,
-    kWriteEncryptDict27 = 27,
-    kInitWriteXRefs80 = 80,
-    kWriteXrefsNotIncremental81 = 81,
-    kWriteXrefsIncremental82 = 82,
-    kWriteTrailerAndFinish90 = 90,
-    kComplete100 = 100,
-  };
-
-  bool Continue();
+  int32_t Continue();
   void Clear();
 
   void InitNewObjNumOffsets();
   void InitID();
 
-  CPDF_Creator::Stage WriteDoc_Stage1();
-  CPDF_Creator::Stage WriteDoc_Stage2();
-  CPDF_Creator::Stage WriteDoc_Stage3();
-  CPDF_Creator::Stage WriteDoc_Stage4();
+  int32_t WriteDoc_Stage1();
+  int32_t WriteDoc_Stage2();
+  int32_t WriteDoc_Stage3();
+  int32_t WriteDoc_Stage4();
 
   bool WriteOldIndirectObject(uint32_t objnum);
   bool WriteOldObjs();
@@ -77,14 +60,14 @@ class CPDF_Creator {
   CPDF_CryptoHandler* GetCryptoHandler();
 
   UnownedPtr<CPDF_Document> const m_pDocument;
-  UnownedPtr<const CPDF_Parser> const m_pParser;
+  UnownedPtr<CPDF_Parser> const m_pParser;
   UnownedPtr<CPDF_Dictionary> m_pEncryptDict;
   fxcrt::MaybeOwned<CPDF_SecurityHandler> m_pSecurityHandler;
   UnownedPtr<const CPDF_Object> m_pMetadata;
   uint32_t m_dwLastObjNum;
   std::unique_ptr<IFX_ArchiveStream> m_Archive;
   FX_FILESIZE m_SavedOffset = 0;
-  Stage m_iStage = Stage::kInvalid;
+  int32_t m_iStage = -1;
   uint32_t m_CurObjNum = 0;
   FX_FILESIZE m_XrefStart = 0;
   std::map<uint32_t, FX_FILESIZE> m_ObjectOffsets;

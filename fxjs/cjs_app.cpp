@@ -176,9 +176,9 @@ CJS_Return CJS_App::get_platform(CJS_Runtime* pRuntime) {
   if (!pFormFillEnv)
     return CJS_Return(JSMessage::kBadObjectError);
 
-  WideString platform = pFormFillEnv->GetPlatform();
-  if (!platform.IsEmpty())
-    return CJS_Return(pRuntime->NewString(platform.AsStringView()));
+  WideString platfrom = pFormFillEnv->GetPlatform();
+  if (!platfrom.IsEmpty())
+    return CJS_Return(pRuntime->NewString(platfrom.c_str()));
 #endif
   return CJS_Return(pRuntime->NewString(JS_STR_PLATFORM));
 }
@@ -196,7 +196,7 @@ CJS_Return CJS_App::get_language(CJS_Runtime* pRuntime) {
 
   WideString language = pFormFillEnv->GetLanguage();
   if (!language.IsEmpty())
-    return CJS_Return(pRuntime->NewString(language.AsStringView()));
+    return CJS_Return(pRuntime->NewString(language.c_str()));
 #endif
   return CJS_Return(pRuntime->NewString(JS_STR_LANGUAGE));
 }
@@ -254,11 +254,11 @@ CJS_Return CJS_App::alert(CJS_Runtime* pRuntime,
     swMsg = pRuntime->ToWideString(newParams[0]);
   }
 
-  int iIcon = JSPLATFORM_ALERT_ICON_DEFAULT;
+  int iIcon = 0;
   if (IsTypeKnown(newParams[1]))
     iIcon = pRuntime->ToInt32(newParams[1]);
 
-  int iType = JSPLATFORM_ALERT_BUTTON_DEFAULT;
+  int iType = 0;
   if (IsTypeKnown(newParams[2]))
     iType = pRuntime->ToInt32(newParams[2]);
 
@@ -282,11 +282,7 @@ CJS_Return CJS_App::beep(CJS_Runtime* pRuntime,
   if (params.size() != 1)
     return CJS_Return(JSMessage::kParamError);
 
-  int type = JSPLATFORM_BEEP_DEFAULT;
-  if (IsTypeKnown(params[0]))
-    type = pRuntime->ToInt32(params[0]);
-
-  pRuntime->GetFormFillEnv()->JS_appBeep(type);
+  pRuntime->GetFormFillEnv()->JS_appBeep(pRuntime->ToInt32(params[0]));
   return CJS_Return();
 }
 
@@ -576,7 +572,7 @@ CJS_Return CJS_App::response(CJS_Runtime* pRuntime,
   return CJS_Return(pRuntime->NewString(
       WideString::FromUTF16LE(reinterpret_cast<uint16_t*>(pBuff.data()),
                               nLengthBytes / sizeof(uint16_t))
-          .AsStringView()));
+          .c_str()));
 }
 
 CJS_Return CJS_App::get_media(CJS_Runtime* pRuntime) {

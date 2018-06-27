@@ -13,7 +13,6 @@
 #include <set>
 #include <vector>
 
-#include "core/fpdfapi/parser/cpdf_cross_ref_table.h"
 #include "core/fpdfapi/parser/cpdf_indirect_object_holder.h"
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "core/fxcrt/fx_string.h"
@@ -26,9 +25,9 @@ class CPDF_CryptoHandler;
 class CPDF_Dictionary;
 class CPDF_LinearizedHeader;
 class CPDF_Object;
-class CPDF_ObjectStream;
 class CPDF_ReadValidator;
 class CPDF_SecurityHandler;
+class CPDF_StreamAcc;
 class CPDF_SyntaxParser;
 class IFX_SeekableReadStream;
 
@@ -36,7 +35,19 @@ class CPDF_Parser {
  public:
   class ParsedObjectsHolder : public CPDF_IndirectObjectHolder {
    public:
+    ParsedObjectsHolder();
+    ~ParsedObjectsHolder() override;
     virtual bool TryInit() = 0;
+
+   private:
+    // Only CPDF_Parser should register itself.
+    friend class CPDF_Parser;
+    void SetParser(CPDF_Parser* parser);
+
+   private:
+    std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum) override;
+
+    UnownedPtr<CPDF_Parser> m_pParser;
   };
 
   enum Error {
@@ -63,7 +74,7 @@ class CPDF_Parser {
                              const char* password);
 
   void SetPassword(const char* password) { m_Password = password; }
-  ByteString GetPassword() const { return m_Password; }
+  ByteString GetPassword() { return m_Password; }
 
   CPDF_Dictionary* GetTrailer() const;
 
@@ -75,13 +86,11 @@ class CPDF_Parser {
 
   uint32_t GetPermissions() const;
   uint32_t GetRootObjNum() const;
-  uint32_t GetInfoObjNum() const;
+  uint32_t GetInfoObjNum();
   const CPDF_Array* GetIDArray() const;
   CPDF_Dictionary* GetRoot() const;
 
   CPDF_Dictionary* GetEncryptDict() const { return m_pEncryptDict.Get(); }
-
-  std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum);
 
   uint32_t GetLastObjNum() const;
   bool IsValidObjectNumber(uint32_t objnum) const;
@@ -115,9 +124,30 @@ class CPDF_Parser {
 
   void SetLinearizedHeader(std::unique_ptr<CPDF_LinearizedHeader> pLinearized);
 
+  CPDF_Object* GetOrParseIndirectObject(uint32_t objnum);
+
  protected:
-  using ObjectType = CPDF_CrossRefTable::ObjectType;
-  using ObjectInfo = CPDF_CrossRefTable::ObjectInfo;
+  enum class ObjectType : uint8_t {
+    kFree = 0x00,
+    kNotCompressed = 0x01,
+    kCompressed = 0x02,
+    kNull = 0xFF,
+  };
+
+  struct ObjectInfo {
+    ObjectInfo() : pos(0), type(ObjectType::kFree), gennum(0) {}
+    // if type is ObjectType::kCompressed the archive_obj_num should be used.
+    // if type is ObjectType::kNotCompressed the pos should be used.
+    // In other cases its are unused.
+    union {
+      FX_FILESIZE pos;
+      FX_FILESIZE archive_obj_num;
+    };
+    ObjectType type;
+    uint16_t gennum;
+  };
+
+  std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum);
 
   std::unique_ptr<CPDF_SyntaxParser> m_pSyntax;
   std::map<uint32_t, ObjectInfo> m_ObjectInfo;
@@ -163,7 +193,7 @@ class CPDF_Parser {
   bool LoadLinearizedAllCrossRefV4(FX_FILESIZE pos);
   bool LoadLinearizedAllCrossRefV5(FX_FILESIZE pos);
   Error LoadLinearizedMainXRefTable();
-  const CPDF_ObjectStream* GetObjectStream(uint32_t object_number);
+  RetainPtr<CPDF_StreamAcc> GetObjectStream(uint32_t number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
   void SetEncryptDictionary(CPDF_Dictionary* pDict);
   void ShrinkObjectMap(uint32_t size);
@@ -209,7 +239,15 @@ class CPDF_Parser {
   std::unique_ptr<CPDF_LinearizedHeader> m_pLinearized;
 
   // A map of object numbers to indirect streams.
-  std::map<uint32_t, std::unique_ptr<CPDF_ObjectStream>> m_ObjectStreamMap;
+  std::map<uint32_t, RetainPtr<CPDF_StreamAcc>> m_ObjectStreamMap;
+
+  // Mapping of object numbers to offsets. The offsets are relative to the first
+  // object in the stream.
+  using StreamObjectCache = std::map<uint32_t, uint32_t>;
+
+  // Mapping of streams to their object caches. This is valid as long as the
+  // streams in |m_ObjectStreamMap| are valid.
+  std::map<RetainPtr<CPDF_StreamAcc>, StreamObjectCache> m_ObjCache;
 
   // All indirect object numbers that are being parsed.
   std::set<uint32_t> m_ParsingObjNums;

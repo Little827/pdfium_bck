@@ -41,7 +41,9 @@ CXFA_FFField* ToField(CXFA_LayoutItem* widget) {
 
 CXFA_FFField::CXFA_FFField(CXFA_Node* pNode) : CXFA_FFWidget(pNode) {}
 
-CXFA_FFField::~CXFA_FFField() = default;
+CXFA_FFField::~CXFA_FFField() {
+  CXFA_FFField::UnloadWidget();
+}
 
 CFX_RectF CXFA_FFField::GetBBox(uint32_t dwStatus, bool bDrawFocus) {
   if (!bDrawFocus)
@@ -129,6 +131,10 @@ bool CXFA_FFField::LoadWidget() {
   m_pNode->LoadCaption(GetDoc());
   PerformLayout();
   return true;
+}
+
+void CXFA_FFField::UnloadWidget() {
+  m_pNormalWidget.reset();
 }
 
 void CXFA_FFField::SetEditScrollOffset() {
@@ -659,9 +665,8 @@ int32_t CXFA_FFField::CalculateNode(CXFA_Node* pNode) {
       IXFA_AppProvider* pAppProvider = GetApp()->GetAppProvider();
       if (pAppProvider) {
         pAppProvider->MsgBox(L"You are not allowed to modify this field.",
-                             L"Calculate Override",
-                             static_cast<uint32_t>(AlertIcon::kWarning),
-                             static_cast<uint32_t>(AlertButton::kOK));
+                             L"Calculate Override", XFA_MBICON_Warning,
+                             XFA_MB_OK);
       }
       return 0;
     }
@@ -687,9 +692,7 @@ int32_t CXFA_FFField::CalculateNode(CXFA_Node* pNode) {
 
       wsMessage += L"Are you sure you want to modify this field?";
       if (pAppProvider->MsgBox(wsMessage, L"Calculate Override",
-                               static_cast<uint32_t>(AlertIcon::kWarning),
-                               static_cast<uint32_t>(AlertButton::kYesNo)) ==
-          static_cast<uint32_t>(AlertReturn::kYes)) {
+                               XFA_MBICON_Warning, XFA_MB_YesNo) == XFA_IDYes) {
         pNode->SetFlag(XFA_NodeFlag_UserInteractive);
         return 1;
       }

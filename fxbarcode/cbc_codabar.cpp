@@ -54,13 +54,17 @@ bool CBC_Codabar::Encode(const WideStringView& contents) {
   BCFORMAT format = BCFORMAT_CODABAR;
   int32_t outWidth = 0;
   int32_t outHeight = 0;
-  m_renderContents = GetOnedCodaBarWriter()->FilterContents(contents);
-  ByteString byteString = m_renderContents.UTF8Encode();
+  WideString filtercontents = GetOnedCodaBarWriter()->FilterContents(contents);
+  ByteString byteString = filtercontents.UTF8Encode();
+  m_renderContents = filtercontents;
   auto* pWriter = GetOnedCodaBarWriter();
   std::unique_ptr<uint8_t, FxFreeDeleter> data(
       pWriter->Encode(byteString, format, outWidth, outHeight));
-  return data && pWriter->RenderResult(m_renderContents.AsStringView(),
-                                       data.get(), outWidth);
+  if (!data)
+    return false;
+
+  return pWriter->RenderResult(filtercontents.AsStringView(), data.get(),
+                               outWidth);
 }
 
 bool CBC_Codabar::RenderDevice(CFX_RenderDevice* device,

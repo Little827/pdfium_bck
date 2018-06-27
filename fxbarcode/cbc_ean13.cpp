@@ -57,13 +57,16 @@ bool CBC_EAN13::Encode(const WideStringView& contents) {
   BCFORMAT format = BCFORMAT_EAN_13;
   int32_t outWidth = 0;
   int32_t outHeight = 0;
-  m_renderContents = Preprocess(contents);
-  ByteString byteString = m_renderContents.UTF8Encode();
+  WideString encodeContents = Preprocess(contents);
+  ByteString byteString = encodeContents.UTF8Encode();
+  m_renderContents = encodeContents;
   auto* pWriter = GetOnedEAN13Writer();
   std::unique_ptr<uint8_t, FxFreeDeleter> data(
       pWriter->Encode(byteString, format, outWidth, outHeight));
-  return data && pWriter->RenderResult(m_renderContents.AsStringView(),
-                                       data.get(), outWidth);
+  if (!data)
+    return false;
+  return pWriter->RenderResult(encodeContents.AsStringView(), data.get(),
+                               outWidth);
 }
 
 bool CBC_EAN13::RenderDevice(CFX_RenderDevice* device,

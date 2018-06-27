@@ -75,11 +75,10 @@ CFX_FloatRect CPDFSDK_Annot::GetRect() const {
 
 IPDF_Page* CPDFSDK_Annot::GetPage() {
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Page* pXFAPage = GetPDFXFAPage();
-  if (pXFAPage)
-    return pXFAPage;
-#endif  // PDF_ENABLE_XFA
+  return GetPDFXFAPage();
+#else   // PDF_ENABLE_XFA
   return GetPDFPage();
+#endif  // PDF_ENABLE_XFA
 }
 
 CPDF_Page* CPDFSDK_Annot::GetPDFPage() {

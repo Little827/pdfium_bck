@@ -7,7 +7,6 @@
 #ifndef XFA_FXFA_CXFA_FFLISTBOX_H_
 #define XFA_FXFA_CXFA_FFLISTBOX_H_
 
-#include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fxfa/cxfa_ffdropdown.h"
 
 class CXFA_FFListBox : public CXFA_FFDropDown {
@@ -38,7 +37,7 @@ class CXFA_FFListBox : public CXFA_FFDropDown {
 
   uint32_t GetAlignment();
 
-  UnownedPtr<IFWL_WidgetDelegate> m_pOldDelegate;
+  IFWL_WidgetDelegate* m_pOldDelegate;
 };
 
 #endif  // XFA_FXFA_CXFA_FFLISTBOX_H_

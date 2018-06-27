@@ -11,7 +11,6 @@
 #include "core/fpdfapi/cpdf_modulemgr.h"
 #include "core/fpdfapi/font/cpdf_fontglobals.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
-#include "third_party/base/span.h"
 
 namespace {
 
@@ -27,10 +26,10 @@ const FXCMAP_CMap* FPDFAPI_FindEmbeddedCMap(const ByteString& bsName,
   CPDF_FontGlobals* pFontGlobals =
       CPDF_ModuleMgr::Get()->GetPageModule()->GetFontGlobals();
 
-  pdfium::span<const FXCMAP_CMap> pCMaps =
-      pFontGlobals->GetEmbeddedCharset(charset);
-
-  for (size_t i = 0; i < pCMaps.size(); i++) {
+  const FXCMAP_CMap* pCMaps;
+  uint32_t count;
+  std::tie(count, pCMaps) = pFontGlobals->GetEmbeddedCharset(charset);
+  for (uint32_t i = 0; i < count; i++) {
     if (bsName == pCMaps[i].m_Name)
       return &pCMaps[i];
   }

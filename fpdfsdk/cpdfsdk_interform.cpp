@@ -10,7 +10,6 @@
 #include <memory>
 #include <sstream>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_page.h"
@@ -290,7 +289,7 @@ void CPDFSDK_InterForm::OnCalculate(CPDF_FormField* pFormField) {
     WideString sValue = sOldValue;
     bool bRC = true;
     IJS_Runtime::ScopedEventContext pContext(pRuntime);
-    pContext->OnField_Calculate(pFormField, pField, &sValue, &bRC);
+    pContext->OnField_Calculate(pFormField, pField, sValue, bRC);
 
     Optional<IJS_Runtime::JS_Error> err = pContext->RunScript(csJS);
     if (!err && bRC && sValue.Compare(sOldValue) != 0)
@@ -323,11 +322,13 @@ WideString CPDFSDK_InterForm::OnFormat(CPDF_FormField* pFormField,
       WideString script = action.GetJavaScript();
       if (!script.IsEmpty()) {
         WideString Value = sValue;
+
         IJS_Runtime::ScopedEventContext pContext(pRuntime);
-        pContext->OnField_Format(pFormField, &Value, true);
+        pContext->OnField_Format(pFormField, Value, true);
+
         Optional<IJS_Runtime::JS_Error> err = pContext->RunScript(script);
         if (!err) {
-          sValue = std::move(Value);
+          sValue = Value;
           bFormatted = true;
         }
       }
@@ -515,7 +516,7 @@ bool CPDFSDK_InterForm::FDFToURLEncodedData(uint8_t*& pBuf, size_t& nBufSize) {
     ByteString csBValue = pField->GetStringFor("V");
     WideString csWValue = PDF_DecodeText(csBValue);
     ByteString csValue_b = ByteString::FromUnicode(csWValue);
-    fdfEncodedData << name_b << "=" << csValue_b;
+    fdfEncodedData << name_b.c_str() << "=" << csValue_b.c_str();
     if (i != pFields->GetCount() - 1)
       fdfEncodedData << "&";
   }
