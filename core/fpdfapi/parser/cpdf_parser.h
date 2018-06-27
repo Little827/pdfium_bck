@@ -99,12 +99,6 @@ class CPDF_Parser {
       FX_FILESIZE pos,
       uint32_t objnum);
 
-  std::unique_ptr<CPDF_Object> ParseIndirectObjectAtByStrict(
-      CPDF_IndirectObjectHolder* pObjList,
-      FX_FILESIZE pos,
-      uint32_t objnum,
-      FX_FILESIZE* pResultPos);
-
   uint32_t GetFirstPageNo() const;
   const CPDF_LinearizedHeader* GetLinearizedHeader() const {
     return m_pLinearized.get();
