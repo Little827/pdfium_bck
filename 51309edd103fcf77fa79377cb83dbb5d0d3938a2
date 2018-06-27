@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ca5f58b_25bf9599",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-27T11:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab2c0947_a55c949f",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "51309edd103fcf77fa79377cb83dbb5d0d3938a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abee44be_60041ffc",
         "filename": "core/fpdfapi/parser/cpdf_document.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-26T19:58:49Z",
       "side": 1,
       "message": "Can we make the needed methods public with a ForTesting appended? Or make a ForTesting proxy method instead of adding friends?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 77
+      },
+      "revId": "51309edd103fcf77fa79377cb83dbb5d0d3938a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "442952a5_bb0de35e",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-27T11:49:56Z",
+      "side": 1,
+      "message": "i have created CPDF_TestDocumentAllowSetParser withi test for remove this.",
+      "parentUuid": "abee44be_60041ffc",
       "range": {
         "startLine": 132,
         "startChar": 0,
