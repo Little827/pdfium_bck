@@ -16,6 +16,24 @@
       "revId": "fa72c10d27c365ef45355942a1635db2286dfaf2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc105b41_135e55c9",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T15:08:08Z",
+      "side": 1,
+      "message": "1) We can change the object within CPDF_Creator. This CL is allow to us store original object without modifications.\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/edit/cpdf_creator.cpp?rcl\u003d774c90d5ec92d2c58d821c445230d8cb71928dcb\u0026l\u003d749\n\nOn the good, we should not change it within CPDF_Creator, at the time of saving. We should use the copy instead.\n\nI will solve this later.\nFor now, i have created copy within CPDF_Parser.\n\n2) The trailer within CPDF_CrossRefTable(on which i want migrate) is not guarantee, that object will not be destroyed, in process of trailers merging.",
+      "parentUuid": "bb08528b_0f0a3fb4",
+      "revId": "fa72c10d27c365ef45355942a1635db2286dfaf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
