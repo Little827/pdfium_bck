@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d79370d_0940e670",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "I have already splitted the changes for CPDF_HintTables into !seven! Cls. The splitting for more and more parts, into a single line, is really hard work. Be merciful.",
+      "parentUuid": "a76c5fb1_4bbc9d22",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe83ccaf_099dbaea",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7b55a5_44fc6d20",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe83ccaf_099dbaea",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "90ef05b9_46972140",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "Oops, i have hasted this changes. This should be in future CLs.\nI have restored original logic.",
+      "parentUuid": "36730673_c062c081",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3271d21b_13108553",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
         "patchSetId": 8
@@ -85,6 +139,24 @@
       "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a5e888a_b79a384e",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3271d21b_13108553",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "eee0a92b_55870f2e",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "147e1576_ca2086a2",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5f7629f_e8385b36",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
         "patchSetId": 8
@@ -116,6 +206,24 @@
       "writtenOn": "2018-06-28T02:18:07Z",
       "side": 1,
       "message": "Will this be used in another CL, or is this just for the unit tests?",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de20c4a2_d93cf7a3",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "In plans to use it in another CLs.",
+      "parentUuid": "b5f7629f_e8385b36",
       "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "707c40fd_e3a1cd52",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a55384_7cf145ea",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b99a3b6d_b6373c28",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
         "patchSetId": 8
@@ -153,6 +279,24 @@
       "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39f2523_5c57aee1",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99a3b6d_b6373c28",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
