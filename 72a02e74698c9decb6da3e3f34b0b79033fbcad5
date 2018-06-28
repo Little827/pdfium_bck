@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ab7f7e2_9ccce55e",
+        "filename": "core/fxcrt/observable.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-28T16:42:14Z",
+      "side": 1,
+      "message": "May be \"OnObservableObjectDestroyed\"?\nThe \"OnDestroy\" is unclear for implementation within child classes.\nBecause for CPDF_DataAvail::OnDestroy , i think, that \"OnDestroy\" for itself, not for observable object.",
+      "revId": "72a02e74698c9decb6da3e3f34b0b79033fbcad5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
