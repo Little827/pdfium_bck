@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a76c5fb1_4bbc9d22",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "Might as well do these checks first, before any |hStream| checks. Feel free to split this move and getting rid of |dwPages| into its own separate CL.",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe83ccaf_099dbaea",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "Can you retain this comment?\n\n// The object number of remaining pages starts from 1.",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531c1731_1a2a6aed",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "Why this change?",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3271d21b_13108553",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "move below ctors.",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147e1576_ca2086a2",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "Not needed. We can even do:\n\nPageInfo(const PageInfo\u0026 other) \u003d delete;\nPageInfo\u0026 operator\u003d(const PageInfo\u0026) \u003d delete;",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f7629f_e8385b36",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "Will this be used in another CL, or is this just for the unit tests?",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a55384_7cf145ea",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "Add ASSERT_TRUE(hint_tables) below instead.",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99a3b6d_b6373c28",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:18:07Z",
+      "side": 1,
+      "message": "ASSERT_EQ(), so the next 2 calls do not go out of bound. Same for line 94.",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
