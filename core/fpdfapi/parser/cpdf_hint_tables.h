@@ -34,8 +34,17 @@ class CPDF_HintTables {
     }
     uint32_t objects_count() const { return m_nObjectsCount; }
 
+    void AddIdentifier(uint32_t Identifier) {
+      m_dwIdentifierArray.push_back(Identifier);
+    }
+
+    const std::vector<uint32_t>& Identifiers() const {
+      return m_dwIdentifierArray;
+    }
+
    private:
     uint32_t m_nObjectsCount = 0;
+    std::vector<uint32_t> m_dwIdentifierArray;
   };
 
   CPDF_HintTables(CPDF_ReadValidator* pValidator,
@@ -69,10 +78,8 @@ class CPDF_HintTables {
 
   uint32_t m_nFirstPageSharedObjs;
   FX_FILESIZE m_szFirstPageObjOffset;
-  std::vector<uint32_t> m_dwNSharedObjsArray;
   std::vector<PageInfo> m_PageInfos;
   std::vector<uint32_t> m_dwSharedObjNumArray;
-  std::vector<uint32_t> m_dwIdentifierArray;
   std::vector<FX_FILESIZE> m_szPageOffsetArray;
   std::vector<FX_FILESIZE> m_szSharedObjOffsetArray;
 };

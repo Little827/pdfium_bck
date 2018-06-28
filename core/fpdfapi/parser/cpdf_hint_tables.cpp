@@ -185,24 +185,25 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   if (!CanReadFromBitStream(hStream, required_bits))
     return false;
 
+  std::vector<uint32_t> dwNSharedObjsArray(nPages);
   for (uint32_t i = 0; i < nPages; i++)
-    m_dwNSharedObjsArray.push_back(hStream->GetBits(dwSharedObjBits));
+    dwNSharedObjsArray.push_back(hStream->GetBits(dwSharedObjBits));
   hStream->ByteAlign();
 
   // Array of identifiers, size = nshared_objects.
   for (uint32_t i = 0; i < nPages; i++) {
     required_bits = dwSharedIdBits;
-    required_bits *= m_dwNSharedObjsArray[i];
+    required_bits *= dwNSharedObjsArray[i];
     if (!CanReadFromBitStream(hStream, required_bits))
       return false;
 
-    for (uint32_t j = 0; j < m_dwNSharedObjsArray[i]; j++)
-      m_dwIdentifierArray.push_back(hStream->GetBits(dwSharedIdBits));
+    for (uint32_t j = 0; j < dwNSharedObjsArray[i]; j++)
+      m_PageInfos[i].AddIdentifier(hStream->GetBits(dwSharedIdBits));
   }
   hStream->ByteAlign();
 
   for (uint32_t i = 0; i < nPages; i++) {
-    FX_SAFE_UINT32 safeSize = m_dwNSharedObjsArray[i];
+    FX_SAFE_UINT32 safeSize = dwNSharedObjsArray[i];
     safeSize *= dwSharedNumeratorBits;
     if (!CanReadFromBitStream(hStream, safeSize))
       return false;
@@ -383,16 +384,10 @@ CPDF_DataAvail::DocAvailStatus CPDF_HintTables::CheckPage(uint32_t index) {
   }
 
   // Download data of shared objects in the page.
-  uint32_t offset = 0;
-  for (uint32_t i = 0; i < index; ++i)
-    offset += m_dwNSharedObjsArray[i];
-
   const uint32_t nFirstPageObjNum = m_pLinearized->GetFirstPageObjNum();
 
-  uint32_t dwIndex = 0;
   uint32_t dwObjNum = 0;
-  for (uint32_t j = 0; j < m_dwNSharedObjsArray[index]; ++j) {
-    dwIndex = m_dwIdentifierArray[offset + j];
+  for (const uint32_t dwIndex : m_PageInfos[index].Identifiers()) {
     if (dwIndex >= m_dwSharedObjNumArray.size())
       continue;
 
