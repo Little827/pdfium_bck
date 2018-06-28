@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d094fb67_3d63aa0b",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T09:19:21Z",
+      "side": 0,
+      "message": "Preserve this check, but pull it out of the for-loop.\n\nif (dwSharedObjTotal \u003e 0) {\n  uint32_t dwLastSharedObj \u003d dwSharedObjTotal - 1;\n  if (dwLastSharedObj \u003e m_nFirstPageSharedObjs) {\n    FX_SAFE_UINT32 safeObjNum \u003d dwFirstSharedObjNum;\n    safeObjNum +\u003d dwLastSharedObj - m_nFirstPageSharedObjs;\n    if (!safeObjNum.IsValid())\n      return false;\n  }\n}",
+      "revId": "e7ac457fac63fcf4af1beedfae6d802f9eaeb970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
