@@ -11,7 +11,7 @@ Also install Python, Subversion, and Git and make sure they're in your path.
 
 ### Windows development
 
-PDFium uses the same build tool as Chromium:
+PDFium uses the same build tool as Chr       omium:
 
 #### Open source contributors
 Please refer to [Chromium's Visual Studio set up](https://chromium.googlesource.com/chromium/src/+/master/docs/windows_build_instructions.md#visual-studio)
