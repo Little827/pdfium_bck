@@ -140,12 +140,20 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
     return false;
 
   m_PageInfos.resize(nPages);
+  m_PageInfos[nFirstPageNum].set_start_obj_num(
+      m_pLinearized->GetFirstPageObjNum());
+  // The object number of remaining pages starts from 1.
+  uint32_t dwStartObjNum = 1;
   for (uint32_t i = 0; i < nPages; ++i) {
     FX_SAFE_UINT32 safeDeltaObj = hStream->GetBits(dwDeltaObjectsBits);
     safeDeltaObj += dwObjLeastNum;
     if (!safeDeltaObj.IsValid())
       return false;
     m_PageInfos[i].set_objects_count(safeDeltaObj.ValueOrDie());
+    if (i == nFirstPageNum)
+      continue;
+    m_PageInfos[i].set_start_obj_num(dwStartObjNum);
+    dwStartObjNum += m_PageInfos[i].objects_count();
   }
   hStream->ByteAlign();
 
@@ -346,22 +354,7 @@ bool CPDF_HintTables::GetPagePos(uint32_t index,
 
   *szPageStartPos = m_PageInfos[index].page_offset();
   *szPageLength = m_PageInfos[index].page_length();
-
-  const uint32_t nFirstPageObjNum = m_pLinearized->GetFirstPageObjNum();
-
-  const uint32_t dwFirstPageNum = m_pLinearized->GetFirstPageNo();
-  if (index == dwFirstPageNum) {
-    *dwObjNum = nFirstPageObjNum;
-    return true;
-  }
-
-  // The object number of remaining pages starts from 1.
-  *dwObjNum = 1;
-  for (uint32_t i = 0; i < index; ++i) {
-    if (i == dwFirstPageNum)
-      continue;
-    *dwObjNum += m_PageInfos[i].objects_count();
-  }
+  *dwObjNum = m_PageInfos[index].start_obj_num();
   return true;
 }
 

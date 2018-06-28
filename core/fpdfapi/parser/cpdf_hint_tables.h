@@ -40,6 +40,11 @@ class CPDF_HintTables {
     void set_page_length(uint32_t length) { m_dwLength = length; }
     uint32_t page_length() const { return m_dwLength; }
 
+    void set_start_obj_num(uint32_t start_obj_num) {
+      m_dwStartObjNum = start_obj_num;
+    }
+    uint32_t start_obj_num() const { return m_dwStartObjNum; }
+
     void AddIdentifier(uint32_t Identifier) {
       m_dwIdentifierArray.push_back(Identifier);
     }
@@ -52,6 +57,7 @@ class CPDF_HintTables {
     uint32_t m_nObjectsCount = 0;
     FX_FILESIZE m_szOffset = 0;
     uint32_t m_dwLength = 0;
+    uint32_t m_dwStartObjNum = 0;
     std::vector<uint32_t> m_dwIdentifierArray;
   };
 
@@ -67,6 +73,8 @@ class CPDF_HintTables {
   CPDF_DataAvail::DocAvailStatus CheckPage(uint32_t index);
 
   bool LoadHintStream(CPDF_Stream* pHintStream);
+
+  const std::vector<PageInfo>& PageInfos() const { return m_PageInfos; }
 
  protected:
   bool ReadPageHintTable(CFX_BitStream* hStream);
