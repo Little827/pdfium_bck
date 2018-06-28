@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "36730673_c062c081",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T02:44:11Z",
+      "side": 1,
+      "message": "This is what is making the bots red.",
+      "parentUuid": "531c1731_1a2a6aed",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3271d21b_13108553",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
         "patchSetId": 8
