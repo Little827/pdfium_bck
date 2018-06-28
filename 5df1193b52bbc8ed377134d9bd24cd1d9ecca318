@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "3121d94c_84697cf6",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T23:28:32Z",
+      "side": 1,
+      "message": "I don\u0027t have strong feeling here, because 6 elements is still managable. If there are 100 elements, would you agree writing it all out will be a bit tedious?",
+      "parentUuid": "068aa444_2fae1b70",
+      "revId": "5df1193b52bbc8ed377134d9bd24cd1d9ecca318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82f5e297_a0a590c1",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
         "patchSetId": 5
@@ -142,6 +160,30 @@
       "side": 1,
       "message": "No. For \"feature_linearized_loading.pdf\" the 0..4 shared groups contains in first page, and only group with index 5, is contains in shared objects section. The Gap is pages data.",
       "parentUuid": "82f5e297_a0a590c1",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "5df1193b52bbc8ed377134d9bd24cd1d9ecca318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3537b2e7_d53725df",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T23:28:32Z",
+      "side": 1,
+      "message": "The existing code calls GetItemLength(dwIndex, m_szSharedObjOffsetArray), and that would have returned 8503, right?\n\nIt sounds like this is OK, because the new code will now request data more accurately. Whereas the existing code always makes a bigger request than necessary, which works but may be slightly inefficient. Right?",
+      "parentUuid": "9ec3bcae_e9454ca2",
       "range": {
         "startLine": 118,
         "startChar": 12,

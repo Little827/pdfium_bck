@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88ede9c2_f2bafa94",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T23:28:32Z",
+      "side": 1,
+      "message": "Move this below lines 72-74.",
+      "revId": "e4412485a810fe722c7fbd574c6678387411c5a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e04d916_1e3ca58f",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-28T23:28:32Z",
+      "side": 1,
+      "message": "This can\u0027t fail, since |m_szFirstPageObjOffset| is of type FX_FILESIZE.",
+      "revId": "e4412485a810fe722c7fbd574c6678387411c5a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
