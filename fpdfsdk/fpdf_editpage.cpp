@@ -7,6 +7,7 @@
 #include "public/fpdf_edit.h"
 
 #include <algorithm>
+#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -291,6 +292,28 @@ FPDFPageObj_GetMark(FPDF_PAGEOBJECT page_object, unsigned long index) {
 
   if (index >= mark->CountItems())
     return nullptr;
+
+  return FPDFPageObjectMarkFromCPDFContentMarkItem(&mark->GetItem(index));
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECTMARK FPDF_CALLCONV
+FPDFPageObj_AddMark(FPDF_PAGEOBJECT page_object, FPDF_BYTESTRING name) {
+  if (!page_object)
+    return nullptr;
+
+  // CPDF_PageObject* cpdf_page_object =
+  // CPDFPageObjectFromFPDFPageObject(page_object); std::cerr <<
+  // "cpdf_page_object " << (void*)cpdf_page_object << std::endl; std::cerr <<
+  // "m_ContentMark " << (void*)&cpdf_page_object->m_ContentMark << std::endl;
+  auto* mark = &CPDFPageObjectFromFPDFPageObject(page_object)->m_ContentMark;
+  std::cerr << "mark->HasRef() " << mark->HasRef() << std::endl;
+
+  mark->AddMark(name, nullptr, true);
+  std::cerr << "added, now mark->HasRef() " << mark->HasRef() << std::endl;
+  unsigned long index = mark->CountItems() - 1;
+  std::cerr << "index is  " << index << std::endl;
+  std::cerr << "&mark->GetItem(index) " << (void*)&mark->GetItem(index)
+            << std::endl;
 
   return FPDFPageObjectMarkFromCPDFContentMarkItem(&mark->GetItem(index));
 }
