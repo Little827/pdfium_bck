@@ -59,6 +59,14 @@ uint32_t CPDF_HintTables::GetItemLength(
 }
 
 bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
+  const uint32_t nPages = m_pLinearized->GetPageCount();
+  if (nPages < 1 || nPages >= CPDF_Document::kPageMaxNum)
+    return false;
+
+  const uint32_t nFirstPageNum = m_pLinearized->GetFirstPageNo();
+  if (nFirstPageNum >= nPages)
+    return false;
+
   if (!hStream || hStream->IsEOF())
     return false;
 
@@ -122,13 +130,8 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   // Item 13: Skip Item 13 which has 16 bits.
   hStream->SkipBits(16);
 
-  const uint32_t nPages = m_pLinearized->GetPageCount();
-  if (nPages < 1 || nPages >= CPDF_Document::kPageMaxNum)
-    return false;
-
-  const uint32_t dwPages = pdfium::base::checked_cast<uint32_t>(nPages);
   FX_SAFE_UINT32 required_bits = dwDeltaObjectsBits;
-  required_bits *= dwPages;
+  required_bits *= nPages;
   if (!CanReadFromBitStream(hStream, required_bits))
     return false;
 
@@ -142,7 +145,7 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   hStream->ByteAlign();
 
   required_bits = dwDeltaPageLenBits;
-  required_bits *= dwPages;
+  required_bits *= nPages;
   if (!CanReadFromBitStream(hStream, required_bits))
     return false;
 
@@ -155,10 +158,6 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
 
     dwPageLenArray.push_back(safePageLen.ValueOrDie());
   }
-
-  const uint32_t nFirstPageNum = m_pLinearized->GetFirstPageNo();
-  if (nFirstPageNum >= nPages)
-    return false;
 
   m_szPageOffsetArray.resize(nPages, 0);
   ASSERT(m_szFirstPageObjOffset);
@@ -177,7 +176,7 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
 
   // Number of shared objects.
   required_bits = dwSharedObjBits;
-  required_bits *= dwPages;
+  required_bits *= nPages;
   if (!CanReadFromBitStream(hStream, required_bits))
     return false;
 
@@ -207,7 +206,7 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   }
   hStream->ByteAlign();
 
-  FX_SAFE_UINT32 safeTotalPageLen = dwPages;
+  FX_SAFE_UINT32 safeTotalPageLen = nPages;
   safeTotalPageLen *= dwDeltaPageLenBits;
   if (!CanReadFromBitStream(hStream, safeTotalPageLen))
     return false;
