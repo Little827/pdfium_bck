@@ -37,6 +37,10 @@ bool IsValidPageOffsetHintTableBitCount(uint32_t bits) {
 
 }  // namespace
 
+CPDF_HintTables::PageInfo::PageInfo() = default;
+CPDF_HintTables::PageInfo::PageInfo(PageInfo&& other) = default;
+CPDF_HintTables::PageInfo::~PageInfo() = default;
+
 CPDF_HintTables::CPDF_HintTables(CPDF_ReadValidator* pValidator,
                                  CPDF_LinearizedHeader* pLinearized)
     : m_pValidator(pValidator),
@@ -135,12 +139,13 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   if (!CanReadFromBitStream(hStream, required_bits))
     return false;
 
+  m_PageInfos.resize(nPages);
   for (uint32_t i = 0; i < nPages; ++i) {
     FX_SAFE_UINT32 safeDeltaObj = hStream->GetBits(dwDeltaObjectsBits);
     safeDeltaObj += dwObjLeastNum;
     if (!safeDeltaObj.IsValid())
       return false;
-    m_dwDeltaNObjsArray.push_back(safeDeltaObj.ValueOrDie());
+    m_PageInfos[i].set_objects_count(safeDeltaObj.ValueOrDie());
   }
   hStream->ByteAlign();
 
@@ -358,7 +363,7 @@ bool CPDF_HintTables::GetPagePos(uint32_t index,
   for (uint32_t i = 0; i < index; ++i) {
     if (i == dwFirstPageNum)
       continue;
-    *dwObjNum += m_dwDeltaNObjsArray[i];
+    *dwObjNum += m_PageInfos[i].objects_count();
   }
   return true;
 }

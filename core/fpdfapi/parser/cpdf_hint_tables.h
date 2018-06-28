@@ -20,6 +20,24 @@ class CPDF_ReadValidator;
 
 class CPDF_HintTables {
  public:
+  class PageInfo {
+   public:
+    PageInfo();
+    PageInfo(PageInfo&& other);
+    ~PageInfo();
+
+    PageInfo(const PageInfo& other) = delete;
+    PageInfo& operator=(const PageInfo& other) = delete;
+
+    void set_objects_count(uint32_t objects_count) {
+      m_nObjectsCount = objects_count;
+    }
+    uint32_t objects_count() const { return m_nObjectsCount; }
+
+   private:
+    uint32_t m_nObjectsCount = 0;
+  };
+
   CPDF_HintTables(CPDF_ReadValidator* pValidator,
                   CPDF_LinearizedHeader* pLinearized);
   virtual ~CPDF_HintTables();
@@ -51,8 +69,8 @@ class CPDF_HintTables {
 
   uint32_t m_nFirstPageSharedObjs;
   FX_FILESIZE m_szFirstPageObjOffset;
-  std::vector<uint32_t> m_dwDeltaNObjsArray;
   std::vector<uint32_t> m_dwNSharedObjsArray;
+  std::vector<PageInfo> m_PageInfos;
   std::vector<uint32_t> m_dwSharedObjNumArray;
   std::vector<uint32_t> m_dwIdentifierArray;
   std::vector<FX_FILESIZE> m_szPageOffsetArray;
