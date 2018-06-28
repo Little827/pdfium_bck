@@ -163,15 +163,14 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
     m_PageInfos[i].set_page_length(safePageLen.ValueOrDie());
   }
 
-  m_szPageOffsetArray.resize(nPages, 0);
   ASSERT(m_szFirstPageObjOffset);
-  m_szPageOffsetArray[nFirstPageNum] = m_szFirstPageObjOffset;
+  m_PageInfos[nFirstPageNum].set_page_offset(m_szFirstPageObjOffset);
   FX_FILESIZE prev_page_end = m_pLinearized->GetFirstPageEndOffset();
   for (uint32_t i = 0; i < nPages; ++i) {
     if (i == nFirstPageNum)
       continue;
 
-    m_szPageOffsetArray[i] = prev_page_end;
+    m_PageInfos[i].set_page_offset(prev_page_end);
     prev_page_end += m_PageInfos[i].page_length();
   }
   hStream->ByteAlign();
@@ -345,7 +344,7 @@ bool CPDF_HintTables::GetPagePos(uint32_t index,
   if (index >= m_pLinearized->GetPageCount())
     return false;
 
-  *szPageStartPos = m_szPageOffsetArray[index];
+  *szPageStartPos = m_PageInfos[index].page_offset();
   *szPageLength = m_PageInfos[index].page_length();
 
   const uint32_t nFirstPageObjNum = m_pLinearized->GetFirstPageObjNum();
@@ -376,7 +375,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_HintTables::CheckPage(uint32_t index) {
     return CPDF_DataAvail::DataError;
 
   if (!m_pValidator->CheckDataRangeAndRequestIfUnavailable(
-          m_szPageOffsetArray[index], dwLength)) {
+          m_PageInfos[index].page_offset(), dwLength)) {
     return CPDF_DataAvail::DataNotAvailable;
   }
 

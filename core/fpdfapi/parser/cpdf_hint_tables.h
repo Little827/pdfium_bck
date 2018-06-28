@@ -34,6 +34,9 @@ class CPDF_HintTables {
     }
     uint32_t objects_count() const { return m_nObjectsCount; }
 
+    void set_page_offset(FX_FILESIZE offset) { m_szOffset = offset; }
+    FX_FILESIZE page_offset() const { return m_szOffset; }
+
     void set_page_length(uint32_t length) { m_dwLength = length; }
     uint32_t page_length() const { return m_dwLength; }
 
@@ -47,6 +50,7 @@ class CPDF_HintTables {
 
    private:
     uint32_t m_nObjectsCount = 0;
+    FX_FILESIZE m_szOffset = 0;
     uint32_t m_dwLength = 0;
     std::vector<uint32_t> m_dwIdentifierArray;
   };
@@ -84,7 +88,6 @@ class CPDF_HintTables {
   FX_FILESIZE m_szFirstPageObjOffset;
   std::vector<PageInfo> m_PageInfos;
   std::vector<uint32_t> m_dwSharedObjNumArray;
-  std::vector<FX_FILESIZE> m_szPageOffsetArray;
   std::vector<FX_FILESIZE> m_szSharedObjOffsetArray;
 };
 
