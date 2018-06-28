@@ -32,6 +32,7 @@
 #include "core/fxcodec/codec/ccodec_iccmodule.h"
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcrt/fx_memory.h"
+#include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/maybe_owned.h"
 #include "third_party/base/stl_util.h"
 
@@ -246,7 +247,7 @@ class CPDF_IndexedCS : public CPDF_ColorSpace {
   uint32_t m_nBaseComponents = 0;
   int m_MaxIndex = 0;
   ByteString m_Table;
-  float* m_pCompMinMax = nullptr;
+  std::vector<float> m_pCompMinMax;
 };
 
 class CPDF_SeparationCS : public CPDF_ColorSpace {
@@ -1076,7 +1077,6 @@ CPDF_IndexedCS::CPDF_IndexedCS(CPDF_Document* pDoc)
     : CPDF_ColorSpace(pDoc, PDFCS_INDEXED) {}
 
 CPDF_IndexedCS::~CPDF_IndexedCS() {
-  FX_Free(m_pCompMinMax);
   const CPDF_ColorSpace* pCS =
       m_pCountedBaseCS ? m_pCountedBaseCS->get() : nullptr;
   if (pCS && m_pDocument) {
@@ -1109,7 +1109,13 @@ uint32_t CPDF_IndexedCS::v_Load(CPDF_Document* pDoc,
 
   m_pCountedBaseCS = pDocPageData->FindColorSpacePtr(m_pBaseCS->GetArray());
   m_nBaseComponents = m_pBaseCS->CountComponents();
-  m_pCompMinMax = FX_Alloc2D(float, m_nBaseComponents, 2);
+
+  FX_SAFE_UINT32 bytes = m_nBaseComponents;
+  bytes *= 2;
+  if (!bytes.IsValid())
+    return 0;
+
+  m_pCompMinMax.resize(bytes.ValueOrDie());
   float defvalue;
   for (uint32_t i = 0; i < m_nBaseComponents; i++) {
     m_pBaseCS->GetDefaultValue(i, &defvalue, &m_pCompMinMax[i * 2],
