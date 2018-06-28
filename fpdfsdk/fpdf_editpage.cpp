@@ -437,6 +437,13 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPageObj_GetType(FPDF_PAGEOBJECT pageObject) {
   return pPageObj->GetType();
 }
 
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFPageObjMark_AddIntParam(FPDF_PAGEOBJECTMARK mark,
+                            FPDF_WIDESTRING key,
+                            int value) {
+  return 0;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GenerateContent(FPDF_PAGE page) {
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (!IsPageObject(pPage))
