@@ -154,29 +154,26 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   if (!CanReadFromBitStream(hStream, required_bits))
     return false;
 
-  std::vector<uint32_t> dwPageLenArray;
   for (uint32_t i = 0; i < nPages; ++i) {
     FX_SAFE_UINT32 safePageLen = hStream->GetBits(dwDeltaPageLenBits);
     safePageLen += dwPageLeastLen;
     if (!safePageLen.IsValid())
       return false;
 
-    dwPageLenArray.push_back(safePageLen.ValueOrDie());
+    m_PageInfos[i].set_page_length(safePageLen.ValueOrDie());
   }
 
   m_szPageOffsetArray.resize(nPages, 0);
   ASSERT(m_szFirstPageObjOffset);
   m_szPageOffsetArray[nFirstPageNum] = m_szFirstPageObjOffset;
-  FX_FILESIZE prev_page_offset = m_pLinearized->GetFirstPageEndOffset();
+  FX_FILESIZE prev_page_end = m_pLinearized->GetFirstPageEndOffset();
   for (uint32_t i = 0; i < nPages; ++i) {
     if (i == nFirstPageNum)
       continue;
 
-    m_szPageOffsetArray[i] = prev_page_offset;
-    prev_page_offset += dwPageLenArray[i];
+    m_szPageOffsetArray[i] = prev_page_end;
+    prev_page_end += m_PageInfos[i].page_length();
   }
-  m_szPageOffsetArray.push_back(m_szPageOffsetArray[nPages - 1] +
-                                dwPageLenArray[nPages - 1]);
   hStream->ByteAlign();
 
   // Number of shared objects.
@@ -349,7 +346,7 @@ bool CPDF_HintTables::GetPagePos(uint32_t index,
     return false;
 
   *szPageStartPos = m_szPageOffsetArray[index];
-  *szPageLength = GetItemLength(index, m_szPageOffsetArray);
+  *szPageLength = m_PageInfos[index].page_length();
 
   const uint32_t nFirstPageObjNum = m_pLinearized->GetFirstPageObjNum();
 
@@ -373,7 +370,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_HintTables::CheckPage(uint32_t index) {
   if (index == m_pLinearized->GetFirstPageNo())
     return CPDF_DataAvail::DataAvailable;
 
-  uint32_t dwLength = GetItemLength(index, m_szPageOffsetArray);
+  uint32_t dwLength = m_PageInfos[index].page_length();
   // If two pages have the same offset, it should be treated as an error.
   if (!dwLength)
     return CPDF_DataAvail::DataError;

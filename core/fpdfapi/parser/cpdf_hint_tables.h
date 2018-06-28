@@ -34,6 +34,9 @@ class CPDF_HintTables {
     }
     uint32_t objects_count() const { return m_nObjectsCount; }
 
+    void set_page_length(uint32_t length) { m_dwLength = length; }
+    uint32_t page_length() const { return m_dwLength; }
+
     void AddIdentifier(uint32_t Identifier) {
       m_dwIdentifierArray.push_back(Identifier);
     }
@@ -44,6 +47,7 @@ class CPDF_HintTables {
 
    private:
     uint32_t m_nObjectsCount = 0;
+    uint32_t m_dwLength = 0;
     std::vector<uint32_t> m_dwIdentifierArray;
   };
 
