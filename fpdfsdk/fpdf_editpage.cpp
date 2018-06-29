@@ -395,6 +395,24 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
       buffer, buflen);
 }
 
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObjMark_AddIntParam(FPDF_PAGEOBJECTMARK mark,
+                            FPDF_BYTESTRING key,
+                            int value) {
+  if (!mark)
+    return -1;
+
+  CPDF_ContentMarkItem* pMarkItem =
+      CPDFContentMarkItemFromFPDFPageObjectMark(mark);
+
+  CPDF_Dictionary* pParams = pMarkItem->GetParam();
+  if (!pParams)
+    return -1;
+
+  pParams->SetNewFor<CPDF_Number>(key, value);
+  return pParams->GetCount() - 1;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObj_HasTransparency(FPDF_PAGEOBJECT pageObject) {
   if (!pageObject)

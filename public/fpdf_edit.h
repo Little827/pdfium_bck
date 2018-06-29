@@ -390,6 +390,12 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
                                     void* buffer,
                                     unsigned long buflen);
 
+// Experimental API.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObjMark_AddIntParam(FPDF_PAGEOBJECTMARK mark,
+                            FPDF_BYTESTRING key,
+                            int value);
+
 // Load an image from a JPEG image file and then set it into |image_object|.
 //
 //   pages        - pointer to the start of all loaded pages, may be NULL.
