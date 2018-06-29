@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4ab2a009_46b082e1",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-29T01:56:36Z",
+      "side": 1,
+      "message": "Your reviewers would also consider it merciful if you send smaller CLs that are easier to review.",
+      "parentUuid": "8d79370d_0940e670",
+      "revId": "b012e451760a4eb6143109e8e2d8699f27757536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe83ccaf_099dbaea",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 8
