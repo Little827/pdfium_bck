@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "852267e4_b5475d7e",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-29T14:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff44cf2_62f2c32e",
+      "revId": "69a1064f74655513f83fe894111e229b675be165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f47b56a_39d71a9f",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-06-29T01:52:50Z",
       "side": 1,
       "message": "This does the match with the comment. What\u0027s going on?",
+      "revId": "69a1064f74655513f83fe894111e229b675be165",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29708595_502fbbbd",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-29T14:23:35Z",
+      "side": 1,
+      "message": "See https://pdfium-review.googlesource.com/c/pdfium/+/36610/1",
+      "parentUuid": "1f47b56a_39d71a9f",
       "revId": "69a1064f74655513f83fe894111e229b675be165",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
