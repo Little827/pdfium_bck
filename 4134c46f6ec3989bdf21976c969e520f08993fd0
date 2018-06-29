@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6737f9c_2146a59d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-29T21:08:55Z",
+      "side": 1,
+      "message": "I don\u0027t understand this part of the sentence.",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fbfe408_3d7819c8",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-29T21:08:55Z",
+      "side": 1,
+      "message": "Can you explain why this changed? It does not match the comment.",
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d4a6754_c0df049c",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-29T21:08:55Z",
+      "side": 1,
+      "message": "Can\u0027t put code with side effects inside an ASSERT().",
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f9cfbbd_c4dcc4e9",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-29T21:08:55Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 154,
+        "startChar": 60,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "792098ac_3c85099b",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-29T21:08:55Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 159,
+        "startChar": 24,
+        "endLine": 159,
+        "endChar": 34
+      },
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ef72ed_c3bd8b24",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-06-29T21:08:55Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 170,
+        "startChar": 40,
+        "endLine": 170,
+        "endChar": 45
+      },
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
