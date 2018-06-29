@@ -16,6 +16,8 @@
 CXFA_ContainerLayoutItem::CXFA_ContainerLayoutItem(CXFA_Node* pNode)
     : CXFA_LayoutItem(pNode, false), m_pOldSubform(nullptr) {}
 
+CXFA_ContainerLayoutItem::~CXFA_ContainerLayoutItem() = default;
+
 CXFA_LayoutProcessor* CXFA_ContainerLayoutItem::GetLayout() const {
   return m_pFormNode->GetDocument()->GetLayoutProcessor();
 }
@@ -48,5 +50,5 @@ CFX_SizeF CXFA_ContainerLayoutItem::GetPageSize() const {
 }
 
 CXFA_Node* CXFA_ContainerLayoutItem::GetMasterPage() const {
-  return m_pFormNode;
+  return m_pFormNode.Get();
 }
