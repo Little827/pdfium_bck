@@ -6,9 +6,11 @@
 
 #include "core/fpdfapi/page/cpdf_contentmark.h"
 
+#include <iostream>
 #include <utility>
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fpdfapi/parser/cpdf_number.h"
 
 CPDF_ContentMark::CPDF_ContentMark() {}
 
@@ -41,6 +43,10 @@ void CPDF_ContentMark::DeleteLastMark() {
   m_Ref.GetPrivateCopy()->DeleteLastMark();
   if (CountItems() == 0)
     m_Ref.SetNull();
+}
+
+void CPDF_ContentMark::AddIntParam(size_t index, ByteString key, int value) {
+  m_Ref.GetPrivateCopy()->AddIntParam(index, key, value);
 }
 
 CPDF_ContentMark::MarkData::MarkData() {}
@@ -85,4 +91,23 @@ void CPDF_ContentMark::MarkData::AddMark(ByteString name,
 void CPDF_ContentMark::MarkData::DeleteLastMark() {
   if (!m_Marks.empty())
     m_Marks.pop_back();
+}
+
+void CPDF_ContentMark::MarkData::AddIntParam(size_t index, ByteString key, int value) {
+  CPDF_ContentMarkItem old_mark = m_Marks[index];
+  CPDF_ContentMarkItem item;
+  item.SetName(old_mark.GetName());
+
+  std::unique_ptr<CPDF_Dictionary> new_dict;
+  if (old_mark.GetParam())
+    new_dict = ToDictionary(old_mark.GetParam()->Clone());
+  else
+    new_dict = pdfium::MakeUnique<CPDF_Dictionary>();
+
+  new_dict->SetNewFor<CPDF_Number>(key, value);
+
+  item.SetDirectDict(std::move(new_dict));
+  // m_Marks[index] = item;
+  m_Marks.erase(m_Marks.begin() + index);
+  m_Marks.push_back(std::move(item));
 }

@@ -311,6 +311,12 @@ FPDFPageObj_GetMark(FPDF_PAGEOBJECT page_object, unsigned long index);
 FPDF_EXPORT FPDF_PAGEOBJECTMARK FPDF_CALLCONV
 FPDFPageObj_AddMark(FPDF_PAGEOBJECT page_object, FPDF_BYTESTRING name);
 
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObj_AddMarkIntParam(FPDF_PAGEOBJECT page_object,
+                            unsigned long index,
+                            FPDF_BYTESTRING key,
+                            int value);
+
 // Experimental API.
 // Get name of a content mark. |buffer| is only modified if |buflen| is longer
 // than the length of the name.
@@ -389,6 +395,12 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
                                     unsigned long index,
                                     void* buffer,
                                     unsigned long buflen);
+
+// // Experimental API.
+// FPDF_EXPORT int FPDF_CALLCONV
+// FPDFPageObjMark_AddIntParam(FPDF_PAGEOBJECTMARK mark,
+//                             FPDF_BYTESTRING key,
+//                             int value);
 
 // Load an image from a JPEG image file and then set it into |image_object|.
 //

@@ -318,6 +318,25 @@ FPDFPageObj_AddMark(FPDF_PAGEOBJECT page_object, FPDF_BYTESTRING name) {
   return FPDFPageObjectMarkFromCPDFContentMarkItem(&mark->GetItem(index));
 }
 
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObj_AddMarkIntParam(FPDF_PAGEOBJECT page_object,
+                            unsigned long index,
+                            FPDF_BYTESTRING key,
+                            int value) {
+  if (!page_object)
+    return -1;
+
+  auto* mark = &CPDFPageObjectFromFPDFPageObject(page_object)->m_ContentMark;
+  if (!mark->HasRef())
+    return -1;
+
+  if (index >= mark->CountItems())
+    return -1;
+
+  mark->AddIntParam(index, key, value);
+  return mark->CountItems() - 1;
+}
+
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFPageObjMark_GetName(FPDF_PAGEOBJECTMARK mark,
                         void* buffer,
@@ -394,6 +413,24 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
       WideString::FromUTF8(param_pair->second->GetString().AsStringView()),
       buffer, buflen);
 }
+
+// FPDF_EXPORT int FPDF_CALLCONV
+// FPDFPageObjMark_AddIntParam(FPDF_PAGEOBJECTMARK mark,
+//                             FPDF_BYTESTRING key,
+//                             int value) {
+//   if (!mark)
+//     return -1;
+
+//   CPDF_ContentMarkItem* pMarkItem =
+//       CPDFContentMarkItemFromFPDFPageObjectMark(mark);
+
+//   CPDF_Dictionary* pParams = pMarkItem->GetParam();
+//   if (!pParams)
+//     return -1;
+
+//   pParams->SetNewFor<CPDF_Number>(key, value);
+//   return pParams->GetCount() - 1;
+// }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObj_HasTransparency(FPDF_PAGEOBJECT pageObject) {

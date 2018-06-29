@@ -21,6 +21,8 @@ class CPDF_ContentMark {
   CPDF_ContentMark(const CPDF_ContentMark& that);
   ~CPDF_ContentMark();
 
+  bool HasRef() const { return !!m_Ref; }
+
   int GetMarkedContentID() const;
   size_t CountItems() const;
   const CPDF_ContentMarkItem& GetItem(size_t i) const;
@@ -28,7 +30,7 @@ class CPDF_ContentMark {
   void AddMark(ByteString name, const CPDF_Dictionary* pDict, bool bDirect);
   void DeleteLastMark();
 
-  bool HasRef() const { return !!m_Ref; }
+  void AddIntParam(size_t index, ByteString key, int value);
 
  private:
   class MarkData : public Retainable {
@@ -46,6 +48,7 @@ class CPDF_ContentMark {
                  bool bDictNeedClone);
     void DeleteLastMark();
 
+    void AddIntParam(size_t index, ByteString key, int value);
    private:
     std::vector<CPDF_ContentMarkItem> m_Marks;
   };
