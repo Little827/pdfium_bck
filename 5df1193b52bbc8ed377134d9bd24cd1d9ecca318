@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "e1b125ca_877c24ff",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-29T12:40:48Z",
+      "side": 1,
+      "message": "\u003e If there are 100 elements, would you agree writing it all out will be a bit tedious?\n\nYes, of course.",
+      "parentUuid": "3121d94c_84697cf6",
+      "revId": "5df1193b52bbc8ed377134d9bd24cd1d9ecca318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82f5e297_a0a590c1",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
         "patchSetId": 5
@@ -184,6 +202,30 @@
       "side": 1,
       "message": "The existing code calls GetItemLength(dwIndex, m_szSharedObjOffsetArray), and that would have returned 8503, right?\n\nIt sounds like this is OK, because the new code will now request data more accurately. Whereas the existing code always makes a bigger request than necessary, which works but may be slightly inefficient. Right?",
       "parentUuid": "9ec3bcae_e9454ca2",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "5df1193b52bbc8ed377134d9bd24cd1d9ecca318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f829ce94_bb23fd22",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-06-29T12:40:48Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "3537b2e7_d53725df",
       "range": {
         "startLine": 118,
         "startChar": 12,
