@@ -23,6 +23,8 @@ class CPDF_HintTables {
   struct SharedObjGroupInfo {
     FX_FILESIZE m_szOffset = 0;
     uint32_t m_dwLength = 0;
+    uint32_t m_nObjectsCount = 0;
+    uint32_t m_dwStartObjNum = 0;
   };
 
   class PageInfo {
