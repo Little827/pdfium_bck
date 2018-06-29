@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4441153_791523f8",
+        "filename": "core/fpdfapi/page/cpdf_iccprofile.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-06-29T23:10:58Z",
+      "side": 1,
+      "message": "FWIW, writing this as \u0026span[0x190] allows the compiler to bounds check at least the start at 0x190 ... not useful here because of the above size check, but something to keep in our bag of tricks.",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "81fcde731fe44ef5a11748536a2d6404906c80ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
