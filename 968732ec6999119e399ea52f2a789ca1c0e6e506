@@ -22,6 +22,30 @@
       "revId": "968732ec6999119e399ea52f2a789ca1c0e6e506",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00953e99_53b60f23",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T22:44:37Z",
+      "side": 1,
+      "message": "yeah, kinda.  Its a pointer to more than one thing under the covers. :).  Done.",
+      "parentUuid": "4786827c_dd506ecc",
+      "range": {
+        "startLine": 329,
+        "startChar": 20,
+        "endLine": 329,
+        "endChar": 31
+      },
+      "revId": "968732ec6999119e399ea52f2a789ca1c0e6e506",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
