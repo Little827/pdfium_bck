@@ -37,7 +37,7 @@ int32_t CBC_QRCoderMaskUtil::ApplyMaskPenaltyRule1(
 int32_t CBC_QRCoderMaskUtil::ApplyMaskPenaltyRule2(
     CBC_CommonByteMatrix* matrix) {
   int32_t penalty = 0;
-  uint8_t* array = matrix->GetArray();
+  const uint8_t* array = matrix->GetArray();
   int32_t width = matrix->GetWidth();
   int32_t height = matrix->GetHeight();
   for (int32_t y = 0; y < height - 1; y++) {
@@ -56,7 +56,7 @@ int32_t CBC_QRCoderMaskUtil::ApplyMaskPenaltyRule2(
 int32_t CBC_QRCoderMaskUtil::ApplyMaskPenaltyRule3(
     CBC_CommonByteMatrix* matrix) {
   int32_t penalty = 0;
-  uint8_t* array = matrix->GetArray();
+  const uint8_t* array = matrix->GetArray();
   int32_t width = matrix->GetWidth();
   int32_t height = matrix->GetHeight();
   for (int32_t y = 0; y < height; ++y) {
@@ -108,7 +108,7 @@ int32_t CBC_QRCoderMaskUtil::ApplyMaskPenaltyRule3(
 int32_t CBC_QRCoderMaskUtil::ApplyMaskPenaltyRule4(
     CBC_CommonByteMatrix* matrix) {
   int32_t numDarkCells = 0;
-  uint8_t* array = matrix->GetArray();
+  const uint8_t* array = matrix->GetArray();
   int32_t width = matrix->GetWidth();
   int32_t height = matrix->GetHeight();
   for (int32_t y = 0; y < height; ++y) {
@@ -176,7 +176,7 @@ int32_t CBC_QRCoderMaskUtil::ApplyMaskPenaltyRule1Internal(
   int32_t height = matrix->GetHeight();
   int32_t iLimit = isHorizontal ? height : width;
   int32_t jLimit = isHorizontal ? width : height;
-  uint8_t* array = matrix->GetArray();
+  const uint8_t* array = matrix->GetArray();
   for (int32_t i = 0; i < iLimit; ++i) {
     for (int32_t j = 0; j < jLimit; ++j) {
       int32_t bit = isHorizontal ? array[i * width + j] : array[j * width + i];

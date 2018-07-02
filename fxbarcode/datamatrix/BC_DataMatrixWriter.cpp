@@ -59,7 +59,6 @@ std::unique_ptr<CBC_CommonByteMatrix> encodeLowLevel(
   ASSERT(height);
 
   auto matrix = pdfium::MakeUnique<CBC_CommonByteMatrix>(width, height);
-  matrix->Init();
   int32_t matrixY = 0;
   for (int32_t y = 0; y < symbolHeight; y++) {
     int32_t matrixX;
