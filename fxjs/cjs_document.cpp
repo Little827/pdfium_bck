@@ -326,15 +326,12 @@ CJS_Return CJS_Document::mailForm(
   WideString cBcc = nLength > 3 ? pRuntime->ToWideString(params[3]) : L"";
   WideString cSubject = nLength > 4 ? pRuntime->ToWideString(params[4]) : L"";
   WideString cMsg = nLength > 5 ? pRuntime->ToWideString(params[5]) : L"";
-
-  size_t nBufSize = sTextBuf.GetLength();
-  std::unique_ptr<char, FxFreeDeleter> pMutableBuf(FX_Alloc(char, nBufSize));
-  memcpy(pMutableBuf.get(), sTextBuf.c_str(), nBufSize);
+  std::vector<char> pMutableBuf(sTextBuf.begin(), sTextBuf.end());
 
   pRuntime->BeginBlock();
   CPDFSDK_FormFillEnvironment* pFormFillEnv = pRuntime->GetFormFillEnv();
-  pFormFillEnv->JS_docmailForm(pMutableBuf.get(), nBufSize, bUI, cTo, cSubject,
-                               cCc, cBcc, cMsg);
+  pFormFillEnv->JS_docmailForm(pMutableBuf.data(), pMutableBuf.size(), bUI, cTo,
+                               cSubject, cCc, cBcc, cMsg);
   pRuntime->EndBlock();
   return CJS_Return();
 }
