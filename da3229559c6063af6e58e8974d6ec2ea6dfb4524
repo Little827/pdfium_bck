@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1530324335 -0700\nnonce ADrMV7YtPhgQn6fZednhBmnHWE5AKQPaW2Nxx0rMwUkWPU4GLx9loGAuYzrI1yZc/b8pwjctkbP6\n\n0000000000000000000000000000000000000000 da3229559c6063af6e58e8974d6ec2ea6dfb4524 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAls25W8ACgkQqzYtYVpm\n/Xu34gf/UG9lIKrxVuz6g5mF0Ho1kbSr2/C24SNW7E9P4OMkVokEo8/Ctm+O2Yy7\nMYbblCAIKNfdQOp6h+SJc1lXBnEL/NnwqH52p12J0yv8jzj2LsSLw/04HL7/zRuq\nZWmrwfdMNIP7UdXD/bRVIpb0Lt6YD6AMqL0xNBgG6c4qABq67t+ElEXF05d80he2\nMrDI1qu8ng2WBubm+VWSSjObldHeyNFGcRmAhPzBBamEpk4BoBqvSpcAfWC2ZyN/\ndxFawV4SAUngNZAEh6n8c9q1gXFpt3SwpYKn9BoNx5vJlbMssdI6csAEQWjKx5x6\ncOoplMRMAxaFfEEGK0F1HYUMe2Ur1g\u003d\u003d\n\u003djKmy\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "43abdf02_360e2490",
+        "filename": "core/fpdfapi/page/cpdf_iccprofile.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T19:25:56Z",
+      "side": 1,
+      "message": "note: memcmp is probably fine, alternatively you might want to muck with span::subspan() and direct \u003d\u003d comparison, given array char promotes to span.  But it gets messy because of the stupid null terminateor ... oh for time travel to 1970 ...",
+      "range": {
+        "startLine": 17,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 78
+      },
+      "revId": "da3229559c6063af6e58e8974d6ec2ea6dfb4524",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
