@@ -986,20 +986,20 @@ void CPDF_ICCBasedCS::TranslateImageLine(uint8_t* pDestBuf,
 
   if (!m_pCache) {
     m_pCache.reset(FX_Alloc2D(uint8_t, nMaxColors, 3));
-    std::unique_ptr<uint8_t, FxFreeDeleter> temp_src(
-        FX_Alloc2D(uint8_t, nMaxColors, nComponents));
-    uint8_t* pSrc = temp_src.get();
+    std::vector<uint8_t> temp_src =
+        pdfium::Vector2D<uint8_t>(nMaxColors, nComponents);
+    size_t src_index = 0;
     for (int i = 0; i < nMaxColors; i++) {
       uint32_t color = i;
       uint32_t order = nMaxColors / 52;
       for (uint32_t c = 0; c < nComponents; c++) {
-        *pSrc++ = static_cast<uint8_t>(color / order * 5);
+        temp_src[src_index++] = static_cast<uint8_t>(color / order * 5);
         color %= order;
         order /= 52;
       }
     }
     CPDF_ModuleMgr::Get()->GetIccModule()->TranslateScanline(
-        m_pProfile->transform(), m_pCache.get(), temp_src.get(), nMaxColors);
+        m_pProfile->transform(), m_pCache.get(), temp_src.data(), nMaxColors);
   }
   uint8_t* pCachePtr = m_pCache.get();
   for (int i = 0; i < pixels; i++) {
