@@ -7,9 +7,10 @@
 #ifndef FXBARCODE_COMMON_BC_COMMONBITMATRIX_H_
 #define FXBARCODE_COMMON_BC_COMMONBITMATRIX_H_
 
-#include <memory>
+#include <vector>
 
 #include "core/fxcrt/fx_system.h"
+#include "third_party/base/span.h"
 
 class CBC_CommonBitArray;
 
@@ -31,13 +32,13 @@ class CBC_CommonBitMatrix {
   void SetCol(int32_t y, CBC_CommonBitArray* col);
   int32_t GetWidth() const { return m_width; }
   int32_t GetHeight() const { return m_height; }
-  int32_t* GetBits() const { return m_bits; }
+  pdfium::span<const int32_t> GetBits() const { return m_bits; }
 
  private:
   int32_t m_width = 0;
   int32_t m_height = 0;
   int32_t m_rowSize = 0;
-  int32_t* m_bits = nullptr;
+  std::vector<int32_t> m_bits;
 };
 
 #endif  // FXBARCODE_COMMON_BC_COMMONBITMATRIX_H_
