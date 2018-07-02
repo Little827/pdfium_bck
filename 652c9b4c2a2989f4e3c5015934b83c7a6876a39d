@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b8501c3_108d88f1",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T21:09:53Z",
+      "side": 1,
+      "message": "NOTE: sanity check because I de-virtualized it.",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "652c9b4c2a2989f4e3c5015934b83c7a6876a39d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
