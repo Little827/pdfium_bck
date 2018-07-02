@@ -22,6 +22,30 @@
       "revId": "9f8496d37eff059b51876f4c3c7e012e82541fdd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c2f4b3_e1bf372f",
+        "filename": "core/fpdfapi/page/cpdf_expintfunc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T21:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002bb2b2_ddd78f92",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "9f8496d37eff059b51876f4c3c7e012e82541fdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
