@@ -339,7 +339,7 @@ bool PDF_DataDecode(const uint8_t* src_buf,
                     uint8_t** dest_buf,
                     uint32_t* dest_size,
                     ByteString* ImageEncoding,
-                    const CPDF_Dictionary** pImageParms) {
+                    UnownedPtr<const CPDF_Dictionary>* pImageParms) {
   const CPDF_Object* pDecoder =
       pDict ? pDict->GetDirectObjectFor("Filter") : nullptr;
   if (!pDecoder || (!pDecoder->IsArray() && !pDecoder->IsName()))
