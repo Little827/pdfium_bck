@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6a8a1662_ddc62555",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T22:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dffe4a4_879f8b53",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "652c9b4c2a2989f4e3c5015934b83c7a6876a39d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58104031_acba4bbf",
         "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
         "patchSetId": 7
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "c5dec4eb_5055b747",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T22:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58104031_acba4bbf",
+      "revId": "652c9b4c2a2989f4e3c5015934b83c7a6876a39d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62f8570d_f3a76e78",
         "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
         "patchSetId": 7
@@ -80,6 +122,24 @@
       "revId": "652c9b4c2a2989f4e3c5015934b83c7a6876a39d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e659d22b_832d2aac",
+        "filename": "fxbarcode/common/BC_CommonByteMatrix.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T22:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62f8570d_f3a76e78",
+      "revId": "652c9b4c2a2989f4e3c5015934b83c7a6876a39d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
