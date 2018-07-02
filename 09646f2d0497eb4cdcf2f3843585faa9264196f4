@@ -46,6 +46,30 @@
       "revId": "09646f2d0497eb4cdcf2f3843585faa9264196f4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757ec31d_ced647e9",
+        "filename": "core/fxcodec/jbig2/JBig2_TrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-02T21:17:20Z",
+      "side": 0,
+      "message": "Ah, yeah, given where the cast is...as opposed to static_cast\u003cint\u003e(WOI) + RWDI which may have been what they intended.  No matter.",
+      "parentUuid": "c259e95a_2d525e55",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 47
+      },
+      "revId": "09646f2d0497eb4cdcf2f3843585faa9264196f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
