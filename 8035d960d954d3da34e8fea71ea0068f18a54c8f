@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "120f886d_2fc39409",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-07-03T17:19:49Z",
+      "side": 1,
+      "message": "nit: pImageParams",
+      "range": {
+        "startLine": 342,
+        "startChar": 55,
+        "endLine": 342,
+        "endChar": 66
+      },
+      "revId": "8035d960d954d3da34e8fea71ea0068f18a54c8f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
