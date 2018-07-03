@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b5cde06_296a2c82",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T07:49:53Z",
+      "side": 0,
+      "message": "Should this comment be retained?",
+      "revId": "bdf3f682d14df4d51bdded89cc897a27112e4934",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

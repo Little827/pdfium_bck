@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16d3e717_a8f43411",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T07:49:53Z",
+      "side": 1,
+      "message": "This should remain as it was, otherwise \"/Length true\" will get misinterpreted as a length of 1.",
+      "revId": "0e6e56b65f552604cd26b9050e7d24631bd31897",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6d7acd_991ff3cd",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T07:49:53Z",
+      "side": 1,
+      "message": "Move these two to where they are used.",
+      "revId": "0e6e56b65f552604cd26b9050e7d24631bd31897",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e59715d_415a95e4",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T07:49:53Z",
+      "side": 1,
+      "message": "typo: steam -\u003e stream",
+      "range": {
+        "startLine": 620,
+        "startChar": 22,
+        "endLine": 620,
+        "endChar": 33
+      },
+      "revId": "0e6e56b65f552604cd26b9050e7d24631bd31897",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c249f7f4_4d2e4954",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T07:49:53Z",
+      "side": 1,
+      "message": "After updating |len| to a valid value here, should this retain the call to: pDict-\u003eSetNewFor\u003cCPDF_Number\u003e(\"Length\", static_cast\u003cint\u003e(len)); ?",
+      "revId": "0e6e56b65f552604cd26b9050e7d24631bd31897",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8d9d64_0e777e47",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T07:49:53Z",
+      "side": 1,
+      "message": "Can you put this in the same order as in the .cpp file?",
+      "revId": "0e6e56b65f552604cd26b9050e7d24631bd31897",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
