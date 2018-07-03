@@ -595,7 +595,7 @@ void CPDF_StreamContentParser::Handle_EOFillStrokePath() {
 
 void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
   ByteString tag = GetString(1);
-  const CPDF_Object* pProperty = GetObject(0);
+  CPDF_Object* pProperty = GetObject(0);
   if (!pProperty)
     return;
 
@@ -606,8 +606,8 @@ void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
       return;
     bDirect = false;
   }
-  if (const CPDF_Dictionary* pDict = pProperty->AsDictionary())
-    m_CurContentMark.AddMark(std::move(tag), pDict, bDirect);
+  if (CPDF_Dictionary* pDict = pProperty->AsDictionary())
+    m_CurContentMark.CopyAndAddMark(std::move(tag), pDict, bDirect);
 }
 
 void CPDF_StreamContentParser::Handle_BeginImage() {
@@ -671,7 +671,7 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
 }
 
 void CPDF_StreamContentParser::Handle_BeginMarkedContent() {
-  m_CurContentMark.AddMark(GetString(0), nullptr, false);
+  m_CurContentMark.CopyAndAddMark(GetString(0), nullptr, false);
 }
 
 void CPDF_StreamContentParser::Handle_BeginText() {
@@ -865,7 +865,7 @@ void CPDF_StreamContentParser::Handle_EndImage() {}
 
 void CPDF_StreamContentParser::Handle_EndMarkedContent() {
   if (m_CurContentMark.HasRef())
-    m_CurContentMark.DeleteLastMark();
+    m_CurContentMark.CopyAndDeleteLastMark();
 }
 
 void CPDF_StreamContentParser::Handle_EndText() {

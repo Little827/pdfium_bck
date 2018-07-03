@@ -18,29 +18,51 @@ CPDF_ContentMark::CPDF_ContentMark(const CPDF_ContentMark& that)
 CPDF_ContentMark::~CPDF_ContentMark() {}
 
 size_t CPDF_ContentMark::CountItems() const {
-  return m_Ref.GetObject()->CountItems();
+  return m_Ref->CountItems();
 }
 
-const CPDF_ContentMarkItem& CPDF_ContentMark::GetItem(size_t i) const {
+CPDF_ContentMarkItem* CPDF_ContentMark::GetItem(size_t i) {
   ASSERT(i < CountItems());
-  return m_Ref.GetObject()->GetItem(i);
+  return m_Ref->GetItem(i);
 }
 
 int CPDF_ContentMark::GetMarkedContentID() const {
-  const MarkData* pData = m_Ref.GetObject();
+  const MarkData* pData = m_Ref.Get();
   return pData ? pData->GetMarkedContentID() : -1;
 }
 
-void CPDF_ContentMark::AddMark(ByteString name,
-                               const CPDF_Dictionary* pDict,
+void CPDF_ContentMark::CopyAndAddMark(ByteString name,
+                               CPDF_Dictionary* pDict,
                                bool bDirect) {
-  m_Ref.GetPrivateCopy()->AddMark(std::move(name), pDict, bDirect);
+  if (m_Ref)
+    m_Ref.Reset(new MarkData(*m_Ref));
+
+  AddMark(std::move(name), pDict, bDirect);
+}
+
+void CPDF_ContentMark::AddMark(ByteString name,
+                               CPDF_Dictionary* pDict,
+                               bool bDirect) {
+  if (!m_Ref)
+    m_Ref.Reset(new MarkData());
+
+  m_Ref->AddMark(std::move(name), pDict, bDirect);
+}
+
+void CPDF_ContentMark::CopyAndDeleteLastMark() {
+  if (m_Ref)
+    m_Ref.Reset(new MarkData(*m_Ref));
+
+  DeleteLastMark();
 }
 
 void CPDF_ContentMark::DeleteLastMark() {
-  m_Ref.GetPrivateCopy()->DeleteLastMark();
+  if (!m_Ref)
+    m_Ref.Reset(new MarkData());
+
+  m_Ref->DeleteLastMark();
   if (CountItems() == 0)
-    m_Ref.SetNull();
+    m_Ref.Reset();
 }
 
 CPDF_ContentMark::MarkData::MarkData() {}
@@ -54,9 +76,9 @@ size_t CPDF_ContentMark::MarkData::CountItems() const {
   return m_Marks.size();
 }
 
-const CPDF_ContentMarkItem& CPDF_ContentMark::MarkData::GetItem(
-    size_t index) const {
-  return m_Marks[index];
+CPDF_ContentMarkItem* CPDF_ContentMark::MarkData::GetItem(
+    size_t index) {
+  return &m_Marks[index];
 }
 
 int CPDF_ContentMark::MarkData::GetMarkedContentID() const {
@@ -69,7 +91,7 @@ int CPDF_ContentMark::MarkData::GetMarkedContentID() const {
 }
 
 void CPDF_ContentMark::MarkData::AddMark(ByteString name,
-                                         const CPDF_Dictionary* pDict,
+                                         CPDF_Dictionary* pDict,
                                          bool bDirect) {
   CPDF_ContentMarkItem item;
   item.SetName(std::move(name));
