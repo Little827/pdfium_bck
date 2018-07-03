@@ -5,6 +5,7 @@
 #include "core/fxcrt/widestring.h"
 
 #include <algorithm>
+#include <iterator>
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
@@ -1447,6 +1448,15 @@ TEST(WideString, MultiCharIterator) {
   }
   EXPECT_TRUE(any_present);
   EXPECT_EQ(static_cast<int32_t>(L'a' + L'b' + L'c'), sum);
+}
+
+TEST(WideString, StdBegin) {
+  WideString one_str(L"abc");
+  std::vector<wchar_t> vec(std::begin(one_str), std::end(one_str));
+  EXPECT_EQ(3u, vec.size());
+  EXPECT_TRUE(vec[0] == L'a');
+  EXPECT_TRUE(vec[1] == L'b');
+  EXPECT_TRUE(vec[2] == L'c');
 }
 
 TEST(WideString, AnyAllNoneOf) {
