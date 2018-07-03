@@ -21,8 +21,10 @@ size_t CPDF_ContentMark::CountItems() const {
   return m_Ref.GetObject()->CountItems();
 }
 
-const CPDF_ContentMarkItem& CPDF_ContentMark::GetItem(size_t i) const {
+CPDF_ContentMarkItem* CPDF_ContentMark::GetItem(size_t i) {
   ASSERT(i < CountItems());
+  // TODO: Is this wrong?
+  // return m_Ref.GetUnsafeObject()->GetItem(i);
   return m_Ref.GetObject()->GetItem(i);
 }
 
@@ -32,7 +34,7 @@ int CPDF_ContentMark::GetMarkedContentID() const {
 }
 
 void CPDF_ContentMark::AddMark(ByteString name,
-                               const CPDF_Dictionary* pDict,
+                               CPDF_Dictionary* pDict,
                                bool bDirect) {
   m_Ref.GetPrivateCopy()->AddMark(std::move(name), pDict, bDirect);
 }
@@ -54,9 +56,9 @@ size_t CPDF_ContentMark::MarkData::CountItems() const {
   return m_Marks.size();
 }
 
-const CPDF_ContentMarkItem& CPDF_ContentMark::MarkData::GetItem(
-    size_t index) const {
-  return m_Marks[index];
+CPDF_ContentMarkItem* CPDF_ContentMark::MarkData::GetItem(
+    size_t index) {
+  return &m_Marks[index];
 }
 
 int CPDF_ContentMark::MarkData::GetMarkedContentID() const {
@@ -69,7 +71,7 @@ int CPDF_ContentMark::MarkData::GetMarkedContentID() const {
 }
 
 void CPDF_ContentMark::MarkData::AddMark(ByteString name,
-                                         const CPDF_Dictionary* pDict,
+                                         CPDF_Dictionary* pDict,
                                          bool bDirect) {
   CPDF_ContentMarkItem item;
   item.SetName(std::move(name));

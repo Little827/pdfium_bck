@@ -7,6 +7,7 @@
 #include "public/fpdf_edit.h"
 
 #include <algorithm>
+#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -292,7 +293,29 @@ FPDFPageObj_GetMark(FPDF_PAGEOBJECT page_object, unsigned long index) {
   if (index >= mark->CountItems())
     return nullptr;
 
-  return FPDFPageObjectMarkFromCPDFContentMarkItem(&mark->GetItem(index));
+  return FPDFPageObjectMarkFromCPDFContentMarkItem(mark->GetItem(index));
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECTMARK FPDF_CALLCONV
+FPDFPageObj_AddMark(FPDF_PAGEOBJECT page_object, FPDF_BYTESTRING name) {
+  if (!page_object)
+    return nullptr;
+
+  // CPDF_PageObject* cpdf_page_object =
+  // CPDFPageObjectFromFPDFPageObject(page_object); std::cerr <<
+  // "cpdf_page_object " << (void*)cpdf_page_object << std::endl; std::cerr <<
+  // "m_ContentMark " << (void*)&cpdf_page_object->m_ContentMark << std::endl;
+  auto* mark = &CPDFPageObjectFromFPDFPageObject(page_object)->m_ContentMark;
+  std::cerr << "mark->HasRef() " << mark->HasRef() << std::endl;
+
+  mark->AddMark(name, nullptr, true);
+  std::cerr << "added, now mark->HasRef() " << mark->HasRef() << std::endl;
+  unsigned long index = mark->CountItems() - 1;
+  std::cerr << "index is  " << index << std::endl;
+  std::cerr << "mark->GetItem(index) " << (void*)mark->GetItem(index)
+            << std::endl;
+
+  return FPDFPageObjectMarkFromCPDFContentMarkItem(mark->GetItem(index));
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
@@ -412,6 +435,24 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPageObj_GetType(FPDF_PAGEOBJECT pageObject) {
 
   CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(pageObject);
   return pPageObj->GetType();
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObjMark_AddIntParam(FPDF_PAGEOBJECTMARK mark,
+                            FPDF_BYTESTRING key,
+                            int value) {
+  if (!mark)
+    return -1;
+
+  CPDF_ContentMarkItem* pMarkItem =
+      CPDFContentMarkItemFromFPDFPageObjectMark(mark);
+
+  CPDF_Dictionary* pParams = pMarkItem->GetMutableParam();
+  if (!pParams)
+    return -1;
+
+  pParams->SetNewFor<CPDF_Number>(key, value);
+  return pParams->GetCount() - 1;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GenerateContent(FPDF_PAGE page) {
