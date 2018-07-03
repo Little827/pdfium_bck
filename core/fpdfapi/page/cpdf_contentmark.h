@@ -23,9 +23,9 @@ class CPDF_ContentMark {
 
   int GetMarkedContentID() const;
   size_t CountItems() const;
-  const CPDF_ContentMarkItem& GetItem(size_t i) const;
+  CPDF_ContentMarkItem* GetItem(size_t i);
 
-  void AddMark(ByteString name, const CPDF_Dictionary* pDict, bool bDirect);
+  void AddMark(ByteString name, CPDF_Dictionary* pDict, bool bDirect);
   void DeleteLastMark();
 
   bool HasRef() const { return !!m_Ref; }
@@ -38,19 +38,17 @@ class CPDF_ContentMark {
     ~MarkData() override;
 
     size_t CountItems() const;
-    const CPDF_ContentMarkItem& GetItem(size_t index) const;
+    CPDF_ContentMarkItem* GetItem(size_t index);
 
     int GetMarkedContentID() const;
-    void AddMark(ByteString name,
-                 const CPDF_Dictionary* pDict,
-                 bool bDictNeedClone);
+    void AddMark(ByteString name, CPDF_Dictionary* pDict, bool bDictNeedClone);
     void DeleteLastMark();
 
    private:
     std::vector<CPDF_ContentMarkItem> m_Marks;
   };
 
-  SharedCopyOnWrite<MarkData> m_Ref;
+  RetainPtr<MarkData> m_Ref;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_CONTENTMARK_H_
