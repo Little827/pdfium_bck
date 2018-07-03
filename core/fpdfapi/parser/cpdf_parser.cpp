@@ -977,13 +977,22 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   if (!objnum)
     return false;
 
-  CPDF_Object* pUnownedObject = pObject.get();
   const CPDF_Dictionary* pRootDict = GetRoot();
   if (pRootDict && pRootDict->GetObjNum() == objnum)
     return false;
-  if (!m_pObjectsHolder->ReplaceIndirectObjectIfHigherGeneration(
-          objnum, std::move(pObject))) {
-    return false;
+
+  CPDF_Object* pUnownedObject;
+  CPDF_Object* pExistingObj = m_pObjectsHolder->GetIndirectObject(objnum);
+  bool bExists =
+      pExistingObj && pExistingObj->GetGenNum() == pObject->GetGenNum();
+  if (bExists) {
+    pUnownedObject = pExistingObj;
+  } else {
+    pUnownedObject = pObject.get();
+    if (!m_pObjectsHolder->ReplaceIndirectObjectIfHigherGeneration(
+            objnum, std::move(pObject))) {
+      return false;
+    }
   }
 
   CPDF_Stream* pStream = pUnownedObject->AsStream();
