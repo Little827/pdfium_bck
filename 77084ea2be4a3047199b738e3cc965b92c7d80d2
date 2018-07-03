@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b846c85f_9a77187b",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T17:58:48Z",
+      "side": 1,
+      "message": "ASSERT_EQ",
+      "revId": "77084ea2be4a3047199b738e3cc965b92c7d80d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb15cb0_23692ea3",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T17:58:48Z",
+      "side": 1,
+      "message": "EXPECT_EQ is too picky about data types?",
+      "revId": "77084ea2be4a3047199b738e3cc965b92c7d80d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8456261c_00bfb174",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-03T17:58:48Z",
+      "side": 1,
+      "message": "gtest should be ok with EXPECT_EQ here.",
+      "revId": "77084ea2be4a3047199b738e3cc965b92c7d80d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
