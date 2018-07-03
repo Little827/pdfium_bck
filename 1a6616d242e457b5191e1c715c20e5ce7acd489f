@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75798f17_b186a9a2",
+        "filename": "xfa/fwl/cfwl_combolist.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-07-03T17:43:43Z",
+      "side": 1,
+      "message": "Didn\u0027t you just change this?",
+      "range": {
+        "startLine": 125,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "1a6616d242e457b5191e1c715c20e5ce7acd489f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
