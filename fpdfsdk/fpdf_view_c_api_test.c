@@ -136,12 +136,14 @@ int CheckPDFiumCApi() {
     CHK(FPDFImageObj_LoadJpegFileInline);
     CHK(FPDFImageObj_SetBitmap);
     CHK(FPDFImageObj_SetMatrix);
+    CHK(FPDFPageObjMark_AddIntParam);
     CHK(FPDFPageObjMark_CountParams);
     CHK(FPDFPageObjMark_GetName);
     CHK(FPDFPageObjMark_GetParamIntValue);
     CHK(FPDFPageObjMark_GetParamKey);
     CHK(FPDFPageObjMark_GetParamStringValue);
     CHK(FPDFPageObjMark_GetParamValueType);
+    CHK(FPDFPageObj_AddMark);
     CHK(FPDFPageObj_CountMarks);
     CHK(FPDFPageObj_CreateNewPath);
     CHK(FPDFPageObj_CreateNewRect);
