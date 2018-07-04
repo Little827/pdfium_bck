@@ -142,6 +142,8 @@ int CheckPDFiumCApi() {
     CHK(FPDFPageObjMark_GetParamKey);
     CHK(FPDFPageObjMark_GetParamStringValue);
     CHK(FPDFPageObjMark_GetParamValueType);
+    CHK(FPDFPageObjMark_SetIntParam);
+    CHK(FPDFPageObj_AddMark);
     CHK(FPDFPageObj_CountMarks);
     CHK(FPDFPageObj_CreateNewPath);
     CHK(FPDFPageObj_CreateNewRect);
