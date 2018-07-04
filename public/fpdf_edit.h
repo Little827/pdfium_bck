@@ -367,6 +367,10 @@ FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
 FPDFPageObjMark_GetParamValueType(FPDF_PAGEOBJECTMARK mark,
                                   unsigned long index);
 
+FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
+FPDFPageObjMark_GetParamValueTypeByKey(FPDF_PAGEOBJECTMARK mark,
+                                       FPDF_BYTESTRING key);
+
 // Experimental API.
 // Get the value of an int property in a content mark.
 // FPDFPageObjMark_GetParamValueType() should have returned FPDF_OBJECT_NUMBER
@@ -378,6 +382,10 @@ FPDFPageObjMark_GetParamValueType(FPDF_PAGEOBJECTMARK mark,
 // Returns the int value, 0 in case of failure.
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFPageObjMark_GetParamIntValue(FPDF_PAGEOBJECTMARK mark, unsigned long index);
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPageObjMark_GetParamIntValueByKey(FPDF_PAGEOBJECTMARK mark,
+                                      FPDF_BYTESTRING key);
 
 // Experimental API.
 // Get the value of a string property in a content mark.
