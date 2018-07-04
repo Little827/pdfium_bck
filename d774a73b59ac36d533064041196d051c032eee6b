@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fefcb50_cfe88c6d",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-04T20:04:50Z",
+      "side": 0,
+      "message": "This responsibility has been moved to the client.",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "d774a73b59ac36d533064041196d051c032eee6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de2f9104_17dda8f7",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-04T20:04:50Z",
+      "side": 0,
+      "message": "This responsibility has been moved to the client.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "d774a73b59ac36d533064041196d051c032eee6b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
