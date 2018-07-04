@@ -27,6 +27,7 @@
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/cfx_binarybuf.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/fx_file_range.h"
 #include "third_party/base/numerics/safe_math.h"
 #include "third_party/base/ptr_util.h"
 
@@ -37,32 +38,31 @@ enum class ReadStatus { Normal, Backslash, Octal, FinishOctal, CarriageReturn };
 class ReadableSubStream : public IFX_SeekableReadStream {
  public:
   ReadableSubStream(const RetainPtr<IFX_SeekableReadStream>& pFileRead,
-                    FX_FILESIZE part_offset,
-                    FX_FILESIZE part_size)
-      : m_pFileRead(pFileRead),
-        m_PartOffset(part_offset),
-        m_PartSize(part_size) {}
+                    const FX_FileRange& range)
+      : m_pFileRead(pFileRead), m_Range(range) {
+    ASSERT(m_Range.IsValid());
+  }
 
   ~ReadableSubStream() override = default;
 
   // IFX_SeekableReadStream overrides:
   bool ReadBlock(void* buffer, FX_FILESIZE offset, size_t size) override {
-    FX_SAFE_FILESIZE safe_end = offset;
-    safe_end += size;
+    FX_FileRange target_range(offset, size);
+    target_range.Offset(m_Range.StartOrDie());
     // Check that requested range is valid, to prevent calling of ReadBlock
     // of original m_pFileRead with incorrect params.
-    if (!safe_end.IsValid() || safe_end.ValueOrDie() > m_PartSize)
+    if (!m_Range.Contains(target_range))
       return false;
 
-    return m_pFileRead->ReadBlock(buffer, m_PartOffset + offset, size);
+    return m_pFileRead->ReadBlock(buffer, target_range.StartOrDie(),
+                                  target_range.SizeOrDie());
   }
 
-  FX_FILESIZE GetSize() override { return m_PartSize; }
+  FX_FILESIZE GetSize() override { return m_Range.SizeOrDie(); }
 
  private:
   RetainPtr<IFX_SeekableReadStream> m_pFileRead;
-  FX_FILESIZE m_PartOffset;
-  FX_FILESIZE m_PartSize;
+  const FX_FileRange m_Range;
 };
 
 }  // namespace
@@ -625,7 +625,7 @@ std::unique_ptr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
     }
 
     data = pdfium::MakeRetain<ReadableSubStream>(
-        GetValidator(), m_HeaderOffset + GetPos(), len);
+        GetValidator(), FX_FileRange(m_HeaderOffset + GetPos(), len));
     SetPos(GetPos() + len);
   }
 
@@ -672,7 +672,7 @@ std::unique_ptr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
       }
 
       data = pdfium::MakeRetain<ReadableSubStream>(
-          GetValidator(), m_HeaderOffset + GetPos(), len);
+          GetValidator(), FX_FileRange(m_HeaderOffset + GetPos(), len));
       SetPos(GetPos() + len);
     }
   }
