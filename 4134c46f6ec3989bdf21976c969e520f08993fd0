@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f57c59f_6efc3ca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-04T17:00:19Z",
+      "side": 1,
+      "message": "\"For offsets, equal to the hint stream offset, we also should add hint stream length to determine the actual offset, because the hint stream may be stored on the same place, where object was.\"\n\nExample:\n\nBefore calculating Hint tables in source file we have obj \"A\" and \"B\"\noffset for \"A\" \u003d 100\noffset for \"B\" \u003d 200\n\nWe create hint table with offsets array {100, 200}.\nAnd write it(insert) on place of object \"B\"\nIn target file we have:\n\noffset for \"A\" \u003d 100\noffset for inserted Hint Table \u003d 200 {same place with obj \"B\" before}\noffset for \"B\" \u003d 200 + \"Hint Table length\"\n\nAs you can see we should add hint length also in case, when offset of object \"B\" (parsed from hint table array {100, 200} ) is equal to offset of hint table (\"200\").",
+      "parentUuid": "d6737f9c_2146a59d",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fbfe408_3d7819c8",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-06-29T21:08:55Z",
       "side": 1,
       "message": "Can you explain why this changed? It does not match the comment.",
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d885ae70_3004a740",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-04T17:00:19Z",
+      "side": 1,
+      "message": "Description in PDF Spec is not exactly correct. See my example. Should be \"greater or equal\".",
+      "parentUuid": "3fbfe408_3d7819c8",
       "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
