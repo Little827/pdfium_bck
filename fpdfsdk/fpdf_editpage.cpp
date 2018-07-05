@@ -289,7 +289,19 @@ FPDFPageObj_GetMark(FPDF_PAGEOBJECT page_object, unsigned long index) {
   if (index >= mark->CountItems())
     return nullptr;
 
-  return FPDFPageObjectMarkFromCPDFContentMarkItem(&mark->GetItem(index));
+  return FPDFPageObjectMarkFromCPDFContentMarkItem(mark->GetItem(index));
+}
+
+FPDF_EXPORT FPDF_PAGEOBJECTMARK FPDF_CALLCONV
+FPDFPageObj_AddMark(FPDF_PAGEOBJECT page_object, FPDF_BYTESTRING name) {
+  if (!page_object)
+    return nullptr;
+
+  auto* mark = &CPDFPageObjectFromFPDFPageObject(page_object)->m_ContentMark;
+  mark->AddMark(name, nullptr, true);
+  unsigned long index = mark->CountItems() - 1;
+
+  return FPDFPageObjectMarkFromCPDFContentMarkItem(mark->GetItem(index));
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
@@ -409,6 +421,33 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPageObj_GetType(FPDF_PAGEOBJECT pageObject) {
 
   CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(pageObject);
   return pPageObj->GetType();
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObjMark_SetIntParam(FPDF_DOCUMENT document,
+                            FPDF_PAGEOBJECTMARK mark,
+                            FPDF_BYTESTRING key,
+                            int value) {
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return false;
+
+  if (!mark)
+    return false;
+
+  CPDF_ContentMarkItem* pMarkItem =
+      CPDFContentMarkItemFromFPDFPageObjectMark(mark);
+
+  CPDF_Dictionary* pParams = pMarkItem->GetMutableParam();
+  if (!pParams) {
+    auto new_dict =
+        pdfium::MakeUnique<CPDF_Dictionary>(pDoc->GetByteStringPool());
+    pParams = new_dict.get();
+    pMarkItem->SetDirectDict(std::move(new_dict));
+  }
+
+  pParams->SetNewFor<CPDF_Number>(key, value);
+  return true;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_GenerateContent(FPDF_PAGE page) {
