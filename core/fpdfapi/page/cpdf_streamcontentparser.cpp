@@ -596,7 +596,7 @@ void CPDF_StreamContentParser::Handle_EOFillStrokePath() {
 
 void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
   ByteString tag = GetString(1);
-  const CPDF_Object* pProperty = GetObject(0);
+  CPDF_Object* pProperty = GetObject(0);
   if (!pProperty)
     return;
 
@@ -607,7 +607,7 @@ void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
       return;
     bDirect = false;
   }
-  if (const CPDF_Dictionary* pDict = pProperty->AsDictionary()) {
+  if (CPDF_Dictionary* pDict = pProperty->AsDictionary()) {
     m_pCurContentMark = m_pCurContentMark->Clone();
     m_pCurContentMark->AddMark(std::move(tag), pDict, bDirect);
   }

@@ -573,6 +573,12 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
                   FPDFPageObjMark_GetParamValueType(mark, 0));
         int square_root = FPDFPageObjMark_GetParamIntValue(mark, 0);
         EXPECT_EQ(i + 1, square_root * square_root);
+
+        EXPECT_EQ(FPDF_OBJECT_NUMBER,
+                  FPDFPageObjMark_GetParamValueTypeByKey(mark, "Factor"));
+        EXPECT_TRUE(FPDFPageObjMark_GetParamIntValueByKey(mark, "Factor",
+                                                          &square_root));
+        EXPECT_EQ(i + 1, square_root * square_root);
       } else if (name == L"GreaterThanTen") {
         greater_than_ten_count++;
         EXPECT_EQ(0, FPDFPageObjMark_CountParams(mark));
@@ -590,6 +596,15 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
             GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
         EXPECT_EQ(L"Last", value);
         EXPECT_EQ(18, i);
+
+        EXPECT_EQ(FPDF_OBJECT_STRING,
+                  FPDFPageObjMark_GetParamValueTypeByKey(mark, "Position"));
+        unsigned long length;
+        EXPECT_TRUE(FPDFPageObjMark_GetParamStringValueByKey(
+            mark, "Position", buffer, 256, &length));
+        ASSERT_GT(length, 0u);
+        value = GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+        EXPECT_EQ(L"Last", value);
       } else {
         FAIL();
       }
@@ -2004,6 +2019,93 @@ TEST_F(FPDFEditEmbeddertest, SaveAndRender) {
   }
 
   VerifySavedDocument(612, 792, md5);
+}
+
+TEST_F(FPDFEditEmbeddertest, AddMarkedText) {
+  // Start with a blank page
+  FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
+
+  const CPDF_Font* stock_font = CPDF_Font::GetStockFont(cpdf_doc(), "Arial");
+  const uint8_t* data = stock_font->GetFont()->GetFontData();
+  const uint32_t size = stock_font->GetFont()->GetSize();
+  ScopedFPDFFont font(
+      FPDFText_LoadFont(document(), data, size, FPDF_FONT_TRUETYPE, 0));
+  ASSERT_TRUE(font.get());
+
+  // Add some text to the page
+  FPDF_PAGEOBJECT text_object =
+      FPDFPageObj_CreateTextObj(document(), font.get(), 12.0f);
+
+  EXPECT_TRUE(text_object);
+  std::unique_ptr<unsigned short, pdfium::FreeDeleter> text1 =
+      GetFPDFWideString(L"I am testing my loaded font, WEE.");
+  EXPECT_TRUE(FPDFText_SetText(text_object, text1.get()));
+  FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 400, 400);
+  FPDFPage_InsertObject(page, text_object);
+
+  EXPECT_EQ(0, FPDFPageObj_CountMarks(text_object));
+  FPDF_PAGEOBJECTMARK mark = FPDFPageObj_AddMark(text_object, "TestMarkName");
+  EXPECT_TRUE(mark);
+  EXPECT_EQ(1, FPDFPageObj_CountMarks(text_object));
+  EXPECT_EQ(mark, FPDFPageObj_GetMark(text_object, 0));
+  char buffer[256];
+  EXPECT_GT(FPDFPageObjMark_GetName(mark, buffer, 256), 0u);
+  std::wstring name =
+      GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+  EXPECT_EQ(L"TestMarkName", name);
+
+  // Add an int parameter.
+  EXPECT_EQ(0, FPDFPageObjMark_CountParams(mark));
+  EXPECT_TRUE(
+      FPDFPageObjMark_SetIntParam(document(), mark, "TestMarkParamKey", 42));
+  EXPECT_EQ(1, FPDFPageObjMark_CountParams(mark));
+  EXPECT_EQ(FPDF_OBJECT_NUMBER, FPDFPageObjMark_GetParamValueType(mark, 0));
+  EXPECT_GT(FPDFPageObjMark_GetParamKey(mark, 0, buffer, 256), 0u);
+  std::wstring param_key =
+      GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+  EXPECT_EQ(L"TestMarkParamKey", param_key);
+  EXPECT_EQ(42, FPDFPageObjMark_GetParamIntValue(mark, 0));
+
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  const char md5[] = "17d2b6cd574cf66170b09c8927529a94";
+#else
+  const char md5[] = "70592859010ffbf532a2237b8118bcc4";
+#endif
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, md5);
+    // WriteBitmapToPng(page_bitmap.get(), "../../before.png");
+  }
+
+  // Now save the result.
+  EXPECT_EQ(1, FPDFPage_CountObjects(page));
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  FPDF_ClosePage(page);
+
+  // // Re-open the file and check the changes were kept in the saved .pdf.
+  // OpenSavedDocument();
+  // FPDF_PAGE saved_page = LoadSavedPage(0);
+  // EXPECT_EQ(1, FPDFPage_CountObjects(saved_page));
+
+  // text_object = FPDFPage_GetObject(saved_page, 0);
+  // EXPECT_TRUE(text_object);
+  // EXPECT_EQ(1, FPDFPageObj_CountMarks(text_object));
+  // mark = FPDFPageObj_GetMark(text_object, 0);
+  // EXPECT_TRUE(mark);
+  // EXPECT_GT(FPDFPageObjMark_GetName(mark, buffer, 256), 0u);
+  // name = GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+  // EXPECT_EQ(L"TestMarkName", name);
+
+  // {
+  //   ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr,
+  //   0); CompareBitmap(page_bitmap.get(), 612, 792, md5);
+  //   WriteBitmapToPng(page_bitmap.get(), "../../after.png");
+  // }
+
+  // CloseSavedPage(saved_page);
+  // CloseSavedDocument();
 }
 
 TEST_F(FPDFEditEmbeddertest, ExtractImageBitmap) {
