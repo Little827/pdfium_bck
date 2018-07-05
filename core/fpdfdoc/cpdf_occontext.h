@@ -25,7 +25,7 @@ class CPDF_OCContext : public Retainable {
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
   bool CheckOCGVisible(const CPDF_Dictionary* pOCGDict);
-  bool CheckObjectVisible(const CPDF_PageObject* pObj);
+  bool CheckObjectVisible(CPDF_PageObject* pObj);
 
  private:
   CPDF_OCContext(CPDF_Document* pDoc, UsageType eUsageType);
