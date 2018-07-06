@@ -16,6 +16,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
 
+class CPDF_ContentMark;
 class CPDF_Document;
 class CPDF_ImageObject;
 class CPDF_Object;
@@ -35,7 +36,9 @@ class CPDF_PageContentGenerator {
  private:
   friend class CPDF_PageContentGeneratorTest;
 
-  void ProcessPageObject(std::ostringstream* buf, CPDF_PageObject* pPageObj);
+  void ProcessPageObject(std::ostringstream* buf,
+                         CPDF_PageObject* pPageObj,
+                         CPDF_ContentMark** pContentMark);
   void ProcessPath(std::ostringstream* buf, CPDF_PathObject* pPathObj);
   void ProcessImage(std::ostringstream* buf, CPDF_ImageObject* pImageObj);
   void ProcessGraphics(std::ostringstream* buf, CPDF_PageObject* pPageObj);
@@ -44,6 +47,7 @@ class CPDF_PageContentGenerator {
   ByteString GetOrCreateDefaultGraphics() const;
   ByteString RealizeResource(const CPDF_Object* pResource,
                              const ByteString& bsType) const;
+  void FinishMarks(std::ostringstream* buf, CPDF_ContentMark** pContentMark);
 
   // Returns a map from content stream index to new stream data. Unmodified
   // streams are not touched.
