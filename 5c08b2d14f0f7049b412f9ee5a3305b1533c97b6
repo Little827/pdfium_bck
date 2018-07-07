@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ea3b2d8_9556e694",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-07T12:41:29Z",
+      "side": 1,
+      "message": "Something wrong with usage of PDFium API within fuzzers implementation. This should not happened. \nJFYI: This is not happened in PDFium tests and chromium.",
+      "revId": "5c08b2d14f0f7049b412f9ee5a3305b1533c97b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
