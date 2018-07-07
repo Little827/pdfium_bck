@@ -124,23 +124,6 @@ class CPDF_Parser {
 
   class TrailerData;
 
-  enum class ParserState {
-    kDefault,
-    kComment,
-    kWhitespace,
-    kString,
-    kHexString,
-    kEscapedString,
-    kXref,
-    kObjNum,
-    kPostObjNum,
-    kGenNum,
-    kPostGenNum,
-    kTrailer,
-    kBeginObj,
-    kEndObj
-  };
-
   struct CrossRefObjData {
     uint32_t obj_num = 0;
     ObjectInfo info;
