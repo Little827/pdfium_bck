@@ -734,6 +734,11 @@ bool CPDF_Parser::RebuildCrossRef() {
       if (pStream && pStream->GetDict()->GetStringFor("Type") == "XRef") {
         cross_ref_table.Update(pdfium::MakeUnique<CPDF_CrossRefTable>(
             ToDictionary(pStream->GetDict()->Clone())));
+      } else if (const auto object_stream =
+                     CPDF_ObjectStream::Create(pStream.get())) {
+        for (const auto& it : object_stream->objects_offsets()) {
+          cross_ref_table.AddCompressed(it.first, obj_num);
+        }
       }
     }
     numbers.clear();
