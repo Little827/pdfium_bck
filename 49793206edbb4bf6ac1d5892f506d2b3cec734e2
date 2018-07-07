@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9561fa7c_4ccb43ea",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-07T17:37:12Z",
+      "side": 1,
+      "message": "Yes, in RebildCrossRef.",
+      "parentUuid": "dce408cd_ebbf35e1",
+      "revId": "49793206edbb4bf6ac1d5892f506d2b3cec734e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5539c47_f673a42c",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "49793206edbb4bf6ac1d5892f506d2b3cec734e2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd032626_58c2180b",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-07T17:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5539c47_f673a42c",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "49793206edbb4bf6ac1d5892f506d2b3cec734e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -101,6 +143,30 @@
       "side": 1,
       "message": "It may be helpful to add some unit tests for MergeUp() to show how it works.",
       "parentUuid": "b68bbd91_513e4fa0",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "49793206edbb4bf6ac1d5892f506d2b3cec734e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0bb747_3fffa176",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-07T17:37:12Z",
+      "side": 1,
+      "message": "Its will be added later, in future CLs. This is just middle of refactoring.",
+      "parentUuid": "a8e4b390_c8427d69",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -274,6 +340,30 @@
       "revId": "49793206edbb4bf6ac1d5892f506d2b3cec734e2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edbd437_57b2ce23",
+        "filename": "core/fpdfapi/parser/cpdf_parser_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-07T17:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99990b85_5f1209ca",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "49793206edbb4bf6ac1d5892f506d2b3cec734e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
