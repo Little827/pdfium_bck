@@ -28,7 +28,7 @@ class InvalidStream : public IFX_SeekableReadStream {
 
 }  // namespace
 
-TEST(CPDF_StreamAccTest, ReadRawDataFailed) {
+TEST(CPDF_StreamAccTest, DISABLED_ReadRawDataFailed) {
   CPDF_Stream stream;
   stream.InitStreamFromFile(pdfium::MakeRetain<InvalidStream>(), nullptr);
   auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(&stream);

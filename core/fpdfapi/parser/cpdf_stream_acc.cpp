@@ -39,6 +39,7 @@ void CPDF_StreamAcc::LoadAllData(bool bRawAccess,
   } else {
     pSrcData = m_pSrcData = FX_Alloc(uint8_t, dwSrcSize);
     if (!m_pStream->ReadRawData(0, pSrcData, dwSrcSize)) {
+      NOTREACHED();
       FX_Free(pSrcData);
       pSrcData = m_pSrcData = nullptr;
       return;
