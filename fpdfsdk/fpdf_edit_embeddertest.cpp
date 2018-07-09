@@ -1519,6 +1519,19 @@ TEST_F(FPDFEditEmbeddertest, TestGetTextRenderMode) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbeddertest, TestFormGetObjects) {
+  EXPECT_TRUE(OpenDocument("form_object.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(1, FPDFPage_CountObjects(page));
+
+  FPDF_PAGEOBJECT form = FPDFPage_GetObject(page, 0);
+  ASSERT_EQ(-1, FPDFFormObj_CountObjects(nullptr));
+  ASSERT_EQ(2, FPDFFormObj_CountObjects(form));
+
+  UnloadPage(page);
+}
+
 // Tests adding text from standard font using FPDFText_LoadStandardFont.
 TEST_F(FPDFEditEmbeddertest, AddStandardFontText2) {
   // Start with a blank page
