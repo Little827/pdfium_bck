@@ -103,7 +103,7 @@ const CPDF_Dictionary* GetMarkParamDict(FPDF_PAGEOBJECTMARK mark) {
   if (!mark)
     return nullptr;
 
-  const CPDF_ContentMarkItem* pMarkItem =
+  CPDF_ContentMarkItem* pMarkItem =
       CPDFContentMarkItemFromFPDFPageObjectMark(mark);
 
   return pMarkItem->GetParam();
@@ -353,10 +353,10 @@ FPDFPageObjMark_CountParams(FPDF_PAGEOBJECTMARK mark) {
   if (!mark)
     return -1;
 
-  const CPDF_ContentMarkItem* pMarkItem =
+  CPDF_ContentMarkItem* pMarkItem =
       CPDFContentMarkItemFromFPDFPageObjectMark(mark);
 
-  const CPDF_Dictionary* pParams = pMarkItem->GetParam();
+  CPDF_Dictionary* pParams = pMarkItem->GetParam();
   if (!pParams)
     return 0;
 

@@ -26,9 +26,8 @@ class CPDF_ContentMarkItem : public Retainable {
 
   ByteString GetName() const { return m_MarkName; }
   ParamType GetParamType() const { return m_ParamType; }
-  const CPDF_Dictionary* GetParam() const;
   CPDF_Dictionary* GetParam();
-  bool HasMCID() const;
+  bool HasMCID();
 
   void SetName(const ByteString& name) { m_MarkName = name; }
   void SetDirectDict(std::unique_ptr<CPDF_Dictionary> pDict);

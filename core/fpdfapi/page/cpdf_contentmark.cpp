@@ -34,11 +34,6 @@ CPDF_ContentMarkItem* CPDF_ContentMark::GetItem(size_t i) {
   return m_pMarkData->GetItem(i);
 }
 
-const CPDF_ContentMarkItem* CPDF_ContentMark::GetItem(size_t i) const {
-  ASSERT(i < CountItems());
-  return m_pMarkData->GetItem(i);
-}
-
 int CPDF_ContentMark::GetMarkedContentID() const {
   if (!m_pMarkData)
     return -1;
@@ -76,11 +71,6 @@ size_t CPDF_ContentMark::MarkData::CountItems() const {
 }
 
 CPDF_ContentMarkItem* CPDF_ContentMark::MarkData::GetItem(size_t index) {
-  return m_Marks[index].Get();
-}
-
-const CPDF_ContentMarkItem* CPDF_ContentMark::MarkData::GetItem(
-    size_t index) const {
   return m_Marks[index].Get();
 }
 

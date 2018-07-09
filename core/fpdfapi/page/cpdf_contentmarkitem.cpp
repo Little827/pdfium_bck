@@ -14,18 +14,6 @@ CPDF_ContentMarkItem::CPDF_ContentMarkItem() {}
 
 CPDF_ContentMarkItem::~CPDF_ContentMarkItem() {}
 
-const CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() const {
-  switch (m_ParamType) {
-    case PropertiesDict:
-      return m_pPropertiesDict.Get();
-    case DirectDict:
-      return m_pDirectDict.get();
-    case None:
-    default:
-      return nullptr;
-  }
-}
-
 CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() {
   switch (m_ParamType) {
     case PropertiesDict:
@@ -38,8 +26,8 @@ CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() {
   }
 }
 
-bool CPDF_ContentMarkItem::HasMCID() const {
-  const CPDF_Dictionary* pDict = GetParam();
+bool CPDF_ContentMarkItem::HasMCID() {
+  CPDF_Dictionary* pDict = GetParam();
   return pDict && pDict->KeyExist("MCID");
 }
 
