@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 
+#include <iostream>
 #include <map>
 #include <memory>
 #include <set>
@@ -13,7 +14,9 @@
 #include <utility>
 
 #include "core/fpdfapi/edit/cpdf_pagecontentmanager.h"
+#include "core/fpdfapi/edit/cpdf_stringarchivestream.h"
 #include "core/fpdfapi/font/cpdf_font.h"
+#include "core/fpdfapi/page/cpdf_contentmark.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/page/cpdf_imageobject.h"
@@ -94,6 +97,9 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
   // Start regenerating dirty streams.
   std::map<int32_t, std::unique_ptr<std::ostringstream>> streams;
   std::set<int32_t> empty_streams;
+  std::unique_ptr<const CPDF_ContentMark> empty_content_mark =
+      pdfium::MakeUnique<CPDF_ContentMark>();
+  std::map<int32_t, const CPDF_ContentMark*> current_content_mark;
 
   for (int32_t dirty_stream : all_dirty_streams) {
     std::unique_ptr<std::ostringstream> buf =
@@ -108,6 +114,7 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
 
     streams[dirty_stream] = std::move(buf);
     empty_streams.insert(dirty_stream);
+    current_content_mark[dirty_stream] = empty_content_mark.get();
   }
 
   // Process the page objects, write into each dirty stream.
@@ -119,7 +126,7 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
 
     std::ostringstream* buf = it->second.get();
     empty_streams.erase(stream_index);
-    ProcessPageObject(buf, pPageObj.Get());
+    ProcessPageObject(buf, pPageObj.Get(), &current_content_mark[stream_index]);
   }
 
   // Finish dirty streams.
@@ -129,6 +136,8 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
       // Clear to show that this stream needs to be deleted.
       buf->str("");
     } else {
+      FinishMarks(buf, &current_content_mark[dirty_stream]);
+
       // Return graphics to original state
       *buf << "Q\n";
     }
@@ -201,13 +210,17 @@ ByteString CPDF_PageContentGenerator::RealizeResource(
 
 bool CPDF_PageContentGenerator::ProcessPageObjects(std::ostringstream* buf) {
   bool bDirty = false;
+  std::unique_ptr<const CPDF_ContentMark> empty_content_mark =
+      pdfium::MakeUnique<CPDF_ContentMark>();
+  const CPDF_ContentMark* content_mark = empty_content_mark.get();
   for (auto& pPageObj : m_pageObjects) {
     if (m_pObjHolder->IsPage() && !pPageObj->IsDirty())
       continue;
 
     bDirty = true;
-    ProcessPageObject(buf, pPageObj.Get());
+    ProcessPageObject(buf, pPageObj.Get(), &content_mark);
   }
+  FinishMarks(buf, &content_mark);
   return bDirty;
 }
 
@@ -219,8 +232,71 @@ void CPDF_PageContentGenerator::UpdateStreamlessPageObjects(
   }
 }
 
-void CPDF_PageContentGenerator::ProcessPageObject(std::ostringstream* buf,
-                                                  CPDF_PageObject* pPageObj) {
+void CPDF_PageContentGenerator::ProcessPageObject(
+    std::ostringstream* buf,
+    CPDF_PageObject* pPageObj,
+    const CPDF_ContentMark** pContentMark) {
+  const CPDF_ContentMark* prev = *pContentMark;
+  const CPDF_ContentMark* next = &pPageObj->m_ContentMark;
+
+  int it_prev = prev->CountItems() - 1;
+  int it_next = -1;
+  for (; it_prev >= 0; --it_prev) {
+    bool found = false;
+    for (it_next = next->CountItems() - 1; it_next >= 0; --it_next) {
+      if (prev->GetItem(it_prev) == next->GetItem(it_next)) {
+        found = true;
+        break;
+      }
+    }
+    if (found)
+      break;
+
+    std::cerr << "(2) closing mark " << prev->GetItem(it_prev)->GetName()
+              << std::endl;
+    *buf << "EMC\n";
+  }
+
+  for (it_next = it_next + 1; it_next < static_cast<int>(next->CountItems());
+       ++it_next) {
+    const CPDF_ContentMarkItem* item = next->GetItem(it_next);
+
+    std::cerr << "(1) opening mark " << item->GetName() << std::endl;
+
+    // Write mark tag.
+    *buf << "/" << item->GetName() << " ";
+
+    // If there are no parameters, write just a BMC (begin marked content)
+    // operator.
+    if (item->GetParamType() == CPDF_ContentMarkItem::None) {
+      *buf << "BMC\n";
+      continue;
+    }
+
+    // Write properties.
+    CPDF_StringArchiveStream archive_stream(buf);
+    if (item->GetParamType() == CPDF_ContentMarkItem::DirectDict) {
+      item->GetParam()->WriteTo(&archive_stream);
+    } else {
+      // TODO: Implement
+    }
+
+    // Write BDC (begin dictionary content) operator.
+    *buf << "BDC\n";
+  }
+
+  *pContentMark = next;
+
+  // iterating back on prev from rbegin, i = each mark item, until rend:
+  //   if i is in next:
+  //     break
+  //   write "EMC"
+  //
+  // iterating forward on next from i + 1, j = each mark item, until end:
+  //   write "BMC"
+  //
+  // *pContentMark = next
+
   if (CPDF_ImageObject* pImageObject = pPageObj->AsImage())
     ProcessImage(buf, pImageObject);
   else if (CPDF_PathObject* pPathObj = pPageObj->AsPath())
@@ -467,4 +543,14 @@ void CPDF_PageContentGenerator::ProcessText(std::ostringstream* buf,
   }
   *buf << PDF_EncodeString(text, true) << " Tj ET";
   *buf << " Q\n";
+}
+
+void CPDF_PageContentGenerator::FinishMarks(
+    std::ostringstream* buf,
+    const CPDF_ContentMark** pContentMark) {
+  for (int i = (*pContentMark)->CountItems() - 1; i >= 0; --i) {
+    std::cerr << "(3) closing mark " << (*pContentMark)->GetItem(i)->GetName()
+              << std::endl;
+    *buf << "EMC\n";
+  }
 }
