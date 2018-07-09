@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd79bd9b_9c6a6992",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 6781
+      },
+      "writtenOn": "2018-07-09T09:13:58Z",
+      "side": 1,
+      "message": "Is this still needed? Did the upstream fix not cover the case you were running into?",
+      "revId": "f07b9ce8cde7c469bca1376a0831832c95daf803",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
