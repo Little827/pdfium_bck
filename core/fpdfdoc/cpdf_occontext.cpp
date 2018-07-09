@@ -180,12 +180,12 @@ bool CPDF_OCContext::GetOCGVisible(const CPDF_Dictionary* pOCGDict) {
   return bState;
 }
 
-bool CPDF_OCContext::CheckObjectVisible(const CPDF_PageObject* pObj) {
+bool CPDF_OCContext::CheckObjectVisible(CPDF_PageObject* pObj) {
   for (size_t i = 0; i < pObj->m_ContentMark.CountItems(); ++i) {
-    const CPDF_ContentMarkItem& item = pObj->m_ContentMark.GetItem(i);
-    if (item.GetName() == "OC" &&
-        item.GetParamType() == CPDF_ContentMarkItem::PropertiesDict &&
-        !CheckOCGVisible(item.GetParam())) {
+    CPDF_ContentMarkItem* pItem = pObj->m_ContentMark.GetItem(i);
+    if (pItem->GetName() == "OC" &&
+        pItem->GetParamType() == CPDF_ContentMarkItem::PropertiesDict &&
+        !CheckOCGVisible(pItem->GetParam())) {
       return false;
     }
   }
