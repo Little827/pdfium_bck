@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1484d124_40b7a422",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-09T18:38:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s best to duplicate these methods or to have only a non-const version. I think it\u0027s better to have them duplicated and preserve the constness in the clients that can use the const versions.\n\nThe alternative is shown in https://pdfium-review.googlesource.com/c/pdfium/+/37350\n\nWDYT?",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3c8402_0c056e7b",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-09T18:38:41Z",
+      "side": 1,
+      "message": "The changes are not yet savable, I\u0027m working on it.",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
