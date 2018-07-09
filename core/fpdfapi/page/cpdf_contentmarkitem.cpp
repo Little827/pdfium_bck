@@ -14,6 +14,18 @@ CPDF_ContentMarkItem::CPDF_ContentMarkItem() {}
 
 CPDF_ContentMarkItem::~CPDF_ContentMarkItem() {}
 
+CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() {
+  switch (m_ParamType) {
+    case PropertiesDict:
+      return m_pPropertiesDict.Get();
+    case DirectDict:
+      return m_pDirectDict.get();
+    case None:
+    default:
+      return nullptr;
+  }
+}
+
 const CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() const {
   switch (m_ParamType) {
     case PropertiesDict:
@@ -37,7 +49,9 @@ void CPDF_ContentMarkItem::SetDirectDict(
   m_pDirectDict = std::move(pDict);
 }
 
-void CPDF_ContentMarkItem::SetPropertiesDict(const CPDF_Dictionary* pDict) {
+void CPDF_ContentMarkItem::SetPropertiesDict(CPDF_Dictionary* pDict,
+                                             const ByteString& property_name) {
   m_ParamType = PropertiesDict;
   m_pPropertiesDict = pDict;
+  m_PropertyName = property_name;
 }
