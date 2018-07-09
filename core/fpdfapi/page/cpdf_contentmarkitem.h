@@ -24,20 +24,24 @@ class CPDF_ContentMarkItem : public Retainable {
   CPDF_ContentMarkItem();
   ~CPDF_ContentMarkItem() override;
 
-  ByteString GetName() const { return m_MarkName; }
+  const ByteString& GetName() const { return m_MarkName; }
   ParamType GetParamType() const { return m_ParamType; }
+  CPDF_Dictionary* GetParam();
   const CPDF_Dictionary* GetParam() const;
+  const ByteString& GetPropertyName() const { return m_PropertyName; }
   bool HasMCID() const;
 
   void SetName(const ByteString& name) { m_MarkName = name; }
   void SetDirectDict(std::unique_ptr<CPDF_Dictionary> pDict);
-  void SetPropertiesDict(const CPDF_Dictionary* pDict);
+  void SetPropertiesDict(CPDF_Dictionary* pDict,
+                         const ByteString& property_name);
 
  private:
   ByteString m_MarkName;
   ParamType m_ParamType = None;
-  UnownedPtr<const CPDF_Dictionary> m_pPropertiesDict;
-  std::unique_ptr<const CPDF_Dictionary> m_pDirectDict;
+  UnownedPtr<CPDF_Dictionary> m_pPropertiesDict;
+  ByteString m_PropertyName;
+  std::unique_ptr<CPDF_Dictionary> m_pDirectDict;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_CONTENTMARKITEM_H_
