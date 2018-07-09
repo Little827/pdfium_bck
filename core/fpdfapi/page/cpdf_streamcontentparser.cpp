@@ -598,23 +598,28 @@ void CPDF_StreamContentParser::Handle_EOFillStrokePath() {
 
 void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
   ByteString tag = GetString(1);
-  const CPDF_Object* pProperty = GetObject(0);
+  CPDF_Object* pProperty = GetObject(0);
   if (!pProperty)
     return;
 
   bool bDirect = true;
+  ByteString property_name;
   if (pProperty->IsName()) {
-    pProperty = FindResourceObj("Properties", pProperty->GetString());
+    property_name = pProperty->GetString();
+    pProperty = FindResourceObj("Properties", property_name);
     if (!pProperty)
       return;
     bDirect = false;
   }
-  if (const CPDF_Dictionary* pDict = pProperty->AsDictionary()) {
-    std::unique_ptr<CPDF_ContentMark> new_marks =
-        m_ContentMarksStack.top()->Clone();
-    new_marks->AddMark(std::move(tag), pDict, bDirect);
-    m_ContentMarksStack.push(std::move(new_marks));
-  }
+
+  CPDF_Dictionary* pDict = pProperty->AsDictionary();
+  if (!pDict)
+    return;
+
+  std::unique_ptr<CPDF_ContentMark> new_marks =
+      m_ContentMarksStack.top()->Clone();
+  new_marks->AddMark(std::move(tag), pDict, bDirect, property_name);
+  m_ContentMarksStack.push(std::move(new_marks));
 }
 
 void CPDF_StreamContentParser::Handle_BeginImage() {
@@ -680,7 +685,7 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
 void CPDF_StreamContentParser::Handle_BeginMarkedContent() {
   std::unique_ptr<CPDF_ContentMark> new_marks =
       m_ContentMarksStack.top()->Clone();
-  new_marks->AddMark(GetString(0), nullptr, false);
+  new_marks->AddMark(GetString(0), nullptr, false, "");
   m_ContentMarksStack.push(std::move(new_marks));
 }
 

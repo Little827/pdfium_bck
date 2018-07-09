@@ -640,6 +640,156 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
   UnloadPage(page);
 }
 
+void CheckMarkCounts(FPDF_PAGE page,
+                     int expected_object_count,
+                     int start_from,
+                     size_t expected_prime,
+                     size_t expected_square,
+                     size_t expected_greater_ten,
+                     size_t expected_bounds) {
+  int object_count = FPDFPage_CountObjects(page);
+  ASSERT_EQ(expected_object_count, object_count);
+
+  size_t prime_count = 0;
+  size_t square_count = 0;
+  size_t greater_than_ten_count = 0;
+  size_t bounds_count = 0;
+  for (int i = 0; i < object_count; ++i) {
+    FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, i);
+
+    int mark_count = FPDFPageObj_CountMarks(page_object);
+    for (int j = 0; j < mark_count; ++j) {
+      FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
+
+      char buffer[256];
+      ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, 256), 0u);
+      std::wstring name =
+          GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+      if (name == L"Prime") {
+        prime_count++;
+      } else if (name == L"Square") {
+        square_count++;
+        int expected_square = start_from + i;
+        EXPECT_EQ(1, FPDFPageObjMark_CountParams(mark));
+        ASSERT_GT(FPDFPageObjMark_GetParamKey(mark, 0, buffer, 256), 0u);
+        std::wstring key =
+            GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+        EXPECT_EQ(L"Factor", key);
+        EXPECT_EQ(FPDF_OBJECT_NUMBER,
+                  FPDFPageObjMark_GetParamValueType(mark, 0));
+        int square_root = FPDFPageObjMark_GetParamIntValue(mark, 0);
+        EXPECT_EQ(expected_square, square_root * square_root);
+
+        EXPECT_EQ(FPDF_OBJECT_NUMBER,
+                  FPDFPageObjMark_GetParamValueTypeByKey(mark, "Factor"));
+        EXPECT_TRUE(FPDFPageObjMark_GetParamIntValueByKey(mark, "Factor",
+                                                          &square_root));
+        EXPECT_EQ(expected_square, square_root * square_root);
+      } else if (name == L"GreaterThanTen") {
+        greater_than_ten_count++;
+      } else if (name == L"Bounds") {
+        bounds_count++;
+        EXPECT_EQ(1, FPDFPageObjMark_CountParams(mark));
+        ASSERT_GT(FPDFPageObjMark_GetParamKey(mark, 0, buffer, 256), 0u);
+        std::wstring key =
+            GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+        EXPECT_EQ(L"Position", key);
+        EXPECT_EQ(FPDF_OBJECT_STRING,
+                  FPDFPageObjMark_GetParamValueType(mark, 0));
+        ASSERT_GT(FPDFPageObjMark_GetParamStringValue(mark, 0, buffer, 256),
+                  0u);
+        std::wstring value =
+            GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+        EXPECT_EQ(L"Last", value);
+        // Should be the last object.
+        EXPECT_EQ(object_count - 1, i);
+
+        EXPECT_EQ(FPDF_OBJECT_STRING,
+                  FPDFPageObjMark_GetParamValueTypeByKey(mark, "Position"));
+        unsigned long length;
+        EXPECT_TRUE(FPDFPageObjMark_GetParamStringValueByKey(
+            mark, "Position", buffer, 256, &length));
+        ASSERT_GT(length, 0u);
+        value = GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+        EXPECT_EQ(L"Last", value);
+      } else {
+        FAIL();
+      }
+    }
+  }
+
+  // Expect certain number of tagged objects. The test file contains strings
+  // from 1 to 19.
+  EXPECT_EQ(expected_prime, prime_count);
+  EXPECT_EQ(expected_square, square_count);
+  EXPECT_EQ(expected_greater_ten, greater_than_ten_count);
+  EXPECT_EQ(expected_bounds, bounds_count);
+}
+
+TEST_F(FPDFEditEmbeddertest, MaintainMarkedObjects) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("text_in_page_marked.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Iterate over all objects, counting the number of times each content mark
+  // name appears.
+  CheckMarkCounts(page, 19, 1, 8, 4, 9, 1);
+
+  // Remove first page object.
+  EXPECT_TRUE(FPDFPage_RemoveObject(page, FPDFPage_GetObject(page, 0)));
+  FPDFPageObj_Destroy(0);
+
+  CheckMarkCounts(page, 18, 2, 8, 3, 9, 1);
+
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  OpenPDFFileForWrite("../../MaintainMarkedObjects.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  ClosePDFFileForWrite();
+
+  UnloadPage(page);
+
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+
+  CheckMarkCounts(saved_page, 18, 2, 8, 3, 9, 1);
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
+TEST_F(FPDFEditEmbeddertest, MaintainIndirectMarkedObjects) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("text_in_page_marked_indirect.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Iterate over all objects, counting the number of times each content mark
+  // name appears.
+  CheckMarkCounts(page, 19, 1, 8, 4, 9, 1);
+
+  // Remove first page object.
+  EXPECT_TRUE(FPDFPage_RemoveObject(page, FPDFPage_GetObject(page, 0)));
+  FPDFPageObj_Destroy(0);
+
+  CheckMarkCounts(page, 18, 2, 8, 3, 9, 1);
+
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  OpenPDFFileForWrite("../../MaintainIndirectMarkedObjects.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  ClosePDFFileForWrite();
+
+  UnloadPage(page);
+
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+
+  CheckMarkCounts(saved_page, 18, 2, 8, 3, 9, 1);
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
 TEST_F(FPDFEditEmbeddertest, RemoveExistingPageObject) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
@@ -2019,6 +2169,109 @@ TEST_F(FPDFEditEmbeddertest, SaveAndRender) {
   }
 
   VerifySavedDocument(612, 792, md5);
+}
+
+TEST_F(FPDFEditEmbeddertest, AddMarkedText) {
+  // Start with a blank page.
+  FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
+
+  const CPDF_Font* stock_font = CPDF_Font::GetStockFont(cpdf_doc(), "Arial");
+  const uint8_t* data = stock_font->GetFont()->GetFontData();
+  const uint32_t size = stock_font->GetFont()->GetSize();
+  ScopedFPDFFont font(
+      FPDFText_LoadFont(document(), data, size, FPDF_FONT_TRUETYPE, 0));
+  ASSERT_TRUE(font.get());
+
+  // Add some text to the page.
+  FPDF_PAGEOBJECT text_object =
+      FPDFPageObj_CreateTextObj(document(), font.get(), 12.0f);
+
+  EXPECT_TRUE(text_object);
+  std::unique_ptr<unsigned short, pdfium::FreeDeleter> text1 =
+      GetFPDFWideString(L"I am testing my loaded font, WEE.");
+  EXPECT_TRUE(FPDFText_SetText(text_object, text1.get()));
+  FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 400, 400);
+  FPDFPage_InsertObject(page, text_object);
+
+  // Add a mark with the tag "TestMarkName" to that text.
+  EXPECT_EQ(0, FPDFPageObj_CountMarks(text_object));
+  FPDF_PAGEOBJECTMARK mark = FPDFPageObj_AddMark(text_object, "TestMarkName");
+  EXPECT_TRUE(mark);
+  EXPECT_EQ(1, FPDFPageObj_CountMarks(text_object));
+  EXPECT_EQ(mark, FPDFPageObj_GetMark(text_object, 0));
+  char buffer[256];
+  EXPECT_GT(FPDFPageObjMark_GetName(mark, buffer, 256), 0u);
+  std::wstring name =
+      GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+  EXPECT_EQ(L"TestMarkName", name);
+
+  // Add parameters:
+  // - int "IntKey" : 42
+  // - string "StringKey": "StringValue"
+  EXPECT_EQ(0, FPDFPageObjMark_CountParams(mark));
+  EXPECT_TRUE(FPDFPageObjMark_SetIntParam(document(), mark, "IntKey", 42));
+  EXPECT_TRUE(FPDFPageObjMark_SetStringParam(document(), mark, "StringKey",
+                                             "StringValue"));
+  EXPECT_EQ(2, FPDFPageObjMark_CountParams(mark));
+
+  // Check the two parameters can be retrieved.
+  EXPECT_EQ(FPDF_OBJECT_NUMBER,
+            FPDFPageObjMark_GetParamValueTypeByKey(mark, "IntKey"));
+  int int_value;
+  EXPECT_TRUE(
+      FPDFPageObjMark_GetParamIntValueByKey(mark, "IntKey", &int_value));
+  EXPECT_EQ(42, int_value);
+
+  EXPECT_EQ(FPDF_OBJECT_STRING,
+            FPDFPageObjMark_GetParamValueTypeByKey(mark, "StringKey"));
+  unsigned long out_buffer_len;
+  EXPECT_TRUE(FPDFPageObjMark_GetParamStringValueByKey(
+      mark, "StringKey", buffer, 256, &out_buffer_len));
+  EXPECT_GT(out_buffer_len, 0u);
+  name = GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+  EXPECT_EQ(L"StringValue", name);
+
+// Render and check the bitmap is the expected one.
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  const char md5[] = "17d2b6cd574cf66170b09c8927529a94";
+#else
+  const char md5[] = "70592859010ffbf532a2237b8118bcc4";
+#endif
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, md5);
+    // WriteBitmapToPng(page_bitmap.get(), "../../before.png");
+  }
+
+  // Now save the result.
+  EXPECT_EQ(1, FPDFPage_CountObjects(page));
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  FPDF_ClosePage(page);
+
+  // Re-open the file and check the changes were kept in the saved .pdf.
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_EQ(1, FPDFPage_CountObjects(saved_page));
+
+  text_object = FPDFPage_GetObject(saved_page, 0);
+  EXPECT_TRUE(text_object);
+  EXPECT_EQ(1, FPDFPageObj_CountMarks(text_object));
+  mark = FPDFPageObj_GetMark(text_object, 0);
+  EXPECT_TRUE(mark);
+  EXPECT_GT(FPDFPageObjMark_GetName(mark, buffer, 256), 0u);
+  name = GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
+  EXPECT_EQ(L"TestMarkName", name);
+
+  // {
+  //   ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr,
+  //   0); CompareBitmap(page_bitmap.get(), 612, 792, md5);
+  //   WriteBitmapToPng(page_bitmap.get(), "../../after.png");
+  // }
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
 }
 
 TEST_F(FPDFEditEmbeddertest, ExtractImageBitmap) {
