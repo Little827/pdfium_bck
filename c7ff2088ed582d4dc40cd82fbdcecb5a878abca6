@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a9636ef7_573fd94e",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T19:01:32Z",
+      "side": 1,
+      "message": "Mention the returned pointer is never nullptr?",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1484d124_40b7a422",
         "filename": "core/fpdfapi/page/cpdf_contentmark.h",
         "patchSetId": 3
@@ -13,6 +30,41 @@
       "writtenOn": "2018-07-09T18:38:41Z",
       "side": 1,
       "message": "I\u0027m not sure if it\u0027s best to duplicate these methods or to have only a non-const version. I think it\u0027s better to have them duplicated and preserve the constness in the clients that can use the const versions.\n\nThe alternative is shown in https://pdfium-review.googlesource.com/c/pdfium/+/37350\n\nWDYT?",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7e4d3e_20347c31",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T19:01:32Z",
+      "side": 1,
+      "message": "This is fine by me. tsepez and I talked about this and ended up at \"the owner of an object should care about giving out const/non-const access to the object.\" The returned object here is from a RetainedPtr, which is shared ownership. I\u0027d still lean towards treating that as owning the object.",
+      "parentUuid": "1484d124_40b7a422",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5351f924_595d2d76",
+        "filename": "core/fpdfapi/page/cpdf_contentmarkitem.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T19:01:32Z",
+      "side": 1,
+      "message": "I sent you a CL to use const_cast to avoid duplicate code. https://pdfium-review.googlesource.com/c/pdfium/+/37490",
       "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -33,6 +85,40 @@
       "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b2cc071_eb0a5af5",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T19:01:32Z",
+      "side": 1,
+      "message": "Call this and check |pMarkItem|, instead of checking |mark|, to be consistent with the |document| / |pDoc| check.",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60331476_9339f154",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T19:01:32Z",
+      "side": 1,
+      "message": "Do we allow empty keys in a dictionary?",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
