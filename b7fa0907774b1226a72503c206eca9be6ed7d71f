@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c58299cd_c1ac01b6",
+        "filename": "testing/resources/form_object.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-07-10T20:02:45Z",
+      "side": 1,
+      "message": "nit: the pink boxes here are spaces at the end of line.",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "b7fa0907774b1226a72503c206eca9be6ed7d71f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
