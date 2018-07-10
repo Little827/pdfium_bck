@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1815c121_50984e29",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T18:13:29Z",
+      "side": 1,
+      "message": "Maybe add a FPDFPageObj_GetType(form) call?",
+      "revId": "cc3b807403b7a1ce99afab5c605e007327d1673f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
