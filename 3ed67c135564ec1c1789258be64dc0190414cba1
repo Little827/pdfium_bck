@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9027c12d_2338da64",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T22:33:00Z",
+      "side": 1,
+      "message": "UnownedPtr\u003cCPDF_CryptoHandler\u003e const",
+      "revId": "3ed67c135564ec1c1789258be64dc0190414cba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2113eb2_20f8ce4a",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T22:33:00Z",
+      "side": 1,
+      "message": "No DCHECKs in PDFium code please. Use ASSERT().",
+      "revId": "3ed67c135564ec1c1789258be64dc0190414cba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99f83c5_0677f4e2",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T22:33:00Z",
+      "side": 1,
+      "message": "Just have the (only) caller pass in the dictionary?",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "3ed67c135564ec1c1789258be64dc0190414cba1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
