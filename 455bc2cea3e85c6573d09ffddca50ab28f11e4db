@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4860e6_77983316",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T20:20:33Z",
+      "side": 1,
+      "message": "Can we group this with the other \"expect_foo\" parameters?",
+      "revId": "455bc2cea3e85c6573d09ffddca50ab28f11e4db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734661c7_48c52537",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T20:20:33Z",
+      "side": 1,
+      "message": "BTW, can this check for an exact return value? Also lines 572, 578, and 591.",
+      "revId": "455bc2cea3e85c6573d09ffddca50ab28f11e4db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2d5997_af631554",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T20:20:33Z",
+      "side": 1,
+      "message": "Is this right? Aren\u0027t there only 8 \"Prime\" objects? Furthermore, do we even need lines 640-642 any more? Doesn\u0027t CheckMarkCounts() check this already?",
+      "revId": "455bc2cea3e85c6573d09ffddca50ab28f11e4db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
