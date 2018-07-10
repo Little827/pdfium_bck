@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "06190472_1953ff57",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T20:23:23Z",
+      "side": 1,
+      "message": "No, I\u0027m not suggesting returning the RetainPtr. I think this is fine, since we are not sharing ownership with the caller.",
+      "parentUuid": "395c8570_4eb9a172",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5351f924_595d2d76",
         "filename": "core/fpdfapi/page/cpdf_contentmarkitem.cpp",
         "patchSetId": 3

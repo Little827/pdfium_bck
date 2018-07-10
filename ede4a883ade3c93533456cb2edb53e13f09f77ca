@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a013f9_18b604f7",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T20:23:23Z",
+      "side": 1,
+      "message": "maybe just \"returned pointer\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "ede4a883ade3c93533456cb2edb53e13f09f77ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
