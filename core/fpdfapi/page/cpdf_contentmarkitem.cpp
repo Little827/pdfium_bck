@@ -49,7 +49,9 @@ void CPDF_ContentMarkItem::SetDirectDict(
   m_pDirectDict = std::move(pDict);
 }
 
-void CPDF_ContentMarkItem::SetPropertiesDict(CPDF_Dictionary* pDict) {
+void CPDF_ContentMarkItem::SetPropertiesDict(CPDF_Dictionary* pDict,
+                                             const ByteString& property_name) {
   m_ParamType = PropertiesDict;
   m_pPropertiesDict = pDict;
+  m_PropertyName = property_name;
 }
