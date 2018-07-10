@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d16548d1_bef7b7d6",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-10T20:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9636ef7_573fd94e",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1484d124_40b7a422",
         "filename": "core/fpdfapi/page/cpdf_contentmark.h",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "This is fine by me. tsepez and I talked about this and ended up at \"the owner of an object should care about giving out const/non-const access to the object.\" The returned object here is from a RetainedPtr, which is shared ownership. I\u0027d still lean towards treating that as owning the object.",
       "parentUuid": "1484d124_40b7a422",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "395c8570_4eb9a172",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-10T20:16:10Z",
+      "side": 1,
+      "message": "Not sure if I understand, are you suggesting to return the RetainPtr? That sounds reasonable to me.",
+      "parentUuid": "ac7e4d3e_20347c31",
       "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -105,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "3d57608c_6cd308a9",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-10T20:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2cc071_eb0a5af5",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60331476_9339f154",
         "filename": "fpdfsdk/fpdf_editpage.cpp",
         "patchSetId": 3
@@ -119,6 +173,24 @@
       "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86f617b_745d1dac",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-10T20:16:10Z",
+      "side": 1,
+      "message": "According to the 1.7 spec, dictionary keys are names (pg. 59), and \"/\" is a valid name (pg. 57), so surprisingly yes.",
+      "parentUuid": "60331476_9339f154",
+      "revId": "c7ff2088ed582d4dc40cd82fbdcecb5a878abca6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
