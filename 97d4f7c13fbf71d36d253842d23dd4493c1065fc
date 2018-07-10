@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "467845ce_2c3311c5",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-10T22:22:57Z",
+      "side": 1,
+      "message": "Also, does this ever evaluate to true? All the callers either pass in the result of pdfium::MakeUnique(), or |m_CrossRefTable|.",
+      "revId": "97d4f7c13fbf71d36d253842d23dd4493c1065fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
