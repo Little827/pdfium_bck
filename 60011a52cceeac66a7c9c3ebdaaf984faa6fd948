@@ -46,6 +46,30 @@
       "revId": "60011a52cceeac66a7c9c3ebdaaf984faa6fd948",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f63bad89_ce666c05",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-11T23:35:45Z",
+      "side": 1,
+      "message": "I don\u0027t think we have a type to represent (offset, size) yet. Let\u0027s leave this as is.\n\nFor comments, let\u0027s reference PDF 1.7 spec Table F.6. Since that explains how to derive these numbers.",
+      "parentUuid": "663ac644_93a79d39",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "60011a52cceeac66a7c9c3ebdaaf984faa6fd948",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
