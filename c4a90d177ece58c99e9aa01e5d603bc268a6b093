@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4e7ca8_cc4ac2d7",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-11T21:49:08Z",
+      "side": 1,
+      "message": "I\u0027m not very happy about this, but for a dictionary, a string is a string.\n\nAlternatives:\n- Store blobs in streams. Big drawback: a stream needs to be in indirect object.\n- Consider strings encoded in hex like \"\u003c48656C6C6F\u003e\" as blobs, and strings like \"(Hello)\" as string. Big drawback: it\u0027s perfectly valid for a string to be encoded in hex, so it\u0027s not necessarily a blob.\n- Store metadata in the dict about whether the property is a string or a blob. Big drawbacks: takes much more space, complicated a lot the mark params code, creates a layer of metadata.\n\nI don\u0027t think either is better than accepting the weirdness that the type of blobs is string.\n\nPerhaps the correct way to do this is not to offer the GetParamValueType call and rely on the return values of the getters.",
+      "range": {
+        "startLine": 410,
+        "startChar": 37,
+        "endLine": 410,
+        "endChar": 48
+      },
+      "revId": "c4a90d177ece58c99e9aa01e5d603bc268a6b093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
