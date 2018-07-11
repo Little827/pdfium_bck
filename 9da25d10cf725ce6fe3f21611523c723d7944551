@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "937e934a_2758f717",
+        "filename": "core/fpdfapi/page/cpdf_contentmarkitem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-11T18:56:47Z",
+      "side": 1,
+      "message": "Just ByteString, and m_MarkName(std::move(name)) in the ctor, to keep doing std::move() all the way.",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 49
+      },
+      "revId": "9da25d10cf725ce6fe3f21611523c723d7944551",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
