@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34500ce8_babb3be8",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-11T17:22:04Z",
+      "side": 1,
+      "message": "For later: Maybe use MakeRetain here?",
+      "range": {
+        "startLine": 68,
+        "startChar": 22,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "cb34633d34943907992abecd75eb89b4ce65c5a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d5e7bed_43e3dc7f",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-11T17:22:04Z",
+      "side": 1,
+      "message": "For later: See if it\u0027s possible to remove SetName() and just pass the name in the ctor.",
+      "revId": "cb34633d34943907992abecd75eb89b4ce65c5a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d13573_437885fc",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-11T17:22:04Z",
+      "side": 1,
+      "message": "I like the old code path a little better. |new_marks| may get initialized and thrown away in this CL, and now there are two calls to get the same |pDict| below.",
+      "revId": "cb34633d34943907992abecd75eb89b4ce65c5a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
