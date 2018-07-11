@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Get the chromium depot tools via the instructions at
+Get      the chromium depot tools via the instructions at
 http://www.chromium.org/developers/how-tos/install-depot-tools (this provides
 the gclient utility needed below).
 
