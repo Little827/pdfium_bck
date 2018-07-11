@@ -459,6 +459,30 @@ FPDFPageObjMark_GetParamStringValueByKey(FPDF_PAGEOBJECTMARK mark,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObjMark_GetParamBlobValueByKey(FPDF_PAGEOBJECTMARK mark,
+                                       FPDF_BYTESTRING key,
+                                       void* buffer,
+                                       unsigned long buflen,
+                                       unsigned long* out_buflen) {
+  const CPDF_Dictionary* pParams = GetMarkParamDict(mark);
+  if (!pParams)
+    return false;
+
+  const CPDF_Object* pObj = pParams->GetObjectFor(key);
+  if (!pObj || !pObj->IsString())
+    return false;
+
+  ByteString result = pObj->GetString();
+  size_t len = result.GetLength();
+  *out_buflen = len;
+  if (len > buflen)
+    return true;
+
+  memcpy(buffer, result.c_str(), len);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObj_HasTransparency(FPDF_PAGEOBJECT pageObject) {
   if (!pageObject)
     return false;
@@ -515,6 +539,21 @@ FPDFPageObjMark_SetStringParam(FPDF_DOCUMENT document,
     return false;
 
   pParams->SetNewFor<CPDF_String>(key, value, false);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObjMark_SetBlobParam(FPDF_DOCUMENT document,
+                             FPDF_PAGEOBJECTMARK mark,
+                             FPDF_BYTESTRING key,
+                             void* value,
+                             size_t value_len) {
+  CPDF_Dictionary* pParams = GetOrCreateMarkParamsDict(document, mark);
+  if (!pParams)
+    return false;
+
+  pParams->SetNewFor<CPDF_String>(
+      key, ByteString(static_cast<const char*>(value), value_len), true);
   return true;
 }
 
