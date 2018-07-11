@@ -58,15 +58,15 @@ static void JSConstructor(CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
 void JSDestructor(v8::Local<v8::Object> obj);
 
 template <class C>
-C* JSGetObject(v8::Local<v8::Object> obj) {
+std::pair<C*, CJS_Runtime*> JSGetObjectAndRuntime(v8::Local<v8::Object> obj) {
   if (CFXJS_Engine::GetObjDefnID(obj) != C::GetObjDefnID())
-    return nullptr;
+    return {nullptr, nullptr};
 
   CJS_Object* pJSObj = CFXJS_Engine::GetObjectPrivate(obj);
   if (!pJSObj)
-    return nullptr;
+    return {nullptr, nullptr};
 
-  return static_cast<C*>(pJSObj);
+  return {static_cast<C*>(pJSObj), pJSObj->GetRuntime()};
 }
 
 template <class C, CJS_Return (C::*M)(CJS_Runtime*)>
@@ -74,12 +74,10 @@ void JSPropGetter(const char* prop_name_string,
                   const char* class_name_string,
                   v8::Local<v8::String> property,
                   const v8::PropertyCallbackInfo<v8::Value>& info) {
-  C* pObj = JSGetObject<C>(info.Holder());
-  if (!pObj)
-    return;
-
-  CJS_Runtime* pRuntime = pObj->GetRuntime();
-  if (!pRuntime)
+  C* pObj;
+  CJS_Runtime* pRuntime;
+  std::tie(pObj, pRuntime) = JSGetObjectAndRuntime<C>(info.Holder());
+  if (!pObj || !pRuntime)
     return;
 
   CJS_Return result = (pObj->*M)(pRuntime);
@@ -99,12 +97,10 @@ void JSPropSetter(const char* prop_name_string,
                   v8::Local<v8::String> property,
                   v8::Local<v8::Value> value,
                   const v8::PropertyCallbackInfo<void>& info) {
-  C* pObj = JSGetObject<C>(info.Holder());
-  if (!pObj)
-    return;
-
-  CJS_Runtime* pRuntime = pObj->GetRuntime();
-  if (!pRuntime)
+  C* pObj;
+  CJS_Runtime* pRuntime;
+  std::tie(pObj, pRuntime) = JSGetObjectAndRuntime<C>(info.Holder());
+  if (!pObj || !pRuntime)
     return;
 
   CJS_Return result = (pObj->*M)(pRuntime, value);
@@ -120,12 +116,10 @@ template <class C,
 void JSMethod(const char* method_name_string,
               const char* class_name_string,
               const v8::FunctionCallbackInfo<v8::Value>& info) {
-  C* pObj = JSGetObject<C>(info.Holder());
-  if (!pObj)
-    return;
-
-  CJS_Runtime* pRuntime = pObj->GetRuntime();
-  if (!pRuntime)
+  C* pObj;
+  CJS_Runtime* pRuntime;
+  std::tie(pObj, pRuntime) = JSGetObjectAndRuntime<C>(info.Holder());
+  if (!pObj || !pRuntime)
     return;
 
   std::vector<v8::Local<v8::Value>> parameters;
