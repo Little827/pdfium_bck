@@ -22,6 +22,30 @@
       "revId": "59ba5c0e7ece62246f9454e4368d0e544edf34bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "515db741_e5a74246",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-11T15:50:31Z",
+      "side": 1,
+      "message": "For file base streams we should have non empty m_bNewBuf.\nThe case, when m_bNewBuf is nullptr and stream is file based - means, that reading from file was failed, and we have not data.\nSee line #41",
+      "parentUuid": "2cadf030_bdc271fa",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "59ba5c0e7ece62246f9454e4368d0e544edf34bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
