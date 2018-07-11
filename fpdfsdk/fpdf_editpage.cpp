@@ -386,8 +386,8 @@ FPDFPageObjMark_GetParamValueType(FPDF_PAGEOBJECTMARK mark,
 }
 
 FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
-FPDFPageObjMark_GetParamValueTypeByKey(FPDF_PAGEOBJECTMARK mark,
-                                       FPDF_BYTESTRING key) {
+FPDFPageObjMark_GetParamValueType(FPDF_PAGEOBJECTMARK mark,
+                                  FPDF_BYTESTRING key) {
   const CPDF_Dictionary* pParams = GetMarkParamDict(mark);
   if (!pParams)
     return FPDF_OBJECT_UNKNOWN;
@@ -410,9 +410,9 @@ FPDFPageObjMark_GetParamIntValue(FPDF_PAGEOBJECTMARK mark,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFPageObjMark_GetParamIntValueByKey(FPDF_PAGEOBJECTMARK mark,
-                                      FPDF_BYTESTRING key,
-                                      int* out_value) {
+FPDFPageObjMark_GetParamIntValue(FPDF_PAGEOBJECTMARK mark,
+                                 FPDF_BYTESTRING key,
+                                 int* out_value) {
   const CPDF_Dictionary* pParams = GetMarkParamDict(mark);
   if (!pParams)
     return false;
@@ -440,11 +440,11 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFPageObjMark_GetParamStringValueByKey(FPDF_PAGEOBJECTMARK mark,
-                                         FPDF_BYTESTRING key,
-                                         void* buffer,
-                                         unsigned long buflen,
-                                         unsigned long* out_buflen) {
+FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
+                                    FPDF_BYTESTRING key,
+                                    void* buffer,
+                                    unsigned long buflen,
+                                    unsigned long* out_buflen) {
   const CPDF_Dictionary* pParams = GetMarkParamDict(mark);
   if (!pParams)
     return false;
