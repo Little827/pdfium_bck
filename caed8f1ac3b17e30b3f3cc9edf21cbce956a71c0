@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0feb230f_e7d44ccd",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-11T19:48:17Z",
+      "side": 1,
+      "message": "BMC / EMC serve as open and closing tags, right? So they need to be eventually balanced and there can\u0027t ever be more EMCs than BMCs. There\u0027s this check here when writing out BMCs. It feels as though this code can potentially write out more EMCs than BMCs.",
+      "revId": "caed8f1ac3b17e30b3f3cc9edf21cbce956a71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
