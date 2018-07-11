@@ -96,7 +96,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       const char* name = GetAdobeCharName(baseEncoding, m_CharNames, charcode);
       if (!name) {
         m_GlyphIndex[charcode] =
-            m_pFontFile ? FXFT_Get_Char_Index(m_Font.GetFace(), charcode) : -1;
+            m_pFontFile ? FXFT_Get_Char_Index(m_Font.GetFace(), charcode) : 0;
         continue;
       }
       m_Encoding.m_Unicodes[charcode] = PDF_UnicodeFromAdobeName(name);
@@ -105,7 +105,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
           uint16_t unicode = kPrefix[j] * 256 + charcode;
           m_GlyphIndex[charcode] =
               FXFT_Get_Char_Index(m_Font.GetFace(), unicode);
-          if (m_GlyphIndex[charcode])
+          if (m_GlyphIndex[charcode] != 0)
             break;
         }
       } else if (m_Encoding.m_Unicodes[charcode]) {
@@ -124,10 +124,9 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
           }
         }
       }
-      if ((m_GlyphIndex[charcode] != 0 && m_GlyphIndex[charcode] != 0xffff) ||
-          !name) {
+      if (m_GlyphIndex[charcode] != 0 || !name)
         continue;
-      }
+
       if (strcmp(name, ".notdef") == 0) {
         m_GlyphIndex[charcode] = FXFT_Get_Char_Index(m_Font.GetFace(), 32);
         continue;
@@ -152,7 +151,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       for (size_t j = 0; j < FX_ArraySize(kPrefix); j++) {
         uint16_t unicode = kPrefix[j] * 256 + charcode;
         m_GlyphIndex[charcode] = FXFT_Get_Char_Index(m_Font.GetFace(), unicode);
-        if (m_GlyphIndex[charcode]) {
+        if (m_GlyphIndex[charcode] != 0) {
           bFound = true;
           break;
         }
@@ -181,9 +180,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       m_GlyphIndex[charcode] = FXFT_Get_Char_Index(m_Font.GetFace(), charcode);
       m_Encoding.m_Unicodes[charcode] =
           FT_UnicodeFromCharCode(FXFT_ENCODING_APPLE_ROMAN, charcode);
-      if (m_GlyphIndex[charcode]) {
-        bFound = true;
-      }
+      bFound |= m_GlyphIndex[charcode] != 0;
     }
     if (m_pFontFile || bFound)
       return;
@@ -203,8 +200,7 @@ void CPDF_TrueTypeFont::LoadGlyphMap() {
       }
       m_GlyphIndex[charcode] = FXFT_Get_Char_Index(
           m_Font.GetFace(), m_Encoding.m_Unicodes[charcode]);
-      if (m_GlyphIndex[charcode])
-        bFound = true;
+      bFound |= m_GlyphIndex[charcode] != 0;
     }
     if (bFound)
       return;

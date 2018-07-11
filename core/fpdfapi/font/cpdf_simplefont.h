@@ -42,8 +42,8 @@ class CPDF_SimpleFont : public CPDF_Font {
   int m_BaseEncoding;
   bool m_bUseFontWidth;
   std::vector<ByteString> m_CharNames;
+  // For the following uint16_t arrays, 0 is the invalid value.
   uint16_t m_GlyphIndex[256];
-  uint16_t m_ExtGID[256];
   uint16_t m_CharWidth[256];
   FX_RECT m_CharBBox[256];
 };

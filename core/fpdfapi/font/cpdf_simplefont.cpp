@@ -12,9 +12,8 @@
 #include "third_party/base/numerics/safe_math.h"
 
 CPDF_SimpleFont::CPDF_SimpleFont() : m_BaseEncoding(PDFFONT_ENCODING_BUILTIN) {
-  memset(m_CharWidth, 0xff, sizeof(m_CharWidth));
-  memset(m_GlyphIndex, 0xff, sizeof(m_GlyphIndex));
-  memset(m_ExtGID, 0xff, sizeof(m_ExtGID));
+  memset(m_CharWidth, 0, sizeof(m_CharWidth));
+  memset(m_GlyphIndex, 0, sizeof(m_GlyphIndex));
   for (size_t i = 0; i < FX_ArraySize(m_CharBBox); ++i)
     m_CharBBox[i] = FX_RECT(-1, -1, -1, -1);
 }
@@ -29,7 +28,7 @@ int CPDF_SimpleFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
     return -1;
 
   int index = m_GlyphIndex[charcode];
-  if (index == 0xffff || (index == 0 && IsTrueTypeFont()))
+  if (index == 0)
     return -1;
 
   return index;
@@ -43,7 +42,7 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
     return;
   }
   int glyph_index = m_GlyphIndex[charcode];
-  if (glyph_index == 0xffff) {
+  if (glyph_index == 0) {
     if (!m_pFontFile && charcode != 32) {
       LoadCharMetrics(32);
       m_CharBBox[charcode] = m_CharBBox[32];
@@ -69,7 +68,7 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
 
   if (m_bUseFontWidth) {
     int TT_Width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face), face);
-    if (m_CharWidth[charcode] == 0xffff) {
+    if (m_CharWidth[charcode] == 0) {
       m_CharWidth[charcode] = TT_Width;
     } else if (TT_Width && !IsEmbedded()) {
       m_CharBBox[charcode].right =
@@ -84,12 +83,9 @@ uint32_t CPDF_SimpleFont::GetCharWidthF(uint32_t charcode) {
   if (charcode > 0xff)
     charcode = 0;
 
-  if (m_CharWidth[charcode] == 0xffff) {
+  if (m_CharWidth[charcode] == 0)
     LoadCharMetrics(charcode);
-    if (m_CharWidth[charcode] == 0xffff) {
-      m_CharWidth[charcode] = 0;
-    }
-  }
+
   return m_CharWidth[charcode];
 }
 
@@ -149,7 +145,7 @@ bool CPDF_SimpleFont::LoadCommon() {
     for (size_t range = 0; range < FX_ArraySize(kLowercases); ++range) {
       const auto& lower = kLowercases[range];
       for (int i = lower[0]; i <= lower[1]; ++i) {
-        if (m_GlyphIndex[i] != 0xffff && m_pFontFile)
+        if (m_GlyphIndex[i] != 0 && m_pFontFile)
           continue;
 
         int j = i - 32;
@@ -169,7 +165,7 @@ void CPDF_SimpleFont::LoadSubstFont() {
   if (!m_bUseFontWidth && !FontStyleIsFixedPitch(m_Flags)) {
     int width = 0, i;
     for (i = 0; i < 256; i++) {
-      if (m_CharWidth[i] == 0 || m_CharWidth[i] == 0xffff)
+      if (m_CharWidth[i] == 0)
         continue;
 
       if (width == 0)

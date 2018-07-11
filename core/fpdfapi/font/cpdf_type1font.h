@@ -18,7 +18,9 @@ class CPDF_Type1Font : public CPDF_SimpleFont {
   bool IsType1Font() const override;
   const CPDF_Type1Font* AsType1Font() const override;
   CPDF_Type1Font* AsType1Font() override;
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
   int GlyphFromCharCodeExt(uint32_t charcode) override;
+#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
 
   int GetBase14Font() const { return m_Base14Font; }
 
@@ -34,6 +36,9 @@ class CPDF_Type1Font : public CPDF_SimpleFont {
   void CalcExtGID(int charcode);
 #endif
 
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+  uint16_t m_ExtGID[256];
+#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
   int m_Base14Font;
 };
 
