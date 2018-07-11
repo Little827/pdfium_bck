@@ -611,7 +611,8 @@ void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
       m_ContentMarksStack.top()->Clone();
 
   if (pProperty->IsName()) {
-    pProperty = FindResourceObj("Properties", pProperty->GetString());
+    ByteString property_name = pProperty->GetString();
+    pProperty = FindResourceObj("Properties", property_name);
     if (!pProperty)
       return;
 
@@ -619,7 +620,7 @@ void CPDF_StreamContentParser::Handle_BeginMarkedContent_Dictionary() {
     if (!pDict)
       return;
 
-    new_marks->AddMarkWithPropertiesDict(std::move(tag), pDict);
+    new_marks->AddMarkWithPropertiesDict(std::move(tag), pDict, property_name);
   } else {
     CPDF_Dictionary* pDict = pProperty->AsDictionary();
     if (!pDict)
