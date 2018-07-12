@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8866e623_51e27e10",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T01:48:09Z",
+      "side": 1,
+      "message": "How about we copy the pattern in Utf16EncodeMaybeCopyAndReturnLength()? Which also means making sure |buffer| is not nullptr.",
+      "revId": "bdbedd5a96a25a8071f1bbd5bf6b39abef0f228c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fdccf9_989bee4b",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T01:48:09Z",
+      "side": 1,
+      "message": "Make sure this is not nullptr?",
+      "revId": "bdbedd5a96a25a8071f1bbd5bf6b39abef0f228c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec76e5f_13d2945f",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T01:48:09Z",
+      "side": 1,
+      "message": "Can we stick with either size_t or unsigned long?",
+      "range": {
+        "startLine": 516,
+        "startChar": 29,
+        "endLine": 516,
+        "endChar": 35
+      },
+      "revId": "bdbedd5a96a25a8071f1bbd5bf6b39abef0f228c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
