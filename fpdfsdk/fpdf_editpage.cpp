@@ -306,14 +306,33 @@ FPDFPageObj_GetMark(FPDF_PAGEOBJECT page_object, unsigned long index) {
 
 FPDF_EXPORT FPDF_PAGEOBJECTMARK FPDF_CALLCONV
 FPDFPageObj_AddMark(FPDF_PAGEOBJECT page_object, FPDF_BYTESTRING name) {
-  if (!page_object)
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
     return nullptr;
 
   auto* mark = &CPDFPageObjectFromFPDFPageObject(page_object)->m_ContentMark;
   mark->AddMark(name);
   unsigned long index = mark->CountItems() - 1;
 
+  pPageObj->SetDirty(true);
+
   return FPDFPageObjectMarkFromCPDFContentMarkItem(mark->GetItem(index));
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObj_RemoveMark(FPDF_PAGEOBJECT page_object, FPDF_PAGEOBJECTMARK mark) {
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  CPDF_ContentMarkItem* pMarkItem =
+      CPDFContentMarkItemFromFPDFPageObjectMark(mark);
+
+  if (!pPageObj || !pMarkItem)
+    return false;
+
+  bool result = pPageObj->m_ContentMark.RemoveMark(pMarkItem);
+  if (result)
+    pPageObj->SetDirty(true);
+
+  return result;
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
