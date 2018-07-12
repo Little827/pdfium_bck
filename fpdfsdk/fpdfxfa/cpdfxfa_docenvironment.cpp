@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
 
+#include <iostream>
 #include <memory>
 #include <utility>
 
@@ -622,16 +623,23 @@ bool CPDFXFA_DocEnvironment::NotifySubmit(bool bPrevOrPost) {
 }
 
 bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
-  if (!m_pContext->ContainsXFAForm())
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit BEGIN" << std::endl;
+  if (!m_pContext->ContainsXFAForm()) {
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit END 1" << std::endl;
     return true;
+  }
 
   CXFA_FFDocView* docView = m_pContext->GetXFADocView();
-  if (!docView)
+  if (!docView) {
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit END 2" << std::endl;
     return true;
+  }
 
   CXFA_FFWidgetHandler* pWidgetHandler = docView->GetWidgetHandler();
-  if (!pWidgetHandler)
+  if (!pWidgetHandler) {
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit END 3" << std::endl;
     return true;
+  }
 
   auto it = docView->CreateReadyNodeIterator();
   if (it) {
@@ -642,8 +650,10 @@ bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
   }
 
   it = docView->CreateReadyNodeIterator();
-  if (!it)
+  if (!it) {
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit END 4" << std::endl;
     return true;
+  }
 
   (void)it->MoveToNext();
   CXFA_Node* pNode = it->MoveToNext();
@@ -652,22 +662,27 @@ bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
     int fRet = pNode->ProcessValidate(docView, -1);
     if (fRet == XFA_EVENTERROR_Error) {
       CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
-      if (!pFormFillEnv)
+      if (!pFormFillEnv) {
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit END 5" << std::endl;
         return false;
+      }
 
       pFormFillEnv->JS_appAlert(WideString::FromLocal(IDS_XFA_Validate_Input),
                                 L"", JSPLATFORM_ALERT_BUTTON_OK,
                                 JSPLATFORM_ALERT_ICON_WARNING);
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit END 6" << std::endl;
       return false;
     }
     pNode = it->MoveToNext();
   }
 
   docView->UpdateDocView();
+  std::cerr << "CPDFXFA_DocEnvironment::OnBeforeNotifySubmit END" << std::endl;
   return true;
 }
 
 void CPDFXFA_DocEnvironment::OnAfterNotifySubmit() {
+  std::cerr << "CPDFXFA_DocEnvironment::OnAfterNotifySubmit BEGINNOEND" << std::endl;
   if (!m_pContext->ContainsXFAForm())
     return;
 

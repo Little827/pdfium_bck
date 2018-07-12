@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/cxfa_ffdocview.h"
 
+#include <iostream>
+
 #include "core/fxcrt/fx_extension.h"
 #include "fxjs/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
@@ -60,25 +62,32 @@ CXFA_FFDocView::CXFA_FFDocView(CXFA_FFDoc* pDoc) : m_pDoc(pDoc) {}
 CXFA_FFDocView::~CXFA_FFDocView() {}
 
 void CXFA_FFDocView::InitLayout(CXFA_Node* pNode) {
+  std::cerr << "CXFA_FFDocView::InitLayout BEGIN" << std::endl;
   RunBindItems();
   ExecEventActivityByDeepFirst(pNode, XFA_EVENT_Initialize, false, true);
   ExecEventActivityByDeepFirst(pNode, XFA_EVENT_IndexChange, false, true);
+  std::cerr << "CXFA_FFDocView::InitLayout END" << std::endl;
 }
 
 int32_t CXFA_FFDocView::StartLayout() {
+  std::cerr << "CXFA_FFDocView::StartLayout BEGIN" << std::endl;
   m_iStatus = XFA_DOCVIEW_LAYOUTSTATUS_Start;
   m_pDoc->GetXFADoc()->DoProtoMerge();
   m_pDoc->GetXFADoc()->DoDataMerge();
   m_pXFADocLayout = GetXFALayout();
 
   int32_t iStatus = m_pXFADocLayout->StartLayout();
-  if (iStatus < 0)
+  if (iStatus < 0) {
+  std::cerr << "CXFA_FFDocView::StartLayout END 1" << std::endl;
     return iStatus;
+  }
 
   CXFA_Node* pRootItem =
       ToNode(m_pDoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Form));
-  if (!pRootItem)
+  if (!pRootItem) {
+  std::cerr << "CXFA_FFDocView::StartLayout END 2" << std::endl;
     return iStatus;
+  }
 
   InitLayout(pRootItem);
   InitCalculate(pRootItem);
@@ -86,6 +95,7 @@ int32_t CXFA_FFDocView::StartLayout() {
 
   ExecEventActivityByDeepFirst(pRootItem, XFA_EVENT_Ready, true, true);
   m_iStatus = XFA_DOCVIEW_LAYOUTSTATUS_Start;
+  std::cerr << "CXFA_FFDocView::StartLayout END" << std::endl;
   return iStatus;
 }
 

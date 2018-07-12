@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/parser/cxfa_layoutprocessor.h"
 
+#include <iostream>
+
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
@@ -30,38 +32,53 @@ CXFA_Document* CXFA_LayoutProcessor::GetDocument() const {
 }
 
 int32_t CXFA_LayoutProcessor::StartLayout(bool bForceRestart) {
-  if (!bForceRestart && !IsNeedLayout())
+  std::cerr << "CXFA_LayoutProcessor::StartLayout BEGIN" << std::endl;
+  if (!bForceRestart && !IsNeedLayout()) {
+  std::cerr << "CXFA_LayoutProcessor::StartLayout END 1" << std::endl;
     return 100;
+  }
 
   m_pRootItemLayoutProcessor.reset();
   m_nProgressCounter = 0;
   CXFA_Node* pFormPacketNode =
       ToNode(m_pDocument->GetXFAObject(XFA_HASHCODE_Form));
-  if (!pFormPacketNode)
+  if (!pFormPacketNode) {
+  std::cerr << "CXFA_LayoutProcessor::StartLayout END 2" << std::endl;
     return -1;
+  }
 
   CXFA_Subform* pFormRoot =
       pFormPacketNode->GetFirstChildByClass<CXFA_Subform>(XFA_Element::Subform);
-  if (!pFormRoot)
+  if (!pFormRoot) {
+  std::cerr << "CXFA_LayoutProcessor::StartLayout END 3" << std::endl;
     return -1;
+  }
 
   if (!m_pLayoutPageMgr)
     m_pLayoutPageMgr = pdfium::MakeUnique<CXFA_LayoutPageMgr>(this);
-  if (!m_pLayoutPageMgr->InitLayoutPage(pFormRoot))
+  if (!m_pLayoutPageMgr->InitLayoutPage(pFormRoot)) {
+  std::cerr << "CXFA_LayoutProcessor::StartLayout END 3" << std::endl;
     return -1;
+  }
 
-  if (!m_pLayoutPageMgr->PrepareFirstPage(pFormRoot))
+  if (!m_pLayoutPageMgr->PrepareFirstPage(pFormRoot)) {
+  std::cerr << "CXFA_LayoutProcessor::StartLayout END 4" << std::endl;
     return -1;
+  }
 
   m_pRootItemLayoutProcessor = pdfium::MakeUnique<CXFA_ItemLayoutProcessor>(
       pFormRoot, m_pLayoutPageMgr.get());
   m_nProgressCounter = 1;
+  std::cerr << "CXFA_LayoutProcessor::StartLayout END" << std::endl;
   return 0;
 }
 
 int32_t CXFA_LayoutProcessor::DoLayout() {
-  if (m_nProgressCounter < 1)
+  std::cerr << "CXFA_LayoutProcessor::DoLayout BEGIN" << std::endl;
+  if (m_nProgressCounter < 1) {
+  std::cerr << "CXFA_LayoutProcessor::DoLayout END 1" << std::endl;
     return -1;
+  }
 
   XFA_ItemLayoutProcessorResult eStatus;
   CXFA_Node* pFormNode = m_pRootItemLayoutProcessor->GetFormNode();
@@ -90,6 +107,7 @@ int32_t CXFA_LayoutProcessor::DoLayout() {
     m_bNeedLayout = false;
     m_rgChangedContainers.clear();
   }
+  std::cerr << "CXFA_LayoutProcessor::DoLayout END" << std::endl;
   return 100 * (eStatus == XFA_ItemLayoutProcessorResult::Done
                     ? m_nProgressCounter
                     : m_nProgressCounter - 1) /
