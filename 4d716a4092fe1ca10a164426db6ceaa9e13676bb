@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1531420272 -0700\nnonce APISObTDWrkf+m+wOzqlRNhE/HtoYZ/gW1uChje0AbvkS4dEWi1iYwBgRfM99jREMrnTLft5kb7z\n\n0000000000000000000000000000000000000000 4d716a4092fe1ca10a164426db6ceaa9e13676bb refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dadd-cjs-field\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltHnnAACgkQqzYtYVpm\n/XsSzQf/anRjzqKhbcM4p20wW2tjBhe3nZG/4OV4MVsuoA/tmRSqHmZoT67T1zB9\n3nbe2QJ+I11kCOC6oZo0u8f5K5GKe6vwyx4KFwm6WpmJUkoV42MA22PH5owbNyNf\n8Pcddm1x2QV0zaOVeg56eRJETnVPRmYKv2EiMQrLICyZ3rM3ke5ymWOt0lP8pxVP\nYNoMT9QAwaXfx8QYsdG06K3GGMy9qR1slamdPMV6elPdj94Oe0aqNmIHCgT8wiKH\nVEaHRpRllVGI/J5rItRsFtYs5kPBko/NSROwMtzCncfCirGazUse/1Sjqd/UcDZd\n8QF33YHAXPoi4DK9UxDR0E2hAN7e/g\u003d\u003d\n\u003dkplY\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f51e790_40cceda7",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T18:53:58Z",
+      "side": 1,
+      "message": "Note: This is never nullptr due to line 259 above.",
+      "range": {
+        "startLine": 272,
+        "startChar": 36,
+        "endLine": 272,
+        "endChar": 45
+      },
+      "revId": "4d716a4092fe1ca10a164426db6ceaa9e13676bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }

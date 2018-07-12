@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da47d51e_f050d7c5",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T18:53:58Z",
+      "side": 0,
+      "message": "So I removed ASSERT() statements, which some methods have and others don\u0027t.",
+      "revId": "be169d65d1f6e54b2d0e21b0f23f82cdec962506",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
