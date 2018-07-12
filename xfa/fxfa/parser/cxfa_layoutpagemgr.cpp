@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/parser/cxfa_layoutpagemgr.h"
 
+#include <iostream>
+
 #include "fxjs/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/stl_util.h"
@@ -272,7 +274,10 @@ CXFA_LayoutPageMgr::CXFA_LayoutPageMgr(CXFA_LayoutProcessor* pLayoutProcessor)
       m_nAvailPages(0),
       m_nCurPageCount(0),
       m_ePageSetMode(XFA_AttributeEnum::OrderedOccurrence),
-      m_bCreateOverFlowPage(false) {}
+      m_bCreateOverFlowPage(false) {
+  std::cerr << "m_CurrentContainerRecordIter init to m_ProposedContainerRecords.end() (0)" << std::endl;
+  std::cerr << "GetCurrentContainerRecord() (0) " << (void*)GetCurrentContainerRecord() << std::endl;
+}
 
 CXFA_LayoutPageMgr::~CXFA_LayoutPageMgr() {
   ClearData();
@@ -407,7 +412,9 @@ bool CXFA_LayoutPageMgr::PrepareFirstPage(CXFA_Node* pRootSubform) {
   CXFA_Node* pTrailer;
   if (pBreakBeforeNode &&
       ExecuteBreakBeforeOrAfter(pBreakBeforeNode, true, pLeader, pTrailer)) {
+  std::cerr << "m_CurrentContainerRecordIter = m_ProposedContainerRecords.begin() (2)" << std::endl;
     m_CurrentContainerRecordIter = m_ProposedContainerRecords.begin();
+  std::cerr << "GetCurrentContainerRecord() (2) " << (void*)GetCurrentContainerRecord() << std::endl;
     return true;
   }
   return AppendNewPage(true);
@@ -423,7 +430,9 @@ bool CXFA_LayoutPageMgr::AppendNewPage(bool bFirstTemPage) {
 
   if (bFirstTemPage &&
       m_CurrentContainerRecordIter == m_ProposedContainerRecords.end()) {
+  std::cerr << "m_CurrentContainerRecordIter = m_ProposedContainerRecords.begin() (3)" << std::endl;
     m_CurrentContainerRecordIter = m_ProposedContainerRecords.begin();
+  std::cerr << "GetCurrentContainerRecord() (3) " << (void*)GetCurrentContainerRecord() << std::endl;
   }
   return !bFirstTemPage ||
          m_CurrentContainerRecordIter != m_ProposedContainerRecords.end();
@@ -479,12 +488,15 @@ void CXFA_LayoutPageMgr::SubmitContentItem(
         m_CurrentContainerRecordIter == GetTailPosition()) {
       AppendNewPage();
     }
+  std::cerr << "m_CurrentContainerRecordIter = GetTailPosition() (4)" << std::endl;
     m_CurrentContainerRecordIter = GetTailPosition();
+  std::cerr << "GetCurrentContainerRecord() (4) " << (void*)GetCurrentContainerRecord() << std::endl;
     m_pCurPageArea = GetCurrentContainerRecord()->pCurPageArea->m_pFormNode;
   }
 }
 
 float CXFA_LayoutPageMgr::GetAvailHeight() {
+  std::cerr << "GetCurrentContainerRecord() " << (void*)GetCurrentContainerRecord() << std::endl;
   CXFA_ContainerLayoutItem* pLayoutItem =
       GetCurrentContainerRecord()->pCurContentArea;
   if (!pLayoutItem || !pLayoutItem->m_pFormNode)
@@ -1569,6 +1581,7 @@ bool CXFA_LayoutPageMgr::GetNextAvailContentHeight(float fChildHeight) {
         CXFA_ContainerRecord* pInsertRecord = *psSrcIter++;
         RemoveLayoutRecord(pInsertRecord, pPrevRecord);
         delete pInsertRecord;
+        std::cerr << "m_ProposedContainerRecords.erase(" << (void*)*psSaveIter << ")" << std::endl;
         m_ProposedContainerRecords.erase(psSaveIter);
       }
       if (pNextPage) {
@@ -1607,9 +1620,12 @@ void CXFA_LayoutPageMgr::ClearData() {
   while (sPos != m_ProposedContainerRecords.end()) {
     CXFA_ContainerRecord* pRecord = *sPos++;
     delete pRecord;
+    std::cerr << "delete (" << (void*)pRecord << ")" << std::endl;
   }
   m_ProposedContainerRecords.clear();
+  std::cerr << "m_CurrentContainerRecordIter = m_ProposedContainerRecords.end() (1)" << std::endl;
   m_CurrentContainerRecordIter = m_ProposedContainerRecords.end();
+  std::cerr << "GetCurrentContainerRecord() (1) " << (void*)GetCurrentContainerRecord() << std::endl;
   m_pCurPageArea = nullptr;
   m_nCurPageCount = 0;
   m_bCreateOverFlowPage = false;
