@@ -484,36 +484,53 @@ FPDFPageObj_HasTransparency(FPDF_PAGEOBJECT pageObject) {
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_SetIntParam(FPDF_DOCUMENT document,
+                            FPDF_PAGEOBJECT page_object,
                             FPDF_PAGEOBJECTMARK mark,
                             FPDF_BYTESTRING key,
                             int value) {
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
   CPDF_Dictionary* pParams = GetOrCreateMarkParamsDict(document, mark);
   if (!pParams)
     return false;
 
   pParams->SetNewFor<CPDF_Number>(key, value);
+  pPageObj->SetDirty(true);
   return true;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_SetStringParam(FPDF_DOCUMENT document,
+                               FPDF_PAGEOBJECT page_object,
                                FPDF_PAGEOBJECTMARK mark,
                                FPDF_BYTESTRING key,
                                FPDF_BYTESTRING value) {
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
   CPDF_Dictionary* pParams = GetOrCreateMarkParamsDict(document, mark);
   if (!pParams)
     return false;
 
   pParams->SetNewFor<CPDF_String>(key, value, false);
+  pPageObj->SetDirty(true);
   return true;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_SetBlobParam(FPDF_DOCUMENT document,
+                             FPDF_PAGEOBJECT page_object,
                              FPDF_PAGEOBJECTMARK mark,
                              FPDF_BYTESTRING key,
                              void* value,
                              unsigned long value_len) {
+  CPDF_PageObject* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
+  if (!pPageObj)
+    return false;
+
   CPDF_Dictionary* pParams = GetOrCreateMarkParamsDict(document, mark);
   if (!pParams)
     return false;
@@ -523,6 +540,7 @@ FPDFPageObjMark_SetBlobParam(FPDF_DOCUMENT document,
 
   pParams->SetNewFor<CPDF_String>(
       key, ByteString(static_cast<const char*>(value), value_len), true);
+  pPageObj->SetDirty(true);
   return true;
 }
 
