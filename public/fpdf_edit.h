@@ -451,14 +451,16 @@ FPDFPageObjMark_GetParamBlobValue(FPDF_PAGEOBJECTMARK mark,
 // with key |key| exists, its value is set to |value|. Otherwise, it is added as
 // a new parameter.
 //
-//   document - handle to the document.
-//   mark     - handle to a content mark.
-//   key      - string key of the property.
-//   value    - int value to set.
+//   document    - handle to the document.
+//   page_object - handle to the page object with the mark.
+//   mark        - handle to a content mark.
+//   key         - string key of the property.
+//   value       - int value to set.
 //
 // Returns TRUE if the operation succeeded, FALSE otherwise.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_SetIntParam(FPDF_DOCUMENT document,
+                            FPDF_PAGEOBJECT page_object,
                             FPDF_PAGEOBJECTMARK mark,
                             FPDF_BYTESTRING key,
                             int value);
@@ -468,14 +470,16 @@ FPDFPageObjMark_SetIntParam(FPDF_DOCUMENT document,
 // with key |key| exists, its value is set to |value|. Otherwise, it is added as
 // a new parameter.
 //
-//   document - handle to the document.
-//   mark     - handle to a content mark.
-//   key      - string key of the property.
-//   value    - string value to set.
+//   document    - handle to the document.
+//   page_object - handle to the page object with the mark.
+//   mark        - handle to a content mark.
+//   key         - string key of the property.
+//   value       - string value to set.
 //
 // Returns TRUE if the operation succeeded, FALSE otherwise.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_SetStringParam(FPDF_DOCUMENT document,
+                               FPDF_PAGEOBJECT page_object,
                                FPDF_PAGEOBJECTMARK mark,
                                FPDF_BYTESTRING key,
                                FPDF_BYTESTRING value);
@@ -485,19 +489,34 @@ FPDFPageObjMark_SetStringParam(FPDF_DOCUMENT document,
 // with key |key| exists, its value is set to |value|. Otherwise, it is added as
 // a new parameter.
 //
-//   document  - handle to the document.
-//   mark      - handle to a content mark.
-//   key       - string key of the property.
-//   value     - pointer to blob value to set.
-//   value_len - size in bytes of |value|.
+//   document    - handle to the document.
+//   page_object - handle to the page object with the mark.
+//   mark        - handle to a content mark.
+//   key         - string key of the property.
+//   value       - pointer to blob value to set.
+//   value_len   - size in bytes of |value|.
 //
 // Returns TRUE if the operation succeeded, FALSE otherwise.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_SetBlobParam(FPDF_DOCUMENT document,
+                             FPDF_PAGEOBJECT page_object,
                              FPDF_PAGEOBJECTMARK mark,
                              FPDF_BYTESTRING key,
                              void* value,
                              unsigned long value_len);
+
+// Experimental API.
+// Removes a property from a content mark by key.
+//
+//   page_object - handle to the page object with the mark.
+//   mark        - handle to a content mark.
+//   key         - string key of the property.
+//
+// Returns TRUE if the operation succeeded, FALSE otherwise.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFPageObjMark_RemoveParam(FPDF_PAGEOBJECT page_object,
+                            FPDF_PAGEOBJECTMARK mark,
+                            FPDF_BYTESTRING key);
 
 // Load an image from a JPEG image file and then set it into |image_object|.
 //
