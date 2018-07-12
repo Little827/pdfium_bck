@@ -7,6 +7,7 @@
 #include "core/fpdfapi/page/cpdf_contentmark.h"
 
 #include <algorithm>
+#include <iostream>
 #include <utility>
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -64,6 +65,13 @@ void CPDF_ContentMark::AddMarkWithPropertiesDict(
     const ByteString& property_name) {
   EnsureMarkDataExists();
   m_pMarkData->AddMarkWithPropertiesDict(std::move(name), pDict, property_name);
+}
+
+bool CPDF_ContentMark::RemoveMark(CPDF_ContentMarkItem* pMarkItem) {
+  if (!m_pMarkData)
+    return false;
+
+  return m_pMarkData->RemoveMark(pMarkItem);
 }
 
 void CPDF_ContentMark::EnsureMarkDataExists() {
@@ -142,6 +150,18 @@ void CPDF_ContentMark::MarkData::AddMarkWithPropertiesDict(
   auto pItem = pdfium::MakeRetain<CPDF_ContentMarkItem>(std::move(name));
   pItem->SetPropertiesDict(pDict, property_name);
   m_Marks.push_back(pItem);
+}
+
+bool CPDF_ContentMark::MarkData::RemoveMark(CPDF_ContentMarkItem* pMarkItem) {
+  for (auto it = m_Marks.begin(); it != m_Marks.end(); ++it) {
+    if (it->Get() == pMarkItem) {
+      std::cerr << "FOUND!" << std::endl;
+      m_Marks.erase(it);
+      return true;
+    }
+  }
+  std::cerr << "NOT FOUND..." << std::endl;
+  return false;
 }
 
 void CPDF_ContentMark::MarkData::DeleteLastMark() {
