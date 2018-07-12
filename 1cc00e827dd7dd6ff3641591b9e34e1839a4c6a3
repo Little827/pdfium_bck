@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3967422f_3cf84aa3",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T21:36:37Z",
+      "side": 1,
+      "message": "Just: return m_pMarkData \u0026\u0026 m_pMarkData-\u003eRemoveMark(pMarkItem);",
+      "revId": "1cc00e827dd7dd6ff3641591b9e34e1839a4c6a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ed0a9bd_33f954c5",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T21:36:37Z",
+      "side": 1,
+      "message": "Does this loop work if there are two \"Prime\" marks adjacent to each other? Maybe it should go in reverse order?",
+      "revId": "1cc00e827dd7dd6ff3641591b9e34e1839a4c6a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f57ed3f_37112148",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T21:36:37Z",
+      "side": 1,
+      "message": "handle",
+      "range": {
+        "startLine": 334,
+        "startChar": 12,
+        "endLine": 334,
+        "endChar": 19
+      },
+      "revId": "1cc00e827dd7dd6ff3641591b9e34e1839a4c6a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
