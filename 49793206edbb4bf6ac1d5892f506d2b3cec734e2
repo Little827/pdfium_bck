@@ -380,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "9e5b3dfe_b64f167f",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-12T10:09:35Z",
+      "side": 1,
+      "message": "Will delete it in separate Cl.",
+      "parentUuid": "2b4c89b3_41057b32",
+      "range": {
+        "startLine": 102,
+        "startChar": 44,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "49793206edbb4bf6ac1d5892f506d2b3cec734e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99990b85_5f1209ca",
         "filename": "core/fpdfapi/parser/cpdf_parser_unittest.cpp",
         "patchSetId": 6
