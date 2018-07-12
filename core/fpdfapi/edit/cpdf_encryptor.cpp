@@ -5,7 +5,9 @@
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
 #include "core/fpdfapi/edit/cpdf_encryptor.h"
+
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
+#include "third_party/base/ptr_util.h"
 
 CPDF_Encryptor::CPDF_Encryptor(CPDF_CryptoHandler* pHandler,
                                int objnum,
@@ -27,3 +29,15 @@ CPDF_Encryptor::CPDF_Encryptor(CPDF_CryptoHandler* pHandler,
 }
 
 CPDF_Encryptor::~CPDF_Encryptor() {}
+
+CPDF_EncryptorFactory::CPDF_EncryptorFactory(CPDF_CryptoHandler* pHandler,
+                                             int objnum)
+    : m_pHandler(pHandler), m_ObjNum(objnum) {}
+
+CPDF_EncryptorFactory::~CPDF_EncryptorFactory() = default;
+
+std::unique_ptr<CPDF_Encryptor> CPDF_EncryptorFactory::MakeEncryptor(
+    pdfium::span<const uint8_t> src_data) const {
+  return pdfium::MakeUnique<CPDF_Encryptor>(m_pHandler.Get(), m_ObjNum,
+                                            src_data);
+}

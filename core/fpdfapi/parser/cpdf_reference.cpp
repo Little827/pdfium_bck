@@ -99,7 +99,9 @@ const CPDF_Object* CPDF_Reference::GetDirect() const {
                     : nullptr;
 }
 
-bool CPDF_Reference::WriteTo(IFX_ArchiveStream* archive) const {
+bool CPDF_Reference::WriteTo(
+    IFX_ArchiveStream* archive,
+    const CPDF_EncryptorFactory* encryptor_factory) const {
   return archive->WriteString(" ") && archive->WriteDWord(GetRefObjNum()) &&
          archive->WriteString(" 0 R ");
 }

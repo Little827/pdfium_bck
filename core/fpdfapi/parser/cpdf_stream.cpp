@@ -9,6 +9,8 @@
 #include <utility>
 
 #include "constants/stream_dict_common.h"
+#include "core/fpdfapi/edit/cpdf_encryptor.h"
+#include "core/fpdfapi/edit/cpdf_flateencoder.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
@@ -17,6 +19,15 @@
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
+
+namespace {
+
+bool IsMetaDataStreamDictionary(const CPDF_Dictionary* dict) {
+  return dict && dict->GetStringFor("Type") == "Metadata" &&
+         dict->GetStringFor("Subtype") == "XML";
+}
+
+}  // namespace
 
 CPDF_Stream::CPDF_Stream() {}
 
@@ -167,12 +178,33 @@ WideString CPDF_Stream::GetUnicodeText() const {
   return PDF_DecodeText(pAcc->GetData(), pAcc->GetSize());
 }
 
-bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive) const {
-  if (!GetDict()->WriteTo(archive) || !archive->WriteString("stream\r\n"))
+bool CPDF_Stream::WriteTo(
+    IFX_ArchiveStream* archive,
+    const CPDF_EncryptorFactory* encryptor_factory) const {
+  const bool is_metadata = IsMetaDataStreamDictionary(GetDict());
+  CPDF_FlateEncoder encoder(this, !is_metadata);
+
+  std::unique_ptr<CPDF_Encryptor> encryptor =
+      encryptor_factory && !is_metadata
+          ? encryptor_factory->MakeEncryptor(encoder.GetSpan())
+          : nullptr;
+  const pdfium::span<const uint8_t> data =
+      encryptor ? encryptor->GetSpan() : encoder.GetSpan();
+
+  if (static_cast<uint32_t>(encoder.GetDict()->GetIntegerFor("Length")) !=
+      data.size()) {
+    encoder.CloneDict();
+    encoder.GetClonedDict()->SetNewFor<CPDF_Number>(
+        "Length", static_cast<int>(data.size()));
+  }
+
+  if (!encoder.GetDict()->WriteTo(archive, encryptor_factory))
     return false;
 
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(this);
-  pAcc->LoadAllDataRaw();
-  return archive->WriteBlock(pAcc->GetData(), pAcc->GetSize()) &&
-         archive->WriteString("\r\nendstream");
+  if (!archive->WriteString("stream\r\n") ||
+      !archive->WriteBlock(data.data(), data.size()) ||
+      !archive->WriteString("\r\nendstream")) {
+    return false;
+  }
+  return true;
 }
