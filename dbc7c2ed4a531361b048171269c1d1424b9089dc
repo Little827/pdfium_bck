@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a726bb6_e130278f",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T21:21:52Z",
+      "side": 1,
+      "message": "I\u0027ll wait for a rebase here. BTW, you can probably use sizeof(L\"Last\") here.",
+      "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b6c386_da8169a6",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2199,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T21:21:52Z",
+      "side": 1,
+      "message": "sizeof(buffer)",
+      "range": {
+        "startLine": 2199,
+        "startChar": 50,
+        "endLine": 2199,
+        "endChar": 53
+      },
+      "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f787cec_c587157c",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-12T21:21:52Z",
+      "side": 1,
+      "message": "Do we care if the caller passed in a valid |page_object|, but it is not the page object for |mark|?",
+      "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
