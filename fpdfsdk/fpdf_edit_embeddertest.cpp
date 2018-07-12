@@ -588,10 +588,15 @@ void CheckMarkCounts(FPDF_PAGE page,
         std::wstring value =
             GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
 
-        // "Position" can be "Last" or "First".
+        // "Position" can be "Last", "End" or "First".
         if (i == object_count - 1) {
-          EXPECT_EQ((4u + 1u) * 2u, length);
-          EXPECT_EQ(L"Last", value);
+          if (length == (4u + 1u) * 2u) {
+            EXPECT_EQ(L"Last", value);
+          } else if (length == (3u + 1u) * 2u) {
+            EXPECT_EQ(L"End", value);
+          } else {
+            FAIL();
+          }
         } else if (i == 0) {
           EXPECT_EQ((5u + 1u) * 2u, length);
           EXPECT_EQ(L"First", value);
@@ -2157,8 +2162,8 @@ TEST_F(FPDFEditEmbeddertest, AddMark) {
   FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, 0);
   FPDF_PAGEOBJECTMARK mark = FPDFPageObj_AddMark(page_object, "Bounds");
   EXPECT_TRUE(mark);
-  EXPECT_TRUE(
-      FPDFPageObjMark_SetStringParam(document(), mark, "Position", "First"));
+  EXPECT_TRUE(FPDFPageObjMark_SetStringParam(document(), page_object, mark,
+                                             "Position", "First"));
 
   CheckMarkCounts(page, 1, kExpectedObjectCount, 8, 4, 9, 2);
 
@@ -2172,6 +2177,63 @@ TEST_F(FPDFEditEmbeddertest, AddMark) {
   FPDF_PAGE saved_page = LoadSavedPage(0);
 
   CheckMarkCounts(saved_page, 1, kExpectedObjectCount, 8, 4, 9, 2);
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
+TEST_F(FPDFEditEmbeddertest, SetMarkParam) {
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("text_in_page_marked.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  constexpr int kExpectedObjectCount = 19;
+  CheckMarkCounts(page, 1, kExpectedObjectCount, 8, 4, 9, 1);
+
+  // Check the "Bounds" mark's "Position" param is "Last".
+  FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, 18);
+  FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, 1);
+  ASSERT_TRUE(mark);
+  char buffer[256];
+  ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, 256), 0u);
+  ASSERT_EQ(L"Bounds",
+            GetPlatformWString(reinterpret_cast<unsigned short*>(buffer)));
+  unsigned long out_buffer_len;
+  ASSERT_TRUE(FPDFPageObjMark_GetParamStringValue(mark, "Position", buffer, 256,
+                                                  &out_buffer_len));
+  ASSERT_EQ(L"Last",
+            GetPlatformWString(reinterpret_cast<unsigned short*>(buffer)));
+
+  // Set is to "End".
+  EXPECT_TRUE(FPDFPageObjMark_SetStringParam(document(), page_object, mark,
+                                             "Position", "End"));
+
+  // Verify nothing else changed.
+  CheckMarkCounts(page, 1, kExpectedObjectCount, 8, 4, 9, 1);
+
+  // Verify "Position" now maps to "End".
+  EXPECT_TRUE(FPDFPageObjMark_GetParamStringValue(mark, "Position", buffer, 256,
+                                                  &out_buffer_len));
+  EXPECT_EQ(L"End",
+            GetPlatformWString(reinterpret_cast<unsigned short*>(buffer)));
+
+  // Save the file
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  UnloadPage(page);
+
+  // Re-open the file and cerify "Position" still maps to "End".
+  OpenSavedDocument();
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+
+  CheckMarkCounts(saved_page, 1, kExpectedObjectCount, 8, 4, 9, 1);
+  page_object = FPDFPage_GetObject(saved_page, 18);
+  mark = FPDFPageObj_GetMark(page_object, 1);
+  EXPECT_TRUE(FPDFPageObjMark_GetParamStringValue(mark, "Position", buffer, 256,
+                                                  &out_buffer_len));
+  EXPECT_EQ(L"End",
+            GetPlatformWString(reinterpret_cast<unsigned short*>(buffer)));
 
   CloseSavedPage(saved_page);
   CloseSavedDocument();
@@ -2215,9 +2277,10 @@ TEST_F(FPDFEditEmbeddertest, AddMarkedText) {
   // - int "IntKey" : 42
   // - string "StringKey": "StringValue"
   EXPECT_EQ(0, FPDFPageObjMark_CountParams(mark));
-  EXPECT_TRUE(FPDFPageObjMark_SetIntParam(document(), mark, "IntKey", 42));
-  EXPECT_TRUE(FPDFPageObjMark_SetStringParam(document(), mark, "StringKey",
-                                             "StringValue"));
+  EXPECT_TRUE(
+      FPDFPageObjMark_SetIntParam(document(), text_object, mark, "IntKey", 42));
+  EXPECT_TRUE(FPDFPageObjMark_SetStringParam(document(), text_object, mark,
+                                             "StringKey", "StringValue"));
   EXPECT_EQ(2, FPDFPageObjMark_CountParams(mark));
 
   // Check the two parameters can be retrieved.
