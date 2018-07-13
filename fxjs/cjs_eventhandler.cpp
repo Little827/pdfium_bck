@@ -576,21 +576,19 @@ bool CJS_EventHandler::Shift() const {
 
 CJS_Field* CJS_EventHandler::Source() {
   CJS_Runtime* pRuntime = m_pJSEventContext->GetJSRuntime();
-  v8::Local<v8::Object> pDocObj =
-      pRuntime->NewFXJSBoundObject(CJS_Document::GetObjDefnID());
-  if (pDocObj.IsEmpty())
+  v8::Local<v8::Object> pDocObj;
+  CJS_Document* pJSDocument;
+  std::tie(pDocObj, pJSDocument) =
+      pRuntime->NewDynamicFXJSBoundObject<CJS_Document>();
+  if (!pJSDocument)
     return nullptr;
 
-  v8::Local<v8::Object> pFieldObj =
-      pRuntime->NewFXJSBoundObject(CJS_Field::GetObjDefnID());
-  if (pFieldObj.IsEmpty())
+  v8::Local<v8::Object> pFieldObj;
+  CJS_Field* pJSField;
+  std::tie(pFieldObj, pJSField) =
+      pRuntime->NewDynamicFXJSBoundObject<CJS_Field>();
+  if (!pJSField)
     return nullptr;
-
-  auto* pJSDocument =
-      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectPrivate(pDocObj));
-
-  auto* pJSField =
-      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pFieldObj));
 
   pJSDocument->SetFormFillEnv(m_pTargetFormFillEnv
                                   ? m_pTargetFormFillEnv.Get()
@@ -602,21 +600,19 @@ CJS_Field* CJS_EventHandler::Source() {
 
 CJS_Field* CJS_EventHandler::Target_Field() {
   CJS_Runtime* pRuntime = m_pJSEventContext->GetJSRuntime();
-  v8::Local<v8::Object> pDocObj =
-      pRuntime->NewFXJSBoundObject(CJS_Document::GetObjDefnID());
-  if (pDocObj.IsEmpty())
+  v8::Local<v8::Object> pDocObj;
+  CJS_Document* pJSDocument;
+  std::tie(pDocObj, pJSDocument) =
+      pRuntime->NewDynamicFXJSBoundObject<CJS_Document>();
+  if (!pJSDocument)
     return nullptr;
 
-  v8::Local<v8::Object> pFieldObj =
-      pRuntime->NewFXJSBoundObject(CJS_Field::GetObjDefnID());
-  if (pFieldObj.IsEmpty())
+  v8::Local<v8::Object> pFieldObj;
+  CJS_Field* pJSField;
+  std::tie(pFieldObj, pJSField) =
+      pRuntime->NewDynamicFXJSBoundObject<CJS_Field>();
+  if (!pJSField)
     return nullptr;
-
-  auto* pJSDocument =
-      static_cast<CJS_Document*>(CFXJS_Engine::GetObjectPrivate(pDocObj));
-
-  auto* pJSField =
-      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pFieldObj));
 
   pJSDocument->SetFormFillEnv(m_pTargetFormFillEnv
                                   ? m_pTargetFormFillEnv.Get()
