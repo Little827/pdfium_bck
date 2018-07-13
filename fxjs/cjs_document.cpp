@@ -247,13 +247,10 @@ CJS_Return CJS_Document::getField(
   if (pPDFForm->CountFields(wideName) <= 0)
     return CJS_Return(pRuntime->NewUndefined());
 
-  v8::Local<v8::Object> pFieldObj =
-      pRuntime->NewFXJSBoundObject(CJS_Field::GetObjDefnID());
-  if (pFieldObj.IsEmpty())
-    return CJS_Return(JSMessage::kBadObjectError);
-
-  auto* pJSField =
-      static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pFieldObj));
+  v8::Local<v8::Object> pFieldObj;
+  CJS_Field* pJSField;
+  std::tie(pFieldObj, pJSField) =
+      pRuntime->NewDynamicFXJSBoundObject<CJS_Field>();
   if (!pJSField)
     return CJS_Return(JSMessage::kBadObjectError);
 
@@ -1012,13 +1009,9 @@ CJS_Return CJS_Document::getAnnot(
   if (!pSDKBAAnnot)
     return CJS_Return(JSMessage::kBadObjectError);
 
-  v8::Local<v8::Object> pObj =
-      pRuntime->NewFXJSBoundObject(CJS_Annot::GetObjDefnID());
-  if (pObj.IsEmpty())
-    return CJS_Return(JSMessage::kBadObjectError);
-
-  auto* pJS_Annot =
-      static_cast<CJS_Annot*>(CFXJS_Engine::GetObjectPrivate(pObj));
+  v8::Local<v8::Object> pObj;
+  CJS_Annot* pJS_Annot;
+  std::tie(pObj, pJS_Annot) = pRuntime->NewDynamicFXJSBoundObject<CJS_Annot>();
   if (!pJS_Annot)
     return CJS_Return(JSMessage::kBadObjectError);
 
@@ -1047,13 +1040,13 @@ CJS_Return CJS_Document::getAnnots(
       if (!pSDKAnnotCur)
         return CJS_Return(JSMessage::kBadObjectError);
 
-      v8::Local<v8::Object> pObj =
-          pRuntime->NewFXJSBoundObject(CJS_Annot::GetObjDefnID());
-      if (pObj.IsEmpty())
+      v8::Local<v8::Object> pObj;
+      CJS_Annot* pJS_Annot;
+      std::tie(pObj, pJS_Annot) =
+          pRuntime->NewDynamicFXJSBoundObject<CJS_Annot>();
+      if (!pJS_Annot)
         return CJS_Return(JSMessage::kBadObjectError);
 
-      auto* pJS_Annot =
-          static_cast<CJS_Annot*>(CFXJS_Engine::GetObjectPrivate(pObj));
       pJS_Annot->SetSDKAnnot(static_cast<CPDFSDK_BAAnnot*>(pSDKAnnotCur.Get()));
       pRuntime->PutArrayElement(
           annots, i,
@@ -1119,13 +1112,12 @@ CJS_Return CJS_Document::get_icons(CJS_Runtime* pRuntime) {
   v8::Local<v8::Array> Icons = pRuntime->NewArray();
   int i = 0;
   for (const auto& name : m_IconNames) {
-    v8::Local<v8::Object> pObj =
-        pRuntime->NewFXJSBoundObject(CJS_Icon::GetObjDefnID());
-    if (pObj.IsEmpty())
+    v8::Local<v8::Object> pObj;
+    CJS_Icon* pJS_Icon;
+    std::tie(pObj, pJS_Icon) = pRuntime->NewDynamicFXJSBoundObject<CJS_Icon>();
+    if (!pJS_Icon)
       return CJS_Return(JSMessage::kBadObjectError);
 
-    auto* pJS_Icon =
-        static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectPrivate(pObj));
     pJS_Icon->SetIconName(name);
     pRuntime->PutArrayElement(Icons, i++,
                               pJS_Icon
@@ -1151,12 +1143,9 @@ CJS_Return CJS_Document::getIcon(
   if (it == m_IconNames.end())
     return CJS_Return(JSMessage::kBadObjectError);
 
-  v8::Local<v8::Object> pObj =
-      pRuntime->NewFXJSBoundObject(CJS_Icon::GetObjDefnID());
-  if (pObj.IsEmpty())
-    return CJS_Return(JSMessage::kBadObjectError);
-
-  auto* pJSIcon = static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectPrivate(pObj));
+  v8::Local<v8::Object> pObj;
+  CJS_Icon* pJSIcon;
+  std::tie(pObj, pJSIcon) = pRuntime->NewDynamicFXJSBoundObject<CJS_Icon>();
   if (!pJSIcon)
     return CJS_Return(JSMessage::kBadObjectError);
 
@@ -1302,7 +1291,7 @@ CJS_Return CJS_Document::getPrintParams(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
   v8::Local<v8::Object> pRetObj =
-      pRuntime->NewFXJSBoundObject(CJS_PrintParamsObj::GetObjDefnID());
+      pRuntime->NewFXJSBoundObject(CJS_PrintParamsObj::GetObjDefnID(), false);
   if (pRetObj.IsEmpty())
     return CJS_Return(JSMessage::kBadObjectError);
   return CJS_Return(JSMessage::kNotSupportedError);

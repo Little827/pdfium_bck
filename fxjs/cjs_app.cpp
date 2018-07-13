@@ -327,13 +327,12 @@ CJS_Return CJS_App::setInterval(
   GlobalTimer* pTimerRef = timerRef.get();
   m_Timers.insert(std::move(timerRef));
 
-  v8::Local<v8::Object> pRetObj =
-      pRuntime->NewFXJSBoundObject(CJS_TimerObj::GetObjDefnID());
-  if (pRetObj.IsEmpty())
+  v8::Local<v8::Object> pRetObj;
+  CJS_TimerObj* pJS_TimerObj;
+  std::tie(pRetObj, pJS_TimerObj) =
+      pRuntime->NewDynamicFXJSBoundObject<CJS_TimerObj>();
+  if (!pJS_TimerObj)
     return CJS_Return(JSMessage::kBadObjectError);
-
-  auto* pJS_TimerObj =
-      static_cast<CJS_TimerObj*>(CFXJS_Engine::GetObjectPrivate(pRetObj));
 
   pJS_TimerObj->SetTimer(pTimerRef);
   return CJS_Return(pRetObj);
@@ -356,13 +355,12 @@ CJS_Return CJS_App::setTimeOut(
   GlobalTimer* pTimerRef = timerRef.get();
   m_Timers.insert(std::move(timerRef));
 
-  v8::Local<v8::Object> pRetObj =
-      pRuntime->NewFXJSBoundObject(CJS_TimerObj::GetObjDefnID());
-  if (pRetObj.IsEmpty())
+  v8::Local<v8::Object> pRetObj;
+  CJS_TimerObj* pJS_TimerObj;
+  std::tie(pRetObj, pJS_TimerObj) =
+      pRuntime->NewDynamicFXJSBoundObject<CJS_TimerObj>();
+  if (!pJS_TimerObj)
     return CJS_Return(JSMessage::kBadObjectError);
-
-  auto* pJS_TimerObj =
-      static_cast<CJS_TimerObj*>(CFXJS_Engine::GetObjectPrivate(pRetObj));
 
   pJS_TimerObj->SetTimer(pTimerRef);
   return CJS_Return(pRetObj);
