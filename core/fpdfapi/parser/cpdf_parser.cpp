@@ -175,8 +175,9 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal() {
   m_LastXRefOffset = ParseStartXRef();
 
   if (m_LastXRefOffset > 0) {
-    if (!LoadAllCrossRefV4(m_LastXRefOffset) &&
-        !LoadAllCrossRefV5(m_LastXRefOffset)) {
+    if ((!LoadAllCrossRefV4(m_LastXRefOffset) &&
+         !LoadAllCrossRefV5(m_LastXRefOffset)) ||
+        !VerifyCrossRef()) {
       if (!RebuildCrossRef())
         return FORMAT_ERROR;
 
@@ -291,23 +292,37 @@ void CPDF_Parser::ReleaseEncryptHandler() {
 // In reality, we rarely see well-formed cross references don't match
 // with the objects. crbug/602650 showed a case where object numbers
 // in the cross reference table are all off by one.
-bool CPDF_Parser::VerifyCrossRefV4() {
-  for (const auto& it : m_CrossRefTable->objects_info()) {
-    if (it.second.pos == 0)
-      continue;
-    // Find the first non-zero position.
-    FX_FILESIZE SavedPos = m_pSyntax->GetPos();
-    m_pSyntax->SetPos(it.second.pos);
-    bool is_num = false;
-    ByteString num_str = m_pSyntax->GetNextWord(&is_num);
-    m_pSyntax->SetPos(SavedPos);
-    if (!is_num || num_str.IsEmpty() ||
-        FXSYS_atoui(num_str.c_str()) != it.first) {
-      // If the object number read doesn't match the one stored,
-      // something is wrong with the cross reference table.
+bool CPDF_Parser::VerifyCrossRef() {
+  // For verification we can use any known object. The root object num is
+  // suitable. But for linearized document we check the obj num of first page,
+  // because the root object bytes can be unavailable at this moment.
+  uint32_t obj_num =
+      m_pLinearized ? m_pLinearized->GetFirstPageObjNum() : GetRootObjNum();
+  if (!obj_num)
+    return false;
+
+  const CPDF_CrossRefTable::ObjectInfo* info =
+      GetCrossRefTable()->GetObjectInfo(obj_num);
+  if (!info || info->type == CPDF_CrossRefTable::ObjectType::kFree)
+    return false;
+
+  if (info->type == CPDF_CrossRefTable::ObjectType::kCompressed) {
+    obj_num = info->archive_obj_num;
+    info = GetCrossRefTable()->GetObjectInfo(obj_num);
+    if (!info || info->type != CPDF_CrossRefTable::ObjectType::kObjStream)
       return false;
-    }
-    break;
+  }
+
+  // Find the first non-zero position.
+  const FX_FILESIZE SavedPos = m_pSyntax->GetPos();
+  m_pSyntax->SetPos(info->pos);
+  bool is_num = false;
+  ByteString num_str = m_pSyntax->GetNextWord(&is_num);
+  m_pSyntax->SetPos(SavedPos);
+  if (!is_num || num_str.IsEmpty() || FXSYS_atoui(num_str.c_str()) != obj_num) {
+    // If the object number read doesn't match the one stored,
+    // something is wrong with the cross reference table.
+    return false;
   }
   return true;
 }
@@ -369,8 +384,6 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
     if (XRefStreamList[i] && !LoadCrossRefV5(&XRefStreamList[i], false))
       return false;
 
-    if (i == 0 && !VerifyCrossRefV4())
-      return false;
   }
   return true;
 }
@@ -978,7 +991,8 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   FX_FILESIZE dwFirstXRefOffset = m_LastXRefOffset;
   bool bXRefRebuilt = false;
   bool bLoadV4 = LoadCrossRefV4(dwFirstXRefOffset, false);
-  if (!bLoadV4 && !LoadCrossRefV5(&dwFirstXRefOffset, true)) {
+  if ((!bLoadV4 && !LoadCrossRefV5(&dwFirstXRefOffset, true)) ||
+      !VerifyCrossRef()) {
     if (!RebuildCrossRef())
       return FORMAT_ERROR;
 
