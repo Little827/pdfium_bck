@@ -1987,11 +1987,17 @@ int32_t CXFA_Node::ProcessEvent(CXFA_FFDocView* docView,
     case XFA_Element::SignData:
       break;
     case XFA_Element::Submit: {
-      CXFA_Submit* submit = event->GetSubmitIfExists();
-      if (!submit)
-        return XFA_EVENTERROR_NotExist;
-      return docView->GetDoc()->GetDocEnvironment()->Submit(docView->GetDoc(),
-                                                            submit);
+      // Submit is disabled for now. Leave this disable code block to prevent
+      // code rot.
+      if (false) {
+        CXFA_Submit* submit = event->GetSubmitIfExists();
+        if (!submit)
+          return XFA_EVENTERROR_NotExist;
+        return docView->GetDoc()->GetDocEnvironment()->Submit(docView->GetDoc(),
+                                                              submit);
+      }
+
+      return XFA_EVENTERROR_Disabled;
     }
     default:
       break;
