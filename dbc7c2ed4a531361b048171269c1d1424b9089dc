@@ -116,6 +116,24 @@
       "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "724b9fdf_4e5c367b",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-13T19:09:44Z",
+      "side": 1,
+      "message": "If we find it to be too slow, we can store the page object to mark relationship somewhere for faster lookups.",
+      "parentUuid": "1c0e5336_79704e21",
+      "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
