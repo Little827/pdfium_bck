@@ -17,6 +17,24 @@
       "revId": "1f21cfe0954783dcafcae4afb5bd336adc1913ac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a735b931_83ed2c8d",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-13T15:40:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7868de1_a26b761d",
+      "revId": "1f21cfe0954783dcafcae4afb5bd336adc1913ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
