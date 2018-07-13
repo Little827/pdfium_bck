@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06d9adde_52efb5ac",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-13T16:33:16Z",
+      "side": 1,
+      "message": "Rebased, but wchar_t is 4 bytes long.",
+      "parentUuid": "2a726bb6_e130278f",
+      "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8b6c386_da8169a6",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3bc5a49a_dd055865",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2199,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-13T16:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8b6c386_da8169a6",
+      "range": {
+        "startLine": 2199,
+        "startChar": 50,
+        "endLine": 2199,
+        "endChar": 53
+      },
+      "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f787cec_c587157c",
         "filename": "fpdfsdk/fpdf_editpage.cpp",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c0e5336_79704e21",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-13T16:33:16Z",
+      "side": 1,
+      "message": "Done.\n\nCaveat is that it\u0027s a bit inefficient to check, requiring to loop through the marks in the object looking for the one that was passed. This makes the operation complexity linear on the number of marks in the object, instead of constant. Assuming the mark depth is never too high, it\u0027s probably worth it.",
+      "parentUuid": "2f787cec_c587157c",
+      "revId": "dbc7c2ed4a531361b048171269c1d1424b9089dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
