@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c177850_bd593b33",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-16T22:59:11Z",
+      "side": 1,
+      "message": "Just to double check, this should cover the FXJSOBJTYPE_DYNAMIC and FXJSOBJTYPE_STATIC case, right?",
+      "revId": "2593bdac5bbed6e05769d4d58aa36fe2052f8103",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
