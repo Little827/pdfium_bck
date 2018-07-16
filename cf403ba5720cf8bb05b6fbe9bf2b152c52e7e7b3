@@ -22,6 +22,30 @@
       "revId": "cf403ba5720cf8bb05b6fbe9bf2b152c52e7e7b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d8af84_51e8c960",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-16T19:13:02Z",
+      "side": 0,
+      "message": "If ParsedObjectsHolder took a parameter, one would pass in the parameter here. e.g. https://chromium.googlesource.com/chromium/src/+/4f891da6/chrome/browser/dom_distiller/tab_utils.cc#88\n\nOtherwise it is pointless to write. The initialization order doesn\u0027t change. See \"\"Initialization order\" on https://en.cppreference.com/w/cpp/language/initializer_list",
+      "parentUuid": "47587bd2_bfc246b0",
+      "range": {
+        "startLine": 190,
+        "startChar": 6,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "cf403ba5720cf8bb05b6fbe9bf2b152c52e7e7b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
