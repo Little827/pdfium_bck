@@ -35,10 +35,6 @@ void JSEmbedderTest::TearDown() {
   m_pIsolate = nullptr;
 }
 
-v8::Isolate* JSEmbedderTest::isolate() {
-  return m_pIsolate;
-}
-
 v8::Local<v8::Context> JSEmbedderTest::GetV8Context() {
   return m_Engine->GetV8Context();
 }
