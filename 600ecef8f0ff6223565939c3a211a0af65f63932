@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9120fb83_0201b004",
+        "filename": "fxjs/cfxjse_runtimedata.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-16T21:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1c9a94a_c8944cde",
+      "revId": "600ecef8f0ff6223565939c3a211a0af65f63932",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae5ba3c4_07d9c519",
         "filename": "testing/js_embedder_test.h",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-16T20:52:53Z",
       "side": 1,
       "message": "Is this really Unowned?",
+      "revId": "600ecef8f0ff6223565939c3a211a0af65f63932",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd0630a6_741b31f7",
+        "filename": "testing/js_embedder_test.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-16T21:12:17Z",
+      "side": 1,
+      "message": "Yeah, good question.  Made into unique_ptr with a custom deleter.",
+      "parentUuid": "ae5ba3c4_07d9c519",
       "revId": "600ecef8f0ff6223565939c3a211a0af65f63932",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
