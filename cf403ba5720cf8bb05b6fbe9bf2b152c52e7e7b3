@@ -46,6 +46,30 @@
       "revId": "cf403ba5720cf8bb05b6fbe9bf2b152c52e7e7b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb52403_0dc2fb93",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-16T19:24:38Z",
+      "side": 0,
+      "message": "Oh, it inherits directly. I thought that was a subclass of a subclass for some reason.",
+      "parentUuid": "62d8af84_51e8c960",
+      "range": {
+        "startLine": 190,
+        "startChar": 6,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "cf403ba5720cf8bb05b6fbe9bf2b152c52e7e7b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
