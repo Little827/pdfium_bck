@@ -16,6 +16,24 @@
       "revId": "2593bdac5bbed6e05769d4d58aa36fe2052f8103",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d37de0_3b857830",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-16T23:35:52Z",
+      "side": 1,
+      "message": "Right.  If the \"info.holder\" as passed to us from JS doesn\u0027t have the bound object, then the only legitimate exception is this global proxy case as far as I can tell.",
+      "parentUuid": "2c177850_bd593b33",
+      "revId": "2593bdac5bbed6e05769d4d58aa36fe2052f8103",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
