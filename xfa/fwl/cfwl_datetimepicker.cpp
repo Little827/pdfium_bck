@@ -118,20 +118,19 @@ void CFWL_DateTimePicker::DrawWidget(CXFA_Graphics* pGraphics,
   if (!m_rtBtn.IsEmpty())
     DrawDropDownButton(pGraphics, pTheme, &matrix);
 
-  if (m_pEdit) {
-    CFX_RectF rtEdit = m_pEdit->GetWidgetRect();
+  CFX_RectF rtEdit = m_pEdit->GetWidgetRect();
 
-    CFX_Matrix mt(1, 0, 0, 1, rtEdit.left, rtEdit.top);
-    mt.Concat(matrix);
-    m_pEdit->DrawWidget(pGraphics, mt);
-  }
+  CFX_Matrix mtEdit(1, 0, 0, 1, rtEdit.left, rtEdit.top);
+  mtEdit.Concat(matrix);
+  m_pEdit->DrawWidget(pGraphics, mtEdit);
+
   if (!IsMonthCalendarVisible())
     return;
 
-  CFX_RectF rtMonth = m_pMonthCal->GetWidgetRect();
-  CFX_Matrix mt(1, 0, 0, 1, rtMonth.left, rtMonth.top);
-  mt.Concat(matrix);
-  m_pMonthCal->DrawWidget(pGraphics, mt);
+  CFX_RectF rtMonthCal = m_pMonthCal->GetWidgetRect();
+  CFX_Matrix mtMonthCal(1, 0, 0, 1, rtMonthCal.left, rtMonthCal.top);
+  mtMonthCal.Concat(matrix);
+  m_pMonthCal->DrawWidget(pGraphics, mtMonthCal);
 }
 
 void CFWL_DateTimePicker::SetThemeProvider(IFWL_ThemeProvider* pTP) {
@@ -164,9 +163,6 @@ void CFWL_DateTimePicker::SetCurSel(int32_t iYear,
 }
 
 void CFWL_DateTimePicker::SetEditText(const WideString& wsText) {
-  if (!m_pEdit)
-    return;
-
   m_pEdit->SetText(wsText);
   RepaintRect(m_rtClient);
 
@@ -175,7 +171,7 @@ void CFWL_DateTimePicker::SetEditText(const WideString& wsText) {
 }
 
 WideString CFWL_DateTimePicker::GetEditText() const {
-  return m_pEdit ? m_pEdit->GetText() : L"";
+  return m_pEdit->GetText();
 }
 
 int32_t CFWL_DateTimePicker::GetEditTextLength() const {
@@ -272,9 +268,6 @@ bool CFWL_DateTimePicker::IsMonthCalendarVisible() const {
 }
 
 void CFWL_DateTimePicker::ResetEditAlignment() {
-  if (!m_pEdit)
-    return;
-
   uint32_t dwAdd = 0;
   switch (m_pProperties->m_dwStyleExes & FWL_STYLEEXT_DTP_EditHAlignMask) {
     case FWL_STYLEEXT_DTP_EditHCenter: {
@@ -394,7 +387,7 @@ void CFWL_DateTimePicker::OnFocusChanged(CFWL_Message* pMsg, bool bSet) {
   CFX_RectF rtInvalidate(m_rtBtn);
   if (bSet) {
     m_pProperties->m_dwStates |= FWL_WGTSTATE_Focused;
-    if (m_pEdit && !(m_pEdit->GetStylesEx() & FWL_STYLEEXT_EDT_ReadOnly)) {
+    if (!(m_pEdit->GetStylesEx() & FWL_STYLEEXT_EDT_ReadOnly)) {
       m_rtBtn = CFX_RectF(m_pProperties->m_rtWidget.width, 0, m_fBtn,
                           m_pProperties->m_rtWidget.height - 1);
     }
