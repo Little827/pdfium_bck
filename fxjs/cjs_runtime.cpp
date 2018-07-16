@@ -82,8 +82,9 @@ CJS_Runtime::~CJS_Runtime() {
   NotifyObservers();
   ReleaseEngine();
   if (m_isolateManaged) {
-    GetIsolate()->Dispose();
+    v8::Isolate* pOwnedIsolate = GetIsolate();
     SetIsolate(nullptr);
+    pOwnedIsolate->Dispose();
   }
 }
 

@@ -20,7 +20,7 @@ class CFX_V8 {
   explicit CFX_V8(v8::Isolate* pIsolate);
   virtual ~CFX_V8();
 
-  v8::Isolate* GetIsolate() const { return m_isolate; }
+  v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
 
   v8::Local<v8::Value> NewNull();
   v8::Local<v8::Value> NewUndefined();
@@ -59,10 +59,10 @@ class CFX_V8 {
                          v8::Local<v8::Value> pValue);
 
  protected:
-  void SetIsolate(v8::Isolate* pIsolate) { m_isolate = pIsolate; }
+  void SetIsolate(v8::Isolate* pIsolate) { m_pIsolate = pIsolate; }
 
  private:
-  v8::Isolate* m_isolate;
+  UnownedPtr<v8::Isolate> m_pIsolate;
 };
 
 class CFX_V8ArrayBufferAllocator : public v8::ArrayBuffer::Allocator {
