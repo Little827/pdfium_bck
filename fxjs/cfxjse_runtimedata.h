@@ -9,6 +9,7 @@
 
 #include <memory>
 
+#include "core/fxcrt/unowned_ptr.h"
 #include "v8/include/v8.h"
 
 class CFXJSE_RuntimeList;
@@ -19,7 +20,7 @@ class CFXJSE_RuntimeData {
 
   static CFXJSE_RuntimeData* Get(v8::Isolate* pIsolate);
 
-  v8::Isolate* m_pIsolate;
+  UnownedPtr<v8::Isolate> m_pIsolate;
   v8::Global<v8::FunctionTemplate> m_hRootContextGlobalTemplate;
   v8::Global<v8::Context> m_hRootContext;
 
