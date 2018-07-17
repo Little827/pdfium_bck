@@ -1,0 +1,89 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /OpenAction 10 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /Kids [
+    3 0 R
+  ]
+>>
+endobj
+% Page number 0.
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <</F1 15 0 R>>
+  >>
+  /Contents [21 0 R]
+  /MediaBox [0 0 612 792]
+>>
+% OpenAction action
+{{object 10 0}} <<
+  /Type /Action
+  /S /JavaScript
+  /JS 11 0 R
+>>
+endobj
+% JS program to exexute
+{{object 11 0}} <<
+  {{streamlen}}
+>>
+stream
+function testSetPrototypeOf(name) {
+  var that;
+  try {
+    that = eval(name);
+  } catch (e) {
+    app.alert("FAIL: No such " + name);
+    return;
+  }
+  try {
+    Object.setPrototypeOf(that, {});
+    app.alert("FAIL: setPrototypeOf(" + name + "): returned");
+  } catch (e) {
+    app.alert("PASS: setPrototypeOf(" + name + "): " + e);
+  }
+}
+function doTest() {
+  if (typeof Object.setPrototypeOf === "undefined") {
+    app.alert("MOOT: JS doesn't contain Object.setPrototypeOf");
+    return;
+  }
+  testSetPrototypeOf("this");
+  testSetPrototypeOf("app");
+  testSetPrototypeOf("border");
+  testSetPrototypeOf("color");
+  testSetPrototypeOf("console");
+  testSetPrototypeOf("display");
+  testSetPrototypeOf("event");
+  testSetPrototypeOf("font");
+  testSetPrototypeOf("global");
+  testSetPrototypeOf("highlight");
+  testSetPrototypeOf("position");
+  testSetPrototypeOf("scaleHow");
+  testSetPrototypeOf("scaleWhen");
+  testSetPrototypeOf("style");
+  testSetPrototypeOf("util");
+  testSetPrototypeOf("zoomtype");
+
+  // But the usual mischief still works.
+  try {
+    Object.setPrototypeOf({}, Array);
+    app.alert("Ordinary objects PASS");
+  } catch (e) {
+    app.alert("Ordinary objects FAIL" + e);
+  }
+}
+doTest();
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
