@@ -52,6 +52,24 @@
       "revId": "fa72c10d27c365ef45355942a1635db2286dfaf2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f56914_a694d100",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-17T10:16:17Z",
+      "side": 1,
+      "message": "\u003e For (1), yes, I see CPDF_Creator can modify the encryption dictionary. I don\u0027t understand the \"On the good, ...\" sentence though. Are you trying to say CPDF_Creator should have its own copy?\n\n\"On the good, ...\" means \"The best solution will be.\"\n\n\u003e For (2), are you saying CPDF_CrossRefTable objects may get destroyed during MergeUp() calls? Therefore you don\u0027t want |m_pEncryptDict| to potentially point to an destroyed object? Is that the primary motivation for this CL?\n\nPartially yes. Also i want to use trailer, as const reference, to prevent any unexpected changes within it by callers.",
+      "parentUuid": "f0f87173_8ef7e8e1",
+      "revId": "fa72c10d27c365ef45355942a1635db2286dfaf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
