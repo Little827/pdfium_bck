@@ -134,6 +134,7 @@ class CFXJS_ObjDefinition {
         holder->SetAlignedPointerInInternalField(1, nullptr);
       });
     } else {
+      fun->InstanceTemplate()->SetImmutableProto();
       fun->SetCallHandler([](const v8::FunctionCallbackInfo<v8::Value>& info) {
         info.GetIsolate()->ThrowException(
             v8::String::NewFromUtf8(info.GetIsolate(), "Illegal Constructor",
