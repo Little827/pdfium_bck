@@ -57,6 +57,24 @@
       "revId": "ac568954ca48f560bca3b71e1a61ea27483e16c9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0feb5f_77f323f6",
+        "filename": "testing/resources/javascript/set_prototype_of.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-17T19:41:39Z",
+      "side": 1,
+      "message": "No idea. Maybe they are retaining backwards compatibility with older versions, since the \"JavaScript for Acrboat API Reference\" is dated April 2007?",
+      "parentUuid": "c5c48f3b_e1de119a",
+      "revId": "ac568954ca48f560bca3b71e1a61ea27483e16c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
