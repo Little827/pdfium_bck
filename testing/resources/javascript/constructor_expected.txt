@@ -1,0 +1,32 @@
+Alert: PASS: this.constructor(): Illegal Constructor
+Alert: PASS: new this.constructor: Illegal Constructor
+Alert: PASS: app.constructor(): Illegal Constructor
+Alert: PASS: new app.constructor: Illegal Constructor
+Alert: PASS: border.constructor(): Illegal Constructor
+Alert: PASS: new border.constructor: Illegal Constructor
+Alert: PASS: color.constructor(): Illegal Constructor
+Alert: PASS: new color.constructor: Illegal Constructor
+Alert: PASS: console.constructor(): Illegal Constructor
+Alert: PASS: new console.constructor: Illegal Constructor
+Alert: PASS: display.constructor(): Illegal Constructor
+Alert: PASS: new display.constructor: Illegal Constructor
+Alert: PASS: event.constructor(): Illegal Constructor
+Alert: PASS: new event.constructor: Illegal Constructor
+Alert: PASS: font.constructor(): Illegal Constructor
+Alert: PASS: new font.constructor: Illegal Constructor
+Alert: PASS: global.constructor(): Illegal Constructor
+Alert: PASS: new global.constructor: Illegal Constructor
+Alert: PASS: highlight.constructor(): Illegal Constructor
+Alert: PASS: new highlight.constructor: Illegal Constructor
+Alert: PASS: position.constructor(): Illegal Constructor
+Alert: PASS: new position.constructor: Illegal Constructor
+Alert: PASS: scaleHow.constructor(): Illegal Constructor
+Alert: PASS: new scaleHow.constructor: Illegal Constructor
+Alert: PASS: scaleWhen.constructor(): Illegal Constructor
+Alert: PASS: new scaleWhen.constructor: Illegal Constructor
+Alert: PASS: style.constructor(): Illegal Constructor
+Alert: PASS: new style.constructor: Illegal Constructor
+Alert: PASS: util.constructor(): Illegal Constructor
+Alert: PASS: new util.constructor: Illegal Constructor
+Alert: PASS: zoomtype.constructor(): Illegal Constructor
+Alert: PASS: new zoomtype.constructor: Illegal Constructor
