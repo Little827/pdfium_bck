@@ -22,6 +22,29 @@
       "revId": "f7bb33028d04823307a4f099075cba7700485585",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c6a942_456a0e3f",
+        "filename": "public/cpp/fpdf_scopers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-17T19:13:15Z",
+      "side": 1,
+      "message": "Also, can we use this in at least one place, say in fpdfsdk/fpdf_text_embeddertest.cpp since that seems to call the underlying FPDFLink_CloseWebLinks",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "f7bb33028d04823307a4f099075cba7700485585",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
