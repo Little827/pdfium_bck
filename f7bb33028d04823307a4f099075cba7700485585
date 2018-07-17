@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55e4685e_36cd1b90",
+        "filename": "public/cpp/fpdf_deleters.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-17T19:07:39Z",
+      "side": 1,
+      "message": "nit: identifiers beginning with double underscores are reserved for the compiler.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "f7bb33028d04823307a4f099075cba7700485585",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
