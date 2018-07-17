@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1531785780 -0700\nnonce APISObSBTV4yRSkWT33kDi0vd+ly3cMxNSJ6jjOScQXO3XfeAQkgoJdcK9P2iy7nT73WqnTXGM8Z\n\n0000000000000000000000000000000000000000 704d0be780282452d25523232bdb2abeb79f2ebc refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltNMjQACgkQqzYtYVpm\n/XuX4ggAp/jCVvvRoAFGVrAK3OGTnUAjK8RBs5pEzHg3Z3qcYz91BIZEa7rsFgKA\nq75GZ89AS3tMO0HPpc3kxX9dVEfRqgTG9JIqJkgoYWOKtQdHgmLyprIhPQRV5ypf\nrx3jAXK/5xvUcikKVHRocCON4kftz/PatklNsjYjJ70f4iqCTuMOpWaTVd4hxUzi\nVRdWlsr6W3kMeHwIoBCPHMc+e613V9dC24MsAQfrgnXFhtBk/LxZfeqw5KjfSbTs\nRJW7NcJ/7fF3845SHi+dFodKY+wRdt+rlY0nAbgS1GRh55uyqPMA6HY1Um4iErYH\nE0mEvCWdXdZiZ6umqwRjseEL7EtP5g\u003d\u003d\n\u003dxn1N\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd1a028e_07ec0aeb",
+        "filename": "core/fpdfapi/render/cpdf_scaledrenderbuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-17T00:22:26Z",
+      "side": 1,
+      "message": "Create() internally calls CalculatePitchAndSize() again, so it is a bit redundant, except we want to know |size| before calling Create().",
+      "revId": "704d0be780282452d25523232bdb2abeb79f2ebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
