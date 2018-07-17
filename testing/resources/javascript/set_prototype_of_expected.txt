@@ -1,0 +1,17 @@
+Alert: PASS: testSetPrototypeOf(this): TypeError: Immutable prototype object '[object global]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(app): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(border): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(color): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(console): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(display): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(event): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(font): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(global): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(highlight): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(position): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(scaleHow): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(scaleWhen): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(style): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(util): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: PASS: testSetPrototypeOf(zoomtype): TypeError: Immutable prototype object '[object Object]' cannot have their prototype testSet
+Alert: Ordinary objects PASS
