@@ -34,6 +34,24 @@
       "revId": "fa72c10d27c365ef45355942a1635db2286dfaf2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f87173_8ef7e8e1",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-17T07:49:09Z",
+      "side": 1,
+      "message": "For (1), yes, I see CPDF_Creator can modify the encryption dictionary. I don\u0027t understand the \"On the good, ...\" sentence though. Are you trying to say CPDF_Creator should have its own copy?\n\nFor (2), are you saying CPDF_CrossRefTable objects may get destroyed during MergeUp() calls? Therefore you don\u0027t want |m_pEncryptDict| to potentially point to an destroyed object? Is that the primary motivation for this CL?",
+      "parentUuid": "cc105b41_135e55c9",
+      "revId": "fa72c10d27c365ef45355942a1635db2286dfaf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
