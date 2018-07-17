@@ -64,7 +64,8 @@ class CPDF_Parser {
   void SetPassword(const char* password) { m_Password = password; }
   ByteString GetPassword() const { return m_Password; }
 
-  CPDF_Dictionary* GetTrailer() const;
+  const CPDF_Dictionary* GetTrailer() const;
+  CPDF_Dictionary* GetTrailer();
 
   // Returns a new trailer which combines the last read trailer with the /Root
   // and /Info from previous ones.
@@ -93,8 +94,6 @@ class CPDF_Parser {
   RetainPtr<IFX_SeekableReadStream> GetFileAccess() const;
   bool IsObjectFree(uint32_t objnum) const;
 
-  FX_FILESIZE GetObjectOffset(uint32_t objnum) const;
-
   int GetFileVersion() const { return m_FileVersion; }
   bool IsXRefStream() const { return m_bXRefStream; }
 
@@ -107,6 +106,10 @@ class CPDF_Parser {
     return m_pLinearized.get();
   }
 
+  const CPDF_CrossRefTable* GetCrossRefTable() const {
+    return m_CrossRefTable.get();
+  }
+
   void SetLinearizedHeader(std::unique_ptr<CPDF_LinearizedHeader> pLinearized);
 
  protected:
@@ -114,15 +117,12 @@ class CPDF_Parser {
   using ObjectInfo = CPDF_CrossRefTable::ObjectInfo;
 
   std::unique_ptr<CPDF_SyntaxParser> m_pSyntax;
-  std::map<uint32_t, ObjectInfo> m_ObjectInfo;
 
   bool LoadCrossRefV4(FX_FILESIZE pos, bool bSkip);
   bool RebuildCrossRef();
 
  private:
   friend class CPDF_DataAvail;
-
-  class TrailerData;
 
   enum class ParserState {
     kDefault,
@@ -187,9 +187,9 @@ class CPDF_Parser {
   bool m_bHasParsed;
   bool m_bXRefStream;
   int m_FileVersion;
-  // m_TrailerData must be destroyed after m_pSecurityHandler due to the
+  // m_CrossRefTable must be destroyed after m_pSecurityHandler due to the
   // ownership of the ID array data.
-  std::unique_ptr<TrailerData> m_TrailerData;
+  std::unique_ptr<CPDF_CrossRefTable> m_CrossRefTable;
   UnownedPtr<CPDF_Dictionary> m_pEncryptDict;
   FX_FILESIZE m_LastXRefOffset;
   std::unique_ptr<CPDF_SecurityHandler> m_pSecurityHandler;
