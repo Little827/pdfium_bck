@@ -132,6 +132,8 @@ class CFXJS_ObjDefinition {
       holder->SetAlignedPointerInInternalField(0, nullptr);
       holder->SetAlignedPointerInInternalField(1, nullptr);
     });
+    if (eObjType != FXJSOBJTYPE_DYNAMIC)
+      fun->InstanceTemplate()->SetImmutableProto();
     if (eObjType == FXJSOBJTYPE_GLOBAL) {
       fun->InstanceTemplate()->Set(
           v8::Symbol::GetToStringTag(isolate),

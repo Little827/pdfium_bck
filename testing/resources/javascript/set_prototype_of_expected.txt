@@ -1,0 +1,17 @@
+Alert: PASS: setPrototypeOf(this): TypeError: Immutable prototype object '[object global]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(app): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(border): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(color): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(console): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(display): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(event): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(font): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(global): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(highlight): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(position): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(scaleHow): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(scaleWhen): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(style): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(util): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: PASS: setPrototypeOf(zoomtype): TypeError: Immutable prototype object '[object Object]' cannot have their prototype set
+Alert: Ordinary objects PASS
