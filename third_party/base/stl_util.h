@@ -13,6 +13,7 @@
 
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/numerics/safe_math.h"
+#include "third_party/base/span.h"
 
 namespace pdfium {
 
@@ -82,6 +83,13 @@ std::vector<T> Vector2D(size_t w, size_t h) {
   pdfium::base::CheckedNumeric<size_t> safe_size = w;
   safe_size *= h;
   return std::vector<T>(safe_size.ValueOrDie());
+}
+
+// reinterpret_cast<> applied to spans.
+template <typename T, typename U>
+span<T> reinterpret_span(const span<U>& that) {
+  return span<T>(reinterpret_cast<T*>(that.data()),
+                 that.size() * sizeof(U) / sizeof(T));
 }
 
 }  // namespace pdfium
