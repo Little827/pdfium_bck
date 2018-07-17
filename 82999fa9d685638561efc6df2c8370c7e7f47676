@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "366e830e_5bada6a8",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-17T16:03:01Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "be15ef15_8c8e843e",
+      "revId": "82999fa9d685638561efc6df2c8370c7e7f47676",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48e23453_07ba3f90",
         "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "82999fa9d685638561efc6df2c8370c7e7f47676",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0078f45_0bcd3664",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-17T16:03:01Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "48e23453_07ba3f90",
+      "range": {
+        "startLine": 745,
+        "startChar": 24,
+        "endLine": 745,
+        "endChar": 36
+      },
+      "revId": "82999fa9d685638561efc6df2c8370c7e7f47676",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
