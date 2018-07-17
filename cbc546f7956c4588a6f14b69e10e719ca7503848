@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1531813829 -0700\nnonce APISObRyECv33AEC7xa6HeQBHvBNaY3ueZLsydYTWjfwFP8RMeKT45xikIErtc0LtKfRe4zrctyt\n\n0000000000000000000000000000000000000000 cbc546f7956c4588a6f14b69e10e719ca7503848 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dsimplify-cpdf-creator\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltNn8UACgkQqzYtYVpm\n/Xu5Nwf+PO3huqZMFFAk9YAzb7jn5jmv92SnDx/TyjTIEq9iUEIodaOjuuteKdL7\nvwWEbi2ciY9VlKQ8GFN7s4NX3SWYtmvwTd4Olp6//IvIliXknrCVGPD2Lg7gq/pz\nJN9ZkqF0xPztUzDpIKzCdZRKSQ8//nBRSGKpwMhdrY7PwaM2NCbnApjVHOGzQq+0\ni0T3x6cJTDEEpkFTk+7a+oyvwIwgwNKNzTkOMBGh3Z36bmuiMGPU2yqUjginkEkN\nZKmeyGr+WKUZ4atNwIX6Px6NCBB5MFVuKpt+QBX9Hplc0BJwDv0iP3Weg4YS4OsV\n65GiFFV70/zCLJW2rKPyqQBnrEijOQ\u003d\u003d\n\u003dPXyi\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d871e025_1d9dd4fd",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-17T07:54:05Z",
+      "side": 1,
+      "message": "There\u0027s no way for line 742 to be true if there\u0027s no parser.",
+      "revId": "cbc546f7956c4588a6f14b69e10e719ca7503848",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be15ef15_8c8e843e",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-17T07:54:05Z",
+      "side": 0,
+      "message": "Always false, because InitID() is a private method that is only called on line 709 above. Create() also only has 1 caller.",
+      "revId": "82999fa9d685638561efc6df2c8370c7e7f47676",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48e23453_07ba3f90",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-17T07:54:05Z",
+      "side": 0,
+      "message": "Lin 731 + line 741 means this is always true as well.",
+      "range": {
+        "startLine": 745,
+        "startChar": 24,
+        "endLine": 745,
+        "endChar": 36
+      },
+      "revId": "82999fa9d685638561efc6df2c8370c7e7f47676",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
