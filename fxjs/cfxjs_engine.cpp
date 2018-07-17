@@ -126,12 +126,20 @@ class CFXJS_ObjDefinition {
 
     v8::Local<v8::FunctionTemplate> fun = v8::FunctionTemplate::New(isolate);
     fun->InstanceTemplate()->SetInternalFieldCount(2);
-    fun->SetCallHandler([](const v8::FunctionCallbackInfo<v8::Value>& info) {
-      v8::Local<v8::Object> holder = info.Holder();
-      ASSERT(holder->InternalFieldCount() == 2);
-      holder->SetAlignedPointerInInternalField(0, nullptr);
-      holder->SetAlignedPointerInInternalField(1, nullptr);
-    });
+    if (eObjType == FXJSOBJTYPE_DYNAMIC) {
+      fun->SetCallHandler([](const v8::FunctionCallbackInfo<v8::Value>& info) {
+        v8::Local<v8::Object> holder = info.Holder();
+        ASSERT(holder->InternalFieldCount() == 2);
+        holder->SetAlignedPointerInInternalField(0, nullptr);
+        holder->SetAlignedPointerInInternalField(1, nullptr);
+      });
+    } else {
+      fun->SetCallHandler([](const v8::FunctionCallbackInfo<v8::Value>& info) {
+        info.GetIsolate()->ThrowException(
+            v8::String::NewFromUtf8(info.GetIsolate(), "Illegal Constructor",
+                                    v8::String::kNormalString));
+      });
+    }
     if (eObjType == FXJSOBJTYPE_GLOBAL) {
       fun->InstanceTemplate()->Set(
           v8::Symbol::GetToStringTag(isolate),
@@ -139,9 +147,7 @@ class CFXJS_ObjDefinition {
               .ToLocalChecked());
     }
     m_FunctionTemplate.Reset(isolate, fun);
-
-    v8::Local<v8::Signature> sig = v8::Signature::New(isolate, fun);
-    m_Signature.Reset(isolate, sig);
+    m_Signature.Reset(isolate, v8::Signature::New(isolate, fun));
   }
 
   v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
