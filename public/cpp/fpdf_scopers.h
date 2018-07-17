@@ -17,38 +17,29 @@
 #include "public/fpdf_text.h"
 #include "public/fpdfview.h"
 
+template <class T, class DEL>
+using __Scoper = std::unique_ptr<std::remove_pointer<T>::type, DEL>;
+
 // Versions of FPDF types that clean up the object at scope exit.
 
-using ScopedFPDFAnnotation =
-    std::unique_ptr<std::remove_pointer<FPDF_ANNOTATION>::type,
-                    FPDFAnnotationDeleter>;
+using ScopedFPDFAnnotation = __Scoper<FPDF_ANNOTATION, FPDFAnnotationDeleter>;
 
-using ScopedFPDFAvail =
-    std::unique_ptr<std::remove_pointer<FPDF_AVAIL>::type, FPDFAvailDeleter>;
+using ScopedFPDFAvail = __Scoper<FPDF_AVAIL, FPDFAvailDeleter>;
 
-using ScopedFPDFBitmap =
-    std::unique_ptr<std::remove_pointer<FPDF_BITMAP>::type, FPDFBitmapDeleter>;
+using ScopedFPDFBitmap = __Scoper<FPDF_BITMAP, FPDFBitmapDeleter>;
 
-using ScopedFPDFDocument =
-    std::unique_ptr<std::remove_pointer<FPDF_DOCUMENT>::type,
-                    FPDFDocumentDeleter>;
+using ScopedFPDFDocument = __Scoper<FPDF_DOCUMENT, FPDFDocumentDeleter>;
 
-using ScopedFPDFFormHandle =
-    std::unique_ptr<std::remove_pointer<FPDF_FORMHANDLE>::type,
-                    FPDFFormHandleDeleter>;
+using ScopedFPDFFormHandle = __Scoper<FPDF_FORMHANDLE, FPDFFormHandleDeleter>;
 
-using ScopedFPDFTextPage =
-    std::unique_ptr<std::remove_pointer<FPDF_TEXTPAGE>::type,
-                    FPDFTextPageDeleter>;
+using ScopedFPDFTextPage = __Scoper<FPDF_TEXTPAGE, FPDFTextPageDeleter>;
 
-using ScopedFPDFPage =
-    std::unique_ptr<std::remove_pointer<FPDF_PAGE>::type, FPDFPageDeleter>;
+using ScopedFPDFPage = __Scoper<FPDF_PAGE, FPDFPageDeleter>;
 
-using ScopedFPDFStructTree =
-    std::unique_ptr<std::remove_pointer<FPDF_STRUCTTREE>::type,
-                    FPDFStructTreeDeleter>;
+using ScopedFPDFPageLink = __Scoper<FPDF_PAGELINK, FPDFPageLinkDeleter>;
 
-using ScopedFPDFFont =
-    std::unique_ptr<std::remove_pointer<FPDF_FONT>::type, FPDFFontDeleter>;
+using ScopedFPDFStructTree = __Scoper<FPDF_STRUCTTREE, FPDFStructTreeDeleter>;
+
+using ScopedFPDFFont = __Scoper<FPDF_FONT, FPDFFontDeleter>;
 
 #endif  // PUBLIC_CPP_FPDF_SCOPERS_H_

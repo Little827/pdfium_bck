@@ -15,42 +15,30 @@
 
 // Custom deleters for using FPDF_* types with std::unique_ptr<>.
 
-struct FPDFAnnotationDeleter {
-  inline void operator()(FPDF_ANNOTATION annot) { FPDFPage_CloseAnnot(annot); }
-};
+template <class T, void (*DEL)(T)>
+struct __Deleter {
+  inline void operator()(T obj) { DEL(obj); }
+}
 
-struct FPDFAvailDeleter {
-  inline void operator()(FPDF_AVAIL avail) { FPDFAvail_Destroy(avail); }
-};
+using FPDFAnnotationDeleter = __Deleter<FPDF_ANNOTATION, FPDFPage_CloseAnnot>;
 
-struct FPDFBitmapDeleter {
-  inline void operator()(FPDF_BITMAP bitmap) { FPDFBitmap_Destroy(bitmap); }
-};
+using FPDFAvailDeleter = __Deleter<FPDF_AVAIL, FPDFAvail_Destroy>;
 
-struct FPDFDocumentDeleter {
-  inline void operator()(FPDF_DOCUMENT doc) { FPDF_CloseDocument(doc); }
-};
+using FPDFBitmapDeleter = __Deleter<FPDF_BITMAP, FPDFBitmap_Destroy>;
 
-struct FPDFFormHandleDeleter {
-  inline void operator()(FPDF_FORMHANDLE form) {
-    FPDFDOC_ExitFormFillEnvironment(form);
-  }
-};
+using FPDFDocumentDeleter = __Deleter<FPDF_DOCUMENT, FPDF_CloseDocument>;
 
-struct FPDFTextPageDeleter {
-  inline void operator()(FPDF_TEXTPAGE text) { FPDFText_ClosePage(text); }
-};
+using FPDFFormHandleDeleter =
+    __Deleter<FPDF_FORMHANDLE, FPDFDOC_ExitFormFillEnvironment>;
 
-struct FPDFPageDeleter {
-  inline void operator()(FPDF_PAGE page) { FPDF_ClosePage(page); }
-};
+using FPDFTextPageDeleter = __Deleter<FPDF_TEXTPAGE, FPDFText_ClosePage>;
 
-struct FPDFStructTreeDeleter {
-  inline void operator()(FPDF_STRUCTTREE tree) { FPDF_StructTree_Close(tree); }
-};
+using FPDFPageDeleter = __Deleter<FPDF_PAGE, FPDF_ClosePage>;
 
-struct FPDFFontDeleter {
-  inline void operator()(FPDF_FONT font) { FPDFFont_Close(font); }
-};
+using FPDFPageLinkDeleter = __Deleter<FPDF_PAGELINK, FPDFLink_CloseWebLinks>;
+
+using FPDFStructTreeDeleter = __Deleter<FPDF_STRUCTTREE, FPDF_StructTree_Close>;
+
+using FPDFFontDeleter = __Deleter<FPDF_FONT, FPDFFont_Close>;
 
 #endif  // PUBLIC_CPP_FPDF_DELETERS_H_
