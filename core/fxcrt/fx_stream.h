@@ -108,19 +108,4 @@ class IFX_SeekableStream : public IFX_SeekableReadStream,
   bool Flush() override = 0;
 };
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-class CFindFileData {
- public:
-  virtual ~CFindFileData() {}
-  HANDLE m_Handle;
-  bool m_bEnd;
-};
-
-class CFindFileDataA : public CFindFileData {
- public:
-  ~CFindFileDataA() override {}
-  WIN32_FIND_DATAA m_FindData;
-};
-#endif
-
 #endif  // CORE_FXCRT_FX_STREAM_H_
