@@ -6,6 +6,9 @@
 
 #include "core/fxcrt/cfx_fileaccess_posix.h"
 
+#include <fcntl.h>
+#include <sys/stat.h>
+
 #include <memory>
 
 #include "third_party/base/ptr_util.h"
