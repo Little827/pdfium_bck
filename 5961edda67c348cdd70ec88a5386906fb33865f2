@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "050491d3_8e711f8a",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-18T23:45:03Z",
+      "side": 1,
+      "message": "Let\u0027s reverse the ordering in |numbers|. i.e. push_back() here, erase(numbers.begin()) on line 633, and flip the index used on line 654-656. It\u0027ll be slightly more efficient.",
+      "revId": "5961edda67c348cdd70ec88a5386906fb33865f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb40131_1e9ad573",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-18T23:45:03Z",
+      "side": 1,
+      "message": "Why have these checks with empty bodies?",
+      "revId": "5961edda67c348cdd70ec88a5386906fb33865f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024d9137_a44fa695",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-18T23:45:03Z",
+      "side": 1,
+      "message": "If ToDictionary() returns nullptr, can the CPDF_CrossRefTable object creationn and MergeUp() call be avoided entirely?",
+      "revId": "5961edda67c348cdd70ec88a5386906fb33865f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
