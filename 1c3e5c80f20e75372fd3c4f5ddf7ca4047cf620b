@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54811d80_dc55cb8e",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-18T16:46:10Z",
+      "side": 1,
+      "message": "This is... much worse than the one before, but I suppose if the method changes, it better change consistently across both versions.",
+      "revId": "1c3e5c80f20e75372fd3c4f5ddf7ca4047cf620b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
