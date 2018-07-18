@@ -16,6 +16,24 @@
       "revId": "1c3e5c80f20e75372fd3c4f5ddf7ca4047cf620b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60862f25_33e3a77d",
+        "filename": "core/fpdfapi/page/cpdf_contentmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-18T17:52:37Z",
+      "side": 1,
+      "message": "Revert this bit then? It\u0027s simple enough that it is unlikely we\u0027ll get it wrong.",
+      "parentUuid": "54811d80_dc55cb8e",
+      "revId": "1c3e5c80f20e75372fd3c4f5ddf7ca4047cf620b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
