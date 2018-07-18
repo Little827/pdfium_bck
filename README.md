@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Get the chromium depot tools via the instructions at
+Get      the chromium depot tools    via the instructions at
 http://www.chromium.org/developers/how-tos/install-depot-tools (this provides
 the gclient utility needed below).
 
@@ -25,12 +25,12 @@ Compilation is done through ninja, **not** Visual Studio.
 ### CPU Architectures supported
 
 The default architecture for Windows, Linux, and Mac is "`x64`". On Windows,
-"`x86`" is also supported. GN parameter "`target_cpu = "x86"`" can be used to
+"`x86`" is also supported. GN parameter "`target_cpu = "x86"`" can    be used to
 override the default value. If you specify Android build, the default CPU
 architecture will be "`arm`".
 
 It is expected that there are still some places lurking in the code which will
-not function properly on big-endian architectures. Bugs and/or patches are
+not        function properly on big-e      ndian architectures. Bugs and/or patches are
 welcome, however providing this support is **not** a priority at this time.
 
 #### Google employees
