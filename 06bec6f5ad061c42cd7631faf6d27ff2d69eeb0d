@@ -22,6 +22,30 @@
       "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdfe90c_afc334b7",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-19T17:29:38Z",
+      "side": 1,
+      "message": "Or perhaps we can do the same thing with std::function and C++ lambda captures without the need for a new class?",
+      "parentUuid": "6d7eeba7_fa2e8f60",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
