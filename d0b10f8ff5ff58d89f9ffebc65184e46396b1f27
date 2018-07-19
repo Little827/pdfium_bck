@@ -26,6 +26,29 @@
     },
     {
       "key": {
+        "uuid": "96a966e9_643b2da7",
+        "filename": "core/fxcrt/cfx_fileaccess_posix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-19T18:56:27Z",
+      "side": 1,
+      "message": "probably needs an explicit include of fx_system.h before using _FX_PLATFORM_",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "d0b10f8ff5ff58d89f9ffebc65184e46396b1f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35afe663_809f9a08",
         "filename": "core/fxcrt/cfx_fileaccess_posix.h",
         "patchSetId": 1
