@@ -3,8 +3,11 @@
 // found in the LICENSE file.
 
 #include <limits>
+#include <memory>
 #include <string>
+#include <vector>
 
+#include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "core/fxcrt/fx_extension.h"
@@ -43,10 +46,12 @@ class CPDF_TestParser : public CPDF_Parser {
   }
 
   // Setup reading from a buffer and initial states.
-  bool InitTestFromBuffer(const unsigned char* buffer, size_t len) {
-    // For the test file, the header is set at the beginning.
+  bool InitTestFromBuffer(const unsigned char* buffer,
+                          size_t len,
+                          int header_offest = 0) {
     m_pSyntax->InitParser(
-        pdfium::MakeRetain<CFX_BufferSeekableReadStream>(buffer, len), 0);
+        pdfium::MakeRetain<CFX_BufferSeekableReadStream>(buffer, len),
+        header_offest);
     return true;
   }
 
@@ -225,4 +230,57 @@ TEST(cpdf_parser, LoadCrossRefV4) {
       EXPECT_EQ(types[i], GetObjInfo(parser, i).type);
     }
   }
+}
+
+TEST(cpdf_parser, ParseStartXRef) {
+  CPDF_TestParser parser;
+  std::string test_file;
+  ASSERT_TRUE(
+      PathService::GetTestFilePath("annotation_stamp_with_ap.pdf", &test_file));
+  ASSERT_TRUE(parser.InitTestFromFile(test_file.c_str())) << test_file;
+
+  EXPECT_EQ(100940, parser.ParseStartXRef());
+  std::unique_ptr<CPDF_Object> cross_ref_v5_obj =
+      parser.ParseIndirectObjectAt(nullptr, 100940, 0);
+  ASSERT_TRUE(cross_ref_v5_obj);
+  EXPECT_EQ(75u, cross_ref_v5_obj->GetObjNum());
+}
+
+TEST(cpdf_parser, ParseStartXRefWithHeaderOffset) {
+  static constexpr FX_FILESIZE kTestHeaderOffset = 765;
+  std::string test_file;
+  ASSERT_TRUE(
+      PathService::GetTestFilePath("annotation_stamp_with_ap.pdf", &test_file));
+  RetainPtr<IFX_SeekableReadStream> pFileAccess =
+      IFX_SeekableReadStream::CreateFromFilename(test_file.c_str());
+  ASSERT_TRUE(pFileAccess);
+
+  std::vector<unsigned char> data(pFileAccess->GetSize() + kTestHeaderOffset);
+  ASSERT_TRUE(pFileAccess->ReadBlock(&data.front() + kTestHeaderOffset, 0,
+                                     pFileAccess->GetSize()));
+  CPDF_TestParser parser;
+  parser.InitTestFromBuffer(&data.front(), data.size(), kTestHeaderOffset);
+
+  EXPECT_EQ(100940, parser.ParseStartXRef());
+  std::unique_ptr<CPDF_Object> cross_ref_v5_obj =
+      parser.ParseIndirectObjectAt(nullptr, 100940, 0);
+  ASSERT_TRUE(cross_ref_v5_obj);
+  EXPECT_EQ(75u, cross_ref_v5_obj->GetObjNum());
+}
+
+TEST(cpdf_parser, ParseLinearizedWithHeaderOffset) {
+  static constexpr FX_FILESIZE kTestHeaderOffset = 765;
+  std::string test_file;
+  ASSERT_TRUE(PathService::GetTestFilePath("linearized.pdf", &test_file));
+  RetainPtr<IFX_SeekableReadStream> pFileAccess =
+      IFX_SeekableReadStream::CreateFromFilename(test_file.c_str());
+  ASSERT_TRUE(pFileAccess);
+
+  std::vector<unsigned char> data(pFileAccess->GetSize() + kTestHeaderOffset);
+  ASSERT_TRUE(pFileAccess->ReadBlock(&data.front() + kTestHeaderOffset, 0,
+                                     pFileAccess->GetSize()));
+  CPDF_TestParser parser;
+  parser.InitTestFromBuffer(&data.front(), data.size(), kTestHeaderOffset);
+
+  EXPECT_TRUE(parser.ParseLinearizedHeader());
 }
