@@ -171,6 +171,7 @@ std::unique_ptr<CFXJSE_Context> CFXJSE_Context::Create(
   } else {
     hObjectTemplate = v8::ObjectTemplate::New(pIsolate);
     hObjectTemplate->SetInternalFieldCount(2);
+    hObjectTemplate->SetImmutableProto();
   }
   hObjectTemplate->Set(
       v8::Symbol::GetToStringTag(pIsolate),

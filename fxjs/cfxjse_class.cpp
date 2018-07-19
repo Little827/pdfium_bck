@@ -246,20 +246,23 @@ CFXJSE_Class* CFXJSE_Class::Create(
     return pExistingClass;
 
   v8::Isolate* pIsolate = lpContext->GetIsolate();
+  CFXJSE_ScopeUtil_IsolateHandleRootContext scope(pIsolate);
   auto pClass = pdfium::MakeUnique<CFXJSE_Class>(lpContext);
   pClass->m_szClassName = lpClassDefinition->name;
   pClass->m_lpClassDefinition = lpClassDefinition;
-  CFXJSE_ScopeUtil_IsolateHandleRootContext scope(pIsolate);
+
   v8::Local<v8::FunctionTemplate> hFunctionTemplate = v8::FunctionTemplate::New(
       pIsolate, bIsJSGlobal ? 0 : V8ConstructorCallback_Wrapper,
       v8::External::New(
           pIsolate, const_cast<FXJSE_CLASS_DESCRIPTOR*>(lpClassDefinition)));
   hFunctionTemplate->SetClassName(
       v8::String::NewFromUtf8(pIsolate, lpClassDefinition->name));
-  hFunctionTemplate->InstanceTemplate()->SetInternalFieldCount(2);
-  v8::Local<v8::ObjectTemplate> hObjectTemplate =
+
+  v8::Local<v8::ObjectTemplate> hInstanceTemplate =
       hFunctionTemplate->InstanceTemplate();
-  SetUpNamedPropHandler(pIsolate, hObjectTemplate, lpClassDefinition);
+  hInstanceTemplate->SetInternalFieldCount(2);
+  hInstanceTemplate->SetImmutableProto();
+  SetUpNamedPropHandler(pIsolate, hInstanceTemplate, lpClassDefinition);
 
   if (lpClassDefinition->methNum) {
     for (int32_t i = 0; i < lpClassDefinition->methNum; i++) {
@@ -268,7 +271,7 @@ CFXJSE_Class* CFXJSE_Class::Create(
           v8::External::New(pIsolate, const_cast<FXJSE_FUNCTION_DESCRIPTOR*>(
                                           lpClassDefinition->methods + i)));
       fun->RemovePrototype();
-      hObjectTemplate->Set(
+      hInstanceTemplate->Set(
           v8::String::NewFromUtf8(pIsolate, lpClassDefinition->methods[i].name),
           fun,
           static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete));
@@ -281,7 +284,7 @@ CFXJSE_Class* CFXJSE_Class::Create(
         v8::External::New(
             pIsolate, const_cast<FXJSE_CLASS_DESCRIPTOR*>(lpClassDefinition)));
     fun->RemovePrototype();
-    hObjectTemplate->Set(v8::String::NewFromUtf8(pIsolate, "toString"), fun);
+    hInstanceTemplate->Set(v8::String::NewFromUtf8(pIsolate, "toString"), fun);
   }
   pClass->m_hTemplate.Reset(lpContext->GetIsolate(), hFunctionTemplate);
   CFXJSE_Class* pResult = pClass.get();
