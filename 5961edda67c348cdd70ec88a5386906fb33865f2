@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b4c6bfed_55f32237",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-19T10:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "050491d3_8e711f8a",
+      "revId": "5961edda67c348cdd70ec88a5386906fb33865f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fb40131_1e9ad573",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ef5e505a_decd87bc",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-19T10:22:37Z",
+      "side": 1,
+      "message": "Just to show you, that I have not missed this from original code. The original logic just skiped this too.\nRemoved.",
+      "parentUuid": "5fb40131_1e9ad573",
+      "revId": "5961edda67c348cdd70ec88a5386906fb33865f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "024d9137_a44fa695",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2018-07-18T23:45:03Z",
       "side": 1,
       "message": "If ToDictionary() returns nullptr, can the CPDF_CrossRefTable object creationn and MergeUp() call be avoided entirely?",
+      "revId": "5961edda67c348cdd70ec88a5386906fb33865f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d6af94_de66e7bf",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-19T10:22:37Z",
+      "side": 1,
+      "message": "Yes. But CPDF_CrossRefTable will correctly process this case. I do not want add more lines to increase complexity. Also this is not frequent case, the count of trailers is few\nin any pdf document, and optimization is makes no sense in this case.",
+      "parentUuid": "024d9137_a44fa695",
       "revId": "5961edda67c348cdd70ec88a5386906fb33865f2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
