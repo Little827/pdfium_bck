@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fcbd6d1_3878fd78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-19T21:27:38Z",
+      "side": 1,
+      "message": "Add: Create a copy in CPDF_Creator if needed.",
+      "revId": "1fb35e2effeced2cccb8931a8f9bcb1e2e749b06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f0291d3_ed95dfda",
+        "filename": "core/fpdfapi/edit/cpdf_creator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-19T21:27:38Z",
+      "side": 1,
+      "message": "These two combines into a fxcrt::MaybeOwned pointer. Another possibility is to just always make a copy in the ctor when possible.",
+      "revId": "1fb35e2effeced2cccb8931a8f9bcb1e2e749b06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
