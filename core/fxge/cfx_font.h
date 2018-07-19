@@ -10,6 +10,7 @@
 #include <memory>
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -85,7 +86,7 @@ class CFX_Font {
   bool IsEmbedded() const { return m_bEmbedded; }
   uint8_t* GetSubData() const { return m_pGsubData.get(); }
   void SetSubData(uint8_t* data) { m_pGsubData.reset(data); }
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   void* GetPlatformFont() const { return m_pPlatformFont; }
   void SetPlatformFont(void* font) { m_pPlatformFont = font; }
 #endif
@@ -123,9 +124,9 @@ class CFX_Font {
 
  private:
   CFX_FaceCache* GetFaceCache() const;
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   void ReleasePlatformResource();
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#endif
   void DeleteFace();
   void ClearFaceCache();
 
@@ -136,7 +137,7 @@ class CFX_Font {
   uint8_t* m_pFontData;
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pGsubData;
   uint32_t m_dwSize;
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   void* m_pPlatformFont;
 #endif
   bool m_bEmbedded;

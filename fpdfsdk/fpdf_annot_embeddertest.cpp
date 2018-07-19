@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_system.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
@@ -432,7 +433,7 @@ TEST_F(FPDFAnnotEmbeddertest, GetAndSetQuadPoints) {
 }
 
 TEST_F(FPDFAnnotEmbeddertest, ModifyRectQuadpointsWithAP) {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   const char md5_original[] = "63af8432fab95a67cdebb7cd0e514941";
   const char md5_modified_highlight[] = "aec26075011349dec9bace891856b5f2";
   const char md5_modified_square[] = "057f57a32be95975775e5ec513fdcb56";
@@ -640,7 +641,7 @@ TEST_F(FPDFAnnotEmbeddertest, RemoveAnnotation) {
 }
 
 TEST_F(FPDFAnnotEmbeddertest, AddAndModifyPath) {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   const char md5_original[] = "c35408717759562d1f8bf33d317483d2";
   const char md5_modified_path[] = "873b92ea83ccf006e58415d866ce145b";
   const char md5_two_paths[] = "6f1f1c91f50240e9cc9d7c87c48b93a7";
@@ -837,7 +838,7 @@ TEST_F(FPDFAnnotEmbeddertest, ModifyAnnotationFlags) {
 }
 
 TEST_F(FPDFAnnotEmbeddertest, AddAndModifyImage) {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   const char md5_original[] = "c35408717759562d1f8bf33d317483d2";
   const char md5_new_image[] = "ff012f5697436dfcaec25b32d1333596";
   const char md5_modified_image[] = "86cf8cb2755a7a2046a543e66d9c1e61";
@@ -918,7 +919,7 @@ TEST_F(FPDFAnnotEmbeddertest, AddAndModifyImage) {
 }
 
 TEST_F(FPDFAnnotEmbeddertest, AddAndModifyText) {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   const char md5_original[] = "c35408717759562d1f8bf33d317483d2";
   const char md5_new_text[] = "e5680ed048c2cfd9a1d27212cdf41286";
   const char md5_modified_text[] = "79f5cfb0b07caaf936f65f6a7a57ce77";
@@ -1054,7 +1055,7 @@ TEST_F(FPDFAnnotEmbeddertest, GetSetStringValue) {
   EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
   UnloadPage(page);
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   const char md5[] = "4d64e61c9c0f8c60ab3cc3234bb73b1c";
 #else
   const char md5[] = "c96ee1f316d7f5a1b154de9f9d467f01";

@@ -8,6 +8,7 @@
 
 #include <algorithm>
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_arabic.h"
 #include "core/fxcrt/fx_bidi.h"
 #include "core/fxcrt/fx_memory.h"
@@ -844,7 +845,7 @@ int32_t CFX_TxtBreak::GetDisplayPos(const FX_TXTRUN* pTxtRun,
       }
       if (!bEmptyChar || (bEmptyChar && !bSkipSpace)) {
         pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wForm);
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         pCharPos->m_ExtGID = pCharPos->m_GlyphIndex;
 #endif
         // TODO(npm): change widths in this method to unsigned to avoid implicit

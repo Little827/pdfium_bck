@@ -8,6 +8,7 @@
 
 #include <algorithm>
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_arabic.h"
 #include "core/fxcrt/fx_bidi.h"
 #include "core/fxge/cfx_renderdevice.h"
@@ -784,7 +785,7 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
           if (pCharPos->m_GlyphIndex == 0xFFFF)
             pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wch);
         }
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         pCharPos->m_ExtGID = pCharPos->m_GlyphIndex;
 #endif
         pCharPos->m_FontCharWidth = iCharWidth;

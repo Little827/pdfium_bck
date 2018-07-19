@@ -17,6 +17,8 @@
 #include <string.h>
 #include <wchar.h>
 
+#include "build/build_config.h"
+
 // _FX_OS_ values:
 #define _FX_OS_WIN32_ 1
 #define _FX_OS_WIN64_ 2
@@ -70,10 +72,10 @@
 #include <sal.h>
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
 #include <Carbon/Carbon.h>
 #include <libkern/OSAtomic.h>
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#endif
 
 #ifdef __cplusplus
 extern "C" {

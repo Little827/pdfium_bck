@@ -11,6 +11,7 @@
 #include <memory>
 #include <utility>
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_fontmgr.h"
@@ -227,16 +228,7 @@ const CFX_GlyphBitmap* CFX_FaceCache::LoadGlyphBitmap(const CFX_Font* pFont,
   int nMatrixB = static_cast<int>(matrix.b * 10000);
   int nMatrixC = static_cast<int>(matrix.c * 10000);
   int nMatrixD = static_cast<int>(matrix.d * 10000);
-#if _FX_PLATFORM_ != _FX_PLATFORM_APPLE_
-  if (pFont->GetSubstFont()) {
-    keygen.Generate(9, nMatrixA, nMatrixB, nMatrixC, nMatrixD, dest_width,
-                    anti_alias, pFont->GetSubstFont()->m_Weight,
-                    pFont->GetSubstFont()->m_ItalicAngle, pFont->IsVertical());
-  } else {
-    keygen.Generate(6, nMatrixA, nMatrixB, nMatrixC, nMatrixD, dest_width,
-                    anti_alias);
-  }
-#else
+#if defined(OS_MACOSX)
   if (text_flags & FXTEXT_NO_NATIVETEXT) {
     if (pFont->GetSubstFont()) {
       keygen.Generate(9, nMatrixA, nMatrixB, nMatrixC, nMatrixD, dest_width,
@@ -258,9 +250,18 @@ const CFX_GlyphBitmap* CFX_FaceCache::LoadGlyphBitmap(const CFX_Font* pFont,
                       anti_alias, 3);
     }
   }
+#else
+  if (pFont->GetSubstFont()) {
+    keygen.Generate(9, nMatrixA, nMatrixB, nMatrixC, nMatrixD, dest_width,
+                    anti_alias, pFont->GetSubstFont()->m_Weight,
+                    pFont->GetSubstFont()->m_ItalicAngle, pFont->IsVertical());
+  } else {
+    keygen.Generate(6, nMatrixA, nMatrixB, nMatrixC, nMatrixD, dest_width,
+                    anti_alias);
+  }
 #endif
   ByteString FaceGlyphsKey(keygen.key_, keygen.key_len_);
-#if _FX_PLATFORM_ != _FX_PLATFORM_APPLE_ || defined _SKIA_SUPPORT_ || \
+#if !defined(OS_MACOSX) || defined _SKIA_SUPPORT_ || \
     defined _SKIA_SUPPORT_PATHS_
   return LookUpGlyphBitmap(pFont, matrix, FaceGlyphsKey, glyph_index,
                            bFontStyle, dest_width, anti_alias);
@@ -329,7 +330,7 @@ CFX_TypeFace* CFX_FaceCache::GetDeviceCache(const CFX_Font* pFont) {
 }
 #endif
 
-#if _FX_PLATFORM_ != _FX_PLATFORM_APPLE_
+#if !defined(OS_MACOSX)
 void CFX_FaceCache::InitPlatform() {}
 #endif
 

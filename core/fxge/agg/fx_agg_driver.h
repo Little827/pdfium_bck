@@ -10,6 +10,7 @@
 #include <memory>
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fxge/renderdevicedriver_iface.h"
 #include "third_party/agg23/agg_clip_liang_barsky.h"
 #include "third_party/agg23/agg_path_storage.h"
@@ -112,7 +113,7 @@ class CFX_AggDeviceDriver : public RenderDeviceDriverIface {
   RetainPtr<CFX_DIBitmap> m_pBitmap;
   std::unique_ptr<CFX_ClipRgn> m_pClipRgn;
   std::vector<std::unique_ptr<CFX_ClipRgn>> m_StateStack;
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   void* m_pPlatformGraphics;
 #endif
   int m_FillFlags;

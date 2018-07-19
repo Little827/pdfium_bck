@@ -10,6 +10,7 @@
 #include <memory>
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fpdfdoc/cpdf_defaultappearance.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_color.h"
@@ -78,7 +79,7 @@ class FXTEXT_CHARPOS {
   uint32_t m_Unicode;
   uint32_t m_GlyphIndex;
   uint32_t m_FontCharWidth;
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   uint32_t m_ExtGID;
 #endif
   int32_t m_FallbackFontPosition;

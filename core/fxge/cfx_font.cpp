@@ -12,6 +12,7 @@
 #include <utility>
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_stream.h"
@@ -216,7 +217,7 @@ const CFX_Font::CharsetFontMap CFX_Font::defaultTTFMap[] = {
     {FX_CHARSET_ShiftJIS, "MS Gothic"},
     {FX_CHARSET_Hangul, "Batang"},
     {FX_CHARSET_MSWin_Cyrillic, "Arial"},
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_ || _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_ || defined(OS_MACOSX)
     {FX_CHARSET_MSWin_EasternEuropean, "Arial"},
 #else
     {FX_CHARSET_MSWin_EasternEuropean, "Tahoma"},
@@ -292,13 +293,12 @@ uint8_t CFX_Font::GetCharSetFromUnicode(uint16_t word) {
 }
 
 CFX_Font::CFX_Font()
-    :
-      m_Face(nullptr),
+    : m_Face(nullptr),
       m_FaceCache(nullptr),
       m_pFontData(nullptr),
       m_pGsubData(nullptr),
       m_dwSize(0),
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
       m_pPlatformFont(nullptr),
 #endif
       m_bEmbedded(false),
@@ -339,7 +339,7 @@ CFX_Font::~CFX_Font() {
   if (m_Face)
     DeleteFace();
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   ReleasePlatformResource();
 #endif
 }

@@ -6,6 +6,7 @@
 #include <memory>
 #include <string>
 
+#include "build/build_config.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "testing/embedder_test.h"
@@ -118,7 +119,7 @@ TEST_F(FPDFParserDecodeEmbeddertest, Bug_455199) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   const char kExpectedMd5sum[] = "b90475ca64d1348c3bf5e2b77ad9187a";
 #elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
   const char kExpectedMd5sum[] = "e5a6fa28298db07484cd922f3e210c88";

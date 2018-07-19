@@ -8,6 +8,7 @@
 
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/render/cpdf_transferfunc.h"
 #include "third_party/base/compiler_specific.h"
@@ -26,7 +27,7 @@ FXDIB_Format CPDF_DIBTransferFunc::GetDestFormat() {
   if (m_pSrc->IsAlphaMask())
     return FXDIB_8bppMask;
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   return (m_pSrc->HasAlpha()) ? FXDIB_Argb : FXDIB_Rgb32;
 #else
   return (m_pSrc->HasAlpha()) ? FXDIB_Argb : FXDIB_Rgb;
@@ -60,7 +61,7 @@ void CPDF_DIBTransferFunc::TranslateScanline(
           (*dest_buf)[index++] = g0;
           (*dest_buf)[index++] = r0;
         }
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         index++;
 #endif
       }
@@ -94,7 +95,7 @@ void CPDF_DIBTransferFunc::TranslateScanline(
           (*dest_buf)[index++] = m_RampR[src_byte];
         }
         src_buf++;
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         index++;
 #endif
       }
@@ -112,7 +113,7 @@ void CPDF_DIBTransferFunc::TranslateScanline(
         (*dest_buf)[index++] = m_RampB[*(src_buf++)];
         (*dest_buf)[index++] = m_RampG[*(src_buf++)];
         (*dest_buf)[index++] = m_RampR[*(src_buf++)];
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         index++;
 #endif
       }
@@ -129,7 +130,7 @@ void CPDF_DIBTransferFunc::TranslateScanline(
         (*dest_buf)[index++] = m_RampR[*(src_buf++)];
         if (!bSkip) {
           (*dest_buf)[index++] = *src_buf;
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         } else {
           index++;
 #endif
@@ -157,7 +158,7 @@ void CPDF_DIBTransferFunc::TranslateDownSamples(uint8_t* dest_buf,
       *dest_buf++ = m_RampR[*(src_buf++)];
     }
   } else {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
     if (!m_pSrc->HasAlpha()) {
       for (int i = 0; i < pixels; i++) {
         *dest_buf++ = m_RampB[*(src_buf++)];
@@ -174,7 +175,7 @@ void CPDF_DIBTransferFunc::TranslateDownSamples(uint8_t* dest_buf,
         *dest_buf++ = m_RampR[*(src_buf++)];
         *dest_buf++ = *(src_buf++);
       }
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
     }
 #endif
   }

@@ -10,8 +10,8 @@
 #include "build/build_config.h"
 #include "core/fxcrt/fileaccess_iface.h"
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_ || \
-    _FX_PLATFORM_ == _FX_PLATFORM_APPLE_ || defined(OS_ANDROID)
+#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_ || defined(OS_MACOSX) || \
+    defined(OS_ANDROID)
 class CFX_FileAccess_Posix : public FileAccessIface {
  public:
   CFX_FileAccess_Posix();

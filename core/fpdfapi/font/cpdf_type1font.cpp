@@ -8,17 +8,18 @@
 
 #include <algorithm>
 
+#include "build/build_config.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/fx_freetype.h"
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
 #include "core/fxge/apple/apple_int.h"
 #endif
 
 namespace {
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
 struct GlyphNameMap {
   const char* m_pStrAdobe;    // Raw, POD struct.
   const char* m_pStrUnicode;  // Raw, POD struct.
@@ -38,7 +39,7 @@ const char* GlyphNameRemap(const char* pStrAdobe) {
   return nullptr;
 }
 
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#endif  // defined(OS_MACOSX)
 
 bool FT_UseType1Charmap(FXFT_Face face) {
   if (FXFT_Get_Face_CharmapCount(face) == 0) {
@@ -113,7 +114,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
   if (!m_Font.GetFace())
     return;
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   bool bCoreText = true;
   CQuartz2D& quartz2d =
       static_cast<CApplePlatform*>(CFX_GEModule::Get()->GetPlatformData())
@@ -137,7 +138,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
           uint16_t unicode = prefix[j] * 256 + charcode;
           m_GlyphIndex[charcode] =
               FXFT_Get_Char_Index(m_Font.GetFace(), unicode);
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
           CalcExtGID(charcode);
 #endif
           if (m_GlyphIndex[charcode]) {
@@ -147,7 +148,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
         }
       }
       if (bGotOne) {
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         if (!bCoreText)
           memcpy(m_ExtGID, m_GlyphIndex, 256);
 #endif
@@ -167,25 +168,25 @@ void CPDF_Type1Font::LoadGlyphMap() {
       m_Encoding.m_Unicodes[charcode] = PDF_UnicodeFromAdobeName(name);
       m_GlyphIndex[charcode] = FXFT_Get_Char_Index(
           m_Font.GetFace(), m_Encoding.m_Unicodes[charcode]);
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
       CalcExtGID(charcode);
 #endif
       if (m_GlyphIndex[charcode] == 0 && strcmp(name, ".notdef") == 0) {
         m_Encoding.m_Unicodes[charcode] = 0x20;
         m_GlyphIndex[charcode] = FXFT_Get_Char_Index(m_Font.GetFace(), 0x20);
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
         CalcExtGID(charcode);
 #endif
       }
     }
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
     if (!bCoreText)
       memcpy(m_ExtGID, m_GlyphIndex, 256);
 #endif
     return;
   }
   FT_UseType1Charmap(m_Font.GetFace());
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   if (bCoreText) {
     if (FontStyleIsSymbolic(m_Flags)) {
       for (int charcode = 0; charcode < 256; charcode++) {
@@ -253,7 +254,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
     }
     return;
   }
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#endif  // defined(OS_MACOSX)
   if (FontStyleIsSymbolic(m_Flags)) {
     for (int charcode = 0; charcode < 256; charcode++) {
       const char* name =
@@ -281,7 +282,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
         }
       }
     }
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
     if (!bCoreText)
       memcpy(m_ExtGID, m_GlyphIndex, 256);
 
@@ -311,13 +312,13 @@ void CPDF_Type1Font::LoadGlyphMap() {
       m_GlyphIndex[charcode] = 0xffff;
     }
   }
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
   if (!bCoreText)
     memcpy(m_ExtGID, m_GlyphIndex, 256);
 #endif
 }
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
 void CPDF_Type1Font::SetExtGID(const char* name, int charcode) {
   CFStringRef name_ct = CFStringCreateWithCStringNoCopy(
       kCFAllocatorDefault, name, kCFStringEncodingASCII, kCFAllocatorNull);
@@ -334,4 +335,4 @@ void CPDF_Type1Font::CalcExtGID(int charcode) {
   name_glyph[255] = 0;
   SetExtGID(name_glyph, charcode);
 }
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#endif  // defined(OS_MACOSX)
