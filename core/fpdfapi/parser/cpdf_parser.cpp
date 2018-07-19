@@ -119,8 +119,9 @@ bool CPDF_Parser::IsObjectFree(uint32_t objnum) const {
   return GetObjectType(objnum) == ObjectType::kFree;
 }
 
-void CPDF_Parser::SetEncryptDictionary(const CPDF_Dictionary* pDict) {
-  m_pEncryptDict = pDict ? ToDictionary(pDict->Clone()) : nullptr;
+void CPDF_Parser::CopyEncryptDictionary(const CPDF_Dictionary* pDict) {
+  ASSERT(pDict);
+  m_pEncryptDict = ToDictionary(pDict->Clone());
 }
 
 RetainPtr<IFX_SeekableReadStream> CPDF_Parser::GetFileAccess() const {
@@ -263,12 +264,12 @@ CPDF_Parser::Error CPDF_Parser::SetEncryptHandler() {
   const CPDF_Object* pEncryptObj = GetTrailer()->GetObjectFor("Encrypt");
   if (pEncryptObj) {
     if (const CPDF_Dictionary* pEncryptDict = pEncryptObj->AsDictionary()) {
-      SetEncryptDictionary(pEncryptDict);
+      CopyEncryptDictionary(pEncryptDict);
     } else if (const CPDF_Reference* pRef = pEncryptObj->AsReference()) {
       pEncryptObj =
           m_pObjectsHolder->GetOrParseIndirectObject(pRef->GetRefObjNum());
-      if (pEncryptObj)
-        SetEncryptDictionary(pEncryptObj->GetDict());
+      if (pEncryptObj && pEncryptObj->GetDict())
+        CopyEncryptDictionary(pEncryptObj->GetDict());
     }
   }
 
@@ -280,8 +281,9 @@ CPDF_Parser::Error CPDF_Parser::SetEncryptHandler() {
     std::unique_ptr<CPDF_SecurityHandler> pSecurityHandler =
         pdfium::MakeUnique<CPDF_SecurityHandler>();
     if (!pSecurityHandler->OnInit(m_pEncryptDict.get(), GetIDArray(),
-                                  m_Password))
+                                  m_Password)) {
       return PASSWORD_ERROR;
+    }
 
     m_pSecurityHandler = std::move(pSecurityHandler);
   }
@@ -290,7 +292,7 @@ CPDF_Parser::Error CPDF_Parser::SetEncryptHandler() {
 
 void CPDF_Parser::ReleaseEncryptHandler() {
   m_pSecurityHandler.reset();
-  SetEncryptDictionary(nullptr);
+  m_pEncryptDict.reset();
 }
 
 // Ideally, all the cross reference entries should be verified.

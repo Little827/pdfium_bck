@@ -158,7 +158,7 @@ class CPDF_Parser {
   Error LoadLinearizedMainXRefTable();
   const CPDF_ObjectStream* GetObjectStream(uint32_t object_number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
-  void SetEncryptDictionary(const CPDF_Dictionary* pDict);
+  void CopyEncryptDictionary(const CPDF_Dictionary* pDict);
   void ShrinkObjectMap(uint32_t size);
   // A simple check whether the cross reference table matches with
   // the objects.
