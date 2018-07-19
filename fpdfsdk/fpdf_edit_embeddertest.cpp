@@ -2206,7 +2206,7 @@ TEST_F(FPDFEditEmbeddertest, TransformAnnot) {
 }
 
 // TODO(npm): Add tests using Japanese fonts in other OS.
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#if defined(OS_LINUX) || defined(OS_ASMJS)
 TEST_F(FPDFEditEmbeddertest, AddCIDFontText) {
   // Start with a blank page
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
@@ -2262,7 +2262,7 @@ TEST_F(FPDFEditEmbeddertest, AddCIDFontText) {
 
   VerifySavedDocument(612, 792, md5);
 }
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#endif  // defined(OS_LINUX) || defined(OS_ASMJS)
 
 TEST_F(FPDFEditEmbeddertest, SaveAndRender) {
   const char md5[] = "3c20472b0552c0c22b88ab1ed8c6202b";

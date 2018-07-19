@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_folderfontinfo.h"
 #include "core/fxge/cfx_fontmgr.h"
@@ -14,7 +15,7 @@
 #include "core/fxge/systemfontinfo_iface.h"
 #include "third_party/base/ptr_util.h"
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#if defined(OS_LINUX) || defined(OS_ASMJS)
 namespace {
 
 const size_t kLinuxGpNameSize = 6;
@@ -160,4 +161,4 @@ void CFX_GEModule::InitPlatform() {
 }
 
 void CFX_GEModule::DestroyPlatform() {}
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#endif  // defined(OS_LINUX) || defined(OS_ASMJS)

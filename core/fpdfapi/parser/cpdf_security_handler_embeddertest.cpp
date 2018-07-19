@@ -45,13 +45,13 @@ TEST_F(CPDFSecurityHandlerEmbeddertest, OwnerPassword) {
 }
 
 TEST_F(CPDFSecurityHandlerEmbeddertest, PasswordAfterGenerateSave) {
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#if defined(OS_LINUX) || defined(OS_ASMJS)
   const char md5[] = "7048dca58e2ed8f93339008b91e4eb4e";
 #elif defined(OS_MACOSX)
   const char md5[] = "6951b6c9891dfe0332a5b1983e484400";
 #else
   const char md5[] = "a5dde3c6c37b8716b9b369a03752a728";
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#endif  // defined(OS_LINUX) || defined(OS_ASMJS)
   {
     ASSERT_TRUE(OpenDocumentWithOptions("encrypted.pdf", "5678",
                                         LinearizeOption::kMustLinearize,

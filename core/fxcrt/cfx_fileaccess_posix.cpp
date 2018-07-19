@@ -23,7 +23,7 @@
 #define O_LARGEFILE 0
 #endif  // O_LARGEFILE
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_ || defined(OS_MACOSX) || \
+#if defined(OS_LINUX) || defined(OS_ASMJS) || defined(OS_MACOSX) || \
     defined(OS_ANDROID)
 
 namespace {

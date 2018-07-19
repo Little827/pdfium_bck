@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include "build/build_config.h"
 #include "core/fxcrt/widestring.h"
 #include "public/fpdf_formfill.h"
 #include "public/fpdf_fwlevent.h"
@@ -138,11 +139,11 @@ TEST_F(CFWLEditEmbeddertest, DISABLED_FillWithNewLineWithMultiline) {
   // abcde
   // fghij|
   {
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#if defined(OS_LINUX) || defined(OS_ASMJS)
     const char kFilledMultilineMD5[] = "fc1f4d5fdb2c5755005fc525b0a60ec9";
 #else
     const char kFilledMultilineMD5[] = "a5654e027d8b1667c20f3b86d1918003";
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#endif  // defined(OS_LINUX) || defined(OS_ASMJS)
     ScopedFPDFBitmap page_bitmap =
         RenderPageWithFlags(page(), form_handle(), FPDF_ANNOT);
     CompareBitmap(page_bitmap.get(), 612, 792, kFilledMultilineMD5);
@@ -163,11 +164,11 @@ TEST_F(CFWLEditEmbeddertest, DISABLED_FillWithNewLineWithMultiline) {
   // Should look like:
   // abcde|ghij
   {
-#if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#if defined(OS_LINUX) || defined(OS_ASMJS)
     const char kMultilineBackspaceMD5[] = "8bb62a8100ff1e1cc113d4033e0d824e";
 #else
     const char kMultilineBackspaceMD5[] = "a2f1dcab92bb1fb7c2f9ccc70100c989";
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#endif  // defined(OS_LINUX) || defined(OS_ASMJS)
     ScopedFPDFBitmap page_bitmap =
         RenderPageWithFlags(page(), form_handle(), FPDF_ANNOT);
     CompareBitmap(page_bitmap.get(), 612, 792, kMultilineBackspaceMD5);

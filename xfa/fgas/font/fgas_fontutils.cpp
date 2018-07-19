@@ -437,7 +437,7 @@ const FGAS_FontInfo g_XFAFontsMap[] = {
     {0xfe209a82, L"LucidaCalligraphy", L"Arial", 0, 1252},
     {0xfef135f8, L"AdobeHeitiStd-Regular", L"Batang,Century,Dotum", 0, 936},
 };
-#elif _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
+#elif defined(OS_LINUX) || defined(OS_ASMJS)
 const FGAS_FontInfo g_XFAFontsMap[] = {
     {0x01d5d33e, L"SimSun",
      L"WenQuanYi Zen Hei Mono,AR PL UMing CN,AR PL UMing HK,AR PL UMing TW,AR "
