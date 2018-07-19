@@ -78,7 +78,7 @@ class CPDF_Parser {
   const CPDF_Array* GetIDArray() const;
   CPDF_Dictionary* GetRoot() const;
 
-  CPDF_Dictionary* GetEncryptDict() const { return m_pEncryptDict.get(); }
+  CPDF_Dictionary* GetEncryptDict() { return m_pEncryptDict.get(); }
 
   std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum);
 
