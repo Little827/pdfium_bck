@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d7eeba7_fa2e8f60",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-19T17:19:54Z",
+      "side": 1,
+      "message": "Do we need this abstraction?  I\u0027d expect a factory to return one of N implementations based on paramters, but there is only one such possibility.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
