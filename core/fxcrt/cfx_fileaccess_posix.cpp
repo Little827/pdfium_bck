@@ -12,6 +12,7 @@
 
 #include <memory>
 
+#include "build/build_config.h"
 #include "third_party/base/ptr_util.h"
 
 #ifndef O_BINARY
@@ -23,8 +24,7 @@
 #endif  // O_LARGEFILE
 
 #if _FX_PLATFORM_ == _FX_PLATFORM_LINUX_ || \
-    _FX_PLATFORM_ == _FX_PLATFORM_APPLE_ || \
-    _FX_PLATFORM_ == _FX_PLATFORM_ANDROID_
+    _FX_PLATFORM_ == _FX_PLATFORM_APPLE_ || defined(OS_ANDROID)
 
 namespace {
 

@@ -10,6 +10,7 @@
 #include <memory>
 #include <utility>
 
+#include "build/build_config.h"
 #include "core/fxcrt/cfx_memorystream.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_font.h"
@@ -179,7 +180,8 @@ const FX_FONTDESCRIPTOR* CFGAS_FontMgr::FindFont(const wchar_t* pszFontFamily,
   // Use a named object to store the returned value of EnumGdiFonts() instead
   // of using a temporary object. This can prevent use-after-free issues since
   // pDesc may point to one of std::deque object's elements.
-  std::deque<FX_FONTDESCRIPTOR> namedFonts = EnumGdiFonts(pszFontFamily, wUnicode);
+  std::deque<FX_FONTDESCRIPTOR> namedFonts =
+      EnumGdiFonts(pszFontFamily, wUnicode);
   params.pwsFamily = nullptr;
   pDesc = MatchDefaultFont(&params, namedFonts);
   if (!pDesc)
@@ -203,7 +205,7 @@ constexpr const char* g_FontFolders[] = {
     "/usr/share/X11/fonts/TTF", "/usr/local/share/fonts",
 #elif _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
     "~/Library/Fonts", "/Library/Fonts", "/System/Library/Fonts",
-#elif _FX_PLATFORM_ == _FX_PLATFORM_ANDROID_
+#elif defined(OS_ANDROID)
     "/system/fonts",
 #endif
 };
