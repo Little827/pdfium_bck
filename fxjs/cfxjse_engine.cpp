@@ -66,7 +66,8 @@ namespace {
 const char kFormCalcRuntime[] = "pfm_rt";
 
 CXFA_ThisProxy* ToThisProxy(CFXJSE_Value* pValue, CFXJSE_Class* pClass) {
-  return static_cast<CXFA_ThisProxy*>(pValue->ToHostObject(pClass));
+  return CXFA_ThisProxy::FromCXFAObject(
+      pValue->ToHostObject(pClass)->AsCXFAObject());
 }
 
 }  // namespace
@@ -471,10 +472,10 @@ CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
 
 CXFA_Object* CFXJSE_Engine::GetVariablesThis(CXFA_Object* pObject,
                                              bool bScriptNode) {
-  if (!pObject->IsVariablesThis())
+  CXFA_ThisProxy* pProxy = CXFA_ThisProxy::FromCXFAObject(pObject);
+  if (!pProxy)
     return pObject;
 
-  CXFA_ThisProxy* pProxy = static_cast<CXFA_ThisProxy*>(pObject);
   return bScriptNode ? pProxy->GetScriptNode() : pProxy->GetThisNode();
 }
 
