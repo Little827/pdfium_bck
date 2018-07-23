@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83638f5e_b6527396",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-23T18:30:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6878b04b_17a54802",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "91a6686bb7dbbf0843d48bfa0defb44ac516d024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a7e1c8c_a4176cf8",
         "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-23T17:43:55Z",
       "side": 1,
       "message": "are we sure Length can\u0027t be negative?",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 27
+      },
+      "revId": "91a6686bb7dbbf0843d48bfa0defb44ac516d024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d2c6a0_50987073",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-23T18:30:16Z",
+      "side": 1,
+      "message": "This is original logic.\nSee\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/edit/cpdf_creator.cpp?rcl\u003db907757c0db1d5e4ede21709c9e97cbeefc1e03a\u0026l\u003d231",
+      "parentUuid": "3a7e1c8c_a4176cf8",
       "range": {
         "startLine": 194,
         "startChar": 6,
