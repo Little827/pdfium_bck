@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54314cb4_a14f8d03",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T22:54:11Z",
+      "side": 1,
+      "message": "I think we also need \u0027pool\u0027 dimension.\n\n  dimensions: \"pool:luci.flex.ci\"\n\nOr you intent to use some dedicated pool?\n\nIf you decide to use flex.ci, Swarming should be told that it is OK that luci.pdfium.ci bucket is adding tasks there, by modifying https://chrome-internal.googlesource.com/infradata/config/+/master/configs/chromium-swarm/pools.cfg#23",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f272be2b_0fe77e06",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T22:54:11Z",
+      "side": 1,
+      "message": "this is default now and not needed in the config",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfcf6159_edfd94c4",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T22:54:11Z",
+      "side": 1,
+      "message": "\u0027pool\u0027 here too",
+      "range": {
+        "startLine": 203,
+        "startChar": 6,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "283cf578_eb02e84a",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T22:54:11Z",
+      "side": 1,
+      "message": "pdfium-try-builder",
+      "range": {
+        "startLine": 205,
+        "startChar": 24,
+        "endLine": 205,
+        "endChar": 41
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c7f4f13_9347ba68",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T22:54:11Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 214,
+        "startChar": 7,
+        "endLine": 214,
+        "endChar": 73
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3345bdc_e85b310e",
+        "filename": "luci-scheduler.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T22:54:11Z",
+      "side": 1,
+      "message": "this is https://chromium.googlesource.com/infra/luci/luci-go/+/master/scheduler/appengine/messages/config.proto now",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 103
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb5e98d_af5184e1",
+        "filename": "luci-scheduler.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T22:54:11Z",
+      "side": 1,
+      "message": "nit: remove spaces",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 2
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
