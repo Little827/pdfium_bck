@@ -16,6 +16,24 @@
       "revId": "4c90d93378ca94c7f6df1cc0eddaf228c3bbe457",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51392f75_a0281039",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-23T19:02:40Z",
+      "side": 1,
+      "message": "No. In case of crossref rebuilding, do not matter the sequence of AddNormal/AddCompressed and CPDF_CrossRefTable::MergeUp().",
+      "parentUuid": "ec43428e_6664ed11",
+      "revId": "4c90d93378ca94c7f6df1cc0eddaf228c3bbe457",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
