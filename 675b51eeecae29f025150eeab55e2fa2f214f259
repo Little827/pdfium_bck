@@ -16,6 +16,24 @@
       "revId": "675b51eeecae29f025150eeab55e2fa2f214f259",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d53a0fc0_226b5054",
+        "filename": "codereview.settings",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:35:37Z",
+      "side": 1,
+      "message": "Hm you\u0027re right, that\u0027s surprising.",
+      "parentUuid": "afd5c20d_70046a65",
+      "revId": "675b51eeecae29f025150eeab55e2fa2f214f259",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
