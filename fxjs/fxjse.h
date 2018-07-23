@@ -17,7 +17,7 @@ class CFXJSE_Value;
 class CJS_Return;
 class CXFA_Object;
 
-// C++ object which is retrieved from v8 object's slot.
+// Cx++ object which is retrieved from v8 object's slot.
 class CFXJSE_HostObject {
  public:
   virtual ~CFXJSE_HostObject();
