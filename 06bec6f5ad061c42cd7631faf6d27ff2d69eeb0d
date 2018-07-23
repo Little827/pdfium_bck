@@ -70,6 +70,30 @@
       "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb0a0b9_0e6c11c0",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-23T16:43:28Z",
+      "side": 1,
+      "message": "Or we could just pass the handler/objnum bound here where they are needed as separate arguments?",
+      "parentUuid": "1d37362d_6e0e2006",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
