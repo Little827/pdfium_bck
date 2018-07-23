@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33d0f84f_afa6f0b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T23:17:54Z",
+      "side": 1,
+      "message": "Can we do this in a separate CL first?",
+      "revId": "b3fe30011d0e6e5272054074be2c8c6bbb5a3caf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

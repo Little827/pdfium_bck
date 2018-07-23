@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be53f059_8322c323",
+        "filename": "codereview.settings",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T23:17:54Z",
+      "side": 0,
+      "message": "The base for this file does not look like what I have in my checkout.",
+      "revId": "d6699d70624d82aff65c1464c8800c291fa29148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
