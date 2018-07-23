@@ -375,6 +375,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
                                                      int modifier,
                                                      double page_x,
                                                      double page_y) {
+#ifdef PDF_ENABLE_MOUSE_LOGGING
+  fprintf(stderr, "mousemove,%d,%d\n", static_cast<int>(round(page_x)),
+          static_cast<int>(round(page_y)));
+#endif  // PDF_ENABLE_MOUSE_LOGGING
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
@@ -400,10 +404,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-#ifdef PDF_ENABLE_CLICK_LOGGING
+#ifdef PDF_ENABLE_MOUSE_LOGGING
   fprintf(stderr, "mousedown,left,%d,%d\n", static_cast<int>(round(page_x)),
           static_cast<int>(round(page_y)));
-#endif  // PDF_ENABLE_CLICK_LOGGING
+#endif  // PDF_ENABLE_MOUSE_LOGGING
   return pPageView->OnLButtonDown(CFX_PointF(page_x, page_y), modifier);
 }
 
@@ -415,10 +419,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-#ifdef PDF_ENABLE_CLICK_LOGGING
+#ifdef PDF_ENABLE_MOUSE_LOGGING
   fprintf(stderr, "mouseup,left,%d,%d\n", static_cast<int>(round(page_x)),
           static_cast<int>(round(page_y)));
-#endif  // PDF_ENABLE_CLICK_LOGGING
+#endif  // PDF_ENABLE_MOUSE_LOGGING
   return pPageView->OnLButtonUp(CFX_PointF(page_x, page_y), modifier);
 }
 
@@ -431,10 +435,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-#ifdef PDF_ENABLE_CLICK_LOGGING
+#ifdef PDF_ENABLE_MOUSE_LOGGING
   fprintf(stderr, "mousedown,right,%d,%d\n", static_cast<int>(round(page_x)),
           static_cast<int>(round(page_y)));
-#endif  // PDF_ENABLE_CLICK_LOGGING
+#endif  // PDF_ENABLE_MOUSE_LOGGING
   return pPageView->OnRButtonDown(CFX_PointF(page_x, page_y), modifier);
 }
 
@@ -446,10 +450,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
-#ifdef PDF_ENABLE_CLICK_LOGGING
+#ifdef PDF_ENABLE_MOUSE_LOGGING
   fprintf(stderr, "mouseup,right,%d,%d\n", static_cast<int>(round(page_x)),
           static_cast<int>(round(page_y)));
-#endif  // PDF_ENABLE_CLICK_LOGGING
+#endif  // PDF_ENABLE_MOUSE_LOGGING
   return pPageView->OnRButtonUp(CFX_PointF(page_x, page_y), modifier);
 }
 #endif  // PDF_ENABLE_XFA

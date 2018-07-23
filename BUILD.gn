@@ -30,8 +30,8 @@ config("pdfium_common_config") {
     defines += [ "PDF_ENABLE_V8" ]
   }
 
-  if (pdf_enable_click_logging) {
-    defines += [ "PDF_ENABLE_CLICK_LOGGING" ]
+  if (pdf_enable_mouse_logging) {
+    defines += [ "PDF_ENABLE_MOUSE_LOGGING" ]
   }
 
   if (pdf_enable_xfa) {
