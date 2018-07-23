@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6878b04b_17a54802",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-23T17:43:55Z",
+      "side": 1,
+      "message": "nit: probably best to write out for clarity\n  return std::vector\u003cuint8_t\u003e();",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "91a6686bb7dbbf0843d48bfa0defb44ac516d024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7e1c8c_a4176cf8",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-23T17:43:55Z",
+      "side": 1,
+      "message": "are we sure Length can\u0027t be negative?",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 27
+      },
+      "revId": "91a6686bb7dbbf0843d48bfa0defb44ac516d024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
