@@ -16,6 +16,24 @@
       "revId": "2bfa78540c375916ec9973f0ae11271b098180bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b42168b2_adc10d21",
+        "filename": "fxjs/cfxjse_value.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-23T20:34:48Z",
+      "side": 0,
+      "message": "Nah, its redundant, given line 77, e.g. an empty global handle makes an empty local handle.",
+      "parentUuid": "ccd873e6_5ac59660",
+      "revId": "2bfa78540c375916ec9973f0ae11271b098180bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
