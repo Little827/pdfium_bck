@@ -18,6 +18,9 @@ declare_args() {
   # Generate logging messages for click events that reach PDFium
   pdf_enable_click_logging = false
 
+  # Generate logging messages for mouse move events that reach PDFium
+  pdf_enable_move_logging = false
+
   # Build PDFium either with or without v8 support.
   pdf_enable_v8 = pdf_enable_v8_override
 

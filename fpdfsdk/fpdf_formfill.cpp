@@ -375,6 +375,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
                                                      int modifier,
                                                      double page_x,
                                                      double page_y) {
+#ifdef PDF_ENABLE_MOVE_LOGGING
+  fprintf(stderr, "mousemove,%d,%d\n", static_cast<int>(round(page_x)),
+          static_cast<int>(round(page_y)));
+#endif  // PDF_ENABLE_MOVE_LOGGING
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, page);
   if (!pPageView)
     return false;
