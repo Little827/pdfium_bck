@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afd5c20d_70046a65",
+        "filename": "codereview.settings",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T23:31:42Z",
+      "side": 1,
+      "message": "All the other codereview.settings have this as it was. I don\u0027t think it\u0027s used when GERRIT_HOST is set to true anyway.",
+      "revId": "675b51eeecae29f025150eeab55e2fa2f214f259",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
