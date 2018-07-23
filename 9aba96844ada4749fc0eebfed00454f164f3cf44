@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "9929a5a6_2bfe7887",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T23:50:13Z",
+      "side": 1,
+      "message": "Are there suppose to be 2 name: entries in each builders dictionary?",
+      "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f43f1daf_1b91f132",
         "filename": "luci-milo.cfg",
         "patchSetId": 10
@@ -78,6 +95,41 @@
       "side": 1,
       "message": "No, I just made up some categories, the idea is that you can tell exactly what builder it is on the console.  Would you like me to rearrange them?",
       "parentUuid": "f43f1daf_1b91f132",
+      "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b38e1e60_c4fc229e",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T23:50:13Z",
+      "side": 1,
+      "message": "We are happy with the existing layout. If it\u0027s not too much trouble, please rearrange into the 3 categories we have in the existing waterfall:\n\nBots with \"no_v8\" in the name go in the \"no_v8\" cateogory.\nRemaining bots with \"xfa\" in the name go in the \"xfa\" category.\nRemaining bots go in the \"main\" category.",
+      "parentUuid": "036d9e65_2116a5a6",
+      "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b41aafb_6af43909",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T23:50:13Z",
+      "side": 1,
+      "message": "The try server categories are the same, except prepend this rule:\n\nBots with \"skia\" in the name go in the \"skia\" cateogory.",
       "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
