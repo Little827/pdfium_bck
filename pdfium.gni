@@ -16,7 +16,7 @@ declare_args() {
   pdf_bundle_freetype = pdf_bundle_freetype_override
 
   # Generate logging messages for click events that reach PDFium
-  pdf_enable_click_logging = false
+  pdf_enable_mouse_logging = false
 
   # Build PDFium either with or without v8 support.
   pdf_enable_v8 = pdf_enable_v8_override
