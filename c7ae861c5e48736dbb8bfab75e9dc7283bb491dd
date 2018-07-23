@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98ce9c21_9c850cc1",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:16:41Z",
+      "side": 1,
+      "message": "Was originally planning dedicated pools for pdfium ci/try.  Flex pool sounds better.  Done.",
+      "parentUuid": "54314cb4_a14f8d03",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f272be2b_0fe77e06",
         "filename": "cr-buildbucket.cfg",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ce0f57_5521b6b9",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f272be2b_0fe77e06",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "45c745f5_6e5bc59c",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:16:41Z",
+      "side": 1,
+      "message": "luci.flex.try, right?",
+      "parentUuid": "bfcf6159_edfd94c4",
+      "range": {
+        "startLine": 203,
+        "startChar": 6,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "283cf578_eb02e84a",
         "filename": "cr-buildbucket.cfg",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9832e016_871754ff",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:16:41Z",
+      "side": 1,
+      "message": "Oops. Fixed.",
+      "parentUuid": "283cf578_eb02e84a",
+      "range": {
+        "startLine": 205,
+        "startChar": 24,
+        "endLine": 205,
+        "endChar": 41
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9a8af659_aec78f10",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c7f4f13_9347ba68",
+      "range": {
+        "startLine": 214,
+        "startChar": 7,
+        "endLine": 214,
+        "endChar": 73
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3345bdc_e85b310e",
         "filename": "luci-scheduler.cfg",
         "patchSetId": 7
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "bc6e2670_006f9e4d",
+        "filename": "luci-scheduler.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3345bdc_e85b310e",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 103
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cb5e98d_af5184e1",
         "filename": "luci-scheduler.cfg",
         "patchSetId": 7
@@ -160,6 +304,30 @@
       "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0924758a_d9083e11",
+        "filename": "luci-scheduler.cfg",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb5e98d_af5184e1",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 2
+      },
+      "revId": "c7ae861c5e48736dbb8bfab75e9dc7283bb491dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
