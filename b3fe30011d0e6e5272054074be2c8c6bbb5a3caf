@@ -34,6 +34,24 @@
       "revId": "b3fe30011d0e6e5272054074be2c8c6bbb5a3caf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1f1d5ec_f43dc721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T23:38:14Z",
+      "side": 1,
+      "message": "Need to update the commit message.",
+      "parentUuid": "b444a506_5f529a77",
+      "revId": "b3fe30011d0e6e5272054074be2c8c6bbb5a3caf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
