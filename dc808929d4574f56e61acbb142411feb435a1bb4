@@ -16,6 +16,24 @@
       "revId": "dc808929d4574f56e61acbb142411feb435a1bb4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa7ad78_0e58a7db",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T21:28:55Z",
+      "side": 1,
+      "message": "Are we the only people using these flags? If we go with https://pdfium-review.googlesource.com/38591, would the amount of logging matter to anybody else? One can always pipe the output to \"grep -v mousemove\" right?",
+      "parentUuid": "3fec39b9_f1c43455",
+      "revId": "dc808929d4574f56e61acbb142411feb435a1bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
