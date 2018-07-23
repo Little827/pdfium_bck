@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec43428e_6664ed11",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-23T18:39:49Z",
+      "side": 1,
+      "message": "Does changing the order of AddNormal() and CPDF_CrossRefTable::MergeUp() matter?",
+      "revId": "4c90d93378ca94c7f6df1cc0eddaf228c3bbe457",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
