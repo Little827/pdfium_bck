@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe84d2b1_1448bb42",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7316
+      },
+      "writtenOn": "2018-07-23T23:44:16Z",
+      "side": 1,
+      "message": "Are you sure this works? (I just don\u0027t know).\n\nNote that there\u0027s only one 10.13 bot in luci.flex.ci pool and it has 4 cores: https://chromium-swarm.appspot.com/bot?id\u003dbuild447-m1\u0026sort_stats\u003dtotal%3Adesc\n\n(Should we add more bots there?..)",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f43f1daf_1b91f132",
         "filename": "luci-milo.cfg",
         "patchSetId": 10
