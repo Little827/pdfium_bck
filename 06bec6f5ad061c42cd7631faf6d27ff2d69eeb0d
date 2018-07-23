@@ -118,6 +118,30 @@
       "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae3631f_12f60dbe",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-23T16:57:15Z",
+      "side": 1,
+      "message": "Basically, can you give us a solution that doesn\u0027t introduce the need for this class?  It doesn\u0027t do very much except hold two args that could be passed along to the places we pass this.",
+      "parentUuid": "9ffaf5ae_47d798fa",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
