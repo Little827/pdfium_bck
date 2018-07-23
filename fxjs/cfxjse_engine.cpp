@@ -65,8 +65,8 @@ namespace {
 
 const char kFormCalcRuntime[] = "pfm_rt";
 
-CXFA_ThisProxy* ToThisProxy(CFXJSE_Value* pValue, CFXJSE_Class* pClass) {
-  return static_cast<CXFA_ThisProxy*>(pValue->ToHostObject(pClass));
+CXFA_ThisProxy* ToThisProxy(CFXJSE_Value* pValue) {
+  return static_cast<CXFA_ThisProxy*>(pValue->ToHostObject());
 }
 
 }  // namespace
@@ -78,13 +78,13 @@ CXFA_Object* CFXJSE_Engine::ToObject(
     return nullptr;
 
   CFXJSE_HostObject* pHostObj =
-      FXJSE_RetrieveObjectBinding(info.Holder().As<v8::Object>(), nullptr);
+      FXJSE_RetrieveObjectBinding(info.Holder().As<v8::Object>());
   return pHostObj ? pHostObj->AsCXFAObject() : nullptr;
 }
 
 // static.
 CXFA_Object* CFXJSE_Engine::ToObject(CFXJSE_Value* pValue) {
-  CFXJSE_HostObject* pHostObj = pValue->ToHostObject(nullptr);
+  CFXJSE_HostObject* pHostObj = pValue->ToHostObject();
   return pHostObj ? pHostObj->AsCXFAObject() : nullptr;
 }
 
@@ -113,7 +113,7 @@ CFXJSE_Engine::CFXJSE_Engine(CXFA_Document* pDocument,
 
 CFXJSE_Engine::~CFXJSE_Engine() {
   for (const auto& pair : m_mapVariableToContext)
-    delete ToThisProxy(pair.second->GetGlobalObject().get(), nullptr);
+    delete ToThisProxy(pair.second->GetGlobalObject().get());
 }
 
 bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
@@ -790,7 +790,7 @@ CXFA_Object* CFXJSE_Engine::ToXFAObject(v8::Local<v8::Value> obj) {
     return nullptr;
 
   CFXJSE_HostObject* pHostObj =
-      FXJSE_RetrieveObjectBinding(obj.As<v8::Object>(), nullptr);
+      FXJSE_RetrieveObjectBinding(obj.As<v8::Object>());
   return pHostObj ? pHostObj->AsCXFAObject() : nullptr;
 }
 
