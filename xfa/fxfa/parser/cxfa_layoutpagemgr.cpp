@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/parser/cxfa_layoutpagemgr.h"
 
+#include <iostream>
+
 #include "fxjs/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/stl_util.h"
@@ -235,6 +237,7 @@ void SyncRemoveLayoutItem(CXFA_LayoutItem* pParentLayoutItem,
       SyncRemoveLayoutItem(pCurLayoutItem, pNotify, pDocLayout);
 
     pNotify->OnLayoutItemRemoving(pDocLayout, pCurLayoutItem);
+    std::cerr << "SyncRemoveLayoutItem delete pCurLayoutItem " << (void*)pCurLayoutItem << std::endl;
     delete pCurLayoutItem;
     pCurLayoutItem = pNextLayoutItem;
   }
@@ -1635,6 +1638,7 @@ void CXFA_LayoutPageMgr::SaveLayoutItem(CXFA_LayoutItem* pParentLayoutItem) {
           SyncRemoveLayoutItem(pCurLayoutItem, pNotify, pDocLayout);
 
         pNotify->OnLayoutItemRemoving(pDocLayout, pCurLayoutItem);
+        std::cerr << "CXFA_LayoutPageMgr::SaveLayoutItem delete pCurLayoutItem " << (void*)pCurLayoutItem << std::endl;
         delete pCurLayoutItem;
         pCurLayoutItem = pNextLayoutItem;
         continue;

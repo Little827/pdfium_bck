@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/cxfa_ffdocview.h"
 
+#include <iostream>
+
 #include "core/fxcrt/fx_extension.h"
 #include "fxjs/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
@@ -200,7 +202,9 @@ CXFA_FFPageView* CXFA_FFDocView::GetPageView(int32_t nIndex) const {
 }
 
 CXFA_LayoutProcessor* CXFA_FFDocView::GetXFALayout() const {
+  // std::cerr << "CXFA_FFDocView::GetXFALayout BEGIN" << std::endl;
   return m_pDoc->GetXFADoc()->GetLayoutProcessor();
+  // std::cerr << "CXFA_FFDocView::GetXFALayout END" << std::endl;
 }
 
 bool CXFA_FFDocView::ResetSingleNodeData(CXFA_Node* pNode) {
@@ -246,7 +250,10 @@ void CXFA_FFDocView::ResetNode(CXFA_Node* pNode) {
 }
 
 CXFA_FFWidget* CXFA_FFDocView::GetWidgetForNode(CXFA_Node* node) {
-  return static_cast<CXFA_FFWidget*>(GetXFALayout()->GetLayoutItem(node));
+  std::cerr << "CXFA_FFDocView::GetWidgetForNode BEGIN" << std::endl;
+  CXFA_FFWidget* ret = static_cast<CXFA_FFWidget*>(GetXFALayout()->GetLayoutItem(node));
+  std::cerr << "CXFA_FFDocView::GetWidgetForNode END ret " << (void*)ret << std::endl;
+  return ret;
 }
 
 CXFA_FFWidgetHandler* CXFA_FFDocView::GetWidgetHandler() {
@@ -404,9 +411,12 @@ int32_t CXFA_FFDocView::ExecEventActivityByDeepFirst(CXFA_Node* pFormNode,
 
 CXFA_FFWidget* CXFA_FFDocView::GetWidgetByName(const WideString& wsName,
                                                CXFA_FFWidget* pRefWidget) {
+  std::cerr << "CXFA_FFDocView::GetWidgetByName(" << wsName << ") BEGIN" << std::endl;
   CFXJSE_Engine* pScriptContext = m_pDoc->GetXFADoc()->GetScriptContext();
-  if (!pScriptContext)
+  if (!pScriptContext) {
+  std::cerr << "CXFA_FFDocView::GetWidgetByName RETURN null 1" << std::endl;
     return nullptr;
+  }
 
   CXFA_Node* pRefNode = nullptr;
   if (pRefWidget) {
@@ -420,14 +430,19 @@ CXFA_FFWidget* CXFA_FFDocView::GetWidgetByName(const WideString& wsName,
                      XFA_RESOLVENODE_Siblings | XFA_RESOLVENODE_Parent;
   if (!pScriptContext->ResolveObjects(pRefNode, wsExpression.AsStringView(),
                                       &resolveNodeRS, dwStyle, nullptr)) {
+  std::cerr << "CXFA_FFDocView::GetWidgetByName RETURN null 2" << std::endl;
     return nullptr;
   }
 
   if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
     CXFA_Node* pNode = resolveNodeRS.objects.front()->AsNode();
-    if (pNode && pNode->IsWidgetReady())
-      return GetWidgetForNode(pNode);
+    if (pNode && pNode->IsWidgetReady()) {
+      CXFA_FFWidget* ret = GetWidgetForNode(pNode);
+      std::cerr << "CXFA_FFDocView::GetWidgetByName END ret " << (void*)ret << std::endl;
+      return ret;
+    }
   }
+  std::cerr << "CXFA_FFDocView::GetWidgetByName RETURN null 3" << std::endl;
   return nullptr;
 }
 

@@ -6,6 +6,9 @@
 
 #include "xfa/fxfa/parser/cxfa_layoutprocessor.h"
 
+#include <iostream>
+
+#include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
@@ -113,7 +116,21 @@ CXFA_ContainerLayoutItem* CXFA_LayoutProcessor::GetPage(int32_t index) const {
 }
 
 CXFA_LayoutItem* CXFA_LayoutProcessor::GetLayoutItem(CXFA_Node* pFormItem) {
-  return pFormItem->JSObject()->GetLayoutItem();
+  std::cerr << "CXFA_LayoutProcessor::GetLayoutItem BEGIN" << std::endl;
+
+  std::cerr << "CXFA_LayoutProcessor::GetLayoutItem pFormItem [" << (void*)pFormItem << "]" << std::endl;
+  std::cerr << "CXFA_LayoutProcessor::GetLayoutItem pFormItem->JSObject() [" << (void*)pFormItem->JSObject() << "]" << std::endl;
+  std::cerr << "CXFA_LayoutProcessor::GetLayoutItem pFormItem->JSObject()->GetLayoutItem [" << (void*)pFormItem->JSObject()->GetLayoutItem() << "]" << std::endl;
+
+  // UnownedPtr<CXFA_Node> p1(pFormItem);
+  // UnownedPtr<CJX_Object> p2(p1->JSObject());
+  // UnownedPtr<CXFA_LayoutItem> p3(p2->GetLayoutItem());
+  // UnownedPtr<CXFA_LayoutItem> p4 = p3;
+  // CXFA_LayoutItem* ret = p4.Get();
+  CXFA_LayoutItem* ret = pFormItem->JSObject()->GetLayoutItem();
+  std::cerr << "CXFA_LayoutProcessor::GetLayoutItem END" << std::endl;
+  return ret;
+  // return pFormItem->JSObject()->GetLayoutItem();
 }
 
 void CXFA_LayoutProcessor::AddChangedContainer(CXFA_Node* pContainer) {

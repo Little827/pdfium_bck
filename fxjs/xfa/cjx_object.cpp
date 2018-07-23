@@ -6,6 +6,7 @@
 
 #include "fxjs/xfa/cjx_object.h"
 
+#include <iostream>
 #include <tuple>
 
 #include "core/fxcrt/cfx_decimal.h"
@@ -123,9 +124,12 @@ struct XFA_MAPMODULEDATA {
   std::map<void*, XFA_MAPDATABLOCK*> m_BufferMap;
 };
 
-CJX_Object::CJX_Object(CXFA_Object* obj) : object_(obj) {}
+CJX_Object::CJX_Object(CXFA_Object* obj) : object_(obj) {
+  // std::cerr << (void*)this << " CJX_Object::CJX_Object" << std::endl;
+}
 
 CJX_Object::~CJX_Object() {
+  // std::cerr << (void*)this << " CJX_Object::~CJX_Object" << std::endl;
   ClearMapModuleBuffer();
 }
 

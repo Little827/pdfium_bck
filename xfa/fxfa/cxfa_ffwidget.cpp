@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -233,9 +234,12 @@ CXFA_CalcData::CXFA_CalcData() : m_iRefCount(0) {}
 CXFA_CalcData::~CXFA_CalcData() {}
 
 CXFA_FFWidget::CXFA_FFWidget(CXFA_Node* node)
-    : CXFA_ContentLayoutItem(node), m_pNode(node) {}
+    : CXFA_ContentLayoutItem(node), m_pNode(node) {
+  std::cerr << (void*)this << " CXFA_FFWidget::CXFA_FFWidget" << std::endl;
+}
 
-CXFA_FFWidget::~CXFA_FFWidget() {}
+CXFA_FFWidget::~CXFA_FFWidget() {
+  std::cerr << (void*)this << " CXFA_FFWidget::~CXFA_FFWidget" << std::endl;}
 
 const CFWL_App* CXFA_FFWidget::GetFWLApp() {
   return GetPageView()->GetDocView()->GetDoc()->GetApp()->GetFWLApp();

@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/cpdfsdk_widget.h"
 
+#include <iostream>
 #include <memory>
 #include <sstream>
 
@@ -60,25 +61,42 @@ CPDFSDK_Widget::~CPDFSDK_Widget() {}
 
 #ifdef PDF_ENABLE_XFA
 CXFA_FFWidget* CPDFSDK_Widget::GetMixXFAWidget() const {
+  // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() BEGIN" << std::endl;
   CPDFXFA_Context* pContext = m_pPageView->GetFormFillEnv()->GetXFAContext();
   if (pContext->GetFormType() == FormType::kXFAForeground) {
-    if (!m_hMixXFAWidget) {
+          // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() 1 " << std::endl;
+    if (!m_hMixXFAWidget || true) {
+          // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() 2 " << std::endl;
       if (CXFA_FFDocView* pDocView = pContext->GetXFADocView()) {
+          // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() 3 " << std::endl;
         WideString sName;
         if (GetFieldType() == FormFieldType::kRadioButton) {
+          // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() 4a" << std::endl;
           sName = GetAnnotName();
           if (sName.IsEmpty())
             sName = GetName();
         } else {
+          // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() 4b " << std::endl;
           sName = GetName();
         }
 
-        if (!sName.IsEmpty())
-          m_hMixXFAWidget = pDocView->GetWidgetByName(sName, nullptr);
+        if (!sName.IsEmpty()) {
+          std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() sName " << sName << std::endl;
+          CXFA_FFWidget* result = pDocView->GetWidgetByName(sName, nullptr);
+          std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() 5 got result " << (void*)result << std::endl;
+
+          return result;
+
+          // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() was before " << (void*)m_hMixXFAWidget.Get() << std::endl;
+          // m_hMixXFAWidget = result;
+          // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() 6 got new m_hMixXFAWidget " << (void*)m_hMixXFAWidget.Get() << std::endl;
+        }
       }
     }
+    // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() RETURN m_hMixXFAWidget.Get()" << std::endl;
     return m_hMixXFAWidget.Get();
   }
+  // std::cerr << "CPDFSDK_Widget::GetMixXFAWidget() RETURN null" << std::endl;
   return nullptr;
 }
 

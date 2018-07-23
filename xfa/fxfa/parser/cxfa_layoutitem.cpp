@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/parser/cxfa_layoutitem.h"
 
+#include <iostream>
+
 #include "fxjs/xfa/cjx_object.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/parser/cxfa_containerlayoutitem.h"
@@ -35,9 +37,13 @@ void XFA_ReleaseLayoutItem(CXFA_LayoutItem* pLayoutItem) {
 }
 
 CXFA_LayoutItem::CXFA_LayoutItem(CXFA_Node* pNode, bool bIsContentLayoutItem)
-    : m_bIsContentLayoutItem(bIsContentLayoutItem), m_pFormNode(pNode) {}
+    : m_bIsContentLayoutItem(bIsContentLayoutItem), m_pFormNode(pNode) {
+  std::cerr << (void*)this << " CXFA_LayoutItem::CXFA_LayoutItem" << std::endl;
+}
 
-CXFA_LayoutItem::~CXFA_LayoutItem() = default;
+CXFA_LayoutItem::~CXFA_LayoutItem() {
+  std::cerr << (void*)this << " CXFA_LayoutItem::~CXFA_LayoutItem" << std::endl;
+};
 
 CXFA_ContainerLayoutItem* CXFA_LayoutItem::AsContainerLayoutItem() {
   return IsContainerLayoutItem() ? static_cast<CXFA_ContainerLayoutItem*>(this)
