@@ -18,7 +18,7 @@ CXFA_ThisProxy* CXFA_ThisProxy::FromCXFAObject(CXFA_Object* that) {
 
 CXFA_ThisProxy::CXFA_ThisProxy(CXFA_Node* pThisNode, CXFA_Node* pScriptNode)
     : CXFA_Object(pThisNode->GetDocument(),
-                  XFA_ObjectType::VariablesThis,
+                  XFA_ObjectType::ThisProxy,
                   XFA_Element::Unknown,
                   WideStringView(),
                   pdfium::MakeUnique<CJX_Object>(this)),
