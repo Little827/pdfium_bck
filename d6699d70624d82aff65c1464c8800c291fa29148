@@ -16,6 +16,24 @@
       "revId": "d6699d70624d82aff65c1464c8800c291fa29148",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff9093f8_6e798510",
+        "filename": "codereview.settings",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:28:09Z",
+      "side": 0,
+      "message": "Yeah it\u0027s in a separate branch for historical reasons.",
+      "parentUuid": "be53f059_8322c323",
+      "revId": "d6699d70624d82aff65c1464c8800c291fa29148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

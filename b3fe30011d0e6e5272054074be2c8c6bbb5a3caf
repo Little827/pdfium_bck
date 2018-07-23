@@ -16,6 +16,24 @@
       "revId": "b3fe30011d0e6e5272054074be2c8c6bbb5a3caf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b444a506_5f529a77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-23T23:28:09Z",
+      "side": 1,
+      "message": "Done: https://pdfium-review.googlesource.com/c/pdfium/+/38690",
+      "parentUuid": "33d0f84f_afa6f0b3",
+      "revId": "b3fe30011d0e6e5272054074be2c8c6bbb5a3caf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
