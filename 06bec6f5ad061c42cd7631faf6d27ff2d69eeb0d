@@ -94,6 +94,30 @@
       "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ffaf5ae_47d798fa",
+        "filename": "core/fpdfapi/edit/cpdf_encryptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-23T16:53:01Z",
+      "side": 1,
+      "message": "What do you mean?",
+      "parentUuid": "6bb0a0b9_0e6c11c0",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "06bec6f5ad061c42cd7631faf6d27ff2d69eeb0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
