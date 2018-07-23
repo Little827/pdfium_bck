@@ -38,8 +38,7 @@ class CJX_Node : public CJX_Tree {
   JS_PROP(ns);
   JS_PROP(oneOfChild);
 
-  CXFA_Node* GetXFANode();
-  const CXFA_Node* GetXFANode() const;
+  CXFA_Node* GetXFANode() const;
 
  protected:
   int32_t execSingleEventByName(const WideStringView& wsEventName,
