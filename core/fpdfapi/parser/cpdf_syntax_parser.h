@@ -60,16 +60,20 @@ class CPDF_SyntaxParser {
   ByteString GetNextWord(bool* bIsNumber);
   ByteString PeekNextWord(bool* bIsNumber);
 
-  RetainPtr<IFX_SeekableReadStream> GetFileAccess() const;
-
   const RetainPtr<CPDF_ReadValidator>& GetValidator() const {
     return m_pFileAccess;
   }
   uint32_t GetDirectNum();
   bool GetNextChar(uint8_t& ch);
 
+  // The document size may be more small, than file size.
+  // The syntax parser use position related to document offset(m_HeaderOffset)
+  // and the document size will be FileSize - "Header offset".
+  // All offsets was readed from document, should not be great than document
+  // size. Use it for checks instead of real file size.
+  FX_FILESIZE GetDocumentSize() const;
+
  private:
-  friend class CPDF_Parser;
   friend class CPDF_DataAvail;
   friend class cpdf_syntax_parser_ReadHexString_Test;
 
