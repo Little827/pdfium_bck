@@ -30,6 +30,7 @@ class CPDF_Font;
 class CPDF_FontEncoding;
 class CPDF_IccProfile;
 class CPDF_LinearizedHeader;
+class CPDF_PagesTree;
 class CPDF_Pattern;
 class CPDF_ReadValidator;
 class CPDF_StreamAcc;
@@ -130,15 +131,6 @@ class CPDF_Document : public Observable<CPDF_Document>,
 #endif
 
  protected:
-  // Retrieve page count information by getting count value from the tree nodes
-  int RetrievePageCount();
-  // When this method is called, m_pTreeTraversal[level] exists.
-  CPDF_Dictionary* TraversePDFPages(int iPage, int* nPagesToGo, size_t level);
-  int FindPageIndex(const CPDF_Dictionary* pNode,
-                    uint32_t* skip_count,
-                    uint32_t objnum,
-                    int* index,
-                    int level = 0) const;
   std::unique_ptr<CPDF_Object> ParseIndirectObject(uint32_t objnum) override;
   void LoadDocInternal();
   size_t CalculateEncodingDict(int charset, CPDF_Dictionary* pBaseDict);
@@ -150,28 +142,14 @@ class CPDF_Document : public Observable<CPDF_Document>,
       bool bVert,
       ByteString basefont,
       std::function<void(wchar_t, wchar_t, CPDF_Array*)> Insert);
-  bool InsertDeletePDFPage(CPDF_Dictionary* pPages,
-                           int nPagesToGo,
-                           CPDF_Dictionary* pPageDict,
-                           bool bInsert,
-                           std::set<CPDF_Dictionary*>* pVisited);
-  bool InsertNewPage(int iPage, CPDF_Dictionary* pPageDict);
-  void ResetTraversal();
   void SetParser(std::unique_ptr<CPDF_Parser> pParser);
 
   std::unique_ptr<CPDF_Parser> m_pParser;
   UnownedPtr<CPDF_Dictionary> m_pRootDict;
   UnownedPtr<CPDF_Dictionary> m_pInfoDict;
 
-  // Vector of pairs to know current position in the page tree. The index in the
-  // vector corresponds to the level being described. The pair contains a
-  // pointer to the dictionary being processed at the level, and an index of the
-  // of the child being processed within the dictionary's /Kids array.
-  std::vector<std::pair<CPDF_Dictionary*, size_t>> m_pTreeTraversal;
+  std::unique_ptr<CPDF_PagesTree> m_pPagesTree;
 
-  // Index of the next page that will be traversed from the page tree.
-  int m_iNextPageToTraverse = 0;
-  bool m_bReachedMaxPageLevel = false;
   uint32_t m_ParsedPageCount = 0;
   std::unique_ptr<CPDF_DocPageData> m_pDocPage;
   std::unique_ptr<CPDF_DocRenderData> m_pDocRender;
