@@ -139,7 +139,6 @@ class CPDFSDK_Widget : public CPDFSDK_BAAnnot {
   uint32_t m_nValueAge;
 
 #ifdef PDF_ENABLE_XFA
-  mutable UnownedPtr<CXFA_FFWidget> m_hMixXFAWidget;
   mutable UnownedPtr<CXFA_FFWidgetHandler> m_pWidgetHandler;
 #endif  // PDF_ENABLE_XFA
 };
