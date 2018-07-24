@@ -34,6 +34,24 @@
       "revId": "dc808929d4574f56e61acbb142411feb435a1bb4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c695564_fee3977e",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-07-24T15:01:00Z",
+      "side": 1,
+      "message": "hnakashima@, I would agree generally that taking the click points and doing a move between them works, especially for generating .evt files. The place I found this fine granular logging useful was when I was tracing enter events. I think this is enough a niche case to not be really worth it.\n\nthestig@, I don\u0027t think anyone else uses it, and I agree we could filter it easily. I am thinking of dropping it in general because it is a relatively niche use case.",
+      "parentUuid": "0aa7ad78_0e58a7db",
+      "revId": "dc808929d4574f56e61acbb142411feb435a1bb4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
