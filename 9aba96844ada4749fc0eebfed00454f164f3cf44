@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "63c49414_1bb0b510",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-24T00:13:12Z",
+      "side": 1,
+      "message": "Yes, first entry is buildbot, second is buildbucket.  This is done so that the view is consistent regardless of migration state.",
+      "parentUuid": "9929a5a6_2bfe7887",
+      "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f43f1daf_1b91f132",
         "filename": "luci-milo.cfg",
         "patchSetId": 10
@@ -119,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "fe5e177d_f369dc27",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-24T00:13:12Z",
+      "side": 1,
+      "message": "Done.  Note that cagetories can nest now.",
+      "parentUuid": "b38e1e60_c4fc229e",
+      "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b41aafb_6af43909",
         "filename": "luci-milo.cfg",
         "patchSetId": 10
@@ -133,6 +169,24 @@
       "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be237251_b399ceaa",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-07-24T00:13:12Z",
+      "side": 1,
+      "message": "Actually categories do nothing for try builders.  But I\u0027ve rearranged those groups together.",
+      "parentUuid": "5b41aafb_6af43909",
+      "revId": "9aba96844ada4749fc0eebfed00454f164f3cf44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
