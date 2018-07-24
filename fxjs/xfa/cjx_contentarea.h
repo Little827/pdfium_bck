@@ -16,11 +16,11 @@ class CJX_ContentArea : public CJX_Container {
   explicit CJX_ContentArea(CXFA_ContentArea* node);
   ~CJX_ContentArea() override;
 
-  JS_PROP(relevant);
-  JS_PROP(use);
-  JS_PROP(usehref);
-  JS_PROP(x);
-  JS_PROP(y);
+  JSE_PROP(relevant);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
+  JSE_PROP(x);
+  JSE_PROP(y);
 };
 
 #endif  // FXJS_XFA_CJX_CONTENTAREA_H_

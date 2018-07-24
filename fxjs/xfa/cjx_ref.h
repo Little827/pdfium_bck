@@ -16,8 +16,8 @@ class CJX_Ref : public CJX_TextNode {
   explicit CJX_Ref(CXFA_Ref* node);
   ~CJX_Ref() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_REF_H_

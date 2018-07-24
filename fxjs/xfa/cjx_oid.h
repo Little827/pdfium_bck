@@ -16,8 +16,8 @@ class CJX_Oid : public CJX_TextNode {
   explicit CJX_Oid(CXFA_Oid* node);
   ~CJX_Oid() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_OID_H_

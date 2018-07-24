@@ -16,14 +16,14 @@ class CJX_PageArea : public CJX_Container {
   explicit CJX_PageArea(CXFA_PageArea* node);
   ~CJX_PageArea() override;
 
-  JS_PROP(blankOrNotBlank);
-  JS_PROP(initialNumber);
-  JS_PROP(numbered);
-  JS_PROP(oddOrEven);
-  JS_PROP(pagePosition);
-  JS_PROP(relevant);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(blankOrNotBlank);
+  JSE_PROP(initialNumber);
+  JSE_PROP(numbered);
+  JSE_PROP(oddOrEven);
+  JSE_PROP(pagePosition);
+  JSE_PROP(relevant);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_PAGEAREA_H_

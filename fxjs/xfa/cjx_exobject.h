@@ -16,12 +16,12 @@ class CJX_ExObject : public CJX_Node {
   explicit CJX_ExObject(CXFA_ExObject* node);
   ~CJX_ExObject() override;
 
-  JS_PROP(archive);
-  JS_PROP(classId);
-  JS_PROP(codeBase);
-  JS_PROP(codeType);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(archive);
+  JSE_PROP(classId);
+  JSE_PROP(codeBase);
+  JSE_PROP(codeType);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_EXOBJECT_H_

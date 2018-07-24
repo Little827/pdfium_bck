@@ -16,7 +16,7 @@ class CJX_SubjectDN : public CJX_Node {
   explicit CJX_SubjectDN(CXFA_SubjectDN* node);
   ~CJX_SubjectDN() override;
 
-  JS_PROP(delimiter);
+  JSE_PROP(delimiter);
 };
 
 #endif  // FXJS_XFA_CJX_SUBJECTDN_H_

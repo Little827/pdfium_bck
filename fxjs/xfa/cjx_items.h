@@ -16,11 +16,11 @@ class CJX_Items : public CJX_Node {
   explicit CJX_Items(CXFA_Items* node);
   ~CJX_Items() override;
 
-  JS_PROP(presence);
-  JS_PROP(ref);
-  JS_PROP(save);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(presence);
+  JSE_PROP(ref);
+  JSE_PROP(save);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_ITEMS_H_

@@ -16,12 +16,12 @@ class CJX_Margin : public CJX_Node {
   explicit CJX_Margin(CXFA_Margin* node);
   ~CJX_Margin() override;
 
-  JS_PROP(bottomInset);
-  JS_PROP(leftInset);
-  JS_PROP(rightInset);
-  JS_PROP(topInset);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(bottomInset);
+  JSE_PROP(leftInset);
+  JSE_PROP(rightInset);
+  JSE_PROP(topInset);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_MARGIN_H_

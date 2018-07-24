@@ -16,11 +16,11 @@ class CJX_DataValue : public CJX_Node {
   explicit CJX_DataValue(CXFA_DataValue* node);
   ~CJX_DataValue() override;
 
-  JS_PROP(defaultValue); /* {default} */
-  JS_PROP(contains);
-  JS_PROP(contentType);
-  JS_PROP(isNull);
-  JS_PROP(value);
+  JSE_PROP(defaultValue); /* {default} */
+  JSE_PROP(contains);
+  JSE_PROP(contentType);
+  JSE_PROP(isNull);
+  JSE_PROP(value);
 };
 
 #endif  // FXJS_XFA_CJX_DATAVALUE_H_

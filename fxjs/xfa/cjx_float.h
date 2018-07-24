@@ -16,10 +16,10 @@ class CJX_Float : public CJX_Content {
   explicit CJX_Float(CXFA_Float* node);
   ~CJX_Float() override;
 
-  JS_PROP(defaultValue); /* {default} */
-  JS_PROP(use);
-  JS_PROP(usehref);
-  JS_PROP(value);
+  JSE_PROP(defaultValue); /* {default} */
+  JSE_PROP(use);
+  JSE_PROP(usehref);
+  JSE_PROP(value);
 };
 
 #endif  // FXJS_XFA_CJX_FLOAT_H_

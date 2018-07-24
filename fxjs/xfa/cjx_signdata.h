@@ -16,11 +16,11 @@ class CJX_SignData : public CJX_Node {
   explicit CJX_SignData(CXFA_SignData* node);
   ~CJX_SignData() override;
 
-  JS_PROP(operation);
-  JS_PROP(ref);
-  JS_PROP(target);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(operation);
+  JSE_PROP(ref);
+  JSE_PROP(target);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_SIGNDATA_H_
