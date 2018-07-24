@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68b212d_9f012623",
+        "filename": "fxjs/xfa/cjx_arc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-24T18:04:31Z",
+      "side": 1,
+      "message": "pre-existing: there\u0027s a pile of IWYU to pull in jse_define.h for the JSE_ macros below in all of these.  Something for another day ...",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "bd73058cbcf6022e3260fddcebe9815f665a7ce1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
