@@ -117,7 +117,7 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   // shared object referenced from a page, there is an indication of
   // where in the page's content stream the object is first referenced.
   const uint32_t dwSharedNumeratorBits = hStream->GetBits(16);
-  if (!IsValidPageOffsetHintTableBitCount(dwSharedNumeratorBits))
+  if (dwSharedNumeratorBits > 32)
     return false;
 
   // Item 13: Skip Item 13 which has 16 bits.
@@ -193,15 +193,17 @@ bool CPDF_HintTables::ReadPageHintTable(CFX_BitStream* hStream) {
   }
   hStream->ByteAlign();
 
-  for (uint32_t i = 0; i < nPages; i++) {
-    FX_SAFE_UINT32 safeSize = dwNSharedObjsArray[i];
-    safeSize *= dwSharedNumeratorBits;
-    if (!CanReadFromBitStream(hStream, safeSize))
-      return false;
+  if (dwSharedNumeratorBits) {
+    for (uint32_t i = 0; i < nPages; i++) {
+      FX_SAFE_UINT32 safeSize = dwNSharedObjsArray[i];
+      safeSize *= dwSharedNumeratorBits;
+      if (!CanReadFromBitStream(hStream, safeSize))
+        return false;
 
-    hStream->SkipBits(safeSize.ValueOrDie());
+      hStream->SkipBits(safeSize.ValueOrDie());
+    }
+    hStream->ByteAlign();
   }
-  hStream->ByteAlign();
 
   FX_SAFE_UINT32 safeTotalPageLen = nPages;
   safeTotalPageLen *= dwDeltaPageLenBits;
@@ -399,11 +401,12 @@ FX_FILESIZE CPDF_HintTables::HintsOffsetToFileOffset(
     return 0;
 
   // The resulting positions shall be interpreted as if the primary hint stream
-  // itself were not present. That is, a position greater than the hint stream
+  // itself were not present.
+  // See specification PDF 32000-1:2008 Annex F.4 (Hint tables).
+  // i.e. a position greater or equal than the hint stream
   // offset shall have the hint stream length added to it to determine the
   // actual offset relative to the beginning of the file.
-  // See specification PDF 32000-1:2008 Annex F.4 (Hint tables).
-  if (file_offset.ValueOrDie() > m_pLinearized->GetHintStart())
+  if (file_offset.ValueOrDie() >= m_pLinearized->GetHintStart())
     file_offset += m_pLinearized->GetHintLength();
 
   return file_offset.ValueOrDefault(0);
