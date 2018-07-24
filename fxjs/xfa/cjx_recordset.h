@@ -16,14 +16,14 @@ class CJX_RecordSet : public CJX_Node {
   explicit CJX_RecordSet(CXFA_RecordSet* node);
   ~CJX_RecordSet() override;
 
-  JS_PROP(bofAction);
-  JS_PROP(cursorLocation);
-  JS_PROP(cursorType);
-  JS_PROP(eofAction);
-  JS_PROP(lockType);
-  JS_PROP(max);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(bofAction);
+  JSE_PROP(cursorLocation);
+  JSE_PROP(cursorType);
+  JSE_PROP(eofAction);
+  JSE_PROP(lockType);
+  JSE_PROP(max);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_RECORDSET_H_

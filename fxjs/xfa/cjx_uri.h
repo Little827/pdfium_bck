@@ -16,8 +16,8 @@ class CJX_Uri : public CJX_TextNode {
   explicit CJX_Uri(CXFA_Uri* node);
   ~CJX_Uri() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_URI_H_

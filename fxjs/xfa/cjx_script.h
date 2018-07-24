@@ -16,14 +16,14 @@ class CJX_Script : public CJX_Node {
   explicit CJX_Script(CXFA_Script* node);
   ~CJX_Script() override;
 
-  JS_PROP(defaultValue); /* {default} */
-  JS_PROP(binding);
-  JS_PROP(contentType);
-  JS_PROP(runAt);
-  JS_PROP(stateless);
-  JS_PROP(use);
-  JS_PROP(usehref);
-  JS_PROP(value);
+  JSE_PROP(defaultValue); /* {default} */
+  JSE_PROP(binding);
+  JSE_PROP(contentType);
+  JSE_PROP(runAt);
+  JSE_PROP(stateless);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
+  JSE_PROP(value);
 };
 
 #endif  // FXJS_XFA_CJX_SCRIPT_H_

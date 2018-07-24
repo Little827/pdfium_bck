@@ -16,9 +16,9 @@ class CJX_Fill : public CJX_Node {
   explicit CJX_Fill(CXFA_Fill* node);
   ~CJX_Fill() override;
 
-  JS_PROP(presence);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(presence);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_FILL_H_

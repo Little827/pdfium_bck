@@ -16,8 +16,8 @@ class CJX_Delete : public CJX_TextNode {
   explicit CJX_Delete(CXFA_Delete* node);
   ~CJX_Delete() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_DELETE_H_

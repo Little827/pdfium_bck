@@ -16,8 +16,8 @@ class CJX_Format : public CJX_Node {
   explicit CJX_Format(CXFA_Format* node);
   ~CJX_Format() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_FORMAT_H_

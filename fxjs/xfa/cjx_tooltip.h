@@ -16,8 +16,8 @@ class CJX_ToolTip : public CJX_TextNode {
   explicit CJX_ToolTip(CXFA_ToolTip* node);
   ~CJX_ToolTip() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_TOOLTIP_H_
