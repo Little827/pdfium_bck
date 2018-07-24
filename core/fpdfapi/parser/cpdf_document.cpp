@@ -18,6 +18,7 @@
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fpdfapi/parser/cpdf_hint_tables.h"
 #include "core/fpdfapi/parser/cpdf_linearized_header.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
@@ -244,6 +245,13 @@ void CPDF_Document::LoadPages() {
   ASSERT(linearized_header->GetFirstPageNo() < m_PageList.size());
   m_PageList[linearized_header->GetFirstPageNo()] =
       linearized_header->GetFirstPageObjNum();
+  const CPDF_HintTables* hint_tables = m_pParser->GetHintTables();
+  if (!hint_tables)
+    return;
+
+  for (size_t i = 0; i < hint_tables->PageInfos().size(); ++i) {
+    m_PageList[i] = hint_tables->PageInfos()[i].start_obj_num();
+  }
 }
 
 CPDF_Dictionary* CPDF_Document::TraversePDFPages(int iPage,

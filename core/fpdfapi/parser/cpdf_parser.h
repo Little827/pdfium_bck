@@ -23,6 +23,7 @@
 class CPDF_Array;
 class CPDF_CryptoHandler;
 class CPDF_Dictionary;
+class CPDF_HintTables;
 class CPDF_LinearizedHeader;
 class CPDF_Object;
 class CPDF_ObjectStream;
@@ -104,6 +105,8 @@ class CPDF_Parser {
     return m_pLinearized.get();
   }
 
+  const CPDF_HintTables* GetHintTables() const { return m_pHintTables.get(); }
+
   const CPDF_CrossRefTable* GetCrossRefTable() const {
     return m_CrossRefTable.get();
   }
@@ -179,6 +182,7 @@ class CPDF_Parser {
   std::unique_ptr<CPDF_SecurityHandler> m_pSecurityHandler;
   ByteString m_Password;
   std::unique_ptr<CPDF_LinearizedHeader> m_pLinearized;
+  std::unique_ptr<CPDF_HintTables> m_pHintTables;
 
   // A map of object numbers to indirect streams.
   std::map<uint32_t, std::unique_ptr<CPDF_ObjectStream>> m_ObjectStreamMap;

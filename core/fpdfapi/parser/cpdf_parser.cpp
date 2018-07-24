@@ -14,6 +14,7 @@
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fpdfapi/parser/cpdf_hint_tables.h"
 #include "core/fpdfapi/parser/cpdf_linearized_header.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_object_stream.h"
@@ -965,6 +966,8 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
     return FORMAT_ERROR;
 
   m_pLinearized = ParseLinearizedHeader();
+  m_pHintTables = CPDF_HintTables::Parse(m_pSyntax.get(), m_pLinearized.get());
+
   if (!m_pLinearized)
     return StartParseInternal();
 
