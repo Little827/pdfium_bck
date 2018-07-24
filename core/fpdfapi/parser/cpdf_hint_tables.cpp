@@ -404,7 +404,8 @@ bool CPDF_HintTables::GetPagePos(uint32_t index,
   return true;
 }
 
-CPDF_DataAvail::DocAvailStatus CPDF_HintTables::CheckPage(uint32_t index) {
+CPDF_DataAvail::DocAvailStatus CPDF_HintTables::CheckPage(
+    uint32_t index) const {
   if (index == m_pLinearized->GetFirstPageNo())
     return CPDF_DataAvail::DataAvailable;
 

@@ -104,7 +104,6 @@ class CPDF_DataAvail final : public CPDF_Document::Observer {
   DocFormStatus IsFormAvail(DownloadHints* pHints);
   DocLinearizationStatus IsLinearizedPDF();
   int GetPageCount() const;
-  CPDF_Dictionary* GetPageDictionary(int index) const;
   RetainPtr<CPDF_ReadValidator> GetValidator() const;
 
   std::pair<CPDF_Parser::Error, std::unique_ptr<CPDF_Document>> ParseDocument(
@@ -138,10 +137,6 @@ class CPDF_DataAvail final : public CPDF_Document::Observer {
   bool CheckPageStatus();
 
   DocAvailStatus CheckHeaderAndLinearized();
-  std::unique_ptr<CPDF_Object> ParseIndirectObjectAt(
-      FX_FILESIZE pos,
-      uint32_t objnum,
-      CPDF_IndirectObjectHolder* pObjList = nullptr) const;
   std::unique_ptr<CPDF_Object> GetObject(uint32_t objnum,
                                          bool* pExistInFile);
   bool GetPageKids(CPDF_Object* pPages);
@@ -163,7 +158,6 @@ class CPDF_DataAvail final : public CPDF_Document::Observer {
   bool CheckPageCount();
   bool IsFirstCheck(uint32_t dwPage);
   void ResetFirstCheck(uint32_t dwPage);
-  bool ValidatePage(uint32_t dwPage) const;
   CPDF_SyntaxParser* GetSyntaxParser() const;
 
   RetainPtr<CPDF_ReadValidator> m_pFileRead;
