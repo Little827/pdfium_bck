@@ -233,6 +233,8 @@ bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
   // Item 1: The object number of the first object in the shared objects
   // section.
   uint32_t dwFirstSharedObjNum = hStream->GetBits(32);
+  if (!dwFirstSharedObjNum)
+    return false;
 
   // Item 2: The location of the first object in the shared objects section.
   const FX_FILESIZE szFirstSharedObjLoc =
@@ -248,8 +250,8 @@ bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
   uint32_t dwSharedObjTotal = hStream->GetBits(32);
 
   // Item 5: The number of bits needed to represent the greatest number of
-  // objects in a shared object group. Skipped.
-  hStream->SkipBits(16);
+  // objects in a shared object group.
+  uint32_t dwSharedObjNumBits = hStream->GetBits(16);
 
   // Item 6: The least length of a shared object group in bytes.
   uint32_t dwGroupLeastLen = hStream->GetBits(32);
@@ -304,10 +306,45 @@ bool CPDF_HintTables::ReadSharedObjHintTable(CFX_BitStream* hStream,
   }
 
   hStream->ByteAlign();
-  if (hStream->BitsRemaining() < dwSharedObjTotal)
-    return false;
+  {
+    uint32_t sign_count = 0;
+    for (uint32_t i = 0; i < dwSharedObjTotal; ++i) {
+      sign_count += hStream->GetBits(1);
+    }
+    hStream->ByteAlign();
+    if (sign_count) {
+      required_bits = dwSharedObjTotal;
+      required_bits *= sign_count;
+      required_bits *= 128;
+      if (!CanReadFromBitStream(hStream, required_bits))
+        return false;
 
-  hStream->SkipBits(dwSharedObjTotal);
+      hStream->SkipBits(required_bits.ValueOrDie());
+      hStream->ByteAlign();
+    }
+  }
+
+  uint32_t prev_obj_num = m_pLinearized->GetFirstPageObjNum() - 1;
+  for (uint32_t i = 0; i < dwSharedObjTotal; ++i) {
+    if (i == m_nFirstPageSharedObjs)
+      prev_obj_num = dwFirstSharedObjNum - 1;
+
+    FX_SAFE_UINT32 obj_count =
+        dwSharedObjNumBits ? hStream->GetBits(dwSharedObjNumBits) : 0;
+    obj_count += 1;
+    if (!obj_count.IsValid())
+      return false;
+
+    FX_SAFE_UINT32 obj_num = prev_obj_num;
+    obj_num += obj_count.ValueOrDie();
+    if (!obj_num.IsValid())
+      return false;
+
+    prev_obj_num = obj_num.ValueOrDie();
+    m_SharedObjGroupInfos[i].m_dwStartObjNum = obj_num.ValueOrDie();
+    m_SharedObjGroupInfos[i].m_nObjectsCount = obj_count.ValueOrDie();
+  }
+
   hStream->ByteAlign();
   return true;
 }
