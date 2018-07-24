@@ -112,6 +112,10 @@ bool CPDF_SyntaxParser::GetNextChar(uint8_t& ch) {
   return true;
 }
 
+FX_FILESIZE CPDF_SyntaxParser::GetDocumentSize() const {
+  return m_FileLen - m_HeaderOffset;
+}
+
 bool CPDF_SyntaxParser::GetCharAtBackward(FX_FILESIZE pos, uint8_t* ch) {
   pos += m_HeaderOffset;
   if (pos >= m_FileLen)
@@ -711,6 +715,7 @@ void CPDF_SyntaxParser::InitParserWithValidator(
     const RetainPtr<CPDF_ReadValidator>& validator,
     uint32_t HeaderOffset) {
   ASSERT(validator);
+  ASSERT(m_HeaderOffset < validator->GetSize());
   m_pFileBuf.clear();
   m_HeaderOffset = HeaderOffset;
   m_FileLen = validator->GetSize();
@@ -811,10 +816,6 @@ FX_FILESIZE CPDF_SyntaxParser::FindTag(const ByteStringView& tag) {
     }
   }
   return -1;
-}
-
-RetainPtr<IFX_SeekableReadStream> CPDF_SyntaxParser::GetFileAccess() const {
-  return m_pFileAccess;
 }
 
 bool CPDF_SyntaxParser::IsPositionRead(FX_FILESIZE pos) const {
