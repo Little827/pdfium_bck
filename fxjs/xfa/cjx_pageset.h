@@ -16,10 +16,10 @@ class CJX_PageSet : public CJX_Container {
   explicit CJX_PageSet(CXFA_PageSet* node);
   ~CJX_PageSet() override;
 
-  JS_PROP(relation);
-  JS_PROP(relevant);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(relation);
+  JSE_PROP(relevant);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_PAGESET_H_

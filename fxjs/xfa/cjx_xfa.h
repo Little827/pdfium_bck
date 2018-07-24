@@ -16,9 +16,9 @@ class CJX_Xfa : public CJX_Model {
   explicit CJX_Xfa(CXFA_Xfa* node);
   ~CJX_Xfa() override;
 
-  JS_PROP(thisValue); /* this */
-  JS_PROP(timeStamp);
-  JS_PROP(uuid);
+  JSE_PROP(thisValue); /* this */
+  JSE_PROP(timeStamp);
+  JSE_PROP(uuid);
 };
 
 #endif  // FXJS_XFA_CJX_XFA_H_

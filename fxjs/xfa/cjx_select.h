@@ -16,8 +16,8 @@ class CJX_Select : public CJX_TextNode {
   explicit CJX_Select(CXFA_Select* node);
   ~CJX_Select() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_SELECT_H_

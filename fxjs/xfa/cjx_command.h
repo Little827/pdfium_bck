@@ -16,9 +16,9 @@ class CJX_Command : public CJX_Node {
   explicit CJX_Command(CXFA_Command* node);
   ~CJX_Command() override;
 
-  JS_PROP(timeout);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(timeout);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_COMMAND_H_

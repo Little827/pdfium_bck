@@ -16,10 +16,10 @@ class CJX_PasswordEdit : public CJX_Node {
   explicit CJX_PasswordEdit(CXFA_PasswordEdit* node);
   ~CJX_PasswordEdit() override;
 
-  JS_PROP(hScrollPolicy);
-  JS_PROP(passwordChar);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(hScrollPolicy);
+  JSE_PROP(passwordChar);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_PASSWORDEDIT_H_

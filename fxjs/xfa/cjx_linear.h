@@ -16,9 +16,9 @@ class CJX_Linear : public CJX_Node {
   explicit CJX_Linear(CXFA_Linear* node);
   ~CJX_Linear() override;
 
-  JS_PROP(type);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(type);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_LINEAR_H_

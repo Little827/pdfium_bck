@@ -16,8 +16,8 @@ class CJX_Update : public CJX_TextNode {
   explicit CJX_Update(CXFA_Update* node);
   ~CJX_Update() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_UPDATE_H_

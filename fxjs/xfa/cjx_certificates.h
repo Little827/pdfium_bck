@@ -16,11 +16,11 @@ class CJX_Certificates : public CJX_Node {
   explicit CJX_Certificates(CXFA_Certificates* node);
   ~CJX_Certificates() override;
 
-  JS_PROP(credentialServerPolicy);
-  JS_PROP(url);
-  JS_PROP(urlPolicy);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(credentialServerPolicy);
+  JSE_PROP(url);
+  JSE_PROP(urlPolicy);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_CERTIFICATES_H_
