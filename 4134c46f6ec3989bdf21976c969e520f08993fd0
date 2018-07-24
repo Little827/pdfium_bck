@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "04732823_990aca47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:27:40Z",
+      "side": 1,
+      "message": "Thanks for explaining. Can you update the commit message? Something like \"... determine the actual object offset, because linearization inserted the hint stream at the original location of the object.\"",
+      "parentUuid": "3f57c59f_6efc3ca1",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fbfe408_3d7819c8",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 2
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Description in PDF Spec is not exactly correct. See my example. Should be \"greater or equal\".",
       "parentUuid": "3fbfe408_3d7819c8",
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c7a5b50_b54be1f7",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:27:40Z",
+      "side": 1,
+      "message": "Can you add an additional comment here, so the comments match the code?",
+      "parentUuid": "d885ae70_3004a740",
       "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
