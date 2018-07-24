@@ -90,7 +90,7 @@ class CPDF_TestDocumentForPages : public CPDF_Document {
     m_pRootDict = NewIndirect<CPDF_Dictionary>();
     m_pRootDict->SetNewFor<CPDF_Reference>("Pages", this,
                                            pagesDict->GetObjNum());
-    m_PageList.resize(kNumTestPages);
+    LoadPages();
   }
 
   void SetTreeSize(int size) {
@@ -115,7 +115,7 @@ class CPDF_TestDocumentWithPageWithoutPageNum : public CPDF_Document {
     m_pRootDict = NewIndirect<CPDF_Dictionary>();
     m_pRootDict->SetNewFor<CPDF_Reference>("Pages", this,
                                            pagesDict->GetObjNum());
-    m_PageList.resize(3);
+    LoadPages();
   }
 
   const CPDF_Object* inlined_page() const { return inlined_page_; }
@@ -136,15 +136,19 @@ class CPDF_TestDocPagesWithoutKids : public CPDF_Document {
     CPDF_Dictionary* pagesDict = NewIndirect<CPDF_Dictionary>();
     pagesDict->SetNewFor<CPDF_Name>("Type", "Pages");
     pagesDict->SetNewFor<CPDF_Number>("Count", 3);
-    m_PageList.resize(10);
     m_pRootDict = NewIndirect<CPDF_Dictionary>();
     m_pRootDict->SetNewFor<CPDF_Reference>("Pages", this,
                                            pagesDict->GetObjNum());
+    LoadPages();
   }
 };
 
 class CPDF_TestDocumentAllowSetParser : public CPDF_Document {
  public:
+  CPDF_TestDocumentAllowSetParser() : CPDF_Document() {
+    m_pRootDict = NewIndirect<CPDF_Dictionary>();
+  }
+
   using CPDF_Document::SetParser;
 };
 
