@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a70d7bd_2ae68cbf",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-24T20:30:30Z",
+      "side": 1,
+      "message": "I\u0027ll open one if this solution is deemed good. Will resolve this comment when the bug is opened.",
+      "parentUuid": "1dbe8d20_cc64b639",
+      "range": {
+        "startLine": 1990,
+        "startChar": 32,
+        "endLine": 1990,
+        "endChar": 36
+      },
+      "revId": "4073f3751789af2cf17cf8353d6a19931a3a369a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36223945_89142af6",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-24T20:28:39Z",
       "side": 1,
       "message": "Generally, we rely on Git to be able to give us back the code should we need it again. Hmm.",
+      "range": {
+        "startLine": 1990,
+        "startChar": 36,
+        "endLine": 1998,
+        "endChar": 7
+      },
+      "revId": "4073f3751789af2cf17cf8353d6a19931a3a369a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05dbbfd8_f86921d3",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-24T20:30:30Z",
+      "side": 1,
+      "message": "Let me see how much code exactly would be deleted if this was removed for good.",
+      "parentUuid": "36223945_89142af6",
       "range": {
         "startLine": 1990,
         "startChar": 36,
