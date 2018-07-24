@@ -447,20 +447,6 @@ bool CPDF_DataAvail::CheckHintTables() {
   return true;
 }
 
-std::unique_ptr<CPDF_Object> CPDF_DataAvail::ParseIndirectObjectAt(
-    FX_FILESIZE pos,
-    uint32_t objnum,
-    CPDF_IndirectObjectHolder* pObjList) const {
-  const FX_FILESIZE SavedPos = GetSyntaxParser()->GetPos();
-  GetSyntaxParser()->SetPos(pos);
-  std::unique_ptr<CPDF_Object> result = GetSyntaxParser()->GetIndirectObject(
-      pObjList, CPDF_SyntaxParser::ParseType::kLoose);
-  GetSyntaxParser()->SetPos(SavedPos);
-  return (result && (!objnum || result->GetObjNum() == objnum))
-             ? std::move(result)
-             : nullptr;
-}
-
 CPDF_DataAvail::DocLinearizationStatus CPDF_DataAvail::IsLinearizedPDF() {
   switch (CheckHeaderAndLinearized()) {
     case DocAvailStatus::DataAvailable:
@@ -825,10 +811,6 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::IsPageAvail(
       nResult = m_pHintTables->CheckPage(dwPage);
       if (nResult != DataAvailable)
         return nResult;
-      if (GetPageDictionary(dwPage)) {
-        m_pagesLoadState.insert(dwPage);
-        return DataAvailable;
-      }
     }
 
     if (!m_bMainXRefLoadedOK) {
@@ -915,37 +897,6 @@ int CPDF_DataAvail::GetPageCount() const {
   return m_pDocument ? m_pDocument->GetPageCount() : 0;
 }
 
-CPDF_Dictionary* CPDF_DataAvail::GetPageDictionary(int index) const {
-  if (!m_pDocument || index < 0 || index >= GetPageCount())
-    return nullptr;
-  CPDF_Dictionary* page = m_pDocument->GetPageDictionary(index);
-  if (page)
-    return page;
-  if (!m_pLinearized || !m_pHintTables)
-    return nullptr;
-
-  if (index == static_cast<int>(m_pLinearized->GetFirstPageNo()))
-    return nullptr;
-  FX_FILESIZE szPageStartPos = 0;
-  FX_FILESIZE szPageLength = 0;
-  uint32_t dwObjNum = 0;
-  const bool bPagePosGot = m_pHintTables->GetPagePos(index, &szPageStartPos,
-                                                     &szPageLength, &dwObjNum);
-  if (!bPagePosGot || !dwObjNum)
-    return nullptr;
-  // We should say to the document, which object is the page.
-  m_pDocument->SetPageObjNum(index, dwObjNum);
-  // Page object already can be parsed in document.
-  if (!m_pDocument->GetIndirectObject(dwObjNum)) {
-    m_pDocument->ReplaceIndirectObjectIfHigherGeneration(
-        dwObjNum,
-        ParseIndirectObjectAt(szPageStartPos, dwObjNum, m_pDocument.Get()));
-  }
-  if (!ValidatePage(index))
-    return nullptr;
-  return m_pDocument->GetPageDictionary(index);
-}
-
 CPDF_DataAvail::DocFormStatus CPDF_DataAvail::IsFormAvail(
     DownloadHints* pHints) {
   const HintsScope hints_scope(GetValidator().Get(), pHints);
@@ -987,16 +938,6 @@ CPDF_DataAvail::DocFormStatus CPDF_DataAvail::CheckAcroForm() {
       NOTREACHED();
   }
   return DocFormStatus::FormError;
-}
-
-bool CPDF_DataAvail::ValidatePage(uint32_t dwPage) const {
-  FX_SAFE_INT32 safePage = pdfium::base::checked_cast<int32_t>(dwPage);
-  auto* pPageDict = m_pDocument->GetPageDictionary(safePage.ValueOrDie());
-  if (!pPageDict)
-    return false;
-  CPDF_PageObjectAvail obj_avail(GetValidator().Get(), m_pDocument.Get(),
-                                 pPageDict);
-  return obj_avail.CheckAvail() == DocAvailStatus::DataAvailable;
 }
 
 std::pair<CPDF_Parser::Error, std::unique_ptr<CPDF_Document>>

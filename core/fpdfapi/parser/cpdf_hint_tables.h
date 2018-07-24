@@ -82,7 +82,7 @@ class CPDF_HintTables {
                   FX_FILESIZE* szPageLength,
                   uint32_t* dwObjNum) const;
 
-  CPDF_DataAvail::DocAvailStatus CheckPage(uint32_t index);
+  CPDF_DataAvail::DocAvailStatus CheckPage(uint32_t index) const;
 
   bool LoadHintStream(CPDF_Stream* pHintStream);
 
