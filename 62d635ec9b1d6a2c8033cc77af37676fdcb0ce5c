@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f319cb17_bae10e4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "No need to capitalize document and file.",
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ea1244_b8d4cc74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "read",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70655c9_255c8fe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "offset",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff40f801_2ec5914e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "friendship",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c59a215_3719fc7a",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "Bad merge.",
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1c974a_2745c345",
+        "filename": "core/fpdfapi/parser/cpdf_parser_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "Add a separate InitTestFromBufferWithOffset() or just change the few existing callers to pass in an offset of 0?",
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd98c81_d0fd1893",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "CPDF_SyntaxParser::InitParserWithValidator() is the only place that sets |m_FileLen| and |m_HeaderOffset|. Maybe it should validate the two values?",
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e4ff91_ee6b5bdf",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "may be smaller than the",
+      "range": {
+        "startLine": 69,
+        "startChar": 23,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0264df_95898678",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "We can just write |m_HeaderOffset| here, and add a comment when declaring |m_HeaderOffset| below.",
+      "range": {
+        "startLine": 70,
+        "startChar": 47,
+        "endLine": 70,
+        "endChar": 78
+      },
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b70f53_ba395393",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "I think the word you want here is \"relative\".",
+      "range": {
+        "startLine": 70,
+        "startChar": 36,
+        "endLine": 70,
+        "endChar": 43
+      },
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a87701e3_52ea15ca",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-24T22:06:53Z",
+      "side": 1,
+      "message": "Add a comment here to explain this is where the PDF header is, relative to the start of the file.",
+      "revId": "62d635ec9b1d6a2c8033cc77af37676fdcb0ce5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
