@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97d24242_db7e054c",
+        "filename": "fxjs/cfxjse_engine.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-24T17:54:34Z",
+      "side": 1,
+      "message": "NB: I think this reads better than the previous.  The previous begs the question \"if it IsVariablesThis() then why do we need to GetVariablesThis()\", for whatever a \"variables-this\" might be?",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "3a025771339f4c2d394296d1cfd7a56eec4128c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
