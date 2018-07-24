@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1ddc1709_0da65db9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-24T22:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04732823_990aca47",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fbfe408_3d7819c8",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 2
@@ -123,6 +147,24 @@
       "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea06141_77f86a13",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-24T22:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c7a5b50_b54be1f7",
+      "revId": "4134c46f6ec3989bdf21976c969e520f08993fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
