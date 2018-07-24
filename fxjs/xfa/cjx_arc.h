@@ -16,12 +16,12 @@ class CJX_Arc : public CJX_Node {
   explicit CJX_Arc(CXFA_Arc* node);
   ~CJX_Arc() override;
 
-  JS_PROP(circular);
-  JS_PROP(hand);
-  JS_PROP(startAngle);
-  JS_PROP(sweepAngle);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(circular);
+  JSE_PROP(hand);
+  JSE_PROP(startAngle);
+  JSE_PROP(sweepAngle);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_ARC_H_

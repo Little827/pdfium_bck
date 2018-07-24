@@ -16,8 +16,8 @@ class CJX_SoapAction : public CJX_TextNode {
   explicit CJX_SoapAction(CXFA_SoapAction* node);
   ~CJX_SoapAction() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_SOAPACTION_H_

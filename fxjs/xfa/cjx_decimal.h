@@ -16,12 +16,12 @@ class CJX_Decimal : public CJX_Content {
   explicit CJX_Decimal(CXFA_Decimal* node);
   ~CJX_Decimal() override;
 
-  JS_PROP(defaultValue); /* {default} */
-  JS_PROP(fracDigits);
-  JS_PROP(leadDigits);
-  JS_PROP(use);
-  JS_PROP(usehref);
-  JS_PROP(value);
+  JSE_PROP(defaultValue); /* {default} */
+  JSE_PROP(fracDigits);
+  JSE_PROP(leadDigits);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
+  JSE_PROP(value);
 };
 
 #endif  // FXJS_XFA_CJX_DECIMAL_H_

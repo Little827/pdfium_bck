@@ -16,9 +16,9 @@ class CJX_Assist : public CJX_Node {
   explicit CJX_Assist(CXFA_Assist* node);
   ~CJX_Assist() override;
 
-  JS_PROP(role);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(role);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_ASSIST_H_

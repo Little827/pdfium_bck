@@ -16,9 +16,9 @@ class CJX_Comb : public CJX_Node {
   explicit CJX_Comb(CXFA_Comb* node);
   ~CJX_Comb() override;
 
-  JS_PROP(numberOfCells);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(numberOfCells);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_COMB_H_
