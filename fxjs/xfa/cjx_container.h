@@ -17,8 +17,8 @@ class CJX_Container : public CJX_Node {
   explicit CJX_Container(CXFA_Node* node);
   ~CJX_Container() override;
 
-  JS_METHOD(getDelta, CJX_Container);
-  JS_METHOD(getDeltas, CJX_Container);
+  JSE_METHOD(getDelta, CJX_Container);
+  JSE_METHOD(getDeltas, CJX_Container);
 
  private:
   static const CJX_MethodSpec MethodSpecs[];

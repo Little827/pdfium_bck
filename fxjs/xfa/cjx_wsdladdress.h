@@ -16,8 +16,8 @@ class CJX_WsdlAddress : public CJX_TextNode {
   explicit CJX_WsdlAddress(CXFA_WsdlAddress* node);
   ~CJX_WsdlAddress() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_WSDLADDRESS_H_

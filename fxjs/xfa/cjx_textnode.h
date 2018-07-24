@@ -17,8 +17,8 @@ class CJX_TextNode : public CJX_Node {
   explicit CJX_TextNode(CXFA_Node* node);
   ~CJX_TextNode() override;
 
-  JS_PROP(defaultValue); /* {default} */
-  JS_PROP(value);
+  JSE_PROP(defaultValue); /* {default} */
+  JSE_PROP(value);
 };
 
 #endif  // FXJS_XFA_CJX_TEXTNODE_H_

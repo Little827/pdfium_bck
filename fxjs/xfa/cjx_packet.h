@@ -17,11 +17,11 @@ class CJX_Packet : public CJX_Node {
   explicit CJX_Packet(CXFA_Packet* packet);
   ~CJX_Packet() override;
 
-  JS_METHOD(getAttribute, CJX_Packet);
-  JS_METHOD(removeAttribute, CJX_Packet);
-  JS_METHOD(setAttribute, CJX_Packet);
+  JSE_METHOD(getAttribute, CJX_Packet);
+  JSE_METHOD(removeAttribute, CJX_Packet);
+  JSE_METHOD(setAttribute, CJX_Packet);
 
-  JS_PROP(content);
+  JSE_PROP(content);
 
  private:
   static const CJX_MethodSpec MethodSpecs[];

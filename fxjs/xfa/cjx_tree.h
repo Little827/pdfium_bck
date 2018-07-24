@@ -18,17 +18,17 @@ class CJX_Tree : public CJX_Object {
   explicit CJX_Tree(CXFA_Object* obj);
   ~CJX_Tree() override;
 
-  JS_METHOD(resolveNode, CJX_Tree);
-  JS_METHOD(resolveNodes, CJX_Tree);
+  JSE_METHOD(resolveNode, CJX_Tree);
+  JSE_METHOD(resolveNodes, CJX_Tree);
 
-  JS_PROP(all);
-  JS_PROP(classAll);
-  JS_PROP(classIndex);
-  JS_PROP(index);
-  JS_PROP(name);
-  JS_PROP(nodes);
-  JS_PROP(parent);
-  JS_PROP(somExpression);
+  JSE_PROP(all);
+  JSE_PROP(classAll);
+  JSE_PROP(classIndex);
+  JSE_PROP(index);
+  JSE_PROP(name);
+  JSE_PROP(nodes);
+  JSE_PROP(parent);
+  JSE_PROP(somExpression);
 
  private:
   void ResolveNodeList(CFXJSE_Value* pValue,

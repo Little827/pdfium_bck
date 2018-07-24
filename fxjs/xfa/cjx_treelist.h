@@ -17,7 +17,7 @@ class CJX_TreeList : public CJX_List {
   explicit CJX_TreeList(CXFA_TreeList* list);
   ~CJX_TreeList() override;
 
-  JS_METHOD(namedItem, CJX_TreeList);
+  JSE_METHOD(namedItem, CJX_TreeList);
 
  private:
   CXFA_TreeList* GetXFATreeList();

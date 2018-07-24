@@ -16,8 +16,8 @@ class CJX_ConnectString : public CJX_TextNode {
   explicit CJX_ConnectString(CXFA_ConnectString* node);
   ~CJX_ConnectString() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_CONNECTSTRING_H_

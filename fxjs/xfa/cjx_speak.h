@@ -16,10 +16,10 @@ class CJX_Speak : public CJX_TextNode {
   explicit CJX_Speak(CXFA_Speak* node);
   ~CJX_Speak() override;
 
-  JS_PROP(disable);
-  JS_PROP(priority);
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(disable);
+  JSE_PROP(priority);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_SPEAK_H_

@@ -16,7 +16,7 @@ class CJX_XmlConnection : public CJX_Node {
   explicit CJX_XmlConnection(CXFA_XmlConnection* node);
   ~CJX_XmlConnection() override;
 
-  JS_PROP(dataDescription);
+  JSE_PROP(dataDescription);
 };
 
 #endif  // FXJS_XFA_CJX_XMLCONNECTION_H_

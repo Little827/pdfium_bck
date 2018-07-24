@@ -58,7 +58,7 @@ class CJX_Object {
   explicit CJX_Object(CXFA_Object* obj);
   virtual ~CJX_Object();
 
-  JS_PROP(className);
+  JSE_PROP(className);
 
   CXFA_Document* GetDocument() const;
   CXFA_Object* GetXFAObject() const { return object_.Get(); }

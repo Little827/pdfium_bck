@@ -16,8 +16,8 @@ class CJX_Variables : public CJX_Container {
   explicit CJX_Variables(CXFA_Variables* node);
   ~CJX_Variables() override;
 
-  JS_PROP(use);
-  JS_PROP(usehref);
+  JSE_PROP(use);
+  JSE_PROP(usehref);
 };
 
 #endif  // FXJS_XFA_CJX_VARIABLES_H_
