@@ -148,7 +148,7 @@ class CPDF_Parser {
   void ShrinkObjectMap(uint32_t max_size);
   // A simple check whether the cross reference table matches with
   // the objects.
-  bool VerifyCrossRefV4();
+  bool VerifyCrossRef();
 
   // If out_objects is null, the parser position will be moved to end subsection
   // without additional validation.
