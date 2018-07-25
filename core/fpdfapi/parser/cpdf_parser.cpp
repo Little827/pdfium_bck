@@ -140,9 +140,16 @@ bool CPDF_Parser::ParseFileVersion() {
 CPDF_Parser::Error CPDF_Parser::StartParse(
     const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
     const char* password) {
-  if (!InitSyntaxParser(
-          pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr)))
+  return StartParseWithValidator(
+      pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr), password);
+}
+
+CPDF_Parser::Error CPDF_Parser::StartParseWithValidator(
+    const RetainPtr<CPDF_ReadValidator>& validator,
+    const char* password) {
+  if (!InitSyntaxParser(validator))
     return FORMAT_ERROR;
+
   SetPassword(password);
   return StartParseInternal();
 }
@@ -153,25 +160,28 @@ CPDF_Parser::Error CPDF_Parser::StartParseInternal() {
   m_bXRefStream = false;
 
   bool bXRefRebuilt = false;
+  if (!ParseFileStructure()) {
+    bXRefRebuilt = true;
+    if (!RebuildCrossRef())
+      return FORMAT_ERROR;
+  }
 
-  m_LastXRefOffset = ParseStartXRef();
-
-  if (m_LastXRefOffset > 0) {
-    if ((!LoadAllCrossRefV4(m_LastXRefOffset) &&
-         !LoadAllCrossRefV5(m_LastXRefOffset)) ||
-        !VerifyCrossRef()) {
+  if (!bXRefRebuilt && !m_pLinearized) {
+    const CPDF_Parser::Error ret = LoadPrevMainXRefTables();
+    if (ret != SUCCESS) {
+      bXRefRebuilt = true;
       if (!RebuildCrossRef())
         return FORMAT_ERROR;
-
-      bXRefRebuilt = true;
-      m_LastXRefOffset = 0;
     }
-  } else {
+  }
+  if (!bXRefRebuilt && !VerifyCrossRef()) {
     if (!RebuildCrossRef())
       return FORMAT_ERROR;
 
     bXRefRebuilt = true;
+    m_LastXRefOffset = 0;
   }
+
   Error eRet = SetEncryptHandler();
   if (eRet != SUCCESS)
     return eRet;
@@ -262,6 +272,8 @@ void CPDF_Parser::ReleaseEncryptHandler() {
 // with the objects. crbug/602650 showed a case where object numbers
 // in the cross reference table are all off by one.
 bool CPDF_Parser::VerifyCrossRef() {
+  if (!m_CrossRefTable || !m_CrossRefTable->trailer())
+    return false;
   // For verification we can use any known object. The root object num is
   // suitable.
   uint32_t obj_num = GetRootObjNum();
@@ -293,56 +305,6 @@ bool CPDF_Parser::VerifyCrossRef() {
   return true;
 }
 
-bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
-  CPDF_CrossRefParser parser(m_pSyntax.get());
-  std::unique_ptr<CPDF_CrossRefTable> main_ref_table =
-      parser.ParseCrossRefV4(xrefpos, m_pObjectsHolder.Get());
-
-  if (!main_ref_table)
-    return false;
-
-  std::set<FX_FILESIZE> seen_xrefpos;
-  seen_xrefpos.insert(xrefpos);
-
-  FX_FILESIZE prev_xref_pos = main_ref_table->trailer()->GetIntegerFor("Prev");
-  while (prev_xref_pos) {
-    // Check for circular references.
-    if (pdfium::ContainsKey(seen_xrefpos, prev_xref_pos))
-      return false;
-
-    seen_xrefpos.insert(prev_xref_pos);
-    std::unique_ptr<CPDF_CrossRefTable> prev_ref_table =
-        parser.ParseCrossRefV4(prev_xref_pos, m_pObjectsHolder.Get());
-    if (!prev_ref_table)
-      return false;
-
-    prev_xref_pos = prev_ref_table->trailer()->GetIntegerFor("Prev");
-    prev_ref_table->Update(std::move(main_ref_table));
-    main_ref_table = std::move(prev_ref_table);
-  }
-  m_CrossRefTable = std::move(main_ref_table);
-  return true;
-}
-
-bool CPDF_Parser::LoadAllCrossRefV5(FX_FILESIZE xrefpos) {
-  if (!LoadCrossRefV5(&xrefpos, true))
-    return false;
-
-  std::set<FX_FILESIZE> seen_xrefpos;
-  while (xrefpos) {
-    seen_xrefpos.insert(xrefpos);
-    if (!LoadCrossRefV5(&xrefpos, false))
-      return false;
-
-    // Check for circular references.
-    if (pdfium::ContainsKey(seen_xrefpos, xrefpos))
-      return false;
-  }
-  m_ObjectStreamMap.clear();
-  m_bXRefStream = true;
-  return true;
-}
-
 bool CPDF_Parser::RebuildCrossRef() {
   CPDF_CrossRefParser parser(m_pSyntax.get());
   std::unique_ptr<CPDF_CrossRefTable> cross_ref_table =
@@ -353,23 +315,6 @@ bool CPDF_Parser::RebuildCrossRef() {
   m_CrossRefTable = CPDF_CrossRefTable::MergeUp(std::move(m_CrossRefTable),
                                                 std::move(cross_ref_table));
   return GetTrailer() && !m_CrossRefTable->objects_info().empty();
-}
-
-bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
-  CPDF_CrossRefParser parser(m_pSyntax.get());
-  std::unique_ptr<CPDF_CrossRefTable> cross_ref_table =
-      parser.ParseCrossRefV5(*pos, m_pObjectsHolder.Get());
-  if (!cross_ref_table)
-    return false;
-
-  if (bMainXRef) {
-    m_CrossRefTable = std::move(cross_ref_table);
-  } else {
-    m_CrossRefTable = CPDF_CrossRefTable::MergeUp(std::move(cross_ref_table),
-                                                  std::move(m_CrossRefTable));
-  }
-  *pos = m_CrossRefTable->trailer()->GetIntegerFor("Prev");
-  return true;
 }
 
 const CPDF_Array* CPDF_Parser::GetIDArray() const {
@@ -526,77 +471,20 @@ std::unique_ptr<CPDF_LinearizedHeader> CPDF_Parser::ParseLinearizedHeader() {
   return CPDF_LinearizedHeader::Parse(m_pSyntax.get());
 }
 
-CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
-    const RetainPtr<CPDF_ReadValidator>& validator,
-    const char* password) {
-  ASSERT(!m_bHasParsed);
-  SetPassword(password);
-  m_bXRefStream = false;
-  m_LastXRefOffset = 0;
+bool CPDF_Parser::ParseFileStructure() {
+  if (!m_pSyntax->GetValidator()->IsWholeFileAvailable())
+    m_pLinearized = ParseLinearizedHeader();
 
-  if (!InitSyntaxParser(validator))
-    return FORMAT_ERROR;
+  m_LastXRefOffset =
+      m_pLinearized ? m_pLinearized->GetLastXRefOffset() : ParseStartXRef();
 
-  m_pLinearized = ParseLinearizedHeader();
-  if (!m_pLinearized)
-    return StartParseInternal();
-
-  m_bHasParsed = true;
-
-  m_LastXRefOffset = m_pLinearized->GetLastXRefOffset();
   CPDF_CrossRefParser parser(m_pSyntax.get());
   m_CrossRefTable =
       parser.ParseCrossRef(m_LastXRefOffset, m_pObjectsHolder.Get());
-
-  bool bXRefRebuilt = false;
-  if (!VerifyCrossRef()) {
-    if (!RebuildCrossRef())
-      return FORMAT_ERROR;
-
-    bXRefRebuilt = true;
-    m_LastXRefOffset = 0;
-  }
-
-  Error eRet = SetEncryptHandler();
-  if (eRet != SUCCESS)
-    return eRet;
-
-  if (!GetRoot() || !m_pObjectsHolder->TryInit()) {
-    if (bXRefRebuilt)
-      return FORMAT_ERROR;
-
-    ReleaseEncryptHandler();
-    if (!RebuildCrossRef())
-      return FORMAT_ERROR;
-
-    eRet = SetEncryptHandler();
-    if (eRet != SUCCESS)
-      return eRet;
-
-    m_pObjectsHolder->TryInit();
-    if (!GetRoot())
-      return FORMAT_ERROR;
-  }
-
-  if (GetRootObjNum() == CPDF_Object::kInvalidObjNum) {
-    ReleaseEncryptHandler();
-    if (!RebuildCrossRef() || GetRootObjNum() == CPDF_Object::kInvalidObjNum)
-      return FORMAT_ERROR;
-
-    eRet = SetEncryptHandler();
-    if (eRet != SUCCESS)
-      return eRet;
-  }
-
-  if (m_pSecurityHandler && m_pSecurityHandler->IsMetadataEncrypted()) {
-    if (CPDF_Reference* pMetadata =
-            ToReference(GetRoot()->GetObjectFor("Metadata")))
-      m_MetadataObjnum = pMetadata->GetRefObjNum();
-  }
-  return SUCCESS;
+  return !!m_CrossRefTable;
 }
 
-CPDF_Parser::Error CPDF_Parser::LoadLinearizedMainXRefTable() {
+CPDF_Parser::Error CPDF_Parser::LoadPrevMainXRefTables() {
   if (!m_CrossRefTable || !m_CrossRefTable->trailer())
     return FORMAT_ERROR;
 

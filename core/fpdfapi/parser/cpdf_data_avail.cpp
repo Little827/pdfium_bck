@@ -203,8 +203,8 @@ bool CPDF_DataAvail::CheckAndLoadAllXref() {
       return false;
   }
 
-  if (!m_parser.LoadAllCrossRefV4(m_pCrossRefAvail->last_crossref_offset()) &&
-      !m_parser.LoadAllCrossRefV5(m_pCrossRefAvail->last_crossref_offset())) {
+  if (!m_parser.ParseFileStructure() ||
+      m_parser.LoadPrevMainXRefTables() != CPDF_Parser::SUCCESS) {
     m_docStatus = PDF_DATAAVAIL_LOADALLFILE;
     return false;
   }
@@ -780,7 +780,7 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::CheckLinearizedData() {
       return DataNotAvailable;
 
     CPDF_Parser::Error eRet =
-        m_pDocument->GetParser()->LoadLinearizedMainXRefTable();
+        m_pDocument->GetParser()->LoadPrevMainXRefTables();
     m_bMainXRefLoadTried = true;
     if (eRet != CPDF_Parser::SUCCESS)
       return DataError;

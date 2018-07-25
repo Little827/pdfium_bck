@@ -229,7 +229,7 @@ CPDF_Parser::Error CPDF_Document::LoadLinearizedDoc(
   if (!m_pParser)
     SetParser(pdfium::MakeUnique<CPDF_Parser>(this));
 
-  return m_pParser->StartLinearizedParse(validator, password);
+  return m_pParser->StartParseWithValidator(validator, password);
 }
 
 void CPDF_Document::LoadPages() {

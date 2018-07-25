@@ -58,8 +58,8 @@ class CPDF_Parser {
 
   Error StartParse(const RetainPtr<IFX_SeekableReadStream>& pFile,
                    const char* password);
-  Error StartLinearizedParse(const RetainPtr<CPDF_ReadValidator>& validator,
-                             const char* password);
+  Error StartParseWithValidator(const RetainPtr<CPDF_ReadValidator>& validator,
+                                const char* password);
 
   void SetPassword(const char* password) { m_Password = password; }
   ByteString GetPassword() const { return m_Password; }
@@ -133,26 +133,15 @@ class CPDF_Parser {
 
   Error StartParseInternal();
   FX_FILESIZE ParseStartXRef();
-  bool LoadAllCrossRefV4(FX_FILESIZE pos);
-  bool LoadAllCrossRefV5(FX_FILESIZE pos);
-  bool LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef);
   Error SetEncryptHandler();
   void ReleaseEncryptHandler();
-  Error LoadLinearizedMainXRefTable();
+  bool ParseFileStructure();
+  Error LoadPrevMainXRefTables();
   const CPDF_ObjectStream* GetObjectStream(uint32_t object_number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
   // A simple check whether the cross reference table matches with
   // the objects.
   bool VerifyCrossRef();
-
-  // If out_objects is null, the parser position will be moved to end subsection
-  // without additional validation.
-  bool ParseAndAppendCrossRefSubsectionData(
-      uint32_t start_objnum,
-      uint32_t count,
-      std::vector<CrossRefObjData>* out_objects);
-  bool ParseCrossRefV4(std::vector<CrossRefObjData>* out_objects);
-  void MergeCrossRefObjectsData(const std::vector<CrossRefObjData>& objects);
 
   bool InitSyntaxParser(const RetainPtr<CPDF_ReadValidator>& validator);
   bool ParseFileVersion();
