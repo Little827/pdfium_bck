@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1532544683 -0700\nnonce APISObQfySJyPTQGWnfZFdO6j6QkZAfDpcExHdo92m/ZkVFpzKzIiU/B5LEVdk2b1B0Cukjey47l\n\n0000000000000000000000000000000000000000 f3f25e44bdd0f7c3784758cb671e22f65200846c refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dremove-cpdf-crossreftable\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltYxqsACgkQqzYtYVpm\n/Xu0PQgAi3wvcr+qfumB2YULZttKFF6e+T+Q0TTZLlMW5/OjlaSl13aHBDOFXJhe\n/elVvU1HglLSoyClvLVDqRjV91sSY42KFDgkhcT+Axqhe4KeKVkGOfHDfGlEwpTY\nA5gKu9MnFDnmgWqJlbPIAjninLtad7zwgJrCzPOnLSxObiDoYTajjaauvdcYuOxD\nLk5k/I6WiSN0kJJN9oTE8QJgNhmCY9SpiUQcol+ERvvfaa4H4CpCGnrOWF/idDP3\nMuCyzVKGSGIbYxfYsGBI0oBOXK9KHeFYUeyZRXF4XmKTgVlKl7WWT+cPUJH+WL+P\n3mA9YwuSfxdcSI581K8iMGIbL2EXog\u003d\u003d\n\u003du7O5\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
