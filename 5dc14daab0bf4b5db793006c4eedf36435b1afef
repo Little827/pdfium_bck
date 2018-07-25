@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f8e9fad_7e14a493",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-25T11:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66b4716f_6178f184",
+      "revId": "5dc14daab0bf4b5db793006c4eedf36435b1afef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5859abcf_4a8b4d6a",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8e63637c_4794851d",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-25T11:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5859abcf_4a8b4d6a",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "5dc14daab0bf4b5db793006c4eedf36435b1afef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "527f25c5_988235a2",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 4
@@ -62,6 +104,30 @@
       "revId": "5dc14daab0bf4b5db793006c4eedf36435b1afef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1bb5aee_c5ce482c",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-25T11:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "527f25c5_988235a2",
+      "range": {
+        "startLine": 121,
+        "startChar": 43,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "5dc14daab0bf4b5db793006c4eedf36435b1afef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
