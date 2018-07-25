@@ -1758,6 +1758,37 @@ TEST_F(FPDFEditEmbeddertest, TestGetTextRenderMode) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbeddertest, TestGetTextFontName) {
+  EXPECT_TRUE(OpenDocument("text_font.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(1, FPDFPage_CountObjects(page));
+
+  // FPDFTextObj_GetFontName() positive testing.
+  FPDF_PAGEOBJECT text = FPDFPage_GetObject(page, 0);
+  unsigned long size = 0;
+  size = FPDFTextObj_GetFontName(text, nullptr, size);
+  ASSERT_EQ(static_cast<unsigned long>(17), size);
+  std::vector<char> font_name;
+  font_name.reserve(size);
+  ASSERT_EQ(size, FPDFTextObj_GetFontName(text, font_name.data(), size));
+  ASSERT_EQ(std::string("Liberation Serif"), std::string(font_name.data()));
+
+  // FPDFTextObj_GetFontName() negative testing.
+  ASSERT_EQ(static_cast<unsigned long>(0),
+            FPDFTextObj_GetFontName(nullptr, nullptr, 0));
+
+  font_name.clear();
+  font_name.reserve(2);
+  font_name[0] = 'x';
+  font_name[1] = '\0';
+  size = FPDFTextObj_GetFontName(text, font_name.data(), font_name.size());
+  ASSERT_EQ(static_cast<unsigned long>(17), size);
+  ASSERT_EQ(std::string("x"), std::string(font_name.data()));
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbeddertest, TestFormGetObjects) {
   EXPECT_TRUE(OpenDocument("form_object.pdf"));
   FPDF_PAGE page = LoadPage(0);
