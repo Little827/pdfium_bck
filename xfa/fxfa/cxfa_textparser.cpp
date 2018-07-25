@@ -276,18 +276,18 @@ bool CXFA_TextParser::TagValidate(const WideString& wsName) const {
 std::unique_ptr<CXFA_TextParser::TagProvider> CXFA_TextParser::ParseTagInfo(
     CFX_XMLNode* pXMLNode) {
   auto tagProvider = pdfium::MakeUnique<TagProvider>();
-
-  WideString wsName;
-  if (pXMLNode->GetType() == FX_XMLNODE_Element) {
-    CFX_XMLElement* pXMLElement = static_cast<CFX_XMLElement*>(pXMLNode);
-    wsName = pXMLElement->GetLocalTagName();
+  CFX_XMLElement* pXMLElement = ToXMLElement(pXMLNode);
+  if (pXMLElement) {
+    WideString wsName = pXMLElement->GetLocalTagName();
     tagProvider->SetTagName(wsName);
     tagProvider->m_bTagAvailable = TagValidate(wsName);
-
     WideString wsValue = pXMLElement->GetAttribute(L"style");
     if (!wsValue.IsEmpty())
       tagProvider->SetAttribute(L"style", wsValue);
-  } else if (pXMLNode->GetType() == FX_XMLNODE_Text) {
+
+    return tagProvider;
+  }
+  if (pXMLNode->GetType() == FX_XMLNODE_Text) {
     tagProvider->m_bTagAvailable = true;
     tagProvider->m_bContent = true;
   }
@@ -503,8 +503,8 @@ bool CXFA_TextParser::GetEmbbedObj(CXFA_TextProvider* pTextProvider,
     return false;
 
   bool bRet = false;
-  if (pXMLNode->GetType() == FX_XMLNODE_Element) {
-    CFX_XMLElement* pElement = static_cast<CFX_XMLElement*>(pXMLNode);
+  CFX_XMLElement* pElement = ToXMLElement(pXMLNode);
+  if (pElement) {
     WideString wsAttr = pElement->GetAttribute(L"xfa:embed");
     if (wsAttr.IsEmpty())
       return false;
