@@ -63,37 +63,41 @@ uint16_t FPDFAPI_CIDFromCharCode(const FXCMAP_CMap* pMap, uint32_t charcode) {
     return 0;
   }
 
-  while (pMap) {
-    if (!pMap->m_pWordMap)
-      return 0;
-    if (pMap->m_WordMapType == FXCMAP_CMap::Single) {
-      struct SingleCmap {
-        uint16_t code;
-        uint16_t cid;
-      };
-      const auto* begin = reinterpret_cast<const SingleCmap*>(pMap->m_pWordMap);
-      const auto* end = begin + pMap->m_WordCount;
-      const auto* found = std::lower_bound(
-          begin, end, loword, [](const SingleCmap& element, uint16_t code) {
-            return element.code < code;
-          });
-      if (found != end && found->code == loword)
-        return found->cid;
-    } else {
-      ASSERT(pMap->m_WordMapType == FXCMAP_CMap::Range);
-      struct RangeCmap {
-        uint16_t low;
-        uint16_t high;
-        uint16_t cid;
-      };
-      const auto* begin = reinterpret_cast<const RangeCmap*>(pMap->m_pWordMap);
-      const auto* end = begin + pMap->m_WordCount;
-      const auto* found = std::lower_bound(
-          begin, end, loword, [](const RangeCmap& element, uint16_t code) {
-            return element.high < code;
-          });
-      if (found != end && loword >= found->low && loword <= found->high)
-        return found->cid + loword - found->low;
+  while (pMap && pMap->m_pWordMap) {
+    switch (pMap->m_WordMapType) {
+      case FXCMAP_CMap::Single: {
+        struct SingleCmap {
+          uint16_t code;
+          uint16_t cid;
+        };
+        const auto* begin =
+            reinterpret_cast<const SingleCmap*>(pMap->m_pWordMap);
+        const auto* end = begin + pMap->m_WordCount;
+        const auto* found = std::lower_bound(
+            begin, end, loword, [](const SingleCmap& element, uint16_t code) {
+              return element.code < code;
+            });
+        if (found != end && found->code == loword)
+          return found->cid;
+        break;
+      }
+      case FXCMAP_CMap::Range: {
+        struct RangeCmap {
+          uint16_t low;
+          uint16_t high;
+          uint16_t cid;
+        };
+        const auto* begin =
+            reinterpret_cast<const RangeCmap*>(pMap->m_pWordMap);
+        const auto* end = begin + pMap->m_WordCount;
+        const auto* found = std::lower_bound(
+            begin, end, loword, [](const RangeCmap& element, uint16_t code) {
+              return element.high < code;
+            });
+        if (found != end && loword >= found->low && loword <= found->high)
+          return found->cid + loword - found->low;
+        break;
+      }
     }
     pMap = FindNextCMap(pMap);
   }
