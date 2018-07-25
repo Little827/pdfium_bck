@@ -118,7 +118,6 @@ class CPDF_Parser {
 
   std::unique_ptr<CPDF_SyntaxParser> m_pSyntax;
 
-  bool LoadCrossRefV4(FX_FILESIZE pos, bool bSkip);
   bool RebuildCrossRef();
 
  private:
@@ -137,7 +136,6 @@ class CPDF_Parser {
   bool LoadAllCrossRefV4(FX_FILESIZE pos);
   bool LoadAllCrossRefV5(FX_FILESIZE pos);
   bool LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef);
-  std::unique_ptr<CPDF_Dictionary> LoadTrailerV4();
   Error SetEncryptHandler();
   void ReleaseEncryptHandler();
   bool LoadLinearizedAllCrossRefV4(FX_FILESIZE pos);
@@ -145,7 +143,6 @@ class CPDF_Parser {
   Error LoadLinearizedMainXRefTable();
   const CPDF_ObjectStream* GetObjectStream(uint32_t object_number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
-  void ShrinkObjectMap(uint32_t max_size);
   // A simple check whether the cross reference table matches with
   // the objects.
   bool VerifyCrossRef();
@@ -163,8 +160,6 @@ class CPDF_Parser {
   bool ParseFileVersion();
 
   ObjectType GetObjectType(uint32_t objnum) const;
-  ObjectType GetObjectTypeFromCrossRefStreamType(
-      int cross_ref_stream_type) const;
 
   std::unique_ptr<ParsedObjectsHolder> m_pOwnedObjectsHolder;
   UnownedPtr<ParsedObjectsHolder> m_pObjectsHolder;

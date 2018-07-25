@@ -24,8 +24,18 @@ class CPDF_CrossRefParser {
   std::unique_ptr<CPDF_CrossRefTable> ParseCrossRefV5(
       FX_FILESIZE crossref_pos,
       CPDF_IndirectObjectHolder* holder);
+  std::unique_ptr<CPDF_CrossRefTable> ParseCrossRefV4(
+      FX_FILESIZE crossref_pos,
+      CPDF_IndirectObjectHolder* holder);
 
  private:
+  std::unique_ptr<CPDF_CrossRefTable> ParseCrossRefV4Internal(
+      FX_FILESIZE crossref_pos,
+      CPDF_IndirectObjectHolder* holder);
+  std::unique_ptr<CPDF_CrossRefTable> ParseAndAppendCrossRefSubsectionData(
+      uint32_t start_objnum,
+      uint32_t count);
+
   CPDF_ReadValidator* GetValidator() const;
 
   UnownedPtr<CPDF_SyntaxParser> syntax_;

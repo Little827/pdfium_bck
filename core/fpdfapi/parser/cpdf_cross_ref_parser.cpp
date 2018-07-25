@@ -17,6 +17,8 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
+#include "core/fpdfapi/parser/fpdf_parser_utility.h"
+#include "core/fxcrt/fx_extension.h"
 
 namespace {
 
@@ -222,6 +224,156 @@ std::unique_ptr<CPDF_CrossRefTable> CPDF_CrossRefParser::ParseCrossRefV5(
       }
     }
     segindex += count;
+  }
+  return result;
+}
+
+std::unique_ptr<CPDF_CrossRefTable> CPDF_CrossRefParser::ParseCrossRefV4(
+    FX_FILESIZE crossref_pos,
+    CPDF_IndirectObjectHolder* holder) {
+  std::unique_ptr<CPDF_CrossRefTable> cross_ref_v4 =
+      ParseCrossRefV4Internal(crossref_pos, holder);
+  if (!cross_ref_v4)
+    return nullptr;
+
+  const FX_FILESIZE cross_ref_v5_pos =
+      cross_ref_v4->trailer()->GetIntegerFor("XRefStm");
+
+  if (!cross_ref_v5_pos)
+    return cross_ref_v4;
+
+  std::unique_ptr<CPDF_CrossRefTable> cross_ref_v5 =
+      ParseCrossRefV5(cross_ref_v5_pos, holder);
+
+  if (!cross_ref_v5)
+    return nullptr;
+
+  cross_ref_v4->Update(std::move(cross_ref_v5));
+
+  return cross_ref_v4;
+}
+
+std::unique_ptr<CPDF_CrossRefTable>
+CPDF_CrossRefParser::ParseCrossRefV4Internal(
+    FX_FILESIZE crossref_pos,
+    CPDF_IndirectObjectHolder* holder) {
+  const CPDF_ReadValidator::Session read_session(GetValidator());
+  syntax_->SetPos(crossref_pos);
+  if (syntax_->GetKeyword() != "xref")
+    return nullptr;
+
+  auto result = pdfium::MakeUnique<CPDF_CrossRefTable>();
+  while (1) {
+    const FX_FILESIZE SavedPos = syntax_->GetPos();
+    bool bIsNumber;
+    ByteString word = syntax_->GetNextWord(&bIsNumber);
+    if (word.IsEmpty())
+      return nullptr;
+
+    if (!bIsNumber) {
+      syntax_->SetPos(SavedPos);
+      break;
+    }
+
+    uint32_t start_objnum = FXSYS_atoui(word.c_str());
+    if (start_objnum >= CPDF_Parser::kMaxObjectNumber)
+      return nullptr;
+
+    uint32_t count = syntax_->GetDirectNum();
+    syntax_->ToNextWord();
+
+    auto section_cross_ref =
+        ParseAndAppendCrossRefSubsectionData(start_objnum, count);
+    if (!section_cross_ref)
+      return nullptr;
+
+    result->Update(std::move(section_cross_ref));
+  }
+
+  if (syntax_->GetKeyword() != "trailer")
+    return nullptr;
+
+  auto trailer = ToDictionary(syntax_->GetObjectBody(holder));
+  if (!trailer)
+    return nullptr;
+
+  const int32_t max_object_num = trailer->GetIntegerFor("Size");
+  if (max_object_num < 0)
+    return nullptr;
+
+  if (max_object_num > 0)
+    result->ShrinkObjectMap(max_object_num);
+
+  result->SetTrailer(std::move(trailer));
+
+  return GetValidator()->has_read_problems() ? nullptr : std::move(result);
+}
+
+std::unique_ptr<CPDF_CrossRefTable>
+CPDF_CrossRefParser::ParseAndAppendCrossRefSubsectionData(uint32_t start_objnum,
+                                                          uint32_t count) {
+  // Each entry shall be exactly 20 byte.
+  // A sample entry looks like:
+  // "0000000000 00007 f\r\n"
+  static constexpr int32_t kEntryConstSize = 20;
+
+  {
+    FX_SAFE_SIZE_T section_size = count;
+    section_size *= kEntryConstSize;
+    if (!section_size.IsValid())
+      return nullptr;
+
+    FX_SAFE_FILESIZE section_end = syntax_->GetPos();
+    section_end += section_size.ValueOrDie();
+    if (!section_end.IsValid())
+      return nullptr;
+
+    if (section_end.ValueOrDie() > GetValidator()->GetSize())
+      return nullptr;
+
+    if (!GetValidator()->CheckDataRangeAndRequestIfUnavailable(
+            syntax_->GetPos(), section_size.ValueOrDie())) {
+      return nullptr;
+    }
+  }
+
+  auto result = pdfium::MakeUnique<CPDF_CrossRefTable>();
+
+  std::vector<char> buf(1024 * kEntryConstSize + 1);
+  buf.back() = '\0';
+
+  int32_t nBlocks = count / 1024 + 1;
+  for (int32_t block = 0; block < nBlocks; block++) {
+    int32_t block_size = block == nBlocks - 1 ? count % 1024 : 1024;
+    if (!syntax_->ReadBlock(reinterpret_cast<uint8_t*>(buf.data()),
+                            block_size * kEntryConstSize)) {
+      return nullptr;
+    }
+
+    for (int32_t i = 0; i < block_size; i++) {
+      const uint32_t objnum = start_objnum + block * 1024 + i;
+
+      char* pEntry = &buf[i * kEntryConstSize];
+      if (pEntry[17] == 'f') {
+        result->SetFree(objnum);
+      } else {
+        const FX_SAFE_FILESIZE offset = FXSYS_atoi64(pEntry);
+        if (!offset.IsValid())
+          return nullptr;
+
+        if (offset.ValueOrDie() == 0) {
+          for (int32_t c = 0; c < 10; c++) {
+            if (!std::isdigit(pEntry[c]))
+              return nullptr;
+          }
+        }
+
+        // TODO(art-snake): The info.gennum is uint16_t, but version may be
+        // greated than max<uint16_t>. Needs solve this issue.
+        const int32_t version = FXSYS_atoi(pEntry + 11);
+        result->AddNormal(objnum, version, offset.ValueOrDie());
+      }
+    }
   }
   return result;
 }
