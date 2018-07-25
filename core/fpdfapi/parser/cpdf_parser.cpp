@@ -324,19 +324,6 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
   return true;
 }
 
-bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE xrefpos) {
-  std::unique_ptr<CPDF_CrossRefTable> main_cross_ref =
-      std::move(m_CrossRefTable);
-
-  const bool loaded = LoadAllCrossRefV4(xrefpos);
-  if (loaded) {
-    m_CrossRefTable->Update(std::move(main_cross_ref));
-  } else {
-    m_CrossRefTable = std::move(main_cross_ref);
-  }
-  return loaded;
-}
-
 bool CPDF_Parser::LoadAllCrossRefV5(FX_FILESIZE xrefpos) {
   if (!LoadCrossRefV5(&xrefpos, true))
     return false;
@@ -559,11 +546,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   m_LastXRefOffset = m_pLinearized->GetLastXRefOffset();
   CPDF_CrossRefParser parser(m_pSyntax.get());
   m_CrossRefTable =
-      parser.ParseCrossRefV4(m_LastXRefOffset, m_pObjectsHolder.Get());
-  if (!m_CrossRefTable) {
-    m_CrossRefTable =
-        parser.ParseCrossRefV5(m_LastXRefOffset, m_pObjectsHolder.Get());
-  }
+      parser.ParseCrossRef(m_LastXRefOffset, m_pObjectsHolder.Get());
 
   bool bXRefRebuilt = false;
   if (!VerifyCrossRef()) {
@@ -613,42 +596,35 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   return SUCCESS;
 }
 
-bool CPDF_Parser::LoadLinearizedAllCrossRefV5(FX_FILESIZE xrefpos) {
-  if (!LoadCrossRefV5(&xrefpos, false))
-    return false;
+CPDF_Parser::Error CPDF_Parser::LoadLinearizedMainXRefTable() {
+  if (!m_CrossRefTable || !m_CrossRefTable->trailer())
+    return FORMAT_ERROR;
+
+  CPDF_CrossRefParser parser(m_pSyntax.get());
 
   std::set<FX_FILESIZE> seen_xrefpos;
-  while (xrefpos) {
-    seen_xrefpos.insert(xrefpos);
-    if (!LoadCrossRefV5(&xrefpos, false))
-      return false;
+  while (true) {
+    const FX_SAFE_FILESIZE prev_xref_table_offset =
+        m_CrossRefTable->trailer()->GetIntegerFor("Prev");
+    if (!prev_xref_table_offset.IsValid())
+      return FORMAT_ERROR;
+
+    if (prev_xref_table_offset.ValueOrDie() == 0)
+      return SUCCESS;
 
     // Check for circular references.
-    if (pdfium::ContainsKey(seen_xrefpos, xrefpos))
-      return false;
+    if (pdfium::ContainsKey(seen_xrefpos, prev_xref_table_offset.ValueOrDie()))
+      return FORMAT_ERROR;
+
+    seen_xrefpos.insert(prev_xref_table_offset.ValueOrDie());
+    std::unique_ptr<CPDF_CrossRefTable> prev_xref_table = parser.ParseCrossRef(
+        prev_xref_table_offset.ValueOrDie(), m_pObjectsHolder.Get());
+    if (!prev_xref_table) {
+      m_LastXRefOffset = 0;
+      return FORMAT_ERROR;
+    }
+    m_CrossRefTable = CPDF_CrossRefTable::MergeUp(std::move(prev_xref_table),
+                                                  std::move(m_CrossRefTable));
   }
-  m_ObjectStreamMap.clear();
-  m_bXRefStream = true;
-  return true;
-}
-
-CPDF_Parser::Error CPDF_Parser::LoadLinearizedMainXRefTable() {
-  const FX_SAFE_FILESIZE main_xref_offset = GetTrailer()->GetIntegerFor("Prev");
-  if (!main_xref_offset.IsValid())
-    return FORMAT_ERROR;
-
-  if (main_xref_offset.ValueOrDie() == 0)
-    return SUCCESS;
-
-  const AutoRestorer<uint32_t> save_metadata_objnum(&m_MetadataObjnum);
-  m_MetadataObjnum = 0;
-  m_ObjectStreamMap.clear();
-
-  if (!LoadLinearizedAllCrossRefV4(main_xref_offset.ValueOrDie()) &&
-      !LoadLinearizedAllCrossRefV5(main_xref_offset.ValueOrDie())) {
-    m_LastXRefOffset = 0;
-    return FORMAT_ERROR;
-  }
-
   return SUCCESS;
 }

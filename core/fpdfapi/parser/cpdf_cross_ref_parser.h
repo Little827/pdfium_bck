@@ -27,6 +27,9 @@ class CPDF_CrossRefParser {
   std::unique_ptr<CPDF_CrossRefTable> ParseCrossRefV4(
       FX_FILESIZE crossref_pos,
       CPDF_IndirectObjectHolder* holder);
+  std::unique_ptr<CPDF_CrossRefTable> ParseCrossRef(
+      FX_FILESIZE crossref_pos,
+      CPDF_IndirectObjectHolder* holder);
 
  private:
   std::unique_ptr<CPDF_CrossRefTable> ParseCrossRefV4Internal(

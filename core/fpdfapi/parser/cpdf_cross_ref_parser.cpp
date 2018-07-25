@@ -253,6 +253,22 @@ std::unique_ptr<CPDF_CrossRefTable> CPDF_CrossRefParser::ParseCrossRefV4(
   return cross_ref_v4;
 }
 
+std::unique_ptr<CPDF_CrossRefTable> CPDF_CrossRefParser::ParseCrossRef(
+    FX_FILESIZE crossref_pos,
+    CPDF_IndirectObjectHolder* holder) {
+  const CPDF_ReadValidator::Session read_session(GetValidator());
+  std::unique_ptr<CPDF_CrossRefTable> result =
+      ParseCrossRefV4(crossref_pos, holder);
+
+  if (GetValidator()->has_read_problems())
+    return nullptr;
+
+  if (result)
+    return result;
+
+  return ParseCrossRefV5(crossref_pos, holder);
+}
+
 std::unique_ptr<CPDF_CrossRefTable>
 CPDF_CrossRefParser::ParseCrossRefV4Internal(
     FX_FILESIZE crossref_pos,
