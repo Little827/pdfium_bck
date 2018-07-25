@@ -92,12 +92,6 @@ CPDF_Parser::ObjectType CPDF_Parser::GetObjectType(uint32_t objnum) const {
   return info ? info->type : ObjectType::kFree;
 }
 
-uint16_t CPDF_Parser::GetObjectGenNum(uint32_t objnum) const {
-  ASSERT(IsValidObjectNumber(objnum));
-  const auto* info = m_CrossRefTable->GetObjectInfo(objnum);
-  return (info && info->type == ObjectType::kNormal) ? info->gennum : 0;
-}
-
 bool CPDF_Parser::IsObjectFreeOrNull(uint32_t objnum) const {
   switch (GetObjectType(objnum)) {
     case ObjectType::kFree:
@@ -113,10 +107,6 @@ bool CPDF_Parser::IsObjectFreeOrNull(uint32_t objnum) const {
 
 bool CPDF_Parser::IsObjectFree(uint32_t objnum) const {
   return GetObjectType(objnum) == ObjectType::kFree;
-}
-
-void CPDF_Parser::ShrinkObjectMap(uint32_t objnum) {
-  m_CrossRefTable->ShrinkObjectMap(objnum);
 }
 
 bool CPDF_Parser::InitSyntaxParser(
@@ -303,7 +293,7 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
   m_CrossRefTable->SetTrailer(std::move(trailer));
   int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
   if (xrefsize > 0 && xrefsize <= kMaxXRefSize)
-    ShrinkObjectMap(xrefsize);
+    m_CrossRefTable->ShrinkObjectMap(xrefsize);
 
   std::vector<FX_FILESIZE> CrossRefList;
   std::vector<FX_FILESIZE> XRefStreamList;
@@ -989,7 +979,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
     m_CrossRefTable->SetTrailer(std::move(trailer));
     int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
     if (xrefsize > 0)
-      ShrinkObjectMap(xrefsize);
+      m_CrossRefTable->ShrinkObjectMap(xrefsize);
   }
 
   Error eRet = SetEncryptHandler();
