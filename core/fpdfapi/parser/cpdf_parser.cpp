@@ -33,10 +33,6 @@
 
 namespace {
 
-// A limit on the size of the xref table. Theoretical limits are higher, but
-// this may be large enough in practice.
-const int32_t kMaxXRefSize = 1048576;
-
 // "%PDF-1.7\n"
 constexpr FX_FILESIZE kPDFHeaderSize = 9;
 
@@ -291,9 +287,7 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
     return false;
 
   m_CrossRefTable->SetTrailer(std::move(trailer));
-  int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
-  if (xrefsize > 0 && xrefsize <= kMaxXRefSize)
-    m_CrossRefTable->ShrinkObjectMap(xrefsize);
+  m_CrossRefTable->ShrinkObjectMap();
 
   std::vector<FX_FILESIZE> CrossRefList;
   std::vector<FX_FILESIZE> XRefStreamList;
@@ -430,7 +424,7 @@ bool CPDF_Parser::ParseAndAppendCrossRefSubsectionData(
   if (!new_size.IsValid())
     return false;
 
-  if (new_size.ValueOrDie() > kMaxXRefSize)
+  if (new_size.ValueOrDie() > CPDF_CrossRefTable::kMaxXRefSize)
     return false;
 
   const size_t max_entries_in_file =
@@ -672,7 +666,7 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   if (bMainXRef) {
     m_CrossRefTable =
         pdfium::MakeUnique<CPDF_CrossRefTable>(std::move(pNewTrailer));
-    m_CrossRefTable->ShrinkObjectMap(size);
+    m_CrossRefTable->ShrinkObjectMap();
   } else {
     m_CrossRefTable = CPDF_CrossRefTable::MergeUp(
         pdfium::MakeUnique<CPDF_CrossRefTable>(std::move(pNewTrailer)),
@@ -977,9 +971,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
       return SUCCESS;
 
     m_CrossRefTable->SetTrailer(std::move(trailer));
-    int32_t xrefsize = GetDirectInteger(GetTrailer(), "Size");
-    if (xrefsize > 0)
-      m_CrossRefTable->ShrinkObjectMap(xrefsize);
+    m_CrossRefTable->ShrinkObjectMap();
   }
 
   Error eRet = SetEncryptHandler();

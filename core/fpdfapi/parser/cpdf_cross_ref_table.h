@@ -9,6 +9,7 @@
 #include <memory>
 
 #include "core/fxcrt/fx_system.h"
+#include "third_party/base/optional.h"
 
 class CPDF_Dictionary;
 
@@ -36,6 +37,10 @@ class CPDF_CrossRefTable {
     uint16_t gennum;
   };
 
+  // A limit on the size of the xref table. Theoretical limits are higher, but
+  // this may be large enough in practice.
+  static constexpr int32_t kMaxXRefSize = 1048576;
+
   // Merge cross reference tables.  Apply top on current.
   static std::unique_ptr<CPDF_CrossRefTable> MergeUp(
       std::unique_ptr<CPDF_CrossRefTable> current,
@@ -60,7 +65,7 @@ class CPDF_CrossRefTable {
 
   void Update(std::unique_ptr<CPDF_CrossRefTable> new_cross_ref);
 
-  void ShrinkObjectMap(uint32_t objnum);
+  void ShrinkObjectMap();
 
  private:
   void UpdateInfo(std::map<uint32_t, ObjectInfo>&& new_objects_info);

@@ -8,6 +8,20 @@
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
+#include "core/fpdfapi/parser/fpdf_parser_utility.h"
+
+namespace {
+
+constexpr char kSize[] = "Size";
+
+Optional<uint32_t> GetSizeFromTrailer(const CPDF_Dictionary* trailer) {
+  int32_t xrefsize = GetDirectInteger(trailer, kSize);
+  if (xrefsize < 0 || xrefsize > CPDF_CrossRefTable::kMaxXRefSize)
+    return {};
+  return xrefsize;
+}
+
+}  // namespace
 
 // static
 std::unique_ptr<CPDF_CrossRefTable> CPDF_CrossRefTable::MergeUp(
@@ -102,7 +116,12 @@ void CPDF_CrossRefTable::Update(
   UpdateTrailer(std::move(new_cross_ref->trailer_));
 }
 
-void CPDF_CrossRefTable::ShrinkObjectMap(uint32_t objnum) {
+void CPDF_CrossRefTable::ShrinkObjectMap() {
+  Optional<uint32_t> xrefsize = GetSizeFromTrailer(trailer());
+  if (!xrefsize)
+    return;
+
+  uint32_t objnum = *xrefsize;
   if (objnum == 0) {
     objects_info_.clear();
     return;
