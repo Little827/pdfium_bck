@@ -287,7 +287,6 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
     return false;
 
   m_CrossRefTable->SetTrailer(std::move(trailer));
-  m_CrossRefTable->ShrinkObjectMap();
 
   std::vector<FX_FILESIZE> CrossRefList;
   std::vector<FX_FILESIZE> XRefStreamList;
@@ -971,7 +970,6 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
       return SUCCESS;
 
     m_CrossRefTable->SetTrailer(std::move(trailer));
-    m_CrossRefTable->ShrinkObjectMap();
   }
 
   Error eRet = SetEncryptHandler();

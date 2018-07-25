@@ -102,6 +102,7 @@ void CPDF_CrossRefTable::SetFree(uint32_t obj_num) {
 
 void CPDF_CrossRefTable::SetTrailer(std::unique_ptr<CPDF_Dictionary> trailer) {
   trailer_ = std::move(trailer);
+  ShrinkObjectMap();
 }
 
 const CPDF_CrossRefTable::ObjectInfo* CPDF_CrossRefTable::GetObjectInfo(
