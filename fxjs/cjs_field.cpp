@@ -2276,12 +2276,13 @@ CJS_Return CJS_Field::buttonGetIcon(
   if (!pFormControl)
     return CJS_Return(JSMessage::kBadObjectError);
 
-  v8::Local<v8::Object> pObj =
-      pRuntime->NewFXJSBoundObject(CJS_Icon::GetObjDefnID());
-  if (pObj.IsEmpty())
+  v8::Local<v8::Object> pObj;
+  CJS_Icon* pJS_Icon;
+  std::tie(pObj, pJS_Icon) = pRuntime->NewDynamicFXJSBoundObject<CJS_Icon>();
+
+  if (!pJS_Icon)
     return CJS_Return(JSMessage::kBadObjectError);
 
-  auto* pJS_Icon = static_cast<CJS_Icon*>(CFXJS_Engine::GetObjectPrivate(pObj));
   return pJS_Icon ? CJS_Return(pJS_Icon->ToV8Object())
                   : CJS_Return(JSMessage::kBadObjectError);
 }
@@ -2388,13 +2389,12 @@ CJS_Return CJS_Field::getArray(
   v8::Local<v8::Array> FormFieldArray = pRuntime->NewArray();
   int j = 0;
   for (const auto& pStr : swSort) {
-    v8::Local<v8::Object> pObj =
-        pRuntime->NewFXJSBoundObject(CJS_Field::GetObjDefnID());
-    if (pObj.IsEmpty())
+    v8::Local<v8::Object> pObj;
+    CJS_Field* pJSField;
+    std::tie(pObj, pJSField) = pRuntime->NewDynamicFXJSBoundObject<CJS_Field>();
+    if (!pJSField)
       return CJS_Return(JSMessage::kBadObjectError);
 
-    auto* pJSField =
-        static_cast<CJS_Field*>(CFXJS_Engine::GetObjectPrivate(pObj));
     pJSField->AttachField(m_pJSDoc.Get(), *pStr);
     pRuntime->PutArrayElement(FormFieldArray, j++,
                               pJSField

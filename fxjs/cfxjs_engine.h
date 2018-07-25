@@ -17,6 +17,7 @@
 #include <functional>
 #include <map>
 #include <memory>
+#include <utility>
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
@@ -128,8 +129,20 @@ class CFXJS_Engine : public CFX_V8 {
   Optional<IJS_Runtime::JS_Error> Execute(const WideString& script);
 
   v8::Local<v8::Object> GetThisObj();
-  v8::Local<v8::Object> NewFXJSBoundObject(int nObjDefnID,
-                                           bool bStatic = false);
+
+  template <class C>
+  std::pair<v8::Local<v8::Object>, C*> NewDynamicFXJSBoundObject() {
+    v8::Local<v8::Object> pRetObj;
+    CJS_Object* pJSObj;
+    std::tie(pRetObj, pJSObj) = NewFXJSBoundObject(C::GetObjDefnID(), false);
+    if (pRetObj.IsEmpty())
+      return {pRetObj, nullptr};
+
+    ASSERT(GetObjDefnID(pRetObj) == C::GetObjDefnID());
+    ASSERT(pJSObj == GetObjectPrivate(pRetObj));
+    return {pRetObj, static_cast<C*>(pJSObj)};
+  }
+
   void Error(const WideString& message);
 
   v8::Local<v8::Context> GetV8Context() {
@@ -143,6 +156,10 @@ class CFXJS_Engine : public CFX_V8 {
   CFXJS_Engine();
 
  private:
+  std::pair<v8::Local<v8::Object>, CJS_Object*> NewFXJSBoundObject(
+      int nObjDefnID,
+      bool bStatic);
+
   v8::Global<v8::Context> m_V8Context;
   std::vector<v8::Global<v8::Object>> m_StaticObjects;
   std::map<WideString, v8::Global<v8::Array>> m_ConstArrays;

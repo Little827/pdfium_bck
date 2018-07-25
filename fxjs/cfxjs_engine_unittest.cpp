@@ -30,6 +30,24 @@ class FXJSEngineUnitTest : public FXV8UnitTest {
   std::unique_ptr<CFXJS_Engine> engine_;
 };
 
+class CJS_TestPermObject : public CJS_Object {
+ public:
+  static int GetObjDefnID() { return 0; }
+
+  CJS_TestPermObject(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime)
+      : CJS_Object(pObject, pRuntime) {}
+  ~CJS_TestPermObject() override = default;
+};
+
+class CJS_TestTempObject : public CJS_Object {
+ public:
+  static int GetObjDefnID() { return 1; }
+
+  CJS_TestTempObject(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime)
+      : CJS_Object(pObject, pRuntime) {}
+  ~CJS_TestTempObject() override = default;
+};
+
 static bool perm_created = false;
 static bool perm_destroyed = false;
 static bool temp_created = false;
@@ -40,40 +58,44 @@ TEST_F(FXJSEngineUnitTest, GC) {
   v8::HandleScope handle_scope(isolate());
 
   // Object: 0
-  engine()->DefineObj("perm", FXJSOBJTYPE_DYNAMIC,
-                      [](CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
-                        pEngine->SetObjectPrivate(
-                            obj, pdfium::MakeUnique<CJS_Object>(obj, nullptr));
-                        perm_created = true;
-                      },
-                      [](v8::Local<v8::Object> obj) {
-                        perm_destroyed = true;
-                        CFXJS_Engine::SetObjectPrivate(obj, nullptr);
-                      });
+  engine()->DefineObj(
+      "perm", FXJSOBJTYPE_DYNAMIC,
+      [](CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
+        pEngine->SetObjectPrivate(
+            obj, pdfium::MakeUnique<CJS_TestPermObject>(obj, nullptr));
+        perm_created = true;
+      },
+      [](v8::Local<v8::Object> obj) {
+        perm_destroyed = true;
+        CFXJS_Engine::SetObjectPrivate(obj, nullptr);
+      });
 
   // Object: 1
-  engine()->DefineObj("temp", FXJSOBJTYPE_DYNAMIC,
-                      [](CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
-                        pEngine->SetObjectPrivate(
-                            obj, pdfium::MakeUnique<CJS_Object>(obj, nullptr));
-                        temp_created = true;
-                      },
-                      [](v8::Local<v8::Object> obj) {
-                        temp_destroyed = true;
-                        CFXJS_Engine::SetObjectPrivate(obj, nullptr);
-                      });
+  engine()->DefineObj(
+      "temp", FXJSOBJTYPE_DYNAMIC,
+      [](CFXJS_Engine* pEngine, v8::Local<v8::Object> obj) {
+        pEngine->SetObjectPrivate(
+            obj, pdfium::MakeUnique<CJS_TestTempObject>(obj, nullptr));
+        temp_created = true;
+      },
+      [](v8::Local<v8::Object> obj) {
+        temp_destroyed = true;
+        CFXJS_Engine::SetObjectPrivate(obj, nullptr);
+      });
 
   engine()->InitializeEngine();
 
   v8::Context::Scope context_scope(engine()->GetV8Context());
-  v8::Local<v8::Object> perm = engine()->NewFXJSBoundObject(0, false);
+  v8::Local<v8::Object> perm =
+      engine()->NewDynamicFXJSBoundObject<CJS_TestPermObject>().first;
   EXPECT_FALSE(perm.IsEmpty());
   EXPECT_TRUE(perm_created);
   EXPECT_FALSE(perm_destroyed);
 
   {
     v8::HandleScope inner_handle_scope(isolate());
-    v8::Local<v8::Object> temp = engine()->NewFXJSBoundObject(1, false);
+    v8::Local<v8::Object> temp =
+        engine()->NewDynamicFXJSBoundObject<CJS_TestTempObject>().first;
     EXPECT_FALSE(temp.IsEmpty());
     EXPECT_TRUE(temp_created);
     EXPECT_FALSE(temp_destroyed);
