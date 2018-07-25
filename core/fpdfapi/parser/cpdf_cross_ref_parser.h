@@ -7,11 +7,13 @@
 
 #include <memory>
 
+#include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
 
 class CPDF_CrossRefTable;
 class CPDF_ReadValidator;
 class CPDF_SyntaxParser;
+class CPDF_IndirectObjectHolder;
 
 class CPDF_CrossRefParser {
  public:
@@ -19,6 +21,9 @@ class CPDF_CrossRefParser {
   ~CPDF_CrossRefParser();
 
   std::unique_ptr<CPDF_CrossRefTable> RebuildCrossRef();
+  std::unique_ptr<CPDF_CrossRefTable> ParseCrossRefV5(
+      FX_FILESIZE crossref_pos,
+      CPDF_IndirectObjectHolder* holder);
 
  private:
   CPDF_ReadValidator* GetValidator() const;
