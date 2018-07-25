@@ -1758,6 +1758,24 @@ TEST_F(FPDFEditEmbeddertest, TestGetTextRenderMode) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbeddertest, TestGetTextFontName) {
+  EXPECT_TRUE(OpenDocument("text_font.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(1, FPDFPage_CountObjects(page));
+
+  FPDF_PAGEOBJECT text = FPDFPage_GetObject(page, 0);
+  int size = 0;
+  EXPECT_TRUE(FPDFTextObj_GetFontName(text, NULL, &size));
+  ASSERT_EQ(17, size);
+  std::vector<char> font_name;
+  font_name.reserve(size);
+  EXPECT_TRUE(FPDFTextObj_GetFontName(text, font_name.data(), &size));
+  ASSERT_EQ(std::string("Liberation Serif"), std::string(font_name.data()));
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbeddertest, TestFormGetObjects) {
   EXPECT_TRUE(OpenDocument("form_object.pdf"));
   FPDF_PAGE page = LoadPage(0);
