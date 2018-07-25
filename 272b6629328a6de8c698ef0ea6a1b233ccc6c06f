@@ -34,6 +34,24 @@
       "revId": "272b6629328a6de8c698ef0ea6a1b233ccc6c06f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac96bba6_ea68dc7e",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-25T19:41:24Z",
+      "side": 1,
+      "message": "The ShrinkObjectMap needs for drop objects, which is greater or equal to \"Size\" field from trailer.\n\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.cpp?rcl\u003d84d3394d88c42b798eedc938e6295ad1bf28ac66\u0026l\u003d689\n\nBut it is can be zero (by original code):\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_parser.cpp?rcl\u003d84d3394d88c42b798eedc938e6295ad1bf28ac66\u0026l\u003d310\n\nAs result the size of cross ref table will be std::max(trailer-\u003eGet(\"Size\"), objects_count_in_map);\n\ni.e. the size of cross ref table is object counts within cross ref table + count of skipped free objects.",
+      "parentUuid": "3a81569e_b7d75fc5",
+      "revId": "272b6629328a6de8c698ef0ea6a1b233ccc6c06f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
