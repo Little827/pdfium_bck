@@ -81,6 +81,24 @@
       "revId": "4469ce831771a2551ed906c52b6f8c3fa1223521",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a95ec3_8b801073",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-25T16:10:43Z",
+      "side": 1,
+      "message": "crbug.com/867485",
+      "parentUuid": "1b18c42d_0a625629",
+      "revId": "4469ce831771a2551ed906c52b6f8c3fa1223521",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
