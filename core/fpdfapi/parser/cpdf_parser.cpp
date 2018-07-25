@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "core/fpdfapi/parser/cpdf_array.h"
+#include "core/fpdfapi/parser/cpdf_cross_ref_parser.h"
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -602,73 +603,14 @@ bool CPDF_Parser::LoadAllCrossRefV5(FX_FILESIZE xrefpos) {
 }
 
 bool CPDF_Parser::RebuildCrossRef() {
-  auto cross_ref_table = pdfium::MakeUnique<CPDF_CrossRefTable>();
-
-  const uint32_t kBufferSize = 4096;
-  m_pSyntax->SetReadBufferSize(kBufferSize);
-  m_pSyntax->SetPos(0);
-
-  bool bIsNumber;
-  std::vector<std::pair<uint32_t, FX_FILESIZE>> numbers;
-  for (ByteString word = m_pSyntax->GetNextWord(&bIsNumber); !word.IsEmpty();
-       word = m_pSyntax->GetNextWord(&bIsNumber)) {
-    if (bIsNumber) {
-      numbers.emplace_back(FXSYS_atoui(word.c_str()),
-                           m_pSyntax->GetPos() - word.GetLength());
-      if (numbers.size() > 2u)
-        numbers.erase(numbers.begin());
-      continue;
-    }
-
-    if (word == "(") {
-      m_pSyntax->ReadString();
-    } else if (word == "<") {
-      m_pSyntax->ReadHexString();
-    } else if (word == "trailer") {
-      std::unique_ptr<CPDF_Object> pTrailer = m_pSyntax->GetObjectBody(nullptr);
-      if (pTrailer) {
-        cross_ref_table = CPDF_CrossRefTable::MergeUp(
-            std::move(cross_ref_table),
-            pdfium::MakeUnique<CPDF_CrossRefTable>(ToDictionary(
-                pTrailer->IsStream() ? pTrailer->AsStream()->GetDict()->Clone()
-                                     : std::move(pTrailer))));
-      }
-    } else if (word == "obj" && numbers.size() == 2u) {
-      const FX_FILESIZE obj_pos = numbers[0].second;
-      const uint32_t obj_num = numbers[0].first;
-      const uint32_t gen_num = numbers[1].first;
-
-      m_pSyntax->SetPos(obj_pos);
-      const std::unique_ptr<CPDF_Stream> pStream =
-          ToStream(m_pSyntax->GetIndirectObject(
-              nullptr, CPDF_SyntaxParser::ParseType::kStrict));
-
-      if (pStream && pStream->GetDict()->GetStringFor("Type") == "XRef") {
-        cross_ref_table = CPDF_CrossRefTable::MergeUp(
-            std::move(cross_ref_table),
-            pdfium::MakeUnique<CPDF_CrossRefTable>(
-                ToDictionary(pStream->GetDict()->Clone())));
-      }
-
-      if (obj_num < kMaxObjectNumber) {
-        cross_ref_table->AddNormal(obj_num, gen_num, obj_pos);
-        if (const auto object_stream =
-                CPDF_ObjectStream::Create(pStream.get())) {
-          for (const auto& it : object_stream->objects_offsets()) {
-            if (it.first < kMaxObjectNumber)
-              cross_ref_table->AddCompressed(it.first, obj_num);
-          }
-        }
-      }
-    }
-    numbers.clear();
-  }
+  CPDF_CrossRefParser parser(m_pSyntax.get());
+  std::unique_ptr<CPDF_CrossRefTable> cross_ref_table =
+      parser.RebuildCrossRef();
+  if (!cross_ref_table)
+    return false;
 
   m_CrossRefTable = CPDF_CrossRefTable::MergeUp(std::move(m_CrossRefTable),
                                                 std::move(cross_ref_table));
-  // Resore default buffer size.
-  m_pSyntax->SetReadBufferSize(CPDF_ModuleMgr::kFileBufSize);
-
   return GetTrailer() && !m_CrossRefTable->objects_info().empty();
 }
 
