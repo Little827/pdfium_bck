@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "819b08c5_1c6f98e4",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-25T01:16:18Z",
+      "side": 1,
+      "message": "The GN folks have expressed interest in moving away from implicit rules. So I\u0027m just not counting on them. Chromium is too big for the implicit rules to just go away, and the effort to remove implicit rules is very low.",
+      "parentUuid": "c1b3dc7f_5e73d593",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 937,
+        "endChar": 46
+      },
+      "revId": "d0b10f8ff5ff58d89f9ffebc65184e46396b1f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96a966e9_643b2da7",
         "filename": "core/fxcrt/cfx_fileaccess_posix.h",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "d0b10f8ff5ff58d89f9ffebc65184e46396b1f27",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af1471b_c09dfc62",
+        "filename": "core/fxcrt/cfx_fileaccess_posix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-25T01:16:18Z",
+      "side": 1,
+      "message": "We\u0027ll worry about other platforms when they complain.",
+      "parentUuid": "607dba06_0a1b61db",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "d0b10f8ff5ff58d89f9ffebc65184e46396b1f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
