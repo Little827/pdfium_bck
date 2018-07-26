@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e197362_2b1dd69c",
+        "filename": "xfa/fxfa/cxfa_textparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T00:15:47Z",
+      "side": 1,
+      "message": "Flip conditional and return early?",
+      "revId": "0f683eb85aeb7df5d201cbbdc843c7a8c8478633",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a69cf38_81d9ad1b",
+        "filename": "xfa/fxfa/cxfa_textprovider.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T00:15:47Z",
+      "side": 1,
+      "message": "BTW, we can break after this and return early.",
+      "revId": "0f683eb85aeb7df5d201cbbdc843c7a8c8478633",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
