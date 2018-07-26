@@ -128,6 +128,24 @@
       "revId": "ad2967216949b850471e3a72fce682b421560cba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185d30bb_2f39b309",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T21:16:44Z",
+      "side": 1,
+      "message": "Do we know if the font name is always going to be ASCII?",
+      "parentUuid": "30f0e017_10057e4a",
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
