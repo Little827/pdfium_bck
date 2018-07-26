@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b266774_c04c85d2",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7381
+      },
+      "writtenOn": "2018-07-26T22:16:17Z",
+      "side": 1,
+      "message": "this will result in \"True\" string in python. I believe you want true boolean value. This is\n\n  properties_j: \"skia:true\"",
+      "revId": "4cc01a2e0a321282ce5e829567a4d50890d61978",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
