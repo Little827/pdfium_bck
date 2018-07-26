@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8bf07a3_548640ed",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T18:52:37Z",
+      "side": 1,
+      "message": "It may be helpful to mention this is Table F.6, item 1 to give readers context. Similarly, the signature count below is item 2, and the shared object signature is item 3.",
+      "revId": "07f50d86932614eb9d1cbeaed7bc3210e334ed61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22fd7329_d36ab536",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T18:52:37Z",
+      "side": 1,
+      "message": "signature_count",
+      "range": {
+        "startLine": 310,
+        "startChar": 13,
+        "endLine": 310,
+        "endChar": 23
+      },
+      "revId": "07f50d86932614eb9d1cbeaed7bc3210e334ed61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14efd5cf_b7fb2092",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T18:52:37Z",
+      "side": 1,
+      "message": "Should this be just: sign_count * 128? i.e. Should not be multiplied by |dwSharedObjTotal|.",
+      "revId": "07f50d86932614eb9d1cbeaed7bc3210e334ed61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9fbdac_c4b38eef",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T18:52:37Z",
+      "side": 1,
+      "message": "s/n/dw/ for consistency",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "07f50d86932614eb9d1cbeaed7bc3210e334ed61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
