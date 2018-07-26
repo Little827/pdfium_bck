@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "bd14985c_5825d846",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-26T21:03:50Z",
+      "side": 1,
+      "message": "Add new line after this. This statement and the next are separate things.",
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce8ac72_cf918158",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-26T21:03:50Z",
+      "side": 1,
+      "message": "That\u0027s not really true, if buffer is not large enough, I don\u0027t think we can consider the Get a success, yet something \u003e 0 will be returned.",
+      "range": {
+        "startLine": 1269,
+        "startChar": 70,
+        "endLine": 1270,
+        "endChar": 10
+      },
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06747957_a3b7adaa",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 2
@@ -67,6 +107,24 @@
       "side": 1,
       "message": "I see. Still, DefaultGetFaceName() returns a byte string, so consistency between DefaultGetFaceName() and this new FPDFText_GetFontName() would be probably nice, since both expose font names.\n\n(Though I maintain that of course if requested, I can rework this change, it just feels inconsistent when it comes to exposing font names.)",
       "parentUuid": "23b83045_ece0beb5",
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f0e017_10057e4a",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-26T21:03:50Z",
+      "side": 1,
+      "message": "Lei pointed out that FPDFAction_GetFilePath(), FPDFAction_GetURIPath(), and FPDFImageObj_GetImageFilter() returns utf-8. I suppose we can go with utf-8, just mention that in the comment and switch to a void* to be consistent.",
+      "parentUuid": "cb4ee993_e8778e26",
       "revId": "ad2967216949b850471e3a72fce682b421560cba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
