@@ -18,11 +18,20 @@
 
 namespace {
 
+FXJSE_FUNCTION_DESCRIPTOR* AsFunctionDescriptor(void* ptr) {
+  auto* result = static_cast<FXJSE_FUNCTION_DESCRIPTOR*>(ptr);
+  return result && result->tag == kFuncTag ? result : nullptr;
+}
+
+FXJSE_CLASS_DESCRIPTOR* AsClassDescriptor(void* ptr) {
+  auto* result = static_cast<FXJSE_CLASS_DESCRIPTOR*>(ptr);
+  return result && result->tag == kClassTag ? result : nullptr;
+}
+
 void V8FunctionCallback_Wrapper(
     const v8::FunctionCallbackInfo<v8::Value>& info) {
   const FXJSE_FUNCTION_DESCRIPTOR* lpFunctionInfo =
-      static_cast<FXJSE_FUNCTION_DESCRIPTOR*>(
-          info.Data().As<v8::External>()->Value());
+      AsFunctionDescriptor(info.Data().As<v8::External>()->Value());
   if (!lpFunctionInfo)
     return;
 
@@ -42,8 +51,7 @@ void V8ConstructorCallback_Wrapper(
     return;
 
   const FXJSE_CLASS_DESCRIPTOR* lpClassDefinition =
-      static_cast<FXJSE_CLASS_DESCRIPTOR*>(
-          info.Data().As<v8::External>()->Value());
+      AsClassDescriptor(info.Data().As<v8::External>()->Value());
   if (!lpClassDefinition)
     return;
 
@@ -54,8 +62,8 @@ void V8ConstructorCallback_Wrapper(
 
 void Context_GlobalObjToString(
     const v8::FunctionCallbackInfo<v8::Value>& info) {
-  const FXJSE_CLASS_DESCRIPTOR* lpClass = static_cast<FXJSE_CLASS_DESCRIPTOR*>(
-      info.Data().As<v8::External>()->Value());
+  const FXJSE_CLASS_DESCRIPTOR* lpClass =
+      AsClassDescriptor(info.Data().As<v8::External>()->Value());
   if (!lpClass)
     return;
 
@@ -178,11 +186,10 @@ void NamedPropertyQueryCallback(
     v8::Local<v8::Name> property,
     const v8::PropertyCallbackInfo<v8::Integer>& info) {
   v8::Local<v8::Object> thisObject = info.Holder();
-  const FXJSE_CLASS_DESCRIPTOR* lpClass = static_cast<FXJSE_CLASS_DESCRIPTOR*>(
-      info.Data().As<v8::External>()->Value());
-  v8::Isolate* pIsolate = info.GetIsolate();
-  v8::HandleScope scope(pIsolate);
-  v8::String::Utf8Value szPropName(pIsolate, property);
+  const FXJSE_CLASS_DESCRIPTOR* lpClass =
+      AsClassDescriptor(info.Data().As<v8::External>()->Value());
+  v8::HandleScope scope(info.GetIsolate());
+  v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
   auto lpThisValue = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate());
   lpThisValue->ForceSetValue(thisObject);
@@ -198,8 +205,8 @@ void NamedPropertyGetterCallback(
     v8::Local<v8::Name> property,
     const v8::PropertyCallbackInfo<v8::Value>& info) {
   v8::Local<v8::Object> thisObject = info.Holder();
-  const FXJSE_CLASS_DESCRIPTOR* lpClass = static_cast<FXJSE_CLASS_DESCRIPTOR*>(
-      info.Data().As<v8::External>()->Value());
+  const FXJSE_CLASS_DESCRIPTOR* lpClass =
+      AsClassDescriptor(info.Data().As<v8::External>()->Value());
   v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
   auto lpThisValue = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate());
@@ -215,8 +222,8 @@ void NamedPropertySetterCallback(
     v8::Local<v8::Value> value,
     const v8::PropertyCallbackInfo<v8::Value>& info) {
   v8::Local<v8::Object> thisObject = info.Holder();
-  const FXJSE_CLASS_DESCRIPTOR* lpClass = static_cast<FXJSE_CLASS_DESCRIPTOR*>(
-      info.Data().As<v8::External>()->Value());
+  const FXJSE_CLASS_DESCRIPTOR* lpClass =
+      AsClassDescriptor(info.Data().As<v8::External>()->Value());
   v8::String::Utf8Value szPropName(info.GetIsolate(), property);
   ByteStringView szFxPropName(*szPropName, szPropName.length());
   auto lpThisValue = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate());

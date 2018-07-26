@@ -11,6 +11,15 @@
 #include "core/fxcrt/fx_system.h"
 #include "v8/include/v8.h"
 
+namespace pdfium {
+namespace fxjse {
+
+extern const char kFuncTag[];
+extern const char kClassTag[];
+
+}  // namespace fxjse
+}  // namespace pdfium
+
 class CFXJSE_Arguments;
 class CFXJSE_FormCalcContext;
 class CFXJSE_Value;
@@ -50,11 +59,13 @@ enum FXJSE_ClassPropTypes {
 };
 
 struct FXJSE_FUNCTION_DESCRIPTOR {
+  const char* tag;  // pdfium::kFuncTag always.
   const char* name;
   FXJSE_FuncCallback callbackProc;
 };
 
 struct FXJSE_CLASS_DESCRIPTOR {
+  const char* tag;  // pdfium::kClassTag always.
   const char* name;
   const FXJSE_FUNCTION_DESCRIPTOR* methods;
   int32_t methNum;
@@ -70,5 +81,8 @@ extern const FXJSE_CLASS_DESCRIPTOR VariablesClassDescriptor;
 extern const FXJSE_CLASS_DESCRIPTOR kFormCalcFM2JSDescriptor;
 
 void FXJSE_ThrowMessage(const ByteStringView& utf8Message);
+
+using pdfium::fxjse::kFuncTag;
+using pdfium::fxjse::kClassTag;
 
 #endif  // FXJS_FXJSE_H_
