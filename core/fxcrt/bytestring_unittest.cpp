@@ -390,6 +390,13 @@ TEST(ByteString, OperatorNE) {
   EXPECT_TRUE(c_string3 != byte_string);
 }
 
+TEST(ByteString, OperatorLogicalOR) {
+  ByteString country;
+  country = country || "france";
+  country = country || "spain";
+  EXPECT_TRUE(country == "france");
+}
+
 TEST(ByteString, Concat) {
   ByteString fred;
   fred.Concat("FRED", 4);
@@ -1409,6 +1416,13 @@ TEST(ByteStringView, OperatorNE) {
   EXPECT_TRUE(c_string1 != byte_string_c);
   EXPECT_TRUE(c_string2 != byte_string_c);
   EXPECT_TRUE(c_string3 != byte_string_c);
+}
+
+TEST(ByteStringView, OperatorLogicalOR) {
+  ByteStringView country;
+  country = country || "france";
+  country = country || "spain";
+  EXPECT_TRUE(country == "france");
 }
 
 TEST(ByteStringView, NullIterator) {

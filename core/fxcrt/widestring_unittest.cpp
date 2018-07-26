@@ -395,6 +395,13 @@ TEST(WideString, OperatorNE) {
   EXPECT_TRUE(c_string3 != wide_string);
 }
 
+TEST(WideString, OperatorLogicalOR) {
+  WideString country;
+  country = country || L"france";
+  country = country || L"spain";
+  EXPECT_TRUE(country == L"france");
+}
+
 TEST(WideString, ConcatInPlace) {
   WideString fred;
   fred.Concat(L"FRED", 4);
@@ -1183,6 +1190,13 @@ TEST(WideStringView, OperatorNE) {
   EXPECT_TRUE(c_string1 != wide_string_c);
   EXPECT_TRUE(c_string2 != wide_string_c);
   EXPECT_TRUE(c_string3 != wide_string_c);
+}
+
+TEST(WideStringView, OperatorLogicalOR) {
+  WideStringView country;
+  country = country || L"france";
+  country = country || L"spain";
+  EXPECT_TRUE(country == L"france");
 }
 
 TEST(WideStringView, Find) {

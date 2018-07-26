@@ -138,6 +138,10 @@ class WideString {
     return m_pData ? m_pData->m_String[index] : 0;
   }
 
+  WideString operator||(const WideString& that) {
+    return !IsEmpty() ? *this : that;
+  }
+
   CharType First() const { return GetLength() ? (*this)[0] : 0; }
   CharType Last() const { return GetLength() ? (*this)[GetLength() - 1] : 0; }
 

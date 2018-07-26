@@ -214,6 +214,10 @@ class StringViewTemplate {
     return result > 0 || (result == 0 && m_Span.size() > that.m_Span.size());
   }
 
+  StringViewTemplate operator||(const StringViewTemplate& that) {
+    return !IsEmpty() ? *this : that;
+  }
+
  protected:
   pdfium::span<const UnsignedType> m_Span;
 
