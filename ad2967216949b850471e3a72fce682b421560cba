@@ -16,6 +16,24 @@
       "revId": "ad2967216949b850471e3a72fce682b421560cba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7114954d_f54b47fa",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-07-26T20:23:17Z",
+      "side": 1,
+      "message": "My intention was to be consistent with FPDFPageObj_NewTextObj(), which takes a byte string, not a wide string.\n\nBut sure, can rework the change that way if wanted.",
+      "parentUuid": "06747957_a3b7adaa",
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
