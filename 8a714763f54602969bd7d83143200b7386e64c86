@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b08432de_8ee441f8",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-26T22:41:44Z",
+      "side": 1,
+      "message": "This can be uint32_t.",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 345,
+        "endChar": 18
+      },
+      "revId": "8a714763f54602969bd7d83143200b7386e64c86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
