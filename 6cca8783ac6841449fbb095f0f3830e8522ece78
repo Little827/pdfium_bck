@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eda5ad3c_74de521d",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-27T16:52:01Z",
+      "side": 1,
+      "message": "follow-up: we could probably save some space if these were uint16_t, and just counted on promotion to int when doing arithmetic with them. At which point we may want to write them out all as 0xNNNN constants.",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "6cca8783ac6841449fbb095f0f3830e8522ece78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2edf1c_c75b56d5",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-27T16:52:01Z",
+      "side": 1,
+      "message": "can we pull some of these expressions into consts at say, line 195.  Its hard enough to read in the old code, this is even tougher.",
+      "range": {
+        "startLine": 208,
+        "startChar": 43,
+        "endLine": 208,
+        "endChar": 54
+      },
+      "revId": "6cca8783ac6841449fbb095f0f3830e8522ece78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
