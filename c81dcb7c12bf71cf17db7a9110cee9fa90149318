@@ -93,6 +93,30 @@
       "revId": "c81dcb7c12bf71cf17db7a9110cee9fa90149318",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc53d1cd_62dc9c04",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-27T19:06:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0152509c_efa4196c",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 35
+      },
+      "revId": "c81dcb7c12bf71cf17db7a9110cee9fa90149318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
