@@ -23,6 +23,30 @@
       "revId": "2e817273222262e0cc49e8825cbf043f8143880f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a071646_8b197de7",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-27T01:25:09Z",
+      "side": 1,
+      "message": "I\u0027ll make the file consistent internally with \u0027u\u0027. Earlier today, I may have told someone on another CL to use \u0027U\u0027 though...",
+      "parentUuid": "5f895239_b9f6c5bc",
+      "range": {
+        "startLine": 1877,
+        "startChar": 13,
+        "endLine": 1877,
+        "endChar": 14
+      },
+      "revId": "2e817273222262e0cc49e8825cbf043f8143880f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
