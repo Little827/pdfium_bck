@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6caf5036_a31a9ec2",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-07-27T18:17:42Z",
+      "side": 1,
+      "message": "Like this?",
+      "parentUuid": "d67065ca_7f1b96b0",
+      "range": {
+        "startLine": 227,
+        "startChar": 64,
+        "endLine": 227,
+        "endChar": 74
+      },
+      "revId": "c81dcb7c12bf71cf17db7a9110cee9fa90149318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ab329c5_48cb9292",
         "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-27T17:36:36Z",
       "side": 1,
       "message": "the only way bval gets set is in the if block above, so maybe move this inisde, too?  Then bval decl can move to line 235",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 35
+      },
+      "revId": "c81dcb7c12bf71cf17db7a9110cee9fa90149318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0152509c_efa4196c",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-07-27T18:17:42Z",
+      "side": 1,
+      "message": "Moved this inside. But bVal is used in line 243 so it cannot be moved to 235.",
+      "parentUuid": "7ab329c5_48cb9292",
       "range": {
         "startLine": 237,
         "startChar": 5,
