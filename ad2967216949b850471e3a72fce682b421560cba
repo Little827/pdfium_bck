@@ -300,6 +300,24 @@
       "revId": "ad2967216949b850471e3a72fce682b421560cba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e39364d3_f1f49510",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-27T15:47:21Z",
+      "side": 1,
+      "message": "pdfium_engine.cc MapFont() considers font names as utf-8, so it should be fine and in line with DefaultGetFaceName().",
+      "parentUuid": "3cb11de5_54f9022e",
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
