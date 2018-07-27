@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a7c88a96_1b31b1b1",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-27T17:01:02Z",
+      "side": 1,
+      "message": "looks like we could \"continue\" after line 206 and lose the else?",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 12
+      },
+      "revId": "6cca8783ac6841449fbb095f0f3830e8522ece78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae2edf1c_c75b56d5",
         "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
         "patchSetId": 1
@@ -41,6 +64,52 @@
         "startChar": 43,
         "endLine": 208,
         "endChar": 54
+      },
+      "revId": "6cca8783ac6841449fbb095f0f3830e8522ece78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f77aaa50_dda71e2d",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-27T17:01:02Z",
+      "side": 1,
+      "message": "maybe move initializ to line 218, invert test and lose the else?",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 19
+      },
+      "revId": "6cca8783ac6841449fbb095f0f3830e8522ece78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3490ecc4_9a0466ed",
+        "filename": "core/fxcodec/jbig2/JBig2_GrdProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-27T17:01:02Z",
+      "side": 1,
+      "message": "this can happen before we do all the computation for CONTEXT, since it is unused if this fails.",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 27
       },
       "revId": "6cca8783ac6841449fbb095f0f3830e8522ece78",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
