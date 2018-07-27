@@ -330,9 +330,11 @@ const uint8_t kAltTableTime[] = {
 static_assert(FX_ArraySize(kAltTableTime) == L'a' - L'A' + 1,
               "Invalid kAltTableTime size.");
 
-void AlternateDateTimeSymbols(WideString& wsPattern,
+void AlternateDateTimeSymbols(WideString* pPattern,
                               const WideString& wsAltSymbols,
-                              const uint8_t* pAltTable) {
+                              bool bIsDate) {
+  WideString& wsPattern = *pPattern;
+  const uint8_t* pAltTable = bIsDate ? kAltTableDate : kAltTableTime;
   int32_t nLength = wsPattern.GetLength();
   bool bInConstRange = false;
   bool bEscape = false;
@@ -456,11 +458,6 @@ CFXJSE_FormCalcContext* ToFormCalcContext(CFXJSE_Value* pValue) {
   return pHostObj ? pHostObj->AsFormCalcContext() : nullptr;
 }
 
-bool IsWhitespace(char c) {
-  return c == 0x20 || c == 0x09 || c == 0x0B || c == 0x0C || c == 0x0A ||
-         c == 0x0D;
-}
-
 LocaleIface* LocaleFromString(CXFA_Document* pDoc,
                               CXFA_LocaleMgr* pMgr,
                               const ByteStringView& szLocale) {
@@ -493,6 +490,30 @@ FX_LOCALEDATETIMESUBCATEGORY SubCategoryFromInt(int32_t iStyle) {
     default:
       return FX_LOCALEDATETIMESUBCATEGORY_Medium;
   }
+}
+
+ByteString GetLocalDateTimeFormat(
+    CXFA_Document* pDoc,
+    int32_t iStyle,
+    const ByteStringView& szLocale,
+    bool bStandard,
+    bool bIsDate) {
+  CXFA_LocaleMgr* pMgr = pDoc->GetLocalMgr();
+  LocaleIface* pLocale = LocaleFromString(pDoc, pMgr, szLocale);
+  if (!pLocale)
+    return ByteString();
+
+  FX_LOCALEDATETIMESUBCATEGORY category = SubCategoryFromInt(iStyle);
+  WideString strRet = bIsDate ? pLocale->GetDatePattern(category)
+                              : pLocale->GetTimePattern(category);
+  if (!bStandard)
+    AlternateDateTimeSymbols(&strRet, pLocale->GetDateTimeSymbols(), bIsDate);
+  return strRet.UTF8Encode();
+}
+
+bool IsWhitespace(char c) {
+  return c == 0x20 || c == 0x09 || c == 0x0B || c == 0x0C || c == 0x0A ||
+         c == 0x0D;
 }
 
 bool IsPartOfNumber(char ch) {
@@ -2127,17 +2148,8 @@ ByteString CFXJSE_FormCalcContext::GetLocalDateFormat(
   if (!pDoc)
     return ByteString();
 
-  CXFA_LocaleMgr* pMgr = pDoc->GetLocalMgr();
-  LocaleIface* pLocale = LocaleFromString(pDoc, pMgr, szLocale);
-  if (!pLocale)
-    return ByteString();
-
-  WideString strRet = pLocale->GetDatePattern(SubCategoryFromInt(iStyle));
-  if (!bStandard) {
-    AlternateDateTimeSymbols(strRet, pLocale->GetDateTimeSymbols(),
-                             kAltTableDate);
-  }
-  return strRet.UTF8Encode();
+  return GetLocalDateTimeFormat(pDoc, iStyle, szLocale, bStandard,
+                                /*bIsDate=*/true);
 }
 
 // static
@@ -2150,17 +2162,8 @@ ByteString CFXJSE_FormCalcContext::GetLocalTimeFormat(
   if (!pDoc)
     return ByteString();
 
-  CXFA_LocaleMgr* pMgr = pDoc->GetLocalMgr();
-  LocaleIface* pLocale = LocaleFromString(pDoc, pMgr, szLocale);
-  if (!pLocale)
-    return ByteString();
-
-  WideString strRet = pLocale->GetTimePattern(SubCategoryFromInt(iStyle));
-  if (!bStandard) {
-    AlternateDateTimeSymbols(strRet, pLocale->GetDateTimeSymbols(),
-                             kAltTableTime);
-  }
-  return strRet.UTF8Encode();
+  return GetLocalDateTimeFormat(pDoc, iStyle, szLocale, bStandard,
+                                /*bIsDate=*/false);
 }
 
 // static
