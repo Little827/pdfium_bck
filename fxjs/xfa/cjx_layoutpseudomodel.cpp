@@ -246,7 +246,7 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
         if (!bOnPageArea) {
           CXFA_NodeIteratorTemplate<CXFA_ContentLayoutItem,
                                     CXFA_TraverseStrategy_ContentLayoutItem>
-          iterator(static_cast<CXFA_ContentLayoutItem*>(pItem->m_pFirstChild));
+              iterator(ToContentLayoutItem(pItem->m_pFirstChild));
           for (CXFA_ContentLayoutItem* pItemChild = iterator.GetCurrent();
                pItemChild; pItemChild = iterator.MoveToNext()) {
             if (!pItemChild->IsContentLayoutItem()) {
@@ -268,7 +268,7 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
         if (bOnPageArea) {
           CXFA_NodeIteratorTemplate<CXFA_ContentLayoutItem,
                                     CXFA_TraverseStrategy_ContentLayoutItem>
-          iterator(static_cast<CXFA_ContentLayoutItem*>(pItem));
+              iterator(ToContentLayoutItem(pItem));
           for (CXFA_ContentLayoutItem* pItemChild = iterator.GetCurrent();
                pItemChild; pItemChild = iterator.MoveToNext()) {
             if (!pItemChild->IsContentLayoutItem()) {
@@ -307,7 +307,7 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
         if (!bOnPageArea) {
           CXFA_NodeIteratorTemplate<CXFA_ContentLayoutItem,
                                     CXFA_TraverseStrategy_ContentLayoutItem>
-          iterator(static_cast<CXFA_ContentLayoutItem*>(pItem->m_pFirstChild));
+              iterator(ToContentLayoutItem(pItem->m_pFirstChild));
           for (CXFA_ContentLayoutItem* pItemChild = iterator.GetCurrent();
                pItemChild; pItemChild = iterator.MoveToNext()) {
             if (!pItemChild->IsContentLayoutItem())
@@ -325,7 +325,7 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
         if (bOnPageArea) {
           CXFA_NodeIteratorTemplate<CXFA_ContentLayoutItem,
                                     CXFA_TraverseStrategy_ContentLayoutItem>
-          iterator(static_cast<CXFA_ContentLayoutItem*>(pItem));
+              iterator(ToContentLayoutItem(pItem));
           for (CXFA_ContentLayoutItem* pItemChild = iterator.GetCurrent();
                pItemChild; pItemChild = iterator.MoveToNext()) {
             if (!pItemChild->IsContentLayoutItem())
