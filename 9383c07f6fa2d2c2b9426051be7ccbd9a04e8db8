@@ -16,6 +16,24 @@
       "revId": "9383c07f6fa2d2c2b9426051be7ccbd9a04e8db8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8654ce76_a752a957",
+        "filename": "fxjs/fxjse.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-27T17:48:53Z",
+      "side": 1,
+      "message": "I like using addresses as tags (and we only compare addresses, not contents, the string itself just being something to look at in debugger) because:\n1. It is unlikely that random memory would contain this value, since it is larger than the run of the mill int and we don\u0027t make any other pointers to it.\n2. ASLR makes it slightly more challenging to deliberately craft a phony object passing the test.",
+      "parentUuid": "80a1c339_d97f60e0",
+      "revId": "9383c07f6fa2d2c2b9426051be7ccbd9a04e8db8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
