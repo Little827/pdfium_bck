@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "addf2816_4dc665c5",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1771,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-07-27T08:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1b9fafe_a35a4271",
+      "range": {
+        "startLine": 1771,
+        "startChar": 12,
+        "endLine": 1771,
+        "endChar": 42
+      },
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360e16fc_7a4d9044",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "75e86d09_78c6062a",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1773,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-07-27T08:22:20Z",
+      "side": 1,
+      "message": "Ah, thanks. `is_asan \u003d true` reproduced the problem locally, the new patch set now passes the test with asan enabled as well.",
+      "parentUuid": "360e16fc_7a4d9044",
+      "range": {
+        "startLine": 1773,
+        "startChar": 12,
+        "endLine": 1773,
+        "endChar": 19
+      },
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd14985c_5825d846",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "ad2967216949b850471e3a72fce682b421560cba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b5cb28_c11f0e74",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-07-27T08:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd14985c_5825d846",
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "ad2967216949b850471e3a72fce682b421560cba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f1bdc2_3fc066db",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-07-27T08:22:20Z",
+      "side": 1,
+      "message": "I\u0027ve updated the description to match the one of FPDFAction_GetFilePath for consistency. It\u0027s the same \"what to return when in fact the real return value is an outgoing parameter\" problem.",
+      "parentUuid": "dce8ac72_cf918158",
+      "range": {
+        "startLine": 1269,
+        "startChar": 70,
+        "endLine": 1270,
+        "endChar": 10
+      },
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -192,6 +282,24 @@
       "revId": "ad2967216949b850471e3a72fce682b421560cba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb11de5_54f9022e",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-07-27T08:22:20Z",
+      "side": 1,
+      "message": "Reading the spec (PDF 1.7, table 111, BaseFont; table 122, FontName), I don\u0027t see any restriction why this would have to be ASCII only.",
+      "parentUuid": "185d30bb_2f39b309",
+      "revId": "ad2967216949b850471e3a72fce682b421560cba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
