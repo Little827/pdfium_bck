@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1532744046 -0700\nnonce APISObTzbzEXA6IN/NA6WE5sOgP23Qvb8ixmGZFyDJnzFGhQRcwtm1hb+kZxsfy04XsmL4HkpoJE\n\n0000000000000000000000000000000000000000 b8c33d60784d964b6c82649e1379068c3f0efaa4 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dfix-a-nullptr-crash-in-cxfa-localevalue\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltb0W4ACgkQqzYtYVpm\n/XsVMAf/UthPgGaNUv10cw/LFp0p7Oo0JJhThSAdy7RW65L3MA6D5D7uaSWwdn1H\nDanuh8ILpIJzl7q5jtRA6aJHbirQHyrhGjQMTfgFYAwS2FQGNvgg9a+MTtRhhYyE\nFOKrBuvoYwcPB0D6NXCXtFTf+Z8E0mKBb/RIzPepjfDrKMV2ikDW5inmE04VVVTg\nZkJf/Wgiqa5Yp7b8qPBOvPMoRLzFlMJj4hxh2eOBznfcXPrE19EdgbhaYKHCluJ0\n7AwSE46u/tn2OBNQApIICbgqvSG1IboMFdtlUj9listaM7VMduKGXBJyolgP1prH\n5QManh+zKVz/r4xq53h35BIdMjK+SA\u003d\u003d\n\u003dZPXy\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
