@@ -372,38 +372,25 @@ bool CXFA_LocaleValue::ValidateCanonicalValue(const WideString& wsValue,
     return true;
 
   CFX_DateTime dt;
+  WideString wsDate;
+  WideString wsTime;
   switch (dwVType) {
-    case XFA_VT_DATE: {
+    case XFA_VT_DATE:
       if (ValidateCanonicalDate(wsValue, &dt))
         return true;
 
-      WideString wsDate;
-      WideString wsTime;
-      if (ValueSplitDateTime(wsValue, wsDate, wsTime) &&
-          ValidateCanonicalDate(wsDate, &dt)) {
-        return true;
-      }
-      return false;
-    }
-    case XFA_VT_TIME: {
+      return ValueSplitDateTime(wsValue, wsDate, wsTime) &&
+             ValidateCanonicalDate(wsDate, &dt);
+    case XFA_VT_TIME:
       if (ValidateCanonicalTime(wsValue))
         return true;
 
-      WideString wsDate;
-      WideString wsTime;
-      if (ValueSplitDateTime(wsValue, wsDate, wsTime) &&
-          ValidateCanonicalTime(wsTime)) {
-        return true;
-      }
-      return false;
-    }
-    case XFA_VT_DATETIME: {
-      WideString wsDate, wsTime;
-      if (ValueSplitDateTime(wsValue, wsDate, wsTime) &&
-          ValidateCanonicalDate(wsDate, &dt) && ValidateCanonicalTime(wsTime)) {
-        return true;
-      }
-    } break;
+      return ValueSplitDateTime(wsValue, wsDate, wsTime) &&
+             ValidateCanonicalTime(wsTime);
+    case XFA_VT_DATETIME:
+      return ValueSplitDateTime(wsValue, wsDate, wsTime) &&
+             ValidateCanonicalDate(wsDate, &dt) &&
+             ValidateCanonicalTime(wsTime);
   }
   return true;
 }
