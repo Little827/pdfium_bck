@@ -3342,8 +3342,8 @@ void CFXJSE_FormCalcContext::Oneof(CFXJSE_Value* pThis,
 
   bool bFlags = false;
   std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::vector<std::unique_ptr<CFXJSE_Value>> parameterValues;
-  unfoldArgs(pThis, args, &parameterValues, 1);
+  std::vector<std::unique_ptr<CFXJSE_Value>> parameterValues =
+      unfoldArgs(pThis, args);
   for (const auto& value : parameterValues) {
     if (simpleValueCompare(pThis, argOne.get(), value.get())) {
       bFlags = true;
@@ -5770,19 +5770,17 @@ bool CFXJSE_FormCalcContext::simpleValueCompare(CFXJSE_Value* pThis,
 }
 
 // static
-void CFXJSE_FormCalcContext::unfoldArgs(
+std::vector<std::unique_ptr<CFXJSE_Value>> CFXJSE_FormCalcContext::unfoldArgs(
     CFXJSE_Value* pThis,
-    CFXJSE_Arguments& args,
-    std::vector<std::unique_ptr<CFXJSE_Value>>* resultValues,
-    int32_t iStart) {
-  resultValues->clear();
+    CFXJSE_Arguments& args) {
+  std::vector<std::unique_ptr<CFXJSE_Value>> results;
 
   int32_t iCount = 0;
   v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetScriptRuntime();
   int32_t argc = args.GetLength();
   std::vector<std::unique_ptr<CFXJSE_Value>> argsValue;
-  for (int32_t i = 0; i < argc - iStart; i++) {
-    argsValue.push_back(args.GetValue(i + iStart));
+  for (int32_t i = 0; i < argc - 1; i++) {
+    argsValue.push_back(args.GetValue(i + 1));
     if (argsValue[i]->IsArray()) {
       auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
       argsValue[i]->GetObjectProperty("length", lengthValue.get());
@@ -5794,10 +5792,10 @@ void CFXJSE_FormCalcContext::unfoldArgs(
   }
 
   for (int32_t i = 0; i < iCount; i++)
-    resultValues->push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
+    results.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
 
   int32_t index = 0;
-  for (int32_t i = 0; i < argc - iStart; i++) {
+  for (int32_t i = 0; i < argc - 1; i++) {
     if (argsValue[i]->IsArray()) {
       auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
       argsValue[i]->GetObjectProperty("length", lengthValue.get());
@@ -5811,27 +5809,26 @@ void CFXJSE_FormCalcContext::unfoldArgs(
       if (propertyValue->IsNull()) {
         for (int32_t j = 2; j < iLength; j++) {
           argsValue[i]->GetObjectPropertyByIdx(j, jsObjectValue.get());
-          GetObjectDefaultValue(jsObjectValue.get(),
-                                (*resultValues)[index].get());
+          GetObjectDefaultValue(jsObjectValue.get(), results[index].get());
           index++;
         }
       } else {
         for (int32_t j = 2; j < iLength; j++) {
           argsValue[i]->GetObjectPropertyByIdx(j, jsObjectValue.get());
           jsObjectValue->GetObjectProperty(
-              propertyValue->ToString().AsStringView(),
-              (*resultValues)[index].get());
+              propertyValue->ToString().AsStringView(), results[index].get());
           index++;
         }
       }
     } else if (argsValue[i]->IsObject()) {
-      GetObjectDefaultValue(argsValue[i].get(), (*resultValues)[index].get());
+      GetObjectDefaultValue(argsValue[i].get(), results[index].get());
       index++;
     } else {
-      (*resultValues)[index]->Assign(argsValue[i].get());
+      results[index]->Assign(argsValue[i].get());
       index++;
     }
   }
+  return results;
 }
 
 // static
