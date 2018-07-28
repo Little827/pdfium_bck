@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1532739755 -0700\nnonce APISObSJRXgx+Kki5XJYKvMAfXdTLgOIos+gnlL0t1WnSlqU8TIP/TBuf2jyDpg+aT+CG2Gr9VEd\n\n0000000000000000000000000000000000000000 f8bfd88130818fda3397b988d8c20287fb6be8d3 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dfix-cxfa-localevalue\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltbwKsACgkQqzYtYVpm\n/XtK/Af/eCrII4xHrjL/iWJTS7XTLPl3/a9qzPhL3vF0kqh2oBJp/Q7cmtRbc1Bt\nVNU50oynN9MMqfLR87xIuGrL4Yj9WOFmF9V1SYsgmPnPfl1OgFtIy4QeObXHp3OH\naOcPPo9U5AIP8D0zm762J3FSqByH88HnzvIUjkzuzj++Hw3p6F0xPpmceiqhA7m3\n0ujpBtACBu1yiR6smEZeflK3ejbFirJTWQJsCccmbJY1HmrzXyE8yBenfLYJ2h6g\nkbv7DMeulk/ambd50Pht5YRWPu45Q0hJMu44BGaYrdVjiWml54Nth9fqODFK95Lu\niBtoBRzE9rZ45plk5kfoPNNBFnL81Q\u003d\u003d\n\u003dzMQQ\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
