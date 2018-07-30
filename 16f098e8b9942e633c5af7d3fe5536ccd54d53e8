@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb4b6ec_f19653da",
+        "filename": "xfa/fxfa/cxfa_fwltheme.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:11:34Z",
+      "side": 1,
+      "message": "Can we just make |pWidget| above a CXFA_ContentLayoutItem*, and get rid of |pItem|?",
+      "revId": "16f098e8b9942e633c5af7d3fe5536ccd54d53e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6346df51_ec9d4e5d",
+        "filename": "xfa/fxfa/parser/cxfa_contentlayoutitem.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:11:34Z",
+      "side": 1,
+      "message": "Can we just drop this variable?",
+      "revId": "16f098e8b9942e633c5af7d3fe5536ccd54d53e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
