@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd106ff3_1227267a",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:47:18Z",
+      "side": 1,
+      "message": "Combine with previous line, and just pass in 0 to FPDFTextObj_GetFontName()?",
+      "revId": "09f3fd7d59493a1ab9c86b3d25c27e2178706ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927e62a3_ac242503",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1773,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:47:18Z",
+      "side": 1,
+      "message": "Combine with previous line: std::vector\u003cchar\u003e font_name(size);",
+      "revId": "09f3fd7d59493a1ab9c86b3d25c27e2178706ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fcae86_b7a6565c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:47:18Z",
+      "side": 1,
+      "message": "You can also pull this out as a constant, and use sizeof(kExpectedFontName) in place of 17U.",
+      "range": {
+        "startLine": 1775,
+        "startChar": 25,
+        "endLine": 1775,
+        "endChar": 41
+      },
+      "revId": "09f3fd7d59493a1ab9c86b3d25c27e2178706ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1e4578_e38261dc",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:47:18Z",
+      "side": 1,
+      "message": "To get googletest to do string comparisons, without explicitly creating std::strings, write this as: ASSERT_STREQ(\"Liberation Serif\", font_name.data());",
+      "revId": "09f3fd7d59493a1ab9c86b3d25c27e2178706ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45895ffe_432649e8",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:47:18Z",
+      "side": 1,
+      "message": "Probably not needed since the next 3 lines will overwrite all the old data anyway.",
+      "revId": "09f3fd7d59493a1ab9c86b3d25c27e2178706ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0665213_85d9cc8f",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:47:18Z",
+      "side": 1,
+      "message": "This can\u0027t happen. Just write: ASSERT(pFont) instead.",
+      "revId": "09f3fd7d59493a1ab9c86b3d25c27e2178706ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b20324_cb28a3ae",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:47:18Z",
+      "side": 1,
+      "message": "Mention: returns 0 on failure. (Several other places do not, beh.)",
+      "revId": "09f3fd7d59493a1ab9c86b3d25c27e2178706ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
