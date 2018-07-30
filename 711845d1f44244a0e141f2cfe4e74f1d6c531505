@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1532734886 -0700\nnonce APISObRsAffPFFu/BnIJCImKZo42I6Goh1pyXCKxdznGy8vmlcyKEkFwPDVEUwJoi4xth9ZKd5Ky\n\n0000000000000000000000000000000000000000 711845d1f44244a0e141f2cfe4e74f1d6c531505 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltbraYACgkQqzYtYVpm\n/Xu8JQgAnHXLg76+9jTG2RI3RZT3MIUtBTBP1c5J9qlHwCuoQRd/rfa2gMPjJwaI\ntnaxjRUPpfs9FsUtAALTsGkdwmEtXevuzweXvCYOoeicZ89T3x3QWsOD/VRPL3v0\n3xiNNEvtmWhve/duRCXr/ah0/KbywbQD36fX/Vc3BHlNa9ZlHnARV5apXKmc1M9r\nsIjYZQKTCxqFtvKK8P1JYQGuJiLHGvpwv9go60vAHD/ZLogxPR6eVySEB0a/uY9b\nSCvsVvlLq5BTnJfNR275fjgUDeJPGj6gyzsisFGK5BSrc578UcAsyoALJxI5q80X\ntbQaZOCpkykVLeQReE26RwGRk3UtZA\u003d\u003d\n\u003dXBnK\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7d55737_8ad9f6e6",
+        "filename": "fxjs/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3778,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-07-30T17:28:47Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be \"if (!bPatternIsString)\" ?",
+      "range": {
+        "startLine": 3778,
+        "startChar": 6,
+        "endLine": 3778,
+        "endChar": 22
+      },
+      "revId": "711845d1f44244a0e141f2cfe4e74f1d6c531505",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
