@@ -116,21 +116,23 @@ CXFA_ContentLayoutItem* CXFA_FFNotify::OnCreateContentLayoutItem(
   switch (pNode->GetFFWidgetType()) {
     case XFA_FFWidgetType::kBarcode: {
       CXFA_Node* child = pNode->GetUIChildNode();
-      ASSERT(child->GetElementType() == XFA_Element::Barcode);
-      pWidget = new CXFA_FFBarcode(pNode, static_cast<CXFA_Barcode*>(child));
+      if (child->GetElementType() == XFA_Element::Barcode)
+        pWidget = new CXFA_FFBarcode(pNode, static_cast<CXFA_Barcode*>(child));
       break;
     }
     case XFA_FFWidgetType::kButton: {
       CXFA_Node* child = pNode->GetUIChildNode();
-      ASSERT(child->GetElementType() == XFA_Element::Button);
-      pWidget = new CXFA_FFPushButton(pNode, static_cast<CXFA_Button*>(child));
+      if (child->GetElementType() == XFA_Element::Button)
+        pWidget =
+            new CXFA_FFPushButton(pNode, static_cast<CXFA_Button*>(child));
       break;
     }
     case XFA_FFWidgetType::kCheckButton: {
       CXFA_Node* child = pNode->GetUIChildNode();
-      ASSERT(child->GetElementType() == XFA_Element::CheckButton);
-      pWidget =
-          new CXFA_FFCheckButton(pNode, static_cast<CXFA_CheckButton*>(child));
+      if (child->GetElementType() == XFA_Element::CheckButton) {
+        pWidget = new CXFA_FFCheckButton(pNode,
+                                         static_cast<CXFA_CheckButton*>(child));
+      }
       break;
     }
     case XFA_FFWidgetType::kChoiceList: {
@@ -150,9 +152,10 @@ CXFA_ContentLayoutItem* CXFA_FFNotify::OnCreateContentLayoutItem(
       break;
     case XFA_FFWidgetType::kPasswordEdit: {
       CXFA_Node* child = pNode->GetUIChildNode();
-      ASSERT(child->GetElementType() == XFA_Element::PasswordEdit);
-      pWidget = new CXFA_FFPasswordEdit(pNode,
-                                        static_cast<CXFA_PasswordEdit*>(child));
+      if (child->GetElementType() == XFA_Element::PasswordEdit) {
+        pWidget = new CXFA_FFPasswordEdit(
+            pNode, static_cast<CXFA_PasswordEdit*>(child));
+      }
       break;
     }
     case XFA_FFWidgetType::kSignature:
@@ -186,10 +189,8 @@ CXFA_ContentLayoutItem* CXFA_FFNotify::OnCreateContentLayoutItem(
       return nullptr;
   }
   ASSERT(pWidget);
-
   CXFA_LayoutProcessor* pLayout = m_pDoc->GetXFADoc()->GetLayoutProcessor();
   pWidget->SetDocView(m_pDoc->GetDocView(pLayout));
-
   return pWidget;
 }
 
