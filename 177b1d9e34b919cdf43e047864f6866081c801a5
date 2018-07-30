@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e5b635d_77b6b29a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T18:13:51Z",
+      "side": 1,
+      "message": "If |hasRSX| is false, then it does not get called. Then |m_glyphs| and |m_rsxform| will have mismatched counts. Prevent this by calling FlushText() above.",
+      "revId": "177b1d9e34b919cdf43e047864f6866081c801a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c4bf74_48c7cac7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T18:13:51Z",
+      "side": 1,
+      "message": "|m_glyphs|\u0027s and |m_rsxform|\u0027s count must match here, or |m_rsxform| must be empty.",
+      "revId": "177b1d9e34b919cdf43e047864f6866081c801a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
