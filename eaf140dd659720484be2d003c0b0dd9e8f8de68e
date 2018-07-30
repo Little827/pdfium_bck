@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42e22ec1_aa4b1f2e",
+        "filename": "xfa/fxfa/parser/cxfa_layoutitem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-30T21:13:10Z",
+      "side": 1,
+      "message": "Is it possible to construct an item of this type?",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "eaf140dd659720484be2d003c0b0dd9e8f8de68e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
