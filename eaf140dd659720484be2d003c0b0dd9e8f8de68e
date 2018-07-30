@@ -22,6 +22,30 @@
       "revId": "eaf140dd659720484be2d003c0b0dd9e8f8de68e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f1558a_00b3084a",
+        "filename": "xfa/fxfa/parser/cxfa_layoutitem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-30T21:39:52Z",
+      "side": 1,
+      "message": "Nope.  Was going to set this as a default below, but private ctor so no need.",
+      "parentUuid": "42e22ec1_aa4b1f2e",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "eaf140dd659720484be2d003c0b0dd9e8f8de68e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
