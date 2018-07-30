@@ -73,11 +73,8 @@ RetainPtr<CFGAS_GEFont> CXFA_FontMgr::GetFont(
                                      hDoc->GetApp()->GetFDEFontMgr());
   }
 
-  if (pFont) {
-    if (pPDFFont)
-      pMgr->SetFont(pFont, pPDFFont);
-
+  if (pFont)
     m_FontMap[bsKey] = pFont;
-  }
+
   return pFont;
 }

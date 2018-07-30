@@ -182,8 +182,3 @@ bool CFGAS_PDFFontMgr::PsNameMatchDRFontName(const ByteStringView& bsPsName,
   }
   return true;
 }
-
-void CFGAS_PDFFontMgr::SetFont(const RetainPtr<CFGAS_GEFont>& pFont,
-                               CPDF_Font* pPDFFont) {
-  m_FDE2PDFFont[pFont] = pPDFFont;
-}
