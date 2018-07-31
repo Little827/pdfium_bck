@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "157eebf3_9754d31a",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:36:05Z",
+      "side": 1,
+      "message": "Probably want IsEmpty(), too.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "522c68b4_6596bc51",
         "filename": "core/fxcrt/fx_file_range.h",
         "patchSetId": 1
