@@ -876,6 +876,8 @@ jumbo_static_library("fxcrt") {
     "core/fxcrt/fx_coordinates.h",
     "core/fxcrt/fx_extension.cpp",
     "core/fxcrt/fx_extension.h",
+    "core/fxcrt/fx_file_range.cpp",
+    "core/fxcrt/fx_file_range.h",
     "core/fxcrt/fx_memory.cpp",
     "core/fxcrt/fx_memory.h",
     "core/fxcrt/fx_random.cpp",
