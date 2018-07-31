@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f02aac4_b7e4e32c",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T14:18:29Z",
+      "side": 1,
+      "message": "No,\nThe read_problems means. that we have unavailable data for this, and just should wait it.\nThe data is requested automaticaly by CPDF_ReadValidator.",
+      "parentUuid": "65672688_df5a471c",
+      "revId": "d68b8c71780cadc7d30d6bdc8e41d2bdaefd986e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23d671de_cb655638",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2018-07-30T23:13:53Z",
       "side": 1,
       "message": "Does this ever evaluate to true? Should it be: ASSERT(pLinearized); ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "d68b8c71780cadc7d30d6bdc8e41d2bdaefd986e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326079d0_f3c5abe7",
+        "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T14:18:29Z",
+      "side": 1,
+      "message": "Currently no, but will be in next CL in chain.\nI want to reduce additional nullptr checks, to simplify code.",
+      "parentUuid": "23d671de_cb655638",
       "range": {
         "startLine": 49,
         "startChar": 6,
