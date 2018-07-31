@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ae88418_6e089e87",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "Can we express this in terms of an initial offset followed by an increment that would invoke checking for overflow?  Here we make the addition with unsafe types and then convert to the safe ones?",
+      "range": {
+        "startLine": 628,
+        "startChar": 37,
+        "endLine": 628,
+        "endChar": 62
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd2b2f8_1493d9c9",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "I\u0027d like to see if we can avoid making invalid file ranges in the first place.",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe53f78_6a13d1be",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "This should probably just make the empty range {0, 0}.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbaee72c_8ecbd86d",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "See below about ordinary types, this gets much simpler and we can lose the template (likely).",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 70
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522c68b4_6596bc51",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "See below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda63494_6d83f734",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "How do we know that these two don\u0027t violate  a constraint that, say, size + offset \u003c EOF?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbc3bd66_66eb1f45",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "These are the useful operations, but do we use them in practice?",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6390c7_cb5895e8",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-07-31T16:25:12Z",
+      "side": 1,
+      "message": "I\u0027d go with the ordinary types here, and put the safe operations into the methods that modify them.  Otherwise in face of an overflow, later on we\u0027ll use these and they will fault, without indicating much about the path that lead to the overflow in the first place.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
