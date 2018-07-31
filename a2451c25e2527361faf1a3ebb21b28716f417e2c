@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ade99569_8d4098f1",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-31T19:24:14Z",
+      "side": 1,
+      "message": "Reuse |kExpectedFontName| here.",
+      "range": {
+        "startLine": 1774,
+        "startChar": 15,
+        "endLine": 1774,
+        "endChar": 33
+      },
+      "revId": "a2451c25e2527361faf1a3ebb21b28716f417e2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e78742a_03320209",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-07-31T19:24:14Z",
+      "side": 1,
+      "message": "And sizeof(kExpectedFontName) here.",
+      "range": {
+        "startLine": 1783,
+        "startChar": 12,
+        "endLine": 1783,
+        "endChar": 15
+      },
+      "revId": "a2451c25e2527361faf1a3ebb21b28716f417e2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
