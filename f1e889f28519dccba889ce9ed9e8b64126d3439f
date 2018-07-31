@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "480a331c_d9a6bdd5",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "We should replace m_HeaderOffset and m_FileLen by FX_FileRange,\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_syntax_parser.h?rcl\u003db53ef1e52d40f586c401a7e3948259f8ebbfd3cc\u0026l\u003d112\nBut i think we should do this separately.\nThe changes in this file is just example of usage of FX_FileRange.",
+      "parentUuid": "2ae88418_6e089e87",
+      "range": {
+        "startLine": 628,
+        "startChar": 37,
+        "endLine": 628,
+        "endChar": 62
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dd2b2f8_1493d9c9",
         "filename": "core/fxcrt/fx_file_range.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-31T16:25:12Z",
       "side": 1,
       "message": "I\u0027d like to see if we can avoid making invalid file ranges in the first place.",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0041a923_819d3509",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "Should i move this into cpp file into anonymous namespace?",
+      "parentUuid": "2dd2b2f8_1493d9c9",
       "range": {
         "startLine": 14,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fa97d81d_347a781b",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "It is do it, already.\nThe default value for FX_SAFE_XXX types is zero.\nSee https://cs.chromium.org/chromium/src/third_party/pdfium/third_party/base/numerics/safe_math_impl.h?rcl\u003db53ef1e52d40f586c401a7e3948259f8ebbfd3cc\u0026l\u003d559",
+      "parentUuid": "cbe53f78_6a13d1be",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbaee72c_8ecbd86d",
         "filename": "core/fxcrt/fx_file_range.h",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "044302b5_8fe872be",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "I want to stay with template, because in much places we use differnt types, when parsing document.\nFor expamle see hint tables file range:\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/parser/cpdf_linearized_header.cpp?rcl\u003db53ef1e52d40f586c401a7e3948259f8ebbfd3cc\u0026l\u003d100\nAnd i want to use FX_Filerange to validate this values, instead of current validation for each value.",
+      "parentUuid": "dbaee72c_8ecbd86d",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 70
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "157eebf3_9754d31a",
         "filename": "core/fxcrt/fx_file_range.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2018-07-31T16:36:05Z",
       "side": 1,
       "message": "Probably want IsEmpty(), too.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f83772_4b67490a",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "I will do this.",
+      "parentUuid": "157eebf3_9754d31a",
       "range": {
         "startLine": 28,
         "startChar": 2,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "d7adee4a_ce5a291b",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "const bool contains_in_file \u003d FX_FileRange(0, file_size).Contains(bytes_file_range);\nThis class needs only for overflow validation, the \"EOF\" validation should be resolved by caller.",
+      "parentUuid": "bda63494_6d83f734",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbc3bd66_66eb1f45",
         "filename": "core/fxcrt/fx_file_range.h",
         "patchSetId": 1
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "fe026805_25d68c0b",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "I want to use it within CPDF_ReadValidator to align the range on the specified boundary.\ni.e.\nAlignedRange aligned_range \u003d range;\nAlignedRange.Enlarge(kAlignBlockValue - AlignedRange.EndOrDie() % kAlignBlockValue);\naligned_range.Intersect(FX_FileRange(0, file_size_));\nif(!aligned_range.IsValid())\n  aligned_range \u003d range;",
+      "parentUuid": "bbc3bd66_66eb1f45",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e6390c7_cb5895e8",
         "filename": "core/fxcrt/fx_file_range.h",
         "patchSetId": 1
@@ -197,6 +365,30 @@
       "writtenOn": "2018-07-31T16:25:12Z",
       "side": 1,
       "message": "I\u0027d go with the ordinary types here, and put the safe operations into the methods that modify them.  Otherwise in face of an overflow, later on we\u0027ll use these and they will fault, without indicating much about the path that lead to the overflow in the first place.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "f1e889f28519dccba889ce9ed9e8b64126d3439f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b43a99e_93cb8b97",
+        "filename": "core/fxcrt/fx_file_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-07-31T17:00:26Z",
+      "side": 1,
+      "message": "I want to stay with FX_SAFE_XXX type, because, we can do much operations on its, without thinking about validation. And only at the and do check.\nSee my example for CPDF_ReadValidator.\nAlso using the  ordinary types, will increase complexity of FX_FileRange, because we should implement validation within each methods, instead just use FX_SAFE_XXX.",
+      "parentUuid": "6e6390c7_cb5895e8",
       "range": {
         "startLine": 59,
         "startChar": 1,
