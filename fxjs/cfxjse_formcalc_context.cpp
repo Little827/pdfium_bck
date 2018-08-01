@@ -39,6 +39,8 @@ namespace {
 
 const double kFinancialPrecision = 0.00000001;
 
+const wchar_t kStrCode[] = L"0123456789abcdef";
+
 struct XFA_FMHtmlReserveCode {
   uint32_t m_uCode;
   const wchar_t* m_htmlReserve;
@@ -1185,24 +1187,25 @@ WideString DecodeXML(const WideString& wsXMLString) {
 }
 
 WideString EncodeURL(const ByteString& szURLString) {
+  static const wchar_t kStrUnsafe[] = {' ', '<',  '>', '"', '#', '%', '{', '}',
+                                       '|', '\\', '^', '~', '[', ']', '`'};
+  static const wchar_t kStrReserved[] = {';', '/', '?', ':', '@', '=', '&'};
+  static const wchar_t kStrSpecial[] = {'$',  '-', '+', '!', '*',
+                                        '\'', '(', ')', ','};
+
   WideString wsURLString = WideString::FromUTF8(szURLString.AsStringView());
   CFX_WideTextBuf wsResultBuf;
   wchar_t strEncode[4];
   strEncode[0] = '%';
   strEncode[3] = 0;
-  wchar_t strUnsafe[] = {' ', '<',  '>', '"', '#', '%', '{', '}',
-                         '|', '\\', '^', '~', '[', ']', '`'};
-  wchar_t strReserved[] = {';', '/', '?', ':', '@', '=', '&'};
-  wchar_t strSpecial[] = {'$', '-', '+', '!', '*', '\'', '(', ')', ','};
-  const wchar_t* strCode = L"0123456789abcdef";
   for (auto ch : wsURLString) {
-    int32_t i = 0;
-    int32_t iCount = FX_ArraySize(strUnsafe);
+    size_t i = 0;
+    size_t iCount = FX_ArraySize(kStrUnsafe);
     while (i < iCount) {
-      if (ch == strUnsafe[i]) {
+      if (ch == kStrUnsafe[i]) {
         int32_t iIndex = ch / 16;
-        strEncode[1] = strCode[iIndex];
-        strEncode[2] = strCode[ch - iIndex * 16];
+        strEncode[1] = kStrCode[iIndex];
+        strEncode[2] = kStrCode[ch - iIndex * 16];
         wsResultBuf << strEncode;
         break;
       }
@@ -1212,12 +1215,12 @@ WideString EncodeURL(const ByteString& szURLString) {
       continue;
 
     i = 0;
-    iCount = FX_ArraySize(strReserved);
+    iCount = FX_ArraySize(kStrReserved);
     while (i < iCount) {
-      if (ch == strReserved[i]) {
+      if (ch == kStrReserved[i]) {
         int32_t iIndex = ch / 16;
-        strEncode[1] = strCode[iIndex];
-        strEncode[2] = strCode[ch - iIndex * 16];
+        strEncode[1] = kStrCode[iIndex];
+        strEncode[2] = kStrCode[ch - iIndex * 16];
         wsResultBuf << strEncode;
         break;
       }
@@ -1227,9 +1230,9 @@ WideString EncodeURL(const ByteString& szURLString) {
       continue;
 
     i = 0;
-    iCount = FX_ArraySize(strSpecial);
+    iCount = FX_ArraySize(kStrSpecial);
     while (i < iCount) {
-      if (ch == strSpecial[i]) {
+      if (ch == kStrSpecial[i]) {
         wsResultBuf.AppendChar(ch);
         break;
       }
@@ -1240,8 +1243,8 @@ WideString EncodeURL(const ByteString& szURLString) {
 
     if ((ch >= 0x80 && ch <= 0xff) || ch <= 0x1f || ch == 0x7f) {
       int32_t iIndex = ch / 16;
-      strEncode[1] = strCode[iIndex];
-      strEncode[2] = strCode[ch - iIndex * 16];
+      strEncode[1] = kStrCode[iIndex];
+      strEncode[2] = kStrCode[ch - iIndex * 16];
       wsResultBuf << strEncode;
     } else if (ch >= 0x20 && ch <= 0x7e) {
       wsResultBuf.AppendChar(ch);
@@ -1249,11 +1252,11 @@ WideString EncodeURL(const ByteString& szURLString) {
       const wchar_t iRadix = 16;
       WideString strTmp;
       while (ch >= iRadix) {
-        wchar_t tmp = strCode[ch % iRadix];
+        wchar_t tmp = kStrCode[ch % iRadix];
         ch /= iRadix;
         strTmp += tmp;
       }
-      strTmp += strCode[ch];
+      strTmp += kStrCode[ch];
       int32_t iLen = strTmp.GetLength();
       if (iLen < 2)
         break;
@@ -1283,7 +1286,6 @@ WideString EncodeURL(const ByteString& szURLString) {
 
 WideString EncodeHTML(const ByteString& szHTMLString) {
   WideString wsHTMLString = WideString::FromUTF8(szHTMLString.AsStringView());
-  const wchar_t* strCode = L"0123456789abcdef";
   wchar_t strEncode[9];
   strEncode[0] = '&';
   strEncode[1] = '#';
@@ -1307,18 +1309,18 @@ WideString EncodeHTML(const ByteString& szHTMLString) {
       wsResultBuf.AppendChar((wchar_t)ch);
     } else if (ch < 256) {
       int32_t iIndex = ch / 16;
-      strEncode[3] = strCode[iIndex];
-      strEncode[4] = strCode[ch - iIndex * 16];
+      strEncode[3] = kStrCode[iIndex];
+      strEncode[4] = kStrCode[ch - iIndex * 16];
       strEncode[5] = ';';
       strEncode[6] = 0;
       wsResultBuf << strEncode;
     } else {
       int32_t iBigByte = ch / 256;
       int32_t iLittleByte = ch % 256;
-      strEncode[3] = strCode[iBigByte / 16];
-      strEncode[4] = strCode[iBigByte % 16];
-      strEncode[5] = strCode[iLittleByte / 16];
-      strEncode[6] = strCode[iLittleByte % 16];
+      strEncode[3] = kStrCode[iBigByte / 16];
+      strEncode[4] = kStrCode[iBigByte % 16];
+      strEncode[5] = kStrCode[iLittleByte / 16];
+      strEncode[6] = kStrCode[iLittleByte % 16];
       wsResultBuf << strEncode;
     }
     ++i;
@@ -1338,7 +1340,6 @@ WideString EncodeXML(const ByteString& szXMLString) {
   strEncode[6] = 0;
   strEncode[7] = ';';
   strEncode[8] = 0;
-  const wchar_t* strCode = L"0123456789abcdef";
   for (const auto& ch : wsXMLString) {
     switch (ch) {
       case '"':
@@ -1371,18 +1372,18 @@ WideString EncodeXML(const ByteString& szXMLString) {
           wsResultBuf.AppendChar(ch);
         } else if (ch < 256) {
           int32_t iIndex = ch / 16;
-          strEncode[3] = strCode[iIndex];
-          strEncode[4] = strCode[ch - iIndex * 16];
+          strEncode[3] = kStrCode[iIndex];
+          strEncode[4] = kStrCode[ch - iIndex * 16];
           strEncode[5] = ';';
           strEncode[6] = 0;
           wsResultBuf << strEncode;
         } else {
           int32_t iBigByte = ch / 256;
           int32_t iLittleByte = ch % 256;
-          strEncode[3] = strCode[iBigByte / 16];
-          strEncode[4] = strCode[iBigByte % 16];
-          strEncode[5] = strCode[iLittleByte / 16];
-          strEncode[6] = strCode[iLittleByte % 16];
+          strEncode[3] = kStrCode[iBigByte / 16];
+          strEncode[4] = kStrCode[iBigByte % 16];
+          strEncode[5] = kStrCode[iLittleByte / 16];
+          strEncode[6] = kStrCode[iLittleByte % 16];
           wsResultBuf << strEncode;
         }
         break;
@@ -1394,18 +1395,20 @@ WideString EncodeXML(const ByteString& szXMLString) {
 }
 
 ByteString TrillionUS(const ByteStringView& szData) {
-  std::ostringstream strBuf;
-  ByteStringView pUnits[] = {"zero", "one", "two",   "three", "four",
-                             "five", "six", "seven", "eight", "nine"};
-  ByteStringView pCapUnits[] = {"Zero", "One", "Two",   "Three", "Four",
-                                "Five", "Six", "Seven", "Eight", "Nine"};
-  ByteStringView pTens[] = {"Ten",      "Eleven",  "Twelve",  "Thirteen",
-                            "Fourteen", "Fifteen", "Sixteen", "Seventeen",
-                            "Eighteen", "Nineteen"};
-  ByteStringView pLastTens[] = {"Twenty", "Thirty",  "Forty",  "Fifty",
-                                "Sixty",  "Seventy", "Eighty", "Ninety"};
-  ByteStringView pComm[] = {" Hundred ", " Thousand ", " Million ", " Billion ",
-                            "Trillion"};
+  static const ByteStringView pUnits[] = {"zero",  "one",  "two", "three",
+                                          "four",  "five", "six", "seven",
+                                          "eight", "nine"};
+  static const ByteStringView pCapUnits[] = {"Zero",  "One",  "Two", "Three",
+                                             "Four",  "Five", "Six", "Seven",
+                                             "Eight", "Nine"};
+  static const ByteStringView pTens[] = {
+      "Ten",     "Eleven",  "Twelve",    "Thirteen", "Fourteen",
+      "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+  static const ByteStringView pLastTens[] = {"Twenty", "Thirty", "Forty",
+                                             "Fifty",  "Sixty",  "Seventy",
+                                             "Eighty", "Ninety"};
+  static const ByteStringView pComm[] = {" Hundred ", " Thousand ", " Million ",
+                                         " Billion ", "Trillion"};
   const char* pData = szData.unterminated_c_str();
   int32_t iLength = szData.GetLength();
   int32_t iComm = 0;
@@ -1422,6 +1425,7 @@ ByteString TrillionUS(const ByteStringView& szData) {
   if (iFirstCount == 0)
     iFirstCount = 3;
 
+  std::ostringstream strBuf;
   int32_t iIndex = 0;
   if (iFirstCount == 3) {
     if (pData[iIndex] != '0') {
