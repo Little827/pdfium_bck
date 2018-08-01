@@ -17,6 +17,24 @@
       "revId": "f432333943f83c4ba5a4e624582b62c1591ae475",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78417d17_4aa19997",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 7278
+      },
+      "writtenOn": "2018-08-01T18:20:37Z",
+      "side": 1,
+      "message": "you can actually delete luci.try now (or rename it \"try\" and delete the original \"try\").  Same with CI",
+      "parentUuid": "4d1dee89_076bb5db",
+      "revId": "f432333943f83c4ba5a4e624582b62c1591ae475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
