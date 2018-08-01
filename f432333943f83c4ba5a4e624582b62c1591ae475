@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533107878 -0700\nnonce APISObSL5ATnF24G9cfSTxjPDlSXwExn9EQImfy9r0mtbY+arnHi7uteJRE1Ef2hJ6hUxGEnOkDv\n\n0000000000000000000000000000000000000000 f432333943f83c4ba5a4e624582b62c1591ae475 refs/for/refs/heads/infra/config%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlthXqYACgkQqzYtYVpm\n/XuLZQgAr3d2h8g81Qx+a4hZyyskI1Rj/45yH18wAVgUpoym+nzzaYJ9OefTWvmT\ndXsYG9Hd+8j+5mz24cBo20H/iRtQJ3oXDhSIufAKftKtNruN7z2xr0eFlAdJMuzW\nTUvtJ6YLuaMsQvJQNQ1Bu5PTfHBqua2a1iP+SldueYOyCXkDfvWQpr0KGLRQXZje\nNQMgKRcqvC9EhdZGn3Fb6oOhZCkYZ38lfXbrJ25wqu+bafBMGaIABiOLkvvaTFev\nJfyibqgcN8A5jsLCkSYLCd0YDDGpQmTTjEfBKG7TmXxIAxKTRQG6VUkC0gK5YByr\n5IzQ1WqoFxMhtN5GcPkNVMutIFs5ww\u003d\u003d\n\u003dsKMb\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d1dee89_076bb5db",
+        "filename": "luci-milo.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-01T17:42:47Z",
+      "side": 1,
+      "message": "Only updating luci.try. Not updating try.",
+      "revId": "f432333943f83c4ba5a4e624582b62c1591ae475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
