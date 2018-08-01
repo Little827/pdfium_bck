@@ -34,11 +34,14 @@ class CJBig2_Image {
   int32_t width() const { return m_nWidth; }
   int32_t height() const { return m_nHeight; }
   int32_t stride() const { return m_nStride; }
+
   uint8_t* data() const { return m_pData.Get(); }
+  uint8_t* data_end() const { return data() + m_nHeight * m_nStride; }
 
   int GetPixel(int32_t x, int32_t y) const;
   void SetPixel(int32_t x, int32_t y, int bVal);
 
+  uint8_t* GetLine(int32_t y) const;
   void CopyLine(int32_t hTo, int32_t hFrom);
   void Fill(bool v);
 
@@ -74,9 +77,9 @@ class CJBig2_Image {
                              const FX_RECT& rtSrc);
 
   MaybeOwned<uint8_t, FxFreeDeleter> m_pData;
-  int32_t m_nWidth;   // 1-bit pixels
-  int32_t m_nHeight;  // lines
-  int32_t m_nStride;  // bytes
+  int32_t m_nWidth = 0;   // 1-bit pixels
+  int32_t m_nHeight = 0;  // lines
+  int32_t m_nStride = 0;  // bytes
 };
 
 #endif  // CORE_FXCODEC_JBIG2_JBIG2_IMAGE_H_
