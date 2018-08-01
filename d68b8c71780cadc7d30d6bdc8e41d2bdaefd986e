@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e6eab58a_8aafc24e",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-08-01T13:54:36Z",
+      "side": 1,
+      "message": "Done.\nJFYI: In original code we have not read failures checks.",
+      "parentUuid": "2532dcf6_33110d07",
+      "revId": "d68b8c71780cadc7d30d6bdc8e41d2bdaefd986e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23d671de_cb655638",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 3
