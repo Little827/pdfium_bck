@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5662f990_ab88b6bf",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-02T17:36:31Z",
+      "side": 1,
+      "message": "let\u0027s see \nm_nStride * 8 \u003e\u003d m_nWidth per invariant\nm_nWidth \u003e\u003d x per line 188\nx \u003e\u003d m * 8 per macro at 192\n\nputting it together:\nm_nStride * 8 \u003e\u003d m_nWidth  \u003e\u003d x \u003e\u003d m * 8 \nm_nStride * 8 \u003e\u003d m * 8 \nm_nStride \u003e\u003d m.\n\nso std::min() should work.",
+      "parentUuid": "be9b7d6f_bd864c76",
+      "range": {
+        "startLine": 193,
+        "startChar": 26,
+        "endLine": 193,
+        "endChar": 39
+      },
+      "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78dab89b_5aea511f",
         "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
         "patchSetId": 15
@@ -36,6 +60,24 @@
       "writtenOn": "2018-08-02T08:30:26Z",
       "side": 1,
       "message": "This code may be performance sensitive to doing this inside the for-loop.",
+      "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822a5bc9_0f884cea",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-02T17:36:31Z",
+      "side": 1,
+      "message": "Perhaps, I\u0027ve believed that you can do what you want once per line so long as you don\u0027t do it once per pixel.  Given the branch in GetLine() as well, the n \u003d\u003d 0 may not be any worse.  Certainly would be an issue years ago.\n\nI\u0027ve made the loops independent and pulled out some branching, though the extra branch per pixel in the unaligned case remains and costs more.\n\nEventually, I\u0027d like to get rid of all the special cases in this file down the road, generally moving stuff in and out of dcache nowadays dwarfs register arithmetic.",
+      "parentUuid": "78dab89b_5aea511f",
       "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ca7c2a_8dafebce",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-02T17:36:31Z",
+      "side": 1,
+      "message": "Will be later,  removed for now.",
+      "parentUuid": "32a7a8ba_097a13b1",
+      "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
