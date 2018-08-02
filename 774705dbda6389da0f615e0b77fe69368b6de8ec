@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d11093b4_1f0f57ff",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T20:58:13Z",
+      "side": 1,
+      "message": "shadow variable",
+      "range": {
+        "startLine": 197,
+        "startChar": 19,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "774705dbda6389da0f615e0b77fe69368b6de8ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "632c5227_9412fad5",
+        "filename": "core/fxcodec/jbig2/JBig2_Image_unittest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T20:58:13Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "774705dbda6389da0f615e0b77fe69368b6de8ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dba2e6d_24e1f49c",
+        "filename": "core/fxcodec/jbig2/JBig2_Image_unittest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T20:58:13Z",
+      "side": 1,
+      "message": "and copy pasted",
+      "range": {
+        "startLine": 77,
+        "startChar": 29,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "774705dbda6389da0f615e0b77fe69368b6de8ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c22672b_c01b4110",
+        "filename": "core/fxcodec/jbig2/JBig2_Image_unittest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T20:58:13Z",
+      "side": 1,
+      "message": "more typos",
+      "range": {
+        "startLine": 188,
+        "startChar": 44,
+        "endLine": 188,
+        "endChar": 54
+      },
+      "revId": "774705dbda6389da0f615e0b77fe69368b6de8ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
