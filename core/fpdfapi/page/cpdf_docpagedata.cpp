@@ -119,7 +119,7 @@ void CPDF_DocPageData::Clear(bool bForceRelease) {
 }
 
 CPDF_Font* CPDF_DocPageData::GetFont(CPDF_Dictionary* pFontDict) {
-  if (!pFontDict)
+  if (!pFontDict || pFontDict->IsInline())
     return nullptr;
 
   CPDF_CountedFont* pFontData = nullptr;
