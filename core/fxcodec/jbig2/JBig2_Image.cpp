@@ -30,6 +30,7 @@
    (buf)[2] = static_cast<uint8_t>((val) >> 8),  \
    (buf)[3] = static_cast<uint8_t>((val) >> 0))
 
+#define BIT_INDEX_TO_BYTE(x) ((x) >> 3)
 #define BIT_INDEX_TO_ALIGNED_BYTE(x) (((x) >> 5) << 2)
 
 namespace {
@@ -104,7 +105,7 @@ int CJBig2_Image::GetPixel(int32_t x, int32_t y) const {
   if (y < 0 || y >= m_nHeight)
     return 0;
 
-  int32_t m = y * m_nStride + (x >> 3);
+  int32_t m = y * m_nStride + BIT_INDEX_TO_BYTE(x);
   int32_t n = x & 7;
   return ((data()[m] >> (7 - n)) & 1);
 }
@@ -116,7 +117,7 @@ void CJBig2_Image::SetPixel(int32_t x, int32_t y, int v) {
   if (x < 0 || x >= m_nWidth || y < 0 || y >= m_nHeight)
     return;
 
-  int32_t m = y * m_nStride + (x >> 3);
+  int32_t m = y * m_nStride + BIT_INDEX_TO_BYTE(x);
   int32_t n = 1 << (7 - (x & 7));
   if (v)
     data()[m] |= n;
@@ -133,11 +134,12 @@ void CJBig2_Image::CopyLine(int32_t hTo, int32_t hFrom) {
     return;
 
   if (hFrom < 0 || hFrom >= m_nHeight) {
-    memset(data() + hTo * m_nStride, 0, m_nStride);
+    memset(GetLineUnsafe(hTo), 0, m_nStride);
   } else {
-    memcpy(data() + hTo * m_nStride, data() + hFrom * m_nStride, m_nStride);
+    memcpy(GetLineUnsafe(hTo), GetLineUnsafe(hFrom), m_nStride);
   }
 }
+
 void CJBig2_Image::Fill(bool v) {
   if (!m_pData)
     return;
@@ -278,9 +280,9 @@ bool CJBig2_Image::ComposeToOpt2(CJBig2_Image* pDst,
   uint32_t maskL = 0xffffffff >> d1;
   uint32_t maskR = 0xffffffff << ((32 - (xd1 & 31)) % 32);
   uint32_t maskM = maskL & maskR;
-  uint8_t* lineSrc = data() + ys0 * m_nStride + ((xs0 >> 5) << 2);
-  int32_t lineLeft = m_nStride - ((xs0 >> 5) << 2);
-  uint8_t* lineDst = pDst->data() + yd0 * pDst->m_nStride + ((xd0 >> 5) << 2);
+  uint8_t* lineSrc = GetLineUnsafe(ys0) + BIT_INDEX_TO_ALIGNED_BYTE(xs0);
+  int32_t lineLeft = m_nStride - BIT_INDEX_TO_ALIGNED_BYTE(xs0);
+  uint8_t* lineDst = GetLineUnsafe(yd0) + BIT_INDEX_TO_ALIGNED_BYTE(xd0);
   if ((xd0 & ~31) == ((xd1 - 1) & ~31)) {
     if ((xs0 & ~31) == ((xs1 - 1) & ~31)) {
       if (s1 > d1) {
@@ -663,11 +665,11 @@ bool CJBig2_Image::ComposeToOpt2WithRect(CJBig2_Image* pDst,
   int32_t maskL = 0xffffffff >> d1;
   int32_t maskR = 0xffffffff << ((32 - (xd1 & 31)) % 32);
   int32_t maskM = maskL & maskR;
-  const uint8_t* lineSrc =
-      data() + (rtSrc.top + ys0) * m_nStride + (((xs0 + rtSrc.left) >> 5) << 2);
+  const uint8_t* lineSrc = GetLineUnsafe(rtSrc.top + ys0) +
+                           BIT_INDEX_TO_ALIGNED_BYTE(xs0 + rtSrc.left);
   const uint8_t* lineSrcEnd = data() + m_nHeight * m_nStride;
-  int32_t lineLeft = m_nStride - ((xs0 >> 5) << 2);
-  uint8_t* lineDst = pDst->data() + yd0 * pDst->m_nStride + ((xd0 >> 5) << 2);
+  int32_t lineLeft = m_nStride - BIT_INDEX_TO_ALIGNED_BYTE(xs0);
+  uint8_t* lineDst = GetLineUnsafe(yd0) + BIT_INDEX_TO_ALIGNED_BYTE(xd0);
   if ((xd0 & ~31) == ((xd1 - 1) & ~31)) {
     if ((xs0 & ~31) == ((xs1 - 1) & ~31)) {
       if (s1 > d1) {
