@@ -52,6 +52,24 @@
       "revId": "272b6629328a6de8c698ef0ea6a1b233ccc6c06f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6646cfae_bc383c6c",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T08:03:43Z",
+      "side": 1,
+      "message": "I get that. I just think CPDF_CrossRefTable can do more bookkeeping internally. Anyway, there is only one caller to ShrinkObjectMap(), which is CPDF_Parser, and the calls look fine. So let\u0027s keep going and maybe we can revisit this later. Assuming it\u0027s still relevant.",
+      "parentUuid": "ac96bba6_ea68dc7e",
+      "revId": "272b6629328a6de8c698ef0ea6a1b233ccc6c06f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
