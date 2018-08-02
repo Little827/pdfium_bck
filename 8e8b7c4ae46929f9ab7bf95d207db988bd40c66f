@@ -16,6 +16,41 @@
       "revId": "8e8b7c4ae46929f9ab7bf95d207db988bd40c66f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7cde90_aad94edc",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T19:28:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "524a7281_e4b21148",
+      "revId": "8e8b7c4ae46929f9ab7bf95d207db988bd40c66f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b871e83a_190662ad",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T19:28:50Z",
+      "side": 1,
+      "message": "Should this call VerifyCrossRef() after LoadCrossRefV5() succeeds? i.e.\n\nbool bLoadV5 \u003d !bLoadV4 \u0026\u0026 LoadCrossRefV5(\u0026dwFirstXRefOffset, true);\nif ((!bLoadV4 \u0026\u0026 !bLoadV5) || !VerifyCrossRef()) {\n   // rebuild\n}",
+      "revId": "8e8b7c4ae46929f9ab7bf95d207db988bd40c66f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
