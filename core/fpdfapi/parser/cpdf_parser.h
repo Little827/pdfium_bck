@@ -91,6 +91,7 @@ class CPDF_Parser {
     return m_pSecurityHandler.get();
   }
   RetainPtr<IFX_SeekableReadStream> GetFileAccess() const;
+  RetainPtr<CPDF_ReadValidator> GetValidator() const;
   bool IsObjectFree(uint32_t objnum) const;
 
   int GetFileVersion() const { return m_FileVersion; }

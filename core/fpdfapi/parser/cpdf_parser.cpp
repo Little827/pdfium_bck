@@ -123,6 +123,10 @@ RetainPtr<IFX_SeekableReadStream> CPDF_Parser::GetFileAccess() const {
   return m_pSyntax->GetFileAccess();
 }
 
+RetainPtr<CPDF_ReadValidator> CPDF_Parser::GetValidator() const {
+  return m_pSyntax->GetValidator();
+}
+
 void CPDF_Parser::ShrinkObjectMap(uint32_t objnum) {
   m_CrossRefTable->ShrinkObjectMap(objnum);
 }

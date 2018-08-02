@@ -9,17 +9,20 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/optional.h"
 
 class CPDF_Dictionary;
 class CPDF_IndirectObjectHolder;
+class CPDF_ReadValidator;
 
 class CPDF_PagesTree {
  public:
   CPDF_PagesTree(CPDF_IndirectObjectHolder* holder,
                  CPDF_Dictionary* root,
-                 uint32_t pages_count);
+                 uint32_t pages_count,
+                 const RetainPtr<CPDF_ReadValidator>& validator);
   ~CPDF_PagesTree();
 
   uint32_t pages_count() const { return pages_count_; }
@@ -43,9 +46,7 @@ class CPDF_PagesTree {
   uint32_t CountPages(CPDF_Dictionary* pPages,
                       std::set<const CPDF_Dictionary*>* visited_pages);
   // When this method is called, m_pTreeTraversal[level] exists.
-  CPDF_Dictionary* TraversePDFPages(uint32_t iPage,
-                                    uint32_t* nPagesToGo,
-                                    size_t level);
+  CPDF_Dictionary* TraversePDFPages(uint32_t iPage, size_t level);
   void SetPage(uint32_t page_index, CPDF_Dictionary* page_dict);
   bool InsertDeletePDFPage(CPDF_Dictionary* pPages,
                            uint32_t nPagesToGo,
@@ -53,6 +54,8 @@ class CPDF_PagesTree {
                            bool bInsert,
                            std::set<CPDF_Dictionary*>* pVisited);
   void ResetTraversal();
+
+  bool CheckHasReadProblems() const;
 
   UnownedPtr<CPDF_IndirectObjectHolder> holder_;
   UnownedPtr<CPDF_Dictionary> root_;
@@ -66,6 +69,7 @@ class CPDF_PagesTree {
   // of the child being processed within the dictionary's /Kids array.
   std::vector<std::pair<CPDF_Dictionary*, size_t>> tree_traversal_;
   std::vector<UnownedPtr<CPDF_Dictionary>> pages_;
+  RetainPtr<CPDF_ReadValidator> validator_;
 };
 
 #endif  // CORE_FPDFAPI_PARSER_CPDF_PAGES_TREE_H_

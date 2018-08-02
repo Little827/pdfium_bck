@@ -212,7 +212,8 @@ void CPDF_Document::LoadPages() {
       m_pParser ? m_pParser->GetLinearizedHeader() : nullptr;
   m_pPagesTree = pdfium::MakeUnique<CPDF_PagesTree>(
       this, m_pRootDict.Get(),
-      linearized_header ? linearized_header->GetPageCount() : 0);
+      linearized_header ? linearized_header->GetPageCount() : 0,
+      m_pParser ? m_pParser->GetValidator() : nullptr);
 
   if (!m_pPagesTree->pages_count())
     m_pPagesTree->RetrievePageCount();
@@ -333,7 +334,8 @@ void CPDF_Document::CreateNewDoc() {
   pPages->SetNewFor<CPDF_Array>("Kids");
   m_pRootDict->SetFor("Pages", pPages->MakeReference(this));
   m_pInfoDict = NewIndirect<CPDF_Dictionary>();
-  m_pPagesTree = pdfium::MakeUnique<CPDF_PagesTree>(this, m_pRootDict.Get(), 0);
+  m_pPagesTree =
+      pdfium::MakeUnique<CPDF_PagesTree>(this, m_pRootDict.Get(), 0, nullptr);
 }
 
 CPDF_Dictionary* CPDF_Document::CreateNewPage(int iPage) {
