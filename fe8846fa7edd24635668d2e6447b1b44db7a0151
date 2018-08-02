@@ -22,6 +22,30 @@
       "revId": "fe8846fa7edd24635668d2e6447b1b44db7a0151",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a7ef70_eb4be71d",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T19:24:48Z",
+      "side": 1,
+      "message": "Done. std::unique_ptr\u003cCPDF_Object\u003e, actually.",
+      "parentUuid": "a0d53d1f_6f956b00",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 8
+      },
+      "revId": "fe8846fa7edd24635668d2e6447b1b44db7a0151",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
