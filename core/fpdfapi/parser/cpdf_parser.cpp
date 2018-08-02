@@ -41,13 +41,6 @@ const int32_t kMaxXRefSize = 1048576;
 // "%PDF-1.7\n"
 constexpr FX_FILESIZE kPDFHeaderSize = 9;
 
-uint32_t GetVarInt(const uint8_t* p, int32_t n) {
-  uint32_t result = 0;
-  for (int32_t i = 0; i < n; ++i)
-    result = result * 256 + p[i];
-  return result;
-}
-
 class ObjectsHolderStub : public CPDF_Parser::ParsedObjectsHolder {
  public:
   ObjectsHolderStub() = default;
@@ -615,134 +608,19 @@ bool CPDF_Parser::RebuildCrossRef() {
 }
 
 bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
-  std::unique_ptr<CPDF_Object> pObject(ParseIndirectObjectAt(*pos, 0));
-  if (!pObject)
+  CPDF_CrossRefParser parser(m_pSyntax.get());
+  std::unique_ptr<CPDF_CrossRefTable> cross_ref_table =
+      parser.ParseCrossRefV5(*pos, m_pObjectsHolder.Get());
+  if (!cross_ref_table)
     return false;
 
-  uint32_t objnum = pObject->GetObjNum();
-  if (!objnum)
-    return false;
-
-  CPDF_Stream* pStream = pObject->AsStream();
-  if (!pStream)
-    return false;
-
-  CPDF_Dictionary* pDict = pStream->GetDict();
-  *pos = pDict->GetIntegerFor("Prev");
-  int32_t size = pDict->GetIntegerFor("Size");
-  if (size < 0)
-    return false;
-
-  std::unique_ptr<CPDF_Dictionary> pNewTrailer = ToDictionary(pDict->Clone());
   if (bMainXRef) {
-    m_CrossRefTable =
-        pdfium::MakeUnique<CPDF_CrossRefTable>(std::move(pNewTrailer));
-    m_CrossRefTable->ShrinkObjectMap(size);
+    m_CrossRefTable = std::move(cross_ref_table);
   } else {
-    m_CrossRefTable = CPDF_CrossRefTable::MergeUp(
-        pdfium::MakeUnique<CPDF_CrossRefTable>(std::move(pNewTrailer)),
-        std::move(m_CrossRefTable));
+    m_CrossRefTable = CPDF_CrossRefTable::MergeUp(std::move(cross_ref_table),
+                                                  std::move(m_CrossRefTable));
   }
-
-  std::vector<std::pair<int32_t, int32_t>> arrIndex;
-  CPDF_Array* pArray = pDict->GetArrayFor("Index");
-  if (pArray) {
-    for (size_t i = 0; i < pArray->GetCount() / 2; i++) {
-      CPDF_Object* pStartNumObj = pArray->GetObjectAt(i * 2);
-      CPDF_Object* pCountObj = pArray->GetObjectAt(i * 2 + 1);
-
-      if (ToNumber(pStartNumObj) && ToNumber(pCountObj)) {
-        int nStartNum = pStartNumObj->GetInteger();
-        int nCount = pCountObj->GetInteger();
-        if (nStartNum >= 0 && nCount > 0)
-          arrIndex.push_back(std::make_pair(nStartNum, nCount));
-      }
-    }
-  }
-
-  if (arrIndex.empty())
-    arrIndex.push_back(std::make_pair(0, size));
-
-  pArray = pDict->GetArrayFor("W");
-  if (!pArray)
-    return false;
-
-  std::vector<uint32_t> WidthArray;
-  FX_SAFE_UINT32 dwAccWidth = 0;
-  for (size_t i = 0; i < pArray->GetCount(); ++i) {
-    WidthArray.push_back(pArray->GetIntegerAt(i));
-    dwAccWidth += WidthArray[i];
-  }
-
-  if (!dwAccWidth.IsValid() || WidthArray.size() < 3)
-    return false;
-
-  uint32_t totalWidth = dwAccWidth.ValueOrDie();
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
-  pAcc->LoadAllDataFiltered();
-
-  const uint8_t* pData = pAcc->GetData();
-  uint32_t dwTotalSize = pAcc->GetSize();
-  uint32_t segindex = 0;
-  for (uint32_t i = 0; i < arrIndex.size(); i++) {
-    int32_t startnum = arrIndex[i].first;
-    if (startnum < 0)
-      continue;
-
-    uint32_t count = pdfium::base::checked_cast<uint32_t>(arrIndex[i].second);
-    FX_SAFE_UINT32 dwCaculatedSize = segindex;
-    dwCaculatedSize += count;
-    dwCaculatedSize *= totalWidth;
-    if (!dwCaculatedSize.IsValid() ||
-        dwCaculatedSize.ValueOrDie() > dwTotalSize) {
-      continue;
-    }
-
-    const uint8_t* segstart = pData + segindex * totalWidth;
-    FX_SAFE_UINT32 dwMaxObjNum = startnum;
-    dwMaxObjNum += count;
-    uint32_t dwV5Size = m_CrossRefTable->GetSize();
-    if (!dwMaxObjNum.IsValid() || dwMaxObjNum.ValueOrDie() > dwV5Size)
-      continue;
-
-    for (uint32_t j = 0; j < count; j++) {
-      ObjectType type = ObjectType::kNotCompressed;
-      const uint8_t* entrystart = segstart + j * totalWidth;
-      if (WidthArray[0]) {
-        const int cross_ref_stream_obj_type =
-            GetVarInt(entrystart, WidthArray[0]);
-        type = GetObjectTypeFromCrossRefStreamType(cross_ref_stream_obj_type);
-      }
-
-      if (GetObjectType(startnum + j) == ObjectType::kNull) {
-        FX_FILESIZE offset =
-            GetVarInt(entrystart + WidthArray[0], WidthArray[1]);
-        m_CrossRefTable->AddNormal(startnum + j, 0, offset);
-        continue;
-      }
-
-      if (GetObjectType(startnum + j) != ObjectType::kFree)
-        continue;
-
-      if (type == ObjectType::kFree) {
-        m_CrossRefTable->SetFree(startnum + j);
-      } else {
-        const FX_FILESIZE entry_value =
-            GetVarInt(entrystart + WidthArray[0], WidthArray[1]);
-        if (type == ObjectType::kNotCompressed) {
-          const auto object_offset = entry_value;
-          m_CrossRefTable->AddNormal(startnum + j, 0, object_offset);
-        } else {
-          const auto archive_obj_num = entry_value;
-          if (archive_obj_num < 0 || !IsValidObjectNumber(archive_obj_num))
-            return false;
-
-          m_CrossRefTable->AddCompressed(startnum + j, archive_obj_num);
-        }
-      }
-    }
-    segindex += count;
-  }
+  *pos = m_CrossRefTable->trailer()->GetIntegerFor("Prev");
   return true;
 }
 
