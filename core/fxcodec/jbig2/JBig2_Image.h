@@ -79,6 +79,25 @@ class CJBig2_Image {
                              JBig2ComposeOp op,
                              const FX_RECT& rtSrc);
 
+  bool ComposeBothIntrawordForward(JBig2ComposeOp op,
+                                   int32_t yLow,
+                                   int32_t yHi,
+                                   const uint8_t* lineSrc,
+                                   uint8_t* lineDst,
+                                   uint32_t srcStride,
+                                   uint32_t dstStride,
+                                   uint32_t shift,
+                                   uint32_t maskM);
+  bool ComposeBothIntrawordReverse(JBig2ComposeOp op,
+                                   int32_t yLow,
+                                   int32_t yHi,
+                                   const uint8_t* lineSrc,
+                                   uint8_t* lineDst,
+                                   uint32_t srcStride,
+                                   uint32_t dstStride,
+                                   uint32_t shift,
+                                   uint32_t maskM);
+
   MaybeOwned<uint8_t, FxFreeDeleter> m_pData;
   int32_t m_nWidth = 0;   // 1-bit pixels
   int32_t m_nHeight = 0;  // lines
