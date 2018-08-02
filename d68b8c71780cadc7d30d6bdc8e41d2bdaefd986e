@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "ac10c45a_7f6b1b23",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T07:34:57Z",
+      "side": 1,
+      "message": "Thanks. I think it\u0027s good to have this check.\n\nComparing to the original code, why does HasHintTable() returning false no longer transition to the PDF_DATAAVAIL_HINTTABLE state?",
+      "parentUuid": "e6eab58a_8aafc24e",
+      "revId": "d68b8c71780cadc7d30d6bdc8e41d2bdaefd986e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23d671de_cb655638",
         "filename": "core/fpdfapi/parser/cpdf_hint_tables.cpp",
         "patchSetId": 3
