@@ -51,6 +51,24 @@
       "revId": "8e8b7c4ae46929f9ab7bf95d207db988bd40c66f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62bf3d89_124864c2",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 7160
+      },
+      "writtenOn": "2018-08-02T19:34:45Z",
+      "side": 1,
+      "message": "Yes. Verification is independent from version of cross ref table.",
+      "parentUuid": "b871e83a_190662ad",
+      "revId": "8e8b7c4ae46929f9ab7bf95d207db988bd40c66f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
