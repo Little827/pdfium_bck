@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be9b7d6f_bd864c76",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T08:30:26Z",
+      "side": 1,
+      "message": "Do you really need to clamp, or can this just be std::min(pImage-\u003em_nStride, m_nStride - m) ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 26,
+        "endLine": 193,
+        "endChar": 39
+      },
+      "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78dab89b_5aea511f",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T08:30:26Z",
+      "side": 1,
+      "message": "This code may be performance sensitive to doing this inside the for-loop.",
+      "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a7a8ba_097a13b1",
+        "filename": "core/fxcodec/jbig2/JBig2_Image.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T08:30:26Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "8344def81aa21f5ac07394e40b0c81bfb5d6ed7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
