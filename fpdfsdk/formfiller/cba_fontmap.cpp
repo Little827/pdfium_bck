@@ -187,8 +187,11 @@ void CBA_FontMap::AddFontToAnnotDict(CPDF_Font* pFont,
         "Font", pStreamResFontList->MakeReference(m_pDocument.Get()));
   }
   if (!pStreamResFontList->KeyExist(sAlias)) {
-    pStreamResFontList->SetFor(
-        sAlias, pFont->GetFontDict()->MakeReference(m_pDocument.Get()));
+    CPDF_Dictionary* pFontDict = pFont->GetFontDict();
+    auto pObject = pFontDict->IsInline()
+                       ? pFontDict->Clone()
+                       : pFontDict->MakeReference(m_pDocument.Get());
+    pStreamResFontList->SetFor(sAlias, std::move(pObject));
   }
 }
 
