@@ -23,6 +23,30 @@
       "revId": "b73a7c0431d8b241a8262eb91f6be7fc7d54c76d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4970b34_fdc606bc",
+        "filename": "fxjs/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-02T07:12:51Z",
+      "side": 1,
+      "message": "Fixed a couple others in this file.",
+      "parentUuid": "8ac3af45_71cbda13",
+      "range": {
+        "startLine": 1201,
+        "startChar": 7,
+        "endLine": 1201,
+        "endChar": 11
+      },
+      "revId": "b73a7c0431d8b241a8262eb91f6be7fc7d54c76d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
