@@ -66,6 +66,17 @@ class CJBig2_Image {
                          JBig2ComposeOp op);
 
  private:
+  void SubImageFast(int32_t x,
+                    int32_t y,
+                    int32_t w,
+                    int32_t h,
+                    CJBig2_Image* pImage);
+  void SubImageSlow(int32_t x,
+                    int32_t y,
+                    int32_t w,
+                    int32_t h,
+                    CJBig2_Image* pImage);
+
   bool ComposeToOpt2(CJBig2_Image* pDst,
                      int32_t x,
                      int32_t y,
