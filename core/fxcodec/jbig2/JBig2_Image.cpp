@@ -32,11 +32,263 @@
 
 #define BIT_INDEX_TO_BYTE(x) ((x) >> 3)
 #define BIT_INDEX_TO_ALIGNED_BYTE(x) (((x) >> 5) << 2)
+#define IS_INTRAWORD(start, end) (((start) & ~31) == (((end)-1) & ~31))
 
 namespace {
 
 const int kMaxImagePixels = INT_MAX - 31;
 const int kMaxImageBytes = kMaxImagePixels / 8;
+
+struct OperatorOR {
+  static inline uint32_t Eval(uint32_t arg1, uint32_t arg2) {
+    return arg1 | arg2;
+  }
+};
+
+struct OperatorAND {
+  static inline uint32_t Eval(uint32_t arg1, uint32_t arg2) {
+    return arg1 & arg2;
+  }
+};
+
+struct OperatorXOR {
+  static inline uint32_t Eval(uint32_t arg1, uint32_t arg2) {
+    return arg1 ^ arg2;
+  }
+};
+
+struct OperatorXNOR {
+  static inline uint32_t Eval(uint32_t arg1, uint32_t arg2) {
+    return ~(arg1 ^ arg2);
+  }
+};
+
+struct OperatorReplace {
+  static inline uint32_t Eval(uint32_t arg1, uint32_t arg2) { return arg1; }
+};
+
+template <class C>
+bool ComposeBothIntrawordRightCase(int32_t yLow,
+                                   int32_t yHi,
+                                   const uint8_t* lineSrc,
+                                   const uint8_t* lineSrcEnd,
+                                   uint8_t* lineDst,
+                                   uint32_t srcStride,
+                                   uint32_t dstStride,
+                                   uint32_t shift,
+                                   uint32_t maskM) {
+  for (int32_t yy = yLow; yy < yHi; yy++) {
+    if (lineSrc >= lineSrcEnd)
+      return false;
+    uint32_t tmp1 = JBIG2_GETDWORD(lineSrc) >> shift;
+    uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
+    uint32_t tmp = (tmp2 & ~maskM) | (C::Eval(tmp1, tmp2) & maskM);
+    JBIG2_PUTDWORD(lineDst, tmp);
+    lineSrc += srcStride;
+    lineDst += dstStride;
+  }
+  return true;
+}
+
+template <class C>
+bool ComposeBothIntrawordLeftCase(int32_t yLow,
+                                  int32_t yHi,
+                                  const uint8_t* lineSrc,
+                                  const uint8_t* lineSrcEnd,
+                                  uint8_t* lineDst,
+                                  uint32_t srcStride,
+                                  uint32_t dstStride,
+                                  uint32_t shift,
+                                  uint32_t maskM) {
+  for (int32_t yy = yLow; yy < yHi; yy++) {
+    if (lineSrc >= lineSrcEnd)
+      return false;
+    uint32_t tmp1 = JBIG2_GETDWORD(lineSrc) << shift;
+    uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
+    uint32_t tmp = (tmp2 & ~maskM) | (C::Eval(tmp1, tmp2) & maskM);
+    JBIG2_PUTDWORD(lineDst, tmp);
+    lineSrc += srcStride;
+    lineDst += dstStride;
+  }
+  return true;
+}
+
+template <class C>
+bool ComposeDstIntrawordCase(int32_t yLow,
+                             int32_t yHi,
+                             const uint8_t* lineSrc,
+                             const uint8_t* lineSrcEnd,
+                             uint8_t* lineDst,
+                             uint32_t srcStride,
+                             uint32_t dstStride,
+                             uint32_t shift1,
+                             uint32_t maskM) {
+  uint32_t shift2 = 32 - shift1;
+  for (int32_t yy = yLow; yy < yHi; yy++) {
+    if (lineSrc >= lineSrcEnd)
+      return false;
+    uint32_t tmp1 = (JBIG2_GETDWORD(lineSrc) << shift1) |
+                    (JBIG2_GETDWORD(lineSrc + 4) >> shift2);
+    uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
+    uint32_t tmp = (tmp2 & ~maskM) | (C::Eval(tmp1, tmp2) & maskM);
+    JBIG2_PUTDWORD(lineDst, tmp);
+    lineSrc += srcStride;
+    lineDst += dstStride;
+  }
+  return true;
+}
+
+template <class C>
+bool ComposeLeftCase(int32_t yLow,
+                     int32_t yHi,
+                     const uint8_t* lineSrc,
+                     const uint8_t* lineSrcEnd,
+                     uint8_t* lineDst,
+                     int32_t lineLeft,
+                     uint32_t srcStride,
+                     uint32_t dstStride,
+                     uint32_t shift1,
+                     uint32_t shift2,
+                     uint32_t maskL,
+                     uint32_t maskR,
+                     int32_t d1,
+                     int32_t d2,
+                     int32_t middleDwords) {
+  for (int32_t yy = yLow; yy < yHi; yy++) {
+    if (lineSrc > lineSrcEnd)
+      return false;
+    const uint8_t* sp = lineSrc;
+    uint8_t* dp = lineDst;
+    if (d1 != 0) {
+      uint32_t tmp1 =
+          (JBIG2_GETDWORD(sp) << shift1) | (JBIG2_GETDWORD(sp + 4) >> shift2);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = (tmp2 & ~maskL) | (C::Eval(tmp1, tmp2) & maskL);
+      JBIG2_PUTDWORD(dp, tmp);
+      sp += 4;
+      dp += 4;
+    }
+    for (int32_t xx = 0; xx < middleDwords; xx++) {
+      uint32_t tmp1 =
+          (JBIG2_GETDWORD(sp) << shift1) | (JBIG2_GETDWORD(sp + 4) >> shift2);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = C::Eval(tmp1, tmp2);
+      JBIG2_PUTDWORD(dp, tmp);
+      sp += 4;
+      dp += 4;
+    }
+    if (d2 != 0) {
+      uint32_t tmp1 =
+          (JBIG2_GETDWORD(sp) << shift1) |
+          (((sp + 4) < lineSrc + lineLeft ? JBIG2_GETDWORD(sp + 4) : 0) >>
+           shift2);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = (tmp2 & ~maskR) | (C::Eval(tmp1, tmp2) & maskR);
+      JBIG2_PUTDWORD(dp, tmp);
+    }
+    lineSrc += srcStride;
+    lineDst += dstStride;
+  }
+  return true;
+}
+
+template <class C>
+bool ComposeRightCase(int32_t yLow,
+                      int32_t yHi,
+                      const uint8_t* lineSrc,
+                      const uint8_t* lineSrcEnd,
+                      uint8_t* lineDst,
+                      int32_t lineLeft,
+                      uint32_t srcStride,
+                      uint32_t dstStride,
+                      uint32_t shift1,
+                      uint32_t shift2,
+                      uint32_t maskL,
+                      uint32_t maskR,
+                      int32_t d1,
+                      int32_t d2,
+                      int32_t middleDwords) {
+  for (int32_t yy = yLow; yy < yHi; yy++) {
+    if (lineSrc > lineSrcEnd)
+      return false;
+    const uint8_t* sp = lineSrc;
+    uint8_t* dp = lineDst;
+    if (d1 != 0) {
+      uint32_t tmp1 = JBIG2_GETDWORD(sp) >> shift1;
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = (tmp2 & ~maskL) | (C::Eval(tmp1, tmp2) & maskL);
+      JBIG2_PUTDWORD(dp, tmp);
+      dp += 4;
+    }
+    for (int32_t xx = 0; xx < middleDwords; xx++) {
+      uint32_t tmp1 =
+          (JBIG2_GETDWORD(sp) << shift2) | ((JBIG2_GETDWORD(sp + 4)) >> shift1);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = C::Eval(tmp1, tmp2);
+      JBIG2_PUTDWORD(dp, tmp);
+      sp += 4;
+      dp += 4;
+    }
+    if (d2 != 0) {
+      uint32_t tmp1 =
+          (JBIG2_GETDWORD(sp) << shift2) |
+          (((sp + 4) < lineSrc + lineLeft ? JBIG2_GETDWORD(sp + 4) : 0) >>
+           shift1);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = (tmp2 & ~maskR) | (C::Eval(tmp1, tmp2) & maskR);
+      JBIG2_PUTDWORD(dp, tmp);
+    }
+    lineSrc += srcStride;
+    lineDst += dstStride;
+  }
+  return true;
+}
+
+template <class C>
+bool ComposeMiddleCase(int32_t yLow,
+                       int32_t yHi,
+                       const uint8_t* lineSrc,
+                       const uint8_t* lineSrcEnd,
+                       uint8_t* lineDst,
+                       uint32_t srcStride,
+                       uint32_t dstStride,
+                       uint32_t maskL,
+                       uint32_t maskR,
+                       int32_t d1,
+                       int32_t d2,
+                       int32_t middleDwords) {
+  for (int32_t yy = yLow; yy < yHi; yy++) {
+    if (lineSrc > lineSrcEnd)
+      return false;
+    const uint8_t* sp = lineSrc;
+    uint8_t* dp = lineDst;
+    if (d1 != 0) {
+      uint32_t tmp1 = JBIG2_GETDWORD(sp);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = (tmp2 & ~maskL) | (C::Eval(tmp1, tmp2) & maskL);
+      JBIG2_PUTDWORD(dp, tmp);
+      sp += 4;
+      dp += 4;
+    }
+    for (int32_t xx = 0; xx < middleDwords; xx++) {
+      uint32_t tmp1 = JBIG2_GETDWORD(sp);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = C::Eval(tmp1, tmp2);
+      JBIG2_PUTDWORD(dp, tmp);
+      sp += 4;
+      dp += 4;
+    }
+    if (d2 != 0) {
+      uint32_t tmp1 = JBIG2_GETDWORD(sp);
+      uint32_t tmp2 = JBIG2_GETDWORD(dp);
+      uint32_t tmp = (tmp2 & ~maskR) | (C::Eval(tmp1, tmp2) & maskR);
+      JBIG2_PUTDWORD(dp, tmp);
+    }
+    lineSrc += srcStride;
+    lineDst += dstStride;
+  }
+  return true;
+}
 
 }  // namespace
 
@@ -276,6 +528,7 @@ bool CJBig2_Image::ComposeToOpt2(CJBig2_Image* pDst,
   if (ys0 >= ys1 || xs0 >= xs1)
     return false;
 
+  bool status = true;
   int32_t xd0 = std::max(x, 0);
   int32_t yd0 = std::max(y, 0);
   int32_t w = xs1 - xs0;
@@ -291,354 +544,46 @@ bool CJBig2_Image::ComposeToOpt2(CJBig2_Image* pDst,
   uint8_t* lineSrc = GetLineUnsafe(ys0) + BIT_INDEX_TO_ALIGNED_BYTE(xs0);
   int32_t lineLeft = m_nStride - BIT_INDEX_TO_ALIGNED_BYTE(xs0);
   uint8_t* lineDst = pDst->GetLineUnsafe(yd0) + BIT_INDEX_TO_ALIGNED_BYTE(xd0);
-  if ((xd0 & ~31) == ((xd1 - 1) & ~31)) {
-    if ((xs0 & ~31) == ((xs1 - 1) & ~31)) {
+
+  // Single-word cases.
+  if (IS_INTRAWORD(xd0, xd1)) {
+    if (IS_INTRAWORD(xs0, xs1)) {
       if (s1 > d1) {
         uint32_t shift = s1 - d1;
-        for (int32_t yy = yd0; yy < yd1; yy++) {
-          uint32_t tmp1 = JBIG2_GETDWORD(lineSrc) << shift;
-          uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 | tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskM) | ((tmp1 & tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 ^ tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskM) | ((~(tmp1 ^ tmp2)) & maskM);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskM) | (tmp1 & maskM);
-              break;
-          }
-          JBIG2_PUTDWORD(lineDst, tmp);
-          lineSrc += m_nStride;
-          lineDst += pDst->m_nStride;
-        }
+        status = ComposeBothIntrawordLeft(op, yd0, yd1, lineSrc, lineDst,
+                                          pDst->m_nStride, shift, maskM);
       } else {
         uint32_t shift = d1 - s1;
-        for (int32_t yy = yd0; yy < yd1; yy++) {
-          uint32_t tmp1 = JBIG2_GETDWORD(lineSrc) >> shift;
-          uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 | tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskM) | ((tmp1 & tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 ^ tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskM) | ((~(tmp1 ^ tmp2)) & maskM);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskM) | (tmp1 & maskM);
-              break;
-          }
-          JBIG2_PUTDWORD(lineDst, tmp);
-          lineSrc += m_nStride;
-          lineDst += pDst->m_nStride;
-        }
+        status = ComposeBothIntrawordRight(op, yd0, yd1, lineSrc, lineDst,
+                                           pDst->m_nStride, shift, maskM);
       }
     } else {
       uint32_t shift1 = s1 - d1;
-      uint32_t shift2 = 32 - shift1;
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        uint32_t tmp1 = (JBIG2_GETDWORD(lineSrc) << shift1) |
-                        (JBIG2_GETDWORD(lineSrc + 4) >> shift2);
-        uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
-        uint32_t tmp = 0;
-        switch (op) {
-          case JBIG2_COMPOSE_OR:
-            tmp = (tmp2 & ~maskM) | ((tmp1 | tmp2) & maskM);
-            break;
-          case JBIG2_COMPOSE_AND:
-            tmp = (tmp2 & ~maskM) | ((tmp1 & tmp2) & maskM);
-            break;
-          case JBIG2_COMPOSE_XOR:
-            tmp = (tmp2 & ~maskM) | ((tmp1 ^ tmp2) & maskM);
-            break;
-          case JBIG2_COMPOSE_XNOR:
-            tmp = (tmp2 & ~maskM) | ((~(tmp1 ^ tmp2)) & maskM);
-            break;
-          case JBIG2_COMPOSE_REPLACE:
-            tmp = (tmp2 & ~maskM) | (tmp1 & maskM);
-            break;
-        }
-        JBIG2_PUTDWORD(lineDst, tmp);
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
+      status = ComposeDstIntraword(op, yd0, yd1, lineSrc, lineDst,
+                                   pDst->m_nStride, shift1, maskM);
     }
-  } else {
-    uint8_t* sp = nullptr;
-    uint8_t* dp = nullptr;
-    if (s1 > d1) {
-      uint32_t shift1 = s1 - d1;
-      uint32_t shift2 = 32 - shift1;
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        sp = lineSrc;
-        dp = lineDst;
-        if (d1 != 0) {
-          uint32_t tmp1 = (JBIG2_GETDWORD(sp) << shift1) |
-                          (JBIG2_GETDWORD(sp + 4) >> shift2);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 | tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskL) | ((tmp1 & tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 ^ tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskL) | ((~(tmp1 ^ tmp2)) & maskL);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskL) | (tmp1 & maskL);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        for (int32_t xx = 0; xx < middleDwords; xx++) {
-          uint32_t tmp1 = (JBIG2_GETDWORD(sp) << shift1) |
-                          (JBIG2_GETDWORD(sp + 4) >> shift2);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = tmp1 | tmp2;
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = tmp1 & tmp2;
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = tmp1 ^ tmp2;
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = ~(tmp1 ^ tmp2);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = tmp1;
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        if (d2 != 0) {
-          uint32_t tmp1 =
-              (JBIG2_GETDWORD(sp) << shift1) |
-              (((sp + 4) < lineSrc + lineLeft ? JBIG2_GETDWORD(sp + 4) : 0) >>
-               shift2);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 | tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskR) | ((tmp1 & tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 ^ tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskR) | ((~(tmp1 ^ tmp2)) & maskR);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskR) | (tmp1 & maskR);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-        }
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
-    } else if (s1 == d1) {
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        sp = lineSrc;
-        dp = lineDst;
-        if (d1 != 0) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 | tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskL) | ((tmp1 & tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 ^ tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskL) | ((~(tmp1 ^ tmp2)) & maskL);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskL) | (tmp1 & maskL);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        for (int32_t xx = 0; xx < middleDwords; xx++) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = tmp1 | tmp2;
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = tmp1 & tmp2;
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = tmp1 ^ tmp2;
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = ~(tmp1 ^ tmp2);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = tmp1;
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        if (d2 != 0) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 | tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskR) | ((tmp1 & tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 ^ tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskR) | ((~(tmp1 ^ tmp2)) & maskR);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskR) | (tmp1 & maskR);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-        }
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
+    return status;
+  }
+
+  // Multi-word cases.
+  int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
+  if (s1 > d1) {
+    uint32_t shift1 = s1 - d1;
+    uint32_t shift2 = 32 - shift1;
+    status = ComposeLeft(op, yd0, yd1, lineSrc, lineDst, lineLeft, m_nStride,
+                         pDst->m_nStride, shift1, shift2, maskL, maskR, d1, d2,
+                         middleDwords);
+  } else if (s1 == d1) {
+    status = ComposeMiddle(op, yd0, yd1, lineSrc, lineDst, m_nStride,
+                           pDst->m_nStride, maskL, maskR, d1, d2, middleDwords);
     } else {
       uint32_t shift1 = d1 - s1;
       uint32_t shift2 = 32 - shift1;
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        sp = lineSrc;
-        dp = lineDst;
-        if (d1 != 0) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp) >> shift1;
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 | tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskL) | ((tmp1 & tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 ^ tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskL) | ((~(tmp1 ^ tmp2)) & maskL);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskL) | (tmp1 & maskL);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          dp += 4;
-        }
-        for (int32_t xx = 0; xx < middleDwords; xx++) {
-          uint32_t tmp1 = (JBIG2_GETDWORD(sp) << shift2) |
-                          ((JBIG2_GETDWORD(sp + 4)) >> shift1);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = tmp1 | tmp2;
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = tmp1 & tmp2;
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = tmp1 ^ tmp2;
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = ~(tmp1 ^ tmp2);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = tmp1;
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        if (d2 != 0) {
-          uint32_t tmp1 =
-              (JBIG2_GETDWORD(sp) << shift2) |
-              (((sp + 4) < lineSrc + lineLeft ? JBIG2_GETDWORD(sp + 4) : 0) >>
-               shift1);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 | tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskR) | ((tmp1 & tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 ^ tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskR) | ((~(tmp1 ^ tmp2)) & maskR);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskR) | (tmp1 & maskR);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-        }
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
-    }
+      status = ComposeRight(op, yd0, yd1, lineSrc, lineDst, lineLeft, m_nStride,
+                            pDst->m_nStride, shift1, shift2, maskL, maskR, d1,
+                            d2, middleDwords);
   }
-  return true;
+  return status;
 }
 
 bool CJBig2_Image::ComposeToOpt2WithRect(CJBig2_Image* pDst,
@@ -658,9 +603,10 @@ bool CJBig2_Image::ComposeToOpt2WithRect(CJBig2_Image* pDst,
   int32_t ys1 = y + sh > pDst->m_nHeight ? pDst->m_nHeight - y : sh;
   int32_t xs0 = x < 0 ? -x : 0;
   int32_t xs1 = x + sw > pDst->m_nWidth ? pDst->m_nWidth - x : sw;
-  if ((ys0 >= ys1) || (xs0 >= xs1)) {
-    return 0;
-  }
+  if (ys0 >= ys1 || xs0 >= xs1)
+    return false;
+
+  bool status = true;
   int32_t w = xs1 - xs0;
   int32_t h = ys1 - ys0;
   int32_t yd0 = y < 0 ? 0 : y;
@@ -675,365 +621,269 @@ bool CJBig2_Image::ComposeToOpt2WithRect(CJBig2_Image* pDst,
   int32_t maskM = maskL & maskR;
   const uint8_t* lineSrc = GetLineUnsafe(rtSrc.top + ys0) +
                            BIT_INDEX_TO_ALIGNED_BYTE(xs0 + rtSrc.left);
-  const uint8_t* lineSrcEnd = data() + m_nHeight * m_nStride;
   int32_t lineLeft = m_nStride - BIT_INDEX_TO_ALIGNED_BYTE(xs0);
   uint8_t* lineDst = pDst->GetLineUnsafe(yd0) + BIT_INDEX_TO_ALIGNED_BYTE(xd0);
+
+  // Single-word cases.
   if ((xd0 & ~31) == ((xd1 - 1) & ~31)) {
     if ((xs0 & ~31) == ((xs1 - 1) & ~31)) {
       if (s1 > d1) {
         uint32_t shift = s1 - d1;
-        for (int32_t yy = yd0; yy < yd1; yy++) {
-          if (lineSrc >= lineSrcEnd)
-            return false;
-          uint32_t tmp1 = JBIG2_GETDWORD(lineSrc) << shift;
-          uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 | tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskM) | ((tmp1 & tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 ^ tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskM) | ((~(tmp1 ^ tmp2)) & maskM);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskM) | (tmp1 & maskM);
-              break;
-          }
-          JBIG2_PUTDWORD(lineDst, tmp);
-          lineSrc += m_nStride;
-          lineDst += pDst->m_nStride;
-        }
+        status = ComposeBothIntrawordLeft(op, yd0, yd1, lineSrc, lineDst,
+                                          pDst->m_nStride, shift, maskM);
       } else {
         uint32_t shift = d1 - s1;
-        for (int32_t yy = yd0; yy < yd1; yy++) {
-          if (lineSrc >= lineSrcEnd)
-            return false;
-          uint32_t tmp1 = JBIG2_GETDWORD(lineSrc) >> shift;
-          uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 | tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskM) | ((tmp1 & tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskM) | ((tmp1 ^ tmp2) & maskM);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskM) | ((~(tmp1 ^ tmp2)) & maskM);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskM) | (tmp1 & maskM);
-              break;
-          }
-          JBIG2_PUTDWORD(lineDst, tmp);
-          lineSrc += m_nStride;
-          lineDst += pDst->m_nStride;
-        }
+        status = ComposeBothIntrawordRight(op, yd0, yd1, lineSrc, lineDst,
+                                           pDst->m_nStride, shift, maskM);
       }
     } else {
       uint32_t shift1 = s1 - d1;
-      uint32_t shift2 = 32 - shift1;
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        if (lineSrc >= lineSrcEnd)
-          return false;
-        uint32_t tmp1 = (JBIG2_GETDWORD(lineSrc) << shift1) |
-                        (JBIG2_GETDWORD(lineSrc + 4) >> shift2);
-        uint32_t tmp2 = JBIG2_GETDWORD(lineDst);
-        uint32_t tmp = 0;
-        switch (op) {
-          case JBIG2_COMPOSE_OR:
-            tmp = (tmp2 & ~maskM) | ((tmp1 | tmp2) & maskM);
-            break;
-          case JBIG2_COMPOSE_AND:
-            tmp = (tmp2 & ~maskM) | ((tmp1 & tmp2) & maskM);
-            break;
-          case JBIG2_COMPOSE_XOR:
-            tmp = (tmp2 & ~maskM) | ((tmp1 ^ tmp2) & maskM);
-            break;
-          case JBIG2_COMPOSE_XNOR:
-            tmp = (tmp2 & ~maskM) | ((~(tmp1 ^ tmp2)) & maskM);
-            break;
-          case JBIG2_COMPOSE_REPLACE:
-            tmp = (tmp2 & ~maskM) | (tmp1 & maskM);
-            break;
-        }
-        JBIG2_PUTDWORD(lineDst, tmp);
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
+      status = ComposeDstIntraword(op, yd0, yd1, lineSrc, lineDst,
+                                   pDst->m_nStride, shift1, maskM);
     }
-  } else {
-    if (s1 > d1) {
-      uint32_t shift1 = s1 - d1;
-      uint32_t shift2 = 32 - shift1;
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        if (lineSrc >= lineSrcEnd)
-          return false;
-        const uint8_t* sp = lineSrc;
-        uint8_t* dp = lineDst;
-        if (d1 != 0) {
-          uint32_t tmp1 = (JBIG2_GETDWORD(sp) << shift1) |
-                          (JBIG2_GETDWORD(sp + 4) >> shift2);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 | tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskL) | ((tmp1 & tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 ^ tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskL) | ((~(tmp1 ^ tmp2)) & maskL);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskL) | (tmp1 & maskL);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        for (int32_t xx = 0; xx < middleDwords; xx++) {
-          uint32_t tmp1 = (JBIG2_GETDWORD(sp) << shift1) |
-                          (JBIG2_GETDWORD(sp + 4) >> shift2);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = tmp1 | tmp2;
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = tmp1 & tmp2;
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = tmp1 ^ tmp2;
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = ~(tmp1 ^ tmp2);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = tmp1;
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        if (d2 != 0) {
-          uint32_t tmp1 =
-              (JBIG2_GETDWORD(sp) << shift1) |
-              (((sp + 4) < lineSrc + lineLeft ? JBIG2_GETDWORD(sp + 4) : 0) >>
-               shift2);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 | tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskR) | ((tmp1 & tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 ^ tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskR) | ((~(tmp1 ^ tmp2)) & maskR);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskR) | (tmp1 & maskR);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-        }
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
-    } else if (s1 == d1) {
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        if (lineSrc >= lineSrcEnd)
-          return false;
-        const uint8_t* sp = lineSrc;
-        uint8_t* dp = lineDst;
-        if (d1 != 0) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 | tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskL) | ((tmp1 & tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 ^ tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskL) | ((~(tmp1 ^ tmp2)) & maskL);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskL) | (tmp1 & maskL);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        for (int32_t xx = 0; xx < middleDwords; xx++) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = tmp1 | tmp2;
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = tmp1 & tmp2;
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = tmp1 ^ tmp2;
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = ~(tmp1 ^ tmp2);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = tmp1;
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        if (d2 != 0) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 | tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskR) | ((tmp1 & tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 ^ tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskR) | ((~(tmp1 ^ tmp2)) & maskR);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskR) | (tmp1 & maskR);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-        }
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
-    } else {
-      uint32_t shift1 = d1 - s1;
-      uint32_t shift2 = 32 - shift1;
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
-      for (int32_t yy = yd0; yy < yd1; yy++) {
-        if (lineSrc >= lineSrcEnd)
-          return false;
-        const uint8_t* sp = lineSrc;
-        uint8_t* dp = lineDst;
-        if (d1 != 0) {
-          uint32_t tmp1 = JBIG2_GETDWORD(sp) >> shift1;
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 | tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskL) | ((tmp1 & tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskL) | ((tmp1 ^ tmp2) & maskL);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskL) | ((~(tmp1 ^ tmp2)) & maskL);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskL) | (tmp1 & maskL);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          dp += 4;
-        }
-        for (int32_t xx = 0; xx < middleDwords; xx++) {
-          uint32_t tmp1 = (JBIG2_GETDWORD(sp) << shift2) |
-                          ((JBIG2_GETDWORD(sp + 4)) >> shift1);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = tmp1 | tmp2;
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = tmp1 & tmp2;
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = tmp1 ^ tmp2;
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = ~(tmp1 ^ tmp2);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = tmp1;
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-          sp += 4;
-          dp += 4;
-        }
-        if (d2 != 0) {
-          uint32_t tmp1 =
-              (JBIG2_GETDWORD(sp) << shift2) |
-              (((sp + 4) < lineSrc + lineLeft ? JBIG2_GETDWORD(sp + 4) : 0) >>
-               shift1);
-          uint32_t tmp2 = JBIG2_GETDWORD(dp);
-          uint32_t tmp = 0;
-          switch (op) {
-            case JBIG2_COMPOSE_OR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 | tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_AND:
-              tmp = (tmp2 & ~maskR) | ((tmp1 & tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XOR:
-              tmp = (tmp2 & ~maskR) | ((tmp1 ^ tmp2) & maskR);
-              break;
-            case JBIG2_COMPOSE_XNOR:
-              tmp = (tmp2 & ~maskR) | ((~(tmp1 ^ tmp2)) & maskR);
-              break;
-            case JBIG2_COMPOSE_REPLACE:
-              tmp = (tmp2 & ~maskR) | (tmp1 & maskR);
-              break;
-          }
-          JBIG2_PUTDWORD(dp, tmp);
-        }
-        lineSrc += m_nStride;
-        lineDst += pDst->m_nStride;
-      }
-    }
+    return status;
   }
-  return 1;
+
+  // Multi-word cases.
+  int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
+  if (s1 > d1) {
+    uint32_t shift1 = s1 - d1;
+    uint32_t shift2 = 32 - shift1;
+    status = ComposeLeft(op, yd0, yd1, lineSrc, lineDst, lineLeft, m_nStride,
+                         pDst->m_nStride, shift1, shift2, maskL, maskR, d1, d2,
+                         middleDwords);
+  } else if (s1 == d1) {
+    status = ComposeMiddle(op, yd0, yd1, lineSrc, lineDst, m_nStride,
+                           pDst->m_nStride, maskL, maskR, d1, d2, middleDwords);
+
+  } else {
+    uint32_t shift1 = d1 - s1;
+    uint32_t shift2 = 32 - shift1;
+    status = ComposeRight(op, yd0, yd1, lineSrc, lineDst, lineLeft, m_nStride,
+                          pDst->m_nStride, shift1, shift2, maskL, maskR, d1, d2,
+                          middleDwords);
+  }
+  return status;
+}
+
+bool CJBig2_Image::ComposeBothIntrawordLeft(JBig2ComposeOp op,
+                                            int32_t yLow,
+                                            int32_t yHi,
+                                            const uint8_t* lineSrc,
+                                            uint8_t* lineDst,
+                                            uint32_t dstStride,
+                                            uint32_t shift,
+                                            uint32_t maskM) {
+  const uint8_t* lineSrcEnd = GetLineUnsafe(m_nHeight);
+  switch (op) {
+    case JBIG2_COMPOSE_OR:
+      return ComposeBothIntrawordLeftCase<OperatorOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_AND:
+      return ComposeBothIntrawordLeftCase<OperatorAND>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_XOR:
+      return ComposeBothIntrawordLeftCase<OperatorXOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_XNOR:
+      return ComposeBothIntrawordLeftCase<OperatorXNOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_REPLACE:
+      return ComposeBothIntrawordLeftCase<OperatorReplace>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+  }
+  return false;
+}
+
+bool CJBig2_Image::ComposeBothIntrawordRight(JBig2ComposeOp op,
+                                             int32_t yLow,
+                                             int32_t yHi,
+                                             const uint8_t* lineSrc,
+                                             uint8_t* lineDst,
+                                             uint32_t dstStride,
+                                             uint32_t shift,
+                                             uint32_t maskM) {
+  const uint8_t* lineSrcEnd = GetLineUnsafe(m_nHeight);
+  switch (op) {
+    case JBIG2_COMPOSE_OR:
+      return ComposeBothIntrawordRightCase<OperatorOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_AND:
+      return ComposeBothIntrawordRightCase<OperatorAND>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_XOR:
+      return ComposeBothIntrawordRightCase<OperatorXOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_XNOR:
+      return ComposeBothIntrawordRightCase<OperatorXNOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+    case JBIG2_COMPOSE_REPLACE:
+      return ComposeBothIntrawordRightCase<OperatorReplace>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift,
+          maskM);
+  }
+  return false;
+}
+
+bool CJBig2_Image::ComposeDstIntraword(JBig2ComposeOp op,
+                                       int32_t yLow,
+                                       int32_t yHi,
+                                       const uint8_t* lineSrc,
+                                       uint8_t* lineDst,
+                                       uint32_t dstStride,
+                                       uint32_t shift1,
+                                       uint32_t maskM) {
+  const uint8_t* lineSrcEnd = GetLineUnsafe(m_nHeight);
+  switch (op) {
+    case JBIG2_COMPOSE_OR:
+      return ComposeDstIntrawordCase<OperatorOR>(yLow, yHi, lineSrc, lineSrcEnd,
+                                                 lineDst, m_nStride, dstStride,
+                                                 shift1, maskM);
+    case JBIG2_COMPOSE_AND:
+      return ComposeDstIntrawordCase<OperatorAND>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift1,
+          maskM);
+    case JBIG2_COMPOSE_XOR:
+      return ComposeDstIntrawordCase<OperatorXOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift1,
+          maskM);
+    case JBIG2_COMPOSE_XNOR:
+      return ComposeDstIntrawordCase<OperatorXNOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift1,
+          maskM);
+    case JBIG2_COMPOSE_REPLACE:
+      return ComposeDstIntrawordCase<OperatorReplace>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, m_nStride, dstStride, shift1,
+          maskM);
+  }
+  return false;
+}
+
+bool CJBig2_Image::ComposeLeft(JBig2ComposeOp op,
+                               int32_t yLow,
+                               int32_t yHi,
+                               const uint8_t* lineSrc,
+                               uint8_t* lineDst,
+                               int32_t lineLeft,
+                               uint32_t srcStride,
+                               uint32_t dstStride,
+                               uint32_t shift1,
+                               uint32_t shift2,
+                               uint32_t maskL,
+                               uint32_t maskR,
+                               int32_t d1,
+                               int32_t d2,
+                               int32_t middleDwords) {
+  const uint8_t* lineSrcEnd = GetLineUnsafe(m_nHeight);
+  switch (op) {
+    case JBIG2_COMPOSE_OR:
+      return ComposeLeftCase<OperatorOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_AND:
+      return ComposeLeftCase<OperatorAND>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_XOR:
+      return ComposeLeftCase<OperatorXOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_XNOR:
+      return ComposeLeftCase<OperatorXNOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_REPLACE:
+      return ComposeLeftCase<OperatorReplace>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+  }
+  return false;
+}
+
+bool CJBig2_Image::ComposeMiddle(JBig2ComposeOp op,
+                                 int32_t yLow,
+                                 int32_t yHi,
+                                 const uint8_t* lineSrc,
+                                 uint8_t* lineDst,
+                                 uint32_t srcStride,
+                                 uint32_t dstStride,
+                                 uint32_t maskL,
+                                 uint32_t maskR,
+                                 int32_t d1,
+                                 int32_t d2,
+                                 int32_t middleDwords) {
+  const uint8_t* lineSrcEnd = GetLineUnsafe(m_nHeight);
+  switch (op) {
+    case JBIG2_COMPOSE_OR:
+      return ComposeMiddleCase<OperatorOR>(yLow, yHi, lineSrc, lineSrcEnd,
+                                           lineDst, srcStride, dstStride, maskL,
+                                           maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_AND:
+      return ComposeMiddleCase<OperatorAND>(yLow, yHi, lineSrc, lineSrcEnd,
+                                            lineDst, srcStride, dstStride,
+                                            maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_XOR:
+      return ComposeMiddleCase<OperatorXOR>(yLow, yHi, lineSrc, lineSrcEnd,
+                                            lineDst, srcStride, dstStride,
+                                            maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_XNOR:
+      return ComposeMiddleCase<OperatorXNOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, srcStride, dstStride, maskL,
+          maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_REPLACE:
+      return ComposeMiddleCase<OperatorReplace>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, srcStride, dstStride, maskL,
+          maskR, d1, d2, middleDwords);
+  }
+  return false;
+}
+
+bool CJBig2_Image::ComposeRight(JBig2ComposeOp op,
+                                int32_t yLow,
+                                int32_t yHi,
+                                const uint8_t* lineSrc,
+                                uint8_t* lineDst,
+                                int32_t lineLeft,
+                                uint32_t srcStride,
+                                uint32_t dstStride,
+                                uint32_t shift1,
+                                uint32_t shift2,
+                                uint32_t maskL,
+                                uint32_t maskR,
+                                int32_t d1,
+                                int32_t d2,
+                                int32_t middleDwords) {
+  const uint8_t* lineSrcEnd = GetLineUnsafe(m_nHeight);
+  switch (op) {
+    case JBIG2_COMPOSE_OR:
+      return ComposeRightCase<OperatorOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_AND:
+      return ComposeRightCase<OperatorAND>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_XOR:
+      return ComposeRightCase<OperatorXOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_XNOR:
+      return ComposeRightCase<OperatorXNOR>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+    case JBIG2_COMPOSE_REPLACE:
+      return ComposeRightCase<OperatorReplace>(
+          yLow, yHi, lineSrc, lineSrcEnd, lineDst, lineLeft, srcStride,
+          dstStride, shift1, shift2, maskL, maskR, d1, d2, middleDwords);
+  }
+  return false;
 }
