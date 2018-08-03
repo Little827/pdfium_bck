@@ -22,6 +22,29 @@
       "revId": "868c59ed354677ebf01e6c8e4277bff1b0291326",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f51c83d_9fd1f493",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-03T18:24:18Z",
+      "side": 1,
+      "message": "same here?",
+      "range": {
+        "startLine": 137,
+        "startChar": 39,
+        "endLine": 137,
+        "endChar": 43
+      },
+      "revId": "868c59ed354677ebf01e6c8e4277bff1b0291326",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
