@@ -13,6 +13,7 @@
 #include "core/fxcrt/maybe_owned.h"
 
 struct FX_RECT;
+struct CJBig2_Args;
 
 enum JBig2ComposeOp {
   JBIG2_COMPOSE_OR = 0,
@@ -24,6 +25,31 @@ enum JBig2ComposeOp {
 
 class CJBig2_Image {
  public:
+  struct ComposeArgs {
+    int32_t xs0;
+    int32_t xs1;
+    int32_t ys0;
+    int32_t ys1;
+    int32_t xd0;
+    int32_t xd1;
+    int32_t yd0;
+    int32_t yd1;
+    const uint8_t* lineSrc;
+    const uint8_t* lineSrcEnd;
+    uint8_t* lineDst;
+    int32_t lineLeft;
+    uint32_t srcStride;
+    uint32_t dstStride;
+    uint32_t shift;
+    uint32_t maskL;
+    uint32_t maskR;
+    uint32_t maskM;
+    int32_t s1;
+    int32_t d1;
+    int32_t d2;
+    int32_t middleDwords;
+  };
+
   CJBig2_Image(int32_t w, int32_t h);
   CJBig2_Image(int32_t w, int32_t h, int32_t stride, uint8_t* pBuf);
   CJBig2_Image(const CJBig2_Image& im);
@@ -78,6 +104,14 @@ class CJBig2_Image {
                              int32_t y,
                              JBig2ComposeOp op,
                              const FX_RECT& rtSrc);
+
+  bool ComposeCommon(JBig2ComposeOp op, ComposeArgs* args);
+  bool ComposeBothIntrawordLeft(JBig2ComposeOp op, const ComposeArgs& args);
+  bool ComposeBothIntrawordRight(JBig2ComposeOp op, const ComposeArgs& args);
+  bool ComposeDstIntraword(JBig2ComposeOp op, const ComposeArgs& args);
+  bool ComposeLeft(JBig2ComposeOp op, const ComposeArgs& args);
+  bool ComposeMiddle(JBig2ComposeOp op, const ComposeArgs& args);
+  bool ComposeRight(JBig2ComposeOp op, const ComposeArgs& args);
 
   MaybeOwned<uint8_t, FxFreeDeleter> m_pData;
   int32_t m_nWidth = 0;   // 1-bit pixels
