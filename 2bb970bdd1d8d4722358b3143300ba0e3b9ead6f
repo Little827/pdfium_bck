@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9787eae9_4de42a73",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-04T16:18:39Z",
+      "side": 1,
+      "message": "linearized_header-\u003eGetPageCount() always returns a value \u003e 0, so CPDF_PagesTree\u0027s ctor can call RetrievePageCount() itself.",
+      "revId": "2bb970bdd1d8d4722358b3143300ba0e3b9ead6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524d4283_d4e81a30",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-04T16:18:39Z",
+      "side": 1,
+      "message": "It\u0027s not obvious |m_PageList| and |CPDF_PagesTree::pages_| are being kept in sync. CPDF_PagesTree::TraversePDFPages() can modify multiple |pages_| entries, but calling PageAt() here modifies at most 1 |m_PageList| entry.\n\nWould it be better to either get rid of |pages_| and try to use only |m_PageList|, or vice versa?",
+      "revId": "2bb970bdd1d8d4722358b3143300ba0e3b9ead6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e1b07f_0f7a6841",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-04T16:18:39Z",
+      "side": 1,
+      "message": "No longer used. Also \u003cutility\u003e.",
+      "revId": "2bb970bdd1d8d4722358b3143300ba0e3b9ead6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5d1140_a61c636c",
+        "filename": "core/fpdfapi/parser/cpdf_pages_tree.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-04T16:18:39Z",
+      "side": 1,
+      "message": "This is always true.",
+      "revId": "2bb970bdd1d8d4722358b3143300ba0e3b9ead6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
