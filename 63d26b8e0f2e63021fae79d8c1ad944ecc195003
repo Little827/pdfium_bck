@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "80616620_6b296919",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-04T02:04:40Z",
+      "side": 1,
+      "message": "Maybe in another CL? Many of these font classes do not initialize all member variables in the ctor. Instead, they are initialized in Load(). At least now it is more obvious what isn\u0027t initialized in the ctor.",
+      "parentUuid": "2ca93761_e667c1ee",
+      "revId": "63d26b8e0f2e63021fae79d8c1ad944ecc195003",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5d4cce6_ac830f44",
         "filename": "core/fpdfapi/font/cpdf_font.h",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2018-08-03T14:35:43Z",
       "side": 1,
       "message": "Can this be const too?",
+      "revId": "63d26b8e0f2e63021fae79d8c1ad944ecc195003",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9170b2d_b3b9ca53",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-04T02:04:40Z",
+      "side": 1,
+      "message": "Sadly, no. ClearFontDict() needs to reset it.",
+      "parentUuid": "a5d4cce6_ac830f44",
       "revId": "63d26b8e0f2e63021fae79d8c1ad944ecc195003",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
