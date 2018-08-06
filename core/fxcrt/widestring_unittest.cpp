@@ -1381,6 +1381,13 @@ TEST(WideString, FormatOutOfRangeChar) {
   EXPECT_NE(L"", WideString::Format(L"unsupported char '%c'", 0x00FF00FF));
 }
 
+TEST(WideString, FormatString) {
+  // %ls and wide characters are the reliable combination across platforms.
+  EXPECT_EQ(L"", WideString::Format(L"%ls", L""));
+  EXPECT_EQ(L"clams", WideString::Format(L"%ls", L"clams"));
+  EXPECT_EQ(L"cla", WideString::Format(L"%.3ls", L"clams"));
+}
+
 TEST(WideString, Empty) {
   WideString empty_str;
   EXPECT_TRUE(empty_str.IsEmpty());
