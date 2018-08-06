@@ -4790,7 +4790,7 @@ void CFXJSE_FormCalcContext::assign_value_operator(
       for (int32_t i = 2; i < iLeftLength; i++) {
         lValue->GetObjectPropertyByIdx(i, jsObjectValue.get());
         if (!SetObjectDefaultValue(jsObjectValue.get(), rValue.get())) {
-          pContext->ThrowNoDefaultPropertyException(szFuncName);
+          pContext->ThrowNoDefaultPropertyException(ByteString(szFuncName));
           return;
         }
       }
@@ -4803,7 +4803,7 @@ void CFXJSE_FormCalcContext::assign_value_operator(
     }
   } else if (lValue->IsObject()) {
     if (!SetObjectDefaultValue(lValue.get(), rValue.get())) {
-      pContext->ThrowNoDefaultPropertyException(szFuncName);
+      pContext->ThrowNoDefaultPropertyException(ByteString(szFuncName));
       return;
     }
   }
@@ -6198,10 +6198,9 @@ void CFXJSE_FormCalcContext::GlobalPropertyGetter(CFXJSE_Value* pValue) {
 }
 
 void CFXJSE_FormCalcContext::ThrowNoDefaultPropertyException(
-    const ByteStringView& name) const {
-  // TODO(tsepez): check usage of c_str() below.
-  ThrowException(L"%.16S doesn't have a default property.",
-                 name.unterminated_c_str());
+    const ByteString& terminated_name) const {
+  ThrowException(L"%s doesn't have a default property.",
+                 terminated_name.c_str());
 }
 
 void CFXJSE_FormCalcContext::ThrowCompilerErrorException() const {
@@ -6220,14 +6219,14 @@ void CFXJSE_FormCalcContext::ThrowPropertyNotInObjectException(
     const WideString& name,
     const WideString& exp) const {
   ThrowException(
-      L"An attempt was made to reference property '%.16s' of a non-object "
-      L"in SOM expression %.16s.",
+      L"An attempt was made to reference property '%ls' of a non-object "
+      L"in SOM expression %ls.",
       name.c_str(), exp.c_str());
 }
 
 void CFXJSE_FormCalcContext::ThrowParamCountMismatchException(
     const WideString& method) const {
-  ThrowException(L"Incorrect number of parameters calling method '%.16s'.",
+  ThrowException(L"Incorrect number of parameters calling method '%ls'.",
                  method.c_str());
 }
 

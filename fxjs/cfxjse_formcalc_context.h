@@ -391,7 +391,7 @@ class CFXJSE_FormCalcContext : public CFXJSE_HostObject {
   v8::Isolate* GetScriptRuntime() const { return m_pIsolate.Get(); }
   CXFA_Document* GetDocument() const { return m_pDocument.Get(); }
 
-  void ThrowNoDefaultPropertyException(const ByteStringView& name) const;
+  void ThrowNoDefaultPropertyException(const ByteString& name) const;
   void ThrowCompilerErrorException() const;
   void ThrowDivideByZeroException() const;
   void ThrowServerDeniedException() const;
