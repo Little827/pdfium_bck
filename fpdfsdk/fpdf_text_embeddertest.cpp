@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "core/fxcrt/fx_memory.h"
 #include "public/cpp/fpdf_scopers.h"
@@ -757,6 +758,50 @@ TEST_F(FPDFTextEmbeddertest, CountRects) {
     EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 2));
     EXPECT_EQ(0, FPDFText_CountRects(textpage, start, 500));
   }
+
+  FPDFText_ClosePage(textpage);
+  UnloadPage(page);
+}
+
+TEST_F(FPDFTextEmbeddertest, GetText) {
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE textpage = FPDFText_LoadPage(page);
+  ASSERT_TRUE(textpage);
+
+  EXPECT_EQ(2, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT textobject = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(textobject);
+
+  // Positive testing.
+  constexpr char kHelloText[] = "Hello, world!";
+  // Return value includes the terminating NUL that is provided.
+  constexpr unsigned long kHelloUTF16Size = FX_ArraySize(kHelloText) * 2;
+  constexpr wchar_t kHelloWideText[] = L"Hello, world!";
+  unsigned long size = FPDFTextObj_GetText(textobject, textpage, nullptr, 0);
+  ASSERT_EQ(kHelloUTF16Size, size);
+
+  std::vector<unsigned short> buffer(size);
+  ASSERT_EQ(size,
+            FPDFTextObj_GetText(textobject, textpage, buffer.data(), size));
+  ASSERT_EQ(kHelloWideText, GetPlatformWString(buffer.data()));
+
+  // Negative testing.
+  ASSERT_EQ(0U, FPDFTextObj_GetText(nullptr, textpage, nullptr, 0));
+  ASSERT_EQ(0U, FPDFTextObj_GetText(textobject, nullptr, nullptr, 0));
+  ASSERT_EQ(0U, FPDFTextObj_GetText(nullptr, nullptr, nullptr, 0));
+
+  // Buffer is too small, ensure it's not modified.
+  buffer.resize(2);
+  buffer[0] = 'x';
+  buffer[1] = '\0';
+  size =
+      FPDFTextObj_GetText(textobject, textpage, buffer.data(), buffer.size());
+  ASSERT_EQ(kHelloUTF16Size, size);
+  ASSERT_EQ('x', buffer[0]);
+  ASSERT_EQ('\0', buffer[1]);
 
   FPDFText_ClosePage(textpage);
   UnloadPage(page);
