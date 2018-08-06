@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3995db_588b6aa4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-06T23:51:42Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "14966da2a015cb398ad418132f243d41669a830f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05be7136_31e82ef2",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-06T23:51:42Z",
+      "side": 1,
+      "message": "Doesn\u0027t match the #if. I would just omit the comment here.",
+      "range": {
+        "startLine": 1397,
+        "startChar": 22,
+        "endLine": 1397,
+        "endChar": 35
+      },
+      "revId": "14966da2a015cb398ad418132f243d41669a830f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
