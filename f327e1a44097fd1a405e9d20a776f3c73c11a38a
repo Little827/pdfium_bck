@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533352395 -0700\nnonce APISObQoQQlgTrVDBU2wtVZIoBzkvnFzyk3FdsfVDyLuQPScjEeuC8Cq11ut5BGIlJPIunFnczuc\n\n0000000000000000000000000000000000000000 f327e1a44097fd1a405e9d20a776f3c73c11a38a refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dchange-cpdf-font\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltlGcsACgkQqzYtYVpm\n/XsTfQf/QtI3jaEJo5YpbUd1iHAn3gw7oP47y9AcLwCG7AMKaKSwkJMTkNkjRKeM\nI9OTAuIOAVIXWGdZlteWDBaFxUMaSMic7JGiWhbEgk1vFqRdE/T/SDT/sCuJnjKG\nvYt1aBR7ADor415TUz+ZqXCiUq2THj6wAZvqqaYyR+MzNhOnrocpp6T192lkMpVc\nKNiQ4ZKPjzPUFjt/6asvwpxFAr6pnkN5LdyqNryWy5wrfGF87HpyYs00el1cZ1ui\nTeSopnDeoBjUPl3fMzoh5QqRDuDLqifL9rbmm4HZahAp0LQqva+8S/Qebz1ARgDl\nngIXWYMTRq3DsVp12ad072aS0Cji2Q\u003d\u003d\n\u003doT2F\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7448bf6e_9e598df4",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-07T22:51:44Z",
+      "side": 1,
+      "message": "Can this be ASSERT(offset \u003c pString.GetLength()) instead?",
+      "revId": "f327e1a44097fd1a405e9d20a776f3c73c11a38a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
