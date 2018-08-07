@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4310530_7c28e733",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-07T16:12:14Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s worth blocking the CL due to this, since it\u0027s a preexisting problem, but it\u0027s strange that this cannot be retrieved from pTextObj instead of trying to match all text in the page. Apparently CPDF_TextObject stores only the char codes that were generated from the string and the font.",
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed40ab65_857aec02",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-07T16:12:14Z",
+      "side": 1,
+      "message": "text_page",
+      "range": {
+        "startLine": 771,
+        "startChar": 16,
+        "endLine": 771,
+        "endChar": 24
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3926c00_4dde01cb",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-07T16:12:14Z",
+      "side": 1,
+      "message": "text_object",
+      "range": {
+        "startLine": 775,
+        "startChar": 18,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c702d1_06dc7e99",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-07T16:12:14Z",
+      "side": 1,
+      "message": "text_object",
+      "range": {
+        "startLine": 1280,
+        "startChar": 3,
+        "endLine": 1280,
+        "endChar": 9
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33173b35_e9caa688",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-07T16:12:14Z",
+      "side": 1,
+      "message": "text_page",
+      "range": {
+        "startLine": 1281,
+        "startChar": 3,
+        "endLine": 1281,
+        "endChar": 7
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478f994f_baf63f2e",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-07T16:12:14Z",
+      "side": 1,
+      "message": "I\u0027m surprised we didn\u0027t have that yet.",
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
