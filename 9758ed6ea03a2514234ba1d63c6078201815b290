@@ -3,6 +3,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "362da3b0_743e5c34",
+        "filename": "core/fpdfapi/font/cpdf_type3font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-07T23:52:08Z",
+      "side": 1,
+      "message": "But there\u0027s a check here even before calling LoadPDFEncoding(). So I had to take that into account as well.",
+      "revId": "9758ed6ea03a2514234ba1d63c6078201815b290",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2661479_94d937d2",
         "filename": "core/fpdfapi/font/cpdf_type3font.cpp",
         "patchSetId": 1
