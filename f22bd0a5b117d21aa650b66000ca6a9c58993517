@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533353866 -0700\nnonce APISObRZ6OcP0Vzi3pnaXXWiGv3ZwdCUScFhOOSElJnAq7p6Moo6yZpJkVIPTql01wCMakYF/dvM\n\n0000000000000000000000000000000000000000 f22bd0a5b117d21aa650b66000ca6a9c58993517 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltlH4oACgkQqzYtYVpm\n/XuYKQf+IewXu4D92NOljq4d+s5kDTBGX+pSxplQgwwSLRnf/vnCVG3JvR4XsNH9\n6e4OctEFH2zUnZuorEqlNKcHQBX05tcCc6W43GSK3Hgd8XZ7wT8V1wJWOQGP8NWg\nq5zvuefTNkS8IPvxZ/9t4QJFxBgd2X55y19WSfI1bvCZY6FpyHzlIv2XM+lfcYRn\nS3CflcmbshNje4Fm0FqrPTp2554Q1M5WYo2QgzEWgO0+wV/5MmwbC8BSxNvI/HS8\nhP+KAEkfu1zwscamEOVpQZoRVQsZQjpmK5koe9PoXu0GQt+RZ51+JesMX7/PT2Xx\nM18W8Tm/p8xK7PagyV8cydfQD6n2Zg\u003d\u003d\n\u003dKqi5\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fd4ecc8_ee00351b",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-07T23:05:43Z",
+      "side": 1,
+      "message": "Should these pointers (Retain, Unowned, unique) go after the shorts and before the vectors? I don\u0027t think it will affect packing but they will be ordered by size",
+      "revId": "f22bd0a5b117d21aa650b66000ca6a9c58993517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760a1551_75904289",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-07T23:05:43Z",
+      "side": 1,
+      "message": "nit: this also needs to be initialized I think? It\u0027s a uint8_t enum.",
+      "revId": "f22bd0a5b117d21aa650b66000ca6a9c58993517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
