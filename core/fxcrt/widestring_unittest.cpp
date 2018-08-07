@@ -999,6 +999,17 @@ TEST(WideString, UTF16LE_Encode) {
   }
 }
 
+TEST(WideString, ToDefANSI) {
+  EXPECT_EQ("", WideString().ToDefANSI());
+  EXPECT_EQ(
+#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+      "x?\xffA?y",
+#else
+      "x\x80\xffy",
+#endi
+      WideString(L"x\u0080\u00ff\u0100\u208cy").ToDefANSI());
+}
+
 TEST(WideStringView, FromVector) {
   std::vector<WideStringView::UnsignedType> null_vec;
   WideStringView null_string(null_vec);
