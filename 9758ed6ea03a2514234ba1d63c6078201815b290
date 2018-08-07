@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533353379 -0700\nnonce APISObRO9l2S74WgxpAhyS1pBA9gu7W56yEB5cBLNEyjucoAQEQMKqOsqBWn5PLh07C7qLnq69Iy\n\n0000000000000000000000000000000000000000 9758ed6ea03a2514234ba1d63c6078201815b290 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dsimplify-cpdf-simplefont\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltlHaMACgkQqzYtYVpm\n/XtlzwgAz9kYf66NknAuHidzbF7wP6fRbYQUL5Y6O07XHhXJUZO4cLz+w9RsM5go\nFrdbYRjzTABkXW/M7euQgMAMsk9ujC+2o+uUGfMLnv7TbK33+VXQfI8XP/5kdhzk\nUy61I37JEGIkTSVqOLr0xyUBIJ4lz2lhf1i8y0xbIQuznnPEttSb8uweoAOXsKPc\nbZZ4JhGjavwnsnSiLuxJB8vPqobV77pI+AWk1HDHa9B2HCBAPQojI+B6MqFlalf/\nrg2fpYuFN8Nx9xxVr81zcHX1dFFYEJ7RqWTrwCnQpsi4ViB025t4xw8dF+co0xnr\n+yE7PK1DESyZM2fsQZNObmR+EhOsNQ\u003d\u003d\n\u003dIk/q\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2661479_94d937d2",
+        "filename": "core/fpdfapi/font/cpdf_type3font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-07T22:59:24Z",
+      "side": 1,
+      "message": "nit: pEncoding is also not needed since it is always m_pFontDict-\u003eGetDirectObjectFor(\"Encoding\").",
+      "revId": "9758ed6ea03a2514234ba1d63c6078201815b290",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
