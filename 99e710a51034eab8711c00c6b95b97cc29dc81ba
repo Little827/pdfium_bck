@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ac23d8f6_b0083635",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-08-07T19:42:18Z",
+      "side": 1,
+      "message": "I assumed that the design is that the text object only stores what\u0027s actually in the PDF file, while the text page stores the \"parsed text\", i.e. inject these spaces and newlines where character spacing is used to add implicit spaces. But I might be wrong.",
+      "parentUuid": "a4310530_7c28e733",
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed40ab65_857aec02",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77cc7725_900c800e",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-08-07T19:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed40ab65_857aec02",
+      "range": {
+        "startLine": 771,
+        "startChar": 16,
+        "endLine": 771,
+        "endChar": 24
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4c2627b0_deedf1e6",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-08-07T19:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3926c00_4dde01cb",
+      "range": {
+        "startLine": 775,
+        "startChar": 18,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59c702d1_06dc7e99",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df1264d_ef7f7ee0",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-08-07T19:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59c702d1_06dc7e99",
+      "range": {
+        "startLine": 1280,
+        "startChar": 3,
+        "endLine": 1280,
+        "endChar": 9
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "f86a9d3f_c49d3756",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-08-07T19:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33173b35_e9caa688",
+      "range": {
+        "startLine": 1281,
+        "startChar": 3,
+        "endLine": 1281,
+        "endChar": 7
+      },
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "478f994f_baf63f2e",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 1
@@ -122,6 +236,24 @@
       "writtenOn": "2018-08-07T16:12:14Z",
       "side": 1,
       "message": "I\u0027m surprised we didn\u0027t have that yet.",
+      "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c03a836_2dac4c57",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2018-08-07T19:42:18Z",
+      "side": 1,
+      "message": "Ack :-)",
+      "parentUuid": "478f994f_baf63f2e",
       "revId": "99e710a51034eab8711c00c6b95b97cc29dc81ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
