@@ -999,6 +999,27 @@ TEST(WideString, UTF16LE_Encode) {
   }
 }
 
+TEST(WideString, FromLocal) {
+  EXPECT_EQ(L"", WideString::FromLocal(ByteStringView()));
+#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
+  const wchar_t* kResult =
+      L"x"
+      L"\u20ac"
+      L"\u00ff"
+      L"y";
+#else
+  const wchar_t* kResult =
+      L"x"
+      L"\u0080"
+      L"\u00ff"
+      L"y";
+#endif
+  EXPECT_EQ(kResult, WideString::FromLocal("x"
+                                           "\x80"
+                                           "\xff"
+                                           "y"));
+}
+
 TEST(WideString, ToDefANSI) {
   EXPECT_EQ("", WideString().ToDefANSI());
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
