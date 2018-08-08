@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "288b5caa_b82acad2",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-08T20:52:46Z",
+      "side": 1,
+      "message": "nit: static initializers and teardown at end is dicey. probably need\n\nbool override_time_return_value \u003d false;\ntime_t time_return_value;\n\nwhich is cool since time_t is POD",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "51b5ceba92e37bedc23fd8d56696eab7ce708384",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc97a573_669ad45f",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-08T20:52:46Z",
+      "side": 1,
+      "message": "nit: stray commented code.",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 40
+      },
+      "revId": "51b5ceba92e37bedc23fd8d56696eab7ce708384",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d59bd3_898e2c60",
+        "filename": "public/fpdf_ext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-08T20:52:46Z",
+      "side": 1,
+      "message": "Maybe FSDK_SetFixedTimeForTesting()",
+      "range": {
+        "startLine": 77,
+        "startChar": 31,
+        "endLine": 77,
+        "endChar": 54
+      },
+      "revId": "51b5ceba92e37bedc23fd8d56696eab7ce708384",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
