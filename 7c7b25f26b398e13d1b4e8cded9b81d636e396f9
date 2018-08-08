@@ -1,4 +1,62 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533355745 -0700\nnonce APISObSKtKgQsBM13sw3b8lfn0qqdm1QiqlyF3osycp+9Z6Z5/1ZnHbLJA6qZviyG9UlMPlLEG7y\n\n0000000000000000000000000000000000000000 7c7b25f26b398e13d1b4e8cded9b81d636e396f9 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltlJuEACgkQqzYtYVpm\n/XvBPggAg0eDez6uicmZRnj4op2C0R0+HnaJGIHsdK/SlZiq6ZrlZX8aCP5QmJDc\nWfsQYhgre/0FUDDM8EmbrqURKfEnptvNYG+Y2v2MCpZHMVo3TbicHFEjI68LWeGl\nqm3KgGVoWlstGm7HM2C15zTYKc+PzeZ/2pc4BJAk9uyK9LOyC+V5iqaw9bu3IP9n\nnhmx7SZegYDbIpVEd+r6YW9r+oAeute0GxxOzaMEgGEeDlxjLPD7oIdZxA6ZSY/9\n1tcPoFFoMnFcRGZM4q2N+7ubLSimTdlwcdigvr5oZo5jgbe0hY0R4UV3r/qtt9G6\n+6ybsRrKrqrDvpt5DM7qEjFymAQaUg\u003d\u003d\n\u003dR0R5\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4136be04_f3f4946f",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-08T13:57:06Z",
+      "side": 1,
+      "message": "nit: revert if and early return",
+      "revId": "7c7b25f26b398e13d1b4e8cded9b81d636e396f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986a6972_f076911d",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-08T13:57:06Z",
+      "side": 1,
+      "message": "nit: variable name does not match styleguide here and below",
+      "range": {
+        "startLine": 23,
+        "startChar": 37,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "7c7b25f26b398e13d1b4e8cded9b81d636e396f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b914f9fc_4557afb2",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-08T13:57:06Z",
+      "side": 1,
+      "message": "Could these also return uint32_t or is bool needed/clearer?",
+      "revId": "7c7b25f26b398e13d1b4e8cded9b81d636e396f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
