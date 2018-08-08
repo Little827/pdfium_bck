@@ -999,6 +999,19 @@ TEST(WideString, UTF16LE_Encode) {
   }
 }
 
+TEST(WideString, FromLocal) {
+  EXPECT_EQ(L"", WideString::FromLocal(ByteStringView()));
+  EXPECT_EQ(
+      L"x"
+      L"\u0080"
+      L"\u00ff"
+      L"y",
+      WideString::FromLocal("x"
+                            "\x80"
+                            "\xff"
+                            "y"));
+}
+
 TEST(WideString, ToDefANSI) {
   EXPECT_EQ("", WideString().ToDefANSI());
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
