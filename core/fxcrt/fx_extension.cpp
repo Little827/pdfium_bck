@@ -11,6 +11,9 @@
 #include <limits>
 
 #include "third_party/base/compiler_specific.h"
+#include "third_party/base/ptr_util.h"
+
+std::unique_ptr<time_t> time_return_value;
 
 float FXSYS_wcstof(const wchar_t* pwsStr, int32_t iLength, int32_t* pUsedLen) {
   ASSERT(pwsStr);
@@ -166,4 +169,21 @@ size_t FXSYS_ToUTF16BE(uint32_t unicode, char* buf) {
   // Low ten bits plus 0xDC00
   FXSYS_IntToFourHexChars(0xDC00 + unicode % 0x400, buf + 4);
   return 8;
+}
+
+void FXSYS_SetTimeReturnValue(time_t tloc) {
+  time_return_value = pdfium::MakeUnique<time_t>(tloc);
+}
+
+time_t FXSYS_time(time_t* tloc) {
+  //  time_t ret_val;
+  //  memset(&ret_val, 0 , sizeof(ret_val));
+  //  FXSYS_SetTimeReturnValue(ret_val);
+  if (time_return_value.get()) {
+    if (tloc)
+      *tloc = *time_return_value.get();
+    return *time_return_value.get();
+  }
+
+  return time(tloc);
 }

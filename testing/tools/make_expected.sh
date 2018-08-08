@@ -15,9 +15,9 @@ while (( "$#" )); do
   echo $INFILE | grep -qs ' ' && echo space in filename detected && exit 1
   EVTFILE="${INFILE%.*}.evt"
   if [ -f "$EVTFILE" ]; then
-    out/Debug/pdfium_test --send-events --png $INFILE
+    out/Debug/pdfium_test --send-events --time=0 --png $INFILE
   else
-    out/Debug/pdfium_test --png $INFILE
+    out/Debug/pdfium_test --time=0 --png $INFILE
   fi
   RESULTS="$INFILE.*.png"
   for RESULT in $RESULTS ; do

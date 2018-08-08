@@ -67,6 +67,15 @@ typedef struct _UNSUPPORT_INFO {
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FSDK_SetUnSpObjProcessHandler(UNSUPPORT_INFO* unsp_info);
 
+// Setup return value for system time calls in SDK.
+//
+// This API is intended to be used for testing and may cause PDFium to be behave
+// poorly in production environments.
+//
+//   unsigned int - Number of seconds since the epoch to return from time based
+//   syscalls.
+FPDF_EXPORT void FPDF_CALLCONV FSDK_SetTimeReturnValue(FPDF_DWORD time);
+
 // Unknown page mode.
 #define PAGEMODE_UNKNOWN -1
 // Document outline, and thumbnails hidden.
