@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b39cd0d_affcde2e",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-08T17:46:26Z",
+      "side": 1,
+      "message": "const char kResult[] ?",
+      "revId": "2ce539195bf2cc61a9fd0e28a9d2e1c09a837868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
