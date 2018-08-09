@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97dc3a61_0ddd252c",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-09T18:16:16Z",
+      "side": 1,
+      "message": "maybe else time_func \u003d time ?",
+      "range": {
+        "startLine": 176,
+        "startChar": 3,
+        "endLine": 176,
+        "endChar": 21
+      },
+      "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9524c646_b1ce5a50",
+        "filename": "public/fpdf_ext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-09T18:16:16Z",
+      "side": 1,
+      "message": "Let\u0027s not include this.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7999b1a_7b60a717",
+        "filename": "public/fpdf_ext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-09T18:16:16Z",
+      "side": 1,
+      "message": "probably should use unsigned int to avoid dragging in time.h, which isn\u0027t strictly portable.\n\nNo need to mimic time() signature.  Passing uinsigned int fn(void) should be fine.",
+      "range": {
+        "startLine": 78,
+        "startChar": 52,
+        "endLine": 78,
+        "endChar": 75
+      },
+      "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
