@@ -11,6 +11,10 @@
 #include <limits>
 
 #include "third_party/base/compiler_specific.h"
+#include "third_party/base/ptr_util.h"
+
+bool override_time_return_value = false;
+time_t time_return_value;
 
 float FXSYS_wcstof(const wchar_t* pwsStr, int32_t iLength, int32_t* pUsedLen) {
   ASSERT(pwsStr);
@@ -166,4 +170,19 @@ size_t FXSYS_ToUTF16BE(uint32_t unicode, char* buf) {
   // Low ten bits plus 0xDC00
   FXSYS_IntToFourHexChars(0xDC00 + unicode % 0x400, buf + 4);
   return 8;
+}
+
+void FXSYS_SetTimeReturnValue(time_t tloc) {
+  override_time_return_value = true;
+  time_return_value = tloc;
+}
+
+time_t FXSYS_time(time_t* tloc) {
+  if (override_time_return_value) {
+    if (tloc)
+      *tloc = time_return_value;
+    return time_return_value;
+  }
+
+  return time(tloc);
 }

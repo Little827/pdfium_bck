@@ -10,6 +10,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfdoc/cpdf_interform.h"
 #include "core/fpdfdoc/cpdf_metadata.h"
+#include "core/fxcrt/fx_extension.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 
 #ifdef PDF_ENABLE_XFA
@@ -74,6 +75,11 @@ FSDK_SetUnSpObjProcessHandler(UNSUPPORT_INFO* unsp_info) {
   CPDF_ModuleMgr::Get()->SetUnsupportInfoAdapter(
       pdfium::MakeUnique<CFSDK_UnsupportInfo_Adapter>(unsp_info));
   return true;
+}
+
+FPDF_EXPORT void FPDF_CALLCONV
+FSDK_SetTimeReturnValueForTesting(FPDF_DWORD time) {
+  FXSYS_SetTimeReturnValue(static_cast<time_t>(time));
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFDoc_GetPageMode(FPDF_DOCUMENT document) {
