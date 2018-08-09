@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea784e1c_95340f8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-09T18:32:34Z",
+      "side": 1,
+      "message": "nit: patched",
+      "range": {
+        "startLine": 16,
+        "startChar": 61,
+        "endLine": 16,
+        "endChar": 66
+      },
+      "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97dc3a61_0ddd252c",
         "filename": "core/fxcrt/fx_extension.cpp",
         "patchSetId": 4
@@ -18,6 +41,29 @@
         "startChar": 3,
         "endLine": 176,
         "endChar": 21
+      },
+      "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b45de91e_911c7b2e",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-09T18:32:34Z",
+      "side": 1,
+      "message": "no need to assert, calling into a null fnptr is kinda how some versions of assert are implemented.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 20
       },
       "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
