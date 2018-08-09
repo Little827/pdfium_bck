@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa52c1e1_bf5de3c9",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-09T23:48:16Z",
+      "side": 1,
+      "message": "note: this is const, so we can\u0027t use the new non-const method here.",
+      "range": {
+        "startLine": 483,
+        "startChar": 26,
+        "endLine": 483,
+        "endChar": 38
+      },
+      "revId": "cb9224d11fc42a51326490b5a460b466098c0b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
