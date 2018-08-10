@@ -47,6 +47,30 @@
       "revId": "9a4d2455ae85c247e9103caa54b6f4f28d0e374b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba36a31_d421a431",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-10T21:43:36Z",
+      "side": 1,
+      "message": "Cool.  Now how do you feel about pdfium::MakeUnique\u003c\u003e?",
+      "parentUuid": "596398c0_df78046c",
+      "range": {
+        "startLine": 149,
+        "startChar": 46,
+        "endLine": 149,
+        "endChar": 76
+      },
+      "revId": "9a4d2455ae85c247e9103caa54b6f4f28d0e374b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
