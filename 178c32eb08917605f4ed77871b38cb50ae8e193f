@@ -23,6 +23,30 @@
       "revId": "178c32eb08917605f4ed77871b38cb50ae8e193f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfbeabb_6556763a",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-10T20:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47460e89_dc2acdb1",
+      "range": {
+        "startLine": 474,
+        "startChar": 4,
+        "endLine": 474,
+        "endChar": 43
+      },
+      "revId": "178c32eb08917605f4ed77871b38cb50ae8e193f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
