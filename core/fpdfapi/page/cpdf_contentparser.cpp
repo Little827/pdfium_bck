@@ -15,6 +15,7 @@
 #include "core/fpdfapi/page/cpdf_path.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/fx_safe_types.h"
@@ -30,15 +31,29 @@ CPDF_ContentParser::CPDF_ContentParser(CPDF_Page* pPage)
   }
 
   CPDF_Object* pContent =
-      pPage->GetDict()->GetDirectObjectFor(pdfium::page_object::kContents);
+      pPage->GetDict()->GetObjectFor(pdfium::page_object::kContents);
   if (!pContent) {
     HandlePageContentFailure();
     return;
   }
 
-  CPDF_Stream* pStream = pContent->AsStream();
-  if (pStream) {
-    HandlePageContentStream(pStream);
+  CPDF_Reference* pReference = pContent->AsReference();
+  if (pReference) {
+    CPDF_Object* pDirect = pReference->GetDirect();
+    if (!pDirect) {
+      HandlePageContentFailure();
+      return;
+    }
+    CPDF_Stream* pStream = pDirect->AsStream();
+    if (pStream) {
+      HandlePageContentStream(pStream);
+      return;
+    }
+    CPDF_Array* pArray = pDirect->AsArray();
+    if (pArray && HandlePageContentArray(pArray))
+      return;
+
+    HandlePageContentFailure();
     return;
   }
 
