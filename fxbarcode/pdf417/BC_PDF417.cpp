@@ -22,6 +22,8 @@
 
 #include "fxbarcode/pdf417/BC_PDF417.h"
 
+#include <iostream>
+
 #include "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.h"
 #include "fxbarcode/pdf417/BC_PDF417BarcodeRow.h"
 #include "fxbarcode/pdf417/BC_PDF417Compaction.h"
@@ -396,33 +398,44 @@ CBC_PDF417::CBC_PDF417(bool compact)
 CBC_PDF417::~CBC_PDF417() {}
 
 CBC_BarcodeMatrix* CBC_PDF417::getBarcodeMatrix() {
+  std::cerr << "CBC_PDF417::getBarcodeMatrix " << m_barcodeMatrix->getWidth()
+            << ", " << m_barcodeMatrix->getHeight() << std::endl;
   return m_barcodeMatrix.get();
 }
 
 bool CBC_PDF417::generateBarcodeLogic(WideString msg,
                                       int32_t errorCorrectionLevel) {
+  std::cerr << "CBC_PDF417::generateBarcodeLogic " << std::endl;
   int32_t errorCorrectionCodeWords =
       CBC_PDF417ErrorCorrection::getErrorCorrectionCodewordCount(
           errorCorrectionLevel);
-  if (errorCorrectionCodeWords < 0)
+  if (errorCorrectionCodeWords < 0) {
+    std::cerr << "CBC_PDF417::generateBarcodeLogic END 1" << std::endl;
     return false;
+  }
 
   int32_t e = BCExceptionNO;
   WideString highLevel =
       CBC_PDF417HighLevelEncoder::encodeHighLevel(msg, m_compaction, e);
-  if (e != BCExceptionNO)
+  if (e != BCExceptionNO) {
+    std::cerr << "CBC_PDF417::generateBarcodeLogic END 2" << std::endl;
     return false;
+  }
   int32_t sourceCodeWords = highLevel.GetLength();
   std::vector<int32_t> dimensions =
       determineDimensions(sourceCodeWords, errorCorrectionCodeWords);
-  if (dimensions.size() != 2)
+  if (dimensions.size() != 2) {
+    std::cerr << "CBC_PDF417::generateBarcodeLogic END 4" << std::endl;
     return false;
+  }
   int32_t cols = dimensions[0];
   int32_t rows = dimensions[1];
   int32_t pad = getNumberOfPadCodewords(sourceCodeWords,
                                         errorCorrectionCodeWords, cols, rows);
-  if (sourceCodeWords + errorCorrectionCodeWords + 1 > 929)
+  if (sourceCodeWords + errorCorrectionCodeWords + 1 > 929) {
+    std::cerr << "CBC_PDF417::generateBarcodeLogic END 5" << std::endl;
     return false;
+  }
 
   int32_t n = sourceCodeWords + pad + 1;
   WideString sb;
@@ -435,12 +448,22 @@ bool CBC_PDF417::generateBarcodeLogic(WideString msg,
   WideString ec;
   if (!CBC_PDF417ErrorCorrection::generateErrorCorrection(
           dataCodewords, errorCorrectionLevel, &ec)) {
+    std::cerr << "CBC_PDF417::generateBarcodeLogic END 6" << std::endl;
     return false;
   }
   WideString fullCodewords = dataCodewords + ec;
+  std::cerr << "CBC_PDF417::generateBarcodeLogic rows " << rows << ", cols "
+            << cols << std::endl;
   m_barcodeMatrix = pdfium::MakeUnique<CBC_BarcodeMatrix>(rows, cols);
+  std::cerr << "CBC_PDF417::generateBarcodeLogic c1 m_barcodeMatrix "
+            << m_barcodeMatrix->getWidth() << ", "
+            << m_barcodeMatrix->getHeight() << std::endl;
   encodeLowLevel(fullCodewords, cols, rows, errorCorrectionLevel,
                  m_barcodeMatrix.get());
+  std::cerr << "CBC_PDF417::generateBarcodeLogic c2 m_barcodeMatrix "
+            << m_barcodeMatrix->getWidth() << ", "
+            << m_barcodeMatrix->getHeight() << std::endl;
+  std::cerr << "CBC_PDF417::generateBarcodeLogic END 7" << std::endl;
   return true;
 }
 
@@ -463,9 +486,11 @@ void CBC_PDF417::setCompact(bool compact) {
 }
 
 int32_t CBC_PDF417::calculateNumberOfRows(int32_t m, int32_t k, int32_t c) {
+  std::cerr << "CBC_PDF417::calculateNumberOfRows " << std::endl;
   int32_t r = ((m + 1 + k) / c) + 1;
   if (c * r >= (m + 1 + k + c)) {
     r--;
+    std::cerr << "CBC_PDF417::calculateNumberOfRows END" << std::endl;
   }
   return r;
 }
@@ -481,6 +506,7 @@ int32_t CBC_PDF417::getNumberOfPadCodewords(int32_t m,
 void CBC_PDF417::encodeChar(int32_t pattern,
                             int32_t len,
                             CBC_BarcodeRow* logic) {
+  // std::cerr << "CBC_PDF417::encodeChar len=" << len << std::endl;
   int32_t map = 1 << (len - 1);
   bool last = ((pattern & map) != 0);
   int32_t width = 0;
@@ -496,6 +522,7 @@ void CBC_PDF417::encodeChar(int32_t pattern,
     map >>= 1;
   }
   logic->addBar(last, width);
+  // std::cerr << "CBC_PDF417::encodeChar END" << std::endl;
 }
 
 void CBC_PDF417::encodeLowLevel(WideString fullCodewords,
@@ -503,6 +530,9 @@ void CBC_PDF417::encodeLowLevel(WideString fullCodewords,
                                 int32_t r,
                                 int32_t errorCorrectionLevel,
                                 CBC_BarcodeMatrix* logic) {
+  std::cerr << "CBC_PDF417::encodeLowLevel fullCodewords="
+            << fullCodewords.GetLength() << ", c=" << c << ", r=" << r
+            << std::endl;
   int32_t idx = 0;
   for (int32_t y = 0; y < r; y++) {
     int32_t cluster = y % 3;
@@ -535,11 +565,13 @@ void CBC_PDF417::encodeLowLevel(WideString fullCodewords,
       encodeChar(STOP_PATTERN, 18, logic->getCurrentRow());
     }
   }
+  std::cerr << "CBC_PDF417::encodeLowLevel END" << std::endl;
 }
 
 std::vector<int32_t> CBC_PDF417::determineDimensions(
     int32_t sourceCodeWords,
     int32_t errorCorrectionCodeWords) const {
+  std::cerr << "CBC_PDF417::determineDimensions" << std::endl;
   std::vector<int32_t> dimensions;
   float ratio = 0.0f;
   for (int32_t cols = m_minCols; cols <= m_maxCols; cols++) {
@@ -573,5 +605,6 @@ std::vector<int32_t> CBC_PDF417::determineDimensions(
       dimensions[1] = rows;
     }
   }
+  std::cerr << "CBC_PDF417::determineDimensions END" << std::endl;
   return dimensions;
 }

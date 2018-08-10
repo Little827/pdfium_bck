@@ -20,6 +20,8 @@
  * limitations under the License.
  */
 
+#include <iostream>
+
 #include "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.h"
 #include "fxbarcode/pdf417/BC_PDF417BarcodeRow.h"
 #include "third_party/base/ptr_util.h"
@@ -55,12 +57,16 @@ std::vector<uint8_t>& CBC_BarcodeMatrix::getScaledMatrix(int32_t scale) {
 }
 std::vector<uint8_t>& CBC_BarcodeMatrix::getScaledMatrix(int32_t xScale,
                                                          int32_t yScale) {
+  std::cerr << "CBC_BarcodeMatrix::getScaledMatrix xScale " << xScale
+            << ", yScale " << yScale << std::endl;
   size_t yMax = m_height * yScale;
   std::vector<uint8_t> bytearray = m_matrix[0]->getScaledRow(xScale);
   size_t xMax = bytearray.size();
   m_matrixOut.resize(xMax * yMax);
   m_outWidth = xMax;
   m_outHeight = yMax;
+  std::cerr << "CBC_BarcodeMatrix::getScaledMatrix m_outWidth " << m_outWidth
+            << ", m_outHeight " << m_outHeight << std::endl;
   int32_t k = 0;
   for (size_t i = 0; i < yMax; i++) {
     if (i != 0)
