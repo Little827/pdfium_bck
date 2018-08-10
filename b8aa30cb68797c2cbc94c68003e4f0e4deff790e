@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5efbb585_1415d77e",
+        "filename": "core/fxcrt/cfx_memorystream.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-10T23:41:46Z",
+      "side": 1,
+      "message": "Planning on making this always true later.",
+      "revId": "b8aa30cb68797c2cbc94c68003e4f0e4deff790e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
