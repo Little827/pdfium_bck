@@ -22,6 +22,30 @@
       "revId": "a4714936a216e0bec084ec88728929c59a17a3ac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8814b51_4b2d3bf3",
+        "filename": "testing/tools/make_expected.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-10T17:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8c170a5_04fc274a",
+      "range": {
+        "startLine": 11,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "a4714936a216e0bec084ec88728929c59a17a3ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

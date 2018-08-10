@@ -305,6 +305,30 @@
       "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e8f2ed_28eb93ae",
+        "filename": "public/fpdf_ext.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-10T17:13:27Z",
+      "side": 1,
+      "message": "Yup, time_t is long on non-Windows and long long on Windows. Windows will not implicitly convert long -\u003e long long. this is a hassle since there isn\u0027t a single place where the conversion is being done, but multiple places in function signatures. So either I have to use time_t and thus time.h or we have to have platform specific define blocks for using long or long long or introduce our own platform specific type. I am preferential to using time_t, since it already exists and requires the smallest/simplest amount of code.\n\nIf there is another way of doing this I interested to hear it.",
+      "parentUuid": "3062938c_605fdd21",
+      "range": {
+        "startLine": 78,
+        "startChar": 52,
+        "endLine": 78,
+        "endChar": 75
+      },
+      "revId": "07253e53edcd2ced252a30e5967d1fa1ecbba382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
