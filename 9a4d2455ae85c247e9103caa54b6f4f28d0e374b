@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533935444 -0700\nnonce APISObTtJznZ8/Pj6n7mjk0cSQ4nEWWIHHRDQ4dAWDCGe/3yKg4AHMcfkmHqJfmH+SCJ2uLlbT7A\n\n0000000000000000000000000000000000000000 9a4d2455ae85c247e9103caa54b6f4f28d0e374b refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltt/1QACgkQqzYtYVpm\n/XsJ9gf7B3WTQ4WnwwuVEyO1iIDYQFmduhLP4bajP2fnPuxXPQ+FU9eOB9yQYMEl\nU3TZg7TsjRpULMT3VukbsfVnw1HQ2CnoyaQ0Fd0ezu5ZKDjjUtadMSQcOURDSu8/\nMJCfaXCgsNs7qK3eLvTrZTgR5SZrhrScyYNkt/ka5143QOu512qe41UFYXsmVV0a\ngTMVHB1rquds33/qwsIw1RurhRMGIClcMMPkVf/DI+BCcIpYJ3/RHFHR0UAu0+3T\npvq9YdUQE87AudU9Y99vcV976g+3PPIDouPZfOSUP9ucwikPMy1NA3w+mrNICWM8\ntT65/SnR59xACVPIVJWEqcvsQ3uHwg\u003d\u003d\n\u003dzzz5\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8425184b_4f77d62c",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-10T21:38:33Z",
+      "side": 1,
+      "message": "Something to ponder: do we want to stick a\n  using pdfium::page_object;\n\ninto the page_object.h header?  This might make things easier if someday the whole world is namespace pdfium {} and we won\u0027t have to pull the redundant ones via s/pdfium:://.\n\nWe\u0027re the only ones that use this header, so not worried about compile time collision with other products, and the namespace still keeps linker happy.",
+      "range": {
+        "startLine": 149,
+        "startChar": 46,
+        "endLine": 149,
+        "endChar": 76
+      },
+      "revId": "9a4d2455ae85c247e9103caa54b6f4f28d0e374b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
