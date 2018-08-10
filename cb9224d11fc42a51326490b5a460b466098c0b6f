@@ -22,6 +22,30 @@
       "revId": "cb9224d11fc42a51326490b5a460b466098c0b6f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63035d5d_b23487cd",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-10T00:13:22Z",
+      "side": 1,
+      "message": "OK. I\u0027ll look into maybe fixing that.",
+      "parentUuid": "fa52c1e1_bf5de3c9",
+      "range": {
+        "startLine": 483,
+        "startChar": 26,
+        "endLine": 483,
+        "endChar": 38
+      },
+      "revId": "cb9224d11fc42a51326490b5a460b466098c0b6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
