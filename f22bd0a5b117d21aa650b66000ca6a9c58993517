@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "0a783f86_fc7f0bab",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-11T05:12:14Z",
+      "side": 1,
+      "message": "I wasn\u0027t really trying to order them by size.",
+      "parentUuid": "6fd4ecc8_ee00351b",
+      "revId": "f22bd0a5b117d21aa650b66000ca6a9c58993517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "760a1551_75904289",
         "filename": "core/fpdfapi/font/cpdf_cidfont.h",
         "patchSetId": 1
@@ -34,6 +52,24 @@
       "revId": "f22bd0a5b117d21aa650b66000ca6a9c58993517",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fadb64_fb179b5e",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-11T05:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "760a1551_75904289",
+      "revId": "f22bd0a5b117d21aa650b66000ca6a9c58993517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
