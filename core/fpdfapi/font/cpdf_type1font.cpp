@@ -102,16 +102,15 @@ bool CPDF_Type1Font::Load() {
   return LoadCommon();
 }
 
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
 int CPDF_Type1Font::GlyphFromCharCodeExt(uint32_t charcode) {
-  if (charcode > 0xff) {
+  if (charcode > 0xff)
     return -1;
-  }
-  int index = m_ExtGID[(uint8_t)charcode];
-  if (index == 0xffff) {
-    return -1;
-  }
-  return index;
+
+  int index = m_ExtGID[static_cast<uint8_t>(charcode)];
+  return index != 0xffff ? index : -1;
 }
+#endif
 
 void CPDF_Type1Font::LoadGlyphMap() {
   if (!m_Font.GetFace())

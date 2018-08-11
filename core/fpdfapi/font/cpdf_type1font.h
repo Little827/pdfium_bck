@@ -19,7 +19,9 @@ class CPDF_Type1Font : public CPDF_SimpleFont {
   bool IsType1Font() const override;
   const CPDF_Type1Font* AsType1Font() const override;
   CPDF_Type1Font* AsType1Font() override;
+#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
   int GlyphFromCharCodeExt(uint32_t charcode) override;
+#endif
 
   int GetBase14Font() const { return m_Base14Font; }
 
