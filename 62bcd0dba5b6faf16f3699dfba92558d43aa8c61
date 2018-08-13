@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533963382 -0700\nnonce APISObQTC91wHGYRfnHHwEggv4bbRj+32yCCJlSFCBnwVtRmP6rDixqgEiW+tv3O1/O58vooQqMy\n\n0000000000000000000000000000000000000000 62bcd0dba5b6faf16f3699dfba92558d43aa8c61 refs/for/refs/heads/master%notify\u003dNONE,m\u003dmore\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltubHYACgkQqzYtYVpm\n/XvTOQf+Pn9XPXVEAesYk1xJokdXkyeFO6DdKyNCfZxFfhuBF9LLAV0Z8uPwRYJr\nV3Hcm7Qcz6SCbAh/86y7dtUL1w7F9KVvocL70/ripxtBc/gQduaSZw2W1HJtfT2n\nFC6oGL8pBrIbKjBfGCeD6flrGyU1UkHfS919lr8j5W1tqt7RjmLosxNoF24hEp2O\nSOWeRdfajzYyFXpWv8eQAUp3yOCQnG/cdUdngRMOHLVft/l2sQy5QGvkOjozseD8\nB7cjhD3CFhzc86uhD8+/qoD9egiJCoBhthN6QHit+EhNIKSiBX7sHvDOzxA41MWe\na1fxPzqcqrfgIutDEcqwl13gdnM0Cg\u003d\u003d\n\u003dmiNR\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e88741d8_4f68cfe3",
+        "filename": "core/fpdfapi/parser/cfdf_document.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-13T16:50:02Z",
+      "side": 1,
+      "message": "then this becomes a span, etc. etc.",
+      "range": {
+        "startLine": 34,
+        "startChar": 65,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "62bcd0dba5b6faf16f3699dfba92558d43aa8c61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a0e37c_e28a6f53",
+        "filename": "core/fpdfapi/parser/cfdf_document.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-13T16:50:02Z",
+      "side": 1,
+      "message": "Feels like a span\u003c\u003e. Follow-up?",
+      "range": {
+        "startLine": 22,
+        "startChar": 53,
+        "endLine": 23,
+        "endChar": 65
+      },
+      "revId": "62bcd0dba5b6faf16f3699dfba92558d43aa8c61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
