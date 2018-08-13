@@ -80,7 +80,7 @@ bool IsFormFieldTypeXFA(FormFieldType fieldType) {
 
 bool FDFToURLEncodedData(std::vector<uint8_t>* pBuffer) {
   std::unique_ptr<CFDF_Document> pFDF =
-      CFDF_Document::ParseMemory(pBuffer->data(), pBuffer->size());
+      CFDF_Document::ParseMemory(pdfium::make_span(*pBuffer));
   if (!pFDF)
     return true;
 
