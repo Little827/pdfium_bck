@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "ec07e961_c44d9aa6",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T18:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c77e93e6_7508506d",
+      "revId": "ef91e9f7ad36de0e1afe3d72221edeaaaf1eb4c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24df21ea_d2b8c794",
         "filename": "core/fpdfapi/font/cpdf_simplefont.h",
         "patchSetId": 1
@@ -40,6 +58,30 @@
       "revId": "ef91e9f7ad36de0e1afe3d72221edeaaaf1eb4c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bacf7d71_e468f421",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T18:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24df21ea_d2b8c794",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "ef91e9f7ad36de0e1afe3d72221edeaaaf1eb4c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
