@@ -6,6 +6,8 @@
 
 #include "xfa/fwl/cfx_barcode.h"
 
+#include <ctime>
+#include <iostream>
 #include <memory>
 
 #include "fxbarcode/cbc_codabar.h"
@@ -24,6 +26,7 @@
 namespace {
 
 std::unique_ptr<CBC_CodeBase> CreateBarCodeEngineObject(BC_TYPE type) {
+  std::cerr << "CreateBarCodeEngineObject type=" << type << std::endl;
   switch (type) {
     case BC_CODE39:
       return pdfium::MakeUnique<CBC_Code39>();
@@ -302,5 +305,10 @@ bool CFX_Barcode::Encode(const WideStringView& contents) {
 
 bool CFX_Barcode::RenderDevice(CFX_RenderDevice* device,
                                const CFX_Matrix* matrix) {
-  return m_pBCEngine && m_pBCEngine->RenderDevice(device, matrix);
+  // std::cerr << "CFX_Barcode::RenderDevice" << std::endl;
+  // clock_t begin = clock();
+  bool ret = m_pBCEngine && m_pBCEngine->RenderDevice(device, matrix);
+  // std::cerr << "CFX_Barcode::RenderDevice time=" << (float(clock() - begin) /
+  // CLOCKS_PER_SEC) << std::endl;
+  return ret;
 }
