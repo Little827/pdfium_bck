@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1534194049 -0700\nnonce APISObTqjBBJLb1aJMnbLeO4thmCFkhpBQFpOtNf3z/wvTgM2Zwm9lwin2zyviGTRwjXE3MFIxNg\n\n0000000000000000000000000000000000000000 acf57f9c0df1630a2c879fd6bd37b710545fde73 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dchange-cfdf-document\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltx8YEACgkQqzYtYVpm\n/XuPPggAxLnj2lKKgEkKucozL+Ef1mnMN+QkpYejUH71USyfBRInzxClFkl0bf0n\nRxS/suGIcacQOCQn38w/bB6t5DlK3oNYHdEm4Is7yXyC6h/eEzXG88GWl3ZizytF\nykJGfchEgy0P854MzfTXqaF3s8LmR/GO6MrCNt9eL0WLXE9ACPN8Lgqmlh1R4336\nZGxYzY2OhVmx/pq91qqeg5aWy/HyWTogK/S405naCph2UUVO91XTThIYnsjx2PBV\n6s/TTIqyh3V4tdWlAH+gqc2UY+bWgpOWGTXKC4xA3oGzMN5Az4f7vqxh0+DhIRiV\nZ96PGcHpjKDdcYn5Jn9C1TgHC3izhg\u003d\u003d\n\u003ds3u8\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac33ff6b_3f6a05db",
+        "filename": "fpdfsdk/cpdfsdk_interform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-13T21:34:36Z",
+      "side": 1,
+      "message": "I thought we could just do *bufffer, since spans (intentionally) implicitly construct from std::vector.",
+      "range": {
+        "startLine": 83,
+        "startChar": 35,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "acf57f9c0df1630a2c879fd6bd37b710545fde73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
