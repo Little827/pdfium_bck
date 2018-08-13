@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50eed318_598c2b7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:20:18Z",
+      "side": 1,
+      "message": "Text formatting is weird here.",
+      "revId": "270d9c7f865c7848bb71edbc8a95eb477fb5a81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06766e11_a8a49e89",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:20:18Z",
+      "side": 1,
+      "message": "static constexpr float kFloats...",
+      "revId": "270d9c7f865c7848bb71edbc8a95eb477fb5a81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d1bd47_daea8702",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1845,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:20:18Z",
+      "side": 1,
+      "message": "Why not reuse the values from line 1833?",
+      "revId": "270d9c7f865c7848bb71edbc8a95eb477fb5a81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe7585b8_11d5f3d3",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:20:18Z",
+      "side": 1,
+      "message": "Also, EXPECT_DOUBLE_EQ()?",
+      "revId": "270d9c7f865c7848bb71edbc8a95eb477fb5a81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93104e05_201d3ed7",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:20:18Z",
+      "side": 1,
+      "message": "And can we write 2.0? \"2.\" looks weird.",
+      "revId": "270d9c7f865c7848bb71edbc8a95eb477fb5a81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5361b7c_471e215e",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:20:18Z",
+      "side": 1,
+      "message": "nit: keep a blank line after this.",
+      "revId": "270d9c7f865c7848bb71edbc8a95eb477fb5a81b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
