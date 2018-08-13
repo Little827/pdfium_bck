@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "08c42cbf_f85767c4",
+        "filename": "core/fpdfapi/parser/cfdf_document.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:11:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e88741d8_4f68cfe3",
+      "range": {
+        "startLine": 34,
+        "startChar": 65,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "62bcd0dba5b6faf16f3699dfba92558d43aa8c61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22a0e37c_e28a6f53",
         "filename": "core/fpdfapi/parser/cfdf_document.h",
         "patchSetId": 4
@@ -46,6 +70,30 @@
       "revId": "62bcd0dba5b6faf16f3699dfba92558d43aa8c61",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc49545_5ef5c06b",
+        "filename": "core/fpdfapi/parser/cfdf_document.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-13T19:11:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22a0e37c_e28a6f53",
+      "range": {
+        "startLine": 22,
+        "startChar": 53,
+        "endLine": 23,
+        "endChar": 65
+      },
+      "revId": "62bcd0dba5b6faf16f3699dfba92558d43aa8c61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
