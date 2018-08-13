@@ -57,11 +57,16 @@ bool CBC_CommonBitMatrix::Get(int32_t x, int32_t y) const {
   return ((((uint32_t)m_bits[offset]) >> (x & 0x1f)) & 1) != 0;
 }
 
-void CBC_CommonBitMatrix::Set(int32_t x, int32_t y) {
+bool CBC_CommonBitMatrix::Set(int32_t x, int32_t y) {
+  if (x < 0 || y < 0)
+    return false;
+
   int32_t offset = y * m_rowSize + (x >> 5);
-  if (offset >= m_rowSize * m_height || offset < 0)
-    return;
+  if (offset >= m_rowSize * m_height)
+    return false;
+
   m_bits[offset] |= 1 << (x & 0x1f);
+  return true;
 }
 
 void CBC_CommonBitMatrix::Flip(int32_t x, int32_t y) {
