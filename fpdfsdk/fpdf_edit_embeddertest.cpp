@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "core/fpdfapi/font/cpdf_font.h"
+#include "core/fpdfapi/page/cpdf_formobject.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -1822,6 +1823,39 @@ TEST_F(FPDFEditEmbeddertest, TestFormGetObjects) {
   ASSERT_EQ(nullptr, FPDFFormObj_GetObject(nullptr, 0));
   ASSERT_EQ(nullptr, FPDFFormObj_GetObject(form, -1));
   ASSERT_EQ(nullptr, FPDFFormObj_GetObject(form, 2));
+
+  // Reset the form object matrix to identity.
+  auto* pPageObj = CPDFPageObjectFromFPDFPageObject(form);
+  CPDF_FormObject* pFormObj = pPageObj->AsForm();
+  pFormObj->Transform(pFormObj->form_matrix().GetInverse());
+
+  // FPDFFormObj_GetMatrix() positive testing.
+  float floats[6] = {1., 1.5, 2., 2.5, 100., 200.};
+  CFX_Matrix matrix(floats);
+  pFormObj->Transform(matrix);
+
+  double matrix_a = 0;
+  double matrix_b = 0;
+  double matrix_c = 0;
+  double matrix_d = 0;
+  double matrix_e = 0;
+  double matrix_f = 0;
+  EXPECT_TRUE(FPDFFormObj_GetMatrix(form, &matrix_a, &matrix_b, &matrix_c,
+                                    &matrix_d, &matrix_e, &matrix_f));
+  EXPECT_EQ(1., matrix_a);
+  EXPECT_EQ(1.5, matrix_b);
+  EXPECT_EQ(2., matrix_c);
+  EXPECT_EQ(2.5, matrix_d);
+  EXPECT_EQ(100., matrix_e);
+  EXPECT_EQ(200., matrix_f);
+
+  // FPDFFormObj_GetMatrix() negative testing.
+  EXPECT_FALSE(FPDFFormObj_GetMatrix(nullptr, &matrix_a, &matrix_b, &matrix_c,
+                                     &matrix_d, &matrix_e, &matrix_f));
+  EXPECT_FALSE(FPDFFormObj_GetMatrix(form, nullptr, nullptr, nullptr, nullptr,
+                                     nullptr, nullptr));
+  EXPECT_FALSE(FPDFFormObj_GetMatrix(nullptr, nullptr, nullptr, nullptr,
+                                     nullptr, nullptr, nullptr));
 
   UnloadPage(page);
 }
