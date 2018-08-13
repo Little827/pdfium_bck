@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1533968102 -0700\nnonce APISObT/V+mfojIVDirYWkDcdzQSanTmQwsvT62/rNoCm+pJGaoBH0aj1HTJFeEtHteFMPNuABrk\n\n0000000000000000000000000000000000000000 ef91e9f7ad36de0e1afe3d72221edeaaaf1eb4c6 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dmark-cpdf-font\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltufuYACgkQqzYtYVpm\n/XuDRAgAj0ZGghD/XPTKviQt0tvWQirqOB97WQMfHSVbBgvDh9O6ojsqj94wD+AW\ndbhXSDgCzZGgVailsHR4IO+LYSJiBkgRzxku2BMBc1hZJbbEudO1SAEoPHPTzS2G\nhLlKMgKTYBTQ+R5VhmDux6u0BBpkvERMMdjTw0UhyiyTIck7pHjIjYvDEKGV+T+8\n2rH43iRzE+3dThWYqiVFBHoz6cMJzGgff5IRusFu5+sEcdaLf+7of2JL7Lxr2S1r\n6SFaqCFxQDQHkgs9EbleS67TS6wmybp2cyrF8jNX9E6MaZ41MAn/nGS8DWMc+zFq\n56RDsYZBrXf8BsAZkyMwOFj/7BZHTQ\u003d\u003d\n\u003dF4+j\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c77e93e6_7508506d",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-13T14:40:02Z",
+      "side": 1,
+      "message": "And initialize in CPDF_Type1Font constructor instead.",
+      "revId": "ef91e9f7ad36de0e1afe3d72221edeaaaf1eb4c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24df21ea_d2b8c794",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-13T14:40:02Z",
+      "side": 1,
+      "message": "Move this to CPDF_Type1Font?",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "ef91e9f7ad36de0e1afe3d72221edeaaaf1eb4c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
