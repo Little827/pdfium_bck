@@ -63,49 +63,11 @@ uint8_t* CBC_PDF417Writer::Encode(const WideString& contents,
   if (!encoder.generateBarcodeLogic(contents, m_iCorrectLevel))
     return nullptr;
 
-  int32_t lineThickness = 2;
-  int32_t aspectRatio = 4;
   CBC_BarcodeMatrix* barcodeMatrix = encoder.getBarcodeMatrix();
-  std::vector<uint8_t> originalScale = barcodeMatrix->getScaledMatrix(
-      lineThickness, aspectRatio * lineThickness);
-  int32_t width = outWidth;
-  int32_t height = outHeight;
+  std::vector<uint8_t> originalScale = barcodeMatrix->getMatrix();
   outWidth = barcodeMatrix->getWidth();
   outHeight = barcodeMatrix->getHeight();
-  bool rotated = false;
-  if ((height > width) ^ (outWidth < outHeight)) {
-    rotateArray(originalScale, outHeight, outWidth);
-    rotated = true;
-    int32_t temp = outHeight;
-    outHeight = outWidth;
-    outWidth = temp;
-  }
-  int32_t scaleX = width / outWidth;
-  int32_t scaleY = height / outHeight;
-  int32_t scale = std::min(scaleX, scaleY);
-  if (scale > 1) {
-    originalScale = barcodeMatrix->getScaledMatrix(
-        scale * lineThickness, scale * aspectRatio * lineThickness);
-    if (rotated) {
-      rotateArray(originalScale, outHeight, outWidth);
-      int32_t temp = outHeight;
-      outHeight = outWidth;
-      outWidth = temp;
-    }
-  }
   uint8_t* result = FX_Alloc2D(uint8_t, outHeight, outWidth);
   memcpy(result, originalScale.data(), outHeight * outWidth);
   return result;
-}
-
-void CBC_PDF417Writer::rotateArray(std::vector<uint8_t>& bitarray,
-                                   int32_t height,
-                                   int32_t width) {
-  std::vector<uint8_t> temp = bitarray;
-  for (int32_t ii = 0; ii < height; ii++) {
-    int32_t inverseii = height - ii - 1;
-    for (int32_t jj = 0; jj < width; jj++) {
-      bitarray[jj * height + inverseii] = temp[ii * width + jj];
-    }
-  }
 }
