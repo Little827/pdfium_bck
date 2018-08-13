@@ -23,7 +23,7 @@ class CPDF_Type1Font : public CPDF_SimpleFont {
   int GlyphFromCharCodeExt(uint32_t charcode) override;
 #endif
 
-  int GetBase14Font() const { return m_Base14Font; }
+  bool HasBase14Font() const { return m_Base14Font >= 0; }
 
  private:
   // CPDF_Font:
