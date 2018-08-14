@@ -29,6 +29,7 @@ class CPDF_Object;
 class CPDF_PageObject;
 class CPDF_PageObjectHolder;
 class CPDF_PathObject;
+class CPDF_RenderContext;
 class CPDF_ShadingObject;
 class CPDF_ShadingPattern;
 class CPDF_TilingPattern;
@@ -39,12 +40,10 @@ class CPDF_Type3Font;
 
 class CPDF_RenderStatus {
  public:
-  CPDF_RenderStatus();
+  CPDF_RenderStatus(CPDF_RenderContext* pContext, CFX_RenderDevice* pDevice);
   ~CPDF_RenderStatus();
 
-  bool Initialize(class CPDF_RenderContext* pContext,
-                  CFX_RenderDevice* pDevice,
-                  const CFX_Matrix* pDeviceMatrix,
+  bool Initialize(const CFX_Matrix* pDeviceMatrix,
                   const CPDF_PageObject* pStopObj,
                   const CPDF_RenderStatus* pParentStatus,
                   const CPDF_GraphicStates* pInitialStates,

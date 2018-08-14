@@ -54,11 +54,11 @@ void CPDF_ProgressiveRenderer::Continue(PauseIndicatorIface* pPause) {
       m_pCurrentLayer = m_pContext->GetLayer(m_LayerIndex);
       m_LastObjectRendered =
           m_pCurrentLayer->m_pObjectHolder->GetPageObjectList()->end();
-      m_pRenderStatus = pdfium::MakeUnique<CPDF_RenderStatus>();
+      m_pRenderStatus = pdfium::MakeUnique<CPDF_RenderStatus>(m_pContext.Get(),
+                                                              m_pDevice.Get());
       m_pRenderStatus->Initialize(
-          m_pContext.Get(), m_pDevice.Get(), nullptr, nullptr, nullptr, nullptr,
-          m_pOptions, m_pCurrentLayer->m_pObjectHolder->GetTransparency(),
-          false, nullptr);
+          nullptr, nullptr, nullptr, nullptr, m_pOptions,
+          m_pCurrentLayer->m_pObjectHolder->GetTransparency(), false, nullptr);
       m_pDevice->SaveState();
       m_ClipRect = m_pCurrentLayer->m_Matrix.GetInverse().TransformRect(
           CFX_FloatRect(m_pDevice->GetClipBox()));
