@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1534192681 -0700\nnonce APISObRl6y0foE+Wuffojb743BKb3s24wG7QuTRdlCHdMju+bXQoEhl+CdAalLFAUTaA1ExiLesf\n\n0000000000000000000000000000000000000000 7b2edbf12dabf5615a4068a3ff7ac9aa14b3fd14 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dadd-cpdf-type1font\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAltx7CkACgkQqzYtYVpm\n/XuKlAgAtM8CgRf1CK1o+z918H3FW3tY080pjb+IE2LAqb6nY+Z5y6z/gfNSbu9R\nepC/IP2xcpP1giqmAF74EM8oHrKHI+0yNu/lmEmoQ7MSA9Sx9xaw7sOqVd2DVn8/\nlGKZNO2VMDUTcbQ3+gH5woiaP7gPWXm09O+a74UKmQ9cmSg2ugM08ZhevrqMzQP3\nalQm87QA+H0vU4A5j5sLNw2K43jPsvA+x5RF3Wl6ALkm+S+Hhwi/OLJVPDQzk8Kg\nduchdOv313OecQez537Ga/RF8NUs0+wpSf5b0nHVghZ3FxN8LFq+UDQtrjnkDNhu\nm9mreTBC8hDshhpnPo2Oa1+dXmofVw\u003d\u003d\n\u003duqTK\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb050796_dc80571c",
+        "filename": "core/fpdfapi/font/cpdf_type1font.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-14T16:20:54Z",
+      "side": 1,
+      "message": "Should this be IsBase14Font? It really just checks whether the font name is one of the 14 standard font names right?",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "7b2edbf12dabf5615a4068a3ff7ac9aa14b3fd14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
