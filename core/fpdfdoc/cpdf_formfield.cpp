@@ -54,25 +54,20 @@ Optional<FormFieldType> IntToFormFieldType(int value) {
 }
 
 const CPDF_Object* FPDF_GetFieldAttr(const CPDF_Dictionary* pFieldDict,
-                                     const char* name,
-                                     int nLevel) {
-  static constexpr int kGetFieldMaxRecursion = 32;
-  if (!pFieldDict || nLevel > kGetFieldMaxRecursion)
-    return nullptr;
-
-  const CPDF_Object* pAttr = pFieldDict->GetDirectObjectFor(name);
-  if (pAttr)
-    return pAttr;
-
-  const CPDF_Dictionary* pParent = pFieldDict->GetDictFor("Parent");
-  return pParent ? FPDF_GetFieldAttr(pParent, name, nLevel + 1) : nullptr;
+                                     const char* name) {
+  static constexpr int kGetFieldMaxDepth = 32;
+  for (int nLevel = 0; nLevel < kGetFieldMaxDepth && pFieldDict;
+       ++nLevel, pFieldDict = pFieldDict->GetDictFor("Parent")) {
+    const CPDF_Object* pAttr = pFieldDict->GetDirectObjectFor(name);
+    if (pAttr)
+      return pAttr;
+  }
+  return nullptr;
 }
 
-CPDF_Object* FPDF_GetFieldAttr(CPDF_Dictionary* pFieldDict,
-                               const char* name,
-                               int nLevel) {
-  return const_cast<CPDF_Object*>(FPDF_GetFieldAttr(
-      static_cast<const CPDF_Dictionary*>(pFieldDict), name, nLevel));
+CPDF_Object* FPDF_GetFieldAttr(CPDF_Dictionary* pFieldDict, const char* name) {
+  return const_cast<CPDF_Object*>(
+      FPDF_GetFieldAttr(static_cast<const CPDF_Dictionary*>(pFieldDict), name));
 }
 
 WideString FPDF_GetFullName(CPDF_Dictionary* pFieldDict) {
