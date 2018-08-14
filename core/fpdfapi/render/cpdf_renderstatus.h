@@ -29,6 +29,7 @@ class CPDF_Object;
 class CPDF_PageObject;
 class CPDF_PageObjectHolder;
 class CPDF_PathObject;
+class CPDF_RenderContext;
 class CPDF_ShadingObject;
 class CPDF_ShadingPattern;
 class CPDF_TilingPattern;
@@ -39,24 +40,30 @@ class CPDF_Type3Font;
 
 class CPDF_RenderStatus {
  public:
-  CPDF_RenderStatus();
+  CPDF_RenderStatus(CPDF_RenderContext* pContext, CFX_RenderDevice* pDevice);
   ~CPDF_RenderStatus();
 
-  bool Initialize(class CPDF_RenderContext* pContext,
-                  CFX_RenderDevice* pDevice,
-                  const CFX_Matrix* pDeviceMatrix,
-                  const CPDF_PageObject* pStopObj,
-                  const CPDF_RenderStatus* pParentStatus,
+  // Called prior to Initialize().
+  void SetStopObject(const CPDF_PageObject* pStopObj) { m_pStopObj = pStopObj; }
+  void SetFormResource(const CPDF_Dictionary* pRes) { m_pFormResource = pRes; }
+  void SetType3Char(CPDF_Type3Char* pType3Char) { m_pType3Char = pType3Char; }
+  void SetFillColor(FX_ARGB color) { m_T3FillColor = color; }
+  void SetDropObjects(bool bDropObjects) { m_bDropObjects = bDropObjects; }
+  void SetLoadMask(bool bLoadMask) { m_bLoadMask = bLoadMask; }
+  void SetStdCS(bool bStdCS) { m_bStdCS = bStdCS; }
+  void SetGroupFamily(uint32_t family) { m_GroupFamily = family; }
+  void SetTransparency(const CPDF_Transparency& transparency) {
+    m_Transparency = transparency;
+  }
+  void SetDeviceMatrix(const CFX_Matrix* pDeviceMatrix) {
+    if (pDeviceMatrix)
+      m_DeviceMatrix = *pDeviceMatrix;
+  }
+
+  void Initialize(const CPDF_RenderStatus* pParentStatus,
                   const CPDF_GraphicStates* pInitialStates,
-                  const CPDF_RenderOptions* pOptions,
-                  const CPDF_Transparency& transparency,
-                  bool bDropObjects,
-                  const CPDF_Dictionary* pFormResource = nullptr,
-                  bool bStdCS = false,
-                  CPDF_Type3Char* pType3Char = nullptr,
-                  FX_ARGB fill_color = 0,
-                  uint32_t GroupFamily = 0,
-                  bool bLoadMask = false);
+                  const CPDF_RenderOptions* pOptions);
+
   void RenderObjectList(const CPDF_PageObjectHolder* pObjectHolder,
                         const CFX_Matrix* pObj2Device);
   void RenderSingleObject(CPDF_PageObject* pObj, const CFX_Matrix* pObj2Device);
@@ -180,12 +187,12 @@ class CPDF_RenderStatus {
   const CPDF_PageObject* m_pStopObj = nullptr;
   CPDF_GraphicStates m_InitialStates;
   std::unique_ptr<CPDF_ImageRenderer> m_pImageRenderer;
-  bool m_bPrint = false;
   CPDF_Transparency m_Transparency;
+  bool m_bPrint = false;
   bool m_bDropObjects = false;
   bool m_bStdCS = false;
-  uint32_t m_GroupFamily = 0;
   bool m_bLoadMask = false;
+  uint32_t m_GroupFamily = 0;
   UnownedPtr<CPDF_Type3Char> m_pType3Char;
   FX_ARGB m_T3FillColor = 0;
   int m_curBlend = FXDIB_BLEND_NORMAL;
