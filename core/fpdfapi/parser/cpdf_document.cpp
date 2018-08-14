@@ -809,20 +809,6 @@ CPDF_Font* CPDF_Document::AddFont(CFX_Font* pFont, int charset, bool bVert) {
 }
 
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-CPDF_Font* CPDF_Document::AddWindowsFont(LOGFONTW* pLogFont,
-                                         bool bVert,
-                                         bool bTranslateName) {
-  LOGFONTA lfa;
-  memcpy(&lfa, pLogFont, (char*)lfa.lfFaceName - (char*)&lfa);
-  ByteString face = WideString(pLogFont->lfFaceName).ToDefANSI();
-  if (face.GetLength() >= LF_FACESIZE)
-    return nullptr;
-
-  strncpy(lfa.lfFaceName, face.c_str(),
-          (face.GetLength() + 1) * sizeof(ByteString::CharType));
-  return AddWindowsFont(&lfa, bVert, bTranslateName);
-}
-
 CPDF_Font* CPDF_Document::AddWindowsFont(LOGFONTA* pLogFont,
                                          bool bVert,
                                          bool bTranslateName) {
