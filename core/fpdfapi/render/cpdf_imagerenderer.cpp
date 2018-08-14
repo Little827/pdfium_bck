@@ -231,11 +231,12 @@ void CPDF_ImageRenderer::CalculateDrawImage(
     const RetainPtr<CFX_DIBSource>& pDIBSource,
     CFX_Matrix* pNewMatrix,
     const FX_RECT& rect) const {
-  CPDF_RenderStatus bitmap_render;
-  bitmap_render.Initialize(m_pRenderStatus->GetContext(), pBitmapDevice2,
-                           nullptr, nullptr, nullptr, nullptr, nullptr,
-                           CPDF_Transparency(),
-                           m_pRenderStatus->GetDropObjects(), nullptr, true);
+  CPDF_RenderStatus bitmap_render(m_pRenderStatus->GetContext(),
+                                  pBitmapDevice2);
+  bitmap_render.SetDropObjects(m_pRenderStatus->GetDropObjects());
+  bitmap_render.SetStdCS(true);
+  bitmap_render.Initialize(nullptr, nullptr, nullptr);
+
   CPDF_ImageRenderer image_render;
   if (image_render.Start(&bitmap_render, pDIBSource, 0xffffffff, 255,
                          pNewMatrix, m_Flags, true, FXDIB_BLEND_NORMAL)) {
@@ -282,11 +283,12 @@ bool CPDF_ImageRenderer::DrawPatternImage(const CFX_Matrix* pObj2Device) {
     return true;
 
   bitmap_device1.GetBitmap()->Clear(0xffffff);
-  CPDF_RenderStatus bitmap_render;
-  bitmap_render.Initialize(
-      m_pRenderStatus->GetContext(), &bitmap_device1, nullptr, nullptr, nullptr,
-      nullptr, m_pRenderStatus->GetRenderOptions(), CPDF_Transparency(),
-      m_pRenderStatus->GetDropObjects(), nullptr, true);
+  CPDF_RenderStatus bitmap_render(m_pRenderStatus->GetContext(),
+                                  &bitmap_device1);
+  bitmap_render.SetDropObjects(m_pRenderStatus->GetDropObjects());
+  bitmap_render.SetStdCS(true);
+  bitmap_render.Initialize(nullptr, nullptr,
+                           m_pRenderStatus->GetRenderOptions());
   CFX_Matrix patternDevice = *pObj2Device;
   patternDevice.Translate(static_cast<float>(-rect.left),
                           static_cast<float>(-rect.top));
@@ -335,11 +337,11 @@ bool CPDF_ImageRenderer::DrawMaskedImage() {
 #else
   bitmap_device1.GetBitmap()->Clear(0xffffff);
 #endif
-  CPDF_RenderStatus bitmap_render;
-  bitmap_render.Initialize(m_pRenderStatus->GetContext(), &bitmap_device1,
-                           nullptr, nullptr, nullptr, nullptr, nullptr,
-                           CPDF_Transparency(),
-                           m_pRenderStatus->GetDropObjects(), nullptr, true);
+  CPDF_RenderStatus bitmap_render(m_pRenderStatus->GetContext(),
+                                  &bitmap_device1);
+  bitmap_render.SetDropObjects(m_pRenderStatus->GetDropObjects());
+  bitmap_render.SetStdCS(true);
+  bitmap_render.Initialize(nullptr, nullptr, nullptr);
   CPDF_ImageRenderer image_render;
   if (image_render.Start(&bitmap_render, m_pDIBSource, 0, 255, &new_matrix,
                          m_Flags, true, FXDIB_BLEND_NORMAL)) {
