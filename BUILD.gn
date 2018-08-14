@@ -2933,6 +2933,7 @@ test("pdfium_unittests") {
     "testing/unit_test_main.cpp",
   ]
   deps = [
+    ":image_diff",
     ":pdfium",
     ":test_support",
     "//testing/gmock",

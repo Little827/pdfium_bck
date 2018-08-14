@@ -4,6 +4,7 @@
 
 #include "xfa/fwl/cfx_barcode.h"
 
+#include <fstream>
 #include <memory>
 #include <string>
 #include <utility>
@@ -13,6 +14,7 @@
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_renderdevice.h"
 #include "testing/gtest/include/gtest/gtest.h"
+#include "testing/image_diff/image_diff_png.h"
 #include "testing/test_support.h"
 #include "third_party/base/ptr_util.h"
 
@@ -58,6 +60,40 @@ class BarcodeTest : public testing::Test {
   std::string BitmapChecksum() {
     return GenerateMD5Base16(bitmap_->GetBuffer(),
                              bitmap_->GetPitch() * bitmap_->GetHeight());
+  }
+
+  void WriteBitmapToPng(FPDF_BITMAP bitmap, const std::string& filename) {
+    const int stride = FPDFBitmap_GetStride(bitmap);
+    const int width = FPDFBitmap_GetWidth(bitmap);
+    const int height = FPDFBitmap_GetHeight(bitmap);
+    const auto* buffer =
+        static_cast<const unsigned char*>(FPDFBitmap_GetBuffer(bitmap));
+
+    std::vector<unsigned char> png_encoding;
+    bool encoded;
+    if (FPDFBitmap_GetFormat(bitmap) == FPDFBitmap_Gray) {
+      encoded = image_diff_png::EncodeGrayPNG(buffer, width, height, stride,
+                                              &png_encoding);
+    } else {
+      encoded = image_diff_png::EncodeBGRAPNG(buffer, width, height, stride,
+                                              /*discard_transparency=*/false,
+                                              &png_encoding);
+    }
+
+    ASSERT_TRUE(encoded);
+    ASSERT_LT(filename.size(), 256u);
+
+    std::ofstream png_file;
+    png_file.open(filename, std::ios_base::out | std::ios_base::binary);
+    png_file.write(reinterpret_cast<char*>(&png_encoding.front()),
+                   png_encoding.size());
+    ASSERT_TRUE(png_file.good());
+    png_file.close();
+  }
+
+  void SaveBitmap() {
+    WriteBitmapToPng(reinterpret_cast<FPDF_BITMAP>(bitmap_.Get()),
+                     "savedbitmap.png");
   }
 
  protected:
@@ -127,6 +163,7 @@ TEST_F(BarcodeTest, Pdf417) {
   EXPECT_TRUE(Create(BC_PDF417));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
+  SaveBitmap();
   EXPECT_EQ("2bdb9b39f20c5763da6a0d7c7b1f6933", BitmapChecksum());
 }
 
