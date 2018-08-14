@@ -16,6 +16,24 @@
       "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8917447d_5ee85f2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T22:37:50Z",
+      "side": 1,
+      "message": "... and Acrobat Reader DC:\na) Warns an edited barcode_test.pdf cannot be saved.\nb) Displays blank boxes when I try to regenerate the barcodes.",
+      "parentUuid": "e2818c6c_fcac8065",
+      "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
