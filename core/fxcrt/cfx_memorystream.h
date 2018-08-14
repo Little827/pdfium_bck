@@ -7,8 +7,10 @@
 #ifndef CORE_FXCRT_CFX_MEMORYSTREAM_H_
 #define CORE_FXCRT_CFX_MEMORYSTREAM_H_
 
+#include <memory>
 #include <vector>
 
+#include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/retain_ptr.h"
 
@@ -27,19 +29,19 @@ class CFX_MemoryStream : public IFX_SeekableStream {
   bool Flush() override;
 
   uint8_t* GetBuffer() {
-    return !m_Blocks.empty() ? m_Blocks.front() : nullptr;
+    return !m_Blocks.empty() ? m_Blocks.front().get() : nullptr;
   }
 
  private:
   explicit CFX_MemoryStream(bool bConsecutive);
 
-  // Takes ownership of |pBuffer|.
-  CFX_MemoryStream(uint8_t* pBuffer, size_t nSize);
+  CFX_MemoryStream(std::unique_ptr<uint8_t, FxFreeDeleter> pBuffer,
+                   size_t nSize);
   ~CFX_MemoryStream() override;
 
   bool ExpandBlocks(size_t size);
 
-  std::vector<uint8_t*> m_Blocks;
+  std::vector<std::unique_ptr<uint8_t, FxFreeDeleter>> m_Blocks;
   size_t m_nTotalSize;
   size_t m_nCurSize;
   size_t m_nCurPos = 0;
