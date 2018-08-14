@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46a32b30_9ba9def2",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T23:34:40Z",
+      "side": 1,
+      "message": "All the callers pass in true.",
+      "revId": "0e8c075a93258350ff34e4b24b3de50f0bd68437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e221a9f_492c0a5c",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T23:34:40Z",
+      "side": 1,
+      "message": "As is, this is always true.",
+      "revId": "0e8c075a93258350ff34e4b24b3de50f0bd68437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a05b6da9_91d356d4",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T23:34:40Z",
+      "side": 1,
+      "message": "Why not add a setter for options?",
+      "revId": "0e8c075a93258350ff34e4b24b3de50f0bd68437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

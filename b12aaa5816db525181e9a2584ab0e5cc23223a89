@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "558f4ac6_19b90ac4",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T23:34:40Z",
+      "side": 1,
+      "message": "Can this be const now?",
+      "revId": "b12aaa5816db525181e9a2584ab0e5cc23223a89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42749b8_d3c91a29",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T23:34:40Z",
+      "side": 1,
+      "message": "Ditto, also no need to initialize to nullptr now.",
+      "revId": "b12aaa5816db525181e9a2584ab0e5cc23223a89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
