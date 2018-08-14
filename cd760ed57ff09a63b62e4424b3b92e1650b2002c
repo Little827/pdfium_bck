@@ -52,6 +52,24 @@
       "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b5c3ff_e698a763",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T23:21:58Z",
+      "side": 1,
+      "message": "Whereas Reader X can regenerate barcodes, but still does not like my hand edited PDF.\n\nOne can also edit the dimensions of the \u003cfield\u003e that holds the \u003cbarcode\u003e. Reader didn\u0027t like that either though.",
+      "parentUuid": "5d7fd70b_3eb83bb2",
+      "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
