@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2818c6c_fcac8065",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T22:25:33Z",
+      "side": 1,
+      "message": "barcode_test.pdf has a form that can generate barcodes, right? For PDF417, I believe for a given set of settings, the width is fixed and the height varies depending on how much data is in the barcode. Let me try and see if I can make a really tall one...",
+      "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
