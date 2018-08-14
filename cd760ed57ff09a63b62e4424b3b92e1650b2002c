@@ -34,6 +34,24 @@
       "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7fd70b_3eb83bb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-14T23:00:39Z",
+      "side": 1,
+      "message": "You can uncompress barcode_test.pdf, edit the \u003cbarcode type\u003d\"pdf417\"\u003e tag and change moduleWidth from 0.0133in to 0.0283in. Then you have a PDF that triggers the rotation. The rotated PDF417 barcode looks very strange, but it does scan for me. Because Acrobat Reader won\u0027t generate a barcode here, I don\u0027t have anything to compare to.",
+      "parentUuid": "8917447d_5ee85f2e",
+      "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
