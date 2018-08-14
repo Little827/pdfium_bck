@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c2dc52a_329185c2",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-14T20:35:06Z",
+      "side": 0,
+      "message": "This was refactored out. The method could be removed, though it\u0027s handy to have it ready without the need to #include \"testing/utils/bitmap_saver.h\" when debugging.",
+      "revId": "f42d570492e881600d6b0692fb2fe0c0ec89e181",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
