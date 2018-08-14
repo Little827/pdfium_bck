@@ -628,7 +628,7 @@ RetainPtr<IFX_SeekableReadStream> CFGAS_FontMgr::CreateFontStream(
   uint8_t* pBuffer = FX_Alloc(uint8_t, dwFileSize + 1);
   dwFileSize = pSystemFontInfo->GetFontData(hFont, 0, pBuffer, dwFileSize);
 
-  return pdfium::MakeRetain<CFX_MemoryStream>(pBuffer, dwFileSize, true);
+  return pdfium::MakeRetain<CFX_MemoryStream>(pBuffer, dwFileSize);
 }
 
 RetainPtr<IFX_SeekableReadStream> CFGAS_FontMgr::CreateFontStream(

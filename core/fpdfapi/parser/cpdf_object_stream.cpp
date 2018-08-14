@@ -95,10 +95,8 @@ void CPDF_ObjectStream::Init(const CPDF_Stream* stream) {
   {
     auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream);
     stream_acc->LoadAllDataFiltered();
-    const uint32_t data_size = stream_acc->GetSize();
     data_stream_ = pdfium::MakeRetain<CFX_MemoryStream>(
-        stream_acc->DetachData().release(), static_cast<size_t>(data_size),
-        true);
+        stream_acc->DetachData().release(), stream_acc->GetSize());
   }
 
   CPDF_SyntaxParser syntax(data_stream_);
