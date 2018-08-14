@@ -46,6 +46,30 @@
       "revId": "f52eb256823d857f985784dabfdb8e700e1d6abf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c57f890a_62318135",
+        "filename": "xfa/fwl/cfx_barcode_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-14T22:34:20Z",
+      "side": 1,
+      "message": "Ok, so maybe in the unit test we have up top\n\n#ifdef PDF_SPEW_UNITTEST_IMAGES\n#define SPEW_IMAGE(filename) SaveBitmap(filename)\n#else\n#define SPEW_IMAGE(filename)\n#endif\n\nthen stick a bunch of SPEW_IMAGE() macros into the tests.  So like with one -D, you get it all ...",
+      "parentUuid": "dabf4c68_35f94512",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "f52eb256823d857f985784dabfdb8e700e1d6abf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
