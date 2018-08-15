@@ -14,6 +14,7 @@
 #include "core/fxge/cfx_renderdevice.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
+#include "testing/utils/bitmap_saver.h"
 #include "third_party/base/ptr_util.h"
 
 class BarcodeTest : public testing::Test {
@@ -58,6 +59,10 @@ class BarcodeTest : public testing::Test {
   std::string BitmapChecksum() {
     return GenerateMD5Base16(bitmap_->GetBuffer(),
                              bitmap_->GetPitch() * bitmap_->GetHeight());
+  }
+
+  void SaveBitmap(const std::string& filename) {
+    BitmapSaver::WriteBitmapToPng(bitmap_.Get(), filename);
   }
 
  protected:
@@ -127,19 +132,20 @@ TEST_F(BarcodeTest, Pdf417) {
   EXPECT_TRUE(Create(BC_PDF417));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
-  EXPECT_EQ("2bdb9b39f20c5763da6a0d7c7b1f6933", BitmapChecksum());
+  SaveBitmap("../../Pdf417_yeah.png");
+  EXPECT_EQ("aaaa", BitmapChecksum());
 }
 
 TEST_F(BarcodeTest, DataMatrix) {
   EXPECT_TRUE(Create(BC_DATAMATRIX));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
-  EXPECT_EQ("5e5cd9a680b86fcd4ffd53ed36e3c980", BitmapChecksum());
+  EXPECT_EQ("9979df95276f72b5528bbb3e3a1ee226", BitmapChecksum());
 }
 
 TEST_F(BarcodeTest, QrCode) {
   EXPECT_TRUE(Create(BC_QR_CODE));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
-  EXPECT_EQ("4751c6e0f67749fabe24f787128decee", BitmapChecksum());
+  EXPECT_EQ("42175f2fe498fd0c4e04a60613cb1ec0", BitmapChecksum());
 }
