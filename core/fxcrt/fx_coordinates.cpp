@@ -248,12 +248,20 @@ CFX_Matrix CFX_Matrix::GetInverse() const {
   return inverse;
 }
 
-void CFX_Matrix::Concat(const CFX_Matrix& m, bool bPrepended) {
-  ConcatInternal(m, bPrepended);
+void CFX_Matrix::Concat(const CFX_Matrix& m) {
+  ConcatInternal(*this, m);
 }
 
-void CFX_Matrix::ConcatInverse(const CFX_Matrix& src, bool bPrepended) {
-  Concat(src.GetInverse(), bPrepended);
+void CFX_Matrix::ConcatPrepend(const CFX_Matrix& m) {
+  ConcatInternal(m, *this);
+}
+
+void CFX_Matrix::ConcatInverse(const CFX_Matrix& src) {
+  Concat(src.GetInverse());
+}
+
+void CFX_Matrix::ConcatInversePrepend(const CFX_Matrix& src) {
+  ConcatPrepend(src.GetInverse());
 }
 
 bool CFX_Matrix::Is90Rotated() const {
@@ -264,47 +272,33 @@ bool CFX_Matrix::IsScaled() const {
   return fabs(b * 1000) < fabs(a) && fabs(c * 1000) < fabs(d);
 }
 
-void CFX_Matrix::Translate(float x, float y, bool bPrepended) {
-  if (bPrepended) {
-    e += x * a + y * c;
-    f += y * d + x * b;
-    return;
-  }
+void CFX_Matrix::Translate(float x, float y) {
   e += x;
   f += y;
 }
 
-void CFX_Matrix::Scale(float sx, float sy, bool bPrepended) {
-  a *= sx;
-  d *= sy;
-  if (bPrepended) {
-    b *= sx;
-    c *= sy;
-    return;
-  }
+void CFX_Matrix::TranslatePrepend(float x, float y) {
+  e += x * a + y * c;
+  f += y * d + x * b;
+}
 
+void CFX_Matrix::Scale(float sx, float sy) {
+  a *= sx;
   b *= sy;
   c *= sx;
+  d *= sy;
   e *= sx;
   f *= sy;
 }
 
-void CFX_Matrix::Rotate(float fRadian, bool bPrepended) {
+void CFX_Matrix::Rotate(float fRadian) {
   float cosValue = cos(fRadian);
   float sinValue = sin(fRadian);
-  ConcatInternal(CFX_Matrix(cosValue, sinValue, -sinValue, cosValue, 0, 0),
-                 bPrepended);
+  Concat(CFX_Matrix(cosValue, sinValue, -sinValue, cosValue, 0, 0));
 }
 
-void CFX_Matrix::RotateAt(float fRadian, float x, float y, bool bPrepended) {
-  Translate(-x, -y, bPrepended);
-  Rotate(fRadian, bPrepended);
-  Translate(x, y, bPrepended);
-}
-
-void CFX_Matrix::Shear(float fAlphaRadian, float fBetaRadian, bool bPrepended) {
-  ConcatInternal(CFX_Matrix(1, tan(fAlphaRadian), tan(fBetaRadian), 1, 0, 0),
-                 bPrepended);
+void CFX_Matrix::Shear(float fAlphaRadian, float fBetaRadian) {
+  Concat(CFX_Matrix(1, tan(fAlphaRadian), tan(fBetaRadian), 1, 0, 0));
 }
 
 void CFX_Matrix::MatchRect(const CFX_FloatRect& dest,
@@ -397,17 +391,8 @@ CFX_FloatRect CFX_Matrix::TransformRect(const CFX_FloatRect& rect) const {
   return CFX_FloatRect(left, bottom, right, top);
 }
 
-void CFX_Matrix::ConcatInternal(const CFX_Matrix& other, bool prepend) {
-  CFX_Matrix left;
-  CFX_Matrix right;
-  if (prepend) {
-    left = other;
-    right = *this;
-  } else {
-    left = *this;
-    right = other;
-  }
-
+// NOTE: pass args by value to force copies for self-intersecting cases.
+void CFX_Matrix::ConcatInternal(CFX_Matrix left, CFX_Matrix right) {
   a = left.a * right.a + left.b * right.c;
   b = left.a * right.b + left.b * right.d;
   c = left.c * right.a + left.d * right.c;
