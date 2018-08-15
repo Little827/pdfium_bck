@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3fb7e2_6f23e59b",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-15T21:16:32Z",
+      "side": 1,
+      "message": "Why repeat this twice though?",
+      "revId": "e25893f22044bad95bad748fdf57f9b68d159d62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
