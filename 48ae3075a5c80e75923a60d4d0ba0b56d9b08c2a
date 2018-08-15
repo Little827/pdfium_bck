@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9ff75d6_83f8d15b",
+        "filename": "core/fxcrt/cfx_memorystream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-15T20:46:00Z",
+      "side": 0,
+      "message": "nit: maybe comment in the change description that we now allow reads of 0 bytes from byte 0 in case that changes some behaviour later.",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "48ae3075a5c80e75923a60d4d0ba0b56d9b08c2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
