@@ -70,6 +70,30 @@
       "revId": "f52eb256823d857f985784dabfdb8e700e1d6abf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2bd40de_8757ba9c",
+        "filename": "xfa/fwl/cfx_barcode_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-15T17:01:56Z",
+      "side": 1,
+      "message": "This can be handy, but I have small two concerns with it:\n1. I usually use \"../../output.png\", which is a relative path to my home dir where the images are places. The filename would need to be something more neutral, and when the pngs are generated into the pdfium repo root they get in the way of git adds and accidentally find their way into the CL often.\n2. Too many build flags.\n\nThat said I\u0027m on the fence, because not having to add the calls manually and leave an unused function is a great thing.",
+      "parentUuid": "c57f890a_62318135",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "f52eb256823d857f985784dabfdb8e700e1d6abf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
