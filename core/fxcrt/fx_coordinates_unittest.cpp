@@ -437,9 +437,9 @@ TEST(CFX_Matrix, ComposeTransformations) {
 
   // Now compose all transforms prepending.
   m.SetIdentity();
-  m.Concat(rotate_90, true);
-  m.Concat(translate_23_11, true);
-  m.Concat(scale_5_13, true);
+  m.ConcatPrepend(rotate_90);
+  m.ConcatPrepend(translate_23_11);
+  m.ConcatPrepend(scale_5_13);
   EXPECT_NEAR_FIVE_PLACES(0.0f, m.a);
   EXPECT_NEAR_FIVE_PLACES(5.0f, m.b);
   EXPECT_NEAR_FIVE_PLACES(-13.0f, m.c);
