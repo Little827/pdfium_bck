@@ -70,6 +70,24 @@
       "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6070dc97_f8247416",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-15T17:31:23Z",
+      "side": 1,
+      "message": "Thanks for finding how to test this. To make the CL simpler and more directed, I\u0027ve put back rotation and it\u0027s a much simpler change now. I\u0027ll add a test for rotation before making changes to it.",
+      "parentUuid": "84b5c3ff_e698a763",
+      "revId": "cd760ed57ff09a63b62e4424b3b92e1650b2002c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
