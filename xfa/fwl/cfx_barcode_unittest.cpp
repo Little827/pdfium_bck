@@ -127,19 +127,19 @@ TEST_F(BarcodeTest, Pdf417) {
   EXPECT_TRUE(Create(BC_PDF417));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
-  EXPECT_EQ("2bdb9b39f20c5763da6a0d7c7b1f6933", BitmapChecksum());
+  EXPECT_EQ("feddc0ee7b4e2104f5d404d9c78f4056", BitmapChecksum());
 }
 
 TEST_F(BarcodeTest, DataMatrix) {
   EXPECT_TRUE(Create(BC_DATAMATRIX));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
-  EXPECT_EQ("5e5cd9a680b86fcd4ffd53ed36e3c980", BitmapChecksum());
+  EXPECT_EQ("9979df95276f72b5528bbb3e3a1ee226", BitmapChecksum());
 }
 
 TEST_F(BarcodeTest, QrCode) {
   EXPECT_TRUE(Create(BC_QR_CODE));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
-  EXPECT_EQ("4751c6e0f67749fabe24f787128decee", BitmapChecksum());
+  EXPECT_EQ("42175f2fe498fd0c4e04a60613cb1ec0", BitmapChecksum());
 }
