@@ -34,6 +34,24 @@
       "revId": "cc93d5e1607099d8927060b6d9b0f94d8859b5c0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84883c9b_ec700ce7",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-15T22:16:26Z",
+      "side": 1,
+      "message": "I meant the comment should be in the header.",
+      "parentUuid": "ab54f8cf_d070e1fb",
+      "revId": "cc93d5e1607099d8927060b6d9b0f94d8859b5c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
