@@ -16,6 +16,24 @@
       "revId": "e25893f22044bad95bad748fdf57f9b68d159d62",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e357f0b4_0656393a",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-15T21:35:20Z",
+      "side": 1,
+      "message": "Just to avoid a function call, even if we expect the optimizer to remove it.  Fixed.",
+      "parentUuid": "4d3fb7e2_6f23e59b",
+      "revId": "e25893f22044bad95bad748fdf57f9b68d159d62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
