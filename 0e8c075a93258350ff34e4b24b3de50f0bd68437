@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7b00263_c2fb53c0",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-15T17:04:49Z",
+      "side": 1,
+      "message": "redundant, already null following creation, removed.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 0,
+        "endLine": 1034,
+        "endChar": 27
+      },
+      "revId": "0e8c075a93258350ff34e4b24b3de50f0bd68437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46a32b30_9ba9def2",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
         "patchSetId": 5
@@ -19,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "ffcf5d97_1431bbde",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-15T17:04:49Z",
+      "side": 1,
+      "message": "Dunno, feels better to take an argument for consistency with other setters.",
+      "parentUuid": "46a32b30_9ba9def2",
+      "revId": "0e8c075a93258350ff34e4b24b3de50f0bd68437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e221a9f_492c0a5c",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
         "patchSetId": 5
@@ -30,6 +71,24 @@
       "writtenOn": "2018-08-14T23:34:40Z",
       "side": 1,
       "message": "As is, this is always true.",
+      "revId": "0e8c075a93258350ff34e4b24b3de50f0bd68437",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "050cfe88_ed29d1d8",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-15T17:04:49Z",
+      "side": 1,
+      "message": "Pass by const ref, then.  Done.",
+      "parentUuid": "9e221a9f_492c0a5c",
       "revId": "0e8c075a93258350ff34e4b24b3de50f0bd68437",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
