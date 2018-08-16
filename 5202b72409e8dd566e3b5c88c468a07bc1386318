@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdd3d63e_d2a3a21a",
+        "filename": "xfa/fxfa/cxfa_textlayout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-16T22:04:09Z",
+      "side": 1,
+      "message": "Can you check if the last 2 ever gets set to something other than the default values?",
+      "revId": "5202b72409e8dd566e3b5c88c468a07bc1386318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
