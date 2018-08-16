@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65b4b640_d9330c07",
+        "filename": "core/fpdfdoc/cpdf_interform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-16T20:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d2c8bc_2b1da636",
+      "revId": "9580e0ef354e88d460301f9868cf8e2d6fdb5bab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19ed9b9a_02aeec5c",
         "filename": "fpdfsdk/cpdfsdk_interform.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-08-16T20:32:07Z",
       "side": 1,
       "message": "Wrong value?",
+      "revId": "9580e0ef354e88d460301f9868cf8e2d6fdb5bab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f01a17a_909e8c22",
+        "filename": "fpdfsdk/cpdfsdk_interform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-16T20:41:36Z",
+      "side": 1,
+      "message": "Crap.  Good catch. Thanks. Done",
+      "parentUuid": "19ed9b9a_02aeec5c",
       "revId": "9580e0ef354e88d460301f9868cf8e2d6fdb5bab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
