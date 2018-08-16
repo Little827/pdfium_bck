@@ -183,7 +183,7 @@ CXFA_Node* CXFA_NodeHelper::ResolveNodes_GetParent(CXFA_Node* pNode,
   CXFA_Node* parent;
   CXFA_Node* node = pNode;
   while (true) {
-    parent = ResolveNodes_GetParent(node);
+    parent = ResolveNodes_GetParent(node, XFA_LOGIC_NoTransparent);
     if (!parent) {
       break;
     }
