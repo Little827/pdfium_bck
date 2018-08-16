@@ -131,6 +131,7 @@ TEST_F(BarcodeTest, Pdf417) {
   EXPECT_TRUE(Create(BC_PDF417));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
+  SaveBitmap("../../Pdf417_barcodes_are_slow1_again.png");
   EXPECT_EQ("3a154001167ff0b8511b72677dd4c5a4", BitmapChecksum());
 }
 
@@ -138,6 +139,7 @@ TEST_F(BarcodeTest, DataMatrix) {
   EXPECT_TRUE(Create(BC_DATAMATRIX));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
+  SaveBitmap("../../DataMatrix_barcodes_are_slow1_again.png");
   EXPECT_EQ("5e5cd9a680b86fcd4ffd53ed36e3c980", BitmapChecksum());
 }
 
@@ -145,5 +147,6 @@ TEST_F(BarcodeTest, QrCode) {
   EXPECT_TRUE(Create(BC_QR_CODE));
   EXPECT_TRUE(barcode()->Encode(L"clams"));
   RenderDevice();
+  SaveBitmap("../../QrCode_barcodes_are_slow1_again.png");
   EXPECT_EQ("4751c6e0f67749fabe24f787128decee", BitmapChecksum());
 }
