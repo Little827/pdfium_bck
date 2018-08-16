@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e75e4ef8_69eb0b01",
+        "filename": "fxbarcode/pdf417/BC_PDF417Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-16T19:25:29Z",
+      "side": 1,
+      "message": "Setting the minimums as col and row, we forced the barcode to cram as many modules as the barcode could fit.",
+      "revId": "330f121798213880201e0e7fd110cdbaa62c00ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562727d4_f38fd880",
+        "filename": "xfa/fwl/cfx_barcode_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-16T19:25:29Z",
+      "side": 1,
+      "message": "Verified that this is correct by scanning.",
+      "revId": "330f121798213880201e0e7fd110cdbaa62c00ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
