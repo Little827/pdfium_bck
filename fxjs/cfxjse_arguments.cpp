@@ -28,19 +28,28 @@ std::unique_ptr<CFXJSE_Value> CFXJSE_Arguments::GetValue(int32_t index) const {
 }
 
 bool CFXJSE_Arguments::GetBoolean(int32_t index) const {
-  return (*m_pInfo)[index]->BooleanValue();
+  return (*m_pInfo)[index]
+      ->BooleanValue(v8::Isolate::GetCurrent()->GetCurrentContext())
+      .FromMaybe(false);
 }
 
 int32_t CFXJSE_Arguments::GetInt32(int32_t index) const {
-  return static_cast<int32_t>((*m_pInfo)[index]->NumberValue());
+  return static_cast<int32_t>(
+      (*m_pInfo)[index]
+          ->NumberValue(v8::Isolate::GetCurrent()->GetCurrentContext())
+          .FromMaybe(0.0));
 }
 
 float CFXJSE_Arguments::GetFloat(int32_t index) const {
-  return static_cast<float>((*m_pInfo)[index]->NumberValue());
+  return static_cast<float>(
+      (*m_pInfo)[index]
+          ->NumberValue(v8::Isolate::GetCurrent()->GetCurrentContext())
+          .FromMaybe(0.0));
 }
 
 ByteString CFXJSE_Arguments::GetUTF8String(int32_t index) const {
-  v8::Local<v8::String> hString = (*m_pInfo)[index]->ToString();
+  v8::Local<v8::String> hString =
+      (*m_pInfo)[index]->ToString(v8::Isolate::GetCurrent());
   v8::String::Utf8Value szStringVal(m_pInfo->GetIsolate(), hString);
   return ByteString(*szStringVal);
 }
