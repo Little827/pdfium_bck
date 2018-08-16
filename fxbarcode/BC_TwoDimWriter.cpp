@@ -5,6 +5,7 @@
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
 #include <algorithm>
+#include <iostream>
 
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
@@ -42,6 +43,8 @@ void CBC_TwoDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
   }
 
   CFX_GraphStateData data;
+  std::cerr << "m_input w " << m_inputWidth << ", h " << m_inputHeight
+            << std::endl;
   for (int32_t x = 0; x < m_inputWidth; x++) {
     for (int32_t y = 0; y < m_inputHeight; y++) {
       CFX_PathData rect;
@@ -62,6 +65,7 @@ int32_t CBC_TwoDimWriter::GetErrorCorrectionLevel() const {
 bool CBC_TwoDimWriter::RenderResult(uint8_t* code,
                                     int32_t codeWidth,
                                     int32_t codeHeight) {
+  std::cerr << "code w " << codeWidth << ", h " << codeHeight << std::endl;
   m_inputWidth = codeWidth;
   m_inputHeight = codeHeight;
   int32_t tempWidth = m_inputWidth + 2;

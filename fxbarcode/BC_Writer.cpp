@@ -6,6 +6,8 @@
 
 #include "fxbarcode/BC_Writer.h"
 
+#include <iostream>
+
 CBC_Writer::CBC_Writer() {
   m_CharEncoding = 0;
   m_ModuleHeight = 1;
@@ -22,6 +24,8 @@ bool CBC_Writer::SetCharEncoding(int32_t encoding) {
   return true;
 }
 bool CBC_Writer::SetModuleHeight(int32_t moduleHeight) {
+  std::cerr << "CBC_Writer::SetModuleHeight moduleHeight " << moduleHeight
+            << std::endl;
   if (moduleHeight > 10 || moduleHeight < 1) {
     return false;
   }
@@ -29,6 +33,8 @@ bool CBC_Writer::SetModuleHeight(int32_t moduleHeight) {
   return true;
 }
 bool CBC_Writer::SetModuleWidth(int32_t moduleWidth) {
+  std::cerr << "CBC_Writer::SetModuleWidth moduleWidth " << moduleWidth
+            << std::endl;
   if (moduleWidth > 10 || moduleWidth < 1) {
     return false;
   }

@@ -22,6 +22,8 @@
 
 #include "fxbarcode/pdf417/BC_PDF417.h"
 
+#include <iostream>
+
 #include "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.h"
 #include "fxbarcode/pdf417/BC_PDF417BarcodeRow.h"
 #include "fxbarcode/pdf417/BC_PDF417Compaction.h"
@@ -421,6 +423,11 @@ bool CBC_PDF417::generateBarcodeLogic(WideString msg,
   int32_t rows = dimensions[1];
   int32_t pad = getNumberOfPadCodewords(sourceCodeWords,
                                         errorCorrectionCodeWords, cols, rows);
+  std::cerr << "CBC_PDF417::generateBarcodeLogic cols " << cols << ", rows "
+            << rows << ", pad " << pad << std::endl;
+  std::cerr << "CBC_PDF417::generateBarcodeLogic sourceCodeWords "
+            << sourceCodeWords << ", errorCorrectionCodeWords "
+            << errorCorrectionCodeWords << std::endl;
   if (sourceCodeWords + errorCorrectionCodeWords + 1 > 929)
     return false;
 
@@ -463,10 +470,13 @@ void CBC_PDF417::setCompact(bool compact) {
 }
 
 int32_t CBC_PDF417::calculateNumberOfRows(int32_t m, int32_t k, int32_t c) {
+  std::cerr << "CBC_PDF417::calculateNumberOfRows m " << m << ", k " << k
+            << ", c " << c << std::endl;
   int32_t r = ((m + 1 + k) / c) + 1;
   if (c * r >= (m + 1 + k + c)) {
     r--;
   }
+  std::cerr << "CBC_PDF417::calculateNumberOfRows r " << r << std::endl;
   return r;
 }
 
@@ -540,21 +550,30 @@ void CBC_PDF417::encodeLowLevel(WideString fullCodewords,
 std::vector<int32_t> CBC_PDF417::determineDimensions(
     int32_t sourceCodeWords,
     int32_t errorCorrectionCodeWords) const {
+  std::cerr << "m_minCols " << m_minCols << " m_maxCols " << m_maxCols
+            << std::endl;
+  std::cerr << "m_minRows " << m_minRows << " m_maxRows " << m_maxRows
+            << std::endl;
   std::vector<int32_t> dimensions;
   float ratio = 0.0f;
   for (int32_t cols = m_minCols; cols <= m_maxCols; cols++) {
     int32_t rows =
         calculateNumberOfRows(sourceCodeWords, errorCorrectionCodeWords, cols);
+    std::cerr << "cols " << cols << " rows " << rows << std::endl;
     if (rows < m_minRows)
       break;
     if (rows > m_maxRows)
       continue;
     float newRatio =
         ((17 * cols + 69) * DEFAULT_MODULE_WIDTH) / (rows * HEIGHT);
+    std::cerr << "newRatio is " << newRatio << " for cols " << cols << " rows "
+              << rows << std::endl;
     if (!dimensions.empty() &&
         fabsf(newRatio - PREFERRED_RATIO) > fabsf(ratio - PREFERRED_RATIO)) {
       continue;
     }
+    std::cerr << "accepted ratio " << newRatio << " for cols " << cols
+              << " rows " << rows << std::endl;
     ratio = newRatio;
     dimensions.resize(2);
     dimensions[0] = cols;

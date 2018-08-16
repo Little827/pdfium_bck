@@ -23,6 +23,7 @@
 #include "fxbarcode/pdf417/BC_PDF417Writer.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "fxbarcode/BC_TwoDimWriter.h"
 #include "fxbarcode/common/BC_CommonBitArray.h"
@@ -51,9 +52,16 @@ void CBC_PDF417Writer::SetTruncated(bool truncated) {
 uint8_t* CBC_PDF417Writer::Encode(const WideString& contents,
                                   int32_t& outWidth,
                                   int32_t& outHeight) {
+  std::cerr << "CBC_PDF417Writer::Encode contents " << contents << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode m_Width " << m_Width << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode m_Height " << m_Height << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode m_ModuleWidth " << m_ModuleWidth
+            << std::endl;
   CBC_PDF417 encoder;
   int32_t col = (m_Width / m_ModuleWidth - 69) / 17;
   int32_t row = m_Height / (m_ModuleWidth * 20);
+  std::cerr << "CBC_PDF417Writer::Encode col " << col << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode row " << row << std::endl;
   if (row >= 3 && row <= 90 && col >= 1 && col <= 30)
     encoder.setDimensions(col, 1, row, 3);
   else if (col >= 1 && col <= 30)
@@ -69,6 +77,8 @@ uint8_t* CBC_PDF417Writer::Encode(const WideString& contents,
   int32_t height = outHeight;
   outWidth = barcodeMatrix->getWidth();
   outHeight = barcodeMatrix->getHeight();
+  std::cerr << "CBC_PDF417Writer::Encode outWidth1 " << outWidth << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode outHeight1 " << outHeight << std::endl;
 
   bool rotated = false;
   if ((height > width) ^ (outWidth < outHeight)) {
@@ -81,6 +91,9 @@ uint8_t* CBC_PDF417Writer::Encode(const WideString& contents,
   int32_t scaleX = width / outWidth;
   int32_t scaleY = height / outHeight;
   int32_t scale = std::min(scaleX, scaleY);
+  std::cerr << "CBC_PDF417Writer::Encode scaleX " << scaleX << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode scaleY " << scaleY << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode scale " << scale << std::endl;
   if (scale > 1) {
     originalScale = barcodeMatrix->getScaledMatrix(scale);
     if (rotated) {
@@ -90,8 +103,11 @@ uint8_t* CBC_PDF417Writer::Encode(const WideString& contents,
       outWidth = temp;
     }
   }
+  std::cerr << "CBC_PDF417Writer::Encode rotated " << rotated << std::endl;
   uint8_t* result = FX_Alloc2D(uint8_t, outHeight, outWidth);
   memcpy(result, originalScale.data(), outHeight * outWidth);
+  std::cerr << "CBC_PDF417Writer::Encode outWidth2 " << outWidth << std::endl;
+  std::cerr << "CBC_PDF417Writer::Encode outHeight2 " << outHeight << std::endl;
   return result;
 }
 
