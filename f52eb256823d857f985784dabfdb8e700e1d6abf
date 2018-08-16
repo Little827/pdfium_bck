@@ -94,6 +94,30 @@
       "revId": "f52eb256823d857f985784dabfdb8e700e1d6abf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc158ff2_318053ef",
+        "filename": "xfa/fwl/cfx_barcode_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-16T16:18:55Z",
+      "side": 1,
+      "message": "Ok, lets leave it, but maybe add a comment here about \"Manually insert calls to this as needed\" so that someone doesn\u0027t remove it as unused down the road.",
+      "parentUuid": "e2bd40de_8757ba9c",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "f52eb256823d857f985784dabfdb8e700e1d6abf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
