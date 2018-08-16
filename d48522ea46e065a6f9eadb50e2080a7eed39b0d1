@@ -16,6 +16,24 @@
       "revId": "d48522ea46e065a6f9eadb50e2080a7eed39b0d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444c22e9_d217acd8",
+        "filename": "core/fxge/win32/fx_win32_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-16T16:19:52Z",
+      "side": 1,
+      "message": "Yep.  Someone wants it non-null I guess ?",
+      "parentUuid": "bd142511_1e1fe195",
+      "revId": "d48522ea46e065a6f9eadb50e2080a7eed39b0d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
