@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "15b7c0f5_2da95d7a",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "Check after converting to CPDF_TextPage.",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54acbb00_861774f2",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "Different naming convention to have a technically different name is confusing. I know we do it in some other places, but it would be good to move to a better world. Can you change to something else?",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "277a5ae6_90144703",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 3
@@ -47,6 +87,23 @@
       "writtenOn": "2018-08-17T18:28:45Z",
       "side": 1,
       "message": "If line 533 fails, you could potentially allocate a lot of memory here.",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e9edce_a3d8a308",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "Why don\u0027t you use a normal test string? Like \"MyFont\" or something?",
       "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -99,6 +156,23 @@
     },
     {
       "key": {
+        "uuid": "0fa45b08_f7845314",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "Expect flags to be unnaffected? Or pass null if it doesn\u0027t matter.",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81b60179_2382a4df",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 3
@@ -110,6 +184,40 @@
       "writtenOn": "2018-08-17T18:28:45Z",
       "side": 1,
       "message": "Check the return values.",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6bb8f3a_b0fe18ce",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "This block can be indented -2.",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c428e045_b4904342",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "Indent +4 or align with start of description.",
       "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -144,6 +252,52 @@
       "writtenOn": "2018-08-17T18:28:45Z",
       "side": 1,
       "message": "Mention this is optional?",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78da0f83_8081572b",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "PDF spec",
+      "range": {
+        "startLine": 100,
+        "startChar": 46,
+        "endLine": 100,
+        "endChar": 50
+      },
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af939fa_338e933f",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T18:55:35Z",
+      "side": 1,
+      "message": "nit: Can be omitted.",
+      "range": {
+        "startLine": 106,
+        "startChar": 42,
+        "endLine": 106,
+        "endChar": 48
+      },
       "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
