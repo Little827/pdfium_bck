@@ -34,6 +34,24 @@
       "revId": "87da3cf0450ffceb1f59fca939df6d34b0725a52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "769c4aff_6ccbf7d1",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-17T19:43:33Z",
+      "side": 1,
+      "message": "Sure it will. https://en.cppreference.com/w/cpp/language/reinterpret_cast #9.",
+      "parentUuid": "c41e3c7e_43c6b3a3",
+      "revId": "87da3cf0450ffceb1f59fca939df6d34b0725a52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
