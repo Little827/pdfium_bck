@@ -16,6 +16,24 @@
       "revId": "c4c66f29a2b830cd4eb492ba894645e0c55f2431",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff75eab_541ecdf9",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-17T22:08:36Z",
+      "side": 0,
+      "message": "There\u0027s a reason we invented RetainPtr\u003c\u003e.  Should work with any class that implements Retain/Release methods. Use it here and in the m_FamilyFonts array?",
+      "parentUuid": "549fe9c0_c0faecaf",
+      "revId": "c4c66f29a2b830cd4eb492ba894645e0c55f2431",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
