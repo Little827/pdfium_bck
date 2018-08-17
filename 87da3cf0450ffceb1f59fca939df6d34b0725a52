@@ -52,6 +52,24 @@
       "revId": "87da3cf0450ffceb1f59fca939df6d34b0725a52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47c6df4_4b1f75df",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-17T19:54:00Z",
+      "side": 1,
+      "message": "I don\u0027t understand that because it seems to contradict #3 \"The null pointer constant NULL or integer zero is not guaranteed to yield the null pointer value of the target type; static_cast or implicit conversion should be used for this purpose\"\n\nAnyways, for now I\u0027ll leave it like this for consistency with the other methods.",
+      "parentUuid": "769c4aff_6ccbf7d1",
+      "revId": "87da3cf0450ffceb1f59fca939df6d34b0725a52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
