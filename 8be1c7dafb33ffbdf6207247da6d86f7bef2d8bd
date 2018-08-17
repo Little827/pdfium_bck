@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "946d8d98_bb44c448",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T19:22:07Z",
+      "side": 1,
+      "message": "Ack, no need to check afterwards.",
+      "parentUuid": "dd0f7759_65642c85",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54acbb00_861774f2",
         "filename": "fpdfsdk/fpdf_text.cpp",
         "patchSetId": 3
@@ -81,6 +99,30 @@
       "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1fae07b_c31bda1f",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T19:22:07Z",
+      "side": 1,
+      "message": "Look great, thanks.",
+      "parentUuid": "53cf0da5_ac86325f",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -221,6 +263,24 @@
       "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ded335c1_c6439fe8",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T19:22:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "291db8fd_4944922a",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -417,6 +477,24 @@
       "side": 1,
       "message": "I\u0027m following the formatting of all the other methods in this file. I can do a followup to change the formatting of all of them once we decide on what should be the formatting.",
       "parentUuid": "e6bb8f3a_b0fe18ce",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c70e1c9_959d525c",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-17T19:22:07Z",
+      "side": 1,
+      "message": "The methods immediately above and below are not at the same level as this one.",
+      "parentUuid": "3a1e00ee_c75d7aaa",
       "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
