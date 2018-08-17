@@ -22,7 +22,7 @@ class CBC_CommonBitMatrix {
   void Init(int32_t width, int32_t height);
 
   bool Get(int32_t x, int32_t y) const;
-  void Set(int32_t x, int32_t y);
+  bool Set(int32_t x, int32_t y);
   void Flip(int32_t x, int32_t y);
   void Clear();
   bool SetRegion(int32_t left, int32_t top, int32_t width, int32_t height);
