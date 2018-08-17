@@ -1069,6 +1069,7 @@ void CPDF_RenderStatus::RenderSingleObject(CPDF_PageObject* pObj,
   if (++g_CurrentRecursionDepth > kRenderMaxRecursionDepth) {
     return;
   }
+  AutoRestorer<UnownedPtr<const CPDF_PageObject>> restorer2(&m_pCurObj);
   m_pCurObj = pObj;
   if (m_Options.GetOCContext() &&
       !m_Options.GetOCContext()->CheckObjectVisible(pObj)) {
@@ -1096,7 +1097,7 @@ bool CPDF_RenderStatus::ContinueSingleObject(CPDF_PageObject* pObj,
     m_pImageRenderer.reset();
     return false;
   }
-
+  AutoRestorer<UnownedPtr<const CPDF_PageObject>> restorer2(&m_pCurObj);
   m_pCurObj = pObj;
   if (m_Options.GetOCContext() &&
       !m_Options.GetOCContext()->CheckObjectVisible(pObj)) {
@@ -1228,7 +1229,7 @@ bool CPDF_RenderStatus::ProcessForm(const CPDF_FormObject* pFormObj,
       pFormDict ? pFormDict->GetDictFor("Resources") : nullptr;
   CPDF_RenderStatus status(m_pContext.Get(), m_pDevice);
   status.SetOptions(m_Options);
-  status.SetStopObject(m_pStopObj);
+  status.SetStopObject(m_pStopObj.Get());
   status.SetTransparency(m_Transparency);
   status.SetDropObjects(m_bDropObjects);
   status.SetFormResource(pResources);
@@ -1568,7 +1569,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   }
   CPDF_RenderStatus bitmap_render(m_pContext.Get(), &bitmap_device);
   bitmap_render.SetOptions(m_Options);
-  bitmap_render.SetStopObject(m_pStopObj);
+  bitmap_render.SetStopObject(m_pStopObj.Get());
   bitmap_render.SetStdCS(true);
   bitmap_render.SetDropObjects(m_bDropObjects);
   bitmap_render.SetFormResource(pFormResource);
@@ -2058,8 +2059,8 @@ void CPDF_RenderStatus::DrawShading(const CPDF_ShadingPattern* pPattern,
     return;
   }
   CPDF_DeviceBuffer buffer;
-  buffer.Initialize(m_pContext.Get(), m_pDevice, clip_rect_bbox, m_pCurObj,
-                    150);
+  buffer.Initialize(m_pContext.Get(), m_pDevice, clip_rect_bbox,
+                    m_pCurObj.Get(), 150);
   CFX_Matrix FinalMatrix = *pMatrix;
   FinalMatrix.Concat(*buffer.GetMatrix());
   RetainPtr<CFX_DIBitmap> pBitmap = buffer.GetBitmap();
@@ -2479,9 +2480,9 @@ void CPDF_RenderStatus::CompositeDIBitmap(
   int back_top;
   FX_RECT rect(left, top, left + pDIBitmap->GetWidth(),
                top + pDIBitmap->GetHeight());
-  RetainPtr<CFX_DIBitmap> pBackdrop =
-      GetBackdrop(m_pCurObj, rect, blend_mode > FXDIB_BLEND_NORMAL && bIsolated,
-                  &back_left, &back_top);
+  RetainPtr<CFX_DIBitmap> pBackdrop = GetBackdrop(
+      m_pCurObj.Get(), rect, blend_mode > FXDIB_BLEND_NORMAL && bIsolated,
+      &back_left, &back_top);
   if (!pBackdrop)
     return;
 
