@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1534471037 -0700\nnonce APISObSn6iiscVilI2tgB0JTWYCNQGsiFHDmfyjP4NytlRJLldurTdLymc7QFoOvFifK/lfscV29\n\n0000000000000000000000000000000000000000 8eb538c1f619ab41dac26902f143b5db907e934a refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlt2K30ACgkQqzYtYVpm\n/Xvmhgf/dzXGZ2uhhJUYLK6QierANbtMscTxWJ1HpP0djNEZ1pZPHKdgpdcrxdnx\nIgJMwf8yuV+A4xzUxj6fW/9lFAhbI20rbr/GoOA/3ttZFj9pLHVL5GCiAHRBl4nY\ngfP8issTZzRAd6eOZOKEz9Bs9Pw0EUfF2uey/RSiOwivDkAWAGX9HkJw/Eqc2+LC\nL8KkxxJdGqxSNbFHAZLaorw9FXGD/s6CdsYB7BfbGX4nWIt143HElgDJqG04M9bC\ngG1ZtoUQ+memjFAdYJTQql+Qfds6372qI+I0tLspLacW0bfF8um0vG1QHL/sINJx\nN7Zgg3hGAX8t64p6YpeAERIQFV4cBQ\u003d\u003d\n\u003dfF1L\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcd5167e_c726bd8d",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-17T16:53:51Z",
+      "side": 1,
+      "message": "super-duper nit:  I might put this version first, then the one with stream, and the one with the buffer last.  Rationale: higher to lower abstractions (If I have a filename next I cant get a stream, and if I have a stream, next I can get a buffer).",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "8eb538c1f619ab41dac26902f143b5db907e934a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d1292c_aa2dd6b8",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-17T16:53:51Z",
+      "side": 1,
+      "message": "span someday?",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "8eb538c1f619ab41dac26902f143b5db907e934a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
