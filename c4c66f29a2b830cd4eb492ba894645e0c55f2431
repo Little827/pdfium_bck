@@ -52,6 +52,24 @@
       "revId": "c4c66f29a2b830cd4eb492ba894645e0c55f2431",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce11703b_3ede1fed",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-17T23:24:19Z",
+      "side": 0,
+      "message": "Will fix later: https://pdfium-review.googlesource.com/40610",
+      "parentUuid": "4401c87c_e0c2f8a7",
+      "revId": "c4c66f29a2b830cd4eb492ba894645e0c55f2431",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
