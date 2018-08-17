@@ -23,6 +23,30 @@
       "revId": "a837730e30788d6d485bc918ec9f3e623b7219ee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2479e6_832c92cf",
+        "filename": "core/fxge/android/cfpf_skiapathfont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-17T19:48:48Z",
+      "side": 1,
+      "message": "Yep. Added FX_Free() for now. I\u0027ll fix up CFPF_SkiaPathFont later.",
+      "parentUuid": "e2b3ec28_201738bb",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "a837730e30788d6d485bc918ec9f3e623b7219ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
