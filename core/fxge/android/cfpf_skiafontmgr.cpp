@@ -19,7 +19,6 @@
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/android/cfpf_skiafont.h"
-#include "core/fxge/android/cfpf_skiafontdescriptor.h"
 #include "core/fxge/android/cfpf_skiapathfont.h"
 #include "core/fxge/fx_freetype.h"
 
@@ -277,11 +276,11 @@ CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(const ByteStringView& bsFamilyname,
   }
   int32_t nExpectVal = FPF_SKIAMATCHWEIGHT_NAME1 + FPF_SKIAMATCHWEIGHT_1 * 3 +
                        FPF_SKIAMATCHWEIGHT_2 * 2;
-  CFPF_SkiaFontDescriptor* pBestFontDes = nullptr;
+  CFPF_SkiaPathFont* pBestFont = nullptr;
   int32_t nMax = -1;
   int32_t nGlyphNum = 0;
   for (auto it = m_FontFaces.rbegin(); it != m_FontFaces.rend(); ++it) {
-    CFPF_SkiaPathFont* pFontDes = static_cast<CFPF_SkiaPathFont*>(*it);
+    CFPF_SkiaPathFont* pFontDes = *it;
     if (!(pFontDes->m_dwCharsets & FPF_SkiaGetCharset(uCharset)))
       continue;
     int32_t nFind = 0;
@@ -308,25 +307,25 @@ CFPF_SkiaFont* CFPF_SkiaFontMgr::CreateFont(const ByteStringView& bsFamilyname,
     if (uCharset == FX_CHARSET_Default || bMaybeSymbol) {
       if (nFind > nMax && bMatchedName) {
         nMax = nFind;
-        pBestFontDes = *it;
+        pBestFont = *it;
       }
     } else if (FPF_SkiaIsCJK(uCharset)) {
       if (bMatchedName || pFontDes->m_iGlyphNum > nGlyphNum) {
-        pBestFontDes = *it;
+        pBestFont = *it;
         nGlyphNum = pFontDes->m_iGlyphNum;
       }
     } else if (nFind > nMax) {
       nMax = nFind;
-      pBestFontDes = *it;
+      pBestFont = *it;
     }
     if (nExpectVal <= nFind) {
-      pBestFontDes = *it;
+      pBestFont = *it;
       break;
     }
   }
-  if (pBestFontDes) {
+  if (pBestFont) {
     CFPF_SkiaFont* pFont = new CFPF_SkiaFont;
-    if (pFont->InitFont(this, pBestFontDes, bsFamilyname, dwStyle, uCharset)) {
+    if (pFont->InitFont(this, pBestFont, bsFamilyname, dwStyle, uCharset)) {
       m_FamilyFonts[dwHash] = pFont;
       return pFont->Retain();
     }
@@ -389,30 +388,29 @@ void CFPF_SkiaFontMgr::ScanFile(const ByteString& file) {
   FXFT_Done_Face(face);
 }
 
-void CFPF_SkiaFontMgr::ReportFace(FXFT_Face face,
-                                  CFPF_SkiaFontDescriptor* pFontDesc) {
-  if (!face || !pFontDesc)
+void CFPF_SkiaFontMgr::ReportFace(FXFT_Face face, CFPF_SkiaPathFont* pFont) {
+  if (!face || !pFont)
     return;
-  pFontDesc->SetFamily(FXFT_Get_Face_Family_Name(face));
+  pFont->SetFamily(FXFT_Get_Face_Family_Name(face));
   if (FXFT_Is_Face_Bold(face))
-    pFontDesc->m_dwStyle |= FXFONT_BOLD;
+    pFont->m_dwStyle |= FXFONT_BOLD;
   if (FXFT_Is_Face_Italic(face))
-    pFontDesc->m_dwStyle |= FXFONT_ITALIC;
+    pFont->m_dwStyle |= FXFONT_ITALIC;
   if (FT_IS_FIXED_WIDTH(face))
-    pFontDesc->m_dwStyle |= FXFONT_FIXED_PITCH;
+    pFont->m_dwStyle |= FXFONT_FIXED_PITCH;
   TT_OS2* pOS2 = static_cast<TT_OS2*>(FT_Get_Sfnt_Table(face, ft_sfnt_os2));
   if (pOS2) {
     if (pOS2->ulCodePageRange1 & (1 << 31))
-      pFontDesc->m_dwStyle |= FXFONT_SYMBOLIC;
+      pFont->m_dwStyle |= FXFONT_SYMBOLIC;
     if (pOS2->panose[0] == 2) {
       uint8_t uSerif = pOS2->panose[1];
       if ((uSerif > 1 && uSerif < 10) || uSerif > 13)
-        pFontDesc->m_dwStyle |= FXFONT_SERIF;
+        pFont->m_dwStyle |= FXFONT_SERIF;
     }
   }
   if (pOS2 && (pOS2->ulCodePageRange1 & (1 << 31)))
-    pFontDesc->m_dwStyle |= FXFONT_SYMBOLIC;
-  pFontDesc->m_dwCharsets = FPF_SkiaGetFaceCharset(pOS2);
-  pFontDesc->m_iFaceIndex = face->face_index;
-  pFontDesc->m_iGlyphNum = face->num_glyphs;
+    pFont->m_dwStyle |= FXFONT_SYMBOLIC;
+  pFont->m_dwCharsets = FPF_SkiaGetFaceCharset(pOS2);
+  pFont->m_iFaceIndex = face->face_index;
+  pFont->m_iGlyphNum = face->num_glyphs;
 }
