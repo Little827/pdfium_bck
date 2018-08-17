@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7c7f953_d77a04f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-17T01:45:25Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "acd12600_9ede8eca",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "ae99ce36ed10a8fa72f897ec439f24a42614e2e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e8ae870_7d7b8a3e",
         "filename": "fxjs/cjs_publicmethods.cpp",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "c487b8d3_ff9fe52c",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-17T01:45:25Z",
+      "side": 1,
+      "message": "Wow.  And git CL format, too.  Fixed by hand, reformated, now better.",
+      "parentUuid": "3e8ae870_7d7b8a3e",
+      "revId": "ae99ce36ed10a8fa72f897ec439f24a42614e2e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "118dff53_a654a0c6",
         "filename": "fxjs/xfa/cjx_delta.cpp",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2018-08-17T01:34:51Z",
       "side": 1,
       "message": "Is JSGetStringFromID() also redundant here?",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "ae99ce36ed10a8fa72f897ec439f24a42614e2e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f559da_4f67656f",
+        "filename": "fxjs/xfa/cjx_delta.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-17T01:45:25Z",
+      "side": 1,
+      "message": "Yep.  Done.",
+      "parentUuid": "118dff53_a654a0c6",
       "range": {
         "startLine": 26,
         "startChar": 31,
