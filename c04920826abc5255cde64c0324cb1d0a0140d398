@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b181b78d_24005c65",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-17T22:01:55Z",
+      "side": 1,
+      "message": "Note: this is where the fun takes place.",
+      "range": {
+        "startLine": 1987,
+        "startChar": 0,
+        "endLine": 1988,
+        "endChar": 0
+      },
+      "revId": "c04920826abc5255cde64c0324cb1d0a0140d398",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
