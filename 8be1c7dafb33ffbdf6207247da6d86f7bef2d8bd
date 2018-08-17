@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "c3268c68_f60c0800",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-17T19:26:11Z",
+      "side": 1,
+      "message": "Missed it in this loop.",
+      "parentUuid": "ce35e601_c538c46a",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94b315e2_4a8a18c4",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 3
@@ -228,6 +246,24 @@
       "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a432aa0_91e169b9",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-17T19:26:11Z",
+      "side": 1,
+      "message": "Also missed this loop.",
+      "parentUuid": "cba2ddad_07ccab1e",
+      "revId": "8be1c7dafb33ffbdf6207247da6d86f7bef2d8bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {
