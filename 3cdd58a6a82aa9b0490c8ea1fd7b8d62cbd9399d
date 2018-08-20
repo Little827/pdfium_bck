@@ -16,6 +16,24 @@
       "revId": "3cdd58a6a82aa9b0490c8ea1fd7b8d62cbd9399d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c4b2263_24e20d43",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-20T21:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a2b69dd_d96db7e9",
+      "revId": "3cdd58a6a82aa9b0490c8ea1fd7b8d62cbd9399d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
