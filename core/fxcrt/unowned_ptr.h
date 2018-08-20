@@ -48,7 +48,11 @@ template <class T>
 class UnownedPtr {
  public:
   constexpr UnownedPtr() noexcept = default;
-  constexpr UnownedPtr(const UnownedPtr& that) noexcept = default;
+
+  constexpr UnownedPtr(const UnownedPtr& that) : m_pObj(that.Get()) {}
+
+  template <typename U>
+  constexpr UnownedPtr(const UnownedPtr<U>& that) : m_pObj(that.Get()) {}
 
   template <typename U>
   explicit constexpr UnownedPtr(U* pObj) noexcept : m_pObj(pObj) {}
@@ -59,22 +63,33 @@ class UnownedPtr {
 
   ~UnownedPtr() { ProbeForLowSeverityLifetimeIssue(); }
 
-  UnownedPtr& operator=(T* that) noexcept {
+  template <typename U>
+  UnownedPtr& operator=(U* that) noexcept {
     ProbeForLowSeverityLifetimeIssue();
     m_pObj = that;
     return *this;
   }
 
-  UnownedPtr& operator=(const UnownedPtr& that) noexcept {
+  template <typename U>
+  UnownedPtr& operator=(const UnownedPtr<U>& that) noexcept {
     ProbeForLowSeverityLifetimeIssue();
     if (*this != that)
       m_pObj = that.Get();
     return *this;
   }
 
-  bool operator==(const UnownedPtr& that) const { return Get() == that.Get(); }
-  bool operator!=(const UnownedPtr& that) const { return !(*this == that); }
-  bool operator<(const UnownedPtr& that) const {
+  template <typename U>
+  bool operator==(const UnownedPtr<U>& that) const {
+    return Get() == that.Get();
+  }
+
+  template <typename U>
+  bool operator!=(const UnownedPtr<U>& that) const {
+    return !(*this == that);
+  }
+
+  template <typename U>
+  bool operator<(const UnownedPtr<U>& that) const {
     return std::less<T*>()(Get(), that.Get());
   }
 
