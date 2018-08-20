@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1534556897 -0700\nnonce APISObR1iyYGH8Vqwp6aYJYLoaXW/7xDIey3if6Y1+XFfSjfLHil8B2V13wufbo6UaIHGKTJu9lL\n\n0000000000000000000000000000000000000000 a77867592b8e72f30b17fa42433fafdc14e2f8d3 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlt3euEACgkQqzYtYVpm\n/XuWxwf/YlxYjSABhdGE2zD95k/YihkpNmdgNjcfUCZaiww5HakVMgQuALGhijT1\nQJGYUjFv2wENolBqOy/ZXp5ivOTzvg/xapav7nOjUKHI0hHHOnnd9OVt1e5uJ742\nRUQXuyHxmVY93Ftn5XN74eMm0bbajAkS+F4ofoMIWfSSuwMZ58Z/doe5utbYfLul\n+Wg0QKM+qC6QA06vG6+wak7lLts08SJBAPZp/CGDr/vXzJbRjTXW+8UoyiyYTvvU\nwcLZt52gfKbPEHhquQATAvLqSvU2Wh6ponmzWk0SvUF0FQ6dj5opKT5g/WlGtuTd\nmu/I8yyT15UDuZPDHjSjssj2UHF6fQ\u003d\u003d\n\u003dFvoB\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea9e62e9_a67b4b40",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4157,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-20T17:47:56Z",
+      "side": 1,
+      "message": "Can you just return it to avoid declaring the local?",
+      "revId": "a77867592b8e72f30b17fa42433fafdc14e2f8d3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
