@@ -70,6 +70,24 @@
       "revId": "87da3cf0450ffceb1f59fca939df6d34b0725a52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70bc479c_681af80a",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-20T23:27:49Z",
+      "side": 1,
+      "message": "It\u0027s saying \"pointer -\u003e int -\u003e pointer\" will always return the same output for a given input, but \"int -\u003e pointer -\u003e int\" will not. Since NULL is oftentimes defined as 0, NULL -\u003e pointer may always convert to nullptr.\n\nThis case doesn\u0027t apply here, since CPDFTextPageFromFPDFTextPage() does a \"pointer -\u003e pointer\" conversion.",
+      "parentUuid": "f47c6df4_4b1f75df",
+      "revId": "87da3cf0450ffceb1f59fca939df6d34b0725a52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
