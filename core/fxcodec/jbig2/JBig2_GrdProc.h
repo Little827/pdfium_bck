@@ -22,11 +22,15 @@ struct JBig2ArithCtx;
 
 class CJBig2_GRDProc {
  public:
-  struct ProgressiveArithDecodeState {
+  class ProgressiveArithDecodeState {
+   public:
+    ProgressiveArithDecodeState();
+    ~ProgressiveArithDecodeState();
+
     std::unique_ptr<CJBig2_Image>* pImage;
-    CJBig2_ArithDecoder* pArithDecoder;
-    JBig2ArithCtx* gbContext;
-    PauseIndicatorIface* pPause;
+    UnownedPtr<CJBig2_ArithDecoder> pArithDecoder;
+    UnownedPtr<JBig2ArithCtx> gbContext;
+    UnownedPtr<PauseIndicatorIface> pPause;
   };
 
   CJBig2_GRDProc();
@@ -47,7 +51,7 @@ class CJBig2_GRDProc {
   uint8_t GBTEMPLATE;
   bool TPGDON;
   bool USESKIP;
-  CJBig2_Image* SKIP;
+  UnownedPtr<CJBig2_Image> SKIP;
   int8_t GBAT[8];
 
  private:
