@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac4dba1_ae9297a3",
+        "filename": "fxbarcode/pdf417/BC_PDF417.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-20T19:57:35Z",
+      "side": 0,
+      "message": "On the first iteration, this moved to row 1. Now there is no more empty padding row in CBC_BarcodeMatrix.",
+      "revId": "19087eb9aac4c632867e7b4852fb191582d37c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
