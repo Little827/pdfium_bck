@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1534558393 -0700\nnonce APISObTwVVXhgfZvJtnQpj35kFsnmKIEmvd9UrXZxN7DAS0y3cq/GCDXO2NDuOs571vSSm+0Sa3s\n\n0000000000000000000000000000000000000000 a4cadf8bee700034921521038ed45af5ea87cf36 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dclean-up-cxfa-graphics\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlt3gLkACgkQqzYtYVpm\n/XsHRggAtfa2hvk3c8iJvqm4B5mFP0wkAu4o97bCtsHujLiAEF11I96F9fTRTkIV\nw6V+DBOpDUvMyviXIQ1ZgpXJVA7/HyMMNAnqOCpaw9QWFW4+aOcmWVg6ekPpEuEK\nEgha4X8uap8ASIi3VuncT3gB6j+rBJDNNZwfXgwvh36HXuc1zuuotsSbByapV6Ub\n9rGueFRZY/0u0db25QK6MhJIO/zOBc5V2RxB2DN2YAodc/Gu8XLVa2zDokFpVzlW\nZ3ZT6fFoSPcm2R4SKnZxKsCftxqMQVp9/q6zu3ZeUoQ66Kv2dcWTreOn79sVFOdQ\np7OAOYzflcj1k5TqRMtFpohdY5OhJA\u003d\u003d\n\u003dclhN\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47c4a10_cbc5a7cd",
+        "filename": "xfa/fxfa/cxfa_fffield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-20T17:35:42Z",
+      "side": 1,
+      "message": "This const is defined in two different implementation files. If this value changes in one place does it need to be updated in the other, or is it just happenstance that they have the same value?\n\nIf they are connected, is it possible to extract it so that it is only declared once?",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "a4cadf8bee700034921521038ed45af5ea87cf36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
