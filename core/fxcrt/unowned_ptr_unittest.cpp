@@ -17,6 +17,10 @@ class Clink {
   UnownedPtr<Clink> next_ = nullptr;
 };
 
+class SpecialClink : public Clink {
+ public:
+};
+
 void DeleteDangling() {
   Clink* ptr1 = new Clink();
   Clink* ptr2 = new Clink();
@@ -137,6 +141,31 @@ TEST(UnownedPtr, OperatorLT) {
   EXPECT_FALSE(ptr1 < ptr1);
   EXPECT_TRUE(ptr1 < ptr2);
   EXPECT_FALSE(ptr2 < ptr1);
+}
+
+TEST(UnownedPtr, ReleaseAssignSuperclassOK) {
+  SpecialClink foo;
+  UnownedPtr<SpecialClink> special_ptr(&foo);
+  UnownedPtr<Clink> super_ptr(&foo);
+  UnownedPtr<Clink> super_ptr2(special_ptr);
+  UnownedPtr<Clink> super_ptr3;
+  EXPECT_TRUE(super_ptr2 == special_ptr);
+
+  super_ptr3 = special_ptr;
+  EXPECT_FALSE(super_ptr3 != special_ptr);
+  EXPECT_FALSE(super_ptr3 < special_ptr);
+}
+
+TEST(UnownedPtr, DowncastOK) {
+  SpecialClink foo;
+  UnownedPtr<Clink> super_ptr(&foo);
+  UnownedPtr<SpecialClink> special_ptr(
+      static_cast<UnownedPtr<SpecialClink>>(super_ptr));
+  EXPECT_TRUE(super_ptr == special_ptr);
+
+  special_ptr = static_cast<UnownedPtr<SpecialClink>>(super_ptr));
+  EXPECT_FALSE(super_ptr != special_ptr);
+  EXPECT_FALSE(super_ptr < special_ptr);
 }
 
 }  // namespace fxcrt
