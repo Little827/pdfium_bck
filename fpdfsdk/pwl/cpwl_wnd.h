@@ -126,8 +126,8 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
     ~CreateParams();
 
     CFX_FloatRect rcRectWnd;                          // required
-    CFX_SystemHandler* pSystemHandler;                // required
-    IPVT_FontMap* pFontMap;                           // required
+    UnownedPtr<CFX_SystemHandler> pSystemHandler;     // required
+    UnownedPtr<IPVT_FontMap> pFontMap;                // required
     ProviderIface::ObservedPtr pProvider;             // required
     UnownedPtr<FocusHandlerIface> pFocusHandler;      // optional
     uint32_t dwFlags;                                 // optional
@@ -244,9 +244,13 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   bool IsReadOnly() const;
   CPWL_ScrollBar* GetVScrollBar() const;
 
-  IPVT_FontMap* GetFontMap() const;
-  ProviderIface* GetProvider() const;
-  FocusHandlerIface* GetFocusHandler() const;
+  IPVT_FontMap* GetFontMap() const { return m_CreationParams.pFontMap.Get(); }
+  ProviderIface* GetProvider() const {
+    return m_CreationParams.pProvider.Get();
+  }
+  FocusHandlerIface* GetFocusHandler() const {
+    return m_CreationParams.pFocusHandler.Get();
+  }
 
   int32_t GetTransparency();
   void SetTransparency(int32_t nTransparency);
@@ -260,7 +264,7 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   virtual void OnKillFocus();
 
  protected:
-  // CPWL_TimerHandler
+  // CPWL_TimerHandler:
   CFX_SystemHandler* GetSystemHandler() const override;
 
   virtual void CreateChildWnd(const CreateParams& cp);
