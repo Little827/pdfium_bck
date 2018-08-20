@@ -781,8 +781,8 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeList(uint32_t dwTypeFilter,
   if (m_Properties == nullptr)
     return nodes;
 
-  Optional<XFA_Element> property =
-      GetFirstPropertyWithFlag(XFA_PROPERTYFLAG_DefaultOneOf);
+  Optional<XFA_Element> property = GetFirstPropertyWithFlag(
+      XFA_PROPERTYFLAG_DefaultOneOf || XFA_PROPERTYFLAG_OneOf);
   if (!property)
     return nodes;
 
