@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eee23ba2_37bede06",
+        "filename": "fxjs/cfxjse_arguments.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5490
+      },
+      "writtenOn": "2018-08-20T13:28:02Z",
+      "side": 1,
+      "message": "can you add a GetIsolate() member to CFXJSE_Arguments instead please?",
+      "revId": "367feeca8b7c24dd16f24e6548b90076a2b292ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
