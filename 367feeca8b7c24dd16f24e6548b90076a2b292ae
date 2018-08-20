@@ -16,6 +16,24 @@
       "revId": "367feeca8b7c24dd16f24e6548b90076a2b292ae",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ec63a9_b6fbb19a",
+        "filename": "fxjs/cfxjse_arguments.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7439
+      },
+      "writtenOn": "2018-08-20T15:22:40Z",
+      "side": 1,
+      "message": "I realised that FunctionCallbackInfo also has a GetIsolate method so I\u0027ve changed these to use that instead.",
+      "parentUuid": "eee23ba2_37bede06",
+      "revId": "367feeca8b7c24dd16f24e6548b90076a2b292ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
