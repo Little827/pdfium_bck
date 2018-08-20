@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c53d244_41c5ceaf",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-20T21:22:43Z",
+      "side": 1,
+      "message": "Given we know the range of |x| and |y| here, is there an easier way to see if it will go out of bounds for the CBC_CommonBitMatrix::Set() calls outside of the double for-loop?",
+      "revId": "19087eb9aac4c632867e7b4852fb191582d37c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9565de62_23fa988f",
+        "filename": "fxbarcode/BC_TwoDimWriter.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-20T21:22:43Z",
+      "side": 1,
+      "message": "It is safe to leave these uninitialized?",
+      "revId": "19087eb9aac4c632867e7b4852fb191582d37c26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
