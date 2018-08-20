@@ -23,6 +23,7 @@
 #include "fxbarcode/pdf417/BC_PDF417Writer.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "fxbarcode/BC_TwoDimWriter.h"
 #include "fxbarcode/common/BC_CommonBitArray.h"
@@ -69,6 +70,7 @@ uint8_t* CBC_PDF417Writer::Encode(const WideString& contents,
   int32_t height = outHeight;
   outWidth = barcodeMatrix->getWidth();
   outHeight = barcodeMatrix->getHeight();
+  std::cerr << "CBC_PDF417Writer::Encode outHeight " << outHeight << std::endl;
 
   bool rotated = false;
   if ((height > width) ^ (outWidth < outHeight)) {

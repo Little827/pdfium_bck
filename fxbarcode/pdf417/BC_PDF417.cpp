@@ -22,6 +22,8 @@
 
 #include "fxbarcode/pdf417/BC_PDF417.h"
 
+#include <iostream>
+
 #include "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.h"
 #include "fxbarcode/pdf417/BC_PDF417BarcodeRow.h"
 #include "fxbarcode/pdf417/BC_PDF417Compaction.h"
@@ -438,6 +440,7 @@ bool CBC_PDF417::generateBarcodeLogic(WideString msg,
     return false;
   }
   WideString fullCodewords = dataCodewords + ec;
+  std::cerr << "CBC_PDF417::generateBarcodeLogic rows " << rows << std::endl;
   m_barcodeMatrix = pdfium::MakeUnique<CBC_BarcodeMatrix>(rows, cols);
   encodeLowLevel(fullCodewords, cols, rows, errorCorrectionLevel,
                  m_barcodeMatrix.get());
@@ -506,7 +509,6 @@ void CBC_PDF417::encodeLowLevel(WideString fullCodewords,
   int32_t idx = 0;
   for (int32_t y = 0; y < r; y++) {
     int32_t cluster = y % 3;
-    logic->startRow();
     encodeChar(START_PATTERN, 17, logic->getCurrentRow());
     int32_t left;
     int32_t right;
@@ -534,6 +536,7 @@ void CBC_PDF417::encodeLowLevel(WideString fullCodewords,
       encodeChar(pattern, 17, logic->getCurrentRow());
       encodeChar(STOP_PATTERN, 18, logic->getCurrentRow());
     }
+    logic->nextRow();
   }
 }
 

@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/parser/cxfa_barcode.h"
 
+#include <iostream>
+
 #include "fxjs/xfa/cjx_barcode.h"
 #include "third_party/base/ptr_util.h"
 #include "xfa/fxfa/parser/cxfa_measurement.h"
@@ -146,6 +148,9 @@ Optional<int32_t> CXFA_Barcode::GetModuleHeight() {
       JSObject()->TryMeasure(XFA_Attribute::ModuleHeight, true);
   if (!moduleWidthHeight)
     return {};
+
+  std::cerr << "CXFA_Barcode::GetModuleHeight to str " << moduleWidthHeight->ToString() << std::endl;
+  std::cerr << "CXFA_Barcode::GetModuleHeight to pt " << static_cast<int32_t>(moduleWidthHeight->ToUnit(XFA_Unit::Pt)) << std::endl;
 
   return {static_cast<int32_t>(moduleWidthHeight->ToUnit(XFA_Unit::Pt))};
 }
