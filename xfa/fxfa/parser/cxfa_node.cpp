@@ -757,15 +757,20 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeList(uint32_t dwTypeFilter,
   bool bFilterProperties = !!(dwTypeFilter & XFA_NODEFILTER_Properties);
   bool bFilterOneOfProperties = !!(dwTypeFilter & XFA_NODEFILTER_OneOfProperty);
   std::vector<CXFA_Node*> nodes;
+  int count = 0, oneof_count = 0;
   for (CXFA_Node* pChild = first_child_; pChild;
        pChild = pChild->next_sibling_) {
     if (!HasProperty(pChild->GetElementType())) {
       if (bFilterProperties) {
         nodes.push_back(pChild);
-      } else if (bFilterOneOfProperties &&
-                 HasPropertyFlags(pChild->GetElementType(),
-                                  XFA_PROPERTYFLAG_OneOf)) {
-        nodes.push_back(pChild);
+      } else if (bFilterOneOfProperties) {
+        if (HasPropertyFlags(pChild->GetElementType(),
+                             XFA_PROPERTYFLAG_OneOf) ||
+            HasPropertyFlags(pChild->GetElementType(),
+                             XFA_PROPERTYFLAG_DefaultOneOf)) {
+          nodes.push_back(pChild);
+          oneof_count++;
+        }
       } else if (bFilterChildren &&
                  (pChild->GetElementType() == XFA_Element::Variables ||
                   pChild->GetElementType() == XFA_Element::PageSet)) {
@@ -774,6 +779,7 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeList(uint32_t dwTypeFilter,
     } else if (bFilterChildren) {
       nodes.push_back(pChild);
     }
+    count++;
   }
 
   if (!bFilterOneOfProperties || !nodes.empty())
@@ -781,8 +787,8 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeList(uint32_t dwTypeFilter,
   if (m_Properties == nullptr)
     return nodes;
 
-  Optional<XFA_Element> property =
-      GetFirstPropertyWithFlag(XFA_PROPERTYFLAG_DefaultOneOf);
+  Optional<XFA_Element> property = GetFirstPropertyWithFlag(
+      XFA_PROPERTYFLAG_DefaultOneOf || XFA_PROPERTYFLAG_OneOf);
   if (!property)
     return nodes;
 
