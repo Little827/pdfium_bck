@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e20f78e_e6ed4b15",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-20T19:08:31Z",
+      "side": 1,
+      "message": "this is still a weird case that needs thought.",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 36
+      },
+      "revId": "c6d70727acaf1a804d44c23faa9f56187610234d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
