@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82b946db_a9017050",
+        "filename": "xfa/fxgraphics/cxfa_gecolor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-20T23:07:37Z",
+      "side": 1,
+      "message": "Can any of the members be const?",
+      "revId": "929bbf7114cc6afacf29c20556ee9d7aabeafd26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
