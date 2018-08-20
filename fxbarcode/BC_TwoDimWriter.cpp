@@ -5,6 +5,8 @@
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
 #include <algorithm>
+#include <iostream>
+// #include <csignal>
 
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
@@ -67,19 +69,26 @@ int32_t CBC_TwoDimWriter::GetErrorCorrectionLevel() const {
 bool CBC_TwoDimWriter::RenderResult(uint8_t* code,
                                     int32_t codeWidth,
                                     int32_t codeHeight) {
+  // raise(SIGSEGV);
+  std::cerr << "codeHeight " << codeHeight << std::endl;
+  std::cerr << "m_Height " << m_Height << std::endl;
   m_inputWidth = codeWidth;
   m_inputHeight = codeHeight;
   int32_t tempWidth = m_inputWidth + 2;
   int32_t tempHeight = m_inputHeight + 2;
+  std::cerr << "tempHeight " << tempHeight << std::endl;
   float moduleHSize = std::min(m_ModuleWidth, m_ModuleHeight);
   moduleHSize = std::min(moduleHSize, 8.0f);
   moduleHSize = std::max(moduleHSize, 1.0f);
+  std::cerr << "moduleHSize " << moduleHSize << std::endl;
   pdfium::base::CheckedNumeric<int32_t> scaledWidth = tempWidth;
   pdfium::base::CheckedNumeric<int32_t> scaledHeight = tempHeight;
   scaledWidth *= moduleHSize;
   scaledHeight *= moduleHSize;
   m_outputWidth = scaledWidth.ValueOrDie();
   m_outputHeight = scaledHeight.ValueOrDie();
+  // std::cerr << "m_outputWidth " << m_outputWidth << std::endl;
+  std::cerr << "m_outputHeight " << m_outputHeight << std::endl;
 
   if (m_bFixedSize) {
     if (m_Width < m_outputWidth || m_Height < m_outputHeight) {
@@ -93,9 +102,12 @@ bool CBC_TwoDimWriter::RenderResult(uint8_t* code,
           floor(static_cast<float>(m_Height) / m_outputHeight));
       width_factor = std::max(width_factor, 1);
       height_factor = std::max(height_factor, 1);
+      // std::cerr << "width_factor " << width_factor << std::endl;
+      std::cerr << "height_factor " << height_factor << std::endl;
 
       m_outputWidth *= width_factor;
       m_outputHeight *= height_factor;
+      std::cerr << "new m_outputHeight " << m_outputHeight << std::endl;
     }
   }
   m_multiX =
@@ -106,6 +118,7 @@ bool CBC_TwoDimWriter::RenderResult(uint8_t* code,
     m_multiX = std::min(m_multiX, m_multiY);
     m_multiY = m_multiX;
   }
+  std::cerr << "m_multiY " << m_multiY << std::endl;
 
   m_leftPadding = std::max((m_Width - m_outputWidth) / 2, 0);
   m_topPadding = std::max((m_Height - m_outputHeight) / 2, 0);
