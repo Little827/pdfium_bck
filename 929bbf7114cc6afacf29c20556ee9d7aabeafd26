@@ -16,6 +16,24 @@
       "revId": "929bbf7114cc6afacf29c20556ee9d7aabeafd26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51e309b_31d89d40",
+        "filename": "xfa/fxgraphics/cxfa_gecolor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-20T23:11:10Z",
+      "side": 1,
+      "message": "not if we support assignment at line 41.",
+      "parentUuid": "82b946db_a9017050",
+      "revId": "929bbf7114cc6afacf29c20556ee9d7aabeafd26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
