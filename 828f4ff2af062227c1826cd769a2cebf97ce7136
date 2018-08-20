@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28fc0616_f159c2f0",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-20T22:19:46Z",
+      "side": 1,
+      "message": "I\u0027m concerned this will just trigger an overflow somewhere else. Is there a legitimate way to reach this point? If not, is there some way this method can fail and bail out?",
+      "revId": "828f4ff2af062227c1826cd769a2cebf97ce7136",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
