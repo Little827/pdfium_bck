@@ -16,6 +16,24 @@
       "revId": "2c4cd1fdd0893073ad2c95618ed9cd8f25bb8eb3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5841a282_eee02856",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-21T19:32:00Z",
+      "side": 1,
+      "message": "Yeah, the factors are integers to keep modules sizes equal and thus, in lines 91-100, if the output dimensions (like m_outputWidth) were not a multiple of the dimension (like m_Width), then there would be the remainder.",
+      "parentUuid": "b211ecab_74b40346",
+      "revId": "2c4cd1fdd0893073ad2c95618ed9cd8f25bb8eb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

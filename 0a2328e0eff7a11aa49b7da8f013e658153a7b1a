@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "214a24e7_cdc9297c",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-21T19:32:00Z",
+      "side": 0,
+      "message": "I know, but there is so dead code around there that I\u0027ll remove it with others in a future CL.",
+      "parentUuid": "d2514574_1b518da5",
+      "revId": "0a2328e0eff7a11aa49b7da8f013e658153a7b1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa43b2f_e9f4eec6",
         "filename": "fxbarcode/common/BC_CommonBitMatrix.cpp",
         "patchSetId": 19
@@ -33,6 +51,24 @@
       "revId": "0a2328e0eff7a11aa49b7da8f013e658153a7b1a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a1661e_0805b6b4",
+        "filename": "fxbarcode/common/BC_CommonBitMatrix.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-21T19:32:00Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9aa43b2f_e9f4eec6",
+      "revId": "0a2328e0eff7a11aa49b7da8f013e658153a7b1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
