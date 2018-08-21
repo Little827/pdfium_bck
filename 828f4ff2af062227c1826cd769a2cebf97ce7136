@@ -16,6 +16,24 @@
       "revId": "828f4ff2af062227c1826cd769a2cebf97ce7136",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf76f8ae_4ad96adf",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-21T15:49:13Z",
+      "side": 1,
+      "message": "Legitimate meaning what? As you can see in the lines right above, the number comes from calling FreeType methods plus then calling TT2PDF. In this case the value from FreeType is 2147847. TT2PDF multiplies it by 1000 while avoiding overflow, so it reaches max_int. This rect is  probably wrong, however in some cases (line 495) the rect is transformed so I don\u0027t see a clear way to determine that certain large values are wrong. We could clamp by smaller values in TT2PDF and risk breaking \u0027legitimate\u0027 PDFs, but it\u0027s not clear to me what a reasonable clamping value would be. The clusterfuzz sample does not seem to overflow later (though that\u0027s just one example). I don\u0027t think there\u0027s any point of this method failing because it is used to calculate positions.",
+      "parentUuid": "28fc0616_f159c2f0",
+      "revId": "828f4ff2af062227c1826cd769a2cebf97ce7136",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
