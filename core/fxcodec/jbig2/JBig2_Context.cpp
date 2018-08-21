@@ -539,12 +539,12 @@ JBig2_Result CJBig2_Context::ParseSymbolDict(CJBig2_Segment* pSegment) {
   std::vector<JBig2ArithCtx> grContext;
   if ((wFlags & 0x0100) && pLRSeg) {
     if (bUseGbContext) {
-      gbContext = pLRSeg->m_SymbolDict->GbContext();
+      gbContext = pLRSeg->m_SymbolDict->TakeGbContext();
       if (gbContext.size() != gbContextSize)
         return JBig2_Result::kFailure;
     }
     if (bUseGrContext) {
-      grContext = pLRSeg->m_SymbolDict->GrContext();
+      grContext = pLRSeg->m_SymbolDict->TakeGrContext();
       if (grContext.size() != grContextSize)
         return JBig2_Result::kFailure;
     }

@@ -29,8 +29,16 @@ class CJBig2_SymbolDict {
   size_t NumImages() const { return m_SDEXSYMS.size(); }
   CJBig2_Image* GetImage(size_t index) const { return m_SDEXSYMS[index].get(); }
 
-  const std::vector<JBig2ArithCtx>& GbContext() const { return m_gbContext; }
-  const std::vector<JBig2ArithCtx>& GrContext() const { return m_grContext; }
+  std::vector<JBig2ArithCtx> TakeGbContext() {
+    auto result = std::move(m_gbContext);
+    m_gbContext.clear();
+    return result;
+  }
+  std::vector<JBig2ArithCtx> TakeGrContext() {
+    auto result = std::move(m_grContext);
+    m_grContext.clear();
+    return result;
+  }
 
   void SetGbContext(std::vector<JBig2ArithCtx> gbContext) {
     m_gbContext = std::move(gbContext);
