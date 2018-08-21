@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c61bc01c_5f9790ce",
+        "filename": "core/fxcodec/jbig2/JBig2_SymbolDict.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-21T19:35:45Z",
+      "side": 1,
+      "message": "Is this necessary? Can this method just be the following?\n\nreturn std::move(m_gbContext);",
+      "revId": "3aa151831ab0aa470f6cad50bbcd94ebbb71bd50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
