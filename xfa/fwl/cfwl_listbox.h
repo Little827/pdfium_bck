@@ -10,6 +10,7 @@
 #include <memory>
 #include <vector>
 
+#include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fwl/cfwl_edit.h"
 #include "xfa/fwl/cfwl_event.h"
 #include "xfa/fwl/cfwl_listbox.h"
@@ -120,15 +121,15 @@ class CFWL_ListBox : public CFWL_Widget {
   CFX_RectF m_rtClient;
   CFX_RectF m_rtStatic;
   CFX_RectF m_rtConent;
+  FDE_TextStyle m_TTOStyles;
+  FDE_TextAlignment m_iTTOAligns = FDE_TextAlignment::kTopLeft;
+  float m_fItemHeight = 0.0f;
+  float m_fScrollBarWidth = 0.0f;
+  bool m_bLButtonDown = false;
   std::unique_ptr<CFWL_ScrollBar> m_pHorzScrollBar;
   std::unique_ptr<CFWL_ScrollBar> m_pVertScrollBar;
-  FDE_TextStyle m_dwTTOStyles;
-  FDE_TextAlignment m_iTTOAligns;
-  CFWL_ListItem* m_hAnchor;
-  float m_fItemHeight;
-  float m_fScorllBarWidth;
-  bool m_bLButtonDown;
-  IFWL_ThemeProvider* m_pScrollBarTP;
+  UnownedPtr<CFWL_ListItem> m_hAnchor;
+  UnownedPtr<IFWL_ThemeProvider> m_pScrollBarTP;
   std::vector<std::unique_ptr<CFWL_ListItem>> m_ItemArray;
 };
 
