@@ -36,9 +36,7 @@ bool CBC_PDF417I::SetErrorCorrectionLevel(int32_t level) {
   return true;
 }
 
-void CBC_PDF417I::SetTruncated(bool truncated) {
-  GetPDF417Writer()->SetTruncated(truncated);
-}
+void CBC_PDF417I::SetTruncated(bool truncated) {}
 
 bool CBC_PDF417I::Encode(const WideStringView& contents) {
   int32_t outWidth;
