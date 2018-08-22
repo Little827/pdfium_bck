@@ -98,7 +98,7 @@ void CXFA_FWLTheme::DrawText(CFWL_ThemeText* pParams) {
     if (!pWidget)
       return;
 
-    m_pTextOut->SetStyles(pParams->m_dwTTOStyles);
+    m_pTextOut->SetStyles(pParams->m_TTOStyles);
     m_pTextOut->SetAlignment(pParams->m_iTTOAlign);
     m_pTextOut->SetFont(m_pCalendarFont);
     m_pTextOut->SetFontSize(FWLTHEME_CAPACITY_FontSize);
@@ -137,7 +137,7 @@ void CXFA_FWLTheme::DrawText(CFWL_ThemeText* pParams) {
   if (!pRenderDevice)
     return;
 
-  m_pTextOut->SetStyles(pParams->m_dwTTOStyles);
+  m_pTextOut->SetStyles(pParams->m_TTOStyles);
   m_pTextOut->SetAlignment(pParams->m_iTTOAlign);
   m_pTextOut->SetFont(pNode->GetFDEFont(pWidget->GetDoc()));
   m_pTextOut->SetFontSize(pNode->GetFontSize());
@@ -237,7 +237,7 @@ void CXFA_FWLTheme::CalcTextRect(CFWL_ThemeText* pParams, CFX_RectF* pRect) {
     m_pTextOut->SetFontSize(FWLTHEME_CAPACITY_FontSize);
     m_pTextOut->SetTextColor(FWLTHEME_CAPACITY_TextColor);
     m_pTextOut->SetAlignment(pParams->m_iTTOAlign);
-    m_pTextOut->SetStyles(pParams->m_dwTTOStyles);
+    m_pTextOut->SetStyles(pParams->m_TTOStyles);
     m_pTextOut->CalcLogicSize(pParams->m_wsText, pRect);
     return;
   }
@@ -254,7 +254,7 @@ void CXFA_FWLTheme::CalcTextRect(CFWL_ThemeText* pParams, CFX_RectF* pRect) {
     return;
 
   m_pTextOut->SetAlignment(pParams->m_iTTOAlign);
-  m_pTextOut->SetStyles(pParams->m_dwTTOStyles);
+  m_pTextOut->SetStyles(pParams->m_TTOStyles);
   m_pTextOut->CalcLogicSize(pParams->m_wsText, pRect);
 }
 
