@@ -12,6 +12,7 @@
 #include <map>
 #include <vector>
 
+#include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fxfa/parser/cxfa_itemlayoutprocessor.h"
 
 class CXFA_ContainerRecord;
@@ -34,8 +35,8 @@ class CXFA_LayoutPageMgr {
   int32_t GetPageCount() const;
   CXFA_ContainerLayoutItem* GetPage(int32_t index) const;
   int32_t GetPageIndex(const CXFA_ContainerLayoutItem* pPage) const;
-  inline CXFA_ContainerLayoutItem* GetRootLayoutItem() const {
-    return m_pPageSetLayoutItemRoot;
+  CXFA_ContainerLayoutItem* GetRootLayoutItem() const {
+    return m_pPageSetLayoutItemRoot.Get();
   }
   bool ProcessBreakBeforeOrAfter(CXFA_Node* pBreakNode,
                                  bool bBefore,
@@ -129,17 +130,17 @@ class CXFA_LayoutPageMgr {
   void PrepareLayout();
   void SaveLayoutItem(CXFA_LayoutItem* pParentLayoutItem);
 
-  CXFA_LayoutProcessor* m_pLayoutProcessor;
-  CXFA_Node* m_pTemplatePageSetRoot;
-  CXFA_ContainerLayoutItem* m_pPageSetLayoutItemRoot;
-  CXFA_ContainerLayoutItem* m_pPageSetCurRoot;
+  bool m_bCreateOverFlowPage = false;
+  XFA_AttributeEnum m_ePageSetMode = XFA_AttributeEnum::OrderedOccurrence;
+  int32_t m_nAvailPages = 0;
+  int32_t m_nCurPageCount = 0;
+  CXFA_Node* m_pTemplatePageSetRoot = nullptr;
+  CXFA_Node* m_pCurPageArea = nullptr;
+  UnownedPtr<CXFA_LayoutProcessor> m_pLayoutProcessor;
+  UnownedPtr<CXFA_ContainerLayoutItem> m_pPageSetLayoutItemRoot;
+  UnownedPtr<CXFA_ContainerLayoutItem> m_pPageSetCurRoot;
   std::list<CXFA_ContainerRecord*> m_ProposedContainerRecords;
   std::list<CXFA_ContainerRecord*>::iterator m_CurrentContainerRecordIter;
-  CXFA_Node* m_pCurPageArea;
-  int32_t m_nAvailPages;
-  int32_t m_nCurPageCount;
-  XFA_AttributeEnum m_ePageSetMode;
-  bool m_bCreateOverFlowPage;
   std::map<CXFA_Node*, int32_t> m_pPageSetMap;
   std::vector<CXFA_ContainerLayoutItem*> m_PageArray;
 };
