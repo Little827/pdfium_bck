@@ -22,6 +22,30 @@
       "revId": "ae386367e8c0475fd5bcbacb9baa557409afb9c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f323a22_c157b89d",
+        "filename": "fpdfsdk/cpdfsdk_filewriteadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-22T17:16:49Z",
+      "side": 0,
+      "message": "Hammered it into submission.",
+      "parentUuid": "1868aab5_8ad82cfe",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "ae386367e8c0475fd5bcbacb9baa557409afb9c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
