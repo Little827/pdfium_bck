@@ -35,3 +35,11 @@ CPDF_ColorSpace* CPDF_PageModule::GetStockCS(int family) {
 void CPDF_PageModule::ClearStockFont(CPDF_Document* pDoc) {
   m_FontGlobals.Clear(pDoc);
 }
+
+CPDF_PageModule::StockFontClearer::StockFontClearer(CPDF_PageModule* pModule,
+                                                    CPDF_Document* pDoc)
+    : m_pModule(pModule), m_pDocument(pDoc) {}
+
+CPDF_PageModule::StockFontClearer::~StockFontClearer() {
+  m_pModule->ClearStockFont(m_pDocument.Get());
+}

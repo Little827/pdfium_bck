@@ -15,6 +15,7 @@
 
 #include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/page/cpdf_pagemodule.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfdoc/cpdf_linklist.h"
@@ -172,6 +173,7 @@ class CPDF_Document : public Observable<CPDF_Document>,
   std::unique_ptr<JBig2_DocumentContext> m_pCodecContext;
   std::unique_ptr<CPDF_LinkList> m_pLinksContext;
   std::vector<uint32_t> m_PageList;  // Page number to page's dict objnum.
+  CPDF_PageModule::StockFontClearer m_StockFontClearer;
   std::unique_ptr<Extension> m_pExtension;
 };
 
