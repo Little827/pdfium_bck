@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42c69d73_a01b1df4",
+        "filename": "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-22T20:24:04Z",
+      "side": 1,
+      "message": "Seems a bit strange for |m_matrixOut| to be a member.",
+      "revId": "6b9aa84e92991f2fa980f6593996968d6b625098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b2bfd2d_a73f9565",
+        "filename": "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-22T20:24:04Z",
+      "side": 1,
+      "message": "Not implemented?",
+      "revId": "6b9aa84e92991f2fa980f6593996968d6b625098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bebbe1_8f1774cb",
+        "filename": "fxbarcode/pdf417/BC_PDF417BarcodeMatrix.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-22T20:24:04Z",
+      "side": 1,
+      "message": "Reverse the parameters later?",
+      "revId": "6b9aa84e92991f2fa980f6593996968d6b625098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
