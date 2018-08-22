@@ -312,7 +312,8 @@ bool CXFA_LayoutPageMgr::InitLayoutPage(CXFA_Node* pFormNode) {
         new CXFA_ContainerLayoutItem(m_pTemplatePageSetRoot);
   }
   m_pPageSetCurRoot = m_pPageSetLayoutItemRoot;
-  m_pTemplatePageSetRoot->JSObject()->SetLayoutItem(m_pPageSetLayoutItemRoot);
+  m_pTemplatePageSetRoot->JSObject()->SetLayoutItem(
+      m_pPageSetLayoutItemRoot.Get());
 
   XFA_AttributeEnum eRelation =
       m_pTemplatePageSetRoot->JSObject()->GetEnum(XFA_Attribute::Relation);
@@ -521,12 +522,12 @@ CXFA_ContainerRecord* CXFA_LayoutPageMgr::CreateContainerRecord(
     CXFA_Node* pPageSet = pPageNode->GetParent();
     if (!bCreateNew) {
       if (pPageSet == m_pTemplatePageSetRoot) {
-        pNewRecord->pCurPageSet = m_pPageSetCurRoot;
+        pNewRecord->pCurPageSet = m_pPageSetCurRoot.Get();
       } else {
         CXFA_ContainerLayoutItem* pParentLayoutItem =
             ToContainerLayoutItem(pPageSet->JSObject()->GetLayoutItem());
         if (!pParentLayoutItem)
-          pParentLayoutItem = m_pPageSetCurRoot;
+          pParentLayoutItem = m_pPageSetCurRoot.Get();
 
         pNewRecord->pCurPageSet = pParentLayoutItem;
       }
@@ -542,7 +543,7 @@ CXFA_ContainerRecord* CXFA_LayoutPageMgr::CreateContainerRecord(
       auto* pPageSetLayoutItem = new CXFA_ContainerLayoutItem(pPageSet);
       pPageSet->JSObject()->SetLayoutItem(pPageSetLayoutItem);
       if (!pParentPageSetLayout) {
-        CXFA_ContainerLayoutItem* pPrePageSet = m_pPageSetLayoutItemRoot;
+        CXFA_ContainerLayoutItem* pPrePageSet = m_pPageSetLayoutItemRoot.Get();
         while (pPrePageSet->m_pNextSibling) {
           pPrePageSet = pPrePageSet->m_pNextSibling->AsContainerLayoutItem();
         }
@@ -557,7 +558,7 @@ CXFA_ContainerRecord* CXFA_LayoutPageMgr::CreateContainerRecord(
     if (pPageNode) {
       CXFA_Node* pPageSet = pPageNode->GetParent();
       if (pPageSet == m_pTemplatePageSetRoot) {
-        pNewRecord->pCurPageSet = m_pPageSetLayoutItemRoot;
+        pNewRecord->pCurPageSet = m_pPageSetLayoutItemRoot.Get();
       } else {
         CXFA_ContainerLayoutItem* pPageSetLayoutItem =
             new CXFA_ContainerLayoutItem(pPageSet);
@@ -566,7 +567,7 @@ CXFA_ContainerRecord* CXFA_LayoutPageMgr::CreateContainerRecord(
         pNewRecord->pCurPageSet = pPageSetLayoutItem;
       }
     } else {
-      pNewRecord->pCurPageSet = m_pPageSetLayoutItemRoot;
+      pNewRecord->pCurPageSet = m_pPageSetLayoutItemRoot.Get();
     }
   }
   m_ProposedContainerRecords.push_back(pNewRecord);
@@ -611,10 +612,9 @@ void CXFA_LayoutPageMgr::AddContentAreaLayoutItem(
 
 void CXFA_LayoutPageMgr::FinishPaginatedPageSets() {
   for (CXFA_ContainerLayoutItem* pRootPageSetLayoutItem =
-           m_pPageSetLayoutItemRoot;
-       pRootPageSetLayoutItem;
-       pRootPageSetLayoutItem =
-           ToContainerLayoutItem(pRootPageSetLayoutItem->m_pNextSibling)) {
+           m_pPageSetLayoutItemRoot.Get();
+       pRootPageSetLayoutItem; pRootPageSetLayoutItem = ToContainerLayoutItem(
+                                   pRootPageSetLayoutItem->m_pNextSibling)) {
     PageSetIterator sIterator(pRootPageSetLayoutItem);
     for (CXFA_ContainerLayoutItem* pPageSetLayoutItem = sIterator.GetCurrent();
          pPageSetLayoutItem; pPageSetLayoutItem = sIterator.MoveToNext()) {
@@ -1625,6 +1625,8 @@ void CXFA_LayoutPageMgr::ClearData() {
   m_pCurPageArea = nullptr;
   m_nCurPageCount = 0;
   m_bCreateOverFlowPage = false;
+  m_pPageSetLayoutItemRoot.Release();
+  m_pPageSetCurRoot.Release();
   m_pPageSetMap.clear();
 }
 
@@ -1949,7 +1951,7 @@ void CXFA_LayoutPageMgr::SyncLayoutData() {
             bool bVisible = presence == XFA_AttributeEnum::Visible;
             uint32_t dwRelevantChild =
                 GetRelevant(pContentItem->GetFormNode(), dwRelevant);
-            SyncContainer(pNotify, m_pLayoutProcessor, pContentItem,
+            SyncContainer(pNotify, m_pLayoutProcessor.Get(), pContentItem,
                           dwRelevantChild, bVisible, nPageIdx);
             pChildLayoutItem = iterator.SkipChildrenAndMoveToNext();
           }
@@ -1991,7 +1993,7 @@ void CXFA_LayoutPageMgr::PrepareLayout() {
   if (!m_pPageSetLayoutItemRoot)
     return;
 
-  CXFA_ContainerLayoutItem* pRootLayoutItem = m_pPageSetLayoutItemRoot;
+  CXFA_ContainerLayoutItem* pRootLayoutItem = m_pPageSetLayoutItemRoot.Get();
   if (pRootLayoutItem &&
       pRootLayoutItem->GetFormNode()->GetPacketType() == XFA_PacketType::Form) {
     CXFA_Node* pPageSetFormNode = pRootLayoutItem->GetFormNode();
@@ -2014,7 +2016,7 @@ void CXFA_LayoutPageMgr::PrepareLayout() {
       pPageSetFormNode = pNextPageSet;
     }
   }
-  pRootLayoutItem = m_pPageSetLayoutItemRoot;
+  pRootLayoutItem = m_pPageSetLayoutItemRoot.Get();
   CXFA_ContainerLayoutItem* pNextLayout = nullptr;
   for (; pRootLayoutItem; pRootLayoutItem = pNextLayout) {
     pNextLayout = ToContainerLayoutItem(pRootLayoutItem->m_pNextSibling);
