@@ -45,7 +45,7 @@ class CFGAS_GEFont : public Retainable {
   bool GetBBox(FX_RECT* bbox);
 
   RetainPtr<CFGAS_GEFont> GetSubstFont(int32_t iGlyphIndex);
-  CFX_Font* GetDevFont() const { return m_pFont; }
+  CFX_Font* GetDevFont() const { return m_pFont.Get(); }
 
   void SetLogicalFontStyle(uint32_t dwLogFontStyle) {
     m_bUseLogFontStyle = true;
@@ -70,10 +70,9 @@ class CFGAS_GEFont : public Retainable {
       bool bRecursive);
   WideString GetFamilyName() const;
 
-  bool m_bUseLogFontStyle;
-  uint32_t m_dwLogFontStyle;
-  CFX_Font* m_pFont;
-  bool m_bExternalFont;
+  bool m_bUseLogFontStyle = false;
+  uint32_t m_dwLogFontStyle = 0;
+  MaybeOwned<CFX_Font> m_pFont;
   RetainPtr<CFGAS_GEFont> m_pSrcFont;  // Only set by ctor, so no cycles.
   CFGAS_FontMgr::ObservedPtr m_pFontMgr;
   RetainPtr<IFX_SeekableReadStream> m_pFileRead;
