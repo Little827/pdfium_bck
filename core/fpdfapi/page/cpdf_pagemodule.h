@@ -16,6 +16,16 @@ class CPDF_Document;
 
 class CPDF_PageModule {
  public:
+  class StockFontClearer {
+   public:
+    explicit StockFontClearer(CPDF_PageModule* pModule, CPDF_Document* pDoc);
+    ~StockFontClearer();
+
+   private:
+    UnownedPtr<CPDF_PageModule> m_pModule;
+    UnownedPtr<CPDF_Document> m_pDocument;
+  };
+
   CPDF_PageModule();
   ~CPDF_PageModule();
 
