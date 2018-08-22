@@ -34,6 +34,24 @@
       "revId": "d7e8ab2693c8819d9c748a767f368949b68267e5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce1937e6_d6e5b73b",
+        "filename": "xfa/fwl/cfx_barcode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-22T22:15:11Z",
+      "side": 1,
+      "message": "I thought the enum had to be kept intact, but turns out it\u0027s just internal. Done.",
+      "parentUuid": "f0e9e598_a52d255e",
+      "revId": "d7e8ab2693c8819d9c748a767f368949b68267e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
