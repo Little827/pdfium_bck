@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b906ce55_1942176d",
+        "filename": "fxbarcode/cbc_pdf417i.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-22T17:50:53Z",
+      "side": 1,
+      "message": "This can also never happen.",
+      "revId": "fb0f48de2e13029a178ebf9cdc4a8c44f4031d96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
