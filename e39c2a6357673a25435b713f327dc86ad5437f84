@@ -16,6 +16,24 @@
       "revId": "e39c2a6357673a25435b713f327dc86ad5437f84",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a038c3_09759b7d",
+        "filename": "fxbarcode/pdf417/BC_PDF417BarcodeRow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-22T16:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf37d11f_725c7fca",
+      "revId": "e39c2a6357673a25435b713f327dc86ad5437f84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
