@@ -46,7 +46,7 @@ void CFWL_WidgetTP::DrawText(CFWL_ThemeText* pParams) {
     return;
 
   CXFA_Graphics* pGraphics = pParams->m_pGraphics;
-  m_pTextOut->SetStyles(pParams->m_dwTTOStyles);
+  m_pTextOut->SetStyles(pParams->m_TTOStyles);
   m_pTextOut->SetAlignment(pParams->m_iTTOAlign);
 
   CFX_Matrix* pMatrix = &pParams->m_matrix;
