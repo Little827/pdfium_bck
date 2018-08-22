@@ -16,6 +16,24 @@
       "revId": "d7e8ab2693c8819d9c748a767f368949b68267e5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e9e598_a52d255e",
+        "filename": "xfa/fwl/cfx_barcode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-22T21:30:28Z",
+      "side": 1,
+      "message": "There are still a layer or two of callers that pretend the truncated flag does something. Can you remove this and as many layers as possible and just have the top layer say it\u0027s not supported?\n\nGiven Acrobat doesn\u0027t implement this, I don\u0027t expect anyone to really try to use this feature.",
+      "parentUuid": "6a9e773c_3d56a2a6",
+      "revId": "d7e8ab2693c8819d9c748a767f368949b68267e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
