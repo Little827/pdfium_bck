@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c5dfc4a_97a04c36",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-22T18:43:10Z",
+      "side": 1,
+      "message": "It\u0027s a pure move.",
+      "revId": "16ab7a426849414a8ad4eb0702de1a2594f0030a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
