@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b07938_7f340fa4",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "Naming conventions are a mess in here, but we should be consistent in moving towards inner_word since parse_type is already in this convention.",
+      "range": {
+        "startLine": 480,
+        "startChar": 17,
+        "endLine": 480,
+        "endChar": 26
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df847c24_e6e89e84",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "family_iter",
+      "range": {
+        "startLine": 255,
+        "startChar": 7,
+        "endLine": 255,
+        "endChar": 17
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c1a55e_d0018c11",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "face_iter",
+      "range": {
+        "startLine": 276,
+        "startChar": 12,
+        "endLine": 276,
+        "endChar": 20
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1f477d_327e303a",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "Optional\u003csize_t\u003e",
+      "range": {
+        "startLine": 427,
+        "startChar": 4,
+        "endLine": 427,
+        "endChar": 8
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904b7ab5_84b280e6",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "Optional\u003csize_t\u003e",
+      "range": {
+        "startLine": 456,
+        "startChar": 6,
+        "endLine": 456,
+        "endChar": 10
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d61f681_bde82f75",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "next_node",
+      "range": {
+        "startLine": 238,
+        "startChar": 22,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8959386e_aa5bbd8b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3988,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "value_iter or value_it",
+      "range": {
+        "startLine": 3988,
+        "startChar": 7,
+        "endLine": 3988,
+        "endChar": 16
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6458a1_1da28217",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 4006,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-23T19:49:18Z",
+      "side": 1,
+      "message": "selected_iter or selected_it",
+      "range": {
+        "startLine": 4006,
+        "startChar": 11,
+        "endLine": 4006,
+        "endChar": 23
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
