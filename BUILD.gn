@@ -17,7 +17,7 @@ group("freetype_common") {
 }
 
 config("pdfium_common_config") {
-  cflags = []
+  cflags = [ "-Wshadow" ]
   ldflags = []
   include_dirs = [ "." ]
   defines = [

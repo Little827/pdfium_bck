@@ -547,7 +547,7 @@ FXFT_Face CFX_FontMapper::FindSubstFont(const ByteString& name,
 #else
       const char* narrow_family = "ArialNarrow";
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
-      auto pos = SubstName.Find("Narrow");
+      pos = SubstName.Find("Narrow");
       if (pos.has_value() && pos.value() != 0)
         family = narrow_family;
       pos = SubstName.Find("Condensed");
