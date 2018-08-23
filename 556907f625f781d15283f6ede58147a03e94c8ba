@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67fa606e_1f82c967",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b07938_7f340fa4",
+      "range": {
+        "startLine": 480,
+        "startChar": 17,
+        "endLine": 480,
+        "endChar": 26
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df847c24_e6e89e84",
         "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9720d7c6_13ebcfdb",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df847c24_e6e89e84",
+      "range": {
+        "startLine": 255,
+        "startChar": 7,
+        "endLine": 255,
+        "endChar": 17
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f7533bee_dc73414f",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c1a55e_d0018c11",
+      "range": {
+        "startLine": 276,
+        "startChar": 12,
+        "endLine": 276,
+        "endChar": 20
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da1f477d_327e303a",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1014ba22_fc1a0de8",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da1f477d_327e303a",
+      "range": {
+        "startLine": 427,
+        "startChar": 4,
+        "endLine": 427,
+        "endChar": 8
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3d39501b_6ee3fc85",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "904b7ab5_84b280e6",
+      "range": {
+        "startLine": 456,
+        "startChar": 6,
+        "endLine": 456,
+        "endChar": 10
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d61f681_bde82f75",
         "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5953bf_c35baf79",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d61f681_bde82f75",
+      "range": {
+        "startLine": 238,
+        "startChar": 22,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "91d8ee61_d904a714",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3988,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8959386e_aa5bbd8b",
+      "range": {
+        "startLine": 3988,
+        "startChar": 7,
+        "endLine": 3988,
+        "endChar": 16
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a6458a1_1da28217",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 6
@@ -183,6 +351,30 @@
       "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48231d34_c7c79954",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 4006,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-08-23T19:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a6458a1_1da28217",
+      "range": {
+        "startLine": 4006,
+        "startChar": 11,
+        "endLine": 4006,
+        "endChar": 23
+      },
+      "revId": "556907f625f781d15283f6ede58147a03e94c8ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
