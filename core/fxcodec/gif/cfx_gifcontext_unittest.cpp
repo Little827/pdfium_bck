@@ -24,28 +24,28 @@ class CFX_GifContextForTest : public CFX_GifContext {
 TEST(CFX_GifContext, SetInputBuffer) {
   CFX_GifContextForTest context(nullptr, nullptr);
 
-  context.SetInputBuffer(nullptr, 0);
+  context.SetInputBuffer({nullptr, 0});
   EXPECT_EQ(nullptr, context.InputBuffer()->GetBuffer());
   EXPECT_EQ(0u, context.InputBuffer()->GetSize());
   EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
-  context.SetInputBuffer(nullptr, 100);
+  context.SetInputBuffer({nullptr, 100});
   EXPECT_EQ(nullptr, context.InputBuffer()->GetBuffer());
   EXPECT_EQ(100u, context.InputBuffer()->GetSize());
   EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
   uint8_t buffer[] = {0x00, 0x01, 0x02};
-  context.SetInputBuffer(buffer, 0);
+  context.SetInputBuffer({buffer, 0});
   EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
   EXPECT_EQ(0u, context.InputBuffer()->GetSize());
   EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
-  context.SetInputBuffer(buffer, 3);
+  context.SetInputBuffer({buffer, 3});
   EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
   EXPECT_EQ(3u, context.InputBuffer()->GetSize());
   EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
-  context.SetInputBuffer(buffer, 100);
+  context.SetInputBuffer({buffer, 100});
   EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
   EXPECT_EQ(100u, context.InputBuffer()->GetSize());
   EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
@@ -54,7 +54,7 @@ TEST(CFX_GifContext, SetInputBuffer) {
 TEST(CFX_GifContext, ReadData) {
   CFX_GifContextForTest context(nullptr, nullptr);
 
-  context.SetInputBuffer(nullptr, 0);
+  context.SetInputBuffer({nullptr, 0});
   EXPECT_FALSE(context.ReadData(nullptr, 0));
   EXPECT_FALSE(context.ReadData(nullptr, 10));
 
@@ -64,11 +64,11 @@ TEST(CFX_GifContext, ReadData) {
 
   uint8_t src_buffer[] = {0x00, 0x01, 0x02, 0x03, 0x04,
                           0x05, 0x06, 0x07, 0x08, 0x09};
-  context.SetInputBuffer(src_buffer, 0);
+  context.SetInputBuffer({src_buffer, 0});
   dest_buffer.resize(sizeof(src_buffer));
   EXPECT_FALSE(context.ReadData(dest_buffer.data(), sizeof(src_buffer)));
 
-  context.SetInputBuffer(src_buffer, 1);
+  context.SetInputBuffer({src_buffer, 1});
   EXPECT_FALSE(context.ReadData(dest_buffer.data(), sizeof(src_buffer)));
   EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
   EXPECT_FALSE(context.ReadData(nullptr, sizeof(src_buffer)));
@@ -76,13 +76,13 @@ TEST(CFX_GifContext, ReadData) {
   EXPECT_TRUE(context.ReadData(dest_buffer.data(), 1));
   EXPECT_EQ(src_buffer[0], dest_buffer[0]);
 
-  context.SetInputBuffer(src_buffer, sizeof(src_buffer));
+  context.SetInputBuffer(src_buffer);
   EXPECT_FALSE(context.ReadData(nullptr, sizeof(src_buffer)));
   EXPECT_TRUE(context.ReadData(dest_buffer.data(), sizeof(src_buffer)));
   for (size_t i = 0; i < sizeof(src_buffer); i++)
     EXPECT_EQ(src_buffer[i], dest_buffer[i]);
 
-  context.SetInputBuffer(src_buffer, sizeof(src_buffer));
+  context.SetInputBuffer(src_buffer);
   for (size_t i = 0; i < sizeof(src_buffer); i++) {
     EXPECT_TRUE(context.ReadData(dest_buffer.data(), 1));
     EXPECT_EQ(src_buffer[i], dest_buffer[0]);
@@ -94,48 +94,48 @@ TEST(CFX_GifContext, ReadGifSignature) {
 
   {
     uint8_t data[1];
-    context.SetInputBuffer(data, 0);
+    context.SetInputBuffer({data, 0});
     EXPECT_EQ(CFX_GifDecodeStatus::Unfinished, context.ReadGifSignature());
     EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
   }
   // Make sure testing the entire signature
   {
     uint8_t data[] = {'G', 'I', 'F'};
-    context.SetInputBuffer(data, sizeof(data));
+    context.SetInputBuffer(data);
     EXPECT_EQ(CFX_GifDecodeStatus::Unfinished, context.ReadGifSignature());
     EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
   }
   {
     uint8_t data[] = {'N', 'O', 'T', 'G', 'I', 'F'};
-    context.SetInputBuffer(data, sizeof(data));
+    context.SetInputBuffer(data);
     EXPECT_EQ(CFX_GifDecodeStatus::Error, context.ReadGifSignature());
     EXPECT_EQ(6u, context.InputBuffer()->GetPosition());
   }
   // Make sure not matching GIF8*a
   {
     uint8_t data[] = {'G', 'I', 'F', '8', '0', 'a'};
-    context.SetInputBuffer(data, sizeof(data));
+    context.SetInputBuffer(data);
     EXPECT_EQ(CFX_GifDecodeStatus::Error, context.ReadGifSignature());
     EXPECT_EQ(6u, context.InputBuffer()->GetPosition());
   }
   // Make sure not matching GIF**a
   {
     uint8_t data[] = {'G', 'I', 'F', '9', '2', 'a'};
-    context.SetInputBuffer(data, sizeof(data));
+    context.SetInputBuffer(data);
     EXPECT_EQ(CFX_GifDecodeStatus::Error, context.ReadGifSignature());
     EXPECT_EQ(6u, context.InputBuffer()->GetPosition());
   }
   // One valid signature
   {
     uint8_t data[] = {'G', 'I', 'F', '8', '7', 'a'};
-    context.SetInputBuffer(data, sizeof(data));
+    context.SetInputBuffer(data);
     EXPECT_EQ(CFX_GifDecodeStatus::Success, context.ReadGifSignature());
     EXPECT_EQ(6u, context.InputBuffer()->GetPosition());
   }
   // The other valid signature
   {
     uint8_t data[] = {'G', 'I', 'F', '8', '9', 'a'};
-    context.SetInputBuffer(data, sizeof(data));
+    context.SetInputBuffer(data);
     EXPECT_EQ(CFX_GifDecodeStatus::Success, context.ReadGifSignature());
     EXPECT_EQ(6u, context.InputBuffer()->GetPosition());
   }
@@ -145,7 +145,7 @@ TEST(CFX_GifContext, ReadLocalScreenDescriptor) {
   CFX_GifContextForTest context(nullptr, nullptr);
   {
     uint8_t data[1];
-    context.SetInputBuffer(data, 0);
+    context.SetInputBuffer({data, 0});
     EXPECT_EQ(CFX_GifDecodeStatus::Unfinished,
               context.ReadLogicalScreenDescriptor());
   }
@@ -153,7 +153,7 @@ TEST(CFX_GifContext, ReadLocalScreenDescriptor) {
   {
     uint8_t lsd[sizeof(CFX_GifLocalScreenDescriptor)];
     memset(&lsd, 0, sizeof(CFX_GifLocalScreenDescriptor));
-    context.SetInputBuffer(lsd, sizeof(CFX_GifLocalScreenDescriptor));
+    context.SetInputBuffer(lsd);
 
     EXPECT_EQ(CFX_GifDecodeStatus::Success,
               context.ReadLogicalScreenDescriptor());
@@ -169,7 +169,7 @@ TEST(CFX_GifContext, ReadLocalScreenDescriptor) {
   {
     uint8_t lsd[sizeof(CFX_GifLocalScreenDescriptor)] = {0x0A, 0x00, 0x00, 0x0F,
                                                          0x00, 0x01, 0x02};
-    context.SetInputBuffer(lsd, sizeof(CFX_GifLocalScreenDescriptor));
+    context.SetInputBuffer(lsd);
 
     EXPECT_EQ(CFX_GifDecodeStatus::Success,
               context.ReadLogicalScreenDescriptor());
@@ -185,7 +185,7 @@ TEST(CFX_GifContext, ReadLocalScreenDescriptor) {
   {
     uint8_t lsd[sizeof(CFX_GifLocalScreenDescriptor)] = {0x0A, 0x00, 0x00, 0x0F,
                                                          0x80, 0x01, 0x02};
-    context.SetInputBuffer(lsd, sizeof(CFX_GifLocalScreenDescriptor));
+    context.SetInputBuffer(lsd);
 
     EXPECT_EQ(CFX_GifDecodeStatus::Unfinished,
               context.ReadLogicalScreenDescriptor());
@@ -199,7 +199,7 @@ TEST(CFX_GifContext, ReadLocalScreenDescriptor) {
       uint8_t palette[4 * sizeof(CFX_GifPalette)];
     } data = {{0x0A, 0x00, 0x00, 0x0F, 0xA9, 0x01, 0x02},
               {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1}};
-    context.SetInputBuffer(reinterpret_cast<uint8_t*>(&data), sizeof(data));
+    context.SetInputBuffer({reinterpret_cast<uint8_t*>(&data), sizeof(data)});
 
     EXPECT_EQ(CFX_GifDecodeStatus::Success,
               context.ReadLogicalScreenDescriptor());
@@ -209,7 +209,6 @@ TEST(CFX_GifContext, ReadLocalScreenDescriptor) {
     EXPECT_EQ(0x0F00, context.height_);
     EXPECT_EQ(1u, context.bc_index_);
     EXPECT_EQ(2u, context.pixel_aspect_);
-
     EXPECT_EQ(1u, context.global_pal_exp_);
     EXPECT_EQ(1, context.global_sort_flag_);
     EXPECT_EQ(2, context.global_color_resolution_);
@@ -227,20 +226,18 @@ TEST(CFX_GifContext, ReadHeader) {
       uint8_t lsd[sizeof(CFX_GifLocalScreenDescriptor)];
     } data = {{'N', 'O', 'T', 'G', 'I', 'F'},
               {0x0A, 0x00, 0x00, 0x0F, 0x00, 0x01, 0x02}};
-    context.SetInputBuffer(reinterpret_cast<uint8_t*>(&data), sizeof(data));
+    context.SetInputBuffer({reinterpret_cast<uint8_t*>(&data), sizeof(data)});
 
     EXPECT_EQ(CFX_GifDecodeStatus::Error, context.ReadHeader());
-
     EXPECT_EQ(sizeof(data.signature), context.InputBuffer()->GetPosition());
   }
   // Short after signature
   {
     uint8_t signature[] = {'G', 'I', 'F', '8', '7', 'a'};
-    context.SetInputBuffer(reinterpret_cast<uint8_t*>(&signature),
-                           sizeof(signature));
+    context.SetInputBuffer(
+        {reinterpret_cast<uint8_t*>(&signature), sizeof(signature)});
 
     EXPECT_EQ(CFX_GifDecodeStatus::Unfinished, context.ReadHeader());
-
     EXPECT_EQ(sizeof(signature), context.InputBuffer()->GetPosition());
   }
   // Success without global palette
@@ -250,7 +247,7 @@ TEST(CFX_GifContext, ReadHeader) {
       uint8_t lsd[sizeof(CFX_GifLocalScreenDescriptor)];
     } data = {{'G', 'I', 'F', '8', '7', 'a'},
               {0x0A, 0x00, 0x00, 0x0F, 0x00, 0x01, 0x02}};
-    context.SetInputBuffer(reinterpret_cast<uint8_t*>(&data), sizeof(data));
+    context.SetInputBuffer({reinterpret_cast<uint8_t*>(&data), sizeof(data)});
 
     EXPECT_EQ(CFX_GifDecodeStatus::Success, context.ReadHeader());
 
@@ -267,7 +264,7 @@ TEST(CFX_GifContext, ReadHeader) {
       uint8_t lsd[sizeof(CFX_GifLocalScreenDescriptor)];
     } data = {{'G', 'I', 'F', '8', '7', 'a'},
               {0x0A, 0x00, 0x00, 0x0F, 0x80, 0x01, 0x02}};
-    context.SetInputBuffer(reinterpret_cast<uint8_t*>(&data), sizeof(data));
+    context.SetInputBuffer({reinterpret_cast<uint8_t*>(&data), sizeof(data)});
 
     EXPECT_EQ(CFX_GifDecodeStatus::Unfinished, context.ReadHeader());
 
@@ -282,7 +279,7 @@ TEST(CFX_GifContext, ReadHeader) {
     } data = {{'G', 'I', 'F', '8', '7', 'a'},
               {0x0A, 0x00, 0x00, 0x0F, 0xA9, 0x01, 0x02},
               {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1}};
-    context.SetInputBuffer(reinterpret_cast<uint8_t*>(&data), sizeof(data));
+    context.SetInputBuffer({reinterpret_cast<uint8_t*>(&data), sizeof(data)});
 
     EXPECT_EQ(CFX_GifDecodeStatus::Success, context.ReadHeader());
 
