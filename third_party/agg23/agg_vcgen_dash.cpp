@@ -127,9 +127,8 @@ unsigned vcgen_dash::vertex(float* x, float* y)
                 return path_cmd_move_to;
             case polyline: {
                     float dash_rest = m_dashes[m_curr_dash] - m_curr_dash_start;
-                    unsigned cmd = (m_curr_dash & 1) ?
-                                   path_cmd_move_to :
-                                   path_cmd_line_to;
+                    cmd =
+                        (m_curr_dash & 1) ? path_cmd_move_to : path_cmd_line_to;
                     if(m_curr_rest > dash_rest) {
                         m_curr_rest -= dash_rest;
                         ++m_curr_dash;

@@ -69,7 +69,11 @@ config("pdfium_common_config") {
 }
 
 config("pdfium_core_config") {
-  cflags = []
+  if (is_clang) {
+    cflags = [ "-Wshadow" ]
+  } else {
+    cflags = []
+  }
   configs = [ ":pdfium_common_config" ]
   defines = [ "V8_DEPRECATION_WARNINGS" ]
   if (is_linux) {

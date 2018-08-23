@@ -1181,6 +1181,7 @@ static size_t PartitionPurgePage(PartitionPage* page, bool discard) {
       discardable_bytes += unprovisioned_bytes;
     }
   }
+
   if (unprovisioned_bytes && discard) {
     DCHECK(truncated_slots > 0);
     size_t num_new_entries = 0;
@@ -1190,7 +1191,7 @@ static size_t PartitionPurgePage(PartitionPage* page, bool discard) {
     for (size_t slotIndex = 0; slotIndex < num_slots; ++slotIndex) {
       if (slot_usage[slotIndex])
         continue;
-      PartitionFreelistEntry* entry = reinterpret_cast<PartitionFreelistEntry*>(
+      entry = reinterpret_cast<PartitionFreelistEntry*>(
           ptr + (slot_size * slotIndex));
       *entry_ptr = PartitionFreelistMask(entry);
       entry_ptr = reinterpret_cast<PartitionFreelistEntry**>(entry);
@@ -1215,8 +1216,8 @@ static size_t PartitionPurgePage(PartitionPage* page, bool discard) {
     // The first address we can safely discard is just after the freelist
     // pointer. There's one quirk: if the freelist pointer is actually a
     // null, we can discard that pointer value too.
-    char* begin_ptr = ptr + (i * slot_size);
-    char* end_ptr = begin_ptr + slot_size;
+    begin_ptr = ptr + (i * slot_size);
+    end_ptr = begin_ptr + slot_size;
     if (i != last_slot)
       begin_ptr += sizeof(PartitionFreelistEntry);
     begin_ptr = reinterpret_cast<char*>(
@@ -1412,16 +1413,16 @@ void PartitionDumpStatsGeneric(PartitionRootGeneric* partition,
     for (size_t i = 0; i < num_direct_mapped_allocations; ++i) {
       uint32_t size = direct_map_lengths[i];
 
-      PartitionBucketMemoryStats stats;
-      memset(&stats, '\0', sizeof(stats));
-      stats.is_valid = true;
-      stats.is_direct_map = true;
-      stats.num_full_pages = 1;
-      stats.allocated_page_size = size;
-      stats.bucket_slot_size = size;
-      stats.active_bytes = size;
-      stats.resident_bytes = size;
-      dumper->PartitionsDumpBucketStats(partition_name, &stats);
+      PartitionBucketMemoryStats innerStats;
+      memset(&innerStats, '\0', sizeof(innerStats));
+      innerStats.is_valid = true;
+      innerStats.is_direct_map = true;
+      innerStats.num_full_pages = 1;
+      innerStats.allocated_page_size = size;
+      innerStats.bucket_slot_size = size;
+      innerStats.active_bytes = size;
+      innerStats.resident_bytes = size;
+      dumper->PartitionsDumpBucketStats(partition_name, &innerStats);
     }
   }
 
