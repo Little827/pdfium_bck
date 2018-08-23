@@ -6,6 +6,7 @@
 
 #include "fxjs/cfxjse_engine.h"
 
+#include <iostream>
 #include <utility>
 
 #include "core/fxcrt/autorestorer.h"
@@ -465,6 +466,7 @@ CXFA_Script::Type CFXJSE_Engine::GetType() {
 
 CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
                                                       CXFA_Node* pSubform) {
+  std::cerr << "CFXJSE_Engine::CreateVariablesContext " << std::endl;
   if (!pScriptNode || !pSubform)
     return nullptr;
 
@@ -493,6 +495,14 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
 
   if (pScriptNode->GetElementType() != XFA_Element::Script)
     return true;
+
+  CXFA_Script* pScriptSpecific = static_cast<CXFA_Script*>(pScriptNode);
+  if (!pScriptSpecific) {
+    std::cerr << "CFXJSE_Engine::RunVariablesScript !pScriptNode" << std::endl;
+    return false;
+  } else {
+    std::cerr << "pScriptSpecific->GetName() " << pScriptSpecific->GetName() << std::endl;
+  }
 
   CXFA_Node* pParent = pScriptNode->GetParent();
   if (!pParent || pParent->GetElementType() != XFA_Element::Variables)
