@@ -94,7 +94,7 @@ CPDF_Dictionary* LoadFontDesc(CPDF_Document* pDoc,
   pFontDesc->SetNewFor<CPDF_Number>("StemV", pFont->IsBold() ? 120 : 70);
 
   CPDF_Stream* pStream = pDoc->NewIndirect<CPDF_Stream>();
-  pStream->SetData(data, size);
+  pStream->SetData({data, size});
   // TODO(npm): Lengths for Type1 fonts.
   if (font_type == FPDF_FONT_TRUETYPE) {
     pStream->GetDict()->SetNewFor<CPDF_Number>("Length1",
