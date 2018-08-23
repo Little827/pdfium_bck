@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b13c0e8_ea5eaed8",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-23T18:53:42Z",
+      "side": 0,
+      "message": "All these lines seem to be useless due to the assignment to |rect| in line 374.",
+      "revId": "3e360453cded5f2f435195923ede0935f6847194",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
