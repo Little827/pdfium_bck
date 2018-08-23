@@ -65,7 +65,7 @@ void CFX_BmpDecompressor::Error() {
   longjmp(jmpbuf_, 1);
 }
 
-void CFX_BmpDecompressor::ReadScanline(uint32_t row_num_,
+void CFX_BmpDecompressor::ReadScanline(uint32_t row_num,
                                        const std::vector<uint8_t>& row_buf) {
   context_ptr_->m_pDelegate->BmpReadScanline(row_num_, row_buf);
 }
