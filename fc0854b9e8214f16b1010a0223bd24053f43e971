@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13e4aee8_717ff9ae",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-23T20:10:54Z",
+      "side": 1,
+      "message": "nit: optional size_t for consistency",
+      "range": {
+        "startLine": 553,
+        "startChar": 6,
+        "endLine": 553,
+        "endChar": 12
+      },
+      "revId": "fc0854b9e8214f16b1010a0223bd24053f43e971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
