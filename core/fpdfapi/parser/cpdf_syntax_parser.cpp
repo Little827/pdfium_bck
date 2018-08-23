@@ -477,22 +477,22 @@ std::unique_ptr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
     std::unique_ptr<CPDF_Dictionary> pDict =
         pdfium::MakeUnique<CPDF_Dictionary>(m_pPool);
     while (1) {
-      ByteString word = GetNextWord(nullptr);
-      if (word.IsEmpty())
+      ByteString innerWord = GetNextWord(nullptr);
+      if (innerWord.IsEmpty())
         return nullptr;
 
-      FX_FILESIZE SavedPos = m_Pos - word.GetLength();
-      if (word == ">>")
+      FX_FILESIZE SavedPos = m_Pos - innerWord.GetLength();
+      if (innerWord == ">>")
         break;
 
-      if (word == "endobj") {
+      if (innerWord == "endobj") {
         m_Pos = SavedPos;
         break;
       }
-      if (word[0] != '/')
+      if (innerWord[0] != '/')
         continue;
 
-      ByteString key = PDF_NameDecode(word.AsStringView());
+      ByteString key = PDF_NameDecode(innerWord.AsStringView());
       if (key.IsEmpty() && parse_type == ParseType::kLoose)
         continue;
 
