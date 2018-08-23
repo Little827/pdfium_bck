@@ -3985,10 +3985,10 @@ void CXFA_Node::SetItemState(int32_t nIndex,
 
   int32_t iSel = -1;
   std::vector<WideString> wsValueArray = GetSelectedItemsValue();
-  auto it = std::find(wsValueArray.begin(), wsValueArray.end(),
-                      wsSaveTextArray[nIndex]);
-  if (it != wsValueArray.end())
-    iSel = it - wsValueArray.begin();
+  auto valueIter = std::find(wsValueArray.begin(), wsValueArray.end(),
+                             wsSaveTextArray[nIndex]);
+  if (valueIter != wsValueArray.end())
+    iSel = valueIter - wsValueArray.begin();
 
   if (IsChoiceListMultiSelect()) {
     if (bSelected) {
@@ -4003,9 +4003,9 @@ void CXFA_Node::SetItemState(int32_t nIndex,
       }
     } else if (iSel >= 0) {
       std::vector<int32_t> iSelArray = GetSelectedItems();
-      auto it = std::find(iSelArray.begin(), iSelArray.end(), nIndex);
-      if (it != iSelArray.end())
-        iSelArray.erase(it);
+      auto selectedIter = std::find(iSelArray.begin(), iSelArray.end(), nIndex);
+      if (selectedIter != iSelArray.end())
+        iSelArray.erase(selectedIter);
       SetSelectedItems(iSelArray, bNotify, bScriptModify, bSyncData);
     }
   } else {
