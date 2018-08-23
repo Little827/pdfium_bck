@@ -141,7 +141,7 @@ FPDFPage_TransFormWithClip(FPDF_PAGE page,
   CPDF_Stream* pEndStream = pDoc->NewIndirect<CPDF_Stream>(
       nullptr, 0,
       pdfium::MakeUnique<CPDF_Dictionary>(pDoc->GetByteStringPool()));
-  pEndStream->SetData((const uint8_t*)" Q", 2);
+  pEndStream->SetData({(const uint8_t*)" Q", 2});
 
   if (CPDF_Array* pContentArray = ToArray(pContentObj)) {
     pContentArray->InsertAt(0, pStream->MakeReference(pDoc));
