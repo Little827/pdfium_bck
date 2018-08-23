@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2181a0f_ba342b2a",
+        "filename": "BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-23T18:22:19Z",
+      "side": 1,
+      "message": "nit:  prefer \n  cflags \u003d []\n  if (is_clang) {\n    cflags +\u003d [ \"-Wshadow\" ]\n  }\n\nbecause it\u0027s easier to build on in the future.",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "93d5399d43f88517c48dc6912ed683a0af578524",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc8a433_2a4850d7",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-23T18:22:19Z",
+      "side": 1,
+      "message": "Missed one here, I think.",
+      "range": {
+        "startLine": 70,
+        "startChar": 52,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "93d5399d43f88517c48dc6912ed683a0af578524",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e55fc65_f4423412",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-23T18:22:19Z",
+      "side": 1,
+      "message": "maybe introduce a block here, eg.\n{\n  auto pos \u003d SubstName.Find(\",\", 0);\n  if (pos.has_value()) \n    ...\n}\n\nending before line 427.  We always set POS right before we use it, but this will verify that usage.",
+      "revId": "93d5399d43f88517c48dc6912ed683a0af578524",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2224a8b8_af290a82",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-23T18:22:19Z",
+      "side": 1,
+      "message": "then pos needs a decl here.",
+      "range": {
+        "startLine": 446,
+        "startChar": 6,
+        "endLine": 446,
+        "endChar": 9
+      },
+      "revId": "93d5399d43f88517c48dc6912ed683a0af578524",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eb1df23_a846c737",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-23T18:22:19Z",
+      "side": 1,
+      "message": "pre-existing: maybe move up top as\n#if ...\n  const char kNarrowFamily[] \u003d \"...\"\n#elif ...\n  const char kNarrowFamily[] \u003d \"...\"\nas this is hard enough to read without being broken up by ifdefs.",
+      "range": {
+        "startLine": 543,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 47
+      },
+      "revId": "93d5399d43f88517c48dc6912ed683a0af578524",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d6cf81_a0ca8ad4",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-23T18:22:19Z",
+      "side": 1,
+      "message": "then keep the auto.",
+      "range": {
+        "startLine": 550,
+        "startChar": 6,
+        "endLine": 550,
+        "endChar": 9
+      },
+      "revId": "93d5399d43f88517c48dc6912ed683a0af578524",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
