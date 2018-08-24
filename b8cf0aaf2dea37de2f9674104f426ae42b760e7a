@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec2ec7f9_d98b1961",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-24T19:30:59Z",
+      "side": 1,
+      "message": "nit: Please invert the comparisons, like \"charinfo.m_Flag !\u003d FPDFTEXT_CHAR_PIECE\". It\u0027s hard to see the difference the way it is.",
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f5109f_74bc99bd",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-24T19:30:59Z",
+      "side": 1,
+      "message": "How can you be sure? If charinfo.m_Flag \u003d\u003d FPDFTEXT_CHAR_PIECE but charinfo2.m_Flag !\u003d FPDFTEXT_CHAR_PIECE, we should not run this part.",
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9fc1c16_1bfb4530",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-24T19:30:59Z",
+      "side": 1,
+      "message": "indent +2",
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2604ef7_9294d72a",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-24T19:30:59Z",
+      "side": 1,
+      "message": "Is this the same thing as wChar?",
+      "range": {
+        "startLine": 691,
+        "startChar": 25,
+        "endLine": 691,
+        "endChar": 40
+      },
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
