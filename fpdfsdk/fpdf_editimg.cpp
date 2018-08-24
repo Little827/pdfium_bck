@@ -170,7 +170,7 @@ FPDFImageObj_GetBitmap(FPDF_PAGEOBJECT image_object) {
   if (!pImg)
     return nullptr;
 
-  RetainPtr<CFX_DIBSource> pSource = pImg->LoadDIBSource();
+  RetainPtr<CFX_DIBBase> pSource = pImg->LoadDIBSource();
   if (!pSource)
     return nullptr;
 
