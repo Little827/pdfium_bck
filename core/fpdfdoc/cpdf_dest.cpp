@@ -39,11 +39,10 @@ CPDF_Dest::CPDF_Dest(const CPDF_Array* pObj) : m_pObj(pObj) {}
 CPDF_Dest::~CPDF_Dest() {}
 
 int CPDF_Dest::GetDestPageIndex(CPDF_Document* pDoc) const {
-  const CPDF_Array* pArray = ToArray(m_pObj.Get());
-  if (!pArray)
+  if (!m_pObj)
     return -1;
 
-  const CPDF_Object* pPage = pArray->GetDirectObjectAt(0);
+  const CPDF_Object* pPage = m_pObj->GetDirectObjectAt(0);
   if (!pPage)
     return -1;
 
@@ -57,11 +56,10 @@ int CPDF_Dest::GetDestPageIndex(CPDF_Document* pDoc) const {
 }
 
 uint32_t CPDF_Dest::GetPageObjNum() const {
-  const CPDF_Array* pArray = ToArray(m_pObj.Get());
-  if (!pArray)
+  if (!m_pObj)
     return 0;
 
-  const CPDF_Object* pPage = pArray->GetDirectObjectAt(0);
+  const CPDF_Object* pPage = m_pObj->GetDirectObjectAt(0);
   if (!pPage)
     return 0;
   if (pPage->IsNumber())
@@ -72,11 +70,10 @@ uint32_t CPDF_Dest::GetPageObjNum() const {
 }
 
 int CPDF_Dest::GetZoomMode() const {
-  const CPDF_Array* pArray = ToArray(m_pObj.Get());
-  if (!pArray)
+  if (!m_pObj)
     return 0;
 
-  const CPDF_Object* pObj = pArray->GetDirectObjectAt(1);
+  const CPDF_Object* pObj = m_pObj->GetDirectObjectAt(1);
   if (!pObj)
     return 0;
 
@@ -99,20 +96,19 @@ bool CPDF_Dest::GetXYZ(bool* pHasX,
   *pHasY = false;
   *pHasZoom = false;
 
-  const CPDF_Array* pArray = ToArray(m_pObj.Get());
-  if (!pArray)
+  if (!m_pObj)
     return false;
 
-  if (pArray->GetCount() < 5)
+  if (m_pObj->GetCount() < 5)
     return false;
 
-  const CPDF_Name* xyz = ToName(pArray->GetDirectObjectAt(1));
+  const CPDF_Name* xyz = ToName(m_pObj->GetDirectObjectAt(1));
   if (!xyz || xyz->GetString() != "XYZ")
     return false;
 
-  const CPDF_Number* numX = ToNumber(pArray->GetDirectObjectAt(2));
-  const CPDF_Number* numY = ToNumber(pArray->GetDirectObjectAt(3));
-  const CPDF_Number* numZoom = ToNumber(pArray->GetDirectObjectAt(4));
+  const CPDF_Number* numX = ToNumber(m_pObj->GetDirectObjectAt(2));
+  const CPDF_Number* numY = ToNumber(m_pObj->GetDirectObjectAt(3));
+  const CPDF_Number* numZoom = ToNumber(m_pObj->GetDirectObjectAt(4));
 
   // If the value is a CPDF_Null then ToNumber will return nullptr.
   *pHasX = !!numX;
@@ -137,18 +133,16 @@ bool CPDF_Dest::GetXYZ(bool* pHasX,
 }
 
 unsigned long CPDF_Dest::GetNumParams() const {
-  const CPDF_Array* pArray = ToArray(m_pObj.Get());
-  if (!pArray || pArray->GetCount() < 2)
+  if (!m_pObj || m_pObj->GetCount() < 2)
     return 0;
 
   unsigned long maxParamsForFitType = g_sZoomModeMaxParamCount[GetZoomMode()];
-  unsigned long numParamsInArray = pArray->GetCount() - 2;
+  unsigned long numParamsInArray = m_pObj->GetCount() - 2;
   return std::min(maxParamsForFitType, numParamsInArray);
 }
 
 float CPDF_Dest::GetParam(int index) const {
-  const CPDF_Array* pArray = ToArray(m_pObj.Get());
-  return pArray ? pArray->GetNumberAt(2 + index) : 0;
+  return m_pObj ? m_pObj->GetNumberAt(2 + index) : 0;
 }
 
 ByteString CPDF_Dest::GetRemoteName() const {
