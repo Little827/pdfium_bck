@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "91fd5a46_9f160b21",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-24T20:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec2ec7f9_d98b1961",
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84f5109f_74bc99bd",
         "filename": "core/fpdftext/cpdf_textpage.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-08-24T19:30:59Z",
       "side": 1,
       "message": "How can you be sure? If charinfo.m_Flag \u003d\u003d FPDFTEXT_CHAR_PIECE but charinfo2.m_Flag !\u003d FPDFTEXT_CHAR_PIECE, we should not run this part.",
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d8cdb7f_e30dc5ef",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-24T20:11:23Z",
+      "side": 1,
+      "message": "Oh yes this is wrong.",
+      "parentUuid": "84f5109f_74bc99bd",
       "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b9274de3_4f5a17d5",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-24T20:11:23Z",
+      "side": 1,
+      "message": "Where? This if is not part of the previous one.",
+      "parentUuid": "b9fc1c16_1bfb4530",
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2604ef7_9294d72a",
         "filename": "core/fpdftext/cpdf_textpage.cpp",
         "patchSetId": 2
@@ -64,6 +118,30 @@
       "writtenOn": "2018-08-24T19:30:59Z",
       "side": 1,
       "message": "Is this the same thing as wChar?",
+      "range": {
+        "startLine": 691,
+        "startChar": 25,
+        "endLine": 691,
+        "endChar": 40
+      },
+      "revId": "b8cf0aaf2dea37de2f9674104f426ae42b760e7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f22ea9_63f7f17a",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-24T20:11:23Z",
+      "side": 1,
+      "message": "No, |pDst| is populated from Unicode_GetNormalization(). It occurs to me that in a followup I can change this method to return the vector of wchars instead of having to call it twice (once to get the size and the next to populate the vector).",
+      "parentUuid": "e2604ef7_9294d72a",
       "range": {
         "startLine": 691,
         "startChar": 25,

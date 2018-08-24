@@ -16,6 +16,24 @@
       "revId": "1cb4d6b14cc9375dc04f57d3f2149eccb9e327a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d959922_2ec55a7d",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-08-24T20:11:23Z",
+      "side": 0,
+      "message": "In this case yes to reduce the nested ifs (replaced by a continue)",
+      "parentUuid": "0ff36457_e4de7adf",
+      "revId": "1cb4d6b14cc9375dc04f57d3f2149eccb9e327a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
