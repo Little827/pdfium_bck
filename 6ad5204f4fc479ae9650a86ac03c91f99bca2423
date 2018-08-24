@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "a1d9888b_5e7b2e26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-24T23:18:39Z",
+      "side": 1,
+      "message": "Why not both?",
+      "parentUuid": "c4639bdb_f8970f3f",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "6ad5204f4fc479ae9650a86ac03c91f99bca2423",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc05a882_c612f8ff",
         "filename": "core/fpdfdoc/cpdf_dest.cpp",
         "patchSetId": 1
