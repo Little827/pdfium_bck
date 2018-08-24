@@ -21,7 +21,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
-#include "core/fxge/dib/cfx_dibsource.h"
+#include "core/fxge/dib/cfx_dibbase.h"
 
 class CCodec_Jbig2Context;
 class CCodec_ScanlineDecoder;
@@ -39,7 +39,7 @@ struct DIB_COMP_DATA {
 
 #define FPDF_HUGE_IMAGE_SIZE 60000000
 
-class CPDF_DIBSource : public CFX_DIBSource {
+class CPDF_DIBSource : public CFX_DIBBase {
  public:
   enum class LoadState : uint8_t { kFail, kSuccess, kContinue };
 
@@ -48,7 +48,7 @@ class CPDF_DIBSource : public CFX_DIBSource {
 
   bool Load(CPDF_Document* pDoc, const CPDF_Stream* pStream);
 
-  // CFX_DIBSource
+  // CFX_DIBBase
   bool SkipToScanline(int line, PauseIndicatorIface* pPause) const override;
   uint8_t* GetBuffer() const override;
   const uint8_t* GetScanline(int line) const override;

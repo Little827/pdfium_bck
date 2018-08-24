@@ -329,7 +329,7 @@ void CPDF_Image::ResetCache(CPDF_Page* pPage,
   pPage->GetRenderCache()->ResetBitmap(pHolder, pBitmap);
 }
 
-RetainPtr<CFX_DIBSource> CPDF_Image::LoadDIBSource() const {
+RetainPtr<CFX_DIBBase> CPDF_Image::LoadDIBSource() const {
   auto source = pdfium::MakeRetain<CPDF_DIBSource>();
   if (!source->Load(m_pDocument.Get(), m_pStream.Get()))
     return nullptr;
@@ -343,11 +343,11 @@ RetainPtr<CFX_DIBSource> CPDF_Image::LoadDIBSource() const {
   return ret == CPDF_DIBSource::LoadState::kSuccess ? source : nullptr;
 }
 
-RetainPtr<CFX_DIBSource> CPDF_Image::DetachBitmap() {
+RetainPtr<CFX_DIBBase> CPDF_Image::DetachBitmap() {
   return std::move(m_pDIBSource);
 }
 
-RetainPtr<CFX_DIBSource> CPDF_Image::DetachMask() {
+RetainPtr<CFX_DIBBase> CPDF_Image::DetachMask() {
   return std::move(m_pMask);
 }
 

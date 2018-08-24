@@ -29,8 +29,8 @@
 #include "core/fxcrt/maybe_owned.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_pathdata.h"
+#include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
-#include "core/fxge/dib/cfx_dibsource.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/dib/cfx_imagetransformer.h"
 #include "third_party/base/ptr_util.h"
@@ -189,7 +189,7 @@ bool CPDF_ImageRenderer::Start(CPDF_RenderStatus* pStatus,
 }
 
 bool CPDF_ImageRenderer::Start(CPDF_RenderStatus* pStatus,
-                               const RetainPtr<CFX_DIBSource>& pDIBSource,
+                               const RetainPtr<CFX_DIBBase>& pDIBSource,
                                FX_ARGB bitmap_argb,
                                int bitmap_alpha,
                                const CFX_Matrix* pImage2Device,
@@ -228,7 +228,7 @@ CFX_Matrix CPDF_ImageRenderer::GetDrawMatrix(const FX_RECT& rect) const {
 void CPDF_ImageRenderer::CalculateDrawImage(
     CFX_DefaultRenderDevice* pBitmapDevice1,
     CFX_DefaultRenderDevice* pBitmapDevice2,
-    const RetainPtr<CFX_DIBSource>& pDIBSource,
+    const RetainPtr<CFX_DIBBase>& pDIBSource,
     CFX_Matrix* pNewMatrix,
     const FX_RECT& rect) const {
   CPDF_RenderStatus bitmap_render(m_pRenderStatus->GetContext(),
@@ -488,7 +488,7 @@ bool CPDF_ImageRenderer::StartBitmapAlpha() {
                                                  fill_color, 0, FXFILL_WINDING);
     return false;
   }
-  RetainPtr<CFX_DIBSource> pAlphaMask;
+  RetainPtr<CFX_DIBBase> pAlphaMask;
   if (m_pDIBSource->IsAlphaMask())
     pAlphaMask = m_pDIBSource;
   else

@@ -15,7 +15,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 
-class CFX_DIBSource;
+class CFX_DIBBase;
 class CFX_DIBitmap;
 class CPDF_Document;
 class CPDF_Page;
@@ -41,7 +41,7 @@ class CPDF_Image : public Retainable {
   bool IsMask() const { return m_bIsMask; }
   bool IsInterpol() const { return m_bInterpolate; }
 
-  RetainPtr<CFX_DIBSource> LoadDIBSource() const;
+  RetainPtr<CFX_DIBBase> LoadDIBSource() const;
 
   void SetImage(const RetainPtr<CFX_DIBitmap>& pDIBitmap);
   void SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile);
@@ -59,11 +59,11 @@ class CPDF_Image : public Retainable {
   // Returns whether to Continue() or not.
   bool Continue(PauseIndicatorIface* pPause);
 
-  RetainPtr<CFX_DIBSource> DetachBitmap();
-  RetainPtr<CFX_DIBSource> DetachMask();
+  RetainPtr<CFX_DIBBase> DetachBitmap();
+  RetainPtr<CFX_DIBBase> DetachMask();
 
-  RetainPtr<CFX_DIBSource> m_pDIBSource;
-  RetainPtr<CFX_DIBSource> m_pMask;
+  RetainPtr<CFX_DIBBase> m_pDIBSource;
+  RetainPtr<CFX_DIBBase> m_pMask;
   uint32_t m_MatteColor = 0;
 
  private:
