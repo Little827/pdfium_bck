@@ -37,18 +37,18 @@ void CPDF_ImageCacheEntry::Reset(const RetainPtr<CFX_DIBitmap>& pBitmap) {
 }
 
 static uint32_t FPDF_ImageCache_EstimateImageSize(
-    const RetainPtr<CFX_DIBSource>& pDIB) {
+    const RetainPtr<CFX_DIBBase>& pDIB) {
   return pDIB && pDIB->GetBuffer()
              ? (uint32_t)pDIB->GetHeight() * pDIB->GetPitch() +
                    (uint32_t)pDIB->GetPaletteSize() * 4
              : 0;
 }
 
-RetainPtr<CFX_DIBSource> CPDF_ImageCacheEntry::DetachBitmap() {
+RetainPtr<CFX_DIBBase> CPDF_ImageCacheEntry::DetachBitmap() {
   return std::move(m_pCurBitmap);
 }
 
-RetainPtr<CFX_DIBSource> CPDF_ImageCacheEntry::DetachMask() {
+RetainPtr<CFX_DIBBase> CPDF_ImageCacheEntry::DetachMask() {
   return std::move(m_pCurMask);
 }
 

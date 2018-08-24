@@ -7,15 +7,14 @@
 #include "xfa/fxfa/cxfa_imagerenderer.h"
 
 #include "core/fxge/cfx_renderdevice.h"
-#include "core/fxge/dib/cfx_dibsource.h"
+#include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/cfx_imagerenderer.h"
 #include "core/fxge/dib/cfx_imagetransformer.h"
 #include "third_party/base/ptr_util.h"
 
-CXFA_ImageRenderer::CXFA_ImageRenderer(
-    CFX_RenderDevice* pDevice,
-    const RetainPtr<CFX_DIBSource>& pDIBSource,
-    const CFX_Matrix* pImage2Device)
+CXFA_ImageRenderer::CXFA_ImageRenderer(CFX_RenderDevice* pDevice,
+                                       const RetainPtr<CFX_DIBBase>& pDIBSource,
+                                       const CFX_Matrix* pImage2Device)
     : m_pDevice(pDevice),
       m_ImageMatrix(*pImage2Device),
       m_pDIBSource(pDIBSource) {}
@@ -38,7 +37,7 @@ bool CXFA_ImageRenderer::Start() {
   int dest_height = image_rect.Height();
   if ((fabs(m_ImageMatrix.b) >= 0.5f || m_ImageMatrix.a == 0) ||
       (fabs(m_ImageMatrix.c) >= 0.5f || m_ImageMatrix.d == 0)) {
-    RetainPtr<CFX_DIBSource> pDib = m_pDIBSource;
+    RetainPtr<CFX_DIBBase> pDib = m_pDIBSource;
     if (m_pDIBSource->HasAlpha() &&
         !(m_pDevice->GetRenderCaps() & FXRC_ALPHA_IMAGE) &&
         !(m_pDevice->GetRenderCaps() & FXRC_GET_BITS)) {
