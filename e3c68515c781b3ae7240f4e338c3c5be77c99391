@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1535152618 -0700\nnonce ACQ0HpwynYsADT9FN/m16MJa0MaErN684+SF9zyhqZf/fJ5t573VEKHlX2jkOP4B1JIX3qKtU1iW\n\n0000000000000000000000000000000000000000 e3c68515c781b3ae7240f4e338c3c5be77c99391 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAluAkeoACgkQqzYtYVpm\n/XvuyAf+JhhCPIqwGQrDINBPPzd2+A9QAkomllVcFZr6M1S0c5ifubTI+PcRJyAr\nZ85eBVoWDs2biPJSfNKEMkId6sei+vmgooAcPR0Cq2LE9e08SPSqRPtWz3tsgzMB\nfqkJl2YP3Lp07Xz0ktWI8MdLSCLLBp/P9QEqmeMhlTpBwEmgYxp+O+c13EXkK1ym\nkW0Gl0u81Q0rePAx82olVjCu1s5l54AlZlotXsX5fU2fN3mmJkhlNUFUwyJq/WEq\n/m6N7q5kqdri+r23Nzq/U8jIuH18HK0fu/ch7P4BJfv2mId8+LZCV4GoZAIgE8AA\nAqtJUTYhaYYS8vjceB5EbPNJJSAKbg\u003d\u003d\n\u003daqi4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "03922e60_fa467d8d",
+        "filename": "fxjs/cfxjse_engine.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-25T18:54:16Z",
+      "side": 1,
+      "message": "I can haz UnownedPtr?",
+      "revId": "e3c68515c781b3ae7240f4e338c3c5be77c99391",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876d82fe_35716d95",
+        "filename": "fxjs/cfxjse_engine.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-25T18:54:16Z",
+      "side": 1,
+      "message": "here too?",
+      "revId": "e3c68515c781b3ae7240f4e338c3c5be77c99391",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
