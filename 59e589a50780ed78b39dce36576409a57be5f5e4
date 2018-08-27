@@ -16,6 +16,24 @@
       "revId": "59e589a50780ed78b39dce36576409a57be5f5e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dec22be_cc5d6daa",
+        "filename": "core/fpdfapi/render/cpdf_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-27T23:27:18Z",
+      "side": 1,
+      "message": "Follow-on.  Changing the N other decoders should happen first.",
+      "parentUuid": "cc5cdb7e_f1830b32",
+      "revId": "59e589a50780ed78b39dce36576409a57be5f5e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
