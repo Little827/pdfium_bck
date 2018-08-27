@@ -34,7 +34,7 @@ bool ContainsValue(const Collection& collection, const Value& value) {
 // Means of generating a key for searching STL collections of std::unique_ptr
 // that avoids the side effect of deleting the pointer.
 template <class T>
-class FakeUniquePtr : public std::unique_ptr<T> {
+class FakeUniquePtr final : public std::unique_ptr<T> {
  public:
   using std::unique_ptr<T>::unique_ptr;
   ~FakeUniquePtr() { std::unique_ptr<T>::release(); }

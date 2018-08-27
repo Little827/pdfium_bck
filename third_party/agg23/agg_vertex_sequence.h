@@ -24,14 +24,13 @@
 #include "agg_math.h"
 namespace agg
 {
-template<class T, unsigned S = 6>
-class vertex_sequence : public pod_deque<T, S>
-{
-public:
-    typedef pod_deque<T, S> base_type;
-    void add(const T& val);
-    void modify_last(const T& val);
-    void close(bool remove_flag);
+template <class T, unsigned S = 6>
+class vertex_sequence final : public pod_deque<T, S> {
+ public:
+  typedef pod_deque<T, S> base_type;
+  void add(const T& val);
+  void modify_last(const T& val);
+  void close(bool remove_flag);
 };
 template<class T, unsigned S>
 void vertex_sequence<T, S>::add(const T& val)
@@ -87,14 +86,11 @@ struct vertex_dist  {
         return ret;
     }
 };
-struct vertex_dist_cmd : public vertex_dist {
-    unsigned cmd;
-    vertex_dist_cmd() {}
-    vertex_dist_cmd(float x_, float y_, unsigned cmd_) :
-        vertex_dist(x_, y_),
-        cmd(cmd_)
-    {
-    }
+struct vertex_dist_cmd final : public vertex_dist {
+  unsigned cmd;
+  vertex_dist_cmd() {}
+  vertex_dist_cmd(float x_, float y_, unsigned cmd_)
+      : vertex_dist(x_, y_), cmd(cmd_) {}
 };
 }
 #endif

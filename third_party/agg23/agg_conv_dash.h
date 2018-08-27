@@ -24,38 +24,25 @@
 #include "agg_conv_adaptor_vcgen.h"
 namespace agg
 {
-template<class VertexSource, class Markers = null_markers>
-struct conv_dash : public conv_adaptor_vcgen<VertexSource, vcgen_dash, Markers> {
-    typedef Markers marker_type;
-    typedef conv_adaptor_vcgen<VertexSource, vcgen_dash, Markers> base_type;
-    conv_dash(VertexSource& vs) :
-        conv_adaptor_vcgen<VertexSource, vcgen_dash, Markers>(vs)
-    {
-    }
-    void remove_all_dashes()
-    {
-        base_type::generator().remove_all_dashes();
-    }
-    void add_dash(float dash_len, float gap_len)
-    {
-        base_type::generator().add_dash(dash_len, gap_len);
-    }
-    void dash_start(float ds)
-    {
-        base_type::generator().dash_start(ds);
-    }
-    void shorten(float s)
-    {
-        base_type::generator().shorten(s);
-    }
-    double shorten() const
-    {
-        return base_type::generator().shorten();
-    }
-private:
-    conv_dash(const conv_dash<VertexSource, Markers>&);
-    const conv_dash<VertexSource, Markers>&
-    operator = (const conv_dash<VertexSource, Markers>&);
+template <class VertexSource, class Markers = null_markers>
+struct conv_dash final
+    : public conv_adaptor_vcgen<VertexSource, vcgen_dash, Markers> {
+  typedef Markers marker_type;
+  typedef conv_adaptor_vcgen<VertexSource, vcgen_dash, Markers> base_type;
+  conv_dash(VertexSource& vs)
+      : conv_adaptor_vcgen<VertexSource, vcgen_dash, Markers>(vs) {}
+  void remove_all_dashes() { base_type::generator().remove_all_dashes(); }
+  void add_dash(float dash_len, float gap_len) {
+    base_type::generator().add_dash(dash_len, gap_len);
+  }
+  void dash_start(float ds) { base_type::generator().dash_start(ds); }
+  void shorten(float s) { base_type::generator().shorten(s); }
+  double shorten() const { return base_type::generator().shorten(); }
+
+ private:
+  conv_dash(const conv_dash<VertexSource, Markers>&);
+  const conv_dash<VertexSource, Markers>& operator=(
+      const conv_dash<VertexSource, Markers>&);
 };
 }
 #endif
