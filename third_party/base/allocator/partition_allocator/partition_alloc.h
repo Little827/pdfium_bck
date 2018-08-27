@@ -330,7 +330,7 @@ struct BASE_EXPORT PartitionRootBase {
 };
 
 // Never instantiate a PartitionRoot directly, instead use PartitionAlloc.
-struct PartitionRoot : public PartitionRootBase {
+struct PartitionRoot final : public PartitionRootBase {
   // The PartitionAlloc templated class ensures the following is correct.
   ALWAYS_INLINE PartitionBucket* buckets() {
     return reinterpret_cast<PartitionBucket*>(this + 1);
@@ -342,7 +342,7 @@ struct PartitionRoot : public PartitionRootBase {
 
 // Never instantiate a PartitionRootGeneric directly, instead use
 // PartitionAllocatorGeneric.
-struct PartitionRootGeneric : public PartitionRootBase {
+struct PartitionRootGeneric final : public PartitionRootBase {
   subtle::SpinLock lock;
   // Some pre-computed constants.
   size_t order_index_shifts[kBitsPerSizeT + 1];

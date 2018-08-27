@@ -13,7 +13,7 @@
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "third_party/base/stl_util.h"
 
-class CFX_DIBitmap : public CFX_DIBBase {
+class CFX_DIBitmap final : public CFX_DIBBase {
  public:
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
