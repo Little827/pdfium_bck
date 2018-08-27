@@ -64,3 +64,12 @@ XFA_AttributeEnum CXFA_Script::GetRunAt() {
 WideString CXFA_Script::GetExpression() {
   return JSObject()->GetContent(false);
 }
+
+WideString CXFA_Script::GetName() {
+  Optional<WideString> cDataName =
+      JSObject()->TryCData(XFA_Attribute::Name, false);
+  if (cDataName)
+    return *cDataName;
+
+  return WideString();
+}

@@ -6,6 +6,7 @@
 
 #include "fxjs/cfxjse_engine.h"
 
+#include <iostream>
 #include <utility>
 
 #include "core/fxcrt/autorestorer.h"
@@ -148,6 +149,9 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
 
   CFXJSE_Value* pValue = pThisObject ? GetJSValueFromMap(pThisObject) : nullptr;
   IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime.Get());
+  // std::cerr << "CFXJSE_Engine::RunScript m_JsContext->ExecuteScript " <<
+  // std::endl; std::cerr << btScript.c_str() << std::endl; std::cerr <<
+  // "=======================================" << std::endl;
   return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
 }
 
@@ -465,6 +469,8 @@ CXFA_Script::Type CFXJSE_Engine::GetType() {
 
 CFXJSE_Context* CFXJSE_Engine::CreateVariablesContext(CXFA_Node* pScriptNode,
                                                       CXFA_Node* pSubform) {
+  std::cerr << (void*)pScriptNode << " CFXJSE_Engine::CreateVariablesContext "
+            << std::endl;
   if (!pScriptNode || !pSubform)
     return nullptr;
 
@@ -487,12 +493,19 @@ CXFA_Object* CFXJSE_Engine::GetVariablesThis(CXFA_Object* pObject,
   return bScriptNode ? pProxy->GetScriptNode() : pProxy->GetThisNode();
 }
 
-bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
+bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode,
+                                       CFXJSE_Value* pValue) {
   if (!pScriptNode)
     return false;
 
   if (pScriptNode->GetElementType() != XFA_Element::Script)
     return true;
+
+  CXFA_Script* pScriptSpecific = static_cast<CXFA_Script*>(pScriptNode);
+  if (!pScriptSpecific) {
+    std::cerr << "CFXJSE_Engine::RunVariablesScript !pScriptNode" << std::endl;
+    return false;
+  }
 
   CXFA_Node* pParent = pScriptNode->GetParent();
   if (!pParent || pParent->GetElementType() != XFA_Element::Variables)
@@ -511,15 +524,24 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
   if (!wsScript)
     return false;
 
+  std::cerr << "CFXJSE_Engine::RunVariablesScript will create "
+               "pScriptSpecific->GetName() "
+            << pScriptSpecific->GetName() << std::endl;
+  // std::cerr << *wsScript << std::endl;
+  // std::cerr << "======================================" << std::endl;
+
   ByteString btScript = wsScript->UTF8Encode();
   auto hRetValue = pdfium::MakeUnique<CFXJSE_Value>(GetIsolate());
   CXFA_Node* pThisObject = pParent->GetParent();
   CFXJSE_Context* pVariablesContext =
       CreateVariablesContext(pScriptNode, pThisObject);
+  // std::cerr << "pValue " << pValue->ToString() << std::endl;
   AutoRestorer<CXFA_Object*> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
   return pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
-                                          nullptr);
+                                          pValue, true);
+  // return pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
+  //                                         nullptr, true);
 }
 
 bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
@@ -755,8 +777,16 @@ void CFXJSE_Engine::AddToCacheList(std::unique_ptr<CXFA_List> pList) {
 CFXJSE_Value* CFXJSE_Engine::GetJSValueFromMap(CXFA_Object* pObject) {
   if (!pObject)
     return nullptr;
-  if (pObject->IsNode())
-    RunVariablesScript(pObject->AsNode());
+
+  // bool doLog = false; //(pObject->AsNode() &&
+  // pObject->AsNode()->GetElementType() == XFA_Element::Script); if (doLog) {
+  //   std::cerr << "CFXJSE_Engine::GetJSValueFromMap " <<
+  //   pObject->GetClassName() << std::endl; CXFA_Script* pScriptSpecific =
+  //   static_cast<CXFA_Script*>(pObject->AsNode()); if (pScriptSpecific) {
+  //     std::cerr << "  -> ((CXFA_Script*)pObject)->GetName() " <<
+  //     pScriptSpecific->GetName() << std::endl;
+  //   }
+  // }
 
   auto iter = m_mapObjectToValue.find(pObject);
   if (iter != m_mapObjectToValue.end())
@@ -767,6 +797,13 @@ CFXJSE_Value* CFXJSE_Engine::GetJSValueFromMap(CXFA_Object* pObject) {
 
   CFXJSE_Value* pValue = jsValue.get();
   m_mapObjectToValue.insert(std::make_pair(pObject, std::move(jsValue)));
+
+  // std::cerr << "CFXJSE_Engine::GetJSValueFromMap create pValue " <<
+  // pValue->ToString() << std::endl;
+
+  if (pObject->IsNode())
+    RunVariablesScript(pObject->AsNode(), pValue);
+
   return pValue;
 }
 

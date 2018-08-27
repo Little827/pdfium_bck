@@ -6,6 +6,7 @@
 
 #include "fxjs/cfxjse_context.h"
 
+#include <iostream>
 #include <utility>
 
 #include "fxjs/cfxjs_engine.h"
@@ -225,13 +226,19 @@ void CFXJSE_Context::EnableCompatibleMode() {
 
 bool CFXJSE_Context::ExecuteScript(const char* szScript,
                                    CFXJSE_Value* lpRetValue,
-                                   CFXJSE_Value* lpNewThisObject) {
+                                   CFXJSE_Value* lpNewThisObject,
+                                   bool doLog) {
+  // if (doLog) std::cerr << " CFXJSE_Context::ExecuteScript lpNewThisObject="
+  // << lpNewThisObject->ToString() << std::endl; if (doLog) std::cerr <<
+  // szScript << std::endl;
   CFXJSE_ScopeUtil_IsolateHandleContext scope(this);
   v8::Local<v8::Context> hContext = GetIsolate()->GetCurrentContext();
   v8::TryCatch trycatch(GetIsolate());
   v8::Local<v8::String> hScriptString =
       v8::String::NewFromUtf8(GetIsolate(), szScript);
   if (!lpNewThisObject) {
+    if (doLog)
+      std::cerr << "======== global ==============" << std::endl;
     v8::Local<v8::Script> hScript;
     if (v8::Script::Compile(hContext, hScriptString).ToLocal(&hScript)) {
       ASSERT(!trycatch.HasCaught());
@@ -250,6 +257,8 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
     return false;
   }
 
+  if (doLog)
+    std::cerr << "======== closure ==============" << std::endl;
   v8::Local<v8::Value> hNewThis =
       v8::Local<v8::Value>::New(GetIsolate(), lpNewThisObject->m_hValue);
   ASSERT(!hNewThis.IsEmpty());
