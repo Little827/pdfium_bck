@@ -24,6 +24,7 @@ class CXFA_Script : public CXFA_Node {
   Type GetContentType();
   XFA_AttributeEnum GetRunAt();
   WideString GetExpression();
+  WideString GetName();
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_SCRIPT_H_
