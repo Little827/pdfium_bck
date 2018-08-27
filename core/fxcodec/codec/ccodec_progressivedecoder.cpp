@@ -250,43 +250,8 @@ void CCodec_ProgressiveDecoder::CFXCODEC_VertTable::Calc(int dest_len,
 }
 
 CCodec_ProgressiveDecoder::CCodec_ProgressiveDecoder(
-    CCodec_ModuleMgr* pCodecMgr) {
-  m_pFile = nullptr;
-  m_pCodecMgr = nullptr;
-  m_pSrcBuf = nullptr;
-  m_pDecodeBuf = nullptr;
-  m_pDeviceBitmap = nullptr;
-  m_pSrcPalette = nullptr;
-  m_pCodecMgr = pCodecMgr;
-  m_offSet = 0;
-  m_SrcSize = 0;
-  m_ScanlineSize = 0;
-  m_SrcWidth = 0;
-  m_SrcHeight = 0;
-  m_SrcComponents = 0;
-  m_SrcBPC = 0;
-  m_SrcPassNumber = 0;
-  m_clipBox = FX_RECT(0, 0, 0, 0);
-  m_imagType = FXCODEC_IMAGE_UNKNOWN;
-  m_status = FXCODEC_STATUS_DECODE_FINISH;
-  m_TransMethod = -1;
-  m_SrcRow = 0;
-  m_SrcFormat = FXCodec_Invalid;
-  m_FrameNumber = 0;
-  m_FrameCur = 0;
-  m_SrcPaletteNumber = 0;
-#ifdef PDF_ENABLE_XFA_GIF
-  m_GifPltNumber = 0;
-  m_GifBgIndex = 0;
-  m_pGifPalette = nullptr;
-  m_GifTransIndex = -1;
-  m_GifFrameRect = FX_RECT(0, 0, 0, 0);
-  m_InvalidateGifBuffer = true;
-#endif  // PDF_ENABLE_XFA_GIF
-#ifdef PDF_ENABLE_XFA_BMP
-  m_BmpIsTopBottom = false;
-#endif  // PDF_ENABLE_XFA_BMP
-}
+    CCodec_ModuleMgr* pCodecMgr)
+    : m_pCodecMgr(pCodecMgr) {}
 
 CCodec_ProgressiveDecoder::~CCodec_ProgressiveDecoder() {
   FX_Free(m_pSrcBuf);
@@ -424,7 +389,6 @@ bool CCodec_ProgressiveDecoder::PngAskScanlineBuf(int line, uint8_t** pSrcBuf) {
   }
   return true;
 }
-
 
 void CCodec_ProgressiveDecoder::PngFillScanlineBufCompleted(int pass,
                                                             int line) {
