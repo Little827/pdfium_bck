@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/parser/cxfa_script.h"
 
+#include <iostream>
+
 #include "fxjs/xfa/cjx_script.h"
 #include "third_party/base/ptr_util.h"
 
@@ -43,11 +45,19 @@ CXFA_Script::CXFA_Script(CXFA_Document* doc, XFA_PacketType packet)
           kScriptPropertyData,
           kScriptAttributeData,
           kScriptName,
-          pdfium::MakeUnique<CJX_Script>(this)) {}
+          pdfium::MakeUnique<CJX_Script>(this)) {
+  // std::cerr << "CXFA_Script::CXFA_Script " << std::endl;
+}
 
 CXFA_Script::~CXFA_Script() {}
 
 CXFA_Script::Type CXFA_Script::GetContentType() {
+  Optional<WideString> cDataName =
+      JSObject()->TryCData(XFA_Attribute::Name, false);
+  if (cDataName) {
+    std::cerr << "CXFA_Script::GetContentType name is " << (*cDataName) << std::endl;
+  }
+
   Optional<WideString> cData =
       JSObject()->TryCData(XFA_Attribute::ContentType, false);
   if (!cData || *cData == L"application/x-formcalc")
@@ -58,9 +68,32 @@ CXFA_Script::Type CXFA_Script::GetContentType() {
 }
 
 XFA_AttributeEnum CXFA_Script::GetRunAt() {
+  // std::cerr << "CXFA_Script::GetRunAt " << std::endl;
+  Optional<WideString> cDataName =
+      JSObject()->TryCData(XFA_Attribute::Name, false);
+  if (cDataName) {
+    std::cerr << "CXFA_Script::GetRunAt name is " << (*cDataName) << std::endl;
+  }
   return JSObject()->GetEnum(XFA_Attribute::RunAt);
 }
 
 WideString CXFA_Script::GetExpression() {
+  // std::cerr << "CXFA_Script::GetExpression " << std::endl;
+  Optional<WideString> cDataName =
+      JSObject()->TryCData(XFA_Attribute::Name, false);
+  if (cDataName) {
+    std::cerr << "CXFA_Script::GetExpression name is " << (*cDataName) << std::endl;
+  }
   return JSObject()->GetContent(false);
+}
+
+WideString CXFA_Script::GetName() {
+  // std::cerr << "CXFA_Script::GetExpression " << std::endl;
+  Optional<WideString> cDataName =
+      JSObject()->TryCData(XFA_Attribute::Name, false);
+  if (cDataName) {
+    // std::cerr << "CXFA_Script::GetExpression name is " << (*cDataName) << std::endl;
+    return *cDataName;
+  }
+  return WideString();
 }

@@ -105,7 +105,7 @@ class CFXJSE_Engine : public CFX_V8 {
                           const ByteStringView& szPropName,
                           CFXJSE_Value* pValue,
                           bool bGetter);
-  bool RunVariablesScript(CXFA_Node* pScriptNode);
+  bool RunVariablesScript(CXFA_Node* pScriptNode, CFXJSE_Value* pValue);
 
   UnownedPtr<CJS_Runtime> const m_pSubordinateRuntime;
   UnownedPtr<CXFA_Document> const m_pDocument;
