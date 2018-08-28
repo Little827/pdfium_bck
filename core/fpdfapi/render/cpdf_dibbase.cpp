@@ -576,8 +576,8 @@ bool CPDF_DIBBase::CreateDCTDecoder(pdfium::span<const uint8_t> src_span,
 RetainPtr<CFX_DIBitmap> CPDF_DIBBase::LoadJpxBitmap() {
   CCodec_JpxModule* pJpxModule = CPDF_ModuleMgr::Get()->GetJpxModule();
   auto context = pdfium::MakeUnique<JpxBitMapContext>(pJpxModule);
-  context->set_decoder(pJpxModule->CreateDecoder(
-      m_pStreamAcc->GetData(), m_pStreamAcc->GetSize(), m_pColorSpace.Get()));
+  context->set_decoder(
+      pJpxModule->CreateDecoder(m_pStreamAcc->GetSpan(), m_pColorSpace.Get()));
   if (!context->decoder())
     return nullptr;
 

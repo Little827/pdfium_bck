@@ -280,7 +280,7 @@ std::unique_ptr<CCodec_ScanlineDecoder> FPDFAPI_CreateFaxDecoder(
       Rows = 0;
   }
   return CPDF_ModuleMgr::Get()->GetFaxModule()->CreateDecoder(
-      src_buf, src_size, width, height, K, EndOfLine, ByteAlign, BlackIs1,
+      {src_buf, src_size}, width, height, K, EndOfLine, ByteAlign, BlackIs1,
       Columns, Rows);
 }
 
