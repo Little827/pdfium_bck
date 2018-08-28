@@ -511,14 +511,34 @@ WideString CPDF_TextPage::GetPageText(int start, int count) const {
   }
 
   int text_start = TextIndexFromCharIndex(start);
-  if (text_start < 0)
-    return L"";
+
+  // If the character at |start| is a non-printing character, then
+  // TextIndexFromCharIndex will return -1, so scan ahead to the first printing
+  // character.
+  while (text_start < 0) {
+    if (start >= CountChars())
+      return L"";
+    start++;
+    text_start = TextIndexFromCharIndex(start);
+  }
 
   count = std::min(count, CountChars() - start);
 
   int last = start + count - 1;
   int text_last = TextIndexFromCharIndex(last);
-  if (text_last < 0 || text_last < text_start)
+
+  // If the character at |last| is a non-printing character, then
+  // TextIndexFromCharIndex will return -1, so scan back to the last printing
+  // character.
+  while (text_last < 0) {
+    if (last < text_start)
+      return L"";
+
+    last--;
+    text_last = TextIndexFromCharIndex(last);
+  }
+
+  if (text_last < text_start)
     return L"";
 
   int text_count = text_last - text_start + 1;
