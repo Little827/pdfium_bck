@@ -75,15 +75,15 @@ uint32_t DecodeInlineStream(const uint8_t* src_buf,
     return DecodeAllScanlines(std::move(pDecoder), dest_buf, dest_size);
   }
   if (decoder == "ASCII85Decode" || decoder == "A85")
-    return A85Decode(src_buf, limit, dest_buf, dest_size);
+    return A85Decode({src_buf, limit}, dest_buf, dest_size);
   if (decoder == "ASCIIHexDecode" || decoder == "AHx")
-    return HexDecode(src_buf, limit, dest_buf, dest_size);
+    return HexDecode({src_buf, limit}, dest_buf, dest_size);
   if (decoder == "FlateDecode" || decoder == "Fl") {
-    return FPDFAPI_FlateOrLZWDecode(false, src_buf, limit, pParam, *dest_size,
+    return FPDFAPI_FlateOrLZWDecode(false, {src_buf, limit}, pParam, *dest_size,
                                     dest_buf, dest_size);
   }
   if (decoder == "LZWDecode" || decoder == "LZW") {
-    return FPDFAPI_FlateOrLZWDecode(true, src_buf, limit, pParam, 0, dest_buf,
+    return FPDFAPI_FlateOrLZWDecode(true, {src_buf, limit}, pParam, 0, dest_buf,
                                     dest_size);
   }
   if (decoder == "DCTDecode" || decoder == "DCT") {
@@ -94,7 +94,7 @@ uint32_t DecodeInlineStream(const uint8_t* src_buf,
     return DecodeAllScanlines(std::move(pDecoder), dest_buf, dest_size);
   }
   if (decoder == "RunLengthDecode" || decoder == "RL")
-    return RunLengthDecode(src_buf, limit, dest_buf, dest_size);
+    return RunLengthDecode({src_buf, limit}, dest_buf, dest_size);
   *dest_size = 0;
   *dest_buf = 0;
   return 0xFFFFFFFF;
