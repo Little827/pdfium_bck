@@ -79,7 +79,7 @@ std::unique_ptr<CPDF_Dictionary> CPDF_Image::InitJPEG(uint8_t* pData,
   int32_t bits;
   bool color_trans;
   if (!CPDF_ModuleMgr::Get()->GetJpegModule()->LoadInfo(
-          pData, size, &width, &height, &num_comps, &bits, &color_trans)) {
+          {pData, size}, &width, &height, &num_comps, &bits, &color_trans)) {
     return nullptr;
   }
 
