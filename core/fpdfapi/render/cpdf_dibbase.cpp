@@ -474,11 +474,11 @@ CPDF_DIBBase::LoadState CPDF_DIBBase::CreateDecoder() {
   uint32_t src_size = m_pStreamAcc->GetSize();
   const CPDF_Dictionary* pParams = m_pStreamAcc->GetImageParam();
   if (decoder == "CCITTFaxDecode") {
-    m_pDecoder = FPDFAPI_CreateFaxDecoder(src_data, src_size, m_Width, m_Height,
-                                          pParams);
+    m_pDecoder =
+        CreateFaxDecoder(src_data, src_size, m_Width, m_Height, pParams);
   } else if (decoder == "FlateDecode") {
-    m_pDecoder = FPDFAPI_CreateFlateDecoder(
-        src_data, src_size, m_Width, m_Height, m_nComponents, m_bpc, pParams);
+    m_pDecoder = CreateFlateDecoder(src_data, src_size, m_Width, m_Height,
+                                    m_nComponents, m_bpc, pParams);
   } else if (decoder == "RunLengthDecode") {
     CCodec_ModuleMgr* pEncoders = CPDF_ModuleMgr::Get()->GetCodecModule();
     m_pDecoder = pEncoders->GetBasicModule()->CreateRunLengthDecoder(
