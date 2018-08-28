@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afee828e_dc9dde57",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-28T23:11:26Z",
+      "side": 1,
+      "message": "To be clear, these are optional. No need to do them in this CL.\n\nOnly 1 caller.",
+      "revId": "a17575706538139a938299e8a6a259db54575343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb7dc15_9fc7a3c9",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-28T23:11:26Z",
+      "side": 1,
+      "message": "BTW, GetSrcOffset(), which is an override, returns uint32_t. Probably should change to size_t later.",
+      "revId": "a17575706538139a938299e8a6a259db54575343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
