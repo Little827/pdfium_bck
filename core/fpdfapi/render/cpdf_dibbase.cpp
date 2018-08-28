@@ -508,7 +508,7 @@ bool CPDF_DIBBase::CreateDCTDecoder(const uint8_t* src_data,
                                     const CPDF_Dictionary* pParams) {
   CCodec_JpegModule* pJpegModule = CPDF_ModuleMgr::Get()->GetJpegModule();
   m_pDecoder = pJpegModule->CreateDecoder(
-      src_data, src_size, m_Width, m_Height, m_nComponents,
+      {src_data, src_size}, m_Width, m_Height, m_nComponents,
       !pParams || pParams->GetIntegerFor("ColorTransform", 1));
   if (m_pDecoder)
     return true;
@@ -516,7 +516,7 @@ bool CPDF_DIBBase::CreateDCTDecoder(const uint8_t* src_data,
   bool bTransform = false;
   int comps;
   int bpc;
-  if (!pJpegModule->LoadInfo(src_data, src_size, &m_Width, &m_Height, &comps,
+  if (!pJpegModule->LoadInfo({src_data, src_size}, &m_Width, &m_Height, &comps,
                              &bpc, &bTransform)) {
     return false;
   }
@@ -524,7 +524,7 @@ bool CPDF_DIBBase::CreateDCTDecoder(const uint8_t* src_data,
   if (m_nComponents == static_cast<uint32_t>(comps)) {
     m_bpc = bpc;
     m_pDecoder = pJpegModule->CreateDecoder(
-        src_data, src_size, m_Width, m_Height, m_nComponents, bTransform);
+        {src_data, src_size}, m_Width, m_Height, m_nComponents, bTransform);
     return true;
   }
 
@@ -569,8 +569,8 @@ bool CPDF_DIBBase::CreateDCTDecoder(const uint8_t* src_data,
     return false;
 
   m_bpc = bpc;
-  m_pDecoder = pJpegModule->CreateDecoder(src_data, src_size, m_Width, m_Height,
-                                          m_nComponents, bTransform);
+  m_pDecoder = pJpegModule->CreateDecoder({src_data, src_size}, m_Width,
+                                          m_Height, m_nComponents, bTransform);
   return true;
 }
 
