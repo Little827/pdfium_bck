@@ -16,6 +16,24 @@
       "revId": "cf59f804ea8bc83fe0d70148de15a3b5cedc801f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0b2c3c_6308a882",
+        "filename": "core/fxcodec/codec/ccodec_jpxmodule.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-28T23:14:32Z",
+      "side": 0,
+      "message": "right, because we\u0027re returning an expression.  Which is why I changed this, since there really shouldn\u0027t be a move given a named rvalue return.",
+      "parentUuid": "d30ab7e0_81901142",
+      "revId": "cf59f804ea8bc83fe0d70148de15a3b5cedc801f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

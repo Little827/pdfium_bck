@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d8b194fc_b44dc536",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-28T23:14:32Z",
+      "side": 1,
+      "message": "Yep, the follow-up cl updates all of these to spans.",
+      "parentUuid": "afee828e_dc9dde57",
+      "revId": "a17575706538139a938299e8a6a259db54575343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bb7dc15_9fc7a3c9",
         "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "a17575706538139a938299e8a6a259db54575343",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f51b3e_4a9a7b23",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-28T23:14:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3bb7dc15_9fc7a3c9",
+      "revId": "a17575706538139a938299e8a6a259db54575343",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
