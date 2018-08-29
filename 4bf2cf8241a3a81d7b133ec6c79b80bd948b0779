@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d3f32f79_7df69361",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-29T23:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4280c1_dae1969c",
+      "revId": "4bf2cf8241a3a81d7b133ec6c79b80bd948b0779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2f6397d_e1ae7572",
         "filename": "core/fxge/cfx_font.cpp",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "4bf2cf8241a3a81d7b133ec6c79b80bd948b0779",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51170de7_a1b46059",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-29T23:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f6397d_e1ae7572",
+      "revId": "4bf2cf8241a3a81d7b133ec6c79b80bd948b0779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
