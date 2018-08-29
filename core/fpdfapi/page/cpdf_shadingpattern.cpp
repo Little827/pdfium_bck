@@ -11,6 +11,7 @@
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_function.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
+#include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
@@ -63,7 +64,7 @@ bool CPDF_ShadingPattern::Load() {
   if (m_ShadingType != kInvalidShading)
     return true;
 
-  const CPDF_Dictionary* pShadingDict =
+  CPDF_Dictionary* pShadingDict =
       m_pShadingObj ? m_pShadingObj->GetDict() : nullptr;
   if (!pShadingDict)
     return false;
@@ -93,6 +94,7 @@ bool CPDF_ShadingPattern::Load() {
 
   m_pCountedCS = pDocPageData->FindColorSpacePtr(m_pCS->GetArray());
   m_ShadingType = ToShadingType(pShadingDict->GetIntegerFor("ShadingType"));
+
   return Validate();
 }
 

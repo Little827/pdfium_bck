@@ -69,7 +69,7 @@ class CPDF_ShadingPattern : public CPDF_Pattern {
 
   ShadingType m_ShadingType = kInvalidShading;
   const bool m_bShadingObj;
-  UnownedPtr<const CPDF_Object> m_pShadingObj;
+  UnownedPtr<CPDF_Object> m_pShadingObj;
 
   // Still keep |m_pCS| as some CPDF_ColorSpace (name object) are not managed
   // as counted objects. Refer to CPDF_DocPageData::GetColorSpace.
