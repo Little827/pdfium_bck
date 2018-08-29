@@ -26,6 +26,29 @@
     },
     {
       "key": {
+        "uuid": "7a40bcc9_0b548577",
+        "filename": "fxjs/cfxjse_engine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-29T22:58:46Z",
+      "side": 1,
+      "message": "e.g.\n\n  AutoRestorer\u003cUnownedPtr\u003cCXFA_Object\u003e\u003e nodeRestorer(\u0026m_pThisObject);\n\nat least compiled for me after pulling your patch?  Runtime assert?",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 531,
+        "endChar": 15
+      },
+      "revId": "df8dc6dd6909092ca2a949be6041bfa3c6b7bc39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe45e17_1bdf3aac",
         "filename": "fxjs/cfxjse_engine.cpp",
         "patchSetId": 3
