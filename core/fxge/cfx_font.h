@@ -43,7 +43,7 @@ class CFX_Font {
                  int CharsetCP,
                  bool bVertical);
 
-  bool LoadEmbedded(const uint8_t* data, uint32_t size);
+  bool LoadEmbedded(pdfium::span<const uint8_t> src_span);
   FXFT_Face GetFace() const { return m_Face; }
   CFX_SubstFont* GetSubstFont() const { return m_pSubstFont.get(); }
 
