@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0e69f50_e6b13dbc",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-29T18:15:35Z",
+      "side": 1,
+      "message": "note: these will get fixed following a rebase.",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "41ad8a8c9304f54342bc1b54b0c430dbedb1104a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42b5302d_4913f629",
         "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
         "patchSetId": 2
