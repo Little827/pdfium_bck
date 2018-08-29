@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b4280c1_dae1969c",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-29T23:34:01Z",
+      "side": 1,
+      "message": "Add a comment to explain why this is first?",
+      "revId": "4bf2cf8241a3a81d7b133ec6c79b80bd948b0779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f6397d_e1ae7572",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-29T23:34:01Z",
+      "side": 1,
+      "message": "BTW, FT_LoadFont() is ours, not a FreeType function. This is the only caller, so maybe fold it in.",
+      "revId": "4bf2cf8241a3a81d7b133ec6c79b80bd948b0779",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
