@@ -7,10 +7,12 @@
 #include "core/fpdfapi/page/cpdf_shadingpattern.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_function.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
+#include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
@@ -63,7 +65,7 @@ bool CPDF_ShadingPattern::Load() {
   if (m_ShadingType != kInvalidShading)
     return true;
 
-  const CPDF_Dictionary* pShadingDict =
+  CPDF_Dictionary* pShadingDict =
       m_pShadingObj ? m_pShadingObj->GetDict() : nullptr;
   if (!pShadingDict)
     return false;
@@ -93,10 +95,39 @@ bool CPDF_ShadingPattern::Load() {
 
   m_pCountedCS = pDocPageData->FindColorSpacePtr(m_pCS->GetArray());
   m_ShadingType = ToShadingType(pShadingDict->GetIntegerFor("ShadingType"));
-  return Validate();
+
+  static int idx = 0;
+  // bool doLog = (m_ShadingType == 3 && idx == 0);
+  // std::cerr << " CPDF_ShadingPattern::Load loaded m_ShadingType=" << m_ShadingType << ", idx=" << idx << std::endl;
+  ++idx;
+
+  if (m_ShadingType == 3) {
+    const CPDF_Array* pCoords = pShadingDict->GetArrayFor("Coords");
+    if (pCoords) {
+      float start_x = pCoords->GetNumberAt(0);
+      float start_y = pCoords->GetNumberAt(1);
+      if (idx == 1) {
+        std::cerr << "CPDF_ShadingPattern(" << (void*)this << ")::Load LOADED pShadingDict " << (void*)pShadingDict << " idx " << idx << " start_x " << start_x << " start_y " << start_y << std::endl;
+      } else {
+        std::cerr << "CPDF_ShadingPattern(" << (void*)this << ")::Load SKIPPED pShadingDict " << (void*)pShadingDict << " idx " << idx << " start_x " << start_x << " start_y " << start_y << std::endl;
+        // return false;
+      }
+    } else {
+      std::cerr << "CPDF_ShadingPattern::Load SKIPPED !pCoords" << std::endl;
+      // return false;
+    }
+  }
+
+  // if (doLog) {
+  //   std::cerr << "CPDF_ShadingPattern::Load loaded m_ShadingType=" << m_ShadingType << std::endl;
+  //   pShadingDict->SetNewFor<CPDF_Boolean>("doLog", true);
+  //   // return false;
+  // }
+
+  return Validate(false);
 }
 
-bool CPDF_ShadingPattern::Validate() const {
+bool CPDF_ShadingPattern::Validate(bool doLog) const {
   if (m_ShadingType == kInvalidShading)
     return false;
 

@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 #include <limits>
 #include <memory>
 #include <utility>
@@ -117,6 +118,9 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
                       const std::vector<std::unique_ptr<CPDF_Function>>& funcs,
                       const CPDF_ColorSpace* pCS,
                       int alpha) {
+  // bool doLog = pDict->GetBooleanFor("doLog");
+  // if (doLog) std::cerr << "DrawAxialShading " << std::endl;
+
   ASSERT(pBitmap->GetFormat() == FXDIB_Argb);
 
   const uint32_t total_results = GetValidatedOutputsCount(funcs, pCS);
@@ -222,6 +226,9 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   float end_x = pCoords->GetNumberAt(3);
   float end_y = pCoords->GetNumberAt(4);
   float end_r = pCoords->GetNumberAt(5);
+  static int idx = 0;
+  bool doLog = (idx++ == 0);
+  if (doLog) std::cerr << "DrawRadialShading pShadingDict " << (void*)pDict << " start_x " << start_x << " start_y " << start_y << std::endl;
   float t_min = 0;
   float t_max = 1.0f;
   const CPDF_Array* pArray = pDict->GetArrayFor("Domain");
@@ -255,6 +262,7 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
     float G = 0.0f;
     float B = 0.0f;
     pCS->GetRGB(result_array.data(), &R, &G, &B);
+    // if (doLog) std::cerr << "  -> i " << i << " RGB " << R << "," << G << "," << B << std::endl;
     rgb_array[i] =
         FXARGB_TODIB(ArgbEncode(alpha, FXSYS_round(R * 255),
                                 FXSYS_round(G * 255), FXSYS_round(B * 255)));
@@ -262,6 +270,24 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   float a = ((start_x - end_x) * (start_x - end_x)) +
             ((start_y - end_y) * (start_y - end_y)) -
             ((start_r - end_r) * (start_r - end_r));
+  if (a > -0.001f && a < 0.001f)
+    a = 0.0f;
+
+  if (doLog) {
+    std::cerr << "start_x " << start_x << std::endl;
+    std::cerr << "end_x " << end_x << std::endl;
+    std::cerr << "d_x " << (start_x - end_x) << std::endl;
+    std::cerr << "d_x2 " << ((start_x- end_x) * (start_x - end_x)) << std::endl;
+    std::cerr << "start_y " << start_y << std::endl;
+    std::cerr << "end_y " << end_y << std::endl;
+    std::cerr << "d_y " << (start_y - end_y) << std::endl;
+    std::cerr << "d_y2 " << ((start_y - end_y) * (start_y - end_y)) << std::endl;
+    std::cerr << "start_r " << start_r << std::endl;
+    std::cerr << "end_r " << end_r << std::endl;
+    std::cerr << "d_r " << (start_r - end_r) << std::endl;
+    std::cerr << "d_r2 " << ((start_r - end_r) * (start_r - end_r)) << std::endl;
+    std::cerr << "a " << a << std::endl;
+  }
   int width = pBitmap->GetWidth();
   int height = pBitmap->GetHeight();
   int pitch = pBitmap->GetPitch();
@@ -273,10 +299,12 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
       bDecreasing = true;
     }
   }
+  if (doLog) std::cerr << "  -> bDecreasing " << bDecreasing << std::endl;
   CFX_Matrix matrix = pObject2Bitmap->GetInverse();
+  int qqq = 0;
   for (int row = 0; row < height; row++) {
     uint32_t* dib_buf = (uint32_t*)(pBitmap->GetBuffer() + row * pitch);
-    for (int column = 0; column < width; column++) {
+    for (int column = 0; column < width; column++, qqq++) {
       CFX_PointF pos = matrix.Transform(
           CFX_PointF(static_cast<float>(column), static_cast<float>(row)));
       float b = -2 * (((pos.x - start_x) * (end_x - start_x)) +
@@ -285,7 +313,7 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
       float c = ((pos.x - start_x) * (pos.x - start_x)) +
                 ((pos.y - start_y) * (pos.y - start_y)) - (start_r * start_r);
       float s;
-      if (a == 0) {
+      if (a == 0.0f) {
         s = -c / b;
       } else {
         float b2_4ac = (b * b) - 4 * (a * c);
@@ -295,6 +323,11 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
         float root = sqrt(b2_4ac);
         float s1 = (-b - root) / (2 * a);
         float s2 = (-b + root) / (2 * a);
+        // std::cerr << "a " << a << std::endl;
+        // std::cerr << "b " << b << std::endl;
+        // std::cerr << "root " << root << std::endl;
+        // std::cerr << "s1 " << s1 << std::endl;
+        // std::cerr << "s2 " << s2 << std::endl;
         if (a <= 0)
           std::swap(s1, s2);
         if (bDecreasing)
@@ -305,6 +338,9 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
           continue;
         }
       }
+      // if (doLog/* && qqq % 100 == 0*/ && s <= 1)
+      //   std::cerr << "s " << s << std::endl;
+
       int index = (int32_t)(s * (kShadingSteps - 1));
       if (index < 0) {
         if (!bStartExtend) {
@@ -317,6 +353,8 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
         }
         index = kShadingSteps - 1;
       }
+      // if (doLog && index != 0 && index != 255)
+      //   std::cerr << "  -> index " << index << std::endl;
       dib_buf[column] = rgb_array[index];
     }
   }
@@ -2069,6 +2107,8 @@ void CPDF_RenderStatus::DrawShading(const CPDF_ShadingPattern* pPattern,
     return;
 
   pBitmap->Clear(background);
+  if (pPattern->GetShadingType() == kRadialShading)
+    std::cerr << "CPDF_RenderStatus::DrawShading pPattern " << (void*)pPattern << std::endl;
   switch (pPattern->GetShadingType()) {
     case kInvalidShading:
     case kMaxShading:

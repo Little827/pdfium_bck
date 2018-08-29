@@ -62,14 +62,14 @@ class CPDF_ShadingPattern : public CPDF_Pattern {
 
  private:
   // Constraints in PDF 1.7 spec, 4.6.3 Shading Patterns, pages 308-331.
-  bool Validate() const;
+  bool Validate(bool doLog) const;
   bool ValidateFunctions(uint32_t nExpectedNumFunctions,
                          uint32_t nExpectedNumInputs,
                          uint32_t nExpectedNumOutputs) const;
 
   ShadingType m_ShadingType = kInvalidShading;
   const bool m_bShadingObj;
-  UnownedPtr<const CPDF_Object> m_pShadingObj;
+  UnownedPtr<CPDF_Object> m_pShadingObj;
 
   // Still keep |m_pCS| as some CPDF_ColorSpace (name object) are not managed
   // as counted objects. Refer to CPDF_DocPageData::GetColorSpace.
