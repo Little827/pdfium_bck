@@ -315,8 +315,9 @@ const CFX_GlyphBitmap* CFX_FaceCache::LoadGlyphBitmap(const CFX_Font* pFont,
 #if defined _SKIA_SUPPORT_ || defined _SKIA_SUPPORT_PATHS_
 CFX_TypeFace* CFX_FaceCache::GetDeviceCache(const CFX_Font* pFont) {
   if (!m_pTypeface) {
+    pdfium::span<const uint8_t> span = pFont->GetFontSpan();
     m_pTypeface = SkTypeface::MakeFromStream(
-        new SkMemoryStream(pFont->GetFontData(), pFont->GetSize()));
+        new SkMemoryStream(span.data(), span.size()));
   }
 #if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
   if (!m_pTypeface) {
