@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ee9de0a_06f1d86e",
+        "filename": "fxjs/cjs_globalarrays.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-29T17:58:03Z",
+      "side": 1,
+      "message": "nit: maybe static even?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "bc908359b36176b50ad893ad1352d98b07633531",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
