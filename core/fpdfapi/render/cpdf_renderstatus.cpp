@@ -262,6 +262,9 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
   float a = ((start_x - end_x) * (start_x - end_x)) +
             ((start_y - end_y) * (start_y - end_y)) -
             ((start_r - end_r) * (start_r - end_r));
+  if (a > -0.001f && a < 0.001f)
+    a = 0.0f;
+
   int width = pBitmap->GetWidth();
   int height = pBitmap->GetHeight();
   int pitch = pBitmap->GetPitch();
@@ -285,7 +288,7 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
       float c = ((pos.x - start_x) * (pos.x - start_x)) +
                 ((pos.y - start_y) * (pos.y - start_y)) - (start_r * start_r);
       float s;
-      if (a == 0) {
+      if (a == 0.0f) {
         s = -c / b;
       } else {
         float b2_4ac = (b * b) - 4 * (a * c);
