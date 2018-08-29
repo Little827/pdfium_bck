@@ -138,12 +138,14 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
   } else {
     btScript = FX_UTF8Encode(wsScript);
   }
-  AutoRestorer<CXFA_Object*> nodeRestorer(&m_pThisObject);
+  CXFA_Object* pOrigThisObject = m_pThisObject.Release();
   m_pThisObject = pThisObject;
 
   CFXJSE_Value* pValue = pThisObject ? GetJSValueFromMap(pThisObject) : nullptr;
   IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime.Get());
-  return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
+  bool bRet = m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
+  m_pThisObject = pOrigThisObject;
+  return bRet;
 }
 
 bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
@@ -510,10 +512,13 @@ bool CFXJSE_Engine::RunVariablesScript(CXFA_Node* pScriptNode) {
   CXFA_Node* pThisObject = pParent->GetParent();
   CFXJSE_Context* pVariablesContext =
       CreateVariablesContext(pScriptNode, pThisObject);
-  AutoRestorer<CXFA_Object*> nodeRestorer(&m_pThisObject);
+
+  CXFA_Object* pOrigThisObject = m_pThisObject.Release();
   m_pThisObject = pThisObject;
-  return pVariablesContext->ExecuteScript(btScript.c_str(), hRetValue.get(),
-                                          nullptr);
+  bool bRet = pVariablesContext->ExecuteScript(btScript.c_str(),
+                                               hRetValue.get(), nullptr);
+  m_pThisObject = pOrigThisObject;
+  return bRet;
 }
 
 bool CFXJSE_Engine::QueryVariableValue(CXFA_Node* pScriptNode,
@@ -564,7 +569,7 @@ void CFXJSE_Engine::RemoveBuiltInObjs(CFXJSE_Context* pContext) const {
 }
 
 CFXJSE_Class* CFXJSE_Engine::GetJseNormalClass() {
-  return m_pJsClass;
+  return m_pJsClass.Get();
 }
 
 bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
@@ -757,7 +762,7 @@ CFXJSE_Value* CFXJSE_Engine::GetJSValueFromMap(CXFA_Object* pObject) {
     return iter->second.get();
 
   auto jsValue = pdfium::MakeUnique<CFXJSE_Value>(GetIsolate());
-  jsValue->SetObject(pObject, m_pJsClass);
+  jsValue->SetObject(pObject, m_pJsClass.Get());
 
   CFXJSE_Value* pValue = jsValue.get();
   m_mapObjectToValue.insert(std::make_pair(pObject, std::move(jsValue)));
