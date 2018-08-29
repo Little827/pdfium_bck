@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82948137_e815cfae",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-29T19:38:38Z",
+      "side": 1,
+      "message": "These are arbitrary.",
+      "revId": "2a43d7cf0d2400c43f8146538a12434a7a902fa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af25f62_7854ecbe",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-29T19:38:38Z",
+      "side": 1,
+      "message": "Just for clarity.",
+      "revId": "2a43d7cf0d2400c43f8146538a12434a7a902fa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
