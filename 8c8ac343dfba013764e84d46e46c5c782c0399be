@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1535503538 -0700\nnonce ACQ0HpxfJDADFuoWPjgrFPoRSY9ugB65hCHcRRFUSX6t+rBAMO277FqaxmUNk06F3qIBR6PcPLFh\n\n0000000000000000000000000000000000000000 8c8ac343dfba013764e84d46e46c5c782c0399be refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dreduce-the-number-of-cfxjse-resolveprocessor\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAluF7LIACgkQqzYtYVpm\n/XvarQf6At/Bns9j04L6tJphYvRAUZ1qop17SSpZ8TuwYNsU4k9ZDEdC7OiA6Opo\njHTPwkmLIAS2LuPxU4vp/v+7nz9RTptQCgOvg9mU3FhF6sAiemJpimO50d2Ye7/E\nrFkHx2Jf1qRHq/0ivVXw4qvkz89VRom7srlJW1opnvuHeVWhpT1nZDpKhOIyFYUn\na2HdQ24NUkeVUxlR+lXiXG7ArXBsLMMiqYKIExCAK/lnzzQYB4oMqiZMOquIauza\n2yFOIbEaMVOHFJr3Z9AewMnU9to2gsrq6Nr4Vxgnf70KTWE4o74SqOiuCkRjQ/QW\nXPRwI7ukkYjP0WYvkFdVTRS2QyI50g\u003d\u003d\n\u003dN0dG\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
