@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3292b255_399f320f",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-30T22:10:08Z",
+      "side": 1,
+      "message": "You can mark |a| as const and calculate IsFloatZero(a) once outside of the for-loop.",
+      "revId": "aac1e50eb0a159737c5cdec69231a9f2f5d34349",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952e6e66_0eff9867",
+        "filename": "testing/resources/pixel/radial_shading_point_at_center.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-08-30T22:10:08Z",
+      "side": 1,
+      "message": "Does {{trailer}} work?",
+      "revId": "aac1e50eb0a159737c5cdec69231a9f2f5d34349",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
