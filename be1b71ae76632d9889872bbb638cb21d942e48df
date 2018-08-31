@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b456d34_ba9cf0a2",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-08-31T20:14:20Z",
+      "side": 0,
+      "message": "Oh dear. This should have been + GetPosition().  A subsequent memcpy say, of size |available| onto avail_buf would end at getbuffer + 2 * available.  And if position \u003d 0, thats 2x the size of the buffer.\n\nI freaked when I saw this, so I immediately concluded this must not be used.. and thus.",
+      "range": {
+        "startLine": 675,
+        "startChar": 34,
+        "endLine": 675,
+        "endChar": 58
+      },
+      "revId": "be1b71ae76632d9889872bbb638cb21d942e48df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
