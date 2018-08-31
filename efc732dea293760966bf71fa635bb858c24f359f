@@ -22,6 +22,30 @@
       "revId": "efc732dea293760966bf71fa635bb858c24f359f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ccd18a9_b54f56d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-08-31T17:17:41Z",
+      "side": 1,
+      "message": "No, that\u0027s shorthand of \"when the start circle is a point on the border of the end circle\". Describing corner cases in 72 chars is hard \u003d/",
+      "parentUuid": "a29b465c_1ed6aea5",
+      "range": {
+        "startLine": 7,
+        "startChar": 56,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "efc732dea293760966bf71fa635bb858c24f359f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
