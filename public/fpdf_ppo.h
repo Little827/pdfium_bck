@@ -49,6 +49,8 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
                        float output_width,
                        float output_height,
+                       float margin_left,
+                       float margin_top,
                        unsigned int num_pages_on_x_axis,
                        unsigned int num_pages_on_y_axis);
 
