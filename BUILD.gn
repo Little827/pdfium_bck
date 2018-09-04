@@ -740,6 +740,7 @@ jumbo_static_library("fxcodec") {
     "core/fxcodec/codec/cjpx_decoder.h",
     "core/fxcodec/codec/codec_int.h",
     "core/fxcodec/codec/fx_codec.cpp",
+    "core/fxcodec/codec/icodec_module.h",
     "core/fxcodec/fx_codec.h",
     "core/fxcodec/fx_codec_def.h",
     "core/fxcodec/jbig2/JBig2_ArithDecoder.cpp",
