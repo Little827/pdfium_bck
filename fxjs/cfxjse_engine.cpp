@@ -6,6 +6,7 @@
 
 #include "fxjs/cfxjse_engine.h"
 
+#include <iostream>
 #include <utility>
 
 #include "core/fxcrt/autorestorer.h"
@@ -214,6 +215,7 @@ void CFXJSE_Engine::GlobalPropertySetter(CFXJSE_Value* pObject,
 void CFXJSE_Engine::GlobalPropertyGetter(CFXJSE_Value* pObject,
                                          const ByteStringView& szPropName,
                                          CFXJSE_Value* pValue) {
+  std::cerr << "CFXJSE_Engine::GlobalPropertyGetter " << szPropName << std::endl;
   CXFA_Object* pOriginalObject = ToObject(pObject);
   CXFA_Document* pDoc = pOriginalObject->GetDocument();
   CFXJSE_Engine* lpScriptContext = pDoc->GetScriptContext();
@@ -274,6 +276,7 @@ void CFXJSE_Engine::GlobalPropertyGetter(CFXJSE_Value* pObject,
 int32_t CFXJSE_Engine::GlobalPropTypeGetter(CFXJSE_Value* pOriginalValue,
                                             const ByteStringView& szPropName,
                                             bool bQueryIn) {
+  std::cerr << "CFXJSE_Engine::GlobalPropTypeGetter " << szPropName << std::endl;
   CXFA_Object* pObject = ToObject(pOriginalValue);
   if (!pObject)
     return FXJSE_ClassPropType_None;
@@ -290,6 +293,7 @@ int32_t CFXJSE_Engine::GlobalPropTypeGetter(CFXJSE_Value* pOriginalValue,
 void CFXJSE_Engine::NormalPropertyGetter(CFXJSE_Value* pOriginalValue,
                                          const ByteStringView& szPropName,
                                          CFXJSE_Value* pReturnValue) {
+  std::cerr << "CFXJSE_Engine::NormalPropertyGetter " << szPropName << std::endl;
   CXFA_Object* pOriginalObject = ToObject(pOriginalValue);
   if (!pOriginalObject) {
     pReturnValue->SetUndefined();
@@ -419,6 +423,7 @@ void CFXJSE_Engine::NormalPropertySetter(CFXJSE_Value* pOriginalValue,
 int32_t CFXJSE_Engine::NormalPropTypeGetter(CFXJSE_Value* pOriginalValue,
                                             const ByteStringView& szPropName,
                                             bool bQueryIn) {
+  std::cerr << "CFXJSE_Engine::NormalPropTypeGetter " << szPropName << std::endl;
   CXFA_Object* pObject = ToObject(pOriginalValue);
   if (!pObject)
     return FXJSE_ClassPropType_None;
@@ -440,6 +445,7 @@ int32_t CFXJSE_Engine::NormalPropTypeGetter(CFXJSE_Value* pOriginalValue,
 CJS_Result CFXJSE_Engine::NormalMethodCall(
     const v8::FunctionCallbackInfo<v8::Value>& info,
     const WideString& functionName) {
+  std::cerr << "CFXJSE_Engine::NormalMethodCall " << functionName << std::endl;
   CXFA_Object* pObject = ToObject(info);
   if (!pObject)
     return CJS_Result::Failure(L"no Holder() present.");

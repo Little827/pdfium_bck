@@ -6,6 +6,8 @@
 
 #include "fxjs/cfxjse_context.h"
 
+#include <csignal>
+#include <cstring>
 #include <utility>
 
 #include "fxjs/cfxjs_engine.h"
@@ -278,6 +280,8 @@ bool CFXJSE_Context::ExecuteScript(const char* szScript,
 #ifndef NDEBUG
   v8::String::Utf8Value error(GetIsolate(), trycatch.Exception());
   fprintf(stderr, "JS Error: %s\n", *error);
+  // if (strstr(*error, "console.show") != nullptr)
+  //   raise(SIGSEGV);
 
   v8::Local<v8::Message> message = trycatch.Message();
   if (!message.IsEmpty()) {

@@ -6,6 +6,7 @@
 
 #include "fxjs/cfxjs_engine.h"
 
+#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -147,6 +148,7 @@ class CFXJS_ObjDefinition {
   v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }
 
   void DefineConst(const char* sConstName, v8::Local<v8::Value> pDefault) {
+    std::cerr << "DefineConst " << sConstName << std::endl;
     GetInstanceTemplate()->Set(GetIsolate(), sConstName, pDefault);
   }
 
@@ -158,6 +160,7 @@ class CFXJS_ObjDefinition {
 
   void DefineMethod(v8::Local<v8::String> sMethodName,
                     v8::FunctionCallback pMethodCall) {
+    std::cerr << "DefineMethod " << *((*sMethodName)->ToString()) << std::endl;
     v8::Local<v8::FunctionTemplate> fun = v8::FunctionTemplate::New(
         GetIsolate(), pMethodCall, v8::Local<v8::Value>(), GetSignature());
     fun->RemovePrototype();
