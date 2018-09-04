@@ -68,12 +68,14 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
                             CPDF_Dictionary* pParam,
                             uint8_t** dest_buf,
                             uint32_t* dest_size) {
+  std::unique_ptr<uint8_t, FxFreeDeleter> ignored_result;
   if (decoder == "FlateDecode" || decoder == "Fl") {
-    return FlateOrLZWDecode(false, src_span, pParam, *dest_size, dest_buf,
-                            dest_size);
+    return FlateOrLZWDecode(false, src_span, pParam, *dest_size,
+                            &ignored_result, dest_size);
   }
   if (decoder == "LZWDecode" || decoder == "LZW") {
-    return FlateOrLZWDecode(true, src_span, pParam, 0, dest_buf, dest_size);
+    return FlateOrLZWDecode(true, src_span, pParam, 0, &ignored_result,
+                            dest_size);
   }
   if (decoder == "DCTDecode" || decoder == "DCT") {
     std::unique_ptr<CCodec_ScanlineDecoder> pDecoder =
@@ -88,7 +90,6 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
     return DecodeAllScanlines(std::move(pDecoder), dest_buf, dest_size);
   }
 
-  std::unique_ptr<uint8_t, FxFreeDeleter> ignored_result;
   if (decoder == "ASCII85Decode" || decoder == "A85") {
     *dest_buf = nullptr;
     return A85Decode(src_span, &ignored_result, dest_size);
