@@ -46,7 +46,7 @@ struct NupPageSettings {
 // on the input |numPagesOnXAxis| and |numPagesOnYAxis|.
 class NupState {
  public:
-  NupState(const CFX_SizeF& pagesize,
+  NupState(const CFX_RectF& pageRect,
            unsigned int numPagesOnXAxis,
            unsigned int numPagesOnYAxis);
 
@@ -68,7 +68,7 @@ class NupState {
                                     size_t subY,
                                     const CFX_SizeF& pagesize) const;
 
-  const CFX_SizeF m_destPageSize;
+  const CFX_RectF m_destPageRect;
   const size_t m_numPagesOnXAxis;
   const size_t m_numPagesOnYAxis;
   const size_t m_numPagesPerSheet;
@@ -78,20 +78,19 @@ class NupState {
   size_t m_subPageIndex = 0;
 };
 
-NupState::NupState(const CFX_SizeF& pagesize,
+NupState::NupState(const CFX_RectF& pageRect,
                    unsigned int numPagesOnXAxis,
                    unsigned int numPagesOnYAxis)
-    : m_destPageSize(pagesize),
+    : m_destPageRect(pageRect),
       m_numPagesOnXAxis(numPagesOnXAxis),
       m_numPagesOnYAxis(numPagesOnYAxis),
       m_numPagesPerSheet(numPagesOnXAxis * numPagesOnYAxis) {
   ASSERT(m_numPagesOnXAxis > 0);
   ASSERT(m_numPagesOnYAxis > 0);
-  ASSERT(m_destPageSize.width > 0);
-  ASSERT(m_destPageSize.height > 0);
+  ASSERT(!m_destPageRect.IsEmpty());
 
-  m_subPageSize.width = m_destPageSize.width / m_numPagesOnXAxis;
-  m_subPageSize.height = m_destPageSize.height / m_numPagesOnYAxis;
+  m_subPageSize.width = m_destPageRect.width / m_numPagesOnXAxis;
+  m_subPageSize.height = m_destPageRect.height / m_numPagesOnYAxis;
 }
 
 std::pair<size_t, size_t> NupState::ConvertPageOrder() const {
@@ -111,16 +110,17 @@ NupPageSettings NupState::CalculatePageEdit(size_t subX,
   settings.subPageStartPoint.x = subX * m_subPageSize.width;
   settings.subPageStartPoint.y = subY * m_subPageSize.height;
 
-  const float xScale = m_subPageSize.width / pagesize.width;
-  const float yScale = m_subPageSize.height / pagesize.height;
+  // xScale and yScale are calculated using the content area size.
+  const float xScale =
+      (m_subPageSize.width - m_destPageRect.left * 2) / pagesize.width;
+  const float yScale =
+      (m_subPageSize.height - m_destPageRect.top * 2) / pagesize.height;
   settings.scale = std::min(xScale, yScale);
 
   float subWidth = pagesize.width * settings.scale;
   float subHeight = pagesize.height * settings.scale;
-  if (xScale > yScale)
-    settings.subPageStartPoint.x += (m_subPageSize.width - subWidth) / 2;
-  else
-    settings.subPageStartPoint.y += (m_subPageSize.height - subHeight) / 2;
+  settings.subPageStartPoint.x += (m_subPageSize.width - subWidth) / 2;
+  settings.subPageStartPoint.y += (m_subPageSize.height - subHeight) / 2;
   return settings;
 }
 
@@ -545,12 +545,12 @@ class CPDF_NPageToOneExporter final : public CPDF_PageOrganizer {
   // For the pages from the source document with |pageNums| as their page
   // numbers, insert them into the destination document, starting at page 0.
   // |pageNums| is 1-based.
-  // |destPageSize| is the destination document page dimensions, measured in
+  // |pageRect| is the destination document page dimensions, measured in
   // PDF "user space" units.
   // |numPagesOnXAxis| and |numPagesOnXAxis| together defines how many source
   // pages fit on one destination page.
   bool ExportNPagesToOne(const std::vector<uint32_t>& pageNums,
-                         const CFX_SizeF& destPageSize,
+                         const CFX_RectF& pageRect,
                          unsigned int numPagesOnXAxis,
                          unsigned int numPagesOnYAxis);
 
@@ -588,7 +588,7 @@ CPDF_NPageToOneExporter::~CPDF_NPageToOneExporter() = default;
 
 bool CPDF_NPageToOneExporter::ExportNPagesToOne(
     const std::vector<uint32_t>& pageNums,
-    const CFX_SizeF& destPageSize,
+    const CFX_RectF& pageRect,
     unsigned int numPagesOnXAxis,
     unsigned int numPagesOnYAxis) {
   if (!PDFDocInit())
@@ -608,11 +608,10 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
   // If there are two pages that are identical and have the same object number,
   // we can reuse one created XObject.
   PageXObjectMap pageXObjectMap;
-  NupState nupState(destPageSize, numPagesOnXAxis, numPagesOnYAxis);
+  NupState nupState(pageRect, numPagesOnXAxis, numPagesOnYAxis);
 
   size_t curpage = 0;
-  const CFX_FloatRect destPageRect(0, 0, destPageSize.width,
-                                   destPageSize.height);
+  const CFX_FloatRect destPageRect(0, 0, pageRect.width, pageRect.height);
   for (size_t outerPage = 0; outerPage < pageNums.size();
        outerPage += numPagesPerSheet) {
     // Create a new page
@@ -780,6 +779,8 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
                        float output_width,
                        float output_height,
+                       float margin_left,
+                       float margin_top,
                        unsigned int num_pages_on_x_axis,
                        unsigned int num_pages_on_y_axis) {
   CPDF_Document* pSrcDoc = CPDFDocumentFromFPDFDocument(src_doc);
@@ -787,7 +788,7 @@ FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
     return nullptr;
 
   if (output_width <= 0 || output_height <= 0 || num_pages_on_x_axis <= 0 ||
-      num_pages_on_y_axis <= 0) {
+      num_pages_on_y_axis <= 0 || margin_left < 0 || margin_top < 0) {
     return nullptr;
   }
 
@@ -810,9 +811,10 @@ FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
   }
 
   CPDF_NPageToOneExporter exporter(pDestDoc, pSrcDoc);
-  if (!exporter.ExportNPagesToOne(page_numbers,
-                                  CFX_SizeF(output_width, output_height),
-                                  num_pages_on_x_axis, num_pages_on_y_axis)) {
+  if (!exporter.ExportNPagesToOne(
+          page_numbers,
+          CFX_RectF(margin_left, margin_top, output_width, output_height),
+          num_pages_on_x_axis, num_pages_on_y_axis)) {
     return nullptr;
   }
   return output_doc.release();
