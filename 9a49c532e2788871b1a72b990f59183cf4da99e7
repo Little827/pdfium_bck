@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1536079966 -0700\nnonce ACQ0HpznJx3HsC6rp+o7wI6XRfr7KfXK/bIyosIZBhLc3NV9auSDQWsSwAbo/iRiVD/gB1meBH7A\n\n0000000000000000000000000000000000000000 9a49c532e2788871b1a72b990f59183cf4da99e7 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAluOuF4ACgkQqzYtYVpm\n/Xt+4gf/QApma6pYap+m7v7XfaaFVILuRM/7sWQgUFVxnNemxtCYf++WsxENPQp+\neyjvS7RgoglqDslpg2Kag9t8IEMamT0yaFxilFAQwd464vK8buLpNKPXl5wdD+n8\nDfwcSf9p5u9m/0XN75Pz3cJnJhonf1CMt/vVcAmywM6gvUYSKakFIxkqbQX5ofk1\nLk7gmkTDaUm7H3rg8g1VFCe+dAPvcBitACPYfT0T/3bFTiaXqkOWQzf/EVSqXiOU\nytaPYlsshXvs6KNcLg1vMw/VtSSJC6IcJ0x6iwkCzC+NKuYNkmcqicpCq4v22WUE\nuauLk06/if4cdYuqCSZ3tUHh0anaEw\u003d\u003d\n\u003dqnQH\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8430cd82_1b51dd23",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-04T17:37:24Z",
+      "side": 1,
+      "message": "nit: local |locale| not needed.",
+      "range": {
+        "startLine": 1082,
+        "startChar": 8,
+        "endLine": 1083,
+        "endChar": 16
+      },
+      "revId": "9a49c532e2788871b1a72b990f59183cf4da99e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
