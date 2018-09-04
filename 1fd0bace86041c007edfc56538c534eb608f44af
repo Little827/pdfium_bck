@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1536079943 -0700\nnonce ACQ0Hpx6bXEj6DYCW9HuCu5IZ+XBj2BQpTfTTxJWLslf1PFB08duysb5uUmwc4qkD+ZdghzVpbRu\n\n0000000000000000000000000000000000000000 1fd0bace86041c007edfc56538c534eb608f44af refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAluOuEcACgkQqzYtYVpm\n/XsR+gf+IGbw3NUgNDWXz/L8uCDL5e2tOZdObyOZN6BhQgPxBFrGDSpkKl4B8wUm\nojz1f3LROE0PNl/BXf5zYtBeV8Xa2sX8IJFrXu37iuQ8H+RcRo0KqXybWZxVx4zy\n7MFBIlmdf2Ni+MSNZTKLPi2oMev45iYjoX6lmYIwb0p9BhveI9baM1NhOK/Tp9DN\nZE2N+lSSPp8jEmunomsOZZ42car5Bzx1cevPwzSdJAYt9DAIeaMXATm25+SmAdXe\nwtkzEnVsBE6zljfPwQU+fZNU8AgPSr4kS54pCH95OFHFd5hv1/jYa9iY+uces2KJ\nMf2gf3BAeQVjx3AJWg7zrz0n2LGLmg\u003d\u003d\n\u003dASSV\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ae3fc65_893e2a67",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-04T17:27:26Z",
+      "side": 1,
+      "message": "Mabye use a span?",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 42
+      },
+      "revId": "1fd0bace86041c007edfc56538c534eb608f44af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6374d99e_04f91827",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-04T17:27:26Z",
+      "side": 1,
+      "message": "then we get span initial bounds check on\nmemset(\u0026dest_buf_ptr[dest_count + copy_len]\n\nand so forth.",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 51
+      },
+      "revId": "1fd0bace86041c007edfc56538c534eb608f44af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
