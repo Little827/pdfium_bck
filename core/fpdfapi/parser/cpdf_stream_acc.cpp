@@ -47,11 +47,16 @@ void CPDF_StreamAcc::LoadAllData(bool bRawAccess,
   if (bProcessRawData) {
     m_pData = pSrcData;
     m_dwSize = dwSrcSize;
-  } else if (!PDF_DataDecode({pSrcData, dwSrcSize}, m_pStream->GetDict(),
-                             estimated_size, bImageAcc, &m_pData, &m_dwSize,
-                             &m_ImageDecoder, &m_pImageParam)) {
-    m_pData = pSrcData;
-    m_dwSize = dwSrcSize;
+  } else {
+    std::unique_ptr<uint8_t, FxFreeDeleter> decoded;
+    if (PDF_DataDecode({pSrcData, dwSrcSize}, m_pStream->GetDict(),
+                       estimated_size, bImageAcc, &decoded, &m_dwSize,
+                       &m_ImageDecoder, &m_pImageParam)) {
+      m_pData = decoded.release();
+    } else {
+      m_pData = pSrcData;
+      m_dwSize = dwSrcSize;
+    }
   }
   if (pSrcData != m_pStream->GetInMemoryRawData() && pSrcData != m_pData)
     FX_Free(pSrcData);
