@@ -73,10 +73,15 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
         CreateFaxDecoder(src_span, width, height, pParam);
     return DecodeAllScanlines(std::move(pDecoder), dest_buf, dest_size);
   }
-  if (decoder == "ASCII85Decode" || decoder == "A85")
-    return A85Decode(src_span, dest_buf, dest_size);
-  if (decoder == "ASCIIHexDecode" || decoder == "AHx")
-    return HexDecode(src_span, dest_buf, dest_size);
+  std::unique_ptr<uint8_t, FxFreeDeleter> ignored_result;
+  if (decoder == "ASCII85Decode" || decoder == "A85") {
+    *dest_buf = nullptr;
+    return A85Decode(src_span, &ignored_result, dest_size);
+  }
+  if (decoder == "ASCIIHexDecode" || decoder == "AHx") {
+    *dest_buf = nullptr;
+    return HexDecode(src_span, &ignored_result, dest_size);
+  }
   if (decoder == "FlateDecode" || decoder == "Fl") {
     return FlateOrLZWDecode(false, src_span, pParam, *dest_size, dest_buf,
                             dest_size);
@@ -93,9 +98,10 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
   }
   if (decoder == "RunLengthDecode" || decoder == "RL")
     return RunLengthDecode(src_span, dest_buf, dest_size);
+
+  *dest_buf = nullptr;
   *dest_size = 0;
-  *dest_buf = 0;
-  return 0xFFFFFFFF;
+  return FX_INVALID_OFFSET;
 }
 
 }  // namespace
