@@ -708,28 +708,17 @@ void CCodec_ProgressiveDecoder::ResampleVertBT(
   }
 }
 
-bool CCodec_ProgressiveDecoder::BmpDetectImageType(CFX_DIBAttribute* pAttribute,
-                                                   uint32_t size) {
+bool CCodec_ProgressiveDecoder::BmpDetectImageTypeInBuffer(
+    CFX_DIBAttribute* pAttribute) {
   CCodec_BmpModule* pBmpModule = m_pCodecMgr->GetBmpModule();
   if (!pBmpModule) {
     m_status = FXCODEC_STATUS_ERR_MEMORY;
     return false;
   }
 
-  std::unique_ptr<CCodec_BmpModule::Context> pBmpContext =
-      pBmpModule->Start(this);
-  if (!pBmpContext) {
-    m_status = FXCODEC_STATUS_ERR_MEMORY;
-    return false;
-  }
+  std::unique_ptr<ICodec_Module::Context> pBmpContext = pBmpModule->Start(this);
+  pBmpModule->Input(pBmpContext.get(), {m_pSrcBuf.get(), m_SrcSize}, nullptr);
 
-  if (!m_pFile->ReadBlock(m_pSrcBuf.get(), 0, size)) {
-    m_status = FXCODEC_STATUS_ERR_READ;
-    return false;
-  }
-
-  m_offSet += size;
-  pBmpModule->Input(pBmpContext.get(), {m_pSrcBuf.get(), size});
   std::vector<uint32_t> palette;
   int32_t readResult = pBmpModule->ReadHeader(
       pBmpContext.get(), &m_SrcWidth, &m_SrcHeight, &m_BmpIsTopBottom,
@@ -798,7 +787,7 @@ bool CCodec_ProgressiveDecoder::BmpDetectImageType(CFX_DIBAttribute* pAttribute,
 
 bool CCodec_ProgressiveDecoder::BmpReadMoreData(
     CCodec_BmpModule* pBmpModule,
-    CCodec_BmpModule::Context* pBmpContext,
+    ICodec_Module::Context* pBmpContext,
     FXCODEC_STATUS& err_status) {
   uint32_t dwSize = (uint32_t)m_pFile->GetSize();
   if (dwSize <= m_offSet)
@@ -835,7 +824,7 @@ bool CCodec_ProgressiveDecoder::BmpReadMoreData(
     return false;
   }
   m_offSet += dwSize;
-  pBmpModule->Input(pBmpContext, {m_pSrcBuf.get(), dwSize + dwAvail});
+  pBmpModule->Input(pBmpContext, {m_pSrcBuf.get(), dwSize + dwAvail}, nullptr);
   return true;
 }
 
@@ -929,28 +918,22 @@ bool CCodec_ProgressiveDecoder::GifReadMoreData(CCodec_GifModule* pGifModule,
   }
 
   m_offSet += dwAmountToFetchFromFile;
-  pGifModule->Input(
-      m_pGifContext.get(),
-      {m_pSrcBuf.get(), dwAmountToFetchFromFile + dwUnusedBuffer});
+  pGifModule->Input(m_pGifContext.get(),
+                    {m_pSrcBuf.get(), dwAmountToFetchFromFile + dwUnusedBuffer},
+                    nullptr);
   m_InvalidateGifBuffer = false;
   return true;
 }
 
-bool CCodec_ProgressiveDecoder::GifDetectImageType(CFX_DIBAttribute* pAttribute,
-                                                   uint32_t size) {
+bool CCodec_ProgressiveDecoder::GifDetectImageTypeInBuffer(
+    CFX_DIBAttribute* pAttribute) {
   CCodec_GifModule* pGifModule = m_pCodecMgr->GetGifModule();
   if (!pGifModule) {
     m_status = FXCODEC_STATUS_ERR_MEMORY;
     return false;
   }
   m_pGifContext = pGifModule->Start(this);
-  bool bResult = m_pFile->ReadBlock(m_pSrcBuf.get(), 0, size);
-  if (!bResult) {
-    m_status = FXCODEC_STATUS_ERR_READ;
-    return false;
-  }
-  m_offSet += size;
-  pGifModule->Input(m_pGifContext.get(), {m_pSrcBuf.get(), size});
+  pGifModule->Input(m_pGifContext.get(), {m_pSrcBuf.get(), m_SrcSize}, nullptr);
   m_SrcComponents = 1;
   CFX_GifDecodeStatus readResult = pGifModule->ReadHeader(
       m_pGifContext.get(), &m_SrcWidth, &m_SrcHeight, &m_GifPltNumber,
@@ -1154,28 +1137,24 @@ bool CCodec_ProgressiveDecoder::JpegReadMoreData(CCodec_JpegModule* pJpegModule,
     return false;
   }
   m_offSet += dwSize;
-  pJpegModule->Input(m_pJpegContext.get(), m_pSrcBuf.get(), dwSize + dwAvail);
+  pJpegModule->Input(m_pJpegContext.get(), {m_pSrcBuf.get(), dwSize + dwAvail},
+                     nullptr);
   return true;
 }
 
-bool CCodec_ProgressiveDecoder::JpegDetectImageType(
-    CFX_DIBAttribute* pAttribute,
-    uint32_t size) {
+bool CCodec_ProgressiveDecoder::JpegDetectImageTypeInBuffer(
+    CFX_DIBAttribute* pAttribute) {
   CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
   m_pJpegContext = pJpegModule->Start();
   if (!m_pJpegContext) {
     m_status = FXCODEC_STATUS_ERR_MEMORY;
     return false;
   }
-  if (!m_pFile->ReadBlock(m_pSrcBuf.get(), 0, size)) {
-    m_status = FXCODEC_STATUS_ERR_READ;
-    return false;
-  }
-  m_offSet += size;
-  pJpegModule->Input(m_pJpegContext.get(), m_pSrcBuf.get(), size);
+  pJpegModule->Input(m_pJpegContext.get(), {m_pSrcBuf.get(), m_SrcSize},
+                     nullptr);
   // Setting jump marker before calling ReadHeader, since a longjmp to
   // the marker indicates a fatal error.
-  if (setjmp(*m_pJpegContext->GetJumpMark()) == -1) {
+  if (setjmp(*pJpegModule->GetJumpMark(m_pJpegContext.get())) == -1) {
     m_pJpegContext.reset();
     m_status = FXCODEC_STATUS_ERR_FORMAT;
     return false;
@@ -1206,17 +1185,17 @@ bool CCodec_ProgressiveDecoder::JpegDetectImageType(
 
 FXCODEC_STATUS CCodec_ProgressiveDecoder::JpegStartDecode(
     const RetainPtr<CFX_DIBitmap>& pDIBitmap) {
+  CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
   int down_scale = 1;
   GetDownScale(down_scale);
   // Setting jump marker before calling StartScanLine, since a longjmp to
   // the marker indicates a fatal error.
-  if (setjmp(*m_pJpegContext->GetJumpMark()) == -1) {
+  if (setjmp(*pJpegModule->GetJumpMark(m_pJpegContext.get())) == -1) {
     m_pJpegContext.reset();
     m_status = FXCODEC_STATUS_ERROR;
     return FXCODEC_STATUS_ERROR;
   }
 
-  CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
   bool startStatus =
       pJpegModule->StartScanline(m_pJpegContext.get(), down_scale);
   while (!startStatus) {
@@ -1257,7 +1236,7 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::JpegContinueDecode() {
   CCodec_JpegModule* pJpegModule = m_pCodecMgr->GetJpegModule();
   // Setting jump marker before calling ReadScanLine, since a longjmp to
   // the marker indicates a fatal error.
-  if (setjmp(*m_pJpegContext->GetJumpMark()) == -1) {
+  if (setjmp(*pJpegModule->GetJumpMark(m_pJpegContext.get())) == -1) {
     m_pJpegContext.reset();
     m_status = FXCODEC_STATUS_ERROR;
     return FXCODEC_STATUS_ERROR;
@@ -1370,8 +1349,8 @@ void CCodec_ProgressiveDecoder::PngOneOneMapResampleHorz(
   }
 }
 
-bool CCodec_ProgressiveDecoder::PngDetectImageType(CFX_DIBAttribute* pAttribute,
-                                                   uint32_t size) {
+bool CCodec_ProgressiveDecoder::PngDetectImageTypeInBuffer(
+    CFX_DIBAttribute* pAttribute) {
   CCodec_PngModule* pPngModule = m_pCodecMgr->GetPngModule();
   if (!pPngModule) {
     m_status = FXCODEC_STATUS_ERR_MEMORY;
@@ -1382,15 +1361,8 @@ bool CCodec_ProgressiveDecoder::PngDetectImageType(CFX_DIBAttribute* pAttribute,
     m_status = FXCODEC_STATUS_ERR_MEMORY;
     return false;
   }
-  bool bResult = m_pFile->ReadBlock(m_pSrcBuf.get(), 0, size);
-  if (!bResult) {
-    m_status = FXCODEC_STATUS_ERR_READ;
-    return false;
-  }
-
-  m_offSet += size;
-  bResult =
-      pPngModule->Input(m_pPngContext.get(), m_pSrcBuf.get(), size, pAttribute);
+  bool bResult = pPngModule->Input(m_pPngContext.get(),
+                                   {m_pSrcBuf.get(), m_SrcSize}, pAttribute);
   while (bResult) {
     uint32_t remain_size = static_cast<uint32_t>(m_pFile->GetSize()) - m_offSet;
     uint32_t input_size =
@@ -1411,10 +1383,9 @@ bool CCodec_ProgressiveDecoder::PngDetectImageType(CFX_DIBAttribute* pAttribute,
       return false;
     }
     m_offSet += input_size;
-    bResult = pPngModule->Input(m_pPngContext.get(), m_pSrcBuf.get(),
-                                input_size, pAttribute);
+    bResult = pPngModule->Input(m_pPngContext.get(),
+                                {m_pSrcBuf.get(), input_size}, pAttribute);
   }
-  ASSERT(!bResult);
   m_pPngContext.reset();
   if (m_SrcPassNumber == 0) {
     m_status = FXCODEC_STATUS_ERR_FORMAT;
@@ -1502,8 +1473,8 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::PngContinueDecode() {
       return m_status;
     }
     m_offSet += input_size;
-    bResult = pPngModule->Input(m_pPngContext.get(), m_pSrcBuf.get(),
-                                input_size, nullptr);
+    bResult = pPngModule->Input(m_pPngContext.get(),
+                                {m_pSrcBuf.get(), input_size}, nullptr);
     if (!bResult) {
       m_pDeviceBitmap = nullptr;
       m_pFile = nullptr;
@@ -1515,9 +1486,8 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::PngContinueDecode() {
 #endif  // PDF_ENABLE_XFA_PNG
 
 #ifdef PDF_ENABLE_XFA_TIFF
-bool CCodec_ProgressiveDecoder::TiffDetectImageType(
-    CFX_DIBAttribute* pAttribute,
-    uint32_t size) {
+bool CCodec_ProgressiveDecoder::TiffDetectImageTypeFromFile(
+    CFX_DIBAttribute* pAttribute) {
   CCodec_TiffModule* pTiffModule = m_pCodecMgr->GetTiffModule();
   if (!pTiffModule) {
     m_status = FXCODEC_STATUS_ERR_FORMAT;
@@ -1684,37 +1654,42 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::TiffContinueDecode() {
 
 bool CCodec_ProgressiveDecoder::DetectImageType(FXCODEC_IMAGE_TYPE imageType,
                                                 CFX_DIBAttribute* pAttribute) {
-  m_offSet = 0;
-  uint32_t size = (uint32_t)m_pFile->GetSize();
-  if (size > FXCODEC_BLOCK_SIZE) {
-    size = FXCODEC_BLOCK_SIZE;
-  }
-  m_pSrcBuf.reset(FX_Alloc(uint8_t, size));
-  memset(m_pSrcBuf.get(), 0, size);
-  m_SrcSize = size;
-  switch (imageType) {
-    case FXCODEC_IMAGE_JPG:
-      return JpegDetectImageType(pAttribute, size);
-#ifdef PDF_ENABLE_XFA_BMP
-    case FXCODEC_IMAGE_BMP:
-      return BmpDetectImageType(pAttribute, size);
-#endif  // PDF_ENABLE_XFA_BMP
-#ifdef PDF_ENABLE_XFA_GIF
-    case FXCODEC_IMAGE_GIF:
-      return GifDetectImageType(pAttribute, size);
-#endif  // PDF_ENABLE_XFA_GIF
-#ifdef PDF_ENABLE_XFA_PNG
-    case FXCODEC_IMAGE_PNG:
-      return PngDetectImageType(pAttribute, size);
-#endif  // PDF_ENABLE_XFA_PNG
 #ifdef PDF_ENABLE_XFA_TIFF
-    case FXCODEC_IMAGE_TIFF:
-      return TiffDetectImageType(pAttribute, size);
+  if (imageType == FXCODEC_IMAGE_TIFF)
+    return TiffDetectImageTypeFromFile(pAttribute);
 #endif  // PDF_ENABLE_XFA_TIFF
-    default:
-      m_status = FXCODEC_STATUS_ERR_FORMAT;
-      return false;
+
+  size_t size = std::min<size_t>(m_pFile->GetSize(), FXCODEC_BLOCK_SIZE);
+  m_SrcSize = static_cast<uint32_t>(size);
+  m_pSrcBuf.reset(FX_Alloc(uint8_t, m_SrcSize));
+
+  m_offSet = 0;
+  if (!m_pFile->ReadBlock(m_pSrcBuf.get(), m_offSet, m_SrcSize)) {
+    m_status = FXCODEC_STATUS_ERR_READ;
+    return false;
   }
+  m_offSet += m_SrcSize;
+
+  if (imageType == FXCODEC_IMAGE_JPG)
+    return JpegDetectImageTypeInBuffer(pAttribute);
+
+#ifdef PDF_ENABLE_XFA_BMP
+  if (imageType == FXCODEC_IMAGE_BMP)
+    return BmpDetectImageTypeInBuffer(pAttribute);
+#endif  // PDF_ENABLE_XFA_BMP
+
+#ifdef PDF_ENABLE_XFA_GIF
+  if (imageType == FXCODEC_IMAGE_GIF)
+    return GifDetectImageTypeInBuffer(pAttribute);
+#endif  // PDF_ENABLE_XFA_GIF
+
+#ifdef PDF_ENABLE_XFA_PNG
+  if (imageType == FXCODEC_IMAGE_PNG)
+    return PngDetectImageTypeInBuffer(pAttribute);
+#endif  // PDF_ENABLE_XFA_PNG
+
+  m_status = FXCODEC_STATUS_ERR_FORMAT;
+  return false;
 }
 
 FXCODEC_STATUS CCodec_ProgressiveDecoder::LoadImageInfo(
