@@ -29,9 +29,10 @@ class CCodec_BmpModule : public CodecModuleIface {
   CCodec_BmpModule();
   ~CCodec_BmpModule() override;
 
+  // CodecModuleIface:
   FX_FILESIZE GetAvailInput(Context* pContext) const override;
   bool Input(Context* pContext,
-             pdfium::span<uint8_t> src_buf,
+             RetainPtr<CFX_CodecMemory> codec_memory,
              CFX_DIBAttribute* pAttribute) override;
 
   std::unique_ptr<Context> Start(Delegate* pDelegate);

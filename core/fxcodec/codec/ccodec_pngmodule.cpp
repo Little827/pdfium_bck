@@ -224,7 +224,7 @@ FX_FILESIZE CCodec_PngModule::GetAvailInput(Context* pContext) const {
 }
 
 bool CCodec_PngModule::Input(Context* pContext,
-                             pdfium::span<uint8_t> src_buf,
+                             RetainPtr<CFX_CodecMemory> codec_memory,
                              CFX_DIBAttribute* pAttribute) {
   auto* ctx = static_cast<CPngContext*>(pContext);
   if (setjmp(png_jmpbuf(ctx->m_pPng))) {
@@ -234,6 +234,7 @@ bool CCodec_PngModule::Input(Context* pContext,
     }
     return false;
   }
-  png_process_data(ctx->m_pPng, ctx->m_pInfo, src_buf.data(), src_buf.size());
+  pdfium::span<uint8_t> span = codec_memory->GetSpan();
+  png_process_data(ctx->m_pPng, ctx->m_pInfo, span.data(), span.size());
   return true;
 }
