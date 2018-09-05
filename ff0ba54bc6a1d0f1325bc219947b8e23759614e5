@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d86176a_652a6454",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-05T16:38:44Z",
+      "side": 1,
+      "message": "note: this is GifReadMoreData with the safe math from bmp dropped in.",
+      "range": {
+        "startLine": 1593,
+        "startChar": 0,
+        "endLine": 1593,
+        "endChar": 45
+      },
+      "revId": "ff0ba54bc6a1d0f1325bc219947b8e23759614e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
