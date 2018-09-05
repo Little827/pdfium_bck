@@ -7,6 +7,7 @@
 #ifndef CORE_FXCODEC_CODEC_CODEC_MODULE_IFACE_H_
 #define CORE_FXCODEC_CODEC_CODEC_MODULE_IFACE_H_
 
+#include "core/fxcodec/codec/cfx_codec_memory.h"
 #include "core/fxcrt/fx_system.h"
 #include "third_party/base/span.h"
 
@@ -23,7 +24,7 @@ class CodecModuleIface {
 
   virtual FX_FILESIZE GetAvailInput(Context* pContext) const = 0;
   virtual bool Input(Context* pContext,
-                     pdfium::span<uint8_t> src_buf,
+                     RetainPtr<CFX_CodecMemory> codec_memory,
                      CFX_DIBAttribute* pAttribute) = 0;
 };
 
