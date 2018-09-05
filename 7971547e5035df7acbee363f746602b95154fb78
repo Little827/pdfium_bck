@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1713db2_f7ed77ec",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-05T17:08:40Z",
+      "side": 1,
+      "message": "What happens when |margin_left| \u003e\u003d |output_width| ?",
+      "revId": "7971547e5035df7acbee363f746602b95154fb78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537cb5f5_d7dd3522",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-05T17:08:40Z",
+      "side": 1,
+      "message": "The BadNupParams test does not test for bad margin values.",
+      "revId": "7971547e5035df7acbee363f746602b95154fb78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f5609cb_cb23e874",
+        "filename": "fpdfsdk/fpdf_ppo_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-05T17:08:40Z",
+      "side": 1,
+      "message": "If the test uses 30 and 30 for the margins values, how can one tell if the implementation accidentally used |margin_top| in place of |margin_left| or vice versa?",
+      "revId": "7971547e5035df7acbee363f746602b95154fb78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
