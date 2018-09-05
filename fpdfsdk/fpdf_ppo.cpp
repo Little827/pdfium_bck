@@ -46,7 +46,11 @@ struct NupPageSettings {
 // on the input |numPagesOnXAxis| and |numPagesOnYAxis|.
 class NupState {
  public:
-  NupState(const CFX_SizeF& pagesize,
+  NupState(const CFX_SizeF& pageSize,
+           float marginLeft,
+           float marginRight,
+           float marginTop,
+           float m_marginBottom,
            unsigned int numPagesOnXAxis,
            unsigned int numPagesOnYAxis);
 
@@ -69,6 +73,10 @@ class NupState {
                                     const CFX_SizeF& pagesize) const;
 
   const CFX_SizeF m_destPageSize;
+  const float m_marginLeft;
+  const float m_marginRight;
+  const float m_marginTop;
+  const float m_marginBottom;
   const size_t m_numPagesOnXAxis;
   const size_t m_numPagesOnYAxis;
   const size_t m_numPagesPerSheet;
@@ -78,10 +86,18 @@ class NupState {
   size_t m_subPageIndex = 0;
 };
 
-NupState::NupState(const CFX_SizeF& pagesize,
+NupState::NupState(const CFX_SizeF& pageSize,
+                   float marginLeft,
+                   float marginRight,
+                   float marginTop,
+                   float marginBottom,
                    unsigned int numPagesOnXAxis,
                    unsigned int numPagesOnYAxis)
-    : m_destPageSize(pagesize),
+    : m_destPageSize(pageSize),
+      m_marginLeft(marginLeft),
+      m_marginRight(marginRight),
+      m_marginTop(marginTop),
+      m_marginBottom(marginBottom),
       m_numPagesOnXAxis(numPagesOnXAxis),
       m_numPagesOnYAxis(numPagesOnYAxis),
       m_numPagesPerSheet(numPagesOnXAxis * numPagesOnYAxis) {
@@ -89,6 +105,10 @@ NupState::NupState(const CFX_SizeF& pagesize,
   ASSERT(m_numPagesOnYAxis > 0);
   ASSERT(m_destPageSize.width > 0);
   ASSERT(m_destPageSize.height > 0);
+  ASSERT(m_marginLeft >= 0);
+  ASSERT(m_marginRight >= 0);
+  ASSERT(m_marginTop >= 0);
+  ASSERT(m_marginBottom >= 0);
 
   m_subPageSize.width = m_destPageSize.width / m_numPagesOnXAxis;
   m_subPageSize.height = m_destPageSize.height / m_numPagesOnYAxis;
@@ -111,16 +131,17 @@ NupPageSettings NupState::CalculatePageEdit(size_t subX,
   settings.subPageStartPoint.x = subX * m_subPageSize.width;
   settings.subPageStartPoint.y = subY * m_subPageSize.height;
 
-  const float xScale = m_subPageSize.width / pagesize.width;
-  const float yScale = m_subPageSize.height / pagesize.height;
+  // xScale and yScale are calculated using the content area size.
+  const float xScale =
+      (m_subPageSize.width - m_marginLeft - m_marginRight) / pagesize.width;
+  const float yScale =
+      (m_subPageSize.height - m_marginTop - m_marginBottom) / pagesize.height;
   settings.scale = std::min(xScale, yScale);
 
-  float subWidth = pagesize.width * settings.scale;
-  float subHeight = pagesize.height * settings.scale;
-  if (xScale > yScale)
-    settings.subPageStartPoint.x += (m_subPageSize.width - subWidth) / 2;
-  else
-    settings.subPageStartPoint.y += (m_subPageSize.height - subHeight) / 2;
+  // float subWidth = pagesize.width * settings.scale;
+  // float subHeight = pagesize.height * settings.scale;
+  settings.subPageStartPoint.x += m_marginLeft;
+  settings.subPageStartPoint.y += m_marginTop;
   return settings;
 }
 
@@ -547,10 +568,22 @@ class CPDF_NPageToOneExporter final : public CPDF_PageOrganizer {
   // |pageNums| is 1-based.
   // |destPageSize| is the destination document page dimensions, measured in
   // PDF "user space" units.
+  // |marginLeft| is the left margin of the individual subpage, measured in
+  // PDF "user space" units.
+  // |marginRight| is the right margin of the individual subpage, measured in
+  // PDF "user space" units.
+  // |marginTop| is the top margin of the individual subpage, measured in
+  // PDF "user space" units.
+  // |marginBottom| is the bottom margin of the individual subpage, measured in
+  // PDF "user space" units.
   // |numPagesOnXAxis| and |numPagesOnXAxis| together defines how many source
   // pages fit on one destination page.
   bool ExportNPagesToOne(const std::vector<uint32_t>& pageNums,
                          const CFX_SizeF& destPageSize,
+                         float marginLeft,
+                         float marginRight,
+                         float marginTop,
+                         float marginBottom,
                          unsigned int numPagesOnXAxis,
                          unsigned int numPagesOnYAxis);
 
@@ -589,6 +622,10 @@ CPDF_NPageToOneExporter::~CPDF_NPageToOneExporter() = default;
 bool CPDF_NPageToOneExporter::ExportNPagesToOne(
     const std::vector<uint32_t>& pageNums,
     const CFX_SizeF& destPageSize,
+    float marginLeft,
+    float marginRight,
+    float marginTop,
+    float marginBottom,
     unsigned int numPagesOnXAxis,
     unsigned int numPagesOnYAxis) {
   if (!PDFDocInit())
@@ -608,7 +645,8 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
   // If there are two pages that are identical and have the same object number,
   // we can reuse one created XObject.
   PageXObjectMap pageXObjectMap;
-  NupState nupState(destPageSize, numPagesOnXAxis, numPagesOnYAxis);
+  NupState nupState(destPageSize, marginLeft, marginRight, marginTop,
+                    marginBottom, numPagesOnXAxis, numPagesOnYAxis);
 
   size_t curpage = 0;
   const CFX_FloatRect destPageRect(0, 0, destPageSize.width,
@@ -754,6 +792,26 @@ void CPDF_NPageToOneExporter::FinishPage(
                         pStream->MakeReference(dest()));
 }
 
+bool IsValid(float output_width,
+             float output_height,
+             float margin_left,
+             float margin_right,
+             float margin_top,
+             float margin_bottom,
+             unsigned int num_pages_on_x_axis,
+             unsigned int num_pages_on_y_axis) {
+  if (output_width <= 0 || output_height <= 0 || num_pages_on_x_axis <= 0 ||
+      num_pages_on_y_axis <= 0 || margin_left < 0 || margin_top < 0 ||
+      margin_left >= output_width || margin_top >= output_height ||
+      margin_right >= output_width || margin_bottom >= output_height ||
+      (margin_left + margin_right) >= output_width ||
+      (margin_top + margin_bottom) >= output_height) {
+    return false;
+  }
+
+  return true;
+}
+
 }  // namespace
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_ImportPages(FPDF_DOCUMENT dest_doc,
@@ -780,14 +838,19 @@ FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
                        float output_width,
                        float output_height,
+                       float margin_left,
+                       float margin_right,
+                       float margin_top,
+                       float margin_bottom,
                        unsigned int num_pages_on_x_axis,
                        unsigned int num_pages_on_y_axis) {
   CPDF_Document* pSrcDoc = CPDFDocumentFromFPDFDocument(src_doc);
   if (!pSrcDoc)
     return nullptr;
 
-  if (output_width <= 0 || output_height <= 0 || num_pages_on_x_axis <= 0 ||
-      num_pages_on_y_axis <= 0) {
+  if (!IsValid(output_width, output_height, margin_left, margin_right,
+               margin_top, margin_bottom, num_pages_on_x_axis,
+               num_pages_on_y_axis)) {
     return nullptr;
   }
 
@@ -810,9 +873,10 @@ FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
   }
 
   CPDF_NPageToOneExporter exporter(pDestDoc, pSrcDoc);
-  if (!exporter.ExportNPagesToOne(page_numbers,
-                                  CFX_SizeF(output_width, output_height),
-                                  num_pages_on_x_axis, num_pages_on_y_axis)) {
+  if (!exporter.ExportNPagesToOne(
+          page_numbers, CFX_SizeF(output_width, output_height), margin_left,
+          margin_right, margin_top, margin_bottom, num_pages_on_x_axis,
+          num_pages_on_y_axis)) {
     return nullptr;
   }
   return output_doc.release();

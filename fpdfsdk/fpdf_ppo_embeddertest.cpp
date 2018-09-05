@@ -65,19 +65,19 @@ TEST_F(FPDFPPOEmbeddertest, ImportNPages) {
   ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
 
   ScopedFPDFDocument output_doc_2up(
-      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 1));
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 20, 30, 30, 2, 1));
   ASSERT_TRUE(output_doc_2up);
   EXPECT_EQ(3, FPDF_GetPageCount(output_doc_2up.get()));
   ScopedFPDFDocument output_doc_5up(
-      FPDF_ImportNPagesToOne(document(), 612, 792, 5, 1));
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 20, 30, 30, 5, 1));
   ASSERT_TRUE(output_doc_5up);
   EXPECT_EQ(1, FPDF_GetPageCount(output_doc_5up.get()));
   ScopedFPDFDocument output_doc_8up(
-      FPDF_ImportNPagesToOne(document(), 792, 612, 8, 1));
+      FPDF_ImportNPagesToOne(document(), 792, 612, 20, 20, 30, 30, 8, 1));
   ASSERT_TRUE(output_doc_8up);
   EXPECT_EQ(1, FPDF_GetPageCount(output_doc_8up.get()));
   ScopedFPDFDocument output_doc_128up(
-      FPDF_ImportNPagesToOne(document(), 792, 612, 128, 1));
+      FPDF_ImportNPagesToOne(document(), 792, 612, 20, 20, 30, 30, 128, 1));
   ASSERT_TRUE(output_doc_128up);
   EXPECT_EQ(1, FPDF_GetPageCount(output_doc_128up.get()));
 }
@@ -86,17 +86,35 @@ TEST_F(FPDFPPOEmbeddertest, BadNupParams) {
   ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
 
   FPDF_DOCUMENT output_doc_zero_row =
-      FPDF_ImportNPagesToOne(document(), 612, 792, 0, 3);
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 20, 30, 30, 0, 3);
   ASSERT_FALSE(output_doc_zero_row);
   FPDF_DOCUMENT output_doc_zero_col =
-      FPDF_ImportNPagesToOne(document(), 612, 792, 2, 0);
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 20, 30, 30, 2, 0);
   ASSERT_FALSE(output_doc_zero_col);
   FPDF_DOCUMENT output_doc_zero_width =
-      FPDF_ImportNPagesToOne(document(), 0, 792, 2, 1);
+      FPDF_ImportNPagesToOne(document(), 0, 792, 20, 20, 30, 30, 2, 1);
   ASSERT_FALSE(output_doc_zero_width);
   FPDF_DOCUMENT output_doc_zero_height =
-      FPDF_ImportNPagesToOne(document(), 612, 0, 7, 1);
+      FPDF_ImportNPagesToOne(document(), 612, 0, 20, 20, 30, 30, 7, 1);
   ASSERT_FALSE(output_doc_zero_height);
+  FPDF_DOCUMENT output_doc_bad_margin_left_right =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 400, 400, 20, 30, 2, 1);
+  ASSERT_FALSE(output_doc_bad_margin_left_right);
+  FPDF_DOCUMENT output_doc_bad_margin_top_bottom =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 25, 400, 400, 2, 1);
+  ASSERT_FALSE(output_doc_bad_margin_top_bottom);
+  FPDF_DOCUMENT output_doc_bad_margin_left_too_big =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 612, 12, 20, 30, 2, 1);
+  ASSERT_FALSE(output_doc_bad_margin_left_too_big);
+  FPDF_DOCUMENT output_doc_bad_margin_right_too_big =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 612, 20, 30, 2, 1);
+  ASSERT_FALSE(output_doc_bad_margin_right_too_big);
+  FPDF_DOCUMENT output_doc_bad_margin_top_too_big =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 30, 792, 30, 7, 1);
+  ASSERT_FALSE(output_doc_bad_margin_top_too_big);
+  FPDF_DOCUMENT output_doc_bad_margin_bottom_too_big =
+      FPDF_ImportNPagesToOne(document(), 612, 792, 20, 30, 20, 792, 7, 1);
+  ASSERT_FALSE(output_doc_bad_margin_bottom_too_big);
 }
 
 // TODO(Xlou): Add more tests to check output doc content of
@@ -105,9 +123,9 @@ TEST_F(FPDFPPOEmbeddertest, NupRenderImage) {
   ASSERT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
   const int kPageCount = 2;
   constexpr const char* kExpectedMD5s[kPageCount] = {
-      "4d225b961da0f1bced7c83273e64c9b6", "fb18142190d770cfbc329d2b071aee4d"};
+      "7da1f5556a3e7f2d5e2f57ec75d145c5", "934b5e6205baeb2ccec8a88a8b5ea980"};
   ScopedFPDFDocument output_doc_3up(
-      FPDF_ImportNPagesToOne(document(), 792, 612, 3, 1));
+      FPDF_ImportNPagesToOne(document(), 792, 612, 28, 30, 32, 34, 3, 1));
   ASSERT_TRUE(output_doc_3up);
   ASSERT_EQ(kPageCount, FPDF_GetPageCount(output_doc_3up.get()));
   for (int i = 0; i < kPageCount; ++i) {
