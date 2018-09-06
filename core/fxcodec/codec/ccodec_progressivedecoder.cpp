@@ -801,6 +801,7 @@ bool CCodec_ProgressiveDecoder::BmpReadMoreData(
 
   uint32_t dwAvail = avail_input.ValueOrDie();
   if (dwAvail == m_SrcSize) {
+    abort();
     if (dwSize > FXCODEC_BLOCK_SIZE) {
       dwSize = FXCODEC_BLOCK_SIZE;
     }
@@ -893,6 +894,7 @@ bool CCodec_ProgressiveDecoder::GifReadMoreData(CCodec_GifModule* pGifModule,
                                 : 0;
   uint32_t dwAmountToFetchFromFile = dwFileRemaining;
   if (dwUnusedBuffer == m_SrcSize) {
+    abort();
     if (dwFileRemaining > FXCODEC_BLOCK_SIZE)
       dwAmountToFetchFromFile = FXCODEC_BLOCK_SIZE;
     m_SrcSize = std::min(
@@ -1114,6 +1116,7 @@ bool CCodec_ProgressiveDecoder::JpegReadMoreData(CCodec_JpegModule* pJpegModule,
   dwSize = dwSize - m_offSet;
   uint32_t dwAvail = pJpegModule->GetAvailInput(m_pJpegContext.get());
   if (dwAvail == m_SrcSize) {
+    abort();
     if (dwSize > FXCODEC_BLOCK_SIZE) {
       dwSize = FXCODEC_BLOCK_SIZE;
     }
