@@ -68,7 +68,7 @@ class CCodec_ProgressiveDecoder :
   explicit CCodec_ProgressiveDecoder(CCodec_ModuleMgr* pCodecMgr);
   virtual ~CCodec_ProgressiveDecoder();
 
-  FXCODEC_STATUS LoadImageInfo(const RetainPtr<IFX_SeekableReadStream>& pFile,
+  FXCODEC_STATUS xLoadImageInfo(const RetainPtr<IFX_SeekableReadStream>& pFile,
                                FXCODEC_IMAGE_TYPE imageType,
                                CFX_DIBAttribute* pAttribute,
                                bool bSkipImageTypeCheck);
