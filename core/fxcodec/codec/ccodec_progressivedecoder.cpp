@@ -790,6 +790,7 @@ bool CCodec_ProgressiveDecoder::BmpReadMoreData(
     CCodec_BmpModule* pBmpModule,
     CodecModuleIface::Context* pContext,
     FXCODEC_STATUS& err_status) {
+  abort();
   return ReadMoreData(pBmpModule, pContext, false, err_status);
 }
 
@@ -848,6 +849,7 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::BmpContinueDecode() {
 #ifdef PDF_ENABLE_XFA_GIF
 bool CCodec_ProgressiveDecoder::GifReadMoreData(CCodec_GifModule* pGifModule,
                                                 FXCODEC_STATUS& err_status) {
+  abort();
   if (!ReadMoreData(pGifModule, m_pGifContext.get(), m_InvalidateGifBuffer,
                     err_status)) {
     return false;
