@@ -23,6 +23,7 @@ size_t CFX_CodecMemory::ReadBlock(void* buffer, size_t size) {
   if (!buffer || !size || IsEOF())
     return 0;
 
+  ASSERT(pos_ == 0);
   size_t bytes_to_read = std::min(size, buffer_.size() - pos_);
   memcpy(buffer, &buffer_[pos_], bytes_to_read);
   pos_ += bytes_to_read;
