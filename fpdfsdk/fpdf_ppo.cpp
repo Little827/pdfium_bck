@@ -132,10 +132,12 @@ NupPageSettings NupState::CalculatePageEdit(size_t subX,
   settings.subPageStartPoint.y = subY * m_subPageSize.height;
 
   // xScale and yScale are calculated using the content area size.
-  const float xScale =
-      (m_subPageSize.width - m_marginLeft - m_marginRight) / pagesize.width;
-  const float yScale =
-      (m_subPageSize.height - m_marginTop - m_marginBottom) / pagesize.height;
+  const float xScale = (m_subPageSize.width -
+                        (m_marginLeft + m_marginRight) / m_numPagesOnXAxis) /
+                       pagesize.width;
+  const float yScale = (m_subPageSize.height -
+                        (m_marginTop + m_marginBottom) / m_numPagesOnYAxis) /
+                       pagesize.height;
   settings.scale = std::min(xScale, yScale);
 
   float subWidth = pagesize.width * settings.scale;
