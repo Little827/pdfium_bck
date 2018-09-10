@@ -127,13 +127,13 @@ WideString CBC_HighLevelEncoder::encodeHighLevel(WideString msg,
   }
   return codewords;
 }
-int32_t CBC_HighLevelEncoder::lookAheadTest(WideString msg,
+int32_t CBC_HighLevelEncoder::lookAheadTest(const WideString& msg,
                                             int32_t startpos,
                                             int32_t currentMode) {
   if (startpos >= pdfium::base::checked_cast<int32_t>(msg.GetLength())) {
     return currentMode;
   }
-  std::vector<float> charCounts;
+  std::vector<float> charCounts(6);
   if (currentMode == ASCII_ENCODATION) {
     charCounts.push_back(0);
     charCounts.push_back(1);
