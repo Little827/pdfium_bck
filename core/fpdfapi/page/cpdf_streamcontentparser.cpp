@@ -7,6 +7,7 @@
 #include "core/fpdfapi/page/cpdf_streamcontentparser.h"
 
 #include <algorithm>
+#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -1286,9 +1287,16 @@ float CPDF_StreamContentParser::GetVerticalTextSize(float fKerning) const {
 }
 
 int32_t CPDF_StreamContentParser::GetCurrentStreamIndex() {
+  std::cerr << "m_StreamStartOffsets ";
+  for (auto o: m_StreamStartOffsets)
+    std::cerr << o << " ";
+  std::cerr << std::endl;
+
   auto it = std::upper_bound(m_StreamStartOffsets.begin(),
                              m_StreamStartOffsets.end(), m_pSyntax->GetPos());
-  return (it - m_StreamStartOffsets.begin()) - 1;
+  int32_t res = (it - m_StreamStartOffsets.begin()) - 1;
+  std::cerr << "m_pSyntax->GetPos() " << m_pSyntax->GetPos() << ", result " << res << std::endl;
+  return res;
 }
 
 void CPDF_StreamContentParser::Handle_ShowText() {

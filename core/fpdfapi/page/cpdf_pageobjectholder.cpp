@@ -7,6 +7,7 @@
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
 
 #include <algorithm>
+#include <iostream>
 #include <utility>
 
 #include "constants/transparency.h"
@@ -136,6 +137,7 @@ bool CPDF_PageObjectHolder::RemovePageObject(CPDF_PageObject* pPageObj) {
   m_PageObjectList.erase(it);
 
   int32_t content_stream = pPageObj->GetContentStream();
+  std::cerr << "CPDF_PageObjectHolder::RemovePageObject content_stream " << content_stream << std::endl;
   if (content_stream >= 0)
     m_DirtyStreams.insert(content_stream);
 
