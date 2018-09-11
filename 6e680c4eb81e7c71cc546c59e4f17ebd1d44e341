@@ -16,6 +16,24 @@
       "revId": "6e680c4eb81e7c71cc546c59e4f17ebd1d44e341",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4ee824_5093dc7f",
+        "filename": "fxbarcode/datamatrix/BC_HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-11T19:07:15Z",
+      "side": 1,
+      "message": "No effect on the runtime improvement, but reads a bit easier.",
+      "parentUuid": "2284e49e_714864cf",
+      "revId": "6e680c4eb81e7c71cc546c59e4f17ebd1d44e341",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
