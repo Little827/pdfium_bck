@@ -1417,6 +1417,169 @@ TEST_F(FPDFEditEmbeddertest, InsertPageObjectAndSave) {
   CloseSavedDocument();
 }
 
+TEST_F(FPDFEditEmbeddertest, InsertSaveRemoveSave) {
+  const int kOriginalObjectCount = 2;
+
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // {
+  //   ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+  //   WriteBitmapToPng(page_bitmap.get(), "../../1before.png");
+  // }
+
+  // Add a red rectangle.
+  ASSERT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT red_rect = FPDFPageObj_CreateNewRect(20, 100, 50, 50);
+  EXPECT_TRUE(FPDFPath_SetFillColor(red_rect, 255, 0, 0, 255));
+  EXPECT_TRUE(FPDFPath_SetDrawMode(red_rect, FPDF_FILLMODE_ALTERNATE, 0));
+  FPDFPage_InsertObject(page, red_rect);
+
+  // Verify the red rectangle was added.
+  ASSERT_EQ(kOriginalObjectCount + 1, FPDFPage_CountObjects(page));
+
+  // {
+  //   ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+  //   WriteBitmapToPng(page_bitmap.get(), "../../2add.png");
+  // }
+
+  // Save the file
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  // OpenPDFFileForWrite("../../2add.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  // ClosePDFFileForWrite();
+  UnloadPage(page);
+
+  // Re-open the file and check the page object count is still 3.
+  OpenSavedDocument(nullptr);
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_EQ(kOriginalObjectCount + 1, FPDFPage_CountObjects(saved_page));
+
+  // {
+  //   ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr,
+  //   0); WriteBitmapToPng(page_bitmap.get(), "../../3reload.png");
+  // }
+
+  // Remove the added object
+  FPDF_PAGEOBJECT added_object =
+      FPDFPage_GetObject(saved_page, kOriginalObjectCount);
+  EXPECT_TRUE(FPDFPage_RemoveObject(saved_page, added_object));
+
+  // {
+  //   ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr,
+  //   0); WriteBitmapToPng(page_bitmap.get(), "../../4remove.png");
+  // }
+
+  EXPECT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(saved_page));
+  EXPECT_TRUE(FPDFPage_GenerateContent(saved_page));
+  // OpenPDFFileForWrite("../../4remove.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(saved_document_, this, 0));
+  // ClosePDFFileForWrite();
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+
+  // Re-open the file (again) and check the page object count is still 2.
+  OpenSavedDocument(nullptr);
+  saved_page = LoadSavedPage(0);
+  EXPECT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(saved_page));
+
+  // {
+  //   ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr,
+  //   0); WriteBitmapToPng(page_bitmap.get(), "../../5after.png");
+  // }
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
+TEST_F(FPDFEditEmbeddertest, InsertSaveRemoveSaveColumns) {
+  const int kOriginalObjectCount = 396;
+
+  // Load document with some text.
+  EXPECT_TRUE(OpenDocument("columns.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  const char kOriginalMD5[] = "051db51c47fe6159d18d844ff7f466ae";
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kOriginalMD5);
+    WriteBitmapToPng(page_bitmap.get(), "../../1before.png");
+  }
+
+  // Add a red rectangle.
+  ASSERT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(page));
+  FPDF_PAGEOBJECT red_rect = FPDFPageObj_CreateNewRect(20, 100, 50, 50);
+  EXPECT_TRUE(FPDFPath_SetFillColor(red_rect, 255, 0, 0, 255));
+  EXPECT_TRUE(FPDFPath_SetDrawMode(red_rect, FPDF_FILLMODE_ALTERNATE, 0));
+  FPDFPage_InsertObject(page, red_rect);
+
+  // Verify the red rectangle was added.
+  ASSERT_EQ(kOriginalObjectCount + 1, FPDFPage_CountObjects(page));
+
+  const char kPlusRectangleMD5[] = "a2910237bb97a5e1ce3855db72d7742a";
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kPlusRectangleMD5);
+    WriteBitmapToPng(page_bitmap.get(), "../../2add.png");
+  }
+
+  // Save the file
+  EXPECT_TRUE(FPDFPage_GenerateContent(page));
+  // OpenPDFFileForWrite("../../2add.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  // ClosePDFFileForWrite();
+  UnloadPage(page);
+
+  // Re-open the file and check the page object count is still 3.
+  OpenSavedDocument(nullptr);
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_EQ(kOriginalObjectCount + 1, FPDFPage_CountObjects(saved_page));
+
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kPlusRectangleMD5);
+    WriteBitmapToPng(page_bitmap.get(), "../../3reload.png");
+  }
+
+  // Remove the added object
+  FPDF_PAGEOBJECT added_object =
+      FPDFPage_GetObject(saved_page, kOriginalObjectCount);
+  EXPECT_TRUE(FPDFPage_RemoveObject(saved_page, added_object));
+
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kOriginalMD5);
+    WriteBitmapToPng(page_bitmap.get(), "../../4remove.png");
+  }
+
+  EXPECT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(saved_page));
+  EXPECT_TRUE(FPDFPage_GenerateContent(saved_page));
+  OpenPDFFileForWrite("../../4remove.pdf");
+  EXPECT_TRUE(FPDF_SaveAsCopy(saved_document_, this, 0));
+  ClosePDFFileForWrite();
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+
+  // Re-open the file (again) and check the page object count is still 2.
+  OpenSavedDocument(nullptr);
+  saved_page = LoadSavedPage(0);
+  EXPECT_EQ(kOriginalObjectCount, FPDFPage_CountObjects(saved_page));
+
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPageWithFlags(saved_page, nullptr, 0);
+    CompareBitmap(page_bitmap.get(), 612, 792, kOriginalMD5);
+    WriteBitmapToPng(page_bitmap.get(), "../../5after.png");
+  }
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
+}
+
 TEST_F(FPDFEditEmbeddertest, InsertPageObjectEditAndSave) {
   // Load document with some text.
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
