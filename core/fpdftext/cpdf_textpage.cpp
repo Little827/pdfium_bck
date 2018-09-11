@@ -1039,7 +1039,7 @@ void CPDF_TextPage::ProcessTextObject(PDFTEXT_Obj Obj) {
         }
         PAGECHAR_INFO* charinfo = &m_TempCharList.back();
         m_TempTextBuf.Delete(m_TempTextBuf.GetLength() - 1, 1);
-        charinfo->m_Unicode = 0x2;
+        charinfo->m_Unicode = 0x200B;
         charinfo->m_Flag = FPDFTEXT_CHAR_HYPHEN;
         m_TempTextBuf.AppendChar(0xfffe);
         break;

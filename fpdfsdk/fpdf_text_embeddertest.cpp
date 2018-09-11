@@ -732,7 +732,7 @@ TEST_F(FPDFTextEmbeddertest, ControlCharacters) {
   UnloadPage(page);
 }
 
-// Testing that hyphen makers (0x0002) are replacing hard hyphens when
+// Testing that zero width whitespaces (0x2000) are replacing soft hyphens when
 // the word contains non-ASCII characters.
 TEST_F(FPDFTextEmbeddertest, bug_1029) {
   ASSERT_TRUE(OpenDocument("bug_1029.pdf"));
@@ -747,7 +747,7 @@ TEST_F(FPDFTextEmbeddertest, bug_1029) {
 
   // This text is:
   // 'METADATA table. When the split has committed, it noti' followed
-  // by a 'soft hyphen' (0x0002) and then 'fi'.
+  // by a 'soft hyphen' and then 'fi'.
   //
   // The original text has a fi ligature, but that is broken up into
   // two characters when the PDF is processed.
@@ -758,7 +758,7 @@ TEST_F(FPDFTextEmbeddertest, bug_1029) {
       0x0020, 0x0073, 0x0070, 0x006c, 0x0069, 0x0074, 0x0020, 0x0068,
       0x0061, 0x0073, 0x0020, 0x0063, 0x006f, 0x006d, 0x006d, 0x0069,
       0x0074, 0x0074, 0x0065, 0x0064, 0x002c, 0x0020, 0x0069, 0x0074,
-      0x0020, 0x006e, 0x006f, 0x0074, 0x0069, 0x0002, 0x0066, 0x0069};
+      0x0020, 0x006e, 0x006f, 0x0074, 0x0069, 0x200B, 0x0066, 0x0069};
   static_assert(page_range_length == FX_ArraySize(expected),
                 "Expected should be the same size as the range being "
                 "extracted from page.");
