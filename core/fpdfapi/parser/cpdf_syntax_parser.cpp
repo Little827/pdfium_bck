@@ -194,16 +194,18 @@ void CPDF_SyntaxParser::GetNextWordInternal(bool* bIsNumber) {
 
       if (ch == '<')
         m_WordBuffer[m_WordSize++] = ch;
-      else
+      else {
         m_Pos--;
+      }
     } else if (ch == '>') {
       if (!GetNextChar(ch))
         return;
 
       if (ch == '>')
         m_WordBuffer[m_WordSize++] = ch;
-      else
+      else {
         m_Pos--;
+      }
     }
     return;
   }
@@ -354,8 +356,9 @@ void CPDF_SyntaxParser::ToNextLine() {
 
     if (ch == '\r') {
       GetNextChar(ch);
-      if (ch != '\n')
+      if (ch != '\n') {
         --m_Pos;
+      }
       break;
     }
   }
@@ -517,8 +520,9 @@ std::unique_ptr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
     pos_restorer.AbandonRestoration();
     return ReadStream(std::move(pDict));
   }
-  if (word == ">>")
+  if (word == ">>") {
     m_Pos = SavedObjPos;
+  }
 
   return nullptr;
 }
