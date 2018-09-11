@@ -7,6 +7,7 @@
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 
 #include <algorithm>
+#include <iostream>
 #include <sstream>
 #include <utility>
 #include <vector>
@@ -30,6 +31,9 @@
 #include "third_party/base/ptr_util.h"
 
 namespace {
+
+bool doLogSet = false;
+bool doLogIncr = false;
 
 enum class ReadStatus { Normal, Backslash, Octal, FinishOctal, CarriageReturn };
 
@@ -97,7 +101,9 @@ CPDF_SyntaxParser::~CPDF_SyntaxParser() = default;
 
 bool CPDF_SyntaxParser::GetCharAt(FX_FILESIZE pos, uint8_t& ch) {
   AutoRestorer<FX_FILESIZE> save_pos(&m_Pos);
+  if (doLogSet) std::cerr << "01 m_Pos will be restored to " << m_Pos << std::endl;
   m_Pos = pos;
+  if (doLogSet) std::cerr << "02 m_Pos was set to " << m_Pos << std::endl;
   return GetNextChar(ch);
 }
 
@@ -130,6 +136,7 @@ bool CPDF_SyntaxParser::GetNextChar(uint8_t& ch) {
 
   ch = m_pFileBuf[pos - m_BufOffset];
   m_Pos++;
+  if (doLogIncr) std::cerr << "03 m_Pos was set to " << m_Pos << std::endl;
   return true;
 }
 
@@ -157,6 +164,7 @@ bool CPDF_SyntaxParser::ReadBlock(uint8_t* pBuf, uint32_t size) {
   if (!m_pFileAccess->ReadBlock(pBuf, m_Pos + m_HeaderOffset, size))
     return false;
   m_Pos += size;
+  if (doLogIncr) std::cerr << "04 m_Pos was set to " << m_Pos << std::endl;
   return true;
 }
 
@@ -182,6 +190,7 @@ void CPDF_SyntaxParser::GetNextWordInternal(bool* bIsNumber) {
 
         if (!PDFCharIsOther(ch) && !PDFCharIsNumeric(ch)) {
           m_Pos--;
+  if (doLogIncr) std::cerr << "05 m_Pos was set to " << m_Pos << std::endl;
           return;
         }
 
@@ -194,16 +203,20 @@ void CPDF_SyntaxParser::GetNextWordInternal(bool* bIsNumber) {
 
       if (ch == '<')
         m_WordBuffer[m_WordSize++] = ch;
-      else
+      else {
         m_Pos--;
+  if (doLogIncr) std::cerr << "06 m_Pos was set to " << m_Pos << std::endl;
+      }
     } else if (ch == '>') {
       if (!GetNextChar(ch))
         return;
 
       if (ch == '>')
         m_WordBuffer[m_WordSize++] = ch;
-      else
+      else {
         m_Pos--;
+  if (doLogIncr) std::cerr << "07 m_Pos was set to " << m_Pos << std::endl;
+      }
     }
     return;
   }
@@ -222,6 +235,7 @@ void CPDF_SyntaxParser::GetNextWordInternal(bool* bIsNumber) {
 
     if (PDFCharIsDelimiter(ch) || PDFCharIsWhitespace(ch)) {
       m_Pos--;
+  if (doLogIncr) std::cerr << "08 m_Pos was set to " << m_Pos << std::endl;
       break;
     }
   }
@@ -354,8 +368,10 @@ void CPDF_SyntaxParser::ToNextLine() {
 
     if (ch == '\r') {
       GetNextChar(ch);
-      if (ch != '\n')
+      if (ch != '\n') {
         --m_Pos;
+  if (doLogIncr) std::cerr << "09 m_Pos was set to " << m_Pos << std::endl;
+      }
       break;
     }
   }
@@ -383,6 +399,7 @@ void CPDF_SyntaxParser::ToNextWord() {
     }
   }
   m_Pos--;
+  if (doLogIncr) std::cerr << "10 m_Pos was set to " << m_Pos << std::endl;
 }
 
 ByteString CPDF_SyntaxParser::GetNextWord(bool* bIsNumber) {
@@ -396,6 +413,7 @@ ByteString CPDF_SyntaxParser::GetNextWord(bool* bIsNumber) {
 
 ByteString CPDF_SyntaxParser::PeekNextWord(bool* bIsNumber) {
   AutoRestorer<FX_FILESIZE> save_pos(&m_Pos);
+  if (doLogSet) std::cerr << "15 m_Pos will be restored to " << m_Pos << std::endl;
   return GetNextWord(bIsNumber);
 }
 
@@ -427,6 +445,7 @@ std::unique_ptr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
 
   if (bIsNumber) {
     AutoRestorer<FX_FILESIZE> pos_restorer(&m_Pos);
+  if (doLogSet) std::cerr << "16 m_Pos will be restored to " << m_Pos << std::endl;
     ByteString nextword = GetNextWord(&bIsNumber);
     if (!bIsNumber)
       return pdfium::MakeUnique<CPDF_Number>(word.AsStringView());
@@ -486,6 +505,7 @@ std::unique_ptr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
 
       if (inner_word == "endobj") {
         m_Pos = SavedPos;
+  if (doLogSet) std::cerr << "11 m_Pos was set to " << m_Pos << std::endl;
         break;
       }
       if (inner_word[0] != '/')
@@ -512,13 +532,16 @@ std::unique_ptr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
     }
 
     AutoRestorer<FX_FILESIZE> pos_restorer(&m_Pos);
+  if (doLogSet) std::cerr << "17 m_Pos will be restored to " << m_Pos << std::endl;
     if (GetNextWord(nullptr) != "stream")
       return std::move(pDict);
     pos_restorer.AbandonRestoration();
     return ReadStream(std::move(pDict));
   }
-  if (word == ">>")
+  if (word == ">>") {
     m_Pos = SavedObjPos;
+  if (doLogSet) std::cerr << "12 m_Pos was set to " << m_Pos << std::endl;
+  }
 
   return nullptr;
 }
@@ -576,6 +599,7 @@ unsigned int CPDF_SyntaxParser::ReadEOLMarkers(FX_FILESIZE pos) {
 
 FX_FILESIZE CPDF_SyntaxParser::FindWordPos(const ByteStringView& word) {
   AutoRestorer<FX_FILESIZE> pos_restorer(&m_Pos);
+  if (doLogSet) std::cerr << "18 m_Pos will be restored to " << m_Pos << std::endl;
   FX_FILESIZE end_offset = FindTag(word);
   while (end_offset >= 0) {
     // Stop searching when word is found.
@@ -662,6 +686,7 @@ std::unique_ptr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
   if (len >= 0) {
     const CPDF_ReadValidator::Session read_session(GetValidator().Get());
     m_Pos += ReadEOLMarkers(GetPos());
+  if (doLogIncr) std::cerr << "13 m_Pos was set to " << m_Pos << std::endl;
     memset(m_WordBuffer, 0, kEndStreamStr.GetLength() + 1);
     GetNextWordInternal(nullptr);
     if (GetValidator()->has_read_problems())
@@ -784,6 +809,7 @@ bool CPDF_SyntaxParser::BackwardsSearchToWord(const ByteStringView& tag,
       }
       if (IsWholeWord(pos, limit, tag, false)) {
         m_Pos = pos;
+  if (doLogSet) std::cerr << "14 m_Pos was set to " << m_Pos << std::endl;
         return true;
       }
     }

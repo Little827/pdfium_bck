@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/page/cpdf_contentparser.h"
 
+#include <iostream>
+
 #include "constants/page_object.h"
 #include "core/fpdfapi/font/cpdf_type3char.h"
 #include "core/fpdfapi/page/cpdf_allstates.h"
@@ -129,11 +131,14 @@ bool CPDF_ContentParser::Continue(PauseIndicatorIface* pPause) {
   if (m_CurrentStage == Stage::kPrepareContent)
     m_CurrentStage = PrepareContent();
 
+  std::cerr << "CPDF_ContentParser::Continue 1" << std::endl;
   while (m_CurrentStage == Stage::kParse) {
+    std::cerr << "CPDF_ContentParser::Continue 2" << std::endl;
     m_CurrentStage = Parse();
     if (pPause && pPause->NeedToPauseNow())
       return true;
   }
+    std::cerr << "CPDF_ContentParser::Continue 3" << std::endl;
 
   if (m_CurrentStage == Stage::kCheckClip)
     m_CurrentStage = CheckClip();
@@ -202,14 +207,15 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
         nullptr, m_parsedSet.get());
     m_pParser->GetCurStates()->m_ColorState.SetDefault();
   }
+  std::cerr << "m_CurrentOffset " << m_CurrentOffset << std::endl;
+  std::cerr << "m_Size " << m_Size << std::endl;
   if (m_CurrentOffset >= m_Size)
     return Stage::kCheckClip;
 
   if (m_StreamSegmentOffsets.empty())
     m_StreamSegmentOffsets.push_back(0);
 
-  m_CurrentOffset += m_pParser->Parse(m_pData.Get() + m_CurrentOffset,
-                                      m_Size - m_CurrentOffset,
+  m_CurrentOffset += m_pParser->Parse(m_pData.Get(), m_Size, m_CurrentOffset,
                                       PARSE_STEP_LIMIT, m_StreamSegmentOffsets);
   return Stage::kParse;
 }

@@ -46,6 +46,7 @@ class CPDF_StreamContentParser {
 
   uint32_t Parse(const uint8_t* pData,
                  uint32_t dwSize,
+                 uint32_t start_offset,
                  uint32_t max_cost,
                  const std::vector<uint32_t>& stream_start_offsets);
   CPDF_PageObjectHolder* GetPageObjectHolder() const {
@@ -238,6 +239,7 @@ class CPDF_StreamContentParser {
   float m_Type3Data[6];
   ContentParam m_ParamBuf[kParamBufSize];
   std::vector<uint32_t> m_StreamStartOffsets;
+  uint32_t m_StartParseOffset;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_STREAMCONTENTPARSER_H_

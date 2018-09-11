@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 
+#include <iostream>
 #include <map>
 #include <memory>
 #include <set>
@@ -79,17 +80,23 @@ void CPDF_PageContentGenerator::GenerateContent() {
 
 std::map<int32_t, std::unique_ptr<std::ostringstream>>
 CPDF_PageContentGenerator::GenerateModifiedStreams() {
+  std::cerr << std::endl << "GenerateModifiedStreams" << std::endl;
   // Make sure default graphics are created.
   GetOrCreateDefaultGraphics();
 
   // Figure out which streams are dirty.
   std::set<int32_t> all_dirty_streams;
   for (auto& pPageObj : m_pageObjects) {
-    if (pPageObj->IsDirty())
+    if (pPageObj->IsDirty()) {
+      std::cerr << "pPageObj type " << (int)pPageObj->GetType() <<  " is dirty" << std::endl;
+      std::cerr << "therefore stream " << pPageObj->GetContentStream() << " is dirty" << std::endl;
       all_dirty_streams.insert(pPageObj->GetContentStream());
+    }
   }
   const std::set<int32_t>& marked_dirty_streams =
       m_pObjHolder->GetDirtyStreams();
+  for (auto s: marked_dirty_streams)
+    std::cerr << "stream " << s << " was marked as dirty" << std::endl;
   all_dirty_streams.insert(marked_dirty_streams.begin(),
                            marked_dirty_streams.end());
 
