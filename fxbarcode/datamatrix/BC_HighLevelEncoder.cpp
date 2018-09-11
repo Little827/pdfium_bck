@@ -127,27 +127,27 @@ WideString CBC_HighLevelEncoder::encodeHighLevel(WideString msg,
   }
   return codewords;
 }
-int32_t CBC_HighLevelEncoder::lookAheadTest(WideString msg,
+int32_t CBC_HighLevelEncoder::lookAheadTest(const WideString& msg,
                                             int32_t startpos,
                                             int32_t currentMode) {
   if (startpos >= pdfium::base::checked_cast<int32_t>(msg.GetLength())) {
     return currentMode;
   }
-  std::vector<float> charCounts;
+  std::vector<float> charCounts(6);
   if (currentMode == ASCII_ENCODATION) {
-    charCounts.push_back(0);
-    charCounts.push_back(1);
-    charCounts.push_back(1);
-    charCounts.push_back(1);
-    charCounts.push_back(1);
-    charCounts.push_back(1.25f);
+    charCounts[0] = 0;
+    charCounts[1] = 1;
+    charCounts[2] = 1;
+    charCounts[3] = 1;
+    charCounts[4] = 1;
+    charCounts[5] = 1.25f;
   } else {
-    charCounts.push_back(1);
-    charCounts.push_back(2);
-    charCounts.push_back(2);
-    charCounts.push_back(2);
-    charCounts.push_back(2);
-    charCounts.push_back(2.25f);
+    charCounts[0] = 1;
+    charCounts[1] = 2;
+    charCounts[2] = 2;
+    charCounts[3] = 2;
+    charCounts[4] = 2;
+    charCounts[5] = 2.25f;
     charCounts[currentMode] = 0;
   }
   int32_t charsProcessed = 0;
