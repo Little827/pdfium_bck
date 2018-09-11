@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "37963c14_56b8679d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-11T22:46:58Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "cdbb8c9d_fd8dd984",
+      "revId": "b890984d0144c97d642b7e6c018192b23fdc87ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35d9396f_10e5b830",
         "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
         "patchSetId": 8
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "We know |start_offset| \u003c |dwSize|, since CPDF_ContentParser::Parse() returns before calling CPDF_StreamContentParser::Parse() if |m_CurrentOffset| \u003e\u003d |m_Size|.",
       "parentUuid": "49bd886e_28720c2c",
+      "revId": "b890984d0144c97d642b7e6c018192b23fdc87ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "accc04c2_64124ef9",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-11T22:46:58Z",
+      "side": 1,
+      "message": "Whoops, I got the logic inverted in my original comment. Can we add an ASSERT()? There is no guarantee there will ever be only 1 caller, and that caller will do the right thing.",
+      "parentUuid": "6bc26636_6c77e22a",
       "revId": "b890984d0144c97d642b7e6c018192b23fdc87ff",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
