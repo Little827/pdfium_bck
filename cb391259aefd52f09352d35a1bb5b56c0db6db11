@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "027a5707_434c73d0",
+        "filename": "core/fxge/dib/cfx_imagestretcher.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-12T04:25:35Z",
+      "side": 1,
+      "message": "This should have been: +\u003d 1",
+      "revId": "cb391259aefd52f09352d35a1bb5b56c0db6db11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
