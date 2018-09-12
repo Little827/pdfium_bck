@@ -1224,11 +1224,14 @@ void CPDF_DIBBase::DownSampleScanline8Bit(int orig_Bpp,
     }
     return;
   }
+
+  size_t num_bits = m_bpc * m_nComponents;
   for (int i = 0; i < clip_width; i++) {
     uint32_t src_x = (clip_left + i) * src_width / dest_width;
     if (bFlipX)
       src_x = src_width - src_x - 1;
     src_x %= src_width;
+    src_x /= num_bits;
     uint8_t index = pSrcLine[src_x];
     if (dest_Bpp == 1) {
       dest_scan[i] = index;
