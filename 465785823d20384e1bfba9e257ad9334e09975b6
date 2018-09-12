@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ee170ff_a38f6d54",
+        "filename": "core/fxcrt/fx_number.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-12T22:14:01Z",
+      "side": 1,
+      "message": "NOTE: this is the one behavioral change I wanted to introduce so that \n3386074900 returns a float of 3.386+09 rather than -908892396.0",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 57
+      },
+      "revId": "465785823d20384e1bfba9e257ad9334e09975b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
