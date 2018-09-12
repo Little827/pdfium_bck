@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5000eefb_058fc3e5",
+        "filename": "core/fpdfapi/font/cpdf_cmap.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-12T21:04:29Z",
+      "side": 1,
+      "message": "The method can be const too.",
+      "revId": "5b9a0a9c12960e303d312656da4d49c8997b617d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a51161_8dfe4c1b",
+        "filename": "core/fpdfapi/font/cpdf_cmapparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-12T21:04:29Z",
+      "side": 1,
+      "message": "const auto\u0026 ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 10
+      },
+      "revId": "5b9a0a9c12960e303d312656da4d49c8997b617d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f79280_c74abe50",
+        "filename": "core/fpdfapi/font/cpdf_cmapparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-12T21:04:29Z",
+      "side": 1,
+      "message": "more const auto.",
+      "range": {
+        "startLine": 120,
+        "startChar": 13,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "5b9a0a9c12960e303d312656da4d49c8997b617d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
