@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ce4cfcc_3521e45b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-12T18:54:55Z",
+      "side": 1,
+      "message": "operations?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "ee17920b282ea2d896debe89cfed7120ec1497d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96020e20_82dcd445",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-12T18:54:55Z",
+      "side": 1,
+      "message": "missing a verb here",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "ee17920b282ea2d896debe89cfed7120ec1497d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c89028_fbc92874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-12T18:54:55Z",
+      "side": 1,
+      "message": "dominant term?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "ee17920b282ea2d896debe89cfed7120ec1497d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c9d8f7_218042fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-12T18:54:55Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 46
+      },
+      "revId": "ee17920b282ea2d896debe89cfed7120ec1497d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e47a14d_0688b000",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-12T18:54:55Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "ee17920b282ea2d896debe89cfed7120ec1497d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
