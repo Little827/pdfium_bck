@@ -347,12 +347,16 @@ FPDFPageObj_RemoveMark(FPDF_PAGEOBJECT page_object, FPDF_PAGEOBJECTMARK mark);
 //   mark   - handle to a content mark.
 //   buffer - buffer for holding the returned name in UTF16-LE.
 //   buflen - length of the buffer.
+//   out_buflen - pointer to variable that will receive the minimum buffer size
+//   to contain the name.
+//                Not filled if false is returned.
 //
 // Returns the length of the name.
-FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_GetName(FPDF_PAGEOBJECTMARK mark,
                         void* buffer,
-                        unsigned long buflen);
+                        unsigned long buflen,
+                        unsigned long* out_buflen);
 
 // Experimental API.
 // Get the number of key/value pair parameters in |mark|.
@@ -368,17 +372,21 @@ FPDFPageObjMark_CountParams(FPDF_PAGEOBJECTMARK mark);
 // Get the key of a property in a content mark. |buffer| is only modified if
 // |buflen| is longer than the length of the key.
 //
-//   mark   - handle to a content mark.
-//   index  - index of the property.
-//   buffer - buffer for holding the returned key in UTF16-LE.
-//   buflen - length of the buffer.
+//   mark   -     handle to a content mark.
+//   index  -     index of the property.
+//   buffer -     buffer for holding the returned key in UTF16-LE.
+//   buflen -     length of the buffer.
+//   out_buflen - pointer to variable that will receive the minimum buffer size
+//   to contain the key.
+//                Not filled if false is returned.
 //
-// Returns the length of the key.
-FPDF_EXPORT unsigned long FPDF_CALLCONV
+// Returns TRUE if the operation was successful, FALSE otherwise.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObjMark_GetParamKey(FPDF_PAGEOBJECTMARK mark,
                             unsigned long index,
                             void* buffer,
-                            unsigned long buflen);
+                            unsigned long buflen,
+                            unsigned long* out_buflen);
 
 // Experimental API.
 // Get the type of the value of a property in a content mark by key.
@@ -415,7 +423,8 @@ FPDFPageObjMark_GetParamIntValue(FPDF_PAGEOBJECTMARK mark,
 //   key        - string key of the property.
 //   buffer     - buffer for holding the returned value in UTF16-LE.
 //   buflen     - length of the buffer.
-//   out_buflen - pointer to variable that will receive the length of the value.
+//   out_buflen - pointer to variable that will receive the minimum buffer size
+//   to contain the value.
 //                Not filled if false is returned.
 //
 // Returns TRUE if the key maps to a string/blob value, FALSE otherwise.
@@ -435,7 +444,8 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
 //   key        - string key of the property.
 //   buffer     - buffer for holding the returned value.
 //   buflen     - length of the buffer.
-//   out_buflen - pointer to variable that will receive the length of the value.
+//   out_buflen - pointer to variable that will receive the minimum buffer size
+//   to contain the value.
 //                Not filled if false is returned.
 //
 // Returns TRUE if the key maps to a string/blob value, FALSE otherwise.

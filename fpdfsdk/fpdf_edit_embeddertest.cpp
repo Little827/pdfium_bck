@@ -541,7 +541,10 @@ void CheckMarkCounts(FPDF_PAGE page,
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
       char buffer[256];
-      ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+      unsigned long name_len = 999u;
+      ASSERT_TRUE(
+          FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+      EXPECT_GT(name_len, 0u);
       std::wstring name =
           GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
       if (name == L"Prime") {
@@ -551,9 +554,9 @@ void CheckMarkCounts(FPDF_PAGE page,
         int expected_square = start_from + i;
         EXPECT_EQ(1, FPDFPageObjMark_CountParams(mark));
 
-        unsigned long get_param_key_return =
-            FPDFPageObjMark_GetParamKey(mark, 0, buffer, sizeof(buffer));
-        ASSERT_GT(get_param_key_return, 0u);
+        unsigned long get_param_key_return = 999u;
+        ASSERT_TRUE(FPDFPageObjMark_GetParamKey(mark, 0, buffer, sizeof(buffer),
+                                                &get_param_key_return));
         EXPECT_EQ((6u + 1u) * 2u, get_param_key_return);
         std::wstring key =
             GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
@@ -571,9 +574,9 @@ void CheckMarkCounts(FPDF_PAGE page,
         bounds_count++;
         EXPECT_EQ(1, FPDFPageObjMark_CountParams(mark));
 
-        unsigned long get_param_key_return =
-            FPDFPageObjMark_GetParamKey(mark, 0, buffer, sizeof(buffer));
-        ASSERT_GT(get_param_key_return, 0u);
+        unsigned long get_param_key_return = 999u;
+        ASSERT_TRUE(FPDFPageObjMark_GetParamKey(mark, 0, buffer, sizeof(buffer),
+                                                &get_param_key_return));
         EXPECT_EQ((8u + 1u) * 2u, get_param_key_return);
         std::wstring key =
             GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
@@ -660,7 +663,10 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkedObjectsPrime) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
       char buffer[256];
-      ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+      unsigned long name_len = 999u;
+      ASSERT_TRUE(
+          FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+      EXPECT_GT(name_len, 0u);
       std::wstring name =
           GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
       if (name == L"Prime") {
@@ -726,7 +732,10 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarks) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
       char buffer[256];
-      ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+      unsigned long name_len = 999u;
+      ASSERT_TRUE(
+          FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+      EXPECT_GT(name_len, 0u);
       std::wstring name =
           GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
       if (name == L"Prime") {
@@ -775,7 +784,10 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkParam) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
       char buffer[256];
-      ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+      unsigned long name_len = 999u;
+      ASSERT_TRUE(
+          FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+      EXPECT_GT(name_len, 0u);
       std::wstring name =
           GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
       if (name == L"Square") {
@@ -812,7 +824,10 @@ TEST_F(FPDFEditEmbeddertest, RemoveMarkParam) {
       FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, j);
 
       char buffer[256];
-      ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+      unsigned long name_len = 999u;
+      ASSERT_TRUE(
+          FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+      EXPECT_GT(name_len, 0u);
       std::wstring name =
           GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
       if (name == L"Square") {
@@ -2497,7 +2512,9 @@ TEST_F(FPDFEditEmbeddertest, SetMarkParam) {
   FPDF_PAGEOBJECTMARK mark = FPDFPageObj_GetMark(page_object, 1);
   ASSERT_TRUE(mark);
   char buffer[256];
-  ASSERT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+  unsigned long name_len = 999u;
+  ASSERT_TRUE(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+  EXPECT_EQ((6u + 1u) * 2u, name_len);
   ASSERT_EQ(L"Bounds",
             GetPlatformWString(reinterpret_cast<unsigned short*>(buffer)));
   unsigned long out_buffer_len;
@@ -2573,7 +2590,9 @@ TEST_F(FPDFEditEmbeddertest, AddMarkedText) {
   EXPECT_EQ(1, FPDFPageObj_CountMarks(text_object));
   EXPECT_EQ(mark, FPDFPageObj_GetMark(text_object, 0));
   char buffer[256];
-  EXPECT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+  unsigned long name_len = 999u;
+  ASSERT_TRUE(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+  EXPECT_EQ((12u + 1u) * 2, name_len);
   std::wstring name =
       GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
   EXPECT_EQ(L"TestMarkName", name);
@@ -2648,7 +2667,10 @@ TEST_F(FPDFEditEmbeddertest, AddMarkedText) {
   EXPECT_EQ(1, FPDFPageObj_CountMarks(text_object));
   mark = FPDFPageObj_GetMark(text_object, 0);
   EXPECT_TRUE(mark);
-  EXPECT_GT(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer)), 0u);
+
+  name_len = 999u;
+  ASSERT_TRUE(FPDFPageObjMark_GetName(mark, buffer, sizeof(buffer), &name_len));
+  EXPECT_EQ((12u + 1u) * 2, name_len);
   name = GetPlatformWString(reinterpret_cast<unsigned short*>(buffer));
   EXPECT_EQ(L"TestMarkName", name);
 
