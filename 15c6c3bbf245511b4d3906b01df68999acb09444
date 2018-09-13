@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98c874e2_afc0f708",
+        "filename": "core/fpdfapi/parser/cpdf_number.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-13T01:22:26Z",
+      "side": 1,
+      "message": "Maybe consider adding FX_Number::GetString(), if we find enough use cases?",
+      "revId": "15c6c3bbf245511b4d3906b01df68999acb09444",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151c367c_18412fef",
+        "filename": "core/fxcrt/fx_number.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-13T01:22:26Z",
+      "side": 1,
+      "message": "Pull out std::numeric_limits\u003cint\u003e::max() to a constant? Possibly even constexpr?",
+      "revId": "15c6c3bbf245511b4d3906b01df68999acb09444",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20af49f5_46831297",
+        "filename": "core/fxcrt/fx_number.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-13T01:22:26Z",
+      "side": 1,
+      "message": "Move this to line 68 and use it in the comparisons?",
+      "revId": "15c6c3bbf245511b4d3906b01df68999acb09444",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea6a99d_7a2094cc",
+        "filename": "core/fxcrt/fx_number.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-13T01:22:26Z",
+      "side": 1,
+      "message": "Can ByteStringView be forward declared?",
+      "revId": "15c6c3bbf245511b4d3906b01df68999acb09444",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcfa3088_6faf838a",
+        "filename": "core/fxcrt/fx_number.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-13T01:22:26Z",
+      "side": 1,
+      "message": "BTW, some folks have started using Google C++ style for brand new code. Up to you to do what you prefer.",
+      "revId": "15c6c3bbf245511b4d3906b01df68999acb09444",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
