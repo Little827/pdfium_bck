@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "376c386e_1d348ec2",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-13T00:49:34Z",
+      "side": 1,
+      "message": "Do we have to go to doubles, or can we stick with floats? Are you worried floats are going to have similar issues where operations can end up with unrepresentable values? Or precision issues?",
+      "revId": "badd8a7ae2b87389f9ba7d84a3c273543dc004ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
