@@ -16,6 +16,24 @@
       "revId": "badd8a7ae2b87389f9ba7d84a3c273543dc004ac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2246d83_f56266f9",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-13T17:30:04Z",
+      "side": 1,
+      "message": "I was thinking about precision:  ceil takes a double and returns a double, so we\u0027re already promoting to double, so might as well use it.\n\nRewrite to use float variants and do float arithmetic.",
+      "parentUuid": "376c386e_1d348ec2",
+      "revId": "badd8a7ae2b87389f9ba7d84a3c273543dc004ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
