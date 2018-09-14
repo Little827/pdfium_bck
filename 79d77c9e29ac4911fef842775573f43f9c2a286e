@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1536917933 -0700\nnonce ACQ0HpwkiuveHQXOxnwt7SsnqRoLCR6Wlro+77WvA+drQ4LB0OAn6DtyR9cwXQj59s9GBW0hRBa8\n\n0000000000000000000000000000000000000000 79d77c9e29ac4911fef842775573f43f9c2a286e refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlubga0ACgkQqzYtYVpm\n/XtBkgf+LmbmR8dnmaHrE/Cy4jegXuJnIzblzlJhHbQA87ErzvJq0ro3hytv2TcM\noiRHluQoGKy7ew7kfEBvVpnj2y8BrO9xL2273ldH7dkeJf25oLW8gbAozwsI9iJ/\n2uTFOpOoViHCpyJgSUDJ5NSSYCFjJD+WMHQlXYV+/w5qkTbhCpGkAd4chs4haWs3\nj1CWMJpwH4sgXpFnfn16cgva2OR5vOnm3wi5w5ca0EQQrPWge8+CQiY6oM+8CM1L\nT2HjEPHCrQq9vVVrBFOtNN6onZqtGORnnFLEEpwt8T+V9UyhopECIStMqYUUnbHF\n119udO40VQ0xGVxuANzxTRU3DIWhPA\u003d\u003d\n\u003dmxCm\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa411393_b92709e2",
+        "filename": "fxbarcode/qrcode/BC_QRCoderMatrixUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-14T18:09:17Z",
+      "side": 1,
+      "message": "assumes square.  Does FX_ArraySize(kPositionAdjustmentPattern[y]) work?\n(several places)",
+      "range": {
+        "startLine": 276,
+        "startChar": 40,
+        "endLine": 276,
+        "endChar": 66
+      },
+      "revId": "79d77c9e29ac4911fef842775573f43f9c2a286e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da00b8e_da82332b",
+        "filename": "fxbarcode/qrcode/BC_QRCoderMatrixUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-14T18:09:17Z",
+      "side": 1,
+      "message": "can we write \n  for (int32_t y : kPositionAdjustmentPatternCoordinates[index]) {\n\n(and below) since i and j don\u0027t figure into other computations?",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 47
+      },
+      "revId": "79d77c9e29ac4911fef842775573f43f9c2a286e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
