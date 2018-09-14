@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b03442f_bb39818c",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-14T21:33:09Z",
+      "side": 1,
+      "message": "yeah, this might work (I wasn\u0027t willing to do any explicit cleanup when I took a stab at it).\n\nCreate CPDF_ModuleManager::StockFontClearer class to do line 193, then put a member into CPDF_Document at the right place?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "222c152de38b68e12d5bc66bebf5aa2c6d6bdb4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca85754_3bba3fbd",
+        "filename": "xfa/fgas/font/cfgas_gefont.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-14T21:33:09Z",
+      "side": 1,
+      "message": "same idea here.  Can we make m_pFont a MaybeOwned?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "222c152de38b68e12d5bc66bebf5aa2c6d6bdb4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
