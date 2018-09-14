@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d05b229_fe3ac8b4",
+        "filename": "xfa/fgas/font/cfgas_gefont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-14T21:56:08Z",
+      "side": 1,
+      "message": "nit: do we prefer the following?\n\n  if (m_dwLogFontStyle.has_value())\n     return m_dwLogFontStyle.value();",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 29
+      },
+      "revId": "e5f38eca0e60e11bba7bfdd05020a9063e804679",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
