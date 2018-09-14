@@ -121,7 +121,7 @@ bool CFGAS_GEFont::InitFont() {
   if (m_pFontEncoding)
     return true;
 
-  m_pFontEncoding = FX_CreateFontEncodingEx(m_pFont, FXFM_ENCODING_NONE);
+  m_pFontEncoding = FX_CreateFontEncodingEx(m_pFont);
   return !!m_pFontEncoding;
 }
 
