@@ -57,6 +57,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(
 CFGAS_GEFont::CFGAS_GEFont(CFGAS_FontMgr* pFontMgr) : m_pFontMgr(pFontMgr) {}
 
 CFGAS_GEFont::~CFGAS_GEFont() {
+  m_pFontEncoding.reset();  // Has an UnownedPtr to |m_pFont|.
   if (!m_bExternalFont)
     delete m_pFont;
 }
