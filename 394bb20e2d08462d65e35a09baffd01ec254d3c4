@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb0e746b_bd738357",
+        "filename": "fxbarcode/qrcode/BC_QRCoderEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-14T23:30:42Z",
+      "side": 0,
+      "message": "Only caller is MergeString().",
+      "revId": "394bb20e2d08462d65e35a09baffd01ec254d3c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a867531b_71cb1cec",
+        "filename": "fxbarcode/qrcode/BC_QRCoderEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-14T23:30:42Z",
+      "side": 0,
+      "message": "Only caller is... MergeString().",
+      "revId": "394bb20e2d08462d65e35a09baffd01ec254d3c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
