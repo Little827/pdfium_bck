@@ -23,6 +23,30 @@
       "revId": "853303b9ed9268b6fcf11266acbd87bb91f67e94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac6bf1a_85edab6d",
+        "filename": "fxbarcode/qrcode/BC_QRCoderMatrixUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-14T23:33:59Z",
+      "side": 1,
+      "message": "It\u0027s in the next CL, but I moved it here.",
+      "parentUuid": "b1565e18_74e80997",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "853303b9ed9268b6fcf11266acbd87bb91f67e94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
