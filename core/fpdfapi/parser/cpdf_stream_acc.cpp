@@ -56,7 +56,7 @@ void CPDF_StreamAcc::LoadAllData(bool bRawAccess,
     pSrcData = std::move(pTempSrcData);
   }
 
-  uint8_t* pDecodedData = nullptr;
+  std::unique_ptr<uint8_t, FxFreeDeleter> pDecodedData;
   uint32_t dwDecodedSize = 0;
   if (!PDF_DataDecode({pSrcData.Get(), dwSrcSize}, m_pStream->GetDict(),
                       estimated_size, bImageAcc, &pDecodedData, &dwDecodedSize,
@@ -66,16 +66,13 @@ void CPDF_StreamAcc::LoadAllData(bool bRawAccess,
     return;
   }
 
-  if (!pDecodedData)
-    return;
-
-  if (pDecodedData == pSrcData.Get()) {
+  if (pDecodedData) {
+    ASSERT(pDecodedData.get() != pSrcData.Get());
+    m_pData = std::move(pDecodedData);
+    m_dwSize = dwDecodedSize;
+  } else {
     m_pData = std::move(pSrcData);
     m_dwSize = dwSrcSize;
-  } else {
-    std::unique_ptr<uint8_t, FxFreeDeleter> p(pDecodedData);
-    m_pData = std::move(p);
-    m_dwSize = dwDecodedSize;
   }
 }
 
