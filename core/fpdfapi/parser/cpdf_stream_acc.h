@@ -40,11 +40,10 @@ class CPDF_StreamAcc final : public Retainable {
   const CPDF_Dictionary* GetImageParam() const { return m_pImageParam.Get(); }
   std::unique_ptr<uint8_t, FxFreeDeleter> DetachData();
 
- protected:
+ private:
   explicit CPDF_StreamAcc(const CPDF_Stream* pStream);
   ~CPDF_StreamAcc() override;
 
- private:
   uint8_t* m_pData = nullptr;
   uint32_t m_dwSize = 0;
   bool m_bNewBuf = false;
