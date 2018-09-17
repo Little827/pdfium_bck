@@ -16,6 +16,24 @@
       "revId": "1ded9ff94b1ab520d71181a3f49f70cd4be45db7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2e4a9a_e31425ed",
+        "filename": "fxjs/cjs_globalvariablearray.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-17T23:36:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8b1de5_f809445d",
+      "revId": "1ded9ff94b1ab520d71181a3f49f70cd4be45db7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
