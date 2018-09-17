@@ -46,6 +46,7 @@ class CPDF_StreamAcc final : public Retainable {
   ~CPDF_StreamAcc() override;
 
   void LoadAllData(bool bRawAccess, uint32_t estimated_size, bool bImageAcc);
+  std::unique_ptr<uint8_t, FxFreeDeleter> ReadRawStream();
 
   uint8_t* m_pData = nullptr;
   uint32_t m_dwSize = 0;
