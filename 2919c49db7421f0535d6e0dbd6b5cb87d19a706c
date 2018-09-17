@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0487cbe5_2ce9d943",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T22:42:36Z",
+      "side": 1,
+      "message": "I\u0027m only eyeballing the existing impl, but I think it will do 0 vs 2. Better to emphasize the need for consistent APIs.",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "2919c49db7421f0535d6e0dbd6b5cb87d19a706c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ef7d45_43bf7616",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T22:42:36Z",
+      "side": 1,
+      "message": "Should this also check to make sure it\u0027s no longer 999?",
+      "revId": "2919c49db7421f0535d6e0dbd6b5cb87d19a706c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af95bd3_8e2d70d1",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T22:42:36Z",
+      "side": 1,
+      "message": "Out of date. In general, can we make a pass through the documentation here? It\u0027s slightly more confusing now with a buffer param and 2 buflen params.",
+      "revId": "2919c49db7421f0535d6e0dbd6b5cb87d19a706c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
