@@ -336,7 +336,9 @@ FPDFPageObj_RemoveMark(FPDF_PAGEOBJECT page_object, FPDF_PAGEOBJECTMARK mark);
 // than the length of the name.
 //
 //   mark   - handle to a content mark.
-//   buffer - buffer for holding the returned name in UTF16-LE.
+//   buffer - buffer for holding the returned name in UTF16-LE. If null is
+//            passed, the method just returns the buffer size in bytes needed
+//            to hold the name.
 //   buflen - length of the buffer.
 //
 // Returns the length of the name.
@@ -361,7 +363,9 @@ FPDFPageObjMark_CountParams(FPDF_PAGEOBJECTMARK mark);
 //
 //   mark   - handle to a content mark.
 //   index  - index of the property.
-//   buffer - buffer for holding the returned key in UTF16-LE.
+//   buffer - buffer for holding the returned key in UTF16-LE. If null is
+//            passed, the method just returns the buffer size in bytes needed
+//            to hold the key.
 //   buflen - length of the buffer.
 //
 // Returns the length of the key.
@@ -404,7 +408,9 @@ FPDFPageObjMark_GetParamIntValue(FPDF_PAGEOBJECTMARK mark,
 //
 //   mark       - handle to a content mark.
 //   key        - string key of the property.
-//   buffer     - buffer for holding the returned value in UTF16-LE.
+//   buffer     - buffer for holding the returned value in UTF16-LE. If null is
+//                passed, the method just returns the buffer size in bytes
+//                needed to hold the value.
 //   buflen     - length of the buffer.
 //   out_buflen - pointer to variable that will receive the length of the value.
 //                Not filled if false is returned.
@@ -424,7 +430,9 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
 //
 //   mark       - handle to a content mark.
 //   key        - string key of the property.
-//   buffer     - buffer for holding the returned value.
+//   buffer     - buffer for holding the returned value. If null is passed, the
+//                method just returns the buffer size in bytes needed to hold
+//                the value.
 //   buflen     - length of the buffer.
 //   out_buflen - pointer to variable that will receive the length of the value.
 //                Not filled if false is returned.
