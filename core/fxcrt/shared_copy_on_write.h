@@ -29,7 +29,7 @@ class SharedCopyOnWrite {
   }
 
   SharedCopyOnWrite& operator=(const SharedCopyOnWrite& that) {
-    if (*this != that)
+    if (this != &that)
       m_pObject = that.m_pObject;
     return *this;
   }
