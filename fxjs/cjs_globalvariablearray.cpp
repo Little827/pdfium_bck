@@ -15,47 +15,51 @@ CJS_GlobalVariableArray::CJS_GlobalVariableArray() {}
 
 CJS_GlobalVariableArray::~CJS_GlobalVariableArray() {}
 
-void CJS_GlobalVariableArray::Copy(const CJS_GlobalVariableArray& array) {
-  m_Array.clear();
-  for (int i = 0, sz = array.Count(); i < sz; i++) {
-    CJS_KeyValue* pOldObjData = array.GetAt(i);
-    switch (pOldObjData->nType) {
-      case JS_GlobalDataType::NUMBER: {
-        auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
-        pNewObjData->sKey = pOldObjData->sKey;
-        pNewObjData->nType = pOldObjData->nType;
-        pNewObjData->dData = pOldObjData->dData;
-        Add(std::move(pNewObjData));
-      } break;
-      case JS_GlobalDataType::BOOLEAN: {
-        auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
-        pNewObjData->sKey = pOldObjData->sKey;
-        pNewObjData->nType = pOldObjData->nType;
-        pNewObjData->bData = pOldObjData->bData;
-        Add(std::move(pNewObjData));
-      } break;
-      case JS_GlobalDataType::STRING: {
-        auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
-        pNewObjData->sKey = pOldObjData->sKey;
-        pNewObjData->nType = pOldObjData->nType;
-        pNewObjData->sData = pOldObjData->sData;
-        Add(std::move(pNewObjData));
-      } break;
-      case JS_GlobalDataType::OBJECT: {
-        auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
-        pNewObjData->sKey = pOldObjData->sKey;
-        pNewObjData->nType = pOldObjData->nType;
-        pNewObjData->objData.Copy(pOldObjData->objData);
-        Add(std::move(pNewObjData));
-      } break;
-      case JS_GlobalDataType::NULLOBJ: {
-        auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
-        pNewObjData->sKey = pOldObjData->sKey;
-        pNewObjData->nType = pOldObjData->nType;
-        Add(std::move(pNewObjData));
-      } break;
+CJS_GlobalVariableArray& CJS_GlobalVariableArray::operator=(
+    const CJS_GlobalVariableArray& that) {
+  if (this != &that) {
+    m_Array.clear();
+    for (int i = 0, sz = that.Count(); i < sz; i++) {
+      CJS_KeyValue* pOldObjData = that.GetAt(i);
+      switch (pOldObjData->nType) {
+        case JS_GlobalDataType::NUMBER: {
+          auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
+          pNewObjData->sKey = pOldObjData->sKey;
+          pNewObjData->nType = pOldObjData->nType;
+          pNewObjData->dData = pOldObjData->dData;
+          Add(std::move(pNewObjData));
+        } break;
+        case JS_GlobalDataType::BOOLEAN: {
+          auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
+          pNewObjData->sKey = pOldObjData->sKey;
+          pNewObjData->nType = pOldObjData->nType;
+          pNewObjData->bData = pOldObjData->bData;
+          Add(std::move(pNewObjData));
+        } break;
+        case JS_GlobalDataType::STRING: {
+          auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
+          pNewObjData->sKey = pOldObjData->sKey;
+          pNewObjData->nType = pOldObjData->nType;
+          pNewObjData->sData = pOldObjData->sData;
+          Add(std::move(pNewObjData));
+        } break;
+        case JS_GlobalDataType::OBJECT: {
+          auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
+          pNewObjData->sKey = pOldObjData->sKey;
+          pNewObjData->nType = pOldObjData->nType;
+          pNewObjData->objData = pOldObjData->objData;
+          Add(std::move(pNewObjData));
+        } break;
+        case JS_GlobalDataType::NULLOBJ: {
+          auto pNewObjData = pdfium::MakeUnique<CJS_KeyValue>();
+          pNewObjData->sKey = pOldObjData->sKey;
+          pNewObjData->nType = pOldObjData->nType;
+          Add(std::move(pNewObjData));
+        } break;
+      }
     }
   }
+  return *this;
 }
 
 void CJS_GlobalVariableArray::Add(std::unique_ptr<CJS_KeyValue> pKeyValue) {
