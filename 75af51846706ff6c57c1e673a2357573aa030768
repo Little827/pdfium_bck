@@ -23,6 +23,30 @@
       "revId": "75af51846706ff6c57c1e673a2357573aa030768",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c8333d_70e74689",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T19:34:22Z",
+      "side": 1,
+      "message": "I meant to say \"Extract duplicate code ...\" but experienced packet loss between brain and fingers.",
+      "parentUuid": "dc9f26d0_4d11a4a9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "75af51846706ff6c57c1e673a2357573aa030768",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
