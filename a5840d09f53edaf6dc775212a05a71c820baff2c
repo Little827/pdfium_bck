@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abb2d441_09030aab",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T22:57:41Z",
+      "side": 1,
+      "message": "Ditto re: inverting + early return.",
+      "revId": "a5840d09f53edaf6dc775212a05a71c820baff2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d369818d_1dea5e3f",
+        "filename": "core/fpdfapi/page/cpdf_colorstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T22:57:41Z",
+      "side": 1,
+      "message": "Can these be in the initializer list now, if we add a copy ctor?",
+      "revId": "a5840d09f53edaf6dc775212a05a71c820baff2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
