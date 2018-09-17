@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87d7b2f2_489255e1",
+        "filename": "core/fxcrt/retain_ptr.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T23:12:33Z",
+      "side": 1,
+      "message": "nit: blank line after.",
+      "revId": "f18679048730c3919f955f1626b826e5e1bb1a4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
