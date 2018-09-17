@@ -741,7 +741,7 @@ class CCodec_FaxEncoder {
  private:
   CFX_BinaryBuf m_DestBuf;
   std::vector<uint8_t> m_RefLine;
-  uint8_t* m_pLineBuf;
+  std::unique_ptr<uint8_t, FxFreeDeleter> m_pLineBuf;
   const int m_Cols;
   const int m_Rows;
   const int m_Pitch;

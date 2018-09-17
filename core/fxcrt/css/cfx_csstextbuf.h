@@ -7,6 +7,9 @@
 #ifndef CORE_FXCRT_CSS_CFX_CSSTEXTBUF_H_
 #define CORE_FXCRT_CSS_CFX_CSSTEXTBUF_H_
 
+#include <memory>
+
+#include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
 
 class CFX_CSSTextBuf {
@@ -22,14 +25,14 @@ class CFX_CSSTextBuf {
   int32_t TrimEnd();
 
   int32_t GetLength() const { return m_iDatLen; }
-  const wchar_t* GetBuffer() const { return m_pBuffer; }
+  const wchar_t* GetBuffer() const { return m_pBuffer.get(); }
 
  protected:
   void ExpandBuf(int32_t iDesiredSize);
 
-  wchar_t* m_pBuffer;
-  int32_t m_iBufLen;
-  int32_t m_iDatLen;
+  std::unique_ptr<wchar_t, FxFreeDeleter> m_pBuffer;
+  int32_t m_iBufLen = 0;
+  int32_t m_iDatLen = 0;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSTEXTBUF_H_

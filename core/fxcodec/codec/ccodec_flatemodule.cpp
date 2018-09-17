@@ -652,9 +652,9 @@ class CCodec_FlatePredictorScanlineDecoder final
   int m_Columns = 0;
   uint32_t m_PredictPitch = 0;
   size_t m_LeftOver = 0;
-  uint8_t* m_pLastLine = nullptr;
-  uint8_t* m_pPredictBuffer = nullptr;
-  uint8_t* m_pPredictRaw = nullptr;
+  std::unique_ptr<uint8_t, FxFreeDeleter> m_pLastLine;
+  std::unique_ptr<uint8_t, FxFreeDeleter> m_pPredictBuffer;
+  std::unique_ptr<uint8_t, FxFreeDeleter> m_pPredictRaw;
 };
 
 CCodec_FlatePredictorScanlineDecoder::CCodec_FlatePredictorScanlineDecoder(
@@ -680,16 +680,13 @@ CCodec_FlatePredictorScanlineDecoder::CCodec_FlatePredictorScanlineDecoder(
   m_Columns = Columns;
   m_PredictPitch =
       CalculatePitch8(m_BitsPerComponent, m_Colors, m_Columns).ValueOrDie();
-  m_pLastLine = FX_Alloc(uint8_t, m_PredictPitch);
-  m_pPredictBuffer = FX_Alloc(uint8_t, m_PredictPitch);
-  m_pPredictRaw = FX_Alloc(uint8_t, m_PredictPitch + 1);
+  m_pLastLine.reset(FX_Alloc(uint8_t, m_PredictPitch));
+  m_pPredictBuffer.reset(FX_Alloc(uint8_t, m_PredictPitch));
+  m_pPredictRaw.reset(FX_Alloc(uint8_t, m_PredictPitch + 1));
 }
 
-CCodec_FlatePredictorScanlineDecoder::~CCodec_FlatePredictorScanlineDecoder() {
-  FX_Free(m_pLastLine);
-  FX_Free(m_pPredictBuffer);
-  FX_Free(m_pPredictRaw);
-}
+CCodec_FlatePredictorScanlineDecoder::~CCodec_FlatePredictorScanlineDecoder() =
+    default;
 
 bool CCodec_FlatePredictorScanlineDecoder::v_Rewind() {
   if (!CCodec_FlateScanlineDecoder::v_Rewind())
@@ -710,10 +707,10 @@ uint8_t* CCodec_FlatePredictorScanlineDecoder::v_GetNextLine() {
 void CCodec_FlatePredictorScanlineDecoder::GetNextLineWithPredictedPitch() {
   switch (m_Predictor) {
     case PredictorType::kPng:
-      FlateOutput(m_pFlate.get(), m_pPredictRaw, m_PredictPitch + 1);
-      PNG_PredictLine(m_pScanline.get(), m_pPredictRaw, m_pLastLine,
+      FlateOutput(m_pFlate.get(), m_pPredictRaw.get(), m_PredictPitch + 1);
+      PNG_PredictLine(m_pScanline.get(), m_pPredictRaw.get(), m_pLastLine.get(),
                       m_BitsPerComponent, m_Colors, m_Columns);
-      memcpy(m_pLastLine, m_pScanline.get(), m_PredictPitch);
+      memcpy(m_pLastLine.get(), m_pScanline.get(), m_PredictPitch);
       break;
     case PredictorType::kFlate:
       FlateOutput(m_pFlate.get(), m_pScanline.get(), m_Pitch);
@@ -730,23 +727,24 @@ void CCodec_FlatePredictorScanlineDecoder::GetNextLineWithoutPredictedPitch() {
   size_t bytes_to_go = m_Pitch;
   size_t read_leftover = m_LeftOver > bytes_to_go ? bytes_to_go : m_LeftOver;
   if (read_leftover) {
-    memcpy(m_pScanline.get(), m_pPredictBuffer + m_PredictPitch - m_LeftOver,
-           read_leftover);
+    memcpy(m_pScanline.get(),
+           m_pPredictBuffer.get() + m_PredictPitch - m_LeftOver, read_leftover);
     m_LeftOver -= read_leftover;
     bytes_to_go -= read_leftover;
   }
   while (bytes_to_go) {
     switch (m_Predictor) {
       case PredictorType::kPng:
-        FlateOutput(m_pFlate.get(), m_pPredictRaw, m_PredictPitch + 1);
-        PNG_PredictLine(m_pPredictBuffer, m_pPredictRaw, m_pLastLine,
-                        m_BitsPerComponent, m_Colors, m_Columns);
-        memcpy(m_pLastLine, m_pPredictBuffer, m_PredictPitch);
+        FlateOutput(m_pFlate.get(), m_pPredictRaw.get(), m_PredictPitch + 1);
+        PNG_PredictLine(m_pPredictBuffer.get(), m_pPredictRaw.get(),
+                        m_pLastLine.get(), m_BitsPerComponent, m_Colors,
+                        m_Columns);
+        memcpy(m_pLastLine.get(), m_pPredictBuffer.get(), m_PredictPitch);
         break;
       case PredictorType::kFlate:
-        FlateOutput(m_pFlate.get(), m_pPredictBuffer, m_PredictPitch);
-        TIFF_PredictLine(m_pPredictBuffer, m_PredictPitch, m_BitsPerComponent,
-                         m_Colors, m_Columns);
+        FlateOutput(m_pFlate.get(), m_pPredictBuffer.get(), m_PredictPitch);
+        TIFF_PredictLine(m_pPredictBuffer.get(), m_PredictPitch,
+                         m_BitsPerComponent, m_Colors, m_Columns);
         break;
       default:
         NOTREACHED();
@@ -754,7 +752,7 @@ void CCodec_FlatePredictorScanlineDecoder::GetNextLineWithoutPredictedPitch() {
     }
     size_t read_bytes =
         m_PredictPitch > bytes_to_go ? bytes_to_go : m_PredictPitch;
-    memcpy(m_pScanline.get() + m_Pitch - bytes_to_go, m_pPredictBuffer,
+    memcpy(m_pScanline.get() + m_Pitch - bytes_to_go, m_pPredictBuffer.get(),
            read_bytes);
     m_LeftOver += m_PredictPitch - read_bytes;
     bytes_to_go -= read_bytes;

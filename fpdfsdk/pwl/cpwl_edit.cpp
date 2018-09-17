@@ -204,8 +204,8 @@ void CPWL_Edit::DrawThisAppearance(CFX_RenderDevice* pDevice,
         gsd.m_LineWidth = (float)GetBorderWidth();
 
         gsd.SetDashCount(2);
-        gsd.m_DashArray[0] = (float)GetBorderDash().nDash;
-        gsd.m_DashArray[1] = (float)GetBorderDash().nGap;
+        gsd.m_DashArray.get()[0] = (float)GetBorderDash().nDash;
+        gsd.m_DashArray.get()[1] = (float)GetBorderDash().nGap;
         gsd.m_DashPhase = (float)GetBorderDash().nPhase;
 
         CFX_PathData path;

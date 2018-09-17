@@ -7,8 +7,10 @@
 #ifndef CORE_FPDFAPI_RENDER_CPDF_CHARPOSLIST_H_
 #define CORE_FPDFAPI_RENDER_CPDF_CHARPOSLIST_H_
 
+#include <memory>
 #include <vector>
 
+#include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/cfx_renderdevice.h"
 
@@ -22,8 +24,9 @@ class CPDF_CharPosList {
             const std::vector<float>& charPos,
             CPDF_Font* pFont,
             float font_size);
-  FXTEXT_CHARPOS* m_pCharPos;
-  uint32_t m_nChars;
+
+  std::unique_ptr<FXTEXT_CHARPOS, FxFreeDeleter> m_pCharPos;
+  uint32_t m_nChars = 0;
 };
 
 #endif  // CORE_FPDFAPI_RENDER_CPDF_CHARPOSLIST_H_

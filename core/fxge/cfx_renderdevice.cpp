@@ -1232,8 +1232,8 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
 
         CFX_GraphStateData gsd;
         gsd.SetDashCount(2);
-        gsd.m_DashArray[0] = 3.0f;
-        gsd.m_DashArray[1] = 3.0f;
+        gsd.m_DashArray.get()[0] = 3.0f;
+        gsd.m_DashArray.get()[1] = 3.0f;
         gsd.m_DashPhase = 0;
 
         gsd.m_LineWidth = fWidth;

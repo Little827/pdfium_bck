@@ -147,7 +147,7 @@ void CXFA_Graphics::SetLineDash(float dashPhase,
   m_info.graphState.m_DashPhase = dashPhase;
   m_info.graphState.SetDashCount(dashCount);
   for (size_t i = 0; i < dashCount; i++)
-    m_info.graphState.m_DashArray[i] = dashArray[i] * scale;
+    m_info.graphState.m_DashArray.get()[i] = dashArray[i] * scale;
 }
 
 void CXFA_Graphics::SetSolidLineDash() {

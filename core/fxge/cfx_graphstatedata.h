@@ -7,6 +7,9 @@
 #ifndef CORE_FXGE_CFX_GRAPHSTATEDATA_H_
 #define CORE_FXGE_CFX_GRAPHSTATEDATA_H_
 
+#include <memory>
+
+#include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 
@@ -23,7 +26,7 @@ class CFX_GraphStateData final : public Retainable {
 
   LineCap m_LineCap;
   int m_DashCount;
-  float* m_DashArray;
+  std::unique_ptr<float, FxFreeDeleter> m_DashArray;
   float m_DashPhase;
 
   enum LineJoin {

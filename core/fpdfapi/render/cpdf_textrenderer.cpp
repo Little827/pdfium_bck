@@ -42,16 +42,17 @@ bool CPDF_TextRenderer::DrawTextPath(CFX_RenderDevice* pDevice,
     return true;
 
   bool bDraw = true;
-  int32_t fontPosition = CharPosList.m_pCharPos[0].m_FallbackFontPosition;
+  int32_t fontPosition = CharPosList.m_pCharPos.get()[0].m_FallbackFontPosition;
   uint32_t startIndex = 0;
   for (uint32_t i = 0; i < CharPosList.m_nChars; i++) {
-    int32_t curFontPosition = CharPosList.m_pCharPos[i].m_FallbackFontPosition;
+    int32_t curFontPosition =
+        CharPosList.m_pCharPos.get()[i].m_FallbackFontPosition;
     if (fontPosition == curFontPosition)
       continue;
 
     CFX_Font* font = GetFont(pFont, fontPosition);
     if (!pDevice->DrawTextPath(i - startIndex,
-                               CharPosList.m_pCharPos + startIndex, font,
+                               CharPosList.m_pCharPos.get() + startIndex, font,
                                font_size, pText2User, pUser2Device, pGraphState,
                                fill_argb, stroke_argb, pClippingPath, nFlag)) {
       bDraw = false;
@@ -61,7 +62,7 @@ bool CPDF_TextRenderer::DrawTextPath(CFX_RenderDevice* pDevice,
   }
   CFX_Font* font = GetFont(pFont, fontPosition);
   if (!pDevice->DrawTextPath(CharPosList.m_nChars - startIndex,
-                             CharPosList.m_pCharPos + startIndex, font,
+                             CharPosList.m_pCharPos.get() + startIndex, font,
                              font_size, pText2User, pUser2Device, pGraphState,
                              fill_argb, stroke_argb, pClippingPath, nFlag)) {
     bDraw = false;
@@ -144,16 +145,17 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
   if (pFont->IsCIDFont())
     FXGE_flags |= FXFONT_CIDFONT;
   bool bDraw = true;
-  int32_t fontPosition = CharPosList.m_pCharPos[0].m_FallbackFontPosition;
+  int32_t fontPosition = CharPosList.m_pCharPos.get()[0].m_FallbackFontPosition;
   uint32_t startIndex = 0;
   for (uint32_t i = 0; i < CharPosList.m_nChars; i++) {
-    int32_t curFontPosition = CharPosList.m_pCharPos[i].m_FallbackFontPosition;
+    int32_t curFontPosition =
+        CharPosList.m_pCharPos.get()[i].m_FallbackFontPosition;
     if (fontPosition == curFontPosition)
       continue;
 
     CFX_Font* font = GetFont(pFont, fontPosition);
     if (!pDevice->DrawNormalText(
-            i - startIndex, CharPosList.m_pCharPos + startIndex, font,
+            i - startIndex, CharPosList.m_pCharPos.get() + startIndex, font,
             font_size, pText2Device, fill_argb, FXGE_flags)) {
       bDraw = false;
     }
@@ -162,7 +164,7 @@ bool CPDF_TextRenderer::DrawNormalText(CFX_RenderDevice* pDevice,
   }
   CFX_Font* font = GetFont(pFont, fontPosition);
   if (!pDevice->DrawNormalText(CharPosList.m_nChars - startIndex,
-                               CharPosList.m_pCharPos + startIndex, font,
+                               CharPosList.m_pCharPos.get() + startIndex, font,
                                font_size, pText2Device, fill_argb,
                                FXGE_flags)) {
     bDraw = false;

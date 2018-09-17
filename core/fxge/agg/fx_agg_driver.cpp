@@ -289,12 +289,12 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
     typedef agg::conv_dash<agg::path_storage> dash_converter;
     dash_converter dash(*path_data);
     for (int i = 0; i < (pGraphState->m_DashCount + 1) / 2; i++) {
-      float on = pGraphState->m_DashArray[i * 2];
+      float on = pGraphState->m_DashArray.get()[i * 2];
       if (on <= 0.000001f)
         on = 1.0f / 10;
       float off = i * 2 + 1 == pGraphState->m_DashCount
                       ? on
-                      : pGraphState->m_DashArray[i * 2 + 1];
+                      : pGraphState->m_DashArray.get()[i * 2 + 1];
       off = std::max(off, 0.0f);
       dash.add_dash(on * scale, off * scale);
     }

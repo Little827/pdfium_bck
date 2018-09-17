@@ -9,21 +9,16 @@
 #include "core/fpdfapi/font/cpdf_cidfont.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 
-CPDF_CharPosList::CPDF_CharPosList() {
-  m_pCharPos = nullptr;
-  m_nChars = 0;
-}
+CPDF_CharPosList::CPDF_CharPosList() = default;
 
-CPDF_CharPosList::~CPDF_CharPosList() {
-  FX_Free(m_pCharPos);
-}
+CPDF_CharPosList::~CPDF_CharPosList() = default;
 
 void CPDF_CharPosList::Load(const std::vector<uint32_t>& charCodes,
                             const std::vector<float>& charPos,
                             CPDF_Font* pFont,
                             float FontSize) {
-  m_pCharPos = FX_Alloc(FXTEXT_CHARPOS, charCodes.size());
   m_nChars = 0;
+  m_pCharPos.reset(FX_Alloc(FXTEXT_CHARPOS, charCodes.size()));
   CPDF_CIDFont* pCIDFont = pFont->AsCIDFont();
   bool bVertWriting = pCIDFont && pCIDFont->IsVertWriting();
   for (size_t iChar = 0; iChar < charCodes.size(); ++iChar) {
@@ -32,7 +27,7 @@ void CPDF_CharPosList::Load(const std::vector<uint32_t>& charCodes,
       continue;
 
     bool bVert = false;
-    FXTEXT_CHARPOS& charpos = m_pCharPos[m_nChars++];
+    FXTEXT_CHARPOS& charpos = m_pCharPos.get()[m_nChars++];
     if (pCIDFont)
       charpos.m_bFontStyle = true;
     WideString unicode = pFont->UnicodeFromCharCode(CharCode);
