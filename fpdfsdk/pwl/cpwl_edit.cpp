@@ -203,7 +203,7 @@ void CPWL_Edit::DrawThisAppearance(CFX_RenderDevice* pDevice,
         CFX_GraphStateData gsd;
         gsd.m_LineWidth = (float)GetBorderWidth();
 
-        gsd.SetDashCount(2);
+        gsd.m_DashArray.resize(2);
         gsd.m_DashArray[0] = (float)GetBorderDash().nDash;
         gsd.m_DashArray[1] = (float)GetBorderDash().nGap;
         gsd.m_DashPhase = (float)GetBorderDash().nPhase;
