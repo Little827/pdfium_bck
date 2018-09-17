@@ -119,32 +119,35 @@ void CPDF_Color::SetValueForPattern(CPDF_Pattern* pPattern,
   }
 }
 
-void CPDF_Color::Copy(const CPDF_Color& src) {
-  ReleaseBuffer();
-  ReleaseColorSpace();
-  m_pCS = src.m_pCS;
-  if (!m_pCS)
-    return;
-
-  CPDF_Document* pDoc = m_pCS->GetDocument();
-  const CPDF_Array* pArray = m_pCS->GetArray();
-  if (pDoc && pArray) {
-    m_pCS = pDoc->GetPageData()->GetCopiedColorSpace(pArray);
+CPDF_Color& CPDF_Color::operator=(const CPDF_Color& that) {
+  if (this != &that) {
+    ReleaseBuffer();
+    ReleaseColorSpace();
+    m_pCS = that.m_pCS;
     if (!m_pCS)
-      return;
+      return *this;
+
+    CPDF_Document* pDoc = m_pCS->GetDocument();
+    const CPDF_Array* pArray = m_pCS->GetArray();
+    if (pDoc && pArray) {
+      m_pCS = pDoc->GetPageData()->GetCopiedColorSpace(pArray);
+      if (!m_pCS)
+        return *this;
+    }
+    m_pBuffer = m_pCS->CreateBuf();
+    memcpy(m_pBuffer, that.m_pBuffer, m_pCS->GetBufSize());
+    if (!IsPatternInternal())
+      return *this;
+
+    PatternValue* pValue = reinterpret_cast<PatternValue*>(m_pBuffer);
+    CPDF_Pattern* pPattern = pValue->m_pPattern;
+    if (!pPattern)
+      return *this;
+
+    pValue->m_pPattern = pPattern->document()->GetPageData()->GetPattern(
+        pPattern->pattern_obj(), false, pPattern->parent_matrix());
   }
-  m_pBuffer = m_pCS->CreateBuf();
-  memcpy(m_pBuffer, src.m_pBuffer, m_pCS->GetBufSize());
-  if (!IsPatternInternal())
-    return;
-
-  PatternValue* pValue = reinterpret_cast<PatternValue*>(m_pBuffer);
-  CPDF_Pattern* pPattern = pValue->m_pPattern;
-  if (!pPattern)
-    return;
-
-  pValue->m_pPattern = pPattern->document()->GetPageData()->GetPattern(
-      pPattern->pattern_obj(), false, pPattern->parent_matrix());
+  return *this;
 }
 
 uint32_t CPDF_Color::CountComponents() const {
