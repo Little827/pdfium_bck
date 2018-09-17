@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb8b1de5_f809445d",
+        "filename": "fxjs/cjs_globalvariablearray.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-17T22:52:38Z",
+      "side": 1,
+      "message": "Flip to \u003d\u003d and do an early return?",
+      "revId": "1ded9ff94b1ab520d71181a3f49f70cd4be45db7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
