@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1537003288 -0700\nnonce ACQ0HpwDAouIovzP5hc0GXrL5cM48w7PYPJgGO/NhIIjTlYIIkf2i5pnONo8tUB+9qUQrlXOrl6U\n\n0000000000000000000000000000000000000000 75af51846706ff6c57c1e673a2357573aa030768 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAluczxgACgkQqzYtYVpm\n/XvQXggA0H/vzNBbs3DYHhNwPq7EmUk8qsuCNLMqOzStqT/oog3kKb58IhEa59NJ\nX7c53NZ/Jn4stk9OBffNwQLVVgngaCl9vH1d16Zsy3baecvIvtr1mZzWfTC8MtOb\njKGhfurUxUmb50POWS9OlmLFja2Y5EuDJjKJa8oBpQRfIb1c07wzWnx0/YFBdoop\niCpBI0+n5T3X5P4jDdq2v8qyCJ/YdY2SVAGHUgcR/A6JhVFuZzPr3aQKSNk4pa8x\nWQ5RIDmyfnlmdXfdVI/VlLVxeu5uyQB6jlhu/fUMVrrXEvDCsqn6PaESMmniiVZM\n6ktP/OK1379gWzdEsY7YxrBf/DOzEA\u003d\u003d\n\u003dGZLm\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc9f26d0_4d11a4a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-17T18:35:40Z",
+      "side": 1,
+      "message": "nit: Move duplicate",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "75af51846706ff6c57c1e673a2357573aa030768",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
