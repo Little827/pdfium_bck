@@ -439,7 +439,7 @@ CXFA_Graphics::TInfo::TInfo(const TInfo& info)
       fillColor(info.fillColor) {}
 
 CXFA_Graphics::TInfo& CXFA_Graphics::TInfo::operator=(const TInfo& other) {
-  graphState.Copy(other.graphState);
+  graphState = other.graphState;
   CTM = other.CTM;
   isActOnDash = other.isActOnDash;
   strokeColor = other.strokeColor;
