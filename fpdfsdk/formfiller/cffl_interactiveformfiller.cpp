@@ -86,7 +86,7 @@ void CFFL_InteractiveFormFiller::OnDraw(CPDFSDK_PageView* pPageView,
                      false);
 
     CFX_GraphStateData gsd;
-    gsd.SetDashCount(1);
+    gsd.m_DashArray.resize(1);
     gsd.m_DashArray[0] = 1.0f;
     gsd.m_DashPhase = 0;
     gsd.m_LineWidth = 1.0f;
