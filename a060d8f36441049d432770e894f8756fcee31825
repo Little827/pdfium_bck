@@ -16,6 +16,24 @@
       "revId": "a060d8f36441049d432770e894f8756fcee31825",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c18d160_aaccb37d",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-18T17:40:54Z",
+      "side": 1,
+      "message": "Talked with Henrique about this, insert\u0027s API uses InputIterators, so I am pretty sure it isn\u0027t able to do the smart thing of calculating the new size and reserving in the general case. It might have an overload for vector iterators, but I don\u0027t think  we can depend on that, so I am keeping the reserve.",
+      "parentUuid": "454885d2_7719926d",
+      "revId": "a060d8f36441049d432770e894f8756fcee31825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
