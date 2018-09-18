@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "454885d2_7719926d",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-18T17:21:03Z",
+      "side": 1,
+      "message": "With insert, this is not necessary.",
+      "revId": "a060d8f36441049d432770e894f8756fcee31825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
