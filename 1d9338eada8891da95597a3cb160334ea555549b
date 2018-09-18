@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "492a359b_11fe92a1",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-18T16:57:52Z",
+      "side": 1,
+      "message": "I agree, I think this was left over from a different way I attempted to implement this.",
+      "parentUuid": "c7a7f459_ee5f40e8",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 76
+      },
+      "revId": "1d9338eada8891da95597a3cb160334ea555549b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94b8aa2f_53ff42a8",
         "filename": "core/fxcrt/xml/cfx_xmldocument.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-18T16:38:25Z",
       "side": 1,
       "message": "can we just write, say\n\n  nodes_ \u003d std::move(other-\u003enodes_);\n  other-\u003enodes_.clear();",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "1d9338eada8891da95597a3cb160334ea555549b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee81b3f_7a179a66",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-18T16:57:52Z",
+      "side": 1,
+      "message": "I don\u0027t think so, what I am attempting to do is append all of the entries in other\u0027s nodes_ this doc\u0027s nodes_. What you are proposing I think will replace the existing nodes_ with other\u0027s nodes_.",
+      "parentUuid": "94b8aa2f_53ff42a8",
       "range": {
         "startLine": 18,
         "startChar": 1,
@@ -68,6 +116,30 @@
       "revId": "1d9338eada8891da95597a3cb160334ea555549b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31b7afe_82017da9",
+        "filename": "core/fxcrt/xml/cfx_xmldocument.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-18T16:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e30501_0779aecb",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "1d9338eada8891da95597a3cb160334ea555549b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
