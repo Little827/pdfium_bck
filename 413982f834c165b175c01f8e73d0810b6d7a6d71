@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfd41e83_6492b05b",
+        "filename": "fxjs/xfa/cjx_node.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-18T17:05:49Z",
+      "side": 1,
+      "message": "nit: If the references stay the same throughout this method. If so, you could store this and reuse in two places below.",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 24
+      },
+      "revId": "413982f834c165b175c01f8e73d0810b6d7a6d71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
