@@ -681,7 +681,8 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoDocumentAAction(FPDF_FORMHANDLE hHandle,
     CPDFSDK_ActionHandler* pActionHandler =
         CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle)
             ->GetActionHandler();
-    pActionHandler->DoAction_Document(action, type, pFormFillEnv);
+    pActionHandler->DoAction_Document(action, type, pFormFillEnv,
+                                      CPDF_AAction::IsTypeExplicit(type));
   }
 }
 
@@ -709,6 +710,7 @@ FPDF_EXPORT void FPDF_CALLCONV FORM_DoPageAAction(FPDF_PAGE page,
                                        : CPDF_AAction::ClosePage;
   if (aa.ActionExist(type)) {
     CPDF_Action action = aa.GetAction(type);
-    pActionHandler->DoAction_Page(action, type, pFormFillEnv);
+    pActionHandler->DoAction_Page(action, type, pFormFillEnv,
+                                  CPDF_AAction::IsTypeExplicit(type));
   }
 }
