@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fb81bb8_528fc088",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-18T04:56:04Z",
+      "side": 1,
+      "message": "Save m_pFile-\u003eGetSize() result to a variable?",
+      "revId": "9d57f6697ccac8513f1ddabb8c96c6d0ac122cfc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d028eb7_975ba84b",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-18T04:56:04Z",
+      "side": 1,
+      "message": "Pass by pointer?",
+      "revId": "9d57f6697ccac8513f1ddabb8c96c6d0ac122cfc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
