@@ -12,3 +12,13 @@ CFX_XMLDocument::CFX_XMLDocument() {
 }
 
 CFX_XMLDocument::~CFX_XMLDocument() = default;
+
+void CFX_XMLDocument::TransferNodesFrom(CFX_XMLDocument* other) {
+  std::vector<std::unique_ptr<CFX_XMLNode>>* other_nodes = &(other->nodes_);
+  size_t old_node_count = nodes_.size();
+  nodes_.resize(old_node_count + other_nodes->size());
+
+  for (size_t i = 0; i < other_nodes->size(); i++)
+    nodes_[old_node_count + i].swap((*other_nodes)[i]);
+  other_nodes->clear();
+}

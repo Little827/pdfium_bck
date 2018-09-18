@@ -221,6 +221,13 @@ CJS_Result CJX_Node::loadXML(CFX_V8* runtime,
   if (!pXMLNode)
     return CJS_Result::Success();
 
+  GetXFANode()
+      ->GetDocument()
+      ->GetNotify()
+      ->GetHDOC()
+      ->GetXMLDocument()
+      ->TransferNodesFrom(pParser->GetXMLDoc().get());
+
   if (bIgnoreRoot &&
       (pXMLNode->GetType() != FX_XMLNODE_Element ||
        XFA_RecognizeRichText(static_cast<CFX_XMLElement*>(pXMLNode)))) {

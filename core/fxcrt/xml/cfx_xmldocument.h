@@ -29,6 +29,8 @@ class CFX_XMLDocument {
     return static_cast<T*>(nodes_.back().get());
   }
 
+  void TransferNodesFrom(CFX_XMLDocument* other);
+
  private:
   std::vector<std::unique_ptr<CFX_XMLNode>> nodes_;
   UnownedPtr<CFX_XMLElement> root_;
