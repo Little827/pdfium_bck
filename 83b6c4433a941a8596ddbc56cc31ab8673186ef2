@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a90accd4_66a0679f",
+        "filename": "core/fpdfdoc/cpdf_aaction.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T16:56:28Z",
+      "side": 1,
+      "message": "nit: can we call this IsUserGesture() to match the terminology used elsewhere in chrome?",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37f66810_273aab2e",
         "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
         "patchSetId": 3
