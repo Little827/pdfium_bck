@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dc46e4f7_a43af60e",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T22:09:22Z",
+      "side": 1,
+      "message": "mebbe this should return a bool, too.  Then just return ... \u0026 ... \u0026 ... \u0026 ...;",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "ba97c206f9169283cf1bb4d66ec3685cc73497ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fda37d1f_a17f38fe",
         "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
         "patchSetId": 3
