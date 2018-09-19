@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "33dd5fde_a79151b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-19T21:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b5ef08_4b0cbd98",
+      "range": {
+        "startLine": 7,
+        "startChar": 61,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a90accd4_66a0679f",
         "filename": "core/fpdfdoc/cpdf_aaction.cpp",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2018-09-19T16:56:28Z",
       "side": 1,
       "message": "nit: can we call this IsUserGesture() to match the terminology used elsewhere in chrome?",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c4a63c_1d2f56df",
+        "filename": "core/fpdfdoc/cpdf_aaction.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-19T21:24:20Z",
+      "side": 1,
+      "message": "It could be a mouse over event. I\u0027m restricting only to ButtonDown and ButtonUp because those are actions when you could expect a reaction to happen. Perhaps IsClick? IsExplicitUserGesture?",
+      "parentUuid": "a90accd4_66a0679f",
       "range": {
         "startLine": 57,
         "startChar": 19,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "10afabc5_22bcfb84",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-19T21:24:20Z",
+      "side": 1,
+      "message": "I started from the ones that didn\u0027t pass down eType and did not realize most already had it. Thanks for pointing out.",
+      "parentUuid": "37f66810_273aab2e",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01e0adb7_b939ed58",
         "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
         "patchSetId": 3
@@ -115,6 +187,30 @@
       "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4574fa_30923f35",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-19T21:24:20Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "01e0adb7_b939ed58",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
