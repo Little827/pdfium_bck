@@ -37,20 +37,20 @@ class CPngContext final : public CCodec_PngModule::Context {
   char m_szLastError[PNG_ERROR_SIZE];
 };
 
-extern "C" {
+namespace {
 
-static void _png_error_data(png_structp png_ptr, png_const_charp error_msg) {
+void _png_error_data(png_structp png_ptr, png_const_charp error_msg) {
   if (png_get_error_ptr(png_ptr))
     strncpy((char*)png_get_error_ptr(png_ptr), error_msg, PNG_ERROR_SIZE - 1);
 
   longjmp(png_jmpbuf(png_ptr), 1);
 }
 
-static void _png_warning_data(png_structp png_ptr, png_const_charp error_msg) {}
+void _png_warning_data(png_structp png_ptr, png_const_charp error_msg) {}
 
-static void _png_load_bmp_attribute(png_structp png_ptr,
-                                    png_infop info_ptr,
-                                    CFX_DIBAttribute* pAttribute) {
+void _png_load_bmp_attribute(png_structp png_ptr,
+                             png_infop info_ptr,
+                             CFX_DIBAttribute* pAttribute) {
   if (pAttribute) {
 #if defined(PNG_pHYs_SUPPORTED)
     pAttribute->m_nXDPI = png_get_x_pixels_per_meter(png_ptr, info_ptr);
@@ -82,15 +82,15 @@ static void _png_load_bmp_attribute(png_structp png_ptr,
   }
 }
 
-static void* _png_alloc_func(unsigned int size) {
+void* _png_alloc_func(unsigned int size) {
   return FX_Alloc(char, size);
 }
 
-static void _png_free_func(void* p) {
+void _png_free_func(void* p) {
   FX_Free(p);
 }
 
-static void _png_get_header_func(png_structp png_ptr, png_infop info_ptr) {
+void _png_get_header_func(png_structp png_ptr, png_infop info_ptr) {
   auto* pContext =
       reinterpret_cast<CPngContext*>(png_get_progressive_ptr(png_ptr));
   if (!pContext)
@@ -158,12 +158,12 @@ static void _png_get_header_func(png_structp png_ptr, png_infop info_ptr) {
   png_read_update_info(png_ptr, info_ptr);
 }
 
-static void _png_get_end_func(png_structp png_ptr, png_infop info_ptr) {}
+void _png_get_end_func(png_structp png_ptr, png_infop info_ptr) {}
 
-static void _png_get_row_func(png_structp png_ptr,
-                              png_bytep new_row,
-                              png_uint_32 row_num,
-                              int pass) {
+void _png_get_row_func(png_structp png_ptr,
+                       png_bytep new_row,
+                       png_uint_32 row_num,
+                       int pass) {
   auto* pContext =
       reinterpret_cast<CPngContext*>(png_get_progressive_ptr(png_ptr));
   if (!pContext)
@@ -179,7 +179,7 @@ static void _png_get_row_func(png_structp png_ptr,
   pContext->m_pDelegate->PngFillScanlineBufCompleted(pass, row_num);
 }
 
-}  // extern "C"
+}  // namespace
 
 CPngContext::CPngContext(CCodec_PngModule* pModule,
                          CCodec_PngModule::Delegate* pDelegate)

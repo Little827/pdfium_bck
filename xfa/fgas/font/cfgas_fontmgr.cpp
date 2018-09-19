@@ -368,8 +368,6 @@ const FX_BIT2CHARSET g_FX_Bit2Charset[4][16] = {
 
 constexpr wchar_t kFolderSeparator = L'/';
 
-extern "C" {
-
 unsigned long ftStreamRead(FXFT_Stream stream,
                            unsigned long offset,
                            unsigned char* buffer,
@@ -386,8 +384,6 @@ unsigned long ftStreamRead(FXFT_Stream stream,
 }
 
 void ftStreamClose(FXFT_Stream stream) {}
-
-};  // extern "C"
 
 }  // namespace
 

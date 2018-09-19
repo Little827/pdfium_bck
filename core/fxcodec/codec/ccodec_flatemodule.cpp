@@ -25,8 +25,6 @@
 #include "third_party/zlib/zlib.h"
 #endif
 
-extern "C" {
-
 static void* my_alloc_func(void* opaque,
                            unsigned int items,
                            unsigned int size) {
@@ -36,8 +34,6 @@ static void* my_alloc_func(void* opaque,
 static void my_free_func(void* opaque, void* address) {
   FX_Free(address);
 }
-
-}  // extern "C"
 
 namespace {
 
