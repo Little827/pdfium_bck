@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1e0674d4_4f059eb2",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_avail_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-19T19:24:18Z",
+      "side": 1,
+      "message": "Addressed in https://pdfium-review.googlesource.com/#/c/pdfium/+/33712",
+      "parentUuid": "e78cdb6f_1a20ff8b",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "e0a33b14e7f79500a3e074b88281cde134ffae0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f2f8ae9_dad8b39a",
         "filename": "core/fpdfapi/parser/cpdf_cross_ref_avail_unittest.cpp",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "e0a33b14e7f79500a3e074b88281cde134ffae0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ccc6731_4ab45b14",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_avail_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-09-19T19:24:18Z",
+      "side": 1,
+      "message": "Addressed in https://pdfium-review.googlesource.com/#/c/pdfium/+/33712",
+      "parentUuid": "8f2f8ae9_dad8b39a",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "e0a33b14e7f79500a3e074b88281cde134ffae0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
