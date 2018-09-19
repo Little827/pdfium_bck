@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1a92ec9_247fa6f8",
+        "filename": "fpdfsdk/fpdfedit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T22:07:27Z",
+      "side": 1,
+      "message": "nit: I\u0027d kinda like to keep the win-style CRLF endings consistent.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "189fe37d3e61cf153ee4cb7fc798f45ebcfd4ea6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b2bbd3b_209c4679",
+        "filename": "fpdfsdk/fpdfsave_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T22:07:27Z",
+      "side": 1,
+      "message": "curious about where the change in size came from?",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "189fe37d3e61cf153ee4cb7fc798f45ebcfd4ea6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
