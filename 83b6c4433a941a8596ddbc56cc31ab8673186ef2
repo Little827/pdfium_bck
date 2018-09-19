@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37f66810_273aab2e",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T16:53:16Z",
+      "side": 1,
+      "message": "I\u0027m confused about why we have to pass this separately if we already have |eType| above.",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
