@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "38c4db11_b564d1d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T17:13:49Z",
+      "side": 1,
+      "message": "nit: user gesture",
+      "range": {
+        "startLine": 7,
+        "startChar": 61,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a90accd4_66a0679f",
         "filename": "core/fpdfdoc/cpdf_aaction.cpp",
         "patchSetId": 3
