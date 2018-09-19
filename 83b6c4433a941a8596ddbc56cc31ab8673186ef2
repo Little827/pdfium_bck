@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "6c9bab7e_41fd9f04",
+        "filename": "core/fpdfdoc/cpdf_aaction.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T21:57:07Z",
+      "side": 1,
+      "message": "IsUserClick() SGTM.",
+      "parentUuid": "a0c4a63c_1d2f56df",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37f66810_273aab2e",
         "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
         "patchSetId": 3
