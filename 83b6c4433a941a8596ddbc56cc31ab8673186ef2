@@ -45,6 +45,29 @@
       "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e0adb7_b939ed58",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-19T16:57:55Z",
+      "side": 1,
+      "message": "nit: again, maybe this is called user_gesture",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "83b6c4433a941a8596ddbc56cc31ab8673186ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
