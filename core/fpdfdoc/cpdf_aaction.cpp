@@ -52,3 +52,14 @@ CPDF_Action CPDF_AAction::GetAction(AActionType eType) const {
   return CPDF_Action(m_pDict ? m_pDict->GetDictFor(g_sAATypes[eType])
                              : nullptr);
 }
+
+// static
+bool CPDF_AAction::IsTypeExplicit(AActionType eType) {
+  switch (eType) {
+    case ButtonUp:
+    case ButtonDown:
+      return true;
+    default:
+      return false;
+  }
+}
