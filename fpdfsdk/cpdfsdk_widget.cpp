@@ -847,7 +847,8 @@ bool CPDFSDK_Widget::OnAAction(CPDF_AAction::AActionType type,
   if (action.GetDict() && action.GetType() != CPDF_Action::Unknown) {
     CPDFSDK_ActionHandler* pActionHandler = pFormFillEnv->GetActionHandler();
     return pActionHandler->DoAction_Field(action, type, pFormFillEnv,
-                                          GetFormField(), data);
+                                          GetFormField(), data,
+                                          CPDF_AAction::IsTypeExplicit(type));
   }
   return false;
 }

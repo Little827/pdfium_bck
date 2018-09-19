@@ -46,6 +46,8 @@ class CPDF_AAction {
   CPDF_Action GetAction(AActionType eType) const;
   const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
 
+  static bool IsTypeExplicit(AActionType eType);
+
  private:
   UnownedPtr<const CPDF_Dictionary> const m_pDict;
 };
