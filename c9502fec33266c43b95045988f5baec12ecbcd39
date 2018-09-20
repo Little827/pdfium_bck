@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1537410353 -0700\nnonce ACQ0HpxwKCrtNuMR+YLdzJ7S7rBSbsmtMDckEDovCL6n69eay4m9o0zlrzUM7wjVvuWkzQomyFWJ\n\n0000000000000000000000000000000000000000 c9502fec33266c43b95045988f5baec12ecbcd39 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dmark-a-case-in-cfxjse-resolveprocessor\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlujBTEACgkQqzYtYVpm\n/XtYfgf/YaiyRNz49Ff3G1j2yMTrvAavzTuniLcwMFcPFgfKU3bMWsHYlnLVIFmF\nwiDp2fvSce9ByNWy6RdTbbjlByFq6Gz5eznRSbkYl7K0odkCISKMZpvTWPHGq77+\nVhAkBEJIcaI0ialOhWdT1FppvOrHUBy0dmQGCtqYsbZqENfzvLhYqqfcF1gC6fxl\nl6W974cYjlMEn9RRWttTBi9PTuKCC+6PlNWpsGlhpKgKFat9esMmSVmSH0TrZ10H\nfNBrIY9HnUo8q1rhrLeMbAj75RbS80qmFPRCUQrHq0wkdRRMwV7iPaLiAvpu9T2O\n8sx8ncfjVnL4bRZ51bbA48E5cX+8WQ\u003d\u003d\n\u003dDiG6\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4140eb55_5a68d954",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-09-20T12:57:05Z",
+      "side": 1,
+      "message": "Can you add a note here on why this is safe?",
+      "revId": "c9502fec33266c43b95045988f5baec12ecbcd39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae63aa0_9e77616f",
+        "filename": "fxjs/cfxjse_resolveprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-09-20T12:57:05Z",
+      "side": 1,
+      "message": "Is this to see if it crashes? I didn\u0027t remove it because I wasn\u0027t sure if this code was hit or not.",
+      "revId": "c9502fec33266c43b95045988f5baec12ecbcd39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
