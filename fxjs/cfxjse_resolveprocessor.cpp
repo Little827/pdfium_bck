@@ -55,9 +55,9 @@ bool CFXJSE_ResolveProcessor::Resolve(CFXJSE_ResolveNodeData& rnd) {
         return ResolveNumberSign(rnd);
       case '*':
         return ResolveAsterisk(rnd);
-      // TODO(dsinclair): We could probably remove this.
       case '.':
-        return ResolveAnyChild(rnd);
+        NOTREACHED();
+        return false;
       default:
         break;
     }
