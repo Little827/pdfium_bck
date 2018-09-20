@@ -178,12 +178,13 @@ config("skia_library_config") {
 }
 
 component("skia") {
+  # PDFium sources.
   sources = [
-    # PDFium sources.
     "config/SkUserConfig.h",
     "ext/google_logging.cc",
   ]
 
+  # Skia sources.
   # The skia sources values are relative to the skia_dir, so we need to rebase.
   sources += skia_core_sources
   sources += skia_effects_sources
@@ -222,19 +223,6 @@ component("skia") {
     "//third_party/skia/src/ports/SkFontMgr_custom_empty_factory.cpp",
     "//third_party/skia/src/ports/SkMemory_malloc.cpp",
   ]
-
-  # This and skia_opts are really the same conceptual target so share headers.
-  allow_circular_includes_from = [ ":skia_opts" ]
-
-  if (current_cpu == "arm") {
-    sources += [ "//third_party/skia/src/core/SkUtilsArm.cpp" ]
-  }
-
-  # GPU
-  if (skia_support_gpu) {
-    sources += skia_gpu_sources
-    sources += skia_null_gpu_sources
-  }
 
   # Remove unused util files include in utils.gni
   sources -= [
@@ -283,7 +271,10 @@ component("skia") {
       "//third_party/skia/src/ports/SkTypeface_win_dw.cpp",
     ]
   }
-  if (!is_android) {
+  if (is_android) {
+    set_sources_assignment_filter([])
+    set_sources_assignment_filter(sources_assignment_filter)
+  } else {
     sources -= [
       "//third_party/skia/src/ports/SkFontMgr_android.cpp",
       "//third_party/skia/src/ports/SkFontMgr_android_factory.cpp",
@@ -299,21 +290,21 @@ component("skia") {
     ]
   }
 
-  if (is_clang && !is_nacl) {
-    # Skia won't compile with some of the more strict clang warnings.
-    # e.g. it does:
-    #  SkASSERT(!"sk_out_of_memory");
-    configs -= [ "//build/config/clang:extra_warnings" ]
+  if (is_ios) {
+    set_sources_assignment_filter([])
+    sources += [
+      "//third_party/skia/src/ports/SkFontHost_mac.cpp",
+      "//third_party/skia/src/utils/mac/SkCreateCGImageRef.cpp",
+      "//third_party/skia/src/utils/mac/SkStream_mac.cpp",
+    ]
+    set_sources_assignment_filter(sources_assignment_filter)
   }
 
-  configs -= [ "//build/config/compiler:chromium_code" ]
-  configs += [
-    ":skia_config",
-    ":skia_library_config",
-    "//build/config/compiler:no_chromium_code",
-  ]
-  public_configs = [ ":skia_config" ]
+  if (current_cpu == "arm") {
+    sources += [ "//third_party/skia/src/core/SkUtilsArm.cpp" ]
+  }
 
+  # Dependencies.
   deps = [
     ":skia_opts",
     "../third_party:zlib",
@@ -325,8 +316,6 @@ component("skia") {
   }
 
   if (is_android) {
-    set_sources_assignment_filter([])
-    set_sources_assignment_filter(sources_assignment_filter)
     deps += [
       "//third_party/android_tools:cpu_features",
       "//third_party/expat",
@@ -334,11 +323,30 @@ component("skia") {
     ]
   }
 
-  if (skia_support_pdf) {
-    deps += [ "//third_party/sfntly" ]
-    sources += skia_pdf_sources
-  } else {
-    sources += [ "//third_party/skia/src/pdf/SkDocument_PDF_None.cpp" ]
+  # Libs.
+  libs = []
+
+  if (is_ios) {
+    libs = [ "ImageIO.framework" ]
+  }
+
+  # Configs.
+  configs -= [ "//build/config/compiler:chromium_code" ]
+  configs += [
+    ":skia_config",
+    ":skia_library_config",
+    "//build/config/compiler:no_chromium_code",
+  ]
+  public_configs = [ ":skia_config" ]
+
+  # This and skia_opts are really the same conceptual target so share headers.
+  allow_circular_includes_from = [ ":skia_opts" ]
+
+  if (is_clang && !is_nacl) {
+    # Skia won't compile with some of the more strict clang warnings.
+    # e.g. it does:
+    #  SkASSERT(!"sk_out_of_memory");
+    configs -= [ "//build/config/clang:extra_warnings" ]
   }
 
   if (is_android && !is_debug) {
@@ -347,17 +355,21 @@ component("skia") {
   }
 
   if (is_ios) {
-    libs = [ "ImageIO.framework" ]
-    set_sources_assignment_filter([])
-    sources += [
-      "//third_party/skia/src/ports/SkFontHost_mac.cpp",
-      "//third_party/skia/src/utils/mac/SkCreateCGImageRef.cpp",
-      "//third_party/skia/src/utils/mac/SkStream_mac.cpp",
-    ]
-    set_sources_assignment_filter(sources_assignment_filter)
-
     # To disable warning "CGContextSelectFont' is deprecated"
     cflags = [ "-Wno-deprecated-declarations" ]
+  }
+
+  # Skia Features.
+  if (skia_support_gpu) {
+    sources += skia_gpu_sources
+    sources += skia_null_gpu_sources
+  }
+
+  if (skia_support_pdf) {
+    deps += [ "//third_party/sfntly" ]
+    sources += skia_pdf_sources
+  } else {
+    sources += [ "//third_party/skia/src/pdf/SkDocument_PDF_None.cpp" ]
   }
 }
 
