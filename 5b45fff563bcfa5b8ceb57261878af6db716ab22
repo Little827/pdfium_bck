@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "364d98b5_33107b0e",
+        "filename": "fxbarcode/common/BC_CommonByteArray.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-20T23:26:53Z",
+      "side": 0,
+      "message": "Trying to fix this TODO here.",
+      "revId": "5b45fff563bcfa5b8ceb57261878af6db716ab22",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
