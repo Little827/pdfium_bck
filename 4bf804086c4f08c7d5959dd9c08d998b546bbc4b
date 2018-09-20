@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1376bd08_8fddf6bf",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-20T23:32:27Z",
+      "side": 0,
+      "message": "Switched to using IsEmpty() here and in GetNext() below.",
+      "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "311522ba_96dd313c",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-20T23:32:27Z",
+      "side": 0,
+      "message": "Removed this out param.",
+      "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807683e7_6fba3027",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-20T23:32:27Z",
+      "side": 0,
+      "message": "Removed the C-style cast and make all the pointers const.",
+      "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a56392_ac841315",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-20T23:32:27Z",
+      "side": 0,
+      "message": "Moved all the variables down.",
+      "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
