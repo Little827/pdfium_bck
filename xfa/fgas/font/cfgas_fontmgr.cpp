@@ -389,38 +389,56 @@ void ftStreamClose(FXFT_Stream stream) {}
 
 };  // extern "C"
 
-// TODO(thestig): Pass in |name_table| as a std::vector?
-std::vector<WideString> GetNames(const uint8_t* name_table) {
+std::vector<WideString> GetNames(const std::vector<uint8_t>& name_table) {
+  static constexpr size_t kNameRecordIndex = 6;
+  static constexpr size_t kMinSize = 8;
+  static constexpr size_t kNameRecordSize = 12;
+
   std::vector<WideString> results;
-  if (!name_table)
+  if (name_table.size() < kMinSize)
     return results;
 
-  const uint8_t* lpTable = name_table;
-  WideString wsFamily;
-  const uint8_t* sp = lpTable + 2;
-  const uint8_t* lpNameRecord = lpTable + 6;
-  uint16_t nNameCount = GetUInt16(sp);
-  const uint8_t* lpStr = lpTable + GetUInt16(sp + 2);
+  uint16_t nNameCount = GetUInt16(&name_table[2]);
+  size_t szRequiredBytes =
+      ((static_cast<size_t>(nNameCount) + 1) * kNameRecordSize) + kMinSize;
+  if (name_table.size() < szRequiredBytes)
+    return results;
+
+  uint16_t nStrOffset = GetUInt16(&name_table[4]);
+  if (name_table.size() <= nStrOffset)
+    return results;
+
   for (uint16_t j = 0; j < nNameCount; j++) {
-    uint16_t nNameID = GetUInt16(lpNameRecord + j * 12 + 6);
+    size_t szNameRecordIndex = kNameRecordIndex + j * kNameRecordSize;
+    uint16_t nNameID = GetUInt16(&name_table[szNameRecordIndex + 6]);
     if (nNameID != 1)
       continue;
 
-    uint16_t nPlatformID = GetUInt16(lpNameRecord + j * 12 + 0);
-    uint16_t nNameLength = GetUInt16(lpNameRecord + j * 12 + 8);
-    uint16_t nNameOffset = GetUInt16(lpNameRecord + j * 12 + 10);
-    wsFamily.clear();
-    if (nPlatformID != 1) {
-      for (uint16_t k = 0; k < nNameLength / 2; k++) {
-        wchar_t wcTemp = GetUInt16(lpStr + nNameOffset + k * 2);
+    uint16_t nPlatformID = GetUInt16(&name_table[szNameRecordIndex]);
+    uint16_t nNameLength = GetUInt16(&name_table[szNameRecordIndex + 8]);
+    uint16_t nNameOffset = GetUInt16(&name_table[szNameRecordIndex + 10]);
+    size_t szNameIndex = nNameOffset;
+    szNameIndex += nStrOffset;
+
+    WideString wsFamily;
+    if (nPlatformID == 1) {
+      szRequiredBytes = szNameIndex + nNameLength;
+      if (name_table.size() < szRequiredBytes)
+        continue;
+
+      for (uint16_t k = 0; k < nNameLength; k++) {
+        wchar_t wcTemp = GetUInt8(&name_table[szNameIndex + k]);
         wsFamily += wcTemp;
       }
-      results.push_back(wsFamily);
-      continue;
-    }
-    for (uint16_t k = 0; k < nNameLength; k++) {
-      wchar_t wcTemp = GetUInt8(lpStr + nNameOffset + k);
-      wsFamily += wcTemp;
+    } else {
+      szRequiredBytes = szNameIndex + (2 * ((nNameLength / 2) + 1));
+      if (name_table.size() < szRequiredBytes)
+        continue;
+
+      for (uint16_t k = 0; k < nNameLength / 2; k++) {
+        wchar_t wcTemp = GetUInt16(&name_table[szNameIndex + k * 2]);
+        wsFamily += wcTemp;
+      }
     }
     results.push_back(wsFamily);
   }
@@ -852,15 +870,13 @@ void CFGAS_FontMgr::RegisterFace(FXFT_Face pFace, const WideString* pFaceName) {
   FT_ULong dwTag;
   FT_ENC_TAG(dwTag, 'n', 'a', 'm', 'e');
 
-  std::vector<uint8_t> table;
   unsigned long nLength = 0;
   unsigned int error = FXFT_Load_Sfnt_Table(pFace, dwTag, 0, nullptr, &nLength);
   if (error == 0 && nLength != 0) {
-    table.resize(nLength);
-    if (FXFT_Load_Sfnt_Table(pFace, dwTag, 0, table.data(), nullptr))
-      table.clear();
+    std::vector<uint8_t> table(nLength);
+    if (FXFT_Load_Sfnt_Table(pFace, dwTag, 0, table.data(), nullptr) == 0)
+      pFont->m_wsFamilyNames = GetNames(table);
   }
-  pFont->m_wsFamilyNames = GetNames(table.empty() ? nullptr : table.data());
   pFont->m_wsFamilyNames.push_back(ByteString(pFace->family_name).UTF8Decode());
   pFont->m_wsFaceName =
       pFaceName ? *pFaceName
