@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1537459300 -0700\nnonce ACQ0HpwUZVK2Uxn6GHY5TQfA0ZLuk7OVoZqHPeUahTLJa3MFokCWgYx/cliU0O6TZzHWucozZnh/\n\n0000000000000000000000000000000000000000 2dc0a5f693ee877d45f3a2d4b23ff773b878adfe refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dvalidate-some-image-data-in-cpdf-image\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlujxGQACgkQqzYtYVpm\n/XvnGgf/ZR7cwzBLQY/kZyTtEQk8TI7wkbL46A0syuMi4KWXIQbY08uFp7oTI+xP\nyrKrxdq0e4O146LqfpzH3/DjM6Zj5lB9DptliZSSIoFNjTDCyCXO+W6pfGigzkQ3\no6ABD5rB5AIrDj09uDGFLYhxV8JeSIJyVhZgK6rjDvnPlaYAwS/o2jWbHT3cNEN3\nl4AXIGPdaBhg6vgk/k/Grh7odM8sWdQdrucSp/W/IL55Fwwe2+5ehsZOnO2Nmz6T\nJUpfVt5L1c0wWvydkrldMDzbsS3MCRQzHfgQpENwXV8gRMRq19Z95Vq1ccB5DPAL\n6bojjnQaq+X8PBmQfvpQH0daJ3Azdw\u003d\u003d\n\u003dMQIG\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
