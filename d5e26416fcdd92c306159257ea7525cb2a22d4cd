@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87b8dde6_f65f7873",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-20T01:38:51Z",
+      "side": 1,
+      "message": "follow-up:  It caught my eye that the |wBit| member seems like a silly thing to have to store in the table and makes it 2x larger?",
+      "range": {
+        "startLine": 304,
+        "startChar": 6,
+        "endLine": 304,
+        "endChar": 12
+      },
+      "revId": "d5e26416fcdd92c306159257ea7525cb2a22d4cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
