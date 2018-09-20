@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74abc492_3ad4ae66",
+        "filename": "core/fpdfapi/render/cpdf_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-20T18:58:34Z",
+      "side": 1,
+      "message": "This is just to bound the value to prevent integer overflows.",
+      "revId": "fc715be2825ed0fb44543af1a4cb678b76c64699",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
