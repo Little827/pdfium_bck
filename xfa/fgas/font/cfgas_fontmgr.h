@@ -7,6 +7,7 @@
 #ifndef XFA_FGAS_FONT_CFGAS_FONTMGR_H_
 #define XFA_FGAS_FONT_CFGAS_FONTMGR_H_
 
+#include <array>
 #include <deque>
 #include <map>
 #include <memory>
@@ -64,17 +65,16 @@ inline bool operator==(const FX_FONTDESCRIPTOR& left,
 
 #else  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 
-class CFX_FontDescriptor {
- public:
+struct CFX_FontDescriptor {
   CFX_FontDescriptor();
   ~CFX_FontDescriptor();
 
-  int32_t m_nFaceIndex;
-  uint32_t m_dwFontStyles;
+  int32_t m_nFaceIndex = 0;
+  uint32_t m_dwFontStyles = 0;
   WideString m_wsFaceName;
   std::vector<WideString> m_wsFamilyNames;
-  uint32_t m_dwUsb[4];
-  uint32_t m_dwCsb[2];
+  std::array<uint32_t, 4> m_dwUsb;
+  std::array<uint32_t, 2> m_dwCsb;
 };
 
 class CFX_FontDescriptorInfo {

@@ -464,23 +464,19 @@ std::vector<uint16_t> GetCharsets(FXFT_Face pFace) {
   return charsets;
 }
 
-void GetUSBCSB(FXFT_Face pFace, uint32_t* USB, uint32_t* CSB) {
+void GetUSBCSB(FXFT_Face pFace, CFX_FontDescriptor* pFont) {
   TT_OS2* pOS2 = static_cast<TT_OS2*>(FT_Get_Sfnt_Table(pFace, ft_sfnt_os2));
   if (!pOS2) {
-    USB[0] = 0;
-    USB[1] = 0;
-    USB[2] = 0;
-    USB[3] = 0;
-    CSB[0] = 0;
-    CSB[1] = 0;
+    pFont->m_dwUsb.fill(0);
+    pFont->m_dwCsb.fill(0);
     return;
   }
-  USB[0] = pOS2->ulUnicodeRange1;
-  USB[1] = pOS2->ulUnicodeRange2;
-  USB[2] = pOS2->ulUnicodeRange3;
-  USB[3] = pOS2->ulUnicodeRange4;
-  CSB[0] = pOS2->ulCodePageRange1;
-  CSB[1] = pOS2->ulCodePageRange2;
+  pFont->m_dwUsb[0] = pOS2->ulUnicodeRange1;
+  pFont->m_dwUsb[1] = pOS2->ulUnicodeRange2;
+  pFont->m_dwUsb[2] = pOS2->ulUnicodeRange3;
+  pFont->m_dwUsb[3] = pOS2->ulUnicodeRange4;
+  pFont->m_dwCsb[0] = pOS2->ulCodePageRange1;
+  pFont->m_dwCsb[1] = pOS2->ulCodePageRange2;
 }
 
 uint32_t GetFlags(FXFT_Face pFace) {
@@ -677,10 +673,9 @@ int32_t CalcPenalty(CFX_FontDescriptor* pInstalled,
 
 }  // namespace
 
-CFX_FontDescriptor::CFX_FontDescriptor()
-    : m_nFaceIndex(0), m_dwFontStyles(0), m_dwUsb(), m_dwCsb() {}
+CFX_FontDescriptor::CFX_FontDescriptor() = default;
 
-CFX_FontDescriptor::~CFX_FontDescriptor() {}
+CFX_FontDescriptor::~CFX_FontDescriptor() = default;
 
 CFX_FontSourceEnum_File::CFX_FontSourceEnum_File() {
   for (size_t i = 0; i < FX_ArraySize(g_FontFolders); ++i)
@@ -865,7 +860,7 @@ void CFGAS_FontMgr::RegisterFace(FXFT_Face pFace, const WideString* pFaceName) {
   pFont->m_dwFontStyles |= GetFlags(pFace);
 
   std::vector<uint16_t> charsets = GetCharsets(pFace);
-  GetUSBCSB(pFace, pFont->m_dwUsb, pFont->m_dwCsb);
+  GetUSBCSB(pFace, pFont.get());
 
   FT_ULong dwTag;
   FT_ENC_TAG(dwTag, 'n', 'a', 'm', 'e');
