@@ -1,4 +1,137 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1537478847 -0700\nnonce ACQ0HpwXRGq7wftGcGP2gSQVLyXKcN6OUdWXOIwlgScp2zRy85XxomR48rXeCOSSKslCvpXj313h\n\n0000000000000000000000000000000000000000 05d4e4a713c3bd19079f7f90bf93dc410b56dbcc refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlukEL8ACgkQqzYtYVpm\n/XtTOwgAtvhsqbu0IVYIluCWkc9yYnwfr6HkBBD65vX5pSBkSraKpqdX49w6xaBk\nTrJV4lkTxGc+XWqux2U/1otKg89UMgX8QJxud8LKMBaUpZS3LsqirpotbbD2BlGO\n8r13Ta55rDq+peHI+k2g04bI7ziBoMuk9+2LH++YvsFBa0YRjJ4mySqPKBnUBUdK\nrws7H5tcMZxitqGoZ1QO/B1RAa4SnQ+RUmMreGjvzM6S4x5wKYj23ubeVQfhEpje\niFPL5CN3GddMdcvPFsWlTSmyHiM1CwXs+O1hnlUrNfXK7JXgICPm7AWUiwD/1+sC\n0MIAuvgQSCsbkVLDq6ouBcSlhj+sTg\u003d\u003d\n\u003dkztm\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe37721_cb6e92e1",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 1,
+      "message": "aside: there\u0027s an arugment to be made that span\u003cuint8_t\u003e foo is better than const std::vector\u003cuint8_t\u003e\u0026 foo since you can pass all sorts of things without explicit conversions.",
+      "range": {
+        "startLine": 392,
+        "startChar": 26,
+        "endLine": 392,
+        "endChar": 56
+      },
+      "revId": "05d4e4a713c3bd19079f7f90bf93dc410b56dbcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e41bc4_7ea79162",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 1,
+      "message": "nit: why not just use name_table througout?",
+      "range": {
+        "startLine": 398,
+        "startChar": 18,
+        "endLine": 398,
+        "endChar": 37
+      },
+      "revId": "05d4e4a713c3bd19079f7f90bf93dc410b56dbcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33df9682_333bfef2",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 1,
+      "message": "nit: maybe move inside loop at 404 and no need to clear at 412?",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 22
+      },
+      "revId": "05d4e4a713c3bd19079f7f90bf93dc410b56dbcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231e7649_abdfba38",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 1,
+      "message": "nit: local not needed?",
+      "range": {
+        "startLine": 415,
+        "startChar": 7,
+        "endLine": 415,
+        "endChar": 22
+      },
+      "revId": "05d4e4a713c3bd19079f7f90bf93dc410b56dbcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a7e317_b16e1594",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 1,
+      "message": "nit: local not needed?",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 57
+      },
+      "revId": "05d4e4a713c3bd19079f7f90bf93dc410b56dbcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8eb364_6c64b2c6",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 1,
+      "message": "Optional\u003cRetainPtr\u003cIFX_SeekableStream\u003e\u003e or just a nullptr sentinel?",
+      "revId": "05d4e4a713c3bd19079f7f90bf93dc410b56dbcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }

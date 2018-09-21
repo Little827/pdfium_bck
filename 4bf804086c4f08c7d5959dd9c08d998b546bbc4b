@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "4b348371_93e4a2a0",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "311522ba_96dd313c",
+      "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "807683e7_6fba3027",
         "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "b620790b_09b6931c",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "807683e7_6fba3027",
+      "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46a56392_ac841315",
         "filename": "xfa/fgas/font/cfgas_fontmgr.h",
         "patchSetId": 1
@@ -67,6 +103,24 @@
       "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6137220_63d43a30",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:35:00Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "46a56392_ac841315",
+      "revId": "4bf804086c4f08c7d5959dd9c08d998b546bbc4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
