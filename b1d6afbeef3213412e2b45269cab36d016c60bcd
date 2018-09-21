@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8b4493a_e3d5f332",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-09-21T20:15:26Z",
+      "side": 0,
+      "message": "The key  observation is this is the only call and it uses lots of members from this class so we can incorporate it to the class instead. And that cascades to FaxEncodeRun and then to AddBitStream.",
+      "revId": "b1d6afbeef3213412e2b45269cab36d016c60bcd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
