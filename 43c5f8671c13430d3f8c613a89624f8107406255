@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1536911401 -0700\nnonce ACQ0HpzH8yv6TZYCxzo6JygvlwW5LBtIB/JVkvJpKKapyqXgsFny/NJpdmhKa9Uec3XF6QTdR8Aw\n\n0000000000000000000000000000000000000000 43c5f8671c13430d3f8c613a89624f8107406255 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlubaCkACgkQqzYtYVpm\n/Xurmgf8DsdBdWCoCgAU6mjS1tRA28Xb7G6HHLOKRY0ArU6ti64rIHTCTpEtuMz8\nA+LpVfmy8cQuYjxLLxLSPtmEGRxfCuDdU7/qAM2wgbiCblL7HG7HhitrmpnlagbN\nc+LxAhN/pXS0vTjV4rz3TF3qBi8wOa8NYVIA2oooK+hz/5zJcjFFnno8ZO698hrn\naeRmMNElS5721qTlhqOe0zHxJd3V0tBj+B7GlhjsjPN8GWz/Ck7jnrY2PCLJeJRh\nRvHskl/LpUKOkqM5+6WvciASrQyyJaA0gCs1JtlOgzL67FIc0qe9ALAcGoYA4gcx\nIEcepMr3tTU3nZyh5IjiYblMAcHrHw\u003d\u003d\n\u003dwx6M\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "81c92bfb_76c2a295",
+        "filename": "fxbarcode/qrcode/BC_QRCoderEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 6000
+      },
+      "writtenOn": "2018-09-21T17:53:26Z",
+      "side": 1,
+      "message": "Can we use assign() here?",
+      "revId": "43c5f8671c13430d3f8c613a89624f8107406255",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
