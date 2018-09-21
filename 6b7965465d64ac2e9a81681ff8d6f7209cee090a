@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c460e093_87afc83a",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-21T18:44:34Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed for copy ctors.",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "6b7965465d64ac2e9a81681ff8d6f7209cee090a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
