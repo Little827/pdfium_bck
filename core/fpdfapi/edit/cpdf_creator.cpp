@@ -127,15 +127,14 @@ std::vector<uint8_t> GenerateFileID(uint32_t dwSeed1, uint32_t dwSeed2) {
   return buffer;
 }
 
-int32_t OutputIndex(IFX_ArchiveStream* archive, FX_FILESIZE offset) {
+void OutputIndex(IFX_ArchiveStream* archive, FX_FILESIZE offset) {
   if (!archive->WriteByte(static_cast<uint8_t>(offset >> 24)) ||
       !archive->WriteByte(static_cast<uint8_t>(offset >> 16)) ||
       !archive->WriteByte(static_cast<uint8_t>(offset >> 8)) ||
       !archive->WriteByte(static_cast<uint8_t>(offset)) ||
       !archive->WriteByte(0)) {
-    return -1;
+    return;
   }
-  return 0;
 }
 
 }  // namespace
