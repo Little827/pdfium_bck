@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66e5ac73_9459d95e",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-09-21T20:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d45c71e_bdd6afe3",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 4
+      },
+      "revId": "b0a44a57a19352efee4ece2e48c0f642443742aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9bb10bd_9d2be2f7",
         "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b0a44a57a19352efee4ece2e48c0f642443742aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ea09a4d_387983c1",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-09-21T20:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9bb10bd_9d2be2f7",
+      "range": {
+        "startLine": 659,
+        "startChar": 0,
+        "endLine": 659,
+        "endChar": 4
+      },
+      "revId": "b0a44a57a19352efee4ece2e48c0f642443742aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "52efa2b6_637af216",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-09-21T20:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd3d778_723aada4",
+      "range": {
+        "startLine": 676,
+        "startChar": 0,
+        "endLine": 676,
+        "endChar": 4
+      },
+      "revId": "b0a44a57a19352efee4ece2e48c0f642443742aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e932fece_e6da8265",
         "filename": "core/fxcodec/codec/ccodec_faxmodule.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "93ef3a36_72ad2876",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-09-21T20:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e932fece_e6da8265",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "b0a44a57a19352efee4ece2e48c0f642443742aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45cb2ac8_abf50c76",
         "filename": "core/fxcodec/codec/ccodec_faxmodule.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2018-09-21T17:48:48Z",
       "side": 1,
       "message": "a size_t would be a better type for this, but might cascade to a lot of changes   ...",
+      "range": {
+        "startLine": 42,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "b0a44a57a19352efee4ece2e48c0f642443742aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a348763_3a403184",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-09-21T20:11:14Z",
+      "side": 1,
+      "message": "Hmm yea I\u0027ll do it in a followup. Lotsa bitposes.",
+      "parentUuid": "45cb2ac8_abf50c76",
       "range": {
         "startLine": 42,
         "startChar": 29,
