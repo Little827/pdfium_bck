@@ -69,6 +69,24 @@
       "revId": "a5840d09f53edaf6dc775212a05a71c820baff2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b4527b_caa0881c",
+        "filename": "core/fpdfapi/page/cpdf_colorstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T18:34:16Z",
+      "side": 1,
+      "message": "Nope.  Retainable is non-copyable by default.",
+      "parentUuid": "1d5123ec_a37ded81",
+      "revId": "a5840d09f53edaf6dc775212a05a71c820baff2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
