@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff643f8_e3bce748",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:43:47Z",
+      "side": 1,
+      "message": "my hunch would be to make this a bool and write\n  return archive-\u003eWriteByte(...) \u0026\u0026 archive-\u003eWriteByte(...) \u0026\u0026 ... ;\n\nbecause this looks \"strange.\"",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "13396060b6fb94e72865d7650d9b6fa4b3937e7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3d7f71_28d69f15",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T17:43:47Z",
+      "side": 1,
+      "message": "... and then make this \n  if (!OutputIndex(...)) return Stage::kInvalid()\n\nper the other failed writes.",
+      "range": {
+        "startLine": 537,
+        "startChar": 7,
+        "endLine": 537,
+        "endChar": 49
+      },
+      "revId": "13396060b6fb94e72865d7650d9b6fa4b3937e7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
