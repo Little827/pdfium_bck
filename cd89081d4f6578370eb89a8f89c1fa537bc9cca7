@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8c13f1b_73d40103",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-09-21T20:25:24Z",
+      "side": 1,
+      "message": "nit: --i, also maybe move bitpos incr out of body like\nfor (int i \u003d bitlen - 1; i \u003e\u003d 0; --i, ++m_DestBitPos) {\n\nalso, we need to be careful here when this flips to size_t, since size_t can\u0027t go negative.  sometimes write\n  for (int i \u003d bitlen; i \u003e 0; --i) {\n    int index \u003d i - 1;\nand use that going forward.",
+      "range": {
+        "startLine": 689,
+        "startChar": 6,
+        "endLine": 689,
+        "endChar": 41
+      },
+      "revId": "cd89081d4f6578370eb89a8f89c1fa537bc9cca7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
