@@ -723,15 +723,14 @@ bool CFX_FontSourceEnum_File::HasStartPosition() {
   return !m_wsNext.IsEmpty();
 }
 
-std::pair<bool, RetainPtr<IFX_SeekableStream>>
-CFX_FontSourceEnum_File::GetNext() {
+Optional<RetainPtr<IFX_SeekableStream>> CFX_FontSourceEnum_File::GetNext() {
   if (m_wsNext.IsEmpty())
-    return {false, nullptr};
+    return {};
 
   auto stream = IFX_SeekableStream::CreateFromFilename(m_wsNext.c_str(),
                                                        FX_FILEMODE_ReadOnly);
   m_wsNext = GetNextFile().UTF8Decode();
-  return {true, stream};
+  return stream;
 }
 
 CFGAS_FontMgr::CFGAS_FontMgr()
@@ -771,13 +770,13 @@ bool CFGAS_FontMgr::EnumFontsFromFiles() {
   if (!m_pFontSource->HasStartPosition())
     return !m_InstalledFonts.empty();
 
-  bool has_next;
-  RetainPtr<IFX_SeekableStream> stream;
-  std::tie(has_next, stream) = m_pFontSource->GetNext();
+  Optional<RetainPtr<IFX_SeekableStream>> stream = m_pFontSource->GetNext();
+  bool has_next = stream.has_value();
   while (has_next) {
-    if (stream)
-      RegisterFaces(stream, nullptr);
-    std::tie(has_next, stream) = m_pFontSource->GetNext();
+    if (stream.value())
+      RegisterFaces(stream.value(), nullptr);
+    stream = m_pFontSource->GetNext();
+    has_next = stream.has_value();
   }
   return !m_InstalledFonts.empty();
 }
