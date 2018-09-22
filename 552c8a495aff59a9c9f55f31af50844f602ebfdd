@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d433943_152df2ba",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:57:14Z",
+      "side": 1,
+      "message": "graph_state.m_DashArray \u003d { 3.0f, 3.0f }; ?",
+      "revId": "552c8a495aff59a9c9f55f31af50844f602ebfdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20bc25eb_558d61e6",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:57:14Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "552c8a495aff59a9c9f55f31af50844f602ebfdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7d845d_251c9560",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:57:14Z",
+      "side": 1,
+      "message": "return foo !\u003d bar || qux !\u003d baz; ?",
+      "revId": "552c8a495aff59a9c9f55f31af50844f602ebfdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22297a21_49955441",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:57:14Z",
+      "side": 1,
+      "message": "Convert to range-based for loop?",
+      "revId": "552c8a495aff59a9c9f55f31af50844f602ebfdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98589caa_1fce6242",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:57:14Z",
+      "side": 1,
+      "message": "Is this right? Should it be:\n\n(pGraphState-\u003em_DashArray.size() + 1) / 2 * 2 ?",
+      "revId": "552c8a495aff59a9c9f55f31af50844f602ebfdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a8ae24_dfabca64",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:57:14Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "552c8a495aff59a9c9f55f31af50844f602ebfdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84fa2f35_fe144a2a",
+        "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:57:14Z",
+      "side": 1,
+      "message": "clear() ?",
+      "revId": "552c8a495aff59a9c9f55f31af50844f602ebfdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
