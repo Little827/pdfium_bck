@@ -17,6 +17,24 @@
       "revId": "43c5f8671c13430d3f8c613a89624f8107406255",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35824d5f_bd767f95",
+        "filename": "fxbarcode/qrcode/BC_QRCoderEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-22T05:21:16Z",
+      "side": 1,
+      "message": "We don\u0027t use std::vector::assign() anywhere, so I went with std::copy() instead.",
+      "parentUuid": "81c92bfb_76c2a295",
+      "revId": "43c5f8671c13430d3f8c613a89624f8107406255",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
