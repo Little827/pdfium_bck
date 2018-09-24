@@ -83,3 +83,28 @@ TEST(fxcrt, DISABLED_FXMEM_DefaultOOM) {
   EXPECT_FALSE(FXMEM_DefaultRealloc(ptr, kMaxByteAlloc));
   FXMEM_DefaultFree(ptr);
 }
+
+TEST(fxcrt, FXAlign) {
+  size_t s0 = 0;
+  size_t s1 = 1;
+  size_t s2 = 2;
+  s0 = FxAlignToBoundary<2>(s0);
+  s1 = FxAlignToBoundary<2>(s1);
+  s1 = FxAlignToBoundary<2>(s2);
+  EXPECT_EQ(0u, s0);
+  EXPECT_EQ(2u, s1);
+  EXPECT_EQ(2u, s2);
+
+  int i0 = 0;
+  int i511 = 511;
+  int i512 = 512;
+  int ineg = -513;
+  i0 = FxAlignToBoundary<512>(i0);
+  i511 = FxAlignToBoundary<512>(i511);
+  i512 = FxAlignToBoundary<512>(i512);
+  ineg = FxAlignToBoundary<512>(ineg);
+  EXPECT_EQ(0, i0);
+  EXPECT_EQ(512, i511);
+  EXPECT_EQ(512, i512);
+  EXPECT_EQ(-512, ineg);
+}
