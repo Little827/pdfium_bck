@@ -83,3 +83,34 @@ TEST(fxcrt, DISABLED_FXMEM_DefaultOOM) {
   EXPECT_FALSE(FXMEM_DefaultRealloc(ptr, kMaxByteAlloc));
   FXMEM_DefaultFree(ptr);
 }
+
+TEST(fxcrt, FXAlign) {
+  static_assert(std::numeric_limits<size_t>::max() % 2 == 1,
+                "numeric limit must be odd for this test");
+
+  size_t s0 = 0;
+  size_t s1 = 1;
+  size_t s2 = 2;
+  size_t sbig = std::numeric_limits<size_t>::max() - 2;
+  s0 = FxAlignToBoundary<2>(s0);
+  s1 = FxAlignToBoundary<2>(s1);
+  s2 = FxAlignToBoundary<2>(s2);
+  sbig = FxAlignToBoundary<2>(sbig);
+  EXPECT_EQ(0u, s0);
+  EXPECT_EQ(2u, s1);
+  EXPECT_EQ(2u, s2);
+  EXPECT_EQ(std::numeric_limits<size_t>::max() - 1, sbig);
+
+  int i0 = 0;
+  int i511 = 511;
+  int i512 = 512;
+  int ineg = -513;
+  i0 = FxAlignToBoundary<512>(i0);
+  i511 = FxAlignToBoundary<512>(i511);
+  i512 = FxAlignToBoundary<512>(i512);
+  ineg = FxAlignToBoundary<512>(ineg);
+  EXPECT_EQ(0, i0);
+  EXPECT_EQ(512, i511);
+  EXPECT_EQ(512, i512);
+  EXPECT_EQ(-512, ineg);
+}
