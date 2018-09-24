@@ -16,6 +16,24 @@
       "revId": "b8a4249c728b932cdd7bf7b3c7ddcaec64d4668b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82deedc3_955ff1a4",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-09-24T21:27:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bef6f58f_5a46ec2f",
+      "revId": "b8a4249c728b932cdd7bf7b3c7ddcaec64d4668b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
