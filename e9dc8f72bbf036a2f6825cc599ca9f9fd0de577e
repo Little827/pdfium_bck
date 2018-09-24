@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b2c34e37_bd36b460",
+        "filename": "fxbarcode/qrcode/BC_QRCoderMatrixUtil.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-09-24T18:46:34Z",
+      "side": 1,
+      "message": "39 now?",
+      "range": {
+        "startLine": 44,
+        "startChar": 63,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "e9dc8f72bbf036a2f6825cc599ca9f9fd0de577e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ff4316a_604641d8",
         "filename": "fxbarcode/qrcode/BC_QRCoderMatrixUtil.cpp",
         "patchSetId": 2
