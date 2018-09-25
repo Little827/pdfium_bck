@@ -11,7 +11,6 @@
 #include <map>
 #include <memory>
 #include <set>
-#include <utility>
 #include <vector>
 
 #include "core/fxcrt/fx_extension.h"
@@ -19,6 +18,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/fx_freetype.h"
 #include "core/fxge/systemfontinfo_iface.h"
+#include "third_party/base/optional.h"
 #include "xfa/fgas/font/cfgas_pdffontmgr.h"
 
 class CFGAS_GEFont;
@@ -100,8 +100,7 @@ class CFX_FontSourceEnum_File {
 
   bool HasStartPosition();
 
-  // <next exists, stream for next>
-  std::pair<bool, RetainPtr<IFX_SeekableStream>> GetNext();
+  Optional<RetainPtr<IFX_SeekableStream>> GetNext();
 
  private:
   struct HandleParentPath {
