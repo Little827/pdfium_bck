@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0cf2f38_75b1ed8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-27T23:45:05Z",
+      "side": 1,
+      "message": "missing slash x2",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "a49f2e85325141478a020dd6d461a3608c91f6f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d2fee77_439dd5cf",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-27T23:45:05Z",
+      "side": 1,
+      "message": "Extra space at the end?",
+      "revId": "a49f2e85325141478a020dd6d461a3608c91f6f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
