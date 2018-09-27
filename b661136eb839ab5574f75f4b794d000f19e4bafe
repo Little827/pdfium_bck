@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87080eb9_890f2408",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_tiff_image.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-27T23:42:45Z",
+      "side": 1,
+      "message": "tabs?",
+      "revId": "b661136eb839ab5574f75f4b794d000f19e4bafe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46bf4de7_c3f8de14",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_tiff_image.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-09-27T23:42:45Z",
+      "side": 1,
+      "message": "What compression method is used for this TIFF image?\n\nAnd out of curiousity, what\u0027s the encoding for the XML image data? Do you have a script to convert from binary data?",
+      "revId": "b661136eb839ab5574f75f4b794d000f19e4bafe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
