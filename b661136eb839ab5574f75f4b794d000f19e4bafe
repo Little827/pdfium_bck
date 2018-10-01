@@ -2,6 +2,24 @@
   "comments": [
     {
       "key": {
+        "uuid": "c916cdb7_3593386a",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_tiff_image.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-01T15:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e92e76e2_2cafec90",
+      "revId": "b661136eb839ab5574f75f4b794d000f19e4bafe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87080eb9_890f2408",
         "filename": "testing/resources/pixel/xfa_specific/xfa_tiff_image.in",
         "patchSetId": 1
@@ -19,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9b7bc871_6aa0f135",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_tiff_image.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-01T15:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87080eb9_890f2408",
+      "revId": "b661136eb839ab5574f75f4b794d000f19e4bafe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46bf4de7_c3f8de14",
         "filename": "testing/resources/pixel/xfa_specific/xfa_tiff_image.in",
         "patchSetId": 1
@@ -33,6 +69,24 @@
       "revId": "b661136eb839ab5574f75f4b794d000f19e4bafe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7300385_5061443a",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_tiff_image.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-01T15:17:32Z",
+      "side": 1,
+      "message": "This TIFF is uncompressed, though I believe TIFF supports LZW and other compression methods. My primary goal with this test is to make sure that there exists at least one TIFF  that can be loaded, since there are some formats that are entirely busted. I will add in follow-on CLs tests for the various compression formats supported by TIFF.\n\nThe default data format for XFA is base64 MIME encoding, though I believe there are other formats that can be used. I have been using a random online tool, https://www.base64encode.org/, for doing conversion, since this isn\u0027t sensitive data.",
+      "parentUuid": "46bf4de7_c3f8de14",
+      "revId": "b661136eb839ab5574f75f4b794d000f19e4bafe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
