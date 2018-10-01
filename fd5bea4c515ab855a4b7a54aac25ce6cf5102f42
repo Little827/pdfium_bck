@@ -22,6 +22,48 @@
       "revId": "fd5bea4c515ab855a4b7a54aac25ce6cf5102f42",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2876e993_77f5785f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-01T15:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c1f169d_6e71abf3",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "fd5bea4c515ab855a4b7a54aac25ce6cf5102f42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2406825_fbcb5679",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_bmp_image.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-01T15:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2b6ac7b_9714ffb9",
+      "revId": "fd5bea4c515ab855a4b7a54aac25ce6cf5102f42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
