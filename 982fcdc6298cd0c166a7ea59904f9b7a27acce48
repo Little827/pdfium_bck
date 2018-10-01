@@ -1,0 +1,22 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bd0dbb4_12a44a65",
+        "filename": "testing/resources/pixel/xfa_specific/xfa_jpg_image.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-01T15:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f683c94b_f1717da6",
+      "revId": "982fcdc6298cd0c166a7ea59904f9b7a27acce48",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
