@@ -13,9 +13,7 @@
 
 #include "public/fpdfview.h"
 
-#ifdef PDF_ENABLE_XFA
-#include "xfa/fgas/font/cfgas_fontmgr.h"
-#endif  // PDF_ENABLE_XFA
+class CFGAS_FontMgr;
 
 namespace pdfium {
 
