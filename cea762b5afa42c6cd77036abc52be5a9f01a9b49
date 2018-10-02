@@ -46,6 +46,29 @@
       "revId": "cea762b5afa42c6cd77036abc52be5a9f01a9b49",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a4e1e4_b6392b00",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-02T17:09:51Z",
+      "side": 1,
+      "message": "This could be HasNext() ...",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "cea762b5afa42c6cd77036abc52be5a9f01a9b49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
