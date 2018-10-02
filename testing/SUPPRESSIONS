@@ -337,3 +337,5 @@ xfa_example.in win * *
 xfa_gif_image.in * * *
 # TODO(pdfium:1095): Remove after associated bug is fixed
 xfa_textfield.in win * *
+# TODO(pdfium:1069): Remove after associated bug is fixed
+xfa_tiff_jpeg_image.in win * *
