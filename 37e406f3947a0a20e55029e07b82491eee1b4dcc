@@ -22,6 +22,30 @@
       "revId": "37e406f3947a0a20e55029e07b82491eee1b4dcc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d43cd6d_d2de1aa1",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-03T20:01:16Z",
+      "side": 1,
+      "message": "This will actually throw an error. The break takes us to the following check for TOKrparen, which will in turn cause a nullptr to be returned, which indicates an error.\n\nWhile looking at this I noticed a missed case, trailing commas, so I have fixed that. This led me down a rabbit whole of refactoring the code to not duplicate this logic and writing test cases to make sure things work as expected.",
+      "parentUuid": "857b5e22_3ffac010",
+      "range": {
+        "startLine": 717,
+        "startChar": 11,
+        "endLine": 717,
+        "endChar": 43
+      },
+      "revId": "37e406f3947a0a20e55029e07b82491eee1b4dcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
