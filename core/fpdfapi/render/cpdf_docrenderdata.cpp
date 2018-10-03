@@ -31,21 +31,6 @@ CPDF_DocRenderData::~CPDF_DocRenderData() {
   Clear(true);
 }
 
-void CPDF_DocRenderData::Clear(bool bRelease) {
-  for (auto it = m_Type3FaceMap.begin(); it != m_Type3FaceMap.end();) {
-    auto curr_it = it++;
-    if (bRelease || curr_it->second->HasOneRef()) {
-      m_Type3FaceMap.erase(curr_it);
-    }
-  }
-
-  for (auto it = m_TransferFuncMap.begin(); it != m_TransferFuncMap.end();) {
-    auto curr_it = it++;
-    if (bRelease || curr_it->second->HasOneRef())
-      m_TransferFuncMap.erase(curr_it);
-  }
-}
-
 RetainPtr<CPDF_Type3Cache> CPDF_DocRenderData::GetCachedType3(
     CPDF_Type3Font* pFont) {
   auto it = m_Type3FaceMap.find(pFont);
@@ -71,6 +56,35 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
   auto it = m_TransferFuncMap.find(pObj);
   if (it != m_TransferFuncMap.end())
     return it->second;
+
+  m_TransferFuncMap[pObj] = CreateTransferFunc(pObj);
+  return m_TransferFuncMap[pObj];
+}
+
+void CPDF_DocRenderData::MaybePurgeTransferFunc(const CPDF_Object* pObj) {
+  auto it = m_TransferFuncMap.find(pObj);
+  if (it != m_TransferFuncMap.end() && it->second->HasOneRef())
+    m_TransferFuncMap.erase(it);
+}
+
+void CPDF_DocRenderData::Clear(bool bRelease) {
+  for (auto it = m_Type3FaceMap.begin(); it != m_Type3FaceMap.end();) {
+    auto curr_it = it++;
+    if (bRelease || curr_it->second->HasOneRef()) {
+      m_Type3FaceMap.erase(curr_it);
+    }
+  }
+
+  for (auto it = m_TransferFuncMap.begin(); it != m_TransferFuncMap.end();) {
+    auto curr_it = it++;
+    if (bRelease || curr_it->second->HasOneRef())
+      m_TransferFuncMap.erase(curr_it);
+  }
+}
+
+RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
+    const CPDF_Object* pObj) const {
+  ASSERT(pObj);
 
   std::unique_ptr<CPDF_Function> pFuncs[3];
   bool bUniTransfer = true;
@@ -121,13 +135,6 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
     }
   }
 
-  m_TransferFuncMap[pObj] = pdfium::MakeRetain<CPDF_TransferFunc>(
-      m_pPDFDoc.Get(), bIdentity, std::move(samples));
-  return m_TransferFuncMap[pObj];
-}
-
-void CPDF_DocRenderData::MaybePurgeTransferFunc(const CPDF_Object* pObj) {
-  auto it = m_TransferFuncMap.find(pObj);
-  if (it != m_TransferFuncMap.end() && it->second->HasOneRef())
-    m_TransferFuncMap.erase(it);
+  return pdfium::MakeRetain<CPDF_TransferFunc>(m_pPDFDoc.Get(), bIdentity,
+                                               std::move(samples));
 }
