@@ -10,14 +10,23 @@
 #include "core/fpdfapi/render/cpdf_dibtransferfunc.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 
-CPDF_TransferFunc::CPDF_TransferFunc(CPDF_Document* pDoc) : m_pPDFDoc(pDoc) {}
+namespace {
 
-CPDF_TransferFunc::~CPDF_TransferFunc() {}
+constexpr size_t kROffset = 0 * CPDF_TransferFunc::kChannelSampleSize;
+constexpr size_t kGOffset = 1 * CPDF_TransferFunc::kChannelSampleSize;
+constexpr size_t kBOffset = 2 * CPDF_TransferFunc::kChannelSampleSize;
+
+}  // namespace
+
+CPDF_TransferFunc::CPDF_TransferFunc(CPDF_Document* pDoc)
+    : m_pPDFDoc(pDoc), m_SamplesSpan(m_Samples) {}
+
+CPDF_TransferFunc::~CPDF_TransferFunc() = default;
 
 FX_COLORREF CPDF_TransferFunc::TranslateColor(FX_COLORREF colorref) const {
-  return FXSYS_BGR(m_Samples[512 + FXSYS_GetBValue(colorref)],
-                   m_Samples[256 + FXSYS_GetGValue(colorref)],
-                   m_Samples[FXSYS_GetRValue(colorref)]);
+  return FXSYS_BGR(m_Samples[kBOffset + FXSYS_GetBValue(colorref)],
+                   m_Samples[kGOffset + FXSYS_GetGValue(colorref)],
+                   m_Samples[kROffset + FXSYS_GetRValue(colorref)]);
 }
 
 RetainPtr<CFX_DIBBase> CPDF_TransferFunc::TranslateImage(
@@ -28,7 +37,18 @@ RetainPtr<CFX_DIBBase> CPDF_TransferFunc::TranslateImage(
   return pDest;
 }
 
+pdfium::span<const uint8_t> CPDF_TransferFunc::GetRSamples() const {
+  return m_SamplesSpan.subspan(kROffset, kChannelSampleSize);
+}
+
+pdfium::span<const uint8_t> CPDF_TransferFunc::GetGSamples() const {
+  return m_SamplesSpan.subspan(kGOffset, kChannelSampleSize);
+}
+
+pdfium::span<const uint8_t> CPDF_TransferFunc::GetBSamples() const {
+  return m_SamplesSpan.subspan(kBOffset, kChannelSampleSize);
+}
+
 void CPDF_TransferFunc::SetSample(size_t index, uint8_t value) {
-  ASSERT(index < FX_ArraySize(m_Samples));
-  m_Samples[index] = value;
+  m_SamplesSpan[index] = value;
 }

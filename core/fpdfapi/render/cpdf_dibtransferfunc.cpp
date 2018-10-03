@@ -14,13 +14,12 @@
 
 CPDF_DIBTransferFunc::CPDF_DIBTransferFunc(
     const RetainPtr<CPDF_TransferFunc>& pTransferFunc)
-    : m_pTransferFunc(pTransferFunc) {
-  m_RampR = pTransferFunc->GetSamples();
-  m_RampG = &pTransferFunc->GetSamples()[256];
-  m_RampB = &pTransferFunc->GetSamples()[512];
-}
+    : m_pTransferFunc(pTransferFunc),
+      m_RampR(pTransferFunc->GetRSamples()),
+      m_RampG(pTransferFunc->GetGSamples()),
+      m_RampB(pTransferFunc->GetBSamples()) {}
 
-CPDF_DIBTransferFunc::~CPDF_DIBTransferFunc() {}
+CPDF_DIBTransferFunc::~CPDF_DIBTransferFunc() = default;
 
 FXDIB_Format CPDF_DIBTransferFunc::GetDestFormat() {
   if (m_pSrc->IsAlphaMask())
