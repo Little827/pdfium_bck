@@ -10,12 +10,15 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/fx_dib.h"
+#include "third_party/base/span.h"
 
 class CPDF_Document;
 class CFX_DIBBase;
 
 class CPDF_TransferFunc final : public Retainable {
  public:
+  static constexpr size_t kChannelSampleSize = 256;
+
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
@@ -24,19 +27,25 @@ class CPDF_TransferFunc final : public Retainable {
 
   const CPDF_Document* GetDocument() const { return m_pPDFDoc.Get(); }
 
-  const uint8_t* GetSamples() const { return m_Samples; }
+  // Spans are |kChannelSampleSize| in size.
+  pdfium::span<const uint8_t> GetRSamples() const;
+  pdfium::span<const uint8_t> GetGSamples() const;
+  pdfium::span<const uint8_t> GetBSamples() const;
   void SetSample(size_t index, uint8_t value);
 
   bool GetIdentity() const { return m_bIdentity; }
   void SetIdentity(bool identity) { m_bIdentity = identity; }
 
  private:
+  static constexpr size_t kSampleSize = kChannelSampleSize * 3;
+
   explicit CPDF_TransferFunc(CPDF_Document* pDoc);
   ~CPDF_TransferFunc() override;
 
   UnownedPtr<CPDF_Document> const m_pPDFDoc;
   bool m_bIdentity;
-  uint8_t m_Samples[256 * 3];
+  uint8_t m_Samples[kSampleSize];
+  pdfium::span<uint8_t> m_SamplesSpan;
 };
 
 #endif  // CORE_FPDFAPI_RENDER_CPDF_TRANSFERFUNC_H_
