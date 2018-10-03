@@ -96,7 +96,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
   float output[kMaxOutputs];
   memset(output, 0, sizeof(output));
   for (int v = 0; v < 256; ++v) {
-    input = (float)v / 255.0f;
+    input = static_cast<float>(v) / 255.0f;
     if (bUniTransfer) {
       if (pFuncs[0] && pFuncs[0]->CountOutputs() <= kMaxOutputs)
         pFuncs[0]->Call(&input, 1, output, &noutput);
@@ -104,19 +104,19 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
       if (o != v)
         bIdentity = false;
       for (int i = 0; i < 3; ++i)
-        pTransfer->GetSamples()[i * 256 + v] = o;
+        pTransfer->SetSample(i * 256 + v, o);
       continue;
     }
     for (int i = 0; i < 3; ++i) {
       if (!pFuncs[i] || pFuncs[i]->CountOutputs() > kMaxOutputs) {
-        pTransfer->GetSamples()[i * 256 + v] = v;
+        pTransfer->SetSample(i * 256 + v, v);
         continue;
       }
       pFuncs[i]->Call(&input, 1, output, &noutput);
       int o = FXSYS_round(output[0] * 255);
       if (o != v)
         bIdentity = false;
-      pTransfer->GetSamples()[i * 256 + v] = o;
+      pTransfer->SetSample(i * 256 + v, o);
     }
   }
 
