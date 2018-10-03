@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/render/cpdf_transferfunc.h"
 
+#include <utility>
+
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/render/cpdf_dibtransferfunc.h"
 #include "core/fxge/dib/cfx_dibbase.h"
@@ -18,8 +20,13 @@ constexpr size_t kBOffset = 2 * CPDF_TransferFunc::kChannelSampleSize;
 
 }  // namespace
 
-CPDF_TransferFunc::CPDF_TransferFunc(CPDF_Document* pDoc)
-    : m_pPDFDoc(pDoc), m_SamplesSpan(m_Samples) {}
+CPDF_TransferFunc::CPDF_TransferFunc(CPDF_Document* pDoc,
+                                     bool bIdentity,
+                                     std::array<uint8_t, kSampleSize> samples)
+    : m_pPDFDoc(pDoc),
+      m_bIdentity(bIdentity),
+      m_Samples(std::move(samples)),
+      m_SamplesSpan(m_Samples.data(), m_Samples.size()) {}
 
 CPDF_TransferFunc::~CPDF_TransferFunc() = default;
 
@@ -47,8 +54,4 @@ pdfium::span<const uint8_t> CPDF_TransferFunc::GetGSamples() const {
 
 pdfium::span<const uint8_t> CPDF_TransferFunc::GetBSamples() const {
   return m_SamplesSpan.subspan(kBOffset, kChannelSampleSize);
-}
-
-void CPDF_TransferFunc::SetSample(size_t index, uint8_t value) {
-  m_SamplesSpan[index] = value;
 }

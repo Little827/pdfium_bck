@@ -6,7 +6,9 @@
 
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
 
+#include <array>
 #include <memory>
+#include <utility>
 
 #include "core/fpdfapi/font/cpdf_type3font.h"
 #include "core/fpdfapi/page/cpdf_function.h"
@@ -88,9 +90,8 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
     if (!pFuncs[0])
       return nullptr;
   }
-  auto pTransfer = pdfium::MakeRetain<CPDF_TransferFunc>(m_pPDFDoc.Get());
-  m_TransferFuncMap[pObj] = pTransfer;
 
+  std::array<uint8_t, CPDF_TransferFunc::kSampleSize> samples;
   float input;
   int noutput;
   float output[kMaxOutputs];
@@ -104,24 +105,25 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
       if (o != v)
         bIdentity = false;
       for (int i = 0; i < 3; ++i)
-        pTransfer->SetSample(i * 256 + v, o);
+        samples[i * 256 + v] = o;
       continue;
     }
     for (int i = 0; i < 3; ++i) {
       if (!pFuncs[i] || pFuncs[i]->CountOutputs() > kMaxOutputs) {
-        pTransfer->SetSample(i * 256 + v, v);
+        samples[i * 256 + v] = v;
         continue;
       }
       pFuncs[i]->Call(&input, 1, output, &noutput);
       int o = FXSYS_round(output[0] * 255);
       if (o != v)
         bIdentity = false;
-      pTransfer->SetSample(i * 256 + v, o);
+      samples[i * 256 + v] = o;
     }
   }
 
-  pTransfer->SetIdentity(bIdentity);
-  return pTransfer;
+  m_TransferFuncMap[pObj] = pdfium::MakeRetain<CPDF_TransferFunc>(
+      m_pPDFDoc.Get(), bIdentity, std::move(samples));
+  return m_TransferFuncMap[pObj];
 }
 
 void CPDF_DocRenderData::MaybePurgeTransferFunc(const CPDF_Object* pObj) {
