@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1538528385 -0700\nnonce AP50N7arpJLHZP3D4C4lwVWTw5jRJCVTeYfiJkFfEB6I3zTlOfErkunA0F2i+Ip3zoB7ghgNHVl/\n\n0000000000000000000000000000000000000000 c291a80f60e811250161706be2c2797ab492b8ef refs/for/refs/heads/master%notify\u003dNONE,m\u003dIWYU\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu0FIEACgkQqzYtYVpm\n/XsnFQgAhoCBOsW6dLoaQyp+r0XTlNV3lk4St6Xfq+HZkYZviaj8DM2yjA5uW/r2\nYt2zyxBWIJaItzXiq/UW5LiXZxasUp1KCy6WqRLyzEsZY/9aI3AoqyrtTxkRPtYj\njXTGkpCslkhSXjQZi6xvJ+4DUGALTBp67msle7LXesFz3VqCFgmQwwZsY3OHjyTx\nsmC9ql1pl8QFJkzTquvbWyoAqyzt28AMIbHr8qumsiFNOSs6oWwTN1tPAjpdrqMU\nMyoCthoVnAVYFz2O73eGpPFvLOvY04dXtmZ0qN9S7ffQXpXuxdYzYlC6XcWdOc6r\n8TGjjFFmWJ2bAogEW8uB1eI2pGmSzw\u003d\u003d\n\u003d61Ai\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce45df32_60db628c",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-03T17:45:41Z",
+      "side": 1,
+      "message": "is std::move of std::array cheap?\nMy hunch was std::array\u003cN\u003e stored its samples inline?",
+      "range": {
+        "startLine": 125,
+        "startChar": 35,
+        "endLine": 125,
+        "endChar": 52
+      },
+      "revId": "c291a80f60e811250161706be2c2797ab492b8ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
