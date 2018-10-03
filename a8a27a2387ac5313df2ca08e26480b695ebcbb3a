@@ -22,6 +22,30 @@
       "revId": "a8a27a2387ac5313df2ca08e26480b695ebcbb3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbecaea_bc0f94a0",
+        "filename": "core/fpdfapi/render/cpdf_transferfunc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-03T20:20:22Z",
+      "side": 1,
+      "message": "Sure, we can separate them.",
+      "parentUuid": "2263b583_7a3b1853",
+      "range": {
+        "startLine": 52,
+        "startChar": 34,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "a8a27a2387ac5313df2ca08e26480b695ebcbb3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
