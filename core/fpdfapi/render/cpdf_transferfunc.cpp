@@ -12,12 +12,12 @@
 
 CPDF_TransferFunc::CPDF_TransferFunc(CPDF_Document* pDoc) : m_pPDFDoc(pDoc) {}
 
-CPDF_TransferFunc::~CPDF_TransferFunc() {}
+CPDF_TransferFunc::~CPDF_TransferFunc() = default;
 
 FX_COLORREF CPDF_TransferFunc::TranslateColor(FX_COLORREF colorref) const {
-  return FXSYS_BGR(m_Samples[512 + FXSYS_GetBValue(colorref)],
-                   m_Samples[256 + FXSYS_GetGValue(colorref)],
-                   m_Samples[FXSYS_GetRValue(colorref)]);
+  return FXSYS_BGR(m_BSamples[FXSYS_GetBValue(colorref)],
+                   m_GSamples[FXSYS_GetGValue(colorref)],
+                   m_RSamples[FXSYS_GetRValue(colorref)]);
 }
 
 RetainPtr<CFX_DIBBase> CPDF_TransferFunc::TranslateImage(
@@ -28,7 +28,29 @@ RetainPtr<CFX_DIBBase> CPDF_TransferFunc::TranslateImage(
   return pDest;
 }
 
-void CPDF_TransferFunc::SetSample(size_t index, uint8_t value) {
-  ASSERT(index < FX_ArraySize(m_Samples));
-  m_Samples[index] = value;
+pdfium::span<const uint8_t> CPDF_TransferFunc::GetRSamples() const {
+  return pdfium::make_span(m_RSamples);
+}
+
+pdfium::span<const uint8_t> CPDF_TransferFunc::GetGSamples() const {
+  return pdfium::make_span(m_GSamples);
+}
+
+pdfium::span<const uint8_t> CPDF_TransferFunc::GetBSamples() const {
+  return pdfium::make_span(m_BSamples);
+}
+
+void CPDF_TransferFunc::SetRSample(size_t index, uint8_t value) {
+  ASSERT(index < kSampleSize);
+  m_RSamples[index] = value;
+}
+
+void CPDF_TransferFunc::SetGSample(size_t index, uint8_t value) {
+  ASSERT(index < kSampleSize);
+  m_GSamples[index] = value;
+}
+
+void CPDF_TransferFunc::SetBSample(size_t index, uint8_t value) {
+  ASSERT(index < kSampleSize);
+  m_BSamples[index] = value;
 }

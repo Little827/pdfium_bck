@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
 
+#include <functional>
 #include <memory>
 
 #include "core/fpdfapi/font/cpdf_type3font.h"
@@ -19,6 +20,16 @@
 namespace {
 
 const int kMaxOutputs = 16;
+
+std::function<void(CPDF_TransferFunc&, size_t, uint8_t)> GetSetSampleFunc(
+    int i) {
+  if (i == 0)
+    return &CPDF_TransferFunc::SetRSample;
+  if (i == 1)
+    return &CPDF_TransferFunc::SetGSample;
+  ASSERT(i == 2);
+  return &CPDF_TransferFunc::SetBSample;
+}
 
 }  // namespace
 
@@ -103,20 +114,23 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
       int o = FXSYS_round(output[0] * 255);
       if (o != v)
         bIdentity = false;
-      for (int i = 0; i < 3; ++i)
-        pTransfer->SetSample(i * 256 + v, o);
+      pTransfer->SetRSample(v, o);
+      pTransfer->SetGSample(v, o);
+      pTransfer->SetBSample(v, o);
       continue;
     }
     for (int i = 0; i < 3; ++i) {
+      std::function<void(CPDF_TransferFunc&, size_t, uint8_t)> func =
+          GetSetSampleFunc(i);
       if (!pFuncs[i] || pFuncs[i]->CountOutputs() > kMaxOutputs) {
-        pTransfer->SetSample(i * 256 + v, v);
+        func(*pTransfer, v, v);
         continue;
       }
       pFuncs[i]->Call(&input, 1, output, &noutput);
       int o = FXSYS_round(output[0] * 255);
       if (o != v)
         bIdentity = false;
-      pTransfer->SetSample(i * 256 + v, o);
+      func(*pTransfer, v, o);
     }
   }
 
