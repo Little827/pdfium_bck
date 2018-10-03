@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1538597774 -0700\nnonce AP50N7ZzJtd0U2GjgW0+emycQx1k3vPIbyTiougOFHEOAJMqd23pAAM+3Lrg46dJQmorkwhPb1Jz\n\n0000000000000000000000000000000000000000 a8ff70cc324613397d5f6c5ac9c82565b13d0108 refs/for/refs/heads/master%notify\u003dNONE,m\u003dsplit\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu1I44ACgkQqzYtYVpm\n/XuuSAf/W4DMHaqZoej7ApRe/phGKLz2ElF7M/pasmWh4OGaDqEYZ8iqWbXlC2nc\nZlk0y35YzihBE4VQvX/srSGQY8rURS5DpxlnD/7UpELBbunUYIUOZztWp5rQonM0\nz0YjoZ3oTpEi9qzjd//Q4qv2w2MVoPeyLI9QCKH2iZvAqJkQ3jbV3rVK4J24bCzs\n75LYD9e4Dniot4+MKC6Lyvm1I7mIKLQX3gHKrE+zP4ir9OOR6EDTmhMOpusLyBqu\nXhXs7Aas7PwtHVnTOjBuwMXxe1bo2CASob6Df89pXGnEtdUsAR+dLEr6fDRMigUm\n/7aw7ckZmB2fIVLYCmwiDHJr7bWNVg\u003d\u003d\n\u003dI3Zc\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "24024ff2_f0821afa",
+        "filename": "core/fpdfapi/render/cpdf_transferfunc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-03T20:59:07Z",
+      "side": 1,
+      "message": "maybe this should just be SetSample() and have it take two indicies, eg 0..2 and 0..255.",
+      "revId": "a8ff70cc324613397d5f6c5ac9c82565b13d0108",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
