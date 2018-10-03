@@ -84,27 +84,22 @@ void CPDF_DocRenderData::Clear(bool bRelease) {
 
 RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
     const CPDF_Object* pObj) const {
+  const CPDF_Array* pArray = pObj->AsArray();
+  if (pArray)
+    return CreateTransferFuncFromArray(pArray);
+  return CreateTransferFuncFromNonArray(pObj);
+}
+
+RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFuncFromNonArray(
+    const CPDF_Object* pObj) const {
   ASSERT(pObj);
+  ASSERT(!pObj->IsArray());
 
-  std::unique_ptr<CPDF_Function> pFuncs[3];
-  bool bUniTransfer = true;
+  std::unique_ptr<CPDF_Function> pFunc = CPDF_Function::Load(pObj);
+  if (!pFunc)
+    return nullptr;
+
   bool bIdentity = true;
-  if (const CPDF_Array* pArray = pObj->AsArray()) {
-    bUniTransfer = false;
-    if (pArray->GetCount() < 3)
-      return nullptr;
-
-    for (uint32_t i = 0; i < 3; ++i) {
-      pFuncs[2 - i] = CPDF_Function::Load(pArray->GetDirectObjectAt(i));
-      if (!pFuncs[2 - i])
-        return nullptr;
-    }
-  } else {
-    pFuncs[0] = CPDF_Function::Load(pObj);
-    if (!pFuncs[0])
-      return nullptr;
-  }
-
   std::array<uint8_t, CPDF_TransferFunc::kSampleSize> samples;
   float input;
   int noutput;
@@ -112,18 +107,44 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
   memset(output, 0, sizeof(output));
   for (int v = 0; v < 256; ++v) {
     input = static_cast<float>(v) / 255.0f;
-    if (bUniTransfer) {
-      if (pFuncs[0] && pFuncs[0]->CountOutputs() <= kMaxOutputs)
-        pFuncs[0]->Call(&input, 1, output, &noutput);
-      int o = FXSYS_round(output[0] * 255);
-      if (o != v)
-        bIdentity = false;
-      for (int i = 0; i < 3; ++i)
-        samples[i * 256 + v] = o;
-      continue;
-    }
+    if (pFunc->CountOutputs() <= kMaxOutputs)
+      pFunc->Call(&input, 1, output, &noutput);
+    int o = FXSYS_round(output[0] * 255);
+    if (o != v)
+      bIdentity = false;
+    for (int i = 0; i < 3; ++i)
+      samples[i * 256 + v] = o;
+    continue;
+  }
+
+  return pdfium::MakeRetain<CPDF_TransferFunc>(m_pPDFDoc.Get(), bIdentity,
+                                               std::move(samples));
+}
+
+RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFuncFromArray(
+    const CPDF_Array* pArray) const {
+  ASSERT(pArray);
+
+  std::unique_ptr<CPDF_Function> pFuncs[3];
+  if (pArray->GetCount() < 3)
+    return nullptr;
+
+  for (uint32_t i = 0; i < 3; ++i) {
+    pFuncs[2 - i] = CPDF_Function::Load(pArray->GetDirectObjectAt(i));
+    if (!pFuncs[2 - i])
+      return nullptr;
+  }
+
+  bool bIdentity = true;
+  std::array<uint8_t, CPDF_TransferFunc::kSampleSize> samples;
+  float input;
+  int noutput;
+  float output[kMaxOutputs];
+  memset(output, 0, sizeof(output));
+  for (int v = 0; v < 256; ++v) {
+    input = static_cast<float>(v) / 255.0f;
     for (int i = 0; i < 3; ++i) {
-      if (!pFuncs[i] || pFuncs[i]->CountOutputs() > kMaxOutputs) {
+      if (pFuncs[i]->CountOutputs() > kMaxOutputs) {
         samples[i * 256 + v] = v;
         continue;
       }
