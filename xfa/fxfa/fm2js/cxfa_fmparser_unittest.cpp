@@ -392,3 +392,12 @@ return pfm_rt.get_val(pfm_ret);
   EXPECT_TRUE(ast->ToJavaScript(&buf));
   EXPECT_STREQ(ret, buf.MakeString().c_str());
 }
+
+TEST(CXFA_FMParserTest, ParseFunctionCallMissingCommas) {
+  const wchar_t input[] = L"P.x(!a!b!c)";
+
+  auto parser = pdfium::MakeUnique<CXFA_FMParser>(input);
+  std::unique_ptr<CXFA_FMAST> ast = parser->Parse();
+  ASSERT_TRUE(ast == nullptr);
+  EXPECT_TRUE(parser->HasError());
+}
