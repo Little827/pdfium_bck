@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "857b5e22_3ffac010",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-03T18:14:07Z",
+      "side": 1,
+      "message": "So we just ignore the tokens left if there\u0027s no comma separation? Can\u0027t we throw some sort of error?",
+      "range": {
+        "startLine": 717,
+        "startChar": 11,
+        "endLine": 717,
+        "endChar": 43
+      },
+      "revId": "37e406f3947a0a20e55029e07b82491eee1b4dcc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
