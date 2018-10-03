@@ -27,3 +27,8 @@ RetainPtr<CFX_DIBBase> CPDF_TransferFunc::TranslateImage(
   pDest->LoadSrc(pSrc);
   return pDest;
 }
+
+void CPDF_TransferFunc::SetSample(size_t index, uint8_t value) {
+  ASSERT(index < FX_ArraySize(m_Samples));
+  m_Samples[index] = value;
+}

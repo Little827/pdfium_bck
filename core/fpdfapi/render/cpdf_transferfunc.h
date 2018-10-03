@@ -25,7 +25,7 @@ class CPDF_TransferFunc final : public Retainable {
   const CPDF_Document* GetDocument() const { return m_pPDFDoc.Get(); }
 
   const uint8_t* GetSamples() const { return m_Samples; }
-  uint8_t* GetSamples() { return m_Samples; }
+  void SetSample(size_t index, uint8_t value);
 
   bool GetIdentity() const { return m_bIdentity; }
   void SetIdentity(bool identity) { m_bIdentity = identity; }
