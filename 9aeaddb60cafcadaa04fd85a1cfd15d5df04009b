@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eb646f6_84d20df8",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-03T21:34:59Z",
+      "side": 1,
+      "message": "auto",
+      "range": {
+        "startLine": 742,
+        "startChar": 10,
+        "endLine": 742,
+        "endChar": 50
+      },
+      "revId": "9aeaddb60cafcadaa04fd85a1cfd15d5df04009b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6398c955_871ded43",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-03T21:34:59Z",
+      "side": 1,
+      "message": "Suggestion:\nif (m_token.m_type !\u003d TOKlparen || !NextToken())\n  return nullptr;",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 19
+      },
+      "revId": "9aeaddb60cafcadaa04fd85a1cfd15d5df04009b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f5ff2b_a92f0fd0",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-03T21:34:59Z",
+      "side": 1,
+      "message": "auto since the instantiation makes the type clear",
+      "range": {
+        "startLine": 855,
+        "startChar": 2,
+        "endLine": 855,
+        "endChar": 72
+      },
+      "revId": "9aeaddb60cafcadaa04fd85a1cfd15d5df04009b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "443e7fc9_448afe25",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-03T21:34:59Z",
+      "side": 1,
+      "message": "This condition is only relevant before the first iteration, as for the other cases the only path to continue the loop is if (m_token.m_type \u003d\u003d TOKcomma) @867, \"!!NextToken()\" @868, \"m_token.m_type !\u003d TOKrparen\" @871, which guarantees the loop will run.\n\nHow about this?\n\nbool first_arg \u003d true;\nwhile (m_token.m_type !\u003d TOKrparen) {\n  if (first_arg) {\n    first_arg \u003d false;\n  } else {\n    if (m_token.m_type !\u003d TOKcomma || !NextToken())\n      return nullptr;\n  }\n  \n  std::unique_ptr\u003cCXFA_FMSimpleExpression\u003e exp \u003d ParseSimpleExpression();\n  if (!exp)\n    return nullptr;\n\n  expressions-\u003epush_back(std::move(exp));\n  if (expressions-\u003esize() \u003e kMaxPostExpressions)\n    return nullptr;\n}\n\nreturn std::move(expressions);",
+      "range": {
+        "startLine": 858,
+        "startChar": 9,
+        "endLine": 858,
+        "endChar": 36
+      },
+      "revId": "9aeaddb60cafcadaa04fd85a1cfd15d5df04009b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec436184_be8b08f5",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-03T21:34:59Z",
+      "side": 1,
+      "message": "Collapse to one line. Same in other places below.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "9aeaddb60cafcadaa04fd85a1cfd15d5df04009b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14168afb_ddb82894",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmparser_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-03T21:34:59Z",
+      "side": 1,
+      "message": "Add a test case for sequential commas like \"(P.x(foo,,bar))\"",
+      "revId": "9aeaddb60cafcadaa04fd85a1cfd15d5df04009b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
