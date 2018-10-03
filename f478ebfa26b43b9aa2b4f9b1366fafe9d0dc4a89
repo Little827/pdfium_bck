@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "856ba20a_2bb2099e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-03T18:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c4f4942_e59c798d",
+      "revId": "f478ebfa26b43b9aa2b4f9b1366fafe9d0dc4a89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4bc8395_3bcfcb2a",
         "filename": "core/fxcodec/codec/ccodec_progressivedecoder.cpp",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "f478ebfa26b43b9aa2b4f9b1366fafe9d0dc4a89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9fb0b4_c6dd04e6",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1605,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-03T18:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4bc8395_3bcfcb2a",
+      "range": {
+        "startLine": 1605,
+        "startChar": 29,
+        "endLine": 1605,
+        "endChar": 35
+      },
+      "revId": "f478ebfa26b43b9aa2b4f9b1366fafe9d0dc4a89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
