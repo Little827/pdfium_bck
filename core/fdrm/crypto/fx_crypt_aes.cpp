@@ -681,14 +681,12 @@ void aes_decrypt_nb_8(CRYPT_aes_context* ctx, unsigned int* block) {
 #undef MAKEWORD
 #undef LASTWORD
 void aes_setup(CRYPT_aes_context* ctx,
-               int blocklen,
                const unsigned char* key,
                int keylen) {
   int i, j, Nk, rconst;
-  ASSERT(blocklen == 16 || blocklen == 24 || blocklen == 32);
   ASSERT(keylen == 16 || keylen == 24 || keylen == 32);
   Nk = keylen / 4;
-  ctx->Nb = blocklen / 4;
+  ctx->Nb = 16 / 4;
   ctx->Nr = 6 + (ctx->Nb > Nk ? ctx->Nb : Nk);
   if (ctx->Nb == 8) {
     ctx->encrypt = aes_encrypt_nb_8, ctx->decrypt = aes_decrypt_nb_8;
@@ -804,11 +802,10 @@ void aes_encrypt_cbc(unsigned char* dest,
 }  // namespace
 
 void CRYPT_AESSetKey(CRYPT_aes_context* context,
-                     uint32_t blocklen,
                      const uint8_t* key,
                      uint32_t keylen,
                      bool bEncrypt) {
-  aes_setup(context, blocklen, key, keylen);
+  aes_setup(context, key, keylen);
 }
 
 void CRYPT_AESSetIV(CRYPT_aes_context* context, const uint8_t* iv) {
