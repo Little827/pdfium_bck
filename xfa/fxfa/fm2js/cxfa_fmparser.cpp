@@ -714,13 +714,10 @@ std::unique_ptr<CXFA_FMSimpleExpression> CXFA_FMParser::ParsePostExpression(
               return nullptr;
 
             expressions.push_back(std::move(simple_expr));
-            if (m_token.m_type == TOKcomma) {
-              if (!NextToken())
-                return nullptr;
-            } else if (m_token.m_type == TOKeof ||
-                       m_token.m_type == TOKreserver) {
+            if (m_token.m_type != TOKcomma)
               break;
-            }
+            if (!NextToken())
+              return nullptr;
           }
           if (m_token.m_type != TOKrparen)
             return nullptr;
@@ -763,13 +760,10 @@ std::unique_ptr<CXFA_FMSimpleExpression> CXFA_FMParser::ParsePostExpression(
                 return nullptr;
 
               expressions.push_back(std::move(exp));
-              if (m_token.m_type == TOKcomma) {
-                if (!NextToken())
-                  return nullptr;
-              } else if (m_token.m_type == TOKeof ||
-                         m_token.m_type == TOKreserver) {
+              if (m_token.m_type != TOKcomma)
                 break;
-              }
+              if (!NextToken())
+                return nullptr;
             }
             if (m_token.m_type != TOKrparen)
               return nullptr;
