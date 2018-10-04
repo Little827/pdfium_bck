@@ -155,16 +155,6 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnLButtonUp(
       ->OnLButtonUp(pPageView, pAnnot, nFlags, point);
 }
 
-bool CPDFSDK_AnnotHandlerMgr::Annot_OnLButtonDblClk(
-    CPDFSDK_PageView* pPageView,
-    CPDFSDK_Annot::ObservedPtr* pAnnot,
-    uint32_t nFlags,
-    const CFX_PointF& point) {
-  ASSERT(*pAnnot);
-  return GetAnnotHandler(pAnnot->Get())
-      ->OnLButtonDblClk(pPageView, pAnnot, nFlags, point);
-}
-
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnMouseMove(
     CPDFSDK_PageView* pPageView,
     CPDFSDK_Annot::ObservedPtr* pAnnot,
@@ -248,12 +238,6 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_Annot* pAnnot,
   }
 
   return GetAnnotHandler(pAnnot)->OnKeyDown(pAnnot, nKeyCode, nFlag);
-}
-
-bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyUp(CPDFSDK_Annot* pAnnot,
-                                            int nKeyCode,
-                                            int nFlag) {
-  return false;
 }
 
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnSetFocus(
