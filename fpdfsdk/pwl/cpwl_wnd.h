@@ -240,8 +240,6 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   bool ClientHitTest(const CFX_PointF& point) const;
   bool IsCaptureMouse() const;
 
-  void EnableWindow(bool bEnable);
-  bool IsEnabled() const { return m_bEnabled; }
   const CPWL_Wnd* GetFocused() const;
   bool IsFocused() const;
   bool IsReadOnly() const;
@@ -260,7 +258,6 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
 
   CFX_Matrix GetChildToRoot() const;
   CFX_Matrix GetChildMatrix() const;
-  void SetChildMatrix(const CFX_Matrix& mt);
   CFX_Matrix GetWindowMatrix() const;
 
   virtual void OnSetFocus();
@@ -329,10 +326,9 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   UnownedPtr<CPWL_ScrollBar> m_pVScrollBar;
   CFX_FloatRect m_rcWindow;
   CFX_FloatRect m_rcClip;
-  bool m_bCreated;
-  bool m_bVisible;
-  bool m_bNotifying;
-  bool m_bEnabled;
+  bool m_bCreated = false;
+  bool m_bVisible = false;
+  bool m_bNotifying = false;
 };
 
 #endif  // FPDFSDK_PWL_CPWL_WND_H_
