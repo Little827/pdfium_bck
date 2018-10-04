@@ -33,6 +33,24 @@
       "revId": "d8ac668fad0211b5d8055866f835d38315d5dabb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f4ced0c_e72815b4",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-04T20:47:04Z",
+      "side": 0,
+      "message": "probably on the next iteration.",
+      "parentUuid": "435dccfd_23ed4c30",
+      "revId": "d8ac668fad0211b5d8055866f835d38315d5dabb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
