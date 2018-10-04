@@ -611,7 +611,7 @@ float CPDF_VariableText::GetWordWidth(int32_t nFontIndex,
 
 float CPDF_VariableText::GetWordWidth(const CPVT_WordInfo& WordInfo) {
   return GetWordWidth(GetWordFontIndex(WordInfo), WordInfo.Word, GetSubWord(),
-                      GetCharSpace(), GetHorzScale(), GetWordFontSize(),
+                      GetCharSpace(), 100, GetWordFontSize(),
                       WordInfo.fWordTail);
 }
 

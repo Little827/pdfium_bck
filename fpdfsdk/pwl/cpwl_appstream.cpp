@@ -667,7 +667,7 @@ ByteString GetEditAppStream(CPWL_EditImpl* pEdit,
 
   std::ostringstream sAppStream;
   if (sEditStream.tellp() > 0) {
-    int32_t nHorzScale = pEdit->GetHorzScale();
+    int32_t nHorzScale = 100;
     if (nHorzScale != 100) {
       sAppStream << nHorzScale << " " << kSetTextScaleHorizontalOperator
                  << "\n";

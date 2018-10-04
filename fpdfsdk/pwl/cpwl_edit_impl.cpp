@@ -437,11 +437,9 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
   uint16_t SubWord = pEdit->GetPasswordChar();
   float fFontSize = pEdit->GetFontSize();
   CPVT_WordRange wrSelect = pEdit->GetSelectWordRange();
-  int32_t nHorzScale = pEdit->GetHorzScale();
-
+  int32_t nHorzScale = 100;
   FX_COLORREF crCurFill = crTextFill;
   FX_COLORREF crOldFill = crCurFill;
-
   bool bSelect = false;
   const FX_COLORREF crWhite = ArgbEncode(255, 255, 255, 255);
   const FX_COLORREF crSelBK = ArgbEncode(255, 0, 51, 113);
@@ -827,10 +825,6 @@ int32_t CPWL_EditImpl::GetCharArray() const {
 
 CFX_FloatRect CPWL_EditImpl::GetContentRect() const {
   return VTToEdit(m_pVT->GetContentRect());
-}
-
-int32_t CPWL_EditImpl::GetHorzScale() const {
-  return m_pVT->GetHorzScale();
 }
 
 float CPWL_EditImpl::GetCharSpace() const {
