@@ -194,14 +194,9 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
 
   if (m_eSBButtonType != PSBT_POS) {
     // draw background
-    if (IsEnabled()) {
-      pDevice->DrawShadow(mtUser2Device, true, false,
-                          rectWnd.GetDeflated(1.0f, 1.0f), nTransparency, 80,
-                          220);
-    } else {
-      pDevice->DrawFillRect(&mtUser2Device, rectWnd.GetDeflated(1.0f, 1.0f),
-                            ArgbEncode(255, 255, 255, 255));
-    }
+    pDevice->DrawShadow(mtUser2Device, true, false,
+                        rectWnd.GetDeflated(1.0f, 1.0f), nTransparency, 80,
+                        220);
 
     // draw arrow
     if (rectWnd.top - rectWnd.bottom > 6.0f) {
@@ -223,40 +218,33 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
       for (size_t i = 0; i < FX_ArraySize(kOffsetsX); ++i)
         pts.push_back(CFX_PointF(fX + kOffsetsX[i], fY + pOffsetsY[i]));
       pDevice->DrawFillArea(mtUser2Device, pts,
-                            IsEnabled()
-                                ? ArgbEncode(nTransparency, 255, 255, 255)
-                                : PWL_DEFAULT_HEAVYGRAYCOLOR.ToFXColor(255));
+                            ArgbEncode(nTransparency, 255, 255, 255));
     }
     return;
   }
 
-  if (IsEnabled()) {
-    // draw shadow effect
-    CFX_PointF ptTop = CFX_PointF(rectWnd.left, rectWnd.top - 1.0f);
-    CFX_PointF ptBottom = CFX_PointF(rectWnd.left, rectWnd.bottom + 1.0f);
+  // draw shadow effect
+  CFX_PointF ptTop = CFX_PointF(rectWnd.left, rectWnd.top - 1.0f);
+  CFX_PointF ptBottom = CFX_PointF(rectWnd.left, rectWnd.bottom + 1.0f);
 
-    ptTop.x += 1.5f;
-    ptBottom.x += 1.5f;
+  ptTop.x += 1.5f;
+  ptBottom.x += 1.5f;
 
-    const FX_COLORREF refs[] = {ArgbEncode(nTransparency, 210, 210, 210),
-                                ArgbEncode(nTransparency, 220, 220, 220),
-                                ArgbEncode(nTransparency, 240, 240, 240),
-                                ArgbEncode(nTransparency, 240, 240, 240),
-                                ArgbEncode(nTransparency, 210, 210, 210),
-                                ArgbEncode(nTransparency, 180, 180, 180),
-                                ArgbEncode(nTransparency, 150, 150, 150),
-                                ArgbEncode(nTransparency, 150, 150, 150),
-                                ArgbEncode(nTransparency, 180, 180, 180),
-                                ArgbEncode(nTransparency, 210, 210, 210)};
-    for (FX_COLORREF ref : refs) {
-      pDevice->DrawStrokeLine(&mtUser2Device, ptTop, ptBottom, ref, 1.0f);
+  const FX_COLORREF refs[] = {ArgbEncode(nTransparency, 210, 210, 210),
+                              ArgbEncode(nTransparency, 220, 220, 220),
+                              ArgbEncode(nTransparency, 240, 240, 240),
+                              ArgbEncode(nTransparency, 240, 240, 240),
+                              ArgbEncode(nTransparency, 210, 210, 210),
+                              ArgbEncode(nTransparency, 180, 180, 180),
+                              ArgbEncode(nTransparency, 150, 150, 150),
+                              ArgbEncode(nTransparency, 150, 150, 150),
+                              ArgbEncode(nTransparency, 180, 180, 180),
+                              ArgbEncode(nTransparency, 210, 210, 210)};
+  for (FX_COLORREF ref : refs) {
+    pDevice->DrawStrokeLine(&mtUser2Device, ptTop, ptBottom, ref, 1.0f);
 
-      ptTop.x += 1.0f;
-      ptBottom.x += 1.0f;
-    }
-  } else {
-    pDevice->DrawFillRect(&mtUser2Device, rectWnd.GetDeflated(0.5f, 0.5f),
-                          ArgbEncode(255, 255, 255, 255));
+    ptTop.x += 1.0f;
+    ptBottom.x += 1.0f;
   }
 
   // draw friction
@@ -264,12 +252,8 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
     return;
 
   FX_COLORREF crStroke = ArgbEncode(nTransparency, 120, 120, 120);
-  if (!IsEnabled())
-    crStroke = PWL_DEFAULT_HEAVYGRAYCOLOR.ToFXColor(255);
-
   float nFrictionWidth = 5.0f;
   float nFrictionHeight = 5.5f;
-
   CFX_PointF ptLeft = CFX_PointF(ptCenter.x - nFrictionWidth / 2.0f,
                                  ptCenter.y - nFrictionHeight / 2.0f + 0.5f);
   CFX_PointF ptRight = CFX_PointF(ptCenter.x + nFrictionWidth / 2.0f,
