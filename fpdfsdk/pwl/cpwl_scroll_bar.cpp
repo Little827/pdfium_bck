@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <sstream>
+#include <utility>
 #include <vector>
 
 #include "core/fxge/cfx_pathdata.h"
@@ -24,27 +25,14 @@ constexpr float kScrollBarTriangleHalfLength = 2.0f;
 
 #define PWL_DEFAULT_HEAVYGRAYCOLOR CFX_Color(CFX_Color::kGray, 0.50)
 
-PWL_FLOATRANGE::PWL_FLOATRANGE() {
-  Default();
-}
-
-PWL_FLOATRANGE::PWL_FLOATRANGE(float min, float max) {
-  Set(min, max);
-}
-
 void PWL_FLOATRANGE::Default() {
-  fMin = 0;
-  fMax = 0;
+  fMin = 0.0f;
+  fMax = 0.0f;
 }
 
-void PWL_FLOATRANGE::Set(float min, float max) {
-  if (min > max) {
-    fMin = max;
-    fMax = min;
-  } else {
-    fMin = min;
-    fMax = max;
-  }
+void PWL_FLOATRANGE::Set(float f1, float f2) {
+  fMin = std::min(f1, f2);
+  fMax = std::max(f1, f2);
 }
 
 bool PWL_FLOATRANGE::In(float x) const {

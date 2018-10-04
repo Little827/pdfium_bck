@@ -65,8 +65,7 @@ class CPWL_SBButton final : public CPWL_Wnd {
 
 struct PWL_FLOATRANGE {
  public:
-  PWL_FLOATRANGE();
-  PWL_FLOATRANGE(float min, float max);
+  PWL_FLOATRANGE() = default;
 
   bool operator==(const PWL_FLOATRANGE& that) const {
     return fMin == that.fMin && fMax == that.fMax;
@@ -78,8 +77,8 @@ struct PWL_FLOATRANGE {
   bool In(float x) const;
   float GetWidth() const;
 
-  float fMin;
-  float fMax;
+  float fMin = 0.0f;
+  float fMax = 0.0f;
 };
 
 struct PWL_SCROLL_PRIVATEDATA {
