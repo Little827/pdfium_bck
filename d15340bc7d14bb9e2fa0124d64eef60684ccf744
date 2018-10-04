@@ -16,6 +16,24 @@
       "revId": "d15340bc7d14bb9e2fa0124d64eef60684ccf744",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07938233_ecfd600c",
+        "filename": "fpdfsdk/pwl/cpwl_font_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-04T21:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c7fba62_3c26a9cb",
+      "revId": "d15340bc7d14bb9e2fa0124d64eef60684ccf744",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
