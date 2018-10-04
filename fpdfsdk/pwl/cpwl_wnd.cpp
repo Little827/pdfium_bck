@@ -111,13 +111,7 @@ class CPWL_MsgControl final : public Observable<CPWL_MsgControl> {
   UnownedPtr<CPWL_Wnd> m_pMainKeyboardWnd;
 };
 
-CPWL_Wnd::CPWL_Wnd()
-    : m_rcWindow(),
-      m_rcClip(),
-      m_bCreated(false),
-      m_bVisible(false),
-      m_bNotifying(false),
-      m_bEnabled(true) {}
+CPWL_Wnd::CPWL_Wnd() = default;
 
 CPWL_Wnd::~CPWL_Wnd() {
   ASSERT(!m_bCreated);
@@ -300,7 +294,7 @@ bool CPWL_Wnd::InvalidateRect(CFX_FloatRect* pRect) {
 
 #define PWL_IMPLEMENT_KEY_METHOD(key_method_name)                  \
   bool CPWL_Wnd::key_method_name(uint16_t nChar, uint32_t nFlag) { \
-    if (!IsValid() || !IsVisible() || !IsEnabled())                \
+    if (!IsValid() || !IsVisible())                                \
       return false;                                                \
     if (!IsWndCaptureKeyboard(this))                               \
       return false;                                                \
@@ -317,7 +311,7 @@ PWL_IMPLEMENT_KEY_METHOD(OnChar)
 
 #define PWL_IMPLEMENT_MOUSE_METHOD(mouse_method_name)                          \
   bool CPWL_Wnd::mouse_method_name(const CFX_PointF& point, uint32_t nFlag) {  \
-    if (!IsValid() || !IsVisible() || !IsEnabled())                            \
+    if (!IsValid() || !IsVisible())                                            \
       return false;                                                            \
     if (IsWndCaptureMouse(this)) {                                             \
       for (auto* pChild : m_Children) {                                        \
@@ -376,7 +370,7 @@ bool CPWL_Wnd::Redo() {
 bool CPWL_Wnd::OnMouseWheel(short zDelta,
                             const CFX_PointF& point,
                             uint32_t nFlag) {
-  if (!IsValid() || !IsVisible() || !IsEnabled())
+  if (!IsValid() || !IsVisible())
     return false;
 
   SetCursor();
@@ -767,22 +761,7 @@ CFX_Matrix CPWL_Wnd::GetChildMatrix() const {
   return HasFlag(PWS_CHILD) ? m_CreationParams.mtChild : CFX_Matrix();
 }
 
-void CPWL_Wnd::SetChildMatrix(const CFX_Matrix& mt) {
-  m_CreationParams.mtChild = mt;
-}
-
 const CPWL_Wnd* CPWL_Wnd::GetFocused() const {
   CPWL_MsgControl* pMsgCtrl = GetMsgControl();
   return pMsgCtrl ? pMsgCtrl->GetFocusedWindow() : nullptr;
-}
-
-void CPWL_Wnd::EnableWindow(bool bEnable) {
-  if (m_bEnabled == bEnable)
-    return;
-
-  for (auto* pChild : m_Children) {
-    if (pChild)
-      pChild->EnableWindow(bEnable);
-  }
-  m_bEnabled = bEnable;
 }
