@@ -437,11 +437,8 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
   uint16_t SubWord = pEdit->GetPasswordChar();
   float fFontSize = pEdit->GetFontSize();
   CPVT_WordRange wrSelect = pEdit->GetSelectWordRange();
-  int32_t nHorzScale = pEdit->GetHorzScale();
-
   FX_COLORREF crCurFill = crTextFill;
   FX_COLORREF crOldFill = crCurFill;
-
   bool bSelect = false;
   const FX_COLORREF crWhite = ArgbEncode(255, 255, 255, 255);
   const FX_COLORREF crSelBK = ArgbEncode(255, 0, 51, 113);
@@ -504,10 +501,10 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
         if (place.LineCmp(oldplace) != 0 || word.nFontIndex != nFontIndex ||
             crOldFill != crCurFill) {
           if (sTextBuf.tellp() > 0) {
-            DrawTextString(
-                pDevice, CFX_PointF(ptBT.x + ptOffset.x, ptBT.y + ptOffset.y),
-                pFontMap->GetPDFFont(nFontIndex), fFontSize, mtUser2Device,
-                ByteString(sTextBuf), crOldFill, nHorzScale);
+            DrawTextString(pDevice,
+                           CFX_PointF(ptBT.x + ptOffset.x, ptBT.y + ptOffset.y),
+                           pFontMap->GetPDFFont(nFontIndex), fFontSize,
+                           mtUser2Device, ByteString(sTextBuf), crOldFill, 100);
 
             sTextBuf.str("");
           }
@@ -524,7 +521,7 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
             CFX_PointF(word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y),
             pFontMap->GetPDFFont(word.nFontIndex), fFontSize, mtUser2Device,
             pEdit->GetPDFWordString(word.nFontIndex, word.Word, SubWord),
-            crCurFill, nHorzScale);
+            crCurFill, 100);
       }
       oldplace = place;
     }
@@ -534,7 +531,7 @@ void CPWL_EditImpl::DrawEdit(CFX_RenderDevice* pDevice,
     DrawTextString(pDevice,
                    CFX_PointF(ptBT.x + ptOffset.x, ptBT.y + ptOffset.y),
                    pFontMap->GetPDFFont(nFontIndex), fFontSize, mtUser2Device,
-                   ByteString(sTextBuf), crOldFill, nHorzScale);
+                   ByteString(sTextBuf), crOldFill, 100);
   }
 }
 
@@ -827,10 +824,6 @@ int32_t CPWL_EditImpl::GetCharArray() const {
 
 CFX_FloatRect CPWL_EditImpl::GetContentRect() const {
   return VTToEdit(m_pVT->GetContentRect());
-}
-
-int32_t CPWL_EditImpl::GetHorzScale() const {
-  return m_pVT->GetHorzScale();
 }
 
 float CPWL_EditImpl::GetCharSpace() const {
