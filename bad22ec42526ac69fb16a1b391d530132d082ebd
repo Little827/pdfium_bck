@@ -22,6 +22,47 @@
       "revId": "bad22ec42526ac69fb16a1b391d530132d082ebd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc9d714_7a2cbd30",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-04T20:49:39Z",
+      "side": 1,
+      "message": "GetDocument() return m_pContext-\u003eGetPDFDoc(). |m_pContext| is CPDFXFA_Context, not CPDF_Document::Extension. CPDFXFA_Context::GetPDFDoc() returns |CPDFXFA_Context::m_pPDFDoc|, which is a const pointer, and CPDFXFA_Context\u0027s ctor assert\u0027s it is not nullptr.",
+      "parentUuid": "b6899e26_322df910",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "bad22ec42526ac69fb16a1b391d530132d082ebd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440b24e3_1bf53afe",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-04T20:49:39Z",
+      "side": 1,
+      "message": "So ya, I guess you\u0027d want me to leave this as it was.",
+      "revId": "bad22ec42526ac69fb16a1b391d530132d082ebd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
