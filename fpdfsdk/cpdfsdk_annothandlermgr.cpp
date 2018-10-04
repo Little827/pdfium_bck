@@ -63,15 +63,6 @@ void CPDFSDK_AnnotHandlerMgr::ReleaseAnnot(CPDFSDK_Annot* pAnnot) {
   pAnnotHandler->ReleaseAnnot(pAnnot);
 }
 
-void CPDFSDK_AnnotHandlerMgr::Annot_OnCreate(CPDFSDK_Annot* pAnnot) {
-  CPDF_Annot* pPDFAnnot = pAnnot->GetPDFAnnot();
-
-  CPDFSDK_DateTime curTime;
-  pPDFAnnot->GetAnnotDict()->SetNewFor<CPDF_String>(
-      "M", curTime.ToPDFDateTimeString(), false);
-  pPDFAnnot->GetAnnotDict()->SetNewFor<CPDF_Number>("F", 0);
-}
-
 void CPDFSDK_AnnotHandlerMgr::Annot_OnLoad(CPDFSDK_Annot* pAnnot) {
   ASSERT(pAnnot);
   GetAnnotHandler(pAnnot)->OnLoad(pAnnot);

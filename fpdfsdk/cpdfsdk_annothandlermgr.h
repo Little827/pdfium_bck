@@ -38,7 +38,6 @@ class CPDFSDK_AnnotHandlerMgr {
 #endif  // PDF_ENABLE_XFA
   void ReleaseAnnot(CPDFSDK_Annot* pAnnot);
 
-  void Annot_OnCreate(CPDFSDK_Annot* pAnnot);
   void Annot_OnLoad(CPDFSDK_Annot* pAnnot);
 
   WideString Annot_GetText(CPDFSDK_Annot* pAnnot);
