@@ -42,7 +42,7 @@ class CPDFXFA_Page final : public IPDF_Page {
       const CFX_PointF& page_point) const override;
 
   bool LoadPage();
-  bool LoadPDFPage(CPDF_Dictionary* pageDict);
+  void LoadPDFPageFromDict(CPDF_Dictionary* pPageDict);
   CPDF_Document::Extension* GetDocumentExtension() const;
   int GetPageIndex() const { return m_iPageIndex; }
   CXFA_FFPageView* GetXFAPageView() const { return m_pXFAPageView; }
@@ -59,8 +59,8 @@ class CPDFXFA_Page final : public IPDF_Page {
   bool LoadXFAPageView();
 
   RetainPtr<CPDF_Page> m_pPDFPage;
-  CXFA_FFPageView* m_pXFAPageView;
-  UnownedPtr<CPDFXFA_Context> const m_pContext;
+  CXFA_FFPageView* m_pXFAPageView = nullptr;
+  const UnownedPtr<CPDFXFA_Context> m_pContext;
   const int m_iPageIndex;
 };
 
