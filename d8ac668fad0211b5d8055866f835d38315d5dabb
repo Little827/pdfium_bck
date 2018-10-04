@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9650ef12_37130d84",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-04T20:46:06Z",
+      "side": 0,
+      "message": "This may be useful. I\u0027ll make a note and consider adding this back later.",
+      "revId": "d8ac668fad0211b5d8055866f835d38315d5dabb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "435dccfd_23ed4c30",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-04T20:46:06Z",
+      "side": 0,
+      "message": "Will this lead to more dead code removal?",
+      "revId": "d8ac668fad0211b5d8055866f835d38315d5dabb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
