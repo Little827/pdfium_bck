@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "05b25899_0d160e1e",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-04T20:51:16Z",
+      "side": 0,
+      "message": "Sure. If I re-add this, I\u0027ll switch to core/fxcrt/cfx_datetime.h.",
+      "parentUuid": "d980b239_c387b91b",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "d8ac668fad0211b5d8055866f835d38315d5dabb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "435dccfd_23ed4c30",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
         "patchSetId": 2
