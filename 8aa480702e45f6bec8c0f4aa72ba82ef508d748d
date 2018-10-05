@@ -47,6 +47,30 @@
       "revId": "8aa480702e45f6bec8c0f4aa72ba82ef508d748d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98787c4d_516e876a",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-05T20:45:23Z",
+      "side": 1,
+      "message": "So be it.  The alternative would be to split into two calls, one taking the additional matrix argument.  No matter.",
+      "parentUuid": "abd65e20_ea32d650",
+      "range": {
+        "startLine": 1124,
+        "startChar": 31,
+        "endLine": 1124,
+        "endChar": 43
+      },
+      "revId": "8aa480702e45f6bec8c0f4aa72ba82ef508d748d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
