@@ -23,6 +23,30 @@
       "revId": "e4c22e8042db1f19d69f6dd7665f9683fc1c7d5c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9191f5_87bcfc57",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T19:25:22Z",
+      "side": 1,
+      "message": "Yep, still got 32 minus 3 \u003d 29 other bits to deal with before we can remove GetFieldFlags(). Some of the other bits have overloaded meanings, depending on field type.",
+      "parentUuid": "5cb876c3_709e7ac9",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 18
+      },
+      "revId": "e4c22e8042db1f19d69f6dd7665f9683fc1c7d5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
