@@ -208,9 +208,6 @@ class CPDFSDK_FormFillEnvironment final
   CPDFSDK_ActionHandler* GetActionHandler();      // Creates if not present.
   CPDFSDK_InterForm* GetInterForm();              // Creates if not present.
 
-  void SetSaveCalled(FORM_SAVECALLED callback) { m_SaveCalled = callback; }
-  void SaveCalled();
-
  private:
   IPDF_Page* GetPage(int nIndex);
 
