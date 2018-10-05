@@ -52,6 +52,24 @@
       "revId": "2fabcf4fd2585acaef84d65ca7b29b1cb03a3c3b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4373b557_cd79b5a1",
+        "filename": "fxjs/cjs_app.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 7065
+      },
+      "writtenOn": "2018-10-05T20:51:39Z",
+      "side": 1,
+      "message": "I agree that is a better long term solution, rather then a new API for each bit of data.",
+      "parentUuid": "f073b0aa_d0b35b54",
+      "revId": "2fabcf4fd2585acaef84d65ca7b29b1cb03a3c3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
