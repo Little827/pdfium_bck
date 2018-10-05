@@ -14,21 +14,10 @@
 #include "core/fxcrt/fx_system.h"
 
 struct CPVT_WordRange {
-  CPVT_WordRange() {}
+  CPVT_WordRange() = default;
 
   CPVT_WordRange(const CPVT_WordPlace& begin, const CPVT_WordPlace& end)
       : BeginPos(begin), EndPos(end) {
-    Normalize();
-  }
-
-  void Reset() {
-    BeginPos.Reset();
-    EndPos.Reset();
-  }
-
-  void Set(const CPVT_WordPlace& begin, const CPVT_WordPlace& end) {
-    BeginPos = begin;
-    EndPos = end;
     Normalize();
   }
 
