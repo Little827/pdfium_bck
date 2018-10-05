@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "6414f995_8aa5a20c",
+        "filename": "core/fpdfapi/page/cpdf_contentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T23:57:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65fcd644_72762b9a",
+      "range": {
+        "startLine": 237,
+        "startChar": 35,
+        "endLine": 237,
+        "endChar": 39
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a765ea1_a4a3c40b",
         "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
         "patchSetId": 1
@@ -109,6 +133,30 @@
       "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bf9ece_78155368",
+        "filename": "core/fpdfapi/page/cpdf_shadingobject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T23:57:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "692c528c_4d430aef",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -239,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "72f362a0_dc38d9c4",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T23:57:22Z",
+      "side": 1,
+      "message": "Ya, I added a TODO for that.",
+      "parentUuid": "63add925_5a38cb15",
+      "range": {
+        "startLine": 1975,
+        "startChar": 16,
+        "endLine": 1975,
+        "endChar": 26
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d04419d2_59d88977",
         "filename": "core/fxcrt/fx_coordinates.h",
         "patchSetId": 1
@@ -259,6 +331,30 @@
       "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21d3762c_04486a3c",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T23:57:22Z",
+      "side": 1,
+      "message": "Chromium\u0027s gfx::Rect::Intersect() works like this too.",
+      "parentUuid": "d04419d2_59d88977",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 50
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -285,6 +381,30 @@
     },
     {
       "key": {
+        "uuid": "42ce18a7_932a3d52",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T23:57:22Z",
+      "side": 1,
+      "message": "gfx::Rect::Subtract() works like this.",
+      "parentUuid": "8587d85e_226dac41",
+      "range": {
+        "startLine": 286,
+        "startChar": 7,
+        "endLine": 286,
+        "endChar": 14
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbf16504_d874e057",
         "filename": "core/fxcrt/fx_coordinates.h",
         "patchSetId": 1
@@ -305,6 +425,30 @@
       "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe086d7_3579ae8c",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T23:57:22Z",
+      "side": 1,
+      "message": "gfx::Rect::Offset() works like this.",
+      "parentUuid": "cbf16504_d874e057",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 36
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
