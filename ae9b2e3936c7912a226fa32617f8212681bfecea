@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1538775226 -0700\nnonce AP50N7ZdsIv9Y44iocNcMlhQbhy+Xed5V0QsEDeuFjDn5uYxW/+IiX98bBYNt1bXrkASJSRi7Oz9\n\n0000000000000000000000000000000000000000 ae9b2e3936c7912a226fa32617f8212681bfecea refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu32LoACgkQqzYtYVpm\n/Xs8AQgApvHUZQKvXM3FWnpGioT/La+tKgL29UalAZ+g6fdg1S0wbmR1Pt9RF4LL\n0Kcx5ljJYKhIczseCjSYxszUMnlcdPr8EtL5jWKJzUU91CW298BnfQnmTYUIcpLT\nhVKrGgMQV6yyQ8aCZmwec4SW3qAKreVFN2c+RMWm6fEVNf3RmMRePV+VzkqVgX4V\n+PMTBnbODF3ULxFFRy154JCOpgN4ES/VqTPstLqGY60jrSXDwvWJk9Ouh8VlwQZg\nKF57uOuuTvjaM/GI5U7z9GkDtXBaQZY0jwN2ZbsNPUJuhrdYvvvS8vkHsKPooO+H\nGPZj3wJvNbhY9Ul0t+KEo5Bo/oNowg\u003d\u003d\n\u003dIVtT\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a765ea1_a4a3c40b",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T22:06:23Z",
+      "side": 1,
+      "message": "Want CFX_FloatRect to be constexpr-able.",
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22cb01ab_dfa5c4be",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T22:06:23Z",
+      "side": 1,
+      "message": "Need to occasionally tweak it in sub-classes, so |m_Rect| is protected for now.",
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
