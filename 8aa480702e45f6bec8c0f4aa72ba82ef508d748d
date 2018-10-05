@@ -23,6 +23,30 @@
       "revId": "8aa480702e45f6bec8c0f4aa72ba82ef508d748d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abd65e20_ea32d650",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T20:39:35Z",
+      "side": 1,
+      "message": "Already checked. There are callers passing in nullptr.",
+      "parentUuid": "804e6e1a_9b6a5900",
+      "range": {
+        "startLine": 1124,
+        "startChar": 31,
+        "endLine": 1124,
+        "endChar": 43
+      },
+      "revId": "8aa480702e45f6bec8c0f4aa72ba82ef508d748d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
