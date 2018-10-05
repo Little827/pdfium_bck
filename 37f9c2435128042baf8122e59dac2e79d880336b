@@ -23,6 +23,30 @@
       "revId": "37f9c2435128042baf8122e59dac2e79d880336b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae07bd0b_b0e28270",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T19:28:52Z",
+      "side": 1,
+      "message": "These fuzzers are a bit different in that they only use public/ and don\u0027t reach into core/. So I\u0027d like to leave this as is. Maybe we should put them in a different folder?",
+      "parentUuid": "8737fdf1_26e0bd34",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "37f9c2435128042baf8122e59dac2e79d880336b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
