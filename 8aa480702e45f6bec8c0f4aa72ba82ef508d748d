@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1538723519 -0700\nnonce AP50N7YhJ6TMwsm5GT7IheBIv3Lxe5gkIFuP6c0jy3O/6DGRHMHQSHMk2s0hj2pCcut6NIvFs6/r\n\n0000000000000000000000000000000000000000 8aa480702e45f6bec8c0f4aa72ba82ef508d748d refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu3Dr8ACgkQqzYtYVpm\n/Xv42QgAvkgCDZ2WP9ewylron+IksWoQki/EvMdDGaYaUwk0UOEjlBrXiqahKXsw\nXz8gGof/ORsvq8np6Igy6eIhC5lTJpwFTGt3TQtWU9rAqgHHkm9BjrNGvuMvpBUv\nVyikWCHQjPK56lhMGDahd4HuLcva1EBS3E1f/aSyh8duCsrKr6kZXPhez9GhuYMm\n9yPbkPOVpUhQ1L/mAjMDljSCVnUYw0C1JgLafakzmV873qLhgJ8z7N5uPrGtOeiG\n2k7Nkz7FV/dp1kc/KnD3/YVpncJStmCjJ3U302bd6h0poNvdYHJZdFsn6gxwisB2\nzUHexXVkW+J+wcl56O6WV3/11tY6WA\u003d\u003d\n\u003df/XG\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "804e6e1a_9b6a5900",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-05T19:59:21Z",
+      "side": 1,
+      "message": "nit: taking address of reference is less than desirable, maybe check if GetBBox should take a reference.",
+      "range": {
+        "startLine": 1124,
+        "startChar": 31,
+        "endLine": 1124,
+        "endChar": 43
+      },
+      "revId": "8aa480702e45f6bec8c0f4aa72ba82ef508d748d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
