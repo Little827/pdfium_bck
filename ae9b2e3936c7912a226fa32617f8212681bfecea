@@ -236,6 +236,75 @@
       "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d04419d2_59d88977",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-05T23:11:50Z",
+      "side": 1,
+      "message": "In an ideal world, rects would be immutable and these would return new rects.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 50
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8587d85e_226dac41",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-05T23:11:50Z",
+      "side": 1,
+      "message": "same here with these.",
+      "range": {
+        "startLine": 286,
+        "startChar": 7,
+        "endLine": 286,
+        "endChar": 14
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf16504_d874e057",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-05T23:11:50Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 36
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
