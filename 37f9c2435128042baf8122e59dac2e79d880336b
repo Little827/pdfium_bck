@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1538723665 -0700\nnonce AP50N7almLlaFrOl1YOtbt4eKzKaO5d4flk3MD99SM2xOKlqVplw0IZJDPbwVJumP2g9sVt2yJCd\n\n0000000000000000000000000000000000000000 37f9c2435128042baf8122e59dac2e79d880336b refs/for/refs/heads/master%notify\u003dNONE,m\u003dfix_no_v8\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu3D1EACgkQqzYtYVpm\n/XvQRgf9EQHVYU+IZG8j5T4wJ0vtmUMUk9+uPlJuPV0UcQmY4cAnHTTv9gMASqX8\njievC18IJVdj/g2qnpuohaVCf53RjrkOa6rgVuY8urBNxez2yMLNCqKyJhc1q9Cv\n/Pp2QaGabJKS5ipWOE764EPFhUPMToQa6gZZ3QBKZ0U4pB4bvQC4kABo/fbiJbkg\nF2cMhlmPeI+h4Rvr+YRKUeFOuvEMoab0RRFuOZtD3gH+P1Wj/OPZ7GTuWp10vnGv\n36U4alBwLvQYgAYribJ8A70M9FFuxr8QxstB+zK3Y70DIm45IvV0xHvPKzCeWyL8\nJ3hLQ3wxnHmR24nGDbPSOXSmrZVOfw\u003d\u003d\n\u003dbMDt\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8737fdf1_26e0bd34",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-05T16:38:53Z",
+      "side": 1,
+      "message": "do we want _WIN32 / __APPLE__ etc or the equivalent _FX_PLATORM macros?",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "37f9c2435128042baf8122e59dac2e79d880336b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
