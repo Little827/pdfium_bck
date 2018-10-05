@@ -34,6 +34,24 @@
       "revId": "2fabcf4fd2585acaef84d65ca7b29b1cb03a3c3b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f073b0aa_d0b35b54",
+        "filename": "fxjs/cjs_app.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-05T20:50:22Z",
+      "side": 1,
+      "message": "No worries. I\u0027ll probably add a new API to allow more general feedback from JS here to the embedder, rather than just for SaveAs.",
+      "parentUuid": "dd9f25b6_8e8660ab",
+      "revId": "2fabcf4fd2585acaef84d65ca7b29b1cb03a3c3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
