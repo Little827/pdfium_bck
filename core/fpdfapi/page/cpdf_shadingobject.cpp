@@ -28,8 +28,7 @@ void CPDF_ShadingObject::Transform(const CFX_Matrix& matrix) {
   if (m_ClipPath.HasRef()) {
     CalcBoundingBox();
   } else {
-    std::tie(m_Left, m_Right, m_Top, m_Bottom) =
-        matrix.TransformRect(m_Left, m_Right, m_Top, m_Bottom);
+    SetRect(matrix.TransformRect(GetRect()));
   }
 }
 
@@ -48,9 +47,5 @@ const CPDF_ShadingObject* CPDF_ShadingObject::AsShading() const {
 void CPDF_ShadingObject::CalcBoundingBox() {
   if (!m_ClipPath.HasRef())
     return;
-  CFX_FloatRect rect = m_ClipPath.GetClipBox();
-  m_Left = rect.left;
-  m_Bottom = rect.bottom;
-  m_Right = rect.right;
-  m_Top = rect.top;
+  SetRect(m_ClipPath.GetClipBox());
 }
