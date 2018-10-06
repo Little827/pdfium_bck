@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "b98d3b13_7271642a",
+        "filename": "core/fpdfapi/page/cpdf_pathobject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-06T00:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c984d8f_1ee6920b",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "692c528c_4d430aef",
         "filename": "core/fpdfapi/page/cpdf_shadingobject.cpp",
         "patchSetId": 1
@@ -218,6 +242,30 @@
     },
     {
       "key": {
+        "uuid": "197324a7_c03e2ffd",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-06T00:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f0258b_4a65e01a",
+      "range": {
+        "startLine": 296,
+        "startChar": 20,
+        "endLine": 297,
+        "endChar": 0
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47bb0dd6_7f3e7cd1",
         "filename": "core/fpdfapi/render/cpdf_progressiverenderer.cpp",
         "patchSetId": 1
@@ -241,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "7b11d5b6_87844af3",
+        "filename": "core/fpdfapi/render/cpdf_progressiverenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-06T00:25:25Z",
+      "side": 1,
+      "message": "It\u0027s some form of Contains() but without normalization.",
+      "parentUuid": "47bb0dd6_7f3e7cd1",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fac3878b_183585cf",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 1
@@ -252,6 +324,30 @@
       "writtenOn": "2018-10-05T23:09:20Z",
       "side": 1,
       "message": "again, possibly expressible as some rectangle operation.",
+      "range": {
+        "startLine": 1043,
+        "startChar": 17,
+        "endLine": 1043,
+        "endChar": 24
+      },
+      "revId": "ae9b2e3936c7912a226fa32617f8212681bfecea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6bc5b04_273a5c02",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-06T00:25:25Z",
+      "side": 1,
+      "message": "And this is !Contains().",
+      "parentUuid": "fac3878b_183585cf",
       "range": {
         "startLine": 1043,
         "startChar": 17,
