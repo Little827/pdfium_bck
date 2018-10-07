@@ -228,9 +228,10 @@ void CPDFSDK_WidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {
   FormFieldType fieldType = pWidget->GetFieldType();
   if (fieldType == FormFieldType::kTextField ||
       fieldType == FormFieldType::kComboBox) {
-    bool bFormatted = false;
     CPDFSDK_Annot::ObservedPtr pObserved(pWidget);
-    WideString sValue = pWidget->OnFormat(bFormatted);
+    bool bFormatted;
+    WideString sValue;
+    std::tie(sValue, bFormatted) = pWidget->OnFormat();
     if (!pObserved)
       return;
 

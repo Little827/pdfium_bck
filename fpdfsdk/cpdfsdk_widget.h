@@ -7,6 +7,8 @@
 #ifndef FPDFSDK_CPDFSDK_WIDGET_H_
 #define FPDFSDK_CPDFSDK_WIDGET_H_
 
+#include <utility>
+
 #include "core/fpdfdoc/cpdf_aaction.h"
 #include "core/fpdfdoc/cpdf_action.h"
 #include "core/fpdfdoc/cpdf_annot.h"
@@ -91,7 +93,7 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
   void ResetAppearance(const WideString* sValue, bool bValueChanged);
   void ResetFieldAppearance(bool bValueChanged);
   void UpdateField();
-  WideString OnFormat(bool& bFormatted);
+  std::pair<WideString, bool> OnFormat();
 
   bool OnAAction(CPDF_AAction::AActionType type,
                  CPDFSDK_FieldAction* data,

@@ -589,8 +589,9 @@ void CPDFSDK_Widget::ResetAppearance(bool bValueChanged) {
   switch (GetFieldType()) {
     case FormFieldType::kTextField:
     case FormFieldType::kComboBox: {
-      bool bFormatted = false;
-      WideString sValue = OnFormat(bFormatted);
+      bool bFormatted;
+      WideString sValue;
+      std::tie(sValue, bFormatted) = OnFormat();
       ResetAppearance(bFormatted ? &sValue : nullptr, true);
       break;
     }
@@ -636,12 +637,10 @@ void CPDFSDK_Widget::ResetAppearance(const WideString* sValue,
   m_pAnnot->ClearCachedAP();
 }
 
-WideString CPDFSDK_Widget::OnFormat(bool& bFormatted) {
+std::pair<WideString, bool> CPDFSDK_Widget::OnFormat() {
   CPDF_FormField* pFormField = GetFormField();
   ASSERT(pFormField);
-  WideString sValue;
-  std::tie(sValue, bFormatted) = m_pInterForm->OnFormat(pFormField);
-  return sValue;
+  return m_pInterForm->OnFormat(pFormField);
 }
 
 void CPDFSDK_Widget::ResetFieldAppearance(bool bValueChanged) {
