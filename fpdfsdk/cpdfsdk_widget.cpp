@@ -639,7 +639,9 @@ void CPDFSDK_Widget::ResetAppearance(const WideString* sValue,
 WideString CPDFSDK_Widget::OnFormat(bool& bFormatted) {
   CPDF_FormField* pFormField = GetFormField();
   ASSERT(pFormField);
-  return m_pInterForm->OnFormat(pFormField, bFormatted);
+  WideString sValue;
+  std::tie(sValue, bFormatted) = m_pInterForm->OnFormat(pFormField);
+  return sValue;
 }
 
 void CPDFSDK_Widget::ResetFieldAppearance(bool bValueChanged) {
@@ -704,7 +706,7 @@ void CPDFSDK_Widget::DrawShadow(CFX_RenderDevice* pDevice,
 
 CFX_FloatRect CPDFSDK_Widget::GetClientRect() const {
   CFX_FloatRect rcWindow = GetRotatedRect();
-  float fBorderWidth = (float)GetBorderWidth();
+  float fBorderWidth = GetBorderWidth();
   switch (GetBorderStyle()) {
     case BorderStyle::BEVELED:
     case BorderStyle::INSET:
