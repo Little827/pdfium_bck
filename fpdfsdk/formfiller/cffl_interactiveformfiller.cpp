@@ -717,8 +717,9 @@ void CFFL_InteractiveFormFiller::OnFormat(CPDFSDK_Annot::ObservedPtr* pAnnot,
   ASSERT(pWidget);
   CPDFSDK_InterForm* pInterForm = pPageView->GetFormFillEnv()->GetInterForm();
 
-  bool bFormatted = false;
-  WideString sValue = pInterForm->OnFormat(pWidget->GetFormField(), bFormatted);
+  bool bFormatted;
+  WideString sValue;
+  std::tie(sValue, bFormatted) = pInterForm->OnFormat(pWidget->GetFormField());
   if (!(*pAnnot))
     return;
 

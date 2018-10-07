@@ -9,6 +9,7 @@
 
 #include <map>
 #include <memory>
+#include <utility>
 #include <vector>
 
 #include "core/fpdfdoc/cpdf_action.h"
@@ -66,7 +67,7 @@ class CPDFSDK_InterForm final : public IPDF_FormNotify {
   bool OnKeyStrokeCommit(CPDF_FormField* pFormField, const WideString& csValue);
   bool OnValidate(CPDF_FormField* pFormField, const WideString& csValue);
   void OnCalculate(CPDF_FormField* pFormField);
-  WideString OnFormat(CPDF_FormField* pFormField, bool& bFormatted);
+  std::pair<WideString, bool> OnFormat(CPDF_FormField* pFormField);
 
   void ResetFieldAppearance(CPDF_FormField* pFormField,
                             const WideString* sValue,

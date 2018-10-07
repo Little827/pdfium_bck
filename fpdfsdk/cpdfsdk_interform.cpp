@@ -320,13 +320,11 @@ void CPDFSDK_InterForm::OnCalculate(CPDF_FormField* pFormField) {
   }
 }
 
-WideString CPDFSDK_InterForm::OnFormat(CPDF_FormField* pFormField,
-                                       bool& bFormatted) {
+std::pair<WideString, bool> CPDFSDK_InterForm::OnFormat(
+    CPDF_FormField* pFormField) {
   WideString sValue = pFormField->GetValue();
-  if (!m_pFormFillEnv->IsJSPlatformPresent()) {
-    bFormatted = false;
-    return sValue;
-  }
+  if (!m_pFormFillEnv->IsJSPlatformPresent())
+    return {sValue, false};
 
   IJS_Runtime* pRuntime = m_pFormFillEnv->GetIJSRuntime();
   if (pFormField->GetFieldType() == FormFieldType::kComboBox &&
@@ -336,26 +334,22 @@ WideString CPDFSDK_InterForm::OnFormat(CPDF_FormField* pFormField,
       sValue = pFormField->GetOptionLabel(index);
   }
 
-  bFormatted = false;
-
   CPDF_AAction aAction = pFormField->GetAdditionalAction();
   if (aAction.GetDict() && aAction.ActionExist(CPDF_AAction::Format)) {
     CPDF_Action action = aAction.GetAction(CPDF_AAction::Format);
     if (action.GetDict()) {
       WideString script = action.GetJavaScript();
       if (!script.IsEmpty()) {
-        WideString Value = sValue;
+        WideString sFormattedValue = sValue;
         IJS_Runtime::ScopedEventContext pContext(pRuntime);
-        pContext->OnField_Format(pFormField, &Value, true);
+        pContext->OnField_Format(pFormField, &sFormattedValue, true);
         Optional<IJS_Runtime::JS_Error> err = pContext->RunScript(script);
-        if (!err) {
-          sValue = std::move(Value);
-          bFormatted = true;
-        }
+        if (!err)
+          return {sFormattedValue, true};
       }
     }
   }
-  return sValue;
+  return {sValue, false};
 }
 
 void CPDFSDK_InterForm::ResetFieldAppearance(CPDF_FormField* pFormField,
@@ -588,8 +582,9 @@ void CPDFSDK_InterForm::AfterValueChange(CPDF_FormField* pField) {
     return;
 
   OnCalculate(pField);
-  bool bFormatted = false;
-  WideString sValue = OnFormat(pField, bFormatted);
+  bool bFormatted;
+  WideString sValue;
+  std::tie(sValue, bFormatted) = OnFormat(pField);
   ResetFieldAppearance(pField, bFormatted ? &sValue : nullptr, true);
   UpdateField(pField);
 }
