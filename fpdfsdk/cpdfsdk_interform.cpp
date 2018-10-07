@@ -120,15 +120,8 @@ bool FDFToURLEncodedData(std::vector<uint8_t>* pBuffer) {
 
 CPDFSDK_InterForm::CPDFSDK_InterForm(CPDFSDK_FormFillEnvironment* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv),
-      m_pInterForm(
-          pdfium::MakeUnique<CPDF_InterForm>(m_pFormFillEnv->GetPDFDocument())),
-#ifdef PDF_ENABLE_XFA
-      m_bXfaCalculate(true),
-      m_bXfaValidationsEnabled(true),
-#endif  // PDF_ENABLE_XFA
-      m_bCalculate(true),
-      m_bBusy(false),
-      m_HighlightAlpha(0) {
+      m_pInterForm(pdfium::MakeUnique<CPDF_InterForm>(
+          m_pFormFillEnv->GetPDFDocument())) {
   m_pInterForm->SetFormNotify(this);
   RemoveAllHighLights();
 }
@@ -138,10 +131,6 @@ CPDFSDK_InterForm::~CPDFSDK_InterForm() {
 #ifdef PDF_ENABLE_XFA
   m_XFAMap.clear();
 #endif  // PDF_ENABLE_XFA
-}
-
-bool CPDFSDK_InterForm::HighlightWidgets() {
-  return false;
 }
 
 CPDFSDK_Widget* CPDFSDK_InterForm::GetSibling(CPDFSDK_Widget* pWidget,
@@ -154,7 +143,7 @@ CPDFSDK_Widget* CPDFSDK_InterForm::GetSibling(CPDFSDK_Widget* pWidget,
 }
 
 CPDFSDK_Widget* CPDFSDK_InterForm::GetWidget(CPDF_FormControl* pControl) const {
-  if (!pControl || !m_pInterForm)
+  if (!pControl)
     return nullptr;
 
   CPDFSDK_Widget* pWidget = nullptr;
@@ -525,9 +514,6 @@ bool CPDFSDK_InterForm::SubmitForm(const WideString& sDestination,
   if (sDestination.IsEmpty())
     return false;
 
-  if (!m_pFormFillEnv || !m_pInterForm)
-    return false;
-
   std::unique_ptr<CFDF_Document> pFDFDoc =
       m_pInterForm->ExportToFDF(m_pFormFillEnv->JS_docGetFilePath(), false);
   if (!pFDFDoc)
@@ -640,7 +626,7 @@ void CPDFSDK_InterForm::AfterFormReset(CPDF_InterForm* pForm) {
   OnCalculate(nullptr);
 }
 
-bool CPDFSDK_InterForm::IsNeedHighLight(FormFieldType fieldType) {
+bool CPDFSDK_InterForm::IsNeedHighLight(FormFieldType fieldType) const {
   if (fieldType == FormFieldType::kUnknown)
     return false;
 
