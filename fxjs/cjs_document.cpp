@@ -27,6 +27,81 @@
 #include "fxjs/cjs_printparamsobj.h"
 #include "fxjs/js_resources.h"
 
+namespace {
+
+int g_obj_definition_id = -1;
+
+#define ISLATINWORD(u) (u != 0x20 && u <= 0x28FF)
+
+int CountWords(CPDF_TextObject* pTextObj) {
+  if (!pTextObj)
+    return 0;
+
+  CPDF_Font* pFont = pTextObj->GetFont();
+  if (!pFont)
+    return 0;
+
+  bool bIsLatin = false;
+  int nWords = 0;
+  for (size_t i = 0, sz = pTextObj->CountChars(); i < sz; ++i) {
+    uint32_t charcode = CPDF_Font::kInvalidCharCode;
+    float kerning;
+
+    pTextObj->GetCharInfo(i, &charcode, &kerning);
+    WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
+
+    uint16_t unicode = 0;
+    if (swUnicode.GetLength() > 0)
+      unicode = swUnicode[0];
+
+    if (ISLATINWORD(unicode) && bIsLatin)
+      continue;
+
+    bIsLatin = ISLATINWORD(unicode);
+    if (unicode != 0x20)
+      nWords++;
+  }
+
+  return nWords;
+}
+
+WideString GetObjWordStr(CPDF_TextObject* pTextObj, int nWordIndex) {
+  WideString swRet;
+
+  CPDF_Font* pFont = pTextObj->GetFont();
+  if (!pFont)
+    return L"";
+
+  int nWords = 0;
+  bool bIsLatin = false;
+
+  for (size_t i = 0, sz = pTextObj->CountChars(); i < sz; ++i) {
+    uint32_t charcode = CPDF_Font::kInvalidCharCode;
+    float kerning;
+
+    pTextObj->GetCharInfo(i, &charcode, &kerning);
+    WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
+
+    uint16_t unicode = 0;
+    if (swUnicode.GetLength() > 0)
+      unicode = swUnicode[0];
+
+    if (ISLATINWORD(unicode) && bIsLatin) {
+    } else {
+      bIsLatin = ISLATINWORD(unicode);
+      if (unicode != 0x20)
+        nWords++;
+    }
+
+    if (nWords - 1 == nWordIndex)
+      swRet += unicode;
+  }
+
+  return swRet;
+}
+
+}  // namespace
+
 const JSPropertySpec CJS_Document::PropertySpecs[] = {
     {"ADBE", get_ADBE_static, set_ADBE_static},
     {"author", get_author_static, set_author_static},
@@ -107,20 +182,20 @@ const JSMethodSpec CJS_Document::MethodSpecs[] = {
     {"syncAnnotScan", syncAnnotScan_static},
     {"mailDoc", mailDoc_static}};
 
-int CJS_Document::ObjDefnID = -1;
 const char CJS_Document::kName[] = "Document";
 
 // static
 int CJS_Document::GetObjDefnID() {
-  return ObjDefnID;
+  return g_obj_definition_id;
 }
 
 // static
 void CJS_Document::DefineJSObjects(CFXJS_Engine* pEngine) {
-  ObjDefnID = pEngine->DefineObj(CJS_Document::kName, FXJSOBJTYPE_GLOBAL,
-                                 JSConstructor<CJS_Document>, JSDestructor);
-  DefineProps(pEngine, ObjDefnID, PropertySpecs);
-  DefineMethods(pEngine, ObjDefnID, MethodSpecs);
+  g_obj_definition_id =
+      pEngine->DefineObj(CJS_Document::kName, FXJSOBJTYPE_GLOBAL,
+                         JSConstructor<CJS_Document>, JSDestructor);
+  DefineProps(pEngine, g_obj_definition_id, PropertySpecs);
+  DefineMethods(pEngine, g_obj_definition_id, MethodSpecs);
 }
 
 CJS_Document::CJS_Document(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime)
@@ -1090,12 +1165,6 @@ CJS_Result CJS_Document::getLinks(
   return CJS_Result::Success();
 }
 
-bool CJS_Document::IsEnclosedInRect(CFX_FloatRect rect,
-                                    CFX_FloatRect LinkRect) {
-  return (rect.left <= LinkRect.left && rect.top <= LinkRect.top &&
-          rect.right >= LinkRect.right && rect.bottom >= LinkRect.bottom);
-}
-
 CJS_Result CJS_Document::addIcon(
     CJS_Runtime* pRuntime,
     const std::vector<v8::Local<v8::Value>>& params) {
@@ -1308,76 +1377,6 @@ CJS_Result CJS_Document::getPrintParams(
   if (pRetObj.IsEmpty())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
   return CJS_Result::Failure(JSMessage::kNotSupportedError);
-}
-
-#define ISLATINWORD(u) (u != 0x20 && u <= 0x28FF)
-
-int CJS_Document::CountWords(CPDF_TextObject* pTextObj) {
-  if (!pTextObj)
-    return 0;
-
-  CPDF_Font* pFont = pTextObj->GetFont();
-  if (!pFont)
-    return 0;
-
-  bool bIsLatin = false;
-  int nWords = 0;
-  for (size_t i = 0, sz = pTextObj->CountChars(); i < sz; ++i) {
-    uint32_t charcode = CPDF_Font::kInvalidCharCode;
-    float kerning;
-
-    pTextObj->GetCharInfo(i, &charcode, &kerning);
-    WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
-
-    uint16_t unicode = 0;
-    if (swUnicode.GetLength() > 0)
-      unicode = swUnicode[0];
-
-    if (ISLATINWORD(unicode) && bIsLatin)
-      continue;
-
-    bIsLatin = ISLATINWORD(unicode);
-    if (unicode != 0x20)
-      nWords++;
-  }
-
-  return nWords;
-}
-
-WideString CJS_Document::GetObjWordStr(CPDF_TextObject* pTextObj,
-                                       int nWordIndex) {
-  WideString swRet;
-
-  CPDF_Font* pFont = pTextObj->GetFont();
-  if (!pFont)
-    return L"";
-
-  int nWords = 0;
-  bool bIsLatin = false;
-
-  for (size_t i = 0, sz = pTextObj->CountChars(); i < sz; ++i) {
-    uint32_t charcode = CPDF_Font::kInvalidCharCode;
-    float kerning;
-
-    pTextObj->GetCharInfo(i, &charcode, &kerning);
-    WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
-
-    uint16_t unicode = 0;
-    if (swUnicode.GetLength() > 0)
-      unicode = swUnicode[0];
-
-    if (ISLATINWORD(unicode) && bIsLatin) {
-    } else {
-      bIsLatin = ISLATINWORD(unicode);
-      if (unicode != 0x20)
-        nWords++;
-    }
-
-    if (nWords - 1 == nWordIndex)
-      swRet += unicode;
-  }
-
-  return swRet;
 }
 
 CJS_Result CJS_Document::get_zoom(CJS_Runtime* pRuntime) {

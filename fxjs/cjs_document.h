@@ -109,7 +109,6 @@ class CJS_Document final : public CJS_Object, public Observable<CJS_Document> {
   JS_STATIC_METHOD(mailDoc, CJS_Document);
 
  private:
-  static int ObjDefnID;
   static const char kName[];
   static const JSPropertySpec PropertySpecs[];
   static const JSMethodSpec MethodSpecs[];
@@ -297,10 +296,6 @@ class CJS_Document final : public CJS_Object, public Observable<CJS_Document> {
                      const std::vector<v8::Local<v8::Value>>& params);
   CJS_Result removeIcon(CJS_Runtime* pRuntime,
                         const std::vector<v8::Local<v8::Value>>& params);
-
-  bool IsEnclosedInRect(CFX_FloatRect rect, CFX_FloatRect LinkRect);
-  int CountWords(CPDF_TextObject* pTextObj);
-  WideString GetObjWordStr(CPDF_TextObject* pTextObj, int nWordIndex);
 
   CJS_Result getPropertyInternal(CJS_Runtime* pRuntime,
                                  const ByteString& propName);
