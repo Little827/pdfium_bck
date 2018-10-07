@@ -71,9 +71,7 @@ void CPDFSDK_XFAWidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {}
 
 void CPDFSDK_XFAWidgetHandler::ReleaseAnnot(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_XFAWidget* pWidget = ToXFAWidget(pAnnot);
-  CPDFSDK_InterForm* pInterForm = pWidget->GetInterForm();
-  pInterForm->RemoveXFAMap(pWidget->GetXFAWidget());
-
+  pWidget->GetInterForm()->RemoveXFAMap(pWidget->GetXFAWidget());
   delete pWidget;
 }
 
