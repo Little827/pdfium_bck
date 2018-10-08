@@ -4,6 +4,8 @@
 
 #include "core/fxcodec/gif/cfx_gifcontext.h"
 
+#include <utility>
+
 #include "core/fxcrt/unowned_ptr.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -20,41 +22,40 @@ class CFX_GifContextForTest final : public CFX_GifContext {
 
   CFX_CodecMemory* InputBuffer() const { return input_buffer_.Get(); }
   void SetTestInputBuffer(pdfium::span<uint8_t> input) {
-    SetInputBuffer(pdfium::MakeRetain<CFX_CodecMemory>(input));
+    auto pMemory = pdfium::MakeRetain<CFX_CodecMemory>(input.size());
+    memcpy(pMemory->GetBuffer(), input.data(), input.size());
+    SetInputBuffer(std::move(pMemory));
   }
 };
 
 TEST(CFX_GifContext, SetInputBuffer) {
   uint8_t buffer[] = {0x00, 0x01, 0x02};
-  {
-    // Context must not outlive its buffers.
-    CFX_GifContextForTest context(nullptr, nullptr);
+  CFX_GifContextForTest context(nullptr, nullptr);
 
-    context.SetTestInputBuffer({nullptr, 0});
-    EXPECT_EQ(nullptr, context.InputBuffer()->GetBuffer());
-    EXPECT_EQ(0u, context.InputBuffer()->GetSize());
-    EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
+  context.SetTestInputBuffer({nullptr, 0});
+  EXPECT_EQ(nullptr, context.InputBuffer()->GetBuffer());
+  EXPECT_EQ(0u, context.InputBuffer()->GetSize());
+  EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
-    context.SetTestInputBuffer({nullptr, 100});
-    EXPECT_EQ(nullptr, context.InputBuffer()->GetBuffer());
-    EXPECT_EQ(100u, context.InputBuffer()->GetSize());
-    EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
+  context.SetTestInputBuffer({nullptr, 100});
+  EXPECT_EQ(nullptr, context.InputBuffer()->GetBuffer());
+  EXPECT_EQ(100u, context.InputBuffer()->GetSize());
+  EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
-    context.SetTestInputBuffer({buffer, 0});
-    EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
-    EXPECT_EQ(0u, context.InputBuffer()->GetSize());
-    EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
+  context.SetTestInputBuffer({buffer, 0});
+  EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
+  EXPECT_EQ(0u, context.InputBuffer()->GetSize());
+  EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
-    context.SetTestInputBuffer({buffer, 3});
-    EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
-    EXPECT_EQ(3u, context.InputBuffer()->GetSize());
-    EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
+  context.SetTestInputBuffer({buffer, 3});
+  EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
+  EXPECT_EQ(3u, context.InputBuffer()->GetSize());
+  EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 
-    context.SetTestInputBuffer({buffer, 100});
-    EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
-    EXPECT_EQ(100u, context.InputBuffer()->GetSize());
-    EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
-  }
+  context.SetTestInputBuffer({buffer, 100});
+  EXPECT_EQ(buffer, context.InputBuffer()->GetBuffer());
+  EXPECT_EQ(100u, context.InputBuffer()->GetSize());
+  EXPECT_EQ(0u, context.InputBuffer()->GetPosition());
 }
 
 TEST(CFX_GifContext, ReadAllOrNone) {
