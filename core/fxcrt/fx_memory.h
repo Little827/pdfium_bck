@@ -102,6 +102,16 @@ inline void* FX_ReallocOrDie(void* ptr,
 #define FX_TryRealloc(type, ptr, size) \
   static_cast<type*>(FX_SafeRealloc(ptr, size, sizeof(type)))
 
+// Someday FX_Alloc() might not clear the memory. This one always will.
+// Use it in places where we subsequently delete an explicit memset().
+#define FX_AllocClear(type, size) \
+  static_cast<type*>(FX_AllocOrDie(size, sizeof(type)))
+
+// Someday FX_TryAlloc() might not clear the memory. This one always will.
+// Use it in places where we subsequently delete an explicit memset().
+#define FX_TryAllocClear(type, size) \
+  static_cast<type*>(FX_SafeAlloc(size, sizeof(type)))
+
 inline void FX_Free(void* ptr) {
   // TODO(palmer): Removing this check exposes crashes when PDFium callers
   // attempt to free |nullptr|. Although libc's |free| allows freeing |NULL|, no
