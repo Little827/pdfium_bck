@@ -16,6 +16,24 @@
       "revId": "90f4485b5f35ad26959e66e7edc3a12c47880030",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eac681e_aa257e69",
+        "filename": "core/fxcodec/codec/cfx_codec_memory.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-09T19:08:14Z",
+      "side": 1,
+      "message": "Probably.  I\u0027ll call it TryResize",
+      "parentUuid": "ab073fc6_28f53c01",
+      "revId": "90f4485b5f35ad26959e66e7edc3a12c47880030",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
