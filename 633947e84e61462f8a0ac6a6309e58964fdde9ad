@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aed9c99_b2c5ef51",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-09T23:51:59Z",
+      "side": 1,
+      "message": "Can this be an ASSERT()? Either way, can we separate it out into two separate CHECKs / ASSERTs?",
+      "revId": "633947e84e61462f8a0ac6a6309e58964fdde9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
