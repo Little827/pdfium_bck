@@ -23,6 +23,30 @@
       "revId": "f9bef0796a6b6a0565ff64ffc93afddfdeaeefaa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f581f263_3953b819",
+        "filename": "core/fpdfdoc/cpdf_iconfit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-09T22:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad3e59d_4b478b4e",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 63
+      },
+      "revId": "f9bef0796a6b6a0565ff64ffc93afddfdeaeefaa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
