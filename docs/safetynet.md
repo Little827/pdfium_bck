@@ -119,6 +119,11 @@ One advantage is that callgrind can generate `callgrind.out` files (by passing
 can be analyzed to find the cause of a regression. KCachegrind is a good
 visualizer for these files.
 
+#### none
+
+Run without any profiler, giving a performance score of 1 always. useful for
+running image comparisons or debugging the script.
+
 ### Common Options
 
 Arguments commonly passed to safetynet_compare.py.
@@ -181,3 +186,15 @@ The first time the job runs, it will just create a checkpoint as
 `~/job_results/last_revision_covered`. From then on, since a checkpoint is
 available, each run will compare performance with the last checkpoint and update
 the checkpoint.
+
+## Run image comparison
+
+Pass the `--png-dir` option pointing at an output directory to compare the output
+images from rendering the "before" and the "after" branches with pdfium_test.
+This will output and automatically open a `compare.html` file showing the
+before/after and the diff. Hover the mouse cursor over the before/after (the
+image on the left) for an easier visual comparison. The "before" image is
+displayed until the cursor hovers over the image, which is then replaced with
+the "after" image.
+
+It is recommended to use `--profiler=none` with this option.
