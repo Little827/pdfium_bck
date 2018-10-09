@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc78bee3_3b7f8f18",
+        "filename": "fpdfsdk/fpdf_transformpage_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-09T21:45:06Z",
+      "side": 1,
+      "message": "After this call, is the page going to render differently? If so, we can check the rendering about the two FPDFPage_InsertClipPath() calls to make sure it actually did (not) do anything.",
+      "revId": "a6f010c2b5831578600063479134191f7cc3a513",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
