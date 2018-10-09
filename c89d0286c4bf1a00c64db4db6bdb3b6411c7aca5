@@ -22,6 +22,30 @@
       "revId": "c89d0286c4bf1a00c64db4db6bdb3b6411c7aca5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebea0d2d_e629e032",
+        "filename": "core/fpdfapi/parser/cpdf_object_walker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-09T19:31:49Z",
+      "side": 1,
+      "message": "All the non-test callers use this as follows:\n\nobject_walker.dictionary_key() \u003d\u003d \"foo\"\n\nso wouldn\u0027t it be better to not return a copy?",
+      "parentUuid": "525ee7a8_540a2101",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "c89d0286c4bf1a00c64db4db6bdb3b6411c7aca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
