@@ -936,11 +936,12 @@ void CPDF_TextPage::SwapTempTextBuf(int32_t iCharListStartAppend,
     std::swap(m_TempCharList[i], m_TempCharList[j]);
     std::swap(m_TempCharList[i].m_Index, m_TempCharList[j].m_Index);
   }
-  wchar_t* pTempBuffer = m_TempTextBuf.GetBuffer();
+  std::wstring wsTempBuffer = m_TempTextBuf.GetString();
   i = iBufStartAppend;
   j = m_TempTextBuf.GetLength() - 1;
   for (; i < j; ++i, --j)
-    std::swap(pTempBuffer[i], pTempBuffer[j]);
+    std::swap(wsTempBuffer[i], wsTempBuffer[j]);
+  m_TempTextBuf.SetString(wsTempBuffer);
 }
 
 void CPDF_TextPage::ProcessTextObject(PDFTEXT_Obj Obj) {
