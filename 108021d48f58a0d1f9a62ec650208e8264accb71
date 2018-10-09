@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a970403_0eaa912e",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-09T20:47:19Z",
+      "side": 1,
+      "message": "Maybe initialize to something other than 0 for |x| and |y|, so one can see FPDFDest_GetLocationInPage() actually wrote out 0?",
+      "revId": "108021d48f58a0d1f9a62ec650208e8264accb71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
