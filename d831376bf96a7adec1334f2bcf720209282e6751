@@ -22,6 +22,30 @@
       "revId": "d831376bf96a7adec1334f2bcf720209282e6751",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6317d703_8f1f1ab9",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-10T21:03:17Z",
+      "side": 1,
+      "message": "Done but inverted the expression.",
+      "parentUuid": "10bdeaaf_95430b19",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "d831376bf96a7adec1334f2bcf720209282e6751",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
