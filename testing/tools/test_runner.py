@@ -90,8 +90,8 @@ class TestRunner:
       return False, results
 
     if actual_images:
-      if self.image_differ.HasDifferences(input_filename, source_dir,
-                                          self.working_dir):
+      if True or self.image_differ.HasDifferences(input_filename, source_dir,
+                                                  self.working_dir):
         self.RegenerateIfNeeded_(input_filename, source_dir)
         return False, results
     else:
