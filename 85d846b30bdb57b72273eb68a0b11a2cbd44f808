@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d61616e5_1ffc67e8",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-10T19:28:43Z",
+      "side": 1,
+      "message": "Does EXPECT_STREQ() work here?",
+      "revId": "85d846b30bdb57b72273eb68a0b11a2cbd44f808",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2403c89d_76d05ac9",
+        "filename": "testing/resources/goto_action.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-10T19:28:43Z",
+      "side": 1,
+      "message": "References object 8 0 and object 19 0, which do not exist.",
+      "revId": "85d846b30bdb57b72273eb68a0b11a2cbd44f808",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
