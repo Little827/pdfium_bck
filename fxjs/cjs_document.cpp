@@ -32,10 +32,7 @@ namespace {
 
 #define ISLATINWORD(u) (u != 0x20 && u <= 0x28FF)
 
-int CountWords(CPDF_TextObject* pTextObj) {
-  if (!pTextObj)
-    return 0;
-
+int CountWords(const CPDF_TextObject* pTextObj) {
   CPDF_Font* pFont = pTextObj->GetFont();
   if (!pFont)
     return 0;
@@ -44,19 +41,20 @@ int CountWords(CPDF_TextObject* pTextObj) {
   int nWords = 0;
   for (size_t i = 0, sz = pTextObj->CountChars(); i < sz; ++i) {
     uint32_t charcode = CPDF_Font::kInvalidCharCode;
-    float kerning;
+    float unused_kerning;
 
-    pTextObj->GetCharInfo(i, &charcode, &kerning);
+    pTextObj->GetCharInfo(i, &charcode, &unused_kerning);
     WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
 
     uint16_t unicode = 0;
     if (swUnicode.GetLength() > 0)
       unicode = swUnicode[0];
 
-    if (ISLATINWORD(unicode) && bIsLatin)
+    bool bCurIsLatin = ISLATINWORD(unicode);
+    if (bCurIsLatin && bIsLatin)
       continue;
 
-    bIsLatin = ISLATINWORD(unicode);
+    bIsLatin = bCurIsLatin;
     if (unicode != 0x20)
       nWords++;
   }
@@ -64,30 +62,28 @@ int CountWords(CPDF_TextObject* pTextObj) {
   return nWords;
 }
 
-WideString GetObjWordStr(CPDF_TextObject* pTextObj, int nWordIndex) {
-  WideString swRet;
-
+WideString GetObjWordStr(const CPDF_TextObject* pTextObj, int nWordIndex) {
   CPDF_Font* pFont = pTextObj->GetFont();
   if (!pFont)
     return L"";
 
+  WideString swRet;
   int nWords = 0;
   bool bIsLatin = false;
-
   for (size_t i = 0, sz = pTextObj->CountChars(); i < sz; ++i) {
     uint32_t charcode = CPDF_Font::kInvalidCharCode;
-    float kerning;
+    float unused_kerning;
 
-    pTextObj->GetCharInfo(i, &charcode, &kerning);
+    pTextObj->GetCharInfo(i, &charcode, &unused_kerning);
     WideString swUnicode = pFont->UnicodeFromCharCode(charcode);
 
     uint16_t unicode = 0;
     if (swUnicode.GetLength() > 0)
       unicode = swUnicode[0];
 
-    if (ISLATINWORD(unicode) && bIsLatin) {
-    } else {
-      bIsLatin = ISLATINWORD(unicode);
+    bool bCurIsLatin = ISLATINWORD(unicode);
+    if (!bCurIsLatin || !bIsLatin) {
+      bIsLatin = bCurIsLatin;
       if (unicode != 0x20)
         nWords++;
     }
