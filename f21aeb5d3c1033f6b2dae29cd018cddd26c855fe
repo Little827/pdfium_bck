@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfbc6774_8461db74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-10T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ea09297_26370ae1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "f21aeb5d3c1033f6b2dae29cd018cddd26c855fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e7fa83_9287778c",
         "filename": "public/fpdfview.h",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "f21aeb5d3c1033f6b2dae29cd018cddd26c855fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042cc0a0_62c50fda",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-10T21:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e7fa83_9287778c",
+      "range": {
+        "startLine": 566,
+        "startChar": 30,
+        "endLine": 566,
+        "endChar": 46
+      },
+      "revId": "f21aeb5d3c1033f6b2dae29cd018cddd26c855fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
