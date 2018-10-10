@@ -259,12 +259,52 @@ TEST_F(FPDFDocEmbeddertest, ActionLaunch) {
 
   char buf[kExpectedLength];
   EXPECT_EQ(bufsize, FPDFAction_GetFilePath(action, buf, bufsize));
-  EXPECT_STREQ(kExpectedResult, buf);
+  EXPECT_EQ(std::string(kExpectedResult), std::string(buf));
+  UnloadPage(page);
 
   // Other public methods are not appropriate for this action type.
   EXPECT_EQ(nullptr, FPDFAction_GetDest(document(), action));
   EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), action, buf, bufsize));
+}
 
+TEST_F(FPDFDocEmbeddertest, ActionGetURIPath) {
+  EXPECT_TRUE(OpenDocument("uri_action.pdf"));
+
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // The target action is nearly the size of the whole page.
+  FPDF_LINK link = FPDFLink_GetLinkAtPoint(page, 100, 100);
+  ASSERT_TRUE(link);
+
+  FPDF_ACTION action = FPDFLink_GetAction(link);
+  ASSERT_TRUE(action);
+
+  const char kExpectedResult[] = "https://example.com/page.html";
+  const unsigned long kExpectedLength = sizeof(kExpectedResult);
+  unsigned long bufsize = FPDFAction_GetURIPath(document(), action, nullptr, 0);
+  ASSERT_EQ(kExpectedLength, bufsize);
+
+  char buf[kExpectedLength];
+  EXPECT_EQ(bufsize, FPDFAction_GetURIPath(document(), action, buf, bufsize));
+  EXPECT_EQ(std::string(kExpectedResult), std::string(buf));
+  UnloadPage(page);
+}
+
+TEST_F(FPDFDocEmbeddertest, ActionGetDest) {
+  EXPECT_TRUE(OpenDocument("goto_action.pdf"));
+
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // The target action is nearly the size of the whole page.
+  FPDF_LINK link = FPDFLink_GetLinkAtPoint(page, 100, 100);
+  ASSERT_TRUE(link);
+
+  FPDF_ACTION action = FPDFLink_GetAction(link);
+  ASSERT_TRUE(action);
+
+  EXPECT_TRUE(FPDFAction_GetDest(document(), action));
   UnloadPage(page);
 }
 
