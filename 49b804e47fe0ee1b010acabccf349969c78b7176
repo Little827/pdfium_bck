@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ee13236_188c026b",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T19:45:11Z",
+      "side": 1,
+      "message": "pre-existing: redundant, since GetType() \u003d\u003e Unknown if no dict.",
+      "range": {
+        "startLine": 843,
+        "startChar": 6,
+        "endLine": 843,
+        "endChar": 23
+      },
+      "revId": "49b804e47fe0ee1b010acabccf349969c78b7176",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20018119_31d229f5",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T19:45:11Z",
+      "side": 1,
+      "message": "nit: boolean expressions for these instead of if-statements?",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "49b804e47fe0ee1b010acabccf349969c78b7176",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f5a4d86_8a73f0bf",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T19:45:11Z",
+      "side": 1,
+      "message": "nit: local not needed.",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "49b804e47fe0ee1b010acabccf349969c78b7176",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
