@@ -16,6 +16,24 @@
       "revId": "633947e84e61462f8a0ac6a6309e58964fdde9ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fbfe292_3514944d",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T16:50:38Z",
+      "side": 1,
+      "message": "No, it needs to be a hard CHECK (not DCHECK) since we have a ValueOrDie() under the covers in the old FX_Alloc2D(). I didn\u0027t think we had an equivalent in PDFium for this other than a bare call to abort().\n\nWill split in two.",
+      "parentUuid": "9aed9c99_b2c5ef51",
+      "revId": "633947e84e61462f8a0ac6a6309e58964fdde9ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
