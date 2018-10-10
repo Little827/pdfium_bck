@@ -40,9 +40,11 @@ CPDFSDK_Annot* CPDFSDK_XFAWidgetHandler::NewAnnot(CPDF_Annot* pAnnot,
 
 CPDFSDK_Annot* CPDFSDK_XFAWidgetHandler::NewAnnot(CXFA_FFWidget* pAnnot,
                                                   CPDFSDK_PageView* pPage) {
-  CPDFSDK_InterForm* pInterForm = m_pFormFillEnv->GetInterForm();
-  CPDFSDK_XFAWidget* pWidget = new CPDFSDK_XFAWidget(pAnnot, pPage, pInterForm);
-  pInterForm->AddXFAMap(pAnnot, pWidget);
+  CPDFSDK_InteractiveForm* pInteractiveForm =
+      m_pFormFillEnv->GetInteractiveForm();
+  CPDFSDK_XFAWidget* pWidget =
+      new CPDFSDK_XFAWidget(pAnnot, pPage, pInteractiveForm);
+  pInteractiveForm->AddXFAMap(pAnnot, pWidget);
   return pWidget;
 }
 
@@ -70,7 +72,7 @@ void CPDFSDK_XFAWidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {}
 
 void CPDFSDK_XFAWidgetHandler::ReleaseAnnot(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_XFAWidget* pWidget = ToXFAWidget(pAnnot);
-  pWidget->GetInterForm()->RemoveXFAMap(pWidget->GetXFAWidget());
+  pWidget->GetInteractiveForm()->RemoveXFAMap(pWidget->GetXFAWidget());
   delete pWidget;
 }
 
