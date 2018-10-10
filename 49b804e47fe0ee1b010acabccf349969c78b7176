@@ -92,6 +92,30 @@
       "revId": "49b804e47fe0ee1b010acabccf349969c78b7176",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f7e910_60a1d1bf",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T21:16:11Z",
+      "side": 1,
+      "message": "Argh, I hate it when that happens.  Much better with the local, then.",
+      "parentUuid": "ee7d2424_c5169309",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 531,
+        "endChar": 20
+      },
+      "revId": "49b804e47fe0ee1b010acabccf349969c78b7176",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
