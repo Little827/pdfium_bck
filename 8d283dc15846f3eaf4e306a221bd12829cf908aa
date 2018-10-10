@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b6a3534_a5b7c730",
+        "filename": "fpdfsdk/cpdfsdk_interform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T17:16:57Z",
+      "side": 1,
+      "message": "nit: pdfium::nullopt might be clearer? (resoning: returning {} is OK because the return type is \"lexically close by\" the {}, but here the actual arg type is \"far from\" the callsite.",
+      "range": {
+        "startLine": 603,
+        "startChar": 31,
+        "endLine": 603,
+        "endChar": 33
+      },
+      "revId": "8d283dc15846f3eaf4e306a221bd12829cf908aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "634f17e6_eb0db0a8",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T17:16:57Z",
+      "side": 1,
+      "message": "nit: pre-existing: overparen?",
+      "range": {
+        "startLine": 722,
+        "startChar": 7,
+        "endLine": 722,
+        "endChar": 16
+      },
+      "revId": "8d283dc15846f3eaf4e306a221bd12829cf908aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f61917a3_6d5872b1",
+        "filename": "fpdfsdk/pwl/cpwl_appstream.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-10T17:16:57Z",
+      "side": 1,
+      "message": "nit: sValue.value_or(pField-\u003eGetValue())",
+      "range": {
+        "startLine": 1803,
+        "startChar": 24,
+        "endLine": 1803,
+        "endChar": 52
+      },
+      "revId": "8d283dc15846f3eaf4e306a221bd12829cf908aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
