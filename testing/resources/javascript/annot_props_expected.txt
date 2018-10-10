@@ -1,0 +1,7 @@
+Alert: hidden: true
+Alert: name: Annot-1
+Alert: type: Highlight
+Alert: hidden now: true
+Alert: hidden now: false
+Alert: name now: clams
+Alert: SUCCESS: Annot.type: Cannot assign to readonly property.
