@@ -322,14 +322,11 @@ void CPDFSDK_InterForm::OnCalculate(CPDF_FormField* pFormField) {
   }
 }
 
-WideString CPDFSDK_InterForm::OnFormat(CPDF_FormField* pFormField,
-                                       bool& bFormatted) {
-  WideString sValue = pFormField->GetValue();
-  if (!m_pFormFillEnv->IsJSPlatformPresent()) {
-    bFormatted = false;
-    return sValue;
-  }
+Optional<WideString> CPDFSDK_InterForm::OnFormat(CPDF_FormField* pFormField) {
+  if (!m_pFormFillEnv->IsJSPlatformPresent())
+    return {};
 
+  WideString sValue = pFormField->GetValue();
   IJS_Runtime* pRuntime = m_pFormFillEnv->GetIJSRuntime();
   if (pFormField->GetFieldType() == FormFieldType::kComboBox &&
       pFormField->CountSelectedItems() > 0) {
@@ -338,30 +335,25 @@ WideString CPDFSDK_InterForm::OnFormat(CPDF_FormField* pFormField,
       sValue = pFormField->GetOptionLabel(index);
   }
 
-  bFormatted = false;
-
   CPDF_AAction aAction = pFormField->GetAdditionalAction();
   if (aAction.GetDict() && aAction.ActionExist(CPDF_AAction::Format)) {
     CPDF_Action action = aAction.GetAction(CPDF_AAction::Format);
     if (action.GetDict()) {
       WideString script = action.GetJavaScript();
       if (!script.IsEmpty()) {
-        WideString Value = sValue;
         IJS_Runtime::ScopedEventContext pContext(pRuntime);
-        pContext->OnField_Format(pFormField, &Value, true);
+        pContext->OnField_Format(pFormField, &sValue, true);
         Optional<IJS_Runtime::JS_Error> err = pContext->RunScript(script);
-        if (!err) {
-          sValue = std::move(Value);
-          bFormatted = true;
-        }
+        if (!err)
+          return sValue;
       }
     }
   }
-  return sValue;
+  return {};
 }
 
 void CPDFSDK_InterForm::ResetFieldAppearance(CPDF_FormField* pFormField,
-                                             const WideString* sValue,
+                                             Optional<WideString> sValue,
                                              bool bValueChanged) {
   for (int i = 0, sz = pFormField->CountControls(); i < sz; i++) {
     CPDF_FormControl* pFormCtrl = pFormField->GetControl(i);
@@ -590,9 +582,7 @@ void CPDFSDK_InterForm::AfterValueChange(CPDF_FormField* pField) {
     return;
 
   OnCalculate(pField);
-  bool bFormatted = false;
-  WideString sValue = OnFormat(pField, bFormatted);
-  ResetFieldAppearance(pField, bFormatted ? &sValue : nullptr, true);
+  ResetFieldAppearance(pField, OnFormat(pField), true);
   UpdateField(pField);
 }
 
@@ -610,7 +600,7 @@ void CPDFSDK_InterForm::AfterSelectionChange(CPDF_FormField* pField) {
     return;
 
   OnCalculate(pField);
-  ResetFieldAppearance(pField, nullptr, true);
+  ResetFieldAppearance(pField, {}, true);
   UpdateField(pField);
 }
 
