@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539297760 -0700\nnonce AP50N7bQGop/ad4wU2DH7a/vIiSzI7HJyj5efC+0uVwHHMiiyubMM5zP0XJvq3gdDFSUUkn86goQ\n\n0000000000000000000000000000000000000000 306711c79169f8077faae08531c3bd32d8d7e3de refs/for/refs/heads/master%notify\u003dNONE,m\u003dType_inference_is_hard\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu/0eAACgkQqzYtYVpm\n/Xs8NAf/aL/8jiFkJIghU7sIjvWdCbcFdaDIsRIrCk8aDhfSRFu07zzj27pr81Lg\nKI7l/vdFOg+qr8GPo6l7F8vxuEllKC2teD8BbbP61mHz1VgN3f/U11lqC6oLHWVC\nV/0Fn9K9+qtqu2OAAxKk0SAs+UCJTOSm0LEzGc+FLNx4WO+l8dTM6+zsbMyULlmC\n6R+zXcPH8e3QjJuE/why4uQ1GahgCD88nluzG0+N1lExXA1Xq7xO9irq0KHCaXgC\n5mPutp/4wMI0iaiibWJ4v5cYixM6GO4aYMisOMPiKOQ7OySomYG+8F6/e1KgNc1X\nJIdZe36h58ski5f9Tvgnzy5Nq5nmkQ\u003d\u003d\n\u003d0BLf\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "05085a55_2b75d721",
+        "filename": "core/fxcodec/codec/ccodec_faxmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-11T22:54:52Z",
+      "side": 1,
+      "message": "still needed?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "306711c79169f8077faae08531c3bd32d8d7e3de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
