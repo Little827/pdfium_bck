@@ -18,4 +18,4 @@ struct TestCase {
   }
   FPDF_LIBRARY_CONFIG config;
 };
-static TestCase* testCase = new TestCase();
+static TestCase* g_test_case = new TestCase();

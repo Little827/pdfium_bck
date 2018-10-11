@@ -261,4 +261,4 @@ struct TestCase {
   UNSUPPORT_INFO unsupport_info;
 };
 
-static TestCase* test_case = new TestCase();
+static TestCase* g_test_case = new TestCase();
