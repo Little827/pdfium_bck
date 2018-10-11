@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78558b0b_1d58b1ed",
+        "filename": "fpdfsdk/fpdf_transformpage_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-11T20:56:31Z",
+      "side": 1,
+      "message": "Move this to the bottom. Don\u0027t put the artbox test in-between CropBox tests.",
+      "revId": "36784edc1b888a4e028ebe1b289d9e91c6e76e13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46f149fe_3d0b5cd0",
+        "filename": "testing/resources/cropped_text.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-11T20:56:31Z",
+      "side": 1,
+      "message": "Can you make the ArtBoxes slightly asymmetrical, so it is easier to distinguish between the two axis?",
+      "revId": "36784edc1b888a4e028ebe1b289d9e91c6e76e13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
