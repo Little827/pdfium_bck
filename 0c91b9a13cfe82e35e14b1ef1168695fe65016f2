@@ -1,4 +1,56 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539279901 -0700\nnonce AP50N7Z89SXbQUFMFpR7IADIrq6drubd8EhCMeSD7OQhD5Wz44Snd5E4zj1H9f0CvfK0ewGO81rH\n\n0000000000000000000000000000000000000000 0c91b9a13cfe82e35e14b1ef1168695fe65016f2 refs/for/refs/heads/master%notify\u003dNONE,m\u003done_less_include%5Fdir\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu/jB0ACgkQqzYtYVpm\n/XtSpQgAiMbinsveqcoMShoQmlJ0eEZd3vmT66bWl9pLHouptvaicRqXK9QMPARD\nxsx0TGDWbuoTCjQBbpySPgpyNIjPmLI+1b+usNevjrx+42eF84JWvV7LkZT23AHa\n2JPslqP1jMz+BF8PWLZ8gQTkE7eKAfQ2eYP/jt1xntJ2sZSoJ2zxHbLDs2cQYvPz\n/0Wtw/5A3va9J6GHPPL/YG5VcXHF4CTn9F4q66fVKk3nqfMv6nPveTSlu+blRSfd\nhm9PED7EEQFk++WC/3cGOUwBCesox1/gDMCKu+0CA/TQsN2oO5hO0dF1SP4ayQIx\nyL8E4aBl9vfWvBwjT7JBb1zSTpYbTg\u003d\u003d\n\u003dpDAj\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "46765d04_2c7412a5",
+        "filename": ".gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-11T19:01:30Z",
+      "side": 1,
+      "message": "Without this entry, GN tries to check everything which is too much. V8 doesn\u0027t pass \"gn check\" for instance, and we don\u0027t want to be responsible for V8\u0027s issues. Same for Skia.",
+      "revId": "0c91b9a13cfe82e35e14b1ef1168695fe65016f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20d25b67_891c73a8",
+        "filename": ".gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-11T19:01:30Z",
+      "side": 1,
+      "message": "And this just starts with something simple.",
+      "revId": "0c91b9a13cfe82e35e14b1ef1168695fe65016f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac408f0_3819ec4a",
+        "filename": "samples/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-11T19:01:30Z",
+      "side": 1,
+      "message": "This is to make gn check happy, as v8.h and friends are in this target.",
+      "revId": "0c91b9a13cfe82e35e14b1ef1168695fe65016f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
