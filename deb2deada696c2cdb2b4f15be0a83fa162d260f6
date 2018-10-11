@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539298520 -0700\nnonce AP50N7ba3dBL43lfZOFbp/QQkywVo+YqF3aR1l0Xa7G57Mp3F/qwpXDNJgihMFUIDPWNLMpwpfK1\n\n0000000000000000000000000000000000000000 deb2deada696c2cdb2b4f15be0a83fa162d260f6 refs/for/refs/heads/master%wip,m\u003dInitial_upload,hashtag\u003dfix-naming-for-cpdf-formfield\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu/1NgACgkQqzYtYVpm\n/XurhAf/W+q47Hov9/Uc8nBxkthm/li631uzED+NrAT8tPTwwicsyNIXfa8/dx00\nzdbx0pKvU9GKCcfHYHSacJfKQg4KyHAU71flaM85IBznsWzPRR/zDDAz9bS6A8uh\ns9Qez2Tl1yFfVcd10slL8id4mh7b4DcgAAzWZ5Ao7ZaUIQj2oyJIZo27yMRLO1sS\n/8oegHIidegJCiG+FSyVqJj878JxPJcN6Mf3fApyohNAKbNfgWz6OZXITmXhaM05\n4Eleltfk7Zwk6yub8gXBeWjCjy91l7rURek9XM/mEt715MdavWRnPoINpIJT91c6\n52m9XDAvh0W6nz3D87RbBYRvo03Lqw\u003d\u003d\n\u003deKnF\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
