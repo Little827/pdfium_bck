@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539279003 -0700\nnonce AP50N7YOsLrIUHsU5jHDmkdKz5IL2DsPlO7lGtKbmivOasPc8bX1Qx+eqAi+M1q04G+m5W71zx4x\n\n0000000000000000000000000000000000000000 3a164e5582ec47d62e34e71d371452b1e2dd434e refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlu/iJsACgkQqzYtYVpm\n/XuMYAf/foZmTfWTNb+sW0QlxTO5DnF+hQ6BEMvY8E9tLca8t99tLPthMzyP+BwO\n89t+J9hBRrqik49yrwSKMSxYS0SMKCvFPl/xZOnPuPm1qofCwUQacHa/jfyFth2c\ngVKnCNCWiDBNwVG0I+yRnrqC7oeL8Z4NVQsBVyCdHXii81BKyPIkefjtc5+VR+g6\npG5o/5q58ViT5cXrfkx8eZOgD927NcKS2aJ7PPzaGbYYJiT0pM2OqFwuMgteL1q+\njgrfEs9AJnBxt8dboUwHDgSFY+7odk6i1Jcb5E03C8sWpyGA+7Uwl0lKmNCCv0SJ\n/5MktHQJze6Sz2mdGiOjobaU3zoLbA\u003d\u003d\n\u003dpASR\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "236d3273_b4a26e4d",
+        "filename": "core/fxcodec/codec/ccodec_bmpmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-11T17:35:39Z",
+      "side": 1,
+      "message": "still need forward CFX_DIBAtribute from old line 17 since this is not an override of a method already containing that type as an argument?",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce78403c_007fa39a",
+        "filename": "core/fxcodec/codec/ccodec_gifmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-11T17:35:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2698d7_48d5fd9f",
+        "filename": "core/fxcodec/codec/ccodec_jpegmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-11T17:35:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef1a09bf_033efa24",
+        "filename": "core/fxcodec/codec/ccodec_tiffmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-11T17:35:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
