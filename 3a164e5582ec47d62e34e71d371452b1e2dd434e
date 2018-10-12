@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "062af835_b7812185",
+        "filename": "core/fxcodec/codec/ccodec_bmpmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T00:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "236d3273_b4a26e4d",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce78403c_007fa39a",
         "filename": "core/fxcodec/codec/ccodec_gifmodule.h",
         "patchSetId": 3
@@ -46,6 +70,30 @@
       "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a379b94_867c0f95",
+        "filename": "core/fxcodec/codec/ccodec_gifmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T00:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce78403c_007fa39a",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -72,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "3c1acb07_885dfbd2",
+        "filename": "core/fxcodec/codec/ccodec_jpegmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T00:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad2698d7_48d5fd9f",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef1a09bf_033efa24",
         "filename": "core/fxcodec/codec/ccodec_tiffmodule.h",
         "patchSetId": 3
@@ -92,6 +164,30 @@
       "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3031a0_a49af50e",
+        "filename": "core/fxcodec/codec/ccodec_tiffmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T00:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1a09bf_033efa24",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "3a164e5582ec47d62e34e71d371452b1e2dd434e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
