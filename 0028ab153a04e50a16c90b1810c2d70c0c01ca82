@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7686ce7d_c9c4ce10",
+        "filename": "core/fpdfdoc/cpdf_formcontrol.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-12T17:39:13Z",
+      "side": 1,
+      "message": "nit: pre-existing: local not needed.",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a96c0b_60d22908",
+        "filename": "core/fpdfdoc/cpdf_formcontrol.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-12T17:39:13Z",
+      "side": 1,
+      "message": "pre-existing: super-nit: maybe invert so that the early return is the \"error\" (no-obj) path.",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb4f42d_de2fc366",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-12T17:39:13Z",
+      "side": 1,
+      "message": "nit: assign to 0 at line 451 then use \u003d default here.",
+      "range": {
+        "startLine": 393,
+        "startChar": 13,
+        "endLine": 393,
+        "endChar": 20
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3840b709_1fa13034",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-12T17:39:13Z",
+      "side": 1,
+      "message": "might be end() if not found, in which case it-\u003esecond not valid.  Might have to return pointer and check for nullz.",
+      "range": {
+        "startLine": 831,
+        "startChar": 19,
+        "endLine": 833,
+        "endChar": 0
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
