@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "6d018a5b_a309f033",
+        "filename": "core/fpdfapi/render/cpdf_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T00:47:42Z",
+      "side": 1,
+      "message": "Already in cpdf_dibbase.h.",
+      "parentUuid": "4161c469_9d860257",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 482,
+        "endChar": 17
+      },
+      "revId": "3bc4a521715309a1f9bece181ed50feb635d5c5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc143a9f_225359bd",
         "filename": "core/fxcrt/widestring_unittest.cpp",
         "patchSetId": 2
@@ -46,6 +70,30 @@
       "revId": "3bc4a521715309a1f9bece181ed50feb635d5c5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd3b0d07_882f445f",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T00:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc143a9f_225359bd",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "3bc4a521715309a1f9bece181ed50feb635d5c5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
