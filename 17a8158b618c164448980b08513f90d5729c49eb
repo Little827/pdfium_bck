@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539326898 -0700\nnonce AP50N7ZpXC35RNrQuq/yHmulyGZnad66QJ2bcm38jK8a/xsYcImR5+JvU5Wll2Tk9OrgmU7z20zL\n\n0000000000000000000000000000000000000000 17a8158b618c164448980b08513f90d5729c49eb refs/for/refs/heads/master%notify\u003dNONE,m\u003dfix\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvAQ7IACgkQqzYtYVpm\n/XtWKAgAwKuGS0GqVqpUMMmI0+mSgsnRtxALfzTLLJqPBPtH2XOkr3Z0cl9X3MP3\nbLHRcWQaiwQJy3tnP2uDk1DrEGIsoWL1QiUxyji0TUtRGJYggwkIoGjLa+VDEHoC\nYf0KU0+5kugNT0b3gRRuegicsH2b6d0hFjCHUwo6SZNY09jG6RyDXUtC00aH+kQc\nU+oOp109u1Lshz/ZKsyDmeAdQ70x+HwBGkdkpNZ60jUSslugNuFQrpqklS0312tN\nLn088yEmdnI6EhXOUI8IlDtl0RFFC66fWYaViaBEPhttt43X2QpJv3/0MEyMd1ke\n3cLJabq4TBLmpk/8unlMobsZoPRFRw\u003d\u003d\n\u003dBvL5\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2af38971_9ebb3cce",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T15:51:37Z",
+      "side": 1,
+      "message": "Can\u0027t move these because then libpdfium.a would be empty when pdf_is_complete_lib\u003dfalse. These are the ones associated with the public/ headers.",
+      "revId": "17a8158b618c164448980b08513f90d5729c49eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
