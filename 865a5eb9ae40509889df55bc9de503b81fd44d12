@@ -17,6 +17,24 @@
       "revId": "865a5eb9ae40509889df55bc9de503b81fd44d12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c15e1f_d3515992",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T19:02:28Z",
+      "side": 1,
+      "message": "Whoops, this is a bad change. Will revert.\n\nIt\u0027s whether to use fx_freetype, or use whatever config is in //build. (i.e. the //build of the embedder.)",
+      "parentUuid": "ea85a01b_643ae064",
+      "revId": "865a5eb9ae40509889df55bc9de503b81fd44d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
