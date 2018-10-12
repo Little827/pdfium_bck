@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dee7115_dcae6488",
+        "filename": "testing/resources/javascript/console_methods_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T18:34:49Z",
+      "side": 1,
+      "message": "No clams \u003d\u003d expected?",
+      "revId": "da1b233000b05e897ee6f74caeaa285c9716f56e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
