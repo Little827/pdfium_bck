@@ -70,8 +70,8 @@ WideString CPDF_FormControl::GetExportValue() const {
   ASSERT(GetType() == CPDF_FormField::kCheckBox ||
          GetType() == CPDF_FormField::kRadioButton);
   ByteString csOn = GetOnStateName();
-  if (CPDF_Array* pArray =
-          ToArray(FPDF_GetFieldAttr(m_pField->GetDict(), "Opt"))) {
+  CPDF_Array* pArray = ToArray(FPDF_GetFieldAttr(m_pField->GetDict(), "Opt"));
+  if (pArray) {
     int iIndex = m_pField->GetControlIndex(this);
     csOn = pArray->GetStringAt(iIndex);
   }
@@ -198,7 +198,7 @@ CPDF_DefaultAppearance CPDF_FormControl::GetDefaultAppearance() const {
   CPDF_Object* pObj = FPDF_GetFieldAttr(m_pField->GetDict(), "DA");
   if (pObj)
     return CPDF_DefaultAppearance(pObj->GetString());
-  return m_pField->GetForm()->GetDefaultAppearance();
+  return m_pForm->GetDefaultAppearance();
 }
 
 CPDF_Font* CPDF_FormControl::GetDefaultControlFont() {
@@ -214,14 +214,13 @@ CPDF_Font* CPDF_FormControl::GetDefaultControlFont() {
     if (pFonts) {
       CPDF_Dictionary* pElement = pFonts->GetDictFor(*csFontNameTag);
       if (pElement) {
-        CPDF_Font* pFont =
-            m_pField->GetForm()->GetDocument()->LoadFont(pElement);
+        CPDF_Font* pFont = m_pForm->GetDocument()->LoadFont(pElement);
         if (pFont)
           return pFont;
       }
     }
   }
-  if (CPDF_Font* pFormFont = m_pField->GetForm()->GetFormFont(*csFontNameTag))
+  if (CPDF_Font* pFormFont = m_pForm->GetFormFont(*csFontNameTag))
     return pFormFont;
 
   CPDF_Dictionary* pPageDict = m_pWidgetDict->GetDictFor("P");
@@ -231,8 +230,7 @@ CPDF_Font* CPDF_FormControl::GetDefaultControlFont() {
     if (pFonts) {
       CPDF_Dictionary* pElement = pFonts->GetDictFor(*csFontNameTag);
       if (pElement) {
-        CPDF_Font* pFont =
-            m_pField->GetForm()->GetDocument()->LoadFont(pElement);
+        CPDF_Font* pFont = m_pForm->GetDocument()->LoadFont(pElement);
         if (pFont)
           return pFont;
       }
@@ -250,5 +248,5 @@ int CPDF_FormControl::GetControlAlignment() const {
   CPDF_Object* pObj = FPDF_GetFieldAttr(m_pField->GetDict(), "Q");
   if (pObj)
     return pObj->GetInteger();
-  return m_pField->GetForm()->GetFormAlignment();
+  return m_pForm->GetFormAlignment();
 }
