@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539379871 -0700\nnonce AP50N7b0U9TWgfl9jMnbaSRBl6l/vhdw/SHzcV9xej7sXcTfg1OVpsPZE2chWlBgXNqOTvcCrgnm\n\n0000000000000000000000000000000000000000 e03c2b30887867acd6aa33dcddcd7134477a6970 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvBEp8ACgkQqzYtYVpm\n/Xt3WAgAttOPQfwwfXp2YiksRqfmm/PadHVTeSLc22x+RXnJBdBsuZ1WUecBwjn2\nkzEy6o36ljxqdChGgCDKbiNy9jSmCLjDCCIqgLF34DtVNtECL6wCYwzqIf2LcT1j\nVDc1qtpurtpBGNNyDRTTWjH0DBFt9eGrh25TTS0mE7vcNEI+ZcpiDWAqU2Y5AQub\n28dal9FhpjIvZUrvtM+qCIrP6ohNVyyB738LOneqMbhYCsN0Ga7Q6rM34Z7g/eSe\nTaZjESux4aYbweP3iHAOqQxZcaGwMEaRCul9adROcLVzrOJMuYMIh9eL9SYVMxj4\nxX19yEot27gqwxRPQUaDwFHsc9MOVg\u003d\u003d\n\u003dbbhV\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c00a5e6_a67bdb97",
+        "filename": "samples/pdfium_test_dump_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-12T21:48:24Z",
+      "side": 1,
+      "message": "sure we need this mechanism with std::function etc instead of just calling each of these inline?",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "e03c2b30887867acd6aa33dcddcd7134477a6970",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
