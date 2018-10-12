@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdec138c_df09c539",
+        "filename": "core/fpdfdoc/cpdf_formcontrol.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T22:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7686ce7d_c9c4ce10",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4a96c0b_60d22908",
         "filename": "core/fpdfdoc/cpdf_formcontrol.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1340683_a22737b3",
+        "filename": "core/fpdfdoc/cpdf_formcontrol.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T22:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4a96c0b_60d22908",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f9308fdc_2c6e0c56",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T22:22:07Z",
+      "side": 1,
+      "message": "Feels slightly weird to have:\n\nconst int m_level \u003d 0;\n\nbelow, when the 2 parameter ctor can actually set |m_level| to something else.",
+      "parentUuid": "bfb4f42d_de2fc366",
+      "range": {
+        "startLine": 393,
+        "startChar": 13,
+        "endLine": 393,
+        "endChar": 20
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3840b709_1fa13034",
         "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2018-10-12T17:39:13Z",
       "side": 1,
       "message": "might be end() if not found, in which case it-\u003esecond not valid.  Might have to return pointer and check for nullz.",
+      "range": {
+        "startLine": 831,
+        "startChar": 19,
+        "endLine": 833,
+        "endChar": 0
+      },
+      "revId": "0028ab153a04e50a16c90b1810c2d70c0c01ca82",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837ddfc7_1341b476",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T22:22:07Z",
+      "side": 1,
+      "message": "It should never be end(). So if it crashes, something bad has happened. Not using operator[] because that will create |m_ControlLists[pField]| if it does not exist.",
+      "parentUuid": "3840b709_1fa13034",
       "range": {
         "startLine": 831,
         "startChar": 19,
