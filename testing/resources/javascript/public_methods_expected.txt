@@ -1,0 +1,4 @@
+Alert: *** starting test ***
+[icon=3,type=0]: The input value is invalid.
+[icon=3,type=0]: The input value can't be parsed as a valid date/time (H).
+Alert: *** ending test ***
