@@ -98,8 +98,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
   uint8_t* pLine = GBREG->data();
   int32_t nStride = GBREG->stride();
   int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  int32_t nLineBytes = ((GBW + 7) / 8) - 1;
+  int32_t nBitsLeft = GBW - (nLineBytes * 8);
   // TODO(npm): Why is the height only trimmed when OPT is 0?
   uint32_t height = OPT == 0 ? GBH & 0x7fffffff : GBH;
   for (uint32_t h = 0; h < height; ++h) {
@@ -264,8 +264,8 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
   int LTP = 0;
   uint8_t* pLine = GBREG->data();
   int32_t nStride = GBREG->stride();
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  int32_t nLineBytes = ((GBW + 7) / 8) - 1;
+  int32_t nBitsLeft = GBW - (nLineBytes * 8);
 
   for (uint32_t h = 0; h < GBH; h++) {
     if (TPGDON) {
@@ -368,7 +368,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Unopt(
         } else {
           uint32_t CONTEXT = line2;
           CONTEXT |= GBREG->GetPixel(w + GBAT[0], h + GBAT[1]) << 4;
-          CONTEXT |= line1 << 5;
+          CONTEXT |= line1 * 32;
           if (pArithDecoder->IsComplete())
             return nullptr;
 
@@ -491,8 +491,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
   int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  int32_t nLineBytes = ((GBW + 7) / 8) - 1;
+  int32_t nBitsLeft = GBW - (nLineBytes * 8);
   uint32_t height = GBH & 0x7fffffff;
 
   for (; m_loopIndex < height; m_loopIndex++) {
@@ -613,7 +613,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Unopt(
         } else {
           uint32_t CONTEXT = line3;
           CONTEXT |= pImage->GetPixel(w + GBAT[0], m_loopIndex + GBAT[1]) << 4;
-          CONTEXT |= line2 << 5;
+          CONTEXT |= line2 * 32;
           CONTEXT |= pImage->GetPixel(w + GBAT[2], m_loopIndex + GBAT[3]) << 10;
           CONTEXT |= pImage->GetPixel(w + GBAT[4], m_loopIndex + GBAT[5]) << 11;
           CONTEXT |= line1 << 12;
@@ -652,8 +652,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
   int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  int32_t nLineBytes = ((GBW + 7) / 8) - 1;
+  int32_t nBitsLeft = GBW - (nLineBytes * 8);
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -772,7 +772,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Unopt(
           bVal = 0;
         } else {
           uint32_t CONTEXT = line3;
-          CONTEXT |= pImage->GetPixel(w + GBAT[0], h + GBAT[1]) << 3;
+          CONTEXT |= pImage->GetPixel(w + GBAT[0], h + GBAT[1]) * 8;
           CONTEXT |= line2 << 4;
           CONTEXT |= line1 << 9;
           if (pArithDecoder->IsComplete())
@@ -807,8 +807,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
   int32_t nStride2 = nStride << 1;
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  int32_t nLineBytes = ((GBW + 7) / 8) - 1;
+  int32_t nBitsLeft = GBW - (nLineBytes * 8);
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -824,7 +824,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
         uint8_t* pLine2 = m_pLine - nStride;
         uint32_t line1 = (*pLine1++) << 1;
         uint32_t line2 = *pLine2++;
-        uint32_t CONTEXT = (line1 & 0x0380) | ((line2 >> 3) & 0x007c);
+        uint32_t CONTEXT = (line1 & 0x0380) | ((line2 / 8) & 0x007c);
         for (int32_t cc = 0; cc < nLineBytes; cc++) {
           line1 = (line1 << 8) | ((*pLine1++) << 1);
           line2 = (line2 << 8) | (*pLine2++);
@@ -857,7 +857,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
       } else {
         uint8_t* pLine2 = m_pLine - nStride;
         uint32_t line2 = (m_loopIndex & 1) ? (*pLine2++) : 0;
-        uint32_t CONTEXT = (line2 >> 3) & 0x007c;
+        uint32_t CONTEXT = (line2 / 8) & 0x007c;
         for (int32_t cc = 0; cc < nLineBytes; cc++) {
           if (m_loopIndex & 1) {
             line2 = (line2 << 8) | (*pLine2++);
@@ -927,7 +927,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Unopt(
         } else {
           uint32_t CONTEXT = line3;
           CONTEXT |= pImage->GetPixel(w + GBAT[0], m_loopIndex + GBAT[1]) << 2;
-          CONTEXT |= line2 << 3;
+          CONTEXT |= line2 * 8;
           CONTEXT |= line1 << 7;
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
@@ -962,8 +962,8 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
   if (!m_pLine)
     m_pLine = pImage->data();
   int32_t nStride = pImage->stride();
-  int32_t nLineBytes = ((GBW + 7) >> 3) - 1;
-  int32_t nBitsLeft = GBW - (nLineBytes << 3);
+  int32_t nLineBytes = ((GBW + 7) / 8) - 1;
+  int32_t nBitsLeft = GBW - (nLineBytes * 8);
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
       if (pArithDecoder->IsComplete())
@@ -1066,7 +1066,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Unopt(
         } else {
           uint32_t CONTEXT = line2;
           CONTEXT |= pImage->GetPixel(w + GBAT[0], m_loopIndex + GBAT[1]) << 4;
-          CONTEXT |= line1 << 5;
+          CONTEXT |= line1 * 32;
           if (pArithDecoder->IsComplete())
             return FXCODEC_STATUS_ERROR;
 

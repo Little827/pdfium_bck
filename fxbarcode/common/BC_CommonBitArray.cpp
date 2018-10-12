@@ -37,7 +37,7 @@ CBC_CommonBitArray::CBC_CommonBitArray() {
 }
 
 CBC_CommonBitArray::CBC_CommonBitArray(int32_t size) {
-  m_bits.resize((size + 31) >> 5);
+  m_bits.resize((size + 31) / 32);
   m_size = size;
 }
 
@@ -52,23 +52,23 @@ std::vector<int32_t>& CBC_CommonBitArray::GetBits() {
 }
 
 size_t CBC_CommonBitArray::GetSizeInBytes() {
-  return (m_size + 7) >> 3;
+  return (m_size + 7) / 8;
 }
 
 bool CBC_CommonBitArray::Get(size_t i) {
-  return (m_bits[i >> 5] & (1 << (i & 0x1f))) != 0;
+  return (m_bits[i / 32] & (1 << (i & 0x1f))) != 0;
 }
 
 void CBC_CommonBitArray::Set(size_t i) {
-  m_bits[i >> 5] |= 1 << (i & 0x1F);
+  m_bits[i / 32] |= 1 << (i & 0x1F);
 }
 
 void CBC_CommonBitArray::Flip(size_t i) {
-  m_bits[i >> 5] ^= 1 << (i & 0x1F);
+  m_bits[i / 32] ^= 1 << (i & 0x1F);
 }
 
 void CBC_CommonBitArray::SetBulk(size_t i, int32_t newBits) {
-  m_bits[i >> 5] = newBits;
+  m_bits[i / 32] = newBits;
 }
 
 void CBC_CommonBitArray::Clear() {
@@ -84,7 +84,7 @@ void CBC_CommonBitArray::Reverse() {
   std::vector<int32_t> newBits(m_bits.size());
   for (size_t i = 0; i < m_size; i++) {
     if (Get(m_size - i - 1))
-      newBits[i >> 5] |= 1 << (i & 0x1F);
+      newBits[i / 32] |= 1 << (i & 0x1F);
   }
   m_bits = std::move(newBits);
 }

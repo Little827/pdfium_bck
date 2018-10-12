@@ -572,9 +572,8 @@ bool CJPX_Decoder::Decode(uint8_t* dest_buf,
   if (m_Image->comps[0].w != m_Image->x1 || m_Image->comps[0].h != m_Image->y1)
     return false;
 
-  if (pitch<(m_Image->comps[0].w * 8 * m_Image->numcomps + 31)>> 5 << 2) {
+  if (pitch < (m_Image->comps[0].w * 8 * m_Image->numcomps + 31) / 32 * 4)
     return false;
-  }
 
   memset(dest_buf, 0xff, m_Image->y1 * pitch);
   std::vector<uint8_t*> channel_bufs(m_Image->numcomps);

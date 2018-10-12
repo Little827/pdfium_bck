@@ -29,8 +29,8 @@
    (buf)[2] = static_cast<uint8_t>((val) >> 8),  \
    (buf)[3] = static_cast<uint8_t>((val) >> 0))
 
-#define BIT_INDEX_TO_BYTE(x) ((x) >> 3)
-#define BIT_INDEX_TO_ALIGNED_BYTE(x) (((x) >> 5) << 2)
+#define BIT_INDEX_TO_BYTE(x) ((x) / 8)
+#define BIT_INDEX_TO_ALIGNED_BYTE(x) ((x) / 32 * 4)
 
 namespace {
 
@@ -406,7 +406,7 @@ bool CJBig2_Image::ComposeToInternal(CJBig2_Image* pDst,
     if (s1 > d1) {
       uint32_t shift1 = s1 - d1;
       uint32_t shift2 = 32 - shift1;
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
+      int32_t middleDwords = (xd1 / 32) - ((xd0 + 31) / 32);
       for (int32_t yy = yd0; yy < yd1; yy++) {
         if (lineSrc >= lineSrcEnd)
           return false;
@@ -494,7 +494,7 @@ bool CJBig2_Image::ComposeToInternal(CJBig2_Image* pDst,
         lineDst += pDst->m_nStride;
       }
     } else if (s1 == d1) {
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
+      int32_t middleDwords = (xd1 / 32) - ((xd0 + 31) / 32);
       for (int32_t yy = yd0; yy < yd1; yy++) {
         if (lineSrc >= lineSrcEnd)
           return false;
@@ -579,7 +579,7 @@ bool CJBig2_Image::ComposeToInternal(CJBig2_Image* pDst,
     } else {
       uint32_t shift1 = d1 - s1;
       uint32_t shift2 = 32 - shift1;
-      int32_t middleDwords = (xd1 >> 5) - ((xd0 + 31) >> 5);
+      int32_t middleDwords = (xd1 / 32) - ((xd0 + 31) / 32);
       for (int32_t yy = yd0; yy < yd1; yy++) {
         if (lineSrc >= lineSrcEnd)
           return false;

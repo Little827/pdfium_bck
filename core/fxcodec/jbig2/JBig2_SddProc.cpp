@@ -453,16 +453,15 @@ std::unique_ptr<CJBig2_SymbolDict> CJBig2_SDDProc::DecodeHuffman(
       pStream->alignByte();
       std::unique_ptr<CJBig2_Image> BHC;
       if (BMSIZE == 0) {
-        stride = (TOTWIDTH + 7) >> 3;
-        if (pStream->getByteLeft() >= stride * HCHEIGHT) {
-          BHC = pdfium::MakeUnique<CJBig2_Image>(TOTWIDTH, HCHEIGHT);
-          for (I = 0; I < HCHEIGHT; I++) {
-            memcpy(BHC->data() + I * BHC->stride(), pStream->getPointer(),
-                   stride);
-            pStream->offset(stride);
-          }
-        } else {
+        stride = (TOTWIDTH + 7) / 8;
+        if (pStream->getByteLeft() < stride * HCHEIGHT)
           return nullptr;
+
+        BHC = pdfium::MakeUnique<CJBig2_Image>(TOTWIDTH, HCHEIGHT);
+        for (I = 0; I < HCHEIGHT; I++) {
+          memcpy(BHC->data() + I * BHC->stride(), pStream->getPointer(),
+                 stride);
+          pStream->offset(stride);
         }
       } else {
         auto pGRD = pdfium::MakeUnique<CJBig2_GRDProc>();

@@ -34,12 +34,12 @@ int32_t CBC_QRCoderBitVector::At(size_t index, int32_t& e) const {
     e = BCExceptionBadIndexException;
     return 0;
   }
-  int32_t value = m_array[index >> 3] & 0xff;
+  int32_t value = m_array[index / 8] & 0xff;
   return (value >> (7 - (index & 0x7))) & 1;
 }
 
 size_t CBC_QRCoderBitVector::sizeInBytes() const {
-  return (m_sizeInBits + 7) >> 3;
+  return (m_sizeInBits + 7) / 8;
 }
 
 size_t CBC_QRCoderBitVector::Size() const {
@@ -53,7 +53,7 @@ void CBC_QRCoderBitVector::AppendBit(int32_t bit) {
     AppendByte(0);
     m_sizeInBits -= 8;
   }
-  m_array[m_sizeInBits >> 3] |= (bit << (7 - numBitsInLastByte));
+  m_array[m_sizeInBits / 8] |= (bit << (7 - numBitsInLastByte));
   ++m_sizeInBits;
 }
 
@@ -98,8 +98,8 @@ const uint8_t* CBC_QRCoderBitVector::GetArray() const {
 }
 
 void CBC_QRCoderBitVector::AppendByte(int8_t value) {
-  if ((m_sizeInBits >> 3) == m_array.size())
+  if ((m_sizeInBits / 8) == m_array.size())
     m_array.push_back(0);
-  m_array[m_sizeInBits >> 3] = value;
+  m_array[m_sizeInBits / 8] = value;
   m_sizeInBits += 8;
 }
