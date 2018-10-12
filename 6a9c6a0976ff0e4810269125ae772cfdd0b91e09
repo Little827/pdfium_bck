@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ebb08a_4b1fbf4c",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-12T19:54:39Z",
+      "side": 1,
+      "message": "NOTE: straight move, no changes.",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 10
+      },
+      "revId": "6a9c6a0976ff0e4810269125ae772cfdd0b91e09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
