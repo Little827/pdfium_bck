@@ -23,6 +23,30 @@
       "revId": "8ae7b814ff62b9fec2fd668e266be94ab3e63cfa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482301c8_5166c5d7",
+        "filename": "xfa/fxfa/parser/cxfa_treelist.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T20:38:38Z",
+      "side": 1,
+      "message": "Forward declared in cxfa_list.h. Most/all CXFA_List subclass have to take a CXFA_Document pointer.",
+      "parentUuid": "e1d24524_218ef2f2",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 50
+      },
+      "revId": "8ae7b814ff62b9fec2fd668e266be94ab3e63cfa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
