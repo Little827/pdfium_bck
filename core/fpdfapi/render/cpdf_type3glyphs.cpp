@@ -18,8 +18,8 @@ constexpr int kType3MaxBlues = 16;
 int AdjustBlueHelper(float pos, std::vector<int>* blues) {
   float min_distance = 1000000.0f;
   int closest_pos = -1;
-  for (int i = 0; i < static_cast<int>(blues->size()); ++i) {
-    float distance = fabs(pos - static_cast<float>(blues->at(i)));
+  for (size_t i = 0; i < blues->size(); ++i) {
+    float distance = fabs(pos - static_cast<float>((*blues)[i]));
     if (distance < std::min(0.8f, min_distance)) {
       min_distance = distance;
       closest_pos = i;

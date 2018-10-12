@@ -82,7 +82,7 @@ void CPDF_CryptoHandler::CryptBlock(bool bEncrypt,
       }
       CRYPT_AESSetIV(m_pAESContext.get(), iv);
       memcpy(dest_buf, iv, 16);
-      int nblocks = source.size() / 16;
+      size_t nblocks = source.size() / 16;
       CRYPT_AESEncrypt(m_pAESContext.get(), dest_buf + 16, source.data(),
                        nblocks * 16);
       uint8_t padding[16];

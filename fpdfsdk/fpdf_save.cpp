@@ -78,11 +78,11 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   if (!pArray)
     return false;
 
-  int size = pArray->size();
+  size_t size = pArray->size();
   int iFormIndex = -1;
   int iDataSetsIndex = -1;
   int iLast = size - 2;
-  for (int i = 0; i < size - 1; i++) {
+  for (size_t i = 0; i < size - 1; i++) {
     const CPDF_Object* pPDFObj = pArray->GetObjectAt(i);
     if (!pPDFObj->IsString())
       continue;

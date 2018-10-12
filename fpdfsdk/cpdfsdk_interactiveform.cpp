@@ -205,14 +205,18 @@ int CPDFSDK_InteractiveForm::GetPageIndexByAnnotDict(
   ASSERT(pAnnotDict);
 
   for (int i = 0, sz = pDocument->GetPageCount(); i < sz; i++) {
-    if (CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(i)) {
-      if (CPDF_Array* pAnnots = pPageDict->GetArrayFor("Annots")) {
-        for (int j = 0, jsz = pAnnots->size(); j < jsz; j++) {
-          CPDF_Object* pDict = pAnnots->GetDirectObjectAt(j);
-          if (pAnnotDict == pDict)
-            return i;
-        }
-      }
+    CPDF_Dictionary* pPageDict = pDocument->GetPageDictionary(i);
+    if (!pPageDict)
+      continue;
+
+    CPDF_Array* pAnnots = pPageDict->GetArrayFor("Annots");
+    if (!pAnnots)
+      continue;
+
+    for (size_t j = 0, jsz = pAnnots->size(); j < jsz; ++j) {
+      CPDF_Object* pDict = pAnnots->GetDirectObjectAt(j);
+      if (pAnnotDict == pDict)
+        return i;
     }
   }
 

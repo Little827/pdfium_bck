@@ -537,7 +537,7 @@ bool CPDF_FormField::IsItemSelected(int index) const {
       break;
     }
   }
-  for (int i = 0; i < static_cast<int>(pArray->size()); i++)
+  for (int i = 0; i < pdfium::CollectionSize<int>(*pArray); ++i)
     if (pArray->GetDirectObjectAt(i)->GetUnicodeText() == opt_value &&
         i == iPos) {
       return true;
@@ -779,7 +779,7 @@ int CPDF_FormField::GetSelectedOptionIndex(int index) const {
   if (!pArray)
     return -1;
 
-  int iCount = pArray->size();
+  int iCount = pdfium::CollectionSize<int>(*pArray);
   if (iCount < 0 || index >= iCount)
     return -1;
   return pArray->GetIntegerAt(index);
