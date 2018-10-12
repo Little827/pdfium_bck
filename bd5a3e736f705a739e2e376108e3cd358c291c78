@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539323322 -0700\nnonce AP50N7Zzdy3Xdj2McQvvdFWqF8QdtALb7MohIFDamlMxEpRjEep/VgrZ54jY84AGXr8sH/T5Tv2B\n\n0000000000000000000000000000000000000000 bd5a3e736f705a739e2e376108e3cd358c291c78 refs/for/refs/heads/master%notify\u003dNONE,m\u003dvisibility\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvANboACgkQqzYtYVpm\n/XuXBwf/ZXSc7JpZCIcU1dRtluyZSQlmmgf72vQ+jk3TQbgVk3Z8kTUrFZFJJYbz\nxyZz5Hc14/YgSvGouXAyvesDRLYB0M10rs4Y1fqnTtXBl9tBda7h+sgRbSEvTr2x\nLPptA7HQnv0n7sqH9/Xp/eh02WYnSKQvYKGrzsDlzEoBzyXbCH5cY5ZbVUpiY8bO\ntvnWsR70ThdfW75fBh9GseGOrCG8gYsmsVer825TB3N3LseqxGs2OR9rVDXUmCDI\n1ID4DHZW+4BmbUb1F8J+xHvZIPxUIHx0gw7MQQDlCc0aBwGWv0az1FM+VnuPQo0S\n6zKxYOTmVcBZb2m+WhO0OyPW5NWDrQ\u003d\u003d\n\u003da1gz\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "19df9c08_18ae788d",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-12T16:59:42Z",
+      "side": 1,
+      "message": "Do we want to be so restrictive at the cost of maintaining visibility whitelists for everything? Shouldn\u0027t we just make this visible to all pdfium?",
+      "revId": "bd5a3e736f705a739e2e376108e3cd358c291c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
