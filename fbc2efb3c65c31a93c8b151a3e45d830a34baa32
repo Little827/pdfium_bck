@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee73fca2_6edd16a9",
+        "filename": "testing/resources/javascript/annot_props.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-12T00:07:08Z",
+      "side": 1,
+      "message": "Dangling reference. I have a script to detect this that I need to check in.",
+      "revId": "fbc2efb3c65c31a93c8b151a3e45d830a34baa32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
