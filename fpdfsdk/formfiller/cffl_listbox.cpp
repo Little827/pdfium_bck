@@ -86,7 +86,7 @@ bool CFFL_ListBox::IsDataChanged(CPDFSDK_PageView* pPageView) {
 
   if (m_pWidget->GetFieldFlags() & FIELDFLAG_MULTISELECT) {
     size_t nSelCount = 0;
-    for (int32_t i = 0, sz = pListBox->GetCount(); i < sz; ++i) {
+    for (int32_t i = 0, sz = pListBox->size(); i < sz; ++i) {
       if (pListBox->IsItemSelected(i)) {
         if (m_OriginSelections.count(i) == 0)
           return true;
@@ -109,7 +109,7 @@ void CFFL_ListBox::SaveData(CPDFSDK_PageView* pPageView) {
   int32_t nNewTopIndex = pListBox->GetTopVisibleIndex();
   m_pWidget->ClearSelection(NotificationOption::kDoNotNotify);
   if (m_pWidget->GetFieldFlags() & FIELDFLAG_MULTISELECT) {
-    for (int32_t i = 0, sz = pListBox->GetCount(); i < sz; i++) {
+    for (int32_t i = 0, sz = pListBox->size(); i < sz; i++) {
       if (pListBox->IsItemSelected(i)) {
         m_pWidget->SetOptionSelection(i, true,
                                       NotificationOption::kDoNotNotify);
@@ -176,7 +176,7 @@ void CFFL_ListBox::SaveState(CPDFSDK_PageView* pPageView) {
   if (!pListBox)
     return;
 
-  for (int32_t i = 0, sz = pListBox->GetCount(); i < sz; i++) {
+  for (int32_t i = 0, sz = pListBox->size(); i < sz; i++) {
     if (pListBox->IsItemSelected(i))
       m_State.push_back(i);
   }

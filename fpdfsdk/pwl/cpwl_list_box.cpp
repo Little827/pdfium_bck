@@ -99,7 +99,7 @@ void CPWL_ListBox::DrawThisAppearance(CFX_RenderDevice* pDevice,
   CFX_FloatRect rcList = GetListRect();
   CFX_FloatRect rcClient = GetClientRect();
 
-  for (int32_t i = 0, sz = m_pList->GetCount(); i < sz; i++) {
+  for (int32_t i = 0, sz = m_pList->size(); i < sz; i++) {
     CFX_FloatRect rcItem = m_pList->GetItemRect(i);
     if (rcItem.bottom > rcPlate.top || rcItem.top < rcPlate.bottom)
       continue;
@@ -343,8 +343,8 @@ int32_t CPWL_ListBox::GetTopVisibleIndex() const {
   return m_pList->GetTopItem();
 }
 
-int32_t CPWL_ListBox::GetCount() const {
-  return m_pList->GetCount();
+int32_t CPWL_ListBox::size() const {
+  return m_pList->size();
 }
 
 int32_t CPWL_ListBox::FindNext(int32_t nIndex, wchar_t nChar) const {

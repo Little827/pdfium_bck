@@ -442,7 +442,7 @@ bool CPWL_ComboBox::SetPopup(bool bPopup) {
 
   float fBorderWidth = m_pList->GetBorderWidth() * 2;
   float fPopupMin = 0.0f;
-  if (m_pList->GetCount() > 3)
+  if (m_pList->size() > 3)
     fPopupMin = m_pList->GetFirstHeight() * 3 + fBorderWidth;
   float fPopupMax = fListHeight + fBorderWidth;
 
@@ -502,7 +502,7 @@ bool CPWL_ComboBox::OnKeyDown(uint16_t nChar, uint32_t nFlag) {
       }
       return true;
     case FWL_VKEY_Down:
-      if (m_pList->GetCurSel() < m_pList->GetCount() - 1) {
+      if (m_pList->GetCurSel() < m_pList->size() - 1) {
 #ifdef PDF_ENABLE_XFA
         if (m_pFillerNotify) {
           if (m_pFillerNotify->OnPopupPreOpen(GetAttachedData(), nFlag))

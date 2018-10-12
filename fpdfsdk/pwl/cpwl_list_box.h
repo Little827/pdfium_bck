@@ -74,7 +74,7 @@ class CPWL_ListBox : public CPWL_Wnd {
   void SetCaret(int32_t nItemIndex);
   void SetHoverSel(bool bHoverSel);
 
-  int32_t GetCount() const;
+  int32_t size() const;
   bool IsMultipleSel() const;
   int32_t GetCaretIndex() const;
   int32_t GetCurSel() const;

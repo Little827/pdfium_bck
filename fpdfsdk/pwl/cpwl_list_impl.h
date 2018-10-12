@@ -83,7 +83,7 @@ class CPWL_ListCtrl {
 
   float GetFontSize() const { return m_fFontSize; }
   CPWL_EditImpl* GetItemEdit(int32_t nIndex) const;
-  int32_t GetCount() const;
+  int32_t size() const;
   bool IsItemSelected(int32_t nIndex) const;
   float GetFirstHeight() const;
   void SetMultipleSel(bool bMultiple) { m_bMultiple = bMultiple; }

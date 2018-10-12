@@ -231,7 +231,7 @@ void CPWL_ListCtrl::OnMouseMove(const CFX_PointF& point,
 
 void CPWL_ListCtrl::OnVK(int32_t nItemIndex, bool bShift, bool bCtrl) {
   if (IsMultipleSel()) {
-    if (nItemIndex >= 0 && nItemIndex < GetCount()) {
+    if (nItemIndex >= 0 && nItemIndex < size()) {
       if (bCtrl) {
       } else if (bShift) {
         m_aSelItems.DeselectAll();
@@ -267,7 +267,7 @@ void CPWL_ListCtrl::OnVK_LEFT(bool bShift, bool bCtrl) {
 }
 
 void CPWL_ListCtrl::OnVK_RIGHT(bool bShift, bool bCtrl) {
-  OnVK(GetCount() - 1, bShift, bCtrl);
+  OnVK(size() - 1, bShift, bCtrl);
 }
 
 void CPWL_ListCtrl::OnVK_HOME(bool bShift, bool bCtrl) {
@@ -275,7 +275,7 @@ void CPWL_ListCtrl::OnVK_HOME(bool bShift, bool bCtrl) {
 }
 
 void CPWL_ListCtrl::OnVK_END(bool bShift, bool bCtrl) {
-  OnVK(GetCount() - 1, bShift, bCtrl);
+  OnVK(size() - 1, bShift, bCtrl);
 }
 
 bool CPWL_ListCtrl::OnChar(uint16_t nChar, bool bShift, bool bCtrl) {
@@ -313,7 +313,7 @@ CFX_FloatRect CPWL_ListCtrl::GetItemRectInternal(int32_t nIndex) const {
 
 void CPWL_ListCtrl::AddString(const WideString& str) {
   AddItem(str);
-  ReArrange(GetCount() - 1);
+  ReArrange(size() - 1);
 }
 
 void CPWL_ListCtrl::SetMultipleSelect(int32_t nItemIndex, bool bSelected) {
@@ -572,7 +572,7 @@ CPWL_EditImpl* CPWL_ListCtrl::GetItemEdit(int32_t nIndex) const {
   return m_ListItems[nIndex]->GetEdit();
 }
 
-int32_t CPWL_ListCtrl::GetCount() const {
+int32_t CPWL_ListCtrl::size() const {
   return pdfium::CollectionSize<int32_t>(m_ListItems);
 }
 
