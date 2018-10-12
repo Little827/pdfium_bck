@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539360304 -0700\nnonce AP50N7b/b6TqnFN5uJGGLIJI9YfZ0rv0fJ5ue37FwG9ubvM7E9BbwKsJ88Ex8TX8CRIa5KSIdMyJ\n\n0000000000000000000000000000000000000000 865a5eb9ae40509889df55bc9de503b81fd44d12 refs/for/refs/heads/master%notify\u003dNONE,m\u003dfix_skia\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvAxjAACgkQqzYtYVpm\n/Xvmbwf/V56Wb3gZ62PfAb8QPofg+0j5zkpZ7hDEYTp4oMPe6QIR1i9DJf4sNvcx\n8N/X+AZP4wWIvoTk610N/xzltzY5GtzpS56/kOQXekXQe7/jAGkt/4EDcZX9jXtv\nS0E79NmVAEa91MsU/wzJYha/gaIPNBjYVxktvh2N1pA7RTCgKnLSZMPi6fedWc6j\n2bKUgpU6R4umHIgC5QInn7PvqvFOAK106RZ2w7ShQ8stJfFAVDc4VNdkSqYZ/X7j\nQg4Y3YE/qL+M0d1HhybLk2eXuneM6LlQQCoXQY74M+/UnuAZgD9Bwo2flgva31x1\nvojSjVCuGsHY7LGehuijXUyBPUgfUw\u003d\u003d\n\u003dqMDU\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea85a01b_643ae064",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2018-10-12T18:00:22Z",
+      "side": 1,
+      "message": "This references freetype from outside pdfium. What does pdf_bundle_freetype mean?",
+      "revId": "865a5eb9ae40509889df55bc9de503b81fd44d12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
