@@ -265,8 +265,8 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
   rcMerger.right = std::min(rcMerger.right, rcOriginalMB.right);
   rcMerger.bottom = std::max(rcMerger.bottom, rcOriginalMB.bottom);
   rcMerger.top = std::min(rcMerger.top, rcOriginalMB.top);
-  if (pPageDict->KeyExist("ArtBox"))
-    rcOriginalCB = pPageDict->GetRectFor("ArtBox");
+  if (pPageDict->KeyExist(pdfium::page_object::kArtBox))
+    rcOriginalCB = pPageDict->GetRectFor(pdfium::page_object::kArtBox);
   else
     rcOriginalCB = rcOriginalMB;
 
@@ -274,7 +274,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
     pPageDict->SetRectFor(pdfium::page_object::kMediaBox, rcOriginalMB);
 
   if (!rcOriginalCB.IsEmpty())
-    pPageDict->SetRectFor("ArtBox", rcOriginalCB);
+    pPageDict->SetRectFor(pdfium::page_object::kArtBox, rcOriginalCB);
 
   CPDF_Dictionary* pRes =
       pPageDict->GetDictFor(pdfium::page_object::kResources);

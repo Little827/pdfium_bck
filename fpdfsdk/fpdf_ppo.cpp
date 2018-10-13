@@ -186,8 +186,8 @@ CFX_FloatRect GetCropBox(const CPDF_Dictionary* pPageDict) {
 }
 
 CFX_FloatRect GetTrimBox(const CPDF_Dictionary* pPageDict) {
-  if (pPageDict->KeyExist("TrimBox"))
-    return pPageDict->GetRectFor("TrimBox");
+  if (pPageDict->KeyExist(pdfium::page_object::kTrimBox))
+    return pPageDict->GetRectFor(pdfium::page_object::kTrimBox);
   return GetCropBox(pPageDict);
 }
 
