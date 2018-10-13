@@ -719,3 +719,21 @@ jumbo_source_set("parser") {
   ]
   visibility = [ "../../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cxfa_document_parser_unittest.cpp",
+    "cxfa_localevalue_unittest.cpp",
+    "cxfa_node_unittest.cpp",
+    "cxfa_nodeiteratortemplate_unittest.cpp",
+    "cxfa_xmllocale_unittest.cpp",
+    "xfa_utils_unittest.cpp",
+  ]
+  configs += [ "../../../:pdfium_core_config" ]
+  deps = [
+    ":parser",
+    "../../../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../../../:pdfium_unittests" ]
+}

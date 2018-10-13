@@ -27,3 +27,17 @@ jumbo_source_set("fde") {
   ]
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cfde_texteditengine_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fde",
+    "../../:pdfium_unittest_deps",
+    "../fgas",
+  ]
+  visibility = [ "../../:pdfium_unittests" ]
+}

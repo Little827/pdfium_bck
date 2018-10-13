@@ -20,6 +20,7 @@ jumbo_source_set("fpdfxfa") {
   ]
   deps = [
     "../../:pdfium_public_headers",
+    "../../:pdfium_public_headers",
     "../../core/fpdfapi/page",
     "../../core/fpdfapi/parser",
     "../../core/fxcrt",

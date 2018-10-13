@@ -25,3 +25,16 @@ jumbo_source_set("fpdftext") {
   ]
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cpdf_linkextract_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fpdftext",
+    "../../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../../:pdfium_unittests" ]
+}

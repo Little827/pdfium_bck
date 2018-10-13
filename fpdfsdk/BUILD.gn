@@ -88,3 +88,22 @@ jumbo_source_set("fpdfsdk") {
     allow_circular_includes_from += [ "fpdfxfa" ]
   }
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "fpdf_catalog_unittest.cpp",
+    "fpdf_doc_unittest.cpp",
+    "fpdf_editimg_unittest.cpp",
+  ]
+  configs += [ "../:pdfium_core_config" ]
+  deps = [
+    ":fpdfsdk",
+    "../:pdfium_public_headers",
+    "../:pdfium_unittest_deps",
+    "../core/fpdfapi",
+    "../core/fpdfapi/parser",
+    "../core/fpdfdoc",
+  ]
+  visibility = [ "../:pdfium_unittests" ]
+}

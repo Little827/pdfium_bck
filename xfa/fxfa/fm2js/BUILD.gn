@@ -30,3 +30,19 @@ jumbo_source_set("fm2js") {
   ]
   visibility = [ "../../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cxfa_fmexpression_unittest.cpp",
+    "cxfa_fmlexer_unittest.cpp",
+    "cxfa_fmparser_unittest.cpp",
+    "cxfa_fmsimpleexpression_unittest.cpp",
+  ]
+  configs += [ "../../../:pdfium_core_config" ]
+  deps = [
+    ":fm2js",
+    "../../../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../../../:pdfium_unittests" ]
+}

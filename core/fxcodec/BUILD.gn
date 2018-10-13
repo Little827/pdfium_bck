@@ -124,3 +124,28 @@ jumbo_source_set("fxcodec") {
   }
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "codec/fx_codec_a85_unittest.cpp",
+    "codec/fx_codec_jpx_unittest.cpp",
+    "codec/fx_codec_rle_unittest.cpp",
+    "jbig2/JBig2_BitStream_unittest.cpp",
+    "jbig2/JBig2_Image_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fxcodec",
+    "../../:pdfium_unittest_deps",
+    "../fpdfapi/parser",
+  ]
+  visibility = [ "../../:pdfium_unittests" ]
+
+  if (pdf_enable_xfa_gif) {
+    sources += [
+      "gif/cfx_gifcontext_unittest.cpp",
+      "gif/cfx_lzwdecompressor_unittest.cpp",
+    ]
+  }
+}

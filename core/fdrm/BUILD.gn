@@ -18,3 +18,16 @@ jumbo_source_set("fdrm") {
   ]
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "fx_crypt_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fdrm",
+    "../../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../../:pdfium_unittests" ]
+}
