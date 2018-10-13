@@ -23,6 +23,11 @@ jumbo_source_set("edit") {
   configs += [ "../../../:pdfium_core_config" ]
   deps = [
     "../../fxcrt",
+    "../font",
+    "../page",
+    "../parser",
+    "//third_party:skia_shared",
   ]
+  allow_circular_includes_from = [ "../parser" ]
   visibility = [ "../../../*" ]
 }
