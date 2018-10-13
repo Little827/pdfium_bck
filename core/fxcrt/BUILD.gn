@@ -89,7 +89,7 @@ jumbo_source_set("fxcrt") {
     "../../fpdfsdk/*",
     "../../fxbarcode:*",
     "../../fxjs:*",
-    "../../third_party:*",
+    "../../third_party:fx_agg",
     "../../xfa/*",
   ]
   deps = [
