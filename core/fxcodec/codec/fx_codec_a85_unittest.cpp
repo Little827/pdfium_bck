@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 #include <limits>
+#include <memory>
 
 #include "core/fxcodec/codec/ccodec_basicmodule.h"
 #include "core/fxcodec/fx_codec.h"
@@ -12,7 +13,7 @@
 
 TEST(fxcodec, A85TestBadInputs) {
   const uint8_t src_buf[] = {1, 2, 3, 4};
-  uint8_t* dest_buf = nullptr;
+  std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
   uint32_t dest_size = 0;
 
   CCodec_BasicModule* pEncoders = CCodec_ModuleMgr().GetBasicModule();
@@ -28,7 +29,7 @@ TEST(fxcodec, A85TestBadInputs) {
 TEST(fxcodec, A85TestBasic) {
   // Make sure really big values don't break.
   const uint8_t src_buf[] = {1, 2, 3, 4, 255, 255, 255, 255};
-  uint8_t* dest_buf = nullptr;
+  std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
   uint32_t dest_size = 0;
 
   CCodec_BasicModule* pEncoders = CCodec_ModuleMgr().GetBasicModule();
@@ -44,15 +45,14 @@ TEST(fxcodec, A85TestBasic) {
 
   // Check the output
   for (uint32_t i = 0; i < 12; i++)
-    EXPECT_EQ(expected_out[i], dest_buf[i]) << " at " << i;
-  FX_Free(dest_buf);
+    EXPECT_EQ(expected_out[i], dest_buf.get()[i]) << " at " << i;
 }
 
 // Leftover bytes.
 TEST(fxcodec, A85TestLeftoverBytes) {
   // 1 Leftover Byte:
   const uint8_t src_buf_1leftover[] = {1, 2, 3, 4, 255};
-  uint8_t* dest_buf = nullptr;
+  std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
   uint32_t dest_size = 0;
 
   CCodec_BasicModule* pEncoders = CCodec_ModuleMgr().GetBasicModule();
@@ -65,12 +65,11 @@ TEST(fxcodec, A85TestLeftoverBytes) {
 
   // Check the output
   for (uint32_t i = 0; i < 9; i++)
-    EXPECT_EQ(expected_out_1leftover[i], dest_buf[i]) << " at " << i;
-  FX_Free(dest_buf);
+    EXPECT_EQ(expected_out_1leftover[i], dest_buf.get()[i]) << " at " << i;
 
   // 2 Leftover bytes:
   const uint8_t src_buf_2leftover[] = {1, 2, 3, 4, 255, 254};
-  dest_buf = nullptr;
+  dest_buf.reset();
   dest_size = 0;
   // Should succeed
   EXPECT_TRUE(pEncoders->A85Encode(src_buf_2leftover, &dest_buf, &dest_size));
@@ -80,12 +79,11 @@ TEST(fxcodec, A85TestLeftoverBytes) {
 
   // Check the output
   for (uint32_t i = 0; i < 10; i++)
-    EXPECT_EQ(expected_out_2leftover[i], dest_buf[i]) << " at " << i;
-  FX_Free(dest_buf);
+    EXPECT_EQ(expected_out_2leftover[i], dest_buf.get()[i]) << " at " << i;
 
   // 3 Leftover bytes:
   const uint8_t src_buf_3leftover[] = {1, 2, 3, 4, 255, 254, 253};
-  dest_buf = nullptr;
+  dest_buf.reset();
   dest_size = 0;
   // Should succeed
   EXPECT_TRUE(pEncoders->A85Encode(src_buf_3leftover, &dest_buf, &dest_size));
@@ -95,15 +93,14 @@ TEST(fxcodec, A85TestLeftoverBytes) {
 
   // Check the output
   for (uint32_t i = 0; i < 11; i++)
-    EXPECT_EQ(expected_out_3leftover[i], dest_buf[i]) << " at " << i;
-  FX_Free(dest_buf);
+    EXPECT_EQ(expected_out_3leftover[i], dest_buf.get()[i]) << " at " << i;
 }
 
 // Test all zeros comes through as "z".
 TEST(fxcodec, A85TestZeros) {
   // Make sure really big values don't break.
   const uint8_t src_buf[] = {1, 2, 3, 4, 0, 0, 0, 0};
-  uint8_t* dest_buf = nullptr;
+  std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
   uint32_t dest_size = 0;
 
   CCodec_BasicModule* pEncoders = CCodec_ModuleMgr().GetBasicModule();
@@ -118,12 +115,11 @@ TEST(fxcodec, A85TestZeros) {
 
   // Check the output
   for (uint32_t i = 0; i < 8; i++)
-    EXPECT_EQ(expected_out[i], dest_buf[i]) << " at " << i;
-  FX_Free(dest_buf);
+    EXPECT_EQ(expected_out[i], dest_buf.get()[i]) << " at " << i;
 
   // Should also work if it is at the start:
   const uint8_t src_buf_2[] = {0, 0, 0, 0, 1, 2, 3, 4};
-  dest_buf = nullptr;
+  dest_buf.reset();
   dest_size = 0;
 
   // Should succeed.
@@ -135,12 +131,11 @@ TEST(fxcodec, A85TestZeros) {
 
   // Check the output
   for (uint32_t i = 0; i < 8; i++)
-    EXPECT_EQ(expected_out_2[i], dest_buf[i]) << " at " << i;
-  FX_Free(dest_buf);
+    EXPECT_EQ(expected_out_2[i], dest_buf.get()[i]) << " at " << i;
 
   // Try with 2 leftover zero bytes. Make sure we don't get a "z".
   const uint8_t src_buf_3[] = {1, 2, 3, 4, 0, 0};
-  dest_buf = nullptr;
+  dest_buf.reset();
   dest_size = 0;
 
   // Should succeed.
@@ -153,8 +148,7 @@ TEST(fxcodec, A85TestZeros) {
 
   // Check the output
   for (uint32_t i = 0; i < 10; i++)
-    EXPECT_EQ(expected_out_leftover[i], dest_buf[i]) << " at " << i;
-  FX_Free(dest_buf);
+    EXPECT_EQ(expected_out_leftover[i], dest_buf.get()[i]) << " at " << i;
 }
 
 // Make sure we get returns in the expected locations.
@@ -175,7 +169,7 @@ TEST(fxcodec, A85TestLineBreaks) {
     src_buf[k + 2] = 3;
     src_buf[k + 3] = 4;
   }
-  uint8_t* dest_buf = nullptr;
+  std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
   uint32_t dest_size = 0;
 
   CCodec_BasicModule* pEncoders = CCodec_ModuleMgr().GetBasicModule();
@@ -190,10 +184,8 @@ TEST(fxcodec, A85TestLineBreaks) {
   ASSERT_EQ(166u, dest_size);
 
   // Check for the returns.
-  EXPECT_EQ(13, dest_buf[75]);
-  EXPECT_EQ(10, dest_buf[76]);
-  EXPECT_EQ(13, dest_buf[153]);
-  EXPECT_EQ(10, dest_buf[154]);
-
-  FX_Free(dest_buf);
+  EXPECT_EQ(13, dest_buf.get()[75]);
+  EXPECT_EQ(10, dest_buf.get()[76]);
+  EXPECT_EQ(13, dest_buf.get()[153]);
+  EXPECT_EQ(10, dest_buf.get()[154]);
 }
