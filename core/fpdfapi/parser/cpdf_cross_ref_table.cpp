@@ -5,6 +5,7 @@
 #include "core/fpdfapi/parser/cpdf_cross_ref_table.h"
 
 #include <utility>
+#include <vector>
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
@@ -153,9 +154,12 @@ void CPDF_CrossRefTable::UpdateTrailer(
   new_trailer->SetFor("XRefStm", trailer_->RemoveFor("XRefStm"));
   new_trailer->SetFor("Prev", trailer_->RemoveFor("Prev"));
 
-  for (auto it = new_trailer->begin(); it != new_trailer->end();) {
-    const ByteString key = it->first;
-    ++it;
-    trailer_->SetFor(key, new_trailer->RemoveFor(key));
+  std::vector<ByteString> keys;
+  {
+    CPDF_DictionaryLocker locker(new_trailer.get());
+    for (auto it = locker.begin(); it != locker.end(); ++it)
+      keys.push_back(it->first);
   }
+  for (const auto& key : keys)
+    trailer_->SetFor(key, new_trailer->RemoveFor(key));
 }
