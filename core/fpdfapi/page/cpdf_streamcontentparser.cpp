@@ -174,9 +174,10 @@ ByteStringView FindFullName(const AbbrPair* table,
 void ReplaceAbbr(CPDF_Object* pObj) {
   switch (pObj->GetType()) {
     case CPDF_Object::DICTIONARY: {
-      CPDF_Dictionary* pDict = pObj->AsDictionary();
       std::vector<AbbrReplacementOp> replacements;
-      for (const auto& it : *pDict) {
+      CPDF_Dictionary* pDict = pObj->AsDictionary();
+      CPDF_DictionaryLocker locker(pDict);
+      for (const auto& it : locker) {
         ByteString key = it.first;
         CPDF_Object* value = it.second.get();
         ByteStringView fullname = FindFullName(
