@@ -72,7 +72,8 @@ std::unique_ptr<CPDF_Object> CPDF_Dictionary::CloneNonCyclic(
     std::set<const CPDF_Object*>* pVisited) const {
   pVisited->insert(this);
   auto pCopy = pdfium::MakeUnique<CPDF_Dictionary>(m_pPool);
-  for (const auto& it : *this) {
+  CPDF_DictionaryLocker locker(this);
+  for (const auto& it : locker) {
     if (!pdfium::ContainsKey(*pVisited, it.second.get())) {
       std::set<const CPDF_Object*> visited(*pVisited);
       if (auto obj = it.second->CloneNonCyclic(bDirect, &visited))
@@ -197,6 +198,7 @@ bool CPDF_Dictionary::KeyExist(const ByteString& key) const {
 
 CPDF_Object* CPDF_Dictionary::SetFor(const ByteString& key,
                                      std::unique_ptr<CPDF_Object> pObj) {
+  CHECK(!IsLocked());
   if (!pObj) {
     m_Map.erase(key);
     return nullptr;
@@ -210,6 +212,7 @@ CPDF_Object* CPDF_Dictionary::SetFor(const ByteString& key,
 void CPDF_Dictionary::ConvertToIndirectObjectFor(
     const ByteString& key,
     CPDF_IndirectObjectHolder* pHolder) {
+  CHECK(!IsLocked());
   auto it = m_Map.find(key);
   if (it == m_Map.end() || it->second->IsReference())
     return;
@@ -219,6 +222,7 @@ void CPDF_Dictionary::ConvertToIndirectObjectFor(
 }
 
 std::unique_ptr<CPDF_Object> CPDF_Dictionary::RemoveFor(const ByteString& key) {
+  CHECK(!IsLocked());
   std::unique_ptr<CPDF_Object> result;
   auto it = m_Map.find(key);
   if (it != m_Map.end()) {
@@ -230,6 +234,7 @@ std::unique_ptr<CPDF_Object> CPDF_Dictionary::RemoveFor(const ByteString& key) {
 
 void CPDF_Dictionary::ReplaceKey(const ByteString& oldkey,
                                  const ByteString& newkey) {
+  CHECK(!IsLocked());
   auto old_it = m_Map.find(oldkey);
   if (old_it == m_Map.end())
     return;
@@ -273,7 +278,8 @@ bool CPDF_Dictionary::WriteTo(IFX_ArchiveStream* archive,
 
   const bool is_signature = CPDF_CryptoHandler::IsSignatureDictionary(this);
 
-  for (const auto& it : *this) {
+  CPDF_DictionaryLocker locker(this);
+  for (const auto& it : locker) {
     const ByteString& key = it.first;
     CPDF_Object* pValue = it.second.get();
     if (!archive->WriteString("/") ||
@@ -287,4 +293,15 @@ bool CPDF_Dictionary::WriteTo(IFX_ArchiveStream* archive,
     }
   }
   return archive->WriteString(">>");
+}
+
+CPDF_DictionaryLocker::CPDF_DictionaryLocker(const CPDF_Dictionary* pDictionary)
+    : m_pDictionary(pDictionary) {
+  if (m_pDictionary)
+    m_pDictionary->m_LockCount++;
+}
+
+CPDF_DictionaryLocker::~CPDF_DictionaryLocker() {
+  if (m_pDictionary)
+    m_pDictionary->m_LockCount--;
 }
