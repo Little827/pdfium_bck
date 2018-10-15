@@ -111,3 +111,20 @@ jumbo_source_set("page") {
   }
   visibility = [ "../../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cpdf_devicecs_unittest.cpp",
+    "cpdf_pageobjectholder_unittest.cpp",
+    "cpdf_psengine_unittest.cpp",
+    "cpdf_streamcontentparser_unittest.cpp",
+    "cpdf_streamparser_unittest.cpp",
+  ]
+  configs += [ "../../../:pdfium_core_config" ]
+  deps = [
+    ":page",
+    "../../../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../../../:*" ]
+}
