@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81eb4805_aef82a36",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T23:46:13Z",
+      "side": 1,
+      "message": "The second parameter can only be 0 or 1 with Acrobat.",
+      "revId": "5648a44504c63ff969aadd4ea1d94e5c0e4f652d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de51df2a_43143241",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T23:46:13Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "5648a44504c63ff969aadd4ea1d94e5c0e4f652d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93abbd9f_5578363c",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T23:46:13Z",
+      "side": 1,
+      "message": "First and third parameters are booleans.",
+      "revId": "5648a44504c63ff969aadd4ea1d94e5c0e4f652d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8509a68a_92345c70",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T23:46:13Z",
+      "side": 1,
+      "message": "First param should be \"AVG\", \"SUM\", etc. Second param needs to be an array of fields.",
+      "revId": "5648a44504c63ff969aadd4ea1d94e5c0e4f652d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be85bdc9_fefd6bcb",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T23:46:13Z",
+      "side": 1,
+      "message": "AFTime_KeystrokeEx may not actually exist.",
+      "revId": "5648a44504c63ff969aadd4ea1d94e5c0e4f652d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
