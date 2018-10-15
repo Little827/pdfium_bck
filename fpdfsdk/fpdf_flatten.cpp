@@ -251,7 +251,6 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
   if (iRet == FLATTEN_NOTHINGTODO || iRet == FLATTEN_FAIL)
     return iRet;
 
-  CFX_FloatRect rcOriginalCB;
   CFX_FloatRect rcMerger = CalculateRect(&RectArray);
   CFX_FloatRect rcOriginalMB =
       pPageDict->GetRectFor(pdfium::page_object::kMediaBox);
@@ -261,26 +260,26 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
   if (rcOriginalMB.IsEmpty())
     rcOriginalMB = CFX_FloatRect(0.0f, 0.0f, 612.0f, 792.0f);
 
+  CFX_FloatRect rcOriginalCB;
+  if (pPageDict->KeyExist(pdfium::page_object::kCropBox))
+    rcOriginalCB = pPageDict->GetRectFor(pdfium::page_object::kCropBox);
+  if (rcOriginalCB.IsEmpty())
+    rcOriginalCB = rcOriginalMB;
+
   rcMerger.left = std::max(rcMerger.left, rcOriginalMB.left);
   rcMerger.right = std::min(rcMerger.right, rcOriginalMB.right);
   rcMerger.bottom = std::max(rcMerger.bottom, rcOriginalMB.bottom);
   rcMerger.top = std::min(rcMerger.top, rcOriginalMB.top);
-  if (pPageDict->KeyExist("ArtBox"))
-    rcOriginalCB = pPageDict->GetRectFor("ArtBox");
-  else
-    rcOriginalCB = rcOriginalMB;
 
-  if (!rcOriginalMB.IsEmpty())
     pPageDict->SetRectFor(pdfium::page_object::kMediaBox, rcOriginalMB);
 
-  if (!rcOriginalCB.IsEmpty())
-    pPageDict->SetRectFor("ArtBox", rcOriginalCB);
+    pPageDict->SetRectFor(pdfium::page_object::kCropBox, rcOriginalCB);
 
-  CPDF_Dictionary* pRes =
-      pPageDict->GetDictFor(pdfium::page_object::kResources);
-  if (!pRes) {
-    pRes =
-        pPageDict->SetNewFor<CPDF_Dictionary>(pdfium::page_object::kResources);
+    CPDF_Dictionary* pRes =
+        pPageDict->GetDictFor(pdfium::page_object::kResources);
+    if (!pRes) {
+      pRes = pPageDict->SetNewFor<CPDF_Dictionary>(
+          pdfium::page_object::kResources);
   }
 
   CPDF_Stream* pNewXObject = pDocument->NewIndirect<CPDF_Stream>(
@@ -314,7 +313,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
     pNewOXbjectDic->SetNewFor<CPDF_Name>("Type", "XObject");
     pNewOXbjectDic->SetNewFor<CPDF_Name>("Subtype", "Form");
     pNewOXbjectDic->SetNewFor<CPDF_Number>("FormType", 1);
-    CFX_FloatRect rcBBox = pPageDict->GetRectFor(pdfium::page_object::kArtBox);
+    CFX_FloatRect rcBBox = rcOriginalCB;
     pNewOXbjectDic->SetRectFor("BBox", rcBBox);
   }
 
