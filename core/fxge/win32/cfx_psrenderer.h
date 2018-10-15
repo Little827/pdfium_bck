@@ -75,6 +75,9 @@ class CFX_PSRenderer {
                 uint32_t color);
 
  private:
+  bool DrawDIBits1bpp(const RetainPtr<CFX_DIBBase>& pSource,
+                      uint32_t color,
+                      std::ostringstream* buf);
   void OutputPath(const CFX_PathData* pPathData,
                   const CFX_Matrix* pObject2Device);
   void SetGraphState(const CFX_GraphStateData* pGraphState);
@@ -87,17 +90,17 @@ class CFX_PSRenderer {
   void WritePSBinary(const uint8_t* data, int len);
   void WriteToStream(std::ostringstream* stringStream);
 
+  bool m_bInited = false;
+  bool m_bCmykOutput;
+  bool m_bGraphStateSet = false;
+  bool m_bColorSet = false;
   RetainPtr<IFX_WriteStream> m_pStream;
   int m_PSLevel;
   CFX_GraphStateData m_CurGraphState;
-  bool m_bGraphStateSet;
-  bool m_bCmykOutput;
-  bool m_bColorSet;
   uint32_t m_LastColor;
   FX_RECT m_ClipBox;
   std::vector<std::unique_ptr<CPSFont>> m_PSFontList;
   std::vector<FX_RECT> m_ClipBoxStack;
-  bool m_bInited;
 };
 
 #endif  // CORE_FXGE_WIN32_CFX_PSRENDERER_H_

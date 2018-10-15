@@ -99,13 +99,9 @@ class CPSFont {
   PSGlyph m_Glyphs[256];
 };
 
-CFX_PSRenderer::CFX_PSRenderer()
-    : m_pStream(nullptr),
-      m_bGraphStateSet(false),
-      m_bColorSet(false),
-      m_bInited(false) {}
+CFX_PSRenderer::CFX_PSRenderer() = default;
 
-CFX_PSRenderer::~CFX_PSRenderer() {}
+CFX_PSRenderer::~CFX_PSRenderer() = default;
 
 void CFX_PSRenderer::Init(const RetainPtr<IFX_WriteStream>& pStream,
                           int pslevel,
@@ -172,6 +168,49 @@ void CFX_PSRenderer::RestoreState(bool bKeepSaved) {
   m_ClipBox = m_ClipBoxStack.back();
   if (!bKeepSaved)
     m_ClipBoxStack.pop_back();
+}
+
+bool CFX_PSRenderer::DrawDIBits1bpp(const RetainPtr<CFX_DIBBase>& pSource,
+                                    uint32_t color,
+                                    std::ostringstream* buf) {
+  int width = pSource->GetWidth();
+  int height = pSource->GetHeight();
+
+  int pitch = (width + 7) / 8;
+  uint32_t src_size = height * pitch;
+  std::unique_ptr<uint8_t, FxFreeDeleter> src_buf(FX_Alloc(uint8_t, src_size));
+  for (int row = 0; row < height; row++) {
+    const uint8_t* src_scan = pSource->GetScanline(row);
+    memcpy(src_buf.get() + row * pitch, src_scan, pitch);
+  }
+
+  std::unique_ptr<uint8_t, FxFreeDeleter> output_buf;
+  uint32_t output_size;
+  bool compressed = FaxCompressData(std::move(src_buf), width, height,
+                                    &output_buf, &output_size);
+  if (pSource->IsAlphaMask()) {
+    SetColor(color);
+    m_bColorSet = false;
+    *buf << " true[";
+  } else {
+    *buf << " 1[";
+  }
+  *buf << width << " 0 0 -" << height << " 0 " << height
+       << "]currentfile/ASCII85Decode filter ";
+
+  if (compressed) {
+    *buf << "<</K -1/EndOfBlock false/Columns " << width << "/Rows " << height
+         << ">>/CCITTFaxDecode filter ";
+  }
+  if (pSource->IsAlphaMask())
+    *buf << "iM\n";
+  else
+    *buf << "false 1 colorimage\n";
+
+  WriteToStream(buf);
+  WritePSBinary(output_buf.get(), output_size);
+  m_pStream->WriteString("\nQ\n");
+  return true;
 }
 
 void CFX_PSRenderer::OutputPath(const CFX_PathData* pPathData,
@@ -345,9 +384,8 @@ bool CFX_PSRenderer::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                int left,
                                int top) {
   StartRendering();
-  CFX_Matrix matrix((float)(pSource->GetWidth()), 0.0f, 0.0f,
-                    -(float)(pSource->GetHeight()), (float)(left),
-                    (float)(top + pSource->GetHeight()));
+  CFX_Matrix matrix((pSource->GetWidth()), 0.0f, 0.0f, -pSource->GetHeight(),
+                    left, top + pSource->GetHeight());
   return DrawDIBits(pSource, color, &matrix, 0);
 }
 
@@ -359,8 +397,8 @@ bool CFX_PSRenderer::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                    int dest_height,
                                    uint32_t flags) {
   StartRendering();
-  CFX_Matrix matrix((float)(dest_width), 0.0f, 0.0f, (float)(-dest_height),
-                    (float)(dest_left), (float)(dest_top + dest_height));
+  CFX_Matrix matrix(dest_width, 0.0f, 0.0f, -dest_height, dest_left,
+                    dest_top + dest_height);
   return DrawDIBits(pSource, color, &matrix, flags);
 }
 
@@ -390,121 +428,87 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   int height = pSource->GetHeight();
   buf << width << " " << height;
 
-  if (pSource->GetBPP() == 1 && !pSource->GetPalette()) {
-    int pitch = (width + 7) / 8;
-    uint32_t src_size = height * pitch;
-    std::unique_ptr<uint8_t, FxFreeDeleter> src_buf(
-        FX_Alloc(uint8_t, src_size));
-    for (int row = 0; row < height; row++) {
-      const uint8_t* src_scan = pSource->GetScanline(row);
-      memcpy(src_buf.get() + row * pitch, src_scan, pitch);
-    }
+  if (pSource->GetBPP() == 1 && !pSource->GetPalette())
+    return DrawDIBits1bpp(pSource, color, &buf);
 
-    std::unique_ptr<uint8_t, FxFreeDeleter> output_buf;
-    uint32_t output_size;
-    bool compressed = FaxCompressData(std::move(src_buf), width, height,
-                                      &output_buf, &output_size);
-    if (pSource->IsAlphaMask()) {
-      SetColor(color);
-      m_bColorSet = false;
-      buf << " true[";
-    } else {
-      buf << " 1[";
-    }
-    buf << width << " 0 0 -" << height << " 0 " << height
-        << "]currentfile/ASCII85Decode filter ";
-
-    if (compressed) {
-      buf << "<</K -1/EndOfBlock false/Columns " << width << "/Rows " << height
-          << ">>/CCITTFaxDecode filter ";
-    }
-    if (pSource->IsAlphaMask())
-      buf << "iM\n";
-    else
-      buf << "false 1 colorimage\n";
-
-    WriteToStream(&buf);
-    WritePSBinary(output_buf.get(), output_size);
-  } else {
-    CFX_DIBExtractor source_extractor(pSource);
-    RetainPtr<CFX_DIBBase> pConverted = source_extractor.GetBitmap();
-    if (!pConverted)
-      return false;
-    switch (pSource->GetFormat()) {
-      case FXDIB_1bppRgb:
-      case FXDIB_Rgb32:
+  CFX_DIBExtractor source_extractor(pSource);
+  RetainPtr<CFX_DIBBase> pConverted = source_extractor.GetBitmap();
+  if (!pConverted)
+    return false;
+  switch (pSource->GetFormat()) {
+    case FXDIB_1bppRgb:
+    case FXDIB_Rgb32:
+      pConverted = pConverted->CloneConvert(FXDIB_Rgb);
+      break;
+    case FXDIB_8bppRgb:
+      if (pSource->GetPalette()) {
         pConverted = pConverted->CloneConvert(FXDIB_Rgb);
-        break;
-      case FXDIB_8bppRgb:
-        if (pSource->GetPalette()) {
-          pConverted = pConverted->CloneConvert(FXDIB_Rgb);
-        }
-        break;
-      case FXDIB_1bppCmyk:
-        pConverted = pConverted->CloneConvert(FXDIB_Cmyk);
-        break;
-      case FXDIB_8bppCmyk:
-        if (pSource->GetPalette()) {
-          pConverted = pConverted->CloneConvert(FXDIB_Cmyk);
-        }
-        break;
-      default:
-        break;
-    }
-    if (!pConverted) {
-      m_pStream->WriteString("\nQ\n");
-      return false;
-    }
-
-    int bpp = pConverted->GetBPP() / 8;
-    uint8_t* output_buf = nullptr;
-    size_t output_size = 0;
-    const char* filter = nullptr;
-    if ((m_PSLevel == 2 || flags & FXRENDER_IMAGE_LOSSY) &&
-        CCodec_JpegModule::JpegEncode(pConverted, &output_buf, &output_size)) {
-      filter = "/DCTDecode filter ";
-    }
-    if (!filter) {
-      int src_pitch = width * bpp;
-      output_size = height * src_pitch;
-      output_buf = FX_Alloc(uint8_t, output_size);
-      for (int row = 0; row < height; row++) {
-        const uint8_t* src_scan = pConverted->GetScanline(row);
-        uint8_t* dest_scan = output_buf + row * src_pitch;
-        if (bpp == 3) {
-          for (int col = 0; col < width; col++) {
-            *dest_scan++ = src_scan[2];
-            *dest_scan++ = src_scan[1];
-            *dest_scan++ = *src_scan;
-            src_scan += 3;
-          }
-        } else {
-          memcpy(dest_scan, src_scan, src_pitch);
-        }
       }
-      uint8_t* compressed_buf;
-      uint32_t compressed_size;
-      PSCompressData(m_PSLevel, output_buf, output_size, &compressed_buf,
-                     &compressed_size, &filter);
-      if (output_buf != compressed_buf)
-        FX_Free(output_buf);
-
-      output_buf = compressed_buf;
-      output_size = compressed_size;
-    }
-    buf << " 8[";
-    buf << width << " 0 0 -" << height << " 0 " << height << "]";
-    buf << "currentfile/ASCII85Decode filter ";
-    if (filter)
-      buf << filter;
-
-    buf << "false " << bpp;
-    buf << " colorimage\n";
-    WriteToStream(&buf);
-
-    WritePSBinary(output_buf, output_size);
-    FX_Free(output_buf);
+      break;
+    case FXDIB_1bppCmyk:
+      pConverted = pConverted->CloneConvert(FXDIB_Cmyk);
+      break;
+    case FXDIB_8bppCmyk:
+      if (pSource->GetPalette()) {
+        pConverted = pConverted->CloneConvert(FXDIB_Cmyk);
+      }
+      break;
+    default:
+      break;
   }
+  if (!pConverted) {
+    m_pStream->WriteString("\nQ\n");
+    return false;
+  }
+
+  int bpp = pConverted->GetBPP() / 8;
+  uint8_t* output_buf = nullptr;
+  size_t output_size = 0;
+  const char* filter = nullptr;
+  if ((m_PSLevel == 2 || flags & FXRENDER_IMAGE_LOSSY) &&
+      CCodec_JpegModule::JpegEncode(pConverted, &output_buf, &output_size)) {
+    filter = "/DCTDecode filter ";
+  }
+  if (!filter) {
+    int src_pitch = width * bpp;
+    output_size = height * src_pitch;
+    output_buf = FX_Alloc(uint8_t, output_size);
+    for (int row = 0; row < height; row++) {
+      const uint8_t* src_scan = pConverted->GetScanline(row);
+      uint8_t* dest_scan = output_buf + row * src_pitch;
+      if (bpp == 3) {
+        for (int col = 0; col < width; col++) {
+          *dest_scan++ = src_scan[2];
+          *dest_scan++ = src_scan[1];
+          *dest_scan++ = *src_scan;
+          src_scan += 3;
+        }
+      } else {
+        memcpy(dest_scan, src_scan, src_pitch);
+      }
+    }
+    uint8_t* compressed_buf;
+    uint32_t compressed_size;
+    PSCompressData(m_PSLevel, output_buf, output_size, &compressed_buf,
+                   &compressed_size, &filter);
+    if (output_buf != compressed_buf)
+      FX_Free(output_buf);
+
+    output_buf = compressed_buf;
+    output_size = compressed_size;
+  }
+  buf << " 8[";
+  buf << width << " 0 0 -" << height << " 0 " << height << "]";
+  buf << "currentfile/ASCII85Decode filter ";
+  if (filter)
+    buf << filter;
+
+  buf << "false " << bpp;
+  buf << " colorimage\n";
+  WriteToStream(&buf);
+
+  WritePSBinary(output_buf, output_size);
+  FX_Free(output_buf);
   m_pStream->WriteString("\nQ\n");
   return true;
 }
