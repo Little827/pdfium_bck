@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60f74b9d_ea12f1b9",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T21:26:14Z",
+      "side": 1,
+      "message": "I think this is suppose to take a string.",
+      "revId": "7bf07ecd7a2d5598bec5915049a26257ca42b12f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
