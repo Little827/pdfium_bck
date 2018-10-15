@@ -23,6 +23,30 @@
       "revId": "59fef1908b4498095eea00ba280526cdc638281a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1846ad7b_2730c07e",
+        "filename": "testing/test.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T22:33:06Z",
+      "side": 1,
+      "message": "Some other existing GN files seem to use it for internal variables. It should not conflict with anything else, since GN variables generally do not have the leading underscore.",
+      "parentUuid": "ff962209_e82518e2",
+      "range": {
+        "startLine": 290,
+        "startChar": 4,
+        "endLine": 290,
+        "endChar": 5
+      },
+      "revId": "59fef1908b4498095eea00ba280526cdc638281a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
