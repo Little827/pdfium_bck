@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539372168 -0700\nnonce AP50N7btQ7MwOUM/GASgQe2X1Pj236Qs9dKXLKHmfKItwUazliWkxIS1jI/Fb/GrPrbQ5WSpdpBw\n\n0000000000000000000000000000000000000000 81a0da133c8ef08b1d721025fe30f78168e5d370 refs/for/refs/heads/master%wip,m\u003dInitial_upload\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvA9IgACgkQqzYtYVpm\n/Xsc5gf/dGxmFYI7LcXECRAKGjR9Tic4Fcm3hsEY0SU3VCNN8+q17D1V7W1XsQ2N\njQGpNBqIM8MHu5we0cXLFmiT76qT93ov8J+z7m8YzgsNvQVJMfns38jA/0zQ2Wq+\n+FJYOvHhLudFHacvQkh7YeY/L6ihP5F9LBP8i4nTvCKaFK3Br4tNejPidH9JcNXK\nvgjERdTN4qMKZgqM2PNDy9tfS9+y7F7b5LxD9ziWhM8JcTOpx4J+rF9YhQDSyj6D\n4ctaImIvv01nS7dnuHjCHVdzdaXtLx1C8kwy3fnBy3oyabUSDTmRikRIz2EPtANa\ng944E25HewnIG6UaW4DefEozJ28ArA\u003d\u003d\n\u003dYXqk\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "af7f2b83_be2652a4",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-15T17:07:47Z",
+      "side": 1,
+      "message": "nit: local not needed?",
+      "range": {
+        "startLine": 216,
+        "startChar": 23,
+        "endLine": 216,
+        "endChar": 45
+      },
+      "revId": "81a0da133c8ef08b1d721025fe30f78168e5d370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a617c099_170ece1f",
+        "filename": "fpdfsdk/fpdf_save.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-15T17:07:47Z",
+      "side": 1,
+      "message": "nit: local not needed since const method?",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "81a0da133c8ef08b1d721025fe30f78168e5d370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab40c52e_8b7e5f4a",
+        "filename": "fpdfsdk/fpdf_save.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-15T17:07:47Z",
+      "side": 1,
+      "message": "underflows if size \u003d\u003d 0.\n\nSince we\u0027re doing i + 1 computations in the body of the loop, maybe we want to do\n  for (size_t i \u003d 1; i \u003c size; ++i) {\n    const CPDF_Object* pPDFObj \u003d pArray-\u003eGetObjectAt(i - 1);\n    ...\n  if (pPDFObj-\u003eGetString() \u003d\u003d \"form\")\t\n      iFormIndex \u003d i;\n  else if (pPDFObj-\u003eGetString() \u003d\u003d \"datasets\")\n      iDataSetsIndex \u003d i;",
+      "range": {
+        "startLine": 85,
+        "startChar": 24,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "81a0da133c8ef08b1d721025fe30f78168e5d370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1588e4c3_3b1e753c",
+        "filename": "fpdfsdk/fpdf_save.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-15T17:07:47Z",
+      "side": 1,
+      "message": "Maybe this should be a local since getstring might do some work?",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "81a0da133c8ef08b1d721025fe30f78168e5d370",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
