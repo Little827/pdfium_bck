@@ -70,6 +70,30 @@
       "revId": "dee25119008a39e2ee360c5c46d9ba18d7a340b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21604656_8ecde9a9",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T18:21:20Z",
+      "side": 0,
+      "message": "I don\u0027t understand what was done here.",
+      "parentUuid": "1dc1d3e3_6463cfaa",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 72
+      },
+      "revId": "dee25119008a39e2ee360c5c46d9ba18d7a340b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

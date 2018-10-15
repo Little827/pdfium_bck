@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3eeab6d9_bda67d6a",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T18:21:20Z",
+      "side": 1,
+      "message": "We don\u0027t need |rcBBox|.",
+      "revId": "63b90045e3825bddd616431e619d36a23f55f540",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
