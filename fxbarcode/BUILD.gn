@@ -142,3 +142,22 @@ jumbo_source_set("fxbarcode") {
   configs += [ "../:pdfium_core_config" ]
   visibility = [ "../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "oned/BC_OnedCodaBarWriter_unittest.cpp",
+    "oned/BC_OnedCode128Writer_unittest.cpp",
+    "oned/BC_OnedCode39Writer_unittest.cpp",
+    "oned/BC_OnedEAN13Writer_unittest.cpp",
+    "oned/BC_OnedEAN8Writer_unittest.cpp",
+    "oned/BC_OnedUPCAWriter_unittest.cpp",
+    "pdf417/BC_PDF417HighLevelEncoder_unittest.cpp",
+  ]
+  configs += [ "../:pdfium_core_config" ]
+  deps = [
+    ":fxbarcode",
+    "../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../:*" ]
+}

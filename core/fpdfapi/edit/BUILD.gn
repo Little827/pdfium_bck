@@ -31,3 +31,20 @@ jumbo_source_set("edit") {
   allow_circular_includes_from = [ "../parser" ]
   visibility = [ "../../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cpdf_pagecontentgenerator_unittest.cpp",
+  ]
+  configs += [ "../../../:pdfium_core_config" ]
+  deps = [
+    ":edit",
+    "../",
+    "../../../:pdfium_unittest_deps",
+    "../font",
+    "../page",
+    "../parser",
+  ]
+  visibility = [ "../../../:*" ]
+}

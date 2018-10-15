@@ -135,3 +135,17 @@ jumbo_source_set("fwl") {
   ]
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cfx_barcode_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fwl",
+    "../../:pdfium_unittest_deps",
+    "../../core/fxge",
+  ]
+  visibility = [ "../../:*" ]
+}

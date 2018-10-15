@@ -175,3 +175,19 @@ jumbo_source_set("fxge") {
 
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "dib/cfx_dibitmap_unittest.cpp",
+    "dib/cstretchengine_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fxge",
+    "../../:pdfium_unittest_deps",
+    "../fpdfapi/parser",
+    "../fpdfapi/render",
+  ]
+  visibility = [ "../../:*" ]
+}

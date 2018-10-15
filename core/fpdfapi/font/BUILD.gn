@@ -54,3 +54,17 @@ jumbo_source_set("font") {
   ]
   visibility = [ "../../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cpdf_cmapparser_unittest.cpp",
+    "cpdf_tounicodemap_unittest.cpp",
+  ]
+  configs += [ "../../../:pdfium_core_config" ]
+  deps = [
+    ":font",
+    "../../../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../../../:*" ]
+}
