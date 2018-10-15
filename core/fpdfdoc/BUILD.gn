@@ -99,3 +99,22 @@ jumbo_source_set("fpdfdoc") {
   ]
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cpdf_defaultappearance_unittest.cpp",
+    "cpdf_dest_unittest.cpp",
+    "cpdf_filespec_unittest.cpp",
+    "cpdf_formfield_unittest.cpp",
+    "cpdf_metadata_unittest.cpp",
+    "cpdf_nametree_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fpdfdoc",
+    "../../:pdfium_unittest_deps",
+    "../fpdfapi/parser",
+  ]
+  visibility = [ "../../:pdfium_unittests" ]
+}

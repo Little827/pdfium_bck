@@ -55,3 +55,21 @@ jumbo_source_set("fgas") {
     ]
   }
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "crt/cfgas_formatstring_unittest.cpp",
+    "layout/cfx_rtfbreak_unittest.cpp",
+    "layout/cfx_txtbreak_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fgas",
+    "../../:pdfium_unittest_deps",
+    "../../core/fpdfapi",
+    "../../core/fxge",
+    "../fxfa/parser",
+  ]
+  visibility = [ "../../:pdfium_unittests" ]
+}

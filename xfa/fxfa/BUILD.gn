@@ -128,3 +128,17 @@ jumbo_source_set("fxfa") {
   ]
   visibility = [ "../../*" ]
 }
+
+source_set("unittests") {
+  testonly = true
+  sources = [
+    "cxfa_ffbarcode_unittest.cpp",
+    "cxfa_textparser_unittest.cpp",
+  ]
+  configs += [ "../../:pdfium_core_config" ]
+  deps = [
+    ":fxfa",
+    "../../:pdfium_unittest_deps",
+  ]
+  visibility = [ "../../:pdfium_unittests" ]
+}
