@@ -17,6 +17,24 @@
       "revId": "eff724493f084a1f2b4570309bd40f770e1b1c58",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ff135c_51ade833",
+        "filename": "core/fxge/cfx_color.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T17:57:49Z",
+      "side": 1,
+      "message": "No, it\u0027s related. fxjs/cjs_color.h included fpdfsdk/pwl/cpwl_wnd.h for this operator, and I didn\u0027t want fxjs to depend on fpdfsdk. So I moved this operator for CFX_Color to where CFX_Color lives in core/.",
+      "parentUuid": "2fcab183_0c3225f7",
+      "revId": "eff724493f084a1f2b4570309bd40f770e1b1c58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
