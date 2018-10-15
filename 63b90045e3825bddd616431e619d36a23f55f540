@@ -16,6 +16,24 @@
       "revId": "63b90045e3825bddd616431e619d36a23f55f540",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e3f11d_a4df18a4",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-10-15T18:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eeab6d9_bda67d6a",
+      "revId": "63b90045e3825bddd616431e619d36a23f55f540",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

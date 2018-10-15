@@ -94,6 +94,30 @@
       "revId": "dee25119008a39e2ee360c5c46d9ba18d7a340b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b5abbeb_3720d397",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 7274
+      },
+      "writtenOn": "2018-10-15T18:51:54Z",
+      "side": 0,
+      "message": "I recovered the code I removed, which is to set rcOriginalMB to CropBox if exists.",
+      "parentUuid": "21604656_8ecde9a9",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 72
+      },
+      "revId": "dee25119008a39e2ee360c5c46d9ba18d7a340b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
