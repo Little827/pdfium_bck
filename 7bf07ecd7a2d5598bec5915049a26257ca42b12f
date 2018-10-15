@@ -34,6 +34,24 @@
       "revId": "7bf07ecd7a2d5598bec5915049a26257ca42b12f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3581133_f04be031",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-15T22:29:25Z",
+      "side": 1,
+      "message": "What do you think about having try-catch blocks for each different AFFoo method? Then you can expand on them over time.",
+      "parentUuid": "e2094f85_9005bfae",
+      "revId": "7bf07ecd7a2d5598bec5915049a26257ca42b12f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
