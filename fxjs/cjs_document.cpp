@@ -741,7 +741,8 @@ CJS_Result CJS_Document::get_info(CJS_Runtime* pRuntime) {
                               pRuntime->NewString(cwTrapped.AsStringView()));
 
   // It's to be compatible to non-standard info dictionary.
-  for (const auto& it : *pDictionary) {
+  CPDF_DictionaryLocker locker(pDictionary);
+  for (const auto& it : locker) {
     const ByteString& bsKey = it.first;
     CPDF_Object* pValueObj = it.second.get();
     WideString wsKey = WideString::FromUTF8(bsKey.AsStringView());
