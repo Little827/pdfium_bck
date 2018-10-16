@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "42672cb6_959f1641",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "Sure. It would be nice if we can have more consistant results compared to Acrobat.",
+      "parentUuid": "bac11e1a_d21c8002",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86f33eae_c613cde2",
         "filename": "testing/resources/javascript/public_methods.in",
         "patchSetId": 6
@@ -207,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "3b7925c9_2f8fc164",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "Want to add a TODO here?",
+      "parentUuid": "1ca38557_17b8dda4",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2e2c9ae_a4bce879",
         "filename": "testing/resources/javascript/public_methods.in",
         "patchSetId": 6
@@ -361,6 +397,24 @@
     },
     {
       "key": {
+        "uuid": "7cf96740_13472e8f",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "Right, but PDFium is throwing an error here.",
+      "parentUuid": "3de6c730_f37b4462",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cb8c325_5a35beb8",
         "filename": "testing/resources/javascript/public_methods.in",
         "patchSetId": 6
@@ -372,6 +426,24 @@
       "writtenOn": "2018-10-16T21:46:50Z",
       "side": 1,
       "message": "TypeError",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93d6154_3ca18aa1",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "Add a TODO for this one? The arguments have the wrong type.",
+      "parentUuid": "5cb8c325_5a35beb8",
       "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -463,6 +535,24 @@
     },
     {
       "key": {
+        "uuid": "cd9ecd5c_120f0e05",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "TODO?",
+      "parentUuid": "5b0bdca3_c8d1e005",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6bb945f_0d02a091",
         "filename": "testing/resources/javascript/public_methods.in",
         "patchSetId": 6
@@ -480,6 +570,24 @@
     },
     {
       "key": {
+        "uuid": "91578007_b1d03fee",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "TODO?",
+      "parentUuid": "f6bb945f_0d02a091",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e12d8e5c_6ae70f68",
         "filename": "testing/resources/javascript/public_methods.in",
         "patchSetId": 6
@@ -491,6 +599,24 @@
       "writtenOn": "2018-10-16T21:46:50Z",
       "side": 1,
       "message": "3 TypeErrors",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a10dbdb1_95c316e9",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "TODOs?",
+      "parentUuid": "e12d8e5c_6ae70f68",
       "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -760,6 +886,24 @@
       "side": 1,
       "message": "yup, I think we can keep it though for consistency.",
       "parentUuid": "9a75a58a_909849ef",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc177be_b1f1b1a4",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:33:42Z",
+      "side": 1,
+      "message": "TODO",
+      "parentUuid": "ac133324_15c49a44",
       "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
