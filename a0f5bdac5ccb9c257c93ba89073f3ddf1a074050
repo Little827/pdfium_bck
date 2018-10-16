@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539667977 -0700\nnonce AP50N7YAi2stA53C86VBy7UnlqoDlzzEYPBQshQ7ppAjsyOLR+bj6QsAQ3wYXKbE8pvS70qgsrag\n\n0000000000000000000000000000000000000000 a0f5bdac5ccb9c257c93ba89073f3ddf1a074050 refs/for/refs/heads/master%notify\u003dNONE,m\u003dFix_PDFium_side%2E,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvFeAkACgkQqzYtYVpm\n/Xsf+QgAl2NTNcGJYaN/FZmB+EBSlbdZmva2tXIhUkH2vc2faJHvRFp+W0MQV5dD\nkizmQTOp19/Gey/264kPKx3kj9wR8bVQzDEy+jo5URDB693IpuHqSgFySeV6V7OX\n/uXUp56XQdXSaqMpje7pEYCM+CHQVstQNqy4/9LmNKdzpYWBowOv9zc27XARk856\nhCiw46JDJ9f3bL0r30VAw1WnyoI9JjEY1mwMquYaAr/Q4dzwB142C7v6Uezd7//y\nZBohUmdHZ/FCSGVZ/cKDOJw5IIdzZ+suYdyd9ywnbSoPK9CT3Jq6ylsjKQfCx6Dr\npSYRaa3T4TW6qH13TFcGta+lDrxGTg\u003d\u003d\n\u003d9sLE\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "56f51841_09d6bde3",
+        "filename": "third_party/base/allocator/partition_allocator/address_space_randomization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T05:46:34Z",
+      "side": 1,
+      "message": "Compare to existing code. https://pdfium.googlesource.com/pdfium.git/+/1929d6e1/third_party/base/allocator/partition_allocator/address_space_randomization.cc#52",
+      "revId": "a0f5bdac5ccb9c257c93ba89073f3ddf1a074050",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b73a50f_4f72316e",
+        "filename": "third_party/base/allocator/partition_allocator/spin_lock.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T05:46:34Z",
+      "side": 1,
+      "message": "This is new code I wrote.",
+      "revId": "a0f5bdac5ccb9c257c93ba89073f3ddf1a074050",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
