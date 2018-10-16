@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68e09adc_8d8eb3a1",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T22:08:44Z",
+      "side": 1,
+      "message": "Don\u0027t need this. The 2 in front are sufficient.",
+      "range": {
+        "startLine": 68,
+        "startChar": 25,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "02c446ef776a73b1122304f63e21e5d1135eb204",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
