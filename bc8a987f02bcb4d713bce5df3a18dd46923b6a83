@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bac11e1a_d21c8002",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-16T22:01:41Z",
+      "side": 1,
+      "message": "For all of these, I guess they are more tolerant of missing / extra args.\nI need to figure out a way to fake an event so that these actually have something to hang the result onto.\n\nDo you suppose its OK to continue to be strict in arg checks?",
+      "parentUuid": "c75dbfb6_e285ac92",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86f33eae_c613cde2",
         "filename": "testing/resources/javascript/public_methods.in",
         "patchSetId": 6
@@ -689,6 +707,30 @@
     },
     {
       "key": {
+        "uuid": "6ee4555b_737f221f",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-16T22:01:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458a3a72_858f6bbb",
+      "range": {
+        "startLine": 178,
+        "startChar": 41,
+        "endLine": 178,
+        "endChar": 43
+      },
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a75a58a_909849ef",
         "filename": "testing/resources/javascript/public_methods.in",
         "patchSetId": 6
@@ -700,6 +742,24 @@
       "writtenOn": "2018-10-16T21:46:50Z",
       "side": 1,
       "message": "ReferenceError",
+      "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac133324_15c49a44",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-16T22:01:41Z",
+      "side": 1,
+      "message": "yup, I think we can keep it though for consistency.",
+      "parentUuid": "9a75a58a_909849ef",
       "revId": "bc8a987f02bcb4d713bce5df3a18dd46923b6a83",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
