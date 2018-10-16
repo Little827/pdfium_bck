@@ -22,6 +22,30 @@
       "revId": "02c446ef776a73b1122304f63e21e5d1135eb204",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53df0e16_690e2bfb",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-16T22:32:54Z",
+      "side": 1,
+      "message": "right.  because constexpr always applies to top-level or some such.",
+      "parentUuid": "68e09adc_8d8eb3a1",
+      "range": {
+        "startLine": 68,
+        "startChar": 25,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "02c446ef776a73b1122304f63e21e5d1135eb204",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
