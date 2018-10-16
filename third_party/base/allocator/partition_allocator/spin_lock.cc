@@ -3,11 +3,13 @@
 // found in the LICENSE file.
 
 #include "third_party/base/allocator/partition_allocator/spin_lock.h"
+#include "build/build_config.h"
 
 #if defined(OS_WIN)
 #include <windows.h>
-#elif defined(OS_POSIX)
+#elif defined(OS_POSIX) || defined(OS_FUCHSIA)
 #include <sched.h>
+#include <time.h>
 #endif
 
 // The YIELD_PROCESSOR macro wraps an architecture specific-instruction that
@@ -21,9 +23,12 @@
 // you really should be using a proper lock (such as |base::Lock|)rather than
 // these spinlocks.
 #if defined(OS_WIN)
+
 #define YIELD_PROCESSOR YieldProcessor()
 #define YIELD_THREAD SwitchToThread()
-#elif defined(COMPILER_GCC) || defined(__clang__)
+
+#elif defined(OS_POSIX) || defined(OS_FUCHSIA)
+
 #if defined(ARCH_CPU_X86_64) || defined(ARCH_CPU_X86)
 #define YIELD_PROCESSOR __asm__ __volatile__("pause")
 #elif (defined(ARCH_CPU_ARMEL) && __ARM_ARCH >= 6) || defined(ARCH_CPU_ARM64)
@@ -37,22 +42,26 @@
 // Don't bother doing using .word here since r2 is the lowest supported mips64
 // that Chromium supports.
 #define YIELD_PROCESSOR __asm__ __volatile__("pause")
-#endif
-#endif
+#elif defined(ARCH_CPU_PPC64_FAMILY)
+#define YIELD_PROCESSOR __asm__ __volatile__("or 31,31,31")
+#elif defined(ARCH_CPU_S390_FAMILY)
+// just do nothing
+#define YIELD_PROCESSOR ((void)0)
+#endif  // ARCH
 
 #ifndef YIELD_PROCESSOR
 #warning "Processor yield not supported on this architecture."
 #define YIELD_PROCESSOR ((void)0)
 #endif
 
-#ifndef YIELD_THREAD
-#if defined(OS_POSIX)
 #define YIELD_THREAD sched_yield()
-#else
+
+#else  // Other OS
+
 #warning "Thread yield not supported on this OS."
 #define YIELD_THREAD ((void)0)
-#endif
-#endif
+
+#endif  // OS_WIN
 
 namespace pdfium {
 namespace base {
@@ -63,6 +72,9 @@ void SpinLock::LockSlow() {
   // critical section defaults, and various other recommendations.
   // TODO(jschuh): Further tuning may be warranted.
   static const int kYieldProcessorTries = 1000;
+  // The value of |kYieldThreadTries| is completely made up.
+  static const int kYieldThreadTries = 10;
+  int yield_thread_count = 0;
   do {
     do {
       for (int count = 0; count < kYieldProcessorTries; ++count) {
@@ -73,8 +85,26 @@ void SpinLock::LockSlow() {
           return;
       }
 
-      // Give the OS a chance to schedule something on this core.
-      YIELD_THREAD;
+      if (yield_thread_count < kYieldThreadTries) {
+        ++yield_thread_count;
+        // Give the OS a chance to schedule something on this core.
+        YIELD_THREAD;
+      } else {
+        // At this point, it's likely that the lock is held by a lower priority
+        // thread that is unavailable to finish its work because of higher
+        // priority threads spinning here. Sleeping should ensure that they make
+        // progress.
+#if defined(OS_WIN)
+        ::Sleep(1);
+#else
+        struct timespec sleep_time;
+        struct timespec remaining;
+        sleep_time.tv_sec = 0;
+        sleep_time.tv_nsec = 1000000;
+        while (nanosleep(&sleep_time, &remaining) == -1 && errno == EINTR)
+          sleep_time = remaining;
+#endif
+      }
     } while (lock_.load(std::memory_order_relaxed));
   } while (UNLIKELY(lock_.exchange(true, std::memory_order_acquire)));
 }
