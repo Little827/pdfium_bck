@@ -23,6 +23,30 @@
       "revId": "a1ee8c378d1b7227e76c813aa53d7e0771450495",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2ead5d_1630cad1",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T17:06:52Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "3776de57_740ac1be",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 42
+      },
+      "revId": "a1ee8c378d1b7227e76c813aa53d7e0771450495",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
