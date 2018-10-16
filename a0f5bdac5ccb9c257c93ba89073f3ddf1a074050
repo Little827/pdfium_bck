@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "e7abd4b3_0357d6eb",
+        "filename": "third_party/base/allocator/partition_allocator/address_space_randomization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-16T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "56f51841_09d6bde3",
+      "revId": "a0f5bdac5ccb9c257c93ba89073f3ddf1a074050",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b73a50f_4f72316e",
         "filename": "third_party/base/allocator/partition_allocator/spin_lock.cc",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2018-10-16T05:46:34Z",
       "side": 1,
       "message": "This is new code I wrote.",
+      "revId": "a0f5bdac5ccb9c257c93ba89073f3ddf1a074050",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e33d588_198b5035",
+        "filename": "third_party/base/allocator/partition_allocator/spin_lock.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-16T17:00:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure we can get here in a single-threaded pdfium.  Assert?",
+      "parentUuid": "7b73a50f_4f72316e",
       "revId": "a0f5bdac5ccb9c257c93ba89073f3ddf1a074050",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
