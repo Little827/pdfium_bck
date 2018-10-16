@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad6e7e9b_9ba52c8a",
+        "filename": "core/fpdfapi/parser/cpdf_array.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T00:22:15Z",
+      "side": 1,
+      "message": "Can |m_pArray| ever to nullptr?",
+      "revId": "c4cdfbba1b01397c3f451432bed08519df035d13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "404467e8_86fa5c61",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T00:22:15Z",
+      "side": 1,
+      "message": "Convert to range-based for loop?",
+      "revId": "c4cdfbba1b01397c3f451432bed08519df035d13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "596b2a1e_9f47ce5d",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T00:22:15Z",
+      "side": 1,
+      "message": "Convert to range-based for loop?",
+      "revId": "c4cdfbba1b01397c3f451432bed08519df035d13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f647d92_46800ccc",
+        "filename": "core/fpdfapi/parser/fpdf_parser_utility.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T00:22:15Z",
+      "side": 1,
+      "message": "nit: Maybe move this above line 195?",
+      "revId": "c4cdfbba1b01397c3f451432bed08519df035d13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
