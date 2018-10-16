@@ -185,10 +185,10 @@ void CFX_FolderFontInfo::ScanFile(const ByteString& path) {
       return;
     }
     uint32_t face_bytes = nFaces * 4;
-    uint8_t* offsets = FX_Alloc(uint8_t, face_bytes);
-    readCnt = fread(offsets, 1, face_bytes, pFile);
+    std::unique_ptr<uint8_t, FxFreeDeleter> offsets(
+        FX_Alloc(uint8_t, face_bytes));
+    readCnt = fread(offsets.get(), 1, face_bytes, pFile);
     if (readCnt != face_bytes) {
-      FX_Free(offsets);
       fclose(pFile);
       return;
     }
@@ -196,7 +196,6 @@ void CFX_FolderFontInfo::ScanFile(const ByteString& path) {
       uint8_t* p = offsets + i * 4;
       ReportFace(path, pFile, filesize, GET_TT_LONG(p));
     }
-    FX_Free(offsets);
   } else {
     ReportFace(path, pFile, filesize, 0);
   }
