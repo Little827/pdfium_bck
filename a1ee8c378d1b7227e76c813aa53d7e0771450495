@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539675698 -0700\nnonce AP50N7Z6hKuZgXduvaMLAQUU+2Aq+rxbPl6dFKzhEHo7Tdc1FymsKhI73B5LrefJ2efgkriyqXg0\n\n0000000000000000000000000000000000000000 a1ee8c378d1b7227e76c813aa53d7e0771450495 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild%2C_span,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvFljIACgkQqzYtYVpm\n/XsNgQf9EK3C1CQNI9eD8GCkoZO9WXmp8MspQLxqMY80PBs+YSZttIu//L94ywSr\nUbj4RaY0yLgKqtL5WOjBGP7Um5ox543nsezjg4fpF2c4sflVI/IBcHdqoGvjdMQq\nAXIxTglVun2vhDJZYVt1xta3I5iMqDH1HFg6f3bT9n7bHOQF5QmiYKZeWhmo0koM\n8umFPB5KJkMj0Hnvx22z1AuIRpVr+b+4hH1uvNREBlJLa67ZqSK9A6zRYDzq1qyF\nfREc7TdqGd+2PQ1dM1n/cgUExjC+KvspV+vGDqEqRKGm30dURe7jeHNlCw7o5VKU\nVOUe490JEUmTm+/Uo6+x64oP+xtXPQ\u003d\u003d\n\u003dcuEy\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3776de57_740ac1be",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-16T17:06:09Z",
+      "side": 1,
+      "message": "I thought we had something like an FxFcloseDeleter to use with unique_ptr\u003cFILE\u003e, but I don\u0027t see it.  follow-up?",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 42
+      },
+      "revId": "a1ee8c378d1b7227e76c813aa53d7e0771450495",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
