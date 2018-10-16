@@ -71,6 +71,30 @@
       "revId": "7b1ed1ac2aa9227ee3f4fc3a2c8f5c2512b77314",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3377787d_9f02182a",
+        "filename": "third_party/base/stl_util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-16T17:17:21Z",
+      "side": 1,
+      "message": "Sure. I just copied it as is from Chromium.",
+      "parentUuid": "82342b17_fc7e90fe",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "7b1ed1ac2aa9227ee3f4fc3a2c8f5c2512b77314",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
