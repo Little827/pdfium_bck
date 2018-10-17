@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bba00edc_f98c72d7",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-10-17T13:06:24Z",
+      "side": 1,
+      "message": "Are these observers needed? You don\u0027t use them after the calls.",
+      "range": {
+        "startLine": 321,
+        "startChar": 18,
+        "endLine": 322,
+        "endChar": 35
+      },
+      "revId": "bde287e30fa472d6462549ef3e92339834267cc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e3a1db_d9af3ab9",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-10-17T13:06:24Z",
+      "side": 1,
+      "message": "Why false here? The double click was handled yea? It just resulted in the thing you clicked on being removed. Or does true/false just mean not focused/focused?",
+      "range": {
+        "startLine": 346,
+        "startChar": 7,
+        "endLine": 346,
+        "endChar": 17
+      },
+      "revId": "bde287e30fa472d6462549ef3e92339834267cc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1392bd4a_bf806781",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2018-10-17T13:06:24Z",
+      "side": 1,
+      "message": "clicks?",
+      "range": {
+        "startLine": 1327,
+        "startChar": 67,
+        "endLine": 1327,
+        "endChar": 74
+      },
+      "revId": "bde287e30fa472d6462549ef3e92339834267cc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
