@@ -16,6 +16,24 @@
       "revId": "fb1b370f10be6c7204ea44927af66d791d24460e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7570623_06b91cfe",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-17T22:48:54Z",
+      "side": 1,
+      "message": "Indeed. event.value typically is set up by the system when there is an actual event; here we are faking it. It eventually is referenced as, say, |val| in places like:\n  https://cs.chromium.org/chromium/src/third_party/pdfium/fxjs/cjs_publicmethods.cpp?rcl\u003d785a26dc649af80c593f899a606dff4dae7c48fd\u0026l\u003d1168",
+      "parentUuid": "6910fc9b_730e7aaf",
+      "revId": "fb1b370f10be6c7204ea44927af66d791d24460e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
