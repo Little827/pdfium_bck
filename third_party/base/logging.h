@@ -9,8 +9,7 @@
 #include <stdlib.h>
 
 #ifndef _WIN32
-#define NULL_DEREF_IF_POSSIBLE \
-  *(reinterpret_cast<volatile char*>(NULL) + 42) = 0x42;
+#define NULL_DEREF_IF_POSSIBLE *reinterpret_cast<volatile char*>(0x42) = 0x42;
 #else
 #define NULL_DEREF_IF_POSSIBLE
 #endif
