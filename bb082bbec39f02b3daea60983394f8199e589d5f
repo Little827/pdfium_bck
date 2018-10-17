@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539754831 -0700\nnonce AP50N7bex2Klwy3ZeKeZ1W/t51FbN0mylQWEpSumNUABJMUnC/0hXaGhx5ggHZw9YXQFHmylI7gF\n\n0000000000000000000000000000000000000000 bb082bbec39f02b3daea60983394f8199e589d5f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvGy08ACgkQqzYtYVpm\n/Xsv+AgArxrSobbQwdVGJLF+AuAVUovorpXr4m68B516jlTRQROO9wAPJNwMU5vc\ne2LTbm9J8z/tNx2wdFzWeexKCaP8tVezHR5U+KJ+qeLeh6GBrSPhJF+dK2xPzXEf\njn5/tIln8Mygmis866amm7av92+efq9y7XsgM8RFnoMvo41IacohOOPz9EK3p1f1\nN4U1A9lm7ky3NBl/ki26ngDS6bsY+VIexypz8VFajM5HKI/z4Up590LexS3pFtKD\nDp7lVHcXzWgBfrAglUtYKhC9CnQmIm1X4XQjemm0KeCUQaRwQ352berENwxp9Kci\nUYAMASJWQL5E06U2ED/26y3VC5zTOw\u003d\u003d\n\u003dJC0E\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1aee362_aeba604e",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-17T16:39:52Z",
+      "side": 1,
+      "message": "nit: comment here about function-scoped statics ensure allocators don\u0027t get initialized until first fn call ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "bb082bbec39f02b3daea60983394f8199e589d5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
