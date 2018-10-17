@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cf04603_143e3977",
+        "filename": "third_party/base/logging.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 6665
+      },
+      "writtenOn": "2018-10-17T18:05:26Z",
+      "side": 1,
+      "message": "__assume(0) and __builtin_unreachable() mean \"this won\u0027t be reached; if it _is_ reached then behavior is undefined\" (and in practice this means this is usually compiled to nothing, not to a crash). That\u0027s different from the prior semantics -- is that ok in this case? (Looks like it\u0027s after an abort so it\u0027s probably fine, but why do we need anything after the abort anyway?)",
+      "revId": "785a26dc649af80c593f899a606dff4dae7c48fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
