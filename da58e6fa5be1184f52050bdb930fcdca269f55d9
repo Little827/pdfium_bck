@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c89e1ffc_7e6c0073",
+        "filename": "third_party/base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-17T16:15:53Z",
+      "side": 1,
+      "message": "Needs a semi-colon now.",
+      "revId": "da58e6fa5be1184f52050bdb930fcdca269f55d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
