@@ -16,6 +16,24 @@
       "revId": "785a26dc649af80c593f899a606dff4dae7c48fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4271685b_6dd07677",
+        "filename": "third_party/base/logging.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-17T19:47:18Z",
+      "side": 1,
+      "message": "2014 era Chromium CHECK() called base::debugger::BreakDebugger(), and base::debugger::BreakDebugger() did (and still does) roughly: abort(); _exit(1);\n\nSo I\u0027m guessing the original PDFium CHECK was sort of copying that pattern, and this is its evolution.\n\nMaybe we should just copy Chromium CHECK() again.",
+      "parentUuid": "2cf04603_143e3977",
+      "revId": "785a26dc649af80c593f899a606dff4dae7c48fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
