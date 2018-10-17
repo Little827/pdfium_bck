@@ -34,6 +34,24 @@
       "revId": "fb1b370f10be6c7204ea44927af66d791d24460e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25df0ce3_7ca36595",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-17T23:35:31Z",
+      "side": 1,
+      "message": "So does Acrobat work similarly, or is this just testing (possibly quirks in) PDFium\u0027s JS?.",
+      "parentUuid": "b7570623_06b91cfe",
+      "revId": "fb1b370f10be6c7204ea44927af66d791d24460e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
