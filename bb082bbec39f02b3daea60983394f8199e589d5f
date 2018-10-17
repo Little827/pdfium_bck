@@ -23,6 +23,30 @@
       "revId": "bb082bbec39f02b3daea60983394f8199e589d5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d82cf351_675ff1e0",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-17T16:42:17Z",
+      "side": 1,
+      "message": "Meh. Non-POD globals are usually just a bad idea. I don\u0027t know why I didn\u0027t think about this sooner.",
+      "parentUuid": "d1aee362_aeba604e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "bb082bbec39f02b3daea60983394f8199e589d5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
