@@ -13,7 +13,7 @@
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 
 CFX_XMLInstruction::CFX_XMLInstruction(const WideString& wsTarget)
-    : CFX_XMLNode(), name_(wsTarget) {}
+    : name_(wsTarget) {}
 
 CFX_XMLInstruction::~CFX_XMLInstruction() = default;
 

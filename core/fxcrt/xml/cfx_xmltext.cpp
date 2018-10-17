@@ -8,8 +8,7 @@
 
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 
-CFX_XMLText::CFX_XMLText(const WideString& wsText)
-    : CFX_XMLNode(), m_wsText(wsText) {}
+CFX_XMLText::CFX_XMLText(const WideString& wsText) : m_wsText(wsText) {}
 
 CFX_XMLText::~CFX_XMLText() = default;
 
