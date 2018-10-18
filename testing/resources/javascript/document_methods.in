@@ -264,6 +264,8 @@ function testMailDoc() {
   expect('this.mailDoc(false, "user@example.com", "cc@example.com", ' +
              '"bcc@example.com", "Lottery Winner", "You won the lottery!")',
          undefined);
+  expect('this.mailDoc({"cTo": "user@example.com", "cMsg": "You won the lottery!"})',
+         undefined);
 }
 
 function testMailForm() {
@@ -276,6 +278,8 @@ function testMailForm() {
   expect('this.mailForm(true)', undefined);
   expect('this.mailForm(false, "user@example.com", "cc@example.com", ' +
              '"bcc@example.com", "Lottery Winner", "You won the lottery!")',
+         undefined);
+  expect('this.mailForm({"cTo": "user@example.com", "cMsg": "You won the lottery!"})',
          undefined);
 }
 
