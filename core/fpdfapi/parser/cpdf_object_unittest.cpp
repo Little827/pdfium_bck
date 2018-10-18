@@ -86,10 +86,10 @@ class PDFObjectsTest : public testing::Test {
                            name_obj,          m_ArrayObj.Get(), m_DictObj.Get(),
                            stream_obj,        null_obj};
     m_DirectObjTypes = {
-        CPDF_Object::BOOLEAN, CPDF_Object::BOOLEAN, CPDF_Object::NUMBER,
-        CPDF_Object::NUMBER,  CPDF_Object::STRING,  CPDF_Object::STRING,
-        CPDF_Object::NAME,    CPDF_Object::ARRAY,   CPDF_Object::DICTIONARY,
-        CPDF_Object::STREAM,  CPDF_Object::NULLOBJ};
+        CPDF_Object::BOOLEANTY, CPDF_Object::BOOLEANTY, CPDF_Object::NUMBER,
+        CPDF_Object::NUMBER,    CPDF_Object::STRING,    CPDF_Object::STRING,
+        CPDF_Object::NAME,      CPDF_Object::ARRAY,     CPDF_Object::DICTIONARY,
+        CPDF_Object::STREAM,    CPDF_Object::NULLOBJ};
     for (size_t i = 0; i < FX_ArraySize(objs); ++i)
       m_DirectObjs.emplace_back(objs[i]);
 
@@ -114,7 +114,7 @@ class PDFObjectsTest : public testing::Test {
     if (!obj1 || !obj2 || obj1->GetType() != obj2->GetType())
       return false;
     switch (obj1->GetType()) {
-      case CPDF_Object::BOOLEAN:
+      case CPDF_Object::BOOLEANTY:
         return obj1->GetInteger() == obj2->GetInteger();
       case CPDF_Object::NUMBER:
         return obj1->AsNumber()->IsInteger() == obj2->AsNumber()->IsInteger() &&
@@ -336,7 +336,7 @@ TEST_F(PDFObjectsTest, IsTypeAndAsType) {
       EXPECT_EQ(nullptr, m_DirectObjs[i]->AsArray());
     }
 
-    if (m_DirectObjTypes[i] == CPDF_Object::BOOLEAN) {
+    if (m_DirectObjTypes[i] == CPDF_Object::BOOLEANTY) {
       EXPECT_TRUE(m_DirectObjs[i]->IsBoolean());
       EXPECT_EQ(m_DirectObjs[i].get(), m_DirectObjs[i]->AsBoolean());
     } else {

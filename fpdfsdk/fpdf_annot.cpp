@@ -121,9 +121,9 @@ static_assert(static_cast<int>(CPDF_Annot::AppearanceMode::Down) ==
 
 // These checks ensure the consistency of dictionary value types across core/
 // and public/.
-static_assert(static_cast<int>(CPDF_Object::Type::BOOLEAN) ==
+static_assert(static_cast<int>(CPDF_Object::Type::BOOLEANTY) ==
                   FPDF_OBJECT_BOOLEAN,
-              "CPDF_Object::BOOLEAN value mismatch");
+              "CPDF_Object::BOOLEANTY value mismatch");
 static_assert(static_cast<int>(CPDF_Object::Type::NUMBER) == FPDF_OBJECT_NUMBER,
               "CPDF_Object::NUMBER value mismatch");
 static_assert(static_cast<int>(CPDF_Object::Type::STRING) == FPDF_OBJECT_STRING,

@@ -161,7 +161,7 @@ std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj) {
     case CPDF_Object::NULLOBJ:
       buf << " null";
       break;
-    case CPDF_Object::BOOLEAN:
+    case CPDF_Object::BOOLEANTY:
     case CPDF_Object::NUMBER:
       buf << " " << pObj->GetString();
       break;
