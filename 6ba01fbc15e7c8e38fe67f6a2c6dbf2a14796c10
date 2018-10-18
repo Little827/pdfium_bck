@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539825035 -0700\nnonce AP50N7ZNVXvpmxqyPn5H4RI5cyQeammkIK64ldGSmHK/m77srY1wM4Ds0GNx7B71it+yQp1p+p8f\n\n0000000000000000000000000000000000000000 6ba01fbc15e7c8e38fe67f6a2c6dbf2a14796c10 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dshuffle-platform-specifc-code-in-cfgas-fontmgr\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvH3YsACgkQqzYtYVpm\n/Xt8xwf+P3w5p3jNeAxp4elmpAYcKc+dAHrtojfB4tScY7mFw/Vice25JUD8dzIv\nzHrQ1QfLgaqKOKpfNwpDZBPdRiOSAvjjmae+DC5tJ8YQUbWlFTN+T5gqir5KpSY8\nyFW+aRVN5zmC/XCbpoQzuw041kIKgkDtGntDB8JALvkAN0KAvL3uZQ29ek1l380D\n1rh5WflZEB7/c8fcNNzYBxX6Mej36LcwKqJVk1v0JhleKhXZbrPpUzT9KP3gklsO\ndqzs9xldztnGHit+cQfyW9bXlJZsH/GJWZunFtbpBgSwzNfjNNJPEBDllyLMq2mM\nQ3XE/WALj6WOEIGviHannC61IFqoXw\u003d\u003d\n\u003dASO3\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
