@@ -88,6 +88,24 @@
       "revId": "fb1b370f10be6c7204ea44927af66d791d24460e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8770135b_f7c4e5f7",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-18T00:03:12Z",
+      "side": 1,
+      "message": "Removing the event.value setter in expect() and expectError() definitely affects Acrobat JS as well. Just sampling the first ~6 sets of tests, doing so changed some tests from PASS to FAIL, and other tests from ERROR to PASS. Some of this may be because I forgot to clear event.value at the end of a expectFoo() call.",
+      "parentUuid": "d31dafde_78c5347b",
+      "revId": "fb1b370f10be6c7204ea44927af66d791d24460e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
