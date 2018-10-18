@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539878687 -0700\nnonce AP50N7ZndMOcsnb67gKSi4mgr3qe951cciaT+8Us406RP3tCX6+aioQmv++gCwMr3rM6SmIesdMU\n\n0000000000000000000000000000000000000000 6fa1e852379a287d4ff1651f453b7c3dd72b15a7 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvIrx8ACgkQqzYtYVpm\n/XuzbQgAi1l6y6LehXVu8QhjZyXCm27lOJ4IxiLbC1a1SL6a1SIzpAlAOeQsmSOF\nYLiZeURO0VUmqN7Dlsb0VQlGJhBcPGATH7cfSaYSzTaXXNtkF+EUin1WRls8+Afx\nAs+4z3vgBp0D1mpvt7KfzjJAMM+vZPsmtKPcTD2jafQWjvqLKcItMs1dudET16lq\nn7dzDslXZ/3PrwL5uxAPd0J6qmK1qCEytXYV+Xwn3pZkWpR6x0VOjCuNRHzpZ6zm\neqhoHF94o9QaoHvU4V237QSOkx17i6s9J+7xpTb/KqTRDmfGYhcm3fZmlOWu6zce\nWCcGcptXvJw+Pqm0I1rbxpvl/AVplQ\u003d\u003d\n\u003dh5PN\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e9f2868_e46bc1fe",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-18T17:05:21Z",
+      "side": 1,
+      "message": "yea, ok, though conversion of int32_t to float isn\u0027t necessarily lossless for large values due to quantization ... is there some suppressed warning about int to float conversions that might have necessitated the cast?",
+      "range": {
+        "startLine": 385,
+        "startChar": 48,
+        "endLine": 385,
+        "endChar": 59
+      },
+      "revId": "6fa1e852379a287d4ff1651f453b7c3dd72b15a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
