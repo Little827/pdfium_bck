@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539882109 -0700\nnonce AP50N7YmYJQWpo8rymB8MD6wRXXDxDZr8+FHREvByR/8GxAGTuMRUNcZ6iZ69lt96EyGg0//ZXLt\n\n0000000000000000000000000000000000000000 0b63afbb320c0b029d21f535aa754ea47aac6c71 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvIvH0ACgkQqzYtYVpm\n/XtZaQgAsxjA5Kc5C4SHV/0b4WcCyQR8C9MbQbnjtLX6IL6pxjvq2ZrhpxuXaqlK\nzMqpkrDwhUAAhAYAe9ZESEHq50dP3Q3fYyOvtcQuESdwLM/2M14roQoGRrsCjr9e\nWNonswrHPCt7ZIM60RCkMgE1URpB6IyVwWqFaYF08Nk90rqV5oMKpliso3Zy6PDe\ndRoyswL06S5HPWaMnTF1/GpsqNVsUWtfuILzV56rYtBY3PfWPDELY0uZFDlfy/bE\nZnFsAQpFqEc6hw6MiVlMvzww6eDjct+ghbywWpY8t8UZdj9rNpIUso731L/puU09\n7yzfijJlraZ8r5ha9nKBBjhIPZjKAQ\u003d\u003d\n\u003d6lz2\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a1dbaf6_45e8e101",
+        "filename": "xfa/fxfa/cxfa_loadercontext.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-18T17:07:54Z",
+      "side": 1,
+      "message": "I\u0027d like to keep it a class.  Here I go again making up my own rules, but somehow struct shoould imply POD only ???",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 7
+      },
+      "revId": "0b63afbb320c0b029d21f535aa754ea47aac6c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
