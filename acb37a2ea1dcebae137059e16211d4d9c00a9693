@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1539853929 -0700\nnonce AP50N7bYRVD95O8PQs/4bzp86gu5CkhGJv2vP7GubACRsJo+zvzH5aRs/t7FpMxkjHKsxZ3MTz13\n\n0000000000000000000000000000000000000000 acb37a2ea1dcebae137059e16211d4d9c00a9693 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvITmkACgkQqzYtYVpm\n/XvLPQf/SZz0AtXUvbIbqWqPQboqW+eYUTDRC43b7zANhkUbFvUWR8+Yy9MSgNAC\nCFQ/KW7dteW2agY1EuhAq90OzzBuivF1axRVcaRGQnCBlefaDKvqyEBe/6c9/Fx0\nXAmRhq/XEdn7lBX8bP2udqfo4CUcMP2Fi6FQ2L5zE81Rpnwsjz8S4vnGKH1xjnmo\nM7xWOxVdgX+oKlG1KGZQ+equJ6K6sGvuwvbwISWLj0BVsnPcHB1/2IGgY5qVVCgC\nZ/8WbmXU0/XH8ig0ywn1UgfeDnc/Sq6XrRJKTRaNcCcrhu1YiJcoDTt8Y0gOFfih\n71wLBECgQOtMFowTa/ajGfpjhMq+Bw\u003d\u003d\n\u003d+nGb\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce49235a_ffc8c470",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-18T16:41:25Z",
+      "side": 1,
+      "message": "nit: pre-existing: probably faster to do this by ByteString addition (ByteString::Format is always trouble)\n\n  return \"q 1 0 0 1 0 0 cm /\" + key + \" Do Q\";",
+      "range": {
+        "startLine": 171,
+        "startChar": 9,
+        "endLine": 171,
+        "endChar": 70
+      },
+      "revId": "acb37a2ea1dcebae137059e16211d4d9c00a9693",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
