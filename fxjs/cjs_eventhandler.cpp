@@ -19,10 +19,6 @@ CJS_EventHandler::CJS_EventHandler(CJS_EventContext* pContext)
 
 CJS_EventHandler::~CJS_EventHandler() {}
 
-void CJS_EventHandler::OnApp_Init() {
-  Initialize(JET_APP_INIT);
-}
-
 void CJS_EventHandler::OnDoc_Open(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                                   const WideString& strTargetName) {
   Initialize(JET_DOC_OPEN);
@@ -424,8 +420,6 @@ bool CJS_EventHandler::Modifier() const {
 
 const wchar_t* CJS_EventHandler::Name() const {
   switch (m_eEventType) {
-    case JET_APP_INIT:
-      return L"Init";
     case JET_BATCH_EXEC:
       return L"Exec";
     case JET_BOOKMARK_MOUSEUP:
@@ -495,8 +489,6 @@ const wchar_t* CJS_EventHandler::Name() const {
 
 const wchar_t* CJS_EventHandler::Type() const {
   switch (m_eEventType) {
-    case JET_APP_INIT:
-      return L"App";
     case JET_BATCH_EXEC:
       return L"Batch";
     case JET_BOOKMARK_MOUSEUP:

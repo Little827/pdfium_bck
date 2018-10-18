@@ -27,8 +27,6 @@ class IJS_EventContext {
   virtual Optional<IJS_Runtime::JS_Error> RunScript(
       const WideString& script) = 0;
 
-  virtual void OnApp_Init() = 0;
-
   virtual void OnDoc_Open(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                           const WideString& strTargetName) = 0;
   virtual void OnDoc_WillPrint(CPDFSDK_FormFillEnvironment* pFormFillEnv) = 0;

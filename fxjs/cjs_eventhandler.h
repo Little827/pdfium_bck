@@ -20,7 +20,6 @@ class CPDF_FormField;
 
 enum JS_EVENT_T {
   JET_UNKNOWN,
-  JET_APP_INIT,
   JET_DOC_OPEN,
   JET_DOC_WILLPRINT,
   JET_DOC_DIDPRINT,
@@ -63,8 +62,6 @@ class CJS_EventHandler {
  public:
   explicit CJS_EventHandler(CJS_EventContext* pContext);
   virtual ~CJS_EventHandler();
-
-  void OnApp_Init();
 
   void OnDoc_Open(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                   const WideString& strTargetName);

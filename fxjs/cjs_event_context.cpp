@@ -57,10 +57,6 @@ Optional<IJS_Runtime::JS_Error> CJS_EventContext::RunScript(
   return err;
 }
 
-void CJS_EventContext::OnApp_Init() {
-  m_pEventHandler->OnApp_Init();
-}
-
 void CJS_EventContext::OnDoc_Open(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                                   const WideString& strTargetName) {
   m_pEventHandler->OnDoc_Open(pFormFillEnv, strTargetName);
