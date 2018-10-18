@@ -112,12 +112,22 @@ Mail Msg: 1, to=, cc=, bcc=, subject=, body=
 Alert: PASS: this.mailDoc(true) = undefined
 Mail Msg: 0, to=user@example.com, cc=cc@example.com, bcc=bcc@example.com, subject=Lottery Winner, body=You won the lottery!
 Alert: PASS: this.mailDoc(false, "user@example.com", "cc@example.com", "bcc@example.com", "Lottery Winner", "You won the lottery!") = undefined
+Mail Msg: 0, to=user@example.com, cc=undefined, bcc=undefined, subject=undefined, body=You won the lottery!
+Alert: PASS: this.mailDoc({"cTo": "user@example.com", "cMsg": "You won the lottery!"}) = undefined
 Alert: PASS: typeof this.mailForm = function
 Mail Msg: 1, to=, cc=, bcc=, subject=, body=
 Alert: PASS: this.mailForm(true) = undefined
 Mail Msg: 0, to=user@example.com, cc=cc@example.com, bcc=bcc@example.com, subject=Lottery Winner, body=You won the lottery!
 Alert: PASS: this.mailForm(false, "user@example.com", "cc@example.com", "bcc@example.com", "Lottery Winner", "You won the lottery!") = undefined
+Mail Msg: 1, to=, cc=, bcc=, subject=, body=
+Alert: PASS: this.mailForm({"cTo": "user@example.com", "cMsg": "You won the lottery!"}) = undefined
 Alert: PASS: typeof this.print = function
+Doc Print: 1, 0, 0, 0, 0, 0, 0, 0
+Alert: PASS: this.print() = undefined
+Doc Print: 1, 1, 10, 1, 1, 1, 1, 1
+Alert: PASS: this.print(true, 1, 10, true, true, true, true, true) = undefined
+Doc Print: 1, 42, 0, 0, 0, 0, 1, 0
+Alert: PASS: this.print({"bUi": true, "bReverse": true, "nStart": 42}) = undefined
 Alert: PASS: typeof this.removeField = function
 Alert: PASS: this.removeField() threw error Document.removeField: Incorrect number of parameters passed to function.
 Alert: PASS: typeof this.resetForm = function
