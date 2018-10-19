@@ -16,6 +16,24 @@
       "revId": "86587e400a1a0e1dceba1bd4641dfb7ab5dd81f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25cf813_c7a6b5a1",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-19T16:47:17Z",
+      "side": 1,
+      "message": "follow-up cl removes comparison.",
+      "parentUuid": "1e71febc_5e77647b",
+      "revId": "86587e400a1a0e1dceba1bd4641dfb7ab5dd81f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
