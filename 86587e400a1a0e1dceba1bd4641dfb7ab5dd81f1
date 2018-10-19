@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e71febc_5e77647b",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-19T05:54:56Z",
+      "side": 1,
+      "message": "BTW, at least with PDFium\u0027s code, this is timezone dependent. Same with AFParseDateEx() above. Maybe FSDK_SetTimeFunction() isn\u0027t sufficient.",
+      "revId": "86587e400a1a0e1dceba1bd4641dfb7ab5dd81f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
