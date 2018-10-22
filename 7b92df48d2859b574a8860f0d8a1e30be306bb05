@@ -22,6 +22,30 @@
       "revId": "7b92df48d2859b574a8860f0d8a1e30be306bb05",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9166f8fe_a4785060",
+        "filename": "core/fpdfapi/parser/cpdf_object.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 6195
+      },
+      "writtenOn": "2018-10-22T17:39:00Z",
+      "side": 1,
+      "message": "kBoolean does seem like a better name than BOOLEANTY.",
+      "parentUuid": "646f1970_c740b19a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "7b92df48d2859b574a8860f0d8a1e30be306bb05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
