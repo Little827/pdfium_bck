@@ -251,12 +251,13 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_GetMatrix(FPDF_PAGEOBJECT path,
   if (!pPathObj)
     return false;
 
-  *a = pPathObj->m_Matrix.a;
-  *b = pPathObj->m_Matrix.b;
-  *c = pPathObj->m_Matrix.c;
-  *d = pPathObj->m_Matrix.d;
-  *e = pPathObj->m_Matrix.e;
-  *f = pPathObj->m_Matrix.f;
+  const auto& matrix = pPathObj->matrix();
+  *a = matrix.a;
+  *b = matrix.b;
+  *c = matrix.c;
+  *d = matrix.d;
+  *e = matrix.e;
+  *f = matrix.f;
 
   return true;
 }
@@ -275,12 +276,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_SetMatrix(FPDF_PAGEOBJECT path,
   if (!pPathObj)
     return false;
 
-  pPathObj->m_Matrix.a = a;
-  pPathObj->m_Matrix.b = b;
-  pPathObj->m_Matrix.c = c;
-  pPathObj->m_Matrix.d = d;
-  pPathObj->m_Matrix.e = e;
-  pPathObj->m_Matrix.f = f;
+  pPathObj->set_matrix(CFX_Matrix(a, b, c, d, e, f));
   pPathObj->SetDirty(true);
 
   return true;
