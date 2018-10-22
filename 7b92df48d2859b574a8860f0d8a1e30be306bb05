@@ -46,6 +46,30 @@
       "revId": "7b92df48d2859b574a8860f0d8a1e30be306bb05",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce9fc17_750d990e",
+        "filename": "core/fpdfapi/parser/cpdf_object.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 6015
+      },
+      "writtenOn": "2018-10-22T17:57:49Z",
+      "side": 1,
+      "message": "I can\u0027t say I was proud of my patch :-)\n\nIn the meantime, https://pdfium-review.googlesource.com/c/pdfium/+/44470 addresses a similar problem by adding the k prefix.\n\nI\u0027ll see if I can use a similar Sed invocation for this one.",
+      "parentUuid": "9166f8fe_a4785060",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "7b92df48d2859b574a8860f0d8a1e30be306bb05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
