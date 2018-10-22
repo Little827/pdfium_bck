@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "646f1970_c740b19a",
+        "filename": "core/fpdfapi/parser/cpdf_object.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-22T16:55:36Z",
+      "side": 1,
+      "message": "Well, there ya go! \n\nCoding standards would want these to be kBoolean, kNumber, ... which I\u0027d prefer to BOOLEANTY. Since we are evolving PDFium towards these standards, this is a golden opportunity to fix all of these.\n\nSince you probably don\u0027t want to do all this work yourself, feel free to file a bug a https://bugs.chromium.org/p/pdfium/issues/list, and either myself or thestig will take care of it.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "7b92df48d2859b574a8860f0d8a1e30be306bb05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
