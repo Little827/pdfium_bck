@@ -278,14 +278,15 @@ void CFX_DIBitmap::TransferEqualFormatsOneBPP(
   }
 }
 
-bool CFX_DIBitmap::LoadChannel(FXDIB_Channel destChannel,
-                               const RetainPtr<CFX_DIBBase>& pSrcBitmap,
-                               FXDIB_Channel srcChannel) {
+bool CFX_DIBitmap::LoadChannelFromAlpha(
+    FXDIB_Channel destChannel,
+    const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
   if (!m_pBuffer)
     return false;
 
   RetainPtr<CFX_DIBBase> pSrcClone = pSrcBitmap;
   int srcOffset;
+  FXDIB_Channel srcChannel = FXDIB_Alpha;
   if (srcChannel == FXDIB_Alpha) {
     if (!pSrcBitmap->HasAlpha() && !pSrcBitmap->IsAlphaMask())
       return false;
@@ -451,7 +452,7 @@ bool CFX_DIBitmap::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
     return false;
 
   if (!IsAlphaMask() && !HasAlpha())
-    return LoadChannel(FXDIB_Alpha, pSrcBitmap, FXDIB_Alpha);
+    return LoadChannelFromAlpha(FXDIB_Alpha, pSrcBitmap);
 
   RetainPtr<CFX_DIBitmap> pSrcClone = pSrcBitmap.As<CFX_DIBitmap>();
   if (pSrcBitmap->GetWidth() != m_Width ||
