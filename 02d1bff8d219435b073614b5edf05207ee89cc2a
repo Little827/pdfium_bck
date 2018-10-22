@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed72c228_386f5a5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-22T19:02:46Z",
+      "side": 1,
+      "message": "extra blank line",
+      "revId": "02d1bff8d219435b073614b5edf05207ee89cc2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad97fed_61646aff",
+        "filename": "core/fxge/cfx_color.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-22T19:02:46Z",
+      "side": 1,
+      "message": "Maybe use static_assert() to enforce this?",
+      "revId": "02d1bff8d219435b073614b5edf05207ee89cc2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
