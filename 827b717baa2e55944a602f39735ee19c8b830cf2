@@ -1,4 +1,68 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540256112 -0700\nnonce ADWBXRBtPzYOQ0hXjk6dgKyl/dHBLRm/vareUx/q1sNKIpub7V5PGXHkbOxR8zwasp3tqQhW4ZzN\n\n0000000000000000000000000000000000000000 827b717baa2e55944a602f39735ee19c8b830cf2 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvOcXAACgkQqzYtYVpm\n/Xt+wQf+IpYfu91lrOgqgDNyjHtSuw4o8JN3Q7MZygjIphSqJGKIZ1IlzT0WTv9P\nAb2brjDcyO1fy0gjupIfqMNawQRRGky1nPzVB8Nnv6URaxTRlG0PZzW2HFsVYFjU\nVani6TTk5UQvewNXGQtT7j548fMrEC5yeoP+0rzecJT5ZFso2fLhh9e6w8I27KTW\nS/rCL8kbVfeRe4TzJiNTi3IhhWhnZRvdjFltfEdx+9PkBxIkM8GYvV5iczEvTrMS\nwpMZ2u+UztjzgTcU9/17x/hpdhfQzQSwwvJ1UsWL4pDmkFjQokIbGOby6GPZGyUM\nmSnYCMdkbn3KtIVEiq8f/h0mlovEwA\u003d\u003d\n\u003d3WVe\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "734e03bc_95f44be2",
+        "filename": "fpdfsdk/fpdf_editimg_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T16:45:26Z",
+      "side": 1,
+      "message": "nit: Image vs. Img: either the file should be renamed ton fpdf_edit_image_unittest, or this should be PDFEditImgTest.",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "827b717baa2e55944a602f39735ee19c8b830cf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9bef807_8c35e2e4",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T16:45:26Z",
+      "side": 1,
+      "message": "In some sense, this test ought to be made after applying CPDFPageObjectFromFPDFPageObject().  CPDFPageObjectFromFPDFPageObject() has to handle NULLs, and down-the-road it might apply some other validation to the input (eg. determining if its a pointer to some other kind of PDF object somehow) and return null ...",
+      "range": {
+        "startLine": 802,
+        "startChar": 2,
+        "endLine": 803,
+        "endChar": 14
+      },
+      "revId": "827b717baa2e55944a602f39735ee19c8b830cf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09227fa6_06e1f815",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T16:45:26Z",
+      "side": 1,
+      "message": "... at which point this becomes \n  return pPageObj ? pPageObj-\u003em_GraphState.GetLineJoin() : -1;",
+      "revId": "827b717baa2e55944a602f39735ee19c8b830cf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
