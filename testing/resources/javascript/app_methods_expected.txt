@@ -1,3 +1,12 @@
+Alert: PASS: app.constructor.prototype == app.__proto__ = true
+Alert: PASS: new app() threw error TypeError: app is not a constructor
+Alert: PASS: new app.__proto__() threw error TypeError: app.__proto__ is not a constructor
+Alert: PASS: new app.prototype() threw error TypeError: app.prototype is not a constructor
+Alert: PASS: new app.constructor() threw error not a dynamic object
+Alert: PASS: app() threw error TypeError: app is not a function
+Alert: PASS: app.__proto__() threw error TypeError: app.__proto__ is not a function
+Alert: PASS: app.prototype() threw error TypeError: app.prototype is not a function
+Alert: PASS: app.constructor() threw error illegal constructor
 title[icon=1,type=2]: message
 Alert: PASS: app.alert('message', 1, 2, 'title') = 0
 title: message

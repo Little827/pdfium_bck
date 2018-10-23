@@ -54,6 +54,17 @@ function expectError(str) {
 }
 
 try {
+  // app is a pre-existing "singleton", and you can't make your own one.
+  expect('app.constructor.prototype == app.__proto__', true);
+  expectError("new app()");
+  expectError("new app.__proto__()");
+  expectError("new app.prototype()");
+  expectError("new app.constructor()");
+  expectError("app()");
+  expectError("app.__proto__()");
+  expectError("app.prototype()");
+  expectError("app.constructor()");
+
   expect("app.alert('message', 1, 2, 'title')", 0);
   expect("app.alert({'cMsg': 'message', 'cTitle': 'title'})", 0);
   expect("app.alert({'cMsg': 'message', 'cTitle': 'title', 'nIcon': 3, 'nType': 4})", 0);
