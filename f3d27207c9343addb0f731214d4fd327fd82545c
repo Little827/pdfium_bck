@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acad84f6_9032eb0f",
+        "filename": "testing/resources/javascript/constructor.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-23T23:24:43Z",
+      "side": 1,
+      "message": "Does JS style prefer 1 var decl per line?",
+      "revId": "f3d27207c9343addb0f731214d4fd327fd82545c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
