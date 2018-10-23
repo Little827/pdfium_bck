@@ -92,31 +92,6 @@ endobj
   {{streamlen}}
 >>
 stream
-function testGetField() {
-  try {
-    var field = this.getField("MyField");
-    app.alert("field is " + field.name);
-    var sub_a = this.getField("MyField.Sub_A");
-    app.alert("sub_a is " + sub_a.name);
-    var nonesuch = this.getField("MyField.nonesuch");
-    app.alert("nonesuch is " + nonesuch);
-  } catch (e) {
-    app.alert("Unexpected error: " + e);
-  }
-}
-
-function testGetArray() {
-  try {
-    var subs = this.getField("MyField").getArray();
-    app.alert("found " + subs.length + " sub-fields:");
-    for (i = 0; i < subs.length; ++i) {
-      app.alert(subs[i].name);
-    }
-  } catch (e) {
-    app.alert("Unexpected error: " + e);
-  }
-}
-
 function testReadProperty(field, prop, expected) {
   try {
     var actual = field[prop];
@@ -269,19 +244,7 @@ function testPropertiesCase(field) {
     app.alert("Unexpected error: " + e);
   }
 }
-
-function testMethods() {
-  try {
-    var field = this.getField("MyField");
-  } catch (e) {
-    app.alert("Unexpected error: " + e);
-  }
-}
-
-testGetField();
-testGetArray();
 testProperties();
-testMethods();
 endstream
 endobj
 {{xref}}
