@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540259283 -0700\nnonce ADWBXRCs/WBt6bhCJCfvISLGUPfhwGDh4g8Nr5NG0YrtY4xLRh6Qs5ha6yJiYbvpJUH8A7fcdmoo\n\n0000000000000000000000000000000000000000 4b2319bd90886f7903593c5ecaef5df9b5b375d6 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvOfdMACgkQqzYtYVpm\n/Xt1MAgAybN1Y03PK3vK4RXzS4SsTB3HpbrHGUA6EibvJ3dhySIrVXGzK7mPZMQj\nsIYMfHnrxXRCbwDezJ/OGebRh22H7pLu5T6vFLtjR6GhocbE2hJ8Fr+UQhJTVOgk\n5JDcmDyY9NBmppGrdpUAZpqAuRl1G5K4R6TFAuKFgyExhnJRHqbsYvLLH4D8w1wi\nk0FdWcPJIB61yRG7+mJRi4ZOX2m+LzOJa6HppArckDRuqsjBPDHgAwjk73MaAUS/\nAoDCy4AJ17kG2a+gXenNxb0A3pgoympKe+KcVSLoxqDgd4a2+yKnpxmobs1IoMG6\nz5an4pd7Tyfhu+i5JFbG8xevrZ3fkQ\u003d\u003d\n\u003dIx+3\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b5ffb47_f09efaf7",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T17:11:48Z",
+      "side": 1,
+      "message": "nit: gets combined below.",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "4b2319bd90886f7903593c5ecaef5df9b5b375d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f8b3c4_cbf2a4e2",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T17:11:48Z",
+      "side": 1,
+      "message": "nit: CPDFPageObjectFromFPDFPageObject() handles null image_object and might someday further validate its args, returning NULL for a bad non-null input.  so we can blindly pass image_object and then check the result for nullness before deref.\n\nfollow-on: There ought to be a ToImage() function in addition to the AsImage() method that handles nullness (as we\u0027ve done with CPDF_ parser objects).\n\nWe can put this altogether as:\n\nCPDF_ImageObject* pImgObject \u003d ToImage(CPDFPageObjectFromFPDFPageObject(image_object));\n\nand then do one nullness check on pImgObj as you have it.",
+      "range": {
+        "startLine": 127,
+        "startChar": 6,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "4b2319bd90886f7903593c5ecaef5df9b5b375d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
