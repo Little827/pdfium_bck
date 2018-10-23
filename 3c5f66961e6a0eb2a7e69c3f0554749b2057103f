@@ -17,6 +17,47 @@
       "revId": "3c5f66961e6a0eb2a7e69c3f0554749b2057103f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "954b8508_6d204061",
+        "filename": "core/fpdfapi/page/cpdf_pathobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T17:02:30Z",
+      "side": 1,
+      "message": "I\u0027d vote for path() for consistency with those below.",
+      "parentUuid": "e14390f8_a09afda7",
+      "revId": "3c5f66961e6a0eb2a7e69c3f0554749b2057103f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badd4bfc_38f6316b",
+        "filename": "core/fpdfapi/page/cpdf_pathobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T17:02:30Z",
+      "side": 1,
+      "message": "nit: I\u0027d order these members as stroke, filltype, path, matrix since I like POD to come before non-pod in general",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "3c5f66961e6a0eb2a7e69c3f0554749b2057103f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
