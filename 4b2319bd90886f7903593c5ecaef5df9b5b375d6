@@ -46,6 +46,29 @@
       "revId": "4b2319bd90886f7903593c5ecaef5df9b5b375d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ce95536_078b7cf7",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T17:12:56Z",
+      "side": 1,
+      "message": "follow-on: a std::tie() helper method on matrix would be elegant.",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 16
+      },
+      "revId": "4b2319bd90886f7903593c5ecaef5df9b5b375d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
