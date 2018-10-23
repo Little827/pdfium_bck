@@ -48,7 +48,7 @@ CPDF_PathObject* CPDFPathObjectFromFPDFPageObject(FPDF_PAGEOBJECT page_object) {
 FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV FPDFPageObj_CreateNewPath(float x,
                                                                     float y) {
   auto pPathObj = pdfium::MakeUnique<CPDF_PathObject>();
-  pPathObj->m_Path.AppendPoint(CFX_PointF(x, y), FXPT_TYPE::MoveTo, false);
+  pPathObj->GetPath().AppendPoint(CFX_PointF(x, y), FXPT_TYPE::MoveTo, false);
   pPathObj->DefaultStates();
 
   // Caller takes ownership.
@@ -60,7 +60,7 @@ FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV FPDFPageObj_CreateNewRect(float x,
                                                                     float w,
                                                                     float h) {
   auto pPathObj = pdfium::MakeUnique<CPDF_PathObject>();
-  pPathObj->m_Path.AppendRect(x, y, x + w, y + h);
+  pPathObj->GetPath().AppendRect(x, y, x + w, y + h);
   pPathObj->DefaultStates();
 
   // Caller takes ownership.
@@ -130,7 +130,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPath_CountSegments(FPDF_PAGEOBJECT path) {
   auto* pPathObj = CPDFPathObjectFromFPDFPageObject(path);
   if (!pPathObj)
     return -1;
-  return pdfium::CollectionSize<int>(pPathObj->m_Path.GetPoints());
+  return pdfium::CollectionSize<int>(pPathObj->path().GetPoints());
 }
 
 FPDF_EXPORT FPDF_PATHSEGMENT FPDF_CALLCONV
@@ -139,7 +139,7 @@ FPDFPath_GetPathSegment(FPDF_PAGEOBJECT path, int index) {
   if (!pPathObj)
     return nullptr;
 
-  const std::vector<FX_PATHPOINT>& points = pPathObj->m_Path.GetPoints();
+  const std::vector<FX_PATHPOINT>& points = pPathObj->path().GetPoints();
   if (!pdfium::IndexInBounds(points, index))
     return nullptr;
 
@@ -153,7 +153,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_MoveTo(FPDF_PAGEOBJECT path,
   if (!pPathObj)
     return false;
 
-  pPathObj->m_Path.AppendPoint(CFX_PointF(x, y), FXPT_TYPE::MoveTo, false);
+  pPathObj->GetPath().AppendPoint(CFX_PointF(x, y), FXPT_TYPE::MoveTo, false);
   pPathObj->SetDirty(true);
   return true;
 }
@@ -165,7 +165,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_LineTo(FPDF_PAGEOBJECT path,
   if (!pPathObj)
     return false;
 
-  pPathObj->m_Path.AppendPoint(CFX_PointF(x, y), FXPT_TYPE::LineTo, false);
+  pPathObj->GetPath().AppendPoint(CFX_PointF(x, y), FXPT_TYPE::LineTo, false);
   pPathObj->SetDirty(true);
   return true;
 }
@@ -181,9 +181,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_BezierTo(FPDF_PAGEOBJECT path,
   if (!pPathObj)
     return false;
 
-  pPathObj->m_Path.AppendPoint(CFX_PointF(x1, y1), FXPT_TYPE::BezierTo, false);
-  pPathObj->m_Path.AppendPoint(CFX_PointF(x2, y2), FXPT_TYPE::BezierTo, false);
-  pPathObj->m_Path.AppendPoint(CFX_PointF(x3, y3), FXPT_TYPE::BezierTo, false);
+  CPDF_Path& cpath = pPathObj->GetPath();
+  cpath.AppendPoint(CFX_PointF(x1, y1), FXPT_TYPE::BezierTo, false);
+  cpath.AppendPoint(CFX_PointF(x2, y2), FXPT_TYPE::BezierTo, false);
+  cpath.AppendPoint(CFX_PointF(x3, y3), FXPT_TYPE::BezierTo, false);
   pPathObj->SetDirty(true);
   return true;
 }
@@ -193,10 +194,11 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_Close(FPDF_PAGEOBJECT path) {
   if (!pPathObj)
     return false;
 
-  if (pPathObj->m_Path.GetPoints().empty())
+  CPDF_Path& cpath = pPathObj->GetPath();
+  if (cpath.GetPoints().empty())
     return false;
 
-  pPathObj->m_Path.ClosePath();
+  cpath.ClosePath();
   pPathObj->SetDirty(true);
   return true;
 }
