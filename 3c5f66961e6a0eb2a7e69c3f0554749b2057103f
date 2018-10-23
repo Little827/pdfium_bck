@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540253241 -0700\nnonce ADWBXRB2xxCvtPA7RTMmrTxAsNl4jn5HLiIDjxRs7xtGXJlL36BJBk0n8bldRFqbnMrLh54ZjmEt\n\n0000000000000000000000000000000000000000 3c5f66961e6a0eb2a7e69c3f0554749b2057103f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dmake-cpdf-pathobject\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvOZjkACgkQqzYtYVpm\n/XsQfQf9EWEPWYlnS2LUqkfLpv6rc50QYwJK6XFvFpqJFaBuBb0Os057N8v/VGHP\nO4ONqP/ZdnbfUKup5MSDZgltt373C/gz1Bxbdit3zxq+kSlBjKET/+tBDLtrWR3b\n2mtTU534Pt0hocL/csFJ4j91IAuA7soSvJEB0wDC8bDtDrwPeVETH7DB88KEOrtI\nJwrgpU5a+wCRwgZBViO3TH9mg/vPe6C4XXr6qJejsvd7XNMCYoUNWMZZrAXuUH8n\n4SpBZH/lxqzxpdTF09BbcBKxJbdxAkWan6lSreO2Jnn/jeDeEPya3ChBYJVmlzs6\njtZqxtNirvlP99p2LqjjM0eOfHUkdw\u003d\u003d\n\u003dlQHa\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e14390f8_a09afda7",
+        "filename": "core/fpdfapi/page/cpdf_pathobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-23T01:52:49Z",
+      "side": 1,
+      "message": "Or just path() ?",
+      "revId": "3c5f66961e6a0eb2a7e69c3f0554749b2057103f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
