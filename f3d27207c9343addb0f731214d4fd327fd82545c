@@ -16,6 +16,24 @@
       "revId": "f3d27207c9343addb0f731214d4fd327fd82545c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8254f474_24d42d46",
+        "filename": "testing/resources/javascript/constructor.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-23T23:40:26Z",
+      "side": 1,
+      "message": "There\u0027s this gotcha in JS called variable hoisting that leads to surprises; some folks consider the way to avoid surprises is to have but one var statement in a function, which is why I did this.\n\nGoogle style guide says never use var, use let/const as let doesn\u0027t have the hoisting issue so one per line is appropriate. Converted to Google Style.",
+      "parentUuid": "acad84f6_9032eb0f",
+      "revId": "f3d27207c9343addb0f731214d4fd327fd82545c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
