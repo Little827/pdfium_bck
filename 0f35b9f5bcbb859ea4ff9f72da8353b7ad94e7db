@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8918364c_b5c389cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-24T23:45:49Z",
+      "side": 1,
+      "message": "BTW. Bugdroid has a better change of picking this up with the chromium: prefix.",
+      "revId": "0f35b9f5bcbb859ea4ff9f72da8353b7ad94e7db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c688bcb2_32082c40",
+        "filename": "fpdfsdk/formfiller/cffl_checkbox.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-24T23:45:49Z",
+      "side": 1,
+      "message": "Is the compiler ok without the std::move()?",
+      "revId": "0f35b9f5bcbb859ea4ff9f72da8353b7ad94e7db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
