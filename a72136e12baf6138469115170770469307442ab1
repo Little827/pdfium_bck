@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540368026 -0700\nnonce ADWBXRAu09bZAAByqVjX0zoqjsXkHDOcUV1b8iilAjQGdG6WAo6IxL3YLTeCcD/3MKSkxkgbpdqM\n\n0000000000000000000000000000000000000000 a72136e12baf6138469115170770469307442ab1 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dadd-cfx-matrix\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvQJpoACgkQqzYtYVpm\n/XvDewgAmWVuV+KuxOs9dAUcZjKZuPekjelqOYs0lm9am01/IpdCjJr0yN/NuPmr\ndZbPbFZHQbEOiPJ3rTEvUxw1poAyhBZ9jAEVTs1cj8S2uQ2kV1C7tczqwtu3DRGD\n2JVq1ukSjFwcLI2upkF1caF9BJHnEfBVjVqofwJ2roSL3M3RPJPRMfVjvRi+xTi/\nWK7kNiW2G3Qctw2nQGM4MmFNckpiGYY/MhwoEBDc6og7v74YEvA3XpZO0GRU+e3t\nF7mlO5C4bxz6H9exU1QeCKhdzZe1MpWKlfuXu5c2puq5Pj9Ud9LOXbdiBOD/lPap\nn5XmGWdC5CMVasCu6M3vqlnkPD6aQQ\u003d\u003d\n\u003deRPz\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ecb6d12_3dc80d7e",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-24T17:21:03Z",
+      "side": 1,
+      "message": "nit: or just return {a, b, c, d, e, f} ?",
+      "range": {
+        "startLine": 305,
+        "startChar": 10,
+        "endLine": 305,
+        "endChar": 43
+      },
+      "revId": "a72136e12baf6138469115170770469307442ab1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e12b8eb_99eb4c47",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-24T17:21:03Z",
+      "side": 1,
+      "message": "nit: or maybe auto tuple \u003d m.AsTuple();",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 28
+      },
+      "revId": "a72136e12baf6138469115170770469307442ab1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d0cb251_2d3dfc20",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-24T17:21:03Z",
+      "side": 1,
+      "message": "then std::get\u003c0\u003e(tuple); etc. \n\n(since we know std::tie() works if this is a legit tuple).",
+      "range": {
+        "startLine": 281,
+        "startChar": 24,
+        "endLine": 281,
+        "endChar": 25
+      },
+      "revId": "a72136e12baf6138469115170770469307442ab1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
