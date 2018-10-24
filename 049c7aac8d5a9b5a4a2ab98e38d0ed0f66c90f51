@@ -22,6 +22,30 @@
       "revId": "049c7aac8d5a9b5a4a2ab98e38d0ed0f66c90f51",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee1704e_c899e549",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-24T17:23:23Z",
+      "side": 0,
+      "message": "Also already initialized to 0 when |pPathObj| just got created.",
+      "parentUuid": "40ae96ee_46340b35",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "049c7aac8d5a9b5a4a2ab98e38d0ed0f66c90f51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
