@@ -17,6 +17,10 @@
 #include "fxjs/cjs_document.h"
 #include "fxjs/cjs_object.h"
 
+namespace fxjs {
+bool g_cjs_lock = false;
+}  // namespace fxjs
+
 namespace {
 
 double GetLocalTZA() {
