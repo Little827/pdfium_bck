@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6c0e623b_d5b4182c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-24T23:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8918364c_b5c389cd",
+      "revId": "0f35b9f5bcbb859ea4ff9f72da8353b7ad94e7db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c688bcb2_32082c40",
         "filename": "fpdfsdk/formfiller/cffl_checkbox.cpp",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2018-10-24T23:45:49Z",
       "side": 1,
       "message": "Is the compiler ok without the std::move()?",
+      "revId": "0f35b9f5bcbb859ea4ff9f72da8353b7ad94e7db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2472081_74d55456",
+        "filename": "fpdfsdk/formfiller/cffl_checkbox.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-24T23:55:22Z",
+      "side": 1,
+      "message": "I know some version of MSVC was not happy when the return type was unique_ptr to superclass without the move.  The pattern is still\nprevalent in chrome for this exact case:\n\nhttps://cs.chromium.org/search/?q\u003dreturn%5Csstd::move%5C(%5Ba-z%5D*%5C)\u0026sq\u003dpackage:chromium\u0026type\u003dcs",
+      "parentUuid": "c688bcb2_32082c40",
       "revId": "0f35b9f5bcbb859ea4ff9f72da8353b7ad94e7db",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "0f35b9f5bcbb859ea4ff9f72da8353b7ad94e7db",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "369c65c1_0219a7a4",
+        "filename": "fpdfsdk/formfiller/cffl_formfiller.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-24T23:55:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3920b52a_ee6330fe",
+      "revId": "0f35b9f5bcbb859ea4ff9f72da8353b7ad94e7db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
