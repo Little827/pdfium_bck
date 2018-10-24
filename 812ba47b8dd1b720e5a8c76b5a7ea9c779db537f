@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540412236 -0700\nnonce ADWBXRDrdbEhRXV86XLylFQrGnvR406TyQmjrOgTGII0dHXQAQuJjVx4QY8f+3lp7kLkjrKW7wAS\n\n0000000000000000000000000000000000000000 812ba47b8dd1b720e5a8c76b5a7ea9c779db537f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvQ00wACgkQqzYtYVpm\n/XugYAf/cmWSIvubb/SrxkcVnZhnziY4XnrXYMMPsLdAWnSwtAAOO+0ha2RTkfXh\nAmxK/y3W5lRpyKNybG4eFDsjTMhbBHPXVTGI/qJ9KzvNz1cn4gvynqhJSKKkX8ZT\nIuORtnnb4Ei8xA7J+QPRluyrzjJkIgvDAKHvQ0mPhKXtnjMxl5aXqzffc6dagdCL\nHFdFM9IBUobfhcHHfR+Be4RVeefR5/vXzlhUyB8pw3jLo4SUCILHAB2iZTRlTr0x\nv3TjFZgnZdgZCe6nhpAI1BmqWIRGg5MtV/o+PoFf0SrhNvxSYQHgs+sdWDQhFzkJ\nYHu4QpfSmiP+RWn8LQ8S43wD+qtlSg\u003d\u003d\n\u003dUYMy\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5fbf08e_4ed20fe1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-24T21:31:09Z",
+      "side": 1,
+      "message": "nit: maybe say that ASSERT() is defined in fx_system.h and is the\nsantioned wrapper for assert() or equivalent on a given platform.",
+      "revId": "812ba47b8dd1b720e5a8c76b5a7ea9c779db537f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
