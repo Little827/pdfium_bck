@@ -23,7 +23,7 @@ enum PWL_EDIT_ALIGNFORMAT_V { PEAV_TOP = 0, PEAV_CENTER, PEAV_BOTTOM };
 
 class CPWL_EditCtrl : public CPWL_Wnd {
  public:
-  CPWL_EditCtrl();
+  explicit CPWL_EditCtrl(std::unique_ptr<PrivateData> pAttachedData);
   ~CPWL_EditCtrl() override;
 
   void SetSelection(int32_t nStartChar, int32_t nEndChar);
@@ -85,7 +85,8 @@ class CPWL_EditCtrl : public CPWL_Wnd {
   bool m_bMouseDown = false;
 
  private:
-  void CreateEditCaret(const CreateParams& cp);
+  void CreateEditCaret(const CreateParams& cp,
+                       std::unique_ptr<PrivateData> pAttachedData);
 
   int32_t m_nCharSet = FX_CHARSET_Default;
 };
