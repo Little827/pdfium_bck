@@ -46,6 +46,30 @@
       "revId": "98d1b48e9a3471a02968f3d12692645fa0fcb50d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb74382c_886a7348",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-25T20:32:50Z",
+      "side": 0,
+      "message": "Will follow up.",
+      "parentUuid": "a46fd0a9_419c4a79",
+      "range": {
+        "startLine": 501,
+        "startChar": 1,
+        "endLine": 502,
+        "endChar": 66
+      },
+      "revId": "98d1b48e9a3471a02968f3d12692645fa0fcb50d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
