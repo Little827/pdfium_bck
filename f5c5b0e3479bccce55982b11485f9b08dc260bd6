@@ -3,6 +3,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e6e79ab3_965e51f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:03:10Z",
+      "side": 1,
+      "message": "There\u0027s a bug number for \"too many #defines\" IIRC.",
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad1e6559_92b68818",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 2
