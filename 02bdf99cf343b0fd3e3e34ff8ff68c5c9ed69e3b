@@ -23,6 +23,30 @@
       "revId": "02bdf99cf343b0fd3e3e34ff8ff68c5c9ed69e3b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be9b7a14_b7f7338f",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-25T18:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff3e5db_9772e16e",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "02bdf99cf343b0fd3e3e34ff8ff68c5c9ed69e3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
