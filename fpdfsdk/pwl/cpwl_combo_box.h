@@ -45,7 +45,7 @@ class CPWL_ComboBox final : public CPWL_Wnd {
   explicit CPWL_ComboBox(std::unique_ptr<PrivateData> pAttachedData);
   ~CPWL_ComboBox() override;
 
-  CPWL_Edit* GetEdit() const { return m_pEdit.Get(); }
+  CPWL_Edit* GetEdit() const { return m_pEdit.get(); }
 
   // CPWL_Wnd:
   void OnCreate(CreateParams* pParamsToAdjust) override;
@@ -90,9 +90,9 @@ class CPWL_ComboBox final : public CPWL_Wnd {
   // Returns |true| iff this instance is still allocated.
   bool SetPopup(bool bPopup);
 
-  UnownedPtr<CPWL_Edit> m_pEdit;
-  UnownedPtr<CPWL_CBButton> m_pButton;
-  UnownedPtr<CPWL_CBListBox> m_pList;
+  std::unique_ptr<CPWL_Edit> m_pEdit;
+  std::unique_ptr<CPWL_CBButton> m_pButton;
+  std::unique_ptr<CPWL_CBListBox> m_pList;
   CFX_FloatRect m_rcOldWindow;
   bool m_bPopup = false;
   bool m_bBottom = true;

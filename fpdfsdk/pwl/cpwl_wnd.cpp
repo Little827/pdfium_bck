@@ -478,7 +478,7 @@ const CPWL_Dash& CPWL_Wnd::GetBorderDash() const {
 }
 
 CPWL_ScrollBar* CPWL_Wnd::GetVScrollBar() const {
-  return HasFlag(PWS_VSCROLL) ? m_pVScrollBar.Get() : nullptr;
+  return HasFlag(PWS_VSCROLL) ? m_pVScrollBar.get() : nullptr;
 }
 
 void CPWL_Wnd::CreateScrollBar(const CreateParams& cp) {
@@ -500,8 +500,8 @@ void CPWL_Wnd::CreateVScrollBar(const CreateParams& cp) {
   scp.eCursorType = FXCT_ARROW;
   scp.nTransparency = PWL_SCROLLBAR_TRANSPARENCY;
 
-  // TODO(tsepez): leaks?
-  m_pVScrollBar = new CPWL_ScrollBar(CloneAttachedData(), SBT_VSCROLL);
+  m_pVScrollBar =
+      pdfium::MakeUnique<CPWL_ScrollBar>(CloneAttachedData(), SBT_VSCROLL);
   m_pVScrollBar->Create(scp);
 }
 

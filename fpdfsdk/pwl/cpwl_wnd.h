@@ -311,7 +311,7 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   CreateParams m_CreationParams;
   std::unique_ptr<PrivateData> m_pAttachedData;
   std::vector<CPWL_Wnd*> m_Children;
-  UnownedPtr<CPWL_ScrollBar> m_pVScrollBar;
+  std::unique_ptr<CPWL_ScrollBar> m_pVScrollBar;
   CFX_FloatRect m_rcWindow;
   CFX_FloatRect m_rcClip;
   bool m_bCreated = false;

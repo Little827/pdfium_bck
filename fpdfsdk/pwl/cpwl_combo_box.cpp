@@ -171,9 +171,9 @@ void CPWL_ComboBox::OnDestroy() {
   // subclasses, implement the virtual OnDestroy method that does the
   // cleanup first, then invokes the superclass OnDestroy ... gee,
   // like a dtor would.
-  m_pList.Release();
-  m_pButton.Release();
-  m_pEdit.Release();
+  m_pList.reset();
+  m_pButton.reset();
+  m_pEdit.reset();
   CPWL_Wnd::OnDestroy();
 }
 
@@ -272,8 +272,7 @@ void CPWL_ComboBox::CreateEdit(const CreateParams& cp) {
   if (m_pEdit)
     return;
 
-  // TODO(tsepez): pretty sure this leaks.
-  m_pEdit = new CPWL_Edit(CloneAttachedData());
+  m_pEdit = pdfium::MakeUnique<CPWL_Edit>(CloneAttachedData());
   m_pEdit->AttachFFLData(m_pFormFiller.Get());
 
   CreateParams ecp = cp;
@@ -297,8 +296,7 @@ void CPWL_ComboBox::CreateButton(const CreateParams& cp) {
   if (m_pButton)
     return;
 
-  // TODO(tsepez): leaks?
-  m_pButton = new CPWL_CBButton(CloneAttachedData());
+  m_pButton = pdfium::MakeUnique<CPWL_CBButton>(CloneAttachedData());
 
   CreateParams bcp = cp;
   bcp.pParentWnd = this;
@@ -316,8 +314,7 @@ void CPWL_ComboBox::CreateListBox(const CreateParams& cp) {
   if (m_pList)
     return;
 
-  //  TODO(tsepez): leaks?
-  m_pList = new CPWL_CBListBox(CloneAttachedData());
+  m_pList = pdfium::MakeUnique<CPWL_CBListBox>(CloneAttachedData());
   m_pList->AttachFFLData(m_pFormFiller.Get());
 
   CreateParams lcp = cp;
@@ -564,7 +561,7 @@ bool CPWL_ComboBox::OnChar(uint16_t nChar, uint32_t nFlag) {
 }
 
 void CPWL_ComboBox::NotifyLButtonDown(CPWL_Wnd* child, const CFX_PointF& pos) {
-  if (child == m_pButton) {
+  if (child == m_pButton.get()) {
     SetPopup(!m_bPopup);
     // Note, |this| may no longer be viable at this point. If more work needs to
     // be done, check the return value of SetPopup().
@@ -572,7 +569,7 @@ void CPWL_ComboBox::NotifyLButtonDown(CPWL_Wnd* child, const CFX_PointF& pos) {
 }
 
 void CPWL_ComboBox::NotifyLButtonUp(CPWL_Wnd* child, const CFX_PointF& pos) {
-  if (!m_pEdit || !m_pList || child != m_pList)
+  if (!m_pEdit || !m_pList || child != m_pList.get())
     return;
 
   SetSelectText();
