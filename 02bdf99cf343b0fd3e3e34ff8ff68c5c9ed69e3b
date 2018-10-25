@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540489825 -0700\nnonce ADWBXRDmmnzZtrUDugXTPYPK5Fc472cuCWJWORysx+Ro30qoWc9YaJPuQAWI9Yio1U+VPo+6p7id\n\n0000000000000000000000000000000000000000 02bdf99cf343b0fd3e3e34ff8ff68c5c9ed69e3b refs/for/refs/heads/master%notify\u003dNONE,m\u003daddress_comments,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvSAmEACgkQqzYtYVpm\n/XujiAf7BkpfW4S989B1NPCjwxThmmaFnb4muBV25gJUE4C6YSGSC4rKJKuX+orV\ngd5Dg9XkYBtEWEoubq0qFQOrEiHy2W03DJuXb0ky4/T7I0z9N2DeDSN0gTjwE0Vy\nzo4O+5+CNg16jyzwnU1J3T/mryf6+FUEF/M1ZxOklDeNup6nzxZop8j9AC0n6BUs\nw8BysWRaqb29jzGML2SDkEgS6nEzWdKtzck/UukivnUGlOqc5gy2wIo5z0mnHqiP\nK/2VjHFyctzF1LgRffQmtgDhBH6g/pEUye9LZ5QBrkE+CFUx2DFFfkdhdVLm8e32\nXcW5WiVV3ccf2azecoW2girhhbQ3oQ\u003d\u003d\n\u003ddnTi\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ff3e5db_9772e16e",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T18:09:30Z",
+      "side": 1,
+      "message": "nit: having assigned 0 above for emphasis, we can remove the other initializers.",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "02bdf99cf343b0fd3e3e34ff8ff68c5c9ed69e3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
