@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ae6ef11_541539a4",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:33:14Z",
+      "side": 0,
+      "message": "I\u0027d be happier if they were all gone, adds information at point of use to spell the whole thing out.",
+      "revId": "7581f1bb3124c703a66d8ed1ad464299a5484709",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
