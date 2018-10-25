@@ -964,3 +964,13 @@ std::pair<bool, bool> CFFL_InteractiveFormFiller::OnBeforeKeyStroke(
   pFormFiller->CommitData(privateData.pPageView, nFlag);
   return {false, true};
 }
+
+CFFL_PrivateData::CFFL_PrivateData() = default;
+
+CFFL_PrivateData::CFFL_PrivateData(const CFFL_PrivateData& that) = default;
+
+CFFL_PrivateData::~CFFL_PrivateData() = default;
+
+std::unique_ptr<CPWL_Wnd::PrivateData> CFFL_PrivateData::Clone() const {
+  return pdfium::MakeUnique<CFFL_PrivateData>(*this);
+}
