@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "904782eb_cb7a5741",
+        "filename": "fpdfsdk/pwl/cpwl_edit_ctrl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-25T22:30:40Z",
+      "side": 1,
+      "message": "Add TODO to check for leaks?",
+      "revId": "54261f3bf7f6c7be5a53acdc92b9ad2d8aebcefd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68eb939_9f8166ec",
+        "filename": "fpdfsdk/pwl/cpwl_list_box.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-25T22:30:40Z",
+      "side": 1,
+      "message": "Convert to MakeUnique?",
+      "range": {
+        "startLine": 69,
+        "startChar": 42,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "54261f3bf7f6c7be5a53acdc92b9ad2d8aebcefd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c3bb50_a15c3514",
+        "filename": "fpdfsdk/pwl/cpwl_special_button.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-25T22:30:40Z",
+      "side": 1,
+      "message": "Be consistent with line 32?",
+      "revId": "54261f3bf7f6c7be5a53acdc92b9ad2d8aebcefd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
