@@ -1,4 +1,189 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540429230 -0700\nnonce ADWBXRBkcp3HZEUzyOY/TBWrVK/NNvLdwSXcTBY3FPJ2efE9Yd+KpxkEb+42F3KzsJMa1U52Tlv2\n\n0000000000000000000000000000000000000000 f5c5b0e3479bccce55982b11485f9b08dc260bd6 refs/for/refs/heads/master%notify\u003dNONE,m\u003dsmaller_CL,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEyBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvRFa4ACgkQqzYtYVpm\n/XsIjQf4hl1bllLDFV1D95x7op7k+IRH0201eZ8pnW7EESqHxyCG1NjUHTcljVVq\nHY8MvQqTIewNMv+nbqfn0X03iwXYze7b2evuQAtvlVuzEmdilPMrNaRFlq0MVMZF\nrXG2FReR0uRs/KekBk+eyDd5koX4X3cIsB05yEquwyd+MWE68k9D2iSIzhtFGGTR\n5Xe3ZgLaj4XoI7JZm/DzUXnm1iLwlXBFjyIwUGvA0hE6eNa1/rl+NeOs9mAuJuUK\nWRzpqSB/9PwjGApA4j8IM78RKkd1kUvvGMH2qlVhIk/PIZJtnB4kqUNCe33PMOoy\nb0UDHmp27TSS2CYurv8Fb4XYctY8\n\u003dJMeV\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad1e6559_92b68818",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2474,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "\u003e or !\u003d ??? In other places we compute  blend_mode !\u003d BlendMode::kNormal \u0026\u0026 bIsolated",
+      "range": {
+        "startLine": 2474,
+        "startChar": 40,
+        "endLine": 2474,
+        "endChar": 42
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54cc4d0d_169f4435",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "nit: init in header while we\u0027er at it, then \u003d default.",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bcbbc9_22a42195",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "nit \u003d default;",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d114ed2_032fcadb",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "nit: init in header, \u003d default, and \u003d default on dtor.",
+      "range": {
+        "startLine": 2831,
+        "startChar": 2,
+        "endLine": 2832,
+        "endChar": 0
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a44afe5_0f841474",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "anything really depend on these values other than their ordering?  Maybe a comment about ordering since there\u0027s a \u003e comparision somewhere.  If values\ndon\u0027t matter, making them consecutive may give tighter dispatch in switch().",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3980d892_58153009",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "nit: local not needed.",
+      "range": {
+        "startLine": 489,
+        "startChar": 2,
+        "endLine": 489,
+        "endChar": 11
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c7a94f_40f0bfe8",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "nit: {} not needed.",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 2
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcbc2d2a_868616d0",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-25T17:02:37Z",
+      "side": 1,
+      "message": "nit: invert, series of early returns, ending with\n    return trans.IsGroup() || trans.IsIsolated();",
+      "range": {
+        "startLine": 505,
+        "startChar": 3,
+        "endLine": 514,
+        "endChar": 15
+      },
+      "revId": "f5c5b0e3479bccce55982b11485f9b08dc260bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
