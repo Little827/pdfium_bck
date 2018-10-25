@@ -39,7 +39,7 @@ class CFX_ImageRenderer {
   UnownedPtr<const CFX_ClipRgn> const m_pClipRgn;
   const CFX_Matrix m_Matrix;
   const int m_BitmapAlpha;
-  const int m_BlendType;
+  const BlendMode m_BlendType;
   const bool m_bRgbByteOrder;
   uint32_t m_MaskColor;
   std::unique_ptr<CFX_ImageTransformer> m_pTransformer;
