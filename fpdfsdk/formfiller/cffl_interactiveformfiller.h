@@ -160,10 +160,17 @@ class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
 
 class CFFL_PrivateData final : public CPWL_Wnd::PrivateData {
  public:
-  CPDFSDK_Widget* pWidget;
-  CPDFSDK_PageView* pPageView;
-  uint32_t nWidgetAppearanceAge;
-  uint32_t nWidgetValueAge;
+  CFFL_PrivateData();
+  CFFL_PrivateData(const CFFL_PrivateData& that);
+  ~CFFL_PrivateData() override;
+
+  // CPWL_Wnd::PrivateData:
+  std::unique_ptr<CPWL_Wnd::PrivateData> Clone() const override;
+
+  CPDFSDK_Widget* pWidget = nullptr;
+  CPDFSDK_PageView* pPageView = nullptr;
+  uint32_t nWidgetAppearanceAge = 0;
+  uint32_t nWidgetValueAge = 0;
 };
 
 #endif  // FPDFSDK_FORMFILLER_CFFL_INTERACTIVEFORMFILLER_H_

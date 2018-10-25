@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <sstream>
+#include <utility>
 
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/cfx_renderdevice.h"
@@ -25,6 +26,11 @@ constexpr float kComboBoxTriangleHalfLength = 3.0f;
 constexpr int kDefaultButtonWidth = 13;
 
 }  // namespace
+
+CPWL_CBListBox::CPWL_CBListBox(std::unique_ptr<PrivateData> pAttachedData)
+    : CPWL_ListBox(std::move(pAttachedData)) {}
+
+CPWL_CBListBox::~CPWL_CBListBox() = default;
 
 bool CPWL_CBListBox::OnLButtonUp(const CFX_PointF& point, uint32_t nFlag) {
   CPWL_Wnd::OnLButtonUp(point, nFlag);
@@ -94,6 +100,11 @@ bool CPWL_CBListBox::OnCharNotify(uint16_t nChar, uint32_t nFlag) {
   return OnNotifySelectionChanged(true, nFlag);
 }
 
+CPWL_CBButton::CPWL_CBButton(std::unique_ptr<PrivateData> pAttachedData)
+    : CPWL_Wnd(std::move(pAttachedData)) {}
+
+CPWL_CBButton::~CPWL_CBButton() = default;
+
 void CPWL_CBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
                                        const CFX_Matrix& mtUser2Device) {
   CPWL_Wnd::DrawThisAppearance(pDevice, mtUser2Device);
@@ -132,7 +143,6 @@ bool CPWL_CBButton::OnLButtonDown(const CFX_PointF& point, uint32_t nFlag) {
   CPWL_Wnd::OnLButtonDown(point, nFlag);
 
   SetCapture();
-
   if (CPWL_Wnd* pParent = GetParentWindow())
     pParent->NotifyLButtonDown(this, point);
 
@@ -143,13 +153,13 @@ bool CPWL_CBButton::OnLButtonUp(const CFX_PointF& point, uint32_t nFlag) {
   CPWL_Wnd::OnLButtonUp(point, nFlag);
 
   ReleaseCapture();
-
   return true;
 }
 
-CPWL_ComboBox::CPWL_ComboBox() {}
+CPWL_ComboBox::CPWL_ComboBox(std::unique_ptr<PrivateData> pAttachedData)
+    : CPWL_Wnd(std::move(pAttachedData)) {}
 
-CPWL_ComboBox::~CPWL_ComboBox() {}
+CPWL_ComboBox::~CPWL_ComboBox() = default;
 
 void CPWL_ComboBox::OnCreate(CreateParams* pParamsToAdjust) {
   pParamsToAdjust->dwFlags &= ~PWS_HSCROLL;
@@ -252,17 +262,20 @@ void CPWL_ComboBox::ClearSelection() {
     m_pEdit->ClearSelection();
 }
 
-void CPWL_ComboBox::CreateChildWnd(const CreateParams& cp) {
-  CreateEdit(cp);
-  CreateButton(cp);
-  CreateListBox(cp);
+void CPWL_ComboBox::CreateChildWnd(const CreateParams& cp,
+                                   const PrivateData* pAttachedData) {
+  CreateEdit(cp, pAttachedData);
+  CreateButton(cp, pAttachedData);
+  CreateListBox(cp, pAttachedData);
 }
 
-void CPWL_ComboBox::CreateEdit(const CreateParams& cp) {
+void CPWL_ComboBox::CreateEdit(const CreateParams& cp,
+                               const PrivateData* pAttachedData) {
   if (m_pEdit)
     return;
 
-  m_pEdit = new CPWL_Edit();
+  // TODO(tsepez): pretty sure this leaks.
+  m_pEdit = new CPWL_Edit(pAttachedData ? pAttachedData->Clone() : nullptr);
   m_pEdit->AttachFFLData(m_pFormFiller.Get());
 
   CreateParams ecp = cp;
@@ -282,11 +295,14 @@ void CPWL_ComboBox::CreateEdit(const CreateParams& cp) {
   m_pEdit->Create(ecp);
 }
 
-void CPWL_ComboBox::CreateButton(const CreateParams& cp) {
+void CPWL_ComboBox::CreateButton(const CreateParams& cp,
+                                 const PrivateData* pAttachedData) {
   if (m_pButton)
     return;
 
-  m_pButton = new CPWL_CBButton;
+  // TODO(tsepez): leaks?
+  m_pButton =
+      new CPWL_CBButton(pAttachedData ? pAttachedData->Clone() : nullptr);
 
   CreateParams bcp = cp;
   bcp.pParentWnd = this;
@@ -300,11 +316,14 @@ void CPWL_ComboBox::CreateButton(const CreateParams& cp) {
   m_pButton->Create(bcp);
 }
 
-void CPWL_ComboBox::CreateListBox(const CreateParams& cp) {
+void CPWL_ComboBox::CreateListBox(const CreateParams& cp,
+                                  const PrivateData* pAttachedData) {
   if (m_pList)
     return;
 
-  m_pList = new CPWL_CBListBox();
+  //  TODO(tsepez): leaks?
+  m_pList =
+      new CPWL_CBListBox(pAttachedData ? pAttachedData->Clone() : nullptr);
   m_pList->AttachFFLData(m_pFormFiller.Get());
 
   CreateParams lcp = cp;

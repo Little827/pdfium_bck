@@ -7,6 +7,8 @@
 #ifndef FPDFSDK_PWL_CPWL_COMBO_BOX_H_
 #define FPDFSDK_PWL_CPWL_COMBO_BOX_H_
 
+#include <memory>
+
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/pwl/cpwl_edit.h"
 #include "fpdfsdk/pwl/cpwl_list_box.h"
@@ -14,8 +16,8 @@
 
 class CPWL_CBListBox final : public CPWL_ListBox {
  public:
-  CPWL_CBListBox() {}
-  ~CPWL_CBListBox() override {}
+  explicit CPWL_CBListBox(std::unique_ptr<PrivateData> pAttachedData);
+  ~CPWL_CBListBox() override;
 
   // CPWL_ListBox
   bool OnLButtonUp(const CFX_PointF& point, uint32_t nFlag) override;
@@ -28,8 +30,8 @@ class CPWL_CBListBox final : public CPWL_ListBox {
 
 class CPWL_CBButton final : public CPWL_Wnd {
  public:
-  CPWL_CBButton() {}
-  ~CPWL_CBButton() override {}
+  explicit CPWL_CBButton(std::unique_ptr<PrivateData> pAttachedData);
+  ~CPWL_CBButton() override;
 
   // CPWL_Wnd
   void DrawThisAppearance(CFX_RenderDevice* pDevice,
@@ -40,7 +42,7 @@ class CPWL_CBButton final : public CPWL_Wnd {
 
 class CPWL_ComboBox final : public CPWL_Wnd {
  public:
-  CPWL_ComboBox();
+  explicit CPWL_ComboBox(std::unique_ptr<PrivateData> pAttachedData);
   ~CPWL_ComboBox() override;
 
   CPWL_Edit* GetEdit() const { return m_pEdit.Get(); }
@@ -52,7 +54,8 @@ class CPWL_ComboBox final : public CPWL_Wnd {
   bool OnChar(uint16_t nChar, uint32_t nFlag) override;
   void NotifyLButtonDown(CPWL_Wnd* child, const CFX_PointF& pos) override;
   void NotifyLButtonUp(CPWL_Wnd* child, const CFX_PointF& pos) override;
-  void CreateChildWnd(const CreateParams& cp) override;
+  void CreateChildWnd(const CreateParams& cp,
+                      const PrivateData* pAttachedData) override;
   bool RePosChildWnd() override;
   CFX_FloatRect GetFocusRect() const override;
   void SetFocus() override;
@@ -77,15 +80,13 @@ class CPWL_ComboBox final : public CPWL_Wnd {
   void ClearSelection();
   void SelectAll();
   bool IsPopup() const;
-
   void SetSelectText();
-
   void AttachFFLData(CFFL_FormFiller* pData) { m_pFormFiller = pData; }
 
  private:
-  void CreateEdit(const CreateParams& cp);
-  void CreateButton(const CreateParams& cp);
-  void CreateListBox(const CreateParams& cp);
+  void CreateEdit(const CreateParams& cp, const PrivateData* pAttachedData);
+  void CreateButton(const CreateParams& cp, const PrivateData* pAttachedData);
+  void CreateListBox(const CreateParams& cp, const PrivateData* pAttachedData);
 
   // Returns |true| iff this instance is still allocated.
   bool SetPopup(bool bPopup);

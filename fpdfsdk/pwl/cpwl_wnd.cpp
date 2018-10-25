@@ -8,6 +8,7 @@
 
 #include <map>
 #include <sstream>
+#include <utility>
 #include <vector>
 
 #include "core/fxge/cfx_renderdevice.h"
@@ -110,13 +111,8 @@ class CPWL_MsgControl final : public Observable<CPWL_MsgControl> {
   UnownedPtr<CPWL_Wnd> m_pMainKeyboardWnd;
 };
 
-CPWL_Wnd::CPWL_Wnd()
-    : m_rcWindow(),
-      m_rcClip(),
-      m_bCreated(false),
-      m_bVisible(false),
-      m_bNotifying(false),
-      m_bEnabled(true) {}
+CPWL_Wnd::CPWL_Wnd(std::unique_ptr<PrivateData> pAttachedData)
+    : m_pAttachedData(std::move(pAttachedData)) {}
 
 CPWL_Wnd::~CPWL_Wnd() {
   ASSERT(!m_bCreated);
@@ -141,8 +137,8 @@ void CPWL_Wnd::Create(const CreateParams& cp) {
 
   CreateParams ccp = m_CreationParams;
   ccp.dwFlags &= 0xFFFF0000L;  // remove sub styles
-  CreateScrollBar(ccp);
-  CreateChildWnd(ccp);
+  CreateScrollBar(ccp, GetAttachedData());
+  CreateChildWnd(ccp, GetAttachedData());
   m_bVisible = HasFlag(PWS_VISIBLE);
   OnCreated();
   if (!RePosChildWnd())
@@ -485,11 +481,13 @@ CPWL_ScrollBar* CPWL_Wnd::GetVScrollBar() const {
   return HasFlag(PWS_VSCROLL) ? m_pVScrollBar.Get() : nullptr;
 }
 
-void CPWL_Wnd::CreateScrollBar(const CreateParams& cp) {
-  CreateVScrollBar(cp);
+void CPWL_Wnd::CreateScrollBar(const CreateParams& cp,
+                               const PrivateData* pAttachedData) {
+  CreateVScrollBar(cp, pAttachedData);
 }
 
-void CPWL_Wnd::CreateVScrollBar(const CreateParams& cp) {
+void CPWL_Wnd::CreateVScrollBar(const CreateParams& cp,
+                                const PrivateData* pAttachedData) {
   if (m_pVScrollBar || !HasFlag(PWS_VSCROLL))
     return;
 
@@ -504,7 +502,9 @@ void CPWL_Wnd::CreateVScrollBar(const CreateParams& cp) {
   scp.eCursorType = FXCT_ARROW;
   scp.nTransparency = PWL_SCROLLBAR_TRANSPARENCY;
 
-  m_pVScrollBar = new CPWL_ScrollBar(SBT_VSCROLL);
+  // TODO(tsepez): leaks?
+  m_pVScrollBar = new CPWL_ScrollBar(
+      pAttachedData ? pAttachedData->Clone() : nullptr, SBT_VSCROLL);
   m_pVScrollBar->Create(scp);
 }
 
@@ -611,7 +611,8 @@ bool CPWL_Wnd::RePosChildWnd() {
   return true;
 }
 
-void CPWL_Wnd::CreateChildWnd(const CreateParams& cp) {}
+void CPWL_Wnd::CreateChildWnd(const CreateParams& cp,
+                              const PrivateData* pAttachedData) {}
 
 void CPWL_Wnd::SetCursor() {
   if (IsValid()) {
