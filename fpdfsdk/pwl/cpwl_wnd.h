@@ -7,6 +7,7 @@
 #ifndef FPDFSDK_PWL_CPWL_WND_H_
 #define FPDFSDK_PWL_CPWL_WND_H_
 
+#include <memory>
 #include <vector>
 
 #include "core/fpdfdoc/cpdf_formcontrol.h"
@@ -86,8 +87,9 @@ struct CPWL_Dash {
 class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
  public:
   class PrivateData {
-   protected:
-    ~PrivateData() {}
+   public:
+    virtual ~PrivateData() = default;
+    virtual std::unique_ptr<PrivateData> Clone() const = 0;
   };
 
   class ProviderIface : public Observable<ProviderIface> {
@@ -125,14 +127,13 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
     int32_t nTransparency;                            // optional
     float fFontSize;                                  // optional
     CPWL_Dash sDash;                                  // optional
-    UnownedPtr<PrivateData> pAttachedData;            // optional
     UnownedPtr<CPWL_Wnd> pParentWnd;                  // ignore
     CPWL_MsgControl* pMsgControl;                     // ignore
     int32_t eCursorType;                              // ignore
     CFX_Matrix mtChild;                               // ignore
   };
 
-  CPWL_Wnd();
+  explicit CPWL_Wnd(std::unique_ptr<PrivateData> pAttachedData);
   ~CPWL_Wnd() override;
 
   // Returns |true| iff this instance is still allocated.
@@ -216,9 +217,7 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   CPWL_Wnd* GetParentWindow() const {
     return m_CreationParams.pParentWnd.Get();
   }
-  PrivateData* GetAttachedData() const {
-    return m_CreationParams.pAttachedData.Get();
-  }
+  PrivateData* GetAttachedData() const { return m_pAttachedData.get(); }
 
   bool WndHitTest(const CFX_PointF& point) const;
   bool ClientHitTest(const CFX_PointF& point) const;
@@ -254,7 +253,8 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   // CPWL_TimerHandler:
   CFX_SystemHandler* GetSystemHandler() const override;
 
-  virtual void CreateChildWnd(const CreateParams& cp);
+  virtual void CreateChildWnd(const CreateParams& cp,
+                              std::unique_ptr<PrivateData> pAttachedData);
 
   // Returns |true| iff this instance is still allocated.
   virtual bool RePosChildWnd();
@@ -299,8 +299,10 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   void AddChild(CPWL_Wnd* pWnd);
   void RemoveChild(CPWL_Wnd* pWnd);
 
-  void CreateScrollBar(const CreateParams& cp);
-  void CreateVScrollBar(const CreateParams& cp);
+  void CreateScrollBar(const CreateParams& cp,
+                       std::unique_ptr<PrivateData> pAttachedData);
+  void CreateVScrollBar(const CreateParams& cp,
+                        std::unique_ptr<PrivateData> pAttachedData);
 
   void AdjustStyle();
   void CreateMsgControl();
@@ -309,14 +311,15 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable<CPWL_Wnd> {
   CPWL_MsgControl* GetMsgControl() const;
 
   CreateParams m_CreationParams;
+  std::unique_ptr<PrivateData> m_pAttachedData;
   std::vector<CPWL_Wnd*> m_Children;
   UnownedPtr<CPWL_ScrollBar> m_pVScrollBar;
   CFX_FloatRect m_rcWindow;
   CFX_FloatRect m_rcClip;
-  bool m_bCreated;
-  bool m_bVisible;
-  bool m_bNotifying;
-  bool m_bEnabled;
+  bool m_bCreated = false;
+  bool m_bVisible = false;
+  bool m_bNotifying = false;
+  bool m_bEnabled = true;
 };
 
 #endif  // FPDFSDK_PWL_CPWL_WND_H_

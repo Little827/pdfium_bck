@@ -7,6 +7,7 @@
 #ifndef FPDFSDK_PWL_CPWL_EDIT_H_
 #define FPDFSDK_PWL_CPWL_EDIT_H_
 
+#include <memory>
 #include <utility>
 
 #include "core/fpdfdoc/cpvt_wordrange.h"
@@ -41,7 +42,7 @@ class IPWL_Filler_Notify {
 
 class CPWL_Edit final : public CPWL_EditCtrl {
  public:
-  CPWL_Edit();
+  explicit CPWL_Edit(std::unique_ptr<PrivateData> pAttachedData);
   ~CPWL_Edit() override;
 
   // CPWL_EditCtrl
@@ -118,7 +119,7 @@ class CPWL_Edit final : public CPWL_EditCtrl {
                                    bool bLatin,
                                    bool bArabic) const;
 
-  bool m_bFocus;
+  bool m_bFocus = false;
   CFX_FloatRect m_rcOldWindow;
   UnownedPtr<IPWL_Filler_Notify> m_pFillerNotify;
   UnownedPtr<CFFL_FormFiller> m_pFormFiller;
