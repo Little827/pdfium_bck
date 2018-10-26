@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "d3965200_628f8587",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T21:58:19Z",
+      "side": 1,
+      "message": "Doesn\u0027t make a difference. I tried:\n\nconstexpr FXDIB_RenderOptions CreateBilinearRenderOptions() {\n  FXDIB_RenderOptions options;\n  options.bInterpolateBilinear \u003d true;\n  return options;\n}\n\nbut that requires C++14.\n\nHow about a TODO to get rid of this ctor when C++14 is available? There\u0027s only 1 use of the 6 argument ctor.",
+      "parentUuid": "ee8fdc8e_65c3afca",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1adb85_647824da",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 2
