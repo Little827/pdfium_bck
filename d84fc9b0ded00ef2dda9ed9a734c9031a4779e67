@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7cf5d6b_7bd41eb5",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T21:21:57Z",
+      "side": 1,
+      "message": "NOTE: it is correct either way finding from the front or the back since it is only in there once.  And since we know the vector is small (only 3 kids max for the most child-bearing window) the performance is the same either front to back or back to front,",
+      "range": {
+        "startLine": 381,
+        "startChar": 2,
+        "endLine": 381,
+        "endChar": 6
+      },
+      "revId": "d84fc9b0ded00ef2dda9ed9a734c9031a4779e67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
