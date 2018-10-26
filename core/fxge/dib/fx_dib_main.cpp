@@ -54,6 +54,29 @@ const int16_t SDP_Table[513] = {
     0,   0,   0,
 };
 
+FXDIB_RenderOptions::FXDIB_RenderOptions() = default;
+
+FXDIB_RenderOptions::FXDIB_RenderOptions(bool downsample,
+                                         bool bilinear,
+                                         bool bicubic,
+                                         bool halftone,
+                                         bool no_smoothing,
+                                         bool lossy)
+    : bInterpolateDownsample(downsample),
+      bInterpolateBilinear(bilinear),
+      bInterpolateBicubic(bicubic),
+      bHalftone(halftone),
+      bNoSmoothing(no_smoothing),
+      bLossy(lossy) {}
+
+bool FXDIB_RenderOptions::HasAnyOptions() const {
+  return bInterpolateDownsample || bInterpolateBilinear ||
+         bInterpolateBicubic || bHalftone || bNoSmoothing || bLossy;
+}
+
+const FXDIB_RenderOptions kBilinearInterpolation = {
+    false, /*bilinear=*/true, false, false, false, false};
+
 FX_RECT FXDIB_SwapClipBox(const FX_RECT& clip,
                           int width,
                           int height,

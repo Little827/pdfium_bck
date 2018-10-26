@@ -329,7 +329,8 @@ bool CFX_DIBitmap::LoadChannelFromAlpha(
     if (pSrcClone->GetWidth() != m_Width ||
         pSrcClone->GetHeight() != m_Height) {
       if (pAlphaMask) {
-        pAlphaMask = pAlphaMask->StretchTo(m_Width, m_Height, 0, nullptr);
+        pAlphaMask = pAlphaMask->StretchTo(m_Width, m_Height,
+                                           FXDIB_RenderOptions(), nullptr);
         if (!pAlphaMask)
           return false;
       }
@@ -339,7 +340,7 @@ bool CFX_DIBitmap::LoadChannelFromAlpha(
   } else if (pSrcClone->GetWidth() != m_Width ||
              pSrcClone->GetHeight() != m_Height) {
     RetainPtr<CFX_DIBitmap> pSrcMatched =
-        pSrcClone->StretchTo(m_Width, m_Height, 0, nullptr);
+        pSrcClone->StretchTo(m_Width, m_Height, FXDIB_RenderOptions(), nullptr);
     if (!pSrcMatched)
       return false;
 
@@ -437,7 +438,8 @@ bool CFX_DIBitmap::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& pSrcBitmap) {
   RetainPtr<CFX_DIBitmap> pSrcClone = pSrcBitmap.As<CFX_DIBitmap>();
   if (pSrcBitmap->GetWidth() != m_Width ||
       pSrcBitmap->GetHeight() != m_Height) {
-    pSrcClone = pSrcBitmap->StretchTo(m_Width, m_Height, 0, nullptr);
+    pSrcClone = pSrcBitmap->StretchTo(m_Width, m_Height, FXDIB_RenderOptions(),
+                                      nullptr);
     if (!pSrcClone)
       return false;
   }
