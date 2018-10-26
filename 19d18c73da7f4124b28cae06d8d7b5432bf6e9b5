@@ -1,4 +1,183 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540534105 -0700\nnonce ADWBXRAcCMG61tsx/U6JL2P0aqc3UGGKu/sPwEWTHICB3EB9L+KLoSzZk5R5utWdF1Ewswm/NHOI\n\n0000000000000000000000000000000000000000 19d18c73da7f4124b28cae06d8d7b5432bf6e9b5 refs/for/refs/heads/master%notify\u003dNONE,m\u003dmac,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvSr1kACgkQqzYtYVpm\n/XtW5AgAjsfZA+tWzgZpjZ7wcurGBp2oQVKfOzmBylixCV+szvdtQgtskBIyYUHp\nsxoSW/qhVvvkoLS6QiW+iQVYt1o0HPvhNVteLpRgauPgwcXVaxvlxReplrL+1Gm2\nyYqyK1Y5JHnQig3KQgm/VAeu5yPQbYcc5MRiTqhmCgoWTVjQkpwLZKUlyrXkUMZN\nT+m23gZAq/uhAvwnJfFhL6t2n5YI4xQc2ZxBjONX333wRh/kpBBMEAufx+tOEmlH\nwt/EbecmmHEBLwBx5ZnYC/r5oFzusMOmw1vpOWIdOZzp3mPxk8x4QGGWe/LtVKrJ\nDkLz91TibKAgyvRAPPPaG5v9pl8jpA\u003d\u003d\n\u003di2tb\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb666ca8_62d0b6b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "nit: classes",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c4951f_1fc600a7",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "nit: pre-existing: blank line here while we\u0027re at it.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "499713ab_c9a24907",
+        "filename": "core/fpdfapi/render/cpdf_imageloader.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "nit: preiexisting: no blank line here, maybe pod first while we\u0027re at it.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdccf2e_3b7e6951",
+        "filename": "core/fpdfapi/render/cpdf_scaledrenderbuffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "I always feel kinda uneasy when I forward declare both subclass/superclass for some reason, not sure why other than imparting knowledge that A, B exist without also saying A -\u003e B feels wrong ...",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21bf0a61_725fdb8c",
+        "filename": "core/fxge/apple/fx_apple_platform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "nit: combine?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c46d1cf_fc51c0c4",
+        "filename": "core/fxge/dib/cfx_dibextractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "same thing here, related?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cdddc09_30b1f275",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "nit: doesn\u0027t match file name.  No matter.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300fa27f_082524c0",
+        "filename": "xfa/fxfa/cxfa_ffdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:34:47Z",
+      "side": 1,
+      "message": "inline in .cpp not so worthwile.",
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
