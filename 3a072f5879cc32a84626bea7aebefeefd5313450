@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "ee8fdc8e_65c3afca",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T21:49:17Z",
+      "side": 1,
+      "message": "Lose the equals sign just \n\nconst FXDIB_RenderOptions kBilinearInterpolation{ true, ... } ?",
+      "parentUuid": "f4801c03_be664636",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1adb85_647824da",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 2
