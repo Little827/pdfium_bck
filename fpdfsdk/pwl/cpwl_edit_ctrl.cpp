@@ -97,7 +97,8 @@ void CPWL_EditCtrl::CreateEditCaret(const CreateParams& cp) {
   ecp.dwBorderWidth = 0;
   ecp.nBorderStyle = BorderStyle::SOLID;
   ecp.rcRectWnd = CFX_FloatRect();
-  m_pEditCaret->Create(ecp);
+  m_pEditCaret->Realize(ecp);
+  AddChild(m_pEditCaret);
 }
 
 void CPWL_EditCtrl::SetFontSize(float fFontSize) {

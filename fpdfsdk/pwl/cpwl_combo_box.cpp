@@ -289,7 +289,8 @@ void CPWL_ComboBox::CreateEdit(const CreateParams& cp) {
   ecp.rcRectWnd = CFX_FloatRect();
   ecp.dwBorderWidth = 0;
   ecp.nBorderStyle = BorderStyle::SOLID;
-  m_pEdit->Create(ecp);
+  m_pEdit->Realize(ecp);
+  AddChild(m_pEdit.Get());
 }
 
 void CPWL_ComboBox::CreateButton(const CreateParams& cp) {
@@ -307,7 +308,8 @@ void CPWL_ComboBox::CreateButton(const CreateParams& cp) {
   bcp.dwBorderWidth = 2;
   bcp.nBorderStyle = BorderStyle::BEVELED;
   bcp.eCursorType = FXCT_ARROW;
-  m_pButton->Create(bcp);
+  m_pButton->Realize(bcp);
+  AddChild(m_pButton.Get());
 }
 
 void CPWL_ComboBox::CreateListBox(const CreateParams& cp) {
@@ -335,7 +337,8 @@ void CPWL_ComboBox::CreateListBox(const CreateParams& cp) {
   if (cp.sBackgroundColor.nColorType == CFX_Color::kTransparent)
     lcp.sBackgroundColor = PWL_DEFAULT_WHITECOLOR;
 
-  m_pList->Create(lcp);
+  m_pList->Realize(lcp);
+  AddChild(m_pList.Get());
 }
 
 bool CPWL_ComboBox::RePosChildWnd() {
