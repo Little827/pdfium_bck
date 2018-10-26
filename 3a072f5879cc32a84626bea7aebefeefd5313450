@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "781bf4fd_07a8b091",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T21:50:09Z",
+      "side": 1,
+      "message": "Only as avoiding confusion with them other render options.  As you like.",
+      "parentUuid": "801129c9_ca3e4b6e",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f534da92_07f9b58d",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 2
