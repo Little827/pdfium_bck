@@ -272,9 +272,10 @@ void CPWL_ComboBox::CreateEdit(const CreateParams& cp) {
   if (m_pEdit)
     return;
 
-  m_pEdit = new CPWL_Edit(CloneAttachedData());
+  auto pEdit = pdfium::MakeUnique<CPWL_Edit>(CloneAttachedData());
+  m_pEdit = pEdit.get();
   m_pEdit->AttachFFLData(m_pFormFiller.Get());
-  AddChild(m_pEdit.Get());
+  AddChild(std::move(pEdit));
 
   CreateParams ecp = cp;
   ecp.dwFlags = PWS_VISIBLE | PWS_CHILD | PWS_BORDER | PES_CENTER |
@@ -296,8 +297,9 @@ void CPWL_ComboBox::CreateButton(const CreateParams& cp) {
   if (m_pButton)
     return;
 
-  m_pButton = new CPWL_CBButton(CloneAttachedData());
-  AddChild(m_pButton.Get());
+  auto pButton = pdfium::MakeUnique<CPWL_CBButton>(CloneAttachedData());
+  m_pButton = pButton.get();
+  AddChild(std::move(pButton));
 
   CreateParams bcp = cp;
   bcp.dwFlags = PWS_VISIBLE | PWS_CHILD | PWS_BORDER | PWS_BACKGROUND;
@@ -314,9 +316,10 @@ void CPWL_ComboBox::CreateListBox(const CreateParams& cp) {
   if (m_pList)
     return;
 
-  m_pList = new CPWL_CBListBox(CloneAttachedData());
+  auto pList = pdfium::MakeUnique<CPWL_CBListBox>(CloneAttachedData());
+  m_pList = pList.get();
   m_pList->AttachFFLData(m_pFormFiller.Get());
-  AddChild(m_pList.Get());
+  AddChild(std::move(pList));
 
   CreateParams lcp = cp;
   lcp.dwFlags =
