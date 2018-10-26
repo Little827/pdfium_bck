@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1540535452 -0700\nnonce ADWBXRA2n3BNn4/si6hWEnxCwU1e9HeJCXrYO7ths+4Zqe3yK7sjxo9cRtf9gTHUQNB+vk2YNHwH\n\n0000000000000000000000000000000000000000 3a072f5879cc32a84626bea7aebefeefd5313450 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvStJwACgkQqzYtYVpm\n/Xv+swgAoFP/yb9W1tpZDy/7BLqyNPwVjDB18NejRnWhLvtylkcj6Uk6POc6sLgU\nQTFP4v7rBMiLtsVk5McBoyWEHrWXX18HpjzevZ5WgQn9Ml74Nr4DuCCu975hCVY4\nIsHga34ggw3bhS+yA3nf7aEt7JpFpmyMbc12sih7Jz7l64q8PcE+FiJ4Jgskd4vk\nFYU4t4wdvespFCCS1jXZL+Sntb947o55QXPTa6zlaSrqXvtoSMPjkHk+ETFKl+hH\nBgG3xq/bONRgEDJ/mCB5MNmCmuhKKA7VRQpqSV+s9ll1vUNQCny/6KH8MMB06goJ\nj7UXQmWC0cMFlq2hy5CRChgOVCHCRA\u003d\u003d\n\u003dcmIa\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "265d1b40_e5a87b23",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:51:20Z",
+      "side": 1,
+      "message": "what render options be these, and can we name ours something else to avoid confusion?",
+      "range": {
+        "startLine": 101,
+        "startChar": 6,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f534da92_07f9b58d",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:51:20Z",
+      "side": 1,
+      "message": "I\u0027d discourage this since it is hard to interpret at call sites, et.\n\nDoSomethingwith(FXRenderdOptions(true, true,true, true, true, false))\n\nvs.\n\nFXDIB_RenderOptions fred;\nfred.bLossy \u003d true;\ndoSomethingWith(fred);",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1adb85_647824da",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:51:20Z",
+      "side": 1,
+      "message": "nit: HasAnyOptions() and lose the comment?",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11175923_dcd5b69a",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:51:20Z",
+      "side": 1,
+      "message": "nit: over()",
+      "range": {
+        "startLine": 826,
+        "startChar": 38,
+        "endLine": 826,
+        "endChar": 67
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
