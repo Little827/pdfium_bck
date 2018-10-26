@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "207a21de_72ff0476",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-26T17:59:19Z",
+      "side": 1,
+      "message": "Ah CPDF_RenderOptions.  Maybe it should contain a FXDIB_renderoptions instead of a uint32_t flags, then this all goes away.",
+      "parentUuid": "265d1b40_e5a87b23",
+      "range": {
+        "startLine": 101,
+        "startChar": 6,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f534da92_07f9b58d",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 2
