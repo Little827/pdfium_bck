@@ -23,6 +23,30 @@
       "revId": "5a41538e1e0a6a5a5aa546f06a030c9818c3d7d1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34405f9e_e8668827",
+        "filename": "core/fxge/win32/fx_win32_gdipext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T20:43:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf46bfbf_9c26a708",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 13
+      },
+      "revId": "5a41538e1e0a6a5a5aa546f06a030c9818c3d7d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
