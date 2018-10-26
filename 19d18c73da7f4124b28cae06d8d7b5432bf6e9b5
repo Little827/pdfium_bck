@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "06d85b2d_330dce93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T19:28:00Z",
+      "side": 1,
+      "message": "Done. I probably meant to say \"Forward declare in a bunch of headers.\"",
+      "parentUuid": "fb666ca8_62d0b6b3",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8c4951f_1fc600a7",
         "filename": "core/fpdfapi/render/cpdf_charposlist.h",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5dc0714b_bbf576cb",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T19:28:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c4951f_1fc600a7",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "499713ab_c9a24907",
         "filename": "core/fpdfapi/render/cpdf_imageloader.h",
         "patchSetId": 3
@@ -69,6 +117,30 @@
       "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b230b1_aed21d16",
+        "filename": "core/fpdfapi/render/cpdf_imageloader.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T19:28:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "499713ab_c9a24907",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "0cd44eb1_4ef70f06",
+        "filename": "core/fpdfapi/render/cpdf_scaledrenderbuffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T19:28:00Z",
+      "side": 1,
+      "message": "It\u0027s because the class gets passed in CFX_WindowsRenderDevice*, but it also has a CFX_WindowsRenderDevice* of its own.",
+      "parentUuid": "8300677e_45da2f45",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21bf0a61_725fdb8c",
         "filename": "core/fxge/apple/fx_apple_platform.cpp",
         "patchSetId": 3
@@ -142,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "79653cd0_341cf85d",
+        "filename": "core/fxge/apple/fx_apple_platform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T19:28:00Z",
+      "side": 1,
+      "message": "I like to keep the headers separate from the rest of the code.",
+      "parentUuid": "21bf0a61_725fdb8c",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c46d1cf_fc51c0c4",
         "filename": "core/fxge/dib/cfx_dibextractor.h",
         "patchSetId": 3
@@ -153,6 +273,30 @@
       "writtenOn": "2018-10-26T17:34:47Z",
       "side": 1,
       "message": "same thing here, related?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e538607c_b4037ef7",
+        "filename": "core/fxge/dib/cfx_dibextractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T19:28:00Z",
+      "side": 1,
+      "message": "CFX_DIBBase::Clone() returns a CFX_DIBitmap. The class gets handed one and works with the other.",
+      "parentUuid": "6c46d1cf_fc51c0c4",
       "range": {
         "startLine": 12,
         "startChar": 1,
@@ -202,6 +346,24 @@
       "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a577ccd8_ea1bc650",
+        "filename": "xfa/fxfa/cxfa_ffdoc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T19:28:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "300fa27f_082524c0",
+      "revId": "19d18c73da7f4124b28cae06d8d7b5432bf6e9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
