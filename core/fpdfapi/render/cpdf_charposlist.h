@@ -10,9 +10,9 @@
 #include <vector>
 
 #include "core/fxcrt/fx_system.h"
-#include "core/fxge/cfx_renderdevice.h"
 
 class CPDF_Font;
+class FXTEXT_CHARPOS;
 
 class CPDF_CharPosList {
  public:
