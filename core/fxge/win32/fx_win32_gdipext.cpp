@@ -781,13 +781,13 @@ bool CGdiplusExt::StretchDIBits(HDC hDC,
                                 int dest_width,
                                 int dest_height,
                                 const FX_RECT* pClipRect,
-                                int flags) {
+                                const FXDIB_RenderOptions& options) {
   Gdiplus::GpGraphics* pGraphics;
   CGdiplusExt& GdiplusExt =
       ((CWin32Platform*)CFX_GEModule::Get()->GetPlatformData())->m_GdiplusExt;
   CallFunc(GdipCreateFromHDC)(hDC, &pGraphics);
   CallFunc(GdipSetPageUnit)(pGraphics, Gdiplus::UnitPixel);
-  if (flags & FXDIB_NOSMOOTH) {
+  if (options.bNoSmoothing) {
     CallFunc(GdipSetInterpolationMode)(
         pGraphics, Gdiplus::InterpolationModeNearestNeighbor);
   } else if (pBitmap->GetWidth() > abs(dest_width) / 2 ||
