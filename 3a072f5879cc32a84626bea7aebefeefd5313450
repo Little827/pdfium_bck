@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cad57bf6_a30fdf6f",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T21:23:29Z",
+      "side": 1,
+      "message": "Can you think of a way I can create |kBilinearInterpolation| without a ctor like this?",
+      "parentUuid": "f534da92_07f9b58d",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1adb85_647824da",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 2
@@ -139,6 +163,30 @@
       "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f83db2_94e4b4b5",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T21:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11175923_dcd5b69a",
+      "range": {
+        "startLine": 826,
+        "startChar": 38,
+        "endLine": 826,
+        "endChar": 67
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
