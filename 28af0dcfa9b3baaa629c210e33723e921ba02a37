@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f9b809e_44c268b7",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T20:58:39Z",
+      "side": 1,
+      "message": "I like the style in the files further down, where they calculate |ecp| first, and then do this work. Bringing this code closer to the Realize() call. It would be nice to do the shuffle to make them consistent.",
+      "revId": "28af0dcfa9b3baaa629c210e33723e921ba02a37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a6b892_ed3f7cd2",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T20:58:39Z",
+      "side": 1,
+      "message": "No need. It\u0027s implied by the unique_ptr.",
+      "revId": "28af0dcfa9b3baaa629c210e33723e921ba02a37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
