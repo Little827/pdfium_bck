@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "c74b4c68_8ffd1fd6",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T22:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781bf4fd_07a8b091",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f534da92_07f9b58d",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 2
@@ -309,6 +333,30 @@
       "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff6f798_59b956cb",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-26T22:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f75f5371_b5c278f9",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "3a072f5879cc32a84626bea7aebefeefd5313450",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
