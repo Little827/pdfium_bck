@@ -118,7 +118,7 @@ CPWL_Wnd::~CPWL_Wnd() {
   ASSERT(!m_bCreated);
 }
 
-void CPWL_Wnd::Create(const CreateParams& cp) {
+void CPWL_Wnd::Realize(const CreateParams& cp) {
   if (IsValid())
     return;
 
@@ -132,8 +132,6 @@ void CPWL_Wnd::Create(const CreateParams& cp) {
     m_rcClip.Normalize();
   }
   CreateMsgControl();
-  if (m_CreationParams.pParentWnd)
-    m_CreationParams.pParentWnd->AddChild(this);
 
   CreateParams ccp = m_CreationParams;
   ccp.dwFlags &= 0xFFFF0000L;  // remove sub styles
@@ -501,7 +499,8 @@ void CPWL_Wnd::CreateVScrollBar(const CreateParams& cp) {
   scp.nTransparency = PWL_SCROLLBAR_TRANSPARENCY;
 
   m_pVScrollBar = new CPWL_ScrollBar(CloneAttachedData(), SBT_VSCROLL);
-  m_pVScrollBar->Create(scp);
+  m_pVScrollBar->Realize(scp);
+  AddChild(m_pVScrollBar.Get());
 }
 
 void CPWL_Wnd::SetCapture() {

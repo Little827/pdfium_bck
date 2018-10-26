@@ -49,7 +49,9 @@ std::unique_ptr<CPWL_Wnd> CFFL_ComboBox::NewPWLWindow(
     std::unique_ptr<CPWL_Wnd::PrivateData> pAttachedData) {
   auto pWnd = pdfium::MakeUnique<CPWL_ComboBox>(std::move(pAttachedData));
   pWnd->AttachFFLData(this);
-  pWnd->Create(cp);
+  pWnd->Realize(cp);
+  if (cp.pParentWnd)
+    cp.pParentWnd->AddChild(pWnd.get());
 
   CFFL_InteractiveFormFiller* pFormFiller =
       m_pFormFillEnv->GetInteractiveFormFiller();
