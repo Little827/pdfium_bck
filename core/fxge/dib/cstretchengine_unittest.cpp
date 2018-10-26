@@ -27,6 +27,11 @@ TEST(CStretchEngine, OverflowInCtor) {
   auto dib_source = pdfium::MakeRetain<CPDF_DIBBase>();
   dib_source->Load(nullptr, stream.get());
   CStretchEngine engine(nullptr, FXDIB_8bppRgb, 500, 500, clip_rect, dib_source,
-                        0);
-  EXPECT_EQ(FXDIB_INTERPOL, engine.m_Flags);
+                        FXDIB_ResampleOptions());
+  EXPECT_FALSE(engine.m_RenderOptions.bInterpolateDownsample);
+  EXPECT_TRUE(engine.m_RenderOptions.bInterpolateBilinear);
+  EXPECT_FALSE(engine.m_RenderOptions.bInterpolateBicubic);
+  EXPECT_FALSE(engine.m_RenderOptions.bHalftone);
+  EXPECT_FALSE(engine.m_RenderOptions.bNoSmoothing);
+  EXPECT_FALSE(engine.m_RenderOptions.bLossy);
 }
