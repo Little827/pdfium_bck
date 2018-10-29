@@ -22,6 +22,30 @@
       "revId": "314380e271d0a1e3117c67cb5a417cbc5b5b81b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce853630_f3434b30",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-29T19:05:49Z",
+      "side": 0,
+      "message": "I need to clean up the CPDF_RenderOptions() code, but I strongly suspect the down sample code will be dead after this. Unless we offer an option in the public API. If we do, I don\u0027t think it will be a popular option. The case that I can think of is when the output bitmap is really big. In which case, downsampling may not look too bad, and the speed-up can be a nice to have.",
+      "parentUuid": "a129f423_5c04ace9",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 54
+      },
+      "revId": "314380e271d0a1e3117c67cb5a417cbc5b5b81b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
