@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a129f423_5c04ace9",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-29T17:02:19Z",
+      "side": 0,
+      "message": "So, was this straight subsampling without any low-pass filtering prior to doing so?  If so, we should just get rid of this option entirely, as it is hard to justify given the performance increase in processors since this code was written ...",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 54
+      },
+      "revId": "314380e271d0a1e3117c67cb5a417cbc5b5b81b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
