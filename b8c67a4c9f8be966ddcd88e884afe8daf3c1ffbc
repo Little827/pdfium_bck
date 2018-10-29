@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e2114a_8ab15cbc",
+        "filename": "testing/resources/javascript/util_scand_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-29T23:58:17Z",
+      "side": 1,
+      "message": "Reader returns 8:00:00 GMT for these.",
+      "revId": "b8c67a4c9f8be966ddcd88e884afe8daf3c1ffbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e13852b_10593087",
+        "filename": "testing/resources/javascript/util_scand_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-29T23:58:17Z",
+      "side": 1,
+      "message": "Reader returns \"TypeError: util.scand(...) is null\" for these two.",
+      "revId": "b8c67a4c9f8be966ddcd88e884afe8daf3c1ffbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
