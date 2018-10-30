@@ -12,10 +12,10 @@
 #include <vector>
 
 #include "core/fxcrt/fx_extension.h"
+#include "fxjs/cfx_globaldata.h"
+#include "fxjs/cfx_keyvalue.h"
 #include "fxjs/cjs_event_context.h"
 #include "fxjs/cjs_eventhandler.h"
-#include "fxjs/cjs_globaldata.h"
-#include "fxjs/cjs_keyvalue.h"
 #include "fxjs/cjs_object.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"

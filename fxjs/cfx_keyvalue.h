@@ -8,7 +8,7 @@
 #define FXJS_CJS_KEYVALUE_H_
 
 #include "core/fxcrt/fx_string.h"
-#include "fxjs/cjs_globalvariablearray.h"
+#include "fxjs/cfx_globalarray.h"
 
 enum class JS_GlobalDataType { NUMBER = 0, BOOLEAN, STRING, OBJECT, NULLOBJ };
 

@@ -4,11 +4,11 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "fxjs/cjs_globalvariablearray.h"
+#include "fxjs/cfx_globalarray.h"
 
 #include <utility>
 
-#include "fxjs/cjs_keyvalue.h"
+#include "fxjs/cfx_keyvalue.h"
 #include "third_party/base/ptr_util.h"
 
 CJS_GlobalVariableArray::CJS_GlobalVariableArray() {}

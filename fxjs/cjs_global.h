@@ -11,7 +11,7 @@
 #include <memory>
 #include <vector>
 
-#include "fxjs/cjs_keyvalue.h"
+#include "fxjs/cfx_keyvalue.h"
 #include "fxjs/cjs_object.h"
 #include "fxjs/cjs_result.h"
 
