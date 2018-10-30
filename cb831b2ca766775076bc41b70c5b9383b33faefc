@@ -22,6 +22,30 @@
       "revId": "cb831b2ca766775076bc41b70c5b9383b33faefc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc22e01_04ca389c",
+        "filename": "fxjs/cfx_globalarray.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-30T22:02:06Z",
+      "side": 1,
+      "message": "Yes, I want to make big changes, but keep this CL small first.",
+      "parentUuid": "5a678340_2f4fb868",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "cb831b2ca766775076bc41b70c5b9383b33faefc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
