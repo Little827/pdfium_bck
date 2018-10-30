@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "471cc070_2ea9ecf9",
+        "filename": "testing/resources/javascript/util_scand_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-30T16:33:15Z",
+      "side": 1,
+      "message": "Yea, we seed the time from e.g. now(), which is the fake fixed now() under the test harnesses.",
+      "parentUuid": "60e2114a_8ab15cbc",
+      "revId": "b8c67a4c9f8be966ddcd88e884afe8daf3c1ffbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e13852b_10593087",
         "filename": "testing/resources/javascript/util_scand_expected.txt",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-10-29T23:58:17Z",
       "side": 1,
       "message": "Reader returns \"TypeError: util.scand(...) is null\" for these two.",
+      "revId": "b8c67a4c9f8be966ddcd88e884afe8daf3c1ffbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1ffd42_b602845d",
+        "filename": "testing/resources/javascript/util_scand_expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-30T16:33:15Z",
+      "side": 1,
+      "message": "Possibly because there isn\u0027t a date provided, again we default to now().",
+      "parentUuid": "3e13852b_10593087",
       "revId": "b8c67a4c9f8be966ddcd88e884afe8daf3c1ffbc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
