@@ -53,8 +53,10 @@ WideString JSGetStringFromID(JSMessage msg) {
       return L"Too many occurances.";
     case JSMessage::kUnknownProperty:
       return L"Unknown property.";
+#ifdef PDF_ENABLE_XFA
     case JSMessage::kUnknownMethod:
       return L"Unknown method.";
+#endif
   }
   NOTREACHED();
   return L"";
