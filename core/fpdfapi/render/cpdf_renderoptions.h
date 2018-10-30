@@ -47,7 +47,7 @@ class CPDF_RenderOptions {
   uint32_t GetFlags() const { return m_Flags; }
   void SetFlags(uint32_t flags) { m_Flags = flags; }
 
-  uint32_t GetCacheSizeLimit() const { return m_dwLimitCacheSize; }
+  uint32_t GetCacheSizeLimit() const;
 
   void SetDrawAnnots(bool draw) { m_bDrawAnnots = draw; }
   bool GetDrawAnnots() const { return m_bDrawAnnots; }
@@ -55,13 +55,12 @@ class CPDF_RenderOptions {
   void SetOCContext(RetainPtr<CPDF_OCContext> context) {
     m_pOCContext = context;
   }
-  CPDF_OCContext* GetOCContext() const { return m_pOCContext.Get(); }
+  const CPDF_OCContext* GetOCContext() const { return m_pOCContext.Get(); }
 
  private:
-  Type m_ColorMode;
-  uint32_t m_Flags;
-  uint32_t m_dwLimitCacheSize;
-  bool m_bDrawAnnots;
+  Type m_ColorMode = kNormal;
+  uint32_t m_Flags = RENDER_CLEARTYPE;
+  bool m_bDrawAnnots = false;
   RetainPtr<CPDF_OCContext> m_pOCContext;
 };
 
