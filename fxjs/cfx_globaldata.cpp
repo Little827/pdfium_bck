@@ -15,7 +15,8 @@
 namespace {
 
 constexpr size_t kMaxGlobalDataBytes = 4 * 1024 - 8;
-constexpr wchar_t kGlobalDataFileName[] = L"SDK_JsGlobal.Data";
+constexpr uint16_t kMagic = ('X' << 8) | 'F';
+constexpr uint16_t kMaxVersion = 2;
 
 const uint8_t kRC4KEY[] = {
     0x19, 0xa8, 0xe8, 0x01, 0xf6, 0xa8, 0xb6, 0x4d, 0x82, 0x04, 0x45, 0x6d,
@@ -39,23 +40,24 @@ CFX_GlobalData* g_pInstance = nullptr;
 }  // namespace
 
 // static
-CFX_GlobalData* CFX_GlobalData::GetRetainedInstance(
-    CPDFSDK_FormFillEnvironment* pApp) {
+CFX_GlobalData* CFX_GlobalData::GetRetainedInstance(Delegate* pDelegate) {
   if (!g_pInstance) {
-    g_pInstance = new CFX_GlobalData();
+    g_pInstance = new CFX_GlobalData(pDelegate);
   }
   ++g_pInstance->m_RefCount;
   return g_pInstance;
 }
 
-void CFX_GlobalData::Release() {
-  if (!--m_RefCount) {
-    delete g_pInstance;
-    g_pInstance = nullptr;
-  }
+bool CFX_GlobalData::Release() {
+  if (--m_RefCount)
+    return false;
+
+  delete g_pInstance;
+  g_pInstance = nullptr;
+  return true;
 }
 
-CFX_GlobalData::CFX_GlobalData() : m_sFilePath(kGlobalDataFileName) {
+CFX_GlobalData::CFX_GlobalData(Delegate* pDelegate) : m_pDelegate(pDelegate) {
   LoadGlobalPersistentVariables();
 }
 
@@ -212,96 +214,114 @@ CFX_GlobalData::Element* CFX_GlobalData::GetAt(int index) const {
 }
 
 void CFX_GlobalData::LoadGlobalPersistentVariables() {
+  if (!m_pDelegate)
+    return;
+
   uint8_t* pBuffer = nullptr;
-  int32_t nLength = 0;
+  size_t nLength = 0;
 
-  LoadFileBuffer(m_sFilePath.c_str(), pBuffer, nLength);
+  if (!m_pDelegate->LoadBuffer(&pBuffer, &nLength))
+    return;
+
+  if (!pBuffer || nLength == 0)
+    return;
+
+  LoadGlobalPersistentVariablesFromBuffer(pBuffer, nLength);
+  m_pDelegate->BufferDone(pBuffer);
+}
+
+void CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(uint8_t* pBuffer,
+                                                             size_t nLength) {
+  if (nLength < 12)
+    return;
+
   CRYPT_ArcFourCryptBlock(pBuffer, nLength, kRC4KEY, sizeof(kRC4KEY));
+  uint8_t* p = pBuffer;
 
-  if (pBuffer) {
-    uint8_t* p = pBuffer;
-    uint16_t wType = *((uint16_t*)p);
+  uint16_t wType = *((uint16_t*)p);
+  p += sizeof(uint16_t);
+  if (wType != kMagic)
+    return;
+
+  uint16_t wVersion = *((uint16_t*)p);
+  p += sizeof(uint16_t);
+  if (wVersion > kMaxVersion)
+    return;
+
+  uint32_t dwCount = *((uint32_t*)p);
+  p += sizeof(uint32_t);
+
+  uint32_t dwSize = *((uint32_t*)p);
+  p += sizeof(uint32_t);
+
+  if (dwSize != nLength - sizeof(uint16_t) * 2 - sizeof(uint32_t) * 2)
+    return;
+
+  for (int32_t i = 0, sz = dwCount; i < sz; i++) {
+    if (p > pBuffer + nLength)
+      break;
+
+    uint32_t dwNameLen = *((uint32_t*)p);
+    p += sizeof(uint32_t);
+
+    if (p + dwNameLen > pBuffer + nLength)
+      break;
+
+    ByteString sEntry = ByteString(p, dwNameLen);
+    p += sizeof(char) * dwNameLen;
+
+    CFX_KeyValue::DataType wDataType =
+        static_cast<CFX_KeyValue::DataType>(*((uint16_t*)p));
     p += sizeof(uint16_t);
 
-    if (wType == (uint16_t)(('X' << 8) | 'F')) {
-      uint16_t wVersion = *((uint16_t*)p);
-      p += sizeof(uint16_t);
-
-      ASSERT(wVersion <= 2);
-
-      uint32_t dwCount = *((uint32_t*)p);
-      p += sizeof(uint32_t);
-
-      uint32_t dwSize = *((uint32_t*)p);
-      p += sizeof(uint32_t);
-
-      if (dwSize == nLength - sizeof(uint16_t) * 2 - sizeof(uint32_t) * 2) {
-        for (int32_t i = 0, sz = dwCount; i < sz; i++) {
-          if (p > pBuffer + nLength)
-            break;
-
-          uint32_t dwNameLen = *((uint32_t*)p);
-          p += sizeof(uint32_t);
-
-          if (p + dwNameLen > pBuffer + nLength)
-            break;
-
-          ByteString sEntry = ByteString(p, dwNameLen);
-          p += sizeof(char) * dwNameLen;
-
-          CFX_KeyValue::DataType wDataType =
-              static_cast<CFX_KeyValue::DataType>(*((uint16_t*)p));
-          p += sizeof(uint16_t);
-
-          switch (wDataType) {
-            case CFX_KeyValue::DataType::NUMBER: {
-              double dData = 0;
-              switch (wVersion) {
-                case 1: {
-                  uint32_t dwData = *((uint32_t*)p);
-                  p += sizeof(uint32_t);
-                  dData = dwData;
-                } break;
-                case 2: {
-                  dData = *((double*)p);
-                  p += sizeof(double);
-                } break;
-              }
-              SetGlobalVariableNumber(sEntry, dData);
-              SetGlobalVariablePersistent(sEntry, true);
-            } break;
-            case CFX_KeyValue::DataType::BOOLEAN: {
-              uint16_t wData = *((uint16_t*)p);
-              p += sizeof(uint16_t);
-              SetGlobalVariableBoolean(sEntry, (bool)(wData == 1));
-              SetGlobalVariablePersistent(sEntry, true);
-            } break;
-            case CFX_KeyValue::DataType::STRING: {
-              uint32_t dwLength = *((uint32_t*)p);
-              p += sizeof(uint32_t);
-
-              if (p + dwLength > pBuffer + nLength)
-                break;
-
-              SetGlobalVariableString(sEntry, ByteString(p, dwLength));
-              SetGlobalVariablePersistent(sEntry, true);
-              p += sizeof(char) * dwLength;
-            } break;
-            case CFX_KeyValue::DataType::NULLOBJ: {
-              SetGlobalVariableNull(sEntry);
-              SetGlobalVariablePersistent(sEntry, true);
-            } break;
-            case CFX_KeyValue::DataType::OBJECT:
-              break;
-          }
+    switch (wDataType) {
+      case CFX_KeyValue::DataType::NUMBER: {
+        double dData = 0;
+        switch (wVersion) {
+          case 1: {
+            uint32_t dwData = *((uint32_t*)p);
+            p += sizeof(uint32_t);
+            dData = dwData;
+          } break;
+          case 2: {
+            dData = *((double*)p);
+            p += sizeof(double);
+          } break;
         }
-      }
+        SetGlobalVariableNumber(sEntry, dData);
+        SetGlobalVariablePersistent(sEntry, true);
+      } break;
+      case CFX_KeyValue::DataType::BOOLEAN: {
+        uint16_t wData = *((uint16_t*)p);
+        p += sizeof(uint16_t);
+        SetGlobalVariableBoolean(sEntry, (bool)(wData == 1));
+        SetGlobalVariablePersistent(sEntry, true);
+      } break;
+      case CFX_KeyValue::DataType::STRING: {
+        uint32_t dwLength = *((uint32_t*)p);
+        p += sizeof(uint32_t);
+
+        if (p + dwLength > pBuffer + nLength)
+          break;
+
+        SetGlobalVariableString(sEntry, ByteString(p, dwLength));
+        SetGlobalVariablePersistent(sEntry, true);
+        p += sizeof(char) * dwLength;
+      } break;
+      case CFX_KeyValue::DataType::NULLOBJ: {
+        SetGlobalVariableNull(sEntry);
+        SetGlobalVariablePersistent(sEntry, true);
+      } break;
+      case CFX_KeyValue::DataType::OBJECT:
+        break;
     }
-    FX_Free(pBuffer);
   }
 }
 
 void CFX_GlobalData::SaveGlobalPersisitentVariables() {
+  if (!m_pDelegate)
+    return;
+
   uint32_t nCount = 0;
   CFX_BinaryBuf sData;
   for (const auto& pElement : m_arrayGlobalData) {
@@ -317,32 +337,19 @@ void CFX_GlobalData::SaveGlobalPersisitentVariables() {
   }
 
   CFX_BinaryBuf sFile;
-  uint16_t wType = (uint16_t)(('X' << 8) | 'F');
+  uint16_t wType = kMagic;
   sFile.AppendBlock(&wType, sizeof(uint16_t));
   uint16_t wVersion = 2;
   sFile.AppendBlock(&wVersion, sizeof(uint16_t));
   sFile.AppendBlock(&nCount, sizeof(uint32_t));
   uint32_t dwSize = sData.GetSize();
   sFile.AppendBlock(&dwSize, sizeof(uint32_t));
-
   sFile.AppendBlock(sData.GetBuffer(), sData.GetSize());
-
   CRYPT_ArcFourCryptBlock(sFile.GetBuffer(), sFile.GetSize(), kRC4KEY,
                           sizeof(kRC4KEY));
-  WriteFileBuffer(m_sFilePath.c_str(),
-                  reinterpret_cast<char*>(sFile.GetBuffer()), sFile.GetSize());
-}
 
-void CFX_GlobalData::LoadFileBuffer(const wchar_t* sFilePath,
-                                    uint8_t*& pBuffer,
-                                    int32_t& nLength) {
-  // UnSupport.
-}
-
-void CFX_GlobalData::WriteFileBuffer(const wchar_t* sFilePath,
-                                     const char* pBuffer,
-                                     int32_t nLength) {
-  // UnSupport.
+  // TODO(tsepez): check return value?
+  m_pDelegate->StoreBuffer(sFile.GetBuffer(), sFile.GetSize());
 }
 
 void CFX_GlobalData::MakeByteString(const ByteString& name,
