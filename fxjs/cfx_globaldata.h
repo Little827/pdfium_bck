@@ -11,12 +11,20 @@
 #include <vector>
 
 #include "core/fxcrt/cfx_binarybuf.h"
+#include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/cfx_keyvalue.h"
 
 class CPDFSDK_FormFillEnvironment;
 
 class CFX_GlobalData {
  public:
+  class Delegate {
+   public:
+    virtual bool StoreBuffer(const uint8_t* pBuffer, size_t nLength) = 0;
+    virtual bool LoadBuffer(uint8_t*& pBuffer, size_t& nLength) = 0;
+    virtual void BufferDone(uint8_t* pBuffer) = 0;
+  };
+
   class Element {
    public:
     Element();
@@ -26,7 +34,8 @@ class CFX_GlobalData {
     bool bPersistent;
   };
 
-  static CFX_GlobalData* GetRetainedInstance(CPDFSDK_FormFillEnvironment* pApp);
+  static CFX_GlobalData* GetRetainedInstance(CPDFSDK_FormFillEnvironment* pApp,
+                                             Delegate* pDelegate);
   void Release();
 
   void SetGlobalVariableNumber(ByteString propname, double dData);
@@ -45,10 +54,12 @@ class CFX_GlobalData {
   using iterator = std::vector<std::unique_ptr<Element>>::iterator;
   using const_iterator = std::vector<std::unique_ptr<Element>>::const_iterator;
 
-  CFX_GlobalData();
+  explicit CFX_GlobalData(Delegate* pDelegate);
   ~CFX_GlobalData();
 
   void LoadGlobalPersistentVariables();
+  void LoadGlobalPersistentVariablesFromBuffer(uint8_t* pBuffer,
+                                               size_t nLength);
   void SaveGlobalPersisitentVariables();
 
   Element* GetGlobalVariable(const ByteString& sPropname);
@@ -66,8 +77,8 @@ class CFX_GlobalData {
                       CFX_BinaryBuf& sData);
 
   size_t m_RefCount = 0;
+  UnownedPtr<Delegate> m_pDelegate;
   std::vector<std::unique_ptr<Element>> m_arrayGlobalData;
-  WideString m_sFilePath;
 };
 
 #endif  // FXJS_CFX_GLOBALDATA_H_
