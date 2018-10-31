@@ -13,7 +13,6 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "core/fxcrt/unowned_ptr.h"
 
 class CPDF_Dictionary;
 
@@ -38,8 +37,8 @@ class CPDF_ContentMarkItem final : public Retainable {
  private:
   ByteString m_MarkName;
   ParamType m_ParamType = None;
-  UnownedPtr<CPDF_Dictionary> m_pPropertiesDict;
   ByteString m_PropertyName;
+  std::unique_ptr<CPDF_Dictionary> m_pPropertiesDict;
   std::unique_ptr<CPDF_Dictionary> m_pDirectDict;
 };
 

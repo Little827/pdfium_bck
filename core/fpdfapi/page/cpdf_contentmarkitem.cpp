@@ -18,7 +18,7 @@ CPDF_ContentMarkItem::~CPDF_ContentMarkItem() {}
 const CPDF_Dictionary* CPDF_ContentMarkItem::GetParam() const {
   switch (m_ParamType) {
     case PropertiesDict:
-      return m_pPropertiesDict.Get();
+      return m_pPropertiesDict.get();
     case DirectDict:
       return m_pDirectDict.get();
     case None:
@@ -46,6 +46,6 @@ void CPDF_ContentMarkItem::SetDirectDict(
 void CPDF_ContentMarkItem::SetPropertiesDict(CPDF_Dictionary* pDict,
                                              const ByteString& property_name) {
   m_ParamType = PropertiesDict;
-  m_pPropertiesDict = pDict;
+  m_pPropertiesDict = ToDictionary(pDict->Clone());
   m_PropertyName = property_name;
 }
