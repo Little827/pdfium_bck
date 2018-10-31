@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17031368_cf380346",
+        "filename": "fxjs/cfx_globaldata.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:43:35Z",
+      "side": 1,
+      "message": "Can we have a constant for this? Possibly calculated with sizeof / FX_ArraySize?",
+      "range": {
+        "startLine": 235,
+        "startChar": 16,
+        "endLine": 235,
+        "endChar": 18
+      },
+      "revId": "0e289f0fbfe60e96dd0061d7d32aea4024aeb0a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53013958_cf49d4ca",
+        "filename": "fxjs/cfx_globaldata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:43:35Z",
+      "side": 1,
+      "message": "Add virtual dtor.",
+      "revId": "0e289f0fbfe60e96dd0061d7d32aea4024aeb0a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f9dfa7_a0483671",
+        "filename": "fxjs/cfx_globaldata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:43:35Z",
+      "side": 1,
+      "message": "Do you want to use spans here?",
+      "revId": "0e289f0fbfe60e96dd0061d7d32aea4024aeb0a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36bda6cf_c64a02ef",
+        "filename": "fxjs/cfx_globaldata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:43:35Z",
+      "side": 1,
+      "message": "const",
+      "revId": "0e289f0fbfe60e96dd0061d7d32aea4024aeb0a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b256fc13_96cd104e",
+        "filename": "fxjs/cfx_globaldata_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:43:35Z",
+      "side": 1,
+      "message": "Should have a dtor with override.",
+      "revId": "0e289f0fbfe60e96dd0061d7d32aea4024aeb0a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
