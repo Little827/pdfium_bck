@@ -19,7 +19,7 @@ class CPDF_Dictionary;
 
 class CPDF_ContentMarkItem final : public Retainable {
  public:
-  enum ParamType { None, PropertiesDict, DirectDict };
+  enum ParamType { kNone, kPropertiesDict, kDirectDict };
 
   explicit CPDF_ContentMarkItem(ByteString name);
   ~CPDF_ContentMarkItem() override;
@@ -37,9 +37,9 @@ class CPDF_ContentMarkItem final : public Retainable {
 
  private:
   ByteString m_MarkName;
-  ParamType m_ParamType = None;
-  UnownedPtr<CPDF_Dictionary> m_pPropertiesDict;
+  ParamType m_ParamType = kNone;
   ByteString m_PropertyName;
+  UnownedPtr<CPDF_Dictionary> m_pPropertiesDict;
   std::unique_ptr<CPDF_Dictionary> m_pDirectDict;
 };
 
