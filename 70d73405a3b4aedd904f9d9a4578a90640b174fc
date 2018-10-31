@@ -16,6 +16,24 @@
       "revId": "70d73405a3b4aedd904f9d9a4578a90640b174fc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39def06_8c433deb",
+        "filename": "core/fpdfapi/page/cpdf_contentmarkitem.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-10-31T23:30:08Z",
+      "side": 1,
+      "message": "Yeah, it was really bugging me.  I\u0027ll pull it out into a new CL and submit it first.",
+      "parentUuid": "18b15bee_2762a33f",
+      "revId": "70d73405a3b4aedd904f9d9a4578a90640b174fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
