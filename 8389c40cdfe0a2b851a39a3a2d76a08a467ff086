@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2dc480e_8eae4ee8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:50:31Z",
+      "side": 1,
+      "message": "chromium:900552",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "8389c40cdfe0a2b851a39a3a2d76a08a467ff086",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff0d03c_3ca6979b",
+        "filename": "testing/resources/bug_900552.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:50:31Z",
+      "side": 1,
+      "message": "Add {{streamlen}}",
+      "revId": "8389c40cdfe0a2b851a39a3a2d76a08a467ff086",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef3e2d6_92f14824",
+        "filename": "testing/resources/bug_900552.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:50:31Z",
+      "side": 1,
+      "message": "spaces around \u0027\u003d\u0027.",
+      "range": {
+        "startLine": 67,
+        "startChar": 29,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "8389c40cdfe0a2b851a39a3a2d76a08a467ff086",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "262b0d50_dfedad69",
+        "filename": "testing/resources/bug_900552.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-10-31T21:50:31Z",
+      "side": 1,
+      "message": "Extra blank line(s)?",
+      "revId": "8389c40cdfe0a2b851a39a3a2d76a08a467ff086",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
