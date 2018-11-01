@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70ee086d_1ea5a148",
+        "filename": "fxjs/fx_date_helpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-01T22:37:50Z",
+      "side": 1,
+      "message": "NOTE: this is our new fuzz target, JS-free.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "83559f26c244bfc42d25636e5883c6044daa0884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
