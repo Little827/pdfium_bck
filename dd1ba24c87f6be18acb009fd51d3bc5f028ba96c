@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "9e76536d_b6f8b939",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-01T21:21:05Z",
+      "side": 1,
+      "message": "NOTE: If I fuzz this as-is, the fuzzer quickly walks into this and crashes without v8 support.",
+      "range": {
+        "startLine": 744,
+        "startChar": 13,
+        "endLine": 744,
+        "endChar": 25
+      },
+      "revId": "dd1ba24c87f6be18acb009fd51d3bc5f028ba96c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "473a8b5e_1a86144f",
         "filename": "fxjs/cjs_publicmethods.cpp",
         "patchSetId": 4
