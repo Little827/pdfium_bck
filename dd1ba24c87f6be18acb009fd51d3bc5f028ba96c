@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cd23ce8_aa12d5b9",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-01T21:19:27Z",
+      "side": 1,
+      "message": "NOTE: next goal is to get all this into fx_date_helpers.",
+      "range": {
+        "startLine": 418,
+        "startChar": 3,
+        "endLine": 479,
+        "endChar": 0
+      },
+      "revId": "dd1ba24c87f6be18acb009fd51d3bc5f028ba96c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d2a89c_d570ca9e",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-01T21:19:27Z",
+      "side": 1,
+      "message": "and all this.",
+      "range": {
+        "startLine": 501,
+        "startChar": 2,
+        "endLine": 736,
+        "endChar": 0
+      },
+      "revId": "dd1ba24c87f6be18acb009fd51d3bc5f028ba96c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "473a8b5e_1a86144f",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-01T21:19:27Z",
+      "side": 1,
+      "message": "and this. etc.",
+      "range": {
+        "startLine": 758,
+        "startChar": 1,
+        "endLine": 885,
+        "endChar": 3
+      },
+      "revId": "dd1ba24c87f6be18acb009fd51d3bc5f028ba96c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
