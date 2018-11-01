@@ -22,8 +22,7 @@ class CJS_PublicMethods final : public CJS_Object {
   static double ParseDate(const WideString& value, bool* bWrongFormat);
   static double ParseDateAsGMT(const WideString& value);
   static double ParseDateUsingFormat(const WideString& value,
-                                     const WideString& format,
-                                     bool* bWrongFormat);
+                                     const WideString& format);
 
   // Exposed for testing.
   static WideString PrintDateUsingFormat(double dDate,
