@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90d391d1_c7f732c3",
+        "filename": "fxjs/cfx_globaldata.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-01T01:07:24Z",
+      "side": 1,
+      "message": "Maybe add CFX_BinaryBuf::AsSpan() later?",
+      "revId": "b4b2d33c7fa14d26066d57f180ceb321861d3201",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dda64d1_f495be83",
+        "filename": "fxjs/cfx_globaldata_unittest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-01T01:07:24Z",
+      "side": 1,
+      "message": "last_buffer_.clear() ?",
+      "revId": "b4b2d33c7fa14d26066d57f180ceb321861d3201",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
