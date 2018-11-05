@@ -87,7 +87,7 @@ CFX_GlobalData::const_iterator CFX_GlobalData::FindGlobalVariable(
 }
 
 CFX_GlobalData::Element* CFX_GlobalData::GetGlobalVariable(
-    const ByteString& propname) {
+    const ByteString& propname) const {
   auto iter = FindGlobalVariable(propname);
   return iter != m_arrayGlobalData.end() ? iter->get() : nullptr;
 }
@@ -258,12 +258,12 @@ void CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
     return;
 
   for (int32_t i = 0, sz = dwCount; i < sz; i++) {
-    if (p > buffer.end())
+    if (p >= buffer.end())
       break;
 
     uint32_t dwNameLen = *((uint32_t*)p);
     p += sizeof(uint32_t);
-    if (p + dwNameLen > buffer.end())
+    if (p + dwNameLen >= buffer.end())
       break;
 
     ByteString sEntry = ByteString(p, dwNameLen);
@@ -299,7 +299,7 @@ void CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
       case CFX_KeyValue::DataType::STRING: {
         uint32_t dwLength = *((uint32_t*)p);
         p += sizeof(uint32_t);
-        if (p + dwLength > buffer.end())
+        if (p + dwLength >= buffer.end())
           break;
 
         SetGlobalVariableString(sEntry, ByteString(p, dwLength));
