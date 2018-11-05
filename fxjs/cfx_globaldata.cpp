@@ -87,7 +87,7 @@ CFX_GlobalData::const_iterator CFX_GlobalData::FindGlobalVariable(
 }
 
 CFX_GlobalData::Element* CFX_GlobalData::GetGlobalVariable(
-    const ByteString& propname) {
+    const ByteString& propname) const {
   auto iter = FindGlobalVariable(propname);
   return iter != m_arrayGlobalData.end() ? iter->get() : nullptr;
 }
