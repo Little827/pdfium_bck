@@ -41,6 +41,7 @@ class CFX_GlobalData {
   static CFX_GlobalData* GetRetainedInstance(Delegate* pDelegate);
   bool Release();
 
+  Element* GetGlobalVariable(const ByteString& sPropname) const;
   void SetGlobalVariableNumber(ByteString propname, double dData);
   void SetGlobalVariableBoolean(ByteString propname, bool bData);
   void SetGlobalVariableString(ByteString propname, const ByteString& sData);
@@ -63,7 +64,6 @@ class CFX_GlobalData {
   void LoadGlobalPersistentVariablesFromBuffer(pdfium::span<uint8_t> buffer);
   void SaveGlobalPersisitentVariables();
 
-  Element* GetGlobalVariable(const ByteString& sPropname);
   iterator FindGlobalVariable(const ByteString& sPropname);
   const_iterator FindGlobalVariable(const ByteString& sPropname) const;
 
