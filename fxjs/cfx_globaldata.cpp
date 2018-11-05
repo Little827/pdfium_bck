@@ -30,13 +30,63 @@ const uint8_t kRC4KEY[] = {
     0x0e, 0xd0, 0x6b, 0xbb, 0xd5, 0x75, 0x55, 0x8b, 0x6e, 0x6b, 0x19, 0xa0,
     0xf8, 0x77, 0xd5, 0xa3};
 
+CFX_GlobalData* g_pInstance = nullptr;
+
 // Returns true if non-empty, setting sPropName
 bool TrimPropName(ByteString* sPropName) {
   sPropName->Trim();
   return sPropName->GetLength() != 0;
 }
 
-CFX_GlobalData* g_pInstance = nullptr;
+bool MakeByteString(const ByteString& name,
+                    const CFX_KeyValue* pData,
+                    CFX_BinaryBuf* result) {
+  switch (pData->nType) {
+    case CFX_KeyValue::DataType::NUMBER: {
+      uint32_t dwNameLen = (uint32_t)name.GetLength();
+      result->AppendBlock(&dwNameLen, sizeof(uint32_t));
+      result->AppendString(name);
+      result->AppendBlock(&pData->nType, sizeof(uint16_t));
+
+      double dData = pData->dData;
+      result->AppendBlock(&dData, sizeof(double));
+      return true;
+    }
+    case CFX_KeyValue::DataType::BOOLEAN: {
+      uint32_t dwNameLen = (uint32_t)name.GetLength();
+      result->AppendBlock(&dwNameLen, sizeof(uint32_t));
+      result->AppendString(name);
+      result->AppendBlock(&pData->nType, sizeof(uint16_t));
+
+      uint16_t wData = (uint16_t)pData->bData;
+      result->AppendBlock(&wData, sizeof(uint16_t));
+      return true;
+    }
+    case CFX_KeyValue::DataType::STRING: {
+      uint32_t dwNameLen = (uint32_t)name.GetLength();
+      result->AppendBlock(&dwNameLen, sizeof(uint32_t));
+      result->AppendString(name);
+      result->AppendBlock(&pData->nType, sizeof(uint16_t));
+
+      uint32_t dwDataLen = (uint32_t)pData->sData.GetLength();
+      result->AppendBlock(&dwDataLen, sizeof(uint32_t));
+      result->AppendString(pData->sData);
+      return true;
+    }
+    case CFX_KeyValue::DataType::NULLOBJ: {
+      uint32_t dwNameLen = (uint32_t)name.GetLength();
+      result->AppendBlock(&dwNameLen, sizeof(uint32_t));
+      result->AppendString(name);
+      result->AppendBlock(&pData->nType, sizeof(uint32_t));
+      return true;
+    }
+    // TODO(tsepez): persist these array objects.
+    case CFX_KeyValue::DataType::OBJECT:
+    default:
+      break;
+  }
+  return false;
+}
 
 }  // namespace
 
@@ -87,7 +137,7 @@ CFX_GlobalData::const_iterator CFX_GlobalData::FindGlobalVariable(
 }
 
 CFX_GlobalData::Element* CFX_GlobalData::GetGlobalVariable(
-    const ByteString& propname) {
+    const ByteString& propname) const {
   auto iter = FindGlobalVariable(propname);
   return iter != m_arrayGlobalData.end() ? iter->get() : nullptr;
 }
@@ -323,15 +373,18 @@ void CFX_GlobalData::SaveGlobalPersisitentVariables() {
   uint32_t nCount = 0;
   CFX_BinaryBuf sData;
   for (const auto& pElement : m_arrayGlobalData) {
-    if (pElement->bPersistent) {
-      CFX_BinaryBuf sElement;
-      MakeByteString(pElement->data.sKey, &pElement->data, sElement);
-      if (sData.GetSize() + sElement.GetSize() > kMaxGlobalDataBytes)
-        break;
+    if (!pElement->bPersistent)
+      continue;
 
-      sData.AppendBlock(sElement.GetBuffer(), sElement.GetSize());
-      nCount++;
-    }
+    CFX_BinaryBuf sElement;
+    if (!MakeByteString(pElement->data.sKey, &pElement->data, &sElement))
+      continue;
+
+    if (sData.GetSize() + sElement.GetSize() > kMaxGlobalDataBytes)
+      break;
+
+    sData.AppendBlock(sElement.GetBuffer(), sElement.GetSize());
+    nCount++;
   }
 
   CFX_BinaryBuf sFile;
@@ -348,49 +401,6 @@ void CFX_GlobalData::SaveGlobalPersisitentVariables() {
 
   // TODO(tsepez): check return value?
   m_pDelegate->StoreBuffer({sFile.GetBuffer(), sFile.GetSize()});
-}
-
-void CFX_GlobalData::MakeByteString(const ByteString& name,
-                                    CFX_KeyValue* pData,
-                                    CFX_BinaryBuf& sData) {
-  switch (pData->nType) {
-    case CFX_KeyValue::DataType::NUMBER: {
-      uint32_t dwNameLen = (uint32_t)name.GetLength();
-      sData.AppendBlock(&dwNameLen, sizeof(uint32_t));
-      sData.AppendString(name);
-      sData.AppendBlock(&pData->nType, sizeof(uint16_t));
-
-      double dData = pData->dData;
-      sData.AppendBlock(&dData, sizeof(double));
-    } break;
-    case CFX_KeyValue::DataType::BOOLEAN: {
-      uint32_t dwNameLen = (uint32_t)name.GetLength();
-      sData.AppendBlock(&dwNameLen, sizeof(uint32_t));
-      sData.AppendString(name);
-      sData.AppendBlock(&pData->nType, sizeof(uint16_t));
-
-      uint16_t wData = (uint16_t)pData->bData;
-      sData.AppendBlock(&wData, sizeof(uint16_t));
-    } break;
-    case CFX_KeyValue::DataType::STRING: {
-      uint32_t dwNameLen = (uint32_t)name.GetLength();
-      sData.AppendBlock(&dwNameLen, sizeof(uint32_t));
-      sData.AppendString(name);
-      sData.AppendBlock(&pData->nType, sizeof(uint16_t));
-
-      uint32_t dwDataLen = (uint32_t)pData->sData.GetLength();
-      sData.AppendBlock(&dwDataLen, sizeof(uint32_t));
-      sData.AppendString(pData->sData);
-    } break;
-    case CFX_KeyValue::DataType::NULLOBJ: {
-      uint32_t dwNameLen = (uint32_t)name.GetLength();
-      sData.AppendBlock(&dwNameLen, sizeof(uint32_t));
-      sData.AppendString(name);
-      sData.AppendBlock(&pData->nType, sizeof(uint32_t));
-    } break;
-    default:
-      break;
-  }
 }
 
 CFX_GlobalData::Element::Element() = default;
