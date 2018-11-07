@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83f4a3c3_4b025b1f",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-07T16:48:50Z",
+      "side": 1,
+      "message": "Should this be \"RV\" instead of \"V\" ?",
+      "revId": "b059741bc84cbcd40ff3cfd2853e5b6d6c013c7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ecc103e_dbb4af36",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-07T16:48:50Z",
+      "side": 1,
+      "message": "\"RV\" ?",
+      "range": {
+        "startLine": 390,
+        "startChar": 63,
+        "endLine": 390,
+        "endChar": 66
+      },
+      "revId": "b059741bc84cbcd40ff3cfd2853e5b6d6c013c7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855c158e_4b07cb30",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-07T16:48:50Z",
+      "side": 1,
+      "message": "Use a scoper.",
+      "revId": "b059741bc84cbcd40ff3cfd2853e5b6d6c013c7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48192df4_cd85ae31",
+        "filename": "testing/resources/bug_901654.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-07T16:48:50Z",
+      "side": 1,
+      "message": "extra blank line",
+      "revId": "b059741bc84cbcd40ff3cfd2853e5b6d6c013c7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
