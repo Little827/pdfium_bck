@@ -51,12 +51,13 @@ class CJS_Global final : public CJS_Object {
                          v8::Local<v8::Value> vp);
 
  private:
-  struct JSGlobalData : public CFX_Value {
+  struct JSGlobalData {
    public:
     JSGlobalData();
+    JSGlobalData(v8::Isolate* pIsolate, v8::Local<v8::Value> vp);
     ~JSGlobalData();
 
-    v8::Global<v8::Object> pData;
+    v8::Global<v8::Value> pV8Value;
     bool bPersistent = false;
     bool bDeleted = false;
   };
@@ -64,25 +65,14 @@ class CJS_Global final : public CJS_Object {
   static int ObjDefnID;
   static const JSMethodSpec MethodSpecs[];
 
-  void UpdateGlobalPersistentVariables();
-  void CommitGlobalPersisitentVariables(CJS_Runtime* pRuntime);
-  void DestroyGlobalPersisitentVariables();
-  CJS_Result SetGlobalVariables(const ByteString& propname,
-                                CFX_Value::DataType nType,
-                                double dData,
-                                bool bData,
-                                const ByteString& sData,
-                                v8::Local<v8::Object> pData,
-                                bool bDefaultPersistent);
-  void ObjectToArray(CJS_Runtime* pRuntime,
-                     v8::Local<v8::Object> pObj,
-                     CFX_GlobalArray* pArray);
-  void PutObjectProperty(v8::Local<v8::Object> obj, CFX_KeyValue* pData);
+  void UpdateGlobalVariablesFromShared();
+  void CommitGlobalVariablesToShared();
+  std::unique_ptr<CFX_Value> ToCFXValue(JSGlobalData* pData);
+  std::unique_ptr<JSGlobalData> FromCFXValue(CFX_Value* value);
 
-  std::map<ByteString, std::unique_ptr<JSGlobalData>> m_MapGlobal;
-  WideString m_sFilePath;
   CFX_GlobalData* m_pGlobalData;
   CPDFSDK_FormFillEnvironment::ObservedPtr m_pFormFillEnv;
+  std::map<ByteString, std::unique_ptr<JSGlobalData>> m_MapGlobal;
 };
 
 #endif  // FXJS_CJS_GLOBAL_H_
