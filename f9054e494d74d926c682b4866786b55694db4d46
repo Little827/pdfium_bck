@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1541663169 -0800\nnonce ADWBXRCRWd0HtY3O+jnMcWaTgX7x2IgxSlshCc8bpJ9u0pTR0YaCaH8iAp9VouzFZAsdFLFhXXat\n\n0000000000000000000000000000000000000000 f9054e494d74d926c682b4866786b55694db4d46 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvj6cEACgkQqzYtYVpm\n/Xvj8wf9Gfi5At/VOSwQDlXR2vy4Kckw4UxKkyYlr3HSMh6Om5EGB0xoPF9aqKDi\nS0fOQUcOKhjhDyjpYVt0MDPMHw9oazLsjylB5LcAVHIL+lZ8wJ7DuJ27LDkBKvdX\nv5GKG7lPBm0I2W3gatmG9WoA99BPbSdJwq5L75C7nlSej434vdC+0Pm/5e5Cn8lh\nFfeWUztUlULfANZUA5J8SaxKRms9FpsIQstvATTv8C+WlFBpouDL4xVaTZwp9wJk\nTggaHJ6aOzUWb9lnvhOeb64eZaBGpSQVmRR2vlavt1Gg+MVb6fOFCsclEY8zU9We\nkCtzYNPSdbp/qTGPR7RxUZrCSI7AAQ\u003d\u003d\n\u003dA8st\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bc99017_cc599251",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-08T18:14:51Z",
+      "side": 1,
+      "message": "this could be std::array\u003cpdfium::span\u003cuint8_t\u003e, 3\u003e  since we just want to set up indexing without taking any ownership.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "f9054e494d74d926c682b4866786b55694db4d46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ad075b_85adb31c",
+        "filename": "core/fpdfapi/render/cpdf_transferfunc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-08T18:14:51Z",
+      "side": 1,
+      "message": "I thought std::vector implicitly converted to span, so the make_span call might not be required (but may be clearer).",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "f9054e494d74d926c682b4866786b55694db4d46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
