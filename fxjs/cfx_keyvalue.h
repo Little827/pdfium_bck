@@ -7,6 +7,8 @@
 #ifndef FXJS_CFX_KEYVALUE_H_
 #define FXJS_CFX_KEYVALUE_H_
 
+#include <memory>
+
 #include "core/fxcrt/fx_string.h"
 #include "fxjs/cfx_globalarray.h"
 
@@ -21,7 +23,16 @@ class CFX_Value {
   };
 
   CFX_Value();
+  CFX_Value(bool value);
+  CFX_Value(double value);
+  CFX_Value(ByteString value);
+  CFX_Value(CFX_GlobalArray value);
+  CFX_Value(const CFX_Value& that) = delete;
+  CFX_Value(CFX_Value&& that);
   ~CFX_Value();
+
+  CFX_Value& operator=(const CFX_Value& that) = delete;
+  CFX_Value& operator=(CFX_Value&& array);
 
   DataType nType = DataType::NULLOBJ;
   bool bData;
@@ -33,6 +44,7 @@ class CFX_Value {
 class CFX_KeyValue : public CFX_Value {
  public:
   CFX_KeyValue();
+  CFX_KeyValue(CFX_Value value);
   ~CFX_KeyValue();
 
   ByteString sKey;
