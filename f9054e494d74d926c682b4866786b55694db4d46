@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "c48a1184_0c46757f",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-08T18:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc99017_cc599251",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "f9054e494d74d926c682b4866786b55694db4d46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35ad075b_85adb31c",
         "filename": "core/fpdfapi/render/cpdf_transferfunc.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "f9054e494d74d926c682b4866786b55694db4d46",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367e524f_193eb657",
+        "filename": "core/fpdfapi/render/cpdf_transferfunc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-08T18:26:04Z",
+      "side": 1,
+      "message": "It does. I removed the make_span().",
+      "parentUuid": "35ad075b_85adb31c",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "f9054e494d74d926c682b4866786b55694db4d46",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
