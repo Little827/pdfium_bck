@@ -314,9 +314,11 @@ double CJS_PublicMethods::AF_Simple(const wchar_t* sFuction,
 v8::Local<v8::Array> CJS_PublicMethods::AF_MakeArrayFromList(
     CJS_Runtime* pRuntime,
     v8::Local<v8::Value> val) {
-  if (!val.IsEmpty() && val->IsArray())
+  ASSERT(!val.IsEmpty());
+  if (val->IsArray())
     return pRuntime->ToArray(val);
 
+  ASSERT(val->IsString());
   WideString wsStr = pRuntime->ToWideString(val);
   ByteString t = wsStr.ToDefANSI();
   const char* p = t.c_str();
@@ -1260,18 +1262,18 @@ CJS_Result CJS_PublicMethods::AFSimple_Calculate(
   if (params.size() != 2)
     return CJS_Result::Failure(JSMessage::kParamError);
 
-  if ((params[1].IsEmpty() || !params[1]->IsArray()) && !params[1]->IsString())
+  if (params[1].IsEmpty() || (!params[1]->IsArray() && !params[1]->IsString()))
     return CJS_Result::Failure(JSMessage::kParamError);
+
+  WideString sFunction = pRuntime->ToWideString(params[0]);
+  v8::Local<v8::Array> FieldNameArray =
+      AF_MakeArrayFromList(pRuntime, params[1]);
 
   CPDFSDK_InteractiveForm* pReaderForm =
       pRuntime->GetFormFillEnv()->GetInteractiveForm();
   CPDF_InteractiveForm* pForm = pReaderForm->GetInteractiveForm();
 
-  WideString sFunction = pRuntime->ToWideString(params[0]);
   double dValue = wcscmp(sFunction.c_str(), L"PRD") == 0 ? 1.0 : 0.0;
-
-  v8::Local<v8::Array> FieldNameArray =
-      AF_MakeArrayFromList(pRuntime, params[1]);
   int nFieldsCount = 0;
   for (size_t i = 0; i < pRuntime->GetArrayLength(FieldNameArray); ++i) {
     WideString wsFieldName =

@@ -2,7 +2,14 @@
 {{object 1 0}} <<
   /Type /Catalog
   /Pages 2 0 R
-  /AcroForm << /Fields [ 4 0 R 10 0 R ] /DR 5 0 R >>
+  /AcroForm <<
+    /Fields [
+      4 0 R
+      10 0 R
+      11 0 R
+    ]
+    /DR 5 0 R
+  >>
 >>
 endobj
 {{object 2 0}} <<
@@ -204,9 +211,14 @@ endobj
 
       expectError(undefined, "AFSimple_Calculate()");
       expectError(undefined, "AFSimple_Calculate(1)");
-      expectEventValue(undefined, "AFSimple_Calculate('blooey', [1, 3, 14])", 0);
-      expectEventValue(undefined, "AFSimple_Calculate('AVG', [1, 3, 14])", 0);
-      expectEventValue(undefined, "AFSimple_Calculate('SUM', [1, 3, 14])", 0);
+      expectEventValue(undefined, "AFSimple_Calculate('blooey', ['Text2', 'Text3'])", 0);
+      expectEventValue(undefined, "AFSimple_Calculate('AVG', [1, 'nonesuch', {'crud': 32}])", 0);
+      expectEventValue(undefined, "AFSimple_Calculate('AVG', ['Text2', 'Text3'])", (123 + 456) / 2);
+      expectEventValue(undefined, "AFSimple_Calculate('SUM', ['Text2', 'Text3'])", 123 + 456);
+      expectEventValue(undefined, "AFSimple_Calculate('PRD', ['Text2', 'Text3'])", 123 * 456);
+      expectEventValue(undefined, "AFSimple_Calculate('MIN', ['Text2', 'Text3'])", 123);
+      expectEventValue(undefined, "AFSimple_Calculate('MAX', ['Text2', 'Text3'])", 456);
+      expectEventValue(undefined, "AFSimple_Calculate('AVG', 'Text2, Text3')", (123 + 456) / 2);
 
       app.alert("**********************");
 
@@ -269,6 +281,17 @@ endobj
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 40 200 70 ]
   /Subtype /Widget
+  /V (123)
+>>
+endobj
+{{object 11 0}} <<
+  /Type /Annot
+  /FT /Tx
+  /T (Text3)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 40 200 70 ]
+  /Subtype /Widget
+  /V (456)
 >>
 endobj
 {{xref}}
