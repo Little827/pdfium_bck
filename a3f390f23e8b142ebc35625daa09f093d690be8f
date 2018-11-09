@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "15666747_751ae468",
+        "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-09T17:31:48Z",
+      "side": 1,
+      "message": "follow-up: As much as I like declaration at point of use, if all these declarations moved up we might be able to combine the logic at 101 with the if (parray) above?  At which point the constrants you noted on the old code become obvious.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "a3f390f23e8b142ebc35625daa09f093d690be8f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1516723_a991a15b",
         "filename": "core/fpdfapi/render/cpdf_docrenderdata.cpp",
         "patchSetId": 1
