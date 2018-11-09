@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac8b2c17_f0e3f4dd",
+        "filename": "testing/resources/javascript/field_methods.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-09T22:17:22Z",
+      "side": 1,
+      "message": "Should \"9 0 R\" be in the list?",
+      "revId": "38bf3e9ac50dc68288e51b923805e6a2b2da724b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee2c241_ebf1cd4a",
+        "filename": "testing/resources/javascript/field_properties.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-09T22:17:22Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "38bf3e9ac50dc68288e51b923805e6a2b2da724b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
