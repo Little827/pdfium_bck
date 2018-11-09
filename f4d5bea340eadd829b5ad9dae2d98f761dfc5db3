@@ -34,6 +34,24 @@
       "revId": "f4d5bea340eadd829b5ad9dae2d98f761dfc5db3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d253e55_821f4844",
+        "filename": "testing/resources/javascript/public_methods_expected.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-09T01:49:25Z",
+      "side": 1,
+      "message": "\"ERROR: InvalidSetError: Set not possible, invalid or unknown.\" for all the new lines here.",
+      "parentUuid": "d8d17eed_bd0b7529",
+      "revId": "f4d5bea340eadd829b5ad9dae2d98f761dfc5db3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
