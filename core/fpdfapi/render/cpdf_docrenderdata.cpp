@@ -68,49 +68,69 @@ void CPDF_DocRenderData::MaybePurgeTransferFunc(const CPDF_Object* pObj) {
 
 RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
     const CPDF_Object* pObj) const {
-  std::unique_ptr<CPDF_Function> pFuncs[3];
-  bool bUniTransfer = true;
-  bool bIdentity = true;
-  if (const CPDF_Array* pArray = pObj->AsArray()) {
-    bUniTransfer = false;
-    if (pArray->size() < 3)
-      return nullptr;
+  const CPDF_Array* pArray = pObj->AsArray();
+  if (pArray)
+    return CreateTransferFuncFromArray(pArray);
+  return CreateTransferFuncFromNonArray(pObj);
+}
 
-    for (uint32_t i = 0; i < 3; ++i) {
-      pFuncs[2 - i] = CPDF_Function::Load(pArray->GetDirectObjectAt(i));
-      if (!pFuncs[2 - i])
-        return nullptr;
-    }
-  } else {
-    pFuncs[0] = CPDF_Function::Load(pObj);
-    if (!pFuncs[0])
-      return nullptr;
-  }
+RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFuncFromNonArray(
+    const CPDF_Object* pObj) const {
+  ASSERT(!pObj->IsArray());
 
-  float input;
+  std::unique_ptr<CPDF_Function> pFunc = CPDF_Function::Load(pObj);
+  if (!pFunc)
+    return nullptr;
+
   int noutput;
   float output[kMaxOutputs];
   memset(output, 0, sizeof(output));
 
+  bool bIdentity = true;
+  std::vector<uint8_t> samples_r(CPDF_TransferFunc::kChannelSampleSize);
+  for (size_t v = 0; v < CPDF_TransferFunc::kChannelSampleSize; ++v) {
+    float input = static_cast<float>(v) / 255.0f;
+    if (pFunc->CountOutputs() <= kMaxOutputs)
+      pFunc->Call(&input, 1, output, &noutput);
+    size_t o = FXSYS_round(output[0] * 255);
+    if (o != v)
+      bIdentity = false;
+    samples_r[v] = o;
+  }
+  std::vector<uint8_t> samples_g = samples_r;
+  std::vector<uint8_t> samples_b = samples_r;
+
+  return pdfium::MakeRetain<CPDF_TransferFunc>(
+      m_pPDFDoc.Get(), bIdentity, std::move(samples_r), std::move(samples_g),
+      std::move(samples_b));
+}
+
+RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFuncFromArray(
+    const CPDF_Array* pArray) const {
+  std::unique_ptr<CPDF_Function> pFuncs[3];
+  if (pArray->size() < FX_ArraySize(pFuncs))
+    return nullptr;
+
+  for (uint32_t i = 0; i < 3; ++i) {
+    pFuncs[2 - i] = CPDF_Function::Load(pArray->GetDirectObjectAt(i));
+    if (!pFuncs[2 - i])
+      return nullptr;
+  }
+
+  int noutput;
+  float output[kMaxOutputs];
+  memset(output, 0, sizeof(output));
+
+  bool bIdentity = true;
   std::vector<uint8_t> samples_r(CPDF_TransferFunc::kChannelSampleSize);
   std::vector<uint8_t> samples_g(CPDF_TransferFunc::kChannelSampleSize);
   std::vector<uint8_t> samples_b(CPDF_TransferFunc::kChannelSampleSize);
   std::array<pdfium::span<uint8_t>, 3> samples = {samples_r, samples_g,
                                                   samples_b};
   for (size_t v = 0; v < CPDF_TransferFunc::kChannelSampleSize; ++v) {
-    input = static_cast<float>(v) / 255.0f;
-    if (bUniTransfer) {
-      if (pFuncs[0] && pFuncs[0]->CountOutputs() <= kMaxOutputs)
-        pFuncs[0]->Call(&input, 1, output, &noutput);
-      size_t o = FXSYS_round(output[0] * 255);
-      if (o != v)
-        bIdentity = false;
-      for (auto& channel : samples)
-        channel[v] = o;
-      continue;
-    }
+    float input = static_cast<float>(v) / 255.0f;
     for (int i = 0; i < 3; ++i) {
-      if (!pFuncs[i] || pFuncs[i]->CountOutputs() > kMaxOutputs) {
+      if (pFuncs[i]->CountOutputs() > kMaxOutputs) {
         samples[i][v] = v;
         continue;
       }

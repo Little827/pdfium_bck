@@ -14,6 +14,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 
+class CPDF_Array;
 class CPDF_Document;
 class CPDF_Font;
 class CPDF_Object;
@@ -35,6 +36,10 @@ class CPDF_DocRenderData {
  private:
   RetainPtr<CPDF_TransferFunc> CreateTransferFunc(
       const CPDF_Object* pObj) const;
+  RetainPtr<CPDF_TransferFunc> CreateTransferFuncFromNonArray(
+      const CPDF_Object* pObj) const;
+  RetainPtr<CPDF_TransferFunc> CreateTransferFuncFromArray(
+      const CPDF_Array* pArray) const;
 
   UnownedPtr<CPDF_Document> m_pPDFDoc;
   std::map<CPDF_Font*, RetainPtr<CPDF_Type3Cache>> m_Type3FaceMap;
