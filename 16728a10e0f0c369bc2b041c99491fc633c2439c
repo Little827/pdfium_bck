@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1356ed14_da1629e5",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 14
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-09T17:28:49Z",
+      "side": 1,
+      "message": "Err, sorry. I meant [ 100 0 200 30 ].",
+      "revId": "16728a10e0f0c369bc2b041c99491fc633c2439c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
