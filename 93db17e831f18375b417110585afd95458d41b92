@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4eb6d416_746bd683",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 15
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-09T19:38:52Z",
+      "side": 1,
+      "message": "The Reader results are:\nNaN\n2\n2\n2\n2.5\n2\n3\n5\n6\nNaN\nNaN\nNaN\nNaN\nNaN",
+      "revId": "93db17e831f18375b417110585afd95458d41b92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dbaac6_be2ddb34",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 15
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-09T19:38:52Z",
+      "side": 1,
+      "message": "The Reader results are:\nTypeError: aFields is undefined\nTypeError: aFields is undefined\n0\nTypeError: f is null\n289.5\n579\n56088\n123\n456\n289.5",
+      "revId": "93db17e831f18375b417110585afd95458d41b92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
