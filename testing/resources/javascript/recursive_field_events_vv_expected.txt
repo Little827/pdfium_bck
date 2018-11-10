@@ -1,0 +1,4 @@
+Alert: *** START ***
+Alert: MyField1 changed 0 0
+Alert: MyField2 changed 0 1
+Alert: *** END ***

@@ -1,0 +1,103 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm 4 0 R
+  /OpenAction 6 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /Kids [ 3 0 R ]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [ 0 0 612 792 ]
+  /Annots [ 5 0 R 10 0 R ]
+>>
+endobj
+{{object 4 0}} <<
+  /Fields [5 0 R 10 0 R]
+>>
+endobj
+{{object 5 0}} <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Tx
+  /T (MyField1)
+  /F 4
+  /Rect [ 200 200 300 300 ]
+  /AA << /V 8 0 R >>
+>>
+endobj
+{{object 6 0}} <<
+  /Type /Action
+  /S /JavaScript
+  /JS 7 0 R
+>>
+endobj
+{{object 7 0}} <<
+  {{streamlen}}
+>>
+stream
+app.alert('*** START ***');
+global.counter = 0;
+this.getField("MyField1").value = "o";
+app.alert('*** END ***');
+endstream
+endobj
+{{object 8 0}} <<
+  /Type /Action
+  /S /JavaScript
+  /JS 9 0 R
+>>
+endobj
+{{object 9 0}} <<
+  {{streamlen}}
+>>
+stream
+var f1 = this.getField("MyField1");
+var f2 = this.getField("MyField2");
+app.alert('MyField1 changed ' + f1.value.length + ' ' + global.counter);
+if (global.counter < 10) {
+  global.counter += 1;
+  f2.value += "o";
+}
+endstream
+endobj
+{{object 10 0}} <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Tx
+  /T (MyField2)
+  /F 4
+  /Rect [ 300 200 400 300 ]
+  /AA << /V 11 0 R >>
+>>
+endobj
+{{object 11 0}} <<
+  /Type /Action
+  /S /JavaScript
+  /JS 12 0 R
+>>
+endobj
+{{object 12 0}} <<
+  {{streamlen}}
+>>
+stream
+var f1 = this.getField("MyField1");
+var f2 = this.getField("MyField2");
+app.alert('MyField2 changed ' + f2.value.length + ' ' + global.counter);
+if (global.counter < 10) {
+  global.counter += 1;
+  f1.value += "o";
+}
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
