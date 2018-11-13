@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "094fa5ba_a7752582",
+        "filename": "testing/resources/javascript/expect.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T22:26:32Z",
+      "side": 1,
+      "message": "Can\u0027t tell if there are excess blank lines at the bottom here. Does the document_methods.pdf output still have the same stream length?",
+      "revId": "524ed76f9965ba72c8091ff7877bb73932f43d4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99bd5e9e_9971d890",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T22:26:32Z",
+      "side": 1,
+      "message": "2 blank lines between standalone functions. Ditto on line 331.",
+      "revId": "524ed76f9965ba72c8091ff7877bb73932f43d4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ee4ec0_c3955c9a",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T22:26:32Z",
+      "side": 1,
+      "message": "Can we use cStringIO to hold the intermediate state, instead of writing it out to disk?",
+      "revId": "524ed76f9965ba72c8091ff7877bb73932f43d4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
