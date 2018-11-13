@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22b1a02d_b420f060",
+        "filename": "testing/resources/xfa/xfa_multiline_textfield.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T22:35:03Z",
+      "side": 1,
+      "message": "The bots are green, but I don\u0027t see how xfa_tiff_packbits_image.in including xfa_locale_6_0.fragment including xfa_locale.xml works in fixup_pdf_template.py. Am I missing something?",
+      "revId": "c09bb5366c186e3d304469569ae69f8d7fd6006c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
