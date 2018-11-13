@@ -8,6 +8,7 @@
 There are several places in a PDF file where byte-offsets are required. This
 script replaces {{name}}-style variables in the input with calculated results
 
+  {{include path/to/file}} - inserts file's contents into stream.
   {{header}} - expands to the header comment required for PDF files.
   {{xref}} - expands to a generated xref table, noting the offset.
   {{trailer}} - expands to a standard trailer with "1 0 R" as the /Root.
@@ -314,6 +315,19 @@ def expand_file(input_path, output_path):
   except IOError:
     print >> sys.stderr, 'failed to process %s' % input_path
 
+def insert_includes(input_path, output_file):
+  try:
+    with open(input_path, 'rb') as infile:
+      for line in infile:
+        match = re.match(r'\s*\{\{include\s+(.+)\}\}', line);
+        if match:
+          insert_includes(
+              os.path.join(os.path.dirname(input_path), match.group(1)),
+              output_file)
+        else:
+          output_file.write(line)
+  except IOError:
+    print >> sys.stderr, 'failed to include %s' % input_path
 
 def main():
   parser = optparse.OptionParser()
@@ -325,8 +339,12 @@ def main():
     output_dir = os.path.dirname(testcase_path)
     if options.output_dir:
       output_dir = options.output_dir
+    temp_path = os.path.join(output_dir, testcase_root + '.tmp')
+    with open(temp_path, 'wb') as tmpfile:
+      insert_includes(testcase_path, tmpfile)
     output_path = os.path.join(output_dir, testcase_root + '.pdf')
-    expand_file(testcase_path, output_path)
+    expand_file(temp_path, output_path)
+    os.remove(temp_path)
   return 0
 
 
