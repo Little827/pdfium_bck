@@ -1719,7 +1719,7 @@ std::unique_ptr<CPDF_Object> CPDF_FontEncoding::Realize(
     pDiff->AddNew<CPDF_Name>(PDF_AdobeNameFromUnicode(m_Unicodes[i]));
   }
 
-  auto pDict = pdfium::MakeUnique<CPDF_Dictionary>(pPool);
+  auto pDict = pdfium::MakeUnique<CPDF_Dictionary>(pPool, nullptr);
   pDict->SetNewFor<CPDF_Name>("BaseEncoding", "WinAnsiEncoding");
   pDict->SetFor("Differences", std::move(pDiff));
   return std::move(pDict);
