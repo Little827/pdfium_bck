@@ -81,7 +81,13 @@ stream
 endstream
 endobj
 
-{{xfalocale 6 0}}
+{{object 6 0}} <<
+  {{streamlen}}
+>>
+stream
+{{include ../../../xfa_locale.xml}}
+endstream
+endobj
 
 {{xfapostamble 7 0}}
 
