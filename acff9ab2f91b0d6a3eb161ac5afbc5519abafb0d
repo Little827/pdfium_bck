@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a459457f_04974af2",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T23:55:32Z",
+      "side": 0,
+      "message": "Existing issue: Who owns |pDict| ?",
+      "revId": "acff9ab2f91b0d6a3eb161ac5afbc5519abafb0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
