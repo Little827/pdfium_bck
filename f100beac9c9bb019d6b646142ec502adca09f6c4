@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ddffb95_98cd3aef",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T23:52:34Z",
+      "side": 1,
+      "message": "Can we normalize |input_path| with: input_path \u003d os.path.abspath(input_path) ?",
+      "revId": "f100beac9c9bb019d6b646142ec502adca09f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e415109_363b7c2b",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T23:52:34Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 319,
+        "startChar": 5,
+        "endLine": 319,
+        "endChar": 6
+      },
+      "revId": "f100beac9c9bb019d6b646142ec502adca09f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
