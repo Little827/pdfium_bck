@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a60034d7_7b5c49f4",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-13T23:32:41Z",
+      "side": 1,
+      "message": "Should we check for circular includes and raise an exception? I\u0027m worried we\u0027ll accidentally write a JS test that infinite loops, and that will tell up the try bots for a few hours. Which is more of an annoyance if it happens.",
+      "revId": "8f001049f9236186f016be81835caa18ddd42060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
