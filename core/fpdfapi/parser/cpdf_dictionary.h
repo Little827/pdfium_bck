@@ -115,7 +115,9 @@ class CPDF_Dictionary final : public CPDF_Object {
                                   CPDF_IndirectObjectHolder* pHolder);
 
   // Invalidates iterators for the element with the key |key|.
-  std::unique_ptr<CPDF_Object> RemoveFor(const ByteString& key);
+  std::unique_ptr<CPDF_Object> RemoveFor(const ByteString& key)
+      WARN_UNUSED_RESULT;
+  void RemoveAndOrphan(const ByteString& key);
 
   // Invalidates iterators for the element with the key |oldkey|.
   void ReplaceKey(const ByteString& oldkey, const ByteString& newkey);
