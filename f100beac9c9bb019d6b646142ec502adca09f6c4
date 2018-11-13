@@ -39,6 +39,48 @@
       "revId": "f100beac9c9bb019d6b646142ec502adca09f6c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba44075a_5e5a7d00",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-13T23:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e415109_363b7c2b",
+      "range": {
+        "startLine": 319,
+        "startChar": 5,
+        "endLine": 319,
+        "endChar": 6
+      },
+      "revId": "f100beac9c9bb019d6b646142ec502adca09f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c103e288_ed4a3539",
+        "filename": "testing/tools/fixup_pdf_template.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-13T23:55:14Z",
+      "side": 1,
+      "message": "used normpath() instead to collapse all the ../s.",
+      "parentUuid": "1ddffb95_98cd3aef",
+      "revId": "f100beac9c9bb019d6b646142ec502adca09f6c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
