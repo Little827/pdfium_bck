@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f0ee0ddf_b8b2cd09",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-14T20:05:20Z",
+      "side": 1,
+      "message": "Actually, mac compiler didn\u0027t like this.  Will dig into that as a follow up.",
+      "parentUuid": "ef743f0b_2d83956d",
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b40f1a34_f205e47c",
         "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
         "patchSetId": 1
