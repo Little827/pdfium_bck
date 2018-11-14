@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "bc4dc36a_9218b230",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-14T20:09:10Z",
+      "side": 1,
+      "message": "Not done, but if it\u0027s the same issue as CPDF_Array, then ok.",
+      "parentUuid": "035ca6c4_4a1a5116",
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a720aab_605c0107",
         "filename": "core/fpdfapi/parser/cpdf_indirect_object_holder.h",
         "patchSetId": 1
