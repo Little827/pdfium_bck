@@ -22,6 +22,30 @@
       "revId": "281c6c6a2dc14d2242db8ee2d25518e3e6ced4e8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e14b38_b8460c99",
+        "filename": "testing/resources/pixel/xfa_specific/use_ahem/xfa_example.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-14T22:31:35Z",
+      "side": 1,
+      "message": "argh.  Fixed.",
+      "parentUuid": "1aac402a_0aac65f4",
+      "range": {
+        "startLine": 4,
+        "startChar": 19,
+        "endLine": 4,
+        "endChar": 33
+      },
+      "revId": "281c6c6a2dc14d2242db8ee2d25518e3e6ced4e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
