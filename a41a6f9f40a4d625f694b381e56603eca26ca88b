@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13789e7a_1d388bf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-14T21:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e47e8df_2510306c",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "a41a6f9f40a4d625f694b381e56603eca26ca88b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d77b585_5259d8ca",
         "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-11-14T00:15:59Z",
       "side": 1,
       "message": "Are there any callers left, outside of CPDF_Dictionary? i.e. Can this be private?",
+      "revId": "a41a6f9f40a4d625f694b381e56603eca26ca88b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a47d5808_14225174",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-14T21:20:35Z",
+      "side": 1,
+      "message": "fpdfsdk/fpdf_ppo.cpp:378\ncore/fpdfapi/parser/cpdf_cross_ref_table.cpp:154\nfpdfsdk/fpdf_editpage.cpp:587\netc.",
+      "parentUuid": "4d77b585_5259d8ca",
       "revId": "a41a6f9f40a4d625f694b381e56603eca26ca88b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "a41a6f9f40a4d625f694b381e56603eca26ca88b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "126be8a0_77f0964f",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-14T21:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4207caaf_eef6cb2d",
+      "revId": "a41a6f9f40a4d625f694b381e56603eca26ca88b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
