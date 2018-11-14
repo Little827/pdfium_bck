@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e8cdfa1_27fc0f4c",
+        "filename": "core/fpdfapi/font/cpdf_fontencoding.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-14T00:00:22Z",
+      "side": 1,
+      "message": "Is this also wrong to pass nullptr?",
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487a2612_b106cc7b",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-14T00:00:22Z",
+      "side": 1,
+      "message": "Should this become a TODO? Is it wrong to pass nullptr?",
+      "range": {
+        "startLine": 471,
+        "startChar": 52,
+        "endLine": 471,
+        "endChar": 57
+      },
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
