@@ -19,6 +19,74 @@
     },
     {
       "key": {
+        "uuid": "76cea286_f9204d7a",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-14T00:05:22Z",
+      "side": 1,
+      "message": "Update comment.",
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547769d8_590d7e56",
+        "filename": "core/fpdfapi/parser/cpdf_array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-14T00:05:22Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40f1a34_f205e47c",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-14T00:05:22Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a720aab_605c0107",
+        "filename": "core/fpdfapi/parser/cpdf_indirect_object_holder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-14T00:05:22Z",
+      "side": 1,
+      "message": "Update comments here as well.",
+      "revId": "bd9282fe068c9518cf51454d121a2db0d54a2884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "487a2612_b106cc7b",
         "filename": "core/fpdfdoc/cpvt_generateap.cpp",
         "patchSetId": 1
