@@ -22,6 +22,30 @@
       "revId": "7345cffd48af87f5cc3179e9d5be3d58cd561060",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d07b931_b3e7f8b1",
+        "filename": "xfa/fde/cfde_texteditengine_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-15T01:13:01Z",
+      "side": 0,
+      "message": "Although code search shows that ASSERT_TRUE() does occur in many SetUp() methods, so converting to use it here.",
+      "parentUuid": "e9cdf79f_a545beb7",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "7345cffd48af87f5cc3179e9d5be3d58cd561060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
