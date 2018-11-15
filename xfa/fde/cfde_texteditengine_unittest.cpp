@@ -39,7 +39,6 @@ class CFDE_TextEditEngineTest : public testing::Test {
   void SetUp() override {
     font_ =
         CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0, GetGlobalFontManager());
-    ASSERT(font_.Get() != nullptr);
 
     engine_ = pdfium::MakeUnique<CFDE_TextEditEngine>();
     engine_->SetFont(font_);
@@ -48,6 +47,7 @@ class CFDE_TextEditEngineTest : public testing::Test {
 
   void TearDown() override { engine_.reset(); }
 
+  bool HasFont() const { return !!font_; }
   CFDE_TextEditEngine* engine() const { return engine_.get(); }
 
  private:
@@ -56,6 +56,7 @@ class CFDE_TextEditEngineTest : public testing::Test {
 };
 
 TEST_F(CFDE_TextEditEngineTest, Insert) {
+  EXPECT_TRUE(HasFont());
   EXPECT_STREQ(L"", engine()->GetText().c_str());
 
   engine()->Insert(0, L"");

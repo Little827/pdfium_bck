@@ -20,8 +20,9 @@ class CFX_TxtBreakTest : public testing::Test {
   void SetUp() override {
     font_ =
         CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0, GetGlobalFontManager());
-    ASSERT(font_.Get());
   }
+
+  bool HasFont() const { return !!font_; }
 
   std::unique_ptr<CFX_TxtBreak> CreateBreak() {
     auto b = pdfium::MakeUnique<CFX_TxtBreak>();
@@ -34,6 +35,8 @@ class CFX_TxtBreakTest : public testing::Test {
 };
 
 TEST_F(CFX_TxtBreakTest, BidiLine) {
+  EXPECT_TRUE(HasFont());
+
   auto txt_break = CreateBreak();
   txt_break->SetLineBreakTolerance(1);
   txt_break->SetFontSize(12);

@@ -23,9 +23,9 @@ class CFX_RTFBreakTest : public testing::Test {
   void SetUp() override {
     font_ =
         CFGAS_GEFont::LoadFont(L"Arial Black", 0, 0, GetGlobalFontManager());
-    ASSERT(font_.Get());
   }
 
+  bool HasFont() const { return !!font_; }
   std::unique_ptr<CFX_RTFBreak> CreateBreak(int32_t args) {
     auto b = pdfium::MakeUnique<CFX_RTFBreak>(args);
     b->SetFont(font_);
@@ -40,6 +40,8 @@ class CFX_RTFBreakTest : public testing::Test {
 // and must be consumed before you get any more characters ....
 
 TEST_F(CFX_RTFBreakTest, AddChars) {
+  EXPECT_TRUE(HasFont());
+
   auto b = CreateBreak(FX_LAYOUTSTYLE_ExpandTab);
 
   WideString str(L"Input String.");
