@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1542246678 -0800\nnonce ADWBXRCnv88136dwDFQ1aUW9X2q9JfXmqSOnEWDsHKS0zq0HyQAte5hdRMkBqWeOpR30IWVz+kjy\n\n0000000000000000000000000000000000000000 aeb38bbdd3c3c72956aac54515fe025bdb82d8bb refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvs0RYACgkQqzYtYVpm\n/Xut1Qf+IG+N9J2zVBpNNrRNnzJbX850LemIc0T+aseY87RMocIiO3guTD5UFv2H\nNgEJ7GBURHdiAhGCqczwT9i1ooIaiXEIh8Ihp1G1/rSgtD3pVg6sxGiPqCucjMwi\nmHK2BaeJCkvzIadinOfG8aPHvk7BdSpAObPYww/kf2SYo5tvmmc54z+WJL/S3sa0\nTm6snJ7tlsaY0bVHS51AJkG7Wn6OkPHTMSrho0WGFogwbgk24Qf24O3KKSwpYWaH\nBoECXUE9Olw+jxz93en9iCBwwLZcW6TO7dghkWGz0EV9Dzt9vYnczs5SbfmByWk6\njhbhQaACFD4/Md2Rbuogl6pPAxClYA\u003d\u003d\n\u003dRYwR\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbdce848_9112c0e3",
+        "filename": "core/fxcrt/fx_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-15T19:34:29Z",
+      "side": 1,
+      "message": "curious, why this remains, or do we lose the \"\u003d 0\" ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 37
+      },
+      "revId": "aeb38bbdd3c3c72956aac54515fe025bdb82d8bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
