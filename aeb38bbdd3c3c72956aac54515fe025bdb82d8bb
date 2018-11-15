@@ -23,6 +23,30 @@
       "revId": "aeb38bbdd3c3c72956aac54515fe025bdb82d8bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df58dfa_da60376a",
+        "filename": "core/fxcrt/fx_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-15T21:48:03Z",
+      "side": 1,
+      "message": "Compiler gets confused about the diamond inheritance pattern because both IFX_SeekableReadStream and IFX_SeekableWriteStream have GetSize() methods as well. The last CL in this chain will fix this.",
+      "parentUuid": "bbdce848_9112c0e3",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 37
+      },
+      "revId": "aeb38bbdd3c3c72956aac54515fe025bdb82d8bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
