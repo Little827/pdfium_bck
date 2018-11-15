@@ -16,6 +16,24 @@
       "revId": "8224060b57c3261b8732049cc87e76141181ef9b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a8d303_630fa512",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-15T22:21:48Z",
+      "side": 1,
+      "message": "You\u0027d think I\u0027d learn this after the 78th time, but ...",
+      "parentUuid": "002e4e30_0e287796",
+      "revId": "8224060b57c3261b8732049cc87e76141181ef9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
