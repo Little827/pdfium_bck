@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1542407744 -0800\nnonce ADWBXRAB3yr9tYGOxzIVdCcCo8pG126nvBBOBqH2Nwm9aitO0dmpXYfr/x1C/z+fldBgKJ/KNmTd\n\n0000000000000000000000000000000000000000 678f894cbb919911a5cd3f9a29a8c31a2cf9beed refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvvRkAACgkQqzYtYVpm\n/XvKCwgApsW2t394jQ3n0l+rLy8xhik1sGRRT8vnj2qAPub0lahR0DMgwLqZ2Dg5\nro/J5egDoOhGSmXM/6RCZUCqYUH0b5Z97rAHbZL4/uEZJaGkKsKCYE3GQvIR6icb\nhsFOa6bPjuheeGAi67/q6qzdSJWD+FSgVCLTOOBjJOxnWw6e7ycZNkRS0F4i5JXK\nKbrNmPAAy1lLAaVnAW6w1HW6lj0aWEqtPZeVUEInEg3GkYmwaLqegWbS2laCDNDO\neSdYLLBd+dtRlqS0+/62bORskEhfHs1DhtAIdVF32O/KwXvjfGlSvu2iHL4J8+Ld\nktXnWNCG25GJI9C0LvfYw+4Ps9zbiQ\u003d\u003d\n\u003dH8hi\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc59a07_1de82595",
+        "filename": "core/fpdftext/cpdf_linkextract.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T22:51:08Z",
+      "side": 1,
+      "message": "Is there a  FXSYS_IsLowerCaseAlpha() or some such ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "678f894cbb919911a5cd3f9a29a8c31a2cf9beed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079e6253_1409572f",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T22:51:08Z",
+      "side": 1,
+      "message": "here too?",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "678f894cbb919911a5cd3f9a29a8c31a2cf9beed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8aad6e9_a76dc9b5",
+        "filename": "fxjs/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T22:51:08Z",
+      "side": 1,
+      "message": "IsHexDigit() ?",
+      "range": {
+        "startLine": 1062,
+        "startChar": 10,
+        "endLine": 1063,
+        "endChar": 35
+      },
+      "revId": "678f894cbb919911a5cd3f9a29a8c31a2cf9beed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ac90a4_4ee8a792",
+        "filename": "fxjs/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T22:51:08Z",
+      "side": 1,
+      "message": "ditto,",
+      "range": {
+        "startLine": 1135,
+        "startChar": 10,
+        "endLine": 1136,
+        "endChar": 35
+      },
+      "revId": "678f894cbb919911a5cd3f9a29a8c31a2cf9beed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
