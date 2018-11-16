@@ -69,6 +69,30 @@
       "revId": "225bb1eef72cd3830344ff9d8a2973cee36645bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93354f10_7a280624",
+        "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-11-16T21:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e44c6f0_f1599e8a",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "225bb1eef72cd3830344ff9d8a2973cee36645bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
