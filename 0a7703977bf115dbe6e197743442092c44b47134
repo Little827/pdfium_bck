@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1b12870_050d33b7",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-16T22:03:26Z",
+      "side": 0,
+      "message": "Change this to \"msg\" to be consistent with the header.",
+      "range": {
+        "startLine": 80,
+        "startChar": 66,
+        "endLine": 80,
+        "endChar": 73
+      },
+      "revId": "0a7703977bf115dbe6e197743442092c44b47134",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5026e43c_5b55109d",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-16T22:03:26Z",
+      "side": 0,
+      "message": "And this to \"result\" to avoid a conflict.",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 16
+      },
+      "revId": "0a7703977bf115dbe6e197743442092c44b47134",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
