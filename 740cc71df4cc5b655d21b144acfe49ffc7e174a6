@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1542395580 -0800\nnonce ADWBXRBmSJCIuI57gLxmDO6KsKMTd37AwEyjbTQ5eti/IWLMe/ntRGFfKu5b7Tvr1hGqIcDEX2yb\n\n0000000000000000000000000000000000000000 740cc71df4cc5b655d21b144acfe49ffc7e174a6 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvvFrwACgkQqzYtYVpm\n/XvRYAf9FUZ+XtuOtykKod6893wCDDrxMIszPpUffnIq/rjbg1fOUvZgW6luuhg+\nu+QXdhcHp395l0rWEvdAXbdSrswDR9Im89ZKxw/HXKGX0cPEGm3o+OzGECPDyihn\nG8KPomIroY2CxFsesdMMZdHUenGDKeP+VU1cwx+YCj5dLq3OzhoVytjcmdaPSkj2\nl+l6V6Yq08IhlWUqWw3y7jRZo9TX/8N7GWOH2O64MWUbhGQtgkgaXZx71cJ/iwsX\nBBM43mhaZ+VjLMNh5cDu/CtkdjK1fSczpB2fts7mST0+x2xCETA8d67BFobn/UST\ndu5e6DcmOlnCnPHce3tiktVzm2P8Yw\u003d\u003d\n\u003dFAhA\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "62a361c7_6f96969f",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:15:16Z",
+      "side": 1,
+      "message": "follow-up: we have FX_ equivalents somewhere in core/ ???",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "740cc71df4cc5b655d21b144acfe49ffc7e174a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45eeb970_dbea8648",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:15:16Z",
+      "side": 1,
+      "message": "nit: IsAlphaUpperOrSpace etc.",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "740cc71df4cc5b655d21b144acfe49ffc7e174a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7808fbc9_4681ffa0",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:15:16Z",
+      "side": 1,
+      "message": "same.",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "740cc71df4cc5b655d21b144acfe49ffc7e174a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0770fd_7101c748",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:15:16Z",
+      "side": 1,
+      "message": "nit: faster in success case if this comes first given expected occurances of characters vs newlines etc?",
+      "range": {
+        "startLine": 73,
+        "startChar": 51,
+        "endLine": 73,
+        "endChar": 74
+      },
+      "revId": "740cc71df4cc5b655d21b144acfe49ffc7e174a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
