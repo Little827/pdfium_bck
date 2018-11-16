@@ -23,6 +23,30 @@
       "revId": "0a7703977bf115dbe6e197743442092c44b47134",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f157982_d42e5c81",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:20:20Z",
+      "side": 1,
+      "message": "e.g. can kUnknown be 0 instead?  seems like it should be a falsey value.",
+      "parentUuid": "6f1347c5_11a0a7f9",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "0a7703977bf115dbe6e197743442092c44b47134",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
