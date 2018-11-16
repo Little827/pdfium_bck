@@ -16,6 +16,24 @@
       "revId": "6173fe57c85067ed8cbdada99a2165360aab5e42",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "028ff16d_6651ccdb",
+        "filename": "fxjs/cjs_publicmethods.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:51:09Z",
+      "side": 1,
+      "message": "Nah, but all the other CJS_ objects still do, because they define consts, etc. I\u0027d like to keep it this way for consistency.",
+      "parentUuid": "46952b5c_a964e1e1",
+      "revId": "6173fe57c85067ed8cbdada99a2165360aab5e42",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
