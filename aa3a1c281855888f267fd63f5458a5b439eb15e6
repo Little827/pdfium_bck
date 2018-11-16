@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1542331240 -0800\nnonce ADWBXRCde3yZGgX2NnWx7CXPP4fxE6zS+wCETy2jSO1xEB0JPcEH3oayn1LVKGQq5QEyhxD2iavs\n\n0000000000000000000000000000000000000000 aa3a1c281855888f267fd63f5458a5b439eb15e6 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvuG2gACgkQqzYtYVpm\n/XvqDwgAxAHOV+IXVqKncbx2N6X7InBT5JmICUIYboFNYmXMSo3TAF/oU//5tj0i\nhHGuEVaRi9LcI+/TP8u8jo+jwieiuXwOxMyTZNWHdK4s+CWaQBbyxDPog99biTF6\nfmb3JZKd8JZB1sV92Ru5s5s1U+eqBRnX3bFj+BoYOXU7eIhoBrZOtmVQ+Oa5iKWV\n6ygeSzgoaqVUX9kARYl4BOniCcIZAVKHt84LVB6TVxl/9ScC+wPcyRdvi/mFR8tG\nlQCV3ftW2ls4h9eeLg0LZOBfeBhUSAhMhSFlSeXFZOOBo54/URptbwuLLYgd7nCV\n4VIkQYuhIMWjCBKY2UqXNrougL6egg\u003d\u003d\n\u003dgntN\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b252ff9_c5a0105d",
+        "filename": "testing/resources/bug_459580.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T19:39:42Z",
+      "side": 1,
+      "message": "surprised more of these didn\u0027t move.  NO mattter.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "aa3a1c281855888f267fd63f5458a5b439eb15e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
