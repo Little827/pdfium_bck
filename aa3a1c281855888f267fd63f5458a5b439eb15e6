@@ -23,6 +23,30 @@
       "revId": "aa3a1c281855888f267fd63f5458a5b439eb15e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526411e5_a083bdc7",
+        "filename": "testing/resources/bug_459580.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-16T19:47:43Z",
+      "side": 1,
+      "message": "Actually, I\u0027m going to leave this file alone. It\u0027s wrong in a lot of ways and it may be good to leave it like that for testing.",
+      "parentUuid": "8b252ff9_c5a0105d",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "aa3a1c281855888f267fd63f5458a5b439eb15e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
