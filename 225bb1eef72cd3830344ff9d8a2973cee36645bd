@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8b2ddfd_4a8187ae",
+        "filename": "core/fxcodec/codec/ccodec_jpxmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2018-11-16T21:09:23Z",
+      "side": 1,
+      "message": "It gets called from CreateDecoder which is called from the fuzzer and from CPDF_DIBBase. In the fuzzer, we check the image size as specified by the header, if it\u0027s too big then bail out. In CPDF_DIBBase we follow with an immediate call to StartDecode().",
+      "parentUuid": "cb75fe9c_036d4435",
+      "range": {
+        "startLine": 477,
+        "startChar": 19,
+        "endLine": 477,
+        "endChar": 23
+      },
+      "revId": "225bb1eef72cd3830344ff9d8a2973cee36645bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e44c6f0_f1599e8a",
         "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
         "patchSetId": 2
