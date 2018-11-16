@@ -36,17 +36,31 @@ CBC_QRCoderErrorCorrectionLevel::CBC_QRCoderErrorCorrectionLevel(
 CBC_QRCoderErrorCorrectionLevel::~CBC_QRCoderErrorCorrectionLevel() {}
 
 void CBC_QRCoderErrorCorrectionLevel::Initialize() {
-  L = new CBC_QRCoderErrorCorrectionLevel(0, 0x01, "L");
-  M = new CBC_QRCoderErrorCorrectionLevel(1, 0x00, "M");
-  Q = new CBC_QRCoderErrorCorrectionLevel(2, 0x03, "Q");
-  H = new CBC_QRCoderErrorCorrectionLevel(3, 0x02, "H");
+  if (!L)
+    L = new CBC_QRCoderErrorCorrectionLevel(0, 0x01, "L");
+
+  if (!M)
+    M = new CBC_QRCoderErrorCorrectionLevel(1, 0x00, "M");
+
+  if (!Q)
+    Q = new CBC_QRCoderErrorCorrectionLevel(2, 0x03, "Q");
+
+  if (!H)
+    H = new CBC_QRCoderErrorCorrectionLevel(3, 0x02, "H");
 }
 
 void CBC_QRCoderErrorCorrectionLevel::Finalize() {
   delete L;
+  L = nullptr;
+
   delete M;
+  M = nullptr;
+
   delete Q;
+  Q = nullptr;
+
   delete H;
+  H = nullptr;
 }
 
 CBC_QRCoderErrorCorrectionLevel* CBC_QRCoderErrorCorrectionLevel::ForBits(
@@ -62,23 +76,5 @@ CBC_QRCoderErrorCorrectionLevel* CBC_QRCoderErrorCorrectionLevel::ForBits(
       return Q;
     default:
       return nullptr;
-  }
-}
-void CBC_QRCoderErrorCorrectionLevel::Destroy() {
-  if (L) {
-    delete CBC_QRCoderErrorCorrectionLevel::L;
-    L = nullptr;
-  }
-  if (M) {
-    delete CBC_QRCoderErrorCorrectionLevel::M;
-    M = nullptr;
-  }
-  if (H) {
-    delete CBC_QRCoderErrorCorrectionLevel::H;
-    H = nullptr;
-  }
-  if (Q) {
-    delete CBC_QRCoderErrorCorrectionLevel::Q;
-    Q = nullptr;
   }
 }
