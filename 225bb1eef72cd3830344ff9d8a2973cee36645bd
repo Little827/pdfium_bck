@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb75fe9c_036d4435",
+        "filename": "core/fxcodec/codec/ccodec_jpxmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:06:01Z",
+      "side": 1,
+      "message": "where does init get called, and why don\u0027t we have to immediately follow it with startdecode() in all cases?",
+      "range": {
+        "startLine": 477,
+        "startChar": 19,
+        "endLine": 477,
+        "endChar": 23
+      },
+      "revId": "225bb1eef72cd3830344ff9d8a2973cee36645bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e44c6f0_f1599e8a",
+        "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T21:06:01Z",
+      "side": 1,
+      "message": "nit: kMemLimitBytes",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "225bb1eef72cd3830344ff9d8a2973cee36645bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
