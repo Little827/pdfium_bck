@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1542406671 -0800\nnonce ADWBXRCYuFNc3ux/n8byah5wXShqKx2PfGaCK4K1wIl14hUy36w/sLBAIssBgktbftHB9kcxQJ2J\n\n0000000000000000000000000000000000000000 4cd4d31484817ac3beac3d09c421c93c55675048 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvvQg8ACgkQqzYtYVpm\n/XsA/Af+JpZ+JlleuaO+bm60Smxy5xpBF4+3Ezhse8c3ZY64gFYA6xpMh/wQWa7P\nFJc7hyB6hHlCyp22+8JgVp57V8mGWdAVS0G6u4mfm9TWFwcvA773x179inEuZDNz\nnICnle6futLui/RSqXNL/WyZSknRCC4dGx3QAw2IIW+/xzQXiLGQ4qHPVem1Grxt\npzyBhYKoBaBJD8dZa3k+5W8pn1gdi2xpLr9Y+OwTjoWbGJm7b1G2Ah7NX02qM/W/\nBJcsZSMlFh5dhvzajO+jAS5DUyWsUTa6uuCJQB33udU6jwxpNvsQ4uBs5x1WKH8i\nPUkndQ4kEBTP+Dp6mm338Y3KLq5fyA\u003d\u003d\n\u003dnHZG\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd6763aa_0b78cb18",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-16T22:45:05Z",
+      "side": 1,
+      "message": "caps here and on the next one too while at it?",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "4cd4d31484817ac3beac3d09c421c93c55675048",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
