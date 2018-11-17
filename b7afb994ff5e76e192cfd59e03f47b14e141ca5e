@@ -23,6 +23,30 @@
       "revId": "b7afb994ff5e76e192cfd59e03f47b14e141ca5e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e9ea70_b8a9215d",
+        "filename": "fxbarcode/datamatrix/BC_X12Encoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-17T01:23:09Z",
+      "side": 1,
+      "message": "Next CL in the chain.",
+      "parentUuid": "e1dc2645_b208be52",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "b7afb994ff5e76e192cfd59e03f47b14e141ca5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
