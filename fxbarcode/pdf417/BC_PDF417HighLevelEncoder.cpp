@@ -24,7 +24,6 @@
 
 #include "core/fxcrt/fx_extension.h"
 #include "fxbarcode/BC_UtilCodingConvert.h"
-#include "fxbarcode/utils.h"
 #include "third_party/bigint/BigIntegerLibrary.hh"
 
 namespace {
