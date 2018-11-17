@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "964d7a63_9e4dd1a8",
+        "filename": "fxbarcode/qrcode/BC_QRCoderMode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-17T00:48:20Z",
+      "side": 0,
+      "message": "Remove |BCExceptionUnsupportedMode| from fxbarcode/utils.h as well.",
+      "range": {
+        "startLine": 101,
+        "startChar": 10,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "19dd48c3d26b604ab58ba1dd3db7503ef015544b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
