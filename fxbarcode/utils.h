@@ -7,26 +7,6 @@
 #ifndef FXBARCODE_UTILS_H_
 #define FXBARCODE_UTILS_H_
 
-#include <ctype.h>
-
-#include <vector>
-
-#include "core/fxcrt/fx_string.h"
-
-bool BC_FX_ByteString_Replace(ByteString& dst,
-                              uint32_t first,
-                              uint32_t last,
-                              int32_t count,
-                              char c);
-void BC_FX_ByteString_Append(ByteString& dst, int32_t count, char c);
-void BC_FX_ByteString_Append(ByteString& dst, const std::vector<uint8_t>& ba);
-
-#if _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-#include <limits>
-#elif _FX_OS_ == _FX_OS_MACOSX_ || _FX_OS_ == _FX_OS_LINUX_
-#include <limits.h>
-#endif
-
 enum BCFORMAT {
   BCFORMAT_UNSPECIFY = -1,
   BCFORMAT_CODABAR,
@@ -46,7 +26,6 @@ enum BCFORMAT {
 #define BCExceptionIllegalArgument 16
 #define BCExceptionValueMustBeEither0or1 50
 #define BCExceptionBadIndexException 52
-#define BCExceptionUnsupportedMode 64
 #define BCExceptionInvalidateMaskPattern 68
 #define BCExceptionCharacterNotThisMode 75
 #define BCExceptionCharactersOutsideISO88591Encoding 87
