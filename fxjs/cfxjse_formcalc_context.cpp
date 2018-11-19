@@ -998,9 +998,10 @@ bool HTMLCode2STR(uint32_t iCode, WideString* wsHTMLReserve) {
 
 WideString DecodeURL(const WideString& wsURLString) {
   const wchar_t* pData = wsURLString.c_str();
+  size_t iLen = wsURLString.GetLength();
   size_t i = 0;
   CFX_WideTextBuf wsResultBuf;
-  while (i < wsURLString.GetLength()) {
+  while (i < iLen) {
     wchar_t ch = pData[i];
     if ('%' != ch) {
       wsResultBuf.AppendChar(ch);
@@ -1011,7 +1012,8 @@ WideString DecodeURL(const WideString& wsURLString) {
     wchar_t chTemp = 0;
     int32_t iCount = 0;
     while (iCount < 2) {
-      ++i;
+      if (++i >= iLen)
+        break;
       ch = pData[i];
       if (FXSYS_IsDecimalDigit((ch))) {
         // TODO(dsinclair): Premultiply and add rather then scale.
@@ -1026,7 +1028,8 @@ WideString DecodeURL(const WideString& wsURLString) {
       ++iCount;
     }
     wsResultBuf.AppendChar(chTemp);
-    ++i;
+    if (++i >= iLen)
+      break;
   }
   wsResultBuf.AppendChar(0);
   return wsResultBuf.MakeString();
@@ -1048,16 +1051,17 @@ WideString DecodeHTML(const WideString& wsHTMLString) {
       continue;
     }
 
-    ++i;
+    if (++i >= iLen)
+      break;
     ch = pData[i];
     if (ch == '#') {
-      ++i;
+      if (++i >= iLen)
+        break;
       ch = pData[i];
-      if (ch != 'x' && ch != 'X') {
+      if (ch != 'x' && ch != 'X')
         return WideString();
-      }
-
-      ++i;
+      if (++i >= iLen)
+        break;
       ch = pData[i];
       if (FXSYS_IsDecimalDigit(ch) || (ch <= 'f' && ch >= 'a') ||
           (ch <= 'F' && ch >= 'A')) {
@@ -1080,7 +1084,7 @@ WideString DecodeHTML(const WideString& wsHTMLString) {
         iCode /= 16;
       }
     } else {
-      while (ch != ';' && i < iLen) {
+      while (ch != ';' && i < iLen && iStrIndex < 8) {
         strString[iStrIndex++] = ch;
         ++i;
         ch = pData[i];
@@ -1097,8 +1101,8 @@ WideString DecodeHTML(const WideString& wsHTMLString) {
     strString[iStrIndex] = 0;
     ++i;
   }
-  wsResultBuf.AppendChar(0);
 
+  wsResultBuf.AppendChar(0);
   return wsResultBuf.MakeString();
 }
 
@@ -1121,16 +1125,18 @@ WideString DecodeXML(const WideString& wsXMLString) {
 
     // TODO(dsinclair): This is very similar to DecodeHTML, can they be
     //   combined?
-    ++i;
+    if (++i >= iLen)
+      break;
     ch = pData[i];
     if (ch == '#') {
-      ++i;
+      if (++i >= iLen)
+        break;
       ch = pData[i];
-      if (ch != 'x' && ch != 'X') {
+      if (ch != 'x' && ch != 'X')
         return WideString();
-      }
 
-      ++i;
+      if (++i >= iLen)
+        break;
       ch = pData[i];
       if ((FXSYS_IsDecimalDigit(ch)) || (ch <= 'f' && ch >= 'a') ||
           (ch <= 'F' && ch >= 'A')) {
@@ -1144,14 +1150,15 @@ WideString DecodeXML(const WideString& wsXMLString) {
           } else {
             return WideString();
           }
-          ++i;
+          if (++i >= iLen)
+            break;
           iCode *= 16;
           ch = pData[i];
         }
         iCode /= 16;
       }
     } else {
-      while (ch != ';' && i < iLen) {
+      while (ch != ';' && i < iLen && iStrIndex < 8) {
         strString[iStrIndex++] = ch;
         ++i;
         ch = pData[i];
@@ -1162,9 +1169,8 @@ WideString DecodeXML(const WideString& wsXMLString) {
     const wchar_t* const strName[] = {L"quot", L"amp", L"apos", L"lt", L"gt"};
     int32_t iIndex = 0;
     while (iIndex < 5) {
-      if (memcmp(strString, strName[iIndex], wcslen(strName[iIndex])) == 0) {
+      if (wcscmp(strString, strName[iIndex]) == 0)
         break;
-      }
       ++iIndex;
     }
     switch (iIndex) {
