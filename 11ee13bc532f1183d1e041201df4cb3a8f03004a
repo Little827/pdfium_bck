@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7b55cc0_7873e9fc",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-19T20:08:34Z",
+      "side": 1,
+      "message": "NOTE: we even save an alloc here since family_name is char*, and these promote implicitly to ByteStringView, which is the argument we pass without having to copy into a bytestring .",
+      "range": {
+        "startLine": 775,
+        "startChar": 0,
+        "endLine": 775,
+        "endChar": 2
+      },
+      "revId": "11ee13bc532f1183d1e041201df4cb3a8f03004a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
