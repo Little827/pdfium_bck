@@ -1057,16 +1057,32 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Decode) {
     const char* program;
     const char* result;
   } tests[] = {
-      {"Decode(\"&AElig;&Aacute;&Acirc;&Aacute;&Acirc;\", \"html\")", "ÆÁÂÁÂ"},
-      // {"Decode(\"~!@#$%%^&amp;*()_+|`{&quot;}[]&lt;&gt;?,./;&apos;:\", "
-      //  "\"xml\")",
-      //  "~!@#$%%^&*()_+|`{"
-      //  "}[]<>?,./;':"}
+      // HTML
+      {"Decode(\"\", \"html\")", ""},
+      {"Decode(\"abc&Acirc;xyz\", \"html\")", "abc\xC3\x82xyz"},
+      {"Decode(\"abc&NoneSuchButVeryLongIndeed;\", \"html\")", "abc"},
+      {"Decode(\"&#x0041;&AElig;&Aacute;\", \"html\")", "A\xC3\x86\xC3\x81"},
+      {"Decode(\"xyz&#\", \"html\")", "xyz"},
+
+      // XML
+      {"Decode(\"\", \"xml\")", ""},
+      {"Decode(\"~!@#$%%^&amp;*()_+|`\", \"xml\")", "~!@#$%%^&*()_+|`"},
+      {"Decode(\"abc&nonesuchbutverylongindeed;\", \"xml\")", "abc"},
+      {"Decode(\"&quot;&#x45;&lt;&gt;[].&apos;\", \"xml\")", "\"E<>[].'"},
+      {"Decode(\"xyz&#\", \"xml\")", "xyz"},
+
+      // URL
+      {"Decode(\"\", \"url\")", ""},
+      {"Decode(\"~%26^&*()_+|`{\", \"url\")", "~&^&*()_+|`{"},
+      {"Decode(\"~%26^&*()_+|`{\", \"mbogo\")", "~&^&*()_+|`{"},
+      {"Decode(\"~%26^&*()_+|`{\")", "~&^&*()_+|`{"},
+      {"Decode(\"~%~~\")", ""},
+      {"Decode(\"?%~\")", ""},
+      {"Decode(\"?%\")", "?"},
   };
 
   for (size_t i = 0; i < FX_ArraySize(tests); ++i) {
     EXPECT_TRUE(Execute(tests[i].program));
-
     CFXJSE_Value* value = GetValue();
     EXPECT_TRUE(value->IsString());
     EXPECT_STREQ(tests[i].result, value->ToString().c_str())
