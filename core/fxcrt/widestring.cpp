@@ -647,7 +647,7 @@ ByteString WideString::ToASCII() const {
   ByteString result;
   result.Reserve(GetLength());
   for (wchar_t wc : *this)
-    result.InsertAtBack(static_cast<char>(wc));
+    result.InsertAtBack(static_cast<char>(wc & 0x7f));
   return result;
 }
 
@@ -883,7 +883,7 @@ WideString WideString::FromASCII(const ByteStringView& bstr) {
   WideString result;
   result.Reserve(bstr.GetLength());
   for (char c : bstr)
-    result.InsertAtBack(static_cast<wchar_t>(c));
+    result.InsertAtBack(static_cast<wchar_t>(c & 0x7f));
   return result;
 }
 
