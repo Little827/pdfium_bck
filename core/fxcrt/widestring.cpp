@@ -882,8 +882,10 @@ size_t WideString::Replace(const WideStringView& pOld,
 WideString WideString::FromASCII(const ByteStringView& bstr) {
   WideString result;
   result.Reserve(bstr.GetLength());
-  for (char c : bstr)
-    result.InsertAtBack(static_cast<wchar_t>(c));
+  for (char c : bstr) {
+    uint8_t not_questionably_signed = static_cast<uint8_t>(c);
+    result.InsertAtBack(static_cast<wchar_t>(not_questionably_signed));
+  }
   return result;
 }
 
