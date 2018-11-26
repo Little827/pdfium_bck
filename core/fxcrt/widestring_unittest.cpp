@@ -1010,13 +1010,13 @@ TEST(WideString, IsASCII) {
 TEST(WideString, ToASCII) {
   const char* kResult =
       "x"
-      "\x80"
-      "\xff"
+      "\x01"
+      "\x7f"
       "\x22"
-      "\x8c"
+      "\x0c"
       "y";
   EXPECT_EQ(kResult, WideString(L"x"
-                                L"\u0080"
+                                L"\u0081"
                                 L"\u00ff"
                                 L"\u0122"
                                 L"\u208c"
@@ -1054,11 +1054,11 @@ TEST(WideString, FromASCII) {
   EXPECT_EQ(L"", WideString::FromDefANSI(ByteStringView()));
   const wchar_t* kResult =
       L"x"
-      L"\u0080"
-      L"\u00ff"
+      L"\u0001"
+      L"\u007f"
       L"y";
   EXPECT_EQ(kResult, WideString::FromASCII("x"
-                                           "\x80"
+                                           "\x81"
                                            "\xff"
                                            "y"));
 }
