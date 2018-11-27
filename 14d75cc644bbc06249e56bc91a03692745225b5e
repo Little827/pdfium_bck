@@ -16,6 +16,24 @@
       "revId": "14d75cc644bbc06249e56bc91a03692745225b5e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e7868c_a8d4e527",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T00:11:32Z",
+      "side": 1,
+      "message": "I must have a mental block against this or something ... argh.",
+      "parentUuid": "2cb373e6_7421ea4f",
+      "revId": "14d75cc644bbc06249e56bc91a03692745225b5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
