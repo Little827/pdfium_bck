@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1543342295 -0800\nnonce AGLkUnBrLgEoOo5ND9OLaCHjTfdYqx6sp2gnTu/UGpCw8fqFBwsvjZVSAmdFU9imedYTocH3on2G\n\n0000000000000000000000000000000000000000 97261de7ebe9f722a9f4fd59bba7eda0b3539c0c refs/for/refs/heads/master%notify\u003dNONE,m\u003dself_review,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlv9iNcACgkQqzYtYVpm\n/XvydQgAy5aNacaepLgevv/Kt3OftVeZ+UuEQpPmhboyyneJzFCKQKRishwt0U4x\neaUyzkxVp6mVLdOkJ/yTm2DaICy5ncCR0pDIdWcGYNXmslLgcnXMk8oUzNlq1QYu\njmP0aGMvKMOLo1Geuszp80X2g3zKCra2xlUkpYuXWXZRbPzFHIXTdWnc/DNPMHBi\nIDySB4bvBJYXuVP9qkIr+AYzuIPnOqKwpLLUeKjYV2BLIci5mbrYocWVaw1qMCCl\n7nnk3CYA8Pwdlpr3CcXbu1Ka8FFYdQtvVWqg3xsWFszSQvW7+REkwPlJ97i3RnqA\nrA9OeBiMaOVEF7n8bBfyA5AGTE9cHg\u003d\u003d\n\u003dwSM6\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab4999a_8804527e",
+        "filename": "fxbarcode/datamatrix/BC_C40Encoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:45:01Z",
+      "side": 1,
+      "message": "follow-up: seems like this should be a bytestring ?",
+      "range": {
+        "startLine": 143,
+        "startChar": 46,
+        "endLine": 143,
+        "endChar": 60
+      },
+      "revId": "97261de7ebe9f722a9f4fd59bba7eda0b3539c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bcbb292_d93fd55d",
+        "filename": "fxbarcode/datamatrix/BC_C40Encoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:45:01Z",
+      "side": 1,
+      "message": "nit: maybe -1 given the signed return type, since I suppose we could have a character that successfully adds 0 bytes in some alternate world?\n\nthen lines 62 \u0026 205 become |\u003c|.",
+      "range": {
+        "startLine": 187,
+        "startChar": 9,
+        "endLine": 187,
+        "endChar": 11
+      },
+      "revId": "97261de7ebe9f722a9f4fd59bba7eda0b3539c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35fa0ec1_c4752dc7",
+        "filename": "fxbarcode/datamatrix/BC_TextEncoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:45:01Z",
+      "side": 1,
+      "message": "this all seems oddly familiar...",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "97261de7ebe9f722a9f4fd59bba7eda0b3539c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ebd1883_ed8f4170",
+        "filename": "fxbarcode/datamatrix/BC_X12Encoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:45:01Z",
+      "side": 1,
+      "message": "nit: maybe \n if (c \u003d\u003d \u0027\\r\u0027) {\n   *sb +\u003d (wchar_t)\u0027\\0\u0027;\n    return 1;\n  }\nand so forth and lose the elses?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "97261de7ebe9f722a9f4fd59bba7eda0b3539c0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
