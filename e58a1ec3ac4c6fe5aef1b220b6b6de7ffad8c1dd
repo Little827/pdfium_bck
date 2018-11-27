@@ -22,6 +22,30 @@
       "revId": "e58a1ec3ac4c6fe5aef1b220b6b6de7ffad8c1dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7eb33f1_e1aede93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T00:03:50Z",
+      "side": 1,
+      "message": "Indeed it is, after squeezing.",
+      "parentUuid": "856f681d_a57dab59",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "e58a1ec3ac4c6fe5aef1b220b6b6de7ffad8c1dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
