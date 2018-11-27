@@ -53,11 +53,13 @@ bool IsAlphaLowerOrSpace(wchar_t ch) {
 }
 
 bool IsMixed(wchar_t ch) {
-  return g_mixed[ch] != -1;
+  // Bounds check avoiding sign mismatch error given questionable signedness.
+  return !((ch & ~0x7F) || g_mixed[ch] == -1);
 }
 
 bool IsPunctuation(wchar_t ch) {
-  return g_punctuation[ch] != -1;
+  // Bounds check avoiding sign mismatch error given questionable signedness.
+  return !((ch & ~0x7F) || g_punctuation[ch] == -1);
 }
 
 bool IsText(wchar_t ch) {
@@ -195,8 +197,10 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
           tmp += 28;
           continue;
         }
-        tmp += 29;
-        tmp += g_punctuation[ch];
+        if (IsPunctuation(ch)) {
+          tmp += 29;
+          tmp += g_punctuation[ch];
+        }
         break;
       case SubMode::kLower:
         if (IsAlphaLowerOrSpace(ch)) {
@@ -216,9 +220,10 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
           tmp += 28;
           continue;
         }
-
-        tmp += 29;
-        tmp += g_punctuation[ch];
+        if (IsPunctuation(ch)) {
+          tmp += 29;
+          tmp += g_punctuation[ch];
+        }
         break;
       case SubMode::kMixed:
         if (IsMixed(ch)) {
@@ -243,8 +248,10 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
             continue;
           }
         }
-        tmp += 29;
-        tmp += g_punctuation[ch];
+        if (IsPunctuation(ch)) {
+          tmp += 29;
+          tmp += g_punctuation[ch];
+        }
         break;
       default:
         if (IsPunctuation(ch)) {
