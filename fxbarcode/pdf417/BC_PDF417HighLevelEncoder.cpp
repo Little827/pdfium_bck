@@ -53,11 +53,13 @@ bool IsAlphaLowerOrSpace(wchar_t ch) {
 }
 
 bool IsMixed(wchar_t ch) {
-  return g_mixed[ch] != -1;
+  // Bounds check avoiding sign mismatch error given questionable signedness.
+  return !((ch & ~0x7F) || g_mixed[ch] == -1);
 }
 
 bool IsPunctuation(wchar_t ch) {
-  return g_punctuation[ch] != -1;
+  // Bounds check avoiding sign mismatch error given questionable signedness.
+  return !((ch & ~0x7F) || g_punctuation[ch] == -1);
 }
 
 bool IsText(wchar_t ch) {
@@ -174,7 +176,7 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
   tmp.Reserve(count);
   SubMode submode = initialSubmode;
   size_t idx = 0;
-  while (true) {
+  while (idx < count) {
     wchar_t ch = msg[startpos + idx];
     switch (submode) {
       case SubMode::kAlpha:
@@ -195,8 +197,10 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
           tmp += 28;
           continue;
         }
-        tmp += 29;
-        tmp += g_punctuation[ch];
+        if (IsPunctuation(ch)) {
+          tmp += 29;
+          tmp += g_punctuation[ch];
+        }
         break;
       case SubMode::kLower:
         if (IsAlphaLowerOrSpace(ch)) {
@@ -216,9 +220,10 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
           tmp += 28;
           continue;
         }
-
-        tmp += 29;
-        tmp += g_punctuation[ch];
+        if (IsPunctuation(ch)) {
+          tmp += 29;
+          tmp += g_punctuation[ch];
+        }
         break;
       case SubMode::kMixed:
         if (IsMixed(ch)) {
@@ -243,8 +248,10 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
             continue;
           }
         }
-        tmp += 29;
-        tmp += g_punctuation[ch];
+        if (IsPunctuation(ch)) {
+          tmp += 29;
+          tmp += g_punctuation[ch];
+        }
         break;
       default:
         if (IsPunctuation(ch)) {
@@ -255,9 +262,7 @@ CBC_PDF417HighLevelEncoder::SubMode CBC_PDF417HighLevelEncoder::EncodeText(
         tmp += 29;
         continue;
     }
-    idx++;
-    if (idx >= count)
-      break;
+    ++idx;
   }
   wchar_t h = 0;
   size_t len = tmp.GetLength();
