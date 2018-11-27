@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b244dea4_e913f608",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:34:09Z",
+      "side": 1,
+      "message": "Nah, we\u0027ve softened it up with the initial |\u0026| ... since we don\u0027t trust the libraries ... and the implied conversion will be fine.",
+      "parentUuid": "1d60ece8_9c4e9d8f",
+      "range": {
+        "startLine": 72,
+        "startChar": 37,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "7e2e43a7ae232c583ceb17ce07732d56cfb5bedc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec5605f7_63a15d0d",
         "filename": "core/fxcrt/fx_extension.h",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5d82f6e3_811ccf7e",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:34:09Z",
+      "side": 1,
+      "message": "Yep, the arg should be wchar to match the name.",
+      "parentUuid": "ec5605f7_63a15d0d",
+      "range": {
+        "startLine": 85,
+        "startChar": 29,
+        "endLine": 85,
+        "endChar": 46
+      },
+      "revId": "7e2e43a7ae232c583ceb17ce07732d56cfb5bedc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d61d5de_2d10106e",
         "filename": "fxjs/cfxjse_formcalc_context.cpp",
         "patchSetId": 7
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "b7002a07_ae516ad9",
+        "filename": "fxjs/cfxjse_formcalc_context.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:34:09Z",
+      "side": 1,
+      "message": "Done.\n\nBTW, we know these loops are idiotic, will fold checkes in a subsequent cl after preserving the structure in this one.",
+      "parentUuid": "7d61d5de_2d10106e",
+      "revId": "7e2e43a7ae232c583ceb17ce07732d56cfb5bedc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ed545f4_ab945b61",
         "filename": "fxjs/cfxjse_formcalc_context_embeddertest.cpp",
         "patchSetId": 7
@@ -79,6 +145,24 @@
       "revId": "7e2e43a7ae232c583ceb17ce07732d56cfb5bedc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c1845f_d47c6671",
+        "filename": "fxjs/cfxjse_formcalc_context_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-27T19:34:09Z",
+      "side": 1,
+      "message": "Let\u0027s see if its any clearer ... not sure.",
+      "parentUuid": "6ed545f4_ab945b61",
+      "revId": "7e2e43a7ae232c583ceb17ce07732d56cfb5bedc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
