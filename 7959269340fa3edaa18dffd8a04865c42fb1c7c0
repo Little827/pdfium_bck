@@ -23,6 +23,30 @@
       "revId": "7959269340fa3edaa18dffd8a04865c42fb1c7c0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad282a7_8964c7c1",
+        "filename": "fxbarcode/qrcode/BC_QRCoderMaskUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T21:13:18Z",
+      "side": 1,
+      "message": "Done. \"git cl lint\" didn\u0027t catch this one.",
+      "parentUuid": "e8a2ec3c_8a03d62f",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 22
+      },
+      "revId": "7959269340fa3edaa18dffd8a04865c42fb1c7c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
