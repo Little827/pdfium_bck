@@ -272,16 +272,6 @@ IFWL_ThemeProvider* CFWL_Widget::GetAvailableTheme() const {
   return nullptr;
 }
 
-CFWL_Widget* CFWL_Widget::GetRootOuter() {
-  CFWL_Widget* pRet = m_pOuter;
-  if (!pRet)
-    return nullptr;
-
-  while (CFWL_Widget* pOuter = pRet->GetOuter())
-    pRet = pOuter;
-  return pRet;
-}
-
 CFX_SizeF CFWL_Widget::CalcTextSize(const WideString& wsText,
                                     IFWL_ThemeProvider* pTheme,
                                     bool bMultiLine) {

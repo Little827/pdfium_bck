@@ -160,7 +160,6 @@ class CFWL_Widget : public IFWL_WidgetDelegate {
   bool IsOverLapper() const;
   bool IsPopup() const;
   bool IsChild() const;
-  CFWL_Widget* GetRootOuter();
   void DrawBackground(CXFA_Graphics* pGraphics,
                       CFWL_Part iPartBk,
                       IFWL_ThemeProvider* pTheme,
