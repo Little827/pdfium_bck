@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "ec50be38_2f60738b",
+        "filename": "fxbarcode/qrcode/BC_QRCoderBitVector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T01:16:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e4413c_b6d61b2c",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "8e5d01d77582cd03d84cea1bb5e33874f9d4104d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c0e7101_395bfdaf",
         "filename": "fxbarcode/qrcode/BC_QRCoderBitVector.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "8e5d01d77582cd03d84cea1bb5e33874f9d4104d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249f5e3b_9a58934c",
+        "filename": "fxbarcode/qrcode/BC_QRCoderBitVector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T01:16:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c0e7101_395bfdaf",
+      "range": {
+        "startLine": 75,
+        "startChar": 37,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "8e5d01d77582cd03d84cea1bb5e33874f9d4104d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
