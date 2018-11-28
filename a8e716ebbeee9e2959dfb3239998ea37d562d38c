@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43e44c68_2191bf27",
+        "filename": "xfa/fwl/cfwl_widget.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T23:25:18Z",
+      "side": 1,
+      "message": "(For later) Should this be \"Overlapping\" ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "a8e716ebbeee9e2959dfb3239998ea37d562d38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
