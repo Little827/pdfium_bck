@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a57dbf4f_6dae27c7",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-28T00:29:59Z",
+      "side": 1,
+      "message": "can\u0027t help but wonder if they meant t \u003d\u003d len.",
+      "range": {
+        "startLine": 125,
+        "startChar": 20,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "faab1348267f3050628f420966dd95ce5d641152",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
