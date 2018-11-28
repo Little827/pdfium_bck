@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1542447374 -0800\nnonce ADWBXRDPDODm59MEdUd8CG264sUDIdfpiSz3+1C2z1O7KfnFYZ+gpgZ0+Gmsq+k40dlP6EpRVPWy\n\n0000000000000000000000000000000000000000 a836ddcd3fab82a17cea83450a28083918aa96e4 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlvv4Q4ACgkQqzYtYVpm\n/XvMbQf/RvFotQUpAwOh/HiBnEiCg7Fp2G7+DsqTOHAPxtQwe7L19K/qnO03oFNh\nQREOl9C7lfXkVOR1wS4n/UlcmYg5s3X735Rfgy7S9eWlCRIWh0bhPOr7VyvaK3gf\nVJLTwfwCkLH7Egkag91iTorNa9xs9FXCMQLM+bUFtb4xF7QOMUEAzvHwYrqSNe1K\nRNI5+HAdhNPdFCbJXO9NLJi/XtxDRduVmOr4Tqmov2YVJIKGapg37MlHFfK//NOC\nhHsrPK7xGn2BsL8GR5sXoT5YRVEBXhijhM0J9AKOsnpPFObk1moULJplY9+zSnOj\na1t/0U/9ARZnXhgWU/a0aN2F7Ih17A\u003d\u003d\n\u003dkaZo\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0395af8_67e2a3b2",
+        "filename": "fxbarcode/datamatrix/BC_EdifactEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-28T21:40:47Z",
+      "side": 1,
+      "message": "nit: maybe AppendEncodedChar while we\u0027re at it?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "a836ddcd3fab82a17cea83450a28083918aa96e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ac9325_bb482faf",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-28T21:40:47Z",
+      "side": 1,
+      "message": "nit: can we use i instead of l which looks too much like 1?",
+      "range": {
+        "startLine": 180,
+        "startChar": 15,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "a836ddcd3fab82a17cea83450a28083918aa96e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2589517e_2b378092",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-28T21:40:47Z",
+      "side": 1,
+      "message": "nit: just len, no?",
+      "range": {
+        "startLine": 180,
+        "startChar": 26,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "a836ddcd3fab82a17cea83450a28083918aa96e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
