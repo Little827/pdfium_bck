@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f417cb1_706decaa",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T21:23:15Z",
+      "side": 1,
+      "message": "Which V8 function do the flags go into?",
+      "range": {
+        "startLine": 1121,
+        "startChar": 12,
+        "endLine": 1121,
+        "endChar": 26
+      },
+      "revId": "f66423d8418f7667324da6e69bc114692c36b9ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6460ba28_4ddf6362",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T21:23:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1121,
+        "startChar": 36,
+        "endLine": 1121,
+        "endChar": 47
+      },
+      "revId": "f66423d8418f7667324da6e69bc114692c36b9ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ea37b7_e5c9db23",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T21:23:15Z",
+      "side": 1,
+      "message": "Can you add an example to show what happens with more than 1 flag? Will it return \"--flag1,--flag2\" or \"--flag1 --flag2\" ?",
+      "revId": "f66423d8418f7667324da6e69bc114692c36b9ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45cf9762_81a12bb8",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T21:23:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1125,
+        "startChar": 16,
+        "endLine": 1125,
+        "endChar": 25
+      },
+      "revId": "f66423d8418f7667324da6e69bc114692c36b9ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d87cf5e_f2278b92",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T21:23:15Z",
+      "side": 1,
+      "message": "just: flags ?",
+      "range": {
+        "startLine": 1125,
+        "startChar": 44,
+        "endLine": 1125,
+        "endChar": 51
+      },
+      "revId": "f66423d8418f7667324da6e69bc114692c36b9ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8537b5c_57d10726",
+        "filename": "testing/test_support.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T21:23:15Z",
+      "side": 1,
+      "message": "const char kAdditionalV8Flags[] \u003d ...",
+      "revId": "f66423d8418f7667324da6e69bc114692c36b9ba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
