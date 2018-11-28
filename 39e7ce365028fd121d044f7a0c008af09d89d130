@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f91adef_3e0283ac",
+        "filename": "fxbarcode/pdf417/BC_PDF417.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-28T01:31:11Z",
+      "side": 1,
+      "message": "Are you going to add bounds checks later?",
+      "revId": "39e7ce365028fd121d044f7a0c008af09d89d130",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
