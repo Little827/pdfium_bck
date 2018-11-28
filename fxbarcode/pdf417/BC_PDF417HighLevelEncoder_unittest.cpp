@@ -3,7 +3,16 @@
 // found in the LICENSE file.
 
 #include "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.h"
+#include "fxbarcode/pdf417/BC_PDF417.h"
 #include "testing/gtest/include/gtest/gtest.h"
+
+TEST(PDF417, AllHighNibblesAreOne) {
+  for (size_t i = 0; i < 3; ++i) {
+    for (size_t j = 0; j < 929; ++j) {
+      EXPECT_EQ(0x00010000u, (0xFFFF0000 & CBC_PDF417::CODEWORD_TABLE[i][j]));
+    }
+  }
+}
 
 TEST(PDF417HighLevelEncoder, EncodeHighLevel) {
   // TODO(tsepez): implement test cases.
