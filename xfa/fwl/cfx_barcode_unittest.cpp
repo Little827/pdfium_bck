@@ -43,9 +43,6 @@ class BarcodeTest : public testing::Test {
 
   bool Create(BC_TYPE type) {
     barcode_ = CFX_Barcode::Create(type);
-    if (!barcode_)
-      return false;
-
     barcode_->SetHeight(298);
     barcode_->SetWidth(418);
     return true;
