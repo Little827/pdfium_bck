@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab9e8c0a_49111127",
+        "filename": "fxbarcode/pdf417/BC_PDF417.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-28T00:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6f67c4_d4e5b257",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "faab1348267f3050628f420966dd95ce5d641152",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a57dbf4f_6dae27c7",
         "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp",
         "patchSetId": 5
