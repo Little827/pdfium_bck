@@ -79,7 +79,7 @@ enum class BarcodeType {
 
 struct BarCodeInfo {
   uint32_t uHash;
-  const wchar_t* pName;
+  const char* pName;
   BarcodeType eName;
   BC_TYPE eBCType;
 };
