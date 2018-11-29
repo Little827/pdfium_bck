@@ -20,7 +20,6 @@ class CBC_PDF417HighLevelEncoder {
   ~CBC_PDF417HighLevelEncoder() = delete;
 
   static void Initialize();
-  static void Finalize();
   static Optional<WideString> EncodeHighLevel(const WideString& msg);
 
  private:

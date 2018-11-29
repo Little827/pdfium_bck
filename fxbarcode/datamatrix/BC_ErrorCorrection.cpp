@@ -139,6 +139,7 @@ Optional<WideString> CreateECCBlock(const WideString& codewords,
   FX_Free(ecc);
   return strecc;
 }
+
 }  // namespace
 
 void CBC_ErrorCorrection::Initialize() {
@@ -152,7 +153,6 @@ void CBC_ErrorCorrection::Initialize() {
     }
   }
 }
-void CBC_ErrorCorrection::Finalize() {}
 
 Optional<WideString> CBC_ErrorCorrection::EncodeECC200(
     const WideString& codewords,

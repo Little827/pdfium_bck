@@ -91,8 +91,6 @@ void CBC_PDF417HighLevelEncoder::Initialize() {
   Inverse();
 }
 
-void CBC_PDF417HighLevelEncoder::Finalize() {}
-
 Optional<WideString> CBC_PDF417HighLevelEncoder::EncodeHighLevel(
     const WideString& msg) {
   ByteString bytes = msg.ToUTF8();

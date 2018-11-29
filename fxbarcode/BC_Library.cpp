@@ -32,6 +32,4 @@ void BC_Library_Destroy() {
   CBC_QRCoderVersion::Finalize();
   CBC_ReedSolomonGF256::Finalize();
   CBC_SymbolInfo::Finalize();
-  CBC_ErrorCorrection::Finalize();
-  CBC_PDF417HighLevelEncoder::Finalize();
 }

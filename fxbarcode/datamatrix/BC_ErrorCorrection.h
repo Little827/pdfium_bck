@@ -18,7 +18,6 @@ class CBC_ErrorCorrection {
   ~CBC_ErrorCorrection() = delete;
 
   static void Initialize();
-  static void Finalize();
   static Optional<WideString> EncodeECC200(const WideString& codewords,
                                            const CBC_SymbolInfo* symbolInfo);
 };

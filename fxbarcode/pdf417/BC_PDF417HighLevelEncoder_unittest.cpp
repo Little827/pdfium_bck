@@ -53,7 +53,6 @@ TEST(PDF417HighLevelEncoder, EncodeBinary) {
         input_array, ptr->offset, ptr->count, ptr->startmode, &result);
     EXPECT_EQ(expected, result) << " for case number " << i;
   }
-  CBC_PDF417HighLevelEncoder::Finalize();
 }
 
 TEST(PDF417HighLevelEncoder, EncodeNumeric) {
@@ -116,7 +115,6 @@ TEST(PDF417HighLevelEncoder, EncodeNumeric) {
                                               &result);
     EXPECT_EQ(expected, result) << " for case number " << i;
   }
-  CBC_PDF417HighLevelEncoder::Finalize();
 }
 
 TEST(PDF417HighLevelEncoder, ConsecutiveDigitCount) {
@@ -162,7 +160,6 @@ TEST(PDF417HighLevelEncoder, ConsecutiveDigitCount) {
                                                                    ptr->offset);
     EXPECT_EQ(ptr->expected_count, actual_count) << " for case number " << i;
   }
-  CBC_PDF417HighLevelEncoder::Finalize();
 }
 
 TEST(PDF417HighLevelEncoder, ConsecutiveTextCount) {
@@ -223,7 +220,6 @@ TEST(PDF417HighLevelEncoder, ConsecutiveTextCount) {
                                                                   ptr->offset);
     EXPECT_EQ(ptr->expected_count, actual_count) << " for case number " << i;
   }
-  CBC_PDF417HighLevelEncoder::Finalize();
 }
 
 TEST(PDF417HighLevelEncoder, ConsecutiveBinaryCount) {}
