@@ -157,13 +157,12 @@ void CBC_ErrorCorrection::Finalize() {}
 Optional<WideString> CBC_ErrorCorrection::EncodeECC200(
     const WideString& codewords,
     const CBC_SymbolInfo* symbolInfo) {
-  if (pdfium::base::checked_cast<int32_t>(codewords.GetLength()) !=
-      symbolInfo->dataCapacity()) {
+  if (codewords.GetLength() != symbolInfo->dataCapacity())
     return {};
-  }
+
   WideString sb;
   sb += codewords;
-  int32_t blockCount = symbolInfo->getInterleavedBlockCount();
+  size_t blockCount = symbolInfo->getInterleavedBlockCount();
   if (blockCount == 1) {
     Optional<WideString> ecc =
         CreateECCBlock(codewords, symbolInfo->errorCodewords());
@@ -174,7 +173,7 @@ Optional<WideString> CBC_ErrorCorrection::EncodeECC200(
     std::vector<int32_t> dataSizes(blockCount);
     std::vector<int32_t> errorSizes(blockCount);
     std::vector<int32_t> startPos(blockCount);
-    for (int32_t i = 0; i < blockCount; i++) {
+    for (size_t i = 0; i < blockCount; i++) {
       dataSizes[i] = symbolInfo->getDataLengthForInterleavedBlock(i + 1);
       errorSizes[i] = symbolInfo->getErrorLengthForInterleavedBlock(i + 1);
       startPos[i] = 0;
@@ -182,18 +181,19 @@ Optional<WideString> CBC_ErrorCorrection::EncodeECC200(
         startPos[i] = startPos[i - 1] + dataSizes[i];
       }
     }
-    for (int32_t block = 0; block < blockCount; block++) {
+    for (size_t block = 0; block < blockCount; block++) {
       WideString temp;
-      for (int32_t d = block; d < symbolInfo->dataCapacity(); d += blockCount) {
-        temp += (wchar_t)codewords[d];
-      }
+      for (size_t d = block; d < symbolInfo->dataCapacity(); d += blockCount)
+        temp += static_cast<wchar_t>(codewords[d]);
+
       Optional<WideString> ecc = CreateECCBlock(temp, errorSizes[block]);
       if (!ecc.has_value())
         return WideString();
-      int32_t pos = 0;
-      for (int32_t l = block; l < errorSizes[block] * blockCount;
-           l += blockCount) {
-        sb.SetAt(symbolInfo->dataCapacity() + l, ecc.value()[pos++]);
+
+      size_t pos = 0;
+      for (size_t i = block; i < errorSizes[block] * blockCount;
+           i += blockCount) {
+        sb.SetAt(symbolInfo->dataCapacity() + i, ecc.value()[pos++]);
       }
     }
   }
