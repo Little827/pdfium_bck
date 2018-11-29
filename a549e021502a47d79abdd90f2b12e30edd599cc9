@@ -22,6 +22,30 @@
       "revId": "a549e021502a47d79abdd90f2b12e30edd599cc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9c200b9_b5aa33eb",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-29T00:04:55Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "89a4b3d5_74f53cf1",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 64
+      },
+      "revId": "a549e021502a47d79abdd90f2b12e30edd599cc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
