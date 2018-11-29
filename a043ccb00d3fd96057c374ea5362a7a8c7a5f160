@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33a6d740_38f8fb18",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-29T22:04:50Z",
+      "side": 1,
+      "message": "Doh.",
+      "revId": "a043ccb00d3fd96057c374ea5362a7a8c7a5f160",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cde7cf7_4c1cfe45",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-29T22:04:50Z",
+      "side": 1,
+      "message": "Doh doh.",
+      "revId": "a043ccb00d3fd96057c374ea5362a7a8c7a5f160",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
