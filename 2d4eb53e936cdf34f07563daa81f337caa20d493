@@ -23,6 +23,30 @@
       "revId": "2d4eb53e936cdf34f07563daa81f337caa20d493",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fcff9d6_8a4dc4bb",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-30T02:10:30Z",
+      "side": 1,
+      "message": "Should we just hard-code the calculated values and get rid of Initialize() altogether? It\u0027s weird how this code hard-coded lots of values but calculated these at run time.",
+      "parentUuid": "832047b6_e7d211a1",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 40
+      },
+      "revId": "2d4eb53e936cdf34f07563daa81f337caa20d493",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
