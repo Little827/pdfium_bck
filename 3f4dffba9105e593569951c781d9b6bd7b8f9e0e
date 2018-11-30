@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3eddd3e_876b059b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-30T22:53:26Z",
+      "side": 1,
+      "message": "Return const char* and let the caller convert to wide if needed?",
+      "revId": "3f4dffba9105e593569951c781d9b6bd7b8f9e0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
