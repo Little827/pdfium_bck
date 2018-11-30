@@ -192,8 +192,14 @@ class WideString {
   size_t Replace(const WideStringView& pOld, const WideStringView& pNew);
   size_t Remove(wchar_t ch);
 
-  bool IsASCII() const;
-  bool EqualsASCII(const ByteStringView& that) const;
+  bool IsASCII() const { return AsStringView().IsASCII(); }
+  bool EqualsASCII(const ByteStringView& that) const {
+    return AsStringView().EqualsASCII(that);
+  }
+  bool EqualsASCIINoCase(const ByteStringView& that) const {
+    return AsStringView().EqualsASCIINoCase(that);
+  }
+
   ByteString ToASCII() const;
   ByteString ToDefANSI() const;
   ByteString ToUTF8() const;
