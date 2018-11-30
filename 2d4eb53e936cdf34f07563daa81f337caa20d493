@@ -47,6 +47,30 @@
       "revId": "2d4eb53e936cdf34f07563daa81f337caa20d493",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5fdf27_949fd0a7",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-30T18:40:31Z",
+      "side": 1,
+      "message": "yeah, I think that would be swell.",
+      "parentUuid": "3fcff9d6_8a4dc4bb",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 40
+      },
+      "revId": "2d4eb53e936cdf34f07563daa81f337caa20d493",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
