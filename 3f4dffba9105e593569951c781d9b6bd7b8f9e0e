@@ -16,6 +16,24 @@
       "revId": "3f4dffba9105e593569951c781d9b6bd7b8f9e0e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b334c61a_6aa3251b",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-30T23:01:56Z",
+      "side": 1,
+      "message": "Maybe.  My hunch is that most of these XFA node properties are going to be widestrings at runtime for the majority of uses (since they come from the doc and are likely to be random unicode values specified therein), its just that we know that the built-in ones are ascii ...",
+      "parentUuid": "a3eddd3e_876b059b",
+      "revId": "3f4dffba9105e593569951c781d9b6bd7b8f9e0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
