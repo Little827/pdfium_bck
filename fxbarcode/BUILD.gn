@@ -30,6 +30,8 @@ jumbo_source_set("fxbarcode") {
     "cbc_ean13.h",
     "cbc_ean8.cpp",
     "cbc_ean8.h",
+    "cbc_eancode.cpp",
+    "cbc_eancode.h",
     "cbc_onecode.cpp",
     "cbc_onecode.h",
     "cbc_pdf417i.cpp",

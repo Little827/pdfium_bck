@@ -6,6 +6,10 @@
 
 #include "core/fxcrt/fx_extension.h"
 
+CBC_OneDimEANWriter::CBC_OneDimEANWriter() = default;
+
+CBC_OneDimEANWriter::~CBC_OneDimEANWriter() = default;
+
 int32_t EANCalcChecksum(const ByteString& contents) {
   int32_t odd = 0;
   int32_t even = 0;
