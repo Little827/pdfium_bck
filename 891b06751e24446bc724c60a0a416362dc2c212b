@@ -23,6 +23,30 @@
       "revId": "891b06751e24446bc724c60a0a416362dc2c212b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccef3b11_1b08845f",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-30T00:04:04Z",
+      "side": 1,
+      "message": "Sure. The pre-existing build config had this pattern too. I\u0027ll make a separate pass and check all the build files.",
+      "parentUuid": "5bc0b6db_a5fb485b",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "891b06751e24446bc724c60a0a416362dc2c212b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
