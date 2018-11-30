@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1543533305 -0800\nnonce AGLkUnDWGwuzApV5nIqHcBTgQR2+m+tivTqnV4zex3iX0Nbzz5LpI0T3lXT5pMlgL9RVI6dimnwL\n\n0000000000000000000000000000000000000000 891b06751e24446bc724c60a0a416362dc2c212b refs/for/refs/heads/master%notify\u003dNONE,m\u003dcopy_pasta,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwAcvkACgkQqzYtYVpm\n/Xtw1gf9EBxEseMz6FNh9i6zbpH3/iVscLpFkEs1N6Gsi2QV5PUT409zYKR5RPmH\nRbfNcvlDGAdHqq7jETtHhUCquTzTBaxU/YQynvEwecjFFc534AyutAv/FBiTNcL0\nL8+3e6ZcnItRXhnGvqneN/xhFkXf4uPjIFZOhmcthqiG34HhZTWah/Er6QDjoU8S\ne3GTJ+Pstz9SEMblWHV6czF+8Ki9NJ2gEZzqOyC7WtzArVekO9/Wzm4Kp4oH6ln7\nRUtWdYVQIaZbjXN9oj/WA3UATLXMFoT7wIlJiZuunJcj3GsgVFcvTCTVeICk6emx\njHaiY8tBn+y7ToXkwqJE3aKNEyEx7w\u003d\u003d\n\u003drowx\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bc0b6db_a5fb485b",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-30T00:02:30Z",
+      "side": 1,
+      "message": "nit: I\u0027ve usually been nesting XFA inside PDF_ENABLE_V8 just to ensure we don\u0027t get (XFA true, V8 false) combinations.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "891b06751e24446bc724c60a0a416362dc2c212b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
