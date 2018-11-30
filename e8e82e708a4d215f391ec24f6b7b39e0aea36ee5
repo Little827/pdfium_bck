@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "76859cd7_5524eba8",
+        "filename": "fxbarcode/cbc_ean13.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-30T02:27:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d22bc5d_5b2f5818",
+      "range": {
+        "startLine": 40,
+        "startChar": 23,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "e8e82e708a4d215f391ec24f6b7b39e0aea36ee5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efc67e4b_db9ac840",
         "filename": "fxbarcode/cbc_upca.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2018-11-29T18:18:42Z",
       "side": 1,
       "message": "I smell a helper function for the three copies of this differing only in 11 vs. 12. vs 8 ..",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "e8e82e708a4d215f391ec24f6b7b39e0aea36ee5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8246a0a_699e164b",
+        "filename": "fxbarcode/cbc_upca.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-30T02:27:53Z",
+      "side": 1,
+      "message": "Will follow up...",
+      "parentUuid": "efc67e4b_db9ac840",
       "range": {
         "startLine": 36,
         "startChar": 1,
@@ -69,6 +117,30 @@
       "revId": "e8e82e708a4d215f391ec24f6b7b39e0aea36ee5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78125c68_2a5b81c2",
+        "filename": "fxbarcode/datamatrix/BC_ErrorCorrection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-11-30T02:27:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c629ec0_f1d8d73f",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 18
+      },
+      "revId": "e8e82e708a4d215f391ec24f6b7b39e0aea36ee5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
