@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1543614596 -0800\nnonce AGLkUnDlEXR0TwJbwxbHSuUU/bvzpuoEPDD3KfaB+JPXHBZWysxNjWFNcgcKx1H9akltcsrzYGYv\n\n0000000000000000000000000000000000000000 6560d4f7841917f460ba166ba97ec4adbe305d52 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwBsIQACgkQqzYtYVpm\n/XssQggAyH+H5R+pjyoNiRXm2w6ioFzTbn99vyesove1f8AQYVv/0/o9e6rmBp76\nK/Z8mye8KcYR3vpxTlKlcrvlZtWrLTj4Y/4FKi0r1U1KbYUdXr+jc2IyGfZrS89y\ni29jN2X2ykQFsE22y5jochg1GegCXrBO3aODDGyjt+xiuwbWC6oqaYSmgonlMYDb\nu3xhGWfPlx1A9jm2yK7eR3mRqQmqk6SwPyPg+Q+8IJgn4D4FY/syAG26hyxuMNSF\neHWxzdaN0PvZPreVGUZ5LDJlRFpBURtoKziPPlReo7Kjzrp2ZqjmSoucnoe+2UOd\nr/n9x9JFThc33I0+JYoBCnVb4wkGHw\u003d\u003d\n\u003d8OB4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0e66380_4b456f1c",
+        "filename": "fxbarcode/cbc_eancode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-11-30T22:23:04Z",
+      "side": 1,
+      "message": "Sure you don\u0027t want to just template\u003cint N\u003e class CBC_EANCode instead of the virtual hooks?",
+      "revId": "6560d4f7841917f460ba166ba97ec4adbe305d52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
