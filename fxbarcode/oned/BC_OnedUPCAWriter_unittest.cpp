@@ -12,9 +12,7 @@ TEST(OnedUPCAWriterTest, Encode) {
   int32_t width;
   int32_t height;
 
-  // TODO(hnakashima): CBC_OnedUPCAWriter is unique in that it needs to be
-  // Init()'d. Get rid of this call.
-  writer.Init();
+  writer.InitEANWriter();
 
   // UPCA barcodes encode 12-digit numbers into 95 modules in a unidimensional
   // disposition.
