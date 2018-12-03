@@ -17,6 +17,24 @@
       "revId": "6560d4f7841917f460ba166ba97ec4adbe305d52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed47c04b_2c7a0f28",
+        "filename": "fxbarcode/cbc_eancode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-03T19:59:36Z",
+      "side": 1,
+      "message": "The classes derived from CBC_EANCode still differ in terms of the CBC_OneDimEANWriter subclass they pass in.",
+      "parentUuid": "b0e66380_4b456f1c",
+      "revId": "6560d4f7841917f460ba166ba97ec4adbe305d52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
