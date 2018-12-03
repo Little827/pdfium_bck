@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef7614b4_9c1f4362",
+        "filename": "core/fxcrt/cfx_widetextbuf.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-03T19:17:01Z",
+      "side": 1,
+      "message": "Should this be: ExpandBuf(ascii.GetLength() * sizeof(wchar_t)); ?",
+      "revId": "2d94169c9dd2386ca27b164761c10ae38c04bccd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f675597b_4b981ed8",
+        "filename": "core/fxcrt/cfx_widetextbuf.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-03T19:17:01Z",
+      "side": 1,
+      "message": "C++ style cast?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "2d94169c9dd2386ca27b164761c10ae38c04bccd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
