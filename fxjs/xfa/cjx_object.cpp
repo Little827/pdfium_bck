@@ -671,7 +671,7 @@ void CJX_Object::SetContent(const WideString& wsContent,
         if (ret)
           wsContentType = *ret;
         if (wsContentType.EqualsASCII("text/html")) {
-          wsContentType = L"";
+          wsContentType = WideString();
           SetAttribute(XFA_Attribute::ContentType, wsContentType.AsStringView(),
                        false);
         }

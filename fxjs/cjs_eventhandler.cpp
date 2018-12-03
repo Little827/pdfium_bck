@@ -369,11 +369,11 @@ void CJS_EventHandler::OnConsole_Exec() {
 void CJS_EventHandler::Initialize(JS_EVENT_T type) {
   m_eEventType = type;
 
-  m_strTargetName = L"";
-  m_strSourceName = L"";
+  m_strTargetName = WideString();
+  m_strSourceName = WideString();
   m_pWideStrChange = nullptr;
-  m_WideStrChangeDu = L"";
-  m_WideStrChangeEx = L"";
+  m_WideStrChangeDu = WideString();
+  m_WideStrChangeEx = WideString();
   m_nCommitKey = -1;
   m_bKeyDown = false;
   m_bModifier = false;
