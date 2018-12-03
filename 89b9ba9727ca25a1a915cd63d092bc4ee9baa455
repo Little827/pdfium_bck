@@ -16,6 +16,24 @@
       "revId": "89b9ba9727ca25a1a915cd63d092bc4ee9baa455",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603fea2a_ce665565",
+        "filename": "fpdfsdk/formfiller/cffl_listbox.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-03T20:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2f7096_8b2cf565",
+      "revId": "89b9ba9727ca25a1a915cd63d092bc4ee9baa455",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
