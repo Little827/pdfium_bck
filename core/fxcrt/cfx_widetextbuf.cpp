@@ -17,9 +17,11 @@ void CFX_WideTextBuf::AppendChar(wchar_t ch) {
 }
 
 CFX_WideTextBuf& CFX_WideTextBuf::operator<<(const ByteStringView& ascii) {
-  // TODO(tsepez): avoid a malloc/copy here.
-  WideString temp = WideString::FromASCII(ascii);
-  AppendBlock(temp.c_str(), temp.GetLength() * sizeof(wchar_t));
+  ExpandBuf(ascii.GetLength());
+  for (uint8_t ch : ascii) {
+    *(wchar_t*)(m_pBuffer.get() + m_DataSize) = ch;
+    m_DataSize += sizeof(wchar_t);
+  }
   return *this;
 }
 
