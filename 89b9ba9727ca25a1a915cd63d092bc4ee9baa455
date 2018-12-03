@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c2f7096_8b2cf565",
+        "filename": "fpdfsdk/formfiller/cffl_listbox.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-03T19:39:37Z",
+      "side": 1,
+      "message": "fa.sValue.clear(); ?",
+      "revId": "89b9ba9727ca25a1a915cd63d092bc4ee9baa455",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
