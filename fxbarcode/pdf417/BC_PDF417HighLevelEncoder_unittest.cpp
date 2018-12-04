@@ -3,17 +3,18 @@
 // found in the LICENSE file.
 
 #include "fxbarcode/pdf417/BC_PDF417HighLevelEncoder.h"
+
 #include "testing/gtest/include/gtest/gtest.h"
 
-TEST(PDF417HighLevelEncoder, EncodeHighLevel) {
+TEST(PDF417HighLevelEncoderTest, EncodeHighLevel) {
   // TODO(tsepez): implement test cases.
 }
 
-TEST(PDF417HighLevelEncoder, EncodeText) {
+TEST(PDF417HighLevelEncoderTest, EncodeText) {
   // TODO(tsepez): implement test cases.
 }
 
-TEST(PDF417HighLevelEncoder, EncodeBinary) {
+TEST(PDF417HighLevelEncoderTest, EncodeBinary) {
   struct EncodeBinaryCase {
     const char* input;
     int offset;
@@ -56,7 +57,7 @@ TEST(PDF417HighLevelEncoder, EncodeBinary) {
   CBC_PDF417HighLevelEncoder::Finalize();
 }
 
-TEST(PDF417HighLevelEncoder, EncodeNumeric) {
+TEST(PDF417HighLevelEncoderTest, EncodeNumeric) {
   struct EncodeNumericCase {
     const wchar_t* input;
     int offset;
@@ -119,7 +120,7 @@ TEST(PDF417HighLevelEncoder, EncodeNumeric) {
   CBC_PDF417HighLevelEncoder::Finalize();
 }
 
-TEST(PDF417HighLevelEncoder, ConsecutiveDigitCount) {
+TEST(PDF417HighLevelEncoderTest, ConsecutiveDigitCount) {
   struct ConsecutiveDigitCase {
     const wchar_t* input;
     int offset;
@@ -165,7 +166,7 @@ TEST(PDF417HighLevelEncoder, ConsecutiveDigitCount) {
   CBC_PDF417HighLevelEncoder::Finalize();
 }
 
-TEST(PDF417HighLevelEncoder, ConsecutiveTextCount) {
+TEST(PDF417HighLevelEncoderTest, ConsecutiveTextCount) {
   struct ConsecutiveTextCase {
     const wchar_t* input;
     int offset;
@@ -226,4 +227,6 @@ TEST(PDF417HighLevelEncoder, ConsecutiveTextCount) {
   CBC_PDF417HighLevelEncoder::Finalize();
 }
 
-TEST(PDF417HighLevelEncoder, ConsecutiveBinaryCount) {}
+TEST(PDF417HighLevelEncoderTest, ConsecutiveBinaryCount) {
+  // TODO(tsepez): implement test cases.
+}
