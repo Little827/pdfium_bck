@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1543963117 -0800\nnonce AGLkUnAfaPT5SrAH6gx7M/HRIBvTXVVyPnJoY+osQznebC7Mm8Gozo29O/hjstsTMVBNNkngFUoq\n\n0000000000000000000000000000000000000000 32b73dfd565b91142203b8a04ef2f24e36490838 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwHAe0ACgkQqzYtYVpm\n/XvqQwf+P2QAy97Uj4leeQNsoNqQ8rtke7DtRCvH7qGcQaA0ngMGbDORVORQgzYh\n8x+gfkD09nz4xwku9XTYNw0zpPIUOVJS9sHsruZBl7ltYkMpbOsNcZCJwUq4lNCW\njEmFA3yhVIpkcy2FRX+5nTSDhFgveRCOkoi7gBkJpNgpDc+gDUjwDS5/GztLYVc3\nlHvPoVVErnI1q1ZzpU2+KLTTabqDCiXHeF9sSzGjP0cY6OBxWqADWxb/5HFjb7qQ\neq5ShiMeh05DXMpnWhpb1BEYwBxxdGs9Xyly2QxO+EqPhqNBv5z0yHAa0E4L4VbL\n/mOtFx3B3lJH+Mj1Z46zlnIffJ1NOA\u003d\u003d\n\u003d15Em\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "630dab23_732c124a",
+        "filename": "fxbarcode/BC_TwoDimWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-04T23:27:19Z",
+      "side": 1,
+      "message": "should these be 0.0f if everything is a float?",
+      "range": {
+        "startLine": 87,
+        "startChar": 18,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "32b73dfd565b91142203b8a04ef2f24e36490838",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9804bcf_03a2956c",
+        "filename": "fxbarcode/BC_TwoDimWriter.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-04T23:27:19Z",
+      "side": 1,
+      "message": "nit: just error_correction_level() if you want to follow style guide.",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "32b73dfd565b91142203b8a04ef2f24e36490838",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af338e7b_ffcf931c",
+        "filename": "fxbarcode/BC_TwoDimWriter.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-04T23:27:19Z",
+      "side": 1,
+      "message": "nit: could we make this m_iCorrectionLevel if this is what it means?",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "32b73dfd565b91142203b8a04ef2f24e36490838",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
