@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5298412b_57d66efd",
+        "filename": "fxbarcode/qrcode/BC_QRCoderMode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-04T20:09:21Z",
+      "side": 0,
+      "message": "nit: no need to check, just delete and assign nulls.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 20
+      },
+      "revId": "bf0fe01cec3af868ef83bb9a3ac981a9129eb020",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
