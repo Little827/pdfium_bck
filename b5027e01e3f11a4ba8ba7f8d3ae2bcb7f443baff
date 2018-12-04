@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1543952616 -0800\nnonce AGLkUnCLKYdBWBmVfztQ/+CT7KecRtmn7pxM/1qv0q2oOjJwWTc9CDSUtU+4bRD9hxCvHYF0gAaS\n\n0000000000000000000000000000000000000000 b5027e01e3f11a4ba8ba7f8d3ae2bcb7f443baff refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dremove-unused-cbc-qrcodewriter\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwG2OgACgkQqzYtYVpm\n/XsSSQgAkDjPZxjl4lcEEWkuPcEc6BLJVBb8rWe6vQPTnFQJvT1qNIU6PIHINYpT\n6e2pgOyeTyPbnxZUYohJTuTkHWj6WuaVKmcsuYHjjZ5yK8eTnb2IKcjHQ56Bg7eG\nFpd0J0S5cDwfRICKi10sOwsqV8Y93PaXbeR/WIiQxSa+niBTS0bQIBOBQeAvY5Bq\nkEFnSZthuyn3O/MoyDRzgQ9itP67kBrAbj8SGhDCnCpFXtgB9C3X/k/m5RiQYk49\nbORvSMh2wPlyV350Xh3cfOHU3/B6MTq5cHPgjx2ZiHPXIYveeB4jhNSuDIo0OL8W\nnmaT24YByb7//05DaV3UJTWyJfAFdQ\u003d\u003d\n\u003doMa0\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
