@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1543966242 -0800\nnonce AGLkUnBeFhF90smnuOBKRtPTboB+uyHNK8cSh8imyf9vEyWg0/mHCTglQiHzEd40nRS+1LUOO1IG\n\n0000000000000000000000000000000000000000 4dd35d33b41ee483dbcda3e214931f83f4c504ae refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dchange-cbc-datamatrixwriter\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwHDiIACgkQqzYtYVpm\n/XuODwf+J5hzkG63o0ugxvSIvrpv0Fz8mtUVzFOOIKeWntPzDe52R5hWhisx8NuS\n4dozu0PSECsAgWOKXbQqZYjHeVhR3ubyTVXWvV7YWaPf7lCND925ZyAIjDp+Iun9\nKAzBBBCSvjg3bvjoap7iGwur5jQlGox2PsUPbJhILXZ2waAV11trgERFjgTTBNv6\nLZuR/D60UXU6Vewy6Y1w4GFcgRimOnV1VJpW41tRm5JbJuNVd88AzUor0ZV0n2/a\n/NEMG7d7qZMTkCsHbUdN8IcJWeefSle65uU9gM4aULQngYb+vnHbNSP+gGvD5Onf\ntYERLmAsFk4rmKMWr9Ie1vQtfrNunw\u003d\u003d\n\u003dOxdZ\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
