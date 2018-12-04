@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb0a2c12_cb15ca1e",
+        "filename": "fxjs/xfa/cjx_arc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-04T23:57:48Z",
+      "side": 1,
+      "message": "Is CJX_Arc going to get deleted eventually? (Presumably the same will happen to the other affected classes.)",
+      "revId": "eeec4048d344e312be76f80d9077b5613ac50acd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
