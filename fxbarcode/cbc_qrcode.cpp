@@ -35,12 +35,10 @@ bool CBC_QRCode::Encode(const WideStringView& contents) {
   int32_t outWidth = 0;
   int32_t outHeight = 0;
   CBC_QRCodeWriter* pWriter = GetQRCodeWriter();
-  std::unique_ptr<uint8_t, FxFreeDeleter> data(
-      pWriter->Encode(WideString(contents), pWriter->GetErrorCorrectionLevel(),
-                      outWidth, outHeight));
-  if (!data)
-    return false;
-  return pWriter->RenderResult(data.get(), outWidth, outHeight);
+  std::unique_ptr<uint8_t, FxFreeDeleter> data(pWriter->Encode(
+      WideString(contents), pWriter->get_error_correction_level(), outWidth,
+      outHeight));
+  return data && pWriter->RenderResult(data.get(), outWidth, outHeight);
 }
 
 bool CBC_QRCode::RenderDevice(CFX_RenderDevice* device,
