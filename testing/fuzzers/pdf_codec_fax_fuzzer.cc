@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <algorithm>
 #include <cstdint>
 #include <memory>
 
@@ -13,7 +14,7 @@ static int GetInteger(const uint8_t* data) {
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-  const int kParameterSize = 21;
+  static constexpr size_t kParameterSize = 21;
   if (size < kParameterSize)
     return 0;
 
@@ -27,6 +28,10 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   bool BlackIs1 = !(data[20] & 0x04);
   data += kParameterSize;
   size -= kParameterSize;
+
+  // Limit data size to prevent fuzzer timeout.
+  static constexpr size_t kMaxDataSize = 256 * 1024;
+  size = std::min(size, kMaxDataSize);
 
   CCodec_FaxModule fax_module;
   std::unique_ptr<CCodec_ScanlineDecoder> decoder(
