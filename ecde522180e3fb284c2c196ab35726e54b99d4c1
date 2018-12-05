@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544035585 -0800\nnonce AGLkUnBK8/oeRbePHpMTONJE4/+wp1kc3KqKJDVVfKM0b/Ul+5gTS/80SYVtZITijmlx8Zdk/oS9\n\n0000000000000000000000000000000000000000 ecde522180e3fb284c2c196ab35726e54b99d4c1 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwIHQIACgkQqzYtYVpm\n/XuiRggAqUH0snt64+ErVXQpHe+6OXK1KLAEvrrx/cgl3VXuHXJRql7PVb548lcu\nJl3LEnsPFHJOVNSW0GN3yBMmQGSjZSPejJK8NpGajuR28UtmWma3IguwEwaov6dm\ngPi7LRw9r3NpdyyUAb8LjO143MlUiG4YWh6fmC/anuxz1qL2IaktwkCUESCStGY9\naLta/5dVriyqi0Nvb4QD+O+6RZAqGdDGVunKdjANwTz7osEBi1BKGlpWOB1mF2UC\nHxTuoVVw1H2xTtKXnYvwjLDMreAIzN3KcIfxOO/jtEvePkPWn4+7zj5gmTiejFDU\notUjhY3oePDd/QOYuEdGfsFHoELU4Q\u003d\u003d\n\u003dsRF/\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfc68b3f_b57cd458",
+        "filename": "xfa/fxfa/parser/cxfa_localevalue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-05T20:41:15Z",
+      "side": 1,
+      "message": "OK, sure maybe save some refcount churn at the risk of the underlying string going away ... but no copy happens in either case.",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "ecde522180e3fb284c2c196ab35726e54b99d4c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
