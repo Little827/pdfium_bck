@@ -26,7 +26,6 @@
 #include "core/fxge/systemfontinfo_iface.h"
 #include "core/fxge/win32/cfx_windowsdib.h"
 #include "core/fxge/win32/win32_int.h"
-#include "third_party/base/ptr_util.h"
 
 #ifndef _SKIA_SUPPORT_
 #include "core/fxge/agg/fx_agg_driver.h"
