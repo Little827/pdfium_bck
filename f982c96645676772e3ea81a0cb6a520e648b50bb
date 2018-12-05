@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1543975577 -0800\nnonce AGLkUnBRNcBIwmRiatYlCWqH1UdF2hkMBPawXbrDpianFUa0airHZgmxkvm417OQSGeZFtnj0yRT\n\n0000000000000000000000000000000000000000 f982c96645676772e3ea81a0cb6a520e648b50bb refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dchange-cbc-pdf417writer\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwHMpkACgkQqzYtYVpm\n/XtBHQf/avbkhNCulCotRtM++Ge/9Q/lA6iW+a5Id9lRXJsxSOrMoJZA1Cr3riBO\nxTkGXXuQOAdE20dsZAHrZpjh/oIm+uhP16hdIAGidFpiSn3J2O2PNm6VBMUlU/uW\nvbpYQxDZqVcXtnaYNQey4WBG+PJHkUqQ6JVw7u1QtuggQukPtMFPuH2LHPxccX2w\nXtYhZMVxkSoAXx/+UFKVEwRoys+EtQ90LI0O2GuJaR4QzPgqT8JJCG52pxGJG1d8\nVSRDxK4X7ZKspchoRhD+adtDgZ9aqPFEnRJhlUNBlCrUqQHbIRNiGVh9+FiPWn6J\nItnAk0bQCk0h68h0MqfgOQ10fBuh2w\u003d\u003d\n\u003dg/TG\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "da4215c8_4a209d4d",
+        "filename": "fxbarcode/pdf417/BC_PDF417Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-05T04:04:19Z",
+      "side": 1,
+      "message": "can this be 0x0 ? and hence .data() invalid ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 39,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "f982c96645676772e3ea81a0cb6a520e648b50bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
