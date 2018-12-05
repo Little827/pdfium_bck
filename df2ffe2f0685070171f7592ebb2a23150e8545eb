@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544038844 -0800\nnonce AGLkUnCsUeMRREVblCTvAgpqUzvZJ8UmxZeFV0rHUNzWA605YDkBRNM/Jhkz6ksUE2GCmQSQXc1b\n\n0000000000000000000000000000000000000000 df2ffe2f0685070171f7592ebb2a23150e8545eb refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dclean-up-cbc-reedsolomongf256poly\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwIKbwACgkQqzYtYVpm\n/Xsd6Qf/WqPYjccxb93nzv0k7+5pdnUUXkYQ50zwhbjH3WbOdIjpQ/8mzj+HnhMe\n1YMnaKbeA8mJ/XZmd2GxjVqlweKcqDIYQ680X4Xl3S7QSZ/mL+HnscqDivFCQq8T\nyhhfZLQwLj7yn4eGGsPpA5H2qpRx+8oMd5910DMBLcPzJ7UYuTAmqlo07uVlgfwZ\n+BYbv+qlzSyVsVP1WDMqWzupkqNzig105O3SByeVUCpb3tqgnLnwlFEjHjDdcD7l\n2WCr3swtcbO+hoonA4K1LnPVulCrXliF/rkEFezI/ifRN8B/92+xTuL/s5UPMrzX\nJ/t292IuJA0f5F0HJoVUfvm4qa3bMg\u003d\u003d\n\u003dgrTr\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8550e1d7_fd1f433e",
+        "filename": "fxbarcode/common/reedsolomon/BC_ReedSolomonGF256Poly.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-05T20:47:22Z",
+      "side": 1,
+      "message": "nit: UnownedPtr automatically initialized to null.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "df2ffe2f0685070171f7592ebb2a23150e8545eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
