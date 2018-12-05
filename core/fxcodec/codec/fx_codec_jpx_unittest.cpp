@@ -432,7 +432,7 @@ TEST(fxcodec, YUV420ToRGB) {
     bool expected;
   } cases[] = {{0, false}, {1, false},  {30, false}, {31, true},
                {32, true}, {33, false}, {34, false}, {UINT_MAX, false}};
-  for (size_t i = 0; i < sizeof(cases) / sizeof(cases[0]); ++i) {
+  for (size_t i = 0; i < FX_ArraySize(cases); ++i) {
     y.w = cases[i].w;
     y.h = y.w;
     img.x1 = y.w;
