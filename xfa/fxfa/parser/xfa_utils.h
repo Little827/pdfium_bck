@@ -35,4 +35,8 @@ const XFA_SCRIPTATTRIBUTEINFO* XFA_GetScriptAttributeByName(
     XFA_Element eElement,
     WideStringView wsAttributeName);
 
+const XFA_SCRIPTATTRIBUTEINFO* XFA_GetScriptAttributeByEnum(
+    XFA_Element eElement,
+    XFA_Attribute eAttribute);
+
 #endif  // XFA_FXFA_PARSER_XFA_UTILS_H_

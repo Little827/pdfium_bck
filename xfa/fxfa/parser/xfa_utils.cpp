@@ -538,24 +538,26 @@ const XFA_SCRIPTATTRIBUTEINFO* XFA_GetScriptAttributeByName(
   if (wsAttributeName.IsEmpty())
     return nullptr;
 
-  uint32_t uHash = FX_HashCode_GetW(wsAttributeName, false);
+  XFA_Attribute eAttribute = CXFA_Node::NameToAttribute(wsAttributeName);
+  if (eAttribute == XFA_Attribute::Unknown)
+    return nullptr;
+
+  return XFA_GetScriptAttributeByEnum(eElement, eAttribute);
+}
+
+const XFA_SCRIPTATTRIBUTEINFO* XFA_GetScriptAttributeByEnum(
+    XFA_Element eElement,
+    XFA_Attribute eAttribute) {
   int32_t iElementIndex = static_cast<int32_t>(eElement);
   while (iElementIndex != -1) {
     const XFA_SCRIPTHIERARCHY* scriptIndex = g_XFAScriptIndex + iElementIndex;
-    size_t iCount = scriptIndex->wAttributeCount;
-    if (iCount == 0) {
-      iElementIndex = scriptIndex->wParentIndex;
-      continue;
-    }
-
     size_t iStart = scriptIndex->wAttributeStart;
-    size_t iEnd = iStart + iCount;
+    size_t iEnd = iStart + scriptIndex->wAttributeCount;
     for (size_t iter = iStart; iter < iEnd; ++iter) {
       const XFA_SCRIPTATTRIBUTEINFO* pInfo = g_SomAttributeData + iter;
-      if (uHash == pInfo->uHash)
+      if (eAttribute == pInfo->attribute)
         return pInfo;
     }
-
     iElementIndex = scriptIndex->wParentIndex;
   }
   return nullptr;
