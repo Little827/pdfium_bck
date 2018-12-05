@@ -17,6 +17,24 @@
       "revId": "236f984fc5d29941bdf7ec72c97c32eacfb0b702",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17abccaf_74bf2ef8",
+        "filename": "fxbarcode/common/reedsolomon/BC_ReedSolomon.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-05T20:51:33Z",
+      "side": 1,
+      "message": "Ok, howzabout \n  pdfium::MakeUnique\u003cCBC_ReedSolomonGF256Poly\u003e(m_field.Get(), std::vector\u003cint32_t\u003e{1});",
+      "parentUuid": "16f1fddb_84da6ada",
+      "revId": "236f984fc5d29941bdf7ec72c97c32eacfb0b702",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
