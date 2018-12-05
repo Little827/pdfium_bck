@@ -35,6 +35,24 @@
       "revId": "236f984fc5d29941bdf7ec72c97c32eacfb0b702",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e690d4d9_271aa6b6",
+        "filename": "fxbarcode/common/reedsolomon/BC_ReedSolomon.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-05T21:18:28Z",
+      "side": 1,
+      "message": "That works.",
+      "parentUuid": "17abccaf_74bf2ef8",
+      "revId": "236f984fc5d29941bdf7ec72c97c32eacfb0b702",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
