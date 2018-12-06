@@ -47,6 +47,30 @@
       "revId": "e82fd9ff6fdf4b1dbb001317f3457183dbd15a78",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3b99e0_abe7af85",
+        "filename": "testing/fuzzers/pdf_codec_fax_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7262
+      },
+      "writtenOn": "2018-12-06T04:34:07Z",
+      "side": 1,
+      "message": "Right, we always return 0, and that\u0027s the only value which is supported as of now. The main point here is code coverage -- this is what guides a fuzzing engine. If an input triggers any code that was not executed previously, an input is considered NEW, gets saved to the corpus, and is also prioritized in future mutations. Early bailout (like `if (size \u003c 12345) return 0;`) is supposed to tell the fuzzing engine that long inputs are not interesting, and eventually fuzzing engine will ignore them therefore saving resources and being more efficient while focusing on shorter inputs. Does it make sense? I\u0027d be happy to chat more about this tomorrow, if you would like!",
+      "parentUuid": "2eae0455_fb5d5d4d",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "e82fd9ff6fdf4b1dbb001317f3457183dbd15a78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
