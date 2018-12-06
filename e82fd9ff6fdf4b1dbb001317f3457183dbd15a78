@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544050957 -0800\nnonce AGLkUnB53T0QiM9ErcXFWkd0OWgWmbZ7zba/+FfDMSzoEPVLwvzuutxrIkpt63GpjUdSexD9gly2\n\n0000000000000000000000000000000000000000 e82fd9ff6fdf4b1dbb001317f3457183dbd15a78 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwIWQ0ACgkQqzYtYVpm\n/XtNzQf+JtYrLf4jB/8byXJHm9ltF0EZw0dUbC/KkKs0GUNWVHyaewA/3Tq2OcPR\n5D/uWpC0gzz/XtLMV0dI5qJQt5zimcdbGBF6A3p9OWcJwnvid1mVDklYTqT0E2Qj\n6JPxy8TJR/9pMo8N1oeWGbOfZkr6DeeMU8NRwQDHGhzitPi6GpMypHRaRZd0rZLz\nYck4OH/SN8SwSCpjspHLucDxgJcwXTh4bJ6FDsaZM8pbLeLChdh9uXbC4sUqtGg+\nbsvpD58KFAyea/Wk1TfZlLdkkfDkoJM6D+yMDZLbT9+aWUJUB3RphtkwdZNsHCK8\n+LdHVY0YJPfYZAvA8X6EsbW3eakSUA\u003d\u003d\n\u003djSDY\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d0094ea_e9662ff5",
+        "filename": "testing/fuzzers/pdf_codec_fax_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7262
+      },
+      "writtenOn": "2018-12-06T00:02:02Z",
+      "side": 1,
+      "message": "Actually it would be better to do \u0027return 0;\u0027 for inputs which are too long. Can you do that in the beginning, i.e. `if (size \u003c kParameterSize + kMaxDataSize)`? That approach is better because fuzzing engine would learn that long inputs do not make sense and are rejected, rather then it will be wasting time on mutating bytes that are never used.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "e82fd9ff6fdf4b1dbb001317f3457183dbd15a78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
