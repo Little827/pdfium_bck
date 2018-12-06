@@ -71,6 +71,30 @@
       "revId": "e82fd9ff6fdf4b1dbb001317f3457183dbd15a78",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc15afce_6f8a5a4a",
+        "filename": "testing/fuzzers/pdf_codec_fax_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-06T20:22:34Z",
+      "side": 1,
+      "message": "Yes, this makes sense. It just sounded like the return value made some difference, but what really matters is which branch returns.\n\nSo does patch set 2 look good?",
+      "parentUuid": "2a3b99e0_abe7af85",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "e82fd9ff6fdf4b1dbb001317f3457183dbd15a78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
