@@ -23,6 +23,30 @@
       "revId": "e82fd9ff6fdf4b1dbb001317f3457183dbd15a78",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eae0455_fb5d5d4d",
+        "filename": "testing/fuzzers/pdf_codec_fax_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-06T00:27:47Z",
+      "side": 1,
+      "message": "Done, but don\u0027t we always return 0 in this function? Can we go over what the return values mean?",
+      "parentUuid": "8d0094ea_e9662ff5",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "e82fd9ff6fdf4b1dbb001317f3457183dbd15a78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
