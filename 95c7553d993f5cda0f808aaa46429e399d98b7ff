@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a342777_bd115ee1",
+        "filename": "xfa/fxfa/parser/xfa_basic_data_element_script.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6550,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-06T23:28:50Z",
+      "side": 1,
+      "message": "note: modified this line.",
+      "range": {
+        "startLine": 6550,
+        "startChar": 3,
+        "endLine": 6550,
+        "endChar": 65
+      },
+      "revId": "95c7553d993f5cda0f808aaa46429e399d98b7ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
