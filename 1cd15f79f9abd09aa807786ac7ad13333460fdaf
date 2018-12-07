@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "7826b303_b1f46c89",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-07T20:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa289102_22078d3b",
+      "range": {
+        "startLine": 1959,
+        "startChar": 3,
+        "endLine": 1959,
+        "endChar": 12
+      },
+      "revId": "1cd15f79f9abd09aa807786ac7ad13333460fdaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a74a571f_66f50e43",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b94abeca_a013ac2d",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-07T20:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a74a571f_66f50e43",
+      "range": {
+        "startLine": 1961,
+        "startChar": 6,
+        "endLine": 1961,
+        "endChar": 9
+      },
+      "revId": "1cd15f79f9abd09aa807786ac7ad13333460fdaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dfcf3fa_a2bd95f9",
         "filename": "xfa/fxfa/parser/cxfa_node.h",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2018-12-07T17:58:26Z",
       "side": 1,
       "message": "shouldn\u0027t this be a method of CXFA_Keep ?",
+      "range": {
+        "startLine": 472,
+        "startChar": 2,
+        "endLine": 472,
+        "endChar": 49
+      },
+      "revId": "1cd15f79f9abd09aa807786ac7ad13333460fdaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88a09571_1b95504d",
+        "filename": "xfa/fxfa/parser/cxfa_node.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-07T20:35:00Z",
+      "side": 1,
+      "message": "Dunno. Do we want to keep the CXFA_Node sub-classes as the method-less classes they are now?",
+      "parentUuid": "4dfcf3fa_a2bd95f9",
       "range": {
         "startLine": 472,
         "startChar": 2,
