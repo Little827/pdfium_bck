@@ -61,7 +61,7 @@ class CXFA_NodeHelper {
   bool NodeIsProperty(CXFA_Node* refNode);
 
   XFA_Element m_eLastCreateType = XFA_Element::DataValue;
-  XFA_ResolveNode_RSType m_iCreateFlag = XFA_ResolveNode_RSType_CreateNodeOne;
+  XFA_ResolveNode_RSType m_iCreateFlag = XFA_ResolveNode_RSType::CreateNodeOne;
   int32_t m_iCreateCount = 0;
   int32_t m_iCurAllStart = -1;
   UnownedPtr<CXFA_Node> m_pCreateParent;

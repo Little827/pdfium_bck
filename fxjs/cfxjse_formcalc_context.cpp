@@ -5688,7 +5688,7 @@ bool CFXJSE_FormCalcContext::GetObjectForName(
       pScriptContext->GetThisObject(),
       WideString::FromUTF8(szAccessorName).AsStringView(), &resolveNodeRS,
       dwFlags, nullptr);
-  if (iRet && resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
+  if (iRet && resolveNodeRS.eRSType == XFA_ResolveNode_RSType::Nodes) {
     accessorValue->Assign(
         pScriptContext->GetJSValueFromMap(resolveNodeRS.objects.front().Get()));
     return true;
@@ -5762,7 +5762,7 @@ void CFXJSE_FormCalcContext::ParseResolveResult(
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
 
-  if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
+  if (resolveNodeRS.eRSType == XFA_ResolveNode_RSType::Nodes) {
     *bAttribute = false;
     CFXJSE_Engine* pScriptContext = pContext->GetDocument()->GetScriptContext();
     for (auto& pObject : resolveNodeRS.objects) {
@@ -5774,14 +5774,13 @@ void CFXJSE_FormCalcContext::ParseResolveResult(
   }
 
   *bAttribute = true;
-  if (resolveNodeRS.pScriptAttribute &&
-      resolveNodeRS.pScriptAttribute->eValueType == XFA_ScriptType::Object) {
+  if (resolveNodeRS.pCallback &&
+      resolveNodeRS.eScriptType == XFA_ScriptType::Object) {
     for (auto& pObject : resolveNodeRS.objects) {
       auto pValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
       CJX_Object* jsObject = pObject->JSObject();
-      (jsObject->*(resolveNodeRS.pScriptAttribute->callback))(
-          pValue.get(), false, resolveNodeRS.pScriptAttribute->attribute);
-
+      (jsObject->*(resolveNodeRS.pCallback))(pValue.get(), false,
+                                             resolveNodeRS.eAttribute);
       resultValues->push_back(std::move(pValue));
       *bAttribute = false;
     }

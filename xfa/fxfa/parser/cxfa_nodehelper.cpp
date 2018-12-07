@@ -275,7 +275,7 @@ bool CXFA_NodeHelper::CreateNode_ForCondition(WideString& wsCondition) {
   WideString wsIndex(L"0");
   bool bAll = false;
   if (iLen == 0) {
-    m_iCreateFlag = XFA_ResolveNode_RSType_CreateNodeOne;
+    m_iCreateFlag = XFA_ResolveNode_RSType::CreateNodeOne;
     return false;
   }
   if (wsCondition[0] != '[')
@@ -293,9 +293,9 @@ bool CXFA_NodeHelper::CreateNode_ForCondition(WideString& wsCondition) {
   }
   if (bAll) {
     wsIndex = L"1";
-    m_iCreateFlag = XFA_ResolveNode_RSType_CreateNodeAll;
+    m_iCreateFlag = XFA_ResolveNode_RSType::CreateNodeAll;
   } else {
-    m_iCreateFlag = XFA_ResolveNode_RSType_CreateNodeOne;
+    m_iCreateFlag = XFA_ResolveNode_RSType::CreateNodeOne;
     wsIndex = wsCondition.Mid(i, iLen - 1 - i);
   }
   int32_t iIndex = wsIndex.GetInteger();
