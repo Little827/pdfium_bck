@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544139379 -0800\nnonce AGLkUnA8+CDiUJppgkCtNAedDGJIP3/Fa6A2TrGoBrqV1J4c8mBVVR2O435/ivsW5+e/5+cyuYwN\n\n0000000000000000000000000000000000000000 d86c15ddaa0b6ebb452dd279b0adc6cfe6cfb054 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwJsnMACgkQqzYtYVpm\n/XuiIwf+LPIfOJVou2Kr95NNBAjNTmFudKO16Yx6gLhleWldtkyz7PdHdVwEnjqf\nQqk7/rfY7aCiN2Y4ONYwl+SB2cPPnGxlg966uq1fATTQmsvAw+3cLv+dyKb+icjh\nLW3+SHOp5C7W/baY9GO8FTHCArpg+lrBaCYNu9r2FpCcXnkYNXYkJRILMw+7nzDA\nSLgEW/dqc1p87ZSB0EIdH09ZEK0e4DXsdj/RTL77//nsTSw2otrk8qvYcBq6mrfi\nk9tfmBJ/+12e3yJ1y4zDRFUhgT/E3UMc3jvvFQWI4FNA6nLsncgxMpk7fhyUyMuN\nL4XJoIZtDqRo56X0bvqJ6uKgqmrxTw\u003d\u003d\n\u003dK5y9\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "39cb4103_0df75e09",
+        "filename": "fxbarcode/datamatrix/BC_HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-07T17:24:14Z",
+      "side": 1,
+      "message": "pre-existing: can we express this non-ascii char as \\xnnnn or \\unnnn or some such?",
+      "range": {
+        "startLine": 47,
+        "startChar": 38,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "d86c15ddaa0b6ebb452dd279b0adc6cfe6cfb054",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
