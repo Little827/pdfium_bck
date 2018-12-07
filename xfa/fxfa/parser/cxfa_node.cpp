@@ -1028,36 +1028,9 @@ XFA_AttributeValue CXFA_Node::GetIntact() {
   XFA_AttributeValue eLayoutType =
       layout.value_or(XFA_AttributeValue::Position);
   if (pKeep) {
-    Optional<XFA_AttributeValue> intact =
-        pKeep->JSObject()->TryEnum(XFA_Attribute::Intact, false);
-    if (intact) {
-      if (*intact == XFA_AttributeValue::None &&
-          eLayoutType == XFA_AttributeValue::Row &&
-          m_pDocument->GetCurVersionMode() < XFA_VERSION_208) {
-        CXFA_Node* pPreviewRow = GetPrevContainerSibling();
-        if (pPreviewRow &&
-            pPreviewRow->JSObject()->GetEnum(XFA_Attribute::Layout) ==
-                XFA_AttributeValue::Row) {
-          Optional<XFA_AttributeValue> value =
-              pKeep->JSObject()->TryEnum(XFA_Attribute::Previous, false);
-          if (value && (*value == XFA_AttributeValue::ContentArea ||
-                        *value == XFA_AttributeValue::PageArea)) {
-            return XFA_AttributeValue::ContentArea;
-          }
-
-          CXFA_Keep* pNode =
-              pPreviewRow->GetFirstChildByClass<CXFA_Keep>(XFA_Element::Keep);
-          Optional<XFA_AttributeValue> ret;
-          if (pNode)
-            ret = pNode->JSObject()->TryEnum(XFA_Attribute::Next, false);
-          if (ret && (*ret == XFA_AttributeValue::ContentArea ||
-                      *ret == XFA_AttributeValue::PageArea)) {
-            return XFA_AttributeValue::ContentArea;
-          }
-        }
-      }
+    Optional<XFA_AttributeValue> intact = GetIntactFromKeep(pKeep, eLayoutType);
+    if (intact)
       return *intact;
-    }
   }
 
   switch (GetElementType()) {
@@ -1951,6 +1924,45 @@ CXFA_Validate* CXFA_Node::GetOrCreateValidateIfPossible() {
 
 CXFA_Bind* CXFA_Node::GetBindIfExists() const {
   return JSObject()->GetProperty<CXFA_Bind>(0, XFA_Element::Bind);
+}
+
+Optional<XFA_AttributeValue> CXFA_Node::GetIntactFromKeep(
+    const CXFA_Keep* pKeep,
+    XFA_AttributeValue eLayoutType) const {
+  Optional<XFA_AttributeValue> intact =
+      pKeep->JSObject()->TryEnum(XFA_Attribute::Intact, false);
+  if (!intact.has_value())
+    return {};
+
+  if (intact.value() != XFA_AttributeValue::None ||
+      eLayoutType != XFA_AttributeValue::Row ||
+      m_pDocument->GetCurVersionMode() >= XFA_VERSION_208) {
+    return *intact;
+  }
+
+  CXFA_Node* pPreviewRow = GetPrevContainerSibling();
+  if (!pPreviewRow || pPreviewRow->JSObject()->GetEnum(XFA_Attribute::Layout) !=
+                          XFA_AttributeValue::Row) {
+    return *intact;
+  }
+
+  Optional<XFA_AttributeValue> value =
+      pKeep->JSObject()->TryEnum(XFA_Attribute::Previous, false);
+  if (value && (*value == XFA_AttributeValue::ContentArea ||
+                *value == XFA_AttributeValue::PageArea)) {
+    return XFA_AttributeValue::ContentArea;
+  }
+
+  CXFA_Keep* pNode =
+      pPreviewRow->GetFirstChildByClass<CXFA_Keep>(XFA_Element::Keep);
+  Optional<XFA_AttributeValue> ret;
+  if (pNode)
+    ret = pNode->JSObject()->TryEnum(XFA_Attribute::Next, false);
+  if (ret && (*ret == XFA_AttributeValue::ContentArea ||
+              *ret == XFA_AttributeValue::PageArea)) {
+    return XFA_AttributeValue::ContentArea;
+  }
+  return *intact;
 }
 
 Optional<float> CXFA_Node::TryWidth() {
