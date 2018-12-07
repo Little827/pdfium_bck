@@ -275,7 +275,7 @@ int FX_ParseStringInteger(const WideString& str,
       break;
 
     wchar_t c = str[i];
-    if (!std::iswdigit(c))
+    if (!FXSYS_IsDecimalDigit(c))
       break;
 
     nRet = nRet * 10 + FXSYS_DecimalCharToInt(c);
@@ -295,7 +295,7 @@ WideString FX_ParseStringString(const WideString& str,
   swRet.Reserve(str.GetLength());
   for (size_t i = nStart; i < str.GetLength(); ++i) {
     wchar_t c = str[i];
-    if (!std::iswalnum(c))
+    if (!FXSYS_IsDecimalDigit(c))
       break;
 
     swRet += c;
