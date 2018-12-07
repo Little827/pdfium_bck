@@ -333,11 +333,12 @@ const ElementNameInfo ElementNameToEnum[] = {
 struct AttributeNameInfo {
   uint32_t hash;  // Hashed as wide string.
   XFA_Attribute attribute;
+  XFA_ScriptType script_type;
 };
 
 const AttributeNameInfo AttributeNameInfoToEnum[] = {
 #undef ATTR____
-#define ATTR____(a, b, c) {a, XFA_Attribute::c},
+#define ATTR____(a, b, c, d) {a, XFA_Attribute::c, XFA_ScriptType::d},
 #include "xfa/fxfa/parser/attributes.inc"
 #undef ATTR____
 };
@@ -345,8 +346,8 @@ const AttributeNameInfo AttributeNameInfoToEnum[] = {
 const char* AttributeToNameASCII(XFA_Attribute attr) {
   switch (attr) {
 #undef ATTR____
-#define ATTR____(a, b, c) \
-  case XFA_Attribute::c:  \
+#define ATTR____(a, b, c, d) \
+  case XFA_Attribute::c:     \
     return b;
 #include "xfa/fxfa/parser/attributes.inc"
 #undef ATTR____
