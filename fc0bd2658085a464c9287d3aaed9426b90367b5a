@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544210292 -0800\nnonce AGLkUnCX9XxRjCuijQQbGkpBQwKbKvFAjWjRZtYqDNdpqKdID3U5mPjSNC8XX/FpRttNIZZwGTpo\n\n0000000000000000000000000000000000000000 fc0bd2658085a464c9287d3aaed9426b90367b5a refs/for/refs/heads/master%notify\u003dNONE,m\u003dfix,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwKx3QACgkQqzYtYVpm\n/XvzeAf7BKRtbwb7zNQkQQSgwl/qJCpSPGx2RNeLLrxlfNN1pruMFF40KZ+9fEmY\nLBK/biZPtpupsi3kKJUjUanouGaE3v0KrN7L5u6Zn6ktBMT6DCaDQidwNf3vmfVc\nKp31jRb1mhw6vg1NU/N5w8fseFVRcxOqzdL+d93S3eYpAclCw+JYAXAystcu1B7h\npHhfw8BKxcj+i3bqfRc2FDq2yf5WpwWJKjF0aKFDfc8vURkfTStQccwpbgaiJOmS\nMX4n9QkPdgpulsvzSSGvk1TqSMbKd/Q19LkCOE3l4/3C0A45MPaqeLZvu0TU+jYb\n0yW85Obf9ZaQy+lwYpSFLXR4ut9wyw\u003d\u003d\n\u003dtr3s\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "82585198_a4b84a0d",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-07T19:36:29Z",
+      "side": 1,
+      "message": "Need some kind of a wrapper here since the compiler can\u0027t figure out which version of FXSYS_IsDecimalDigit() to call.",
+      "revId": "fc0bd2658085a464c9287d3aaed9426b90367b5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
