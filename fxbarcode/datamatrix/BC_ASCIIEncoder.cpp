@@ -40,18 +40,17 @@ Optional<wchar_t> EncodeASCIIDigits(wchar_t digit1, wchar_t digit2) {
   return static_cast<wchar_t>((digit1 - 48) * 10 + (digit2 - 48) + 130);
 }
 
-int32_t DetermineConsecutiveDigitCount(WideString msg, int32_t startpos) {
+int32_t DetermineConsecutiveDigitCount(const WideString& msg, size_t startpos) {
   int32_t count = 0;
-  int32_t len = pdfium::base::checked_cast<int32_t>(msg.GetLength());
-  int32_t idx = startpos;
+  size_t len = msg.GetLength();
+  size_t idx = startpos;
   if (idx < len) {
     wchar_t ch = msg[idx];
     while (FXSYS_IsDecimalDigit(ch) && idx < len) {
       count++;
       idx++;
-      if (idx < len) {
+      if (idx < len)
         ch = msg[idx];
-      }
     }
   }
   return count;
