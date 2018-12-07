@@ -23,6 +23,30 @@
       "revId": "d86c15ddaa0b6ebb452dd279b0adc6cfe6cfb054",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0c20da_bd7e6f58",
+        "filename": "fxbarcode/datamatrix/BC_HighLevelEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-07T19:09:42Z",
+      "side": 1,
+      "message": "Will do separately.",
+      "parentUuid": "39cb4103_0df75e09",
+      "range": {
+        "startLine": 47,
+        "startChar": 38,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "d86c15ddaa0b6ebb452dd279b0adc6cfe6cfb054",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
