@@ -355,19 +355,18 @@ CXFA_Node* FindDataRefDataNode(CXFA_Document* pDocument,
   XFA_RESOLVENODE_RS rs;
   pDocument->GetScriptContext()->ResolveObjects(
       pDataScope, wsRef.AsStringView(), &rs, dFlags, pTemplateNode);
-  if (rs.dwFlags == XFA_ResolveNode_RSType_CreateNodeAll ||
-      rs.dwFlags == XFA_ResolveNode_RSType_CreateNodeMidAll ||
+  if (rs.eRSType == XFA_ResolveNode_RSType::CreateNodeAll ||
+      rs.eRSType == XFA_ResolveNode_RSType::CreateNodeMidAll ||
       rs.objects.size() > 1) {
     return pDocument->GetNotBindNode(rs.objects);
   }
+  if (rs.eRSType != XFA_ResolveNode_RSType::CreateNodeOne)
+    return nullptr;
 
-  if (rs.dwFlags == XFA_ResolveNode_RSType_CreateNodeOne) {
-    CXFA_Object* pObject =
-        !rs.objects.empty() ? rs.objects.front().Get() : nullptr;
-    CXFA_Node* pNode = ToNode(pObject);
-    return (bForceBind || !pNode || !pNode->HasBindItem()) ? pNode : nullptr;
-  }
-  return nullptr;
+  CXFA_Object* pObject =
+      !rs.objects.empty() ? rs.objects.front().Get() : nullptr;
+  CXFA_Node* pNode = ToNode(pObject);
+  return (bForceBind || !pNode || !pNode->HasBindItem()) ? pNode : nullptr;
 }
 
 CXFA_Node* FindMatchingDataNode(
@@ -1209,7 +1208,7 @@ void UpdateBindingRelations(CXFA_Document* pDocument,
           pDataNode = ToNode(pObject);
           if (pDataNode) {
             CreateDataBinding(pFormNode, pDataNode,
-                              rs.dwFlags == XFA_ResolveNode_RSType_ExistNodes);
+                              rs.eRSType == XFA_ResolveNode_RSType::ExistNodes);
           } else {
             FormValueNode_MatchNoneCreateChild(pFormNode);
           }

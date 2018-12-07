@@ -54,7 +54,7 @@ CJS_Result CJX_Tree::resolveNode(
     return CJS_Result::Success(runtime->NewNull());
   }
 
-  if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
+  if (resolveNodeRS.eRSType == XFA_ResolveNode_RSType::Nodes) {
     CXFA_Object* pObject = resolveNodeRS.objects.front().Get();
     CFXJSE_Value* value =
         GetDocument()->GetScriptContext()->GetJSValueFromMap(pObject);
@@ -64,18 +64,14 @@ CJS_Result CJX_Tree::resolveNode(
     return CJS_Result::Success(
         value->DirectGetValue().Get(runtime->GetIsolate()));
   }
-
-  const XFA_SCRIPTATTRIBUTEINFO* lpAttributeInfo =
-      resolveNodeRS.pScriptAttribute.Get();
-  if (!lpAttributeInfo ||
-      lpAttributeInfo->eValueType != XFA_ScriptType::Object) {
+  if (!resolveNodeRS.pCallback ||
+      resolveNodeRS.eScriptType != XFA_ScriptType::Object) {
     return CJS_Result::Success(runtime->NewNull());
   }
-
   auto pValue = pdfium::MakeUnique<CFXJSE_Value>(pScriptContext->GetIsolate());
   CJX_Object* jsObject = resolveNodeRS.objects.front()->JSObject();
-  (jsObject->*(lpAttributeInfo->callback))(pValue.get(), false,
-                                           lpAttributeInfo->attribute);
+  (jsObject->*(resolveNodeRS.pCallback))(pValue.get(), false,
+                                         resolveNodeRS.eAttribute);
   return CJS_Result::Success(
       pValue->DirectGetValue().Get(runtime->GetIsolate()));
 }
@@ -224,21 +220,20 @@ void CJX_Tree::ResolveNodeList(CFXJSE_Value* pValue,
   pScriptContext->ResolveObjects(refNode, wsExpression.AsStringView(),
                                  &resolveNodeRS, dwFlag, nullptr);
   CXFA_ArrayNodeList* pNodeList = new CXFA_ArrayNodeList(GetDocument());
-  if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
+  if (resolveNodeRS.eRSType == XFA_ResolveNode_RSType::Nodes) {
     for (auto& pObject : resolveNodeRS.objects) {
       if (pObject->IsNode())
         pNodeList->Append(pObject->AsNode());
     }
   } else {
-    if (resolveNodeRS.pScriptAttribute &&
-        resolveNodeRS.pScriptAttribute->eValueType == XFA_ScriptType::Object) {
+    if (resolveNodeRS.pCallback &&
+        resolveNodeRS.eScriptType == XFA_ScriptType::Object) {
       for (auto& pObject : resolveNodeRS.objects) {
         auto innerValue =
             pdfium::MakeUnique<CFXJSE_Value>(pScriptContext->GetIsolate());
         CJX_Object* jsObject = pObject->JSObject();
-        (jsObject->*(resolveNodeRS.pScriptAttribute->callback))(
-            innerValue.get(), false, resolveNodeRS.pScriptAttribute->attribute);
-
+        (jsObject->*(resolveNodeRS.pCallback))(innerValue.get(), false,
+                                               resolveNodeRS.eAttribute);
         CXFA_Object* obj = CFXJSE_Engine::ToObject(innerValue.get());
         if (obj->IsNode())
           pNodeList->Append(obj->AsNode());

@@ -210,7 +210,7 @@ bool CFXJSE_ResolveProcessor::ResolveForAttributeRs(
 
   rnd.m_pScriptAttribute = lpScriptAttribute;
   rnd.m_Objects.push_back(curNode);
-  rnd.m_dwFlag = XFA_ResolveNode_RSType_Attribute;
+  rnd.m_dwFlag = XFA_ResolveNode_RSType::Attribute;
   return true;
 }
 
@@ -739,6 +739,6 @@ CFXJSE_ResolveNodeData::CFXJSE_ResolveNodeData(CFXJSE_Engine* pSC)
       m_Objects(),
       m_dwStyles(XFA_RESOLVENODE_Children),
       m_pScriptAttribute(nullptr),
-      m_dwFlag(XFA_ResolveNode_RSType_Nodes) {}
+      m_dwFlag(XFA_ResolveNode_RSType::Nodes) {}
 
 CFXJSE_ResolveNodeData::~CFXJSE_ResolveNodeData() {}
