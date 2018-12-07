@@ -49,6 +49,10 @@ const wchar_t kMacro05Header[] = L"[)>05";
 const wchar_t kMacro06Header[] = L"[)>06";
 const wchar_t kMacroTrailer = 0x0004;
 
+constexpr size_t kEncoderCount =
+    static_cast<size_t>(CBC_HighLevelEncoder::Encoding::LAST) + 1;
+static_assert(kEncoderCount == 6, "Bad encoder count");
+
 wchar_t Randomize253State(wchar_t ch, int32_t codewordPosition) {
   int32_t pseudoRandom = ((149 * codewordPosition) % 253) + 1;
   int32_t tempVariable = ch + pseudoRandom;
@@ -59,11 +63,14 @@ wchar_t Randomize253State(wchar_t ch, int32_t codewordPosition) {
 int32_t FindMinimums(const std::vector<float>& charCounts,
                      std::vector<int32_t>* intCharCounts,
                      std::vector<uint8_t>* mins) {
-  for (size_t i = 0; i < mins->size(); ++i)
-    (*mins)[i] = 0;
+  ASSERT(charCounts.size() == kEncoderCount);
+  ASSERT(intCharCounts->empty());
+  ASSERT(mins->empty());
 
+  intCharCounts->resize(kEncoderCount);
+  mins->resize(kEncoderCount);
   int32_t min = std::numeric_limits<int32_t>::max();
-  for (size_t i = 0; i < 6; ++i) {
+  for (size_t i = 0; i < kEncoderCount; ++i) {
     int32_t current = static_cast<int32_t>(ceil(charCounts[i]));
     (*intCharCounts)[i] = current;
     if (min > current) {
@@ -78,9 +85,9 @@ int32_t FindMinimums(const std::vector<float>& charCounts,
 }
 
 int32_t GetMinimumCount(const std::vector<uint8_t>& mins) {
-  ASSERT(mins.size() == 6);
+  ASSERT(mins.size() == kEncoderCount);
   int32_t count = 0;
-  for (int32_t i = 0; i < 6; ++i)
+  for (size_t i = 0; i < kEncoderCount; ++i)
     count += mins[i];
   return count;
 }
@@ -185,11 +192,13 @@ CBC_HighLevelEncoder::Encoding CBC_HighLevelEncoder::LookAheadTest(
     charCounts = {1, 2, 2, 2, 2, 2.25f};
     charCounts[EncoderIndex(currentMode)] = 0;
   }
+  ASSERT(charCounts.size() == kEncoderCount);
+
   size_t charsProcessed = 0;
   while (true) {
     if ((startpos + charsProcessed) == msg.GetLength()) {
-      std::vector<uint8_t> mins(6);
-      std::vector<int32_t> intCharCounts(6);
+      std::vector<uint8_t> mins;
+      std::vector<int32_t> intCharCounts;
       int32_t min = FindMinimums(charCounts, &intCharCounts, &mins);
       if (intCharCounts[EncoderIndex(Encoding::ASCII)] == min)
         return Encoding::ASCII;
@@ -263,8 +272,8 @@ CBC_HighLevelEncoder::Encoding CBC_HighLevelEncoder::LookAheadTest(
     if (charsProcessed < 4)
       continue;
 
-    std::vector<int32_t> intCharCounts(6);
-    std::vector<uint8_t> mins(6);
+    std::vector<int32_t> intCharCounts;
+    std::vector<uint8_t> mins;
     FindMinimums(charCounts, &intCharCounts, &mins);
     int32_t minCount = GetMinimumCount(mins);
     int32_t ascii_count = intCharCounts[EncoderIndex(Encoding::ASCII)];
