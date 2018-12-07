@@ -10,9 +10,10 @@
 #include <vector>
 
 #include "core/fxcrt/unowned_ptr.h"
+#include "fxjs/xfa/cjx_object.h"
+#include "xfa/fxfa/fxfa_basic.h"
 
 class CXFA_Object;
-struct XFA_SCRIPTATTRIBUTEINFO;
 
 #define XFA_RESOLVENODE_Children 0x0001
 #define XFA_RESOLVENODE_TagName 0x0002
@@ -26,22 +27,24 @@ struct XFA_SCRIPTATTRIBUTEINFO;
 #define XFA_RESOLVENODE_Bind 0x0800
 #define XFA_RESOLVENODE_BindNew 0x1000
 
-enum XFA_ResolveNode_RSType {
-  XFA_ResolveNode_RSType_Nodes,
-  XFA_ResolveNode_RSType_Attribute,
-  XFA_ResolveNode_RSType_CreateNodeOne,
-  XFA_ResolveNode_RSType_CreateNodeAll,
-  XFA_ResolveNode_RSType_CreateNodeMidAll,
-  XFA_ResolveNode_RSType_ExistNodes,
+enum class XFA_ResolveNode_RSType : uint8_t {
+  Nodes,
+  Attribute,
+  CreateNodeOne,
+  CreateNodeAll,
+  CreateNodeMidAll,
+  ExistNodes,
 };
 
 struct XFA_RESOLVENODE_RS {
   XFA_RESOLVENODE_RS();
   ~XFA_RESOLVENODE_RS();
 
-  XFA_ResolveNode_RSType dwFlags = XFA_ResolveNode_RSType_Nodes;
+  XFA_ResolveNode_RSType eRSType = XFA_ResolveNode_RSType::Nodes;
+  XFA_Attribute eAttribute = XFA_Attribute::Unknown;
+  XFA_ScriptType eScriptType = XFA_ScriptType::Basic;
+  XFA_ATTRIBUTE_CALLBACK pCallback = nullptr;
   std::vector<UnownedPtr<CXFA_Object>> objects;
-  UnownedPtr<const XFA_SCRIPTATTRIBUTEINFO> pScriptAttribute;
 };
 
 inline XFA_RESOLVENODE_RS::XFA_RESOLVENODE_RS() = default;

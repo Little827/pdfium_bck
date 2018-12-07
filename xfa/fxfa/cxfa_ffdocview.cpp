@@ -422,13 +422,11 @@ CXFA_FFWidget* CXFA_FFDocView::GetWidgetByName(const WideString& wsName,
                                       &resolveNodeRS, dwStyle, nullptr)) {
     return nullptr;
   }
+  if (resolveNodeRS.eRSType != XFA_ResolveNode_RSType::Nodes)
+    return nullptr;
 
-  if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
-    CXFA_Node* pNode = resolveNodeRS.objects.front()->AsNode();
-    if (pNode && pNode->IsWidgetReady())
-      return GetWidgetForNode(pNode);
-  }
-  return nullptr;
+  CXFA_Node* pNode = resolveNodeRS.objects.front()->AsNode();
+  return pNode && pNode->IsWidgetReady() ? GetWidgetForNode(pNode) : nullptr;
 }
 
 void CXFA_FFDocView::OnPageEvent(CXFA_ContainerLayoutItem* pSender,
@@ -611,7 +609,7 @@ void CXFA_FFDocView::RunBindItems() {
     pScriptContext->ResolveObjects(pWidgetNode, wsRef.AsStringView(), &rs,
                                    dwStyle, nullptr);
     pWidgetNode->DeleteItem(-1, false, false);
-    if (rs.dwFlags != XFA_ResolveNode_RSType_Nodes || rs.objects.empty())
+    if (rs.eRSType != XFA_ResolveNode_RSType::Nodes || rs.objects.empty())
       continue;
 
     WideString wsValueRef = item->GetValueRef();
