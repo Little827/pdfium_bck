@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544141484 -0800\nnonce AGLkUnBDAb0JcQh75x/pJgm2IB2CCadQQ0F4VXsUdGqj8XSn7F1h/ekrlHgZ8atApQsIJBtPH+37\n\n0000000000000000000000000000000000000000 e408edecedeca6ec666e06588168789b7ebf8c8c refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwJuqwACgkQqzYtYVpm\n/XujOgf+N/nklDtO5M+lDx7faMw5aT05W6Uzq95dqLqiDZLf/tqD7kLFwgwV9jOT\nivM2cedYyTi44+TnPeMjxdKkFBxvQ6x2ANMaj3F+HBZwJj9Sd9gQTytk4Xko1SB2\nNhiT+jCVKPKPQE+dFTLj/uUaonhWt0gogJZnUuF+GSS462B37su0+M/EhUjPUz2F\n5Z7WdBT4eiEdugXy/qxVAA9juAkXWjVXny2ftSdO9+h1td5HLSRZnQOMOI6Fa7dm\nN8aIadugIBD1OalPbVjPD6E4pcM7nNLTJzZ4uxAVHN90G984NEqluJh5QIAHYV2i\nsJt0/VmXUmEqFkivgAi1SQKrVgEZNQ\u003d\u003d\n\u003d2m3M\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca8bc769_ebe7585c",
+        "filename": "fxbarcode/datamatrix/BC_ASCIIEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-07T17:37:06Z",
+      "side": 1,
+      "message": "this should probably return a size_t, as should be count, to avoid overflow in the loop given a 2GB string ...",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "e408edecedeca6ec666e06588168789b7ebf8c8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21d9cdf3_2698984a",
+        "filename": "fxbarcode/datamatrix/BC_ASCIIEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-07T17:37:06Z",
+      "side": 1,
+      "message": "nit: const WideString\u0026 is usually an indication that you really want const WideStringView\u0026, so that you could theoretically write \n  count \u003d DetermineConsecutiveDigitCount(L\"clams\", 2)\nat the cost of applying a .AsStringView() later for the case when you have a WideString.",
+      "range": {
+        "startLine": 43,
+        "startChar": 39,
+        "endLine": 43,
+        "endChar": 56
+      },
+      "revId": "e408edecedeca6ec666e06588168789b7ebf8c8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ebaf5d_8442b3cb",
+        "filename": "fxbarcode/datamatrix/BC_ASCIIEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-07T17:37:06Z",
+      "side": 1,
+      "message": "nit: gotta be some way of folding this into a saner loop ...",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "e408edecedeca6ec666e06588168789b7ebf8c8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
