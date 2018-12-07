@@ -254,12 +254,12 @@ bool SplitDateTime(const WideString& wsDateTime,
 
   wsDate = wsDateTime.Left(nSplitIndex.value());
   if (!wsDate.IsEmpty()) {
-    if (!std::any_of(wsDate.begin(), wsDate.end(), std::iswdigit))
+    if (!std::any_of(wsDate.begin(), wsDate.end(), FXSYS_IsDecimalDigit))
       return false;
   }
   wsTime = wsDateTime.Right(wsDateTime.GetLength() - nSplitIndex.value() - 1);
   if (!wsTime.IsEmpty()) {
-    if (!std::any_of(wsTime.begin(), wsTime.end(), std::iswdigit))
+    if (!std::any_of(wsTime.begin(), wsTime.end(), FXSYS_IsDecimalDigit))
       return false;
   }
   return true;
