@@ -11,12 +11,12 @@
 #include <vector>
 
 #include "core/fxcrt/fx_string.h"
+#include "fxjs/cfxjse_engine.h"
 #include "xfa/fxfa/fxfa_basic.h"
 #include "xfa/fxfa/parser/xfa_basic_data.h"
 #include "xfa/fxfa/parser/xfa_resolvenode_rs.h"
 
 class CXFA_NodeHelper;
-class CFXJSE_Engine;
 
 class CFXJSE_ResolveNodeData {
  public:
@@ -24,15 +24,17 @@ class CFXJSE_ResolveNodeData {
   ~CFXJSE_ResolveNodeData();
 
   CFXJSE_Engine* m_pSC;
-  CXFA_Object* m_CurObject;
+  CXFA_Object* m_CurObject = nullptr;
+  XFA_HashCode m_uHashName = XFA_HASHCODE_None;
   WideString m_wsName;
-  XFA_HashCode m_uHashName;
   WideString m_wsCondition;
-  int32_t m_nLevel;
+  int32_t m_nLevel = 0;
+  uint32_t m_dwStyles = XFA_RESOLVENODE_Children;  // See cfxjse_engine.h
+  XFA_ResolveNode_RSType m_eRSType = XFA_ResolveNode_RSType::Nodes;
+  XFA_Attribute m_eAttribute = XFA_Attribute::Unknown;
+  XFA_ScriptType m_eScriptType = XFA_ScriptType::Basic;
+  XFA_ATTRIBUTE_CALLBACK m_pCallback = nullptr;
   std::vector<CXFA_Object*> m_Objects;  // Not owned.
-  uint32_t m_dwStyles;
-  const XFA_SCRIPTATTRIBUTEINFO* m_pScriptAttribute;
-  XFA_ResolveNode_RSType m_dwFlag;
 };
 
 class CFXJSE_ResolveProcessor {
