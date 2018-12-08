@@ -208,9 +208,11 @@ bool CFXJSE_ResolveProcessor::ResolveForAttributeRs(
   if (!lpScriptAttribute)
     return false;
 
-  rnd.m_pScriptAttribute = lpScriptAttribute;
+  rnd.m_eAttribute = lpScriptAttribute->attribute;
+  rnd.m_eScriptType = lpScriptAttribute->eValueType;
+  rnd.m_pCallback = lpScriptAttribute->callback;
   rnd.m_Objects.push_back(curNode);
-  rnd.m_dwFlag = XFA_ResolveNode_RSType::Attribute;
+  rnd.m_eRSType = XFA_ResolveNode_RSType::Attribute;
   return true;
 }
 
@@ -730,15 +732,6 @@ void CFXJSE_ResolveProcessor::SetIndexDataBind(WideString& wsNextCondition,
 }
 
 CFXJSE_ResolveNodeData::CFXJSE_ResolveNodeData(CFXJSE_Engine* pSC)
-    : m_pSC(pSC),
-      m_CurObject(nullptr),
-      m_wsName(),
-      m_uHashName(XFA_HASHCODE_None),
-      m_wsCondition(),
-      m_nLevel(0),
-      m_Objects(),
-      m_dwStyles(XFA_RESOLVENODE_Children),
-      m_pScriptAttribute(nullptr),
-      m_dwFlag(XFA_ResolveNode_RSType::Nodes) {}
+    : m_pSC(pSC) {}
 
-CFXJSE_ResolveNodeData::~CFXJSE_ResolveNodeData() {}
+CFXJSE_ResolveNodeData::~CFXJSE_ResolveNodeData() = default;

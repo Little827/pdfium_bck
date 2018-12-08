@@ -649,18 +649,18 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
       }
       rndFind.m_CurObject = findObjects[i++].Get();
       rndFind.m_nLevel = nLevel;
-      rndFind.m_dwFlag = XFA_ResolveNode_RSType::Nodes;
+      rndFind.m_eRSType = XFA_ResolveNode_RSType::Nodes;
       if (!m_ResolveProcessor->Resolve(rndFind))
         continue;
 
-      if (rndFind.m_dwFlag == XFA_ResolveNode_RSType::Attribute &&
-          rndFind.m_pScriptAttribute &&
+      if (rndFind.m_eRSType == XFA_ResolveNode_RSType::Attribute &&
+          rndFind.m_pCallback &&
           nStart <
               pdfium::base::checked_cast<int32_t>(wsExpression.GetLength())) {
         auto pValue = pdfium::MakeUnique<CFXJSE_Value>(GetIsolate());
         CJX_Object* jsObject = rndFind.m_Objects.front()->JSObject();
-        (jsObject->*(rndFind.m_pScriptAttribute->callback))(
-            pValue.get(), false, rndFind.m_pScriptAttribute->attribute);
+        (jsObject->*(rndFind.m_pCallback))(pValue.get(), false,
+                                           rndFind.m_eAttribute);
         rndFind.m_Objects.front() = ToObject(pValue.get());
       }
       if (!m_upObjectArray.empty())
@@ -702,15 +702,15 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
   }
 
   if (!bNextCreate) {
-    resolveNodeRS->eRSType = rndFind.m_dwFlag;
+    resolveNodeRS->eRSType = rndFind.m_eRSType;
     if (nNodes > 0) {
       resolveNodeRS->objects.insert(resolveNodeRS->objects.end(),
                                     findObjects.begin(), findObjects.end());
     }
-    if (rndFind.m_dwFlag == XFA_ResolveNode_RSType::Attribute) {
-      resolveNodeRS->eAttribute = rndFind.m_pScriptAttribute->attribute;
-      resolveNodeRS->eScriptType = rndFind.m_pScriptAttribute->eValueType;
-      resolveNodeRS->pCallback = rndFind.m_pScriptAttribute->callback;
+    if (rndFind.m_eRSType == XFA_ResolveNode_RSType::Attribute) {
+      resolveNodeRS->eAttribute = rndFind.m_eAttribute;
+      resolveNodeRS->eScriptType = rndFind.m_eScriptType;
+      resolveNodeRS->pCallback = rndFind.m_pCallback;
       return 1;
     }
   }
