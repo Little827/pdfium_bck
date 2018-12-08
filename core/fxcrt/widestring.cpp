@@ -623,9 +623,11 @@ void WideString::Concat(const wchar_t* pSrcData, size_t nSrcLen) {
     return;
   }
 
+  size_t nConcatLen = std::max(m_pData->m_nDataLength, nSrcLen);
   RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_nDataLength + nSrcLen));
+      StringData::Create(m_pData->m_nDataLength + nConcatLen));
   pNewData->CopyContents(*m_pData);
+  pNewData->m_nDataLength = m_pData->m_nDataLength;
   pNewData->CopyContentsAt(m_pData->m_nDataLength, pSrcData, nSrcLen);
   m_pData.Swap(pNewData);
 }
