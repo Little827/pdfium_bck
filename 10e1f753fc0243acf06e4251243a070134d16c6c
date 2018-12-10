@@ -57,6 +57,24 @@
       "revId": "10e1f753fc0243acf06e4251243a070134d16c6c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf102486_fdd852dd",
+        "filename": "xfa/fxfa/parser/xfa_basic_data_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-10T21:11:40Z",
+      "side": 1,
+      "message": "But that version of the CL didn\u0027t land :( ... sigh.",
+      "parentUuid": "73e70d00_85c86074",
+      "revId": "10e1f753fc0243acf06e4251243a070134d16c6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
