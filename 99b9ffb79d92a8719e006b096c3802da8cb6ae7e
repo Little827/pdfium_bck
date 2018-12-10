@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1109db0_f3cdd420",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-10T19:34:19Z",
+      "side": 0,
+      "message": "NOTE: these node methods have nothing to do with nodes, as it turn out, and they move to the header file associated with the tables.",
+      "range": {
+        "startLine": 550,
+        "startChar": 15,
+        "endLine": 550,
+        "endChar": 28
+      },
+      "revId": "99b9ffb79d92a8719e006b096c3802da8cb6ae7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
