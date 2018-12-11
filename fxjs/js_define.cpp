@@ -16,6 +16,10 @@
 #include "fxjs/cjs_object.h"
 #include "fxjs/fx_date_helpers.h"
 
+namespace fxjs {
+bool g_cjs_lock = false;
+}  // namespace fxjs
+
 void JSDestructor(v8::Local<v8::Object> obj) {
   CFXJS_Engine::SetObjectPrivate(obj, nullptr);
 }
