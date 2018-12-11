@@ -4,6 +4,8 @@
 
 #include "xfa/fxfa/parser/xfa_basic_data.h"
 
+#include <utility>
+
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(XFABasicDataTest, GetAttributeByName) {
@@ -44,4 +46,18 @@ TEST(XFABasicDataTest, GetAttributeValueByName) {
   result = XFA_GetAttributeValueByName(L"lowered");
   ASSERT_TRUE(result.has_value());
   EXPECT_EQ(XFA_AttributeValue::Lowered, result.value());
+}
+
+// TODO(tsepez): convert EXPECT_LE to EXPECT_LT after removing duplicate rows.
+TEST(XFABasicDataText, ElementAttributeOrder) {
+  std::pair<XFA_Element, XFA_Attribute> so_far = {};
+#undef ELEM_ATTR____
+#define ELEM_ATTR____(a, b, c)                                    \
+  {                                                               \
+    auto curr = std::make_pair(XFA_Element::a, XFA_Attribute::b); \
+    EXPECT_LE(so_far, curr);                                      \
+    so_far = curr;                                                \
+  }
+#include "xfa/fxfa/parser/element_attributes.inc"
+#undef ELEM_ATTR____
 }
