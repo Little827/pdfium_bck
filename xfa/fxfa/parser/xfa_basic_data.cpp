@@ -156,11 +156,12 @@ namespace {
 struct ElementRecord {
   uint32_t hash;  // Hashed as wide string.
   XFA_Element element;
+  XFA_Element parent;
 };
 
 const ElementRecord g_ElementTable[] = {
 #undef ELEM____
-#define ELEM____(a, b, c, d) {a, XFA_Element::c},
+#define ELEM____(a, b, c, d) {a, XFA_Element::c, XFA_Element::d},
 #include "xfa/fxfa/parser/elements.inc"
 #undef ELEM____
 };
@@ -190,13 +191,6 @@ const AttributeValueRecord g_AttributeValueTable[] = {
 #define VALUE____(a, b, c) {a, XFA_AttributeValue::c, b},
 #include "xfa/fxfa/parser/attribute_values.inc"
 #undef VALUE____
-};
-
-const XFA_Element g_XFAScriptParents[] = {
-#undef ELEM____
-#define ELEM____(a, b, c, d) XFA_Element::d,
-#include "xfa/fxfa/parser/elements.inc"
-#undef ELEM____
 };
 
 struct ElementAttributeRecord {
@@ -286,7 +280,7 @@ Optional<XFA_SCRIPTATTRIBUTEINFO> XFA_GetScriptAttributeByName(
       result.callback = it->callback;
       return result;
     }
-    element = g_XFAScriptParents[static_cast<size_t>(element)];
+    element = g_ElementTable[static_cast<size_t>(element)].parent;
   }
   return {};
 }
