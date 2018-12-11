@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/cfxjs_engine.h"
 #include "fxjs/cjs_result.h"
@@ -17,6 +18,12 @@
 #include "third_party/base/ptr_util.h"
 
 class CJS_Object;
+
+namespace fxjs {
+extern bool g_cjs_lock;
+}  // namespace fxjs
+
+using fxjs::g_cjs_lock;
 
 double JS_DateParse(const WideString& str);
 
@@ -67,6 +74,12 @@ void JSPropGetter(const char* prop_name_string,
                   const char* class_name_string,
                   v8::Local<v8::String> property,
                   const v8::PropertyCallbackInfo<v8::Value>& info) {
+  if (g_cjs_lock)
+    return;
+
+  AutoRestorer<bool> restorer(&g_cjs_lock);
+  g_cjs_lock = true;
+
   auto pObj = JSGetObject<C>(info.Holder());
   if (!pObj)
     return;
@@ -92,6 +105,12 @@ void JSPropSetter(const char* prop_name_string,
                   v8::Local<v8::String> property,
                   v8::Local<v8::Value> value,
                   const v8::PropertyCallbackInfo<void>& info) {
+  if (g_cjs_lock)
+    return;
+
+  AutoRestorer<bool> restorer(&g_cjs_lock);
+  g_cjs_lock = true;
+
   auto pObj = JSGetObject<C>(info.Holder());
   if (!pObj)
     return;
@@ -113,6 +132,12 @@ template <class C,
 void JSMethod(const char* method_name_string,
               const char* class_name_string,
               const v8::FunctionCallbackInfo<v8::Value>& info) {
+  if (g_cjs_lock)
+    return;
+
+  AutoRestorer<bool> restorer(&g_cjs_lock);
+  g_cjs_lock = true;
+
   auto pObj = JSGetObject<C>(info.Holder());
   if (!pObj)
     return;
