@@ -773,7 +773,7 @@ CXFA_Node* CXFA_DocumentParser::NormalLoader(CXFA_Node* pXFANode,
       case FX_XMLNODE_Element: {
         CFX_XMLElement* pXMLElement = static_cast<CFX_XMLElement*>(pXMLChild);
         WideString wsTagName = pXMLElement->GetLocalTagName();
-        XFA_Element eType = CXFA_Node::NameToElement(wsTagName);
+        XFA_Element eType = XFA_GetElementByName(wsTagName);
         if (eType == XFA_Element::Unknown)
           continue;
 
@@ -800,17 +800,17 @@ CXFA_Node* CXFA_DocumentParser::NormalLoader(CXFA_Node* pXFANode,
           if (wsAttrName.EqualsASCII("nil") && it.second.EqualsASCII("true"))
             IsNeedValue = false;
 
-          XFA_Attribute attr =
-              CXFA_Node::NameToAttribute(wsAttrName.AsStringView());
-          if (attr == XFA_Attribute::Unknown)
+          Optional<XFA_ATTRIBUTEINFO> attr =
+              XFA_GetAttributeByName(wsAttrName.AsStringView());
+          if (!attr.has_value())
             continue;
 
-          if (!bUseAttribute && attr != XFA_Attribute::Name &&
-              attr != XFA_Attribute::Save) {
+          if (!bUseAttribute && attr.value().attribute != XFA_Attribute::Name &&
+              attr.value().attribute != XFA_Attribute::Save) {
             continue;
           }
-          pXFAChild->JSObject()->SetAttribute(attr, it.second.AsStringView(),
-                                              false);
+          pXFAChild->JSObject()->SetAttribute(attr.value().attribute,
+                                              it.second.AsStringView(), false);
         }
         pXFANode->InsertChild(pXFAChild, nullptr);
         if (eType == XFA_Element::Validate || eType == XFA_Element::Locale) {
