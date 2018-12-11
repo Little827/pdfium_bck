@@ -255,12 +255,11 @@ void CJX_Object::SetMapModuleString(void* pKey, const WideStringView& wsValue) {
 void CJX_Object::SetAttribute(const WideStringView& wsAttr,
                               const WideStringView& wsValue,
                               bool bNotify) {
-  XFA_Attribute attr = CXFA_Node::NameToAttribute(wsValue);
-  if (attr != XFA_Attribute::Unknown) {
-    SetAttribute(attr, wsValue, bNotify);
+  Optional<XFA_ATTRIBUTEINFO> attr = XFA_GetAttributeByName(wsValue);
+  if (!attr.has_value()) {
+    SetAttribute(attr.value().attribute, wsValue, bNotify);
     return;
   }
-
   void* pKey = GetMapKey_Custom(wsAttr);
   SetMapModuleString(pKey, wsValue);
 }
@@ -313,9 +312,9 @@ Optional<WideString> CJX_Object::TryAttribute(XFA_Attribute eAttr,
 
 Optional<WideString> CJX_Object::TryAttribute(const WideStringView& wsAttr,
                                               bool bUseDefault) {
-  XFA_Attribute attr = CXFA_Node::NameToAttribute(wsAttr);
-  if (attr != XFA_Attribute::Unknown)
-    return TryAttribute(attr, bUseDefault);
+  Optional<XFA_ATTRIBUTEINFO> attr = XFA_GetAttributeByName(wsAttr);
+  if (attr.has_value())
+    return TryAttribute(attr.value().attribute, bUseDefault);
 
   void* pKey = GetMapKey_Custom(wsAttr);
   WideStringView wsValueC;
@@ -346,7 +345,7 @@ void CJX_Object::SetBoolean(XFA_Attribute eAttr, bool bValue, bool bNotify) {
   CFX_XMLElement* elem = SetValue(eAttr, XFA_AttributeType::Boolean,
                                   (void*)(uintptr_t)bValue, bNotify);
   if (elem)
-    elem->SetAttribute(CXFA_Node::AttributeToName(eAttr), bValue ? L"1" : L"0");
+    elem->SetAttribute(XFA_AttributeToName(eAttr), bValue ? L"1" : L"0");
 }
 
 bool CJX_Object::GetBoolean(XFA_Attribute eAttr) {
@@ -357,7 +356,7 @@ void CJX_Object::SetInteger(XFA_Attribute eAttr, int32_t iValue, bool bNotify) {
   CFX_XMLElement* elem = SetValue(eAttr, XFA_AttributeType::Integer,
                                   (void*)(uintptr_t)iValue, bNotify);
   if (elem) {
-    elem->SetAttribute(CXFA_Node::AttributeToName(eAttr),
+    elem->SetAttribute(XFA_AttributeToName(eAttr),
                        WideString::Format(L"%d", iValue));
   }
 }
@@ -398,7 +397,7 @@ void CJX_Object::SetEnum(XFA_Attribute eAttr,
   CFX_XMLElement* elem = SetValue(eAttr, XFA_AttributeType::Enum,
                                   (void*)(uintptr_t)eValue, bNotify);
   if (elem) {
-    elem->SetAttribute(CXFA_Node::AttributeToName(eAttr),
+    elem->SetAttribute(XFA_AttributeToName(eAttr),
                        WideString::FromASCII(XFA_AttributeValueToName(eValue)));
   }
 }
@@ -479,7 +478,7 @@ void CJX_Object::SetCData(XFA_Attribute eAttr,
     return;
   }
 
-  WideString wsAttrName = CXFA_Node::AttributeToName(eAttr);
+  WideString wsAttrName = XFA_AttributeToName(eAttr);
   if (eAttr == XFA_Attribute::ContentType)
     wsAttrName = L"xfa:" + wsAttrName;
 
