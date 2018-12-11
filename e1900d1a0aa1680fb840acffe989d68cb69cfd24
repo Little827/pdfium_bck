@@ -22,6 +22,30 @@
       "revId": "e1900d1a0aa1680fb840acffe989d68cb69cfd24",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba3e9d9_103f93fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-11T18:19:37Z",
+      "side": 1,
+      "message": "Between our keywords in any of the tables, no. \n\nA better term would be unexpected aliasing of user input, for example,\n\"to\" and \"uP\" both hash to 3707. FX has a habit of just checking the hash value rather than the string itself, which means that all legitimate input passes, but some things that should have been errors are allowed.\n\nPractically, this has no effect against either actual or malicious documents, except that the later might be able to avoid blacklist filters or AVs by using aliases in place of the known dangerous keywords. I\u0027m not sure that anyone has such an implementation.",
+      "parentUuid": "3f641059_95a7d96b",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "e1900d1a0aa1680fb840acffe989d68cb69cfd24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
