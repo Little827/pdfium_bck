@@ -22,7 +22,7 @@ class CJS_Color final : public CJS_Object {
                                           v8::Local<v8::Array> array);
 
   CJS_Color(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Color() override;
+  ~CJS_Color();
 
   JS_STATIC_PROP(black, black, CJS_Color);
   JS_STATIC_PROP(blue, blue, CJS_Color);

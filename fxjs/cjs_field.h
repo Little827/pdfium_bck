@@ -36,7 +36,7 @@ class CJS_Field final : public CJS_Object {
                       CJS_DelayData* pData);
 
   CJS_Field(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Field() override;
+  ~CJS_Field();
 
   bool AttachField(CJS_Document* pDocument, const WideString& csFieldName);
 
@@ -351,9 +351,6 @@ class CJS_Field final : public CJS_Object {
                                const std::vector<v8::Local<v8::Value>>& params);
 
   void SetDelay(bool bDelay);
-  void ParseFieldName(const std::wstring& strFieldNameParsed,
-                      std::wstring& strFieldName,
-                      int& iControlNo);
   std::vector<CPDF_FormField*> GetFormFields() const;
   CPDF_FormField* GetFirstFormField() const;
   CPDF_FormControl* GetSmartFieldControl(CPDF_FormField* pFormField);

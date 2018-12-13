@@ -23,7 +23,7 @@ class CJS_App final : public CJS_Object {
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
   CJS_App(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_App() override;
+  ~CJS_App();
 
   void TimerProc(GlobalTimer* pTimer);
   void CancelProc(GlobalTimer* pTimer);

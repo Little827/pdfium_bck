@@ -16,7 +16,7 @@ class CJS_Event final : public CJS_Object {
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
   CJS_Event(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Event() override;
+  ~CJS_Event();
 
   JS_STATIC_PROP(change, change, CJS_Event);
   JS_STATIC_PROP(changeEx, change_ex, CJS_Event);

@@ -8,7 +8,6 @@
 #define FXJS_CJS_OBJECT_H_
 
 #include "core/fxcrt/unowned_ptr.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fxjs/cjs_runtime.h"
 #include "third_party/base/span.h"
 
@@ -47,7 +46,7 @@ class CJS_Object {
                             pdfium::span<const JSMethodSpec> consts);
 
   CJS_Object(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  virtual ~CJS_Object();
+  ~CJS_Object();
 
   v8::Local<v8::Object> ToV8Object() { return m_pV8Object.Get(GetIsolate()); }
   v8::Isolate* GetIsolate() const { return m_pIsolate.Get(); }

@@ -24,7 +24,7 @@ class CJS_Util final : public CJS_Object {
   static void DefineJSObjects(CFXJS_Engine* pEngine);
 
   CJS_Util(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Util() override;
+  ~CJS_Util();
 
   // Exposed for testing.
   static int ParseDataType(std::wstring* sFormat);

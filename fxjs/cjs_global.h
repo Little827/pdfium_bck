@@ -38,7 +38,7 @@ class CJS_Global final : public CJS_Object {
       const v8::FunctionCallbackInfo<v8::Value>& info);
 
   CJS_Global(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime);
-  ~CJS_Global() override;
+  ~CJS_Global();
 
   CJS_Result DelProperty(CJS_Runtime* pRuntime, const wchar_t* propname);
 

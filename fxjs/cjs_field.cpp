@@ -143,6 +143,27 @@ std::vector<CPDF_FormField*> GetFormFieldsForName(
   return fields;
 }
 
+// note: iControlNo = -1, means not a widget.
+int ParseFieldName(const std::wstring& strFieldNameParsed,
+                   std::wstring* pStrFieldName) {
+  int iStart = strFieldNameParsed.find_last_of(L'.');
+  if (iStart == -1)
+    return -1;
+
+  std::wstring suffixal = strFieldNameParsed.substr(iStart + 1);
+  int iControlNo = FXSYS_wtoi(suffixal.c_str());
+  if (iControlNo == 0) {
+    int iSpaceStart;
+    while ((iSpaceStart = suffixal.find_last_of(L" ")) != -1)
+      suffixal.erase(iSpaceStart, 1);
+
+    if (suffixal.compare(L"0") != 0)
+      return -1;
+  }
+  *pStrFieldName = strFieldNameParsed.substr(0, iStart);
+  return iControlNo;
+}
+
 bool SetWidgetDisplayStatus(CPDFSDK_Widget* pWidget, int value) {
   if (!pWidget)
     return false;
@@ -573,33 +594,6 @@ CJS_Field::CJS_Field(v8::Local<v8::Object> pObject, CJS_Runtime* pRuntime)
 
 CJS_Field::~CJS_Field() = default;
 
-// note: iControlNo = -1, means not a widget.
-void CJS_Field::ParseFieldName(const std::wstring& strFieldNameParsed,
-                               std::wstring& strFieldName,
-                               int& iControlNo) {
-  int iStart = strFieldNameParsed.find_last_of(L'.');
-  if (iStart == -1) {
-    strFieldName = strFieldNameParsed;
-    iControlNo = -1;
-    return;
-  }
-  std::wstring suffixal = strFieldNameParsed.substr(iStart + 1);
-  iControlNo = FXSYS_wtoi(suffixal.c_str());
-  if (iControlNo == 0) {
-    int iSpaceStart;
-    while ((iSpaceStart = suffixal.find_last_of(L" ")) != -1) {
-      suffixal.erase(iSpaceStart, 1);
-    }
-
-    if (suffixal.compare(L"0") != 0) {
-      strFieldName = strFieldNameParsed;
-      iControlNo = -1;
-      return;
-    }
-  }
-  strFieldName = strFieldNameParsed.substr(0, iStart);
-}
-
 bool CJS_Field::AttachField(CJS_Document* pDocument,
                             const WideString& csFieldName) {
   m_pJSDoc.Reset(pDocument);
@@ -615,8 +609,7 @@ bool CJS_Field::AttachField(CJS_Document* pDocument,
 
   if (pForm->CountFields(swFieldNameTemp) <= 0) {
     std::wstring strFieldName;
-    int iControlNo = -1;
-    ParseFieldName(swFieldNameTemp.c_str(), strFieldName, iControlNo);
+    int iControlNo = ParseFieldName(swFieldNameTemp.c_str(), &strFieldName);
     if (iControlNo == -1)
       return false;
 
@@ -1521,9 +1514,8 @@ CJS_Result CJS_Field::get_page(CJS_Runtime* pRuntime) {
     if (!pPageView)
       return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-    pRuntime->PutArrayElement(
-        PageArray, i,
-        pRuntime->NewNumber(static_cast<int32_t>(pPageView->GetPageIndex())));
+    pRuntime->PutArrayElement(PageArray, i,
+                              pRuntime->NewNumber(pPageView->GetPageIndex()));
     ++i;
   }
   return CJS_Result::Success(PageArray);
