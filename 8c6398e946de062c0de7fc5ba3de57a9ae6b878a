@@ -1,4 +1,626 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544692676 -0800\nnonce AGLkUnDWOyKeyPSUS1jeliSperWGb6hYL7yXq0HXwmUdqZHalEROhVtS+SeWGN0OxkFaB5zUo+PG\n\n0000000000000000000000000000000000000000 8c6398e946de062c0de7fc5ba3de57a9ae6b878a refs/for/refs/heads/master%notify\u003dNONE,m\u003dformat,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwSI8QACgkQqzYtYVpm\n/XvtUAgAq7Uux3P8D8R5xiIHLO9FU0ETsVpXhmF0qeBK5aemPSvL9KfUJe90JKZ4\niAyxq278lLXhePn+BA2ui2OTu5D2iYs0RTZbWCd1zOfZW5Zc4qbmYH15yRvhfqVU\ne9FuqVXgQTcyGPG/WA8j/qFAn/Yz1/nq5DyKcQCCOdXh9wQdk0PUUlFdxoJbl5Xt\nDvbNwLpTh+gOG44sSt9bJudH43Al9c/a7Gcwhl0BkpZz3bGtMB9JYm7lyRfz/qW3\nMCmTH32Z1hBy+A0Po6QBeh2Fieabf2GPpWgVGqSW2gtWSz8wbE2K2iZzGaOl0ASB\n0grDvGn26CcalFTslutAe1s2b3ND0g\u003d\u003d\n\u003djDp2\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "23ba198b_70114612",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: in use.\nnote: period missing.",
+      "range": {
+        "startLine": 401,
+        "startChar": 22,
+        "endLine": 401,
+        "endChar": 26
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7821120_3cfc5683",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: PDFium",
+      "range": {
+        "startLine": 407,
+        "startChar": 19,
+        "endLine": 407,
+        "endChar": 29
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fcb1b80_9f1cae94",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: coordinates. (plural, several places)",
+      "range": {
+        "startLine": 426,
+        "startChar": 35,
+        "endLine": 426,
+        "endChar": 36
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0334cefe_696970a5",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 438,
+        "startChar": 75,
+        "endLine": 438,
+        "endChar": 76
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7881dc7_c7dca17b",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: text",
+      "range": {
+        "startLine": 450,
+        "startChar": 49,
+        "endLine": 450,
+        "endChar": 54
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1c4b0f_b92c1986",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: using",
+      "range": {
+        "startLine": 450,
+        "startChar": 22,
+        "endLine": 450,
+        "endChar": 28
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5ef733a_7f78dd51",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: being invoked with",
+      "range": {
+        "startLine": 451,
+        "startChar": 37,
+        "endLine": 451,
+        "endChar": 47
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74219ab_0138c074",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: s/to the implemenation// given above changes.",
+      "range": {
+        "startLine": 451,
+        "startChar": 66,
+        "endLine": 452,
+        "endChar": 24
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6afdc93_cdba4772",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: coordinates (4x)",
+      "range": {
+        "startLine": 462,
+        "startChar": 34,
+        "endLine": 462,
+        "endChar": 36
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0ee253_76a511c9",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "record",
+      "range": {
+        "startLine": 474,
+        "startChar": 61,
+        "endLine": 474,
+        "endChar": 63
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c91b5fd_7ac07184",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "An implementation",
+      "range": {
+        "startLine": 474,
+        "startChar": 27,
+        "endLine": 474,
+        "endChar": 41
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3dddba_ec79da99",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: effects.",
+      "range": {
+        "startLine": 474,
+        "startChar": 25,
+        "endLine": 474,
+        "endChar": 26
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21dfa425_08b26af4",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "dunno what this means ... is it \"during the next repaint\" ?",
+      "range": {
+        "startLine": 475,
+        "startChar": 46,
+        "endLine": 475,
+        "endChar": 69
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec075984_377b8277",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: finished",
+      "range": {
+        "startLine": 476,
+        "startChar": 49,
+        "endLine": 476,
+        "endChar": 55
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f70af06_6a9b5f3b",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "it should remove all",
+      "range": {
+        "startLine": 476,
+        "startChar": 9,
+        "endLine": 476,
+        "endChar": 19
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f87d327_856a0eaf",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: ,",
+      "range": {
+        "startLine": 494,
+        "startChar": 36,
+        "endLine": 494,
+        "endChar": 37
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b67d255_a15395c4",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: remove for brevity, the arguments make this clear later on.",
+      "range": {
+        "startLine": 524,
+        "startChar": 47,
+        "endLine": 524,
+        "endChar": 70
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ab775e_e02e4ce6",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: , see FPDF_SYTEMTIME for details.\n(we provide details, no?)",
+      "range": {
+        "startLine": 548,
+        "startChar": 23,
+        "endLine": 548,
+        "endChar": 24
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67dd2492_6c4a51ff",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: the implementation",
+      "range": {
+        "startLine": 554,
+        "startChar": 47,
+        "endLine": 554,
+        "endChar": 61
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1a83c5_f3a5b2d3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "maybe add a comment about: The implementation is responsible for keeping its own mapping between pages and page numbers for the benefit of PDFium.\n\nor some such",
+      "range": {
+        "startLine": 569,
+        "startChar": 3,
+        "endLine": 570,
+        "endChar": 20
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0646b1_c1520653",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: , as previously returned to the implementation by FPDF_LoadPage().",
+      "range": {
+        "startLine": 581,
+        "startChar": 27,
+        "endLine": 581,
+        "endChar": 28
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d383a30_9e44bc8a",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "maybe a comment about:\n\n the implemenation is responsible for keeping track of the current page for the benefit of pdfium",
+      "range": {
+        "startLine": 594,
+        "startChar": 47,
+        "endLine": 594,
+        "endChar": 55
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e18b80_df6cbab3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "A code indicating the page rotation",
+      "range": {
+        "startLine": 619,
+        "startChar": 9,
+        "endLine": 619,
+        "endChar": 26
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "078b0522_f7c1f23a",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: degrees",
+      "range": {
+        "startLine": 619,
+        "startChar": 43,
+        "endLine": 619,
+        "endChar": 49
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097304b9_5092a59b",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "nit: a named",
+      "range": {
+        "startLine": 628,
+        "startChar": 35,
+        "endLine": 628,
+        "endChar": 36
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a939f43_2077ebdb",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "remove doxy-style parameter declarations to match others.",
+      "range": {
+        "startLine": 649,
+        "startChar": 5,
+        "endLine": 655,
+        "endChar": 20
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba77de0_3d683f2d",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T18:28:10Z",
+      "side": 1,
+      "message": "navigates to ?\nloads a?",
+      "range": {
+        "startLine": 668,
+        "startChar": 21,
+        "endLine": 668,
+        "endChar": 32
+      },
+      "revId": "8c6398e946de062c0de7fc5ba3de57a9ae6b878a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
