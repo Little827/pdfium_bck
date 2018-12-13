@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544740172 -0800\nnonce AGLkUnC1f+cehw4QrVkh3NzbTbdIiIVScpz1SvUbG6NgFFOUpxKwQLLT0RZmWLIlulB3WzbzoCiB\n\n0000000000000000000000000000000000000000 db0e76368284453b93f720518ce5852980bb41c0 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwS3UwACgkQqzYtYVpm\n/XtmuQf/Y+A4h2aS9IJJQlZah2akEM44jEDEdyHWeMgRgh1ZjleKt6xUETBzzNdY\nBf5wO5pWwhvUQejoljJPph8yxN8LFehFo73fw6roF59hpeGs0V+TMZ+XFxzYmv1p\npM1JMgRvGCuN9/I4PJev4j0Li6sYh4ca+2ZJGepdrAIJKZQ2wRTWkVb/qU1oHq65\nprScShfIcM9lK/z9SGoE+Xgz2S7CYUeC3t3ddSz7RtCH319FaAuIUoaclJsTFbOI\niwLtZrg9cZJhP3sfgcOligY8gp6l/ORpZ4Om6yPA3cFESkS6l3ja8cTiM3p71+0J\nZKLfmk0V2d9io3ZNR3tBO2Kkse09Yg\u003d\u003d\n\u003diVjr\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5e8fd04_68a927a6",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T23:47:14Z",
+      "side": 1,
+      "message": "nit: I think this can move inside LoadSimpleFont(), too.",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 41
+      },
+      "revId": "db0e76368284453b93f720518ce5852980bb41c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
