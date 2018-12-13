@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc6130ce_08f18e56",
+        "filename": "xfa/fxfa/parser/packets.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:30:50Z",
+      "side": 1,
+      "message": "Yeah, the wrap is ugly but is nice to have these one per line for processing offline with other text utilities.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "7d9a556439530dfc13ccf6a64c8e5d321779a009",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
