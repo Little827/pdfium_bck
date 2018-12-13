@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a8a1fd_9cb14435",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-13T23:42:58Z",
+      "side": 1,
+      "message": "May be good to pull this out into a separate variable?",
+      "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e72478_678bb468",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-13T23:42:58Z",
+      "side": 1,
+      "message": "const ref?",
+      "range": {
+        "startLine": 268,
+        "startChar": 45,
+        "endLine": 268,
+        "endChar": 56
+      },
+      "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "610bc90c_44b563a9",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-13T23:42:58Z",
+      "side": 1,
+      "message": "const ref?",
+      "range": {
+        "startLine": 301,
+        "startChar": 33,
+        "endLine": 301,
+        "endChar": 43
+      },
+      "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
