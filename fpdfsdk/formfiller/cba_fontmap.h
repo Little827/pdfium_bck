@@ -20,17 +20,6 @@ class CPDFSDK_Annot;
 class CPDF_Document;
 class CFX_SystemHandler;
 
-struct CBA_FontMap_Data {
-  CPDF_Font* pFont;
-  int32_t nCharset;
-  ByteString sFontName;
-};
-
-struct CBA_FontMap_Native {
-  int32_t nCharset;
-  ByteString sFontName;
-};
-
 class CBA_FontMap final : public IPVT_FontMap {
  public:
   CBA_FontMap(CPDFSDK_Annot* pAnnot, CFX_SystemHandler* pSystemHandler);
@@ -45,15 +34,24 @@ class CBA_FontMap final : public IPVT_FontMap {
   int32_t CharCodeFromUnicode(int32_t nFontIndex, uint16_t word) override;
   int32_t CharSetFromUnicode(uint16_t word, int32_t nOldCharset) override;
 
-  const CBA_FontMap_Data* GetFontMapData(int32_t nIndex) const;
   static int32_t GetNativeCharset();
-  ByteString GetNativeFontName(int32_t nCharset);
 
   void Reset();
   void SetDefaultFont(CPDF_Font* pFont, const ByteString& sFontName);
   void SetAPType(const ByteString& sAPType);
 
  private:
+  struct Data {
+    CPDF_Font* pFont;
+    int32_t nCharset;
+    ByteString sFontName;
+  };
+
+  struct Native {
+    int32_t nCharset;
+    ByteString sFontName;
+  };
+
   void Initialize();
   CPDF_Font* FindFontSameCharset(ByteString* sFontAlias, int32_t nCharset);
 
@@ -78,6 +76,7 @@ class CBA_FontMap final : public IPVT_FontMap {
 
   int32_t FindFont(const ByteString& sFontName, int32_t nCharset);
   ByteString GetNativeFont(int32_t nCharset);
+  ByteString GetNativeFontName(int32_t nCharset);
   CPDF_Font* AddFontToDocument(CPDF_Document* pDoc,
                                ByteString& sFontName,
                                uint8_t nCharset);
@@ -92,8 +91,8 @@ class CBA_FontMap final : public IPVT_FontMap {
   UnownedPtr<CPDF_Font> m_pDefaultFont;
   ByteString m_sDefaultFontName;
   ByteString m_sAPType = "N";
-  std::vector<std::unique_ptr<CBA_FontMap_Data>> m_Data;
-  std::vector<std::unique_ptr<CBA_FontMap_Native>> m_NativeFont;
+  std::vector<std::unique_ptr<Data>> m_Data;
+  std::vector<std::unique_ptr<Native>> m_NativeFont;
   UnownedPtr<CFX_SystemHandler> const m_pSystemHandler;
 };
 
