@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544733273 -0800\nnonce AGLkUnBN1mUDyz6UIL2Y5ureZtcHlrmfdaxhVbETM4WGKKfUcy+X9EbEL+gGQWrkSJe75hnlnF+Y\n\n0000000000000000000000000000000000000000 6e5593ab18b0cc13d9fff6437350be38f6842333 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwSwlkACgkQqzYtYVpm\n/XtPBggAnvmi6UZFthbVZSPFwNxH7u3pBLNeQUlx+U1hWyfTDRTLh/WRvhoXEnLQ\nEtf0NqtdKlIbYRR9kVMn6L0MCmlH6XK4BRrocsJNlKl5/6tTjO5JHXzU7OcJpjmu\nK/pkgPSz2jXP6jZrXd/DHOfxuH3f7SRA24b6kNTvTGdR6w4DjOnE43uo5VQ5Cmfe\n4LL1plnbY6U2YbAUEaxmA+ms29H+NrCfqstNe+XMhwtiYFGESiSmhOiZg5FP4n6s\nx26mLHz96UOiHShHXZLfaOBA2AXvB1hvNz/FXf/xrk3Hdm2NnTJlReONVj3Brg2A\nYO+iNowWgbmKpQcuGXjDiOtvp3PakQ\u003d\u003d\n\u003dMSne\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "693397f7_82347ef5",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T22:09:25Z",
+      "side": 1,
+      "message": "Do we ever push nullptrs into the m_Data array?  If not, avoid the double test.",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "6e5593ab18b0cc13d9fff6437350be38f6842333",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330f4fcd_11abae72",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T22:09:25Z",
+      "side": 1,
+      "message": "same question here.",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "6e5593ab18b0cc13d9fff6437350be38f6842333",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
