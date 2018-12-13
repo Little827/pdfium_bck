@@ -1,4 +1,166 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544732769 -0800\nnonce AGLkUnC/hquErTkU95Z53uyoWT4BKzEvFDJHfjyuouAXhmzglfrdQcbiwPRXl6fPTPMIXtptquwk\n\n0000000000000000000000000000000000000000 979ffc691277ff0d463139f75c46ee4bc5b8e28e refs/for/refs/heads/master%notify\u003dNONE,m\u003drename,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwSwGEACgkQqzYtYVpm\n/XvPowgAjEZvcosIFeZWeLKzlDQTORVsSi7eCsqGrcW2wZA+cTH4YuoTRjub+I7s\n0E3KhzWxTbxKhct4X5V2Gm4NZOljZnHdjd+fZOHImpSbkIR2R7iaJk0I+s+Kvjw6\nyanlC/vxqGajUk0aSPFyLIxdwNUFGRCuxKahgok0oqfu1ILyxcfmVrOIUH1HLoOU\nRppX4Jg1AaAYPWXQTNyS4c3wVTB5kUGua73643No+zZZ8PWms4EH/qRv3TDHe5/C\nKYkZRNdtGEUPAYYjCRPWtnm2GlDoRqyAPetlNtJ3bLNsoczFcZB2FN4E36N/6O2K\nKuf1HHPt47GHWilM/Ez7Bh86ROqTzw\u003d\u003d\n\u003d7ufE\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3ef826a_9acb2e93",
+        "filename": "fpdfsdk/formfiller/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:43:19Z",
+      "side": 1,
+      "message": "are these now redundant given the deps a level above?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "979ffc691277ff0d463139f75c46ee4bc5b8e28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc5b8741_08642591",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:43:19Z",
+      "side": 1,
+      "message": "nit: sDE doesn\u0027t have meaning to me and could be removed while we\u0027re at it?\n     ...Name[] vs ...Names[] - plural for arrays?",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "979ffc691277ff0d463139f75c46ee4bc5b8e28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d146b268_5b36eabe",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:43:19Z",
+      "side": 1,
+      "message": "again, this would remain as the first initialization if we shuffle in the header ...",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "979ffc691277ff0d463139f75c46ee4bc5b8e28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74715fbf_59ae7866",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:43:19Z",
+      "side": 1,
+      "message": "Are these just cut n paste with class renames?",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "979ffc691277ff0d463139f75c46ee4bc5b8e28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c74854_b911fc74",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:43:19Z",
+      "side": 1,
+      "message": "Ok, inlined and devirtualized here, right?",
+      "range": {
+        "startLine": 386,
+        "startChar": 1,
+        "endLine": 386,
+        "endChar": 36
+      },
+      "revId": "979ffc691277ff0d463139f75c46ee4bc5b8e28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a54903_8a3955b3",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:43:19Z",
+      "side": 1,
+      "message": "nit: alphabetize",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "979ffc691277ff0d463139f75c46ee4bc5b8e28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43520ee_9f4deb3b",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-13T20:43:19Z",
+      "side": 1,
+      "message": "should these come first?  Presumably these were from the intermediate class, and would have been constructed prior to any members in this class, so keep the same order?",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "979ffc691277ff0d463139f75c46ee4bc5b8e28e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
