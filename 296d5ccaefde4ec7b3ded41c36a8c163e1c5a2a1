@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1544753622 -0800\nnonce AGLkUnBb1O6cJ19QBWvy2dE4gEG2zKpHFTLxxAsafAnbNlVAsa0xzJw2Wrg1C9CX9nRHsfTvnk5f\n\n0000000000000000000000000000000000000000 296d5ccaefde4ec7b3ded41c36a8c163e1c5a2a1 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwTEdYACgkQqzYtYVpm\n/XvU9AgArCvbG+eWXfmnYtCslchN9tcIXrkN1wzgX5EYdLvvKyB62NkViCfDoZGE\n+Ak/TKFJEg9J5mKqLjw1kgUpOkyQjG5WFkOYO8WwsDv1xDZ7UneVNPDpK3I/z6ZH\nIWZnMxjJCJQkZOb7GkLDKKXWqI3spRgZLJJvkBf1WsVnOcC0veupEOep4UHoRBd+\no8XRLAxb1C4SravV7er8s1TA/QK1Nmex88Fp9TSaR/eTbPrCAkuj430PpU7c5GiN\nYAnoPZZPx35iTa5viY32k56EhFsstGx+0svg3TwAmR3A+xQmwnjAOqph2XEmXxtN\njLiqzgZrtEstYlA0kIWwmtTlkk+v8Q\u003d\u003d\n\u003dvEai\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a65593c2_858531e8",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-14T17:01:28Z",
+      "side": 1,
+      "message": "FYI, these would be cheaper (no-copy) on stringviews.",
+      "range": {
+        "startLine": 313,
+        "startChar": 4,
+        "endLine": 313,
+        "endChar": 68
+      },
+      "revId": "296d5ccaefde4ec7b3ded41c36a8c163e1c5a2a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f75cda_2aa428c8",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-14T17:01:28Z",
+      "side": 1,
+      "message": "but this would need to change to take a be a stringview.",
+      "range": {
+        "startLine": 325,
+        "startChar": 24,
+        "endLine": 325,
+        "endChar": 59
+      },
+      "revId": "296d5ccaefde4ec7b3ded41c36a8c163e1c5a2a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52f4f50_ae8ba9c2",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-14T17:01:28Z",
+      "side": 1,
+      "message": "then this is redudnant.",
+      "range": {
+        "startLine": 348,
+        "startChar": 42,
+        "endLine": 348,
+        "endChar": 70
+      },
+      "revId": "296d5ccaefde4ec7b3ded41c36a8c163e1c5a2a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
