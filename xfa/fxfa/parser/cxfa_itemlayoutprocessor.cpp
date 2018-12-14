@@ -745,7 +745,7 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
 
   float lHeightForKeep = 0;
   float fAddMarginHeight = 0;
-  std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
+  LayoutItems keepLayoutItems;
   for (CXFA_ContentLayoutItem *pChildItem = pChildren, *pChildNext = nullptr;
        pChildItem; pChildItem = pChildNext) {
     pChildNext = ToContentLayoutItem(pChildItem->m_pNextSibling);
@@ -1288,7 +1288,7 @@ void CXFA_ItemLayoutProcessor::DoLayoutTableContainer(CXFA_Node* pLayoutNode) {
   int32_t iRowCount = 0;
   int32_t iColCount = 0;
   {
-    std::vector<CXFA_ContentLayoutItem*> rgRowItems;
+    LayoutItems rgRowItems;
     std::vector<int32_t> rgRowItemsSpan;
     std::vector<float> rgRowItemsWidth;
     for (CXFA_LayoutItem* pIter = m_pLayoutItem->m_pFirstChild; pIter;
@@ -1480,7 +1480,7 @@ float CXFA_ItemLayoutProcessor::InsertKeepLayoutItems() {
 bool CXFA_ItemLayoutProcessor::ProcessKeepForSplit(
     CXFA_ItemLayoutProcessor* pChildProcessor,
     XFA_ItemLayoutProcessorResult eRetValue,
-    std::vector<CXFA_ContentLayoutItem*>* rgCurLineLayoutItem,
+    LayoutItems* rgCurLineLayoutItem,
     float* fContentCurRowAvailWidth,
     float* fContentCurRowHeight,
     float* fContentCurRowY,
@@ -1498,7 +1498,7 @@ bool CXFA_ItemLayoutProcessor::ProcessKeepForSplit(
     return false;
 
   CFX_SizeF childSize = pChildProcessor->GetCurrentComponentSize();
-  std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
+  LayoutItems keepLayoutItems;
   if (JudgePutNextPage(m_pLayoutItem, childSize.height, &keepLayoutItems)) {
     m_arrayKeepItems.clear();
 
@@ -1525,7 +1525,7 @@ bool CXFA_ItemLayoutProcessor::ProcessKeepForSplit(
 bool CXFA_ItemLayoutProcessor::JudgePutNextPage(
     CXFA_ContentLayoutItem* pParentLayoutItem,
     float fChildHeight,
-    std::vector<CXFA_ContentLayoutItem*>* pKeepItems) {
+    LayoutItems* pKeepItems) {
   if (!pParentLayoutItem)
     return false;
 
@@ -1719,7 +1719,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
     float fContentCurRowHeight = 0;
     float fContentCurRowAvailWidth = fContentWidthLimit;
     m_fWidthLimite = fContentCurRowAvailWidth;
-    std::vector<CXFA_ContentLayoutItem*> rgCurLineLayoutItems[3];
+    ThreeLayoutItems rgCurLineLayoutItems;
     uint8_t uCurHAlignState =
         (eFlowStrategy != XFA_AttributeValue::Rl_tb ? 0 : 2);
     if (pLayoutChild) {
@@ -1818,7 +1818,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
               InsertFlowedItem(
                   pTempProcessor.get(), bContainerWidthAutoSize,
                   bContainerHeightAutoSize, containerSize.height, eFlowStrategy,
-                  &uCurHAlignState, rgCurLineLayoutItems, false, FLT_MAX,
+                  &uCurHAlignState, &rgCurLineLayoutItems, false, FLT_MAX,
                   FLT_MAX, fContentWidthLimit, &fContentCurRowY,
                   &fContentCurRowAvailWidth, &fContentCurRowHeight,
                   &bAddedItemInRow, &bForceEndPage, pContext, false);
@@ -1848,7 +1848,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
             InsertFlowedItem(pTempProcessor.get(), bContainerWidthAutoSize,
                              bContainerHeightAutoSize, containerSize.height,
                              eFlowStrategy, &uCurHAlignState,
-                             rgCurLineLayoutItems, false, FLT_MAX, FLT_MAX,
+                             &rgCurLineLayoutItems, false, FLT_MAX, FLT_MAX,
                              fContentWidthLimit, &fContentCurRowY,
                              &fContentCurRowAvailWidth, &fContentCurRowHeight,
                              &bAddedItemInRow, &bForceEndPage, pContext, false);
@@ -1856,18 +1856,19 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
           if (!bCreatePage) {
             if (JudgeLeaderOrTrailerForOccur(pLeaderNode)) {
               CalculateRowChildPosition(
-                  rgCurLineLayoutItems, eFlowStrategy, bContainerHeightAutoSize,
-                  bContainerWidthAutoSize, &fContentCalculatedWidth,
-                  &fContentCalculatedHeight, &fContentCurRowY,
-                  fContentCurRowHeight, fContentWidthLimit, false);
-              rgCurLineLayoutItems->clear();
+                  &rgCurLineLayoutItems, eFlowStrategy,
+                  bContainerHeightAutoSize, bContainerWidthAutoSize,
+                  &fContentCalculatedWidth, &fContentCalculatedHeight,
+                  &fContentCurRowY, fContentCurRowHeight, fContentWidthLimit,
+                  false);
+              rgCurLineLayoutItems[0].clear();
               auto pTempProcessor =
                   pdfium::MakeUnique<CXFA_ItemLayoutProcessor>(pLeaderNode,
                                                                nullptr);
               InsertFlowedItem(
                   pTempProcessor.get(), bContainerWidthAutoSize,
                   bContainerHeightAutoSize, containerSize.height, eFlowStrategy,
-                  &uCurHAlignState, rgCurLineLayoutItems, false, FLT_MAX,
+                  &uCurHAlignState, &rgCurLineLayoutItems, false, FLT_MAX,
                   FLT_MAX, fContentWidthLimit, &fContentCurRowY,
                   &fContentCurRowAvailWidth, &fContentCurRowHeight,
                   &bAddedItemInRow, &bForceEndPage, pContext, false);
@@ -1902,7 +1903,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
             if (InsertFlowedItem(pProcessor.get(), bContainerWidthAutoSize,
                                  bContainerHeightAutoSize, containerSize.height,
                                  eFlowStrategy, &uCurHAlignState,
-                                 rgCurLineLayoutItems, bUseBreakControl,
+                                 &rgCurLineLayoutItems, bUseBreakControl,
                                  fAvailHeight, fRealHeight, fContentWidthLimit,
                                  &fContentCurRowY, &fContentCurRowAvailWidth,
                                  &fContentCurRowHeight, &bAddedItemInRow,
@@ -1929,7 +1930,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
             if (InsertFlowedItem(pProcessor.get(), bContainerWidthAutoSize,
                                  bContainerHeightAutoSize, containerSize.height,
                                  eFlowStrategy, &uCurHAlignState,
-                                 rgCurLineLayoutItems, bUseBreakControl,
+                                 &rgCurLineLayoutItems, bUseBreakControl,
                                  fAvailHeight, fRealHeight, fContentWidthLimit,
                                  &fContentCurRowY, &fContentCurRowAvailWidth,
                                  &fContentCurRowHeight, &bAddedItemInRow,
@@ -1968,7 +1969,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
           XFA_ItemLayoutProcessorResult rs = InsertFlowedItem(
               pProcessor.get(), bContainerWidthAutoSize,
               bContainerHeightAutoSize, containerSize.height, eFlowStrategy,
-              &uCurHAlignState, rgCurLineLayoutItems, bUseBreakControl,
+              &uCurHAlignState, &rgCurLineLayoutItems, bUseBreakControl,
               fAvailHeight, fRealHeight, fContentWidthLimit, &fContentCurRowY,
               &fContentCurRowAvailWidth, &fContentCurRowHeight,
               &bAddedItemInRow, &bForceEndPage, pContext, bNewRow);
@@ -2007,7 +2008,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
     }
 
     CalculateRowChildPosition(
-        rgCurLineLayoutItems, eFlowStrategy, bContainerHeightAutoSize,
+        &rgCurLineLayoutItems, eFlowStrategy, bContainerHeightAutoSize,
         bContainerWidthAutoSize, &fContentCalculatedWidth,
         &fContentCalculatedHeight, &fContentCurRowY, fContentCurRowHeight,
         fContentWidthLimit, bRootForceTb);
@@ -2046,7 +2047,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
 }
 
 bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
-    std::vector<CXFA_ContentLayoutItem*> (&rgCurLineLayoutItems)[3],
+    ThreeLayoutItems* pCurLineLayoutItems,
     XFA_AttributeValue eFlowStrategy,
     bool bContainerHeightAutoSize,
     bool bContainerWidthAutoSize,
@@ -2056,6 +2057,7 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
     float fContentCurRowHeight,
     float fContentWidthLimit,
     bool bRootForceTb) {
+  ThreeLayoutItems& rgCurLineLayoutItems = *pCurLineLayoutItems;
   int32_t nGroupLengths[3] = {0, 0, 0};
   float fGroupWidths[3] = {0, 0, 0};
   int32_t nTotalLength = 0;
@@ -2482,7 +2484,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::InsertFlowedItem(
     float fContainerHeight,
     XFA_AttributeValue eFlowStrategy,
     uint8_t* uCurHAlignState,
-    std::vector<CXFA_ContentLayoutItem*> (&rgCurLineLayoutItems)[3],
+    ThreeLayoutItems* pCurLineLayoutItems,
     bool bUseBreakControl,
     float fAvailHeight,
     float fRealHeight,
@@ -2494,6 +2496,7 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::InsertFlowedItem(
     bool* bForceEndPage,
     CXFA_LayoutContext* pLayoutContext,
     bool bNewRow) {
+  ThreeLayoutItems& rgCurLineLayoutItems = *pCurLineLayoutItems;
   bool bTakeSpace = pProcessor->GetFormNode()->PresenceRequiresSpace();
   uint8_t uHAlign = HAlignEnumToInt(
       m_pCurChildNode->JSObject()->GetEnum(XFA_Attribute::HAlign));

@@ -9,6 +9,7 @@
 
 #include <float.h>
 
+#include <array>
 #include <list>
 #include <map>
 #include <vector>
@@ -59,22 +60,24 @@ class CXFA_ItemLayoutProcessor {
   CXFA_ContentLayoutItem* ExtractLayoutItem();
 
  private:
+  using LayoutItems = std::vector<CXFA_ContentLayoutItem*>;
+  using ThreeLayoutItems = std::array<LayoutItems, 3>;
+
   CFX_SizeF GetCurrentComponentSize();
   bool HasLayoutItem() const { return !!m_pLayoutItem; }
   void SplitLayoutItem(float fSplitPos);
 
   float FindSplitPos(float fProposedSplitPos);
 
-  bool ProcessKeepForSplit(
-      CXFA_ItemLayoutProcessor* pChildProcessor,
-      XFA_ItemLayoutProcessorResult eRetValue,
-      std::vector<CXFA_ContentLayoutItem*>* rgCurLineLayoutItem,
-      float* fContentCurRowAvailWidth,
-      float* fContentCurRowHeight,
-      float* fContentCurRowY,
-      bool* bAddedItemInRow,
-      bool* bForceEndPage,
-      XFA_ItemLayoutProcessorResult* result);
+  bool ProcessKeepForSplit(CXFA_ItemLayoutProcessor* pChildProcessor,
+                           XFA_ItemLayoutProcessorResult eRetValue,
+                           LayoutItems* rgCurLineLayoutItem,
+                           float* fContentCurRowAvailWidth,
+                           float* fContentCurRowHeight,
+                           float* fContentCurRowY,
+                           bool* bAddedItemInRow,
+                           bool* bForceEndPage,
+                           XFA_ItemLayoutProcessorResult* result);
   void ProcessUnUseOverFlow(CXFA_Node* pLeaderNode,
                             CXFA_Node* pTrailerNode,
                             CXFA_ContentLayoutItem* pTrailerItem,
@@ -91,21 +94,20 @@ class CXFA_ItemLayoutProcessor {
                        CXFA_ContentLayoutItem* pSecondParent,
                        float fSplitPos);
   float InsertKeepLayoutItems();
-  bool CalculateRowChildPosition(
-      std::vector<CXFA_ContentLayoutItem*> (&rgCurLineLayoutItems)[3],
-      XFA_AttributeValue eFlowStrategy,
-      bool bContainerHeightAutoSize,
-      bool bContainerWidthAutoSize,
-      float* fContentCalculatedWidth,
-      float* fContentCalculatedHeight,
-      float* fContentCurRowY,
-      float fContentCurRowHeight,
-      float fContentWidthLimit,
-      bool bRootForceTb);
+  bool CalculateRowChildPosition(ThreeLayoutItems* pCurLineLayoutItems,
+                                 XFA_AttributeValue eFlowStrategy,
+                                 bool bContainerHeightAutoSize,
+                                 bool bContainerWidthAutoSize,
+                                 float* fContentCalculatedWidth,
+                                 float* fContentCalculatedHeight,
+                                 float* fContentCurRowY,
+                                 float fContentCurRowHeight,
+                                 float fContentWidthLimit,
+                                 bool bRootForceTb);
   void ProcessUnUseBinds(CXFA_Node* pFormNode);
   bool JudgePutNextPage(CXFA_ContentLayoutItem* pParentLayoutItem,
                         float fChildHeight,
-                        std::vector<CXFA_ContentLayoutItem*>* pKeepItems);
+                        LayoutItems* pKeepItems);
 
   void DoLayoutPositionedContainer(CXFA_LayoutContext* pContext);
   void DoLayoutTableContainer(CXFA_Node* pLayoutNode);
@@ -148,7 +150,7 @@ class CXFA_ItemLayoutProcessor {
       float fContainerHeight,
       XFA_AttributeValue eFlowStrategy,
       uint8_t* uCurHAlignState,
-      std::vector<CXFA_ContentLayoutItem*> (&rgCurLineLayoutItems)[3],
+      ThreeLayoutItems* pCurLineLayoutItems,
       bool bUseBreakControl,
       float fAvailHeight,
       float fRealHeight,
@@ -169,7 +171,7 @@ class CXFA_ItemLayoutProcessor {
   std::list<CXFA_Node*> m_PendingNodes;
   bool m_bBreakPending = true;
   std::vector<float> m_rgSpecifiedColumnWidths;
-  std::vector<CXFA_ContentLayoutItem*> m_arrayKeepItems;
+  LayoutItems m_arrayKeepItems;
   float m_fLastRowWidth = 0;
   float m_fLastRowY = 0;
   bool m_bUseInheriated = false;
