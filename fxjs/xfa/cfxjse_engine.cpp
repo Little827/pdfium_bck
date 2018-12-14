@@ -678,13 +678,12 @@ bool CFXJSE_Engine::ResolveObjects(CXFA_Object* refObject,
           pNodeHelper->m_pCreateParent = ToNode(rndFind.m_CurObject);
           pNodeHelper->m_iCreateCount = 1;
         }
-        bool bCreate = pNodeHelper->CreateNode(
-            rndFind.m_wsName, rndFind.m_wsCondition,
-            nStart ==
-                pdfium::base::checked_cast<int32_t>(wsExpression.GetLength()),
-            this);
-        if (bCreate)
+        int32_t checked_length =
+            pdfium::base::checked_cast<int32_t>(wsExpression.GetLength());
+        if (pNodeHelper->CreateNode(rndFind.m_wsName, rndFind.m_wsCondition,
+                                    nStart == checked_length, this)) {
           continue;
+        }
       }
       break;
     }
