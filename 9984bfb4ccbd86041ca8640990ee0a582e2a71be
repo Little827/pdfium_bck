@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "91707b74_939ee50d",
+        "filename": "fxjs/xfa/cfxjse_engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-14T00:01:15Z",
+      "side": 1,
+      "message": "Tried a couple of ways, went with the one with the least icky clang format, though it is still kinda icky.",
+      "parentUuid": "c5a8a1fd_9cb14435",
+      "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7e72478_678bb468",
         "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "66df1aa7_9546299e",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-14T00:01:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7e72478_678bb468",
+      "range": {
+        "startLine": 268,
+        "startChar": 45,
+        "endLine": 268,
+        "endChar": 56
+      },
+      "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "610bc90c_44b563a9",
         "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb25eef9_933952c2",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-14T00:01:15Z",
+      "side": 1,
+      "message": "sorry, assigned new value at line 311.",
+      "parentUuid": "610bc90c_44b563a9",
+      "range": {
+        "startLine": 301,
+        "startChar": 33,
+        "endLine": 301,
+        "endChar": 43
+      },
+      "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
