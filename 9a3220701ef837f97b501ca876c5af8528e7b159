@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "d0e5d81f_3fe162d2",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-14T22:17:13Z",
+      "side": 1,
+      "message": "Ya, there are gotos to get rid of. :\\",
+      "parentUuid": "8918ed26_4f928f32",
+      "range": {
+        "startLine": 894,
+        "startChar": 8,
+        "endLine": 894,
+        "endChar": 56
+      },
+      "revId": "9a3220701ef837f97b501ca876c5af8528e7b159",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad2f154a_17f41a9c",
         "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7d5f775a_acecdf0d",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-14T22:17:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad2f154a_17f41a9c",
+      "range": {
+        "startLine": 918,
+        "startChar": 5,
+        "endLine": 918,
+        "endChar": 55
+      },
+      "revId": "9a3220701ef837f97b501ca876c5af8528e7b159",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61f40be2_177bd011",
         "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
         "patchSetId": 1
@@ -69,6 +117,30 @@
       "revId": "9a3220701ef837f97b501ca876c5af8528e7b159",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c95d19_1c4ffa20",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-14T22:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f40be2_177bd011",
+      "range": {
+        "startLine": 704,
+        "startChar": 12,
+        "endLine": 704,
+        "endChar": 19
+      },
+      "revId": "9a3220701ef837f97b501ca876c5af8528e7b159",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
