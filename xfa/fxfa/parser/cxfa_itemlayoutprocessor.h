@@ -168,9 +168,16 @@ class CXFA_ItemLayoutProcessor {
   bool HandleBookendLeader(CXFA_Node* pParentContainer,
                            CXFA_Node** pCurActionNode,
                            XFA_ItemLayoutProcessorStages* nCurStage);
+  bool HandleBreakBefore(CXFA_Node* pChildContainer,
+                         CXFA_Node** pCurActionNode,
+                         XFA_ItemLayoutProcessorStages* nCurStage);
   bool HandleBreakAfter(CXFA_Node* pChildContainer,
                         CXFA_Node** pCurActionNode,
                         XFA_ItemLayoutProcessorStages* nCurStage);
+  bool HandleCheckNextChildContainer(CXFA_Node* pParentContainer,
+                                     CXFA_Node* pChildContainer,
+                                     CXFA_Node** pCurActionNode,
+                                     XFA_ItemLayoutProcessorStages* nCurStage);
   bool HandleBookendTrailer(CXFA_Node* pParentContainer,
                             CXFA_Node** pCurActionNode,
                             XFA_ItemLayoutProcessorStages* nCurStage);
