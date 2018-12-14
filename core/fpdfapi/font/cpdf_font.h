@@ -32,7 +32,8 @@ class CPDF_Font {
  public:
   static std::unique_ptr<CPDF_Font> Create(CPDF_Document* pDoc,
                                            CPDF_Dictionary* pFontDict);
-  static CPDF_Font* GetStockFont(CPDF_Document* pDoc, ByteStringView fontname);
+  static CPDF_Font* GetStockFont(CPDF_Document* pDoc,
+                                 ByteStringView fontname);
   static const uint32_t kInvalidCharCode = static_cast<uint32_t>(-1);
 
   virtual ~CPDF_Font();
@@ -52,7 +53,8 @@ class CPDF_Font {
 
   virtual bool IsVertWriting() const;
   virtual bool IsUnicodeCompatible() const;
-  virtual uint32_t GetNextChar(ByteStringView pString, size_t* pOffset) const;
+  virtual uint32_t GetNextChar(ByteStringView pString,
+                               size_t* pOffset) const;
   virtual size_t CountChar(ByteStringView pString) const;
   virtual int AppendChar(char* buf, uint32_t charcode) const;
   virtual int GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) = 0;

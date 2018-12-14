@@ -230,7 +230,8 @@ inline bool operator<(const char* lhs, const ByteString& rhs) {
   return rhs.Compare(lhs) > 0;
 }
 
-inline ByteString operator+(ByteStringView str1, ByteStringView str2) {
+inline ByteString operator+(ByteStringView str1,
+                            ByteStringView str2) {
   return ByteString(str1, str2);
 }
 inline ByteString operator+(ByteStringView str1, const char* str2) {
@@ -260,10 +261,12 @@ inline ByteString operator+(const ByteString& str1, const char* str2) {
 inline ByteString operator+(const char* str1, const ByteString& str2) {
   return ByteString(str1, str2.AsStringView());
 }
-inline ByteString operator+(const ByteString& str1, ByteStringView str2) {
+inline ByteString operator+(const ByteString& str1,
+                            ByteStringView str2) {
   return ByteString(str1.AsStringView(), str2);
 }
-inline ByteString operator+(ByteStringView str1, const ByteString& str2) {
+inline ByteString operator+(ByteStringView str1,
+                            const ByteString& str2) {
   return ByteString(str1, str2.AsStringView());
 }
 

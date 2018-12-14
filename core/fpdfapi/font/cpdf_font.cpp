@@ -280,7 +280,8 @@ uint32_t CPDF_Font::GetStringWidth(ByteStringView pString) {
 }
 
 // static
-CPDF_Font* CPDF_Font::GetStockFont(CPDF_Document* pDoc, ByteStringView name) {
+CPDF_Font* CPDF_Font::GetStockFont(CPDF_Document* pDoc,
+                                   ByteStringView name) {
   ByteString fontname(name);
   int font_id = PDF_GetStandardFontName(&fontname);
   if (font_id < 0)
@@ -328,7 +329,8 @@ std::unique_ptr<CPDF_Font> CPDF_Font::Create(CPDF_Document* pDoc,
   return pFont->Load() ? std::move(pFont) : nullptr;
 }
 
-uint32_t CPDF_Font::GetNextChar(ByteStringView pString, size_t* pOffset) const {
+uint32_t CPDF_Font::GetNextChar(ByteStringView pString,
+                                size_t* pOffset) const {
   if (pString.IsEmpty())
     return 0;
 

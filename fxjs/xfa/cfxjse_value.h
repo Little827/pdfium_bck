@@ -55,12 +55,15 @@ class CFXJSE_Value {
   void SetArray(const std::vector<std::unique_ptr<CFXJSE_Value>>& values);
   void SetDate(double dDouble);
 
-  bool GetObjectProperty(ByteStringView szPropName, CFXJSE_Value* lpPropValue);
-  bool SetObjectProperty(ByteStringView szPropName, CFXJSE_Value* lpPropValue);
+  bool GetObjectProperty(ByteStringView szPropName,
+                         CFXJSE_Value* lpPropValue);
+  bool SetObjectProperty(ByteStringView szPropName,
+                         CFXJSE_Value* lpPropValue);
   bool GetObjectPropertyByIdx(uint32_t uPropIdx, CFXJSE_Value* lpPropValue);
   bool SetObjectProperty(uint32_t uPropIdx, CFXJSE_Value* lpPropValue);
   bool DeleteObjectProperty(ByteStringView szPropName);
-  bool HasObjectOwnProperty(ByteStringView szPropName, bool bUseTypeGetter);
+  bool HasObjectOwnProperty(ByteStringView szPropName,
+                            bool bUseTypeGetter);
   bool SetObjectOwnProperty(ByteStringView szPropName,
                             CFXJSE_Value* lpPropValue);
   bool SetFunctionBind(CFXJSE_Value* lpOldFunction, CFXJSE_Value* lpNewThis);

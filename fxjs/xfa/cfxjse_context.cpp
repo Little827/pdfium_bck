@@ -233,7 +233,8 @@ void CFXJSE_Context::AddClass(std::unique_ptr<CFXJSE_Class> pClass) {
   m_rgClasses.push_back(std::move(pClass));
 }
 
-CFXJSE_Class* CFXJSE_Context::GetClassByName(ByteStringView szName) const {
+CFXJSE_Class* CFXJSE_Context::GetClassByName(
+    ByteStringView szName) const {
   auto pClass =
       std::find_if(m_rgClasses.begin(), m_rgClasses.end(),
                    [szName](const std::unique_ptr<CFXJSE_Class>& item) {

@@ -162,11 +162,11 @@ void CPDF_PSProc::AddOperatorForTesting(ByteStringView word) {
 }
 
 void CPDF_PSProc::AddOperator(ByteStringView word) {
-  const auto* pFound =
-      std::lower_bound(std::begin(kPsOpNames), std::end(kPsOpNames), word,
-                       [](const PDF_PSOpName& name, ByteStringView word) {
-                         return name.name < word;
-                       });
+  const auto* pFound = std::lower_bound(
+      std::begin(kPsOpNames), std::end(kPsOpNames), word,
+      [](const PDF_PSOpName& name, ByteStringView word) {
+        return name.name < word;
+      });
   if (pFound != std::end(kPsOpNames) && pFound->name == word)
     m_Operators.push_back(pdfium::MakeUnique<CPDF_PSOP>(pFound->op));
   else

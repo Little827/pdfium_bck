@@ -545,7 +545,8 @@ Optional<size_t> ByteString::Find(char ch, size_t start) const {
               : Optional<size_t>();
 }
 
-Optional<size_t> ByteString::Find(ByteStringView subStr, size_t start) const {
+Optional<size_t> ByteString::Find(ByteStringView subStr,
+                                  size_t start) const {
   if (!m_pData)
     return Optional<size_t>();
 
@@ -621,7 +622,8 @@ size_t ByteString::Remove(char chRemove) {
   return nCount;
 }
 
-size_t ByteString::Replace(ByteStringView pOld, ByteStringView pNew) {
+size_t ByteString::Replace(ByteStringView pOld,
+                           ByteStringView pNew) {
   if (!m_pData || pOld.IsEmpty())
     return 0;
 

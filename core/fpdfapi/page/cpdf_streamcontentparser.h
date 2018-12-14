@@ -58,8 +58,10 @@ class CPDF_StreamContentParser {
   const float* GetType3Data() const { return m_Type3Data; }
   CPDF_Font* FindFont(const ByteString& name);
 
-  static ByteStringView FindKeyAbbreviationForTesting(ByteStringView abbr);
-  static ByteStringView FindValueAbbreviationForTesting(ByteStringView abbr);
+  static ByteStringView FindKeyAbbreviationForTesting(
+      ByteStringView abbr);
+  static ByteStringView FindValueAbbreviationForTesting(
+      ByteStringView abbr);
 
  private:
   struct ContentParam {
