@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7772699_fe879862",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-14T23:30:07Z",
+      "side": 1,
+      "message": "Wrong bug? That one still repros with this CL patched in.",
+      "revId": "43d439fb7735db051973fdf2610cd2d21c4b4f5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
