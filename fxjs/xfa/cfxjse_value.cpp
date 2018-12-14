@@ -256,7 +256,7 @@ bool CFXJSE_Value::SetObjectOwnProperty(ByteStringView szPropName,
   v8::Local<v8::Value> pValue =
       v8::Local<v8::Value>::New(GetIsolate(), lpPropValue->m_hValue);
   return hObject.As<v8::Object>()
-      ->DefineOwnProperty(GetIsolate()->GetCurrentContext(), hPropName, pValue)
+      ->CreateDataProperty(GetIsolate()->GetCurrentContext(), hPropName, pValue)
       .FromMaybe(false);
 }
 
