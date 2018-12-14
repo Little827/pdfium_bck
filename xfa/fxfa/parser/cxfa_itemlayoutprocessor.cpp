@@ -2058,110 +2058,51 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
     float fContentWidthLimit,
     bool bRootForceTb) {
   ThreeLayoutItems& rgCurLineLayoutItems = *pCurLineLayoutItems;
-  int32_t nGroupLengths[3] = {0, 0, 0};
-  float fGroupWidths[3] = {0, 0, 0};
-  int32_t nTotalLength = 0;
-  for (int32_t i = 0; i < 3; i++) {
-    nGroupLengths[i] = pdfium::CollectionSize<int32_t>(rgCurLineLayoutItems[i]);
-    for (int32_t c = nGroupLengths[i], j = 0; j < c; j++) {
-      nTotalLength++;
-      if (rgCurLineLayoutItems[i][j]->GetFormNode()->PresenceRequiresSpace())
-        fGroupWidths[i] += rgCurLineLayoutItems[i][j]->m_sSize.width;
-    }
-  }
-  if (!nTotalLength) {
+  bool bAllEmpty =
+      std::all_of(rgCurLineLayoutItems.begin(), rgCurLineLayoutItems.end(),
+                  [](const LayoutItems& items) { return items.empty(); });
+  if (bAllEmpty) {
     if (bContainerHeightAutoSize) {
       *fContentCalculatedHeight =
           std::min(*fContentCalculatedHeight, *fContentCurRowY);
     }
     return false;
   }
+
+  float fGroupWidths[3] = {0, 0, 0};
+  for (size_t i = 0; i < 3; i++) {
+    for (size_t j = 0; j < rgCurLineLayoutItems[i].size(); ++j) {
+      if (rgCurLineLayoutItems[i][j]->GetFormNode()->PresenceRequiresSpace())
+        fGroupWidths[i] += rgCurLineLayoutItems[i][j]->m_sSize.width;
+    }
+  }
   if (!m_pLayoutItem)
     m_pLayoutItem = CreateContentLayoutItem(GetFormNode());
 
   if (eFlowStrategy != XFA_AttributeValue::Rl_tb) {
-    float fCurPos;
-    fCurPos = 0;
-    for (int32_t c = nGroupLengths[0], j = 0; j < c; j++) {
-      if (bRootForceTb) {
-        rgCurLineLayoutItems[0][j]->m_sPos = CalculatePositionedContainerPos(
-            rgCurLineLayoutItems[0][j]->GetFormNode(),
-            rgCurLineLayoutItems[0][j]->m_sSize);
-      } else {
-        rgCurLineLayoutItems[0][j]->m_sPos =
-            CFX_PointF(fCurPos, *fContentCurRowY);
-        if (rgCurLineLayoutItems[0][j]->GetFormNode()->PresenceRequiresSpace())
-          fCurPos += rgCurLineLayoutItems[0][j]->m_sSize.width;
-      }
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[0][j]);
-      m_fLastRowWidth = fCurPos;
-    }
+    float fCurPos = 0;
+    CalculateNormalRowPosition(fCurPos, *fContentCurRowY, bRootForceTb,
+                               &rgCurLineLayoutItems[0]);
     fCurPos = (fContentWidthLimit + fGroupWidths[0] - fGroupWidths[1] -
                fGroupWidths[2]) /
               2;
-    for (int32_t c = nGroupLengths[1], j = 0; j < c; j++) {
-      if (bRootForceTb) {
-        rgCurLineLayoutItems[1][j]->m_sPos = CalculatePositionedContainerPos(
-            rgCurLineLayoutItems[1][j]->GetFormNode(),
-            rgCurLineLayoutItems[1][j]->m_sSize);
-      } else {
-        rgCurLineLayoutItems[1][j]->m_sPos =
-            CFX_PointF(fCurPos, *fContentCurRowY);
-        if (rgCurLineLayoutItems[1][j]->GetFormNode()->PresenceRequiresSpace())
-          fCurPos += rgCurLineLayoutItems[1][j]->m_sSize.width;
-      }
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[1][j]);
-      m_fLastRowWidth = fCurPos;
-    }
+    CalculateNormalRowPosition(fCurPos, *fContentCurRowY, bRootForceTb,
+                               &rgCurLineLayoutItems[1]);
     fCurPos = fContentWidthLimit - fGroupWidths[2];
-    for (int32_t c = nGroupLengths[2], j = 0; j < c; j++) {
-      if (bRootForceTb) {
-        rgCurLineLayoutItems[2][j]->m_sPos = CalculatePositionedContainerPos(
-            rgCurLineLayoutItems[2][j]->GetFormNode(),
-            rgCurLineLayoutItems[2][j]->m_sSize);
-      } else {
-        rgCurLineLayoutItems[2][j]->m_sPos =
-            CFX_PointF(fCurPos, *fContentCurRowY);
-        if (rgCurLineLayoutItems[2][j]->GetFormNode()->PresenceRequiresSpace())
-          fCurPos += rgCurLineLayoutItems[2][j]->m_sSize.width;
-      }
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[2][j]);
-      m_fLastRowWidth = fCurPos;
-    }
+    CalculateNormalRowPosition(fCurPos, *fContentCurRowY, bRootForceTb,
+                               &rgCurLineLayoutItems[2]);
   } else {
-    float fCurPos;
-    fCurPos = fGroupWidths[0];
-    for (int32_t c = nGroupLengths[0], j = 0; j < c; j++) {
-      if (rgCurLineLayoutItems[0][j]->GetFormNode()->PresenceRequiresSpace())
-        fCurPos -= rgCurLineLayoutItems[0][j]->m_sSize.width;
-
-      rgCurLineLayoutItems[0][j]->m_sPos =
-          CFX_PointF(fCurPos, *fContentCurRowY);
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[0][j]);
-      m_fLastRowWidth = fCurPos;
-    }
+    float fCurPos = fGroupWidths[0];
+    CalculateRightToLeftRowPosition(fCurPos, *fContentCurRowY,
+                                    &rgCurLineLayoutItems[0]);
     fCurPos = (fContentWidthLimit + fGroupWidths[0] + fGroupWidths[1] -
                fGroupWidths[2]) /
               2;
-    for (int32_t c = nGroupLengths[1], j = 0; j < c; j++) {
-      if (rgCurLineLayoutItems[1][j]->GetFormNode()->PresenceRequiresSpace())
-        fCurPos -= rgCurLineLayoutItems[1][j]->m_sSize.width;
-
-      rgCurLineLayoutItems[1][j]->m_sPos =
-          CFX_PointF(fCurPos, *fContentCurRowY);
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[1][j]);
-      m_fLastRowWidth = fCurPos;
-    }
+    CalculateRightToLeftRowPosition(fCurPos, *fContentCurRowY,
+                                    &rgCurLineLayoutItems[1]);
     fCurPos = fContentWidthLimit;
-    for (int32_t c = nGroupLengths[2], j = 0; j < c; j++) {
-      if (rgCurLineLayoutItems[2][j]->GetFormNode()->PresenceRequiresSpace())
-        fCurPos -= rgCurLineLayoutItems[2][j]->m_sSize.width;
-
-      rgCurLineLayoutItems[2][j]->m_sPos =
-          CFX_PointF(fCurPos, *fContentCurRowY);
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[2][j]);
-      m_fLastRowWidth = fCurPos;
-    }
+    CalculateRightToLeftRowPosition(fCurPos, *fContentCurRowY,
+                                    &rgCurLineLayoutItems[2]);
   }
   m_fLastRowY = *fContentCurRowY;
   *fContentCurRowY += fContentCurRowHeight;
@@ -2179,6 +2120,41 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
         std::max(*fContentCalculatedHeight, *fContentCurRowY);
   }
   return true;
+}
+
+void CXFA_ItemLayoutProcessor::CalculateNormalRowPosition(
+    float fInitialCurPos,
+    float fContentCurRowY,
+    bool bRootForceTb,
+    LayoutItems* pLayoutItems) {
+  float fCurPos = fInitialCurPos;
+  for (auto* item : *pLayoutItems) {
+    if (bRootForceTb) {
+      item->m_sPos =
+          CalculatePositionedContainerPos(item->GetFormNode(), item->m_sSize);
+    } else {
+      item->m_sPos = CFX_PointF(fCurPos, fContentCurRowY);
+      if (item->GetFormNode()->PresenceRequiresSpace())
+        fCurPos += item->m_sSize.width;
+    }
+    m_pLayoutItem->AddChild(item);
+    m_fLastRowWidth = fCurPos;
+  }
+}
+
+void CXFA_ItemLayoutProcessor::CalculateRightToLeftRowPosition(
+    float fInitialCurPos,
+    float fContentCurRowY,
+    LayoutItems* pLayoutItems) {
+  float fCurPos = fInitialCurPos;
+  for (auto* item : *pLayoutItems) {
+    if (item->GetFormNode()->PresenceRequiresSpace())
+      fCurPos -= item->m_sSize.width;
+
+    item->m_sPos = CFX_PointF(fCurPos, fContentCurRowY);
+    m_pLayoutItem->AddChild(item);
+    m_fLastRowWidth = fCurPos;
+  }
 }
 
 CXFA_Node* CXFA_ItemLayoutProcessor::GetSubformSetParent(

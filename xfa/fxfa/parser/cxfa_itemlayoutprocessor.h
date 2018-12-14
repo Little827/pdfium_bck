@@ -104,6 +104,13 @@ class CXFA_ItemLayoutProcessor {
                                  float fContentCurRowHeight,
                                  float fContentWidthLimit,
                                  bool bRootForceTb);
+  void CalculateNormalRowPosition(float fInitialCurPos,
+                                  float fContentCurRowY,
+                                  bool bRootForceTb,
+                                  LayoutItems* pLayoutItems);
+  void CalculateRightToLeftRowPosition(float fInitialCurPos,
+                                       float fContentCurRowY,
+                                       LayoutItems* pLayoutItems);
   void ProcessUnUseBinds(CXFA_Node* pFormNode);
   bool JudgePutNextPage(CXFA_ContentLayoutItem* pParentLayoutItem,
                         float fChildHeight,
