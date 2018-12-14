@@ -128,6 +128,30 @@
       "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4d9e9f5_469c851a",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-14T00:04:55Z",
+      "side": 1,
+      "message": "I\u0027ll make a follow-up pass.",
+      "parentUuid": "cb25eef9_933952c2",
+      "range": {
+        "startLine": 301,
+        "startChar": 33,
+        "endLine": 301,
+        "endChar": 43
+      },
+      "revId": "9984bfb4ccbd86041ca8640990ee0a582e2a71be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
