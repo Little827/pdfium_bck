@@ -977,21 +977,12 @@ void CXFA_ItemLayoutProcessor::GotoNextContainerNode(
     NoMoreChildContainer : {
       pCurActionNode = XFA_LAYOUT_INVALIDNODE;
       FALLTHROUGH;
-      case XFA_ItemLayoutProcessorStages::BookendTrailer:
-        for (CXFA_Node* pBookendNode = pCurActionNode == XFA_LAYOUT_INVALIDNODE
-                                           ? pEntireContainer->GetFirstChild()
-                                           : pCurActionNode->GetNextSibling();
-             pBookendNode; pBookendNode = pBookendNode->GetNextSibling()) {
-          switch (pBookendNode->GetElementType()) {
-            case XFA_Element::Bookend:
-            case XFA_Element::Break:
-              pCurActionNode = pBookendNode;
-              *nCurStage = XFA_ItemLayoutProcessorStages::BookendTrailer;
-              return;
-            default:
-              break;
-          }
-        }
+      case XFA_ItemLayoutProcessorStages::BookendTrailer: {
+        pCurActionNode = GotoBookendTrailer(pCurActionNode, pEntireContainer);
+        if (!pCurActionNode)
+          break;
+        *nCurStage = XFA_ItemLayoutProcessorStages::BookendTrailer;
+      }
     }
       FALLTHROUGH;
     default:
@@ -2817,4 +2808,19 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::InsertFlowedItem(
     m_bUseInheriated = true;
   }
   return XFA_ItemLayoutProcessorResult::PageFullBreak;
+}
+
+CXFA_Node* CXFA_ItemLayoutProcessor::GotoBookendTrailer(
+    CXFA_Node* pCurActionNode,
+    CXFA_Node* pEntireContainer) {
+  CXFA_Node* pBookendNode = pCurActionNode == XFA_LAYOUT_INVALIDNODE
+                                ? pEntireContainer->GetFirstChild()
+                                : pCurActionNode->GetNextSibling();
+  while (pBookendNode) {
+    auto type = pBookendNode->GetElementType();
+    if (type == XFA_Element::Bookend || type == XFA_Element::Break)
+      return pBookendNode;
+    pBookendNode = pBookendNode->GetNextSibling();
+  }
+  return nullptr;
 }

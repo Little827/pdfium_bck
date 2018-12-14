@@ -161,6 +161,8 @@ class CXFA_ItemLayoutProcessor {
       bool* bForceEndPage,
       CXFA_LayoutContext* pLayoutContext,
       bool bNewRow);
+  CXFA_Node* GotoBookendTrailer(CXFA_Node* pCurActionNode,
+                                CXFA_Node* pEntireContainer);
 
   CXFA_Node* m_pFormNode;
   CXFA_ContentLayoutItem* m_pLayoutItem = nullptr;
