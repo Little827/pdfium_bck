@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "776d97d1_0a139c62",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-14T19:11:55Z",
+      "side": 0,
+      "message": "FYI, git grep -n \u0027define.*nullptr\u0027 shows this as the only place where this kind of clever approach is taken.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "d1df4411db8d76c312069b13ffca6c072bd96c61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
