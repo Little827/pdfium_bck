@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a825dba9_b6e2b298",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-15T00:48:00Z",
+      "side": 1,
+      "message": "Instead of passing a list, maybe just pass XFA_NODEFILTER_Properties / XFA_NODEFILTER_Children instead? The InList methods can fetch the list themselves since they have |parent| already. That may cut down on the duplication slightly.",
+      "revId": "eeec07e40be6c82592142e5519eda74b3e072d27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb76398_ad665b73",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-15T00:48:00Z",
+      "side": 1,
+      "message": "pwsClassName?",
+      "range": {
+        "startLine": 30,
+        "startChar": 66,
+        "endLine": 30,
+        "endChar": 73
+      },
+      "revId": "eeec07e40be6c82592142e5519eda74b3e072d27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
