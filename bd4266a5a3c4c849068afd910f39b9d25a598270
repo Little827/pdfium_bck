@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a294d46e_d130900a",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-17T17:45:53Z",
+      "side": 1,
+      "message": "nit: no-effect goto since label is next?",
+      "range": {
+        "startLine": 914,
+        "startChar": 4,
+        "endLine": 916,
+        "endChar": 27
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaab572f_bf9275d5",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2800,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-17T17:45:53Z",
+      "side": 1,
+      "message": "nit: early return false? then combine with 2797 as\n  return FindBreakNode(...);",
+      "range": {
+        "startLine": 2800,
+        "startChar": 4,
+        "endLine": 2800,
+        "endChar": 10
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e1a1f4_138f5d7c",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2806,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-17T17:45:53Z",
+      "side": 1,
+      "message": "return HandleKeep() ?",
+      "range": {
+        "startLine": 2802,
+        "startChar": 3,
+        "endLine": 2806,
+        "endChar": 3
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fdcb861_600dcfec",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2831,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-17T17:45:53Z",
+      "side": 1,
+      "message": "not sure this buys us much over direct inlining?",
+      "range": {
+        "startLine": 2831,
+        "startChar": 5,
+        "endLine": 2831,
+        "endChar": 44
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d47c58_87b1bb91",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-17T17:45:53Z",
+      "side": 1,
+      "message": "any chance one of the out parameters could be a return value?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 7
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
