@@ -13,6 +13,9 @@ class CXFA_DayNames final : public CXFA_Node {
  public:
   CXFA_DayNames(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_DayNames() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_DAYNAMES_H_

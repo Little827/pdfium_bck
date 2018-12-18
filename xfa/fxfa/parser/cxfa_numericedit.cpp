@@ -47,3 +47,7 @@ XFA_Element CXFA_NumericEdit::GetValueNodeType() const {
 XFA_FFWidgetType CXFA_NumericEdit::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kNumericEdit;
 }
+
+const CXFA_Node::PropertyData* CXFA_NumericEdit::GetPropertyDataList() const {
+  return kNumericEditPropertyData;
+}

@@ -33,3 +33,7 @@ CXFA_Locale::CXFA_Locale(CXFA_Document* doc, XFA_PacketType packet)
                 kLocaleAttributeData) {}
 
 CXFA_Locale::~CXFA_Locale() = default;
+
+const CXFA_Node::PropertyData* CXFA_Locale::GetPropertyDataList() const {
+  return kLocalePropertyData;
+}

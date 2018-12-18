@@ -108,3 +108,7 @@ CXFA_Image* CXFA_Value::GetImageIfExists() const {
     return nullptr;
   return static_cast<CXFA_Image*>(node);
 }
+
+const CXFA_Node::PropertyData* CXFA_Value::GetPropertyDataList() const {
+  return kValuePropertyData;
+}

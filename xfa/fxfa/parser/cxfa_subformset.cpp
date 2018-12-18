@@ -40,3 +40,7 @@ CXFA_SubformSet::CXFA_SubformSet(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_SubformSet>(this)) {}
 
 CXFA_SubformSet::~CXFA_SubformSet() = default;
+
+const CXFA_Node::PropertyData* CXFA_SubformSet::GetPropertyDataList() const {
+  return kSubformSetPropertyData;
+}

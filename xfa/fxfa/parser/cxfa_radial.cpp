@@ -72,3 +72,7 @@ void CXFA_Radial::Draw(CXFA_Graphics* pGS,
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
 }
+
+const CXFA_Node::PropertyData* CXFA_Radial::GetPropertyDataList() const {
+  return kRadialPropertyData;
+}

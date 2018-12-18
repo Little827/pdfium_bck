@@ -22,6 +22,9 @@ class CXFA_Value final : public CXFA_Node {
   CXFA_Value(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Value() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_Element GetChildValueClassID() const;
   WideString GetChildValueContent() const;
   CXFA_Arc* GetArcIfExists() const;

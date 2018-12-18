@@ -40,3 +40,7 @@ CXFA_BreakBefore::CXFA_BreakBefore(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_BreakBefore>(this)) {}
 
 CXFA_BreakBefore::~CXFA_BreakBefore() = default;
+
+const CXFA_Node::PropertyData* CXFA_BreakBefore::GetPropertyDataList() const {
+  return kBreakBeforePropertyData;
+}

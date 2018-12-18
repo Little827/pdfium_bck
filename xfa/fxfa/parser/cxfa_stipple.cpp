@@ -69,3 +69,7 @@ void CXFA_Stipple::Draw(CXFA_Graphics* pGS,
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
 }
+
+const CXFA_Node::PropertyData* CXFA_Stipple::GetPropertyDataList() const {
+  return kStipplePropertyData;
+}

@@ -39,3 +39,7 @@ CXFA_Command::CXFA_Command(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Command>(this)) {}
 
 CXFA_Command::~CXFA_Command() = default;
+
+const CXFA_Node::PropertyData* CXFA_Command::GetPropertyDataList() const {
+  return kCommandPropertyData;
+}

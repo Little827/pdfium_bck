@@ -40,3 +40,7 @@ CXFA_Keep::CXFA_Keep(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Keep>(this)) {}
 
 CXFA_Keep::~CXFA_Keep() = default;
+
+const CXFA_Node::PropertyData* CXFA_Keep::GetPropertyDataList() const {
+  return kKeepPropertyData;
+}

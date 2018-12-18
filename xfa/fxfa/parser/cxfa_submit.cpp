@@ -56,3 +56,7 @@ WideString CXFA_Submit::GetSubmitTarget() {
 WideString CXFA_Submit::GetSubmitXDPContent() {
   return JSObject()->GetCData(XFA_Attribute::XdpContent);
 }
+
+const CXFA_Node::PropertyData* CXFA_Submit::GetPropertyDataList() const {
+  return kSubmitPropertyData;
+}

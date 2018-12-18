@@ -23,6 +23,9 @@ class CXFA_Fill final : public CXFA_Node {
   CXFA_Fill(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Fill() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   bool IsVisible();
 
   FX_ARGB GetColor(bool bText);

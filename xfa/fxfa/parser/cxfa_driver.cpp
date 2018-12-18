@@ -31,3 +31,7 @@ CXFA_Driver::CXFA_Driver(CXFA_Document* doc, XFA_PacketType packet)
                 kDriverAttributeData) {}
 
 CXFA_Driver::~CXFA_Driver() = default;
+
+const CXFA_Node::PropertyData* CXFA_Driver::GetPropertyDataList() const {
+  return kDriverPropertyData;
+}

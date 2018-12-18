@@ -64,3 +64,7 @@ XFA_AttributeValue CXFA_Script::GetRunAt() {
 WideString CXFA_Script::GetExpression() {
   return JSObject()->GetContent(false);
 }
+
+const CXFA_Node::PropertyData* CXFA_Script::GetPropertyDataList() const {
+  return kScriptPropertyData;
+}

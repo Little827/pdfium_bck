@@ -33,3 +33,7 @@ CXFA_Pcl::CXFA_Pcl(CXFA_Document* doc, XFA_PacketType packet)
                 kPclAttributeData) {}
 
 CXFA_Pcl::~CXFA_Pcl() = default;
+
+const CXFA_Node::PropertyData* CXFA_Pcl::GetPropertyDataList() const {
+  return kPclPropertyData;
+}

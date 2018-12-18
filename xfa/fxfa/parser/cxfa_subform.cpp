@@ -73,3 +73,7 @@ CXFA_Subform::CXFA_Subform(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Subform>(this)) {}
 
 CXFA_Subform::~CXFA_Subform() = default;
+
+const CXFA_Node::PropertyData* CXFA_Subform::GetPropertyDataList() const {
+  return kSubformPropertyData;
+}

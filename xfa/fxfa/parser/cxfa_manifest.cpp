@@ -37,3 +37,7 @@ CXFA_Manifest::CXFA_Manifest(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Manifest>(this)) {}
 
 CXFA_Manifest::~CXFA_Manifest() = default;
+
+const CXFA_Node::PropertyData* CXFA_Manifest::GetPropertyDataList() const {
+  return kManifestPropertyData;
+}

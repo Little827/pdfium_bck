@@ -36,3 +36,7 @@ CXFA_DefaultUi::~CXFA_DefaultUi() = default;
 XFA_FFWidgetType CXFA_DefaultUi::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kTextEdit;
 }
+
+const CXFA_Node::PropertyData* CXFA_DefaultUi::GetPropertyDataList() const {
+  return kDefaultUiPropertyData;
+}

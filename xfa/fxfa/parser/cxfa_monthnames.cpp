@@ -28,3 +28,7 @@ CXFA_MonthNames::CXFA_MonthNames(CXFA_Document* doc, XFA_PacketType packet)
                 kMonthNamesAttributeData) {}
 
 CXFA_MonthNames::~CXFA_MonthNames() = default;
+
+const CXFA_Node::PropertyData* CXFA_MonthNames::GetPropertyDataList() const {
+  return kMonthNamesPropertyData;
+}

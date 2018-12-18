@@ -37,3 +37,7 @@ CXFA_Permissions::CXFA_Permissions(CXFA_Document* doc, XFA_PacketType packet)
                 kPermissionsAttributeData) {}
 
 CXFA_Permissions::~CXFA_Permissions() = default;
+
+const CXFA_Node::PropertyData* CXFA_Permissions::GetPropertyDataList() const {
+  return kPermissionsPropertyData;
+}

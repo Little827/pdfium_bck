@@ -33,3 +33,7 @@ CXFA_Ps::CXFA_Ps(CXFA_Document* doc, XFA_PacketType packet)
                 kPsAttributeData) {}
 
 CXFA_Ps::~CXFA_Ps() = default;
+
+const CXFA_Node::PropertyData* CXFA_Ps::GetPropertyDataList() const {
+  return kPsPropertyData;
+}

@@ -45,3 +45,7 @@ XFA_FFWidgetType CXFA_PasswordEdit::GetDefaultFFWidgetType() const {
 WideString CXFA_PasswordEdit::GetPasswordChar() {
   return JSObject()->GetCData(XFA_Attribute::PasswordChar);
 }
+
+const CXFA_Node::PropertyData* CXFA_PasswordEdit::GetPropertyDataList() const {
+  return kPasswordEditPropertyData;
+}

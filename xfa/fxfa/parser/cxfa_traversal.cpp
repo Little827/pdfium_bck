@@ -34,3 +34,7 @@ CXFA_Traversal::CXFA_Traversal(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Traversal>(this)) {}
 
 CXFA_Traversal::~CXFA_Traversal() = default;
+
+const CXFA_Node::PropertyData* CXFA_Traversal::GetPropertyDataList() const {
+  return kTraversalPropertyData;
+}

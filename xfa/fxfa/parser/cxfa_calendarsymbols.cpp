@@ -33,3 +33,8 @@ CXFA_CalendarSymbols::CXFA_CalendarSymbols(CXFA_Document* doc,
                 kCalendarSymbolsAttributeData) {}
 
 CXFA_CalendarSymbols::~CXFA_CalendarSymbols() = default;
+
+const CXFA_Node::PropertyData* CXFA_CalendarSymbols::GetPropertyDataList()
+    const {
+  return kCalendarSymbolsPropertyData;
+}

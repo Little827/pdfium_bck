@@ -70,3 +70,7 @@ Optional<float> CXFA_Margin::TryRightInset() const {
 Optional<float> CXFA_Margin::TryBottomInset() const {
   return JSObject()->TryMeasureAsFloat(XFA_Attribute::BottomInset);
 }
+
+const CXFA_Node::PropertyData* CXFA_Margin::GetPropertyDataList() const {
+  return kMarginPropertyData;
+}

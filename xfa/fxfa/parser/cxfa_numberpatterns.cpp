@@ -25,3 +25,8 @@ CXFA_NumberPatterns::CXFA_NumberPatterns(CXFA_Document* doc,
                 nullptr) {}
 
 CXFA_NumberPatterns::~CXFA_NumberPatterns() = default;
+
+const CXFA_Node::PropertyData* CXFA_NumberPatterns::GetPropertyDataList()
+    const {
+  return kNumberPatternsPropertyData;
+}

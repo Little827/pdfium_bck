@@ -135,3 +135,7 @@ FX_ARGB CXFA_Font::GetColor() {
   CXFA_Fill* fill = GetChild<CXFA_Fill>(0, XFA_Element::Fill, false);
   return fill ? fill->GetColor(true) : 0xFF000000;
 }
+
+const CXFA_Node::PropertyData* CXFA_Font::GetPropertyDataList() const {
+  return kFontPropertyData;
+}

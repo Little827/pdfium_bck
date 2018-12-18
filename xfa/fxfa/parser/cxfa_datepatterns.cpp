@@ -24,3 +24,7 @@ CXFA_DatePatterns::CXFA_DatePatterns(CXFA_Document* doc, XFA_PacketType packet)
                 nullptr) {}
 
 CXFA_DatePatterns::~CXFA_DatePatterns() = default;
+
+const CXFA_Node::PropertyData* CXFA_DatePatterns::GetPropertyDataList() const {
+  return kDatePatternsPropertyData;
+}

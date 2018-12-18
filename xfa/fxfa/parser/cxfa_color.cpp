@@ -56,3 +56,7 @@ void CXFA_Color::SetValue(FX_ARGB color) {
   JSObject()->SetCData(XFA_Attribute::Value,
                        WideString::Format(L"%d,%d,%d", r, g, b), false, false);
 }
+
+const CXFA_Node::PropertyData* CXFA_Color::GetPropertyDataList() const {
+  return kColorPropertyData;
+}

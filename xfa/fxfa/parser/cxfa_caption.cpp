@@ -75,3 +75,7 @@ CXFA_Font* CXFA_Caption::GetFontIfExists() {
 CXFA_Value* CXFA_Caption::GetValueIfExists() {
   return GetChild<CXFA_Value>(0, XFA_Element::Value, false);
 }
+
+const CXFA_Node::PropertyData* CXFA_Caption::GetPropertyDataList() const {
+  return kCaptionPropertyData;
+}

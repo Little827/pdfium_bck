@@ -65,3 +65,7 @@ CXFA_Field::CXFA_Field(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Field>(this)) {}
 
 CXFA_Field::~CXFA_Field() = default;
+
+const CXFA_Node::PropertyData* CXFA_Field::GetPropertyDataList() const {
+  return kFieldPropertyData;
+}

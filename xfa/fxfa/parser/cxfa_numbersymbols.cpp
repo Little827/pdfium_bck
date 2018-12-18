@@ -25,3 +25,7 @@ CXFA_NumberSymbols::CXFA_NumberSymbols(CXFA_Document* doc,
                 nullptr) {}
 
 CXFA_NumberSymbols::~CXFA_NumberSymbols() = default;
+
+const CXFA_Node::PropertyData* CXFA_NumberSymbols::GetPropertyDataList() const {
+  return kNumberSymbolsPropertyData;
+}

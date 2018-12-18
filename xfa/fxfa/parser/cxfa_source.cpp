@@ -35,3 +35,7 @@ CXFA_Source::CXFA_Source(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Source>(this)) {}
 
 CXFA_Source::~CXFA_Source() = default;
+
+const CXFA_Node::PropertyData* CXFA_Source::GetPropertyDataList() const {
+  return kSourcePropertyData;
+}

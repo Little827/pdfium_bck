@@ -46,3 +46,7 @@ CXFA_Break::CXFA_Break(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Break>(this)) {}
 
 CXFA_Break::~CXFA_Break() = default;
+
+const CXFA_Node::PropertyData* CXFA_Break::GetPropertyDataList() const {
+  return kBreakPropertyData;
+}

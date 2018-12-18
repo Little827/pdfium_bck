@@ -58,3 +58,7 @@ XFA_AttributeValue CXFA_CheckButton::GetMark() {
 bool CXFA_CheckButton::IsAllowNeutral() {
   return JSObject()->GetBoolean(XFA_Attribute::AllowNeutral);
 }
+
+const CXFA_Node::PropertyData* CXFA_CheckButton::GetPropertyDataList() const {
+  return kCheckButtonPropertyData;
+}

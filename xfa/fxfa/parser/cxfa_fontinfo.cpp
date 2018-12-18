@@ -31,3 +31,7 @@ CXFA_FontInfo::CXFA_FontInfo(CXFA_Document* doc, XFA_PacketType packet)
                 kFontInfoAttributeData) {}
 
 CXFA_FontInfo::~CXFA_FontInfo() = default;
+
+const CXFA_Node::PropertyData* CXFA_FontInfo::GetPropertyDataList() const {
+  return kFontInfoPropertyData;
+}
