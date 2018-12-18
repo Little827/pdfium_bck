@@ -16,6 +16,9 @@ class CXFA_Validate final : public CXFA_Node {
   CXFA_Validate(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Validate() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_AttributeValue GetFormatTest();
   WideString GetFormatMessageText();
   void SetFormatMessageText(const WideString& wsMessage);

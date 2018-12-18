@@ -22,7 +22,6 @@ CXFA_NumberPattern::CXFA_NumberPattern(CXFA_Document* doc,
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::NumberPattern,
-                nullptr,
                 kNumberPatternAttributeData) {}
 
 CXFA_NumberPattern::~CXFA_NumberPattern() = default;

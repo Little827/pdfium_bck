@@ -30,8 +30,11 @@ CXFA_Format::CXFA_Format(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Format,
-                kFormatPropertyData,
                 kFormatAttributeData,
                 pdfium::MakeUnique<CJX_Format>(this)) {}
 
 CXFA_Format::~CXFA_Format() = default;
+
+const CXFA_Node::PropertyData* CXFA_Format::GetPropertyDataList() const {
+  return kFormatPropertyData;
+}

@@ -21,7 +21,11 @@ CXFA_NumberPatterns::CXFA_NumberPatterns(CXFA_Document* doc,
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::Node,
                 XFA_Element::NumberPatterns,
-                kNumberPatternsPropertyData,
                 nullptr) {}
 
 CXFA_NumberPatterns::~CXFA_NumberPatterns() = default;
+
+const CXFA_Node::PropertyData* CXFA_NumberPatterns::GetPropertyDataList()
+    const {
+  return kNumberPatternsPropertyData;
+}

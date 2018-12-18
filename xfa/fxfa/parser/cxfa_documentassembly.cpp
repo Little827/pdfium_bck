@@ -22,7 +22,6 @@ CXFA_DocumentAssembly::CXFA_DocumentAssembly(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::DocumentAssembly,
-                nullptr,
                 kDocumentAssemblyAttributeData) {}
 
 CXFA_DocumentAssembly::~CXFA_DocumentAssembly() = default;

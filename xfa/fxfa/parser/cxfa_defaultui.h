@@ -14,6 +14,9 @@ class CXFA_DefaultUi final : public CXFA_Node {
   CXFA_DefaultUi(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_DefaultUi() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_FFWidgetType GetDefaultFFWidgetType() const override;
 };
 

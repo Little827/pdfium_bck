@@ -22,7 +22,6 @@ CXFA_EncryptionLevel::CXFA_EncryptionLevel(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::EncryptionLevel,
-                nullptr,
                 kEncryptionLevelAttributeData) {}
 
 CXFA_EncryptionLevel::~CXFA_EncryptionLevel() = default;

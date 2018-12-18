@@ -37,7 +37,6 @@ CXFA_Rectangle::CXFA_Rectangle(CXFA_Document* doc, XFA_PacketType packet)
                (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                XFA_ObjectType::Node,
                XFA_Element::Rectangle,
-               kRectanglePropertyData,
                kRectangleAttributeData,
                pdfium::MakeUnique<CJX_Rectangle>(this)) {}
 
@@ -46,7 +45,6 @@ CXFA_Rectangle::CXFA_Rectangle(CXFA_Document* pDoc,
                                uint32_t validPackets,
                                XFA_ObjectType oType,
                                XFA_Element eType,
-                               const PropertyData* properties,
                                const AttributeData* attributes,
                                std::unique_ptr<CJX_Object> js_node)
     : CXFA_Box(pDoc,
@@ -54,7 +52,6 @@ CXFA_Rectangle::CXFA_Rectangle(CXFA_Document* pDoc,
                validPackets,
                oType,
                eType,
-               properties,
                attributes,
                std::move(js_node)) {}
 
@@ -605,4 +602,8 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
     path.LineTo(CFX_PointF(cp1.x + fRadius1 * sx + offsetX,
                            cp1.y + fRadius1 * sy + offsetY));
   }
+}
+
+const CXFA_Node::PropertyData* CXFA_Rectangle::GetPropertyDataList() const {
+  return kRectanglePropertyData;
 }

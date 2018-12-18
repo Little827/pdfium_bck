@@ -16,6 +16,9 @@ class CXFA_Line final : public CXFA_Node {
   CXFA_Line(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Line() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_AttributeValue GetHand();
   bool GetSlope();
   CXFA_Edge* GetEdgeIfExists();

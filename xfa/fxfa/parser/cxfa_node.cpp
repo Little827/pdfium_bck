@@ -369,6 +369,9 @@ namespace {
 
 constexpr uint8_t kMaxExecuteRecursion = 2;
 
+const CXFA_Node::PropertyData kNodePropertyData[] = {
+    {XFA_Element::Unknown, 0, 0}};
+
 constexpr uint8_t g_inv_base64[128] = {
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
@@ -835,11 +838,9 @@ CXFA_Node::CXFA_Node(CXFA_Document* pDoc,
                      uint32_t validPackets,
                      XFA_ObjectType oType,
                      XFA_Element eType,
-                     const PropertyData* properties,
                      const AttributeData* attributes,
                      std::unique_ptr<CJX_Object> js_node)
     : CXFA_Object(pDoc, oType, eType, std::move(js_node)),
-      m_Properties(properties),
       m_Attributes(attributes),
       m_ValidPackets(validPackets),
       m_ePacket(ePacket) {
@@ -851,14 +852,12 @@ CXFA_Node::CXFA_Node(CXFA_Document* pDoc,
                      uint32_t validPackets,
                      XFA_ObjectType oType,
                      XFA_Element eType,
-                     const PropertyData* properties,
                      const AttributeData* attributes)
     : CXFA_Node(pDoc,
                 ePacket,
                 validPackets,
                 oType,
                 eType,
-                properties,
                 attributes,
                 pdfium::MakeUnique<CJX_Node>(this)) {}
 
@@ -952,11 +951,9 @@ bool CXFA_Node::IsValidInPacket(XFA_PacketType packet) const {
 
 const CXFA_Node::PropertyData* CXFA_Node::GetPropertyData(
     XFA_Element property) const {
-  if (m_Properties == nullptr)
-    return nullptr;
-
+  const PropertyData* pProperties = GetPropertyDataList();
   for (size_t i = 0;; ++i) {
-    const PropertyData* data = m_Properties + i;
+    const PropertyData* data = pProperties + i;
     if (data->property == XFA_Element::Unknown)
       break;
     if (data->property == property)
@@ -980,11 +977,9 @@ uint8_t CXFA_Node::PropertyOccuranceCount(XFA_Element property) const {
 }
 
 Optional<XFA_Element> CXFA_Node::GetFirstPropertyWithFlag(uint8_t flag) {
-  if (m_Properties == nullptr)
-    return {};
-
+  const PropertyData* pProperties = GetPropertyDataList();
   for (size_t i = 0;; ++i) {
-    const PropertyData* data = m_Properties + i;
+    const PropertyData* data = pProperties + i;
     if (data->property == XFA_Element::Unknown)
       break;
     if (data->flags & flag)
@@ -1071,8 +1066,6 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeList(uint32_t dwTypeFilter,
   }
 
   if (!bFilterOneOfProperties || !nodes.empty())
-    return nodes;
-  if (m_Properties == nullptr)
     return nodes;
 
   Optional<XFA_Element> property =
@@ -2817,6 +2810,10 @@ void CXFA_Node::CreateValueNodeIfNeeded(CXFA_Value* value,
 
 XFA_Element CXFA_Node::GetValueNodeType() const {
   return XFA_Element::Text;
+}
+
+const CXFA_Node::PropertyData* CXFA_Node::GetPropertyDataList() const {
+  return kNodePropertyData;
 }
 
 CXFA_Node* CXFA_Node::GetUIChildNode() {

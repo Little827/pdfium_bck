@@ -13,6 +13,9 @@ class CXFA_Cache final : public CXFA_Node {
  public:
   CXFA_Cache(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Cache() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_CACHE_H_

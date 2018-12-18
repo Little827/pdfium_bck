@@ -22,6 +22,9 @@ class CXFA_Pattern final : public CXFA_Node {
   CXFA_Pattern(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Pattern() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   void Draw(CXFA_Graphics* pGS,
             CXFA_GEPath* fillPath,
             FX_ARGB crStart,

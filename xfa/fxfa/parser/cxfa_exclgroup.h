@@ -13,6 +13,9 @@ class CXFA_ExclGroup final : public CXFA_Node {
  public:
   CXFA_ExclGroup(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_ExclGroup() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_EXCLGROUP_H_

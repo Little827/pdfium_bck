@@ -21,7 +21,6 @@ CXFA_AlwaysEmbed::CXFA_AlwaysEmbed(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::AlwaysEmbed,
-                nullptr,
                 kAlwaysEmbedAttributeData) {}
 
 CXFA_AlwaysEmbed::~CXFA_AlwaysEmbed() = default;

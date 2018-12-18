@@ -26,7 +26,10 @@ CXFA_SilentPrint::CXFA_SilentPrint(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::SilentPrint,
-                kSilentPrintPropertyData,
                 kSilentPrintAttributeData) {}
 
 CXFA_SilentPrint::~CXFA_SilentPrint() = default;
+
+const CXFA_Node::PropertyData* CXFA_SilentPrint::GetPropertyDataList() const {
+  return kSilentPrintPropertyData;
+}

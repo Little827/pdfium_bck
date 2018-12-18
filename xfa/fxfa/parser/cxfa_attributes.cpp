@@ -21,7 +21,6 @@ CXFA_Attributes::CXFA_Attributes(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::Attributes,
-                nullptr,
                 kAttributesAttributeData) {}
 
 CXFA_Attributes::~CXFA_Attributes() = default;

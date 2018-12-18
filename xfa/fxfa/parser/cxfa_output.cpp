@@ -27,7 +27,10 @@ CXFA_Output::CXFA_Output(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Output,
-                kOutputPropertyData,
                 kOutputAttributeData) {}
 
 CXFA_Output::~CXFA_Output() = default;
+
+const CXFA_Node::PropertyData* CXFA_Output::GetPropertyDataList() const {
+  return kOutputPropertyData;
+}

@@ -13,6 +13,9 @@ class CXFA_NumberSymbols final : public CXFA_Node {
  public:
   CXFA_NumberSymbols(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_NumberSymbols() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_NUMBERSYMBOLS_H_

@@ -21,7 +21,6 @@ CXFA_PrintScaling::CXFA_PrintScaling(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::PrintScaling,
-                nullptr,
                 kPrintScalingAttributeData) {}
 
 CXFA_PrintScaling::~CXFA_PrintScaling() = default;

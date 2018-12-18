@@ -21,7 +21,6 @@ CXFA_SubsetBelow::CXFA_SubsetBelow(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::SubsetBelow,
-                nullptr,
                 kSubsetBelowAttributeData) {}
 
 CXFA_SubsetBelow::~CXFA_SubsetBelow() = default;

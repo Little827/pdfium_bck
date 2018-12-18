@@ -12,7 +12,6 @@ CXFA_PsMap::CXFA_PsMap(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::PsMap,
-                nullptr,
                 nullptr) {}
 
 CXFA_PsMap::~CXFA_PsMap() = default;

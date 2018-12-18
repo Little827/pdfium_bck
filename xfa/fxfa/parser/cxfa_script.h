@@ -21,6 +21,9 @@ class CXFA_Script final : public CXFA_Node {
   CXFA_Script(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Script() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   Type GetContentType();
   XFA_AttributeValue GetRunAt();
   WideString GetExpression();

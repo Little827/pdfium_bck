@@ -22,7 +22,6 @@ CXFA_CurrencySymbol::CXFA_CurrencySymbol(CXFA_Document* doc,
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::CurrencySymbol,
-                nullptr,
                 kCurrencySymbolAttributeData) {}
 
 CXFA_CurrencySymbol::~CXFA_CurrencySymbol() = default;

@@ -26,7 +26,10 @@ CXFA_Xdc::CXFA_Xdc(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Config | XFA_XDPPACKET_Xdc),
                 XFA_ObjectType::ModelNode,
                 XFA_Element::Xdc,
-                kXdcPropertyData,
                 kXdcAttributeData) {}
 
 CXFA_Xdc::~CXFA_Xdc() = default;
+
+const CXFA_Node::PropertyData* CXFA_Xdc::GetPropertyDataList() const {
+  return kXdcPropertyData;
+}

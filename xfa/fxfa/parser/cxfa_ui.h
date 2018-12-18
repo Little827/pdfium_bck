@@ -14,6 +14,9 @@ class CXFA_Ui final : public CXFA_Node {
   CXFA_Ui(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Ui() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   bool IsAOneOfChild(CXFA_Node* child) const;
 };
 

@@ -21,6 +21,9 @@ class CXFA_Caption final : public CXFA_Node {
   CXFA_Caption(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Caption() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   bool IsVisible();
   bool IsHidden();
   XFA_AttributeValue GetPlacementType();

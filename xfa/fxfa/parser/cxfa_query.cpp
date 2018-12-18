@@ -33,8 +33,11 @@ CXFA_Query::CXFA_Query(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_SourceSet,
                 XFA_ObjectType::Node,
                 XFA_Element::Query,
-                kQueryPropertyData,
                 kQueryAttributeData,
                 pdfium::MakeUnique<CJX_Query>(this)) {}
 
 CXFA_Query::~CXFA_Query() = default;
+
+const CXFA_Node::PropertyData* CXFA_Query::GetPropertyDataList() const {
+  return kQueryPropertyData;
+}

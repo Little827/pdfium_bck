@@ -34,8 +34,11 @@ CXFA_Certificates::CXFA_Certificates(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Certificates,
-                kCertificatesPropertyData,
                 kCertificatesAttributeData,
                 pdfium::MakeUnique<CJX_Certificates>(this)) {}
 
 CXFA_Certificates::~CXFA_Certificates() = default;
+
+const CXFA_Node::PropertyData* CXFA_Certificates::GetPropertyDataList() const {
+  return kCertificatesPropertyData;
+}

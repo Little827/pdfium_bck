@@ -29,7 +29,10 @@ CXFA_Acrobat::CXFA_Acrobat(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Acrobat,
-                kAcrobatPropertyData,
                 kAcrobatAttributeData) {}
 
 CXFA_Acrobat::~CXFA_Acrobat() = default;
+
+const CXFA_Node::PropertyData* CXFA_Acrobat::GetPropertyDataList() const {
+  return kAcrobatPropertyData;
+}

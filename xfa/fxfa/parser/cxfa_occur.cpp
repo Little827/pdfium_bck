@@ -32,7 +32,6 @@ CXFA_Occur::CXFA_Occur(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Occur,
-                kOccurPropertyData,
                 kOccurAttributeData,
                 pdfium::MakeUnique<CJX_Occur>(this)) {}
 
@@ -77,4 +76,8 @@ void CXFA_Occur::SetMin(int32_t iMin) {
     iMax = iMin;
     JSObject()->SetInteger(XFA_Attribute::Max, iMax, false);
   }
+}
+
+const CXFA_Node::PropertyData* CXFA_Occur::GetPropertyDataList() const {
+  return kOccurPropertyData;
 }

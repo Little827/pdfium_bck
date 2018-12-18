@@ -15,6 +15,9 @@ class CXFA_Submit final : public CXFA_Node {
   CXFA_Submit(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Submit() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   bool IsSubmitEmbedPDF();
   XFA_AttributeValue GetSubmitFormat();
   WideString GetSubmitTarget();

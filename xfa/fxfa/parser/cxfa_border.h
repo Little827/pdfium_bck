@@ -13,6 +13,9 @@ class CXFA_Border final : public CXFA_Rectangle {
  public:
   CXFA_Border(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Border() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_BORDER_H_

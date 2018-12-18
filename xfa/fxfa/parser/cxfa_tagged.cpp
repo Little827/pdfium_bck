@@ -21,7 +21,6 @@ CXFA_Tagged::CXFA_Tagged(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Tagged,
-                nullptr,
                 kTaggedAttributeData) {}
 
 CXFA_Tagged::~CXFA_Tagged() = default;

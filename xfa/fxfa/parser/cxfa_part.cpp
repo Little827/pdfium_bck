@@ -21,7 +21,6 @@ CXFA_Part::CXFA_Part(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Part,
-                nullptr,
                 kPartAttributeData) {}
 
 CXFA_Part::~CXFA_Part() = default;

@@ -13,6 +13,9 @@ class CXFA_Format final : public CXFA_Node {
  public:
   CXFA_Format(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Format() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_FORMAT_H_

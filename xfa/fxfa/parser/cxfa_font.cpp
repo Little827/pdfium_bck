@@ -59,7 +59,6 @@ CXFA_Font::CXFA_Font(CXFA_Document* doc, XFA_PacketType packet)
           (XFA_XDPPACKET_Template | XFA_XDPPACKET_Config | XFA_XDPPACKET_Form),
           XFA_ObjectType::Node,
           XFA_Element::Font,
-          kFontPropertyData,
           kFontAttributeData,
           pdfium::MakeUnique<CJX_Font>(this)) {}
 
@@ -134,4 +133,8 @@ void CXFA_Font::SetColor(FX_ARGB color) {
 FX_ARGB CXFA_Font::GetColor() {
   CXFA_Fill* fill = GetChild<CXFA_Fill>(0, XFA_Element::Fill, false);
   return fill ? fill->GetColor(true) : 0xFF000000;
+}
+
+const CXFA_Node::PropertyData* CXFA_Font::GetPropertyDataList() const {
+  return kFontPropertyData;
 }

@@ -21,7 +21,6 @@ CXFA_Packets::CXFA_Packets(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Packets,
-                nullptr,
                 kPacketsAttributeData) {}
 
 CXFA_Packets::~CXFA_Packets() = default;

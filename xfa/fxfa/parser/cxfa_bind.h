@@ -14,6 +14,9 @@ class CXFA_Bind final : public CXFA_Node {
   CXFA_Bind(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Bind() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   WideString GetPicture();
 };
 

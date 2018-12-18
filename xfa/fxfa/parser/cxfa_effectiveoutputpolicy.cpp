@@ -24,7 +24,6 @@ CXFA_EffectiveOutputPolicy::CXFA_EffectiveOutputPolicy(CXFA_Document* doc,
                 XFA_XDPPACKET_ConnectionSet,
                 XFA_ObjectType::Node,
                 XFA_Element::EffectiveOutputPolicy,
-                nullptr,
                 kEffectiveOutputPolicyAttributeData) {}
 
 CXFA_EffectiveOutputPolicy::~CXFA_EffectiveOutputPolicy() = default;

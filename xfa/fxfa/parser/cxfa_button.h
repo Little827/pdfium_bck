@@ -14,6 +14,9 @@ class CXFA_Button final : public CXFA_Node {
   CXFA_Button(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Button() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_FFWidgetType GetDefaultFFWidgetType() const override;
 
   XFA_AttributeValue GetHighlight();

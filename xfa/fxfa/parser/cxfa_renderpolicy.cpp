@@ -21,7 +21,6 @@ CXFA_RenderPolicy::CXFA_RenderPolicy(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::RenderPolicy,
-                nullptr,
                 kRenderPolicyAttributeData) {}
 
 CXFA_RenderPolicy::~CXFA_RenderPolicy() = default;

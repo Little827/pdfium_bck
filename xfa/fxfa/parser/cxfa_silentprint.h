@@ -13,6 +13,9 @@ class CXFA_SilentPrint final : public CXFA_Node {
  public:
   CXFA_SilentPrint(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_SilentPrint() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_SILENTPRINT_H_

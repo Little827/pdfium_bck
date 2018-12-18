@@ -13,6 +13,9 @@ class CXFA_Arc final : public CXFA_Box {
  public:
   CXFA_Arc(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Arc() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_ARC_H_

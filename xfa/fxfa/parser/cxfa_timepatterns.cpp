@@ -20,7 +20,10 @@ CXFA_TimePatterns::CXFA_TimePatterns(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::Node,
                 XFA_Element::TimePatterns,
-                kTimePatternsPropertyData,
                 nullptr) {}
 
 CXFA_TimePatterns::~CXFA_TimePatterns() = default;
+
+const CXFA_Node::PropertyData* CXFA_TimePatterns::GetPropertyDataList() const {
+  return kTimePatternsPropertyData;
+}

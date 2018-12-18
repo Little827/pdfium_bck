@@ -21,7 +21,6 @@ CXFA_AutoSave::CXFA_AutoSave(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::AutoSave,
-                nullptr,
                 kAutoSaveAttributeData) {}
 
 CXFA_AutoSave::~CXFA_AutoSave() = default;

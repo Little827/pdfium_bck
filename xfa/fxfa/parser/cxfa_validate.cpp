@@ -49,7 +49,6 @@ CXFA_Validate::CXFA_Validate(CXFA_Document* doc, XFA_PacketType packet)
           (XFA_XDPPACKET_Config | XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
           XFA_ObjectType::ContentNode,
           XFA_Element::Validate,
-          kValidatePropertyData,
           kValidateAttributeData,
           pdfium::MakeUnique<CJX_Validate>(this)) {}
 
@@ -150,4 +149,8 @@ WideString CXFA_Validate::GetPicture() {
 
 CXFA_Script* CXFA_Validate::GetScriptIfExists() {
   return GetChild<CXFA_Script>(0, XFA_Element::Script, false);
+}
+
+const CXFA_Node::PropertyData* CXFA_Validate::GetPropertyDataList() const {
+  return kValidatePropertyData;
 }

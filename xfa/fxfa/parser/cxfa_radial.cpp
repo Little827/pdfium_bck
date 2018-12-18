@@ -36,7 +36,6 @@ CXFA_Radial::CXFA_Radial(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Radial,
-                kRadialPropertyData,
                 kRadialAttributeData,
                 pdfium::MakeUnique<CJX_Radial>(this)) {}
 
@@ -71,4 +70,8 @@ void CXFA_Radial::Draw(CXFA_Graphics* pGS,
   pGS->SetFillColor(CXFA_GEColor(&shading));
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
+}
+
+const CXFA_Node::PropertyData* CXFA_Radial::GetPropertyDataList() const {
+  return kRadialPropertyData;
 }

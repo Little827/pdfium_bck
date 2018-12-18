@@ -31,8 +31,11 @@ CXFA_Assist::CXFA_Assist(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Assist,
-                kAssistPropertyData,
                 kAssistAttributeData,
                 pdfium::MakeUnique<CJX_Assist>(this)) {}
 
 CXFA_Assist::~CXFA_Assist() = default;
+
+const CXFA_Node::PropertyData* CXFA_Assist::GetPropertyDataList() const {
+  return kAssistPropertyData;
+}

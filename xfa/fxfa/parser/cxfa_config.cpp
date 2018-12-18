@@ -27,7 +27,10 @@ CXFA_Config::CXFA_Config(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ModelNode,
                 XFA_Element::Config,
-                kConfigPropertyData,
                 kConfigAttributeData) {}
 
 CXFA_Config::~CXFA_Config() = default;
+
+const CXFA_Node::PropertyData* CXFA_Config::GetPropertyDataList() const {
+  return kConfigPropertyData;
+}

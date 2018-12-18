@@ -13,6 +13,9 @@ class CXFA_Compression final : public CXFA_Node {
  public:
   CXFA_Compression(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Compression() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_COMPRESSION_H_

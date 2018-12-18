@@ -24,7 +24,10 @@ CXFA_MonthNames::CXFA_MonthNames(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::Node,
                 XFA_Element::MonthNames,
-                kMonthNamesPropertyData,
                 kMonthNamesAttributeData) {}
 
 CXFA_MonthNames::~CXFA_MonthNames() = default;
+
+const CXFA_Node::PropertyData* CXFA_MonthNames::GetPropertyDataList() const {
+  return kMonthNamesPropertyData;
+}

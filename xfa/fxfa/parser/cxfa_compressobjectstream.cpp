@@ -22,7 +22,6 @@ CXFA_CompressObjectStream::CXFA_CompressObjectStream(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::CompressObjectStream,
-                nullptr,
                 kCompressObjectStreamAttributeData) {}
 
 CXFA_CompressObjectStream::~CXFA_CompressObjectStream() = default;

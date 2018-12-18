@@ -12,7 +12,6 @@ CXFA_Typefaces::CXFA_Typefaces(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::Node,
                 XFA_Element::Typefaces,
-                nullptr,
                 nullptr) {}
 
 CXFA_Typefaces::~CXFA_Typefaces() = default;

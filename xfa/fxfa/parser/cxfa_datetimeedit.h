@@ -14,6 +14,9 @@ class CXFA_DateTimeEdit final : public CXFA_Node {
   CXFA_DateTimeEdit(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_DateTimeEdit() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_Element GetValueNodeType() const override;
   XFA_FFWidgetType GetDefaultFFWidgetType() const override;
 };

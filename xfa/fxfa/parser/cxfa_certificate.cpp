@@ -26,7 +26,6 @@ CXFA_Certificate::CXFA_Certificate(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::TextNode,
                 XFA_Element::Certificate,
-                nullptr,
                 kCertificateAttributeData,
                 pdfium::MakeUnique<CJX_Certificate>(this)) {}
 

@@ -23,7 +23,6 @@ CXFA_BatchOutput::CXFA_BatchOutput(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::BatchOutput,
-                nullptr,
                 kBatchOutputAttributeData) {}
 
 CXFA_BatchOutput::~CXFA_BatchOutput() = default;

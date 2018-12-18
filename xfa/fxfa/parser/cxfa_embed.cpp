@@ -21,7 +21,6 @@ CXFA_Embed::CXFA_Embed(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Embed,
-                nullptr,
                 kEmbedAttributeData) {}
 
 CXFA_Embed::~CXFA_Embed() = default;

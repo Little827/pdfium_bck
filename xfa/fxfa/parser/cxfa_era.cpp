@@ -12,7 +12,6 @@ CXFA_Era::CXFA_Era(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Era,
-                nullptr,
                 nullptr) {}
 
 CXFA_Era::~CXFA_Era() = default;

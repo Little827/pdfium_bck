@@ -25,7 +25,10 @@ CXFA_Debug::CXFA_Debug(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Debug,
-                kDebugPropertyData,
                 kDebugAttributeData) {}
 
 CXFA_Debug::~CXFA_Debug() = default;
+
+const CXFA_Node::PropertyData* CXFA_Debug::GetPropertyDataList() const {
+  return kDebugPropertyData;
+}

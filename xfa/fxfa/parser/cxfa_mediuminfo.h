@@ -13,6 +13,9 @@ class CXFA_MediumInfo final : public CXFA_Node {
  public:
   CXFA_MediumInfo(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_MediumInfo() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_MEDIUMINFO_H_

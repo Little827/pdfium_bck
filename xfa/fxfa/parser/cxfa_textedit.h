@@ -14,6 +14,9 @@ class CXFA_TextEdit final : public CXFA_Node {
   CXFA_TextEdit(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_TextEdit() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_FFWidgetType GetDefaultFFWidgetType() const override;
 };
 

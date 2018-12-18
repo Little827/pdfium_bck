@@ -42,8 +42,11 @@ CXFA_PageArea::CXFA_PageArea(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::ContainerNode,
                 XFA_Element::PageArea,
-                kPageAreaPropertyData,
                 kPageAreaAttributeData,
                 pdfium::MakeUnique<CJX_PageArea>(this)) {}
 
 CXFA_PageArea::~CXFA_PageArea() = default;
+
+const CXFA_Node::PropertyData* CXFA_PageArea::GetPropertyDataList() const {
+  return kPageAreaPropertyData;
+}

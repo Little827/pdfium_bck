@@ -32,7 +32,6 @@ CXFA_Stipple::CXFA_Stipple(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Stipple,
-                kStipplePropertyData,
                 kStippleAttributeData,
                 pdfium::MakeUnique<CJX_Stipple>(this)) {}
 
@@ -68,4 +67,8 @@ void CXFA_Stipple::Draw(CXFA_Graphics* pGS,
   pGS->SetFillColor(CXFA_GEColor(cr));
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
+}
+
+const CXFA_Node::PropertyData* CXFA_Stipple::GetPropertyDataList() const {
+  return kStipplePropertyData;
 }

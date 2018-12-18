@@ -21,7 +21,6 @@ CXFA_Window::CXFA_Window(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::Window,
-                nullptr,
                 kWindowAttributeData) {}
 
 CXFA_Window::~CXFA_Window() = default;

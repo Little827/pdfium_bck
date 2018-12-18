@@ -39,7 +39,6 @@ CXFA_Caption::CXFA_Caption(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Caption,
-                kCaptionPropertyData,
                 kCaptionAttributeData,
                 pdfium::MakeUnique<CJX_Caption>(this)) {}
 
@@ -74,4 +73,8 @@ CXFA_Font* CXFA_Caption::GetFontIfExists() {
 
 CXFA_Value* CXFA_Caption::GetValueIfExists() {
   return GetChild<CXFA_Value>(0, XFA_Element::Value, false);
+}
+
+const CXFA_Node::PropertyData* CXFA_Caption::GetPropertyDataList() const {
+  return kCaptionPropertyData;
 }

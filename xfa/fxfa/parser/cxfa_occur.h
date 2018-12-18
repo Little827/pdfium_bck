@@ -19,6 +19,9 @@ class CXFA_Occur final : public CXFA_Node {
   CXFA_Occur(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Occur() override;
 
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   int32_t GetMax();
   void SetMax(int32_t iMax);
 

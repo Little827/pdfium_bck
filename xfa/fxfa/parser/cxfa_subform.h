@@ -13,6 +13,9 @@ class CXFA_Subform final : public CXFA_Node {
  public:
   CXFA_Subform(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Subform() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_SUBFORM_H_

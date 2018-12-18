@@ -25,7 +25,10 @@ CXFA_MediumInfo::CXFA_MediumInfo(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::MediumInfo,
-                kMediumInfoPropertyData,
                 kMediumInfoAttributeData) {}
 
 CXFA_MediumInfo::~CXFA_MediumInfo() = default;
+
+const CXFA_Node::PropertyData* CXFA_MediumInfo::GetPropertyDataList() const {
+  return kMediumInfoPropertyData;
+}

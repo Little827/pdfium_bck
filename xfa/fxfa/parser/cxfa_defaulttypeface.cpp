@@ -24,7 +24,6 @@ CXFA_DefaultTypeface::CXFA_DefaultTypeface(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::DefaultTypeface,
-                nullptr,
                 kDefaultTypefaceAttributeData) {}
 
 CXFA_DefaultTypeface::~CXFA_DefaultTypeface() = default;

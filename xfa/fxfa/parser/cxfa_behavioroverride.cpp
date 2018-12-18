@@ -22,7 +22,6 @@ CXFA_BehaviorOverride::CXFA_BehaviorOverride(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::BehaviorOverride,
-                nullptr,
                 kBehaviorOverrideAttributeData) {}
 
 CXFA_BehaviorOverride::~CXFA_BehaviorOverride() = default;

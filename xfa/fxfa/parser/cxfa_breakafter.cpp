@@ -35,8 +35,11 @@ CXFA_BreakAfter::CXFA_BreakAfter(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::BreakAfter,
-                kBreakAfterPropertyData,
                 kBreakAfterAttributeData,
                 pdfium::MakeUnique<CJX_BreakAfter>(this)) {}
 
 CXFA_BreakAfter::~CXFA_BreakAfter() = default;
+
+const CXFA_Node::PropertyData* CXFA_BreakAfter::GetPropertyDataList() const {
+  return kBreakAfterPropertyData;
+}

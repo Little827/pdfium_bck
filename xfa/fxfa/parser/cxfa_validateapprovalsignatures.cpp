@@ -23,7 +23,6 @@ CXFA_ValidateApprovalSignatures::CXFA_ValidateApprovalSignatures(
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::ValidateApprovalSignatures,
-                nullptr,
                 kValidateApprovalSignaturesAttributeData) {}
 
 CXFA_ValidateApprovalSignatures::~CXFA_ValidateApprovalSignatures() = default;

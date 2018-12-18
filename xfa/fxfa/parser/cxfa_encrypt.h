@@ -13,6 +13,9 @@ class CXFA_Encrypt final : public CXFA_Node {
  public:
   CXFA_Encrypt(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Encrypt() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_ENCRYPT_H_

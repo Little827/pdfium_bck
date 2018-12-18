@@ -37,8 +37,11 @@ CXFA_Edge::CXFA_Edge(CXFA_Document* doc, XFA_PacketType packet)
                   (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                   XFA_ObjectType::Node,
                   XFA_Element::Edge,
-                  kEdgePropertyData,
                   kEdgeAttributeData,
                   pdfium::MakeUnique<CJX_Edge>(this)) {}
 
 CXFA_Edge::~CXFA_Edge() = default;
+
+const CXFA_Node::PropertyData* CXFA_Edge::GetPropertyDataList() const {
+  return kEdgePropertyData;
+}

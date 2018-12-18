@@ -28,11 +28,14 @@ CXFA_DefaultUi::CXFA_DefaultUi(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::DefaultUi,
-                kDefaultUiPropertyData,
                 kDefaultUiAttributeData) {}
 
 CXFA_DefaultUi::~CXFA_DefaultUi() = default;
 
 XFA_FFWidgetType CXFA_DefaultUi::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kTextEdit;
+}
+
+const CXFA_Node::PropertyData* CXFA_DefaultUi::GetPropertyDataList() const {
+  return kDefaultUiPropertyData;
 }

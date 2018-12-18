@@ -25,7 +25,6 @@ CXFA_AppearanceFilter::CXFA_AppearanceFilter(CXFA_Document* doc,
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::NodeC,
                 XFA_Element::AppearanceFilter,
-                nullptr,
                 kAppearanceFilterAttributeData) {}
 
 CXFA_AppearanceFilter::~CXFA_AppearanceFilter() = default;

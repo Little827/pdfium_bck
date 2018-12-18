@@ -13,6 +13,9 @@ class CXFA_XmlConnection final : public CXFA_Node {
  public:
   CXFA_XmlConnection(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_XmlConnection() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_XMLCONNECTION_H_

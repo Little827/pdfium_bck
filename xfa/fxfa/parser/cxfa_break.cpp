@@ -41,8 +41,11 @@ CXFA_Break::CXFA_Break(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Break,
-                kBreakPropertyData,
                 kBreakAttributeData,
                 pdfium::MakeUnique<CJX_Break>(this)) {}
 
 CXFA_Break::~CXFA_Break() = default;
+
+const CXFA_Node::PropertyData* CXFA_Break::GetPropertyDataList() const {
+  return kBreakPropertyData;
+}

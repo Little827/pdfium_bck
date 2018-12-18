@@ -27,7 +27,6 @@ CXFA_ConnectString::CXFA_ConnectString(CXFA_Document* doc,
                 XFA_XDPPACKET_SourceSet,
                 XFA_ObjectType::TextNode,
                 XFA_Element::ConnectString,
-                nullptr,
                 kConnectStringAttributeData,
                 pdfium::MakeUnique<CJX_ConnectString>(this)) {}
 

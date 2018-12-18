@@ -13,6 +13,9 @@ class CXFA_Traversal final : public CXFA_Node {
  public:
   CXFA_Traversal(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Traversal() override;
+
+  // CXFA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_TRAVERSAL_H_

@@ -36,7 +36,6 @@ CXFA_ChoiceList::CXFA_ChoiceList(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::ChoiceList,
-                kChoiceListPropertyData,
                 kChoiceListAttributeData,
                 pdfium::MakeUnique<CJX_ChoiceList>(this)) {}
 
@@ -51,4 +50,8 @@ XFA_Element CXFA_ChoiceList::GetValueNodeType() const {
 
 XFA_FFWidgetType CXFA_ChoiceList::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kChoiceList;
+}
+
+const CXFA_Node::PropertyData* CXFA_ChoiceList::GetPropertyDataList() const {
+  return kChoiceListPropertyData;
 }

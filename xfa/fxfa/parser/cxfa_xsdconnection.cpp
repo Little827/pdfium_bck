@@ -30,8 +30,11 @@ CXFA_XsdConnection::CXFA_XsdConnection(CXFA_Document* doc,
                 XFA_XDPPACKET_ConnectionSet,
                 XFA_ObjectType::Node,
                 XFA_Element::XsdConnection,
-                kXsdConnectionPropertyData,
                 kXsdConnectionAttributeData,
                 pdfium::MakeUnique<CJX_XsdConnection>(this)) {}
 
 CXFA_XsdConnection::~CXFA_XsdConnection() = default;
+
+const CXFA_Node::PropertyData* CXFA_XsdConnection::GetPropertyDataList() const {
+  return kXsdConnectionPropertyData;
+}
