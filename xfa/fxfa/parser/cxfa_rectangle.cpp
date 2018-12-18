@@ -606,3 +606,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
                            cp1.y + fRadius1 * sy + offsetY));
   }
 }
+
+const CXFA_Node::PropertyData* CXFA_Rectangle::GetPropertyDataList() const {
+  return kRectanglePropertyData;
+}

@@ -24,3 +24,7 @@ CXFA_TimePatterns::CXFA_TimePatterns(CXFA_Document* doc, XFA_PacketType packet)
                 nullptr) {}
 
 CXFA_TimePatterns::~CXFA_TimePatterns() = default;
+
+const CXFA_Node::PropertyData* CXFA_TimePatterns::GetPropertyDataList() const {
+  return kTimePatternsPropertyData;
+}

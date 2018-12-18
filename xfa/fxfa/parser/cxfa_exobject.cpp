@@ -39,3 +39,7 @@ CXFA_ExObject::CXFA_ExObject(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_ExObject>(this)) {}
 
 CXFA_ExObject::~CXFA_ExObject() = default;
+
+const CXFA_Node::PropertyData* CXFA_ExObject::GetPropertyDataList() const {
+  return kExObjectPropertyData;
+}

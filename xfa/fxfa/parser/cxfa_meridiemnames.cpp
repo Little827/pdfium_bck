@@ -25,3 +25,7 @@ CXFA_MeridiemNames::CXFA_MeridiemNames(CXFA_Document* doc,
                 nullptr) {}
 
 CXFA_MeridiemNames::~CXFA_MeridiemNames() = default;
+
+const CXFA_Node::PropertyData* CXFA_MeridiemNames::GetPropertyDataList() const {
+  return kMeridiemNamesPropertyData;
+}

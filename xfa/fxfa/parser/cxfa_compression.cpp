@@ -32,3 +32,7 @@ CXFA_Compression::CXFA_Compression(CXFA_Document* doc, XFA_PacketType packet)
                 kCompressionAttributeData) {}
 
 CXFA_Compression::~CXFA_Compression() = default;
+
+const CXFA_Node::PropertyData* CXFA_Compression::GetPropertyDataList() const {
+  return kCompressionPropertyData;
+}

@@ -36,3 +36,7 @@ CXFA_Assist::CXFA_Assist(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Assist>(this)) {}
 
 CXFA_Assist::~CXFA_Assist() = default;
+
+const CXFA_Node::PropertyData* CXFA_Assist::GetPropertyDataList() const {
+  return kAssistPropertyData;
+}

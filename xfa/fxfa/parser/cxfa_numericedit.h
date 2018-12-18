@@ -14,6 +14,9 @@ class CXFA_NumericEdit final : public CXFA_Node {
   CXFA_NumericEdit(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_NumericEdit() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_Element GetValueNodeType() const override;
   XFA_FFWidgetType GetDefaultFFWidgetType() const override;
 };

@@ -78,3 +78,7 @@ void CXFA_Occur::SetMin(int32_t iMin) {
     JSObject()->SetInteger(XFA_Attribute::Max, iMax, false);
   }
 }
+
+const CXFA_Node::PropertyData* CXFA_Occur::GetPropertyDataList() const {
+  return kOccurPropertyData;
+}

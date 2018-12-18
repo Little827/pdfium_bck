@@ -24,3 +24,7 @@ CXFA_EraNames::CXFA_EraNames(CXFA_Document* doc, XFA_PacketType packet)
                 nullptr) {}
 
 CXFA_EraNames::~CXFA_EraNames() = default;
+
+const CXFA_Node::PropertyData* CXFA_EraNames::GetPropertyDataList() const {
+  return kEraNamesPropertyData;
+}

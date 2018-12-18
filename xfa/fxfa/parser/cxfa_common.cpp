@@ -36,3 +36,7 @@ CXFA_Common::CXFA_Common(CXFA_Document* doc, XFA_PacketType packet)
                 kCommonAttributeData) {}
 
 CXFA_Common::~CXFA_Common() = default;
+
+const CXFA_Node::PropertyData* CXFA_Common::GetPropertyDataList() const {
+  return kCommonPropertyData;
+}

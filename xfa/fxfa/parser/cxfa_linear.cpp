@@ -88,3 +88,7 @@ void CXFA_Linear::Draw(CXFA_Graphics* pGS,
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
 }
+
+const CXFA_Node::PropertyData* CXFA_Linear::GetPropertyDataList() const {
+  return kLinearPropertyData;
+}

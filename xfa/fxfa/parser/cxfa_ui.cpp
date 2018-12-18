@@ -56,3 +56,7 @@ bool CXFA_Ui::IsAOneOfChild(CXFA_Node* child) const {
   }
   return false;
 }
+
+const CXFA_Node::PropertyData* CXFA_Ui::GetPropertyDataList() const {
+  return kUiPropertyData;
+}

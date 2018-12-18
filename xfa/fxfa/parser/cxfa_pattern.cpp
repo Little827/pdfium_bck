@@ -84,3 +84,7 @@ void CXFA_Pattern::Draw(CXFA_Graphics* pGS,
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
 }
+
+const CXFA_Node::PropertyData* CXFA_Pattern::GetPropertyDataList() const {
+  return kPatternPropertyData;
+}

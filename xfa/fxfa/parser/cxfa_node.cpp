@@ -839,7 +839,6 @@ CXFA_Node::CXFA_Node(CXFA_Document* pDoc,
                      const AttributeData* attributes,
                      std::unique_ptr<CJX_Object> js_node)
     : CXFA_Object(pDoc, oType, eType, std::move(js_node)),
-      m_Properties(properties),
       m_Attributes(attributes),
       m_ValidPackets(validPackets),
       m_ePacket(ePacket) {
@@ -952,11 +951,12 @@ bool CXFA_Node::IsValidInPacket(XFA_PacketType packet) const {
 
 const CXFA_Node::PropertyData* CXFA_Node::GetPropertyData(
     XFA_Element property) const {
-  if (m_Properties == nullptr)
+  const PropertyData* pProperties = GetPropertyDataList();
+  if (!pProperties)
     return nullptr;
 
   for (size_t i = 0;; ++i) {
-    const PropertyData* data = m_Properties + i;
+    const PropertyData* data = pProperties + i;
     if (data->property == XFA_Element::Unknown)
       break;
     if (data->property == property)
@@ -980,11 +980,12 @@ uint8_t CXFA_Node::PropertyOccuranceCount(XFA_Element property) const {
 }
 
 Optional<XFA_Element> CXFA_Node::GetFirstPropertyWithFlag(uint8_t flag) {
-  if (m_Properties == nullptr)
+  const PropertyData* pProperties = GetPropertyDataList();
+  if (!pProperties)
     return {};
 
   for (size_t i = 0;; ++i) {
-    const PropertyData* data = m_Properties + i;
+    const PropertyData* data = pProperties + i;
     if (data->property == XFA_Element::Unknown)
       break;
     if (data->flags & flag)
@@ -1071,8 +1072,6 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeList(uint32_t dwTypeFilter,
   }
 
   if (!bFilterOneOfProperties || !nodes.empty())
-    return nodes;
-  if (m_Properties == nullptr)
     return nodes;
 
   Optional<XFA_Element> property =
@@ -2817,6 +2816,10 @@ void CXFA_Node::CreateValueNodeIfNeeded(CXFA_Value* value,
 
 XFA_Element CXFA_Node::GetValueNodeType() const {
   return XFA_Element::Text;
+}
+
+const CXFA_Node::PropertyData* CXFA_Node::GetPropertyDataList() const {
+  return nullptr;
 }
 
 CXFA_Node* CXFA_Node::GetUIChildNode() {

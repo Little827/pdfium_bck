@@ -40,3 +40,7 @@ CXFA_Filter::CXFA_Filter(CXFA_Document* doc, XFA_PacketType packet)
                 pdfium::MakeUnique<CJX_Filter>(this)) {}
 
 CXFA_Filter::~CXFA_Filter() = default;
+
+const CXFA_Node::PropertyData* CXFA_Filter::GetPropertyDataList() const {
+  return kFilterPropertyData;
+}

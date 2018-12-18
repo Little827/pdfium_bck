@@ -76,3 +76,7 @@ CXFA_Submit* CXFA_Event::GetSubmitIfExists() {
   return GetChild<CXFA_Submit>(0, XFA_Element::Submit, false);
 }
 #endif  // PDF_XFA_ELEMENT_SUBMIT_ENABLED
+
+const CXFA_Node::PropertyData* CXFA_Event::GetPropertyDataList() const {
+  return kEventPropertyData;
+}

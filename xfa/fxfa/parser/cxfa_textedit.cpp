@@ -47,3 +47,7 @@ CXFA_TextEdit::~CXFA_TextEdit() = default;
 XFA_FFWidgetType CXFA_TextEdit::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kTextEdit;
 }
+
+const CXFA_Node::PropertyData* CXFA_TextEdit::GetPropertyDataList() const {
+  return kTextEditPropertyData;
+}

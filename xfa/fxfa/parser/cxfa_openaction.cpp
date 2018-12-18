@@ -29,3 +29,7 @@ CXFA_OpenAction::CXFA_OpenAction(CXFA_Document* doc, XFA_PacketType packet)
                 kOpenActionAttributeData) {}
 
 CXFA_OpenAction::~CXFA_OpenAction() = default;
+
+const CXFA_Node::PropertyData* CXFA_OpenAction::GetPropertyDataList() const {
+  return kOpenActionPropertyData;
+}

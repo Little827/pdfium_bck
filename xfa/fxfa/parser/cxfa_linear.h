@@ -22,6 +22,9 @@ class CXFA_Linear final : public CXFA_Node {
   CXFA_Linear(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Linear() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   void Draw(CXFA_Graphics* pGS,
             CXFA_GEPath* fillPath,
             FX_ARGB crStart,

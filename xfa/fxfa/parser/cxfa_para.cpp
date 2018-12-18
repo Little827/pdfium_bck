@@ -89,3 +89,7 @@ float CXFA_Para::GetSpaceBelow() {
 float CXFA_Para::GetTextIndent() {
   return JSObject()->GetMeasure(XFA_Attribute::TextIndent).ToUnit(XFA_Unit::Pt);
 }
+
+const CXFA_Node::PropertyData* CXFA_Para::GetPropertyDataList() const {
+  return kParaPropertyData;
+}

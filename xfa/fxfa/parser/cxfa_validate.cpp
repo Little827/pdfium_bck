@@ -151,3 +151,7 @@ WideString CXFA_Validate::GetPicture() {
 CXFA_Script* CXFA_Validate::GetScriptIfExists() {
   return GetChild<CXFA_Script>(0, XFA_Element::Script, false);
 }
+
+const CXFA_Node::PropertyData* CXFA_Validate::GetPropertyDataList() const {
+  return kValidatePropertyData;
+}

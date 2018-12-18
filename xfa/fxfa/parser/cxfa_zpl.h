@@ -13,6 +13,9 @@ class CXFA_Zpl final : public CXFA_Node {
  public:
   CXFA_Zpl(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Zpl() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_ZPL_H_

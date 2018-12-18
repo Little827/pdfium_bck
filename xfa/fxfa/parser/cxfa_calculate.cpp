@@ -60,3 +60,7 @@ WideString CXFA_Calculate::GetMessageText() {
   CXFA_Text* text = pNode->GetChild<CXFA_Text>(0, XFA_Element::Text, false);
   return text ? text->GetContent() : WideString();
 }
+
+const CXFA_Node::PropertyData* CXFA_Calculate::GetPropertyDataList() const {
+  return kCalculatePropertyData;
+}

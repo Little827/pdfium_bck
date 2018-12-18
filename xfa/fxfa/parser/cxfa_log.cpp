@@ -32,3 +32,7 @@ CXFA_Log::CXFA_Log(CXFA_Document* doc, XFA_PacketType packet)
                 kLogAttributeData) {}
 
 CXFA_Log::~CXFA_Log() = default;
+
+const CXFA_Node::PropertyData* CXFA_Log::GetPropertyDataList() const {
+  return kLogPropertyData;
+}

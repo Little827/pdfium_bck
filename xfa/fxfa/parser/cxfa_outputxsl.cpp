@@ -29,3 +29,7 @@ CXFA_OutputXSL::CXFA_OutputXSL(CXFA_Document* doc, XFA_PacketType packet)
                 kOutputXSLAttributeData) {}
 
 CXFA_OutputXSL::~CXFA_OutputXSL() = default;
+
+const CXFA_Node::PropertyData* CXFA_OutputXSL::GetPropertyDataList() const {
+  return kOutputXSLPropertyData;
+}

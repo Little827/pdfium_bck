@@ -21,6 +21,9 @@ class CXFA_Stipple final : public CXFA_Node {
   CXFA_Stipple(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Stipple() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   void Draw(CXFA_Graphics* pGS,
             CXFA_GEPath* fillPath,
             const CFX_RectF& rtFill,

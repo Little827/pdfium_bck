@@ -13,6 +13,9 @@ class CXFA_Solid final : public CXFA_Node {
  public:
   CXFA_Solid(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Solid() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_SOLID_H_

@@ -17,6 +17,9 @@ class CXFA_Event final : public CXFA_Node {
   CXFA_Event(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Event() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_AttributeValue GetActivity();
   XFA_Element GetEventType() const;
   CXFA_Script* GetScriptIfExists();

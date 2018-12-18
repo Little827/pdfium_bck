@@ -13,6 +13,9 @@ class CXFA_Transform final : public CXFA_Node {
  public:
   CXFA_Transform(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Transform() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_TRANSFORM_H_

@@ -38,3 +38,7 @@ CXFA_Template::CXFA_Template(CXFA_Document* doc, XFA_PacketType packet)
           pdfium::MakeUnique<CJX_Template>(this)) {}
 
 CXFA_Template::~CXFA_Template() = default;
+
+const CXFA_Node::PropertyData* CXFA_Template::GetPropertyDataList() const {
+  return kTemplatePropertyData;
+}

@@ -152,3 +152,7 @@ void CXFA_Fill::DrawPattern(CXFA_Graphics* pGS,
   if (pattern)
     pattern->Draw(pGS, fillPath, GetColor(false), rtWidget, matrix);
 }
+
+const CXFA_Node::PropertyData* CXFA_Fill::GetPropertyDataList() const {
+  return kFillPropertyData;
+}

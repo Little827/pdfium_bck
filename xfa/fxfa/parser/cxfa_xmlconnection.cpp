@@ -34,3 +34,7 @@ CXFA_XmlConnection::CXFA_XmlConnection(CXFA_Document* doc,
                 pdfium::MakeUnique<CJX_XmlConnection>(this)) {}
 
 CXFA_XmlConnection::~CXFA_XmlConnection() = default;
+
+const CXFA_Node::PropertyData* CXFA_XmlConnection::GetPropertyDataList() const {
+  return kXmlConnectionPropertyData;
+}

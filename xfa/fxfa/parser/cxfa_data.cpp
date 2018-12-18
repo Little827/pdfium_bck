@@ -33,3 +33,7 @@ CXFA_Data::CXFA_Data(CXFA_Document* doc, XFA_PacketType packet)
                 kDataAttributeData) {}
 
 CXFA_Data::~CXFA_Data() = default;
+
+const CXFA_Node::PropertyData* CXFA_Data::GetPropertyDataList() const {
+  return kDataPropertyData;
+}

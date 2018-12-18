@@ -25,3 +25,8 @@ CXFA_CurrencySymbols::CXFA_CurrencySymbols(CXFA_Document* doc,
                 nullptr) {}
 
 CXFA_CurrencySymbols::~CXFA_CurrencySymbols() = default;
+
+const CXFA_Node::PropertyData* CXFA_CurrencySymbols::GetPropertyDataList()
+    const {
+  return kCurrencySymbolsPropertyData;
+}

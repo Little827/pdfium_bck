@@ -28,3 +28,7 @@ CXFA_DayNames::CXFA_DayNames(CXFA_Document* doc, XFA_PacketType packet)
                 kDayNamesAttributeData) {}
 
 CXFA_DayNames::~CXFA_DayNames() = default;
+
+const CXFA_Node::PropertyData* CXFA_DayNames::GetPropertyDataList() const {
+  return kDayNamesPropertyData;
+}

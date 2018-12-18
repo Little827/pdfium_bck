@@ -34,3 +34,7 @@ CXFA_LabelPrinter::CXFA_LabelPrinter(CXFA_Document* doc, XFA_PacketType packet)
                 kLabelPrinterAttributeData) {}
 
 CXFA_LabelPrinter::~CXFA_LabelPrinter() = default;
+
+const CXFA_Node::PropertyData* CXFA_LabelPrinter::GetPropertyDataList() const {
+  return kLabelPrinterPropertyData;
+}

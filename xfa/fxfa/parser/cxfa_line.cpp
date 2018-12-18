@@ -52,3 +52,7 @@ bool CXFA_Line::GetSlope() {
 CXFA_Edge* CXFA_Line::GetEdgeIfExists() {
   return GetChild<CXFA_Edge>(0, XFA_Element::Edge, false);
 }
+
+const CXFA_Node::PropertyData* CXFA_Line::GetPropertyDataList() const {
+  return kLinePropertyData;
+}

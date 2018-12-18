@@ -33,3 +33,7 @@ CXFA_Zpl::CXFA_Zpl(CXFA_Document* doc, XFA_PacketType packet)
                 kZplAttributeData) {}
 
 CXFA_Zpl::~CXFA_Zpl() = default;
+
+const CXFA_Node::PropertyData* CXFA_Zpl::GetPropertyDataList() const {
+  return kZplPropertyData;
+}
