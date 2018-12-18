@@ -59,3 +59,7 @@ void CXFA_Color::SetValue(FX_ARGB color) {
 const CXFA_Node::PropertyData* CXFA_Color::GetPropertyDataList() const {
   return kColorPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Color::GetAttributeDataList() const {
+  return kColorAttributeData;
+}

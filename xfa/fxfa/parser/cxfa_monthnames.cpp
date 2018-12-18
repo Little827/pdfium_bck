@@ -31,3 +31,7 @@ CXFA_MonthNames::~CXFA_MonthNames() = default;
 const CXFA_Node::PropertyData* CXFA_MonthNames::GetPropertyDataList() const {
   return kMonthNamesPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_MonthNames::GetAttributeDataList() const {
+  return kMonthNamesAttributeData;
+}

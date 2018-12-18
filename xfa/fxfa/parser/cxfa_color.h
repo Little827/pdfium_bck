@@ -18,6 +18,7 @@ class CXFA_Color final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   FX_ARGB GetValue();
   FX_ARGB GetValueOrDefault(FX_ARGB defaultValue);

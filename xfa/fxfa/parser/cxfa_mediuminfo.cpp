@@ -32,3 +32,7 @@ CXFA_MediumInfo::~CXFA_MediumInfo() = default;
 const CXFA_Node::PropertyData* CXFA_MediumInfo::GetPropertyDataList() const {
   return kMediumInfoPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_MediumInfo::GetAttributeDataList() const {
+  return kMediumInfoAttributeData;
+}

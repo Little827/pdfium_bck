@@ -32,3 +32,7 @@ CXFA_OpenAction::~CXFA_OpenAction() = default;
 const CXFA_Node::PropertyData* CXFA_OpenAction::GetPropertyDataList() const {
   return kOpenActionPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_OpenAction::GetAttributeDataList() const {
+  return kOpenActionAttributeData;
+}

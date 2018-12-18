@@ -72,3 +72,7 @@ void CXFA_Stipple::Draw(CXFA_Graphics* pGS,
 const CXFA_Node::PropertyData* CXFA_Stipple::GetPropertyDataList() const {
   return kStipplePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Stipple::GetAttributeDataList() const {
+  return kStippleAttributeData;
+}

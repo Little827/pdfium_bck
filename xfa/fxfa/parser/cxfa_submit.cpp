@@ -59,3 +59,7 @@ WideString CXFA_Submit::GetSubmitXDPContent() {
 const CXFA_Node::PropertyData* CXFA_Submit::GetPropertyDataList() const {
   return kSubmitPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Submit::GetAttributeDataList() const {
+  return kSubmitAttributeData;
+}

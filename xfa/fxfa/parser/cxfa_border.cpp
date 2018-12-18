@@ -45,3 +45,7 @@ CXFA_Border::~CXFA_Border() = default;
 const CXFA_Node::PropertyData* CXFA_Border::GetPropertyDataList() const {
   return kBorderPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Border::GetAttributeDataList() const {
+  return kBorderAttributeData;
+}

@@ -19,6 +19,7 @@ class CXFA_Event final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   XFA_AttributeValue GetActivity();
   XFA_Element GetEventType() const;

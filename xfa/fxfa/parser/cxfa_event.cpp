@@ -79,3 +79,7 @@ CXFA_Submit* CXFA_Event::GetSubmitIfExists() {
 const CXFA_Node::PropertyData* CXFA_Event::GetPropertyDataList() const {
   return kEventPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Event::GetAttributeDataList() const {
+  return kEventAttributeData;
+}

@@ -42,3 +42,8 @@ const CXFA_Node::PropertyData* CXFA_ViewerPreferences::GetPropertyDataList()
     const {
   return kViewerPreferencesPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_ViewerPreferences::GetAttributeDataList()
+    const {
+  return kViewerPreferencesAttributeData;
+}

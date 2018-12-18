@@ -35,3 +35,7 @@ CXFA_Log::~CXFA_Log() = default;
 const CXFA_Node::PropertyData* CXFA_Log::GetPropertyDataList() const {
   return kLogPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Log::GetAttributeDataList() const {
+  return kLogAttributeData;
+}

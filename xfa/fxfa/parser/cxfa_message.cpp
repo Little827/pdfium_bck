@@ -41,3 +41,7 @@ CXFA_Message::~CXFA_Message() = default;
 const CXFA_Node::PropertyData* CXFA_Message::GetPropertyDataList() const {
   return kMessagePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Message::GetAttributeDataList() const {
+  return kMessageAttributeData;
+}

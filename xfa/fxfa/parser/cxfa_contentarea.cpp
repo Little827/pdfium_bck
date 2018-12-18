@@ -44,3 +44,7 @@ CXFA_ContentArea::~CXFA_ContentArea() = default;
 const CXFA_Node::PropertyData* CXFA_ContentArea::GetPropertyDataList() const {
   return kContentAreaPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_ContentArea::GetAttributeDataList() const {
+  return kContentAreaAttributeData;
+}

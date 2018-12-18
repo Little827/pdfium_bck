@@ -155,3 +155,7 @@ void CXFA_Fill::DrawPattern(CXFA_Graphics* pGS,
 const CXFA_Node::PropertyData* CXFA_Fill::GetPropertyDataList() const {
   return kFillPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Fill::GetAttributeDataList() const {
+  return kFillAttributeData;
+}

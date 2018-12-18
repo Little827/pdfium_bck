@@ -40,3 +40,7 @@ CXFA_Encrypt::~CXFA_Encrypt() = default;
 const CXFA_Node::PropertyData* CXFA_Encrypt::GetPropertyDataList() const {
   return kEncryptPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Encrypt::GetAttributeDataList() const {
+  return kEncryptAttributeData;
+}

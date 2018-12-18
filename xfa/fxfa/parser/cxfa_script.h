@@ -23,6 +23,7 @@ class CXFA_Script final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   Type GetContentType();
   XFA_AttributeValue GetRunAt();

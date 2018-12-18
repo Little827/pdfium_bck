@@ -40,3 +40,7 @@ CXFA_Permissions::~CXFA_Permissions() = default;
 const CXFA_Node::PropertyData* CXFA_Permissions::GetPropertyDataList() const {
   return kPermissionsPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Permissions::GetAttributeDataList() const {
+  return kPermissionsAttributeData;
+}

@@ -31,3 +31,7 @@ CXFA_DayNames::~CXFA_DayNames() = default;
 const CXFA_Node::PropertyData* CXFA_DayNames::GetPropertyDataList() const {
   return kDayNamesPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_DayNames::GetAttributeDataList() const {
+  return kDayNamesAttributeData;
+}

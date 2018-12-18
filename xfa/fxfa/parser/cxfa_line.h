@@ -18,6 +18,7 @@ class CXFA_Line final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   XFA_AttributeValue GetHand();
   bool GetSlope();

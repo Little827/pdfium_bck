@@ -42,3 +42,8 @@ CXFA_Certificates::~CXFA_Certificates() = default;
 const CXFA_Node::PropertyData* CXFA_Certificates::GetPropertyDataList() const {
   return kCertificatesPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Certificates::GetAttributeDataList()
+    const {
+  return kCertificatesAttributeData;
+}

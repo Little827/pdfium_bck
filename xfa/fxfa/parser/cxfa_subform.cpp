@@ -76,3 +76,7 @@ CXFA_Subform::~CXFA_Subform() = default;
 const CXFA_Node::PropertyData* CXFA_Subform::GetPropertyDataList() const {
   return kSubformPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Subform::GetAttributeDataList() const {
+  return kSubformAttributeData;
+}

@@ -37,3 +37,8 @@ const CXFA_Node::PropertyData* CXFA_InstanceManager::GetPropertyDataList()
     const {
   return kInstanceManagerPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_InstanceManager::GetAttributeDataList()
+    const {
+  return kInstanceManagerAttributeData;
+}

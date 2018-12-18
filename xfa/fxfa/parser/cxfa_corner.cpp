@@ -47,3 +47,7 @@ CXFA_Corner::~CXFA_Corner() = default;
 const CXFA_Node::PropertyData* CXFA_Corner::GetPropertyDataList() const {
   return kCornerPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Corner::GetAttributeDataList() const {
+  return kCornerAttributeData;
+}

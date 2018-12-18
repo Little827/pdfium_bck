@@ -36,3 +36,7 @@ CXFA_Pcl::~CXFA_Pcl() = default;
 const CXFA_Node::PropertyData* CXFA_Pcl::GetPropertyDataList() const {
   return kPclPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Pcl::GetAttributeDataList() const {
+  return kPclAttributeData;
+}

@@ -38,3 +38,7 @@ CXFA_Format::~CXFA_Format() = default;
 const CXFA_Node::PropertyData* CXFA_Format::GetPropertyDataList() const {
   return kFormatPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Format::GetAttributeDataList() const {
+  return kFormatAttributeData;
+}

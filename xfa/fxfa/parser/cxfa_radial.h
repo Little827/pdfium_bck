@@ -21,6 +21,7 @@ class CXFA_Radial final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   void Draw(CXFA_Graphics* pGS,
             CXFA_GEPath* fillPath,

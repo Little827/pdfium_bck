@@ -33,3 +33,7 @@ CXFA_Xsl::~CXFA_Xsl() = default;
 const CXFA_Node::PropertyData* CXFA_Xsl::GetPropertyDataList() const {
   return kXslPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Xsl::GetAttributeDataList() const {
+  return kXslAttributeData;
+}

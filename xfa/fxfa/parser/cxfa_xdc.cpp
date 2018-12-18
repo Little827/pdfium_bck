@@ -33,3 +33,7 @@ CXFA_Xdc::~CXFA_Xdc() = default;
 const CXFA_Node::PropertyData* CXFA_Xdc::GetPropertyDataList() const {
   return kXdcPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Xdc::GetAttributeDataList() const {
+  return kXdcAttributeData;
+}

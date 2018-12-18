@@ -39,3 +39,7 @@ CXFA_Common::~CXFA_Common() = default;
 const CXFA_Node::PropertyData* CXFA_Common::GetPropertyDataList() const {
   return kCommonPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Common::GetAttributeDataList() const {
+  return kCommonAttributeData;
+}

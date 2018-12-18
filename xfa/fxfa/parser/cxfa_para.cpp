@@ -92,3 +92,7 @@ float CXFA_Para::GetTextIndent() {
 const CXFA_Node::PropertyData* CXFA_Para::GetPropertyDataList() const {
   return kParaPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Para::GetAttributeDataList() const {
+  return kParaAttributeData;
+}

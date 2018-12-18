@@ -16,6 +16,7 @@ class CXFA_Command final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_COMMAND_H_

@@ -37,3 +37,7 @@ CXFA_Traversal::~CXFA_Traversal() = default;
 const CXFA_Node::PropertyData* CXFA_Traversal::GetPropertyDataList() const {
   return kTraversalPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Traversal::GetAttributeDataList() const {
+  return kTraversalAttributeData;
+}

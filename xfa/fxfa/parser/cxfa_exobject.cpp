@@ -42,3 +42,7 @@ CXFA_ExObject::~CXFA_ExObject() = default;
 const CXFA_Node::PropertyData* CXFA_ExObject::GetPropertyDataList() const {
   return kExObjectPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_ExObject::GetAttributeDataList() const {
+  return kExObjectAttributeData;
+}

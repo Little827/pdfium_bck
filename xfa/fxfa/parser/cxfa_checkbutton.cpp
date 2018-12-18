@@ -61,3 +61,7 @@ bool CXFA_CheckButton::IsAllowNeutral() {
 const CXFA_Node::PropertyData* CXFA_CheckButton::GetPropertyDataList() const {
   return kCheckButtonPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_CheckButton::GetAttributeDataList() const {
+  return kCheckButtonAttributeData;
+}

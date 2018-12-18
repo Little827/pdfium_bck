@@ -35,3 +35,7 @@ CXFA_Pdfa::~CXFA_Pdfa() = default;
 const CXFA_Node::PropertyData* CXFA_Pdfa::GetPropertyDataList() const {
   return kPdfaPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Pdfa::GetAttributeDataList() const {
+  return kPdfaAttributeData;
+}

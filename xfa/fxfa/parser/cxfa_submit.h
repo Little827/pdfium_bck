@@ -17,6 +17,7 @@ class CXFA_Submit final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   bool IsSubmitEmbedPDF();
   XFA_AttributeValue GetSubmitFormat();

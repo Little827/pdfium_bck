@@ -36,3 +36,7 @@ CXFA_Data::~CXFA_Data() = default;
 const CXFA_Node::PropertyData* CXFA_Data::GetPropertyDataList() const {
   return kDataPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Data::GetAttributeDataList() const {
+  return kDataAttributeData;
+}

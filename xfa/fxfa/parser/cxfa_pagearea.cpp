@@ -50,3 +50,7 @@ CXFA_PageArea::~CXFA_PageArea() = default;
 const CXFA_Node::PropertyData* CXFA_PageArea::GetPropertyDataList() const {
   return kPageAreaPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_PageArea::GetAttributeDataList() const {
+  return kPageAreaAttributeData;
+}

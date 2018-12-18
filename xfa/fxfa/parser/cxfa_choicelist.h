@@ -16,6 +16,7 @@ class CXFA_ChoiceList final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   XFA_Element GetValueNodeType() const override;
   XFA_FFWidgetType GetDefaultFFWidgetType() const override;

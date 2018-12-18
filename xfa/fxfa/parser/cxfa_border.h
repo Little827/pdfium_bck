@@ -16,6 +16,7 @@ class CXFA_Border final : public CXFA_Rectangle {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_BORDER_H_

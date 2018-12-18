@@ -41,3 +41,7 @@ CXFA_Desc::~CXFA_Desc() = default;
 const CXFA_Node::PropertyData* CXFA_Desc::GetPropertyDataList() const {
   return kDescPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Desc::GetAttributeDataList() const {
+  return kDescAttributeData;
+}

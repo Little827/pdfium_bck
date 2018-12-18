@@ -154,3 +154,7 @@ CXFA_Script* CXFA_Validate::GetScriptIfExists() {
 const CXFA_Node::PropertyData* CXFA_Validate::GetPropertyDataList() const {
   return kValidatePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Validate::GetAttributeDataList() const {
+  return kValidateAttributeData;
+}

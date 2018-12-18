@@ -372,6 +372,9 @@ constexpr uint8_t kMaxExecuteRecursion = 2;
 const CXFA_Node::PropertyData kNodePropertyData[] = {
     {XFA_Element::Unknown, 0, 0}};
 
+const CXFA_Node::AttributeData kNodeAttributeData[] = {
+    {XFA_Attribute::Unknown, XFA_AttributeType::Integer, nullptr}};
+
 constexpr uint8_t g_inv_base64[128] = {
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
     255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
@@ -841,7 +844,6 @@ CXFA_Node::CXFA_Node(CXFA_Document* pDoc,
                      const AttributeData* attributes,
                      std::unique_ptr<CJX_Object> js_node)
     : CXFA_Object(pDoc, oType, eType, std::move(js_node)),
-      m_Attributes(attributes),
       m_ValidPackets(validPackets),
       m_ePacket(ePacket) {
   ASSERT(m_pDocument);
@@ -990,11 +992,9 @@ Optional<XFA_Element> CXFA_Node::GetFirstPropertyWithFlag(uint8_t flag) {
 
 const CXFA_Node::AttributeData* CXFA_Node::GetAttributeData(
     XFA_Attribute attr) const {
-  if (m_Attributes == nullptr)
-    return nullptr;
-
+  const AttributeData* pAttributes = GetAttributeDataList();
   for (size_t i = 0;; ++i) {
-    const AttributeData* cur_attr = &m_Attributes[i];
+    const AttributeData* cur_attr = pAttributes + i;
     if (cur_attr->attribute == XFA_Attribute::Unknown)
       break;
     if (cur_attr->attribute == attr)
@@ -1009,9 +1009,7 @@ bool CXFA_Node::HasAttribute(XFA_Attribute attr) const {
 
 // Note: This Method assumes that i is a valid index ....
 XFA_Attribute CXFA_Node::GetAttribute(size_t i) const {
-  if (m_Attributes == nullptr)
-    return XFA_Attribute::Unknown;
-  return m_Attributes[i].attribute;
+  return GetAttributeDataList()[i].attribute;
 }
 
 XFA_AttributeType CXFA_Node::GetAttributeType(XFA_Attribute type) const {
@@ -2814,6 +2812,10 @@ XFA_Element CXFA_Node::GetValueNodeType() const {
 
 const CXFA_Node::PropertyData* CXFA_Node::GetPropertyDataList() const {
   return kNodePropertyData;
+}
+
+const CXFA_Node::AttributeData* CXFA_Node::GetAttributeDataList() const {
+  return kNodeAttributeData;
 }
 
 CXFA_Node* CXFA_Node::GetUIChildNode() {

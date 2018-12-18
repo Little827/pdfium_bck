@@ -41,3 +41,7 @@ CXFA_Traverse::~CXFA_Traverse() {}
 const CXFA_Node::PropertyData* CXFA_Traverse::GetPropertyDataList() const {
   return kTraversePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Traverse::GetAttributeDataList() const {
+  return kTraverseAttributeData;
+}

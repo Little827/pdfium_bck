@@ -37,3 +37,8 @@ CXFA_LabelPrinter::~CXFA_LabelPrinter() = default;
 const CXFA_Node::PropertyData* CXFA_LabelPrinter::GetPropertyDataList() const {
   return kLabelPrinterPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_LabelPrinter::GetAttributeDataList()
+    const {
+  return kLabelPrinterAttributeData;
+}

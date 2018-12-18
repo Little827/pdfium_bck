@@ -35,3 +35,7 @@ CXFA_Compression::~CXFA_Compression() = default;
 const CXFA_Node::PropertyData* CXFA_Compression::GetPropertyDataList() const {
   return kCompressionPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Compression::GetAttributeDataList() const {
+  return kCompressionAttributeData;
+}

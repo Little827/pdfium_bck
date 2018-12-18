@@ -37,3 +37,8 @@ const CXFA_Node::PropertyData* CXFA_CalendarSymbols::GetPropertyDataList()
     const {
   return kCalendarSymbolsPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_CalendarSymbols::GetAttributeDataList()
+    const {
+  return kCalendarSymbolsAttributeData;
+}

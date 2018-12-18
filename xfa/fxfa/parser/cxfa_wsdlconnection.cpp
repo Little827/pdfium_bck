@@ -43,3 +43,8 @@ const CXFA_Node::PropertyData* CXFA_WsdlConnection::GetPropertyDataList()
     const {
   return kWsdlConnectionPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_WsdlConnection::GetAttributeDataList()
+    const {
+  return kWsdlConnectionAttributeData;
+}

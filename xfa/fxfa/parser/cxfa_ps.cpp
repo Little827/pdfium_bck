@@ -36,3 +36,7 @@ CXFA_Ps::~CXFA_Ps() = default;
 const CXFA_Node::PropertyData* CXFA_Ps::GetPropertyDataList() const {
   return kPsPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Ps::GetAttributeDataList() const {
+  return kPsAttributeData;
+}

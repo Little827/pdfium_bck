@@ -39,3 +39,7 @@ XFA_FFWidgetType CXFA_DefaultUi::GetDefaultFFWidgetType() const {
 const CXFA_Node::PropertyData* CXFA_DefaultUi::GetPropertyDataList() const {
   return kDefaultUiPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_DefaultUi::GetAttributeDataList() const {
+  return kDefaultUiAttributeData;
+}

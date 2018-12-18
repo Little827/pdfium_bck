@@ -65,3 +65,7 @@ CXFA_ExclGroup::~CXFA_ExclGroup() = default;
 const CXFA_Node::PropertyData* CXFA_ExclGroup::GetPropertyDataList() const {
   return kExclGroupPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_ExclGroup::GetAttributeDataList() const {
+  return kExclGroupAttributeData;
+}

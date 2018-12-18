@@ -32,3 +32,7 @@ CXFA_Debug::~CXFA_Debug() = default;
 const CXFA_Node::PropertyData* CXFA_Debug::GetPropertyDataList() const {
   return kDebugPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Debug::GetAttributeDataList() const {
+  return kDebugAttributeData;
+}

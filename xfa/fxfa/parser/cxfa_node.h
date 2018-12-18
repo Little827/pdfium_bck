@@ -386,6 +386,7 @@ class CXFA_Node : public CXFA_Object {
             const AttributeData* attributes);
 
   virtual const PropertyData* GetPropertyDataList() const;
+  virtual const AttributeData* GetAttributeDataList() const;
   virtual XFA_Element GetValueNodeType() const;
   virtual XFA_FFWidgetType GetDefaultFFWidgetType() const;
 
@@ -472,7 +473,6 @@ class CXFA_Node : public CXFA_Object {
                        CXFA_Event* event,
                        CXFA_EventParam* pEventParam);
 
-  const AttributeData* const m_Attributes;
   const uint32_t m_ValidPackets;
 
   // These members are responsible for building the CXFA_Node tree. Node

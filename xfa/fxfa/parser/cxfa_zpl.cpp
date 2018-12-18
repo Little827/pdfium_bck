@@ -36,3 +36,7 @@ CXFA_Zpl::~CXFA_Zpl() = default;
 const CXFA_Node::PropertyData* CXFA_Zpl::GetPropertyDataList() const {
   return kZplPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Zpl::GetAttributeDataList() const {
+  return kZplAttributeData;
+}

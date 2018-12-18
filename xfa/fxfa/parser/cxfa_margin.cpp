@@ -73,3 +73,7 @@ Optional<float> CXFA_Margin::TryBottomInset() const {
 const CXFA_Node::PropertyData* CXFA_Margin::GetPropertyDataList() const {
   return kMarginPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Margin::GetAttributeDataList() const {
+  return kMarginAttributeData;
+}

@@ -75,3 +75,7 @@ void CXFA_Radial::Draw(CXFA_Graphics* pGS,
 const CXFA_Node::PropertyData* CXFA_Radial::GetPropertyDataList() const {
   return kRadialPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Radial::GetAttributeDataList() const {
+  return kRadialAttributeData;
+}

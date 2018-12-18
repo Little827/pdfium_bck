@@ -40,3 +40,7 @@ CXFA_Manifest::~CXFA_Manifest() = default;
 const CXFA_Node::PropertyData* CXFA_Manifest::GetPropertyDataList() const {
   return kManifestPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Manifest::GetAttributeDataList() const {
+  return kManifestAttributeData;
+}

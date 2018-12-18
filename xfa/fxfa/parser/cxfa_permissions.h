@@ -16,6 +16,7 @@ class CXFA_Permissions final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_PERMISSIONS_H_

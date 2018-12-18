@@ -91,3 +91,7 @@ void CXFA_Linear::Draw(CXFA_Graphics* pGS,
 const CXFA_Node::PropertyData* CXFA_Linear::GetPropertyDataList() const {
   return kLinearPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Linear::GetAttributeDataList() const {
+  return kLinearAttributeData;
+}

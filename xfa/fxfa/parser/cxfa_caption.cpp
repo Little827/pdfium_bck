@@ -78,3 +78,7 @@ CXFA_Value* CXFA_Caption::GetValueIfExists() {
 const CXFA_Node::PropertyData* CXFA_Caption::GetPropertyDataList() const {
   return kCaptionPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Caption::GetAttributeDataList() const {
+  return kCaptionAttributeData;
+}

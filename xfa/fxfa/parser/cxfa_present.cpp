@@ -45,3 +45,7 @@ CXFA_Present::~CXFA_Present() = default;
 const CXFA_Node::PropertyData* CXFA_Present::GetPropertyDataList() const {
   return kPresentPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Present::GetAttributeDataList() const {
+  return kPresentAttributeData;
+}

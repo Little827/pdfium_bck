@@ -138,3 +138,7 @@ FX_ARGB CXFA_Font::GetColor() {
 const CXFA_Node::PropertyData* CXFA_Font::GetPropertyDataList() const {
   return kFontPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Font::GetAttributeDataList() const {
+  return kFontAttributeData;
+}

@@ -111,3 +111,7 @@ CXFA_Image* CXFA_Value::GetImageIfExists() const {
 const CXFA_Node::PropertyData* CXFA_Value::GetPropertyDataList() const {
   return kValuePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Value::GetAttributeDataList() const {
+  return kValueAttributeData;
+}

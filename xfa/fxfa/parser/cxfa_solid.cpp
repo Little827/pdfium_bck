@@ -37,3 +37,7 @@ CXFA_Solid::~CXFA_Solid() = default;
 const CXFA_Node::PropertyData* CXFA_Solid::GetPropertyDataList() const {
   return kSolidPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Solid::GetAttributeDataList() const {
+  return kSolidAttributeData;
+}

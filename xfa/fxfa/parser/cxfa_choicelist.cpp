@@ -55,3 +55,7 @@ XFA_FFWidgetType CXFA_ChoiceList::GetDefaultFFWidgetType() const {
 const CXFA_Node::PropertyData* CXFA_ChoiceList::GetPropertyDataList() const {
   return kChoiceListPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_ChoiceList::GetAttributeDataList() const {
+  return kChoiceListAttributeData;
+}

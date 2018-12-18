@@ -63,3 +63,7 @@ CXFA_Draw::~CXFA_Draw() = default;
 const CXFA_Node::PropertyData* CXFA_Draw::GetPropertyDataList() const {
   return kDrawPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Draw::GetAttributeDataList() const {
+  return kDrawAttributeData;
+}

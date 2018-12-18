@@ -32,3 +32,7 @@ CXFA_Acrobat7::~CXFA_Acrobat7() = default;
 const CXFA_Node::PropertyData* CXFA_Acrobat7::GetPropertyDataList() const {
   return kAcrobat7PropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Acrobat7::GetAttributeDataList() const {
+  return kAcrobat7AttributeData;
+}

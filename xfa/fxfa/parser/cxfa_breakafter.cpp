@@ -43,3 +43,7 @@ CXFA_BreakAfter::~CXFA_BreakAfter() = default;
 const CXFA_Node::PropertyData* CXFA_BreakAfter::GetPropertyDataList() const {
   return kBreakAfterPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_BreakAfter::GetAttributeDataList() const {
+  return kBreakAfterAttributeData;
+}

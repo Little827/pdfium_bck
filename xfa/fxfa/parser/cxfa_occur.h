@@ -21,6 +21,7 @@ class CXFA_Occur final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   int32_t GetMax();
   void SetMax(int32_t iMax);

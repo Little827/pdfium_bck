@@ -41,3 +41,7 @@ CXFA_Template::~CXFA_Template() = default;
 const CXFA_Node::PropertyData* CXFA_Template::GetPropertyDataList() const {
   return kTemplatePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Template::GetAttributeDataList() const {
+  return kTemplateAttributeData;
+}

@@ -81,3 +81,7 @@ void CXFA_Occur::SetMin(int32_t iMin) {
 const CXFA_Node::PropertyData* CXFA_Occur::GetPropertyDataList() const {
   return kOccurPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Occur::GetAttributeDataList() const {
+  return kOccurAttributeData;
+}

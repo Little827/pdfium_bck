@@ -47,3 +47,7 @@ XFA_AttributeValue CXFA_Button::GetHighlight() {
 const CXFA_Node::PropertyData* CXFA_Button::GetPropertyDataList() const {
   return kButtonPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Button::GetAttributeDataList() const {
+  return kButtonAttributeData;
+}

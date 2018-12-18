@@ -35,3 +35,7 @@ CXFA_Transform::~CXFA_Transform() = default;
 const CXFA_Node::PropertyData* CXFA_Transform::GetPropertyDataList() const {
   return kTransformPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Transform::GetAttributeDataList() const {
+  return kTransformAttributeData;
+}

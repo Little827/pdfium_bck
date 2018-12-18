@@ -42,3 +42,7 @@ CXFA_Command::~CXFA_Command() = default;
 const CXFA_Node::PropertyData* CXFA_Command::GetPropertyDataList() const {
   return kCommandPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Command::GetAttributeDataList() const {
+  return kCommandAttributeData;
+}

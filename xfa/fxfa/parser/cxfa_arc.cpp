@@ -44,3 +44,7 @@ CXFA_Arc::~CXFA_Arc() = default;
 const CXFA_Node::PropertyData* CXFA_Arc::GetPropertyDataList() const {
   return kArcPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Arc::GetAttributeDataList() const {
+  return kArcAttributeData;
+}

@@ -55,3 +55,7 @@ CXFA_Edge* CXFA_Line::GetEdgeIfExists() {
 const CXFA_Node::PropertyData* CXFA_Line::GetPropertyDataList() const {
   return kLinePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Line::GetAttributeDataList() const {
+  return kLineAttributeData;
+}

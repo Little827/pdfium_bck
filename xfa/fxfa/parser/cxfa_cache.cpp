@@ -32,3 +32,7 @@ CXFA_Cache::~CXFA_Cache() {}
 const CXFA_Node::PropertyData* CXFA_Cache::GetPropertyDataList() const {
   return kCachePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Cache::GetAttributeDataList() const {
+  return kCacheAttributeData;
+}

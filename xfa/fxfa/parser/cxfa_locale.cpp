@@ -36,3 +36,7 @@ CXFA_Locale::~CXFA_Locale() = default;
 const CXFA_Node::PropertyData* CXFA_Locale::GetPropertyDataList() const {
   return kLocalePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Locale::GetAttributeDataList() const {
+  return kLocaleAttributeData;
+}

@@ -16,6 +16,7 @@ class CXFA_Arc final : public CXFA_Box {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_ARC_H_

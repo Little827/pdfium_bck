@@ -43,3 +43,7 @@ CXFA_Filter::~CXFA_Filter() = default;
 const CXFA_Node::PropertyData* CXFA_Filter::GetPropertyDataList() const {
   return kFilterPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Filter::GetAttributeDataList() const {
+  return kFilterAttributeData;
+}

@@ -53,3 +53,7 @@ WideString CXFA_Bind::GetPicture() {
 const CXFA_Node::PropertyData* CXFA_Bind::GetPropertyDataList() const {
   return kBindPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Bind::GetAttributeDataList() const {
+  return kBindAttributeData;
+}

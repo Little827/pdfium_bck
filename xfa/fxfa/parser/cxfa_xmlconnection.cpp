@@ -37,3 +37,8 @@ CXFA_XmlConnection::~CXFA_XmlConnection() = default;
 const CXFA_Node::PropertyData* CXFA_XmlConnection::GetPropertyDataList() const {
   return kXmlConnectionPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_XmlConnection::GetAttributeDataList()
+    const {
+  return kXmlConnectionAttributeData;
+}

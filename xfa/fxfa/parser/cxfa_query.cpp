@@ -41,3 +41,7 @@ CXFA_Query::~CXFA_Query() = default;
 const CXFA_Node::PropertyData* CXFA_Query::GetPropertyDataList() const {
   return kQueryPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Query::GetAttributeDataList() const {
+  return kQueryAttributeData;
+}

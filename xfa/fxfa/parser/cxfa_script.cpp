@@ -67,3 +67,7 @@ WideString CXFA_Script::GetExpression() {
 const CXFA_Node::PropertyData* CXFA_Script::GetPropertyDataList() const {
   return kScriptPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Script::GetAttributeDataList() const {
+  return kScriptAttributeData;
+}

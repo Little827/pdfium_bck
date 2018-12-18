@@ -48,3 +48,8 @@ WideString CXFA_PasswordEdit::GetPasswordChar() {
 const CXFA_Node::PropertyData* CXFA_PasswordEdit::GetPropertyDataList() const {
   return kPasswordEditPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_PasswordEdit::GetAttributeDataList()
+    const {
+  return kPasswordEditAttributeData;
+}

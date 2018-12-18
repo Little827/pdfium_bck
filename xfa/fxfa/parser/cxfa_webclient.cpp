@@ -34,3 +34,7 @@ CXFA_WebClient::~CXFA_WebClient() = default;
 const CXFA_Node::PropertyData* CXFA_WebClient::GetPropertyDataList() const {
   return kWebClientPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_WebClient::GetAttributeDataList() const {
+  return kWebClientAttributeData;
+}

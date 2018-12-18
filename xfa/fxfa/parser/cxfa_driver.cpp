@@ -34,3 +34,7 @@ CXFA_Driver::~CXFA_Driver() = default;
 const CXFA_Node::PropertyData* CXFA_Driver::GetPropertyDataList() const {
   return kDriverPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Driver::GetAttributeDataList() const {
+  return kDriverAttributeData;
+}

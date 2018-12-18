@@ -43,3 +43,7 @@ CXFA_Keep::~CXFA_Keep() = default;
 const CXFA_Node::PropertyData* CXFA_Keep::GetPropertyDataList() const {
   return kKeepPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Keep::GetAttributeDataList() const {
+  return kKeepAttributeData;
+}

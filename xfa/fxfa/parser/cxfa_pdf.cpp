@@ -51,3 +51,7 @@ CXFA_Pdf::~CXFA_Pdf() = default;
 const CXFA_Node::PropertyData* CXFA_Pdf::GetPropertyDataList() const {
   return kPdfPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Pdf::GetAttributeDataList() const {
+  return kPdfAttributeData;
+}

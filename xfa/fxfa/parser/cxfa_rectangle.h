@@ -20,6 +20,7 @@ class CXFA_Rectangle : public CXFA_Box {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   void GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
                    const CFX_RectF& rtWidget,

@@ -45,3 +45,7 @@ CXFA_Edge::~CXFA_Edge() = default;
 const CXFA_Node::PropertyData* CXFA_Edge::GetPropertyDataList() const {
   return kEdgePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Edge::GetAttributeDataList() const {
+  return kEdgeAttributeData;
+}

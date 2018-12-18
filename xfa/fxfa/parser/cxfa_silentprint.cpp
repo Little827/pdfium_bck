@@ -33,3 +33,7 @@ CXFA_SilentPrint::~CXFA_SilentPrint() = default;
 const CXFA_Node::PropertyData* CXFA_SilentPrint::GetPropertyDataList() const {
   return kSilentPrintPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_SilentPrint::GetAttributeDataList() const {
+  return kSilentPrintAttributeData;
+}

@@ -49,3 +49,7 @@ XFA_FFWidgetType CXFA_ImageEdit::GetDefaultFFWidgetType() const {
 const CXFA_Node::PropertyData* CXFA_ImageEdit::GetPropertyDataList() const {
   return kImageEditPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_ImageEdit::GetAttributeDataList() const {
+  return kImageEditAttributeData;
+}

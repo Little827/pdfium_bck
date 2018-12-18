@@ -50,3 +50,7 @@ XFA_FFWidgetType CXFA_NumericEdit::GetDefaultFFWidgetType() const {
 const CXFA_Node::PropertyData* CXFA_NumericEdit::GetPropertyDataList() const {
   return kNumericEditPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_NumericEdit::GetAttributeDataList() const {
+  return kNumericEditAttributeData;
+}

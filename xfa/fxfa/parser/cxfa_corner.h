@@ -16,6 +16,7 @@ class CXFA_Corner final : public CXFA_Stroke {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_CORNER_H_

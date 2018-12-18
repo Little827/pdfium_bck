@@ -38,3 +38,8 @@ CXFA_XsdConnection::~CXFA_XsdConnection() = default;
 const CXFA_Node::PropertyData* CXFA_XsdConnection::GetPropertyDataList() const {
   return kXsdConnectionPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_XsdConnection::GetAttributeDataList()
+    const {
+  return kXsdConnectionAttributeData;
+}

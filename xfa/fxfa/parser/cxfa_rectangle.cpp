@@ -607,3 +607,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
 const CXFA_Node::PropertyData* CXFA_Rectangle::GetPropertyDataList() const {
   return kRectanglePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Rectangle::GetAttributeDataList() const {
+  return kRectangleAttributeData;
+}

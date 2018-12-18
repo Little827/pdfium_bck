@@ -48,3 +48,7 @@ CXFA_Connect::~CXFA_Connect() = default;
 const CXFA_Node::PropertyData* CXFA_Connect::GetPropertyDataList() const {
   return kConnectPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Connect::GetAttributeDataList() const {
+  return kConnectAttributeData;
+}

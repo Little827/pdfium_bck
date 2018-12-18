@@ -34,3 +34,7 @@ CXFA_Output::~CXFA_Output() = default;
 const CXFA_Node::PropertyData* CXFA_Output::GetPropertyDataList() const {
   return kOutputPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Output::GetAttributeDataList() const {
+  return kOutputAttributeData;
+}

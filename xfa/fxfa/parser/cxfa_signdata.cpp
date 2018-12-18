@@ -42,3 +42,7 @@ CXFA_SignData::~CXFA_SignData() = default;
 const CXFA_Node::PropertyData* CXFA_SignData::GetPropertyDataList() const {
   return kSignDataPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_SignData::GetAttributeDataList() const {
+  return kSignDataAttributeData;
+}

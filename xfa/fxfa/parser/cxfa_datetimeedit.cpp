@@ -52,3 +52,8 @@ XFA_FFWidgetType CXFA_DateTimeEdit::GetDefaultFFWidgetType() const {
 const CXFA_Node::PropertyData* CXFA_DateTimeEdit::GetPropertyDataList() const {
   return kDateTimeEditPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_DateTimeEdit::GetAttributeDataList()
+    const {
+  return kDateTimeEditAttributeData;
+}

@@ -59,3 +59,7 @@ bool CXFA_Ui::IsAOneOfChild(CXFA_Node* child) const {
 const CXFA_Node::PropertyData* CXFA_Ui::GetPropertyDataList() const {
   return kUiPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Ui::GetAttributeDataList() const {
+  return kUiAttributeData;
+}

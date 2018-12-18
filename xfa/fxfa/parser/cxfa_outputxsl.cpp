@@ -32,3 +32,7 @@ CXFA_OutputXSL::~CXFA_OutputXSL() = default;
 const CXFA_Node::PropertyData* CXFA_OutputXSL::GetPropertyDataList() const {
   return kOutputXSLPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_OutputXSL::GetAttributeDataList() const {
+  return kOutputXSLAttributeData;
+}

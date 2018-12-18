@@ -63,3 +63,7 @@ WideString CXFA_Calculate::GetMessageText() {
 const CXFA_Node::PropertyData* CXFA_Calculate::GetPropertyDataList() const {
   return kCalculatePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Calculate::GetAttributeDataList() const {
+  return kCalculateAttributeData;
+}

@@ -44,3 +44,7 @@ XFA_FFWidgetType CXFA_Signature::GetDefaultFFWidgetType() const {
 const CXFA_Node::PropertyData* CXFA_Signature::GetPropertyDataList() const {
   return kSignaturePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Signature::GetAttributeDataList() const {
+  return kSignatureAttributeData;
+}

@@ -38,3 +38,7 @@ CXFA_Source::~CXFA_Source() = default;
 const CXFA_Node::PropertyData* CXFA_Source::GetPropertyDataList() const {
   return kSourcePropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_Source::GetAttributeDataList() const {
+  return kSourceAttributeData;
+}

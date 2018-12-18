@@ -44,3 +44,7 @@ CXFA_PageSet::~CXFA_PageSet() = default;
 const CXFA_Node::PropertyData* CXFA_PageSet::GetPropertyDataList() const {
   return kPageSetPropertyData;
 }
+
+const CXFA_Node::AttributeData* CXFA_PageSet::GetAttributeDataList() const {
+  return kPageSetAttributeData;
+}

@@ -18,6 +18,7 @@ class CXFA_Validate final : public CXFA_Node {
 
   // CXFA_Node:
   const PropertyData* GetPropertyDataList() const override;
+  const AttributeData* GetAttributeDataList() const override;
 
   XFA_AttributeValue GetFormatTest();
   WideString GetFormatMessageText();
