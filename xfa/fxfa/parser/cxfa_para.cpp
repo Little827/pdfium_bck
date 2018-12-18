@@ -46,7 +46,6 @@ CXFA_Para::CXFA_Para(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Para,
-                kParaPropertyData,
                 kParaAttributeData,
                 pdfium::MakeUnique<CJX_Para>(this)) {}
 
@@ -88,4 +87,8 @@ float CXFA_Para::GetSpaceBelow() {
 
 float CXFA_Para::GetTextIndent() {
   return JSObject()->GetMeasure(XFA_Attribute::TextIndent).ToUnit(XFA_Unit::Pt);
+}
+
+const CXFA_Node::PropertyData* CXFA_Para::GetPropertyDataList() const {
+  return kParaPropertyData;
 }

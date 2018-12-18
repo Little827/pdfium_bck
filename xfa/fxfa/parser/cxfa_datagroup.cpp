@@ -20,7 +20,6 @@ CXFA_DataGroup::CXFA_DataGroup(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Datasets,
                 XFA_ObjectType::Node,
                 XFA_Element::DataGroup,
-                nullptr,
                 kDataGroupAttributeData) {}
 
 CXFA_DataGroup::~CXFA_DataGroup() = default;

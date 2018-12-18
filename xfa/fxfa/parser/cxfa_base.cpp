@@ -21,7 +21,6 @@ CXFA_Base::CXFA_Base(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Base,
-                nullptr,
                 kBaseAttributeData) {}
 
 CXFA_Base::~CXFA_Base() = default;

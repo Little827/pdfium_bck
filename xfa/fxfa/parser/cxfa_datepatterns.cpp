@@ -20,7 +20,10 @@ CXFA_DatePatterns::CXFA_DatePatterns(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::Node,
                 XFA_Element::DatePatterns,
-                kDatePatternsPropertyData,
                 nullptr) {}
 
 CXFA_DatePatterns::~CXFA_DatePatterns() = default;
+
+const CXFA_Node::PropertyData* CXFA_DatePatterns::GetPropertyDataList() const {
+  return kDatePatternsPropertyData;
+}

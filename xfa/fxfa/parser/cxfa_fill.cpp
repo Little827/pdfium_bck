@@ -44,7 +44,6 @@ CXFA_Fill::CXFA_Fill(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Fill,
-                kFillPropertyData,
                 kFillAttributeData,
                 pdfium::MakeUnique<CJX_Fill>(this)) {}
 
@@ -151,4 +150,8 @@ void CXFA_Fill::DrawPattern(CXFA_Graphics* pGS,
       JSObject()->GetOrCreateProperty<CXFA_Pattern>(0, XFA_Element::Pattern);
   if (pattern)
     pattern->Draw(pGS, fillPath, GetColor(false), rtWidget, matrix);
+}
+
+const CXFA_Node::PropertyData* CXFA_Fill::GetPropertyDataList() const {
+  return kFillPropertyData;
 }

@@ -15,6 +15,9 @@ class CXFA_Font final : public CXFA_Node {
   CXFA_Font(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Font() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   float GetBaselineShift() const;
   float GetHorizontalScale();
   float GetVerticalScale();

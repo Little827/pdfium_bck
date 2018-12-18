@@ -21,7 +21,11 @@ CXFA_CurrencySymbols::CXFA_CurrencySymbols(CXFA_Document* doc,
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::Node,
                 XFA_Element::CurrencySymbols,
-                kCurrencySymbolsPropertyData,
                 nullptr) {}
 
 CXFA_CurrencySymbols::~CXFA_CurrencySymbols() = default;
+
+const CXFA_Node::PropertyData* CXFA_CurrencySymbols::GetPropertyDataList()
+    const {
+  return kCurrencySymbolsPropertyData;
+}

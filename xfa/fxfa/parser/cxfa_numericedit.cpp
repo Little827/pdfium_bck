@@ -34,7 +34,6 @@ CXFA_NumericEdit::CXFA_NumericEdit(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::NumericEdit,
-                kNumericEditPropertyData,
                 kNumericEditAttributeData,
                 pdfium::MakeUnique<CJX_NumericEdit>(this)) {}
 
@@ -46,4 +45,8 @@ XFA_Element CXFA_NumericEdit::GetValueNodeType() const {
 
 XFA_FFWidgetType CXFA_NumericEdit::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kNumericEdit;
+}
+
+const CXFA_Node::PropertyData* CXFA_NumericEdit::GetPropertyDataList() const {
+  return kNumericEditPropertyData;
 }

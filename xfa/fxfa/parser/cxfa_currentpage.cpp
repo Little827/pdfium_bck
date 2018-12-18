@@ -21,7 +21,6 @@ CXFA_CurrentPage::CXFA_CurrentPage(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::CurrentPage,
-                nullptr,
                 kCurrentPageAttributeData) {}
 
 CXFA_CurrentPage::~CXFA_CurrentPage() = default;

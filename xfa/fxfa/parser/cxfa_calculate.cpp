@@ -36,7 +36,6 @@ CXFA_Calculate::CXFA_Calculate(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Calculate,
-                kCalculatePropertyData,
                 kCalculateAttributeData,
                 pdfium::MakeUnique<CJX_Calculate>(this)) {}
 
@@ -59,4 +58,8 @@ WideString CXFA_Calculate::GetMessageText() {
 
   CXFA_Text* text = pNode->GetChild<CXFA_Text>(0, XFA_Element::Text, false);
   return text ? text->GetContent() : WideString();
+}
+
+const CXFA_Node::PropertyData* CXFA_Calculate::GetPropertyDataList() const {
+  return kCalculatePropertyData;
 }

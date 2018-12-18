@@ -28,8 +28,12 @@ CXFA_InstanceManager::CXFA_InstanceManager(CXFA_Document* doc,
                 XFA_XDPPACKET_Form,
                 XFA_ObjectType::Node,
                 XFA_Element::InstanceManager,
-                kInstanceManagerPropertyData,
                 kInstanceManagerAttributeData,
                 pdfium::MakeUnique<CJX_InstanceManager>(this)) {}
 
 CXFA_InstanceManager::~CXFA_InstanceManager() = default;
+
+const CXFA_Node::PropertyData* CXFA_InstanceManager::GetPropertyDataList()
+    const {
+  return kInstanceManagerPropertyData;
+}

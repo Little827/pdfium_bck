@@ -22,7 +22,6 @@ CXFA_PickTrayByPDFSize::CXFA_PickTrayByPDFSize(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::PickTrayByPDFSize,
-                nullptr,
                 kPickTrayByPDFSizeAttributeData) {}
 
 CXFA_PickTrayByPDFSize::~CXFA_PickTrayByPDFSize() = default;

@@ -13,6 +13,9 @@ class CXFA_LabelPrinter final : public CXFA_Node {
  public:
   CXFA_LabelPrinter(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_LabelPrinter() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_LABELPRINTER_H_

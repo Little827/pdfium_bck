@@ -36,8 +36,11 @@ CXFA_PageSet::CXFA_PageSet(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::ContainerNode,
                 XFA_Element::PageSet,
-                kPageSetPropertyData,
                 kPageSetAttributeData,
                 pdfium::MakeUnique<CJX_PageSet>(this)) {}
 
 CXFA_PageSet::~CXFA_PageSet() = default;
+
+const CXFA_Node::PropertyData* CXFA_PageSet::GetPropertyDataList() const {
+  return kPageSetPropertyData;
+}

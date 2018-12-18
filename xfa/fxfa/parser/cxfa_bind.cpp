@@ -39,7 +39,6 @@ CXFA_Bind::CXFA_Bind(CXFA_Document* doc, XFA_PacketType packet)
                  XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Bind,
-                kBindPropertyData,
                 kBindAttributeData,
                 pdfium::MakeUnique<CJX_Bind>(this)) {}
 
@@ -49,4 +48,8 @@ WideString CXFA_Bind::GetPicture() {
   CXFA_Picture* pPicture =
       GetChild<CXFA_Picture>(0, XFA_Element::Picture, false);
   return pPicture ? pPicture->JSObject()->GetContent(false) : WideString();
+}
+
+const CXFA_Node::PropertyData* CXFA_Bind::GetPropertyDataList() const {
+  return kBindPropertyData;
 }

@@ -37,8 +37,11 @@ CXFA_Border::CXFA_Border(CXFA_Document* doc, XFA_PacketType packet)
                      (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                      XFA_ObjectType::Node,
                      XFA_Element::Border,
-                     kBorderPropertyData,
                      kBorderAttributeData,
                      pdfium::MakeUnique<CJX_Border>(this)) {}
 
 CXFA_Border::~CXFA_Border() = default;
+
+const CXFA_Node::PropertyData* CXFA_Border::GetPropertyDataList() const {
+  return kBorderPropertyData;
+}

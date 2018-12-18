@@ -34,7 +34,6 @@ CXFA_Linear::CXFA_Linear(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Linear,
-                kLinearPropertyData,
                 kLinearAttributeData,
                 pdfium::MakeUnique<CJX_Linear>(this)) {}
 
@@ -87,4 +86,8 @@ void CXFA_Linear::Draw(CXFA_Graphics* pGS,
   pGS->SetFillColor(CXFA_GEColor(&shading));
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
+}
+
+const CXFA_Node::PropertyData* CXFA_Linear::GetPropertyDataList() const {
+  return kLinearPropertyData;
 }

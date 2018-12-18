@@ -15,6 +15,9 @@ class CXFA_Edge final : public CXFA_Stroke {
 
   CXFA_Edge(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Edge() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_EDGE_H_

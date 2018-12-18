@@ -22,7 +22,6 @@ CXFA_AccessibleContent::CXFA_AccessibleContent(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::AccessibleContent,
-                nullptr,
                 kAccessibleContentAttributeData) {}
 
 CXFA_AccessibleContent::~CXFA_AccessibleContent() = default;

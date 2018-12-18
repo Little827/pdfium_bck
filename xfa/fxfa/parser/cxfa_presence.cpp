@@ -21,7 +21,6 @@ CXFA_Presence::CXFA_Presence(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::Presence,
-                nullptr,
                 kPresenceAttributeData) {}
 
 CXFA_Presence::~CXFA_Presence() = default;

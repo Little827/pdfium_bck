@@ -21,7 +21,6 @@ CXFA_Rename::CXFA_Rename(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::Rename,
-                nullptr,
                 kRenameAttributeData) {}
 
 CXFA_Rename::~CXFA_Rename() = default;

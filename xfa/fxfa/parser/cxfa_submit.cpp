@@ -35,7 +35,6 @@ CXFA_Submit::CXFA_Submit(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Submit,
-                kSubmitPropertyData,
                 kSubmitAttributeData,
                 pdfium::MakeUnique<CJX_Submit>(this)) {}
 
@@ -55,4 +54,8 @@ WideString CXFA_Submit::GetSubmitTarget() {
 
 WideString CXFA_Submit::GetSubmitXDPContent() {
   return JSObject()->GetCData(XFA_Attribute::XdpContent);
+}
+
+const CXFA_Node::PropertyData* CXFA_Submit::GetPropertyDataList() const {
+  return kSubmitPropertyData;
 }

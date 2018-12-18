@@ -26,7 +26,6 @@ CXFA_SourceSet::CXFA_SourceSet(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_SourceSet,
                 XFA_ObjectType::ModelNode,
                 XFA_Element::SourceSet,
-                nullptr,
                 kSourceSetAttributeData,
                 pdfium::MakeUnique<CJX_SourceSet>(this)) {}
 

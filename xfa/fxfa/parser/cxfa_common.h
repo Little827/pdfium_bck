@@ -13,6 +13,9 @@ class CXFA_Common final : public CXFA_Node {
  public:
   CXFA_Common(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Common() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_COMMON_H_

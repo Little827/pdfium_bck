@@ -14,6 +14,9 @@ class CXFA_Para final : public CXFA_Node {
   CXFA_Para(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Para() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_AttributeValue GetHorizontalAlign();
   XFA_AttributeValue GetVerticalAlign();
   float GetLineHeight();

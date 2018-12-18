@@ -26,7 +26,10 @@ CXFA_Xsl::CXFA_Xsl(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Xsl,
-                kXslPropertyData,
                 kXslAttributeData) {}
 
 CXFA_Xsl::~CXFA_Xsl() = default;
+
+const CXFA_Node::PropertyData* CXFA_Xsl::GetPropertyDataList() const {
+  return kXslPropertyData;
+}

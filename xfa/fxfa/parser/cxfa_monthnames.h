@@ -13,6 +13,9 @@ class CXFA_MonthNames final : public CXFA_Node {
  public:
   CXFA_MonthNames(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_MonthNames() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_MONTHNAMES_H_

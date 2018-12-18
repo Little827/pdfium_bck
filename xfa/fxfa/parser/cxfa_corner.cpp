@@ -39,8 +39,11 @@ CXFA_Corner::CXFA_Corner(CXFA_Document* doc, XFA_PacketType packet)
                   (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                   XFA_ObjectType::Node,
                   XFA_Element::Corner,
-                  kCornerPropertyData,
                   kCornerAttributeData,
                   pdfium::MakeUnique<CJX_Corner>(this)) {}
 
 CXFA_Corner::~CXFA_Corner() = default;
+
+const CXFA_Node::PropertyData* CXFA_Corner::GetPropertyDataList() const {
+  return kCornerPropertyData;
+}

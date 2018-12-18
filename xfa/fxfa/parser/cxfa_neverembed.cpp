@@ -21,7 +21,6 @@ CXFA_NeverEmbed::CXFA_NeverEmbed(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::NeverEmbed,
-                nullptr,
                 kNeverEmbedAttributeData) {}
 
 CXFA_NeverEmbed::~CXFA_NeverEmbed() = default;

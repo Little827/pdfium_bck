@@ -25,7 +25,10 @@ CXFA_OpenAction::CXFA_OpenAction(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::OpenAction,
-                kOpenActionPropertyData,
                 kOpenActionAttributeData) {}
 
 CXFA_OpenAction::~CXFA_OpenAction() = default;
+
+const CXFA_Node::PropertyData* CXFA_OpenAction::GetPropertyDataList() const {
+  return kOpenActionPropertyData;
+}

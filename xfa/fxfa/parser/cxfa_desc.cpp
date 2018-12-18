@@ -33,8 +33,11 @@ CXFA_Desc::CXFA_Desc(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Desc,
-                kDescPropertyData,
                 kDescAttributeData,
                 pdfium::MakeUnique<CJX_Desc>(this)) {}
 
 CXFA_Desc::~CXFA_Desc() = default;
+
+const CXFA_Node::PropertyData* CXFA_Desc::GetPropertyDataList() const {
+  return kDescPropertyData;
+}

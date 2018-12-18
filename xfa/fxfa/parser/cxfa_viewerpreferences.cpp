@@ -34,7 +34,11 @@ CXFA_ViewerPreferences::CXFA_ViewerPreferences(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::ViewerPreferences,
-                kViewerPreferencesPropertyData,
                 kViewerPreferencesAttributeData) {}
 
 CXFA_ViewerPreferences::~CXFA_ViewerPreferences() = default;
+
+const CXFA_Node::PropertyData* CXFA_ViewerPreferences::GetPropertyDataList()
+    const {
+  return kViewerPreferencesPropertyData;
+}

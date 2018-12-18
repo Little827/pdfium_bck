@@ -13,6 +13,9 @@ class CXFA_Log final : public CXFA_Node {
  public:
   CXFA_Log(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Log() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_LOG_H_

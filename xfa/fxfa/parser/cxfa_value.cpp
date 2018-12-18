@@ -49,7 +49,6 @@ CXFA_Value::CXFA_Value(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Value,
-                kValuePropertyData,
                 kValueAttributeData,
                 pdfium::MakeUnique<CJX_Value>(this)) {}
 
@@ -107,4 +106,8 @@ CXFA_Image* CXFA_Value::GetImageIfExists() const {
   if (!node || node->GetElementType() != XFA_Element::Image)
     return nullptr;
   return static_cast<CXFA_Image*>(node);
+}
+
+const CXFA_Node::PropertyData* CXFA_Value::GetPropertyDataList() const {
+  return kValuePropertyData;
 }

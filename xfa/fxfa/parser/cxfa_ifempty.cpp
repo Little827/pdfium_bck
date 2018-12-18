@@ -21,7 +21,6 @@ CXFA_IfEmpty::CXFA_IfEmpty(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::IfEmpty,
-                nullptr,
                 kIfEmptyAttributeData) {}
 
 CXFA_IfEmpty::~CXFA_IfEmpty() = default;

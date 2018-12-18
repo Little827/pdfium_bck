@@ -21,7 +21,6 @@ CXFA_DuplexOption::CXFA_DuplexOption(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::DuplexOption,
-                nullptr,
                 kDuplexOptionAttributeData) {}
 
 CXFA_DuplexOption::~CXFA_DuplexOption() = default;

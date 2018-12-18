@@ -21,7 +21,10 @@ CXFA_NumberSymbols::CXFA_NumberSymbols(CXFA_Document* doc,
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::Node,
                 XFA_Element::NumberSymbols,
-                kNumberSymbolsPropertyData,
                 nullptr) {}
 
 CXFA_NumberSymbols::~CXFA_NumberSymbols() = default;
+
+const CXFA_Node::PropertyData* CXFA_NumberSymbols::GetPropertyDataList() const {
+  return kNumberSymbolsPropertyData;
+}

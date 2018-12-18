@@ -34,8 +34,12 @@ CXFA_WsdlConnection::CXFA_WsdlConnection(CXFA_Document* doc,
                 XFA_XDPPACKET_ConnectionSet,
                 XFA_ObjectType::Node,
                 XFA_Element::WsdlConnection,
-                kWsdlConnectionPropertyData,
                 kWsdlConnectionAttributeData,
                 pdfium::MakeUnique<CJX_WsdlConnection>(this)) {}
 
 CXFA_WsdlConnection::~CXFA_WsdlConnection() = default;
+
+const CXFA_Node::PropertyData* CXFA_WsdlConnection::GetPropertyDataList()
+    const {
+  return kWsdlConnectionPropertyData;
+}

@@ -22,7 +22,6 @@ CXFA_IncludeXDPContent::CXFA_IncludeXDPContent(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::IncludeXDPContent,
-                nullptr,
                 kIncludeXDPContentAttributeData) {}
 
 CXFA_IncludeXDPContent::~CXFA_IncludeXDPContent() = default;

@@ -22,7 +22,6 @@ CXFA_IncrementalMerge::CXFA_IncrementalMerge(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::IncrementalMerge,
-                nullptr,
                 kIncrementalMergeAttributeData) {}
 
 CXFA_IncrementalMerge::~CXFA_IncrementalMerge() = default;

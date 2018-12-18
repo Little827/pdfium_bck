@@ -26,7 +26,6 @@ CXFA_SoapAddress::CXFA_SoapAddress(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_ConnectionSet,
                 XFA_ObjectType::TextNode,
                 XFA_Element::SoapAddress,
-                nullptr,
                 kSoapAddressAttributeData,
                 pdfium::MakeUnique<CJX_SoapAddress>(this)) {}
 

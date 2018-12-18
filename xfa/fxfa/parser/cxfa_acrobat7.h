@@ -13,6 +13,9 @@ class CXFA_Acrobat7 final : public CXFA_Node {
  public:
   CXFA_Acrobat7(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Acrobat7() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_ACROBAT7_H_

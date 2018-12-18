@@ -21,7 +21,6 @@ CXFA_Jog::CXFA_Jog(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Jog,
-                nullptr,
                 kJogAttributeData) {}
 
 CXFA_Jog::~CXFA_Jog() = default;

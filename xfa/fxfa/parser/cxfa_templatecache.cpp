@@ -23,7 +23,6 @@ CXFA_TemplateCache::CXFA_TemplateCache(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::TemplateCache,
-                nullptr,
                 kTemplateCacheAttributeData) {}
 
 CXFA_TemplateCache::~CXFA_TemplateCache() = default;

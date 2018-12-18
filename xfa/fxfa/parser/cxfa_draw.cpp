@@ -55,8 +55,11 @@ CXFA_Draw::CXFA_Draw(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::ContainerNode,
                 XFA_Element::Draw,
-                kDrawPropertyData,
                 kDrawAttributeData,
                 pdfium::MakeUnique<CJX_Draw>(this)) {}
 
 CXFA_Draw::~CXFA_Draw() = default;
+
+const CXFA_Node::PropertyData* CXFA_Draw::GetPropertyDataList() const {
+  return kDrawPropertyData;
+}

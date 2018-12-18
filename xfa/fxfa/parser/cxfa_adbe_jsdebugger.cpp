@@ -22,7 +22,6 @@ CXFA_ADBE_JSDebugger::CXFA_ADBE_JSDebugger(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::ADBE_JSDebugger,
-                nullptr,
                 kADBE_JSDebuggerAttributeData) {}
 
 CXFA_ADBE_JSDebugger::~CXFA_ADBE_JSDebugger() = default;

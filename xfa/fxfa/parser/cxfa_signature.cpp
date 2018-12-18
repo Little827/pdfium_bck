@@ -32,7 +32,6 @@ CXFA_Signature::CXFA_Signature(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Signature,
-                kSignaturePropertyData,
                 kSignatureAttributeData,
                 pdfium::MakeUnique<CJX_Signature>(this)) {}
 
@@ -40,4 +39,8 @@ CXFA_Signature::~CXFA_Signature() = default;
 
 XFA_FFWidgetType CXFA_Signature::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kSignature;
+}
+
+const CXFA_Node::PropertyData* CXFA_Signature::GetPropertyDataList() const {
+  return kSignaturePropertyData;
 }

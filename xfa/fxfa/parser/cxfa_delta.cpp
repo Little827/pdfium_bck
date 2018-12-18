@@ -16,7 +16,6 @@ CXFA_Delta::CXFA_Delta(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_ObjectType::Object,
                 XFA_Element::Delta,
                 nullptr,
-                nullptr,
                 pdfium::MakeUnique<CJX_Delta>(this)) {}
 
 CXFA_Delta::~CXFA_Delta() = default;

@@ -14,6 +14,9 @@ class CXFA_Margin final : public CXFA_Node {
   CXFA_Margin(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Margin() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   float GetLeftInset() const;
   float GetTopInset() const;
   float GetRightInset() const;

@@ -33,7 +33,6 @@ CXFA_ImageEdit::CXFA_ImageEdit(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::ImageEdit,
-                kImageEditPropertyData,
                 kImageEditAttributeData,
                 pdfium::MakeUnique<CJX_ImageEdit>(this)) {}
 
@@ -45,4 +44,8 @@ XFA_Element CXFA_ImageEdit::GetValueNodeType() const {
 
 XFA_FFWidgetType CXFA_ImageEdit::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kImageEdit;
+}
+
+const CXFA_Node::PropertyData* CXFA_ImageEdit::GetPropertyDataList() const {
+  return kImageEditPropertyData;
 }

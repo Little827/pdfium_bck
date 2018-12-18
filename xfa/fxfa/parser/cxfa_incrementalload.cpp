@@ -22,7 +22,6 @@ CXFA_IncrementalLoad::CXFA_IncrementalLoad(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::IncrementalLoad,
-                nullptr,
                 kIncrementalLoadAttributeData) {}
 
 CXFA_IncrementalLoad::~CXFA_IncrementalLoad() = default;

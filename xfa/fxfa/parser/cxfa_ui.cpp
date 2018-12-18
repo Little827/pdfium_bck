@@ -41,7 +41,6 @@ CXFA_Ui::CXFA_Ui(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Ui,
-                kUiPropertyData,
                 kUiAttributeData,
                 pdfium::MakeUnique<CJX_Ui>(this)) {}
 
@@ -55,4 +54,8 @@ bool CXFA_Ui::IsAOneOfChild(CXFA_Node* child) const {
       return true;
   }
   return false;
+}
+
+const CXFA_Node::PropertyData* CXFA_Ui::GetPropertyDataList() const {
+  return kUiPropertyData;
 }

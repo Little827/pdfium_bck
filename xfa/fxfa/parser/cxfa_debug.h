@@ -13,6 +13,9 @@ class CXFA_Debug final : public CXFA_Node {
  public:
   CXFA_Debug(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Debug() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_DEBUG_H_

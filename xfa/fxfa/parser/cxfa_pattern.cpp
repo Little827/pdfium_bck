@@ -34,7 +34,6 @@ CXFA_Pattern::CXFA_Pattern(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Pattern,
-                kPatternPropertyData,
                 kPatternAttributeData,
                 pdfium::MakeUnique<CJX_Pattern>(this)) {}
 
@@ -83,4 +82,8 @@ void CXFA_Pattern::Draw(CXFA_Graphics* pGS,
   pGS->SetFillColor(CXFA_GEColor(&pattern, 0x0));
   pGS->FillPath(fillPath, FXFILL_WINDING, &matrix);
   pGS->RestoreGraphState();
+}
+
+const CXFA_Node::PropertyData* CXFA_Pattern::GetPropertyDataList() const {
+  return kPatternPropertyData;
 }

@@ -33,7 +33,6 @@ CXFA_Margin::CXFA_Margin(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Margin,
-                kMarginPropertyData,
                 kMarginAttributeData,
                 pdfium::MakeUnique<CJX_Margin>(this)) {}
 
@@ -69,4 +68,8 @@ Optional<float> CXFA_Margin::TryRightInset() const {
 
 Optional<float> CXFA_Margin::TryBottomInset() const {
   return JSObject()->TryMeasureAsFloat(XFA_Attribute::BottomInset);
+}
+
+const CXFA_Node::PropertyData* CXFA_Margin::GetPropertyDataList() const {
+  return kMarginPropertyData;
 }

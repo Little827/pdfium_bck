@@ -21,7 +21,6 @@ CXFA_Amd::CXFA_Amd(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Amd,
-                nullptr,
                 kAmdAttributeData) {}
 
 CXFA_Amd::~CXFA_Amd() = default;

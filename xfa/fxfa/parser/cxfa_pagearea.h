@@ -13,6 +13,9 @@ class CXFA_PageArea final : public CXFA_Node {
  public:
   CXFA_PageArea(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_PageArea() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_PAGEAREA_H_
