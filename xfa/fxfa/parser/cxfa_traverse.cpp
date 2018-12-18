@@ -33,8 +33,11 @@ CXFA_Traverse::CXFA_Traverse(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Traverse,
-                kTraversePropertyData,
                 kTraverseAttributeData,
                 pdfium::MakeUnique<CJX_Traverse>(this)) {}
 
 CXFA_Traverse::~CXFA_Traverse() {}
+
+const CXFA_Node::PropertyData* CXFA_Traverse::GetPropertyDataList() const {
+  return kTraversePropertyData;
+}

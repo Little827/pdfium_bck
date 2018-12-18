@@ -13,6 +13,9 @@ class CXFA_Config final : public CXFA_Node {
  public:
   CXFA_Config(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Config() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_CONFIG_H_

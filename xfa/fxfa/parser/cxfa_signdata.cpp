@@ -34,8 +34,11 @@ CXFA_SignData::CXFA_SignData(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::SignData,
-                kSignDataPropertyData,
                 kSignDataAttributeData,
                 pdfium::MakeUnique<CJX_SignData>(this)) {}
 
 CXFA_SignData::~CXFA_SignData() = default;
+
+const CXFA_Node::PropertyData* CXFA_SignData::GetPropertyDataList() const {
+  return kSignDataPropertyData;
+}

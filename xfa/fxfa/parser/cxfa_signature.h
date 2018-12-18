@@ -14,6 +14,9 @@ class CXFA_Signature final : public CXFA_Node {
   CXFA_Signature(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Signature() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_FFWidgetType GetDefaultFFWidgetType() const override;
 };
 

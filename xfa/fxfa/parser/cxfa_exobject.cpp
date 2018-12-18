@@ -34,8 +34,11 @@ CXFA_ExObject::CXFA_ExObject(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::ExObject,
-                kExObjectPropertyData,
                 kExObjectAttributeData,
                 pdfium::MakeUnique<CJX_ExObject>(this)) {}
 
 CXFA_ExObject::~CXFA_ExObject() = default;
+
+const CXFA_Node::PropertyData* CXFA_ExObject::GetPropertyDataList() const {
+  return kExObjectPropertyData;
+}

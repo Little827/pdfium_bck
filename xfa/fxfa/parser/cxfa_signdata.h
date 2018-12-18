@@ -13,6 +13,9 @@ class CXFA_SignData final : public CXFA_Node {
  public:
   CXFA_SignData(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_SignData() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_SIGNDATA_H_

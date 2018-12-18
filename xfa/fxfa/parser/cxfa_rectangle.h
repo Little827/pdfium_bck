@@ -18,6 +18,9 @@ class CXFA_Rectangle : public CXFA_Box {
   CXFA_Rectangle(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Rectangle() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   void GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
                    const CFX_RectF& rtWidget,
                    CXFA_GEPath* fillPath);
@@ -32,7 +35,6 @@ class CXFA_Rectangle : public CXFA_Box {
                  uint32_t validPackets,
                  XFA_ObjectType oType,
                  XFA_Element eType,
-                 const PropertyData* properties,
                  const AttributeData* attributes,
                  std::unique_ptr<CJX_Object> js_node);
 

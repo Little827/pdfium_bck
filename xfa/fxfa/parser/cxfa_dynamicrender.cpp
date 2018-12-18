@@ -22,7 +22,6 @@ CXFA_DynamicRender::CXFA_DynamicRender(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::DynamicRender,
-                nullptr,
                 kDynamicRenderAttributeData) {}
 
 CXFA_DynamicRender::~CXFA_DynamicRender() = default;

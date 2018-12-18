@@ -21,7 +21,6 @@ CXFA_PrinterName::CXFA_PrinterName(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::PrinterName,
-                nullptr,
                 kPrinterNameAttributeData) {}
 
 CXFA_PrinterName::~CXFA_PrinterName() = default;

@@ -26,7 +26,6 @@ CXFA_Select::CXFA_Select(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_SourceSet,
                 XFA_ObjectType::TextNode,
                 XFA_Element::Select,
-                nullptr,
                 kSelectAttributeData,
                 pdfium::MakeUnique<CJX_Select>(this)) {}
 

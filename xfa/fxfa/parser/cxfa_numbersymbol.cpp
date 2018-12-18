@@ -21,7 +21,6 @@ CXFA_NumberSymbol::CXFA_NumberSymbol(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_LocaleSet,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::NumberSymbol,
-                nullptr,
                 kNumberSymbolAttributeData) {}
 
 CXFA_NumberSymbol::~CXFA_NumberSymbol() = default;

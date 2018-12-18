@@ -13,6 +13,9 @@ class CXFA_Assist final : public CXFA_Node {
  public:
   CXFA_Assist(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Assist() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_ASSIST_H_

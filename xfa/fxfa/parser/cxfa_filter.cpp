@@ -35,8 +35,11 @@ CXFA_Filter::CXFA_Filter(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Filter,
-                kFilterPropertyData,
                 kFilterAttributeData,
                 pdfium::MakeUnique<CJX_Filter>(this)) {}
 
 CXFA_Filter::~CXFA_Filter() = default;
+
+const CXFA_Node::PropertyData* CXFA_Filter::GetPropertyDataList() const {
+  return kFilterPropertyData;
+}

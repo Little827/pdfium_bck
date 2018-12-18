@@ -25,7 +25,10 @@ CXFA_Acrobat7::CXFA_Acrobat7(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Acrobat7,
-                kAcrobat7PropertyData,
                 kAcrobat7AttributeData) {}
 
 CXFA_Acrobat7::~CXFA_Acrobat7() = default;
+
+const CXFA_Node::PropertyData* CXFA_Acrobat7::GetPropertyDataList() const {
+  return kAcrobat7PropertyData;
+}

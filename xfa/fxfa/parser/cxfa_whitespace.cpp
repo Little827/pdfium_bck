@@ -21,7 +21,6 @@ CXFA_Whitespace::CXFA_Whitespace(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::Whitespace,
-                nullptr,
                 kWhitespaceAttributeData) {}
 
 CXFA_Whitespace::~CXFA_Whitespace() = default;

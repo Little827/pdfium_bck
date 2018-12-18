@@ -36,7 +36,6 @@ CXFA_DateTimeEdit::CXFA_DateTimeEdit(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::DateTimeEdit,
-                kDateTimeEditPropertyData,
                 kDateTimeEditAttributeData,
                 pdfium::MakeUnique<CJX_DateTimeEdit>(this)) {}
 
@@ -48,4 +47,8 @@ XFA_Element CXFA_DateTimeEdit::GetValueNodeType() const {
 
 XFA_FFWidgetType CXFA_DateTimeEdit::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kDateTimeEdit;
+}
+
+const CXFA_Node::PropertyData* CXFA_DateTimeEdit::GetPropertyDataList() const {
+  return kDateTimeEditPropertyData;
 }

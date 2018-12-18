@@ -21,7 +21,6 @@ CXFA_OutputBin::CXFA_OutputBin(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::OutputBin,
-                nullptr,
                 kOutputBinAttributeData) {}
 
 CXFA_OutputBin::~CXFA_OutputBin() = default;

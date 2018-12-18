@@ -44,7 +44,10 @@ CXFA_Pdf::CXFA_Pdf(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Pdf,
-                kPdfPropertyData,
                 kPdfAttributeData) {}
 
 CXFA_Pdf::~CXFA_Pdf() = default;
+
+const CXFA_Node::PropertyData* CXFA_Pdf::GetPropertyDataList() const {
+  return kPdfPropertyData;
+}

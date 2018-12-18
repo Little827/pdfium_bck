@@ -21,7 +21,6 @@ CXFA_To::CXFA_To(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::To,
-                nullptr,
                 kToAttributeData) {}
 
 CXFA_To::~CXFA_To() = default;

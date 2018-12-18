@@ -21,7 +21,6 @@ CXFA_ModifyAnnots::CXFA_ModifyAnnots(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::ModifyAnnots,
-                nullptr,
                 kModifyAnnotsAttributeData) {}
 
 CXFA_ModifyAnnots::~CXFA_ModifyAnnots() = default;

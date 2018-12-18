@@ -66,7 +66,6 @@ CXFA_Stroke::CXFA_Stroke(CXFA_Document* pDoc,
                          uint32_t validPackets,
                          XFA_ObjectType oType,
                          XFA_Element eType,
-                         const PropertyData* properties,
                          const AttributeData* attributes,
                          std::unique_ptr<CJX_Object> js_node)
     : CXFA_Node(pDoc,
@@ -74,7 +73,6 @@ CXFA_Stroke::CXFA_Stroke(CXFA_Document* pDoc,
                 validPackets,
                 oType,
                 eType,
-                properties,
                 attributes,
                 std::move(js_node)) {}
 

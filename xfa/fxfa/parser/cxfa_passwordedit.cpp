@@ -33,7 +33,6 @@ CXFA_PasswordEdit::CXFA_PasswordEdit(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::PasswordEdit,
-                kPasswordEditPropertyData,
                 kPasswordEditAttributeData) {}
 
 CXFA_PasswordEdit::~CXFA_PasswordEdit() = default;
@@ -44,4 +43,8 @@ XFA_FFWidgetType CXFA_PasswordEdit::GetDefaultFFWidgetType() const {
 
 WideString CXFA_PasswordEdit::GetPasswordChar() {
   return JSObject()->GetCData(XFA_Attribute::PasswordChar);
+}
+
+const CXFA_Node::PropertyData* CXFA_PasswordEdit::GetPropertyDataList() const {
+  return kPasswordEditPropertyData;
 }

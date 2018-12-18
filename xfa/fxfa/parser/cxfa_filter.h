@@ -13,6 +13,9 @@ class CXFA_Filter final : public CXFA_Node {
  public:
   CXFA_Filter(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Filter() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_FILTER_H_

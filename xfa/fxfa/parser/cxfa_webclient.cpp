@@ -27,7 +27,10 @@ CXFA_WebClient::CXFA_WebClient(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::WebClient,
-                kWebClientPropertyData,
                 kWebClientAttributeData) {}
 
 CXFA_WebClient::~CXFA_WebClient() = default;
+
+const CXFA_Node::PropertyData* CXFA_WebClient::GetPropertyDataList() const {
+  return kWebClientPropertyData;
+}

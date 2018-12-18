@@ -29,8 +29,11 @@ CXFA_Solid::CXFA_Solid(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Solid,
-                kSolidPropertyData,
                 kSolidAttributeData,
                 pdfium::MakeUnique<CJX_Solid>(this)) {}
 
 CXFA_Solid::~CXFA_Solid() = default;
+
+const CXFA_Node::PropertyData* CXFA_Solid::GetPropertyDataList() const {
+  return kSolidPropertyData;
+}

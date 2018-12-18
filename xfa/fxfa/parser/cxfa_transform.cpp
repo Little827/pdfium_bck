@@ -28,7 +28,10 @@ CXFA_Transform::CXFA_Transform(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Transform,
-                kTransformPropertyData,
                 kTransformAttributeData) {}
 
 CXFA_Transform::~CXFA_Transform() = default;
+
+const CXFA_Node::PropertyData* CXFA_Transform::GetPropertyDataList() const {
+  return kTransformPropertyData;
+}

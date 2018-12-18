@@ -29,7 +29,10 @@ CXFA_Data::CXFA_Data(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Data,
-                kDataPropertyData,
                 kDataAttributeData) {}
 
 CXFA_Data::~CXFA_Data() = default;
+
+const CXFA_Node::PropertyData* CXFA_Data::GetPropertyDataList() const {
+  return kDataPropertyData;
+}

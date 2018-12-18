@@ -30,7 +30,6 @@ CXFA_Map::CXFA_Map(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Config | XFA_XDPPACKET_SourceSet),
                 XFA_ObjectType::Node,
                 XFA_Element::Map,
-                nullptr,
                 kMapAttributeData,
                 pdfium::MakeUnique<CJX_Map>(this)) {}
 

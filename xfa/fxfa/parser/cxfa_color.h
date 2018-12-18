@@ -16,6 +16,9 @@ class CXFA_Color final : public CXFA_Node {
   CXFA_Color(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Color() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   FX_ARGB GetValue();
   FX_ARGB GetValueOrDefault(FX_ARGB defaultValue);
   void SetValue(FX_ARGB color);

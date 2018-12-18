@@ -26,7 +26,6 @@ CXFA_Update::CXFA_Update(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_SourceSet,
                 XFA_ObjectType::TextNode,
                 XFA_Element::Update,
-                nullptr,
                 kUpdateAttributeData,
                 pdfium::MakeUnique<CJX_Update>(this)) {}
 

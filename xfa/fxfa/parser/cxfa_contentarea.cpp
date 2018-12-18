@@ -36,8 +36,11 @@ CXFA_ContentArea::CXFA_ContentArea(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::ContainerNode,
                 XFA_Element::ContentArea,
-                kContentAreaPropertyData,
                 kContentAreaAttributeData,
                 pdfium::MakeUnique<CJX_ContentArea>(this)) {}
 
 CXFA_ContentArea::~CXFA_ContentArea() = default;
+
+const CXFA_Node::PropertyData* CXFA_ContentArea::GetPropertyDataList() const {
+  return kContentAreaPropertyData;
+}

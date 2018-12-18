@@ -27,7 +27,10 @@ CXFA_FontInfo::CXFA_FontInfo(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::FontInfo,
-                kFontInfoPropertyData,
                 kFontInfoAttributeData) {}
 
 CXFA_FontInfo::~CXFA_FontInfo() = default;
+
+const CXFA_Node::PropertyData* CXFA_FontInfo::GetPropertyDataList() const {
+  return kFontInfoPropertyData;
+}

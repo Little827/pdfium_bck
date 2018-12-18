@@ -20,7 +20,6 @@ CXFA_DSigData::CXFA_DSigData(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::DSigData,
-                nullptr,
                 kDSigDataAttributeData) {}
 
 CXFA_DSigData::~CXFA_DSigData() = default;

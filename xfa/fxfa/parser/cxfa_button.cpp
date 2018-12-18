@@ -31,7 +31,6 @@ CXFA_Button::CXFA_Button(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Button,
-                kButtonPropertyData,
                 kButtonAttributeData,
                 pdfium::MakeUnique<CJX_Button>(this)) {}
 
@@ -43,4 +42,8 @@ XFA_FFWidgetType CXFA_Button::GetDefaultFFWidgetType() const {
 
 XFA_AttributeValue CXFA_Button::GetHighlight() {
   return JSObject()->GetEnum(XFA_Attribute::Highlight);
+}
+
+const CXFA_Node::PropertyData* CXFA_Button::GetPropertyDataList() const {
+  return kButtonPropertyData;
 }

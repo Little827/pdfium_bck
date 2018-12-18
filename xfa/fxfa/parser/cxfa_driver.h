@@ -13,6 +13,9 @@ class CXFA_Driver final : public CXFA_Node {
  public:
   CXFA_Driver(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Driver() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_DRIVER_H_

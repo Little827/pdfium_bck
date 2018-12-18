@@ -35,7 +35,6 @@ CXFA_Line::CXFA_Line(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Line,
-                kLinePropertyData,
                 kLineAttributeData,
                 pdfium::MakeUnique<CJX_Line>(this)) {}
 
@@ -51,4 +50,8 @@ bool CXFA_Line::GetSlope() {
 
 CXFA_Edge* CXFA_Line::GetEdgeIfExists() {
   return GetChild<CXFA_Edge>(0, XFA_Element::Edge, false);
+}
+
+const CXFA_Node::PropertyData* CXFA_Line::GetPropertyDataList() const {
+  return kLinePropertyData;
 }

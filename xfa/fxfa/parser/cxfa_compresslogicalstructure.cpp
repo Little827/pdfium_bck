@@ -23,7 +23,6 @@ CXFA_CompressLogicalStructure::CXFA_CompressLogicalStructure(
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::CompressLogicalStructure,
-                nullptr,
                 kCompressLogicalStructureAttributeData) {}
 
 CXFA_CompressLogicalStructure::~CXFA_CompressLogicalStructure() = default;

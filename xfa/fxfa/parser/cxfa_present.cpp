@@ -38,7 +38,10 @@ CXFA_Present::CXFA_Present(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Present,
-                kPresentPropertyData,
                 kPresentAttributeData) {}
 
 CXFA_Present::~CXFA_Present() = default;
+
+const CXFA_Node::PropertyData* CXFA_Present::GetPropertyDataList() const {
+  return kPresentPropertyData;
+}

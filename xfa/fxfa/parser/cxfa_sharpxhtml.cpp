@@ -22,7 +22,6 @@ CXFA_SharpxHTML::CXFA_SharpxHTML(CXFA_Document* doc, XFA_PacketType packet)
                  XFA_XDPPACKET_SourceSet | XFA_XDPPACKET_Form),
                 XFA_ObjectType::NodeV,
                 XFA_Element::SharpxHTML,
-                nullptr,
                 kSharpxHTMLAttributeData) {}
 
 CXFA_SharpxHTML::~CXFA_SharpxHTML() = default;

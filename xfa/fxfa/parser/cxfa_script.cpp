@@ -39,7 +39,6 @@ CXFA_Script::CXFA_Script(CXFA_Document* doc, XFA_PacketType packet)
           (XFA_XDPPACKET_Config | XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
           XFA_ObjectType::ContentNode,
           XFA_Element::Script,
-          kScriptPropertyData,
           kScriptAttributeData,
           pdfium::MakeUnique<CJX_Script>(this)) {}
 
@@ -63,4 +62,8 @@ XFA_AttributeValue CXFA_Script::GetRunAt() {
 
 WideString CXFA_Script::GetExpression() {
   return JSObject()->GetContent(false);
+}
+
+const CXFA_Node::PropertyData* CXFA_Script::GetPropertyDataList() const {
+  return kScriptPropertyData;
 }

@@ -22,7 +22,6 @@ CXFA_PrintHighQuality::CXFA_PrintHighQuality(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::PrintHighQuality,
-                nullptr,
                 kPrintHighQualityAttributeData) {}
 
 CXFA_PrintHighQuality::~CXFA_PrintHighQuality() = default;

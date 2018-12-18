@@ -13,6 +13,9 @@ class CXFA_ContentArea final : public CXFA_Node {
  public:
   CXFA_ContentArea(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_ContentArea() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_CONTENTAREA_H_

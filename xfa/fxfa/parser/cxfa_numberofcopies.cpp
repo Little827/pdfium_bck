@@ -22,7 +22,6 @@ CXFA_NumberOfCopies::CXFA_NumberOfCopies(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::NumberOfCopies,
-                nullptr,
                 kNumberOfCopiesAttributeData) {}
 
 CXFA_NumberOfCopies::~CXFA_NumberOfCopies() = default;

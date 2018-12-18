@@ -38,7 +38,6 @@ CXFA_TextEdit::CXFA_TextEdit(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::TextEdit,
-                kTextEditPropertyData,
                 kTextEditAttributeData,
                 pdfium::MakeUnique<CJX_TextEdit>(this)) {}
 
@@ -46,4 +45,8 @@ CXFA_TextEdit::~CXFA_TextEdit() = default;
 
 XFA_FFWidgetType CXFA_TextEdit::GetDefaultFFWidgetType() const {
   return XFA_FFWidgetType::kTextEdit;
+}
+
+const CXFA_Node::PropertyData* CXFA_TextEdit::GetPropertyDataList() const {
+  return kTextEditPropertyData;
 }

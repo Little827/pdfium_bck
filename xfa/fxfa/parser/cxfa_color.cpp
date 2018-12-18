@@ -31,7 +31,6 @@ CXFA_Color::CXFA_Color(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::Color,
-                kColorPropertyData,
                 kColorAttributeData,
                 pdfium::MakeUnique<CJX_Color>(this)) {}
 
@@ -55,4 +54,8 @@ void CXFA_Color::SetValue(FX_ARGB color) {
   std::tie(a, r, g, b) = ArgbDecode(color);
   JSObject()->SetCData(XFA_Attribute::Value,
                        WideString::Format(L"%d,%d,%d", r, g, b), false, false);
+}
+
+const CXFA_Node::PropertyData* CXFA_Color::GetPropertyDataList() const {
+  return kColorPropertyData;
 }

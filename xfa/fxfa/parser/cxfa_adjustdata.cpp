@@ -21,7 +21,6 @@ CXFA_AdjustData::CXFA_AdjustData(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::AdjustData,
-                nullptr,
                 kAdjustDataAttributeData) {}
 
 CXFA_AdjustData::~CXFA_AdjustData() = default;

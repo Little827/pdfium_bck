@@ -22,7 +22,6 @@ CXFA_AdobeExtensionLevel::CXFA_AdobeExtensionLevel(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::AdobeExtensionLevel,
-                nullptr,
                 kAdobeExtensionLevelAttributeData) {}
 
 CXFA_AdobeExtensionLevel::~CXFA_AdobeExtensionLevel() = default;

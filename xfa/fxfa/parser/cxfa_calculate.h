@@ -16,6 +16,9 @@ class CXFA_Calculate final : public CXFA_Node {
   CXFA_Calculate(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_Calculate() override;
 
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
+
   XFA_AttributeValue GetOverride();
   CXFA_Script* GetScriptIfExists();
   WideString GetMessageText();

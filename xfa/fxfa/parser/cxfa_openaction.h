@@ -13,6 +13,9 @@ class CXFA_OpenAction final : public CXFA_Node {
  public:
   CXFA_OpenAction(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_OpenAction() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_OPENACTION_H_

@@ -22,7 +22,6 @@ CXFA_FormFieldFilling::CXFA_FormFieldFilling(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::FormFieldFilling,
-                nullptr,
                 kFormFieldFillingAttributeData) {}
 
 CXFA_FormFieldFilling::~CXFA_FormFieldFilling() = default;

@@ -13,6 +13,9 @@ class CXFA_CalendarSymbols final : public CXFA_Node {
  public:
   CXFA_CalendarSymbols(CXFA_Document* doc, XFA_PacketType packet);
   ~CXFA_CalendarSymbols() override;
+
+  // CFXA_Node:
+  const PropertyData* GetPropertyDataList() const override;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_CALENDARSYMBOLS_H_

@@ -56,7 +56,6 @@ class CXFA_Stroke : public CXFA_Node {
               uint32_t validPackets,
               XFA_ObjectType oType,
               XFA_Element eType,
-              const PropertyData* properties,
               const AttributeData* attributes,
               std::unique_ptr<CJX_Object> js_node);
 };

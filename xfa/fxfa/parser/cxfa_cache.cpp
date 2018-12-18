@@ -25,7 +25,10 @@ CXFA_Cache::CXFA_Cache(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::Cache,
-                kCachePropertyData,
                 kCacheAttributeData) {}
 
 CXFA_Cache::~CXFA_Cache() {}
+
+const CXFA_Node::PropertyData* CXFA_Cache::GetPropertyDataList() const {
+  return kCachePropertyData;
+}

@@ -22,7 +22,6 @@ CXFA_PlaintextMetadata::CXFA_PlaintextMetadata(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::PlaintextMetadata,
-                nullptr,
                 kPlaintextMetadataAttributeData) {}
 
 CXFA_PlaintextMetadata::~CXFA_PlaintextMetadata() = default;

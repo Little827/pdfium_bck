@@ -21,7 +21,6 @@ CXFA_Linearized::CXFA_Linearized(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Linearized,
-                nullptr,
                 kLinearizedAttributeData) {}
 
 CXFA_Linearized::~CXFA_Linearized() = default;

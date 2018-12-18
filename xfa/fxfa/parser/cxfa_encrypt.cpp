@@ -32,8 +32,11 @@ CXFA_Encrypt::CXFA_Encrypt(CXFA_Document* doc, XFA_PacketType packet)
           (XFA_XDPPACKET_Template | XFA_XDPPACKET_Config | XFA_XDPPACKET_Form),
           XFA_ObjectType::ContentNode,
           XFA_Element::Encrypt,
-          kEncryptPropertyData,
           kEncryptAttributeData,
           pdfium::MakeUnique<CJX_Encrypt>(this)) {}
 
 CXFA_Encrypt::~CXFA_Encrypt() = default;
+
+const CXFA_Node::PropertyData* CXFA_Encrypt::GetPropertyDataList() const {
+  return kEncryptPropertyData;
+}

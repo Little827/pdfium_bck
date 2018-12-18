@@ -27,7 +27,6 @@ CXFA_VersionControl::CXFA_VersionControl(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::Node,
                 XFA_Element::VersionControl,
-                nullptr,
                 kVersionControlAttributeData) {}
 
 CXFA_VersionControl::~CXFA_VersionControl() = default;

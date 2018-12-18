@@ -21,7 +21,6 @@ CXFA_Pagination::CXFA_Pagination(CXFA_Document* doc, XFA_PacketType packet)
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::ContentNode,
                 XFA_Element::Pagination,
-                nullptr,
                 kPaginationAttributeData) {}
 
 CXFA_Pagination::~CXFA_Pagination() = default;

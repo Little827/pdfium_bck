@@ -37,7 +37,6 @@ CXFA_CheckButton::CXFA_CheckButton(CXFA_Document* doc, XFA_PacketType packet)
                 (XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
                 XFA_ObjectType::Node,
                 XFA_Element::CheckButton,
-                kCheckButtonPropertyData,
                 kCheckButtonAttributeData,
                 pdfium::MakeUnique<CJX_CheckButton>(this)) {}
 
@@ -57,4 +56,8 @@ XFA_AttributeValue CXFA_CheckButton::GetMark() {
 
 bool CXFA_CheckButton::IsAllowNeutral() {
   return JSObject()->GetBoolean(XFA_Attribute::AllowNeutral);
+}
+
+const CXFA_Node::PropertyData* CXFA_CheckButton::GetPropertyDataList() const {
+  return kCheckButtonPropertyData;
 }

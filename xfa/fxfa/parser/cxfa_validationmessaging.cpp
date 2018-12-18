@@ -22,7 +22,6 @@ CXFA_ValidationMessaging::CXFA_ValidationMessaging(CXFA_Document* doc,
                 XFA_XDPPACKET_Config,
                 XFA_ObjectType::NodeV,
                 XFA_Element::ValidationMessaging,
-                nullptr,
                 kValidationMessagingAttributeData) {}
 
 CXFA_ValidationMessaging::~CXFA_ValidationMessaging() = default;

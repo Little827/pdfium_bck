@@ -33,8 +33,11 @@ CXFA_Message::CXFA_Message(CXFA_Document* doc, XFA_PacketType packet)
           (XFA_XDPPACKET_Config | XFA_XDPPACKET_Template | XFA_XDPPACKET_Form),
           XFA_ObjectType::Node,
           XFA_Element::Message,
-          kMessagePropertyData,
           kMessageAttributeData,
           pdfium::MakeUnique<CJX_Message>(this)) {}
 
 CXFA_Message::~CXFA_Message() = default;
+
+const CXFA_Node::PropertyData* CXFA_Message::GetPropertyDataList() const {
+  return kMessagePropertyData;
+}
