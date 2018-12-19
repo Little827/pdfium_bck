@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51357b9f_e392909a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-19T02:08:33Z",
+      "side": 1,
+      "message": "typo: match",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "f8f7a49c9df285b6689c638a697b7c101d394f30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da1ec89_2f02019d",
+        "filename": "fxjs/xfa/jse_define.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-19T02:08:33Z",
+      "side": 1,
+      "message": "Thanks.",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "f8f7a49c9df285b6689c638a697b7c101d394f30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
