@@ -116,6 +116,24 @@
       "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb586cb8_2ea86633",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-19T19:55:15Z",
+      "side": 1,
+      "message": "OK, hopefully the fuzzers won\u0027t complain.",
+      "parentUuid": "0d181ed8_d2f82cda",
+      "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
