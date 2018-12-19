@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d21e940c_f44fc444",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-19T19:08:51Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5568b6f1_a7f63cce",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-19T19:08:51Z",
+      "side": 1,
+      "message": "Put the copy ctor below all the other ctors?",
+      "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147572cd_172601a7",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-19T19:08:51Z",
+      "side": 1,
+      "message": "Does this require constructing a new object on every call?",
+      "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
