@@ -419,15 +419,13 @@ void CFFL_FormFiller::DestroyPDFWindow(CPDFSDK_PageView* pPageView) {
 
 CFX_Matrix CFFL_FormFiller::GetWindowMatrix(
     const CPWL_Wnd::PrivateData* pAttached) {
-  CFX_Matrix mt;
   const auto* pPrivateData = static_cast<const CFFL_PrivateData*>(pAttached);
+  CFX_Matrix mt;
   if (!pPrivateData || !pPrivateData->pPageView)
     return mt;
 
-  CFX_Matrix mtPageView;
-  pPrivateData->pPageView->GetCurrentMatrix(mtPageView);
   mt = GetCurMatrix();
-  mt.Concat(mtPageView);
+  mt.Concat(pPrivateData->pPageView->GetCurrentMatrix());
   return mt;
 }
 
