@@ -72,8 +72,7 @@ void CPDF_RenderContext::Render(CFX_RenderDevice* pDevice,
     status.SetStopObject(pStopObj);
     status.SetTransparency(layer.m_pObjectHolder->GetTransparency());
     if (pLastMatrix) {
-      CFX_Matrix FinalMatrix = layer.m_Matrix;
-      FinalMatrix.Concat(*pLastMatrix);
+      CFX_Matrix FinalMatrix = layer.m_Matrix * *pLastMatrix;
       status.SetDeviceMatrix(*pLastMatrix);
       status.Initialize(nullptr, nullptr);
       status.RenderObjectList(layer.m_pObjectHolder.Get(), FinalMatrix);
