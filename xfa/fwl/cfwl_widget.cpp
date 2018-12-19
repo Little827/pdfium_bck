@@ -188,14 +188,12 @@ CFX_Matrix CFWL_Widget::GetMatrix() const {
   for (int32_t i = count - 2; i >= 0; i--) {
     parent = parents[i];
     if (parent->m_pProperties)
-      ctmOnParent.SetIdentity();
+      ctmOnParent = CFX_Matrix();
     rect = parent->GetWidgetRect();
-    matrix.ConcatPrepend(ctmOnParent);
+    matrix = ctmOnParent * matrix;
     matrix.TranslatePrepend(rect.left, rect.top);
   }
-  CFX_Matrix m;
-  m.SetIdentity();
-  matrix.ConcatPrepend(m);
+  matrix = CFX_Matrix() * matrix;
   parents.clear();
   return matrix;
 }
@@ -365,7 +363,7 @@ void CFWL_Widget::DrawBackground(CXFA_Graphics* pGraphics,
   param.m_iPart = iPartBk;
   param.m_pGraphics = pGraphics;
   if (pMatrix)
-    param.m_matrix.ConcatPrepend(*pMatrix);
+    param.m_matrix = *pMatrix * param.m_matrix;
   param.m_rtPart = GetRelativeRect();
   pTheme->DrawBackground(&param);
 }
@@ -378,7 +376,7 @@ void CFWL_Widget::DrawBorder(CXFA_Graphics* pGraphics,
   param.m_pWidget = this;
   param.m_iPart = iPartBorder;
   param.m_pGraphics = pGraphics;
-  param.m_matrix.ConcatPrepend(matrix);
+  param.m_matrix = matrix;
   param.m_rtPart = GetRelativeRect();
   pTheme->DrawBackground(&param);
 }
