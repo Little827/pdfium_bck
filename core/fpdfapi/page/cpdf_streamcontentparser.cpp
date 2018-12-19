@@ -1487,7 +1487,7 @@ void CPDF_StreamContentParser::AddPathObject(int FillType, bool bStroke) {
   if (PathClipType) {
     if (!matrix.IsIdentity()) {
       Path.Transform(&matrix);
-      matrix.SetIdentity();
+      matrix = CFX_Matrix();
     }
     m_pCurStates->m_ClipPath.AppendPath(Path, PathClipType, true);
   }
