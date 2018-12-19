@@ -37,6 +37,32 @@
 // least this will crash as expected.
 #define TRAP_SEQUENCE() __builtin_trap()
 #endif  // ARCH_CPU_*
+#elif defined(COMPILER_MSVC)
+
+// Clang is cleverer about coalescing int3s, so we need to add a unique-ish
+// instruction following the __debugbreak() to have it emit distinct locations
+// for CHECKs rather than collapsing them all together. It would be nice to use
+// a short intrinsic to do this (and perhaps have only one implementation for
+// both clang and MSVC), however clang-cl currently does not support intrinsics.
+// On the flip side, MSVC x64 doesn't support inline asm. So, we have to have
+// two implementations. Normally clang-cl's version will be 5 bytes (1 for
+// `int3`, 2 for `ud2`, 2 for `push byte imm`, however, TODO(scottmg):
+// https://crbug.com/694670 clang-cl doesn't currently support %'ing
+// __COUNTER__, so eventually it will emit the dword form of push.
+// TODO(scottmg): Reinvestigate a short sequence that will work on both
+// compilers once clang supports more intrinsics. See https://crbug.com/693713.
+#if !defined(__clang__)
+#define TRAP_SEQUENCE() __debugbreak()
+#elif defined(ARCH_CPU_ARM64)
+#define TRAP_SEQUENCE() \
+  __asm volatile("brk #0\n hlt %0\n" ::"i"(__COUNTER__ % 65536));
+#else
+#define TRAP_SEQUENCE() ({ {__asm int 3 __asm ud2 __asm push __COUNTER__}; })
+#endif  // __clang__
+
+#else
+#error Port
+#endif
 
 // CHECK() and the trap sequence can be invoked from a constexpr function.
 // This could make compilation fail on GCC, as it forbids directly using inline
@@ -60,34 +86,6 @@
     WRAPPED_TRAP_SEQUENCE(); \
     __builtin_unreachable(); \
   })
-
-#elif defined(COMPILER_MSVC)
-
-// Clang is cleverer about coalescing int3s, so we need to add a unique-ish
-// instruction following the __debugbreak() to have it emit distinct locations
-// for CHECKs rather than collapsing them all together. It would be nice to use
-// a short intrinsic to do this (and perhaps have only one implementation for
-// both clang and MSVC), however clang-cl currently does not support intrinsics.
-// On the flip side, MSVC x64 doesn't support inline asm. So, we have to have
-// two implementations. Normally clang-cl's version will be 5 bytes (1 for
-// `int3`, 2 for `ud2`, 2 for `push byte imm`, however, TODO(scottmg):
-// https://crbug.com/694670 clang-cl doesn't currently support %'ing
-// __COUNTER__, so eventually it will emit the dword form of push.
-// TODO(scottmg): Reinvestigate a short sequence that will work on both
-// compilers once clang supports more intrinsics. See https://crbug.com/693713.
-#if defined(__clang__)
-#define IMMEDIATE_CRASH()                           \
-  ({                                                \
-    {__asm int 3 __asm ud2 __asm push __COUNTER__}; \
-    __builtin_unreachable();                        \
-  })
-#else
-#define IMMEDIATE_CRASH() __debugbreak()
-#endif  // __clang__
-
-#else
-#error Port
-#endif
 
 #define CHECK(condition)        \
   if (UNLIKELY(!(condition))) { \
