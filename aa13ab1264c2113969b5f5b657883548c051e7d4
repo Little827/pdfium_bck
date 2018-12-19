@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2710f36e_d867a9ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-19T19:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21e940c_f44fc444",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5568b6f1_a7f63cce",
         "filename": "core/fxcrt/fx_coordinates.h",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9971c78b_e969d482",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-19T19:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5568b6f1_a7f63cce",
+      "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "147572cd_172601a7",
         "filename": "core/fxcrt/fx_coordinates.h",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2018-12-19T19:08:51Z",
       "side": 1,
       "message": "Does this require constructing a new object on every call?",
+      "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d181ed8_d2f82cda",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-19T19:53:01Z",
+      "side": 1,
+      "message": "Yes, but an optimized build gives identical code to the old under clang.  Debug builds go through all the steps, IsIdentity takes fewer instruction because of the calls, SetIdentity pays the cost of two calls.  But only debug code.",
+      "parentUuid": "147572cd_172601a7",
       "revId": "aa13ab1264c2113969b5f5b657883548c051e7d4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
