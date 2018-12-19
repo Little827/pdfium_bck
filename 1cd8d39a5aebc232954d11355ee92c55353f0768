@@ -22,6 +22,30 @@
       "revId": "1cd8d39a5aebc232954d11355ee92c55353f0768",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a8dc86c_be2205f2",
+        "filename": "fpdfsdk/formfiller/cba_fontmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-19T08:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eaae1b8_c5e885e0",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 35
+      },
+      "revId": "1cd8d39a5aebc232954d11355ee92c55353f0768",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
