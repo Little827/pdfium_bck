@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1545290458 -0800\nnonce AGLkUnBvwkjx8lqdk52SJa9rbUu/3cOaLG/s9d/360wvI2OdARrKE3vK64qQt8Hb7wn26dxvCgCs\n\n0000000000000000000000000000000000000000 abc6379a32ab59355ec6943fced2bca660f75dbb refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dremove-a-useless-assignment-in-cpdf-parser\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwbQtoACgkQqzYtYVpm\n/Xt2jgf/WZ/HD5waiIs79k70O9f3zTSq0nXhVY3K5Xfk6TRnzolQA7RMiLHNvYFr\nz6s87ejj6c0T+RraM4ZesOjQu+l4jFIynxRMXwXNmts8yp5LhDzy8mQbQ09zWPew\nFlVEo9r7CbR6hUuS3iDdDP/FqfSIQWIjo/EQjlOXS/lOJtHBXOgWqGY/40n/3V16\nJycaiise/DN8+F3LJ1Q0rQRoOHfThX0CKoUUrWbUh69LH6Qxdm+o7SMAheTiJ1fS\ni0nW3tlOjP+ZrECyO2Paw3DeONXfex14Net+4lLw7SliFmGCtw/2WWmlkniDK5ND\n/ZX2vTLFQwLAaNbodwUA09W8vKFwUQ\u003d\u003d\n\u003d9yAY\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
