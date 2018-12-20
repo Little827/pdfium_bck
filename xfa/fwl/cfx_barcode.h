@@ -25,10 +25,10 @@ class CFX_Barcode {
   ~CFX_Barcode();
 
   static std::unique_ptr<CFX_Barcode> Create(BC_TYPE type);
+
   BC_TYPE GetType();
   bool Encode(WideStringView contents);
-
-  bool RenderDevice(CFX_RenderDevice* device, const CFX_Matrix* matrix);
+  bool RenderDevice(CFX_RenderDevice* device, const CFX_Matrix& matrix);
 
   bool SetCharEncoding(BC_CHAR_ENCODING encoding);
 
