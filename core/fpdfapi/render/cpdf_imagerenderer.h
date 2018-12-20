@@ -32,7 +32,7 @@ class CPDF_ImageRenderer {
 
   bool Start(CPDF_RenderStatus* pStatus,
              CPDF_ImageObject* pImageObject,
-             const CFX_Matrix* pObj2Device,
+             const CFX_Matrix& mtObj2Device,
              bool bStdCS,
              BlendMode blendType);
 
@@ -40,7 +40,7 @@ class CPDF_ImageRenderer {
              const RetainPtr<CFX_DIBBase>& pDIBBase,
              FX_ARGB bitmap_argb,
              int bitmap_alpha,
-             const CFX_Matrix* pImage2Device,
+             const CFX_Matrix& mtImage2Device,
              const FXDIB_ResampleOptions& options,
              bool bStdCS,
              BlendMode blendType);
@@ -54,14 +54,14 @@ class CPDF_ImageRenderer {
   bool StartRenderDIBBase();
   bool StartLoadDIBBase();
   bool DrawMaskedImage();
-  bool DrawPatternImage(const CFX_Matrix* pObj2Device);
+  bool DrawPatternImage();
   bool NotDrawing() const;
   FX_RECT GetDrawRect() const;
   CFX_Matrix GetDrawMatrix(const FX_RECT& rect) const;
   void CalculateDrawImage(CFX_DefaultRenderDevice* bitmap_device1,
                           CFX_DefaultRenderDevice* bitmap_device2,
                           const RetainPtr<CFX_DIBBase>& pDIBBase,
-                          CFX_Matrix* pNewMatrix,
+                          const CFX_Matrix& mtNewMatrix,
                           const FX_RECT& rect) const;
   const CPDF_RenderOptions& GetRenderOptions() const;
   void HandleFilters();
