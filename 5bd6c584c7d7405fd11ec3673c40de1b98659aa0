@@ -23,6 +23,30 @@
       "revId": "5bd6c584c7d7405fd11ec3673c40de1b98659aa0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9198ebaa_8b123e98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-20T19:57:59Z",
+      "side": 1,
+      "message": "None filed. Aside from the new test that triggers it, there are no callers in Chromium/PDFium that actually hit this crash.",
+      "parentUuid": "fad77482_8cfc4da8",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "5bd6c584c7d7405fd11ec3673c40de1b98659aa0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
