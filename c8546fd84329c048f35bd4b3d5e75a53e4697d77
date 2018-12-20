@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1545302886 -0800\nnonce AGLkUnC459LNm6Dcu+P4YndcwsGwREj/mBRY+LLUbdNrVwRm9Qc/gtAs7Eygh7XK6ipiorUX0ezm\n\n0000000000000000000000000000000000000000 c8546fd84329c048f35bd4b3d5e75a53e4697d77 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwbc2YACgkQqzYtYVpm\n/XsBMQgAtiOfCPz/poXKIcKbWy+zzILihTtuQ55gD3oyIQC8i9b56HVIr+los/cP\nCQdMkjmaZj+k3DmquxDpFC18KWVtQLfcEjriZd/dru0Fx2rDX0/dzjG9e9/hy3Vr\nnDkHUosCGEk87lFb5+HsxaTL4lIgCDgjmo4Q166D4VEUGtV3RJOxLLUAC2tItpUO\nHfVR146/x0PZ57RhCCUGHm/aYguQfmC6Hybrs8F63vaDsm+vxo2NbkAryNVL6GSi\n1odBrSj7ONvqEluMYSOeny7LodwxwSAicDczWE9kmZcN2D/d0WUEJ7s57yRjk+y/\nZkGD4uMqrlyA88SqLSDfLhbrGBjWgw\u003d\u003d\n\u003dw+Gv\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbb20f71_b916952e",
+        "filename": "fpdfsdk/cpdfsdk_customaccess.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-20T17:45:32Z",
+      "side": 1,
+      "message": "nit: maybe\n  return new_pos.is_valid() \u0026\u0026 new_pos.ValueOrDie() \u003c\u003d GetSize \u0026\u0026\n          m_pFileAccess-\u003em_GetBlock(m_pFileAccess-\u003em_Param, offset,\n                                    static_cast\u003cuint8_t*\u003e(buffer), size);",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "c8546fd84329c048f35bd4b3d5e75a53e4697d77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f7e14c_91db9c83",
+        "filename": "fpdfsdk/fpdf_dataavail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-20T17:45:32Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 76
+      },
+      "revId": "c8546fd84329c048f35bd4b3d5e75a53e4697d77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
