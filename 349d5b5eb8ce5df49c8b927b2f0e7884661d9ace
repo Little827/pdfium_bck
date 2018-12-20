@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1545264452 -0800\nnonce AGLkUnCcS8tT/EdFuJkbSxbCV9nSDTz9MPnBMpMa1Nskdi/UID+6w+hekMzkSYp+DMLo9TLJKmYo\n\n0000000000000000000000000000000000000000 349d5b5eb8ce5df49c8b927b2f0e7884661d9ace refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dreturn-const-ref-from-cpdf-streamacc\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwa3UQACgkQqzYtYVpm\n/XuwSAf7BD72sKc/yFkZVqA/eini/obPmzdBWP3EQKmvB6IdGiHlcpoP0Qk4zjNj\n67deIOMLF3RG8guowYMGS8sY3dOMFa7J7RQyswTHIyy6Nm4/TJlGIxqnKKaAhNF+\nu9IXAe7Myo/XeNSKL/WZQ2G+ve9Z8C3wMaEVwkw/TK0cVB4VzvxCjb+NOU5Mayq2\nYtoULg4DsBrVJoBZ4E/HWh0+L9H/jJCWF2qRx52+yIiksi5kV9D23p1A3Os77/vy\njPsO9NXltgMMv9PSc886k2P8EIlTKv8vM1zxH5b1b++xGnK+0TlQ5xf+WDg5M4hl\nM5vLN+9orkNzvphvXJt3CiVioW1L6g\u003d\u003d\n\u003d2LEP\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fee0c36_92a0703b",
+        "filename": "core/fpdfapi/render/cpdf_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-20T00:58:53Z",
+      "side": 1,
+      "message": "Well, if some other call to m_pStreamAcc causes it to change its string, then this becomes an invalid reference. The way its written now, we add one ref-count but don\u0027t do a copy, (and decrement that refcount at exit).",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 459,
+        "endChar": 27
+      },
+      "revId": "349d5b5eb8ce5df49c8b927b2f0e7884661d9ace",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
