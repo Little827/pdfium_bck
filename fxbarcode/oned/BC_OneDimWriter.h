@@ -43,7 +43,7 @@ class CBC_OneDimWriter : public CBC_Writer {
                   int32_t& outWidth,
                   int32_t& outHeight);
   bool RenderDeviceResult(CFX_RenderDevice* device,
-                          const CFX_Matrix* matrix,
+                          const CFX_Matrix& matrix,
                           WideStringView contents);
   bool SetFont(CFX_Font* cFont);
 
