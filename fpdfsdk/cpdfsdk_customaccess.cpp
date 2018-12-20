@@ -20,7 +20,7 @@ FX_FILESIZE CPDFSDK_CustomAccess::GetSize() {
 bool CPDFSDK_CustomAccess::ReadBlockAtOffset(void* buffer,
                                              FX_FILESIZE offset,
                                              size_t size) {
-  if (offset < 0)
+  if (!buffer || offset < 0 || !size)
     return false;
 
   FX_SAFE_FILESIZE new_pos = pdfium::base::checked_cast<FX_FILESIZE>(size);
