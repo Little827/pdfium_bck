@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1545289004 -0800\nnonce AGLkUnCPbkz+IEijb16PdaQcXVE5vuPS6v98jx3Gro8+wMdn7ND9jA4NBetJ+jclNzTItOdRvEKP\n\n0000000000000000000000000000000000000000 75ab3b971d5d7ada4d8b94988cb8d555a2e449e0 refs/for/refs/heads/master%notify\u003dNONE,m\u003dmore,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlwbPSwACgkQqzYtYVpm\n/Xu5Awf/RteQBCyp+c1fAPWuVkosmlcPyGolGWBwXw2gl3S67mW8josmBRWXl5Hx\nFnjCFzxfa1FffSRN/LKGJWG5uQ+bPjEdi+KG7bnLMT/ZgOjFLHLDpkrCoF9asEtv\n3CjY7wsJh76mRdyDhVBsqKMJe8DsdVnNFM5iH6lJ1N9RJPckKA8t4zgRxp1mQ7EX\nFRMbnWW64w123TSY0RrVLWPb7z3MeX1Dz1OURKVmAF/528+Ort4Ii+nF/khp3661\nsq3jiXiZRkr9clXBnTYZgUAUk6f3EINTuT/TgQJToRR/A3cNM1rT2QAxoNsO99Ut\nvdWY03jv6kbJtSHoPaojkFpPJhvKFg\u003d\u003d\n\u003dKbzd\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6cf8058_346688ee",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-20T17:59:24Z",
+      "side": 1,
+      "message": "nit: mention this change in arguments in CL description?",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 30
+      },
+      "revId": "75ab3b971d5d7ada4d8b94988cb8d555a2e449e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5b7208_d58af5d2",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-20T17:59:24Z",
+      "side": 1,
+      "message": "Does m_pObj2Device need to be a pointer? Copy-assign here would be cheap-ish and we would be sure that the ref never goes stale.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 16
+      },
+      "revId": "75ab3b971d5d7ada4d8b94988cb8d555a2e449e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f3d728_eb982c25",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-20T17:59:24Z",
+      "side": 1,
+      "message": "Again, copy-assign makes me feel better.",
+      "range": {
+        "startLine": 280,
+        "startChar": 29,
+        "endLine": 280,
+        "endChar": 50
+      },
+      "revId": "75ab3b971d5d7ada4d8b94988cb8d555a2e449e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
