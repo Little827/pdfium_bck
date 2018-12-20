@@ -232,7 +232,7 @@ bool CBC_OneDimWriter::ShowChars(WideStringView contents,
 }
 
 bool CBC_OneDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
-                                          const CFX_Matrix* matrix,
+                                          const CFX_Matrix& matrix,
                                           WideStringView contents) {
   if (m_output.empty())
     return false;
@@ -241,11 +241,11 @@ bool CBC_OneDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
   CFX_PathData path;
   path.AppendRect(0, 0, static_cast<float>(m_Width),
                   static_cast<float>(m_Height));
-  device->DrawPath(&path, matrix, &stateData, m_backgroundColor,
+  device->DrawPath(&path, &matrix, &stateData, m_backgroundColor,
                    m_backgroundColor, FXFILL_ALTERNATE);
   CFX_Matrix scaledMatrix(m_outputHScale, 0.0, 0.0,
                           static_cast<float>(m_Height), 0.0, 0.0);
-  scaledMatrix.Concat(*matrix);
+  scaledMatrix.Concat(matrix);
   for (auto& rect : m_output) {
     CFX_GraphStateData data;
     device->DrawPath(&rect, &scaledMatrix, &data, m_barColor, 0,
@@ -253,7 +253,7 @@ bool CBC_OneDimWriter::RenderDeviceResult(CFX_RenderDevice* device,
   }
 
   return m_locTextLoc == BC_TEXT_LOC_NONE || !contents.Contains(' ') ||
-         ShowChars(contents, device, matrix, m_barWidth, m_multiple);
+         ShowChars(contents, device, &matrix, m_barWidth, m_multiple);
 }
 
 bool CBC_OneDimWriter::RenderResult(WideStringView contents,
