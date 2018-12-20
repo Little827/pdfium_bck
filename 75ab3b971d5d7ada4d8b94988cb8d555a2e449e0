@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "7c3711fc_78210b0a",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-20T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6cf8058_346688ee",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 30
+      },
+      "revId": "75ab3b971d5d7ada4d8b94988cb8d555a2e449e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b5b7208_d58af5d2",
         "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "569d3e43_4e4354d2",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-20T23:57:57Z",
+      "side": 1,
+      "message": "I didn\u0027t look at the call stack that carefully previously. My concern is the value of |mtObj2Device| can change, so copying it may result in a stale value. Looking at it some more, I don\u0027t think that\u0027ll ever happen, so I\u0027ll copy-assign here.",
+      "parentUuid": "8b5b7208_d58af5d2",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 16
+      },
+      "revId": "75ab3b971d5d7ada4d8b94988cb8d555a2e449e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87f3d728_eb982c25",
         "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
         "patchSetId": 2
@@ -69,6 +117,30 @@
       "revId": "75ab3b971d5d7ada4d8b94988cb8d555a2e449e0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dcc6f5e_ea40a340",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-20T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87f3d728_eb982c25",
+      "range": {
+        "startLine": 280,
+        "startChar": 29,
+        "endLine": 280,
+        "endChar": 50
+      },
+      "revId": "75ab3b971d5d7ada4d8b94988cb8d555a2e449e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
