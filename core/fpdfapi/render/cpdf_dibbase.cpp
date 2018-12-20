@@ -456,7 +456,7 @@ bool CPDF_DIBBase::GetDecodeAndMaskArray(bool* bDefaultDecode,
 }
 
 CPDF_DIBBase::LoadState CPDF_DIBBase::CreateDecoder() {
-  ByteString decoder = m_pStreamAcc->GetImageDecoder();
+  const ByteString& decoder = m_pStreamAcc->GetImageDecoder();
   if (decoder.IsEmpty())
     return LoadState::kSuccess;
 

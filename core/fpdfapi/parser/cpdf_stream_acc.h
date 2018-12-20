@@ -39,7 +39,7 @@ class CPDF_StreamAcc final : public Retainable {
   pdfium::span<uint8_t> GetSpan() const {
     return pdfium::make_span(GetData(), GetSize());
   }
-  ByteString GetImageDecoder() const { return m_ImageDecoder; }
+  const ByteString& GetImageDecoder() const { return m_ImageDecoder; }
   const CPDF_Dictionary* GetImageParam() const { return m_pImageParam.Get(); }
   std::unique_ptr<uint8_t, FxFreeDeleter> DetachData();
 
