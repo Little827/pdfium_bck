@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a528749d_5374a6e1",
+        "filename": "core/fpdfapi/page/cpdf_page.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-21T18:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c2b01a2_96d31aba",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 51
+      },
+      "revId": "9acf40bb687fa31ef25c187ee0b3cb23a75b6868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e2c8ecf_6ffb1f7c",
         "filename": "fpdfsdk/fpdf_editpage.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-21T17:55:54Z",
       "side": 1,
       "message": "nit: pre-existing: negative values would be bad, no?",
+      "range": {
+        "startLine": 677,
+        "startChar": 2,
+        "endLine": 677,
+        "endChar": 14
+      },
+      "revId": "9acf40bb687fa31ef25c187ee0b3cb23a75b6868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d5b8fe8_4b6f2d20",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-21T18:05:54Z",
+      "side": 1,
+      "message": "Should be ok. CPDF_Page::GetPageRotation() will handle it correctly.\n\nSpec says: The number of degrees by which the page should be rotated clockwise when displayed or printed. The value must be a multiple of 90.",
+      "parentUuid": "0e2c8ecf_6ffb1f7c",
       "range": {
         "startLine": 677,
         "startChar": 2,
