@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c2b01a2_96d31aba",
+        "filename": "core/fpdfapi/page/cpdf_page.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-21T17:55:54Z",
+      "side": 1,
+      "message": "nit: as much as I hate duplication, I think this reads clearer if we inline it under the two appropriate case statements in the switch below, avoiding the double-test in some sense.",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 51
+      },
+      "revId": "9acf40bb687fa31ef25c187ee0b3cb23a75b6868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e2c8ecf_6ffb1f7c",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2018-12-21T17:55:54Z",
+      "side": 1,
+      "message": "nit: pre-existing: negative values would be bad, no?",
+      "range": {
+        "startLine": 677,
+        "startChar": 2,
+        "endLine": 677,
+        "endChar": 14
+      },
+      "revId": "9acf40bb687fa31ef25c187ee0b3cb23a75b6868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
