@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "088c77f3_756ef384",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-21T01:09:34Z",
+      "side": 0,
+      "message": "It turns out these are CPDF_PageObjectHolder\u0027s members and have to be initialized there.",
+      "revId": "1d2a7ac95279635b4c0ac58389c8b07261850fd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
