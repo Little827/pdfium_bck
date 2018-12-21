@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea5067fd_2624faa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-21T21:51:11Z",
+      "side": 1,
+      "message": "- The formatting here reverted back to its original state between patch sets 3 and 4.\n- Can we mention the Chromium CLs this CL picks up? \"https://crrev.com/607562 and https://crrev.com/618551\" is the most compact URLs for referring to those CLs.",
+      "revId": "f4ae3199ed97d313bef0861560767fcacb4265b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
