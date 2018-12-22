@@ -9,6 +9,7 @@
 
 #include "core/fdrm/fx_crypt.h"
 #include "core/fxcrt/fx_string.h"
+#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "testing/utils/path_service.h"
 
 #ifdef PDF_ENABLE_V8
@@ -111,9 +112,7 @@ std::unique_ptr<char, pdfium::FreeDeleter> GetFileContents(const char* filename,
 }
 
 std::string GetPlatformString(FPDF_WIDESTRING wstr) {
-  WideString wide_string =
-      WideString::FromUTF16LE(wstr, WideString::WStringLength(wstr));
-  return std::string(wide_string.ToUTF8().c_str());
+  return std::string(ByteStringFromFPDFWideString(wstr).c_str());
 }
 
 std::wstring GetPlatformWString(FPDF_WIDESTRING wstr) {
