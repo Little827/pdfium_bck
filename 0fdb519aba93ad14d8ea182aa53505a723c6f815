@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "a22c6bc7_07690867",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-23T02:58:15Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "137d8337_03395503",
+      "range": {
+        "startLine": 179,
+        "startChar": 9,
+        "endLine": 180,
+        "endChar": 72
+      },
+      "revId": "0fdb519aba93ad14d8ea182aa53505a723c6f815",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6e94332_185e52e8",
         "filename": "fpdfsdk/cpdfsdk_helpers.h",
         "patchSetId": 3
@@ -46,6 +70,30 @@
       "revId": "0fdb519aba93ad14d8ea182aa53505a723c6f815",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d10924_cfe982d9",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2018-12-23T02:58:15Z",
+      "side": 1,
+      "message": "Fixed in the next CL in the chain.",
+      "parentUuid": "d6e94332_185e52e8",
+      "range": {
+        "startLine": 209,
+        "startChar": 11,
+        "endLine": 209,
+        "endChar": 14
+      },
+      "revId": "0fdb519aba93ad14d8ea182aa53505a723c6f815",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
