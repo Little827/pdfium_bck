@@ -45,10 +45,7 @@ class CPDFXFA_Page final : public IPDF_Page {
   void LoadPDFPageFromDict(CPDF_Dictionary* pPageDict);
   CPDF_Document::Extension* GetDocumentExtension() const;
   int GetPageIndex() const { return m_iPageIndex; }
-  CXFA_FFPageView* GetXFAPageView() const { return m_pXFAPageView; }
-  void SetXFAPageView(CXFA_FFPageView* pPageView) {
-    m_pXFAPageView = pPageView;
-  }
+  CXFA_FFPageView* GetXFAPageView() const;
 
  private:
   // Refcounted class.
@@ -56,10 +53,8 @@ class CPDFXFA_Page final : public IPDF_Page {
   ~CPDFXFA_Page() override;
 
   bool LoadPDFPage();
-  bool LoadXFAPageView();
 
   RetainPtr<CPDF_Page> m_pPDFPage;
-  CXFA_FFPageView* m_pXFAPageView = nullptr;
   UnownedPtr<CPDFXFA_Context> const m_pContext;
   const int m_iPageIndex;
 };
