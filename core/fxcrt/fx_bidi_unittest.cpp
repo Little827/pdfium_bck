@@ -11,7 +11,16 @@ const wchar_t kNeutralChar = 32;
 const wchar_t kLeftChar = 65;
 const wchar_t kRightChar = 1424;
 
+const uint32_t oldtable[] = {
+#include "core/fxcrt/fx_ucddata_old.inc"
+};
+
 }  // namespace
+
+TEST(fxcrt, TemporaryTest) {
+  for (int i = 0; i < 65536; ++i)
+    EXPECT_EQ(oldtable[i], FX_GetUnicodeProperties(i));
+}
 
 TEST(fxcrt, BidiCharEmpty) {
   CFX_BidiChar bidi;
