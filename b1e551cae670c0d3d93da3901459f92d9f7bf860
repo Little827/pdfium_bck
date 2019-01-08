@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c7c5073_470c78a2",
+        "filename": "core/fpdfapi/parser/cpdf_document.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-08T19:40:34Z",
+      "side": 1,
+      "message": "I added a comment for |m_bHasValidCrossReferenceTable| in the header.",
+      "parentUuid": "5b41cf40_eee6d1a3",
+      "range": {
+        "startLine": 318,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 70
+      },
+      "revId": "b1e551cae670c0d3d93da3901459f92d9f7bf860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4138fc28_64bccccd",
         "filename": "public/fpdfview.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b1e551cae670c0d3d93da3901459f92d9f7bf860",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f32001_09202806",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-08T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4138fc28_64bccccd",
+      "range": {
+        "startLine": 499,
+        "startChar": 38,
+        "endLine": 500,
+        "endChar": 20
+      },
+      "revId": "b1e551cae670c0d3d93da3901459f92d9f7bf860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
