@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "bdf882b5_89497fe1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-08T19:52:45Z",
+      "side": 1,
+      "message": "None. I noticed this while looking at the implementation.",
+      "parentUuid": "474bf9e8_5f68c0a7",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "6a436fe16b42824bd5a06170d0410a2bb9625532",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0d9b859_e7e099f3",
         "filename": "fpdfsdk/cpdfsdk_customaccess.cpp",
         "patchSetId": 3
@@ -46,6 +70,30 @@
       "revId": "6a436fe16b42824bd5a06170d0410a2bb9625532",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2bc29f_893dd669",
+        "filename": "fpdfsdk/cpdfsdk_customaccess.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-08T19:52:45Z",
+      "side": 1,
+      "message": "No, it\u0027s defined in public/fpdfview.h.",
+      "parentUuid": "a0d9b859_e7e099f3",
+      "range": {
+        "startLine": 30,
+        "startChar": 54,
+        "endLine": 30,
+        "endChar": 78
+      },
+      "revId": "6a436fe16b42824bd5a06170d0410a2bb9625532",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
