@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15d3aa7e_891a7086",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-09T22:26:46Z",
+      "side": 1,
+      "message": "Not a double word anymore. *shrug*",
+      "range": {
+        "startLine": 757,
+        "startChar": 16,
+        "endLine": 757,
+        "endChar": 26
+      },
+      "revId": "2e6367f4363b8ca4acea04d83e23b3d291e7bb19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
