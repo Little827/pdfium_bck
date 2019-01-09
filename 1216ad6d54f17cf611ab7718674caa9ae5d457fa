@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "af93c557_723aef8e",
+        "filename": "core/fpdfdoc/cpdf_filespec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-09T02:33:25Z",
+      "side": 1,
+      "message": "What did you have in mind? The \"F\" and \"UF\" encodings are suppose to be different. This should not be: pDict-\u003eSetNewFor\u003cCPDF_String\u003e(pdfium::stream::kF, wsStr);",
+      "parentUuid": "43e0fc40_7a42fa99",
+      "range": {
+        "startLine": 208,
+        "startChar": 72,
+        "endLine": 208,
+        "endChar": 78
+      },
+      "revId": "1216ad6d54f17cf611ab7718674caa9ae5d457fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80a2af89_d4ce68dd",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2019-01-02T18:50:23Z",
       "side": 1,
       "message": "is this really better than just making a new string object?",
+      "range": {
+        "startLine": 390,
+        "startChar": 10,
+        "endLine": 390,
+        "endChar": 68
+      },
+      "revId": "1216ad6d54f17cf611ab7718674caa9ae5d457fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f6e3ab_c0196a93",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-09T02:33:25Z",
+      "side": 1,
+      "message": "Clone() avoids having to encode |csValue| a second time.",
+      "parentUuid": "80a2af89_d4ce68dd",
       "range": {
         "startLine": 390,
         "startChar": 10,
