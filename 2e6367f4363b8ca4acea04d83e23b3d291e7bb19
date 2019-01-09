@@ -22,6 +22,30 @@
       "revId": "2e6367f4363b8ca4acea04d83e23b3d291e7bb19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4408e70_a1291a19",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-09T22:35:13Z",
+      "side": 1,
+      "message": "*shrugs*",
+      "parentUuid": "15d3aa7e_891a7086",
+      "range": {
+        "startLine": 757,
+        "startChar": 16,
+        "endLine": 757,
+        "endChar": 26
+      },
+      "revId": "2e6367f4363b8ca4acea04d83e23b3d291e7bb19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
