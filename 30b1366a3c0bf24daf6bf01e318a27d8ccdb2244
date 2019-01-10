@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51767142_59048ebd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-10T23:22:41Z",
+      "side": 1,
+      "message": "FYI, outside of the Chromium repo, you want to prefix Chromium bugs with chromium:, so it is clear which bug 904007 you are referring to.",
+      "revId": "30b1366a3c0bf24daf6bf01e318a27d8ccdb2244",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
