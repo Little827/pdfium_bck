@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be3e2fe1_68fafc9b",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-10T23:12:32Z",
+      "side": 1,
+      "message": "Just \"prop\" like the others below, since it\u0027s no longer a double word?",
+      "range": {
+        "startLine": 147,
+        "startChar": 11,
+        "endLine": 147,
+        "endChar": 18
+      },
+      "revId": "955eda8a27d0245df34b5ba019e4f01bac2666f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
