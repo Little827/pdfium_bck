@@ -100,9 +100,9 @@ class CPDF_Font {
   void LoadFontDescriptor(const CPDF_Dictionary* pDict);
   void CheckFontMetrics();
 
-  const char* GetAdobeCharName(int iBaseEncoding,
-                               const std::vector<ByteString>& charnames,
-                               int charcode);
+  static const char* GetAdobeCharName(int iBaseEncoding,
+                                      const std::vector<ByteString>& charnames,
+                                      int charcode);
 
   UnownedPtr<CPDF_Document> const m_pDocument;
   CFX_Font m_Font;
