@@ -102,7 +102,7 @@ class CPDF_Font {
 
   static const char* GetAdobeCharName(int iBaseEncoding,
                                       const std::vector<ByteString>& charnames,
-                                      int charcode);
+                                      uint32_t charcode);
 
   UnownedPtr<CPDF_Document> const m_pDocument;
   CFX_Font m_Font;
