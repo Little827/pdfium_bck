@@ -359,7 +359,11 @@ const char* CPDF_Font::GetAdobeCharName(
   const char* name = nullptr;
   if (iBaseEncoding)
     name = PDF_CharNameFromPredefinedCharSet(iBaseEncoding, charcode);
-  return name && name[0] ? name : nullptr;
+  if (name) {
+    ASSERT(name[0]);
+    return name;
+  }
+  return nullptr;
 }
 
 uint32_t CPDF_Font::FallbackFontFromCharcode(uint32_t charcode) {
