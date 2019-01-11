@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1547171044 -0800\nnonce AJbGYzlCYEPOzxFKJ9kUg2GzmB6B+9ld4SIdEryvk8vOTjO7Mm+kydnu7ACPawx//6s71sdYGAHf\n\n0000000000000000000000000000000000000000 85fea70763a7d28a5a9f3e97173eecc5b35eb2c4 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlw39OQACgkQqzYtYVpm\n/Xs4IggA1DYn0nJzxpydgx1TXxcxBgqlnW+Sv8xpLi8AjOM4OZa1+4MWHSZ82LPO\n+ArlZfX/lwbTu+Hux/6bfnEuE9Gn8WE5awR1AUaSJU+OC6D2p/b3J+MPlpkIg97k\ne4/FaO9fDOZwpzcT1Q0Xx0L9KTU9+iVKeox/1rZrQz+4d3b8TYs7lkaxcOT/Lwv0\nBoRdZMso7E/UNeh0XaK9h9oXX7cqa4UlMR8cHvkBVHJ+clPWDIRSWGf+OPPK4wqm\nwuM1zKfn88FPCGZR5GGDq3OFYf7ynXzo64i508P4AisenHOYK/wcBmymMFi7A90h\nDnFP7/23R266FaWpPvCeKlk6EFBXKQ\u003d\u003d\n\u003dD4fq\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "026841a5_033b9772",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-11T16:53:31Z",
+      "side": 1,
+      "message": "nit: sometimes",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "85fea70763a7d28a5a9f3e97173eecc5b35eb2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0234d74_0a4ece9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-11T16:53:31Z",
+      "side": 1,
+      "message": "nit: Values are",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "85fea70763a7d28a5a9f3e97173eecc5b35eb2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
