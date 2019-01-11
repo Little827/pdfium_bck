@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be189424_354b51a5",
+        "filename": "core/fxcrt/fx_bidi.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-11T20:37:25Z",
+      "side": 0,
+      "message": "FX_BNAIn is FX_BWAIX, FX_BWAIX is 0x100 and 0x100 !\u003d (x \u0026 0xF) for all x.",
+      "range": {
+        "startLine": 236,
+        "startChar": 20,
+        "endLine": 236,
+        "endChar": 28
+      },
+      "revId": "7e5e0ea5b6b7589d2048ab63060e24728218c3d3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
