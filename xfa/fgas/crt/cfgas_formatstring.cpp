@@ -10,8 +10,8 @@
 #include <utility>
 #include <vector>
 
-#include "core/fxcrt/cfx_decimal.h"
 #include "core/fxcrt/fx_extension.h"
+#include "xfa/fgas/crt/cfx_decimal.h"
 #include "xfa/fxfa/parser/cxfa_localemgr.h"
 
 #define FX_LOCALECATEGORY_DateHash 0xbde9abde
