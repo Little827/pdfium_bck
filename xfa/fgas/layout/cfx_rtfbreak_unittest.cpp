@@ -86,6 +86,6 @@ TEST_F(CFX_RTFBreakTest, BidiLine) {
     rtf_break->AppendChar(ch);
 
   auto chars = rtf_break->GetCurrentLineForTesting()->m_LineChars;
-  FX_BidiLine(&chars, chars.size());
+  CFX_Char::BidiLine(&chars, chars.size());
   EXPECT_EQ(3u, chars.size());
 }

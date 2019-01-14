@@ -427,7 +427,7 @@ void CFX_RTFBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
       if (i == 0)
         pTC->m_iBidiLevel = 1;
     }
-    FX_BidiLine(&chars, iBidiNum + 1);
+    CFX_Char::BidiLine(&chars, iBidiNum + 1);
   } else {
     for (size_t i = 0; i < m_pCurLine->m_LineChars.size(); ++i) {
       pTC = &chars[i];
