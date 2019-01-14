@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1547364133 -0800\nnonce AJbGYzlxBOcyfUK9yU+t+jkgSkYtADrgDRlxq0J7nr9Lo+/wcE9dJab51i2430zAdUpfmh68DXkG\n\n0000000000000000000000000000000000000000 7df0cf92c74932aec8161329d26c073c73712221 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlw65yUACgkQqzYtYVpm\n/XvJoAgAiidu7oDp8mbUm68i+dl2Kwu8DKaAcKtbwwHoZ2tz4WHJAYSyPuyzDQVK\nqxUHivsD6usWNWr5g06JT5xDdV9Ols4iIAj+h7tR2pHyYXkUU7Wqfeo07dttmtkj\nqZhdqPKrUFOWQn7Ix417AjMnZSQyA2C11xQhhDmgeZ2fyjed4ra6M9wIwaAmeO5N\nACUapix/I1axsObs6Zot23Fc4D2zhwJslP3wQ0S1GwEs8JVjVXoaDy3kDD8KdXoD\nqoGd9XH4TwlmHs3Vwy2GskwTBnDNlSqmunp82fucGhNDsH/S+J5pCDiVlIXB5cEA\np2bUHygsTRW0di31do6OBeNk2tX3/w\u003d\u003d\n\u003dgjAo\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f4a89e0_2f87fd2e",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-14T18:20:15Z",
+      "side": 1,
+      "message": "nit: ideally, we\u0027d shift first here and then test against kMirrorMax instead of the mask.",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "7df0cf92c74932aec8161329d26c073c73712221",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
