@@ -404,6 +404,27 @@ bool CPDF_SecurityHandler::CheckPassword(const ByteString& password,
                                          int32_t key_len) {
   ASSERT(key);
 
+  if (CheckPasswordImpl(password, bOwner, key, key_len))
+    return true;
+
+  if (password.AsStringView().IsASCII())
+    return false;
+
+  if (m_Revision >= 5) {
+    ByteString utf8_password =
+        WideString::FromLatin1(password.AsStringView()).ToUTF8();
+    return CheckPasswordImpl(utf8_password, bOwner, key, key_len);
+  }
+
+  ByteString latin1_password =
+      WideString::FromUTF8(password.AsStringView()).ToLatin1();
+  return CheckPasswordImpl(latin1_password, bOwner, key, key_len);
+}
+
+bool CPDF_SecurityHandler::CheckPasswordImpl(const ByteString& password,
+                                             bool bOwner,
+                                             uint8_t* key,
+                                             int32_t key_len) {
   if (m_Revision >= 5)
     return AES256_CheckPassword(password, bOwner, key);
 

@@ -58,6 +58,10 @@ class CPDF_SecurityHandler {
                 int& cipher,
                 int& key_len);
 
+  bool CheckPasswordImpl(const ByteString& password,
+                         bool bOwner,
+                         uint8_t* key,
+                         int32_t key_len);
   bool CheckUserPassword(const ByteString& password,
                          bool bIgnoreEncryptMeta,
                          uint8_t* key,
