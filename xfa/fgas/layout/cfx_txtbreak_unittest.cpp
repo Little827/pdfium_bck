@@ -43,6 +43,6 @@ TEST_F(CFX_TxtBreakTest, BidiLine) {
     txt_break->AppendChar(ch);
 
   auto chars = txt_break->GetCurrentLineForTesting()->m_LineChars;
-  FX_BidiLine(&chars, chars.size());
+  CFX_Char::BidiLine(&chars, chars.size());
   EXPECT_EQ(3u, chars.size());
 }
