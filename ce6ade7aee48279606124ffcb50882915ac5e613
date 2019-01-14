@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1547493729 -0800\nnonce AJbGYzmJeBPLUOszPvep3jPJTnbgGXHYW5LpLaq0CYwIFgFWL4ZNmMCxcXbAUWavyOvX8VdG+8Pp\n\n0000000000000000000000000000000000000000 ce6ade7aee48279606124ffcb50882915ac5e613 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlw84WEACgkQqzYtYVpm\n/Xs3qwf9HIqrO/RSGvp7T1c7pL1fj3a0TLDA0ktMuKERy599KooIsT32ulBjJ2l5\nYYduHr4FJXG1UYZnrhZhmZ36itxllHNzAoMjSPw/qCAZxE/EosTjMRFGzmq1sded\nIv1DHE0XB/VeM9AzTh7D5kL8/fOM/rLHNjgLmriyWYvg33qdjXJhWb6XjTezkWZH\nCnu6sxZdPovA6rLymCEis5WSbnbRROKjluDO6PNAD8e2YcD7bCNYnLAV2jDCnuyP\nfFF79oGAQiD5PnXwTohcowUKcGAOrKEQgl9EzqIjk8qm3RGvk5G5PtfrLvsWfsuN\na/tunYsjShep1+hgaClXE2EyRvvcLA\u003d\u003d\n\u003djmyW\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1250fe5_9d67506e",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-14T20:09:37Z",
+      "side": 1,
+      "message": "nit: pre-existing stray blank line here?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "ce6ade7aee48279606124ffcb50882915ac5e613",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7346b8bb_6416d736",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-14T20:09:37Z",
+      "side": 1,
+      "message": "nit: maybe explain both will be tried.",
+      "range": {
+        "startLine": 307,
+        "startChar": 70,
+        "endLine": 307,
+        "endChar": 71
+      },
+      "revId": "ce6ade7aee48279606124ffcb50882915ac5e613",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
