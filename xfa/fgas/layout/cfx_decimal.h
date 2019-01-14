@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCRT_CFX_DECIMAL_H_
-#define CORE_FXCRT_CFX_DECIMAL_H_
+#ifndef XFA_FGAS_LAYOUT_CFX_DECIMAL_H_
+#define XFA_FGAS_LAYOUT_CFX_DECIMAL_H_
 
 #include "core/fxcrt/fx_string.h"
 
@@ -39,4 +39,4 @@ class CFX_Decimal {
   uint32_t m_uFlags;
 };
 
-#endif  // CORE_FXCRT_CFX_DECIMAL_H_
+#endif  // XFA_FGAS_LAYOUT_CFX_DECIMAL_H_

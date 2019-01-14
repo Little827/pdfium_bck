@@ -8,7 +8,6 @@
 
 #include <tuple>
 
-#include "core/fxcrt/cfx_decimal.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
@@ -22,6 +21,7 @@
 #include "third_party/base/compiler_specific.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
+#include "xfa/fgas/layout/cfx_decimal.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/parser/cxfa_border.h"
