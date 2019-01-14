@@ -8,12 +8,12 @@
 
 #include <algorithm>
 
-#include "core/fxcrt/cfx_char.h"
-#include "core/fxcrt/fx_arabic.h"
-#include "core/fxcrt/fx_linebreak.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fde/cfde_texteditengine.h"
 #include "xfa/fgas/font/cfgas_gefont.h"
+#include "xfa/fgas/layout/cfx_char.h"
+#include "xfa/fgas/layout/fx_arabic.h"
+#include "xfa/fgas/layout/fx_linebreak.h"
 
 namespace {
 

@@ -8,10 +8,10 @@
 
 #include <vector>
 
-#include "core/fxcrt/cfx_decimal.h"
 #include "fxjs/cfx_v8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_value.h"
+#include "xfa/fgas/layout/cfx_decimal.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/fxfa.h"
