@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db5d42dd_f78e3e45",
+        "filename": "xfa/fwl/cfwl_notedriver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-15T19:21:54Z",
+      "side": 1,
+      "message": "NOTE: in turn, this is the only place where items are added (removed from) to the queue.  So its a queue of one at all times.  And m_pNoteLoop above can be \"const\", so remove entirely as a follow-up.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "d4e327c215805275ec50b62b4990d6e805b8e849",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
