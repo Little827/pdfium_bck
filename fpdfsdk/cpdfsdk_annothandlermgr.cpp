@@ -83,11 +83,11 @@ void CPDFSDK_AnnotHandlerMgr::Annot_ReplaceSelection(CPDFSDK_Annot* pAnnot,
 }
 
 bool CPDFSDK_AnnotHandlerMgr::Annot_CanUndo(CPDFSDK_Annot* pAnnot) {
-  return GetAnnotHandler(pAnnot)->CanUndo(pAnnot);
+  return GetAnnotHandler(pAnnot)->CanUndo_(pAnnot);
 }
 
 bool CPDFSDK_AnnotHandlerMgr::Annot_CanRedo(CPDFSDK_Annot* pAnnot) {
-  return GetAnnotHandler(pAnnot)->CanRedo(pAnnot);
+  return GetAnnotHandler(pAnnot)->CanRedo_(pAnnot);
 }
 
 bool CPDFSDK_AnnotHandlerMgr::Annot_Undo(CPDFSDK_Annot* pAnnot) {

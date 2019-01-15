@@ -204,11 +204,11 @@ WideString CPDFSDK_BAAnnotHandler::GetSelectedText(CPDFSDK_Annot* pAnnot) {
 void CPDFSDK_BAAnnotHandler::ReplaceSelection(CPDFSDK_Annot* pAnnot,
                                               const WideString& text) {}
 
-bool CPDFSDK_BAAnnotHandler::CanUndo(CPDFSDK_Annot* pAnnot) {
+bool CPDFSDK_BAAnnotHandler::CanUndo_(CPDFSDK_Annot* pAnnot) {
   return false;
 }
 
-bool CPDFSDK_BAAnnotHandler::CanRedo(CPDFSDK_Annot* pAnnot) {
+bool CPDFSDK_BAAnnotHandler::CanRedo_(CPDFSDK_Annot* pAnnot) {
   return false;
 }
 

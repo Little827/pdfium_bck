@@ -40,8 +40,8 @@ class CPDFSDK_WidgetHandler final : public IPDFSDK_AnnotHandler {
   WideString GetText(CPDFSDK_Annot* pAnnot) override;
   WideString GetSelectedText(CPDFSDK_Annot* pAnnot) override;
   void ReplaceSelection(CPDFSDK_Annot* pAnnot, const WideString& text) override;
-  bool CanUndo(CPDFSDK_Annot* pAnnot) override;
-  bool CanRedo(CPDFSDK_Annot* pAnnot) override;
+  bool CanUndo_(CPDFSDK_Annot* pAnnot) override;
+  bool CanRedo_(CPDFSDK_Annot* pAnnot) override;
   bool Undo(CPDFSDK_Annot* pAnnot) override;
   bool Redo(CPDFSDK_Annot* pAnnot) override;
   bool HitTest(CPDFSDK_PageView* pPageView,

@@ -272,11 +272,11 @@ void CPDFSDK_WidgetHandler::ReplaceSelection(CPDFSDK_Annot* pAnnot,
     m_pFormFiller->ReplaceSelection(pAnnot, text);
 }
 
-bool CPDFSDK_WidgetHandler::CanUndo(CPDFSDK_Annot* pAnnot) {
+bool CPDFSDK_WidgetHandler::CanUndo_(CPDFSDK_Annot* pAnnot) {
   return !pAnnot->IsSignatureWidget() && m_pFormFiller->CanUndo(pAnnot);
 }
 
-bool CPDFSDK_WidgetHandler::CanRedo(CPDFSDK_Annot* pAnnot) {
+bool CPDFSDK_WidgetHandler::CanRedo_(CPDFSDK_Annot* pAnnot) {
   return !pAnnot->IsSignatureWidget() && m_pFormFiller->CanRedo(pAnnot);
 }
 

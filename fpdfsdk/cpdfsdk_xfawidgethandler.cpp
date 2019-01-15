@@ -123,14 +123,14 @@ void CPDFSDK_XFAWidgetHandler::ReplaceSelection(CPDFSDK_Annot* pAnnot,
   return pWidgetHandler->PasteText(pAnnot->GetXFAWidget(), text);
 }
 
-bool CPDFSDK_XFAWidgetHandler::CanUndo(CPDFSDK_Annot* pAnnot) {
+bool CPDFSDK_XFAWidgetHandler::CanUndo_(CPDFSDK_Annot* pAnnot) {
   if (!pAnnot)
     return false;
   CXFA_FFWidgetHandler* pWidgetHandler = GetXFAWidgetHandler(pAnnot);
   return pWidgetHandler->CanUndo(pAnnot->GetXFAWidget());
 }
 
-bool CPDFSDK_XFAWidgetHandler::CanRedo(CPDFSDK_Annot* pAnnot) {
+bool CPDFSDK_XFAWidgetHandler::CanRedo_(CPDFSDK_Annot* pAnnot) {
   if (!pAnnot)
     return false;
   CXFA_FFWidgetHandler* pWidgetHandler = GetXFAWidgetHandler(pAnnot);
