@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "969d3c25_11a44f9a",
+        "filename": "xfa/fwl/cfwl_notedriver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-15T19:16:37Z",
+      "side": 1,
+      "message": "inlined.",
+      "parentUuid": "18d4d39c_3eb83488",
+      "revId": "42c440aec91258129d2d3b43972e08b0e6f21d0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bdcb067_aaa3f048",
         "filename": "xfa/fwl/cfwl_notedriver.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "42c440aec91258129d2d3b43972e08b0e6f21d0f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb63d101_2f44b5f0",
+        "filename": "xfa/fwl/cfwl_notedriver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-15T19:16:37Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "4bdcb067_aaa3f048",
+      "revId": "42c440aec91258129d2d3b43972e08b0e6f21d0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
