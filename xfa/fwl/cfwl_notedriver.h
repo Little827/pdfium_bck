@@ -48,9 +48,6 @@ class CFWL_NoteDriver {
   void NotifyTargetHide(CFWL_Widget* pNoteTarget);
   void NotifyTargetDestroy(CFWL_Widget* pNoteTarget);
 
-  void RegisterForm(CFWL_Widget* pForm);
-  void UnRegisterForm(CFWL_Widget* pForm);
-
   void ProcessMessage(std::unique_ptr<CFWL_Message> pMessage);
   void QueueMessage(std::unique_ptr<CFWL_Message> pMessage);
   void UnqueueMessageAndProcess(CFWL_NoteLoop* pNoteLoop);
@@ -67,7 +64,6 @@ class CFWL_NoteDriver {
   bool IsValidMessage(CFWL_Message* pMessage);
   CFWL_Widget* GetMessageForm(CFWL_Widget* pDstTarget);
 
-  std::vector<UnownedPtr<CFWL_Widget>> m_Forms;
   std::deque<std::unique_ptr<CFWL_Message>> m_NoteQueue;
   std::unique_ptr<CFWL_NoteLoop> m_pNoteLoop;
   std::vector<UnownedPtr<CFWL_NoteLoop>> m_NoteLoopQueue;
