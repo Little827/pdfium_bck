@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799e5d84_8e2f1142",
+        "filename": "xfa/fwl/cfwl_notedriver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-15T18:56:54Z",
+      "side": 0,
+      "message": "note: already checked at line 381",
+      "range": {
+        "startLine": 385,
+        "startChar": 6,
+        "endLine": 385,
+        "endChar": 33
+      },
+      "revId": "92cc7930050ecc97c4d7ca1391a12f9a979b8ee5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19d7063_15773393",
+        "filename": "xfa/fwl/cfwl_notedriver.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-15T18:56:54Z",
+      "side": 0,
+      "message": "note: GetSubFocus() was only called in code that is no longer present, so SetSubFocus() isn\u0027t required (straight getters/setters with no funny business in the form).  Would have been memory corruption if we got here anyways ...",
+      "range": {
+        "startLine": 95,
+        "startChar": 13,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "92cc7930050ecc97c4d7ca1391a12f9a979b8ee5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
