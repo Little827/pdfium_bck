@@ -19,13 +19,11 @@ class CFWL_Message {
  public:
   enum class Type { Key, KillFocus, Mouse, MouseWheel, SetFocus };
 
-  explicit CFWL_Message(Type type);
-  CFWL_Message(Type type, CFWL_Widget* pSrcTarget);
   CFWL_Message(Type type, CFWL_Widget* pSrcTarget, CFWL_Widget* pDstTarget);
   CFWL_Message(const CFWL_Message& that);
   virtual ~CFWL_Message();
 
-  virtual std::unique_ptr<CFWL_Message> Clone();
+  virtual std::unique_ptr<CFWL_Message> Clone() = 0;
 
   Type GetType() const { return m_type; }
   CFWL_Widget* GetSrcTarget() const { return m_pSrcTarget.Get(); }
