@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18d4d39c_3eb83488",
+        "filename": "xfa/fwl/cfwl_notedriver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-15T19:05:40Z",
+      "side": 1,
+      "message": "BTW, this can be private, or just be inlined now.",
+      "revId": "42c440aec91258129d2d3b43972e08b0e6f21d0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bdcb067_aaa3f048",
+        "filename": "xfa/fwl/cfwl_notedriver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-15T19:05:40Z",
+      "side": 1,
+      "message": "And this has no callers.",
+      "revId": "42c440aec91258129d2d3b43972e08b0e6f21d0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
