@@ -103,11 +103,7 @@ bool ResolveAttribute(CFX_XMLElement* pElement,
 bool FindAttributeWithNS(CFX_XMLElement* pElement,
                          WideStringView wsLocalAttributeName,
                          WideStringView wsNamespaceURIPrefix,
-                         WideString& wsValue,
-                         bool bMatchNSAsPrefix = false) {
-  if (!pElement)
-    return false;
-
+                         WideString& wsValue) {
   WideString wsAttrNS;
   for (auto it : pElement->GetAttributes()) {
     auto pos = it.first.Find(L':', 0);
@@ -122,19 +118,10 @@ bool FindAttributeWithNS(CFX_XMLElement* pElement,
       }
       wsNSPrefix = it.first.Left(pos.value());
     }
-
     if (!XFA_FDEExtension_ResolveNamespaceQualifier(pElement, wsNSPrefix,
-                                                    &wsAttrNS)) {
+                                                    &wsAttrNS) ||
+        wsAttrNS != wsNamespaceURIPrefix) {
       continue;
-    }
-    if (bMatchNSAsPrefix) {
-      if (wsAttrNS.Left(wsNamespaceURIPrefix.GetLength()) !=
-          wsNamespaceURIPrefix) {
-        continue;
-      }
-    } else {
-      if (wsAttrNS != wsNamespaceURIPrefix)
-        continue;
     }
     wsValue = it.second;
     return true;
@@ -659,16 +646,8 @@ CXFA_Node* CXFA_DocumentParser::ParseAsXDPPacket_User(
 
   WideString wsName = ToXMLElement(pXMLDocumentNode)->GetLocalTagName();
   pNode->JSObject()->SetCData(XFA_Attribute::Name, wsName, false, false);
-  if (!UserPacketLoader(pNode, pXMLDocumentNode))
-    return nullptr;
-
   pNode->SetXMLMappingNode(pXMLDocumentNode);
   return pNode;
-}
-
-CXFA_Node* CXFA_DocumentParser::UserPacketLoader(CXFA_Node* pXFANode,
-                                                 CFX_XMLNode* pXMLDoc) {
-  return pXFANode;
 }
 
 CXFA_Node* CXFA_DocumentParser::DataLoader(CXFA_Node* pXFANode,
