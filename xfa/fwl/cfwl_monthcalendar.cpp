@@ -31,7 +31,6 @@
 namespace {
 
 WideString GetCapacityForDay(IFWL_ThemeProvider* pTheme,
-                             CFWL_ThemePart& params,
                              uint32_t day) {
   ASSERT(day < 7);
 
@@ -51,7 +50,6 @@ WideString GetCapacityForDay(IFWL_ThemeProvider* pTheme,
 }
 
 WideString GetCapacityForMonth(IFWL_ThemeProvider* pTheme,
-                               CFWL_ThemePart& params,
                                uint32_t month) {
   ASSERT(month < 12);
 
@@ -292,7 +290,7 @@ void CFWL_MonthCalendar::DrawWeek(CXFA_Graphics* pGraphics,
                   m_rtWeek.top, m_szCell);
 
     params.m_rtPart = rtDayOfWeek;
-    params.m_wsText = GetCapacityForDay(pTheme, params, i);
+    params.m_wsText = GetCapacityForDay(pTheme, i);
     pTheme->DrawText(params);
   }
 }
@@ -388,14 +386,10 @@ CFX_SizeF CFWL_MonthCalendar::CalcSize() {
   if (!pTheme)
     return CFX_SizeF();
 
-  CFWL_ThemePart params;
-  params.m_pWidget = this;
-
   float fMaxWeekW = 0.0f;
   float fMaxWeekH = 0.0f;
   for (uint32_t i = 0; i < 7; ++i) {
-    CFX_SizeF sz =
-        CalcTextSize(GetCapacityForDay(pTheme, params, i), pTheme, false);
+    CFX_SizeF sz = CalcTextSize(GetCapacityForDay(pTheme, i), pTheme, false);
     fMaxWeekW = (fMaxWeekW >= sz.width) ? fMaxWeekW : sz.width;
     fMaxWeekH = (fMaxWeekH >= sz.height) ? fMaxWeekH : sz.height;
   }
@@ -419,8 +413,7 @@ CFX_SizeF CFWL_MonthCalendar::CalcSize() {
   float fMonthMaxW = 0.0f;
   float fMonthMaxH = 0.0f;
   for (uint32_t i = 0; i < 12; ++i) {
-    CFX_SizeF sz =
-        CalcTextSize(GetCapacityForMonth(pTheme, params, i), pTheme, false);
+    CFX_SizeF sz = CalcTextSize(GetCapacityForMonth(pTheme, i), pTheme, false);
     fMonthMaxW = (fMonthMaxW >= sz.width) ? fMonthMaxW : sz.width;
     fMonthMaxH = (fMonthMaxH >= sz.height) ? fMonthMaxH : sz.height;
   }
