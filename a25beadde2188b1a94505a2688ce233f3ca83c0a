@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1547705094 -0800\nnonce AJbGYznvNEDIwaiTujNg1fiz+S11wisBSr2Hw86rQHZaxqEDm6tYQ6jwgfMeFvCQhjhgp6L42Uk/\n\n0000000000000000000000000000000000000000 a25beadde2188b1a94505a2688ce233f3ca83c0a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxAGwYACgkQqzYtYVpm\n/XsZuAgA16LBmrzrVjS1FlXR6+zMXqwP6RaZGrPg7QC0poSVOWEy+2fyIm0Z2ldq\nFAzBjEC64lzfMuvXC6Mopz7FDSqbVDaihqXlRJKsQD6bUmlUJJ2iAkDtw8a/RoWk\nQM0V5VcE/oPlpAm6TmLsJ/r6BoE+rw7YhRi60fSM36qxP7fgiOQxgNvyp84yPxsm\ne3xYUipQL74iJzSg8kjn1r1ncQEB7dWfgWtqKCGgy/RfNM9y3UmUuhHHEaNCcvp5\nwDpk94h5pMF8vv2i+iCWv0/9lPGc860/R5r472Nn5XeSZ469nUoD+7rLQFo9pMXA\nFCCGiS0hKQE3lEPDQcLwxciBaSEbng\u003d\u003d\n\u003d9GTm\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f9fec25_b0715956",
+        "filename": "core/fxcodec/gif/cfx_lzwdecompressor_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-17T18:35:12Z",
+      "side": 1,
+      "message": "Actually, the code under the covers computes 1 \u003c\u003c (N + 1), so 1 \u003c\u003c 3 is 8 which still makes no sense. See https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcodec/gif/cfx_lzwdecompressor.cpp?rcl\u003d8da0e1b3c27a0bcaac3b3fe08f752506d8042288\u0026l\u003d30\n\nWhat happens if we change kPaletteExp to 0x3 ?",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 78
+      },
+      "revId": "a25beadde2188b1a94505a2688ce233f3ca83c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1513d9ea_c55d3aed",
+        "filename": "core/fxcodec/gif/cfx_lzwdecompressor_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-17T18:35:12Z",
+      "side": 1,
+      "message": "nit: 0x prefix not real enlightening here.",
+      "range": {
+        "startLine": 198,
+        "startChar": 41,
+        "endLine": 198,
+        "endChar": 43
+      },
+      "revId": "a25beadde2188b1a94505a2688ce233f3ca83c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
