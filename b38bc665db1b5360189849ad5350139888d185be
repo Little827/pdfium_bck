@@ -22,6 +22,64 @@
       "revId": "b38bc665db1b5360189849ad5350139888d185be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32fa5b28_a2eff055",
+        "filename": "xfa/fwl/theme/cfwl_carettp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-17T00:42:41Z",
+      "side": 1,
+      "message": "SGTM. Maybe look at const CFX_RectF* as well?",
+      "parentUuid": "3410a8fe_3f4864d6",
+      "range": {
+        "startLine": 25,
+        "startChar": 19,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "b38bc665db1b5360189849ad5350139888d185be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e74e21_36e6486c",
+        "filename": "xfa/fwl/theme/cfwl_checkboxtp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-17T00:42:41Z",
+      "side": 1,
+      "message": "BTW, pre-existing typo.",
+      "revId": "b38bc665db1b5360189849ad5350139888d185be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7fbd17_77054d8e",
+        "filename": "xfa/fwl/theme/cfwl_widgettp.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-17T00:42:41Z",
+      "side": 1,
+      "message": "Just want to make sure this is ok to do.",
+      "revId": "b38bc665db1b5360189849ad5350139888d185be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
