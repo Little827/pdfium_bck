@@ -70,14 +70,14 @@ class CFWL_ScrollBar final : public CFWL_Widget {
   void DrawTrack(CXFA_Graphics* pGraphics,
                  IFWL_ThemeProvider* pTheme,
                  bool bLower,
-                 const CFX_Matrix* pMatrix);
+                 const CFX_Matrix& matrix);
   void DrawArrowBtn(CXFA_Graphics* pGraphics,
                     IFWL_ThemeProvider* pTheme,
                     bool bMinBtn,
-                    const CFX_Matrix* pMatrix);
+                    const CFX_Matrix& matrix);
   void DrawThumb(CXFA_Graphics* pGraphics,
                  IFWL_ThemeProvider* pTheme,
-                 const CFX_Matrix* pMatrix);
+                 const CFX_Matrix& matrix);
   void Layout();
   void CalcButtonLen();
   CFX_RectF CalcMinButtonRect();

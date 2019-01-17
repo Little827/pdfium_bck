@@ -39,33 +39,33 @@ class CFWL_CheckBoxTP final : public CFWL_WidgetTP {
 
   void DrawCheckSign(CFWL_Widget* pWidget,
                      CXFA_Graphics* pGraphics,
-                     const CFX_RectF& pRtBox,
                      int32_t iState,
-                     const CFX_Matrix* pMatrix);
+                     const CFX_RectF& pRtBox,
+                     const CFX_Matrix& matrix);
   void DrawSignCheck(CXFA_Graphics* pGraphics,
-                     const CFX_RectF* pRtSign,
                      FX_ARGB argbFill,
-                     const CFX_Matrix* pMatrix);
+                     const CFX_RectF& rtsign,
+                     const CFX_Matrix& matrix);
   void DrawSignCircle(CXFA_Graphics* pGraphics,
-                      const CFX_RectF* pRtSign,
                       FX_ARGB argbFill,
-                      const CFX_Matrix* pMatrix);
+                      const CFX_RectF& rtsign,
+                      const CFX_Matrix& matrix);
   void DrawSignCross(CXFA_Graphics* pGraphics,
-                     const CFX_RectF* pRtSign,
                      FX_ARGB argbFill,
-                     const CFX_Matrix* pMatrix);
+                     const CFX_RectF& rtsign,
+                     const CFX_Matrix& matrix);
   void DrawSignDiamond(CXFA_Graphics* pGraphics,
-                       const CFX_RectF* pRtSign,
                        FX_ARGB argbFill,
-                       const CFX_Matrix* pMatrix);
+                       const CFX_RectF& rtsign,
+                       const CFX_Matrix& matrix);
   void DrawSignSquare(CXFA_Graphics* pGraphics,
-                      const CFX_RectF* pRtSign,
                       FX_ARGB argbFill,
-                      const CFX_Matrix* pMatrix);
+                      const CFX_RectF& rtsign,
+                      const CFX_Matrix& matrix);
   void DrawSignStar(CXFA_Graphics* pGraphics,
-                    const CFX_RectF* pRtSign,
                     FX_ARGB argbFill,
-                    const CFX_Matrix* pMatrix);
+                    const CFX_RectF& rtsign,
+                    const CFX_Matrix& matrix);
 
   void InitCheckPath(float fCheckLen);
   void SetThemeData();

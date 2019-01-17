@@ -102,9 +102,9 @@ void CFWL_ListBox::DrawWidget(CXFA_Graphics* pGraphics,
 
   pGraphics->SetClipRect(matrix.TransformRect(rtClip));
   if ((m_pProperties->m_dwStyles & FWL_WGTSTYLE_NoBackground) == 0)
-    DrawBkground(pGraphics, pTheme, &matrix);
+    DrawBkground(pGraphics, pTheme, matrix);
 
-  DrawItems(pGraphics, pTheme, &matrix);
+  DrawItems(pGraphics, pTheme, matrix);
   pGraphics->RestoreGraphState();
 }
 
@@ -343,7 +343,7 @@ bool CFWL_ListBox::ScrollToVisible(CFWL_ListItem* pItem) {
 
 void CFWL_ListBox::DrawBkground(CXFA_Graphics* pGraphics,
                                 IFWL_ThemeProvider* pTheme,
-                                const CFX_Matrix* pMatrix) {
+                                const CFX_Matrix& matrix) {
   if (!pGraphics)
     return;
   if (!pTheme)
@@ -354,10 +354,10 @@ void CFWL_ListBox::DrawBkground(CXFA_Graphics* pGraphics,
   param.m_iPart = CFWL_Part::Background;
   param.m_dwStates = 0;
   param.m_pGraphics = pGraphics;
-  param.m_matrix.Concat(*pMatrix);
+  param.m_matrix.Concat(matrix);
   param.m_rtPart = m_rtClient;
   if (IsShowScrollBar(false) && IsShowScrollBar(true))
-    param.m_pRtData = &m_rtStatic;
+    param.m_pRtData = m_rtStatic;
   if (!IsEnabled())
     param.m_dwStates = CFWL_PartState_Disabled;
 
@@ -366,7 +366,7 @@ void CFWL_ListBox::DrawBkground(CXFA_Graphics* pGraphics,
 
 void CFWL_ListBox::DrawItems(CXFA_Graphics* pGraphics,
                              IFWL_ThemeProvider* pTheme,
-                             const CFX_Matrix* pMatrix) {
+                             const CFX_Matrix& pMatrix) {
   float fPosX = 0.0f;
   if (m_pHorzScrollBar)
     fPosX = m_pHorzScrollBar->GetPos();
@@ -402,7 +402,7 @@ void CFWL_ListBox::DrawItem(CXFA_Graphics* pGraphics,
                             CFWL_ListItem* pItem,
                             int32_t Index,
                             const CFX_RectF& rtItem,
-                            const CFX_Matrix* pMatrix) {
+                            const CFX_Matrix& matrix) {
   uint32_t dwItemStyles = pItem ? pItem->GetStates() : 0;
   uint32_t dwPartStates = CFWL_PartState_Normal;
   if (m_pProperties->m_dwStates & FWL_WGTSTATE_Disabled)
@@ -420,17 +420,17 @@ void CFWL_ListBox::DrawItem(CXFA_Graphics* pGraphics,
   bg_param.m_iPart = CFWL_Part::ListItem;
   bg_param.m_dwStates = dwPartStates;
   bg_param.m_pGraphics = pGraphics;
-  bg_param.m_matrix.Concat(*pMatrix);
+  bg_param.m_matrix.Concat(matrix);
   bg_param.m_rtPart = rtItem;
   bg_param.m_bMaximize = true;
-  CFX_RectF rtFocus(rtItem);
-  bg_param.m_pRtData = &rtFocus;
+  CFX_RectF rtFocus = rtItem;
   if (m_pVertScrollBar && !m_pHorzScrollBar &&
       (dwPartStates & CFWL_PartState_Focused)) {
     bg_param.m_rtPart.left += 1;
     bg_param.m_rtPart.width -= (m_fScorllBarWidth + 1);
     rtFocus.Deflate(0.5, 0.5, 1 + m_fScorllBarWidth, 1);
   }
+  bg_param.m_pRtData = rtFocus;
   pTheme->DrawBackground(bg_param);
 
   if (!pItem)
@@ -448,7 +448,7 @@ void CFWL_ListBox::DrawItem(CXFA_Graphics* pGraphics,
   textParam.m_iPart = CFWL_Part::ListItem;
   textParam.m_dwStates = dwPartStates;
   textParam.m_pGraphics = pGraphics;
-  textParam.m_matrix.Concat(*pMatrix);
+  textParam.m_matrix.Concat(matrix);
   textParam.m_rtPart = rtText;
   textParam.m_wsText = std::move(wsText);
   textParam.m_dwTTOStyles = m_TTOStyles;

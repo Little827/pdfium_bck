@@ -142,7 +142,7 @@ void CFWL_Edit::DrawWidget(CXFA_Graphics* pGraphics, const CFX_Matrix& matrix) {
   if (!pTheme)
     return;
 
-  DrawContent(pGraphics, pTheme, &matrix);
+  DrawContent(pGraphics, pTheme, matrix);
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, pTheme, matrix);
 }
@@ -328,7 +328,7 @@ void CFWL_Edit::SetScrollOffset(float fScrollOffset) {
 
 void CFWL_Edit::DrawTextBk(CXFA_Graphics* pGraphics,
                            IFWL_ThemeProvider* pTheme,
-                           const CFX_Matrix* pMatrix) {
+                           const CFX_Matrix& matrix) {
   CFWL_ThemeBackground param;
   param.m_pWidget = this;
   param.m_iPart = CFWL_Part::Background;
@@ -340,7 +340,7 @@ void CFWL_Edit::DrawTextBk(CXFA_Graphics* pGraphics,
   if (dwStates)
     param.m_dwStates = CFWL_PartState_Disabled;
   param.m_pGraphics = pGraphics;
-  param.m_matrix = *pMatrix;
+  param.m_matrix = matrix;
   param.m_rtPart = m_rtClient;
   pTheme->DrawBackground(param);
 
@@ -360,7 +360,7 @@ void CFWL_Edit::DrawTextBk(CXFA_Graphics* pGraphics,
 
 void CFWL_Edit::DrawContent(CXFA_Graphics* pGraphics,
                             IFWL_ThemeProvider* pTheme,
-                            const CFX_Matrix* pMatrix) {
+                            const CFX_Matrix& matrix) {
   pGraphics->SaveGraphState();
 
   if (m_pProperties->m_dwStyleExes & FWL_STYLEEXT_EDT_CombText)
@@ -369,12 +369,9 @@ void CFWL_Edit::DrawContent(CXFA_Graphics* pGraphics,
   CFX_RectF rtClip = m_rtEngine;
   float fOffSetX = m_rtEngine.left - m_fScrollOffsetX;
   float fOffSetY = m_rtEngine.top - m_fScrollOffsetY + m_fVAlignOffset;
-
   CFX_Matrix mt(1, 0, 0, 1, fOffSetX, fOffSetY);
-  if (pMatrix) {
-    rtClip = pMatrix->TransformRect(rtClip);
-    mt.Concat(*pMatrix);
-  }
+  rtClip = matrix.TransformRect(rtClip);
+  mt.Concat(matrix);
 
   bool bShowSel = !!(m_pProperties->m_dwStates & FWL_WGTSTATE_Focused);
   if (bShowSel && m_EdtEngine.HasSelection()) {
@@ -394,7 +391,7 @@ void CFWL_Edit::DrawContent(CXFA_Graphics* pGraphics,
 
     CFWL_ThemeBackground param;
     param.m_pGraphics = pGraphics;
-    param.m_matrix = *pMatrix;
+    param.m_matrix = matrix;
     param.m_pWidget = this;
     param.m_iPart = CFWL_Part::Background;
     param.m_pPath = &path;
@@ -422,7 +419,7 @@ void CFWL_Edit::DrawContent(CXFA_Graphics* pGraphics,
 
     CFWL_ThemeBackground param;
     param.m_pGraphics = pGraphics;
-    param.m_matrix = *pMatrix;
+    param.m_matrix = matrix;
     param.m_pWidget = this;
     param.m_iPart = CFWL_Part::CombTextLine;
     param.m_pPath = &path;

@@ -92,7 +92,7 @@ class CFWL_WidgetMgr {
   void DrawChild(CFWL_Widget* pParent,
                  const CFX_RectF& rtClip,
                  CXFA_Graphics* pGraphics,
-                 const CFX_Matrix* pMatrix);
+                 const CFX_Matrix& matrix);
 
   bool IsAbleNative(CFWL_Widget* pWidget) const;
 

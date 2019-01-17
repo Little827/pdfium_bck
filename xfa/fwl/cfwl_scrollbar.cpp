@@ -60,11 +60,11 @@ void CFWL_ScrollBar::DrawWidget(CXFA_Graphics* pGraphics,
   IFWL_ThemeProvider* pTheme = m_pProperties->m_pThemeProvider.Get();
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, pTheme, matrix);
-  DrawTrack(pGraphics, pTheme, true, &matrix);
-  DrawTrack(pGraphics, pTheme, false, &matrix);
-  DrawArrowBtn(pGraphics, pTheme, true, &matrix);
-  DrawArrowBtn(pGraphics, pTheme, false, &matrix);
-  DrawThumb(pGraphics, pTheme, &matrix);
+  DrawTrack(pGraphics, pTheme, true, matrix);
+  DrawTrack(pGraphics, pTheme, false, matrix);
+  DrawArrowBtn(pGraphics, pTheme, true, matrix);
+  DrawArrowBtn(pGraphics, pTheme, false, matrix);
+  DrawThumb(pGraphics, pTheme, matrix);
 }
 
 void CFWL_ScrollBar::SetTrackPos(float fTrackPos) {
@@ -83,7 +83,7 @@ bool CFWL_ScrollBar::DoScroll(CFWL_EventScroll::Code dwCode, float fPos) {
 void CFWL_ScrollBar::DrawTrack(CXFA_Graphics* pGraphics,
                                IFWL_ThemeProvider* pTheme,
                                bool bLower,
-                               const CFX_Matrix* pMatrix) {
+                               const CFX_Matrix& matrix) {
   CFWL_ThemeBackground param;
   param.m_pWidget = this;
   param.m_iPart = bLower ? CFWL_Part::LowerTrack : CFWL_Part::UpperTrack;
@@ -91,7 +91,7 @@ void CFWL_ScrollBar::DrawTrack(CXFA_Graphics* pGraphics,
                          ? CFWL_PartState_Disabled
                          : (bLower ? m_iMinTrackState : m_iMaxTrackState);
   param.m_pGraphics = pGraphics;
-  param.m_matrix.Concat(*pMatrix);
+  param.m_matrix.Concat(matrix);
   param.m_rtPart = bLower ? m_rtMinTrack : m_rtMaxTrack;
   pTheme->DrawBackground(param);
 }
@@ -99,7 +99,7 @@ void CFWL_ScrollBar::DrawTrack(CXFA_Graphics* pGraphics,
 void CFWL_ScrollBar::DrawArrowBtn(CXFA_Graphics* pGraphics,
                                   IFWL_ThemeProvider* pTheme,
                                   bool bMinBtn,
-                                  const CFX_Matrix* pMatrix) {
+                                  const CFX_Matrix& matrix) {
   CFWL_ThemeBackground param;
   param.m_pWidget = this;
   param.m_iPart = bMinBtn ? CFWL_Part::ForeArrow : CFWL_Part::BackArrow;
@@ -107,7 +107,7 @@ void CFWL_ScrollBar::DrawArrowBtn(CXFA_Graphics* pGraphics,
                          ? CFWL_PartState_Disabled
                          : (bMinBtn ? m_iMinButtonState : m_iMaxButtonState);
   param.m_pGraphics = pGraphics;
-  param.m_matrix.Concat(*pMatrix);
+  param.m_matrix.Concat(matrix);
   param.m_rtPart = bMinBtn ? m_rtMinBtn : m_rtMaxBtn;
   if (param.m_rtPart.height > 0 && param.m_rtPart.width > 0)
     pTheme->DrawBackground(param);
@@ -115,7 +115,7 @@ void CFWL_ScrollBar::DrawArrowBtn(CXFA_Graphics* pGraphics,
 
 void CFWL_ScrollBar::DrawThumb(CXFA_Graphics* pGraphics,
                                IFWL_ThemeProvider* pTheme,
-                               const CFX_Matrix* pMatrix) {
+                               const CFX_Matrix& matrix) {
   CFWL_ThemeBackground param;
   param.m_pWidget = this;
   param.m_iPart = CFWL_Part::Thumb;
@@ -123,7 +123,7 @@ void CFWL_ScrollBar::DrawThumb(CXFA_Graphics* pGraphics,
                          ? CFWL_PartState_Disabled
                          : m_iThumbButtonState;
   param.m_pGraphics = pGraphics;
-  param.m_matrix.Concat(*pMatrix);
+  param.m_matrix.Concat(matrix);
   param.m_rtPart = m_rtThumb;
   pTheme->DrawBackground(param);
 }

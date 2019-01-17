@@ -19,22 +19,23 @@ CFWL_ListBoxTP::~CFWL_ListBoxTP() {}
 void CFWL_ListBoxTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
   switch (pParams.m_iPart) {
     case CFWL_Part::Border: {
-      DrawBorder(pParams.m_pGraphics.Get(), &pParams.m_rtPart,
-                 &pParams.m_matrix);
+      DrawBorder(pParams.m_pGraphics.Get(), pParams.m_rtPart, pParams.m_matrix);
       break;
     }
     case CFWL_Part::Background: {
       FillSolidRect(pParams.m_pGraphics.Get(), ArgbEncode(255, 255, 255, 255),
-                    &pParams.m_rtPart, &pParams.m_matrix);
-      if (pParams.m_pRtData) {
+                    pParams.m_rtPart, pParams.m_matrix);
+      if (pParams.m_pRtData.has_value()) {
         FillSolidRect(pParams.m_pGraphics.Get(), FWLTHEME_COLOR_Background,
-                      pParams.m_pRtData, &pParams.m_matrix);
+                      pParams.m_pRtData.value(), pParams.m_matrix);
       }
       break;
     }
     case CFWL_Part::ListItem: {
+      ASSERT(pParams.m_pRtData.has_value());
       DrawListBoxItem(pParams.m_pGraphics.Get(), pParams.m_dwStates,
-                      &pParams.m_rtPart, pParams.m_pRtData, &pParams.m_matrix);
+                      pParams.m_rtPart, pParams.m_matrix,
+                      pParams.m_pRtData.value());
       break;
     }
     case CFWL_Part::Check: {
@@ -44,8 +45,8 @@ void CFWL_ListBoxTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
       } else if (pParams.m_dwStates == CFWL_PartState_Normal) {
         color = 0xFF0000FF;
       }
-      FillSolidRect(pParams.m_pGraphics.Get(), color, &pParams.m_rtPart,
-                    &pParams.m_matrix);
+      FillSolidRect(pParams.m_pGraphics.Get(), color, pParams.m_rtPart,
+                    pParams.m_matrix);
       break;
     }
     default:
@@ -55,22 +56,21 @@ void CFWL_ListBoxTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
 
 void CFWL_ListBoxTP::DrawListBoxItem(CXFA_Graphics* pGraphics,
                                      uint32_t dwStates,
-                                     const CFX_RectF* prtItem,
-                                     void* pData,
-                                     const CFX_Matrix* pMatrix) {
+                                     const CFX_RectF& rt,
+                                     const CFX_Matrix& matrix,
+                                     const Optional<CFX_RectF>& other) {
   if (dwStates & CFWL_PartState_Selected) {
     pGraphics->SaveGraphState();
     pGraphics->SetFillColor(CXFA_GEColor(FWLTHEME_COLOR_BKSelected));
-    CFX_RectF rt(*prtItem);
     CXFA_GEPath path;
 #if (_FX_OS_ == _FX_OS_MACOSX_)
     path.AddRectangle(rt.left, rt.top, rt.width - 1, rt.height - 1);
 #else
     path.AddRectangle(rt.left, rt.top, rt.width, rt.height);
 #endif
-    pGraphics->FillPath(&path, FXFILL_WINDING, pMatrix);
+    pGraphics->FillPath(&path, FXFILL_WINDING, &matrix);
     pGraphics->RestoreGraphState();
   }
-  if (dwStates & CFWL_PartState_Focused && pData)
-    DrawFocus(pGraphics, static_cast<CFX_RectF*>(pData), pMatrix);
+  if ((dwStates & CFWL_PartState_Focused) && other.has_value())
+    DrawFocus(pGraphics, other.value(), matrix);
 }

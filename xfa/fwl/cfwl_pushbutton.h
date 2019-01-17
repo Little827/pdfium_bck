@@ -34,7 +34,7 @@ class CFWL_PushButton final : public CFWL_Widget {
  private:
   void DrawBkground(CXFA_Graphics* pGraphics,
                     IFWL_ThemeProvider* pTheme,
-                    const CFX_Matrix* pMatrix);
+                    const CFX_Matrix& Matrix);
   uint32_t GetPartStates();
   void UpdateTextOutStyles();
   void OnFocusChanged(CFWL_Message* pMsg, bool bSet);

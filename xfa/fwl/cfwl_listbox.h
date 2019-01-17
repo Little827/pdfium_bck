@@ -87,16 +87,16 @@ class CFWL_ListBox : public CFWL_Widget {
   void SetFocusItem(CFWL_ListItem* hItem);
   void DrawBkground(CXFA_Graphics* pGraphics,
                     IFWL_ThemeProvider* pTheme,
-                    const CFX_Matrix* pMatrix);
+                    const CFX_Matrix& pMatrix);
   void DrawItems(CXFA_Graphics* pGraphics,
                  IFWL_ThemeProvider* pTheme,
-                 const CFX_Matrix* pMatrix);
+                 const CFX_Matrix& pMatrix);
   void DrawItem(CXFA_Graphics* pGraphics,
                 IFWL_ThemeProvider* pTheme,
                 CFWL_ListItem* hItem,
                 int32_t Index,
                 const CFX_RectF& rtItem,
-                const CFX_Matrix* pMatrix);
+                const CFX_Matrix& pMatrix);
   void DrawStatic(CXFA_Graphics* pGraphics, IFWL_ThemeProvider* pTheme);
   CFX_SizeF CalcSize(bool bAutoSize);
   void UpdateItemSize(CFWL_ListItem* hItem,

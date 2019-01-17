@@ -112,10 +112,10 @@ class CFWL_Edit : public CFWL_Widget, public CFDE_TextEditEngine::Delegate {
                   const CFX_Matrix& mt);
   void DrawTextBk(CXFA_Graphics* pGraphics,
                   IFWL_ThemeProvider* pTheme,
-                  const CFX_Matrix* pMatrix);
+                  const CFX_Matrix& pMatrix);
   void DrawContent(CXFA_Graphics* pGraphics,
                    IFWL_ThemeProvider* pTheme,
-                   const CFX_Matrix* pMatrix);
+                   const CFX_Matrix& pMatrix);
 
   void UpdateEditEngine();
   void UpdateEditParams();

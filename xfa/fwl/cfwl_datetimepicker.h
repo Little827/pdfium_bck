@@ -79,7 +79,7 @@ class CFWL_DateTimePicker final : public CFWL_Widget {
  private:
   void DrawDropDownButton(CXFA_Graphics* pGraphics,
                           IFWL_ThemeProvider* pTheme,
-                          const CFX_Matrix* pMatrix);
+                          const CFX_Matrix& pMatrix);
   WideString FormatDateString(int32_t iYear, int32_t iMonth, int32_t iDay);
   void ResetEditAlignment();
   void GetPopupPos(float fMinHeight,

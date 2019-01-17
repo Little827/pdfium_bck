@@ -214,14 +214,13 @@ void CFWL_ComboBox::EditModifyStylesEx(uint32_t dwStylesExAdded,
 }
 
 void CFWL_ComboBox::DrawStretchHandler(CXFA_Graphics* pGraphics,
-                                       const CFX_Matrix* pMatrix) {
+                                       const CFX_Matrix& matrix) {
   CFWL_ThemeBackground param;
   param.m_pGraphics = pGraphics;
   param.m_iPart = CFWL_Part::StretchHandler;
   param.m_dwStates = CFWL_PartState_Normal;
   param.m_pWidget = this;
-  if (pMatrix)
-    param.m_matrix.Concat(*pMatrix);
+  param.m_matrix.Concat(matrix);
   m_pProperties->m_pThemeProvider->DrawBackground(param);
 }
 
