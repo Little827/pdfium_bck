@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5fba93_bed72563",
+        "filename": "core/fxcodec/gif/cfx_lzwdecompressor_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-17T17:12:29Z",
+      "side": 0,
+      "message": "typo?",
+      "range": {
+        "startLine": 199,
+        "startChar": 43,
+        "endLine": 199,
+        "endChar": 44
+      },
+      "revId": "8da0e1b3c27a0bcaac3b3fe08f752506d8042288",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
