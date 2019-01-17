@@ -9,8 +9,9 @@
 
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_system.h"
+#include "third_party/base/optional.h"
 
-enum class CFWL_Part {
+enum class CFWL_Part : uint8_t {
   None = 0,
 
   BackArrow,
@@ -57,7 +58,7 @@ enum class CFWL_Part {
   WeekNumSep
 };
 
-enum CFWL_PartState {
+enum CFWL_PartState : uint16_t {
   CFWL_PartState_Normal = 0,
 
   CFWL_PartState_Checked = 1 << 1,
@@ -80,15 +81,16 @@ class CFWL_Widget;
 class CFWL_ThemePart {
  public:
   CFWL_ThemePart();
+  ~CFWL_ThemePart();
 
+  CFWL_Part m_iPart = CFWL_Part::None;
+  bool m_bMaximize = false;
+  bool m_bStaticBackground = false;
+  uint32_t m_dwStates = CFWL_PartState_Normal;
+  CFWL_Widget* m_pWidget = nullptr;
   CFX_Matrix m_matrix;
   CFX_RectF m_rtPart;
-  CFWL_Widget* m_pWidget;
-  CFWL_Part m_iPart;
-  uint32_t m_dwStates;
-  bool m_bMaximize;
-  bool m_bStaticBackground;
-  CFX_RectF* m_pRtData;
+  Optional<CFX_RectF> m_pRtData;
 };
 
 #endif  // XFA_FWL_CFWL_THEMEPART_H_

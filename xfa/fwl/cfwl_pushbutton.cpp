@@ -59,22 +59,21 @@ void CFWL_PushButton::DrawWidget(CXFA_Graphics* pGraphics,
 
   if (HasBorder())
     DrawBorder(pGraphics, CFWL_Part::Border, pTheme, matrix);
-  DrawBkground(pGraphics, pTheme, &matrix);
+  DrawBkground(pGraphics, pTheme, matrix);
 }
 
 void CFWL_PushButton::DrawBkground(CXFA_Graphics* pGraphics,
                                    IFWL_ThemeProvider* pTheme,
-                                   const CFX_Matrix* pMatrix) {
+                                   const CFX_Matrix& matrix) {
   CFWL_ThemeBackground param;
   param.m_pWidget = this;
   param.m_iPart = CFWL_Part::Background;
   param.m_dwStates = GetPartStates();
   param.m_pGraphics = pGraphics;
-  if (pMatrix)
-    param.m_matrix.Concat(*pMatrix);
+  param.m_matrix.Concat(matrix);
   param.m_rtPart = m_rtClient;
   if (m_pProperties->m_dwStates & FWL_WGTSTATE_Focused)
-    param.m_pRtData = &m_rtCaption;
+    param.m_pRtData = m_rtCaption;
   pTheme->DrawBackground(param);
 }
 

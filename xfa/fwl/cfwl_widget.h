@@ -162,7 +162,7 @@ class CFWL_Widget : public IFWL_WidgetDelegate {
   void DrawBackground(CXFA_Graphics* pGraphics,
                       CFWL_Part iPartBk,
                       IFWL_ThemeProvider* pTheme,
-                      const CFX_Matrix* pMatrix);
+                      const CFX_Matrix& matrix);
   void NotifyDriver();
   bool IsParent(CFWL_Widget* pParent);
 

@@ -46,7 +46,7 @@ class CFWL_Caret final : public CFWL_Widget {
 
   void DrawCaretBK(CXFA_Graphics* pGraphics,
                    IFWL_ThemeProvider* pTheme,
-                   const CFX_Matrix* pMatrix);
+                   const CFX_Matrix& matrix);
 
   std::unique_ptr<CFWL_Caret::Timer> m_pTimer;
   UnownedPtr<CFWL_TimerInfo> m_pTimerInfo;

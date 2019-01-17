@@ -378,7 +378,7 @@ void CFWL_WidgetMgr::OnDrawWidget(CFWL_Widget* pWidget,
   clipCopy = clipBounds;
 
   if (!clipBounds.IsEmpty())
-    DrawChild(pWidget, clipBounds, pGraphics, &matrix);
+    DrawChild(pWidget, clipBounds, pGraphics, matrix);
 
   GetWidgetMgrItem(pWidget)->iRedrawCounter = 0;
   ResetRedrawCounts(pWidget);
@@ -387,7 +387,7 @@ void CFWL_WidgetMgr::OnDrawWidget(CFWL_Widget* pWidget,
 void CFWL_WidgetMgr::DrawChild(CFWL_Widget* parent,
                                const CFX_RectF& rtClip,
                                CXFA_Graphics* pGraphics,
-                               const CFX_Matrix* pMatrix) {
+                               const CFX_Matrix& matrix) {
   if (!parent)
     return;
 
@@ -404,15 +404,13 @@ void CFWL_WidgetMgr::DrawChild(CFWL_Widget* parent,
 
     CFX_Matrix widgetMatrix;
     CFX_RectF clipBounds(rtWidget);
-    if (pMatrix)
-      widgetMatrix.Concat(*pMatrix);
-
+    widgetMatrix.Concat(matrix);
     widgetMatrix.TranslatePrepend(rtWidget.left, rtWidget.top);
 
     if (IFWL_WidgetDelegate* pDelegate = child->GetDelegate())
       pDelegate->OnDrawWidget(pGraphics, widgetMatrix);
 
-    DrawChild(child, clipBounds, pGraphics, &widgetMatrix);
+    DrawChild(child, clipBounds, pGraphics, widgetMatrix);
   }
 }
 

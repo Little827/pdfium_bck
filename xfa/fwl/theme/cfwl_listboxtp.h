@@ -20,9 +20,9 @@ class CFWL_ListBoxTP final : public CFWL_WidgetTP {
  private:
   void DrawListBoxItem(CXFA_Graphics* pGraphics,
                        uint32_t dwStates,
-                       const CFX_RectF* prtItem,
-                       void* pData,
-                       const CFX_Matrix* pMatrix);
+                       const CFX_RectF& rtItem,
+                       const CFX_Matrix& matrix,
+                       const Optional<CFX_RectF>& other);
 };
 
 #endif  // XFA_FWL_THEME_CFWL_LISTBOXTP_H_
