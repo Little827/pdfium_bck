@@ -23,6 +23,30 @@
       "revId": "fed22ef1e7b57982c3ae1b59eb32a6aa10b2cbe8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a03dcdf_5de853ad",
+        "filename": "core/fxge/fx_freetype.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-17T18:51:52Z",
+      "side": 1,
+      "message": "FXFT_Get_MM_Axis() is only ever used with FXFT_Get_MM_Axis_{Min,Max,Def}() below. So there\u0027s no real need to return a pointer, as long as the macros below are in sync.",
+      "parentUuid": "47e41584_1470c766",
+      "range": {
+        "startLine": 151,
+        "startChar": 37,
+        "endLine": 151,
+        "endChar": 47
+      },
+      "revId": "fed22ef1e7b57982c3ae1b59eb32a6aa10b2cbe8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
