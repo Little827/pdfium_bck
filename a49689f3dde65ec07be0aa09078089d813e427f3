@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "433e0e29_4954e226",
+        "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-18T21:41:58Z",
+      "side": 0,
+      "message": "NOTE: stack only grows by push_back(MakeUnique\u003c\u003e())) above.",
+      "range": {
+        "startLine": 138,
+        "startChar": 29,
+        "endLine": 138,
+        "endChar": 47
+      },
+      "revId": "a49689f3dde65ec07be0aa09078089d813e427f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
