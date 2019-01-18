@@ -52,7 +52,8 @@ void CFWL_Barcode::DrawWidget(CXFA_Graphics* pGraphics,
     mt.f = GetRTClient().top;
     mt.Concat(matrix);
 
-    m_pBarcodeEngine->RenderDevice(pGraphics->GetRenderDevice(), &matrix);
+    m_pBarcodeEngine->RenderDevice(pGraphics->GetRenderDeviceIfPresent(),
+                                   &matrix);
     return;
   }
   CFWL_Edit::DrawWidget(pGraphics, matrix);

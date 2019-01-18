@@ -401,7 +401,7 @@ void CFWL_Edit::DrawContent(CXFA_Graphics* pGraphics,
     pTheme->DrawBackground(param);
   }
 
-  CFX_RenderDevice* pRenderDev = pGraphics->GetRenderDevice();
+  CFX_RenderDevice* pRenderDev = pGraphics->GetRenderDeviceIfPresent();
   if (!pRenderDev)
     return;
 

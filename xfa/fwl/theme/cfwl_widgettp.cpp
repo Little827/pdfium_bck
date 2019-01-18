@@ -52,7 +52,7 @@ void CFWL_WidgetTP::DrawText(const CFWL_ThemeText& pParams) {
   CFX_Matrix matrix = pParams.m_matrix;
   matrix.Concat(*pGraphics->GetMatrix());
   m_pTextOut->SetMatrix(matrix);
-  m_pTextOut->DrawLogicText(pGraphics->GetRenderDevice(),
+  m_pTextOut->DrawLogicText(pGraphics->GetRenderDeviceIfPresent(),
                             WideStringView(pParams.m_wsText.c_str(), iLen),
                             pParams.m_rtPart);
 }

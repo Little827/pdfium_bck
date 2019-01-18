@@ -602,7 +602,7 @@ void CXFA_FFField::RenderCaption(CXFA_Graphics* pGS, CFX_Matrix* pMatrix) {
 
   CFX_RectF rtClip = m_rtCaption;
   rtClip.Intersect(GetRectWithoutRotate());
-  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDevice();
+  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDeviceIfPresent();
   CFX_Matrix mt(1, 0, 0, 1, m_rtCaption.left, m_rtCaption.top);
   if (pMatrix) {
     rtClip = pMatrix->TransformRect(rtClip);

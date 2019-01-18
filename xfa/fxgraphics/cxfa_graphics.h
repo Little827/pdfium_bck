@@ -31,7 +31,8 @@ class CXFA_GEPath;
 
 class CXFA_Graphics {
  public:
-  explicit CXFA_Graphics(CFX_RenderDevice* renderDevice);
+  // |pRenderDevice| may be null for a non-device-based context.
+  explicit CXFA_Graphics(CFX_RenderDevice* pRenderDevice);
   ~CXFA_Graphics();
 
   void SaveGraphState();
@@ -39,7 +40,7 @@ class CXFA_Graphics {
 
   CFX_RectF GetClipRect() const;
   const CFX_Matrix* GetMatrix() const;
-  CFX_RenderDevice* GetRenderDevice();
+  CFX_RenderDevice* GetRenderDeviceIfPresent() const;
 
   void SetLineCap(CFX_GraphStateData::LineCap lineCap);
   void SetLineDash(float dashPhase, const float* dashArray, size_t dashCount);
@@ -82,9 +83,8 @@ class CXFA_Graphics {
   void SetDIBitsWithMatrix(const RetainPtr<CFX_DIBBase>& source,
                            const CFX_Matrix& matrix);
 
-  int32_t m_type;
+  CFX_RenderDevice* const m_pRenderDevice;  // Not owned, may be null.
   TInfo m_info;
-  CFX_RenderDevice* const m_renderDevice;  // Not owned.
   std::vector<std::unique_ptr<TInfo>> m_infoStack;
 };
 

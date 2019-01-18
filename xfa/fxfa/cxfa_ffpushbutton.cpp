@@ -165,7 +165,7 @@ void CXFA_FFPushButton::RenderHighlightCaption(CXFA_Graphics* pGS,
   if (!caption || !caption->IsVisible())
     return;
 
-  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDevice();
+  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDeviceIfPresent();
   CFX_RectF rtClip = m_rtCaption;
   rtClip.Intersect(GetRectWithoutRotate());
   CFX_Matrix mt(1, 0, 0, 1, m_rtCaption.left, m_rtCaption.top);

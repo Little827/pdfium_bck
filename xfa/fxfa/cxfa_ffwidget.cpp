@@ -131,7 +131,7 @@ void XFA_DrawImage(CXFA_Graphics* pGS,
   else if (iVertAlign == XFA_AttributeValue::Bottom)
     rtFit.top = rtImage.bottom() - rtImage.height;
 
-  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDevice();
+  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDeviceIfPresent();
   CFX_RenderDevice::StateRestorer restorer(pRenderDevice);
   CFX_PathData path;
   path.AppendRect(rtImage.left, rtImage.bottom(), rtImage.right(), rtImage.top);
@@ -143,11 +143,10 @@ void XFA_DrawImage(CXFA_Graphics* pGS,
   mtImage.Concat(matrix);
 
   CXFA_ImageRenderer imageRender(pRenderDevice, pDIBitmap, &mtImage);
-  if (!imageRender.Start()) {
-    return;
+  if (imageRender.Start()) {
+    while (imageRender.Continue())
+      continue;
   }
-  while (imageRender.Continue())
-    continue;
 }
 
 RetainPtr<CFX_DIBitmap> XFA_LoadImageFromBuffer(

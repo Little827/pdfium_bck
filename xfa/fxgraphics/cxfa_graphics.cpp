@@ -20,11 +20,6 @@
 
 namespace {
 
-enum {
-  FX_CONTEXT_None = 0,
-  FX_CONTEXT_Device,
-};
-
 #define FX_HATCHSTYLE_Total 53
 
 struct FX_HATCHDATA {
@@ -98,29 +93,25 @@ const FX_HATCHDATA hatchBitmapData[FX_HATCHSTYLE_Total] = {
 
 }  // namespace
 
-CXFA_Graphics::CXFA_Graphics(CFX_RenderDevice* renderDevice)
-    : m_type(FX_CONTEXT_None), m_renderDevice(renderDevice) {
-  if (!renderDevice)
-    return;
-  m_type = FX_CONTEXT_Device;
-}
+CXFA_Graphics::CXFA_Graphics(CFX_RenderDevice* pRenderDevice)
+    : m_pRenderDevice(pRenderDevice) {}
 
-CXFA_Graphics::~CXFA_Graphics() {}
+CXFA_Graphics::~CXFA_Graphics() = default;
 
 void CXFA_Graphics::SaveGraphState() {
-  if (m_type != FX_CONTEXT_Device || !m_renderDevice)
+  if (!m_pRenderDevice)
     return;
 
-  m_renderDevice->SaveState();
+  m_pRenderDevice->SaveState();
   m_infoStack.push_back(pdfium::MakeUnique<TInfo>(m_info));
 }
 
 void CXFA_Graphics::RestoreGraphState() {
-  if (m_type != FX_CONTEXT_Device || !m_renderDevice)
+  if (!m_pRenderDevice)
     return;
 
-  m_renderDevice->RestoreState(false);
-  if (m_infoStack.empty() || !m_infoStack.back())
+  m_pRenderDevice->RestoreState(false);
+  if (m_infoStack.empty())
     return;
 
   m_info = *m_infoStack.back();
@@ -129,9 +120,8 @@ void CXFA_Graphics::RestoreGraphState() {
 }
 
 void CXFA_Graphics::SetLineCap(CFX_GraphStateData::LineCap lineCap) {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice) {
+  if (m_pRenderDevice)
     m_info.graphState.m_LineCap = lineCap;
-  }
 }
 
 void CXFA_Graphics::SetLineDash(float dashPhase,
@@ -140,7 +130,7 @@ void CXFA_Graphics::SetLineDash(float dashPhase,
   ASSERT(dashArray);
   ASSERT(dashCount);
 
-  if (m_type != FX_CONTEXT_Device || !m_renderDevice)
+  if (!m_pRenderDevice)
     return;
 
   float scale = m_info.isActOnDash ? m_info.graphState.m_LineWidth : 1.0;
@@ -151,78 +141,69 @@ void CXFA_Graphics::SetLineDash(float dashPhase,
 }
 
 void CXFA_Graphics::SetSolidLineDash() {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
+  if (m_pRenderDevice)
     m_info.graphState.m_DashArray.clear();
 }
 
 void CXFA_Graphics::SetLineWidth(float lineWidth) {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
+  if (m_pRenderDevice)
     m_info.graphState.m_LineWidth = lineWidth;
 }
 
 void CXFA_Graphics::EnableActOnDash() {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
+  if (m_pRenderDevice)
     m_info.isActOnDash = true;
 }
 
 void CXFA_Graphics::SetStrokeColor(const CXFA_GEColor& color) {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
+  if (m_pRenderDevice)
     m_info.strokeColor = color;
 }
 
 void CXFA_Graphics::SetFillColor(const CXFA_GEColor& color) {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
+  if (m_pRenderDevice)
     m_info.fillColor = color;
 }
 
 void CXFA_Graphics::StrokePath(CXFA_GEPath* path, const CFX_Matrix* matrix) {
-  if (!path)
-    return;
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
+  if (path && m_pRenderDevice)
     RenderDeviceStrokePath(path, matrix);
 }
 
 void CXFA_Graphics::FillPath(CXFA_GEPath* path,
                              FX_FillMode fillMode,
                              const CFX_Matrix* matrix) {
-  if (!path)
-    return;
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
+  if (path && m_pRenderDevice)
     RenderDeviceFillPath(path, fillMode, matrix);
 }
 
 void CXFA_Graphics::ConcatMatrix(const CFX_Matrix* matrix) {
-  if (!matrix)
-    return;
-  if (m_type == FX_CONTEXT_Device && m_renderDevice) {
+  if (matrix && m_pRenderDevice)
     m_info.CTM.Concat(*matrix);
-  }
 }
 
 const CFX_Matrix* CXFA_Graphics::GetMatrix() const {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice)
-    return &m_info.CTM;
-  return nullptr;
+  return m_pRenderDevice ? &m_info.CTM : nullptr;
 }
 
 CFX_RectF CXFA_Graphics::GetClipRect() const {
-  if (m_type != FX_CONTEXT_Device || !m_renderDevice)
+  if (!m_pRenderDevice)
     return CFX_RectF();
 
-  FX_RECT r = m_renderDevice->GetClipBox();
+  FX_RECT r = m_pRenderDevice->GetClipBox();
   return CFX_RectF(r.left, r.top, r.Width(), r.Height());
 }
 
 void CXFA_Graphics::SetClipRect(const CFX_RectF& rect) {
-  if (m_type == FX_CONTEXT_Device && m_renderDevice) {
-    m_renderDevice->SetClip_Rect(
+  if (m_pRenderDevice) {
+    m_pRenderDevice->SetClip_Rect(
         FX_RECT(FXSYS_round(rect.left), FXSYS_round(rect.top),
                 FXSYS_round(rect.right()), FXSYS_round(rect.bottom())));
   }
 }
 
-CFX_RenderDevice* CXFA_Graphics::GetRenderDevice() {
-  return m_renderDevice;
+CFX_RenderDevice* CXFA_Graphics::GetRenderDeviceIfPresent() const {
+  return m_pRenderDevice;
 }
 
 void CXFA_Graphics::RenderDeviceStrokePath(const CXFA_GEPath* path,
@@ -234,8 +215,8 @@ void CXFA_Graphics::RenderDeviceStrokePath(const CXFA_GEPath* path,
   if (matrix)
     m.Concat(*matrix);
 
-  m_renderDevice->DrawPath(path->GetPathData(), &m, &m_info.graphState, 0x0,
-                           m_info.strokeColor.GetArgb(), 0);
+  m_pRenderDevice->DrawPath(path->GetPathData(), &m, &m_info.graphState, 0x0,
+                            m_info.strokeColor.GetArgb(), 0);
 }
 
 void CXFA_Graphics::RenderDeviceFillPath(const CXFA_GEPath* path,
@@ -247,8 +228,8 @@ void CXFA_Graphics::RenderDeviceFillPath(const CXFA_GEPath* path,
 
   switch (m_info.fillColor.GetType()) {
     case CXFA_GEColor::Solid:
-      m_renderDevice->DrawPath(path->GetPathData(), &m, &m_info.graphState,
-                               m_info.fillColor.GetArgb(), 0x0, fillMode);
+      m_pRenderDevice->DrawPath(path->GetPathData(), &m, &m_info.graphState,
+                                m_info.fillColor.GetArgb(), 0x0, fillMode);
       return;
     case CXFA_GEColor::Pattern:
       FillPathWithPattern(path, fillMode, m);
@@ -265,12 +246,12 @@ void CXFA_Graphics::FillPathWithPattern(const CXFA_GEPath* path,
                                         FX_FillMode fillMode,
                                         const CFX_Matrix& matrix) {
   CXFA_GEPattern* pattern = m_info.fillColor.GetPattern();
-  RetainPtr<CFX_DIBitmap> bitmap = m_renderDevice->GetBitmap();
+  RetainPtr<CFX_DIBitmap> bitmap = m_pRenderDevice->GetBitmap();
   int32_t width = bitmap->GetWidth();
   int32_t height = bitmap->GetHeight();
   auto bmp = pdfium::MakeRetain<CFX_DIBitmap>();
   bmp->Create(width, height, FXDIB_Argb);
-  m_renderDevice->GetDIBits(bmp, 0, 0);
+  m_pRenderDevice->GetDIBits(bmp, 0, 0);
 
   FX_HatchStyle hatchStyle = m_info.fillColor.GetPattern()->m_hatchStyle;
   const FX_HATCHDATA& data = hatchBitmapData[static_cast<int>(hatchStyle)];
@@ -289,15 +270,15 @@ void CXFA_Graphics::FillPathWithPattern(const CXFA_GEPath* path,
     for (int32_t i = rect.left; i < rect.right; i += mask->GetWidth())
       device.SetBitMask(mask, i, j, m_info.fillColor.GetPattern()->m_foreArgb);
   }
-  CFX_RenderDevice::StateRestorer restorer(m_renderDevice);
-  m_renderDevice->SetClip_PathFill(path->GetPathData(), &matrix, fillMode);
+  CFX_RenderDevice::StateRestorer restorer(m_pRenderDevice);
+  m_pRenderDevice->SetClip_PathFill(path->GetPathData(), &matrix, fillMode);
   SetDIBitsWithMatrix(bmp, pattern->m_matrix);
 }
 
 void CXFA_Graphics::FillPathWithShading(const CXFA_GEPath* path,
                                         FX_FillMode fillMode,
                                         const CFX_Matrix& matrix) {
-  RetainPtr<CFX_DIBitmap> bitmap = m_renderDevice->GetBitmap();
+  RetainPtr<CFX_DIBitmap> bitmap = m_pRenderDevice->GetBitmap();
   int32_t width = bitmap->GetWidth();
   int32_t height = bitmap->GetHeight();
   float start_x = m_info.fillColor.GetShading()->m_beginPoint.x;
@@ -306,7 +287,7 @@ void CXFA_Graphics::FillPathWithShading(const CXFA_GEPath* path,
   float end_y = m_info.fillColor.GetShading()->m_endPoint.y;
   auto bmp = pdfium::MakeRetain<CFX_DIBitmap>();
   bmp->Create(width, height, FXDIB_Argb);
-  m_renderDevice->GetDIBits(bmp, 0, 0);
+  m_pRenderDevice->GetDIBits(bmp, 0, 0);
   int32_t pitch = bmp->GetPitch();
   bool result = false;
   switch (m_info.fillColor.GetShading()->m_type) {
@@ -406,8 +387,8 @@ void CXFA_Graphics::FillPathWithShading(const CXFA_GEPath* path,
     }
   }
   if (result) {
-    CFX_RenderDevice::StateRestorer restorer(m_renderDevice);
-    m_renderDevice->SetClip_PathFill(path->GetPathData(), &matrix, fillMode);
+    CFX_RenderDevice::StateRestorer restorer(m_pRenderDevice);
+    m_pRenderDevice->SetClip_PathFill(path->GetPathData(), &matrix, fillMode);
     SetDIBitsWithMatrix(bmp, matrix);
   }
 }
@@ -415,7 +396,7 @@ void CXFA_Graphics::FillPathWithShading(const CXFA_GEPath* path,
 void CXFA_Graphics::SetDIBitsWithMatrix(const RetainPtr<CFX_DIBBase>& source,
                                         const CFX_Matrix& matrix) {
   if (matrix.IsIdentity()) {
-    m_renderDevice->SetDIBits(source, 0, 0);
+    m_pRenderDevice->SetDIBits(source, 0, 0);
   } else {
     CFX_Matrix m((float)source->GetWidth(), 0, 0, (float)source->GetHeight(), 0,
                  0);
@@ -424,7 +405,7 @@ void CXFA_Graphics::SetDIBitsWithMatrix(const RetainPtr<CFX_DIBBase>& source,
     int32_t top;
     RetainPtr<CFX_DIBitmap> bmp1 = source->FlipImage(false, true);
     RetainPtr<CFX_DIBitmap> bmp2 = bmp1->TransformTo(m, &left, &top);
-    m_renderDevice->SetDIBits(bmp2, left, top);
+    m_pRenderDevice->SetDIBits(bmp2, left, top);
   }
 }
 

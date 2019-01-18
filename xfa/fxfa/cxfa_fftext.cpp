@@ -38,7 +38,7 @@ void CXFA_FFText::RenderWidget(CXFA_Graphics* pGS,
   if (!pTextLayout)
     return;
 
-  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDevice();
+  CFX_RenderDevice* pRenderDevice = pGS->GetRenderDeviceIfPresent();
   CFX_RectF rtText = GetRectWithoutRotate();
   CXFA_Margin* margin = m_pNode->GetMarginIfExists();
   if (margin) {
