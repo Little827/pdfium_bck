@@ -19,16 +19,15 @@ CFWL_ListBoxTP::~CFWL_ListBoxTP() {}
 void CFWL_ListBoxTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
   switch (pParams.m_iPart) {
     case CFWL_Part::Border: {
-      DrawBorder(pParams.m_pGraphics.Get(), &pParams.m_rtPart,
-                 pParams.m_matrix);
+      DrawBorder(pParams.m_pGraphics.Get(), pParams.m_rtPart, pParams.m_matrix);
       break;
     }
     case CFWL_Part::Background: {
       FillSolidRect(pParams.m_pGraphics.Get(), ArgbEncode(255, 255, 255, 255),
-                    &pParams.m_rtPart, pParams.m_matrix);
+                    pParams.m_rtPart, pParams.m_matrix);
       if (pParams.m_pRtData) {
         FillSolidRect(pParams.m_pGraphics.Get(), FWLTHEME_COLOR_Background,
-                      pParams.m_pRtData, pParams.m_matrix);
+                      *pParams.m_pRtData, pParams.m_matrix);
       }
       break;
     }
@@ -44,7 +43,7 @@ void CFWL_ListBoxTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
       } else if (pParams.m_dwStates == CFWL_PartState_Normal) {
         color = 0xFF0000FF;
       }
-      FillSolidRect(pParams.m_pGraphics.Get(), color, &pParams.m_rtPart,
+      FillSolidRect(pParams.m_pGraphics.Get(), color, pParams.m_rtPart,
                     pParams.m_matrix);
       break;
     }
@@ -72,5 +71,5 @@ void CFWL_ListBoxTP::DrawListBoxItem(CXFA_Graphics* pGraphics,
     pGraphics->RestoreGraphState();
   }
   if ((dwStates & CFWL_PartState_Focused) && pData)
-    DrawFocus(pGraphics, pData, matrix);
+    DrawFocus(pGraphics, *pData, matrix);
 }
