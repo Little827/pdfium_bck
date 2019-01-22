@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79a59fc1_55595b7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-22T18:35:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c08d1d4_e63891e3",
+      "revId": "ef4196654ce529941b8ee442449357bea5213b26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be06f5e8_87d7eb28",
         "filename": "fxjs/xfa/cjx_signaturepseudomodel.h",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "ef4196654ce529941b8ee442449357bea5213b26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f8e1266_f04118bb",
+        "filename": "fxjs/xfa/cjx_signaturepseudomodel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-22T18:35:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be06f5e8_87d7eb28",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "ef4196654ce529941b8ee442449357bea5213b26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
