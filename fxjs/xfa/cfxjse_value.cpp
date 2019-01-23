@@ -302,6 +302,10 @@ bool CFXJSE_Value::SetFunctionBind(CFXJSE_Value* lpOldFunction,
   return true;
 }
 
+bool CFXJSE_Value::IsEmpty() const {
+  return m_hValue.IsEmpty();
+}
+
 bool CFXJSE_Value::IsUndefined() const {
   if (m_hValue.IsEmpty())
     return false;
