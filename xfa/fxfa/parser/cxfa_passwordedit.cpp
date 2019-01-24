@@ -6,7 +6,7 @@
 
 #include "xfa/fxfa/parser/cxfa_passwordedit.h"
 
-#include "fxjs/xfa/cjx_passwordedit.h"
+#include "fxjs/xfa/cjx_node.h"
 
 namespace {
 
