@@ -526,8 +526,10 @@ ByteString CFX_Font::GetFaceName() const {
     ByteString facename = GetFamilyName();
     if (facename.IsEmpty())
       facename = "Untitled";
+    if (IsTTFont())
+      facename.Remove(' ');
     if (!style.IsEmpty() && style != "Regular")
-      facename += " " + style;
+      facename += IsTTFont() ? "," : " " + style;
     return facename;
   }
   return m_pSubstFont->m_Family;
