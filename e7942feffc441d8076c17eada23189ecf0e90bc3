@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c738ded4_c4ef6c80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-24T23:34:39Z",
+      "side": 1,
+      "message": "typos, or very bad packet loss.",
+      "revId": "e7942feffc441d8076c17eada23189ecf0e90bc3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
