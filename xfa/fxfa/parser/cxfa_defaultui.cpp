@@ -6,7 +6,7 @@
 
 #include "xfa/fxfa/parser/cxfa_defaultui.h"
 
-#include "fxjs/xfa/cjx_defaultui.h"
+#include "fxjs/xfa/cjx_node.h"
 
 namespace {
 

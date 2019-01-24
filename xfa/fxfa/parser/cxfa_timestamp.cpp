@@ -6,7 +6,7 @@
 
 #include "xfa/fxfa/parser/cxfa_timestamp.h"
 
-#include "fxjs/xfa/cjx_timestamp.h"
+#include "fxjs/xfa/cjx_node.h"
 
 namespace {
 
