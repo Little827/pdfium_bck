@@ -14,6 +14,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxge/fx_dib.h"
 #include "third_party/base/optional.h"
+#include "third_party/base/span.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/parser/cxfa_object.h"
 
@@ -376,8 +377,8 @@ class CXFA_Node : public CXFA_Object {
             uint32_t validPackets,
             XFA_ObjectType oType,
             XFA_Element eType,
-            const PropertyData* properties,
-            const AttributeData* attributes,
+            pdfium::span<const PropertyData> properties,
+            pdfium::span<const AttributeData> attributes,
             std::unique_ptr<CJX_Object> js_object);
 
   virtual XFA_Element GetValueNodeType() const;
@@ -466,8 +467,8 @@ class CXFA_Node : public CXFA_Object {
                        CXFA_Event* event,
                        CXFA_EventParam* pEventParam);
 
-  const PropertyData* const m_Properties;
-  const AttributeData* const m_Attributes;
+  pdfium::span<const PropertyData> const m_Properties;
+  pdfium::span<const AttributeData> const m_Attributes;
   const uint32_t m_ValidPackets;
 
   // These members are responsible for building the CXFA_Node tree. Node
