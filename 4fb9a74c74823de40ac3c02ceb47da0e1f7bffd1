@@ -22,6 +22,30 @@
       "revId": "4fb9a74c74823de40ac3c02ceb47da0e1f7bffd1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e23b0b1_81bbbb0a",
+        "filename": "xfa/fxfa/parser/cxfa_accessiblecontent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-25T22:04:57Z",
+      "side": 1,
+      "message": "Yes, we\u0027ve got a situation where the field stores either an int or a ptr depending upon the type. The underlying type is void*, probably should be uintptr_t somday.  (void*)42 is the kind of default value you\u0027d  might see here for instance. So its absolutely not a pointer, just the value 0 stored as one.",
+      "parentUuid": "08e88b77_0726b021",
+      "range": {
+        "startLine": 16,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "4fb9a74c74823de40ac3c02ceb47da0e1f7bffd1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
