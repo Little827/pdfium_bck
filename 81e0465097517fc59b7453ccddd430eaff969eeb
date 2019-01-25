@@ -22,6 +22,30 @@
       "revId": "81e0465097517fc59b7453ccddd430eaff969eeb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b959c27_3d8d9845",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-25T20:43:13Z",
+      "side": 1,
+      "message": "Should we ASSERT(property !\u003d  XFA_Element::Unknown) then?",
+      "parentUuid": "332c39db_e7799fc4",
+      "range": {
+        "startLine": 939,
+        "startChar": 2,
+        "endLine": 939,
+        "endChar": 41
+      },
+      "revId": "81e0465097517fc59b7453ccddd430eaff969eeb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
