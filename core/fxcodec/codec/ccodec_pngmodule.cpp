@@ -51,35 +51,33 @@ void _png_warning_data(png_structp png_ptr, png_const_charp error_msg) {}
 void _png_load_bmp_attribute(png_structp png_ptr,
                              png_infop info_ptr,
                              CFX_DIBAttribute* pAttribute) {
-  if (pAttribute) {
 #if defined(PNG_pHYs_SUPPORTED)
-    pAttribute->m_nXDPI = png_get_x_pixels_per_meter(png_ptr, info_ptr);
-    pAttribute->m_nYDPI = png_get_y_pixels_per_meter(png_ptr, info_ptr);
-    png_uint_32 res_x, res_y;
-    int unit_type;
-    png_get_pHYs(png_ptr, info_ptr, &res_x, &res_y, &unit_type);
-    switch (unit_type) {
-      case PNG_RESOLUTION_METER:
-        pAttribute->m_wDPIUnit = FXCODEC_RESUNIT_METER;
-        break;
-      default:
-        pAttribute->m_wDPIUnit = FXCODEC_RESUNIT_NONE;
-    }
+  pAttribute->m_nXDPI = png_get_x_pixels_per_meter(png_ptr, info_ptr);
+  pAttribute->m_nYDPI = png_get_y_pixels_per_meter(png_ptr, info_ptr);
+  png_uint_32 res_x, res_y;
+  int unit_type;
+  png_get_pHYs(png_ptr, info_ptr, &res_x, &res_y, &unit_type);
+  switch (unit_type) {
+    case PNG_RESOLUTION_METER:
+      pAttribute->m_wDPIUnit = FXCODEC_RESUNIT_METER;
+      break;
+    default:
+      pAttribute->m_wDPIUnit = FXCODEC_RESUNIT_NONE;
+  }
 #endif
 #if defined(PNG_iCCP_SUPPORTED)
-    png_charp icc_name;
-    png_bytep icc_profile;
-    png_uint_32 icc_proflen;
-    int compress_type;
-    png_get_iCCP(png_ptr, info_ptr, &icc_name, &compress_type, &icc_profile,
-                 &icc_proflen);
+  png_charp icc_name;
+  png_bytep icc_profile;
+  png_uint_32 icc_proflen;
+  int compress_type;
+  png_get_iCCP(png_ptr, info_ptr, &icc_name, &compress_type, &icc_profile,
+               &icc_proflen);
 #endif
 #if defined(PNG_TEXT_SUPPORTED)
-    int num_text;
-    png_textp text = nullptr;
-    png_get_text(png_ptr, info_ptr, &text, &num_text);
+  int num_text;
+  png_textp text = nullptr;
+  png_get_text(png_ptr, info_ptr, &text, &num_text);
 #endif
-  }
 }
 
 void _png_get_header_func(png_structp png_ptr, png_infop info_ptr) {
@@ -213,12 +211,12 @@ FX_FILESIZE CCodec_PngModule::GetAvailInput(Context* pContext) const {
 bool CCodec_PngModule::Input(Context* pContext,
                              RetainPtr<CFX_CodecMemory> codec_memory,
                              CFX_DIBAttribute* pAttribute) {
+  ASSERT(pAttribute);
+
   auto* ctx = static_cast<CPngContext*>(pContext);
   if (setjmp(png_jmpbuf(ctx->m_pPng))) {
-    if (pAttribute &&
-        strcmp(ctx->m_szLastError, "Read Header Callback Error") == 0) {
+    if (strcmp(ctx->m_szLastError, "Read Header Callback Error") == 0)
       _png_load_bmp_attribute(ctx->m_pPng, ctx->m_pInfo, pAttribute);
-    }
     return false;
   }
   pdfium::span<uint8_t> src_buf = codec_memory->GetSpan();
