@@ -15,3 +15,4 @@ Local Modifications:
 0017-safe_skews_in_gtTileContig.patch: return error if to/from skews overflow from int32.
 0027-build-config.patch: #define variables so their value can be used by #if.
 0028-nstrips-OOM.patch: return error for excess number of tiles/strips.
+0029-jpeg-decoding-size-check.patch: return error when JPEG data does not match expected size.
