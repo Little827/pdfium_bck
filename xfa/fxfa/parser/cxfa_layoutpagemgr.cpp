@@ -410,10 +410,12 @@ bool CXFA_LayoutPageMgr::PrepareFirstPage(CXFA_Node* pRootSubform) {
   }
   CXFA_Node* pLeader;
   CXFA_Node* pTrailer;
-  if (pBreakBeforeNode &&
-      ExecuteBreakBeforeOrAfter(pBreakBeforeNode, true, pLeader, pTrailer)) {
-    m_CurrentContainerRecordIter = m_ProposedContainerRecords.begin();
-    return true;
+  if (pBreakBeforeNode) {
+    if (ExecuteBreakBeforeOrAfter(pBreakBeforeNode, true, pLeader, pTrailer)) {
+      m_CurrentContainerRecordIter = m_ProposedContainerRecords.begin();
+      return true;
+    }
+    return false;
   }
   return AppendNewPage(true);
 }
