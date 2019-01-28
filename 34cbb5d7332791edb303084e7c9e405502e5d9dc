@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42ba03fb_7f877978",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2019-01-28T22:07:29Z",
+      "side": 1,
+      "message": "The spec also says to use the PostScript name, if it exists. Should this be fixed too? I\u0027m not sure if we\u0027re able to get the PsName for TrueType fonts in the same way as we\u0027re doing it for Type1 fonts.",
+      "revId": "34cbb5d7332791edb303084e7c9e405502e5d9dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
