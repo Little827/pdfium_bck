@@ -22,16 +22,20 @@ class CXFA_ContentLayoutItem : public CXFA_LayoutItem {
   CXFA_ContentLayoutItem* GetLast();
   CXFA_ContentLayoutItem* GetPrev() const { return m_pPrev; }
   CXFA_ContentLayoutItem* GetNext() const { return m_pNext; }
+  void InsertAfter(CXFA_ContentLayoutItem* pNext);
+  void RemoveSelf();
 
   CFX_RectF GetRect(bool bRelative) const;
   int32_t GetIndex() const;
   int32_t GetCount() const;
 
-  CXFA_ContentLayoutItem* m_pPrev = nullptr;
-  CXFA_ContentLayoutItem* m_pNext = nullptr;
   CFX_PointF m_sPos;
   CFX_SizeF m_sSize;
   mutable uint32_t m_dwStatus = 0;
+
+ private:
+  CXFA_ContentLayoutItem* m_pPrev = nullptr;
+  CXFA_ContentLayoutItem* m_pNext = nullptr;
 };
 
 inline CXFA_FFWidget* ToFFWidget(CXFA_ContentLayoutItem* item) {

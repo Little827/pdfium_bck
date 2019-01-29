@@ -14,6 +14,7 @@ CXFA_ContentLayoutItem::CXFA_ContentLayoutItem(CXFA_Node* pNode)
     : CXFA_LayoutItem(pNode, kContentItem) {}
 
 CXFA_ContentLayoutItem::~CXFA_ContentLayoutItem() {
+  RemoveSelf();
   if (m_pFormNode->JSObject()->GetLayoutItem() == this)
     m_pFormNode->JSObject()->SetLayoutItem(nullptr);
 }
@@ -36,6 +37,22 @@ CXFA_ContentLayoutItem* CXFA_ContentLayoutItem::GetLast() {
     pCurNode = pCurNode->m_pNext;
 
   return pCurNode;
+}
+
+void CXFA_ContentLayoutItem::InsertAfter(CXFA_ContentLayoutItem* pItem) {
+  pItem->RemoveSelf();
+  pItem->m_pNext = m_pNext;
+  pItem->m_pPrev = this;
+  m_pNext = pItem;
+  if (pItem->m_pNext)
+    pItem->m_pNext->m_pPrev = pItem;
+}
+
+void CXFA_ContentLayoutItem::RemoveSelf() {
+  if (m_pNext)
+    m_pNext->m_pPrev = m_pPrev;
+  if (m_pPrev)
+    m_pPrev->m_pNext = m_pNext;
 }
 
 CFX_RectF CXFA_ContentLayoutItem::GetRect(bool bRelative) const {
