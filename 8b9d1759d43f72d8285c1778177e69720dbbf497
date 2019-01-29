@@ -87,6 +87,24 @@
       "revId": "8b9d1759d43f72d8285c1778177e69720dbbf497",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "668fc050_737df2ad",
+        "filename": "xfa/fxfa/parser/cxfa_contentlayoutitem.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-29T18:13:55Z",
+      "side": 1,
+      "message": "Ah, yeah, the remove-self can be private.",
+      "parentUuid": "d9b7d5b2_457de36d",
+      "revId": "8b9d1759d43f72d8285c1778177e69720dbbf497",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
