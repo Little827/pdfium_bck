@@ -16,6 +16,24 @@
       "revId": "a482e1f9802d49b720923a5cbd99ef1bb3d75da8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5968c193_92a9f1f8",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-29T18:08:18Z",
+      "side": 0,
+      "message": "Keep the list correct following the manipulations below. But it failed miserably.",
+      "parentUuid": "76633089_793e5ae6",
+      "revId": "a482e1f9802d49b720923a5cbd99ef1bb3d75da8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
