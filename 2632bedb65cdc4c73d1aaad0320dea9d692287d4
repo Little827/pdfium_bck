@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ae13ebd_333e2217",
+        "filename": "xfa/fxfa/cxfa_rendercontext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-29T20:09:58Z",
+      "side": 0,
+      "message": "I did a test build and added WARN_UNUSED_RESULT to all the relevant fx_coordinates.h methods, and this was the only error that turned up. Not sure if it is worth it to have WARN_UNUSED_RESULT everywhere.",
+      "revId": "2632bedb65cdc4c73d1aaad0320dea9d692287d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
