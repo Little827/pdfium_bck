@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "680189f4_e2bb2914",
+        "filename": "core/fxcodec/codec/ccodec_gifmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-29T17:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc1dac3_5cb9b566",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "326b7f29b06684cd5e419ad3a3430667d200dcdf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35422665_aec344e7",
         "filename": "core/fxcodec/gif/cfx_gifcontext.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2019-01-29T17:16:56Z",
       "side": 1,
       "message": "nit: init in header while we\u0027re at it?",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "326b7f29b06684cd5e419ad3a3430667d200dcdf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e33483_19b7e3f2",
+        "filename": "core/fxcodec/gif/cfx_gifcontext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-29T17:23:11Z",
+      "side": 1,
+      "message": "Will follow up.",
+      "parentUuid": "35422665_aec344e7",
       "range": {
         "startLine": 28,
         "startChar": 6,
