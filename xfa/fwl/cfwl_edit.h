@@ -47,7 +47,8 @@ class CFWL_Edit : public CFWL_Widget, public CFDE_TextEditEngine::Delegate {
  public:
   CFWL_Edit(const CFWL_App* app,
             std::unique_ptr<CFWL_WidgetProperties> properties,
-            CFWL_Widget* pOuter);
+            CFWL_Widget* pOuter,
+            CXFA_FFWidget* pFFWidget);
   ~CFWL_Edit() override;
 
   // CFWL_Widget:

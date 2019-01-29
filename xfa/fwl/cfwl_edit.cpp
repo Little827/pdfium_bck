@@ -46,8 +46,9 @@ constexpr int kEditingModifier = FWL_KEYFLAG_Ctrl;
 
 CFWL_Edit::CFWL_Edit(const CFWL_App* app,
                      std::unique_ptr<CFWL_WidgetProperties> properties,
-                     CFWL_Widget* pOuter)
-    : CFWL_Widget(app, std::move(properties), pOuter) {
+                     CFWL_Widget* pOuter,
+                     CXFA_FFWidget* pFFWidget)
+    : CFWL_Widget(app, std::move(properties), pOuter, pFFWidget) {
   m_EdtEngine.SetDelegate(this);
 }
 
@@ -871,8 +872,8 @@ void CFWL_Edit::InitVerticalScrollBar() {
   prop->m_dwStates = FWL_WGTSTATE_Disabled | FWL_WGTSTATE_Invisible;
   prop->m_pParent = this;
   prop->m_pThemeProvider = m_pProperties->m_pThemeProvider;
-  m_pVertScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp.Get(),
-                                                        std::move(prop), this);
+  m_pVertScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(
+      m_pOwnerApp.Get(), std::move(prop), this, nullptr);  // WRONG
 }
 
 void CFWL_Edit::InitHorizontalScrollBar() {
@@ -884,8 +885,8 @@ void CFWL_Edit::InitHorizontalScrollBar() {
   prop->m_dwStates = FWL_WGTSTATE_Disabled | FWL_WGTSTATE_Invisible;
   prop->m_pParent = this;
   prop->m_pThemeProvider = m_pProperties->m_pThemeProvider;
-  m_pHorzScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(m_pOwnerApp.Get(),
-                                                        std::move(prop), this);
+  m_pHorzScrollBar = pdfium::MakeUnique<CFWL_ScrollBar>(
+      m_pOwnerApp.Get(), std::move(prop), this, nullptr);  // WRONG
 }
 
 void CFWL_Edit::ShowCaret(CFX_RectF* pRect) {
@@ -906,10 +907,7 @@ void CFWL_Edit::ShowCaret(CFX_RectF* pRect) {
     pRect->Offset(rtOuter.left, rtOuter.top);
   }
 
-  CXFA_FFWidget* pXFAWidget = pOuter->GetLayoutItem();
-  if (!pXFAWidget)
-    return;
-
+  CXFA_FFWidget* pXFAWidget = pOuter->GetFFWidget();
   IXFA_DocEnvironment* pDocEnvironment =
       pXFAWidget->GetDoc()->GetDocEnvironment();
   if (!pDocEnvironment)
@@ -930,10 +928,7 @@ void CFWL_Edit::HideCaret(CFX_RectF* pRect) {
   while (pOuter->GetOuter())
     pOuter = pOuter->GetOuter();
 
-  CXFA_FFWidget* pXFAWidget = pOuter->GetLayoutItem();
-  if (!pXFAWidget)
-    return;
-
+  CXFA_FFWidget* pXFAWidget = pOuter->GetFFWidget();
   IXFA_DocEnvironment* pDocEnvironment =
       pXFAWidget->GetDoc()->GetDocEnvironment();
   if (!pDocEnvironment)
@@ -967,7 +962,8 @@ void CFWL_Edit::InitCaret() {
     return;
 
   m_pCaret = pdfium::MakeUnique<CFWL_Caret>(
-      m_pOwnerApp.Get(), pdfium::MakeUnique<CFWL_WidgetProperties>(), this);
+      m_pOwnerApp.Get(), pdfium::MakeUnique<CFWL_WidgetProperties>(), this,
+      nullptr);  // WRONG
   m_pCaret->SetParent(this);
   m_pCaret->SetStates(m_pProperties->m_dwStates);
   UpdateCursorRect();

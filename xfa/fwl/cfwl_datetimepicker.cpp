@@ -24,13 +24,12 @@ namespace {
 const int kDateTimePickerHeight = 20;
 
 }  // namespace
-CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
-    : CFWL_Widget(app, pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr),
-      m_iBtnState(1),
-      m_iYear(-1),
-      m_iMonth(-1),
-      m_iDay(-1),
-      m_bLBtnDown(false) {
+CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app,
+                                         CXFA_FFWidget* pFFWidget)
+    : CFWL_Widget(app,
+                  pdfium::MakeUnique<CFWL_WidgetProperties>(),
+                  nullptr,
+                  pFFWidget) {
   m_pProperties->m_dwStyleExes = FWL_STYLEEXT_DTP_ShortDateFormat;
 
   auto monthProp = pdfium::MakeUnique<CFWL_WidgetProperties>();
@@ -39,7 +38,7 @@ CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
   monthProp->m_pParent = this;
   monthProp->m_pThemeProvider = m_pProperties->m_pThemeProvider;
   m_pMonthCal = pdfium::MakeUnique<CFWL_MonthCalendar>(
-      m_pOwnerApp.Get(), std::move(monthProp), this);
+      m_pOwnerApp.Get(), std::move(monthProp), this, nullptr);  // wrong
 
   m_pMonthCal->SetWidgetRect(
       CFX_RectF(0, 0, m_pMonthCal->GetAutosizedWidgetRect().Size()));
@@ -48,8 +47,8 @@ CFWL_DateTimePicker::CFWL_DateTimePicker(const CFWL_App* app)
   editProp->m_pParent = this;
   editProp->m_pThemeProvider = m_pProperties->m_pThemeProvider;
 
-  m_pEdit = pdfium::MakeUnique<CFWL_DateTimeEdit>(m_pOwnerApp.Get(),
-                                                  std::move(editProp), this);
+  m_pEdit = pdfium::MakeUnique<CFWL_DateTimeEdit>(
+      m_pOwnerApp.Get(), std::move(editProp), this, nullptr);  // wrong.
   RegisterEventTarget(m_pMonthCal.get());
   RegisterEventTarget(m_pEdit.get());
 }

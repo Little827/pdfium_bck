@@ -20,7 +20,8 @@ class CFWL_Caret final : public CFWL_Widget {
  public:
   CFWL_Caret(const CFWL_App* app,
              std::unique_ptr<CFWL_WidgetProperties> properties,
-             CFWL_Widget* pOuter);
+             CFWL_Widget* pOuter,
+             CXFA_FFWidget* pFFWidget);
   ~CFWL_Caret() override;
 
   // CFWL_Widget

@@ -112,18 +112,16 @@ class CFWL_Widget : public IFWL_WidgetDelegate {
   }
 
   const CFWL_App* GetOwnerApp() const { return m_pOwnerApp.Get(); }
+  CXFA_FFWidget* GetFFWidget() const { return m_pFFWidget.Get(); }
   uint32_t GetEventKey() const { return m_nEventKey; }
   void SetEventKey(uint32_t key) { m_nEventKey = key; }
-
-  CXFA_FFWidget* GetLayoutItem() const { return m_pLayoutItem; }
-  void SetLayoutItem(CXFA_FFWidget* pItem) { m_pLayoutItem = pItem; }
-
   void RepaintRect(const CFX_RectF& pRect);
 
  protected:
   CFWL_Widget(const CFWL_App* app,
               std::unique_ptr<CFWL_WidgetProperties> properties,
-              CFWL_Widget* pOuter);
+              CFWL_Widget* pOuter,
+              CXFA_FFWidget* pFFWidget);
 
   bool IsEnabled() const;
   bool IsLocked() const { return m_iLock > 0; }
@@ -154,7 +152,7 @@ class CFWL_Widget : public IFWL_WidgetDelegate {
   UnownedPtr<CFWL_WidgetMgr> const m_pWidgetMgr;
   std::unique_ptr<CFWL_WidgetProperties> m_pProperties;
   CFWL_Widget* m_pOuter;
-  int32_t m_iLock;
+  int32_t m_iLock = 0;
 
  private:
   CFWL_Widget* GetParent() const { return m_pWidgetMgr->GetParentWidget(this); }
@@ -166,8 +164,8 @@ class CFWL_Widget : public IFWL_WidgetDelegate {
   void NotifyDriver();
   bool IsParent(CFWL_Widget* pParent);
 
-  CXFA_FFWidget* m_pLayoutItem;
-  uint32_t m_nEventKey;
+  uint32_t m_nEventKey = 0;
+  UnownedPtr<CXFA_FFWidget> m_pFFWidget;
   UnownedPtr<IFWL_WidgetDelegate> m_pDelegate;
 };
 

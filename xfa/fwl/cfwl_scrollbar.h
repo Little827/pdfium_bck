@@ -25,7 +25,8 @@ class CFWL_ScrollBar final : public CFWL_Widget {
  public:
   CFWL_ScrollBar(const CFWL_App* app,
                  std::unique_ptr<CFWL_WidgetProperties> properties,
-                 CFWL_Widget* pOuter);
+                 CFWL_Widget* pOuter,
+                 CXFA_FFWidget* pFFWidget);
   ~CFWL_ScrollBar() override;
 
   // CFWL_Widget

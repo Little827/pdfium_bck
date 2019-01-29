@@ -16,8 +16,11 @@
 #include "xfa/fwl/ifwl_themeprovider.h"
 #include "xfa/fwl/theme/cfwl_utils.h"
 
-CFWL_Barcode::CFWL_Barcode(const CFWL_App* app)
-    : CFWL_Edit(app, pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr) {}
+CFWL_Barcode::CFWL_Barcode(const CFWL_App* app, CXFA_FFWidget* pFFWidget)
+    : CFWL_Edit(app,
+                pdfium::MakeUnique<CFWL_WidgetProperties>(),
+                nullptr,
+                pFFWidget) {}
 
 CFWL_Barcode::~CFWL_Barcode() = default;
 

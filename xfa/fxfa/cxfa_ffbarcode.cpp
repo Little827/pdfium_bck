@@ -114,10 +114,9 @@ CXFA_FFBarcode::CXFA_FFBarcode(CXFA_Node* pNode, CXFA_Barcode* barcode)
 CXFA_FFBarcode::~CXFA_FFBarcode() {}
 
 bool CXFA_FFBarcode::LoadWidget() {
-  auto pNew = pdfium::MakeUnique<CFWL_Barcode>(GetFWLApp());
+  auto pNew = pdfium::MakeUnique<CFWL_Barcode>(GetFWLApp(), this);
   CFWL_Barcode* pFWLBarcode = pNew.get();
   m_pNormalWidget = std::move(pNew);
-  m_pNormalWidget->SetLayoutItem(this);
 
   CFWL_NoteDriver* pNoteDriver =
       m_pNormalWidget->GetOwnerApp()->GetNoteDriver();

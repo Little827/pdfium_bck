@@ -37,7 +37,7 @@ class CFWL_Widget;
 
 class CFWL_ComboBox final : public CFWL_Widget {
  public:
-  explicit CFWL_ComboBox(const CFWL_App* pApp);
+  CFWL_ComboBox(const CFWL_App* pApp, CXFA_FFWidget* pWidget);
   ~CFWL_ComboBox() override;
 
   // CFWL_Widget
@@ -120,13 +120,13 @@ class CFWL_ComboBox final : public CFWL_Widget {
   void OnFocusChanged(CFWL_Message* pMsg, bool bSet);
   void OnKey(CFWL_MessageKey* pMsg);
 
+  int32_t m_iCurSel = -1;
+  int32_t m_iBtnState = CFWL_PartState_Normal;
   CFX_RectF m_rtClient;
   CFX_RectF m_rtContent;
   CFX_RectF m_rtBtn;
   std::unique_ptr<CFWL_ComboEdit> m_pEdit;
   std::unique_ptr<CFWL_ComboList> m_pListBox;
-  int32_t m_iCurSel;
-  int32_t m_iBtnState;
 };
 
 #endif  // XFA_FWL_CFWL_COMBOBOX_H_

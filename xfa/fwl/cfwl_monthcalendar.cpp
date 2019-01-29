@@ -89,8 +89,9 @@ WideString GetMonth(int month) {
 CFWL_MonthCalendar::CFWL_MonthCalendar(
     const CFWL_App* app,
     std::unique_ptr<CFWL_WidgetProperties> properties,
-    CFWL_Widget* pOuter)
-    : CFWL_Widget(app, std::move(properties), pOuter) {}
+    CFWL_Widget* pOuter,
+    CXFA_FFWidget* pFFWidget)
+    : CFWL_Widget(app, std::move(properties), pOuter, pFFWidget) {}
 
 CFWL_MonthCalendar::~CFWL_MonthCalendar() = default;
 

@@ -50,12 +50,11 @@ void CXFA_FFPushButton::RenderWidget(CXFA_Graphics* pGS,
 
 bool CXFA_FFPushButton::LoadWidget() {
   ASSERT(!m_pNormalWidget);
-  auto pNew = pdfium::MakeUnique<CFWL_PushButton>(GetFWLApp());
+  auto pNew = pdfium::MakeUnique<CFWL_PushButton>(GetFWLApp(), this);
   CFWL_PushButton* pPushButton = pNew.get();
   m_pOldDelegate = pPushButton->GetDelegate();
   pPushButton->SetDelegate(this);
   m_pNormalWidget = std::move(pNew);
-  m_pNormalWidget->SetLayoutItem(this);
 
   CFWL_NoteDriver* pNoteDriver =
       m_pNormalWidget->GetOwnerApp()->GetNoteDriver();

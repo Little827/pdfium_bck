@@ -42,10 +42,9 @@ bool CXFA_FFComboBox::PtInActiveRect(const CFX_PointF& point) {
 }
 
 bool CXFA_FFComboBox::LoadWidget() {
-  auto pNew = pdfium::MakeUnique<CFWL_ComboBox>(GetFWLApp());
+  auto pNew = pdfium::MakeUnique<CFWL_ComboBox>(GetFWLApp(), this);
   CFWL_ComboBox* pComboBox = pNew.get();
   m_pNormalWidget = std::move(pNew);
-  m_pNormalWidget->SetLayoutItem(this);
 
   CFWL_NoteDriver* pNoteDriver =
       m_pNormalWidget->GetOwnerApp()->GetNoteDriver();

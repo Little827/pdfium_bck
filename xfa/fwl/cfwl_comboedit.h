@@ -19,7 +19,8 @@ class CFWL_ComboEdit final : public CFWL_Edit {
  public:
   CFWL_ComboEdit(const CFWL_App* app,
                  std::unique_ptr<CFWL_WidgetProperties> properties,
-                 CFWL_Widget* pOuter);
+                 CFWL_Widget* pOuter,
+                 CXFA_FFWidget* pFFWidget);
   ~CFWL_ComboEdit() override;
 
   // CFWL_Edit.

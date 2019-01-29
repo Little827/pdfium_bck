@@ -25,8 +25,9 @@ constexpr int kStateHighlight = (1 << 0);
 
 CFWL_Caret::CFWL_Caret(const CFWL_App* app,
                        std::unique_ptr<CFWL_WidgetProperties> properties,
-                       CFWL_Widget* pOuter)
-    : CFWL_Widget(app, std::move(properties), pOuter),
+                       CFWL_Widget* pOuter,
+                       CXFA_FFWidget* pFFWidget)
+    : CFWL_Widget(app, std::move(properties), pOuter, pFFWidget),
       m_pTimer(pdfium::MakeUnique<CFWL_Caret::Timer>(this)),
       m_pTimerInfo(nullptr) {
   SetStates(kStateHighlight);

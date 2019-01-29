@@ -20,11 +20,13 @@
 #include "xfa/fwl/cfwl_themetext.h"
 #include "xfa/fwl/ifwl_themeprovider.h"
 
-CFWL_PushButton::CFWL_PushButton(const CFWL_App* app)
-    : CFWL_Widget(app, pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr),
-      m_bBtnDown(false) {}
+CFWL_PushButton::CFWL_PushButton(const CFWL_App* app, CXFA_FFWidget* pWidget)
+    : CFWL_Widget(app,
+                  pdfium::MakeUnique<CFWL_WidgetProperties>(),
+                  nullptr,
+                  pWidget) {}
 
-CFWL_PushButton::~CFWL_PushButton() {}
+CFWL_PushButton::~CFWL_PushButton() = default;
 
 FWL_Type CFWL_PushButton::GetClassID() const {
   return FWL_Type::PushButton;

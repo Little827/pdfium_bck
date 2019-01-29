@@ -30,12 +30,12 @@ const float kMinThumbSize = 5.0f;
 CFWL_ScrollBar::CFWL_ScrollBar(
     const CFWL_App* app,
     std::unique_ptr<CFWL_WidgetProperties> properties,
-    CFWL_Widget* pOuter)
-    : CFWL_Widget(app, std::move(properties), pOuter),
-      m_Timer(this) {
-}
+    CFWL_Widget* pOuter,
+    CXFA_FFWidget* pFFWidget)
+    : CFWL_Widget(app, std::move(properties), pOuter, pFFWidget),
+      m_Timer(this) {}
 
-CFWL_ScrollBar::~CFWL_ScrollBar() {}
+CFWL_ScrollBar::~CFWL_ScrollBar() = default;
 
 FWL_Type CFWL_ScrollBar::GetClassID() const {
   return FWL_Type::ScrollBar;

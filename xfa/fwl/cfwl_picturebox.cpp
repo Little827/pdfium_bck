@@ -10,11 +10,13 @@
 
 #include "third_party/base/ptr_util.h"
 
-CFWL_PictureBox::CFWL_PictureBox(const CFWL_App* app)
-    : CFWL_Widget(app, pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr) {
-}
+CFWL_PictureBox::CFWL_PictureBox(const CFWL_App* app, CXFA_FFWidget* pFFWidget)
+    : CFWL_Widget(app,
+                  pdfium::MakeUnique<CFWL_WidgetProperties>(),
+                  nullptr,
+                  pFFWidget) {}
 
-CFWL_PictureBox::~CFWL_PictureBox() {}
+CFWL_PictureBox::~CFWL_PictureBox() = default;
 
 FWL_Type CFWL_PictureBox::GetClassID() const {
   return FWL_Type::PictureBox;

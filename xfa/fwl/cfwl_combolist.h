@@ -17,7 +17,8 @@ class CFWL_ComboList final : public CFWL_ListBox {
  public:
   CFWL_ComboList(const CFWL_App* app,
                  std::unique_ptr<CFWL_WidgetProperties> properties,
-                 CFWL_Widget* pOuter);
+                 CFWL_Widget* pOuter,
+                 CXFA_FFWidget* pFFWidget);
 
   // CFWL_ListBox.
   void OnProcessMessage(CFWL_Message* pMessage) override;
@@ -37,7 +38,7 @@ class CFWL_ComboList final : public CFWL_ListBox {
   bool OnDropListKey(CFWL_MessageKey* pKey);
   void OnDropListKeyDown(CFWL_MessageKey* pKey);
 
-  bool m_bNotifyOwner;
+  bool m_bNotifyOwner = true;
 };
 
 #endif  // XFA_FWL_CFWL_COMBOLIST_H_

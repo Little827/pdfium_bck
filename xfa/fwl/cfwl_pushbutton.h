@@ -19,7 +19,7 @@ class CFWL_Widget;
 
 class CFWL_PushButton final : public CFWL_Widget {
  public:
-  explicit CFWL_PushButton(const CFWL_App*);
+  CFWL_PushButton(const CFWL_App*, CXFA_FFWidget* pWidget);
   ~CFWL_PushButton() override;
 
   // CFWL_Widget
@@ -44,9 +44,9 @@ class CFWL_PushButton final : public CFWL_Widget {
   void OnMouseLeave(CFWL_MessageMouse* pMsg);
   void OnKeyDown(CFWL_MessageKey* pMsg);
 
+  bool m_bBtnDown = false;
   CFX_RectF m_rtClient;
   CFX_RectF m_rtCaption;
-  bool m_bBtnDown;
 };
 
 #endif  // XFA_FWL_CFWL_PUSHBUTTON_H_

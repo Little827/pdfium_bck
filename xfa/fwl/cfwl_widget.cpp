@@ -35,17 +35,16 @@
 
 CFWL_Widget::CFWL_Widget(const CFWL_App* app,
                          std::unique_ptr<CFWL_WidgetProperties> properties,
-                         CFWL_Widget* pOuter)
+                         CFWL_Widget* pOuter,
+                         CXFA_FFWidget* pFFWidget)
     : m_pOwnerApp(app),
       m_pWidgetMgr(app->GetWidgetMgr()),
       m_pProperties(std::move(properties)),
       m_pOuter(pOuter),
-      m_iLock(0),
-      m_pLayoutItem(nullptr),
-      m_nEventKey(0),
-      m_pDelegate(nullptr) {
+      m_pFFWidget(pFFWidget) {
   ASSERT(m_pWidgetMgr);
   ASSERT(m_pProperties);
+  ASSERT(m_pFFWidget);
 
   CFWL_Widget* pParent = m_pProperties->m_pParent;
   m_pWidgetMgr->InsertWidget(pParent, this);

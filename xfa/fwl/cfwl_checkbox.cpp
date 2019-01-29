@@ -29,8 +29,11 @@ const int kCaptionMargin = 5;
 
 }  // namespace
 
-CFWL_CheckBox::CFWL_CheckBox(const CFWL_App* app)
-    : CFWL_Widget(app, pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr) {
+CFWL_CheckBox::CFWL_CheckBox(const CFWL_App* app, CXFA_FFWidget* pFFWidget)
+    : CFWL_Widget(app,
+                  pdfium::MakeUnique<CFWL_WidgetProperties>(),
+                  nullptr,
+                  pFFWidget) {
   m_TTOStyles.single_line_ = true;
 }
 

@@ -32,17 +32,14 @@ CXFA_FFImageEdit::~CXFA_FFImageEdit() {
 }
 
 bool CXFA_FFImageEdit::LoadWidget() {
-  auto pNew = pdfium::MakeUnique<CFWL_PictureBox>(GetFWLApp());
-  CFWL_PictureBox* pPictureBox = pNew.get();
-  m_pNormalWidget = std::move(pNew);
-  m_pNormalWidget->SetLayoutItem(this);
+  m_pNormalWidget = pdfium::MakeUnique<CFWL_PictureBox>(GetFWLApp(), this);
 
   CFWL_NoteDriver* pNoteDriver =
       m_pNormalWidget->GetOwnerApp()->GetNoteDriver();
   pNoteDriver->RegisterEventTarget(m_pNormalWidget.get(),
                                    m_pNormalWidget.get());
-  m_pOldDelegate = pPictureBox->GetDelegate();
-  pPictureBox->SetDelegate(this);
+  m_pOldDelegate = m_pNormalWidget->GetDelegate();
+  m_pNormalWidget->SetDelegate(this);
 
   CXFA_FFField::LoadWidget();
   if (!m_pNode->GetImageEditImage())

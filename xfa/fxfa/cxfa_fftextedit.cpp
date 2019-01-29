@@ -44,10 +44,9 @@ CXFA_FFTextEdit::~CXFA_FFTextEdit() {
 
 bool CXFA_FFTextEdit::LoadWidget() {
   auto pNewWidget = pdfium::MakeUnique<CFWL_Edit>(
-      GetFWLApp(), pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr);
+      GetFWLApp(), pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr, this);
   CFWL_Edit* pFWLEdit = pNewWidget.get();
   m_pNormalWidget = std::move(pNewWidget);
-  m_pNormalWidget->SetLayoutItem(this);
 
   CFWL_NoteDriver* pNoteDriver =
       m_pNormalWidget->GetOwnerApp()->GetNoteDriver();

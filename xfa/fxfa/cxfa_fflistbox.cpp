@@ -40,12 +40,11 @@ CXFA_FFListBox::~CXFA_FFListBox() {
 
 bool CXFA_FFListBox::LoadWidget() {
   auto pNew = pdfium::MakeUnique<CFWL_ListBox>(
-      GetFWLApp(), pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr);
+      GetFWLApp(), pdfium::MakeUnique<CFWL_WidgetProperties>(), nullptr, this);
   CFWL_ListBox* pListBox = pNew.get();
   pListBox->ModifyStyles(FWL_WGTSTYLE_VScroll | FWL_WGTSTYLE_NoBackground,
                          0xFFFFFFFF);
   m_pNormalWidget = std::move(pNew);
-  m_pNormalWidget->SetLayoutItem(this);
 
   CFWL_NoteDriver* pNoteDriver =
       m_pNormalWidget->GetOwnerApp()->GetNoteDriver();
