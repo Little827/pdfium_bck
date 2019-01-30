@@ -6,6 +6,8 @@
 
 #include "xfa/fxfa/parser/cxfa_layoutpagemgr.h"
 
+#include <utility>
+
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/stl_util.h"
@@ -251,6 +253,23 @@ bool RunBreakTestScript(CXFA_Script* pTestScript) {
       pTestScript, pTestScript->GetContainerParent());
 }
 
+std::pair<size_t, CXFA_LayoutItem*> GetPageAreaCountAndLastPageAreaFromPageSet(
+    CXFA_ContainerLayoutItem* pPageSetLayoutItem) {
+  size_t nCount = 0;
+  CXFA_LayoutItem* pLast = nullptr;
+  for (CXFA_LayoutItem* pPageAreaLayoutItem = pPageSetLayoutItem->m_pFirstChild;
+       pPageAreaLayoutItem;
+       pPageAreaLayoutItem = pPageAreaLayoutItem->m_pNextSibling) {
+    if (pPageAreaLayoutItem->GetFormNode()->GetElementType() !=
+        XFA_Element::PageArea) {
+      continue;
+    }
+    ++nCount;
+    pLast = pPageAreaLayoutItem;
+  }
+  return {nCount, pLast};
+}
+
 float CalculateLayoutItemHeight(const CXFA_LayoutItem* pItem) {
   float fHeight = 0;
   for (const CXFA_LayoutItem* pChild = pItem->m_pFirstChild; pChild;
@@ -270,6 +289,25 @@ std::vector<float> GetHeightForContentAreas(const CXFA_LayoutItem* pItem) {
       heights.push_back(CalculateLayoutItemHeight(pChild));
   }
   return heights;
+}
+
+bool ContentAreasFitInPageAreas(const CXFA_Node* pNode,
+                                const std::vector<float>& rgUsedHeights) {
+  int32_t iCurContentAreaIndex = -1;
+  for (const CXFA_Node* pContentAreaNode = pNode->GetFirstChild();
+       pContentAreaNode;
+       pContentAreaNode = pContentAreaNode->GetNextSibling()) {
+    if (pContentAreaNode->GetElementType() != XFA_Element::ContentArea)
+      continue;
+
+    iCurContentAreaIndex++;
+    CXFA_Measurement measure =
+        pContentAreaNode->JSObject()->GetMeasure(XFA_Attribute::H);
+    float fHeight = measure.ToUnit(XFA_Unit::Pt) + kXFALayoutPrecision;
+    if (rgUsedHeights[iCurContentAreaIndex] > fHeight)
+      return false;
+  }
+  return true;
 }
 
 }  // namespace
@@ -1943,18 +1981,10 @@ void CXFA_LayoutPageMgr::PrepareLayout() {
 void CXFA_LayoutPageMgr::ProcessSimplexOrDuplexPageSets(
     CXFA_ContainerLayoutItem* pPageSetLayoutItem,
     bool bIsSimplex) {
-  CXFA_LayoutItem* pLastPageAreaLayoutItem = nullptr;
-  int32_t nPageAreaCount = 0;
-  for (CXFA_LayoutItem* pPageAreaLayoutItem = pPageSetLayoutItem->m_pFirstChild;
-       pPageAreaLayoutItem;
-       pPageAreaLayoutItem = pPageAreaLayoutItem->m_pNextSibling) {
-    if (pPageAreaLayoutItem->GetFormNode()->GetElementType() !=
-        XFA_Element::PageArea) {
-      continue;
-    }
-    nPageAreaCount++;
-    pLastPageAreaLayoutItem = pPageAreaLayoutItem;
-  }
+  size_t nPageAreaCount;
+  CXFA_LayoutItem* pLastPageAreaLayoutItem;
+  std::tie(nPageAreaCount, pLastPageAreaLayoutItem) =
+      GetPageAreaCountAndLastPageAreaFromPageSet(pPageSetLayoutItem);
   if (!pLastPageAreaLayoutItem)
     return;
 
@@ -1969,6 +1999,7 @@ void CXFA_LayoutPageMgr::ProcessSimplexOrDuplexPageSets(
            true, XFA_AttributeValue::Last))) {
     return;
   }
+
   CXFA_Node* pNode = m_pCurPageArea;
   XFA_AttributeValue eCurChoice =
       pNode->JSObject()->GetEnum(XFA_Attribute::PagePosition);
@@ -1985,26 +2016,10 @@ void CXFA_LayoutPageMgr::ProcessSimplexOrDuplexPageSets(
       return;
     }
   }
-  bool bUsable = true;
+
   std::vector<float> rgUsedHeights =
       GetHeightForContentAreas(pLastPageAreaLayoutItem);
-  int32_t iCurContentAreaIndex = -1;
-  for (CXFA_Node* pContentAreaNode = pNode->GetFirstChild(); pContentAreaNode;
-       pContentAreaNode = pContentAreaNode->GetNextSibling()) {
-    if (pContentAreaNode->GetElementType() != XFA_Element::ContentArea) {
-      continue;
-    }
-    iCurContentAreaIndex++;
-    const float fHeight = pContentAreaNode->JSObject()
-                              ->GetMeasure(XFA_Attribute::H)
-                              .ToUnit(XFA_Unit::Pt) +
-                          kXFALayoutPrecision;
-    if (rgUsedHeights[iCurContentAreaIndex] > fHeight) {
-      bUsable = false;
-      return;
-    }
-  }
-  if (bUsable) {
+  if (ContentAreasFitInPageAreas(pNode, rgUsedHeights)) {
     CXFA_LayoutItem* pChildLayoutItem = pLastPageAreaLayoutItem->m_pFirstChild;
     CXFA_Node* pContentAreaNode = pNode->GetFirstChild();
     pLastPageAreaLayoutItem->SetFormNode(pNode);
@@ -2022,8 +2037,11 @@ void CXFA_LayoutPageMgr::ProcessSimplexOrDuplexPageSets(
       pChildLayoutItem = pChildLayoutItem->m_pNextSibling;
       pContentAreaNode = pContentAreaNode->GetNextSibling();
     }
-  } else if (pNode->JSObject()->GetEnum(XFA_Attribute::PagePosition) ==
-             XFA_AttributeValue::Last) {
+    return;
+  }
+
+  if (pNode->JSObject()->GetEnum(XFA_Attribute::PagePosition) ==
+      XFA_AttributeValue::Last) {
     CXFA_ContainerRecord* pRecord = CreateContainerRecord(nullptr, false);
     AddPageAreaLayoutItem(pRecord, pNode);
   }
