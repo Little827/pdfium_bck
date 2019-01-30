@@ -350,10 +350,9 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
   int32_t iLineIndex = 0;
   if (iBlockCount > 0) {
     if (iBlockCount >= iBlockIndex + 1) {
-      iLineIndex = GetBlockIndex(iBlockIndex);
+      iLineIndex = m_Blocks[iBlockIndex].iIndex;
     } else {
-      int32_t iLast = iBlockCount - 1;
-      iLineIndex = GetBlockIndex(iLast) + GetBlockLength(iLast);
+      iLineIndex = m_Blocks.back().iIndex + m_Blocks.back().iLength;
     }
     if (!m_pLoader->blockHeights.empty()) {
       for (int32_t i = 0; i < iBlockIndex; i++)
@@ -373,8 +372,8 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
     }
 
     if (iBlockCount >= iBlockIndex + 1) {
-      GetBlockIndex(iBlockIndex) = iLineIndex;
-      GetBlockLength(iBlockIndex) = i - iLineIndex;
+      m_Blocks[iBlockIndex].iIndex = iLineIndex;
+      m_Blocks[iBlockIndex].iLength = i - iLineIndex;
     } else {
       m_Blocks.emplace_back(iLineIndex, i - iLineIndex);
     }
@@ -462,14 +461,14 @@ bool CXFA_TextLayout::Layout(int32_t iBlock) {
 
     m_pLoader->iChar = 0;
     if (iCount > 0)
-      m_pLoader->iTotalLines = GetBlockLength(iBlock);
+      m_pLoader->iTotalLines = m_Blocks[iBlock].iLength;
 
     Loader(szText.width, &fLinePos, true);
     if (iCount == 0 && m_pLoader->fStartLineOffset < 0.1f)
       UpdateAlign(szText.height, fLinePos);
   } else if (m_pTextDataNode) {
     if (iBlock < iCount - 1)
-      m_pLoader->iTotalLines = GetBlockLength(iBlock);
+      m_pLoader->iTotalLines = m_Blocks[iBlock].iLength;
 
     m_pBreak->Reset();
     if (m_bRichText) {
@@ -545,8 +544,7 @@ void CXFA_TextLayout::ItemBlocks(const CFX_RectF& rtText, int32_t iBlockIndex) {
     } else {
       fLinePos = 0;
     }
-    int32_t iLast = pdfium::CollectionSize<int32_t>(m_Blocks) - 1;
-    iLineIndex = GetBlockIndex(iLast) + GetBlockLength(iLast);
+    iLineIndex = m_Blocks.back().iIndex + m_Blocks.back().iLength;
   }
 
   int32_t i = 0;
@@ -585,8 +583,8 @@ bool CXFA_TextLayout::DrawString(CFX_RenderDevice* pFxDevice,
   int32_t iPieceLines = pdfium::CollectionSize<int32_t>(m_pieceLines);
   if (!m_Blocks.empty()) {
     if (iBlock < pdfium::CollectionSize<int32_t>(m_Blocks)) {
-      iLineStart = GetBlockIndex(iBlock);
-      iPieceLines = GetBlockLength(iBlock);
+      iLineStart = m_Blocks[iBlock].iIndex;
+      iPieceLines = m_Blocks[iBlock].iLength;
     } else {
       iPieceLines = 0;
     }
