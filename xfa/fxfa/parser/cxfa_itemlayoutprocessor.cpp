@@ -1873,14 +1873,16 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
           goto SuspendAndCreateNewRow;
         }
         case XFA_ItemLayoutProcessorStages::BookendLeader: {
-          CXFA_Node* pLeaderNode = nullptr;
           if (m_pCurChildPreprocessor) {
             pProcessor.reset(m_pCurChildPreprocessor);
             m_pCurChildPreprocessor = nullptr;
-          } else if (m_pPageMgr && m_pPageMgr->ProcessBookendLeaderOrTrailer(
-                                       m_pCurChildNode, true, pLeaderNode)) {
-            pProcessor = pdfium::MakeUnique<CXFA_ItemLayoutProcessor>(
-                pLeaderNode, m_pPageMgr.Get());
+          } else if (m_pPageMgr) {
+            CXFA_Node* pLeaderNode = m_pPageMgr->ProcessBookendLeaderOrTrailer(
+                m_pCurChildNode, /*leader=*/true);
+            if (pLeaderNode) {
+              pProcessor = pdfium::MakeUnique<CXFA_ItemLayoutProcessor>(
+                  pLeaderNode, m_pPageMgr.Get());
+            }
           }
 
           if (pProcessor) {
@@ -1901,14 +1903,16 @@ XFA_ItemLayoutProcessorResult CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
           break;
         }
         case XFA_ItemLayoutProcessorStages::BookendTrailer: {
-          CXFA_Node* pTrailerNode = nullptr;
           if (m_pCurChildPreprocessor) {
             pProcessor.reset(m_pCurChildPreprocessor);
             m_pCurChildPreprocessor = nullptr;
-          } else if (m_pPageMgr && m_pPageMgr->ProcessBookendLeaderOrTrailer(
-                                       m_pCurChildNode, false, pTrailerNode)) {
-            pProcessor = pdfium::MakeUnique<CXFA_ItemLayoutProcessor>(
-                pTrailerNode, m_pPageMgr.Get());
+          } else if (m_pPageMgr) {
+            CXFA_Node* pTrailerNode = m_pPageMgr->ProcessBookendLeaderOrTrailer(
+                m_pCurChildNode, /*leader=*/false);
+            if (pTrailerNode) {
+              pProcessor = pdfium::MakeUnique<CXFA_ItemLayoutProcessor>(
+                  pTrailerNode, m_pPageMgr.Get());
+            }
           }
           if (pProcessor) {
             if (InsertFlowedItem(pProcessor.get(), bContainerWidthAutoSize,

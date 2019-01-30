@@ -427,7 +427,7 @@ CXFA_Measurement CJX_Object::GetMeasure(XFA_Attribute eAttr) const {
   return TryMeasure(eAttr, true).value_or(CXFA_Measurement());
 }
 
-WideString CJX_Object::GetCData(XFA_Attribute eAttr) {
+WideString CJX_Object::GetCData(XFA_Attribute eAttr) const {
   return TryCData(eAttr, true).value_or(WideString());
 }
 
@@ -494,7 +494,7 @@ void CJX_Object::SetAttributeValue(const WideString& wsValue,
 }
 
 Optional<WideString> CJX_Object::TryCData(XFA_Attribute eAttr,
-                                          bool bUseDefault) {
+                                          bool bUseDefault) const {
   void* pKey = GetMapKey_Element(GetXFAObject()->GetElementType(), eAttr);
   if (eAttr == XFA_Attribute::Value) {
     void* pData;
@@ -902,7 +902,7 @@ Optional<void*> CJX_Object::GetMapModuleValue(void* pKey) const {
   return {};
 }
 
-Optional<WideString> CJX_Object::GetMapModuleString(void* pKey) {
+Optional<WideString> CJX_Object::GetMapModuleString(void* pKey) const {
   void* pRawValue;
   int32_t iBytes;
   if (!GetMapModuleBuffer(pKey, &pRawValue, &iBytes))
