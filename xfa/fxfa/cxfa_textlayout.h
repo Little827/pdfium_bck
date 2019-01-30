@@ -62,6 +62,13 @@ class CXFA_TextLayout {
   void ResetHasBlock() { m_bHasBlock = false; }
 
  private:
+  struct BlockData {
+    BlockData(int start, float lines) : iIndex(start), iLength(lines) {}
+
+    int32_t iIndex;
+    int32_t iLength;
+  };
+
   void GetTextDataNode();
   CFX_XMLNode* GetXMLContainerNode();
   std::unique_ptr<CFX_RTFBreak> CreateBreak(bool bDefault);
@@ -111,10 +118,10 @@ class CXFA_TextLayout {
   void DoTabstops(CFX_CSSComputedStyle* pStyle, CXFA_PieceLine* pPieceLine);
   bool Layout(int32_t iBlock);
   int32_t CountBlocks() const;
-  int32_t& GetBlockIndex(int32_t index) { return m_Blocks[index * 2]; }
-  int32_t& GetBlockLength(int32_t index) { return m_Blocks[index * 2 + 1]; }
+  int32_t& GetBlockIndex(int32_t index) { return m_Blocks[index].iIndex; }
+  int32_t& GetBlockLength(int32_t index) { return m_Blocks[index].iLength; }
 
-  std::vector<int32_t> m_Blocks;
+  std::vector<BlockData> m_Blocks;
   bool m_bHasBlock = false;
   bool m_bRichText = false;
   bool m_bBlockContinue = true;

@@ -348,11 +348,11 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
   int32_t iBlockCount = pdfium::CollectionSize<int32_t>(m_Blocks);
   float fLinePos = m_pLoader->fStartLineOffset;
   int32_t iLineIndex = 0;
-  if (iBlockCount > 1) {
-    if (iBlockCount >= (iBlockIndex + 1) * 2) {
+  if (iBlockCount > 0) {
+    if (iBlockCount >= iBlockIndex + 1) {
       iLineIndex = GetBlockIndex(iBlockIndex);
     } else {
-      int32_t iLast = iBlockCount / 2 - 1;
+      int32_t iLast = iBlockCount - 1;
       iLineIndex = GetBlockIndex(iLast) + GetBlockLength(iLast);
     }
     if (!m_pLoader->blockHeights.empty()) {
@@ -372,12 +372,11 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
       continue;
     }
 
-    if (iBlockCount >= (iBlockIndex + 1) * 2) {
+    if (iBlockCount >= iBlockIndex + 1) {
       GetBlockIndex(iBlockIndex) = iLineIndex;
       GetBlockLength(iBlockIndex) = i - iLineIndex;
     } else {
-      m_Blocks.push_back(iLineIndex);
-      m_Blocks.push_back(i - iLineIndex);
+      m_Blocks.emplace_back(iLineIndex, i - iLineIndex);
     }
     if (i != iLineIndex)
       return fLinePos;
@@ -397,7 +396,7 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
 }
 
 int32_t CXFA_TextLayout::CountBlocks() const {
-  int32_t iCount = pdfium::CollectionSize<int32_t>(m_Blocks) / 2;
+  int32_t iCount = pdfium::CollectionSize<int32_t>(m_Blocks);
   return iCount > 0 ? iCount : 1;
 }
 
@@ -462,14 +461,14 @@ bool CXFA_TextLayout::Layout(int32_t iBlock) {
       fLinePos -= m_pLoader->blockHeights[i].fHeight;
 
     m_pLoader->iChar = 0;
-    if (iCount > 1)
+    if (iCount > 0)
       m_pLoader->iTotalLines = GetBlockLength(iBlock);
 
     Loader(szText.width, &fLinePos, true);
     if (iCount == 0 && m_pLoader->fStartLineOffset < 0.1f)
       UpdateAlign(szText.height, fLinePos);
   } else if (m_pTextDataNode) {
-    if (iBlock * 2 < iCount - 2)
+    if (iBlock < iCount - 1)
       m_pLoader->iTotalLines = GetBlockLength(iBlock);
 
     m_pBreak->Reset();
@@ -518,7 +517,7 @@ bool CXFA_TextLayout::Layout(int32_t iBlock) {
       LoadText(pNode, szText.width, &fLinePos, true);
     }
   }
-  if (iBlock * 2 == iCount) {
+  if (iBlock == iCount) {
     m_pTabstopContext.reset();
     m_pLoader.reset();
   }
@@ -535,7 +534,6 @@ void CXFA_TextLayout::ItemBlocks(const CFX_RectF& rtText, int32_t iBlockIndex) {
     return;
 
   bool bEndItem = true;
-  int32_t iBlockCount = pdfium::CollectionSize<int32_t>(m_Blocks);
   float fLinePos = m_pLoader->fStartLineOffset;
   int32_t iLineIndex = 0;
   if (iBlockIndex > 0) {
@@ -547,7 +545,7 @@ void CXFA_TextLayout::ItemBlocks(const CFX_RectF& rtText, int32_t iBlockIndex) {
     } else {
       fLinePos = 0;
     }
-    int32_t iLast = iBlockCount / 2 - 1;
+    int32_t iLast = pdfium::CollectionSize<int32_t>(m_Blocks) - 1;
     iLineIndex = GetBlockIndex(iLast) + GetBlockLength(iLast);
   }
 
@@ -555,17 +553,14 @@ void CXFA_TextLayout::ItemBlocks(const CFX_RectF& rtText, int32_t iBlockIndex) {
   for (i = iLineIndex; i < iCountHeight; i++) {
     float fLineHeight = m_pLoader->lineHeights[i];
     if (fLinePos + fLineHeight - rtText.height > kHeightTolerance) {
-      m_Blocks.push_back(iLineIndex);
-      m_Blocks.push_back(i - iLineIndex);
+      m_Blocks.emplace_back(iLineIndex, i - iLineIndex);
       bEndItem = false;
       break;
     }
     fLinePos += fLineHeight;
   }
-  if (iCountHeight > 0 && (i - iLineIndex) > 0 && bEndItem) {
-    m_Blocks.push_back(iLineIndex);
-    m_Blocks.push_back(i - iLineIndex);
-  }
+  if (iCountHeight > 0 && (i - iLineIndex) > 0 && bEndItem)
+    m_Blocks.emplace_back(iLineIndex, i - iLineIndex);
 }
 
 bool CXFA_TextLayout::DrawString(CFX_RenderDevice* pFxDevice,
@@ -588,9 +583,8 @@ bool CXFA_TextLayout::DrawString(CFX_RenderDevice* pFxDevice,
   int32_t iCharCount = 1;
   int32_t iLineStart = 0;
   int32_t iPieceLines = pdfium::CollectionSize<int32_t>(m_pieceLines);
-  int32_t iCount = pdfium::CollectionSize<int32_t>(m_Blocks);
-  if (iCount > 0) {
-    if (iBlock * 2 < iCount) {
+  if (!m_Blocks.empty()) {
+    if (iBlock < pdfium::CollectionSize<int32_t>(m_Blocks)) {
       iLineStart = GetBlockIndex(iBlock);
       iPieceLines = GetBlockLength(iBlock);
     } else {
