@@ -1991,38 +1991,37 @@ void CXFA_LayoutPageMgr::PrepareLayout() {
   m_ePageSetMode = XFA_AttributeValue::OrderedOccurrence;
   m_nAvailPages = 0;
   ClearData();
-  if (!m_pPageSetLayoutItemRoot)
-    return;
 
   CXFA_ContainerLayoutItem* pRootLayoutItem = m_pPageSetLayoutItemRoot;
-  if (pRootLayoutItem &&
-      pRootLayoutItem->GetFormNode()->GetPacketType() == XFA_PacketType::Form) {
-    CXFA_Node* pPageSetFormNode = pRootLayoutItem->GetFormNode();
-    pRootLayoutItem->GetFormNode()->GetDocument()->m_pPendingPageSet.clear();
-    if (pPageSetFormNode->HasRemovedChildren()) {
-      XFA_ReleaseLayoutItem(pRootLayoutItem);
-      m_pPageSetLayoutItemRoot = nullptr;
-      pRootLayoutItem = nullptr;
-      pPageSetFormNode = nullptr;
-      m_PageArray.clear();
-    }
-    while (pPageSetFormNode) {
-      CXFA_Node* pNextPageSet =
-          pPageSetFormNode->GetNextSameClassSibling<CXFA_PageSet>(
-              XFA_Element::PageSet);
-      pPageSetFormNode->GetParent()->RemoveChild(pPageSetFormNode, false);
-      pRootLayoutItem->GetFormNode()
-          ->GetDocument()
-          ->m_pPendingPageSet.push_back(pPageSetFormNode);
-      pPageSetFormNode = pNextPageSet;
-    }
+  if (!pRootLayoutItem)
+    return;
+
+  m_pPageSetLayoutItemRoot = nullptr;
+  if (pRootLayoutItem->GetFormNode()->GetPacketType() != XFA_PacketType::Form)
+    return;
+
+  CXFA_Node* pPageSetFormNode = pRootLayoutItem->GetFormNode();
+  pRootLayoutItem->GetFormNode()->GetDocument()->m_pPendingPageSet.clear();
+  if (pPageSetFormNode->HasRemovedChildren()) {
+    XFA_ReleaseLayoutItem(pRootLayoutItem);
+    m_pPageSetLayoutItemRoot = nullptr;
+    m_PageArray.clear();
+    return;
   }
-  pRootLayoutItem = m_pPageSetLayoutItemRoot;
+  while (pPageSetFormNode) {
+    CXFA_Node* pNextPageSet =
+        pPageSetFormNode->GetNextSameClassSibling<CXFA_PageSet>(
+            XFA_Element::PageSet);
+    pPageSetFormNode->GetParent()->RemoveChild(pPageSetFormNode, false);
+    pRootLayoutItem->GetFormNode()
+        ->GetDocument()
+        ->m_pPendingPageSet.push_back(pPageSetFormNode);
+    pPageSetFormNode = pNextPageSet;
+  }
   CXFA_ContainerLayoutItem* pNextLayout = nullptr;
   for (; pRootLayoutItem; pRootLayoutItem = pNextLayout) {
     pNextLayout = ToContainerLayoutItem(pRootLayoutItem->m_pNextSibling);
     SaveLayoutItem(pRootLayoutItem);
     delete pRootLayoutItem;
   }
-  m_pPageSetLayoutItemRoot = nullptr;
 }
