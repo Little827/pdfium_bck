@@ -52,12 +52,14 @@ class CXFA_TextLayout {
                   int32_t iBlock);
   bool IsLoaded() const { return !m_pieceLines.empty(); }
   void Unload();
+
   const std::vector<std::unique_ptr<CXFA_PieceLine>>* GetPieceLines() const {
     return &m_pieceLines;
   }
 
-  bool m_bHasBlock = false;
-  std::vector<int32_t> m_Blocks;
+  bool HasBlock() const { return m_bHasBlock; }
+  void ClearBlocks() { m_Blocks.clear(); }
+  void ResetHasBlock() { m_bHasBlock = false; }
 
  private:
   void GetTextDataNode();
@@ -110,6 +112,8 @@ class CXFA_TextLayout {
   bool Layout(int32_t iBlock);
   int32_t CountBlocks() const;
 
+  std::vector<int32_t> m_Blocks;
+  bool m_bHasBlock = false;
   bool m_bRichText = false;
   bool m_bBlockContinue = true;
   int32_t m_iLines = 0;
