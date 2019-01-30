@@ -968,7 +968,6 @@ CXFA_Node* CXFA_LayoutPageMgr::BreakOverflow(CXFA_Node* pOverflowNode,
 bool CXFA_LayoutPageMgr::ProcessOverflow(CXFA_Node* pFormNode,
                                          CXFA_Node*& pLeaderNode,
                                          CXFA_Node*& pTrailerNode,
-                                         bool bDataMerge,
                                          bool bCreatePage) {
   if (!pFormNode)
     return false;
