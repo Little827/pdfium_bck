@@ -101,14 +101,15 @@
     }                             \
   } while (0)
 
-// TODO(palmer): These are quick hacks to import PartitionAlloc with minimum
-// hassle. Look into pulling in the real DCHECK definition. It might be more
-// than we need, or have more dependencies than we want. In the meantime, this
-// is safe, at the cost of some performance.
-#define DCHECK CHECK
-#define DCHECK_EQ(x, y) CHECK((x) == (y))
-#define DCHECK_IS_ON() true
+// The DCHECK in Chromium is more complicated. Do something simpler here.
+#define DCHECK assert
+#define DCHECK_EQ(x, y) DCHECK((x) == (y))
+#define NOTREACHED() DCHECK(false)
 
-#define NOTREACHED() assert(false)
+#ifndef NDEBUG
+#define DCHECK_IS_ON() 1
+#else
+#define DCHECK_IS_ON() 0
+#endif
 
 #endif  // THIRD_PARTY_BASE_LOGGING_H_
