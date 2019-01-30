@@ -885,10 +885,10 @@ CXFA_Node* CXFA_LayoutPageMgr::ProcessBookendLeaderOrTrailer(
   return pBookendAppendNode;
 }
 
-CXFA_Node* CXFA_LayoutPageMgr::BreakOverflow(CXFA_Node* pOverflowNode,
-                                             CXFA_Node*& pLeaderTemplate,
-                                             CXFA_Node*& pTrailerTemplate,
-                                             bool bCreatePage) {
+bool CXFA_LayoutPageMgr::BreakOverflow(CXFA_Node* pOverflowNode,
+                                       bool bCreatePage,
+                                       CXFA_Node** pLeaderTemplate,
+                                       CXFA_Node** pTrailerTemplate) {
   CXFA_Node* pContainer =
       pOverflowNode->GetContainerParent()->GetTemplateNodeIfExists();
   if (pOverflowNode->GetElementType() == XFA_Element::Break) {
@@ -900,7 +900,7 @@ CXFA_Node* CXFA_LayoutPageMgr::BreakOverflow(CXFA_Node* pOverflowNode,
         pOverflowNode->JSObject()->GetCData(XFA_Attribute::OverflowTrailer);
     if (wsOverflowTarget.IsEmpty() && wsOverflowLeader.IsEmpty() &&
         wsOverflowTrailer.IsEmpty()) {
-      return nullptr;
+      return false;
     }
 
     if (!wsOverflowTarget.IsEmpty() && bCreatePage && !m_bCreateOverFlowPage) {
@@ -923,15 +923,15 @@ CXFA_Node* CXFA_LayoutPageMgr::BreakOverflow(CXFA_Node* pOverflowNode,
       }
     }
     if (!bCreatePage) {
-      pLeaderTemplate = ResolveBreakTarget(pContainer, true, wsOverflowLeader);
-      pTrailerTemplate =
+      *pLeaderTemplate = ResolveBreakTarget(pContainer, true, wsOverflowLeader);
+      *pTrailerTemplate =
           ResolveBreakTarget(pContainer, true, wsOverflowTrailer);
     }
-    return pOverflowNode;
+    return true;
   }
 
   if (pOverflowNode->GetElementType() != XFA_Element::Overflow)
-    return nullptr;
+    return false;
 
   WideString wsOverflowTarget =
       pOverflowNode->JSObject()->GetCData(XFA_Attribute::Target);
@@ -959,18 +959,17 @@ CXFA_Node* CXFA_LayoutPageMgr::BreakOverflow(CXFA_Node* pOverflowNode,
         pOverflowNode->JSObject()->GetCData(XFA_Attribute::Leader);
     WideString wsTrailer =
         pOverflowNode->JSObject()->GetCData(XFA_Attribute::Trailer);
-    pLeaderTemplate = ResolveBreakTarget(pContainer, true, wsLeader);
-    pTrailerTemplate = ResolveBreakTarget(pContainer, true, wsTrailer);
+    *pLeaderTemplate = ResolveBreakTarget(pContainer, true, wsLeader);
+    *pTrailerTemplate = ResolveBreakTarget(pContainer, true, wsTrailer);
   }
-  return pOverflowNode;
+  return true;
 }
 
-bool CXFA_LayoutPageMgr::ProcessOverflow(CXFA_Node* pFormNode,
-                                         CXFA_Node*& pLeaderNode,
-                                         CXFA_Node*& pTrailerNode,
-                                         bool bCreatePage) {
+Optional<CXFA_LayoutPageMgr::OverflowData> CXFA_LayoutPageMgr::ProcessOverflow(
+    CXFA_Node* pFormNode,
+    bool bCreatePage) {
   if (!pFormNode)
-    return false;
+    return {};
 
   CXFA_Node* pLeaderTemplate = nullptr;
   CXFA_Node* pTrailerTemplate = nullptr;
@@ -979,41 +978,39 @@ bool CXFA_LayoutPageMgr::ProcessOverflow(CXFA_Node* pFormNode,
       pFormNode->GetElementType() == XFA_Element::Break) {
     bIsOverflowNode = true;
   }
+  OverflowData overflow_data = {nullptr, nullptr};
   for (CXFA_Node* pCurNode = bIsOverflowNode ? pFormNode
                                              : pFormNode->GetFirstChild();
        pCurNode; pCurNode = pCurNode->GetNextSibling()) {
-    if (BreakOverflow(pCurNode, pLeaderTemplate, pTrailerTemplate,
-                      bCreatePage)) {
+    if (BreakOverflow(pCurNode, bCreatePage, &pLeaderTemplate,
+                      &pTrailerTemplate)) {
       if (bIsOverflowNode)
         pFormNode = pCurNode->GetParent();
 
-      CXFA_Document* pDocument = pCurNode->GetDocument();
-      CXFA_Node* pDataScope = nullptr;
-      if (pLeaderTemplate) {
-        if (!pDataScope)
-          pDataScope = XFA_DataMerge_FindDataScope(pFormNode);
+      if (!pLeaderTemplate && !pTrailerTemplate)
+        return overflow_data;
 
-        pLeaderNode = pDocument->DataMerge_CopyContainer(
+      CXFA_Document* pDocument = pCurNode->GetDocument();
+      CXFA_Node* pDataScope = XFA_DataMerge_FindDataScope(pFormNode);
+      if (pLeaderTemplate) {
+        overflow_data.pLeader = pDocument->DataMerge_CopyContainer(
             pLeaderTemplate, pFormNode, pDataScope, true, true, true);
-        pDocument->DataMerge_UpdateBindingRelations(pLeaderNode);
-        SetLayoutGeneratedNodeFlag(pLeaderNode);
+        pDocument->DataMerge_UpdateBindingRelations(overflow_data.pLeader);
+        SetLayoutGeneratedNodeFlag(overflow_data.pLeader);
       }
       if (pTrailerTemplate) {
-        if (!pDataScope)
-          pDataScope = XFA_DataMerge_FindDataScope(pFormNode);
-
-        pTrailerNode = pDocument->DataMerge_CopyContainer(
+        overflow_data.pTrailer = pDocument->DataMerge_CopyContainer(
             pTrailerTemplate, pFormNode, pDataScope, true, true, true);
-        pDocument->DataMerge_UpdateBindingRelations(pTrailerNode);
-        SetLayoutGeneratedNodeFlag(pTrailerNode);
+        pDocument->DataMerge_UpdateBindingRelations(overflow_data.pTrailer);
+        SetLayoutGeneratedNodeFlag(overflow_data.pTrailer);
       }
-      return true;
+      return overflow_data;
     }
     if (bIsOverflowNode) {
       break;
     }
   }
-  return false;
+  return {};
 }
 
 CXFA_Node* CXFA_LayoutPageMgr::ResolveBookendLeaderOrTrailer(
