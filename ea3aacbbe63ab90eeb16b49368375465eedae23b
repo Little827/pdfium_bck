@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13e42017_360789ac",
+        "filename": "third_party/base/logging.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-30T18:36:51Z",
+      "side": 1,
+      "message": "Copy + pasted from Chromium.",
+      "revId": "ea3aacbbe63ab90eeb16b49368375465eedae23b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
