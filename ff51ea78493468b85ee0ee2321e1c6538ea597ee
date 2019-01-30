@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1548829805 -0800\nnonce ANwvRnCwGlNkYML2gx65pZyv5Vx6Adb3JkQFvW3BiNSjaUegxrSqoURudUGHc/lqASpATuRtePEX\n\n0000000000000000000000000000000000000000 ff51ea78493468b85ee0ee2321e1c6538ea597ee refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxRRG0ACgkQqzYtYVpm\n/XuQdwf/cN0S0INqYIGHYmjtmMnP6j/uCyY4JHQlHlVwcctY3c+K4MzojEntsd+0\nYya1u4+EaPqeSx9Eps34VinqOL1ShORW5BqvfzWsysb87K881gXI6jcwnGrxPu92\ndwCaaXMPL/oFLMM0fP/JPIZUiYudgipUC73SJLnTkUl+bCWwEiVqE85w12w4bFOn\nO9RhMTyOCuGF6/hzw4OMb/xUOo11YiBsER4LM20GbkbqBQV2g951KXxSZVgFz9Ui\ntGKPe7iIPt4kGGhFOA2fgFKuXdwwbi7ZMUiyF606osd2LL5LGy6VC2XCWFC8znNv\npy2A24yUAqWfPEJ4hs2DeXQIexOcOg\u003d\u003d\n\u003dmjd8\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1da40851_bdadbf9f",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T19:27:47Z",
+      "side": 1,
+      "message": "I\u0027m confused.  Once we enter this block on the old code, were going to return at old libe 386.  Here we loop?",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 387,
+        "endChar": 30
+      },
+      "revId": "ff51ea78493468b85ee0ee2321e1c6538ea597ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15c1ef13_c18839c0",
+        "filename": "xfa/fxfa/cxfa_textlayout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T19:27:47Z",
+      "side": 1,
+      "message": "nit: maybe move to line 121 (scalars first OCD)",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 32
+      },
+      "revId": "ff51ea78493468b85ee0ee2321e1c6538ea597ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
