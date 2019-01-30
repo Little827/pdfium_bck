@@ -291,19 +291,23 @@ std::vector<float> GetHeightForContentAreas(const CXFA_LayoutItem* pItem) {
 
 bool ContentAreasFitInPageAreas(const CXFA_Node* pNode,
                                 const std::vector<float>& rgUsedHeights) {
-  int32_t iCurContentAreaIndex = -1;
+  size_t nCurContentAreaIndex = 0;
   for (const CXFA_Node* pContentAreaNode = pNode->GetFirstChild();
        pContentAreaNode;
        pContentAreaNode = pContentAreaNode->GetNextSibling()) {
     if (pContentAreaNode->GetElementType() != XFA_Element::ContentArea)
       continue;
 
-    iCurContentAreaIndex++;
+    if (nCurContentAreaIndex >= rgUsedHeights.size())
+      return false;
+
     CXFA_Measurement measure =
         pContentAreaNode->JSObject()->GetMeasure(XFA_Attribute::H);
     float fHeight = measure.ToUnit(XFA_Unit::Pt) + kXFALayoutPrecision;
-    if (rgUsedHeights[iCurContentAreaIndex] > fHeight)
+    if (rgUsedHeights[nCurContentAreaIndex] > fHeight)
       return false;
+
+    ++nCurContentAreaIndex;
   }
   return true;
 }
