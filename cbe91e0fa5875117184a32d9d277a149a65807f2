@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1548829904 -0800\nnonce ANwvRnBLH66aU/pE2CiPpPPuSlcxgRKrZKHOVA2YJ9jDjWT8U8xdW46irShUJaDKrKMVuNnSwz1E\n\n0000000000000000000000000000000000000000 cbe91e0fa5875117184a32d9d277a149a65807f2 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dfix-indexing-confusion-in-cxfa-textlayout\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxRRNAACgkQqzYtYVpm\n/XsmzQf/YeZoXoP4UomWgpIqqSbTh2uEFB8Y6l3Im8tok+/OSIPyJcpR1LMLncsS\nbN5xMZ7fXDZoCx1H0gqWecYf/0aS77vUCb8BxDdZOBuT3LyhuY9q0TqUjAB7ODw3\ndVtGJ7j2dv4NYpo0s2dc5Zt36TvUbcVx7vOTFOl583eqieDE6+oXoY7hnx5LIz/k\nk7uSInoDa5hXQ7M2uQOeOSH7t+PkOk+sI9WU/KiKVnoJwJJWsMg00bvcqz7Xz8xY\nFXQHVBCckbl9upTWZ3fdE8cfHE5tyMli10H7bm+xwby8Oe5l0Eg3qaiVzKsWg1Bg\nW2xY/tUFWYW7KhGoSdjLOQp0Oie41g\u003d\u003d\n\u003dbiQ8\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
