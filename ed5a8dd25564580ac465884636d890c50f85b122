@@ -1,4 +1,120 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1548807216 -0800\nnonce ANwvRnALcGhny4gElWR0+f1c3DueRlfEMJA+MtF51Fi1Zbhi/WUWiEZc/yprGmU1X8wsyO9+UFWy\n\n0000000000000000000000000000000000000000 ed5a8dd25564580ac465884636d890c50f85b122 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dbreak-off-part-of-cxfa-layoutpagemgr\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxQ7DAACgkQqzYtYVpm\n/XtcvAf+Op0PY0hyLFV6Z9+4Wi5KToQkSLHNRA+m32BJHpJP+nvMuCd+sdLbmLtG\n9p058v4imdZ6/oEYAPB+bW0z5hP3c1ogo/eqZ2WIL1WJlcVHUDQ5A3+AtByEm/wp\n1bF/0XtgQ4EvX1zajmQgVZyUFVZgcwMis6V2qP6vDvgb56a2+ste/sCep9rr3teu\ne6EM6tYZgYarVUOff3jHJ0uT9RhQP5YVlOIfnBKCIW3FJlo2kTWGGRtkXsPC57QD\nd0pCp5RatmVfCSMQ28JGAUKFTuA1FjLhOcJcRDNqVzJ2eQVFHwjogfwTn+C6b0iy\nvwKOfBK70ryVZ0/Wgy5TyF5XeoLhMw\u003d\u003d\n\u003d2SQw\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "932e2a15_dd0e8ef0",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T17:51:41Z",
+      "side": 1,
+      "message": "note: maybe method of CXFA_ContainerLayoutItem someday?",
+      "range": {
+        "startLine": 256,
+        "startChar": 37,
+        "endLine": 256,
+        "endChar": 77
+      },
+      "revId": "ed5a8dd25564580ac465884636d890c50f85b122",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dad6e27_e933be49",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T17:51:41Z",
+      "side": 1,
+      "message": "follow-up: kinda wish this class had getters like Get{FirstChild,NextSibilig}()",
+      "range": {
+        "startLine": 260,
+        "startChar": 66,
+        "endLine": 260,
+        "endChar": 79
+      },
+      "revId": "ed5a8dd25564580ac465884636d890c50f85b122",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd6f150_db8db093",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T17:51:41Z",
+      "side": 1,
+      "message": "nit: maybe set to 0, and make size_t ?",
+      "range": {
+        "startLine": 296,
+        "startChar": 31,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "ed5a8dd25564580ac465884636d890c50f85b122",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b8ae5bd_879df2cd",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T17:51:41Z",
+      "side": 1,
+      "message": "... then  lose the increment here.",
+      "range": {
+        "startLine": 303,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 27
+      },
+      "revId": "ed5a8dd25564580ac465884636d890c50f85b122",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f45a98_43ed7c46",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T17:51:41Z",
+      "side": 1,
+      "message": "... and post-increment here or just before end of loop?",
+      "range": {
+        "startLine": 307,
+        "startChar": 22,
+        "endLine": 307,
+        "endChar": 42
+      },
+      "revId": "ed5a8dd25564580ac465884636d890c50f85b122",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }

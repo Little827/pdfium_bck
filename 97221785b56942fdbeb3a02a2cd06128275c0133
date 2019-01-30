@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b33d265_90c25d35",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2004,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-30T17:51:41Z",
+      "side": 0,
+      "message": "Actually, I think this CL fixes the issue noted in the previous CL with return from here being wrong ...",
+      "range": {
+        "startLine": 2004,
+        "startChar": 5,
+        "endLine": 2004,
+        "endChar": 13
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
