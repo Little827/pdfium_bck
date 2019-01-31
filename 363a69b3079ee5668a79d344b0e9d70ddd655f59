@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1548913289 -0800\nnonce ANwvRnBM5OmPCMpybxBhV901S9nIYfWGsigOkZtcVciYL5kI7eLG6X8OHylrz/LIsKpRAPfoQo3s\n\n0000000000000000000000000000000000000000 363a69b3079ee5668a79d344b0e9d70ddd655f59 refs/for/refs/heads/master%notify\u003dNONE,m\u003dfix,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxSiokACgkQqzYtYVpm\n/Xs1Dgf/d0PM3RUUTlGADx/RXUNkShWT0wMSRCrftw0izhYWZkL85Oh0DmSByCIE\no6dVb0ijkvtItvx4S1y71jddBkGPm6ue96wy3R29MaHgyy1MyjLkHsOgK3TpINrs\nj01y8VRU43sN7/jQrgjLWwrY8qVFDJmEYG9OeFbynMXCaKUdC5pqKwUy0Vab+cZn\nwK1tbKpyHnU/YbUcrmbSNtTWhe4bzJUztO4bKcXcTfdrh5WVd42h0MzAgVjNXZai\nfM7jGEKvRvrG3UcANwXmzwExrcYRQmwndu1EDnEpLbOruononeqogKw1GTqHmq06\nQjVn0pWqMyz0bOYqhboSvipdb7dCaA\u003d\u003d\n\u003dF+L4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "631354eb_712c8c3f",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-01-31T18:57:34Z",
+      "side": 1,
+      "message": "Break at end of loop feels funny. once we get to line 373, we\u0027re not going to loop anymore, right? (pls doublecheck).  In which case this can all move out of loop body.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 10
+      },
+      "revId": "363a69b3079ee5668a79d344b0e9d70ddd655f59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
