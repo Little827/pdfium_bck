@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "e69733e4_e12d5945",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-31T05:41:59Z",
+      "side": 1,
+      "message": "Missing a break. We should break out of the loop to return |fCalcHeight|.",
+      "parentUuid": "1da40851_bdadbf9f",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 387,
+        "endChar": 30
+      },
+      "revId": "ff51ea78493468b85ee0ee2321e1c6538ea597ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15c1ef13_c18839c0",
         "filename": "xfa/fxfa/cxfa_textlayout.h",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "ff51ea78493468b85ee0ee2321e1c6538ea597ee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "862cecc9_74149fb7",
+        "filename": "xfa/fxfa/cxfa_textlayout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-01-31T05:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c1ef13_c18839c0",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 32
+      },
+      "revId": "ff51ea78493468b85ee0ee2321e1c6538ea597ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
