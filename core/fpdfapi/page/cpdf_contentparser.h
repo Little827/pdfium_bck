@@ -20,6 +20,7 @@ class CPDF_AllStates;
 class CPDF_Form;
 class CPDF_Page;
 class CPDF_PageObjectHolder;
+class CPDF_Stream;
 class CPDF_StreamAcc;
 class CPDF_Type3Char;
 
@@ -52,6 +53,10 @@ class CPDF_ContentParser {
   Stage PrepareContent();
   Stage Parse();
   Stage CheckClip();
+
+  void HandlePageContentStream(CPDF_Stream* pStream);
+  bool HandlePageContent(CPDF_Object* pContent);
+  void HandlePageContentFailure();
 
   Stage m_CurrentStage;
   UnownedPtr<CPDF_PageObjectHolder> const m_pObjectHolder;
