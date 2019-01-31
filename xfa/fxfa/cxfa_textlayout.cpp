@@ -358,14 +358,22 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
   }
 
   int32_t iCount = pdfium::CollectionSize<int32_t>(m_pLoader->lineHeights);
+  if (iLineIndex < 0 || iLineIndex >= iCount)
+    return fCalcHeight;
+
+  if (m_pLoader->lineHeights[iLineIndex] - fContentAreaHeight > 0.001)
+    return 0;
+
   int32_t i = 0;
   for (i = iLineIndex; i < iCount; i++) {
     float fLineHeight = m_pLoader->lineHeights[i];
-    if (i == iLineIndex && fLineHeight - fContentAreaHeight > 0.001)
-      return 0;
+    if (fLinePos + fLineHeight - fContentAreaHeight > 0.001)
+      break;
 
-    if (fLinePos + fLineHeight - fContentAreaHeight > 0.001) {
-      if (iBlockCount >= (iBlockIndex + 1) * 2) {
+    fLinePos += fLineHeight;
+  }
+  if (i != iCount) {
+    if (iBlockCount >= (iBlockIndex + 1) * 2) {
         m_Blocks[iBlockIndex * 2] = iLineIndex;
         m_Blocks[iBlockIndex * 2 + 1] = i - iLineIndex;
       } else {
@@ -387,7 +395,6 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
       }
       return fLinePos;
     }
-    fLinePos += fLineHeight;
   }
   return fCalcHeight;
 }
