@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a502a320_e6a95413",
+        "filename": "fpdfsdk/cpdfsdk_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-01T22:40:21Z",
+      "side": 0,
+      "message": "Spec says bit position 26, so this should be 1 \u003c\u003c 25. RichText above is also bit position 26.",
+      "revId": "f7c403cea04c5e2238da67fb7ee7271fa2acbc34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
