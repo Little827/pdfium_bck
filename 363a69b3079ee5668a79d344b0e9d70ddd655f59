@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "993abba6_b2853723",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-01T00:26:51Z",
+      "side": 1,
+      "message": "nit: while we\u0027re at it, this can\u0027t happen given the assert in the ctor.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "363a69b3079ee5668a79d344b0e9d70ddd655f59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d5bb3e4_d6352657",
         "filename": "xfa/fxfa/cxfa_textlayout.cpp",
         "patchSetId": 2
