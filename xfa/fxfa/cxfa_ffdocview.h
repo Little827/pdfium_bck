@@ -7,6 +7,7 @@
 #ifndef XFA_FXFA_CXFA_FFDOCVIEW_H_
 #define XFA_FXFA_CXFA_FFDOCVIEW_H_
 
+#include <list>
 #include <memory>
 #include <vector>
 
@@ -122,7 +123,7 @@ class CXFA_FFDocView {
   std::vector<CXFA_Node*> m_ValidateNodes;
   std::vector<CXFA_Node*> m_CalculateNodes;
   std::vector<CXFA_BindItems*> m_BindItems;
-  std::vector<CXFA_Node*> m_NewAddedNodes;
+  std::list<CXFA_Node*> m_NewAddedNodes;  // Use list for iterator stability.
   std::vector<CXFA_Node*> m_IndexChangedSubforms;
   XFA_DOCVIEW_LAYOUTSTATUS m_iStatus = XFA_DOCVIEW_LAYOUTSTATUS_None;
   int32_t m_iLock = 0;
