@@ -221,13 +221,13 @@ void CPDF_AnnotList::DisplayPass(CPDF_Page* pPage,
       continue;
 
     uint32_t annot_flags = pAnnot->GetFlags();
-    if (annot_flags & ANNOTFLAG_HIDDEN)
+    if (annot_flags & CPDF_Annot::Flag::kHidden)
       continue;
 
-    if (bPrinting && (annot_flags & ANNOTFLAG_PRINT) == 0)
+    if (bPrinting && (annot_flags & CPDF_Annot::Flag::kPrint) == 0)
       continue;
 
-    if (!bPrinting && (annot_flags & ANNOTFLAG_NOVIEW))
+    if (!bPrinting && (annot_flags & CPDF_Annot::Flag::kNoView))
       continue;
 
     if (pOptions) {
@@ -265,11 +265,11 @@ void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
                                    uint32_t dwAnnotFlags,
                                    CPDF_RenderOptions* pOptions,
                                    FX_RECT* pClipRect) {
-  if (dwAnnotFlags & ANNOTFLAG_INVISIBLE) {
+  if (dwAnnotFlags & CPDF_Annot::Flag::kInvisible) {
     DisplayPass(pPage, pDevice, pContext, bPrinting, pUser2Device, false,
                 pOptions, pClipRect);
   }
-  if (dwAnnotFlags & ANNOTFLAG_HIDDEN) {
+  if (dwAnnotFlags & CPDF_Annot::Flag::kHidden) {
     DisplayPass(pPage, pDevice, pContext, bPrinting, pUser2Device, true,
                 pOptions, pClipRect);
   }
@@ -281,8 +281,9 @@ void CPDF_AnnotList::DisplayAnnots(CPDF_Page* pPage,
                                    const CFX_Matrix* pMatrix,
                                    bool bShowWidget,
                                    CPDF_RenderOptions* pOptions) {
-  uint32_t dwAnnotFlags = bShowWidget ? ANNOTFLAG_INVISIBLE | ANNOTFLAG_HIDDEN
-                                      : ANNOTFLAG_INVISIBLE;
+  uint32_t dwAnnotFlags =
+      bShowWidget ? CPDF_Annot::Flag::kInvisible | CPDF_Annot::Flag::kHidden
+                  : CPDF_Annot::Flag::kInvisible;
   DisplayAnnots(pPage, nullptr, pContext, bPrinting, pMatrix, dwAnnotFlags,
                 pOptions, nullptr);
 }

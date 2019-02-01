@@ -440,12 +440,12 @@ bool CPDFSDK_InteractiveForm::DoAction_Hide(const CPDF_Action& action) {
 
       if (CPDFSDK_Widget* pWidget = GetWidget(pControl)) {
         uint32_t nFlags = pWidget->GetFlags();
-        nFlags &= ~ANNOTFLAG_INVISIBLE;
-        nFlags &= ~ANNOTFLAG_NOVIEW;
+        nFlags &= ~CPDF_Annot::Flag::kInvisible;
+        nFlags &= ~CPDF_Annot::Flag::kNoView;
         if (bHide)
-          nFlags |= ANNOTFLAG_HIDDEN;
+          nFlags |= CPDF_Annot::Flag::kHidden;
         else
-          nFlags &= ~ANNOTFLAG_HIDDEN;
+          nFlags &= ~CPDF_Annot::Flag::kHidden;
         pWidget->SetFlags(nFlags);
         pWidget->GetPageView()->UpdateView(pWidget);
         bChanged = true;

@@ -150,26 +150,26 @@ bool SetWidgetDisplayStatus(CPDFSDK_Widget* pWidget, int value) {
   uint32_t dwFlag = pWidget->GetFlags();
   switch (value) {
     case 0:
-      dwFlag &= ~ANNOTFLAG_INVISIBLE;
-      dwFlag &= ~ANNOTFLAG_HIDDEN;
-      dwFlag &= ~ANNOTFLAG_NOVIEW;
-      dwFlag |= ANNOTFLAG_PRINT;
+      dwFlag &= ~CPDF_Annot::Flag::kInvisible;
+      dwFlag &= ~CPDF_Annot::Flag::kHidden;
+      dwFlag &= ~CPDF_Annot::Flag::kNoView;
+      dwFlag |= CPDF_Annot::Flag::kPrint;
       break;
     case 1:
-      dwFlag &= ~ANNOTFLAG_INVISIBLE;
-      dwFlag &= ~ANNOTFLAG_NOVIEW;
-      dwFlag |= (ANNOTFLAG_HIDDEN | ANNOTFLAG_PRINT);
+      dwFlag &= ~CPDF_Annot::Flag::kInvisible;
+      dwFlag &= ~CPDF_Annot::Flag::kNoView;
+      dwFlag |= (CPDF_Annot::Flag::kHidden | CPDF_Annot::Flag::kPrint);
       break;
     case 2:
-      dwFlag &= ~ANNOTFLAG_INVISIBLE;
-      dwFlag &= ~ANNOTFLAG_PRINT;
-      dwFlag &= ~ANNOTFLAG_HIDDEN;
-      dwFlag &= ~ANNOTFLAG_NOVIEW;
+      dwFlag &= ~CPDF_Annot::Flag::kInvisible;
+      dwFlag &= ~CPDF_Annot::Flag::kPrint;
+      dwFlag &= ~CPDF_Annot::Flag::kHidden;
+      dwFlag &= ~CPDF_Annot::Flag::kNoView;
       break;
     case 3:
-      dwFlag |= ANNOTFLAG_NOVIEW;
-      dwFlag |= ANNOTFLAG_PRINT;
-      dwFlag &= ~ANNOTFLAG_HIDDEN;
+      dwFlag |= CPDF_Annot::Flag::kNoView;
+      dwFlag |= CPDF_Annot::Flag::kPrint;
+      dwFlag &= ~CPDF_Annot::Flag::kHidden;
       break;
   }
 
@@ -1147,11 +1147,13 @@ CJS_Result CJS_Field::get_display(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   uint32_t dwFlag = pWidget->GetFlags();
-  if (ANNOTFLAG_INVISIBLE & dwFlag || ANNOTFLAG_HIDDEN & dwFlag)
+  if (CPDF_Annot::Flag::kInvisible & dwFlag ||
+      CPDF_Annot::Flag::kHidden & dwFlag) {
     return CJS_Result::Success(pRuntime->NewNumber(1));
+  }
 
-  if (ANNOTFLAG_PRINT & dwFlag) {
-    if (ANNOTFLAG_NOVIEW & dwFlag)
+  if (CPDF_Annot::Flag::kPrint & dwFlag) {
+    if (CPDF_Annot::Flag::kNoView & dwFlag)
       return CJS_Result::Success(pRuntime->NewNumber(3));
     return CJS_Result::Success(pRuntime->NewNumber(0));
   }
@@ -1339,8 +1341,9 @@ CJS_Result CJS_Field::get_hidden(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   uint32_t dwFlags = pWidget->GetFlags();
-  return CJS_Result::Success(pRuntime->NewBoolean(
-      ANNOTFLAG_INVISIBLE & dwFlags || ANNOTFLAG_HIDDEN & dwFlags));
+  return CJS_Result::Success(
+      pRuntime->NewBoolean(CPDF_Annot::Flag::kInvisible & dwFlags ||
+                           CPDF_Annot::Flag::kHidden & dwFlags));
 }
 
 CJS_Result CJS_Field::set_hidden(CJS_Runtime* pRuntime,
@@ -1566,7 +1569,7 @@ CJS_Result CJS_Field::get_print(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   return CJS_Result::Success(
-      pRuntime->NewBoolean(!!(pWidget->GetFlags() & ANNOTFLAG_PRINT)));
+      pRuntime->NewBoolean(!!(pWidget->GetFlags() & CPDF_Annot::Flag::kPrint)));
 }
 
 CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
@@ -1587,9 +1590,9 @@ CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
                 pForm->GetWidget(pFormField->GetControl(i))) {
           uint32_t dwFlags = pWidget->GetFlags();
           if (pRuntime->ToBoolean(vp))
-            dwFlags |= ANNOTFLAG_PRINT;
+            dwFlags |= CPDF_Annot::Flag::kPrint;
           else
-            dwFlags &= ~ANNOTFLAG_PRINT;
+            dwFlags &= ~CPDF_Annot::Flag::kPrint;
 
           if (dwFlags != pWidget->GetFlags()) {
             pWidget->SetFlags(dwFlags);
@@ -1612,9 +1615,9 @@ CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
       if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
         uint32_t dwFlags = pWidget->GetFlags();
         if (pRuntime->ToBoolean(vp))
-          dwFlags |= ANNOTFLAG_PRINT;
+          dwFlags |= CPDF_Annot::Flag::kPrint;
         else
-          dwFlags &= ~ANNOTFLAG_PRINT;
+          dwFlags &= ~CPDF_Annot::Flag::kPrint;
 
         if (dwFlags != pWidget->GetFlags()) {
           pWidget->SetFlags(dwFlags);

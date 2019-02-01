@@ -218,8 +218,9 @@ BorderStyle CPDFSDK_BAAnnot::GetBorderStyle() const {
 
 bool CPDFSDK_BAAnnot::IsVisible() const {
   uint32_t nFlags = GetFlags();
-  return !((nFlags & ANNOTFLAG_INVISIBLE) || (nFlags & ANNOTFLAG_HIDDEN) ||
-           (nFlags & ANNOTFLAG_NOVIEW));
+  return !((nFlags & CPDF_Annot::Flag::kInvisible) ||
+           (nFlags & CPDF_Annot::Flag::kHidden) ||
+           (nFlags & CPDF_Annot::Flag::kNoView));
 }
 
 CPDF_Action CPDFSDK_BAAnnot::GetAction() const {

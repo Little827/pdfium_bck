@@ -61,15 +61,15 @@ CJS_Result CJS_Annot::set_hidden(CJS_Runtime* pRuntime,
 
   uint32_t flags = pBAAnnot->GetFlags();
   if (bHidden) {
-    flags |= ANNOTFLAG_HIDDEN;
-    flags |= ANNOTFLAG_INVISIBLE;
-    flags |= ANNOTFLAG_NOVIEW;
-    flags &= ~ANNOTFLAG_PRINT;
+    flags |= CPDF_Annot::Flag::kHidden;
+    flags |= CPDF_Annot::Flag::kInvisible;
+    flags |= CPDF_Annot::Flag::kNoView;
+    flags &= ~CPDF_Annot::Flag::kPrint;
   } else {
-    flags &= ~ANNOTFLAG_HIDDEN;
-    flags &= ~ANNOTFLAG_INVISIBLE;
-    flags &= ~ANNOTFLAG_NOVIEW;
-    flags |= ANNOTFLAG_PRINT;
+    flags &= ~CPDF_Annot::Flag::kHidden;
+    flags &= ~CPDF_Annot::Flag::kInvisible;
+    flags &= ~CPDF_Annot::Flag::kNoView;
+    flags |= CPDF_Annot::Flag::kPrint;
   }
   pBAAnnot->SetFlags(flags);
   return CJS_Result::Success();

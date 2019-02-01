@@ -102,14 +102,14 @@ int ParserAnnots(CPDF_Document* pSourceDoc,
       continue;
 
     int nAnnotFlag = pAnnotDict->GetIntegerFor("F");
-    if (nAnnotFlag & ANNOTFLAG_HIDDEN)
+    if (nAnnotFlag & CPDF_Annot::Flag::kHidden)
       continue;
 
     bool bParseStream;
     if (nUsage == FLAT_NORMALDISPLAY)
-      bParseStream = !(nAnnotFlag & ANNOTFLAG_INVISIBLE);
+      bParseStream = !(nAnnotFlag & CPDF_Annot::Flag::kInvisible);
     else
-      bParseStream = !!(nAnnotFlag & ANNOTFLAG_PRINT);
+      bParseStream = !!(nAnnotFlag & CPDF_Annot::Flag::kPrint);
     if (bParseStream)
       ParserStream(pPageDic, pAnnotDict, pRectArray, pObjectArray);
   }
