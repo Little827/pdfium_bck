@@ -313,20 +313,25 @@ float CXFA_TextLayout::StartLayout(float fWidth) {
   return szDef.width;
 }
 
-float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
-                                float fCalcHeight,
-                                float fContentAreaHeight,
-                                float fTextHeight) {
+float CXFA_TextLayout::DoLayout(float fTextHeight) {
+  if (!m_pLoader)
+    return fTextHeight;
+
+  UpdateLoaderHeight(fTextHeight);
+  return fTextHeight;
+}
+
+float CXFA_TextLayout::DoSplitLayout(int32_t iBlockIndex,
+                                     float fCalcHeight,
+                                     float fTextHeight) {
   ASSERT(iBlockIndex >= 0);
 
   if (!m_pLoader)
     return fCalcHeight;
 
-  m_pLoader->fHeight = fTextHeight;
-  if (m_pLoader->fHeight < 0)
-    m_pLoader->fHeight = GetLayoutHeight();
+  UpdateLoaderHeight(fTextHeight);
 
-  if (fContentAreaHeight < 0)
+  if (fCalcHeight < 0)
     return fCalcHeight;
 
   m_bHasBlock = true;
@@ -344,36 +349,35 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
 
   int32_t iBlockCount = pdfium::CollectionSize<int32_t>(m_Blocks);
   float fLinePos = m_pLoader->fStartLineOffset;
+  std::vector<CXFA_BlockHeight>& block_heights = m_pLoader->blockHeights;
   int32_t iLineIndex = 0;
   if (iBlockCount > 0) {
-    if (iBlockCount >= iBlockIndex + 1) {
+    if (iBlockIndex < iBlockCount)
       iLineIndex = m_Blocks[iBlockIndex].iIndex;
-    } else {
-      iLineIndex = GetNextIndexForLastBlockData();
-    }
-    if (!m_pLoader->blockHeights.empty()) {
+    else
+      iLineIndex = GetNextIndexFromLastBlockData();
+    if (!block_heights.empty()) {
       for (int32_t i = 0; i < iBlockIndex; i++)
-        fLinePos -= m_pLoader->blockHeights[i].fHeight;
+        fLinePos -= block_heights[i].fHeight;
     }
   }
 
-  int32_t iCount = pdfium::CollectionSize<int32_t>(m_pLoader->lineHeights);
-  if (iLineIndex < 0 || iLineIndex >= iCount)
+  const std::vector<float>& line_heights = m_pLoader->lineHeights;
+  int32_t iLineCount = pdfium::CollectionSize<int32_t>(line_heights);
+  if (iLineIndex < 0 || iLineIndex >= iLineCount)
     return fCalcHeight;
 
-  if (m_pLoader->lineHeights[iLineIndex] - fContentAreaHeight >
-      kHeightTolerance) {
+  if (line_heights[iLineIndex] - fCalcHeight > kHeightTolerance)
     return 0;
-  }
 
-  for (int32_t i = iLineIndex; i < iCount; ++i) {
-    float fLineHeight = m_pLoader->lineHeights[i];
-    if (fLinePos + fLineHeight - fContentAreaHeight <= kHeightTolerance) {
+  for (int32_t i = iLineIndex; i < iLineCount; ++i) {
+    float fLineHeight = line_heights[i];
+    if (fLinePos + fLineHeight - fCalcHeight <= kHeightTolerance) {
       fLinePos += fLineHeight;
       continue;
     }
 
-    if (iBlockCount >= iBlockIndex + 1)
+    if (iBlockIndex < iBlockCount)
       m_Blocks[iBlockIndex] = {iLineIndex, i - iLineIndex};
     else
       m_Blocks.push_back({iLineIndex, i - iLineIndex});
@@ -384,12 +388,11 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
     if (fCalcHeight > fLinePos)
       return fCalcHeight;
 
-    if (iBlockIndex <
-            pdfium::CollectionSize<int32_t>(m_pLoader->blockHeights) &&
-        m_pLoader->blockHeights[iBlockIndex].iBlockIndex == iBlockIndex) {
-      m_pLoader->blockHeights[iBlockIndex].fHeight = fCalcHeight;
+    if (iBlockIndex < pdfium::CollectionSize<int32_t>(block_heights) &&
+        block_heights[iBlockIndex].iBlockIndex == iBlockIndex) {
+      block_heights[iBlockIndex].fHeight = fCalcHeight;
     } else {
-      m_pLoader->blockHeights.push_back({iBlockIndex, fCalcHeight});
+      block_heights.push_back({iBlockIndex, fCalcHeight});
     }
     return fCalcHeight;
   }
@@ -401,8 +404,14 @@ int32_t CXFA_TextLayout::CountBlocks() const {
   return iCount > 0 ? iCount : 1;
 }
 
-int32_t CXFA_TextLayout::GetNextIndexForLastBlockData() const {
+int32_t CXFA_TextLayout::GetNextIndexFromLastBlockData() const {
   return m_Blocks.back().iIndex + m_Blocks.back().iLength;
+}
+
+void CXFA_TextLayout::UpdateLoaderHeight(float fTextHeight) {
+  m_pLoader->fHeight = fTextHeight;
+  if (m_pLoader->fHeight < 0)
+    m_pLoader->fHeight = GetLayoutHeight();
 }
 
 CFX_SizeF CXFA_TextLayout::CalcSize(const CFX_SizeF& minSize,
@@ -550,7 +559,7 @@ void CXFA_TextLayout::ItemBlocks(const CFX_RectF& rtText, int32_t iBlockIndex) {
     } else {
       fLinePos = 0;
     }
-    iLineIndex = GetNextIndexForLastBlockData();
+    iLineIndex = GetNextIndexFromLastBlockData();
   }
 
   int32_t i = 0;
