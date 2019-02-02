@@ -352,7 +352,9 @@ float CXFA_TextLayout::DoLayout(int32_t iBlockIndex,
       iLineIndex = GetNextIndexForLastBlockData();
     }
     if (!m_pLoader->blockHeights.empty()) {
-      for (int32_t i = 0; i < iBlockIndex; i++)
+      int32_t iHeightCount =
+          pdfium::CollectionSize<int32_t>(m_pLoader->blockHeights);
+      for (int32_t i = 0; i < std::min(iBlockIndex, iHeightCount); ++i)
         fLinePos -= m_pLoader->blockHeights[i].fHeight;
     }
   }
