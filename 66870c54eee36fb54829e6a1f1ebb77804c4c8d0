@@ -16,6 +16,24 @@
       "revId": "66870c54eee36fb54829e6a1f1ebb77804c4c8d0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ef4fa8c_7405ca60",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-02T00:11:44Z",
+      "side": 1,
+      "message": "Actually, yes, unlike say a unique_ptr, a std::moved() vector is technically in an unspecified state and has to be made sane before using it again. One of those C++ gotchas, where I wish they forced this to be empty.",
+      "parentUuid": "40b4e65c_25ce17f7",
+      "revId": "66870c54eee36fb54829e6a1f1ebb77804c4c8d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
