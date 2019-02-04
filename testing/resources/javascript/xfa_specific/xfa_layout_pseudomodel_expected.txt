@@ -1,0 +1,3 @@
+xfa.host says: property ready is true
+xfa.host says: expected error setting ready is Error: Unable to set ready value.
+xfa.host says: finished testing methods
