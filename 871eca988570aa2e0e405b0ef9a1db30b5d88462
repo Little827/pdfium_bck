@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acc08715_038990e0",
+        "filename": "xfa/fwl/cfwl_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-04T19:45:04Z",
+      "side": 1,
+      "message": "The message is \"The value you entered for Text Field is invalid.\" When I open email_recommended.pdf in Acrobat Reader, I don\u0027t get that message. It\u0027s not obvious if Reader is suppressing the message box, or if JS is being executed in a different manner.",
+      "revId": "871eca988570aa2e0e405b0ef9a1db30b5d88462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
