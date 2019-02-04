@@ -38,7 +38,7 @@ class CFWLEditEmbedderTest : public XFAJSEmbedderTest {
 
 TEST_F(CFWLEditEmbedderTest, Trivial) {
   CreateAndInitializeFormPDF("xfa/email_recommended.pdf");
-  ASSERT_EQ(0u, delegate().GetAlerts().size());
+  ASSERT_EQ(1u, delegate().GetAlerts().size());
 }
 
 TEST_F(CFWLEditEmbedderTest, LeftClickMouseSelection) {
