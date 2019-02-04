@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adc75a38_3a7ff4e7",
+        "filename": "testing/resources/javascript/property_test_helpers.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-04T22:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e6b4d59_2aeaf7ae",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "bfdbd73b0525c22dc4f4bbd0c1b652382e21ec3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
