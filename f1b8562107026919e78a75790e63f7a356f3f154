@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3f83709_3ed66052",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-04T23:37:59Z",
+      "side": 0,
+      "message": "Always true since line 567 now does an early return.",
+      "range": {
+        "startLine": 573,
+        "startChar": 50,
+        "endLine": 573,
+        "endChar": 58
+      },
+      "revId": "f1b8562107026919e78a75790e63f7a356f3f154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd92a82_c4566113",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-04T23:37:59Z",
+      "side": 0,
+      "message": "Always true due to line 545.",
+      "range": {
+        "startLine": 573,
+        "startChar": 6,
+        "endLine": 573,
+        "endChar": 22
+      },
+      "revId": "f1b8562107026919e78a75790e63f7a356f3f154",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
