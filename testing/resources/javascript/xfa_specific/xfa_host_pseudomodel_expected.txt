@@ -1,0 +1,23 @@
+xfa.host says: property appType is Exchange
+xfa.host says: expected error setting appType is Error: Invalid property set operation.
+xfa.host says: property calculationsEnabled is true
+xfa.host says: property calculationsEnabled was settable as expected
+xfa.host says: property currentPage is -1
+xfa.host says: property currentPage was settable as expected
+xfa.host says: property language is 
+xfa.host says: expected error setting language is Error: Unable to set language value.
+xfa.host says: property name is Acrobat
+xfa.host says: expected error setting name is Error: Invalid property set operation.
+xfa.host says: property numPages is 2
+xfa.host says: expected error setting numPages is Error: Unable to set numPages value.
+xfa.host says: property platform is 
+xfa.host says: expected error setting platform is Error: Unable to set platform value.
+xfa.host says: property title is 
+xfa.host says: property title was settable as expected
+xfa.host says: property validationsEnabled is true
+xfa.host says: property validationsEnabled was settable as expected
+xfa.host says: property variation is Full
+xfa.host says: expected error setting variation is Error: Unable to set variation value.
+xfa.host says: property version is 11
+xfa.host says: expected error setting version is Error: Unable to set version value.
+BEEP!!! 4
