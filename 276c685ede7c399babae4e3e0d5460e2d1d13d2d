@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549326012 -0800\nnonce ANwvRnCErLM9+kOV0Zj01ty04onKrz98erTedV47EbL0b2XPMJA+o5yc7HrzBY+yb4CWVNN7ZjTD\n\n0000000000000000000000000000000000000000 276c685ede7c399babae4e3e0d5460e2d1d13d2d refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxY1rwACgkQqzYtYVpm\n/Xv7ogf/dWrUUAQE1Zv8musXf3U9YpwAjXhq27kGU18lO0aNBIdwDIoBpq7B1xqL\nUQaGEY+q42t8u4LY6uHrUm1BocJoMYgE4G4mK3cb6NLgSKt4C2uwRQUABcm/gGi+\nq8kRMNHx1PJm5/7fca4d5IR1fSUlzNCHvx8Z7oRk/gqnf15yIpMMhIWtom8c4UbX\nD0NLH44DotxM8IQ7SgFgO6/OF3yWV5a+4P4lomlNzNRoLnnpWcAVvRv4KhwagjVY\nndjELZt2A3WHU2hHWYi3t1KK1jQIW5+27/W5pE1L/FnWtwu75Ut0RsxwNg6gNGBZ\niVjP0nQLzGtKpILTTgiu0wGe3LvAkA\u003d\u003d\n\u003dgGnw\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c1c8aef_00307793",
+        "filename": "testing/invalid_seekable_read_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-05T18:22:41Z",
+      "side": 1,
+      "message": "nit: pre-existing: maybe a comment about what such a class does? Along the lines of \"Stream whose read operations always fail\".",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "276c685ede7c399babae4e3e0d5460e2d1d13d2d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
