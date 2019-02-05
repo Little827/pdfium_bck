@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef XFA_FXFA_PARSER_CXFA_LAYOUT_H_
-#define XFA_FXFA_PARSER_CXFA_LAYOUT_H_
+#ifndef XFA_FXFA_LAYOUT_CXFA_LAYOUT_H_
+#define XFA_FXFA_LAYOUT_CXFA_LAYOUT_H_
 
 #include "xfa/fxfa/parser/cxfa_node.h"
 
@@ -15,4 +15,4 @@ class CXFA_Layout final : public CXFA_Node {
   ~CXFA_Layout() override;
 };
 
-#endif  // XFA_FXFA_PARSER_CXFA_LAYOUT_H_
+#endif  // XFA_FXFA_LAYOUT_CXFA_LAYOUT_H_
