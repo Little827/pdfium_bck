@@ -31,7 +31,6 @@
 #include "public/fpdf_ext.h"
 #include "public/fpdf_text.h"
 #include "testing/test_loader.h"
-#include "testing/test_support.h"
 
 #ifdef PDF_ENABLE_V8
 #include "testing/v8_initializer.h"
