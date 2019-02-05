@@ -4,7 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "xfa/fxfa/parser/cxfa_layout.h"
+#include "xfa/fxfa/layout/cxfa_layout.h"
 
 #include "fxjs/xfa/cjx_node.h"
 #include "third_party/base/ptr_util.h"
