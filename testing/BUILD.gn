@@ -52,6 +52,33 @@ jumbo_source_set("test_support") {
   }
 }
 
+jumbo_source_set("unit_test_support") {
+  testonly = true
+  sources = [
+    "unit_test_main.cpp",
+  ]
+
+  deps = [
+    ":test_support",
+    "../:pdfium",
+    "../core/fxge",
+    "//testing/gmock",
+    "//testing/gtest",
+  ]
+  configs += [ "../:pdfium_core_config" ]
+  visibility = [ "../*" ]
+
+  if (pdf_enable_v8) {
+    configs += [ "//v8:external_startup_data" ]
+    deps += [ "//v8" ]
+  }
+
+  if (pdf_enable_xfa) {
+    sources += [ "xfa_unit_test_support.h" ]
+    deps += [ "../xfa/fgas" ]
+  }
+}
+
 jumbo_source_set("embedder_test_support") {
   testonly = true
   sources = [

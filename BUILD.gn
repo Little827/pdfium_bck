@@ -237,9 +237,6 @@ group("pdfium_unittest_deps") {
 
 test("pdfium_unittests") {
   testonly = true
-  sources = [
-    "testing/unit_test_main.cpp",
-  ]
   deps = [
     "core/fdrm:unittests",
     "core/fpdfapi/edit:unittests",
@@ -250,14 +247,10 @@ test("pdfium_unittests") {
     "core/fpdfdoc:unittests",
     "core/fpdftext:unittests",
     "core/fxcodec:unittests",
-    "core/fxcrt",
     "core/fxcrt:unittests",
-    "core/fxge",
     "core/fxge:unittests",
     "fpdfsdk:unittests",
-    "testing:test_support",
-    "//testing/gmock",
-    "//testing/gtest",
+    "testing:unit_test_support",
   ]
   configs += [ ":pdfium_core_config" ]
 
@@ -266,18 +259,13 @@ test("pdfium_unittests") {
   }
 
   if (pdf_enable_v8) {
-    configs += [ "//v8:external_startup_data" ]
-    deps += [
-      "fxjs:unittests",
-      "//v8",
-    ]
+    deps += [ "fxjs:unittests" ]
   }
 
   if (pdf_enable_xfa) {
     deps += [
       "fxbarcode:unittests",
       "xfa/fde:unittests",
-      "xfa/fgas",
       "xfa/fgas:unittests",
       "xfa/fgas/layout:unittests",
       "xfa/fwl:unittests",
