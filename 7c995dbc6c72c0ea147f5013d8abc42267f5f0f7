@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549323585 -0800\nnonce ANwvRnAjkHNCTmdEfBOEhBuCN51xzCBmnyxN98kZLfZi0/pGeAIdHW+40kPkhNzCbjSOXKNtLDgp\n\n0000000000000000000000000000000000000000 7c995dbc6c72c0ea147f5013d8abc42267f5f0f7 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxYzUEACgkQqzYtYVpm\n/XvVfgf+NdfQ1hSKOM2jwHtegjvQIJWie5u1hLKyDLphLiBNGZVQyrT70EkK1zwf\nM94KqfpPNBruRc3A9PRbdyU4mmoRmv4Eekxkzt/jQ3oCuXhkncUSJs502JMY7CGb\nCH0mvPxuGydBAvJVXhkZIk/ITW/mqikyfLCq59KdF1KJH//ySfe+e34BFXBmas6K\neHIHFTEzVQQ0FSGUO6JP3eYmRWbODq7EpQXZKa0qlVFnFEX6gLauxjYjb0pyuNyX\nJuhut/GewCam2W3GLK47ZAmR2N+o2WOGv42LbdTW10XhjqMFAz+u+ceKhrl4K/dR\nm9QpGYVtgIdSt5fv7FPgHPTMqT4TDg\u003d\u003d\n\u003du3sn\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "16811d65_c7ad1360",
+        "filename": "xfa/fxfa/cxfa_textlayout.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-05T00:09:06Z",
+      "side": 1,
+      "message": "surprised we didnt get truncation warnings, but ok.",
+      "range": {
+        "startLine": 596,
+        "startChar": 19,
+        "endLine": 596,
+        "endChar": 44
+      },
+      "revId": "7c995dbc6c72c0ea147f5013d8abc42267f5f0f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
