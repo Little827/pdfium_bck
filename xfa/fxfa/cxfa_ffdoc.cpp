@@ -49,6 +49,19 @@ FX_IMAGEDIB_AND_DPI::FX_IMAGEDIB_AND_DPI(const RetainPtr<CFX_DIBBase>& pDib,
 
 FX_IMAGEDIB_AND_DPI::~FX_IMAGEDIB_AND_DPI() = default;
 
+// static
+std::unique_ptr<CXFA_FFDoc> CXFA_FFDoc::CreateAndOpen(
+    CXFA_FFApp* pApp,
+    IXFA_DocEnvironment* pDocEnvironment,
+    CPDF_Document* pPDFDoc) {
+  // Use WrapUnique() to keep constructor private.
+  auto result = pdfium::WrapUnique(new CXFA_FFDoc(pApp, pDocEnvironment));
+  if (!result->OpenDoc(pPDFDoc))
+    return nullptr;
+
+  return result;
+}
+
 CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp, IXFA_DocEnvironment* pDocEnvironment)
     : m_pDocEnvironment(pDocEnvironment), m_pApp(pApp) {}
 
