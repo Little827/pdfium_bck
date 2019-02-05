@@ -23,6 +23,30 @@
       "revId": "b25677c90fb4faa8798faca9c4c8d304e6f12039",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3fe6de9_3e148681",
+        "filename": "testing/test_loader.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-05T19:42:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df1c5818_032f6249",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "b25677c90fb4faa8798faca9c4c8d304e6f12039",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
