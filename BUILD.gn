@@ -256,6 +256,7 @@ test("pdfium_unittests") {
     "core/fxge:unittests",
     "fpdfsdk:unittests",
     "testing:test_support",
+    "testing:unit_test_support",
     "//testing/gmock",
     "//testing/gtest",
   ]

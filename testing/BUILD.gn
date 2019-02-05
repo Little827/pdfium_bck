@@ -52,6 +52,18 @@ jumbo_source_set("test_support") {
   }
 }
 
+jumbo_source_set("unit_test_support") {
+  testonly = true
+  sources = []
+
+  configs += [ "../:pdfium_core_config" ]
+  visibility = [ "../*" ]
+
+  if (pdf_enable_xfa) {
+    sources += [ "xfa_unit_test_support.h" ]
+  }
+}
+
 jumbo_source_set("embedder_test_support") {
   testonly = true
   sources = [
