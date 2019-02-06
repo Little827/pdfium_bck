@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549422684 -0800\nnonce ANwvRnDT6knGdJTKoU2ttFWhG5lTAt6ntz2c+Fyp0v2oSFleggX3aDGd1y6qvN1O7ZWzl4qXeDk3\n\n0000000000000000000000000000000000000000 63f68db2b1eb5290f9693dbc289757348db54cd9 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxaUFwACgkQqzYtYVpm\n/XskmQf/TooyzlL4Hr4FOdf6Ob031pNJNwTsRRlo0ccinH0xJpyDcMjki0iCu3Bg\nOFXkMQ8ULZ4a+Ll6lkYPVVdOIljmXo4gPgNLaISAYYPAe5V4keeKX+deuCtHOdFz\nV4l3zMpNKaHuVdDrObRsy5yWOwegillfS5KFyr4Gf+aDGt6E6wQAA6HZym3ON22y\n/j82ond/1gf2D/1uFp+Xc48EBHIJ8QmLuuHR6UWSaS3tscUemQcKTERuE16DhPU5\n0769KxXrbdjHt0/FHpMVFCmNjzgcJsqtpG5XO/qhmM4gjoylVQbIhDWRQuNWddaN\nWdupop7fL67t3EXWX0MqVaEXspzqLA\u003d\u003d\n\u003d6Rgj\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2896ec95_6eeee472",
+        "filename": "testing/fuzzers/pdf_codec_fax_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-06T17:49:17Z",
+      "side": 1,
+      "message": "nit: kBlackIs1 ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 13,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "63f68db2b1eb5290f9693dbc289757348db54cd9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
