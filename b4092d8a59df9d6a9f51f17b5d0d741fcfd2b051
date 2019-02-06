@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a0b1d75_eb6a977f",
+        "filename": "fxjs/xfa/cjx_instancemanager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-06T22:38:49Z",
+      "side": 1,
+      "message": "Combine with next line if it saves a line? Ditto below.",
+      "revId": "b4092d8a59df9d6a9f51f17b5d0d741fcfd2b051",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
