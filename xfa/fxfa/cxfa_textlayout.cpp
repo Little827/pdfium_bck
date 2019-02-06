@@ -586,7 +586,7 @@ bool CXFA_TextLayout::DrawString(CFX_RenderDevice* pFxDevice,
       Layout(i);
   }
 
-  FXTEXT_CHARPOS* pCharPos = FX_Alloc(FXTEXT_CHARPOS, 1);
+  TextCharPos* pCharPos = FX_Alloc(TextCharPos, 1);
   // TODO(thestig): Make these size_t.
   int32_t iCharCount = 1;
   int32_t iLineStart = 0;
@@ -611,10 +611,10 @@ bool CXFA_TextLayout::DrawString(CFX_RenderDevice* pFxDevice,
       const CXFA_TextPiece* pPiece = pPieceLine->m_textPieces[j].get();
       int32_t iChars = pPiece->iChars;
       if (iCharCount < iChars) {
-        pCharPos = FX_Realloc(FXTEXT_CHARPOS, pCharPos, iChars);
+        pCharPos = FX_Realloc(TextCharPos, pCharPos, iChars);
         iCharCount = iChars;
       }
-      memset(pCharPos, 0, iCharCount * sizeof(FXTEXT_CHARPOS));
+      memset(pCharPos, 0, iCharCount * sizeof(TextCharPos));
       RenderString(pFxDevice, pPieceLine, j, pCharPos, tmDoc2Device);
     }
     for (j = 0; j < iPieces; j++)
@@ -1134,7 +1134,7 @@ void CXFA_TextLayout::AppendTextLine(CFX_BreakType dwStatus,
 void CXFA_TextLayout::RenderString(CFX_RenderDevice* pDevice,
                                    CXFA_PieceLine* pPieceLine,
                                    int32_t iPiece,
-                                   FXTEXT_CHARPOS* pCharPos,
+                                   TextCharPos* pCharPos,
                                    const CFX_Matrix& tmDoc2Device) {
   const CXFA_TextPiece* pPiece = pPieceLine->m_textPieces[iPiece].get();
   size_t szCount = GetDisplayPos(pPiece, pCharPos);
@@ -1149,7 +1149,7 @@ void CXFA_TextLayout::RenderString(CFX_RenderDevice* pDevice,
 void CXFA_TextLayout::RenderPath(CFX_RenderDevice* pDevice,
                                  CXFA_PieceLine* pPieceLine,
                                  int32_t iPiece,
-                                 FXTEXT_CHARPOS* pCharPos,
+                                 TextCharPos* pCharPos,
                                  const CFX_Matrix& tmDoc2Device) {
   CXFA_TextPiece* pPiece = pPieceLine->m_textPieces[iPiece].get();
   bool bNoUnderline = pPiece->iUnderline < 1 || pPiece->iUnderline > 2;
@@ -1269,7 +1269,7 @@ void CXFA_TextLayout::RenderPath(CFX_RenderDevice* pDevice,
 }
 
 size_t CXFA_TextLayout::GetDisplayPos(const CXFA_TextPiece* pPiece,
-                                      FXTEXT_CHARPOS* pCharPos) {
+                                      TextCharPos* pCharPos) {
   if (!pPiece)
     return 0;
 
