@@ -1,4 +1,56 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549443744 -0800\nnonce ANwvRnCO+3Cq7PLsqQgaNBGcHBPvpZRY8znhcKFUgNs4JkKv1tciWA5dJY76U1hTC9omJegdB4Ib\n\n0000000000000000000000000000000000000000 af3439e2f1546c901629b19ecaa0a35732f08c9b refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxaoqAACgkQqzYtYVpm\n/Xv9sgf/XkmJcxYARUXimaGvL+8qswtwWhw9RU2LeWiRHuL6fXmJwy0GYx+ScBE4\nCImH0349XSvUgf3Jr+m6Vtdj1ElsLjzmYps61HWI7vMojYkczYClrG4xt6+o6UM9\nj7jYctzH2QWh3pu9s3fj0C5FWmONsKBeGAjfWwGc48NqxtQNhlI+f97j1wj1KaMs\nx7XVw/wmZtQcJmsXXKBbmZ2RxQM6D+J0FhYa1+4rcUqPZxCsCE4Dt0F9Ucybkq3j\n+VQVi5xQQNO7PyFRTuiK1uhaS7G+ikFcC9JTJbUSXS14cIFO/+2hbYOdzk2yblX5\nY8G/9uQ5L0ih33GuPCJaRaKg76VZ8Q\u003d\u003d\n\u003dNkw8\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "6521cbd3_04850459",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-06T18:44:34Z",
+      "side": 1,
+      "message": "PDF_GetStandardFontName() is pretty tangled with CFX_FontMapper, so leaving it in there. Shall I rename it to GetStandardFontName()?",
+      "revId": "af3439e2f1546c901629b19ecaa0a35732f08c9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e43cd41_8b12a345",
+        "filename": "core/fxge/cfx_glyphbitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-06T18:44:34Z",
+      "side": 1,
+      "message": "whoops",
+      "revId": "af3439e2f1546c901629b19ecaa0a35732f08c9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd321760_9c537774",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-06T18:44:34Z",
+      "side": 1,
+      "message": "This is all cut + paste, as are the other moves.",
+      "revId": "af3439e2f1546c901629b19ecaa0a35732f08c9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
