@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549422560 -0800\nnonce ANwvRnALA3bD3mKnnt7kRmk8G2h9sJUpK+iQbOV5wvN++L5eOn44FX9YeHEgAkAIgHhghIvdS6Tg\n\n0000000000000000000000000000000000000000 87f492a208b677b45a311174877b591b438d85e7 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dcheck-for-integer-overflows-in-cfx-break\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxaT+AACgkQqzYtYVpm\n/XutSQgApQ54n/r567X7VwFxssVGdWygIeeVGfqa5ApZllMj2QCJr8v4vk45XPBr\nLy3NWWx4hKSnCMG171zlycaO6UQR32M9JQvrrIYgpt4XJcAGaQkGld2VJEXwkfST\nBHIo8Yf4xe4iEsbCZFka9Vv7R55YKkAy1MHhGrdboXWkwptOOGgYQRY2EPrroVc3\nTnfu5lcAJaG/HWG301ET9S2lT/zudYDN+IAdW7RqvaDnIAC9P8IIuarUdsyeY3EJ\nSUh+ohSTwBO9hHtU/hutuG+0/Fc7kR7FBGWZAt8YQz0WxHsW3crFqla+jl0s4xbX\ntJiyK3TNaKJeZwAjQfeG357WUZLYJA\u003d\u003d\n\u003dg/pa\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d66cfcd_3c83701c",
+        "filename": "xfa/fgas/layout/cfx_break.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-06T17:55:49Z",
+      "side": 1,
+      "message": "Ok, so false on overflow. Not sure what the right thing would be. so\n  while (!IsGreaterthanLineWidth(x)) x++;\nmight be an infinite loop. OTOH, you can write an inverted example if we pick the other behaviour.",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "87f492a208b677b45a311174877b591b438d85e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
