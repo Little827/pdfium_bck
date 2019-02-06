@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a54e68c_cccc803e",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-06T18:53:30Z",
+      "side": 0,
+      "message": "note: CXFA_Document::GetLayoutProcessor() creates if not present, can\u0027t return null, will optimize in a follow-on.",
+      "range": {
+        "startLine": 1903,
+        "startChar": 2,
+        "endLine": 1905,
+        "endChar": 11
+      },
+      "revId": "fabb0d36022300d2cb396c353599dc8cadce8074",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
