@@ -23,6 +23,30 @@
       "revId": "4a21082771de324495200ea8e88c8e96a932d6b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90549291_bfe4c076",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-06T18:24:29Z",
+      "side": 1,
+      "message": "No, just reusing an existing function for pitch calculation.",
+      "parentUuid": "e4d8e612_d74f9318",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "4a21082771de324495200ea8e88c8e96a932d6b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
