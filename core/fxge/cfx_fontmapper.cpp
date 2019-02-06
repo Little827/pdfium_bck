@@ -727,7 +727,8 @@ FXFT_Face CFX_FontMapper::GetCachedFace(void* hFont,
                                    m_pFontInfo->GetFaceIndex(hFont));
 }
 
-int PDF_GetStandardFontName(ByteString* name) {
+// static
+int CFX_FontMapper::PDF_GetStandardFontName(ByteString* name) {
   const auto* end = std::end(g_AltFontNames);
   const auto* found =
       std::lower_bound(std::begin(g_AltFontNames), end, name->c_str(),
