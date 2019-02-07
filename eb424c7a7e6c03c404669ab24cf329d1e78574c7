@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549512104 -0800\nnonce ANwvRnD8xCzFkX740mk8KI3LMeH91Xav3eYiMRCO+Y33/FCm9t4/kTVWvwkwRH2wyma84YpBIq5w\n\n0000000000000000000000000000000000000000 eb424c7a7e6c03c404669ab24cf329d1e78574c7 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxbragACgkQqzYtYVpm\n/XtbOgf+Lmz9io9cgQhmpzkjHe4e/bJjTq6Qu+pXo4+7nCOza5sapGLCtFdGgJPy\nYeXxXkCb9KHhIId1zuz7iG8v4mY7F+abUseJokgM+b+iqQeiuRrC77tprMtKTO4g\n4IVR1Qc3pTupnh5eZ+NgYq7kAQBXYaMfGxLjr9HWFCJsRsG8qeWsL6f1+KZls5Wz\nANF7s4SAlFEU7hBkvjhRSOCZPDnXLPEWOULbo8JzvGsoGLS+2wB5br2Y9213FMlt\nzribZa0IBS046BelyRRfdFU63d1yaoaoOnv+zKLpHs0MV4KxfdsDkl7a/9BzdWAx\n4KFxeinPIzgptvA6G9MDU25jFwk77w\u003d\u003d\n\u003dJrB3\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "18efb948_84c0ebb9",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-07T23:47:20Z",
+      "side": 1,
+      "message": "nit: might want to add a default move ctor, since it can avoid ref-chrun on the string and the retainptr, given that we return these by (optional) value.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "eb424c7a7e6c03c404669ab24cf329d1e78574c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
