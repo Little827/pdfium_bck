@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549532601 -0800\nnonce ANwvRnDDqqQpEXfDR5oGbNpk8ZlB97kU8i16zCuwLmg+FTyjaJrfOUAJouwtX5C/oNyCjScD1cxl\n\n0000000000000000000000000000000000000000 7ea36830c5792e7f7009fedfe83737394569897a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxb/bkACgkQqzYtYVpm\n/XsIRggA1R3cUH64yIDUo/BW2xNjlmx4qAXjEfJL0x3M9C6fWQoFA0KuHaFZuDW7\n2L5iP/ruJGrwqCN9c1oerYPv2ts+9kWZEiRl9wzZIcrHEmFqOSVS73Wcv/ca4cly\n7HnAvY3MlsdkW01/ak8L7aHy/mCnXfr4b4BbFyu7DTLLUVvY4Rs9vL+MCUYBQ/Pz\nwnbFCaPstSwzJ3nDSEUYwkdzg3Dmdz7DjkyZ0sIBBetRs39vpjbyrHxXjTAK6Vp+\nH9Es1q6+5G3oTXnsDxWVb8Q3ekIwcsrCdw/uevMO4gVtPf/ejThR5PtNxXwPG741\nb/6iu1V1Rg4jRqsJ87n5UyPUKN1JDw\u003d\u003d\n\u003dXMz8\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1c48b64_58a1dd42",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-07T18:49:51Z",
+      "side": 1,
+      "message": "nit: use ... | (data[1] \u003c\u003c 8) | (data[2] \u003c\u003c 16) |... just because I, for one, wasn\u0027t 100% sure on the precedence (which is correct as written).",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "7ea36830c5792e7f7009fedfe83737394569897a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
