@@ -114,6 +114,10 @@ std::string ProgramPath() {
 }
 #endif  // PDF_ENABLE_V8
 
+int GetInteger(const uint8_t* data) {
+  return data[0] | data[1] << 8 | data[2] << 16 | data[3] << 24;
+}
+
 }  // namespace
 
 PDFiumFuzzerHelper::PDFiumFuzzerHelper() = default;
@@ -124,7 +128,15 @@ bool PDFiumFuzzerHelper::OnFormFillEnvLoaded(FPDF_DOCUMENT doc) {
   return true;
 }
 
-void PDFiumFuzzerHelper::RenderPdf(const char* pBuf, size_t len) {
+void PDFiumFuzzerHelper::RenderPdf(const uint8_t* data, size_t len) {
+  if (len < 8)
+    return;
+
+  int render_flags = GetInteger(data);
+  int form_flags = GetInteger(data + 4);
+  data += 8;
+  len -= 8;
+
   IPDF_JSPLATFORM platform_callbacks;
   memset(&platform_callbacks, '\0', sizeof(platform_callbacks));
   platform_callbacks.version = 3;
@@ -138,7 +150,7 @@ void PDFiumFuzzerHelper::RenderPdf(const char* pBuf, size_t len) {
   form_callbacks.version = GetFormCallbackVersion();
   form_callbacks.m_pJsPlatform = &platform_callbacks;
 
-  TestLoader loader({pBuf, len});
+  TestLoader loader({reinterpret_cast<const char*>(data), len});
   FPDF_FILEACCESS file_access;
   memset(&file_access, '\0', sizeof(file_access));
   file_access.m_FileLen = static_cast<unsigned long>(len);
@@ -204,14 +216,16 @@ void PDFiumFuzzerHelper::RenderPdf(const char* pBuf, size_t len) {
       if (nRet == PDF_DATA_ERROR)
         return;
     }
-    RenderPage(doc.get(), form.get(), i);
+    RenderPage(doc.get(), form.get(), i, render_flags, form_flags);
   }
   FORM_DoDocumentAAction(form.get(), FPDFDOC_AACTION_WC);
 }
 
 bool PDFiumFuzzerHelper::RenderPage(FPDF_DOCUMENT doc,
                                     FPDF_FORMHANDLE form,
-                                    const int page_index) {
+                                    int page_index,
+                                    int render_flags,
+                                    int form_flags) {
   ScopedFPDFPage page(FPDF_LoadPage(doc, page_index));
   if (!page)
     return false;
@@ -226,8 +240,10 @@ bool PDFiumFuzzerHelper::RenderPage(FPDF_DOCUMENT doc,
   ScopedFPDFBitmap bitmap(FPDFBitmap_Create(width, height, 0));
   if (bitmap) {
     FPDFBitmap_FillRect(bitmap.get(), 0, 0, width, height, 0xFFFFFFFF);
-    FPDF_RenderPageBitmap(bitmap.get(), page.get(), 0, 0, width, height, 0, 0);
-    FPDF_FFLDraw(form, bitmap.get(), page.get(), 0, 0, width, height, 0, 0);
+    FPDF_RenderPageBitmap(bitmap.get(), page.get(), 0, 0, width, height, 0,
+                          render_flags);
+    FPDF_FFLDraw(form, bitmap.get(), page.get(), 0, 0, width, height, 0,
+                 form_flags);
   }
   FORM_DoPageAAction(page.get(), form, FPDFPAGE_AACTION_CLOSE);
   FORM_OnBeforeClosePage(page.get(), form);
