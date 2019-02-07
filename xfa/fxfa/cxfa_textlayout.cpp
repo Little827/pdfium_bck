@@ -62,6 +62,24 @@ void ProcessText(WideString* pText) {
   pText->ReleaseBuffer(iTrimLeft);
 }
 
+Optional<FX_RTFTEXTOBJ> TextPieceToRun(const CXFA_TextPiece* pPiece) {
+  if (!pPiece || pPiece->iChars < 1)
+    return {};
+
+  FX_RTFTEXTOBJ tr;
+  tr.pStr = pPiece->szText;
+  tr.pFont = pPiece->pFont;
+  tr.pRect = &pPiece->rtPiece;
+  tr.pWidths = pPiece->Widths;
+  tr.iLength = pPiece->iChars;
+  tr.fFontSize = pPiece->fFontSize;
+  tr.iBidiLevel = pPiece->iBidiLevel;
+  tr.wLineBreakChar = L'\n';
+  tr.iVerticalScale = pPiece->iVerScale;
+  tr.iHorizontalScale = pPiece->iHorScale;
+  return tr;
+}
+
 }  // namespace
 
 CXFA_TextLayout::CXFA_TextLayout(CXFA_FFDoc* doc,
@@ -1258,30 +1276,9 @@ void CXFA_TextLayout::RenderPath(CFX_RenderDevice* pDevice,
 
 size_t CXFA_TextLayout::GetDisplayPos(const CXFA_TextPiece* pPiece,
                                       TextCharPos* pCharPos) {
-  if (!pPiece)
+  Optional<FX_RTFTEXTOBJ> tr = TextPieceToRun(pPiece);
+  if (!tr.has_value())
     return 0;
 
-  FX_RTFTEXTOBJ tr;
-  if (!ToRun(pPiece, &tr))
-    return 0;
-
-  return m_pBreak->GetDisplayPos(&tr, pCharPos, false);
-}
-
-bool CXFA_TextLayout::ToRun(const CXFA_TextPiece* pPiece, FX_RTFTEXTOBJ* tr) {
-  int32_t iLength = pPiece->iChars;
-  if (iLength < 1)
-    return false;
-
-  tr->pStr = pPiece->szText;
-  tr->pFont = pPiece->pFont;
-  tr->pRect = &pPiece->rtPiece;
-  tr->pWidths = pPiece->Widths;
-  tr->iLength = iLength;
-  tr->fFontSize = pPiece->fFontSize;
-  tr->iBidiLevel = pPiece->iBidiLevel;
-  tr->wLineBreakChar = L'\n';
-  tr->iVerticalScale = pPiece->iVerScale;
-  tr->iHorizontalScale = pPiece->iHorScale;
-  return true;
+  return m_pBreak->GetDisplayPos(&tr.value(), pCharPos);
 }

@@ -715,10 +715,9 @@ void CFX_RTFBreak::SplitTextLine(CFX_BreakLine* pCurLine,
   }
 }
 
-int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
-                                    TextCharPos* pCharPos,
-                                    bool bCharCode) const {
-  if (!pText || pText->iLength < 1)
+size_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
+                                   TextCharPos* pCharPos) const {
+  if (pText->iLength < 1)
     return 0;
 
   ASSERT(pText->pFont);
@@ -747,7 +746,7 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
     fX = rtText.right();
 
   float fY = rtText.top + fAscent;
-  int32_t iCount = 0;
+  size_t szCount = 0;
   for (int32_t i = 0; i < pText->iLength; ++i) {
     wchar_t wch = pText->pStr[i];
     int32_t iWidth = pText->pWidths[i];
@@ -762,7 +761,7 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
     bool bEmptyChar = (dwCharType >= FX_CHARTYPE::kTab &&
                        dwCharType <= FX_CHARTYPE::kControl);
     if (!bEmptyChar)
-      ++iCount;
+      ++szCount;
 
     if (pCharPos) {
       iCharWidth /= iFontSize;
@@ -781,13 +780,9 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
       }
 
       if (!bEmptyChar) {
-        if (bCharCode) {
-          pCharPos->m_GlyphIndex = wch;
-        } else {
-          pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wForm);
-          if (pCharPos->m_GlyphIndex == 0xFFFF)
-            pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wch);
-        }
+        pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wForm);
+        if (pCharPos->m_GlyphIndex == 0xFFFF)
+          pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wch);
 #if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
         pCharPos->m_ExtGID = pCharPos->m_GlyphIndex;
 #endif
@@ -828,17 +823,11 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
     if (iWidth > 0)
       wPrev = wch;
   }
-  return iCount;
+  return szCount;
 }
 
-FX_RTFTEXTOBJ::FX_RTFTEXTOBJ()
-    : pFont(nullptr),
-      pRect(nullptr),
-      wLineBreakChar(L'\n'),
-      fFontSize(12.0f),
-      iLength(0),
-      iBidiLevel(0),
-      iHorizontalScale(100),
-      iVerticalScale(100) {}
+FX_RTFTEXTOBJ::FX_RTFTEXTOBJ() = default;
 
-FX_RTFTEXTOBJ::~FX_RTFTEXTOBJ() {}
+FX_RTFTEXTOBJ::FX_RTFTEXTOBJ(const FX_RTFTEXTOBJ& other) = default;
+
+FX_RTFTEXTOBJ::~FX_RTFTEXTOBJ() = default;

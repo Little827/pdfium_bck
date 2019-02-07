@@ -29,18 +29,19 @@ enum class CFX_RTFLineAlignment {
 
 struct FX_RTFTEXTOBJ {
   FX_RTFTEXTOBJ();
+  FX_RTFTEXTOBJ(const FX_RTFTEXTOBJ& other);
   ~FX_RTFTEXTOBJ();
 
   WideString pStr;
   std::vector<int32_t> pWidths;
   RetainPtr<CFGAS_GEFont> pFont;
-  const CFX_RectF* pRect;
-  wchar_t wLineBreakChar;
-  float fFontSize;
-  int32_t iLength;
-  int32_t iBidiLevel;
-  int32_t iHorizontalScale;
-  int32_t iVerticalScale;
+  const CFX_RectF* pRect = nullptr;
+  wchar_t wLineBreakChar = L'\n';
+  float fFontSize = 12.0f;
+  int32_t iLength = 0;
+  int32_t iBidiLevel = 0;
+  int32_t iHorizontalScale = 100;
+  int32_t iVerticalScale = 100;
 };
 
 class CFX_RTFBreak final : public CFX_Break {
@@ -57,9 +58,7 @@ class CFX_RTFBreak final : public CFX_Break {
 
   CFX_BreakType EndBreak(CFX_BreakType dwStatus);
 
-  int32_t GetDisplayPos(const FX_RTFTEXTOBJ* pText,
-                        TextCharPos* pCharPos,
-                        bool bCharCode) const;
+  size_t GetDisplayPos(const FX_RTFTEXTOBJ* pText, TextCharPos* pCharPos) const;
 
   CFX_BreakType AppendChar(wchar_t wch);
 
