@@ -5,10 +5,15 @@
 #ifndef TESTING_FUZZERS_PDFIUM_FUZZER_HELPER_H_
 #define TESTING_FUZZERS_PDFIUM_FUZZER_HELPER_H_
 
+#include <stdint.h>
+
 #include "public/fpdfview.h"
 
 class PDFiumFuzzerHelper {
  public:
+  // Returns an integer from the first 4 bytes of |data|.
+  static int GetInteger(const uint8_t* data);
+
   void RenderPdf(const char* pBuf, size_t len);
 
   virtual int GetFormCallbackVersion() const = 0;

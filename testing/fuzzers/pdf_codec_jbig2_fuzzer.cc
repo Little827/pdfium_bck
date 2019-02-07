@@ -12,19 +12,16 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/fx_dib.h"
+#include "testing/fuzzers/pdfium_fuzzer_helper.h"
 #include "third_party/base/ptr_util.h"
-
-static uint32_t GetInteger(const uint8_t* data) {
-  return data[0] | data[1] << 8 | data[2] << 16 | data[3] << 24;
-}
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   const size_t kParameterSize = 8;
   if (size < kParameterSize)
     return 0;
 
-  uint32_t width = GetInteger(data);
-  uint32_t height = GetInteger(data + 4);
+  uint32_t width = PDFiumFuzzerHelper::GetInteger(data);
+  uint32_t height = PDFiumFuzzerHelper::GetInteger(data + 4);
   size -= kParameterSize;
   data += kParameterSize;
 

@@ -7,10 +7,7 @@
 
 #include "core/fxcodec/codec/ccodec_faxmodule.h"
 #include "core/fxcodec/codec/ccodec_scanlinedecoder.h"
-
-static int GetInteger(const uint8_t* data) {
-  return data[0] | data[1] << 8 | data[2] << 16 | data[3] << 24;
-}
+#include "testing/fuzzers/pdfium_fuzzer_helper.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   static constexpr size_t kParameterSize = 21;
@@ -22,11 +19,11 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   if (size > kParameterSize + kMaxDataSize)
     return 0;
 
-  int width = GetInteger(data);
-  int height = GetInteger(data + 4);
-  int K = GetInteger(data + 8);
-  int Columns = GetInteger(data + 12);
-  int Rows = GetInteger(data + 16);
+  int width = PDFiumFuzzerHelper::GetInteger(data);
+  int height = PDFiumFuzzerHelper::GetInteger(data + 4);
+  int K = PDFiumFuzzerHelper::GetInteger(data + 8);
+  int Columns = PDFiumFuzzerHelper::GetInteger(data + 12);
+  int Rows = PDFiumFuzzerHelper::GetInteger(data + 16);
   bool EndOfLine = !(data[20] & 0x01);
   bool ByteAlign = !(data[20] & 0x02);
   // This controls if CCodec_FaxDecoder::InvertBuffer() gets called. The method

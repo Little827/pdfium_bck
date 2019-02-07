@@ -124,6 +124,11 @@ bool PDFiumFuzzerHelper::OnFormFillEnvLoaded(FPDF_DOCUMENT doc) {
   return true;
 }
 
+// static
+int PDFiumFuzzerHelper::GetInteger(const uint8_t* data) {
+  return data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
+}
+
 void PDFiumFuzzerHelper::RenderPdf(const char* pBuf, size_t len) {
   IPDF_JSPLATFORM platform_callbacks;
   memset(&platform_callbacks, '\0', sizeof(platform_callbacks));
