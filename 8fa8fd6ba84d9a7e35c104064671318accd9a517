@@ -23,6 +23,30 @@
       "revId": "8fa8fd6ba84d9a7e35c104064671318accd9a517",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1120a78e_bc68437d",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-07T20:18:25Z",
+      "side": 1,
+      "message": "I\u0027ll just use value().",
+      "parentUuid": "09df8d0b_d8b4ca49",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 38
+      },
+      "revId": "8fa8fd6ba84d9a7e35c104064671318accd9a517",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
