@@ -23,6 +23,30 @@
       "revId": "7ea36830c5792e7f7009fedfe83737394569897a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56894ad9_78be9270",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-07T20:27:23Z",
+      "side": 1,
+      "message": "I made a separate CL for that. https://pdfium-review.googlesource.com/50232",
+      "parentUuid": "b1c48b64_58a1dd42",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "7ea36830c5792e7f7009fedfe83737394569897a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
