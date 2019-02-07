@@ -23,6 +23,30 @@
       "revId": "ef7264c040edccdaa97740b2b04ccf121ffd3849",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42bccad0_cff704d9",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-07T00:53:34Z",
+      "side": 1,
+      "message": "GetCount() is going to get non-trivial in the next CL in the chain. Leaving GetAt() here in we add more to it later.",
+      "parentUuid": "0c7bc121_469aa6af",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "ef7264c040edccdaa97740b2b04ccf121ffd3849",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
