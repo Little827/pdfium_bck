@@ -15,6 +15,7 @@
 #include "xfa/fgas/layout/cfx_char.h"
 #include "xfa/fgas/layout/fx_arabic.h"
 #include "xfa/fgas/layout/fx_linebreak.h"
+#include "xfa/fxfa/cxfa_textpiece.h"
 
 CFX_RTFBreak::CFX_RTFBreak(uint32_t dwLayoutStyles)
     : CFX_Break(dwLayoutStyles),
@@ -715,19 +716,15 @@ void CFX_RTFBreak::SplitTextLine(CFX_BreakLine* pCurLine,
   }
 }
 
-int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
-                                    TextCharPos* pCharPos,
-                                    bool bCharCode) const {
-  if (!pText || pText->iLength < 1)
-    return 0;
+size_t CFX_RTFBreak::GetDisplayPos(const CXFA_TextPiece* pPiece,
+                                   TextCharPos* pCharPos) const {
+  ASSERT(pPiece->iChars > 0);
+  ASSERT(pPiece->pFont);
 
-  ASSERT(pText->pFont);
-  ASSERT(pText->pRect);
-
-  RetainPtr<CFGAS_GEFont> pFont = pText->pFont;
-  CFX_RectF rtText(*pText->pRect);
-  bool bRTLPiece = FX_IsOdd(pText->iBidiLevel);
-  float fFontSize = pText->fFontSize;
+  RetainPtr<CFGAS_GEFont> pFont = pPiece->pFont;
+  CFX_RectF rtText(pPiece->rtPiece);
+  bool bRTLPiece = FX_IsOdd(pPiece->iBidiLevel);
+  float fFontSize = pPiece->fFontSize;
   int32_t iFontSize = FXSYS_round(fFontSize * 20.0f);
   if (iFontSize == 0)
     return 0;
@@ -741,16 +738,16 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
   wchar_t wPrev = 0xFEFF;
   wchar_t wNext;
   float fX = rtText.left;
-  int32_t iHorScale = pText->iHorizontalScale;
-  int32_t iVerScale = pText->iVerticalScale;
+  int32_t iHorScale = pPiece->iHorScale;
+  int32_t iVerScale = pPiece->iVerScale;
   if (bRTLPiece)
     fX = rtText.right();
 
   float fY = rtText.top + fAscent;
-  int32_t iCount = 0;
-  for (int32_t i = 0; i < pText->iLength; ++i) {
-    wchar_t wch = pText->pStr[i];
-    int32_t iWidth = pText->pWidths[i];
+  size_t szCount = 0;
+  for (int32_t i = 0; i < pPiece->iChars; ++i) {
+    wchar_t wch = pPiece->szText[i];
+    int32_t iWidth = pPiece->Widths[i];
     FX_CHARTYPE dwCharType = FX_GetCharType(wch);
     if (iWidth == 0) {
       if (dwCharType == FX_CHARTYPE::kArabicAlef)
@@ -762,16 +759,16 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
     bool bEmptyChar = (dwCharType >= FX_CHARTYPE::kTab &&
                        dwCharType <= FX_CHARTYPE::kControl);
     if (!bEmptyChar)
-      ++iCount;
+      ++szCount;
 
     if (pCharPos) {
       iCharWidth /= iFontSize;
       wchar_t wForm = wch;
       if (dwCharType >= FX_CHARTYPE::kArabicAlef) {
-        if (i + 1 < pText->iLength) {
-          wNext = pText->pStr[i + 1];
-          if (pText->pWidths[i + 1] < 0 && i + 2 < pText->iLength)
-            wNext = pText->pStr[i + 2];
+        if (i + 1 < pPiece->iChars) {
+          wNext = pPiece->szText[i + 1];
+          if (pPiece->Widths[i + 1] < 0 && i + 2 < pPiece->iChars)
+            wNext = pPiece->szText[i + 2];
         } else {
           wNext = 0xFEFF;
         }
@@ -781,13 +778,9 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
       }
 
       if (!bEmptyChar) {
-        if (bCharCode) {
-          pCharPos->m_GlyphIndex = wch;
-        } else {
-          pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wForm);
-          if (pCharPos->m_GlyphIndex == 0xFFFF)
-            pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wch);
-        }
+        pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wForm);
+        if (pCharPos->m_GlyphIndex == 0xFFFF)
+          pCharPos->m_GlyphIndex = pFont->GetGlyphIndex(wch);
 #if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
         pCharPos->m_ExtGID = pCharPos->m_GlyphIndex;
 #endif
@@ -828,17 +821,5 @@ int32_t CFX_RTFBreak::GetDisplayPos(const FX_RTFTEXTOBJ* pText,
     if (iWidth > 0)
       wPrev = wch;
   }
-  return iCount;
+  return szCount;
 }
-
-FX_RTFTEXTOBJ::FX_RTFTEXTOBJ()
-    : pFont(nullptr),
-      pRect(nullptr),
-      wLineBreakChar(L'\n'),
-      fFontSize(12.0f),
-      iLength(0),
-      iBidiLevel(0),
-      iHorizontalScale(100),
-      iVerticalScale(100) {}
-
-FX_RTFTEXTOBJ::~FX_RTFTEXTOBJ() {}
