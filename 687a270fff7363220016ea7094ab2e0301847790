@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "405ccc3c_edae6e37",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-08T20:13:40Z",
+      "side": 1,
+      "message": "i.e. we could conditionalize just this one line rather than the whole block if that is what is mucking with the output",
+      "range": {
+        "startLine": 1722,
+        "startChar": 9,
+        "endLine": 1722,
+        "endChar": 75
+      },
+      "revId": "687a270fff7363220016ea7094ab2e0301847790",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
