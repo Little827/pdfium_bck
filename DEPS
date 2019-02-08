@@ -14,7 +14,7 @@ vars = {
 
   'android_ndk_revision': '4e2cea441bfd43f0863d14f57b1e1844260b9884',
   'binutils_revision': '2be73f7fbf783d7a0b288e174a5773b67c7656bc',
-  'build_revision': '213e0a3a3d17d89b6513181a28956166a9c2141c',
+  'build_revision': 'a721f3327e541ace0f6bfffa88b06e60b2766079',
   'buildtools_revision': '6fbda1b24c1893a893b17aa219b765b9e7c801d8',
   'catapult_revision': '7c1d51b169edfb62a3e2f88730f1182240cfe981',
   'clang_revision': 'b23f5a07327bb0dd49aed8dc80984217f268cf93',
@@ -149,6 +149,32 @@ specific_include_rules = {
 
 hooks = [
   {
+    # Case-insensitivity for the Win SDK. Must run before win_toolchain below.
+    'name': 'ciopfs_linux',
+    'pattern': '.',
+    'condition': 'checkout_win and host_os == "linux"',
+    'action': [ 'python',
+                'pdfium/third_party/depot_tools/download_from_google_storage.py',
+                '--no_resume',
+                '--no_auth',
+                '--bucket', 'chromium-browser-clang/ciopfs',
+                '-s', 'pdfium/build/ciopfs.sha1',
+    ]
+  },
+  {
+    # Update the Windows toolchain if necessary.  Must run before 'clang' below.
+    'name': 'win_toolchain',
+    'pattern': '.',
+    'condition': 'checkout_win',
+    'action': ['python', 'pdfium/build/vs_toolchain.py', 'update', '--force'],
+  },
+  {
+    # Update the Mac toolchain if necessary.
+    'name': 'mac_toolchain',
+    'pattern': '.',
+    'action': ['python', 'pdfium/build/mac_toolchain.py'],
+  },
+  {
     'name': 'gn_win',
     'action': [ 'download_from_google_storage',
                 '--no_resume',
@@ -180,8 +206,8 @@ hooks = [
                 '-s', 'pdfium/buildtools/linux64/gn.sha1',
     ],
   },
-  # Pull clang-format binaries using checked-in hashes.
   {
+    # Pull clang-format binaries using checked-in hashes.
     'name': 'clang_format_win',
     'pattern': '.',
     'action': [ 'download_from_google_storage',
@@ -215,7 +241,7 @@ hooks = [
     ],
   },
   {
-    # Pull clang
+    # Note: On Win, this should run after win_toolchain, as it may use it.
     'name': 'clang',
     'pattern': '.',
     'action': ['python',
@@ -265,32 +291,6 @@ hooks = [
     'condition': 'checkout_linux and checkout_x64',
     'action': ['python', 'pdfium/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=x64'],
-  },
-  {
-    # Case-insensitivity for the Win SDK. Must run before win_toolchain below.
-    'name': 'ciopfs_linux',
-    'pattern': '.',
-    'condition': 'checkout_win and host_os == "linux"',
-    'action': [ 'python',
-                'pdfium/third_party/depot_tools/download_from_google_storage.py',
-                '--no_resume',
-                '--no_auth',
-                '--bucket', 'chromium-browser-clang/ciopfs',
-                '-s', 'pdfium/build/ciopfs.sha1',
-    ]
-  },
-  {
-    # Update the Windows toolchain if necessary.
-    'name': 'win_toolchain',
-    'pattern': '.',
-    'condition': 'checkout_win',
-    'action': ['python', 'pdfium/build/vs_toolchain.py', 'update', '--force'],
-  },
-  {
-    # Update the Mac toolchain if necessary.
-    'name': 'mac_toolchain',
-    'pattern': '.',
-    'action': ['python', 'pdfium/build/mac_toolchain.py'],
   },
   {
     'name': 'msan_chained_origins',
