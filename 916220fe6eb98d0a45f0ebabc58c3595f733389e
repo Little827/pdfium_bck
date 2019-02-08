@@ -70,6 +70,30 @@
       "revId": "916220fe6eb98d0a45f0ebabc58c3595f733389e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2bfe044_fb18632f",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-08T00:57:01Z",
+      "side": 1,
+      "message": "Its a lingering allow_circular_includes that we ought not worsen that allows it to slip by ...",
+      "parentUuid": "28a00fc5_7bb72c47",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "916220fe6eb98d0a45f0ebabc58c3595f733389e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
