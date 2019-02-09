@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "863c5bdd_e5379135",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-09T02:13:07Z",
+      "side": 1,
+      "message": "I removed the goto above.",
+      "parentUuid": "a294d46e_d130900a",
+      "range": {
+        "startLine": 914,
+        "startChar": 4,
+        "endLine": 916,
+        "endChar": 27
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaab572f_bf9275d5",
         "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8be95912_b7ff7e47",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2800,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-09T02:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaab572f_bf9275d5",
+      "range": {
+        "startLine": 2800,
+        "startChar": 4,
+        "endLine": 2800,
+        "endChar": 10
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "43c1b4f2_877fd51b",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2806,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-09T02:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2e1a1f4_138f5d7c",
+      "range": {
+        "startLine": 2802,
+        "startChar": 3,
+        "endLine": 2806,
+        "endChar": 3
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fdcb861_600dcfec",
         "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3e80fc9d_62a51d12",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2831,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-09T02:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fdcb861_600dcfec",
+      "range": {
+        "startLine": 2831,
+        "startChar": 5,
+        "endLine": 2831,
+        "endChar": 44
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67d47c58_87b1bb91",
         "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2018-12-17T17:45:53Z",
       "side": 1,
       "message": "any chance one of the out parameters could be a return value?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 7
+      },
+      "revId": "bd4266a5a3c4c849068afd910f39b9d25a598270",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e928c378_4f2e5d53",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-09T02:13:07Z",
+      "side": 1,
+      "message": "I can follow up.",
+      "parentUuid": "67d47c58_87b1bb91",
       "range": {
         "startLine": 122,
         "startChar": 2,
