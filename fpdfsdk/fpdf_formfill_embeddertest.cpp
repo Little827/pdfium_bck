@@ -1147,6 +1147,7 @@ TEST_F(FPDFFormFillTextFormEmbedderTest, InsertTextInPopulatedTextFieldLeft) {
   CheckSelection(L"HelloABCDEFGH");
 }
 
+// test comment
 TEST_F(FPDFFormFillTextFormEmbedderTest, InsertTextInPopulatedTextFieldMiddle) {
   TypeTextIntoTextField(8, RegularFormBegin());
 
