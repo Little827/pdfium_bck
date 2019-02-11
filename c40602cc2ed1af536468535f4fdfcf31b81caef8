@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549921285 -0800\nnonce ANwvRnAYhjUNjbuVO4QcWjEy7PHz/7A7pkcgaI/fC0cwymH2mh5/XRbraAXdOCqgTsZQNXjLhazi\n\n0000000000000000000000000000000000000000 c40602cc2ed1af536468535f4fdfcf31b81caef8 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxh7AUACgkQqzYtYVpm\n/XtS2wgAmU9hCiiBQrv7wrWdxw6g9vACDtxj2DshbfQhSALwDdl8+8jzsoNci7iV\nEnRtD//c9fvD5IZMcSROyQFn2JGTV2ZsIuiS6eiaxok4RLDPM3bUkYb83U5syC++\nZvRID+2K614bUj/0qHAe6KLr/nnyhYjkdhGIhhdroLNbQmZjD+vUzh9dAanwgAZ6\nJeDwhtoRrRCee1pWhCA+A1I2dfer/4LT4NQ47U9dIQ0pHyt8jOpwaAv/Va/2Za7q\nFSG5UdEo5wt5RXNzaYwla+afW+DC2WKhusNnpLV/23YzLpbqEXf8Pf01R0jv5tlw\n0OetvO62NH9SExAZFPQj7zz6aoaOJA\u003d\u003d\n\u003dxACY\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "802bfd56_ea54230a",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-11T21:45:41Z",
+      "side": 1,
+      "message": "nit: add something like // Caller takes ownership.",
+      "range": {
+        "startLine": 289,
+        "startChar": 43,
+        "endLine": 289,
+        "endChar": 59
+      },
+      "revId": "c40602cc2ed1af536468535f4fdfcf31b81caef8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
