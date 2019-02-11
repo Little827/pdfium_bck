@@ -26,6 +26,7 @@
 #include "fxjs/xfa/cjx_extras.h"
 #include "fxjs/xfa/cjx_field.h"
 #include "fxjs/xfa/cjx_float.h"
+#include "fxjs/xfa/cjx_form.h"
 #include "fxjs/xfa/cjx_handler.h"
 #include "fxjs/xfa/cjx_hostpseudomodel.h"
 #include "fxjs/xfa/cjx_image.h"
