@@ -5,6 +5,7 @@
 #ifndef TESTING_V8_INITIALIZER_H_
 #define TESTING_V8_INITIALIZER_H_
 
+#include <cstring>
 #include <memory>
 #include <string>
 
