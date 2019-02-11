@@ -1673,3 +1673,54 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
     CloseSavedDocument();
   }
 }
+
+TEST_F(FPDFAnnotEmbedderTest, GetOptionCount) {
+  // Open a file with combobox widget annotations and load its first page.
+  ASSERT_TRUE(OpenDocument("combobox_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+  ASSERT_TRUE(annot);
+
+  EXPECT_EQ(3, FPDFAnnot_GetOptionCount(annot.get()));
+
+  annot.reset(FPDFPage_GetAnnot(page, 1));
+  ASSERT_TRUE(annot);
+
+  EXPECT_EQ(26, FPDFAnnot_GetOptionCount(annot.get()));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFAnnotEmbedderTest, GetOptionLabel) {
+  // Open a file with combobox widget annotations and load its first page.
+  ASSERT_TRUE(OpenDocument("combobox_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 1));
+  ASSERT_TRUE(annot);
+
+  int index = 0;
+  unsigned long len = FPDFAnnot_GetOptionLabel(annot.get(), index, nullptr, 0);
+  std::vector<char> buf(len);
+  EXPECT_EQ(12u, FPDFAnnot_GetOptionLabel(annot.get(), index, buf.data(), len));
+  EXPECT_STREQ(L"Apple", BufferToWString(buf).c_str());
+
+  index = 4;
+  len = FPDFAnnot_GetOptionLabel(annot.get(), index, nullptr, 0);
+  buf.clear();
+  buf.resize(len);
+  EXPECT_EQ(22u, FPDFAnnot_GetOptionLabel(annot.get(), index, buf.data(), len));
+  EXPECT_STREQ(L"Elderberry", BufferToWString(buf).c_str());
+
+  index = 25;
+  len = FPDFAnnot_GetOptionLabel(annot.get(), index, nullptr, 0);
+  buf.clear();
+  buf.resize(len);
+  EXPECT_EQ(18u, FPDFAnnot_GetOptionLabel(annot.get(), index, buf.data(), len));
+  EXPECT_STREQ(L"Zucchini", BufferToWString(buf).c_str());
+
+  UnloadPage(page);
+}
