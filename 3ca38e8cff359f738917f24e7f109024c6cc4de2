@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549922162 -0800\nnonce ANwvRnBpu91vv0dTTa5StZts32+x3TERBmCuXqo8qPzsXq/qMiT8Br1jsYpf+6iXUA9H1afFkdwP\n\n0000000000000000000000000000000000000000 3ca38e8cff359f738917f24e7f109024c6cc4de2 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxh73IACgkQqzYtYVpm\n/XsOMgf+IFgtnX6kKWqM4s4bna32rRr33Dhp+fJjtqO2+x57S4j5rayQivDRuLWF\nMX9rZTbSdTZ6USk+o8MdIDLPrQ60QoEJFhxpUNZGJG9WsRPgXq0sJ0in/pkdXAGj\nrroUFEvp6BWMNyL4oPZQX99Bco7t8l/s1t3LpvvsgMFO4tArGpwikrQ4VgJm9h67\nliZPtaELi0SWScBokDo3ueZm63tmaWQ8vqUnqqH2tDpARORSr1YHMORmxDuhLMNA\n9O7DJmnmqL3ce8dygBwt0TVZJ3aAFtx3Bs2ecYNKkOTRXOeo7+FeirwOUNeWdngj\neapEozGfB+nZw4vh46oRa3N1M47StQ\u003d\u003d\n\u003dk88k\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e8e8408_c0476d9f",
+        "filename": "core/fpdftext/cpdf_textpagefind.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-11T22:58:02Z",
+      "side": 1,
+      "message": "do we ever update these?  is this redundant with options.bMatchCase ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 15
+      },
+      "revId": "3ca38e8cff359f738917f24e7f109024c6cc4de2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e789a3a_e83e1a3b",
+        "filename": "core/fpdftext/cpdf_textpagefind.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-11T22:58:02Z",
+      "side": 1,
+      "message": "nit: const ref?",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "3ca38e8cff359f738917f24e7f109024c6cc4de2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027c4eaa_3297c9a2",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-11T22:58:02Z",
+      "side": 1,
+      "message": "nit: maybe !!(flags \u0026 FPDF_MATCHCASE) out of compulsion.",
+      "range": {
+        "startLine": 283,
+        "startChar": 23,
+        "endLine": 283,
+        "endChar": 46
+      },
+      "revId": "3ca38e8cff359f738917f24e7f109024c6cc4de2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
