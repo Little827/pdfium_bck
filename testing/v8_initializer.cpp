@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <cstring>
+
 #include "testing/v8_initializer.h"
 
 #include "public/fpdfview.h"
