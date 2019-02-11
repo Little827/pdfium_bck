@@ -902,3 +902,44 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
     return nullptr;
   return FPDFPage_GetAnnot(page, annot_index);
 }
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetOptionCount(FPDF_ANNOTATION annot) {
+  if (!annot)
+    return 0;
+
+  CPDF_Dictionary* pAnnotDict =
+      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  if (!pAnnotDict)
+    return 0;
+
+  const CPDF_Array* pArray = ToArray(FPDF_GetFieldAttr(pAnnotDict, "Opt"));
+  return pArray ? pArray->size() : 0;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAnnot_GetOptionLabel(FPDF_ANNOTATION annot,
+                         int index,
+                         void* buffer,
+                         unsigned long buflen) {
+  if (!annot)
+    return 0;
+
+  CPDF_Dictionary* pAnnotDict =
+      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  if (!pAnnotDict)
+    return 0;
+
+  const CPDF_Array* pArray = ToArray(FPDF_GetFieldAttr(pAnnotDict, "Opt"));
+  if (!pArray)
+    return 0;
+
+  const CPDF_Object* pOption = pArray->GetDirectObjectAt(index);
+  if (!pOption)
+    return 0;
+  if (const CPDF_Array* pOptionArray = pOption->AsArray())
+    pOption = pOptionArray->GetDirectObjectAt(1);
+
+  const CPDF_String* pString = ToString(pOption);
+  return Utf16EncodeMaybeCopyAndReturnLength(pString->GetUnicodeText(), buffer,
+                                             buflen);
+}
