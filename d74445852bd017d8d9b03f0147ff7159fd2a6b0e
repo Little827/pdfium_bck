@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a33a423_e1713774",
+        "filename": "fxjs/xfa/cjx_field.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-12T22:22:08Z",
+      "side": 1,
+      "message": "Should we add ToFloat()?",
+      "revId": "d74445852bd017d8d9b03f0147ff7159fd2a6b0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
