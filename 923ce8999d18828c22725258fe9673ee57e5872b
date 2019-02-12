@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549997953 -0800\nnonce ANwvRnCJVFsa3DXa5P0rDWirwUSkUm3sFDtRxK8f+2IyJ0y1q3tT+2jUgEGC2yY8ExUwIGj4ftHo\n\n0000000000000000000000000000000000000000 923ce8999d18828c22725258fe9673ee57e5872b refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxjF4EACgkQqzYtYVpm\n/Xs41AgAg7xxY8LtpPc58cdjv7ZC2yubHQB+UZbhaCWsi4tXduOJmlSIZNumo8iS\nqZGidPuTAGWn0ZyD58ngw+cAL07ntaNUblrkx5me0GEMiJnzvgbp05CvQrZxRDqN\ne64gVoNaR0axq2KxHUw4qhNRmv65OzLaJBWYQYuunhUx/Wb4dXmuffPZXuG1HYzi\n5G88whNmwhN0QWDswIlKqjIzk9JCc8bm/wAsy9+2Sv+b254EaMQwR3cLDNFwMXWw\nVDIMTc/s6SEqEyxeHU1bh+VJDfn32mkIceMmhdUXM45oCXnE5zI9NhN44RjehMSb\nJfReQWOqFA1GA7NzHCkrWDzaW0BxPw\u003d\u003d\n\u003ddm+k\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4278c35_f005d719",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-12T19:15:23Z",
+      "side": 1,
+      "message": "nit: \"else considered harmful\" while were at it (early return).",
+      "range": {
+        "startLine": 829,
+        "startChar": 1,
+        "endLine": 829,
+        "endChar": 6
+      },
+      "revId": "923ce8999d18828c22725258fe9673ee57e5872b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
