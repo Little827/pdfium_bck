@@ -1460,7 +1460,7 @@ void CJX_Object::ScriptSomDefaultValue(CFXJSE_Value* pValue,
     pValue->SetInteger(FXSYS_wtoi(content.c_str()));
   } else if (eType == XFA_Element::Float || eType == XFA_Element::Decimal) {
     CFGAS_Decimal decimal(content.AsStringView());
-    pValue->SetFloat((float)(double)decimal);
+    pValue->SetFloat(static_cast<float>(decimal.ToDouble()));
   } else {
     pValue->SetString(content.ToUTF8().AsStringView());
   }
