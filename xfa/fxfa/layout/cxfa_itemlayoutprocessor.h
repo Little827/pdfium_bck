@@ -35,15 +35,15 @@ enum class XFA_ItemLayoutProcessorResult {
   ManualBreak,
 };
 
-enum class XFA_ItemLayoutProcessorStages {
-  None,
-  BookendLeader,
-  BreakBefore,
-  Keep,
-  Container,
-  BreakAfter,
-  BookendTrailer,
-  Done,
+enum class XFA_ItemLayoutProcessorStage {
+  kNone,
+  kBookendLeader,
+  kBreakBefore,
+  kKeep,
+  kContainer,
+  kBreakAfter,
+  kBookendTrailer,
+  kDone,
 };
 
 class CXFA_ItemLayoutProcessor {
@@ -121,18 +121,18 @@ class CXFA_ItemLayoutProcessor {
   void DoLayoutField();
 
   void GotoNextContainerNodeSimple(bool bUsePageBreak);
-  XFA_ItemLayoutProcessorStages GotoNextContainerNode(
-      XFA_ItemLayoutProcessorStages nCurStage,
+  XFA_ItemLayoutProcessorStage GotoNextContainerNode(
+      XFA_ItemLayoutProcessorStage nCurStage,
       bool bUsePageBreak,
       CXFA_Node* pParentContainer,
       CXFA_Node** pCurActionNode);
 
-  Optional<XFA_ItemLayoutProcessorStages> ProcessKeepNodesForCheckNext(
+  Optional<XFA_ItemLayoutProcessorStage> ProcessKeepNodesForCheckNext(
       CXFA_Node** pCurActionNode,
       CXFA_Node** pNextContainer,
       bool* pLastKeepNode);
 
-  Optional<XFA_ItemLayoutProcessorStages> ProcessKeepNodesForBreakBefore(
+  Optional<XFA_ItemLayoutProcessorStage> ProcessKeepNodesForBreakBefore(
       CXFA_Node** pCurActionNode,
       CXFA_Node* pContainerNode);
 
@@ -165,16 +165,15 @@ class CXFA_ItemLayoutProcessor {
       CXFA_LayoutContext* pLayoutContext,
       bool bNewRow);
 
-  Optional<XFA_ItemLayoutProcessorStages> HandleKeep(
-      CXFA_Node* pBreakAfterNode,
-      CXFA_Node** pCurActionNode);
-  Optional<XFA_ItemLayoutProcessorStages> HandleBookendLeader(
+  Optional<XFA_ItemLayoutProcessorStage> HandleKeep(CXFA_Node* pBreakAfterNode,
+                                                    CXFA_Node** pCurActionNode);
+  Optional<XFA_ItemLayoutProcessorStage> HandleBookendLeader(
       CXFA_Node* pParentContainer,
       CXFA_Node** pCurActionNode);
-  Optional<XFA_ItemLayoutProcessorStages> HandleBreakAfter(
+  Optional<XFA_ItemLayoutProcessorStage> HandleBreakAfter(
       CXFA_Node* pChildContainer,
       CXFA_Node** pCurActionNode);
-  Optional<XFA_ItemLayoutProcessorStages> HandleBookendTrailer(
+  Optional<XFA_ItemLayoutProcessorStage> HandleBookendTrailer(
       CXFA_Node* pParentContainer,
       CXFA_Node** pCurActionNode);
   void ProcessKeepNodesEnd();
@@ -199,8 +198,8 @@ class CXFA_ItemLayoutProcessor {
   CXFA_Node* m_pKeepTailNode = nullptr;
   CXFA_ContentLayoutItem* m_pOldLayoutItem = nullptr;
   CXFA_ItemLayoutProcessor* m_pCurChildPreprocessor = nullptr;
-  XFA_ItemLayoutProcessorStages m_nCurChildNodeStage =
-      XFA_ItemLayoutProcessorStages::None;
+  XFA_ItemLayoutProcessorStage m_nCurChildNodeStage =
+      XFA_ItemLayoutProcessorStage::kNone;
   std::map<CXFA_Node*, int32_t> m_PendingNodesCount;
   float m_fWidthLimite = 0;
   bool m_bHasAvailHeight = true;
