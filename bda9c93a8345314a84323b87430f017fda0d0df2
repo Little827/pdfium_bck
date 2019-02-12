@@ -17,6 +17,24 @@
       "revId": "bda9c93a8345314a84323b87430f017fda0d0df2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c32085_02ee8907",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-12T19:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1bb34a9_3a3b65d9",
+      "revId": "bda9c93a8345314a84323b87430f017fda0d0df2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
