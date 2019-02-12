@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb44cf5e_6aab8422",
+        "filename": "core/fpdftext/cpdf_textpagefind.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-12T19:06:49Z",
+      "side": 1,
+      "message": "check return value and return null?  That would be more in line with the creation pattern (e.g. a ctor that might fail).",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "76f4a865886a84670ec1447b03e27c7d398a0776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a96480d_b7e05800",
+        "filename": "core/fpdftext/cpdf_textpagefind.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-12T19:06:49Z",
+      "side": 1,
+      "message": "Is this just a copy-ctor + some subsequent mods ? Might be expressed better that way.",
+      "range": {
+        "startLine": 259,
+        "startChar": 31,
+        "endLine": 260,
+        "endChar": 35
+      },
+      "revId": "76f4a865886a84670ec1447b03e27c7d398a0776",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
