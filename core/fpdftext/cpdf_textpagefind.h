@@ -52,7 +52,6 @@ class CPDF_TextPageFind {
   WideString m_findWhat;
   std::vector<uint16_t> m_CharIndex;
   std::vector<WideString> m_csFindWhatArray;
-  std::vector<CFX_FloatRect> m_resArray;
   Optional<size_t> m_findNextStart;
   Optional<size_t> m_findPreStart;
   int m_resStart = 0;
@@ -60,7 +59,6 @@ class CPDF_TextPageFind {
   Options m_options;
   bool m_bMatchCase = false;
   bool m_bMatchWholeWord = false;
-  bool m_IsFind = false;
 };
 
 #endif  // CORE_FPDFTEXT_CPDF_TEXTPAGEFIND_H_
