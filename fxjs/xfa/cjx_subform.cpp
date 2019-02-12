@@ -103,12 +103,6 @@ void CJX_Subform::instanceIndex(CFXJSE_Value* pValue,
   ScriptSomInstanceIndex(pValue, bSetting, eAttribute);
 }
 
-void CJX_Subform::layout(CFXJSE_Value* pValue,
-                         bool bSetting,
-                         XFA_Attribute eAttribute) {
-  ScriptAttributeString(pValue, bSetting, eAttribute);
-}
-
 void CJX_Subform::validationMessage(CFXJSE_Value* pValue,
                                     bool bSetting,
                                     XFA_Attribute eAttribute) {

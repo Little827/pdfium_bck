@@ -227,8 +227,6 @@ jumbo_source_set("fxjs") {
         "xfa/cjx_tree.h",
         "xfa/cjx_treelist.cpp",
         "xfa/cjx_treelist.h",
-        "xfa/cjx_value.cpp",
-        "xfa/cjx_value.h",
         "xfa/cjx_wsdlconnection.cpp",
         "xfa/cjx_wsdlconnection.h",
         "xfa/cjx_xfa.cpp",
