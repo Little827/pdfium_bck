@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95205c58_85b1fab5",
+        "filename": "core/fpdftext/cpdf_textpagefind.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-12T17:43:53Z",
+      "side": 1,
+      "message": "nit: move to init list?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "95569f460a1474df6f7db32d61608249e8a4d74c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
