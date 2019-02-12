@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "4bc86cdb_4da9866c",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1683,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-12T19:38:56Z",
+      "side": 1,
+      "message": "And ASAN is complaining because these are not at the right scope. They get destroyed after the page they belong to gets unloaded.",
+      "revId": "9b193513f48b26f26f21d7323ba1cdc9a94c789a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bc158c6_d9b7e623",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 1
