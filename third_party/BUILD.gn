@@ -18,10 +18,20 @@ group("third_party") {
   }
 }
 
+config("pdfium_disable_wextra_semi_for_third_party") {
+  # Enabling -Wextra-semi in pdfium_common_config and then re-disabling it
+  # here is a bit roundabout, but this will all disappear once
+  # -Wextra-semi is just added through the chromium_code config.
+  if (is_clang) {
+    cflags += [ "-Wno-extra-semi" ]
+  }
+}
+
 config("pdfium_third_party_config") {
   configs = [
     "..:pdfium_common_config",
     "..:pdfium_public_config",
+    ":pdfium_disable_wextra_semi_for_third_party",
   ]
 }
 
