@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1549952179 -0800\nnonce ANwvRnBZVCSlzGBWX/ASsfHaHb+dWGvVHRqd2Qf578XX5jH9IE3DkGiuDhbdvUVALhpDCZ6EyL+P\n\n0000000000000000000000000000000000000000 bda9c93a8345314a84323b87430f017fda0d0df2 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dadd-cpdf-textpage\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxiZLMACgkQqzYtYVpm\n/XtYaQgAjvdrGVCUWPNAK6QwR92Z+mxQFCAzcAs3xKeTFkoQ+y2i0FT1X3ofKU0i\naCOXKoeIC+QhChVnPVXDxK9+R8l1JuP20liKy5aotR+/ByDmSJ7xL6t8MXCaeK1C\nO32aFf2sduRspiJ2xNKtusgPokhN6nv4t14iPJWodsJRtOG3JnaArnZxV/nmxSpq\nTsFOKpWzKCnk2ebpG8PiUiSyBp0ITNMBbLT2z8T+9R+aB2qL1x0/k++TvhN0uwgf\noN8yw68O830SYoZrNV2ABuqPUlV/NfNDfKHaCW87r1qBhVMlQtRi5DTjf4Uj2Gez\nL0QWmKTEaoQevtWUy05Ehnp5l67QoA\u003d\u003d\n\u003d3xaC\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1bb34a9_3a3b65d9",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-12T17:56:42Z",
+      "side": 1,
+      "message": "All the callers check for negative values, or have indices that start at 0 and only increment.",
+      "revId": "bda9c93a8345314a84323b87430f017fda0d0df2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
