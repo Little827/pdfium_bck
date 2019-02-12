@@ -44,12 +44,11 @@ class CPDF_TextPageFind {
   bool IsMatchWholeWord(const WideString& csPageText,
                         size_t startPos,
                         size_t endPos);
-  Optional<WideString> ExtractSubString(const wchar_t* lpszFullString,
-                                        int iSubString,
-                                        wchar_t chSep);
   int GetCharIndex(int index) const;
 
  private:
+  void InitCharIndex();
+
   UnownedPtr<const CPDF_TextPage> const m_pTextPage;
   const WideString m_strText;
   const WideString m_findWhat;
