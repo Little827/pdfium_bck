@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4258371f_19e62ed9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T19:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328311f0_cbb9993a",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "212cda40_401eff0d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0db2cac_7dd57125",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T19:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "212cda40_401eff0d",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f6d815b9_7fa7c229",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T19:10:48Z",
+      "side": 1,
+      "message": "Updated to use the existing interactive form as in the other CLs.",
+      "parentUuid": "4abce4eb_8d59831b",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b089ec6_9e075db0",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 3
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "a28dd46a_77f69b16",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T19:10:48Z",
+      "side": 1,
+      "message": "I tried to make this as untied to listboxes and comboboxes as possible so this could grow into future use cases such as the one you mention. I call out LB/CB in the comments just so the user can quickly understand a common use without having to poke around.\n\nSo my opinion would be to let the user be call with whatever annotation they want. If there is an Opt array we\u0027ll return the size and it\u0027s up the user how that information is useful/not useful to them.",
+      "parentUuid": "5b089ec6_9e075db0",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d46b8416_b617f459",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 3
@@ -102,6 +174,24 @@
       "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4672de5e_c28dffe4",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T19:10:48Z",
+      "side": 1,
+      "message": "Ok, updated to return 0 and edited the comment.",
+      "parentUuid": "d46b8416_b617f459",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
