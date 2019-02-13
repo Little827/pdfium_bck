@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "290e7f75_37f59fb3",
+        "filename": "core/fxcodec/codec/ccodec_jpxmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-13T23:12:56Z",
+      "side": 1,
+      "message": "You may want to stick with opj_free(), since it\u0027s allocated with opj_calloc(). https://github.com/uclouvain/openjpeg/blob/948332e6/src/lib/openjp2/jp2.c#L1567",
+      "revId": "3a9b6cdbc8c52d1037d5925e88e08e7a5950bbaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
