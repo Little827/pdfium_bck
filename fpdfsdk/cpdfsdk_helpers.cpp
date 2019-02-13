@@ -175,6 +175,12 @@ CPDF_Page* CPDFPageFromFPDFPage(FPDF_PAGE page) {
   return page ? IPDFPageFromFPDFPage(page)->AsPDFPage() : nullptr;
 }
 
+CPDFSDK_InteractiveForm* FormHandleToInteractiveForm(FPDF_FORMHANDLE hHandle) {
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  return pFormFillEnv ? pFormFillEnv->GetInteractiveForm() : nullptr;
+}
+
 ByteString ByteStringFromFPDFWideString(FPDF_WIDESTRING wide_string) {
   return WideStringFromFPDFWideString(wide_string).ToUTF8();
 }

@@ -25,6 +25,7 @@
 #include "core/fxge/cfx_color.h"
 #include "fpdfsdk/cpdf_annotcontext.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
@@ -868,7 +869,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetFlags(FPDF_ANNOTATION annot,
 }
 
 FPDF_EXPORT int FPDF_CALLCONV
-FPDFAnnot_GetFormFieldFlags(FPDF_PAGE page, FPDF_ANNOTATION annot) {
+FPDFAnnot_GetFormFieldFlags(FPDF_FORMHANDLE hHandle,
+                            FPDF_PAGE page,
+                            FPDF_ANNOTATION annot) {
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (!pPage || !annot)
     return FPDF_FORMFLAG_NONE;
@@ -888,13 +891,17 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
                               FPDF_PAGE page,
                               double page_x,
                               double page_y) {
-  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
-  if (!hHandle || !pPage)
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
     return nullptr;
 
-  CPDF_InteractiveForm interactive_form(pPage->GetDocument());
+  CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
+  if (!pPage)
+    return nullptr;
+
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
   int annot_index = -1;
-  CPDF_FormControl* pFormCtrl = interactive_form.GetControlAtPoint(
+  CPDF_FormControl* pFormCtrl = pPDFForm->GetControlAtPoint(
       pPage, CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)),
       &annot_index);
   if (!pFormCtrl || annot_index == -1)
