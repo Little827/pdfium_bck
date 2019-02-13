@@ -234,7 +234,7 @@ CFX_BreakType CFX_TxtBreak::AppendChar(wchar_t wch) {
   if (chartype != FX_CHARTYPE::kCombination &&
       GetUnifiedCharType(m_eCharType) != GetUnifiedCharType(chartype) &&
       m_eCharType != FX_CHARTYPE::kUnknown && !m_bSingleLine &&
-      IsGreaterThanLineWidth(m_pCurLine->m_iWidth) &&
+      IsGreaterThanLineWidth(m_pCurLine->width()) &&
       (m_eCharType != FX_CHARTYPE::kSpace ||
        chartype != FX_CHARTYPE::kControl)) {
     dwRet1 = EndBreak(CFX_BreakType::Line);
@@ -284,7 +284,7 @@ bool CFX_TxtBreak::EndBreak_SplitLine(CFX_BreakLine* pNextLine,
                                       bool bAllChars) {
   bool bDone = false;
   CFX_Char* pTC;
-  if (!m_bSingleLine && IsGreaterThanLineWidth(m_pCurLine->m_iWidth)) {
+  if (!m_bSingleLine && IsGreaterThanLineWidth(m_pCurLine->width())) {
     pTC = m_pCurLine->GetChar(m_pCurLine->m_LineChars.size() - 1);
     switch (pTC->GetCharType()) {
       case FX_CHARTYPE::kTab:
@@ -300,7 +300,7 @@ bool CFX_TxtBreak::EndBreak_SplitLine(CFX_BreakLine* pNextLine,
 
   CFX_BreakPiece tp;
   if (bAllChars && !bDone) {
-    int32_t iEndPos = m_pCurLine->m_iWidth;
+    int32_t iEndPos = m_pCurLine->width();
     GetBreakPos(&m_pCurLine->m_LineChars, bAllChars, true, &iEndPos);
   }
   return false;
@@ -314,8 +314,8 @@ void CFX_TxtBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
   std::vector<CFX_Char>& chars = m_pCurLine->m_LineChars;
   if (!m_pCurLine->HasArabicChar()) {
     tp.m_dwStatus = dwStatus;
-    tp.m_iStartPos = m_pCurLine->m_iStart;
-    tp.m_iWidth = m_pCurLine->m_iWidth;
+    tp.m_iStartPos = m_pCurLine->start();
+    tp.m_iWidth = m_pCurLine->width();
     tp.m_iStartChar = 0;
     tp.m_iChars = m_pCurLine->m_LineChars.size();
     tp.m_pChars = &m_pCurLine->m_LineChars;
@@ -340,7 +340,7 @@ void CFX_TxtBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
   CFX_Char::BidiLine(&chars, iBidiNum + 1);
 
   tp.m_dwStatus = CFX_BreakType::Piece;
-  tp.m_iStartPos = m_pCurLine->m_iStart;
+  tp.m_iStartPos = m_pCurLine->start();
   tp.m_pChars = &m_pCurLine->m_LineChars;
   int32_t iBidiLevel = -1;
   int32_t iCharWidth;
@@ -411,7 +411,7 @@ void CFX_TxtBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
 void CFX_TxtBreak::EndBreak_Alignment(const std::deque<FX_TPO>& tpos,
                                       bool bAllChars,
                                       CFX_BreakType dwStatus) {
-  int32_t iNetWidth = m_pCurLine->m_iWidth;
+  int32_t iNetWidth = m_pCurLine->width();
   int32_t iGapChars = 0;
   bool bFind = false;
   for (auto it = tpos.rbegin(); it != tpos.rend(); ++it) {

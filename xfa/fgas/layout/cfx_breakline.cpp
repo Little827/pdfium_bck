@@ -27,3 +27,13 @@ void CFX_BreakLine::Clear() {
   m_iWidth = 0;
   m_iArabicChars = 0;
 }
+
+bool CFX_BreakLine::CheckedAddWidth(int32_t w) {
+  FX_SAFE_INT32 checked_width = m_iWidth;
+  checked_width += w;
+  if (!checked_width.IsValid())
+    return false;
+
+  m_iWidth = checked_width.ValueOrDie();
+  return true;
+}

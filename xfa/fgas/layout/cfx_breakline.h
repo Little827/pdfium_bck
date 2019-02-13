@@ -22,6 +22,11 @@ class CFX_BreakLine {
 
   void Clear();
 
+  int32_t width() const { return m_iWidth; }
+  bool CheckedAddWidth(int32_t w);
+
+  int32_t start() const { return m_iStart; }
+
   void AddArabicChar() { ++m_iArabicChars; }
   void RemoveArabicChar() { --m_iArabicChars; }
   bool HasArabicChar() const { return m_iArabicChars > 0; }

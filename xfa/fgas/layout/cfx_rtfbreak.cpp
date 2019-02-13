@@ -140,14 +140,10 @@ void CFX_RTFBreak::AppendChar_Combination(CFX_Char* pCurChar) {
 
   int32_t iCharWidthValid = iCharWidth.ValueOrDefault(0);
   pCurChar->m_iCharWidth = iCharWidthValid;
-  if (iCharWidthValid > 0) {
-    pdfium::base::CheckedNumeric<int32_t> checked_width = m_pCurLine->m_iWidth;
-    checked_width += iCharWidthValid;
-    if (!checked_width.IsValid())
-      return;
+  if (iCharWidthValid <= 0)
+    return;
 
-    m_pCurLine->m_iWidth = checked_width.ValueOrDie();
-  }
+  m_pCurLine->CheckedAddWidth(iCharWidthValid);
 }
 
 void CFX_RTFBreak::AppendChar_Tab(CFX_Char* pCurChar) {
@@ -226,13 +222,9 @@ CFX_BreakType CFX_RTFBreak::AppendChar_Arabic(CFX_Char* pCurChar) {
       int iCharWidthValid = iCharWidth.ValueOrDefault(0);
       pLastChar->m_iCharWidth = iCharWidthValid;
 
-      pdfium::base::CheckedNumeric<int32_t> checked_width =
-          m_pCurLine->m_iWidth;
-      checked_width += iCharWidthValid;
-      if (!checked_width.IsValid())
+      if (!m_pCurLine->CheckedAddWidth(iCharWidthValid))
         return CFX_BreakType::None;
 
-      m_pCurLine->m_iWidth = checked_width.ValueOrDie();
       iCharWidth = 0;
     }
   }
@@ -255,12 +247,9 @@ CFX_BreakType CFX_RTFBreak::AppendChar_Arabic(CFX_Char* pCurChar) {
   int iCharWidthValid = iCharWidth.ValueOrDefault(0);
   pCurChar->m_iCharWidth = iCharWidthValid;
 
-  pdfium::base::CheckedNumeric<int32_t> checked_width = m_pCurLine->m_iWidth;
-  checked_width += iCharWidthValid;
-  if (!checked_width.IsValid())
+  if (!m_pCurLine->CheckedAddWidth(iCharWidthValid))
     return CFX_BreakType::None;
 
-  m_pCurLine->m_iWidth = checked_width.ValueOrDie();
   m_pCurLine->AddArabicChar();
 
   if (IsGreaterThanLineWidth(m_pCurLine->GetLineEnd()))
@@ -286,12 +275,9 @@ CFX_BreakType CFX_RTFBreak::AppendChar_Others(CFX_Char* pCurChar) {
   int iCharWidthValid = iCharWidth.ValueOrDefault(0);
   pCurChar->m_iCharWidth = iCharWidthValid;
 
-  pdfium::base::CheckedNumeric<int32_t> checked_width = m_pCurLine->m_iWidth;
-  checked_width += iCharWidthValid;
-  if (!checked_width.IsValid())
+  if (!m_pCurLine->CheckedAddWidth(iCharWidthValid))
     return CFX_BreakType::None;
 
-  m_pCurLine->m_iWidth = checked_width.ValueOrDie();
   if (chartype != FX_CHARTYPE::kSpace &&
       IsGreaterThanLineWidth(m_pCurLine->GetLineEnd())) {
     return EndBreak(CFX_BreakType::Line);
@@ -441,7 +427,7 @@ void CFX_RTFBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
 
   CFX_BreakPiece tp;
   tp.m_dwStatus = CFX_BreakType::Piece;
-  tp.m_iStartPos = m_pCurLine->m_iStart;
+  tp.m_iStartPos = m_pCurLine->start();
   tp.m_pChars = &chars;
 
   int32_t iBidiLevel = -1;
@@ -497,7 +483,7 @@ void CFX_RTFBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
   }
 
   std::sort(tpos->begin(), tpos->end());
-  int32_t iStartPos = m_pCurLine->m_iStart;
+  int32_t iStartPos = m_pCurLine->start();
   for (const auto& it : *tpos) {
     CFX_BreakPiece& ttp = m_pCurLine->m_LinePieces[it.index];
     ttp.m_iStartPos = iStartPos;
@@ -508,7 +494,7 @@ void CFX_RTFBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
 void CFX_RTFBreak::EndBreak_Alignment(const std::deque<FX_TPO>& tpos,
                                       bool bAllChars,
                                       CFX_BreakType dwStatus) {
-  int32_t iNetWidth = m_pCurLine->m_iWidth;
+  int32_t iNetWidth = m_pCurLine->width();
   int32_t iGapChars = 0;
   bool bFind = false;
   for (auto it = tpos.rbegin(); it != tpos.rend(); it++) {
