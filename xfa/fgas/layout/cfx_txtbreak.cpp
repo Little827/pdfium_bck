@@ -280,7 +280,7 @@ CFX_BreakType CFX_TxtBreak::AppendChar(wchar_t wch) {
   return std::max(dwRet1, dwRet2);
 }
 
-bool CFX_TxtBreak::EndBreak_SplitLine(CFX_BreakLine* pNextLine,
+void CFX_TxtBreak::EndBreak_SplitLine(CFX_BreakLine* pNextLine,
                                       bool bAllChars) {
   bool bDone = false;
   CFX_Char* pTC;
@@ -303,7 +303,6 @@ bool CFX_TxtBreak::EndBreak_SplitLine(CFX_BreakLine* pNextLine,
     int32_t iEndPos = m_pCurLine->width();
     GetBreakPos(&m_pCurLine->m_LineChars, bAllChars, true, &iEndPos);
   }
-  return false;
 }
 
 void CFX_TxtBreak::EndBreak_BidiLine(std::deque<FX_TPO>* tpos,
@@ -508,12 +507,11 @@ CFX_BreakType CFX_TxtBreak::EndBreak(CFX_BreakType dwStatus) {
   m_iReadyLineIndex = m_pCurLine == &m_Line[0] ? 0 : 1;
   CFX_BreakLine* pNextLine = &m_Line[1 - m_iReadyLineIndex];
   bool bAllChars = m_iAlignment > CFX_TxtLineAlignment_Right;
-  if (!EndBreak_SplitLine(pNextLine, bAllChars)) {
-    std::deque<FX_TPO> tpos;
-    EndBreak_BidiLine(&tpos, dwStatus);
-    if (m_iAlignment > CFX_TxtLineAlignment_Left)
-      EndBreak_Alignment(tpos, bAllChars, dwStatus);
-  }
+  EndBreak_SplitLine(pNextLine, bAllChars);
+  std::deque<FX_TPO> tpos;
+  EndBreak_BidiLine(&tpos, dwStatus);
+  if (m_iAlignment > CFX_TxtLineAlignment_Left)
+    EndBreak_Alignment(tpos, bAllChars, dwStatus);
 
   m_pCurLine = pNextLine;
   CFX_Char* pTC = GetLastChar(0, false, false);
