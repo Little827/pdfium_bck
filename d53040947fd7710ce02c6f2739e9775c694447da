@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "765089b2_4aeac16b",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T21:20:46Z",
+      "side": 1,
+      "message": "I added that because I thought CountOptions() was causing a segfault before when this wasn\u0027t present but believe it was fixed with test prior test refactoring. Removed this check.",
+      "parentUuid": "a122efbb_f9641601",
+      "revId": "d53040947fd7710ce02c6f2739e9775c694447da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4af2fff6_0083787c",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "d53040947fd7710ce02c6f2739e9775c694447da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdfc222b_a6cafb29",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T21:20:46Z",
+      "side": 1,
+      "message": "Removed check.",
+      "parentUuid": "4af2fff6_0083787c",
+      "revId": "d53040947fd7710ce02c6f2739e9775c694447da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2f42acb6_d5056a90",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T21:20:46Z",
+      "side": 1,
+      "message": "Removed check.",
+      "parentUuid": "637da4ce_f4f5e107",
+      "revId": "d53040947fd7710ce02c6f2739e9775c694447da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fec35276_9a88a8eb",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 5
@@ -67,6 +121,24 @@
       "revId": "d53040947fd7710ce02c6f2739e9775c694447da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c41aba38_97270181",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-13T21:20:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec35276_9a88a8eb",
+      "revId": "d53040947fd7710ce02c6f2739e9775c694447da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
