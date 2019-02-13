@@ -255,6 +255,17 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnKillFocus(
   return GetAnnotHandler(pAnnot->Get())->OnKillFocus(pAnnot, nFlag);
 }
 
+bool CPDFSDK_AnnotHandlerMgr::Annot_SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                                     int index,
+                                                     bool selected) {
+  return GetAnnotHandler(pAnnot)->SetIndexSelected(pAnnot, index, selected);
+}
+
+bool CPDFSDK_AnnotHandlerMgr::Annot_IsIndexSelected(CPDFSDK_Annot* pAnnot,
+                                                    int index) {
+  return GetAnnotHandler(pAnnot)->IsIndexSelected(pAnnot, index);
+}
+
 #ifdef PDF_ENABLE_XFA
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnChangeFocus(
     CPDFSDK_Annot::ObservedPtr* pSetAnnot,

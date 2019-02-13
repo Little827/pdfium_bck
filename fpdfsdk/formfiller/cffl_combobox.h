@@ -52,6 +52,10 @@ class CFFL_ComboBox final : public CFFL_TextObject,
 
   // CPWL_Wnd::FocusHandlerIface:
   void OnSetFocus(CPWL_Edit* pEdit) override;
+  bool SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                        int index,
+                        bool selected) override;
+  bool IsIndexSelected(CPDFSDK_Annot* pAnnot, int index) override;
 
  private:
   WideString GetSelectExportText();

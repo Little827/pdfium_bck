@@ -250,6 +250,46 @@ void CFFL_ComboBox::OnSetFocus(CPWL_Edit* pEdit) {
   m_pFormFillEnv->OnSetFieldInputFocus(pBuffer, nCharacters, true);
 }
 
+bool CFFL_ComboBox::SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                     int index,
+                                     bool selected) {
+  if (!IsValid() || !selected)
+    return false;
+
+  int num_options = m_pWidget->CountOptions();
+  if (index < 0 || index >= num_options) {
+    return false;
+  }
+
+  CPDFSDK_PageView* pPageView = GetCurPageView(true);
+  ASSERT(pPageView);
+
+  CPWL_ComboBox* pWnd =
+      static_cast<CPWL_ComboBox*>(GetPDFWindow(pPageView, false));
+  if (!pWnd)
+    return false;
+
+  pWnd->SetSelect(index);
+  return true;
+}
+
+bool CFFL_ComboBox::IsIndexSelected(CPDFSDK_Annot* pAnnot, int index) {
+  if (!IsValid())
+    return false;
+
+  CPDFSDK_PageView* pPageView = GetCurPageView(true);
+  ASSERT(pPageView);
+
+  CPWL_ComboBox* pWnd =
+      static_cast<CPWL_ComboBox*>(GetPDFWindow(pPageView, false));
+  if (!pWnd)
+    return false;
+
+  int32_t selected = pWnd->GetSelect();
+
+  return selected == index;
+}
+
 WideString CFFL_ComboBox::GetSelectExportText() {
   WideString swRet;
 
