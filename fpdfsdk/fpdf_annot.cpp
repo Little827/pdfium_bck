@@ -24,7 +24,9 @@
 #include "core/fpdfdoc/cpvt_generateap.h"
 #include "core/fxge/cfx_color.h"
 #include "fpdfsdk/cpdf_annotcontext.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
@@ -901,4 +903,76 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
   if (!pFormCtrl || annot_index == -1)
     return nullptr;
   return FPDFPage_GetAnnot(page, annot_index);
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetOptionCount(FPDF_FORMHANDLE hHandle,
+                                                       FPDF_ANNOTATION annot) {
+  if (!hHandle || !annot)
+    return -1;
+
+  CPDF_Dictionary* pAnnotDict =
+      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  if (!pAnnotDict)
+    return -1;
+
+  if (!FPDF_GetFieldAttr(pAnnotDict, "Opt"))
+    return -1;
+
+  // this will not be here - this will be in cpdfsdk_helpers when
+  // https://pdfium-review.googlesource.com/c/pdfium/+/50711/ is merged
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!pFormFillEnv)
+    return -1;
+
+  CPDFSDK_InteractiveForm* pForm = pFormFillEnv->GetInteractiveForm();
+  if (!pForm)
+    return -1;
+
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
+  if (!pPDFForm)
+    return -1;
+
+  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  return pFormField ? pFormField->CountOptions() : -1;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAnnot_GetOptionLabel(FPDF_FORMHANDLE hHandle,
+                         FPDF_ANNOTATION annot,
+                         int index,
+                         void* buffer,
+                         unsigned long buflen) {
+  if (!hHandle || !annot || index < 0)
+    return 0;
+
+  CPDF_Dictionary* pAnnotDict =
+      CPDFAnnotContextFromFPDFAnnotation(annot)->GetAnnotDict();
+  if (!pAnnotDict)
+    return 0;
+
+  if (!FPDF_GetFieldAttr(pAnnotDict, "Opt"))
+    return 0;
+
+  // TEMP - this will not be here - this will be in cpdfsdk_helpers when
+  // https://pdfium-review.googlesource.com/c/pdfium/+/50711/ is merged
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!pFormFillEnv)
+    return 0;
+
+  CPDFSDK_InteractiveForm* pForm = pFormFillEnv->GetInteractiveForm();
+  if (!pForm)
+    return 0;
+
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
+  if (!pPDFForm)
+    return 0;
+
+  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  if (!pFormField || index >= pFormField->CountOptions())
+    return 0;
+
+  WideString ws = pFormField->GetOptionLabel(index);
+  return Utf16EncodeMaybeCopyAndReturnLength(ws, buffer, buflen);
 }
