@@ -8,9 +8,9 @@
 
 #include "third_party/base/stl_util.h"
 
-CFX_BreakLine::CFX_BreakLine() : m_iStart(0), m_iWidth(0), m_iArabicChars(0) {}
+CFX_BreakLine::CFX_BreakLine() = default;
 
-CFX_BreakLine::~CFX_BreakLine() {}
+CFX_BreakLine::~CFX_BreakLine() = default;
 
 CFX_Char* CFX_BreakLine::GetChar(int32_t index) {
   ASSERT(pdfium::IndexInBounds(m_LineChars, index));
