@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "328311f0_cbb9993a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-13T01:39:40Z",
+      "side": 1,
+      "message": "One liner please. Shorter summary.",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212cda40_401eff0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-13T01:39:40Z",
+      "side": 1,
+      "message": "The syntax here needs to be something like pdfium:NNN, chromium:NNN, or b/NNN.",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b089ec6_9e075db0",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-13T01:39:40Z",
+      "side": 1,
+      "message": "There\u0027s nothing to prevent a PDF from having an Opt dictionary for some other annotation type. How do you want to handle cases like that?",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46b8416_b617f459",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-13T01:39:40Z",
+      "side": 1,
+      "message": "For these, 0 is the invalid return value. Empty string is encoded as \"\\0\\0\", so its length is 2.",
+      "revId": "0de00719351a6800aae39ba2294858e52f0ce6da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
