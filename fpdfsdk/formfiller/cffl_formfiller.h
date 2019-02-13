@@ -145,6 +145,11 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
 
   CPDFSDK_Annot* GetSDKAnnot() const { return m_pWidget.Get(); }
 
+  virtual bool SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                int index,
+                                bool selected);
+  virtual bool IsIndexSelected(CPDFSDK_Annot* pAnnot, int index);
+
  protected:
   // If the inheriting widget has its own fontmap and a PWL_Edit widget that
   // access that fontmap then you have to call DestroyWindows before destroying

@@ -441,6 +441,26 @@ bool CPDFSDK_PageView::OnMouseWheel(double deltaX,
                                               static_cast<int>(deltaY), point);
 }
 
+bool CPDFSDK_PageView::SetIndexSelected(int index, bool selected) {
+  if (CPDFSDK_Annot* pAnnot = GetFocusAnnot()) {
+    CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
+        m_pFormFillEnv->GetAnnotHandlerMgr();
+    return pAnnotHandlerMgr->Annot_SetIndexSelected(pAnnot, index, selected);
+  }
+
+  return false;
+}
+
+bool CPDFSDK_PageView::IsIndexSelected(int index) {
+  if (CPDFSDK_Annot* pAnnot = GetFocusAnnot()) {
+    CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
+        m_pFormFillEnv->GetAnnotHandlerMgr();
+    return pAnnotHandlerMgr->Annot_IsIndexSelected(pAnnot, index);
+  }
+
+  return false;
+}
+
 bool CPDFSDK_PageView::OnChar(int nChar, uint32_t nFlag) {
   if (CPDFSDK_Annot* pAnnot = GetFocusAnnot()) {
     CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
