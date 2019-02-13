@@ -153,6 +153,18 @@ class FPDFFormFillInteractiveEmbedderTest : public FPDFFormFillEmbedderTest {
 
   void PerformRedo() { EXPECT_TRUE(FORM_Redo(form_handle(), page_)); }
 
+  void SetIndexSelectedShouldSucceed(int index, bool selected) {
+    EXPECT_TRUE(FORM_SetIndexSelected(form_handle(), page_, index, selected));
+  }
+
+  void SetIndexSelectedShouldFail(int index, bool selected) {
+    EXPECT_FALSE(FORM_SetIndexSelected(form_handle(), page_, index, selected));
+  }
+
+  void CheckIsIndexSelected(int index, bool expected) {
+    EXPECT_EQ(expected, FORM_IsIndexSelected(form_handle(), page_, index));
+  }
+
  private:
   FPDF_PAGE page_ = nullptr;
 };
@@ -268,6 +280,14 @@ class FPDFFormFillComboBoxFormEmbedderTest
     SelectTextWithMouse(EditableFormEnd(), EditableFormBegin());
   }
 
+  void FocusOnEditableForm() { FocusOnPoint(EditableFormDropDown()); }
+
+  void FocusOnNonEditableForm() { FocusOnPoint(NonEditableFormDropDown()); }
+
+  void FocusOnPoint(const CFX_PointF& point) {
+    EXPECT_EQ(true, FORM_OnFocus(form_handle(), page(), 0, point.x, point.y));
+  }
+
   const CFX_PointF& EditableFormBegin() const {
     static const CFX_PointF point = EditableFormAtX(kFormBeginX);
     return point;
@@ -334,6 +354,95 @@ class FPDFFormFillComboBoxFormEmbedderTest
   static constexpr float kFormDropDownX = 192.0;
   static constexpr float kEditableFormY = 360.0;
   static constexpr float kNonEditableFormY = 410.0;
+};
+
+class FPDFFormFillListBoxFormEmbedderTest
+    : public FPDFFormFillInteractiveEmbedderTest {
+ protected:
+  FPDFFormFillListBoxFormEmbedderTest() = default;
+  ~FPDFFormFillListBoxFormEmbedderTest() override = default;
+
+  const char* GetDocumentName() const override {
+    // PDF with form listboxes:
+    // - "Listbox_SingleSelect" - Ff: 0, 3 options with pair values.
+    // - "Listbox_MultiSelect" - Ff: 2097152, 26 options with single values.
+    // - "Listbox_ReadOnly" - Ff: 1, 3 options with single values.
+    return "listbox_form.pdf";
+  }
+
+  int GetFormType() const override { return FPDF_FORMFIELD_LISTBOX; }
+
+  void FormSanityChecks() override {
+    EXPECT_EQ(GetFormType(),
+              GetFormTypeAtPoint(SingleSelectFirstVisibleOption()));
+    EXPECT_EQ(GetFormType(),
+              GetFormTypeAtPoint(SingleSelectSecondVisibleOption()));
+    EXPECT_EQ(GetFormType(),
+              GetFormTypeAtPoint(MultiSelectFirstVisibleOption()));
+    EXPECT_EQ(GetFormType(),
+              GetFormTypeAtPoint(MultiSelectSecondVisibleOption()));
+  }
+
+  void ClickOnSingleSelectFormOption(int item_index) {
+    // only first two visible so can only click those without scrolling
+    ASSERT(item_index >= 0);
+    ASSERT(item_index < 2);
+    if (item_index == 0) {
+      ClickOnFormFieldAtPoint(SingleSelectFirstVisibleOption());
+    } else {
+      ClickOnFormFieldAtPoint(SingleSelectSecondVisibleOption());
+    }
+  }
+
+  void ClickOnMultiSelectFormOption(int item_index) {
+    // only first two visible so can only click those without scrolling
+    ASSERT(item_index >= 0);
+    ASSERT(item_index < 2);
+    if (item_index == 0) {
+      ClickOnFormFieldAtPoint(MultiSelectFirstVisibleOption());
+    } else {
+      ClickOnFormFieldAtPoint(MultiSelectSecondVisibleOption());
+    }
+  }
+
+  void FocusOnSingleSelectForm() {
+    FocusOnPoint(SingleSelectFirstVisibleOption());
+  }
+
+  void FocusOnMultiSelectForm() {
+    FocusOnPoint(MultiSelectFirstVisibleOption());
+  }
+
+  void FocusOnPoint(const CFX_PointF& point) {
+    EXPECT_EQ(true, FORM_OnFocus(form_handle(), page(), 0, point.x, point.y));
+  }
+
+  const CFX_PointF& SingleSelectFirstVisibleOption() const {
+    static const CFX_PointF point(kFormBeginX, kSingleFormYFirstVisibleOption);
+    return point;
+  }
+
+  const CFX_PointF& SingleSelectSecondVisibleOption() const {
+    static const CFX_PointF point(kFormBeginX, kSingleFormYSecondVisibleOption);
+    return point;
+  }
+
+  const CFX_PointF& MultiSelectFirstVisibleOption() const {
+    static const CFX_PointF point(kFormBeginX, kMultiFormYFirstVisibleOption);
+    return point;
+  }
+
+  const CFX_PointF& MultiSelectSecondVisibleOption() const {
+    static const CFX_PointF point(kFormBeginX, kMultiFormYSecondVisibleOption);
+    return point;
+  }
+
+ private:
+  static constexpr float kFormBeginX = 102.0;
+  static constexpr float kSingleFormYFirstVisibleOption = 371.0;
+  static constexpr float kSingleFormYSecondVisibleOption = 358.0;
+  static constexpr float kMultiFormYFirstVisibleOption = 423.0;
+  static constexpr float kMultiFormYSecondVisibleOption = 408.0;
 };
 
 TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
@@ -965,6 +1074,110 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   SelectTextWithMouse(EditableFormEnd(), EditableFormAtX(174.0));
   CheckSelection(L"J");
   CheckFocusedFieldText(L"ABCDEFGHIJ");
+}
+
+TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
+       SetSelectionProgrammaticallyNonEditableField) {
+  // focus on non-editable form field and check the value is as expected
+  // this is the value that is present in the field upon opening,
+  // we have not changed it by setting focus
+  FocusOnNonEditableForm();
+  CheckFocusedFieldText(L"Banana");
+
+  // make selections to change value of the focussed annot programmatically
+  SetIndexSelectedShouldSucceed(0, true);
+  CheckFocusedFieldText(L"Apple");
+
+  // selecting index that is already selected is success
+  SetIndexSelectedShouldSucceed(0, true);
+  CheckFocusedFieldText(L"Apple");
+
+  SetIndexSelectedShouldSucceed(9, true);
+  CheckFocusedFieldText(L"Jackfruit");
+
+  // cannot unselect a combobox field - value unchanged
+  SetIndexSelectedShouldFail(9, false);
+  CheckFocusedFieldText(L"Jackfruit");
+
+  // should not select indices out of range - value unchanged
+  SetIndexSelectedShouldFail(100, true);
+  SetIndexSelectedShouldFail(-100, true);
+  CheckFocusedFieldText(L"Jackfruit");
+
+  // check interoperable with click actions, should be able to use combination
+  SelectNonEditableFormOption(1);
+  CheckFocusedFieldText(L"Banana");
+}
+
+TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
+       SetSelectionProgrammaticallyEditableField) {
+  // focus on editable form field and check the value is as expected
+  // this is the value that is present in the field upon opening,
+  // we have not changed it by setting focus
+  FocusOnEditableForm();
+  CheckFocusedFieldText(L"");
+
+  // make selections to change value of the focussed annot programmatically
+  SetIndexSelectedShouldSucceed(0, true);
+  CheckFocusedFieldText(L"Foo");
+
+  SetIndexSelectedShouldSucceed(1, true);
+  CheckFocusedFieldText(L"Bar");
+
+  // selecting index that is already selected is success
+  SetIndexSelectedShouldSucceed(1, true);
+  CheckFocusedFieldText(L"Bar");
+
+  // cannot unselect a combobox field - value unchanged
+  SetIndexSelectedShouldFail(0, false);
+  CheckFocusedFieldText(L"Bar");
+
+  // should not select indices out of range - value unchanged
+  SetIndexSelectedShouldFail(100, true);
+  SetIndexSelectedShouldFail(-100, true);
+  CheckFocusedFieldText(L"Bar");
+
+  // check interoperable with click actions, should be able to use combination
+  SelectEditableFormOption(0);
+  CheckFocusedFieldText(L"Foo");
+
+  // check interoperable with typing actions, should be able to use combination
+  // typing text into text field after selecting indices programmatically
+  // should be equivalent to if user had selected index via dropdown
+  SetIndexSelectedShouldSucceed(1, true);
+  CheckFocusedFieldText(L"Bar");
+  TypeTextIntoTextField(5, EditableFormBegin());
+  CheckFocusedFieldText(L"ABCDEBar");
+}
+
+TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
+       CheckIfIndexSelectedNonEditableField) {
+  // non-editable set to 'Banana' (index 1) upon opening
+  ClickOnFormFieldAtPoint(NonEditableFormBegin());
+  for (int i = 0; i < 26; i++) {
+    bool expected = i == 1;
+    CheckIsIndexSelected(i, expected);
+  }
+
+  SelectNonEditableFormOption(0);
+  CheckIsIndexSelected(0, true);
+  for (int i = 1; i < 26; i++) {
+    CheckIsIndexSelected(i, false);
+  }
+}
+
+TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
+       CheckIfIndexSelectedEditableField) {
+  // editable set to empty text upon opening
+  ClickOnFormFieldAtPoint(EditableFormBegin());
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, false);
+  CheckIsIndexSelected(2, false);
+
+  SelectEditableFormOption(0);
+  CheckIsIndexSelected(0, true);
+  CheckIsIndexSelected(1, false);
+  CheckIsIndexSelected(2, false);
 }
 
 TEST_F(FPDFFormFillTextFormEmbedderTest, DeleteTextFieldEntireSelection) {
@@ -1782,6 +1995,33 @@ TEST_F(FPDFFormFillTextFormEmbedderTest, UndoRedo) {
   CheckCanRedo(false);
 }
 
+// this action only applies to Listbox and Combobox so should gracefully fail
+// for Textboxes by returning false to all operations
+TEST_F(FPDFFormFillTextFormEmbedderTest, SetIndexSelectedShouldFailGracefully) {
+  // set focus and read text to confirm we have it
+  ClickOnFormFieldAtPoint(CharLimitFormEnd());
+  CheckFocusedFieldText(L"Elephant");
+
+  SetIndexSelectedShouldFail(0, true);
+  SetIndexSelectedShouldFail(0, false);
+  SetIndexSelectedShouldFail(1, true);
+  SetIndexSelectedShouldFail(1, false);
+  SetIndexSelectedShouldFail(-1, true);
+  SetIndexSelectedShouldFail(-1, false);
+}
+
+// this action only applies to Listbox and Combobox so should gracefully fail
+// for Textboxes by returning false to all operations
+TEST_F(FPDFFormFillTextFormEmbedderTest, IsIndexSelectedShouldFailGracefully) {
+  // set focus and read text to confirm we have it
+  ClickOnFormFieldAtPoint(CharLimitFormEnd());
+  CheckFocusedFieldText(L"Elephant");
+
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, false);
+  CheckIsIndexSelected(-1, false);
+}
+
 TEST_F(FPDFFormFillComboBoxFormEmbedderTest, UndoRedo) {
   ClickOnFormFieldAtPoint(NonEditableFormBegin());
   CheckFocusedFieldText(L"Banana");
@@ -1815,4 +2055,168 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest, UndoRedo) {
   CheckFocusedFieldText(L"A");
   CheckCanUndo(true);
   CheckCanRedo(true);
+}
+
+TEST_F(FPDFFormFillListBoxFormEmbedderTest,
+       CheckIfIndexSelectedSingleSelectField) {
+  // nothing selected in single select to begin
+  FocusOnSingleSelectForm();
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, false);
+  CheckIsIndexSelected(2, false);
+
+  ClickOnSingleSelectFormOption(1);
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, true);
+  CheckIsIndexSelected(2, false);
+}
+
+TEST_F(FPDFFormFillListBoxFormEmbedderTest,
+       CheckIfIndexSelectedMultiSelectField) {
+  // multiselect set to 'Banana' (index 1) upon opening
+  FocusOnMultiSelectForm();
+  for (int i = 0; i < 26; i++) {
+    bool expected = i == 1;
+    CheckIsIndexSelected(i, expected);
+  }
+
+  ClickOnMultiSelectFormOption(0);
+  for (int i = 0; i < 26; i++) {
+    bool expected = i == 0;
+    CheckIsIndexSelected(i, expected);
+  }
+}
+
+TEST_F(FPDFFormFillListBoxFormEmbedderTest,
+       SetSelectionProgrammaticallySingleSelectField) {
+  // starts without anything selected
+  FocusOnSingleSelectForm();
+  CheckFocusedFieldText(L"");
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, false);
+  CheckIsIndexSelected(2, false);
+
+  // make selections to change value of the focussed annot programmatically
+  // showing that only one value remains selected at a time
+  SetIndexSelectedShouldSucceed(0, true);
+  CheckFocusedFieldText(L"Foo");
+  CheckIsIndexSelected(0, true);
+  CheckIsIndexSelected(1, false);
+  CheckIsIndexSelected(2, false);
+
+  SetIndexSelectedShouldSucceed(1, true);
+  CheckFocusedFieldText(L"Bar");
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, true);
+  CheckIsIndexSelected(2, false);
+
+  // selecting/deselecting index that is already selected/deselected is success
+  SetIndexSelectedShouldSucceed(1, true);
+  CheckFocusedFieldText(L"Bar");
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, true);
+  CheckIsIndexSelected(2, false);
+
+  SetIndexSelectedShouldSucceed(2, false);
+  CheckFocusedFieldText(L"Bar");
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, true);
+  CheckIsIndexSelected(2, false);
+
+  // should not select indices out of range
+  SetIndexSelectedShouldFail(100, true);
+  SetIndexSelectedShouldFail(-100, true);
+  SetIndexSelectedShouldFail(100, false);
+  SetIndexSelectedShouldFail(-100, false);
+  // previous values were not changed
+  CheckFocusedFieldText(L"Bar");
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, true);
+  CheckIsIndexSelected(2, false);
+
+  // unlike combobox, should be able to deselect all
+  SetIndexSelectedShouldSucceed(1, false);
+  CheckFocusedFieldText(L"");
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, false);
+  CheckIsIndexSelected(2, false);
+
+  // check interoperable with click actions, should be able to use combination
+  ClickOnSingleSelectFormOption(1);
+  CheckFocusedFieldText(L"Bar");
+  CheckIsIndexSelected(0, false);
+  CheckIsIndexSelected(1, true);
+  CheckIsIndexSelected(2, false);
+}
+
+// re: focus field text - for multiselect listboxes a caret is set on the last
+// item to be selected/deselected, the text of that item should be returned
+TEST_F(FPDFFormFillListBoxFormEmbedderTest,
+       SetSelectionProgrammaticallyMultiSelectField) {
+  // starts with only 'Banana' (index 0) selected
+  FocusOnMultiSelectForm();
+  for (int i = 0; i < 26; i++) {
+    bool expected = i == 1;
+    CheckIsIndexSelected(i, expected);
+  }
+  CheckFocusedFieldText(L"Banana");
+
+  // select some more
+  SetIndexSelectedShouldSucceed(5, true);
+  SetIndexSelectedShouldSucceed(6, true);
+  SetIndexSelectedShouldSucceed(20, true);
+  for (int i = 0; i < 26; i++) {
+    bool expected = (i == 1 || i == 5 || i == 6 || i == 20);
+    CheckIsIndexSelected(i, expected);
+  }
+  CheckFocusedFieldText(L"Ugli Fruit");
+
+  // selecting already selected index is success - changes nothing
+  SetIndexSelectedShouldSucceed(5, true);
+  SetIndexSelectedShouldSucceed(6, true);
+  SetIndexSelectedShouldSucceed(20, true);
+  for (int i = 0; i < 26; i++) {
+    bool expected = (i == 1 || i == 5 || i == 6 || i == 20);
+    CheckIsIndexSelected(i, expected);
+  }
+  CheckFocusedFieldText(L"Ugli Fruit");
+
+  // deselect some options
+  SetIndexSelectedShouldSucceed(20, false);
+  SetIndexSelectedShouldSucceed(1, false);
+  for (int i = 0; i < 26; i++) {
+    bool expected = (i == 5 || i == 6);
+    CheckIsIndexSelected(i, expected);
+  }
+  CheckFocusedFieldText(L"Banana");
+
+  // deselect options that already aren't selected is success - does not change
+  // selected values but moves focus text caret to last item we executed on
+  SetIndexSelectedShouldSucceed(1, false);
+  SetIndexSelectedShouldSucceed(3, false);
+  for (int i = 0; i < 26; i++) {
+    bool expected = (i == 5 || i == 6);
+    CheckIsIndexSelected(i, expected);
+  }
+  CheckFocusedFieldText(L"Date");
+
+  // should not select indices out of range
+  SetIndexSelectedShouldFail(100, true);
+  SetIndexSelectedShouldFail(-100, true);
+  SetIndexSelectedShouldFail(100, false);
+  SetIndexSelectedShouldFail(-100, false);
+  // previous values were not changed
+  CheckFocusedFieldText(L"Date");
+  for (int i = 0; i < 26; i++) {
+    bool expected = (i == 5 || i == 6);
+    CheckIsIndexSelected(i, expected);
+  }
+
+  // check interoperable with click actions, should be able to use combination
+  ClickOnMultiSelectFormOption(1);
+  for (int i = 0; i < 26; i++) {
+    bool expected = i == 1;
+    CheckIsIndexSelected(i, expected);
+  }
+  CheckFocusedFieldText(L"Banana");
 }

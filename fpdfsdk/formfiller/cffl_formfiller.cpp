@@ -557,6 +557,16 @@ void CFFL_FormFiller::SetChangeMark() {
   m_pFormFillEnv->OnChange();
 }
 
+bool CFFL_FormFiller::SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                       int index,
+                                       bool selected) {
+  return false;
+}
+
+bool CFFL_FormFiller::IsIndexSelected(CPDFSDK_Annot* pAnnot, int index) {
+  return false;
+}
+
 void CFFL_FormFiller::GetActionData(CPDFSDK_PageView* pPageView,
                                     CPDF_AAction::AActionType type,
                                     CPDFSDK_FieldAction& fa) {
