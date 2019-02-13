@@ -23,6 +23,30 @@
       "revId": "1c84a3bd7577089fe6f9c709da93729ea4e05e20",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e641e1c_40c87f02",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-13T18:22:42Z",
+      "side": 1,
+      "message": "As is, has to be manually unloaded via UnloadPage().",
+      "parentUuid": "5ff0881b_302058d1",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "1c84a3bd7577089fe6f9c709da93729ea4e05e20",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
