@@ -16,6 +16,24 @@
       "revId": "a9418ac7e344c406168d616a491ef937e9416c52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642b307c_d8b955b4",
+        "filename": "xfa/fgas/crt/cfgas_decimal.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-02-13T23:25:51Z",
+      "side": 1,
+      "message": "I dont think powf() from C is constexpr.",
+      "parentUuid": "0600bb0f_2f0aa957",
+      "revId": "a9418ac7e344c406168d616a491ef937e9416c52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
