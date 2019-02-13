@@ -23,6 +23,30 @@
       "revId": "35c698db764f425003f2b69f9b973eedde98b2be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215fa276_312be225",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-13T18:17:35Z",
+      "side": 1,
+      "message": "Next CL in the chain will get rid of the goto.",
+      "parentUuid": "a928051f_ce2ffd99",
+      "range": {
+        "startLine": 888,
+        "startChar": 30,
+        "endLine": 888,
+        "endChar": 31
+      },
+      "revId": "35c698db764f425003f2b69f9b973eedde98b2be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
