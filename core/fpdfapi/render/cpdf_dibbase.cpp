@@ -294,7 +294,8 @@ CPDF_DIBBase::LoadState CPDF_DIBBase::ContinueLoadDIBBase(
   if (m_Status == LoadState::kFail)
     return LoadState::kFail;
 
-  if (m_pStreamAcc->GetImageDecoder() == "JPXDecode")
+  ByteString decoder = m_pStreamAcc->GetImageDecoder();
+  if (decoder != "JBIG2Decode")
     return LoadState::kFail;
 
   FXCODEC_STATUS iDecodeStatus;
