@@ -206,6 +206,12 @@ bool CFFL_FormFiller::OnChar(CPDFSDK_Annot* pAnnot,
   return pWnd && pWnd->OnChar(nChar, nFlags);
 }
 
+bool CFFL_FormFiller::SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                       int index,
+                                       bool selected) {
+  return false;
+}
+
 WideString CFFL_FormFiller::GetText(CPDFSDK_Annot* pAnnot) {
   if (!IsValid())
     return WideString();
@@ -555,6 +561,10 @@ bool CFFL_FormFiller::IsFieldFull(CPDFSDK_PageView* pPageView) {
 
 void CFFL_FormFiller::SetChangeMark() {
   m_pFormFillEnv->OnChange();
+}
+
+bool CFFL_FormFiller::IsIndexSelected(CPDFSDK_Annot* pAnnot, int index) {
+  return false;
 }
 
 void CFFL_FormFiller::GetActionData(CPDFSDK_PageView* pPageView,

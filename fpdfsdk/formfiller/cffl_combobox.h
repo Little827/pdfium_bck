@@ -46,10 +46,14 @@ class CFFL_ComboBox final : public CFFL_TextObject,
                            const CPDFSDK_FieldAction& faNew) override;
   void SaveState(CPDFSDK_PageView* pPageView) override;
   void RestoreState(CPDFSDK_PageView* pPageView) override;
+  bool SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                        int index,
+                        bool selected) override;
+  bool IsIndexSelected(CPDFSDK_Annot* pAnnot, int index) override;
 #ifdef PDF_ENABLE_XFA
   bool IsFieldFull(CPDFSDK_PageView* pPageView) override;
-#endif
 
+#endif
   // CPWL_Wnd::FocusHandlerIface:
   void OnSetFocus(CPWL_Edit* pEdit) override;
 
