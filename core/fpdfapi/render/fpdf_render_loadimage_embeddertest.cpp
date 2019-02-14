@@ -13,7 +13,7 @@ class FPDFRenderLoadImageEmbedderTest : public EmbedderTest {};
 TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_554151) {
   // Test scanline downsampling with a BitsPerComponent of 4.
   // Should not crash.
-  EXPECT_TRUE(OpenDocument("bug_554151.pdf"));
+  ASSERT_TRUE(OpenDocument("bug_554151.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
@@ -23,7 +23,7 @@ TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_554151) {
 
 TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_557223) {
   // Should not crash
-  EXPECT_TRUE(OpenDocument("bug_557223.pdf"));
+  ASSERT_TRUE(OpenDocument("bug_557223.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
@@ -33,19 +33,29 @@ TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_557223) {
 
 TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_603518) {
   // Should not crash
-  EXPECT_TRUE(OpenDocument("bug_603518.pdf"));
+  ASSERT_TRUE(OpenDocument("bug_603518.pdf"));
   FPDF_PAGE page = LoadPage(0);
-  EXPECT_NE(nullptr, page);
+  ASSERT_TRUE(page);
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 749, 749, "b9e75190cdc5edf0069a408744ca07dc");
   UnloadPage(page);
 }
 
 TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_1087) {
-  EXPECT_TRUE(OpenDocument("bug_1087.pdf"));
+  ASSERT_TRUE(OpenDocument("bug_1087.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
   CompareBitmap(bitmap.get(), 548, 238, "2aac40afa121feb0f38883cb04a55001");
+  UnloadPage(page);
+}
+
+TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_1236) {
+  ASSERT_TRUE(OpenDocument("bug_1236.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+  // TODO(bug_1236): This is rendered all black, which is incorrect.
+  CompareBitmap(bitmap.get(), 400, 400, "c4521b8751e4ab236860f1fbc6342d85");
   UnloadPage(page);
 }
