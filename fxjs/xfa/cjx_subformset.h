@@ -20,8 +20,6 @@ class CJX_SubformSet final : public CJX_Container {
   // CJX_Object:
   bool DynamicTypeIs(TypeTag eType) const override;
 
-  JSE_PROP(instanceIndex);
-
  private:
   using Type__ = CJX_SubformSet;
   using ParentType__ = CJX_Container;
