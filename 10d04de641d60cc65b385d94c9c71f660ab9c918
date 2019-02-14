@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "fe037b72_690cdb6f",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-14T00:59:49Z",
+      "side": 1,
+      "message": "nit: Don\u0027t need braces for single line conditional + single line block. Be consistent with lines 256-257.",
+      "revId": "10d04de641d60cc65b385d94c9c71f660ab9c918",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f102053_97c93592",
         "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
         "patchSetId": 4
@@ -70,6 +87,40 @@
       "writtenOn": "2019-02-14T00:49:39Z",
       "side": 1,
       "message": "Group with OnChar() above?",
+      "revId": "10d04de641d60cc65b385d94c9c71f660ab9c918",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbaf798_bfdca980",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-14T00:59:49Z",
+      "side": 1,
+      "message": "nit: Can we capitalize the first letter of sentences and add periods?",
+      "revId": "10d04de641d60cc65b385d94c9c71f660ab9c918",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f75931_6cf75f1f",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-14T00:59:49Z",
+      "side": 1,
+      "message": "typo, more copy+pasta below.",
       "revId": "10d04de641d60cc65b385d94c9c71f660ab9c918",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
