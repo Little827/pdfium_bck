@@ -157,6 +157,30 @@ class FPDFFormFillInteractiveEmbedderTest : public FPDFFormFillEmbedderTest {
   FPDF_PAGE page_ = nullptr;
 };
 
+class FPDFFormFillSubmitFormEmbedderTest
+    : public FPDFFormFillInteractiveEmbedderTest {
+ protected:
+  FPDFFormFillSubmitFormEmbedderTest() = default;
+  ~FPDFFormFillSubmitFormEmbedderTest() override = default;
+
+  const char* GetDocumentName() const override {
+    // PDF with a push button:
+    // - "PushButton" - Ff 65536, triggers JS on mouse down.
+    return "form_submit.pdf";
+  }
+
+  int GetFormType() const override { return FPDF_FORMFIELD_PUSHBUTTON; }
+
+  void FormSanityChecks() override {
+    EXPECT_EQ(GetFormType(), GetFormTypeAtPoint(PushButtonMiddle()));
+  }
+
+  const CFX_PointF& PushButtonMiddle() const {
+    static const CFX_PointF point(150, 250);
+    return point;
+  }
+};
+
 class FPDFFormFillTextFormEmbedderTest
     : public FPDFFormFillInteractiveEmbedderTest {
  protected:
@@ -746,6 +770,25 @@ TEST_F(FPDFFormFillEmbedderTest, HasFormInfoXFAFull) {
 TEST_F(FPDFFormFillEmbedderTest, HasFormInfoXFAForeground) {
   EXPECT_TRUE(OpenDocument("bug_216.pdf"));
   EXPECT_EQ(FORMTYPE_XFA_FOREGROUND, FPDF_GetFormType(document_));
+}
+
+TEST_F(FPDFFormFillSubmitFormEmbedderTest, DoSubmit) {
+  EmbedderTestTimerHandlingDelegate delegate;
+  SetDelegate(&delegate);
+
+  const auto& alerts = delegate.GetAlerts();
+  ASSERT_EQ(0u, alerts.size());
+
+  // Triggering JS by moving results in a submission failure.
+  const CFX_PointF& point = PushButtonMiddle();
+  FORM_OnMouseMove(form_handle(), page(), 0, point.x, point.y);
+  ASSERT_EQ(1u, alerts.size());
+  EXPECT_STREQ(L"BLOCKED", alerts[0].message.c_str());
+
+  // Clicking succeeds.
+  ClickOnFormFieldAtPoint(PushButtonMiddle());
+  ASSERT_EQ(2u, alerts.size());
+  EXPECT_STREQ(L"OK", alerts[1].message.c_str());
 }
 
 TEST_F(FPDFFormFillTextFormEmbedderTest, GetSelectedTextEmptyAndBasicKeyboard) {
