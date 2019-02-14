@@ -75,6 +75,9 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
                          uint32_t nKeyCode,
                          uint32_t nFlags);
   virtual bool OnChar(CPDFSDK_Annot* pAnnot, uint32_t nChar, uint32_t nFlags);
+  virtual bool SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                int index,
+                                bool selected);
 
   WideString GetText(CPDFSDK_Annot* pAnnot);
   WideString GetSelectedText(CPDFSDK_Annot* pAnnot);
@@ -144,6 +147,8 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
   void SetChangeMark();
 
   CPDFSDK_Annot* GetSDKAnnot() const { return m_pWidget.Get(); }
+
+  virtual bool IsIndexSelected(CPDFSDK_Annot* pAnnot, int index);
 
  protected:
   // If the inheriting widget has its own fontmap and a PWL_Edit widget that
