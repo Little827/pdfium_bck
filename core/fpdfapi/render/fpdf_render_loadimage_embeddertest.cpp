@@ -55,7 +55,6 @@ TEST_F(FPDFRenderLoadImageEmbedderTest, Bug_1236) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
   ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
-  // TODO(bug_1236): This is rendered all black, which is incorrect.
-  CompareBitmap(bitmap.get(), 400, 400, "c4521b8751e4ab236860f1fbc6342d85");
+  CompareBitmap(bitmap.get(), 400, 400, "aebcc3abe593ca2bf8bea66228654416");
   UnloadPage(page);
 }
