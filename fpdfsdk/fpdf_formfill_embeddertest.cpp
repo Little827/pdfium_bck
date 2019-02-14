@@ -675,6 +675,33 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_765384) {
   FORM_OnLButtonUp(form_handle(), page, 0, 140, 590);
   UnloadPage(page);
 }
+
+TEST_F(FPDFFormFillEmbedderTest, DoSubmit) {
+  EmbedderTestTimerHandlingDelegate delegate;
+  SetDelegate(&delegate);
+
+  const auto& alerts = delegate.GetAlerts();
+  ASSERT_EQ(0u, alerts.size());
+
+  ASSERT_TRUE(OpenDocument("form_submit.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Triggering JS by moving results in a submission failure.
+  const CFX_PointF point(150, 250);
+  FORM_OnMouseMove(form_handle(), page, 0, point.x, point.y);
+  ASSERT_EQ(1u, alerts.size());
+  EXPECT_STREQ(L"BLOCKED", alerts[0].message.c_str());
+
+  // Clicking succeeds.
+  FORM_OnLButtonDown(form_handle(), page, 0, point.x, point.y);
+  FORM_OnLButtonUp(form_handle(), page, 0, point.x, point.y);
+  ASSERT_EQ(2u, alerts.size());
+  EXPECT_STREQ(L"OK", alerts[1].message.c_str());
+
+  UnloadPage(page);
+}
+
 #endif  // PDF_ENABLE_V8
 
 TEST_F(FPDFFormFillEmbedderTest, FormText) {
