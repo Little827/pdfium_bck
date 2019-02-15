@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88b1e545_7b903791",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T17:28:37Z",
+      "side": 1,
+      "message": "Can we keep these 2 wrapped inside V8_USE_EXTERNAL_STARTUP_DATA? Not sure if compilers will complain that they are unused.",
+      "revId": "0718fbe0007765f412c27205f390215f9ea9159c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
