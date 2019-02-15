@@ -16,6 +16,97 @@
       "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2602af46_22d94bd4",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T19:48:45Z",
+      "side": 1,
+      "message": "Not used?",
+      "range": {
+        "startLine": 231,
+        "startChar": 37,
+        "endLine": 231,
+        "endChar": 58
+      },
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276523be_da888794",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T19:48:45Z",
+      "side": 1,
+      "message": "Drop this variable and merge with next line.",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8d3d94_9e23ef30",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T19:48:45Z",
+      "side": 1,
+      "message": "We can return early if |index| is out of bounds and avoid a bit of work.",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58bd139b_ba1a27eb",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T19:48:45Z",
+      "side": 1,
+      "message": "Use CPDFSDK_Annot::ObservedPtr.",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef911a4a_0e0c7446",
+        "filename": "fpdfsdk/formfiller/cffl_listbox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T19:48:45Z",
+      "side": 1,
+      "message": "Can this use |m_pWidget| like CFFL_ComboBox::SetIndexSelected() ? Or should it be the other way around? They should be consistent, right?",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
