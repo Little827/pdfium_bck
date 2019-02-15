@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53b9a6b6_17dd7abb",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T19:40:00Z",
+      "side": 1,
+      "message": "Given this, the comments for the new APIs in public/fpdf_formfill.h should mention it works on the focused annotation.",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
