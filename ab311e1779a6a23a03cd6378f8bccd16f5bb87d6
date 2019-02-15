@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce55579a_b29aeced",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T21:27:29Z",
+      "side": 1,
+      "message": "Still need to check the return value from FormHandleToInteractiveForm(). i.e. |pForm| can be nullptr, but |pPDFForm| cannot.",
+      "revId": "ab311e1779a6a23a03cd6378f8bccd16f5bb87d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
