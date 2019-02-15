@@ -195,3 +195,47 @@ void CFFL_ListBox::RestoreState(CPDFSDK_PageView* pPageView) {
   for (const auto& item : m_State)
     pListBox->Select(item);
 }
+
+bool CFFL_ListBox::SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                    int index,
+                                    bool selected) {
+  if (!IsValid())
+    return false;
+
+  CPDFSDK_PageView* pPageView = GetCurPageView(true);
+  ASSERT(pPageView);
+
+  CPWL_ListBox* pListBox =
+      static_cast<CPWL_ListBox*>(GetPDFWindow(pPageView, false));
+  if (!pListBox)
+    return false;
+
+  int32_t num_options = pListBox->GetCount();
+  if (index < 0 || index >= num_options)
+    return false;
+
+  if (selected) {
+    pListBox->Select(index);
+    pListBox->SetCaret(index);
+  } else {
+    pListBox->Deselect(index);
+    pListBox->SetCaret(index);
+  }
+
+  return true;
+}
+
+bool CFFL_ListBox::IsIndexSelected(CPDFSDK_Annot* pAnnot, int index) {
+  if (!IsValid())
+    return false;
+
+  CPDFSDK_PageView* pPageView = GetCurPageView(true);
+  ASSERT(pPageView);
+
+  CPWL_ListBox* pListBox =
+      static_cast<CPWL_ListBox*>(GetPDFWindow(pPageView, false));
+  if (!pListBox)
+    return false;
+
+  return pListBox->IsItemSelected(index);
+}
