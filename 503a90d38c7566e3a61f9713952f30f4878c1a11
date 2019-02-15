@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b44285df_f37cda2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T18:49:55Z",
+      "side": 1,
+      "message": "One liner.",
+      "revId": "503a90d38c7566e3a61f9713952f30f4878c1a11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b51b5f_c57ff603",
+        "filename": "fpdfsdk/pwl/cpwl_list_impl.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-15T18:49:55Z",
+      "side": 1,
+      "message": "More unnecessary braces.",
+      "revId": "503a90d38c7566e3a61f9713952f30f4878c1a11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
