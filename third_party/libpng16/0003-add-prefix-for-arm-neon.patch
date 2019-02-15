@@ -1,0 +1,13 @@
+diff --git a/third_party/libpng16/pngprefix.h b/third_party/libpng16/pngprefix.h
+index 979484334..dfd1bbd25 100644
+--- a/third_party/libpng16/pngprefix.h
++++ b/third_party/libpng16/pngprefix.h
+@@ -454,5 +454,8 @@
+ #define png_zfree PDFIUM_png_zfree
+ #define png_zlib_inflate PDFIUM_png_zlib_inflate
+ #define png_zstream_error PDFIUM_png_zstream_error
++#define png_riffle_palette_rgba PDFIUM_png_riffle_palette_rgba
++#define png_do_expand_palette_neon_rgba PDFIUM_png_do_expand_palette_neon_rgba
++#define png_do_expand_palette_neon_rgb PDFIUM_png_do_expand_palette_neon_rgb
+
+ #endif  // PNGPREFIX_H
