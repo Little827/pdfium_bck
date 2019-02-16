@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c0eb1576_6eaca690",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-16T20:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53b9a6b6_17dd7abb",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2602af46_22d94bd4",
         "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
         "patchSetId": 9
@@ -30,6 +48,30 @@
       "writtenOn": "2019-02-15T19:48:45Z",
       "side": 1,
       "message": "Not used?",
+      "range": {
+        "startLine": 231,
+        "startChar": 37,
+        "endLine": 231,
+        "endChar": 58
+      },
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7aaa1b_0e9b4c76",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-16T20:40:14Z",
+      "side": 1,
+      "message": "|pAnnot| is not used in here or in cffl_listbox.cpp either. I included it because it is overriding a method in the superclass for all these formfillers, cffl_formfiller.h. That class includes |pAnnot| as a parameter to every method even though its own implementations don\u0027t always require it (see CFFL_Formfiller::OnChar as an example). \n\nSo it seems the superclass is designed in such a way as to anticipate subclasses potentially requiring |pAnnot| in their own implementations of things. Let me know if you don\u0027t think we should include and I can remove.",
+      "parentUuid": "2602af46_22d94bd4",
       "range": {
         "startLine": 231,
         "startChar": 37,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "65136f5e_aee1c28c",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-16T20:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "276523be_da888794",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e8d3d94_9e23ef30",
         "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
         "patchSetId": 9
@@ -73,6 +133,24 @@
       "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85b4e7aa_bfe9d692",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-16T20:40:14Z",
+      "side": 1,
+      "message": "Updated for both combo and listbox.",
+      "parentUuid": "9e8d3d94_9e23ef30",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "0a93eadd_46bc4e8a",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-16T20:40:14Z",
+      "side": 1,
+      "message": "Updated both methods to use ObservedPtr through cpdfsdk_annothandlermgr -\u003e ipdfsdk_annothandler (and implementations) -\u003e cffl_interactiveformfiller.",
+      "parentUuid": "58bd139b_ba1a27eb",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef911a4a_0e0c7446",
         "filename": "fpdfsdk/formfiller/cffl_listbox.cpp",
         "patchSetId": 9
@@ -107,6 +203,24 @@
       "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "920e24e0_4736407f",
+        "filename": "fpdfsdk/formfiller/cffl_listbox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-16T20:40:14Z",
+      "side": 1,
+      "message": "Good call. I updated this one to use |m_pWidget| and moved the check up so we can exit early without doing the work to fetch the window if index out of range.",
+      "parentUuid": "ef911a4a_0e0c7446",
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
