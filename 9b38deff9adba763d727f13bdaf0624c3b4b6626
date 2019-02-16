@@ -22,6 +22,30 @@
       "revId": "9b38deff9adba763d727f13bdaf0624c3b4b6626",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32cffd4f_affaca36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-16T00:45:19Z",
+      "side": 1,
+      "message": "That is, this paragraph should describes what this CL does. It actually fixes building pdfium_test.\n\nAlso, can you wrap lines at 72 columns, not 80?",
+      "parentUuid": "de003de9_1c5f9fbe",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "9b38deff9adba763d727f13bdaf0624c3b4b6626",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
