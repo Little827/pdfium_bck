@@ -75,6 +75,10 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
                          uint32_t nKeyCode,
                          uint32_t nFlags);
   virtual bool OnChar(CPDFSDK_Annot* pAnnot, uint32_t nChar, uint32_t nFlags);
+  virtual bool SetIndexSelected(CPDFSDK_Annot* pAnnot,
+                                int index,
+                                bool selected);
+  virtual bool IsIndexSelected(CPDFSDK_Annot* pAnnot, int index);
 
   WideString GetText(CPDFSDK_Annot* pAnnot);
   WideString GetSelectedText(CPDFSDK_Annot* pAnnot);

@@ -290,6 +290,26 @@ bool CFFL_InteractiveFormFiller::OnButtonUp(CPDFSDK_Annot::ObservedPtr* pAnnot,
   return true;
 }
 
+bool CFFL_InteractiveFormFiller::SetIndexSelected(
+    CPDFSDK_Annot::ObservedPtr* pAnnot,
+    int index,
+    bool selected) {
+  ASSERT((*pAnnot)->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
+
+  CFFL_FormFiller* pFormFiller = GetFormFiller(pAnnot->Get(), false);
+  return pFormFiller &&
+         pFormFiller->SetIndexSelected(pAnnot->Get(), index, selected);
+}
+
+bool CFFL_InteractiveFormFiller::IsIndexSelected(
+    CPDFSDK_Annot::ObservedPtr* pAnnot,
+    int index) {
+  ASSERT((*pAnnot)->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
+
+  CFFL_FormFiller* pFormFiller = GetFormFiller(pAnnot->Get(), false);
+  return pFormFiller && pFormFiller->IsIndexSelected(pAnnot->Get(), index);
+}
+
 bool CFFL_InteractiveFormFiller::OnLButtonDblClk(
     CPDFSDK_PageView* pPageView,
     CPDFSDK_Annot::ObservedPtr* pAnnot,
