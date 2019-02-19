@@ -9,9 +9,6 @@
 
 #if defined(COMPILER_MSVC)
 
-// For _Printf_format_string_.
-#include <sal.h>
-
 // Macros for suppressing and disabling warnings on MSVC.
 //
 // Warning numbers are enumerated at:
@@ -40,7 +37,6 @@
 
 #else  // Not MSVC
 
-#define _Printf_format_string_
 #define MSVC_SUPPRESS_WARNING(n)
 #define MSVC_PUSH_DISABLE_WARNING(n)
 #define MSVC_POP_WARNING()
