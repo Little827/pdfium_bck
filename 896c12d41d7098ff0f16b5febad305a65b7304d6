@@ -16,6 +16,24 @@
       "revId": "896c12d41d7098ff0f16b5febad305a65b7304d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b544e919_b1258150",
+        "filename": "third_party/base/compiler_specific.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-19T17:17:33Z",
+      "side": 1,
+      "message": "Sure. We can always add them back if needed.",
+      "parentUuid": "3e235987_8a31a47f",
+      "revId": "896c12d41d7098ff0f16b5febad305a65b7304d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
