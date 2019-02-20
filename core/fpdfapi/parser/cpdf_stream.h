@@ -58,7 +58,7 @@ class CPDF_Stream final : public CPDF_Object {
                    uint8_t* pBuf,
                    uint32_t buf_size) const;
 
-  bool IsMemoryBased() const { return m_bMemoryBased; }
+  bool IsMemoryBased() const { return !!m_pFile; }
   bool HasFilter() const;
 
  private:
@@ -66,11 +66,13 @@ class CPDF_Stream final : public CPDF_Object {
       bool bDirect,
       std::set<const CPDF_Object*>* pVisited) const override;
 
-  bool m_bMemoryBased = true;
   uint32_t m_dwSize = 0;
   std::unique_ptr<CPDF_Dictionary> m_pDict;
-  std::unique_ptr<uint8_t, FxFreeDeleter> m_pDataBuf;
+
+  // These two members are mutually exclusive. The validity of |m_pFile| takes
+  // precedence in determining whether this is memory based or not.
   RetainPtr<IFX_SeekableReadStream> m_pFile;
+  std::unique_ptr<uint8_t, FxFreeDeleter> m_pDataBuf;
 };
 
 inline CPDF_Stream* ToStream(CPDF_Object* obj) {

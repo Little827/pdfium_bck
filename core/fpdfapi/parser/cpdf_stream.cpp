@@ -30,7 +30,7 @@ bool IsMetaDataStreamDictionary(const CPDF_Dictionary* dict) {
 
 }  // namespace
 
-CPDF_Stream::CPDF_Stream() {}
+CPDF_Stream::CPDF_Stream() = default;
 
 CPDF_Stream::CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
                          uint32_t size,
@@ -78,13 +78,12 @@ void CPDF_Stream::InitStream(pdfium::span<const uint8_t> pData,
 void CPDF_Stream::InitStreamFromFile(
     const RetainPtr<IFX_SeekableReadStream>& pFile,
     std::unique_ptr<CPDF_Dictionary> pDict) {
-  m_pDict = std::move(pDict);
-  m_bMemoryBased = false;
-  m_pDataBuf.reset();
-  m_pFile = pFile;
   m_dwSize = pdfium::base::checked_cast<uint32_t>(pFile->GetSize());
+  m_pDict = std::move(pDict);
   if (m_pDict)
     m_pDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(m_dwSize));
+  m_pFile = pFile;
+  m_pDataBuf.reset();
 }
 
 std::unique_ptr<CPDF_Object> CPDF_Stream::Clone() const {
@@ -139,13 +138,12 @@ void CPDF_Stream::SetData(pdfium::span<const uint8_t> pData) {
 
 void CPDF_Stream::SetData(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
                           uint32_t size) {
-  m_bMemoryBased = true;
-  m_pFile = nullptr;
-  m_pDataBuf = std::move(pData);
   m_dwSize = size;
   if (!m_pDict)
     m_pDict = pdfium::MakeUnique<CPDF_Dictionary>();
   m_pDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(size));
+  m_pFile = nullptr;
+  m_pDataBuf = std::move(pData);
 }
 
 void CPDF_Stream::SetDataFromStringstream(std::ostringstream* stream) {
@@ -160,12 +158,11 @@ void CPDF_Stream::SetDataFromStringstream(std::ostringstream* stream) {
 bool CPDF_Stream::ReadRawData(FX_FILESIZE offset,
                               uint8_t* buf,
                               uint32_t size) const {
-  if (!m_bMemoryBased && m_pFile)
+  if (m_pFile)
     return m_pFile->ReadBlockAtOffset(buf, offset, size);
 
   if (m_pDataBuf)
     memcpy(buf, m_pDataBuf.get() + offset, size);
-
   return true;
 }
 
