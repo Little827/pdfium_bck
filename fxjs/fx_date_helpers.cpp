@@ -288,21 +288,20 @@ int FX_ParseStringInteger(const WideString& str,
   return nRet;
 }
 
+// TODO(thestig): Consider returning a WideStringView to make this even faster.
 WideString FX_ParseStringString(const WideString& str,
                                 size_t nStart,
                                 size_t* pSkip) {
-  WideString swRet;
-  swRet.Reserve(str.GetLength());
+  size_t length = 0;
   for (size_t i = nStart; i < str.GetLength(); ++i) {
-    wchar_t c = str[i];
-    if (!std::iswalnum(c))
+    if (!std::iswalnum(str[i]))
       break;
 
-    swRet += c;
+    ++length;
   }
 
-  *pSkip = swRet.GetLength();
-  return swRet;
+  *pSkip = length;
+  return str.Mid(nStart, length);
 }
 
 ConversionStatus FX_ParseDateUsingFormat(const WideString& value,
