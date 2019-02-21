@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "59635433_7bc2c919",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-21T02:40:34Z",
+      "side": 1,
+      "message": "I think we should remove it. The majority of CFFL_ComboBox methods do not have it. I\u0027ll take care of CFFL_Formfiller::OnChar().",
+      "parentUuid": "8d7aaa1b_0e9b4c76",
+      "range": {
+        "startLine": 231,
+        "startChar": 37,
+        "endLine": 231,
+        "endChar": 58
+      },
+      "revId": "08ff013cefaecbeb0bdc510b2b10bdb30d011e53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "276523be_da888794",
         "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
         "patchSetId": 9
