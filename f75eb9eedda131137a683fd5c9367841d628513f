@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1550722133 -0800\nnonce ANwvRnBhiT9hj4g0eOq061ZBDGSB3TB0u0Eo+65WsrWA5ceUDPfgGvDIeUuVEk+QXUdTIcC7wpBZ\n\n0000000000000000000000000000000000000000 f75eb9eedda131137a683fd5c9367841d628513f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dvalidate-filters-in-cpdf-dibbase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxuJFUACgkQqzYtYVpm\n/XvabQf/TLAztK8h+/pFukeLpE/8Bf9Q+Ig5JA3AhefnTTzmQAiNp9q60lt6v1Lx\nuZeXjduf/URDT5nPWzCB8tgFeMdrnM3UXPTRwvra/6EnigL+gnaZ7S6o9xWanTS5\nvmEln7NqEy/NE2ZXhAxXOODum3zgDoNiuF1gSxot2avbYb1QKpIGsYMnxzVPS5kS\nDdHfzztD+8O1XItBiS4niroMXPxqsZxnb5CU0DMI4CVrivIPZNjiRYv+Ymuv08Gq\nb6rnCws6joEP5U0SkGz/jCXB8n99u521fbUxWL9tTvcivHA+tRjZ9divkj6INkRv\nrlTZGKsW4pEEzm60EcPdcQYqxM+DcQ\u003d\u003d\n\u003deeY/\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf2699da_af78be12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2019-02-21T14:40:25Z",
+      "side": 1,
+      "message": "s/invalidate/invalid",
+      "revId": "f75eb9eedda131137a683fd5c9367841d628513f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
