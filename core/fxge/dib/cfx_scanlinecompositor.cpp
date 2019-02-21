@@ -2908,10 +2908,9 @@ void CFX_ScanlineCompositor::InitSourceMask(int alpha_flag,
       m_MaskRed = FX_CCOLOR(m_MaskRed);
     return;
   }
-  uint8_t* mask_color_p = (uint8_t*)&mask_color;
-  mask_color =
-      (alpha_flag >> 8) ? FXCMYK_TODIB(mask_color) : FXARGB_TODIB(mask_color);
   if (alpha_flag >> 8) {
+    uint8_t* mask_color_p = reinterpret_cast<uint8_t*>(&mask_color);
+    mask_color = FXCMYK_TODIB(mask_color);
     std::tie(mask_color_p[2], mask_color_p[1], mask_color_p[0]) =
         AdobeCMYK_to_sRGB1(mask_color_p[0], mask_color_p[1], mask_color_p[2],
                            mask_color_p[3]);
@@ -3013,8 +3012,8 @@ void CFX_ScanlineCompositor::CompositeRgbBitmapLine(
     const uint8_t* clip_scan,
     const uint8_t* src_extra_alpha,
     uint8_t* dst_extra_alpha) {
-  int src_Bpp = (m_SrcFormat & 0xff) >> 3;
-  int dest_Bpp = (m_DestFormat & 0xff) >> 3;
+  int src_Bpp = GetCompsFromFormat(m_SrcFormat);
+  int dest_Bpp = GetCompsFromFormat(m_DestFormat);
   if (m_bRgbByteOrder) {
     switch (m_iTransparency) {
       case 0:
@@ -3187,7 +3186,7 @@ void CFX_ScanlineCompositor::CompositePalBitmapLine(
       } else {
         CompositeRow_1bppRgb2Rgb_NoBlend_RgbByteOrder(
             dest_scan, src_scan, src_left, m_pSrcPalette.get(), width,
-            (m_DestFormat & 0xff) >> 3, clip_scan);
+            GetCompsFromFormat(m_DestFormat), clip_scan);
       }
     } else {
       if (m_DestFormat == FXDIB_8bppRgb) {
@@ -3199,7 +3198,7 @@ void CFX_ScanlineCompositor::CompositePalBitmapLine(
       } else {
         CompositeRow_8bppRgb2Rgb_NoBlend_RgbByteOrder(
             dest_scan, src_scan, m_pSrcPalette.get(), width,
-            (m_DestFormat & 0xff) >> 3, clip_scan);
+            GetCompsFromFormat(m_DestFormat), clip_scan);
       }
     }
     return;
@@ -3248,17 +3247,17 @@ void CFX_ScanlineCompositor::CompositePalBitmapLine(
       case 0:
         CompositeRow_8bppRgb2Rgb_NoBlend(
             dest_scan, src_scan, m_pSrcPalette.get(), width,
-            (m_DestFormat & 0xff) >> 3, clip_scan, src_extra_alpha);
+            GetCompsFromFormat(m_DestFormat), clip_scan, src_extra_alpha);
         break;
       case 0 + 8:
-        CompositeRow_1bppRgb2Rgb_NoBlend(dest_scan, src_scan, src_left,
-                                         m_pSrcPalette.get(), width,
-                                         (m_DestFormat & 0xff) >> 3, clip_scan);
+        CompositeRow_1bppRgb2Rgb_NoBlend(
+            dest_scan, src_scan, src_left, m_pSrcPalette.get(), width,
+            GetCompsFromFormat(m_DestFormat), clip_scan);
         break;
       case 0 + 2:
         CompositeRow_8bppRgb2Rgb_NoBlend(
             dest_scan, src_scan, m_pSrcPalette.get(), width,
-            (m_DestFormat & 0xff) >> 3, clip_scan, src_extra_alpha);
+            GetCompsFromFormat(m_DestFormat), clip_scan, src_extra_alpha);
         break;
       case 0 + 2 + 8:
         CompositeRow_1bppRgb2Rgba_NoBlend(dest_scan, src_scan, src_left, width,
@@ -3293,7 +3292,7 @@ void CFX_ScanlineCompositor::CompositeByteMaskLine(uint8_t* dest_scan,
     } else {
       CompositeRow_ByteMask2Rgb_RgbByteOrder(
           dest_scan, src_scan, m_MaskAlpha, m_MaskRed, m_MaskGreen, m_MaskBlue,
-          width, m_BlendType, (m_DestFormat & 0xff) >> 3, clip_scan);
+          width, m_BlendType, GetCompsFromFormat(m_DestFormat), clip_scan);
     }
   } else if (m_DestFormat == FXDIB_Argb) {
     CompositeRow_ByteMask2Argb(dest_scan, src_scan, m_MaskAlpha, m_MaskRed,
@@ -3302,7 +3301,7 @@ void CFX_ScanlineCompositor::CompositeByteMaskLine(uint8_t* dest_scan,
   } else if (m_DestFormat == FXDIB_Rgb || m_DestFormat == FXDIB_Rgb32) {
     CompositeRow_ByteMask2Rgb(dest_scan, src_scan, m_MaskAlpha, m_MaskRed,
                               m_MaskGreen, m_MaskBlue, width, m_BlendType,
-                              (m_DestFormat & 0xff) >> 3, clip_scan);
+                              GetCompsFromFormat(m_DestFormat), clip_scan);
   } else if (m_DestFormat == FXDIB_Rgba) {
     CompositeRow_ByteMask2Rgba(dest_scan, src_scan, m_MaskAlpha, m_MaskRed,
                                m_MaskGreen, m_MaskBlue, width, m_BlendType,
@@ -3335,15 +3334,17 @@ void CFX_ScanlineCompositor::CompositeBitMaskLine(uint8_t* dest_scan,
     } else {
       CompositeRow_BitMask2Rgb_RgbByteOrder(
           dest_scan, src_scan, m_MaskAlpha, m_MaskRed, m_MaskGreen, m_MaskBlue,
-          src_left, width, m_BlendType, (m_DestFormat & 0xff) >> 3, clip_scan);
+          src_left, width, m_BlendType, GetCompsFromFormat(m_DestFormat),
+          clip_scan);
     }
   } else if (m_DestFormat == FXDIB_Argb) {
     CompositeRow_BitMask2Argb(dest_scan, src_scan, m_MaskAlpha, m_MaskRed,
                               m_MaskGreen, m_MaskBlue, src_left, width,
                               m_BlendType, clip_scan);
   } else if (m_DestFormat == FXDIB_Rgb || m_DestFormat == FXDIB_Rgb32) {
-    CompositeRow_BitMask2Rgb(
-        dest_scan, src_scan, m_MaskAlpha, m_MaskRed, m_MaskGreen, m_MaskBlue,
-        src_left, width, m_BlendType, (m_DestFormat & 0xff) >> 3, clip_scan);
+    CompositeRow_BitMask2Rgb(dest_scan, src_scan, m_MaskAlpha, m_MaskRed,
+                             m_MaskGreen, m_MaskBlue, src_left, width,
+                             m_BlendType, GetCompsFromFormat(m_DestFormat),
+                             clip_scan);
   }
 }

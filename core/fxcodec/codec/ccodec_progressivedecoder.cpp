@@ -327,7 +327,7 @@ bool CCodec_ProgressiveDecoder::PngAskScanlineBuf(int line, uint8_t** pSrcBuf) {
     uint8_t* dest_scan = m_pDecodeBuf.get();
     *pSrcBuf = m_pDecodeBuf.get();
     int32_t src_Bpp = pDIBitmap->GetBPP() >> 3;
-    int32_t dest_Bpp = (m_SrcFormat & 0xff) >> 3;
+    int32_t dest_Bpp = GetCompsFromFormat(m_SrcFormat);
     int32_t src_left = m_startX;
     int32_t dest_left = m_clipBox.left;
     src_scan += src_left * src_Bpp;
@@ -1154,7 +1154,7 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::JpegContinueDecode() {
           pJpegModule->ReadScanline(m_pJpegContext.get(), m_pDecodeBuf.get());
     }
     if (m_SrcFormat == FXCodec_Rgb) {
-      int src_Bpp = (m_SrcFormat & 0xff) >> 3;
+      int src_Bpp = GetCompsFromFormat(m_SrcFormat);
       RGB2BGR(m_pDecodeBuf.get() + m_clipBox.left * src_Bpp, m_clipBox.Width());
     }
     if (m_SrcRow >= m_clipBox.bottom) {
@@ -1175,7 +1175,7 @@ void CCodec_ProgressiveDecoder::PngOneOneMapResampleHorz(
     uint8_t* src_scan,
     FXCodec_Format src_format) {
   uint8_t* dest_scan = pDeviceBitmap->GetWritableScanline(dest_line);
-  int32_t src_Bpp = (m_SrcFormat & 0xff) >> 3;
+  int32_t src_Bpp = GetCompsFromFormat(m_SrcFormat);
   int32_t dest_Bpp = pDeviceBitmap->GetBPP() >> 3;
   int32_t src_left = m_clipBox.left;
   int32_t dest_left = m_startX;
@@ -1831,7 +1831,7 @@ void CCodec_ProgressiveDecoder::ReSampleScanline(
   int dest_left = m_startX;
   uint8_t* dest_scan =
       pDeviceBitmap->GetBuffer() + dest_line * pDeviceBitmap->GetPitch();
-  int src_bytes_per_pixel = (src_format & 0xff) / 8;
+  int src_bytes_per_pixel = GetCompsFromFormat(src_format);
   int dest_bytes_per_pixel = pDeviceBitmap->GetBPP() / 8;
   src_scan += src_left * src_bytes_per_pixel;
   dest_scan += dest_left * dest_bytes_per_pixel;
