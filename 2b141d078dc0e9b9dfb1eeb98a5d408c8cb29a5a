@@ -94,6 +94,30 @@
       "revId": "2b141d078dc0e9b9dfb1eeb98a5d408c8cb29a5a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7a1b75_ef4d3c1e",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-22T21:52:45Z",
+      "side": 1,
+      "message": "I added a constant and a comment.",
+      "parentUuid": "de04dc0d_9e5d6dd9",
+      "range": {
+        "startLine": 793,
+        "startChar": 47,
+        "endLine": 793,
+        "endChar": 49
+      },
+      "revId": "2b141d078dc0e9b9dfb1eeb98a5d408c8cb29a5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
