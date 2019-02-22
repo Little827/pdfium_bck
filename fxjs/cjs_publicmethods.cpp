@@ -783,17 +783,17 @@ CJS_Result CJS_PublicMethods::AFPercent_Format(
   if (!pEvent->m_pValue)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  WideString& Value = pEvent->Value();
-  ByteString strValue = StrTrim(Value.ToDefANSI());
-  if (strValue.IsEmpty())
-    return CJS_Result::Success();
-
   int iDec = pRuntime->ToInt32(params[0]);
   int iSepStyle = pRuntime->ToInt32(params[1]);
   if (iDec < 0 || iSepStyle < 0 || iSepStyle > 49)
     return CJS_Result::Failure(JSMessage::kValueError);
 
   iSepStyle = ValidStyleOrZero(iSepStyle);
+
+  WideString& Value = pEvent->Value();
+  ByteString strValue = StrTrim(Value.ToDefANSI());
+  if (strValue.IsEmpty())
+    strValue = "0";
 
   // for processing decimal places
   double dValue = atof(strValue.c_str());
