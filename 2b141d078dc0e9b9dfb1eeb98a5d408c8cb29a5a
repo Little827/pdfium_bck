@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "ed2cfea7_65220604",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-22T21:49:24Z",
+      "side": 1,
+      "message": "Acrobat does not seem to care. As long as it is at least 2. e.g. This test case. https://pdfium.googlesource.com/pdfium/+/36e541ccbf9f30b0ae2604bd0ac4b3bd9e853d6b/testing/resources/javascript/public_methods.in#192",
+      "parentUuid": "af5e1c12_fce23603",
+      "range": {
+        "startLine": 778,
+        "startChar": 22,
+        "endLine": 778,
+        "endChar": 23
+      },
+      "revId": "2b141d078dc0e9b9dfb1eeb98a5d408c8cb29a5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8a67a95_0aefd486",
         "filename": "fxjs/cjs_publicmethods.cpp",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2019-02-22T21:31:49Z",
       "side": 1,
       "message": "Why this range?",
+      "range": {
+        "startLine": 793,
+        "startChar": 47,
+        "endLine": 793,
+        "endChar": 49
+      },
+      "revId": "2b141d078dc0e9b9dfb1eeb98a5d408c8cb29a5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de04dc0d_9e5d6dd9",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-22T21:49:24Z",
+      "side": 1,
+      "message": "Acrobat starts throwing errors at 50. https://pdfium.googlesource.com/pdfium/+/36e541ccbf9f30b0ae2604bd0ac4b3bd9e853d6b/testing/resources/javascript/public_methods.in#220",
+      "parentUuid": "e8a67a95_0aefd486",
       "range": {
         "startLine": 793,
         "startChar": 47,
