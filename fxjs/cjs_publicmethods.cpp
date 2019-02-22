@@ -179,10 +179,14 @@ char DigitSeparatorForStyle(int style) {
   ASSERT(IsStyleWithDigitSeparator(style));
   return style == 0 ? ',' : '.';
 }
+
+bool IsStyleWithApostropheSeparator(int style) {
+  return style >= 4;
+}
 #endif
 
 bool IsStyleWithCommaDecimalMark(int style) {
-  return style >= 2;
+  return style == 2 || style == 3;
 }
 
 char DecimalMarkForStyle(int style) {
@@ -788,8 +792,6 @@ CJS_Result CJS_PublicMethods::AFPercent_Format(
   if (iDec < 0 || iSepStyle < 0 || iSepStyle > 49)
     return CJS_Result::Failure(JSMessage::kValueError);
 
-  iSepStyle = ValidStyleOrZero(iSepStyle);
-
   WideString& Value = pEvent->Value();
   ByteString strValue = StrTrim(Value.ToDefANSI());
   if (strValue.IsEmpty())
@@ -836,8 +838,10 @@ CJS_Result CJS_PublicMethods::AFPercent_Format(
     if (iDec2 == 0)
       strValue.Insert(iDec2, '0');
   }
-  if (IsStyleWithDigitSeparator(iSepStyle)) {
-    char cSeparator = DigitSeparatorForStyle(iSepStyle);
+  bool bUseDigitSeparator = IsStyleWithDigitSeparator(iSepStyle);
+  if (bUseDigitSeparator || IsStyleWithApostropheSeparator(iSepStyle)) {
+    char cSeparator =
+        bUseDigitSeparator ? DigitSeparatorForStyle(iSepStyle) : '\'';
     for (int iDecPositive = iDec2 - 3; iDecPositive > 0; iDecPositive -= 3) {
       strValue.Insert(iDecPositive, cSeparator);
       iMax++;
