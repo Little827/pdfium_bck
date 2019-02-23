@@ -48,15 +48,10 @@ namespace {
 #ifdef PDF_ENABLE_XFA
 bool SaveXFADocumentData(CPDFXFA_Context* pContext,
                          std::vector<RetainPtr<IFX_SeekableStream>>* fileList) {
-  if (!pContext)
-    return false;
-
-  if (!pContext->ContainsXFAForm())
-    return true;
+  ASSERT(pContext->ContainsXFAForm());
 
   CXFA_FFDocView* pXFADocView = pContext->GetXFADocView();
-  if (!pXFADocView)
-    return true;
+  ASSERT(pXFADocView);
 
   CPDF_Document* pPDFDocument = pContext->GetPDFDoc();
   if (!pPDFDocument)
@@ -227,6 +222,7 @@ bool DoDocSave(FPDF_DOCUMENT document,
 #ifdef PDF_ENABLE_XFA
   auto* pContext = static_cast<CPDFXFA_Context*>(pPDFDoc->GetExtension());
   if (pContext) {
+    // TODO(thestig): What to do with |fileList|?  Need to check return value?
     std::vector<RetainPtr<IFX_SeekableStream>> fileList;
     SendPreSaveToXFADoc(pContext, &fileList);
   }
@@ -247,6 +243,7 @@ bool DoDocSave(FPDF_DOCUMENT document,
   bool bRet = fileMaker.Create(flags);
 
 #ifdef PDF_ENABLE_XFA
+  // TODO(thestig): Need to check return value?
   SendPostSaveToXFADoc(pContext);
 #endif  // PDF_ENABLE_XFA
 
