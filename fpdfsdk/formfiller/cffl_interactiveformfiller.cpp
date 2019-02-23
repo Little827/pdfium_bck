@@ -30,9 +30,9 @@
 
 CFFL_InteractiveFormFiller::CFFL_InteractiveFormFiller(
     CPDFSDK_FormFillEnvironment* pFormFillEnv)
-    : m_pFormFillEnv(pFormFillEnv), m_bNotifying(false) {}
+    : m_pFormFillEnv(pFormFillEnv) {}
 
-CFFL_InteractiveFormFiller::~CFFL_InteractiveFormFiller() {}
+CFFL_InteractiveFormFiller::~CFFL_InteractiveFormFiller() = default;
 
 bool CFFL_InteractiveFormFiller::Annot_HitTest(CPDFSDK_PageView* pPageView,
                                                CPDFSDK_Annot* pAnnot,
@@ -97,7 +97,6 @@ void CFFL_InteractiveFormFiller::OnDraw(CPDFSDK_PageView* pPageView,
     return;
   }
 
-  pFormFiller = GetFormFiller(pAnnot, false);
   if (pFormFiller) {
     pFormFiller->OnDrawDeactive(pPageView, pAnnot, pDevice, mtUser2Device);
   } else {
