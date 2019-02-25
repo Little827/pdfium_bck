@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "3d51846d_8ed7bd00",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-25T18:48:20Z",
+      "side": 1,
+      "message": "The asserts are just extra paranoia to help make sure the assumptions for |format| stays in sync with the checks you pointed to above. Removed since I added a constant.",
+      "parentUuid": "48068771_516d154a",
+      "range": {
+        "startLine": 820,
+        "startChar": 4,
+        "endLine": 820,
+        "endChar": 21
+      },
+      "revId": "17abf8e4f7951c94d70fa4adac8878b407e89c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36ab7e06_12e88bd3",
         "filename": "fxjs/cjs_publicmethods.cpp",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "540a5a4f_deec0283",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-25T18:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36ab7e06_12e88bd3",
+      "range": {
+        "startLine": 821,
+        "startChar": 4,
+        "endLine": 821,
+        "endChar": 29
+      },
+      "revId": "17abf8e4f7951c94d70fa4adac8878b407e89c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c46d06b_554d46d2",
         "filename": "fxjs/cjs_publicmethods.cpp",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2019-02-25T18:20:37Z",
       "side": 1,
       "message": "Should this be the same as kDecLimit? If so, would defining the size as a constant depending on kDecLimit be a better option?",
+      "range": {
+        "startLine": 822,
+        "startChar": 26,
+        "endLine": 822,
+        "endChar": 29
+      },
+      "revId": "17abf8e4f7951c94d70fa4adac8878b407e89c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497648cc_fbf5b881",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-25T18:48:20Z",
+      "side": 1,
+      "message": "It just has to be 3 digits, same as |kDecLimit|. I added a constant.",
+      "parentUuid": "4c46d06b_554d46d2",
       "range": {
         "startLine": 822,
         "startChar": 26,
