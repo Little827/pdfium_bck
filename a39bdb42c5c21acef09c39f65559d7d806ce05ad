@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1550899717 -0800\nnonce AC6AUtOA85f3Zp6a9e783Ico4SUIXWW5kqWkeQh5XxGceHHo7yo1QOcFD9F/VMw6+VI5SR8GcyJo\n\n0000000000000000000000000000000000000000 a39bdb42c5c21acef09c39f65559d7d806ce05ad refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlxw2gUACgkQqzYtYVpm\n/XvefwgA0YGNvtwDdDGrB1mJ0Ru3tB+DLMxfAB+acCrW85PtlmMG5xVyBV52SRHP\nt9eQcL8lS4QNFiU6RdnnhDqKMILyK7vf/g+mI47Qj8eD5vDuz9ZpA18wSAKpGBcE\nwosqsOTIJ/r2Mx+Dj9ZNrvWNpdXUqRBod9ItZ8FtcT1CDtHHPcrvc62+Dgd9keoJ\njniWgj+LNQGu851pmLxQ/rNjoKXJ4WmpnNUYImTBPHRZ+t3EaIhhUhg6Cd0GuDWy\n3pRRX7haUaocweKB0XmTAGNZ/t4gWEGLRCkZFRtAZAlZGySbalvufNNhOFl3pgXQ\nnLzouz5Ra9HaAiRCHlYzS5Jnvk/tMA\u003d\u003d\n\u003d7N49\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ded43eaf_803ef571",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-02-25T21:22:37Z",
+      "side": 1,
+      "message": "This check can be removed, right?",
+      "revId": "a39bdb42c5c21acef09c39f65559d7d806ce05ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
