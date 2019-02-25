@@ -48,6 +48,131 @@ class FPDFViewEmbedderTest : public EmbedderTest {
                                       const char* expected_md5);
 };
 
+// Test conversion of the screen coordinates of a point to page coordinates
+TEST_F(FPDFViewEmbedderTest, DeviceCoordinatesToPageCoordinatesInPDF) {
+  EXPECT_TRUE(OpenDocument("about_blank.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_NE(nullptr, page);
+
+  // start_x and start_y denotes left and top pixel position of the display
+  // area in device coordinates
+  int start_x = 0;
+  int start_y = 0;
+
+  // size_x and size_y denotes Horizontal and Vertical size( in pixels) for
+  // displaying the page
+  int size_x = 640;
+  int size_y = 480;
+
+  // Page Orientattion normal
+  int rotate = 0;
+
+  // device_x and device_y denotes device corordinate to be converted
+  int device_x = 10;
+  int device_y = 10;
+
+  double page_x = 0;
+  double page_y = 0;
+  EXPECT_TRUE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, rotate,
+                                device_x, device_y, &page_x, &page_y));
+
+  // Floating point comparisons are error prone hence rounding it to
+  // nearest integer value to make the test more stable
+  EXPECT_EQ(10, std::round(page_x));
+  EXPECT_EQ(775, std::round(page_y));
+
+  // Rotate 90 degrees clockwise
+  EXPECT_TRUE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, 1,
+                                device_x, device_y, &page_x, &page_y));
+  EXPECT_EQ(13, std::round(page_x));
+  EXPECT_EQ(12, std::round(page_y));
+
+  // Rotate 180 degrees
+  EXPECT_TRUE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, 2,
+                                device_x, device_y, &page_x, &page_y));
+  EXPECT_EQ(602, std::round(page_x));
+  EXPECT_EQ(16, std::round(page_y));
+
+  // Rotate 90 degrees counter-clockwise
+  EXPECT_TRUE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, 3,
+                                device_x, device_y, &page_x, &page_y));
+  EXPECT_EQ(599, std::round(page_x));
+  EXPECT_EQ(780, std::round(page_y));
+
+  // Testing  Nagative test cases
+
+  // Invalid page
+  EXPECT_FALSE(FPDF_DeviceToPage(nullptr, start_x, start_y, size_x, size_y,
+                                 rotate, device_x, device_y, &page_x, &page_y));
+  // Invalid output page coordinates
+  EXPECT_FALSE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, rotate,
+                                 device_x, device_y, nullptr, nullptr));
+
+  // unloading the page
+  UnloadPage(page);
+}
+
+// Testing conversion of page coordinates of a point to screen coordinates.
+TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinateInPDF) {
+  EXPECT_TRUE(OpenDocument("about_blank.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_NE(nullptr, page);
+
+  // start_x and start_y denotes left and top pixel position of the display
+  // area in device coordinates
+  int start_x = 0;
+  int start_y = 0;
+
+  // size_x and size_y denotes Horizontal and Vertical size( in pixels) for
+  // displaying the page
+  int size_x = 640;
+  int size_y = 480;
+
+  // Page Orientation normal
+  int rotate = 0;
+
+  // page_x and page_y denotes X and Y values page coordinates
+  double page_x = 9.0;
+  double page_y = 775.0;
+
+  int device_x = 0;
+  int device_y = 0;
+  EXPECT_TRUE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, rotate,
+                                page_x, page_y, &device_x, &device_y));
+
+  EXPECT_EQ(9, device_x);
+  EXPECT_EQ(10, device_y);
+
+  // Rotate 90 degrees clockwise
+  EXPECT_TRUE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, 1,
+                                page_x, page_y, &device_x, &device_y));
+  EXPECT_EQ(626, device_x);
+  EXPECT_EQ(7, device_y);
+
+  // Rotate 180 degrees
+  EXPECT_TRUE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, 2,
+                                page_x, page_y, &device_x, &device_y));
+  EXPECT_EQ(631, device_x);
+  EXPECT_EQ(470, device_y);
+
+  // Rotate 90 degrees counter-clockwise
+  EXPECT_TRUE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, 3,
+                                page_x, page_y, &device_x, &device_y));
+  EXPECT_EQ(14, device_x);
+  EXPECT_EQ(473, device_y);
+
+  // Testing Negative test cases
+
+  // Invalid page
+  EXPECT_FALSE(FPDF_PageToDevice(nullptr, start_x, start_y, size_x, size_y,
+                                 rotate, page_x, page_y, &device_x, &device_y));
+  // Invalid output device coordinates
+  EXPECT_FALSE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, rotate,
+                                 page_x, page_y, nullptr, nullptr));
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFViewEmbedderTest, Document) {
   EXPECT_TRUE(OpenDocument("about_blank.pdf"));
   EXPECT_EQ(1, GetPageCount());
