@@ -23,6 +23,30 @@
       "revId": "ee8a6cd2bdbff4337574f3a274727bd2f7905253",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010e2cfe_1769822e",
+        "filename": "fxjs/fx_date_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-26T19:44:40Z",
+      "side": 1,
+      "message": "Well, there\u0027s also FX_ParseStringInteger(). So it would be nice to know what this is parsing the string into. It\u0027s kind of like strstr().",
+      "parentUuid": "2bb5f7a4_840ea1a9",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 28
+      },
+      "revId": "ee8a6cd2bdbff4337574f3a274727bd2f7905253",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
