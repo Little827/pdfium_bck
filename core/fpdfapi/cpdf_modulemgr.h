@@ -19,10 +19,9 @@ class CCodec_JpxModule;
 class CCodec_ModuleMgr;
 class CPDF_PageModule;
 
-class CFSDK_UnsupportInfo_Adapter {
+class UnsupportedInfoAdapter {
  public:
-  explicit CFSDK_UnsupportInfo_Adapter(void* unsp_info)
-      : m_unsp_info(unsp_info) {}
+  explicit UnsupportedInfoAdapter(void* unsp_info) : m_unsp_info(unsp_info) {}
 
   void* GetUnspInfo() const { return m_unsp_info; }
 
@@ -39,10 +38,10 @@ class CPDF_ModuleMgr {
   void Init();
 
   void SetUnsupportInfoAdapter(
-      std::unique_ptr<CFSDK_UnsupportInfo_Adapter> pAdapter) {
+      std::unique_ptr<UnsupportedInfoAdapter> pAdapter) {
     m_pUnsupportInfoAdapter = std::move(pAdapter);
   }
-  CFSDK_UnsupportInfo_Adapter* GetUnsupportInfoAdapter() const {
+  UnsupportedInfoAdapter* GetUnsupportInfoAdapter() const {
     return m_pUnsupportInfoAdapter.get();
   }
 
@@ -71,7 +70,7 @@ class CPDF_ModuleMgr {
 
   std::unique_ptr<CCodec_ModuleMgr> m_pCodecModule;
   std::unique_ptr<CPDF_PageModule> m_pPageModule;
-  std::unique_ptr<CFSDK_UnsupportInfo_Adapter> m_pUnsupportInfoAdapter;
+  std::unique_ptr<UnsupportedInfoAdapter> m_pUnsupportInfoAdapter;
 };
 
 #endif  // CORE_FPDFAPI_CPDF_MODULEMGR_H_

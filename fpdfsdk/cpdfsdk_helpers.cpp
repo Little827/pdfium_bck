@@ -35,8 +35,8 @@ static uint32_t g_sandbox_policy = 0xFFFFFFFF;
 int g_last_error;
 #endif  // _WIN32
 
-bool RaiseUnSupportError(int nError) {
-  CFSDK_UnsupportInfo_Adapter* pAdapter =
+bool RaiseUnsupportedError(int nError) {
+  UnsupportedInfoAdapter* pAdapter =
       CPDF_ModuleMgr::Get()->GetUnsupportInfoAdapter();
   if (!pAdapter)
     return false;
@@ -326,13 +326,13 @@ void ReportUnsupportedFeatures(CPDF_Document* pDoc) {
   if (pRootDict) {
     // Portfolios and Packages
     if (pRootDict->KeyExist("Collection")) {
-      RaiseUnSupportError(FPDF_UNSP_DOC_PORTABLECOLLECTION);
+      RaiseUnsupportedError(FPDF_UNSP_DOC_PORTABLECOLLECTION);
       return;
     }
     if (pRootDict->KeyExist("Names")) {
       const CPDF_Dictionary* pNameDict = pRootDict->GetDictFor("Names");
       if (pNameDict && pNameDict->KeyExist("EmbeddedFiles")) {
-        RaiseUnSupportError(FPDF_UNSP_DOC_ATTACHMENT);
+        RaiseUnsupportedError(FPDF_UNSP_DOC_ATTACHMENT);
         return;
       }
       if (pNameDict && pNameDict->KeyExist("JavaScript")) {
@@ -343,7 +343,7 @@ void ReportUnsupportedFeatures(CPDF_Document* pDoc) {
           for (size_t i = 0; i < pArray->size(); i++) {
             ByteString cbStr = pArray->GetStringAt(i);
             if (cbStr.Compare("com.adobe.acrobat.SharedReview.Register") == 0) {
-              RaiseUnSupportError(FPDF_UNSP_DOC_SHAREDREVIEW);
+              RaiseUnsupportedError(FPDF_UNSP_DOC_SHAREDREVIEW);
               return;
             }
           }
@@ -356,44 +356,44 @@ void ReportUnsupportedFeatures(CPDF_Document* pDoc) {
     if (pStream) {
       CPDF_Metadata metaData(pStream);
       for (const auto& err : metaData.CheckForSharedForm())
-        RaiseUnSupportError(static_cast<int>(err));
+        RaiseUnsupportedError(static_cast<int>(err));
     }
   }
 
   // XFA Forms
   if (!pDoc->GetExtension() && CPDF_InteractiveForm(pDoc).HasXFAForm())
-    RaiseUnSupportError(FPDF_UNSP_DOC_XFAFORM);
+    RaiseUnsupportedError(FPDF_UNSP_DOC_XFAFORM);
 }
 
 void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot) {
   switch (pAnnot->GetSubtype()) {
     case CPDF_Annot::Subtype::FILEATTACHMENT:
-      RaiseUnSupportError(FPDF_UNSP_ANNOT_ATTACHMENT);
+      RaiseUnsupportedError(FPDF_UNSP_ANNOT_ATTACHMENT);
       break;
     case CPDF_Annot::Subtype::MOVIE:
-      RaiseUnSupportError(FPDF_UNSP_ANNOT_MOVIE);
+      RaiseUnsupportedError(FPDF_UNSP_ANNOT_MOVIE);
       break;
     case CPDF_Annot::Subtype::RICHMEDIA:
-      RaiseUnSupportError(FPDF_UNSP_ANNOT_SCREEN_RICHMEDIA);
+      RaiseUnsupportedError(FPDF_UNSP_ANNOT_SCREEN_RICHMEDIA);
       break;
     case CPDF_Annot::Subtype::SCREEN: {
       const CPDF_Dictionary* pAnnotDict = pAnnot->GetAnnotDict();
       ByteString cbString = pAnnotDict->GetStringFor("IT");
       if (cbString != "Img")
-        RaiseUnSupportError(FPDF_UNSP_ANNOT_SCREEN_MEDIA);
+        RaiseUnsupportedError(FPDF_UNSP_ANNOT_SCREEN_MEDIA);
       break;
     }
     case CPDF_Annot::Subtype::SOUND:
-      RaiseUnSupportError(FPDF_UNSP_ANNOT_SOUND);
+      RaiseUnsupportedError(FPDF_UNSP_ANNOT_SOUND);
       break;
     case CPDF_Annot::Subtype::THREED:
-      RaiseUnSupportError(FPDF_UNSP_ANNOT_3DANNOT);
+      RaiseUnsupportedError(FPDF_UNSP_ANNOT_3DANNOT);
       break;
     case CPDF_Annot::Subtype::WIDGET: {
       const CPDF_Dictionary* pAnnotDict = pAnnot->GetAnnotDict();
       ByteString cbString = pAnnotDict->GetStringFor(pdfium::form_fields::kFT);
       if (cbString == pdfium::form_fields::kSig)
-        RaiseUnSupportError(FPDF_UNSP_ANNOT_SIG);
+        RaiseUnsupportedError(FPDF_UNSP_ANNOT_SIG);
       break;
     }
     default:
