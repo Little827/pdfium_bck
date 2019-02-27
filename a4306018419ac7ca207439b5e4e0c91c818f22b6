@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e833bfba_1b57dfcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "This needs to be pdfium:1239. Otherwise it defaults to chromium, which links to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1239.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b837746_f6d43c2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "Can you wrap at 72 columns, which is a common git convention.",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab1154b8_80cf4839",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "I don\u0027t think this is line is necessary. If your test is not passing, the commit queue won\u0027t let it commit.",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c475b5cd_85d472f1",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "nit: Not necessary. Most things in PDFium are \"in PDF\".",
+      "range": {
+        "startLine": 52,
+        "startChar": 63,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44e5b8a4_a86ff71f",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "By convention, refer to variables as |foo|. Otherwise, something like \"i is too big\" can cause the confusion. i.e. Did you mean \"I am too big\" ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66d24626_aff8c1cb",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "formatting",
+      "range": {
+        "startLine": 62,
+        "startChar": 59,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22e87fe_d69496fe",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1884152_fe655f80",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "Do you want to hard code the value 0 here, or set |rotate| to 1 before the next FPDF_DeviceToPage() call?",
+      "range": {
+        "startLine": 76,
+        "startChar": 72,
+        "endLine": 76,
+        "endChar": 78
+      },
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d933beae_4aa6e164",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "What kind of failure do you get if you don\u0027t round?",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e00075_40974908",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-02-27T23:04:56Z",
+      "side": 1,
+      "message": "Can you also try using a rotate value of 4, or -1?",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
