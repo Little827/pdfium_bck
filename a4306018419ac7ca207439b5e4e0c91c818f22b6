@@ -377,6 +377,24 @@
     },
     {
       "key": {
+        "uuid": "5ffd7684_27db50c1",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-02T05:07:55Z",
+      "side": 1,
+      "message": "If you use EXPECT_DOUBLE_EQ() instead of EXPECT_EQ(), does that avoid the need to round?",
+      "parentUuid": "d358dad7_9ce5aaa6",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19e00075_40974908",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 2
