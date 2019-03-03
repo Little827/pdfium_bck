@@ -395,6 +395,24 @@
     },
     {
       "key": {
+        "uuid": "3591fd2e_48d37887",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-03T09:24:33Z",
+      "side": 1,
+      "message": "Verified that EXPECT_DOUBLE_EQ(sqrt(2.0)*sqrt(2.0), 2.0) passes. For these test cases however, the variation in precision concerns me:\n  EXPECT_DOUBLE_EQ(775.49993896484375, page_y);\n  EXPECT_DOUBLE_EQ(16.499998092651367, page_y);\n  EXPECT_DOUBLE_EQ(12.75, page_x);\n  EXPECT_DOUBLE_EQ(12.375, page_y);\n\nFirst two values are indeed 775.5 and 16.5, but needed those many extra precisions to be added to make the tests pass. Test starts failing if I reduce the precision to \u003c12 decimal point.\n\nInstead, I am now using EXPECT_NEAR with a tolerance of 0.0001.",
+      "parentUuid": "5ffd7684_27db50c1",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19e00075_40974908",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 2

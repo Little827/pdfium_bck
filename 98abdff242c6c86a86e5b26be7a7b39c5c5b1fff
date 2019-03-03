@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a60fdc96_9c355b5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-03T09:24:33Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "5fb04ec8_182d1ebf",
+      "range": {
+        "startLine": 7,
+        "startChar": 48,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "98abdff242c6c86a86e5b26be7a7b39c5c5b1fff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dab81d6_2754d764",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8c22a417_04586e6c",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-03T09:24:33Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "5dab81d6_2754d764",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 24
+      },
+      "revId": "98abdff242c6c86a86e5b26be7a7b39c5c5b1fff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0237cd93_49440ccf",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "98abdff242c6c86a86e5b26be7a7b39c5c5b1fff",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123847ef_ab107bda",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-03T09:24:33Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "0237cd93_49440ccf",
+      "revId": "98abdff242c6c86a86e5b26be7a7b39c5c5b1fff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
