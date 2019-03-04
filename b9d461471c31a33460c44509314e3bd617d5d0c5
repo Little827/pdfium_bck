@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14ea3301_8d3aac13",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-04T23:29:55Z",
+      "side": 1,
+      "message": "NOTE: m_pOldLayoutItem is already of type ContentLayoutItem*",
+      "range": {
+        "startLine": 804,
+        "startChar": 47,
+        "endLine": 804,
+        "endChar": 64
+      },
+      "revId": "b9d461471c31a33460c44509314e3bd617d5d0c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
