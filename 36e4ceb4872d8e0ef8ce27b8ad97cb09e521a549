@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "13827f1f_6d365fd8",
+        "filename": "testing/fuzzers/pdf_formcalc_context_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T17:30:15Z",
+      "side": 1,
+      "message": "NM, probably best to keep this as 7-bit ascii, just because.",
+      "parentUuid": "da814191_9718878e",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "36e4ceb4872d8e0ef8ce27b8ad97cb09e521a549",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8a2b123_e5653356",
         "filename": "testing/fuzzers/pdfium_fuzzer_helper.h",
         "patchSetId": 2
