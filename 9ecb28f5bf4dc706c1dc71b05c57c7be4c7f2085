@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddda24c9_55d63137",
+        "filename": "xfa/fgas/crt/cfgas_formatstring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T23:52:07Z",
+      "side": 0,
+      "message": "The bug is if this test fails, then we never advance ccf (nor cc) and we spin.",
+      "range": {
+        "startLine": 1456,
+        "startChar": 10,
+        "endLine": 1456,
+        "endChar": 12
+      },
+      "revId": "9ecb28f5bf4dc706c1dc71b05c57c7be4c7f2085",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30bed3a_39b2299e",
+        "filename": "xfa/fgas/crt/cfgas_formatstring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T23:52:07Z",
+      "side": 0,
+      "message": "and here, too.",
+      "range": {
+        "startLine": 1469,
+        "startChar": 10,
+        "endLine": 1469,
+        "endChar": 12
+      },
+      "revId": "9ecb28f5bf4dc706c1dc71b05c57c7be4c7f2085",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7364e75b_ed3d956a",
+        "filename": "xfa/fgas/crt/cfgas_formatstring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T23:52:07Z",
+      "side": 0,
+      "message": "and here, too.",
+      "range": {
+        "startLine": 1495,
+        "startChar": 10,
+        "endLine": 1495,
+        "endChar": 15
+      },
+      "revId": "9ecb28f5bf4dc706c1dc71b05c57c7be4c7f2085",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
