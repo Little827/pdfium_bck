@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d47f6a68_96256d7a",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-05T05:18:22Z",
+      "side": 1,
+      "message": "Renamed to kTolerance.",
+      "parentUuid": "9b787326_bbe56660",
+      "range": {
+        "startLine": 58,
+        "startChar": 15,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "e1c99fbb9055f35a6c3c58df694148525268a61b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "989e9092_8fdc0faf",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 6
@@ -56,6 +80,24 @@
       "revId": "e1c99fbb9055f35a6c3c58df694148525268a61b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22dab90b_94cadbda",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-05T05:18:22Z",
+      "side": 1,
+      "message": "Check added for both the tests.",
+      "parentUuid": "989e9092_8fdc0faf",
+      "revId": "e1c99fbb9055f35a6c3c58df694148525268a61b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
