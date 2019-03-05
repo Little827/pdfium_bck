@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84826428_37457a6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T01:11:12Z",
+      "side": 1,
+      "message": "Another possibility is to hand back nullptr in this case. Like many XFA bugs, it\u0027s not obvious which is preferable.",
+      "revId": "c356ee27b9908476e228b1178ac7879c6c1ff73a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
