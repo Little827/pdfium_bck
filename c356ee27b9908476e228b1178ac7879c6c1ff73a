@@ -16,6 +16,24 @@
       "revId": "c356ee27b9908476e228b1178ac7879c6c1ff73a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea891a3_952875db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T18:27:07Z",
+      "side": 1,
+      "message": "Right. I think this is the least disruptive to existing behavior, keeping lists intact.",
+      "parentUuid": "84826428_37457a6b",
+      "revId": "c356ee27b9908476e228b1178ac7879c6c1ff73a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
