@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fbc6d8c_2e075680",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T17:56:02Z",
+      "side": 1,
+      "message": "You can combine the !annot check with this by calling GetAnnotDictFromFPDFAnnotation() now.",
+      "revId": "505aa94bb53d9479993f06f63b7d4521c3840701",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aae5de9_2fddf513",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T17:56:02Z",
+      "side": 1,
+      "message": "Line 745 is pretty short, so merge the two?",
+      "revId": "505aa94bb53d9479993f06f63b7d4521c3840701",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
