@@ -413,6 +413,24 @@
     },
     {
       "key": {
+        "uuid": "f08e18b1_0bb536e6",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T00:04:46Z",
+      "side": 1,
+      "message": "Thanks for trying. EXPECT_NEAR() looks reasonable then.",
+      "parentUuid": "3591fd2e_48d37887",
+      "revId": "a4306018419ac7ca207439b5e4e0c91c818f22b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19e00075_40974908",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 2
