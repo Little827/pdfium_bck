@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50ddf23e_75222a2b",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T01:22:18Z",
+      "side": 1,
+      "message": "If you are going to reach this far down and grab a CPDF_Object, then just check the type here, rather than rely on FPDFAnnot_GetValueType(), which does pretty much the same thing and returns p-\u003eGetType().",
+      "revId": "27d1ca38be9434a95dd5ccc61317aac81582aaa4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5574ebbf_8ef2ac7a",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T01:22:18Z",
+      "side": 1,
+      "message": "EXPECT_FLOAT_EQ(10.0f, value); ?",
+      "revId": "27d1ca38be9434a95dd5ccc61317aac81582aaa4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
