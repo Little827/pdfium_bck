@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1551344559 -0800\nnonce AC6AUtP9SsA3f/043MLjHSMi++ja0YaEpRB4Mf2nDalo3Dg0H2f7Ok+tyTh9oX+mH1YeeavTRFpB\n\n0000000000000000000000000000000000000000 36e4ceb4872d8e0ef8ce27b8ad97cb09e521a549 refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlx3o68ACgkQqzYtYVpm\n/XvGEAgAnF6+TrtDWsXviUVYgdxdfm3fwaZMd/JXNhUcCpUEUz2Tgbtr5122CcBk\nQ43GxrhdHZdIYo0WhUJpszrHwmZ3xpDq3mveFf8qCJG7M1pBV1RAahutuXboU0BD\n/fNdfIMjjqsnvn5psyLkos0wXD2MneCeGvQSDB8Mr/Vxj64K6pDxXsHgdaxXI0pm\n9GRuZTD7TJ06Ct7SVONz/w6qG3CZRkQg4DarGQ7abA0+MJv3VCXW6/920NOIJ+39\nJLize2T8qVYKB6a0O+7F1SEPSY8iDUUB6AcVMO4XGq3NNtjViXND48e+2nFErST7\ne2KUHcVLGlhAvpDtz7bbcLcddKvIBg\u003d\u003d\n\u003dR+3h\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2be2682d_7200afdb",
+        "filename": "testing/fuzzers/pdf_formcalc_context_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T17:11:23Z",
+      "side": 1,
+      "message": "nit: namespace {",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 2
+      },
+      "revId": "36e4ceb4872d8e0ef8ce27b8ad97cb09e521a549",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf891da6_a2720dd4",
+        "filename": "testing/fuzzers/pdf_formcalc_context_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T17:11:23Z",
+      "side": 1,
+      "message": "Maybe a raw string literal here would be cleaner?",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "36e4ceb4872d8e0ef8ce27b8ad97cb09e521a549",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a2b123_e5653356",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-05T17:11:23Z",
+      "side": 1,
+      "message": "nit: put impl in .cpp file to avoid inline virtuals.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "36e4ceb4872d8e0ef8ce27b8ad97cb09e521a549",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
