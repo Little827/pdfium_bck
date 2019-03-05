@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "f6711073_509a0ec7",
+        "filename": "testing/resources/xfa/xfa_date_time_edit.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T22:11:19Z",
+      "side": 1,
+      "message": "They are there. The PDFs are regenerated using fixup_pdf_template.py.",
+      "parentUuid": "eed3629f_6d37b0e1",
+      "range": {
+        "startLine": 234,
+        "startChar": 18,
+        "endLine": 234,
+        "endChar": 19
+      },
+      "revId": "b133afe9ea31866e0cc70394cc6e32538e7c2af0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8425f39e_41b8cf28",
         "filename": "testing/resources/xfa/xfa_multiline_textfield.pdf",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "b133afe9ea31866e0cc70394cc6e32538e7c2af0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57edec5d_134f507e",
+        "filename": "testing/resources/xfa/xfa_multiline_textfield.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T22:11:19Z",
+      "side": 1,
+      "message": "Same.",
+      "parentUuid": "8425f39e_41b8cf28",
+      "range": {
+        "startLine": 234,
+        "startChar": 16,
+        "endLine": 234,
+        "endChar": 17
+      },
+      "revId": "b133afe9ea31866e0cc70394cc6e32538e7c2af0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
