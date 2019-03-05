@@ -23,6 +23,30 @@
       "revId": "767fef6a19ca78ccf761b73b644d7b64d1c49bc0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b739ed_81d3bf24",
+        "filename": "fxbarcode/datamatrix/BC_ASCIIEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T05:43:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c368d97d_ad346f79",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "767fef6a19ca78ccf761b73b644d7b64d1c49bc0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
