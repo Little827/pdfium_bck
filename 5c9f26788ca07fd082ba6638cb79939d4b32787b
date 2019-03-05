@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "24693bd3_da7fe8f6",
+        "filename": "fxbarcode/datamatrix/BC_DataMatrixWriter_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T19:53:30Z",
+      "side": 1,
+      "message": "Fixed existing tests as well.",
+      "parentUuid": "73b562d7_73194845",
+      "range": {
+        "startLine": 140,
+        "startChar": 15,
+        "endLine": 140,
+        "endChar": 16
+      },
+      "revId": "5c9f26788ca07fd082ba6638cb79939d4b32787b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d88231ae_fbd7b7da",
         "filename": "fxbarcode/datamatrix/BC_DataMatrixWriter_unittest.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "5c9f26788ca07fd082ba6638cb79939d4b32787b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91b8629_a124b679",
+        "filename": "fxbarcode/datamatrix/BC_DataMatrixWriter_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-05T19:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d88231ae_fbd7b7da",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 9
+      },
+      "revId": "5c9f26788ca07fd082ba6638cb79939d4b32787b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
