@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "third_party/base/span.h"
 #include "xfa/fgas/crt/cfgas_decimal.h"
 
 #define FX_LOCALECATEGORY_DateHash 0xbde9abde
@@ -73,22 +74,22 @@ const wchar_t gs_wsTimeSymbols[] = L"hHkKMSFAzZ";
 const wchar_t gs_wsDateSymbols[] = L"DJMEeGgYwW";
 const wchar_t gs_wsConstChars[] = L",-:/. ";
 
-int32_t ParseTimeZone(const wchar_t* pStr, int32_t iLen, FX_TIMEZONE* tz) {
+int32_t ParseTimeZone(pdfium::span<const wchar_t> pStr, FX_TIMEZONE* tz) {
   tz->tzHour = 0;
   tz->tzMinute = 0;
-  if (iLen < 0)
+  if (pStr.empty())
     return 0;
 
-  int32_t iStart = 1;
-  int32_t iEnd = iStart + 2;
-  while (iStart < iLen && iStart < iEnd)
+  size_t iStart = 1;
+  size_t iEnd = iStart + 2;
+  while (iStart < pStr.size() && iStart < iEnd)
     tz->tzHour = tz->tzHour * 10 + FXSYS_DecimalCharToInt(pStr[iStart++]);
 
-  if (iStart < iLen && pStr[iStart] == ':')
+  if (iStart < pStr.size() && pStr[iStart] == ':')
     iStart++;
 
   iEnd = iStart + 2;
-  while (iStart < iLen && iStart < iEnd)
+  while (iStart < pStr.size() && iStart < iEnd)
     tz->tzMinute = tz->tzMinute * 10 + FXSYS_DecimalCharToInt(pStr[iStart++]);
 
   if (pStr[0] == '-')
@@ -103,31 +104,31 @@ int32_t ConvertHex(int32_t iKeyValue, wchar_t ch) {
   return iKeyValue;
 }
 
-WideString GetLiteralText(const wchar_t* pStrPattern,
-                          int32_t* iPattern,
-                          int32_t iLenPattern) {
+WideString GetLiteralText(pdfium::span<const wchar_t> pStrPattern,
+                          int32_t* iPattern) {
   WideString wsOutput;
   if (pStrPattern[*iPattern] != '\'')
     return wsOutput;
 
   (*iPattern)++;
   int32_t iQuote = 1;
-  while (*iPattern < iLenPattern) {
+  while (*iPattern < pdfium::CollectionSize<int32_t>(pStrPattern)) {
     if (pStrPattern[*iPattern] == '\'') {
       iQuote++;
-      if ((*iPattern + 1 >= iLenPattern) ||
+      if ((*iPattern + 1 >= pdfium::CollectionSize<int32_t>(pStrPattern)) ||
           ((pStrPattern[*iPattern + 1] != '\'') && (iQuote % 2 == 0))) {
         break;
       }
       iQuote++;
       (*iPattern)++;
     } else if (pStrPattern[*iPattern] == '\\' &&
-               (*iPattern + 1 < iLenPattern) &&
+               (*iPattern + 1 < pdfium::CollectionSize<int32_t>(pStrPattern)) &&
                pStrPattern[*iPattern + 1] == 'u') {
       int32_t iKeyValue = 0;
       *iPattern += 2;
-      int32_t i = 0;
-      while (*iPattern < iLenPattern && i++ < 4) {
+      for (int32_t i = 0;
+           *iPattern < pdfium::CollectionSize<int32_t>(pStrPattern) && i < 4;
+           ++i) {
         wchar_t ch = pStrPattern[(*iPattern)++];
         iKeyValue = ConvertHex(iKeyValue, ch);
       }
@@ -141,7 +142,7 @@ WideString GetLiteralText(const wchar_t* pStrPattern,
   return wsOutput;
 }
 
-WideString GetLiteralTextReverse(const wchar_t* pStrPattern,
+WideString GetLiteralTextReverse(pdfium::span<const wchar_t> pStrPattern,
                                  int32_t* iPattern) {
   WideString wsOutput;
   if (pStrPattern[*iPattern] != '\'')
@@ -152,7 +153,7 @@ WideString GetLiteralTextReverse(const wchar_t* pStrPattern,
   while (*iPattern >= 0) {
     if (pStrPattern[*iPattern] == '\'') {
       iQuote++;
-      if (*iPattern - 1 >= 0 ||
+      if (*iPattern - 1 < 0 ||
           ((pStrPattern[*iPattern - 1] != '\'') && (iQuote % 2 == 0))) {
         break;
       }
@@ -188,7 +189,7 @@ bool GetNumericDotIndex(const WideString& wsNum,
   int32_t iLenDot = wsDotSymbol.GetLength();
   while (ccf < iLenf) {
     if (pStr[ccf] == '\'') {
-      GetLiteralText(pStr, &ccf, iLenf);
+      GetLiteralText({pStr, iLenf}, &ccf);
     } else if (ccf + iLenDot <= iLenf &&
                !wcsncmp(pStr + ccf, wsDotSymbol.c_str(), iLenDot)) {
       *iDotIndex = ccf;
@@ -243,7 +244,7 @@ bool ParseLocaleDate(const WideString& wsDate,
   WideStringView wsDateSymbols(gs_wsDateSymbols);
   while (*cc < len && ccf < lenf) {
     if (strf[ccf] == '\'') {
-      WideString wsLiteral = GetLiteralText(strf, &ccf, lenf);
+      WideString wsLiteral = GetLiteralText({strf, lenf}, &ccf);
       int32_t iLiteralLen = wsLiteral.GetLength();
       if (*cc + iLiteralLen > len ||
           wcsncmp(str + *cc, wsLiteral.c_str(), iLiteralLen)) {
@@ -366,7 +367,7 @@ bool ParseLocaleTime(const WideString& wsTime,
   WideStringView wsTimeSymbols(gs_wsTimeSymbols);
   while (*cc < len && ccf < lenf) {
     if (strf[ccf] == '\'') {
-      WideString wsLiteral = GetLiteralText(strf, &ccf, lenf);
+      WideString wsLiteral = GetLiteralText({strf, lenf}, &ccf);
       int32_t iLiteralLen = wsLiteral.GetLength();
       if (*cc + iLiteralLen > len ||
           wcsncmp(str + *cc, wsLiteral.c_str(), iLiteralLen)) {
@@ -450,7 +451,7 @@ bool ParseLocaleTime(const WideString& wsTime,
         tzDiff.tzHour = 0;
         tzDiff.tzMinute = 0;
         if (*cc < len && (str[*cc] == '-' || str[*cc] == '+'))
-          *cc += ParseTimeZone(str + *cc, len - *cc, &tzDiff);
+          *cc += ParseTimeZone({str + *cc, len - *cc}, &tzDiff);
 
         ResolveZone(tzDiff, pLocale, &hour, &minute);
       } else {
@@ -468,7 +469,7 @@ bool ParseLocaleTime(const WideString& wsTime,
     } else if (symbol.EqualsASCII("z")) {
       if (str[*cc] != 'Z') {
         FX_TIMEZONE tzDiff;
-        *cc += ParseTimeZone(str + *cc, len - *cc, &tzDiff);
+        *cc += ParseTimeZone({str + *cc, len - *cc}, &tzDiff);
         ResolveZone(tzDiff, pLocale, &hour, &minute);
       } else {
         (*cc)++;
@@ -580,7 +581,7 @@ WideString DateFormat(const WideString& wsDatePattern,
   WideStringView wsDateSymbols(gs_wsDateSymbols);
   while (ccf < lenf) {
     if (strf[ccf] == '\'') {
-      wsResult += GetLiteralText(strf, &ccf, lenf);
+      wsResult += GetLiteralText({strf, lenf}, &ccf);
       ccf++;
       continue;
     }
@@ -651,7 +652,7 @@ WideString TimeFormat(const WideString& wsTimePattern,
   WideStringView wsTimeSymbols(gs_wsTimeSymbols);
   while (ccf < lenf) {
     if (strf[ccf] == '\'') {
-      wsResult += GetLiteralText(strf, &ccf, lenf);
+      wsResult += GetLiteralText({strf, lenf}, &ccf);
       ccf++;
       continue;
     }
@@ -830,8 +831,7 @@ bool FX_TimeFromCanonical(WideStringView wsTime,
     tzDiff.tzHour = 0;
     tzDiff.tzMinute = 0;
     if (str[cc] != 'Z')
-      cc += ParseTimeZone(str + cc, len - cc, &tzDiff);
-
+      cc += ParseTimeZone({str + cc, len - cc}, &tzDiff);
     ResolveZone(tzDiff, pLocale, &hour, &minute);
   }
 
@@ -877,7 +877,7 @@ FX_LOCALECATEGORY CFGAS_FormatString::GetCategory(
   WideStringView wsConstChars(gs_wsConstChars);
   while (ccf < iLenf) {
     if (pStr[ccf] == '\'') {
-      GetLiteralText(pStr, &ccf, iLenf);
+      GetLiteralText({pStr, iLenf}, &ccf);
     } else if (!bBraceOpen && !wsConstChars.Contains(pStr[ccf])) {
       WideString wsCategory(pStr[ccf]);
       ccf++;
@@ -933,7 +933,7 @@ WideString CFGAS_FormatString::GetTextFormat(const WideString& wsPattern,
   while (ccf < iLenf) {
     if (pStr[ccf] == '\'') {
       int32_t iCurChar = ccf;
-      GetLiteralText(pStr, &ccf, iLenf);
+      GetLiteralText({pStr, iLenf}, &ccf);
       wsPurgePattern += WideStringView(pStr + iCurChar, ccf - iCurChar + 1);
     } else if (!bBrackOpen && !wsConstChars.Contains(pStr[ccf])) {
       WideString wsSearchCategory(pStr[ccf]);
@@ -985,7 +985,7 @@ LocaleIface* CFGAS_FormatString::GetNumericFormat(
   while (ccf < iLenf) {
     if (pStr[ccf] == '\'') {
       int32_t iCurChar = ccf;
-      GetLiteralText(pStr, &ccf, iLenf);
+      GetLiteralText({pStr, iLenf}, &ccf);
       *wsPurgePattern += WideStringView(pStr + iCurChar, ccf - iCurChar + 1);
     } else if (!bBrackOpen && !wsConstChars.Contains(pStr[ccf])) {
       WideString wsCategory(pStr[ccf]);
@@ -1092,7 +1092,7 @@ bool CFGAS_FormatString::ParseText(const WideString& wsSrcText,
     switch (pStrPattern[iPattern]) {
       case '\'': {
         WideString wsLiteral =
-            GetLiteralText(pStrPattern, &iPattern, iLenPattern);
+            GetLiteralText({pStrPattern, iLenPattern}, &iPattern);
         int32_t iLiteralLen = wsLiteral.GetLength();
         if (iText + iLiteralLen > iLenText ||
             wcsncmp(pStrText + iText, wsLiteral.c_str(), iLiteralLen)) {
@@ -1193,7 +1193,7 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
   while (ccf >= 0 && cc >= 0) {
     switch (strf[ccf]) {
       case '\'': {
-        WideString wsLiteral = GetLiteralTextReverse(strf, &ccf);
+        WideString wsLiteral = GetLiteralTextReverse({strf, lenf}, &ccf);
         int32_t iLiteralLen = wsLiteral.GetLength();
         cc -= iLiteralLen - 1;
         if (cc < 0 || wcsncmp(str + cc, wsLiteral.c_str(), iLiteralLen))
@@ -1369,7 +1369,7 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
     for (ccf = dot_index_f + 1; cc < len && ccf < lenf; ++ccf) {
       switch (strf[ccf]) {
         case '\'': {
-          WideString wsLiteral = GetLiteralText(strf, &ccf, lenf);
+          WideString wsLiteral = GetLiteralText({strf, lenf}, &ccf);
           int32_t iLiteralLen = wsLiteral.GetLength();
           if (cc + iLiteralLen > len ||
               wcsncmp(str + cc, wsLiteral.c_str(), iLiteralLen)) {
@@ -1551,7 +1551,7 @@ FX_DATETIMETYPE CFGAS_FormatString::GetDateTimeFormat(
   while (ccf < iLenf) {
     if (pStr[ccf] == '\'') {
       int32_t iCurChar = ccf;
-      GetLiteralText(pStr, &ccf, iLenf);
+      GetLiteralText({pStr, iLenf}, &ccf);
       wsTempPattern += WideStringView(pStr + iCurChar, ccf - iCurChar + 1);
     } else if (!bBraceOpen && iFindCategory != 3 &&
                !wsConstChars.Contains(pStr[ccf])) {
@@ -1728,7 +1728,7 @@ bool CFGAS_FormatString::ParseZero(const WideString& wsSrcText,
   while (iPattern < iLenPattern && iText < iLenText) {
     if (pStrPattern[iPattern] == '\'') {
       WideString wsLiteral =
-          GetLiteralText(pStrPattern, &iPattern, iLenPattern);
+          GetLiteralText({pStrPattern, iLenPattern}, &iPattern);
       int32_t iLiteralLen = wsLiteral.GetLength();
       if (iText + iLiteralLen > iLenText ||
           wcsncmp(pStrText + iText, wsLiteral.c_str(), iLiteralLen)) {
@@ -1760,7 +1760,7 @@ bool CFGAS_FormatString::ParseNull(const WideString& wsSrcText,
   while (iPattern < iLenPattern && iText < iLenText) {
     if (pStrPattern[iPattern] == '\'') {
       WideString wsLiteral =
-          GetLiteralText(pStrPattern, &iPattern, iLenPattern);
+          GetLiteralText({pStrPattern, iLenPattern}, &iPattern);
       int32_t iLiteralLen = wsLiteral.GetLength();
       if (iText + iLiteralLen > iLenText ||
           wcsncmp(pStrText + iText, wsLiteral.c_str(), iLiteralLen)) {
@@ -1799,7 +1799,7 @@ bool CFGAS_FormatString::FormatText(const WideString& wsSrcText,
   while (iPattern < iLenPattern) {
     switch (pStrPattern[iPattern]) {
       case '\'': {
-        *wsOutput += GetLiteralText(pStrPattern, &iPattern, iLenPattern);
+        *wsOutput += GetLiteralText({pStrPattern, iLenPattern}, &iPattern);
         iPattern++;
         break;
       }
@@ -1875,7 +1875,7 @@ bool CFGAS_FormatString::FormatStrNum(WideStringView wsInputNum,
     for (int ccf = 0; ccf < dot_index_f; ++ccf) {
       switch (strf[ccf]) {
         case '\'':
-          GetLiteralText(strf, &ccf, dot_index_f);
+          GetLiteralText({strf, dot_index_f}, &ccf);
           break;
         case '9':
         case 'z':
@@ -2048,7 +2048,7 @@ bool CFGAS_FormatString::FormatStrNum(WideStringView wsInputNum,
         wsOutput->InsertAtFront(bNeg ? L')' : L' ');
         break;
       case '\'':
-        *wsOutput = GetLiteralTextReverse(strf, &ccf) + *wsOutput;
+        *wsOutput = GetLiteralTextReverse({strf, lenf}, &ccf) + *wsOutput;
         break;
       default:
         wsOutput->InsertAtFront(strf[ccf]);
@@ -2094,7 +2094,7 @@ bool CFGAS_FormatString::FormatStrNum(WideStringView wsInputNum,
   for (int ccf = dot_index_f + 1; ccf < lenf; ++ccf) {
     switch (strf[ccf]) {
       case '\'':
-        *wsOutput += GetLiteralText(strf, &ccf, lenf);
+        *wsOutput += GetLiteralText({strf, lenf}, &ccf);
         break;
       case '9':
         if (cc < len) {
@@ -2272,7 +2272,7 @@ bool CFGAS_FormatString::FormatZero(const WideString& wsPattern,
   int32_t iLenPattern = wsTextFormat.GetLength();
   while (iPattern < iLenPattern) {
     if (pStrPattern[iPattern] == '\'') {
-      *wsOutput += GetLiteralText(pStrPattern, &iPattern, iLenPattern);
+      *wsOutput += GetLiteralText({pStrPattern, iLenPattern}, &iPattern);
       iPattern++;
     } else {
       *wsOutput += pStrPattern[iPattern++];
@@ -2292,7 +2292,7 @@ bool CFGAS_FormatString::FormatNull(const WideString& wsPattern,
   int32_t iLenPattern = wsTextFormat.GetLength();
   while (iPattern < iLenPattern) {
     if (pStrPattern[iPattern] == '\'') {
-      *wsOutput += GetLiteralText(pStrPattern, &iPattern, iLenPattern);
+      *wsOutput += GetLiteralText({pStrPattern, iLenPattern}, &iPattern);
       iPattern++;
       continue;
     }
