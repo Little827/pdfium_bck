@@ -18,6 +18,7 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfdoc/cpdf_dest.h"
+#include "core/fxcrt/borrow.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "testing/fx_string_testhelpers.h"
@@ -76,10 +77,10 @@ TEST_F(PDFDocTest, FindBookmark) {
     // No bookmark information.
     std::unique_ptr<unsigned short, pdfium::FreeDeleter> title =
         GetFPDFWideString(L"");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr, FPDFBookmark_Find(Borrow(&m_pDoc), title.get()));
 
     title = GetFPDFWideString(L"Preface");
-    EXPECT_EQ(nullptr, FPDFBookmark_Find(m_pDoc.get(), title.get()));
+    EXPECT_EQ(nullptr, FPDFBookmark_Find(Borrow(&m_pDoc), title.get()));
   }
   {
     // Empty bookmark tree.
