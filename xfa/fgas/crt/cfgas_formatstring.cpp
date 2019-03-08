@@ -1030,7 +1030,8 @@ LocaleIface* CFGAS_FormatString::GetNumericFormat(
           wsSubCategory = pLocale->GetNumPattern(eSubCategory);
           auto result = wsSubCategory.Find('.');
           if (result.has_value() && result.value() != 0) {
-            *iDotIndex += wsPurgePattern->GetLength();
+            if (!bFindDot)
+              *iDotIndex = wsPurgePattern->GetLength() - 1;
             bFindDot = true;
             *dwStyle |= FX_NUMSTYLE_DotVorv;
           }
@@ -1054,8 +1055,9 @@ LocaleIface* CFGAS_FormatString::GetNumericFormat(
     if (!bFindDot && ccf < spPattern.size() &&
         (spPattern[ccf] == '.' || spPattern[ccf] == 'V' ||
          spPattern[ccf] == 'v')) {
+      if (!bFindDot)
+        *iDotIndex = wsPurgePattern->GetLength() - 1;
       bFindDot = true;
-      *iDotIndex = wsPurgePattern->GetLength() - 1;
       *dwStyle |= FX_NUMSTYLE_DotVorv;
     }
     ccf++;
