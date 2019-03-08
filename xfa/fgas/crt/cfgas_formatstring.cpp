@@ -1070,18 +1070,19 @@ bool CFGAS_FormatString::ParseText(const WideString& wsSrcText,
   if (wsTextFormat.IsEmpty())
     return false;
 
-  int32_t iText = 0;
-  size_t iPattern = 0;
-  const wchar_t* pStrText = wsSrcText.c_str();
-  int32_t iLenText = wsSrcText.GetLength();
+  pdfium::span<const wchar_t> spSrcText = wsSrcText.AsSpan();
   pdfium::span<const wchar_t> spTextFormat = wsTextFormat.AsSpan();
-  while (iPattern < spTextFormat.size() && iText < iLenText) {
+
+  size_t iText = 0;
+  size_t iPattern = 0;
+  while (iPattern < spTextFormat.size() && iText < spSrcText.size()) {
     switch (spTextFormat[iPattern]) {
       case '\'': {
         WideString wsLiteral = GetLiteralText(spTextFormat, &iPattern);
         int32_t iLiteralLen = wsLiteral.GetLength();
-        if (iText + iLiteralLen > iLenText ||
-            wcsncmp(pStrText + iText, wsLiteral.c_str(), iLiteralLen)) {
+        if (iText + iLiteralLen > spSrcText.size() ||
+            wcsncmp(spSrcText.data() + iText, wsLiteral.c_str(), iLiteralLen) !=
+                0) {
           *wsValue = wsSrcText;
           return false;
         }
@@ -1090,35 +1091,35 @@ bool CFGAS_FormatString::ParseText(const WideString& wsSrcText,
         break;
       }
       case 'A':
-        if (FXSYS_iswalpha(pStrText[iText])) {
-          *wsValue += pStrText[iText];
+        if (FXSYS_iswalpha(spSrcText[iText])) {
+          *wsValue += spSrcText[iText];
           iText++;
         }
         iPattern++;
         break;
       case 'X':
-        *wsValue += pStrText[iText];
+        *wsValue += spSrcText[iText];
         iText++;
         iPattern++;
         break;
       case 'O':
       case '0':
-        if (FXSYS_IsDecimalDigit(pStrText[iText]) ||
-            FXSYS_iswalpha(pStrText[iText])) {
-          *wsValue += pStrText[iText];
+        if (FXSYS_IsDecimalDigit(spSrcText[iText]) ||
+            FXSYS_iswalpha(spSrcText[iText])) {
+          *wsValue += spSrcText[iText];
           iText++;
         }
         iPattern++;
         break;
       case '9':
-        if (FXSYS_IsDecimalDigit(pStrText[iText])) {
-          *wsValue += pStrText[iText];
+        if (FXSYS_IsDecimalDigit(spSrcText[iText])) {
+          *wsValue += spSrcText[iText];
           iText++;
         }
         iPattern++;
         break;
       default:
-        if (spTextFormat[iPattern] != pStrText[iText]) {
+        if (spTextFormat[iPattern] != spSrcText[iText]) {
           *wsValue = wsSrcText;
           return false;
         }
@@ -1127,7 +1128,7 @@ bool CFGAS_FormatString::ParseText(const WideString& wsSrcText,
         break;
     }
   }
-  return iPattern == spTextFormat.size() && iText == iLenText;
+  return iPattern == spTextFormat.size() && iText == spSrcText.size();
 }
 
 bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
@@ -1151,10 +1152,10 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
   int32_t iGroupLen = wsGroupSymbol.GetLength();
   WideString wsMinus = pLocale->GetMinusSymbol();
   int32_t iMinusLen = wsMinus.GetLength();
-  const wchar_t* str = wsSrcNum.c_str();
-  int len = wsSrcNum.GetLength();
 
+  pdfium::span<const wchar_t> spSrcNum = wsSrcNum.AsSpan();
   pdfium::span<const wchar_t> spNumFormat = wsNumFormat.AsSpan();
+
   bool bHavePercentSymbol = false;
   bool bNeg = false;
   bool bReverseParse = false;
@@ -1182,7 +1183,8 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         WideString wsLiteral = GetLiteralTextReverse(spNumFormat, &ccf);
         int32_t iLiteralLen = wsLiteral.GetLength();
         cc -= iLiteralLen - 1;
-        if (cc < 0 || wcsncmp(str + cc, wsLiteral.c_str(), iLiteralLen))
+        if (cc < 0 ||
+            wcsncmp(spSrcNum.data() + cc, wsLiteral.c_str(), iLiteralLen) != 0)
           return false;
 
         cc--;
@@ -1190,18 +1192,18 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         break;
       }
       case '9':
-        if (!FXSYS_IsDecimalDigit(str[cc]))
+        if (!FXSYS_IsDecimalDigit(spSrcNum[cc]))
           return false;
 
-        wsValue->InsertAtFront(str[cc]);
+        wsValue->InsertAtFront(spSrcNum[cc]);
         cc--;
         ccf--;
         break;
       case 'z':
       case 'Z':
-        if (spNumFormat[ccf] == 'z' || str[cc] != ' ') {
-          if (FXSYS_IsDecimalDigit(str[cc])) {
-            wsValue->InsertAtFront(str[cc]);
+        if (spNumFormat[ccf] == 'z' || spSrcNum[cc] != ' ') {
+          if (FXSYS_IsDecimalDigit(spSrcNum[cc])) {
+            wsValue->InsertAtFront(spSrcNum[cc]);
             cc--;
           }
         } else {
@@ -1211,11 +1213,13 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         break;
       case 'S':
       case 's':
-        if (str[cc] == '+' || (spNumFormat[ccf] == 'S' && str[cc] == ' ')) {
+        if (spSrcNum[cc] == '+' ||
+            (spNumFormat[ccf] == 'S' && spSrcNum[cc] == ' ')) {
           cc--;
         } else {
           cc -= iMinusLen - 1;
-          if (cc < 0 || wcsncmp(str + cc, wsMinus.c_str(), iMinusLen))
+          if (cc < 0 ||
+              wcsncmp(spSrcNum.data() + cc, wsMinus.c_str(), iMinusLen) != 0)
             return false;
 
           cc--;
@@ -1226,19 +1230,20 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
       case 'E': {
         bool bExpSign = false;
         while (cc >= 0) {
-          if (str[cc] == 'E' || str[cc] == 'e')
+          if (spSrcNum[cc] == 'E' || spSrcNum[cc] == 'e')
             break;
-          if (FXSYS_IsDecimalDigit(str[cc])) {
-            iExponent = iExponent + FXSYS_DecimalCharToInt(str[cc]) * 10;
+          if (FXSYS_IsDecimalDigit(spSrcNum[cc])) {
+            iExponent = iExponent + FXSYS_DecimalCharToInt(spSrcNum[cc]) * 10;
             cc--;
             continue;
           }
-          if (str[cc] == '+') {
+          if (spSrcNum[cc] == '+') {
             cc--;
             continue;
           }
-          if (cc - iMinusLen + 1 > 0 && !wcsncmp(str + (cc - iMinusLen + 1),
-                                                 wsMinus.c_str(), iMinusLen)) {
+          if (cc - iMinusLen + 1 > 0 &&
+              wcsncmp(spSrcNum.data() + (cc - iMinusLen + 1), wsMinus.c_str(),
+                      iMinusLen) == 0) {
             bExpSign = true;
             cc -= iMinusLen;
             continue;
@@ -1255,9 +1260,10 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         WideString wsSymbol = pLocale->GetCurrencySymbol();
         int32_t iSymbolLen = wsSymbol.GetLength();
         cc -= iSymbolLen - 1;
-        if (cc < 0 || wcsncmp(str + cc, wsSymbol.c_str(), iSymbolLen))
+        if (cc < 0 ||
+            wcsncmp(spSrcNum.data() + cc, wsSymbol.c_str(), iSymbolLen) != 0) {
           return false;
-
+        }
         cc--;
         ccf--;
         break;
@@ -1267,9 +1273,10 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         if (ccf - 1 >= 0 &&
             ((spNumFormat[ccf] == 'R' && spNumFormat[ccf - 1] == 'C') ||
              (spNumFormat[ccf] == 'r' && spNumFormat[ccf - 1] == 'c'))) {
-          if (spNumFormat[ccf] == 'R' && str[cc] == ' ') {
+          if (spNumFormat[ccf] == 'R' && spSrcNum[cc] == ' ') {
             cc -= 2;
-          } else if (str[cc] == 'R' && cc - 1 >= 0 && str[cc - 1] == 'C') {
+          } else if (spSrcNum[cc] == 'R' && cc - 1 >= 0 &&
+                     spSrcNum[cc - 1] == 'C') {
             bNeg = true;
             cc -= 2;
           }
@@ -1283,9 +1290,10 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         if (ccf - 1 >= 0 &&
             ((spNumFormat[ccf] == 'B' && spNumFormat[ccf - 1] == 'D') ||
              (spNumFormat[ccf] == 'b' && spNumFormat[ccf - 1] == 'd'))) {
-          if (spNumFormat[ccf] == 'B' && str[cc] == ' ') {
+          if (spNumFormat[ccf] == 'B' && spSrcNum[cc] == ' ') {
             cc -= 2;
-          } else if (str[cc] == 'B' && cc - 1 >= 0 && str[cc - 1] == 'D') {
+          } else if (spSrcNum[cc] == 'B' && cc - 1 >= 0 &&
+                     spSrcNum[cc - 1] == 'D') {
             bNeg = true;
             cc -= 2;
           }
@@ -1298,9 +1306,10 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         WideString wsSymbol = pLocale->GetPercentSymbol();
         int32_t iSysmbolLen = wsSymbol.GetLength();
         cc -= iSysmbolLen - 1;
-        if (cc < 0 || wcsncmp(str + cc, wsSymbol.c_str(), iSysmbolLen))
+        if (cc < 0 ||
+            wcsncmp(spSrcNum.data() + cc, wsSymbol.c_str(), iSysmbolLen) != 0) {
           return false;
-
+        }
         cc--;
         ccf--;
         bHavePercentSymbol = true;
@@ -1314,8 +1323,8 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
       case ',': {
         if (cc >= 0) {
           cc -= iGroupLen - 1;
-          if (cc >= 0 &&
-              wcsncmp(str + cc, wsGroupSymbol.c_str(), iGroupLen) == 0) {
+          if (cc >= 0 && wcsncmp(spSrcNum.data() + cc, wsGroupSymbol.c_str(),
+                                 iGroupLen) == 0) {
             cc--;
           } else {
             cc += iGroupLen - 1;
@@ -1326,16 +1335,16 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
       }
       case '(':
       case ')':
-        if (str[cc] == spNumFormat[ccf])
+        if (spSrcNum[cc] == spNumFormat[ccf])
           bNeg = true;
-        else if (str[cc] != L' ')
+        else if (spSrcNum[cc] != L' ')
           return false;
 
         cc--;
         ccf--;
         break;
       default:
-        if (spNumFormat[ccf] != str[cc])
+        if (spNumFormat[ccf] != spSrcNum[cc])
           return false;
 
         cc--;
@@ -1343,42 +1352,49 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
     }
   }
   if (cc >= 0) {
-    if (str[cc] == '-') {
+    if (spSrcNum[cc] == '-') {
       bNeg = true;
       cc--;
     }
     if (cc >= 0)
       return false;
   }
-  if (dot_index < len && (dwFormatStyle & FX_NUMSTYLE_DotVorv))
+  if ((dwFormatStyle & FX_NUMSTYLE_DotVorv) &&
+      dot_index < pdfium::CollectionSize<int32_t>(spSrcNum)) {
     *wsValue += '.';
+  }
   if (!bReverseParse) {
-    cc = (dot_index == len) ? len : dot_index + 1;
-    for (size_t ccf = dot_index_f + 1; cc < len && ccf < spNumFormat.size();
+    cc = (dot_index == pdfium::CollectionSize<int32_t>(spSrcNum))
+             ? spSrcNum.size()
+             : dot_index + 1;
+    for (size_t ccf = dot_index_f + 1;
+         cc < pdfium::CollectionSize<int32_t>(spSrcNum) &&
+         ccf < spNumFormat.size();
          ++ccf) {
       switch (spNumFormat[ccf]) {
         case '\'': {
           WideString wsLiteral = GetLiteralText(spNumFormat, &ccf);
           int32_t iLiteralLen = wsLiteral.GetLength();
-          if (cc + iLiteralLen > len ||
-              wcsncmp(str + cc, wsLiteral.c_str(), iLiteralLen)) {
+          if (cc + iLiteralLen > pdfium::CollectionSize<int32_t>(spSrcNum) ||
+              wcsncmp(spSrcNum.data() + cc, wsLiteral.c_str(), iLiteralLen) !=
+                  0) {
             return false;
           }
           cc += iLiteralLen;
           break;
         }
         case '9':
-          if (!FXSYS_IsDecimalDigit(str[cc]))
+          if (!FXSYS_IsDecimalDigit(spSrcNum[cc]))
             return false;
 
-          *wsValue += str[cc];
+          *wsValue += spSrcNum[cc];
           cc++;
           break;
         case 'z':
         case 'Z':
-          if (spNumFormat[ccf] == 'z' || str[cc] != ' ') {
-            if (FXSYS_IsDecimalDigit(str[cc])) {
-              *wsValue += str[cc];
+          if (spNumFormat[ccf] == 'z' || spSrcNum[cc] != ' ') {
+            if (FXSYS_IsDecimalDigit(spSrcNum[cc])) {
+              *wsValue += spSrcNum[cc];
               cc++;
             }
           } else {
@@ -1387,11 +1403,13 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
           break;
         case 'S':
         case 's':
-          if (str[cc] == '+' || (spNumFormat[ccf] == 'S' && str[cc] == ' ')) {
+          if (spSrcNum[cc] == '+' ||
+              (spNumFormat[ccf] == 'S' && spSrcNum[cc] == ' ')) {
             cc++;
           } else {
-            if (cc + iMinusLen > len ||
-                wcsncmp(str + cc, wsMinus.c_str(), iMinusLen)) {
+            if (cc + iMinusLen > pdfium::CollectionSize<int32_t>(spSrcNum) ||
+                wcsncmp(spSrcNum.data() + cc, wsMinus.c_str(), iMinusLen) !=
+                    0) {
               return false;
             }
             bNeg = true;
@@ -1399,24 +1417,25 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
           }
           break;
         case 'E': {
-          if (cc >= len || (str[cc] != 'E' && str[cc] != 'e'))
+          if (cc >= pdfium::CollectionSize<int32_t>(spSrcNum) ||
+              (spSrcNum[cc] != 'E' && spSrcNum[cc] != 'e')) {
             return false;
-
+          }
           bool bExpSign = false;
           cc++;
-          if (cc < len) {
-            if (str[cc] == '+') {
+          if (cc < pdfium::CollectionSize<int32_t>(spSrcNum)) {
+            if (spSrcNum[cc] == '+') {
               cc++;
-            } else if (str[cc] == '-') {
+            } else if (spSrcNum[cc] == '-') {
               bExpSign = true;
               cc++;
             }
           }
-          while (cc < len) {
-            if (!FXSYS_IsDecimalDigit(str[cc]))
+          while (cc < pdfium::CollectionSize<int32_t>(spSrcNum)) {
+            if (!FXSYS_IsDecimalDigit(spSrcNum[cc]))
               break;
 
-            iExponent = iExponent * 10 + FXSYS_DecimalCharToInt(str[cc]);
+            iExponent = iExponent * 10 + FXSYS_DecimalCharToInt(spSrcNum[cc]);
             cc++;
           }
           iExponent = bExpSign ? -iExponent : iExponent;
@@ -1425,8 +1444,9 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         case '$': {
           WideString wsSymbol = pLocale->GetCurrencySymbol();
           int32_t iSymbolLen = wsSymbol.GetLength();
-          if (cc + iSymbolLen > len ||
-              wcsncmp(str + cc, wsSymbol.c_str(), iSymbolLen)) {
+          if (cc + iSymbolLen > pdfium::CollectionSize<int32_t>(spSrcNum) ||
+              wcsncmp(spSrcNum.data() + cc, wsSymbol.c_str(), iSymbolLen) !=
+                  0) {
             return false;
           }
           cc += iSymbolLen;
@@ -1437,9 +1457,11 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
           if (ccf + 1 < spNumFormat.size() &&
               ((spNumFormat[ccf] == 'C' && spNumFormat[ccf + 1] == 'R') ||
                (spNumFormat[ccf] == 'c' && spNumFormat[ccf + 1] == 'r'))) {
-            if (spNumFormat[ccf] == 'C' && str[cc] == ' ') {
+            if (spNumFormat[ccf] == 'C' && spSrcNum[cc] == ' ') {
               cc++;
-            } else if (str[cc] == 'C' && cc + 1 < len && str[cc + 1] == 'R') {
+            } else if (spSrcNum[cc] == 'C' &&
+                       cc + 1 < pdfium::CollectionSize<int32_t>(spSrcNum) &&
+                       spSrcNum[cc + 1] == 'R') {
               bNeg = true;
               cc += 2;
             }
@@ -1451,9 +1473,11 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
           if (ccf + 1 < spNumFormat.size() &&
               ((spNumFormat[ccf] == 'D' && spNumFormat[ccf + 1] == 'B') ||
                (spNumFormat[ccf] == 'd' && spNumFormat[ccf + 1] == 'b'))) {
-            if (spNumFormat[ccf] == 'D' && str[cc] == ' ') {
+            if (spNumFormat[ccf] == 'D' && spSrcNum[cc] == ' ') {
               cc++;
-            } else if (str[cc] == 'D' && cc + 1 < len && str[cc + 1] == 'B') {
+            } else if (spSrcNum[cc] == 'D' &&
+                       cc + 1 < pdfium::CollectionSize<int32_t>(spSrcNum) &&
+                       spSrcNum[cc + 1] == 'B') {
               bNeg = true;
               cc += 2;
             }
@@ -1467,8 +1491,9 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
         case '%': {
           WideString wsSymbol = pLocale->GetPercentSymbol();
           int32_t iSysmbolLen = wsSymbol.GetLength();
-          if (cc + iSysmbolLen <= len &&
-              !wcsncmp(str + cc, wsSymbol.c_str(), iSysmbolLen)) {
+          if (cc + iSysmbolLen <= pdfium::CollectionSize<int32_t>(spSrcNum) &&
+              wcsncmp(spSrcNum.data() + cc, wsSymbol.c_str(), iSysmbolLen) ==
+                  0) {
             cc += iSysmbolLen;
           }
           bHavePercentSymbol = true;
@@ -1477,35 +1502,37 @@ bool CFGAS_FormatString::ParseNum(const WideString& wsSrcNum,
           while (ccf + 1 < spNumFormat.size() && spNumFormat[ccf + 1] == '8')
             ccf++;
 
-          while (cc < len && FXSYS_IsDecimalDigit(str[cc])) {
-            *wsValue += str[cc];
+          while (cc < pdfium::CollectionSize<int32_t>(spSrcNum) &&
+                 FXSYS_IsDecimalDigit(spSrcNum[cc])) {
+            *wsValue += spSrcNum[cc];
             cc++;
           }
         } break;
         case ',': {
-          if (cc + iGroupLen <= len &&
-              wcsncmp(str + cc, wsGroupSymbol.c_str(), iGroupLen) == 0) {
+          if (cc + iGroupLen <= pdfium::CollectionSize<int32_t>(spSrcNum) &&
+              wcsncmp(spSrcNum.data() + cc, wsGroupSymbol.c_str(), iGroupLen) ==
+                  0) {
             cc += iGroupLen;
           }
           break;
         }
         case '(':
         case ')':
-          if (str[cc] == spNumFormat[ccf])
+          if (spSrcNum[cc] == spNumFormat[ccf])
             bNeg = true;
-          else if (str[cc] != L' ')
+          else if (spSrcNum[cc] != L' ')
             return false;
 
           cc++;
           break;
         default:
-          if (spNumFormat[ccf] != str[cc])
+          if (spNumFormat[ccf] != spSrcNum[cc])
             return false;
 
           cc++;
       }
     }
-    if (cc != len)
+    if (cc != pdfium::CollectionSize<int32_t>(spSrcNum))
       return false;
   }
   if (iExponent || bHavePercentSymbol) {
