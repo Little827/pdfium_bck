@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "644e6afa_bd46795d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-03-11T21:45:43Z",
+      "side": 1,
+      "message": "How can I correct this? I fixed it in the description above and amended my commit message locally, then ran git cl upload but this still is missing an \"i\" in definition.",
+      "parentUuid": "5daead9c_3e6fe120",
+      "revId": "e50e290276c0bf5c22e2fd20c23578aac5d3e2af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "090dc825_c52953a4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
