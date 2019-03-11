@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "1953a5e1_c952e958",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-11T21:55:29Z",
+      "side": 1,
+      "message": "The CL description is disconnected from your local git commits since they\u0027ll be squashed anyway.",
+      "parentUuid": "3befd99a_b4aa93f1",
+      "revId": "e50e290276c0bf5c22e2fd20c23578aac5d3e2af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "090dc825_c52953a4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
