@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "013df416_c3572835",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-11T18:57:35Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "e50e290276c0bf5c22e2fd20c23578aac5d3e2af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090dc825_c52953a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-11T18:57:35Z",
+      "side": 1,
+      "message": "Would you mind going the other direction and just update fpdfsdk/cpdfsdk_helpers.h instead?",
+      "revId": "e50e290276c0bf5c22e2fd20c23578aac5d3e2af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
