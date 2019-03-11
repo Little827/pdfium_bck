@@ -341,8 +341,8 @@ void ReportUnsupportedFeatures(CPDF_Document* pDoc) {
     RaiseUnsupportedError(FPDF_UNSP_DOC_XFAFORM);
 }
 
-void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot) {
-  switch (pAnnot->GetSubtype()) {
+void CheckForUnsupportedAnnot(const CPDF_Annot* pPDFAnnot) {
+  switch (pPDFAnnot->GetSubtype()) {
     case CPDF_Annot::Subtype::FILEATTACHMENT:
       RaiseUnsupportedError(FPDF_UNSP_ANNOT_ATTACHMENT);
       break;
@@ -353,7 +353,7 @@ void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot) {
       RaiseUnsupportedError(FPDF_UNSP_ANNOT_SCREEN_RICHMEDIA);
       break;
     case CPDF_Annot::Subtype::SCREEN: {
-      const CPDF_Dictionary* pAnnotDict = pAnnot->GetAnnotDict();
+      const CPDF_Dictionary* pAnnotDict = pPDFAnnot->GetAnnotDict();
       ByteString cbString = pAnnotDict->GetStringFor("IT");
       if (cbString != "Img")
         RaiseUnsupportedError(FPDF_UNSP_ANNOT_SCREEN_MEDIA);
@@ -366,7 +366,7 @@ void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot) {
       RaiseUnsupportedError(FPDF_UNSP_ANNOT_3DANNOT);
       break;
     case CPDF_Annot::Subtype::WIDGET: {
-      const CPDF_Dictionary* pAnnotDict = pAnnot->GetAnnotDict();
+      const CPDF_Dictionary* pAnnotDict = pPDFAnnot->GetAnnotDict();
       ByteString cbString = pAnnotDict->GetStringFor(pdfium::form_fields::kFT);
       if (cbString == pdfium::form_fields::kSig)
         RaiseUnsupportedError(FPDF_UNSP_ANNOT_SIG);
