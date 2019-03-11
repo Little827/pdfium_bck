@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "3befd99a_b4aa93f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-03-11T21:53:33Z",
+      "side": 1,
+      "message": "When I run git cl description I see the corrected text so must\u0027ve picked up the edit from the web interface already. Not sure why it still shows incorrectly here.",
+      "parentUuid": "9196e1fd_68ed1931",
+      "revId": "e50e290276c0bf5c22e2fd20c23578aac5d3e2af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "090dc825_c52953a4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
