@@ -10,11 +10,13 @@
 #include <vector>
 
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/base/span.h"
 #include "xfa/fgas/crt/locale_iface.h"
 #include "xfa/fgas/crt/locale_mgr_iface.h"
 
-bool FX_DateFromCanonical(const WideString& wsDate, CFX_DateTime* datetime);
-bool FX_TimeFromCanonical(WideStringView wsTime,
+bool FX_DateFromCanonical(pdfium::span<const wchar_t> wsTime,
+                          CFX_DateTime* datetime);
+bool FX_TimeFromCanonical(pdfium::span<const wchar_t> wsTime,
                           CFX_DateTime* datetime,
                           LocaleIface* pLocale);
 
