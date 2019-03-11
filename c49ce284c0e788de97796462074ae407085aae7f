@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf595bf4_7636b1ce",
+        "filename": "xfa/fgas/crt/cfgas_formatstring.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-11T23:24:25Z",
+      "side": 1,
+      "message": "Maybe do the |spDotSymbol| vs |spNum| size comparison outside of the for-loop, so this can just be \"ccf \u003c\u003d val\", or avoid the for-loop altogether if |spDotSymbol| is bigger?",
+      "revId": "c49ce284c0e788de97796462074ae407085aae7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd804fa_aa91a5fa",
+        "filename": "xfa/fgas/crt/cfgas_formatstring.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-11T23:24:25Z",
+      "side": 1,
+      "message": "Braces here and below.",
+      "revId": "c49ce284c0e788de97796462074ae407085aae7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
