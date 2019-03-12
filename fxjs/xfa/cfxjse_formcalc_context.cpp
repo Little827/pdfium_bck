@@ -2378,10 +2378,15 @@ void CFXJSE_FormCalcContext::Time2Num(CFXJSE_Value* pThis,
   }
 
   WideString wsFormat;
-  if (formatString.IsEmpty())
+  if (formatString.IsEmpty()) {
+    if (!pLocale) {
+      args.GetReturnValue()->SetNull();
+      return;
+    }
     wsFormat = pLocale->GetTimePattern(FX_LOCALEDATETIMESUBCATEGORY_Default);
-  else
+  } else {
     wsFormat = WideString::FromUTF8(formatString.AsStringView());
+  }
 
   wsFormat = L"time{" + wsFormat + L"}";
   CXFA_LocaleValue localeValue(XFA_VT_TIME,

@@ -561,20 +561,27 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, DISABLED_Num2Time) {
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Time2Num) {
   ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
 
-  struct {
+  const struct {
     const char* program;
-    int result;
-  } tests[] = {
+    pdfium::Optional<int> result;
+  } kTests[] = {
       // {"Time2Num(\"00:00:00 GMT\", \"HH:MM:SS Z\")", 1},
-      {"Time2Num(\"13:13:13 GMT\", \"HH:MM:SS Z\", \"fr_FR\")", 47593001}};
+      {"Time2Num(\"13:13:13 GMT\", \"HH:MM:SS Z\", \"fr_FR\")", 47593001},
+      // https://crbug.com/pdfium/1257
+      {"Time2Num(\"\",\"\",\"1\")", pdfium::nullopt},
+  };
 
-  for (size_t i = 0; i < FX_ArraySize(tests); ++i) {
-    EXPECT_TRUE(Execute(tests[i].program));
+  for (const auto& testcase : kTests) {
+    EXPECT_TRUE(Execute(testcase.program));
 
     CFXJSE_Value* value = GetValue();
-    EXPECT_TRUE(value->IsInteger());
-    EXPECT_EQ(tests[i].result, value->ToInteger())
-        << "Program: " << tests[i].program;
+    if (testcase.result.has_value()) {
+      EXPECT_TRUE(value->IsInteger());
+      EXPECT_EQ(testcase.result.value(), value->ToInteger())
+          << "Program: " << testcase.program;
+    } else {
+      EXPECT_TRUE(value->IsNull());
+    }
   }
 }
 
