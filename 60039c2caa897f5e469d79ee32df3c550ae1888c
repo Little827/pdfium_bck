@@ -1,4 +1,97 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1552464509 -0700\nnonce AC6AUtO3EjMBxff2DnOsN4smu3QU+pCMYcvgiErEyWf0mZwtnvjUbj0lxbQMZqp0S4F06Yrn6xW6\n\n0000000000000000000000000000000000000000 60039c2caa897f5e469d79ee32df3c550ae1888c refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyIun4ACgkQqzYtYVpm\n/Xsh+ggAiak2jjK8nanNfF4GvwqoT9298em6e4f0TnC8agXZM+IyguRPzUyHayhj\nqLuwVsf9h3DkKVxmbTxgUvszra/qbOxPq5JI5eBKLW+pQOOt+gIE78s6MfaVAMCB\npS77EuQ1PrUI7vv3tO7rrUXBRiHQ9klo1ROebpBhJ+xQKpLtGoH4QfJfTUQUgblZ\nSYAX1wRhWtN3Mg7X4IC6/z+DH1x33aEHd87W1nNVRh7sqM6ILFhpkuKgl/NCvm/B\nLuLvDPLZXaEA7q8GLIWnWzRSuvAnPEKR1arMX8y0fQ4ISJtSot7mTFIjhIDVjkEU\nIq6O381BN+37Wz00ITEjwd0/XRtA5Q\u003d\u003d\n\u003d45Q2\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d4ce152_032cb999",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-13T17:06:40Z",
+      "side": 1,
+      "message": "suggestion: maybe introduce ReplaceAbbrInDictionary() and ReplaceAbbrInArray() helpers.",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 19
+      },
+      "revId": "60039c2caa897f5e469d79ee32df3c550ae1888c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58256f79_23b364d7",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-13T17:06:40Z",
+      "side": 1,
+      "message": "nit: maybe assign at declaration on line 146 and lose the else?",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "60039c2caa897f5e469d79ee32df3c550ae1888c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d7a148_3520b3c2",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-13T17:06:40Z",
+      "side": 1,
+      "message": "Can we put the length check into WordBufferMatches to avoid burdening the caller?  Otherwise the memcmp below looks like it might not respect bounds.",
+      "range": {
+        "startLine": 361,
+        "startChar": 2,
+        "endLine": 361,
+        "endChar": 22
+      },
+      "revId": "60039c2caa897f5e469d79ee32df3c550ae1888c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e9645e_5947ff27",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-13T17:06:40Z",
+      "side": 1,
+      "message": "nit: pWord?",
+      "range": {
+        "startLine": 54,
+        "startChar": 37,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "60039c2caa897f5e469d79ee32df3c550ae1888c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
