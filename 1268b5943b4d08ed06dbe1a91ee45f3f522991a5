@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa999e63_620cf8b2",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-13T23:00:54Z",
+      "side": 0,
+      "message": "This looks pointless. If line 68 called GetFormFiller() and did not get a valid |pFormFiller|, calling GetFormFiller() immedilately is not going to change anything.",
+      "revId": "1268b5943b4d08ed06dbe1a91ee45f3f522991a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
