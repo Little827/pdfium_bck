@@ -471,11 +471,17 @@ CPDF_DIBBase::LoadState CPDF_DIBBase::CreateDecoder() {
     return LoadState::kFail;
 
   if (decoder == "JPXDecode") {
+    if (m_pStream->IsInline())
+      return LoadState::kFail;
+
     m_pCachedBitmap = LoadJpxBitmap();
     return m_pCachedBitmap ? LoadState::kSuccess : LoadState::kFail;
   }
 
   if (decoder == "JBIG2Decode") {
+    if (m_pStream->IsInline())
+      return LoadState::kFail;
+
     m_pCachedBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
     if (!m_pCachedBitmap->Create(
             m_Width, m_Height, m_bImageMask ? FXDIB_1bppMask : FXDIB_1bppRgb)) {
