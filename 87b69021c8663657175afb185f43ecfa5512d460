@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "608f62e2_2c8470dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-13T21:56:43Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "87b69021c8663657175afb185f43ecfa5512d460",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca198abb_dbdc39b9",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-13T21:56:43Z",
+      "side": 1,
+      "message": "It may be helpful to document what the size_t return value is.",
+      "revId": "87b69021c8663657175afb185f43ecfa5512d460",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99fed9d2_22accf4e",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-13T21:56:43Z",
+      "side": 1,
+      "message": "BTW, this method and all the ones below can be static / possibly moved into an anonymous namespace.",
+      "revId": "87b69021c8663657175afb185f43ecfa5512d460",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
