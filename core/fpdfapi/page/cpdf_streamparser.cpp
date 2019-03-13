@@ -140,6 +140,9 @@ std::unique_ptr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
   if (pFilter) {
     const CPDF_Array* pArray = pFilter->AsArray();
     if (pArray) {
+      if (!ValidateDecoderPipeline(pArray))
+        return nullptr;
+
       decoder = pArray->GetStringAt(0);
       const CPDF_Array* pParams =
           pDict->GetArrayFor(pdfium::stream::kDecodeParms);
