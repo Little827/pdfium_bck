@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1552538930 -0700\nnonce AC6AUtODo9xYF8tnzhbI49VZ6IN6sCHVDSvthFn3vToHL4QpgsrIMlXBi5FvnLkk0Lw0zJRQmOkd\n\n0000000000000000000000000000000000000000 086470a7de53d9e457800c0c1c099ce71bd77f27 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyJ3TIACgkQqzYtYVpm\n/XubyggAvTnQLEPKD9StZBSdYzNzWISf7mXRHFxl6gddtc9aRtp22ClbZvPtfFuG\ncORRqVtuiUNvEAVE5z+eYf/lft1FUftmO8kJpn6TbvOhzEmCm0yA+xHq7gt4ScCk\nQ0xi0t+bchlCyAeb6cvLB4MtEqUreVlamF9+HYiajOOWHPTcgOCyeWD4/laNv4Zh\ngIwwwr7VAfjScist9WttO1knX29KQ1DxQI9vkTJNJXtK8c6besXTgo0UjXPzlvZk\nRcXK9BDroevqZlAkvqqTEa7oRGv6b5a9uXR8IBqwKdwja7rXGYOrIbeQLIlGiBXt\nOcr3Hk5QdgAw8LX6o1xSpFtt7ZsaqA\u003d\u003d\n\u003drMH1\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "eba8a237_833f5f91",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-14T19:50:37Z",
+      "side": 1,
+      "message": "Would this allow us to write a .cpp with a call with an ignored result? e.g. just\n\n#include \"core/fpdfapi/page/cpdf_sampledfunc.h\"\nvoid foo(CPDF_SampleFunc* f) { f-\u003eGetSampleStream(); }\n\nThe style guide allows this because presumably you want to do something with the result and would have to include stream_acc.h to do so, but it does trip over this situation.  As you like.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "086470a7de53d9e457800c0c1c099ce71bd77f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
