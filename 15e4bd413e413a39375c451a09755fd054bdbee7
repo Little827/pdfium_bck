@@ -3,6 +3,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1ccabda4_9d425f69",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2019-03-14T14:15:31Z",
+      "side": 1,
+      "message": "Looks like CIDFont also uses encoding? See https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/font/cpdf_cidfont.cpp?type\u003dcs\u0026q\u003d%22%22Encoding%22%22+file:%5Esrc/third_party/pdfium/+package:%5Echromium$\u0026g\u003d0\u0026l\u003d356",
+      "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "432812cf_118c9801",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 2
@@ -20,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6af1e4b3_1e293fa8",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2019-03-14T14:15:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "432812cf_118c9801",
+      "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a59cd758_8d2516a6",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 2
@@ -31,6 +66,24 @@
       "writtenOn": "2019-03-14T04:37:11Z",
       "side": 1,
       "message": "Are these TODOs still relevant?",
+      "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8139276d_10c39046",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2019-03-14T14:15:31Z",
+      "side": 1,
+      "message": "I don\u0027t know, would have to try adding the save and verify",
+      "parentUuid": "a59cd758_8d2516a6",
       "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
