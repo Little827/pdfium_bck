@@ -23,6 +23,30 @@
       "revId": "086470a7de53d9e457800c0c1c099ce71bd77f27",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d088256_f867fe9f",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-15T05:20:38Z",
+      "side": 1,
+      "message": "With this CL, the caller needs to include cpdf_stream_acc.h in their .cpp file, even if they ignore the result. Prior to this CL, they did not because it\u0027s already in the header here.",
+      "parentUuid": "eba8a237_833f5f91",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "086470a7de53d9e457800c0c1c099ce71bd77f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
