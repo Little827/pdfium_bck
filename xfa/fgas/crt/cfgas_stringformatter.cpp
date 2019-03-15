@@ -74,29 +74,30 @@ const FX_LOCALETIMEZONEINFO g_FXLocaleTimeZoneData[] = {
     {L"MDT", -6, 0}, {L"MST", -7, 0}, {L"PDT", -7, 0}, {L"PST", -8, 0},
 };
 
-const wchar_t gs_wsTimeSymbols[] = L"hHkKMSFAzZ";
-const wchar_t gs_wsDateSymbols[] = L"DJMEeGgYwW";
-const wchar_t gs_wsConstChars[] = L",-:/. ";
+const wchar_t kTimeSymbols[] = L"hHkKMSFAzZ";
+const wchar_t kDateSymbols[] = L"DJMEeGgYwW";
+const wchar_t kConstChars[] = L",-:/. ";
 
-size_t ParseTimeZone(pdfium::span<const wchar_t> pStr, FX_TIMEZONE* tz) {
+size_t ParseTimeZone(pdfium::span<const wchar_t> spStr, FX_TIMEZONE* tz) {
   tz->tzHour = 0;
   tz->tzMinute = 0;
-  if (pStr.empty())
+  if (spStr.empty())
     return 0;
 
+  const bool bNegative = (spStr[0] == '-');
   size_t iStart = 1;
   size_t iEnd = iStart + 2;
-  while (iStart < pStr.size() && iStart < iEnd)
-    tz->tzHour = tz->tzHour * 10 + FXSYS_DecimalCharToInt(pStr[iStart++]);
+  while (iStart < spStr.size() && iStart < iEnd)
+    tz->tzHour = tz->tzHour * 10 + FXSYS_DecimalCharToInt(spStr[iStart++]);
 
-  if (iStart < pStr.size() && pStr[iStart] == ':')
+  if (iStart < spStr.size() && spStr[iStart] == ':')
     iStart++;
 
   iEnd = iStart + 2;
-  while (iStart < pStr.size() && iStart < iEnd)
-    tz->tzMinute = tz->tzMinute * 10 + FXSYS_DecimalCharToInt(pStr[iStart++]);
+  while (iStart < spStr.size() && iStart < iEnd)
+    tz->tzMinute = tz->tzMinute * 10 + FXSYS_DecimalCharToInt(spStr[iStart++]);
 
-  if (pStr[0] == '-')
+  if (bNegative)
     tz->tzHour = -tz->tzHour;
 
   return iStart;
@@ -108,30 +109,30 @@ int32_t ConvertHex(int32_t iKeyValue, wchar_t ch) {
   return iKeyValue;
 }
 
-WideString GetLiteralText(pdfium::span<const wchar_t> pStrPattern,
+WideString GetLiteralText(pdfium::span<const wchar_t> spStrPattern,
                           size_t* iPattern) {
   WideString wsOutput;
-  if (*iPattern >= pStrPattern.size() || pStrPattern[*iPattern] != '\'')
+  if (*iPattern >= spStrPattern.size() || spStrPattern[*iPattern] != '\'')
     return wsOutput;
 
   (*iPattern)++;
   int32_t iQuote = 1;
-  while (*iPattern < pStrPattern.size()) {
-    if (pStrPattern[*iPattern] == '\'') {
+  while (*iPattern < spStrPattern.size()) {
+    if (spStrPattern[*iPattern] == '\'') {
       iQuote++;
-      if ((*iPattern + 1 >= pStrPattern.size()) ||
-          ((pStrPattern[*iPattern + 1] != '\'') && (iQuote % 2 == 0))) {
+      if ((*iPattern + 1 >= spStrPattern.size()) ||
+          ((spStrPattern[*iPattern + 1] != '\'') && (iQuote % 2 == 0))) {
         break;
       }
       iQuote++;
       (*iPattern)++;
-    } else if (pStrPattern[*iPattern] == '\\' &&
-               (*iPattern + 1 < pStrPattern.size()) &&
-               pStrPattern[*iPattern + 1] == 'u') {
+    } else if (spStrPattern[*iPattern] == '\\' &&
+               (*iPattern + 1 < spStrPattern.size()) &&
+               spStrPattern[*iPattern + 1] == 'u') {
       int32_t iKeyValue = 0;
       *iPattern += 2;
-      for (int32_t i = 0; *iPattern < pStrPattern.size() && i < 4; ++i) {
-        wchar_t ch = pStrPattern[(*iPattern)++];
+      for (int32_t i = 0; *iPattern < spStrPattern.size() && i < 4; ++i) {
+        wchar_t ch = spStrPattern[(*iPattern)++];
         iKeyValue = ConvertHex(iKeyValue, ch);
       }
       if (iKeyValue != 0)
@@ -139,32 +140,32 @@ WideString GetLiteralText(pdfium::span<const wchar_t> pStrPattern,
 
       continue;
     }
-    wsOutput += pStrPattern[(*iPattern)++];
+    wsOutput += spStrPattern[(*iPattern)++];
   }
   return wsOutput;
 }
 
-WideString GetLiteralTextReverse(pdfium::span<const wchar_t> pStrPattern,
+WideString GetLiteralTextReverse(pdfium::span<const wchar_t> spStrPattern,
                                  size_t* iPattern) {
   WideString wsOutput;
-  if (*iPattern >= pStrPattern.size() || pStrPattern[*iPattern] != '\'')
+  if (*iPattern >= spStrPattern.size() || spStrPattern[*iPattern] != '\'')
     return wsOutput;
 
   (*iPattern)--;
   int32_t iQuote = 1;
 
-  while (*iPattern < pStrPattern.size()) {
-    if (pStrPattern[*iPattern] == '\'') {
+  while (*iPattern < spStrPattern.size()) {
+    if (spStrPattern[*iPattern] == '\'') {
       iQuote++;
-      if (*iPattern - 1 >= pStrPattern.size() ||
-          ((pStrPattern[*iPattern - 1] != '\'') && (iQuote % 2 == 0))) {
+      if (*iPattern - 1 >= spStrPattern.size() ||
+          ((spStrPattern[*iPattern - 1] != '\'') && (iQuote % 2 == 0))) {
         break;
       }
       iQuote++;
       (*iPattern)--;
-    } else if (pStrPattern[*iPattern] == '\\' &&
-               *iPattern + 1 < pStrPattern.size() &&
-               pStrPattern[*iPattern + 1] == 'u') {
+    } else if (spStrPattern[*iPattern] == '\\' &&
+               *iPattern + 1 < spStrPattern.size() &&
+               spStrPattern[*iPattern + 1] == 'u') {
       (*iPattern)--;
       int32_t iKeyValue = 0;
       int32_t iLen = wsOutput.GetLength();
@@ -179,7 +180,7 @@ WideString GetLiteralTextReverse(pdfium::span<const wchar_t> pStrPattern,
       }
       continue;
     }
-    wsOutput = pStrPattern[(*iPattern)--] + wsOutput;
+    wsOutput = spStrPattern[(*iPattern)--] + wsOutput;
   }
   return wsOutput;
 }
@@ -205,25 +206,25 @@ bool GetNumericDotIndex(const WideString& wsNum,
   return result.has_value();
 }
 
-bool ExtractCountDigits(pdfium::span<const wchar_t> str,
+bool ExtractCountDigits(pdfium::span<const wchar_t> spStr,
                         size_t count,
                         size_t* cc,
                         uint32_t* value) {
   for (size_t i = 0; i < count; ++i) {
-    if (*cc >= str.size() || !FXSYS_IsDecimalDigit(str[*cc]))
+    if (*cc >= spStr.size() || !FXSYS_IsDecimalDigit(spStr[*cc]))
       return false;
-    *value = *value * 10 + FXSYS_DecimalCharToInt(str[(*cc)++]);
+    *value = *value * 10 + FXSYS_DecimalCharToInt(spStr[(*cc)++]);
   }
   return true;
 }
 
-bool ExtractCountDigitsWithOptional(pdfium::span<const wchar_t> str,
+bool ExtractCountDigitsWithOptional(pdfium::span<const wchar_t> spStr,
                                     int count,
                                     size_t* cc,
                                     uint32_t* value) {
-  if (!ExtractCountDigits(str, count, cc, value))
+  if (!ExtractCountDigits(spStr, count, cc, value))
     return false;
-  ExtractCountDigits(str, 1, cc, value);
+  ExtractCountDigits(spStr, 1, cc, value);
   return true;
 }
 
@@ -250,7 +251,7 @@ bool ParseLocaleDate(const WideString& wsDate,
       ccf++;
       continue;
     }
-    if (!pdfium::ContainsValue(gs_wsDateSymbols, spDatePattern[ccf])) {
+    if (!pdfium::ContainsValue(kDateSymbols, spDatePattern[ccf])) {
       if (spDatePattern[ccf] != spDate[*cc])
         return false;
       (*cc)++;
@@ -372,7 +373,7 @@ bool ParseLocaleTime(const WideString& wsTime,
       ccf++;
       continue;
     }
-    if (!pdfium::ContainsValue(gs_wsTimeSymbols, spTimePattern[ccf])) {
+    if (!pdfium::ContainsValue(kTimeSymbols, spTimePattern[ccf])) {
       if (spTimePattern[ccf] != spTime[*cc])
         return false;
       (*cc)++;
@@ -484,22 +485,19 @@ bool ParseLocaleTime(const WideString& wsTime,
   return !!(*cc);
 }
 
-int32_t GetNumTrailingLimit(const WideString& wsFormat,
-                            int iDotPos,
-                            bool* bTrimTailZeros) {
-  if (iDotPos < 0)
-    return 0;
-
-  int32_t iCount = wsFormat.GetLength();
-  int32_t iTreading = 0;
-  for (iDotPos++; iDotPos < iCount; iDotPos++) {
-    wchar_t wc = wsFormat[iDotPos];
+size_t GetNumTrailingLimit(const WideString& wsFormat,
+                           size_t iDotPos,
+                           bool* bTrimTailZeros) {
+  const pdfium::span<const wchar_t> spFormat = wsFormat.AsSpan();
+  size_t iTrailing = 0;
+  for (++iDotPos; iDotPos < spFormat.size(); ++iDotPos) {
+    wchar_t wc = spFormat[iDotPos];
     if (wc == L'z' || wc == L'9' || wc == 'Z') {
-      iTreading++;
+      iTrailing++;
       *bTrimTailZeros = wc != L'9';
     }
   }
-  return iTreading;
+  return iTrailing;
 }
 
 bool IsLeapYear(uint32_t year) {
@@ -523,10 +521,10 @@ uint16_t GetSolarMonthDays(uint16_t year, uint16_t month) {
 }
 
 uint16_t GetWeekDay(uint16_t year, uint16_t month, uint16_t day) {
-  static const uint16_t month_day[] = {0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
+  static const uint8_t kMonthDay[] = {0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
   uint16_t nDays =
       (year - 1) % 7 + (year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400;
-  nDays += month_day[month - 1] + day;
+  nDays += kMonthDay[month - 1] + day;
   if (FX_IsLeapYear(year) && month > 2)
     nDays++;
   return nDays % 7;
@@ -577,7 +575,7 @@ WideString DateFormat(const WideString& wsDatePattern,
       ccf++;
       continue;
     }
-    if (!pdfium::ContainsValue(gs_wsDateSymbols, spDatePattern[ccf])) {
+    if (!pdfium::ContainsValue(kDateSymbols, spDatePattern[ccf])) {
       wsResult += spDatePattern[ccf++];
       continue;
     }
@@ -645,7 +643,7 @@ WideString TimeFormat(const WideString& wsTimePattern,
       ccf++;
       continue;
     }
-    if (!pdfium::ContainsValue(gs_wsTimeSymbols, spTimePattern[ccf])) {
+    if (!pdfium::ContainsValue(kTimeSymbols, spTimePattern[ccf])) {
       wsResult += spTimePattern[ccf++];
       continue;
     }
@@ -855,7 +853,7 @@ FX_LOCALECATEGORY CFGAS_StringFormatter::GetCategory() const {
     if (m_spPattern[ccf] == '\'') {
       GetLiteralText(m_spPattern, &ccf);
     } else if (!bBraceOpen &&
-               !pdfium::ContainsValue(gs_wsConstChars, m_spPattern[ccf])) {
+               !pdfium::ContainsValue(kConstChars, m_spPattern[ccf])) {
       WideString wsCategory(m_spPattern[ccf]);
       ccf++;
       while (true) {
@@ -910,7 +908,7 @@ WideString CFGAS_StringFormatter::GetTextFormat(
       wsPurgePattern +=
           WideStringView(m_spPattern.data() + iCurChar, ccf - iCurChar + 1);
     } else if (!bBrackOpen &&
-               !pdfium::ContainsValue(gs_wsConstChars, m_spPattern[ccf])) {
+               !pdfium::ContainsValue(kConstChars, m_spPattern[ccf])) {
       WideString wsSearchCategory(m_spPattern[ccf]);
       ccf++;
       while (ccf < m_spPattern.size() && m_spPattern[ccf] != '{' &&
@@ -960,7 +958,7 @@ LocaleIface* CFGAS_StringFormatter::GetNumericFormat(
       *wsPurgePattern +=
           WideStringView(m_spPattern.data() + iCurChar, ccf - iCurChar + 1);
     } else if (!bBrackOpen &&
-               !pdfium::ContainsValue(gs_wsConstChars, m_spPattern[ccf])) {
+               !pdfium::ContainsValue(kConstChars, m_spPattern[ccf])) {
       WideString wsCategory(m_spPattern[ccf]);
       ccf++;
       while (ccf < m_spPattern.size() && m_spPattern[ccf] != '{' &&
@@ -1050,7 +1048,7 @@ LocaleIface* CFGAS_StringFormatter::GetNumericFormat(
 bool CFGAS_StringFormatter::ParseText(const WideString& wsSrcText,
                                       WideString* wsValue) const {
   wsValue->clear();
-  if (wsSrcText.IsEmpty() || m_wsPattern.IsEmpty())
+  if (wsSrcText.IsEmpty() || m_spPattern.empty())
     return false;
 
   WideString wsTextFormat = GetTextFormat(L"text");
@@ -1121,10 +1119,10 @@ bool CFGAS_StringFormatter::ParseText(const WideString& wsSrcText,
 bool CFGAS_StringFormatter::ParseNum(const WideString& wsSrcNum,
                                      WideString* wsValue) const {
   wsValue->clear();
-  if (wsSrcNum.IsEmpty() || m_wsPattern.IsEmpty())
+  if (wsSrcNum.IsEmpty() || m_spPattern.empty())
     return false;
 
-  size_t dot_index_f = m_wsPattern.GetLength();
+  size_t dot_index_f = m_spPattern.size();
   uint32_t dwFormatStyle = 0;
   WideString wsNumFormat;
   LocaleIface* pLocale =
@@ -1548,7 +1546,7 @@ FX_DATETIMETYPE CFGAS_StringFormatter::GetDateTimeFormat(
       wsTempPattern +=
           WideStringView(m_spPattern.data() + iCurChar, ccf - iCurChar + 1);
     } else if (!bBraceOpen && iFindCategory != 3 &&
-               !pdfium::ContainsValue(gs_wsConstChars, m_spPattern[ccf])) {
+               !pdfium::ContainsValue(kConstChars, m_spPattern[ccf])) {
       WideString wsCategory(m_spPattern[ccf]);
       ccf++;
       while (ccf < m_spPattern.size() && m_spPattern[ccf] != '{' &&
@@ -1669,7 +1667,7 @@ bool CFGAS_StringFormatter::ParseDateTime(const WideString& wsSrcDateTime,
                                           FX_DATETIMETYPE eDateTimeType,
                                           CFX_DateTime* dtValue) const {
   dtValue->Reset();
-  if (wsSrcDateTime.IsEmpty() || m_wsPattern.IsEmpty())
+  if (wsSrcDateTime.IsEmpty() || m_spPattern.empty())
     return false;
 
   WideString wsDatePattern;
@@ -1767,7 +1765,7 @@ bool CFGAS_StringFormatter::ParseNull(const WideString& wsSrcText) const {
 
 bool CFGAS_StringFormatter::FormatText(const WideString& wsSrcText,
                                        WideString* wsOutput) const {
-  if (wsSrcText.IsEmpty() || m_wsPattern.IsEmpty())
+  if (wsSrcText.IsEmpty() || m_spPattern.empty())
     return false;
 
   WideString wsTextFormat = GetTextFormat(L"text");
@@ -1825,10 +1823,10 @@ bool CFGAS_StringFormatter::FormatText(const WideString& wsSrcText,
 
 bool CFGAS_StringFormatter::FormatNum(const WideString& wsInputNum,
                                       WideString* wsOutput) const {
-  if (wsInputNum.IsEmpty() || m_wsPattern.IsEmpty())
+  if (wsInputNum.IsEmpty() || m_spPattern.empty())
     return false;
 
-  size_t dot_index_f = m_wsPattern.GetLength();
+  size_t dot_index_f = m_spPattern.size();
   uint32_t dwNumStyle = 0;
   WideString wsNumFormat;
   LocaleIface* pLocale =
@@ -2171,7 +2169,7 @@ bool CFGAS_StringFormatter::FormatNum(const WideString& wsInputNum,
 bool CFGAS_StringFormatter::FormatDateTime(const WideString& wsSrcDateTime,
                                            FX_DATETIMETYPE eDateTimeType,
                                            WideString* wsOutput) const {
-  if (wsSrcDateTime.IsEmpty() || m_wsPattern.IsEmpty())
+  if (wsSrcDateTime.IsEmpty() || m_spPattern.empty())
     return false;
 
   WideString wsDatePattern;
@@ -2226,7 +2224,7 @@ bool CFGAS_StringFormatter::FormatDateTime(const WideString& wsSrcDateTime,
 }
 
 bool CFGAS_StringFormatter::FormatZero(WideString* wsOutput) const {
-  if (m_wsPattern.IsEmpty())
+  if (m_spPattern.empty())
     return false;
 
   WideString wsTextFormat = GetTextFormat(L"zero");
@@ -2242,7 +2240,7 @@ bool CFGAS_StringFormatter::FormatZero(WideString* wsOutput) const {
 }
 
 bool CFGAS_StringFormatter::FormatNull(WideString* wsOutput) const {
-  if (m_wsPattern.IsEmpty())
+  if (m_spPattern.empty())
     return false;
 
   WideString wsTextFormat = GetTextFormat(L"null");
