@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "8e3a3ca9_4d625b5f",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-15T07:01:02Z",
+      "side": 1,
+      "message": "- The way CIDFont does font encoding is very different. The Encoding entry points to a CMap dictionary, so CPDF_FontEncoding won\u0027t work with it.\n- Line 534 below says to assume it\u0027s a standard font. Aren\u0027t the standard 14 fonts Type 1?",
+      "parentUuid": "1ccabda4_9d425f69",
+      "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "432812cf_118c9801",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "I don\u0027t know, would have to try adding the save and verify",
       "parentUuid": "a59cd758_8d2516a6",
+      "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f718932_c2d4e353",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-15T07:01:02Z",
+      "side": 1,
+      "message": "OK, I\u0027ll leave this alone.",
+      "parentUuid": "8139276d_10c39046",
       "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
