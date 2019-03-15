@@ -16,6 +16,10 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/logging.h"
 
+#ifndef PDFIUM_SPAN_CHECK
+#define PDFIUM_SPAN_CHECK CHECK
+#endif
+
 namespace pdfium {
 
 template <typename T>
@@ -221,19 +225,19 @@ class span {
 
   // [span.sub], span subviews
   const span first(size_t count) const {
-    CHECK(count <= size_);
+    PDFIUM_SPAN_CHECK(count <= size_);
     return span(data_.Get(), count);
   }
 
   const span last(size_t count) const {
-    CHECK(count <= size_);
+    PDFIUM_SPAN_CHECK(count <= size_);
     return span(data_.Get() + (size_ - count), count);
   }
 
   const span subspan(size_t pos, size_t count = -1) const {
     const auto npos = static_cast<size_t>(-1);
-    CHECK(pos <= size_);
-    CHECK(count == npos || count <= size_ - pos);
+    PDFIUM_SPAN_CHECK(pos <= size_);
+    PDFIUM_SPAN_CHECK(count == npos || count <= size_ - pos);
     return span(data_.Get() + pos, count == npos ? size_ - pos : count);
   }
 
@@ -244,7 +248,7 @@ class span {
 
   // [span.elem], span element access
   T& operator[](size_t index) const noexcept {
-    CHECK(index < size_);
+    PDFIUM_SPAN_CHECK(index < size_);
     return data_.Get()[index];
   }
   constexpr T* data() const noexcept { return data_.Get(); }
