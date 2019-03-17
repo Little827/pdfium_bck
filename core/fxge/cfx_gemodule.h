@@ -16,24 +16,24 @@ class CFX_GEModule {
  public:
   static CFX_GEModule* Get();
   static void Destroy();
+  static void SetUserFontPaths(const char** pUserFontPaths);
 
-  void Init(const char** pUserFontPaths);
+  CFX_GEModule();
+  ~CFX_GEModule();
+
   CFX_FontCache* GetFontCache();
   CFX_FontMgr* GetFontMgr() { return m_pFontMgr.get(); }
 
   void* GetPlatformData() { return m_pPlatformData; }
 
  private:
-  CFX_GEModule();
-  ~CFX_GEModule();
-
   void InitPlatform();
   void DestroyPlatform();
 
   std::unique_ptr<CFX_FontCache> m_pFontCache;
   std::unique_ptr<CFX_FontMgr> m_pFontMgr;
   void* m_pPlatformData;
-  const char** m_pUserFontPaths;
+  static const char** s_pUserFontPaths;
 };
 
 #endif  // CORE_FXGE_CFX_GEMODULE_H_

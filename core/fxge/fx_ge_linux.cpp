@@ -157,7 +157,7 @@ std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
 
 void CFX_GEModule::InitPlatform() {
   m_pFontMgr->SetSystemFontInfo(
-      SystemFontInfoIface::CreateDefault(m_pUserFontPaths));
+      SystemFontInfoIface::CreateDefault(s_pUserFontPaths));
 }
 
 void CFX_GEModule::DestroyPlatform() {}
