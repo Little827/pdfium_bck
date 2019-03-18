@@ -34,6 +34,24 @@
       "revId": "e330ad589a24d2cdef2ef0315074cd7de8f0d049",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18c036a_2e0a1b3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-18T20:07:30Z",
+      "side": 1,
+      "message": "Can you add a comment in the code? So someone doesn\u0027t accidentally flip it back, since there is only one use of |bNegative| and now the assignment and usage are farther apart.",
+      "parentUuid": "a031c5e0_9ad9d23e",
+      "revId": "e330ad589a24d2cdef2ef0315074cd7de8f0d049",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
