@@ -16,6 +16,24 @@
       "revId": "e330ad589a24d2cdef2ef0315074cd7de8f0d049",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a031c5e0_9ad9d23e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-18T19:53:43Z",
+      "side": 1,
+      "message": "Indeed. So either the optimizer isn\u0027t sophisticated enough to look back that far, or it can\u0027t prove the check is still valid across some function call. Either way, this makes it obvious.",
+      "parentUuid": "0072be97_203be235",
+      "revId": "e330ad589a24d2cdef2ef0315074cd7de8f0d049",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
