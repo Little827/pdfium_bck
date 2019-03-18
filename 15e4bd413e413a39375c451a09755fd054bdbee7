@@ -74,6 +74,24 @@
     },
     {
       "key": {
+        "uuid": "4bb393c8_1666ca83",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2019-03-18T19:40:43Z",
+      "side": 1,
+      "message": "We may need encoding fixes for CIDFonts, but fixing only for the simpler cases for now seems fine to me. So leaving as is sounds good.",
+      "parentUuid": "1ea27455_13bd9241",
+      "revId": "15e4bd413e413a39375c451a09755fd054bdbee7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "432812cf_118c9801",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 2
