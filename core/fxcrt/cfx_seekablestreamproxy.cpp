@@ -16,6 +16,7 @@
 #include <utility>
 #include <vector>
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
 #include "third_party/base/stl_util.h"
@@ -76,16 +77,19 @@ std::pair<size_t, size_t> UTF8Decode(const char* pSrc,
   return {iSrcNum, iDstNum};
 }
 
+#if defined(WCHAR_T_IS_UTF32)
+static_assert(sizeof(wchar_t) > 2, "wchar_t is too small");
+
 void UTF16ToWChar(void* pBuffer, size_t iLength) {
   ASSERT(pBuffer);
   ASSERT(iLength > 0);
-  ASSERT(sizeof(wchar_t) > 2);
 
   uint16_t* pSrc = static_cast<uint16_t*>(pBuffer);
   wchar_t* pDst = static_cast<wchar_t*>(pBuffer);
   for (size_t i = 0; i < iLength; i++)
     pDst[i] = static_cast<wchar_t>(pSrc[i]);
 }
+#endif  // defined(WCHAR_T_IS_UTF32)
 
 void SwapByteOrder(wchar_t* pStr, size_t iLength) {
   ASSERT(pStr);
@@ -215,8 +219,10 @@ size_t CFX_SeekableStreamProxy::ReadBlock(void* pStr, size_t size) {
     size_t iBytes = size * 2;
     size_t iLen = ReadData(reinterpret_cast<uint8_t*>(pStr), iBytes);
     size = iLen / 2;
-    if (sizeof(wchar_t) > 2 && size > 0)
+#if defined(WCHAR_T_IS_UTF32)
+    if (size > 0)
       UTF16ToWChar(pStr, size);
+#endif
 
     if (m_wCodePage == FX_CODEPAGE_UTF16BE)
       SwapByteOrder(static_cast<wchar_t*>(pStr), size);
