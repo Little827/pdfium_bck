@@ -16,6 +16,7 @@
 class CFX_XMLDocument;
 class CFX_XMLElement;
 class CFX_XMLNode;
+class CFX_SeekableStreamProxy;
 class IFX_SeekableReadStream;
 
 class CFX_XMLParser {
@@ -53,7 +54,7 @@ class CFX_XMLParser {
   void ProcessTargetData();
 
   CFX_XMLNode* current_node_ = nullptr;
-  RetainPtr<IFX_SeekableReadStream> stream_;
+  RetainPtr<CFX_SeekableStreamProxy> stream_;
   std::vector<wchar_t> current_text_;
   size_t xml_plane_size_ = 1024;
   int32_t entity_start_ = -1;
