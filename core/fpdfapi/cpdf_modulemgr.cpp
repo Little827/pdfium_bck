@@ -32,21 +32,22 @@
 
 namespace {
 
-CPDF_ModuleMgr* g_pDefaultMgr = nullptr;
+thread_local std::unique_ptr<CPDF_ModuleMgr> g_pDefaultMgr;
 
 }  // namespace
 
 // static
 CPDF_ModuleMgr* CPDF_ModuleMgr::Get() {
-  if (!g_pDefaultMgr)
-    g_pDefaultMgr = new CPDF_ModuleMgr;
-  return g_pDefaultMgr;
+  if (!g_pDefaultMgr) {
+    g_pDefaultMgr = pdfium::MakeUnique<CPDF_ModuleMgr>();
+    g_pDefaultMgr->Init();
+  }
+  return g_pDefaultMgr.get();
 }
 
 // static
 void CPDF_ModuleMgr::Destroy() {
-  delete g_pDefaultMgr;
-  g_pDefaultMgr = nullptr;
+  g_pDefaultMgr.reset();
 }
 
 CPDF_ModuleMgr::CPDF_ModuleMgr() {}

@@ -158,11 +158,11 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* cfg) {
 
   FXMEM_InitializePartitionAlloc();
 
-  CFX_GEModule* pModule = CFX_GEModule::Get();
-  pModule->Init(cfg ? cfg->m_pUserFontPaths : nullptr);
+  if (cfg->m_pUserFontPaths)
+    CFX_GEModule::SetUserFontPaths(cfg->m_pUserFontPaths);
 
-  CPDF_ModuleMgr* pModuleMgr = CPDF_ModuleMgr::Get();
-  pModuleMgr->Init();
+  CFX_GEModule::Get();
+  CPDF_ModuleMgr::Get();
 
 #ifdef PDF_ENABLE_XFA
   BC_Library_Init();

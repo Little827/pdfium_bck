@@ -39,6 +39,9 @@ class CPDF_ModuleMgr {
   static void Destroy();
   static const int kFileBufSize = 512;
 
+  CPDF_ModuleMgr();
+  ~CPDF_ModuleMgr();
+
   void Init();
 
   void SetUnsupportInfoAdapter(
@@ -60,9 +63,6 @@ class CPDF_ModuleMgr {
   CCodec_FlateModule* GetFlateModule();
 
  private:
-  CPDF_ModuleMgr();
-  ~CPDF_ModuleMgr();
-
   void InitPageModule();
   void InitCodecModule();
   void LoadCodecModules();

@@ -76,7 +76,7 @@ namespace {
 
 constexpr int kShadingSteps = 256;
 constexpr int kRenderMaxRecursionDepth = 64;
-int g_CurrentRecursionDepth = 0;
+thread_local int g_CurrentRecursionDepth = 0;
 
 void ReleaseCachedType3(CPDF_Type3Font* pFont) {
   CPDF_Document* pDoc = pFont->GetDocument();

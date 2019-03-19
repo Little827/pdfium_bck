@@ -13,14 +13,17 @@
 
 namespace {
 
-CFX_GEModule* g_pGEModule = nullptr;
+// Automatic destruction when thread exits, which means the main program must
+// wait for all threads to finish before calling FPDF_DestroyLibrary().
+thread_local std::unique_ptr<CFX_GEModule> g_pGEModule;
 
 }  // namespace
 
+// static
+const char** CFX_GEModule::s_pUserFontPaths = nullptr;
+
 CFX_GEModule::CFX_GEModule()
-    : m_pFontMgr(pdfium::MakeUnique<CFX_FontMgr>()),
-      m_pPlatformData(nullptr),
-      m_pUserFontPaths(nullptr) {}
+    : m_pFontMgr(pdfium::MakeUnique<CFX_FontMgr>()), m_pPlatformData(nullptr) {}
 
 CFX_GEModule::~CFX_GEModule() {
   DestroyPlatform();
@@ -28,22 +31,22 @@ CFX_GEModule::~CFX_GEModule() {
 
 // static
 CFX_GEModule* CFX_GEModule::Get() {
-  if (!g_pGEModule)
-    g_pGEModule = new CFX_GEModule();
-  return g_pGEModule;
+  if (!g_pGEModule) {
+    g_pGEModule = pdfium::MakeUnique<CFX_GEModule>();
+    g_pGEModule->InitPlatform();
+  }
+  return g_pGEModule.get();
 }
 
 // static
 void CFX_GEModule::Destroy() {
   ASSERT(g_pGEModule);
-  delete g_pGEModule;
-  g_pGEModule = nullptr;
+  g_pGEModule.reset();
 }
 
-void CFX_GEModule::Init(const char** userFontPaths) {
-  ASSERT(g_pGEModule);
-  m_pUserFontPaths = userFontPaths;
-  InitPlatform();
+// static
+void CFX_GEModule::SetUserFontPaths(const char** pUserFontPaths) {
+  s_pUserFontPaths = pUserFontPaths;
 }
 
 CFX_FontCache* CFX_GEModule::GetFontCache() {
