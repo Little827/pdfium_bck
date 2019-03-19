@@ -11,7 +11,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 
-class CFX_SeekableStreamProxy final : public IFX_SeekableReadStream {
+class CFX_SeekableStreamProxy final : public Retainable {
  public:
   enum class From {
     Begin = 0,
@@ -21,12 +21,12 @@ class CFX_SeekableStreamProxy final : public IFX_SeekableReadStream {
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
-  // IFX_SeekableReadStream:
-  FX_FILESIZE GetSize() override;
-  FX_FILESIZE GetPosition() override;
-  bool IsEOF() override;
-  size_t ReadBlock(void* pStr, size_t size) override;
-  bool ReadBlockAtOffset(void* pStr, FX_FILESIZE offset, size_t size) override;
+  // Unlike IFX_SeekableStreamPrxoy, buffers and sizes are always in terms
+  // of numbers of wchar_ts, not bytes.
+  FX_FILESIZE GetSize();  // Estimate under worst possible expansion.
+  FX_FILESIZE GetPosition();
+  bool IsEOF();
+  size_t ReadBlock(wchar_t* pStr, size_t size);
 
   uint16_t GetCodePage() const { return m_wCodePage; }
   void SetCodePage(uint16_t wCodePage);
