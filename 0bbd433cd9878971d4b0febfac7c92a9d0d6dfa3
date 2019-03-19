@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d434fc15_4608f040",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-19T22:16:42Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 19,
+        "startChar": 30,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "0bbd433cd9878971d4b0febfac7c92a9d0d6dfa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74dfe7b_534397bb",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-19T22:16:42Z",
+      "side": 1,
+      "message": "number of wchar_t elements?",
+      "revId": "0bbd433cd9878971d4b0febfac7c92a9d0d6dfa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24e03f8_ca541eb3",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-19T22:16:42Z",
+      "side": 1,
+      "message": "sort",
+      "revId": "0bbd433cd9878971d4b0febfac7c92a9d0d6dfa3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
