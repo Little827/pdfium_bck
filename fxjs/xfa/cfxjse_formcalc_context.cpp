@@ -5634,18 +5634,16 @@ ByteString CFXJSE_FormCalcContext::GenerateSomExpression(ByteStringView bsName,
     return ByteString(bsName, "[") + ByteString::FormatInteger(iIndexValue) +
            "]";
   }
+
+  bool bNegative = iIndexValue < 0;
   ByteString bsSomExp;
-  if (iIndexFlags == 2) {
-    bsSomExp = (iIndexValue < 0) ? (bsName + "[-") : (bsName + "[+");
-    iIndexValue = (iIndexValue < 0) ? (0 - iIndexValue) : iIndexValue;
-    bsSomExp += ByteString::FormatInteger(iIndexValue);
-    bsSomExp += "]";
-  } else {
-    bsSomExp = (iIndexValue < 0) ? (bsName + "[") : (bsName + "[-");
-    iIndexValue = (iIndexValue < 0) ? (0 - iIndexValue) : iIndexValue;
-    bsSomExp += ByteString::FormatInteger(iIndexValue);
-    bsSomExp += "]";
-  }
+  if (iIndexFlags == 2)
+    bsSomExp = bNegative ? (bsName + "[-") : (bsName + "[+");
+  else
+    bsSomExp = bNegative ? (bsName + "[") : (bsName + "[-");
+  iIndexValue = bNegative ? (0 - iIndexValue) : iIndexValue;
+  bsSomExp += ByteString::FormatInteger(iIndexValue);
+  bsSomExp += "]";
   return bsSomExp;
 }
 
