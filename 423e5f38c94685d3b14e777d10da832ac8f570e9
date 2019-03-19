@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1552962171 -0700\nnonce AC6AUtOkiniCGuMjUw2IebuYq17qIsDSKsVmSX2weDJaMm58oiJE+rwaviIlehYJSqR9paEekDNG\n\n0000000000000000000000000000000000000000 423e5f38c94685d3b14e777d10da832ac8f570e9 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dcombine-code-in-cfxjse-formcalccontext\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyQUnsACgkQqzYtYVpm\n/XtQ+AgAkZwkshh0zwsVpXWRXyUbX5WCFkXQ3dq/8H4RxWU8MLGH5qdYwQqfA4i5\ncohN9Mg5EJLFII9jRcS14fRm1FbtSAcYSW/3nDqU+lcD5WCVSRPaAFM3RH06DuMq\nC4Rwt1t6yG+WRcCoebck9/HsnGLroSTzSPSVX9LKpHImheewvCh9eqgHGzJtNrsP\n8W2lzaxhlY8G7/KzaInH4jpplY6alZ3gktFJ2tkqSI6UCrIYLw8inKsZgudqxqa4\n+dK0RqPwnjBA72ltE5BlRhX4J76vzM5Vpk9gFtUXAo8XFjFxRalWBpT9zDJsGZ2/\nPKGLXkK611TXeN9emhJ/Hw3azH1OPQ\u003d\u003d\n\u003dnv2N\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d4f5746_2f7d2ac9",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5638,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-19T17:19:15Z",
+      "side": 1,
+      "message": "nit: const?",
+      "range": {
+        "startLine": 5638,
+        "startChar": 2,
+        "endLine": 5638,
+        "endChar": 6
+      },
+      "revId": "423e5f38c94685d3b14e777d10da832ac8f570e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb39c1d5_491560c1",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5642,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-19T17:19:15Z",
+      "side": 1,
+      "message": "nit: can this be\n  bsSomExp \u003d bsName + (bNegative ? \"[-\" : \u0027\"[+\");\n\n(and 5643 too)",
+      "range": {
+        "startLine": 5641,
+        "startChar": 4,
+        "endLine": 5642,
+        "endChar": 6
+      },
+      "revId": "423e5f38c94685d3b14e777d10da832ac8f570e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5599d775_bbbee5ee",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5644,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-19T17:19:15Z",
+      "side": 1,
+      "message": "nit: over() ?",
+      "range": {
+        "startLine": 5644,
+        "startChar": 29,
+        "endLine": 5644,
+        "endChar": 45
+      },
+      "revId": "423e5f38c94685d3b14e777d10da832ac8f570e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
