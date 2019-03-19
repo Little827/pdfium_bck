@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1552964606 -0700\nnonce AC6AUtMoIJxhcoNBjY9Qo6PNNjGPZnX3KhmFqnkYZnIuP6GtQhWu13NlSLVz7njxH0+ycO5y3+TB\n\n0000000000000000000000000000000000000000 1238b9e29efb8a138226ea404b3aa79978e83bac refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyQW/4ACgkQqzYtYVpm\n/Xv0Xwf7B0SA1JexAsDAMUF58NucqsH/by7FjN5CPMwB/Bf8y0A8TRG+j2lLCc6I\nuzdvEhlg/25o6l3qGfsriJrR1ei+GNskRmL4c46n80Td0r5IRiJdalOwy6wJ61pF\n2G6q1/mJLpaShsJlYgxDCQoLX2ct+wS+kIDoqvLOwxsg80VCZ/QBRHXLip7HaoSK\nINh4hnHfvmZvReJ6JK9qou70pnCRU/rdWYlZtJgMPveLJLkaSDdYICi4OfC6KZwQ\ngxManJ2s9/CGCp9rTEI63ZT+f8erPbU52nF/n3/ktorjlImxbUf3teYiCjmhL0nU\nWj8FUUkPLupmTVjt1WEGIsyNNIhRdQ\u003d\u003d\n\u003dfmo5\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ceff80d_eb2674cc",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-19T16:57:16Z",
+      "side": 1,
+      "message": "follow-up: maybe this is now conditionalized on a build_config.h variable.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "1238b9e29efb8a138226ea404b3aa79978e83bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2501d4ee_22c79399",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-19T16:57:16Z",
+      "side": 1,
+      "message": "Lets be sure the fix in the other CL lands first. :)",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 5
+      },
+      "revId": "1238b9e29efb8a138226ea404b3aa79978e83bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b6ac38_798920ac",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-19T16:57:16Z",
+      "side": 1,
+      "message": "follow-up: do this swap on uint16_t\u0027s first, then expand to wchar_t.  That way, there\u0027s only one code path in SwapByteOrder above, where they currently shuffle either 2 or 4-byte values around post expansion.",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 6
+      },
+      "revId": "1238b9e29efb8a138226ea404b3aa79978e83bac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
