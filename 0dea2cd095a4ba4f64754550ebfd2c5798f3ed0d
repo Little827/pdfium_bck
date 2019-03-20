@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a51ab002_725ab74f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-20T22:49:46Z",
+      "side": 1,
+      "message": "Do you want to do this first in a separate CL? That\u0027ll make it clearer what this CL is doing.",
+      "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174dc543_da320cbe",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-20T22:49:46Z",
+      "side": 1,
+      "message": "nit: Can you use MakeUnique() and release(), like the Windows code above?",
+      "range": {
+        "startLine": 129,
+        "startChar": 28,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c94af042_e5d66561",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-20T22:49:46Z",
+      "side": 1,
+      "message": "Does S_ISDIR(deStat.st_mode) work?",
+      "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca7b2b4_767c2491",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-20T22:49:46Z",
+      "side": 1,
+      "message": "If calling stat() on the file fails, maybe return false?",
+      "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
