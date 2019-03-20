@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ff2a791_6fe51aa9",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 6800
+      },
+      "writtenOn": "2019-03-20T16:33:15Z",
+      "side": 1,
+      "message": "Is this change related to the the rest of the changes?",
+      "revId": "572c146668358b96ff099a834af3b732e9450127",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
