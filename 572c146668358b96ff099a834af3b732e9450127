@@ -16,6 +16,24 @@
       "revId": "572c146668358b96ff099a834af3b732e9450127",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60481fa2_3397a724",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-20T17:07:55Z",
+      "side": 1,
+      "message": "I was guessing this is where \u0027checkout_android\u0027 comes from, but maybe I guessed wrong?",
+      "parentUuid": "5ff2a791_6fe51aa9",
+      "revId": "572c146668358b96ff099a834af3b732e9450127",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
