@@ -47,7 +47,6 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
     return m_FormType == FormType::kXFAFull ||
            m_FormType == FormType::kXFAForeground;
   }
-  CXFA_FFApp* GetXFAApp() { return m_pXFAApp.get(); }
 
   CPDFSDK_FormFillEnvironment* GetFormFillEnv() const {
     return m_pFormFillEnv.Get();
