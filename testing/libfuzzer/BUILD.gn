@@ -19,6 +19,13 @@ if (pdf_enable_xfa) {
     testonly = true
   }
 
+  group("pdf_cfgas_stringformat_fuzzer") {
+    deps = [
+      "../fuzzers/:pdf_cfgas_stringformat_fuzzer_src",
+    ]
+    testonly = true
+  }
+
   if (pdf_enable_xfa_bmp) {
     group("pdf_codec_bmp_fuzzer") {
       deps = [
