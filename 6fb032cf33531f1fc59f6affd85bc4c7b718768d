@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba808549_e24dc644",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-21T21:29:06Z",
+      "side": 1,
+      "message": "i.e. *iDotIndex, if we\u0027ve taken the path above, now points to the dot in wspurgepattern.",
+      "revId": "6fb032cf33531f1fc59f6affd85bc4c7b718768d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
