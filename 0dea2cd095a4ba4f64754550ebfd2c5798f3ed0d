@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2cd3a919_64c1d513",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7520
+      },
+      "writtenOn": "2019-03-21T03:32:48Z",
+      "side": 1,
+      "message": "I submitted a CL for the renaming at https://pdfium-review.googlesource.com/c/pdfium/+/52130 so we can rebase this one after that one is merged.",
+      "parentUuid": "a51ab002_725ab74f",
+      "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "174dc543_da320cbe",
         "filename": "core/fxcrt/fx_stream.cpp",
         "patchSetId": 3
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "f13f7cda_47181b44",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 7520
+      },
+      "writtenOn": "2019-03-21T03:32:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c94af042_e5d66561",
+      "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ca7b2b4_767c2491",
         "filename": "core/fxcrt/fx_stream.cpp",
         "patchSetId": 3
@@ -73,6 +109,24 @@
       "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba93e0d_d18b07c5",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 7520
+      },
+      "writtenOn": "2019-03-21T03:32:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4ca7b2b4_767c2491",
+      "revId": "0dea2cd095a4ba4f64754550ebfd2c5798f3ed0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
