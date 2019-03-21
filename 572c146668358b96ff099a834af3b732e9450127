@@ -52,6 +52,24 @@
       "revId": "572c146668358b96ff099a834af3b732e9450127",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75ac0c1_992b69f8",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-21T17:09:02Z",
+      "side": 1,
+      "message": "It looks like I don\u0027t need it. So removing. I\u0027m sure GN will complain if that file is missing.",
+      "parentUuid": "5ca5834f_3ec7ebde",
+      "revId": "572c146668358b96ff099a834af3b732e9450127",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
