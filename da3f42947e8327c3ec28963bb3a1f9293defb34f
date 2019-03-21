@@ -51,6 +51,24 @@
       "revId": "da3f42947e8327c3ec28963bb3a1f9293defb34f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3c915b_93e41dc2",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-21T22:04:56Z",
+      "side": 1,
+      "message": "Done. It wouldn\u0027t be too useful as is, but I\u0027m thinking about changing the public APIs to make them more flexible, so we may need this anyway.",
+      "parentUuid": "e48512d6_d4db10c9",
+      "revId": "da3f42947e8327c3ec28963bb3a1f9293defb34f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
