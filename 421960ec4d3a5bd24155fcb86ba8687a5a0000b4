@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4a66767_a3f62acb",
+        "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-21T22:54:54Z",
+      "side": 1,
+      "message": "Do we want to try other locales as well? e.g. Have a list of valid ones and pick between them using the first byte.",
+      "range": {
+        "startLine": 24,
+        "startChar": 57,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "421960ec4d3a5bd24155fcb86ba8687a5a0000b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8429c36b_5c87d333",
+        "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-21T22:54:54Z",
+      "side": 1,
+      "message": "And we do want to vary this?",
+      "revId": "421960ec4d3a5bd24155fcb86ba8687a5a0000b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
