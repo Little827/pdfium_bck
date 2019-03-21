@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "272b7a09_0ce68d32",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-21T05:06:15Z",
+      "side": 1,
+      "message": "Flip the conditional above so this becomes:\n\nif (stat(...) \u003c 0)\n  return false;\n\n*bFolder \u003d ...;\nreturn true;",
+      "revId": "93b841fe1757f788841c4b87fbf0930044ae2be9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8623e9f4_137ddda5",
+        "filename": "core/fxcrt/fx_stream.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-21T05:06:15Z",
+      "side": 1,
+      "message": "There\u0027s an accidental line removal here.",
+      "revId": "93b841fe1757f788841c4b87fbf0930044ae2be9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
