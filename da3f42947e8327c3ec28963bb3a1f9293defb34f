@@ -16,6 +16,23 @@
       "revId": "da3f42947e8327c3ec28963bb3a1f9293defb34f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c81a5f4_7f8d23e9",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-21T17:11:20Z",
+      "side": 1,
+      "message": "As in, you want to call m_ObjectNumberMap.clear() here?",
+      "revId": "da3f42947e8327c3ec28963bb3a1f9293defb34f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
