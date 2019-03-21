@@ -688,7 +688,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
   EXPECT_EQ(11, FPDFPage_CountObjects(page));
 
 #if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
-  const char kNonPrimesMD5[] = "57e76dc7375d896704f0fd6d6d1b9e65";
+  const char kNonPrimesMD5[] = "6304512d0150bbd5578e8e22d3121103";
 #elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
   const char kNonPrimesMD5[] = "4d906b57fba36c70c600cf50d60f508c";
 #else
@@ -2668,7 +2668,7 @@ TEST_F(FPDFEditEmbedderTest, AddMarkedText) {
 #if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
   const char md5[] = "17d2b6cd574cf66170b09c8927529a94";
 #elif _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
-    const char md5[] = "d60ba39f9698e32360d99e727dd93165";
+  const char md5[] = "d60ba39f9698e32360d99e727dd93165";
 #else
   const char md5[] = "70592859010ffbf532a2237b8118bcc4";
 #endif
