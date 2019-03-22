@@ -47,6 +47,30 @@
       "revId": "3941e25eda258a5cb3f77de2b1f6baaf06eb5729",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de50afd3_e405d6c7",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T23:04:46Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/49450/ will fix this.",
+      "parentUuid": "fd1e13b9_fd0ee9e9",
+      "range": {
+        "startLine": 878,
+        "startChar": 7,
+        "endLine": 878,
+        "endChar": 75
+      },
+      "revId": "3941e25eda258a5cb3f77de2b1f6baaf06eb5729",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
