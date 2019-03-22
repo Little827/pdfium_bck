@@ -16,6 +16,24 @@
       "revId": "2d1c5851fa99d789430823ee751fbce8152a596b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c20280_900c2918",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-22T18:34:07Z",
+      "side": 1,
+      "message": "The test is comparing bitmap hash before (line 699) and after serialization (line 714). The float serialization is causing pixel level changes. I dumped the PNGs, they don\u0027t visually look different. One possible fix is to add kNonPrimesAfterSaveMD5 and compare against this hash on line 714. The new patch I uploaded has this fixed, but I could not validate it locally on Mac (I can do it only on Monday).",
+      "parentUuid": "2167c574_bf7c4f96",
+      "revId": "2d1c5851fa99d789430823ee751fbce8152a596b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
