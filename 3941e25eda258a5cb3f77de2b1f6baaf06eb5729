@@ -23,6 +23,30 @@
       "revId": "3941e25eda258a5cb3f77de2b1f6baaf06eb5729",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1e13b9_fd0ee9e9",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T21:31:38Z",
+      "side": 1,
+      "message": "I think it can. ResolveBookendLeaderOrTrailer() calls ResolveBreakTarget() to set |pLeaderTemplate| before returning true, but ResolveBreakTarget() has too many ways to fail.\n\nI can look into fixing it later, but for now I\u0027m going to leave this as is.",
+      "parentUuid": "7534a6ae_0a4235ee",
+      "range": {
+        "startLine": 878,
+        "startChar": 7,
+        "endLine": 878,
+        "endChar": 75
+      },
+      "revId": "3941e25eda258a5cb3f77de2b1f6baaf06eb5729",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
