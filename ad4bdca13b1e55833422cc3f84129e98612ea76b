@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c8bf69_b56e8384",
+        "filename": "testing/fuzzers/pdf_cfgas_stringformatter_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T17:16:11Z",
+      "side": 1,
+      "message": "Can this be static inside LLVMFuzzerTestOneInput() to avoid creating a static initializer?",
+      "revId": "ad4bdca13b1e55833422cc3f84129e98612ea76b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
