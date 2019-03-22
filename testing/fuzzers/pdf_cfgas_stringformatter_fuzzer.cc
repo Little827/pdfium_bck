@@ -21,13 +21,14 @@ const FX_DATETIMETYPE kTypes[] = {FX_DATETIMETYPE_Date, FX_DATETIMETYPE_Time,
 }  // namespace
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-  if (size < 4)
+  if (size < 5)
     return 0;
 
-  uint8_t locale_selector = data[0] % FX_ArraySize(kLocales);
-  uint8_t type_selector = data[1] % FX_ArraySize(kTypes);
-  data += 2;
-  size -= 2;
+  uint8_t test_selector = data[0] % 3;
+  uint8_t locale_selector = data[1] % FX_ArraySize(kLocales);
+  uint8_t type_selector = data[2] % FX_ArraySize(kTypes);
+  data += 3;
+  size -= 3;
 
   size_t pattern_len = size / 2;
   size_t value_len = size - pattern_len;
@@ -39,8 +40,16 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   auto mgr =
       pdfium::MakeUnique<CXFA_LocaleMgr>(nullptr, kLocales[locale_selector]);
   auto fmt = pdfium::MakeUnique<CFGAS_StringFormatter>(mgr.get(), pattern);
-  fmt->FormatText(value, &result);
-  fmt->FormatNum(value, &result);
-  fmt->FormatDateTime(value, kTypes[type_selector], &result);
+  switch (test_selector) {
+    case 0:
+      fmt->FormatText(value, &result);
+      break;
+    case 1:
+      fmt->FormatNum(value, &result);
+      break;
+    case 2:
+      fmt->FormatDateTime(value, kTypes[type_selector], &result);
+      break;
+  }
   return 0;
 }
