@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "7b4cf837_7687766d",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "471f5acf_c45fce6a",
+      "range": {
+        "startLine": 1959,
+        "startChar": 4,
+        "endLine": 1959,
+        "endChar": 11
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "403e7800_0c27b44e",
         "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2019-01-30T17:37:05Z",
       "side": 1,
       "message": "nit: underbar and naming.  Maybe FindPageAreaFromPageSetSimplexOrDuplex ?",
+      "range": {
+        "startLine": 1961,
+        "startChar": 30,
+        "endLine": 1961,
+        "endChar": 32
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003dd406_f5a6b17f",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "Another CL...",
+      "parentUuid": "403e7800_0c27b44e",
       "range": {
         "startLine": 1961,
         "startChar": 30,
@@ -72,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "1559285e_4677f7b9",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1970,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4cf526fc_72b4bcaf",
+      "range": {
+        "startLine": 1970,
+        "startChar": 4,
+        "endLine": 1970,
+        "endChar": 11
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3113b91_99fd1b27",
         "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
         "patchSetId": 1
@@ -92,6 +164,30 @@
       "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba798b61_4a0a5e71",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3113b91_99fd1b27",
+      "range": {
+        "startLine": 1985,
+        "startChar": 4,
+        "endLine": 1985,
+        "endChar": 13
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "c717fbee_aa460c1d",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8fe3d31_78f85527",
+      "range": {
+        "startLine": 2003,
+        "startChar": 1,
+        "endLine": 2003,
+        "endChar": 22
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5555d821_b7d9cbe0",
         "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
         "patchSetId": 1
@@ -141,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "70f79fb5_8d03d69e",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2004,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5555d821_b7d9cbe0",
+      "range": {
+        "startLine": 2004,
+        "startChar": 1,
+        "endLine": 2004,
+        "endChar": 13
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3037b06a_f14e98a0",
         "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
         "patchSetId": 1
@@ -161,6 +305,30 @@
       "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfecc27_120a5415",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3037b06a_f14e98a0",
+      "range": {
+        "startLine": 2007,
+        "startChar": 2,
+        "endLine": 2007,
+        "endChar": 16
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -199,6 +367,30 @@
       "side": 1,
       "message": "Maybe this gets folded into block at 2003, then return, then loose bUsable entirely?",
       "parentUuid": "9153467a_7e693e97",
+      "range": {
+        "startLine": 2025,
+        "startChar": 2,
+        "endLine": 2029,
+        "endChar": 3
+      },
+      "revId": "97221785b56942fdbeb3a02a2cd06128275c0133",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d350fb9d_d202ac69",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T01:25:18Z",
+      "side": 1,
+      "message": "I think it\u0027s reachable. It\u0027s just bad refactoring on my part.",
+      "parentUuid": "785ac98c_67fbb4ce",
       "range": {
         "startLine": 2025,
         "startChar": 2,
