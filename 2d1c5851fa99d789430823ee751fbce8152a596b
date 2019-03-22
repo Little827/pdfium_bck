@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2167c574_bf7c4f96",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-22T17:59:11Z",
+      "side": 1,
+      "message": "Probably should revert this to make Macs pass.",
+      "revId": "2d1c5851fa99d789430823ee751fbce8152a596b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
