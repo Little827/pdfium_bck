@@ -48,9 +48,8 @@ class CXFA_LayoutPageMgr {
                        bool bDataMerge,
                        bool bCreatePage);
   CXFA_Node* QueryOverflow(CXFA_Node* pFormNode);
-  bool ProcessBookendLeaderOrTrailer(CXFA_Node* pBookendNode,
-                                     bool bLeader,
-                                     CXFA_Node*& pBookendAppendNode);
+  CXFA_Node* ProcessBookendLeaderOrTrailer(const CXFA_Node* pBookendNode,
+                                           bool bLeader);
 
  private:
   bool AppendNewPage(bool bFirstTemPage);
@@ -79,7 +78,7 @@ class CXFA_LayoutPageMgr {
                            CXFA_Node*& pLeaderTemplate,
                            CXFA_Node*& pTrailerTemplate,
                            bool bCreatePage);
-  bool ResolveBookendLeaderOrTrailer(CXFA_Node* pBookendNode,
+  bool ResolveBookendLeaderOrTrailer(const CXFA_Node* pBookendNode,
                                      bool bLeader,
                                      CXFA_Node*& pBookendAppendTemplate);
   bool ExecuteBreakBeforeOrAfter(CXFA_Node* pCurNode,
