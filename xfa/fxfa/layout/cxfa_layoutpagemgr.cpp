@@ -474,7 +474,7 @@ bool CXFA_LayoutPageMgr::PrepareFirstPage(CXFA_Node* pRootSubform) {
   CXFA_Node* pLeader;
   CXFA_Node* pTrailer;
   if (pBreakBeforeNode &&
-      ExecuteBreakBeforeOrAfter(pBreakBeforeNode, true, pLeader, pTrailer)) {
+      ExecuteBreakBeforeOrAfter(pBreakBeforeNode, true, &pLeader, &pTrailer)) {
     m_CurrentContainerRecordIter = m_ProposedContainerRecords.begin();
     return true;
   }
@@ -762,8 +762,8 @@ bool CXFA_LayoutPageMgr::RunBreak(XFA_Element eBreakType,
 bool CXFA_LayoutPageMgr::ExecuteBreakBeforeOrAfter(
     CXFA_Node* pCurNode,
     bool bBefore,
-    CXFA_Node*& pBreakLeaderTemplate,
-    CXFA_Node*& pBreakTrailerTemplate) {
+    CXFA_Node** pBreakLeaderTemplate,
+    CXFA_Node** pBreakTrailerTemplate) {
   XFA_Element eType = pCurNode->GetElementType();
   switch (eType) {
     case XFA_Element::BreakBefore:
@@ -785,9 +785,9 @@ bool CXFA_LayoutPageMgr::ExecuteBreakBeforeOrAfter(
           ResolveBreakTarget(m_pTemplatePageSetRoot, true, wsTarget);
       wsBreakTrailer = pCurNode->JSObject()->GetCData(XFA_Attribute::Trailer);
       wsBreakLeader = pCurNode->JSObject()->GetCData(XFA_Attribute::Leader);
-      pBreakLeaderTemplate =
+      *pBreakLeaderTemplate =
           ResolveBreakTarget(pContainer, true, wsBreakLeader);
-      pBreakTrailerTemplate =
+      *pBreakTrailerTemplate =
           ResolveBreakTarget(pContainer, true, wsBreakTrailer);
       if (RunBreak(eType,
                    pCurNode->JSObject()->GetEnum(XFA_Attribute::TargetType),
@@ -832,54 +832,55 @@ bool CXFA_LayoutPageMgr::ExecuteBreakBeforeOrAfter(
   return false;
 }
 
-bool CXFA_LayoutPageMgr::ProcessBreakBeforeOrAfter(
-    CXFA_Node* pBreakNode,
-    bool bBefore,
-    CXFA_Node*& pBreakLeaderNode,
-    CXFA_Node*& pBreakTrailerNode,
-    bool* pCreatePage) {
-  CXFA_Node* pLeaderTemplate = nullptr;
-  CXFA_Node* pTrailerTemplate = nullptr;
+Optional<CXFA_LayoutPageMgr::BreakData>
+CXFA_LayoutPageMgr::ProcessBreakBeforeOrAfter(CXFA_Node* pBreakNode,
+                                              bool bBefore) {
   CXFA_Node* pFormNode = pBreakNode->GetContainerParent();
   if (!pFormNode->PresenceRequiresSpace())
-    return false;
+    return {};
 
-  *pCreatePage = ExecuteBreakBeforeOrAfter(pBreakNode, bBefore, pLeaderTemplate,
-                                           pTrailerTemplate);
+  CXFA_Node* pLeaderTemplate = nullptr;
+  CXFA_Node* pTrailerTemplate = nullptr;
+  BreakData break_data;
+  break_data.pLeader = nullptr;
+  break_data.pTrailer = nullptr;
+  break_data.bCreatePage = ExecuteBreakBeforeOrAfter(
+      pBreakNode, bBefore, &pLeaderTemplate, &pTrailerTemplate);
+
   CXFA_Document* pDocument = pBreakNode->GetDocument();
   CXFA_Node* pDataScope = nullptr;
   pFormNode = pFormNode->GetContainerParent();
   if (pLeaderTemplate) {
     if (!pLeaderTemplate->IsContainerNode())
-      return false;
+      return {};
 
     if (!pDataScope)
       pDataScope = XFA_DataMerge_FindDataScope(pFormNode);
 
-    pBreakLeaderNode = pDocument->DataMerge_CopyContainer(
+    break_data.pLeader = pDocument->DataMerge_CopyContainer(
         pLeaderTemplate, pFormNode, pDataScope, true, true, true);
-    if (!pBreakLeaderNode)
-      return false;
+    if (!break_data.pLeader)
+      return {};
 
-    pDocument->DataMerge_UpdateBindingRelations(pBreakLeaderNode);
-    SetLayoutGeneratedNodeFlag(pBreakLeaderNode);
+    pDocument->DataMerge_UpdateBindingRelations(break_data.pLeader);
+    SetLayoutGeneratedNodeFlag(break_data.pLeader);
   }
   if (pTrailerTemplate) {
     if (!pTrailerTemplate->IsContainerNode())
-      return false;
+      return {};
 
     if (!pDataScope)
       pDataScope = XFA_DataMerge_FindDataScope(pFormNode);
 
-    pBreakTrailerNode = pDocument->DataMerge_CopyContainer(
+    break_data.pTrailer = pDocument->DataMerge_CopyContainer(
         pTrailerTemplate, pFormNode, pDataScope, true, true, true);
-    if (!pBreakTrailerNode)
-      return false;
+    if (!break_data.pTrailer)
+      return {};
 
-    pDocument->DataMerge_UpdateBindingRelations(pBreakTrailerNode);
-    SetLayoutGeneratedNodeFlag(pBreakTrailerNode);
+    pDocument->DataMerge_UpdateBindingRelations(break_data.pTrailer);
+    SetLayoutGeneratedNodeFlag(break_data.pTrailer);
   }
-  return true;
+  return break_data;
 }
 
 CXFA_Node* CXFA_LayoutPageMgr::ProcessBookendLeader(

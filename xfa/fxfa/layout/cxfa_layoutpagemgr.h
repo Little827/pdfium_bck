@@ -12,6 +12,7 @@
 #include <map>
 #include <vector>
 
+#include "third_party/base/optional.h"
 #include "xfa/fxfa/layout/cxfa_itemlayoutprocessor.h"
 
 class CXFA_ContainerRecord;
@@ -20,6 +21,12 @@ class CXFA_Node;
 
 class CXFA_LayoutPageMgr {
  public:
+  struct BreakData {
+    CXFA_Node* pLeader;
+    CXFA_Node* pTrailer;
+    bool bCreatePage;
+  };
+
   explicit CXFA_LayoutPageMgr(CXFA_LayoutProcessor* pLayoutProcessor);
   ~CXFA_LayoutPageMgr();
 
@@ -37,11 +44,8 @@ class CXFA_LayoutPageMgr {
   inline CXFA_ContainerLayoutItem* GetRootLayoutItem() const {
     return m_pPageSetLayoutItemRoot;
   }
-  bool ProcessBreakBeforeOrAfter(CXFA_Node* pBreakNode,
-                                 bool bBefore,
-                                 CXFA_Node*& pBreakLeaderNode,
-                                 CXFA_Node*& pBreakTrailerNode,
-                                 bool* pCreatePage);
+  Optional<BreakData> ProcessBreakBeforeOrAfter(CXFA_Node* pBreakNode,
+                                                bool bBefore);
   bool ProcessOverflow(CXFA_Node* pFormNode,
                        CXFA_Node*& pLeaderNode,
                        CXFA_Node*& pTrailerNode,
@@ -84,8 +88,8 @@ class CXFA_LayoutPageMgr {
                                            bool bLeader);
   bool ExecuteBreakBeforeOrAfter(CXFA_Node* pCurNode,
                                  bool bBefore,
-                                 CXFA_Node*& pBreakLeaderTemplate,
-                                 CXFA_Node*& pBreakTrailerTemplate);
+                                 CXFA_Node** pBreakLeaderTemplate,
+                                 CXFA_Node** pBreakTrailerTemplate);
 
   int32_t CreateMinPageRecord(CXFA_Node* pPageArea,
                               bool bTargetPageArea,
