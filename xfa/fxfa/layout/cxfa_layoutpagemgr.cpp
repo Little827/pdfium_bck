@@ -1053,20 +1053,20 @@ bool CXFA_LayoutPageMgr::ResolveBookendLeaderOrTrailer(
   if (pBookendNode->GetElementType() == XFA_Element::Break) {
     WideString leader = pBookendNode->JSObject()->GetCData(
         bLeader ? XFA_Attribute::BookendLeader : XFA_Attribute::BookendTrailer);
-    if (!leader.IsEmpty()) {
-      pBookendAppendTemplate = ResolveBreakTarget(pContainer, false, leader);
-      return true;
-    }
-    return false;
-  }
+    if (leader.IsEmpty())
+      return false;
 
-  if (pBookendNode->GetElementType() == XFA_Element::Bookend) {
-    WideString leader = pBookendNode->JSObject()->GetCData(
-        bLeader ? XFA_Attribute::Leader : XFA_Attribute::Trailer);
-    pBookendAppendTemplate = ResolveBreakTarget(pContainer, true, leader);
+    pBookendAppendTemplate = ResolveBreakTarget(pContainer, false, leader);
     return true;
   }
-  return false;
+
+  if (pBookendNode->GetElementType() != XFA_Element::Bookend)
+    return false;
+
+  WideString leader = pBookendNode->JSObject()->GetCData(
+      bLeader ? XFA_Attribute::Leader : XFA_Attribute::Trailer);
+  pBookendAppendTemplate = ResolveBreakTarget(pContainer, true, leader);
+  return true;
 }
 
 bool CXFA_LayoutPageMgr::FindPageAreaFromPageSet(CXFA_Node* pPageSet,
@@ -1380,13 +1380,12 @@ bool CXFA_LayoutPageMgr::GetNextContentArea(CXFA_Node* pContentArea) {
       return false;
     }
     if (pContentAreaLayout) {
-      if (pContentAreaLayout->GetFormNode() != pCurContentNode) {
-        CXFA_ContainerRecord* pNewRecord =
-            CreateContainerRecord(nullptr, false);
-        pNewRecord->pCurContentArea = pContentAreaLayout;
-        return true;
-      }
-      return false;
+      if (pContentAreaLayout->GetFormNode() == pCurContentNode)
+        return false;
+
+      CXFA_ContainerRecord* pNewRecord = CreateContainerRecord(nullptr, false);
+      pNewRecord->pCurContentArea = pContentAreaLayout;
+      return true;
     }
   }
 
@@ -1573,11 +1572,8 @@ bool CXFA_LayoutPageMgr::GetNextAvailContentHeight(float fChildHeight) {
 
   float fNextContentHeight = pContentArea->JSObject()->GetMeasureInUnit(
       XFA_Attribute::H, XFA_Unit::Pt);
-  if (fNextContentHeight < kXFALayoutPrecision)
-    return true;
-  if (fNextContentHeight > fChildHeight)
-    return true;
-  return false;
+  return fNextContentHeight < kXFALayoutPrecision ||
+         fNextContentHeight > fChildHeight;
 }
 
 void CXFA_LayoutPageMgr::ClearData() {
@@ -1868,13 +1864,9 @@ void CXFA_LayoutPageMgr::LayoutPageSetContents() {
     for (CXFA_ContainerLayoutItem* pContainerItem = iterator.GetCurrent();
          pContainerItem; pContainerItem = iterator.MoveToNext()) {
       CXFA_Node* pNode = pContainerItem->GetFormNode();
-      switch (pNode->GetElementType()) {
-        case XFA_Element::PageArea:
-          m_pLayoutProcessor->GetRootRootItemLayoutProcessor()
-              ->DoLayoutPageArea(pContainerItem);
-          break;
-        default:
-          break;
+      if (pNode->GetElementType() == XFA_Element::PageArea) {
+        m_pLayoutProcessor->GetRootRootItemLayoutProcessor()->DoLayoutPageArea(
+            pContainerItem);
       }
     }
   }
@@ -1894,39 +1886,36 @@ void CXFA_LayoutPageMgr::SyncLayoutData() {
         iteratorParent(pRootLayoutItem);
     for (CXFA_ContainerLayoutItem* pContainerItem = iteratorParent.GetCurrent();
          pContainerItem; pContainerItem = iteratorParent.MoveToNext()) {
-      switch (pContainerItem->GetFormNode()->GetElementType()) {
-        case XFA_Element::PageArea: {
-          nPageIdx++;
-          uint32_t dwRelevant =
-              XFA_WidgetStatus_Viewable | XFA_WidgetStatus_Printable;
-          CXFA_NodeIteratorTemplate<CXFA_LayoutItem,
-                                    CXFA_TraverseStrategy_LayoutItem>
-              iterator(pContainerItem);
-          CXFA_LayoutItem* pChildLayoutItem = iterator.GetCurrent();
-          while (pChildLayoutItem) {
-            CXFA_ContentLayoutItem* pContentItem =
-                pChildLayoutItem->AsContentLayoutItem();
-            if (!pContentItem) {
-              pChildLayoutItem = iterator.MoveToNext();
-              continue;
-            }
+      XFA_Element type = pContainerItem->GetFormNode()->GetElementType();
+      if (type != XFA_Element::PageArea)
+        continue;
 
-            XFA_AttributeValue presence =
-                pContentItem->GetFormNode()
-                    ->JSObject()
-                    ->TryEnum(XFA_Attribute::Presence, true)
-                    .value_or(XFA_AttributeValue::Visible);
-            bool bVisible = presence == XFA_AttributeValue::Visible;
-            uint32_t dwRelevantChild =
-                GetRelevant(pContentItem->GetFormNode(), dwRelevant);
-            SyncContainer(pNotify, m_pLayoutProcessor, pContentItem,
-                          dwRelevantChild, bVisible, nPageIdx);
-            pChildLayoutItem = iterator.SkipChildrenAndMoveToNext();
-          }
-          break;
+      nPageIdx++;
+      uint32_t dwRelevant =
+          XFA_WidgetStatus_Viewable | XFA_WidgetStatus_Printable;
+      CXFA_NodeIteratorTemplate<CXFA_LayoutItem,
+                                CXFA_TraverseStrategy_LayoutItem>
+          iterator(pContainerItem);
+      CXFA_LayoutItem* pChildLayoutItem = iterator.GetCurrent();
+      while (pChildLayoutItem) {
+        CXFA_ContentLayoutItem* pContentItem =
+            pChildLayoutItem->AsContentLayoutItem();
+        if (!pContentItem) {
+          pChildLayoutItem = iterator.MoveToNext();
+          continue;
         }
-        default:
-          break;
+
+        XFA_AttributeValue presence =
+            pContentItem->GetFormNode()
+                ->JSObject()
+                ->TryEnum(XFA_Attribute::Presence, true)
+                .value_or(XFA_AttributeValue::Visible);
+        bool bVisible = presence == XFA_AttributeValue::Visible;
+        uint32_t dwRelevantChild =
+            GetRelevant(pContentItem->GetFormNode(), dwRelevant);
+        SyncContainer(pNotify, m_pLayoutProcessor, pContentItem,
+                      dwRelevantChild, bVisible, nPageIdx);
+        pChildLayoutItem = iterator.SkipChildrenAndMoveToNext();
       }
     }
   }
