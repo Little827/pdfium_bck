@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "75e032a8_4b5be3f8",
+        "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-23T00:35:33Z",
+      "side": 1,
+      "message": "It does not change:\n- GetFormNode() returns |m_pFormNode|. I made the pointer const, so |m_pFormNode| always points to the same node.\n- |CXFA_Node::m_elementType| is const, so the element type never changes.\n\nI also split ProcessBreakBeforeOrAfter() to take a const CXFA_Node*.\n\nBut, I cannot make ProcessBreakBeforeOrAfter() const. When I try, I eventually discover AddContentAreaLayoutItem() also needs to be const. So I\u0027m going to leave this alone, as it is not obvious what side-effects ProcessBreakBeforeOrAfter() has.",
+      "parentUuid": "43aaaabd_ef96cc67",
+      "range": {
+        "startLine": 1787,
+        "startChar": 14,
+        "endLine": 1787,
+        "endChar": 69
+      },
+      "revId": "eba8f80f5f64a7eb7b1e50fcfa713b78325de7af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84ca8f72_5f887902",
         "filename": "xfa/fxfa/parser/cxfa_itemlayoutprocessor.cpp",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "da767601_9e41b421",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-23T00:35:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "f8a5e95a_d003bfd2",
+      "range": {
+        "startLine": 848,
+        "startChar": 1,
+        "endLine": 849,
+        "endChar": 22
+      },
+      "revId": "eba8f80f5f64a7eb7b1e50fcfa713b78325de7af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5481e14f_ee802416",
         "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.h",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "eba8f80f5f64a7eb7b1e50fcfa713b78325de7af",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df6820b_1b120c1a",
+        "filename": "xfa/fxfa/parser/cxfa_layoutpagemgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-23T00:35:33Z",
+      "side": 1,
+      "message": "Done. Just returning a (not-optional) BreakData.",
+      "parentUuid": "5481e14f_ee802416",
+      "range": {
+        "startLine": 87,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "eba8f80f5f64a7eb7b1e50fcfa713b78325de7af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
