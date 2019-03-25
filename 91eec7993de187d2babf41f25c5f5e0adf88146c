@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1553309716 -0700\nnonce AC6AUtM+KhvrFJYOX0KM4+KegXdfKvWyZLJDVgIH3plTUuMTXfI343xc7+6E9p6J4Tj2plb0X98K\n\n0000000000000000000000000000000000000000 91eec7993de187d2babf41f25c5f5e0adf88146c refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003drefactor-code-in-cxfa-itemlayoutprocessor\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyVoBQACgkQqzYtYVpm\n/XuipAgA0MpKFY/49peKURaca7z+z8uFFzAMoxWpnk5RyOG6kmuF7h6VcVxxl361\nxRaUzyVX0MGnGfjHjBj4L1aUKjcAd1RpfNwUKdU0JnoLjePOrwMDUVMZqHVczVz8\ncpKTMKhZgqgN+c3nky+BdxyX96C82CnTe7FlithXBrHCaZ0Xw2tflWenN4qinqnZ\nF3CkNth/ULejkz5bZ51g9Wflb8T+XA8HRSErQH9+ys24ZdpsTBk2bMtT5ic6EjUU\nmM0Ya06mTNrxRpgweUrpQ/n1cljlSNRDQH2apdHaDMZElio+O2QO3xATpOseUZRq\nAcYT1Y28O+wyjJqa3b7OXMfGIFe34Q\u003d\u003d\n\u003dhdDs\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f7c0ffb_a56f7934",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-25T17:05:26Z",
+      "side": 1,
+      "message": "nit: early return?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 16
+      },
+      "revId": "91eec7993de187d2babf41f25c5f5e0adf88146c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77b294b_34b1c2e6",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-25T17:05:26Z",
+      "side": 1,
+      "message": "nit: can this move to line 2744, then group line 2745 with the logic below?",
+      "range": {
+        "startLine": 2747,
+        "startChar": 2,
+        "endLine": 2748,
+        "endChar": 11
+      },
+      "revId": "91eec7993de187d2babf41f25c5f5e0adf88146c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb34b3eb_3b404a8b",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2777,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-25T17:05:26Z",
+      "side": 1,
+      "message": "nit: maybe combine as \n  if (pContentNext \u0026\u0026 pContentNext-\u003em_sPos.y !\u003d pLastChild-\u003em_sPos.y)\n    pLastChild \u003d pContentNext;",
+      "range": {
+        "startLine": 2777,
+        "startChar": 0,
+        "endLine": 2777,
+        "endChar": 4
+      },
+      "revId": "91eec7993de187d2babf41f25c5f5e0adf88146c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
