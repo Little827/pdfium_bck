@@ -7,10 +7,25 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcrt/observable.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/pseudo_retainable.h"
 
 namespace fxcrt {
+namespace {
+
+class ParentRetainedObservable
+    : public ParentRetainable<ParentRetainedObservable>,
+      public Observable<ParentRetainedObservable> {
+ public:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
+ private:
+  ParentRetainedObservable() = default;
+};
+
+}  // namespace
 
 TEST(RetainPtr, Null) {
   RetainPtr<PseudoRetainable> ptr;
@@ -283,6 +298,33 @@ TEST(RetainPtr, VectorMove) {
   }
   EXPECT_EQ(1, obj.retain_count());
   EXPECT_EQ(1, obj.release_count());
+}
+
+TEST(ParentRetainable, NoParent) {
+  ParentRetainedObservable::ObservedPtr watcher;
+  {
+    RetainPtr<ParentRetainedObservable> ptr =
+        pdfium::MakeRetain<ParentRetainedObservable>();
+    watcher = ParentRetainedObservable::ObservedPtr(ptr.Get());
+    EXPECT_TRUE(watcher.Get());
+  }
+  EXPECT_FALSE(watcher.Get());
+}
+
+TEST(ParentRetainable, HasParent) {
+  ParentRetainedObservable::ObservedPtr watcher;
+  RetainPtr<ParentRetainedObservable> parent =
+      pdfium::MakeRetain<ParentRetainedObservable>();
+  {
+    RetainPtr<ParentRetainedObservable> ptr =
+        pdfium::MakeRetain<ParentRetainedObservable>();
+    watcher = ParentRetainedObservable::ObservedPtr(ptr.Get());
+    ptr->SetParent(parent.Get());
+    EXPECT_TRUE(watcher.Get());
+  }
+  EXPECT_TRUE(watcher.Get());
+  watcher->SetParent(nullptr);
+  EXPECT_FALSE(watcher.Get());
 }
 
 }  // namespace fxcrt
