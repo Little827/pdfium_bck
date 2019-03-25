@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1553532653 -0700\nnonce AC6AUtNQ60HXMFfu9GBbGDYRPtRnAolaDs1ORJS2Q9yDtYEAup/U27NWrIKK9DVAQMlEDHssGq5x\n\n0000000000000000000000000000000000000000 18d7c68afa3a758a010a548af579b8dbc99ed678 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dsimplify-cpdfsdk-widget\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyZBu0ACgkQqzYtYVpm\n/XvHLwf/b3cCMem6hrApVisQ5ogJ3ypNiI5z0Zqqcy+/8DWNEefKBw0VJpYNOaIu\nIuETimt55H9rROKrV6iKtZ7iRu2zI1uO6p3QdpLsWFQp+dbqC2vH6IPVJz5PZ9H7\nhk/VaG9HO/S0xRRolX/YJxqqpBa8G32tmg2k0OMUjEOuDqDKy8nTWR1praKGYBDc\n8AfhUUQMz1Q2lxO1NU4PeC+/3y/VaJScgmhlo/z0ukuNzyfW8hjasq/WV2ZfKz0B\n2akEhB/VdYvU5pvOrPqTXcIkhRYYRLQVedBJ3P1gswJKRkIaEuj58ei3bE9MMh5u\nCd9AjqoED+ddKufAXbY1Y1vbYTng9A\u003d\u003d\n\u003dt/FQ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdef730b_5bcdee9c",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-25T16:52:54Z",
+      "side": 1,
+      "message": "This can potentially dereference nullptr, but so can the existing code. Leaving it in for now.",
+      "revId": "18d7c68afa3a758a010a548af579b8dbc99ed678",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
