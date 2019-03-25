@@ -37,7 +37,7 @@ namespace {
 CFX_XMLNode* GetDocumentNode(CFX_XMLNode* pRootNode) {
   for (CFX_XMLNode* pXMLNode = pRootNode->GetFirstChild(); pXMLNode;
        pXMLNode = pXMLNode->GetNextSibling()) {
-    if (pXMLNode->GetType() != FX_XMLNODE_Element)
+    if (pXMLNode->GetType() != CFX_XMLNode::Type::kElement)
       continue;
 
     return pXMLNode;
@@ -159,14 +159,14 @@ void ConvertXMLToPlainText(CFX_XMLElement* pRootXMLNode, WideString& wsOutput) {
   for (CFX_XMLNode* pXMLChild = pRootXMLNode->GetFirstChild(); pXMLChild;
        pXMLChild = pXMLChild->GetNextSibling()) {
     switch (pXMLChild->GetType()) {
-      case FX_XMLNODE_Element: {
+      case CFX_XMLNode::Type::kElement: {
         WideString wsTextData = ToXMLElement(pXMLChild)->GetTextData();
         wsTextData += L"\n";
         wsOutput += wsTextData;
         break;
       }
-      case FX_XMLNODE_Text:
-      case FX_XMLNODE_CharData: {
+      case CFX_XMLNode::Type::kText:
+      case CFX_XMLNode::Type::kCharData: {
         WideString wsText = ToXMLText(pXMLChild)->GetText();
         if (IsStringAllWhitespace(wsText))
           continue;
@@ -186,7 +186,7 @@ WideString GetPlainTextFromRichText(CFX_XMLNode* pXMLNode) {
 
   WideString wsPlainText;
   switch (pXMLNode->GetType()) {
-    case FX_XMLNODE_Element: {
+    case CFX_XMLNode::Type::kElement: {
       CFX_XMLElement* pXMLElement = static_cast<CFX_XMLElement*>(pXMLNode);
       WideString wsTag = pXMLElement->GetLocalTagName();
       uint32_t uTag = FX_HashCode_GetW(wsTag.AsStringView(), true);
@@ -204,8 +204,8 @@ WideString GetPlainTextFromRichText(CFX_XMLNode* pXMLNode) {
       }
       break;
     }
-    case FX_XMLNODE_Text:
-    case FX_XMLNODE_CharData: {
+    case CFX_XMLNode::Type::kText:
+    case CFX_XMLNode::Type::kCharData: {
       WideString wsContent = ToXMLText(pXMLNode)->GetText();
       wsPlainText += wsContent;
       break;
@@ -277,11 +277,11 @@ void CXFA_DocumentParser::ConstructXFANode(CXFA_Node* pXFANode,
     if (pXFANode->GetElementType() == XFA_Element::DataValue) {
       for (CFX_XMLNode* pXMLChild = pXMLNode->GetFirstChild(); pXMLChild;
            pXMLChild = pXMLChild->GetNextSibling()) {
-        FX_XMLNODETYPE eNodeType = pXMLChild->GetType();
-        if (eNodeType == FX_XMLNODE_Instruction)
+        CFX_XMLNode::Type eNodeType = pXMLChild->GetType();
+        if (eNodeType == CFX_XMLNode::Type::kInstruction)
           continue;
 
-        if (eNodeType == FX_XMLNODE_Element) {
+        if (eNodeType == CFX_XMLNode::Type::kElement) {
           CXFA_Node* pXFAChild = m_pFactory->CreateNode(
               XFA_PacketType::Datasets, XFA_Element::DataValue);
           if (!pXFAChild)
@@ -670,7 +670,7 @@ CXFA_Node* CXFA_DocumentParser::NormalLoader(CXFA_Node* pXFANode,
   for (CFX_XMLNode* pXMLChild = pXMLDoc->GetFirstChild(); pXMLChild;
        pXMLChild = pXMLChild->GetNextSibling()) {
     switch (pXMLChild->GetType()) {
-      case FX_XMLNODE_Element: {
+      case CFX_XMLNode::Type::kElement: {
         CFX_XMLElement* pXMLElement = static_cast<CFX_XMLElement*>(pXMLChild);
         WideString wsTagName = pXMLElement->GetLocalTagName();
         XFA_Element eType = XFA_GetElementByName(wsTagName.AsStringView());
@@ -734,7 +734,7 @@ CXFA_Node* CXFA_DocumentParser::NormalLoader(CXFA_Node* pXFANode,
             break;
         }
       } break;
-      case FX_XMLNODE_Instruction:
+      case CFX_XMLNode::Type::kInstruction:
         ParseInstruction(pXFANode, ToXMLInstruction(pXMLChild), ePacketID);
         break;
       default:
@@ -762,8 +762,8 @@ void CXFA_DocumentParser::ParseContentNode(CXFA_Node* pXFANode,
   WideString wsValue;
   for (CFX_XMLNode* pXMLChild = pXMLNode->GetFirstChild(); pXMLChild;
        pXMLChild = pXMLChild->GetNextSibling()) {
-    FX_XMLNODETYPE eNodeType = pXMLChild->GetType();
-    if (eNodeType == FX_XMLNODE_Instruction)
+    CFX_XMLNode::Type eNodeType = pXMLChild->GetType();
+    if (eNodeType == CFX_XMLNode::Type::kInstruction)
       continue;
 
     CFX_XMLElement* pElement = ToXMLElement(pXMLChild);
@@ -806,7 +806,7 @@ void CXFA_DocumentParser::ParseDataGroup(CXFA_Node* pXFANode,
   for (CFX_XMLNode* pXMLChild = pXMLNode->GetFirstChild(); pXMLChild;
        pXMLChild = pXMLChild->GetNextSibling()) {
     switch (pXMLChild->GetType()) {
-      case FX_XMLNODE_Element: {
+      case CFX_XMLNode::Type::kElement: {
         CFX_XMLElement* pXMLElement = static_cast<CFX_XMLElement*>(pXMLChild);
         WideString wsNamespaceURI = pXMLElement->GetNamespaceURI();
         if (wsNamespaceURI.EqualsASCII(
@@ -906,8 +906,8 @@ void CXFA_DocumentParser::ParseDataGroup(CXFA_Node* pXFANode,
         pXFAChild->SetFlag(XFA_NodeFlag_Initialized);
         continue;
       }
-      case FX_XMLNODE_CharData:
-      case FX_XMLNODE_Text: {
+      case CFX_XMLNode::Type::kCharData:
+      case CFX_XMLNode::Type::kText: {
         CFX_XMLText* pXMLText = ToXMLText(pXMLChild);
         WideString wsText = pXMLText->GetText();
         if (IsStringAllWhitespace(wsText))
@@ -940,8 +940,8 @@ void CXFA_DocumentParser::ParseDataValue(CXFA_Node* pXFANode,
   CFX_XMLNode* pXMLCurValueNode = nullptr;
   for (CFX_XMLNode* pXMLChild = pXMLNode->GetFirstChild(); pXMLChild;
        pXMLChild = pXMLChild->GetNextSibling()) {
-    FX_XMLNODETYPE eNodeType = pXMLChild->GetType();
-    if (eNodeType == FX_XMLNODE_Instruction)
+    CFX_XMLNode::Type eNodeType = pXMLChild->GetType();
+    if (eNodeType == CFX_XMLNode::Type::kInstruction)
       continue;
 
     CFX_XMLText* pText = ToXMLText(pXMLChild);
