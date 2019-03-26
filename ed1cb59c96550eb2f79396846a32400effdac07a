@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e49f13_c389285b",
+        "filename": "core/fpdfapi/parser/cpdf_object_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-26T22:53:26Z",
+      "side": 1,
+      "message": "oopsie.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 6
+      },
+      "revId": "ed1cb59c96550eb2f79396846a32400effdac07a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
