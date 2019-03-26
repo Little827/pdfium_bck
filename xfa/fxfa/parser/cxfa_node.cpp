@@ -4974,6 +4974,18 @@ WideString CXFA_Node::NumericLimit(const WideString& wsValue) {
   return wsRet;
 }
 
+bool CXFA_Node::IsTransparent() const {
+  XFA_Element type = GetElementType();
+  return (IsUnnamed() && IsContainerNode()) ||
+         type == XFA_Element::SubformSet || type == XFA_Element::Area ||
+         type == XFA_Element::Proto;
+}
+
+bool CXFA_Node::IsProperty() const {
+  CXFA_Node* parent = GetParent();
+  return parent && parent->HasProperty(GetElementType());
+}
+
 bool CXFA_Node::PresenceRequiresSpace() const {
   auto value = JSObject()->TryEnum(XFA_Attribute::Presence, true);
   XFA_AttributeValue ePresence = value.value_or(XFA_AttributeValue::Visible);
