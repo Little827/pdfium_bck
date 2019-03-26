@@ -16,6 +16,24 @@
       "revId": "a4b5d387b909f7745a0e30381282eaddfaa501a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "091ff456_c6a23d3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-26T19:22:32Z",
+      "side": 1,
+      "message": "Oddly, the test passes but makes noise.  See any previous run under UBSAN where we get success, but also stdout:\n\n./../xfa/fgas/crt/cfgas_decimal.cpp:257:49: runtime error: negation of -2147483648 cannot be represented in type \u0027int32_t\u0027 (aka \u0027int\u0027); cast",
+      "parentUuid": "a6ee5613_53c404b8",
+      "revId": "a4b5d387b909f7745a0e30381282eaddfaa501a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
