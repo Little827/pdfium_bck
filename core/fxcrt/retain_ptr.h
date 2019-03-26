@@ -113,11 +113,50 @@ class Retainable {
   intptr_t m_nRefCount = 0;
 };
 
+// For DOM/XML-ish trees, where the parent node also "retains" its children
+// but doesn't always have a direct pointer to them.
+template <typename T>
+class ParentRetainable {
+ public:
+  ParentRetainable() = default;
+
+  T* GetParent() const { return m_pParent; }
+  void SetParent(T* parent) {
+    m_pParent = parent;
+    if (m_nRefCount == 0 && !m_pParent)
+      delete this;
+  }
+
+ protected:
+  virtual ~ParentRetainable() = default;
+
+ private:
+  template <typename U>
+  friend struct ReleaseDeleter;
+
+  template <typename U>
+  friend class RetainPtr;
+
+  ParentRetainable(const ParentRetainable& that) = delete;
+  ParentRetainable& operator=(const ParentRetainable& that) = delete;
+
+  void Retain() { ++m_nRefCount; }
+  void Release() {
+    ASSERT(m_nRefCount > 0);
+    if (--m_nRefCount == 0 && !m_pParent)
+      delete this;
+  }
+
+  intptr_t m_nRefCount = 0;
+  T* m_pParent;
+};
+
 }  // namespace fxcrt
 
+using fxcrt::ParentRetainable;
 using fxcrt::ReleaseDeleter;
-using fxcrt::RetainPtr;
 using fxcrt::Retainable;
+using fxcrt::RetainPtr;
 
 namespace pdfium {
 
