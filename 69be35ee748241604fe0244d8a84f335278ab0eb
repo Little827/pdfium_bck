@@ -16,6 +16,24 @@
       "revId": "69be35ee748241604fe0244d8a84f335278ab0eb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fecc80d2_890cda70",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-26T23:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80046fd4_b7aa4a97",
+      "revId": "69be35ee748241604fe0244d8a84f335278ab0eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
