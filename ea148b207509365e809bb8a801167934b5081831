@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e22fb2b_470f2c3b",
+        "filename": "xfa/fxfa/parser/cxfa_nodehelper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-26T19:37:43Z",
+      "side": 1,
+      "message": "Loop seems kinda baroque.  Is something along these lines equivalent?\n\nif (!node)\n  return nullptr;\n\nfor (CXFA_Node* parent \u003d node-\u003eGetParent(); parent; parent \u003d parent-\u003eGetParent()) {\n   XFA_Element parentType \u003d parent-\u003eGetElementType();\n   if ((!parent-\u003eIsUnnamed() \u0026\u0026 parentType !\u003d XFA_Element::SubformSet) ||\n       parentType \u003d\u003d XFA_Element::Variables) {\n     return parent;\n   }\n}\nreturn nullptr;",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 9
+      },
+      "revId": "ea148b207509365e809bb8a801167934b5081831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
