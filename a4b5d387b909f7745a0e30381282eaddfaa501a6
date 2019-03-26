@@ -34,6 +34,24 @@
       "revId": "a4b5d387b909f7745a0e30381282eaddfaa501a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fca6777_7f76e77b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-26T20:19:59Z",
+      "side": 1,
+      "message": "I filed https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1277",
+      "parentUuid": "091ff456_c6a23d3e",
+      "revId": "a4b5d387b909f7745a0e30381282eaddfaa501a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
