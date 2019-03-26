@@ -77,25 +77,6 @@ void TraverseSiblings(CXFA_Node* parent,
   return;
 }
 
-WideString GetNameExpressionSinglePath(CXFA_Node* refNode) {
-  WideString ws;
-  bool bIsProperty = refNode->IsProperty();
-  if (refNode->IsUnnamed() ||
-      (bIsProperty && refNode->GetElementType() != XFA_Element::PageSet)) {
-    ws = WideString::FromASCII(refNode->GetClassName());
-    return WideString::Format(
-        L"#%ls[%zu]", ws.c_str(),
-        CXFA_NodeHelper::GetIndex(refNode, XFA_LOGIC_Transparent, bIsProperty,
-                                  true));
-  }
-  ws = refNode->JSObject()->GetCData(XFA_Attribute::Name);
-  ws.Replace(L".", L"\\.");
-  return WideString::Format(
-      L"%ls[%zu]", ws.c_str(),
-      CXFA_NodeHelper::GetIndex(refNode, XFA_LOGIC_Transparent, bIsProperty,
-                                false));
-}
-
 // static
 CXFA_Node* GetParentWithTransparentLogic(CXFA_Node* pNode) {
   CXFA_Node* parent = pNode ? pNode->GetParent() : nullptr;
@@ -162,20 +143,6 @@ size_t CXFA_NodeHelper::GetIndex(CXFA_Node* pNode,
       return i;
   }
   return 0;
-}
-
-// static
-WideString CXFA_NodeHelper::GetNameExpression(CXFA_Node* refNode) {
-  WideString wsName = GetNameExpressionSinglePath(refNode);
-  CXFA_Node* parent = refNode ? refNode->GetParent() : nullptr;
-  while (parent) {
-    WideString wsParent = GetNameExpressionSinglePath(parent);
-    wsParent += L".";
-    wsParent += wsName;
-    wsName = std::move(wsParent);
-    parent = parent->GetParent();
-  }
-  return wsName;
 }
 
 bool CXFA_NodeHelper::CreateNodeForCondition(const WideString& wsCondition) {
