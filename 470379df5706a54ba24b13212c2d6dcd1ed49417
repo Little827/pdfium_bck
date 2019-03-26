@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1553636446 -0700\nnonce AC6AUtPclk/TF3GPJx6M0VEQJTVhqCS0SknCej5i3gAQI75KezzG1cRgjIo/8isQP3ZqUFODYie0\n\n0000000000000000000000000000000000000000 470379df5706a54ba24b13212c2d6dcd1ed49417 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyanF4ACgkQqzYtYVpm\n/XvylQf+Nph3EkRuF0dqan3jjQwKBNjkQexXGDzEpU86/Q1PQRj0V2M1bMcN1VvB\nhYHTE0CWHoW8sSM0gWawOMkyT9STLlEPrdX0WyF8S3+MHNg4Qfij5r2JfeLFXYW9\nA3msFhzc0fMlgS2+TxkwT/6uiwgJECZS4SOYVmSa67gHZxpZIYQZilyD3tggjZ8D\n25ElpF3v9Uv53Uv6qxRW+NvubT1Wff9JykR1nSDZHfOJu117RQfaraXJ+yCO/8IX\nVPLvZuoZdH1iPq9ZbWAEwfz0z+xMQAahYy5GpRbvP8s3+7gzlwXkszj4XPfHbNUA\nbmL001iS/iKnm4ZOmy2cdq8AmW/bVw\u003d\u003d\n\u003dBzxY\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "33bbdc1e_1ee70d69",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-26T22:06:34Z",
+      "side": 1,
+      "message": "+\u003d block_size ?  Or do we care if offset could be way beyond bounds?",
+      "range": {
+        "startLine": 499,
+        "startChar": 15,
+        "endLine": 499,
+        "endChar": 19
+      },
+      "revId": "470379df5706a54ba24b13212c2d6dcd1ed49417",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
