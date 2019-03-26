@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4fbb1499_3e9affa8",
+        "filename": "core/fxcrt/retain_ptr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-26T23:12:57Z",
+      "side": 1,
+      "message": "Well, the parent has a firstChild, which is an unowned pointer, and then there is the chain of nextSiblings running through that.  They are all \"logically retained\" by the parent, even though it only has the start of the chain.\n\nWhen the parent goes away, it simply has to set its all of it\u0027s children\u0027s parents to null.\n\nThe unownedPtr in the test is just a trick to get some reporting upon deletion.\n\nPretty much anywhere there is a Node* m_pFoo; we\u0027d want a retainPtr.",
+      "parentUuid": "8d6f394e_d1e9d84a",
+      "revId": "566285a5535aeb375d5a4b93b018d3b047dd6d4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05fa7a92_59e6a58a",
         "filename": "core/fxcrt/retain_ptr_unittest.cpp",
         "patchSetId": 5
