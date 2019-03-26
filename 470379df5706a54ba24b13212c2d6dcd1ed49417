@@ -71,6 +71,30 @@
       "revId": "470379df5706a54ba24b13212c2d6dcd1ed49417",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d055285_17c52ec3",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-26T22:53:22Z",
+      "side": 1,
+      "message": "Sure. We can also just get rid of |nOffset| and calculate it as: count - nBytesToRead.",
+      "parentUuid": "69ae7082_43e70efd",
+      "range": {
+        "startLine": 499,
+        "startChar": 15,
+        "endLine": 499,
+        "endChar": 19
+      },
+      "revId": "470379df5706a54ba24b13212c2d6dcd1ed49417",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
