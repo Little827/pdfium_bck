@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd15464d_50ca6eed",
+        "filename": "core/fxcrt/cfx_datetime.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-27T16:36:21Z",
+      "side": 1,
+      "message": "I\u0027d be tempted to pull the build_config.h include into fx_system.h. It violates IWYU but I think we gonna have a lot of changes otherwise?",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "4df6668b2bb0bc56a5b85433ed280f07f264fc4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c929af49_ab578da8",
+        "filename": "core/fxcrt/cfx_datetime.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-27T16:36:21Z",
+      "side": 1,
+      "message": "Do we actually need this? I\u0027d expect we\u0027d get a struct where sizeof \u003d\u003d 2 and alignof \u003d\u003d 2 in either case.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "4df6668b2bb0bc56a5b85433ed280f07f264fc4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
