@@ -147,8 +147,6 @@ class CPDF_FormField {
 
   WideString GetOptionLabel(int index) const;
   WideString GetOptionValue(int index) const;
-
-  int FindOption(WideString csOptLabel) const;
   int FindOptionValue(const WideString& csOptValue) const;
 
   bool CheckControl(int iControlIndex,
