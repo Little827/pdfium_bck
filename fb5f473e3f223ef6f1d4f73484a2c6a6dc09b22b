@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea6cda59_1444da51",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-27T18:22:59Z",
+      "side": 1,
+      "message": "nit: order doesn\u0027t matter, but reads easier with assignment not in middle of clears, IMHO.",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 16
+      },
+      "revId": "fb5f473e3f223ef6f1d4f73484a2c6a6dc09b22b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
