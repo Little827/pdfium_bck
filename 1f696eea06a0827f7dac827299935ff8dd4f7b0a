@@ -1,0 +1,282 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5894d110_41d9a2e3",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "null",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e3a91c_ee6b6e1d",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "X/A/Z/B instead of A/B/X/Z",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bfdf746_be8579f4",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Icon",
+      "range": {
+        "startLine": 10,
+        "startChar": 70,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0031384f_c7b3708c",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "This popped up a file selection dialog...",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82f72a8e_4e6cca5f",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83d992c_3eb7ada3",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc591bb5_3ce72506",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be0fa46_b4fa036c",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error, missing required argument",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06908a4c_a75773a6",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error, missing required argument",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcb7921_2ced9433",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313be8ba_efab3307",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dde99cf_a7ac293b",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Error, missing required argument",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcdf87dc_8b8d2900",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "PASS, but threw missing required argument. Ditto on the next line.",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93aa42c0_a009b3e8",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "These 4 are supported, but still passed due to other issues.",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0670026c_31080be1",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "Fail - Returned [object SigInfo]",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "564d7009_f797210a",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T23:51:59Z",
+      "side": 1,
+      "message": "These 3 are supported, but still passed due to other issues.",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
