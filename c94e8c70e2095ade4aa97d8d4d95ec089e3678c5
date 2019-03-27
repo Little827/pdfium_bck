@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7886ebcf_59874c69",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T22:05:52Z",
+      "side": 1,
+      "message": "It depends on what |str| represents here. Is it the label or the value?",
+      "revId": "c94e8c70e2095ade4aa97d8d4d95ec089e3678c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
