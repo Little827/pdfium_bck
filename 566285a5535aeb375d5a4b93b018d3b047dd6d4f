@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4ab65625_744a7c3d",
+        "filename": "core/fxcrt/retain_ptr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-27T00:10:15Z",
+      "side": 1,
+      "message": "I\u0027m trying to picture how this works with a real example.\n\nWith CXFA_Node, if parent P has children A, B, C, and we used RetainPtr in place of all the raw pointers, then:\n\nP would have RetainPtrs to A via |first_child_| and to C via |last_child_|. A would have RetainPtrs to P via |parent_| and to |B| via |next_sibling_|. Using Retainable and RetainPtrs, we would end up with:\n\nP: refcount \u003d 3, from A B C\nA: refcount \u003d 2, from B P\nB: refcount \u003d 2, from A C\nC: refcount \u003d 2, from B P\n\nIf we wanted to remove P, we would just set the |parent_| for A/B/C to nullptr, and P\u0027s refcount would go to 0. A/B/C are all reachable from P via |first_child_| and then via |next_sibling_|.\n\nI think this works, so why not just use Retainable? How does ParentRetainable help make this better? Did I miss something?",
+      "parentUuid": "4fbb1499_3e9affa8",
+      "revId": "566285a5535aeb375d5a4b93b018d3b047dd6d4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05fa7a92_59e6a58a",
         "filename": "core/fxcrt/retain_ptr_unittest.cpp",
         "patchSetId": 5
