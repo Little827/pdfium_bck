@@ -7,6 +7,7 @@
 #ifndef CORE_FXCRT_CFX_DATETIME_H_
 #define CORE_FXCRT_CFX_DATETIME_H_
 
+#include "build/build_config.h"
 #include "core/fxcrt/fx_system.h"
 
 bool FX_IsLeapYear(int32_t iYear);
@@ -91,14 +92,14 @@ class CFX_DateTime {
   uint16_t millisecond_;
 };
 
-#if _FX_OS_ != _FX_OS_ANDROID_
+#if !defined(OS_ANDROID)
 #pragma pack(push, 1)
 #endif
 struct FX_TIMEZONE {
   int8_t tzHour;
   uint8_t tzMinute;
 };
-#if _FX_OS_ != _FX_OS_ANDROID_
+#if !defined(OS_ANDROID)
 #pragma pack(pop)
 #endif
 
