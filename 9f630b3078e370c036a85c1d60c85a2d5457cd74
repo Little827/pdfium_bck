@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c72bdf0_3b7fa72e",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-27T19:09:19Z",
+      "side": 1,
+      "message": "e.g. here.",
+      "range": {
+        "startLine": 2202,
+        "startChar": 18,
+        "endLine": 2202,
+        "endChar": 40
+      },
+      "revId": "9f630b3078e370c036a85c1d60c85a2d5457cd74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
