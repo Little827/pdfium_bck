@@ -707,14 +707,6 @@ WideString CPDF_FormField::GetOptionValue(int index) const {
   return GetOptionText(index, 0);
 }
 
-int CPDF_FormField::FindOption(WideString csOptLabel) const {
-  for (int i = 0; i < CountOptions(); i++) {
-    if (GetOptionValue(i) == csOptLabel)
-      return i;
-  }
-  return -1;
-}
-
 int CPDF_FormField::FindOptionValue(const WideString& csOptValue) const {
   for (int i = 0; i < CountOptions(); i++) {
     if (GetOptionValue(i) == csOptValue)

@@ -439,7 +439,7 @@ void SetValue(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       case FormFieldType::kListBox: {
         bool bModified = false;
         for (const auto& str : strArray) {
-          if (!pFormField->IsItemSelected(pFormField->FindOption(str))) {
+          if (!pFormField->IsItemSelected(pFormField->FindOptionValue(str))) {
             bModified = true;
             break;
           }
@@ -447,7 +447,7 @@ void SetValue(CPDFSDK_FormFillEnvironment* pFormFillEnv,
         if (bModified) {
           pFormField->ClearSelection(NotificationOption::kNotify);
           for (const auto& str : strArray) {
-            int index = pFormField->FindOption(str);
+            int index = pFormField->FindOptionValue(str);
             if (!pFormField->IsItemSelected(index))
               pFormField->SetItemSelection(index, true,
                                            NotificationOption::kNotify);
