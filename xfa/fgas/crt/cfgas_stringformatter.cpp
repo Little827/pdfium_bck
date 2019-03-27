@@ -2187,7 +2187,7 @@ bool CFGAS_StringFormatter::FormatDateTime(const WideString& wsSrcDateTime,
 
   if (eCategory == FX_DATETIMETYPE_Unknown) {
     if (eDateTimeType == FX_DATETIMETYPE_Time)
-      wsTimePattern = std::move(wsDatePattern);
+      wsTimePattern = wsDatePattern;
 
     eCategory = eDateTimeType;
     if (eCategory == FX_DATETIMETYPE_Unknown)
