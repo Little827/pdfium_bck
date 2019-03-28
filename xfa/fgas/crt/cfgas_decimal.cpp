@@ -7,7 +7,6 @@
 #include "xfa/fgas/crt/cfgas_decimal.h"
 
 #include <algorithm>
-#include <limits>
 #include <utility>
 
 #include "core/fxcrt/fx_extension.h"
@@ -252,11 +251,8 @@ CFGAS_Decimal::CFGAS_Decimal(uint32_t lo,
       m_uScale(scale > FXMATH_DECIMAL_SCALELIMIT ? 0 : scale) {}
 
 CFGAS_Decimal::CFGAS_Decimal(int32_t val) {
-  if (val >= 0) {
+  if (val > -1) {
     *this = CFGAS_Decimal(static_cast<uint32_t>(val));
-  } else if (val == std::numeric_limits<int32_t>::min()) {
-    *this = CFGAS_Decimal(static_cast<uint32_t>(val));
-    SetNegate();
   } else {
     *this = CFGAS_Decimal(static_cast<uint32_t>(-val));
     SetNegate();
