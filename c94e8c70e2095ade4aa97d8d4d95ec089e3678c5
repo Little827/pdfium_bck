@@ -16,6 +16,24 @@
       "revId": "c94e8c70e2095ade4aa97d8d4d95ec089e3678c5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7968ce02_e4c2e23a",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:59:44Z",
+      "side": 1,
+      "message": "Converting these all back to FindOption() and removing FindOptionValue() instead.  The name carries less information but at least it is not misleading.",
+      "parentUuid": "7886ebcf_59874c69",
+      "revId": "c94e8c70e2095ade4aa97d8d4d95ec089e3678c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
