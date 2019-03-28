@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "518d5eb0_6f52cd96",
+        "filename": "testing/resources/javascript/listbox_methods.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-28T21:56:38Z",
+      "side": 1,
+      "message": "More of the same, except now more array inputs work.",
+      "revId": "3d5856a73bc2d443a8617fefe904a9b546eb696a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b466c5bd_a8945c5d",
+        "filename": "testing/resources/javascript/listbox_methods.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-28T21:56:38Z",
+      "side": 1,
+      "message": "Not sure how this one works, but it does in Acrobat.",
+      "revId": "3d5856a73bc2d443a8617fefe904a9b546eb696a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd575ffa_701fbf8f",
+        "filename": "testing/resources/javascript/listbox_methods.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-28T21:56:38Z",
+      "side": 1,
+      "message": "And this somehow results in \u0027foo\u0027",
+      "revId": "3d5856a73bc2d443a8617fefe904a9b546eb696a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
