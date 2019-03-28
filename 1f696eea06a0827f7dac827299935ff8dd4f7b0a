@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "02c97d51_bd2a26c5",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "We\u0027re probably ok here so long as its a falsy value.",
+      "parentUuid": "5894d110_41d9a2e3",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54e3a91c_ee6b6e1d",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f849723_b098d6c6",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "Fascinating. Not sure if there are any order guarantees here ...",
+      "parentUuid": "54e3a91c_ee6b6e1d",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ce611b45_c894b8b3",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "Lack of sophistication in our .toString() method means we call everything \"Object\"",
+      "parentUuid": "0bfdf746_be8579f4",
+      "range": {
+        "startLine": 10,
+        "startChar": 70,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0031384f_c7b3708c",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50e85f1_fb973fad",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "we probably don\u0027t want to do that ... :)",
+      "parentUuid": "0031384f_c7b3708c",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "e465ab84_5c8797c3",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "Probably a mismatch with object type. I think we\u0027re OK with being more permissive.",
+      "parentUuid": "82f72a8e_4e6cca5f",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e83d992c_3eb7ada3",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -107,6 +203,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c79c7272_a09b40e0",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "e83d992c_3eb7ada3",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "195ddd8a_309d876a",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "same.",
+      "parentUuid": "cc591bb5_3ce72506",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1be0fa46_b4fa036c",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -141,6 +273,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48253613_13eadef2",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "Moved to \"always succeeds\" section",
+      "parentUuid": "1be0fa46_b4fa036c",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "03df9ed1_ce419003",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "06908a4c_a75773a6",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffcb7921_2ced9433",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -175,6 +343,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c89af9_9c4d77f1",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "Probably OK to be more permissive since we don\u0027t actually use the argument, just return success always.",
+      "parentUuid": "ffcb7921_2ced9433",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -195,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "b2169940_b5cd21e9",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "same.",
+      "parentUuid": "313be8ba_efab3307",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dde99cf_a7ac293b",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -209,6 +413,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39c7dfd_6817e148",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "9dde99cf_a7ac293b",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -229,6 +451,24 @@
     },
     {
       "key": {
+        "uuid": "7a200df5_dcab446d",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "We choose not support, regardless of arguments.",
+      "parentUuid": "fcdf87dc_8b8d2900",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93aa42c0_a009b3e8",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -243,6 +483,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8181ba63_bea613f5",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "ditto/",
+      "parentUuid": "93aa42c0_a009b3e8",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +521,24 @@
     },
     {
       "key": {
+        "uuid": "3522a513_cbbc3d55",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "0670026c_31080be1",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "564d7009_f797210a",
         "filename": "testing/resources/javascript/field_methods_expected.txt",
         "patchSetId": 2
@@ -277,6 +553,24 @@
       "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6526e478_aa7af19c",
+        "filename": "testing/resources/javascript/field_methods_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-28T18:34:16Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "564d7009_f797210a",
+      "revId": "1f696eea06a0827f7dac827299935ff8dd4f7b0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
