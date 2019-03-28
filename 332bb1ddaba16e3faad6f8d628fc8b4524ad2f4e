@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3236eb06_cc97e8c4",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-28T15:44:52Z",
+      "side": 1,
+      "message": "Surrounding code follows camelCase for variable names.",
+      "range": {
+        "startLine": 89,
+        "startChar": 35,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "332bb1ddaba16e3faad6f8d628fc8b4524ad2f4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab918165_3a64f35a",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-28T15:44:52Z",
+      "side": 1,
+      "message": "GetModuleHandle may return null if the module was already not loaded. What\u0027s the behavior of GetProcAddress in such case?",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 44
+      },
+      "revId": "332bb1ddaba16e3faad6f8d628fc8b4524ad2f4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cac58a6_f253d7ab",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-28T15:44:52Z",
+      "side": 1,
+      "message": "This looks to be inverse of \u0027enabled\u0027/\u0027avilable\u0027 check.",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "332bb1ddaba16e3faad6f8d628fc8b4524ad2f4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
