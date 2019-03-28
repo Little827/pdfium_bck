@@ -81,12 +81,28 @@ bool GetSubFontName(ByteString* name) {
 }
 
 bool IsGDIEnabled() {
-  // If GDI is disabled then GetDC for the desktop will fail.
-  HDC hdc = ::GetDC(nullptr);
-  if (!hdc)
-    return false;
-  ::ReleaseDC(nullptr, hdc);
-  return true;
+  static auto is_gdi32_available = []() {
+    // If win32k syscalls aren't disabled, then gdi32 are available.
+
+    typedef decltype(
+        GetProcessMitigationPolicy)* GetProcessMitigationPolicyType;
+    GetProcessMitigationPolicyType get_process_mitigation_policy_func =
+        reinterpret_cast<GetProcessMitigationPolicyType>(GetProcAddress(
+            GetModuleHandle(L"kernel32.dll"), "GetProcessMitigationPolicy"));
+
+    if (!get_process_mitigation_policy_func)
+      return true;
+
+    PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY policy = {};
+    if (get_process_mitigation_policy_func(GetCurrentProcess(),
+                                           ProcessSystemCallDisablePolicy,
+                                           &policy, sizeof(policy))) {
+      return policy.DisallowWin32kSystemCalls == 0;
+    }
+
+    return true;
+  }();
+  return is_gdi32_available;
 }
 
 HPEN CreateExtPen(const CFX_GraphStateData* pGraphState,
