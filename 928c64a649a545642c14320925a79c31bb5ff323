@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b654bb07_c3b159aa",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T03:04:55Z",
+      "side": 1,
+      "message": "I guess somewhere there is a magic rule that implicitly make this work. We are ever so slowly trying to move away from that. So if you want to do:\n\nif (is_win) {\n  sources +\u003d [\n    ...\n  ]\n}\n\nthat would be great.",
+      "parentUuid": "c883815f_623a0abb",
+      "revId": "928c64a649a545642c14320925a79c31bb5ff323",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5309340f_d9aa09df",
         "filename": "third_party/base/win/win_util.h",
         "patchSetId": 2
