@@ -633,6 +633,8 @@ jumbo_source_set("pdfium_base") {
     "base/stl_util.h",
     "base/sys_byteorder.h",
     "base/template_util.h",
+    "base/win/win_util.cc",
+    "base/win/win_util.h",
   ]
 }
 
