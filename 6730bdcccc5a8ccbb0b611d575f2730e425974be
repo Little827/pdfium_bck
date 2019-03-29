@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b5a8cd1_50e2efcc",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T22:56:36Z",
+      "side": 1,
+      "message": "Why is there a \"4 + \" in front?",
+      "revId": "6730bdcccc5a8ccbb0b611d575f2730e425974be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8109cc_bfb88348",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T22:56:36Z",
+      "side": 1,
+      "message": "Does |buffer| also need to outlive |pImageFileRead|? Maybe it needs a comment as well?",
+      "revId": "6730bdcccc5a8ccbb0b611d575f2730e425974be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
