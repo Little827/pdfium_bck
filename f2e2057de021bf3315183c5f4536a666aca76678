@@ -16,6 +16,24 @@
       "revId": "f2e2057de021bf3315183c5f4536a666aca76678",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35f793f_6bd5a9bd",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-29T23:07:35Z",
+      "side": 0,
+      "message": "Nope, just more costly than required. Especially since we can now avoid allocation space impact for the non-base64 chars we silently remove.",
+      "parentUuid": "edd34935_195c887a",
+      "revId": "f2e2057de021bf3315183c5f4536a666aca76678",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18537438_9bea6051",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-29T23:07:35Z",
+      "side": 1,
+      "message": "Truncation in divisions, say \"1\u003d\u003d\" / 4  is 0, but produces at least one byte of output.  Probably 3+ is sufficient but is an expensive copy at end to get wrong and need to resize.\n\nI\u0027ve put in the \"precise\" calculation with upward rounding.",
+      "parentUuid": "0b5a8cd1_50e2efcc",
+      "revId": "6730bdcccc5a8ccbb0b611d575f2730e425974be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc8109cc_bfb88348",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-29T22:56:36Z",
       "side": 1,
       "message": "Does |buffer| also need to outlive |pImageFileRead|? Maybe it needs a comment as well?",
+      "revId": "6730bdcccc5a8ccbb0b611d575f2730e425974be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7afd263_85691668",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-29T23:07:35Z",
+      "side": 1,
+      "message": "yep.",
+      "parentUuid": "fc8109cc_bfb88348",
       "revId": "6730bdcccc5a8ccbb0b611d575f2730e425974be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
