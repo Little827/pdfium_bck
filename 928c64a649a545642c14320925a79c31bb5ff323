@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c883815f_623a0abb",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T02:55:18Z",
+      "side": 1,
+      "message": "Let\u0027s see if the non-Windows bots will like this...",
+      "revId": "928c64a649a545642c14320925a79c31bb5ff323",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5309340f_d9aa09df",
+        "filename": "third_party/base/win/win_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T02:55:18Z",
+      "side": 1,
+      "message": "Update. \"git cl lint\" should tell you what the right header guard its.",
+      "revId": "928c64a649a545642c14320925a79c31bb5ff323",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "719a08ea_6cdb3776",
+        "filename": "third_party/base/win/win_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T02:55:18Z",
+      "side": 1,
+      "message": "Can this be pdfium::base::win::IsUser32AndGdi32Available() ? A bit long, but it matches what we have been doing with other third_party/base/ namespaces.",
+      "revId": "928c64a649a545642c14320925a79c31bb5ff323",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
