@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0200b6c_46e3fd2d",
+        "filename": "xfa/fxfa/parser/cxfa_measurement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T20:33:53Z",
+      "side": 1,
+      "message": "Maybe just merge with the next line?",
+      "revId": "d7cb443ce41ef673d60b20cc69907cc892d69686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
