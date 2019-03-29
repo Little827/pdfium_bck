@@ -16,6 +16,24 @@
       "revId": "d7cb443ce41ef673d60b20cc69907cc892d69686",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066fbbf0_db4fc162",
+        "filename": "xfa/fxfa/parser/cxfa_measurement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-03-29T20:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0200b6c_46e3fd2d",
+      "revId": "d7cb443ce41ef673d60b20cc69907cc892d69686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
