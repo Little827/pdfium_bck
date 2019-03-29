@@ -381,59 +381,59 @@ constexpr uint8_t g_inv_base64[128] = {
     49,  50,  51,  255, 255, 255, 255, 255,
 };
 
-uint8_t* XFA_RemoveBase64Whitespace(pdfium::span<const uint8_t> spStr) {
-  uint8_t* pCP = FX_Alloc(uint8_t, spStr.size() + 1);
-  size_t j = 0;
-  for (size_t i = 0; i < spStr.size(); ++i) {
-    if ((spStr[i] & 128) == 0 &&
-        (g_inv_base64[spStr[i]] != 0xFF || spStr[i] == '=')) {
-      pCP[j++] = spStr[i];
-    }
-  }
-  pCP[j] = '\0';
-  return pCP;
+inline uint8_t GetInvBase64(uint8_t x) {
+  return (x & 128) == 0 ? g_inv_base64[x] : 0xff;
 }
 
-int32_t XFA_Base64Decode(const char* pStr, uint8_t* pOutBuffer) {
-  if (!pStr)
+std::vector<uint8_t> XFA_RemoveBase64Whitespace(
+    pdfium::span<const uint8_t> spStr) {
+  std::vector<uint8_t> result;
+  result.reserve(spStr.size());
+  for (size_t i = 0; i < spStr.size(); ++i) {
+    if (GetInvBase64(spStr[i]) != 0xFF || spStr[i] == '=')
+      result.push_back(spStr[i]);
+  }
+  return result;
+}
+
+int32_t XFA_Base64Decode(const ByteString& bsStr, uint8_t* pOutBuffer) {
+  if (bsStr.IsEmpty())
     return 0;
 
-  uint8_t* pBuffer = XFA_RemoveBase64Whitespace(
-      {reinterpret_cast<const uint8_t*>(pStr), strlen(pStr)});
-  int32_t iLen = strlen((char*)pBuffer);
-  int32_t i = 0, j = 0;
+  std::vector<uint8_t> buffer = XFA_RemoveBase64Whitespace(bsStr.AsRawSpan());
+
+  int32_t j = 0;
   uint32_t dwLimb = 0;
-  for (; i + 3 < iLen; i += 4) {
-    if (pBuffer[i] == '=' || pBuffer[i + 1] == '=' || pBuffer[i + 2] == '=' ||
-        pBuffer[i + 3] == '=') {
-      if (pBuffer[i] == '=' || pBuffer[i + 1] == '=') {
+  for (size_t i = 0; i + 3 < buffer.size(); i += 4) {
+    if (buffer[i] == '=' || buffer[i + 1] == '=' || buffer[i + 2] == '=' ||
+        buffer[i + 3] == '=') {
+      if (buffer[i] == '=' || buffer[i + 1] == '=') {
         break;
       }
-      if (pBuffer[i + 2] == '=') {
-        dwLimb = ((uint32_t)g_inv_base64[pBuffer[i]] << 6) |
-                 ((uint32_t)g_inv_base64[pBuffer[i + 1]]);
+      if (buffer[i + 2] == '=') {
+        dwLimb = ((uint32_t)g_inv_base64[buffer[i]] << 6) |
+                 ((uint32_t)g_inv_base64[buffer[i + 1]]);
         pOutBuffer[j] = (uint8_t)(dwLimb >> 4) & 0xFF;
         j++;
       } else {
-        dwLimb = ((uint32_t)g_inv_base64[pBuffer[i]] << 12) |
-                 ((uint32_t)g_inv_base64[pBuffer[i + 1]] << 6) |
-                 ((uint32_t)g_inv_base64[pBuffer[i + 2]]);
+        dwLimb = ((uint32_t)g_inv_base64[buffer[i]] << 12) |
+                 ((uint32_t)g_inv_base64[buffer[i + 1]] << 6) |
+                 ((uint32_t)g_inv_base64[buffer[i + 2]]);
         pOutBuffer[j] = (uint8_t)(dwLimb >> 10) & 0xFF;
         pOutBuffer[j + 1] = (uint8_t)(dwLimb >> 2) & 0xFF;
         j += 2;
       }
     } else {
-      dwLimb = ((uint32_t)g_inv_base64[pBuffer[i]] << 18) |
-               ((uint32_t)g_inv_base64[pBuffer[i + 1]] << 12) |
-               ((uint32_t)g_inv_base64[pBuffer[i + 2]] << 6) |
-               ((uint32_t)g_inv_base64[pBuffer[i + 3]]);
+      dwLimb = ((uint32_t)g_inv_base64[buffer[i]] << 18) |
+               ((uint32_t)g_inv_base64[buffer[i + 1]] << 12) |
+               ((uint32_t)g_inv_base64[buffer[i + 2]] << 6) |
+               ((uint32_t)g_inv_base64[buffer[i + 3]]);
       pOutBuffer[j] = (uint8_t)(dwLimb >> 16) & 0xff;
       pOutBuffer[j + 1] = (uint8_t)(dwLimb >> 8) & 0xff;
       pOutBuffer[j + 2] = (uint8_t)(dwLimb)&0xff;
       j += 3;
     }
   }
-  FX_Free(pBuffer);
   return j;
 }
 
@@ -484,7 +484,7 @@ RetainPtr<CFX_DIBitmap> XFA_LoadImageData(CXFA_FFDoc* pDoc,
     if (iEncoding == XFA_AttributeValue::Base64) {
       bsData = wsImage.ToUTF8();
       buffer.resize(bsData.GetLength());
-      int32_t iRead = XFA_Base64Decode(bsData.c_str(), buffer.data());
+      int32_t iRead = XFA_Base64Decode(bsData, buffer.data());
       if (iRead > 0) {
         pImageFileRead = pdfium::MakeRetain<CFX_ReadOnlyMemoryStream>(
             pdfium::make_span(buffer.data(), iRead));
