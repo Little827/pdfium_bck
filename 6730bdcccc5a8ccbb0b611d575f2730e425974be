@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "22608cd1_54465f86",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T23:27:27Z",
+      "side": 1,
+      "message": "The loop looks like at most 3 push_backs for 4 bytes of input., so I think just 3 * (buffer.size() / 4) is sufficient, since if buffer.size() \u003c 4, we won\u0027t even go through the for loop.",
+      "parentUuid": "18537438_9bea6051",
+      "revId": "6730bdcccc5a8ccbb0b611d575f2730e425974be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc8109cc_bfb88348",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 4
