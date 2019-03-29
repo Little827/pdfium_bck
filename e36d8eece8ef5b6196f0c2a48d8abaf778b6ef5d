@@ -87,6 +87,24 @@
       "revId": "e36d8eece8ef5b6196f0c2a48d8abaf778b6ef5d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e409e14_cda0bbb6",
+        "filename": "third_party/base/win/win_util.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7447
+      },
+      "writtenOn": "2019-03-29T18:54:03Z",
+      "side": 1,
+      "message": "yes this is fine. It\u0027s just an optimization on win7 to avoid having to fail the GetProcAddress call, but we already deal with that path by returning \u0027true\u0027 on L24. lgtm.",
+      "parentUuid": "8b110832_2c5eb9e5",
+      "revId": "e36d8eece8ef5b6196f0c2a48d8abaf778b6ef5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
