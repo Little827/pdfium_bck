@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "466296da_b6ee926e",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T22:11:44Z",
+      "side": 1,
+      "message": "Maybe replace 0xff and 0xFF below with 255, to be consistent with |g_inv_base64| ?",
+      "range": {
+        "startLine": 385,
+        "startChar": 44,
+        "endLine": 385,
+        "endChar": 48
+      },
+      "revId": "f7994a3afe196dff25e1d60432a248e240dc4174",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b3ba94_6c9d7443",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T22:11:44Z",
+      "side": 1,
+      "message": "Does a range-based for-loop work here?",
+      "revId": "f7994a3afe196dff25e1d60432a248e240dc4174",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698205f7_cb3249be",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T22:11:44Z",
+      "side": 1,
+      "message": "Just return std::vector\u003cuint8_t\u003e instead?",
+      "range": {
+        "startLine": 399,
+        "startChar": 50,
+        "endLine": 399,
+        "endChar": 69
+      },
+      "revId": "f7994a3afe196dff25e1d60432a248e240dc4174",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909486be_cd05e3d7",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-03-29T22:11:44Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 405,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 9
+      },
+      "revId": "f7994a3afe196dff25e1d60432a248e240dc4174",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
