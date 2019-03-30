@@ -40,6 +40,7 @@
 #include "third_party/skia/include/core/SkRSXform.h"
 #include "third_party/skia/include/core/SkShader.h"
 #include "third_party/skia/include/core/SkStream.h"
+#include "third_party/skia/include/core/SkTextBlob.h"
 #include "third_party/skia/include/core/SkTypeface.h"
 #include "third_party/skia/include/effects/SkDashPathEffect.h"
 #include "third_party/skia/include/effects/SkGradientShader.h"
@@ -907,8 +908,11 @@ class SkiaState {
     skPaint.setTextEncoding(kGlyphID_SkTextEncoding);
     skPaint.setHinting(kNo_SkFontHinting);
     skPaint.setTextScaleX(m_scaleX);
-    skPaint.setTextSize(SkTAbs(m_fontSize));
     skPaint.setSubpixelText(true);
+
+    SkFont font;
+    font.setSize(SkTAbs(m_fontSize));
+
     SkCanvas* skCanvas = m_pDriver->SkiaCanvas();
     skCanvas->save();
     SkScalar flip = m_fontSize < 0 ? -1 : 1;
@@ -925,13 +929,19 @@ class SkiaState {
       printf("%lc", m_glyphs[i]);
     printf("\n");
 #endif
+
+    sk_sp<SkTextBlob> blob;
     if (m_rsxform.count()) {
-      skCanvas->drawTextRSXform(m_glyphs.begin(), m_glyphs.bytes(),
-                                m_rsxform.begin(), nullptr, skPaint);
+      blob = SkTextBlob::MakeFromRSXform(m_glyphs.begin(), m_glyphs.bytes(),
+                                         m_rsxform.begin(), font,
+                                         kGlyphID_SkTextEncoding);
     } else {
-      skCanvas->drawPosText(m_glyphs.begin(), m_glyphs.bytes(),
-                            m_positions.begin(), skPaint);
+      blob = SkTextBlob::MakeFromPosText(m_glyphs.begin(), m_glyphs.bytes(),
+                                         m_positions.begin(), font,
+                                         kGlyphID_SkTextEncoding);
     }
+    skCanvas->drawTextBlob(blob, 0, 0, skPaint);
+
     skCanvas->restore();
     m_drawIndex = INT_MAX;
     m_type = Accumulator::kNone;
@@ -1556,7 +1566,6 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
   paint.setTypeface(typeface);
   paint.setTextEncoding(kGlyphID_SkTextEncoding);
   paint.setHinting(kNo_SkFontHinting);
-  paint.setTextSize(SkTAbs(font_size));
   paint.setSubpixelText(true);
   m_pCanvas->save();
   SkScalar flip = font_size < 0 ? -1 : 1;
@@ -1618,8 +1627,12 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
         rsxform->fTy = positions[index].fY;
       }
     }
-    m_pCanvas->drawTextRSXform(glyphs.begin(), nChars * 2, xforms.begin(),
-                               nullptr, paint);
+    SkFont font;
+    font.setSize(SkTAbs(font_size));
+    m_pCanvas->drawTextBlob(
+        SkTextBlob::MakeFromRSXform(glyphs.begin(), nChars * 2, xforms.begin(),
+                                    font, kGlyphID_SkTextEncoding),
+        0, 0, paint);
   } else if (oneAtATime) {
     for (int index = 0; index < nChars; ++index) {
       const TextCharPos& cp = pCharPos[index];
@@ -1649,8 +1662,12 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
       }
     }
   } else {
-    m_pCanvas->drawPosText(glyphs.begin(), nChars * 2, positions.begin(),
-                           paint);
+    SkFont font;
+    font.setSize(SkTAbs(font_size));
+    m_pCanvas->drawTextBlob(SkTextBlob::MakeFromPosText(
+                                glyphs.begin(), nChars * 2, positions.begin(),
+                                font, kGlyphID_SkTextEncoding),
+                            0, 0, paint);
   }
   m_pCanvas->restore();
 
