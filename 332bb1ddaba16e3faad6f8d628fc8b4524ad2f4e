@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "727a8f97_bd74f552",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-30T04:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd96e717_9a563f9d",
+      "range": {
+        "startLine": 89,
+        "startChar": 35,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "332bb1ddaba16e3faad6f8d628fc8b4524ad2f4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab918165_3a64f35a",
         "filename": "core/fxge/win32/fx_win32_device.cpp",
         "patchSetId": 1
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "6d560226_bf5f5b5b",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-30T04:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01fad71f_13dc78cf",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 44
+      },
+      "revId": "332bb1ddaba16e3faad6f8d628fc8b4524ad2f4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cac58a6_f253d7ab",
         "filename": "core/fxge/win32/fx_win32_device.cpp",
         "patchSetId": 1
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "If win32k lockdown is not available (i.e. Win7), then gdi32 is simply available. The Chromium version of this code has a Windows version check but since pdfium doesn\u0027t have any of those I\u0027m letting it fallthrough to this.",
       "parentUuid": "1cac58a6_f253d7ab",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "332bb1ddaba16e3faad6f8d628fc8b4524ad2f4e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "322934b2_01899b55",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-03-30T04:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e588dd6_999790e5",
       "range": {
         "startLine": 94,
         "startChar": 13,
