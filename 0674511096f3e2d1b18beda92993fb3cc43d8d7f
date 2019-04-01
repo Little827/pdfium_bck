@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "412373ab_20301a84",
+        "filename": "testing/resources/javascript/field.fragment",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-01T20:27:29Z",
+      "side": 1,
+      "message": "This is a push button.",
+      "range": {
+        "startLine": 62,
+        "startChar": 6,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "0674511096f3e2d1b18beda92993fb3cc43d8d7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7374b41d_21897968",
+        "filename": "testing/resources/javascript/field.fragment",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-01T20:27:29Z",
+      "side": 1,
+      "message": "This is a checkbox.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 14
+      },
+      "revId": "0674511096f3e2d1b18beda92993fb3cc43d8d7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
