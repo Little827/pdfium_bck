@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f5192816_995491a2",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-01T19:07:24Z",
+      "side": 1,
+      "message": "Done. Used  \u003d {} initializer form.",
+      "parentUuid": "33d9c8f6_882c363d",
+      "revId": "e2a9f88f043515d89820785ffb42fc101044faa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a37b0669_cbc3c027",
         "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "e2a9f88f043515d89820785ffb42fc101044faa8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bdb702_86b0e41c",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-01T19:07:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a37b0669_cbc3c027",
+      "revId": "e2a9f88f043515d89820785ffb42fc101044faa8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
