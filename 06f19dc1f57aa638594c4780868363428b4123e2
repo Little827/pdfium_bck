@@ -17,6 +17,24 @@
       "revId": "06f19dc1f57aa638594c4780868363428b4123e2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f4b9ed4_0b94cb29",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-01T23:25:03Z",
+      "side": 1,
+      "message": "You mean the \"gn_version\" line, right? Will do.",
+      "parentUuid": "d7b38f26_a21f5adb",
+      "revId": "06f19dc1f57aa638594c4780868363428b4123e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
