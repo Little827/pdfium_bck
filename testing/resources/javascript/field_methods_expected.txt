@@ -1,8 +1,9 @@
 Alert: field is MyField
 Alert: no_value is MyField.MyNoValue
 Alert: nonesuch is undefined
-Alert: found 4 sub-fields:
+Alert: found 5 sub-fields:
 Alert: MyField.MyButton
+Alert: MyField.MyMultiSelect
 Alert: MyField.MyNoValue
 Alert: MyField.MyRadio
 Alert: MyField.MyText
