@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e060c6ac_d7e5caf4",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-02T23:23:22Z",
+      "side": 1,
+      "message": "wcsnicmp will stop at a trailing 0. My presumption was buffer had one so that we are safe so long as the starting index is in bounds. see line 94.",
+      "parentUuid": "79f73f2f_df3b3df3",
+      "revId": "bd66eacd64633ac28af12e3d794aa708b20d0b55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b41fcd8_8c071e97",
         "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
         "patchSetId": 4
