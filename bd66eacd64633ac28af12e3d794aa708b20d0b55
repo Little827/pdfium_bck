@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79f73f2f_df3b3df3",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-02T23:15:58Z",
+      "side": 1,
+      "message": "Is it helpful to have subspan(current_buffer_idx, 2) here and subspan(current_buffer_idx, 7) below?",
+      "revId": "bd66eacd64633ac28af12e3d794aa708b20d0b55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b41fcd8_8c071e97",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-02T23:15:58Z",
+      "side": 1,
+      "message": "Similarly, subspan(current_buffer_idx, 3) here and below.",
+      "revId": "bd66eacd64633ac28af12e3d794aa708b20d0b55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
