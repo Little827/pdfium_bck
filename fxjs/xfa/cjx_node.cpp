@@ -183,9 +183,8 @@ CJS_Result CJX_Node::clone(CFX_V8* runtime,
 
   CXFA_Node* pCloneNode = GetXFANode()->Clone(runtime->ToBoolean(params[0]));
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pCloneNode);
-  if (!value)
-    return CJS_Result::Success(runtime->NewNull());
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+          pCloneNode);
 
   return CJS_Result::Success(
       value->DirectGetValue().Get(runtime->GetIsolate()));
@@ -219,7 +218,7 @@ CJS_Result CJX_Node::getElement(
     return CJS_Result::Success(runtime->NewNull());
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNode);
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pNode);
   if (!value)
     return CJS_Result::Success(runtime->NewNull());
 
@@ -470,7 +469,7 @@ void CJX_Node::model(CFXJSE_Value* pValue,
     ThrowInvalidPropertyException();
     return;
   }
-  pValue->Assign(GetDocument()->GetScriptContext()->GetJSValueFromMap(
+  pValue->Assign(GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
       GetXFANode()->GetModelNode()));
 }
 
@@ -509,8 +508,9 @@ void CJX_Node::oneOfChild(CFXJSE_Value* pValue,
   std::vector<CXFA_Node*> properties = GetXFANode()->GetNodeList(
       XFA_NODEFILTER_OneOfProperty, XFA_Element::Unknown);
   if (!properties.empty()) {
-    pValue->Assign(GetDocument()->GetScriptContext()->GetJSValueFromMap(
-        properties.front()));
+    pValue->Assign(
+        GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+            properties.front()));
   }
 }
 

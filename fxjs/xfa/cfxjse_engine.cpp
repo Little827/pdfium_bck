@@ -144,7 +144,8 @@ bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
   AutoRestorer<UnownedPtr<CXFA_Object>> nodeRestorer(&m_pThisObject);
   m_pThisObject = pThisObject;
 
-  CFXJSE_Value* pValue = pThisObject ? GetJSValueFromMap(pThisObject) : nullptr;
+  CFXJSE_Value* pValue =
+      pThisObject ? GetOrCreateJSBindingFromMap(pThisObject) : nullptr;
   IJS_Runtime::ScopedEventContext ctx(m_pSubordinateRuntime.Get());
   return m_JsContext->ExecuteScript(btScript.c_str(), hRetValue, pValue);
 }
@@ -161,7 +162,8 @@ bool CFXJSE_Engine::QueryNodeByFlag(CXFA_Node* refNode,
   if (!ResolveObjects(refNode, propname, &resolveRs, dwFlag, nullptr))
     return false;
   if (resolveRs.dwFlags == XFA_ResolveNode_RSType_Nodes) {
-    pValue->Assign(GetJSValueFromMap(resolveRs.objects.front().Get()));
+    pValue->Assign(
+        GetOrCreateJSBindingFromMap(resolveRs.objects.front().Get()));
     return true;
   }
   if (resolveRs.dwFlags == XFA_ResolveNode_RSType_Attribute &&
@@ -228,7 +230,7 @@ void CFXJSE_Engine::GlobalPropertyGetter(CFXJSE_Value* pObject,
       CXFA_Object* pObj =
           lpScriptContext->GetDocument()->GetXFAObject(uHashCode);
       if (pObj) {
-        pValue->Assign(lpScriptContext->GetJSValueFromMap(pObj));
+        pValue->Assign(lpScriptContext->GetOrCreateJSBindingFromMap(pObj));
         return;
       }
     }
@@ -302,7 +304,7 @@ void CFXJSE_Engine::NormalPropertyGetter(CFXJSE_Value* pOriginalValue,
   CXFA_Object* pObject =
       lpScriptContext->GetVariablesThis(pOriginalObject, false);
   if (wsPropName.EqualsASCII("xfa")) {
-    CFXJSE_Value* pValue = lpScriptContext->GetJSValueFromMap(
+    CFXJSE_Value* pValue = lpScriptContext->GetOrCreateJSBindingFromMap(
         lpScriptContext->GetDocument()->GetRoot());
     pReturnValue->Assign(pValue);
     return;
@@ -739,9 +741,7 @@ void CFXJSE_Engine::AddToCacheList(std::unique_ptr<CXFA_List> pList) {
   m_CacheList.push_back(std::move(pList));
 }
 
-CFXJSE_Value* CFXJSE_Engine::GetJSValueFromMap(CXFA_Object* pObject) {
-  if (!pObject)
-    return nullptr;
+CFXJSE_Value* CFXJSE_Engine::GetOrCreateJSBindingFromMap(CXFA_Object* pObject) {
   if (pObject->IsNode())
     RunVariablesScript(pObject->AsNode());
 
@@ -750,11 +750,20 @@ CFXJSE_Value* CFXJSE_Engine::GetJSValueFromMap(CXFA_Object* pObject) {
     return iter->second.get();
 
   auto jsValue = pdfium::MakeUnique<CFXJSE_Value>(GetIsolate());
-  jsValue->SetObject(pObject, m_pJsClass.Get());
+  jsValue->SetHostObject(pObject, m_pJsClass.Get());
 
   CFXJSE_Value* pValue = jsValue.get();
   m_mapObjectToValue.insert(std::make_pair(pObject, std::move(jsValue)));
   return pValue;
+}
+
+void CFXJSE_Engine::RemoveJSBindingFromMap(CXFA_Object* pObject) {
+  auto iter = m_mapObjectToValue.find(pObject);
+  if (iter == m_mapObjectToValue.end())
+    return;
+
+  iter->second->ClearHostObject();
+  m_mapObjectToValue.erase(iter);
 }
 
 void CFXJSE_Engine::SetNodesOfRunScript(std::vector<CXFA_Node*>* pArray) {
