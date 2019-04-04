@@ -58,7 +58,7 @@ CJS_Result CJX_Tree::resolveNode(
   if (resolveNodeRS.dwFlags == XFA_ResolveNode_RSType_Nodes) {
     CXFA_Object* pObject = resolveNodeRS.objects.front().Get();
     CFXJSE_Value* value =
-        GetDocument()->GetScriptContext()->GetJSValueFromMap(pObject);
+        GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pObject);
     if (!value)
       return CJS_Result::Success(runtime->NewNull());
 
@@ -139,7 +139,7 @@ void CJX_Tree::nodes(CFXJSE_Value* pValue,
   CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
   CXFA_AttachNodeList* pNodeList =
       new CXFA_AttachNodeList(GetDocument(), ToNode(GetXFAObject()));
-  pValue->SetObject(pNodeList, pScriptContext->GetJseNormalClass());
+  pValue->SetHostObject(pNodeList, pScriptContext->GetJseNormalClass());
 }
 
 void CJX_Tree::parent(CFXJSE_Value* pValue,
@@ -156,7 +156,8 @@ void CJX_Tree::parent(CFXJSE_Value* pValue,
     return;
   }
 
-  pValue->Assign(GetDocument()->GetScriptContext()->GetJSValueFromMap(pParent));
+  pValue->Assign(
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pParent));
 }
 
 void CJX_Tree::index(CFXJSE_Value* pValue,
@@ -230,5 +231,5 @@ void CJX_Tree::ResolveNodeList(CFXJSE_Value* pValue,
       }
     }
   }
-  pValue->SetObject(pNodeList, pScriptContext->GetJseNormalClass());
+  pValue->SetHostObject(pNodeList, pScriptContext->GetJseNormalClass());
 }
