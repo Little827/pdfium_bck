@@ -61,6 +61,7 @@ class CXFA_Document final : public CXFA_NodeOwner {
 
   CFXJSE_Engine* InitScriptContext(CJS_Runtime* fxjs_runtime);
   CFXJSE_Engine* GetScriptContext() const;
+  bool HasScriptContext() const { return !!m_pScriptContext; }
 
   CXFA_FFNotify* GetNotify() const { return notify_.Get(); }
   CXFA_LocaleMgr* GetLocaleMgr();
