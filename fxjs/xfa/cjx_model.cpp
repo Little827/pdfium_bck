@@ -67,7 +67,7 @@ CJS_Result CJX_Model::createNode(
   }
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNewNode);
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pNewNode);
   if (!value)
     return CJS_Result::Success(runtime->NewNull());
 
