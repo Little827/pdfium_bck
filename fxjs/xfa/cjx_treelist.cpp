@@ -44,7 +44,7 @@ CJS_Result CJX_TreeList::namedItem(
     return CJS_Result::Success();
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNode);
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(pNode);
   if (!value)
     return CJS_Result::Success(runtime->NewNull());
 

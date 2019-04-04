@@ -48,7 +48,8 @@ CJS_Result CJX_Form::formNodes(
 
   CXFA_ArrayNodeList* pFormNodes = new CXFA_ArrayNodeList(GetDocument());
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pFormNodes);
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+          pFormNodes);
   if (!value)
     return CJS_Result::Success(runtime->NewNull());
   return CJS_Result::Success(

@@ -250,7 +250,8 @@ CJS_Result CJX_InstanceManager::addInstance(
   }
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNewInstance);
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+          pNewInstance);
   if (!value)
     return CJS_Result::Success(runtime->NewNull());
 
@@ -296,7 +297,8 @@ CJS_Result CJX_InstanceManager::insertInstance(
   }
 
   CFXJSE_Value* value =
-      GetDocument()->GetScriptContext()->GetJSValueFromMap(pNewInstance);
+      GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
+          pNewInstance);
   if (!value)
     return CJS_Result::Success(runtime->NewNull());
 
