@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ddfd15c_6c6a2317",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-05T19:39:08Z",
+      "side": 1,
+      "message": "GetScriptContext() has a comment in the .cpp file as well. Move that here and combine?",
+      "revId": "13a32849cb9f0f691f84c17f7033edf0aaea0ff1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
