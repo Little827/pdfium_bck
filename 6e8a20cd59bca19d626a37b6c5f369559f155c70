@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0f1c140_1af13fd6",
+        "filename": "xfa/fxfa/parser/cxfa_object.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-05T17:33:35Z",
+      "side": 1,
+      "message": "Note: check avoids an assert I\u0027d like to keep.",
+      "range": {
+        "startLine": 34,
+        "startChar": 21,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "6e8a20cd59bca19d626a37b6c5f369559f155c70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
