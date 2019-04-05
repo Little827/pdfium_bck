@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7d83146c_de6647f1",
+        "filename": "fxjs/xfa/cjx_form.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-05T19:35:05Z",
+      "side": 1,
+      "message": "Yeah, we don\u0027t have a good way of having one of our objects owned entirely by V8.  This will be leaked should V8 GC its object as we have no good way to clean this up. Deferring.",
+      "parentUuid": "15af0fe7_24c67601",
+      "revId": "a1704d28227e49e2971b7c8f53a190ab16da7b52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ae7c53d_98b1a888",
         "filename": "fxjs/xfa/cjx_node.cpp",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "a1704d28227e49e2971b7c8f53a190ab16da7b52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc70dcac_a2b60c35",
+        "filename": "fxjs/xfa/cjx_node.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-05T19:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae7c53d_98b1a888",
+      "revId": "a1704d28227e49e2971b7c8f53a190ab16da7b52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "a1704d28227e49e2971b7c8f53a190ab16da7b52",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b1ce8f_49fd1e23",
+        "filename": "xfa/fxfa/parser/cxfa_object.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-05T19:35:05Z",
+      "side": 1,
+      "message": "I introduced this because there are a lot of unchecked calls to GetScriptContext() in the codebase, and in fact, GetScriptContext() has an assert that the context is present. So GetScriptContext()\u0027s implementation is telling us that it is only safe to call in a situation where we know the context must be present, and hence skipping the return check is OK.\n\nOtherwise, if we check the return from one GetScriptContext(), it looks like a bug if we don\u0027t check all of them.  Hence the helper to keep the assert.\n\nI put a comment to this effect in the .h file.",
+      "parentUuid": "94f2b6d0_b2801034",
+      "range": {
+        "startLine": 34,
+        "startChar": 59,
+        "endLine": 34,
+        "endChar": 75
+      },
+      "revId": "a1704d28227e49e2971b7c8f53a190ab16da7b52",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
