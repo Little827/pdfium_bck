@@ -21,14 +21,6 @@
 
 class FPDFAnnotEmbedderTest : public EmbedderTest {};
 
-std::wstring BufferToWString(const std::vector<char>& buf) {
-  return GetPlatformWString(reinterpret_cast<FPDF_WIDESTRING>(buf.data()));
-}
-
-std::string BufferToString(const std::vector<char>& buf) {
-  return GetPlatformString(reinterpret_cast<FPDF_WIDESTRING>(buf.data()));
-}
-
 TEST_F(FPDFAnnotEmbedderTest, BadParams) {
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);
@@ -56,7 +48,7 @@ TEST_F(FPDFAnnotEmbedderTest, BadParams) {
   ScopedFPDFWideString text = GetFPDFWideString(kContents);
   EXPECT_FALSE(FPDFAnnot_SetStringValue(nullptr, "foo", text.get()));
 
-  char buffer[128];
+  FPDF_WCHAR buffer[64];
   EXPECT_EQ(0u, FPDFAnnot_GetStringValue(nullptr, "foo", nullptr, 0));
   EXPECT_EQ(0u, FPDFAnnot_GetStringValue(nullptr, "foo", buffer, 0));
   EXPECT_EQ(0u,
@@ -138,10 +130,11 @@ TEST_F(FPDFAnnotEmbedderTest, ExtractHighlightLongContent) {
               FPDFAnnot_GetValueType(annot.get(), kAuthorKey));
     unsigned long len =
         FPDFAnnot_GetStringValue(annot.get(), kAuthorKey, nullptr, 0);
-    std::vector<char> buf(len);
+    ASSERT_EQ(28u, len);
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(28u, FPDFAnnot_GetStringValue(annot.get(), kAuthorKey, buf.data(),
                                             len));
-    EXPECT_STREQ(L"Jae Hyun Park", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"Jae Hyun Park", GetPlatformWString(buf.data()).c_str());
 
     // Check that the content is correct.
     EXPECT_EQ(
@@ -149,8 +142,8 @@ TEST_F(FPDFAnnotEmbedderTest, ExtractHighlightLongContent) {
         FPDFAnnot_GetValueType(annot.get(), pdfium::annotation::kContents));
     len = FPDFAnnot_GetStringValue(annot.get(), pdfium::annotation::kContents,
                                    nullptr, 0);
-    buf.clear();
-    buf.resize(len);
+    ASSERT_EQ(2690u, len);
+    buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(2690u,
               FPDFAnnot_GetStringValue(
                   annot.get(), pdfium::annotation::kContents, buf.data(), len));
@@ -175,7 +168,7 @@ TEST_F(FPDFAnnotEmbedderTest, ExtractHighlightLongContent) {
         "longLong long longLong long longLong long longLong long longLong long "
         "longLong long longLong long longLong long longLong long longLong long "
         "longLong long long. END";
-    EXPECT_STREQ(kContents, BufferToWString(buf).c_str());
+    EXPECT_STREQ(kContents, GetPlatformWString(buf.data()).c_str());
 
     // Check that the quadpoints are correct.
     FS_QUADPOINTSF quadpoints;
@@ -322,11 +315,12 @@ TEST_F(FPDFAnnotEmbedderTest, AddFirstTextAnnotation) {
     // Check that the content has been set correctly.
     unsigned long len = FPDFAnnot_GetStringValue(
         annot.get(), pdfium::annotation::kContents, nullptr, 0);
-    std::vector<char> buf(len);
+    ASSERT_EQ(74u, len);
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(74u,
               FPDFAnnot_GetStringValue(
                   annot.get(), pdfium::annotation::kContents, buf.data(), len));
-    EXPECT_STREQ(kContents, BufferToWString(buf).c_str());
+    EXPECT_STREQ(kContents, GetPlatformWString(buf.data()).c_str());
   }
   UnloadPage(page);
 }
@@ -1087,21 +1081,23 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetStringValue) {
     EXPECT_EQ(FPDF_OBJECT_NAME, FPDFAnnot_GetValueType(annot.get(), kHashKey));
     unsigned long len =
         FPDFAnnot_GetStringValue(annot.get(), kHashKey, nullptr, 0);
-    std::vector<char> buf(len);
+    ASSERT_EQ(66u, len);
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(66u,
               FPDFAnnot_GetStringValue(annot.get(), kHashKey, buf.data(), len));
     EXPECT_STREQ(L"395fbcb98d558681742f30683a62a2ad",
-                 BufferToWString(buf).c_str());
+                 GetPlatformWString(buf.data()).c_str());
 
     // Check that the string value of the modified date is correct.
     EXPECT_EQ(FPDF_OBJECT_NAME, FPDFAnnot_GetValueType(annot.get(), kHashKey));
     len = FPDFAnnot_GetStringValue(annot.get(), pdfium::annotation::kM, nullptr,
                                    0);
-    buf.clear();
-    buf.resize(len);
+    ASSERT_EQ(44u, len);
+    buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(44u, FPDFAnnot_GetStringValue(annot.get(), pdfium::annotation::kM,
                                             buf.data(), len));
-    EXPECT_STREQ(L"D:201706071721Z00'00'", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"D:201706071721Z00'00'",
+                 GetPlatformWString(buf.data()).c_str());
 
     // Update the date entry for the annotation.
     ScopedFPDFWideString text = GetFPDFWideString(kNewDate);
@@ -1133,11 +1129,12 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetStringValue) {
               FPDFAnnot_GetValueType(new_annot.get(), pdfium::annotation::kM));
     unsigned long len = FPDFAnnot_GetStringValue(
         new_annot.get(), pdfium::annotation::kM, nullptr, 0);
-    std::vector<char> buf(len);
+    ASSERT_EQ(44u, len);
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(44u,
               FPDFAnnot_GetStringValue(new_annot.get(), pdfium::annotation::kM,
                                        buf.data(), len));
-    EXPECT_STREQ(kNewDate, BufferToWString(buf).c_str());
+    EXPECT_STREQ(kNewDate, GetPlatformWString(buf.data()).c_str());
   }
 
   CloseSavedPage(page);
@@ -1191,6 +1188,10 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetAP) {
   ASSERT_TRUE(page);
 
   {
+    static const wchar_t kExpectNormalAPStart[] = L"q Q q 7.442786 w 2 J";
+    static const wchar_t kExpectNormalAPEnd[] = L"c 716.5381 327.7156 l S Q Q";
+    static constexpr size_t kExpectNormalAPLength = 73970;
+
     // Retrieve the first annotation.
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
     ASSERT_TRUE(annot);
@@ -1198,53 +1199,48 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetAP) {
     // Check that the string value of an AP returns the expected length.
     unsigned long normal_len = FPDFAnnot_GetAP(
         annot.get(), FPDF_ANNOT_APPEARANCEMODE_NORMAL, nullptr, 0);
-    EXPECT_EQ(73970u, normal_len);
+    ASSERT_EQ(kExpectNormalAPLength, normal_len);
 
     // Check that the string value of an AP is not returned if the buffer is too
     // small. The result buffer should be overwritten with an empty string.
-    std::vector<char> buf(normal_len - 1);
-    // Write L"z" in the buffer to verify it's not overwritten.
-    wcscpy(reinterpret_cast<wchar_t*>(buf.data()), L"z");
-    EXPECT_EQ(73970u,
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(normal_len);
+    // Write in the buffer to verify it's not overwritten.
+    memcpy(buf.data(), "abcdefgh", 8);
+    EXPECT_EQ(kExpectNormalAPLength,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_NORMAL,
-                              buf.data(), buf.size()));
-    std::string ap = BufferToString(buf);
-    EXPECT_STREQ("z", ap.c_str());
+                              buf.data(), normal_len - 1));
+    EXPECT_EQ(0, memcmp(buf.data(), "abcdefgh", 8));
 
     // Check that the string value of an AP is returned through a buffer that is
     // the right size.
-    buf.clear();
-    buf.resize(normal_len);
-    EXPECT_EQ(73970u,
+    EXPECT_EQ(kExpectNormalAPLength,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_NORMAL,
-                              buf.data(), buf.size()));
-    ap = BufferToString(buf);
-    EXPECT_THAT(ap, testing::StartsWith("q Q q 7.442786 w 2 J"));
-    EXPECT_THAT(ap, testing::EndsWith("c 716.5381 327.7156 l S Q Q"));
+                              buf.data(), normal_len));
+    std::wstring ap = GetPlatformWString(buf.data());
+    EXPECT_THAT(ap, testing::StartsWith(kExpectNormalAPStart));
+    EXPECT_THAT(ap, testing::EndsWith(kExpectNormalAPEnd));
 
     // Check that the string value of an AP is returned through a buffer that is
     // larger than necessary.
-    buf.clear();
-    buf.resize(normal_len + 1);
-    EXPECT_EQ(73970u,
+    buf = GetFPDFWideStringBuffer(normal_len + 2);
+    EXPECT_EQ(kExpectNormalAPLength,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_NORMAL,
-                              buf.data(), buf.size()));
-    ap = BufferToString(buf);
-    EXPECT_THAT(ap, testing::StartsWith("q Q q 7.442786 w 2 J"));
-    EXPECT_THAT(ap, testing::EndsWith("c 716.5381 327.7156 l S Q Q"));
+                              buf.data(), normal_len + 2));
+    ap = GetPlatformWString(buf.data());
+    EXPECT_THAT(ap, testing::StartsWith(kExpectNormalAPStart));
+    EXPECT_THAT(ap, testing::EndsWith(kExpectNormalAPEnd));
 
     // Check that getting an AP for a mode that does not have an AP returns an
     // empty string.
     unsigned long rollover_len = FPDFAnnot_GetAP(
         annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER, nullptr, 0);
-    EXPECT_EQ(2u, rollover_len);
+    ASSERT_EQ(2u, rollover_len);
 
-    buf.clear();
-    buf.resize(1000);
+    buf = GetFPDFWideStringBuffer(1000);
     EXPECT_EQ(2u,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER,
-                              buf.data(), buf.size()));
-    EXPECT_STREQ("", BufferToString(buf).c_str());
+                              buf.data(), 1000));
+    EXPECT_STREQ(L"", GetPlatformWString(buf.data()).c_str());
 
     // Check that setting the AP for an invalid appearance mode fails.
     ScopedFPDFWideString ap_text = GetFPDFWideString(L"new test ap");
@@ -1261,23 +1257,21 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetAP) {
     // Check that the new annotation value is equal to the value we just set.
     rollover_len = FPDFAnnot_GetAP(
         annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER, nullptr, 0);
-    EXPECT_EQ(24u, rollover_len);
-    buf.clear();
-    buf.resize(rollover_len);
+    ASSERT_EQ(24u, rollover_len);
+    buf = GetFPDFWideStringBuffer(rollover_len);
     EXPECT_EQ(24u,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER,
-                              buf.data(), buf.size()));
-    EXPECT_STREQ(L"new test ap", BufferToWString(buf).c_str());
+                              buf.data(), rollover_len));
+    EXPECT_STREQ(L"new test ap", GetPlatformWString(buf.data()).c_str());
 
     // Check that the Normal AP was not touched when the Rollover AP was set.
-    buf.clear();
-    buf.resize(normal_len);
-    EXPECT_EQ(73970u,
+    buf = GetFPDFWideStringBuffer(normal_len);
+    EXPECT_EQ(kExpectNormalAPLength,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_NORMAL,
-                              buf.data(), buf.size()));
-    ap = BufferToString(buf);
-    EXPECT_THAT(ap, testing::StartsWith("q Q q 7.442786 w 2 J"));
-    EXPECT_THAT(ap, testing::EndsWith("c 716.5381 327.7156 l S Q Q"));
+                              buf.data(), normal_len));
+    ap = GetPlatformWString(buf.data());
+    EXPECT_THAT(ap, testing::StartsWith(kExpectNormalAPStart));
+    EXPECT_THAT(ap, testing::EndsWith(kExpectNormalAPEnd));
   }
 
   // Save the modified document, then reopen it.
@@ -1293,12 +1287,12 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetAP) {
     // saving.
     unsigned long rollover_len = FPDFAnnot_GetAP(
         new_annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER, nullptr, 0);
-    EXPECT_EQ(24u, rollover_len);
-    std::vector<char> buf(rollover_len);
+    ASSERT_EQ(24u, rollover_len);
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(rollover_len);
     EXPECT_EQ(24u, FPDFAnnot_GetAP(new_annot.get(),
                                    FPDF_ANNOT_APPEARANCEMODE_ROLLOVER,
-                                   buf.data(), buf.size()));
-    EXPECT_STREQ(L"new test ap", BufferToWString(buf).c_str());
+                                   buf.data(), rollover_len));
+    EXPECT_STREQ(L"new test ap", GetPlatformWString(buf.data()).c_str());
   }
 
   // Close saved document.
@@ -1632,7 +1626,8 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
 
   static const char kTestKey[] = "test";
   static const wchar_t kData[] = L"\xf6\xe4";
-  std::vector<char> buf(12);
+  static const size_t kBufSize = 12;
+  std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(kBufSize);
 
   {
     // Add a text annotation to the page.
@@ -1644,16 +1639,16 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
     // Make sure there is no test key, add set a value there, and read it back.
     std::fill(buf.begin(), buf.end(), 'x');
     ASSERT_EQ(2u, FPDFAnnot_GetStringValue(annot.get(), kTestKey, buf.data(),
-                                           buf.size()));
-    EXPECT_STREQ(L"", BufferToWString(buf).c_str());
+                                           kBufSize));
+    EXPECT_STREQ(L"", GetPlatformWString(buf.data()).c_str());
 
     ScopedFPDFWideString text = GetFPDFWideString(kData);
     EXPECT_TRUE(FPDFAnnot_SetStringValue(annot.get(), kTestKey, text.get()));
 
     std::fill(buf.begin(), buf.end(), 'x');
     ASSERT_EQ(6u, FPDFAnnot_GetStringValue(annot.get(), kTestKey, buf.data(),
-                                           buf.size()));
-    EXPECT_STREQ(kData, BufferToWString(buf).c_str());
+                                           kBufSize));
+    EXPECT_STREQ(kData, GetPlatformWString(buf.data()).c_str());
   }
 
   {
@@ -1665,8 +1660,8 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
     std::fill(buf.begin(), buf.end(), 'x');
     ASSERT_EQ(2u,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER,
-                              buf.data(), buf.size()));
-    EXPECT_STREQ(L"", BufferToWString(buf).c_str());
+                              buf.data(), kBufSize));
+    EXPECT_STREQ(L"", GetPlatformWString(buf.data()).c_str());
 
     ScopedFPDFWideString text = GetFPDFWideString(kData);
     EXPECT_TRUE(FPDFAnnot_SetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER,
@@ -1675,8 +1670,8 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
     std::fill(buf.begin(), buf.end(), 'x');
     ASSERT_EQ(6u,
               FPDFAnnot_GetAP(annot.get(), FPDF_ANNOT_APPEARANCEMODE_ROLLOVER,
-                              buf.data(), buf.size()));
-    EXPECT_STREQ(kData, BufferToWString(buf).c_str());
+                              buf.data(), kBufSize));
+    EXPECT_STREQ(kData, GetPlatformWString(buf.data()).c_str());
   }
 
   UnloadPage(page);
@@ -1697,8 +1692,8 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
 
       std::fill(buf.begin(), buf.end(), 'x');
       ASSERT_EQ(6u, FPDFAnnot_GetStringValue(annot.get(), kTestKey, buf.data(),
-                                             buf.size()));
-      EXPECT_STREQ(kData, BufferToWString(buf).c_str());
+                                             kBufSize));
+      EXPECT_STREQ(kData, GetPlatformWString(buf.data()).c_str());
     }
 
     {
@@ -1709,8 +1704,8 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
 
       std::fill(buf.begin(), buf.end(), 'x');
       ASSERT_EQ(6u, FPDFAnnot_GetStringValue(annot.get(), kTestKey, buf.data(),
-                                             buf.size()));
-      EXPECT_STREQ(kData, BufferToWString(buf).c_str());
+                                             kBufSize));
+      EXPECT_STREQ(kData, GetPlatformWString(buf.data()).c_str());
     }
 
     CloseSavedPage(saved_page);
@@ -1800,10 +1795,11 @@ TEST_F(FPDFAnnotEmbedderTest, GetOptionLabelCombobox) {
     int index = 0;
     unsigned long len =
         FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index, nullptr, 0);
-    std::vector<char> buf(len);
+    ASSERT_EQ(8u, len);
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(8u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index,
                                            buf.data(), len));
-    EXPECT_STREQ(L"Foo", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"Foo", GetPlatformWString(buf.data()).c_str());
 
     annot.reset(FPDFPage_GetAnnot(page, 1));
     ASSERT_TRUE(annot);
@@ -1811,11 +1807,11 @@ TEST_F(FPDFAnnotEmbedderTest, GetOptionLabelCombobox) {
     index = 0;
     len =
         FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index, nullptr, 0);
-    buf.clear();
-    buf.resize(len);
+    ASSERT_EQ(12u, len);
+    buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(12u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index,
                                             buf.data(), len));
-    EXPECT_STREQ(L"Apple", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"Apple", GetPlatformWString(buf.data()).c_str());
 
     index = 25;
     len =
@@ -1824,7 +1820,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetOptionLabelCombobox) {
     buf.resize(len);
     EXPECT_EQ(18u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index,
                                             buf.data(), len));
-    EXPECT_STREQ(L"Zucchini", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"Zucchini", GetPlatformWString(buf.data()).c_str());
 
     // Indices out of range
     EXPECT_EQ(0u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), -1,
@@ -1856,10 +1852,11 @@ TEST_F(FPDFAnnotEmbedderTest, GetOptionLabelListbox) {
     int index = 0;
     unsigned long len =
         FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index, nullptr, 0);
-    std::vector<char> buf(len);
+    ASSERT_EQ(8u, len);
+    std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(8u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index,
                                            buf.data(), len));
-    EXPECT_STREQ(L"Foo", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"Foo", GetPlatformWString(buf.data()).c_str());
 
     annot.reset(FPDFPage_GetAnnot(page, 1));
     ASSERT_TRUE(annot);
@@ -1867,20 +1864,20 @@ TEST_F(FPDFAnnotEmbedderTest, GetOptionLabelListbox) {
     index = 0;
     len =
         FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index, nullptr, 0);
-    buf.clear();
-    buf.resize(len);
+    ASSERT_EQ(12u, len);
+    buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(12u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index,
                                             buf.data(), len));
-    EXPECT_STREQ(L"Apple", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"Apple", GetPlatformWString(buf.data()).c_str());
 
     index = 25;
     len =
         FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index, nullptr, 0);
-    buf.clear();
-    buf.resize(len);
+    ASSERT_EQ(18u, len);
+    buf = GetFPDFWideStringBuffer(len);
     EXPECT_EQ(18u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), index,
                                             buf.data(), len));
-    EXPECT_STREQ(L"Zucchini", BufferToWString(buf).c_str());
+    EXPECT_STREQ(L"Zucchini", GetPlatformWString(buf.data()).c_str());
 
     // indices out of range
     EXPECT_EQ(0u, FPDFAnnot_GetOptionLabel(form_handle(), annot.get(), -1,
