@@ -511,13 +511,11 @@ void WriteAttachments(FPDF_DOCUMENT doc, const std::string& name) {
     std::string attachment_name;
     unsigned long len = FPDFAttachment_GetName(attachment, nullptr, 0);
     if (len) {
-      std::vector<char> buf(len);
+      std::vector<FPDF_WCHAR> buf = GetFPDFWideStringBuffer(len);
       unsigned long actual_len =
           FPDFAttachment_GetName(attachment, buf.data(), len);
-      if (actual_len == len) {
-        attachment_name =
-            GetPlatformString(reinterpret_cast<unsigned short*>(buf.data()));
-      }
+      if (actual_len == len)
+        attachment_name = GetPlatformString(buf.data());
     }
     if (attachment_name.empty()) {
       fprintf(stderr, "Attachment #%d has an empty file name.\n", i + 1);
