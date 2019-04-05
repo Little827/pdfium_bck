@@ -55,11 +55,9 @@ std::wstring GetPlatformWString(FPDF_WIDESTRING wstr) {
   return platform_string;
 }
 
-std::unique_ptr<unsigned short, pdfium::FreeDeleter> GetFPDFWideString(
-    const std::wstring& wstr) {
+ScopedFPDFWideString GetFPDFWideString(const std::wstring& wstr) {
   size_t length = sizeof(uint16_t) * (wstr.length() + 1);
-  std::unique_ptr<unsigned short, pdfium::FreeDeleter> result(
-      static_cast<unsigned short*>(malloc(length)));
+  ScopedFPDFWideString result(static_cast<FPDF_WCHAR*>(malloc(length)));
   char* ptr = reinterpret_cast<char*>(result.get());
   size_t i = 0;
   for (wchar_t w : wstr) {
