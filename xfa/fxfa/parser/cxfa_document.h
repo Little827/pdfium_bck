@@ -59,7 +59,11 @@ class CXFA_Document final : public CXFA_NodeOwner {
   explicit CXFA_Document(CXFA_FFNotify* notify);
   ~CXFA_Document() override;
 
+  bool HasScriptContext() const { return !!m_pScriptContext; }
   CFXJSE_Engine* InitScriptContext(CJS_Runtime* fxjs_runtime);
+
+  // Only safe to call in situations where the context is known to exist,
+  // and always returns non-NULL in those situations.
   CFXJSE_Engine* GetScriptContext() const;
 
   CXFA_FFNotify* GetNotify() const { return notify_.Get(); }
