@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1554747840 -0700\nnonce AC6AUtOjSKztGTUdw5umDAOPj95ZJ+buxBBxbIVabYq6/zjVfMHFL7+zRbGLTiJ2NiczLIKq+Vn/\n\n0000000000000000000000000000000000000000 63806b6aa39b663db342383d3c21383b288aed2b refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyrkcAACgkQqzYtYVpm\n/Xv58AgAkg7bCN8dxucA/ZYSrypMuuiobQdbEzcK8F1uiucc/z9+JyKP4kVA6RuP\n5HUTA2ZepfuBbMMW326uBjwzCz4vqeDobSh5H+bVv5JX/DmGyf45p3S53CUhUNiy\nq4iGW4DS2g7flS/IXDIGbE7mdbLa60PTzWvDkpZt+I3EL+e6VbUeYy6qCNPAG3oD\nwX64H+VNUgFynWSirOujNMY1ktdSKQFzhO4rDsUwO72ZrUTl6036czixfaRNA7KB\nwUUg59Gsv4n8sImw8PCtyGbckgw9OEokVDfN5IkMCxG41+/4iBzSTWbyopMx1Uk/\nGU/3UrcDZ1e1UXf1NOGA1IPiX+nFvQ\u003d\u003d\n\u003d8+hb\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "72db8e35_ccadcd80",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2628,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-08T18:58:57Z",
+      "side": 1,
+      "message": "Not sure if static is needed here since it isn\u0027t an array, would be a shame if it actually created static storage.",
+      "range": {
+        "startLine": 2628,
+        "startChar": 2,
+        "endLine": 2628,
+        "endChar": 8
+      },
+      "revId": "63806b6aa39b663db342383d3c21383b288aed2b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
