@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "6524d71d_fc373825",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 6995
+      },
+      "writtenOn": "2019-04-08T20:17:07Z",
+      "side": 1,
+      "message": "\u003e I\u0027m actually surprised you can still set them on SkPaint, as they\u0027ve been removed.  Are you using an older Skia revision that was in the midst of the SkFont transition by any chance?\n\nTo answer my own question: yeah, the roll is to Jan 1st revision which is awkwardly exposing text APIs on both SkPaint and SkFont.\n\nDid you pick this revision for a particular reason, or just trying to cut the roll into manageable pieces?  If the latter I suggest you try something after https://skia.googlesource.com/skia/+/d3bde0b798600eed78189dffc9f9569eeaaaecae which seems to be the time when the SkFont migration stabilized.",
+      "parentUuid": "76f7bd48_a3717c46",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 34
+      },
+      "revId": "427db8292ec82f26e4fb122d5cacbcc37890c6f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ba62f8e_8838297a",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
