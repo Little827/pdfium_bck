@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "45b66630_1e6add88",
+        "filename": "core/fxcrt/retained_tree_node.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-08T21:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7560604_78ea96b0",
+      "revId": "5488618641a3d713b38dc282622e461b7b44c2dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea05d191_9c382da2",
         "filename": "core/fxcrt/retained_tree_node.h",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2019-04-08T21:28:37Z",
       "side": 1,
       "message": "ASSERT() |parent| and |m_pParent| are not both null / non-null?",
+      "revId": "5488618641a3d713b38dc282622e461b7b44c2dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5ea3559_fb11fef5",
+        "filename": "core/fxcrt/retained_tree_node.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-08T21:44:44Z",
+      "side": 1,
+      "message": "Now gone.  We insist the caller is retaining the child at the time it is removed, so we can muck with the parent without worries.",
+      "parentUuid": "ea05d191_9c382da2",
       "revId": "5488618641a3d713b38dc282622e461b7b44c2dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -67,6 +103,24 @@
       "revId": "5488618641a3d713b38dc282622e461b7b44c2dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6144c754_448db4da",
+        "filename": "core/fxcrt/retained_tree_node_unittest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-08T21:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f87699fd_840cb61e",
+      "revId": "5488618641a3d713b38dc282622e461b7b44c2dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
