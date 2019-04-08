@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4958c717_2664755b",
+        "filename": "core/fxcrt/retained_tree_node.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-08T23:23:10Z",
+      "side": 1,
+      "message": "Add a helper function for these 3 lines, since they are used in all the append/insert methods?",
+      "revId": "dbadc46e8b2c3b96f4bc94f3d098a44a629f6577",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf0e1b2_a2c2c3fc",
+        "filename": "core/fxcrt/retained_tree_node.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-08T23:23:10Z",
+      "side": 1,
+      "message": "Sanity check |child-\u003em_pPrevSibling| is nullptr, or explicitly clear it? Same with AppendLastChild() and |child-\u003em_pNextSibling|.",
+      "revId": "dbadc46e8b2c3b96f4bc94f3d098a44a629f6577",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f8d4bcf_2c191c18",
+        "filename": "core/fxcrt/retained_tree_node.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-08T23:23:10Z",
+      "side": 1,
+      "message": "Sanity check / explicitly clear |child|\u0027s sibling pointers.",
+      "revId": "dbadc46e8b2c3b96f4bc94f3d098a44a629f6577",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
