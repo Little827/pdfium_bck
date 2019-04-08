@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1553926596 -0700\nnonce AC6AUtMZ8cEqJ9ttWKPKBzM8fUNFvbDVmgNfDJ5m4kwjW6r85zoeep7SvgMT2+P8XQ3cPN/Jomsh\n\n0000000000000000000000000000000000000000 427db8292ec82f26e4fb122d5cacbcc37890c6f7 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyfCcQACgkQqzYtYVpm\n/Xswgwf/UPpfhJSVj5Ua0VQiak/0BUg0eejGUIDYN40D1V1QRF1WIL0o9/wSGIX7\nRLhbjcU67jXJjaJKr//P5rjoCGzVwlgjsab3K+BfyA9zWaWr4iEN2bkJlpvxToYJ\nt+ZmzE+KQSpfHxmovncKHdcEG6V1AHjQ9T36BEL3u7JeT8VBhqNMtJiwhW0MqX/w\ncpg/wndEeqjcaUlTHdpNbW8x3hkMax5BkkIr4cfkmZtLELeL4q8cYkXYrcxeCOCu\nl6bbqT/irRNaSKE6LF+QFofMyjZZy84zK5v8d6zf3sUNY3UKn4S/2V0JmvKvi7+Z\ntBAJTWHg7DGyTcd57OmcpzmEv1tQpA\u003d\u003d\n\u003dV0b6\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "76f7bd48_a3717c46",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 6995
+      },
+      "writtenOn": "2019-04-08T20:03:39Z",
+      "side": 1,
+      "message": "All text related params should now be set on the SkFont below.\n\nI\u0027m actually surprised you can still set them on SkPaint, as they\u0027ve been removed.  Are you using an older Skia revision that was in the midst of the SkFont transition by any chance?",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 34
+      },
+      "revId": "427db8292ec82f26e4fb122d5cacbcc37890c6f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba62f8e_8838297a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 6995
+      },
+      "writtenOn": "2019-04-08T20:03:39Z",
+      "side": 1,
+      "message": "Ditto, these should be set on SkFont below.",
+      "range": {
+        "startLine": 1566,
+        "startChar": 0,
+        "endLine": 1569,
+        "endChar": 30
+      },
+      "revId": "427db8292ec82f26e4fb122d5cacbcc37890c6f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4d4253_dc52c682",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1604,
+      "author": {
+        "id": 6995
+      },
+      "writtenOn": "2019-04-08T20:03:39Z",
+      "side": 1,
+      "message": "FYI, this was also moved to SkFont in recent versions.",
+      "range": {
+        "startLine": 1604,
+        "startChar": 8,
+        "endLine": 1604,
+        "endChar": 24
+      },
+      "revId": "427db8292ec82f26e4fb122d5cacbcc37890c6f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
