@@ -107,8 +107,8 @@ WideString CPDF_FileSpec::GetFileName() const {
       return csFileName;
 
     if (csFileName.IsEmpty()) {
-      constexpr const char* keys[] = {"DOS", "Mac", "Unix"};
-      for (const auto* key : keys) {
+      static constexpr const char* kKeys[] = {"DOS", "Mac", "Unix"};
+      for (const auto* key : kKeys) {
         if (pDict->KeyExist(key)) {
           csFileName =
               WideString::FromDefANSI(pDict->GetStringFor(key).AsStringView());
@@ -134,7 +134,7 @@ const CPDF_Stream* CPDF_FileSpec::GetFileStream() const {
 
   // List of keys to check for the file specification string.
   // Follows the same precedence order as GetFileName().
-  constexpr const char* kKeys[] = {"UF", "F", "DOS", "Mac", "Unix"};
+  static constexpr const char* kKeys[] = {"UF", "F", "DOS", "Mac", "Unix"};
   size_t end = pDict->GetStringFor("FS") == "URL" ? 2 : FX_ArraySize(kKeys);
   for (size_t i = 0; i < end; ++i) {
     ByteString key = kKeys[i];
