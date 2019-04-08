@@ -22,6 +22,30 @@
       "revId": "d1288868ed5d141c2e460fb8bf1170fc1cc1c64b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e4ef5b_16ccb382",
+        "filename": "testing/fx_string_testhelpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-08T16:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2a25a89_5bc99d56",
+      "range": {
+        "startLine": 38,
+        "startChar": 55,
+        "endLine": 38,
+        "endChar": 58
+      },
+      "revId": "d1288868ed5d141c2e460fb8bf1170fc1cc1c64b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
