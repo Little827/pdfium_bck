@@ -50,6 +50,30 @@
     },
     {
       "key": {
+        "uuid": "a92c36ac_9356d298",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-08T20:37:16Z",
+      "side": 1,
+      "message": "I picked this Skia commit because I previously rolled to right before it. That roll did not require any API changes. The strategy I\u0027ve been following is then to do the 1 Skia commit roll that requires API changes, and make those changes. Then the next roll will go as far as it can without API changes.\n\nLet me try rolling forward to the suggested Skia commit and avoid the transitional period in between. Hopefully the CL won\u0027t be too big...",
+      "parentUuid": "6524d71d_fc373825",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 34
+      },
+      "revId": "427db8292ec82f26e4fb122d5cacbcc37890c6f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ba62f8e_8838297a",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
