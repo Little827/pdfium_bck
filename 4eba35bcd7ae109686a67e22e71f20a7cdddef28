@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4b9b0b1_e7674e72",
+        "filename": "core/fxcrt/retained_tree_node.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-09T21:37:09Z",
+      "side": 1,
+      "message": "Do we expect this to ever eval to true?",
+      "revId": "4eba35bcd7ae109686a67e22e71f20a7cdddef28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2467ae61_5c0bcf3a",
+        "filename": "core/fxcrt/retained_tree_node_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-09T21:37:09Z",
+      "side": 1,
+      "message": "Do you need to std::move() when AppendFirstChild() takes const RetainPtr\u003cT\u003e\u0026 ?",
+      "revId": "4eba35bcd7ae109686a67e22e71f20a7cdddef28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
