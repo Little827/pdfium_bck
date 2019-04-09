@@ -21,7 +21,7 @@
 
 constexpr float kXFALayoutPrecision = 0.0005f;
 
-class CXFA_ContainerLayoutItem;
+class CXFA_ViewLayoutItem;
 class CXFA_ContentLayoutItem;
 class CXFA_ItemLayoutProcessor;
 class CXFA_LayoutContext;
@@ -56,7 +56,7 @@ class CXFA_ItemLayoutProcessor {
                   float fHeightLimit,
                   float fRealHeight,
                   CXFA_LayoutContext* pContext);
-  void DoLayoutPageArea(CXFA_ContainerLayoutItem* pPageAreaLayoutItem);
+  void DoLayoutPageArea(CXFA_ViewLayoutItem* pPageAreaLayoutItem);
 
   CXFA_Node* GetFormNode() { return m_pFormNode; }
   CXFA_ContentLayoutItem* ExtractLayoutItem();
