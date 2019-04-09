@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "xfa/fxfa/cxfa_eventparam.h"
+#include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 class CXFA_ContentLayoutItem;

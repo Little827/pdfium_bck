@@ -172,7 +172,7 @@ bool CXFA_FFDateTimeEdit::UpdateFWLData() {
 }
 
 bool CXFA_FFDateTimeEdit::IsDataChanged() {
-  if (GetLayoutItem()->m_dwStatus & XFA_WidgetStatus_TextEditValueChanged)
+  if (GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_TextEditValueChanged))
     return true;
 
   WideString wsText = GetPickerWidget()->GetEditText();
@@ -184,7 +184,6 @@ void CXFA_FFDateTimeEdit::OnSelectChanged(CFWL_Widget* pWidget,
                                           int32_t iMonth,
                                           int32_t iDay) {
   WideString wsPicture = m_pNode->GetPictureContent(XFA_VALUEPICTURE_Edit);
-
   CXFA_LocaleValue date(XFA_VT_DATE, GetDoc()->GetXFADoc()->GetLocaleMgr());
   date.SetDate(CFX_DateTime(iYear, iMonth, iDay, 0, 0, 0, 0));
 

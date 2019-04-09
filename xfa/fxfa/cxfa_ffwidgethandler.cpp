@@ -184,7 +184,7 @@ bool CXFA_FFWidgetHandler::Redo(CXFA_FFWidget* widget) {
 
 FWL_WidgetHit CXFA_FFWidgetHandler::OnHitTest(CXFA_FFWidget* hWidget,
                                               const CFX_PointF& point) {
-  if (!(hWidget->GetStatus() & XFA_WidgetStatus_Visible))
+  if (!hWidget->GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_Visible))
     return FWL_WidgetHit::Unknown;
   return hWidget->OnHitTest(hWidget->Rotate2Normal(point));
 }
@@ -276,7 +276,7 @@ CXFA_FFWidget* CXFA_FFWidgetHandler::CreateWidget(CXFA_FFWidget* hParent,
   m_pDocView->RunLayout();
   CXFA_LayoutItem* pLayout =
       m_pDocView->GetXFALayout()->GetLayoutItem(pNewFormItem);
-  return GetFFWidget(ToContentLayoutItem(pLayout));
+  return static_cast<CXFA_FFWidget*>(GetWidget(ToContentLayoutItem(pLayout)));
 }
 
 CXFA_Node* CXFA_FFWidgetHandler::CreateWidgetFormItem(

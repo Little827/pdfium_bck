@@ -36,7 +36,7 @@
 namespace {
 
 CXFA_FFField* ToField(CXFA_ContentLayoutItem* pItem) {
-  return pItem ? static_cast<CXFA_FFField*>(pItem->GetFFWidget()) : nullptr;
+  return pItem ? static_cast<CXFA_FFField*>(pItem->GetWidget()) : nullptr;
 }
 
 }  // namespace
@@ -103,7 +103,7 @@ void CXFA_FFField::DrawHighlight(CXFA_Graphics* pGS,
 }
 
 void CXFA_FFField::DrawFocus(CXFA_Graphics* pGS, CFX_Matrix* pMatrix) {
-  if (!(GetLayoutItem()->m_dwStatus & XFA_WidgetStatus_Focused))
+  if (!GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_Focused))
     return;
 
   pGS->SetStrokeColor(CXFA_GEColor(0xFF000000));
@@ -501,7 +501,7 @@ bool CXFA_FFField::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 
   CFWL_MessageSetFocus ms(nullptr, m_pNormalWidget.get());
   TranslateFWLMessage(&ms);
-  GetLayoutItem()->m_dwStatus |= XFA_WidgetStatus_Focused;
+  GetLayoutItem()->SetStatusBit(XFA_WidgetStatus_Focused);
   InvalidateRect();
   return true;
 }
@@ -512,7 +512,7 @@ bool CXFA_FFField::OnKillFocus(CXFA_FFWidget* pNewWidget) {
 
   CFWL_MessageKillFocus ms(nullptr, m_pNormalWidget.get());
   TranslateFWLMessage(&ms);
-  GetLayoutItem()->m_dwStatus &= ~XFA_WidgetStatus_Focused;
+  GetLayoutItem()->ClearStatusBit(XFA_WidgetStatus_Focused);
   InvalidateRect();
   CXFA_FFWidget::OnKillFocus(pNewWidget);
   return true;

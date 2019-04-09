@@ -74,20 +74,31 @@ bool PageWidgetFilter(CXFA_FFWidget* pWidget,
                       bool bIgnorerelevant) {
   CXFA_Node* pNode = pWidget->GetNode();
 
-  if (!!(dwFilter & XFA_WidgetStatus_Focused) &&
+  if ((dwFilter & XFA_WidgetStatus_Focused) &&
       (!pNode || pNode->GetElementType() != XFA_Element::Field)) {
     return false;
   }
 
-  uint32_t dwStatus = pWidget->GetStatus();
-  if (bTraversal && (dwStatus & XFA_WidgetStatus_Disabled))
+  CXFA_ContentLayoutItem* pItem = pWidget->GetLayoutItem();
+  if (bTraversal && pItem->TestStatusBit(XFA_WidgetStatus_Disabled))
     return false;
-  if (bIgnorerelevant)
-    return !!(dwStatus & XFA_WidgetStatus_Visible);
 
-  dwFilter &= (XFA_WidgetStatus_Visible | XFA_WidgetStatus_Viewable |
-               XFA_WidgetStatus_Printable);
-  return (dwFilter & dwStatus) == dwFilter;
+  if (bIgnorerelevant)
+    return pItem->TestStatusBit(XFA_WidgetStatus_Visible);
+
+  if ((dwFilter & XFA_WidgetStatus_Visible) &&
+      !pItem->TestStatusBit(XFA_WidgetStatus_Visible)) {
+    return false;
+  }
+  if ((dwFilter & XFA_WidgetStatus_Viewable) &&
+      !pItem->TestStatusBit(XFA_WidgetStatus_Viewable)) {
+    return false;
+  }
+  if ((dwFilter & XFA_WidgetStatus_Printable) &&
+      !pItem->TestStatusBit(XFA_WidgetStatus_Printable)) {
+    return false;
+  }
+  return true;
 }
 
 bool IsLayoutElement(XFA_Element eElement, bool bLayoutContainer) {
@@ -211,7 +222,7 @@ CXFA_FFWidget* CXFA_FFPageWidgetIterator::GetWidget(
     return nullptr;
 
   if (!pWidget->IsLoaded() &&
-      !!(pWidget->GetStatus() & XFA_WidgetStatus_Visible)) {
+      pWidget->GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_Visible)) {
     if (!pWidget->LoadWidget())
       return nullptr;
   }
@@ -455,14 +466,15 @@ void CXFA_FFTabOrderPageWidgetIterator::CreateSpaceOrderWidgetArray(
 
 CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::GetWidget(
     CXFA_LayoutItem* pLayoutItem) {
-  if (CXFA_FFWidget* pWidget = XFA_GetWidgetFromLayoutItem(pLayoutItem)) {
-    if (!pWidget->IsLoaded() &&
-        (pWidget->GetStatus() & XFA_WidgetStatus_Visible)) {
-      pWidget->LoadWidget();
-    }
-    return pWidget;
+  CXFA_FFWidget* pWidget = XFA_GetWidgetFromLayoutItem(pLayoutItem);
+  if (!pWidget)
+    return nullptr;
+
+  if (!pWidget->IsLoaded() &&
+      pWidget->GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_Visible)) {
+    pWidget->LoadWidget();
   }
-  return nullptr;
+  return pWidget;
 }
 
 CXFA_TabParam::CXFA_TabParam(CXFA_FFWidget* pWidget) : m_pWidget(pWidget) {}

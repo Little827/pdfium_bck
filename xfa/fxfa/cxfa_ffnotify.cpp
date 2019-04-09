@@ -107,8 +107,8 @@ std::unique_ptr<CXFA_ViewLayoutItem> CXFA_FFNotify::OnCreateViewLayoutItem(
   return nullptr;
 }
 
-std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
-    CXFA_Node* pNode) {
+std::unique_ptr<CXFA_ContentLayoutItem::WidgetBase>
+CXFA_FFNotify::OnCreateContentLayoutItem(CXFA_Node* pNode) {
   ASSERT(pNode->GetElementType() != XFA_Element::ContentArea);
   ASSERT(pNode->GetElementType() != XFA_Element::PageArea);
 
