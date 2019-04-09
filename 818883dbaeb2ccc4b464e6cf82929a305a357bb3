@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d728454a_32910cc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-09T19:23:28Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "818883dbaeb2ccc4b464e6cf82929a305a357bb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64cc702_be7cb667",
+        "filename": "xfa/fxfa/cxfa_ffdocview.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-09T19:23:28Z",
+      "side": 1,
+      "message": "Sort. Ditto in other headers. Too bad clang-format does not do this automatically.",
+      "revId": "818883dbaeb2ccc4b464e6cf82929a305a357bb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
