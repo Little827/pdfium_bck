@@ -111,7 +111,7 @@ bool IsLayoutElement(XFA_Element eElement, bool bLayoutContainer) {
 }  // namespace
 
 CXFA_FFPageView::CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea)
-    : CXFA_ContainerLayoutItem(pPageArea), m_pDocView(pDocView) {}
+    : CXFA_ViewLayoutItem(pPageArea), m_pDocView(pDocView) {}
 
 CXFA_FFPageView::~CXFA_FFPageView() {}
 

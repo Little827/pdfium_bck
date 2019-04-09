@@ -44,9 +44,9 @@ class CXFA_LayoutPageMgr {
   void FinishPaginatedPageSets();
   void SyncLayoutData();
   int32_t GetPageCount() const;
-  CXFA_ContainerLayoutItem* GetPage(int32_t index) const;
-  int32_t GetPageIndex(const CXFA_ContainerLayoutItem* pPage) const;
-  inline CXFA_ContainerLayoutItem* GetRootLayoutItem() const {
+  CXFA_ViewLayoutItem* GetPage(int32_t index) const;
+  int32_t GetPageIndex(const CXFA_ViewLayoutItem* pPage) const;
+  inline CXFA_ViewLayoutItem* GetRootLayoutItem() const {
     return m_pPageSetLayoutItemRoot;
   }
   Optional<BreakData> ProcessBreakBefore(const CXFA_Node* pBreakNode);
@@ -133,14 +133,13 @@ class CXFA_LayoutPageMgr {
   void LayoutPageSetContents();
   void PrepareLayout();
   void SaveLayoutItem(CXFA_LayoutItem* pParentLayoutItem);
-  void ProcessSimplexOrDuplexPageSets(
-      CXFA_ContainerLayoutItem* pPageSetLayoutItem,
-      bool bIsSimplex);
+  void ProcessSimplexOrDuplexPageSets(CXFA_ViewLayoutItem* pPageSetLayoutItem,
+                                      bool bIsSimplex);
 
   CXFA_LayoutProcessor* m_pLayoutProcessor;
   CXFA_Node* m_pTemplatePageSetRoot;
-  CXFA_ContainerLayoutItem* m_pPageSetLayoutItemRoot;
-  CXFA_ContainerLayoutItem* m_pPageSetCurRoot;
+  CXFA_ViewLayoutItem* m_pPageSetLayoutItemRoot;
+  CXFA_ViewLayoutItem* m_pPageSetCurRoot;
   std::list<CXFA_ContainerRecord*> m_ProposedContainerRecords;
   std::list<CXFA_ContainerRecord*>::iterator m_CurrentContainerRecordIter;
   CXFA_Node* m_pCurPageArea;
@@ -149,7 +148,7 @@ class CXFA_LayoutPageMgr {
   XFA_AttributeValue m_ePageSetMode;
   bool m_bCreateOverFlowPage;
   std::map<CXFA_Node*, int32_t> m_pPageSetMap;
-  std::vector<CXFA_ContainerLayoutItem*> m_PageArray;
+  std::vector<CXFA_ViewLayoutItem*> m_PageArray;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_LAYOUTPAGEMGR_H_
