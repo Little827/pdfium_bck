@@ -10,14 +10,14 @@
 #include <memory>
 #include <vector>
 
-#include "xfa/fxfa/layout/cxfa_containerlayoutitem.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 #include "xfa/fxfa/layout/cxfa_traversestrategy_layoutitem.h"
+#include "xfa/fxfa/layout/cxfa_viewlayoutitem.h"
 
 class CXFA_FFWidget;
 class CXFA_FFDocView;
 
-class CXFA_FFPageView final : public CXFA_ContainerLayoutItem {
+class CXFA_FFPageView final : public CXFA_ViewLayoutItem {
  public:
   CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea);
   ~CXFA_FFPageView() override;

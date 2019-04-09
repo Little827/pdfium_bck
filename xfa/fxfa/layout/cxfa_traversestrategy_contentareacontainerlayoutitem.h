@@ -7,37 +7,32 @@
 #ifndef XFA_FXFA_LAYOUT_CXFA_TRAVERSESTRATEGY_CONTENTAREACONTAINERLAYOUTITEM_H_
 #define XFA_FXFA_LAYOUT_CXFA_TRAVERSESTRATEGY_CONTENTAREACONTAINERLAYOUTITEM_H_
 
-#include "xfa/fxfa/layout/cxfa_containerlayoutitem.h"
+#include "xfa/fxfa/layout/cxfa_viewlayoutitem.h"
 
-class CXFA_TraverseStrategy_ContentAreaContainerLayoutItem {
+class CXFA_TraverseStrategy_ContentAreaViewLayoutItem {
  public:
-  static CXFA_ContainerLayoutItem* GetFirstChild(
-      CXFA_ContainerLayoutItem* pLayoutItem) {
+  static CXFA_ViewLayoutItem* GetFirstChild(CXFA_ViewLayoutItem* pLayoutItem) {
     for (CXFA_LayoutItem* pChildItem = pLayoutItem->GetFirstChild(); pChildItem;
          pChildItem = pChildItem->GetNextSibling()) {
-      if (CXFA_ContainerLayoutItem* pContainer =
-              pChildItem->AsContainerLayoutItem()) {
+      if (CXFA_ViewLayoutItem* pContainer = pChildItem->AsViewLayoutItem()) {
         return pContainer;
       }
     }
     return nullptr;
   }
 
-  static CXFA_ContainerLayoutItem* GetNextSibling(
-      CXFA_ContainerLayoutItem* pLayoutItem) {
+  static CXFA_ViewLayoutItem* GetNextSibling(CXFA_ViewLayoutItem* pLayoutItem) {
     for (CXFA_LayoutItem* pChildItem = pLayoutItem->GetNextSibling();
          pChildItem; pChildItem = pChildItem->GetNextSibling()) {
-      if (CXFA_ContainerLayoutItem* pContainer =
-              pChildItem->AsContainerLayoutItem()) {
+      if (CXFA_ViewLayoutItem* pContainer = pChildItem->AsViewLayoutItem()) {
         return pContainer;
       }
     }
     return nullptr;
   }
 
-  static CXFA_ContainerLayoutItem* GetParent(
-      CXFA_ContainerLayoutItem* pLayoutItem) {
-    return ToContainerLayoutItem(pLayoutItem->GetParent());
+  static CXFA_ViewLayoutItem* GetParent(CXFA_ViewLayoutItem* pLayoutItem) {
+    return ToViewLayoutItem(pLayoutItem->GetParent());
   }
 };
 
