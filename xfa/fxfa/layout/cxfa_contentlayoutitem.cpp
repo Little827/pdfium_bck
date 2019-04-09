@@ -9,16 +9,19 @@
 #include <utility>
 
 #include "fxjs/xfa/cjx_object.h"
-#include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/parser/cxfa_margin.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
+CXFA_ContentLayoutItem::WidgetBase::WidgetBase() = default;
+
+CXFA_ContentLayoutItem::WidgetBase::~WidgetBase() = default;
+
 CXFA_ContentLayoutItem::CXFA_ContentLayoutItem(
     CXFA_Node* pNode,
-    std::unique_ptr<CXFA_FFWidget> pWidget)
-    : CXFA_LayoutItem(pNode, kContentItem), m_pFFWidget(std::move(pWidget)) {
-  if (m_pFFWidget)
-    m_pFFWidget->SetLayoutItem(this);
+    std::unique_ptr<WidgetBase> pWidget)
+    : CXFA_LayoutItem(pNode, kContentItem), m_pWidget(std::move(pWidget)) {
+  if (m_pWidget)
+    m_pWidget->SetLayoutItem(this);
 }
 
 CXFA_ContentLayoutItem::~CXFA_ContentLayoutItem() {

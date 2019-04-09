@@ -249,7 +249,8 @@ void CXFA_FFDocView::ResetNode(CXFA_Node* pNode) {
 }
 
 CXFA_FFWidget* CXFA_FFDocView::GetWidgetForNode(CXFA_Node* node) {
-  return GetFFWidget(ToContentLayoutItem(GetXFALayout()->GetLayoutItem(node)));
+  return static_cast<CXFA_FFWidget*>(
+      GetWidget(ToContentLayoutItem(GetXFALayout()->GetLayoutItem(node))));
 }
 
 CXFA_FFWidgetHandler* CXFA_FFDocView::GetWidgetHandler() {
@@ -267,13 +268,12 @@ CXFA_FFDocView::CreateReadyNodeIterator() {
 
 bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
   CXFA_FFWidget* pOldFocus = m_pFocusWidget.Get();
-
   if (pOldFocus == pNewFocus)
     return false;
 
   if (pOldFocus) {
-    if (!(pOldFocus->GetStatus() & XFA_WidgetStatus_Focused) &&
-        (pOldFocus->GetStatus() & XFA_WidgetStatus_Visible)) {
+    if (!pOldFocus->GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_Focused) &&
+        pOldFocus->GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_Visible)) {
       if (!pOldFocus->IsLoaded())
         pOldFocus->LoadWidget();
 
@@ -284,7 +284,7 @@ bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
   }
 
   if (pNewFocus) {
-    if (pNewFocus->GetStatus() & XFA_WidgetStatus_Visible) {
+    if (pNewFocus->GetLayoutItem()->TestStatusBit(XFA_WidgetStatus_Visible)) {
       if (!pNewFocus->IsLoaded())
         pNewFocus->LoadWidget();
 
