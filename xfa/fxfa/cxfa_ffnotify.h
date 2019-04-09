@@ -44,8 +44,7 @@ class CXFA_FFNotify {
 
   std::unique_ptr<CXFA_ContainerLayoutItem> OnCreateContainerLayoutItem(
       CXFA_Node* pNode);
-  std::unique_ptr<CXFA_ContentLayoutItem> OnCreateContentLayoutItem(
-      CXFA_Node* pNode);
+  std::unique_ptr<CXFA_FFWidget> OnCreateContentLayoutItem(CXFA_Node* pNode);
 
   void OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
                          CXFA_LayoutItem* pSender,
