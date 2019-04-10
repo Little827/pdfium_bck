@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63b342de_1d3d4e3e",
+        "filename": "xfa/fxfa/cxfa_ffwidget.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-10T23:55:14Z",
+      "side": 0,
+      "message": "wrong, should have been one of the visible/invisible flags for consistency with other calls.",
+      "range": {
+        "startLine": 350,
+        "startChar": 31,
+        "endLine": 350,
+        "endChar": 55
+      },
+      "revId": "aa5c0d19ac94df80eaba5897e69775ad92347590",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
