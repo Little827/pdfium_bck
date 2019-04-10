@@ -34,6 +34,24 @@
       "revId": "6ace72858e2b459aeee2ef2bc92f1ee7dcc62f91",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c1f03b_43666bd9",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-10T19:44:53Z",
+      "side": 1,
+      "message": "setting resovled bit.",
+      "parentUuid": "e9f51130_ec0c82f9",
+      "revId": "6ace72858e2b459aeee2ef2bc92f1ee7dcc62f91",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
