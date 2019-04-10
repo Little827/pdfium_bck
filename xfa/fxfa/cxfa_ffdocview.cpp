@@ -6,6 +6,7 @@
 
 #include "xfa/fxfa/cxfa_ffdocview.h"
 
+#include <set>
 #include <utility>
 
 #include "core/fxcrt/fx_extension.h"
@@ -463,16 +464,21 @@ bool CXFA_FFDocView::RunLayout() {
 }
 
 void CXFA_FFDocView::RunSubformIndexChange() {
-  for (CXFA_Node* pSubformNode : m_IndexChangedSubforms) {
-    if (!pSubformNode->IsWidgetReady())
+  std::set<CXFA_Node*> seen;
+  while (!m_IndexChangedSubforms.empty()) {
+    CXFA_Node* pSubformNode = m_IndexChangedSubforms.front();
+    m_IndexChangedSubforms.pop_front();
+    seen.insert(pSubformNode);
+    if (!pSubformNode->IsWidgetReady() ||
+        pdfium::ContainsKey(seen, pSubformNode)) {
       continue;
+    }
 
     CXFA_EventParam eParam;
     eParam.m_eType = XFA_EVENT_IndexChange;
     eParam.m_pTarget = pSubformNode;
     pSubformNode->ProcessEvent(this, XFA_AttributeValue::IndexChange, &eParam);
   }
-  m_IndexChangedSubforms.clear();
 }
 
 void CXFA_FFDocView::AddNewFormNode(CXFA_Node* pNode) {
@@ -482,7 +488,8 @@ void CXFA_FFDocView::AddNewFormNode(CXFA_Node* pNode) {
 
 void CXFA_FFDocView::AddIndexChangedSubform(CXFA_Node* pNode) {
   ASSERT(pNode->GetElementType() == XFA_Element::Subform);
-  m_IndexChangedSubforms.push_back(pNode);
+  if (!pdfium::ContainsValue(m_IndexChangedSubforms, pNode))
+    m_IndexChangedSubforms.push_back(pNode);
 }
 
 void CXFA_FFDocView::RunDocClose() {
