@@ -591,6 +591,9 @@ FPDFAnnot_GetOptionLabel(FPDF_FORMHANDLE hHandle,
                          FPDF_WCHAR* buffer,
                          unsigned long buflen);
 
+FPDF_EXPORT float FPDF_CALLCONV FPDFAnnot_GetFontSize(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_ANNOTATION annot);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus

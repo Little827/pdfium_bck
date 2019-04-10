@@ -923,3 +923,22 @@ FPDFAnnot_GetOptionLabel(FPDF_FORMHANDLE hHandle,
   WideString ws = pFormField->GetOptionLabel(index);
   return Utf16EncodeMaybeCopyAndReturnLength(ws, buffer, buflen);
 }
+
+FPDF_EXPORT float FPDF_CALLCONV FPDFAnnot_GetFontSize(FPDF_FORMHANDLE hHandle,
+                                                      FPDF_ANNOTATION annot) {
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
+    return 0;
+
+  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!pAnnotDict)
+    return 0;
+
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
+  CPDF_FormControl* pFormControl = pPDFForm->GetControlByDict(pAnnotDict);
+  if (!pFormControl)
+    return 0;
+
+  CPDFSDK_Widget* widget = pForm->GetWidget(pFormControl);
+  return widget ? widget->GetFontSize() : 0;
+}
