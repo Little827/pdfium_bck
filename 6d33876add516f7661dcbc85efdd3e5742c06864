@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22f8e10e_bf2144c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-04-10T19:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb9d119_f9275cbb",
+      "revId": "6d33876add516f7661dcbc85efdd3e5742c06864",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56f653f5_09007844",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-10T19:13:07Z",
       "side": 1,
       "message": "We probably should double check, but I think negative font sizes may be valid. So you may end up having trouble distinguishing between a real, but probably rare font size of -1 and an error condition.",
+      "revId": "6d33876add516f7661dcbc85efdd3e5742c06864",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c04c301_d9b7d8c6",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 7488
+      },
+      "writtenOn": "2019-04-10T19:46:18Z",
+      "side": 1,
+      "message": "Hmm, I didn\u0027t see any info regarding negative font sizes, not sure what that would mean for display. I based this CL off pdf spec 1.7, page 679 - DA and page 396 - Text Operators neither of which mention negative numbers. I searched the spec for Tf references and confirmed no example in the spec shows a negative number.\n\nWhat would you suggest in place of -1?\nSpec I used: http://archimedespalimpsest.net/Documents/External/pdf_reference_1-7.pdf",
+      "parentUuid": "56f653f5_09007844",
       "revId": "6d33876add516f7661dcbc85efdd3e5742c06864",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
