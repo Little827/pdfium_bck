@@ -63,15 +63,16 @@ class CXFA_CalcData {
 
 class CXFA_FFWidget {
  public:
-  enum FocusOption { kDoNotDrawFocus = 0, kDrawFocus };
+  enum class FocusOption { kDoNotDraw = 0, kDraw };
+  enum class HighlightOption { kNoHighlight = 0, kHighlight };
 
   explicit CXFA_FFWidget(CXFA_Node* pNode);
   virtual ~CXFA_FFWidget();
 
-  virtual CFX_RectF GetBBox(uint32_t dwStatus, FocusOption focus);
+  virtual CFX_RectF GetBBox(FocusOption focus);
   virtual void RenderWidget(CXFA_Graphics* pGS,
                             const CFX_Matrix& matrix,
-                            uint32_t dwStatus);
+                            HighlightOption highlight);
   virtual bool IsLoaded();
   virtual bool LoadWidget();
   virtual bool PerformLayout();
