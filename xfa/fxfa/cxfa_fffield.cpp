@@ -45,9 +45,9 @@ CXFA_FFField::CXFA_FFField(CXFA_Node* pNode) : CXFA_FFWidget(pNode) {}
 
 CXFA_FFField::~CXFA_FFField() = default;
 
-CFX_RectF CXFA_FFField::GetBBox(uint32_t dwStatus, FocusOption focus) {
+CFX_RectF CXFA_FFField::GetBBox(VisibilityOption visible, FocusOption focus) {
   if (focus == kDoNotDrawFocus)
-    return CXFA_FFWidget::GetBBox(dwStatus, kDoNotDrawFocus);
+    return CXFA_FFWidget::GetBBox(visible, kDoNotDrawFocus);
 
   switch (m_pNode->GetFFWidgetType()) {
     case XFA_FFWidgetType::kButton:
@@ -63,17 +63,17 @@ CFX_RectF CXFA_FFField::GetBBox(uint32_t dwStatus, FocusOption focus) {
 
 void CXFA_FFField::RenderWidget(CXFA_Graphics* pGS,
                                 const CFX_Matrix& matrix,
-                                uint32_t dwStatus) {
+                                HighlightOption highlight) {
   if (!HasVisibleStatus())
     return;
 
   CFX_Matrix mtRotate = GetRotateMatrix();
   mtRotate.Concat(matrix);
 
-  CXFA_FFWidget::RenderWidget(pGS, mtRotate, dwStatus);
+  CXFA_FFWidget::RenderWidget(pGS, mtRotate, highlight);
   DrawBorder(pGS, m_pNode->GetUIBorder(), m_rtUI, mtRotate);
   RenderCaption(pGS, &mtRotate);
-  DrawHighlight(pGS, &mtRotate, dwStatus, false);
+  DrawHighlight(pGS, &mtRotate, highlight, false);
 
   CFX_RectF rtWidget = m_pNormalWidget->GetWidgetRect();
   CFX_Matrix mt(1, 0, 0, 1, rtWidget.left, rtWidget.top);
