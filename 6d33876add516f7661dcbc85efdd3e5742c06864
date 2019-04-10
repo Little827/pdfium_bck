@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bb9d119_f9275cbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-10T19:13:07Z",
+      "side": 1,
+      "message": "nit: Wrap at 72 columns.",
+      "revId": "6d33876add516f7661dcbc85efdd3e5742c06864",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f653f5_09007844",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-10T19:13:07Z",
+      "side": 1,
+      "message": "We probably should double check, but I think negative font sizes may be valid. So you may end up having trouble distinguishing between a real, but probably rare font size of -1 and an error condition.",
+      "revId": "6d33876add516f7661dcbc85efdd3e5742c06864",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
