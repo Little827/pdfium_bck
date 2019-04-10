@@ -82,11 +82,10 @@ CFX_FloatRect CPDFSDK_XFAWidgetHandler::GetViewBBox(CPDFSDK_PageView* pPageView,
 
   CFX_RectF rcBBox;
   if (node->GetFFWidgetType() == XFA_FFWidgetType::kSignature) {
-    rcBBox = pAnnot->GetXFAWidget()->GetBBox(XFA_WidgetStatus_Visible,
-                                             CXFA_FFWidget::kDrawFocus);
+    rcBBox = pAnnot->GetXFAWidget()->GetBBox(CXFA_FFWidget::FocusOption::kDraw);
   } else {
-    rcBBox = pAnnot->GetXFAWidget()->GetBBox(XFA_WidgetStatus_None,
-                                             CXFA_FFWidget::kDoNotDrawFocus);
+    rcBBox =
+        pAnnot->GetXFAWidget()->GetBBox(CXFA_FFWidget::FocusOption::kDoNotDraw);
   }
   CFX_FloatRect rcWidget(rcBBox.left, rcBBox.top, rcBBox.left + rcBBox.width,
                          rcBBox.top + rcBBox.height);
