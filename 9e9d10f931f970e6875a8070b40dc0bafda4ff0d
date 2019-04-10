@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "e561b014_841a2955",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-10T18:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279ad54a_368da366",
+      "range": {
+        "startLine": 471,
+        "startChar": 4,
+        "endLine": 471,
+        "endChar": 30
+      },
+      "revId": "9e9d10f931f970e6875a8070b40dc0bafda4ff0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0afa8f50_39f4ee66",
         "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2019-04-10T17:38:24Z",
       "side": 1,
       "message": "nit: could be N^2. what happens if we insert it anyways? Later on, we get a log(n) lookup in seen and skip it, right?",
+      "range": {
+        "startLine": 491,
+        "startChar": 15,
+        "endLine": 491,
+        "endChar": 28
+      },
+      "revId": "9e9d10f931f970e6875a8070b40dc0bafda4ff0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a7b6d9_cecb9ec2",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-10T18:28:53Z",
+      "side": 1,
+      "message": "- Without this CL, in the PDF associated with this bug, |m_IndexChangedSubforms| ends up with 12 elements for the same 2 nodes. Seems silly.\n- We do the same check with |m_ValidateNodes|. We do not do the check for |m_NewAddedNodes|, presumably because those should be unique already.\n- This is only called for a pair of nodes at a time from a couple JS APIs. So N may not be too big, and performance in general may not really matter either way?",
+      "parentUuid": "0afa8f50_39f4ee66",
       "range": {
         "startLine": 491,
         "startChar": 15,
