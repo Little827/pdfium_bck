@@ -23,6 +23,30 @@
       "revId": "47341c25805308c6e3453cd632bee864e1fda9c9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e11d64f_e430fe43",
+        "filename": "xfa/fxfa/layout/cxfa_layoutpagemgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-10T21:49:37Z",
+      "side": 1,
+      "message": "It\u0027s probably |m_ProposedViewRecords|. I can look into converting that to use unique_ptr as a follow-up.",
+      "parentUuid": "17a6e2c0_29120513",
+      "range": {
+        "startLine": 652,
+        "startChar": 2,
+        "endLine": 652,
+        "endChar": 54
+      },
+      "revId": "47341c25805308c6e3453cd632bee864e1fda9c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
