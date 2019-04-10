@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1554856642 -0700\nnonce AC6AUtN4jPZmGZzOT5bHn0hrBd8ffjzcplWIzTpl2NBj0EvKn7Y7bwmqswGZYotTX/jnzwfbKhfM\n\n0000000000000000000000000000000000000000 9e9d10f931f970e6875a8070b40dc0bafda4ff0d refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlytOsIACgkQqzYtYVpm\n/XvouggAvyg512h5mTT+6pJ4EA6JcifjKpZVPS9IJxyoWy1cybnHvXQ3pqoaKab1\nMawx6eYEnSrOIA4X0LbLWj/HyyvQTHlQX2+7bLnylmQH7MffU3qDpbUx4H61vdXA\nsP78lmSSS4jtP4vOZA+t3NajMC0EsN+vHOiYF5F6RHm1fB6zB1SQjf136zGxDvPN\nQUKF2paRYjSRxYSnCZ32kNyDm2ZWD26RqvBQOh7pmRunJvafdmK1EeyDmCDDP0zC\nGNfnXOmvLfmmnTl7oX+M73P606rAAn057maz/4Xw4dMbsBAkNmv1AQ0DfI8rAd53\nyXniLT2lm8AnHrZvBLKOI97894u5JA\u003d\u003d\n\u003dJ7oT\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "279ad54a_368da366",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-10T17:38:24Z",
+      "side": 1,
+      "message": "I think the return value from this tells if it was inserted or not and hence seen or not seen?",
+      "range": {
+        "startLine": 471,
+        "startChar": 4,
+        "endLine": 471,
+        "endChar": 30
+      },
+      "revId": "9e9d10f931f970e6875a8070b40dc0bafda4ff0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0afa8f50_39f4ee66",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-10T17:38:24Z",
+      "side": 1,
+      "message": "nit: could be N^2. what happens if we insert it anyways? Later on, we get a log(n) lookup in seen and skip it, right?",
+      "range": {
+        "startLine": 491,
+        "startChar": 15,
+        "endLine": 491,
+        "endChar": 28
+      },
+      "revId": "9e9d10f931f970e6875a8070b40dc0bafda4ff0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
