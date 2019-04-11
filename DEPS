@@ -37,6 +37,12 @@ vars = {
 
   # GN CIPD package version.
   'gn_version': 'git_revision:0790d3043387c762a6bacb1ae0a9ebe883188ab2',
+
+  # Keep these in sync with the versions in buildtools/DEPS.
+  'clang_format_revision': '96636aa0e9f047f17447f2d45a094d0b59ed7917',
+  'libcxx_revision': 'fbddc46986100095d5f7ed1bc2bf795d3bb3e9e4',
+  'libcxxabi_revision': '0d529660e32d77d9111912d73f2c74fc5fa2a858',
+  'libunwind_revision': '69d9b84cca8354117b9fe9705a4430d789ee599b',
 }
 
 deps = {
@@ -51,7 +57,11 @@ deps = {
     Var('chromium_git') + "/chromium/src/buildtools.git@" +
         Var('buildtools_revision'),
 
-  'pdfium/buildtools/linux64': {
+  'buildtools/clang_format/script':
+    Var('chromium_git') + '/chromium/llvm-project/cfe/tools/clang-format.git@' +
+    Var('clang_format_revision'),
+
+  'buildtools/linux64': {
     'packages': [
       {
         'package': 'gn/gn/linux-amd64',
@@ -62,7 +72,7 @@ deps = {
     'condition': 'host_os == "linux"',
   },
 
-  'pdfium/buildtools/mac': {
+  'buildtools/mac': {
     'packages': [
       {
         'package': 'gn/gn/mac-amd64',
@@ -73,7 +83,19 @@ deps = {
     'condition': 'host_os == "mac"',
   },
 
-  'pdfium/buildtools/win': {
+  'buildtools/third_party/libc++/trunk':
+    Var('chromium_git') + '/chromium/llvm-project/libcxx.git' + '@' +
+    Var('libcxx_revision'),
+
+  'buildtools/third_party/libc++abi/trunk':
+    Var('chromium_git') + '/chromium/llvm-project/libcxxabi.git' + '@' +
+    Var('libcxxabi_revision'),
+
+  'buildtools/third_party/libunwind/trunk':
+    Var('chromium_git') + '/external/llvm.org/libunwind.git' + '@' +
+    Var('libunwind_revision'),
+
+  'buildtools/win': {
     'packages': [
       {
         'package': 'gn/gn/windows-amd64',
@@ -158,11 +180,6 @@ deps = {
   "v8":
     Var('chromium_git') + "/v8/v8.git@" + Var('v8_revision'),
 }
-
-recursedeps = [
-  # buildtools provides clang_format, libc++, and libc++abi
-  'buildtools',
-]
 
 include_rules = [
   # Basic stuff that everyone can use.
