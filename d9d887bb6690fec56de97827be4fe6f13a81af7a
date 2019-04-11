@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1554933704 -0700\nnonce AC6AUtPnWKQSPAYTyp5fK9/kYKlLvekFN8J5rgxr7WjhkW7tb5hWtJFc50Nr8Ch+KR68rns8meiL\n\n0000000000000000000000000000000000000000 d9d887bb6690fec56de97827be4fe6f13a81af7a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlyuZ8gACgkQqzYtYVpm\n/XtyEAgA0ZTXhssgFP4JbLUfQOLOXYQk8t9KNpy0XoS2x952Df5VdCaS9ZrXNUb4\nmKZ8UgBPVecqbraGYKC26R4afdjQyp46/LaH4Poic8KAhTt+cOknElD509ZQiUht\nh4eM5/I7JKBJhZJz2mt0x0Yq29oMPbHaGydHb8FZkwzsV+PwF0ctDGrUFemkv9Wt\n7D1Zn+Tv1HkkdAXS+UHFDBLHMMxsC8V50wCqPLotC5D8uXUkopFeGR+uyFwAdqlp\n04I5Q74pNalv9qPCPkGhtkM2O8bGYHf458e25sdtS2MAhRleKR57RwCAcnCoz2W3\nL1R757oexS9oHY8Pg8YQzBgjjasxog\u003d\u003d\n\u003dbEoQ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c873f7f_b346e62f",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3712,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T00:09:41Z",
+      "side": 1,
+      "message": "nit: using fields.size() should be cheap and may be clearer to use it in all spots rather than putting it into a local - or does the size change as we insert things and we want to keep the old size?",
+      "range": {
+        "startLine": 3712,
+        "startChar": 16,
+        "endLine": 3712,
+        "endChar": 32
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b323d40d_d08ea9fe",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3796,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T00:09:41Z",
+      "side": 1,
+      "message": "I\u0027m confused here about why we don\u0027t grow the array anymore.",
+      "range": {
+        "startLine": 3795,
+        "startChar": 3,
+        "endLine": 3796,
+        "endChar": 36
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
