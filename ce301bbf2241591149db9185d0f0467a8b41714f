@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "38b95af4_bb51d648",
+        "filename": "fpdfsdk/cpdfsdk_xfawidgethandler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-11T00:38:34Z",
+      "side": 1,
+      "message": "FocusOption focus \u003d node-\u003eGetFFWidgetType() \u003d\u003d XFA_FFWidgetType::kSignature ? \n    CXFA_FFWidget::kDrawFocus : CXFA_FFWidget::kDoNotDrawFocus\nCFX_RectF rcBBox \u003d pAnnot-\u003eGetXFAWidget()-\u003eGetBBox(focus);",
+      "revId": "ce301bbf2241591149db9185d0f0467a8b41714f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906a0ea4_d580b003",
+        "filename": "fpdfsdk/cpdfsdk_xfawidgethandler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-11T00:38:34Z",
+      "side": 1,
+      "message": "This looks like another Inflate() call.",
+      "revId": "ce301bbf2241591149db9185d0f0467a8b41714f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1195994c_4847322f",
         "filename": "xfa/fxfa/cxfa_fffield.cpp",
         "patchSetId": 7
