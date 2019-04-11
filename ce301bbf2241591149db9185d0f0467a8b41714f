@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1195994c_4847322f",
+        "filename": "xfa/fxfa/cxfa_fffield.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-11T00:36:24Z",
+      "side": 1,
+      "message": "Combine with the next if statement?",
+      "revId": "ce301bbf2241591149db9185d0f0467a8b41714f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
