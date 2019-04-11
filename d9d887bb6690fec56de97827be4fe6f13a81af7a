@@ -3,6 +3,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "bbf4c916_3c7588a6",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:13:45Z",
+      "side": 1,
+      "message": "we permuted this? so this is the same as i + 0.",
+      "range": {
+        "startLine": 905,
+        "startChar": 22,
+        "endLine": 905,
+        "endChar": 23
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfb855dc_1cf8792c",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:13:45Z",
+      "side": 1,
+      "message": "and this is i + 2",
+      "range": {
+        "startLine": 906,
+        "startChar": 0,
+        "endLine": 906,
+        "endChar": 18
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e19a531_2495eea2",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:13:45Z",
+      "side": 1,
+      "message": "and this is i + 1.\n\nRight?",
+      "range": {
+        "startLine": 907,
+        "startChar": 0,
+        "endLine": 907,
+        "endChar": 24
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c873f7f_b346e62f",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 1
@@ -50,6 +119,53 @@
     },
     {
       "key": {
+        "uuid": "09262744_a35dc9dc",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3712,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:13:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07753bd6_b5efc052",
+      "range": {
+        "startLine": 3712,
+        "startChar": 16,
+        "endLine": 3712,
+        "endChar": 32
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c69a0ae1_c551e9d4",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3713,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:13:45Z",
+      "side": 1,
+      "message": "I think you meant \u003e\u003d  ?",
+      "range": {
+        "startLine": 3713,
+        "startChar": 19,
+        "endLine": 3713,
+        "endChar": 20
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b323d40d_d08ea9fe",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 1
@@ -85,6 +201,30 @@
       "side": 1,
       "message": "Line 3763 effectively did 3 push_backs with dummy height / line count values, so this is just modifying those values.",
       "parentUuid": "b323d40d_d08ea9fe",
+      "range": {
+        "startLine": 3795,
+        "startChar": 3,
+        "endLine": 3796,
+        "endChar": 36
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781c9f4a_9f6e421c",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3796,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:13:45Z",
+      "side": 1,
+      "message": "Ok, so do we even need to special case it anymore? if szBlockIndex + 1 \u003d\u003d szFieldSplitCount does that mean that fields.back() \u003d\u003d \u0026fields[szBlockIndex]\ngiven the prior manipulations?",
+      "parentUuid": "cd2b4037_82ee3030",
       "range": {
         "startLine": 3795,
         "startChar": 3,
