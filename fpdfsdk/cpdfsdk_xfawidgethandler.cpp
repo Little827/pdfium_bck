@@ -88,8 +88,7 @@ CFX_FloatRect CPDFSDK_XFAWidgetHandler::GetViewBBox(CPDFSDK_PageView* pPageView,
     rcBBox = pAnnot->GetXFAWidget()->GetBBox(XFA_WidgetStatus_None,
                                              CXFA_FFWidget::kDoNotDrawFocus);
   }
-  CFX_FloatRect rcWidget(rcBBox.left, rcBBox.top, rcBBox.left + rcBBox.width,
-                         rcBBox.top + rcBBox.height);
+  CFX_FloatRect rcWidget(rcBBox);
   rcWidget.left -= 1.0f;
   rcWidget.right += 1.0f;
   rcWidget.bottom -= 1.0f;
