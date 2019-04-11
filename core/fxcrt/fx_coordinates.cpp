@@ -73,12 +73,16 @@ void FX_RECT::Intersect(const FX_RECT& src) {
   }
 }
 
-CFX_FloatRect::CFX_FloatRect(const FX_RECT& rect) {
-  left = rect.left;
-  top = rect.bottom;
-  right = rect.right;
-  bottom = rect.top;
-}
+// Y-axis runs the opposite way in FX_RECT.
+CFX_FloatRect::CFX_FloatRect(const FX_RECT& rect)
+    : left(rect.left), bottom(rect.top), right(rect.right), top(rect.bottom) {}
+
+// Y-axis runs the opposite way in CFX_RectF.
+CFX_FloatRect::CFX_FloatRect(const CFX_RectF& rect)
+    : left(rect.left),
+      bottom(rect.top),
+      right(rect.left + rect.width),
+      top(rect.top + rect.height) {}
 
 // static
 CFX_FloatRect CFX_FloatRect::GetBBox(const CFX_PointF* pPoints, int nPoints) {
