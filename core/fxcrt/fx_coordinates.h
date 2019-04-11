@@ -13,6 +13,8 @@
 #include "core/fxcrt/fx_system.h"
 #include "third_party/base/numerics/safe_math.h"
 
+class CFX_RectF;
+
 template <class BaseType>
 class CFX_PTemplate {
  public:
@@ -231,6 +233,7 @@ class CFX_FloatRect {
       : CFX_FloatRect(pArray[0], pArray[1], pArray[2], pArray[3]) {}
 
   explicit CFX_FloatRect(const FX_RECT& rect);
+  explicit CFX_FloatRect(const CFX_RectF& rect);
 
   static CFX_FloatRect GetBBox(const CFX_PointF* pPoints, int nPoints);
 
