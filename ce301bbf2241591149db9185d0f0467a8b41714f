@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd52d008_0d6fac4b",
+        "filename": "fpdfsdk/cpdfsdk_xfawidgethandler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T17:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38b95af4_bb51d648",
+      "revId": "ce301bbf2241591149db9185d0f0467a8b41714f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "906a0ea4_d580b003",
         "filename": "fpdfsdk/cpdfsdk_xfawidgethandler.cpp",
         "patchSetId": 7
@@ -47,6 +65,24 @@
       "writtenOn": "2019-04-11T00:36:24Z",
       "side": 1,
       "message": "Combine with the next if statement?",
+      "revId": "ce301bbf2241591149db9185d0f0467a8b41714f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca53c29_229fa4ba",
+        "filename": "xfa/fxfa/cxfa_fffield.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T17:12:04Z",
+      "side": 1,
+      "message": "I pulled this out to emphasize that this whole thing will be a giant no-op if the option was kNoHighlight.  Which seems like a bad API since the caller already knows it wont be highlighted. Maybe it will inspire somebody to address this someday ...",
+      "parentUuid": "1195994c_4847322f",
       "revId": "ce301bbf2241591149db9185d0f0467a8b41714f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
