@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf435ebc_a1304487",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3774,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:18:14Z",
+      "side": 0,
+      "message": "so this return might have created a vector with an incomplete set of values, which would then get ignored given the div by three arithmetic above.\n\nDo they muck with fStartOffset after this? Hopefully not, and what we want to do is continue push a set of three at the appropriate places (thereby \"committing\" the addition).",
+      "range": {
+        "startLine": 3774,
+        "startChar": 0,
+        "endLine": 3774,
+        "endChar": 18
+      },
+      "revId": "bbbacd7c39f2c895db5fd16b6f86df0a15fb6615",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
