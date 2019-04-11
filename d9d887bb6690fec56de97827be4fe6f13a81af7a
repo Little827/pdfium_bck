@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "01d53a4e_ba74ca8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-11T18:15:01Z",
+      "side": 1,
+      "message": "3 heterogenous elements cast into a vector of floats, even.",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbf4c916_3c7588a6",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 1
