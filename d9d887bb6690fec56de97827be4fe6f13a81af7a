@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "07753bd6_b5efc052",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3712,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-11T00:28:59Z",
+      "side": 1,
+      "message": "The size changes as we insert, so this is more of an \"original size\" variable.",
+      "parentUuid": "2c873f7f_b346e62f",
+      "range": {
+        "startLine": 3712,
+        "startChar": 16,
+        "endLine": 3712,
+        "endChar": 32
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b323d40d_d08ea9fe",
         "filename": "xfa/fxfa/parser/cxfa_node.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2019-04-11T00:09:41Z",
       "side": 1,
       "message": "I\u0027m confused here about why we don\u0027t grow the array anymore.",
+      "range": {
+        "startLine": 3795,
+        "startChar": 3,
+        "endLine": 3796,
+        "endChar": 36
+      },
+      "revId": "d9d887bb6690fec56de97827be4fe6f13a81af7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2b4037_82ee3030",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3796,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-11T00:28:59Z",
+      "side": 1,
+      "message": "Line 3763 effectively did 3 push_backs with dummy height / line count values, so this is just modifying those values.",
+      "parentUuid": "b323d40d_d08ea9fe",
       "range": {
         "startLine": 3795,
         "startChar": 3,
