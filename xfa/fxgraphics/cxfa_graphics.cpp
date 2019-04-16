@@ -361,16 +361,14 @@ void CXFA_Graphics::FillPathWithShading(const CXFA_GEPath* path,
               continue;
             }
           }
-          if (s < 0) {
-            if (!m_info.fillColor.GetShading()->m_isExtendedBegin) {
+          if (std::isnan(s) || s < 0.0f) {
+            if (!m_info.fillColor.GetShading()->m_isExtendedBegin)
               continue;
-            }
-            s = 0;
+            s = 0.0f;
           }
           if (s > 1.0f) {
-            if (!m_info.fillColor.GetShading()->m_isExtendedEnd) {
+            if (!m_info.fillColor.GetShading()->m_isExtendedEnd)
               continue;
-            }
             s = 1.0f;
           }
           int index = (int32_t)(s * (FX_SHADING_Steps - 1));
