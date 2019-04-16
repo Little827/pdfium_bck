@@ -92,6 +92,7 @@ jumbo_source_set("fxcrt") {
     "../../third_party:fx_tiff",
     "../../third_party:pdfium_base",
     "../../xfa/*",
+    "../../testing/fuzzers:pdf_xml_fuzzer_src",
   ]
   deps = [
     "../../third_party:pdfium_base",
