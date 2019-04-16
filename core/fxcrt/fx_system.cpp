@@ -83,6 +83,8 @@ STR_T FXSYS_IntToStr(T value, STR_T str, int radix) {
 }  // namespace
 
 int FXSYS_round(float d) {
+  if (!std::isfinite(d))
+    return std::numeric_limits<int>::max();
   if (d < static_cast<float>(std::numeric_limits<int>::min()))
     return std::numeric_limits<int>::min();
   if (d > static_cast<float>(std::numeric_limits<int>::max()))
