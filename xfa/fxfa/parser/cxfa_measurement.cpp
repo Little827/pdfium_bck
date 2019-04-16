@@ -32,8 +32,7 @@ CXFA_Measurement::CXFA_Measurement(float fValue, XFA_Unit eUnit) {
 
 void CXFA_Measurement::SetString(WideStringView wsMeasure) {
   if (wsMeasure.IsEmpty()) {
-    m_fValue = 0;
-    m_eUnit = XFA_Unit::Unknown;
+    Set(0, XFA_Unit::Unknown);
     return;
   }
 
@@ -43,6 +42,9 @@ void CXFA_Measurement::SetString(WideStringView wsMeasure) {
   int32_t iUsedLen = 0;
   float fValue = FXSYS_wcstof(wsMeasure.unterminated_c_str(),
                               wsMeasure.GetLength(), &iUsedLen);
+  if (!std::isfinite(fValue))
+    fValue = 0.0f;
+
   wsMeasure = wsMeasure.Right(wsMeasure.GetLength() - iUsedLen);
   Set(fValue, GetUnitFromString(wsMeasure));
 }
