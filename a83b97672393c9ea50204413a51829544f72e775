@@ -16,6 +16,24 @@
       "revId": "a83b97672393c9ea50204413a51829544f72e775",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e3d3fc6_674977c4",
+        "filename": "xfa/fxfa/cxfa_ffnotify.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-16T17:05:46Z",
+      "side": 0,
+      "message": "In the new design, a null CXFA_FFPageView handed back from this call is equivalent to making an unadorned CXFA_ViewLayoutItem base class, since we\u0027re now composing objects rather than extending them.",
+      "parentUuid": "a565df37_9560493e",
+      "revId": "a83b97672393c9ea50204413a51829544f72e775",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

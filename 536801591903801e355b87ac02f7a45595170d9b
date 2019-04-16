@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ebbba7f_a3abe580",
+        "filename": "xfa/fxfa/cxfa_ffnotify.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-16T17:05:46Z",
+      "side": 1,
+      "message": "Nope, this can still happen, and handing back a null is right (see previous comment about composition of objects).",
+      "parentUuid": "04b0983d_e526a1cc",
+      "revId": "536801591903801e355b87ac02f7a45595170d9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5240893a_ece77c0d",
         "filename": "xfa/fxfa/layout/cxfa_viewlayoutitem.h",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "536801591903801e355b87ac02f7a45595170d9b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd1362f_6f6fb8ce",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutitem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-16T17:05:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5240893a_ece77c0d",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "536801591903801e355b87ac02f7a45595170d9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
