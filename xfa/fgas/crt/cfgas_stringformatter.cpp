@@ -1143,6 +1143,7 @@ bool CFGAS_StringFormatter::ParseNum(const WideString& wsSrcNum,
   pdfium::span<const wchar_t> spSrcNum = wsSrcNum.AsSpan();
   pdfium::span<const wchar_t> spNumFormat = wsNumFormat.AsSpan();
 
+  bool bHaveExponent = false;
   bool bHavePercentSymbol = false;
   bool bNeg = false;
   bool bReverseParse = false;
@@ -1216,6 +1217,8 @@ bool CFGAS_StringFormatter::ParseNum(const WideString& wsSrcNum,
         ccf--;
         break;
       case 'E': {
+        if (bHaveExponent)
+          return false;
         bool bExpSign = false;
         while (cc < spSrcNum.size()) {
           if (spSrcNum[cc] == 'E' || spSrcNum[cc] == 'e')
@@ -1243,6 +1246,7 @@ bool CFGAS_StringFormatter::ParseNum(const WideString& wsSrcNum,
         }
         cc--;
         iExponent = bExpSign ? -iExponent : iExponent;
+        bHaveExponent = true;
         ccf--;
         break;
       }
@@ -1403,7 +1407,7 @@ bool CFGAS_StringFormatter::ParseNum(const WideString& wsSrcNum,
           }
           break;
         case 'E': {
-          if (cc >= spSrcNum.size() ||
+          if (bHaveExponent || cc >= spSrcNum.size() ||
               (spSrcNum[cc] != 'E' && spSrcNum[cc] != 'e')) {
             return false;
           }
@@ -1427,6 +1431,7 @@ bool CFGAS_StringFormatter::ParseNum(const WideString& wsSrcNum,
             cc++;
           }
           iExponent = bExpSign ? -iExponent : iExponent;
+          bHaveExponent = true;
           break;
         }
         case '$': {
