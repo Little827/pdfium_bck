@@ -118,3 +118,13 @@ pdfium_unittest_source_set("unittests") {
   ]
   pdfium_root_dir = "../../"
 }
+
+pdfium_embeddertest_source_set("embeddertests") {
+  sources = [
+    "cpdf_occontext_embeddertest.cpp",
+  ]
+  deps = [
+    ":fpdfdoc",
+  ]
+  pdfium_root_dir = "../../"
+}
