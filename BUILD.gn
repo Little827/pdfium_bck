@@ -318,6 +318,7 @@ test("pdfium_embeddertests") {
     "core/fpdfapi/edit:embeddertests",
     "core/fpdfapi/parser:embeddertests",
     "core/fpdfapi/render:embeddertests",
+    "core/fpdfdoc:embeddertests",
     "core/fxcodec:embeddertests",
     "core/fxge:embeddertests",
     "fpdfsdk:embeddertests",
