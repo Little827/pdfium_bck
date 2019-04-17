@@ -6,7 +6,9 @@
 
 #include "core/fpdfapi/page/cpdf_tilingpattern.h"
 
+#include "core/fpdfapi/page/cpdf_allstates.h"
 #include "core/fpdfapi/page/cpdf_form.h"
+#include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
@@ -31,7 +33,7 @@ CPDF_ShadingPattern* CPDF_TilingPattern::AsShadingPattern() {
   return nullptr;
 }
 
-bool CPDF_TilingPattern::Load() {
+bool CPDF_TilingPattern::Load(CPDF_PageObject* pPageObj) {
   if (m_pForm)
     return true;
 
@@ -49,7 +51,26 @@ bool CPDF_TilingPattern::Load() {
 
   const CFX_Matrix& matrix = parent_matrix();
   m_pForm = pdfium::MakeUnique<CPDF_Form>(document(), nullptr, pStream);
-  m_pForm->ParseContent(nullptr, &matrix, nullptr, nullptr);
+
+  CPDF_AllStates allStates;
+  allStates.CopyStates(*pPageObj);
+  m_pForm->ParseContent(&allStates, &matrix, nullptr, nullptr);
   m_BBox = pDict->GetRectFor("BBox");
   return true;
+}
+
+void CPDF_TilingPattern::Unload() {
+  m_pForm.reset();
+}
+
+CPDF_TilingPatternLoader::CPDF_TilingPatternLoader(
+    CPDF_TilingPattern* pTilingPattern)
+    : m_pTilingPattern(pTilingPattern) {}
+
+CPDF_TilingPatternLoader::~CPDF_TilingPatternLoader() {
+  m_pTilingPattern->Unload();
+}
+
+bool CPDF_TilingPatternLoader::Load(CPDF_PageObject* pPageObj) {
+  return m_pTilingPattern->Load(pPageObj);
 }
