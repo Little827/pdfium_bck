@@ -19,3 +19,14 @@ TEST_F(FPDFRenderPatternEmbedderTest, LoadError_547706) {
   CompareBitmap(bitmap.get(), 612, 792, "1940568c9ba33bac5d0b1ee9558c76b3");
   UnloadPage(page);
 }
+
+TEST_F(FPDFRenderPatternEmbedderTest, UseCorrectState) {
+  // Test rendering of a pattern that is reused with different `ExtGState`
+  // opacities applied.
+  EXPECT_TRUE(OpenDocument("reused_patterns.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+  CompareBitmap(bitmap.get(), 595, 841, "0ba3676c0a07e0c0ce8f984071dee3b2");
+  UnloadPage(page);
+}
