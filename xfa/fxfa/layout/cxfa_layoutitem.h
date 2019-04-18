@@ -26,31 +26,108 @@ class CXFA_LayoutItem {
   const CXFA_ContentLayoutItem* AsContentLayoutItem() const;
 
   CXFA_ViewLayoutItem* GetPage() const;
-  CXFA_LayoutItem* GetParent() const { return m_pParent; }
-  CXFA_LayoutItem* GetFirstChild() const { return m_pFirstChild; }
-  CXFA_LayoutItem* GetNextSibling() const { return m_pNextSibling; }
   CXFA_Node* GetFormNode() const { return m_pFormNode.Get(); }
   void SetFormNode(CXFA_Node* pNode) { m_pFormNode = pNode; }
 
-  // TODO(tsepez) replace these calls with AddChild() etc.
-  void SetParent(CXFA_LayoutItem* pParent) { m_pParent = pParent; }
-  void SetFirstChild(CXFA_LayoutItem* pChild) { m_pFirstChild = pChild; }
-  void SetNextSibling(CXFA_LayoutItem* pSibling) { m_pNextSibling = pSibling; }
+  // Scaffolding, to be replaced by retained version.
+  CXFA_LayoutItem* GetParent() const { return m_pParent; }
+  CXFA_LayoutItem* GetFirstChild() const { return m_pFirstChild; }
+  CXFA_LayoutItem* GetLastChild() const { return m_pFirstChild; }
+  CXFA_LayoutItem* GetNextSibling() const { return m_pNextSibling; }
+  CXFA_LayoutItem* GetPrevSibling() const { return m_pNextSibling; }
 
-  void AddChild(CXFA_LayoutItem* pChildItem);
-  void AddHeadChild(CXFA_LayoutItem* pChildItem);
-  void RemoveChild(CXFA_LayoutItem* pChildItem);
-  void InsertChild(CXFA_LayoutItem* pBeforeItem, CXFA_LayoutItem* pChildItem);
+  void AppendFirstChild(CXFA_LayoutItem* child) {
+    BecomeParent(child);
+    if (m_pFirstChild) {
+      m_pFirstChild->m_pPrevSibling = child;
+      child->m_pNextSibling = m_pFirstChild;
+      m_pFirstChild = child;
+    } else {
+      m_pFirstChild = child;
+      m_pLastChild = child;
+    }
+  }
+
+  void AppendLastChild(CXFA_LayoutItem* child) {
+    BecomeParent(child);
+    if (m_pLastChild) {
+      m_pLastChild->m_pNextSibling = child;
+      child->m_pPrevSibling = m_pLastChild;
+      m_pLastChild = child;
+    } else {
+      m_pFirstChild = child;
+      m_pLastChild = child;
+    }
+  }
+
+  void InsertBefore(CXFA_LayoutItem* child, CXFA_LayoutItem* other) {
+    if (!other) {
+      AppendLastChild(child);
+      return;
+    }
+    CHECK(other->m_pParent == this);
+    BecomeParent(child);
+    child->m_pNextSibling = other;
+    child->m_pPrevSibling = other->m_pPrevSibling;
+    if (other->m_pPrevSibling)
+      other->m_pPrevSibling->m_pNextSibling = child;
+    else
+      m_pFirstChild = child;
+    other->m_pPrevSibling = child;
+  }
+
+  void InsertAfter(CXFA_LayoutItem* child, CXFA_LayoutItem* other) {
+    if (!other) {
+      AppendFirstChild(child);
+      return;
+    }
+    CHECK(other->m_pParent == this);
+    BecomeParent(child);
+    child->m_pNextSibling = other->m_pNextSibling;
+    child->m_pPrevSibling = other;
+    if (other->m_pNextSibling)
+      other->m_pNextSibling->m_pPrevSibling = child;
+    else
+      m_pLastChild = child;
+    other->m_pNextSibling = child;
+  }
+
+  void RemoveChild(CXFA_LayoutItem* child) {
+    CHECK(child->m_pParent == this);
+    if (child->m_pNextSibling)
+      child->m_pNextSibling->m_pPrevSibling = child->m_pPrevSibling;
+    else
+      m_pLastChild = child->m_pPrevSibling;
+
+    if (child->m_pPrevSibling)
+      child->m_pPrevSibling->m_pNextSibling = child->m_pNextSibling;
+    else
+      m_pFirstChild = child->m_pNextSibling;
+
+    child->m_pParent = nullptr;
+    child->m_pPrevSibling = nullptr;
+    child->m_pNextSibling = nullptr;
+  }
 
  protected:
   enum ItemType { kViewItem, kContentItem };
   CXFA_LayoutItem(CXFA_Node* pNode, ItemType type);
 
  private:
+  void BecomeParent(CXFA_LayoutItem* child) {
+    if (child->m_pParent)
+      child->m_pParent->RemoveChild(child);
+    child->m_pParent = static_cast<CXFA_LayoutItem*>(this);
+    ASSERT(!child->m_pNextSibling);
+    ASSERT(!child->m_pPrevSibling);
+  }
+
   const ItemType m_ItemType;
   CXFA_LayoutItem* m_pParent = nullptr;       // Raw, intra-tree pointer.
   CXFA_LayoutItem* m_pFirstChild = nullptr;   // Raw, intra-tree pointer.
+  CXFA_LayoutItem* m_pLastChild = nullptr;    // Raw, intra-tree pointer.
   CXFA_LayoutItem* m_pNextSibling = nullptr;  // Raw, intra-tree pointer.
+  CXFA_LayoutItem* m_pPrevSibling = nullptr;  // Raw, intra-tree pointer.
   UnownedPtr<CXFA_Node> m_pFormNode;
 };
 
