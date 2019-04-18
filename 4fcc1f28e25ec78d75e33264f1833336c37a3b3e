@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e7561f1_3820f9bf",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-18T20:53:13Z",
+      "side": 0,
+      "message": "Tree now hosed; we have a list of children whose parent doesn\u0027t know about them.  Store them externally instead of keeping them linked.",
+      "range": {
+        "startLine": 732,
+        "startChar": 2,
+        "endLine": 732,
+        "endChar": 13
+      },
+      "revId": "4fcc1f28e25ec78d75e33264f1833336c37a3b3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1dda0ea_c0aa1444",
+        "filename": "xfa/fxfa/layout/cxfa_layoutitem.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-18T20:53:13Z",
+      "side": 0,
+      "message": "pointless given line 109 and corrupting of tree if not already null.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 4
+      },
+      "revId": "4fcc1f28e25ec78d75e33264f1833336c37a3b3e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
