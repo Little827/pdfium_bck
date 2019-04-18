@@ -21,7 +21,7 @@ void XFA_ReleaseLayoutItem(CXFA_LayoutItem* pLayoutItem) {
   CXFA_LayoutProcessor* pDocLayout = pDocument->GetLayoutProcessor();
   while (pNode) {
     CXFA_LayoutItem* pNext = pNode->GetNextSibling();
-    pNode->SetParent(nullptr);
+    pLayoutItem->RemoveChild(pNode);
     pNotify->OnLayoutItemRemoving(pDocLayout, pNode);
     XFA_ReleaseLayoutItem(pNode);
     pNode = pNext;
