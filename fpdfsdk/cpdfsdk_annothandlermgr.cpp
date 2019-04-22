@@ -58,9 +58,10 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::NewAnnot(CXFA_FFWidget* pAnnot,
 }
 #endif  // PDF_ENABLE_XFA
 
-void CPDFSDK_AnnotHandlerMgr::ReleaseAnnot(CPDFSDK_Annot* pAnnot) {
-  IPDFSDK_AnnotHandler* pAnnotHandler = GetAnnotHandler(pAnnot);
-  pAnnotHandler->ReleaseAnnot(pAnnot);
+void CPDFSDK_AnnotHandlerMgr::ReleaseAnnot(
+    std::unique_ptr<CPDFSDK_Annot> pAnnot) {
+  IPDFSDK_AnnotHandler* pAnnotHandler = GetAnnotHandler(pAnnot.get());
+  pAnnotHandler->ReleaseAnnot(std::move(pAnnot));
 }
 
 void CPDFSDK_AnnotHandlerMgr::Annot_OnLoad(CPDFSDK_Annot* pAnnot) {

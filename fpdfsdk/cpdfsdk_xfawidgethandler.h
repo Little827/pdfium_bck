@@ -29,7 +29,7 @@ class CPDFSDK_XFAWidgetHandler final : public IPDFSDK_AnnotHandler {
   CPDFSDK_Annot* NewAnnot(CPDF_Annot* pAnnot, CPDFSDK_PageView* pPage) override;
   CPDFSDK_Annot* NewAnnot(CXFA_FFWidget* pAnnot,
                           CPDFSDK_PageView* pPage) override;
-  void ReleaseAnnot(CPDFSDK_Annot* pAnnot) override;
+  void ReleaseAnnot(std::unique_ptr<CPDFSDK_Annot> pAnnot) override;
   CFX_FloatRect GetViewBBox(CPDFSDK_PageView* pPageView,
                             CPDFSDK_Annot* pAnnot) override;
   WideString GetText(CPDFSDK_Annot* pAnnot) override;
