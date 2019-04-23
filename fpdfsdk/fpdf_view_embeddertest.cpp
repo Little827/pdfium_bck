@@ -918,8 +918,7 @@ TEST_F(FPDFViewEmbedderTest, BUG_1281) {
   std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
   std::vector<uint8_t> emf_reverse_byte_order =
       RenderPageWithFlagsToEmf(page, FPDF_REVERSE_BYTE_ORDER);
-  // TODO(https://crbug.com/pdfium/1281): These should not be equal.
-  EXPECT_EQ(emf_normal, emf_reverse_byte_order);
+  EXPECT_NE(emf_normal, emf_reverse_byte_order);
 
   UnloadPage(page);
 }

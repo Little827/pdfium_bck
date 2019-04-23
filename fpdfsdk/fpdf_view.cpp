@@ -538,7 +538,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
     pBitmap->Clear(0x00ffffff);
     CFX_DefaultRenderDevice* pDevice = new CFX_DefaultRenderDevice;
     pContext->m_pDevice = pdfium::WrapUnique(pDevice);
-    pDevice->Attach(pBitmap, false, nullptr, false);
+    pDevice->Attach(pBitmap, !!(flags & FPDF_REVERSE_BYTE_ORDER), nullptr,
+                    false);
     if (bHasMask) {
       pContext->m_pOptions = pdfium::MakeUnique<CPDF_RenderOptions>();
       pContext->m_pOptions->GetOptions().bBreakForMasks = true;
