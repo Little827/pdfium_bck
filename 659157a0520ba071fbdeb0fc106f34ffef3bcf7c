@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64d7d01f_4e579497",
+        "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-23T00:45:31Z",
+      "side": 1,
+      "message": "#include \u003ccmath\u003e here and in all the other modified files?",
+      "revId": "659157a0520ba071fbdeb0fc106f34ffef3bcf7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25d5f1a_89847851",
+        "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-23T00:45:31Z",
+      "side": 1,
+      "message": "Can we get NaN here?",
+      "revId": "659157a0520ba071fbdeb0fc106f34ffef3bcf7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
