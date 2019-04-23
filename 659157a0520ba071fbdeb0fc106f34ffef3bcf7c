@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "845a77f1_8529a442",
+        "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-23T17:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64d7d01f_4e579497",
+      "revId": "659157a0520ba071fbdeb0fc106f34ffef3bcf7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f25d5f1a_89847851",
         "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-23T00:45:31Z",
       "side": 1,
       "message": "Can we get NaN here?",
+      "revId": "659157a0520ba071fbdeb0fc106f34ffef3bcf7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135325aa_b20fde3f",
+        "filename": "xfa/fxgraphics/cxfa_graphics.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-23T17:17:45Z",
+      "side": 1,
+      "message": "We can get NaN here only if one of the inputs to this method is already NaN, and I didn\u0027t want to trust it.",
+      "parentUuid": "f25d5f1a_89847851",
       "revId": "659157a0520ba071fbdeb0fc106f34ffef3bcf7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
