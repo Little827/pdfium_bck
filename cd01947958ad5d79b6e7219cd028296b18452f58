@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81e74b8e_39bebba4",
+        "filename": "testing/resources/text_form_negative_fontsize.in",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-24T22:15:02Z",
+      "side": 1,
+      "message": "Would you mind formatting these consistently like object 7 0 above? I sort of pretend it\u0027s like braces in C++, where the style is:\n\nif (...) {\n  ...\n}",
+      "revId": "cd01947958ad5d79b6e7219cd028296b18452f58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
