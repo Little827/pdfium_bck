@@ -164,8 +164,7 @@ void ReorderLayoutItemToTail(CXFA_LayoutItem* pLayoutItem) {
   if (!pParentLayoutItem)
     return;
 
-  pParentLayoutItem->RemoveChild(pLayoutItem);
-  pParentLayoutItem->AddChild(pLayoutItem);
+  pParentLayoutItem->AppendLastChild(pLayoutItem);
 }
 
 void RemoveLayoutItem(CXFA_LayoutItem* pLayoutItem) {
@@ -560,7 +559,8 @@ void CXFA_LayoutPageMgr::SubmitContentItem(
     CXFA_ContentLayoutItem* pContentLayoutItem,
     CXFA_ItemLayoutProcessor::Result eStatus) {
   if (pContentLayoutItem) {
-    GetCurrentViewRecord()->pCurContentArea->AddChild(pContentLayoutItem);
+    GetCurrentViewRecord()->pCurContentArea->AppendLastChild(
+        pContentLayoutItem);
     m_bCreateOverFlowPage = false;
   }
 
@@ -606,7 +606,7 @@ CXFA_ViewRecord* CXFA_LayoutPageMgr::CreateViewRecord(CXFA_Node* pPageNode,
       CXFA_ViewLayoutItem* pPageSetLayoutItem =
           new CXFA_ViewLayoutItem(pPageSet, nullptr);
       pPageSet->JSObject()->SetLayoutItem(pPageSetLayoutItem);
-      m_pPageSetLayoutItemRoot->AddChild(pPageSetLayoutItem);
+      m_pPageSetLayoutItemRoot->AppendLastChild(pPageSetLayoutItem);
       pNewRecord->pCurPageSet = pPageSetLayoutItem;
     }
     return AppendNewRecord(std::move(pNewRecord));
@@ -647,10 +647,10 @@ CXFA_ViewRecord* CXFA_LayoutPageMgr::CreateViewRecord(CXFA_Node* pPageNode,
     while (pPrePageSet->GetNextSibling()) {
       pPrePageSet = pPrePageSet->GetNextSibling()->AsViewLayoutItem();
     }
-    pPrePageSet->GetParent()->InsertChild(pPrePageSet, pPageSetLayoutItem);
+    pPrePageSet->GetParent()->InsertAfter(pPageSetLayoutItem, pPrePageSet);
     m_pPageSetCurRoot = pPageSetLayoutItem;
   } else {
-    pParentPageSetLayout->AddChild(pPageSetLayoutItem);
+    pParentPageSetLayout->AppendLastChild(pPageSetLayoutItem);
   }
   pNewRecord->pCurPageSet = pPageSetLayoutItem;
   return AppendNewRecord(std::move(pNewRecord));
@@ -684,7 +684,7 @@ void CXFA_LayoutPageMgr::AddPageAreaLayoutItem(CXFA_ViewRecord* pNewRecord,
     pNotify->OnPageEvent(pViewItem, XFA_PAGEVIEWEVENT_PostRemoved);
     pNewPageAreaLayoutItem = pViewItem;
   }
-  pNewRecord->pCurPageSet->AddChild(pNewPageAreaLayoutItem);
+  pNewRecord->pCurPageSet->AppendLastChild(pNewPageAreaLayoutItem);
   pNewRecord->pCurPageArea = pNewPageAreaLayoutItem;
   pNewRecord->pCurContentArea = nullptr;
 }
@@ -698,7 +698,7 @@ void CXFA_LayoutPageMgr::AddContentAreaLayoutItem(CXFA_ViewRecord* pNewRecord,
   CXFA_ViewLayoutItem* pNewViewLayoutItem =
       new CXFA_ViewLayoutItem(pContentArea, nullptr);
   ASSERT(pNewRecord->pCurPageArea);
-  pNewRecord->pCurPageArea->AddChild(pNewViewLayoutItem);
+  pNewRecord->pCurPageArea->AppendLastChild(pNewViewLayoutItem);
   pNewRecord->pCurContentArea = pNewViewLayoutItem;
 }
 
