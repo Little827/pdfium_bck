@@ -144,13 +144,13 @@ void CXFA_FFField::SetEditScrollOffset() {
   }
 
   float fScrollOffset = 0;
-  CXFA_FFField* pPrev = ToField(GetLayoutItem()->GetPrev());
+  CXFA_FFField* pPrev = ToField(GetLayoutItem()->GetPrevGenerated());
   if (pPrev)
     fScrollOffset = -(m_pNode->GetUIMargin().top);
 
   while (pPrev) {
     fScrollOffset += pPrev->m_rtUI.height;
-    pPrev = ToField(pPrev->GetLayoutItem()->GetPrev());
+    pPrev = ToField(pPrev->GetLayoutItem()->GetPrevGenerated());
   }
   static_cast<CFWL_Edit*>(m_pNormalWidget.get())
       ->SetScrollOffset(fScrollOffset);
@@ -176,12 +176,12 @@ void CXFA_FFField::CapPlacement() {
     float fRightInset = margin->GetRightInset();
     float fTopInset = margin->GetTopInset();
     float fBottomInset = margin->GetBottomInset();
-    if (!pItem->GetPrev() && !pItem->GetNext()) {
+    if (!pItem->GetPrevGenerated() && !pItem->GetNextGenerated()) {
       rtWidget.Deflate(fLeftInset, fTopInset, fRightInset, fBottomInset);
     } else {
-      if (!pItem->GetPrev())
+      if (!pItem->GetPrevGenerated())
         rtWidget.Deflate(fLeftInset, fTopInset, fRightInset, 0);
-      else if (!pItem->GetNext())
+      else if (!pItem->GetNextGenerated())
         rtWidget.Deflate(fLeftInset, 0, fRightInset, fBottomInset);
       else
         rtWidget.Deflate(fLeftInset, 0, fRightInset, 0);
@@ -194,9 +194,9 @@ void CXFA_FFField::CapPlacement() {
   if (caption && !caption->IsHidden()) {
     iCapPlacement = caption->GetPlacementType();
     if ((iCapPlacement == XFA_AttributeValue::Top &&
-         GetLayoutItem()->GetPrev()) ||
+         GetLayoutItem()->GetPrevGenerated()) ||
         (iCapPlacement == XFA_AttributeValue::Bottom &&
-         GetLayoutItem()->GetNext())) {
+         GetLayoutItem()->GetNextGenerated())) {
       m_rtCaption = CFX_RectF();
     } else {
       fCapReserve = caption->GetReserve();
@@ -207,15 +207,15 @@ void CXFA_FFField::CapPlacement() {
         fCapReserve = std::min(fCapReserve, rtWidget.width);
       }
       CXFA_ContentLayoutItem* pItem = GetLayoutItem();
-      if (!pItem->GetPrev() && !pItem->GetNext()) {
+      if (!pItem->GetPrevGenerated() && !pItem->GetNextGenerated()) {
         m_rtCaption = rtWidget;
       } else {
-        pItem = pItem->GetFirst();
+        pItem = pItem->GetFirstGenerated();
         m_rtCaption = pItem->GetRect(false);
-        pItem = pItem->GetNext();
+        pItem = pItem->GetNextGenerated();
         while (pItem) {
           m_rtCaption.height += pItem->GetRect(false).Height();
-          pItem = pItem->GetNext();
+          pItem = pItem->GetNextGenerated();
         }
         XFA_RectWithoutMargin(&m_rtCaption, margin);
       }
