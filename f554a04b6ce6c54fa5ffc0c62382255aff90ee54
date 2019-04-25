@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a8de025_1494b4f1",
+        "filename": "testing/resources/pixel/bug_1286.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T05:13:05Z",
+      "side": 1,
+      "message": "Can you use this style:\n\n{{object 1 0}} \u003c\u003c\n  /Key /Val\n\u003e\u003e\n\nSo it\u0027s like \"if (...) {\" in C++?",
+      "revId": "f554a04b6ce6c54fa5ffc0c62382255aff90ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c586991e_04a8ce66",
+        "filename": "testing/resources/pixel/bug_1286.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T05:13:05Z",
+      "side": 1,
+      "message": "If it does not matter, can you use consecutive object numbers?",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "f554a04b6ce6c54fa5ffc0c62382255aff90ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2a5dbef_4e014995",
+        "filename": "testing/resources/pixel/bug_1286.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T05:13:05Z",
+      "side": 1,
+      "message": "/Kids [",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "f554a04b6ce6c54fa5ffc0c62382255aff90ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ab96b7_ed899b87",
+        "filename": "testing/resources/pixel/bug_1286.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T05:13:05Z",
+      "side": 1,
+      "message": "Add a space in front.",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f554a04b6ce6c54fa5ffc0c62382255aff90ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee57765d_f2c757c9",
+        "filename": "testing/resources/pixel/bug_1286.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T05:13:05Z",
+      "side": 1,
+      "message": "Are these balanced correctly vs. the start double angle brackets?",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "f554a04b6ce6c54fa5ffc0c62382255aff90ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
