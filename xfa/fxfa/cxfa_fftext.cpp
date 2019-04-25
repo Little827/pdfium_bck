@@ -43,14 +43,14 @@ void CXFA_FFText::RenderWidget(CXFA_Graphics* pGS,
   CXFA_Margin* margin = m_pNode->GetMarginIfExists();
   if (margin) {
     CXFA_ContentLayoutItem* pItem = GetLayoutItem();
-    if (!pItem->GetPrev() && !pItem->GetNext()) {
+    if (!pItem->GetPrevGenerated() && !pItem->GetNextGenerated()) {
       XFA_RectWithoutMargin(&rtText, margin);
     } else {
       float fTopInset = 0;
       float fBottomInset = 0;
-      if (!pItem->GetPrev())
+      if (!pItem->GetPrevGenerated())
         fTopInset = margin->GetTopInset();
-      else if (!pItem->GetNext())
+      else if (!pItem->GetNextGenerated())
         fBottomInset = margin->GetBottomInset();
 
       rtText.Deflate(margin->GetLeftInset(), fTopInset, margin->GetRightInset(),
@@ -80,21 +80,21 @@ bool CXFA_FFText::PerformLayout() {
 
   pTextLayout->ClearBlocks();
   CXFA_ContentLayoutItem* pItem = GetLayoutItem();
-  if (!pItem->GetPrev() && !pItem->GetNext())
+  if (!pItem->GetPrevGenerated() && !pItem->GetNextGenerated())
     return true;
 
-  pItem = pItem->GetFirst();
+  pItem = pItem->GetFirstGenerated();
   while (pItem) {
     CFX_RectF rtText = pItem->GetRect(false);
     CXFA_Margin* margin = m_pNode->GetMarginIfExists();
     if (margin) {
-      if (!pItem->GetPrev())
+      if (!pItem->GetPrevGenerated())
         rtText.height -= margin->GetTopInset();
-      else if (!pItem->GetNext())
+      else if (!pItem->GetNextGenerated())
         rtText.height -= margin->GetBottomInset();
     }
     pTextLayout->ItemBlocks(rtText, pItem->GetIndex());
-    pItem = pItem->GetNext();
+    pItem = pItem->GetNextGenerated();
   }
   pTextLayout->ResetHasBlock();
   return true;

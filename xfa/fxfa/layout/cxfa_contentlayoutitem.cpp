@@ -22,42 +22,45 @@ CXFA_ContentLayoutItem::CXFA_ContentLayoutItem(
 }
 
 CXFA_ContentLayoutItem::~CXFA_ContentLayoutItem() {
-  RemoveSelf();
+  RemoveSelfFromGeneratedList();
   CJX_Object* pJsObject = GetFormNode()->JSObject();
   if (pJsObject->GetLayoutItem() == this)
     pJsObject->SetLayoutItem(nullptr);
 }
 
-CXFA_ContentLayoutItem* CXFA_ContentLayoutItem::GetFirst() {
+CXFA_ContentLayoutItem* CXFA_ContentLayoutItem::GetFirstGenerated() {
   CXFA_ContentLayoutItem* pCurNode = this;
-  while (auto* pPrev = pCurNode->GetPrev())
+  while (auto* pPrev = pCurNode->GetPrevGenerated())
     pCurNode = pPrev;
 
   return pCurNode;
 }
 
-CXFA_ContentLayoutItem* CXFA_ContentLayoutItem::GetLast() {
+CXFA_ContentLayoutItem* CXFA_ContentLayoutItem::GetLastGenerated() {
   CXFA_ContentLayoutItem* pCurNode = this;
-  while (auto* pNext = pCurNode->GetNext())
+  while (auto* pNext = pCurNode->GetNextGenerated())
     pCurNode = pNext;
 
   return pCurNode;
 }
 
-void CXFA_ContentLayoutItem::InsertAfter(CXFA_ContentLayoutItem* pItem) {
-  pItem->RemoveSelf();
-  pItem->m_pNext = m_pNext;
-  pItem->m_pPrev = this;
-  m_pNext = pItem;
-  if (pItem->m_pNext)
-    pItem->m_pNext->m_pPrev = pItem;
+void CXFA_ContentLayoutItem::InsertIntoGeneratedList(
+    CXFA_ContentLayoutItem* pItem) {
+  pItem->RemoveSelfFromGeneratedList();
+  pItem->m_pNextGenerated = m_pNextGenerated;
+  pItem->m_pPrevGenerated = this;
+  m_pNextGenerated = pItem;
+  if (pItem->m_pNextGenerated)
+    pItem->m_pNextGenerated->m_pPrevGenerated = pItem;
 }
 
-void CXFA_ContentLayoutItem::RemoveSelf() {
-  if (m_pNext)
-    m_pNext->m_pPrev = m_pPrev;
-  if (m_pPrev)
-    m_pPrev->m_pNext = m_pNext;
+void CXFA_ContentLayoutItem::RemoveSelfFromGeneratedList() {
+  if (m_pNextGenerated)
+    m_pNextGenerated->m_pPrevGenerated = m_pPrevGenerated;
+  if (m_pPrevGenerated)
+    m_pPrevGenerated->m_pNextGenerated = m_pNextGenerated;
+  m_pNextGenerated = nullptr;
+  m_pPrevGenerated = nullptr;
 }
 
 CFX_RectF CXFA_ContentLayoutItem::GetRect(bool bRelative) const {
@@ -100,7 +103,7 @@ CFX_RectF CXFA_ContentLayoutItem::GetRect(bool bRelative) const {
 size_t CXFA_ContentLayoutItem::GetIndex() const {
   size_t szIndex = 0;
   const CXFA_ContentLayoutItem* pCurNode = this;
-  while (auto* pPrev = pCurNode->GetPrev()) {
+  while (auto* pPrev = pCurNode->GetPrevGenerated()) {
     pCurNode = pPrev;
     ++szIndex;
   }
