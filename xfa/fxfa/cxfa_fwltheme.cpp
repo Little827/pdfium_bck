@@ -159,10 +159,10 @@ CFX_RectF CXFA_FWLTheme::GetUIMargin(const CFWL_ThemePart& pThemePart) const {
     if (pNode->IsMultiLine())
       rect.width += para->GetMarginRight();
   }
-  if (!pItem->GetPrev()) {
-    if (pItem->GetNext())
+  if (!pItem->GetPrevGenerated()) {
+    if (pItem->GetNextGenerated())
       rect.height = 0;
-  } else if (!pItem->GetNext()) {
+  } else if (!pItem->GetNextGenerated()) {
     rect.top = 0;
   } else {
     rect.top = 0;

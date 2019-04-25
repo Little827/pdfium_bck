@@ -22,11 +22,18 @@ class CXFA_ContentLayoutItem : public CXFA_LayoutItem {
 
   CXFA_FFWidget* GetFFWidget() { return m_pFFWidget.get(); }
 
-  CXFA_ContentLayoutItem* GetFirst();
-  CXFA_ContentLayoutItem* GetLast();
-  CXFA_ContentLayoutItem* GetPrev() const { return m_pPrev.Get(); }
-  CXFA_ContentLayoutItem* GetNext() const { return m_pNext.Get(); }
-  void InsertAfter(CXFA_ContentLayoutItem* pNext);
+  // Generated nodes are "orphans", in that they do not occur in the standard
+  // layout tree. Instead they are maintained on a separate doubly-linked list
+  // below.
+  CXFA_ContentLayoutItem* GetFirstGenerated();
+  CXFA_ContentLayoutItem* GetLastGenerated();
+  CXFA_ContentLayoutItem* GetPrevGenerated() const {
+    return m_pPrevGenerated.Get();
+  }
+  CXFA_ContentLayoutItem* GetNextGenerated() const {
+    return m_pNextGenerated.Get();
+  }
+  void InsertIntoGeneratedList(CXFA_ContentLayoutItem* pNext);
 
   CFX_RectF GetRect(bool bRelative) const;
   size_t GetIndex() const;
@@ -41,11 +48,11 @@ class CXFA_ContentLayoutItem : public CXFA_LayoutItem {
   CFX_SizeF m_sSize;
 
  private:
-  void RemoveSelf();
+  void RemoveSelfFromGeneratedList();
 
   mutable uint32_t m_dwStatus = 0;
-  UnownedPtr<CXFA_ContentLayoutItem> m_pPrev;
-  UnownedPtr<CXFA_ContentLayoutItem> m_pNext;
+  UnownedPtr<CXFA_ContentLayoutItem> m_pPrevGenerated;
+  UnownedPtr<CXFA_ContentLayoutItem> m_pNextGenerated;
   std::unique_ptr<CXFA_FFWidget> const m_pFFWidget;
 };
 

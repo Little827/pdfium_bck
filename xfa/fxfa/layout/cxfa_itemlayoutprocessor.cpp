@@ -439,7 +439,8 @@ void DeleteLayoutGeneratedNode(CXFA_Node* pGenerateNode) {
     CXFA_ContentLayoutItem* pCurLayoutItem =
         ToContentLayoutItem(pNode->JSObject()->GetLayoutItem());
     while (pCurLayoutItem) {
-      CXFA_ContentLayoutItem* pNextLayoutItem = pCurLayoutItem->GetNext();
+      CXFA_ContentLayoutItem* pNextLayoutItem =
+          pCurLayoutItem->GetNextGenerated();
       pNotify->OnLayoutItemRemoving(pDocLayout, pCurLayoutItem);
       delete pCurLayoutItem;
       pCurLayoutItem = pNextLayoutItem;
@@ -637,7 +638,7 @@ CXFA_ContentLayoutItem* CXFA_ItemLayoutProcessor::CreateContentLayoutItem(
   CXFA_ContentLayoutItem* pLayoutItem = nullptr;
   if (m_pOldLayoutItem) {
     pLayoutItem = m_pOldLayoutItem;
-    m_pOldLayoutItem = m_pOldLayoutItem->GetNext();
+    m_pOldLayoutItem = m_pOldLayoutItem->GetNextGenerated();
     return pLayoutItem;
   }
   CXFA_FFNotify* pNotify = pFormNode->GetDocument()->GetNotify();
@@ -647,7 +648,7 @@ CXFA_ContentLayoutItem* CXFA_ItemLayoutProcessor::CreateContentLayoutItem(
   CXFA_ContentLayoutItem* pPrevLayoutItem =
       ToContentLayoutItem(pFormNode->JSObject()->GetLayoutItem());
   if (pPrevLayoutItem) {
-    pPrevLayoutItem->GetLast()->InsertAfter(pLayoutItem);
+    pPrevLayoutItem->GetLastGenerated()->InsertIntoGeneratedList(pLayoutItem);
   } else {
     pFormNode->JSObject()->SetLayoutItem(pLayoutItem);
   }
@@ -811,7 +812,7 @@ CXFA_ContentLayoutItem* CXFA_ItemLayoutProcessor::ExtractLayoutItem() {
 
   while (m_pOldLayoutItem) {
     CXFA_ContentLayoutItem* pToDeleteItem = m_pOldLayoutItem;
-    m_pOldLayoutItem = pToDeleteItem->GetNext();
+    m_pOldLayoutItem = pToDeleteItem->GetNextGenerated();
     if (pToDeleteItem == pLayoutItem)
       break;
     pNotify->OnLayoutItemRemoving(pDocLayout, pToDeleteItem);
@@ -1567,7 +1568,8 @@ CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
             m_pCurChildPreprocessor->GetFormNode() ==
                 pLayoutNext->GetFormNode()) {
           if (m_pCurChildPreprocessor->m_pLayoutItem)
-            pLayoutNext->InsertAfter(m_pCurChildPreprocessor->m_pLayoutItem);
+            pLayoutNext->InsertIntoGeneratedList(
+                m_pCurChildPreprocessor->m_pLayoutItem);
           m_pCurChildPreprocessor->m_pLayoutItem = pLayoutNext;
           break;
         }
