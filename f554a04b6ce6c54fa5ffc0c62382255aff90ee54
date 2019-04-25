@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "20bba4f7_297f3b7a",
+        "filename": "core/fpdfapi/page/cpdf_tilingpattern.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T05:17:02Z",
+      "side": 1,
+      "message": "Is this class really necessary? It\u0027s only instantiated in a single place.",
+      "revId": "f554a04b6ce6c54fa5ffc0c62382255aff90ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a8de025_1494b4f1",
         "filename": "testing/resources/pixel/bug_1286.in",
         "patchSetId": 5
