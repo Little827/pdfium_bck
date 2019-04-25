@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "639d39fb_08da0b92",
+        "filename": "core/fpdfapi/page/cpdf_tilingpattern.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T21:11:01Z",
+      "side": 1,
+      "message": "Can we just get rid of it for now? If we end up finding this helper class can be applied in more places, then we can easily bring it back.",
+      "parentUuid": "be84ba92_cb03c4dc",
+      "revId": "f554a04b6ce6c54fa5ffc0c62382255aff90ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a8de025_1494b4f1",
         "filename": "testing/resources/pixel/bug_1286.in",
         "patchSetId": 5
