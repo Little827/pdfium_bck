@@ -16,6 +16,24 @@
       "revId": "6d0632fa302f4d315b6d3c59225042136e0b02ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684572f2_be67d79b",
+        "filename": "testing/resources/pixel/bug_1286.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-25T21:11:40Z",
+      "side": 1,
+      "message": "Err, bad formatting on my part. no space after the 0.",
+      "parentUuid": "4ad64574_12a12101",
+      "revId": "6d0632fa302f4d315b6d3c59225042136e0b02ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
