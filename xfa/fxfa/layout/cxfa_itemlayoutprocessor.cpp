@@ -721,10 +721,10 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
         pContentItem->m_sSize.height += fCurTopMargin;
       }
     }
+  } else if (pLayoutItem->GetParent()) {
+    pLayoutItem->GetParent()->InsertChild(pLayoutItem, pSecondLayoutItem);
   } else {
-    pSecondLayoutItem->SetParent(pLayoutItem->GetParent());
-    pSecondLayoutItem->SetNextSibling(pLayoutItem->GetNextSibling());
-    pLayoutItem->SetNextSibling(pSecondLayoutItem);
+    pLayoutItem->AddChild(pSecondLayoutItem);
   }
 
   CXFA_ContentLayoutItem* pChildren =
