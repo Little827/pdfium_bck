@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c44ef83b_d70a8df5",
+        "filename": "core/fxcrt/tree_node.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-26T20:14:41Z",
+      "side": 1,
+      "message": "Split into 2 CHECKs.",
+      "revId": "0cf353c4d835959315cb7efa908bdba90b063e11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1b1ec72_bac949c5",
         "filename": "core/fxcrt/tree_node.h",
         "patchSetId": 4
@@ -36,6 +53,30 @@
       "writtenOn": "2019-04-26T20:03:27Z",
       "side": 1,
       "message": "And this non-self-parenting check covers the self-insertion case.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 25
+      },
+      "revId": "0cf353c4d835959315cb7efa908bdba90b063e11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8206f57_e4784fe0",
+        "filename": "core/fxcrt/tree_node.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-26T20:14:41Z",
+      "side": 1,
+      "message": "Maybe add these comments as actual comments in the code?",
+      "parentUuid": "4a7c5767_1267eecb",
       "range": {
         "startLine": 112,
         "startChar": 0,
