@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40f68206_5abeaa34",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-26T21:54:07Z",
+      "side": 1,
+      "message": "This certainly looks reasonable, but it turns out the test case, with normal usage, hits the else branch. I\u0027ll need to figure out how that path should handle FPDF_REVERSE_BYTE_ORDER. In the mean while, how about we revert the change in fpdfsdk/fpdf_view_embeddertest.cpp and just land this as is?",
+      "revId": "f1ea76e5478201e35eeab8edcab2d8fe3caada77",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
