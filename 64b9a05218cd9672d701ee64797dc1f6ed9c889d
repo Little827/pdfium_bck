@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f052de63_50300f21",
+        "filename": "core/fxcrt/tree_node.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-26T20:01:29Z",
+      "side": 0,
+      "message": "Note: Removing a child with a NULL parent from a NULL |this| previously silently succeeded if the child had both prev and next siblings.",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "64b9a05218cd9672d701ee64797dc1f6ed9c889d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
