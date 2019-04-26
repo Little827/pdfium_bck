@@ -16,6 +16,24 @@
       "revId": "9cdf3c5b28b3c97193cca4a8cdd8c485d45c7854",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea2567b_35b47c7f",
+        "filename": "core/fxcrt/tree_node.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-26T21:42:16Z",
+      "side": 1,
+      "message": "Done. Actually, it\u0027s HasChild() I think.",
+      "parentUuid": "a979b4d7_83d92a0c",
+      "revId": "9cdf3c5b28b3c97193cca4a8cdd8c485d45c7854",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
