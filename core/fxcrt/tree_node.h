@@ -52,8 +52,8 @@ class TreeNode {
       AppendLastChild(child);
       return;
     }
-    CHECK(other->m_pParent == this);
     BecomeParent(child);
+    CHECK(other != this && other->m_pParent == this);
     child->m_pNextSibling = other;
     child->m_pPrevSibling = other->m_pPrevSibling;
     if (other->m_pPrevSibling)
@@ -68,8 +68,8 @@ class TreeNode {
       AppendFirstChild(child);
       return;
     }
-    CHECK(other->m_pParent == this);
     BecomeParent(child);
+    CHECK(other != this && other->m_pParent == this);
     child->m_pNextSibling = other->m_pNextSibling;
     child->m_pPrevSibling = other;
     if (other->m_pNextSibling)
@@ -80,16 +80,20 @@ class TreeNode {
   }
 
   void RemoveChild(T* child) {
-    CHECK(child->m_pParent == this);
-    if (child->m_pNextSibling)
+    CHECK(child != this && child->m_pParent == this);
+    if (child->m_pNextSibling) {
+      CHECK(m_pLastChild != child);
       child->m_pNextSibling->m_pPrevSibling = child->m_pPrevSibling;
-    else
+    } else {
       m_pLastChild = child->m_pPrevSibling;
+    }
 
-    if (child->m_pPrevSibling)
+    if (child->m_pPrevSibling) {
+      CHECK(m_pFirstChild != child);
       child->m_pPrevSibling->m_pNextSibling = child->m_pNextSibling;
-    else
+    } else {
       m_pFirstChild = child->m_pNextSibling;
+    }
 
     child->m_pParent = nullptr;
     child->m_pPrevSibling = nullptr;
@@ -99,11 +103,12 @@ class TreeNode {
  private:
   // Child left in state where sibling members need subsequent adjustment.
   void BecomeParent(T* child) {
+    CHECK(child != this);
     if (child->m_pParent)
       child->m_pParent->TreeNode<T>::RemoveChild(child);
     child->m_pParent = static_cast<T*>(this);
-    ASSERT(!child->m_pNextSibling);
-    ASSERT(!child->m_pPrevSibling);
+    CHECK(!child->m_pNextSibling);
+    CHECK(!child->m_pPrevSibling);
   }
 
   T* m_pParent = nullptr;       // Raw, intra-tree pointer.
