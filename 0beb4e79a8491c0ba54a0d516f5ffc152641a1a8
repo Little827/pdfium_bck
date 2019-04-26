@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d0e9b6c_adcd362c",
+        "filename": "core/fpdfapi/parser/cpdf_object_avail.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-26T23:20:45Z",
+      "side": 1,
+      "message": "You may want to doublecheck my reasoning that this doesn\u0027t introduce a cycle.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "0beb4e79a8491c0ba54a0d516f5ffc152641a1a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
