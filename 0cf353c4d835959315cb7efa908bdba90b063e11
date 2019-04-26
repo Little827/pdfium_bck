@@ -22,6 +22,29 @@
       "revId": "0cf353c4d835959315cb7efa908bdba90b063e11",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7c5767_1267eecb",
+        "filename": "core/fxcrt/tree_node.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-26T20:03:27Z",
+      "side": 1,
+      "message": "And this non-self-parenting check covers the self-insertion case.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 25
+      },
+      "revId": "0cf353c4d835959315cb7efa908bdba90b063e11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
