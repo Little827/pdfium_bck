@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35a5301b_5c51259e",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4292,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-27T01:45:54Z",
+      "side": 0,
+      "message": "- I did this wrong in https://pdfium.googlesource.com/pdfium/+/85f019a8 but there were no tests...\n- Probably should fix all the static_cast\u003cint32_t\u003e(ValueToFloat()) calls.",
+      "revId": "4b7658e71e19096d19e882e7c9cc5906a81ed016",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
