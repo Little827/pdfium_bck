@@ -22,6 +22,30 @@
       "revId": "0beb4e79a8491c0ba54a0d516f5ffc152641a1a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e565bcb_e118febd",
+        "filename": "core/fpdfapi/parser/cpdf_object_avail.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-27T00:32:05Z",
+      "side": 1,
+      "message": "It looks like |CPDF_DataAvail::m_pFileRead| is holding on to |validator_| for the life time of CPDF_DataAvail. CPDF_DataAvail also holds various CPDF_ObjectAvail objects and does not hand them out to anyone. So it shouldn\u0027t matter if CPDF_DataAvail has 1 or N references.",
+      "parentUuid": "6d0e9b6c_adcd362c",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "0beb4e79a8491c0ba54a0d516f5ffc152641a1a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
