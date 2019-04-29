@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8f9a92_b643fac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-29T17:11:11Z",
+      "side": 1,
+      "message": "Use MiB, or just say \"Reduce size of build directory by 206 MiB (-1.0%) when ....",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "667df20bdfeffd706871a6a361a2b989a2d6e2d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952e156f_8c50f19e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-29T17:11:11Z",
+      "side": 1,
+      "message": "Wrap at 72 columns?",
+      "revId": "667df20bdfeffd706871a6a361a2b989a2d6e2d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "415d6bc7_a7199b22",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-29T17:11:11Z",
+      "side": 1,
+      "message": "nit: sort (surprised \"git cl format\" didn\u0027t)",
+      "revId": "667df20bdfeffd706871a6a361a2b989a2d6e2d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf9d0e6f_8da98108",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-29T17:11:11Z",
+      "side": 1,
+      "message": "Can you comment the #endifs, givne the multiple levels of nesting?",
+      "revId": "667df20bdfeffd706871a6a361a2b989a2d6e2d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
