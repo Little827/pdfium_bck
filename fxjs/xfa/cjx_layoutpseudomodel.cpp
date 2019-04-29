@@ -103,7 +103,7 @@ CJS_Result CJX_LayoutPseudoModel::HWXY(
     return CJS_Result::Success();
 
   while (iIndex > 0 && pLayoutItem) {
-    pLayoutItem = pLayoutItem->GetNext();
+    pLayoutItem = pLayoutItem->GetNextGenerated();
     --iIndex;
   }
 
@@ -204,8 +204,8 @@ CJS_Result CJX_LayoutPseudoModel::pageSpan(
   if (!pLayoutItem)
     return CJS_Result::Success(runtime->NewNumber(-1));
 
-  int32_t iLast = pLayoutItem->GetLast()->GetPage()->GetPageIndex();
-  int32_t iFirst = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
+  int32_t iLast = pLayoutItem->GetLastGenerated()->GetPage()->GetPageIndex();
+  int32_t iFirst = pLayoutItem->GetFirstGenerated()->GetPage()->GetPageIndex();
   int32_t iPageSpan = iLast - iFirst + 1;
   return CJS_Result::Success(runtime->NewNumber(iPageSpan));
 }
@@ -480,6 +480,6 @@ CJS_Result CJX_LayoutPseudoModel::PageInternals(
   if (!pLayoutItem)
     return CJS_Result::Success(runtime->NewNumber(-1));
 
-  int32_t iPage = pLayoutItem->GetFirst()->GetPage()->GetPageIndex();
+  int32_t iPage = pLayoutItem->GetFirstGenerated()->GetPage()->GetPageIndex();
   return CJS_Result::Success(runtime->NewNumber(bAbsPage ? iPage : iPage + 1));
 }
