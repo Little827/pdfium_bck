@@ -34,6 +34,24 @@
       "revId": "d69e0650a1c945933be7766a5b3a9e9c93cadd8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "067046d3_5b19ece1",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-04-29T17:41:42Z",
+      "side": 0,
+      "message": "err, I mean FPDFSDK_EXPORTS wasn\u0027t #defined anywhere so this branch was never taken",
+      "parentUuid": "098c040c_d8d031c2",
+      "revId": "d69e0650a1c945933be7766a5b3a9e9c93cadd8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
