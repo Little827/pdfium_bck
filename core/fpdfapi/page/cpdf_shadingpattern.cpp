@@ -31,13 +31,10 @@ CPDF_ShadingPattern::CPDF_ShadingPattern(CPDF_Document* pDoc,
                                          bool bShading,
                                          const CFX_Matrix& parentMatrix)
     : CPDF_Pattern(pDoc, bShading ? nullptr : pPatternObj, parentMatrix),
-      m_bShadingObj(bShading),
-      m_pShadingObj(pPatternObj) {
+      m_bShadingObj(bShading) {
   ASSERT(document());
-  if (!bShading) {
-    m_pShadingObj = pattern_obj()->GetDict()->GetDirectObjectFor("Shading");
+  if (!bShading)
     SetPatternToFormMatrix();
-  }
 }
 
 CPDF_ShadingPattern::~CPDF_ShadingPattern() {
@@ -63,8 +60,9 @@ bool CPDF_ShadingPattern::Load() {
   if (m_ShadingType != kInvalidShading)
     return true;
 
+  const CPDF_Object* pShadingObj = GetShadingObject();
   const CPDF_Dictionary* pShadingDict =
-      m_pShadingObj ? m_pShadingObj->GetDict() : nullptr;
+      pShadingObj ? pShadingObj->GetDict() : nullptr;
   if (!pShadingDict)
     return false;
 
@@ -96,12 +94,17 @@ bool CPDF_ShadingPattern::Load() {
   return Validate();
 }
 
+const CPDF_Object* CPDF_ShadingPattern::GetShadingObject() const {
+  return m_bShadingObj ? pattern_obj()->GetDict()->GetDirectObjectFor("Shading")
+                       : pattern_obj();
+}
+
 bool CPDF_ShadingPattern::Validate() const {
   if (m_ShadingType == kInvalidShading)
     return false;
 
   // We expect to have a stream if our shading type is a mesh.
-  if (IsMeshShading() && !ToStream(m_pShadingObj.Get()))
+  if (IsMeshShading() && !ToStream(GetShadingObject()))
     return false;
 
   // Validate color space
