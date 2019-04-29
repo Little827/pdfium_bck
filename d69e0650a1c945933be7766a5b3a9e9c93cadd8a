@@ -16,6 +16,24 @@
       "revId": "d69e0650a1c945933be7766a5b3a9e9c93cadd8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098c040c_d8d031c2",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-04-29T17:40:24Z",
+      "side": 0,
+      "message": "I removed it on purpose.  It\u0027s not used anywhere.",
+      "parentUuid": "fc08be70_0d6023ee",
+      "revId": "d69e0650a1c945933be7766a5b3a9e9c93cadd8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
