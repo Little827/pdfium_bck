@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1556656715 -0700\nnonce AC6AUtMq3uxUJNodHgmmpLdTDewf/sSSIwnMBIJ7hI/M1p0+HiSeqInQ9hyjusoy+FJrFCQkA/8/\n\n0000000000000000000000000000000000000000 3068b9784ac7844bfe331cee8b1614b5f6281a8f refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzIsksACgkQqzYtYVpm\n/Xtw/gf+Loz+B7MG0B8PP0a14B/oSKxZqKpaEFv5tEzqbYrUxWRa997if73cHdjN\nLsT9y5fGDRzGcthTT8fRDc0jNNLW+4KVx6chaunOxRJEc2ixvEkt1CZE2WmPa/Qv\nafuj6yWAim7wqp1V0tgxvz4sNg/eiv+n9VxBKSPAtp8eq017BjX61N9yJB3rl3vp\nfWbKimQ8luN3gUDQOpVMkqzccoIwbbIMAZSeKp6h8gM+0FWazSiLIfAwL2PgsBOI\nzoVpZYmegiqjHO/eT7Td/qoPpZYeUfoLGk/8ztpYb8zkJ6CE8on05Qrj4XUq1QTZ\nTxYkm4/1qO2PqV/2A1T2s5gTvvZTkw\u003d\u003d\n\u003daya4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c000d832_ff84c164",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T21:30:18Z",
+      "side": 1,
+      "message": "I worry about someone including build_config.h but not fx_system.h and then testing OS_WASM inconsistently.  Maybe we just want to use __wasm__ in all places where we need this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "3068b9784ac7844bfe331cee8b1614b5f6281a8f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
