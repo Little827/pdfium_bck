@@ -73,12 +73,12 @@ class CPDF_Image final : public Retainable {
 
  private:
   explicit CPDF_Image(CPDF_Document* pDoc);
-  CPDF_Image(CPDF_Document* pDoc, std::unique_ptr<CPDF_Stream> pStream);
+  CPDF_Image(CPDF_Document* pDoc, RetainPtr<CPDF_Stream> pStream);
   CPDF_Image(CPDF_Document* pDoc, uint32_t dwStreamObjNum);
   ~CPDF_Image() override;
 
   void FinishInitialization(CPDF_Dictionary* pStreamDict);
-  std::unique_ptr<CPDF_Dictionary> InitJPEG(pdfium::span<uint8_t> src_span);
+  RetainPtr<CPDF_Dictionary> InitJPEG(pdfium::span<uint8_t> src_span);
 
   int32_t m_Height = 0;
   int32_t m_Width = 0;
@@ -86,7 +86,7 @@ class CPDF_Image final : public Retainable {
   bool m_bIsMask = false;
   bool m_bInterpolate = false;
   UnownedPtr<CPDF_Document> const m_pDocument;
-  MaybeOwned<CPDF_Stream> m_pStream;
+  RetainPtr<CPDF_Stream> m_pStream;
   UnownedPtr<const CPDF_Dictionary> m_pOC;
 };
 

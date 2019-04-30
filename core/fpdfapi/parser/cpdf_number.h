@@ -16,15 +16,14 @@
 
 class CPDF_Number final : public CPDF_Object {
  public:
-  CPDF_Number();
-  explicit CPDF_Number(int value);
-  explicit CPDF_Number(float value);
-  explicit CPDF_Number(ByteStringView str);
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   ~CPDF_Number() override;
 
   // CPDF_Object:
   Type GetType() const override;
-  std::unique_ptr<CPDF_Object> Clone() const override;
+  RetainPtr<CPDF_Object> Clone() const override;
   ByteString GetString() const override;
   float GetNumber() const override;
   int GetInteger() const override;
@@ -38,6 +37,11 @@ class CPDF_Number final : public CPDF_Object {
   bool IsInteger() const { return m_Number.IsInteger(); }
 
  private:
+  CPDF_Number();
+  explicit CPDF_Number(int value);
+  explicit CPDF_Number(float value);
+  explicit CPDF_Number(ByteStringView str);
+
   FX_Number m_Number;
 };
 

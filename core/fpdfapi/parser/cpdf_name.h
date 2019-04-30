@@ -15,12 +15,14 @@
 
 class CPDF_Name final : public CPDF_Object {
  public:
-  CPDF_Name(WeakPtr<ByteStringPool> pPool, const ByteString& str);
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   ~CPDF_Name() override;
 
   // CPDF_Object:
   Type GetType() const override;
-  std::unique_ptr<CPDF_Object> Clone() const override;
+  RetainPtr<CPDF_Object> Clone() const override;
   ByteString GetString() const override;
   WideString GetUnicodeText() const override;
   void SetString(const ByteString& str) override;
@@ -31,6 +33,8 @@ class CPDF_Name final : public CPDF_Object {
                const CPDF_Encryptor* encryptor) const override;
 
  private:
+  CPDF_Name(WeakPtr<ByteStringPool> pPool, const ByteString& str);
+
   ByteString m_Name;
 };
 

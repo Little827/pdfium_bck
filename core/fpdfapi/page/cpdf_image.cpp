@@ -46,11 +46,9 @@ CPDF_Image::CPDF_Image(CPDF_Document* pDoc) : m_pDocument(pDoc) {
   ASSERT(m_pDocument);
 }
 
-CPDF_Image::CPDF_Image(CPDF_Document* pDoc,
-                       std::unique_ptr<CPDF_Stream> pStream)
+CPDF_Image::CPDF_Image(CPDF_Document* pDoc, RetainPtr<CPDF_Stream> pStream)
     : m_bIsInline(true), m_pDocument(pDoc), m_pStream(std::move(pStream)) {
   ASSERT(m_pDocument);
-  ASSERT(m_pStream.IsOwned());
   FinishInitialization(m_pStream->GetDict());
 }
 
@@ -78,14 +76,14 @@ void CPDF_Image::ConvertStreamToIndirectObject() {
     return;
 
   ASSERT(m_pStream.IsOwned());
-  m_pDocument->AddIndirectObject(m_pStream.Release());
+  m_pDocument->AddIndirectObject(m_pStream);
 }
 
 CPDF_Dictionary* CPDF_Image::GetDict() const {
   return m_pStream ? m_pStream->GetDict() : nullptr;
 }
 
-std::unique_ptr<CPDF_Dictionary> CPDF_Image::InitJPEG(
+RetainPtr<CPDF_Dictionary> CPDF_Image::InitJPEG(
     pdfium::span<uint8_t> src_span) {
   int32_t width;
   int32_t height;
@@ -129,7 +127,7 @@ std::unique_ptr<CPDF_Dictionary> CPDF_Image::InitJPEG(
   m_Width = width;
   m_Height = height;
   if (!m_pStream)
-    m_pStream = pdfium::MakeUnique<CPDF_Stream>();
+    m_pStream = pdfium::MakeRetain<CPDF_Stream>();
   return pDict;
 }
 
@@ -143,7 +141,7 @@ void CPDF_Image::SetJpegImage(const RetainPtr<IFX_SeekableReadStream>& pFile) {
   if (!pFile->ReadBlockAtOffset(data.data(), 0, dwEstimateSize))
     return;
 
-  std::unique_ptr<CPDF_Dictionary> pDict = InitJPEG(data);
+  RetainPtr<CPDF_Dictionary> pDict = InitJPEG(data);
   if (!pDict && size > dwEstimateSize) {
     data.resize(size);
     pFile->ReadBlockAtOffset(data.data(), 0, size);
@@ -165,7 +163,7 @@ void CPDF_Image::SetJpegImageInline(
   if (!pFile->ReadBlockAtOffset(data.data(), 0, size))
     return;
 
-  std::unique_ptr<CPDF_Dictionary> pDict = InitJPEG(data);
+  RetainPtr<CPDF_Dictionary> pDict = InitJPEG(data);
   if (!pDict)
     return;
 
@@ -329,7 +327,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
     }
   }
   if (!m_pStream)
-    m_pStream = pdfium::MakeUnique<CPDF_Stream>();
+    m_pStream = pdfium::MakeRetain<CPDF_Stream>();
 
   m_pStream->InitStream(dest_span, std::move(pDict));
   m_bIsMask = pBitmap->IsAlphaMask();
