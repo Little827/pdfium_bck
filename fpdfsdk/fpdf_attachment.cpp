@@ -223,7 +223,7 @@ FPDFAttachment_SetFile(FPDF_ATTACHMENT attachment,
     return false;
 
   // Create a dictionary for the new embedded file stream.
-  auto pFileStreamDict = pdfium::MakeUnique<CPDF_Dictionary>();
+  auto pFileStreamDict = pdfium::MakeRetain<CPDF_Dictionary>();
   CPDF_Dictionary* pParamsDict =
       pFileStreamDict->SetNewFor<CPDF_Dictionary>("Params");
 

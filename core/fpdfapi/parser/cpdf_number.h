@@ -24,7 +24,7 @@ class CPDF_Number final : public CPDF_Object {
 
   // CPDF_Object:
   Type GetType() const override;
-  std::unique_ptr<CPDF_Object> Clone() const override;
+  RetainPtr<CPDF_Object> Clone() const override;
   ByteString GetString() const override;
   float GetNumber() const override;
   int GetInteger() const override;

@@ -361,12 +361,12 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessText) {
 TEST_F(CPDF_PageContentGeneratorTest, ProcessEmptyForm) {
   auto pDoc = pdfium::MakeUnique<CPDF_Document>();
   pDoc->CreateNewDoc();
-  auto pDict = pdfium::MakeUnique<CPDF_Dictionary>();
-  auto pStream = pdfium::MakeUnique<CPDF_Stream>(nullptr, 0, std::move(pDict));
+  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pStream = pdfium::MakeRetain<CPDF_Stream>(nullptr, 0, std::move(pDict));
 
   // Create an empty form.
   auto pTestForm =
-      pdfium::MakeUnique<CPDF_Form>(pDoc.get(), nullptr, pStream.get());
+      pdfium::MakeUnique<CPDF_Form>(pDoc.get(), nullptr, pStream.Get());
   pTestForm->ParseContent(nullptr, nullptr, nullptr, nullptr);
   ASSERT_EQ(CPDF_PageObjectHolder::ParseState::kParsed,
             pTestForm->GetParseState());
@@ -381,19 +381,19 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessEmptyForm) {
 TEST_F(CPDF_PageContentGeneratorTest, ProcessFormWithPath) {
   auto pDoc = pdfium::MakeUnique<CPDF_Document>();
   pDoc->CreateNewDoc();
-  auto pDict = pdfium::MakeUnique<CPDF_Dictionary>();
+  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
   const char content[] =
       "q 1 0 0 1 0 0 cm 3.102 4.6700001 m 5.4500012 .28999999 "
       "l 4.2399998 3.1499999 4.65 2.98 3.456 0.24 c 3.102 4.6700001 l h f Q\n";
   size_t buf_len = FX_ArraySize(content);
   std::unique_ptr<uint8_t, FxFreeDeleter> buf(FX_Alloc(uint8_t, buf_len));
   memcpy(buf.get(), content, buf_len);
-  auto pStream = pdfium::MakeUnique<CPDF_Stream>(std::move(buf), buf_len,
+  auto pStream = pdfium::MakeRetain<CPDF_Stream>(std::move(buf), buf_len,
                                                  std::move(pDict));
 
   // Create a form with a non-empty stream.
   auto pTestForm =
-      pdfium::MakeUnique<CPDF_Form>(pDoc.get(), nullptr, pStream.get());
+      pdfium::MakeUnique<CPDF_Form>(pDoc.get(), nullptr, pStream.Get());
   pTestForm->ParseContent(nullptr, nullptr, nullptr, nullptr);
   ASSERT_EQ(CPDF_PageObjectHolder::ParseState::kParsed,
             pTestForm->GetParseState());
