@@ -23,6 +23,30 @@
       "revId": "e5f317c217c215e01fd367526862865327e39081",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b603442_bb6effd8",
+        "filename": "third_party/libtiff/tiffconf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T16:50:55Z",
+      "side": 1,
+      "message": "https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcrt/fx_system.h?rcl\u003dc1aefb717810667d6889990d76798a481acce148\u0026l\u003d56\n\nyep. NM.",
+      "parentUuid": "08726156_4620bec1",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "e5f317c217c215e01fd367526862865327e39081",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
