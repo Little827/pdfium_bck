@@ -218,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "6625a2ff_f2821e2b",
+        "filename": "core/fpdfapi/parser/cpdf_indirect_object_holder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T23:41:56Z",
+      "side": 1,
+      "message": "Mention in the CL description?",
+      "parentUuid": "5f54a3f0_43ed79d7",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26d41a98_5440df02",
         "filename": "core/fpdfapi/parser/cpdf_object_avail.h",
         "patchSetId": 5
