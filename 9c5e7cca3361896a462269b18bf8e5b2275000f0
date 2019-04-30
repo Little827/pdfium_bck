@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bbe86f27_4d3c3525",
+        "filename": "core/fpdfapi/edit/cpdf_creator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T22:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabcd4f2_93ef5b84",
+      "revId": "9c5e7cca3361896a462269b18bf8e5b2275000f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37c11452_5bb3bf0f",
         "filename": "core/fpdfapi/parser/cpdf_parser.h",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "9c5e7cca3361896a462269b18bf8e5b2275000f0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b46141e_01f49693",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T22:06:06Z",
+      "side": 1,
+      "message": "Done.\n\nThe pattern in chrome seems to be a const method returning a const reference to a scoped_refptr, so I did the same here.",
+      "parentUuid": "37c11452_5bb3bf0f",
+      "revId": "9c5e7cca3361896a462269b18bf8e5b2275000f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
