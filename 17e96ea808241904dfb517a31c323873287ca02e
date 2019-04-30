@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "50760dee_8f590885",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e7d5df_b1460cc9",
+      "range": {
+        "startLine": 765,
+        "startChar": 23,
+        "endLine": 765,
+        "endChar": 46
+      },
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7de3d87_172dcc04",
         "filename": "core/fpdfapi/page/cpdf_streamparser.h",
         "patchSetId": 5
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "2867c225_5d1ef90d",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to take, even.  Just return the usual refs.",
+      "parentUuid": "a7de3d87_172dcc04",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4e2265d_1838989b",
         "filename": "core/fpdfapi/parser/cpdf_array.cpp",
         "patchSetId": 5
@@ -79,6 +127,24 @@
       "revId": "17e96ea808241904dfb517a31c323873287ca02e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb71b85_4d7d904b",
+        "filename": "core/fpdfapi/parser/cpdf_array.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "Done, this was to work around that windows unique ptr to superclass compiler gotcha ...",
+      "parentUuid": "a4e2265d_1838989b",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +165,24 @@
     },
     {
       "key": {
+        "uuid": "3fde1e27_a061e5de",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac5b57a9_19ba23c0",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b31ff39_964564a3",
         "filename": "core/fpdfapi/parser/cpdf_indirect_object_holder.h",
         "patchSetId": 5
@@ -110,6 +194,24 @@
       "writtenOn": "2019-04-30T22:53:51Z",
       "side": 1,
       "message": "Will orphans go away eventually?",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f54a3f0_43ed79d7",
+        "filename": "core/fpdfapi/parser/cpdf_indirect_object_holder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "Indeed they will! But as a follow-on.  That\u0027s the whole point -- to avoid these pesky orphan bugs.",
+      "parentUuid": "6b31ff39_964564a3",
       "revId": "17e96ea808241904dfb517a31c323873287ca02e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -133,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "62bde01b_b45d285d",
+        "filename": "core/fpdfapi/parser/cpdf_object_avail.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26d41a98_5440df02",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf79321c_707249b4",
         "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
         "patchSetId": 5
@@ -150,6 +270,24 @@
     },
     {
       "key": {
+        "uuid": "df648a1e_598cd80b",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "tee hee.",
+      "parentUuid": "cf79321c_707249b4",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cabf5fd_43c0359c",
         "filename": "core/fpdfapi/parser/cpdf_object_walker_unittest.cpp",
         "patchSetId": 5
@@ -164,6 +302,24 @@
       "revId": "17e96ea808241904dfb517a31c323873287ca02e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "813bccb8_c6e75e3f",
+        "filename": "core/fpdfapi/parser/cpdf_object_walker_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T23:34:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8cabf5fd_43c0359c",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
