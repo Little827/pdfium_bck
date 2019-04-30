@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaba79dc_b67bc361",
+        "filename": "core/fpdfapi/page/cpdf_shadingpattern.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-04-30T17:12:55Z",
+      "side": 0,
+      "message": "This would contradict the comment at https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/page/cpdf_pattern.h?rcl\u003dc1aefb717810667d6889990d76798a481acce148\u0026l\u003d29\n\nGetShadingObject() should abstract away the differences.",
+      "range": {
+        "startLine": 33,
+        "startChar": 25,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "6ab92c0dbcb75b7f769e58cd56ce5ec789cb3095",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
