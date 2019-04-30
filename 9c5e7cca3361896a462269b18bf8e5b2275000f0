@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabcd4f2_93ef5b84",
+        "filename": "core/fpdfapi/edit/cpdf_creator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:02:18Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "9c5e7cca3361896a462269b18bf8e5b2275000f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c11452_5bb3bf0f",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:02:18Z",
+      "side": 1,
+      "message": "Can you see if returning a RetainPtr makes more sense?",
+      "revId": "9c5e7cca3361896a462269b18bf8e5b2275000f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
