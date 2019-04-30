@@ -23,7 +23,7 @@ class CPDF_ObjectAvail {
  public:
   CPDF_ObjectAvail(const RetainPtr<CPDF_ReadValidator>& validator,
                    CPDF_IndirectObjectHolder* holder,
-                   const CPDF_Object* root);
+                   CPDF_Object* root);
   CPDF_ObjectAvail(const RetainPtr<CPDF_ReadValidator>& validator,
                    CPDF_IndirectObjectHolder* holder,
                    uint32_t obj_num);
@@ -44,7 +44,7 @@ class CPDF_ObjectAvail {
 
   RetainPtr<CPDF_ReadValidator> validator_;
   UnownedPtr<CPDF_IndirectObjectHolder> holder_;
-  MaybeOwned<const CPDF_Object> root_;
+  RetainPtr<CPDF_Object> root_;
   std::set<uint32_t> parsed_objnums_;
   std::stack<uint32_t> non_parsed_objects_;
 };
