@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "9bafb632_24701170",
+        "filename": "core/fxcrt/cfx_datetime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:55:34Z",
+      "side": 1,
+      "message": "I don\u0027t know. We don\u0027t even have ASMJS/WASM build bot(s). So I\u0027m just trying to do a 1:1 conversion for now.",
+      "parentUuid": "33fd20e2_68c101da",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "3068b9784ac7844bfe331cee8b1614b5f6281a8f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c000d832_ff84c164",
         "filename": "core/fxcrt/fx_system.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2019-04-30T21:30:18Z",
       "side": 1,
       "message": "I worry about someone including build_config.h but not fx_system.h and then testing OS_WASM inconsistently.  Maybe we just want to use __wasm__ in all places where we need this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "3068b9784ac7844bfe331cee8b1614b5f6281a8f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eb4509a_826d8762",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:55:34Z",
+      "side": 1,
+      "message": "Sure, can do.",
+      "parentUuid": "c000d832_ff84c164",
       "range": {
         "startLine": 39,
         "startChar": 0,
