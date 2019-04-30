@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6055f59_b4dc237a",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T23:02:13Z",
+      "side": 1,
+      "message": "Maybe move under the Testing section, or maybe the testing section can be split off into its own page?",
+      "revId": "b21991c4b512e6213f34f65930882fa4797090ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea97fa7b_0dd3c0c1",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T23:02:13Z",
+      "side": 1,
+      "message": "I would add a couple of points:\n- Make sure the test does not have copyright issues.\n- Try to create minimal test cases that render the same way in many PDF viewers.\n- Try to avoid binary data in streams. e.g. Use the ASCIIHexDecode filter.",
+      "revId": "b21991c4b512e6213f34f65930882fa4797090ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9c749f_06795e23",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T23:02:13Z",
+      "side": 1,
+      "message": "Maybe just references testing/resources/rectangles.in?",
+      "revId": "b21991c4b512e6213f34f65930882fa4797090ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
