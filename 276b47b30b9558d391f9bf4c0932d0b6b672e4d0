@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f194261f_c47b5aee",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "Should we pass a const-ref RetainPtr all the way down to CPDF_Font?",
+      "revId": "276b47b30b9558d391f9bf4c0932d0b6b672e4d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

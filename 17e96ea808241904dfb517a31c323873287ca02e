@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "839bb0f0_709bd0ab",
+        "filename": "core/fpdfapi/page/cpdf_image.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e7d5df_b1460cc9",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "May not be needed?",
+      "range": {
+        "startLine": 765,
+        "startChar": 23,
+        "endLine": 765,
+        "endChar": 46
+      },
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7de3d87_172dcc04",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "Probably should be TakeObject(), especially since it no longer returns std::unique_ptr.",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e2265d_1838989b",
+        "filename": "core/fpdfapi/parser/cpdf_array.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "std::move() not needed?",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5b57a9_19ba23c0",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "BTW, this either returns the argument passed in, or nullptr. Maybe it should just return a bool, and save a couple of std::moves?",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b31ff39_964564a3",
+        "filename": "core/fpdfapi/parser/cpdf_indirect_object_holder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "Will orphans go away eventually?",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d41a98_5440df02",
+        "filename": "core/fpdfapi/parser/cpdf_object_avail.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf79321c_707249b4",
+        "filename": "core/fpdfapi/parser/cpdf_object_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "Bad search and replacement.",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cabf5fd_43c0359c",
+        "filename": "core/fpdfapi/parser/cpdf_object_walker_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T22:53:51Z",
+      "side": 1,
+      "message": "Probably can get rid of the .Get() here and possibly in other comparisons.",
+      "revId": "17e96ea808241904dfb517a31c323873287ca02e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
