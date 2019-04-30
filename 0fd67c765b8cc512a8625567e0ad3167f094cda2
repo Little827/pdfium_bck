@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea72ba81_058d3447",
+        "filename": "core/fxge/cfx_facecache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T17:38:45Z",
+      "side": 1,
+      "message": "I can try later. Line 303 is also the same.",
+      "parentUuid": "e3bada8f_22598465",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 4
+      },
+      "revId": "0fd67c765b8cc512a8625567e0ad3167f094cda2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0db4f4d0_c0e9b288",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "648d657f_f0baba5e",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T17:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0db4f4d0_c0e9b288",
+      "range": {
+        "startLine": 455,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "0fd67c765b8cc512a8625567e0ad3167f094cda2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03abbccc_51d150a2",
         "filename": "core/fxge/dib/cfx_dibitmap.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-30T16:41:58Z",
       "side": 1,
       "message": "maybe this belongs in some header?",
+      "range": {
+        "startLine": 403,
+        "startChar": 31,
+        "endLine": 403,
+        "endChar": 46
+      },
+      "revId": "0fd67c765b8cc512a8625567e0ad3167f094cda2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80615fb_b16f3715",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T17:38:45Z",
+      "side": 1,
+      "message": "Maybe if we can find enough of these. This one is reversed from the one above.",
+      "parentUuid": "03abbccc_51d150a2",
       "range": {
         "startLine": 403,
         "startChar": 31,
