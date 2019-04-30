@@ -17,11 +17,12 @@
 #include <string.h>
 #include <wchar.h>
 
+#include "build/build_config.h"
+
 // _FX_OS_ values:
 #define _FX_OS_WIN32_ 1
 #define _FX_OS_WIN64_ 2
 #define _FX_OS_LINUX_ 4
-#define _FX_OS_MACOSX_ 7
 #define _FX_OS_WASM_ 13
 
 // _FX_PLATFORM_ values;
@@ -40,7 +41,6 @@
 #define _FX_OS_ _FX_OS_LINUX_
 #define _FX_PLATFORM_ _FX_PLATFORM_LINUX_
 #elif defined(__APPLE__)
-#define _FX_OS_ _FX_OS_MACOSX_
 #define _FX_PLATFORM_ _FX_PLATFORM_APPLE_
 #elif defined(__asmjs__) || defined(__wasm__)
 #define _FX_OS_ _FX_OS_WASM_
@@ -65,10 +65,10 @@
 #include <sal.h>
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 
-#if _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#if defined(OS_MACOSX)
 #include <Carbon/Carbon.h>
 #include <libkern/OSAtomic.h>
-#endif  // _FX_PLATFORM_ == _FX_PLATFORM_APPLE_
+#endif
 
 #ifdef __cplusplus
 extern "C" {
