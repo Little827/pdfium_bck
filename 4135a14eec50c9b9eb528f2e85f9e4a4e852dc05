@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e657b97d_a1e6f688",
+        "filename": "third_party/libtiff/tiffconf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-04-30T16:36:30Z",
+      "side": 0,
+      "message": "PDFium does not build for older VS versions.",
+      "revId": "4135a14eec50c9b9eb528f2e85f9e4a4e852dc05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
