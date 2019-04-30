@@ -26,9 +26,9 @@ TEST_F(CPDF_CIDFontTest, BUG_920636) {
   font_dict.SetNewFor<CPDF_Name>("Encoding", "Identity−H");
 
   {
-    auto descendant_fonts = pdfium::MakeUnique<CPDF_Array>();
+    auto descendant_fonts = pdfium::MakeRetain<CPDF_Array>();
     {
-      auto descendant_font = pdfium::MakeUnique<CPDF_Dictionary>();
+      auto descendant_font = pdfium::MakeRetain<CPDF_Dictionary>();
       descendant_font->SetNewFor<CPDF_Name>("BaseFont", "CourierStd");
       descendant_fonts->Add(std::move(descendant_font));
     }

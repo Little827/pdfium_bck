@@ -21,7 +21,7 @@ class CPDF_Boolean final : public CPDF_Object {
 
   // CPDF_Object:
   Type GetType() const override;
-  std::unique_ptr<CPDF_Object> Clone() const override;
+  RetainPtr<CPDF_Object> Clone() const override;
   ByteString GetString() const override;
   int GetInteger() const override;
   void SetString(const ByteString& str) override;
