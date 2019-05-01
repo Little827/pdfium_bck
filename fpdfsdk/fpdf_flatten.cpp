@@ -213,9 +213,9 @@ void SetPageContents(const ByteString& key,
       sStream += "\nQ";
     }
     pContentsStream->SetDataAndRemoveFilter(sStream.AsRawSpan());
-
     pContentsArray = pDocument->NewIndirect<CPDF_Array>();
-    pContentsArray->Add(pContentsStream->MakeReference(pDocument));
+    pContentsArray->AddNew<CPDF_Reference>(pDocument,
+                                           pContentsStream->GetObjNum());
     pPage->SetFor(pdfium::page_object::kContents,
                   pContentsArray->MakeReference(pDocument));
   }

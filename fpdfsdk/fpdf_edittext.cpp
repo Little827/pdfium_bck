@@ -414,7 +414,7 @@ CPDF_Font* LoadCompositeFont(CPDF_Document* pDoc,
   // TODO(npm): Support vertical writing
 
   auto pDescendant = pdfium::MakeRetain<CPDF_Array>();
-  pDescendant->Add(pCIDFont->MakeReference(pDoc));
+  pDescendant->AddNew<CPDF_Reference>(pDoc, pCIDFont->GetObjNum());
   pFontDict->SetFor("DescendantFonts", std::move(pDescendant));
   CPDF_Stream* toUnicodeStream = LoadUnicode(pDoc, to_unicode);
   pFontDict->SetFor("ToUnicode", toUnicodeStream->MakeReference(pDoc));
