@@ -38,7 +38,7 @@ class CPDF_ContentMarkItem final : public Retainable {
   ParamType m_ParamType = kNone;
   ByteString m_MarkName;
   ByteString m_PropertyName;
-  UnownedPtr<CPDF_Dictionary> m_pPropertiesHolder;
+  RetainPtr<CPDF_Dictionary> m_pPropertiesHolder;
   RetainPtr<CPDF_Dictionary> m_pDirectDict;
 };
 
