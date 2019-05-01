@@ -628,7 +628,8 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
     auto pObj = m_pSyntax->ReadNextObject(false, false, 0);
     if (!key.IsEmpty()) {
       if (pObj && !pObj->IsInline())
-        pDict->SetFor(key, pObj->MakeReference(m_pDocument.Get()));
+        pDict->SetNewFor<CPDF_Reference>(key, m_pDocument.Get(),
+                                         pObj->GetObjNum());
       else
         pDict->SetFor(key, std::move(pObj));
     }
