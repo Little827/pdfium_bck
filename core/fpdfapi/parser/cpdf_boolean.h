@@ -15,12 +15,13 @@
 
 class CPDF_Boolean final : public CPDF_Object {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+  CPDF_Boolean();
+  explicit CPDF_Boolean(bool value);
+  ~CPDF_Boolean() override;
 
   // CPDF_Object:
   Type GetType() const override;
-  RetainPtr<CPDF_Object> Clone() const override;
+  std::unique_ptr<CPDF_Object> Clone() const override;
   ByteString GetString() const override;
   int GetInteger() const override;
   void SetString(const ByteString& str) override;
@@ -31,10 +32,6 @@ class CPDF_Boolean final : public CPDF_Object {
                const CPDF_Encryptor* encryptor) const override;
 
  private:
-  CPDF_Boolean();
-  explicit CPDF_Boolean(bool value);
-  ~CPDF_Boolean() override;
-
   bool m_bValue;
 };
 

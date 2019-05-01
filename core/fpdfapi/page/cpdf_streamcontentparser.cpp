@@ -179,7 +179,7 @@ void ReplaceAbbrInDictionary(CPDF_Dictionary* pDict) {
     CPDF_DictionaryLocker locker(pDict);
     for (const auto& it : locker) {
       ByteString key = it.first;
-      CPDF_Object* value = it.second.Get();
+      CPDF_Object* value = it.second.get();
       ByteStringView fullname = FindFullName(
           kInlineKeyAbbr, FX_ArraySize(kInlineKeyAbbr), key.AsStringView());
       if (!fullname.IsEmpty()) {
@@ -305,7 +305,7 @@ int CPDF_StreamContentParser::GetNextParamPos() {
       m_ParamStartPos = 0;
     }
     if (m_ParamBuf[m_ParamStartPos].m_Type == ContentParam::OBJECT)
-      m_ParamBuf[m_ParamStartPos].m_pObject.Reset();
+      m_ParamBuf[m_ParamStartPos].m_pObject.reset();
 
     return m_ParamStartPos;
   }
@@ -330,7 +330,8 @@ void CPDF_StreamContentParser::AddNumberParam(ByteStringView str) {
   param.m_Number = FX_Number(str);
 }
 
-void CPDF_StreamContentParser::AddObjectParam(RetainPtr<CPDF_Object> pObj) {
+void CPDF_StreamContentParser::AddObjectParam(
+    std::unique_ptr<CPDF_Object> pObj) {
   ContentParam& param = m_ParamBuf[GetNextParamPos()];
   param.m_Type = ContentParam::OBJECT;
   param.m_pObject = std::move(pObj);
@@ -340,7 +341,7 @@ void CPDF_StreamContentParser::ClearAllParams() {
   uint32_t index = m_ParamStartPos;
   for (uint32_t i = 0; i < m_ParamCount; i++) {
     if (m_ParamBuf[index].m_Type == ContentParam::OBJECT)
-      m_ParamBuf[index].m_pObject.Reset();
+      m_ParamBuf[index].m_pObject.reset();
     index++;
     if (index == kParamBufSize)
       index = 0;
@@ -362,17 +363,17 @@ CPDF_Object* CPDF_StreamContentParser::GetObject(uint32_t index) {
     param.m_Type = ContentParam::OBJECT;
     param.m_pObject =
         param.m_Number.IsInteger()
-            ? pdfium::MakeRetain<CPDF_Number>(param.m_Number.GetSigned())
-            : pdfium::MakeRetain<CPDF_Number>(param.m_Number.GetFloat());
-    return param.m_pObject.Get();
+            ? pdfium::MakeUnique<CPDF_Number>(param.m_Number.GetSigned())
+            : pdfium::MakeUnique<CPDF_Number>(param.m_Number.GetFloat());
+    return param.m_pObject.get();
   }
   if (param.m_Type == ContentParam::NAME) {
     param.m_Type = ContentParam::OBJECT;
     param.m_pObject = m_pDocument->New<CPDF_Name>(param.m_Name);
-    return param.m_pObject.Get();
+    return param.m_pObject.get();
   }
   if (param.m_Type == ContentParam::OBJECT)
-    return param.m_pObject.Get();
+    return param.m_pObject.get();
 
   NOTREACHED();
   return nullptr;
@@ -633,7 +634,7 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
         pDict->SetFor(key, std::move(pObj));
     }
   }
-  ReplaceAbbr(pDict.Get());
+  ReplaceAbbr(pDict.get());
   CPDF_Object* pCSObj = nullptr;
   if (pDict->KeyExist("ColorSpace")) {
     pCSObj = pDict->GetDirectObjectFor("ColorSpace");
@@ -647,7 +648,7 @@ void CPDF_StreamContentParser::Handle_BeginImage() {
     }
   }
   pDict->SetNewFor<CPDF_Name>("Subtype", "Image");
-  RetainPtr<CPDF_Stream> pStream =
+  std::unique_ptr<CPDF_Stream> pStream =
       m_pSyntax->ReadInlineStream(m_pDocument.Get(), std::move(pDict), pCSObj);
   while (1) {
     CPDF_StreamParser::SyntaxType type = m_pSyntax->ParseNextElement();
@@ -761,7 +762,8 @@ void CPDF_StreamContentParser::Handle_ExecuteXObject() {
 
   if (type == "Image") {
     CPDF_ImageObject* pObj = pXObject->IsInline()
-                                 ? AddImage(ToStream(pXObject->Clone()))
+                                 ? AddImage(std::unique_ptr<CPDF_Stream>(
+                                       ToStream(pXObject->Clone())))
                                  : AddImage(pXObject->GetObjNum());
 
     m_LastImageName = std::move(name);
@@ -797,7 +799,7 @@ void CPDF_StreamContentParser::AddForm(CPDF_Stream* pStream) {
 }
 
 CPDF_ImageObject* CPDF_StreamContentParser::AddImage(
-    RetainPtr<CPDF_Stream> pStream) {
+    std::unique_ptr<CPDF_Stream> pStream) {
   if (!pStream)
     return nullptr;
 

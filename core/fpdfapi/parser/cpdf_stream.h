@@ -16,12 +16,16 @@
 
 class CPDF_Stream final : public CPDF_Object {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+  CPDF_Stream();
+  CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
+              uint32_t size,
+              std::unique_ptr<CPDF_Dictionary> pDict);
+
+  ~CPDF_Stream() override;
 
   // CPDF_Object:
   Type GetType() const override;
-  RetainPtr<CPDF_Object> Clone() const override;
+  std::unique_ptr<CPDF_Object> Clone() const override;
   CPDF_Dictionary* GetDict() override;
   const CPDF_Dictionary* GetDict() const override;
   WideString GetUnicodeText() const override;
@@ -49,9 +53,9 @@ class CPDF_Stream final : public CPDF_Object {
   void SetDataFromStringstreamAndRemoveFilter(std::ostringstream* stream);
 
   void InitStream(pdfium::span<const uint8_t> pData,
-                  RetainPtr<CPDF_Dictionary> pDict);
+                  std::unique_ptr<CPDF_Dictionary> pDict);
   void InitStreamFromFile(const RetainPtr<IFX_SeekableReadStream>& pFile,
-                          RetainPtr<CPDF_Dictionary> pDict);
+                          std::unique_ptr<CPDF_Dictionary> pDict);
 
   bool ReadRawData(FX_FILESIZE start_pos,
                    uint8_t* pBuf,
@@ -61,19 +65,13 @@ class CPDF_Stream final : public CPDF_Object {
   bool HasFilter() const;
 
  private:
-  CPDF_Stream();
-  CPDF_Stream(std::unique_ptr<uint8_t, FxFreeDeleter> pData,
-              uint32_t size,
-              RetainPtr<CPDF_Dictionary> pDict);
-  ~CPDF_Stream() override;
-
-  RetainPtr<CPDF_Object> CloneNonCyclic(
+  std::unique_ptr<CPDF_Object> CloneNonCyclic(
       bool bDirect,
       std::set<const CPDF_Object*>* pVisited) const override;
 
   bool m_bMemoryBased = true;
   uint32_t m_dwSize = 0;
-  RetainPtr<CPDF_Dictionary> m_pDict;
+  std::unique_ptr<CPDF_Dictionary> m_pDict;
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pDataBuf;
   RetainPtr<IFX_SeekableReadStream> m_pFile;
 };
@@ -86,8 +84,12 @@ inline const CPDF_Stream* ToStream(const CPDF_Object* obj) {
   return obj ? obj->AsStream() : nullptr;
 }
 
-inline RetainPtr<CPDF_Stream> ToStream(RetainPtr<CPDF_Object> obj) {
-  return RetainPtr<CPDF_Stream>(ToStream(obj.Get()));
+inline std::unique_ptr<CPDF_Stream> ToStream(std::unique_ptr<CPDF_Object> obj) {
+  CPDF_Stream* pStream = ToStream(obj.get());
+  if (!pStream)
+    return nullptr;
+  obj.release();
+  return std::unique_ptr<CPDF_Stream>(pStream);
 }
 
 #endif  // CORE_FPDFAPI_PARSER_CPDF_STREAM_H_

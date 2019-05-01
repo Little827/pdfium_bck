@@ -133,16 +133,17 @@ class CPDF_DataAvail final : public CPDF_Document::Observer {
   bool CheckInfo();
   bool CheckPages();
   bool CheckPage();
-  DocAvailStatus CheckResources(CPDF_Dictionary* page);
+  DocAvailStatus CheckResources(const CPDF_Dictionary* page);
   DocFormStatus CheckAcroForm();
   bool CheckPageStatus();
 
   DocAvailStatus CheckHeaderAndLinearized();
-  RetainPtr<CPDF_Object> ParseIndirectObjectAt(
+  std::unique_ptr<CPDF_Object> ParseIndirectObjectAt(
       FX_FILESIZE pos,
       uint32_t objnum,
       CPDF_IndirectObjectHolder* pObjList) const;
-  RetainPtr<CPDF_Object> GetObject(uint32_t objnum, bool* pExistInFile);
+  std::unique_ptr<CPDF_Object> GetObject(uint32_t objnum,
+                                         bool* pExistInFile);
   bool GetPageKids(CPDF_Object* pPages);
   bool PreparePageItem();
   bool LoadPages();
@@ -167,7 +168,7 @@ class CPDF_DataAvail final : public CPDF_Document::Observer {
 
   RetainPtr<CPDF_ReadValidator> m_pFileRead;
   CPDF_Parser m_parser;
-  RetainPtr<CPDF_Dictionary> m_pRoot;
+  std::unique_ptr<CPDF_Dictionary> m_pRoot;
   std::unique_ptr<CPDF_LinearizedHeader> m_pLinearized;
   bool m_bDocAvail = false;
   std::unique_ptr<CPDF_CrossRefAvail> m_pCrossRefAvail;
@@ -182,7 +183,7 @@ class CPDF_DataAvail final : public CPDF_Document::Observer {
   bool m_bPagesTreeLoad = false;
   bool m_bPagesLoad = false;
   std::unique_ptr<CPDF_PageObjectAvail> m_pFormAvail;
-  std::vector<RetainPtr<CPDF_Object>> m_PagesArray;
+  std::vector<std::unique_ptr<CPDF_Object>> m_PagesArray;
   bool m_bTotalLoadPageTree = false;
   bool m_bCurPageDictLoadOK = false;
   PageNode m_PageNode;

@@ -13,18 +13,14 @@
 
 class CPDF_Null final : public CPDF_Object {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+  CPDF_Null();
 
   // CPDF_Object.
   Type GetType() const override;
-  RetainPtr<CPDF_Object> Clone() const override;
+  std::unique_ptr<CPDF_Object> Clone() const override;
   bool WriteTo(IFX_ArchiveStream* archive,
                const CPDF_Encryptor* encryptor) const override;
   bool IsNull() const override;
-
- private:
-  CPDF_Null();
 };
 
 #endif  // CORE_FPDFAPI_PARSER_CPDF_NULL_H_

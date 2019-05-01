@@ -750,10 +750,10 @@ CJS_Result CJS_Document::get_info(CJS_Runtime* pRuntime) {
 
   // PutObjectProperty() calls below may re-enter JS and change info dict.
   auto pCopy = pDictionary->Clone();
-  CPDF_DictionaryLocker locker(ToDictionary(pCopy.Get()));
+  CPDF_DictionaryLocker locker(ToDictionary(pCopy.get()));
   for (const auto& it : locker) {
     const ByteString& bsKey = it.first;
-    CPDF_Object* pValueObj = it.second.Get();
+    CPDF_Object* pValueObj = it.second.get();
     if (pValueObj->IsString() || pValueObj->IsName()) {
       pRuntime->PutObjectProperty(
           pObj, bsKey.AsStringView(),

@@ -16,7 +16,7 @@
 CPDF_ObjectAvail::CPDF_ObjectAvail(
     const RetainPtr<CPDF_ReadValidator>& validator,
     CPDF_IndirectObjectHolder* holder,
-    CPDF_Object* root)
+    const CPDF_Object* root)
     : validator_(validator), holder_(holder), root_(root) {
   ASSERT(validator_);
   ASSERT(holder);
@@ -31,7 +31,7 @@ CPDF_ObjectAvail::CPDF_ObjectAvail(
     uint32_t obj_num)
     : validator_(validator),
       holder_(holder),
-      root_(pdfium::MakeRetain<CPDF_Reference>(holder, obj_num)) {
+      root_(pdfium::MakeUnique<CPDF_Reference>(holder, obj_num)) {
   ASSERT(validator_);
   ASSERT(holder);
 }
@@ -61,12 +61,12 @@ bool CPDF_ObjectAvail::LoadRootObject() {
     }
 
     const CPDF_ReadValidator::Session parse_session(validator_);
-    CPDF_Object* direct = holder_->GetOrParseIndirectObject(ref_obj_num);
+    const CPDF_Object* direct = holder_->GetOrParseIndirectObject(ref_obj_num);
     if (validator_->has_read_problems())
       return false;
 
     parsed_objnums_.insert(ref_obj_num);
-    root_.Reset(direct);
+    root_ = direct;
   }
   std::stack<uint32_t> non_parsed_objects_in_root;
   if (AppendObjectSubRefs(root_.Get(), &non_parsed_objects_in_root)) {

@@ -19,7 +19,8 @@ class MockIndirectObjectHolder final : public CPDF_IndirectObjectHolder {
   MockIndirectObjectHolder() {}
   ~MockIndirectObjectHolder() override {}
 
-  MOCK_METHOD1(ParseIndirectObject, RetainPtr<CPDF_Object>(uint32_t objnum));
+  MOCK_METHOD1(ParseIndirectObject,
+               std::unique_ptr<CPDF_Object>(uint32_t objnum));
 };
 
 }  // namespace
@@ -30,11 +31,11 @@ TEST(CPDF_IndirectObjectHolderTest, RecursiveParseOfSameObject) {
   // parse request.
   EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_))
       .WillOnce(::testing::WithArg<0>(::testing::Invoke(
-          [&mock_holder](uint32_t objnum) -> RetainPtr<CPDF_Object> {
+          [&mock_holder](uint32_t objnum) -> std::unique_ptr<CPDF_Object> {
             const CPDF_Object* same_parse =
                 mock_holder.GetOrParseIndirectObject(objnum);
             CHECK(!same_parse);
-            return pdfium::MakeRetain<CPDF_Null>();
+            return pdfium::MakeUnique<CPDF_Null>();
           })));
 
   EXPECT_TRUE(mock_holder.GetOrParseIndirectObject(1000));
@@ -49,9 +50,9 @@ TEST(CPDF_IndirectObjectHolderTest, GetObjectMethods) {
   ::testing::Mock::VerifyAndClearExpectations(&mock_holder);
 
   EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_))
-      .WillOnce(::testing::WithArg<0>(
-          ::testing::Invoke([](uint32_t objnum) -> RetainPtr<CPDF_Object> {
-            return pdfium::MakeRetain<CPDF_Null>();
+      .WillOnce(::testing::WithArg<0>(::testing::Invoke(
+          [](uint32_t objnum) -> std::unique_ptr<CPDF_Object> {
+            return pdfium::MakeUnique<CPDF_Null>();
           })));
   EXPECT_TRUE(mock_holder.GetOrParseIndirectObject(kObjNum));
   ::testing::Mock::VerifyAndClearExpectations(&mock_holder);
@@ -76,5 +77,5 @@ TEST(CPDF_IndirectObjectHolderTest, ReplaceObjectWithInvalidObjNum) {
 
   EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_)).Times(0);
   EXPECT_FALSE(mock_holder.ReplaceIndirectObjectIfHigherGeneration(
-      CPDF_Object::kInvalidObjNum, pdfium::MakeRetain<CPDF_Null>()));
+      CPDF_Object::kInvalidObjNum, pdfium::MakeUnique<CPDF_Null>()));
 }
