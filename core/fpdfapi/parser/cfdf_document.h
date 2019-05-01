@@ -31,7 +31,7 @@ class CFDF_Document final : public CPDF_IndirectObjectHolder {
  private:
   void ParseStream(RetainPtr<IFX_SeekableReadStream> pFile);
 
-  UnownedPtr<CPDF_Dictionary> m_pRootDict;
+  RetainPtr<CPDF_Dictionary> m_pRootDict;
   RetainPtr<IFX_SeekableReadStream> m_pFile;
 };
 

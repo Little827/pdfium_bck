@@ -27,7 +27,7 @@ class CPDF_Link {
   CPDF_Action GetAction();
 
  private:
-  UnownedPtr<CPDF_Dictionary> m_pDict;
+  RetainPtr<CPDF_Dictionary> m_pDict;
 };
 
 #endif  // CORE_FPDFDOC_CPDF_LINK_H_
