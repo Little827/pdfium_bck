@@ -17,12 +17,12 @@ class CPDF_IndirectObjectHolder;
 
 class CPDF_Reference final : public CPDF_Object {
  public:
-  template <typename T, typename... Args>
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+  CPDF_Reference(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum);
+  ~CPDF_Reference() override;
 
   // CPDF_Object:
   Type GetType() const override;
-  RetainPtr<CPDF_Object> Clone() const override;
+  std::unique_ptr<CPDF_Object> Clone() const override;
   CPDF_Object* GetDirect() override;
   const CPDF_Object* GetDirect() const override;
   ByteString GetString() const override;
@@ -35,7 +35,7 @@ class CPDF_Reference final : public CPDF_Object {
   const CPDF_Reference* AsReference() const override;
   bool WriteTo(IFX_ArchiveStream* archive,
                const CPDF_Encryptor* encryptor) const override;
-  RetainPtr<CPDF_Object> MakeReference(
+  std::unique_ptr<CPDF_Object> MakeReference(
       CPDF_IndirectObjectHolder* holder) const override;
 
   CPDF_IndirectObjectHolder* GetObjList() const { return m_pObjList.Get(); }
@@ -43,10 +43,7 @@ class CPDF_Reference final : public CPDF_Object {
   void SetRef(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum);
 
  private:
-  CPDF_Reference(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum);
-  ~CPDF_Reference() override;
-
-  RetainPtr<CPDF_Object> CloneNonCyclic(
+  std::unique_ptr<CPDF_Object> CloneNonCyclic(
       bool bDirect,
       std::set<const CPDF_Object*>* pVisited) const override;
   CPDF_Object* SafeGetDirect();

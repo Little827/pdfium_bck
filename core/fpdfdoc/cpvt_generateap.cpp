@@ -398,7 +398,7 @@ ByteString GetPopupContentsString(CPDF_Document* pDoc,
   return ByteString(sAppStream);
 }
 
-RetainPtr<CPDF_Dictionary> GenerateResourceFontDict(
+std::unique_ptr<CPDF_Dictionary> GenerateResourceFontDict(
     CPDF_Document* pDoc,
     const ByteString& sFontDictName) {
   CPDF_Dictionary* pFontDict = pDoc->NewIndirect<CPDF_Dictionary>();
@@ -468,12 +468,12 @@ ByteString GenerateTextSymbolAP(const CFX_FloatRect& rect) {
   return ByteString(sAppStream);
 }
 
-RetainPtr<CPDF_Dictionary> GenerateExtGStateDict(
+std::unique_ptr<CPDF_Dictionary> GenerateExtGStateDict(
     const CPDF_Dictionary& pAnnotDict,
     const ByteString& sExtGSDictName,
     const ByteString& sBlendMode) {
   auto pGSDict =
-      pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
+      pdfium::MakeUnique<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
   pGSDict->SetNewFor<CPDF_Name>("Type", "ExtGState");
 
   float fOpacity =
@@ -484,15 +484,15 @@ RetainPtr<CPDF_Dictionary> GenerateExtGStateDict(
   pGSDict->SetNewFor<CPDF_Name>("BM", sBlendMode);
 
   auto pExtGStateDict =
-      pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
+      pdfium::MakeUnique<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
   pExtGStateDict->SetFor(sExtGSDictName, std::move(pGSDict));
   return pExtGStateDict;
 }
 
-RetainPtr<CPDF_Dictionary> GenerateResourceDict(
+std::unique_ptr<CPDF_Dictionary> GenerateResourceDict(
     CPDF_Document* pDoc,
-    RetainPtr<CPDF_Dictionary> pExtGStateDict,
-    RetainPtr<CPDF_Dictionary> pResourceFontDict) {
+    std::unique_ptr<CPDF_Dictionary> pExtGStateDict,
+    std::unique_ptr<CPDF_Dictionary> pResourceFontDict) {
   auto pResourceDict = pDoc->New<CPDF_Dictionary>();
   if (pExtGStateDict)
     pResourceDict->SetFor("ExtGState", std::move(pExtGStateDict));
@@ -504,7 +504,7 @@ RetainPtr<CPDF_Dictionary> GenerateResourceDict(
 void GenerateAndSetAPDict(CPDF_Document* pDoc,
                           CPDF_Dictionary* pAnnotDict,
                           std::ostringstream* psAppStream,
-                          RetainPtr<CPDF_Dictionary> pResourceDict,
+                          std::unique_ptr<CPDF_Dictionary> pResourceDict,
                           bool bIsTextMarkupAnnotation) {
   CPDF_Stream* pNormalStream = pDoc->NewIndirect<CPDF_Stream>();
   pNormalStream->SetDataFromStringstream(psAppStream);
@@ -760,7 +760,7 @@ bool GeneratePopupAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
   ByteString sFontName = "FONT";
   auto pResourceFontDict = GenerateResourceFontDict(pDoc, sFontName);
-  CPDF_Font* pDefFont = pDoc->LoadFont(pResourceFontDict.Get());
+  CPDF_Font* pDefFont = pDoc->LoadFont(pResourceFontDict.get());
   if (!pDefFont)
     return false;
 

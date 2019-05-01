@@ -13,101 +13,101 @@
 TEST(fpdf_parser_decode, ValidateDecoderPipeline) {
   {
     // Empty decoder list is always valid.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    EXPECT_TRUE(ValidateDecoderPipeline(&decoders));
   }
   {
     // 1 decoder is almost always valid.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("FlateEncode");
-    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("FlateEncode");
+    EXPECT_TRUE(ValidateDecoderPipeline(&decoders));
   }
   {
     // 1 decoder is almost always valid, even with an unknown decoder.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("FooBar");
-    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("FooBar");
+    EXPECT_TRUE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Valid 2 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("AHx");
-    decoders->AddNew<CPDF_Name>("LZWDecode");
-    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("AHx");
+    decoders.AddNew<CPDF_Name>("LZWDecode");
+    EXPECT_TRUE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Valid 2 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("ASCII85Decode");
-    decoders->AddNew<CPDF_Name>("ASCII85Decode");
-    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("ASCII85Decode");
+    decoders.AddNew<CPDF_Name>("ASCII85Decode");
+    EXPECT_TRUE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Valid 5 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("ASCII85Decode");
-    decoders->AddNew<CPDF_Name>("A85");
-    decoders->AddNew<CPDF_Name>("RunLengthDecode");
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    decoders->AddNew<CPDF_Name>("RL");
-    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("ASCII85Decode");
+    decoders.AddNew<CPDF_Name>("A85");
+    decoders.AddNew<CPDF_Name>("RunLengthDecode");
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    decoders.AddNew<CPDF_Name>("RL");
+    EXPECT_TRUE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Valid 5 decoder pipeline, with an image decoder at the end.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("RunLengthDecode");
-    decoders->AddNew<CPDF_Name>("ASCII85Decode");
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    decoders->AddNew<CPDF_Name>("LZW");
-    decoders->AddNew<CPDF_Name>("DCTDecode");
-    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("RunLengthDecode");
+    decoders.AddNew<CPDF_Name>("ASCII85Decode");
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    decoders.AddNew<CPDF_Name>("LZW");
+    decoders.AddNew<CPDF_Name>("DCTDecode");
+    EXPECT_TRUE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Invalid 1 decoder pipeline due to wrong type.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_String>("FlateEncode", false);
-    EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_String>("FlateEncode", false);
+    EXPECT_FALSE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Invalid 2 decoder pipeline, with 2 image decoders.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("DCTDecode");
-    decoders->AddNew<CPDF_Name>("CCITTFaxDecode");
-    EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("DCTDecode");
+    decoders.AddNew<CPDF_Name>("CCITTFaxDecode");
+    EXPECT_FALSE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Invalid 2 decoder pipeline, with 1 image decoder at the start.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("DCTDecode");
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("DCTDecode");
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    EXPECT_FALSE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Invalid 2 decoder pipeline due to wrong type.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_String>("AHx", false);
-    decoders->AddNew<CPDF_Name>("LZWDecode");
-    EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_String>("AHx", false);
+    decoders.AddNew<CPDF_Name>("LZWDecode");
+    EXPECT_FALSE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Invalid 5 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    decoders->AddNew<CPDF_Name>("DCTDecode");
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    decoders.AddNew<CPDF_Name>("DCTDecode");
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    EXPECT_FALSE(ValidateDecoderPipeline(&decoders));
   }
   {
     // Invalid 5 decoder pipeline due to wrong type.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
-    decoders->AddNew<CPDF_Name>("ASCII85Decode");
-    decoders->AddNew<CPDF_Name>("A85");
-    decoders->AddNew<CPDF_Name>("RunLengthDecode");
-    decoders->AddNew<CPDF_Name>("FlateDecode");
-    decoders->AddNew<CPDF_String>("RL", false);
-    EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
+    CPDF_Array decoders;
+    decoders.AddNew<CPDF_Name>("ASCII85Decode");
+    decoders.AddNew<CPDF_Name>("A85");
+    decoders.AddNew<CPDF_Name>("RunLengthDecode");
+    decoders.AddNew<CPDF_Name>("FlateDecode");
+    decoders.AddNew<CPDF_String>("RL", false);
+    EXPECT_FALSE(ValidateDecoderPipeline(&decoders));
   }
 }
 

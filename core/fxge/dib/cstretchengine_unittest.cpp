@@ -17,13 +17,14 @@
 
 TEST(CStretchEngine, OverflowInCtor) {
   FX_RECT clip_rect;
-  RetainPtr<CPDF_Dictionary> dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+  std::unique_ptr<CPDF_Dictionary> dict_obj =
+      pdfium::MakeUnique<CPDF_Dictionary>();
   dict_obj->SetNewFor<CPDF_Number>("Width", 71000);
   dict_obj->SetNewFor<CPDF_Number>("Height", 12500);
-  RetainPtr<CPDF_Stream> stream =
-      pdfium::MakeRetain<CPDF_Stream>(nullptr, 0, std::move(dict_obj));
+  std::unique_ptr<CPDF_Stream> stream =
+      pdfium::MakeUnique<CPDF_Stream>(nullptr, 0, std::move(dict_obj));
   auto dib_source = pdfium::MakeRetain<CPDF_DIBBase>();
-  dib_source->Load(nullptr, stream.Get());
+  dib_source->Load(nullptr, stream.get());
   CStretchEngine engine(nullptr, FXDIB_8bppRgb, 500, 500, clip_rect, dib_source,
                         FXDIB_ResampleOptions());
   EXPECT_FALSE(engine.m_ResampleOptions.bInterpolateDownsample);

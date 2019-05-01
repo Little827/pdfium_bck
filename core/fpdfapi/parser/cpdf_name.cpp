@@ -23,8 +23,8 @@ CPDF_Object::Type CPDF_Name::GetType() const {
   return kName;
 }
 
-RetainPtr<CPDF_Object> CPDF_Name::Clone() const {
-  return pdfium::MakeRetain<CPDF_Name>(nullptr, m_Name);
+std::unique_ptr<CPDF_Object> CPDF_Name::Clone() const {
+  return pdfium::MakeUnique<CPDF_Name>(nullptr, m_Name);
 }
 
 ByteString CPDF_Name::GetString() const {

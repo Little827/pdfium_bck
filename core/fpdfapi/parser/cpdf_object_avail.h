@@ -9,6 +9,7 @@
 #include <stack>
 
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
+#include "core/fxcrt/maybe_owned.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 
@@ -22,7 +23,7 @@ class CPDF_ObjectAvail {
  public:
   CPDF_ObjectAvail(const RetainPtr<CPDF_ReadValidator>& validator,
                    CPDF_IndirectObjectHolder* holder,
-                   CPDF_Object* root);
+                   const CPDF_Object* root);
   CPDF_ObjectAvail(const RetainPtr<CPDF_ReadValidator>& validator,
                    CPDF_IndirectObjectHolder* holder,
                    uint32_t obj_num);
@@ -43,7 +44,7 @@ class CPDF_ObjectAvail {
 
   RetainPtr<CPDF_ReadValidator> validator_;
   UnownedPtr<CPDF_IndirectObjectHolder> holder_;
-  RetainPtr<CPDF_Object> root_;
+  MaybeOwned<const CPDF_Object> root_;
   std::set<uint32_t> parsed_objnums_;
   std::stack<uint32_t> non_parsed_objects_;
 };

@@ -61,7 +61,7 @@ std::unique_ptr<CPDF_HintTables> CPDF_HintTables::Parse(
   }
 
   parser->SetPos(szHintStart);
-  RetainPtr<CPDF_Stream> hints_stream = ToStream(
+  std::unique_ptr<CPDF_Stream> hints_stream = ToStream(
       parser->GetIndirectObject(nullptr, CPDF_SyntaxParser::ParseType::kLoose));
 
   if (!hints_stream)
@@ -69,7 +69,7 @@ std::unique_ptr<CPDF_HintTables> CPDF_HintTables::Parse(
 
   auto pHintTables = pdfium::MakeUnique<CPDF_HintTables>(
       parser->GetValidator().Get(), pLinearized);
-  if (!pHintTables->LoadHintStream(hints_stream.Get()))
+  if (!pHintTables->LoadHintStream(hints_stream.get()))
     return nullptr;
 
   return pHintTables;

@@ -23,7 +23,8 @@ class CPDF_NameTree {
   CPDF_NameTree(CPDF_Document* pDoc, const ByteString& category);
   ~CPDF_NameTree();
 
-  bool AddValueAndName(RetainPtr<CPDF_Object> pObj, const WideString& name);
+  bool AddValueAndName(std::unique_ptr<CPDF_Object> pObj,
+                       const WideString& name);
   bool DeleteValueAndName(int nIndex);
 
   CPDF_Object* LookupValueAndName(int nIndex, WideString* csName) const;

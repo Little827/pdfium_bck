@@ -11,11 +11,10 @@
 #include "testing/invalid_seekable_read_stream.h"
 
 TEST(CPDF_StreamAccTest, ReadRawDataFailed) {
-  auto stream = pdfium::MakeRetain<CPDF_Stream>();
-  stream->InitStreamFromFile(
-      pdfium::MakeRetain<InvalidSeekableReadStream>(1024),
-      pdfium::MakeRetain<CPDF_Dictionary>());
-  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream.Get());
+  CPDF_Stream stream;
+  stream.InitStreamFromFile(pdfium::MakeRetain<InvalidSeekableReadStream>(1024),
+                            pdfium::MakeUnique<CPDF_Dictionary>());
+  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(&stream);
   stream_acc->LoadAllDataRaw();
   EXPECT_EQ(0u, stream_acc->GetSize());
   EXPECT_FALSE(stream_acc->GetData());
