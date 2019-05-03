@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78a95710_64f9a4ba",
+        "filename": "core/fpdfdoc/cpdf_filespec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:06:22Z",
+      "side": 1,
+      "message": "Can we stick with AsDictionary() to avoid the unneeded nullptr check for |m_pObj|?",
+      "range": {
+        "startLine": 100,
+        "startChar": 37,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "dd7bb4218ee41099eb59a6e526feb1f25aa3f4ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7972c00d_bf5b3126",
+        "filename": "core/fpdfdoc/cpdf_filespec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:06:22Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 123,
+        "startChar": 42,
+        "endLine": 123,
+        "endChar": 50
+      },
+      "revId": "dd7bb4218ee41099eb59a6e526feb1f25aa3f4ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
