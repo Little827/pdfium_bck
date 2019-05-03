@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03877b4a_fbbbce61",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:58:42Z",
+      "side": 1,
+      "message": "Can you briefly document what the difference is between fuzzer_list and public_fuzzer_list?",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3875f55c_a872a707",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:58:42Z",
+      "side": 1,
+      "message": "Add a comment to briefly explain why it\u0027s ok in component builds.",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9620163a_a3b7fd3d",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:58:42Z",
+      "side": 1,
+      "message": "Does it make sense to cross-reference with public/fpdfview.h?",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9eb59f_163ceaa9",
+        "filename": "testing/fuzzers/component_fuzzer_template.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:58:42Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2430f3_3288c755",
+        "filename": "testing/fuzzers/component_fuzzer_template.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:58:42Z",
+      "side": 1,
+      "message": "Can you mention FUZZER_IMPL is a macro? It wasn\u0027t obvious at first and it just looked like bad code style.",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e3900e_d060149a",
+        "filename": "testing/fuzzers/component_fuzzer_template.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-03T23:58:42Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
