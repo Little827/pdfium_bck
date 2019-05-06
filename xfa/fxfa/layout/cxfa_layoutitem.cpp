@@ -7,6 +7,7 @@
 #include "xfa/fxfa/layout/cxfa_layoutitem.h"
 
 #include "fxjs/xfa/cjx_object.h"
+#include "third_party/base/logging.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 #include "xfa/fxfa/layout/cxfa_viewlayoutitem.h"
@@ -21,7 +22,7 @@ void XFA_ReleaseLayoutItem(CXFA_LayoutItem* pLayoutItem) {
   CXFA_LayoutProcessor* pDocLayout = pDocument->GetLayoutProcessor();
   while (pNode) {
     CXFA_LayoutItem* pNext = pNode->GetNextSibling();
-    pNode->SetParent(nullptr);
+    pLayoutItem->RemoveChild(pNode);
     pNotify->OnLayoutItemRemoving(pDocLayout, pNode);
     XFA_ReleaseLayoutItem(pNode);
     pNode = pNext;
@@ -31,13 +32,17 @@ void XFA_ReleaseLayoutItem(CXFA_LayoutItem* pLayoutItem) {
     pNotify->OnPageEvent(ToViewLayoutItem(pLayoutItem),
                          XFA_PAGEVIEWEVENT_PostRemoved);
   }
+  if (pLayoutItem->GetParent())
+    pLayoutItem->GetParent()->RemoveChild(pLayoutItem);
   delete pLayoutItem;
 }
 
 CXFA_LayoutItem::CXFA_LayoutItem(CXFA_Node* pNode, ItemType type)
     : m_ItemType(type), m_pFormNode(pNode) {}
 
-CXFA_LayoutItem::~CXFA_LayoutItem() = default;
+CXFA_LayoutItem::~CXFA_LayoutItem() {
+  CHECK(!GetParent());
+}
 
 CXFA_ViewLayoutItem* CXFA_LayoutItem::AsViewLayoutItem() {
   return IsViewLayoutItem() ? static_cast<CXFA_ViewLayoutItem*>(this) : nullptr;
@@ -67,7 +72,7 @@ CXFA_ViewLayoutItem* CXFA_LayoutItem::GetPage() const {
   }
   return nullptr;
 }
-void CXFA_LayoutItem::AddChild(CXFA_LayoutItem* pChildItem) {
+void CXFA_LayoutItem::AppendLastChild(CXFA_LayoutItem* pChildItem) {
   if (pChildItem->m_pParent)
     pChildItem->m_pParent->RemoveChild(pChildItem);
 
@@ -84,7 +89,7 @@ void CXFA_LayoutItem::AddChild(CXFA_LayoutItem* pChildItem) {
   pExistingChildItem->m_pNextSibling = pChildItem;
 }
 
-void CXFA_LayoutItem::AddHeadChild(CXFA_LayoutItem* pChildItem) {
+void CXFA_LayoutItem::AppendFirstChild(CXFA_LayoutItem* pChildItem) {
   if (pChildItem->m_pParent)
     pChildItem->m_pParent->RemoveChild(pChildItem);
 
@@ -99,18 +104,15 @@ void CXFA_LayoutItem::AddHeadChild(CXFA_LayoutItem* pChildItem) {
   m_pFirstChild->m_pNextSibling = pExistingChildItem;
 }
 
-void CXFA_LayoutItem::InsertChild(CXFA_LayoutItem* pBeforeItem,
-                                  CXFA_LayoutItem* pChildItem) {
+void CXFA_LayoutItem::InsertAfter(CXFA_LayoutItem* pChildItem,
+                                  CXFA_LayoutItem* pBeforeItem) {
   if (pBeforeItem->m_pParent != this)
     return;
-  if (pChildItem->m_pParent)
-    pChildItem->m_pParent = nullptr;
 
+  ASSERT(!pChildItem->m_pParent);
   pChildItem->m_pParent = this;
-
-  CXFA_LayoutItem* pExistingChildItem = pBeforeItem->m_pNextSibling;
+  pChildItem->m_pNextSibling = pBeforeItem->m_pNextSibling;
   pBeforeItem->m_pNextSibling = pChildItem;
-  pChildItem->m_pNextSibling = pExistingChildItem;
 }
 
 void CXFA_LayoutItem::RemoveChild(CXFA_LayoutItem* pChildItem) {

@@ -32,15 +32,10 @@ class CXFA_LayoutItem {
   CXFA_Node* GetFormNode() const { return m_pFormNode.Get(); }
   void SetFormNode(CXFA_Node* pNode) { m_pFormNode = pNode; }
 
-  // TODO(tsepez) replace these calls with AddChild() etc.
-  void SetParent(CXFA_LayoutItem* pParent) { m_pParent = pParent; }
-  void SetFirstChild(CXFA_LayoutItem* pChild) { m_pFirstChild = pChild; }
-  void SetNextSibling(CXFA_LayoutItem* pSibling) { m_pNextSibling = pSibling; }
-
-  void AddChild(CXFA_LayoutItem* pChildItem);
-  void AddHeadChild(CXFA_LayoutItem* pChildItem);
+  void AppendLastChild(CXFA_LayoutItem* pChildItem);
+  void AppendFirstChild(CXFA_LayoutItem* pChildItem);
   void RemoveChild(CXFA_LayoutItem* pChildItem);
-  void InsertChild(CXFA_LayoutItem* pBeforeItem, CXFA_LayoutItem* pChildItem);
+  void InsertAfter(CXFA_LayoutItem* pChildItem, CXFA_LayoutItem* pBeforeItem);
 
  protected:
   enum ItemType { kViewItem, kContentItem };

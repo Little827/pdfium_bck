@@ -709,7 +709,7 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
 
   bool bOrphanedItem = false;
   if (pSecondParent) {
-    pSecondParent->AddChild(pSecondLayoutItem);
+    pSecondParent->AppendLastChild(pSecondLayoutItem);
     if (fCurTopMargin > 0 && pLayoutItem->GetFirstChild()) {
       pSecondParent->m_sSize.height += fCurTopMargin;
       for (CXFA_LayoutItem* pParentIter = pSecondParent->GetParent();
@@ -723,7 +723,7 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
       }
     }
   } else if (pLayoutItem->GetParent()) {
-    pLayoutItem->GetParent()->InsertChild(pLayoutItem, pSecondLayoutItem);
+    pLayoutItem->GetParent()->InsertAfter(pSecondLayoutItem, pLayoutItem);
   } else {
     // Parentless |pLayoutitem| would like to have |pSecondLayoutItem| as a
     // sibling, but that would violate the tree invariant. Instead, keep
@@ -732,24 +732,23 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
     bOrphanedItem = true;
   }
 
-  CXFA_ContentLayoutItem* pChildren =
-      ToContentLayoutItem(pLayoutItem->GetFirstChild());
-  pLayoutItem->SetFirstChild(nullptr);
+  std::vector<CXFA_ContentLayoutItem*> children;
+  while (auto* pFirst = ToContentLayoutItem(pLayoutItem->GetFirstChild())) {
+    children.push_back(pFirst);
+    pLayoutItem->RemoveChild(pFirst);
+  }
 
   float lHeightForKeep = 0;
   float fAddMarginHeight = 0;
   std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
-  for (CXFA_ContentLayoutItem *pChildItem = pChildren, *pChildNext = nullptr;
-       pChildItem; pChildItem = pChildNext) {
-    pChildNext = ToContentLayoutItem(pChildItem->GetNextSibling());
-    pChildItem->SetNextSibling(nullptr);
+  for (auto* pChildItem : children) {
     if (fSplitPos <= fCurTopMargin + pChildItem->m_sPos.y + fCurBottomMargin +
                          kXFALayoutPrecision) {
       if (!ExistContainerKeep(pChildItem->GetFormNode(), true)) {
         pChildItem->m_sPos.y -= fSplitPos - fCurBottomMargin;
         pChildItem->m_sPos.y += lHeightForKeep;
         pChildItem->m_sPos.y += fAddMarginHeight;
-        pSecondLayoutItem->AddChild(pChildItem);
+        pSecondLayoutItem->AppendLastChild(pChildItem);
         continue;
       }
       if (lHeightForKeep < kXFALayoutPrecision) {
@@ -765,19 +764,19 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
             if (pSecondParent)
               pSecondParent->m_sSize.height += pPreItem->m_sSize.height;
           }
-          pSecondLayoutItem->AddChild(pPreItem);
+          pSecondLayoutItem->AppendLastChild(pPreItem);
         }
       }
       pChildItem->m_sPos.y -= fSplitPos;
       pChildItem->m_sPos.y += lHeightForKeep;
       pChildItem->m_sPos.y += fAddMarginHeight;
-      pSecondLayoutItem->AddChild(pChildItem);
+      pSecondLayoutItem->AppendLastChild(pChildItem);
       continue;
     }
     if (fSplitPos + kXFALayoutPrecision >= fCurTopMargin + fCurBottomMargin +
                                                pChildItem->m_sPos.y +
                                                pChildItem->m_sSize.height) {
-      pLayoutItem->AddChild(pChildItem);
+      pLayoutItem->AppendLastChild(pChildItem);
       if (ExistContainerKeep(pChildItem->GetFormNode(), false))
         keepLayoutItems.push_back(pChildItem);
       else
@@ -790,10 +789,10 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
         pChildItem, pSecondLayoutItem,
         fSplitPos - fCurTopMargin - fCurBottomMargin - pChildItem->m_sPos.y);
     fAddMarginHeight = pSecondLayoutItem->m_sSize.height - fOldHeight;
-    pLayoutItem->AddChild(pChildItem);
+    pLayoutItem->AppendLastChild(pChildItem);
   }
   if (bOrphanedItem)
-    pLayoutItem->AddChild(pSecondLayoutItem);
+    pLayoutItem->AppendLastChild(pSecondLayoutItem);
 }
 
 void CXFA_ItemLayoutProcessor::SplitLayoutItem(float fSplitPos) {
@@ -805,7 +804,8 @@ CXFA_ContentLayoutItem* CXFA_ItemLayoutProcessor::ExtractLayoutItem() {
   CXFA_ContentLayoutItem* pLayoutItem = m_pLayoutItem;
   if (pLayoutItem) {
     m_pLayoutItem = ToContentLayoutItem(pLayoutItem->GetNextSibling());
-    pLayoutItem->SetNextSibling(nullptr);
+    if (pLayoutItem->GetParent())
+      pLayoutItem->GetParent()->RemoveChild(pLayoutItem);
   }
 
   if (m_nCurChildNodeStage != Stage::kDone || !m_pOldLayoutItem)
@@ -997,9 +997,9 @@ void CXFA_ItemLayoutProcessor::DoLayoutPageArea(
         pCurChildNode, pProcessor->GetCurrentComponentSize()));
     CXFA_LayoutItem* pProcessItem = pProcessor->ExtractLayoutItem();
     if (!pBeforeItem)
-      pPageAreaLayoutItem->AddHeadChild(pProcessItem);
+      pPageAreaLayoutItem->AppendFirstChild(pProcessItem);
     else
-      pPageAreaLayoutItem->InsertChild(pBeforeItem, pProcessItem);
+      pPageAreaLayoutItem->InsertAfter(pProcessItem, pBeforeItem);
 
     pBeforeItem = pProcessItem;
   }
@@ -1018,9 +1018,9 @@ void CXFA_ItemLayoutProcessor::DoLayoutPageArea(
     CXFA_LayoutItem* pNextLayoutItem = pLayoutItem->GetNextSibling();
     pPageAreaLayoutItem->RemoveChild(pLayoutItem);
     if (!pBeforeItem)
-      pPageAreaLayoutItem->AddHeadChild(pLayoutItem);
+      pPageAreaLayoutItem->AppendFirstChild(pLayoutItem);
     else
-      pPageAreaLayoutItem->InsertChild(pBeforeItem, pLayoutItem);
+      pPageAreaLayoutItem->InsertAfter(pLayoutItem, pBeforeItem);
 
     pBeforeItem = pLayoutItem;
     pLayoutItem = pNextLayoutItem;
@@ -1118,7 +1118,7 @@ void CXFA_ItemLayoutProcessor::DoLayoutPositionedContainer(
         }
       }
     }
-    m_pLayoutItem->AddChild(pProcessor->ExtractLayoutItem());
+    m_pLayoutItem->AppendLastChild(pProcessor->ExtractLayoutItem());
   }
 
   XFA_VERSION eVersion = GetFormNode()->GetDocument()->GetCurVersionMode();
@@ -1195,7 +1195,7 @@ void CXFA_ItemLayoutProcessor::DoLayoutTableContainer(CXFA_Node* pLayoutNode) {
     if (!pProcessor->HasLayoutItem())
       continue;
 
-    m_pLayoutItem->AddChild(pProcessor->ExtractLayoutItem());
+    m_pLayoutItem->AppendLastChild(pProcessor->ExtractLayoutItem());
   }
 
   int32_t iRowCount = 0;
@@ -1595,28 +1595,23 @@ CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
         }
       }
 
-      if (ToContentLayoutItem(m_pLayoutItem->GetFirstChild()) == pLastChild) {
-        m_pLayoutItem->SetFirstChild(nullptr);
-      } else {
-        for (CXFA_LayoutItem* pLayoutNext = m_pLayoutItem->GetFirstChild();
-             pLayoutNext; pLayoutNext = pLayoutNext->GetNextSibling()) {
-          if (ToContentLayoutItem(pLayoutNext->GetNextSibling()) ==
-              pLastChild) {
-            pLayoutNext->SetNextSibling(nullptr);
-            break;
-          }
+      // TODO(tsepez): avoid looping if we can prove it is in the list.
+      for (CXFA_LayoutItem* pLayoutNext = m_pLayoutItem->GetFirstChild();
+           pLayoutNext; pLayoutNext = pLayoutNext->GetNextSibling()) {
+        if (ToContentLayoutItem(pLayoutNext) == pLastChild) {
+          m_pLayoutItem->RemoveChild(pLastChild);
+          break;
         }
       }
 
-      CXFA_ContentLayoutItem* pLayoutNextTemp = ToContentLayoutItem(pLastChild);
+      CXFA_ContentLayoutItem* pLayoutNextTemp = pLastChild;
       while (pLayoutNextTemp) {
-        pLayoutNextTemp->SetParent(nullptr);
         CXFA_ContentLayoutItem* pSaveLayoutNext =
             ToContentLayoutItem(pLayoutNextTemp->GetNextSibling());
-        pLayoutNextTemp->SetNextSibling(nullptr);
+        if (pLayoutNextTemp->GetParent())
+          pLayoutNextTemp->GetParent()->RemoveChild(pLayoutNextTemp);
         pLayoutNextTemp = pSaveLayoutNext;
       }
-      pLastChild = nullptr;
     }
 
     while (m_pCurChildNode) {
@@ -1929,7 +1924,7 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
         if (rgCurLineLayoutItems[0][j]->GetFormNode()->PresenceRequiresSpace())
           fCurPos += rgCurLineLayoutItems[0][j]->m_sSize.width;
       }
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[0][j]);
+      m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[0][j]);
       m_fLastRowWidth = fCurPos;
     }
     fCurPos = (fContentWidthLimit + fGroupWidths[0] - fGroupWidths[1] -
@@ -1946,7 +1941,7 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
         if (rgCurLineLayoutItems[1][j]->GetFormNode()->PresenceRequiresSpace())
           fCurPos += rgCurLineLayoutItems[1][j]->m_sSize.width;
       }
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[1][j]);
+      m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[1][j]);
       m_fLastRowWidth = fCurPos;
     }
     fCurPos = fContentWidthLimit - fGroupWidths[2];
@@ -1961,7 +1956,7 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
         if (rgCurLineLayoutItems[2][j]->GetFormNode()->PresenceRequiresSpace())
           fCurPos += rgCurLineLayoutItems[2][j]->m_sSize.width;
       }
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[2][j]);
+      m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[2][j]);
       m_fLastRowWidth = fCurPos;
     }
   } else {
@@ -1973,7 +1968,7 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
 
       rgCurLineLayoutItems[0][j]->m_sPos =
           CFX_PointF(fCurPos, *fContentCurRowY);
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[0][j]);
+      m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[0][j]);
       m_fLastRowWidth = fCurPos;
     }
     fCurPos = (fContentWidthLimit + fGroupWidths[0] + fGroupWidths[1] -
@@ -1985,7 +1980,7 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
 
       rgCurLineLayoutItems[1][j]->m_sPos =
           CFX_PointF(fCurPos, *fContentCurRowY);
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[1][j]);
+      m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[1][j]);
       m_fLastRowWidth = fCurPos;
     }
     fCurPos = fContentWidthLimit;
@@ -1995,7 +1990,7 @@ bool CXFA_ItemLayoutProcessor::CalculateRowChildPosition(
 
       rgCurLineLayoutItems[2][j]->m_sPos =
           CFX_PointF(fCurPos, *fContentCurRowY);
-      m_pLayoutItem->AddChild(rgCurLineLayoutItems[2][j]);
+      m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[2][j]);
       m_fLastRowWidth = fCurPos;
     }
   }
@@ -2174,7 +2169,7 @@ void CXFA_ItemLayoutProcessor::AddTrailerBeforeSplit(
     pTrailerLayoutItem->m_sPos.y = m_fLastRowY;
     pTrailerLayoutItem->m_sPos.x = m_fLastRowWidth;
     m_pLayoutItem->m_sSize.width += pTrailerLayoutItem->m_sSize.width;
-    m_pLayoutItem->AddChild(pTrailerLayoutItem);
+    m_pLayoutItem->AppendLastChild(pTrailerLayoutItem);
     return;
   }
 
@@ -2208,7 +2203,7 @@ void CXFA_ItemLayoutProcessor::AddTrailerBeforeSplit(
       break;
   }
   m_pLayoutItem->m_sSize.height += fHeight;
-  m_pLayoutItem->AddChild(pTrailerLayoutItem);
+  m_pLayoutItem->AppendLastChild(pTrailerLayoutItem);
 }
 
 void CXFA_ItemLayoutProcessor::AddLeaderAfterSplit(
@@ -2255,7 +2250,7 @@ void CXFA_ItemLayoutProcessor::AddLeaderAfterSplit(
       break;
   }
   m_pLayoutItem->m_sSize.height += fHeight;
-  m_pLayoutItem->AddChild(pLeaderLayoutItem);
+  m_pLayoutItem->AppendLastChild(pLeaderLayoutItem);
 }
 
 void CXFA_ItemLayoutProcessor::AddPendingNode(CXFA_Node* pPendingNode,
