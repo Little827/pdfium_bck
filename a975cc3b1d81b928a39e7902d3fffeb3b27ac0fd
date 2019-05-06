@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "959b54da_59d60838",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-06T21:19:06Z",
+      "side": 1,
+      "message": "I mean just to add a comment here saying this should be consistent with the component build FPDF_EXPORT entry in public/fpdfview.h, and vice versa.",
+      "parentUuid": "29c90a11_557f02de",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d9eb59f_163ceaa9",
         "filename": "testing/fuzzers/component_fuzzer_template.cc",
         "patchSetId": 7
