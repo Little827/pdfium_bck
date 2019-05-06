@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0c5c95f_a1bbabb6",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-06T19:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03877b4a_fbbbce61",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3875f55c_a872a707",
         "filename": "testing/fuzzers/BUILD.gn",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "efcf4c62_c742c027",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-06T19:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3875f55c_a872a707",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9620163a_a3b7fd3d",
         "filename": "testing/fuzzers/BUILD.gn",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2019-05-03T23:58:42Z",
       "side": 1,
       "message": "Does it make sense to cross-reference with public/fpdfview.h?",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c90a11_557f02de",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-06T19:59:43Z",
+      "side": 1,
+      "message": "We\u0027d have to #include it in all the fuzzer implementations or add -includepublic/fpdfview.h to cflags.  IMO it\u0027s most clear the way it is, but I\u0027d be open to change it if you want.",
+      "parentUuid": "9620163a_a3b7fd3d",
       "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "7aa3364f_4708b6da",
+        "filename": "testing/fuzzers/component_fuzzer_template.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-06T19:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d9eb59f_163ceaa9",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f2430f3_3288c755",
         "filename": "testing/fuzzers/component_fuzzer_template.cc",
         "patchSetId": 7
@@ -90,6 +168,24 @@
       "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7c460d_4f85a730",
+        "filename": "testing/fuzzers/component_fuzzer_template.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-06T19:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2430f3_3288c755",
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +209,30 @@
       "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9336350b_54d6fe70",
+        "filename": "testing/fuzzers/component_fuzzer_template.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-06T19:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52e3900e_d060149a",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "a975cc3b1d81b928a39e7902d3fffeb3b27ac0fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
