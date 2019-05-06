@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3757b8c_3c60ae28",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-06T19:00:16Z",
+      "side": 1,
+      "message": "Maybe revert this back to the following?\n\nif (str.IsEmpty())\n   GetAnnotDict()-\u003eRemoveFor(...);\nelse\n   GetAnnotDict()-\u003eSetNewFor\u003cCPDF_String\u003e(...);\n\nSame for SetAnnotName() and possibly some other places with the same pattern.",
+      "revId": "f277a32f1ec39d5f91c03a1b78bd0c0459f6d3e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
