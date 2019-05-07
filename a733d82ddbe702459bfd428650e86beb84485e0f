@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8cf3989_edb3c8bf",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-07T00:07:56Z",
+      "side": 0,
+      "message": "NOTE: Ok, so at this point, pLastChild has been removed from the parent/sibling list as appropriate, but still holds a list of the subsequent siblings which was getting clobbered in the new code.",
+      "revId": "a733d82ddbe702459bfd428650e86beb84485e0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c02be5_59d7ee1b",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-07T00:07:56Z",
+      "side": 0,
+      "message": "Here, we just clobber it and its subsequent siblings. So just write a loop to remove all of them in place of all this code.",
+      "range": {
+        "startLine": 1612,
+        "startChar": 0,
+        "endLine": 1612,
+        "endChar": 6
+      },
+      "revId": "a733d82ddbe702459bfd428650e86beb84485e0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2938b220_693426ce",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1619,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-07T00:07:56Z",
+      "side": 0,
+      "message": "lastly, failing to set this causes the loop not to break. I think I misread the level of {} and figured it was unused after this point.",
+      "range": {
+        "startLine": 1619,
+        "startChar": 0,
+        "endLine": 1619,
+        "endChar": 6
+      },
+      "revId": "a733d82ddbe702459bfd428650e86beb84485e0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
