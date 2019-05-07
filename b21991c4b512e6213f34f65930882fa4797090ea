@@ -127,6 +127,24 @@
       "revId": "b21991c4b512e6213f34f65930882fa4797090ea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6598b6_bfbab37f",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T22:48:14Z",
+      "side": 1,
+      "message": "Seems reasonable. Thanks.",
+      "parentUuid": "07dd16a9_25b01641",
+      "revId": "b21991c4b512e6213f34f65930882fa4797090ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

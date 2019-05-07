@@ -1,0 +1,125 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b717507f_a6e9a15b",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T22:48:14Z",
+      "side": 1,
+      "message": "Use \"###\" to make this a subsection of Testing? Same for the .in section.",
+      "revId": "7a76efed99b870ce9e16a9ed1065469efb05c6be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b273b4_a1bc3bd8",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T22:48:14Z",
+      "side": 1,
+      "message": "For me, at least, it makes the PDF more readable in a text editor. Since I\u0027m handwriting them.",
+      "range": {
+        "startLine": 159,
+        "startChar": 15,
+        "endLine": 159,
+        "endChar": 40
+      },
+      "revId": "7a76efed99b870ce9e16a9ed1065469efb05c6be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d16f4ca0_d328c6f3",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T22:48:14Z",
+      "side": 1,
+      "message": "testing/tools/make_expected.sh takes a .pdf.\n\n\"testing/tools/fixup_pdf_template.py foo.in\" generates foo.pdf, as mentioned below.",
+      "revId": "7a76efed99b870ce9e16a9ed1065469efb05c6be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297deaed_4e8ed33f",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T22:48:14Z",
+      "side": 1,
+      "message": "the same directory as your_file.in",
+      "range": {
+        "startLine": 193,
+        "startChar": 38,
+        "endLine": 193,
+        "endChar": 59
+      },
+      "revId": "7a76efed99b870ce9e16a9ed1065469efb05c6be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43bc40ea_af7d91cb",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T22:48:14Z",
+      "side": 1,
+      "message": "I think you can drop this sentence. Instead, in the pixel tests section, make it clear one only needs either your_new_file.in or your_new_file.pdf, but not both.",
+      "revId": "7a76efed99b870ce9e16a9ed1065469efb05c6be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf7eb75_a8ee3089",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T22:48:14Z",
+      "side": 1,
+      "message": "^",
+      "parentUuid": "8725895f_3490eceb",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "7a76efed99b870ce9e16a9ed1065469efb05c6be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
