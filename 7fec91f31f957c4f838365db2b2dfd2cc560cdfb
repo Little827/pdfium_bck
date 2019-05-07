@@ -16,6 +16,52 @@
       "revId": "7fec91f31f957c4f838365db2b2dfd2cc560cdfb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf007e5_bd9ecb10",
+        "filename": "core/fpdfapi/page/cpdf_tilingpattern.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T23:37:08Z",
+      "side": 1,
+      "message": "You can use \"auto\" here since the return value of MakeUnique() is fairly obvious for those familiar with the function.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "7fec91f31f957c4f838365db2b2dfd2cc560cdfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5184ed87_bd706e27",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T23:37:08Z",
+      "side": 1,
+      "message": "Just: !pPatternForm",
+      "range": {
+        "startLine": 2148,
+        "startChar": 6,
+        "endLine": 2148,
+        "endChar": 29
+      },
+      "revId": "7fec91f31f957c4f838365db2b2dfd2cc560cdfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
