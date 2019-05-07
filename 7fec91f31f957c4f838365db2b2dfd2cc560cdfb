@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b5d9b76_15e0111d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-07T23:18:08Z",
+      "side": 1,
+      "message": "Reverting the revert (with additional changes) is a double negative. How about we write the CL description in a more readable way:\n\nProvide correct state to pattern rendering. (try 2)\n\nAccording to 8.7.3.1 in the PDF 2.0 spec, a tiling pattern\n...\n\nThe first attempt in commit f188aca283d6dceb874bbe5e20d8003e6bbe184f got\nreverted because ...\n\nFix those issues by ...\n\nBug: ...\n// Other CL metadata here",
+      "revId": "7fec91f31f957c4f838365db2b2dfd2cc560cdfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
