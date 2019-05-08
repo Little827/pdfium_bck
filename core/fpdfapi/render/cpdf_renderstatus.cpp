@@ -929,6 +929,7 @@ RetainPtr<CFX_DIBitmap> DrawPatternBitmap(
     CPDF_Document* pDoc,
     CPDF_PageRenderCache* pCache,
     CPDF_TilingPattern* pPattern,
+    CPDF_Form* pPatternForm,
     const CFX_Matrix& mtObject2Device,
     int width,
     int height,
@@ -957,7 +958,7 @@ RetainPtr<CFX_DIBitmap> DrawPatternBitmap(
   options.GetOptions().bForceHalftone = true;
 
   CPDF_RenderContext context(pDoc, pCache);
-  context.AppendLayer(pPattern->form(), &mtPattern2Bitmap);
+  context.AppendLayer(pPatternForm, &mtPattern2Bitmap);
   context.Render(&bitmap_device, &options, nullptr);
 #if defined _SKIA_SUPPORT_PATHS_
   bitmap_device.Flush(true);
@@ -2143,7 +2144,8 @@ void CPDF_RenderStatus::DrawTilingPattern(CPDF_TilingPattern* pPattern,
                                           CPDF_PageObject* pPageObj,
                                           const CFX_Matrix& mtObj2Device,
                                           bool bStroke) {
-  if (!pPattern->Load())
+  const std::unique_ptr<CPDF_Form> pPatternForm = pPattern->Load(pPageObj);
+  if (!pPatternForm)
     return;
 
   CFX_RenderDevice::StateRestorer restorer(m_pDevice);
@@ -2201,7 +2203,7 @@ void CPDF_RenderStatus::DrawTilingPattern(CPDF_TilingPattern* pPattern,
     if (!pPattern->colored())
       pStates = CloneObjStates(pPageObj, bStroke);
 
-    const CPDF_Dictionary* pFormDict = pPattern->form()->GetDict();
+    const CPDF_Dictionary* pFormDict = pPatternForm->GetDict();
     const CPDF_Dictionary* pFormResource =
         pFormDict ? pFormDict->GetDictFor("Resources") : nullptr;
     for (int col = min_col; col <= max_col; col++) {
@@ -2214,11 +2216,11 @@ void CPDF_RenderStatus::DrawTilingPattern(CPDF_TilingPattern* pPattern,
         CFX_RenderDevice::StateRestorer restorer2(m_pDevice);
         CPDF_RenderStatus status(m_pContext.Get(), m_pDevice);
         status.SetOptions(m_Options);
-        status.SetTransparency(pPattern->form()->GetTransparency());
+        status.SetTransparency(pPatternForm->GetTransparency());
         status.SetFormResource(pFormResource);
         status.SetDropObjects(m_bDropObjects);
         status.Initialize(this, pStates.get());
-        status.RenderObjectList(pPattern->form(), matrix);
+        status.RenderObjectList(pPatternForm.get(), matrix);
       }
     }
     return;
@@ -2246,15 +2248,16 @@ void CPDF_RenderStatus::DrawTilingPattern(CPDF_TilingPattern* pPattern,
   float top_offset = cell_bbox.bottom - mtPattern2Device.f;
   RetainPtr<CFX_DIBitmap> pPatternBitmap;
   if (width * height < 16) {
-    RetainPtr<CFX_DIBitmap> pEnlargedBitmap =
-        DrawPatternBitmap(m_pContext->GetDocument(), m_pContext->GetPageCache(),
-                          pPattern, mtObj2Device, 8, 8, m_Options.GetOptions());
+    RetainPtr<CFX_DIBitmap> pEnlargedBitmap = DrawPatternBitmap(
+        m_pContext->GetDocument(), m_pContext->GetPageCache(), pPattern,
+        pPatternForm.get(), mtObj2Device, 8, 8, m_Options.GetOptions());
     pPatternBitmap = pEnlargedBitmap->StretchTo(
         width, height, FXDIB_ResampleOptions(), nullptr);
   } else {
-    pPatternBitmap = DrawPatternBitmap(
-        m_pContext->GetDocument(), m_pContext->GetPageCache(), pPattern,
-        mtObj2Device, width, height, m_Options.GetOptions());
+    pPatternBitmap =
+        DrawPatternBitmap(m_pContext->GetDocument(), m_pContext->GetPageCache(),
+                          pPattern, pPatternForm.get(), mtObj2Device, width,
+                          height, m_Options.GetOptions());
   }
   if (!pPatternBitmap)
     return;
