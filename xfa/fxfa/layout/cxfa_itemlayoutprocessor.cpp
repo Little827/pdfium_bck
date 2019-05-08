@@ -732,17 +732,16 @@ void CXFA_ItemLayoutProcessor::SplitLayoutItem(
     bOrphanedItem = true;
   }
 
-  CXFA_ContentLayoutItem* pChildren =
-      ToContentLayoutItem(pLayoutItem->GetFirstChild());
-  pLayoutItem->SetFirstChild(nullptr);
 
   float lHeightForKeep = 0;
   float fAddMarginHeight = 0;
+  CXFA_ContentLayoutItem* pChildNext = nullptr;
   std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
-  for (CXFA_ContentLayoutItem *pChildItem = pChildren, *pChildNext = nullptr;
+  for (CXFA_ContentLayoutItem* pChildItem =
+           ToContentLayoutItem(pLayoutItem->GetFirstChild());
        pChildItem; pChildItem = pChildNext) {
     pChildNext = ToContentLayoutItem(pChildItem->GetNextSibling());
-    pChildItem->SetNextSibling(nullptr);
+    pChildItem->GetParent()->RemoveChild(pChildItem);
     if (fSplitPos <= fCurTopMargin + pChildItem->m_sPos.y + fCurBottomMargin +
                          kXFALayoutPrecision) {
       if (!ExistContainerKeep(pChildItem->GetFormNode(), true)) {
@@ -805,9 +804,9 @@ CXFA_ContentLayoutItem* CXFA_ItemLayoutProcessor::ExtractLayoutItem() {
   CXFA_ContentLayoutItem* pLayoutItem = m_pLayoutItem;
   if (pLayoutItem) {
     m_pLayoutItem = ToContentLayoutItem(pLayoutItem->GetNextSibling());
-    pLayoutItem->SetNextSibling(nullptr);
+    if (pLayoutItem->GetParent())
+      pLayoutItem->GetParent()->RemoveChild(pLayoutItem);
   }
-
   if (m_nCurChildNodeStage != Stage::kDone || !m_pOldLayoutItem)
     return pLayoutItem;
 
@@ -1595,25 +1594,12 @@ CXFA_ItemLayoutProcessor::DoLayoutFlowedContainer(
         }
       }
 
-      if (ToContentLayoutItem(m_pLayoutItem->GetFirstChild()) == pLastChild) {
-        m_pLayoutItem->SetFirstChild(nullptr);
-      } else {
-        for (CXFA_LayoutItem* pLayoutNext = m_pLayoutItem->GetFirstChild();
-             pLayoutNext; pLayoutNext = pLayoutNext->GetNextSibling()) {
-          if (ToContentLayoutItem(pLayoutNext->GetNextSibling()) ==
-              pLastChild) {
-            pLayoutNext->SetNextSibling(nullptr);
-            break;
-          }
-        }
-      }
-
-      CXFA_ContentLayoutItem* pLayoutNextTemp = ToContentLayoutItem(pLastChild);
+      CXFA_ContentLayoutItem* pLayoutNextTemp = pLastChild;
       while (pLayoutNextTemp) {
-        pLayoutNextTemp->SetParent(nullptr);
         CXFA_ContentLayoutItem* pSaveLayoutNext =
             ToContentLayoutItem(pLayoutNextTemp->GetNextSibling());
-        pLayoutNextTemp->SetNextSibling(nullptr);
+        if (pLayoutNextTemp->GetParent())
+          pLayoutNextTemp->GetParent()->RemoveChild(pLayoutNextTemp);
         pLayoutNextTemp = pSaveLayoutNext;
       }
       pLastChild = nullptr;
