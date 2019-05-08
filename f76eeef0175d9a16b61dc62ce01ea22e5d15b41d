@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32371ff9_7a75d5f7",
+        "filename": "xfa/fxfa/layout/cxfa_layoutitem_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-08T05:04:24Z",
+      "side": 1,
+      "message": "Do you want to see if the standard Chromium style DISABLED_ works?\n\n#if defined(ADDRESS_SANITIZER)\n#define MAYBE_Bug_306123 DISABLED_Bug_306123\n#else\n#define MAYBE_Bug_306123 Bug_306123\n#endif\n\nTEST_F(CXFALayoutItemEmbedderTest, MAYBE_Bug_306123) {",
+      "revId": "f76eeef0175d9a16b61dc62ce01ea22e5d15b41d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
