@@ -82,9 +82,12 @@ class CPDF_Font {
   virtual uint32_t GetCharWidthF(uint32_t charcode) = 0;
   virtual FX_RECT GetCharBBox(uint32_t charcode) = 0;
 
+  // Returns nullptr for stock Type 1 fonts. Otherwise always returns non-null.
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
+
   CFX_Font* GetFont() { return &m_Font; }
   const CFX_Font* GetFont() const { return &m_Font; }
+
   CFX_Font* GetFontFallback(int position);
 
  protected:
