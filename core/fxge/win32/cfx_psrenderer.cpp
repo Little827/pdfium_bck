@@ -17,9 +17,9 @@
 #include "core/fxcodec/codec/ccodec_jpegmodule.h"
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcrt/maybe_owned.h"
-#include "core/fxge/cfx_facecache.h"
 #include "core/fxge/cfx_fontcache.h"
 #include "core/fxge/cfx_gemodule.h"
+#include "core/fxge/cfx_glyphcache.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/cfx_renderdevice.h"
 #include "core/fxge/dib/cfx_dibextractor.h"
@@ -526,7 +526,7 @@ void CFX_PSRenderer::SetColor(uint32_t color) {
   }
 }
 
-void CFX_PSRenderer::FindPSFontGlyph(CFX_FaceCache* pFaceCache,
+void CFX_PSRenderer::FindPSFontGlyph(CFX_GlyphCache* pFaceCache,
                                      CFX_Font* pFont,
                                      const TextCharPos& charpos,
                                      int* ps_fontnum,
@@ -664,7 +664,7 @@ bool CFX_PSRenderer::DrawText(int nChars,
       << pObject2Device->e << " " << pObject2Device->f << "]cm\n";
 
   CFX_FontCache* pCache = CFX_GEModule::Get()->GetFontCache();
-  CFX_FaceCache* pFaceCache = pCache->GetCachedFace(pFont);
+  CFX_GlyphCache* pFaceCache = pCache->GetCachedFace(pFont);
   int last_fontnum = -1;
   for (int i = 0; i < nChars; i++) {
     int ps_fontnum, ps_glyphindex;
