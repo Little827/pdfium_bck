@@ -251,15 +251,13 @@ Optional<CXFA_ViewLayoutItem*> CheckContentAreaNotUsed(
   return nullptr;
 }
 
-void SyncRemoveLayoutItem(CXFA_LayoutItem* pParentLayoutItem,
-                          CXFA_FFNotify* pNotify,
-                          CXFA_LayoutProcessor* pDocLayout) {
-  CXFA_LayoutItem* pNextLayoutItem;
+void SyncRemoveLayoutItemChildren(CXFA_LayoutItem* pParentLayoutItem,
+                                  CXFA_FFNotify* pNotify,
+                                  CXFA_LayoutProcessor* pDocLayout) {
   RetainPtr<CXFA_LayoutItem> pCurLayoutItem(pParentLayoutItem->GetFirstChild());
   while (pCurLayoutItem) {
-    pNextLayoutItem = pCurLayoutItem->GetNextSibling();
-    if (pCurLayoutItem->GetFirstChild())
-      SyncRemoveLayoutItem(pCurLayoutItem.Get(), pNotify, pDocLayout);
+    CXFA_LayoutItem* pNextLayoutItem = pCurLayoutItem->GetNextSibling();
+    SyncRemoveLayoutItemChildren(pCurLayoutItem.Get(), pNotify, pDocLayout);
     pNotify->OnLayoutItemRemoving(pDocLayout, pCurLayoutItem.Get());
     RemoveLayoutItem(pCurLayoutItem);
     pCurLayoutItem.Reset(pNextLayoutItem);
@@ -1608,7 +1606,8 @@ void CXFA_LayoutPageMgr::ClearData() {
   m_pPageSetMap.clear();
 }
 
-void CXFA_LayoutPageMgr::SaveLayoutItem(CXFA_LayoutItem* pParentLayoutItem) {
+void CXFA_LayoutPageMgr::SaveLayoutItemChildren(
+    CXFA_LayoutItem* pParentLayoutItem) {
   CXFA_Document* pDocument = m_pTemplatePageSetRoot->GetDocument();
   CXFA_FFNotify* pNotify = pDocument->GetNotify();
   CXFA_LayoutProcessor* pDocLayout = pDocument->GetLayoutProcessor();
@@ -1617,8 +1616,7 @@ void CXFA_LayoutPageMgr::SaveLayoutItem(CXFA_LayoutItem* pParentLayoutItem) {
     CXFA_LayoutItem* pNextLayoutItem = pCurLayoutItem->GetNextSibling();
     if (pCurLayoutItem->IsContentLayoutItem()) {
       if (pCurLayoutItem->GetFormNode()->HasRemovedChildren()) {
-        if (pCurLayoutItem->GetFirstChild())
-          SyncRemoveLayoutItem(pCurLayoutItem.Get(), pNotify, pDocLayout);
+        SyncRemoveLayoutItemChildren(pCurLayoutItem.Get(), pNotify, pDocLayout);
         pNotify->OnLayoutItemRemoving(pDocLayout, pCurLayoutItem.Get());
         RemoveLayoutItem(pCurLayoutItem);
         pCurLayoutItem.Reset(pNextLayoutItem);
@@ -1633,9 +1631,7 @@ void CXFA_LayoutPageMgr::SaveLayoutItem(CXFA_LayoutItem* pParentLayoutItem) {
         }
       }
     }
-    if (pCurLayoutItem->GetFirstChild())
-      SaveLayoutItem(pCurLayoutItem.Get());
-
+    SaveLayoutItemChildren(pCurLayoutItem.Get());
     RemoveLayoutItem(pCurLayoutItem);
     if (pCurLayoutItem->IsContentLayoutItem() ||
         pCurLayoutItem->GetFormNode()->GetElementType() ==
@@ -1963,7 +1959,7 @@ void CXFA_LayoutPageMgr::PrepareLayout() {
   CXFA_ViewLayoutItem* pNextLayout = nullptr;
   for (; pRootLayoutItem; pRootLayoutItem.Reset(pNextLayout)) {
     pNextLayout = ToViewLayoutItem(pRootLayoutItem->GetNextSibling());
-    SaveLayoutItem(pRootLayoutItem.Get());
+    SaveLayoutItemChildren(pRootLayoutItem.Get());
     RemoveLayoutItem(pRootLayoutItem);
   }
   m_pPageSetLayoutItemRoot = nullptr;
