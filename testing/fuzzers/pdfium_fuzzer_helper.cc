@@ -126,6 +126,15 @@ std::pair<int, int> GetRenderingAndFormFlagFromData(const char* data,
   return std::make_pair(render_flags, form_flags);
 }
 
+#ifdef PDF_ENABLE_V8
+std::unique_ptr<v8::Platform> platform;
+v8::StartupData natives_blob;
+v8::StartupData snapshot_blob;
+#endif
+
+FPDF_LIBRARY_CONFIG config;
+UNSUPPORT_INFO unsupport_info;
+
 }  // namespace
 
 PDFiumFuzzerHelper::PDFiumFuzzerHelper() = default;
@@ -256,42 +265,25 @@ bool PDFiumFuzzerHelper::RenderPage(FPDF_DOCUMENT doc,
   return !!bitmap;
 }
 
-// Initialize the library once for all runs of the fuzzer.
-struct TestCase {
-  TestCase() {
+FPDF_EXPORT void InitializePdfiumForFuzzerPublic() {
 #ifdef PDF_ENABLE_V8
 #ifdef V8_USE_EXTERNAL_STARTUP_DATA
-    platform = InitializeV8ForPDFiumWithStartupData(
-        ProgramPath(), "", &natives_blob, &snapshot_blob);
+  platform = InitializeV8ForPDFiumWithStartupData(
+      ProgramPath(), "", &natives_blob, &snapshot_blob);
 #else
-    platform = InitializeV8ForPDFium(ProgramPath());
+  platform = InitializeV8ForPDFium(ProgramPath());
 #endif  // V8_USE_EXTERNAL_STARTUP_DATA
 #endif  // PDF_ENABLE_V8
 
-    memset(&config, '\0', sizeof(config));
-    config.version = 2;
-    config.m_pUserFontPaths = nullptr;
-    config.m_pIsolate = nullptr;
-    config.m_v8EmbedderSlot = 0;
-    FPDF_InitLibraryWithConfig(&config);
+  memset(&config, '\0', sizeof(config));
+  config.version = 2;
+  config.m_pUserFontPaths = nullptr;
+  config.m_pIsolate = nullptr;
+  config.m_v8EmbedderSlot = 0;
+  FPDF_InitLibraryWithConfig(&config);
 
-    memset(&unsupport_info, '\0', sizeof(unsupport_info));
-    unsupport_info.version = 1;
-    unsupport_info.FSDK_UnSupport_Handler = ExampleUnsupportedHandler;
-    FSDK_SetUnSpObjProcessHandler(&unsupport_info);
-  }
-
-#ifdef PDF_ENABLE_V8
-  std::unique_ptr<v8::Platform> platform;
-  v8::StartupData natives_blob;
-  v8::StartupData snapshot_blob;
-#endif
-
-  FPDF_LIBRARY_CONFIG config;
-  UNSUPPORT_INFO unsupport_info;
-};
-
-// pdf_fuzzer_init.cc and pdfium_fuzzer_helper.cc are mutually exclusive and
-// should not be built together. They deliberately have the same global
-// variable.
-static TestCase* g_test_case = new TestCase();
+  memset(&unsupport_info, '\0', sizeof(unsupport_info));
+  unsupport_info.version = 1;
+  unsupport_info.FSDK_UnSupport_Handler = ExampleUnsupportedHandler;
+  FSDK_SetUnSpObjProcessHandler(&unsupport_info);
+}
