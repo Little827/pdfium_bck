@@ -5,8 +5,7 @@
 import("//build/config/jumbo.gni")
 import("../pdfium.gni")
 
-jumbo_source_set("test_support") {
-  testonly = true
+pdfium_test_source_set("test_support") {
   sources = [
     "fx_string_testhelpers.cpp",
     "fx_string_testhelpers.h",
@@ -31,11 +30,12 @@ jumbo_source_set("test_support") {
     "resources/",
   ]
   deps = [
-    "../:pdfium",
+    "../:pdfium_public_headers",
     "../core/fdrm",
+    "../core/fxcrt",
     "image_diff",
   ]
-  configs += [ "../:pdfium_core_config" ]
+  configs = [ "../:pdfium_core_config" ]
   visibility = [ "../*" ]
 
   if (pdf_enable_v8) {
