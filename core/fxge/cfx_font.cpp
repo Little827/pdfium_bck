@@ -588,11 +588,7 @@ CFX_FaceCache* CFX_Font::GetFaceCache() const {
 }
 
 void CFX_Font::ClearFaceCache() {
-  if (!m_FaceCache)
-    return;
-
   m_FaceCache = nullptr;
-  CFX_GEModule::Get()->GetFontCache()->ReleaseCachedFace(this);
 }
 
 void CFX_Font::AdjustMMParams(int glyph_index,
