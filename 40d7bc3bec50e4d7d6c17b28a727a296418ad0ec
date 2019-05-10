@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d64f8f1_820d3920",
+        "filename": "core/fxge/cfx_fontcache.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-10T21:41:16Z",
+      "side": 1,
+      "message": "NOTE: I suspect this would have had to leak references, since I didn\u0027t see a place where a corresponding ReleaseCachedFace() might have happened.\n\nSo I\u0027m not sure if we get churn here as the temporary lives just long enough to finish the call, or if I should add an explicit .Leak().",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "40d7bc3bec50e4d7d6c17b28a727a296418ad0ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
