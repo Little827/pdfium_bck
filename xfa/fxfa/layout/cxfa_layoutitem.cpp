@@ -14,39 +14,38 @@
 #include "xfa/fxfa/parser/cxfa_measurement.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
-void XFA_ReleaseLayoutItem(CXFA_LayoutItem* pLayoutItem) {
-  CXFA_LayoutItem* pNode = pLayoutItem->GetFirstChild();
+void XFA_ReleaseLayoutItem(const RetainPtr<CXFA_LayoutItem>& pLayoutItem) {
+  RetainPtr<CXFA_LayoutItem> pNode(pLayoutItem->GetFirstChild());
   while (pNode) {
     CXFA_LayoutItem* pNext = pNode->GetNextSibling();
     XFA_ReleaseLayoutItem(pNode);
-    pNode = pNext;
+    pNode.Reset(pNext);
   }
   CXFA_Document* pDocument = pLayoutItem->GetFormNode()->GetDocument();
   CXFA_FFNotify* pNotify = pDocument->GetNotify();
   CXFA_LayoutProcessor* pDocLayout = pDocument->GetLayoutProcessor();
-  pNotify->OnLayoutItemRemoving(pDocLayout, pLayoutItem);
+  pNotify->OnLayoutItemRemoving(pDocLayout, pLayoutItem.Get());
   if (pLayoutItem->GetFormNode()->GetElementType() == XFA_Element::PageArea) {
-    pNotify->OnPageEvent(ToViewLayoutItem(pLayoutItem),
+    pNotify->OnPageEvent(ToViewLayoutItem(pLayoutItem.Get()),
                          XFA_PAGEVIEWEVENT_PostRemoved);
   }
   if (pLayoutItem->GetParent())
     pLayoutItem->GetParent()->RemoveChild(pLayoutItem);
-  delete pLayoutItem;
 }
 
-void XFA_ReleaseLayoutItem_NoPageArea(CXFA_LayoutItem* pLayoutItem) {
-  CXFA_LayoutItem* pNode = pLayoutItem->GetFirstChild();
+void XFA_ReleaseLayoutItem_NoPageArea(
+    const RetainPtr<CXFA_LayoutItem>& pLayoutItem) {
+  RetainPtr<CXFA_LayoutItem> pNode(pLayoutItem->GetFirstChild());
   while (pNode) {
     CXFA_LayoutItem* pNext = pNode->GetNextSibling();
     XFA_ReleaseLayoutItem_NoPageArea(pNode);
-    pNode = pNext;
+    pNode.Reset(pNext);
   }
   if (pLayoutItem->GetFormNode()->GetElementType() == XFA_Element::PageArea)
     return;
 
   if (pLayoutItem->GetParent())
     pLayoutItem->GetParent()->RemoveChild(pLayoutItem);
-  delete pLayoutItem;
 }
 
 CXFA_LayoutItem::CXFA_LayoutItem(CXFA_Node* pNode, ItemType type)
@@ -78,73 +77,9 @@ const CXFA_ContentLayoutItem* CXFA_LayoutItem::AsContentLayoutItem() const {
 
 CXFA_ViewLayoutItem* CXFA_LayoutItem::GetPage() const {
   for (CXFA_LayoutItem* pCurNode = const_cast<CXFA_LayoutItem*>(this); pCurNode;
-       pCurNode = pCurNode->m_pParent) {
+       pCurNode = pCurNode->GetParent()) {
     if (pCurNode->m_pFormNode->GetElementType() == XFA_Element::PageArea)
       return pCurNode->AsViewLayoutItem();
   }
   return nullptr;
-}
-void CXFA_LayoutItem::AddChild(CXFA_LayoutItem* pChildItem) {
-  if (pChildItem->m_pParent)
-    pChildItem->m_pParent->RemoveChild(pChildItem);
-
-  pChildItem->m_pParent = this;
-  if (!m_pFirstChild) {
-    m_pFirstChild = pChildItem;
-    return;
-  }
-
-  CXFA_LayoutItem* pExistingChildItem = m_pFirstChild;
-  while (pExistingChildItem->m_pNextSibling)
-    pExistingChildItem = pExistingChildItem->m_pNextSibling;
-
-  pExistingChildItem->m_pNextSibling = pChildItem;
-}
-
-void CXFA_LayoutItem::AddHeadChild(CXFA_LayoutItem* pChildItem) {
-  if (pChildItem->m_pParent)
-    pChildItem->m_pParent->RemoveChild(pChildItem);
-
-  pChildItem->m_pParent = this;
-  if (!m_pFirstChild) {
-    m_pFirstChild = pChildItem;
-    return;
-  }
-
-  CXFA_LayoutItem* pExistingChildItem = m_pFirstChild;
-  m_pFirstChild = pChildItem;
-  m_pFirstChild->m_pNextSibling = pExistingChildItem;
-}
-
-void CXFA_LayoutItem::InsertChild(CXFA_LayoutItem* pBeforeItem,
-                                  CXFA_LayoutItem* pChildItem) {
-  if (pBeforeItem->m_pParent != this)
-    return;
-  if (pChildItem->m_pParent)
-    pChildItem->m_pParent = nullptr;
-
-  pChildItem->m_pParent = this;
-
-  CXFA_LayoutItem* pExistingChildItem = pBeforeItem->m_pNextSibling;
-  pBeforeItem->m_pNextSibling = pChildItem;
-  pChildItem->m_pNextSibling = pExistingChildItem;
-}
-
-void CXFA_LayoutItem::RemoveChild(CXFA_LayoutItem* pChildItem) {
-  if (pChildItem->m_pParent != this)
-    return;
-
-  if (m_pFirstChild == pChildItem) {
-    m_pFirstChild = pChildItem->m_pNextSibling;
-  } else {
-    CXFA_LayoutItem* pExistingChildItem = m_pFirstChild;
-    while (pExistingChildItem &&
-           pExistingChildItem->m_pNextSibling != pChildItem) {
-      pExistingChildItem = pExistingChildItem->m_pNextSibling;
-    }
-    if (pExistingChildItem)
-      pExistingChildItem->m_pNextSibling = pChildItem->m_pNextSibling;
-  }
-  pChildItem->m_pNextSibling = nullptr;
-  pChildItem->m_pParent = nullptr;
 }
