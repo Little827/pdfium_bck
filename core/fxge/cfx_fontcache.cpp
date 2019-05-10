@@ -9,7 +9,7 @@
 #include <memory>
 #include <utility>
 
-#include "core/fxge/cfx_facecache.h"
+#include "core/fxge/cfx_glyphcache.h"
 #include "core/fxge/fx_font.h"
 #include "core/fxge/fx_freetype.h"
 #include "third_party/base/ptr_util.h"
@@ -25,7 +25,7 @@ CFX_FontCache::~CFX_FontCache() {
   ASSERT(m_FTFaceMap.empty());
 }
 
-CFX_FaceCache* CFX_FontCache::GetCachedFace(const CFX_Font* pFont) {
+CFX_GlyphCache* CFX_FontCache::GetCachedFace(const CFX_Font* pFont) {
   FXFT_Face face = pFont->GetFace();
   const bool bExternal = !face;
   CFX_FTCacheMap& map = bExternal ? m_ExtFaceMap : m_FTFaceMap;
@@ -39,8 +39,8 @@ CFX_FaceCache* CFX_FontCache::GetCachedFace(const CFX_Font* pFont) {
   auto counted_face_cache = pdfium::MakeUnique<CountedFaceCache>();
   counted_face_cache->m_nCount = 2;
   auto new_cache =
-      pdfium::MakeUnique<CFX_FaceCache>(bExternal ? nullptr : face);
-  CFX_FaceCache* face_cache = new_cache.get();
+      pdfium::MakeUnique<CFX_GlyphCache>(bExternal ? nullptr : face);
+  CFX_GlyphCache* face_cache = new_cache.get();
   counted_face_cache->m_Obj = std::move(new_cache);
   map[face] = std::move(counted_face_cache);
   return face_cache;

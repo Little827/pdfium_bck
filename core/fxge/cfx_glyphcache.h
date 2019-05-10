@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXGE_CFX_FACECACHE_H_
-#define CORE_FXGE_CFX_FACECACHE_H_
+#ifndef CORE_FXGE_CFX_GLYPHCACHE_H_
+#define CORE_FXGE_CFX_GLYPHCACHE_H_
 
 #include <map>
 #include <memory>
@@ -24,10 +24,10 @@ class CFX_GlyphBitmap;
 class CFX_Matrix;
 class CFX_PathData;
 
-class CFX_FaceCache {
+class CFX_GlyphCache {
  public:
-  explicit CFX_FaceCache(FXFT_Face face);
-  ~CFX_FaceCache();
+  explicit CFX_GlyphCache(FXFT_Face face);
+  ~CFX_GlyphCache();
   const CFX_GlyphBitmap* LoadGlyphBitmap(const CFX_Font* pFont,
                                          uint32_t glyph_index,
                                          bool bFontStyle,
@@ -78,4 +78,4 @@ class CFX_FaceCache {
 #endif
 };
 
-#endif  //  CORE_FXGE_CFX_FACECACHE_H_
+#endif  //  CORE_FXGE_CFX_GLYPHCACHE_H_

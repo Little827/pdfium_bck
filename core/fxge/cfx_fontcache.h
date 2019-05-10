@@ -14,13 +14,13 @@
 #include "core/fxge/cfx_font.h"
 #include "core/fxge/fx_freetype.h"
 
-class CFX_FaceCache;
+class CFX_GlyphCache;
 
 class CFX_FontCache {
  public:
   CFX_FontCache();
   ~CFX_FontCache();
-  CFX_FaceCache* GetCachedFace(const CFX_Font* pFont);
+  CFX_GlyphCache* GetCachedFace(const CFX_Font* pFont);
   void ReleaseCachedFace(const CFX_Font* pFont);
 #ifdef _SKIA_SUPPORT_
   CFX_TypeFace* GetDeviceCache(const CFX_Font* pFont);
@@ -30,7 +30,7 @@ class CFX_FontCache {
   struct CountedFaceCache {
     CountedFaceCache();
     ~CountedFaceCache();
-    std::unique_ptr<CFX_FaceCache> m_Obj;
+    std::unique_ptr<CFX_GlyphCache> m_Obj;
     uint32_t m_nCount;
   };
 

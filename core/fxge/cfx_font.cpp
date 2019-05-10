@@ -15,10 +15,10 @@
 #include "build/build_config.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_stream.h"
-#include "core/fxge/cfx_facecache.h"
 #include "core/fxge/cfx_fontcache.h"
 #include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/cfx_gemodule.h"
+#include "core/fxge/cfx_glyphcache.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/fx_font.h"
@@ -581,7 +581,7 @@ bool CFX_Font::GetBBox(FX_RECT* pBBox) {
   return true;
 }
 
-CFX_FaceCache* CFX_Font::GetFaceCache() const {
+CFX_GlyphCache* CFX_Font::GetFaceCache() const {
   if (!m_FaceCache)
     m_FaceCache = CFX_GEModule::Get()->GetFontCache()->GetCachedFace(this);
   return m_FaceCache.Get();
