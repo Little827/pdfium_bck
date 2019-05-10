@@ -581,18 +581,14 @@ bool CFX_Font::GetBBox(FX_RECT* pBBox) {
   return true;
 }
 
-CFX_FaceCache* CFX_Font::GetFaceCache() const {
+RetainPtr<CFX_FaceCache> CFX_Font::GetFaceCache() const {
   if (!m_FaceCache)
     m_FaceCache = CFX_GEModule::Get()->GetFontCache()->GetCachedFace(this);
-  return m_FaceCache.Get();
+  return m_FaceCache;
 }
 
 void CFX_Font::ClearFaceCache() {
-  if (!m_FaceCache)
-    return;
-
   m_FaceCache = nullptr;
-  CFX_GEModule::Get()->GetFontCache()->ReleaseCachedFace(this);
 }
 
 void CFX_Font::AdjustMMParams(int glyph_index,
