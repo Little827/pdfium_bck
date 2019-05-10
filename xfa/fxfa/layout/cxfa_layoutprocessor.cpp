@@ -76,7 +76,7 @@ int32_t CXFA_LayoutProcessor::DoLayout() {
     if (eStatus != CXFA_ItemLayoutProcessor::Result::kDone)
       m_nProgressCounter++;
 
-    CXFA_ContentLayoutItem* pLayoutItem =
+    RetainPtr<CXFA_ContentLayoutItem> pLayoutItem =
         m_pRootItemLayoutProcessor->ExtractLayoutItem();
     if (pLayoutItem)
       pLayoutItem->m_sPos = CFX_PointF(fPosX, fPosY);
