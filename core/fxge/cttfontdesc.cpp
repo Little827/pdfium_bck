@@ -18,7 +18,7 @@ CTTFontDesc::CTTFontDesc(std::unique_ptr<uint8_t, FxFreeDeleter> pData)
 }
 
 CTTFontDesc::~CTTFontDesc() {
-  ASSERT(m_RefCount == 0);
+  CHECK(m_RefCount == 0);
   for (size_t i = 0; i < FX_ArraySize(m_TTCFaces); i++) {
     if (m_TTCFaces[i])
       FXFT_Done_Face(m_TTCFaces[i]);
@@ -39,7 +39,7 @@ CTTFontDesc::ReleaseStatus CTTFontDesc::ReleaseFace(FXFT_Face face) {
   if (!pdfium::ContainsValue(m_TTCFaces, face))
     return kNotAppropriate;
 
-  ASSERT(m_RefCount > 0);
+  CHECK(m_RefCount > 0);
   return --m_RefCount == 0 ? kReleased : kNotReleased;
 }
 
