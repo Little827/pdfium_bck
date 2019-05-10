@@ -18,7 +18,7 @@
 
 class CFX_FontMapper;
 class CFX_SubstFont;
-class CTTFontDesc;
+class CTTFaceMgr;
 class SystemFontInfoIface;
 
 class CFX_FontMgr {
@@ -71,7 +71,7 @@ class CFX_FontMgr {
   bool SetLcdFilterMode() const;
 
   std::unique_ptr<CFX_FontMapper> m_pBuiltinMapper;
-  std::map<ByteString, std::unique_ptr<CTTFontDesc>> m_FaceMap;
+  std::map<ByteString, std::unique_ptr<CTTFaceMgr>> m_FaceMgrMap;
   FXFT_Library m_FTLibrary = nullptr;
   bool m_FTLibrarySupportsHinting = false;
 };

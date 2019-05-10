@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXGE_CTTFONTDESC_H_
-#define CORE_FXGE_CTTFONTDESC_H_
+#ifndef CORE_FXGE_CTTFACEMGR_H_
+#define CORE_FXGE_CTTFACEMGR_H_
 
 #include <memory>
 
@@ -13,7 +13,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/fx_freetype.h"
 
-class CTTFontDesc {
+class CTTFaceMgr {
  public:
   enum ReleaseStatus {
     kNotAppropriate,  // ReleaseFace() not appropriate for given object.
@@ -21,8 +21,8 @@ class CTTFontDesc {
     kNotReleased  // Object still alive.
   };
 
-  explicit CTTFontDesc(std::unique_ptr<uint8_t, FxFreeDeleter> pData);
-  ~CTTFontDesc();
+  explicit CTTFaceMgr(std::unique_ptr<uint8_t, FxFreeDeleter> pData);
+  ~CTTFaceMgr();
 
   void SetFace(size_t index, FXFT_Face face);
 
@@ -40,4 +40,4 @@ class CTTFontDesc {
   FXFT_Face m_TTCFaces[16];
 };
 
-#endif  // CORE_FXGE_CTTFONTDESC_H_
+#endif  // CORE_FXGE_CTTFACEMGR_H_
