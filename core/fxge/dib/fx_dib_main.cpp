@@ -75,9 +75,6 @@ bool FXDIB_ResampleOptions::HasAnyOptions() const {
          bInterpolateBicubic || bHalftone || bNoSmoothing || bLossy;
 }
 
-const FXDIB_ResampleOptions kBilinearInterpolation = {
-    false, /*bilinear=*/true, false, false, false, false};
-
 FX_RECT FXDIB_SwapClipBox(const FX_RECT& clip,
                           int width,
                           int height,

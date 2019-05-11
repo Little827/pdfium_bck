@@ -1523,6 +1523,9 @@ FXCODEC_STATUS CCodec_ProgressiveDecoder::TiffContinueDecode() {
     m_status = FXCODEC_STATUS_ERR_MEMORY;
     return m_status;
   }
+
+  static const FXDIB_ResampleOptions kBilinearInterpolation = {
+      false, /*bilinear=*/true, false, false, false, false};
   RetainPtr<CFX_DIBitmap> pStrechBitmap = pFormatBitmap->StretchTo(
       m_sizeX, m_sizeY, kBilinearInterpolation, nullptr);
   pFormatBitmap = nullptr;

@@ -21,6 +21,9 @@ CXFA_ImageRenderer::CXFA_ImageRenderer(CFX_RenderDevice* pDevice,
 CXFA_ImageRenderer::~CXFA_ImageRenderer() = default;
 
 bool CXFA_ImageRenderer::Start() {
+  static const FXDIB_ResampleOptions kBilinearInterpolation = {
+      false, /*bilinear=*/true, false, false, false, false};
+
   if (m_pDevice->StartDIBits(m_pDIBBase, 255, 0, m_ImageMatrix,
                              kBilinearInterpolation, &m_DeviceHandle)) {
     if (m_DeviceHandle) {
