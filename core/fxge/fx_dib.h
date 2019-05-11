@@ -47,16 +47,6 @@ using FX_CMYK = uint32_t;
 extern const int16_t SDP_Table[513];
 
 struct FXDIB_ResampleOptions {
-  FXDIB_ResampleOptions();
-  // TODO(thestig): Remove this ctor once C++14 can be used for more flexible
-  // constexpr initialization.
-  FXDIB_ResampleOptions(bool downsample,
-                        bool bilinear,
-                        bool bicubic,
-                        bool halftone,
-                        bool no_smoothing,
-                        bool lossy);
-
   bool HasAnyOptions() const;
 
   bool bInterpolateDownsample = false;
@@ -67,7 +57,8 @@ struct FXDIB_ResampleOptions {
   bool bLossy = false;
 };
 
-extern const FXDIB_ResampleOptions kBilinearInterpolation;
+constexpr FXDIB_ResampleOptions kBilinearInterpolation = {
+    false, /*bilinear=*/true, false, false, false, false};
 
 // See PDF 1.7 spec, table 7.2 and 7.3. The enum values need to be in the same
 // order as listed in the spec.
