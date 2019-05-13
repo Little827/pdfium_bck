@@ -67,4 +67,56 @@ TEST(TreeNode, RemoveFromWrongParent) {
   EXPECT_DEATH(pBadParent->RemoveChild(pNode.get()), "");
 }
 
+TEST(TreeNode, SafeRemove) {
+  auto pNode = pdfium::MakeUnique<TestTreeNode>();
+  auto pOther = pdfium::MakeUnique<TestTreeNode>();
+  pNode->AppendFirstChild(pOther.get());
+  pOther->RemoveSelfIfParented();
+  EXPECT_EQ(nullptr, pNode->GetFirstChild());
+  EXPECT_EQ(nullptr, pOther->GetParent());
+}
+
+TEST(TreeNode, SafeRemoveParentless) {
+  auto pNode = pdfium::MakeUnique<TestTreeNode>();
+  pNode->RemoveSelfIfParented();
+  EXPECT_EQ(nullptr, pNode->GetParent());
+}
+
+TEST(TreeNode, RemoveAllChildren) {
+  auto pNode = pdfium::MakeUnique<TestTreeNode>();
+  pNode->RemoveAllChildren();
+  EXPECT_EQ(nullptr, pNode->GetFirstChild());
+
+  auto p0 = pdfium::MakeUnique<TestTreeNode>();
+  auto p1 = pdfium::MakeUnique<TestTreeNode>();
+  auto p2 = pdfium::MakeUnique<TestTreeNode>();
+  auto p3 = pdfium::MakeUnique<TestTreeNode>();
+  pNode->AppendLastChild(p0.get());
+  pNode->AppendLastChild(p1.get());
+  pNode->AppendLastChild(p2.get());
+  pNode->AppendLastChild(p3.get());
+  pNode->RemoveAllChildren();
+  EXPECT_EQ(nullptr, pNode->GetFirstChild());
+}
+
+TEST(TreeNode, NthChild) {
+  auto pNode = pdfium::MakeUnique<TestTreeNode>();
+  EXPECT_EQ(nullptr, pNode->GetNthChild(0));
+
+  auto p0 = pdfium::MakeUnique<TestTreeNode>();
+  auto p1 = pdfium::MakeUnique<TestTreeNode>();
+  auto p2 = pdfium::MakeUnique<TestTreeNode>();
+  auto p3 = pdfium::MakeUnique<TestTreeNode>();
+  pNode->AppendLastChild(p0.get());
+  pNode->AppendLastChild(p1.get());
+  pNode->AppendLastChild(p2.get());
+  pNode->AppendLastChild(p3.get());
+  EXPECT_EQ(p0.get(), pNode->GetNthChild(0));
+  EXPECT_EQ(p1.get(), pNode->GetNthChild(1));
+  EXPECT_EQ(p2.get(), pNode->GetNthChild(2));
+  EXPECT_EQ(p3.get(), pNode->GetNthChild(3));
+  EXPECT_EQ(nullptr, pNode->GetNthChild(4));
+  pNode->RemoveAllChildren();
+}
+
 }  // namespace fxcrt
