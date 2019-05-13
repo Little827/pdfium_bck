@@ -427,7 +427,7 @@ bool CXFA_LayoutPageMgr::InitLayoutPage(CXFA_Node* pFormNode) {
     if (!pPageArea)
       return false;
 
-    m_pTemplatePageSetRoot->InsertChild(pPageArea, nullptr);
+    m_pTemplatePageSetRoot->InsertChildAndNotify(pPageArea, nullptr);
     pPageArea->SetFlagAndNotify(XFA_NodeFlag_Initialized);
   }
   CXFA_ContentArea* pContentArea =
@@ -438,7 +438,7 @@ bool CXFA_LayoutPageMgr::InitLayoutPage(CXFA_Node* pFormNode) {
     if (!pContentArea)
       return false;
 
-    pPageArea->InsertChild(pContentArea, nullptr);
+    pPageArea->InsertChildAndNotify(pContentArea, nullptr);
     pContentArea->SetFlagAndNotify(XFA_NodeFlag_Initialized);
     pContentArea->JSObject()->SetMeasure(
         XFA_Attribute::X, CXFA_Measurement(0.25f, XFA_Unit::In), false);
@@ -457,7 +457,7 @@ bool CXFA_LayoutPageMgr::InitLayoutPage(CXFA_Node* pFormNode) {
     if (!pContentArea)
       return false;
 
-    pPageArea->InsertChild(pMedium, nullptr);
+    pPageArea->InsertChildAndNotify(pMedium, nullptr);
     pMedium->SetFlagAndNotify(XFA_NodeFlag_Initialized);
     pMedium->JSObject()->SetMeasure(
         XFA_Attribute::Short, CXFA_Measurement(8.5f, XFA_Unit::In), false);
@@ -1774,7 +1774,7 @@ void CXFA_LayoutPageMgr::MergePageSetContents() {
                 }
               }
               if (pExistingNode) {
-                pParentNode->RemoveChild(pExistingNode, true);
+                pParentNode->RemoveChildAndNotify(pExistingNode, true);
               }
             }
             pViewItem->m_pOldSubform = pNewSubform;
@@ -1808,7 +1808,7 @@ void CXFA_LayoutPageMgr::MergePageSetContents() {
         CXFA_Node* pFormToplevelSubform =
             pNode->GetFirstChildByClass<CXFA_Subform>(XFA_Element::Subform);
         if (pFormToplevelSubform)
-          pFormToplevelSubform->InsertChild(pPendingPageSet, nullptr);
+          pFormToplevelSubform->InsertChildAndNotify(pPendingPageSet, nullptr);
       }
     }
     pDocument->DataMerge_UpdateBindingRelations(pPendingPageSet);
@@ -1847,7 +1847,7 @@ void CXFA_LayoutPageMgr::MergePageSetContents() {
             }
           }
           CXFA_Node* pNext = sIterator.SkipChildrenAndMoveToNext();
-          pNode->GetParent()->RemoveChild(pNode, true);
+          pNode->GetParent()->RemoveChildAndNotify(pNode, true);
           pNode = pNext;
         } else {
           pNode->ClearFlag(XFA_NodeFlag_UnusedNode);
@@ -1959,7 +1959,8 @@ void CXFA_LayoutPageMgr::PrepareLayout() {
       CXFA_Node* pNextPageSet =
           pPageSetFormNode->GetNextSameClassSibling<CXFA_PageSet>(
               XFA_Element::PageSet);
-      pPageSetFormNode->GetParent()->RemoveChild(pPageSetFormNode, false);
+      pPageSetFormNode->GetParent()->RemoveChildAndNotify(pPageSetFormNode,
+                                                          false);
       pRootLayoutItem->GetFormNode()
           ->GetDocument()
           ->m_pPendingPageSet.push_back(pPageSetFormNode);
