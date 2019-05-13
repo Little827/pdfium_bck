@@ -6,7 +6,6 @@ import("//build/config/jumbo.gni")
 import("../../pdfium.gni")
 
 jumbo_source_set("image_diff") {
-  testonly = true
   sources = [
     "image_diff_png.cpp",
     "image_diff_png.h",

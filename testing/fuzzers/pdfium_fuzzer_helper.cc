@@ -30,7 +30,6 @@
 #include "public/fpdf_dataavail.h"
 #include "public/fpdf_ext.h"
 #include "public/fpdf_text.h"
-#include "testing/test_loader.h"
 
 #ifdef PDF_ENABLE_V8
 #include "testing/free_deleter.h"
@@ -155,12 +154,16 @@ void PDFiumFuzzerHelper::RenderPdf(const char* data, size_t len) {
   form_callbacks.version = GetFormCallbackVersion();
   form_callbacks.m_pJsPlatform = &platform_callbacks;
 
-  TestLoader loader({data, len});
   FPDF_FILEACCESS file_access;
   memset(&file_access, '\0', sizeof(file_access));
   file_access.m_FileLen = static_cast<unsigned long>(len);
-  file_access.m_GetBlock = TestLoader::GetBlock;
-  file_access.m_Param = &loader;
+  file_access.m_GetBlock = [](void* param, unsigned long pos,
+                              unsigned char* pBuf, unsigned long size) {
+    // |param| should be treated as const.
+    memcpy(pBuf, reinterpret_cast<const char*>(param) + pos, size);
+    return 1;
+  };
+  file_access.m_Param = const_cast<char*>(data);
 
   FX_FILEAVAIL file_avail;
   memset(&file_avail, '\0', sizeof(file_avail));
