@@ -22,6 +22,30 @@
       "revId": "6f838880122660f1ae62b52a7cc11d840a1c2f81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "559bc2d8_61a8c012",
+        "filename": "core/fxge/dib/fx_dib_main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-13T19:06:53Z",
+      "side": 0,
+      "message": "I did too, but /path/to/chrome/src/tools/linux/dump-static-initializers.py out/Release/pdfium_test says:\n\n (initializer offset 0xbd99d0 size 0x32)\n  FXDIB_ResampleOptions::FXDIB_ResampleOptions(bool, bool, bool, bool, bool, bool)\n  kBilinearInterpolation",
+      "parentUuid": "ff245366_2dcd0591",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "6f838880122660f1ae62b52a7cc11d840a1c2f81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
