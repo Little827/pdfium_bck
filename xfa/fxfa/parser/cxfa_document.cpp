@@ -209,11 +209,11 @@ CXFA_Node* CloneOrMergeInstanceManager(CXFA_Document* pDocument,
         break;
 
       CXFA_Node* pNextNode = pNode->GetNextSibling();
-      pFormParent->RemoveChild(pNode, true);
+      pFormParent->RemoveChildAndNotify(pNode, true);
       subforms->push_back(pNode);
       pNode = pNextNode;
     }
-    pFormParent->RemoveChild(pExistingNode, true);
+    pFormParent->RemoveChildAndNotify(pExistingNode, true);
     pFormParent->InsertChild(pExistingNode, nullptr);
     pExistingNode->ClearFlag(XFA_NodeFlag_UnusedNode);
     pExistingNode->SetTemplateNode(pTemplateNode);
@@ -1156,7 +1156,7 @@ void UpdateBindingRelations(CXFA_Document* pDocument,
             CXFA_Node* pDataParent = pDataNode->GetParent();
             if (pDataParent != pDataScope) {
               ASSERT(pDataParent);
-              pDataParent->RemoveChild(pDataNode, true);
+              pDataParent->RemoveChildAndNotify(pDataNode, true);
               pDataScope->InsertChild(pDataNode, nullptr);
             }
           }
@@ -1771,7 +1771,7 @@ void CXFA_Document::DoDataMerge() {
     CXFA_PageSet* pNextPageSetNode =
         pPageSetNode->GetNextSameClassSibling<CXFA_PageSet>(
             XFA_Element::PageSet);
-    pSubformSetNode->RemoveChild(pPageSetNode, true);
+    pSubformSetNode->RemoveChildAndNotify(pPageSetNode, true);
     pPageSetNode = pNextPageSetNode;
   }
 
@@ -1786,7 +1786,7 @@ void CXFA_Document::DoDataMerge() {
       if (pNode->IsContainerNode() ||
           pNode->GetElementType() == XFA_Element::InstanceManager) {
         CXFA_Node* pNext = sIterator.SkipChildrenAndMoveToNext();
-        pNode->GetParent()->RemoveChild(pNode, true);
+        pNode->GetParent()->RemoveChildAndNotify(pNode, true);
         pNode = pNext;
       } else {
         pNode->ClearFlag(XFA_NodeFlag_UnusedNode);
@@ -1804,7 +1804,7 @@ void CXFA_Document::DoDataRemerge(bool bDoDataMerge) {
   CXFA_Node* pFormRoot = ToNode(GetXFAObject(XFA_HASHCODE_Form));
   if (pFormRoot) {
     while (CXFA_Node* pNode = pFormRoot->GetFirstChild())
-      pFormRoot->RemoveChild(pNode, true);
+      pFormRoot->RemoveChildAndNotify(pNode, true);
 
     pFormRoot->SetBindingNode(nullptr);
   }

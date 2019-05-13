@@ -233,15 +233,12 @@ TEST_F(CXFANodeTest, RemoveOnlyChild) {
   CXFA_Node* child0 =
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   GetNode()->InsertChild(-1, child0);
-
   EXPECT_EQ(child0, GetNode()->GetFirstChild());
   EXPECT_EQ(child0, GetNode()->GetLastChild());
 
-  GetNode()->RemoveChild(child0, false);
-
+  GetNode()->RemoveChildAndNotify(child0, false);
   EXPECT_EQ(nullptr, GetNode()->GetFirstChild());
   EXPECT_EQ(nullptr, GetNode()->GetLastChild());
-
   EXPECT_EQ(nullptr, child0->GetParent());
   EXPECT_EQ(nullptr, child0->GetNextSibling());
   EXPECT_EQ(nullptr, child0->GetPrevSibling());
@@ -259,15 +256,12 @@ TEST_F(CXFANodeTest, RemoveFirstChild) {
   CXFA_Node* child2 =
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   GetNode()->InsertChild(-1, child2);
-
   EXPECT_EQ(child0, GetNode()->GetFirstChild());
   EXPECT_EQ(child2, GetNode()->GetLastChild());
 
-  GetNode()->RemoveChild(child0, false);
-
+  GetNode()->RemoveChildAndNotify(child0, false);
   EXPECT_EQ(child1, GetNode()->GetFirstChild());
   EXPECT_EQ(child2, GetNode()->GetLastChild());
-
   EXPECT_EQ(nullptr, child1->GetPrevSibling());
   EXPECT_EQ(nullptr, child0->GetParent());
   EXPECT_EQ(nullptr, child0->GetNextSibling());
@@ -286,15 +280,12 @@ TEST_F(CXFANodeTest, RemoveLastChild) {
   CXFA_Node* child2 =
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   GetNode()->InsertChild(-1, child2);
-
   EXPECT_EQ(child0, GetNode()->GetFirstChild());
   EXPECT_EQ(child2, GetNode()->GetLastChild());
 
-  GetNode()->RemoveChild(child2, false);
-
+  GetNode()->RemoveChildAndNotify(child2, false);
   EXPECT_EQ(child0, GetNode()->GetFirstChild());
   EXPECT_EQ(child1, GetNode()->GetLastChild());
-
   EXPECT_EQ(nullptr, child1->GetNextSibling());
   EXPECT_EQ(nullptr, child2->GetParent());
   EXPECT_EQ(nullptr, child2->GetNextSibling());
@@ -313,15 +304,12 @@ TEST_F(CXFANodeTest, RemoveChild) {
   CXFA_Node* child2 =
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   GetNode()->InsertChild(-1, child2);
-
   EXPECT_EQ(child0, GetNode()->GetFirstChild());
   EXPECT_EQ(child2, GetNode()->GetLastChild());
 
-  GetNode()->RemoveChild(child1, false);
-
+  GetNode()->RemoveChildAndNotify(child1, false);
   EXPECT_EQ(child0, GetNode()->GetFirstChild());
   EXPECT_EQ(child2, GetNode()->GetLastChild());
-
   EXPECT_EQ(child2, child0->GetNextSibling());
   EXPECT_EQ(child0, child2->GetPrevSibling());
   EXPECT_EQ(nullptr, child1->GetParent());
@@ -374,7 +362,8 @@ TEST_F(CXFANodeTest, InsertBeforeWithNodeInAnotherParent) {
 }
 
 TEST_F(CXFANodeTest, RemoveChildNullptr) {
-  EXPECT_DEATH_IF_SUPPORTED(GetNode()->RemoveChild(nullptr, false), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->RemoveChildAndNotify(nullptr, false),
+                            "");
 }
 
 TEST_F(CXFANodeTest, RemoveChildAnotherParent) {
@@ -386,5 +375,5 @@ TEST_F(CXFANodeTest, RemoveChildAnotherParent) {
       GetDoc()->CreateNode(XFA_PacketType::Form, XFA_Element::Ui);
   child0->InsertChild(-1, child1);
 
-  EXPECT_DEATH_IF_SUPPORTED(GetNode()->RemoveChild(child1, false), "");
+  EXPECT_DEATH_IF_SUPPORTED(GetNode()->RemoveChildAndNotify(child1, false), "");
 }

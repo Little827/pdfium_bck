@@ -581,7 +581,7 @@ void CJX_Object::SetContent(const WideString& wsContent,
           }
           if (iSize == 0) {
             while (CXFA_Node* pChildNode = pBind->GetFirstChild()) {
-              pBind->RemoveChild(pChildNode, true);
+              pBind->RemoveChildAndNotify(pChildNode, true);
             }
           } else {
             std::vector<CXFA_Node*> valueNodes = pBind->GetNodeList(
@@ -602,7 +602,7 @@ void CJX_Object::SetContent(const WideString& wsContent,
             } else if (iDatas > iSize) {
               size_t iDelNodes = iDatas - iSize;
               while (iDelNodes-- > 0) {
-                pBind->RemoveChild(pBind->GetFirstChild(), true);
+                pBind->RemoveChildAndNotify(pBind->GetFirstChild(), true);
               }
             }
             int32_t i = 0;
@@ -1187,7 +1187,7 @@ void CJX_Object::ScriptAttributeString(CFXJSE_Value* pValue,
   CXFA_Node* pHeadChild = ToNode(GetXFAObject())->GetFirstChild();
   while (pHeadChild) {
     CXFA_Node* pSibling = pHeadChild->GetNextSibling();
-    ToNode(GetXFAObject())->RemoveChild(pHeadChild, true);
+    ToNode(GetXFAObject())->RemoveChildAndNotify(pHeadChild, true);
     pHeadChild = pSibling;
   }
 
@@ -1195,7 +1195,7 @@ void CJX_Object::ScriptAttributeString(CFXJSE_Value* pValue,
   pHeadChild = pProtoForm->GetFirstChild();
   while (pHeadChild) {
     CXFA_Node* pSibling = pHeadChild->GetNextSibling();
-    pProtoForm->RemoveChild(pHeadChild, true);
+    pProtoForm->RemoveChildAndNotify(pHeadChild, true);
     ToNode(GetXFAObject())->InsertChild(pHeadChild, nullptr);
     pHeadChild = pSibling;
   }

@@ -166,7 +166,7 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
 
   void InsertChild(int32_t index, CXFA_Node* pNode);
   void InsertChild(CXFA_Node* pNode, CXFA_Node* pBeforeNode);
-  void RemoveChild(CXFA_Node* pNode, bool bNotify);
+  void RemoveChildAndNotify(CXFA_Node* pNode, bool bNotify);
 
   CXFA_Node* Clone(bool bRecursive);
 

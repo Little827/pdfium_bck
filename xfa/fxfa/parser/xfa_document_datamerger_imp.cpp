@@ -57,7 +57,7 @@ CXFA_Node* XFA_NodeMerge_CloneOrMergeContainer(
     if (pSubformArray) {
       pFormParent->InsertChild(pExistingNode, nullptr);
     } else if (pExistingNode->IsContainerNode()) {
-      pFormParent->RemoveChild(pExistingNode, true);
+      pFormParent->RemoveChildAndNotify(pExistingNode, true);
       pFormParent->InsertChild(pExistingNode, nullptr);
     }
     pExistingNode->ClearFlag(XFA_NodeFlag_UnusedNode);
