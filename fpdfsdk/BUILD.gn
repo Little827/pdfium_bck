@@ -102,6 +102,7 @@ pdfium_unittest_source_set("unittests") {
   deps = [
     ":fpdfsdk",
     "../:pdfium_public_headers",
+    "../../:pdfium",
     "../core/fpdfapi",
     "../core/fpdfapi/parser",
     "../core/fpdfdoc",
