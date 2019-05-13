@@ -70,6 +70,24 @@
       "revId": "c6821d359bb7a18069292ac6c9e55e6e046cb2a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d79ca52_c635ddc3",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-13T21:16:55Z",
+      "side": 1,
+      "message": "OK, so it sounds like that\u0027ll be fixed in a later CL?",
+      "parentUuid": "1407d902_23b04cb9",
+      "revId": "c6821d359bb7a18069292ac6c9e55e6e046cb2a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
