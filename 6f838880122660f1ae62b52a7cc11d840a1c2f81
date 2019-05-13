@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff245366_2dcd0591",
+        "filename": "core/fxge/dib/fx_dib_main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-13T17:32:56Z",
+      "side": 0,
+      "message": "I\u0027d suspect this to be POD. Do we actually call the ctor?",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "6f838880122660f1ae62b52a7cc11d840a1c2f81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

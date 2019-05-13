@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1557539492 -0700\nnonce AC6AUtMu1vN45aSANTuTjHVMhAcdHTxyqR/ypuRdXslfhcEA5Sn7bMWEUANtWNamsJmnHUcDHZ0M\n\n0000000000000000000000000000000000000000 56b4fed0821490d27ff31338054ee67607c22900 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzWKqQACgkQqzYtYVpm\n/Xs9mgf/b2d8E+UDDe5dzw9nA/Jp7ryza1CU5F3MwaVrzKuMtdYqeOwNXzStDYlc\ns66tSW5UZ0HV3f7pgBBR9Vm3tXpKyiiDbqtRthkmfpIpckRbYi0+zBeScPCnK00h\nQD0ji6tyPnL2rT1Qk05p8M+xS9nPtfTp8EKmnH6GIQcoG0tzlCrmFZJPL2Mb2I21\nlSl0z/P/7OVb0SKB/TmicxHleJSNBmbSeBmCI9jokVwO7Hz6vkfTjb4g1pq0sk7i\nM44FZor3uYpKr1O2LJ1V4N5n3RiO3dtNSAV5p/oX8Clt//KIzN17CVz8a/cXFkjr\nbKR0y+ojx0LQ5+0KUinOCWENTS5Bqw\u003d\u003d\n\u003d7RQC\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "27538378_4e2eb64e",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-13T17:32:56Z",
+      "side": 1,
+      "message": "I guess for this to have any clarity-enhancing value to the code, I\u0027d write something like:\n\nFXDIB_ResampleOptions options;\noptions.bInterpolateBilinear \u003d true;\n\nRetainPtr\u003cCFX_DIBitmap\u003e pStrechBitmap \u003d pFormatBitmap-\u003eStretchTo(\n      m_sizeX, m_sizeY, options, nullptr);\n\nand pay the cost of a default ctor followed by the setting of the specific non-default option vs. compile-time constant.",
+      "range": {
+        "startLine": 1527,
+        "startChar": 2,
+        "endLine": 1528,
+        "endChar": 60
+      },
+      "revId": "56b4fed0821490d27ff31338054ee67607c22900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
