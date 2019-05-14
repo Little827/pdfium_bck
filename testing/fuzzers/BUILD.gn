@@ -197,6 +197,7 @@ if (pdf_enable_v8) {
       "pdf_cjs_util_fuzzer.cc",
     ]
     deps = [
+      "../../core/fxcrt",
       "../../fxjs",
     ]
   }
@@ -205,6 +206,7 @@ if (pdf_enable_v8) {
       "pdf_fx_date_helpers_fuzzer.cc",
     ]
     deps = [
+      "../../core/fxcrt",
       "../../fxjs",
     ]
   }
@@ -216,6 +218,7 @@ if (pdf_enable_v8) {
       ]
       deps = [
         "../../:freetype_common",
+        "../../core/fxcrt",
         "../../core/fxge",
         "../../xfa/fgas",
         "../../xfa/fgas/layout",
@@ -228,6 +231,7 @@ if (pdf_enable_v8) {
         "pdf_cfgas_stringformatter_fuzzer.cc",
       ]
       deps = [
+        "../../core/fxcrt",
         "../../xfa/fgas",
         "../../xfa/fxfa/parser",
       ]
@@ -238,6 +242,7 @@ if (pdf_enable_v8) {
         "pdf_cfx_barcode_fuzzer.cc",
       ]
       deps = [
+        "../../core/fxcrt",
         "../../xfa/fwl",
         "//third_party/icu:icuuc",
       ]
@@ -251,7 +256,9 @@ if (pdf_enable_v8) {
         ]
         deps = [
           "../../core/fxcodec",
+          "../../core/fxcrt",
           "../../core/fxge",
+          "../../third_party:pdfium_base",
         ]
       }
     }
@@ -264,7 +271,9 @@ if (pdf_enable_v8) {
         ]
         deps = [
           "../../core/fxcodec",
+          "../../core/fxcrt",
           "../../core/fxge",
+          "../../third_party:pdfium_base",
         ]
       }
 
@@ -274,6 +283,7 @@ if (pdf_enable_v8) {
         ]
         deps = [
           "../../core/fxcodec",
+          "../../third_party:pdfium_base",
         ]
       }
     }
@@ -285,7 +295,9 @@ if (pdf_enable_v8) {
       ]
       deps = [
         "../../core/fxcodec",
+        "../../core/fxcrt",
         "../../core/fxge",
+        "../../third_party:pdfium_base",
       ]
     }
 
@@ -297,7 +309,9 @@ if (pdf_enable_v8) {
         ]
         deps = [
           "../../core/fxcodec",
+          "../../core/fxcrt",
           "../../core/fxge",
+          "../../third_party:pdfium_base",
         ]
       }
     }
@@ -310,7 +324,9 @@ if (pdf_enable_v8) {
         ]
         deps = [
           "../../core/fxcodec",
+          "../../core/fxcrt",
           "../../core/fxge",
+          "../../third_party:pdfium_base",
         ]
       }
     }
@@ -320,6 +336,7 @@ if (pdf_enable_v8) {
         "pdf_css_fuzzer.cc",
       ]
       deps = [
+        "../../core/fxcrt",
         "../../core/fxcrt/css",
       ]
     }
@@ -329,6 +346,7 @@ if (pdf_enable_v8) {
         "pdf_fm2js_fuzzer.cc",
       ]
       deps = [
+        "../../core/fxcrt",
         "../../fxjs",
       ]
     }
@@ -338,6 +356,8 @@ if (pdf_enable_v8) {
         "pdf_formcalc_context_fuzzer.cc",
       ]
       deps = [
+        "../../:pdfium_public_headers",
+        "../../core/fxcrt",
         "../../fpdfsdk",
         "../../fpdfsdk/fpdfxfa",
         "../../fxjs",
@@ -350,6 +370,7 @@ if (pdf_enable_v8) {
         "pdf_formcalc_fuzzer.cc",
       ]
       deps = [
+        "../../core/fxcrt",
         "../../xfa/fxfa/fm2js",
       ]
     }
@@ -357,6 +378,9 @@ if (pdf_enable_v8) {
     pdfium_public_fuzzer("pdfium_xfa_fuzzer") {
       sources = [
         "pdfium_xfa_fuzzer.cc",
+      ]
+      deps = [
+        "../../:pdfium_public_headers",
       ]
     }
   }
@@ -369,6 +393,7 @@ pdfium_fuzzer("pdf_cmap_fuzzer") {
   deps = [
     "../../:freetype_common",
     "../../core/fpdfapi/font",
+    "../../third_party:pdfium_base",
   ]
 }
 
@@ -378,6 +403,7 @@ pdfium_fuzzer("pdf_codec_a85_fuzzer") {
   ]
   deps = [
     "../../core/fxcodec",
+    "../../core/fxcrt",
   ]
 }
 
@@ -397,6 +423,7 @@ pdfium_fuzzer("pdf_codec_icc_fuzzer") {
   ]
   deps = [
     "../../core/fxcodec",
+    "../../third_party:pdfium_base",
     "../../third_party/:lcms2",
   ]
 }
@@ -409,22 +436,28 @@ pdfium_fuzzer("pdf_codec_jbig2_fuzzer") {
     ":utils",
     "../../core/fpdfapi/parser",
     "../../core/fxcodec",
+    "../../core/fxcrt",
     "../../core/fxge",
   ]
 }
 
 pdfium_fuzzer("pdf_codec_rle_fuzzer") {
   sources = [
+    "../../core/fxcrt",
     "pdf_codec_rle_fuzzer.cc",
   ]
   deps = [
     "../../core/fxcodec",
+    "../../core/fxcrt",
   ]
 }
 
 pdfium_fuzzer("pdf_font_fuzzer") {
   sources = [
     "pdf_font_fuzzer.cc",
+  ]
+  deps = [
+    "../../:pdfium_public_headers",
   ]
 }
 
@@ -434,6 +467,8 @@ pdfium_fuzzer("pdf_hint_table_fuzzer") {
   ]
   deps = [
     "../../core/fpdfapi/parser",
+    "../../core/fxcrt",
+    "../../third_party:pdfium_base",
   ]
 }
 
@@ -443,6 +478,7 @@ pdfium_fuzzer("pdf_jpx_fuzzer") {
   ]
   deps = [
     "../../core/fxcodec",
+    "../../core/fxcrt",
     "../../core/fxge",
   ]
 }
@@ -453,6 +489,7 @@ pdfium_fuzzer("pdf_psengine_fuzzer") {
   ]
   deps = [
     "../../core/fpdfapi/page",
+    "../../third_party:pdfium_base",
   ]
 }
 
@@ -463,12 +500,17 @@ pdfium_fuzzer("pdf_streamparser_fuzzer") {
   deps = [
     "../../core/fpdfapi/page",
     "../../core/fpdfapi/parser",
+    "../../third_party:pdfium_base",
   ]
 }
 
 pdfium_fuzzer("pdf_xml_fuzzer") {
   sources = [
     "pdf_xml_fuzzer.cc",
+  ]
+  deps = [
+    "../../core/fxcrt",
+    "../../third_party:pdfium_base",
   ]
 }
 
