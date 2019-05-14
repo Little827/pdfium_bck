@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8331352_2c07f6d4",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-14T01:35:30Z",
+      "side": 1,
+      "message": "This is going to be used in the next CL",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "75d67077ece2b94e11852780a412ef02630a86e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
