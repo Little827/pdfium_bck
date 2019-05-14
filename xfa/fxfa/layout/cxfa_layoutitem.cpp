@@ -14,37 +14,36 @@
 #include "xfa/fxfa/parser/cxfa_measurement.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
-void XFA_ReleaseLayoutItem(CXFA_LayoutItem* pLayoutItem) {
-  CXFA_LayoutItem* pNode = pLayoutItem->GetFirstChild();
+void XFA_ReleaseLayoutItem(const RetainPtr<CXFA_LayoutItem>& pLayoutItem) {
+  RetainPtr<CXFA_LayoutItem> pNode(pLayoutItem->GetFirstChild());
   while (pNode) {
     CXFA_LayoutItem* pNext = pNode->GetNextSibling();
     XFA_ReleaseLayoutItem(pNode);
-    pNode = pNext;
+    pNode.Reset(pNext);
   }
   CXFA_Document* pDocument = pLayoutItem->GetFormNode()->GetDocument();
   CXFA_FFNotify* pNotify = pDocument->GetNotify();
   CXFA_LayoutProcessor* pDocLayout = pDocument->GetLayoutProcessor();
-  pNotify->OnLayoutItemRemoving(pDocLayout, pLayoutItem);
+  pNotify->OnLayoutItemRemoving(pDocLayout, pLayoutItem.Get());
   if (pLayoutItem->GetFormNode()->GetElementType() == XFA_Element::PageArea) {
-    pNotify->OnPageEvent(ToViewLayoutItem(pLayoutItem),
+    pNotify->OnPageEvent(ToViewLayoutItem(pLayoutItem.Get()),
                          XFA_PAGEVIEWEVENT_PostRemoved);
   }
   pLayoutItem->RemoveSelfIfParented();
-  delete pLayoutItem;
 }
 
-void XFA_ReleaseLayoutItem_NoPageArea(CXFA_LayoutItem* pLayoutItem) {
-  CXFA_LayoutItem* pNode = pLayoutItem->GetFirstChild();
+void XFA_ReleaseLayoutItem_NoPageArea(
+    const RetainPtr<CXFA_LayoutItem>& pLayoutItem) {
+  RetainPtr<CXFA_LayoutItem> pNode(pLayoutItem->GetFirstChild());
   while (pNode) {
     CXFA_LayoutItem* pNext = pNode->GetNextSibling();
     XFA_ReleaseLayoutItem_NoPageArea(pNode);
-    pNode = pNext;
+    pNode.Reset(pNext);
   }
   if (pLayoutItem->GetFormNode()->GetElementType() == XFA_Element::PageArea)
     return;
 
   pLayoutItem->RemoveSelfIfParented();
-  delete pLayoutItem;
 }
 
 CXFA_LayoutItem::CXFA_LayoutItem(CXFA_Node* pNode, ItemType type)
