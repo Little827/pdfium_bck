@@ -19,7 +19,7 @@ CFX_FontCache::CFX_FontCache() = default;
 
 CFX_FontCache::~CFX_FontCache() = default;
 
-RetainPtr<CFX_FaceCache> CFX_FontCache::GetCachedFace(const CFX_Font* pFont) {
+RetainPtr<CFX_FaceCache> CFX_FontCache::GetFaceCache(const CFX_Font* pFont) {
   FXFT_Face face = pFont->GetFace();
   const bool bExternal = !face;
   auto& map = bExternal ? m_ExtFaceMap : m_FTFaceMap;
