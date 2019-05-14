@@ -8,11 +8,16 @@
 
 #include "public/fpdfview.h"
 #include "testing/utils/file_util.h"
-#include "testing/utils/path_service.h"
 #include "v8/include/libplatform/libplatform.h"
 #include "v8/include/v8.h"
 
 namespace {
+
+#ifdef _WIN32
+constexpr const char kPathSeparator = '\\';
+#else
+constexpr const char kPathSeparator = '/';
+#endif
 
 #ifdef V8_USE_EXTERNAL_STARTUP_DATA
 // Returns the full path for an external V8 data file based on either
@@ -23,11 +28,11 @@ std::string GetFullPathForSnapshotFile(const std::string& exe_path,
   std::string result;
   if (!bin_dir.empty()) {
     result = bin_dir;
-    if (*bin_dir.rbegin() != PATH_SEPARATOR) {
-      result += PATH_SEPARATOR;
+    if (*bin_dir.rbegin() != kPathSeparator) {
+      result += kPathSeparator;
     }
   } else if (!exe_path.empty()) {
-    size_t last_separator = exe_path.rfind(PATH_SEPARATOR);
+    size_t last_separator = exe_path.rfind(kPathSeparator);
     if (last_separator != std::string::npos) {
       result = exe_path.substr(0, last_separator + 1);
     }
