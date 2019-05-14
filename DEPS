@@ -20,7 +20,7 @@ vars = {
   'clang_revision': '4e32649d7a532a0aa550baedadc3309970fb7642',
   'code_coverage_revision': '90f3a1ede923558ce02fa6e92ed9689ed52b199f',
   'depot_tools_revision': 'ccd2b4da9a7e6ddf126c0b4437db75201836154c',
-  'freetype_revision': '31757f969fba60d75404f31e8f1168bef5011770',
+  'freetype_revision': '03f3f8ab9e5bab63d925c7369a78d59b831896d7',
   'gtest_revision': '9997a830ee5589c2da79198bc3b60d1c47e50118',
   'icu_revision': 'ae4b77dc8966796f0bd93bb6342023276749e148',
   'instrumented_lib_revision': 'a959e4f0cb643003f2d75d179cede449979e3e77',
