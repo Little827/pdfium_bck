@@ -31,8 +31,9 @@ jumbo_source_set("test_support") {
     "resources/",
   ]
   deps = [
-    "../:pdfium",
+    "../:pdfium_public_headers",
     "../core/fdrm",
+    "../core/fxcrt",
     "image_diff",
   ]
   configs += [ "../:pdfium_core_config" ]
