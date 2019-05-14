@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0839f890_348d1303",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-14T20:50:50Z",
+      "side": 1,
+      "message": "Wrap at 72 col?",
+      "revId": "3972145749eb6ea6f16a2e26ecf0fa1f101ae338",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb91e334_756f39fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-14T20:50:50Z",
+      "side": 1,
+      "message": "Likely the first 8 chars in the hash is good enough.",
+      "revId": "3972145749eb6ea6f16a2e26ecf0fa1f101ae338",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50503cb8_a65087ed",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 25
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-14T20:50:50Z",
+      "side": 1,
+      "message": "While we are at it, can we name this fuzzer_utils to be consistent with the other targets?",
+      "revId": "3972145749eb6ea6f16a2e26ecf0fa1f101ae338",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f185dc15_2236d715",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 25
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-14T20:50:50Z",
+      "side": 1,
+      "message": "We lost the comment for this.",
+      "revId": "3972145749eb6ea6f16a2e26ecf0fa1f101ae338",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
