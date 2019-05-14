@@ -20,8 +20,6 @@ jumbo_source_set("test_support") {
     "test_support.h",
     "utils/bitmap_saver.cpp",
     "utils/bitmap_saver.h",
-    "utils/file_util.cpp",
-    "utils/file_util.h",
     "utils/hash.cpp",
     "utils/hash.h",
     "utils/path_service.cpp",
@@ -30,24 +28,46 @@ jumbo_source_set("test_support") {
   data = [
     "resources/",
   ]
+  public_deps = [
+    ":file_util",
+  ]
   deps = [
-    "../:pdfium",
+    "../:pdfium_public_headers",
     "../core/fdrm",
+    "../core/fxcrt",
     "image_diff",
   ]
+  if (pdf_enable_v8) {
+    public_deps += [ ":v8_initializer" ]
+  }
   configs += [ "../:pdfium_core_config" ]
   visibility = [ "../*" ]
+}
 
-  if (pdf_enable_v8) {
-    sources += [
+jumbo_source_set("file_util") {
+  sources = [
+    "utils/file_util.cpp",
+    "utils/file_util.h",
+  ]
+  configs += [ "../:pdfium_core_config" ]
+}
+
+if (pdf_enable_v8) {
+  jumbo_source_set("v8_initializer") {
+    sources = [
       "v8_initializer.cpp",
       "v8_initializer.h",
     ]
-    deps += [
+    deps = [
+      ":file_util",
+      "../:pdfium_public_headers",
       "//v8",
       "//v8:v8_libplatform",
     ]
-    configs += [ "//v8:external_startup_data" ]
+    configs += [
+      "../:pdfium_core_config",
+      "//v8:external_startup_data",
+    ]
   }
 }
 
