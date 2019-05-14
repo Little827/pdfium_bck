@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c0c17294_94c26473",
+        "filename": "testing/fuzzers/pdf_fuzzer_init_public.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-14T18:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9d5b29_1bf9b7a9",
+      "revId": "12e6b305b4510f8fa49b21fcdeb01e132d0f8944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f52d64e_238ef1a8",
         "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-14T18:15:24Z",
       "side": 1,
       "message": "Can we leave the TestLoader here? Does that tangle up the dependencies? Can we just make a copy of TestLoader here as FuzzerTestLoader or something, so we can keep the pdfium::span usage and avoid a const_cast?",
+      "revId": "12e6b305b4510f8fa49b21fcdeb01e132d0f8944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a814f11d_a9f6e121",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2019-05-14T18:24:04Z",
+      "side": 1,
+      "message": "We need to avoid the dependency on test_support.  Copied to FuzzerTestLoader in the latest patch set.",
+      "parentUuid": "6f52d64e_238ef1a8",
       "revId": "12e6b305b4510f8fa49b21fcdeb01e132d0f8944",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
