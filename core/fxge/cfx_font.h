@@ -21,7 +21,7 @@
 #include "core/fxge/fx_font.h"
 #endif
 
-class CFX_FaceCache;
+class CFX_GlyphCache;
 class CFX_GlyphBitmap;
 class CFX_PathData;
 class CFX_SubstFont;
@@ -126,7 +126,7 @@ class CFX_Font {
 #endif  // PDF_ENABLE_XFA
 
  private:
-  RetainPtr<CFX_FaceCache> GetOrCreateFaceCache() const;
+  RetainPtr<CFX_GlyphCache> GetOrCreateFaceCache() const;
   void DeleteFace();
   void ClearFaceCache();
 #if defined(OS_MACOSX)
@@ -136,7 +136,7 @@ class CFX_Font {
   ByteString GetFamilyNameOrUntitled() const;
 
   mutable UnownedPtr<FXFT_FaceRec> m_Face;
-  mutable RetainPtr<CFX_FaceCache> m_FaceCache;
+  mutable RetainPtr<CFX_GlyphCache> m_FaceCache;
   std::unique_ptr<CFX_SubstFont> m_pSubstFont;
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pGsubData;
   std::vector<uint8_t> m_pFontDataAllocation;
