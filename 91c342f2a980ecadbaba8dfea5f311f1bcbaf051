@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "c0942f28_f8778eb7",
+        "filename": ".gitattributes",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-15T18:23:32Z",
+      "side": 1,
+      "message": "Looks like I accidentally deleted that one.",
+      "parentUuid": "1ab57942_983963ad",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "91c342f2a980ecadbaba8dfea5f311f1bcbaf051",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91341526_e0ca6eb4",
         "filename": "third_party/lcms/src/cmsgmt.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2019-05-15T17:05:21Z",
       "side": 1,
       "message": "Do we want to exclude third_party  and keep files as-is to simplify future merges?",
+      "range": {
+        "startLine": 1,
+        "startChar": 4,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "91c342f2a980ecadbaba8dfea5f311f1bcbaf051",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f2125a2_a54ffbef",
+        "filename": "third_party/lcms/src/cmsgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-15T18:23:32Z",
+      "side": 1,
+      "message": "All the .h/.cc/.cpp in the Chromium git repo\u0027s third_party/ (sans code pulled in via DEPS) are LF, except for third_party/win_build_output. So I think this is ok. Plus IIRC, the patch command knows how to ignore line ending differences.",
+      "parentUuid": "91341526_e0ca6eb4",
       "range": {
         "startLine": 1,
         "startChar": 4,
