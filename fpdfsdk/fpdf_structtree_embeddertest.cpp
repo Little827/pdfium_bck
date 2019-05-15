@@ -123,3 +123,35 @@ TEST_F(FPDFStructTreeEmbedderTest, GetType) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFStructTreeEmbedderTest, GetTitle) {
+  ASSERT_TRUE(OpenDocument("tagged_alt_text.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+
+    FPDF_STRUCTELEMENT element =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+    ASSERT_NE(nullptr, element);
+
+    unsigned short buffer[12];
+    memset(buffer, 0, sizeof(buffer));
+    // Deliberately pass in a small buffer size to make sure |buffer| remains
+    // untouched.
+    ASSERT_EQ(20U, FPDF_StructElement_GetTitle(element, buffer, 1));
+    for (size_t i = 0; i < FX_ArraySize(buffer); ++i)
+      EXPECT_EQ(0U, buffer[i]);
+
+    ASSERT_EQ(20U,
+              FPDF_StructElement_GetTitle(element, buffer, sizeof(buffer)));
+    const wchar_t kExpected[] = L"TitleText";
+    EXPECT_EQ(WideString(kExpected),
+              WideString::FromUTF16LE(buffer, FXSYS_len(kExpected)));
+  }
+
+  UnloadPage(page);
+}
