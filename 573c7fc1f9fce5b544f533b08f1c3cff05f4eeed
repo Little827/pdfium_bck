@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66edc2dc_761b739a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-15T21:50:07Z",
+      "side": 1,
+      "message": "Can you indent this 3 spaces, so it lines up nicely with the previous line?",
+      "revId": "573c7fc1f9fce5b544f533b08f1c3cff05f4eeed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249be3b1_ef4e5f1c",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-15T21:50:07Z",
+      "side": 1,
+      "message": "Can you move this snippet of code up, so it is the first call? Then the 3 calls will progress in a logical order:\n\n- Call 1: There\u0027s no element, fail and return 0.\n- Call 2: There\u0027s a valid element, but the buffer is too small. Return the size of the buffer.\n- Call 3: There\u0027s a valid element and the buffer is big enough. Return the size of the buffer and the data.",
+      "revId": "573c7fc1f9fce5b544f533b08f1c3cff05f4eeed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
