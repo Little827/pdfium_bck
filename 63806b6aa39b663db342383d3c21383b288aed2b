@@ -23,6 +23,30 @@
       "revId": "63806b6aa39b663db342383d3c21383b288aed2b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c248c49_01b6d31a",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2628,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-15T19:16:13Z",
+      "side": 1,
+      "message": "Removed static keyword.",
+      "parentUuid": "72db8e35_ccadcd80",
+      "range": {
+        "startLine": 2628,
+        "startChar": 2,
+        "endLine": 2628,
+        "endChar": 8
+      },
+      "revId": "63806b6aa39b663db342383d3c21383b288aed2b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
