@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d5280f2_094b7605",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-15T22:45:01Z",
+      "side": 1,
+      "message": "This memset() isn\u0027t necessary, since what |buffer| holds does not matter. It only matters for the call on line 120, where the test wants to make sure |buffer| is not modified.",
+      "revId": "a94c6aebc25ca10c7fbcb11cb61e0e328894f149",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
