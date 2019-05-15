@@ -658,10 +658,10 @@ CXFA_Node* CXFA_DocumentParser::NormalLoader(CXFA_Node* pXFANode,
                                              CFX_XMLNode* pXMLDoc,
                                              XFA_PacketType ePacketID,
                                              bool bUseAttribute) {
-  constexpr const unsigned long kMaxExecuteRecursion = 1000;
+  static constexpr size_t kMaxExecuteRecursion = 1000;
   if (m_ExecuteRecursionDepth > kMaxExecuteRecursion)
     return nullptr;
-  AutoRestorer<unsigned long> restorer(&m_ExecuteRecursionDepth);
+  AutoRestorer<size_t> restorer(&m_ExecuteRecursionDepth);
   ++m_ExecuteRecursionDepth;
 
   bool bOneOfPropertyFound = false;
