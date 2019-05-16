@@ -91,7 +91,8 @@ CPDF_DataAvail::~CPDF_DataAvail() {
     m_pDocument->RemoveObserver(this);
 }
 
-void CPDF_DataAvail::OnObservableDestroyed() {
+void CPDF_DataAvail::OnObservableDestroyed(CPDF_Document* pDoc) {
+  ASSERT(m_pDocument == pDoc);
   m_pDocument = nullptr;
   m_pFormAvail.reset();
   m_PagesArray.clear();
@@ -1008,8 +1009,6 @@ CPDF_DataAvail::ParseDocument(const char* password) {
     return std::make_pair(CPDF_Parser::HANDLER_ERROR, nullptr);
   }
   auto document = pdfium::MakeUnique<CPDF_Document>();
-  document->AddObserver(this);
-
   CPDF_ReadValidator::Session read_session(GetValidator());
   CPDF_Parser::Error error =
       document->LoadLinearizedDoc(GetValidator(), password);
@@ -1024,6 +1023,7 @@ CPDF_DataAvail::ParseDocument(const char* password) {
     return std::make_pair(error, nullptr);
 
   m_pDocument = document.get();
+  m_pDocument->AddObserver(this);
   return std::make_pair(CPDF_Parser::SUCCESS, std::move(document));
 }
 

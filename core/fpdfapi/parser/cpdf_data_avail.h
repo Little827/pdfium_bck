@@ -97,7 +97,7 @@ class CPDF_DataAvail final : public CPDF_Document::Observer {
   ~CPDF_DataAvail() override;
 
   // CPDF_Document::Observer:
-  void OnObservableDestroyed() override;
+  void OnObservableDestroyed(CPDF_Document* pDoc) override;
 
   DocAvailStatus IsDocAvail(DownloadHints* pHints);
   DocAvailStatus IsPageAvail(uint32_t dwPage, DownloadHints* pHints);
