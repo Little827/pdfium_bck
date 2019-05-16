@@ -23,6 +23,30 @@
       "revId": "fd112c85c34872e294831680fbe9c91ca8d679e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "912a5804_7ae55d89",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-16T16:20:39Z",
+      "side": 1,
+      "message": "|m_Type| is not a straight-forward read from the dictionary. I\u0027ll make another pass.",
+      "parentUuid": "75893f4b_897b17a9",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "fd112c85c34872e294831680fbe9c91ca8d679e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
