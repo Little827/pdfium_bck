@@ -91,7 +91,8 @@ CPDF_DataAvail::~CPDF_DataAvail() {
     m_pDocument->RemoveObserver(this);
 }
 
-void CPDF_DataAvail::OnObservableDestroyed() {
+void CPDF_DataAvail::OnObservableDestroyed(CPDF_Document* pDoc) {
+  ASSERT(m_pDocument == pDoc);
   m_pDocument = nullptr;
   m_pFormAvail.reset();
   m_PagesArray.clear();

@@ -4,6 +4,7 @@
 
 #include "core/fxcrt/observable.h"
 
+#include <map>
 #include <utility>
 #include <vector>
 
@@ -22,6 +23,21 @@ class PseudoObservable final : public Observable<PseudoObservable> {
 class SelfObservable final : public Observable<SelfObservable> {
  public:
   ObservedPtr m_pOther;
+};
+
+class IntHolder final : public Observable<IntHolder> {
+ public:
+  explicit IntHolder(int v) : value(v) {}
+  const int value;
+};
+
+class WeakMap final : public IntHolder::Observer {
+ public:
+  // IntHolder::Observer:
+  void OnObservableDestroyed(IntHolder* holder) override {
+    m_Map.erase(holder->value);
+  }
+  std::map<int, IntHolder*> m_Map;
 };
 
 }  // namespace
@@ -212,4 +228,17 @@ TEST(ObservePtr, PairwiseObservable) {
   // Must be no ASAN violations upon cleanup here.
 }
 
+TEST(Observable, WeakMap) {
+  WeakMap m;
+  auto p31 = pdfium::MakeUnique<IntHolder>(31);
+  p31->AddObserver(&m);
+  m.m_Map[31] = p31.get();
+  {
+    auto p42 = pdfium::MakeUnique<IntHolder>(42);
+    p42->AddObserver(&m);
+    m.m_Map[42] = p42.get();
+  }
+  EXPECT_TRUE(pdfium::ContainsKey(m.m_Map, 31));
+  EXPECT_FALSE(pdfium::ContainsKey(m.m_Map, 42));
+}
 }  // namespace fxcrt

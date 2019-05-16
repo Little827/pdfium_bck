@@ -19,7 +19,7 @@ class Observable {
   class Observer {
    public:
     virtual ~Observer() = default;
-    virtual void OnObservableDestroyed() = 0;
+    virtual void OnObservableDestroyed(T* that) = 0;
   };
 
   // Simple case of a self-nulling pointer.
@@ -42,8 +42,9 @@ class Observable {
       if (m_pObservable)
         m_pObservable->AddObserver(this);
     }
-    void OnObservableDestroyed() override {
+    void OnObservableDestroyed(T* that) override {
       ASSERT(m_pObservable);
+      ASSERT(m_pObservable == that);
       m_pObservable = nullptr;
     }
     bool HasObservable() const { return !!m_pObservable; }
@@ -77,7 +78,7 @@ class Observable {
   }
   void NotifyObservers() {
     for (auto* pObserver : m_Observers)
-      pObserver->OnObservableDestroyed();
+      pObserver->OnObservableDestroyed(static_cast<T*>(this));
     m_Observers.clear();
   }
   Observable& operator=(const Observable& that) = delete;
