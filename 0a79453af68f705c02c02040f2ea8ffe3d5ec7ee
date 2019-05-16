@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce47b723_447d4106",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-16T16:14:37Z",
+      "side": 0,
+      "message": "nit: Maybe keep the helper method, but make it return GetDict-\u003eGetObjectFor(\"T\") object?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "0a79453af68f705c02c02040f2ea8ffe3d5ec7ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
