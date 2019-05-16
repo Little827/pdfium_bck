@@ -22,6 +22,30 @@
       "revId": "7d00e5841226743063ad28e88b1bf6c11aee1dc7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e8b6a7_2984ba2e",
+        "filename": "fxbarcode/qrcode/BC_QRCoderEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-16T20:40:45Z",
+      "side": 1,
+      "message": "Argh. Done.",
+      "parentUuid": "254566b9_cb11ea0c",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "7d00e5841226743063ad28e88b1bf6c11aee1dc7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
