@@ -25,7 +25,7 @@ class CPDF_Color {
 
   bool IsNull() const { return !m_pBuffer; }
   bool IsPattern() const;
-  void SetColorSpace(CPDF_ColorSpace* pCS);
+  void SetColorSpace(const RetainPtr<CPDF_ColorSpace>& pCS);
   void SetValueForNonPattern(const std::vector<float>& values);
   void SetValueForPattern(CPDF_Pattern* pPattern,
                           const std::vector<float>& values);
@@ -42,10 +42,8 @@ class CPDF_Color {
   bool IsPatternInternal() const;
 
   // TODO(thestig): Convert this to a smart pointer or vector.
-  // |m_pBuffer| is created by |m_pCS|, so if it is non-null, then so is
-  // |m_pCS|.
   float* m_pBuffer = nullptr;
-  CPDF_ColorSpace* m_pCS = nullptr;
+  RetainPtr<CPDF_ColorSpace> m_pCS;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_COLOR_H_

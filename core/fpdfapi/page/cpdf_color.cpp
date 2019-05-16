@@ -46,25 +46,14 @@ void CPDF_Color::ReleaseBuffer() {
 }
 
 void CPDF_Color::ReleaseColorSpace() {
-  if (!m_pCS)
-    return;
-
-  CPDF_Document* pDoc = m_pCS->GetDocument();
-  if (!pDoc)
-    return;
-
-  auto* pPageData = pDoc->GetPageData();
-  if (pPageData)
-    pPageData->ReleaseColorSpace(m_pCS->GetArray());
-
-  m_pCS = nullptr;
+  m_pCS.Reset();
 }
 
 bool CPDF_Color::IsPatternInternal() const {
   return m_pCS->GetFamily() == PDFCS_PATTERN;
 }
 
-void CPDF_Color::SetColorSpace(CPDF_ColorSpace* pCS) {
+void CPDF_Color::SetColorSpace(const RetainPtr<CPDF_ColorSpace>& pCS) {
   ASSERT(pCS);
   if (m_pCS == pCS) {
     if (!m_pBuffer)

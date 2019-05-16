@@ -13,7 +13,6 @@
 #include <utility>
 #include <vector>
 
-#include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fxcodec/codec/cjpx_decoder.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/optional.h"
@@ -462,7 +461,7 @@ void sycc420_to_rgb(opj_image_t* img) {
   img->comps[2].dy = img->comps[0].dy;
 }
 
-CJPX_Decoder::CJPX_Decoder(CPDF_ColorSpace* cs)
+CJPX_Decoder::CJPX_Decoder(const RetainPtr<CPDF_ColorSpace>& cs)
     : m_Image(nullptr),
       m_Codec(nullptr),
       m_DecodeData(nullptr),
@@ -656,7 +655,7 @@ CCodec_JpxModule::~CCodec_JpxModule() {}
 
 std::unique_ptr<CJPX_Decoder> CCodec_JpxModule::CreateDecoder(
     pdfium::span<const uint8_t> src_span,
-    CPDF_ColorSpace* cs) {
+    const RetainPtr<CPDF_ColorSpace>& cs) {
   auto decoder = pdfium::MakeUnique<CJPX_Decoder>(cs);
   if (!decoder->Init(src_span))
     return nullptr;
