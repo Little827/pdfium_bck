@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1095cc89_55552b0c",
+        "filename": "fxbarcode/BC_Library.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-16T20:25:07Z",
+      "side": 1,
+      "message": "note: my inclination would be to reverse these so as to nest against their counterparts in Init(), but someday. Think we should do that?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "97ac45a4f3d8ffa4e8508bf517ce9c0e61921485",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
