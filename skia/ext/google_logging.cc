@@ -13,7 +13,6 @@
 
 void SkDebugf_FileLine(const char* file,
                        int line,
-                       bool fatal,
                        const char* format,
                        ...) {
   va_list ap;
