@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b565f728_9c98f13c",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-17T18:01:06Z",
+      "side": 1,
+      "message": "So maybe we compute both safe_stride and safe_image_size variables in this block.",
+      "range": {
+        "startLine": 459,
+        "startChar": 8,
+        "endLine": 459,
+        "endChar": 23
+      },
+      "revId": "9ff55099176148931c54159490e32429421ecddc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8614ab0b_7ab21ed6",
         "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
         "patchSetId": 2
