@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf69ec0b_a201e7bb",
+        "filename": "core/fxcodec/codec/ccodec_jpxmodule.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-17T00:10:10Z",
+      "side": 1,
+      "message": "Why does this need a #include, whereas many other places forward declare instead?",
+      "revId": "543fafe09d7ab0c45519b61e4e615a370d5c4284",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c07b69_5bbb796f",
+        "filename": "core/fxcodec/codec/cjpx_decoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-17T00:10:10Z",
+      "side": 1,
+      "message": "Here and elsewhere: IWYU for RetainPtr?",
+      "revId": "543fafe09d7ab0c45519b61e4e615a370d5c4284",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
