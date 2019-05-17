@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1558044839 -0700\nnonce AC6AUtOuKv4UrVa1OKVJ9ntwD1Xz4ZJ4vqHIrQf7OKXoWeNoFPtSLuaORt6Ywfug+xkaxGF/W5m3\n\n0000000000000000000000000000000000000000 b381387494242794a47993c3a0084d84b4f8f1f4 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003davoid-an-integer-overflow-in-cjbig2-sddproc\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzd4KcACgkQqzYtYVpm\n/Xu4kwf/UY7GbdGZ84vw8M71UE964CyIfu1ojwpdAWj6772HOHQLaDlXGt3Ph9Os\nkv/yXadl6gCgLz30Iwuszl1U3PaKuGUeO75J9jMFU287Hh1Mv4ddvNAYOZsyXI52\nnn+bbNYLc0bGj8VdV1v5WZhVJw6aHWEbkdbGQMIPSHqlcAJ8IDm8zOIcTtJbqJaQ\ncvreYhDhaXMs25+dWZ7ZxtysOzPe9ySCJ1lYzSqjQjmUHo9MS953BzhU2YNdIx+K\nlRU4m3MWeHMm8ru9at8FNXWgmwsmP8QcVI5/bL/x15DHKLpBEY7uOuWbc3u7X9s6\n0hthetxRdpSGa/IsHObU5pouwHzjyw\u003d\u003d\n\u003d4dDJ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0058330d_c11fb09f",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-17T17:00:33Z",
+      "side": 1,
+      "message": "nit: this is no longer a stride once we multiply by height, its an image size.  Maybe name accordingly?",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 32
+      },
+      "revId": "b381387494242794a47993c3a0084d84b4f8f1f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0ce53b_5ccfbfde",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-17T17:00:33Z",
+      "side": 1,
+      "message": "not just |stride|?",
+      "range": {
+        "startLine": 470,
+        "startChar": 17,
+        "endLine": 470,
+        "endChar": 28
+      },
+      "revId": "b381387494242794a47993c3a0084d84b4f8f1f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
