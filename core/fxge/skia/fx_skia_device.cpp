@@ -1904,12 +1904,6 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     uint32_t stroke_color,                  // stroke color
     int fill_mode,  // fill mode, WINDING or ALTERNATE. 0 for not filled
     BlendMode blend_type) {
-  if (fill_mode & FX_ZEROAREA_FILL)
-    return true;
-  if (m_pCache->DrawPath(pPathData, pObject2Device, pGraphState, fill_color,
-                         stroke_color, fill_mode, blend_type)) {
-    return true;
-  }
   SkMatrix skMatrix;
   if (pObject2Device)
     skMatrix = ToSkMatrix(*pObject2Device);
@@ -1957,6 +1951,14 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     DebugShowSkiaDrawPath(this, m_pCanvas, skPaint, skPath);
     m_pCanvas->drawPath(skPath, skPaint);
   }
+
+  if (fill_mode & FX_ZEROAREA_FILL)
+    return true;
+  if (m_pCache->DrawPath(pPathData, pObject2Device, pGraphState, fill_color,
+                         stroke_color, fill_mode, blend_type)) {
+    return true;
+  }
+
   m_pCanvas->restore();
   return true;
 }
