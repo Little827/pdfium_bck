@@ -16,6 +16,24 @@
       "revId": "d2a2433c7a571797c1c5a9e69ee54e03b21ee26f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1501dc0d_ebb8b4ea",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-22T19:00:50Z",
+      "side": 0,
+      "message": "Yep. Because SetColorSpace() prevent resetting this to null. Will update.",
+      "parentUuid": "25bff72f_7b7328ac",
+      "revId": "d2a2433c7a571797c1c5a9e69ee54e03b21ee26f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
