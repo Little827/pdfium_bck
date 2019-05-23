@@ -21,7 +21,7 @@ class CFGAS_StringFormatterTest : public testing::Test {
  public:
   CFGAS_StringFormatterTest() {
     SetTZ("UTC");
-    CPDF_ModuleMgr::Get()->Init();
+    CPDF_ModuleMgr::Create();
   }
 
   ~CFGAS_StringFormatterTest() override { CPDF_ModuleMgr::Get()->Destroy(); }
