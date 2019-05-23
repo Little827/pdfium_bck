@@ -17,16 +17,24 @@ CFX_GEModule* g_pGEModule = nullptr;
 
 }  // namespace
 
-CFX_GEModule::CFX_GEModule()
-    : m_pFontMgr(pdfium::MakeUnique<CFX_FontMgr>()),
-      m_pPlatform(PlatformIface::Create()) {}
+CFX_GEModule::CFX_GEModule(const char** pUserFontPaths)
+    : m_pFontCache(pdfium::MakeUnique<CFX_FontCache>()),
+      m_pFontMgr(pdfium::MakeUnique<CFX_FontMgr>()),
+      m_pPlatform(PlatformIface::Create()),
+      m_pUserFontPaths(pUserFontPaths) {}
 
 CFX_GEModule::~CFX_GEModule() = default;
 
 // static
+void CFX_GEModule::Create(const char** pUserFontPaths) {
+  ASSERT(!g_pGEModule);
+  g_pGEModule = new CFX_GEModule(pUserFontPaths);
+  g_pGEModule->m_pPlatform->Init();
+}
+
+// static
 CFX_GEModule* CFX_GEModule::Get() {
-  if (!g_pGEModule)
-    g_pGEModule = new CFX_GEModule();
+  ASSERT(g_pGEModule);
   return g_pGEModule;
 }
 
@@ -35,16 +43,4 @@ void CFX_GEModule::Destroy() {
   ASSERT(g_pGEModule);
   delete g_pGEModule;
   g_pGEModule = nullptr;
-}
-
-void CFX_GEModule::Init(const char** userFontPaths) {
-  ASSERT(g_pGEModule);
-  m_pUserFontPaths = userFontPaths;
-  m_pPlatform->Init();
-}
-
-CFX_FontCache* CFX_GEModule::GetFontCache() {
-  if (!m_pFontCache)
-    m_pFontCache = pdfium::MakeUnique<CFX_FontCache>();
-  return m_pFontCache.get();
 }
