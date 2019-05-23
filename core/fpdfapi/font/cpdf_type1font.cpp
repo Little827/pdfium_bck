@@ -43,7 +43,7 @@ const char* GlyphNameRemap(const char* pStrAdobe) {
 
 #endif  // defined(OS_MACOSX)
 
-bool FT_UseType1Charmap(FXFT_Face face) {
+bool FT_UseType1Charmap(FXFT_FaceRec* face) {
   if (FXFT_Get_Face_CharmapCount(face) == 0) {
     return false;
   }
@@ -139,14 +139,14 @@ void CPDF_Type1Font::LoadGlyphMap() {
   }
 #endif
   if (!IsEmbedded() && (m_Base14Font < 12) && m_Font.IsTTFont()) {
-    if (FT_UseTTCharmap(m_Font.GetFace(), 3, 0)) {
+    if (FT_UseTTCharmap(m_Font.GetFaceRec(), 3, 0)) {
       bool bGotOne = false;
       for (uint32_t charcode = 0; charcode < 256; charcode++) {
         const uint8_t prefix[4] = {0x00, 0xf0, 0xf1, 0xf2};
         for (int j = 0; j < 4; j++) {
           uint16_t unicode = prefix[j] * 256 + charcode;
           m_GlyphIndex[charcode] =
-              FXFT_Get_Char_Index(m_Font.GetFace(), unicode);
+              FXFT_Get_Char_Index(m_Font.GetFaceRec(), unicode);
 #if defined(OS_MACOSX)
           CalcExtGID(charcode);
 #endif
@@ -164,7 +164,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
         return;
       }
     }
-    FXFT_Select_Charmap(m_Font.GetFace(), FXFT_ENCODING_UNICODE);
+    FXFT_Select_Charmap(m_Font.GetFaceRec(), FXFT_ENCODING_UNICODE);
     if (m_BaseEncoding == 0)
       m_BaseEncoding = PDFFONT_ENCODING_STANDARD;
 
@@ -176,13 +176,13 @@ void CPDF_Type1Font::LoadGlyphMap() {
 
       m_Encoding.SetUnicode(charcode, PDF_UnicodeFromAdobeName(name));
       m_GlyphIndex[charcode] = FXFT_Get_Char_Index(
-          m_Font.GetFace(), m_Encoding.UnicodeFromCharCode(charcode));
+          m_Font.GetFaceRec(), m_Encoding.UnicodeFromCharCode(charcode));
 #if defined(OS_MACOSX)
       CalcExtGID(charcode);
 #endif
       if (m_GlyphIndex[charcode] == 0 && strcmp(name, ".notdef") == 0) {
         m_Encoding.SetUnicode(charcode, 0x20);
-        m_GlyphIndex[charcode] = FXFT_Get_Char_Index(m_Font.GetFace(), 0x20);
+        m_GlyphIndex[charcode] = FXFT_Get_Char_Index(m_Font.GetFaceRec(), 0x20);
 #if defined(OS_MACOSX)
         CalcExtGID(charcode);
 #endif
@@ -194,7 +194,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
 #endif
     return;
   }
-  FT_UseType1Charmap(m_Font.GetFace());
+  FT_UseType1Charmap(m_Font.GetFaceRec());
 #if defined(OS_MACOSX)
   if (bCoreText) {
     if (FontStyleIsSymbolic(m_Flags)) {
@@ -267,17 +267,17 @@ void CPDF_Type1Font::LoadGlyphMap() {
           GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
       if (name) {
         m_Encoding.SetUnicode(charcode, PDF_UnicodeFromAdobeName(name));
-        m_GlyphIndex[charcode] = FXFT_Get_Name_Index(m_Font.GetFace(), name);
+        m_GlyphIndex[charcode] = FXFT_Get_Name_Index(m_Font.GetFaceRec(), name);
       } else {
         m_GlyphIndex[charcode] =
-            FXFT_Get_Char_Index(m_Font.GetFace(), charcode);
+            FXFT_Get_Char_Index(m_Font.GetFaceRec(), charcode);
         if (m_GlyphIndex[charcode]) {
           wchar_t unicode =
               FT_UnicodeFromCharCode(PDFFONT_ENCODING_STANDARD, charcode);
           if (unicode == 0) {
             char name_glyph[256];
             memset(name_glyph, 0, sizeof(name_glyph));
-            FXFT_Get_Glyph_Name(m_Font.GetFace(), m_GlyphIndex[charcode],
+            FXFT_Get_Glyph_Name(m_Font.GetFaceRec(), m_GlyphIndex[charcode],
                                 name_glyph, 256);
             name_glyph[255] = 0;
             if (name_glyph[0] != 0)
@@ -296,20 +296,20 @@ void CPDF_Type1Font::LoadGlyphMap() {
   }
 
   bool bUnicode =
-      FXFT_Select_Charmap(m_Font.GetFace(), FXFT_ENCODING_UNICODE) == 0;
+      FXFT_Select_Charmap(m_Font.GetFaceRec(), FXFT_ENCODING_UNICODE) == 0;
   for (int charcode = 0; charcode < 256; charcode++) {
     const char* name = GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
     if (!name)
       continue;
 
     m_Encoding.SetUnicode(charcode, PDF_UnicodeFromAdobeName(name));
-    m_GlyphIndex[charcode] = FXFT_Get_Name_Index(m_Font.GetFace(), name);
+    m_GlyphIndex[charcode] = FXFT_Get_Name_Index(m_Font.GetFaceRec(), name);
     if (m_GlyphIndex[charcode] != 0)
       continue;
 
     if (strcmp(name, ".notdef") != 0 && strcmp(name, "space") != 0) {
       m_GlyphIndex[charcode] = FXFT_Get_Char_Index(
-          m_Font.GetFace(),
+          m_Font.GetFaceRec(),
           bUnicode ? m_Encoding.UnicodeFromCharCode(charcode) : charcode);
     } else {
       m_Encoding.SetUnicode(charcode, 0x20);
