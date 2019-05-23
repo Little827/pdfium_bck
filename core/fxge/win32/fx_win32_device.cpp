@@ -683,21 +683,25 @@ std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
   return std::unique_ptr<SystemFontInfoIface>(pInfoFallback);
 }
 
-void CFX_GEModule::InitPlatform() {
-  CWin32Platform* pPlatformData = new CWin32Platform;
+CWin32Platform::CWin32Platform() = default;
+
+CWin32Platform::~CWin32Platform() = default;
+
+void CWin32Platform::Init() {
   OSVERSIONINFO ver;
   ver.dwOSVersionInfoSize = sizeof(ver);
   GetVersionEx(&ver);
-  pPlatformData->m_bHalfTone = ver.dwMajorVersion >= 5;
+  m_bHalfTone = ver.dwMajorVersion >= 5;
   if (pdfium::base::win::IsUser32AndGdi32Available())
-    pPlatformData->m_GdiplusExt.Load();
-  m_pPlatformData = pPlatformData;
-  m_pFontMgr->SetSystemFontInfo(SystemFontInfoIface::CreateDefault(nullptr));
+    m_GdiplusExt.Load();
+  CFX_GEModule::Get()->GetFontMgr()->SetSystemFontInfo(
+      SystemFontInfoIface::CreateDefault(nullptr));
 }
 
-void CFX_GEModule::DestroyPlatform() {
-  delete (CWin32Platform*)m_pPlatformData;
-  m_pPlatformData = nullptr;
+// static
+std::unique_ptr<CFX_GEModule::PlatformIface>
+CFX_GEModule::PlatformIface::Create() {
+  return pdfium::MakeUnique<CWin32Platform>();
 }
 
 CGdiDeviceDriver::CGdiDeviceDriver(HDC hDC, int device_class) {
