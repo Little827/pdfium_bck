@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a09b7180_2b2a5793",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-23T04:06:08Z",
+      "side": 1,
+      "message": "Outside of Chromium itself, other projects have to add a prefix to their bug numbers, otherwise it is not clear if this is Chromium bug 1296 or PDFium bug 1296. You want pdfium:1296 here.",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4a98aa_1b49255c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-23T04:06:08Z",
+      "side": 1,
+      "message": "Every exit path from this point onward probably needs a restore() call to balance out this save() call.",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59d21e8_e8149118",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-23T04:06:08Z",
+      "side": 1,
+      "message": "The code checks these two variables at the same time in 4 different places in this method now. Can we save the result to a bool and use that bool in all 4 places instead?",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0685bafb_565160bd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-23T04:06:08Z",
+      "side": 1,
+      "message": "If DrawPath() fails, should this method still return true? Unfortunately RenderDeviceDriverIface::DrawPath() has no documentation, so it is not clear what true/false actually implies.",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
