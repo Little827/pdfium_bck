@@ -23,6 +23,7 @@ class XFATestEnvironment final : public testing::Environment {
   void SetUp() override {
     // TODO(dsinclair): This font loading is slow. We should make a test font
     // loader which loads up a single font we use in all tests.
+    CFX_GEModule::Create(nullptr);
     CFX_GEModule::Get()->GetFontMgr()->SetSystemFontInfo(
         SystemFontInfoIface::CreateDefault(nullptr));
 
@@ -30,7 +31,10 @@ class XFATestEnvironment final : public testing::Environment {
     if (!font_mgr_->EnumFonts())
       font_mgr_ = nullptr;
   }
-  void TearDown() override { font_mgr_.reset(); }
+  void TearDown() override {
+    font_mgr_.reset();
+    CFX_GEModule::Destroy();
+  }
 
   CFGAS_FontMgr* FontManager() const { return font_mgr_.get(); }
 
