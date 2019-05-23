@@ -159,10 +159,17 @@ std::unique_ptr<SystemFontInfoIface> SystemFontInfoIface::CreateDefault(
   return std::move(pInfo);
 }
 
-void CFX_GEModule::InitPlatform() {
-  m_pFontMgr->SetSystemFontInfo(
-      SystemFontInfoIface::CreateDefault(m_pUserFontPaths));
-}
+class CLinuxPlatform : public CFX_GEModule::PlatformIface {
+  void Init() override {
+    CFX_GEModule* pModule = CFX_GEModule::Get();
+    pModule->GetFontMgr()->SetSystemFontInfo(
+        SystemFontInfoIface::CreateDefault(pModule->GetUserFontPaths()));
+  }
+};
 
-void CFX_GEModule::DestroyPlatform() {}
+// static
+std::unique_ptr<CFX_GEModule::PlatformIface>
+CFX_GEModule::PlatformIface::Create() {
+  return pdfium::MakeUnique<CLinuxPlatform>();
+}
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_LINUX_
