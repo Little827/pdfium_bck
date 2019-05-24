@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "05d53eb3_03093e12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-05-24T18:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a09b7180_2b2a5793",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f4a98aa_1b49255c",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f89d33f_fec24e09",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-05-24T18:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4a98aa_1b49255c",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "60e128cd_6e199e2f",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-05-24T18:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59d21e8_e8149118",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0685bafb_565160bd",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2019-05-23T04:06:08Z",
       "side": 1,
       "message": "If DrawPath() fails, should this method still return true? Unfortunately RenderDeviceDriverIface::DrawPath() has no documentation, so it is not clear what true/false actually implies.",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4fe28e_88225f95",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-05-24T18:10:55Z",
+      "side": 1,
+      "message": "Depending on whether skia_paths is enabled, either CFX_AggDeviceDriver::DrawPath() or CFX_SkiaDeviceDriver::DrawPath() will be called by m_pDeviceDriver-\u003eDrawPath(),which requires to return a bool type value.\nCFX_AggDeviceDriver::DrawPath() will have failure case which sometimes return false, while CFX_SkiaDeviceDriver::DrawPath() will always return true.",
+      "parentUuid": "0685bafb_565160bd",
       "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
