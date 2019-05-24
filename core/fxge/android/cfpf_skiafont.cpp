@@ -26,77 +26,74 @@ CFPF_SkiaFont::CFPF_SkiaFont(CFPF_SkiaFontMgr* pFontMgr,
       m_dwStyle(dwStyle),
       m_uCharset(uCharset) {}
 
-CFPF_SkiaFont::~CFPF_SkiaFont() {
-  if (m_Face)
-    FXFT_Done_Face(m_Face);
-}
+CFPF_SkiaFont::~CFPF_SkiaFont() {}
 
 ByteString CFPF_SkiaFont::GetFamilyName() {
   if (!m_Face)
     return ByteString();
-  return ByteString(FXFT_Get_Face_Family_Name(m_Face));
+  return ByteString(FXFT_Get_Face_Family_Name(m_Face->GetRec()->GetRec()));
 }
 
 ByteString CFPF_SkiaFont::GetPsName() {
   if (!m_Face)
     return ByteString();
-  return FXFT_Get_Postscript_Name(m_Face);
+  return FXFT_Get_Postscript_Name(m_Face->GetRec());
 }
 
 int32_t CFPF_SkiaFont::GetGlyphIndex(wchar_t wUnicode) {
   if (!m_Face)
     return wUnicode;
-  if (FXFT_Select_Charmap(m_Face, FXFT_ENCODING_UNICODE))
+  if (FXFT_Select_Charmap(m_Face->GetRec(), FXFT_ENCODING_UNICODE))
     return 0;
-  return FXFT_Get_Char_Index(m_Face, wUnicode);
+  return FXFT_Get_Char_Index(m_Face->GetRec(), wUnicode);
 }
 
 int32_t CFPF_SkiaFont::GetGlyphWidth(int32_t iGlyphIndex) {
   if (!m_Face)
     return 0;
   if (FXFT_Load_Glyph(
-          m_Face, iGlyphIndex,
+          m_Face->GetRec(), iGlyphIndex,
           FXFT_LOAD_NO_SCALE | FXFT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
     return 0;
   }
-  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                       FXFT_Get_Glyph_HoriAdvance(m_Face));
+  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                       FXFT_Get_Glyph_HoriAdvance(m_Face->GetRec()));
 }
 
 int32_t CFPF_SkiaFont::GetAscent() const {
   if (!m_Face)
     return 0;
-  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                       FXFT_Get_Face_Ascender(m_Face));
+  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                       FXFT_Get_Face_Ascender(m_Face->GetRec()));
 }
 
 int32_t CFPF_SkiaFont::GetDescent() const {
   if (!m_Face)
     return 0;
-  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                       FXFT_Get_Face_Descender(m_Face));
+  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                       FXFT_Get_Face_Descender(m_Face->GetRec()));
 }
 
 bool CFPF_SkiaFont::GetGlyphBBox(int32_t iGlyphIndex, FX_RECT& rtBBox) {
   if (!m_Face)
     return false;
-  if (FXFT_Is_Face_Tricky(m_Face)) {
-    if (FXFT_Set_Char_Size(m_Face, 0, 1000 * 64, 72, 72))
+  if (FXFT_Is_Face_Tricky(m_Face->GetRec())) {
+    if (FXFT_Set_Char_Size(m_Face->GetRec(), 0, 1000 * 64, 72, 72))
       return false;
-    if (FXFT_Load_Glyph(m_Face, iGlyphIndex,
+    if (FXFT_Load_Glyph(m_Face->GetRec(), iGlyphIndex,
                         FXFT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
-      FXFT_Set_Pixel_Sizes(m_Face, 0, 64);
+      FXFT_Set_Pixel_Sizes(m_Face->GetRec(), 0, 64);
       return false;
     }
     FXFT_Glyph glyph;
-    if (FXFT_Get_Glyph(m_Face->glyph, &glyph)) {
-      FXFT_Set_Pixel_Sizes(m_Face, 0, 64);
+    if (FXFT_Get_Glyph(m_Face->GetRec()->glyph, &glyph)) {
+      FXFT_Set_Pixel_Sizes(m_Face->GetRec(), 0, 64);
       return false;
     }
     FXFT_BBox cbox;
     FXFT_Glyph_Get_CBox(glyph, FXFT_GLYPH_BBOX_PIXELS, &cbox);
-    int32_t x_ppem = m_Face->size->metrics.x_ppem;
-    int32_t y_ppem = m_Face->size->metrics.y_ppem;
+    int32_t x_ppem = m_Face->GetRec()->size->metrics.x_ppem;
+    int32_t y_ppem = m_Face->GetRec()->size->metrics.y_ppem;
     rtBBox.left = FPF_EM_ADJUST(x_ppem, cbox.xMin);
     rtBBox.right = FPF_EM_ADJUST(x_ppem, cbox.xMax);
     rtBBox.top = FPF_EM_ADJUST(y_ppem, cbox.yMax);
@@ -104,23 +101,23 @@ bool CFPF_SkiaFont::GetGlyphBBox(int32_t iGlyphIndex, FX_RECT& rtBBox) {
     rtBBox.top = std::min(rtBBox.top, GetAscent());
     rtBBox.bottom = std::max(rtBBox.bottom, GetDescent());
     FXFT_Done_Glyph(glyph);
-    return FXFT_Set_Pixel_Sizes(m_Face, 0, 64) == 0;
+    return FXFT_Set_Pixel_Sizes(m_Face->GetRec(), 0, 64) == 0;
   }
   if (FXFT_Load_Glyph(
-          m_Face, iGlyphIndex,
+          m_Face->GetRec(), iGlyphIndex,
           FXFT_LOAD_NO_SCALE | FXFT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
     return false;
   }
-  rtBBox.left = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                              FXFT_Get_Glyph_HoriBearingX(m_Face));
-  rtBBox.bottom = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                                FXFT_Get_Glyph_HoriBearingY(m_Face));
-  rtBBox.right = FPF_EM_ADJUST(
-      FXFT_Get_Face_UnitsPerEM(m_Face),
-      FXFT_Get_Glyph_HoriBearingX(m_Face) + FXFT_Get_Glyph_Width(m_Face));
-  rtBBox.top = FPF_EM_ADJUST(
-      FXFT_Get_Face_UnitsPerEM(m_Face),
-      FXFT_Get_Glyph_HoriBearingY(m_Face) - FXFT_Get_Glyph_Height(m_Face));
+  rtBBox.left = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                              FXFT_Get_Glyph_HoriBearingX(m_Face->GetRec()));
+  rtBBox.bottom = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                                FXFT_Get_Glyph_HoriBearingY(m_Face->GetRec()));
+  rtBBox.right = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                               FXFT_Get_Glyph_HoriBearingX(m_Face->GetRec()) +
+                                   FXFT_Get_Glyph_Width(m_Face->GetRec()));
+  rtBBox.top = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                             FXFT_Get_Glyph_HoriBearingY(m_Face->GetRec()) -
+                                 FXFT_Get_Glyph_Height(m_Face->GetRec()));
   return true;
 }
 
@@ -128,30 +125,30 @@ bool CFPF_SkiaFont::GetBBox(FX_RECT& rtBBox) {
   if (!m_Face) {
     return false;
   }
-  rtBBox.left = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                              FXFT_Get_Face_xMin(m_Face));
-  rtBBox.top = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                             FXFT_Get_Face_yMin(m_Face));
-  rtBBox.right = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                               FXFT_Get_Face_xMax(m_Face));
-  rtBBox.bottom = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                                FXFT_Get_Face_yMax(m_Face));
+  rtBBox.left = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                              FXFT_Get_Face_xMin(m_Face->GetRec()));
+  rtBBox.top = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                             FXFT_Get_Face_yMin(m_Face->GetRec()));
+  rtBBox.right = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                               FXFT_Get_Face_xMax(m_Face->GetRec()));
+  rtBBox.bottom = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                                FXFT_Get_Face_yMax(m_Face->GetRec()));
   return true;
 }
 
 int32_t CFPF_SkiaFont::GetHeight() const {
   if (!m_Face)
     return 0;
-  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
-                       FXFT_Get_Face_Height(m_Face));
+  return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()),
+                       FXFT_Get_Face_Height(m_Face->GetRec()));
 }
 
 int32_t CFPF_SkiaFont::GetItalicAngle() const {
   if (!m_Face)
     return 0;
 
-  auto* info =
-      static_cast<TT_Postscript*>(FT_Get_Sfnt_Table(m_Face, ft_sfnt_post));
+  auto* info = static_cast<TT_Postscript*>(
+      FT_Get_Sfnt_Table(m_Face->GetRec(), ft_sfnt_post));
   return info ? info->italicAngle : 0;
 }
 
@@ -162,7 +159,7 @@ uint32_t CFPF_SkiaFont::GetFontData(uint32_t dwTable,
     return 0;
 
   FT_ULong ulSize = pdfium::base::checked_cast<FT_ULong>(dwSize);
-  if (FXFT_Load_Sfnt_Table(m_Face, dwTable, 0, pBuffer, &ulSize))
+  if (FXFT_Load_Sfnt_Table(m_Face->GetRec(), dwTable, 0, pBuffer, &ulSize))
     return 0;
   return pdfium::base::checked_cast<uint32_t>(ulSize);
 }
