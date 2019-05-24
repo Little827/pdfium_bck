@@ -28,12 +28,12 @@ class CFPF_SkiaFontMgr {
                             uint32_t dwStyle);
 
   bool InitFTLibrary();
-  FXFT_Face GetFontFace(ByteStringView bsFile, int32_t iFaceIndex);
+  RetainPtr<CFX_Face> GetFontFace(ByteStringView bsFile, int32_t iFaceIndex);
 
  private:
   void ScanPath(const ByteString& path);
   void ScanFile(const ByteString& file);
-  std::unique_ptr<CFPF_SkiaPathFont> ReportFace(FXFT_Face face,
+  std::unique_ptr<CFPF_SkiaPathFont> ReportFace(RetainPtr<CFX_Face> face,
                                                 const ByteString& file);
 
   bool m_bLoaded = false;

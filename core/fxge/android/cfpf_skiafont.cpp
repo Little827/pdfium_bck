@@ -26,10 +26,7 @@ CFPF_SkiaFont::CFPF_SkiaFont(CFPF_SkiaFontMgr* pFontMgr,
       m_dwStyle(dwStyle),
       m_uCharset(uCharset) {}
 
-CFPF_SkiaFont::~CFPF_SkiaFont() {
-  if (m_Face)
-    FXFT_Done_Face(m_Face);
-}
+CFPF_SkiaFont::~CFPF_SkiaFont() {}
 
 ByteString CFPF_SkiaFont::GetFamilyName() {
   if (!m_Face)

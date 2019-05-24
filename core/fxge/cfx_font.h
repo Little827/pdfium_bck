@@ -14,6 +14,7 @@
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "core/fxge/cfx_face.h"
 #include "core/fxge/fx_freetype.h"
 #include "third_party/base/span.h"
 
@@ -49,14 +50,17 @@ class CFX_Font {
                  bool bVertical);
 
   bool LoadEmbedded(pdfium::span<const uint8_t> src_span);
-  FXFT_Face GetFace() const { return m_Face.Get(); }
+  RetainPtr<CFX_Face> GetFace() const { return m_Face; }
+  FXFT_FaceRec* GetFaceRec() const {
+    return m_Face ? m_Face->GetRec() : nullptr;
+  }
   CFX_SubstFont* GetSubstFont() const { return m_pSubstFont.get(); }
 
 #ifdef PDF_ENABLE_XFA
   bool LoadFile(const RetainPtr<IFX_SeekableReadStream>& pFile, int nFaceIndex);
 
 #if !defined(OS_WIN)
-  void SetFace(FXFT_Face face);
+  void SetFace(RetainPtr<CFX_Face> face);
   void SetSubstFont(std::unique_ptr<CFX_SubstFont> subst);
 #endif  // !defined(OS_WIN)
 #endif  // PDF_ENABLE_XFA
@@ -127,7 +131,6 @@ class CFX_Font {
 
  private:
   RetainPtr<CFX_GlyphCache> GetOrCreateGlyphCache() const;
-  void DeleteFace();
   void ClearGlyphCache();
 #if defined(OS_MACOSX)
   void ReleasePlatformResource();
@@ -135,7 +138,7 @@ class CFX_Font {
 
   ByteString GetFamilyNameOrUntitled() const;
 
-  mutable UnownedPtr<FXFT_FaceRec> m_Face;
+  mutable RetainPtr<CFX_Face> m_Face;
   mutable RetainPtr<CFX_GlyphCache> m_GlyphCache;
   std::unique_ptr<CFX_SubstFont> m_pSubstFont;
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pGsubData;
