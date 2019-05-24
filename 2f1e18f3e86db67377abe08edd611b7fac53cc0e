@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a74e9fc_b92e983e",
+        "filename": "core/fxge/android/fx_android_imp.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-24T06:38:03Z",
+      "side": 1,
+      "message": "Can\u0027t happen, BTW.",
+      "revId": "2f1e18f3e86db67377abe08edd611b7fac53cc0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24014315_63ac364a",
+        "filename": "core/fxge/cfx_gemodule.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-24T06:38:03Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "2f1e18f3e86db67377abe08edd611b7fac53cc0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd987c30_22aac436",
+        "filename": "core/fxge/fx_ge_linux.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-24T06:38:03Z",
+      "side": 1,
+      "message": "Explicitly declare default ctor/dtor?",
+      "revId": "2f1e18f3e86db67377abe08edd611b7fac53cc0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
