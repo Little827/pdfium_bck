@@ -1904,12 +1904,6 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     uint32_t stroke_color,                  // stroke color
     int fill_mode,  // fill mode, WINDING or ALTERNATE. 0 for not filled
     BlendMode blend_type) {
-  if (fill_mode & FX_ZEROAREA_FILL)
-    return true;
-  if (m_pCache->DrawPath(pPathData, pObject2Device, pGraphState, fill_color,
-                         stroke_color, fill_mode, blend_type)) {
-    return true;
-  }
   SkMatrix skMatrix;
   if (pObject2Device)
     skMatrix = ToSkMatrix(*pObject2Device);
@@ -1920,7 +1914,8 @@ bool CFX_SkiaDeviceDriver::DrawPath(
   if (fill_mode & FXFILL_FULLCOVER)
     skPaint.setBlendMode(SkBlendMode::kPlus);
   int stroke_alpha = FXARGB_A(stroke_color);
-  if (pGraphState && stroke_alpha)
+  bool bPaintStroke = (pGraphState && stroke_alpha) ? true : false;
+  if (bPaintStroke)
     PaintStroke(&skPaint, pGraphState, skMatrix);
   SkPath skPath = BuildPath(pPathData);
   m_pCanvas->save();
@@ -1931,7 +1926,7 @@ bool CFX_SkiaDeviceDriver::DrawPath(
                            : SkPath::kWinding_FillType);
     SkPath strokePath;
     const SkPath* fillPath = &skPath;
-    if (pGraphState && stroke_alpha) {
+    if (bPaintStroke) {
       if (m_bGroupKnockout) {
         skPaint.getFillPath(skPath, &strokePath);
         if (Op(skPath, strokePath, SkPathOp::kDifference_SkPathOp,
@@ -1947,8 +1942,13 @@ bool CFX_SkiaDeviceDriver::DrawPath(
 #endif  // _SKIA_SUPPORT_PATHS_
     DebugShowSkiaDrawPath(this, m_pCanvas, skPaint, *fillPath);
     m_pCanvas->drawPath(*fillPath, skPaint);
+
+    if (!bPaintStroke) {
+      m_pCanvas->restore();
+      return true;
+    }
   }
-  if (pGraphState && stroke_alpha) {
+  if (bPaintStroke) {
     skPaint.setStyle(SkPaint::kStroke_Style);
     skPaint.setColor(stroke_color);
 #ifdef _SKIA_SUPPORT_PATHS_
@@ -1956,7 +1956,20 @@ bool CFX_SkiaDeviceDriver::DrawPath(
 #endif  // _SKIA_SUPPORT_PATHS_
     DebugShowSkiaDrawPath(this, m_pCanvas, skPaint, skPath);
     m_pCanvas->drawPath(skPath, skPaint);
+    m_pCanvas->restore();
+    return true;
   }
+
+  if (fill_mode & FX_ZEROAREA_FILL) {
+    m_pCanvas->restore();
+    return true;
+  }
+  if (m_pCache->DrawPath(pPathData, pObject2Device, pGraphState, fill_color,
+                         stroke_color, fill_mode, blend_type)) {
+    m_pCanvas->restore();
+    return true;
+  }
+
   m_pCanvas->restore();
   return true;
 }
