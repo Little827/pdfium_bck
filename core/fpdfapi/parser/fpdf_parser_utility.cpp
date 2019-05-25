@@ -152,6 +152,17 @@ ByteString PDF_NameEncode(const ByteString& orig) {
   return res;
 }
 
+void ReadArrayElementsToVector(const CPDF_Array* pArray,
+                               std::vector<float>* pVector,
+                               size_t nCount) {
+  ASSERT(pArray);
+  ASSERT(pArray->size() >= nCount);
+  ASSERT(pVector);
+  ASSERT(pVector->size() >= nCount);
+  for (size_t i = 0; i < nCount; ++i)
+    (*pVector)[i] = pArray->GetNumberAt(i);
+}
+
 std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj) {
   if (!pObj) {
     buf << " null";
