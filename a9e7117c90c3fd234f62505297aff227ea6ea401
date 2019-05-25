@@ -46,6 +46,30 @@
       "revId": "a9e7117c90c3fd234f62505297aff227ea6ea401",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d8a6ad8_8e95e2f2",
+        "filename": "core/fpdfapi/page/cpdf_allstates.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-25T00:29:55Z",
+      "side": 1,
+      "message": "https://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfdoc/cpdf_annot.cpp?rcl\u003db8f3573158b117a03fd348773107029c00f19245\u0026l\u003d507",
+      "parentUuid": "3988317a_22c5d03f",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 38
+      },
+      "revId": "a9e7117c90c3fd234f62505297aff227ea6ea401",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
