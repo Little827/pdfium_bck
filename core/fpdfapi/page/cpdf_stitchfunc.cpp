@@ -10,6 +10,7 @@
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/fx_safe_types.h"
 
 namespace {
@@ -98,12 +99,11 @@ bool CPDF_StitchFunc::v_Init(const CPDF_Object* pObj,
   m_bounds.reserve(nSubs + 1);
   m_bounds.push_back(m_Domains[0]);
   for (uint32_t i = 0; i < nSubs - 1; i++)
-    m_bounds.push_back(pBoundsArray->GetFloatAt(i));
+    m_bounds.push_back(pBoundsArray->GetNumberAt(i));
   m_bounds.push_back(m_Domains[1]);
 
-  m_encode.reserve(nSubs * 2);
-  for (uint32_t i = 0; i < nSubs * 2; i++)
-    m_encode.push_back(pEncodeArray->GetFloatAt(i));
+  m_encode.resize(nSubs * 2);
+  ReadArrayElementsToVector(pEncodeArray, &m_encode, m_encode.size());
   return true;
 }
 
