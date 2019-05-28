@@ -139,6 +139,24 @@
       "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8381bbdc_8f8727f1",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-28T23:46:31Z",
+      "side": 1,
+      "message": "What you said makes sense in the context of the original code, but the code is being changed by this CL. I wrote out summaries of the code flow below illustrate what I\u0027m getting at.\n\nWith the original code, it looks like this:\n\n----\nif (m_pCache-\u003eDrawPath(...))\n  return true;\n\n// Go through main body of CFX_SkiaDeviceDriver::DrawPath()\n// This never seems to fail, so always return true.\nreturn true;\n----\n\nWith this CL, we have:\n\n----\n// Go through main body of CFX_SkiaDeviceDriver::DrawPath()\n// Maybe return true.\n\nif (m_pCache-\u003eDrawPath(...))\n  return true;\n\n// DrawPath failed() case. What should this return?\n// Is true still the right return value?\nreturn true;\n----",
+      "parentUuid": "9b4fe28e_88225f95",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

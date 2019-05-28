@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90718e63_dbcac14c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1917,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-28T23:46:31Z",
+      "side": 1,
+      "message": "You can do: !!(pGraphState \u0026\u0026 stroke_alpha), instead of writing out \"true : false\"",
+      "revId": "db1f981f44deea818575cfd94a1d0325c64408fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ef9579_c535201a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-28T23:46:31Z",
+      "side": 1,
+      "message": "If it is the case that we should always return true, then this can become:\n\nm_pCache-\u003eDrawPath(...);\nm_pCanvas-\u003erestore();\nreturn true;\n\nAs is, we have an if-else branch, where the two branches do the exact same thing.",
+      "revId": "db1f981f44deea818575cfd94a1d0325c64408fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
