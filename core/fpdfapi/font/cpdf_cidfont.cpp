@@ -400,13 +400,15 @@ bool CPDF_CIDFont::Load() {
   if (!IsEmbedded())
     LoadSubstFont();
 
-  const CPDF_Object* pmap = pCIDFontDict->GetDirectObjectFor("CIDToGIDMap");
-  if (pmap) {
-    if (const CPDF_Stream* pStream = pmap->AsStream()) {
-      m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
-      m_pStreamAcc->LoadAllDataFiltered();
-    } else if (m_pFontFile && pmap->GetString() == "Identity") {
-      m_bCIDIsGID = true;
+  if (subtype == "CIDFontType2" && IsEmbedded()) {
+    const CPDF_Object* pmap = pCIDFontDict->GetDirectObjectFor("CIDToGIDMap");
+    if (pmap) {
+      if (const CPDF_Stream* pStream = pmap->AsStream()) {
+        m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+        m_pStreamAcc->LoadAllDataFiltered();
+      } else if (m_pFontFile && pmap->GetString() == "Identity") {
+        m_bCIDIsGID = true;
+      }
     }
   }
 
