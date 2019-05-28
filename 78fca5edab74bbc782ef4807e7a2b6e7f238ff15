@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1558748867 -0700\nnonce AC6AUtP5WYqQ8yCyfz4cA5Qo/Ps183evsZy8VLqN5yUWHKfdlApgahYMWcJj3zs7d20gyYGbGcOF\n\n0000000000000000000000000000000000000000 78fca5edab74bbc782ef4807e7a2b6e7f238ff15 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzonsMACgkQqzYtYVpm\n/Xt5EAf9HwEmmmfKhvX39AdkETObenFLeuSq/c5UwjzRXyRcE4XvnvaVr/H0wZWZ\nsVPo6w13BIf1FUnOZaJhLPxcAZ3M2fJkOKFfFFb3h+V4Ljftew12zX6cbJInY6u9\nCpSS1HtST1QtqSBUvLt8R6WIKOtz+5jhtpFncRsyb2hEagModUn8I6aE+9i6CjYH\nxOM3fda7Tu/UTwbHfojy9FAr5QcKvNJbujcWThTbweOmGDcOSpAntk3A9QyBgnZa\n9R9sdDYcP92pTcp/8OA5PI0boYIch4PlDUxSz60K4869y0I1P0XWsgrBXsRvA6lN\nVA/gseZJp8QdV+U+46C5hYFZW3RObA\u003d\u003d\n\u003dsWiq\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a2e2e2f_aba8c5d1",
+        "filename": "core/fpdfapi/parser/fpdf_parser_utility.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-28T17:27:10Z",
+      "side": 1,
+      "message": "Actually, I thought this might be a method of CPDF_Array that returns a brand-new vector of floats.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "78fca5edab74bbc782ef4807e7a2b6e7f238ff15",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
