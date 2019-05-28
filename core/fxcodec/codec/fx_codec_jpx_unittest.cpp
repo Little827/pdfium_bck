@@ -7,7 +7,7 @@
 #include <limits>
 
 #include "core/fxcodec/codec/codec_int.h"
-#include "core/fxcodec/fx_codec.h"
+#include "core/fxge/dib/cfx_cmyk_to_srgb.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/libopenjpeg20/opj_malloc.h"
 
@@ -36,10 +36,10 @@ TEST(fxcodec, CMYK_Rounding) {
   // Iterate through floats by incrementing the representation, as discussed in
   // https://randomascii.wordpress.com/2012/01/23/stupid-float-tricks-2/
   for (Float_t f = startValue; f.f < endValue; f.i++) {
-    std::tie(R, G, B) = AdobeCMYK_to_sRGB(f.f, f.f, f.f, f.f);
+    std::tie(R, G, B) = fxge::AdobeCMYK_to_sRGB(f.f, f.f, f.f, f.f);
   }
   // Check various other 'special' numbers.
-  std::tie(R, G, B) = AdobeCMYK_to_sRGB(0.0f, 0.25f, 0.5f, 1.0f);
+  std::tie(R, G, B) = fxge::AdobeCMYK_to_sRGB(0.0f, 0.25f, 0.5f, 1.0f);
 }
 
 TEST(fxcodec, DecodeDataNullDecodeData) {

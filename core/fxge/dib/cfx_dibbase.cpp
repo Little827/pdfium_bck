@@ -11,9 +11,9 @@
 #include <utility>
 #include <vector>
 
-#include "core/fxcodec/fx_codec.h"
 #include "core/fxge/cfx_cliprgn.h"
 #include "core/fxge/dib/cfx_bitmapstorer.h"
+#include "core/fxge/dib/cfx_cmyk_to_srgb.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/dib/cfx_imagetransformer.h"
@@ -148,10 +148,10 @@ void ConvertBuffer_1bppPlt2Gray(uint8_t* dest_buf,
   uint8_t set_g;
   uint8_t set_b;
   if (pSrcBitmap->IsCmykImage()) {
-    std::tie(reset_r, reset_g, reset_b) = AdobeCMYK_to_sRGB1(
+    std::tie(reset_r, reset_g, reset_b) = fxge::AdobeCMYK_to_sRGB1(
         FXSYS_GetCValue(src_plt[0]), FXSYS_GetMValue(src_plt[0]),
         FXSYS_GetYValue(src_plt[0]), FXSYS_GetKValue(src_plt[0]));
-    std::tie(set_r, set_g, set_b) = AdobeCMYK_to_sRGB1(
+    std::tie(set_r, set_g, set_b) = fxge::AdobeCMYK_to_sRGB1(
         FXSYS_GetCValue(src_plt[1]), FXSYS_GetMValue(src_plt[1]),
         FXSYS_GetYValue(src_plt[1]), FXSYS_GetKValue(src_plt[1]));
   } else {
@@ -191,7 +191,7 @@ void ConvertBuffer_8bppPlt2Gray(uint8_t* dest_buf,
     uint8_t g;
     uint8_t b;
     for (size_t i = 0; i < FX_ArraySize(gray); ++i) {
-      std::tie(r, g, b) = AdobeCMYK_to_sRGB1(
+      std::tie(r, g, b) = fxge::AdobeCMYK_to_sRGB1(
           FXSYS_GetCValue(src_plt[i]), FXSYS_GetMValue(src_plt[i]),
           FXSYS_GetYValue(src_plt[i]), FXSYS_GetKValue(src_plt[i]));
       gray[i] = FXRGB2GRAY(r, g, b);
@@ -228,7 +228,7 @@ void ConvertBuffer_RgbOrCmyk2Gray(uint8_t* dest_buf,
         uint8_t r;
         uint8_t g;
         uint8_t b;
-        std::tie(r, g, b) = AdobeCMYK_to_sRGB1(
+        std::tie(r, g, b) = fxge::AdobeCMYK_to_sRGB1(
             FXSYS_GetCValue(static_cast<uint32_t>(src_scan[0])),
             FXSYS_GetMValue(static_cast<uint32_t>(src_scan[1])),
             FXSYS_GetYValue(static_cast<uint32_t>(src_scan[2])),
@@ -298,7 +298,7 @@ void ConvertBuffer_Plt2PltRgb8(uint8_t* dest_buf,
       uint8_t r;
       uint8_t g;
       uint8_t b;
-      std::tie(r, g, b) = AdobeCMYK_to_sRGB1(
+      std::tie(r, g, b) = fxge::AdobeCMYK_to_sRGB1(
           FXSYS_GetCValue(src_plt[i]), FXSYS_GetMValue(src_plt[i]),
           FXSYS_GetYValue(src_plt[i]), FXSYS_GetKValue(src_plt[i]));
       dst_plt[i] = ArgbEncode(0xff, r, g, b);
@@ -443,10 +443,10 @@ void ConvertBuffer_1bppPlt2Rgb(FXDIB_Format dest_format,
   }
 
   if (pSrcBitmap->IsCmykImage()) {
-    std::tie(bgr_ptr[2], bgr_ptr[1], bgr_ptr[0]) = AdobeCMYK_to_sRGB1(
+    std::tie(bgr_ptr[2], bgr_ptr[1], bgr_ptr[0]) = fxge::AdobeCMYK_to_sRGB1(
         FXSYS_GetCValue(src_plt[0]), FXSYS_GetMValue(src_plt[0]),
         FXSYS_GetYValue(src_plt[0]), FXSYS_GetKValue(src_plt[0]));
-    std::tie(bgr_ptr[5], bgr_ptr[4], bgr_ptr[3]) = AdobeCMYK_to_sRGB1(
+    std::tie(bgr_ptr[5], bgr_ptr[4], bgr_ptr[3]) = fxge::AdobeCMYK_to_sRGB1(
         FXSYS_GetCValue(src_plt[1]), FXSYS_GetMValue(src_plt[1]),
         FXSYS_GetYValue(src_plt[1]), FXSYS_GetKValue(src_plt[1]));
   }
@@ -492,7 +492,7 @@ void ConvertBuffer_8bppPlt2Rgb(FXDIB_Format dest_format,
 
   if (pSrcBitmap->IsCmykImage()) {
     for (int i = 0; i < 256; ++i) {
-      std::tie(bgr_ptr[2], bgr_ptr[1], bgr_ptr[0]) = AdobeCMYK_to_sRGB1(
+      std::tie(bgr_ptr[2], bgr_ptr[1], bgr_ptr[0]) = fxge::AdobeCMYK_to_sRGB1(
           FXSYS_GetCValue(src_plt[i]), FXSYS_GetMValue(src_plt[i]),
           FXSYS_GetYValue(src_plt[i]), FXSYS_GetKValue(src_plt[i]));
       bgr_ptr += 3;
@@ -582,8 +582,9 @@ void ConvertBuffer_32bppCmyk2Rgb32(uint8_t* dest_buf,
     const uint8_t* src_scan =
         pSrcBitmap->GetScanline(src_top + row) + src_left * 4;
     for (int col = 0; col < width; ++col) {
-      std::tie(dest_scan[2], dest_scan[1], dest_scan[0]) = AdobeCMYK_to_sRGB1(
-          src_scan[0], src_scan[1], src_scan[2], src_scan[3]);
+      std::tie(dest_scan[2], dest_scan[1], dest_scan[0]) =
+          fxge::AdobeCMYK_to_sRGB1(src_scan[0], src_scan[1], src_scan[2],
+                                   src_scan[3]);
       dest_scan += 4;
       src_scan += 4;
     }

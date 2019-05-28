@@ -16,6 +16,7 @@
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_stream.h"
+#include "core/fxge/dib/cfx_cmyk_to_srgb.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/fx_dib.h"
 #include "third_party/base/logging.h"
@@ -1904,8 +1905,8 @@ void CCodec_ProgressiveDecoder::ReSampleScanline(
           uint8_t src_g = 0;
           uint8_t src_r = 0;
           std::tie(src_r, src_g, src_b) =
-              AdobeCMYK_to_sRGB1(255 - src_pixel[0], 255 - src_pixel[1],
-                                 255 - src_pixel[2], 255 - src_pixel[3]);
+              fxge::AdobeCMYK_to_sRGB1(255 - src_pixel[0], 255 - src_pixel[1],
+                                       255 - src_pixel[2], 255 - src_pixel[3]);
           dest_b += pixel_weight * src_b;
           dest_g += pixel_weight * src_g;
           dest_r += pixel_weight * src_r;
@@ -2016,8 +2017,8 @@ void CCodec_ProgressiveDecoder::ReSampleScanline(
           uint8_t src_g = 0;
           uint8_t src_r = 0;
           std::tie(src_r, src_g, src_b) =
-              AdobeCMYK_to_sRGB1(255 - src_pixel[0], 255 - src_pixel[1],
-                                 255 - src_pixel[2], 255 - src_pixel[3]);
+              fxge::AdobeCMYK_to_sRGB1(255 - src_pixel[0], 255 - src_pixel[1],
+                                       255 - src_pixel[2], 255 - src_pixel[3]);
           dest_b += pixel_weight * src_b;
           dest_g += pixel_weight * src_g;
           dest_r += pixel_weight * src_r;
