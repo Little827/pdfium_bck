@@ -23,6 +23,30 @@
       "revId": "78fca5edab74bbc782ef4807e7a2b6e7f238ff15",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "474c2189_7fcd2694",
+        "filename": "core/fpdfapi/parser/fpdf_parser_utility.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-28T17:57:54Z",
+      "side": 1,
+      "message": "That fits some of the use cases, but not all. How about we add them both?",
+      "parentUuid": "6a2e2e2f_aba8c5d1",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "78fca5edab74bbc782ef4807e7a2b6e7f238ff15",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
