@@ -17,9 +17,11 @@ CFX_GEModule* g_pGEModule = nullptr;
 
 }  // namespace
 
-CFX_GEModule::CFX_GEModule()
-    : m_pFontMgr(pdfium::MakeUnique<CFX_FontMgr>()),
-      m_pPlatform(PlatformIface::Create()) {}
+CFX_GEModule::CFX_GEModule(const char** pUserFontPaths)
+    : m_pPlatform(PlatformIface::Create()),
+      m_pFontMgr(pdfium::MakeUnique<CFX_FontMgr>()),
+      m_pFontCache(pdfium::MakeUnique<CFX_FontCache>()),
+      m_pUserFontPaths(pUserFontPaths) {}
 
 CFX_GEModule::~CFX_GEModule() = default;
 

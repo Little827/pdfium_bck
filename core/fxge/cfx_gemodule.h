@@ -35,10 +35,10 @@ class CFX_GEModule {
   CFX_GEModule();
   ~CFX_GEModule();
 
-  std::unique_ptr<CFX_FontCache> m_pFontCache;
-  std::unique_ptr<CFX_FontMgr> m_pFontMgr;
-  std::unique_ptr<PlatformIface> m_pPlatform;
-  const char** m_pUserFontPaths = nullptr;
+  std::unique_ptr<PlatformIface> const m_pPlatform;
+  std::unique_ptr<CFX_FontMgr> const m_pFontMgr;
+  std::unique_ptr<CFX_FontCache> const m_pFontCache;
+  const char** const m_pUserFontPaths;
 };
 
 #endif  // CORE_FXGE_CFX_GEMODULE_H_
