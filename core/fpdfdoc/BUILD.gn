@@ -96,7 +96,6 @@ jumbo_source_set("fpdfdoc") {
     "../fxge",
   ]
   allow_circular_includes_from = [
-    "../fpdfapi/parser",
     "../fpdfapi/page",
     "../fpdfapi/render",
   ]
