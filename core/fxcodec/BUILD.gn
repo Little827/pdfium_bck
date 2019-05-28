@@ -137,6 +137,7 @@ pdfium_unittest_source_set("unittests") {
   deps = [
     ":fxcodec",
     "../fpdfapi/parser",
+    "../fxge",
   ]
   pdfium_root_dir = "../../"
 

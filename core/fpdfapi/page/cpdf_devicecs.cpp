@@ -15,7 +15,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
-#include "core/fxcodec/fx_codec.h"
+#include "core/fxge/dib/cfx_cmyk_to_srgb.h"
 #include "third_party/base/logging.h"
 #include "third_party/base/stl_util.h"
 
@@ -93,7 +93,7 @@ bool CPDF_DeviceCS::GetRGB(const float* pBuf,
         *G = 1.0f - std::min(1.0f, pBuf[1] + k);
         *B = 1.0f - std::min(1.0f, pBuf[2] + k);
       } else {
-        std::tie(*R, *G, *B) = AdobeCMYK_to_sRGB(
+        std::tie(*R, *G, *B) = fxge::AdobeCMYK_to_sRGB(
             NormalizeChannel(pBuf[0]), NormalizeChannel(pBuf[1]),
             NormalizeChannel(pBuf[2]), NormalizeChannel(pBuf[3]));
       }
@@ -140,8 +140,8 @@ void CPDF_DeviceCS::TranslateImageLine(uint8_t* pDestBuf,
             pDestBuf[0] = 255 - std::min(255, pSrcBuf[2] + k);
           } else {
             std::tie(pDestBuf[2], pDestBuf[1], pDestBuf[0]) =
-                AdobeCMYK_to_sRGB1(pSrcBuf[0], pSrcBuf[1], pSrcBuf[2],
-                                   pSrcBuf[3]);
+                fxge::AdobeCMYK_to_sRGB1(pSrcBuf[0], pSrcBuf[1], pSrcBuf[2],
+                                         pSrcBuf[3]);
           }
           pSrcBuf += 4;
           pDestBuf += 3;

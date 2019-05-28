@@ -8,7 +8,7 @@
 
 #include <algorithm>
 
-#include "core/fxcodec/fx_codec.h"
+#include "core/fxge/dib/cfx_cmyk_to_srgb.h"
 
 #define FX_CCOLOR(val) (255 - (val))
 #define FXDIB_ALPHA_UNION(dest, src) ((dest) + (src) - (dest) * (src) / 255)
@@ -2907,9 +2907,9 @@ void CFX_ScanlineCompositor::InitSourcePalette(FXDIB_Format src_format,
           uint8_t r;
           uint8_t g;
           uint8_t b;
-          std::tie(r, g, b) =
-              AdobeCMYK_to_sRGB1(FXSYS_GetCValue(cmyk), FXSYS_GetMValue(cmyk),
-                                 FXSYS_GetYValue(cmyk), FXSYS_GetKValue(cmyk));
+          std::tie(r, g, b) = fxge::AdobeCMYK_to_sRGB1(
+              FXSYS_GetCValue(cmyk), FXSYS_GetMValue(cmyk),
+              FXSYS_GetYValue(cmyk), FXSYS_GetKValue(cmyk));
           *gray_pal++ = FXRGB2GRAY(r, g, b);
         }
       } else {
@@ -2931,9 +2931,9 @@ void CFX_ScanlineCompositor::InitSourcePalette(FXDIB_Format src_format,
         uint8_t r;
         uint8_t g;
         uint8_t b;
-        std::tie(r, g, b) =
-            AdobeCMYK_to_sRGB1(FXSYS_GetCValue(cmyk), FXSYS_GetMValue(cmyk),
-                               FXSYS_GetYValue(cmyk), FXSYS_GetKValue(cmyk));
+        std::tie(r, g, b) = fxge::AdobeCMYK_to_sRGB1(
+            FXSYS_GetCValue(cmyk), FXSYS_GetMValue(cmyk), FXSYS_GetYValue(cmyk),
+            FXSYS_GetKValue(cmyk));
         pPalette[i] = ArgbEncode(0xff, r, g, b);
       }
     }
@@ -2966,9 +2966,9 @@ void CFX_ScanlineCompositor::InitSourcePalette(FXDIB_Format src_format,
       uint8_t r;
       uint8_t g;
       uint8_t b;
-      std::tie(r, g, b) =
-          AdobeCMYK_to_sRGB1(FXSYS_GetCValue(cmyk), FXSYS_GetMValue(cmyk),
-                             FXSYS_GetYValue(cmyk), FXSYS_GetKValue(cmyk));
+      std::tie(r, g, b) = fxge::AdobeCMYK_to_sRGB1(
+          FXSYS_GetCValue(cmyk), FXSYS_GetMValue(cmyk), FXSYS_GetYValue(cmyk),
+          FXSYS_GetKValue(cmyk));
       pPalette[i] = ArgbEncode(0xff, r, g, b);
     }
   }
