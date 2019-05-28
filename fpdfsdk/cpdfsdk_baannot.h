@@ -10,9 +10,9 @@
 #include "core/fpdfdoc/cpdf_aaction.h"
 #include "core/fpdfdoc/cpdf_action.h"
 #include "core/fpdfdoc/cpdf_annot.h"
-#include "core/fpdfdoc/cpdf_defaultappearance.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_string.h"
+#include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/cfx_systemhandler.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 
