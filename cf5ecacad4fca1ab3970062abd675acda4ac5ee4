@@ -23,6 +23,30 @@
       "revId": "cf5ecacad4fca1ab3970062abd675acda4ac5ee4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18a7b23_6bb5fa28",
+        "filename": "core/fxge/dib/cfx_cmyk_to_srgb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-29T23:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4132d97e_448aee43",
+      "range": {
+        "startLine": 1677,
+        "startChar": 6,
+        "endLine": 1677,
+        "endChar": 69
+      },
+      "revId": "cf5ecacad4fca1ab3970062abd675acda4ac5ee4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
