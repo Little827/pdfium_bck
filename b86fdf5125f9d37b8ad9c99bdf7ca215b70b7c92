@@ -23,6 +23,30 @@
       "revId": "b86fdf5125f9d37b8ad9c99bdf7ca215b70b7c92",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc26ab9b_3b4a2480",
+        "filename": "core/fpdfapi/render/cpdf_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-29T20:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1476b560_aefa73fc",
+      "range": {
+        "startLine": 564,
+        "startChar": 2,
+        "endLine": 564,
+        "endChar": 6
+      },
+      "revId": "b86fdf5125f9d37b8ad9c99bdf7ca215b70b7c92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
