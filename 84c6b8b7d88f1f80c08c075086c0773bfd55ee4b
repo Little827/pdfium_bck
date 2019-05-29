@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1559095249 -0700\nnonce AC6AUtO2O762M+rCk7kOqxknP1xUYWU48ZGWdqUSik84wzxfB9sekDOjuOrmVIxOj294hJvX+Ng6\n\n0000000000000000000000000000000000000000 84c6b8b7d88f1f80c08c075086c0773bfd55ee4b refs/for/refs/heads/master%notify\u003dNONE,m\u003dmore_nits,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzt59EACgkQqzYtYVpm\n/XtoDQf/WGIRK7fN4kz2+EuKuHo1XiRyLK9ocp4/9FD/vMh67edwrpRek96eRZvS\nqvC9iJejNUA2beRs9y/TmHHRBlpKDIQlbGp6QT2czbys1dcS5b389VJDvQv4tvEX\nyDxnVd26h0Lzy0tg02ekkjs/tGlmvIkT13CKYeihm5bv41P9HF+wExicIdqRLsAO\nWO7aPFk6CH7Hmil4jwrr3t/aAuBjumFGz8ibfiZXwLH47HmSzBvsqKCkdE/ozXAA\nmOaGFbRbWoZMxSocNreM1zAPcmyq3PRJa1DwHLyILv+viBKlSSL6oFlTabwVKVFl\nl47yDAlzS723IEvrgYtZK61HiTusCg\u003d\u003d\n\u003dIYDv\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e7f66f3_cc571d0d",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-29T19:40:33Z",
+      "side": 1,
+      "message": "follow-up: Namespace anyone?\n  ccodec::FlateModule::CreateDecoder()\n\nwould have a lot more colons.",
+      "range": {
+        "startLine": 340,
+        "startChar": 9,
+        "endLine": 340,
+        "endChar": 42
+      },
+      "revId": "84c6b8b7d88f1f80c08c075086c0773bfd55ee4b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
