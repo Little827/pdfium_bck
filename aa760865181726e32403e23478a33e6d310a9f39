@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07edebbc_b39346a5",
+        "filename": "core/fpdfapi/cmaps/fpdf_cmaps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-29T00:31:58Z",
+      "side": 1,
+      "message": "No longer used.",
+      "revId": "aa760865181726e32403e23478a33e6d310a9f39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34196459_f7318cfb",
+        "filename": "core/fpdfapi/cmaps/fpdf_cmaps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-29T00:31:58Z",
+      "side": 1,
+      "message": "Wasn\u0027t used before.",
+      "revId": "aa760865181726e32403e23478a33e6d310a9f39",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
