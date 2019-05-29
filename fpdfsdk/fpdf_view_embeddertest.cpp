@@ -908,7 +908,7 @@ TEST_F(FPDFViewEmbedderTest, LoadDocumentWithEmptyXRefConsistently) {
 }
 
 #if defined(OS_WIN)
-TEST_F(FPDFViewEmbedderTest, FPDF_RenderPage) {
+TEST_F(FPDFViewEmbedderTest, FPDFRenderPageEmf) {
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
@@ -923,4 +923,80 @@ TEST_F(FPDFViewEmbedderTest, FPDF_RenderPage) {
 
   UnloadPage(page);
 }
-#endif
+
+class PostScriptEmbedderTestBase : public FPDFViewEmbedderTest {
+ protected:
+  ~PostScriptEmbedderTestBase() override = default;
+
+  // FPDFViewEmbedderTest:
+  void TearDown() override {
+    FPDF_SetPrintMode(FPDF_PRINTMODE_EMF);
+    FPDFViewEmbedderTest::TearDown();
+  }
+};
+
+class PostScriptLevel2EmbedderTest : public PostScriptEmbedderTestBase {
+ public:
+  ~PostScriptLevel2EmbedderTest() override = default;
+
+ protected:
+  // FPDFViewEmbedderTest:
+  void SetUp() override {
+    FPDFViewEmbedderTest::SetUp();
+    FPDF_SetPrintMode(FPDF_PRINTMODE_POSTSCRIPT2);
+  }
+};
+
+class PostScriptLevel3EmbedderTest : public PostScriptEmbedderTestBase {
+ public:
+  ~PostScriptLevel3EmbedderTest() override = default;
+
+ protected:
+  // FPDFViewEmbedderTest:
+  void SetUp() override {
+    FPDFViewEmbedderTest::SetUp();
+    FPDF_SetPrintMode(FPDF_PRINTMODE_POSTSCRIPT3);
+  }
+};
+
+TEST_F(PostScriptLevel2EmbedderTest, Basic) {
+  ASSERT_TRUE(OpenDocument("rectangles.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
+  ASSERT_EQ(2892u, emf_normal.size());
+
+  // Check "EMF " signature.
+  EXPECT_EQ(0x20, emf_normal[40]);
+  EXPECT_EQ(0x45, emf_normal[41]);
+  EXPECT_EQ(0x4d, emf_normal[42]);
+  EXPECT_EQ(0x46, emf_normal[43]);
+
+  static const char kExpected[] = "save\n";
+  EXPECT_EQ(kExpected, reinterpret_cast<char*>(&emf_normal[235]));
+
+  // FPDF_REVERSE_BYTE_ORDER is ignored since EMFs are always BGR.
+  std::vector<uint8_t> emf_reverse_byte_order =
+      RenderPageWithFlagsToEmf(page, FPDF_REVERSE_BYTE_ORDER);
+  EXPECT_EQ(emf_normal, emf_reverse_byte_order);
+
+  UnloadPage(page);
+}
+
+TEST_F(PostScriptLevel3EmbedderTest, Basic) {
+  ASSERT_TRUE(OpenDocument("rectangles.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
+  ASSERT_EQ(2892u, emf_normal.size());
+
+  // FPDF_REVERSE_BYTE_ORDER is ignored since EMFs are always BGR.
+  std::vector<uint8_t> emf_reverse_byte_order =
+      RenderPageWithFlagsToEmf(page, FPDF_REVERSE_BYTE_ORDER);
+  EXPECT_EQ(emf_normal, emf_reverse_byte_order);
+
+  UnloadPage(page);
+}
+#endif  // defined(OS_WIN)
