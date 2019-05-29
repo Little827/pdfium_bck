@@ -1073,9 +1073,8 @@ std::unique_ptr<LocaleIface> GetLocaleFromBuffer(
 
   std::unique_ptr<uint8_t, FxFreeDeleter> output;
   uint32_t dwSize;
-  CCodec_ModuleMgr* pCodecMgr = CPDF_ModuleMgr::Get()->GetCodecModule();
-  pCodecMgr->GetFlateModule()->FlateOrLZWDecode(false, src_span, true, 0, 0, 0,
-                                                0, 0, &output, &dwSize);
+  CCodec_FlateModule::FlateOrLZWDecode(false, src_span, true, 0, 0, 0, 0, 0,
+                                       &output, &dwSize);
   if (!output)
     return nullptr;
 
