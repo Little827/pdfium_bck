@@ -31,10 +31,9 @@ CCodec_ModuleMgr::CCodec_ModuleMgr()
       m_pJpegModule(pdfium::MakeUnique<CCodec_JpegModule>()),
       m_pJpxModule(pdfium::MakeUnique<CCodec_JpxModule>()),
       m_pJbig2Module(pdfium::MakeUnique<CCodec_Jbig2Module>()),
-      m_pIccModule(pdfium::MakeUnique<CCodec_IccModule>()),
-      m_pFlateModule(pdfium::MakeUnique<CCodec_FlateModule>()) {}
+      m_pIccModule(pdfium::MakeUnique<CCodec_IccModule>()) {}
 
-CCodec_ModuleMgr::~CCodec_ModuleMgr() {}
+CCodec_ModuleMgr::~CCodec_ModuleMgr() = default;
 
 bool CCodec_BasicModule::RunLengthEncode(
     pdfium::span<const uint8_t> src_span,
