@@ -19,6 +19,10 @@
 #include "testing/utils/file_util.h"
 #include "testing/utils/path_service.h"
 
+#if defined(OS_WIN)
+#include "testing/gmock/include/gmock/gmock.h"
+#endif
+
 namespace {
 
 class MockDownloadHints final : public FX_DOWNLOADHINTS {
@@ -908,7 +912,7 @@ TEST_F(FPDFViewEmbedderTest, LoadDocumentWithEmptyXRefConsistently) {
 }
 
 #if defined(OS_WIN)
-TEST_F(FPDFViewEmbedderTest, FPDF_RenderPage) {
+TEST_F(FPDFViewEmbedderTest, FPDFRenderPageEmf) {
   ASSERT_TRUE(OpenDocument("rectangles.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
@@ -923,4 +927,88 @@ TEST_F(FPDFViewEmbedderTest, FPDF_RenderPage) {
 
   UnloadPage(page);
 }
+
+class PostScriptEmbedderTestBase : public FPDFViewEmbedderTest {
+ protected:
+  ~PostScriptEmbedderTestBase() override = default;
+
+  // FPDFViewEmbedderTest:
+  void TearDown() override {
+    FPDF_SetPrintMode(FPDF_PRINTMODE_EMF);
+    FPDFViewEmbedderTest::TearDown();
+  }
+};
+
+class PostScriptLevel2EmbedderTest : public PostScriptEmbedderTestBase {
+ public:
+  ~PostScriptLevel2EmbedderTest() override = default;
+
+ protected:
+  // FPDFViewEmbedderTest:
+  void SetUp() override {
+    FPDFViewEmbedderTest::SetUp();
+    FPDF_SetPrintMode(FPDF_PRINTMODE_POSTSCRIPT2);
+  }
+};
+
+class PostScriptLevel3EmbedderTest : public PostScriptEmbedderTestBase {
+ public:
+  ~PostScriptLevel3EmbedderTest() override = default;
+
+ protected:
+  // FPDFViewEmbedderTest:
+  void SetUp() override {
+    FPDFViewEmbedderTest::SetUp();
+    FPDF_SetPrintMode(FPDF_PRINTMODE_POSTSCRIPT3);
+  }
+};
+
+TEST_F(PostScriptLevel2EmbedderTest, Basic) {
+  ASSERT_TRUE(OpenDocument("rectangles.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
+  ASSERT_EQ(2892u, emf_normal.size());
+
+#if 0
+  static constexpr uint8_t kExpected[] = {'a', 'b', 'c'};
+  EXPECT_THAT(emf_normal, testing::ElementsAreArray(kExpected));
 #endif
+  for (size_t i = 0; i < 48; ++i)
+    printf("h %zu: %02x\n", i, emf_normal[i]);
+
+  for (size_t i = 0; i < 2892; ++i) {
+    if (emf_normal[i] >= ' ' && emf_normal[i] <= '~')
+      printf("d %zu: %02x\n", i, emf_normal[i]);
+  }
+
+  // FPDF_REVERSE_BYTE_ORDER is ignored since EMFs are always BGR.
+  std::vector<uint8_t> emf_reverse_byte_order =
+      RenderPageWithFlagsToEmf(page, FPDF_REVERSE_BYTE_ORDER);
+  EXPECT_EQ(emf_normal, emf_reverse_byte_order);
+
+  UnloadPage(page);
+}
+
+TEST_F(PostScriptLevel3EmbedderTest, Basic) {
+  ASSERT_TRUE(OpenDocument("rectangles.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
+  ASSERT_EQ(2892u, emf_normal.size());
+
+#if 0
+  static constexpr uint8_t kExpected[] = {'a', 'b', 'c'};
+  EXPECT_THAT(emf_normal, testing::ElementsAreArray(kExpected));
+#endif
+
+  // FPDF_REVERSE_BYTE_ORDER is ignored since EMFs are always BGR.
+  std::vector<uint8_t> emf_reverse_byte_order =
+      RenderPageWithFlagsToEmf(page, FPDF_REVERSE_BYTE_ORDER);
+  EXPECT_EQ(emf_normal, emf_reverse_byte_order);
+
+  UnloadPage(page);
+}
+#endif  // defined(OS_WIN)
