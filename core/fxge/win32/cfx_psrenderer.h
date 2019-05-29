@@ -17,7 +17,6 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_graphstatedata.h"
 
-class CCodec_ModuleMgr;
 class CFX_DIBBase;
 class CFX_GlyphCache;
 class CFX_Font;
@@ -30,7 +29,7 @@ struct FXDIB_ResampleOptions;
 
 class CFX_PSRenderer {
  public:
-  explicit CFX_PSRenderer(CCodec_ModuleMgr* pModuleMgr);
+  CFX_PSRenderer();
   ~CFX_PSRenderer();
 
   void Init(const RetainPtr<IFX_RetainableWriteStream>& stream,
@@ -98,7 +97,6 @@ class CFX_PSRenderer {
   uint32_t m_LastColor = 0;
   FX_RECT m_ClipBox;
   CFX_GraphStateData m_CurGraphState;
-  UnownedPtr<CCodec_ModuleMgr> m_pModuleMgr;
   RetainPtr<IFX_RetainableWriteStream> m_pStream;
   std::vector<std::unique_ptr<CPSFont>> m_PSFontList;
   std::vector<FX_RECT> m_ClipBoxStack;
