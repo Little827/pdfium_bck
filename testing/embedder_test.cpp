@@ -405,6 +405,43 @@ std::vector<uint8_t> EmbedderTest::RenderPageWithFlagsToEmf(FPDF_PAGE page,
   DeleteEnhMetaFile(emf);
   return buffer;
 }
+
+static int CALLBACK GetRecordProc(HDC hdc,
+                                  HANDLETABLE* handle_table,
+                                  const ENHMETARECORD* record,
+                                  int objects_count,
+                                  LPARAM param) {
+  auto& records = *reinterpret_cast<std::vector<const ENHMETARECORD*>*>(param);
+  records.push_back(record);
+  return 1;
+}
+
+// static
+std::string EmbedderTest::GetPostScriptFromEmf(
+    const std::vector<uint8_t> emf_data) {
+  std::vector<const ENHMETARECORD*> records;
+  HENHMETAFILE emf = SetEnhMetaFileBits(emf_data.size(), emf_data.data());
+  if (!emf)
+    return std::string();
+
+  if (!EnumEnhMetaFile(nullptr, emf, &GetRecordProc, &records, nullptr)) {
+    DeleteEnhMetaFile(emf);
+    return std::string();
+  }
+
+  std::string ps_data;
+  for (const auto* record : records) {
+    if (record->iType != EMR_GDICOMMENT)
+      continue;
+
+    const auto* comment = reinterpret_cast<const EMRGDICOMMENT*>(record);
+    const char* data = reinterpret_cast<const char*>(comment->Data);
+    const uint16_t* ptr = reinterpret_cast<const uint16_t*>(data);
+    ps_data.append(data, 2 + *ptr);
+  }
+  DeleteEnhMetaFile(emf);
+  return ps_data;
+}
 #endif  // defined(OS_WIN)
 
 FPDF_DOCUMENT EmbedderTest::OpenSavedDocument() {
