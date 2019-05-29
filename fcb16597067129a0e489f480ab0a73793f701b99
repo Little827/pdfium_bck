@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b57f57c_9c1ed5cd",
+        "filename": "tools/modules/graph_modules.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-29T00:23:55Z",
+      "side": 1,
+      "message": "Need some copyright bits here.",
+      "revId": "fcb16597067129a0e489f480ab0a73793f701b99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58903fe_29537352",
+        "filename": "tools/modules/graph_modules.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-29T00:23:55Z",
+      "side": 1,
+      "message": "Wrap at 80 columns.",
+      "revId": "fcb16597067129a0e489f480ab0a73793f701b99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
