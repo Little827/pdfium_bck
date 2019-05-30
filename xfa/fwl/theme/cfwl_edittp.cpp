@@ -9,12 +9,17 @@
 #include "xfa/fwl/cfwl_edit.h"
 #include "xfa/fwl/cfwl_themebackground.h"
 #include "xfa/fwl/cfwl_widget.h"
-#include "xfa/fxfa/cxfa_ffwidget.h"
-#include "xfa/fxfa/cxfa_fwltheme.h"
-#include "xfa/fxfa/parser/cxfa_border.h"
-#include "xfa/fxfa/parser/cxfa_edge.h"
 #include "xfa/fxgraphics/cxfa_gecolor.h"
 #include "xfa/fxgraphics/cxfa_gepath.h"
+
+namespace {
+
+CFWL_Widget::AdapterIface* GetOutmostWidgetAdapter(CFWL_Widget* pWidget) {
+  CFWL_Widget* pOuter = pWidget ? pWidget->GetOutmost() : nullptr;
+  return pOuter ? pOuter->GetFFWidget() : nullptr;
+}
+
+}  // namespace
 
 CFWL_EditTP::CFWL_EditTP() {}
 
@@ -22,19 +27,11 @@ CFWL_EditTP::~CFWL_EditTP() {}
 
 void CFWL_EditTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
   if (CFWL_Part::CombTextLine == pParams.m_iPart) {
-    CXFA_FFWidget* pWidget = XFA_ThemeGetOuterWidget(pParams.m_pWidget);
-    ASSERT(pWidget->GetNode()->IsWidgetReady());
-
-    CXFA_Border* borderUI = pWidget->GetNode()->GetUIBorder();
+    CFWL_Widget::AdapterIface* pWidget =
+        GetOutmostWidgetAdapter(pParams.m_pWidget);
     FX_ARGB cr = 0xFF000000;
     float fWidth = 1.0f;
-    if (borderUI) {
-      CXFA_Edge* edge = borderUI->GetEdgeIfExists(0);
-      if (edge) {
-        cr = edge->GetColor();
-        fWidth = edge->GetThickness();
-      }
-    }
+    pWidget->GetBorderColorAndThickness(&cr, &fWidth);
     pParams.m_pGraphics->SetStrokeColor(CXFA_GEColor(cr));
     pParams.m_pGraphics->SetLineWidth(fWidth);
     pParams.m_pGraphics->StrokePath(pParams.m_pPath.Get(), &pParams.m_matrix);
