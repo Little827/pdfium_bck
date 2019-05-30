@@ -175,6 +175,24 @@
       "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b2bda7_13443c1a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-05-30T22:18:00Z",
+      "side": 1,
+      "message": "m_pCache-\u003eDrawPath() is calling SkiaState::DrawPath(). \n\nThe stack is printed as following:\n----\n#0  SkiaState::DrawPath (this\u003d0x555558c22850, pPathData\u003d0x7fffffffcf00, pMatrix\u003d0x7fffffffd010, pDrawState\u003d0x7fffffffced0, fill_color\u003d0, \n    stroke_color\u003d1057029888, fill_mode\u003d256, blend_type\u003dBlendMode::kNormal) at ../../core/fxge/skia/fx_skia_device.cpp:705\n#1  0x00005555563efa29 in CFX_SkiaDeviceDriver::DrawPath (this\u003d0x555558c24e70, pPathData\u003d0x7fffffffcf00, pObject2Device\u003d0x7fffffffd010, \n    pGraphState\u003d0x7fffffffced0, fill_color\u003d0, stroke_color\u003d1057029888, fill_mode\u003d256, blend_type\u003dBlendMode::kNormal)\n    at ../../core/fxge/skia/fx_skia_device.cpp:1909\n#2  0x00005555563ae528 in CFX_RenderDevice::DrawPathWithBlend (this\u003d0x555558c22a90, pPathData\u003d0x555558c24fc0, \n    pObject2Device\u003d0x7fffffffd010, pGraphState\u003d0x555558c22bb0, fill_color\u003d4278255360, stroke_color\u003d0, fill_mode\u003d2, \n    blend_type\u003dBlendMode::kNormal) at ../../core/fxge/cfx_renderdevice.cpp:604\n......\n----\n\nSkiaState::DrawPath() will only return false when m_debugDisable \u003d\u003d true and m_debugDisable is hardcoded to the value false for now, which makes CFX_SkiaDeviceDriver::DrawPath() always returns true.",
+      "parentUuid": "8381bbdc_8f8727f1",
+      "revId": "483f63fa366887cc6fab8769d4e65f44d0f6f774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
