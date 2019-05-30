@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcc4fa59_b271bae4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-30T22:55:35Z",
+      "side": 1,
+      "message": "BTW, can we split adding this boolean into its own CL? That should be quick and easy to review. In the new CL, can you name the variable with Google style to \"is_paint_stroke\" ? This file is a weird mixture of Hungarian notation and skiaStyle. I think we should try to just go with 1 style, instead of mixing them.",
+      "revId": "866f7007d18ce46a3d61a2307042ae67329a2afc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa7ab9df_161df700",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-30T22:55:35Z",
+      "side": 1,
+      "message": "No need for an else statement after a return.\n\nif (cond1)\n  return;\nDoSomething();",
+      "revId": "866f7007d18ce46a3d61a2307042ae67329a2afc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
