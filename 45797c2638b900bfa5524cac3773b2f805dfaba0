@@ -23,6 +23,30 @@
       "revId": "45797c2638b900bfa5524cac3773b2f805dfaba0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53e1de8_1f9097a2",
+        "filename": "core/fxcodec/codec/ccodec_progressivedecoder_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-30T20:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6105a8a_7354fd12",
+      "range": {
+        "startLine": 377,
+        "startChar": 51,
+        "endLine": 377,
+        "endChar": 76
+      },
+      "revId": "45797c2638b900bfa5524cac3773b2f805dfaba0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
