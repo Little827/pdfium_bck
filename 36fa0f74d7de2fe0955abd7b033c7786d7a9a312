@@ -1,4 +1,120 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1559230386 -0700\nnonce AC6AUtPZUOMwYjQ9cqF4IgwWcKOSBQvwQFCgiMBR75aeUQxA/8WACqJaNNRfsFxbkKBnGdsvsv3J\n\n0000000000000000000000000000000000000000 36fa0f74d7de2fe0955abd7b033c7786d7a9a312 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnit,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzv97IACgkQqzYtYVpm\n/XtnBAf9HY0RccfKLnBPa2Ad4a8IS64hEgh+g9hfoyiEDuqk+jPoV8K+iEj5Ba9l\n1wznRwEXoJuZrzkoJ3/PWfkPg2Oda8QH1QwBI7yj1khA4+II9151KfRCtKkhqzLZ\nEVojeu/RHkPWCruJfLP2A0cTW02gXcmvUQwSmZxllq/cKnnGfVcbe6ajZR5bjmj3\nCfuIwQ/0MdATccr5CIt824zbVU7DSfR/q0zBm8w9/0K7zoZjxlUwj3gVxNeAEgDh\n7BELJkp1u9eUF7+hUQkkaeBWUpaS0Q9B8+CLEEGbKdTkjPeNaNGFrcgL1OJY98Ve\notMoQnO/NQtN4QX1D6A/sl9VD11WgA\u003d\u003d\n\u003dcT7r\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1815735a_742283f9",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-30T16:35:21Z",
+      "side": 1,
+      "message": "follow-up: pity we do spew a \\n after every |def|, what little PS I remember pretty much had def at the end of the line and was easier to interpret for this human.",
+      "range": {
+        "startLine": 1051,
+        "startChar": 23,
+        "endLine": 1051,
+        "endChar": 26
+      },
+      "revId": "36fa0f74d7de2fe0955abd7b033c7786d7a9a312",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f685810a_b24ba202",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-30T16:35:21Z",
+      "side": 1,
+      "message": "nit: maybe two lines to avoid intraline \\n.",
+      "range": {
+        "startLine": 1066,
+        "startChar": 6,
+        "endLine": 1066,
+        "endChar": 14
+      },
+      "revId": "36fa0f74d7de2fe0955abd7b033c7786d7a9a312",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ef2f63_fea3ea2a",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-30T16:35:21Z",
+      "side": 1,
+      "message": "follow-up: suspicious that we always get CRLFs here in the middle of some binary data?  (couple places)",
+      "range": {
+        "startLine": 1074,
+        "startChar": 17,
+        "endLine": 1074,
+        "endChar": 21
+      },
+      "revId": "36fa0f74d7de2fe0955abd7b033c7786d7a9a312",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4da6dd_5d087dd4",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-30T16:35:21Z",
+      "side": 1,
+      "message": "nit: one per line as above.",
+      "range": {
+        "startLine": 1098,
+        "startChar": 6,
+        "endLine": 1098,
+        "endChar": 20
+      },
+      "revId": "36fa0f74d7de2fe0955abd7b033c7786d7a9a312",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc58ab9_b96aba5d",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-05-30T16:35:21Z",
+      "side": 1,
+      "message": "dit: nitto",
+      "range": {
+        "startLine": 1100,
+        "startChar": 9,
+        "endLine": 1100,
+        "endChar": 10
+      },
+      "revId": "36fa0f74d7de2fe0955abd7b033c7786d7a9a312",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
