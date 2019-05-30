@@ -1900,12 +1900,6 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     uint32_t stroke_color,                  // stroke color
     int fill_mode,  // fill mode, WINDING or ALTERNATE. 0 for not filled
     BlendMode blend_type) {
-  if (fill_mode & FX_ZEROAREA_FILL)
-    return true;
-  if (m_pCache->DrawPath(pPathData, pObject2Device, pGraphState, fill_color,
-                         stroke_color, fill_mode, blend_type)) {
-    return true;
-  }
   SkMatrix skMatrix;
   if (pObject2Device)
     skMatrix = ToSkMatrix(*pObject2Device);
@@ -1916,7 +1910,8 @@ bool CFX_SkiaDeviceDriver::DrawPath(
   if (fill_mode & FXFILL_FULLCOVER)
     skPaint.setBlendMode(SkBlendMode::kPlus);
   int stroke_alpha = FXARGB_A(stroke_color);
-  if (pGraphState && stroke_alpha)
+  bool bPaintStroke = !!(pGraphState && stroke_alpha);
+  if (bPaintStroke)
     PaintStroke(&skPaint, pGraphState, skMatrix);
   SkPath skPath = BuildPath(pPathData);
   SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
@@ -1927,7 +1922,7 @@ bool CFX_SkiaDeviceDriver::DrawPath(
                            : SkPath::kWinding_FillType);
     SkPath strokePath;
     const SkPath* fillPath = &skPath;
-    if (pGraphState && stroke_alpha) {
+    if (bPaintStroke) {
       if (m_bGroupKnockout) {
         skPaint.getFillPath(skPath, &strokePath);
         if (Op(skPath, strokePath, SkPathOp::kDifference_SkPathOp,
@@ -1943,8 +1938,12 @@ bool CFX_SkiaDeviceDriver::DrawPath(
 #endif  // _SKIA_SUPPORT_PATHS_
     DebugShowSkiaDrawPath(this, m_pCanvas, skPaint, *fillPath);
     m_pCanvas->drawPath(*fillPath, skPaint);
+
+    if (!bPaintStroke) {
+      return true;
+    }
   }
-  if (pGraphState && stroke_alpha) {
+  if (bPaintStroke) {
     skPaint.setStyle(SkPaint::kStroke_Style);
     skPaint.setColor(stroke_color);
 #ifdef _SKIA_SUPPORT_PATHS_
@@ -1952,8 +1951,15 @@ bool CFX_SkiaDeviceDriver::DrawPath(
 #endif  // _SKIA_SUPPORT_PATHS_
     DebugShowSkiaDrawPath(this, m_pCanvas, skPaint, skPath);
     m_pCanvas->drawPath(skPath, skPaint);
+    return true;
   }
-  return true;
+
+  if (fill_mode & FX_ZEROAREA_FILL) {
+    return true;
+  } else {
+    return m_pCache->DrawPath(pPathData, pObject2Device, pGraphState,
+                              fill_color, stroke_color, fill_mode, blend_type);
+  }
 }
 
 bool CFX_SkiaDeviceDriver::DrawCosmeticLine(const CFX_PointF& ptMoveTo,
