@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f31a2d07_b3f8abe6",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-30T20:35:42Z",
+      "side": 1,
+      "message": "I did a bit of squashing for bits I thought were pointless. I can undo that.",
+      "parentUuid": "f685810a_b24ba202",
+      "range": {
+        "startLine": 1066,
+        "startChar": 6,
+        "endLine": 1066,
+        "endChar": 14
+      },
+      "revId": "36fa0f74d7de2fe0955abd7b033c7786d7a9a312",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93ef2f63_fea3ea2a",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2019-05-30T16:35:21Z",
       "side": 1,
       "message": "follow-up: suspicious that we always get CRLFs here in the middle of some binary data?  (couple places)",
+      "range": {
+        "startLine": 1074,
+        "startChar": 17,
+        "endLine": 1074,
+        "endChar": 21
+      },
+      "revId": "36fa0f74d7de2fe0955abd7b033c7786d7a9a312",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9312455c_ba514857",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-30T20:35:42Z",
+      "side": 1,
+      "message": "It\u0027s ASCII85 encoded, so having CRLFs is perfectly fine.",
+      "parentUuid": "93ef2f63_fea3ea2a",
       "range": {
         "startLine": 1074,
         "startChar": 17,
