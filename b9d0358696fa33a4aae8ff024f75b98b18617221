@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1559181348 -0700\nnonce AC6AUtM589flFOyvECLWvNCf9p+JQXBHBQBBVh+RHbDMyh8LeSCrI1ND7eWg71mJzCll/5Wn7MhZ\n\n0000000000000000000000000000000000000000 b9d0358696fa33a4aae8ff024f75b98b18617221 refs/for/refs/heads/infra/config%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzvOCQACgkQqzYtYVpm\n/XslDwf/bWVl92KAJCEOOinwk3PflE0RnKNiWPnDvWRIxLwxX3lCV4vzHbeuPqIm\nOjnAQX2a4hdq3HvruW45Kd7yUu7jKp2njY+debRYRIO/cf72aYzGMzuhz9WIJVhc\nEIgHbqyQ/W5EOtHIMOVCZEEMX3iFA4OUvsQpAB0JNQbl8ZLt2B8EcMCliXvuLaaH\nWDSRJv0ziXEdhtM8w+WZEIZ5EsEwj3qUNXIxnIWhK6tLtT4TDDVtHJ+fgJzMWS6G\nwuS+UI/iAggaZcXs5CckB/2d8ae30UdbuM7k6C5jiibXB6b6Ok5fcYWu9pWyovxy\nQXHKXVu5VZS6h/l48qeuU/jum6FX6g\u003d\u003d\n\u003dKyMv\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
