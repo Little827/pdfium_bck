@@ -29,6 +29,35 @@
 
 namespace {
 
+typedef bool (*A85EncodeFunc)(pdfium::span<const uint8_t> src_buf,
+                              std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+                              uint32_t* dest_size);
+typedef void (*FaxEncodeFunc)(const uint8_t* src_buf,
+                              int width,
+                              int height,
+                              int pitch,
+                              std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+                              uint32_t* dest_size);
+typedef bool (*FlateEncodeFunc)(
+    const uint8_t* src_buf,
+    uint32_t src_size,
+    std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+    uint32_t* dest_size);
+typedef bool (*JpegEncodeFunc)(const RetainPtr<CFX_DIBBase>& pSource,
+                               uint8_t** dest_buf,
+                               size_t* dest_size);
+typedef bool (*RunLengthEncodeFunc)(
+    pdfium::span<const uint8_t> src_buf,
+    std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+    uint32_t* dest_size);
+
+A85EncodeFunc g_pA85EncodeFunc = CCodec_BasicModule::A85Encode;
+FaxEncodeFunc g_pFaxEncodeFunc = CCodec_FaxModule::FaxEncode;
+FlateEncodeFunc g_pFlateEncodeFunc = CCodec_FlateModule::Encode;
+JpegEncodeFunc g_pJpegEncodeFunc = CCodec_JpegModule::JpegEncode;
+RunLengthEncodeFunc g_pRunLengthEncodeFunc =
+    CCodec_BasicModule::RunLengthEncode;
+
 bool FaxCompressData(std::unique_ptr<uint8_t, FxFreeDeleter> src_buf,
                      int width,
                      int height,
@@ -40,8 +69,8 @@ bool FaxCompressData(std::unique_ptr<uint8_t, FxFreeDeleter> src_buf,
     return false;
   }
 
-  CCodec_FaxModule::FaxEncode(src_buf.get(), width, height, (width + 7) / 8,
-                              dest_buf, dest_size);
+  g_pFaxEncodeFunc(src_buf.get(), width, height, (width + 7) / 8, dest_buf,
+                   dest_size);
   return true;
 }
 
@@ -61,15 +90,14 @@ void PSCompressData(int PSLevel,
   uint32_t dest_size = src_size;
   if (PSLevel >= 3) {
     std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf_unique;
-    if (CCodec_FlateModule::Encode(src_buf, src_size, &dest_buf_unique,
-                                   &dest_size)) {
+    if (g_pFlateEncodeFunc(src_buf, src_size, &dest_buf_unique, &dest_size)) {
       dest_buf = dest_buf_unique.release();
       *filter = "/FlateDecode filter ";
     }
   } else {
     std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf_unique;
-    if (CCodec_BasicModule::RunLengthEncode({src_buf, src_size},
-                                            &dest_buf_unique, &dest_size)) {
+    if (g_pRunLengthEncodeFunc({src_buf, src_size}, &dest_buf_unique,
+                               &dest_size)) {
       dest_buf = dest_buf_unique.release();
       *filter = "/RunLengthDecode filter ";
     }
@@ -454,7 +482,7 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
     size_t output_size = 0;
     const char* filter = nullptr;
     if ((m_PSLevel == 2 || options.bLossy) &&
-        CCodec_JpegModule::JpegEncode(pConverted, &output_buf, &output_size)) {
+        g_pJpegEncodeFunc(pConverted, &output_buf, &output_size)) {
       filter = "/DCTDecode filter ";
     }
     if (!filter) {
@@ -683,8 +711,8 @@ bool CFX_PSRenderer::DrawText(int nChars,
 void CFX_PSRenderer::WritePSBinary(const uint8_t* data, int len) {
   std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
   uint32_t dest_size;
-  if (CCodec_BasicModule::A85Encode({data, static_cast<size_t>(len)}, &dest_buf,
-                                    &dest_size)) {
+  if (g_pA85EncodeFunc({data, static_cast<size_t>(len)}, &dest_buf,
+                       &dest_size)) {
     m_pStream->WriteBlock(dest_buf.get(), dest_size);
   } else {
     m_pStream->WriteBlock(data, len);
