@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec93a329_8089234d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 6755
+      },
+      "writtenOn": "2019-05-31T11:53:03Z",
+      "side": 1,
+      "message": "questions:\n- what does it mean if neither of these bits are set?\n- what does it mean if both of these bits are set?",
+      "range": {
+        "startLine": 288,
+        "startChar": 5,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "58374a6174a99f2e1d2ae78888a2a7eff133e5c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
