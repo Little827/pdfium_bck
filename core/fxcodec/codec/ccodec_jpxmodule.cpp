@@ -12,8 +12,10 @@
 // static
 std::unique_ptr<CJPX_Decoder> CCodec_JpxModule::CreateDecoder(
     pdfium::span<const uint8_t> src_span,
-    const RetainPtr<CPDF_ColorSpace>& cs) {
-  auto decoder = pdfium::MakeUnique<CJPX_Decoder>(cs);
+    bool bUseColorSpace,
+    bool bColorSpaceIndexed) {
+  auto decoder =
+      pdfium::MakeUnique<CJPX_Decoder>(bUseColorSpace, bColorSpaceIndexed);
   if (!decoder->Init(src_span))
     return nullptr;
 
