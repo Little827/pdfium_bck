@@ -285,6 +285,19 @@ static void DebugValidate(const RetainPtr<CFX_DIBitmap>& bitmap,
 }
 #endif  // _SKIA_SUPPORT_
 
+int GetAlternateOrWindingFillMode(int fill_mode) {
+  return fill_mode & (FXFILL_ALTERNATE | FXFILL_WINDING);
+}
+
+bool IsAlternateFillMode(int fill_mode) {
+  return GetAlternateOrWindingFillMode(fill_mode) == FXFILL_ALTERNATE;
+}
+
+SkPath::FillType GetAlternateOrWindingFillType(int fill_mode) {
+  return IsAlternateFillMode(fill_mode) ? SkPath::kEvenOdd_FillType
+                                        : SkPath::kWinding_FillType;
+}
+
 SkPath BuildPath(const CFX_PathData* pPathData) {
   SkPath skPath;
   const CFX_PathData* pFPath = pPathData;
@@ -712,10 +725,8 @@ class SkiaState {
     if (Accumulator::kPath != m_type) {
       m_skPath.reset();
       m_fillFullCover = !!(fill_mode & FXFILL_FULLCOVER);
-      m_fillPath = (fill_mode & 3) && fill_color;
-      m_skPath.setFillType((fill_mode & 3) == FXFILL_ALTERNATE
-                               ? SkPath::kEvenOdd_FillType
-                               : SkPath::kWinding_FillType);
+      m_fillPath = GetAlternateOrWindingFillMode(fill_mode) && fill_color;
+      m_skPath.setFillType(GetAlternateOrWindingFillType(fill_mode));
       if (pDrawState)
         m_drawState = *pDrawState;
       m_fillColor = fill_color;
@@ -969,9 +980,7 @@ class SkiaState {
     }
     if (skClipPath.isEmpty()) {
       skClipPath = BuildPath(pPathData);
-      skClipPath.setFillType((fill_mode & 3) == FXFILL_ALTERNATE
-                                 ? SkPath::kEvenOdd_FillType
-                                 : SkPath::kWinding_FillType);
+      skClipPath.setFillType(GetAlternateOrWindingFillType(fill_mode));
       SkMatrix skMatrix = ToSkMatrix(*pMatrix);
       skClipPath.transform(skMatrix);
     }
@@ -1088,7 +1097,7 @@ class SkiaState {
     return MatrixChanged(pMatrix, m_drawMatrix) ||
            StateChanged(pState, m_drawState) || fill_color != m_fillColor ||
            stroke_color != m_strokeColor ||
-           ((fill_mode & 3) == FXFILL_ALTERNATE) !=
+           IsAlternateFillMode(fill_mode) !=
                (m_skPath.getFillType() == SkPath::kEvenOdd_FillType) ||
            blend_type != m_blendType || group_knockout != m_groupKnockout;
   }
@@ -1839,9 +1848,7 @@ bool CFX_SkiaDeviceDriver::SetClip_PathFill(
     }
   }
   SkPath skClipPath = BuildPath(pPathData);
-  skClipPath.setFillType((fill_mode & 3) == FXFILL_ALTERNATE
-                             ? SkPath::kEvenOdd_FillType
-                             : SkPath::kWinding_FillType);
+  skClipPath.setFillType(GetAlternateOrWindingFillType(fill_mode));
   SkMatrix skMatrix = ToSkMatrix(*deviceMatrix);
   skClipPath.transform(skMatrix);
   DebugShowSkiaPath(skClipPath);
@@ -1921,10 +1928,8 @@ bool CFX_SkiaDeviceDriver::DrawPath(
   SkPath skPath = BuildPath(pPathData);
   SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
   m_pCanvas->concat(skMatrix);
-  if ((fill_mode & 3) && fill_color) {
-    skPath.setFillType((fill_mode & 3) == FXFILL_ALTERNATE
-                           ? SkPath::kEvenOdd_FillType
-                           : SkPath::kWinding_FillType);
+  if (GetAlternateOrWindingFillMode(fill_mode) && fill_color) {
+    skPath.setFillType(GetAlternateOrWindingFillType(fill_mode));
     SkPath strokePath;
     const SkPath* fillPath = &skPath;
     if (pGraphState && stroke_alpha) {
