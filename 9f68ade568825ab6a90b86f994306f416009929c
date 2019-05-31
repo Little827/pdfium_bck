@@ -23,6 +23,30 @@
       "revId": "9f68ade568825ab6a90b86f994306f416009929c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fbbe236_358553ed",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-31T21:56:27Z",
+      "side": 1,
+      "message": "I added a TODO. Right now, if I add the assertion, it fails. Since the AGG file can assert this, I suspect this file needs more work to put the right guards in place.",
+      "parentUuid": "99429100_80758e46",
+      "range": {
+        "startLine": 296,
+        "startChar": 17,
+        "endLine": 296,
+        "endChar": 46
+      },
+      "revId": "9f68ade568825ab6a90b86f994306f416009929c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
