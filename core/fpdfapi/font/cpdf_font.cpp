@@ -223,14 +223,19 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
 void CPDF_Font::CheckFontMetrics() {
   if (m_FontBBox.top == 0 && m_FontBBox.bottom == 0 && m_FontBBox.left == 0 &&
       m_FontBBox.right == 0) {
-    FXFT_Face face = m_Font.GetFace();
+    RetainPtr<CFX_Face> face = m_Font.GetFace();
     if (face) {
-      m_FontBBox.left = TT2PDF(FXFT_Get_Face_xMin(face), face);
-      m_FontBBox.bottom = TT2PDF(FXFT_Get_Face_yMin(face), face);
-      m_FontBBox.right = TT2PDF(FXFT_Get_Face_xMax(face), face);
-      m_FontBBox.top = TT2PDF(FXFT_Get_Face_yMax(face), face);
-      m_Ascent = TT2PDF(FXFT_Get_Face_Ascender(face), face);
-      m_Descent = TT2PDF(FXFT_Get_Face_Descender(face), face);
+      m_FontBBox.left =
+          TT2PDF(FXFT_Get_Face_xMin(face->GetRec()), face->GetRec());
+      m_FontBBox.bottom =
+          TT2PDF(FXFT_Get_Face_yMin(face->GetRec()), face->GetRec());
+      m_FontBBox.right =
+          TT2PDF(FXFT_Get_Face_xMax(face->GetRec()), face->GetRec());
+      m_FontBBox.top =
+          TT2PDF(FXFT_Get_Face_yMax(face->GetRec()), face->GetRec());
+      m_Ascent = TT2PDF(FXFT_Get_Face_Ascender(face->GetRec()), face->GetRec());
+      m_Descent =
+          TT2PDF(FXFT_Get_Face_Descender(face->GetRec()), face->GetRec());
     } else {
       bool bFirst = true;
       for (int i = 0; i < 256; i++) {
@@ -390,8 +395,8 @@ int CPDF_Font::FallbackGlyphFromCharcode(int fallbackFont, uint32_t charcode) {
 
   WideString str = UnicodeFromCharCode(charcode);
   uint32_t unicode = !str.IsEmpty() ? str[0] : charcode;
-  int glyph =
-      FXFT_Get_Char_Index(m_FontFallbacks[fallbackFont]->GetFace(), unicode);
+  int glyph = FXFT_Get_Char_Index(
+      m_FontFallbacks[fallbackFont]->GetFace()->GetRec(), unicode);
   if (glyph == 0)
     return -1;
 
@@ -405,7 +410,7 @@ CFX_Font* CPDF_Font::GetFontFallback(int position) {
 }
 
 // static
-int CPDF_Font::TT2PDF(int m, FXFT_Face face) {
+int CPDF_Font::TT2PDF(int m, FXFT_FaceRec* face) {
   int upm = FXFT_Get_Face_UnitsPerEM(face);
   if (upm == 0)
     return m;
@@ -417,7 +422,7 @@ int CPDF_Font::TT2PDF(int m, FXFT_Face face) {
 }
 
 // static
-bool CPDF_Font::FT_UseTTCharmap(FXFT_Face face,
+bool CPDF_Font::FT_UseTTCharmap(FXFT_FaceRec* face,
                                 int platform_id,
                                 int encoding_id) {
   auto** pCharMap = FXFT_Get_Face_Charmaps(face);
