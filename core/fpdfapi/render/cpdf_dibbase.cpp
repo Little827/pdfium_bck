@@ -562,8 +562,9 @@ bool CPDF_DIBBase::CreateDCTDecoder(pdfium::span<const uint8_t> src_span,
 }
 
 RetainPtr<CFX_DIBitmap> CPDF_DIBBase::LoadJpxBitmap() {
-  std::unique_ptr<CJPX_Decoder> decoder =
-      CCodec_JpxModule::CreateDecoder(m_pStreamAcc->GetSpan(), m_pColorSpace);
+  std::unique_ptr<CJPX_Decoder> decoder = CCodec_JpxModule::CreateDecoder(
+      m_pStreamAcc->GetSpan(), !!m_pColorSpace,
+      m_pColorSpace && m_pColorSpace->GetFamily() == PDFCS_INDEXED);
   if (!decoder)
     return nullptr;
 

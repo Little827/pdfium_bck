@@ -15,13 +15,13 @@
 #include "third_party/base/span.h"
 
 class CJPX_Decoder;
-class CPDF_ColorSpace;
 
 class CCodec_JpxModule {
  public:
   static std::unique_ptr<CJPX_Decoder> CreateDecoder(
       pdfium::span<const uint8_t> src_span,
-      const RetainPtr<CPDF_ColorSpace>& cs);
+      bool bUseColorspace,
+      bool bColorspaceIndexed);
 
   CCodec_JpxModule() = delete;
   CCodec_JpxModule(const CCodec_JpxModule&) = delete;
