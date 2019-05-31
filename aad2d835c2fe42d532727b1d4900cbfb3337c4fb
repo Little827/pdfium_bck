@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b96d6b4_d115b442",
+        "filename": "core/fxcodec/jbig2/JBig2_BitStream.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-31T22:17:52Z",
+      "side": 1,
+      "message": "BTW, is there an easier way to set a span to an empty span?",
+      "revId": "aad2d835c2fe42d532727b1d4900cbfb3337c4fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
