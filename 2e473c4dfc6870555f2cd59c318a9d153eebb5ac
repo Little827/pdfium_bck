@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ce693e7_d1b82cd8",
+        "filename": "core/fxcodec/codec/ccodec_jpxmodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-31T20:40:54Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "2e473c4dfc6870555f2cd59c318a9d153eebb5ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19cb59a9_a110352d",
+        "filename": "core/fxcodec/codec/cjpx_decoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-31T20:40:54Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "2e473c4dfc6870555f2cd59c318a9d153eebb5ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b17fe315_44138016",
+        "filename": "core/fxcodec/codec/cjpx_decoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-31T20:40:54Z",
+      "side": 1,
+      "message": "nit: blank line after.",
+      "revId": "2e473c4dfc6870555f2cd59c318a9d153eebb5ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
