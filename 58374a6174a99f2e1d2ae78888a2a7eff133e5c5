@@ -22,6 +22,30 @@
       "revId": "58374a6174a99f2e1d2ae78888a2a7eff133e5c5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "607396e6_c0b7632b",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-31T15:47:48Z",
+      "side": 1,
+      "message": "I didn\u0027t write any of this code, and I\u0027m mostly just trying to do some refactoring that does not change the behavior. So my answers may not be 100% correct.\n\n- If neither bit are set, then it\u0027s a stroke path operation.\n- I don\u0027t believe both can be set at the same time. I can add an assertion for that.",
+      "parentUuid": "ec93a329_8089234d",
+      "range": {
+        "startLine": 288,
+        "startChar": 5,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "58374a6174a99f2e1d2ae78888a2a7eff133e5c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
