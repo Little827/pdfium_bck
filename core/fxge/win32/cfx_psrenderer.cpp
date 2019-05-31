@@ -11,10 +11,6 @@
 #include <sstream>
 #include <utility>
 
-#include "core/fxcodec/codec/ccodec_basicmodule.h"
-#include "core/fxcodec/codec/ccodec_faxmodule.h"
-#include "core/fxcodec/codec/ccodec_flatemodule.h"
-#include "core/fxcodec/codec/ccodec_jpegmodule.h"
 #include "core/fxcrt/maybe_owned.h"
 #include "core/fxge/cfx_fontcache.h"
 #include "core/fxge/cfx_gemodule.h"
@@ -29,6 +25,8 @@
 
 namespace {
 
+const CFX_PSRenderer::EncoderIface* g_encoders = nullptr;
+
 bool FaxCompressData(std::unique_ptr<uint8_t, FxFreeDeleter> src_buf,
                      int width,
                      int height,
@@ -40,8 +38,8 @@ bool FaxCompressData(std::unique_ptr<uint8_t, FxFreeDeleter> src_buf,
     return false;
   }
 
-  CCodec_FaxModule::FaxEncode(src_buf.get(), width, height, (width + 7) / 8,
-                              dest_buf, dest_size);
+  g_encoders->pFaxEncodeFunc(src_buf.get(), width, height, (width + 7) / 8,
+                             dest_buf, dest_size);
   return true;
 }
 
@@ -61,15 +59,15 @@ void PSCompressData(int PSLevel,
   uint32_t dest_size = src_size;
   if (PSLevel >= 3) {
     std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf_unique;
-    if (CCodec_FlateModule::Encode(src_buf, src_size, &dest_buf_unique,
-                                   &dest_size)) {
+    if (g_encoders->pFlateEncodeFunc(src_buf, src_size, &dest_buf_unique,
+                                     &dest_size)) {
       dest_buf = dest_buf_unique.release();
       *filter = "/FlateDecode filter ";
     }
   } else {
     std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf_unique;
-    if (CCodec_BasicModule::RunLengthEncode({src_buf, src_size},
-                                            &dest_buf_unique, &dest_size)) {
+    if (g_encoders->pRunLengthEncodeFunc({src_buf, src_size}, &dest_buf_unique,
+                                         &dest_size)) {
       dest_buf = dest_buf_unique.release();
       *filter = "/RunLengthDecode filter ";
     }
@@ -97,6 +95,12 @@ class CPSFont {
   int m_nGlyphs;
   PSGlyph m_Glyphs[256];
 };
+
+// static
+void CFX_PSRenderer::InitEncoderIface(const EncoderIface* pEncoderIface) {
+  ASSERT(!g_encoders);
+  g_encoders = pEncoderIface;
+}
 
 CFX_PSRenderer::CFX_PSRenderer() = default;
 
@@ -454,7 +458,7 @@ bool CFX_PSRenderer::DrawDIBits(const RetainPtr<CFX_DIBBase>& pSource,
     size_t output_size = 0;
     const char* filter = nullptr;
     if ((m_PSLevel == 2 || options.bLossy) &&
-        CCodec_JpegModule::JpegEncode(pConverted, &output_buf, &output_size)) {
+        g_encoders->pJpegEncodeFunc(pConverted, &output_buf, &output_size)) {
       filter = "/DCTDecode filter ";
     }
     if (!filter) {
@@ -683,8 +687,8 @@ bool CFX_PSRenderer::DrawText(int nChars,
 void CFX_PSRenderer::WritePSBinary(const uint8_t* data, int len) {
   std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
   uint32_t dest_size;
-  if (CCodec_BasicModule::A85Encode({data, static_cast<size_t>(len)}, &dest_buf,
-                                    &dest_size)) {
+  if (g_encoders->pA85EncodeFunc({data, static_cast<size_t>(len)}, &dest_buf,
+                                 &dest_size)) {
     m_pStream->WriteBlock(dest_buf.get(), dest_size);
   } else {
     m_pStream->WriteBlock(data, len);

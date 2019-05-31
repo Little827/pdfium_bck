@@ -26,6 +26,40 @@ struct FXDIB_ResampleOptions;
 
 class CFX_PSRenderer {
  public:
+  typedef bool (*A85EncodeFunc)(
+      pdfium::span<const uint8_t> src_buf,
+      std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+      uint32_t* dest_size);
+  typedef void (*FaxEncodeFunc)(
+      const uint8_t* src_buf,
+      int width,
+      int height,
+      int pitch,
+      std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+      uint32_t* dest_size);
+  typedef bool (*FlateEncodeFunc)(
+      const uint8_t* src_buf,
+      uint32_t src_size,
+      std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+      uint32_t* dest_size);
+  typedef bool (*JpegEncodeFunc)(const RetainPtr<CFX_DIBBase>& pSource,
+                                 uint8_t** dest_buf,
+                                 size_t* dest_size);
+  typedef bool (*RunLengthEncodeFunc)(
+      pdfium::span<const uint8_t> src_buf,
+      std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+      uint32_t* dest_size);
+
+  struct EncoderIface {
+    A85EncodeFunc pA85EncodeFunc;
+    FaxEncodeFunc pFaxEncodeFunc;
+    FlateEncodeFunc pFlateEncodeFunc;
+    JpegEncodeFunc pJpegEncodeFunc;
+    RunLengthEncodeFunc pRunLengthEncodeFunc;
+  };
+
+  static void InitEncoderIface(const EncoderIface* pEncoderIface);
+
   CFX_PSRenderer();
   ~CFX_PSRenderer();
 

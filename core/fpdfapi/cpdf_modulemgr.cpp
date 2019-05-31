@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/cpdf_modulemgr.h"
 
+#include "build/build_config.h"
 #include "core/fpdfapi/cmaps/CNS1/cmaps_cns1.h"
 #include "core/fpdfapi/cmaps/GB1/cmaps_gb1.h"
 #include "core/fpdfapi/cmaps/Japan1/cmaps_japan1.h"
@@ -13,6 +14,14 @@
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
 #include "core/fxcodec/fx_codec.h"
 #include "third_party/base/ptr_util.h"
+
+#if defined(OS_WIN)
+#include "core/fxcodec/codec/ccodec_basicmodule.h"
+#include "core/fxcodec/codec/ccodec_faxmodule.h"
+#include "core/fxcodec/codec/ccodec_flatemodule.h"
+#include "core/fxcodec/codec/ccodec_jpegmodule.h"
+#include "core/fxge/win32/cfx_psrenderer.h"
+#endif
 
 #ifdef PDF_ENABLE_XFA_BMP
 #include "core/fxcodec/codec/ccodec_bmpmodule.h"
@@ -74,6 +83,20 @@ void CPDF_ModuleMgr::InitPageModule() {
 
 void CPDF_ModuleMgr::InitCodecModule() {
   m_pCodecModule = pdfium::MakeUnique<CCodec_ModuleMgr>();
+
+#if defined(OS_WIN)
+  // clang-format off
+  static constexpr CFX_PSRenderer::EncoderIface kEncoderIface = {
+      CCodec_BasicModule::A85Encode,
+      CCodec_FaxModule::FaxEncode,
+      CCodec_FlateModule::Encode,
+      CCodec_JpegModule::JpegEncode,
+      CCodec_BasicModule::RunLengthEncode
+  };
+  // clang-format on
+
+  CFX_PSRenderer::InitEncoderIface(&kEncoderIface);
+#endif
 }
 
 void CPDF_ModuleMgr::LoadCodecModules() {
