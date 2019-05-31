@@ -23,6 +23,30 @@
       "revId": "2a537a8a25b3419165cbc559a4c68fe0c0db43c0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989efedd_b4a4954f",
+        "filename": "samples/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-05-31T21:59:39Z",
+      "side": 1,
+      "message": "Done. Wishful thinking on my part?",
+      "parentUuid": "24093a22_a0dc5ed6",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "2a537a8a25b3419165cbc559a4c68fe0c0db43c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
