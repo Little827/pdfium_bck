@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9d080f63_3e361877",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T23:23:13Z",
+      "side": 1,
+      "message": "Whoops, I made a typo. The bug should be for PSOP_ROUND and PSOP_TRUNCATE.",
+      "parentUuid": "154c5581_3793ab12",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "5bebeaf1118c3cfce7af262c64d8d0cba936583c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe7eb702_7c8a647a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
