@@ -33,6 +33,23 @@
       "revId": "866f7007d18ce46a3d61a2307042ae67329a2afc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7eece5_225489ff",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T18:54:40Z",
+      "side": 1,
+      "message": "Moving this call to the bottom bypasses the cache. I still don\u0027t think this is the right move. I think all this does is hide bugs in the cache.\n\nWith https://pdfium.googlesource.com/pdfium/+/2217eff5, one can now turn on SHOW_SKIA_PATH and get the debug logging code to compile. The debug logging can help show what Skia operations are happening and help spot the bug.",
+      "revId": "866f7007d18ce46a3d61a2307042ae67329a2afc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
