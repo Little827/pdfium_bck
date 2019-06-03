@@ -8,7 +8,7 @@
 
 #include "core/fpdfapi/cpdf_modulemgr.h"
 #include "core/fpdfapi/font/cpdf_cmapmanager.h"
-#include "core/fpdfapi/page/cpdf_pagemodule.h"
+#include "core/fpdfapi/font/cpdf_fontglobals.h"
 
 CPDF_CID2UnicodeMap::CPDF_CID2UnicodeMap() = default;
 
@@ -30,8 +30,6 @@ wchar_t CPDF_CID2UnicodeMap::UnicodeFromCID(uint16_t CID) const {
 
 void CPDF_CID2UnicodeMap::Load(CPDF_CMapManager* pMgr, CIDSet charset) {
   m_Charset = charset;
-
-  CPDF_FontGlobals* pFontGlobals =
-      CPDF_ModuleMgr::Get()->GetPageModule()->GetFontGlobals();
-  m_pEmbeddedMap = pFontGlobals->GetEmbeddedToUnicode(charset);
+  m_pEmbeddedMap =
+      CPDF_FontGlobals::GetInstance()->GetEmbeddedToUnicode(charset);
 }
