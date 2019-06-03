@@ -261,6 +261,20 @@ unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
   return len;
 }
 
+unsigned long RawStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
+                                                void* buffer,
+                                                unsigned long buflen) {
+  ASSERT(stream);
+  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream);
+  stream_acc->LoadAllDataRaw();
+  const auto stream_data_size = stream_acc->GetSize();
+  if (!buffer || buflen < stream_data_size)
+    return stream_data_size;
+
+  memcpy(buffer, stream_acc->GetData(), stream_data_size);
+  return stream_data_size;
+}
+
 unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
                                                    void* buffer,
                                                    unsigned long buflen) {
