@@ -33,6 +33,80 @@
       "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75536e85_9f0335c0",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T20:18:27Z",
+      "side": 1,
+      "message": "Please add a comment to label to APIs as experimental. See other public/ headers for example.",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8066103_9c14896b",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T20:18:27Z",
+      "side": 1,
+      "message": "What happens if |buffer| is null?",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f4ce2be_18db6c0a",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T20:18:27Z",
+      "side": 1,
+      "message": "indent",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a34f49bb_1023ff7f",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T20:18:27Z",
+      "side": 1,
+      "message": "What happens if |page| does not contain a thumbnail?",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
