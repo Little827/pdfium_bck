@@ -16,6 +16,24 @@
       "revId": "b8e2f461c863beb27903100d6a22fd449e82416b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f7de48_fd727c35",
+        "filename": "core/fpdfapi/cpdf_modulemgr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-03T20:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54e25b61_b7fe7562",
+      "revId": "b8e2f461c863beb27903100d6a22fd449e82416b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
