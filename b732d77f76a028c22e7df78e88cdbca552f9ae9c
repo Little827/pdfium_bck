@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e94aba58_a7c83a65",
+        "filename": "core/fpdfapi/page/cpdf_psengine_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T19:13:06Z",
+      "side": 1,
+      "message": "This is part of another CL. Your local git repo probably needs a bit of cleaning.",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c38dd1e_e18a9038",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T19:13:06Z",
+      "side": 1,
+      "message": "Looking at the numbers it returns in the embedder test, I think this is equivalent to FPDFPage_GetRawThumbnailDataFromPage(page, nullptr, 0). Is that the case? If so, why have this separate API?",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
