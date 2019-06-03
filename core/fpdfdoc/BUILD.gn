@@ -86,6 +86,7 @@ jumbo_source_set("fpdfdoc") {
   configs += [ "../../:pdfium_core_config" ]
   deps = [
     "../../constants",
+    "../fpdfapi",
     "../fpdfapi/font",
     "../fpdfapi/page",
     "../fpdfapi/parser",
