@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1559346644 -0700\nnonce AC6AUtOoUGdZ46EGcM+Is74kRE06xsFxyulTghOB+YTaXmig0BZ2x33wXjnmkJRPspLa9ZhOvxJ7\n\n0000000000000000000000000000000000000000 dd0b70dd9709c9877e9f4ab89a1eff5e4c97100a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlzxvdQACgkQqzYtYVpm\n/Xu+KQf8D/28gp0+aVvB0Gz/mB8yoyR+skCgDO7ZUj47UnkvzJytpblOE9z3KEOQ\nfIjMKD3bDTh51yr4IT46lZWn05Vqd/7zHP23MuBPggfmszr5UQQJITl4hjx+sfZp\nqvEe0Fiz7uyC4umc8fmmSIcuDwfcU7In+gdRGNQ6us4SFRMl+VNMUpHJztl+ooH4\njulrxTeBhkbs5v97NFPKxXCH0vY9vSA222DoceshvoqgFZLJx5VqOXB8ncKQ4HDz\n2s7D9bVyO9z/0hKXj0HlvskWVUjYR/5WLvO2O7C3D2euQ2R22ftQiidhWEmQRneA\nYHtS5Bf1famd03vnWAz7tFh1v8PYtQ\u003d\u003d\n\u003dG2pM\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d66af_8278b19f",
+        "filename": "core/fxcodec/jbig2/JBig2_BitStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-03T16:48:28Z",
+      "side": 1,
+      "message": "nit: I\u0027d call this ValidatedSpan() since it returns a span rather than an indication of validity.",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "dd0b70dd9709c9877e9f4ab89a1eff5e4c97100a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
