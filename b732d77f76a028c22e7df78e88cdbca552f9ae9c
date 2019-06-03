@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "635cc603_152b59b3",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T21:02:45Z",
+      "side": 1,
+      "message": "Thanks. To be extra clear, it\u0027s not necessary to define a temporary buffer just to get the buffer size.",
+      "parentUuid": "db15a88e_adec2e4d",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75536e85_9f0335c0",
         "filename": "public/fpdf_thumbnail.h",
         "patchSetId": 3
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "In the underlying functions, DecodeStreamMaybeCopyAndReturnLength and RawStreamMaybeCopyAndReturnLength, if |buffer| is null it returns the size. Should I add that to the documentation of this function?",
       "parentUuid": "d8066103_9c14896b",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa0e88d2_4a88aed2",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T21:02:45Z",
+      "side": 1,
+      "message": "Yes. See comments in other functions that involve buffers.",
+      "parentUuid": "518c6fd0_c2e9ba60",
       "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
@@ -200,6 +236,24 @@
       "side": 1,
       "message": "Returns 0, will add this to documentation.",
       "parentUuid": "a34f49bb_1023ff7f",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fe52360_f21d765b",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-03T21:02:45Z",
+      "side": 1,
+      "message": "Can you also add a test for this?",
+      "parentUuid": "cf2358fe_228ee307",
       "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
