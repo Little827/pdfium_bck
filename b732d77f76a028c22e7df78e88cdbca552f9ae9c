@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "db15a88e_adec2e4d",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-03T20:51:21Z",
+      "side": 1,
+      "message": "Yes this accomplishes the same thing, but I thought it would be more convenient to have a function where you don\u0027t need to define a temporary buffer and call FPDFPage_GetRawThumbnailDataFromPage to get the actual size of the stream. Since the user will have to do this for FPDFPage_GetDecodedThumbnailDataFromPage, I will delete this separate API to keep the usage of FPDFPage_Get*ThumbnailDataFromPage consistent.",
+      "parentUuid": "5c38dd1e_e18a9038",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75536e85_9f0335c0",
         "filename": "public/fpdf_thumbnail.h",
         "patchSetId": 3
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "55f2d14f_95eb5703",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-03T20:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75536e85_9f0335c0",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8066103_9c14896b",
         "filename": "public/fpdf_thumbnail.h",
         "patchSetId": 3
@@ -67,6 +103,24 @@
       "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518c6fd0_c2e9ba60",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-03T20:51:21Z",
+      "side": 1,
+      "message": "In the underlying functions, DecodeStreamMaybeCopyAndReturnLength and RawStreamMaybeCopyAndReturnLength, if |buffer| is null it returns the size. Should I add that to the documentation of this function?",
+      "parentUuid": "d8066103_9c14896b",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "1c6e7e2b_9f188a57",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-03T20:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f4ce2be_18db6c0a",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a34f49bb_1023ff7f",
         "filename": "public/fpdf_thumbnail.h",
         "patchSetId": 3
@@ -107,6 +185,24 @@
       "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2358fe_228ee307",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-03T20:51:21Z",
+      "side": 1,
+      "message": "Returns 0, will add this to documentation.",
+      "parentUuid": "a34f49bb_1023ff7f",
+      "revId": "b732d77f76a028c22e7df78e88cdbca552f9ae9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
