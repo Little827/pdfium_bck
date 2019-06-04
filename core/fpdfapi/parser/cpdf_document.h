@@ -14,8 +14,6 @@
 #include <vector>
 
 #include "build/build_config.h"
-#include "core/fpdfapi/page/cpdf_image.h"
-#include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fxcrt/observable.h"
@@ -106,7 +104,6 @@ class CPDF_Document : public Observable<CPDF_Document>,
                             bool bShading,
                             const CFX_Matrix& matrix);
 
-  RetainPtr<CPDF_Image> LoadImageFromPageData(uint32_t dwStreamObjNum);
   RetainPtr<CPDF_StreamAcc> LoadFontFile(const CPDF_Stream* pStream);
   RetainPtr<CPDF_IccProfile> LoadIccProfile(const CPDF_Stream* pStream);
 
