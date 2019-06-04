@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6060651_2922d690",
+        "filename": "core/fpdfapi/page/cpdf_pagerendercontext.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-04T00:11:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028692de_336e928a",
+      "revId": "0234595696fc3d980c09324d668db08c8108057c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91eb39da_b0ebdfb9",
         "filename": "core/fpdfdoc/BUILD.gn",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-03T23:59:11Z",
       "side": 1,
       "message": "What goes wrong if we don\u0027t have this dependency? Having a little trouble seeing why it is needed.",
+      "revId": "0234595696fc3d980c09324d668db08c8108057c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83e37be_7b1f794b",
+        "filename": "core/fpdfdoc/BUILD.gn",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-04T00:11:32Z",
+      "side": 1,
+      "message": "Nothing, as it turns out.  Removed.",
+      "parentUuid": "91eb39da_b0ebdfb9",
       "revId": "0234595696fc3d980c09324d668db08c8108057c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
