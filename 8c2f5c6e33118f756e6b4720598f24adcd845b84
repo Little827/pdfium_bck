@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7ac980f_afdbecfb",
+        "filename": "testing/fuzzers/xfa_codec_fuzzer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-04T20:35:48Z",
+      "side": 1,
+      "message": "Are these still necessary?",
+      "revId": "8c2f5c6e33118f756e6b4720598f24adcd845b84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
