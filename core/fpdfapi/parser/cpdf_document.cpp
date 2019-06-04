@@ -492,12 +492,6 @@ RetainPtr<CPDF_IccProfile> CPDF_Document::LoadIccProfile(
   return m_pDocPage->GetIccProfile(pStream);
 }
 
-RetainPtr<CPDF_Image> CPDF_Document::LoadImageFromPageData(
-    uint32_t dwStreamObjNum) {
-  ASSERT(dwStreamObjNum);
-  return m_pDocPage->GetImage(dwStreamObjNum);
-}
-
 void CPDF_Document::CreateNewDoc() {
   ASSERT(!m_pRootDict);
   ASSERT(!m_pInfoDict);
