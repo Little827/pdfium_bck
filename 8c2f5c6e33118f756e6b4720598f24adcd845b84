@@ -16,6 +16,24 @@
       "revId": "8c2f5c6e33118f756e6b4720598f24adcd845b84",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd24cffe_9671600f",
+        "filename": "testing/fuzzers/xfa_codec_fuzzer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-04T20:56:42Z",
+      "side": 1,
+      "message": "I don\u0027t think so.  I\u0027ll pull them in a follow-on CL once this is working again.",
+      "parentUuid": "f7ac980f_afdbecfb",
+      "revId": "8c2f5c6e33118f756e6b4720598f24adcd845b84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
