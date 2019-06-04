@@ -104,6 +104,24 @@
       "revId": "59ceb8207a753b157e66aeff026a6ec065b9b7b2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a939e2c7_5b7fd5da",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-04T17:09:52Z",
+      "side": 1,
+      "message": "Reread the spec and I think I misinterpreted \"but only the Width, Height, ColorSpace, BitsPerComponent, and Decode entries are significant\" as ensuring they would have those fields. Going to change it back to raw.",
+      "parentUuid": "21550649_4216fefc",
+      "revId": "59ceb8207a753b157e66aeff026a6ec065b9b7b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
