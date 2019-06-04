@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "public/fpdf_formfill.h"
 #include "testing/fuzzers/pdfium_fuzzer_helper.h"
 #include "testing/fuzzers/pdfium_lpm_fuzz_stub.h"
 
@@ -13,7 +14,12 @@ class PDFiumLpmFuzzStub : public PDFiumFuzzerHelper {
   PDFiumLpmFuzzStub() = default;
   ~PDFiumLpmFuzzStub() override = default;
 
-  int GetFormCallbackVersion() const override { return 1; }
+  int GetFormCallbackVersion() const override { return 2; }
+  // Make fuzzer load XFA but allow fuzzing without xfa.
+  bool OnFormFillEnvLoaded(FPDF_DOCUMENT doc) override {
+    FPDF_LoadXFA(doc);
+    return true;
+  }
 };
 
 void FuzzPdf(const char* pdf, size_t size) {
