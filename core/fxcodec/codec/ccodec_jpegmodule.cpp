@@ -178,9 +178,9 @@ class CCodec_JpegDecoder final : public CCodec_ScanlineDecoder {
   bool InitDecode();
 
   jmp_buf m_JmpBuf;
-  jpeg_decompress_struct cinfo;
-  jpeg_error_mgr jerr;
-  jpeg_source_mgr src;
+  jpeg_decompress_struct m_cinfo;
+  jpeg_error_mgr m_jerr;
+  jpeg_source_mgr m_src;
   pdfium::span<const uint8_t> m_SrcSpan;
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pScanlineBuf;
   bool m_bInited = false;
@@ -188,53 +188,55 @@ class CCodec_JpegDecoder final : public CCodec_ScanlineDecoder {
   bool m_bJpegTransform = false;
 
  private:
+  void CalcPitch();
+
   uint32_t m_nDefaultScaleDenom = 1;
 };
 
 CCodec_JpegDecoder::CCodec_JpegDecoder() {
-  memset(&cinfo, 0, sizeof(cinfo));
-  memset(&jerr, 0, sizeof(jerr));
-  memset(&src, 0, sizeof(src));
+  memset(&m_cinfo, 0, sizeof(m_cinfo));
+  memset(&m_jerr, 0, sizeof(m_jerr));
+  memset(&m_src, 0, sizeof(m_src));
 }
 
 CCodec_JpegDecoder::~CCodec_JpegDecoder() {
   if (m_bInited)
-    jpeg_destroy_decompress(&cinfo);
+    jpeg_destroy_decompress(&m_cinfo);
 }
 
 bool CCodec_JpegDecoder::InitDecode() {
-  cinfo.err = &jerr;
-  cinfo.client_data = &m_JmpBuf;
+  m_cinfo.err = &m_jerr;
+  m_cinfo.client_data = &m_JmpBuf;
   if (setjmp(m_JmpBuf) == -1)
     return false;
 
-  jpeg_create_decompress(&cinfo);
+  jpeg_create_decompress(&m_cinfo);
   m_bInited = true;
-  cinfo.src = &src;
-  src.bytes_in_buffer = m_SrcSpan.size();
-  src.next_input_byte = m_SrcSpan.data();
+  m_cinfo.src = &m_src;
+  m_src.bytes_in_buffer = m_SrcSpan.size();
+  m_src.next_input_byte = m_SrcSpan.data();
   if (setjmp(m_JmpBuf) == -1) {
-    jpeg_destroy_decompress(&cinfo);
+    jpeg_destroy_decompress(&m_cinfo);
     m_bInited = false;
     return false;
   }
-  cinfo.image_width = m_OrigWidth;
-  cinfo.image_height = m_OrigHeight;
-  int ret = jpeg_read_header(&cinfo, TRUE);
+  m_cinfo.image_width = m_OrigWidth;
+  m_cinfo.image_height = m_OrigHeight;
+  int ret = jpeg_read_header(&m_cinfo, TRUE);
   if (ret != JPEG_HEADER_OK)
     return false;
 
-  if (cinfo.saw_Adobe_marker)
+  if (m_cinfo.saw_Adobe_marker)
     m_bJpegTransform = true;
 
-  if (cinfo.num_components == 3 && !m_bJpegTransform)
-    cinfo.out_color_space = cinfo.jpeg_color_space;
+  if (m_cinfo.num_components == 3 && !m_bJpegTransform)
+    m_cinfo.out_color_space = m_cinfo.jpeg_color_space;
 
-  m_OrigWidth = cinfo.image_width;
-  m_OrigHeight = cinfo.image_height;
+  m_OrigWidth = m_cinfo.image_width;
+  m_OrigHeight = m_cinfo.image_height;
   m_OutputWidth = m_OrigWidth;
   m_OutputHeight = m_OrigHeight;
-  m_nDefaultScaleDenom = cinfo.scale_denom;
+  m_nDefaultScaleDenom = m_cinfo.scale_denom;
   return true;
 }
 
@@ -244,16 +246,16 @@ bool CCodec_JpegDecoder::Create(pdfium::span<const uint8_t> src_span,
                                 int nComps,
                                 bool ColorTransform) {
   m_SrcSpan = JpegScanSOI(src_span);
-  jerr.error_exit = error_fatal;
-  jerr.emit_message = error_do_nothing1;
-  jerr.output_message = error_do_nothing;
-  jerr.format_message = error_do_nothing2;
-  jerr.reset_error_mgr = error_do_nothing;
-  src.init_source = src_do_nothing;
-  src.term_source = src_do_nothing;
-  src.skip_input_data = src_skip_data;
-  src.fill_input_buffer = src_fill_buffer;
-  src.resync_to_restart = src_resync;
+  m_jerr.error_exit = error_fatal;
+  m_jerr.emit_message = error_do_nothing1;
+  m_jerr.output_message = error_do_nothing;
+  m_jerr.format_message = error_do_nothing2;
+  m_jerr.reset_error_mgr = error_do_nothing;
+  m_src.init_source = src_do_nothing;
+  m_src.term_source = src_do_nothing;
+  m_src.skip_input_data = src_skip_data;
+  m_src.fill_input_buffer = src_fill_buffer;
+  m_src.resync_to_restart = src_resync;
   m_bJpegTransform = ColorTransform;
   if (m_SrcSpan.size() >= 2) {
     const_cast<uint8_t*>(m_SrcSpan.data())[m_SrcSpan.size() - 2] = 0xFF;
@@ -264,17 +266,15 @@ bool CCodec_JpegDecoder::Create(pdfium::span<const uint8_t> src_span,
   if (!InitDecode())
     return false;
 
-  if (cinfo.num_components < nComps)
+  if (m_cinfo.num_components < nComps)
     return false;
 
-  if ((int)cinfo.image_width < width)
+  if (static_cast<int>(m_cinfo.image_width) < width)
     return false;
 
-  m_Pitch =
-      (static_cast<uint32_t>(cinfo.image_width) * cinfo.num_components + 3) /
-      4 * 4;
+  CalcPitch();
   m_pScanlineBuf.reset(FX_Alloc(uint8_t, m_Pitch));
-  m_nComps = cinfo.num_components;
+  m_nComps = m_cinfo.num_components;
   m_bpc = 8;
   m_bStarted = false;
   return true;
@@ -282,7 +282,7 @@ bool CCodec_JpegDecoder::Create(pdfium::span<const uint8_t> src_span,
 
 bool CCodec_JpegDecoder::v_Rewind() {
   if (m_bStarted) {
-    jpeg_destroy_decompress(&cinfo);
+    jpeg_destroy_decompress(&m_cinfo);
     if (!InitDecode()) {
       return false;
     }
@@ -290,14 +290,14 @@ bool CCodec_JpegDecoder::v_Rewind() {
   if (setjmp(m_JmpBuf) == -1) {
     return false;
   }
-  cinfo.scale_denom = m_nDefaultScaleDenom;
+  m_cinfo.scale_denom = m_nDefaultScaleDenom;
   m_OutputWidth = m_OrigWidth;
   m_OutputHeight = m_OrigHeight;
-  if (!jpeg_start_decompress(&cinfo)) {
-    jpeg_destroy_decompress(&cinfo);
+  if (!jpeg_start_decompress(&m_cinfo)) {
+    jpeg_destroy_decompress(&m_cinfo);
     return false;
   }
-  if ((int)cinfo.output_width > m_OrigWidth) {
+  if (static_cast<int>(m_cinfo.output_width) > m_OrigWidth) {
     NOTREACHED();
     return false;
   }
@@ -310,12 +310,19 @@ uint8_t* CCodec_JpegDecoder::v_GetNextLine() {
     return nullptr;
 
   uint8_t* row_array[] = {m_pScanlineBuf.get()};
-  int nlines = jpeg_read_scanlines(&cinfo, row_array, 1);
+  int nlines = jpeg_read_scanlines(&m_cinfo, row_array, 1);
   return nlines > 0 ? m_pScanlineBuf.get() : nullptr;
 }
 
 uint32_t CCodec_JpegDecoder::GetSrcOffset() {
-  return static_cast<uint32_t>(m_SrcSpan.size() - src.bytes_in_buffer);
+  return static_cast<uint32_t>(m_SrcSpan.size() - m_src.bytes_in_buffer);
+}
+
+void CCodec_JpegDecoder::CalcPitch() {
+  m_Pitch = static_cast<uint32_t>(m_cinfo.image_width) * m_cinfo.num_components;
+  m_Pitch += 3;
+  m_Pitch /= 4;
+  m_Pitch *= 4;
 }
 
 std::unique_ptr<CCodec_ScanlineDecoder> CCodec_JpegModule::CreateDecoder(
@@ -557,7 +564,7 @@ bool CCodec_JpegModule::JpegEncode(const RetainPtr<CFX_DIBBase>& pSource,
       }
       row_pointer[0] = line_buf;
     } else {
-      row_pointer[0] = (uint8_t*)src_scan;
+      row_pointer[0] = src_scan;
     }
     row = cinfo.next_scanline;
     jpeg_write_scanlines(&cinfo, row_pointer, 1);
