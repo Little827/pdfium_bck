@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f4370e8_373279d4",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7261
+      },
+      "writtenOn": "2019-06-05T20:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968795b5_6c4d21e1",
+      "revId": "e903e4475ecc146f410e258822c7fc51798b2998",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46aef4b_21c68d67",
         "filename": "testing/fuzzers/BUILD.gn",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "e903e4475ecc146f410e258822c7fc51798b2998",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ece976_030b530b",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 7261
+      },
+      "writtenOn": "2019-06-05T20:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a46aef4b_21c68d67",
+      "revId": "e903e4475ecc146f410e258822c7fc51798b2998",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
