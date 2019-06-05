@@ -129,12 +129,11 @@ jumbo_source_set("fxcrt") {
 if (pdf_enable_xfa) {
   jumbo_source_set("seekablemultistream") {
     sources = [
-      "cfx_seekablemultistream.cpp",
-      "cfx_seekablemultistream.h",
+      "parser/cpdf_seekablemultistream.cpp",
+      "parser/cpdf_seekablemultistream.h",
     ]
     deps = [
       ":fxcrt",
-      "../fpdfapi/parser",
     ]
     configs += [ "../../:pdfium_core_config" ]
     visibility = [ "../../*" ]
@@ -181,10 +180,10 @@ pdfium_unittest_source_set("unittests") {
   if (pdf_enable_xfa) {
     sources += [
       "cfx_memorystream_unittest.cpp",
-      "cfx_seekablemultistream_unittest.cpp",
       "css/cfx_cssdeclaration_unittest.cpp",
       "css/cfx_cssstylesheet_unittest.cpp",
       "css/cfx_cssvaluelistparser_unittest.cpp",
+      "parser/cpdf_seekablemultistream_unittest.cpp",
     ]
     deps += [
       ":seekablemultistream",

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "core/fxcrt/cfx_seekablemultistream.h"
+#include "core/fpdfapi/parser/cpdf_seekablemultistream.h"
 
 #include <memory>
 #include <vector>
