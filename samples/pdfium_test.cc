@@ -102,6 +102,7 @@ struct Options {
   bool render_oneshot = false;
   bool save_attachments = false;
   bool save_images = false;
+  bool save_thumbnails = false;
 #ifdef PDF_ENABLE_V8
   bool disable_javascript = false;
 #ifdef PDF_ENABLE_XFA
@@ -346,6 +347,8 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       options->save_attachments = true;
     } else if (cur_arg == "--save-images") {
       options->save_images = true;
+    } else if (cur_arg == "--save-thumbnails") {
+      options->save_thumbnails = true;
 #ifdef PDF_ENABLE_V8
     } else if (cur_arg == "--disable-javascript") {
       options->disable_javascript = true;
@@ -604,6 +607,8 @@ bool RenderPage(const std::string& name,
     SendPageEvents(form, page, events);
   if (options.save_images)
     WriteImages(page, name.c_str(), page_index);
+  if (options.save_thumbnails)
+    WriteThumbnails(page, name.c_str(), page_index);
 
   if (options.output_format == OUTPUT_PAGEINFO) {
     DumpPageInfo(page, page_index);
@@ -904,6 +909,8 @@ constexpr char kUsageString[] =
     "<pdf-name>.attachment.<attachment-name>\n"
     "  --save-images        - write embedded images "
     "<pdf-name>.<page-number>.<object-number>.png\n"
+    "  --save-thumbnails    - write page thumbnails "
+    "<pdf-name>.thumbnail.<page-number>.png\n"
 #ifdef PDF_ENABLE_V8
     "  --disable-javascript - do not execute JS in PDF files\n"
 #ifdef PDF_ENABLE_XFA

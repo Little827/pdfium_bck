@@ -13,6 +13,7 @@
 #include "public/fpdf_annot.h"
 #include "public/fpdf_attachment.h"
 #include "public/fpdf_edit.h"
+#include "public/fpdf_thumbnail.h"
 #include "testing/fx_string_testhelpers.h"
 #include "testing/image_diff/image_diff_png.h"
 #include "third_party/base/logging.h"
@@ -646,4 +647,44 @@ void WriteImages(FPDF_PAGE page, const char* pdf_name, int page_num) {
 
     (void)fclose(fp);
   }
+}
+
+void WriteThumbnails(FPDF_PAGE page, const char* pdf_name, int page_num) {
+  char filename[256];
+  int chars_formatted = snprintf(filename, sizeof(filename),
+                                 "%s.thumbnail.%d.b", pdf_name, page_num);
+
+  if (chars_formatted < 0 ||
+      static_cast<size_t>(chars_formatted) >= sizeof(filename)) {
+    fprintf(stderr, "Filename %s for saving thumbnail is too long\n", filename);
+    return;
+  }
+
+  unsigned long decoded_data_size =
+      FPDFPage_GetDecodedThumbnailDataFromPage(page, NULL, 0u);
+
+  // Only continue if there actually is a thumbnail for this page
+  if (decoded_data_size <= 0)
+    return;
+
+  std::vector<uint8_t> thumb_buf(decoded_data_size);
+  if (decoded_data_size != FPDFPage_GetDecodedThumbnailDataFromPage(
+                               page, thumb_buf.data(), decoded_data_size)) {
+    fprintf(stderr, "Failed to get decoded thumbnail data for %s\n", filename);
+    return;
+  }
+
+  FILE* fp = fopen(filename, "wb");
+  if (!fp) {
+    fprintf(stderr, "Failed to open %s for saving thumbnail.\n", filename);
+    return;
+  }
+
+  size_t bytes_written = fwrite(thumb_buf.data(), 1, decoded_data_size, fp);
+  if (bytes_written != decoded_data_size)
+    fprintf(stderr, "Failed to write to %s.\n", filename);
+  else
+    fprintf(stderr, "Successfully wrote thumbnail %s.\n", filename);
+
+  (void)fclose(fp);
 }
