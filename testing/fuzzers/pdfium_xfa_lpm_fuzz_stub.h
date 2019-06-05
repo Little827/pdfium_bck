@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef TESTING_FUZZERS_PDFIUM_LPM_FUZZ_STUB_H_
-#define TESTING_FUZZERS_PDFIUM_LPM_FUZZ_STUB_H_
+#ifndef TESTING_FUZZERS_PDFIUM_XFA_LPM_FUZZ_STUB_H_
+#define TESTING_FUZZERS_PDFIUM_XFA_LPM_FUZZ_STUB_H_
 
 #include "public/fpdfview.h"
 
@@ -11,4 +11,4 @@
 // harness to pass the deserialized proto to PDFium.
 FPDF_EXPORT void FuzzPdf(const char* pdf, size_t size);
 
-#endif  // TESTING_FUZZERS_PDFIUM_LPM_FUZZ_STUB_H_
+#endif  // TESTING_FUZZERS_PDFIUM_XFA_LPM_FUZZ_STUB_H_
