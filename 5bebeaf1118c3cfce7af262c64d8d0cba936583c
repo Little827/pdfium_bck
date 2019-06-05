@@ -93,6 +93,30 @@
       "revId": "5bebeaf1118c3cfce7af262c64d8d0cba936583c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "621c1bde_dccbf3ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-05T02:42:02Z",
+      "side": 1,
+      "message": "^^^ - You need to update the CL description either via the web interface, or with \"git cl description\" from the command line.",
+      "parentUuid": "fe7eb702_7c8a647a",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "5bebeaf1118c3cfce7af262c64d8d0cba936583c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
