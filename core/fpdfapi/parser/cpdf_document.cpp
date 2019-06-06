@@ -66,7 +66,7 @@ CPDF_Document::CPDF_Document(std::unique_ptr<RenderDataIface> pRenderData,
                              std::unique_ptr<PageDataIface> pPageData)
     : m_pDocRender(std::move(pRenderData)),
       m_pDocPage(std::move(pPageData)),
-      m_StockFontClearer(this) {
+      m_StockFontClearer(m_pDocPage.get()) {
   m_pDocRender->SetDocument(this);
   m_pDocPage->SetDocument(this);
 }
@@ -475,11 +475,12 @@ void CPDF_Document::DeletePage(int iPage) {
   m_PageList.erase(m_PageList.begin() + iPage);
 }
 
-CPDF_Document::StockFontClearer::StockFontClearer(CPDF_Document* pDoc)
-    : m_pDoc(pDoc) {}
+CPDF_Document::StockFontClearer::StockFontClearer(
+    CPDF_Document::PageDataIface* pPageData)
+    : m_pPageData(pPageData) {}
 
 CPDF_Document::StockFontClearer::~StockFontClearer() {
-  CPDF_PageModule::GetInstance()->ClearStockFont(m_pDoc.Get());
+  m_pPageData->ClearStockFont();
 }
 
 CPDF_Document::PageDataIface::PageDataIface() = default;
