@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a33c773_84c7bdab",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-06T07:49:48Z",
+      "side": 1,
+      "message": "It\u0027s slightly hard for me to eyeball this change. For pdfium_xfa_lpm_fuzzer_src, what do you really need from it? Just the deps section? I assume you\u0027ve tried patching this in on the Chromium side, and did both a static and component build.",
+      "revId": "1205bd731913d5784d356419ef0bf6effa13b0b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
