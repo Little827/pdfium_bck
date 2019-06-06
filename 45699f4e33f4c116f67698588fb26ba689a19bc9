@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78a04311_a4cd7abe",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-06T07:06:03Z",
+      "side": 1,
+      "message": "Include build/build_config.h",
+      "revId": "45699f4e33f4c116f67698588fb26ba689a19bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1253abd_fcafbc7e",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-06T07:06:03Z",
+      "side": 1,
+      "message": "Can these be moved into CPDF_DocPageData as well?",
+      "revId": "45699f4e33f4c116f67698588fb26ba689a19bc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
