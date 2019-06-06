@@ -375,21 +375,39 @@ SkBlendMode GetSkiaBlendMode(BlendMode blend_type) {
   }
 }
 
-bool AddColors(const CPDF_ExpIntFunc* pFunc, SkTDArray<SkColor>* skColors) {
+bool AddColors(const CPDF_ExpIntFunc* pFunc,
+               SkTDArray<SkColor>* skColors,
+               float encode_begin,
+               float encode_end) {
   if (pFunc->CountInputs() != 1)
     return false;
   if (pFunc->m_Exponent != 1)
     return false;
   if (pFunc->m_nOrigOutputs != 3)
     return false;
-  skColors->push_back(
-      SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_BeginValues[0]),
-                     SkUnitScalarClampToByte(pFunc->m_BeginValues[1]),
-                     SkUnitScalarClampToByte(pFunc->m_BeginValues[2])));
-  skColors->push_back(
-      SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_EndValues[0]),
-                     SkUnitScalarClampToByte(pFunc->m_EndValues[1]),
-                     SkUnitScalarClampToByte(pFunc->m_EndValues[2])));
+
+  // Depending on encode values, need to switch the order of calculating
+  // begin/end color for each transition
+  if (encode_begin < encode_end) {
+    skColors->push_back(
+        SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_BeginValues[0]),
+                       SkUnitScalarClampToByte(pFunc->m_BeginValues[1]),
+                       SkUnitScalarClampToByte(pFunc->m_BeginValues[2])));
+    skColors->push_back(
+        SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_EndValues[0]),
+                       SkUnitScalarClampToByte(pFunc->m_EndValues[1]),
+                       SkUnitScalarClampToByte(pFunc->m_EndValues[2])));
+  } else {
+    skColors->push_back(
+        SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_EndValues[0]),
+                       SkUnitScalarClampToByte(pFunc->m_EndValues[1]),
+                       SkUnitScalarClampToByte(pFunc->m_EndValues[2])));
+
+    skColors->push_back(
+        SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_BeginValues[0]),
+                       SkUnitScalarClampToByte(pFunc->m_BeginValues[1]),
+                       SkUnitScalarClampToByte(pFunc->m_BeginValues[2])));
+  }
   return true;
 }
 
@@ -456,7 +474,8 @@ bool AddStitching(const CPDF_StitchFunc* pFunc,
     const CPDF_ExpIntFunc* pSubFunc = subFunctions[i]->ToExpIntFunc();
     if (!pSubFunc)
       return false;
-    if (!AddColors(pSubFunc, skColors))
+    if (!AddColors(pSubFunc, skColors, pFunc->GetEncode(2 * i),
+                   pFunc->GetEncode(2 * i + 1)))
       return false;
     float boundsEnd =
         i < subFunctionCount - 1 ? pFunc->GetBound(i + 1) : pFunc->GetDomain(1);
@@ -2023,7 +2042,7 @@ bool CFX_SkiaDeviceDriver::DrawShading(const CPDF_ShadingPattern* pPattern,
       if (!AddSamples(pSampledFunc, &skColors, &skPos))
         return false;
     } else if (const CPDF_ExpIntFunc* pExpIntFuc = pFuncs[j]->ToExpIntFunc()) {
-      if (!AddColors(pExpIntFuc, &skColors))
+      if (!AddColors(pExpIntFuc, &skColors, 0, 1))
         return false;
       skPos.push_back(0);
       skPos.push_back(1);
