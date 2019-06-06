@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "659b20a7_30780f4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-06T22:53:17Z",
+      "side": 1,
+      "message": "nit: Put a blank line after the summary line.",
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54d3225_d80b74e5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-06T22:53:17Z",
+      "side": 1,
+      "message": "Can we change the parameters from 2 floats to a single bool? Then the AddColors() call on line 2045 won\u0027t need dummy values.",
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579b58e1_1a939072",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-06T22:53:17Z",
+      "side": 1,
+      "message": "The else-block looks almost identical to the if-block. This duplicates a lot of code. In this case, the way to avoid the duplication is to do:\n\nfloat* begin_values \u003d pFunc-\u003em_BeginValues;\nfloat* end_values \u003d pFunc-\u003em_EndValues;\nif (encode_order_is_reversed)\n  std::swap(begin_values, end_values);\n\nskColors-\u003epush_back(\n    SkColorSetARGB(0xFF, SkUnitScalarClampToByte(begin_values[0]),\n                   SkUnitScalarClampToByte(begin_values[1]),\n                   SkUnitScalarClampToByte(begin_values[2])));\nskColors-\u003epush_back(\n    SkColorSetARGB(0xFF, SkUnitScalarClampToByte(end_values[0]),\n                   SkUnitScalarClampToByte(end_values[1]),\n                   SkUnitScalarClampToByte(end_values[2])));",
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
