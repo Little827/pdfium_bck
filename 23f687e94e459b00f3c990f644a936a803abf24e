@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74ab1a23_ff5db3c8",
+        "filename": "core/fxcodec/codec/ccodec_jpegmodule.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-06T16:46:53Z",
+      "side": 1,
+      "message": "nit: that it comes from an officejet is kinda an implemetation detail, maybe name after the kind of header itself and its defect.",
+      "range": {
+        "startLine": 198,
+        "startChar": 18,
+        "endLine": 198,
+        "endChar": 27
+      },
+      "revId": "23f687e94e459b00f3c990f644a936a803abf24e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62c0778_f9b13c6d",
+        "filename": "core/fxcodec/codec/ccodec_jpegmodule.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-06T16:46:53Z",
+      "side": 1,
+      "message": "nit: footer vs. trailer in comment.  Is one the canonical term?",
+      "range": {
+        "startLine": 204,
+        "startChar": 14,
+        "endLine": 204,
+        "endChar": 20
+      },
+      "revId": "23f687e94e459b00f3c990f644a936a803abf24e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b120648e_30f783ef",
+        "filename": "core/fxcodec/codec/ccodec_jpegmodule.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-06T16:46:53Z",
+      "side": 1,
+      "message": "where can the longjmp come from? line 250 ?",
+      "range": {
+        "startLine": 235,
+        "startChar": 7,
+        "endLine": 235,
+        "endChar": 28
+      },
+      "revId": "23f687e94e459b00f3c990f644a936a803abf24e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c8db354_cc98e9aa",
+        "filename": "core/fxcodec/codec/ccodec_jpegmodule.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-06T16:46:53Z",
+      "side": 1,
+      "message": "I guess this check requires information generated during the failed decompress?",
+      "range": {
+        "startLine": 236,
+        "startChar": 49,
+        "endLine": 236,
+        "endChar": 76
+      },
+      "revId": "23f687e94e459b00f3c990f644a936a803abf24e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
