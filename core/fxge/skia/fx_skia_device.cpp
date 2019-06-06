@@ -792,6 +792,7 @@ class SkiaState {
     }
     m_drawIndex = INT_MAX;
     m_type = Accumulator::kNone;
+    m_drawMatrix = CFX_Matrix();
   }
 
   bool HasRSX(int nChars,
@@ -1906,7 +1907,9 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     uint32_t stroke_color,                  // stroke color
     int fill_mode,  // fill mode, WINDING or ALTERNATE. 0 for not filled
     BlendMode blend_type) {
-  if (fill_mode & FX_ZEROAREA_FILL)
+  int stroke_alpha = FXARGB_A(stroke_color);
+  bool is_paint_stroke = !!(pGraphState && stroke_alpha);
+  if ((fill_mode & FX_ZEROAREA_FILL) && !is_paint_stroke)
     return true;
   if (m_pCache->DrawPath(pPathData, pObject2Device, pGraphState, fill_color,
                          stroke_color, fill_mode, blend_type)) {
@@ -1921,8 +1924,6 @@ bool CFX_SkiaDeviceDriver::DrawPath(
   skPaint.setAntiAlias(true);
   if (fill_mode & FXFILL_FULLCOVER)
     skPaint.setBlendMode(SkBlendMode::kPlus);
-  int stroke_alpha = FXARGB_A(stroke_color);
-  bool is_paint_stroke = !!(pGraphState && stroke_alpha);
   if (is_paint_stroke)
     PaintStroke(&skPaint, pGraphState, skMatrix);
   SkPath skPath = BuildPath(pPathData);
