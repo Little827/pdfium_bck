@@ -261,7 +261,7 @@ void CFX_FolderFontInfo::ReportFace(const ByteString& path,
       m_pMapper->AddInstalledFont(facename, FX_CHARSET_Hangul);
       pInfo->m_Charsets |= CHARSET_FLAG_KOREAN;
     }
-    if (codepages & (1 << 31)) {
+    if (codepages & (1U << 31)) {
       m_pMapper->AddInstalledFont(facename, FX_CHARSET_Symbol);
       pInfo->m_Charsets |= CHARSET_FLAG_SYMBOL;
     }
