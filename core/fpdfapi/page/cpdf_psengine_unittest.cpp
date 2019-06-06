@@ -106,3 +106,42 @@ TEST(CPDF_PSEngine, Floor) {
   EXPECT_FLOAT_EQ(-4.0f, DoOperator1(&engine, -4.0000000001f, PSOP_FLOOR));
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0f, PSOP_FLOOR));
 }
+
+TEST(CPDF_PSEngine, Round) {
+  CPDF_PSEngine engine;
+
+  EXPECT_FLOAT_EQ(6.0f, DoOperator1(&engine, 5.9f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(-4.0f, DoOperator1(&engine, -4.0000000001f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(-1.0f, DoOperator1(&engine, -0.9f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0000000001f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(0.0f,
+                  DoOperator1(&engine, 1.17549e-38f, PSOP_ROUND));  // Min float
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, -1.17549e-38f,
+                                    PSOP_ROUND));  // Negative Min float
+  EXPECT_FLOAT_EQ(2.0f, DoOperator1(&engine, 2.3f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(4.0f, DoOperator1(&engine, 3.8f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(6.0f, DoOperator1(&engine, 5.5f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(-2.0f, DoOperator1(&engine, -2.3f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(-4.0f, DoOperator1(&engine, -3.8f, PSOP_ROUND));
+  EXPECT_FLOAT_EQ(-6.0f, DoOperator1(&engine, -5.5f, PSOP_ROUND));
+}
+
+TEST(CPDF_PSEngine, Truncate) {
+  CPDF_PSEngine engine;
+
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, -0.9f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0000000001f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(
+      0.0f, DoOperator1(&engine, 1.17549e-38f, PSOP_TRUNCATE));  // Min float
+  EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, -1.17549e-38f,
+                                    PSOP_TRUNCATE));  // Negative Min float
+  EXPECT_FLOAT_EQ(2.0f, DoOperator1(&engine, 2.3f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(3.0f, DoOperator1(&engine, 3.8f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(5.0f, DoOperator1(&engine, 5.5f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(-2.0f, DoOperator1(&engine, -2.3f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(-3.0f, DoOperator1(&engine, -3.8f, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(-5.0f, DoOperator1(&engine, -5.5f, PSOP_TRUNCATE));
+}
