@@ -269,6 +269,13 @@ int CheckPDFiumCApi() {
     CHK(FPDF_SetFormFieldHighlightAlpha);
     CHK(FPDF_SetFormFieldHighlightColor);
 
+    // fpdf_javascript.h
+    CHK(FPDFDoc_CloseJavaScript);
+    CHK(FPDFDoc_GetJavaScript);
+    CHK(FPDFDoc_GetJavaScriptCount);
+    CHK(FPDFJavaScript_GetName);
+    CHK(FPDFJavaScript_GetScript);
+
     // fpdf_ppo.h
     CHK(FPDF_CopyViewerPreferences);
     CHK(FPDF_ImportNPagesToOne);
