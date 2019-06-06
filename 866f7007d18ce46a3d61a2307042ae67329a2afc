@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ffe30d75_872c4ddd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-06T20:20:01Z",
+      "side": 1,
+      "message": "Created CL for using boolean \"is_paint_stroke\" to replace redundant checks.\nhttps://pdfium-review.googlesource.com/c/pdfium/+/55398",
+      "parentUuid": "dcc4fa59_b271bae4",
+      "revId": "866f7007d18ce46a3d61a2307042ae67329a2afc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa7ab9df_161df700",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 6
