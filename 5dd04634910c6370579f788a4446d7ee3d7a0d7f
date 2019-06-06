@@ -111,6 +111,30 @@
       "revId": "5dd04634910c6370579f788a4446d7ee3d7a0d7f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3aad7bc_db0b1e6b",
+        "filename": "core/fpdfapi/page/cpdf_psengine_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-06T22:29:51Z",
+      "side": 1,
+      "message": "Yes, but since we need \"negative min float\" as well, how about:\n\nfloat min_float \u003d std::numeric_limits\u003cfloat\u003e::min();\nEXPECT_FLOAT_EQ(0.0f, DoOperator1(\u0026engine, min_float, PSOP_ROUND));\nEXPECT_FLOAT_EQ(0.0f, DoOperator1(\u0026engine, -min_float, PSOP_ROUND));\n\nAnd since the variable is already named \"min_float\", there is no need for redundant comments.",
+      "parentUuid": "dbf223e8_f285959a",
+      "range": {
+        "startLine": 120,
+        "startChar": 68,
+        "endLine": 120,
+        "endChar": 80
+      },
+      "revId": "5dd04634910c6370579f788a4446d7ee3d7a0d7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
