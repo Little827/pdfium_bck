@@ -17,6 +17,7 @@
 #include "third_party/base/optional.h"
 #include "xfa/fxfa/layout/cxfa_itemlayoutprocessor.h"
 
+class CXFA_Document;
 class CXFA_LayoutItem;
 class CXFA_Node;
 class CXFA_ViewRecord;
@@ -148,7 +149,8 @@ class CXFA_LayoutPageMgr {
   void MergePageSetContents();
   void LayoutPageSetContents();
   void PrepareLayout();
-  void SaveLayoutItemChildren(CXFA_LayoutItem* pParentLayoutItem);
+  void SaveLayoutItemChildren(CXFA_Document* pDocument,
+                              CXFA_LayoutItem* pParentLayoutItem);
   void ProcessSimplexOrDuplexPageSets(CXFA_ViewLayoutItem* pPageSetLayoutItem,
                                       bool bIsSimplex);
 
