@@ -28,7 +28,7 @@ const uint32_t g_EncodingID[] = {
 std::unique_ptr<CFX_UnicodeEncodingEx> FXFM_CreateFontEncoding(
     CFX_Font* pFont,
     uint32_t nEncodingID) {
-  if (FXFT_Select_Charmap(pFont->GetFace(), nEncodingID))
+  if (FXFT_Select_Charmap(pFont->GetFaceRec(), nEncodingID))
     return nullptr;
   return pdfium::MakeUnique<CFX_UnicodeEncodingEx>(pFont, nEncodingID);
 }
@@ -42,7 +42,7 @@ CFX_UnicodeEncodingEx::CFX_UnicodeEncodingEx(CFX_Font* pFont,
 CFX_UnicodeEncodingEx::~CFX_UnicodeEncodingEx() {}
 
 uint32_t CFX_UnicodeEncodingEx::GlyphFromCharCode(uint32_t charcode) {
-  FXFT_FaceRec* face = m_pFont->GetFace();
+  FXFT_FaceRec* face = m_pFont->GetFaceRec();
   FT_UInt nIndex = FXFT_Get_Char_Index(face, charcode);
   if (nIndex > 0)
     return nIndex;
@@ -71,7 +71,7 @@ uint32_t CFX_UnicodeEncodingEx::CharCodeFromUnicode(wchar_t Unicode) const {
       m_nEncodingID == FXFM_ENCODING_MS_SYMBOL) {
     return Unicode;
   }
-  FXFT_FaceRec* face = m_pFont->GetFace();
+  FXFT_FaceRec* face = m_pFont->GetFaceRec();
   int nmaps = FXFT_Get_Face_CharmapCount(face);
   for (int i = 0; i < nmaps; i++) {
     int nEncodingID =

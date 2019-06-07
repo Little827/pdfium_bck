@@ -8,6 +8,9 @@
 #define CORE_FXGE_FX_FREETYPE_H_
 
 #include <ft2build.h>
+
+#include <memory>
+
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
 #include FT_LCD_FILTER_H
@@ -190,5 +193,14 @@ using FXFT_Outline_Funcs = FT_Outline_Funcs;
 
 int FXFT_unicode_from_adobe_name(const char* glyph_name);
 void FXFT_adobe_name_from_unicode(char* name, wchar_t unicode);
+
+struct FXFTFaceRecDeleter {
+  inline void operator()(FXFT_FaceRec* pRec) {
+    if (pRec)
+      FXFT_Done_Face(pRec);
+  }
+};
+
+using ScopedFXFTFaceRec = std::unique_ptr<FXFT_FaceRec, FXFTFaceRecDeleter>;
 
 #endif  // CORE_FXGE_FX_FREETYPE_H_
