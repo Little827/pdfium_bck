@@ -87,6 +87,24 @@
       "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af04a9ec_10ef61bc",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1910,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-07T19:06:29Z",
+      "side": 1,
+      "message": "New CL created for green line not displayed: \nhttps://pdfium-review.googlesource.com/c/pdfium/+/55722",
+      "parentUuid": "62a1cba0_360045e7",
+      "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
