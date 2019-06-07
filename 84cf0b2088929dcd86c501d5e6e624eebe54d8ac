@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "da9096c1_e1f448ca",
+        "filename": "core/fpdfapi/font/cpdf_fontencoding.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1729,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-07T18:00:41Z",
+      "side": 1,
+      "message": "ah, yeah, this was a quirk of MS std::unique_ptr\u003c\u003e which is no longer user here.  Nevermind.",
+      "parentUuid": "15e39155_53f097cc",
+      "range": {
+        "startLine": 1729,
+        "startChar": 2,
+        "endLine": 1729,
+        "endChar": 15
+      },
+      "revId": "84cf0b2088929dcd86c501d5e6e624eebe54d8ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7b209ad_cbf60a49",
         "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
         "patchSetId": 3
