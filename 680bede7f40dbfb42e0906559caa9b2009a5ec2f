@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "9976a032_9d146a4c",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T18:35:33Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s recursion here. CPDF_TextRenderer::DrawTextPath() calls CFX_RenderDevice::DrawTextPath(), which passes |pGraphState| to CFX_RenderDevice::DrawPathWithBlend((). Did I miss something?",
+      "parentUuid": "56e3db38_09a05313",
+      "range": {
+        "startLine": 35,
+        "startChar": 37,
+        "endLine": 35,
+        "endChar": 75
+      },
+      "revId": "680bede7f40dbfb42e0906559caa9b2009a5ec2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4459fd7b_43d46ead",
         "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "680bede7f40dbfb42e0906559caa9b2009a5ec2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbfd35b_2e318d71",
+        "filename": "core/fpdfapi/render/cpdf_textrenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T18:35:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4459fd7b_43d46ead",
+      "range": {
+        "startLine": 81,
+        "startChar": 39,
+        "endLine": 81,
+        "endChar": 77
+      },
+      "revId": "680bede7f40dbfb42e0906559caa9b2009a5ec2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
