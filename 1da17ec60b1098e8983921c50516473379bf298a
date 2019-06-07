@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31abbd28_6213028f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T16:25:33Z",
+      "side": 1,
+      "message": "nit: Wrap at 72 columns.",
+      "revId": "1da17ec60b1098e8983921c50516473379bf298a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89cf307_0dcd6bce",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T16:25:33Z",
+      "side": 1,
+      "message": "Maybe make these and the ones above 1U for consistency?",
+      "revId": "1da17ec60b1098e8983921c50516473379bf298a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
