@@ -62,6 +62,30 @@
       "revId": "2fca4b16b7d1f19779856004af8f4a7c93d3756d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30aa2da1_84980028",
+        "filename": "core/fpdfapi/page/cpdf_psengine_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T16:41:04Z",
+      "side": 1,
+      "message": "Thanks for the feedback. We can file a separate bug and investigate this in the context of a PDF that has type 4 (PostScript) functions and see if this operation causes the PDF to be rendered differently from other PDF viewers.\n\nSince this CL is just testing the existing behavior, I think this is fine. Though the test may change in the future as part of work on the new bug.",
+      "parentUuid": "92f0e691_6369c86c",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 66
+      },
+      "revId": "2fca4b16b7d1f19779856004af8f4a7c93d3756d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
