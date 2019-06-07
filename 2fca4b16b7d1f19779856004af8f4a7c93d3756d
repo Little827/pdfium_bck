@@ -39,6 +39,29 @@
       "revId": "2fca4b16b7d1f19779856004af8f4a7c93d3756d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f0e691_6369c86c",
+        "filename": "core/fpdfapi/page/cpdf_psengine_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 6585
+      },
+      "writtenOn": "2019-06-07T05:21:25Z",
+      "side": 1,
+      "message": "This behavior is actually wrong. According to PLRM, \"If num1 is equally close to its two nearest\nintegers, round returns the greater of the two.\", \"-5.5 round\" should get \"-5.0\".",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 66
+      },
+      "revId": "2fca4b16b7d1f19779856004af8f4a7c93d3756d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
