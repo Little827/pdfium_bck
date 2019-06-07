@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "723748ce_e139e9f7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-07T01:48:59Z",
+      "side": 1,
+      "message": "Hi Mike, Lei and I would like your input on which is a more preferred solution for the fix. Thank you!",
+      "parentUuid": "41e8c11d_4d494a53",
+      "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62a1cba0_360045e7",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 11
