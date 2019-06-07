@@ -375,21 +375,31 @@ SkBlendMode GetSkiaBlendMode(BlendMode blend_type) {
   }
 }
 
-bool AddColors(const CPDF_ExpIntFunc* pFunc, SkTDArray<SkColor>* skColors) {
+bool AddColors(const CPDF_ExpIntFunc* pFunc,
+               SkTDArray<SkColor>* skColors,
+               bool is_encode_reversed) {
   if (pFunc->CountInputs() != 1)
     return false;
   if (pFunc->m_Exponent != 1)
     return false;
   if (pFunc->m_nOrigOutputs != 3)
     return false;
-  skColors->push_back(
-      SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_BeginValues[0]),
-                     SkUnitScalarClampToByte(pFunc->m_BeginValues[1]),
-                     SkUnitScalarClampToByte(pFunc->m_BeginValues[2])));
-  skColors->push_back(
-      SkColorSetARGB(0xFF, SkUnitScalarClampToByte(pFunc->m_EndValues[0]),
-                     SkUnitScalarClampToByte(pFunc->m_EndValues[1]),
-                     SkUnitScalarClampToByte(pFunc->m_EndValues[2])));
+
+  auto begin_values = pFunc->m_BeginValues.begin();
+  auto end_values = pFunc->m_EndValues.begin();
+  // Depending on whether encode values are in order in each pair, need to
+  // switch the order of calculating begin/end color for each transition
+  if (is_encode_reversed)
+    std::swap(begin_values, end_values);
+
+  skColors->push_back(SkColorSetARGB(0xFF,
+                                     SkUnitScalarClampToByte(begin_values[0]),
+                                     SkUnitScalarClampToByte(begin_values[1]),
+                                     SkUnitScalarClampToByte(begin_values[2])));
+  skColors->push_back(SkColorSetARGB(0xFF,
+                                     SkUnitScalarClampToByte(end_values[0]),
+                                     SkUnitScalarClampToByte(end_values[1]),
+                                     SkUnitScalarClampToByte(end_values[2])));
   return true;
 }
 
@@ -456,7 +466,9 @@ bool AddStitching(const CPDF_StitchFunc* pFunc,
     const CPDF_ExpIntFunc* pSubFunc = subFunctions[i]->ToExpIntFunc();
     if (!pSubFunc)
       return false;
-    if (!AddColors(pSubFunc, skColors))
+    bool is_encode_reversed =
+        !!(pFunc->GetEncode(2 * i) > pFunc->GetEncode(2 * i + 1));
+    if (!AddColors(pSubFunc, skColors, is_encode_reversed))
       return false;
     float boundsEnd =
         i < subFunctionCount - 1 ? pFunc->GetBound(i + 1) : pFunc->GetDomain(1);
@@ -2023,7 +2035,7 @@ bool CFX_SkiaDeviceDriver::DrawShading(const CPDF_ShadingPattern* pPattern,
       if (!AddSamples(pSampledFunc, &skColors, &skPos))
         return false;
     } else if (const CPDF_ExpIntFunc* pExpIntFuc = pFuncs[j]->ToExpIntFunc()) {
-      if (!AddColors(pExpIntFuc, &skColors))
+      if (!AddColors(pExpIntFuc, &skColors, false))
         return false;
       skPos.push_back(0);
       skPos.push_back(1);
