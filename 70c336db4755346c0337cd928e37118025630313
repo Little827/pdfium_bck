@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb2d1a04_0bcf0630",
+        "filename": "core/fxge/cfx_fontmgr.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T22:40:54Z",
+      "side": 1,
+      "message": "Preserve the comment about ordering?",
+      "revId": "70c336db4755346c0337cd928e37118025630313",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
