@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "1482c836_6b0aa082",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 6755
+      },
+      "writtenOn": "2019-06-07T13:47:07Z",
+      "side": 1,
+      "message": "You can pass float colors to gradients if you want. Not saying that is important, but skia no longer requires colors to be 8bit components. Even SkPaint, while it still has a setter/getter for SkColor, really stores a float color (SkColor4f) internally.",
+      "range": {
+        "startLine": 393,
+        "startChar": 29,
+        "endLine": 393,
+        "endChar": 52
+      },
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "579b58e1_1a939072",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
