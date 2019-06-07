@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "a3c08a68_37720c9e",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T22:45:06Z",
+      "side": 1,
+      "message": "I tested a bunch of PDFs with both changes but I\u0027m not seeing any differences. If I had to follow my intuition, I\u0027d say reset it in the Flush functions - FlushText() should have this as well. Let\u0027s try that and see where it goes.",
+      "parentUuid": "3eaba358_080dd325",
+      "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62a1cba0_360045e7",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 11
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "New CL created for green line not displayed: \nhttps://pdfium-review.googlesource.com/c/pdfium/+/55722",
       "parentUuid": "62a1cba0_360045e7",
+      "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18565c9a_8613719a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1910,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T22:45:06Z",
+      "side": 1,
+      "message": "Can we upload an updated patch set to this CL without this change? Please update the CL description as well.",
+      "parentUuid": "af04a9ec_10ef61bc",
       "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
