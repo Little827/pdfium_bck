@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1559869810 -0700\nnonce AC6AUtNbJ08pxG/ndUwHok1Y2JSq7/niD5YtrZ7SOFGSBU6hh0vFKr+JSdDJWCgc+tFHS2D6QNdl\n\n0000000000000000000000000000000000000000 a55ad4bf765d76d04cb31d0e5bbf6c1c4777c400 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlz5uXIACgkQqzYtYVpm\n/Xs3/AgAzLJf/I9RHjD1eT7LKJUNxNeaVnpFvy4PZrzCNZHm3d+aSRKCuGcQqBmH\nGr2AsrVzNRCVfmuCOlCBNrZKI0f7V7P4hcDZk6ZffC689Obm39UZvGjU5piTSVJB\nw03Z8wGEFbWdnWrtxvIXc92Ubua0pPedTxFnDnuBK4QR9jK34tX/KxSunL6zm5pu\nMzOhGGmiL633TGj2Dkh+Rp/QHZV0CISy8lLsNaH6/EOf04+8gEo01LKfFDNdFQ0G\nThiEhMs9tiAP31tgvWKeQTOcfatIpU4hKQWD/U2JQy6YbZZhoReYH7txexI5kt2/\n8XvCsOOewPWTPOtkuEW4QQIpfpOuWw\u003d\u003d\n\u003dfhN6\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8166dca_81623b51",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-07T16:28:21Z",
+      "side": 1,
+      "message": "pre-existing: check return code? Or we don\u0027t care?",
+      "range": {
+        "startLine": 1555,
+        "startChar": 6,
+        "endLine": 1555,
+        "endChar": 38
+      },
+      "revId": "a55ad4bf765d76d04cb31d0e5bbf6c1c4777c400",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
