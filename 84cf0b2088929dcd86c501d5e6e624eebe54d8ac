@@ -22,6 +22,29 @@
       "revId": "84cf0b2088929dcd86c501d5e6e624eebe54d8ac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b209ad_cbf60a49",
+        "filename": "core/fpdfapi/parser/cpdf_syntax_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-07T16:46:50Z",
+      "side": 1,
+      "message": "nit: one-line if not in pdfium style.",
+      "range": {
+        "startLine": 523,
+        "startChar": 3,
+        "endLine": 523,
+        "endChar": 55
+      },
+      "revId": "84cf0b2088929dcd86c501d5e6e624eebe54d8ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
