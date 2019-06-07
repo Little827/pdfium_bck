@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1559896041 -0700\nnonce AC6AUtMbr02FjCzBGyyIrmQzdTu4c3xlR1PE6JJWiSkgXOPlaj7gR+OuH1v3uCzInxqj0vIQtCUo\n\n0000000000000000000000000000000000000000 4a85ecdeed274bf102925fc453705a758801c220 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlz6H+kACgkQqzYtYVpm\n/XvEXwf9ExiTkuuTZ71bZ83vJpf+6Ndy/1A/TjEyFtfcp0NfR8MNubLWds9betjF\nuLtumlcvr44SD8oJSef08YQw5PY/uOE9cmk4mqIJfbqy40P782rz/ov4lyoY1rAD\nOya1/hbarfEIWDpaLAb++u6AMEcU/0qIHTbrj1If/ladnLflh516s3JABt3G5D8Q\nYB867r1XCsOwcIG5tIvKHUmkut3AH6+5jDYXJrd5PzN4YxURKztNiUhKU6M8zx7H\n9qo+XTqIXGruPc4dce1R3owYMpZ37OVg88o892VwaOLwSHbwpXG4aEXkp4VPVSYl\nb5eYX5+kMVpeN+BvBMJtSUEd1gjPIw\u003d\u003d\n\u003dROh0\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c876403_5a2ad167",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-07T16:22:59Z",
+      "side": 1,
+      "message": "bug#?",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "4a85ecdeed274bf102925fc453705a758801c220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7af50aec_f065c991",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-07T16:22:59Z",
+      "side": 1,
+      "message": "not groking \\v?  \n\nMaybe for all these results, being binary \\xNNNN is the form for each value regardless of whether it fits in a more compact representation.",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "4a85ecdeed274bf102925fc453705a758801c220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
