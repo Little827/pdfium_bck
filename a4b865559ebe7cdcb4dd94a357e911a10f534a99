@@ -16,6 +16,24 @@
       "revId": "a4b865559ebe7cdcb4dd94a357e911a10f534a99",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad74f991_b2623aed",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-07T22:39:19Z",
+      "side": 1,
+      "message": "Done - none of this is needed now that we have a scoped type and can shuffle order of apperance in header.",
+      "parentUuid": "51904906_81194eef",
+      "revId": "a4b865559ebe7cdcb4dd94a357e911a10f534a99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
