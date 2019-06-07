@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "24324e45_a86bf8d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T18:41:18Z",
+      "side": 1,
+      "message": "None. Just looking at branches that are missing test coverage.",
+      "parentUuid": "2c876403_5a2ad167",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "4a85ecdeed274bf102925fc453705a758801c220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7af50aec_f065c991",
         "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder_unittest.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "4a85ecdeed274bf102925fc453705a758801c220",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ecd4ce7_de602a51",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-07T18:41:18Z",
+      "side": 1,
+      "message": "Done. Just needed an arbitrary binary character.",
+      "parentUuid": "7af50aec_f065c991",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "4a85ecdeed274bf102925fc453705a758801c220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
