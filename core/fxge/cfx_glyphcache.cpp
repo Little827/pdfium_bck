@@ -95,7 +95,7 @@ void GenKey(UniqueKeyGen* pKeyGen,
 
 }  // namespace
 
-CFX_GlyphCache::CFX_GlyphCache(FXFT_FaceRec* face) : m_Face(face) {}
+CFX_GlyphCache::CFX_GlyphCache(RetainPtr<CFX_Face> face) : m_Face(face) {}
 
 CFX_GlyphCache::~CFX_GlyphCache() = default;
 
@@ -143,17 +143,17 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph(
     }
   }
   ScopedFontTransform scoped_transform(m_Face, &ft_matrix);
-  int load_flags = (m_Face->face_flags & FT_FACE_FLAG_SFNT)
+  int load_flags = (m_Face->GetRec()->face_flags & FT_FACE_FLAG_SFNT)
                        ? FXFT_LOAD_NO_BITMAP
                        : (FXFT_LOAD_NO_BITMAP | FT_LOAD_NO_HINTING);
-  int error = FXFT_Load_Glyph(m_Face, glyph_index, load_flags);
+  int error = FXFT_Load_Glyph(m_Face->GetRec(), glyph_index, load_flags);
   if (error) {
     // if an error is returned, try to reload glyphs without hinting.
     if (load_flags & FT_LOAD_NO_HINTING || load_flags & FT_LOAD_NO_SCALE)
       return nullptr;
 
     load_flags |= FT_LOAD_NO_HINTING;
-    error = FXFT_Load_Glyph(m_Face, glyph_index, load_flags);
+    error = FXFT_Load_Glyph(m_Face->GetRec(), glyph_index, load_flags);
 
     if (error)
       return nullptr;
@@ -177,31 +177,33 @@ std::unique_ptr<CFX_GlyphBitmap> CFX_GlyphCache::RenderGlyph(
             (abs(static_cast<int>(ft_matrix.xx)) +
              abs(static_cast<int>(ft_matrix.xy))) /
             36655;
-    FXFT_Outline_Embolden(FXFT_Get_Glyph_Outline(m_Face),
+    FXFT_Outline_Embolden(FXFT_Get_Glyph_Outline(m_Face->GetRec()),
                           level.ValueOrDefault(0));
   }
   FXFT_Library_SetLcdFilter(CFX_GEModule::Get()->GetFontMgr()->GetFTLibrary(),
                             FT_LCD_FILTER_DEFAULT);
-  error = FXFT_Render_Glyph(m_Face, anti_alias);
+  error = FXFT_Render_Glyph(m_Face->GetRec(), anti_alias);
   if (error)
     return nullptr;
-  int bmwidth = FXFT_Get_Bitmap_Width(FXFT_Get_Glyph_Bitmap(m_Face));
-  int bmheight = FXFT_Get_Bitmap_Rows(FXFT_Get_Glyph_Bitmap(m_Face));
+  int bmwidth = FXFT_Get_Bitmap_Width(FXFT_Get_Glyph_Bitmap(m_Face->GetRec()));
+  int bmheight = FXFT_Get_Bitmap_Rows(FXFT_Get_Glyph_Bitmap(m_Face->GetRec()));
   if (bmwidth > kMaxGlyphDimension || bmheight > kMaxGlyphDimension)
     return nullptr;
   int dib_width = bmwidth;
   auto pGlyphBitmap = pdfium::MakeUnique<CFX_GlyphBitmap>(
-      FXFT_Get_Glyph_BitmapLeft(m_Face), FXFT_Get_Glyph_BitmapTop(m_Face));
+      FXFT_Get_Glyph_BitmapLeft(m_Face->GetRec()),
+      FXFT_Get_Glyph_BitmapTop(m_Face->GetRec()));
   pGlyphBitmap->GetBitmap()->Create(
       dib_width, bmheight,
       anti_alias == FXFT_RENDER_MODE_MONO ? FXDIB_1bppMask : FXDIB_8bppMask);
   int dest_pitch = pGlyphBitmap->GetBitmap()->GetPitch();
-  int src_pitch = FXFT_Get_Bitmap_Pitch(FXFT_Get_Glyph_Bitmap(m_Face));
+  int src_pitch =
+      FXFT_Get_Bitmap_Pitch(FXFT_Get_Glyph_Bitmap(m_Face->GetRec()));
   uint8_t* pDestBuf = pGlyphBitmap->GetBitmap()->GetBuffer();
   uint8_t* pSrcBuf = static_cast<uint8_t*>(
-      FXFT_Get_Bitmap_Buffer(FXFT_Get_Glyph_Bitmap(m_Face)));
+      FXFT_Get_Bitmap_Buffer(FXFT_Get_Glyph_Bitmap(m_Face->GetRec())));
   if (anti_alias != FXFT_RENDER_MODE_MONO &&
-      FXFT_Get_Bitmap_PixelMode(FXFT_Get_Glyph_Bitmap(m_Face)) ==
+      FXFT_Get_Bitmap_PixelMode(FXFT_Get_Glyph_Bitmap(m_Face->GetRec())) ==
           FXFT_PIXEL_MODE_MONO) {
     int bytes = anti_alias == FXFT_RENDER_MODE_LCD ? 3 : 1;
     for (int i = 0; i < bmheight; i++) {
