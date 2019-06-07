@@ -46,7 +46,7 @@ ByteString CFPF_SkiaFont::GetPsName() {
 int32_t CFPF_SkiaFont::GetGlyphIndex(wchar_t wUnicode) {
   if (!m_Face)
     return wUnicode;
-  if (FXFT_Select_Charmap(m_Face, FXFT_ENCODING_UNICODE))
+  if (FXFT_Select_Charmap(m_Face, FT_ENCODING_UNICODE))
     return 0;
   return FXFT_Get_Char_Index(m_Face, wUnicode);
 }
@@ -54,9 +54,8 @@ int32_t CFPF_SkiaFont::GetGlyphIndex(wchar_t wUnicode) {
 int32_t CFPF_SkiaFont::GetGlyphWidth(int32_t iGlyphIndex) {
   if (!m_Face)
     return 0;
-  if (FXFT_Load_Glyph(
-          m_Face, iGlyphIndex,
-          FXFT_LOAD_NO_SCALE | FXFT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
+  if (FXFT_Load_Glyph(m_Face, iGlyphIndex,
+                      FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
     return 0;
   }
   return FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
@@ -84,17 +83,17 @@ bool CFPF_SkiaFont::GetGlyphBBox(int32_t iGlyphIndex, FX_RECT& rtBBox) {
     if (FXFT_Set_Char_Size(m_Face, 0, 1000 * 64, 72, 72))
       return false;
     if (FXFT_Load_Glyph(m_Face, iGlyphIndex,
-                        FXFT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
+                        FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
       FXFT_Set_Pixel_Sizes(m_Face, 0, 64);
       return false;
     }
-    FXFT_Glyph glyph;
+    FT_Glyph glyph;
     if (FXFT_Get_Glyph(m_Face->glyph, &glyph)) {
       FXFT_Set_Pixel_Sizes(m_Face, 0, 64);
       return false;
     }
-    FXFT_BBox cbox;
-    FXFT_Glyph_Get_CBox(glyph, FXFT_GLYPH_BBOX_PIXELS, &cbox);
+    FT_BBox cbox;
+    FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_PIXELS, &cbox);
     int32_t x_ppem = m_Face->size->metrics.x_ppem;
     int32_t y_ppem = m_Face->size->metrics.y_ppem;
     rtBBox.left = FPF_EM_ADJUST(x_ppem, cbox.xMin);
@@ -106,9 +105,8 @@ bool CFPF_SkiaFont::GetGlyphBBox(int32_t iGlyphIndex, FX_RECT& rtBBox) {
     FXFT_Done_Glyph(glyph);
     return FXFT_Set_Pixel_Sizes(m_Face, 0, 64) == 0;
   }
-  if (FXFT_Load_Glyph(
-          m_Face, iGlyphIndex,
-          FXFT_LOAD_NO_SCALE | FXFT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
+  if (FXFT_Load_Glyph(m_Face, iGlyphIndex,
+                      FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH)) {
     return false;
   }
   rtBBox.left = FPF_EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face),
