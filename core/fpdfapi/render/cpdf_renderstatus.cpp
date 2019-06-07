@@ -1555,7 +1555,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
       CPDF_TextRenderer::DrawTextPath(
           &text_device, textobj->GetCharCodes(), textobj->GetCharPositions(),
           textobj->m_TextState.GetFont(), textobj->m_TextState.GetFontSize(),
-          &text_matrix, &new_matrix, textobj->m_GraphState.GetObject(),
+          text_matrix, &new_matrix, textobj->m_GraphState.GetObject(),
           (FX_ARGB)-1, 0, nullptr, 0);
     }
   }
@@ -1769,7 +1769,7 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
       flag |= FXFILL_NOPATHSMOOTH;
     return CPDF_TextRenderer::DrawTextPath(
         m_pDevice, textobj->GetCharCodes(), textobj->GetCharPositions(), pFont,
-        font_size, &text_matrix, pDeviceMatrix,
+        font_size, text_matrix, pDeviceMatrix,
         textobj->m_GraphState.GetObject(), fill_argb, stroke_argb,
         pClippingPath, flag);
   }
