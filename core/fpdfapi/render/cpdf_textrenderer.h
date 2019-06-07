@@ -31,7 +31,7 @@ class CPDF_TextRenderer {
                              const ByteString& str,
                              FX_ARGB fill_argb,
                              const CFX_GraphStateData* pGraphState,
-                             const CPDF_RenderOptions* pOptions);
+                             const CPDF_RenderOptions& options);
 
   static bool DrawTextPath(CFX_RenderDevice* pDevice,
                            const std::vector<uint32_t>& charCodes,
@@ -53,7 +53,7 @@ class CPDF_TextRenderer {
                              float font_size,
                              const CFX_Matrix& mtText2Device,
                              FX_ARGB fill_argb,
-                             const CPDF_RenderOptions* pOptions);
+                             const CPDF_RenderOptions& options);
 
   CPDF_TextRenderer() = delete;
   CPDF_TextRenderer(const CPDF_TextRenderer&) = delete;
