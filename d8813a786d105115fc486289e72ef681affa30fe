@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "fa1516cc_fdf8bb6b",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-07T20:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e54d3225_d80b74e5",
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1482c836_6b0aa082",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
@@ -47,6 +65,30 @@
       "writtenOn": "2019-06-07T13:47:07Z",
       "side": 1,
       "message": "You can pass float colors to gradients if you want. Not saying that is important, but skia no longer requires colors to be 8bit components. Even SkPaint, while it still has a setter/getter for SkColor, really stores a float color (SkColor4f) internally.",
+      "range": {
+        "startLine": 393,
+        "startChar": 29,
+        "endLine": 393,
+        "endChar": 52
+      },
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95066c97_de469707",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-07T20:59:11Z",
+      "side": 1,
+      "message": "SkUnitScalarClampToByte() still does the conversion of \nSkScalarPin(x, 0, 1) * 255 + 0.5 (x as the input value), maybe I should keep using this function here? Since if I directly use SkColor4f here, the code will affect other shadingtype code as well(inside CFX_SkiaDeviceDriver::DrawShading()).\n\nDo you think it\u0027s better to make SkUnitScalarClampToByte() to return float type instead of \nU8CPU type?",
+      "parentUuid": "1482c836_6b0aa082",
       "range": {
         "startLine": 393,
         "startChar": 29,
@@ -73,6 +115,24 @@
       "revId": "d8813a786d105115fc486289e72ef681affa30fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9767bf7_b9c84493",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-07T20:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579b58e1_1a939072",
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
