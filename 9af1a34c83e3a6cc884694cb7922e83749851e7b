@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "41e8c11d_4d494a53",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-07T00:50:09Z",
+      "side": 1,
+      "message": "Both solutions will solve the problem and I was debating about where to fix it. \n\nFixing inside DrawPath() is more like fixing at the assigning value stage and it makes the value change of m_drawMatrix clearer. \n\nWhile fixing inside FlushPath() is more about clearing old values, so that m_drawMatrix will always have the correct value instead of waiting until next round of drawing starts. But if next round of drawing has pMatrix !\u003d null, that means m_drawMatrix has to go through both steps of getting reset and reassigning value.\n\nI think now I\u0027m more leaning towards the fix you suggest.",
+      "parentUuid": "95a60b28_edd9c8b8",
+      "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62a1cba0_360045e7",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 11
