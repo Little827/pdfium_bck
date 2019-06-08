@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "040b5dfe_22b964b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T01:04:07Z",
+      "side": 1,
+      "message": "Too long, let\u0027s just use \"[SkiaPath]\" as a prefix.",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "c58aaed29b5537143bba22cb5d301accacf23a1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571c52c9_d49c14b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T01:04:07Z",
+      "side": 1,
+      "message": "This is how I would write the CL description. Added other comments to explain why.\n\n[SkiaPath] Fix issue with missing line.\n\nIn bug_1296.pdf, the black line was drawn, but not visible. This is\nbecause it is still using the matrix from the previous operation that\ndrew the green line. To fix this, reset |SkiaState::m_drawMatrix| to the\nidentity matrix in FlushDraw() and FlushText().",
+      "revId": "c58aaed29b5537143bba22cb5d301accacf23a1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2521155f_10f521cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T01:04:07Z",
+      "side": 1,
+      "message": "Use the present tense for what the CL is doing, and the past tense for what the original code did. Also, as is, this should have been \"Fixed issue with a line ...\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "c58aaed29b5537143bba22cb5d301accacf23a1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c75be23_31e85a73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T01:04:07Z",
+      "side": 1,
+      "message": "As before, refer to variables as |name|. Otherwise, if you have a variable named cat, this sentence would say \"cat in DrawPath\" which is weird.",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "c58aaed29b5537143bba22cb5d301accacf23a1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c5f09fe_31750b8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T01:04:07Z",
+      "side": 1,
+      "message": "Because code is changing all the time, it is not always helpful to refer to line numbers like this. By the time someone reads this message, line 738 may have become line 739.",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "c58aaed29b5537143bba22cb5d301accacf23a1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2cd765_b493769e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T01:04:07Z",
+      "side": 1,
+      "message": "It\u0027s not clear what \"component\" means here. Is that 1 drawing command, or all drawing commands of the same type that have been accumulated? Easier to just say reset in FlushDraw() / FlushText().",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "c58aaed29b5537143bba22cb5d301accacf23a1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d5c3c59_aa81275a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T01:04:07Z",
+      "side": 1,
+      "message": "identity matrix",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "c58aaed29b5537143bba22cb5d301accacf23a1d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
