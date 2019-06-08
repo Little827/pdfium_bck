@@ -76,6 +76,40 @@
     },
     {
       "key": {
+        "uuid": "ceb3b7fb_863d825d",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T00:28:28Z",
+      "side": 1,
+      "message": "Minimization: First add CFX_GlyphCache::GetFaceRec() to return |m_Face|. Then in this CL, change what GetFaceRec() returns.",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9d0f7d_5f50c4c4",
+        "filename": "core/fxge/cttfontdesc.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T00:28:28Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8bf708b_ffef7a0f",
         "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
         "patchSetId": 21
