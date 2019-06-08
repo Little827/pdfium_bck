@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "ca60c954_fb49a105",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-08T00:55:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3c08a68_37720c9e",
+      "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62a1cba0_360045e7",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 11
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "Can we upload an updated patch set to this CL without this change? Please update the CL description as well.",
       "parentUuid": "af04a9ec_10ef61bc",
+      "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24fe90c9_5c11d072",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1910,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-08T00:55:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18565c9a_8613719a",
       "revId": "9af1a34c83e3a6cc884694cb7922e83749851e7b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
