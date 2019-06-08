@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "16fcd97b_7e21e3bb",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-08T00:11:21Z",
+      "side": 1,
+      "message": "Switch to GetFaceRec() here to match lines 387 / 389?",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b906bf50_6d9d38ed",
         "filename": "core/fpdfapi/font/cpdf_truetypefont.cpp",
         "patchSetId": 21
