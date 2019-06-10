@@ -101,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "2842ace3_f7813c35",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 6755
+      },
+      "writtenOn": "2019-06-10T12:11:09Z",
+      "side": 1,
+      "message": "It was just a suggestion. If you\u0027re fine clamping values to 0...1 as bytes (as the code used to do) then there is no need to make a change. Skia is fine with these values. I was just pointing out a new feature in skia: its ability to store/draw float values.",
+      "parentUuid": "95066c97_de469707",
+      "range": {
+        "startLine": 393,
+        "startChar": 29,
+        "endLine": 393,
+        "endChar": 52
+      },
+      "revId": "d8813a786d105115fc486289e72ef681affa30fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "579b58e1_1a939072",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
