@@ -7,6 +7,7 @@
 #include "fxjs/xfa/cjx_node.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/ptr_util.h"
+#include "xfa/fxfa/layout/cxfa_layoutprocessor.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
 namespace {
@@ -31,7 +32,8 @@ class TestNode final : public CXFA_Node {
 class CXFANodeTest : public testing::Test {
  public:
   void SetUp() override {
-    doc_ = pdfium::MakeUnique<CXFA_Document>(nullptr);
+    doc_ = pdfium::MakeUnique<CXFA_Document>(
+        nullptr, pdfium::MakeUnique<CXFA_LayoutProcessor>());
     node_ = pdfium::MakeUnique<TestNode>(doc_.get());
   }
 
