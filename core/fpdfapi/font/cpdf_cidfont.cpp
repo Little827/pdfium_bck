@@ -382,11 +382,11 @@ bool CPDF_CIDFont::Load() {
   if (m_Charset != CIDSET_UNKNOWN) {
     m_pCID2UnicodeMap = manager->GetCID2UnicodeMap(m_Charset);
   }
-  if (m_Font.GetFace()) {
+  if (m_Font.GetFaceRec()) {
     if (m_bType1)
-      FXFT_Select_Charmap(m_Font.GetFace(), FT_ENCODING_UNICODE);
+      FXFT_Select_Charmap(m_Font.GetFaceRec(), FT_ENCODING_UNICODE);
     else
-      FT_UseCIDCharmap(m_Font.GetFace(), m_pCMap->GetCoding());
+      FT_UseCIDCharmap(m_Font.GetFaceRec(), m_pCMap->GetCoding());
   }
   m_DefaultWidth = pCIDFontDict->GetIntegerFor("DW", 1000);
   const CPDF_Array* pWidthArray = pCIDFontDict->GetArrayFor("W");
@@ -426,7 +426,7 @@ FX_RECT CPDF_CIDFont::GetCharBBox(uint32_t charcode) {
   FX_RECT rect;
   bool bVert = false;
   int glyph_index = GlyphFromCharCode(charcode, &bVert);
-  FXFT_FaceRec* face = m_Font.GetFace();
+  FXFT_FaceRec* face = m_Font.GetFaceRec();
   if (face) {
     if (FXFT_Is_Face_Tricky(face)) {
       int err =
@@ -554,8 +554,8 @@ int CPDF_CIDFont::GetGlyphIndex(uint32_t unicode, bool* pVertGlyph) {
   if (pVertGlyph)
     *pVertGlyph = false;
 
-  FXFT_FaceRec* face = m_Font.GetFace();
-  int index = FT_Get_Char_Index(face, unicode);
+  RetainPtr<CFX_Face> face = m_Font.GetFace();
+  int index = FT_Get_Char_Index(face->GetRec(), unicode);
   if (unicode == 0x2502)
     return index;
 
@@ -567,13 +567,14 @@ int CPDF_CIDFont::GetGlyphIndex(uint32_t unicode, bool* pVertGlyph) {
 
   if (!m_Font.GetSubData()) {
     unsigned long length = 0;
-    int error = FT_Load_Sfnt_Table(face, FT_MAKE_TAG('G', 'S', 'U', 'B'), 0,
-                                   nullptr, &length);
+    int error = FT_Load_Sfnt_Table(
+        face->GetRec(), FT_MAKE_TAG('G', 'S', 'U', 'B'), 0, nullptr, &length);
     if (!error)
       m_Font.SetSubData(FX_Alloc(uint8_t, length));
   }
-  int error = FT_Load_Sfnt_Table(face, FT_MAKE_TAG('G', 'S', 'U', 'B'), 0,
-                                 m_Font.GetSubData(), nullptr);
+  int error =
+      FT_Load_Sfnt_Table(face->GetRec(), FT_MAKE_TAG('G', 'S', 'U', 'B'), 0,
+                         m_Font.GetSubData(), nullptr);
   if (error || !m_Font.GetSubData())
     return index;
 
@@ -623,14 +624,14 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
           unicode = unicode_str[0];
       }
     }
-    FXFT_FaceRec* face = m_Font.GetFace();
+    RetainPtr<CFX_Face> face = m_Font.GetFace();
     if (unicode == 0) {
       if (!m_bAdobeCourierStd)
         return charcode ? static_cast<int>(charcode) : -1;
 
       charcode += 31;
-      bool bMSUnicode = FT_UseTTCharmap(face, 3, 1);
-      bool bMacRoman = !bMSUnicode && FT_UseTTCharmap(face, 1, 0);
+      bool bMSUnicode = FT_UseTTCharmap(face->GetRec(), 3, 1);
+      bool bMacRoman = !bMSUnicode && FT_UseTTCharmap(face->GetRec(), 1, 0);
       int iBaseEncoding = PDFFONT_ENCODING_STANDARD;
       if (bMSUnicode)
         iBaseEncoding = PDFFONT_ENCODING_WINANSI;
@@ -647,16 +648,16 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
         return charcode ? static_cast<int>(charcode) : -1;
 
       if (iBaseEncoding == PDFFONT_ENCODING_STANDARD)
-        return FT_Get_Char_Index(face, name_unicode);
+        return FT_Get_Char_Index(face->GetRec(), name_unicode);
 
       if (iBaseEncoding == PDFFONT_ENCODING_WINANSI) {
-        index = FT_Get_Char_Index(face, name_unicode);
+        index = FT_Get_Char_Index(face->GetRec(), name_unicode);
       } else {
         ASSERT(iBaseEncoding == PDFFONT_ENCODING_MACROMAN);
         uint32_t maccode =
             FT_CharCodeFromUnicode(FT_ENCODING_APPLE_ROMAN, name_unicode);
-        index = maccode ? FT_Get_Char_Index(face, maccode)
-                        : FXFT_Get_Name_Index(face, name);
+        index = maccode ? FT_Get_Char_Index(face->GetRec(), maccode)
+                        : FXFT_Get_Name_Index(face->GetRec(), name);
       }
       if (index == 0 || index == 0xffff)
         return charcode ? static_cast<int>(charcode) : -1;
@@ -674,25 +675,28 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
     if (!face)
       return unicode;
 
-    int err = FXFT_Select_Charmap(face, FT_ENCODING_UNICODE);
+    int err = FXFT_Select_Charmap(face->GetRec(), FT_ENCODING_UNICODE);
     if (err) {
       int i;
-      for (i = 0; i < FXFT_Get_Face_CharmapCount(face); i++) {
+      for (i = 0; i < FXFT_Get_Face_CharmapCount(face->GetRec()); i++) {
         uint32_t ret = FT_CharCodeFromUnicode(
-            FXFT_Get_Charmap_Encoding(FXFT_Get_Face_Charmaps(face)[i]),
+            FXFT_Get_Charmap_Encoding(
+                FXFT_Get_Face_Charmaps(face->GetRec())[i]),
             static_cast<wchar_t>(charcode));
         if (ret == 0)
           continue;
-        FT_Set_Charmap(face, FXFT_Get_Face_Charmaps(face)[i]);
+        FT_Set_Charmap(face->GetRec(),
+                       FXFT_Get_Face_Charmaps(face->GetRec())[i]);
         unicode = static_cast<wchar_t>(ret);
         break;
       }
-      if (i == FXFT_Get_Face_CharmapCount(face) && i) {
-        FT_Set_Charmap(face, FXFT_Get_Face_Charmaps(face)[0]);
+      if (i == FXFT_Get_Face_CharmapCount(face->GetRec()) && i) {
+        FT_Set_Charmap(face->GetRec(),
+                       FXFT_Get_Face_Charmaps(face->GetRec())[0]);
         unicode = static_cast<wchar_t>(charcode);
       }
     }
-    if (FXFT_Get_Face_Charmap(face)) {
+    if (FXFT_Get_Face_Charmap(face->GetRec())) {
       int index = GetGlyphIndex(unicode, pVertGlyph);
       return index != 0 ? index : -1;
     }
@@ -709,10 +713,10 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
     if (m_pFontFile && m_pCMap->IsDirectCharcodeToCIDTableIsEmpty())
       return cid;
     if (m_pCMap->GetCoding() == CIDCODING_UNKNOWN ||
-        !FXFT_Get_Face_Charmap(m_Font.GetFace())) {
+        !FXFT_Get_Face_Charmap(m_Font.GetFaceRec())) {
       return cid;
     }
-    if (FXFT_Get_Charmap_Encoding(FXFT_Get_Face_Charmap(m_Font.GetFace())) ==
+    if (FXFT_Get_Charmap_Encoding(FXFT_Get_Face_Charmap(m_Font.GetFaceRec())) ==
         FT_ENCODING_UNICODE) {
       WideString unicode_str = UnicodeFromCharCode(charcode);
       if (unicode_str.IsEmpty())
