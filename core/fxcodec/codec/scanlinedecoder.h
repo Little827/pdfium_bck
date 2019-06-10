@@ -4,24 +4,26 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FXCODEC_CODEC_CCODEC_SCANLINEDECODER_H_
-#define CORE_FXCODEC_CODEC_CCODEC_SCANLINEDECODER_H_
+#ifndef CORE_FXCODEC_CODEC_SCANLINEDECODER_H_
+#define CORE_FXCODEC_CODEC_SCANLINEDECODER_H_
 
 #include "core/fxcrt/fx_system.h"
 
 class PauseIndicatorIface;
 
-class CCodec_ScanlineDecoder {
+namespace fxcodec {
+
+class ScanlineDecoder {
  public:
-  CCodec_ScanlineDecoder();
-  CCodec_ScanlineDecoder(int nOrigWidth,
-                         int nOrigHeight,
-                         int nOutputWidth,
-                         int nOutputHeight,
-                         int nComps,
-                         int nBpc,
-                         uint32_t nPitch);
-  virtual ~CCodec_ScanlineDecoder();
+  ScanlineDecoder();
+  ScanlineDecoder(int nOrigWidth,
+                  int nOrigHeight,
+                  int nOutputWidth,
+                  int nOutputHeight,
+                  int nComps,
+                  int nBpc,
+                  uint32_t nPitch);
+  virtual ~ScanlineDecoder();
 
   const uint8_t* GetScanline(int line);
   bool SkipToScanline(int line, PauseIndicatorIface* pPause);
@@ -50,4 +52,8 @@ class CCodec_ScanlineDecoder {
   uint8_t* m_pLastScanline;
 };
 
-#endif  // CORE_FXCODEC_CODEC_CCODEC_SCANLINEDECODER_H_
+}  // namespace fxcodec
+
+using ScanlineDecoder = fxcodec::ScanlineDecoder;
+
+#endif  // CORE_FXCODEC_CODEC_SCANLINEDECODER_H_
