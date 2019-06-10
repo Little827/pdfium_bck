@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "930ad6ec_a2b4db71",
+        "filename": "core/fpdfapi/font/cpdf_truetypefont.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T18:55:23Z",
+      "side": 1,
+      "message": "I\u0027ll split this off into another CL to minimize first.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "21550ed4a8d675e1d286d6ea8c07e1f5c9ad7284",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
