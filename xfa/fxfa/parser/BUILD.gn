@@ -713,6 +713,7 @@ pdfium_unittest_source_set("unittests") {
   deps = [
     ":parser",
     "../../../fxjs",
+    "../layout",
   ]
   pdfium_root_dir = "../../../"
 }
