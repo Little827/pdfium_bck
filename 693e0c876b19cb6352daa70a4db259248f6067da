@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "32068e59_be409b65",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T17:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16fcd97b_7e21e3bb",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b906bf50_6d9d38ed",
         "filename": "core/fpdfapi/font/cpdf_truetypefont.cpp",
         "patchSetId": 21
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5c71ef84_64d38cc1",
+        "filename": "core/fpdfapi/font/cpdf_truetypefont.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T17:17:58Z",
+      "side": 1,
+      "message": "Seems so, I don\u0027t think the facerec gets changed here. Done.",
+      "parentUuid": "b906bf50_6d9d38ed",
+      "range": {
+        "startLine": 104,
+        "startChar": 44,
+        "endLine": 104,
+        "endChar": 63
+      },
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1d6c7b7_ce211271",
         "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
         "patchSetId": 21
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "c7ca39ef_2c9e3a01",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T17:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1d6c7b7_ce211271",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d96b3e33_d0abd1b8",
         "filename": "core/fxge/cfx_font.h",
         "patchSetId": 21
@@ -73,6 +133,24 @@
       "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6bbd961_3f931284",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T17:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d96b3e33_d0abd1b8",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "b947f597_f5cbc128",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T17:17:58Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/55775",
+      "parentUuid": "8555e6ab_93fc7dbb",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b9d0f7d_5f50c4c4",
         "filename": "core/fxge/cttfontdesc.h",
         "patchSetId": 21
@@ -122,6 +218,24 @@
       "writtenOn": "2019-06-08T00:28:28Z",
       "side": 1,
       "message": "No longer needed?",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc980627_d60fe81b",
+        "filename": "core/fxge/cttfontdesc.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T17:17:58Z",
+      "side": 1,
+      "message": "Hooray.  Gone.  Horrible burden to inflict on your callers, eh?",
+      "parentUuid": "2b9d0f7d_5f50c4c4",
       "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -142,6 +256,24 @@
       "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5623c9b7_f49074e9",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-10T17:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8bf708b_ffef7a0f",
+      "revId": "693e0c876b19cb6352daa70a4db259248f6067da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
