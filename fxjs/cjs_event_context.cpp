@@ -7,14 +7,14 @@
 #include "fxjs/cjs_event_context.h"
 
 #include "core/fxcrt/autorestorer.h"
-#include "fxjs/cjs_eventhandler.h"
+#include "fxjs/cjs_eventrecorder.h"
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
 
 CJS_EventContext::CJS_EventContext(CJS_Runtime* pRuntime)
     : m_pRuntime(pRuntime),
-      m_pEventHandler(new CJS_EventHandler(this)),
+      m_pEventHandler(new CJS_EventRecorder(this)),
       m_bBusy(false) {
   ASSERT(pRuntime);
 }
