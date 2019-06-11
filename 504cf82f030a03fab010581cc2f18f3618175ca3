@@ -17,6 +17,24 @@
       "revId": "504cf82f030a03fab010581cc2f18f3618175ca3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024b16d9_a66ce03b",
+        "filename": "core/fpdfapi/render/cpdf_dibbase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-11T23:17:11Z",
+      "side": 1,
+      "message": "Not strictly needed when the namespace is so short. I believe \"git cl format\" will add it for you when it thinks it is needed.",
+      "parentUuid": "e71bba9a_86666a5f",
+      "revId": "504cf82f030a03fab010581cc2f18f3618175ca3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
