@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abbe35aa_04d741cb",
+        "filename": "fxjs/cjs_event_context.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-11T23:27:44Z",
+      "side": 1,
+      "message": "IWYU. third_party/base/ptr_util.h is currently included by magic.",
+      "revId": "8546ad1c3704b026be152dc2562a1c74bd01890e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
