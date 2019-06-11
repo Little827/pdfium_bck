@@ -46,6 +46,30 @@
       "revId": "948644125c9562f90fced9a31b20a8eebcd69401",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeea5d84_277af46e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-11T20:36:06Z",
+      "side": 1,
+      "message": "No, I mean the summary line was fine as is. We are using [SkiaPath] as a tag for the CL. But in the detailed description, we can just write plain English.",
+      "parentUuid": "8d763a52_59036ca8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "948644125c9562f90fced9a31b20a8eebcd69401",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
