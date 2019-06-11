@@ -138,18 +138,18 @@ class CJS_EventRecorder {
   void OnExternal_Exec();
 
   void Destroy();
-  bool IsValid() const;
 
   JS_EVENT_T EventType() const { return m_eEventType; }
+  bool IsValid() const { return m_bValid; }
   bool IsUserGesture() const;
   WideString& Change();
-  WideString ChangeEx() const;
+  WideString ChangeEx() const { return m_WideStrChangeEx; }
   WideString SourceName() const { return m_strSourceName; }
   WideString TargetName() const { return m_strTargetName; }
-  int CommitKey() const;
-  bool FieldFull() const;
-  bool KeyDown() const;
-  bool Modifier() const;
+  int CommitKey() const { return m_nCommitKey; }
+  bool FieldFull() const { return m_bFieldFull; }
+  bool KeyDown() const { return m_bKeyDown; }
+  bool Modifier() const { return m_bModifier; }
   ByteStringView Name() const;
   ByteStringView Type() const;
   bool& Rc();
@@ -157,12 +157,14 @@ class CJS_EventRecorder {
   int SelStart() const;
   void SetSelEnd(int value);
   void SetSelStart(int value);
-  bool Shift() const;
-  WideString& Value();
-  bool WillCommit() const;
+  bool Shift() const { return m_bShift; }
+  bool HasValue() const { return !!m_pValue; }
+  WideString& Value() { return *m_pValue; }
+  bool WillCommit() const { return m_bWillCommit; }
   CPDFSDK_FormFillEnvironment* GetFormFillEnvironment() const {
     return m_pTargetFormFillEnv.Get();
   }
+
   void SetRCForTest(bool* pRC) { m_pbRc = pRC; }
   void SetStrChangeForTest(WideString* pStrChange) {
     m_pWideStrChange = pStrChange;
