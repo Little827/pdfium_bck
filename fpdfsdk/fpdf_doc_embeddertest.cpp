@@ -439,6 +439,25 @@ TEST_F(FPDFDocEmbedderTest, DeletePage) {
   EXPECT_EQ(0, FPDF_GetPageCount(document()));
 }
 
+TEST_F(FPDFDocEmbedderTest, DeletePageXFA) {
+  // Helper method to hash a page's bitmap
+  std::function<std::string(int)> HashPage =
+    [this] (int pageno) {
+      FPDF_PAGE page = LoadPage(pageno);
+      EXPECT_TRUE(page);
+      ScopedFPDFBitmap bitmap = RenderLoadedPage(page);
+      std::string ret = HashBitmap(bitmap.get());
+      UnloadPage(page);
+      return ret;
+    };
+
+  EXPECT_TRUE(OpenDocument("rectangles_multi_pages.pdf"));
+  std::string page2hash = HashPage(2);
+  FPDFPage_Delete(nullptr, 0);  // Page 2 turns into page 1
+  std::string page1hash = HashPage(1);
+  EXPECT_EQ(page2hash, page1hash);
+}
+
 TEST_F(FPDFDocEmbedderTest, GetMetaText) {
   ASSERT_TRUE(OpenDocument("bug_601362.pdf"));
 
