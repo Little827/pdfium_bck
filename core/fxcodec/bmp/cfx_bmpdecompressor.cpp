@@ -34,7 +34,8 @@ uint8_t HalfRoundUp(uint8_t value) {
 
 }  // namespace
 
-CFX_BmpDecompressor::CFX_BmpDecompressor() = default;
+CFX_BmpDecompressor::CFX_BmpDecompressor(CFX_BmpContext* context)
+    : context_(context) {}
 
 CFX_BmpDecompressor::~CFX_BmpDecompressor() = default;
 
@@ -44,11 +45,11 @@ void CFX_BmpDecompressor::Error() {
 
 void CFX_BmpDecompressor::ReadScanline(uint32_t row_num,
                                        const std::vector<uint8_t>& row_buf) {
-  context_ptr_->m_pDelegate->BmpReadScanline(row_num, row_buf);
+  context_->m_pDelegate->BmpReadScanline(row_num, row_buf);
 }
 
 bool CFX_BmpDecompressor::GetDataPosition(uint32_t rcd_pos) {
-  return context_ptr_->m_pDelegate->BmpInputImagePositionBuf(rcd_pos);
+  return context_->m_pDelegate->BmpInputImagePositionBuf(rcd_pos);
 }
 
 int32_t CFX_BmpDecompressor::ReadHeader() {
