@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d1c8421_26b8915e",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:59:25Z",
+      "side": 1,
+      "message": "Already did in the previous CL.",
+      "parentUuid": "5392054c_904ad1b9",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "b8b703d2fb80f6ed27e1a1664a47ee7d0cb37802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d84e907_8cb264cb",
         "filename": "core/fxcodec/codec/bmpmodule.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9c9ba77b_34bc7470",
+        "filename": "core/fxcodec/codec/bmpmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:59:25Z",
+      "side": 1,
+      "message": "That does not fit well with the callers in CCodec_ProgressiveDecoder::BmpDetectImageTypeInBuffer().",
+      "parentUuid": "5d84e907_8cb264cb",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 68
+      },
+      "revId": "b8b703d2fb80f6ed27e1a1664a47ee7d0cb37802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "543ee832_efaefad9",
         "filename": "core/fxcodec/codec/bmpmodule.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-06-12T16:44:57Z",
       "side": 1,
       "message": "kinda wish we had an enum here if this means something special. Or maybe booelan function return value?",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "b8b703d2fb80f6ed27e1a1664a47ee7d0cb37802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5227ef6_b1f8731c",
+        "filename": "core/fxcodec/codec/bmpmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:59:25Z",
+      "side": 1,
+      "message": "It\u0027s a general problem with codec code. Will follow up separately.",
+      "parentUuid": "543ee832_efaefad9",
       "range": {
         "startLine": 44,
         "startChar": 9,
