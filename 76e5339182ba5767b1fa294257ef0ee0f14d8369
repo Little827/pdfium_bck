@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560319110 -0700\nnonce AC6AUtPbpzWOKETyZVunjgUPJyKWxxyYoOdQUBqvWXfKA89StB6YNyO8WbF2vsFV/WtTXy5O+aTh\n\n0000000000000000000000000000000000000000 76e5339182ba5767b1fa294257ef0ee0f14d8369 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0AlIYACgkQqzYtYVpm\n/Xuq7Af/dSGnaegnyJwOoUU3sOVxmLCItZDXd6QO4aw579UohBpSpSAV4X4LV+6/\nRcMoEg48baPJMHS5jiQIOG1eqEvP3gNrEvaoIfAY57yHg0So39dg4MP563AR4Ce/\nltRuFOSsBMIlHDRQcLRCsyyUxV7P1TXs7kyV7o5+o5JZ7eirFVLPz0h9ltP3Fgf/\nayHwvLgztELb1ZoXJhdhbw9CRF74zvhi1ZrcIRA+yOybqFj6ThA9ffrFfXhO/y/N\nVKNVVazxbDpSWek67IaGAGAuzanOM6eFeeawk3IpGI2HGuo3XgrGpjFc1UD2ExZ0\n0bmsWaOVT6NzK6Wqt1u+6t4fTOYkhQ\u003d\u003d\n\u003dnt0a\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8342f9_6f073ead",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:51:19Z",
+      "side": 1,
+      "message": "nit: 64k limit on image height and width\n\n  as opposed to an image with fewer than 64k pixel area total",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "76e5339182ba5767b1fa294257ef0ee0f14d8369",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcde85b0_e99075e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:51:19Z",
+      "side": 1,
+      "message": "64k - 1 or just say 65535",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "76e5339182ba5767b1fa294257ef0ee0f14d8369",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
