@@ -48,7 +48,7 @@ int32_t BmpModule::ReadHeader(Context* pContext,
 
   *width = ctx->m_Bmp.width_;
   *height = ctx->m_Bmp.height_;
-  *tb_flag = ctx->m_Bmp.imgTB_flag_;
+  *tb_flag = ctx->m_Bmp.img_tb_flag_;
   *components = ctx->m_Bmp.components_;
   *pal_num = ctx->m_Bmp.pal_num_;
   *palette = ctx->m_Bmp.palette_;
