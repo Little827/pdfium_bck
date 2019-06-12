@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "467f4489_3dfd8817",
+        "filename": "core/fxge/android/cfpf_skiafont.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T00:56:44Z",
+      "side": 1,
+      "message": "Maybe add CFPF_SkiaFont::GetFaceRec() ?",
+      "revId": "f9e5f6356ba7dae5d29ae597d74a6aa1b334f078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58fbe76c_d4205f64",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T00:56:44Z",
+      "side": 1,
+      "message": "Let\u0027s switch to #if defined(PDF_ENABLE_XFA) for consistency later.",
+      "revId": "f9e5f6356ba7dae5d29ae597d74a6aa1b334f078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48bcfd41_957c56a6",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T00:56:44Z",
+      "side": 1,
+      "message": "const ref?",
+      "range": {
+        "startLine": 660,
+        "startChar": 35,
+        "endLine": 660,
+        "endChar": 60
+      },
+      "revId": "f9e5f6356ba7dae5d29ae597d74a6aa1b334f078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1a71d3_a0433e19",
+        "filename": "core/fxge/cttfontdesc.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T00:56:44Z",
+      "side": 1,
+      "message": "This include and the two below are probably not needed.",
+      "revId": "f9e5f6356ba7dae5d29ae597d74a6aa1b334f078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02a7da07_43908d67",
+        "filename": "core/fxge/cttfontdesc.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T00:56:44Z",
+      "side": 1,
+      "message": "Not needed, since there\u0027s no \"FXFT\" here.",
+      "revId": "f9e5f6356ba7dae5d29ae597d74a6aa1b334f078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
