@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "697b6814_c371a5a7",
+        "filename": "fxjs/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T01:30:39Z",
+      "side": 1,
+      "message": "Needs to be relative. Fix is https://pdfium-review.googlesource.com/55970",
+      "revId": "8e94c18b20927ddbe512802813dbafa9662be400",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
