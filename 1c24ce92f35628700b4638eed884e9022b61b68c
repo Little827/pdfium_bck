@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddb0870d_6b468b88",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:32:18Z",
+      "side": 1,
+      "message": "Done - Needed to put \"break\" in the right scope.",
+      "parentUuid": "692814a4_967a9477",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e8366ec_23d0dadd",
         "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-12T16:39:11Z",
       "side": 1,
       "message": "wondering why this isnt uint8_t[12] and avoid casts below?",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 13
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e8a4340_292e3ca7",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:32:18Z",
+      "side": 1,
+      "message": "No idea. Will look at this pre-existing issue separately.",
+      "parentUuid": "2e8366ec_23d0dadd",
       "range": {
         "startLine": 232,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0b8d74fa_55577b10",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:32:18Z",
+      "side": 1,
+      "message": "I will look at that separately.",
+      "parentUuid": "56d10d0c_69418400",
+      "range": {
+        "startLine": 406,
+        "startChar": 32,
+        "endLine": 406,
+        "endChar": 70
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "223a5feb_0c653caf",
         "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "93e246f4_a91bce31",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:32:18Z",
+      "side": 1,
+      "message": "Let\u0027s try it.",
+      "parentUuid": "223a5feb_0c653caf",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f884ebb2_d269526a",
         "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.h",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f1fe5a_442a3cc9",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T18:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f884ebb2_d269526a",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
