@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560371147 -0700\nnonce AC6AUtMSB6lXul48k26UE+p/y0+l+vVkRmXbjH4/Lbzl6hppZVFGY54er7LvHkeVnNya8jUiDNbQ\n\n0000000000000000000000000000000000000000 7e51987032e0c22df984f5197d9e0f0d126881c3 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dadd-cfx-bmpdecompressor\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0BX8sACgkQqzYtYVpm\n/XvLqQgAn0l/nrWmBr4487nGgofOON2KsonrtcNV0JvszmhW1Kf6TegOLwvm6GCd\nX3lestt4lP1rOY1o4gmb/GdNzB3j3ox6cBKT1LYPQ6Lny/v2zbniLnSTpYyJrX/b\nCWlIupxTOf4Ck227LuxA123dDidQA8Yr6LQ0C8UTkU/RUYqnEfvzcHkmyk5vGam+\nmU0G8PSKUs4y33768iy9EoO9Jxe2PfhH3ukTcVUDMdcV6fp+R96ZWFosl2GjVnKh\nBdts1xCGxNQF0INgat/ppzQZOdKZXXd3txmNCC/Rl5JfsMIPsuB1L7EfrdthM3Jz\nUfPS1B0cKhxC+jP7TAvm8UeyV2+l8g\u003d\u003d\n\u003dniDX\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cc966e5_1c69e1c7",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T21:38:10Z",
+      "side": 1,
+      "message": "nit: maybe just call it ReadNextScanline()?",
+      "range": {
+        "startLine": 64,
+        "startChar": 30,
+        "endLine": 64,
+        "endChar": 57
+      },
+      "revId": "7e51987032e0c22df984f5197d9e0f0d126881c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25e3298_2b78bf38",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T21:38:10Z",
+      "side": 1,
+      "message": "nit: can we pick a different name since I read this initially as row_num_ and thought it was wrong ...",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "7e51987032e0c22df984f5197d9e0f0d126881c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d20bcf5b_ef349da0",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T21:38:10Z",
+      "side": 1,
+      "message": "can we flip this line and the previous one?",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "7e51987032e0c22df984f5197d9e0f0d126881c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
