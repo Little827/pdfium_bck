@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560318321 -0700\nnonce AC6AUtO851kyJd6lBpOzy+Oyzx5BCLfKI7uRSosIbyDgaOo+eRyMEan1XqIrXSKoQuUgSeNRRW8N\n\n0000000000000000000000000000000000000000 a16f2d77b55a33f46e82c836473ca37a80bb797e refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0AkXEACgkQqzYtYVpm\n/Xs21wf/fNpkJzlErow853UybLzneBpEfGQxmguHqdM50m7yEZgQF+maPa4+rGSH\nIJO1jkLfUSCa8TeGqWhViBicTmK+LZa0aVc9ErwLuLxfG6AgIuSHJMn3xAq/3WVq\noeF75sa0ieGo0gu0dUkaQFV5W7uVyNOxxxpiSBR2GUqvViiK/ju7Y5Wz9s8EPK+x\npQ7IL+VuNyYkHy9E7TA9Ru/P3wIr829zlk6uYb908mKWWq8Tb5AvlGlNcw0K/5Xg\nYMJ/IOzoGmMJh4WTng8Gd6eZxl54k9ThpHT8F5My8AjMq8Z4ItLhDEJvrSTcmdA9\nh2/+Dj04jwxalgrIxLQd/0JVSxOI1w\u003d\u003d\n\u003dG/eI\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "790553a1_a4d6b52e",
+        "filename": "core/fxcodec/bmp/fx_bmp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:48:55Z",
+      "side": 1,
+      "message": "nit: static_assert that the pack pragma actually did what we intended, eg.\nBmpFileHeader is 2 + 4 + 2 + 2 + 4 ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "a16f2d77b55a33f46e82c836473ca37a80bb797e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
