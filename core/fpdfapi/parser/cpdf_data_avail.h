@@ -94,9 +94,9 @@ class CPDF_DataAvail final : public Observable::ObserverIface {
   CPDF_DataAvail(FileAvail* pFileAvail,
                  const RetainPtr<IFX_SeekableReadStream>& pFileRead,
                  bool bSupportHintTable);
-  ~CPDF_DataAvail() override;
+  ~CPDF_DataAvail();
 
-  // CPDF_Document::Observer:
+  // Observable::ObserverIface:
   void OnObservableDestroyed() override;
 
   DocAvailStatus IsDocAvail(DownloadHints* pHints);
