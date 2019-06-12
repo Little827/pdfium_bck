@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "692814a4_967a9477",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:39:11Z",
+      "side": 1,
+      "message": "nit: newline before break",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e8366ec_23d0dadd",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:39:11Z",
+      "side": 1,
+      "message": "wondering why this isnt uint8_t[12] and avoid casts below?",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 13
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d10d0c_69418400",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:39:11Z",
+      "side": 1,
+      "message": "nit: move the postincrement out of the expression and onto its own line at 408? (several places)?  Or a helper method GetRowNumberAndAdvance() ?",
+      "range": {
+        "startLine": 406,
+        "startChar": 32,
+        "endLine": 406,
+        "endChar": 70
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223a5feb_0c653caf",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:39:11Z",
+      "side": 1,
+      "message": "can this be UnownedPtr\u003c\u003e ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f884ebb2_d269526a",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-12T16:39:11Z",
+      "side": 1,
+      "message": "nit: moving this to line 42 saves 4 bytes.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
