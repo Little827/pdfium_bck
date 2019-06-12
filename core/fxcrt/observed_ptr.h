@@ -17,7 +17,6 @@ class Observable {
   // General-purpose interface for more complicated cleanup.
   class ObserverIface {
    public:
-    virtual ~ObserverIface() = default;
     virtual void OnObservableDestroyed() = 0;
   };
 
@@ -56,7 +55,7 @@ class ObservedPtr final : public Observable::ObserverIface {
       m_pObservable->AddObserver(this);
   }
   ObservedPtr(const ObservedPtr& that) : ObservedPtr(that.Get()) {}
-  ~ObservedPtr() override {
+  ~ObservedPtr() {
     if (m_pObservable)
       m_pObservable->RemoveObserver(this);
   }
