@@ -25,7 +25,7 @@ class CFX_BmpDecompressor {
 
   void Error();
   int32_t DecodeImage();
-  int32_t ReadHeader();
+  bool ReadHeader();
   void SetInputBuffer(RetainPtr<CFX_CodecMemory> codec_memory);
   FX_FILESIZE GetAvailInput() const;
 
@@ -48,6 +48,11 @@ class CFX_BmpDecompressor {
     kTail,
   };
 
+  bool ReadBmpHeader();
+  bool ReadBmpHeaderIfh();
+  bool ReadBmpHeaderDimensions();
+  bool ReadBmpBitfields();
+  bool ReadBmpPalette();
   bool GetDataPosition(uint32_t cur_pos);
   void ReadScanlineAndAdvanceRowNumber();
   int32_t DecodeRGB();
