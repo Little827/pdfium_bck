@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c0489950_8e71292f",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T20:35:22Z",
+      "side": 1,
+      "message": "FXDWORD_GET_LSBFIRST is a macro, which, as is, no longer works without the reinterpret_cast. Filed https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1325 for macro removal.",
+      "parentUuid": "8e8a4340_292e3ca7",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 13
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56d10d0c_69418400",
         "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "I will look at that separately.",
       "parentUuid": "56d10d0c_69418400",
+      "range": {
+        "startLine": 406,
+        "startChar": 32,
+        "endLine": 406,
+        "endChar": 70
+      },
+      "revId": "1c24ce92f35628700b4638eed884e9022b61b68c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e71a0331_fec5b9a2",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T20:35:22Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/56050",
+      "parentUuid": "0b8d74fa_55577b10",
       "range": {
         "startLine": 406,
         "startChar": 32,
