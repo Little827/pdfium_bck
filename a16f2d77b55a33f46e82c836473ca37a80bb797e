@@ -23,6 +23,30 @@
       "revId": "a16f2d77b55a33f46e82c836473ca37a80bb797e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7808a3a3_c16fad82",
+        "filename": "core/fxcodec/bmp/fx_bmp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-12T21:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "790553a1_a4d6b52e",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "a16f2d77b55a33f46e82c836473ca37a80bb797e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
