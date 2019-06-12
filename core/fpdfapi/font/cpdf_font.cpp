@@ -222,14 +222,19 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
 void CPDF_Font::CheckFontMetrics() {
   if (m_FontBBox.top == 0 && m_FontBBox.bottom == 0 && m_FontBBox.left == 0 &&
       m_FontBBox.right == 0) {
-    FXFT_FaceRec* face = m_Font.GetFaceRec();
+    RetainPtr<CFX_Face> face = m_Font.GetFace();
     if (face) {
-      m_FontBBox.left = TT2PDF(FXFT_Get_Face_xMin(face), face);
-      m_FontBBox.bottom = TT2PDF(FXFT_Get_Face_yMin(face), face);
-      m_FontBBox.right = TT2PDF(FXFT_Get_Face_xMax(face), face);
-      m_FontBBox.top = TT2PDF(FXFT_Get_Face_yMax(face), face);
-      m_Ascent = TT2PDF(FXFT_Get_Face_Ascender(face), face);
-      m_Descent = TT2PDF(FXFT_Get_Face_Descender(face), face);
+      m_FontBBox.left =
+          TT2PDF(FXFT_Get_Face_xMin(face->GetRec()), face->GetRec());
+      m_FontBBox.bottom =
+          TT2PDF(FXFT_Get_Face_yMin(face->GetRec()), face->GetRec());
+      m_FontBBox.right =
+          TT2PDF(FXFT_Get_Face_xMax(face->GetRec()), face->GetRec());
+      m_FontBBox.top =
+          TT2PDF(FXFT_Get_Face_yMax(face->GetRec()), face->GetRec());
+      m_Ascent = TT2PDF(FXFT_Get_Face_Ascender(face->GetRec()), face->GetRec());
+      m_Descent =
+          TT2PDF(FXFT_Get_Face_Descender(face->GetRec()), face->GetRec());
     } else {
       bool bFirst = true;
       for (int i = 0; i < 256; i++) {
