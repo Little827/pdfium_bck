@@ -22,6 +22,30 @@
       "revId": "72a23ae03be6039539a9a59575bcc99a5d311126",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25137ed8_de06782b",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-13T18:39:17Z",
+      "side": 1,
+      "message": "I did consider that, but there\u0027s only a few places that need to write them out, so I figured it didn\u0027t need to be in fxcrt.",
+      "parentUuid": "6a542688_7a0cd987",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "72a23ae03be6039539a9a59575bcc99a5d311126",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
