@@ -201,6 +201,16 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
   pDoc->DeletePage(page_index);
 }
 
+FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Move(FPDF_DOCUMENT document,
+                                             int* old_indexes,
+                                             int new_index) {
+  auto* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return;
+
+  pDoc->MovePages(old_indexes, new_index);
+}
+
 FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
                                                  int page_index,
                                                  double width,
