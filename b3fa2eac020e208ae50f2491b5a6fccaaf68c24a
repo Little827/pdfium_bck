@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560411724 -0700\nnonce AC6AUtNdLK6huLmW51xamtOdFmDsBoyItHYH9JlrNod+hnLj8kE9S5/UowBKWj7NFBxHjekj1tPo\n\n0000000000000000000000000000000000000000 b3fa2eac020e208ae50f2491b5a6fccaaf68c24a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0B/kwACgkQqzYtYVpm\n/Xvczgf/b/v1Nyimyno5FGqy9+6AJ0Ey+YiHZpmmuu2cj4uencyOGRJyaUOd4+sY\nf9Ks4DkPzVomT/klvLkk+usRCRj1QWAJq7YQ0U9SbE9cK1Jk/g2BrzLvR5lq/ccT\n51PI3vpPN4Ba9VredkJb7ToksyQ+/I+JDhwIqrzurUs9mKB7qpLFL188lNujxFxu\nz3oI0WjvAyspoEye1UOhSg0buNbt+tfkiktZw3PqkB90jWvPlpw9TtSwKpw4YmR7\nYbtzZ7LuqojYDx/aRWI5TJcCoPHI+TSb68PR0HRCe1NeQ6B99DZCHFyjT4zIIS17\nVpoSVn1cW5bcGtUmaYv8D6K5sQUxYg\u003d\u003d\n\u003ddpvd\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "b509b427_6d18688f",
+        "filename": "core/fpdfapi/edit/DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-13T17:40:11Z",
+      "side": 1,
+      "message": "just curious about what this means?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "b3fa2eac020e208ae50f2491b5a6fccaaf68c24a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
