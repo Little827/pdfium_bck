@@ -44,6 +44,7 @@ class CPDF_Document : public Observable<CPDF_Document>,
     virtual CPDF_Document* GetPDFDoc() const = 0;
     virtual int GetPageCount() const = 0;
     virtual void DeletePage(int page_index) = 0;
+    virtual void MovePage(int old_index, int new_index) = 0;
     virtual uint32_t GetUserPermissions() const = 0;
   };
 
@@ -99,6 +100,7 @@ class CPDF_Document : public Observable<CPDF_Document>,
   CPDF_Dictionary* GetInfo();
 
   void DeletePage(int iPage);
+  void MovePages(int* iOldIndexes, int iNewIndex);
   int GetPageCount() const;
   bool IsPageLoaded(int iPage) const;
   CPDF_Dictionary* GetPageDictionary(int iPage);

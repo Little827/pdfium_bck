@@ -3163,3 +3163,63 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadata) {
 
   UnloadPage(page);
 }
+
+struct FPDFEditMoveEmbedderTestCase {
+  std::vector<int> from;
+  int to;
+  std::vector<int> expected;
+};
+
+class FPDFEditMoveEmbedderTest
+    : public virtual testing::TestWithParam<FPDFEditMoveEmbedderTestCase> {
+ public:
+  std::string HashForPage(int pageno) {
+    FPDF_PAGE page = et_.LoadPage(pageno);
+    EXPECT_TRUE(page);
+    ScopedFPDFBitmap bitmap = et_.RenderLoadedPage(page);
+    std::string ret = et_.HashBitmap(bitmap.get());
+    et_.UnloadPage(page);
+    return ret;
+  }
+  void SetUp() override { et_.SetUp(); }
+  void TearDown() override { et_.TearDown(); }
+  class : public EmbedderTest {
+   public:
+    void TestBody() {}
+    using EmbedderTest::document_;
+    using EmbedderTest::HashBitmap;
+  } et_;
+};
+
+TEST_P(FPDFEditMoveEmbedderTest, MovePagesTest) {
+  FPDFEditMoveEmbedderTestCase params = GetParam();
+  EXPECT_TRUE(et_.OpenDocument("rectangles_multi_pages.pdf"));
+  int pages = FPDF_GetPageCount(et_.document_);
+
+  std::vector<std::string> orig_hashes;
+  for (int i = 0; i < pages; i++) {
+    std::string hash = HashForPage(i);
+    // Ensure this hash isn't repeated
+    EXPECT_EQ(std::find(orig_hashes.begin(), orig_hashes.end(), hash),
+              orig_hashes.end());
+    orig_hashes.push_back(hash);
+  }
+  FPDFPage_Move(et_.document_, &params.from[0], params.to);
+  for (int i = 0; i < pages; i++) {
+    std::string hash = HashForPage(i);
+    EXPECT_EQ(hash, orig_hashes[params.expected[i]]) << " page " << i;
+  }
+}
+
+FPDFEditMoveEmbedderTestCase move_pages_test_cases[] = {
+    {{0, 0}, 0, {0, 1, 2, 3, 4}},
+    {{1, 2, 0, 0}, 4, {0, 2, 3, 1, 4}},
+    {{0, 2, 4, 5, 0, 0}, 3, {2, 0, 1, 4, 3}},
+    {{3, 5, 0, 0}, 1, {0, 3, 4, 1, 2}},
+    {{1, 3, 0, 0}, 1, {0, 1, 2, 3, 4}},
+    {{1, 3, 0, 0}, 2, {0, 1, 2, 3, 4}},
+    {{1, 3, 0, 0}, 3, {0, 1, 2, 3, 4}}};
+
+INSTANTIATE_TEST_SUITE_P(FPDFEditMoveEmbedderTestParameters,
+                         FPDFEditMoveEmbedderTest,
+                         testing::ValuesIn(move_pages_test_cases));
