@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5f3567bc_9660d884",
+        "filename": "xfa/fxfa/layout/cxfa_itemlayoutprocessor.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-13T00:55:13Z",
+      "side": 1,
+      "message": "BTW, this can really be 2 variables. One declared on line 639 and one on 644.",
+      "revId": "d60f4ea75e68564019cf2903b2e58516a112d2b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "922cb29d_26e8ecdf",
         "filename": "xfa/fxfa/layout/cxfa_layoutitem.cpp",
         "patchSetId": 16
