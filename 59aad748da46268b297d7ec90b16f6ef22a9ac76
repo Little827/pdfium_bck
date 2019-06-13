@@ -71,6 +71,30 @@
       "revId": "59aad748da46268b297d7ec90b16f6ef22a9ac76",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0d27c8_cf94979f",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-13T18:22:44Z",
+      "side": 1,
+      "message": "Sure, but there are other callers to the matrix version as well, so we need to see if the trailing space makes sense there. Everything is written to the existing convention and I\u0027m not going to change it all in this CL.",
+      "parentUuid": "50aee55c_e82e2cf4",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "59aad748da46268b297d7ec90b16f6ef22a9ac76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
