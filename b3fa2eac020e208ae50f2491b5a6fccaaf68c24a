@@ -47,6 +47,30 @@
       "revId": "b3fa2eac020e208ae50f2491b5a6fccaaf68c24a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b0980a_4f5cead2",
+        "filename": "core/fpdfapi/edit/DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-13T18:23:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aed2b9dc_8e5d7f82",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "b3fa2eac020e208ae50f2491b5a6fccaaf68c24a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
