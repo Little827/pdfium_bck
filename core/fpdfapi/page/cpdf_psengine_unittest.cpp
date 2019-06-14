@@ -173,8 +173,20 @@ TEST(CPDF_PSEngine, Truncate) {
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, 0.0f, PSOP_TRUNCATE));
   // Smallest positive float value.
   float min_float = std::numeric_limits<float>::min();
+  // Largest positive float value.
+  float max_float = std::numeric_limits<float>::max();
+  // Largest negative float value.
+  float min_int = std::numeric_limits<int>::min();
+  // Largest positive float value.
+  float max_int = std::numeric_limits<int>::max();
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, min_float, PSOP_TRUNCATE));
   EXPECT_FLOAT_EQ(0.0f, DoOperator1(&engine, -min_float, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(max_float, DoOperator1(&engine, max_float, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(-max_float, DoOperator1(&engine, -max_float, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(max_int + 1,
+                  DoOperator1(&engine, max_int + 1.7, PSOP_TRUNCATE));
+  EXPECT_FLOAT_EQ(min_int - 1,
+                  DoOperator1(&engine, min_int - 1.7, PSOP_TRUNCATE));
   EXPECT_FLOAT_EQ(2.0f, DoOperator1(&engine, 2.3f, PSOP_TRUNCATE));
   EXPECT_FLOAT_EQ(3.0f, DoOperator1(&engine, 3.8f, PSOP_TRUNCATE));
   EXPECT_FLOAT_EQ(5.0f, DoOperator1(&engine, 5.5f, PSOP_TRUNCATE));
