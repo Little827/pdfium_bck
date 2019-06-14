@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a4697af_6a79d922",
+        "filename": "core/fpdfapi/page/cpdf_psengine.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:11:37Z",
+      "side": 1,
+      "message": "#include \u003ccmath\u003e for std::isnan(). I guess \"git cl lint\" doesn\u0027t know about this one.",
+      "revId": "40c969bddcf0f4115d447dd69d8f7de97b40debc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
