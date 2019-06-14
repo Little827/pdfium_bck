@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560452501 -0700\nnonce AC6AUtN5rCo1JFF4sFWgoDE0VTKAzpgzAJXuIePugslXTk+Cw3sXnaPs4xj8nRNUOpXJESswMcZ0\n\n0000000000000000000000000000000000000000 4c9d97e5e9cce912b5a4fed51756828a7576fd61 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dchange-clzwdecoder\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0CnZUACgkQqzYtYVpm\n/XtdkQgAmjUC6X0ede0e9ZiEMrqkTV3LsP9ZBecWXA7acK18WcdfxVDrv7Egvez6\nteKGrqUxmToZ+CTQo5jk06yLL5HWQKwboVNktzlNdzBX+XkzWFxSdCkaa/F5dSRO\nPvfin8NdWQGvINmlYjf3ICI6cAN4VIxb+9k57H+656UnqB43p7YOfhYay0zq8ATB\nKzm1F0xFbZMYWjj30QSizBkPhBPwBZMCZZy9KE7/NcKA8Ve/xV2pVPMdCzLkykSw\nSQX3rK7BFk1bIktCl72QGQp/Ko3KBN1Ii0tKJcA/wZIsN6KU/3ZF22KyHvd354Qs\nM+EqowbCP112fwsYPleFpq5I8B+VEQ\u003d\u003d\n\u003dJcRM\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e54f358b_0b56824b",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-14T16:06:30Z",
+      "side": 1,
+      "message": "we should fix this with base\u0027s safe arithmetic.",
+      "range": {
+        "startLine": 801,
+        "startChar": 39,
+        "endLine": 801,
+        "endChar": 66
+      },
+      "revId": "4c9d97e5e9cce912b5a4fed51756828a7576fd61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
