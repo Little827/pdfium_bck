@@ -131,6 +131,30 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
 FPDF_EXPORT void FPDF_CALLCONV FPDFPage_Delete(FPDF_DOCUMENT document,
                                                int page_index);
 
+// Move the pages at |old_index_ranges| to |new_index|.
+//
+//   document   - handle to document.
+//   ranges     - the indexes of the pages to move. Must point to an
+//                array with even number of elements. Each consecutive
+//                pair of elements indicates a subrange of page indexes
+//                [first, last). Subranges must be sequential and non-
+//                overlapping.
+//   ranges_len - number of int elements in |old_index_ranges|. Must be an
+//                even number.
+//   new_index  - final index of the page after being moved. Must be in
+//                range [0, NumPages] inclusive.
+//
+// Returns TRUE on success.
+//
+// Examples: doc has pages [A, B, C, D].
+// Move(doc, [0, 1],       2, 4) => [B, C, D, A]
+// Move(doc, [1, 2, 3, 4], 4, 0) => [B, D, A, C]
+// Move(doc, [1, 2],       2, 3) => [A, C, B, D]
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPage_Move(FPDF_DOCUMENT document,
+                                                  int* ranges,
+                                                  int ranges_len,
+                                                  int new_index);
+
 // Get the rotation of |page|.
 //
 //   page - handle to a page

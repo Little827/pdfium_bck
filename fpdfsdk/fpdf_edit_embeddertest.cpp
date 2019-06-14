@@ -3163,3 +3163,69 @@ TEST_F(FPDFEditEmbedderTest, GetImageMetadata) {
 
   UnloadPage(page);
 }
+
+struct FPDFEditMoveEmbedderTestCase {
+  std::vector<int> from;
+  int to;
+  std::vector<int> expected;
+};
+
+// This class is structured to contain an EmbedderTest and derive from
+// TestWithParam. The reason we don't also derive from EmbedderTest is
+// because that will result in having two Test parent classes.
+class FPDFEditMoveEmbedderTest
+    : public testing::TestWithParam<FPDFEditMoveEmbedderTestCase> {
+ public:
+  std::string HashForPage(int pageno) {
+    FPDF_PAGE page = et_.LoadPage(pageno);
+    EXPECT_TRUE(page);
+    ScopedFPDFBitmap bitmap = et_.RenderLoadedPage(page);
+    std::string ret = et_.HashBitmap(bitmap.get());
+    et_.UnloadPage(page);
+    return ret;
+  }
+  void SetUp() override { et_.SetUp(); }
+  void TearDown() override { et_.TearDown(); }
+
+ protected:
+  // This class makes some members of EmbedderTest public and stubs out
+  // TestBody so that we can just use the helper functions.
+  class EmbedderTestPublicHelper : public EmbedderTest {
+   public:
+    void TestBody() final {}
+    using EmbedderTest::document_;
+    using EmbedderTest::HashBitmap;
+  };
+  EmbedderTestPublicHelper et_;
+};
+
+TEST_P(FPDFEditMoveEmbedderTest, MovePagesTest) {
+  FPDFEditMoveEmbedderTestCase params = GetParam();
+  EXPECT_TRUE(et_.OpenDocument("rectangles_multi_pages.pdf"));
+  int pages = FPDF_GetPageCount(et_.document_);
+
+  std::vector<std::string> orig_hashes;
+  for (int i = 0; i < pages; i++) {
+    std::string hash = HashForPage(i);
+    // Ensure this hash isn't repeated
+    EXPECT_EQ(std::find(orig_hashes.begin(), orig_hashes.end(), hash),
+              orig_hashes.end());
+    orig_hashes.push_back(hash);
+  }
+  FPDFPage_Move(et_.document_, &params.from[0],
+                static_cast<int>(params.from.size()), params.to);
+  for (int i = 0; i < pages; i++) {
+    std::string hash = HashForPage(i);
+    EXPECT_EQ(hash, orig_hashes[params.expected[i]]) << " page " << i;
+  }
+}
+
+FPDFEditMoveEmbedderTestCase move_pages_test_cases[] = {
+    {{}, 0, {0, 1, 2, 3, 4}},           {{1, 2}, 4, {0, 2, 3, 1, 4}},
+    {{0, 2, 4, 5}, 3, {2, 0, 1, 4, 3}}, {{3, 5}, 1, {0, 3, 4, 1, 2}},
+    {{1, 3}, 1, {0, 1, 2, 3, 4}},       {{1, 3}, 2, {0, 1, 2, 3, 4}},
+    {{1, 3}, 3, {0, 1, 2, 3, 4}}};
+
+INSTANTIATE_TEST_SUITE_P(FPDFEditMoveEmbedderTestParameters,
+                         FPDFEditMoveEmbedderTest,
+                         testing::ValuesIn(move_pages_test_cases));

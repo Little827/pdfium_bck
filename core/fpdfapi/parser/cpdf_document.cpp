@@ -474,6 +474,64 @@ void CPDF_Document::DeletePage(int iPage) {
   m_PageList.erase(m_PageList.begin() + iPage);
 }
 
+bool CPDF_Document::MovePages(int* iRanges, int iRangesLen, int iNewIndex) {
+  CPDF_Dictionary* pPages = GetPagesDict();
+  if (!pPages)
+    return false;
+
+  int nPages = pPages->GetIntegerFor("Count");
+  if (iNewIndex < 0 || iNewIndex > nPages) {
+    fprintf(stderr, "Invalid new index in MovePages.\n");
+    return false;
+  }
+
+  std::vector<std::pair<int, CPDF_Dictionary*>> pages;
+
+  for (int i = 0; i < iRangesLen; i += 2) {
+    int start = iRanges[i];
+    int end = iRanges[i + 1];
+    if (i != 0) {
+      int prev_end = iRanges[-1];
+      if (prev_end > start) {
+        fprintf(stderr, "Overlapping range in MovePages.\n");
+        return false;
+      }
+    }
+    if (start >= end || start < 0 || end < 1 || start >= nPages ||
+        end > nPages) {
+      fprintf(stderr, "Invalid range in MovePages\n");
+      return false;
+    }
+    for (int pg = start; pg < end; pg++) {
+      CPDF_Dictionary* page = GetPageDictionary(pg);
+      if (!page)
+        return false;
+      pages.push_back(std::make_pair(pg, page));
+    }
+  }
+
+  // Delete the pages in question. Go in reverse order so that page numbers
+  // don't move around before they can be deleted.
+  for (auto it = pages.rbegin(); it != pages.rend(); ++it) {
+    int pg = it->first;
+    // Adjust iNewIndex as we remove pages so it's still pointing
+    // to the right place.
+    if (pg < iNewIndex)
+      iNewIndex--;
+    DeletePage(pg);
+  }
+
+  // Now put the pages back at the right place.
+  for (auto it = pages.rbegin(); it != pages.rend(); ++it) {
+    CPDF_Dictionary* page = it->second;
+    if (!InsertNewPage(iNewIndex, page)) {
+      // Unhandled error! Not sure how to handle
+      return false;
+    }
+  }
+  return true;
+}
+
 CPDF_Document::StockFontClearer::StockFontClearer(
     CPDF_Document::PageDataIface* pPageData)
     : m_pPageData(pPageData) {}
