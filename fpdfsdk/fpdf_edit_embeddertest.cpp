@@ -647,7 +647,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
 #elif defined(OS_WIN)
     const char kOriginalMD5[] = "587c507a40f613f9c530b2ce2d58d655";
 #else
-    const char kOriginalMD5[] = "2edc6e70d54889aa0c0b7bdf3e168f86";
+    const char kOriginalMD5[] = "41647268d5911d049801803b15c2dfb0";
 #endif
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, kOriginalMD5);
@@ -694,8 +694,8 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
   const char kNonPrimesMD5[] = "4d906b57fba36c70c600cf50d60f508c";
   const char kNonPrimesAfterSaveMD5[] = "4d906b57fba36c70c600cf50d60f508c";
 #else
-  const char kNonPrimesMD5[] = "33d9c45bec41ead92a295e252f6b7922";
-  const char kNonPrimesAfterSaveMD5[] = "33d9c45bec41ead92a295e252f6b7922";
+  const char kNonPrimesMD5[] = "67ab13115d0cc34e99a1003c28047b40";
+  const char kNonPrimesAfterSaveMD5[] = "67ab13115d0cc34e99a1003c28047b40";
 #endif
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
@@ -1840,7 +1840,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
 #elif defined(OS_WIN)
     const char md5[] = "aba523a8110d01ed9bd7b7781ff74045";
 #else
-    const char md5[] = "b8a21668f1dab625af7c072e07fcefc4";
+    const char md5[] = "344534539aa7c5cc78404cfff4bde7fb";
 #endif
     CompareBitmap(page_bitmap.get(), 612, 792, md5);
 
@@ -2444,7 +2444,7 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
   }
 
   // Check that the text renders properly.
-  const char md5[] = "c68cd79aa72bf83a7b25271370d46b21";
+  const char md5[] = "5159a72903fe57bf0cf645c894de8a74";
   {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 612, 792, md5);
