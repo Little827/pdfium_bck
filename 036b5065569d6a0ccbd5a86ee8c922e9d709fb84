@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "7c177b62_a4606249",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T17:37:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0b8972a_ceb00b2c",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 202,
+        "endChar": 12
+      },
+      "revId": "036b5065569d6a0ccbd5a86ee8c922e9d709fb84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f0d8929_ffa392e8",
         "filename": "core/fxcodec/codec/flatemodule.cpp",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c025e48f_b40c7fc1",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T17:37:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f0d8929_ffa392e8",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 19
+      },
+      "revId": "036b5065569d6a0ccbd5a86ee8c922e9d709fb84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fe4a036_5b93cad1",
         "filename": "core/fxcodec/codec/flatemodule.cpp",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2019-06-14T16:03:23Z",
       "side": 1,
       "message": "might underflow if old_code \u003d\u003d 257",
+      "range": {
+        "startLine": 246,
+        "startChar": 28,
+        "endLine": 246,
+        "endChar": 42
+      },
+      "revId": "036b5065569d6a0ccbd5a86ee8c922e9d709fb84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be9acac_e2819590",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T17:37:26Z",
+      "side": 1,
+      "message": "Not sure what the deal is with that. Added a TODO to investigate.",
+      "parentUuid": "4fe4a036_5b93cad1",
       "range": {
         "startLine": 246,
         "startChar": 28,
