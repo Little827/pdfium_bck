@@ -39,6 +39,126 @@
       "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf5c4da5_30b16c44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:21:12Z",
+      "side": 1,
+      "message": "I just realized this is suppose to be a variable. Refer to variables as |variable_name|, so it is obvious that\u0027s that. Otherwise, if you have a variable named \"pizza\", you are going to write \"it generates pizza\" and that sounds weird. (and delicious)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984c6bd3_58347b39",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:21:12Z",
+      "side": 1,
+      "message": "This is more of an information retrieval function. Thus I think GetDecoderArray() makes more sense, naming-wise.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24af7753_a3095bb2",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:21:12Z",
+      "side": 1,
+      "message": "A lot of code have the pattern of a boolean return value and a single out parameter. In modern C++, a better way of doing this is with std::optional. But std::optional is not allowed in PDFium yet, so one should use pdfium::Optional instead. Write this as:\n\nOptional\u003cstd::vector\u003cstd::pair\u003cByteString, const CPDF_Object*\u003e\u003e\u003e GetDecoderArray(const CPDF_Dictionary* pDict);",
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6844dbec_8f5986ab",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:21:12Z",
+      "side": 1,
+      "message": "\"git cl lint\" should have warned you not to pass parameters by non-const reference. https://google.github.io/styleguide/cppguide.html#Reference_Arguments",
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1419fc7b_2ef8fd1b",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:21:12Z",
+      "side": 1,
+      "message": "Pass by const-reference. As is, this passes by value, which means the vector has to be duplicated.",
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877a98e6_75a47c62",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:21:12Z",
+      "side": 1,
+      "message": "decoder_array",
+      "range": {
+        "startLine": 86,
+        "startChar": 65,
+        "endLine": 86,
+        "endChar": 77
+      },
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
