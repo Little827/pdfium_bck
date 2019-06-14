@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560533623 -0700\nnonce AC6AUtNSEULWKK1+BKEfOV1FWNEpLrWrk96Xgl4xWP5+77dudfCxPOaEtj8j4OyCsRsN+632gvUO\n\n0000000000000000000000000000000000000000 7c965f80b3e1938dac6a773b602e6f5381c9b6ed refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0D2ncACgkQqzYtYVpm\n/XtN0ggAipus5frprw6ev0jz0Hk9hXpyjW3uaRn6cmw88Qyz8Q2HRfcQ5Jup080L\nLtu0DXudCV1mwLSdehUijCOM150ECQp6YDzbBbBoGpnoqv3iftTdom0oIt2eiMGk\n6Ge7jrliXtATRFnpJE/Zso9W88qZLePyVAqgviVPrDIENjEspigua2cGCBvGDSO9\nxbNKRZttkHpHuj0LzjX4P7rrIy0+sax59Y5dz5L6NnnSpC2TkGG81CmAmnoItaqt\nO3AEV8t7LCUjfUrkVJO8aXNOBq0wwACkz2mbnEWvPh3i1aXgNyenxWVzuvJmrlMy\n0IbRpIiJ41dP1djv7ZwXUeufUs1glw\u003d\u003d\n\u003dhRO4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc404362_ec9e36e9",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-14T21:38:01Z",
+      "side": 1,
+      "message": "nit: I would add a case for this, and a default: NOTREACHED() return 4.",
+      "range": {
+        "startLine": 535,
+        "startChar": 4,
+        "endLine": 536,
+        "endChar": 41
+      },
+      "revId": "7c965f80b3e1938dac6a773b602e6f5381c9b6ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
