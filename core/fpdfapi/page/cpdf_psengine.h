@@ -125,6 +125,8 @@ class CPDF_PSEngine {
   uint32_t m_StackCount = 0;
   CPDF_PSProc m_MainProc;
   float m_Stack[kPSEngineStackSize];
+
+  float roundhu(float f);  // Round half up
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_PSENGINE_H_

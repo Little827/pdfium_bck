@@ -7,6 +7,7 @@
 #include "core/fpdfapi/page/cpdf_psengine.h"
 
 #include <algorithm>
+#include <limits>
 #include <utility>
 
 #include "core/fpdfapi/parser/cpdf_simple_parser.h"
@@ -262,7 +263,7 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       break;
     case PSOP_ROUND:
       d1 = Pop();
-      Push(FXSYS_round(d1));
+      Push(roundhu(d1));
       break;
     case PSOP_TRUNCATE:
       i1 = PopInt();
@@ -428,4 +429,12 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       break;
   }
   return true;
+}
+
+float CPDF_PSEngine::roundhu(float f) {
+  if (std::isnan(f))
+    return 0;
+  if (f > std::numeric_limits<float>::max() - 0.5f)
+    return std::numeric_limits<float>::max();
+  return floor(f + 0.5f);
 }
