@@ -795,12 +795,14 @@ uint32_t FlateModule::FlateOrLZWDecode(
   PredictorType predictor_type = GetPredictor(predictor);
 
   if (bLZW) {
+    static constexpr uint32_t kInvalidSize =
+        std::numeric_limits<uint32_t>::max();
     auto decoder = pdfium::MakeUnique<CLZWDecoder>();
-    *dest_size = 0xFFFFFFFF;
+    *dest_size = kInvalidSize;
     offset = src_span.size();
     bool success = decoder->Decode(nullptr, dest_size, src_span.data(), &offset,
                                    bEarlyChange);
-    if (!success || *dest_size == 0 || *dest_size + 1 < *dest_size)
+    if (!success || *dest_size == 0 || *dest_size == kInvalidSize)
       return FX_INVALID_OFFSET;
 
     decoder = pdfium::MakeUnique<CLZWDecoder>();
