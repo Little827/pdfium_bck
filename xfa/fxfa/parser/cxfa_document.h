@@ -121,7 +121,9 @@ class CXFA_Document final : public CXFA_NodeOwner {
   void ClearLayoutData();
 
   CXFA_Node* GetGlobalBinding(uint32_t dwNameHash);
-  void RegisterGlobalBinding(uint32_t dwNameHash, CXFA_Node* pDataNode);
+  void RegisterGlobalBinding(uint32_t dwNameHash, CXFA_Node* pStartNode);
+  void SetNodeAndDescendantsUnused(CXFA_Node* pDataNode);
+  void SetPendingNodesUnusedAndUnbound();
 
   std::vector<CXFA_Node*> m_pPendingPageSet;
 
