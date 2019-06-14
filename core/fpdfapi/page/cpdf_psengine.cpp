@@ -277,8 +277,8 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       Push(RoundHalfUp(d1));
       break;
     case PSOP_TRUNCATE:
-      i1 = PopInt();
-      Push(i1);
+      d1 = Pop();
+      Push(truncf(d1));
       break;
     case PSOP_SQRT:
       d1 = Pop();
