@@ -14,9 +14,9 @@ CTTFontDesc::CTTFontDesc(std::unique_ptr<uint8_t, FxFreeDeleter> pData)
 
 CTTFontDesc::~CTTFontDesc() = default;
 
-void CTTFontDesc::SetFace(size_t index, const RetainPtr<CFX_Face>& face) {
+void CTTFontDesc::SetFace(size_t index, CFX_Face* face) {
   ASSERT(index < FX_ArraySize(m_TTCFaces));
-  m_TTCFaces[index].Reset(face.Get());
+  m_TTCFaces[index].Reset(face);
 }
 
 RetainPtr<CFX_Face> CTTFontDesc::GetFace(size_t index) const {
