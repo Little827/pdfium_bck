@@ -19,7 +19,7 @@ class CTTFontDesc {
   ~CTTFontDesc();
 
   uint8_t* FontData() const { return m_pFontData.get(); }
-  void SetFace(size_t index, const RetainPtr<CFX_Face>& face);
+  void SetFace(size_t index, CFX_Face* face);
   RetainPtr<CFX_Face> GetFace(size_t index) const;
 
  private:
