@@ -1951,7 +1951,8 @@ void CXFA_LayoutPageMgr::PrepareLayout() {
   }
   pRootLayoutItem = m_pPageSetLayoutItemRoot;
   CXFA_ViewLayoutItem* pNextLayout = nullptr;
-  for (; pRootLayoutItem; pRootLayoutItem = pNextLayout) {
+  for (  int cnt = 0; pRootLayoutItem; pRootLayoutItem = pNextLayout, ++cnt) {
+    if (cnt != 0) abort();
     pNextLayout = ToViewLayoutItem(pRootLayoutItem->GetNextSibling());
     SaveLayoutItemChildren(pRootLayoutItem);
     pRootLayoutItem->RemoveSelfIfParented();
