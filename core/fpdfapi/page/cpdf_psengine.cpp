@@ -7,6 +7,7 @@
 #include "core/fpdfapi/page/cpdf_psengine.h"
 
 #include <algorithm>
+#include <limits>
 #include <utility>
 
 #include "core/fpdfapi/parser/cpdf_simple_parser.h"
@@ -66,6 +67,14 @@ constexpr PDF_PSOpName kPsOpNames[] = {
     {"truncate", PSOP_TRUNCATE},
     {"xor", PSOP_XOR},
 };
+
+float round_half_up(float f) {
+  if (std::isnan(f))
+    return 0;
+  if (f > std::numeric_limits<float>::max() - 0.5f)
+    return std::numeric_limits<float>::max();
+  return floor(f + 0.5f);
+}
 
 }  // namespace
 
@@ -262,7 +271,7 @@ bool CPDF_PSEngine::DoOperator(PDF_PSOP op) {
       break;
     case PSOP_ROUND:
       d1 = Pop();
-      Push(FXSYS_round(d1));
+      Push(round_half_up(d1));
       break;
     case PSOP_TRUNCATE:
       i1 = PopInt();
