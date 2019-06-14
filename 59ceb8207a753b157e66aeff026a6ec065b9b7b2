@@ -140,6 +140,24 @@
       "revId": "59ceb8207a753b157e66aeff026a6ec065b9b7b2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c40577d_a5f043c2",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-14T18:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faafb0e0_574ce836",
+      "revId": "59ceb8207a753b157e66aeff026a6ec065b9b7b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
