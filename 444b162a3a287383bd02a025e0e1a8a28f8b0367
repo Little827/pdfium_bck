@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e7400f3_441163af",
+        "filename": "xfa/fxfa/parser/cxfa_document.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T22:05:45Z",
+      "side": 1,
+      "message": "update to match the rename in the header.",
+      "range": {
+        "startLine": 1817,
+        "startChar": 53,
+        "endLine": 1817,
+        "endChar": 62
+      },
+      "revId": "444b162a3a287383bd02a025e0e1a8a28f8b0367",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
