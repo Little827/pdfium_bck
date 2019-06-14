@@ -23,6 +23,30 @@
       "revId": "db7b7115cebc83573f857a1f81c3ba0baf1b5266",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c52bd4e5_6783d4b6",
+        "filename": "third_party/base/test/scoped_locale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T17:15:47Z",
+      "side": 1,
+      "message": "I\u0027d like to keep it the same as Chromium\u0027s copy. Not sure what we call POSIX + Fuchsia.",
+      "parentUuid": "dc8ded2c_0a2a147a",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "db7b7115cebc83573f857a1f81c3ba0baf1b5266",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
