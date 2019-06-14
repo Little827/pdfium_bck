@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aceac458_43c08fe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:09:16Z",
+      "side": 1,
+      "message": "Keep the summary brief, rather than trying to cramp details into it and use abbr to keep the sentence from getting too long. e.g. \"Split PDF_DataDecode() in two\"",
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3186f8ca_2cf37593",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T19:09:16Z",
+      "side": 1,
+      "message": "refer to a function as FunctionName(), so it is obvious it is a function and not something with ClassName.",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "3e05f0784d89fa1b97cbe4154892b850f7ef9a83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
