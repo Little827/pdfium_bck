@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed64a858_0a99d2ed",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3174,
+      "author": {
+        "id": 7650
+      },
+      "writtenOn": "2019-06-14T20:19:02Z",
+      "side": 1,
+      "message": "Oops! No, was trying to solve my issues w/ virtual inheritance, but moved to has-a rather than is-a for embedder test.",
+      "parentUuid": "680b9e54_e1b05c57",
+      "range": {
+        "startLine": 3174,
+        "startChar": 13,
+        "endLine": 3174,
+        "endChar": 20
+      },
+      "revId": "6b8c59c69257179ad5e15d5ef97e5981d68699c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3524463a_a1e904ad",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "aa386b81_1818ab9c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3186,
+      "author": {
+        "id": 7650
+      },
+      "writtenOn": "2019-06-14T20:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3524463a_a1e904ad",
+      "revId": "6b8c59c69257179ad5e15d5ef97e5981d68699c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "150f5f2a_9ccd041c",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2019-06-14T06:57:49Z",
       "side": 1,
       "message": "Why not just move 1 page at a time?",
+      "range": {
+        "startLine": 134,
+        "startChar": 22,
+        "endLine": 134,
+        "endChar": 33
+      },
+      "revId": "6b8c59c69257179ad5e15d5ef97e5981d68699c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7300d19e_c66985fd",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 7650
+      },
+      "writtenOn": "2019-06-14T20:19:02Z",
+      "side": 1,
+      "message": "We don\u0027t get to handle errors any better with the one-page case. Also, for a UI that wants to allow drag and drop, users may select many pages and want to move them somewhere. I figured if we handle multiple ranges here, it avoids pushing that logic to each app. I\u0027m happy to do a single-page version if that\u0027s preferred, tho.",
+      "parentUuid": "150f5f2a_9ccd041c",
       "range": {
         "startLine": 134,
         "startChar": 22,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "4fbce220_be4c2b77",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 7650
+      },
+      "writtenOn": "2019-06-14T20:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef01e6da_73c5928b",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 57
+      },
+      "revId": "6b8c59c69257179ad5e15d5ef97e5981d68699c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd86b76c_b091e74a",
         "filename": "public/fpdf_edit.h",
         "patchSetId": 2
@@ -108,6 +198,30 @@
       "revId": "6b8c59c69257179ad5e15d5ef97e5981d68699c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9c1f9af_ed010757",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 7650
+      },
+      "writtenOn": "2019-06-14T20:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd86b76c_b091e74a",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 150,
+        "endChar": 16
+      },
+      "revId": "6b8c59c69257179ad5e15d5ef97e5981d68699c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
