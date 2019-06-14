@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c170c156_440127ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T00:37:50Z",
+      "side": 1,
+      "message": "This is not a valid CL meta tag. Mention it in the CL description instead.",
+      "revId": "f36edda373ca601ed23ea8e0240eb18c09103c5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d231747_6f063a15",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T00:37:50Z",
+      "side": 1,
+      "message": "It\u0027s good to make the parameter in the implementation match the declaration, but please do that as a separate CL.",
+      "revId": "f36edda373ca601ed23ea8e0240eb18c09103c5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7be7323_cea516f3",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-14T00:37:50Z",
+      "side": 1,
+      "message": "Most of the other functions in this file directly map to something that\u0027s available in a UNIX libc or Windows CRT. Whereas roundhu() does not. It is rather specialized, so I would suggest putting it inside cpdf_psengine.cpp, since it will likely not be used anywhere else.",
+      "revId": "f36edda373ca601ed23ea8e0240eb18c09103c5b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
