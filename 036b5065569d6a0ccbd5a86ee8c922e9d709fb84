@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560452264 -0700\nnonce AC6AUtMybq/0T+4DjLTcwyTrFqzFlTsaxX68HjLAqR6yNaRuxWhlNjQab4grqvcoXv/9DZ/68xWE\n\n0000000000000000000000000000000000000000 036b5065569d6a0ccbd5a86ee8c922e9d709fb84 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dreflow-clzwdecoder\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0CnKgACgkQqzYtYVpm\n/XsGoQgAwUz5hCjdfPEnqF4V8nOSWzWb8KgK+6mNgoVAFWkcyFRtlc1IHpfWj48s\n3F+SuyQJ1t0GFx9jQxKQ9TZjJe91lAuMOVQK8i405xD/Mre/bIFzksRrCe457wIo\nPoJhZYM+q+wLAu5cEvUDnBre4Kb7W6WMzAy+szW4kBGKlqBv4bVKpMHyHFTpaWHt\nD/0FrvUML2z444Yt8lkMVOAF8IpXGrFFkK06ettL+h26ik8z3kPktxJuFfntEjIR\nvqQozWtpfy5TNExuwwA0U1KKDiCRUbrv7bv6upeIlGvLAMKAhdYWqdsoVUymL3Hh\nh65YEm+HDN5FyO8GdmElViU9d3Lwpw\u003d\u003d\n\u003dO+3t\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0b8972a_ceb00b2c",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-14T16:03:23Z",
+      "side": 1,
+      "message": "can we arrange the blocks in increasing order of comparison against code?",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 202,
+        "endChar": 12
+      },
+      "revId": "036b5065569d6a0ccbd5a86ee8c922e9d709fb84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0d8929_ffa392e8",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-14T16:03:23Z",
+      "side": 1,
+      "message": "right, can\u0027t underflow given check above but m_nCodes could overflow if added to, I guess.",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 19
+      },
+      "revId": "036b5065569d6a0ccbd5a86ee8c922e9d709fb84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe4a036_5b93cad1",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-14T16:03:23Z",
+      "side": 1,
+      "message": "might underflow if old_code \u003d\u003d 257",
+      "range": {
+        "startLine": 246,
+        "startChar": 28,
+        "endLine": 246,
+        "endChar": 42
+      },
+      "revId": "036b5065569d6a0ccbd5a86ee8c922e9d709fb84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
