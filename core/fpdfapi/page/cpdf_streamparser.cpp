@@ -53,7 +53,7 @@ uint32_t DecodeAllScanlines(std::unique_ptr<ScanlineDecoder> pDecoder) {
   if (width <= 0 || height <= 0)
     return FX_INVALID_OFFSET;
 
-  FX_SAFE_UINT32 size = CalculatePitch8(bpc, ncomps, width);
+  FX_SAFE_UINT32 size = fxcodec::CalculatePitch8(bpc, ncomps, width);
   size *= height;
   if (size.ValueOrDefault(0) == 0)
     return FX_INVALID_OFFSET;
@@ -92,7 +92,7 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
   }
   if (decoder == "DCTDecode") {
     std::unique_ptr<ScanlineDecoder> pDecoder =
-        CCodec_ModuleMgr::GetInstance()->GetJpegModule()->CreateDecoder(
+        ModuleMgr::GetInstance()->GetJpegModule()->CreateDecoder(
             src_span, width, height, 0,
             !pParam || pParam->GetIntegerFor("ColorTransform", 1));
     return DecodeAllScanlines(std::move(pDecoder));
@@ -160,7 +160,7 @@ RetainPtr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
     nComponents = pCS ? pCS->CountComponents() : 3;
     bpc = pDict->GetIntegerFor("BitsPerComponent");
   }
-  FX_SAFE_UINT32 size = CalculatePitch8(bpc, nComponents, width);
+  FX_SAFE_UINT32 size = fxcodec::CalculatePitch8(bpc, nComponents, width);
   size *= height;
   if (!size.IsValid())
     return nullptr;

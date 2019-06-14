@@ -19,32 +19,34 @@
 #include "third_party/base/logging.h"
 #include "third_party/base/ptr_util.h"
 
+namespace fxcodec {
+
 namespace {
 
-CCodec_ModuleMgr* g_CCodecModuleMgr = nullptr;
+ModuleMgr* g_CCodecModuleMgr = nullptr;
 
 }  // namespace
 
 // static
-void CCodec_ModuleMgr::Create() {
+void ModuleMgr::Create() {
   ASSERT(!g_CCodecModuleMgr);
-  g_CCodecModuleMgr = new CCodec_ModuleMgr();
+  g_CCodecModuleMgr = new ModuleMgr();
 }
 
 // static
-void CCodec_ModuleMgr::Destroy() {
+void ModuleMgr::Destroy() {
   ASSERT(g_CCodecModuleMgr);
   delete g_CCodecModuleMgr;
   g_CCodecModuleMgr = nullptr;
 }
 
 // static
-CCodec_ModuleMgr* CCodec_ModuleMgr::GetInstance() {
+ModuleMgr* ModuleMgr::GetInstance() {
   ASSERT(g_CCodecModuleMgr);
   return g_CCodecModuleMgr;
 }
 
-CCodec_ModuleMgr::CCodec_ModuleMgr()
+ModuleMgr::ModuleMgr()
     : m_pJpegModule(pdfium::MakeUnique<JpegModule>()),
       m_pJbig2Module(pdfium::MakeUnique<Jbig2Module>()) {
 #ifdef PDF_ENABLE_XFA_BMP
@@ -64,7 +66,7 @@ CCodec_ModuleMgr::CCodec_ModuleMgr()
 #endif
 }
 
-CCodec_ModuleMgr::~CCodec_ModuleMgr() = default;
+ModuleMgr::~ModuleMgr() = default;
 
 #ifdef PDF_ENABLE_XFA
 CFX_DIBAttribute::CFX_DIBAttribute() = default;
@@ -110,3 +112,5 @@ FX_SAFE_UINT32 CalculatePitch32(int bpp, int width) {
   pitch *= 4;   // and then back to bytes, (not just /8 in one step).
   return pitch;
 }
+
+}  // namespace fxcodec
