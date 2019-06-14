@@ -100,6 +100,10 @@ CFX_FloatRect CPDF_PageObjectHolder::CalcBoundingBox() const {
   return CFX_FloatRect(left, bottom, right, top);
 }
 
+std::set<int32_t> CPDF_PageObjectHolder::TakeDirtyStreams() {
+  return std::move(m_DirtyStreams);
+}
+
 void CPDF_PageObjectHolder::LoadTransInfo() {
   if (!m_pDict)
     return;
