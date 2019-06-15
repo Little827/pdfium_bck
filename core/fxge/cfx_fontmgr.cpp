@@ -119,7 +119,7 @@ RetainPtr<CFX_Face> CFX_FontMgr::GetCachedFace(const ByteString& face_name,
 
   CTTFontDesc* pFontDesc = it->second.get();
   *pFontData = pFontDesc->FontData();
-  return pFontDesc->GetFace(0);
+  return pdfium::WrapRetain(pFontDesc->GetFace(0));
 }
 
 RetainPtr<CFX_Face> CFX_FontMgr::AddCachedFace(
@@ -140,11 +140,9 @@ RetainPtr<CFX_Face> CFX_FontMgr::AddCachedFace(
     return nullptr;
 
   auto pFontDesc = pdfium::MakeUnique<CTTFontDesc>(std::move(pData));
-  pFontDesc->SetFace(0, std::move(face));
-
-  CTTFontDesc* pResult = pFontDesc.get();
+  pFontDesc->SetFace(0, face.Get());
   m_FaceMap[KeyNameFromFace(face_name, weight, bItalic)] = std::move(pFontDesc);
-  return pResult->GetFace(0);
+  return face;
 }
 
 RetainPtr<CFX_Face> CFX_FontMgr::GetCachedTTCFace(int ttc_size,
@@ -158,12 +156,7 @@ RetainPtr<CFX_Face> CFX_FontMgr::GetCachedTTCFace(int ttc_size,
   CTTFontDesc* pFontDesc = it->second.get();
   *pFontData = pFontDesc->FontData();
   int face_index = GetTTCIndex(pFontDesc->FontData(), ttc_size, font_offset);
-  if (!pFontDesc->GetFace(face_index)) {
-    pFontDesc->SetFace(face_index, GetFixedFace({pFontDesc->FontData(),
-                                                 static_cast<size_t>(ttc_size)},
-                                                face_index));
-  }
-  return pFontDesc->GetFace(face_index);
+  return pdfium::WrapRetain(pFontDesc->GetFace(face_index));
 }
 
 RetainPtr<CFX_Face> CFX_FontMgr::AddCachedTTCFace(
@@ -175,9 +168,20 @@ RetainPtr<CFX_Face> CFX_FontMgr::AddCachedTTCFace(
   int face_index = GetTTCIndex(pData.get(), ttc_size, font_offset);
   RetainPtr<CFX_Face> face =
       GetFixedFace({pData.get(), static_cast<size_t>(ttc_size)}, face_index);
-  auto pFontDesc = pdfium::MakeUnique<CTTFontDesc>(std::move(pData));
-  pFontDesc->SetFace(face_index, face);
-  m_FaceMap[KeyNameFromSize(ttc_size, checksum)] = std::move(pFontDesc);
+  if (!face)
+    return face;
+
+  CTTFontDesc* pFontDesc;
+  ByteString keyname = KeyNameFromSize(ttc_size, checksum);
+  auto it = m_FaceMap.find(keyname);
+  if (it != m_FaceMap.end()) {
+    pFontDesc = it->second.get();
+  } else {
+    auto pNewDesc = pdfium::MakeUnique<CTTFontDesc>(std::move(pData));
+    pFontDesc = pNewDesc.get();
+    m_FaceMap[keyname] = std::move(pNewDesc);
+  }
+  pFontDesc->SetFace(face_index, face.Get());
   return face;
 }
 
