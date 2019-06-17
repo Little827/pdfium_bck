@@ -29,8 +29,6 @@ class CFX_FontMgr {
   CFX_FontMgr();
   ~CFX_FontMgr();
 
-  void InitFTLibrary();
-
   RetainPtr<CFX_Face> GetCachedFace(const ByteString& face_name,
                                     int weight,
                                     bool bItalic,
