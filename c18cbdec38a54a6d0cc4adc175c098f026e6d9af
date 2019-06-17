@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1559889922 -0700\nnonce AC6AUtOznJb7NzKd0KvFKEUMFfVfyG8WMwd3oHGMshwHPr73eDM3DrkAEf+bNYcGyGhVZh31piGp\n\n0000000000000000000000000000000000000000 c18cbdec38a54a6d0cc4adc175c098f026e6d9af refs/for/refs/heads/master%notify\u003dNONE,m\u003dself_nit,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAlz6CAIACgkQqzYtYVpm\n/XvLOwgAiyCgNbt9B5kzCUftxHZ+3l5bDE6ZNVpiP2QbPkZKazhDhNCzUvxegPtX\nr7diVvRbLHYUG74OnnMYyDwPldlkdtVu1qMm81RWApNuSVmLZJais6wzxsgw5JFU\nxIP2yQcHEPLml2KTSSvW9F/1aaH4RaB7pOKpkJz6uJi0sTC4PBoMAGPEgA4rtkQe\n0AR6KLtTjWayhV437bCURFmmqM5T2/eJP5/MnNyIdQVGDxQk0Tp8QHYV1xmn0fDQ\nlhonZrhB9YLCARU91reKUz/tHywYFYgcsE0kAao7VEzExU2YkLfaimwBpBtYmzxV\necP0r84xgrMyAnMHpsM7Z6RmhDZ0kw\u003d\u003d\n\u003d09+A\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d0a9fdf_65e27bb2",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7648
+      },
+      "writtenOn": "2019-06-17T20:17:46Z",
+      "side": 1,
+      "message": "PDF spec also allows these object names to be hex coded. So for example Ja#76#61Script is a valid name.\n\nFor instance, following regex should match any legal variant of `/S /JavaScript`:\n/(S|#53)\\\\s*/(J|#4A)(a|#61)(v|#76)(a|#61)(S|#53)(c|#63)(r|#72)(i|#69)(p|#70)(t|#74)",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 60
+      },
+      "revId": "c18cbdec38a54a6d0cc4adc175c098f026e6d9af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
