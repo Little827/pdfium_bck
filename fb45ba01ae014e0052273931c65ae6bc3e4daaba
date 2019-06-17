@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e422cb67_eb1e4528",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-17T20:51:06Z",
+      "side": 1,
+      "message": "To use pdfium::Optional here, one should #include \"third_party/base/optional.h\" - it may still compile without it, but that\u0027s mostly due to luck.",
+      "revId": "fb45ba01ae014e0052273931c65ae6bc3e4daaba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a973e7b3_c0a85f35",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-17T20:51:06Z",
+      "side": 1,
+      "message": "Forgot to mention this earlier. |decoder_array| is an in-parameter. Let\u0027s group it with the other in-parameters. e.g. Put this above |dest_buf|, which is the first out-parameter.",
+      "revId": "fb45ba01ae014e0052273931c65ae6bc3e4daaba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
