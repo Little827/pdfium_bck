@@ -24,6 +24,9 @@
 namespace {
 
 const int kNumStandardFonts = 14;
+static_assert(static_cast<int>(CFX_FontMapper::StandardFont::kDingbats) + 1 ==
+                  kNumStandardFonts,
+              "StandardFont enum count mismatch");
 
 const char* const g_Base14FontNames[kNumStandardFonts] = {
     "Courier",
@@ -44,99 +47,113 @@ const char* const g_Base14FontNames[kNumStandardFonts] = {
 
 struct AltFontName {
   const char* m_pName;  // Raw, POD struct.
-  int m_Index;
+  CFX_FontMapper::StandardFont m_Index;
 };
 
 const AltFontName g_AltFontNames[] = {
-    {"Arial", 4},
-    {"Arial,Bold", 5},
-    {"Arial,BoldItalic", 6},
-    {"Arial,Italic", 7},
-    {"Arial-Bold", 5},
-    {"Arial-BoldItalic", 6},
-    {"Arial-BoldItalicMT", 6},
-    {"Arial-BoldMT", 5},
-    {"Arial-Italic", 7},
-    {"Arial-ItalicMT", 7},
-    {"ArialBold", 5},
-    {"ArialBoldItalic", 6},
-    {"ArialItalic", 7},
-    {"ArialMT", 4},
-    {"ArialMT,Bold", 5},
-    {"ArialMT,BoldItalic", 6},
-    {"ArialMT,Italic", 7},
-    {"ArialRoundedMTBold", 5},
-    {"Courier", 0},
-    {"Courier,Bold", 1},
-    {"Courier,BoldItalic", 2},
-    {"Courier,Italic", 3},
-    {"Courier-Bold", 1},
-    {"Courier-BoldOblique", 2},
-    {"Courier-Oblique", 3},
-    {"CourierBold", 1},
-    {"CourierBoldItalic", 2},
-    {"CourierItalic", 3},
-    {"CourierNew", 0},
-    {"CourierNew,Bold", 1},
-    {"CourierNew,BoldItalic", 2},
-    {"CourierNew,Italic", 3},
-    {"CourierNew-Bold", 1},
-    {"CourierNew-BoldItalic", 2},
-    {"CourierNew-Italic", 3},
-    {"CourierNewBold", 1},
-    {"CourierNewBoldItalic", 2},
-    {"CourierNewItalic", 3},
-    {"CourierNewPS-BoldItalicMT", 2},
-    {"CourierNewPS-BoldMT", 1},
-    {"CourierNewPS-ItalicMT", 3},
-    {"CourierNewPSMT", 0},
-    {"CourierStd", 0},
-    {"CourierStd-Bold", 1},
-    {"CourierStd-BoldOblique", 2},
-    {"CourierStd-Oblique", 3},
-    {"Helvetica", 4},
-    {"Helvetica,Bold", 5},
-    {"Helvetica,BoldItalic", 6},
-    {"Helvetica,Italic", 7},
-    {"Helvetica-Bold", 5},
-    {"Helvetica-BoldItalic", 6},
-    {"Helvetica-BoldOblique", 6},
-    {"Helvetica-Italic", 7},
-    {"Helvetica-Oblique", 7},
-    {"HelveticaBold", 5},
-    {"HelveticaBoldItalic", 6},
-    {"HelveticaItalic", 7},
-    {"Symbol", 12},
-    {"SymbolMT", 12},
-    {"Times-Bold", 9},
-    {"Times-BoldItalic", 10},
-    {"Times-Italic", 11},
-    {"Times-Roman", 8},
-    {"TimesBold", 9},
-    {"TimesBoldItalic", 10},
-    {"TimesItalic", 11},
-    {"TimesNewRoman", 8},
-    {"TimesNewRoman,Bold", 9},
-    {"TimesNewRoman,BoldItalic", 10},
-    {"TimesNewRoman,Italic", 11},
-    {"TimesNewRoman-Bold", 9},
-    {"TimesNewRoman-BoldItalic", 10},
-    {"TimesNewRoman-Italic", 11},
-    {"TimesNewRomanBold", 9},
-    {"TimesNewRomanBoldItalic", 10},
-    {"TimesNewRomanItalic", 11},
-    {"TimesNewRomanPS", 8},
-    {"TimesNewRomanPS-Bold", 9},
-    {"TimesNewRomanPS-BoldItalic", 10},
-    {"TimesNewRomanPS-BoldItalicMT", 10},
-    {"TimesNewRomanPS-BoldMT", 9},
-    {"TimesNewRomanPS-Italic", 11},
-    {"TimesNewRomanPS-ItalicMT", 11},
-    {"TimesNewRomanPSMT", 8},
-    {"TimesNewRomanPSMT,Bold", 9},
-    {"TimesNewRomanPSMT,BoldItalic", 10},
-    {"TimesNewRomanPSMT,Italic", 11},
-    {"ZapfDingbats", 13},
+    {"Arial", CFX_FontMapper::StandardFont::kHelvetica},
+    {"Arial,Bold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"Arial,BoldItalic", CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"Arial,Italic", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"Arial-Bold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"Arial-BoldItalic", CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"Arial-BoldItalicMT", CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"Arial-BoldMT", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"Arial-Italic", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"Arial-ItalicMT", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"ArialBold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"ArialBoldItalic", CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"ArialItalic", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"ArialMT", CFX_FontMapper::StandardFont::kHelvetica},
+    {"ArialMT,Bold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"ArialMT,BoldItalic", CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"ArialMT,Italic", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"ArialRoundedMTBold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"Courier", CFX_FontMapper::StandardFont::kCourier},
+    {"Courier,Bold", CFX_FontMapper::StandardFont::kCourierBold},
+    {"Courier,BoldItalic", CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"Courier,Italic", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"Courier-Bold", CFX_FontMapper::StandardFont::kCourierBold},
+    {"Courier-BoldOblique", CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"Courier-Oblique", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"CourierBold", CFX_FontMapper::StandardFont::kCourierBold},
+    {"CourierBoldItalic", CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"CourierItalic", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"CourierNew", CFX_FontMapper::StandardFont::kCourier},
+    {"CourierNew,Bold", CFX_FontMapper::StandardFont::kCourierBold},
+    {"CourierNew,BoldItalic",
+     CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"CourierNew,Italic", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"CourierNew-Bold", CFX_FontMapper::StandardFont::kCourierBold},
+    {"CourierNew-BoldItalic",
+     CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"CourierNew-Italic", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"CourierNewBold", CFX_FontMapper::StandardFont::kCourierBold},
+    {"CourierNewBoldItalic", CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"CourierNewItalic", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"CourierNewPS-BoldItalicMT",
+     CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"CourierNewPS-BoldMT", CFX_FontMapper::StandardFont::kCourierBold},
+    {"CourierNewPS-ItalicMT", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"CourierNewPSMT", CFX_FontMapper::StandardFont::kCourier},
+    {"CourierStd", CFX_FontMapper::StandardFont::kCourier},
+    {"CourierStd-Bold", CFX_FontMapper::StandardFont::kCourierBold},
+    {"CourierStd-BoldOblique",
+     CFX_FontMapper::StandardFont::kCourierBoldOblique},
+    {"CourierStd-Oblique", CFX_FontMapper::StandardFont::kCourierOblique},
+    {"Helvetica", CFX_FontMapper::StandardFont::kHelvetica},
+    {"Helvetica,Bold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"Helvetica,BoldItalic",
+     CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"Helvetica,Italic", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"Helvetica-Bold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"Helvetica-BoldItalic",
+     CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"Helvetica-BoldOblique",
+     CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"Helvetica-Italic", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"Helvetica-Oblique", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"HelveticaBold", CFX_FontMapper::StandardFont::kHelveticaBold},
+    {"HelveticaBoldItalic",
+     CFX_FontMapper::StandardFont::kHelveticaBoldOblique},
+    {"HelveticaItalic", CFX_FontMapper::StandardFont::kHelveticaOblique},
+    {"Symbol", CFX_FontMapper::StandardFont::kSymbol},
+    {"SymbolMT", CFX_FontMapper::StandardFont::kSymbol},
+    {"Times-Bold", CFX_FontMapper::StandardFont::kTimesBold},
+    {"Times-BoldItalic", CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"Times-Italic", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"Times-Roman", CFX_FontMapper::StandardFont::kTimes},
+    {"TimesBold", CFX_FontMapper::StandardFont::kTimesBold},
+    {"TimesBoldItalic", CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"TimesItalic", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"TimesNewRoman", CFX_FontMapper::StandardFont::kTimes},
+    {"TimesNewRoman,Bold", CFX_FontMapper::StandardFont::kTimesBold},
+    {"TimesNewRoman,BoldItalic",
+     CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"TimesNewRoman,Italic", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"TimesNewRoman-Bold", CFX_FontMapper::StandardFont::kTimesBold},
+    {"TimesNewRoman-BoldItalic",
+     CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"TimesNewRoman-Italic", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"TimesNewRomanBold", CFX_FontMapper::StandardFont::kTimesBold},
+    {"TimesNewRomanBoldItalic",
+     CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"TimesNewRomanItalic", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"TimesNewRomanPS", CFX_FontMapper::StandardFont::kTimes},
+    {"TimesNewRomanPS-Bold", CFX_FontMapper::StandardFont::kTimesBold},
+    {"TimesNewRomanPS-BoldItalic",
+     CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"TimesNewRomanPS-BoldItalicMT",
+     CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"TimesNewRomanPS-BoldMT", CFX_FontMapper::StandardFont::kTimesBold},
+    {"TimesNewRomanPS-Italic", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"TimesNewRomanPS-ItalicMT", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"TimesNewRomanPSMT", CFX_FontMapper::StandardFont::kTimes},
+    {"TimesNewRomanPSMT,Bold", CFX_FontMapper::StandardFont::kTimesBold},
+    {"TimesNewRomanPSMT,BoldItalic",
+     CFX_FontMapper::StandardFont::kTimesBoldOblique},
+    {"TimesNewRomanPSMT,Italic", CFX_FontMapper::StandardFont::kTimesOblique},
+    {"ZapfDingbats", CFX_FontMapper::StandardFont::kDingbats},
 };
 
 struct AltFontFamily {
@@ -714,7 +731,8 @@ RetainPtr<CFX_Face> CFX_FontMapper::GetCachedFace(void* hFont,
 }
 
 // static
-int CFX_FontMapper::GetStandardFontName(ByteString* name) {
+CFX_FontMapper::StandardFont CFX_FontMapper::GetStandardFontName(
+    ByteString* name) {
   const auto* end = std::end(g_AltFontNames);
   const auto* found =
       std::lower_bound(std::begin(g_AltFontNames), end, name->c_str(),
@@ -722,8 +740,19 @@ int CFX_FontMapper::GetStandardFontName(ByteString* name) {
                          return FXSYS_stricmp(element.m_pName, name) < 0;
                        });
   if (found == end || FXSYS_stricmp(found->m_pName, name->c_str()))
-    return -1;
+    return StandardFont::kUnknown;
 
-  *name = g_Base14FontNames[found->m_Index];
+  *name = g_Base14FontNames[static_cast<size_t>(found->m_Index)];
   return found->m_Index;
+}
+
+// static
+bool CFX_FontMapper::IsSymbolicFont(StandardFont font) {
+  return font == StandardFont::kSymbol || font == StandardFont::kDingbats;
+}
+
+bool CFX_FontMapper::IsFixedFont(StandardFont font) {
+  return font == StandardFont::kCourier || font == StandardFont::kCourierBold ||
+         font == StandardFont::kCourierBoldOblique ||
+         font == StandardFont::kCourierOblique;
 }
