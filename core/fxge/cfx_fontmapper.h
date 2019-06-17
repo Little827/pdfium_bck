@@ -20,10 +20,31 @@ class SystemFontInfoIface;
 
 class CFX_FontMapper {
  public:
+  enum StandardFont {
+    kUnknown = -1,
+
+    kCourier = 0,
+    kCourierBold,
+    kCourierBoldOblique,
+    kCourierOblique,
+    kHelvetica,
+    kHelveticaBold,
+    kHelveticaBoldOblique,
+    kHelveticaOblique,
+    kTimes,
+    kTimesBold,
+    kTimesBoldOblique,
+    kTimesOblique,
+    kSymbol,
+    kDingbats,
+  };
+
   explicit CFX_FontMapper(CFX_FontMgr* mgr);
   ~CFX_FontMapper();
 
-  static int GetStandardFontName(ByteString* name);
+  static StandardFont GetStandardFontName(ByteString* name);
+  static bool IsSymbolicFont(StandardFont font);
+  static bool IsFixedFont(StandardFont font);
 
   void SetSystemFontInfo(std::unique_ptr<SystemFontInfoIface> pFontInfo);
   SystemFontInfoIface* GetSystemFontInfo() { return m_pFontInfo.get(); }

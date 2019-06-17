@@ -286,8 +286,9 @@ uint32_t CPDF_Font::GetStringWidth(ByteStringView pString) {
 // static
 CPDF_Font* CPDF_Font::GetStockFont(CPDF_Document* pDoc, ByteStringView name) {
   ByteString fontname(name);
-  int font_id = CFX_FontMapper::GetStandardFontName(&fontname);
-  if (font_id < 0)
+  CFX_FontMapper::StandardFont font_id =
+      CFX_FontMapper::GetStandardFontName(&fontname);
+  if (font_id == CFX_FontMapper::kUnknown)
     return nullptr;
 
   auto* pFontGlobals = CPDF_FontGlobals::GetInstance();
