@@ -8,15 +8,19 @@
 #define CORE_FPDFAPI_PARSER_FPDF_PARSER_DECODE_H_
 
 #include <memory>
+#include <utility>
+#include <vector>
 
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/base/optional.h"
 #include "third_party/base/span.h"
 
 class CCodec_ScanlineDecoder;
 class CPDF_Array;
 class CPDF_Dictionary;
+class CPDF_Object;
 
 // Indexed by 8-bit char code, contains unicode code points.
 extern const uint16_t PDFDocEncoding[256];
@@ -68,13 +72,17 @@ uint32_t FlateOrLZWDecode(bool bLZW,
                           std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
                           uint32_t* dest_size);
 
-bool PDF_DataDecode(pdfium::span<const uint8_t> src_span,
-                    const CPDF_Dictionary* pDict,
-                    uint32_t estimated_size,
-                    bool bImageAcc,
-                    std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                    uint32_t* dest_size,
-                    ByteString* ImageEncoding,
-                    UnownedPtr<const CPDF_Dictionary>* pImageParms);
+Optional<std::vector<std::pair<ByteString, const CPDF_Object*>>>
+GetDecoderArray(const CPDF_Dictionary* pDict);
+
+bool PDF_DataDecode(
+    pdfium::span<const uint8_t> src_span,
+    uint32_t estimated_size,
+    bool bImageAcc,
+    const std::vector<std::pair<ByteString, const CPDF_Object*>>& decoder_array,
+    std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
+    uint32_t* dest_size,
+    ByteString* ImageEncoding,
+    UnownedPtr<const CPDF_Dictionary>* pImageParms);
 
 #endif  // CORE_FPDFAPI_PARSER_FPDF_PARSER_DECODE_H_
