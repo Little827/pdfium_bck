@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560550506 -0700\nnonce AC6AUtNsOhmXsKRZBr4JcYfNkblAxZXOw1C+oVtzYKcSLhpBijQoM7B4vcdkuodru+lZyeHPCQrP\n\n0000000000000000000000000000000000000000 04dd8104175043373f6e03c5a219a4864ba6e159 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dsimplify-a-check-in-flatemodule\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0EHGoACgkQqzYtYVpm\n/Xvd1Qf9ESnns6feJzINH2m7qD8Srg8YNUAhsvAF+hvc0lyAaHpSKRz557DittXw\nV02TuWrUIc05neprNlFd7B6M7HJaJaLW5S380mve8+J1yOYcl7jfLfifubTIYgZY\n5CU2fmCR30wQ/HSzAupWu/mNY3iAMa+yiwSecLqAUexF1eMUUjC9mp8Se6rPbriG\nNe2xtnusememyU7+SOa/VWWc8Wyf+9fQyAqBfK/hTDDaLohPLuzoeN6KI5qf+71N\nvTgJ1tw0OEm4qORipMtdaS2IyWhZeBkOzGMfI1C6EA/feEMEaHKyg0AudVKUryz4\nchM/ZNOFCtww+aynUhtp+JBUzW05PA\u003d\u003d\n\u003dKDJU\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4523cfce_22b4aa03",
+        "filename": "core/fxcodec/codec/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-17T18:51:58Z",
+      "side": 1,
+      "message": "well, this is the opertion that might overflow, so we we do this with safe arithmetic and return FX_INVALID_OFFSET if !is_valid()",
+      "range": {
+        "startLine": 809,
+        "startChar": 38,
+        "endLine": 809,
+        "endChar": 52
+      },
+      "revId": "04dd8104175043373f6e03c5a219a4864ba6e159",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
