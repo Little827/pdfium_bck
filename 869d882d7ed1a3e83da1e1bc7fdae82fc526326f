@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f944e5b3_c998c62d",
+        "filename": "core/fxcrt/token_stream.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:17:05Z",
+      "side": 1,
+      "message": "ostream",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "869d882d7ed1a3e83da1e1bc7fdae82fc526326f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b106793_bc4d8914",
+        "filename": "core/fxcrt/token_stream.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:17:05Z",
+      "side": 1,
+      "message": "Did you have a real use case in mind for SetSeparator()?",
+      "revId": "869d882d7ed1a3e83da1e1bc7fdae82fc526326f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
