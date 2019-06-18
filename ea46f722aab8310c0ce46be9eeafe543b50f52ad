@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "1b9db452_e5739cd3",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:03:25Z",
+      "side": 1,
+      "message": "GetRawStream",
+      "range": {
+        "startLine": 247,
+        "startChar": 14,
+        "endLine": 247,
+        "endChar": 23
+      },
+      "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "401c1fc8_6c6d7d10",
         "filename": "fpdfsdk/fpdf_thumbnail.cpp",
         "patchSetId": 18
@@ -59,6 +82,91 @@
     },
     {
       "key": {
+        "uuid": "17a29790_01ccf81a",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:03:25Z",
+      "side": 1,
+      "message": "Just write this normally: if (FPDFPage_GetDecodedThumbnailDataFromPage(...) !\u003d decoded_data_size).",
+      "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a00550cf_1d8cd9d5",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:03:25Z",
+      "side": 1,
+      "message": "Needs more curly braces.",
+      "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03408c0a_09e04f6c",
+        "filename": "fpdfsdk/fpdf_thumbnail_embeddertest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:03:25Z",
+      "side": 1,
+      "message": "Why not just pass in nullptr and 0 to FPDFPage_GetDecodedThumbnailDataFromPage()?",
+      "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b42c051_8a9ab378",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:03:25Z",
+      "side": 1,
+      "message": "Why put these in the public/ header file? How is a PDFium embedder suppose to use these?",
+      "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7e33db4_97a6c20f",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:03:25Z",
+      "side": 1,
+      "message": "snprintf() takes a size_t for the size, and the caller passes sizeof(foo), which is also size_t. So keep this as size_t to match both sides. When comparing with |chars_formatted|, static_cast |chars_formatted| once the code knows it is not negative.",
+      "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29420395_885fd0dd",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 18
@@ -70,6 +178,23 @@
       "writtenOn": "2019-06-18T20:49:00Z",
       "side": 1,
       "message": "Needs curly braces. Look for \"curly\" in https://google.github.io/styleguide/cppguide.html#Conditionals",
+      "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6378be1e_0463b90c",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:03:25Z",
+      "side": 1,
+      "message": "The 3 snprintf() calls also look very similar. There\u0027s probably still another opportunity to combine them further.",
       "revId": "ea46f722aab8310c0ce46be9eeafe543b50f52ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
