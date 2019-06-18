@@ -388,6 +388,24 @@
     },
     {
       "key": {
+        "uuid": "c3a67da3_68f50497",
+        "filename": "testing/resources/edge_case_thumbnails.in",
+        "patchSetId": 17
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T20:49:00Z",
+      "side": 1,
+      "message": "Still curious about this. Is this something that happened in a real PDF?",
+      "parentUuid": "78c32456_ce41e870",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "045c9d30_0b6fdaf8",
         "filename": "testing/resources/simple_thumbnail.in",
         "patchSetId": 17
