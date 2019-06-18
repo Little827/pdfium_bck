@@ -22,6 +22,103 @@
       "revId": "f8214ff40e8676b5091a22113321777aad640f6c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698bd85c_c23cd036",
+        "filename": "fpdfsdk/fpdf_sysfontinfo_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:29:26Z",
+      "side": 1,
+      "message": "Maybe make this: static voidFPDFUnavailableSysFontInfoEmbedderTest::Release(...) ?",
+      "revId": "f8214ff40e8676b5091a22113321777aad640f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11d42a0f_32edf319",
+        "filename": "fpdfsdk/fpdf_sysfontinfo_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:29:26Z",
+      "side": 1,
+      "message": "typo here and on line 29.",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "f8214ff40e8676b5091a22113321777aad640f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997fd44e_f905a75c",
+        "filename": "testing/resources/bug_972518.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:29:26Z",
+      "side": 1,
+      "message": "I like to put /Type first in an object so readers can quickly figure out what it is.",
+      "revId": "f8214ff40e8676b5091a22113321777aad640f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be0a3ce_6f537c7b",
+        "filename": "testing/resources/bug_972518.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:29:26Z",
+      "side": 1,
+      "message": "Curious if the invalid size matter here, or if it is just the typeface part that\u0027s important.",
+      "range": {
+        "startLine": 16,
+        "startChar": 35,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "f8214ff40e8676b5091a22113321777aad640f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a4c1169_6936846b",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:29:26Z",
+      "side": 1,
+      "message": "CFX_TxtBreak probably needs the same check.",
+      "revId": "f8214ff40e8676b5091a22113321777aad640f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
