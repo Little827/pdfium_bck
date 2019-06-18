@@ -26,6 +26,23 @@
     },
     {
       "key": {
+        "uuid": "457614fc_5717e763",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-06-18T16:55:38Z",
+      "side": 1,
+      "message": "I wouldn\u0027t safely assume this is the reason why the original FoxIt developers implemented the truncate operation this way in PDFium. To me, it seems far more likely that both Acrobat and PDFium developers made the same mistake, which was truncating a float by casting it to an integer (which is the common implementation that everyone is taught in the first week of intro to computer science class). You might want to instead say in the commit message that we\u0027re going to keep it this way simply because we want consistency with Adobe Acrobat.",
+      "revId": "2ab831327dd0d0cd943415ebc3730c2cf603af9f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "819e3371_1518b7ac",
         "filename": "core/fpdfapi/page/cpdf_psengine_unittest.cpp",
         "patchSetId": 1
