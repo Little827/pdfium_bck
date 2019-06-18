@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4046d6ba_ec591f4c",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T22:07:12Z",
+      "side": 1,
+      "message": "This looks nearly identical to DecodeStreamMaybeCopyAndReturnLength(), and the code isn\u0027t trivial. So maybe internal to cpdfsdk_helpers.cpp, this helper can have its own helper:\n\nunsigned long GetStreamMaybeCopyAndReturnLengthImpl(const CPDF_Stream* stream, bool decode, ...);\n\nThen both of these functions can just call GetStreamMaybeCopyAndReturnLengthImpl().",
+      "revId": "51b3ae0431933204e9a2cca94dcfabbd7ec1b7ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
