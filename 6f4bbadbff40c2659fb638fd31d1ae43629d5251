@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbc33887_c8c3c05e",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "This variable isn\u0027t used anywhere?",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "442227a3_700ca50b",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "Why even bother creating this vector if |decoded_data_size| is 0?",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca22c1e_4c751301",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "When the if-statement is multi-line, add curly braces around the body.",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56833f24_94511aa2",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ce4b1b_eb4b7ced",
+        "filename": "fpdfsdk/fpdf_thumbnail_embeddertest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "Use nullptr.",
+      "range": {
+        "startLine": 25,
+        "startChar": 55,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f146b910_cd2e9046",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "Doesn\u0027t match line 51.",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdf58ad1_fc646a12",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "What happens on failure?",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e096e1dc_aea34b71",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 524,
+        "startChar": 2,
+        "endLine": 524,
+        "endChar": 8
+      },
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c095fe94_fe551cb1",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "Lines 648-657 looks a lot like lines 686-695 and lines 716-723. Is it possible to add a helper function for them?",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abbab98_bb6dad43",
+        "filename": "testing/resources/edge_case_thumbnails.in",
+        "patchSetId": 17
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "Can you explain what the \"edge case\" is exactly? There appears to be two objects with indentical streams, but one has a filter and other does not.",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045c9d30_0b6fdaf8",
+        "filename": "testing/resources/simple_thumbnail.in",
+        "patchSetId": 17
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T00:30:50Z",
+      "side": 1,
+      "message": "This comes out to 61 KB. Is this necessary, or can be use a simpler image?",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
