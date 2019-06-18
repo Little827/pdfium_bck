@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "88dfd93d_92815ffa",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc33887_c8c3c05e",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "442227a3_700ca50b",
         "filename": "fpdfsdk/fpdf_thumbnail.cpp",
         "patchSetId": 17
@@ -33,6 +51,24 @@
       "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5bc74f_4abccc3a",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "442227a3_700ca50b",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7c4a5d66_d2b1a3eb",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ca22c1e_4c751301",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56833f24_94511aa2",
         "filename": "fpdfsdk/fpdf_thumbnail.cpp",
         "patchSetId": 17
@@ -67,6 +121,24 @@
       "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c5a9334_1116bcef",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "No since it will be destroyed once it the nullptr is returned.",
+      "parentUuid": "56833f24_94511aa2",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -90,6 +162,30 @@
       "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68b00de_143261ae",
+        "filename": "fpdfsdk/fpdf_thumbnail_embeddertest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4ce4b1b_eb4b7ced",
+      "range": {
+        "startLine": 25,
+        "startChar": 55,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +229,48 @@
     },
     {
       "key": {
+        "uuid": "1c3a7ad8_85796c85",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdf58ad1_fc646a12",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ae348d_6a93fd4f",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f146b910_cd2e9046",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e096e1dc_aea34b71",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 17
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "abbab525_789f18b3",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Not necessary, but makes it explicit that the return value isn\u0027t being used. This style was used in the WriteImages function so I carried over the notation.",
+      "parentUuid": "e096e1dc_aea34b71",
+      "range": {
+        "startLine": 524,
+        "startChar": 2,
+        "endLine": 524,
+        "endChar": 8
+      },
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c095fe94_fe551cb1",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 17
@@ -170,6 +332,24 @@
       "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5a1302_9eef275a",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c095fe94_fe551cb1",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "78c32456_ce41e870",
+        "filename": "testing/resources/edge_case_thumbnails.in",
+        "patchSetId": 17
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "The proposed case was the filter not matching the encoding of the data. In hindsight, I think this should be tested within the unittests of the decoder and not the embeddertests for FPDF_Thumbnail.",
+      "parentUuid": "9abbab98_bb6dad43",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "045c9d30_0b6fdaf8",
         "filename": "testing/resources/simple_thumbnail.in",
         "patchSetId": 17
@@ -204,6 +402,24 @@
       "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a04277_b6cfb24b",
+        "filename": "testing/resources/simple_thumbnail.in",
+        "patchSetId": 17
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-18T20:26:50Z",
+      "side": 1,
+      "message": "Not necessary, just like cat pics. Adding a smaller image.",
+      "parentUuid": "045c9d30_0b6fdaf8",
+      "revId": "6f4bbadbff40c2659fb638fd31d1ae43629d5251",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
