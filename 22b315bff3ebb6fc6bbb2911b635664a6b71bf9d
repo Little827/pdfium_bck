@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "7d884474_a7c27b50",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:38:51Z",
+      "side": 1,
+      "message": "I\u0027ll add a CL to the chain in the near future to address this.",
+      "parentUuid": "ad3a1fc5_1b1f202f",
+      "range": {
+        "startLine": 113,
+        "startChar": 64,
+        "endLine": 113,
+        "endChar": 72
+      },
+      "revId": "22b315bff3ebb6fc6bbb2911b635664a6b71bf9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bbc535a_5a349d25",
         "filename": "core/fxcodec/flate/flatemodule.cpp",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "564862d1_a5ca90de",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bbc535a_5a349d25",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "22b315bff3ebb6fc6bbb2911b635664a6b71bf9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5246f7_b0355dcd",
         "filename": "core/fxcodec/flate/flatemodule.cpp",
         "patchSetId": 1
@@ -69,6 +117,30 @@
       "revId": "22b315bff3ebb6fc6bbb2911b635664a6b71bf9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6614eb2b_972ead87",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-18T21:38:51Z",
+      "side": 1,
+      "message": "We have this pattern all over. Removing it triggers:\n\ncore/fxcodec/flate/flatemodule.cpp:151:28: error: comparison of integers of different signs: \u0027int\u0027 and \u0027uint32_t\u0027 (aka \u0027unsigned int\u0027) [-Werror,-Wsign-compare]                                                                                                             \n    if (index \u003c 0 || index \u003e\u003d m_nCodes)",
+      "parentUuid": "da5246f7_b0355dcd",
+      "range": {
+        "startLine": 151,
+        "startChar": 21,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "22b315bff3ebb6fc6bbb2911b635664a6b71bf9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
