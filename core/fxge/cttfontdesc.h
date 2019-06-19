@@ -12,19 +12,21 @@
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/observed_ptr.h"
+#include "third_party/base/span.h"
 
 class CFX_Face;
 
 class CTTFontDesc {
  public:
-  explicit CTTFontDesc(std::unique_ptr<uint8_t, FxFreeDeleter> pData);
+  CTTFontDesc(std::unique_ptr<uint8_t, FxFreeDeleter> pData, size_t size);
   ~CTTFontDesc();
 
-  uint8_t* FontData() const { return m_pFontData.get(); }
+  pdfium::span<uint8_t> FontData() const { return {m_pFontData.get(), m_Size}; }
   void SetFace(size_t index, CFX_Face* face);
   CFX_Face* GetFace(size_t index) const;
 
  private:
+  const size_t m_Size;
   std::unique_ptr<uint8_t, FxFreeDeleter> const m_pFontData;
   ObservedPtr<CFX_Face> m_TTCFaces[16];
 };
