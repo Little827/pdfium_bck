@@ -349,26 +349,29 @@ bool CPDF_DIBBase::LoadColorInfo(const CPDF_Dictionary* pFormResources,
   if (m_pDict->GetIntegerFor("ImageMask"))
     m_bImageMask = true;
 
-  if (m_bImageMask || !m_pDict->KeyExist("ColorSpace")) {
-    if (!m_bImageMask) {
-      const CPDF_Object* pFilter = m_pDict->GetDirectObjectFor("Filter");
-      if (pFilter) {
-        ByteString filter;
-        if (pFilter->IsName()) {
-          filter = pFilter->GetString();
-        } else if (const CPDF_Array* pArray = pFilter->AsArray()) {
-          if (!ValidateDecoderPipeline(pArray))
-            return false;
-          filter = pArray->GetStringAt(pArray->size() - 1);
-        }
+  if (!m_bImageMask) {
+    const CPDF_Object* pFilter = m_pDict->GetDirectObjectFor("Filter");
+    if (pFilter) {
+      ByteString filter;
+      if (pFilter->IsName()) {
+        filter = pFilter->GetString();
+      } else if (const CPDF_Array* pArray = pFilter->AsArray()) {
+        if (!ValidateDecoderPipeline(pArray))
+          return false;
+        filter = pArray->GetStringAt(pArray->size() - 1);
+      }
 
-        if (filter == "JPXDecode") {
-          m_bDoBpcCheck = false;
-          return true;
-        }
+      if (filter == "JPXDecode") {
+        m_bDoBpcCheck = false;
+        return true;
       }
     }
+  }
+
+  if (!m_pDict->KeyExist("ColorSpace"))
     m_bImageMask = true;
+
+  if (m_bImageMask) {
     m_bpc = m_nComponents = 1;
     const CPDF_Array* pDecode = m_pDict->GetArrayFor("Decode");
     m_bDefaultDecode = !pDecode || !pDecode->GetIntegerAt(0);
