@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "247e6d3e_e1ef3204",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 7645
+      },
+      "writtenOn": "2019-06-19T23:04:57Z",
+      "side": 1,
+      "message": "In the chromium style, we normally wouldn\u0027t document the params like this, esp. as we strive to make the variable names self explanatory, as they are here.\n\nI would also reword this whole comment block a bit.... maybe something like:\n\n// Returns the length of the decoded data from |stream|. The decoded data is \u003cblah blah blah\u003e.\n// If |buffer| is not-nullptr, and |buflen| is large enough to contain the decoded\n// data, then the decoded data is copied into |buffer|.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 49
+      },
+      "revId": "299c166d55ecbf050809f46f401db493bd0dcea4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
