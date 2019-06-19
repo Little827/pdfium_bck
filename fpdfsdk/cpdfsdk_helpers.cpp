@@ -155,6 +155,27 @@ bool FPDF_FileHandlerContext::Flush() {
 }
 #endif  // PDF_ENABLE_XFA
 
+unsigned long GetStreamMaybeCopyAndReturnLengthImpl(const CPDF_Stream* stream,
+                                                    void* buffer,
+                                                    unsigned long buflen,
+                                                    bool load_raw) {
+  ASSERT(stream);
+  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream);
+
+  if (load_raw) {
+    stream_acc->LoadAllDataRaw();
+  } else {
+    stream_acc->LoadAllDataFiltered();
+  }
+
+  const auto stream_data_size = stream_acc->GetSize();
+  if (!buffer || buflen < stream_data_size)
+    return stream_data_size;
+
+  memcpy(buffer, stream_acc->GetData(), stream_data_size);
+  return stream_data_size;
+}
+
 }  // namespace
 
 IPDF_Page* IPDFPageFromFPDFPage(FPDF_PAGE page) {
@@ -262,18 +283,16 @@ unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
   return len;
 }
 
+unsigned long GetRawStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
+                                                   void* buffer,
+                                                   unsigned long buflen) {
+  return GetStreamMaybeCopyAndReturnLengthImpl(stream, buffer, buflen, true);
+}
+
 unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
                                                    void* buffer,
                                                    unsigned long buflen) {
-  ASSERT(stream);
-  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream);
-  stream_acc->LoadAllDataFiltered();
-  const auto stream_data_size = stream_acc->GetSize();
-  if (!buffer || buflen < stream_data_size)
-    return stream_data_size;
-
-  memcpy(buffer, stream_acc->GetData(), stream_data_size);
-  return stream_data_size;
+  return GetStreamMaybeCopyAndReturnLengthImpl(stream, buffer, buflen, false);
 }
 
 void FSDK_SetSandBoxPolicy(FPDF_DWORD policy, FPDF_BOOL enable) {
