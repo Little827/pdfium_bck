@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c2252346_26a2f653",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-19T16:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6289982b_69b87746",
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f171b04b_8cb61ca5",
         "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5a3c6a_470ec14c",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-19T16:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f171b04b_8cb61ca5",
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "550b28a5_70358b3b",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-19T16:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d52b1aa2_e09241b4",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f815277a_e8c8a6e1",
         "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
         "patchSetId": 2
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "54f50291_c4d65a58",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-19T16:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f815277a_e8c8a6e1",
+      "range": {
+        "startLine": 289,
+        "startChar": 71,
+        "endLine": 289,
+        "endChar": 75
+      },
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f92d56d_087d20bc",
         "filename": "fpdfsdk/cpdfsdk_helpers.h",
         "patchSetId": 2
@@ -93,6 +177,24 @@
       "writtenOn": "2019-06-19T16:30:06Z",
       "side": 1,
       "message": "Not sure what the pdfium style is, but if this were chromium, I would recommend adding comments in the header file specifying that the copy occurs if |buffer| is non-nullptr and large enough to contain the stream. Otherwise, it just gets the length.\n\nOr the comment can belong in the helper method in the cc file.",
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf0f8451_06ca653a",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-19T16:50:28Z",
+      "side": 1,
+      "message": "The function calling this one, FPDFImageObj_GetImageDataDecoded(), documents this behavior so I think to keep the documentation consistent with this header file it\u0027s fine to leave it as is.",
+      "parentUuid": "5f92d56d_087d20bc",
       "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
