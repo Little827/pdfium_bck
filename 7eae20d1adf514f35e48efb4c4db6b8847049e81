@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6289982b_69b87746",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T00:24:03Z",
+      "side": 1,
+      "message": "Can you move this to line ~50. i.e. Above the PDF_ENABLE_XFA bits.",
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f171b04b_8cb61ca5",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T00:24:03Z",
+      "side": 1,
+      "message": "I feel if you flip the logic and make this variable \"decode\", then it is slightly easier to understand:\n\ndecode \u003d true -\u003e do decode the data\ndecode \u003d false -\u003e don\u0027t decode the data\n\nvs.\n\nload_raw \u003d true -\u003e load raw data\nload_raw \u003d false -\u003e load not raw data, or do not load raw data (what do these mean?)",
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52b1aa2_e09241b4",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T00:24:03Z",
+      "side": 1,
+      "message": "Braces not needed for one liners.",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f815277a_e8c8a6e1",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T00:24:03Z",
+      "side": 1,
+      "message": "It\u0027s not always obvious what a true or false means when it is being passed to another function. One would often have to look up the called function to see what the parameter is. One way to improve readability is to add inline documentation like this: /*load_raw\u003d*/true",
+      "range": {
+        "startLine": 289,
+        "startChar": 71,
+        "endLine": 289,
+        "endChar": 75
+      },
+      "revId": "7eae20d1adf514f35e48efb4c4db6b8847049e81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
