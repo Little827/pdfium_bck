@@ -349,7 +349,7 @@ RetainPtr<CFX_Face> CFX_FontMapper::UseInternalSubst(CFX_SubstFont* pSubstFont,
     Optional<pdfium::span<const uint8_t>> font_data =
         m_pFontMgr->GetBuiltinFont(iBaseFont);
     if (font_data.has_value()) {
-      m_FoxitFaces[iBaseFont] = m_pFontMgr->GetFixedFace(font_data.value(), 0);
+      m_FoxitFaces[iBaseFont] = m_pFontMgr->NewFixedFace(font_data.value(), 0);
       return m_FoxitFaces[iBaseFont];
     }
   }
@@ -362,14 +362,14 @@ RetainPtr<CFX_Face> CFX_FontMapper::UseInternalSubst(CFX_SubstFont* pSubstFont,
     pSubstFont->m_Family = "Chrome Serif";
     if (!m_MMFaces[1]) {
       m_MMFaces[1] =
-          m_pFontMgr->GetFixedFace(m_pFontMgr->GetBuiltinFont(14).value(), 0);
+          m_pFontMgr->NewFixedFace(m_pFontMgr->GetBuiltinFont(14).value(), 0);
     }
     return m_MMFaces[1];
   }
   pSubstFont->m_Family = "Chrome Sans";
   if (!m_MMFaces[0]) {
     m_MMFaces[0] =
-        m_pFontMgr->GetFixedFace(m_pFontMgr->GetBuiltinFont(15).value(), 0);
+        m_pFontMgr->NewFixedFace(m_pFontMgr->GetBuiltinFont(15).value(), 0);
   }
   return m_MMFaces[0];
 }
@@ -682,18 +682,30 @@ RetainPtr<CFX_Face> CFX_FontMapper::GetCachedTTCFace(void* hFont,
     for (int i = 0; i < 256; i++)
       checksum += pBuffer[i];
   }
+  CFX_FontMgr::FontDesc* pFontDesc =
+      m_pFontMgr->GetCachedTTCFontDesc(ttc_size, checksum);
+  if (!pFontDesc) {
+    std::unique_ptr<uint8_t, FxFreeDeleter> pFontData(
+        FX_Alloc(uint8_t, ttc_size));
+    m_pFontInfo->GetFontData(hFont, kTableTTCF, pFontData.get(), ttc_size);
+    pFontDesc = m_pFontMgr->AddCachedTTCFontDesc(
+        ttc_size, checksum, std::move(pFontData), ttc_size);
+  }
   ASSERT(ttc_size >= font_size);
   uint32_t font_offset = ttc_size - font_size;
-  RetainPtr<CFX_Face> face =
-      m_pFontMgr->GetCachedTTCFace(ttc_size, checksum, font_offset);
-  if (face)
-    return face;
+  int face_index =
+      GetTTCIndex(pFontDesc->FontData().first(ttc_size), font_offset);
+  RetainPtr<CFX_Face> pFace(pFontDesc->GetFace(face_index));
+  if (pFace)
+    return pFace;
 
-  std::unique_ptr<uint8_t, FxFreeDeleter> pFontData(
-      FX_Alloc(uint8_t, ttc_size));
-  m_pFontInfo->GetFontData(hFont, kTableTTCF, pFontData.get(), ttc_size);
-  return m_pFontMgr->AddCachedTTCFace(ttc_size, checksum, std::move(pFontData),
-                                      ttc_size, font_offset);
+  pFace = m_pFontMgr->NewFixedFace(pFontDesc->FontData().first(ttc_size),
+                                   face_index);
+  if (!pFace)
+    return nullptr;
+
+  pFontDesc->SetFace(face_index, pFace.Get());
+  return pFace;
 }
 
 RetainPtr<CFX_Face> CFX_FontMapper::GetCachedFace(void* hFont,
@@ -701,18 +713,26 @@ RetainPtr<CFX_Face> CFX_FontMapper::GetCachedFace(void* hFont,
                                                   int weight,
                                                   bool bItalic,
                                                   uint32_t font_size) {
-  uint8_t* pIgnore = nullptr;
-  RetainPtr<CFX_Face> face =
-      m_pFontMgr->GetCachedFace(SubstName, weight, bItalic, &pIgnore);
-  if (face)
-    return face;
+  CFX_FontMgr::FontDesc* pFontDesc =
+      m_pFontMgr->GetCachedFontDesc(SubstName, weight, bItalic);
+  if (!pFontDesc) {
+    std::unique_ptr<uint8_t, FxFreeDeleter> pFontData(
+        FX_Alloc(uint8_t, font_size));
+    m_pFontInfo->GetFontData(hFont, 0, pFontData.get(), font_size);
+    pFontDesc = m_pFontMgr->AddCachedFontDesc(SubstName, weight, bItalic,
+                                              std::move(pFontData), font_size);
+  }
+  RetainPtr<CFX_Face> pFace(pFontDesc->GetFace(0));
+  if (pFace)
+    return pFace;
 
-  std::unique_ptr<uint8_t, FxFreeDeleter> pFontData(
-      FX_Alloc(uint8_t, font_size));
-  m_pFontInfo->GetFontData(hFont, 0, pFontData.get(), font_size);
-  return m_pFontMgr->AddCachedFace(SubstName, weight, bItalic,
-                                   std::move(pFontData), font_size,
+  pFace = m_pFontMgr->NewFixedFace(pFontDesc->FontData().first(font_size),
                                    m_pFontInfo->GetFaceIndex(hFont));
+  if (!pFace)
+    return nullptr;
+
+  pFontDesc->SetFace(0, pFace.Get());
+  return pFace;
 }
 
 // static
