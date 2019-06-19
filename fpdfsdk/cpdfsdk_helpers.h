@@ -244,6 +244,30 @@ CFX_Matrix CFXMatrixFromFSMatrix(const FS_MATRIX& matrix);
 unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
                                                   void* buffer,
                                                   unsigned long buflen);
+
+// Get the raw image data of |stream|. The raw data is the stream's data as
+// stored in the PDF without applying any filters. |buffer| is only modified if
+// |buflen| is longer than the length of the raw stream data.
+//
+//   stream - handle to an stream.
+//   buffer - buffer for holding the raw stream data in raw bytes.
+//   buflen - length of the buffer.
+//
+// Returns the length of the raw stream data.
+unsigned long GetRawStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
+                                                   void* buffer,
+                                                   unsigned long buflen);
+
+// Get the decoded stream data of |stream|. The decoded data is the
+// uncompressed stream data, i.e. the raw stream data after having all filters
+// applied. |buffer| is only modified if |buflen| is longer than the length of
+// the decoded stream data.
+//
+//   stream - handle to a stream object.
+//   buffer - buffer for holding the decoded stream data in raw bytes.
+//   buflen - length of the buffer.
+//
+// Returns the length of the decoded stream data.
 unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
                                                    void* buffer,
                                                    unsigned long buflen);
