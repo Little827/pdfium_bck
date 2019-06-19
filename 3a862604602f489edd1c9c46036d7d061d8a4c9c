@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f07ceef6_f4acc103",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-19T22:34:55Z",
+      "side": 1,
+      "message": "Yep, but I was going to fix this in a follow-up.",
+      "parentUuid": "50dc7fc9_d4ba4d82",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "3a862604602f489edd1c9c46036d7d061d8a4c9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2df0026_f0c9a144",
         "filename": "core/fxge/cttfontdesc.h",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c2e15d1b_543d4dfa",
+        "filename": "core/fxge/cttfontdesc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-19T22:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2df0026_f0c9a144",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "3a862604602f489edd1c9c46036d7d061d8a4c9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18070df3_0b8a425c",
         "filename": "core/fxge/cttfontdesc.h",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "3a862604602f489edd1c9c46036d7d061d8a4c9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557c7e01_6e06fa35",
+        "filename": "core/fxge/cttfontdesc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-19T22:34:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "18070df3_0b8a425c",
+      "revId": "3a862604602f489edd1c9c46036d7d061d8a4c9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
