@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a35c095_3e3ddd84",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1932,
+      "author": {
+        "id": 6755
+      },
+      "writtenOn": "2019-06-19T13:15:25Z",
+      "side": 1,
+      "message": "why the !! ?\n\na \u0026\u0026 b will return a bool",
+      "range": {
+        "startLine": 1932,
+        "startChar": 25,
+        "endLine": 1932,
+        "endChar": 27
+      },
+      "revId": "bd599b9dfe8d34f15e50b9aa5e15dcfe1ff80649",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
