@@ -16,6 +16,24 @@
       "revId": "51b3ae0431933204e9a2cca94dcfabbd7ec1b7ae",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a81bee5_128d2a70",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-19T00:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4046d6ba_ec591f4c",
+      "revId": "51b3ae0431933204e9a2cca94dcfabbd7ec1b7ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
