@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50dc7fc9_d4ba4d82",
+        "filename": "core/fxge/cfx_fontmgr.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T22:21:20Z",
+      "side": 1,
+      "message": "Remind me, is \u0026pFontData[8] better?",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "3a862604602f489edd1c9c46036d7d061d8a4c9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2df0026_f0c9a144",
+        "filename": "core/fxge/cttfontdesc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T22:21:20Z",
+      "side": 1,
+      "message": "Can this be const uint8_t?",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "3a862604602f489edd1c9c46036d7d061d8a4c9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18070df3_0b8a425c",
+        "filename": "core/fxge/cttfontdesc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T22:21:20Z",
+      "side": 1,
+      "message": "Can we have this as data, then size, like the ctor parameters?",
+      "revId": "3a862604602f489edd1c9c46036d7d061d8a4c9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
