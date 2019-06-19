@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90e36c4a_3e4a8936",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-19T22:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0323f433_40e774f4",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "cb78e298fdb0e31b69a5f44cffd5a507f4e9cc04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6f7b796_4e3aec9f",
         "filename": "core/fxge/fx_font.cpp",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "cb78e298fdb0e31b69a5f44cffd5a507f4e9cc04",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15435442_aa56ef3f",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-19T22:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6f7b796_4e3aec9f",
+      "revId": "cb78e298fdb0e31b69a5f44cffd5a507f4e9cc04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
