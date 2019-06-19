@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0323f433_40e774f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T22:29:25Z",
+      "side": 1,
+      "message": "CFX_FontMgr/CFX_FontMapper - as is, it reads like a directory path.",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "cb78e298fdb0e31b69a5f44cffd5a507f4e9cc04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f7b796_4e3aec9f",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-19T22:29:25Z",
+      "side": 1,
+      "message": "Maybe just: \"return index;\" here, and line 114 can just return 0?",
+      "revId": "cb78e298fdb0e31b69a5f44cffd5a507f4e9cc04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
