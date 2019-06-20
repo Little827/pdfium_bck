@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "15a6e6e0_bef926c3",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-20T21:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7780be0f_ecf8eb55",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b34d640d_9c760aa0",
         "filename": "fpdfsdk/fpdf_thumbnail.cpp",
         "patchSetId": 23
@@ -98,6 +116,24 @@
       "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe1918c_853f917f",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-20T21:15:15Z",
+      "side": 1,
+      "message": "Turns out I didn\u0027t need to decode the data.",
+      "parentUuid": "4579479a_2dd308be",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -195,6 +231,24 @@
       "side": 1,
       "message": "Is there a link to a new CL?",
       "parentUuid": "44122be5_2c90c5e8",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8cced8c7_f601dd7b",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-20T21:15:15Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/56634",
+      "parentUuid": "df5a3298_ed3e52c9",
       "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
