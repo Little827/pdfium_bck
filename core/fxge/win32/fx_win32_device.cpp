@@ -748,8 +748,13 @@ int CGdiDeviceDriver::GetDeviceCaps(int caps_id) const {
       return m_nBitsPerPixel;
     case FXDC_RENDER_CAPS:
       return m_RenderCaps;
+    case FXDC_HORZ_SIZE:
+    case FXDC_VERT_SIZE:
+      return 0;
+    default:
+      NOTREACHED();
+      return 0;
   }
-  return 0;
 }
 
 void CGdiDeviceDriver::SaveState() {
