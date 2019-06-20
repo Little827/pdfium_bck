@@ -56,7 +56,7 @@ WideString CPWL_EditCtrl::GetSelectedText() {
 
 void CPWL_EditCtrl::ReplaceSelection(const WideString& text) {
   m_pEdit->ClearSelection();
-  m_pEdit->InsertText(text, FX_CHARSET_Default);
+  m_pEdit->InsertText(text, FX_CHARSET_Default, /*bAddUndo =*/false, true);
 }
 
 bool CPWL_EditCtrl::RePosChildWnd() {
@@ -246,7 +246,7 @@ bool CPWL_EditCtrl::OnChar(uint16_t nChar, uint32_t nFlag) {
     case FWL_VKEY_Unknown:
       break;
     default:
-      InsertWord(word, GetCharSet());
+      InsertWord(word, GetCharSet(), /*bAddUndo =*/false, true);
       break;
   }
 
@@ -374,9 +374,12 @@ void CPWL_EditCtrl::PasteText() {}
 
 void CPWL_EditCtrl::CutText() {}
 
-void CPWL_EditCtrl::InsertWord(uint16_t word, int32_t nCharset) {
+void CPWL_EditCtrl::InsertWord(uint16_t word,
+                               int32_t nCharset,
+                               bool bAddUndo,
+                               bool bPaint) {
   if (!IsReadOnly())
-    m_pEdit->InsertWord(word, nCharset);
+    m_pEdit->InsertWord(word, nCharset, bAddUndo, bPaint);
 }
 
 void CPWL_EditCtrl::InsertReturn() {
