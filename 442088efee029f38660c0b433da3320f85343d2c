@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bf52650_182ff453",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T21:01:22Z",
+      "side": 1,
+      "message": "For later: Maybe vector or scoped class?",
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5234d738_f5498d93",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T21:01:22Z",
+      "side": 1,
+      "message": "For later: Check if these magic values have names.",
+      "range": {
+        "startLine": 75,
+        "startChar": 43,
+        "endLine": 75,
+        "endChar": 44
+      },
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679ce3b1_0af8a81b",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T21:01:22Z",
+      "side": 1,
+      "message": "BTW, should this be: static_cast\u003cuint32_t\u003e(offset) + length ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e93d20f_2f9a9906",
+        "filename": "core/fxge/fx_font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T21:01:22Z",
+      "side": 1,
+      "message": "IWYU?",
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7ef9c3_5fb899da",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T21:01:22Z",
+      "side": 1,
+      "message": "lVersion",
+      "range": {
+        "startLine": 390,
+        "startChar": 57,
+        "endLine": 390,
+        "endChar": 65
+      },
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487655ff_42da15b9",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T21:01:22Z",
+      "side": 1,
+      "message": "For later: There\u0027s probably something to do this already.",
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
