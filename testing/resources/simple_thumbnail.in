@@ -1,0 +1,152 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /MediaBox [ 0 0 200 200 ]
+  /Count 2
+  /Kids [
+    3 0 R
+    4 0 R
+  ]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <<
+      /F1 5 0 R
+    >>
+  >>
+  /Contents 6 0 R
+  /Thumb 8 0 R
+>>
+endobj
+{{object 4 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <<
+      /F1 5 0 R
+    >>
+  >>
+  /Contents 7 0 R
+  /Thumb 9 0 R
+>>
+endobj
+{{object 5 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Roman
+>>
+endobj
+{{object 6 0}} <<
+  {{streamlen}}
+>>
+stream
+BT
+20 50 Td
+/F1 12 Tf
+(Hello, world!) Tj
+0 50 Td
+/F1 16 Tf
+(Goodbye, world!) Tj
+ET
+endstream
+endobj
+{{object 7 0}} <<
+  {{streamlen}}
+>>
+stream
+BT
+100 100 Td
+/F1 12 Tf
+(Allo world!) Tj
+ET
+endstream
+endobj
+{{object 8 0}} <<
+  /Width 50
+  /Height 50
+  /BitsPerComponent 8
+  /ColorSpace /DeviceRGB
+  /Filter [/ASCIIHexDecode /FlateDecode]
+  {{streamlen}}
+>>
+stream
+789c73f2b5926300832e20ae01622328666490008b6f90656050d6836004
+f80f43608e937b5071c3a1af1a093be444155a5f333a181b0b37a4a5a939
+a4a5b12d983993d386eb3ab34a4cbf11b2092c0ca8e0ffa004a3ee220d8c
+ba8b3430ea2ed2c0a8bb4803c3c75d0c38c000b90bbffd54772611069067
+0f850e24a48f1a3e27cf5b044d25d741e8e6906414bddc45aa6994b90b57
+dec495b8880f350adc852685d5152419480377610604aea02132c8a891be
+e06a880e8b91ed2e32004163878fbb88af60f0a81cceeec22c0f28741735
+d23d9a3183de5d047521abc72f42babb20069067301e7711a79154775102
+909d89df5822dc452da791147678ab652aba8bd4d28294660c79aec3a391
+1aee22681256e7c053282dc30bcd42ac018aa78023a92023bad9874b0d19
+252d314ea3cc5d04ad25db6422dc45c5f20bd970fc85232177d1c251c856
+90e52e9a3a0abf2db4b7993c30ea2ed2c0a8bb4803a3ee220d8cba8b3430
+78dd05002c520b62
+endstream
+endobj
+{{object 9 0}} <<
+  /Width 50
+  /Height 50
+  /BitsPerComponent 8
+  /ColorSpace /DeviceRGB
+  /Filter [/ASCIIHexDecode /FlateDecode]
+  {{streamlen}}
+>>
+stream
+789ced9859481d6714c7afbb36316a6a51a906e396bea8a844410a4a40ea
+fa6093b851b0e6c1203e2856b02e8140a882115c22810841c10d04b12a92
+461124a849dc77e31e35b8a42e71b79ae4f6c7dcc6b60f6d66e65e53291e
+bc97599ceffbcd59fee7e89510ef0b0ac1b2f964f071ffe3a3a5b014aeff
+6ca350d8bba83e7f9af2c38f7072e59b6f7fb8fd64e7abef7fb9f085ed4f
+bf6af97a787c7e3b36d6c9373656bfe4c103a3af3f1bd571f82ed7fdaf2b
+e82afe6eca1369a75cd24c735cefdfbf7ffbf6edc1c1c16f8271707878c8
+15aeff475c6cbebbbbbbbaba3a3b3b3b3a3adad7d7d7dbdb3b3838383535
+b5b0b0b0b1b1b1bfbfffeeddbb4fc805d1d6d6d6ab57afbababa6a6b6b0b
+0b0b6fddba959898989090909a9a9a9393535a5adad2d2f2e2c58b959515
+e8c4fb4e2e17efbfbdbd3d3f3fdfd6d6565c5c9c9292121616e6ededede4
+e4f4a5608e8e8e972f5f0e0808888f8fcfcbcb6b6c6cc47d3c22124d1617
+6ee2fd09564545057e090c0cb4b7b73f7ffebc818181b6b6b696601ce8eb
+eb1b1b1b73cbc7c70727d6d4d4f01ee4ddf17001452a75767612b5c8c848
+6767678854387a7a7a67cf9e353333e3cab973e70c0d0df505e3a2878747
+6666e6c0c0c0cece8e189749e462c9cdcdcda1a1a1a2a2a26bd7aed9d8d8
+e02370ce9c39636565e5e2e2e2e7e777f5ea556e11414f4fcf8b172f0265
+646474e9d2a58c8c0cd2907c3c062e4afff5ebd7240b990d85898989b9b9
+b983830391ba71e3c69d3b774a4a4aeaeaea1a1a1a2a2b2befdebd7bf3e6
+4d7f7f7f5f5fdfe8e8686e4d4c4ceceded1d0317d941f591291111117676
+76eeeeeec1c1c130debf7ffff1e3c7c3c3c38b8b8b1b822d2f2f73dad4d4
+44493e7cf89047c8c7b5b535d240cc46d2fd4572b5b6b6a201f8223d3d9d
+3d5182c9c9c9f5f575e4f4c817142cc2c045246c6e6e6e69698908f2b8c8
+8da4e717b58e7e3e7ffebcb9b9b9bdbd7d6c6c0cd27fda50d5046408bff4
+7ac411a83bd98f54f02d325fa49a1abaaa32d529683865ff83a99a237765
+236ba23fb23fb9431e8d8c8cf40986904c4f4f5303045d7c4e699a8bb092
+f7f5f5f5d9d9d9c87f727232f54061545555c1480dca40539b0b67bd79f3
+860a85c8cbcb8bfe686b6b4bef7173730b0f0fa75ac7c7c725756ccd7151
+008f1e3d8a8a8a323535d5d1d151f5475d5d5dba41525252474787488dd7
+341755f9ecd9b3b4b434575757bace119ab5b53531a5938aec891ae5c208
+13198fe407050531e1d02e69e37cd31f73737311387e41ea9a9af017a2fe
+f4e9d3acac2cfa20a15405912e151717477322ca32d4423d2e36a415f6f4
+f4e4e7e7878484e02c887096a5a5e5f5ebd7cbcbcb510b91039746b96888
+2f5fbe2c2b2b63b061ce018af0710023d3192a8684c85b590d2e9cc5b6fd
+fdfd8c374c87479e02eadebd7bddddddd483ecc5d5e342cee1621065e0b1
+b0b060100b0d0d2d282860a421beeaf44df5b828b4999999eaea6af42026
+26866ffe0621dd8092bdacda5c4a61d647ec9942d17b4640aa924497a1a2
+9ae6520a9322a30e0ea20f424425a8b9a086b894424055338f060731e9f3
+aa8ccd653c259a0b77a090bb827120f2ff0df29e12cdc57af45efec49916
+8c034e3fba89bca7a470f1aaac8a54d608c601a71f6d30f29e12cda5d275
+5e98b57f148c034eb9f82f5923efa9ff0397f284c6517972f35e794275e2
+c84e9eae7e623be59266a75cd2ec944b9a9d72493385e2778cf75fdd
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
