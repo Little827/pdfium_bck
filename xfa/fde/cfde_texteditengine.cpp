@@ -268,6 +268,7 @@ void CFDE_TextEditEngine::Insert(size_t idx,
   WideString text = request_text;
   if (text.GetLength() == 0)
     return;
+
   if (idx > text_length_)
     idx = text_length_;
 
@@ -287,9 +288,13 @@ void CFDE_TextEditEngine::Insert(size_t idx,
     text = change.text;
     idx = change.selection_start;
 
-    // JS extended the selection, so delete it before we insert.
+    // Delegate extended the selection, so delete it before we insert.
     if (change.selection_end != change.selection_start)
       DeleteSelectedText(RecordOperation::kSkipRecord);
+
+    // Delegate may have changed text entirely.
+    if (idx > text_length_)
+      idx = text_length_;
   }
 
   size_t length = text.GetLength();
@@ -848,8 +853,13 @@ WideString CFDE_TextEditEngine::Delete(size_t start_idx,
     if (change.cancelled)
       return WideString();
 
+    // Delegate may have changed the selection range.
     start_idx = change.selection_start;
     length = change.selection_end - change.selection_start;
+
+    // Delegate may have changed text entirely.
+    if (start_idx >= text_length_)
+      return WideString();
   }
 
   length = std::min(length, text_length_ - start_idx);
