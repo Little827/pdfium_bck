@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "6760e1f6_82bba80c",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T01:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57476897_6ceb1245",
+      "range": {
+        "startLine": 220,
+        "startChar": 10,
+        "endLine": 220,
+        "endChar": 13
+      },
+      "revId": "77537dcc4f9cef7a18556dcecca258187f27ec0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a1b1c1_ccbd0433",
         "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "77537dcc4f9cef7a18556dcecca258187f27ec0f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0b5eb2_dec5be04",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T01:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a1b1c1_ccbd0433",
+      "range": {
+        "startLine": 256,
+        "startChar": 42,
+        "endLine": 256,
+        "endChar": 45
+      },
+      "revId": "77537dcc4f9cef7a18556dcecca258187f27ec0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
