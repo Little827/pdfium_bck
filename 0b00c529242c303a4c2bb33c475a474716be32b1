@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "473db5cd_64a2c14b",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T03:39:42Z",
+      "side": 1,
+      "message": "Declare this where used. Then it does not need to be initialized to -1, only to be overwritten before ever being read.",
+      "revId": "0b00c529242c303a4c2bb33c475a474716be32b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb45427_bd7c7304",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T03:39:42Z",
+      "side": 1,
+      "message": "- You can use const char* here.\n- std::string already starts out as an empty string, so there is no need to initialize it.",
+      "revId": "0b00c529242c303a4c2bb33c475a474716be32b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c424be_6aa04750",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T03:39:42Z",
+      "side": 1,
+      "message": "Use a switch statement?",
+      "revId": "0b00c529242c303a4c2bb33c475a474716be32b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a777e51d_cc76ca17",
+        "filename": "samples/pdfium_test_write_helper.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T03:39:42Z",
+      "side": 1,
+      "message": "- Since they are only used within pdfium_test_write_helper.cc, how about we define them there.\n- Try using an enum class for this.\n- These are in samples/ now, so no need for the FPDF_ naming convention.",
+      "revId": "0b00c529242c303a4c2bb33c475a474716be32b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
