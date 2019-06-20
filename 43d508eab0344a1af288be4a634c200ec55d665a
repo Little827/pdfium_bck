@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc5b3409_5e3c75fe",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:21:52Z",
+      "side": 1,
+      "message": "Isn\u0027t this 4x too much?",
+      "range": {
+        "startLine": 276,
+        "startChar": 27,
+        "endLine": 276,
+        "endChar": 60
+      },
+      "revId": "43d508eab0344a1af288be4a634c200ec55d665a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
