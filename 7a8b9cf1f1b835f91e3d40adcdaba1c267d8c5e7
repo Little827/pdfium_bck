@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3ecf47c_82eddacb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T18:09:34Z",
+      "side": 1,
+      "message": "This is also out of date.",
+      "revId": "7a8b9cf1f1b835f91e3d40adcdaba1c267d8c5e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5232e32_a935991d",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T18:09:34Z",
+      "side": 1,
+      "message": "Do the values here matter?",
+      "range": {
+        "startLine": 135,
+        "startChar": 28,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "7a8b9cf1f1b835f91e3d40adcdaba1c267d8c5e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ce8827_41a58108",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T18:09:34Z",
+      "side": 1,
+      "message": "Can you try \"enum class\" ?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "7a8b9cf1f1b835f91e3d40adcdaba1c267d8c5e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c06f36_049f7075",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T18:09:34Z",
+      "side": 1,
+      "message": "This is describing the operation to perform on the thumbnail, not the type of the thumbnail itself. So calling it \"ThumbnailType\" is a bit confusing. How about \"ThumbnailDecodeType\" ?",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "7a8b9cf1f1b835f91e3d40adcdaba1c267d8c5e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
