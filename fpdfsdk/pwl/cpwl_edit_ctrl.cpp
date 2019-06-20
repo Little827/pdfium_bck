@@ -56,7 +56,7 @@ WideString CPWL_EditCtrl::GetSelectedText() {
 
 void CPWL_EditCtrl::ReplaceSelection(const WideString& text) {
   m_pEdit->ClearSelection();
-  m_pEdit->InsertText(text, FX_CHARSET_Default);
+  m_pEdit->InsertText(text, FX_CHARSET_Default, /*bAddUndo =*/false, true);
 }
 
 bool CPWL_EditCtrl::RePosChildWnd() {
