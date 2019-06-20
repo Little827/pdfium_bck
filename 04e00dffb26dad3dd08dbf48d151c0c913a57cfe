@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "5877bd8e_a61c2297",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T17:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59a972b2_6d167bf8",
+      "range": {
+        "startLine": 220,
+        "startChar": 41,
+        "endLine": 220,
+        "endChar": 46
+      },
+      "revId": "04e00dffb26dad3dd08dbf48d151c0c913a57cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0ab6fd7_f38cf6d1",
         "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2019-06-20T16:20:10Z",
       "side": 1,
       "message": "nit: \"the smallest of any of the\" if that is the actual constraint as I suspect it might be.",
+      "range": {
+        "startLine": 269,
+        "startChar": 12,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "04e00dffb26dad3dd08dbf48d151c0c913a57cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b146c61b_fe88b2b0",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T17:21:05Z",
+      "side": 1,
+      "message": "I rewrote this comment to try to make it clearer. Let me know if it makes more sense.",
+      "parentUuid": "a0ab6fd7_f38cf6d1",
       "range": {
         "startLine": 269,
         "startChar": 12,
@@ -69,6 +117,30 @@
       "revId": "04e00dffb26dad3dd08dbf48d151c0c913a57cfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756ead73_3723f551",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T17:21:05Z",
+      "side": 1,
+      "message": "Done. Now even \"kKnownBadHeaderWithInvalidHeightByteOffsetStarts\" fits on one line, so I got rid of the namespace and using statement.",
+      "parentUuid": "b289964c_5dcc024e",
+      "range": {
+        "startLine": 304,
+        "startChar": 9,
+        "endLine": 304,
+        "endChar": 31
+      },
+      "revId": "04e00dffb26dad3dd08dbf48d151c0c913a57cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
