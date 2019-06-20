@@ -1704,6 +1704,7 @@ int CFX_SkiaDeviceDriver::GetDeviceCaps(int caps_id) const {
   switch (caps_id) {
     case FXDC_DEVICE_CLASS:
       return FXDC_DISPLAY;
+
 #ifdef _SKIA_SUPPORT_
     case FXDC_PIXEL_WIDTH:
       return m_pCanvas->imageInfo().width();
@@ -1748,8 +1749,11 @@ int CFX_SkiaDeviceDriver::GetDeviceCaps(int caps_id) const {
       return flags;
     }
 #endif  // _SKIA_SUPPORT_PATHS_
+
+    default:
+      NOTREACHED();
+      return 0;
   }
-  return 0;
 }
 
 void CFX_SkiaDeviceDriver::SaveState() {
