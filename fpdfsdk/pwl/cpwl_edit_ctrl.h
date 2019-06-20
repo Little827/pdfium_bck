@@ -72,7 +72,7 @@ class CPWL_EditCtrl : public CPWL_Wnd {
   void CopyText();
   void PasteText();
   void CutText();
-  void InsertWord(uint16_t word, int32_t nCharset);
+  void InsertWord(uint16_t word, int32_t nCharset, bool bAddUndo, bool bPaint);
   void InsertReturn();
   bool IsWndHorV();
   void Delete();
