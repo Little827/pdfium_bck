@@ -7,12 +7,14 @@
 
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/fx_freetype.h"
 #include "third_party/base/span.h"
 
 class CFX_Face : public Retainable, public Observable {
  public:
   static RetainPtr<CFX_Face> New(FT_Library library,
+                                 const RetainPtr<CFX_FontMgr::FontDesc>& pDesc,
                                  pdfium::span<const FT_Byte> file_span,
                                  FT_Long face_index);
 
@@ -25,9 +27,10 @@ class CFX_Face : public Retainable, public Observable {
   FXFT_FaceRec* GetRec() { return m_pRec.get(); }
 
  private:
-  explicit CFX_Face(FXFT_FaceRec* pRec);
+  CFX_Face(FXFT_FaceRec* pRec, const RetainPtr<CFX_FontMgr::FontDesc>& pDesc);
 
   ScopedFXFTFaceRec const m_pRec;
+  RetainPtr<CFX_FontMgr::FontDesc> const m_pDesc;
 };
 
 #endif  // CORE_FXGE_CFX_FACE_H_
