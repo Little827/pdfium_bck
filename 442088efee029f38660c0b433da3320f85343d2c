@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "507208c5_52af7289",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T21:17:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0bf52650_182ff453",
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5234d738_f5498d93",
         "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4d8ca19a_4ddfc0cf",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T21:17:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5234d738_f5498d93",
+      "range": {
+        "startLine": 75,
+        "startChar": 43,
+        "endLine": 75,
+        "endChar": 44
+      },
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "679ce3b1_0af8a81b",
         "filename": "core/fxge/fx_font.cpp",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2019-06-20T21:01:22Z",
       "side": 1,
       "message": "BTW, should this be: static_cast\u003cuint32_t\u003e(offset) + length ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55403a70_af2680e5",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T21:17:47Z",
+      "side": 1,
+      "message": "Not necessarily. uint16_t is smaller than int and all values of it fit in signed int so it is promoted to singed int prior to addition. Then we add two singed ints, which can\u0027t overflow because we knew the initial values were restricted. Then we cast back to uint32_t just to get rid of stray signedness from the promotions.",
+      "parentUuid": "679ce3b1_0af8a81b",
       "range": {
         "startLine": 19,
         "startChar": 27,
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "6426a8b7_c0139f96",
+        "filename": "core/fxge/fx_font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T21:17:47Z",
+      "side": 1,
+      "message": "Already present at line 16",
+      "parentUuid": "3e93d20f_2f9a9906",
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd7ef9c3_5fb899da",
         "filename": "core/fxge/win32/fx_win32_device.cpp",
         "patchSetId": 6
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "51b505f9_d1578e98",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T21:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd7ef9c3_5fb899da",
+      "range": {
+        "startLine": 390,
+        "startChar": 57,
+        "endLine": 390,
+        "endChar": 65
+      },
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "487655ff_42da15b9",
         "filename": "core/fxge/win32/fx_win32_device.cpp",
         "patchSetId": 6
@@ -119,6 +227,24 @@
       "revId": "442088efee029f38660c0b433da3320f85343d2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7dda657_08b4736f",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T21:17:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "487655ff_42da15b9",
+      "revId": "442088efee029f38660c0b433da3320f85343d2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
