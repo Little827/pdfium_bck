@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560995106 -0700\nnonce AC6AUtNP+GURMHYjvkUQZIgn410X/O4+z7XuytLsJOZWkR+gLcXQURi9Ap4sohmnjbsPphSYz3X4\n\n0000000000000000000000000000000000000000 04e00dffb26dad3dd08dbf48d151c0c913a57cfe refs/for/refs/heads/master%notify\u003dNONE,m\u003dsize%5Ft,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0K5SIACgkQqzYtYVpm\n/XuQOQf9H5d/peRR54EbEJNEB0XbyFg2L+kmyP4HB/gHoT6VQVMwrvADZ2shoKDw\nwKSetDnFCmRo1f4cgz0OvI6zk5nzYwogGZ/TvT7ROcr7y0rw/dkTX9Uf/q75wU4l\nPBJALSieAsUDH/bU6OywWWkGQW3KKqa5y1pOC1Bsic+rdadRQ+rbJvWMkUgR1Pje\n3jmBaVmkh0Ynw72tnP7Fl9njDVgovdjaSYpGWlbw5b7tgPwrdRspmiBtSqW/+373\nbMHDTzte+Qt5ksf3Yz3hYNHF1EpqW504zOp3h2y7FsOM+5AD3m1i7Nw3h4uEBLKo\nTvYnZZFxsKtwasZyvUwwi7r4tCBAyw\u003d\u003d\n\u003dw+AO\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "59a972b2_6d167bf8",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T16:20:10Z",
+      "side": 1,
+      "message": "nit: howzabout |Starts| (plural, now an array)?",
+      "range": {
+        "startLine": 220,
+        "startChar": 41,
+        "endLine": 220,
+        "endChar": 46
+      },
+      "revId": "04e00dffb26dad3dd08dbf48d151c0c913a57cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ab6fd7_f38cf6d1",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T16:20:10Z",
+      "side": 1,
+      "message": "nit: \"the smallest of any of the\" if that is the actual constraint as I suspect it might be.",
+      "range": {
+        "startLine": 269,
+        "startChar": 12,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "04e00dffb26dad3dd08dbf48d151c0c913a57cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b289964c_5dcc024e",
+        "filename": "core/fxcodec/jpeg/jpegmodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T16:20:10Z",
+      "side": 1,
+      "message": "maybe return the value itself rather than the index to avoid re-indexing at line 316.  At which point we no longer need |i|, so can do range-based for loop over kInvalidHeightByteOffsetStarts",
+      "range": {
+        "startLine": 304,
+        "startChar": 9,
+        "endLine": 304,
+        "endChar": 31
+      },
+      "revId": "04e00dffb26dad3dd08dbf48d151c0c913a57cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
