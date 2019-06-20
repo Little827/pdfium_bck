@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "142aea41_3bd44152",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 7645
+      },
+      "writtenOn": "2019-06-20T21:08:08Z",
+      "side": 1,
+      "message": "You could just pass a const std::vector\u003cunsigned char\u003e\u0026 it looks like and simplify some stuff",
+      "revId": "35c190854c4b86d107c6a3f455509af83321d964",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06958fbd_a29b0874",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 7645
+      },
+      "writtenOn": "2019-06-20T21:08:08Z",
+      "side": 1,
+      "message": "I would have more canonically expected this to be a size_t, indeed that\u0027s what fwrite takes.",
+      "revId": "35c190854c4b86d107c6a3f455509af83321d964",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90948f95_c078e7fa",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 7645
+      },
+      "writtenOn": "2019-06-20T21:08:08Z",
+      "side": 1,
+      "message": "here you could just pass a const std::string\u0026",
+      "revId": "35c190854c4b86d107c6a3f455509af83321d964",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
