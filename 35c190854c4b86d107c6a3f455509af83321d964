@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "357a5587_155fa156",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 7645
+      },
+      "writtenOn": "2019-06-20T21:09:28Z",
+      "side": 1,
+      "message": "Though actually if you pass the vector, then you don\u0027t need to pass the size separately, which would be nice.",
+      "parentUuid": "06958fbd_a29b0874",
+      "revId": "35c190854c4b86d107c6a3f455509af83321d964",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90948f95_c078e7fa",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 1
