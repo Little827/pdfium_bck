@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df5e2276_8c45e2ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T18:48:29Z",
+      "side": 1,
+      "message": "its",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "2a2322beb8a64a4ef9d390f38edc3315d382a09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c52ed9_996963b1",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T18:48:29Z",
+      "side": 1,
+      "message": "Maybe we can do a little less casting if this was uint32_t buffer[256] ?",
+      "revId": "2a2322beb8a64a4ef9d390f38edc3315d382a09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
