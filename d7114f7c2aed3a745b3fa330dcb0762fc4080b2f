@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8611970f_e6c46fcd",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T20:51:07Z",
+      "side": 1,
+      "message": "After the latest change here, the checks below are pointless.",
+      "revId": "d7114f7c2aed3a745b3fa330dcb0762fc4080b2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ab8ab8_90abc999",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T20:51:07Z",
+      "side": 1,
+      "message": "There used to be a check to make sure the document is not null. Is that still relevant?",
+      "range": {
+        "startLine": 79,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "d7114f7c2aed3a745b3fa330dcb0762fc4080b2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
