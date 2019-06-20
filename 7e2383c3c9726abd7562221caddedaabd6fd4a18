@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bee09f73_af816853",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "Can this be GetStreamFor() ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7780be0f_ecf8eb55",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "Isn\u0027t calling this going to indrectly call CPDFStreamForThumbnailFromPage() again? Which line 70 did as well. Can we shuffle the code around here to avoid redundent calls?",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34d640d_9c760aa0",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "I have a feeling this is modifying the CPDF_Stream from |page|. Can you try adding a test that does:\n\n1) FPDFPage_GetRawThumbnailDataFromPage()\n2) FPDFPage_GetThumbnailAsBitmapFromPage()\n3) FPDFPage_GetRawThumbnailDataFromPage()\n\nWith the above sequence of events, the data returned by (1) and (3) should be the same. (2) should not change the data.",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfcb8d94_7085df5d",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "How about \".bin\" as the extension for a binary blob?",
+      "range": {
+        "startLine": 523,
+        "startChar": 39,
+        "endLine": 523,
+        "endChar": 41
+      },
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f610f17_927cff0c",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "Split this refactor into its own CL? Please don\u0027t bother filing a bug for every single small refactor. It\u0027s too tedious.",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639a24a9_73616bf6",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf876837_d4f4fc94",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "More ordering flips. Yoda conditionals, silly it is.",
+      "range": {
+        "startLine": 694,
+        "startChar": 6,
+        "endLine": 694,
+        "endChar": 27
+      },
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a188230_7cefe05b",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "This looks like repeated code. Refactor?",
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b050c8a7_42859f57",
+        "filename": "samples/pdfium_test_write_helper.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-20T19:18:59Z",
+      "side": 1,
+      "message": "Are there more than 1 thumbnail per page?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "7e2383c3c9726abd7562221caddedaabd6fd4a18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
