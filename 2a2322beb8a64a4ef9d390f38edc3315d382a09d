@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "282c992c_59394af8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-20T19:21:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5e2276_8c45e2ee",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "2a2322beb8a64a4ef9d390f38edc3315d382a09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c52ed9_996963b1",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 3
