@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "324bcc2c_e120e5dc",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 33
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T23:47:29Z",
+      "side": 1,
+      "message": "Instead of doing this, call CPDFStreamForThumbnailFromPage() first. It can only return a valid |thumb_stream| if |page| is valid. The code can then just do:\n\nauto* doc \u003d CPDFPageFromFPDFPage(page)-\u003eGetDocument();\n\nand |doc| can be reused on line 68, instead of calling GetDocument() again.",
+      "revId": "fc8e1630f542911074718ad22252ffd73fb40f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
