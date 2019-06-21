@@ -23,6 +23,30 @@
       "revId": "979ff5bb3474ae8347e990979d9c9569be1fd87c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27bfce4c_7f6dda9c",
+        "filename": "testing/image_diff/image_diff_png.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T21:23:49Z",
+      "side": 1,
+      "message": "|out| is slightly better?",
+      "parentUuid": "c7696b88_0cc6d7d5",
+      "range": {
+        "startLine": 119,
+        "startChar": 64,
+        "endLine": 119,
+        "endChar": 65
+      },
+      "revId": "979ff5bb3474ae8347e990979d9c9569be1fd87c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
