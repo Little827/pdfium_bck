@@ -10,16 +10,17 @@
 #include <set>
 
 #include "core/fpdfapi/page/cpdf_colorspace.h"
+#include "core/fxcrt/retain_ptr.h"
 
 class CPDF_DeviceCS final : public CPDF_ColorSpace {
  public:
-  explicit CPDF_DeviceCS(int family);
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   ~CPDF_DeviceCS() override;
 
   // CPDF_ColorSpace:
-  uint32_t v_Load(CPDF_Document* pDoc,
-                  const CPDF_Array* pArray,
-                  std::set<const CPDF_Object*>* pVisited) override;
+  RetainPtr<CPDF_ColorSpace> Clone() const override;
   bool GetRGB(const float* pBuf, float* R, float* G, float* B) const override;
   void TranslateImageLine(uint8_t* pDestBuf,
                           const uint8_t* pSrcBuf,
@@ -27,6 +28,13 @@ class CPDF_DeviceCS final : public CPDF_ColorSpace {
                           int image_width,
                           int image_height,
                           bool bTransMask) const override;
+  uint32_t v_Load(CPDF_Document* pDoc,
+                  const CPDF_Array* pArray,
+                  std::set<const CPDF_Object*>* pVisited) override;
+
+ private:
+  explicit CPDF_DeviceCS(int family);
+  CPDF_DeviceCS(const CPDF_DeviceCS& that);
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_DEVICECS_H_

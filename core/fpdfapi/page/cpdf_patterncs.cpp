@@ -13,7 +13,13 @@
 CPDF_PatternCS::CPDF_PatternCS(CPDF_Document* pDoc)
     : CPDF_ColorSpace(pDoc, PDFCS_PATTERN) {}
 
+CPDF_PatternCS::CPDF_PatternCS(const CPDF_PatternCS& that) = default;
+
 CPDF_PatternCS::~CPDF_PatternCS() = default;
+
+RetainPtr<CPDF_ColorSpace> CPDF_PatternCS::Clone() const {
+  return pdfium::MakeRetain<CPDF_PatternCS>(*this);
+}
 
 void CPDF_PatternCS::InitializeStockPattern() {
   SetComponentsForStockCS(1);

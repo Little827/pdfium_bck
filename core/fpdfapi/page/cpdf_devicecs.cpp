@@ -34,7 +34,13 @@ CPDF_DeviceCS::CPDF_DeviceCS(int family) : CPDF_ColorSpace(nullptr, family) {
   SetComponentsForStockCS(ComponentsForFamily(GetFamily()));
 }
 
+CPDF_DeviceCS::CPDF_DeviceCS(const CPDF_DeviceCS& that) = default;
+
 CPDF_DeviceCS::~CPDF_DeviceCS() = default;
+
+RetainPtr<CPDF_ColorSpace> CPDF_DeviceCS::Clone() const {
+  return pdfium::MakeRetain<CPDF_DeviceCS>(*this);
+}
 
 uint32_t CPDF_DeviceCS::v_Load(CPDF_Document* pDoc,
                                const CPDF_Array* pArray,
