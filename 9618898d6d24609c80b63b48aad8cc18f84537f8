@@ -2,6 +2,114 @@
   "comments": [
     {
       "key": {
+        "uuid": "af4acf81_64b49faf",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T22:45:39Z",
+      "side": 1,
+      "message": "Now that the code in this file no longer modifies the input page, can all the CPDF_Object pointers in this file, e.g. CPDF_Stream, CPDF_Dictionary, etc, as well as CPDF_Page*, be const?",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1280c7d_50ac4177",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T22:45:39Z",
+      "side": 1,
+      "message": "Does this function still need to call FPDFPage_GetDecodedThumbnailDataFromPage() and decode the data into |thumb_buf| ? After line 65, this function doesn\u0027t do anything with |thumb_buf|.",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346e5d53_e913c6a9",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T22:45:39Z",
+      "side": 1,
+      "message": "Can you see if you can remove the default case? Will the compiler complain?",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b40c08d_ca8385c7",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T22:45:39Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/56653 landed already. There\u0027s no way this can compile against HEAD.",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21214644_13019669",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T22:45:39Z",
+      "side": 1,
+      "message": "I thought we didn\u0027t need this anymore?",
+      "range": {
+        "startLine": 673,
+        "startChar": 16,
+        "endLine": 673,
+        "endChar": 24
+      },
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79478466_6976225c",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T22:45:39Z",
+      "side": 1,
+      "message": "More braces.",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f3e74fd_c640e7ee",
         "filename": "testing/resources/thumbnail_with_empty_stream.in",
         "patchSetId": 30
