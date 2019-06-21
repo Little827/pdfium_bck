@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1561145108 -0700\nnonce AC6AUtNZKAn2TK7IPlTCA/0psYzhC9RcaAj+uAykzQbLB+2p5G/g1mZyF/NBm6mXRdNCLSied+nO\n\n0000000000000000000000000000000000000000 979ff5bb3474ae8347e990979d9c9569be1fd87c refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0NLxQACgkQqzYtYVpm\n/XvD7wf/ScjPeI7QJB0TF8NN8H2MFjfzQ/OMyZFQL0hu2AsLOREZbMROIEuAAW3N\nSxfqTKYlff8nKbWzVHJDXt/7Wh+nmsN+S991CyKFp/Rn8VykOfnzoh3NH+A6gpr/\nZvMsGZ8D4v22dgicilp16/TZeyAwGyfxm74kc6PvozrhkJsPKEkd1Mzk2Zd6ubuC\ng+lRPMd2NvF2SZI3TJmG4oHBiYqKZRhgODdXF6VMBUM4owytRyDa87T+tNPlu4Gi\nTfxKh/lIjusG8UjY6wo0rj5PaUX/RMTmLtmf9EiSFq5nNx7h2vzNOwVAjPsI+5jw\n0PXNE79zNYFUe/VeCGR2pPHa/mF9sQ\u003d\u003d\n\u003d8ext\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7696b88_0cc6d7d5",
+        "filename": "testing/image_diff/image_diff_png.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-06-21T20:20:20Z",
+      "side": 1,
+      "message": "nit: |o| is not a very good name.",
+      "range": {
+        "startLine": 119,
+        "startChar": 64,
+        "endLine": 119,
+        "endChar": 65
+      },
+      "revId": "979ff5bb3474ae8347e990979d9c9569be1fd87c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
