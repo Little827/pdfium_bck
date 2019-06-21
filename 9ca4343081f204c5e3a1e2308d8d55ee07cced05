@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dcbbfc6f_97fb8e67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T18:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a04dd3bc_9bea9641",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "9ca4343081f204c5e3a1e2308d8d55ee07cced05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1fa13a_cd03030e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "22a16ffe_11ec3ab6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T18:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1fa13a_cd03030e",
+      "revId": "9ca4343081f204c5e3a1e2308d8d55ee07cced05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb9e2d74_01c3c644",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "9ca4343081f204c5e3a1e2308d8d55ee07cced05",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39797b29_fedf2201",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T18:38:58Z",
+      "side": 1,
+      "message": "I thought since this was a helper function I would move it to the namespace when I changed the file writing logic for WritePng. I\u0027ll move this to another CL.",
+      "parentUuid": "cb9e2d74_01c3c644",
+      "revId": "9ca4343081f204c5e3a1e2308d8d55ee07cced05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
