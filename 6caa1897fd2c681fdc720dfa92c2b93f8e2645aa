@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4159bb71_0d4e648a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T21:35:31Z",
+      "side": 0,
+      "message": "CFX_AggDeviceDriver::DrawPath() still checks for FX_ZEROAREA_FILL inside. With this removal, nothing in core/fxge/skia/fx_skia_device.cpp checks for FX_ZEROAREA_FILL any more. To me, that means either:\n\na) FX_ZEROAREA_FILL is completely useless.\nor\nb) Some code somewhere inside core/fxge/skia/fx_skia_device.cpp still needs to check for FX_ZEROAREA_FILL. Not sure where though.",
+      "revId": "6caa1897fd2c681fdc720dfa92c2b93f8e2645aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
