@@ -130,6 +130,58 @@ const char* PageObjectTypeToCString(int type) {
   return "";
 }
 
+void WriteBufferToFile(const void* buf,
+                       size_t buflen,
+                       const char* filename,
+                       const char* filetype) {
+  FILE* fp = fopen(filename, "wb");
+  if (!fp) {
+    fprintf(stderr, "Failed to open %s for saving %s.", filename, filetype);
+    return;
+  }
+
+  size_t bytes_written = fwrite(buf, 1, buflen, fp);
+  if (bytes_written == buflen)
+    fprintf(stderr, "Successfully wrote %s %s.\n", filetype, filename);
+  else
+    fprintf(stderr, "Failed to write to %s.\n", filename);
+  fclose(fp);
+}
+
+bool EncodePng(const unsigned char* buffer,
+               const int width,
+               const int height,
+               const int stride,
+               int format,
+               std::vector<unsigned char>& png_encoding) {
+  bool ret = false;
+  switch (format) {
+    case FPDFBitmap_Unknown:
+      ret = false;
+      break;
+    case FPDFBitmap_Gray:
+      ret = image_diff_png::EncodeGrayPNG(buffer, width, height, stride,
+                                          &png_encoding);
+      break;
+    case FPDFBitmap_BGR:
+      ret = image_diff_png::EncodeBGRPNG(buffer, width, height, stride,
+                                         &png_encoding);
+      break;
+    case FPDFBitmap_BGRx:
+      ret = image_diff_png::EncodeBGRAPNG(buffer, width, height, stride, true,
+                                          &png_encoding);
+      break;
+    case FPDFBitmap_BGRA:
+      ret = image_diff_png::EncodeBGRAPNG(buffer, width, height, stride, false,
+                                          &png_encoding);
+      break;
+    default:
+      NOTREACHED();
+  }
+
+  return ret;
+}
+
 #ifdef _WIN32
 int CALLBACK EnhMetaFileProc(HDC hdc,
                              HANDLETABLE* handle_table,
@@ -354,8 +406,9 @@ std::string WritePng(const char* pdf_name,
 
   std::vector<unsigned char> png_encoding;
   const auto* buffer = static_cast<const unsigned char*>(buffer_void);
-  if (!image_diff_png::EncodeBGRAPNG(buffer, width, height, stride, false,
-                                     &png_encoding)) {
+
+  if (!EncodePng(buffer, width, height, stride, FPDFBitmap_BGRA,
+                 png_encoding)) {
     fprintf(stderr, "Failed to convert bitmap to PNG\n");
     return "";
   }
@@ -369,18 +422,7 @@ std::string WritePng(const char* pdf_name,
     return "";
   }
 
-  FILE* fp = fopen(filename, "wb");
-  if (!fp) {
-    fprintf(stderr, "Failed to open %s for output\n", filename);
-    return "";
-  }
-
-  size_t bytes_written =
-      fwrite(&png_encoding.front(), 1, png_encoding.size(), fp);
-  if (bytes_written != png_encoding.size())
-    fprintf(stderr, "Failed to write to %s\n", filename);
-
-  (void)fclose(fp);
+  WriteBufferToFile(png_encoding.data(), png_encoding.size(), filename, "png");
   return std::string(filename);
 }
 
@@ -505,24 +547,6 @@ std::string WriteSkp(const char* pdf_name,
 }
 #endif
 
-void WriteBufferToFile(const void* buf,
-                       size_t buflen,
-                       const char* filename,
-                       const char* filetype) {
-  FILE* fp = fopen(filename, "wb");
-  if (!fp) {
-    fprintf(stderr, "Failed to open %s for saving %s.", filename, filetype);
-    return;
-  }
-
-  size_t bytes_written = fwrite(buf, 1, buflen, fp);
-  if (bytes_written == buflen)
-    fprintf(stderr, "Successfully wrote %s %s.\n", filetype, filename);
-  else
-    fprintf(stderr, "Failed to write to %s.\n", filename);
-  fclose(fp);
-}
-
 void WriteAttachments(FPDF_DOCUMENT doc, const std::string& name) {
   for (int i = 0; i < FPDFDoc_GetAttachmentCount(doc); ++i) {
     FPDF_ATTACHMENT attachment = FPDFDoc_GetAttachment(doc, i);
@@ -599,28 +623,8 @@ void WriteImages(FPDF_PAGE page, const char* pdf_name, int page_num) {
     int width = FPDFBitmap_GetWidth(bitmap.get());
     int height = FPDFBitmap_GetHeight(bitmap.get());
     int stride = FPDFBitmap_GetStride(bitmap.get());
-    bool ret = false;
-    switch (format) {
-      case FPDFBitmap_Gray:
-        ret = image_diff_png::EncodeGrayPNG(buffer, width, height, stride,
-                                            &png_encoding);
-        break;
-      case FPDFBitmap_BGR:
-        ret = image_diff_png::EncodeBGRPNG(buffer, width, height, stride,
-                                           &png_encoding);
-        break;
-      case FPDFBitmap_BGRx:
-        ret = image_diff_png::EncodeBGRAPNG(buffer, width, height, stride, true,
-                                            &png_encoding);
-        break;
-      case FPDFBitmap_BGRA:
-        ret = image_diff_png::EncodeBGRAPNG(buffer, width, height, stride,
-                                            false, &png_encoding);
-        break;
-      default:
-        NOTREACHED();
-    }
-    if (!ret) {
+
+    if (!EncodePng(buffer, width, height, stride, format, png_encoding)) {
       fprintf(stderr,
               "Failed to convert image object #%d on page #%d to png.\n", i + 1,
               page_num + 1);
