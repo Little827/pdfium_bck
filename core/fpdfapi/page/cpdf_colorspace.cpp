@@ -415,6 +415,46 @@ void XYZ_to_sRGB_WhitePoint(float X,
 
 }  // namespace
 
+PatternValue::PatternValue() = default;
+
+PatternValue::PatternValue(const PatternValue& that)
+    : m_Comps(that.m_Comps), m_pPattern(that.m_pPattern) {
+  RegisterPattern();
+}
+
+PatternValue::~PatternValue() {
+  UnregisterPattern();
+}
+
+void PatternValue::SetPattern(CPDF_Pattern* pPattern) {
+  UnregisterPattern();
+  m_pPattern = pPattern;
+  RegisterPattern();
+}
+
+void PatternValue::RegisterPattern() {
+  if (!m_pPattern)
+    return;
+
+  auto* pPageData = CPDF_DocPageData::FromDocument(m_pPattern->document());
+  if (!pPageData)
+    return;
+
+  m_pCountedPattern = pPageData->FindPatternPtr(m_pPattern->pattern_obj());
+}
+
+void PatternValue::UnregisterPattern() {
+  if (!m_pCountedPattern)
+    return;
+
+  auto* pPageData = CPDF_DocPageData::FromDocument(m_pPattern->document());
+  if (!pPageData)
+    return;
+
+  pPageData->ReleasePattern(m_pPattern->pattern_obj());
+  m_pCountedPattern = nullptr;
+}
+
 // static
 RetainPtr<CPDF_ColorSpace> CPDF_ColorSpace::ColorspaceFromName(
     const ByteString& name) {
@@ -540,24 +580,15 @@ uint32_t CPDF_ColorSpace::ComponentsForFamily(int family) {
   }
 }
 
-size_t CPDF_ColorSpace::GetBufSize() const {
-  if (m_Family == PDFCS_PATTERN)
-    return sizeof(PatternValue);
-  return m_nComponents * sizeof(float);
-}
-
-float* CPDF_ColorSpace::CreateBuf() const {
-  return reinterpret_cast<float*>(FX_Alloc(uint8_t, GetBufSize()));
-}
-
-float* CPDF_ColorSpace::CreateBufAndSetDefaultColor() const {
+std::vector<float> CPDF_ColorSpace::CreateBufAndSetDefaultColor() const {
   ASSERT(m_Family != PDFCS_PATTERN);
 
-  float* buf = CreateBuf();
   float min;
   float max;
+  std::vector<float> buf(m_nComponents);
   for (uint32_t i = 0; i < m_nComponents; i++)
     GetDefaultValue(i, &buf[i], &min, &max);
+
   return buf;
 }
 
