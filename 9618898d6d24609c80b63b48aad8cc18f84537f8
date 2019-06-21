@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "384afc7b_80f37a35",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T23:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af4acf81_64b49faf",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1280c7d_50ac4177",
         "filename": "fpdfsdk/fpdf_thumbnail.cpp",
         "patchSetId": 30
@@ -33,6 +51,24 @@
       "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e8ce83e_d329733f",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T23:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1280c7d_50ac4177",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3e5317ec_f276b9f8",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T23:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346e5d53_e913c6a9",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b40c08d_ca8385c7",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 30
@@ -67,6 +121,24 @@
       "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e630de32_4ac00e80",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T23:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b40c08d_ca8385c7",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "ebb885b8_69929087",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T23:05:39Z",
+      "side": 1,
+      "message": "Must\u0027ve gotten lost in one of the rebases.",
+      "parentUuid": "21214644_13019669",
+      "range": {
+        "startLine": 673,
+        "startChar": 16,
+        "endLine": 673,
+        "endChar": 24
+      },
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79478466_6976225c",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 30
@@ -107,6 +203,24 @@
       "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd47950a_540cbe20",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T23:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79478466_6976225c",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
