@@ -533,7 +533,8 @@ TEST_F(FPDFTextEmbedderTest, WebLinksAcrossLines) {
       "http://example.com/test-foo",  // from "http://example.com/test-\r\nfoo"
       "http://abc.com/test-foo",      // from "http://abc.com/test-\r\n\r\nfoo"
       // Next two links from "http://www.example.com/\r\nhttp://www.abc.com/"
-      "http://example.com/", "http://www.abc.com",
+      "http://example.com/",
+      "http://www.abc.com",
   };
   static const int kNumLinks = static_cast<int>(FX_ArraySize(kExpectedUrls));
 
@@ -579,6 +580,69 @@ TEST_F(FPDFTextEmbedderTest, WebLinksAcrossLinesBug) {
 
   FPDFLink_CloseWebLinks(pagelink);
   FPDFText_ClosePage(textpage);
+  UnloadPage(page);
+}
+
+TEST_F(FPDFTextEmbedderTest, AnnotLinks) {
+  ASSERT_TRUE(OpenDocument("link_annots.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Get link count via checking annotation subtype
+  int annot_count = FPDFPage_GetAnnotCount(page);
+  int annot_subtype_link_count = 0;
+  for (int i = 0; i < annot_count; ++i) {
+    FPDF_ANNOTATION annot = FPDFPage_GetAnnot(page, i);
+    if (FPDFAnnot_GetSubtype(annot) == FPDF_ANNOT_LINK) {
+      ++annot_subtype_link_count;
+    }
+    FPDFPage_CloseAnnot(annot);
+  }
+  EXPECT_EQ(4, annot_subtype_link_count);
+
+  // Validate that FPDFLink_Enumerate returns same number of links
+  int start_pos = 0;
+  FPDF_LINK link_annot;
+  int link_count = 0;
+  while (FPDFLink_Enumerate(page, &start_pos, &link_annot)) {
+    ASSERT_TRUE(link_annot);
+    if ((start_pos == 1) || (start_pos == 2)) {
+      // First two links point to within the document
+      FPDF_DEST link_dest = FPDFLink_GetDest(document(), link_annot);
+      EXPECT_TRUE(link_dest);
+      EXPECT_EQ(0, FPDFDest_GetDestPageIndex(document(), link_dest));
+    } else if (start_pos == 3) {  // points to PDF Spec URL
+      FS_RECTF link_rect;
+      EXPECT_TRUE(FPDFLink_GetAnnotRect(link_annot, &link_rect));
+      EXPECT_NEAR(69.75, link_rect.left, 0.001);
+      EXPECT_NEAR(543.7, link_rect.top, 0.001);
+      EXPECT_NEAR(195.33, link_rect.right, 0.001);
+      EXPECT_NEAR(529.21, link_rect.bottom, 0.001);
+    } else if (start_pos == 4) {  // this link has quad points
+      int quad_point_count = FPDFLink_CountQuadPoints(link_annot);
+      EXPECT_EQ(1, quad_point_count);
+      FS_QUADPOINTSF quad_points;
+      EXPECT_TRUE(FPDFLink_GetQuadPoints(link_annot, 0, &quad_points));
+      EXPECT_NEAR(84.0, quad_points.x1, 0.001);
+      EXPECT_NEAR(452.0, quad_points.y1, 0.001);
+      EXPECT_NEAR(178.0, quad_points.x2, 0.001);
+      EXPECT_NEAR(452.0, quad_points.y2, 0.001);
+      EXPECT_NEAR(84.0, quad_points.x3, 0.001);
+      EXPECT_NEAR(440.0, quad_points.y3, 0.001);
+      EXPECT_NEAR(178.0, quad_points.x4, 0.001);
+      EXPECT_NEAR(440.0, quad_points.y4, 0.001);
+      // AnnotRect is same as quad points for this link
+      FS_RECTF link_rect;
+      EXPECT_TRUE(FPDFLink_GetAnnotRect(link_annot, &link_rect));
+      EXPECT_NEAR(link_rect.left, quad_points.x1, 0.001);
+      EXPECT_NEAR(link_rect.top, quad_points.y1, 0.001);
+      EXPECT_NEAR(link_rect.right, quad_points.x4, 0.001);
+      EXPECT_NEAR(link_rect.bottom, quad_points.y4, 0.001);
+    }
+    ++link_count;
+  }
+  EXPECT_EQ(annot_subtype_link_count, link_count);
+
   UnloadPage(page);
 }
 
@@ -989,7 +1053,9 @@ TEST_F(FPDFTextEmbedderTest, CroppedText) {
       {60.0f, 150.0f, 150.0f, 60.0f},
   };
   static constexpr const char* kExpectedText[kPageCount] = {
-      " world!\r\ndbye, world!", " world!\r\ndbye, world!", "bye, world!",
+      " world!\r\ndbye, world!",
+      " world!\r\ndbye, world!",
+      "bye, world!",
       "bye, world!",
   };
 
