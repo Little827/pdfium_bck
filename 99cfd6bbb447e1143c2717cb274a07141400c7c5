@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ec5d118_3d1b80fd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-21T23:11:46Z",
+      "side": 0,
+      "message": "Here in patch set 3, the entire DrawChanged() call is being removed. I agree this will fix the issue, but the way it does it increases the number of Flush() calls. That removes the effectiveness of the cache.\n\nRather than doing this, how about we tweak DrawChanged() to detect this situation and return true?",
+      "revId": "99cfd6bbb447e1143c2717cb274a07141400c7c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
