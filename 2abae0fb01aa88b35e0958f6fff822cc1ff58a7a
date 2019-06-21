@@ -16,6 +16,24 @@
       "revId": "2abae0fb01aa88b35e0958f6fff822cc1ff58a7a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3adbaba3_fe060f58",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-21T23:36:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0266c9ce_2de71f1a",
+      "revId": "2abae0fb01aa88b35e0958f6fff822cc1ff58a7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
