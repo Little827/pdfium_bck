@@ -16,6 +16,24 @@
       "revId": "fc8e1630f542911074718ad22252ffd73fb40f6c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3094650_75cfd97e",
+        "filename": "fpdfsdk/fpdf_thumbnail.cpp",
+        "patchSetId": 33
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-22T01:00:27Z",
+      "side": 1,
+      "message": "I need the |p_page| reference for both line 68 and 69 though.",
+      "parentUuid": "324bcc2c_e120e5dc",
+      "revId": "fc8e1630f542911074718ad22252ffd73fb40f6c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
