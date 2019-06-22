@@ -304,6 +304,19 @@ SkPath::FillType GetAlternateOrWindingFillType(int fill_mode) {
                                         : SkPath::kWinding_FillType;
 }
 
+/** Returns if contour number can  affect whether enclosed area gets filled or
+ *  not.
+ *
+ *  @return  true if FillType is kEvenOdd_FillType or kInverseEvenOdd_FillType
+ */
+bool isEvenOddFillType(SkPath::FillType fill) {
+  static_assert(0 == SkPath::kWinding_FillType, "fill_type_mismatch");
+  static_assert(1 == SkPath::kEvenOdd_FillType, "fill_type_mismatch");
+  static_assert(2 == SkPath::kInverseWinding_FillType, "fill_type_mismatch");
+  static_assert(3 == SkPath::kInverseEvenOdd_FillType, "fill_type_mismatch");
+  return (fill & 1) != 0;
+}
+
 SkPath BuildPath(const CFX_PathData* pPathData) {
   SkPath skPath;
   const CFX_PathData* pFPath = pPathData;
@@ -1120,6 +1133,7 @@ class SkiaState {
                    bool group_knockout) const {
     return MatrixChanged(pMatrix) || StateChanged(pState, m_drawState) ||
            fill_color != m_fillColor || stroke_color != m_strokeColor ||
+           isEvenOddFillType(m_skPath.getFillType()) ||
            IsAlternateFillMode(fill_mode) !=
                (m_skPath.getFillType() == SkPath::kEvenOdd_FillType) ||
            blend_type != m_blendType || group_knockout != m_groupKnockout;
