@@ -51,7 +51,7 @@ class CPDF_SyntaxParser {
   ByteString GetKeyword();
   void ToNextLine();
   void ToNextWord();
-  bool BackwardsSearchToWord(ByteStringView word, FX_FILESIZE limit);
+  bool BackwardsSearchToWord(ByteStringView tag, FX_FILESIZE limit);
   FX_FILESIZE FindTag(ByteStringView tag);
   bool ReadBlock(uint8_t* pBuf, uint32_t size);
   bool GetCharAt(FX_FILESIZE pos, uint8_t& ch);

@@ -47,7 +47,7 @@ Optional<FX_FILESIZE> GetHeaderOffset(
 
 int32_t GetDirectInteger(const CPDF_Dictionary* pDict, const ByteString& key);
 
-ByteString PDF_NameDecode(ByteStringView orig);
+ByteString PDF_NameDecode(ByteStringView bstr);
 ByteString PDF_NameEncode(const ByteString& orig);
 
 // Return |nCount| elements from |pArray| as a vector of floats. |pArray| must

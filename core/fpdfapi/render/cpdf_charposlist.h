@@ -19,7 +19,7 @@ class CPDF_CharPosList {
   CPDF_CharPosList(const std::vector<uint32_t>& charCodes,
                    const std::vector<float>& charPos,
                    CPDF_Font* pFont,
-                   float font_size);
+                   float FontSize);
   ~CPDF_CharPosList();
 
   uint32_t empty() const { return m_CharPos.empty(); }
