@@ -79,7 +79,7 @@ class CFX_LinuxFontInfo final : public CFX_FolderFontInfo {
                 bool bItalic,
                 int charset,
                 int pitch_family,
-                const char* family) override;
+                const char* cstr_face) override;
 
   bool ParseFontCfg(const char** pUserPaths);
 };

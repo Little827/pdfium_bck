@@ -55,7 +55,7 @@ class CFX_FontMapper {
                                     uint32_t flags,
                                     int weight,
                                     int italic_angle,
-                                    int CharsetCP,
+                                    int WindowCP,
                                     CFX_SubstFont* pSubstFont);
 
   bool IsBuiltinFace(const RetainPtr<CFX_Face>& face) const;
@@ -76,7 +76,7 @@ class CFX_FontMapper {
                                        int iBaseFont,
                                        int italic_angle,
                                        int weight,
-                                       int picthfamily);
+                                       int pitch_family);
   RetainPtr<CFX_Face> GetCachedTTCFace(void* hFont,
                                        uint32_t ttc_size,
                                        uint32_t font_size);
