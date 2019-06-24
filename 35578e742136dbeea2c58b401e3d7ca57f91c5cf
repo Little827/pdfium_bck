@@ -1,0 +1,22 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab7f00d4_a5024425",
+        "filename": "third_party/bigint/NumberlikeArray.hh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2019-06-24T22:02:00Z",
+      "side": 1,
+      "message": "Done. Replaced spaces with tabs for all changes to be consistent.",
+      "parentUuid": "b09ebfb2_ed269753",
+      "revId": "35578e742136dbeea2c58b401e3d7ca57f91c5cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
