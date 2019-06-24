@@ -331,6 +331,9 @@ bug_304.in * * *
 # TODO(pdfium:632): Remove after associated bug is fixed
 bug_632.in * * *
 
+# TODO(pdfium:843): Remove after associated bug is fixed
+bug_843.in * * *
+
 # TODO(pdfium:1331): Remove after associated bug is fixed
 bug_1331.in * * *
 
