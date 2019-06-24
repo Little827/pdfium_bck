@@ -21,6 +21,6 @@ WideString FX_UTF8Decode(ByteStringView bsStr);
 
 float StringToFloat(ByteStringView str);
 float StringToFloat(WideStringView wsStr);
-size_t FloatToString(float f, char* buf);
+size_t FloatToString(float d, char* buf);
 
 #endif  // CORE_FXCRT_FX_STRING_H_

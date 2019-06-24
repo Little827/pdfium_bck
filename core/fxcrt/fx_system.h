@@ -161,7 +161,7 @@ int FXSYS_MultiByteToWideChar(uint32_t codepage,
 char* FXSYS_strlwr(char* str);
 char* FXSYS_strupr(char* str);
 int FXSYS_stricmp(const char*, const char*);
-int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2);
+int FXSYS_wcsicmp(const wchar_t* dst, const wchar_t* src);
 wchar_t* FXSYS_wcslwr(wchar_t* str);
 wchar_t* FXSYS_wcsupr(wchar_t* str);
 #define FXSYS_pow(a, b) (float)pow(a, b)
@@ -185,7 +185,7 @@ uint32_t FXSYS_atoui(const char* str);
 int32_t FXSYS_wtoi(const wchar_t* str);
 int64_t FXSYS_atoi64(const char* str);
 const char* FXSYS_i64toa(int64_t value, char* str, int radix);
-int FXSYS_round(float f);
+int FXSYS_round(float d);
 #define FXSYS_sqrt2(a, b) (float)sqrt((a) * (a) + (b) * (b))
 #ifdef __cplusplus
 }  // extern C

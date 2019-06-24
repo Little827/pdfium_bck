@@ -36,9 +36,9 @@ class ByteString {
   using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
   static ByteString FormatInteger(int i) WARN_UNUSED_RESULT;
-  static ByteString FormatFloat(float f) WARN_UNUSED_RESULT;
-  static ByteString Format(const char* lpszFormat, ...) WARN_UNUSED_RESULT;
-  static ByteString FormatV(const char* lpszFormat,
+  static ByteString FormatFloat(float d) WARN_UNUSED_RESULT;
+  static ByteString Format(const char* pFormat, ...) WARN_UNUSED_RESULT;
+  static ByteString FormatV(const char* pFormat,
                             va_list argList) WARN_UNUSED_RESULT;
 
   ByteString();
@@ -55,11 +55,11 @@ class ByteString {
   // NOLINTNEXTLINE(runtime/explicit)
   ByteString(wchar_t) = delete;
 
-  ByteString(const char* ptr, size_t len);
-  ByteString(const uint8_t* ptr, size_t len);
+  ByteString(const char* pStr, size_t len);
+  ByteString(const uint8_t* pStr, size_t len);
 
-  explicit ByteString(ByteStringView bstrc);
-  ByteString(ByteStringView bstrc1, ByteStringView bstrc2);
+  explicit ByteString(ByteStringView stringSrc);
+  ByteString(ByteStringView str1, ByteStringView str2);
   ByteString(const std::initializer_list<ByteStringView>& list);
   explicit ByteString(const std::ostringstream& outStream);
 
@@ -132,14 +132,14 @@ class ByteString {
   bool operator<(const ByteString& other) const;
 
   const ByteString& operator=(const char* str);
-  const ByteString& operator=(ByteStringView bstrc);
+  const ByteString& operator=(ByteStringView stringSrc);
   const ByteString& operator=(const ByteString& that);
   const ByteString& operator=(ByteString&& that);
 
   const ByteString& operator+=(char ch);
   const ByteString& operator+=(const char* str);
   const ByteString& operator+=(const ByteString& str);
-  const ByteString& operator+=(ByteStringView bstrc);
+  const ByteString& operator+=(ByteStringView str);
 
   CharType operator[](const size_t index) const {
     CHECK(IsValidIndex(index));
@@ -151,7 +151,7 @@ class ByteString {
 
   void SetAt(size_t index, char c);
 
-  size_t Insert(size_t index, char ch);
+  size_t Insert(size_t location, char ch);
   size_t InsertAtFront(char ch) { return Insert(0, ch); }
   size_t InsertAtBack(char ch) { return Insert(GetLength(), ch); }
   size_t Delete(size_t index, size_t count = 1);
@@ -160,14 +160,14 @@ class ByteString {
 
   // Note: any modification of the string (including ReleaseBuffer()) may
   // invalidate the span, which must not outlive its buffer.
-  pdfium::span<char> GetBuffer(size_t len);
-  void ReleaseBuffer(size_t len);
+  pdfium::span<char> GetBuffer(size_t nMinBufLength);
+  void ReleaseBuffer(size_t nNewLength);
 
   ByteString Mid(size_t first, size_t count) const;
   ByteString Left(size_t count) const;
   ByteString Right(size_t count) const;
 
-  Optional<size_t> Find(ByteStringView lpszSub, size_t start = 0) const;
+  Optional<size_t> Find(ByteStringView subStr, size_t start = 0) const;
   Optional<size_t> Find(char ch, size_t start = 0) const;
   Optional<size_t> ReverseFind(char ch) const;
 
@@ -194,7 +194,7 @@ class ByteString {
   void TrimRight(char target);
   void TrimRight(ByteStringView targets);
 
-  size_t Replace(ByteStringView lpszOld, ByteStringView lpszNew);
+  size_t Replace(ByteStringView pOld, ByteStringView pNew);
   size_t Remove(char ch);
 
   uint32_t GetID() const { return AsStringView().GetID(); }
@@ -206,7 +206,7 @@ class ByteString {
   void AllocBeforeWrite(size_t nNewLen);
   void AllocCopy(ByteString& dest, size_t nCopyLen, size_t nCopyIndex) const;
   void AssignCopy(const char* pSrcData, size_t nSrcLen);
-  void Concat(const char* lpszSrcData, size_t nSrcLen);
+  void Concat(const char* pSrcData, size_t nSrcLen);
   intptr_t ReferenceCountForTesting() const;
 
   RetainPtr<StringData> m_pData;
