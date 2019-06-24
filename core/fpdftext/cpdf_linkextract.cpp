@@ -317,3 +317,16 @@ std::vector<CFX_FloatRect> CPDF_LinkExtract::GetRects(size_t index) const {
   return m_pTextPage->GetRectArray(m_LinkArray[index].m_Start,
                                    m_LinkArray[index].m_Count);
 }
+
+int CPDF_LinkExtract::GetStartCharIndex(size_t index) const {
+  return (index < m_LinkArray.size()) ? m_LinkArray[index].m_Start : -1;
+}
+
+int CPDF_LinkExtract::GetEndCharIndex(size_t index) const {
+  // the arithmetic operation below won't need an integer overflow check because
+  // this returns the end index which will always be less than nTotalChar value
+  // which is stored in an int variable
+  return (index < m_LinkArray.size())
+             ? (m_LinkArray[index].m_Start + m_LinkArray[index].m_Count - 1)
+             : -1;
+}
