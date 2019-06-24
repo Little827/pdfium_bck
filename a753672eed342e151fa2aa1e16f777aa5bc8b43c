@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4bb89ee_06096777",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-24T21:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac34dc0d_a46da786",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "a753672eed342e151fa2aa1e16f777aa5bc8b43c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0224f7f_51ac758a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "a753672eed342e151fa2aa1e16f777aa5bc8b43c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15af3a69_81d16eff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-24T21:22:36Z",
+      "side": 1,
+      "message": "In CFX_RenderDevice::DrawPathWithBlend():\n\nFor SkiaPaths, GetDriverType() override didn\u0027t exist, which by default passing false as the second argument in GetZeroAreaPath().\nThe chain of discrepancy is: \nDriverType\u003d\u003d0 \u003d\u003e setIdentity\u003d\u003dfalse \u003d\u003e pMatrix\u003dpObject2Device (not nullptr).\n\nWhile for Agg, DriverType\u003d\u003d1 \u003d\u003e setIdentity\u003d\u003dtrue \u003d\u003epMatrix \u003d nullptr",
+      "parentUuid": "a0224f7f_51ac758a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "a753672eed342e151fa2aa1e16f777aa5bc8b43c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2412c018_c9230ef3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-24T21:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a00c5543_c4207428",
+      "range": {
+        "startLine": 17,
+        "startChar": 29,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "a753672eed342e151fa2aa1e16f777aa5bc8b43c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15711833_3e6821b4",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 8
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "37995015_bfb13cb2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-24T21:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15711833_3e6821b4",
+      "revId": "a753672eed342e151fa2aa1e16f777aa5bc8b43c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deed809a_0637b8e1",
         "filename": "core/fxge/skia/fx_skia_device.h",
         "patchSetId": 8
@@ -102,6 +192,24 @@
       "revId": "a753672eed342e151fa2aa1e16f777aa5bc8b43c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e701c9_c4f522ca",
+        "filename": "core/fxge/skia/fx_skia_device.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-24T21:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deed809a_0637b8e1",
+      "revId": "a753672eed342e151fa2aa1e16f777aa5bc8b43c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

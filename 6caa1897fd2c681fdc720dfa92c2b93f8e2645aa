@@ -16,6 +16,24 @@
       "revId": "6caa1897fd2c681fdc720dfa92c2b93f8e2645aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f86917_3e741af6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-24T21:22:36Z",
+      "side": 0,
+      "message": "For Agg version, when (fill_mode \u0026 FX_ZEROAREA_FILL)\u003d\u003dtrue, pObject2Device\u003d\u003dnull. In that case, RasterizeStroke(\u0026rasterizer, \u0026path_data.m_PathData, nullptr, pGraphState, 1,false, !!(fill_mode \u0026 FX_STROKE_TEXT_MODE)) and RasterizeStroke(\u0026rasterizer, \u0026path_data.m_PathData, \u0026matrix2, pGraphState,matrix1.a, false, !!(fill_mode \u0026 FX_STROKE_TEXT_MODE)) will have the exact same result (since matrix1 and matrix2 are using default value a\u003d1, b\u003d0, c\u003d0, d\u003d1, e\u003d0, f\u003d0).\n\nAfter completely removing check for FX_ZEROAREA_FILL for Agg, I tested in testing/resources/pixel/ and testing/corpus/fx/path/ directories, and I didn\u0027t notice any difference between the new test results and the old results(with no agg changes).",
+      "parentUuid": "4159bb71_0d4e648a",
+      "revId": "6caa1897fd2c681fdc720dfa92c2b93f8e2645aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
