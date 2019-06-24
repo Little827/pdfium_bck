@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4018859_b812a4c6",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2019-06-24T17:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dc707c0_759d9480",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "eb0300a8ab7426f7a015f9ae54beb95144a07811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05967eb2_4bb0821b",
         "filename": "core/fxge/fx_dib.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bdfb6c35_7ce3265c",
+        "filename": "core/fxge/fx_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2019-06-24T17:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05967eb2_4bb0821b",
+      "range": {
+        "startLine": 141,
+        "startChar": 38,
+        "endLine": 141,
+        "endChar": 45
+      },
+      "revId": "eb0300a8ab7426f7a015f9ae54beb95144a07811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe3ec23a_389bce70",
         "filename": "core/fxge/fx_ge_linux.cpp",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "eb0300a8ab7426f7a015f9ae54beb95144a07811",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6314fa9f_66205d14",
+        "filename": "core/fxge/fx_ge_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2019-06-24T17:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe3ec23a_389bce70",
+      "range": {
+        "startLine": 82,
+        "startChar": 28,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "eb0300a8ab7426f7a015f9ae54beb95144a07811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
