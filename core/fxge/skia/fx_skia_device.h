@@ -36,7 +36,6 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   ~CFX_SkiaDeviceDriver() override;
 
   /** Options */
-  DeviceType GetDeviceType() const override;
   int GetDeviceCaps(int caps_id) const override;
 
   /** Save and restore all graphic states */
@@ -137,7 +136,7 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                       const CFX_Matrix& mtObject2Device,
                       float font_size,
                       uint32_t color) override;
-
+  DeviceType GetDeviceType() const override;
   bool DrawShading(const CPDF_ShadingPattern* pPattern,
                    const CFX_Matrix* pMatrix,
                    const FX_RECT& clip_rect,
@@ -159,6 +158,7 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   void Dump() const;
 
   bool GetGroupKnockout() const { return m_bGroupKnockout; }
+  int GetDriverType() const override;
 
 #ifdef _SKIA_SUPPORT_PATHS_
   const CFX_ClipRgn* clip_region() const { return m_pClipRgn.get(); }
