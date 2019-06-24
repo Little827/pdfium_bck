@@ -16,6 +16,24 @@
       "revId": "99cfd6bbb447e1143c2717cb274a07141400c7c5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c57c1ca4_56bb029a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-24T21:21:49Z",
+      "side": 0,
+      "message": "I added another check inside DrawChanged(). If filltype is EvenOdd or InverseEvenOdd, then should always consider Drawing changed.",
+      "parentUuid": "4ec5d118_3d1b80fd",
+      "revId": "99cfd6bbb447e1143c2717cb274a07141400c7c5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
