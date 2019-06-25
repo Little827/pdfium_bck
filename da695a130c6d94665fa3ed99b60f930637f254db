@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a334088c_48053894",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T02:03:29Z",
+      "side": 1,
+      "message": "\"decoded\", because not all encodings do compression. Some encodings actually make the data stream larger.",
+      "range": {
+        "startLine": 20,
+        "startChar": 53,
+        "endLine": 20,
+        "endChar": 65
+      },
+      "revId": "da695a130c6d94665fa3ed99b60f930637f254db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e76c89_967399fb",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T02:03:29Z",
+      "side": 1,
+      "message": "This is copy-pasted from a pre-existing function, but that doesn\u0027t make sense either. So I uploaded https://pdfium-review.googlesource.com/56950 to fix the existing comments. Once that lands, let\u0027s apply the same change here.",
+      "revId": "da695a130c6d94665fa3ed99b60f930637f254db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f7cb93c_c82a6d3f",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T02:03:29Z",
+      "side": 1,
+      "message": "FPDF_BITMAP",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "da695a130c6d94665fa3ed99b60f930637f254db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b2234a_855ca6bb",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 36
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T02:03:29Z",
+      "side": 1,
+      "message": "This looks like a bad merge? Line 692 above calls EncodePng(), but this calls into a function that calls EncodePng() again.",
+      "revId": "da695a130c6d94665fa3ed99b60f930637f254db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd0bc58_a18477f6",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 36
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T02:03:29Z",
+      "side": 1,
+      "message": "Should this return path print an error?",
+      "revId": "da695a130c6d94665fa3ed99b60f930637f254db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "515baab0_4899764e",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 36
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T02:03:29Z",
+      "side": 1,
+      "message": "Let\u0027s add a period to the end of all the failure messages for consistency.",
+      "revId": "da695a130c6d94665fa3ed99b60f930637f254db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6a7c3a_dc4dc970",
+        "filename": "testing/resources/simple_thumbnail.in",
+        "patchSetId": 36
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T02:03:29Z",
+      "side": 1,
+      "message": "As mentioned before, these PDFs don\u0027t actually need any real content. It\u0027s only the thumbnails that matter. So, reduce the PDF down a bit further to only the essentials?",
+      "revId": "da695a130c6d94665fa3ed99b60f930637f254db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
