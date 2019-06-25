@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a664724_4f276243",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:53:11Z",
+      "side": 1,
+      "message": "Let\u0027s do: // This style of comments. No need for docstrings.",
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "358b1265_39d0e7b3",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:53:11Z",
+      "side": 1,
+      "message": "extra space here.",
+      "range": {
+        "startLine": 307,
+        "startChar": 33,
+        "endLine": 307,
+        "endChar": 35
+      },
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae8af629_b800da7d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:53:11Z",
+      "side": 1,
+      "message": "|kFoo|",
+      "range": {
+        "startLine": 310,
+        "startChar": 33,
+        "endLine": 310,
+        "endChar": 50
+      },
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be2bce5_c8048c29",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:53:11Z",
+      "side": 1,
+      "message": "IsEvenOddFillType(), like BuildPath() and DrawChanged().",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 22
+      },
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60134bf4_036504b7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:53:11Z",
+      "side": 1,
+      "message": "Just write: return fill \u003d\u003d SkPath::kEvenOdd_FillType || fill \u003d\u003d SkPath::kInverseEvenOdd_FillType;\n\nand remove the need for all the static asserts.",
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
