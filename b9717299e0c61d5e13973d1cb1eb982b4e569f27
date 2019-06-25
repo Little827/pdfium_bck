@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a74abb5_9c3bc100",
+        "filename": "public/fpdf_thumbnail.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:30:17Z",
+      "side": 1,
+      "message": "All caps, like line 52.",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "b9717299e0c61d5e13973d1cb1eb982b4e569f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ba747e_64627fc1",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:30:17Z",
+      "side": 1,
+      "message": "Let\u0027s put this closer to GetThumbnailFilename(), since they are related.",
+      "revId": "b9717299e0c61d5e13973d1cb1eb982b4e569f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdabb589_0504950b",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:30:17Z",
+      "side": 1,
+      "message": "Another option is to make this EncodeBitmapToPng(). Then WriteThumbnail() can get a std::vector and call WriteBufferToFile(), which is structured more similarly to WriteDecodedThumbnailStream() and WriteRawThumbnailStream().",
+      "revId": "b9717299e0c61d5e13973d1cb1eb982b4e569f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663c6df6_bd2e0b22",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T17:30:17Z",
+      "side": 1,
+      "message": "Don\u0027t need this return at the end. It\u0027s going to return anyway.",
+      "revId": "b9717299e0c61d5e13973d1cb1eb982b4e569f27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
