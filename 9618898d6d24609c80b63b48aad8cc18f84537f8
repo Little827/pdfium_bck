@@ -238,6 +238,24 @@
       "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac34a6b_60a39608",
+        "filename": "testing/resources/thumbnail_with_empty_stream.in",
+        "patchSetId": 30
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7633
+      },
+      "writtenOn": "2019-06-25T16:33:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3e74fd_c640e7ee",
+      "revId": "9618898d6d24609c80b63b48aad8cc18f84537f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
