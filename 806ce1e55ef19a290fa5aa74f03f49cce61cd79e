@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a279f9b4_996eb559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T19:50:14Z",
+      "side": 1,
+      "message": "We probably won\u0027t add any more APIs, so remove \"Initially\" ?",
+      "revId": "806ce1e55ef19a290fa5aa74f03f49cce61cd79e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c285b6_220b1bd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T19:50:14Z",
+      "side": 1,
+      "message": "Try to refer to functions as FunctionName(), so there is less ambiguity.",
+      "revId": "806ce1e55ef19a290fa5aa74f03f49cce61cd79e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563c4c11_22499ab5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T19:50:14Z",
+      "side": 1,
+      "message": "Also mention the additions to pdfium_test.",
+      "revId": "806ce1e55ef19a290fa5aa74f03f49cce61cd79e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
