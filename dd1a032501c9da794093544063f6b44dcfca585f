@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "4e34561f_667c29c6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-25T18:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a664724_4f276243",
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fe310e3_82afe745",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-25T18:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "358b1265_39d0e7b3",
+      "range": {
+        "startLine": 307,
+        "startChar": 33,
+        "endLine": 307,
+        "endChar": 35
+      },
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae8af629_b800da7d",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 5
@@ -62,6 +104,30 @@
       "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98062e60_ddb06daa",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-25T18:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae8af629_b800da7d",
+      "range": {
+        "startLine": 310,
+        "startChar": 33,
+        "endLine": 310,
+        "endChar": 50
+      },
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "6e04e196_aef58d00",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-25T18:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be2bce5_c8048c29",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 22
+      },
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60134bf4_036504b7",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 5
@@ -102,6 +192,24 @@
       "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815fa0ba_dec023e2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-25T18:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60134bf4_036504b7",
+      "revId": "dd1a032501c9da794093544063f6b44dcfca585f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
