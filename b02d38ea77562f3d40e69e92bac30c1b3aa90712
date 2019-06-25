@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4a013e5_65b428c4",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-25T17:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "709e9c32_d850088d",
+      "revId": "b02d38ea77562f3d40e69e92bac30c1b3aa90712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda9e76b_a238a95b",
         "filename": "testing/resources/pixel/bug_843.in",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "b02d38ea77562f3d40e69e92bac30c1b3aa90712",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0213034f_8e560712",
+        "filename": "testing/resources/pixel/bug_843.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-06-25T17:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda9e76b_a238a95b",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "b02d38ea77562f3d40e69e92bac30c1b3aa90712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
