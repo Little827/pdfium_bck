@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709e9c32_d850088d",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T01:30:24Z",
+      "side": 1,
+      "message": "The SUPPRESSIONS file is currently oriented towards testing with AGG. Whereas Skia bots don\u0027t run pixel tests yet. Because of this, we should not suppress the test.\n\nIf you look at a bot output, e.g. https://logs.chromium.org/logs/pdfium/buildbucket/cr-buildbucket.appspot.com/8909729086767874576/+/steps/pixel_tests/0/stdout, it would say:\n\nUnexpected Successes:\n/b/s/w/ir/cache/builder/pdfium/testing/resources/pixel/bug_843.in\n\nTest cases executed: 64\n  Successes: 60\n  Suppressed: 4\n    Surprises: 1\n  Failures: 0",
+      "revId": "b02d38ea77562f3d40e69e92bac30c1b3aa90712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda9e76b_a238a95b",
+        "filename": "testing/resources/pixel/bug_843.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-06-25T01:30:24Z",
+      "side": 1,
+      "message": "nit just use 0 0, to be consistent with 150 150. No need for 0.0.",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "b02d38ea77562f3d40e69e92bac30c1b3aa90712",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
