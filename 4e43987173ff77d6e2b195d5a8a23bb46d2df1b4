@@ -22,6 +22,30 @@
       "revId": "4e43987173ff77d6e2b195d5a8a23bb46d2df1b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f760df48_05a9a2bd",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-06-28T04:14:38Z",
+      "side": 1,
+      "message": "Or on the contrary, let\u0027s ensure we return -1 when the check returns false - as per the API contract mentioned as comment during declaration.",
+      "parentUuid": "1ebc9f68_92d47f14",
+      "range": {
+        "startLine": 418,
+        "startChar": 9,
+        "endLine": 418,
+        "endChar": 60
+      },
+      "revId": "4e43987173ff77d6e2b195d5a8a23bb46d2df1b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
