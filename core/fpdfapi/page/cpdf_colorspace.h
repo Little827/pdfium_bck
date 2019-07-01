@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <set>
+#include <vector>
 
 #include "core/fpdfapi/page/cpdf_pattern.h"
 #include "core/fxcrt/fx_string.h"
@@ -36,11 +37,23 @@ class CPDF_PatternCS;
 
 constexpr size_t kMaxPatternColorComps = 16;
 
-struct PatternValue {
-  CPDF_Pattern* m_pPattern;
-  CPDF_CountedPattern* m_pCountedPattern;
-  int m_nComps;
-  float m_Comps[kMaxPatternColorComps];
+class PatternValue {
+ public:
+  PatternValue();
+  PatternValue(const PatternValue& that);
+  ~PatternValue();
+
+  CPDF_Pattern* GetPattern() { return m_pPattern; }
+  void SetPattern(CPDF_Pattern* pPattern);
+
+  std::vector<float> m_Comps;
+
+ private:
+  void RegisterPattern();
+  void UnregisterPattern();
+
+  CPDF_Pattern* m_pPattern = nullptr;
+  CPDF_CountedPattern* m_pCountedPattern = nullptr;
 };
 
 class CPDF_ColorSpace : public Retainable, public Observable {
@@ -57,11 +70,9 @@ class CPDF_ColorSpace : public Retainable, public Observable {
 
   const CPDF_Array* GetArray() const { return m_pArray.Get(); }
   CPDF_Document* GetDocument() const { return m_pDocument.Get(); }
-  size_t GetBufSize() const;
-  float* CreateBuf() const;
 
   // Should only be called if this colorspace is not a pattern.
-  float* CreateBufAndSetDefaultColor() const;
+  std::vector<float> CreateBufAndSetDefaultColor() const;
 
   uint32_t CountComponents() const;
   int GetFamily() const { return m_Family; }
