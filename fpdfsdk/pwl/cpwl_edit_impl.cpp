@@ -200,7 +200,7 @@ void CPWL_EditImpl_Refresh::Add(const CFX_FloatRect& new_rect) {
 }
 
 CPWL_EditImpl_Undo::CPWL_EditImpl_Undo()
-    : m_nCurUndoPos(0), m_bWorking(false) {}
+    : m_nCurUndoPos(0), m_itemSkipped(false), m_bWorking(false) {}
 
 CPWL_EditImpl_Undo::~CPWL_EditImpl_Undo() {}
 
@@ -212,13 +212,17 @@ void CPWL_EditImpl_Undo::Undo() {
   m_bWorking = true;
   if (CanUndo()) {
     m_UndoItemStack[m_nCurUndoPos - 1]->Undo();
-    m_nCurUndoPos--;
+    if (m_itemSkipped)
+      m_itemSkipped = false;
+    else
+      m_nCurUndoPos--;
   }
   m_bWorking = false;
 }
 
 bool CPWL_EditImpl_Undo::CanRedo() const {
-  return m_nCurUndoPos < m_UndoItemStack.size();
+  return m_nCurUndoPos < m_UndoItemStack.size() &&
+         m_UndoItemStack[m_nCurUndoPos]->isRedoEnabled();
 }
 
 void CPWL_EditImpl_Undo::Redo() {
@@ -243,6 +247,20 @@ void CPWL_EditImpl_Undo::AddItem(std::unique_ptr<IFX_Edit_UndoItem> pItem) {
   m_nCurUndoPos = m_UndoItemStack.size();
 }
 
+void CPWL_EditImpl_Undo::SkipCurrentUndoItem() {
+  if (CanUndo() && !m_itemSkipped) {
+    m_nCurUndoPos--;
+  }
+}
+
+void CPWL_EditImpl_Undo::SetSkippedUndo(bool bSkip) {
+  m_itemSkipped = bSkip;
+}
+
+bool CPWL_EditImpl_Undo::GetSkippedUndo() {
+  return m_itemSkipped;
+}
+
 void CPWL_EditImpl_Undo::RemoveHeads() {
   ASSERT(m_UndoItemStack.size() > 1);
   m_UndoItemStack.pop_front();
@@ -251,6 +269,10 @@ void CPWL_EditImpl_Undo::RemoveHeads() {
 void CPWL_EditImpl_Undo::RemoveTails() {
   while (CanRedo())
     m_UndoItemStack.pop_back();
+}
+
+bool IFX_Edit_UndoItem::isRedoEnabled() {
+  return true;
 }
 
 CFXEU_InsertWord::CFXEU_InsertWord(CPWL_EditImpl* pEdit,
@@ -299,6 +321,35 @@ void CFXEU_InsertReturn::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpNew);
   m_pEdit->Backspace(false, true);
+}
+
+CFXEU_ReplaceSel::CFXEU_ReplaceSel(CPWL_EditImpl* pEdit,
+                                   const fxcrt::WideString& word)
+    : m_pEdit(pEdit), m_Word(word) {
+  ASSERT(m_pEdit);
+}
+
+CFXEU_ReplaceSel::~CFXEU_ReplaceSel() {}
+
+void CFXEU_ReplaceSel::Redo() {}
+
+void CFXEU_ReplaceSel::Undo() {
+  m_pEdit->SelectNone();
+  // skip the last item of the undo stack which is just a marker for replace
+  // action
+  m_pEdit->SkipCurrentUndoItem();
+  m_pEdit->Undo();  // Undo Insert
+  m_pEdit->Undo();  // Undo ClearSelection
+
+  // So far |m_nCurUndoPos| has already decreased by 3 (including 1 skipped
+  // index). |m_nCurUndoPos| will be substracted by 1 again in
+  // CPWL_EditImpl_Undo::Undo() after this function finishes. Need to avoid
+  // |m_nCurUndoPos| decreasing again after finishes this current function.
+  m_pEdit->SetSkippedUndo(true);
+}
+
+bool CFXEU_ReplaceSel::isRedoEnabled() {
+  return false;
 }
 
 CFXEU_Backspace::CFXEU_Backspace(CPWL_EditImpl* pEdit,
@@ -365,8 +416,9 @@ void CFXEU_Delete::Undo() {
 
 CFXEU_Clear::CFXEU_Clear(CPWL_EditImpl* pEdit,
                          const CPVT_WordRange& wrSel,
-                         const WideString& swText)
-    : m_pEdit(pEdit), m_wrSel(wrSel), m_swText(swText) {
+                         const WideString& swText,
+                         bool bRedo)
+    : m_pEdit(pEdit), m_wrSel(wrSel), m_swText(swText), m_bEnableRedo(bRedo) {
   ASSERT(m_pEdit);
 }
 
@@ -375,26 +427,32 @@ CFXEU_Clear::~CFXEU_Clear() {}
 void CFXEU_Clear::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetSelection(m_wrSel.BeginPos, m_wrSel.EndPos);
-  m_pEdit->Clear(false, true);
+  m_pEdit->Clear(false, true, false);
 }
 
 void CFXEU_Clear::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wrSel.BeginPos);
-  m_pEdit->InsertText(m_swText, FX_CHARSET_Default, false, true);
+  m_pEdit->InsertText(m_swText, FX_CHARSET_Default, false, true, false);
   m_pEdit->SetSelection(m_wrSel.BeginPos, m_wrSel.EndPos);
+}
+
+bool CFXEU_Clear::isRedoEnabled() {
+  return m_bEnableRedo;
 }
 
 CFXEU_InsertText::CFXEU_InsertText(CPWL_EditImpl* pEdit,
                                    const CPVT_WordPlace& wpOldPlace,
                                    const CPVT_WordPlace& wpNewPlace,
                                    const WideString& swText,
-                                   int32_t charset)
+                                   int32_t charset,
+                                   bool bRedo)
     : m_pEdit(pEdit),
       m_wpOld(wpOldPlace),
       m_wpNew(wpNewPlace),
       m_swText(swText),
-      m_nCharset(charset) {
+      m_nCharset(charset),
+      m_bEnableRedo(bRedo) {
   ASSERT(m_pEdit);
 }
 
@@ -403,13 +461,17 @@ CFXEU_InsertText::~CFXEU_InsertText() {}
 void CFXEU_InsertText::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpOld);
-  m_pEdit->InsertText(m_swText, m_nCharset, false, true);
+  m_pEdit->InsertText(m_swText, m_nCharset, false, true, false);
 }
 
 void CFXEU_InsertText::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetSelection(m_wpOld, m_wpNew);
-  m_pEdit->Clear(false, true);
+  m_pEdit->Clear(false, true, false);
+}
+
+bool CFXEU_InsertText::isRedoEnabled() {
+  return m_bEnableRedo;
 }
 
 // static
@@ -755,6 +817,12 @@ WideString CPWL_EditImpl::GetSelectedText() const {
   return GetRangeText(m_SelState.ConvertToWordRange());
 }
 
+void CPWL_EditImpl::ReplaceSelection(const WideString& text) {
+  ClearSelection(/*bRedo =*/false);
+  InsertText(text, FX_CHARSET_Default, /*bRedo =*/false);
+  AddEditUndoItem(pdfium::MakeUnique<CFXEU_ReplaceSel>(this, text));
+}
+
 int32_t CPWL_EditImpl::GetTotalLines() const {
   int32_t nLines = 1;
 
@@ -792,12 +860,14 @@ bool CPWL_EditImpl::Delete() {
   return Delete(true, true);
 }
 
-bool CPWL_EditImpl::ClearSelection() {
-  return Clear(true, true);
+bool CPWL_EditImpl::ClearSelection(bool bRedo) {
+  return Clear(true, true, bRedo);
 }
 
-bool CPWL_EditImpl::InsertText(const WideString& sText, int32_t charset) {
-  return InsertText(sText, charset, true, true);
+bool CPWL_EditImpl::InsertText(const WideString& sText,
+                               int32_t charset,
+                               bool bRedo) {
+  return InsertText(sText, charset, true, true, bRedo);
 }
 
 float CPWL_EditImpl::GetFontSize() const {
@@ -1622,14 +1692,14 @@ bool CPWL_EditImpl::Empty() {
   return false;
 }
 
-bool CPWL_EditImpl::Clear(bool bAddUndo, bool bPaint) {
+bool CPWL_EditImpl::Clear(bool bAddUndo, bool bPaint, bool bRedo) {
   if (!m_pVT->IsValid() || m_SelState.IsEmpty())
     return false;
 
   CPVT_WordRange range = m_SelState.ConvertToWordRange();
   if (bAddUndo && m_bEnableUndo) {
     AddEditUndoItem(
-        pdfium::MakeUnique<CFXEU_Clear>(this, range, GetSelectedText()));
+        pdfium::MakeUnique<CFXEU_Clear>(this, range, GetSelectedText(), bRedo));
   }
 
   SelectNone();
@@ -1651,7 +1721,8 @@ bool CPWL_EditImpl::Clear(bool bAddUndo, bool bPaint) {
 bool CPWL_EditImpl::InsertText(const WideString& sText,
                                int32_t charset,
                                bool bAddUndo,
-                               bool bPaint) {
+                               bool bPaint,
+                               bool bRedo) {
   if (IsTextOverflow())
     return false;
 
@@ -1663,7 +1734,7 @@ bool CPWL_EditImpl::InsertText(const WideString& sText,
 
   if (bAddUndo && m_bEnableUndo) {
     AddEditUndoItem(pdfium::MakeUnique<CFXEU_InsertText>(
-        this, m_wpOldCaret, m_wpCaret, sText, charset));
+        this, m_wpOldCaret, m_wpCaret, sText, charset, bRedo));
   }
   if (bPaint)
     PaintInsertText(m_wpOldCaret, m_wpCaret);
@@ -1771,6 +1842,18 @@ bool CPWL_EditImpl::CanRedo() const {
   }
 
   return false;
+}
+
+void CPWL_EditImpl::SkipCurrentUndoItem() {
+  m_Undo.SkipCurrentUndoItem();
+}
+
+void CPWL_EditImpl::SetSkippedUndo(bool bSkip) {
+  m_Undo.SetSkippedUndo(bSkip);
+}
+
+bool CPWL_EditImpl::GetSkippedUndo() {
+  return m_Undo.GetSkippedUndo();
 }
 
 void CPWL_EditImpl::EnableRefresh(bool bRefresh) {

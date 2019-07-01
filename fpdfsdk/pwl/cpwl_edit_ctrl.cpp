@@ -55,8 +55,7 @@ WideString CPWL_EditCtrl::GetSelectedText() {
 }
 
 void CPWL_EditCtrl::ReplaceSelection(const WideString& text) {
-  m_pEdit->ClearSelection();
-  m_pEdit->InsertText(text, FX_CHARSET_Default);
+  m_pEdit->ReplaceSelection(text);
 }
 
 bool CPWL_EditCtrl::RePosChildWnd() {
@@ -353,7 +352,7 @@ void CPWL_EditCtrl::GetSelection(int32_t& nStartChar, int32_t& nEndChar) const {
 
 void CPWL_EditCtrl::ClearSelection() {
   if (!IsReadOnly())
-    m_pEdit->ClearSelection();
+    m_pEdit->ClearSelection(true);
 }
 
 void CPWL_EditCtrl::SelectAll() {
