@@ -96,7 +96,7 @@ bool CPWL_Edit::CanCut() const {
 void CPWL_Edit::CutText() {
   if (!CanCut())
     return;
-  m_pEdit->ClearSelection();
+  m_pEdit->ClearSelection(true);
 }
 
 void CPWL_Edit::OnCreated() {
@@ -406,8 +406,8 @@ void CPWL_Edit::SetLimitChar(int32_t nLimitChar) {
 }
 
 void CPWL_Edit::ReplaceSel(const WideString& wsText) {
-  m_pEdit->ClearSelection();
-  m_pEdit->InsertText(wsText, FX_CHARSET_Default);
+  m_pEdit->ClearSelection(false);
+  m_pEdit->InsertText(wsText, FX_CHARSET_Default, false);
 }
 
 CFX_FloatRect CPWL_Edit::GetFocusRect() const {
