@@ -639,7 +639,7 @@ bool CPDFXFA_DocEnvironment::OnBeforeNotifySubmit() {
 
   while (pNode) {
     int fRet = pNode->ProcessValidate(docView, -1);
-    if (fRet == XFA_EVENTERROR_Error) {
+    if (fRet == XFA_EventError::kError) {
       CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
       if (!pFormFillEnv)
         return false;
