@@ -24,6 +24,8 @@ class CPDF_LinkExtract {
   size_t CountLinks() const { return m_LinkArray.size(); }
   WideString GetURL(size_t index) const;
   std::vector<CFX_FloatRect> GetRects(size_t index) const;
+  int GetStartCharIndex(size_t index) const;
+  int GetEndCharIndex(size_t index) const;
 
  protected:
   void ParseLink();
