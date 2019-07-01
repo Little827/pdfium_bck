@@ -394,17 +394,20 @@ bool CXFA_FFWidget::OnRButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
 }
 
 bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
-  CXFA_FFWidget* pParent = GetFFWidget(ToContentLayoutItem(GetParent()));
-  if (pParent && !pParent->IsAncestorOf(pOldWidget))
-    pParent->OnSetFocus(pOldWidget);
-
   GetLayoutItem()->SetStatusBits(XFA_WidgetStatus_Focused);
+
+  CXFA_FFWidget* pParent = GetFFWidget(ToContentLayoutItem(GetParent()));
+  if (pParent && !pParent->IsAncestorOf(pOldWidget)) {
+    if (!pParent->OnSetFocus(pOldWidget))
+      return false;
+  }
 
   CXFA_EventParam eParam;
   eParam.m_eType = XFA_EVENT_Enter;
   eParam.m_pTarget = m_pNode.Get();
-  m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Enter, &eParam);
-  return true;
+  int32_t sts =
+      m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Enter, &eParam);
+  return sts == XFA_EVENTERROR_Success;
 }
 
 bool CXFA_FFWidget::OnKillFocus(CXFA_FFWidget* pNewWidget) {
