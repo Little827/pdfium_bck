@@ -402,6 +402,26 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRect(FPDF_PAGELINK link_page,
   return true;
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFLink_GetCharIndices(FPDF_PAGELINK link_page,
+                        int link_index,
+                        int* start_char_index,
+                        int* end_char_index) {
+  *start_char_index = -1;
+  *end_char_index = -1;
+  if (!link_page || (link_index < 0))
+    return false;
+
+  CPDF_LinkExtract* pageLink = CPDFLinkExtractFromFPDFPageLink(link_page);
+  *start_char_index = pageLink->GetStartCharIndex(link_index);
+  *end_char_index = pageLink->GetEndCharIndex(link_index);
+  if ((*start_char_index >= 0) && (*end_char_index >= 0))
+    return true;
+  *start_char_index = -1;
+  *end_char_index = -1;
+  return false;
+}
+
 FPDF_EXPORT void FPDF_CALLCONV FPDFLink_CloseWebLinks(FPDF_PAGELINK link_page) {
   delete CPDFLinkExtractFromFPDFPageLink(link_page);
 }

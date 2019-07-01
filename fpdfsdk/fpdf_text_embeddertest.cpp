@@ -430,6 +430,33 @@ TEST_F(FPDFTextEmbedderTest, WebLinks) {
   FPDF_PAGELINK pagelink = FPDFLink_LoadWebLinks(textpage);
   EXPECT_TRUE(pagelink);
 
+  // Test for char indices of a valid link
+  int start_char_index, end_char_index;
+  ASSERT_TRUE(
+      FPDFLink_GetCharIndices(pagelink, 0, &start_char_index, &end_char_index));
+  EXPECT_EQ(35, start_char_index);
+  EXPECT_EQ(58, end_char_index);
+
+  // Test for char indices of an invalid link
+  // |start_char_index| and |end_char_index| are expected to be -1 for an
+  // invalid link
+  ASSERT_FALSE(
+      FPDFLink_GetCharIndices(pagelink, 6, &start_char_index, &end_char_index));
+  EXPECT_EQ(-1, start_char_index);
+  EXPECT_EQ(-1, end_char_index);
+
+  // Test for pagelink = nullptr
+  ASSERT_FALSE(
+      FPDFLink_GetCharIndices(nullptr, 0, &start_char_index, &end_char_index));
+  EXPECT_EQ(-1, start_char_index);
+  EXPECT_EQ(-1, end_char_index);
+
+  // Test for link_index < 0
+  ASSERT_FALSE(FPDFLink_GetCharIndices(pagelink, -4, &start_char_index,
+                                       &end_char_index));
+  EXPECT_EQ(-1, start_char_index);
+  EXPECT_EQ(-1, end_char_index);
+
   // Query the number of characters required for each link (incl NUL).
   EXPECT_EQ(25, FPDFLink_GetURL(pagelink, 0, nullptr, 0));
   EXPECT_EQ(26, FPDFLink_GetURL(pagelink, 1, nullptr, 0));
