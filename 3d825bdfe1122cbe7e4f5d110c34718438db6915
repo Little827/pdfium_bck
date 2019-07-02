@@ -363,6 +363,24 @@
     },
     {
       "key": {
+        "uuid": "b56e6396_cf7012ca",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-07-02T02:26:59Z",
+      "side": 1,
+      "message": "We require the end index for accessibility purposes. While both end index and char count can be used to achieve the same goal. The idea was to have a single API and getting char indices for a link in a single API seems succinct. For retrieving the start index and char count in a single API the API name i could think of was FPDFLink_GetCharValues which didn\u0027t seem to convey what it would retrieve just by looking at it.",
+      "parentUuid": "80264d19_977a1c52",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b231f40b_4890eeb2",
         "filename": "public/fpdf_text.h",
         "patchSetId": 5
@@ -374,6 +392,24 @@
       "writtenOn": "2019-07-02T00:34:45Z",
       "side": 1,
       "message": "How about not touching the out parameters at all if this function returns false?",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d3122f_9f4df601",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-07-02T02:26:59Z",
+      "side": 1,
+      "message": "That seems to be the case for other APIs. I would make this consistent.",
+      "parentUuid": "b231f40b_4890eeb2",
       "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
