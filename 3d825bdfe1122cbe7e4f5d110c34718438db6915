@@ -1,0 +1,382 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e69379b8_e5608409",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "annotations",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ddba039_fd1e5630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "links",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "099b8c3d_3bb66a05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "PDFium",
+      "range": {
+        "startLine": 12,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736ac914_7703030c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "exposes",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41861fdf_24ba96b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "CL - Chromium-related projects uses Change List instead of Pull Request.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8919340_f34f86f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "accessibility",
+      "range": {
+        "startLine": 16,
+        "startChar": 42,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10abe053_400cf37f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "asking for the indicies for a valid link and an invalid link.",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d660d008_7a970e3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "omit this word",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd37347e_7cf867ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "This CL modifies",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3789eaa3_ea4736cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "unit test",
+      "range": {
+        "startLine": 19,
+        "startChar": 21,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3e6ca5_d94ff359",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "The proper metatag for this is:\n\nBug: pdfium:1334",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ccf5b44_58e7e9f7",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "over-parenthesized",
+      "range": {
+        "startLine": 412,
+        "startChar": 20,
+        "endLine": 412,
+        "endChar": 21
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d11203_a6871e8e",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "Let\u0027s consistently write new code using the Google C++ style. e.g. |page_link| here. Everything else here looks fine.",
+      "range": {
+        "startLine": 415,
+        "startChar": 20,
+        "endLine": 415,
+        "endChar": 28
+      },
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de213d40_ed30162f",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "Let\u0027s rearrange this function so the pattern looks like:\n\nif (...)\n  return false;\n\nif (...)\n  return false;\n\n// success!\nreturn true;",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c678229_baa0418d",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "This test is already really long. Can we avoid making it even longer by writing a separate test case for the new function?",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869f12ec_98f13fe3",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "1 declaration per line.",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80264d19_977a1c52",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "Can you explain why you chose to return the end char index, instead of the number of characters?",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b231f40b_4890eeb2",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:34:45Z",
+      "side": 1,
+      "message": "How about not touching the out parameters at all if this function returns false?",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
