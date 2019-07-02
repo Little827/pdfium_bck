@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "e3ad1761_3c67272d",
+        "filename": "xfa/fxfa/cxfa_ffcombobox.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T22:37:57Z",
+      "side": 1,
+      "message": "OK, as long as we are self-consistent then.",
+      "parentUuid": "08618208_c49197da",
+      "range": {
+        "startLine": 25,
+        "startChar": 55,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "b06c365abd690eb70ca0e6983ec088a91d3f1b7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba40a417_124fd285",
         "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
         "patchSetId": 2
@@ -172,6 +196,24 @@
       "side": 1,
       "message": "As it turns out, OnKillFocus might have killed, say pNewFocus if it is really clever when pNewFocus is an ancestor of pOldFocus, for instance.",
       "parentUuid": "ba40a417_124fd285",
+      "revId": "b06c365abd690eb70ca0e6983ec088a91d3f1b7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4575cd41_f7fc3f1f",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T22:37:57Z",
+      "side": 1,
+      "message": "So, always bail out on OnKillFocus() failing then, because funny business is happening?",
+      "parentUuid": "3cb75350_5d13a941",
       "revId": "b06c365abd690eb70ca0e6983ec088a91d3f1b7b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
