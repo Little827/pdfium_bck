@@ -171,15 +171,19 @@ bool CXFA_FFTextEdit::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 }
 
 bool CXFA_FFTextEdit::OnKillFocus(CXFA_FFWidget* pNewWidget) {
-  CFWL_MessageKillFocus ms(nullptr, m_pNormalWidget.get());
-  TranslateFWLMessage(&ms);
+  {
+    // Message can't outlive the OnKillFocus call.
+    CFWL_MessageKillFocus ms(nullptr, m_pNormalWidget.get());
+    TranslateFWLMessage(&ms);
+  }
   GetLayoutItem()->ClearStatusBits(XFA_WidgetStatus_Focused);
   SetEditScrollOffset();
   ProcessCommittedData();
   UpdateFWLData();
   InvalidateRect();
 
-  CXFA_FFWidget::OnKillFocus(pNewWidget);
+  if (!CXFA_FFWidget::OnKillFocus(pNewWidget))
+    return false;
 
   GetLayoutItem()->ClearStatusBits(XFA_WidgetStatus_TextEditValueChanged);
   return true;

@@ -416,14 +416,22 @@ bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 }
 
 bool CXFA_FFWidget::OnKillFocus(CXFA_FFWidget* pNewWidget) {
+  // OnKillFocus event may remove this widget.
+  ObservedPtr<CXFA_FFWidget> pWatched(this);
   GetLayoutItem()->ClearStatusBits(XFA_WidgetStatus_Focused);
   EventKillFocus();
+  if (!pWatched)
+    return false;
+
   if (!pNewWidget)
     return true;
 
   CXFA_FFWidget* pParent = GetFFWidget(ToContentLayoutItem(GetParent()));
   if (pParent && !pParent->IsAncestorOf(pNewWidget))
     pParent->OnKillFocus(pNewWidget);
+
+  if (!pWatched)
+    return true;
 
   return true;
 }
