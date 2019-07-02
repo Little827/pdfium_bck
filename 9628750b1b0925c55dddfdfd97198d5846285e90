@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7939d178_7dc87de3",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:09:36Z",
+      "side": 1,
+      "message": "Merge with next line and get rid of |fRet| ?",
+      "revId": "9628750b1b0925c55dddfdfd97198d5846285e90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa21d01_f332875f",
+        "filename": "xfa/fxfa/parser/xfa_utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T00:09:36Z",
+      "side": 1,
+      "message": "Flip the ordering, so this does checks in the same order as the parameters are declared?",
+      "revId": "9628750b1b0925c55dddfdfd97198d5846285e90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
