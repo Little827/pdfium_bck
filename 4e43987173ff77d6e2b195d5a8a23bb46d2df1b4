@@ -46,6 +46,30 @@
       "revId": "4e43987173ff77d6e2b195d5a8a23bb46d2df1b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f90deb_1f1f74d2",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-07-02T04:47:17Z",
+      "side": 1,
+      "message": "Modifying the API contract to make no changes to the indices in case of invalid page_link or link_index to make it consistent with other API contracts.",
+      "parentUuid": "f760df48_05a9a2bd",
+      "range": {
+        "startLine": 418,
+        "startChar": 9,
+        "endLine": 418,
+        "endChar": 60
+      },
+      "revId": "4e43987173ff77d6e2b195d5a8a23bb46d2df1b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
