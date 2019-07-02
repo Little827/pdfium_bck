@@ -243,6 +243,18 @@ void CPWL_EditImpl_Undo::AddItem(std::unique_ptr<IFX_Edit_UndoItem> pItem) {
   m_nCurUndoPos = m_UndoItemStack.size();
 }
 
+void CPWL_EditImpl_Undo::SkipCurrentUndoItem() {
+  if (CanUndo()) {
+    m_nCurUndoPos--;
+  }
+}
+
+void CPWL_EditImpl_Undo::SkipCurrentRedoItem() {
+  if (CanRedo()) {
+    m_nCurUndoPos++;
+  }
+}
+
 void CPWL_EditImpl_Undo::RemoveHeads() {
   ASSERT(m_UndoItemStack.size() > 1);
   m_UndoItemStack.pop_front();
@@ -299,6 +311,36 @@ void CFXEU_InsertReturn::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpNew);
   m_pEdit->Backspace(false, true);
+}
+
+CFXEU_ReplaceSel::CFXEU_ReplaceSel(CPWL_EditImpl* pEdit,
+                                   const fxcrt::WideString& word)
+    : m_pEdit(pEdit), m_Word(word) {
+  ASSERT(m_pEdit);
+}
+
+CFXEU_ReplaceSel::~CFXEU_ReplaceSel() {}
+
+void CFXEU_ReplaceSel::Redo() {
+  m_pEdit->SelectNone();
+  // skip the current item of the undo stack which is just a marker
+  // for the beginning of a replace action
+  m_pEdit->SkipCurrentRedoItem();
+  m_pEdit->Redo();  // Redo ClearSelection
+  m_pEdit->Redo();  // Redo InsertText
+}
+
+void CFXEU_ReplaceSel::Undo() {
+  m_pEdit->SelectNone();
+  // skip the current item of the undo stack which is just a marker
+  // for the end of a replace action
+  m_pEdit->SkipCurrentUndoItem();
+  m_pEdit->Undo();  // Undo InsertText
+  m_pEdit->Undo();  // Undo ClearSelection
+
+  // So far |m_nCurUndoPos| has already decreased by 3 (including 1 skipped
+  // index). |m_nCurUndoPos| will be substracted by 1 again in
+  // CPWL_EditImpl_Undo::Undo() after this function finishes.
 }
 
 CFXEU_Backspace::CFXEU_Backspace(CPWL_EditImpl* pEdit,
@@ -753,6 +795,13 @@ WideString CPWL_EditImpl::GetRangeText(const CPVT_WordRange& range) const {
 
 WideString CPWL_EditImpl::GetSelectedText() const {
   return GetRangeText(m_SelState.ConvertToWordRange());
+}
+
+void CPWL_EditImpl::ReplaceSelection(const WideString& text) {
+  AddEditUndoItem(pdfium::MakeUnique<CFXEU_ReplaceSel>(this, text));
+  ClearSelection();
+  InsertText(text, FX_CHARSET_Default);
+  AddEditUndoItem(pdfium::MakeUnique<CFXEU_ReplaceSel>(this, text));
 }
 
 int32_t CPWL_EditImpl::GetTotalLines() const {
@@ -1771,6 +1820,14 @@ bool CPWL_EditImpl::CanRedo() const {
   }
 
   return false;
+}
+
+void CPWL_EditImpl::SkipCurrentUndoItem() {
+  m_Undo.SkipCurrentUndoItem();
+}
+
+void CPWL_EditImpl::SkipCurrentRedoItem() {
+  m_Undo.SkipCurrentRedoItem();
 }
 
 void CPWL_EditImpl::EnableRefresh(bool bRefresh) {
