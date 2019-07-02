@@ -209,11 +209,13 @@ bool CPWL_EditImpl_Undo::CanUndo() const {
 }
 
 void CPWL_EditImpl_Undo::Undo() {
+  ASSERT(!m_bWorking);
   m_bWorking = true;
   if (CanUndo()) {
     m_UndoItemStack[m_nCurUndoPos - 1]->Undo();
     m_nCurUndoPos--;
   }
+  ASSERT(m_bWorking);
   m_bWorking = false;
 }
 
@@ -222,11 +224,13 @@ bool CPWL_EditImpl_Undo::CanRedo() const {
 }
 
 void CPWL_EditImpl_Undo::Redo() {
+  ASSERT(!m_bWorking);
   m_bWorking = true;
   if (CanRedo()) {
     m_UndoItemStack[m_nCurUndoPos]->Redo();
     m_nCurUndoPos++;
   }
+  ASSERT(m_bWorking);
   m_bWorking = false;
 }
 
