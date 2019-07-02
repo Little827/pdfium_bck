@@ -582,6 +582,42 @@ TEST_F(FPDFTextEmbedderTest, WebLinksAcrossLinesBug) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFTextEmbedderTest, WebLinksCharIndices) {
+  ASSERT_TRUE(OpenDocument("weblinks.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  FPDF_PAGELINK page_link = FPDFLink_LoadWebLinks(text_page);
+  EXPECT_TRUE(page_link);
+
+  // Test for char indices of a valid link
+  int start_char_index;
+  int end_char_index;
+  ASSERT_TRUE(FPDFLink_GetCharIndices(page_link, 0, &start_char_index,
+                                      &end_char_index));
+  EXPECT_EQ(35, start_char_index);
+  EXPECT_EQ(58, end_char_index);
+
+  // Test for char indices of an invalid link
+  ASSERT_FALSE(FPDFLink_GetCharIndices(page_link, 6, &start_char_index,
+                                       &end_char_index));
+
+  // Test for pagelink = nullptr
+  ASSERT_FALSE(
+      FPDFLink_GetCharIndices(nullptr, 0, &start_char_index, &end_char_index));
+
+  // Test for link_index < 0
+  ASSERT_FALSE(FPDFLink_GetCharIndices(page_link, -4, &start_char_index,
+                                       &end_char_index));
+
+  FPDFLink_CloseWebLinks(page_link);
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}
+
 TEST_F(FPDFTextEmbedderTest, GetFontSize) {
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);

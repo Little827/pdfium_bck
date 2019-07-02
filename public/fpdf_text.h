@@ -469,6 +469,25 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRect(FPDF_PAGELINK link_page,
                                                      double* right,
                                                      double* bottom);
 
+// Function: FPDFLink_GetCharIndices
+//          Fetch the start char and end char index for a link.
+// Parameters:
+//          link_page   -   Handle returned by FPDFLink_LoadWebLinks.
+//          link_index  -   Zero-based index for the link.
+//          start_char_index - pointer to int receiving the start char index
+//          end_char_index - pointer to int receiving the end char index
+// Return Value:
+//          On success, return TRUE and fill in |start_char_index| and
+//          |end_char_index|. if |link_page| is invalid or if |link_index| does
+//          not correspond to a valid link, then return FALSE and the out
+//          parameters remain unmodified
+//
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFLink_GetCharIndices(FPDF_PAGELINK link_page,
+                        int link_index,
+                        int* start_char_index,
+                        int* end_char_index);
+
 // Function: FPDFLink_CloseWebLinks
 //          Release resources used by weblink feature.
 // Parameters:
