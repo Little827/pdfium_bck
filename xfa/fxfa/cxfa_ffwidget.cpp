@@ -395,8 +395,13 @@ bool CXFA_FFWidget::OnRButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
 
 bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
   CXFA_FFWidget* pParent = GetFFWidget(ToContentLayoutItem(GetParent()));
-  if (pParent && !pParent->IsAncestorOf(pOldWidget))
+  if (pParent && !pParent->IsAncestorOf(pOldWidget)) {
+    // Parent OnSetFocus event may removed this widget.
+    ObservedPtr<CXFA_FFWidget> pWatched(this);
     pParent->OnSetFocus(pOldWidget);
+    if (!pWatched)
+      return false;
+  }
 
   GetLayoutItem()->SetStatusBits(XFA_WidgetStatus_Focused);
 
