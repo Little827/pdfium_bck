@@ -52,6 +52,24 @@
       "revId": "6caa1897fd2c681fdc720dfa92c2b93f8e2645aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adee0e46_7f7867cd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-02T00:12:44Z",
+      "side": 0,
+      "message": "When (fill_mode \u0026 FX_ZEROAREA_FILL)\u003d\u003dtrue, this doesn\u0027t guarantee pObject2Device\u003d\u003dnull. \n\nThe exception that pObject2Device !\u003d null will be horizontal/vertical line in the following format:\nstream\nq\n1 1 1 1 k\n100 100 m (point#1) \n100 100 l (point#2)\n200 100 l (point#3) \nh\nf\nQ\n\npoint#1 and #2 have to be exact the same and #3 has to have either the same x value or y value as point#1 and #2.\nUnder this special circumstance, completely skipping the (fill_mode \u0026 FX_ZEROAREA_FILL) check in agg will still result in the same rendering result.\n\nSo no matter pObject2Device is null or not, when completely skipping check for (fill_mode \u0026 FX_ZEROAREA_FILL), Agg ended up with the same rendering result.\n\nBut keeping the (fill_mode \u0026 FX_ZEROAREA_FILL) check does save some extra matrix calculation steps when pObject2Device\u003d\u003dnull, thus I haven\u0027t removed this check for Agg.",
+      "parentUuid": "9be2a98a_65bc171b",
+      "revId": "6caa1897fd2c681fdc720dfa92c2b93f8e2645aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
