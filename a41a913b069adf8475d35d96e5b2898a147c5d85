@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "082820e1_1cadfc91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T23:09:42Z",
+      "side": 1,
+      "message": "Add a blank line above to separate the two paragraphs.",
+      "revId": "a41a913b069adf8475d35d96e5b2898a147c5d85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99b9389_25949ba8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T23:09:42Z",
+      "side": 1,
+      "message": "Extra blank line here.",
+      "revId": "a41a913b069adf8475d35d96e5b2898a147c5d85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

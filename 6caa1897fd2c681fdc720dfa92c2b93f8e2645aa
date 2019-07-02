@@ -70,6 +70,24 @@
       "revId": "6caa1897fd2c681fdc720dfa92c2b93f8e2645aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0818d24_2a1ba202",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-02T23:09:42Z",
+      "side": 0,
+      "message": "I explored tweaking the AGG code to combine the FX_ZEROAREA_FILL code path and the non-FX_ZEROAREA_FILL code path. There ended up being very subtle differences. Since this code only affects drawing very thin lines, the differences are detectable by pdfium_diff, but are not really human visible. Given that, I guess ignoring FX_ZEROAREA_FILL is ok here.\n\nWe can revisit what to do about FX_ZEROAREA_FILL in the future when the AGG code goes away and nothing is checking for FX_ZEROAREA_FILL anymore.",
+      "parentUuid": "adee0e46_7f7867cd",
+      "revId": "6caa1897fd2c681fdc720dfa92c2b93f8e2645aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
