@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4c87fd6_63c4ec0d",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-07-02T17:25:37Z",
+      "side": 1,
+      "message": "Add validation to confirm out params are not modified.",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 614,
+        "endChar": 57
+      },
+      "revId": "dd29a3a9a00052a2c8098c3ee1adf7216862ed8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
