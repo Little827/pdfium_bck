@@ -16,6 +16,24 @@
       "revId": "51d5e7207fcde5395e1539389a6c473c6bfca22f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a737a56_71e77de8",
+        "filename": "xfa/fxfa/cxfa_ffwidget.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-02T18:19:07Z",
+      "side": 1,
+      "message": "Good catch. As it turns out, its not pOldWidget that disappears but rather |this|.",
+      "parentUuid": "594484f7_f34f1c43",
+      "revId": "51d5e7207fcde5395e1539389a6c473c6bfca22f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
