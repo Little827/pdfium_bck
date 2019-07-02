@@ -80,6 +80,8 @@ class CPWL_EditImpl_Undo {
   ~CPWL_EditImpl_Undo();
 
   void AddItem(std::unique_ptr<IFX_Edit_UndoItem> pItem);
+  void SkipCurrentUndoItem();
+  void SkipCurrentRedoItem();
   void Undo();
   void Redo();
   bool CanUndo() const;
@@ -140,6 +142,22 @@ class CFXEU_InsertReturn final : public IFX_Edit_UndoItem {
 
   CPVT_WordPlace m_wpOld;
   CPVT_WordPlace m_wpNew;
+};
+
+class CFXEU_ReplaceSel final : public IFX_Edit_UndoItem {
+ public:
+  CFXEU_ReplaceSel(CPWL_EditImpl* pEdit, const WideString& word);
+  ~CFXEU_ReplaceSel() override;
+
+  // IFX_Edit_UndoItem:
+  void Redo() override;
+  void Undo() override;
+
+ private:
+  UnownedPtr<CPWL_EditImpl> m_pEdit;
+  CPVT_WordPlace m_wpOld;
+  CPVT_WordPlace m_wpNew;
+  WideString m_Word;
 };
 
 class CFXEU_Backspace final : public IFX_Edit_UndoItem {
@@ -289,6 +307,7 @@ class CPWL_EditImpl {
   bool Delete();
   bool ClearSelection();
   bool InsertText(const WideString& sText, int32_t charset);
+  void ReplaceSelection(const WideString& text);
   bool Redo();
   bool Undo();
   CPVT_WordPlace WordIndexToWordPlace(int32_t index) const;
@@ -319,6 +338,8 @@ class CPWL_EditImpl {
   bool IsTextOverflow() const;
   bool CanUndo() const;
   bool CanRedo() const;
+  void SkipCurrentUndoItem();
+  void SkipCurrentRedoItem();
   CPVT_WordRange GetVisibleWordRange() const;
 
   bool Empty();
