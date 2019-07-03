@@ -985,16 +985,34 @@ gtStripContig(TIFFRGBAImage* img, uint32* raster, uint32 w, uint32 h)
 	fromskew = (w < imagewidth ? imagewidth - w : 0);
 	for (row = 0; row < h; row += nrow)
 	{
+		tmsize_t actual_row;
 		rowstoread = rowsperstrip - (row + img->row_offset) % rowsperstrip;
 		nrow = (row + rowstoread > h ? h - row : rowstoread);
 		nrowsub = nrow;
 		if ((nrowsub%subsamplingver)!=0)
 			nrowsub+=subsamplingver-nrowsub%subsamplingver;
+
+		if (row > TIFF_SSIZE_T_MAX - img->row_offset) {
+			ret = 0;
+			break;
+		}
+		actual_row = row + img->row_offset;
+		actual_row %= rowsperstrip;
+		if (actual_row > TIFF_SSIZE_T_MAX - nrowsub) {
+			ret = 0;
+			break;
+		}
+		actual_row += nrowsub;
+		if (actual_row > TIFF_SSIZE_T_MAX / scanline) {
+			ret = 0;
+			break;
+		}
+
 		if (_TIFFReadEncodedStripAndAllocBuffer(tif,
 		    TIFFComputeStrip(tif,row+img->row_offset, 0),
 		    (void**)(&buf),
                     maxstripsize,
-		    ((row + img->row_offset)%rowsperstrip + nrowsub) * scanline)==(tmsize_t)(-1)
+		    actual_row * scanline)==(tmsize_t)(-1)
 		    && (buf == NULL || img->stoponerr))
 		{
 			ret = 0;
