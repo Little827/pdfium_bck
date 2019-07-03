@@ -210,10 +210,27 @@ bool CPWL_EditImpl_Undo::CanUndo() const {
 
 void CPWL_EditImpl_Undo::Undo() {
   m_bWorking = true;
-  if (CanUndo()) {
-    m_UndoItemStack[m_nCurUndoPos - 1]->Undo();
+  int nUndoRemain = 1;
+  bool bIsInWrapper = false;
+  while (CanUndo() && nUndoRemain > 0) {
+    int tempUndoRemain = m_UndoItemStack[m_nCurUndoPos - 1]->Undo();
+    // Undo() only returns a positive integer when the undo item is the end of a
+    // wrapper(for example, the end of a ReplaceSelection action). We need to
+    // make sure that when processing undo items inside a wrapper, no more
+    // wrapper shows up inside the existing one.
+    ASSERT(!bIsInWrapper || tempUndoRemain == 0);
+
     m_nCurUndoPos--;
+    if (tempUndoRemain > 0) {
+      // Mark the beginning of a wrapper and set the number of undo tasks to be
+      // excuted
+      bIsInWrapper = true;
+      nUndoRemain = tempUndoRemain;
+    } else {
+      nUndoRemain--;
+    }
   }
+  ASSERT(nUndoRemain == 0);
   m_bWorking = false;
 }
 
@@ -223,10 +240,20 @@ bool CPWL_EditImpl_Undo::CanRedo() const {
 
 void CPWL_EditImpl_Undo::Redo() {
   m_bWorking = true;
-  if (CanRedo()) {
-    m_UndoItemStack[m_nCurUndoPos]->Redo();
+  int nRedoRemain = 1;
+  bool bIsInWrapper = false;
+  while (CanRedo() && nRedoRemain > 0) {
+    int tempRedoRemain = m_UndoItemStack[m_nCurUndoPos]->Redo();
+    ASSERT(!bIsInWrapper || tempRedoRemain == 0);
     m_nCurUndoPos++;
+    if (tempRedoRemain > 0) {
+      bIsInWrapper = true;
+      nRedoRemain = tempRedoRemain;
+    } else {
+      nRedoRemain--;
+    }
   }
+  ASSERT(nRedoRemain == 0);
   m_bWorking = false;
 }
 
@@ -268,16 +295,18 @@ CFXEU_InsertWord::CFXEU_InsertWord(CPWL_EditImpl* pEdit,
 
 CFXEU_InsertWord::~CFXEU_InsertWord() {}
 
-void CFXEU_InsertWord::Redo() {
+int CFXEU_InsertWord::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpOld);
   m_pEdit->InsertWord(m_Word, m_nCharset, false, true);
+  return 0;
 }
 
-void CFXEU_InsertWord::Undo() {
+int CFXEU_InsertWord::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpNew);
   m_pEdit->Backspace(false, true);
+  return 0;
 }
 
 CFXEU_InsertReturn::CFXEU_InsertReturn(CPWL_EditImpl* pEdit,
@@ -289,16 +318,40 @@ CFXEU_InsertReturn::CFXEU_InsertReturn(CPWL_EditImpl* pEdit,
 
 CFXEU_InsertReturn::~CFXEU_InsertReturn() {}
 
-void CFXEU_InsertReturn::Redo() {
+int CFXEU_InsertReturn::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpOld);
   m_pEdit->InsertReturn(false, true);
+  return 0;
 }
 
-void CFXEU_InsertReturn::Undo() {
+int CFXEU_InsertReturn::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpNew);
   m_pEdit->Backspace(false, true);
+  return 0;
+}
+
+CFXEU_ReplaceSel::CFXEU_ReplaceSel(CPWL_EditImpl* pEdit, bool bIsEnd)
+    : m_pEdit(pEdit), m_bEnd(bIsEnd) {
+  ASSERT(m_pEdit);
+}
+
+CFXEU_ReplaceSel::~CFXEU_ReplaceSel() {}
+
+int CFXEU_ReplaceSel::Redo() {
+  m_pEdit->SelectNone();
+  if (!IsEnd())
+    return 3;  // Redo ClearSelection, InsertText and ReplaceSel's end wrapper
+  return 0;
+}
+
+int CFXEU_ReplaceSel::Undo() {
+  m_pEdit->SelectNone();
+  if (IsEnd())
+    return 3;  // Undo InsertText, ClearSelection and ReplaceSel's beginning
+               // wrapper
+  return 0;
 }
 
 CFXEU_Backspace::CFXEU_Backspace(CPWL_EditImpl* pEdit,
@@ -316,19 +369,21 @@ CFXEU_Backspace::CFXEU_Backspace(CPWL_EditImpl* pEdit,
 
 CFXEU_Backspace::~CFXEU_Backspace() {}
 
-void CFXEU_Backspace::Redo() {
+int CFXEU_Backspace::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpOld);
   m_pEdit->Backspace(false, true);
+  return 0;
 }
 
-void CFXEU_Backspace::Undo() {
+int CFXEU_Backspace::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpNew);
   if (m_wpNew.nSecIndex != m_wpOld.nSecIndex)
     m_pEdit->InsertReturn(false, true);
   else
     m_pEdit->InsertWord(m_Word, m_nCharset, false, true);
+  return 0;
 }
 
 CFXEU_Delete::CFXEU_Delete(CPWL_EditImpl* pEdit,
@@ -348,19 +403,21 @@ CFXEU_Delete::CFXEU_Delete(CPWL_EditImpl* pEdit,
 
 CFXEU_Delete::~CFXEU_Delete() {}
 
-void CFXEU_Delete::Redo() {
+int CFXEU_Delete::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpOld);
   m_pEdit->Delete(false, true);
+  return 0;
 }
 
-void CFXEU_Delete::Undo() {
+int CFXEU_Delete::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpNew);
   if (m_bSecEnd)
     m_pEdit->InsertReturn(false, true);
   else
     m_pEdit->InsertWord(m_Word, m_nCharset, false, true);
+  return 0;
 }
 
 CFXEU_Clear::CFXEU_Clear(CPWL_EditImpl* pEdit,
@@ -372,17 +429,19 @@ CFXEU_Clear::CFXEU_Clear(CPWL_EditImpl* pEdit,
 
 CFXEU_Clear::~CFXEU_Clear() {}
 
-void CFXEU_Clear::Redo() {
+int CFXEU_Clear::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetSelection(m_wrSel.BeginPos, m_wrSel.EndPos);
   m_pEdit->Clear(false, true);
+  return 0;
 }
 
-void CFXEU_Clear::Undo() {
+int CFXEU_Clear::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wrSel.BeginPos);
   m_pEdit->InsertText(m_swText, FX_CHARSET_Default, false, true);
   m_pEdit->SetSelection(m_wrSel.BeginPos, m_wrSel.EndPos);
+  return 0;
 }
 
 CFXEU_InsertText::CFXEU_InsertText(CPWL_EditImpl* pEdit,
@@ -400,16 +459,18 @@ CFXEU_InsertText::CFXEU_InsertText(CPWL_EditImpl* pEdit,
 
 CFXEU_InsertText::~CFXEU_InsertText() {}
 
-void CFXEU_InsertText::Redo() {
+int CFXEU_InsertText::Redo() {
   m_pEdit->SelectNone();
   m_pEdit->SetCaret(m_wpOld);
   m_pEdit->InsertText(m_swText, m_nCharset, false, true);
+  return 0;
 }
 
-void CFXEU_InsertText::Undo() {
+int CFXEU_InsertText::Undo() {
   m_pEdit->SelectNone();
   m_pEdit->SetSelection(m_wpOld, m_wpNew);
   m_pEdit->Clear(false, true);
+  return 0;
 }
 
 // static
@@ -753,6 +814,13 @@ WideString CPWL_EditImpl::GetRangeText(const CPVT_WordRange& range) const {
 
 WideString CPWL_EditImpl::GetSelectedText() const {
   return GetRangeText(m_SelState.ConvertToWordRange());
+}
+
+void CPWL_EditImpl::ReplaceSelection(const WideString& text) {
+  AddEditUndoItem(pdfium::MakeUnique<CFXEU_ReplaceSel>(this, false));
+  ClearSelection();
+  InsertText(text, FX_CHARSET_Default);
+  AddEditUndoItem(pdfium::MakeUnique<CFXEU_ReplaceSel>(this, true));
 }
 
 int32_t CPWL_EditImpl::GetTotalLines() const {
