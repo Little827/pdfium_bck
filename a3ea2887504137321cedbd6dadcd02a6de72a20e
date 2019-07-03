@@ -93,6 +93,78 @@
       "revId": "a3ea2887504137321cedbd6dadcd02a6de72a20e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed2235e_612e9dbd",
+        "filename": "third_party/libtiff/tif_getimage.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T22:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71134591_a2814358",
+      "range": {
+        "startLine": 965,
+        "startChar": 23,
+        "endLine": 965,
+        "endChar": 31
+      },
+      "revId": "a3ea2887504137321cedbd6dadcd02a6de72a20e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a827fe0_a823b6c9",
+        "filename": "third_party/libtiff/tif_getimage.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T22:59:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24614427_88c2e3f9",
+      "range": {
+        "startLine": 965,
+        "startChar": 51,
+        "endLine": 965,
+        "endChar": 52
+      },
+      "revId": "a3ea2887504137321cedbd6dadcd02a6de72a20e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3158861e_2a7125bd",
+        "filename": "third_party/libtiff/tif_getimage.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T22:59:43Z",
+      "side": 1,
+      "message": "Done. Weird that this didn\u0027t make MSVC fail.",
+      "parentUuid": "322bbe8d_c77fa24e",
+      "range": {
+        "startLine": 965,
+        "startChar": 10,
+        "endLine": 965,
+        "endChar": 20
+      },
+      "revId": "a3ea2887504137321cedbd6dadcd02a6de72a20e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
