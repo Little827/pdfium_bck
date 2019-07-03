@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3a3b5e3_de7f7947",
+        "filename": "core/fxcrt/observed_ptr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:21:25Z",
+      "side": 1,
+      "message": "in turn, this may be too strong if we are to be more tolerant of re-entrancy.",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "ff157e4c93639e5dc33e61ed2cff3b17cbfcba51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
