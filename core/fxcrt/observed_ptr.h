@@ -18,7 +18,7 @@ class Observable {
   class ObserverIface {
    public:
     virtual ~ObserverIface() = default;
-    virtual void OnObservableDestroyed() = 0;
+    virtual void OnObservableDestroyed(Observable* that) = 0;
   };
 
   Observable();
@@ -29,13 +29,15 @@ class Observable {
     m_Observers.insert(pObserver);
   }
   void RemoveObserver(ObserverIface* pObserver) {
-    ASSERT(pdfium::ContainsKey(m_Observers, pObserver));
     m_Observers.erase(pObserver);
   }
   void NotifyObservers() {
-    for (auto* pObserver : m_Observers)
-      pObserver->OnObservableDestroyed();
-    m_Observers.clear();
+    while (!m_Observers.empty()) {
+      auto iter = m_Observers.begin();
+      auto* pObserver = *iter;
+      m_Observers.erase(iter);
+      pObserver->OnObservableDestroyed(this);
+    }
   }
   Observable& operator=(const Observable& that) = delete;
 
@@ -67,8 +69,8 @@ class ObservedPtr final : public Observable::ObserverIface {
     if (m_pObservable)
       m_pObservable->AddObserver(this);
   }
-  void OnObservableDestroyed() override {
-    ASSERT(m_pObservable);
+  void OnObservableDestroyed(Observable* that) override {
+    ASSERT(m_pObservable == that);
     m_pObservable = nullptr;
   }
   bool HasObservable() const { return !!m_pObservable; }
