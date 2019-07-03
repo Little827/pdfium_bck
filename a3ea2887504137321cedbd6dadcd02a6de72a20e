@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1562182575 -0700\nnonce AC6AUtMGJpH2OPFx3cN9KpbiqAzIFjTy4FVEp7nx04hgUSZyxNQEKGd96xSOkxAzEjelNvTU9JTw\n\n0000000000000000000000000000000000000000 a3ea2887504137321cedbd6dadcd02a6de72a20e refs/for/refs/heads/master%notify\u003dNONE,m\u003dmsvc,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0dA68ACgkQqzYtYVpm\n/XsWvQgAvEjL2Uue8CNzQA0iAjofQP3FO2Dce2Nsvqc7yZh0xguzBrtNTZJuPDHO\nsEwCrARiV7u4wVrvkuLuIwY//INKKihxnhNrzk2rDswB5OZbUBD5EJUkZ+iKw+Dv\nn0dUT+f5f2pPidRk+jBTWkwCjEKjA+solej1ICenJ37dVu+/dx+2e4XS1oNwfnuC\n/vptBeM7MC4XnkDey5glfzsDhjcibnbr1Y2DyVoENFZCSzbgVHUmTZjxxxvCRXJJ\nOKqIHE6DO59mQQJJmu/550zL0zu/dl8wfeSPCxT/FDALlSs8zAqHfSnLneIHyr5s\nEtaQMBuASEUP+ia10/RD2OTI5XMBHA\u003d\u003d\n\u003d9pGu\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "24614427_88c2e3f9",
+        "filename": "third_party/libtiff/tif_getimage.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:08:03Z",
+      "side": 1,
+      "message": "h, on the other hand, is unsigned and we need a cast of some sort.",
+      "range": {
+        "startLine": 965,
+        "startChar": 51,
+        "endLine": 965,
+        "endChar": 52
+      },
+      "revId": "a3ea2887504137321cedbd6dadcd02a6de72a20e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "322bbe8d_c77fa24e",
+        "filename": "third_party/libtiff/tif_getimage.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:08:03Z",
+      "side": 1,
+      "message": "I think row_offset is signed so we have a signed vs signed comparison.",
+      "range": {
+        "startLine": 965,
+        "startChar": 10,
+        "endLine": 965,
+        "endChar": 20
+      },
+      "revId": "a3ea2887504137321cedbd6dadcd02a6de72a20e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0884c6f_c7b6b61d",
+        "filename": "third_party/libtiff/tif_getimage.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:08:03Z",
+      "side": 1,
+      "message": "this cast feels wrong on 64bits, we may happen to have nothing but 1s in the low word, but there\u0027s no guarantee that this will be for all ports. I think you want to cast to (size_t) which is known to be unsigned, and we hope that our SSIZE_T definitions are such that each fits inside a regular size_t (for non-negative values).",
+      "range": {
+        "startLine": 965,
+        "startChar": 23,
+        "endLine": 965,
+        "endChar": 31
+      },
+      "revId": "a3ea2887504137321cedbd6dadcd02a6de72a20e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
