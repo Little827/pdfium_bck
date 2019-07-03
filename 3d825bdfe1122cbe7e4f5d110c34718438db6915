@@ -741,6 +741,24 @@
     },
     {
       "key": {
+        "uuid": "ee6e3ad8_86759e95",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T00:52:18Z",
+      "side": 1,
+      "message": "It sounds like this is just a naming problem then? How about FPDFLink_GetTextRange()?\n\nThe reasons I prefer not to have the end index are:\n- Start index + count is more clear. With start index + end index, it could mean [start index, end_index) or [start index, end_index]. STL does the former, while FPDFLink_GetCharIndices() does the latter.\n- It is already implemented internally as start index and char count.\n- A few other PDFium APIs take start index + count. e.g. FPDFText_GetText() and FPDFText_CountRects(). I don\u0027t see any APIs that take an end index. In Chromium, chrome_pdf::PDFiumRange also uses index + count.",
+      "parentUuid": "b56e6396_cf7012ca",
+      "revId": "3d825bdfe1122cbe7e4f5d110c34718438db6915",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b231f40b_4890eeb2",
         "filename": "public/fpdf_text.h",
         "patchSetId": 5
