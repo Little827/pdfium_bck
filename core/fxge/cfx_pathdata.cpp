@@ -372,6 +372,7 @@ bool CFX_PathData::GetZeroAreaPath(const CFX_Matrix* pMatrix,
             ((m_Points[i].m_Point.y - m_Points[i - 1].m_Point.y) *
                  (m_Points[i].m_Point.y - m_Points[next].m_Point.y) >
              0)) {
+          // Two overlapping paths formed a vertical line
           int pre = i;
           if (fabs(m_Points[i].m_Point.y - m_Points[i - 1].m_Point.y) <
               fabs(m_Points[i].m_Point.y - m_Points[next].m_Point.y)) {
@@ -387,6 +388,7 @@ bool CFX_PathData::GetZeroAreaPath(const CFX_Matrix* pMatrix,
                    ((m_Points[i].m_Point.x - m_Points[i - 1].m_Point.x) *
                         (m_Points[i].m_Point.x - m_Points[next].m_Point.x) >
                     0)) {
+          // Two overlapping paths formed a horizontal line
           int pre = i;
           if (fabs(m_Points[i].m_Point.x - m_Points[i - 1].m_Point.x) <
               fabs(m_Points[i].m_Point.x - m_Points[next].m_Point.x)) {
@@ -397,6 +399,22 @@ bool CFX_PathData::GetZeroAreaPath(const CFX_Matrix* pMatrix,
           NewPath->AppendPoint(m_Points[pre].m_Point, FXPT_TYPE::MoveTo, false);
           NewPath->AppendPoint(m_Points[next].m_Point, FXPT_TYPE::LineTo,
                                false);
+        } else if ((m_Points[i - 1].m_Point.y - m_Points[i].m_Point.y) *
+                       (m_Points[next].m_Point.x - m_Points[i].m_Point.x) ==
+                   (m_Points[next].m_Point.y - m_Points[i].m_Point.y) *
+                       (m_Points[i - 1].m_Point.x - m_Points[i].m_Point.x)) {
+          // Two overlapping paths formed a diagonal line
+          int pre = i;
+          if (fabs(m_Points[i].m_Point.x - m_Points[i - 1].m_Point.x) <
+              fabs(m_Points[i].m_Point.x - m_Points[next].m_Point.x)) {
+            pre--;
+            next--;
+          }
+
+          NewPath->AppendPoint(m_Points[pre].m_Point, FXPT_TYPE::MoveTo, false);
+          NewPath->AppendPoint(m_Points[next].m_Point, FXPT_TYPE::LineTo,
+                               false);
+
         } else if (m_Points[i - 1].m_Type == FXPT_TYPE::MoveTo &&
                    m_Points[next].m_Type == FXPT_TYPE::LineTo &&
                    m_Points[i - 1].m_Point == m_Points[next].m_Point &&
