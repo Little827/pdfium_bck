@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0c2e418_43245905",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-03T20:20:07Z",
+      "side": 1,
+      "message": "I added an ASSERT in the new patch to make sure once when we start processing a series of undo items inside a wrapper, no more wrapper should show up inside the current one. This should prevent the case of [5,2,0,0,0,0...] from happening.",
+      "parentUuid": "a5aaebf2_ee55adc1",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e582590_09839409",
         "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
         "patchSetId": 14
@@ -33,6 +51,24 @@
       "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04768688_d4129e72",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-03T20:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e582590_09839409",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1a680641_17c87323",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-03T20:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8dc9696_a0d7d698",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "151bce27_9a681410",
         "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
         "patchSetId": 14
@@ -64,6 +118,24 @@
       "writtenOn": "2019-07-03T01:13:06Z",
       "side": 1,
       "message": "Another way to do this is to have two separate, and even simpler classes: CFXEU_ReplaceSelectionBegin and CFXEU_ReplaceSelectionEnd. Not sure which is easier. WDYT?",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0796030e_ec6bf280",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-03T20:20:07Z",
+      "side": 1,
+      "message": "Both ways are easy to implement. \nFor debugging purpose in the future, checking the value of |m_bEnd| is as easy as checking simply the name of the class is |CFXEU_ReplaceSelBegin| or |CFXEU_ReplaceSelEnd|. But creating two separate classes requires adding redundant methods to both classes.",
+      "parentUuid": "151bce27_9a681410",
       "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "e45405b2_03d72f5d",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-03T20:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d68e2028_609a76cf",
+      "range": {
+        "startLine": 147,
+        "startChar": 70,
+        "endLine": 147,
+        "endChar": 75
+      },
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d00096ff_bcca7005",
         "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
         "patchSetId": 14
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "35b4d55e_967157d3",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-03T20:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00096ff_bcca7005",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8275830a_29a11a37",
         "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
         "patchSetId": 14
@@ -124,6 +238,24 @@
       "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0001108a_51f4d83e",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-03T20:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8275830a_29a11a37",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
