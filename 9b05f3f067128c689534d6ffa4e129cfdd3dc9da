@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d03f372_0b150591",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T20:40:48Z",
+      "side": 1,
+      "message": "If you flip the logic, you\u0027ll have more room to write comments. e.g.\n\nif (!IsEnd())\n  return 0;\n\n// Comments here.\nreturn 3;",
+      "revId": "9b05f3f067128c689534d6ffa4e129cfdd3dc9da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90e5f16f_0107d3df",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T20:40:48Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 102,
+        "startChar": 65,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "9b05f3f067128c689534d6ffa4e129cfdd3dc9da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8659e68f_4e14179d",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T20:40:48Z",
+      "side": 1,
+      "message": "These are pure virtual functions, so there\u0027s no default implementation. It may be clearer to say \"Implementations should return 0 by default.\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 15,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "9b05f3f067128c689534d6ffa4e129cfdd3dc9da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec91540b_00ef110a",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T20:40:48Z",
+      "side": 1,
+      "message": "nit: Add a blank line below to separate methods from member variables.",
+      "revId": "9b05f3f067128c689534d6ffa4e129cfdd3dc9da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e77033_741c9030",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T20:40:48Z",
+      "side": 1,
+      "message": "Mark this const.",
+      "revId": "9b05f3f067128c689534d6ffa4e129cfdd3dc9da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
