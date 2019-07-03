@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c594e01f_a319523e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T16:39:48Z",
+      "side": 1,
+      "message": "Please update this sentence to reflect the updated API.",
+      "range": {
+        "startLine": 19,
+        "startChar": 57,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "65d88519bdd0bd1c513709842caf029201e96f0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d71e5d_22a60ebf",
+        "filename": "core/fpdftext/cpdf_linkextract.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T16:39:48Z",
+      "side": 1,
+      "message": "Flip the comparison, so the function can return early for out of bound indices. Like line 314 above.",
+      "revId": "65d88519bdd0bd1c513709842caf029201e96f0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347ece78_9bf4dc09",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T16:39:48Z",
+      "side": 1,
+      "message": "Can you prepend spaces, so all the dashes line up? Like in the FPDFLink_GetRect() documentation above.",
+      "range": {
+        "startLine": 476,
+        "startChar": 24,
+        "endLine": 476,
+        "endChar": 25
+      },
+      "revId": "65d88519bdd0bd1c513709842caf029201e96f0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a02118_b4c12331",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T16:39:48Z",
+      "side": 1,
+      "message": "Add a period after.",
+      "range": {
+        "startLine": 484,
+        "startChar": 30,
+        "endLine": 484,
+        "endChar": 40
+      },
+      "revId": "65d88519bdd0bd1c513709842caf029201e96f0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
