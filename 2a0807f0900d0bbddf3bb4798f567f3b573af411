@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a5aaebf2_ee55adc1",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T01:26:30Z",
+      "side": 1,
+      "message": "If one item on the undo stack says to do 5 more undos, and the first of those 5 says to do 2 more undos, I would expect there to be a total of 8 undos. e.g. The Undo() return values are [5 2 0 0 0 0 0 0] on the stack. With this while-loop, it would only performce 4 undos.\n\nTo get the 8 undos, you would need something like:\n\nint nUndoRemain \u003d 1;\nwhile (CanUndo() \u0026\u0026 nUndoRemain \u003e 0) {\n  nUndoRemain +\u003d m_UndoItemStack[m_nCurUndoPos - 1]-\u003eUndo();\n  m_nCurUndoPos--;\n  nUndoRemain--;\n}",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e582590_09839409",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T01:26:30Z",
+      "side": 1,
+      "message": "ASSERT(nUndoRemain \u003d\u003d 0) once the while-loop exits. If this assert fails, then something went wrong.",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8dc9696_a0d7d698",
         "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
         "patchSetId": 14
