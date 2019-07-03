@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbd66e84_dd21beca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "559a6b18_c49018a3",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3763897_f34d1813",
         "filename": "core/fpdfapi/page/cpdf_color.h",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2019-07-03T21:28:03Z",
       "side": 1,
       "message": "CPDF_ColorState::SetPattern(), CPDF_ColorState::SetFillPattern() and CPDF_ColorState::SetStrokePattern() probably all need this change as well.",
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0656aea_b4ed0746",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:56:06Z",
+      "side": 1,
+      "message": "Probably best just to pass by ref and do the copy at the bottom rather than trying to find all the callers. If we wanted to be really clever, we\u0027d pass a span, which makes one call from the unittest easier.",
+      "parentUuid": "c3763897_f34d1813",
       "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "dd7c34f6_76b2f8f8",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:56:06Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "342b10ac_4a680a83",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae758ea_07a700d9",
         "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
         "patchSetId": 8
@@ -76,6 +142,24 @@
       "writtenOn": "2019-07-03T21:28:03Z",
       "side": 1,
       "message": "Not needed since line 172-173 is related to line 175?",
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf778d6_dd7e965c",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:56:06Z",
+      "side": 1,
+      "message": "m_FontMap still not smart pointers, last counted object to be removed next.",
+      "parentUuid": "bae758ea_07a700d9",
       "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "c8e68842_e9bd66d0",
+        "filename": "core/fpdfapi/page/cpdf_pattern.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4204c48a_78e7cd72",
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6ff4e94_9241e94e",
         "filename": "core/fpdfapi/page/cpdf_shadingobject.h",
         "patchSetId": 8
@@ -113,6 +215,24 @@
       "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7243a84_5ccf0386",
+        "filename": "core/fpdfapi/page/cpdf_shadingobject.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6ff4e94_9241e94e",
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
