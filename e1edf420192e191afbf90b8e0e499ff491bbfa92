@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31e2c320_341fcaa3",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T22:09:46Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "e1edf420192e191afbf90b8e0e499ff491bbfa92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7052386e_ca01f799",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T22:09:46Z",
+      "side": 1,
+      "message": "May be worth mentioning this is used for non-patterns, and |m_pValue| is used for patterns. Or \nmaybe name them |m_NonPatternBuffer| and |m_pPatternValue| ?",
+      "revId": "e1edf420192e191afbf90b8e0e499ff491bbfa92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
