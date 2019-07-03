@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8dc9696_a0d7d698",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T01:13:06Z",
+      "side": 1,
+      "message": "Let\u0027s document what the return values are.",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151bce27_9a681410",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T01:13:06Z",
+      "side": 1,
+      "message": "Another way to do this is to have two separate, and even simpler classes: CFXEU_ReplaceSelectionBegin and CFXEU_ReplaceSelectionEnd. Not sure which is easier. WDYT?",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68e2028_609a76cf",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T01:13:06Z",
+      "side": 1,
+      "message": "If you are going to go with Hungarian notation, then this should be |bIsEnd|.",
+      "range": {
+        "startLine": 147,
+        "startChar": 70,
+        "endLine": 147,
+        "endChar": 75
+      },
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00096ff_bcca7005",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T01:13:06Z",
+      "side": 1,
+      "message": "This can be private, since there are no external callers. It can also be const, since it does not modify anything. It can also be inlined here, because it is a trivial getter.",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8275830a_29a11a37",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T01:13:06Z",
+      "side": 1,
+      "message": "Does this class still need all these member variables?",
+      "revId": "2a0807f0900d0bbddf3bb4798f567f3b573af411",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
