@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fb93e5c_fbdd7617",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-03T20:37:03Z",
+      "side": 0,
+      "message": "Note: Now RetainPtr, no cycles, all is good.",
+      "range": {
+        "startLine": 188,
+        "startChar": 70,
+        "endLine": 188,
+        "endChar": 77
+      },
+      "revId": "815726bc4c6997a9054ad124b2b6b82e45008ac5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
