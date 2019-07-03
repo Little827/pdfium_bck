@@ -164,11 +164,7 @@ void CPDF_ToUnicodeMap::Load(const CPDF_Stream* pStream) {
         }
         high = parser.GetWord();
         uint32_t lowcode = StringToCode(low.AsStringView());
-        uint32_t highcode =
-            (lowcode & 0xffffff00) | (StringToCode(high.AsStringView()) & 0xff);
-        if (highcode == (uint32_t)-1) {
-          break;
-        }
+        uint32_t highcode = StringToCode(high.AsStringView());
         ByteString start(parser.GetWord());
         if (start == "[") {
           for (uint32_t code = lowcode; code <= highcode; code++) {
