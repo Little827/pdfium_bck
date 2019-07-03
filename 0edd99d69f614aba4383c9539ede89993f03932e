@@ -25,6 +25,63 @@
     },
     {
       "key": {
+        "uuid": "c3763897_f34d1813",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T21:28:03Z",
+      "side": 1,
+      "message": "CPDF_ColorState::SetPattern(), CPDF_ColorState::SetFillPattern() and CPDF_ColorState::SetStrokePattern() probably all need this change as well.",
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342b10ac_4a680a83",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T21:28:03Z",
+      "side": 1,
+      "message": "Not sure if this is the case anymore, since SetColorSpace() now has a m_Buffer.clear() call.",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae758ea_07a700d9",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-03T21:28:03Z",
+      "side": 1,
+      "message": "Not needed since line 172-173 is related to line 175?",
+      "revId": "0edd99d69f614aba4383c9539ede89993f03932e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4204c48a_78e7cd72",
         "filename": "core/fpdfapi/page/cpdf_pattern.h",
         "patchSetId": 8
