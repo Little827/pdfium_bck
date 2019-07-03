@@ -18,7 +18,7 @@ class Observable {
   class ObserverIface {
    public:
     virtual ~ObserverIface() = default;
-    virtual void OnObservableDestroyed() = 0;
+    virtual void OnObservableDestroyed(Observable* that) = 0;
   };
 
   Observable();
@@ -34,7 +34,7 @@ class Observable {
   }
   void NotifyObservers() {
     for (auto* pObserver : m_Observers)
-      pObserver->OnObservableDestroyed();
+      pObserver->OnObservableDestroyed(this);
     m_Observers.clear();
   }
   Observable& operator=(const Observable& that) = delete;
@@ -67,8 +67,8 @@ class ObservedPtr final : public Observable::ObserverIface {
     if (m_pObservable)
       m_pObservable->AddObserver(this);
   }
-  void OnObservableDestroyed() override {
-    ASSERT(m_pObservable);
+  void OnObservableDestroyed(Observable* that) override {
+    ASSERT(m_pObservable == that);
     m_pObservable = nullptr;
   }
   bool HasObservable() const { return !!m_pObservable; }
