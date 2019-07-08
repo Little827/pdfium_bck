@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48f740ec_eb5f29f4",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T20:33:13Z",
+      "side": 1,
+      "message": "Add a space.",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "69825980e5f7bdaab7121637ccc677424126306e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09798c3a_f566fca0",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T20:33:13Z",
+      "side": 1,
+      "message": "Make this object 4 0? i.e. No gaps for object numbers.",
+      "revId": "69825980e5f7bdaab7121637ccc677424126306e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc3aeda_205531c7",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T20:33:13Z",
+      "side": 1,
+      "message": "Can object 6 0 be inlined here?",
+      "revId": "69825980e5f7bdaab7121637ccc677424126306e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b81fc3e_e5839c92",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T20:33:13Z",
+      "side": 1,
+      "message": "Are these needed?",
+      "revId": "69825980e5f7bdaab7121637ccc677424126306e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44707465_455a5b73",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T20:33:13Z",
+      "side": 1,
+      "message": "object 7 0",
+      "revId": "69825980e5f7bdaab7121637ccc677424126306e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0bbfdd_f3678034",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T20:33:13Z",
+      "side": 1,
+      "message": "object 8 0",
+      "revId": "69825980e5f7bdaab7121637ccc677424126306e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
