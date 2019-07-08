@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f63b7de_e42d4c31",
+        "filename": "testing/resources/bug_981347.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-08T23:25:15Z",
+      "side": 1,
+      "message": "Yup, /Cs1p on line 32, but Cs1 itself can be removed.",
+      "parentUuid": "b366f80e_21cb199d",
+      "revId": "0854ad3e79ff8e805c34dbebfbef0885413c6501",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b143e964_b7ef5f8c",
         "filename": "testing/resources/bug_981347.in",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-08T23:14:19Z",
       "side": 1,
       "message": "And if this dictionary is needed.",
+      "revId": "0854ad3e79ff8e805c34dbebfbef0885413c6501",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf97fca_67607d69",
+        "filename": "testing/resources/bug_981347.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-08T23:25:15Z",
+      "side": 1,
+      "message": "Not needed, and the stream can be empty.",
+      "parentUuid": "b143e964_b7ef5f8c",
       "revId": "0854ad3e79ff8e805c34dbebfbef0885413c6501",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
