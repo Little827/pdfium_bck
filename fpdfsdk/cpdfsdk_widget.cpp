@@ -176,8 +176,8 @@ static XFA_EVENTTYPE GetXFAEventType(CPDF_AAction::AActionType eAAT,
 }
 
 bool CPDFSDK_Widget::HasXFAAAction(PDFSDK_XFAAActionType eXFAAAT) const {
-  CXFA_FFWidget* hWidget = GetMixXFAWidget();
-  if (!hWidget)
+  ObservedPtr<CXFA_FFWidget> pWidget(GetMixXFAWidget());
+  if (!pWidget)
     return false;
 
   CXFA_FFWidgetHandler* pXFAWidgetHandler = GetXFAWidgetHandler();
@@ -196,7 +196,11 @@ bool CPDFSDK_Widget::HasXFAAAction(PDFSDK_XFAAActionType eXFAAAT) const {
       }
     }
   }
-  CXFA_Node* node = hWidget->GetNode();
+
+  if (!pWidget)
+    return false;
+
+  CXFA_Node* node = pWidget->GetNode();
   if (!node->IsWidgetReady())
     return false;
   return pXFAWidgetHandler->HasEvent(node, eEventType);
