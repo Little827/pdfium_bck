@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1562616991 -0700\nnonce AC6AUtPjEqmUIgjPtbfzDv3cFXM05K9Wl72oBpiCzPQvldjxgOZGdJjVfn6pw8JYLLi5kyL/A26V\n\n0000000000000000000000000000000000000000 5bd6355306281157f39b6b53e8da376fba0407db refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dprevent-a-uaf-in-cpdfsdk-widget\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0jpJ8ACgkQqzYtYVpm\n/Xs/rAf7BuIk9LQQ6YmCCU0zM9hC2I9Dal3U9UpEQ+H6V/mf8Kh5FuwgEOjqHzbj\n2soEVA7Di/rVnH87VApHZ1bBpKUMDOKHOlFK4DQJx7AfyQ4nygfCM3wI/yoajHiI\na1Vx0GvS9MVUe1GqXpDwLL/eWfWRAVG2cvVBID5o+51bT0DlqmYMG446+4V6PPiR\nLEy2hyDPyDxd51gzTTHnP3h23XrfnYc/6AtmaRSICMkTxuyfCgCeOYA2JC2yO6Gj\nyEVwjKG8NNOCH9Zd7GpknxCO/CusNUn+SL0tHiDT4Hsm0tbBunz6xacXDkiVUWfn\nxVNn6mjRKdGGhviWLy2reEm8EMKwWQ\u003d\u003d\n\u003d9LtJ\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
