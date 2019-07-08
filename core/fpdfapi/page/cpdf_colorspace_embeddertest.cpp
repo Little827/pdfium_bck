@@ -14,3 +14,11 @@ TEST_F(CPDF_ColorspaceEmbedderTest, Bug_981288) {
   ASSERT_TRUE(page);
   UnloadPage(page);
 }
+
+// Test passes if it does not crash.
+TEST_F(CPDF_ColorspaceEmbedderTest, Bug_981347) {
+  ASSERT_TRUE(OpenDocument("bug_981347.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  UnloadPage(page);
+}
