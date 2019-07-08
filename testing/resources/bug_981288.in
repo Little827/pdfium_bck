@@ -1,0 +1,75 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Kids [3 0 R]
+  /Count 1
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 595 842]
+  /Resources 8 0 R
+  /Contents 9 0 R
+>>
+endobj
+{{object 5 0}} <<
+  /Type/ExtGState
+  /ca 1.0
+  /SA true
+  /CA 1.0
+  /AIS false
+  /SMask /None
+  /SM 0.02
+>>
+endobj
+{{object 6 0}} [
+  /Pattern
+  /DeviceRGB
+]
+endobj
+{{object 8 0}} <<
+  /ExtGState <<
+    /GSa 5 0 R
+  >>
+  /ColorSpace <<
+    /PCSp 6 0 R
+    /CSp /DeviceRGB
+    /CSpg /DeviceGray
+  >>
+  /Pattern <<
+    /Pat9 11 0 R
+  >>
+>>
+endobj
+{{object 9 0}} <<
+  {{streamlen}}
+>>
+stream
+/PCSp cs
+/Pat9 scn
+/GSa gs
+Q
+endstream
+endobj
+{{object 11 0}} <<
+  /Type /Pattern
+  /PatternType 1
+  /TilingType 1
+  /PaintType 1
+  {{streamlen}}
+>>
+stream
+1 0 0 -23 0 23 cm
+/Im6 Do
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
