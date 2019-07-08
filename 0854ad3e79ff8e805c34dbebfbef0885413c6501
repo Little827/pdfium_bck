@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b366f80e_21cb199d",
+        "filename": "testing/resources/bug_981347.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T23:14:19Z",
+      "side": 1,
+      "message": "Curious if this one is needed.",
+      "revId": "0854ad3e79ff8e805c34dbebfbef0885413c6501",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b143e964_b7ef5f8c",
+        "filename": "testing/resources/bug_981347.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T23:14:19Z",
+      "side": 1,
+      "message": "And if this dictionary is needed.",
+      "revId": "0854ad3e79ff8e805c34dbebfbef0885413c6501",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
