@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "edfa5180_00b4a25e",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T22:58:33Z",
+      "side": 1,
+      "message": "Still in patch set 5.",
+      "parentUuid": "7bcd3314_b7df1b95",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "69825980e5f7bdaab7121637ccc677424126306e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09798c3a_f566fca0",
         "filename": "testing/resources/bug_981288.in",
         "patchSetId": 4
