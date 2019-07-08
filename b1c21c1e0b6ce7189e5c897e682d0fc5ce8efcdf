@@ -104,6 +104,24 @@
       "revId": "b1c21c1e0b6ce7189e5c897e682d0fc5ce8efcdf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a41ce187_c1dd1431",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-08T23:11:31Z",
+      "side": 1,
+      "message": "Can the stream be empty then?",
+      "parentUuid": "0d9e5db4_d588c6c2",
+      "revId": "b1c21c1e0b6ce7189e5c897e682d0fc5ce8efcdf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
