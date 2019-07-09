@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aba33834_d7eb1d01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T23:31:03Z",
+      "side": 1,
+      "message": "You can just refer to ClassName without the pipe symbols. Nobody is going to confuse \"CFXEU_ReplaceSel\" with a regular English word.",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "1d859bd72c27c913a9cc4d3889c0a0db1444a03f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf4a58f_c3d7517c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T23:31:03Z",
+      "side": 1,
+      "message": "Maybe begin/end markers, instead of wrappers?",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "1d859bd72c27c913a9cc4d3889c0a0db1444a03f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d36eeb5_07301781",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T23:31:03Z",
+      "side": 1,
+      "message": "Can we move this to right above CPWL_EditImpl::Redo(), since that\u0027s the declaration order in the header?",
+      "revId": "1d859bd72c27c913a9cc4d3889c0a0db1444a03f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7c3efc_29aa8974",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T23:31:03Z",
+      "side": 1,
+      "message": "additional",
+      "range": {
+        "startLine": 101,
+        "startChar": 63,
+        "endLine": 101,
+        "endChar": 72
+      },
+      "revId": "1d859bd72c27c913a9cc4d3889c0a0db1444a03f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e6ff4d_76f9430f",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T23:31:03Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 102,
+        "startChar": 65,
+        "endLine": 102,
+        "endChar": 75
+      },
+      "revId": "1d859bd72c27c913a9cc4d3889c0a0db1444a03f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945a01e7_c91b53bb",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T23:31:03Z",
+      "side": 1,
+      "message": "Can we just write out \"ReplaceSel\" as \"ReplaceSelection\", since none of the other undo item classes abbreviate their names?",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "1d859bd72c27c913a9cc4d3889c0a0db1444a03f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
