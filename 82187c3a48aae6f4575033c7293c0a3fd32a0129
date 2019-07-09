@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1562657233 -0700\nnonce AC6AUtPyk2Yed+XXKjRpIxD5IxglIqhbIseUHlV5Xm5z7IuHlMQTrK75OlwEbFsnPvj7o2uDP0ak\n\n0000000000000000000000000000000000000000 82187c3a48aae6f4575033c7293c0a3fd32a0129 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dfix-a-comparison-in-clzwdecoder\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0kQdEACgkQqzYtYVpm\n/Xuh2gf+NtX4/7bbJ5adetC0Zo0eHmUsUB0++aZ4EiuA+P8ooEKzfpVanAOVdPlv\nvGl3AKB5DUVzswBlv1av8KQyk1w+VlLHGWOqzkramv1j7rrjyOSKlhyEh8/lKSBo\n4xBtd7twCUw4bmc9htZ4jLvSdhVt+R7vVGB8fg+CFdQL8+uo9ICDL6/0qQtDeNEC\nKbbew75r6WAzIQkCTB1+YLBrsHD9L7nfSQrG1z+O8eiG97szaXRfowVUDiLa3vBx\ndOlhUTPlf8TG6LzJ3/G0klkT0vDPU2TuoUtdSdV/Vp51w16rMVEzcD6vn+NlCb4l\nuuVEtzE5pcsTi9tbLvKqV8lYoYf1Lw\u003d\u003d\n\u003dFujn\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
