@@ -122,6 +122,24 @@
       "revId": "b1c21c1e0b6ce7189e5c897e682d0fc5ce8efcdf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "943e90e3_ca163604",
+        "filename": "testing/resources/bug_981288.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-09T16:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a41ce187_c1dd1431",
+      "revId": "b1c21c1e0b6ce7189e5c897e682d0fc5ce8efcdf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
