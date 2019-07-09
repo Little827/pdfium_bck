@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3be0c59f_20c3b277",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T02:15:16Z",
+      "side": 1,
+      "message": "grammar",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "0bdb3d7250fce1ae6bba1c5ae1ecf9341bfdcafc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b0a778_38d11b81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T02:15:16Z",
+      "side": 1,
+      "message": "a missing",
+      "range": {
+        "startLine": 16,
+        "startChar": 63,
+        "endLine": 16,
+        "endChar": 66
+      },
+      "revId": "0bdb3d7250fce1ae6bba1c5ae1ecf9341bfdcafc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dccd056_53305c2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T02:15:16Z",
+      "side": 1,
+      "message": "Omitting this conveys the same message.",
+      "range": {
+        "startLine": 16,
+        "startChar": 48,
+        "endLine": 16,
+        "endChar": 59
+      },
+      "revId": "0bdb3d7250fce1ae6bba1c5ae1ecf9341bfdcafc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cca47d0_e11845bd",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T02:15:16Z",
+      "side": 1,
+      "message": "Thanks for adding this comment to explain what lines 370-374 do. To me this is really a sign that the existing code needs to be refactored, so I\u0027ve gone ahead and made some CLs to do that:\n\nhttps://pdfium-review.googlesource.com/c/pdfium/+/57358\nhttps://pdfium-review.googlesource.com/c/pdfium/+/57359\nhttps://pdfium-review.googlesource.com/c/pdfium/+/57360",
+      "revId": "0bdb3d7250fce1ae6bba1c5ae1ecf9341bfdcafc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b993340_8969e5f9",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T02:15:16Z",
+      "side": 1,
+      "message": "This conditional is just as hard to read as the others above. Let\u0027s try to make this more readable.",
+      "revId": "0bdb3d7250fce1ae6bba1c5ae1ecf9341bfdcafc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
