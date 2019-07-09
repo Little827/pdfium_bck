@@ -23,6 +23,30 @@
       "revId": "361e2190df85aa707522ff63ce004c63d0b33483",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d6b541_6eba3348",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T18:44:22Z",
+      "side": 1,
+      "message": "Sure, renamed.",
+      "parentUuid": "0032756c_048691c9",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "361e2190df85aa707522ff63ce004c63d0b33483",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
