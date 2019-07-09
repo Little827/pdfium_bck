@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d59e7aac_c703f04e",
+        "filename": "fpdfsdk/pwl/cpwl_list_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-09T21:36:06Z",
+      "side": 1,
+      "message": "Maybe const pointer, since it\u0027s always using the same instance?",
+      "revId": "ae3713a29b7f53ff6ee505bf90bbea305b568a0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
