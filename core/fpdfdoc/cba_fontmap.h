@@ -73,7 +73,7 @@ class CBA_FontMap final : public IPVT_FontMap {
 
   int32_t FindFont(const ByteString& sFontName, int32_t nCharset);
   ByteString GetNativeFont(int32_t nCharset);
-  ByteString GetNativeFontName(int32_t nCharset);
+  ByteString GetCachedNativeFontName(int32_t nCharset);
   CPDF_Font* AddFontToDocument(CPDF_Document* pDoc,
                                ByteString& sFontName,
                                uint8_t nCharset);

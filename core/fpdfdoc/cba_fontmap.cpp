@@ -106,7 +106,7 @@ int32_t CBA_FontMap::GetWordFontIndex(uint16_t word,
   }
 
   int32_t nNewFontIndex =
-      GetFontIndex(GetNativeFontName(nCharset), nCharset, true);
+      GetFontIndex(GetCachedNativeFontName(nCharset), nCharset, true);
   if (nNewFontIndex >= 0) {
     if (KnowWord(nNewFontIndex, word))
       return nNewFontIndex;
@@ -433,7 +433,7 @@ ByteString CBA_FontMap::GetNativeFont(int32_t nCharset) {
   return sFontName;
 }
 
-ByteString CBA_FontMap::GetNativeFontName(int32_t nCharset) {
+ByteString CBA_FontMap::GetCachedNativeFontName(int32_t nCharset) {
   for (const auto& pData : m_NativeFont) {
     if (pData && pData->nCharset == nCharset)
       return pData->sFontName;
