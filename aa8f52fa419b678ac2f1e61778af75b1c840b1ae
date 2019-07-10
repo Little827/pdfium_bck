@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd2fbc28_b2a0f869",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T00:59:44Z",
+      "side": 1,
+      "message": "Update the commit message since the test case does more now.",
+      "revId": "aa8f52fa419b678ac2f1e61778af75b1c840b1ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
