@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1e9e2e9_31bd5811",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T20:19:00Z",
+      "side": 1,
+      "message": "Update DEPS to adjust corpus tests affected by this change.",
+      "revId": "25f1e09ed9d1a3d67999cfd6f75e691cc898e8b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
