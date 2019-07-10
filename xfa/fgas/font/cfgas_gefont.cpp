@@ -37,11 +37,14 @@ RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const wchar_t* pszFontFamily,
 }
 
 // static
-RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(CPDF_Font* pPDFFont,
-                                               CFGAS_FontMgr* pFontMgr) {
+RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(
+    const RetainPtr<CPDF_Font>& pPDFFont,
+    CFGAS_FontMgr* pFontMgr) {
   auto pFont = pdfium::MakeRetain<CFGAS_GEFont>(pFontMgr);
   if (!pFont->LoadFontInternal(pPDFFont->GetFont()))
     return nullptr;
+
+  pFont->m_pPDFFont = pPDFFont;  // Keep pPDFFont alive for the duration.
   return pFont;
 }
 
