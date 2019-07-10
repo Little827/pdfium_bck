@@ -98,7 +98,7 @@ class CPDF_FormControl {
   CPDF_AAction GetAdditionalAction() const;
   CPDF_DefaultAppearance GetDefaultAppearance() const;
 
-  CPDF_Font* GetDefaultControlFont();
+  RetainPtr<CPDF_Font> GetDefaultControlFont();
   int GetControlAlignment() const;
 
   ByteString GetOnStateName() const;
