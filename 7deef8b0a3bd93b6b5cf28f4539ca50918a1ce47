@@ -35,6 +35,24 @@
       "revId": "7deef8b0a3bd93b6b5cf28f4539ca50918a1ce47",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47c95745_41103fbd",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T06:13:52Z",
+      "side": 1,
+      "message": "512 covers ~40% of all the decodes in a test set. SGTM.",
+      "parentUuid": "ab9f3ae3_b481e350",
+      "revId": "7deef8b0a3bd93b6b5cf28f4539ca50918a1ce47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
