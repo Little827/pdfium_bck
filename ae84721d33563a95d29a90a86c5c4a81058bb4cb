@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c10bc6_909d8d38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T01:25:30Z",
+      "side": 1,
+      "message": "omit?",
+      "range": {
+        "startLine": 14,
+        "startChar": 44,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "ae84721d33563a95d29a90a86c5c4a81058bb4cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe229ee_1cf8e71f",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T01:25:30Z",
+      "side": 1,
+      "message": "ReplaceSelection, also line 334.",
+      "range": {
+        "startLine": 326,
+        "startChar": 41,
+        "endLine": 326,
+        "endChar": 53
+      },
+      "revId": "ae84721d33563a95d29a90a86c5c4a81058bb4cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa2c544_5927ade0",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T01:25:30Z",
+      "side": 1,
+      "message": "Fits on the previous line.",
+      "revId": "ae84721d33563a95d29a90a86c5c4a81058bb4cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "247372b9_b2c7b844",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T01:25:30Z",
+      "side": 1,
+      "message": "No, what I mean is, the sentence should end with a period, and the parenthesis should have a space in front: ... the action. (An example ...",
+      "range": {
+        "startLine": 102,
+        "startChar": 65,
+        "endLine": 102,
+        "endChar": 74
+      },
+      "revId": "ae84721d33563a95d29a90a86c5c4a81058bb4cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bafbdd3_87835fc8",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T01:25:30Z",
+      "side": 1,
+      "message": "Instead of having the end of the sentence 5 lines away.",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "ae84721d33563a95d29a90a86c5c4a81058bb4cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
