@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfa6282f_c335b755",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T00:45:37Z",
+      "side": 1,
+      "message": "With a pattern like: cond1 \u0026\u0026 cond2 \u0026\u0026 cond3, the evaluation occurs from left to right. So one common optimization is to order them so the cheapest to evaluate condition is the first one, when there are no side effects.\n\nFor example, if the conditional is: ReallySlowComputation() \u0026\u0026 ReallyFastButLikelyFalseComputation(), then ReallySlowComputation() will do a lot of work, but the entire conditional is likely to fail.",
+      "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9d2a64_841eda8d",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-10T00:45:37Z",
+      "side": 1,
+      "message": "Should this calculation consider the distance between |cur| to |prev|, and |cur| to |next|, on both axis? Unlike the horizontal/vertical line case, both dimensions have different values here.",
+      "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
