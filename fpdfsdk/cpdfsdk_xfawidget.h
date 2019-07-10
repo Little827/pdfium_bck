@@ -35,7 +35,7 @@ class CPDFSDK_XFAWidget final : public CPDFSDK_Annot {
 
  private:
   UnownedPtr<CPDFSDK_InteractiveForm> const m_pInteractiveForm;
-  UnownedPtr<CXFA_FFWidget> const m_hXFAWidget;
+  ObservedPtr<CXFA_FFWidget> const m_hXFAWidget;
 };
 
 inline CPDFSDK_XFAWidget* ToXFAWidget(CPDFSDK_Annot* pAnnot) {
