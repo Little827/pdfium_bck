@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "870ac520_fdb734bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-10T17:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f3e583a_2e54a928",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a36688b9_12d5be98",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65aaa150_d958b676",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-10T17:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a36688b9_12d5be98",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a222e288_dec4d68a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-10T17:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a8cefb_7312a584",
+      "range": {
+        "startLine": 16,
+        "startChar": 45,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfa6282f_c335b755",
         "filename": "core/fxge/cfx_pathdata.cpp",
         "patchSetId": 10
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "ac5cff0b_140ac57a",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-10T17:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa6282f_c335b755",
+      "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de9d2a64_841eda8d",
         "filename": "core/fxge/cfx_pathdata.cpp",
         "patchSetId": 10
@@ -102,6 +192,24 @@
       "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46beeec3_eaaa4892",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-10T17:47:53Z",
+      "side": 1,
+      "message": "Once we know |cur|,|prev| and |next| are on the same folding diagonal line and the diagonal line\u0027s length is positive, checking either x axis or y axis will be sufficient to decide which point is closer to |cur|.",
+      "parentUuid": "de9d2a64_841eda8d",
+      "revId": "48e92d9ec4150858a300898310b52ad728fbd360",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
