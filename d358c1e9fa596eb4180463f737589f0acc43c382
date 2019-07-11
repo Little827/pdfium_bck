@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8328dcc_428b8f08",
+        "filename": "core/fpdfapi/font/cpdf_type3char.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-11T22:13:40Z",
+      "side": 1,
+      "message": "No longer needed. Also CPDF_Document and CPDF_Stream.",
+      "revId": "d358c1e9fa596eb4180463f737589f0acc43c382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8287540a_f32166a7",
+        "filename": "core/fpdfapi/font/cpdf_type3font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-11T22:13:40Z",
+      "side": 1,
+      "message": "Does it matter if we have |restorer| here, vs. after line 112?",
+      "revId": "d358c1e9fa596eb4180463f737589f0acc43c382",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
