@@ -17,21 +17,19 @@ class CFX_DIBitmap;
 class CPDF_Dictionary;
 class CPDF_Document;
 class CPDF_Form;
-class CPDF_RenderContext;
 class CPDF_Stream;
 
 class CPDF_Type3Char {
  public:
-  explicit CPDF_Type3Char(std::unique_ptr<CPDF_Form> pForm);
+  CPDF_Type3Char();
   ~CPDF_Type3Char();
 
   static float TextUnitToGlyphUnit(float fTextUnit);
   static void TextUnitRectToGlyphUnitRect(CFX_FloatRect* pRect);
 
-  bool LoadBitmap(CPDF_RenderContext* pContext);
+  bool LoadBitmap();
   void InitializeFromStreamData(bool bColored, const float* pData);
-  void Transform(const CFX_Matrix& matrix);
-  bool HasPageObjects() const;
+  void Transform(CPDF_Form* pForm, const CFX_Matrix& matrix);
 
   RetainPtr<CFX_DIBitmap> GetBitmap();
   const RetainPtr<CFX_DIBitmap>& GetBitmap() const;
@@ -43,6 +41,8 @@ class CPDF_Type3Char {
 
   const CPDF_Form* form() const { return m_pForm.get(); }
   CPDF_Form* form() { return m_pForm.get(); }
+
+  void SetForm(std::unique_ptr<CPDF_Form> pForm);
   void ResetForm();
 
  private:
