@@ -62,6 +62,24 @@
       "revId": "f035c5a803fd83b0489493db8cb95005735a578a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d8b686_525e69e2",
+        "filename": "core/fpdfapi/font/cpdf_type3char.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-11T22:40:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81fd1859_f8b52406",
+      "revId": "f035c5a803fd83b0489493db8cb95005735a578a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
