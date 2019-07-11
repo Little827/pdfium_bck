@@ -22,12 +22,7 @@ constexpr float kTextUnitInGlyphUnit = 1000.0f;
 
 }  // namespace
 
-CPDF_Type3Char::CPDF_Type3Char(CPDF_Document* pDocument,
-                               CPDF_Dictionary* pPageResources,
-                               CPDF_Stream* pFormStream)
-    : m_pForm(pdfium::MakeUnique<CPDF_Form>(pDocument,
-                                            pPageResources,
-                                            pFormStream)) {}
+CPDF_Type3Char::CPDF_Type3Char() = default;
 
 CPDF_Type3Char::~CPDF_Type3Char() = default;
 
@@ -41,33 +36,19 @@ void CPDF_Type3Char::TextUnitRectToGlyphUnitRect(CFX_FloatRect* pRect) {
   pRect->Scale(kTextUnitInGlyphUnit);
 }
 
-bool CPDF_Type3Char::LoadBitmap(CPDF_RenderContext* pContext) {
+bool CPDF_Type3Char::LoadBitmap() {
   if (m_pBitmap || !m_pForm)
     return true;
 
-  if (m_pForm->GetPageObjectCount() != 1 || m_bColored)
+  if (m_bColored)
     return false;
 
-  auto& pPageObj = *m_pForm->begin();
-  if (!pPageObj->IsImage())
+  const CPDF_ImageObject* pImageObject = m_pForm->GetSoleImageOfForm();
+  if (!pImageObject)
     return false;
 
-  m_ImageMatrix = pPageObj->AsImage()->matrix();
-  {
-    // |pSource| actually gets assigned a CPDF_DIBBase, which has pointers
-    // into objects owned by |m_pForm|. Make sure it is out of scope before
-    // clearing the form.
-    RetainPtr<CFX_DIBBase> pSource =
-        pPageObj->AsImage()->GetImage()->LoadDIBBase();
-
-    // Clone() is non-virtual, and can't be overloaded by CPDF_DIBBase to
-    // return a clone of the subclass as one would typically expect from a
-    // such a method. Instead, it only clones the CFX_DIBBase, none of whose
-    // members point to objects owned by the form. As a result, |m_pBitmap|
-    // may outlive |m_pForm|.
-    if (pSource)
-      m_pBitmap = pSource->Clone(nullptr);
-  }
+  m_pBitmap = pImageObject->GetIndependentBitmap();
+  m_ImageMatrix = pImageObject->matrix();
   m_pForm.reset();
   return true;
 }
@@ -82,12 +63,12 @@ void CPDF_Type3Char::InitializeFromStreamData(bool bColored,
   m_BBox.top = FXSYS_round(TextUnitToGlyphUnit(pData[5]));
 }
 
-void CPDF_Type3Char::Transform(const CFX_Matrix& matrix) {
+void CPDF_Type3Char::Transform(CPDF_Form* pForm, const CFX_Matrix& matrix) {
   m_Width = m_Width * matrix.GetXUnit() + 0.5f;
 
   CFX_FloatRect char_rect;
   if (m_BBox.right <= m_BBox.left || m_BBox.bottom >= m_BBox.top) {
-    char_rect = form()->CalcBoundingBox();
+    char_rect = pForm->CalcBoundingBox();
     TextUnitRectToGlyphUnitRect(&char_rect);
   } else {
     char_rect = CFX_FloatRect(m_BBox);
@@ -96,16 +77,12 @@ void CPDF_Type3Char::Transform(const CFX_Matrix& matrix) {
   m_BBox = matrix.TransformRect(char_rect).ToRoundedFxRect();
 }
 
+void CPDF_Type3Char::SetForm(std::unique_ptr<CPDF_Form> pForm) {
+  m_pForm = std::move(pForm);
+}
+
 void CPDF_Type3Char::ResetForm() {
   m_pForm.reset();
-}
-
-void CPDF_Type3Char::ParseContent() {
-  m_pForm->ParseContent(nullptr, nullptr, this, nullptr);
-}
-
-bool CPDF_Type3Char::HasPageObjects() const {
-  return !!m_pForm->GetPageObjectCount();
 }
 
 RetainPtr<CFX_DIBitmap> CPDF_Type3Char::GetBitmap() {
