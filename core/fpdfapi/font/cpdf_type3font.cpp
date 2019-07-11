@@ -10,6 +10,7 @@
 #include <utility>
 
 #include "core/fpdfapi/font/cpdf_type3char.h"
+#include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
@@ -106,10 +107,10 @@ CPDF_Type3Char* CPDF_Type3Font::LoadChar(uint32_t charcode) {
   if (!pStream)
     return nullptr;
 
+  auto* pResources =
+      m_pFontResources ? m_pFontResources.Get() : m_pPageResources.Get();
   auto pNewChar = pdfium::MakeUnique<CPDF_Type3Char>(
-      m_pDocument.Get(),
-      m_pFontResources ? m_pFontResources.Get() : m_pPageResources.Get(),
-      pStream);
+      pdfium::MakeUnique<CPDF_Form>(m_pDocument.Get(), pResources, pStream));
 
   // This can trigger recursion into this method. The content of |m_CacheMap|
   // can change as a result. Thus after it returns, check the cache again for

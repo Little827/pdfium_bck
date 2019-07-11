@@ -22,9 +22,7 @@ class CPDF_Stream;
 
 class CPDF_Type3Char {
  public:
-  CPDF_Type3Char(CPDF_Document* pDocument,
-                 CPDF_Dictionary* pPageResources,
-                 CPDF_Stream* pFormStream);
+  explicit CPDF_Type3Char(std::unique_ptr<CPDF_Form> pForm);
   ~CPDF_Type3Char();
 
   static float TextUnitToGlyphUnit(float fTextUnit);
