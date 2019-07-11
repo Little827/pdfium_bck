@@ -22,8 +22,7 @@ constexpr float kTextUnitInGlyphUnit = 1000.0f;
 
 }  // namespace
 
-CPDF_Type3Char::CPDF_Type3Char(std::unique_ptr<CPDF_Form> pForm)
-    : m_pForm(std::move(pForm)) {}
+CPDF_Type3Char::CPDF_Type3Char() = default;
 
 CPDF_Type3Char::~CPDF_Type3Char() = default;
 
@@ -92,12 +91,12 @@ void CPDF_Type3Char::Transform(const CFX_Matrix& matrix) {
   m_BBox = matrix.TransformRect(char_rect).ToRoundedFxRect();
 }
 
-void CPDF_Type3Char::ResetForm() {
-  m_pForm.reset();
+void CPDF_Type3Char::SetForm(std::unique_ptr<CPDF_Form> pForm) {
+  m_pForm = std::move(pForm);
 }
 
-bool CPDF_Type3Char::HasPageObjects() const {
-  return !!m_pForm->GetPageObjectCount();
+void CPDF_Type3Char::ResetForm() {
+  m_pForm.reset();
 }
 
 RetainPtr<CFX_DIBitmap> CPDF_Type3Char::GetBitmap() {
