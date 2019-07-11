@@ -1,0 +1,346 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 2
+  /Kids [ 3 0 R 4 0 R]
+  /MediaBox [ 0 0 612 792]
+  /CropBox [0 0 612 792]
+  /Resources <<
+    /Font <<
+      /F1 10 0 R
+      /F2 11 0 R
+    >>
+    /ProcSet [/PDF /Text /ImageC]
+    /ExtGState <<
+        /GS0 50 0 R
+    >>
+  >>
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 6 0 R
+  /Annots [40 0 R 41 0 R 42 0 R 43 0 R 44 0 R 45 0 R 46 0 R 47 0 R]
+>>
+endobj
+{{object 4 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 7 0 R
+  /Annots [40 0 R 41 0 R]
+>>
+endobj
+{{object 6 0}} <<
+>>
+stream
+BT
+70 700 Td
+/F1 18 Tf
+(Link Annotations - Page 1) Tj
+0 -65 Td
+/F2 14 Tf
+(1. Link with destination to first page) Tj
+10 -20 Td
+/F2 14 Tf
+(2. Link with destination to second page) Tj
+-12 -84 Td
+/F2 10 Tf
+(PDF Reference, Version 1.7, Section 8.4.5 defines Annotations) Tj
+2 -53 Td
+(3.  An example of Highlight with text notes) Tj
+0 -18 Td
+(https://pdfium.googlesource.com/pdfium is link in plain text, not link annotation. These are referred to) Tj
+0 -17 Td
+(as WebLinks in PDFium.)Tj
+ET
+endstream
+endobj
+{{object 7 0}} <<
+>>
+stream
+BT
+70 700 Td
+/F1 18 Tf
+(Link Annotations - Page 2) Tj
+0 -65 Td
+/F2 14 Tf
+(1. Link with destination to first page) Tj
+10 -20 Td
+/F2 14 Tf
+(2. Link with destination to second page) Tj
+ET
+endstream
+endobj
+{{object 10 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Roman
+>>
+endobj
+{{object 11 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+>>
+endobj
+{{object 30 0}} <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /Matrix [1 0 0 1 0 0]
+  /Length 17
+  /BBox [293.81 530.5 348.6236 541.54004]
+  /FormType 1
+  /Resources <<
+    /XObject <<
+      /Form0 31 0 R
+    >>
+    /ExtGState <<
+      /GS0 <<
+        /ca 1
+        /Type /ExtGState
+        /CA 1
+        /AIS false
+        /BM /Multiply
+      >>
+    >>
+  >>
+>>
+stream
+/GS0 gs
+/Form0 Do
+endstream
+endobj
+{{object 31 0}} <<
+  /Matrix [1 0 0 1 0 0]
+  /Group <<
+    /S /Transparency
+  >>
+  /Type /XObject
+  /Length 76
+  /BBox [293.81 530.5 348.6236 541.54004]
+  /FormType 1
+  /Subtype /Form
+>>
+stream
+1.0 1.0 0.0 rg
+293.8 530.5 m
+348.6 530.5 l
+348.6 541.5 l
+293.8 541.5 l
+h f
+endstream
+endobj
+{{object 32 0}} <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /Matrix [1 0 0 1 0 0]
+  /Length 19
+  /BBox [84.144 439.38998 178.00208 450.42999]
+  /FormType 1
+  /Resources <<
+    /XObject <<
+      /Form0 33 0 R
+    >>
+    /ExtGState <<
+      /GS0 <<
+        /ca 1
+        /Type /ExtGState
+        /CA 1
+        /AIS false
+        /BM /Multiply
+      >>
+    >>
+  >>
+>>
+stream
+/GS0 gs
+/Form0 Do
+endstream
+endobj
+{{object 33 0}} <<
+  /Matrix [1 0 0 1 0 0]
+  /Group <<
+    /S /Transparency
+  >>
+  /Type /XObject
+  /Length 73
+  /BBox [84.144 439.38998 178.00208 450.42999]
+  /FormType 1
+  /Subtype /Form
+>>
+stream
+0.3 0.8 1.0 rg
+84.1 439.4 m
+178.0 439.4 l
+178.0 450.4 l
+84.1 450.4 l
+h f
+endstream
+endobj
+{{object 34 0}} <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /Matrix [1 0 0 1 0 0]
+  /Length 18
+  /BBox [149.17999 476.34998 190.55504 487.38998]
+  /FormType 1
+  /Resources <<
+    /XObject <<
+      /Form0 35 0 R
+    >>
+    /ExtGState <<
+      /GS0 <<
+        /ca 1
+        /Type /ExtGState
+        /CA 1
+        /AIS false
+        /BM /Multiply
+      >>
+    >>
+  >>
+>>
+stream
+/GS0 gs
+/Form0 Do
+endstream
+endobj
+{{object 35 0}} <<
+  /Matrix [1 0 0 1 0 0]
+  /Group <<
+    /S /Transparency
+  >>
+  /Type /XObject
+  /Length 75
+  /BBox [149.17999 476.34998 190.55504 487.38998]
+  /FormType 1
+  /Subtype /Form
+>>
+stream
+0.1 0.9 0.0 rg
+149.2 476.3 m
+190.6 476.3 l
+190.6 487.4 l
+149.2 487.4 l
+h f
+endstream
+endobj
+{{object 40 0}} <<
+  /BS <<
+    /W 0
+  >>
+  /Rect [69.75 633.25 541.75 652.74]
+  /Subtype /Link
+  /Dest [3 0 R /XYZ 200 725 0]
+  /F 4
+>>
+endobj
+{{object 41 0}} <<
+  /BS <<
+    /W 0
+  >>
+  /Rect [80.75 613.76 541.75 633.25]
+  /Subtype /Link
+  /Dest [4 0 R /XYZ 200 725 0]
+  /F 4
+>>
+endobj
+{{object 42 0}} <<
+  /BS <<
+    /W 0
+  >>
+  /Rect [69.75 529.21 195.33 543.7]
+  /Subtype /Link
+  /A <<
+    /Type /Action
+    /URI (https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf)
+    /S /URI
+  >>
+  /F 4
+>>
+endobj
+{{object 43 0}} <<
+  /BS <<
+    /W 0
+  >>
+  /Rect [84 440 178 452]
+  /QuadPoints [84 452 178 452 84 440 178 440]
+  /Subtype /Link
+  /A <<
+    /Type /Action
+    /URI (https://cs.chromium.org/chromium/src/third_party/pdfium/public/fpdf_text.h)
+    /S /URI
+  >>
+  /F 4
+>>
+endobj
+{{object 44 0}} <<
+  /AP <<
+    /N 30 0 R
+  >>
+  /NM (Highlight-1)
+  /F 4
+  /Type /Annot
+  /QuadPoints [293.81 541.54004 348.6236 541.54004 293.81 530.5 348.6236 530.5]
+  /P 3 0 R
+  /C [1 0.90196 0]
+  /Subtype /Highlight
+  /Rect [293.81 530.5 348.6236 541.54004]
+>>
+endobj
+{{object 45 0}} <<
+  /AP <<
+    /N 32 0 R
+  >>
+  /NM (Highlight-2)
+  /F 4
+  /Type /Annot
+  /Subtype /Highlight
+  /QuadPoints [84 452 178 452 84 440 178 440]
+  /P 3 0 R
+  /C [0.26667 0.78431 0.96078]
+  /Rect [84.144 439.38998 178.00208 450.42999]
+>>
+endobj
+{{object 46 0}} <<
+  /Parent 47 0 R
+  /Type /Annot
+  /Rect [190.55504 377.88998 442.55505 487.38998]
+  /Subtype /Popup
+>>
+endobj
+{{object 47 0}} <<
+  /AP <<
+    /N 34 0 R
+  >>
+  /NM (Highlight-With-Popup-1)
+  /Contents (Text Note)
+  /Type /Annot
+  /QuadPoints [149.17999 487.38998 190.55504 487.38998 149.17999 476.34998 190.55504 476.34998]
+  /P 3 0 R
+  /C [0.14902 0.90196 0]
+  /Popup 46 0 R
+  /Rect [149.17999 476.34998 190.55504 487.38998]
+  /Subtype /Highlight
+  /F 4
+>>
+endobj
+{{object 50 0}} <<
+  /ca 1
+  /Type /ExtGState
+  /CA 1
+  /BM /Normal
+>>
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
