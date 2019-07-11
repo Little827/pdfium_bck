@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "c870da92_8e91ff3a",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-11T20:36:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ec7917e_832bfe20",
+      "range": {
+        "startLine": 413,
+        "startChar": 4,
+        "endLine": 413,
+        "endChar": 7
+      },
+      "revId": "4b7cb83f3b624ccf5afce53e4af72a0ab21e0726",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d78d2865_dc3fadc2",
         "filename": "core/fxge/cfx_pathdata.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "4b7cb83f3b624ccf5afce53e4af72a0ab21e0726",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1650ea1_c9cafba7",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-11T20:36:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d78d2865_dc3fadc2",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 422,
+        "endChar": 13
+      },
+      "revId": "4b7cb83f3b624ccf5afce53e4af72a0ab21e0726",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
