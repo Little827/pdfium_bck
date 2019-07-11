@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "225ddcfa_9771ddfb",
+        "filename": "core/fpdfapi/font/cpdf_type3font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-11T20:41:37Z",
+      "side": 1,
+      "message": "NOTE: this will create some needless +/- churn if we take any of the early returns, but it keeps all the depth logic up top and out of the subsequent code. Seems clearer to me.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "0fbc446e58e13441d821baf96b4c663f4d603555",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
