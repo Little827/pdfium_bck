@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1562971172 -0700\nnonce AC6AUtMhx/rVp8WojVVG33JEKH+uBneoTFw1VrZ9e3x47UcGUMvdhUIuTn/b2LBWP7pDHQj3PUPr\n\n0000000000000000000000000000000000000000 c6b42d238cbcdfa4150891c7e8edb600fdbf66e4 refs/for/refs/heads/master%notify\u003dNONE,m\u003dpass_more_tests,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0pDCQACgkQqzYtYVpm\n/Xt5Ggf8D2QLynbODtn2bI7hID8xnFFeMqJOVwmVAbPsilaAj5V7MtnYOiEqt2dQ\ntuGfUWKkmtj1MCksGVMwqxEguoYWZcuGTIGL3dcIJ4W+Dkp3nONEpJteNPmvcPrg\nw07S/OkSLpTlaZmKIj/lo9Jqi6REQpZJd6ogxXQvSGkhdxndI7n+HfmZoQ5VIFFc\nUzMmpOVZL2512SI/U5/cQmwlJuy1O9dy4UpdYFBp3zIUhnTUQtknG5Sh8yakBInO\nhBiXKTs2DO0LWnkrFIzy/FlXd7jy9ZOQD1Pwgnw8qAxTfNHydTDs9SzQxL9m1q9k\n0SP0svI5d1ng9CIcRCZF0ce+t0d02g\u003d\u003d\n\u003dHoiu\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e3cd7b4_270809bf",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7648
+      },
+      "writtenOn": "2019-07-12T23:33:28Z",
+      "side": 1,
+      "message": "Since these APIs are to get all JavaScripts in the document, is it possible to also get the JavaScripts from the AA dictionaries? PDF spec [1] Table 196-197 gives all the Keys that can have JavaScript actions in AA.\n\nfpdf_formfill.cpp (line 690, line 717) are references to how AA dictionaries for document and page are currently being accessed.\n \n[1] https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf",
+      "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
