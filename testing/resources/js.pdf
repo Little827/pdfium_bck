@@ -1,0 +1,65 @@
+%PDF-1.7
+% ò¤ô
+1 0 obj <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /Names <</JavaScript 4 0 R>>
+>>
+endobj
+2 0 obj <<
+  /Type /Pages
+  /Count 1
+  /Kids [3 0 R]
+>>
+endobj
+3 0 obj <<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 612 792]
+  /CropBox [0 0 612 792]
+>>
+endobj
+4 0 obj <<
+  /Names [(pingjs) 5 0 R (pongjs) 7 0 R]
+>>
+endobj
+5 0 obj <<
+  /Type /Action
+  /S /J#61v#61Script
+  /JS 6 0 R
+>>
+endobj
+6 0 obj <<
+>>
+stream
+app.alert("ping");
+endstream
+endobj
+7 0 obj <<
+  /S /JavaScript
+  /JS 8 0 R
+>>
+endobj
+8 0 obj <<
+>>
+stream
+app.alert("pong");
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000015 00000 n 
+0000000099 00000 n 
+0000000162 00000 n 
+0000000264 00000 n 
+0000000326 00000 n 
+0000000396 00000 n 
+0000000453 00000 n 
+0000000503 00000 n 
+trailer <<
+  /Root 1 0 R
+>>
+startxref
+560
+%%EOF
