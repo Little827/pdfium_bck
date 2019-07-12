@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "9880858d_debbd30d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T19:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77140990_bd52b575",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6757d15_5ef0c3a7",
         "filename": "core/fxcodec/progressivedecoder.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "a361447115e781b5c785df5347a238ad5e090a25",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a859cc76_cb475d2a",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T19:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6757d15_5ef0c3a7",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -72,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "40e2665f_5362cc21",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T19:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2c5c19_d9f73f41",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bf8ae9f_6e934f41",
         "filename": "core/fxcodec/progressivedecoder.cpp",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2019-07-12T16:55:34Z",
       "side": 1,
       "message": "nit: I guess I\u0027d be happier if this were a pointer and we removed the |*| from the rvalue.",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e532d3_b62d98b7",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T19:22:22Z",
+      "side": 1,
+      "message": "That adds a lot of arrows though. pixel_weights-\u003efoo",
+      "parentUuid": "9bf8ae9f_6e934f41",
       "range": {
         "startLine": 67,
         "startChar": 6,
@@ -118,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "dd5c6507_de5002db",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T19:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9269499_595beede",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af1e3e6_5a59412e",
         "filename": "core/fxcodec/progressivedecoder.cpp",
         "patchSetId": 1
@@ -138,6 +258,30 @@
       "revId": "a361447115e781b5c785df5347a238ad5e090a25",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29eb96bb_f4e28ae7",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T19:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af1e3e6_5a59412e",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 26
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
