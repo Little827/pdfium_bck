@@ -23,6 +23,30 @@
       "revId": "cdf3c2e058060750cf7a238108868cc0ff18fef1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687d7e8d_634e72e6",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T17:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "976bf3cd_f2cb50f3",
+      "range": {
+        "startLine": 918,
+        "startChar": 0,
+        "endLine": 918,
+        "endChar": 4
+      },
+      "revId": "cdf3c2e058060750cf7a238108868cc0ff18fef1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
