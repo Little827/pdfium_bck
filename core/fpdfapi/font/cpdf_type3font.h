@@ -32,7 +32,7 @@ class CPDF_Type3Font final : public CPDF_SimpleFont {
   void SetPageResources(CPDF_Dictionary* pResources) {
     m_pPageResources.Reset(pResources);
   }
-  CPDF_Type3Char* LoadChar(uint32_t charcode);
+  CPDF_Type3Char* LoadChar(uint32_t charcode, bool bCreate);
   void CheckType3FontMetrics();
 
   CFX_Matrix& GetFontMatrix() { return m_FontMatrix; }

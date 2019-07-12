@@ -1817,7 +1817,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     if (charcode == static_cast<uint32_t>(-1))
       continue;
 
-    CPDF_Type3Char* pType3Char = pType3Font->LoadChar(charcode);
+    CPDF_Type3Char* pType3Char = pType3Font->LoadChar(charcode, true);
     if (!pType3Char)
       continue;
 
@@ -1825,7 +1825,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     matrix.e += iChar > 0 ? textobj->GetCharPositions()[iChar - 1] : 0;
     matrix.Concat(text_matrix);
     matrix.Concat(mtObj2Device);
-    if (!pType3Char->LoadBitmap()) {
+    if (!pType3Char->LoadBitmapFromSoleImageOfForm()) {
       if (!glyphs.empty()) {
         for (size_t i = 0; i < iChar; ++i) {
           const TextGlyphPos& glyph = glyphs[i];

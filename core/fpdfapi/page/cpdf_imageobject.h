@@ -10,6 +10,9 @@
 #include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/retain_ptr.h"
+
+class CFX_DIBitmap;
 
 class CPDF_ImageObject final : public CPDF_PageObject {
  public:
@@ -29,6 +32,7 @@ class CPDF_ImageObject final : public CPDF_PageObject {
   void SetImage(const RetainPtr<CPDF_Image>& pImage);
   void set_matrix(const CFX_Matrix& matrix) { m_Matrix = matrix; }
   const CFX_Matrix& matrix() const { return m_Matrix; }
+  RetainPtr<CFX_DIBitmap> GetIndependentBitmap() const;
 
  private:
   void MaybePurgeCache();
