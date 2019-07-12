@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39351630_09a51b7b",
+        "filename": "core/fpdfapi/render/cpdf_type3cache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T21:54:58Z",
+      "side": 1,
+      "message": "pExisting?",
+      "range": {
+        "startLine": 106,
+        "startChar": 19,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "c2e647b28c4df6dff2f64ca399c6288798586c84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be320ab3_da8631ab",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T21:54:58Z",
+      "side": 1,
+      "message": "Just |it| here.",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "c2e647b28c4df6dff2f64ca399c6288798586c84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8c34e0_cd7b14a1",
+        "filename": "core/fpdfapi/render/cpdf_type3glyphmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T21:54:58Z",
+      "side": 1,
+      "message": "Can this be a const pointer? CPDF_Type3Cache::LoadGlyph() will also need to be updated.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "c2e647b28c4df6dff2f64ca399c6288798586c84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
