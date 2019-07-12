@@ -103,14 +103,14 @@ CFX_GlyphBitmap* CPDF_Type3Cache::LoadGlyph(uint32_t charcode,
   } else {
     pSizeCache = it->second.get();
   }
-  auto it2 = pSizeCache->m_GlyphMap.find(charcode);
-  if (it2 != pSizeCache->m_GlyphMap.end())
-    return it2->second.get();
+  CFX_GlyphBitmap* pOldBitmap = pSizeCache->GetBitmap(charcode);
+  if (pOldBitmap)
+    return pOldBitmap;
 
   std::unique_ptr<CFX_GlyphBitmap> pNewBitmap =
       RenderGlyph(pSizeCache, charcode, pMatrix);
   CFX_GlyphBitmap* pGlyphBitmap = pNewBitmap.get();
-  pSizeCache->m_GlyphMap[charcode] = std::move(pNewBitmap);
+  pSizeCache->SetBitmap(charcode, std::move(pNewBitmap));
   return pGlyphBitmap;
 }
 
