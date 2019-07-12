@@ -16,6 +16,24 @@
       "revId": "1f5857eb60ed326cc27a131c61bc9a7936c86f81",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2499d1_7b07c850",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-12T17:58:40Z",
+      "side": 1,
+      "message": "Done.\n\nAlso moved GetImage() to .cpp file to allow forward declaration of CPDF_Image in place of .h file.",
+      "parentUuid": "050d9903_0326d93a",
+      "revId": "1f5857eb60ed326cc27a131c61bc9a7936c86f81",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
