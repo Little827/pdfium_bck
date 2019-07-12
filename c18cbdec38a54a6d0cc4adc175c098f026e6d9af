@@ -23,6 +23,30 @@
       "revId": "c18cbdec38a54a6d0cc4adc175c098f026e6d9af",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2119efa0_f277ef12",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T20:31:45Z",
+      "side": 1,
+      "message": "You commented on line 55 instead of line 52. Does this mean the code has issue with /JS here? I created a test PDF with: /S /J#61v#61Script, and the existing code in this CL handles that just fine.",
+      "parentUuid": "1d0a9fdf_65e27bb2",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 60
+      },
+      "revId": "c18cbdec38a54a6d0cc4adc175c098f026e6d9af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
