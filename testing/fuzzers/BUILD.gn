@@ -408,6 +408,7 @@ if (pdf_enable_v8) {
       deps = [
         ":fuzzer_helper",
         "../../:pdfium_public_headers",
+        "../../samples:pdfium_test_event_helper",
       ]
       public_fuzzer = true
     }
