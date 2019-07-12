@@ -1,4 +1,143 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1562888379 -0700\nnonce AC6AUtM7j6gpMNJFJPMNjoWBdPxXTUUv9uum9iubRc3WXflLBX44nUl8U6MZpxmoi0uEVJh3IiL/\n\n0000000000000000000000000000000000000000 a361447115e781b5c785df5347a238ad5e090a25 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0nyLsACgkQqzYtYVpm\n/Xt/XQf8CIxlviNVLqlhl+4cC/dAGGCyNPZr9XqacAFD0ZAAT3ygzRNOep1G532r\nh46CopdqrtMmVcy9AFCod9Nzx0Bnc+D/Ny7hGDiTaOL62ELFXE5rQGk4K8hik+Yi\nts6WB27CPs2tRQeF7EqOJPGGKfv4PDUNbJxRHNTd1GU3X6YhfoppnPHM4DulQHZa\nslPN6rMGaQQMGpndvE7x5rOWCkEQEvK7Jja+6eH8xzXD45Z92xMUM5WkvIwSjyr5\nvJysCCZDgxG+pNrJfPb4QQ2x6sJb7jr1VGMWm65A4bWzTlIy1qP129ANC/OYa1T4\ninzIUTjHdjdXBBA635nramPhSiqPeg\u003d\u003d\n\u003dGfSQ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "77140990_bd52b575",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-12T16:55:34Z",
+      "side": 1,
+      "message": "nit: maybe comma here since I first read this as \n  2 of the parameters are always 0 and 2.",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6757d15_5ef0c3a7",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-12T16:55:34Z",
+      "side": 1,
+      "message": "nit: over(), space around |*|.",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2c5c19_d9f73f41",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-12T16:55:34Z",
+      "side": 1,
+      "message": "nit: fabs() \u003d\u003e double, so just |1.0|.",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bf8ae9f_6e934f41",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-12T16:55:34Z",
+      "side": 1,
+      "message": "nit: I guess I\u0027d be happier if this were a pointer and we removed the |*| from the rvalue.",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9269499_595beede",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-12T16:55:34Z",
+      "side": 1,
+      "message": "nit: one per line.",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af1e3e6_5a59412e",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-12T16:55:34Z",
+      "side": 1,
+      "message": "is this std::min(end_i, src_len - 1)?",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 26
+      },
+      "revId": "a361447115e781b5c785df5347a238ad5e090a25",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
