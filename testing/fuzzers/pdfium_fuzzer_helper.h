@@ -7,11 +7,16 @@
 
 #include <stdint.h>
 
+#include <string>
+
 #include "public/fpdfview.h"
 
 class PDFiumFuzzerHelper {
  public:
   void RenderPdf(const char* data, size_t len);
+  void RenderPdfAndSendEvents(const char* data,
+                              size_t len,
+                              const std::string& events);
 
   virtual int GetFormCallbackVersion() const = 0;
   virtual bool OnFormFillEnvLoaded(FPDF_DOCUMENT doc);
@@ -26,7 +31,8 @@ class PDFiumFuzzerHelper {
                   FPDF_FORMHANDLE form,
                   int page_index,
                   int render_flags,
-                  int form_flags);
+                  int form_flags,
+                  const std::string& events);
 };
 
 #endif  // TESTING_FUZZERS_PDFIUM_FUZZER_HELPER_H_

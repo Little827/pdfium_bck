@@ -5,10 +5,14 @@
 #ifndef TESTING_FUZZERS_PDFIUM_XFA_LPM_FUZZ_STUB_H_
 #define TESTING_FUZZERS_PDFIUM_XFA_LPM_FUZZ_STUB_H_
 
+#include <string>
+
 #include "public/fpdfview.h"
 
 // LPM defines LLVMFuzzerTestOneInput, this function should be used by the LPM
 // harness to pass the deserialized proto to PDFium.
-FPDF_EXPORT void PdfiumXFALPMFuzzStub(const char* pdf, size_t size);
+FPDF_EXPORT void PdfiumXFALPMFuzzStub(const char* pdf,
+                                      size_t size,
+                                      const std::string& events);
 
 #endif  // TESTING_FUZZERS_PDFIUM_XFA_LPM_FUZZ_STUB_H_

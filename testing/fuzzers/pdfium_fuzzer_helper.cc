@@ -23,6 +23,7 @@
 #include "public/fpdf_dataavail.h"
 #include "public/fpdf_ext.h"
 #include "public/fpdf_text.h"
+#include "samples/pdfium_test_event_helper.h"
 #include "third_party/base/span.h"
 
 namespace {
@@ -115,6 +116,12 @@ bool PDFiumFuzzerHelper::OnFormFillEnvLoaded(FPDF_DOCUMENT doc) {
 }
 
 void PDFiumFuzzerHelper::RenderPdf(const char* data, size_t len) {
+  RenderPdfAndSendEvents(data, len, "");
+}
+
+void PDFiumFuzzerHelper::RenderPdfAndSendEvents(const char* data,
+                                                size_t len,
+                                                const std::string& events) {
   int render_flags;
   int form_flags;
   std::tie(render_flags, form_flags) =
@@ -199,7 +206,7 @@ void PDFiumFuzzerHelper::RenderPdf(const char* data, size_t len) {
       if (nRet == PDF_DATA_ERROR)
         return;
     }
-    RenderPage(doc.get(), form.get(), i, render_flags, form_flags);
+    RenderPage(doc.get(), form.get(), i, render_flags, form_flags, events);
   }
   OnRenderFinished(doc.get());
   FORM_DoDocumentAAction(form.get(), FPDFDOC_AACTION_WC);
@@ -209,7 +216,8 @@ bool PDFiumFuzzerHelper::RenderPage(FPDF_DOCUMENT doc,
                                     FPDF_FORMHANDLE form,
                                     int page_index,
                                     int render_flags,
-                                    int form_flags) {
+                                    int form_flags,
+                                    const std::string& events) {
   ScopedFPDFPage page(FPDF_LoadPage(doc, page_index));
   if (!page)
     return false;
@@ -230,6 +238,7 @@ bool PDFiumFuzzerHelper::RenderPage(FPDF_DOCUMENT doc,
                  form_flags);
   }
   FORM_DoPageAAction(page.get(), form, FPDFPAGE_AACTION_CLOSE);
+  SendPageEvents(form, page.get(), events);
   FORM_OnBeforeClosePage(page.get(), form);
   return !!bitmap;
 }

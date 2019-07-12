@@ -5,6 +5,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <string>
+
 #include "public/fpdf_formfill.h"
 #include "testing/fuzzers/pdfium_fuzzer_helper.h"
 #include "testing/fuzzers/pdfium_xfa_lpm_fuzz_stub.h"
@@ -22,7 +24,9 @@ class PDFiumLpmFuzzStub : public PDFiumFuzzerHelper {
   }
 };
 
-void PdfiumXFALPMFuzzStub(const char* pdf, size_t size) {
+void PdfiumXFALPMFuzzStub(const char* pdf,
+                          size_t size,
+                          const std::string& events) {
   PDFiumLpmFuzzStub fuzz_stub;
-  fuzz_stub.RenderPdf(pdf, size);
+  fuzz_stub.RenderPdfAndSendEvents(pdf, size, events);
 }
