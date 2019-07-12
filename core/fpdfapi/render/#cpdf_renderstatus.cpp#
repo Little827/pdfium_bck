@@ -1817,7 +1817,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     if (charcode == static_cast<uint32_t>(-1))
       continue;
 
-    CPDF_Type3Char* pType3Char = pType3Font->LoadChar(charcode, true);
+    CPDF_Type3Char* pType3Char = pType3Font->LoadChar(charcode);
     if (!pType3Char)
       continue;
 
@@ -1825,7 +1825,47 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     matrix.e += iChar > 0 ? textobj->GetCharPositions()[iChar - 1] : 0;
     matrix.Concat(text_matrix);
     matrix.Concat(mtObj2Device);
-    if (!pType3Char->LoadBitmapFromSoleImageOfForm()) {
+    if (pType3Char->LoadBitmapFromSoleImageOfForm()) {
+      if (!pType3Char->GetBitmap())
+        continue;
+      
+      if (device_type == DeviceType::kDisplay) {
+        RetainPtr<CPDF_Type3Cache> pCache = GetCachedType3(pType3Font);
+        refTypeCache.m_dwCount++;
+        CFX_GlyphBitmap* pBitmap = pCache->LoadGlyph(charcode, &matrix);
+        if (!pBitmap)
+          continue;
+
+        CFX_Point origin(FXSYS_round(matrix.e), FXSYS_round(matrix.f));
+        if (glyphs.empty()) {
+          FX_SAFE_INT32 left = origin.x;
+          left += pBitmap->left();
+          if (!left.IsValid())
+            continue;
+
+          FX_SAFE_INT32 top = origin.y;
+          top -= pBitmap->top();
+          if (!top.IsValid())
+            continue;
+
+          m_pDevice->SetBitMask(pBitmap->GetBitmap(), left.ValueOrDie(),
+                                top.ValueOrDie(), fill_argb);
+        } else {
+          glyphs[iChar].m_pGlyph = pBitmap;
+          glyphs[iChar].m_Origin = origin;
+        }
+      } else {
+        CFX_Matrix image_matrix = pType3Char->matrix() * matrix;
+        CPDF_ImageRenderer renderer;
+        if (renderer.Start(this, pType3Char->GetBitmap(), fill_argb, 255,
+                           image_matrix, FXDIB_ResampleOptions(), false,
+                           BlendMode::kNormal)) {
+          renderer.Continue(nullptr);
+        }
+        if (!renderer.GetResult())
+          return false;
+      }
+    }
       if (!glyphs.empty()) {
         for (size_t i = 0; i < iChar; ++i) {
           const TextGlyphPos& glyph = glyphs[i];
@@ -1894,44 +1934,6 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
         status.RenderObjectList(pType3Char->form(), matrix);
         m_pDevice->SetDIBits(bitmap_device.GetBitmap(), rect.left, rect.top);
       }
-    } else if (pType3Char->GetBitmap()) {
-      if (device_type == DeviceType::kDisplay) {
-        RetainPtr<CPDF_Type3Cache> pCache = GetCachedType3(pType3Font);
-        refTypeCache.m_dwCount++;
-        CFX_GlyphBitmap* pBitmap = pCache->LoadGlyph(charcode, &matrix);
-        if (!pBitmap)
-          continue;
-
-        CFX_Point origin(FXSYS_round(matrix.e), FXSYS_round(matrix.f));
-        if (glyphs.empty()) {
-          FX_SAFE_INT32 left = origin.x;
-          left += pBitmap->left();
-          if (!left.IsValid())
-            continue;
-
-          FX_SAFE_INT32 top = origin.y;
-          top -= pBitmap->top();
-          if (!top.IsValid())
-            continue;
-
-          m_pDevice->SetBitMask(pBitmap->GetBitmap(), left.ValueOrDie(),
-                                top.ValueOrDie(), fill_argb);
-        } else {
-          glyphs[iChar].m_pGlyph = pBitmap;
-          glyphs[iChar].m_Origin = origin;
-        }
-      } else {
-        CFX_Matrix image_matrix = pType3Char->matrix() * matrix;
-        CPDF_ImageRenderer renderer;
-        if (renderer.Start(this, pType3Char->GetBitmap(), fill_argb, 255,
-                           image_matrix, FXDIB_ResampleOptions(), false,
-                           BlendMode::kNormal)) {
-          renderer.Continue(nullptr);
-        }
-        if (!renderer.GetResult())
-          return false;
-      }
-    }
   }
 
   if (glyphs.empty())

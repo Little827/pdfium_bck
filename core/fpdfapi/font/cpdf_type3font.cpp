@@ -91,13 +91,13 @@ void CPDF_Type3Font::CheckType3FontMetrics() {
   CheckFontMetrics();
 }
 
-CPDF_Type3Char* CPDF_Type3Font::LoadChar(uint32_t charcode) {
-  if (m_CharLoadingDepth >= kMaxType3FormLevel)
-    return nullptr;
-
+CPDF_Type3Char* CPDF_Type3Font::LoadChar(uint32_t charcode, bool bCreate) {
   auto it = m_CacheMap.find(charcode);
   if (it != m_CacheMap.end())
     return it->second.get();
+
+  if (m_CharLoadingDepth >= kMaxType3FormLevel)
+    return nullptr;
 
   const char* name = GetAdobeCharName(m_BaseEncoding, m_CharNames, charcode);
   if (!name)
@@ -114,6 +114,7 @@ CPDF_Type3Char* CPDF_Type3Font::LoadChar(uint32_t charcode) {
       pStream);
 
   auto pNewChar = pdfium::MakeUnique<CPDF_Type3Char>();
+  CHECK(bCreate);
 
   // This can trigger recursion into this method. The content of |m_CacheMap|
   // can change as a result. Thus after it returns, check the cache again for
@@ -143,13 +144,13 @@ uint32_t CPDF_Type3Font::GetCharWidthF(uint32_t charcode) {
   if (m_CharWidthL[charcode])
     return m_CharWidthL[charcode];
 
-  const CPDF_Type3Char* pChar = LoadChar(charcode);
+  const CPDF_Type3Char* pChar = LoadChar(charcode, false);
   return pChar ? pChar->width() : 0;
 }
 
 FX_RECT CPDF_Type3Font::GetCharBBox(uint32_t charcode) {
   FX_RECT ret;
-  const CPDF_Type3Char* pChar = LoadChar(charcode);
+  const CPDF_Type3Char* pChar = LoadChar(charcode, false);
   if (pChar)
     ret = pChar->bbox();
   return ret;
