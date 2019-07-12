@@ -23,6 +23,30 @@
       "revId": "bf645fe6b93c17682a7812ba177064bdd8a17f3d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09948de_ab9b26bd",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-12T23:22:30Z",
+      "side": 1,
+      "message": "Fixed inside CPDF_Action.",
+      "parentUuid": "65490005_6aaea3b3",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "bf645fe6b93c17682a7812ba177064bdd8a17f3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
