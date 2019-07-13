@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce2dfdde_90448f74",
+        "filename": "core/fpdfapi/font/cpdf_type3char.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T02:49:54Z",
+      "side": 1,
+      "message": "To be removed in the near future?",
+      "revId": "d2f88dd10fbe88b9b805f563f4ed46582587b5c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "667fe544_b8bec4c5",
         "filename": "core/fpdfapi/page/cpdf_form.cpp",
         "patchSetId": 4
