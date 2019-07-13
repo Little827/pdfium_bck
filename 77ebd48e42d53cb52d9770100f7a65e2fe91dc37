@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb0ce687_d7bf9eef",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "Please flip the arguments around, to be consistent with line 650.",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa875b73_db985199",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "You can use ScopedFPDFAnnotation here, and avoid having to manually call FPDFPage_CloseAnnot().",
+      "range": {
+        "startLine": 644,
+        "startChar": 4,
+        "endLine": 644,
+        "endChar": 19
+      },
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7915239_4d47625b",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "nit: No space after the bracket, to be consistent with the end bracket, and line 12.",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b32f45bc_e8b8f4bc",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "Use consecutive object numbers?",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca62e75d_6af758a9",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "/Matrix is optional and defaults to the identity matrix so these can be removed.",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d811f4_234739a6",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "If it doesn\u0027t matter, maybe use nice round(er) numbers for coordinates?",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b044e65_f28b3079",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "Not sure if this is needed, but assuming yes, there are several of these that are all the same. In that case, make a new object for this, and references it from here.",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e732903_5db71184",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-13T03:03:52Z",
+      "side": 1,
+      "message": "I like to put /Type and /Subtype first, so it\u0027s easier to tell what an object is.",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
