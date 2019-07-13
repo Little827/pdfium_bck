@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd8e757b_6a71a1d4",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0ce687_d7bf9eef",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa875b73_db985199",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c4cfdf5_f7a2f30c",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa875b73_db985199",
+      "range": {
+        "startLine": 644,
+        "startChar": 4,
+        "endLine": 644,
+        "endChar": 19
+      },
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0f431ef1_78cf05ac",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7915239_4d47625b",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b32f45bc_e8b8f4bc",
         "filename": "testing/resources/link_annots.in",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ac6026_e6793efd",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "Done. I was using object id ranges for different types of objects (e.g., 40 - 49 for annotations) so that any addition would be easier. But then I realized I didn\u0027t follow it consistently (e.g., pages were still at 6 and 7). I switched to consecutive numbers.",
+      "parentUuid": "b32f45bc_e8b8f4bc",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "3a52dc10_4fe08cf0",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca62e75d_6af758a9",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47d811f4_234739a6",
         "filename": "testing/resources/link_annots.in",
         "patchSetId": 4
@@ -113,6 +215,24 @@
       "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503cd83d_bd4799c7",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "I kept the coordinated same as original PDF - but now I have updated to the rounded numbers. Updating this also required updating the appearance streams, where size computation is done manually. Perhaps the python tool can add the provision of updating the calculated stream size, just like it does for offset calculation.",
+      "parentUuid": "47d811f4_234739a6",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "1a20fed2_a3c1db55",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b044e65_f28b3079",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e732903_5db71184",
         "filename": "testing/resources/link_annots.in",
         "patchSetId": 4
@@ -147,6 +285,24 @@
       "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cdc7f71_5ecf4a43",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-13T06:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e732903_5db71184",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
