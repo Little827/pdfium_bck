@@ -16,6 +16,24 @@
       "revId": "34e479153f174b19aa330378fca15e2be67a864b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a7b567_aa48fc37",
+        "filename": "core/fpdfdoc/cpdf_bookmarktree.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-15T20:57:25Z",
+      "side": 1,
+      "message": "Done.\nits a little clunky to pass by pointer and then return by value, but ok.  Changing this to return an unique_ptr\u003c\u003e would be clearer but too much work for this cl.",
+      "parentUuid": "9463fca6_a2d46ce1",
+      "revId": "34e479153f174b19aa330378fca15e2be67a864b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
