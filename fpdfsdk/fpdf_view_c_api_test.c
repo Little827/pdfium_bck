@@ -94,8 +94,8 @@ int CheckPDFiumCApi() {
     CHK(FPDFCatalog_IsTagged);
 
     // fpdf_dataavail.h
-    CHK(FPDFAvail_Create);
     CHK(FPDFAvail_Destroy);
+    CHK(FPDFAvail_Create);
     CHK(FPDFAvail_GetDocument);
     CHK(FPDFAvail_GetFirstPageNum);
     CHK(FPDFAvail_IsDocAvail);
