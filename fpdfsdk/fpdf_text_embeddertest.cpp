@@ -597,7 +597,7 @@ TEST_F(FPDFTextEmbedderTest, WebLinksCharRanges) {
   int start_char_index;
   int char_count;
   ASSERT_TRUE(
-      FPDFLink_GetTextRange(page_link, 0, &start_char_index, &char_count));
+      FPDFLink_GetAccRange(page_link, 0, &start_char_index, &char_count));
   EXPECT_EQ(35, start_char_index);
   EXPECT_EQ(24, char_count);
 
@@ -605,7 +605,7 @@ TEST_F(FPDFTextEmbedderTest, WebLinksCharRanges) {
   start_char_index = -10;
   char_count = -8;
   ASSERT_FALSE(
-      FPDFLink_GetTextRange(page_link, 6, &start_char_index, &char_count));
+      FPDFLink_GetAccRange(page_link, 6, &start_char_index, &char_count));
   EXPECT_EQ(start_char_index, -10);
   EXPECT_EQ(char_count, -8);
 
@@ -613,7 +613,7 @@ TEST_F(FPDFTextEmbedderTest, WebLinksCharRanges) {
   start_char_index = -10;
   char_count = -8;
   ASSERT_FALSE(
-      FPDFLink_GetTextRange(nullptr, 0, &start_char_index, &char_count));
+      FPDFLink_GetAccRange(nullptr, 0, &start_char_index, &char_count));
   EXPECT_EQ(start_char_index, -10);
   EXPECT_EQ(char_count, -8);
 
@@ -621,7 +621,7 @@ TEST_F(FPDFTextEmbedderTest, WebLinksCharRanges) {
   start_char_index = -10;
   char_count = -8;
   ASSERT_FALSE(
-      FPDFLink_GetTextRange(page_link, -4, &start_char_index, &char_count));
+      FPDFLink_GetAccRange(page_link, -4, &start_char_index, &char_count));
   EXPECT_EQ(start_char_index, -10);
   EXPECT_EQ(char_count, -8);
 
