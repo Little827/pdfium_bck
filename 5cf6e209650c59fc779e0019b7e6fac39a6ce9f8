@@ -99,6 +99,24 @@
       "revId": "5cf6e209650c59fc779e0019b7e6fac39a6ce9f8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294bc531_99338832",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-07-15T10:53:26Z",
+      "side": 1,
+      "message": "\u003e Well, I tried to just rearrange this file at ToT, and it turns out that didn\u0027t trigger a presubmit failure. So I\u0027m going to patch that up with https://pdfium-review.googlesource.com/c/pdfium/+/57791.\n\u003e \n\u003e The place that does trigger presubmit failures is in public/, where if you rename \"FPDFLink_GetTextRange\" to something else, that should trigger it. You can make a local branch, make this deliberate change, commit it, and then run \"git cl presubmit\" to run the presubmit without uploading. If that doesn\u0027t trigger a failure, then let\u0027s chat offline to figure out what\u0027s wrong with your setup.\n\u003e \n\u003e A presubmit bot in the CQ is definitely a good idea. It\u0027s https://crbug.com/pdfium/971\n\nI don\u0027t think it evens triggers presubmit failures in public/, since currently APIs are not in alphabetical order.\nI did a small change where things weren\u0027t in alphabetical order everywhere possible and i still didn\u0027t see any presubmit errors or warnings.\nhttps://pdfium-review.googlesource.com/c/pdfium/+/57831",
+      "parentUuid": "6dac78c4_e9b9eb96",
+      "revId": "5cf6e209650c59fc779e0019b7e6fac39a6ce9f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
