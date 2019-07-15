@@ -48,10 +48,24 @@ CPDF_Form::CPDF_Form(CPDF_Document* pDoc,
 
 CPDF_Form::~CPDF_Form() = default;
 
+void CPDF_Form::ParseContentForType3Char(CPDF_Type3Char* pType3Char) {
+  ParseContentInternal(nullptr, nullptr, pType3Char, nullptr);
+}
+
+void CPDF_Form::ParseContent() {
+  ParseContentInternal(nullptr, nullptr, nullptr, nullptr);
+}
+
 void CPDF_Form::ParseContent(const CPDF_AllStates* pGraphicStates,
                              const CFX_Matrix* pParentMatrix,
-                             CPDF_Type3Char* pType3Char,
                              std::set<const uint8_t*>* parsedSet) {
+  ParseContentInternal(pGraphicStates, pParentMatrix, nullptr, parsedSet);
+}
+
+void CPDF_Form::ParseContentInternal(const CPDF_AllStates* pGraphicStates,
+                                     const CFX_Matrix* pParentMatrix,
+                                     CPDF_Type3Char* pType3Char,
+                                     std::set<const uint8_t*>* parsedSet) {
   if (GetParseState() == ParseState::kParsed)
     return;
 
