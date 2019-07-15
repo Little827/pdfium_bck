@@ -403,10 +403,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFLink_GetRect(FPDF_PAGELINK link_page,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFLink_GetTextRange(FPDF_PAGELINK link_page,
-                      int link_index,
-                      int* start_char_index,
-                      int* char_count) {
+FPDFLink_GetAccRange(FPDF_PAGELINK link_page,
+                     int link_index,
+                     int* start_char_index,
+                     int* char_count) {
   if (!link_page || link_index < 0)
     return false;
 
