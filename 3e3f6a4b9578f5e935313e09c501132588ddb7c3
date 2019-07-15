@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c98128fe_23b034bf",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-15T20:23:27Z",
+      "side": 1,
+      "message": "nit: over parenthesized: if (start_pos \u003d\u003d 1 || start_pos \u003d\u003d 2) {",
+      "revId": "3e3f6a4b9578f5e935313e09c501132588ddb7c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d499eba_3947c205",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-15T20:23:27Z",
+      "side": 1,
+      "message": "Please add the {{streamlen}} macro to objects with streams, then their /Length will be auto-calculated. See tagged_alt_text.in for example.",
+      "revId": "3e3f6a4b9578f5e935313e09c501132588ddb7c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f7f57bc_180d41e8",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-15T20:23:27Z",
+      "side": 1,
+      "message": "And use {{streamlen}} in place of /Length to have these be auto-calculated as well.",
+      "revId": "3e3f6a4b9578f5e935313e09c501132588ddb7c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
