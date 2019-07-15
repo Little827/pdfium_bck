@@ -312,7 +312,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFLink_CountRects);
     CHK(FPDFLink_CountWebLinks);
     CHK(FPDFLink_GetRect);
-    CHK(FPDFLink_GetTextRange);
+    CHK(FPDFLink_GetAccRange);
     CHK(FPDFLink_GetURL);
     CHK(FPDFLink_LoadWebLinks);
     CHK(FPDFText_ClosePage);
