@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "075dac98_37630d29",
+        "filename": "core/fpdfapi/font/cpdf_type3char.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-15T18:29:24Z",
+      "side": 1,
+      "message": "Yep, we need to push some more work up to /page or /render layers and have simpler methods here eventually.",
+      "parentUuid": "ce2dfdde_90448f74",
+      "revId": "d2f88dd10fbe88b9b805f563f4ed46582587b5c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "667fe544_b8bec4c5",
         "filename": "core/fpdfapi/page/cpdf_form.cpp",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "d2f88dd10fbe88b9b805f563f4ed46582587b5c9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a3d3ab3_59705e3e",
+        "filename": "core/fpdfapi/page/cpdf_form.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-15T18:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "667fe544_b8bec4c5",
+      "revId": "d2f88dd10fbe88b9b805f563f4ed46582587b5c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
