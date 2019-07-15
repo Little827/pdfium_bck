@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e303eae_bbc0eafa",
+        "filename": "testing/resources/pixel/bug_983867.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-15T22:16:23Z",
+      "side": 1,
+      "message": "Put the type first?",
+      "revId": "2839f1c8f264cc186e8fd49d6f363de2beb0949b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46da878c_26de4911",
+        "filename": "testing/resources/pixel/bug_983867.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-15T22:16:23Z",
+      "side": 1,
+      "message": "Add a space like other arrays.",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "2839f1c8f264cc186e8fd49d6f363de2beb0949b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b00b9e9_ee02ccae",
+        "filename": "testing/resources/pixel/bug_983867.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-15T22:16:23Z",
+      "side": 1,
+      "message": "Just pick some nice round values if they don\u0027t really matter?",
+      "revId": "2839f1c8f264cc186e8fd49d6f363de2beb0949b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88e024fe_49b5f449",
+        "filename": "testing/resources/pixel/bug_983867.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-15T22:16:23Z",
+      "side": 1,
+      "message": "2 space indent",
+      "revId": "2839f1c8f264cc186e8fd49d6f363de2beb0949b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
