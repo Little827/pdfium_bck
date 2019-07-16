@@ -135,6 +135,24 @@
       "revId": "5cf6e209650c59fc779e0019b7e6fac39a6ce9f8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c2aeba2_7c2601eb",
+        "filename": "fpdfsdk/fpdf_view_c_api_test.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-16T20:28:00Z",
+      "side": 1,
+      "message": "I finally got a chance to test on Windows and the presubmit check is indeed broken. I filed https://crbug.com/pdfium/1365 for that. Thanks for testing.",
+      "parentUuid": "de177688_d3ed0a66",
+      "revId": "5cf6e209650c59fc779e0019b7e6fac39a6ce9f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
