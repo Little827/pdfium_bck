@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "8c421120_bb7f572d",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-16T07:55:27Z",
+      "side": 1,
+      "message": "Ack. Cross Reference (xref) table lists all indirect objects. Reckon it is not an easy way to count the number of objects present though.",
+      "parentUuid": "009982a3_8211fc37",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca62e75d_6af758a9",
         "filename": "testing/resources/link_annots.in",
         "patchSetId": 4
@@ -266,6 +284,24 @@
       "side": 1,
       "message": "The tool can do that. I added more comments.",
       "parentUuid": "503cd83d_bd4799c7",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ef22f0_19abcada",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-16T07:55:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f4c265b_2da3be86",
       "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
