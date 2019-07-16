@@ -220,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "a7d7c7d7_b5d16d80",
+        "filename": "testing/resources/link_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-07-16T19:59:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e22c5fb_25dd910e",
+      "revId": "77ebd48e42d53cb52d9770100f7a65e2fe91dc37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca62e75d_6af758a9",
         "filename": "testing/resources/link_annots.in",
         "patchSetId": 4
