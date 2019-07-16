@@ -1,0 +1,120 @@
+%PDF-1.7
+% ò¤ô
+1 0 obj
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm << /Fields [ 8 0 R 9 0 R 10 0 R ] /DR 4 0 R >>
+>>
+endobj
+2 0 obj
+<< /Count 1 /Kids [ 3 0 R ] /Type /Pages >>
+endobj
+3 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources 4 0 R
+  /MediaBox [ 0 0 400 600 ]
+  /Contents 7 0 R
+  /Annots [ 8 0 R 9 0 R 10 0 R ]
+>>
+endobj
+4 0 obj
+<< /Font 5 0 R >>
+endobj
+5 0 obj
+<< /F1 6 0 R >>
+endobj
+6 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Roman
+>>
+endobj
+7 0 obj
+<< /Length 61 >>
+stream
+BT
+0 0 0 rg
+/F1 12 Tf
+100 450 Td
+(Printable Test Form) Tj
+ET
+endstream
+endobj
+8 0 obj
+<<
+  /Type /Annot
+  /FT /Ch
+  /Ff 131072
+  /F 4
+  /T (Combo_Hockey)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 200 350 350 380 ]
+  /Subtype /Widget
+  /Opt [(Anaheim Ducks) (Arizona Coyotes) (Boston Bruins) (Buffalo Sabres) (Calgary Flames)
+        (Carolina Hurricanes)(Chicago Blackhawks) (Colorado Avalanche) (Columbus Blue Jackets)
+        (Dallas Stars) (Detroit Red Wings) (Edmonton Oilers) (Florida Panthers)
+        (Los Angeles Kings) (Minnesota Wild) (Montreal Canadiens) (Nashville Predators)
+        (New Jersey Devils) (New York Islanders) (New York Rangers) (Ottawa Senators)
+        (Philadelphia Flyers) (Pittsburgh Penguins) (San Jose Sharks) (St. Louis Blues)
+        (Tampa Bay Lightning) (Toronto Maple Leafs) (Vancouver Canucks) (Vegas Golden Knights)
+        (Washington Capitals) (Winnipeg Jets)]
+  /V (Calgary Flames)
+>>
+endobj
+9 0 obj
+<<
+  /Type /Annot
+  /FT /Ch
+  /Ff 393216
+  /F 4
+  /T (Combo_Baseball_Editable)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 150 400 300 430 ]
+  /Subtype /Widget
+  /Opt [(Baltimore Orioles) (Boston Red Sox) (New York Yankees) (Tampa Bay Rays) (Toronto Blue Jays)
+        (Chicago White Sox) (Cleveland Indians) (Detroit Tigers) (Kansas City Royals) (Minnesota Twins)
+        (Houston Astros) (Los Angeles Angels) (Oakland Athletics) (Seattle Mariners) (Texas Rangers)
+        (Atlanta Braves) (Miami Marlins) (New York Mets) (Philadelphia Phillies) (Washington Nationals)
+        (Cincinnati Reds) (Chicago Cubs) (Milwaukee Brewers) (Pittsburgh Pirates) (St. Louis Cardinals)
+        (Arizona Diamondbacks) (Colorado Rockies) (Los Angeles Dodgers) (San Diego Padres) (San Francisco Giants)]
+  /V (New York Yankees)
+>>
+endobj
+10 0 obj
+<<
+  /Type /Annot
+  /FT /Ch
+  /Ff 131073
+  /F 4
+  /T (Combo_ReadOnly)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 500 200 530 ]
+  /Subtype /Widget
+  /Opt [(Hokkaido) (Honshu) (Shikoku) (Kyushu)]
+  /V (Honshu)
+>>
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000015 00000 n 
+0000000127 00000 n 
+0000000186 00000 n 
+0000000335 00000 n 
+0000000368 00000 n 
+0000000399 00000 n 
+0000000477 00000 n 
+0000000587 00000 n 
+0000001440 00000 n 
+0000002264 00000 n 
+trailer <<
+  /Root 1 0 R
+  /Size 11
+>>
+startxref
+2489
+%%EOF

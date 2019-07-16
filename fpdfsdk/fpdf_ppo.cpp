@@ -344,6 +344,18 @@ bool CPDF_PageOrganizer::Init() {
     pNewPages->SetNewFor<CPDF_Reference>("Kids", dest(),
                                          pNewArray->GetObjNum());
   }
+
+  if (!pNewRoot->GetObjectFor("AcroForm")) {
+    CPDF_Dictionary* pOldRoot = src()->GetRoot();
+    if (pOldRoot) {
+      CPDF_Object* pAcroForm = pOldRoot->GetObjectFor("AcroForm");
+      if (pAcroForm) {
+        pNewRoot->SetFor("AcroForm", pAcroForm->Clone());
+        UpdateReference(pNewRoot->GetDictFor("AcroForm"));
+      }
+    }
+  }
+
   return true;
 }
 
