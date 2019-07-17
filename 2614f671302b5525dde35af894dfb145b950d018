@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d4fb0be_30e69516",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-17T00:53:33Z",
+      "side": 1,
+      "message": "This test does not look very effective. If I implement FPDFPage_Flatten_No_Controls() as follows, this test still passes.\n\nFPDF_EXPORT int FPDF_CALLCONV\nFPDFPage_Flatten_No_Controls(FPDF_PAGE page,\n                             FPDF_FORMHANDLE hHandle,\n                             int nFlag) {\n  return FLATTEN_SUCCESS;\n}",
+      "revId": "2614f671302b5525dde35af894dfb145b950d018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a05ab8bd_c9b737ba",
+        "filename": "testing/resources/combobox_form_printable.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-17T00:53:33Z",
+      "side": 1,
+      "message": "This PDF is very similar to combobox_form.in. Instead of writing an entirely new PDF, is it possible to just tweak combobox_form.in and add some \"/F 4\" entries?",
+      "revId": "2614f671302b5525dde35af894dfb145b950d018",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
