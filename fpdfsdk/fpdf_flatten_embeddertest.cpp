@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include "public/fpdf_annot.h"
 #include "public/fpdf_flatten.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
@@ -69,4 +70,27 @@ TEST_F(FPDFFlattenEmbedderTest, BUG_896366) {
   UnloadPage(page);
 
   VerifySavedDocument(612, 792, md5_hash);
+}
+
+TEST_F(FPDFFlattenEmbedderTest, BUG_954307) {
+  static const char md5_hash_old[] = "b7b74b2f9bec3ffc6030ce6e7b3e7a67";
+  static const char md5_hash_new[] = "5ad5b07255e1f735d6ed9f88de7c30f8";
+  EXPECT_TRUE(OpenDocument("combobox_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  EXPECT_NE(FPDFPage_GetAnnotCount(page), 0);
+
+  ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+  CompareBitmap(bitmap.get(), 300, 600, md5_hash_old);
+
+  EXPECT_EQ(FLATTEN_SUCCESS,
+            FPDFPage_Flatten_No_Controls(page, form_handle(), FLAT_PRINT));
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  EXPECT_TRUE(page);
+  EXPECT_EQ(FPDFPage_GetAnnotCount(page), 0);
+
+  UnloadPage(page);
+
+  VerifySavedDocument(300, 600, md5_hash_new);
 }
