@@ -48,6 +48,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 393216
+  /F 4
   /T (Combo_Editable)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 350 200 380 ]
@@ -60,6 +61,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 131072
+  /F 4
   /T (Combo1)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 400 200 430 ]
@@ -76,6 +78,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 131073
+  /F 4
   /T (Combo_ReadOnly)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 500 200 530 ]

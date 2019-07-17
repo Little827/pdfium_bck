@@ -70,3 +70,12 @@ TEST_F(FPDFFlattenEmbedderTest, BUG_896366) {
 
   VerifySavedDocument(612, 792, md5_hash);
 }
+
+TEST_F(FPDFFlattenEmbedderTest, BUG_954307) {
+  EXPECT_TRUE(OpenDocument("combobox_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+  EXPECT_EQ(FLATTEN_SUCCESS,
+            FPDFPage_Flatten_No_Controls(page, form_handle(), FLAT_PRINT));
+  UnloadPage(page);
+}
