@@ -97,7 +97,10 @@ xref
 0000000575 00000 n 
 0000000781 00000 n 
 0000001237 00000 n 
-trailer<< /Root 1 0 R /Size 11 >>
+trailer <<
+  /Root 1 0 R
+  /Size 11
+>>
 startxref
 1426
 %%EOF

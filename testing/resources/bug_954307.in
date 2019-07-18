@@ -1,0 +1,103 @@
+{{header}}
+{{object 1 0}}
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm << /Fields [ 8 0 R 9 0 R 10 0 R ] /DR 4 0 R >>
+>>
+endobj
+{{object 2 0}}
+<< /Count 1 /Kids [ 3 0 R ] /Type /Pages >>
+endobj
+{{object 3 0}}
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources 4 0 R
+  /MediaBox [ 0 0 400 600 ]
+  /Contents 7 0 R
+  /Annots [ 8 0 R 9 0 R 10 0 R ]
+>>
+endobj
+{{object 4 0}}
+<< /Font 5 0 R >>
+endobj
+{{object 5 0}}
+<< /F1 6 0 R >>
+endobj
+{{object 6 0}}
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Times-Roman
+>>
+endobj
+{{object 7 0}}
+<< {{streamlen}} >>
+stream
+BT
+0 0 0 rg
+/F1 12 Tf
+100 450 Td
+(Printable Test Form) Tj
+ET
+endstream
+endobj
+{{object 8 0}}
+<<
+  /Type /Annot
+  /FT /Ch
+  /Ff 131072
+  /F 4
+  /T (Combo_Hockey)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 200 350 350 380 ]
+  /Subtype /Widget
+  /Opt [(Anaheim Ducks) (Arizona Coyotes) (Boston Bruins) (Buffalo Sabres) (Calgary Flames)
+        (Carolina Hurricanes)(Chicago Blackhawks) (Colorado Avalanche) (Columbus Blue Jackets)
+        (Dallas Stars) (Detroit Red Wings) (Edmonton Oilers) (Florida Panthers)
+        (Los Angeles Kings) (Minnesota Wild) (Montreal Canadiens) (Nashville Predators)
+        (New Jersey Devils) (New York Islanders) (New York Rangers) (Ottawa Senators)
+        (Philadelphia Flyers) (Pittsburgh Penguins) (San Jose Sharks) (St. Louis Blues)
+        (Tampa Bay Lightning) (Toronto Maple Leafs) (Vancouver Canucks) (Vegas Golden Knights)
+        (Washington Capitals) (Winnipeg Jets)]
+  /V (Calgary Flames)
+>>
+endobj
+{{object 9 0}}
+<<
+  /Type /Annot
+  /FT /Ch
+  /Ff 393216
+  /F 4
+  /T (Combo_Baseball_Editable)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 150 400 300 430 ]
+  /Subtype /Widget
+  /Opt [(Baltimore Orioles) (Boston Red Sox) (New York Yankees) (Tampa Bay Rays) (Toronto Blue Jays)
+        (Chicago White Sox) (Cleveland Indians) (Detroit Tigers) (Kansas City Royals) (Minnesota Twins)
+        (Houston Astros) (Los Angeles Angels) (Oakland Athletics) (Seattle Mariners) (Texas Rangers)
+        (Atlanta Braves) (Miami Marlins) (New York Mets) (Philadelphia Phillies) (Washington Nationals)
+        (Cincinnati Reds) (Chicago Cubs) (Milwaukee Brewers) (Pittsburgh Pirates) (St. Louis Cardinals)
+        (Arizona Diamondbacks) (Colorado Rockies) (Los Angeles Dodgers) (San Diego Padres) (San Francisco Giants)]
+  /V (New York Yankees)
+>>
+endobj
+{{object 10 0}}
+<<
+  /Type /Annot
+  /FT /Ch
+  /Ff 131073
+  /F 4
+  /T (Combo_ReadOnly_Overflow)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 500 200 530 ]
+  /Subtype /Widget
+  /Opt [(abcdefghijklmnopqrstuvwxyz1234567890) (Hokkaido) (Honshu) (Shikoku) (Kyushu)]
+  /V (abcdefghijklmnopqrstuvwxyz1234567890)
+>>
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
