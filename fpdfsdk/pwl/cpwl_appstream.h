@@ -24,6 +24,7 @@ class CPWL_AppStream {
   void SetAsCheckBox();
   void SetAsRadioButton();
   void SetAsComboBox(Optional<WideString> sValue);
+  void SetAsComboBox(Optional<WideString> sValue, bool bFlattened);
   void SetAsListBox();
   void SetAsTextField(Optional<WideString> sValue);
 
