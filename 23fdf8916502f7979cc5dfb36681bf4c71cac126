@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "373d3b17_54d4f505",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-19T19:04:51Z",
+      "side": 0,
+      "message": "It looks like the intent is to merge this with the other RemoveChildAndNotify() call. Though here, this while-loop will remove all the children, whereas the new code will remove N children, where N is the number of nodes of type XFA_Element::DataValue. Does this potential difference matter?",
+      "revId": "23fdf8916502f7979cc5dfb36681bf4c71cac126",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
