@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b84dc1e4_a8dd8a20",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-19T21:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0ef9783_3f682ee2",
+      "revId": "aa66d0a447e1bd1f4173e57edbacd309f320135b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f57264f_f7ac297f",
         "filename": "fxjs/xfa/cjx_object.cpp",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-19T20:08:02Z",
       "side": 1,
       "message": "With this, can RemoveChildAndNotify(valueNodes[0]) cause the CXFA_Node* in valueNodes[1] to get deleted?\n\nIf yes, then the existing code can also get it wrong and potentially crash via the CHECK() at the top of RemoveChildAndNotify() by passing a nullptr.",
+      "revId": "aa66d0a447e1bd1f4173e57edbacd309f320135b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "006d8b6a_548e5b96",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-19T21:14:57Z",
+      "side": 1,
+      "message": "Ick.  Probably.  The pointer wont be null, and nodes live for the length of the document IIRC, but the parent might not be the same.  I relaxed the check in RCAN().",
+      "parentUuid": "5f57264f_f7ac297f",
       "revId": "aa66d0a447e1bd1f4173e57edbacd309f320135b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
