@@ -550,15 +550,14 @@ void CJX_Object::SetContent(const WideString& wsContent,
           break;
 
         CXFA_Node* pChildValue = pValue->GetFirstChild();
-        ASSERT(pChildValue);
         pChildValue->JSObject()->SetCData(XFA_Attribute::ContentType,
                                           L"text/xml", false, false);
         pChildValue->JSObject()->SetContent(wsContent, wsContent, bNotify,
                                             bScriptModify, false);
+
         CXFA_Node* pBind = ToNode(GetXFAObject())->GetBindData();
         if (bSyncData && pBind) {
           std::vector<WideString> wsSaveTextArray;
-          size_t iSize = 0;
           if (!wsContent.IsEmpty()) {
             size_t iStart = 0;
             size_t iLength = wsContent.GetLength();
@@ -577,41 +576,31 @@ void CJX_Object::SetContent(const WideString& wsContent,
                     wsContent.Mid(iStart, iLength - iStart));
               }
             }
-            iSize = wsSaveTextArray.size();
           }
-          if (iSize == 0) {
-            while (CXFA_Node* pChildNode = pBind->GetFirstChild()) {
-              pBind->RemoveChildAndNotify(pChildNode, true);
+          std::vector<CXFA_Node*> valueNodes = pBind->GetNodeList(
+              XFA_NODEFILTER_Children, XFA_Element::DataValue);
+
+          if (valueNodes.size() < wsSaveTextArray.size()) {
+            size_t iAddNodes = wsSaveTextArray.size() - valueNodes.size();
+            CXFA_Node* pValueNodes = nullptr;
+            while (iAddNodes-- > 0) {
+              pValueNodes = pBind->CreateSamePacketNode(XFA_Element::DataValue);
+              pValueNodes->JSObject()->SetCData(XFA_Attribute::Name, L"value",
+                                                false, false);
+              pValueNodes->CreateXMLMappingNode();
+              pBind->InsertChildAndNotify(pValueNodes, nullptr);
             }
-          } else {
-            std::vector<CXFA_Node*> valueNodes = pBind->GetNodeList(
-                XFA_NODEFILTER_Children, XFA_Element::DataValue);
-            size_t iDatas = valueNodes.size();
-            if (iDatas < iSize) {
-              size_t iAddNodes = iSize - iDatas;
-              CXFA_Node* pValueNodes = nullptr;
-              while (iAddNodes-- > 0) {
-                pValueNodes =
-                    pBind->CreateSamePacketNode(XFA_Element::DataValue);
-                pValueNodes->JSObject()->SetCData(XFA_Attribute::Name, L"value",
-                                                  false, false);
-                pValueNodes->CreateXMLMappingNode();
-                pBind->InsertChildAndNotify(pValueNodes, nullptr);
-              }
-              pValueNodes = nullptr;
-            } else if (iDatas > iSize) {
-              size_t iDelNodes = iDatas - iSize;
-              while (iDelNodes-- > 0) {
-                pBind->RemoveChildAndNotify(pBind->GetFirstChild(), true);
-              }
-            }
-            int32_t i = 0;
-            for (CXFA_Node* pValueNode = pBind->GetFirstChild(); pValueNode;
-                 pValueNode = pValueNode->GetNextSibling()) {
-              pValueNode->JSObject()->SetAttributeValue(
-                  wsSaveTextArray[i], wsSaveTextArray[i], false, false);
-              i++;
-            }
+            pValueNodes = nullptr;
+          } else if (valueNodes.size() > wsSaveTextArray.size()) {
+            size_t iDelNodes = valueNodes.size() - wsSaveTextArray.size();
+            while (iDelNodes-- > 0)
+              pBind->RemoveChildAndNotify(pBind->GetFirstChild(), true);
+          }
+          int32_t i = 0;
+          for (CXFA_Node* pValueNode : valueNodes) {
+            pValueNode->JSObject()->SetAttributeValue(
+                wsSaveTextArray[i], wsSaveTextArray[i], false, false);
+            i++;
           }
           for (auto* pArrayNode : *(pBind->GetBindItems())) {
             if (pArrayNode != ToNode(GetXFAObject())) {
