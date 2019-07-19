@@ -34,6 +34,24 @@
       "revId": "23fdf8916502f7979cc5dfb36681bf4c71cac126",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90906eb9_63e53403",
+        "filename": "fxjs/xfa/cjx_object.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-19T19:22:41Z",
+      "side": 0,
+      "message": "Then is the remaining RemoveChildAndNotify() also wrong since it\u0027s making the same assumption, and just blindly removing nodes?",
+      "parentUuid": "85e9c2ae_8c6dc163",
+      "revId": "23fdf8916502f7979cc5dfb36681bf4c71cac126",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
