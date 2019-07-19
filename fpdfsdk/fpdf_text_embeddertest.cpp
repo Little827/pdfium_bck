@@ -392,6 +392,38 @@ TEST_F(FPDFTextEmbedderTest, TextSearchConsecutive) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFTextEmbedderTest, TextSearchLatinExtended) {
+  ASSERT_TRUE(OpenDocument("latin_extended.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE textpage = FPDFText_LoadPage(page);
+  ASSERT_TRUE(textpage);
+
+  // Upper/lowercase letter a with breve.
+  constexpr FPDF_WCHAR needle_u[] = {0x0102, 0x0000};
+  constexpr FPDF_WCHAR needle_l[] = {0x0103, 0x0000};
+
+  for (const auto* needle : {needle_u, needle_l}) {
+    ScopedFPDFTextFind search(FPDFText_FindStart(textpage, needle, 0, 0));
+    EXPECT_TRUE(search);
+    EXPECT_EQ(0, FPDFText_GetSchResultIndex(search.get()));
+    EXPECT_EQ(0, FPDFText_GetSchCount(search.get()));
+
+    // Should find 2.
+    EXPECT_TRUE(FPDFText_FindNext(search.get()));
+    EXPECT_EQ(21, FPDFText_GetSchResultIndex(search.get()));
+    EXPECT_EQ(1, FPDFText_GetSchCount(search.get()));
+    EXPECT_TRUE(FPDFText_FindNext(search.get()));
+    EXPECT_EQ(22, FPDFText_GetSchResultIndex(search.get()));
+    EXPECT_EQ(1, FPDFText_GetSchCount(search.get()));
+    EXPECT_FALSE(FPDFText_FindNext(search.get()));
+  }
+
+  FPDFText_ClosePage(textpage);
+  UnloadPage(page);
+}
+
 // Test that the page has characters despite a bad stream length.
 TEST_F(FPDFTextEmbedderTest, StreamLengthPastEndOfFile) {
   ASSERT_TRUE(OpenDocument("bug_57.pdf"));
