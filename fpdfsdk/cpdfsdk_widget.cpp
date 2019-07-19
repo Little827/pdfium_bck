@@ -584,6 +584,9 @@ bool CPDFSDK_Widget::IsAppModified() const {
 
 #ifdef PDF_ENABLE_XFA
 void CPDFSDK_Widget::ResetAppearance(bool bValueChanged) {
+  ResetAppearance(bValueChanged, false);
+}
+void CPDFSDK_Widget::ResetAppearance(bool bValueChanged, bool bFlattened) {
   switch (GetFieldType()) {
     case FormFieldType::kTextField:
     case FormFieldType::kComboBox: {
@@ -599,6 +602,11 @@ void CPDFSDK_Widget::ResetAppearance(bool bValueChanged) {
 
 void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
                                      bool bValueChanged) {
+  ResetAppearance(sValue, bValueChanged, false);
+}
+void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
+                                     bool bValueChanged,
+                                     bool bFlattened) {
   SetAppModified();
 
   m_nAppearanceAge++;
@@ -617,7 +625,7 @@ void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
       appStream.SetAsRadioButton();
       break;
     case FormFieldType::kComboBox:
-      appStream.SetAsComboBox(sValue);
+      appStream.SetAsComboBox(sValue, bFlattened);
       break;
     case FormFieldType::kListBox:
       appStream.SetAsListBox();
