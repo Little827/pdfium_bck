@@ -48,6 +48,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 393216
+  /F 4
   /T (Combo_Editable)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 350 200 380 ]
@@ -60,15 +61,16 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 131072
+  /F 4
   /T (Combo1)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 400 200 430 ]
   /Subtype /Widget
-  /Opt [(Apple) (Banana) (Cherry) (Date) (Elderberry) (Fig) (Guava) (Honeydew)
-        (Indian Fig) (Jackfruit) (Kiwi) (Lemon) (Mango) (Nectarine) (Orange)
-        (Persimmon) (Quince) (Raspberry) (Strawberry) (Tamarind) (Ugli Fruit)
+  /Opt [(Apple) (Bananabcdefghijklmnopqrstuvwxyz) (Cherry) (Date) (Elderberry) (Fig) 
+        (Guava) (Honeydew) (Indian Fig) (Jackfruit) (Kiwi) (Lemon) (Mango) (Nectarine)
+        (Orange) (Persimmon) (Quince) (Raspberry) (Strawberry) (Tamarind) (Ugli Fruit)
         (Voavanga) (Wolfberry) (Xigua) (Yangmei) (Zucchini)]
-  /V (Banana)
+  /V (Bananabcdefghijklmnopqrstuvwxyz)
 >>
 endobj
 {{object 10 0}}
@@ -76,6 +78,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 131073
+  /F 4
   /T (Combo_ReadOnly)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 500 200 530 ]
