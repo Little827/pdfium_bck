@@ -14,8 +14,8 @@
 #include "fpdfsdk/cpdfsdk_annot.h"
 
 class CPDFSDK_InteractiveForm;
-class CPDFSDK_PageView;
 class CXFA_FFWidget;
+class CPDFSDK_PageView;
 
 class CPDFSDK_XFAWidget final : public CPDFSDK_Annot {
  public:
