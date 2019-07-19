@@ -1006,7 +1006,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
 
   // Non-editable comboboxes don't allow selection with keyboard.
   SelectTextWithMouse(NonEditableFormBegin(), NonEditableFormAtX(142.0));
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   CheckSelection(L"Banana");
 
   // Select other another provided option.
@@ -1055,7 +1055,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
 
   // Test selecting first character in forward direction.
   SelectTextWithMouse(NonEditableFormBegin(), NonEditableFormAtX(107.0));
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   CheckSelection(L"B");
 
   // Test selecting entire string in backwards direction.
@@ -1073,7 +1073,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   // Test selecting last character in backwards direction.
   SelectTextWithMouse(NonEditableFormAtX(142.0), NonEditableFormAtX(138.0));
   CheckSelection(L"a");
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
 
   // Select another option and then reset selection as first three chars.
   SelectNonEditableFormOption(2);
@@ -1149,7 +1149,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   // This is the value that is present in the field upon opening, we have not
   // changed it by setting focus.
   FocusOnNonEditableForm();
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
 
   // Make selections to change the value of the focused annotation
   // programmatically.
@@ -1175,7 +1175,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
   // Check that above actions are interchangeable with click actions, should be
   // able to use a combination of both.
   SelectNonEditableFormOption(1);
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
 }
 
 TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
@@ -1224,7 +1224,8 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
 
 TEST_F(FPDFFormFillComboBoxFormEmbedderTest,
        CheckIfIndexSelectedNonEditableField) {
-  // Non-editable field is set to 'Banana' (index 1) upon opening.
+  // Non-editable field is set to 'Bananabcdefghijklmnopqrstuvwxyz' (index 1)
+  // upon opening.
   ClickOnFormFieldAtPoint(NonEditableFormBegin());
   for (int i = 0; i < 26; i++) {
     bool expected = i == 1;
@@ -1941,13 +1942,13 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest, FocusChanges) {
   static const CFX_PointF kNonFormPoint(1, 1);
   CheckFocusedFieldText(L"");
   ClickOnFormFieldAtPoint(NonEditableFormBegin());
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   ClickOnFormFieldAtPoint(EditableFormBegin());
   CheckFocusedFieldText(L"");
   ClickOnFormFieldAtPoint(NonEditableFormEnd());
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   ClickOnFormFieldAtPoint(NonEditableFormBegin());
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   FORM_ForceToKillFocus(form_handle());
   CheckFocusedFieldText(L"");
   ClickOnFormFieldAtPoint(EditableFormBegin());
@@ -1965,11 +1966,11 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest, FocusChanges) {
   FORM_ForceToKillFocus(form_handle());
   CheckFocusedFieldText(L"");
   ClickOnFormFieldAtPoint(NonEditableFormDropDown());
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   ClickOnFormFieldAtPoint(kNonFormPoint);
   CheckFocusedFieldText(L"");
   ClickOnFormFieldAtPoint(NonEditableFormEnd());
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
 
   // Typing into non-editable field results in selecting a different option.
   TypeTextIntoTextField(1, NonEditableFormEnd());
@@ -1977,7 +1978,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest, FocusChanges) {
   TypeTextIntoTextField(3, NonEditableFormEnd());
   CheckFocusedFieldText(L"Cherry");
   TypeTextIntoTextField(2, NonEditableFormEnd());
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
 
   SelectEditableFormOption(0);
   CheckFocusedFieldText(L"Foo");
@@ -1986,7 +1987,7 @@ TEST_F(FPDFFormFillComboBoxFormEmbedderTest, FocusChanges) {
   SelectEditableFormOption(2);
   CheckFocusedFieldText(L"Qux");
   SelectNonEditableFormOption(1);
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   SelectNonEditableFormOption(0);
   CheckFocusedFieldText(L"Apple");
   SelectNonEditableFormOption(2);
@@ -2070,7 +2071,7 @@ TEST_F(FPDFFormFillTextFormEmbedderTest, IsIndexSelectedShouldFailGracefully) {
 
 TEST_F(FPDFFormFillComboBoxFormEmbedderTest, UndoRedo) {
   ClickOnFormFieldAtPoint(NonEditableFormBegin());
-  CheckFocusedFieldText(L"Banana");
+  CheckFocusedFieldText(L"Bananabcdefghijklmnopqrstuvwxyz");
   CheckCanUndo(false);
   CheckCanRedo(false);
 
