@@ -1524,7 +1524,8 @@ void CXFA_Node::RemoveChildAndNotify(CXFA_Node* pNode, bool bNotify) {
 
   pNode->SetFlag(XFA_NodeFlag_HasRemovedChildren);
   TreeNode<CXFA_Node>::RemoveChild(pNode);
-  OnRemoved(bNotify);
+  if (bNotify)
+    NotifyOnRemoved();
 
   if (!IsNeedSavingXMLNode() || !pNode->xml_node_)
     return;
@@ -1724,10 +1725,7 @@ bool CXFA_Node::IsAttributeInXML() {
          XFA_AttributeValue::MetaData;
 }
 
-void CXFA_Node::OnRemoved(bool bNotify) const {
-  if (!bNotify)
-    return;
-
+void CXFA_Node::NotifyOnRemoved() const {
   CXFA_FFNotify* pNotify = m_pDocument->GetNotify();
   if (pNotify)
     pNotify->OnChildRemoved();

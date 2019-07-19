@@ -412,7 +412,7 @@ class CXFA_Node : public CXFA_Object, public TreeNode<CXFA_Node> {
   const PropertyData* GetPropertyData(XFA_Element property) const;
   const AttributeData* GetAttributeData(XFA_Attribute attr) const;
   Optional<XFA_Element> GetFirstPropertyWithFlag(uint8_t flag) const;
-  void OnRemoved(bool bNotify) const;
+  void NotifyOnRemoved() const;
   Optional<void*> GetDefaultValue(XFA_Attribute attr,
                                   XFA_AttributeType eType) const;
   CXFA_Node* GetChildInternal(size_t index,
