@@ -76,3 +76,199 @@ TEST(fxstring, StringToFloat) {
   EXPECT_FLOAT_EQ(1.000000119f, StringToFloat("1.000000119"));
   EXPECT_FLOAT_EQ(1.999999881f, StringToFloat("1.999999881"));
 }
+
+TEST(fxstring, SplitByteString) {
+  std::vector<ByteString> result;
+  result = fxcrt::Split(ByteString(""), ',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ("", result[0]);
+
+  result = fxcrt::Split(ByteString("a"), ',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ("a", result[0]);
+
+  result = fxcrt::Split(ByteString(","), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("", result[0]);
+  EXPECT_EQ("", result[1]);
+
+  result = fxcrt::Split(ByteString("a,"), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("", result[1]);
+
+  result = fxcrt::Split(ByteString(",b"), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("", result[0]);
+  EXPECT_EQ("b", result[1]);
+
+  result = fxcrt::Split(ByteString("a,b"), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("b", result[1]);
+
+  result = fxcrt::Split(ByteString("a,b,"), ',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("b", result[1]);
+  EXPECT_EQ("", result[2]);
+
+  result = fxcrt::Split(ByteString("a,,"), ',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("", result[1]);
+  EXPECT_EQ("", result[2]);
+
+  result = fxcrt::Split(ByteString(",,a"), ',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ("", result[0]);
+  EXPECT_EQ("", result[1]);
+  EXPECT_EQ("a", result[2]);
+}
+
+TEST(fxstring, SplitByteStringView) {
+  std::vector<ByteStringView> result;
+  result = fxcrt::Split(ByteStringView(""), ',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ("", result[0]);
+
+  result = fxcrt::Split(ByteStringView("a"), ',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ("a", result[0]);
+
+  result = fxcrt::Split(ByteStringView(","), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("", result[0]);
+  EXPECT_EQ("", result[1]);
+
+  result = fxcrt::Split(ByteStringView("a,"), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("", result[1]);
+
+  result = fxcrt::Split(ByteStringView(",b"), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("", result[0]);
+  EXPECT_EQ("b", result[1]);
+
+  result = fxcrt::Split(ByteStringView("a,b"), ',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("b", result[1]);
+
+  result = fxcrt::Split(ByteStringView("a,b,"), ',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("b", result[1]);
+  EXPECT_EQ("", result[2]);
+
+  result = fxcrt::Split(ByteStringView("a,,"), ',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ("a", result[0]);
+  EXPECT_EQ("", result[1]);
+  EXPECT_EQ("", result[2]);
+
+  result = fxcrt::Split(ByteStringView(",,a"), ',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ("", result[0]);
+  EXPECT_EQ("", result[1]);
+  EXPECT_EQ("a", result[2]);
+}
+
+TEST(fxstring, SplitWideString) {
+  std::vector<WideString> result;
+  result = fxcrt::Split(WideString(L""), L',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ(L"", result[0]);
+
+  result = fxcrt::Split(WideString(L"a"), L',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+
+  result = fxcrt::Split(WideString(L","), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"", result[0]);
+  EXPECT_EQ(L"", result[1]);
+
+  result = fxcrt::Split(WideString(L"a,"), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"", result[1]);
+
+  result = fxcrt::Split(WideString(L",b"), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"", result[0]);
+  EXPECT_EQ(L"b", result[1]);
+
+  result = fxcrt::Split(WideString(L"a,b"), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"b", result[1]);
+
+  result = fxcrt::Split(WideString(L"a,b,"), L',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"b", result[1]);
+  EXPECT_EQ(L"", result[2]);
+
+  result = fxcrt::Split(WideString(L"a,,"), L',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"", result[1]);
+  EXPECT_EQ(L"", result[2]);
+
+  result = fxcrt::Split(WideString(L",,a"), L',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ(L"", result[0]);
+  EXPECT_EQ(L"", result[1]);
+  EXPECT_EQ(L"a", result[2]);
+}
+
+TEST(fxstring, SplitWideStringView) {
+  std::vector<WideStringView> result;
+  result = fxcrt::Split(WideStringView(L""), L',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ(L"", result[0]);
+
+  result = fxcrt::Split(WideStringView(L"a"), L',');
+  EXPECT_EQ(1u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+
+  result = fxcrt::Split(WideStringView(L","), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"", result[0]);
+  EXPECT_EQ(L"", result[1]);
+
+  result = fxcrt::Split(WideStringView(L"a,"), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"", result[1]);
+
+  result = fxcrt::Split(WideStringView(L",b"), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"", result[0]);
+  EXPECT_EQ(L"b", result[1]);
+
+  result = fxcrt::Split(WideStringView(L"a,b"), L',');
+  EXPECT_EQ(2u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"b", result[1]);
+
+  result = fxcrt::Split(WideStringView(L"a,b,"), L',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"b", result[1]);
+  EXPECT_EQ(L"", result[2]);
+
+  result = fxcrt::Split(WideStringView(L"a,,"), L',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ(L"a", result[0]);
+  EXPECT_EQ(L"", result[1]);
+  EXPECT_EQ(L"", result[2]);
+
+  result = fxcrt::Split(WideStringView(L",,a"), L',');
+  EXPECT_EQ(3u, result.size());
+  EXPECT_EQ(L"", result[0]);
+  EXPECT_EQ(L"", result[1]);
+  EXPECT_EQ(L"a", result[2]);
+}
