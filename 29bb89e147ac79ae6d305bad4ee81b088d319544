@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e3181b54_fafbeee7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "In fact, I would argue this type of export is cleaner and hold more true to the defined behavior of FPDF_ImportPages. The new document shouldn\u0027t drop any root objects. \n\nI still agree that we should discuss this more in detail.",
+      "parentUuid": "354bf4d7_13916b2e",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d685c80b_98bc32fe",
         "filename": "fpdfsdk/fpdf_flatten.cpp",
         "patchSetId": 16
@@ -33,6 +51,24 @@
       "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b763074_1653d7eb",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d685c80b_98bc32fe",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "75bfd5f5_0d0cbaa4",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e591fc14_309e4443",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45aea011_93a3232d",
         "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
         "patchSetId": 16
@@ -67,6 +121,24 @@
       "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5ee347_bda6f8bd",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45aea011_93a3232d",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d833c7d0_86f20ca9",
+        "filename": "fpdfsdk/fpdf_flatten_embeddertest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "That opens and closes the saved document without checking for the annot count. This way I can do all my checks in one instance of a document opening.",
+      "parentUuid": "0d7fd553_031e6092",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d5f884b_d13ba434",
         "filename": "public/fpdf_flatten.h",
         "patchSetId": 16
@@ -101,6 +191,24 @@
       "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea440c1_a0aa6bde",
+        "filename": "public/fpdf_flatten.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "I agree. It\u0027s poorly written. Perhaps I should write, \"Flatten annotations and form fields into the page contents without displaying the form controls.\"",
+      "parentUuid": "7d5f884b_d13ba434",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "85d30a0d_ac5ed808",
+        "filename": "public/fpdf_flatten.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22c60f1_8b2ff04d",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ac982ce_44e245d2",
         "filename": "testing/resources/combobox_form.in",
         "patchSetId": 16
@@ -132,6 +258,24 @@
       "writtenOn": "2019-07-19T20:51:48Z",
       "side": 1,
       "message": "If this CL just added a new combo box widget, wouldn\u0027t there be less churn in the existing tests? The existing widgets don\u0027t have to be changed either.",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f45d3f86_f6ad3664",
+        "filename": "testing/resources/combobox_form.in",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-07-19T21:41:36Z",
+      "side": 1,
+      "message": "There was actually more churn with CPWLComboBoxEditEmbedderTest tests if I added a new combo box.",
+      "parentUuid": "4ac982ce_44e245d2",
       "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
