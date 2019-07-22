@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48f4dc2e_b4d830c5",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-22T16:42:22Z",
+      "side": 1,
+      "message": "oopsie.  I wrote this for the views, then realized it work work for both, but this is going to end up being O(n^2) for the \u0027Strings.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "bb930c6123281ddcfbfef5d71064cfe361fb268f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
