@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35ead162_4011b9dd",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-22T23:27:13Z",
+      "side": 0,
+      "message": "Accidental deletion?",
+      "revId": "b3a5658fa3f0da13eb63c14a6bb94637d9c6df83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3ad05aa_f9fef9f0",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-22T23:27:13Z",
+      "side": 1,
+      "message": "May be helpful to have comment(s) somewhere to indicate FormIface/FormFactoryIface/|pFactory| are only used for Type 3 fonts. Or give them names containing \"Type3\"?",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89733282_41aaf1b3",
+        "filename": "core/fpdfapi/font/cpdf_type3font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-22T23:27:13Z",
+      "side": 1,
+      "message": "Can\u0027t get away with forward decl anymore?",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b84e74_3b177735",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-22T23:27:13Z",
+      "side": 1,
+      "message": "Do we need a factory here? Line 287 says this is Type 1.",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0eef792_568b2d2e",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-22T23:27:13Z",
+      "side": 1,
+      "message": "Not needed? Same for line 11.",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65482a3c_703ee47a",
+        "filename": "core/fpdfapi/page/cpdf_form.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-22T23:27:13Z",
+      "side": 1,
+      "message": "Change to core/fpdfapi/font/cpdf_font.h and include cpdf_type3char.h in the .cpp file if needed.",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
