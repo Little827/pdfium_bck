@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <set>
+#include <utility>
 
 #include "core/fpdfapi/font/cpdf_type3char.h"
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
@@ -40,8 +41,9 @@ class CPDF_Form final : public CPDF_PageObjectHolder,
 
   // CPDF_Type3Char::FormIface:
   void ParseContentForType3Char(CPDF_Type3Char* pType3Char) override;
-  const CPDF_ImageObject* GetSoleImageOfForm() const override;
   CFX_FloatRect CalcBoundingBox() const override;
+  Optional<std::pair<RetainPtr<CFX_DIBitmap>, CFX_Matrix>>
+  GetBitmapAndMatrixFromSoleImageOfForm() const override;
 
   void ParseContent();
   void ParseContent(const CPDF_AllStates* pGraphicStates,
