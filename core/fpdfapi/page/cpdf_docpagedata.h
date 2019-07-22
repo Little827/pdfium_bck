@@ -8,8 +8,10 @@
 #define CORE_FPDFAPI_PAGE_CPDF_DOCPAGEDATA_H_
 
 #include <map>
+#include <memory>
 #include <set>
 
+#include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_countedobject.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
