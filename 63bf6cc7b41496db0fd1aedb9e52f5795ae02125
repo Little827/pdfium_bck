@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "458270a2_64fe0464",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-23T00:01:34Z",
+      "side": 1,
+      "message": "Done. Added comment here.",
+      "parentUuid": "a3ad05aa_f9fef9f0",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89733282_41aaf1b3",
         "filename": "core/fpdfapi/font/cpdf_type3font.h",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-22T23:27:13Z",
       "side": 1,
       "message": "Can\u0027t get away with forward decl anymore?",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89c0ee1_e7a7709a",
+        "filename": "core/fpdfapi/font/cpdf_type3font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-23T00:01:34Z",
+      "side": 1,
+      "message": "Actually, I think we can in this latest patch set (earlier required it). Done.",
+      "parentUuid": "89733282_41aaf1b3",
       "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8b4d8beb_12371b80",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-23T00:01:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94b84e74_3b177735",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0eef792_568b2d2e",
         "filename": "core/fpdfapi/page/cpdf_docpagedata.h",
         "patchSetId": 6
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "be3a42ce_b565c7b4",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-23T00:01:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0eef792_568b2d2e",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65482a3c_703ee47a",
         "filename": "core/fpdfapi/page/cpdf_form.h",
         "patchSetId": 6
@@ -84,6 +156,24 @@
       "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83a68ba_c404f1ca",
+        "filename": "core/fpdfapi/page/cpdf_form.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-23T00:01:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65482a3c_703ee47a",
+      "revId": "63bf6cc7b41496db0fd1aedb9e52f5795ae02125",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
