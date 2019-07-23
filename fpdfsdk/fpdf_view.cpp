@@ -15,7 +15,6 @@
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_occontext.h"
 #include "core/fpdfapi/page/cpdf_page.h"
-#include "core/fpdfapi/page/cpdf_pagerendercontext.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -23,6 +22,8 @@
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
+#include "core/fpdfapi/render/cpdf_pagerendercache.h"
+#include "core/fpdfapi/render/cpdf_pagerendercontext.h"
 #include "core/fpdfapi/render/cpdf_progressiverenderer.h"
 #include "core/fpdfapi/render/cpdf_rendercontext.h"
 #include "core/fpdfapi/render/cpdf_renderoptions.h"
@@ -356,7 +357,8 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
   if (!pDict)
     return nullptr;
 
-  auto pPage = pdfium::MakeRetain<CPDF_Page>(pDoc, pDict, true);
+  auto pPage = pdfium::MakeRetain<CPDF_Page>(pDoc, pDict);
+  pPage->SetRenderCache(pdfium::MakeUnique<CPDF_PageRenderCache>(pPage.Get()));
   pPage->ParseContent();
   return FPDFPageFromIPDFPage(pPage.Leak());
 }
@@ -953,7 +955,8 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
   if (!pDict)
     return false;
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDoc, pDict, true);
+  auto page = pdfium::MakeRetain<CPDF_Page>(pDoc, pDict);
+  page->SetRenderCache(pdfium::MakeUnique<CPDF_PageRenderCache>(page.Get()));
   *width = page->GetPageWidth();
   *height = page->GetPageHeight();
   return true;
