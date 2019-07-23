@@ -83,7 +83,6 @@ int g_CurrentRecursionDepth = 0;
 
 void ReleaseCachedType3(CPDF_Type3Font* pFont) {
   CPDF_Document* pDoc = pFont->GetDocument();
-  CPDF_DocRenderData::FromDocument(pDoc)->MaybePurgeCachedType3(pFont);
   CPDF_DocPageData::FromDocument(pDoc)->ReleaseFont(pFont->GetFontDict());
 }
 
