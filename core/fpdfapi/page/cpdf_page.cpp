@@ -12,11 +12,11 @@
 #include "constants/page_object.h"
 #include "core/fpdfapi/page/cpdf_contentparser.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
-#include "core/fpdfapi/page/cpdf_pagerendercontext.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/render/cpdf_pagerendercache.h"
+#include "core/fpdfapi/render/cpdf_pagerendercontext.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
@@ -77,11 +77,6 @@ void CPDF_Page::ParseContent() {
 
   ASSERT(GetParseState() == ParseState::kParsing);
   ContinueParse(nullptr);
-}
-
-void CPDF_Page::SetRenderContext(
-    std::unique_ptr<CPDF_PageRenderContext> pContext) {
-  m_pRenderContext = std::move(pContext);
 }
 
 CPDF_Object* CPDF_Page::GetPageAttr(const ByteString& name) const {

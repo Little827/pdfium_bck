@@ -8,6 +8,7 @@
 #define CORE_FPDFAPI_PAGE_CPDF_PAGE_H_
 
 #include <memory>
+#include <utility>
 
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
 #include "core/fpdfapi/page/ipdf_page.h"
@@ -21,11 +22,16 @@ class CPDF_Dictionary;
 class CPDF_Document;
 class CPDF_Object;
 class CPDF_PageRenderCache;
-class CPDF_PageRenderContext;
 
 class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
  public:
   class View {};  // Caller implements as desired, empty here due to layering.
+
+  // Data for the render layer to attach to this page.
+  class RenderContextIface {
+   public:
+    virtual ~RenderContextIface() {}
+  };
 
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
@@ -53,10 +59,13 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
   const CFX_SizeF& GetPageSize() const { return m_PageSize; }
   int GetPageRotation() const;
   CPDF_PageRenderCache* GetRenderCache() const { return m_pPageRender.get(); }
-  CPDF_PageRenderContext* GetRenderContext() const {
+  RenderContextIface* GetRenderContext() const {
     return m_pRenderContext.get();
   }
-  void SetRenderContext(std::unique_ptr<CPDF_PageRenderContext> pContext);
+  void SetRenderContext(std::unique_ptr<RenderContextIface> pContext) {
+    m_pRenderContext = std::move(pContext);
+  }
+
   CPDF_Document* GetPDFDocument() const { return m_pPDFDocument.Get(); }
   View* GetView() const { return m_pView.Get(); }
   void SetView(View* pView) { m_pView = pView; }
@@ -75,7 +84,7 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
   CFX_Matrix m_PageMatrix;
   UnownedPtr<CPDF_Document> m_pPDFDocument;
   std::unique_ptr<CPDF_PageRenderCache> m_pPageRender;
-  std::unique_ptr<CPDF_PageRenderContext> m_pRenderContext;
+  std::unique_ptr<RenderContextIface> m_pRenderContext;
   UnownedPtr<View> m_pView;
 };
 
