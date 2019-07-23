@@ -35,7 +35,6 @@ class CPDF_DocRenderData : public CPDF_Document::RenderDataIface {
   void MaybePurgeCachedType3(CPDF_Type3Font* pFont);
 
   RetainPtr<CPDF_TransferFunc> GetTransferFunc(const CPDF_Object* pObj);
-  void MaybePurgeTransferFunc(const CPDF_Object* pObj);
 
  protected:
   // protected for use by test subclasses.
