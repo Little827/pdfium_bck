@@ -16,6 +16,8 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/observed_ptr.h"
+#include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_font.h"
 
@@ -30,7 +32,7 @@ class CPDF_Type3Char;
 class CPDF_Type3Font;
 class CPDF_ToUnicodeMap;
 
-class CPDF_Font {
+class CPDF_Font : public Retainable, public Observable {
  public:
   // Callback mechanism for Type3 fonts to get pixels from forms.
   class FormIface {
@@ -56,15 +58,19 @@ class CPDF_Font {
   };
 
   // |pFactory| only required for Type3 fonts.
-  static std::unique_ptr<CPDF_Font> Create(
+  static RetainPtr<CPDF_Font> Create(
       CPDF_Document* pDoc,
       CPDF_Dictionary* pFontDict,
       std::unique_ptr<FormFactoryIface> pFactory);
 
-  static CPDF_Font* GetStockFont(CPDF_Document* pDoc, ByteStringView fontname);
   static const uint32_t kInvalidCharCode = static_cast<uint32_t>(-1);
 
-  virtual ~CPDF_Font();
+  static RetainPtr<CPDF_Font> Create(CPDF_Document* pDoc,
+                                     CPDF_Dictionary* pFontDict);
+  static RetainPtr<CPDF_Font> GetStockFont(CPDF_Document* pDoc,
+                                           ByteStringView fontname);
+
+  ~CPDF_Font() override;
 
   virtual bool IsType1Font() const;
   virtual bool IsTrueTypeFont() const;

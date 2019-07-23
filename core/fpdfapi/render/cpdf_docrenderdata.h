@@ -9,7 +9,6 @@
 
 #include <map>
 
-#include "core/fpdfapi/page/cpdf_countedobject.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
