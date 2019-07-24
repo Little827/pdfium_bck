@@ -222,15 +222,17 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnChar(CPDFSDK_Annot* pAnnot,
   return GetAnnotHandler(pAnnot)->OnChar(pAnnot, nChar, nFlags);
 }
 
-bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_Annot* pAnnot,
-                                              int nKeyCode,
-                                              int nFlag) {
+bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(
+    ObservedPtr<CPDFSDK_Annot>* pAnnot,
+    int nKeyCode,
+    int nFlag) {
   if (CPDFSDK_FormFillEnvironment::IsCTRLKeyDown(nFlag) ||
       CPDFSDK_FormFillEnvironment::IsALTKeyDown(nFlag)) {
-    return GetAnnotHandler(pAnnot)->OnKeyDown(pAnnot, nKeyCode, nFlag);
+    return GetAnnotHandler(pAnnot->Get())
+        ->OnKeyDown(pAnnot->Get(), nKeyCode, nFlag);
   }
 
-  CPDFSDK_PageView* pPage = pAnnot->GetPageView();
+  CPDFSDK_PageView* pPage = pAnnot->Get()->GetPageView();
   CPDFSDK_Annot* pFocusAnnot = pPage->GetFocusAnnot();
   if (pFocusAnnot && (nKeyCode == FWL_VKEY_Tab)) {
     ObservedPtr<CPDFSDK_Annot> pNext(GetNextAnnot(
@@ -241,7 +243,12 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_Annot* pAnnot,
     }
   }
 
-  return GetAnnotHandler(pAnnot)->OnKeyDown(pAnnot, nKeyCode, nFlag);
+  // Check |pAnnot| again because JS may have destroyed it in |GetNextAnnot|
+  if (!(*pAnnot))
+    return false;
+
+  return GetAnnotHandler(pAnnot->Get())
+      ->OnKeyDown(pAnnot->Get(), nKeyCode, nFlag);
 }
 
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnSetFocus(
@@ -310,6 +317,7 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnHitTest(CPDFSDK_PageView* pPageView,
 CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetNextAnnot(CPDFSDK_Annot* pSDKAnnot,
                                                      bool bNext) {
 #ifdef PDF_ENABLE_XFA
+  ObservedPtr<CPDFSDK_Annot> pObservedAnnot(pSDKAnnot);
   CPDFSDK_PageView* pPageView = pSDKAnnot->GetPageView();
   CPDFXFA_Page* pPage = pPageView->GetPDFXFAPage();
   if (pPage && !pPage->AsPDFPage()) {
@@ -319,7 +327,9 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetNextAnnot(CPDFSDK_Annot* pSDKAnnot,
             XFA_TRAVERSEWAY_Tranvalse, XFA_WidgetStatus_Visible |
                                            XFA_WidgetStatus_Viewable |
                                            XFA_WidgetStatus_Focused));
-    if (!pWidgetIterator)
+
+    // Check |pObservedAnnot| again because JS may have destroyed it
+    if ((!pObservedAnnot) || (!pWidgetIterator))
       return nullptr;
     if (pWidgetIterator->GetCurrentWidget() != pSDKAnnot->GetXFAWidget())
       pWidgetIterator->SetCurrentWidget(pSDKAnnot->GetXFAWidget());
