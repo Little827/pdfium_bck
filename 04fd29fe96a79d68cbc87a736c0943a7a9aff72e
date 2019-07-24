@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7da578a0_912f4977",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "nit: we always wrap commit messages at 72 columns.",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d83c9e_e6321489",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "nit: we typically say\nBug: chromium:980161 \n\nto ensure links to the proper bug tracker.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f9f09f3_af91389f",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "then typically we create a local variable ObservedPtr here from the plain pointer argument, and use that to validate whether things are still alive as needed.",
+      "range": {
+        "startLine": 228,
+        "startChar": 15,
+        "endLine": 228,
+        "endChar": 16
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ecb129_c2d9f02c",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "nit: overparenthesize, just !*pPAnnot, although this goes away when we stop passing OberservedPtr*s",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 17
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b187959_616c617a",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "nit: over-parenthesized, let\u0027s just write\n  if (!pObservedAnnot || !pWidgetIterator)",
+      "range": {
+        "startLine": 332,
+        "startChar": 7,
+        "endLine": 332,
+        "endChar": 48
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7414b8ee_5092511a",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "can we just pass the ordinary pointer here?",
+      "range": {
+        "startLine": 94,
+        "startChar": 23,
+        "endLine": 94,
+        "endChar": 57
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38fa7bb7_5bfe674c",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "this can\u0027t have changed yet between the \"assignment\" on line 479 and here.",
+      "range": {
+        "startLine": 480,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 20
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37e6e0b_ff04db0f",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-24T22:09:37Z",
+      "side": 1,
+      "message": "similarly, this is going to still be good because GetAnnotHandlerMgr() can\u0027t invalidate it right?",
+      "range": {
+        "startLine": 483,
+        "startChar": 45,
+        "endLine": 483,
+        "endChar": 57
+      },
+      "revId": "04fd29fe96a79d68cbc87a736c0943a7a9aff72e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
