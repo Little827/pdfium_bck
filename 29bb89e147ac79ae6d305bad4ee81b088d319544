@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3c2d9531_65bb380d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-24T16:53:36Z",
+      "side": 1,
+      "message": "If you want to go down that route, then you would want to copy all the keys in the root dictionary. But it\u0027s not obvious the \"copy everything\" behavior is what all callers want. As is, FPDF_ImportPages() is (and has always been) adding just the minimal required keys. The one time when someone wanted to copy more, we added a separate API, FPDF_CopyViewerPreferences(), to do that. So can we try that route, and make adding new keys a deliberate decision?",
+      "parentUuid": "e3181b54_fafbeee7",
+      "revId": "29bb89e147ac79ae6d305bad4ee81b088d319544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d685c80b_98bc32fe",
         "filename": "fpdfsdk/fpdf_flatten.cpp",
         "patchSetId": 16
