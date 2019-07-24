@@ -52,6 +52,7 @@ class CPDF_PageObject : public CPDF_GraphicStates {
   virtual CPDF_FormObject* AsForm();
   virtual const CPDF_FormObject* AsForm() const;
 
+  void WillBeDestroyed();
   void SetDirty(bool value) { m_bDirty = value; }
   bool IsDirty() const { return m_bDirty; }
   void TransformClipPath(const CFX_Matrix& matrix);
