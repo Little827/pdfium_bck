@@ -476,10 +476,11 @@ bool CPDFSDK_PageView::OnChar(int nChar, uint32_t nFlag) {
 }
 
 bool CPDFSDK_PageView::OnKeyDown(int nKeyCode, int nFlag) {
-  if (CPDFSDK_Annot* pAnnot = GetFocusAnnot()) {
+  ObservedPtr<CPDFSDK_Annot> pFocusAnnot(GetFocusAnnot());
+  if (pFocusAnnot) {
     CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
         m_pFormFillEnv->GetAnnotHandlerMgr();
-    return pAnnotHandlerMgr->Annot_OnKeyDown(pAnnot, nKeyCode, nFlag);
+    return pAnnotHandlerMgr->Annot_OnKeyDown(&pFocusAnnot, nKeyCode, nFlag);
   }
   return false;
 }
