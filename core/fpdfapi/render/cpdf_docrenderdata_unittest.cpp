@@ -161,7 +161,7 @@ class TestDocRenderData : public CPDF_DocRenderData {
   TestDocRenderData() : CPDF_DocRenderData() {}
 
   RetainPtr<CPDF_TransferFunc> CreateTransferFuncForTesting(
-      const CPDF_Object* pObj) const {
+      CPDF_Object* pObj) const {
     return CreateTransferFunc(pObj);
   }
 };
