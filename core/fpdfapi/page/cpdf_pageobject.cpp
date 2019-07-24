@@ -6,6 +6,8 @@
 
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 
+#include "core/fpdfapi/font/cpdf_font.h"
+
 constexpr int32_t CPDF_PageObject::kNoContentStream;
 
 CPDF_PageObject::CPDF_PageObject(int32_t content_stream)
@@ -79,6 +81,10 @@ void CPDF_PageObject::CopyData(const CPDF_PageObject* pSrc) {
   CopyStates(*pSrc);
   m_Rect = pSrc->m_Rect;
   m_bDirty = true;
+}
+
+void CPDF_PageObject::WillBeDestroyed() {
+  m_TextState.SetFont(nullptr);  // Break cycles.
 }
 
 void CPDF_PageObject::TransformClipPath(const CFX_Matrix& matrix) {

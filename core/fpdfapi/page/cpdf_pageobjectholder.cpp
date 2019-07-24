@@ -44,7 +44,12 @@ CPDF_PageObjectHolder::CPDF_PageObjectHolder(CPDF_Document* pDoc,
   // callers that checks for that.
 }
 
-CPDF_PageObjectHolder::~CPDF_PageObjectHolder() = default;
+CPDF_PageObjectHolder::~CPDF_PageObjectHolder() {
+  for (const auto& pObj : m_PageObjectList) {
+    if (pObj)
+      pObj->WillBeDestroyed();
+  }
+}
 
 bool CPDF_PageObjectHolder::IsPage() const {
   return false;
