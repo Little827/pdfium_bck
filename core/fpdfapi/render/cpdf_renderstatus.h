@@ -176,7 +176,6 @@ class CPDF_RenderStatus {
   FX_ARGB GetBackColor(const CPDF_Dictionary* pSMaskDict,
                        const CPDF_Dictionary* pGroupDict,
                        int* pCSFamily);
-  static RetainPtr<CPDF_Type3Cache> GetCachedType3(CPDF_Type3Font* pFont);
   static std::unique_ptr<CPDF_GraphicStates> CloneObjStates(
       const CPDF_GraphicStates* pSrcStates,
       bool bStroke);
