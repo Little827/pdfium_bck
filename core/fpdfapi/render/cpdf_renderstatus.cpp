@@ -11,6 +11,7 @@
 #include <cmath>
 #include <limits>
 #include <memory>
+#include <set>
 #include <utility>
 #include <vector>
 
@@ -80,26 +81,6 @@ namespace {
 constexpr int kShadingSteps = 256;
 constexpr int kRenderMaxRecursionDepth = 64;
 int g_CurrentRecursionDepth = 0;
-
-void ReleaseCachedType3(CPDF_Type3Font* pFont) {
-  CPDF_Document* pDoc = pFont->GetDocument();
-  CPDF_DocRenderData::FromDocument(pDoc)->MaybePurgeCachedType3(pFont);
-  CPDF_DocPageData::FromDocument(pDoc)->ReleaseFont(pFont->GetFontDict());
-}
-
-class CPDF_RefType3Cache {
- public:
-  explicit CPDF_RefType3Cache(CPDF_Type3Font* pType3Font)
-      : m_pType3Font(pType3Font) {}
-
-  ~CPDF_RefType3Cache() {
-    while (m_dwCount--)
-      ReleaseCachedType3(m_pType3Font.Get());
-  }
-
-  uint32_t m_dwCount = 0;
-  UnownedPtr<CPDF_Type3Font> const m_pType3Font;
-};
 
 uint32_t CountOutputsFromFunctions(
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs) {
@@ -1807,7 +1788,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
   char_matrix.Scale(font_size, font_size);
 
   // Must come before |glyphs|, because |glyphs| points into |refTypeCache|.
-  CPDF_RefType3Cache refTypeCache(pType3Font);
+  std::set<RetainPtr<CPDF_Type3Cache>> refTypeCache;
   std::vector<TextGlyphPos> glyphs;
   if (device_type == DeviceType::kDisplay)
     glyphs.resize(textobj->GetCharCodes().size());
@@ -1897,7 +1878,8 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     } else if (pType3Char->GetBitmap()) {
       if (device_type == DeviceType::kDisplay) {
         RetainPtr<CPDF_Type3Cache> pCache = GetCachedType3(pType3Font);
-        refTypeCache.m_dwCount++;
+        refTypeCache.insert(pCache);
+
         const CFX_GlyphBitmap* pBitmap = pCache->LoadGlyph(charcode, &matrix);
         if (!pBitmap)
           continue;
