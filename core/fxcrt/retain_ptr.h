@@ -122,7 +122,7 @@ class Retainable {
       delete this;
   }
 
-  intptr_t m_nRefCount = 0;
+  mutable intptr_t m_nRefCount = 0;
 };
 
 }  // namespace fxcrt
