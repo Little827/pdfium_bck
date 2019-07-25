@@ -177,13 +177,6 @@ CPDF_DocPageData::CPDF_DocPageData() = default;
 CPDF_DocPageData::~CPDF_DocPageData() {
   Clear(false);
   Clear(true);
-
-  m_PatternMap.clear();
-
-  for (auto& it : m_FontMap)
-    delete it.second;
-
-  m_FontMap.clear();
 }
 
 void CPDF_DocPageData::ClearStockFont() {
@@ -194,16 +187,7 @@ void CPDF_DocPageData::Clear(bool bForceRelease) {
   m_bForceClear = bForceRelease;
 
   m_PatternMap.clear();
-
-  for (auto& it : m_FontMap) {
-    CPDF_CountedFont* fontData = it.second;
-    if (!fontData->get())
-      continue;
-    if (bForceRelease || fontData->use_count() < 2) {
-      fontData->clear();
-    }
-  }
-
+  m_FontMap.clear();
   m_ColorSpaceMap.clear();
 
   for (auto it = m_IccProfileMap.begin(); it != m_IccProfileMap.end();) {
@@ -229,41 +213,29 @@ void CPDF_DocPageData::Clear(bool bForceRelease) {
   m_ImageMap.clear();
 }
 
-CPDF_Font* CPDF_DocPageData::GetFont(CPDF_Dictionary* pFontDict) {
+RetainPtr<CPDF_Font> CPDF_DocPageData::GetFont(CPDF_Dictionary* pFontDict) {
   if (!pFontDict)
     return nullptr;
 
-  CPDF_CountedFont* pFontData = nullptr;
   auto it = m_FontMap.find(pFontDict);
-  if (it != m_FontMap.end()) {
-    pFontData = it->second;
-    if (pFontData->get()) {
-      return pFontData->AddRef();
-    }
-  }
-  std::unique_ptr<CPDF_Font> pFont = CPDF_Font::Create(
-      GetDocument(), pFontDict, pdfium::MakeUnique<FormFactory>());
-  if (!pFont)
-    return nullptr;
+  if (it != m_FontMap.end() && it->second)
+    return pdfium::WrapRetain(it->second.Get());
 
-  if (pFontData) {
-    pFontData->reset(std::move(pFont));
-  } else {
-    pFontData = new CPDF_CountedFont(std::move(pFont));
-    m_FontMap[pFontDict] = pFontData;
-  }
-  return pFontData->AddRef();
+  RetainPtr<CPDF_Font> pFont = CPDF_Font::Create(
+      GetDocument(), pFontDict, pdfium::MakeUnique<FormFactory>());
+
+  m_FontMap[pFontDict].Reset(pFont.Get());
+  return pFont;
 }
 
-CPDF_Font* CPDF_DocPageData::GetStandardFont(
+RetainPtr<CPDF_Font> CPDF_DocPageData::GetStandardFont(
     const ByteString& fontName,
     const CPDF_FontEncoding* pEncoding) {
   if (fontName.IsEmpty())
     return nullptr;
 
   for (auto& it : m_FontMap) {
-    CPDF_CountedFont* fontData = it.second;
-    CPDF_Font* pFont = fontData->get();
+    CPDF_Font* pFont = it.second.Get();
     if (!pFont)
       continue;
     if (pFont->GetBaseFont() != fontName)
@@ -279,7 +251,7 @@ CPDF_Font* CPDF_DocPageData::GetStandardFont(
     if (pEncoding && !pT1Font->GetEncoding()->IsIdentical(pEncoding))
       continue;
 
-    return fontData->AddRef();
+    return pdfium::WrapRetain(pFont);
   }
 
   CPDF_Dictionary* pDict = GetDocument()->NewIndirect<CPDF_Dictionary>();
@@ -292,34 +264,9 @@ CPDF_Font* CPDF_DocPageData::GetStandardFont(
   }
 
   // Note: NULL FormFactoryIface OK since known Type1 font from above.
-  std::unique_ptr<CPDF_Font> pFont =
-      CPDF_Font::Create(GetDocument(), pDict, nullptr);
-  if (!pFont)
-    return nullptr;
-
-  CPDF_CountedFont* fontData = new CPDF_CountedFont(std::move(pFont));
-  m_FontMap[pDict] = fontData;
-  return fontData->AddRef();
-}
-
-void CPDF_DocPageData::ReleaseFont(const CPDF_Dictionary* pFontDict) {
-  if (!pFontDict)
-    return;
-
-  auto it = m_FontMap.find(pFontDict);
-  if (it == m_FontMap.end())
-    return;
-
-  CPDF_CountedFont* pFontData = it->second;
-  if (!pFontData->get())
-    return;
-
-  pFontData->RemoveRef();
-  if (pFontData->use_count() > 1)
-    return;
-
-  // We have font data only in m_FontMap cache. Clean it.
-  pFontData->clear();
+  RetainPtr<CPDF_Font> pFont = CPDF_Font::Create(GetDocument(), pDict, nullptr);
+  m_FontMap[pDict].Reset(pFont.Get());
+  return pFont;
 }
 
 RetainPtr<CPDF_ColorSpace> CPDF_DocPageData::GetColorSpace(
@@ -533,7 +480,7 @@ void CPDF_DocPageData::MaybePurgeFontFileStreamAcc(
     m_FontFileMap.erase(it);
 }
 
-CPDF_Font* CPDF_DocPageData::AddStandardFont(
+RetainPtr<CPDF_Font> CPDF_DocPageData::AddStandardFont(
     const char* font,
     const CPDF_FontEncoding* pEncoding) {
   ByteString name(font);
@@ -542,7 +489,8 @@ CPDF_Font* CPDF_DocPageData::AddStandardFont(
   return GetStandardFont(name, pEncoding);
 }
 
-CPDF_Font* CPDF_DocPageData::AddFont(CFX_Font* pFont, int charset) {
+RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
+                                               int charset) {
   if (!pFont)
     return nullptr;
 
@@ -555,7 +503,7 @@ CPDF_Font* CPDF_DocPageData::AddFont(CFX_Font* pFont, int charset) {
 
   CPDF_Dictionary* pBaseDict = GetDocument()->NewIndirect<CPDF_Dictionary>();
   pBaseDict->SetNewFor<CPDF_Name>("Type", "Font");
-  auto pEncoding = pdfium::MakeUnique<CFX_UnicodeEncoding>(pFont);
+  auto pEncoding = pdfium::MakeUnique<CFX_UnicodeEncoding>(pFont.get());
   CPDF_Dictionary* pFontDict = pBaseDict;
   if (!bCJK) {
     auto pWidths = pdfium::MakeRetain<CPDF_Array>();
@@ -588,8 +536,8 @@ CPDF_Font* CPDF_DocPageData::AddFont(CFX_Font* pFont, int charset) {
   } else {
     pFontDict = ProcessbCJK(
         pBaseDict, charset, basefont,
-        [pFont, &pEncoding](wchar_t start, wchar_t end, CPDF_Array* widthArr) {
-          InsertWidthArray1(pFont, pEncoding.get(), start, end, widthArr);
+        [&pFont, &pEncoding](wchar_t start, wchar_t end, CPDF_Array* widthArr) {
+          InsertWidthArray1(pFont.get(), pEncoding.get(), start, end, widthArr);
         });
   }
   int italicangle =
@@ -626,7 +574,7 @@ CPDF_Font* CPDF_DocPageData::AddFont(CFX_Font* pFont, int charset) {
 }
 
 #if defined(OS_WIN)
-CPDF_Font* CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
+RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
   pLogFont->lfHeight = -1000;
   pLogFont->lfWidth = 0;
   HGDIOBJ hFont = CreateFontIndirectA(pLogFont);
