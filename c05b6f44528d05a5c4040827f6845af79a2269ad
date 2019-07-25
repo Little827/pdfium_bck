@@ -16,6 +16,24 @@
       "revId": "c05b6f44528d05a5c4040827f6845af79a2269ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519f1fc4_7198deec",
+        "filename": "core/fpdfapi/font/cpdf_type3font.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-25T20:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c965b70_adc08a16",
+      "revId": "c05b6f44528d05a5c4040827f6845af79a2269ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
