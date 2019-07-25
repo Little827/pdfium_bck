@@ -50,7 +50,6 @@ class CPDF_DocPageData : public CPDF_Document::PageDataIface,
       CPDF_Dictionary* pPageResources,
       CPDF_Stream* pFormStream) override;
 
-  void Clear(bool bForceRelease);
   bool IsForceClear() const { return m_bForceClear; }
 
   CPDF_Font* AddFont(CFX_Font* pFont, int charset);
