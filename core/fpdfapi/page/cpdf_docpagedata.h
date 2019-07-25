@@ -42,7 +42,6 @@ class CPDF_DocPageData : public CPDF_Document::PageDataIface {
       const CPDF_Stream* pFontStream) override;
   void MaybePurgeFontFileStreamAcc(const CPDF_Stream* pFontStream) override;
 
-  void Clear(bool bForceRelease);
   bool IsForceClear() const { return m_bForceClear; }
 
   CPDF_Font* AddFont(CFX_Font* pFont, int charset);
