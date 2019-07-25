@@ -84,10 +84,10 @@ class CFWL_WidgetTP {
 
 void FWLTHEME_Release();
 
-class CFWL_FontData {
+class CFWL_FontData final {
  public:
   CFWL_FontData();
-  virtual ~CFWL_FontData();
+  ~CFWL_FontData();
 
   bool Equal(WideStringView wsFontFamily,
              uint32_t dwFontStyles,
@@ -105,7 +105,7 @@ class CFWL_FontData {
   RetainPtr<CFGAS_GEFont> m_pFont;
 };
 
-class CFWL_FontManager {
+class CFWL_FontManager final {
  public:
   static CFWL_FontManager* GetInstance();
   static void DestroyInstance();
@@ -114,11 +114,10 @@ class CFWL_FontManager {
                                    uint32_t dwFontStyles,
                                    uint16_t dwCodePage);
 
- protected:
+ private:
   CFWL_FontManager();
-  virtual ~CFWL_FontManager();
+  ~CFWL_FontManager();
 
-  static CFWL_FontManager* s_FontManager;
   std::vector<std::unique_ptr<CFWL_FontData>> m_FontsArray;
 };
 
