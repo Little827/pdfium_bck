@@ -11,6 +11,7 @@
 #include <cmath>
 #include <limits>
 #include <memory>
+#include <set>
 #include <utility>
 #include <vector>
 
@@ -80,26 +81,6 @@ namespace {
 constexpr int kShadingSteps = 256;
 constexpr int kRenderMaxRecursionDepth = 64;
 int g_CurrentRecursionDepth = 0;
-
-void ReleaseCachedType3(CPDF_Type3Font* pFont) {
-  CPDF_Document* pDoc = pFont->GetDocument();
-  CPDF_DocRenderData::FromDocument(pDoc)->MaybePurgeCachedType3(pFont);
-  CPDF_DocPageData::FromDocument(pDoc)->ReleaseFont(pFont->GetFontDict());
-}
-
-class CPDF_RefType3Cache {
- public:
-  explicit CPDF_RefType3Cache(CPDF_Type3Font* pType3Font)
-      : m_pType3Font(pType3Font) {}
-
-  ~CPDF_RefType3Cache() {
-    while (m_dwCount--)
-      ReleaseCachedType3(m_pType3Font.Get());
-  }
-
-  uint32_t m_dwCount = 0;
-  UnownedPtr<CPDF_Type3Font> const m_pType3Font;
-};
 
 uint32_t CountOutputsFromFunctions(
     const std::vector<std::unique_ptr<CPDF_Function>>& funcs) {
@@ -1556,9 +1537,10 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
       // TODO(thestig): Should we check the return value here?
       CPDF_TextRenderer::DrawTextPath(
           &text_device, textobj->GetCharCodes(), textobj->GetCharPositions(),
-          textobj->m_TextState.GetFont(), textobj->m_TextState.GetFontSize(),
-          textobj->GetTextMatrix(), &new_matrix,
-          textobj->m_GraphState.GetObject(), 0xffffffff, 0, nullptr, 0);
+          textobj->m_TextState.GetFont().Get(),
+          textobj->m_TextState.GetFontSize(), textobj->GetTextMatrix(),
+          &new_matrix, textobj->m_GraphState.GetObject(), 0xffffffff, 0,
+          nullptr, 0);
     }
   }
   CPDF_RenderStatus bitmap_render(m_pContext.Get(), &bitmap_device);
@@ -1684,7 +1666,7 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
   if (text_render_mode == TextRenderingMode::MODE_INVISIBLE)
     return true;
 
-  CPDF_Font* pFont = textobj->m_TextState.GetFont();
+  RetainPtr<CPDF_Font> pFont = textobj->m_TextState.GetFont();
   if (pFont->IsType3Font())
     return ProcessType3Text(textobj, mtObj2Device);
 
@@ -1744,7 +1726,7 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
 
   float font_size = textobj->m_TextState.GetFontSize();
   if (bPattern) {
-    DrawTextPathWithPattern(textobj, mtObj2Device, pFont, font_size,
+    DrawTextPathWithPattern(textobj, mtObj2Device, pFont.Get(), font_size,
                             &text_matrix, bFill, bStroke);
     return true;
   }
@@ -1770,15 +1752,15 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
     if (m_Options.GetOptions().bNoTextSmooth)
       flag |= FXFILL_NOPATHSMOOTH;
     return CPDF_TextRenderer::DrawTextPath(
-        m_pDevice, textobj->GetCharCodes(), textobj->GetCharPositions(), pFont,
-        font_size, text_matrix, pDeviceMatrix,
+        m_pDevice, textobj->GetCharCodes(), textobj->GetCharPositions(),
+        pFont.Get(), font_size, text_matrix, pDeviceMatrix,
         textobj->m_GraphState.GetObject(), fill_argb, stroke_argb,
         pClippingPath, flag);
   }
   text_matrix.Concat(mtObj2Device);
   return CPDF_TextRenderer::DrawNormalText(
-      m_pDevice, textobj->GetCharCodes(), textobj->GetCharPositions(), pFont,
-      font_size, text_matrix, fill_argb, m_Options);
+      m_pDevice, textobj->GetCharCodes(), textobj->GetCharPositions(),
+      pFont.Get(), font_size, text_matrix, fill_argb, m_Options);
 }
 
 RetainPtr<CPDF_Type3Cache> CPDF_RenderStatus::GetCachedType3(
@@ -1807,7 +1789,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
   char_matrix.Scale(font_size, font_size);
 
   // Must come before |glyphs|, because |glyphs| points into |refTypeCache|.
-  CPDF_RefType3Cache refTypeCache(pType3Font);
+  std::set<RetainPtr<CPDF_Type3Cache>> refTypeCache;
   std::vector<TextGlyphPos> glyphs;
   if (device_type == DeviceType::kDisplay)
     glyphs.resize(textobj->GetCharCodes().size());
@@ -1897,10 +1879,11 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     } else if (pType3Char->GetBitmap()) {
       if (device_type == DeviceType::kDisplay) {
         RetainPtr<CPDF_Type3Cache> pCache = GetCachedType3(pType3Font);
-        refTypeCache.m_dwCount++;
         const CFX_GlyphBitmap* pBitmap = pCache->LoadGlyph(charcode, &matrix);
         if (!pBitmap)
           continue;
+
+        refTypeCache.insert(std::move(pCache));
 
         CFX_Point origin(FXSYS_round(matrix.e), FXSYS_round(matrix.f));
         if (glyphs.empty()) {

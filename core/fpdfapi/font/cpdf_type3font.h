@@ -21,15 +21,16 @@ class CPDF_Type3Char;
 
 class CPDF_Type3Font final : public CPDF_SimpleFont {
  public:
-  CPDF_Type3Font(CPDF_Document* pDocument,
-                 CPDF_Dictionary* pFontDict,
-                 std::unique_ptr<FormFactoryIface> pFormFactory);
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
   ~CPDF_Type3Font() override;
 
   // CPDF_Font:
   bool IsType3Font() const override;
   const CPDF_Type3Font* AsType3Font() const override;
   CPDF_Type3Font* AsType3Font() override;
+  void WillBeDestroyed() override;
   uint32_t GetCharWidthF(uint32_t charcode) override;
   FX_RECT GetCharBBox(uint32_t charcode) override;
 
@@ -42,6 +43,10 @@ class CPDF_Type3Font final : public CPDF_SimpleFont {
   CFX_Matrix& GetFontMatrix() { return m_FontMatrix; }
 
  private:
+  CPDF_Type3Font(CPDF_Document* pDocument,
+                 CPDF_Dictionary* pFontDict,
+                 std::unique_ptr<FormFactoryIface> pFormFactory);
+
   // CPDF_Font:
   bool Load() override;
 
