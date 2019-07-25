@@ -42,7 +42,6 @@ class CPDF_DocPageData : public CPDF_Document::PageDataIface {
       const CPDF_Stream* pFontStream) override;
   void MaybePurgeFontFileStreamAcc(const CPDF_Stream* pFontStream) override;
 
-  void Clear(bool bForceRelease);
   bool IsForceClear() const { return m_bForceClear; }
 
   CPDF_Font* AddFont(CFX_Font* pFont, int charset);
@@ -81,6 +80,8 @@ class CPDF_DocPageData : public CPDF_Document::PageDataIface {
 
  private:
   using CPDF_CountedFont = CPDF_CountedObject<CPDF_Font>;
+
+  void Clear(bool bForceRelease);
 
   // Loads a colorspace in a context that might be while loading another
   // colorspace, or even in a recursive call from this method itself. |pVisited|
