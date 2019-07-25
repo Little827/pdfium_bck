@@ -205,20 +205,7 @@ void CPDF_DocPageData::Clear(bool bForceRelease) {
   }
 
   m_ColorSpaceMap.clear();
-
-  for (auto it = m_IccProfileMap.begin(); it != m_IccProfileMap.end();) {
-    auto curr_it = it++;
-    if (bForceRelease || curr_it->second->HasOneRef()) {
-      for (auto hash_it = m_HashProfileMap.begin();
-           hash_it != m_HashProfileMap.end(); ++hash_it) {
-        if (curr_it->first == hash_it->second) {
-          m_HashProfileMap.erase(hash_it);
-          break;
-        }
-      }
-      m_IccProfileMap.erase(curr_it);
-    }
-  }
+  m_IccProfileMap.clear();
 
   for (auto it = m_FontFileMap.begin(); it != m_FontFileMap.end();) {
     auto curr_it = it++;
@@ -468,8 +455,8 @@ RetainPtr<CPDF_IccProfile> CPDF_DocPageData::GetIccProfile(
     return nullptr;
 
   auto it = m_IccProfileMap.find(pProfileStream);
-  if (it != m_IccProfileMap.end())
-    return it->second;
+  if (it != m_IccProfileMap.end() && it->second)
+    return pdfium::WrapRetain(it->second.Get());
 
   auto pAccessor = pdfium::MakeRetain<CPDF_StreamAcc>(pProfileStream);
   pAccessor->LoadAllDataFiltered();
@@ -482,20 +469,13 @@ RetainPtr<CPDF_IccProfile> CPDF_DocPageData::GetIccProfile(
   if (hash_it != m_HashProfileMap.end()) {
     auto it_copied_stream = m_IccProfileMap.find(hash_it->second);
     if (it_copied_stream != m_IccProfileMap.end())
-      return it_copied_stream->second;
+      return pdfium::WrapRetain(it_copied_stream->second.Get());
   }
   auto pProfile =
       pdfium::MakeRetain<CPDF_IccProfile>(pProfileStream, pAccessor->GetSpan());
-  m_IccProfileMap[pProfileStream] = pProfile;
+  m_IccProfileMap[pProfileStream].Reset(pProfile.Get());
   m_HashProfileMap[bsDigest] = pProfileStream;
   return pProfile;
-}
-
-void CPDF_DocPageData::MaybePurgeIccProfile(const CPDF_Stream* pProfileStream) {
-  ASSERT(pProfileStream);
-  auto it = m_IccProfileMap.find(pProfileStream);
-  if (it != m_IccProfileMap.end() && it->second->HasOneRef())
-    m_IccProfileMap.erase(it);
 }
 
 RetainPtr<CPDF_StreamAcc> CPDF_DocPageData::GetFontFileStreamAcc(
