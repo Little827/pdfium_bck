@@ -222,6 +222,7 @@ int CheckPDFiumCApi() {
 
     // fpdf_flatten.h
     CHK(FPDFPage_Flatten);
+    CHK(FPDFPage_FlattenNoControls);
 
     // fpdf_fwlevent.h - no exports.
 

@@ -101,14 +101,16 @@ class CPWLComboBoxEditEmbedderTest : public EmbedderTest {
 TEST_F(CPWLComboBoxEditEmbedderTest, GetSelectedTextEmptyAndBasicNormal) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnotNormal());
 
-  // Automatically pre-filled with "Banana".
+  // Automatically pre-filled with "Bananabcdefghijklmnopqrstuvwxyz".
   EXPECT_FALSE(GetCPWLComboBox()->GetText().IsEmpty());
-  EXPECT_STREQ(L"Banana", GetCPWLComboBox()->GetText().c_str());
+  EXPECT_STREQ(L"Bananabcdefghijklmnopqrstuvwxyz",
+               GetCPWLComboBox()->GetText().c_str());
 
   // Check that selection is intially empty, then select entire word.
   EXPECT_TRUE(GetCPWLComboBox()->GetSelectedText().IsEmpty());
   GetCPWLComboBox()->SetSelectText();
-  EXPECT_STREQ(L"Banana", GetCPWLComboBox()->GetSelectedText().c_str());
+  EXPECT_STREQ(L"Bananabcdefghijklmnopqrstuvwxyz",
+               GetCPWLComboBox()->GetSelectedText().c_str());
 
   // Select other options.
   GetCPWLComboBox()->SetSelect(0);
@@ -122,7 +124,8 @@ TEST_F(CPWLComboBoxEditEmbedderTest, GetSelectedTextEmptyAndBasicNormal) {
 
 TEST_F(CPWLComboBoxEditEmbedderTest, GetSelectedTextFragmentsNormal) {
   FormFillerAndWindowSetup(GetCPDFSDKAnnotNormal());
-  EXPECT_STREQ(L"Banana", GetCPWLComboBox()->GetText().c_str());
+  EXPECT_STREQ(L"Bananabcdefghijklmnopqrstuvwxyz",
+               GetCPWLComboBox()->GetText().c_str());
 
   GetCPWLComboBox()->SetEditSelection(0, 0);
   EXPECT_TRUE(GetCPWLComboBox()->GetSelectedText().IsEmpty());
@@ -131,7 +134,8 @@ TEST_F(CPWLComboBoxEditEmbedderTest, GetSelectedTextFragmentsNormal) {
   EXPECT_STREQ(L"B", GetCPWLComboBox()->GetSelectedText().c_str());
 
   GetCPWLComboBox()->SetEditSelection(0, -1);
-  EXPECT_STREQ(L"Banana", GetCPWLComboBox()->GetSelectedText().c_str());
+  EXPECT_STREQ(L"Bananabcdefghijklmnopqrstuvwxyz",
+               GetCPWLComboBox()->GetSelectedText().c_str());
 
   GetCPWLComboBox()->SetEditSelection(-8, -1);
   EXPECT_TRUE(GetCPWLComboBox()->GetSelectedText().IsEmpty());
