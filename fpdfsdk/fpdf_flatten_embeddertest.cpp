@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include "public/fpdf_annot.h"
 #include "public/fpdf_flatten.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
@@ -69,4 +70,42 @@ TEST_F(FPDFFlattenEmbedderTest, BUG_896366) {
   UnloadPage(page);
 
   VerifySavedDocument(612, 792, md5_hash);
+}
+
+TEST_F(FPDFFlattenEmbedderTest, BUG_954307) {
+#if defined(OS_MACOSX)
+  static const char md5_hash[] = "1f60be99ea9797b56f0aeb1197bd3a20";
+  static const char md5_hash_flat[] = "5b90b61d6f436eac61a6f59c554a58d1";
+#elif defined(OS_WIN)
+  static const char md5_hash[] = "73f65f7c0e674a96ac144035bd35bd42";
+  static const char md5_hash_flat[] = "b017fdf0ce934f02b9943499c6e87b07";
+#else
+  static const char md5_hash[] = "6446192436cb115d611bcd94fc1a0cb5";
+  static const char md5_hash_flat[] = "86a051673beeb92e9f672b27ecb109e0";
+#endif
+  EXPECT_TRUE(OpenDocument("combobox_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+  EXPECT_EQ(FPDFPage_GetAnnotCount(page), 4);
+
+  ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+  CompareBitmap(bitmap.get(), 300, 600, md5_hash);
+
+  EXPECT_EQ(FLATTEN_SUCCESS,
+            FPDFPage_FlattenNoControls(page, form_handle(), FLAT_PRINT));
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  UnloadPage(page);
+
+  EXPECT_TRUE(OpenSavedDocument());
+  FPDF_PAGE saved_page = LoadSavedPage(0);
+  EXPECT_TRUE(saved_page);
+  EXPECT_EQ(FPDFPage_GetAnnotCount(saved_page), 0);
+
+  ScopedFPDFBitmap saved_bitmap =
+      RenderSavedPageWithFlags(saved_page, FPDF_ANNOT);
+  CompareBitmap(saved_bitmap.get(), 300, 600, md5_hash_flat);
+
+  CloseSavedPage(saved_page);
+  CloseSavedDocument();
 }
