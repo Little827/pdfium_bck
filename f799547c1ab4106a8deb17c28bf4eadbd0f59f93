@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "e628878c_96ac1f11",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T23:29:09Z",
+      "side": 1,
+      "message": "Maybe https://pdfium-review.googlesource.com/c/pdfium/+/57470 will solve that by making CPDF_Font retainable. Then SkiaState can just hold on to the font as needed.",
+      "parentUuid": "d1e26164_7e25f164",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e7036e4_b1a169d6",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 4
