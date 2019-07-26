@@ -39,6 +39,48 @@
       "revId": "dc0ed5ff1927aac58bc20292ffd476781c664b67",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab1c6961_c86e4bf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-26T16:28:57Z",
+      "side": 1,
+      "message": "Probably.  That was part of the motivation for the \"mutable\" CL a few revs back.  I think I\u0027m going to leave the public parameters as non-const, but under the covers the const-ness may return.\n\nLong-term, I\u0027d feel better if we had some sort of a \"handle table\", so the the guarantees about cleaning all resources upon library close will occur despite maybe leaking a reference across the public API.",
+      "parentUuid": "492d8dc3_d2c3a5b0",
+      "revId": "dc0ed5ff1927aac58bc20292ffd476781c664b67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b41243b5_25be3d6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-26T16:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b762681_e83211d2",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "dc0ed5ff1927aac58bc20292ffd476781c664b67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
