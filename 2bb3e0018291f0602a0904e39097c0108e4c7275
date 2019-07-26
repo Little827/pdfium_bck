@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a53c12c_b603e2dc",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T04:38:23Z",
+      "side": 1,
+      "message": "Eventually going to order the member variables as needed so we won\u0027t need these?",
+      "revId": "2bb3e0018291f0602a0904e39097c0108e4c7275",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
