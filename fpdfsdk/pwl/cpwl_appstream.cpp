@@ -1578,6 +1578,11 @@ void CPWL_AppStream::SetAsRadioButton() {
 }
 
 void CPWL_AppStream::SetAsComboBox(Optional<WideString> sValue) {
+  SetAsComboBox(sValue, false);
+}
+
+void CPWL_AppStream::SetAsComboBox(Optional<WideString> sValue,
+                                   bool bFlattened) {
   CPDF_FormControl* pControl = widget_->GetFormControl();
   CPDF_FormField* pField = pControl->GetField();
   std::ostringstream sBody;
@@ -1596,7 +1601,8 @@ void CPWL_AppStream::SetAsComboBox(Optional<WideString> sValue) {
   pEdit->SetFontMap(&font_map);
 
   CFX_FloatRect rcEdit = rcClient;
-  rcEdit.right = rcButton.left;
+  if (!bFlattened)
+    rcEdit.right = rcButton.left;
   rcEdit.Normalize();
 
   pEdit->SetPlateRect(rcEdit);
@@ -1641,7 +1647,9 @@ void CPWL_AppStream::SetAsComboBox(Optional<WideString> sValue) {
     sBody << GetColorAppStream(crText, true) << sEdit;
   }
 
-  sBody << GetDropButtonAppStream(rcButton);
+  if (!bFlattened)
+    sBody << GetDropButtonAppStream(rcButton);
+
   Write("N",
         GetBackgroundAppStream() + GetBorderAppStream() + ByteString(sBody),
         ByteString());
