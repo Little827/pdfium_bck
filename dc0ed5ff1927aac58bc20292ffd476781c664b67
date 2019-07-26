@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "492d8dc3_d2c3a5b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T04:31:01Z",
+      "side": 1,
+      "message": "Does this mean some of the changes in https://pdfium.googlesource.com/pdfium.git/+/22923602f40e0fe3cdad7d3ce8828497e5e2a7fb can be undone?",
+      "revId": "dc0ed5ff1927aac58bc20292ffd476781c664b67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b762681_e83211d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T04:31:01Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "dc0ed5ff1927aac58bc20292ffd476781c664b67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
