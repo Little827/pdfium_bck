@@ -45,6 +45,13 @@ CPDF_Type3Font* CPDF_Type3Font::AsType3Font() {
   return this;
 }
 
+void CPDF_Type3Font::WillBeDestroyed() {
+  for (const auto& item : m_CacheMap) {
+    if (item.second)
+      item.second->WillBeDestroyed();
+  }
+}
+
 bool CPDF_Type3Font::Load() {
   m_pFontResources.Reset(m_pFontDict->GetDictFor("Resources"));
   const CPDF_Array* pMatrix = m_pFontDict->GetArrayFor("FontMatrix");
