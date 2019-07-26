@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0a89b24_38055c18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T19:16:33Z",
+      "side": 1,
+      "message": "In non-Chromium repos, explicitly add the bug tracker name as a prefix. e.g. \"Bug: chromium:985604\" here. Otherwise, in this case, some of the tools will get confused about whether this is a Chromium bug or PDFium bug.",
+      "revId": "c6057b3040211e1b6dba539777e0b55529bf6dda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18547772_3a602376",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T19:16:33Z",
+      "side": 1,
+      "message": "There is atan2() usage in some other files and they don\u0027t have this. Either this is not needed, or maybe it is because they are using \u003ccmath\u003e?",
+      "revId": "c6057b3040211e1b6dba539777e0b55529bf6dda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e44ccd4b_a24a80c1",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T19:16:33Z",
+      "side": 1,
+      "message": "Unless there\u0027s a special need for this formatting, just move part of this line onto the available space on the previous line.",
+      "revId": "c6057b3040211e1b6dba539777e0b55529bf6dda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd13ca3_3fa98559",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T19:16:33Z",
+      "side": 1,
+      "message": "Can you use FX_PI?",
+      "range": {
+        "startLine": 144,
+        "startChar": 16,
+        "endLine": 144,
+        "endChar": 20
+      },
+      "revId": "c6057b3040211e1b6dba539777e0b55529bf6dda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e13c28_398393f8",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T19:16:33Z",
+      "side": 1,
+      "message": "Can you mark this as an experimental API, like on line 90?",
+      "revId": "c6057b3040211e1b6dba539777e0b55529bf6dda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb51c3f_d71c610b",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T19:16:33Z",
+      "side": 1,
+      "message": "Align with the word \"Handle\" on the previous line. Some of the existing function comments have bad (auto-formatted) indentations. Let\u0027s not copy that.",
+      "revId": "c6057b3040211e1b6dba539777e0b55529bf6dda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4dc8d35_1f20d360",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T19:16:33Z",
+      "side": 1,
+      "message": "This is always going to be 0 or greater, right? It will be good to call this out, otherwise, readers may wonder how to tell the difference between a valid return value of -1 vs. the error value of -1.",
+      "revId": "c6057b3040211e1b6dba539777e0b55529bf6dda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
