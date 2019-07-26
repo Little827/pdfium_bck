@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae2ae30_1fa3b0f9",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T21:21:34Z",
+      "side": 1,
+      "message": "This is only used on line 990 and 991. Declare it there and don\u0027t bother initialzing it to 1.0? Or just don\u0027t use it at all and combine lines 990/991.",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4a502b_b1744aa8",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T21:21:34Z",
+      "side": 1,
+      "message": "Use Google C++ style consistently, like with line 984.",
+      "range": {
+        "startLine": 986,
+        "startChar": 17,
+        "endLine": 986,
+        "endChar": 29
+      },
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1e26164_7e25f164",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T21:21:34Z",
+      "side": 1,
+      "message": "I feel like this is going to create a bug like https://crbug.com/984811, where the font is gone, but FlushText() is still trying to use it.",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7036e4_b1a169d6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T21:21:34Z",
+      "side": 1,
+      "message": "No C style casting please. Use C++ style casting instead.",
+      "range": {
+        "startLine": 994,
+        "startChar": 26,
+        "endLine": 994,
+        "endChar": 34
+      },
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f33cb6_9e511344",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T21:21:34Z",
+      "side": 1,
+      "message": "This\n    Looks;  // odd\n\n// Instead, make it look\nLike this;",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab5da46_1a458d3c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-26T21:21:34Z",
+      "side": 1,
+      "message": "Is |m_fontCharWidths| always going to be have a 1 to 1 association with |m_glyphs|? If so, it may be easier to keep track of an array of structs, instead of 2 separate arrays.",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
