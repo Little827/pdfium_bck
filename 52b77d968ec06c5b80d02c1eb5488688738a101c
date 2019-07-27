@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "99fc4e2d_c3adaead",
+        "filename": "fpdfsdk/cpdfsdk_widget.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T01:01:18Z",
+      "side": 1,
+      "message": "The call stacks for the existing ResetAppearance() methods is a bit of a mess. I can\u0027t even give you a recommendation here yet. Let me go clean up the existing code in separate CLs, and then we can get back to here and see what makes the most sense.\n\nOne thing I dislike is overloading the names. Without a good cross-reference, it is hard to tell which ResetAppearance() is being called. and XFA code has no xref. See also https://google.github.io/styleguide/cppguide.html#Function_Overloading",
+      "revId": "52b77d968ec06c5b80d02c1eb5488688738a101c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce8ee0df_4f21fbbe",
         "filename": "fpdfsdk/pwl/cpwl_appstream.cpp",
         "patchSetId": 22
