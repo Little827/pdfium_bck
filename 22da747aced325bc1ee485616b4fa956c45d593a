@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f64d333_d552655c",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "Move this up so all the static methods are grouped together.",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5621c134_9f90064d",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "Not implemented?",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56710d47_52f9ac58",
+        "filename": "core/fpdfapi/font/cpdf_fontglobals.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f1add6a_86639062",
+        "filename": "core/fpdfapi/font/cpdf_fontglobals.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "IWYU",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ceb484_506d44f8",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "Add a comment re: Retained? Without looking at CPDF_Font, one has no way of knowing this.",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86a25f0_d44f7ef7",
+        "filename": "core/fpdfapi/font/cpdf_type3font.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "CPDF_Type3Chars",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8f0965_4682db76",
+        "filename": "core/fpdfapi/page/cpdf_textobject.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "IWYU",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77e3c99_9b21a992",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "Is this intentional?",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d163d5_0a0ab59f",
+        "filename": "core/fpdfdoc/cpdf_formcontrol.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "IWYU",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4badaf4_ef2ee714",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T00:09:19Z",
+      "side": 1,
+      "message": "IWYU",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
