@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "6799ba10_6c16744c",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T01:38:52Z",
+      "side": 1,
+      "message": "Give hidden annotations are going to be skipped, is it still necessary to recrate their AP streams? Similary, the the logic in the next block below may cause ParserStream() to be skipped.",
+      "revId": "52b77d968ec06c5b80d02c1eb5488688738a101c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce8ee0df_4f21fbbe",
         "filename": "fpdfsdk/pwl/cpwl_appstream.cpp",
         "patchSetId": 22
