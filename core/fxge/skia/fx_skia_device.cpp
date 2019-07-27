@@ -878,6 +878,7 @@ class SkiaState {
     if (Accumulator::kText != m_type) {
       m_positions.setCount(0);
       m_glyphs.setCount(0);
+      m_fontCharWidths.setCount(0);
       if (pFont->GetFaceRec())
         m_pTypeFace.reset(SkSafeRef(pFont->GetDeviceCache()));
       else
@@ -888,6 +889,7 @@ class SkiaState {
       m_drawMatrix = matrix;
       m_drawIndex = m_commandIndex;
       m_type = Accumulator::kText;
+      m_pFont = pFont;
     }
     if (!hasRSX && !m_rsxform.isEmpty())
       FlushText();
@@ -895,6 +897,7 @@ class SkiaState {
     int count = m_positions.count();
     m_positions.setCount(nChars + count);
     m_glyphs.setCount(nChars + count);
+    m_fontCharWidths.setCount(nChars + count);
     if (hasRSX)
       m_rsxform.setCount(nChars + count);
 
@@ -907,6 +910,7 @@ class SkiaState {
       m_positions[index + count] = {cp.m_Origin.x * flip,
                                     cp.m_Origin.y * vFlip};
       m_glyphs[index + count] = static_cast<uint16_t>(cp.m_GlyphIndex);
+      m_fontCharWidths[index + count] = static_cast<int>(cp.m_FontCharWidth);
 #if defined(OS_MACOSX)
       if (cp.m_ExtGID)
         m_glyphs[index + count] = static_cast<uint16_t>(cp.m_ExtGID);
@@ -914,8 +918,9 @@ class SkiaState {
     }
     SkPoint delta;
     if (MatrixOffset(&matrix, &delta)) {
-      for (int index = 0; index < nChars; ++index)
+      for (int index = 0; index < nChars; ++index) {
         m_positions[index + count].offset(delta.fX * flip, -delta.fY * flip);
+      }
     }
     if (hasRSX) {
       for (int index = 0; index < nChars; ++index) {
@@ -969,21 +974,35 @@ class SkiaState {
     printf("\n");
 #endif
 
-    sk_sp<SkTextBlob> blob;
     if (m_rsxform.count()) {
+      sk_sp<SkTextBlob> blob;
       blob = SkTextBlob::MakeFromRSXform(m_glyphs.begin(), m_glyphs.bytes(),
                                          m_rsxform.begin(), font,
                                          SkTextEncoding::kGlyphID);
+      skCanvas->drawTextBlob(blob, 0, 0, skPaint);
     } else {
-      blob = SkTextBlob::MakeFromPosText(m_glyphs.begin(), m_glyphs.bytes(),
-                                         m_positions.begin(), font,
-                                         SkTextEncoding::kGlyphID);
+      for (int i = 0; i < m_glyphs.count(); ++i) {
+        uint32_t font_glyph_width =
+            m_pFont ? m_pFont->GetGlyphWidth(m_glyphs[i]) : 0;
+        uint32_t pdf_glyph_width = m_fontCharWidths[i];
+        if (font_glyph_width && pdf_glyph_width &&
+            font_glyph_width > pdf_glyph_width) {
+          font.setScaleX(static_cast<float>(pdf_glyph_width) /
+                         font_glyph_width);
+        }
+        sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromText(
+            &m_glyphs[i],
+            static_cast<size_t>(m_glyphs.bytes()) / m_glyphs.count(), font,
+            SkTextEncoding::kGlyphID);
+        skCanvas->drawTextBlob(blob, m_positions[i].fX, m_positions[i].fY,
+                               skPaint);
+        font.setScaleX(1.0);
+      }
     }
-    skCanvas->drawTextBlob(blob, 0, 0, skPaint);
-
     m_drawIndex = INT_MAX;
     m_type = Accumulator::kNone;
     m_drawMatrix = CFX_Matrix();
+    m_pFont = nullptr;
   }
 
   bool IsEmpty() const { return !m_commands.count(); }
@@ -1425,8 +1444,11 @@ class SkiaState {
   SkTDArray<SkPoint> m_positions;  // accumulator for text positions
   SkTDArray<SkRSXform> m_rsxform;  // accumulator for txt rotate/scale/translate
   SkTDArray<uint16_t> m_glyphs;    // accumulator for text glyphs
+  // accumulator for glyphs' width defined in pdf
+  SkTDArray<int> m_fontCharWidths;
   SkPath m_skPath;                 // accumulator for path contours
   SkPath m_skEmptyPath;            // used as placehold in the clips array
+  CFX_Font* m_pFont = nullptr;
   CFX_Matrix m_drawMatrix;
   CFX_GraphStateData m_clipState;
   CFX_GraphStateData m_drawState;
@@ -1702,10 +1724,22 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
       }
     }
   } else {
-    m_pCanvas->drawTextBlob(SkTextBlob::MakeFromPosText(
-                                glyphs.begin(), nChars * 2, positions.begin(),
-                                font, SkTextEncoding::kGlyphID),
-                            0, 0, paint);
+    for (int index = 0; index < nChars; ++index) {
+      const TextCharPos& cp = pCharPos[index];
+      uint32_t font_glyph_width =
+          pFont ? pFont->GetGlyphWidth(cp.m_GlyphIndex) : 0;
+      uint32_t pdf_glyph_width = cp.m_FontCharWidth;
+      if (font_glyph_width && pdf_glyph_width &&
+          font_glyph_width > pdf_glyph_width) {
+        font.setScaleX(static_cast<float>(pdf_glyph_width) / font_glyph_width);
+      }
+      auto blob = SkTextBlob::MakeFromText(
+          &glyphs[index], static_cast<size_t>(glyphs.bytes()) / nChars, font,
+          SkTextEncoding::kGlyphID);
+      m_pCanvas->drawTextBlob(blob, positions[index].fX, positions[index].fY,
+                              paint);
+      font.setScaleX(1.0);
+    }
   }
 
   return true;
