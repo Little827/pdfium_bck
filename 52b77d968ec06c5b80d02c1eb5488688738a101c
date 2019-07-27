@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "87c4c83d_a8f65832",
+        "filename": "fpdfsdk/fpdf_flatten.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-27T02:11:16Z",
+      "side": 1,
+      "message": "Add a check for |pPDFForm| in front, then that is no longer needed on line 116, and the |pForm| check is not needed on line 118 either. Since a valid |pPDFForm| implies a valid |pForm|.",
+      "revId": "52b77d968ec06c5b80d02c1eb5488688738a101c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6799ba10_6c16744c",
         "filename": "fpdfsdk/fpdf_flatten.cpp",
         "patchSetId": 22
