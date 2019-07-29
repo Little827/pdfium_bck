@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1564191606 -0700\nnonce AC6AUtOwCv56R69Ms9niKqKfvb5/0hTqZnMie/kTjJxWQfQApuoh1Pk68aDrk7fZJ0GG3YNiGmx0\n\n0000000000000000000000000000000000000000 bbe762dcac9672f4a0df2c732545ef57584ff85e refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003drename-xfa-version-of-cpdfsdk-widget\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl07q3YACgkQqzYtYVpm\n/XuRJAf/SL4xCz9SVvpbK2RPP4yIMhYhw5IxgXJ8YdXJHUSV3urijYnYvqTXbT5X\nOJWplbccg+49Wb9M7hhyZ3ywKtkzt6hfppUq2KqCSAUzYtK2MXwIgV80p8JV45ut\nLljlpqy/Oomy2V6g3YXvb/St9VvkeGFTFUb22Woadwj7/uFwyoAJx7xe6LcdjD8O\nmq4QdG6oePozk+8nV54ElOQaFVY1Lwn+sYKi0FB2zVGji0XJza75zpqIh8OhvvvA\n+hIHYYbS04KZKfy2GTzrJi2ZsquYjkdYyNQ4AgNPP0HeJmFzDMKELw9k9o5TLBZN\nuZSrB4HgbHDHyrFk8F6RAo2tswh0RQ\u003d\u003d\n\u003dmYH3\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "73160655_f91aa1d3",
+        "filename": "fpdfsdk/cpdfsdk_widget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T22:59:37Z",
+      "side": 1,
+      "message": "nit: XFA in caps?",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "bbe762dcac9672f4a0df2c732545ef57584ff85e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
