@@ -482,6 +482,24 @@
     },
     {
       "key": {
+        "uuid": "dc7b6e55_16a0acb6",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T23:56:56Z",
+      "side": 1,
+      "message": "Given the diff in fpdfsdk/fpdf_edit_embeddertest.cpp, I would say something has changed. This CL needs to update the documentation for FPDFText_LoadStandardFont() in public/.",
+      "parentUuid": "ad431677_6ee74c4e",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26087d1a_e28d6207",
         "filename": "xfa/fgas/font/cfgas_gefont.cpp",
         "patchSetId": 24
