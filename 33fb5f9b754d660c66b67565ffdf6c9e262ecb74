@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ead50d41_b70e6ba4",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T19:22:12Z",
+      "side": 1,
+      "message": "Can you trigger this path in the test?",
+      "revId": "33fb5f9b754d660c66b67565ffdf6c9e262ecb74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f2cbf33_5605e100",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T19:22:12Z",
+      "side": 1,
+      "message": "BTW, no need for braces when both the conditional and the body are 1 line.",
+      "revId": "33fb5f9b754d660c66b67565ffdf6c9e262ecb74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6354108_6da38975",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T19:22:12Z",
+      "side": 1,
+      "message": "static constexpr",
+      "range": {
+        "startLine": 1189,
+        "startChar": 2,
+        "endLine": 1189,
+        "endChar": 7
+      },
+      "revId": "33fb5f9b754d660c66b67565ffdf6c9e262ecb74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74820143_0b80b725",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T19:22:12Z",
+      "side": 1,
+      "message": "- typo\n- can the return value be 0?",
+      "revId": "33fb5f9b754d660c66b67565ffdf6c9e262ecb74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472761a7_fd2e9b91",
+        "filename": "testing/resources/rotated_text.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T19:22:12Z",
+      "side": 1,
+      "message": "- Rename to object 5 0?\n- Add: \"  {streamlen}}\" in the dictionary and fixup_pdf_template.py will calculate the /Length.",
+      "revId": "33fb5f9b754d660c66b67565ffdf6c9e262ecb74",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
