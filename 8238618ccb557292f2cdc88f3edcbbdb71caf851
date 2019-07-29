@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37f672d3_cc5feac1",
+        "filename": "fpdfsdk/fpdf_transformpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "nit: Add braces. Same for line 315.",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f21e0b0_687736ba",
+        "filename": "public/fpdf_transformpage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "Please indent to align with \"Handle\" on the previous line.",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae7a1dd8_bd4db65e",
+        "filename": "public/fpdf_transformpage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "Align with the dash on the next line. Same for lines 256-258.",
+      "range": {
+        "startLine": 246,
+        "startChar": 15,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07fb82da_60d828f9",
+        "filename": "public/fpdf_transformpage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 260,
+        "startChar": 63,
+        "endLine": 260,
+        "endChar": 64
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0cab58_f751f350",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "2 space indent.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 1
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e246212_3a8cc8aa",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "No need to indent.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4022cfc_a3268483",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "Renumber there so they are in a more logical order:\n1 0: catalog\n2 0: pages\n3 0: page\n4 0: content",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d3c73a_4f264158",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T20:11:07Z",
+      "side": 1,
+      "message": "Move towards the top, so the objects are in order.",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
