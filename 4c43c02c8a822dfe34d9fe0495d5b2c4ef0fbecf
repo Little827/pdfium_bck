@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33f954a3_0c10bee1",
+        "filename": "fpdfsdk/cpdfsdk_xfawidget.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T18:49:31Z",
+      "side": 1,
+      "message": "This unsorts the list?",
+      "revId": "4c43c02c8a822dfe34d9fe0495d5b2c4ef0fbecf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44e6f892_66bc7ebe",
+        "filename": "xfa/fxfa/layout/cxfa_layoutitem.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T18:49:31Z",
+      "side": 1,
+      "message": "Should this be RetainPtr\u003cCXFA_LayoutItem\u003e like in SyncRemoveLayoutItem()? There\u0027s also CXFA_ViewLayoutProcessor::~CXFA_ViewLayoutProcessor() and CXFA_ViewLayoutProcessor::PrepareLayout(), etc. (All the loops that call GetNext() or GetNextSibling().) Make the similar code consistent?",
+      "revId": "4c43c02c8a822dfe34d9fe0495d5b2c4ef0fbecf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1536242c_c0ac3d2b",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-29T18:49:31Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "4c43c02c8a822dfe34d9fe0495d5b2c4ef0fbecf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
