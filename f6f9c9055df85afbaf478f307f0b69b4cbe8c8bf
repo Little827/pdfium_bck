@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ada400d_9badf984",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-07-29T21:42:58Z",
+      "side": 1,
+      "message": "My typescript took over for a second, sorry about that. Will do!",
+      "parentUuid": "63a88365_98d90e40",
+      "range": {
+        "startLine": 1185,
+        "startChar": 38,
+        "endLine": 1185,
+        "endChar": 42
+      },
+      "revId": "f6f9c9055df85afbaf478f307f0b69b4cbe8c8bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb5d1e0d_82434506",
         "filename": "testing/resources/rotated_text.in",
         "patchSetId": 9
@@ -39,6 +63,24 @@
       "revId": "f6f9c9055df85afbaf478f307f0b69b4cbe8c8bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c062e3f_e47d832f",
+        "filename": "testing/resources/rotated_text.in",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-07-29T21:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb5d1e0d_82434506",
+      "revId": "f6f9c9055df85afbaf478f307f0b69b4cbe8c8bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
