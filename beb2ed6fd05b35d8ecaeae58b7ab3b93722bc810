@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0ae38c0_61f1b466",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T16:59:02Z",
+      "side": 1,
+      "message": "nit: may be",
+      "range": {
+        "startLine": 673,
+        "startChar": 14,
+        "endLine": 673,
+        "endChar": 19
+      },
+      "revId": "beb2ed6fd05b35d8ecaeae58b7ab3b93722bc810",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b16db7e6_7380ecd4",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T16:59:02Z",
+      "side": 1,
+      "message": "or just\n  if (!*pAnnot) \nsince these implicitly convert to bool.",
+      "range": {
+        "startLine": 674,
+        "startChar": 2,
+        "endLine": 674,
+        "endChar": 31
+      },
+      "revId": "beb2ed6fd05b35d8ecaeae58b7ab3b93722bc810",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1136b1c6_77a43f9c",
+        "filename": "fpdfsdk/cpdfsdk_xfawidgethandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T16:59:02Z",
+      "side": 1,
+      "message": "nit: overparenthesized, and braces are required as the if now spans a line\n\n  if (pObservedXFAPageView \u0026\u0026\n      pXFAPageView-\u003eGetDocView()-\u003eGetFocusWidget() \u003d\u003d hWidget) {\n    bRet \u003d true;\n  }",
+      "range": {
+        "startLine": 545,
+        "startChar": 6,
+        "endLine": 545,
+        "endChar": 63
+      },
+      "revId": "beb2ed6fd05b35d8ecaeae58b7ab3b93722bc810",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
