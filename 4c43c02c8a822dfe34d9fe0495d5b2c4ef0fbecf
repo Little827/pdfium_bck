@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0811def4_694d9961",
+        "filename": "fpdfsdk/cpdfsdk_xfawidget.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T23:31:16Z",
+      "side": 1,
+      "message": "Done, probably removed and added or something.",
+      "parentUuid": "33f954a3_0c10bee1",
+      "revId": "4c43c02c8a822dfe34d9fe0495d5b2c4ef0fbecf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44e6f892_66bc7ebe",
         "filename": "xfa/fxfa/layout/cxfa_layoutitem.cpp",
         "patchSetId": 30
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "adca9ff5_5582dd8e",
+        "filename": "xfa/fxfa/layout/cxfa_layoutitem.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T23:31:16Z",
+      "side": 1,
+      "message": "Done. (consolidation would be nice someday).",
+      "parentUuid": "44e6f892_66bc7ebe",
+      "revId": "4c43c02c8a822dfe34d9fe0495d5b2c4ef0fbecf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1536242c_c0ac3d2b",
         "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
         "patchSetId": 30
@@ -50,6 +86,24 @@
       "revId": "4c43c02c8a822dfe34d9fe0495d5b2c4ef0fbecf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4215dbaa_d889768a",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
+        "patchSetId": 30
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T23:31:16Z",
+      "side": 1,
+      "message": "Done. Moved all to the header file.",
+      "parentUuid": "1536242c_c0ac3d2b",
+      "revId": "4c43c02c8a822dfe34d9fe0495d5b2c4ef0fbecf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
