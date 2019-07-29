@@ -1991,12 +1991,12 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText2) {
   ScopedFPDFPage page(FPDFPage_New(CreateNewDocument(), 0, 612, 792));
 
   // Load a standard font.
-  FPDF_FONT font = FPDFText_LoadStandardFont(document(), "Helvetica");
+  ScopedFPDFFont font(FPDFText_LoadStandardFont(document(), "Helvetica"));
   ASSERT_TRUE(font);
 
   // Add some text to the page.
   FPDF_PAGEOBJECT text_object =
-      FPDFPageObj_CreateTextObj(document(), font, 12.0f);
+      FPDFPageObj_CreateTextObj(document(), font.get(), 12.0f);
   EXPECT_TRUE(text_object);
   ScopedFPDFWideString text =
       GetFPDFWideString(L"I'm at the bottom of the page");
@@ -2040,7 +2040,7 @@ TEST_F(FPDFEditEmbedderTest, LoadStandardFonts) {
       "TimesNewRoman-Italic",
       "ZapfDingbats"};
   for (const char* font_name : kStandardFontNames) {
-    FPDF_FONT font = FPDFText_LoadStandardFont(document(), font_name);
+    ScopedFPDFFont font(FPDFText_LoadStandardFont(document(), font_name));
     EXPECT_TRUE(font) << font_name << " should be considered a standard font.";
   }
   static constexpr const char* kNotStandardFontNames[] = {
@@ -2049,7 +2049,7 @@ TEST_F(FPDFEditEmbedderTest, LoadStandardFonts) {
       "TestFontName", "Quack",     "Symbol-Italic",
       "Zapf"};
   for (const char* font_name : kNotStandardFontNames) {
-    FPDF_FONT font = FPDFText_LoadStandardFont(document(), font_name);
+    ScopedFPDFFont font(FPDFText_LoadStandardFont(document(), font_name));
     EXPECT_FALSE(font) << font_name
                        << " should not be considered a standard font.";
   }
@@ -2175,7 +2175,7 @@ TEST_F(FPDFEditEmbedderTest, DoubleGenerating) {
 TEST_F(FPDFEditEmbedderTest, LoadSimpleType1Font) {
   CreateNewDocument();
   // TODO(npm): use other fonts after disallowing loading any font as any type
-  const CPDF_Font* stock_font =
+  RetainPtr<CPDF_Font> stock_font =
       CPDF_Font::GetStockFont(cpdf_doc(), "Times-Bold");
   pdfium::span<const uint8_t> span = stock_font->GetFont()->GetFontSpan();
   ScopedFPDFFont font(FPDFText_LoadFont(document(), span.data(), span.size(),
@@ -2204,7 +2204,8 @@ TEST_F(FPDFEditEmbedderTest, LoadSimpleType1Font) {
 
 TEST_F(FPDFEditEmbedderTest, LoadSimpleTrueTypeFont) {
   CreateNewDocument();
-  const CPDF_Font* stock_font = CPDF_Font::GetStockFont(cpdf_doc(), "Courier");
+  RetainPtr<CPDF_Font> stock_font =
+      CPDF_Font::GetStockFont(cpdf_doc(), "Courier");
   pdfium::span<const uint8_t> span = stock_font->GetFont()->GetFontSpan();
   ScopedFPDFFont font(FPDFText_LoadFont(document(), span.data(), span.size(),
                                         FPDF_FONT_TRUETYPE, false));
@@ -2232,7 +2233,7 @@ TEST_F(FPDFEditEmbedderTest, LoadSimpleTrueTypeFont) {
 
 TEST_F(FPDFEditEmbedderTest, LoadCIDType0Font) {
   CreateNewDocument();
-  const CPDF_Font* stock_font =
+  RetainPtr<CPDF_Font> stock_font =
       CPDF_Font::GetStockFont(cpdf_doc(), "Times-Roman");
   pdfium::span<const uint8_t> span = stock_font->GetFont()->GetFontSpan();
   ScopedFPDFFont font(FPDFText_LoadFont(document(), span.data(), span.size(),
@@ -2281,7 +2282,7 @@ TEST_F(FPDFEditEmbedderTest, LoadCIDType0Font) {
 
 TEST_F(FPDFEditEmbedderTest, LoadCIDType2Font) {
   CreateNewDocument();
-  const CPDF_Font* stock_font =
+  RetainPtr<CPDF_Font> stock_font =
       CPDF_Font::GetStockFont(cpdf_doc(), "Helvetica-Oblique");
   pdfium::span<const uint8_t> span = stock_font->GetFont()->GetFontSpan();
   ScopedFPDFFont font(FPDFText_LoadFont(document(), span.data(), span.size(),
@@ -2334,7 +2335,8 @@ TEST_F(FPDFEditEmbedderTest, AddTrueTypeFontText) {
   // Start with a blank page
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
   {
-    const CPDF_Font* stock_font = CPDF_Font::GetStockFont(cpdf_doc(), "Arial");
+    RetainPtr<CPDF_Font> stock_font =
+        CPDF_Font::GetStockFont(cpdf_doc(), "Arial");
     pdfium::span<const uint8_t> span = stock_font->GetFont()->GetFontSpan();
     ScopedFPDFFont font(FPDFText_LoadFont(document(), span.data(), span.size(),
                                           FPDF_FONT_TRUETYPE, 0));
@@ -2644,7 +2646,8 @@ TEST_F(FPDFEditEmbedderTest, AddMarkedText) {
   // Start with a blank page.
   FPDF_PAGE page = FPDFPage_New(CreateNewDocument(), 0, 612, 792);
 
-  const CPDF_Font* stock_font = CPDF_Font::GetStockFont(cpdf_doc(), "Arial");
+  RetainPtr<CPDF_Font> stock_font =
+      CPDF_Font::GetStockFont(cpdf_doc(), "Arial");
   pdfium::span<const uint8_t> span = stock_font->GetFont()->GetFontSpan();
   ScopedFPDFFont font(FPDFText_LoadFont(document(), span.data(), span.size(),
                                         FPDF_FONT_TRUETYPE, 0));
