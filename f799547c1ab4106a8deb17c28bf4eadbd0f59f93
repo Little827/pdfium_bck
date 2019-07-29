@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7d7aff85_780798b7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-29T18:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae2ae30_1fa3b0f9",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a4a502b_b1744aa8",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2b5fa8_003c5c34",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-29T18:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a4a502b_b1744aa8",
+      "range": {
+        "startLine": 986,
+        "startChar": 17,
+        "endLine": 986,
+        "endChar": 29
+      },
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "a9a0ca8e_3a3be3d0",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-29T18:34:50Z",
+      "side": 1,
+      "message": "|font| is always valid within FlushText() scope.\nWhen m_pFont is nullptr, there won\u0027t be scaleX change to |font|.\n\nThe error: 0x2 (Unknown_File_Format) from https://crbug.com/984811 will happen when either using SkTextBlob::MakeFromPosText()(before this CL) or SkTextBlob::MakeFromText()(in this CL). I feel like it should be a different issue and not related to |m_pFont| or |font|.",
+      "parentUuid": "d1e26164_7e25f164",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e7036e4_b1a169d6",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 4
@@ -100,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "420a3db2_09892b45",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-29T18:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e7036e4_b1a169d6",
+      "range": {
+        "startLine": 994,
+        "startChar": 26,
+        "endLine": 994,
+        "endChar": 34
+      },
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8f33cb6_9e511344",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 4
@@ -117,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "e56dd509_3c5773de",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-29T18:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8f33cb6_9e511344",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dab5da46_1a458d3c",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 4
@@ -128,6 +230,24 @@
       "writtenOn": "2019-07-26T21:21:34Z",
       "side": 1,
       "message": "Is |m_fontCharWidths| always going to be have a 1 to 1 association with |m_glyphs|? If so, it may be easier to keep track of an array of structs, instead of 2 separate arrays.",
+      "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161c830a_2f23c565",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-07-29T18:34:50Z",
+      "side": 1,
+      "message": "Yes, |m_fontCharWidths| will always be matching the number of |m_glyphs|.\n\nWhen \"Widths[]\" is completely missing from the pdf file, |m_fontCharWidths| will be filled with the default font widths for each glyph.\n\nWhen \"Widths[]\" exists in the pdf file but have fewer number of elements than the number of the glyphs,  |m_fontCharWidths| will be filled with 0s for the last few glyphs which don\u0027t have a matching widths.\n\nWhen \"Widths[]\" has more elements than the number of glyphs, the extra widths will be ignored. |m_fontCharWidths| will only need to contain exact the same number of widths as |m_glyphs|\u0027s size.",
+      "parentUuid": "dab5da46_1a458d3c",
       "revId": "f799547c1ab4106a8deb17c28bf4eadbd0f59f93",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
