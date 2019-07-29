@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "64403982_82d67248",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T22:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b532dc70_813755eb",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56710d47_52f9ac58",
         "filename": "core/fpdfapi/font/cpdf_fontglobals.cpp",
         "patchSetId": 24
@@ -341,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "52a5033f_a117cf0f",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T22:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1841cce5_3e097e7b",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8d163d5_0a0ab59f",
         "filename": "core/fpdfdoc/cpdf_formcontrol.h",
         "patchSetId": 24
@@ -478,6 +514,24 @@
       "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2f1cb45_75b66e30",
+        "filename": "xfa/fgas/font/cfgas_gefont.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-29T22:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dabe103_e1babb63",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
