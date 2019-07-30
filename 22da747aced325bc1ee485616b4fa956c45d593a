@@ -518,6 +518,24 @@
     },
     {
       "key": {
+        "uuid": "efb2f6c0_d658805f",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-30T19:18:52Z",
+      "side": 1,
+      "message": "As is, the comments in public/ tell callers to FPDFText_LoadStandardFont() to not bother with calling FPDFFont_Close(). If callers follow that, are they going to have memory leaks after this CL?\n\nIf the saner behavior is for them to call FPDFFont_Close(), then let\u0027s update the comments to tell callers to do that.",
+      "parentUuid": "7614f4c2_73e5b4e7",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26087d1a_e28d6207",
         "filename": "xfa/fgas/font/cfgas_gefont.cpp",
         "patchSetId": 24
