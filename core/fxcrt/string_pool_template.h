@@ -10,16 +10,24 @@
 #include <unordered_set>
 
 #include "core/fxcrt/fx_string.h"
+#include "core/fxcrt/retain_ptr.h"
 
 namespace fxcrt {
 
 template <typename StringType>
-class StringPoolTemplate {
+class StringPoolTemplate : public Retainable {
  public:
+  template <typename T, typename... Args>
+  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
+
+  ~StringPoolTemplate() override {}
+
   StringType Intern(const StringType& str) { return *m_Pool.insert(str).first; }
   void Clear() { m_Pool.clear(); }
 
  private:
+  StringPoolTemplate() = default;
+
   std::unordered_set<StringType> m_Pool;
 };
 

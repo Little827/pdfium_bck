@@ -8,7 +8,6 @@
 #define CORE_FXCRT_WEAK_PTR_H_
 
 #include <cstddef>
-#include <memory>
 #include <utility>
 
 #include "core/fxcrt/fx_system.h"
@@ -16,13 +15,13 @@
 
 namespace fxcrt {
 
-template <class T, class D = std::default_delete<T>>
+template <class T>
 class WeakPtr {
  public:
   WeakPtr() = default;
   WeakPtr(const WeakPtr& that) : m_pHandle(that.m_pHandle) {}
   WeakPtr(WeakPtr&& that) noexcept { Swap(that); }
-  explicit WeakPtr(std::unique_ptr<T, D> pObj)
+  explicit WeakPtr(const RetainPtr<T>& pObj)
       : m_pHandle(new Handle(std::move(pObj))) {}
 
   // Deliberately implicit to allow passing nullptr.
@@ -50,24 +49,22 @@ class WeakPtr {
     }
   }
   void Reset() { m_pHandle.Reset(); }
-  void Reset(std::unique_ptr<T, D> pObj) {
-    m_pHandle.Reset(new Handle(std::move(pObj)));
-  }
+  void Reset(const RetainPtr<T>& pObj) { m_pHandle.Reset(new Handle(pObj)); }
   void Swap(WeakPtr& that) { m_pHandle.Swap(that.m_pHandle); }
 
  private:
   class Handle {
    public:
-    explicit Handle(std::unique_ptr<T, D> ptr) : m_pObj(std::move(ptr)) {}
+    explicit Handle(const RetainPtr<T>& ptr) : m_pObj(ptr) {}
 
-    void Reset(std::unique_ptr<T, D> ptr) { m_pObj = std::move(ptr); }
+    void Reset(const RetainPtr<T>& ptr) { m_pObj = ptr; }
     void Clear() {     // Now you're all weak ptrs ...
-      m_pObj.reset();  // unique_ptr nulls first before invoking delete.
+      m_pObj.Reset();  // unique_ptr nulls first before invoking delete.
     }
-    T* Get() const { return m_pObj.get(); }
+    T* Get() const { return m_pObj.Get(); }
     T* Retain() {
       ++m_nCount;
-      return m_pObj.get();
+      return m_pObj.Get();
     }
     void Release() {
       if (--m_nCount == 0)
@@ -79,7 +76,7 @@ class WeakPtr {
     ~Handle() = default;
 
     intptr_t m_nCount = 0;
-    std::unique_ptr<T, D> m_pObj;
+    RetainPtr<T> m_pObj;
   };
 
   RetainPtr<Handle> m_pHandle;

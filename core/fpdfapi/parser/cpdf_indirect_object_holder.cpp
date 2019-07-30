@@ -11,8 +11,8 @@
 
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
+#include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/logging.h"
-#include "third_party/base/ptr_util.h"
 
 namespace {
 
@@ -24,7 +24,7 @@ CPDF_Object* FilterInvalidObjNum(CPDF_Object* obj) {
 
 CPDF_IndirectObjectHolder::CPDF_IndirectObjectHolder()
     : m_LastObjNum(0),
-      m_pByteStringPool(pdfium::MakeUnique<ByteStringPool>()) {}
+      m_pByteStringPool(pdfium::MakeRetain<ByteStringPool>()) {}
 
 CPDF_IndirectObjectHolder::~CPDF_IndirectObjectHolder() {
   m_pByteStringPool.DeleteObject();  // Make weak.
