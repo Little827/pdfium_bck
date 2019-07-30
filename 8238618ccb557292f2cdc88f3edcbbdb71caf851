@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "13cebf42_19765ddb",
+        "filename": "fpdfsdk/fpdf_transformpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37f672d3_cc5feac1",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f21e0b0_687736ba",
         "filename": "public/fpdf_transformpage.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd10d3b7_12e57440",
+        "filename": "public/fpdf_transformpage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f21e0b0_687736ba",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "49b1959f_7191a6a4",
+        "filename": "public/fpdf_transformpage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7a1dd8_bd4db65e",
+      "range": {
+        "startLine": 246,
+        "startChar": 15,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07fb82da_60d828f9",
         "filename": "public/fpdf_transformpage.h",
         "patchSetId": 2
@@ -79,6 +139,30 @@
       "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd7181f3_fe69ac26",
+        "filename": "public/fpdf_transformpage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Fixed. I read too much German recently. :-)",
+      "parentUuid": "07fb82da_60d828f9",
+      "range": {
+        "startLine": 260,
+        "startChar": 63,
+        "endLine": 260,
+        "endChar": 64
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "e1bd5dcb_bfa3d073",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0cab58_f751f350",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 1
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e246212_3a8cc8aa",
         "filename": "testing/resources/clip_path.in",
         "patchSetId": 2
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "4838761b_0902b952",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e246212_3a8cc8aa",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4022cfc_a3268483",
         "filename": "testing/resources/clip_path.in",
         "patchSetId": 2
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "990bb163_f02f89bb",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4022cfc_a3268483",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91d3c73a_4f264158",
         "filename": "testing/resources/clip_path.in",
         "patchSetId": 2
@@ -159,6 +309,24 @@
       "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "978ca1f1_181672f2",
+        "filename": "testing/resources/clip_path.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 6835
+      },
+      "writtenOn": "2019-07-30T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91d3c73a_4f264158",
+      "revId": "8238618ccb557292f2cdc88f3edcbbdb71caf851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
