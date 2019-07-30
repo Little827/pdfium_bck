@@ -500,6 +500,24 @@
     },
     {
       "key": {
+        "uuid": "7614f4c2_73e5b4e7",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-30T16:20:59Z",
+      "side": 1,
+      "message": "Ah, yeah, that was a leak. So what was formerly happening is that we\u0027d hand out FPDF_FONT ref-counts across the public API, and if callers closed them all, we\u0027d drop the underlying object at that point, but if they didn\u0027t before document close, we\u0027d just ignore the ref counts and delete the object anyways at cpdf_docpagedata.cpp:179 and hope that callers didn\u0027t use their FPDF_FONT thereafter.\n\nTolerant, but kinda sloppy ownership model. Do we want the same behaviour?",
+      "parentUuid": "dc7b6e55_16a0acb6",
+      "revId": "22da747aced325bc1ee485616b4fa956c45d593a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26087d1a_e28d6207",
         "filename": "xfa/fgas/font/cfgas_gefont.cpp",
         "patchSetId": 24
