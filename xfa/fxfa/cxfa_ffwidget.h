@@ -62,7 +62,9 @@ class CXFA_CalcData {
   std::vector<CXFA_Node*> m_Globals;
 };
 
-class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
+class CXFA_FFWidget : public Observable,
+                      public CFWL_Widget::AdapterIface,
+                      public CXFA_ContentLayoutItem::WidgetIface {
  public:
   enum FocusOption { kDoNotDrawFocus = 0, kDrawFocus };
   enum HighlightOption { kNoHighlight = 0, kHighlight };
@@ -74,6 +76,9 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   CFX_Matrix GetRotateMatrix() override;
   void DisplayCaret(bool bVisible, const CFX_RectF* pRtAnchor) override;
   void GetBorderColorAndThickness(FX_ARGB* cr, float* fWidth) override;
+
+  // CFXA_ContentLayoutItem::WidgetIface:
+  void SetLayoutItem(CXFA_ContentLayoutItem* pItem) override;
 
   virtual CFX_RectF GetBBox(FocusOption focus);
   virtual void RenderWidget(CXFA_Graphics* pGS,
@@ -131,7 +136,6 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
 
   CXFA_Node* GetNode() const { return m_pNode.Get(); }
   CXFA_ContentLayoutItem* GetLayoutItem() const { return m_pLayoutItem.Get(); }
-  void SetLayoutItem(CXFA_ContentLayoutItem* pItem) { m_pLayoutItem = pItem; }
   CXFA_FFPageView* GetPageView() const { return m_pPageView.Get(); }
   void SetPageView(CXFA_FFPageView* pPageView) { m_pPageView = pPageView; }
   CXFA_FFDocView* GetDocView() const { return m_pDocView.Get(); }
@@ -179,5 +183,9 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   UnownedPtr<CXFA_Node> const m_pNode;
   mutable CFX_RectF m_rtWidget;
 };
+
+inline CXFA_FFWidget* GetFFWidget(CXFA_ContentLayoutItem* item) {
+  return item ? static_cast<CXFA_FFWidget*>(item->GetFFWidget()) : nullptr;
+}
 
 #endif  // XFA_FXFA_CXFA_FFWIDGET_H_

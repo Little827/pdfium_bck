@@ -9,7 +9,6 @@
 #include <utility>
 
 #include "fxjs/xfa/cjx_object.h"
-#include "xfa/fxfa/cxfa_ffpageview.h"
 #include "xfa/fxfa/layout/cxfa_layoutprocessor.h"
 #include "xfa/fxfa/layout/cxfa_viewlayoutprocessor.h"
 #include "xfa/fxfa/parser/cxfa_measurement.h"
@@ -18,7 +17,7 @@
 
 CXFA_ViewLayoutItem::CXFA_ViewLayoutItem(
     CXFA_Node* pNode,
-    std::unique_ptr<CXFA_FFPageView> pPageView)
+    std::unique_ptr<PageViewIface> pPageView)
     : CXFA_LayoutItem(pNode, kViewItem), m_pFFPageView(std::move(pPageView)) {
   if (m_pFFPageView)
     m_pFFPageView->SetLayoutItem(this);

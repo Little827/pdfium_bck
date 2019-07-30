@@ -9,13 +9,12 @@
 #include <utility>
 
 #include "fxjs/xfa/cjx_object.h"
-#include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/parser/cxfa_margin.h"
 #include "xfa/fxfa/parser/cxfa_node.h"
 
 CXFA_ContentLayoutItem::CXFA_ContentLayoutItem(
     CXFA_Node* pNode,
-    std::unique_ptr<CXFA_FFWidget> pWidget)
+    std::unique_ptr<WidgetIface> pWidget)
     : CXFA_LayoutItem(pNode, kContentItem), m_pFFWidget(std::move(pWidget)) {
   if (m_pFFWidget)
     m_pFFWidget->SetLayoutItem(this);

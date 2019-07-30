@@ -115,6 +115,10 @@ CXFA_FFPageView::CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea)
 
 CXFA_FFPageView::~CXFA_FFPageView() {}
 
+void CXFA_FFPageView::SetLayoutItem(CXFA_ViewLayoutItem* pItem) {
+  m_pLayoutItem = pItem;
+}
+
 CXFA_FFDocView* CXFA_FFPageView::GetDocView() const {
   return m_pDocView.Get();
 }

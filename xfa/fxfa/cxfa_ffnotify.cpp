@@ -92,8 +92,8 @@ void CXFA_FFNotify::OnWidgetListItemRemoved(CXFA_Node* pSender,
   }
 }
 
-std::unique_ptr<CXFA_FFPageView> CXFA_FFNotify::OnCreateViewLayoutItem(
-    CXFA_Node* pNode) {
+std::unique_ptr<CXFA_ViewLayoutItem::PageViewIface>
+CXFA_FFNotify::OnCreateViewLayoutItem(CXFA_Node* pNode) {
   if (pNode->GetElementType() != XFA_Element::PageArea)
     return nullptr;
 
@@ -102,8 +102,8 @@ std::unique_ptr<CXFA_FFPageView> CXFA_FFNotify::OnCreateViewLayoutItem(
                                              pNode);
 }
 
-std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
-    CXFA_Node* pNode) {
+std::unique_ptr<CXFA_ContentLayoutItem::WidgetIface>
+CXFA_FFNotify::OnCreateContentLayoutItem(CXFA_Node* pNode) {
   ASSERT(pNode->GetElementType() != XFA_Element::ContentArea);
   ASSERT(pNode->GetElementType() != XFA_Element::PageArea);
 
