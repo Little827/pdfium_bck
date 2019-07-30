@@ -590,6 +590,10 @@ void CXFA_FFWidget::GetBorderColorAndThickness(FX_ARGB* cr, float* fWidth) {
   *fWidth = edge->GetThickness();
 }
 
+void CXFA_FFWidget::SetLayoutItem(CXFA_ContentLayoutItem* pItem) {
+  m_pLayoutItem = pItem;
+}
+
 bool CXFA_FFWidget::IsLayoutRectEmpty() {
   CFX_RectF rtLayout = GetRectWithoutRotate();
   return rtLayout.width < 0.1f && rtLayout.height < 0.1f;

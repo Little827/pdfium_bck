@@ -18,14 +18,16 @@
 class CXFA_FFWidget;
 class CXFA_FFDocView;
 
-class CXFA_FFPageView : public Observable {
+class CXFA_FFPageView : public Observable,
+                        public CXFA_ViewLayoutItem::PageViewIface {
  public:
   CXFA_FFPageView(CXFA_FFDocView* pDocView, CXFA_Node* pPageArea);
-  ~CXFA_FFPageView();
+  ~CXFA_FFPageView() override;
+
+  // CXFA_ViewLayoutItem::PageViewIface:
+  void SetLayoutItem(CXFA_ViewLayoutItem* pItem) override;
 
   CXFA_ViewLayoutItem* GetLayoutItem() const { return m_pLayoutItem.Get(); }
-  void SetLayoutItem(CXFA_ViewLayoutItem* pItem) { m_pLayoutItem = pItem; }
-
   CXFA_FFDocView* GetDocView() const;
   CFX_RectF GetPageViewRect() const;
   CFX_Matrix GetDisplayMatrix(const FX_RECT& rtDisp, int32_t iRotate) const;
@@ -111,5 +113,9 @@ class CXFA_FFTabOrderPageWidgetIterator final : public IXFA_WidgetIterator {
   int32_t m_iCurWidget;
   bool m_bIgnoreRelevant;
 };
+
+inline CXFA_FFPageView* GetFFPageView(CXFA_ViewLayoutItem* pPage) {
+  return pPage ? static_cast<CXFA_FFPageView*>(pPage->GetPageView()) : nullptr;
+}
 
 #endif  // XFA_FXFA_CXFA_FFPAGEVIEW_H_

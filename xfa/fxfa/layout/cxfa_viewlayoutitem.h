@@ -11,16 +11,20 @@
 
 #include "xfa/fxfa/layout/cxfa_layoutitem.h"
 
-class CXFA_FFPageView;
-
 class CXFA_ViewLayoutItem : public CXFA_LayoutItem {
  public:
+  class PageViewIface {
+   public:
+    virtual ~PageViewIface() = default;
+    virtual void SetLayoutItem(CXFA_ViewLayoutItem* pItem) = 0;
+  };
+
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
   ~CXFA_ViewLayoutItem() override;
 
-  CXFA_FFPageView* GetPageView() const { return m_pFFPageView.get(); }
+  PageViewIface* GetPageView() const { return m_pFFPageView.get(); }
   CXFA_LayoutProcessor* GetLayout() const;
   int32_t GetPageIndex() const;
   CFX_SizeF GetPageSize() const;
@@ -30,9 +34,9 @@ class CXFA_ViewLayoutItem : public CXFA_LayoutItem {
 
  private:
   CXFA_ViewLayoutItem(CXFA_Node* pNode,
-                      std::unique_ptr<CXFA_FFPageView> pPageView);
+                      std::unique_ptr<PageViewIface> pPageView);
 
-  std::unique_ptr<CXFA_FFPageView> const m_pFFPageView;
+  std::unique_ptr<PageViewIface> const m_pFFPageView;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_VIEWLAYOUTITEM_H_

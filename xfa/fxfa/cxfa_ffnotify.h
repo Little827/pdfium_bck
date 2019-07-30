@@ -11,14 +11,14 @@
 
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
+#include "xfa/fxfa/layout/cxfa_viewlayoutitem.h"
 #include "xfa/fxfa/parser/cxfa_document.h"
 
-class CXFA_ContentLayoutItem;
 class CXFA_FFWidgetHandler;
 class CXFA_LayoutItem;
 class CXFA_LayoutProcessor;
 class CXFA_Script;
-class CXFA_ViewLayoutItem;
 
 class CXFA_FFNotify {
  public:
@@ -44,8 +44,11 @@ class CXFA_FFNotify {
   void OnChildAdded(CXFA_Node* pSender);
   void OnChildRemoved();
 
-  std::unique_ptr<CXFA_FFPageView> OnCreateViewLayoutItem(CXFA_Node* pNode);
-  std::unique_ptr<CXFA_FFWidget> OnCreateContentLayoutItem(CXFA_Node* pNode);
+  std::unique_ptr<CXFA_ViewLayoutItem::PageViewIface> OnCreateViewLayoutItem(
+      CXFA_Node* pNode);
+
+  std::unique_ptr<CXFA_ContentLayoutItem::WidgetIface>
+  OnCreateContentLayoutItem(CXFA_Node* pNode);
 
   void OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
                          CXFA_LayoutItem* pSender,
