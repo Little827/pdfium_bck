@@ -6,7 +6,6 @@
 
 #include "core/fpdfapi/cpdf_modulemgr.h"
 
-#include "core/fpdfapi/font/cpdf_fontglobals.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
 #include "core/fxcodec/fx_codec.h"
 
@@ -21,7 +20,6 @@ void CPDF_ModuleMgr::Create() {
   ASSERT(!g_bModuleMgrCreated);
   fxcodec::ModuleMgr::Create();
   CPDF_PageModule::Create();
-  CPDF_FontGlobals::GetInstance()->LoadEmbeddedMaps();
   g_bModuleMgrCreated = true;
 }
 
