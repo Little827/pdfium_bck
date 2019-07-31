@@ -70,7 +70,7 @@ jumbo_source_set("unit_test_support") {
     deps += [
       "../:pdfium",
       "../core/fxge",
-      "../xfa/fgas",
+      "../xfa/fgas/font",
       "//testing/gtest",
     ]
   }

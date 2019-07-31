@@ -267,7 +267,7 @@ test("pdfium_unittests") {
     deps += [
       "fxbarcode:unittests",
       "xfa/fde:unittests",
-      "xfa/fgas:unittests",
+      "xfa/fgas/crt:unittests",
       "xfa/fgas/layout:unittests",
       "xfa/fwl:unittests",
       "xfa/fxfa:unittests",
