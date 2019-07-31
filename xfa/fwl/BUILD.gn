@@ -122,7 +122,7 @@ jumbo_source_set("fwl") {
     "../../core/fxge",
     "../../fxbarcode",
     "../fde",
-    "../fgas",
+    "../fgas/font",
     "../fxgraphics",
   ]
   configs += [

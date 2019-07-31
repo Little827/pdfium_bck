@@ -21,7 +21,7 @@ jumbo_source_set("fde") {
   deps = [
     "../../core/fxcrt",
     "../../core/fxge",
-    "../fgas",
+    "../fgas/font",
     "../fgas/layout",
   ]
   configs += [
@@ -39,7 +39,7 @@ pdfium_unittest_source_set("unittests") {
     ":fde",
     "../../core/fxge",
     "../../testing:unit_test_support",
-    "../fgas",
+    "../fgas/font",
   ]
   pdfium_root_dir = "../../"
 }

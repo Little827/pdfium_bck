@@ -211,8 +211,7 @@ jumbo_source_set("fxjs") {
         "xfa/jse_define.h",
       ]
       deps += [
-        "../xfa/fgas",
-        "../xfa/fgas/layout",
+        "../xfa/fgas/crt",
         "../xfa/fxfa/fm2js",
       ]
     }
