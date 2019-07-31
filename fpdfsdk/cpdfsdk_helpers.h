@@ -12,6 +12,7 @@
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "public/fpdf_doc.h"
+#include "public/fpdf_ext.h"
 #include "public/fpdfview.h"
 
 #ifdef PDF_ENABLE_XFA
@@ -260,8 +261,8 @@ unsigned long DecodeStreamMaybeCopyAndReturnLength(const CPDF_Stream* stream,
                                                    void* buffer,
                                                    unsigned long buflen);
 
-void FSDK_SetSandBoxPolicy(FPDF_DWORD policy, FPDF_BOOL enable);
-FPDF_BOOL FSDK_IsSandBoxPolicyEnabled(FPDF_DWORD policy);
+void SetPDFSandBoxPolicy(FPDF_DWORD policy, FPDF_BOOL enable);
+FPDF_BOOL IsPDFSandBoxPolicyEnabled(FPDF_DWORD policy);
 
 // TODO(dsinclair): Where should this live?
 void RenderPageWithContext(CPDF_PageRenderContext* pContext,
@@ -275,6 +276,8 @@ void RenderPageWithContext(CPDF_PageRenderContext* pContext,
                            bool bNeedToRestore,
                            IPDFSDK_PauseAdapter* pause);
 
+void SetPDFUnsupportInfo(UNSUPPORT_INFO* unsp_info);
+UNSUPPORT_INFO* GetPDFUnssuportInto();
 void ReportUnsupportedFeatures(CPDF_Document* pDoc);
 void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot);
 

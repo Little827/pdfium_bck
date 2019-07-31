@@ -35,12 +35,6 @@ void CPDF_ModuleMgr::Destroy() {
   g_pDefaultMgr = nullptr;
 }
 
-// static
-CPDF_ModuleMgr* CPDF_ModuleMgr::Get() {
-  ASSERT(g_pDefaultMgr);
-  return g_pDefaultMgr;
-}
-
 CPDF_ModuleMgr::CPDF_ModuleMgr() = default;
 
 CPDF_ModuleMgr::~CPDF_ModuleMgr() = default;
