@@ -47,6 +47,30 @@
       "revId": "b30fb7d338490605dcdcb4506f56069a4af795cf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f729342_b2f29e92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-31T22:59:14Z",
+      "side": 1,
+      "message": "potentially is good, I like the new ordering (scalars before classes).",
+      "parentUuid": "8d0b6ed7_bef4d9a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "b30fb7d338490605dcdcb4506f56069a4af795cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
