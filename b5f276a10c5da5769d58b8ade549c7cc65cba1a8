@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60603783_3d9bcf04",
+        "filename": "core/fpdfapi/render/cpdf_windowsrenderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-31T21:53:52Z",
+      "side": 1,
+      "message": "Does this need to be a class, or would it be better to just have a function that abstracts CFX_WindowsRenderDevice creation?",
+      "revId": "b5f276a10c5da5769d58b8ade549c7cc65cba1a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
