@@ -43,6 +43,7 @@ CPDF_PageModule::CPDF_PageModule()
       m_StockPatternCS(pdfium::MakeRetain<CPDF_PatternCS>(nullptr)) {
   m_StockPatternCS->InitializeStockPattern();
   CPDF_FontGlobals::Create();
+  CPDF_FontGlobals::GetInstance()->LoadEmbeddedMaps();
 }
 
 CPDF_PageModule::~CPDF_PageModule() {
