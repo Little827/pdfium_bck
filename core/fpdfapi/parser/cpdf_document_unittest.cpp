@@ -163,8 +163,8 @@ class CPDF_TestDocumentAllowSetParser final : public CPDF_Document {
 
 class cpdf_document_test : public testing::Test {
  public:
-  void SetUp() override { CPDF_ModuleMgr::Create(); }
-  void TearDown() override { CPDF_ModuleMgr::Destroy(); }
+  void SetUp() override { CPDF_PageModule::Create(); }
+  void TearDown() override { CPDF_PageModule::Destroy(); }
 };
 
 TEST_F(cpdf_document_test, GetPages) {

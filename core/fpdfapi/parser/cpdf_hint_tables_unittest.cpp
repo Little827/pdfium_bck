@@ -63,10 +63,10 @@ class CPDF_HintTablesTest : public testing::Test {
  public:
   CPDF_HintTablesTest() {
     // Needs for encoding Hint table stream.
-    CPDF_ModuleMgr::Create();
+    CPDF_PageModule::Create();
   }
 
-  ~CPDF_HintTablesTest() override { CPDF_ModuleMgr::Destroy(); }
+  ~CPDF_HintTablesTest() override { CPDF_PageModule::Destroy(); }
 };
 
 TEST_F(CPDF_HintTablesTest, Load) {

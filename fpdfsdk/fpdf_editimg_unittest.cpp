@@ -9,8 +9,8 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 class PDFEditImgTest : public testing::Test {
-  void SetUp() override { CPDF_ModuleMgr::Create(); }
-  void TearDown() override { CPDF_ModuleMgr::Destroy(); }
+  void SetUp() override { CPDF_PageModule::Create(); }
+  void TearDown() override { CPDF_PageModule::Destroy(); }
 };
 
 TEST_F(PDFEditImgTest, InsertObjectWithInvalidPage) {

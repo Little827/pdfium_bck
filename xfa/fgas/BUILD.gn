@@ -55,7 +55,6 @@ pdfium_unittest_source_set("unittests") {
   ]
   deps = [
     ":fgas",
-    "../../core/fpdfapi",
     "../fxfa/parser",
   ]
   pdfium_root_dir = "../../"

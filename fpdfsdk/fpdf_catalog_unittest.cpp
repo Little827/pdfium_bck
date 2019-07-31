@@ -31,7 +31,7 @@ class CPDF_TestDocument final : public CPDF_Document {
 class PDFCatalogTest : public testing::Test {
  public:
   void SetUp() override {
-    CPDF_ModuleMgr::Create();
+    CPDF_PageModule::Create();
     auto pTestDoc = pdfium::MakeUnique<CPDF_TestDocument>();
     m_pDoc.reset(FPDFDocumentFromCPDFDocument(pTestDoc.release()));
     m_pRootObj = pdfium::MakeRetain<CPDF_Dictionary>();
@@ -39,7 +39,7 @@ class PDFCatalogTest : public testing::Test {
 
   void TearDown() override {
     m_pDoc.reset();
-    CPDF_ModuleMgr::Destroy();
+    CPDF_PageModule::Destroy();
   }
 
  protected:
