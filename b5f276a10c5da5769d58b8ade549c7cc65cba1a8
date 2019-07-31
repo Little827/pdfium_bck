@@ -16,6 +16,24 @@
       "revId": "b5f276a10c5da5769d58b8ade549c7cc65cba1a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0efd9454_cdd9c074",
+        "filename": "core/fpdfapi/render/cpdf_windowsrenderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-07-31T22:02:01Z",
+      "side": 1,
+      "message": "Either way, just trying to use C++ idioms.",
+      "parentUuid": "60603783_3d9bcf04",
+      "revId": "b5f276a10c5da5769d58b8ade549c7cc65cba1a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
