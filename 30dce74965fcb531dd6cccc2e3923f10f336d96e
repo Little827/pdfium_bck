@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e4b39d0_d9faf932",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-07-31T19:02:34Z",
+      "side": 1,
+      "message": "Can we just forward declare UNSUPPORT_INFO instead?",
+      "revId": "30dce74965fcb531dd6cccc2e3923f10f336d96e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
