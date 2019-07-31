@@ -9,7 +9,6 @@
 #include "core/fpdfapi/font/cpdf_fontglobals.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
 #include "core/fxcodec/fx_codec.h"
-#include "third_party/base/ptr_util.h"
 
 namespace {
 
@@ -33,12 +32,6 @@ void CPDF_ModuleMgr::Destroy() {
   fxcodec::ModuleMgr::Destroy();
   delete g_pDefaultMgr;
   g_pDefaultMgr = nullptr;
-}
-
-// static
-CPDF_ModuleMgr* CPDF_ModuleMgr::Get() {
-  ASSERT(g_pDefaultMgr);
-  return g_pDefaultMgr;
 }
 
 CPDF_ModuleMgr::CPDF_ModuleMgr() = default;
