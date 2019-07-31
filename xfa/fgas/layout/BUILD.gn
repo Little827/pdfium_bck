@@ -34,10 +34,10 @@ jumbo_source_set("layout") {
     "fx_linebreak.h",
   ]
   deps = [
-    "../:fgas",
     "../../../core/fxcrt",
     "../../../core/fxcrt/css",
     "../../../core/fxge",
+    "../font",
   ]
   configs += [
     "../../../:pdfium_core_config",
@@ -53,9 +53,9 @@ pdfium_unittest_source_set("unittests") {
   ]
   deps = [
     ":layout",
-    "../:fgas",
     "../../../core/fxge",
     "../../../testing:unit_test_support",
+    "../font",
   ]
   pdfium_root_dir = "../../../"
 }

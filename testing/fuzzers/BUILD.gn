@@ -232,7 +232,7 @@ if (pdf_enable_v8) {
         "../../:freetype_common",
         "../../core/fxcrt",
         "../../core/fxge",
-        "../../xfa/fgas",
+        "../../xfa/fgas/font",
         "../../xfa/fgas/layout",
         "//third_party/icu:icuuc",
       ]
@@ -244,7 +244,7 @@ if (pdf_enable_v8) {
       ]
       deps = [
         "../../core/fxcrt",
-        "../../xfa/fgas",
+        "../../xfa/fgas/crt",
         "../../xfa/fxfa/parser",
       ]
     }

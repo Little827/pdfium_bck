@@ -688,7 +688,8 @@ jumbo_source_set("parser") {
     "../../../fxbarcode",
     "../../../fxjs",
     "../../fde",
-    "../../fgas",
+    "../../fgas/crt",
+    "../../fgas/font",
     "../../fxgraphics",
   ]
   allow_circular_includes_from = [ "../../../fxjs" ]
