@@ -65,21 +65,6 @@ CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
     m_pInfo->Release(m_pInfo);
 }
 
-// static
-bool CPDFSDK_FormFillEnvironment::IsSHIFTKeyDown(uint32_t nFlag) {
-  return !!(nFlag & FWL_EVENTFLAG_ShiftKey);
-}
-
-// static
-bool CPDFSDK_FormFillEnvironment::IsCTRLKeyDown(uint32_t nFlag) {
-  return !!(nFlag & FWL_EVENTFLAG_ControlKey);
-}
-
-// static
-bool CPDFSDK_FormFillEnvironment::IsALTKeyDown(uint32_t nFlag) {
-  return !!(nFlag & FWL_EVENTFLAG_AltKey);
-}
-
 #ifdef PDF_ENABLE_V8
 int CPDFSDK_FormFillEnvironment::JS_appAlert(const WideString& Msg,
                                              const WideString& Title,
