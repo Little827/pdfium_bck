@@ -10,6 +10,7 @@
 
 #include "core/fpdfdoc/cpvt_word.h"
 #include "core/fxge/fx_font.h"
+#include "fpdfsdk/cfx_systemhandler.h"
 #include "fpdfsdk/pwl/cpwl_caret.h"
 #include "fpdfsdk/pwl/cpwl_edit_impl.h"
 #include "fpdfsdk/pwl/cpwl_scroll_bar.h"

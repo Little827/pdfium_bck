@@ -10,6 +10,7 @@
 #include <utility>
 
 #include "core/fxge/cfx_renderdevice.h"
+#include "fpdfsdk/cfx_systemhandler.h"
 #include "fpdfsdk/pwl/cpwl_edit.h"
 #include "fpdfsdk/pwl/cpwl_edit_ctrl.h"
 #include "fpdfsdk/pwl/cpwl_edit_impl.h"

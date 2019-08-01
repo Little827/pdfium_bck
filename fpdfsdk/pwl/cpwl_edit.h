@@ -14,6 +14,8 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/pwl/cpwl_edit_ctrl.h"
 
+class CFFL_FormFiller;
+
 class IPWL_Filler_Notify {
  public:
   virtual ~IPWL_Filler_Notify() = default;
@@ -88,7 +90,6 @@ class CPWL_Edit final : public CPWL_EditCtrl {
   }
 
   void AttachFFLData(CFFL_FormFiller* pData) { m_pFormFiller = pData; }
-
   void OnInsertWord(const CPVT_WordPlace& place,
                     const CPVT_WordPlace& oldplace);
   void OnInsertReturn(const CPVT_WordPlace& place,

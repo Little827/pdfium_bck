@@ -11,6 +11,7 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fpdfsdk/pwl/cpwl_wnd.h"
 
 class CFFL_FormFiller;
 class CPDF_Document;
@@ -25,7 +26,7 @@ class CFX_SystemHandler {
   explicit CFX_SystemHandler(CPDFSDK_FormFillEnvironment* pFormFillEnv);
   ~CFX_SystemHandler();
 
-  void InvalidateRect(CPDFSDK_Widget* widget, const CFX_FloatRect& rect);
+  bool InvalidateRect(CPWL_Wnd::PrivateData* widget, const CFX_FloatRect& rect);
   void OutputSelectedRect(CFFL_FormFiller* pFormFiller,
                           const CFX_FloatRect& rect);
   bool IsSelectionImplemented() const;

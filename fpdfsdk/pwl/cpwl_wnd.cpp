@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "core/fxge/cfx_renderdevice.h"
+#include "fpdfsdk/cfx_systemhandler.h"
 #include "fpdfsdk/pwl/cpwl_scroll_bar.h"
 #include "third_party/base/stl_util.h"
 
@@ -255,13 +256,7 @@ bool CPWL_Wnd::InvalidateRect(CFX_FloatRect* pRect) {
   if (!pSH)
     return true;
 
-  CPDFSDK_Widget* widget =
-      ToCPDFSDKWidget(m_CreationParams.pAttachedWidget.Get());
-  if (!widget)
-    return true;
-
-  pSH->InvalidateRect(widget, rcWin);
-  return !!thisObserved;
+  return pSH->InvalidateRect(m_pAttachedData.get(), rcWin);
 }
 
 #define PWL_IMPLEMENT_KEY_METHOD(key_method_name)                  \

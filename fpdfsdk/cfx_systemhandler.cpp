@@ -25,12 +25,17 @@ CFX_SystemHandler::CFX_SystemHandler(CPDFSDK_FormFillEnvironment* pFormFillEnv)
 
 CFX_SystemHandler::~CFX_SystemHandler() = default;
 
-void CFX_SystemHandler::InvalidateRect(CPDFSDK_Widget* widget,
+bool CFX_SystemHandler::InvalidateRect(CPWL_Wnd::PrivateData* pBlob,
                                        const CFX_FloatRect& rect) {
+  auto* pPrivate = static_cast<CFFL_PrivateData*>(pBlob);
+  CPDFSDK_Widget* widget = pPrivate->pWidget.Get();
+  if (!widget)
+    return true;
+
   CPDFSDK_PageView* pPageView = widget->GetPageView();
   IPDF_Page* pPage = widget->GetPage();
   if (!pPage || !pPageView)
-    return;
+    return true;
 
   CFX_Matrix device2page = pPageView->GetCurrentMatrix().GetInverse();
   CFX_PointF left_top = device2page.Transform(CFX_PointF(rect.left, rect.top));
@@ -40,6 +45,9 @@ void CFX_SystemHandler::InvalidateRect(CPDFSDK_Widget* widget,
   CFX_FloatRect rcPDF(left_top.x, right_bottom.y, right_bottom.x, left_top.y);
   rcPDF.Normalize();
   m_pFormFillEnv->Invalidate(pPage, rcPDF.GetOuterRect());
+
+  // JS may have whacked the widget.
+  return !!pPrivate->pWidget;
 }
 
 void CFX_SystemHandler::OutputSelectedRect(CFFL_FormFiller* pFormFiller,
