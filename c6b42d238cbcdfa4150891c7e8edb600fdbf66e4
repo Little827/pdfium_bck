@@ -89,6 +89,24 @@
       "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "554212f6_94f21187",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-01T21:10:12Z",
+      "side": 1,
+      "message": "Thanks. Sorry, I\u0027m progressing a bit slowly here as you have noticed.",
+      "parentUuid": "6c949874_75fab5ed",
+      "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
