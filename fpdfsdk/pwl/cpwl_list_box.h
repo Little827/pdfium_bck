@@ -12,6 +12,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 
+class CFFL_FormFiller;
 class CPWL_ListCtrl;
 class CPWL_List_Notify;
 class CPWL_ListBox;

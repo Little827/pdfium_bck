@@ -17,7 +17,6 @@
 #include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
-#include "fpdfsdk/pwl/cpwl_timer.h"
 #include "fpdfsdk/pwl/cpwl_timer_handler.h"
 
 class CPWL_Edit;
@@ -128,7 +127,6 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
     UnownedPtr<FocusHandlerIface> pFocusHandler;      // optional
     uint32_t dwFlags = 0;                             // optional
     CFX_Color sBackgroundColor;                       // optional
-    ObservedPtr<CPDFSDK_Widget> pAttachedWidget;      // required
     BorderStyle nBorderStyle = BorderStyle::SOLID;    // optional
     int32_t dwBorderWidth = 1;                        // optional
     CFX_Color sBorderColor;                           // optional
