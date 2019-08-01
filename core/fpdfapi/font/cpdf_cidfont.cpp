@@ -407,6 +407,7 @@ bool CPDF_CIDFont::Load() {
 
   CheckFontMetrics();
   if (IsVertWriting()) {
+    m_Font.SetVertical(true);
     pWidthArray = pCIDFontDict->GetArrayFor("W2");
     if (pWidthArray)
       LoadMetricsArray(pWidthArray, &m_VertMetrics, 3);
