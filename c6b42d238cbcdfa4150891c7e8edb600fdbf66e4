@@ -53,6 +53,24 @@
       "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ecb5d9_ab548e83",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-01T19:13:33Z",
+      "side": 1,
+      "message": "Follow-up CLs. Given this CL, you should have a good idea of how to implement those APIs. So if you would like to implement (some of) them, please let me know.",
+      "parentUuid": "10eb4228_a7ff22dd",
+      "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
