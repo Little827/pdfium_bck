@@ -141,6 +141,10 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
     CFX_Matrix mtChild;                               // ignore
   };
 
+  static bool IsSHIFTKeyDown(uint32_t nFlag);
+  static bool IsCTRLKeyDown(uint32_t nFlag);
+  static bool IsALTKeyDown(uint32_t nFlag);
+
   CPWL_Wnd(const CreateParams& cp, std::unique_ptr<PrivateData> pAttachedData);
   ~CPWL_Wnd() override;
 
@@ -284,13 +288,13 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
   bool IsWndCaptureKeyboard(const CPWL_Wnd* pWnd) const;
 
   static bool IsCTRLpressed(uint32_t nFlag) {
-    return CPDFSDK_FormFillEnvironment::IsCTRLKeyDown(nFlag);
+    return CPWL_Wnd::IsCTRLKeyDown(nFlag);
   }
   static bool IsSHIFTpressed(uint32_t nFlag) {
-    return CPDFSDK_FormFillEnvironment::IsSHIFTKeyDown(nFlag);
+    return CPWL_Wnd::IsSHIFTKeyDown(nFlag);
   }
   static bool IsALTpressed(uint32_t nFlag) {
-    return CPDFSDK_FormFillEnvironment::IsALTKeyDown(nFlag);
+    return CPWL_Wnd::IsALTKeyDown(nFlag);
   }
 
  private:

@@ -13,6 +13,7 @@
 
 #include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/pwl/cpwl_scroll_bar.h"
+#include "public/fpdf_fwlevent.h"
 #include "third_party/base/stl_util.h"
 
 namespace {
@@ -99,6 +100,21 @@ class CPWL_MsgControl final : public Observable {
   UnownedPtr<CPWL_Wnd> m_pCreatedWnd;
   UnownedPtr<CPWL_Wnd> m_pMainKeyboardWnd;
 };
+
+// static
+bool CPWL_Wnd::IsSHIFTKeyDown(uint32_t nFlag) {
+  return !!(nFlag & FWL_EVENTFLAG_ShiftKey);
+}
+
+// static
+bool CPWL_Wnd::IsCTRLKeyDown(uint32_t nFlag) {
+  return !!(nFlag & FWL_EVENTFLAG_ControlKey);
+}
+
+// static
+bool CPWL_Wnd::IsALTKeyDown(uint32_t nFlag) {
+  return !!(nFlag & FWL_EVENTFLAG_AltKey);
+}
 
 CPWL_Wnd::CPWL_Wnd(const CreateParams& cp,
                    std::unique_ptr<PrivateData> pAttachedData)
