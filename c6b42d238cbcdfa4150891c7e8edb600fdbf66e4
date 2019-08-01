@@ -35,6 +35,24 @@
       "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10eb4228_a7ff22dd",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7648
+      },
+      "writtenOn": "2019-08-01T17:03:08Z",
+      "side": 1,
+      "message": "These APIs LGTM. Is it possible to add them in this change or a succeeding change?",
+      "parentUuid": "a68adda5_a0711b2f",
+      "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
