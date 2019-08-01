@@ -17,6 +17,24 @@
       "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a68adda5_a0711b2f",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-01T05:27:11Z",
+      "side": 1,
+      "message": "AA dictionaries can exist in the catalog, pages, and annotations. We may want to add separate functions to get FPDF_JAVASCRIPT objects out of those. e.g.\n\nint FPDFDoc_GetAAJavaScriptCount(FPDF_DOCUMENT document);\nFPDF_JAVASCRIPT FPDFDoc_GetAAJavaScript(FPDF_DOCUMENT document, int index);\nint FPDFPage_GetAAJavaScriptCount(FPDF_PAGE page);\nFPDF_JAVASCRIPT FPDFPage_GetAAJavaScript(FPDF_PAGE page, int index);\nint FPDFAnnot_GetAAJavaScriptCount(FPDF_ANNOTATION annot);\nFPDF_JAVASCRIPT FPDFAnnot_GetAAJavaScript(FPDF_ANNOTATION annot, int index);",
+      "parentUuid": "2e3cd7b4_270809bf",
+      "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
