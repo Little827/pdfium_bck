@@ -407,6 +407,7 @@ bool CPDF_CIDFont::Load() {
 
   CheckFontMetrics();
   if (IsVertWriting()) {
+    m_Font.SetVertical(true);
     pWidthArray = pCIDFontDict->GetArrayFor("W2");
     if (pWidthArray)
       LoadMetricsArray(pWidthArray, &m_VertMetrics, 3);
@@ -830,7 +831,8 @@ void CPDF_CIDFont::LoadGB2312() {
   m_pCID2UnicodeMap = manager->GetCID2UnicodeMap(m_Charset);
   if (!IsEmbedded())
     LoadSubstFont();
-
+  if (IsVertWriting())
+    m_Font.SetVertical(true);
   CheckFontMetrics();
   m_bAnsiWidthsFixed = true;
 }
