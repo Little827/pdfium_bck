@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f12c88d1_8bb92cbc",
+        "filename": "core/fpdfapi/page/cpdf_textobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-01T19:26:50Z",
+      "side": 1,
+      "message": "s/Str/String/ while we are at it?",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "747bd15612572ae9b176da85208cffef6f9ceb9e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
