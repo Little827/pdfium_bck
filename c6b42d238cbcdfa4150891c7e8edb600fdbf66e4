@@ -71,6 +71,24 @@
       "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c949874_75fab5ed",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7648
+      },
+      "writtenOn": "2019-08-01T20:51:13Z",
+      "side": 1,
+      "message": "Sure, I can take up the task on implementing more APIs. Resolving this thread.",
+      "parentUuid": "e5ecb5d9_ab548e83",
+      "revId": "c6b42d238cbcdfa4150891c7e8edb600fdbf66e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
