@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c96e28e6_e388a922",
+        "filename": "fpdfsdk/fpdf_javascript.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-01T19:27:53Z",
+      "side": 1,
+      "message": "nit: prefer\n\n// Take object back across API and destroy it. \nstd::unique_ptr\u003cCPDF_JavaScript\u003e(CPDFJavaScriptFromFPDFJavaScript(javascript));\n\nto delete.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "22578ecf63b2c5936efb094c53b9a9ba9d26b11e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ea927f_a43659fd",
+        "filename": "public/fpdf_javascript.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-01T19:27:53Z",
+      "side": 1,
+      "message": "nit: maybe GetJavaScriptActionCount/GetJavaScriptAction/CloseJavaScriptAction?",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "22578ecf63b2c5936efb094c53b9a9ba9d26b11e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "634bca24_5a785101",
+        "filename": "public/fpdf_javascript.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-01T19:27:53Z",
+      "side": 1,
+      "message": "maybe FPDF_JAVASCRIPT_ACTION ?",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "22578ecf63b2c5936efb094c53b9a9ba9d26b11e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b973665f_6ad2225a",
+        "filename": "public/fpdf_javascript.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-01T19:27:53Z",
+      "side": 1,
+      "message": "the what?",
+      "range": {
+        "startLine": 45,
+        "startChar": 41,
+        "endLine": 45,
+        "endChar": 55
+      },
+      "revId": "22578ecf63b2c5936efb094c53b9a9ba9d26b11e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e299d9a_1cdbaca9",
+        "filename": "public/fpdf_javascript.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-01T19:27:53Z",
+      "side": 1,
+      "message": "the what?",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "22578ecf63b2c5936efb094c53b9a9ba9d26b11e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
