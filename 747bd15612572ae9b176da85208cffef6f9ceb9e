@@ -22,6 +22,30 @@
       "revId": "747bd15612572ae9b176da85208cffef6f9ceb9e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a38198eb_053a041e",
+        "filename": "core/fpdfapi/page/cpdf_textobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-01T19:37:32Z",
+      "side": 1,
+      "message": "GetWordString() even to match CountWords() above.",
+      "parentUuid": "f12c88d1_8bb92cbc",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "747bd15612572ae9b176da85208cffef6f9ceb9e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
