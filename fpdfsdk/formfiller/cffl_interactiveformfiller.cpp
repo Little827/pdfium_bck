@@ -987,3 +987,7 @@ CFFL_PrivateData::~CFFL_PrivateData() = default;
 std::unique_ptr<CPWL_Wnd::PrivateData> CFFL_PrivateData::Clone() const {
   return pdfium::MakeUnique<CFFL_PrivateData>(*this);
 }
+
+void CFFL_PrivateData::WidgetCheck(const CPWL_Wnd::CreateParams& cp) {
+  CHECK(cp.pAttachedWidget.Get() == pWidget);
+}
