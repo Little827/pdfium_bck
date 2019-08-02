@@ -23,7 +23,7 @@ class CPDFSDK_AppStream {
   void SetAsPushButton();
   void SetAsCheckBox();
   void SetAsRadioButton();
-  void SetAsComboBox(Optional<WideString> sValue);
+  void SetAsComboBox(Optional<WideString> sValue, bool bDrawButton);
   void SetAsListBox();
   void SetAsTextField(Optional<WideString> sValue);
 

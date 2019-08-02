@@ -91,6 +91,9 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
   void ResetXFAAppearance(bool bValueChanged);
 #endif  // PDF_ENABLE_XFA
   void ResetAppearance(Optional<WideString> sValue, bool bValueChanged);
+  void ResetAppearanceDrawButton(Optional<WideString> sValue,
+                                 bool bValueChanged,
+                                 bool bDrawButton);
   void ResetFieldAppearance();
   void UpdateField();
   Optional<WideString> OnFormat();

@@ -26,7 +26,10 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfdoc/cpdf_annot.h"
+#include "core/fpdfdoc/cpdf_interactiveform.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/cpdfsdk_interactiveform.h"
 
 enum FPDF_TYPE { MAX, MIN };
 enum FPDF_VALUE { TOP, LEFT, RIGHT, BOTTOM };
@@ -81,6 +84,7 @@ void ParserStream(CPDF_Dictionary* pPageDic,
 
 int ParserAnnots(CPDF_Document* pSourceDoc,
                  CPDF_Dictionary* pPageDic,
+                 CPDFSDK_InteractiveForm* pForm,
                  std::vector<CFX_FloatRect>* pRectArray,
                  std::vector<CPDF_Dictionary*>* pObjectArray,
                  int nUsage) {
@@ -91,6 +95,9 @@ int ParserAnnots(CPDF_Document* pSourceDoc,
   CPDF_Array* pAnnots = pPageDic->GetArrayFor("Annots");
   if (!pAnnots)
     return FLATTEN_NOTHINGTODO;
+
+  CPDF_InteractiveForm* pPDFForm =
+      pForm ? pForm->GetInteractiveForm() : nullptr;
 
   CPDF_ArrayLocker locker(pAnnots);
   for (const auto& pAnnot : locker) {
@@ -112,8 +119,20 @@ int ParserAnnots(CPDF_Document* pSourceDoc,
       bParseStream = !(nAnnotFlag & pdfium::annotation_flags::kInvisible);
     else
       bParseStream = !!(nAnnotFlag & pdfium::annotation_flags::kPrint);
-    if (bParseStream)
+    if (bParseStream) {
+      if (pPDFForm && sSubtype == "Widget") {
+        CPDF_FormControl* pFormControl = pPDFForm->GetControlByDict(pAnnotDict);
+        CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
+        if (pWidget) {
+          // Recreates combobox appearance streams without controls
+          FormFieldType fieldType = pWidget->GetFieldType();
+          if (fieldType == FormFieldType::kComboBox) {
+            pWidget->ResetAppearanceDrawButton({}, false, false);
+          }
+        }
+      }
       ParserStream(pPageDic, pAnnotDict, pRectArray, pObjectArray);
+    }
   }
   return FLATTEN_SUCCESS;
 }
@@ -247,19 +266,34 @@ CFX_Matrix GetMatrix(const CFX_FloatRect& rcAnnot,
 }  // namespace
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
+  return FPDFPage_FlattenNoControls(page, nullptr, nFlag);
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPage_FlattenNoControls(FPDF_PAGE page, FPDF_FORMHANDLE hHandle, int nFlag) {
   CPDF_Page* pPage = CPDFPageFromFPDFPage(page);
   if (!page)
     return FLATTEN_FAIL;
+
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+
+  // Renews the Page View that allows for later access to the Widgets
+  if (pFormFillEnv)
+    pFormFillEnv->GetPageView(pPage, true);
 
   CPDF_Document* pDocument = pPage->GetDocument();
   CPDF_Dictionary* pPageDict = pPage->GetDict();
   if (!pDocument || !pPageDict)
     return FLATTEN_FAIL;
 
+  CPDFSDK_InteractiveForm* pForm =
+      pFormFillEnv ? pFormFillEnv->GetInteractiveForm() : nullptr;
+
   std::vector<CPDF_Dictionary*> ObjectArray;
   std::vector<CFX_FloatRect> RectArray;
-  int iRet =
-      ParserAnnots(pDocument, pPageDict, &RectArray, &ObjectArray, nFlag);
+  int iRet = ParserAnnots(pDocument, pPageDict, pForm, &RectArray, &ObjectArray,
+                          nFlag);
   if (iRet == FLATTEN_NOTHINGTODO || iRet == FLATTEN_FAIL)
     return iRet;
 

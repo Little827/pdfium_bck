@@ -1579,15 +1579,11 @@ void CPDFSDK_AppStream::SetAsRadioButton() {
     widget_->SetAppState("Off");
 }
 
-void CPDFSDK_AppStream::SetAsComboBox(Optional<WideString> sValue) {
+void CPDFSDK_AppStream::SetAsComboBox(Optional<WideString> sValue,
+                                      bool bDrawButton) {
   CPDF_FormControl* pControl = widget_->GetFormControl();
   CPDF_FormField* pField = pControl->GetField();
   std::ostringstream sBody;
-
-  CFX_FloatRect rcClient = widget_->GetClientRect();
-  CFX_FloatRect rcButton = rcClient;
-  rcButton.left = rcButton.right - 13;
-  rcButton.Normalize();
 
   // Font map must outlive |pEdit|.
   CBA_FontMap font_map(widget_->GetPDFPage()->GetDocument(),
@@ -1597,8 +1593,15 @@ void CPDFSDK_AppStream::SetAsComboBox(Optional<WideString> sValue) {
   pEdit->EnableRefresh(false);
   pEdit->SetFontMap(&font_map);
 
+  CFX_FloatRect rcClient = widget_->GetClientRect();
   CFX_FloatRect rcEdit = rcClient;
-  rcEdit.right = rcButton.left;
+  CFX_FloatRect rcButton;  // Uninitialized
+  if (bDrawButton) {
+    rcButton = rcClient;
+    rcButton.left = rcButton.right - 13;
+    rcButton.Normalize();
+    rcEdit.right = rcButton.left;
+  }
   rcEdit.Normalize();
 
   pEdit->SetPlateRect(rcEdit);
@@ -1643,7 +1646,9 @@ void CPDFSDK_AppStream::SetAsComboBox(Optional<WideString> sValue) {
     sBody << GetColorAppStream(crText, true) << sEdit;
   }
 
-  sBody << GetDropButtonAppStream(rcButton);
+  if (bDrawButton)
+    sBody << GetDropButtonAppStream(rcButton);
+
   Write("N",
         GetBackgroundAppStream() + GetBorderAppStream() + ByteString(sBody),
         ByteString());
