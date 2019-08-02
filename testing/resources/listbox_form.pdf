@@ -49,6 +49,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 0
+  /F 4
   /T (Listbox_SingleSelect)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 350 200 380 ]
@@ -61,6 +62,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 2097152
+  /F 4
   /T (Listbox_MultiSelect)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 400 200 430 ]
@@ -77,6 +79,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 1
+  /F 4
   /T (Listbox_ReadOnly)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 500 200 530 ]
@@ -95,12 +98,12 @@ xref
 0000000399 00000 n 
 0000000475 00000 n 
 0000000575 00000 n 
-0000000782 00000 n 
-0000001252 00000 n 
+0000000789 00000 n 
+0000001266 00000 n 
 trailer <<
   /Root 1 0 R
   /Size 11
 >>
 startxref
-1438
+1459
 %%EOF
