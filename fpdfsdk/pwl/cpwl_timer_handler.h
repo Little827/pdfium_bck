@@ -9,7 +9,7 @@
 
 #include <memory>
 
-class CFX_SystemHandler;
+class IPWL_SystemHandler;
 class CPWL_Timer;
 
 class CPWL_TimerHandler {
@@ -18,7 +18,7 @@ class CPWL_TimerHandler {
   virtual ~CPWL_TimerHandler();
 
   virtual void TimerProc();
-  virtual CFX_SystemHandler* GetSystemHandler() const = 0;
+  virtual IPWL_SystemHandler* GetSystemHandler() const = 0;
 
   void BeginTimer(int32_t nElapse);
   void EndTimer();
