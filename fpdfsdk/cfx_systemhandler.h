@@ -8,6 +8,7 @@
 #define FPDFSDK_CFX_SYSTEMHANDLER_H_
 
 #include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -17,21 +18,20 @@ class CPDF_Document;
 class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_Widget;
 
-class CFX_SystemHandler {
+class CFX_SystemHandler final : public FXSYS_TimerIface {
  public:
-  static constexpr int32_t kInvalidTimerID = 0;
-  using TimerCallback = void (*)(int32_t idEvent);
-
   explicit CFX_SystemHandler(CPDFSDK_FormFillEnvironment* pFormFillEnv);
-  ~CFX_SystemHandler();
+  ~CFX_SystemHandler() override;
+
+  // FXSYS_TimerIface:
+  int32_t SetTimer(int32_t uElapse, TimerCallback lpTimerFunc) override;
+  void KillTimer(int32_t nID) override;
 
   void InvalidateRect(CPDFSDK_Widget* widget, const CFX_FloatRect& rect);
   void OutputSelectedRect(CFFL_FormFiller* pFormFiller,
                           const CFX_FloatRect& rect);
   bool IsSelectionImplemented() const;
   void SetCursor(int32_t nCursorType);
-  int32_t SetTimer(int32_t uElapse, TimerCallback lpTimerFunc);
-  void KillTimer(int32_t nID);
 
  private:
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;

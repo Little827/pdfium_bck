@@ -135,4 +135,15 @@ void FXSYS_SetLocaltimeFunction(struct tm* (*func)(const time_t*));
 time_t FXSYS_time(time_t* tloc);
 struct tm* FXSYS_localtime(const time_t* tp);
 
+// Consolidated interface used for timers.
+class FXSYS_TimerIface {
+ public:
+  static constexpr int32_t kInvalidTimerID = 0;
+  using TimerCallback = void (*)(int32_t idEvent);
+
+  virtual ~FXSYS_TimerIface() = default;
+  virtual int32_t SetTimer(int32_t uElapse, TimerCallback lpTimerFunc) = 0;
+  virtual void KillTimer(int32_t nID) = 0;
+};
+
 #endif  // CORE_FXCRT_FX_EXTENSION_H_
