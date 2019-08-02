@@ -48,6 +48,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 0
+  /F 4
   /T (Listbox_SingleSelect)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 350 200 380 ]
@@ -60,6 +61,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 2097152
+  /F 4
   /T (Listbox_MultiSelect)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 400 200 430 ]
@@ -76,6 +78,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 1
+  /F 4
   /T (Listbox_ReadOnly)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 500 200 530 ]
