@@ -94,10 +94,12 @@ struct CPWL_Dash {
 
 class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
  public:
+  class CreateParams;
   class PrivateData {
    public:
     virtual ~PrivateData() = default;
     virtual std::unique_ptr<PrivateData> Clone() const = 0;
+    virtual void WidgetCheck(const CreateParams& cp) = 0;
   };
 
   class ProviderIface : public Observable {

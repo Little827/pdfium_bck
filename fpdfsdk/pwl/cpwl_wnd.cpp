@@ -119,7 +119,9 @@ bool CPWL_Wnd::IsALTKeyDown(uint32_t nFlag) {
 
 CPWL_Wnd::CPWL_Wnd(const CreateParams& cp,
                    std::unique_ptr<PrivateData> pAttachedData)
-    : m_CreationParams(cp), m_pAttachedData(std::move(pAttachedData)) {}
+    : m_CreationParams(cp), m_pAttachedData(std::move(pAttachedData)) {
+  m_pAttachedData->WidgetCheck(cp);
+}
 
 CPWL_Wnd::~CPWL_Wnd() {
   ASSERT(!m_bCreated);

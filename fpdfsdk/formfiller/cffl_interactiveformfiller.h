@@ -178,6 +178,7 @@ class CFFL_PrivateData final : public CPWL_Wnd::PrivateData {
 
   // CPWL_Wnd::PrivateData:
   std::unique_ptr<CPWL_Wnd::PrivateData> Clone() const override;
+  void WidgetCheck(const CPWL_Wnd::CreateParams& cp) override;
 
   CPDFSDK_Widget* pWidget = nullptr;
   CPDFSDK_PageView* pPageView = nullptr;
