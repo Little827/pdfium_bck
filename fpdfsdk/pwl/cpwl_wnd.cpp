@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "core/fxge/cfx_renderdevice.h"
+#include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/pwl/cpwl_scroll_bar.h"
 #include "public/fpdf_fwlevent.h"
 #include "third_party/base/ptr_util.h"
@@ -268,12 +269,11 @@ bool CPWL_Wnd::InvalidateRect(CFX_FloatRect* pRect) {
   rcWin.Inflate(1, 1);
   rcWin.Normalize();
 
-  CFX_SystemHandler* pSH = GetSystemHandler();
+  IPWL_SystemHandler* pSH = GetSystemHandler();
   if (!pSH)
     return true;
 
-  CPDFSDK_Widget* widget =
-      ToCPDFSDKWidget(m_CreationParams.pAttachedWidget.Get());
+  CPDFSDK_Widget* widget = m_pAttachedData->GetWidget();
   if (!widget)
     return true;
 
@@ -606,7 +606,7 @@ void CPWL_Wnd::CreateChildWnd(const CreateParams& cp) {}
 
 void CPWL_Wnd::SetCursor() {
   if (IsValid()) {
-    if (CFX_SystemHandler* pSH = GetSystemHandler())
+    if (IPWL_SystemHandler* pSH = GetSystemHandler())
       pSH->SetCursor(GetCreationParams()->eCursorType);
   }
 }
@@ -662,7 +662,7 @@ void CPWL_Wnd::SetFontSize(float fFontSize) {
   m_CreationParams.fFontSize = fFontSize;
 }
 
-CFX_SystemHandler* CPWL_Wnd::GetSystemHandler() const {
+IPWL_SystemHandler* CPWL_Wnd::GetSystemHandler() const {
   return m_CreationParams.pSystemHandler.Get();
 }
 

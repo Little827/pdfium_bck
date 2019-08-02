@@ -15,15 +15,15 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_color.h"
 #include "core/fxge/cfx_renderdevice.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/pwl/cpwl_timer.h"
 #include "fpdfsdk/pwl/cpwl_timer_handler.h"
 
+class CPDFSDK_Widget;
 class CPWL_Edit;
 class CPWL_MsgControl;
 class CPWL_ScrollBar;
-class CFX_SystemHandler;
 class IPVT_FontMap;
+class IPWL_SystemHandler;
 struct PWL_SCROLL_INFO;
 
 // window styles
@@ -98,6 +98,7 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
    public:
     virtual ~PrivateData() = default;
     virtual std::unique_ptr<PrivateData> Clone() const = 0;
+    virtual CPDFSDK_Widget* GetWidget() const = 0;
   };
 
   class ProviderIface : public Observable {
@@ -121,13 +122,12 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
     ~CreateParams();
 
     CFX_FloatRect rcRectWnd;                          // required
-    UnownedPtr<CFX_SystemHandler> pSystemHandler;     // required
+    UnownedPtr<IPWL_SystemHandler> pSystemHandler;    // required
     UnownedPtr<IPVT_FontMap> pFontMap;                // required
     ObservedPtr<ProviderIface> pProvider;             // required
     UnownedPtr<FocusHandlerIface> pFocusHandler;      // optional
     uint32_t dwFlags = 0;                             // optional
     CFX_Color sBackgroundColor;                       // optional
-    ObservedPtr<CPDFSDK_Widget> pAttachedWidget;      // required
     BorderStyle nBorderStyle = BorderStyle::SOLID;    // optional
     int32_t dwBorderWidth = 1;                        // optional
     CFX_Color sBorderColor;                           // optional
@@ -262,7 +262,7 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
 
  protected:
   // CPWL_TimerHandler:
-  CFX_SystemHandler* GetSystemHandler() const override;
+  IPWL_SystemHandler* GetSystemHandler() const override;
 
   virtual void CreateChildWnd(const CreateParams& cp);
 
