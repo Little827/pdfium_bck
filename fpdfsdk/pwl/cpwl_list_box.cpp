@@ -114,7 +114,7 @@ void CPWL_ListBox::DrawThisAppearance(CFX_RenderDevice* pDevice,
     }
 
     if (m_pList->IsItemSelected(i)) {
-      CFX_SystemHandler* pSysHandler = GetSystemHandler();
+      IPWL_SystemHandler* pSysHandler = GetSystemHandler();
       if (pSysHandler && pSysHandler->IsSelectionImplemented()) {
         CPWL_EditImpl::DrawEdit(pDevice, mtUser2Device, m_pList->GetItemEdit(i),
                                 GetTextColor().ToFXColor(255), rcList, ptOffset,
@@ -129,7 +129,7 @@ void CPWL_ListBox::DrawThisAppearance(CFX_RenderDevice* pDevice,
                                 m_pFormFiller.Get());
       }
     } else {
-      CFX_SystemHandler* pSysHandler = GetSystemHandler();
+      IPWL_SystemHandler* pSysHandler = GetSystemHandler();
       CPWL_EditImpl::DrawEdit(pDevice, mtUser2Device, m_pList->GetItemEdit(i),
                               GetTextColor().ToFXColor(255), rcList, ptOffset,
                               nullptr, pSysHandler, nullptr);
