@@ -4,7 +4,7 @@
 <<
   /Type /Catalog
   /Pages 2 0 R
-  /AcroForm << /Fields [ 8 0 R 9 0 R 10 0 R ] /DR 4 0 R >>
+  /AcroForm << /Fields [ 8 0 R 9 0 R 10 0 R 11 0 R ] /DR 4 0 R >>
 >>
 endobj
 2 0 obj
@@ -17,7 +17,7 @@ endobj
   /Resources 4 0 R
   /MediaBox [ 0 0 300 600 ]
   /Contents 7 0 R
-  /Annots [ 8 0 R 9 0 R 10 0 R ]
+  /Annots [ 8 0 R 9 0 R 10 0 R 11 0 R ]
 >>
 endobj
 4 0 obj
@@ -49,6 +49,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 393216
+  /F 4
   /T (Combo_Editable)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 350 200 380 ]
@@ -61,6 +62,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 131072
+  /F 4
   /T (Combo1)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 400 200 430 ]
@@ -77,6 +79,7 @@ endobj
   /Type /Annot
   /FT /Ch
   /Ff 131073
+  /F 4
   /T (Combo_ReadOnly)
   /DA (0 0 0 rg /F1 12 Tf)
   /Rect [ 100 500 200 530 ]
@@ -84,20 +87,39 @@ endobj
   /Opt [(Dog) (Elephant) (Frog)]
 >>
 endobj
+11 0 obj
+<<
+  /Type /Annot
+  /FT /Ch
+  /Ff 131072
+  /F 4
+  /T (Combo_Overflow)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 200 200 230 ]
+  /Subtype /Widget
+  /Opt [(abcdefghijklmnopqrstuvwxyz) (Calgary Flames) (Los Angeles Clippers)
+        (New York Giants) (New York Yankees) (UCLA Bruins)]
+  /V (abcdefghijklmnopqrstuvwxyz)
+>>
+endobj
 xref
-0 11
+0 12
 0000000000 65535 f 
 0000000015 00000 n 
-0000000127 00000 n 
-0000000186 00000 n 
-0000000335 00000 n 
-0000000368 00000 n 
-0000000399 00000 n 
-0000000475 00000 n 
-0000000575 00000 n 
-0000000781 00000 n 
-0000001237 00000 n 
-trailer<< /Root 1 0 R /Size 11 >>
+0000000134 00000 n 
+0000000193 00000 n 
+0000000349 00000 n 
+0000000382 00000 n 
+0000000413 00000 n 
+0000000489 00000 n 
+0000000589 00000 n 
+0000000802 00000 n 
+0000001265 00000 n 
+0000001461 00000 n 
+trailer <<
+  /Root 1 0 R
+  /Size 12
+>>
 startxref
-1426
+1795
 %%EOF
