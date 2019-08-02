@@ -48,8 +48,14 @@ class CPWLComboBoxEditEmbedderTest : public EmbedderTest {
 
     // Read-only combobox.
     CPDFSDK_Annot* pAnnotReadOnly = iter.GetNextAnnot(m_pAnnotNormal);
+    ASSERT_TRUE(pAnnotReadOnly);
+    ASSERT_EQ(CPDF_Annot::Subtype::WIDGET, pAnnotReadOnly->GetAnnotSubtype());
+
+    // Overflowing combobox with pre-selected value.
+    CPDFSDK_Annot* pOverflowAnnot = iter.GetNextAnnot(pAnnotReadOnly);
     CPDFSDK_Annot* pLastAnnot = iter.GetLastAnnot();
-    ASSERT_EQ(pAnnotReadOnly, pLastAnnot);
+    ASSERT_TRUE(pOverflowAnnot);
+    ASSERT_EQ(pOverflowAnnot, pLastAnnot);
   }
 
   void FormFillerAndWindowSetup(CPDFSDK_Annot* pAnnotCombobox) {

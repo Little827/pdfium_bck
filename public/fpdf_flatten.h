@@ -37,6 +37,20 @@ extern "C" {
 // cause.
 FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag);
 
+// Experimental API.
+// Same as FPDFPage_Flatten() without displaying the form control buttons.
+//
+//   page  - handle to the page.
+//   hHandle - handle to the form
+//   nFlag - One of the |FLAT_*| values denoting the page usage.
+//
+// Returns one of the |FLATTEN_*| values.
+//
+// Currently, all failures return |FLATTEN_FAIL| with no indication of the
+// cause.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFPage_FlattenNoControls(FPDF_PAGE page, FPDF_FORMHANDLE hHandle, int nFlag);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus

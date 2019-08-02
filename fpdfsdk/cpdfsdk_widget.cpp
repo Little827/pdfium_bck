@@ -599,6 +599,11 @@ void CPDFSDK_Widget::ResetXFAAppearance(bool bValueChanged) {
 
 void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
                                      bool bValueChanged) {
+  ResetAppearanceDrawButton(sValue, bValueChanged, true);
+}
+void CPDFSDK_Widget::ResetAppearanceDrawButton(Optional<WideString> sValue,
+                                               bool bValueChanged,
+                                               bool bDrawButton) {
   SetAppModified();
 
   m_nAppearanceAge++;
@@ -617,7 +622,7 @@ void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
       appStream.SetAsRadioButton();
       break;
     case FormFieldType::kComboBox:
-      appStream.SetAsComboBox(sValue);
+      appStream.SetAsComboBox(sValue, bDrawButton);
       break;
     case FormFieldType::kListBox:
       appStream.SetAsListBox();
