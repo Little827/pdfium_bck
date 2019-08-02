@@ -14,6 +14,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cfx_systemhandler.h"
 #include "fpdfsdk/cpdfsdk_fieldaction.h"
+#include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 
 class CPDFSDK_Annot;
