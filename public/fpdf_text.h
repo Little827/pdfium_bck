@@ -99,18 +99,20 @@ FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetFontSize(FPDF_TEXTPAGE text_page,
 //          flags     - Optional pointer to an int receiving the font flags.
 //          These flags should be interpreted per PDF spec 1.7 Section 5.7.1
 //          Font Descriptor Flags.
+//          weight    - Optional pointer to an int receiving the font weight.
 // Return value:
 //          On success, return the length of the font name, including the
 //          trailing NUL character, in bytes. If this length is less than or
 //          equal to |length|, |buffer| is set to the font name, |flags| is
-//          set to the font flags. |buffer| is in UTF-8 encoding. Return 0 on
-//          failure.
+//          set to the font flags, |weight| is set to the font weight. |buffer|
+//          is in UTF-8 encoding. Return 0 on failure.
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
                      int index,
                      void* buffer,
                      unsigned long buflen,
-                     int* flags);
+                     int* flags,
+                     int* weight);
 
 // Experimental API.
 // Function: FPDFText_GetCharAngle
