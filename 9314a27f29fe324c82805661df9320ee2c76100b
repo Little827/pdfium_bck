@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a33b463f_0356ba64",
+        "filename": "fpdfsdk/formfiller/cffl_formfiller.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-05T23:52:39Z",
+      "side": 1,
+      "message": "Not needed if you add line 17? Or revert line 17 (and probably add to cffl_interactiveformfiller.h instead) ?",
+      "revId": "9314a27f29fe324c82805661df9320ee2c76100b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
