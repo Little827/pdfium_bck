@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21d6cbe0_91ac7643",
+        "filename": "fpdfsdk/pwl/cpwl_timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-06T21:55:36Z",
+      "side": 1,
+      "message": "Just put this in the initializer list. Then the member can be const and no longer needs to be initialized in the header.",
+      "revId": "ed92f42b9a29027d5391c7f2b2689be7ed939078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717c44c3_17150975",
+        "filename": "fpdfsdk/pwl/cpwl_timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-06T21:55:36Z",
+      "side": 1,
+      "message": "Add virtual dtor.",
+      "revId": "ed92f42b9a29027d5391c7f2b2689be7ed939078",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
