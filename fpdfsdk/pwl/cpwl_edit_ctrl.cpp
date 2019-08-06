@@ -40,8 +40,10 @@ bool CPWL_EditCtrl::IsWndHorV() const {
 }
 
 void CPWL_EditCtrl::SetCursor() {
-  if (IsValid())
-    GetSystemHandler()->SetCursor(IsWndHorV() ? FXCT_VBEAM : FXCT_HBEAM);
+  if (IsValid()) {
+    GetCreationParams()->pSystemHandler->SetCursor(IsWndHorV() ? FXCT_VBEAM
+                                                               : FXCT_HBEAM);
+  }
 }
 
 WideString CPWL_EditCtrl::GetSelectedText() {
