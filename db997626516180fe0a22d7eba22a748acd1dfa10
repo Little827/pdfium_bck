@@ -16,6 +16,24 @@
       "revId": "db997626516180fe0a22d7eba22a748acd1dfa10",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef1765f_ca56574c",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-06T21:34:38Z",
+      "side": 0,
+      "message": "Yes, the attached data is now opaque, so it will be up to InvalidateRect\u0027s implementation to cope with the null widget.  Added such a check in the latest PS.",
+      "parentUuid": "003931f4_ead7750d",
+      "revId": "db997626516180fe0a22d7eba22a748acd1dfa10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
