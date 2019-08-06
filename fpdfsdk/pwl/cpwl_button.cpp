@@ -4,11 +4,9 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "fpdfsdk/pwl/cpwl_button.h"
-
 #include <utility>
 
-#include "fpdfsdk/pwl/cpwl_wnd.h"
+#include "fpdfsdk/pwl/cpwl_button.h"
 
 CPWL_Button::CPWL_Button(const CreateParams& cp,
                          std::unique_ptr<PrivateData> pAttachedData)
