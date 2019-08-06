@@ -16,7 +16,6 @@
 #include "core/fxge/cfx_color.h"
 #include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/pwl/cpwl_timer.h"
-#include "fpdfsdk/pwl/cpwl_timer_handler.h"
 
 class CPDFSDK_Widget;
 class CPWL_Edit;
@@ -92,7 +91,7 @@ struct CPWL_Dash {
 #define PWL_DEFAULT_BLACKCOLOR CFX_Color(CFX_Color::kGray, 0)
 #define PWL_DEFAULT_WHITECOLOR CFX_Color(CFX_Color::kGray, 1)
 
-class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
+class CPWL_Wnd : public Observable {
  public:
   class PrivateData {
    public:
@@ -145,7 +144,7 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
   static bool IsALTKeyDown(uint32_t nFlag);
 
   CPWL_Wnd(const CreateParams& cp, std::unique_ptr<PrivateData> pAttachedData);
-  ~CPWL_Wnd() override;
+  virtual ~CPWL_Wnd();
 
   // Returns |true| iff this instance is still allocated.
   virtual bool InvalidateRect(CFX_FloatRect* pRect);
@@ -261,9 +260,6 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
   virtual void OnKillFocus();
 
  protected:
-  // CPWL_TimerHandler:
-  IPWL_SystemHandler* GetSystemHandler() const override;
-
   virtual void CreateChildWnd(const CreateParams& cp);
 
   // Returns |true| iff this instance is still allocated.
@@ -278,6 +274,9 @@ class CPWL_Wnd : public CPWL_TimerHandler, public Observable {
   bool IsNotifying() const { return m_bNotifying; }
   bool IsValid() const { return m_bCreated; }
   CreateParams* GetCreationParams() { return &m_CreationParams; }
+  IPWL_SystemHandler* GetSystemHandler() const {
+    return m_CreationParams.pSystemHandler.Get();
+  }
 
   // Returns |true| iff this instance is still allocated.
   bool InvalidateRectMove(const CFX_FloatRect& rcOld,
