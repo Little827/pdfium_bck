@@ -12,7 +12,6 @@
 #include <vector>
 
 #include "core/fxge/cfx_renderdevice.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/pwl/cpwl_scroll_bar.h"
 #include "public/fpdf_fwlevent.h"
 #include "third_party/base/ptr_util.h"
@@ -118,8 +117,9 @@ bool CPWL_Wnd::IsALTKeyDown(uint32_t nFlag) {
   return !!(nFlag & FWL_EVENTFLAG_AltKey);
 }
 
-CPWL_Wnd::CPWL_Wnd(const CreateParams& cp,
-                   std::unique_ptr<PrivateData> pAttachedData)
+CPWL_Wnd::CPWL_Wnd(
+    const CreateParams& cp,
+    std::unique_ptr<IPWL_SystemHandler::PerWindowData> pAttachedData)
     : m_CreationParams(cp), m_pAttachedData(std::move(pAttachedData)) {}
 
 CPWL_Wnd::~CPWL_Wnd() {
@@ -273,11 +273,7 @@ bool CPWL_Wnd::InvalidateRect(CFX_FloatRect* pRect) {
   if (!pSH)
     return true;
 
-  CPDFSDK_Widget* widget = m_pAttachedData->GetWidget();
-  if (!widget)
-    return true;
-
-  pSH->InvalidateRect(widget, rcWin);
+  pSH->InvalidateRect(m_pAttachedData.get(), rcWin);
   return !!thisObserved;
 }
 
@@ -532,7 +528,8 @@ void CPWL_Wnd::OnSetFocus() {}
 
 void CPWL_Wnd::OnKillFocus() {}
 
-std::unique_ptr<CPWL_Wnd::PrivateData> CPWL_Wnd::CloneAttachedData() const {
+std::unique_ptr<IPWL_SystemHandler::PerWindowData> CPWL_Wnd::CloneAttachedData()
+    const {
   return m_pAttachedData ? m_pAttachedData->Clone() : nullptr;
 }
 
