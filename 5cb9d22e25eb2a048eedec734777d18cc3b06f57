@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3572fd_97877e93",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-07T22:22:00Z",
+      "side": 1,
+      "message": "Can we just merge the other OutputSelectedRect() method into this one?",
+      "revId": "5cb9d22e25eb2a048eedec734777d18cc3b06f57",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
