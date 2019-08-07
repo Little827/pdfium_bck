@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d7da411_c657aed4",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-07T22:15:05Z",
+      "side": 1,
+      "message": "I think you can still forward declare? But maybe that doesn\u0027t matter if the class is going away soon.",
+      "revId": "884bf4036af0c529b18c838cfd1fee9b1a585ad2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
