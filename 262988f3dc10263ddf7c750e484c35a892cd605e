@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b888658_4cb6a08c",
+        "filename": "fpdfsdk/formfiller/cffl_formfiller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-07T20:13:58Z",
+      "side": 1,
+      "message": "pre-existing: IWYU for this means we can\u0027t forward declare.",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "262988f3dc10263ddf7c750e484c35a892cd605e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
