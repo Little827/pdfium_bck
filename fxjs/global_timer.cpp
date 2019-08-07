@@ -23,19 +23,17 @@ TimerMap* GetGlobalTimerMap() {
 }  // namespace
 
 GlobalTimer::GlobalTimer(CJS_App* pObj,
-                         CPDFSDK_FormFillEnvironment* pFormFillEnv,
                          CJS_Runtime* pRuntime,
                          Type nType,
                          const WideString& script,
                          uint32_t dwElapse,
                          uint32_t dwTimeOut)
-    : m_nTimerID(pFormFillEnv->GetSysHandler()->SetTimer(dwElapse, Trigger)),
-      m_pEmbedApp(pObj),
-      m_nType(nType),
+    : m_nType(nType),
+      m_nTimerID(pRuntime->GetTimerHandler()->SetTimer(dwElapse, Trigger)),
       m_dwTimeOut(dwTimeOut),
       m_swJScript(script),
       m_pRuntime(pRuntime),
-      m_pFormFillEnv(pFormFillEnv) {
+      m_pEmbedApp(pObj) {
   if (HasValidID())
     (*GetGlobalTimerMap())[m_nTimerID] = this;
 }
@@ -44,8 +42,8 @@ GlobalTimer::~GlobalTimer() {
   if (!HasValidID())
     return;
 
-  if (GetRuntime())
-    m_pFormFillEnv->GetSysHandler()->KillTimer(m_nTimerID);
+  if (m_pRuntime && m_pRuntime->GetTimerHandler())
+    m_pRuntime->GetTimerHandler()->KillTimer(m_nTimerID);
 
   GetGlobalTimerMap()->erase(m_nTimerID);
 }
