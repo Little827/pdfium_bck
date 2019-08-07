@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565159470 -0700\nnonce AC6AUtNwriNCXbBwtzeGnFLfWgx1eAByb8ZFb8riQSmqRfr+RQ96oKo7SMnueUlaopzGVD0tqElg\n\n0000000000000000000000000000000000000000 1b1727abeb45eb108ae79fe66d653dfb17253bb7 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1KcC4ACgkQqzYtYVpm\n/XtnHQgAhCMw+W8xzLg+7vrUgK+hBxjg/S30TVjIWUIO1h6KI+Iajam8WOE7Ba+w\nagHDXVEXKosFYCTvwyF/suMI62VtFHwvtD9iM237tw9rzubqpC6WWj37uQ5MFQ61\ndDaoPJo86DRH+TF3H8p6UVlWgNjrgpXL5QwRzlnE7On3Gaff6T5uXCDICmzoYCFp\nvAjhvwisoHQenT5OqKm1DtRffMIxDdrMsYDIXNYGZ2yjiuJZY+e2bZ1gOJoDrc0p\nvKoxdN+rLNZCVQ3ygithCy7VEGWCBU+4EsZIpS6lBBhoTOzQfqwTSslUzySzu/l2\nyj/J9xVz+sh1Y0bdeGC++AWLfKV5aQ\u003d\u003d\n\u003dgGSk\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae941cb6_f51645f1",
+        "filename": "fpdfsdk/fpdf_dataavail.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-07T17:24:14Z",
+      "side": 1,
+      "message": "nit: again, are you sure you want to convert away from say |pAvailContext| right now?",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 22
+      },
+      "revId": "1b1727abeb45eb108ae79fe66d653dfb17253bb7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
