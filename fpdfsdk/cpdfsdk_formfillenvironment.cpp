@@ -12,13 +12,13 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfdoc/cpdf_docjsactions.h"
-#include "fpdfsdk/cfx_systemhandler.h"
 #include "fpdfsdk/cpdfsdk_actionhandler.h"
 #include "fpdfsdk/cpdfsdk_annothandlermgr.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/formfiller/cffl_formfiller.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fxjs/ijs_runtime.h"
 #include "third_party/base/ptr_util.h"
@@ -39,9 +39,7 @@ FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
 CPDFSDK_FormFillEnvironment::CPDFSDK_FormFillEnvironment(
     CPDF_Document* pDoc,
     FPDF_FORMFILLINFO* pFFinfo)
-    : m_pInfo(pFFinfo),
-      m_pCPDFDoc(pDoc),
-      m_pSysHandler(pdfium::MakeUnique<CFX_SystemHandler>(this)) {}
+    : m_pInfo(pFFinfo), m_pCPDFDoc(pDoc) {}
 
 CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
   m_bBeingDestroyed = true;
@@ -62,6 +60,47 @@ CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
 
   if (m_pInfo && m_pInfo->Release)
     m_pInfo->Release(m_pInfo);
+}
+
+void CPDFSDK_FormFillEnvironment::InvalidateRect(PerWindowData* pWidgetData,
+                                                 const CFX_FloatRect& rect) {
+  auto* pPrivateData = static_cast<CFFL_PrivateData*>(pWidgetData);
+  CPDFSDK_Widget* widget = pPrivateData->pWidget.Get();
+  if (!widget)
+    return;
+
+  CPDFSDK_PageView* pPageView = widget->GetPageView();
+  IPDF_Page* pPage = widget->GetPage();
+  if (!pPage || !pPageView)
+    return;
+
+  CFX_Matrix device2page = pPageView->GetCurrentMatrix().GetInverse();
+  CFX_PointF left_top = device2page.Transform(CFX_PointF(rect.left, rect.top));
+  CFX_PointF right_bottom =
+      device2page.Transform(CFX_PointF(rect.right, rect.bottom));
+
+  CFX_FloatRect rcPDF(left_top.x, right_bottom.y, right_bottom.x, left_top.y);
+  rcPDF.Normalize();
+  Invalidate(pPage, rcPDF.GetOuterRect());
+}
+
+void CPDFSDK_FormFillEnvironment::OutputSelectedRect(
+    CFFL_FormFiller* pFormFiller,
+    const CFX_FloatRect& rect) {
+  if (!pFormFiller)
+    return;
+
+  CFX_PointF ptA = pFormFiller->PWLtoFFL(CFX_PointF(rect.left, rect.bottom));
+  CFX_PointF ptB = pFormFiller->PWLtoFFL(CFX_PointF(rect.right, rect.top));
+  IPDF_Page* pPage = pFormFiller->GetSDKAnnot()->GetPage();
+  ASSERT(pPage);
+
+  OutputSelectedRect(pPage, CFX_FloatRect(ptA.x, ptA.y, ptB.x, ptB.y));
+}
+
+bool CPDFSDK_FormFillEnvironment::IsSelectionImplemented() const {
+  FPDF_FORMFILLINFO* pInfo = GetFormFillInfo();
+  return pInfo && pInfo->FFI_OutputSelectedRect;
 }
 
 #ifdef PDF_ENABLE_V8
@@ -263,7 +302,7 @@ int CPDFSDK_FormFillEnvironment::SetTimer(int uElapse,
                                           TimerCallback lpTimerFunc) {
   if (m_pInfo && m_pInfo->FFI_SetTimer)
     return m_pInfo->FFI_SetTimer(m_pInfo, uElapse, lpTimerFunc);
-  return CFX_SystemHandler::kInvalidTimerID;
+  return TimerHandlerIface::kInvalidTimerID;
 }
 
 void CPDFSDK_FormFillEnvironment::KillTimer(int nTimerID) {
