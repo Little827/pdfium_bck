@@ -107,7 +107,6 @@ jumbo_source_set("fpdfsdk") {
       "../xfa/fwl",
       "../xfa/fxfa",
       "../xfa/fxfa/parser",
-      "../xfa/fxgraphics",
       "fpdfxfa",
     ]
     allow_circular_includes_from += [ "fpdfxfa" ]

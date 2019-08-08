@@ -15,6 +15,9 @@
 #include "third_party/base/compiler_specific.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
 #include "xfa/fxfa/cxfa_ffpageview.h"
+#include "xfa/fxfa/cxfa_ffwidgethandler.h"
+#include "xfa/fxfa/cxfa_rendercontext.h"
+#include "xfa/fxgraphics/cxfa_graphics.h"
 
 CPDFXFA_Page::CPDFXFA_Page(CPDFXFA_Context* pContext, int page_index)
     : m_pContext(pContext), m_iPageIndex(page_index) {
@@ -165,4 +168,30 @@ CFX_Matrix CPDFXFA_Page::GetDisplayMatrix(const FX_RECT& rect,
   }
 
   return CFX_Matrix();
+}
+
+void CPDFXFA_Page::DrawFocusAnnot(CFX_RenderDevice* pDevice,
+                                  CPDFSDK_Annot* annot,
+                                  const CFX_Matrix& mtUser2Device,
+                                  const FX_RECT& pClip) {
+  if (!annot)
+    return;
+
+  CFX_RectF rectClip(
+      static_cast<float>(pClip.left), static_cast<float>(pClip.top),
+      static_cast<float>(pClip.Width()), static_cast<float>(pClip.Height()));
+
+  CXFA_Graphics gs(pDevice);
+  gs.SetClipRect(rectClip);
+
+  CXFA_FFPageView* xfaView = GetXFAPageView();
+  CXFA_RenderContext renderContext(xfaView, rectClip, mtUser2Device);
+  renderContext.DoRender(&gs);
+
+  CXFA_FFDocView* docView = xfaView->GetDocView();
+  if (!docView)
+    return;
+
+  docView->GetWidgetHandler()->RenderWidget(annot->GetXFAWidget(), &gs,
+                                            mtUser2Device, false);
 }

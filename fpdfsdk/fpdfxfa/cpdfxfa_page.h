@@ -16,7 +16,9 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/optional.h"
 
+class CFX_RenderDevice;
 class CPDF_Dictionary;
+class CPDFSDK_Annot;
 class CPDFXFA_Context;
 class CXFA_FFPageView;
 
@@ -47,6 +49,10 @@ class CPDFXFA_Page final : public IPDF_Page {
   int GetPageIndex() const { return m_iPageIndex; }
   void SetXFAPageViewIndex(int index) { m_iPageIndex = index; }
   CXFA_FFPageView* GetXFAPageView() const;
+  void DrawFocusAnnot(CFX_RenderDevice* pDevice,
+                      CPDFSDK_Annot* annot,
+                      const CFX_Matrix& mtUser2Device,
+                      const FX_RECT& pClip);
 
  private:
   // Refcounted class.
