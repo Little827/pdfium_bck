@@ -49,6 +49,7 @@ class CPDFXFA_Page final : public IPDF_Page {
   void SetXFAPageViewIndex(int index) { m_iPageIndex = index; }
   CXFA_FFPageView* GetXFAPageView() const;
   CPDFSDK_Annot* GetNextXFAAnnot(CPDFSDK_Annot* pSDKAnnot, bool bNext);
+  int HasFormFieldAtPoint(const CFX_PointF& point) const;
 
  private:
   // Refcounted class.
