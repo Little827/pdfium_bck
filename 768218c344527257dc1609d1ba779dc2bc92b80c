@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "704c2764_df35b644",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-08T19:14:48Z",
+      "side": 0,
+      "message": "note: handles !handle properly.",
+      "range": {
+        "startLine": 256,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 36
+      },
+      "revId": "768218c344527257dc1609d1ba779dc2bc92b80c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
