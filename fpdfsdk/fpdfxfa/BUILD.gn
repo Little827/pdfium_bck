@@ -33,6 +33,7 @@ jumbo_source_set("fpdfxfa") {
     "../../xfa/fxfa",
     "../../xfa/fxfa/parser",
     "../../xfa/fxgraphics",
+    "../../xfa/fxgraphics",
   ]
   configs += [ "../../:pdfium_core_config" ]
   visibility = [ "../../*" ]
