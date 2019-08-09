@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6329e16d_c8335c82",
+        "filename": "fpdfsdk/fpdfxfa/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-09T20:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24264bc2_fba4e3c8",
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8966959_41de8dd5",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4571285_32225d6b",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-09T20:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8966959_41de8dd5",
+      "range": {
+        "startLine": 174,
+        "startChar": 49,
+        "endLine": 174,
+        "endChar": 54
+      },
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "6ec6528d_974cbe83",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-09T20:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3785b319_3eda2652",
+      "range": {
+        "startLine": 176,
+        "startChar": 49,
+        "endLine": 176,
+        "endChar": 54
+      },
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "653fa06e_b039be17",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
         "patchSetId": 2
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "fa6e2585_bfeaf140",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-09T20:26:44Z",
+      "side": 1,
+      "message": "Intentional, but wrong as DoRender might actually do something, restored.",
+      "parentUuid": "653fa06e_b039be17",
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68036f10_4a12b733",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
         "patchSetId": 2
@@ -96,6 +180,24 @@
       "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db304581_feeaeb5a",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-09T20:26:44Z",
+      "side": 1,
+      "message": "Ack (too many rectangles).",
+      "parentUuid": "68036f10_4a12b733",
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
