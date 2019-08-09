@@ -99,18 +99,60 @@ FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetFontSize(FPDF_TEXTPAGE text_page,
 //          flags     - Optional pointer to an int receiving the font flags.
 //          These flags should be interpreted per PDF spec 1.7 Section 5.7.1
 //          Font Descriptor Flags.
+//          weight    - Optional pointer to an int receiving the font weight.
 // Return value:
 //          On success, return the length of the font name, including the
 //          trailing NUL character, in bytes. If this length is less than or
 //          equal to |length|, |buffer| is set to the font name, |flags| is
-//          set to the font flags. |buffer| is in UTF-8 encoding. Return 0 on
-//          failure.
+//          set to the font flags, |weight| is set to the font weight. |buffer|
+//          is in UTF-8 encoding. Return 0 on failure.
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
                      int index,
                      void* buffer,
                      unsigned long buflen,
-                     int* flags);
+                     int* flags,
+                     int* weight);
+
+// Function: FPDFText_GetFillColor
+//          Get the fill color of a particular character.
+// Parameters:
+//          text_page   -   Handle to a text page information structure.
+//                          Returned by FPDFText_LoadPage function.
+//          index       -   Zero-based index of the character.
+//          color       -   Pointer to an unsigned int number receiving the
+//                          fill color value.
+//          isRendered  -   Pointer to a boolean receiving if the fill is
+//                          rendered.
+// Return value:
+//          Whether the call succeeded. If false, color and isRendered are
+//          unchanged.
+//
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetFillColor(FPDF_TEXTPAGE text_page,
+                      int index,
+                      unsigned int* color,
+                      FPDF_BOOL* isRendered);
+
+// Function: FPDFText_GetStrokeColor
+//          Get the stroke color of a particular character.
+// Parameters:
+//          text_page   -   Handle to a text page information structure.
+//          Returned by FPDFText_LoadPage function.
+//          index       -   Zero-based index of the character.
+//          color       -   Pointer to an unsigned int number receiving the
+//                          stroke color value.
+//          isRendered  -   Pointer to a boolean receiving if the fill is
+//                          rendered.
+// Return value:
+//          Whether the call succeeded. If false, color and isRendered are
+//          unchanged.
+//
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetStrokeColor(FPDF_TEXTPAGE text_page,
+                        int index,
+                        unsigned int* color,
+                        FPDF_BOOL* isRendered);
 
 // Experimental API.
 // Function: FPDFText_GetCharAngle

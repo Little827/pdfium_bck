@@ -1,0 +1,99 @@
+%PDF-1.7
+% ò¤ô
+1 0 obj <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+2 0 obj <<
+  /Type /Pages
+  /MediaBox [ 0 0 200 200 ]
+  /Count 1
+  /Kids [ 3 0 R ]
+>>
+endobj
+3 0 obj <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <<
+      /F1 4 0 R
+      /F2 6 0 R
+    >>
+  >>
+  /Contents 8 0 R
+>>
+endobj
+4 0 obj <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica-Bold
+  /FontDescriptor 5 0 R
+>>
+endobj
+5 0 obj <<
+  /Type /FontDescriptor
+  /FontName /Helvetica-Bold
+  /FontWeight 600
+  /StemV 10
+  /ItalicAngle 0
+  /Ascent 776
+  /Flags 0
+  /FontBBox [-250 -236 2827 1000]
+  /CapHeight 763
+  /Descent -223
+>>
+endobj
+6 0 obj <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+  /FontDescriptor 7 0 R
+>>
+endobj
+7 0 obj <<
+  /Type /FontDescriptor
+  /FontName /Helvetica
+  /StemV 80
+  /ItalicAngle 0
+  /Ascent 776
+  /Flags 0
+  /FontBBox [-250 -236 2827 1000]
+  /CapHeight 763
+  /Descent -223
+>>
+endobj
+8 0 obj <<
+  /Length 206
+>>
+stream
+BT
+20 50 Td
+% This font specifies both FontWeight & StemV; FontWeight should be prioritized.
+/F1 12 Tf
+(1) Tj
+0 -20 Td
+% This font only specifies StemV; FontWeight should be calculated.
+/F2 12 Tf
+(2) Tj
+ET
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000015 00000 n 
+0000000068 00000 n 
+0000000161 00000 n 
+0000000303 00000 n 
+0000000408 00000 n 
+0000000620 00000 n 
+0000000720 00000 n 
+0000000909 00000 n 
+trailer <<
+  /Root 1 0 R
+  /Size 9
+>>
+startxref
+1167
+%%EOF
