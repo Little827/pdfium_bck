@@ -336,11 +336,13 @@ int CheckPDFiumCApi() {
     CHK(FPDFText_GetCharBox);
     CHK(FPDFText_GetCharIndexAtPos);
     CHK(FPDFText_GetCharOrigin);
+    CHK(FPDFText_GetFillColor);
     CHK(FPDFText_GetFontInfo);
     CHK(FPDFText_GetFontSize);
     CHK(FPDFText_GetRect);
     CHK(FPDFText_GetSchCount);
     CHK(FPDFText_GetSchResultIndex);
+    CHK(FPDFText_GetStrokeColor);
     CHK(FPDFText_GetText);
     CHK(FPDFText_GetUnicode);
     CHK(FPDFText_LoadPage);

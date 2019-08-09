@@ -259,6 +259,18 @@ float CPDF_TextObject::GetFontSize() const {
   return m_TextState.GetFontSize();
 }
 
+FX_COLORREF CPDF_TextObject::GetFillColorRef() const {
+  return m_ColorState.GetFillColorRef();
+}
+
+FX_COLORREF CPDF_TextObject::GetStrokeColorRef() const {
+  return m_ColorState.GetStrokeColorRef();
+}
+
+TextRenderingMode CPDF_TextObject::GetTextRenderingMode() const {
+  return m_TextState.GetTextMode();
+}
+
 CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   float curpos = 0;
   float min_x = 10000 * 1.0f;
