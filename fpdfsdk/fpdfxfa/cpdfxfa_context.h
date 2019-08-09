@@ -13,6 +13,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/observed_ptr.h"
+#include "core/fxcrt/timerhandler_iface.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.h"
@@ -89,7 +90,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
                      const WideString& wsData,
                      const WideString& wsEncode) override;
 
-  std::unique_ptr<IFWL_AdapterTimerMgr> NewTimerMgr() override;
+  TimerHandlerIface* GetTimerHandler() const override;
 
  private:
   friend class CPDFXFA_DocEnvironment;

@@ -9,6 +9,7 @@
 
 #include <memory>
 
+#include "core/fxcrt/timerhandler_iface.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fxfa/cxfa_fontmgr.h"
@@ -18,7 +19,6 @@ class CFGAS_FontMgr;
 class CFWL_WidgetMgr;
 class CXFA_FWLAdapterWidgetMgr;
 class CXFA_FWLTheme;
-class IFWL_AdapterTimerMgr;
 
 class CXFA_FFApp : public CFWL_App::AdapterIface {
  public:
@@ -29,7 +29,7 @@ class CXFA_FFApp : public CFWL_App::AdapterIface {
 
   // CFWL_App::AdapterIface:
   CFWL_WidgetMgr::AdapterIface* GetWidgetMgrAdapter() override;
-  std::unique_ptr<IFWL_AdapterTimerMgr> NewTimerMgr() override;
+  TimerHandlerIface* GetTimerHandler() override;
 
   CFWL_WidgetMgr* GetFWLWidgetMgr() const { return m_pFWLApp->GetWidgetMgr(); }
   CFGAS_FontMgr* GetFDEFontMgr();
