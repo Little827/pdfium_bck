@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e006a55_3655a589",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-09T23:35:19Z",
+      "side": 1,
+      "message": "Did it come from CPDFXFA_Context initially?",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "287cd6cb3d9479ef758ed1c766e8a1d777e36187",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d55dc7_cb4c12e2",
+        "filename": "fpdfsdk/fpdf_save.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-09T23:35:19Z",
+      "side": 1,
+      "message": "Would you want to move SaveXFADocumentData) as well?",
+      "revId": "287cd6cb3d9479ef758ed1c766e8a1d777e36187",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
