@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24264bc2_fba4e3c8",
+        "filename": "fpdfsdk/fpdfxfa/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-09T19:21:44Z",
+      "side": 1,
+      "message": "Duplicate entry.",
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
