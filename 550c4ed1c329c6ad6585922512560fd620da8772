@@ -16,6 +16,86 @@
       "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8966959_41de8dd5",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-09T19:28:23Z",
+      "side": 1,
+      "message": "pAnnot",
+      "range": {
+        "startLine": 174,
+        "startChar": 49,
+        "endLine": 174,
+        "endChar": 54
+      },
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3785b319_3eda2652",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-09T19:28:23Z",
+      "side": 1,
+      "message": "rtClip",
+      "range": {
+        "startLine": 176,
+        "startChar": 49,
+        "endLine": 176,
+        "endChar": 54
+      },
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653fa06e_b039be17",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-09T19:28:23Z",
+      "side": 1,
+      "message": "This moved to the top. Intentional?",
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68036f10_4a12b733",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_page.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-09T19:28:23Z",
+      "side": 1,
+      "message": "For later - maybe CFX_RectF should have a ctor that takes in a FX_RECT.",
+      "revId": "550c4ed1c329c6ad6585922512560fd620da8772",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
