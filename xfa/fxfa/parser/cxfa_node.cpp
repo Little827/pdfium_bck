@@ -2607,10 +2607,8 @@ XFA_EventError CXFA_Node::ProcessValidate(CXFA_FFDocView* pDocView,
     validate->ClearFlag(XFA_NodeFlag_NeedsInitApp);
   } else {
     iFormat = ProcessFormatTestValidate(pDocView, validate, bVersionFlag);
-    if (!bVersionFlag) {
-      bVersionFlag =
-          pDocView->GetDoc()->GetXFADoc()->HasFlag(XFA_DOCFLAG_Scripting);
-    }
+    if (!bVersionFlag)
+      bVersionFlag = pDocView->GetDoc()->GetXFADoc()->is_scripting();
     XFA_EventErrorAccumulate(
         &iRet,
         ProcessNullTestValidate(pDocView, validate, iFlags, bVersionFlag));
