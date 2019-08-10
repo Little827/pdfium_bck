@@ -2126,9 +2126,9 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
     CheckIsIndexSelected(i, expected);
   }
 
-  ClickOnMultiSelectFormOption(0);
+  ClickOnMultiSelectFormOption(1);
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 0;
+    bool expected = i == 2;
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -2263,7 +2263,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
 
   // Check that above actions are interchangeable with click actions, should be
   // able to use a combination of both.
-  ClickOnMultiSelectFormOption(1);
+  ClickOnMultiSelectFormOption(0);
   for (int i = 0; i < 26; i++) {
     bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
