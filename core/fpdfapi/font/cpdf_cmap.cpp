@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "core/fpdfapi/cmaps/cmap_int.h"
+#include "core/fpdfapi/font/cpdf_cmapmanager.h"
 #include "core/fpdfapi/font/cpdf_cmapparser.h"
 #include "core/fpdfapi/font/cpdf_fontglobals.h"
 #include "core/fpdfapi/parser/cpdf_simple_parser.h"
@@ -241,7 +242,8 @@ CPDF_CMap::CPDF_CMap() = default;
 
 CPDF_CMap::~CPDF_CMap() = default;
 
-void CPDF_CMap::LoadPredefined(const ByteString& bsName) {
+void CPDF_CMap::LoadPredefined(CPDF_CMapManager* pMgr,
+                               const ByteString& bsName) {
   m_PredefinedCMap = bsName;
   if (m_PredefinedCMap == "Identity-H" || m_PredefinedCMap == "Identity-V") {
     m_Coding = CIDCODING_CID;

@@ -13,6 +13,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/base/span.h"
 
+class CPDF_CMapManager;
 struct FXCMAP_CMap;
 
 enum CIDCoding : uint8_t {
@@ -50,7 +51,7 @@ class CPDF_CMap final : public Retainable {
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
-  void LoadPredefined(const ByteString& name);
+  void LoadPredefined(CPDF_CMapManager* pMgr, const ByteString& name);
   void LoadEmbedded(pdfium::span<const uint8_t> data);
 
   bool IsLoaded() const { return m_bLoaded; }
