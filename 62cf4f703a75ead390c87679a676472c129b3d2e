@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7924b97f_2ba2911e",
+        "filename": "xfa/fxfa/parser/cxfa_document.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-12T22:06:26Z",
+      "side": 1,
+      "message": "Is Optional\u003cbool\u003e a code smell?  Hmmm.  Not sure.\nnit: m_bOptional ?  Do we have a precedent about whether Optional changes the Hungarian notation?",
+      "range": {
+        "startLine": 138,
+        "startChar": 19,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "62cf4f703a75ead390c87679a676472c129b3d2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
