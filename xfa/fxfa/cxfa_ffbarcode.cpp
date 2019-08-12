@@ -89,6 +89,23 @@ const BarCodeInfo g_BarCodeData[] = {
     {0xfb48155c, "code3Of9", BarcodeType::code3Of9, BC_CODE39},
 };
 
+Optional<BC_TEXT_LOC> TextLocFromAttribute(XFA_AttributeValue value) {
+  switch (value) {
+    case XFA_AttributeValue::None:
+      return {BC_TEXT_LOC_NONE};
+    case XFA_AttributeValue::Above:
+      return {BC_TEXT_LOC_ABOVE};
+    case XFA_AttributeValue::Below:
+      return {BC_TEXT_LOC_BELOW};
+    case XFA_AttributeValue::AboveEmbedded:
+      return {BC_TEXT_LOC_ABOVEEMBED};
+    case XFA_AttributeValue::BelowEmbedded:
+      return {BC_TEXT_LOC_BELOWEMBED};
+    default:
+      return {};
+  }
+}
+
 }  // namespace.
 
 // static
@@ -162,9 +179,11 @@ void CXFA_FFBarcode::UpdateWidgetProperty() {
   auto* pBarCodeWidget = static_cast<CFWL_Barcode*>(m_pNormalWidget.get());
   pBarCodeWidget->SetType(info->eBCType);
 
-  Optional<BC_CHAR_ENCODING> encoding = barcode_->GetCharEncoding();
-  if (encoding)
-    pBarCodeWidget->SetCharEncoding(*encoding);
+  Optional<bool> encoding16 = barcode_->Is16BitEncoding();
+  if (encoding16) {
+    pBarCodeWidget->SetCharEncoding(*encoding16 ? CHAR_ENCODING_UNICODE
+                                                : CHAR_ENCODING_UTF8);
+  }
 
   Optional<bool> calcChecksum = barcode_->GetChecksum();
   if (calcChecksum)
@@ -198,9 +217,12 @@ void CXFA_FFBarcode::UpdateWidgetProperty() {
   if (printCheck)
     pBarCodeWidget->SetPrintChecksum(*printCheck);
 
-  Optional<BC_TEXT_LOC> textLoc = barcode_->GetTextLocation();
-  if (textLoc)
-    pBarCodeWidget->SetTextLocation(*textLoc);
+  Optional<XFA_AttributeValue> textAttr = barcode_->GetTextLocation();
+  if (textAttr) {
+    Optional<BC_TEXT_LOC> textLoc = TextLocFromAttribute(*textAttr);
+    if (textLoc)
+      pBarCodeWidget->SetTextLocation(*textLoc);
+  }
 
   // Truncated is currently not a supported flag.
 
