@@ -342,3 +342,42 @@ void CPDFXFA_Context::SendPreSaveToXFADoc(
   pXFADocView->UpdateDocView();
   return;
 }
+
+void CPDFXFA_Context::SendPostSaveToXFADoc() {
+  if (!ContainsXFAForm())
+    return;
+
+  CXFA_FFDocView* pXFADocView = GetXFADocView();
+  if (!pXFADocView)
+    return;
+
+  CXFA_FFWidgetHandler* pWidgetHandler = pXFADocView->GetWidgetHandler();
+  auto it = pXFADocView->CreateReadyNodeIterator();
+  while (CXFA_Node* pNode = it->MoveToNext()) {
+    CXFA_EventParam preParam;
+    preParam.m_eType = XFA_EVENT_PostSave;
+    pWidgetHandler->ProcessEvent(pNode, &preParam);
+  }
+  pXFADocView->UpdateDocView();
+  ClearChangeMark();
+}
+
+void CPDFXFA_Context::SendPreSaveToXFADoc(
+    std::vector<RetainPtr<IFX_SeekableStream>>* fileList) {
+  if (!ContainsXFAForm())
+    return;
+
+  CXFA_FFDocView* pXFADocView = GetXFADocView();
+  if (!pXFADocView)
+    return;
+
+  CXFA_FFWidgetHandler* pWidgetHandler = pXFADocView->GetWidgetHandler();
+  auto it = pXFADocView->CreateReadyNodeIterator();
+  while (CXFA_Node* pNode = it->MoveToNext()) {
+    CXFA_EventParam preParam;
+    preParam.m_eType = XFA_EVENT_PreSave;
+    pWidgetHandler->ProcessEvent(pNode, &preParam);
+  }
+  pXFADocView->UpdateDocView();
+  return;
+}
