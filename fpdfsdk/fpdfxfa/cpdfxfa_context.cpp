@@ -13,7 +13,6 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
-#include "fpdfsdk/fpdfxfa/cxfa_fwladaptertimermgr.h"
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
@@ -300,9 +299,6 @@ bool CPDFXFA_Context::PutRequestURL(const WideString& wsURL,
          m_pFormFillEnv->PutRequestURL(wsURL, wsData, wsEncode);
 }
 
-std::unique_ptr<IFWL_AdapterTimerMgr> CPDFXFA_Context::NewTimerMgr() {
-  if (!m_pFormFillEnv)
-    return nullptr;
-  return pdfium::MakeUnique<CXFA_FWLAdapterTimerMgr>(
-      m_pFormFillEnv->GetTimerHandler());
+TimerHandlerIface* CPDFXFA_Context::GetTimerHandler() const {
+  return m_pFormFillEnv ? m_pFormFillEnv->GetTimerHandler() : nullptr;
 }
