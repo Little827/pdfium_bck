@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5794ae5a_56ceb548",
+        "filename": "fpdfsdk/formfiller/cffl_textobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-12T18:40:24Z",
+      "side": 1,
+      "message": "Funny blank line spacing.",
+      "revId": "fe9f19da4d9800ffe2ae26bd4f0c0f2796874c4c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
