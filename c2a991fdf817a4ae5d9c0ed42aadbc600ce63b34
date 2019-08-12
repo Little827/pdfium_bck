@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fe51521_820b4dda",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-12T17:09:18Z",
+      "side": 1,
+      "message": "Add a comment to mention what this is overriding, or move it if it should be grouped with others.",
+      "revId": "c2a991fdf817a4ae5d9c0ed42aadbc600ce63b34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a635e6c_9a7a1f64",
+        "filename": "xfa/fwl/cfwl_app.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-12T17:09:18Z",
+      "side": 1,
+      "message": "Forward declare?",
+      "revId": "c2a991fdf817a4ae5d9c0ed42aadbc600ce63b34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0e564f_38f7f7be",
+        "filename": "xfa/fxfa/cxfa_ffapp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-12T17:09:18Z",
+      "side": 1,
+      "message": "Not needed. Since this is an override, the base class should have provided this or a forward decl.",
+      "revId": "c2a991fdf817a4ae5d9c0ed42aadbc600ce63b34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
