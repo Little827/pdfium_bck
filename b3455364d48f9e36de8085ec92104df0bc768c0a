@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45fd70ad_b5dfe4c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-13T17:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c00555f_6c1806aa",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b8d54fb_28296e16",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-13T02:32:18Z",
       "side": 1,
       "message": "Which memory leak is that? I didn\u0027t see the word \"leak\" being mentioned on the bug report.",
+      "range": {
+        "startLine": 16,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 65
+      },
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a22b5f5_b493cfa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-13T17:49:37Z",
+      "side": 1,
+      "message": "Sorry, I got this mixed up with the memory issue that happens when fixing pdfium:1351(the overlapping font issue). Will fix the description.",
+      "parentUuid": "1b8d54fb_28296e16",
       "range": {
         "startLine": 16,
         "startChar": 54,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "fc3ab0ef_41398ddb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-13T17:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "978cd9cb_79f4df9f",
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd57d876_da5a01f6",
         "filename": "core/fxge/cfx_font.h",
         "patchSetId": 3
@@ -79,6 +145,24 @@
       "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9df59f4_586df13e",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-13T17:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd57d876_da5a01f6",
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
