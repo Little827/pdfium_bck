@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1229955b_db77c672",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-13T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf1237e_13b925e6",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a26d2fd_df2b7e68",
         "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-13T15:08:36Z",
       "side": 1,
       "message": "If LoadSubstFont() gets called on line 396, is this still necessary?",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8379bce2_f991e00f",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-13T21:16:44Z",
+      "side": 1,
+      "message": "If LoadSubstFont() gets called, |m_Font|\u0027s |m_bVertical| flag will be set correctly but its |m_bEmbedded| flag will be reset to false, and |m_face| will be reset. The program will not load the embedded descendant font correctly. As the result, the output image will have no text display.",
+      "parentUuid": "1a26d2fd_df2b7e68",
       "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -67,6 +103,24 @@
       "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70b326c_123f3594",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-13T21:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca0066b_d4022119",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
