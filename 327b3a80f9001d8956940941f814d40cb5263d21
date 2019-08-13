@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c653af_265836bc",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T18:17:45Z",
+      "side": 1,
+      "message": "nit: probably should be kPredefinedCMaps while we\u0027re at it.",
+      "range": {
+        "startLine": 188,
+        "startChar": 38,
+        "endLine": 188,
+        "endChar": 40
+      },
+      "revId": "327b3a80f9001d8956940941f814d40cb5263d21",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d22a0c8f_e2bd26a1",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T18:17:45Z",
+      "side": 1,
+      "message": "nit: range-based for loop over static[] can figure out the size for us.",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "327b3a80f9001d8956940941f814d40cb5263d21",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "766d07ba_7c31fd9a",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T18:17:45Z",
+      "side": 1,
+      "message": "nit: just std::vector\u003cbool\u003e segments(256), right?",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 54
+      },
+      "revId": "327b3a80f9001d8956940941f814d40cb5263d21",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
