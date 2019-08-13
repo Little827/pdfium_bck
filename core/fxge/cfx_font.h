@@ -95,6 +95,7 @@ class CFX_Font {
   uint8_t* GetSubData() const { return m_pGsubData.get(); }
   void SetSubData(uint8_t* data) { m_pGsubData.reset(data); }
   pdfium::span<uint8_t> GetFontSpan() const { return m_FontData; }
+  void LoadFontSpan(pdfium::span<uint8_t> pSpan) { m_FontData = pSpan; }
   void AdjustMMParams(int glyph_index, int dest_width, int weight) const;
   CFX_PathData* LoadGlyphPathImpl(uint32_t glyph_index,
                                   uint32_t dest_width) const;
