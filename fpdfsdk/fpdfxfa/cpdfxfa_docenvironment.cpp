@@ -21,7 +21,8 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
-#include "fxjs/ijs_runtime.h"
+#include "fxjs/cjs_runtime.h"
+#include "fxjs/xfa/cfxjse_value.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
 #include "xfa/fxfa/cxfa_ffwidgethandler.h"
@@ -969,34 +970,3 @@ bool CPDFXFA_DocEnvironment::SubmitInternal(CXFA_FFDoc* hDoc,
 }
 #endif  // PDF_XFA_ELEMENT_SUBMIT_ENABLED
 
-bool CPDFXFA_DocEnvironment::SetPropertyInNonXFAGlobalObject(
-    CXFA_FFDoc* hDoc,
-    ByteStringView szPropName,
-    CFXJSE_Value* pValue) {
-  if (hDoc != m_pContext->GetXFADoc())
-    return false;
-
-  CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
-  if (!pFormFillEnv)
-    return false;
-
-  IJS_Runtime* pIJSRuntime = pFormFillEnv->GetIJSRuntime();
-  IJS_Runtime::ScopedEventContext pContext(pIJSRuntime);
-  return pIJSRuntime->SetValueByNameInGlobalObject(szPropName, pValue);
-}
-
-bool CPDFXFA_DocEnvironment::GetPropertyFromNonXFAGlobalObject(
-    CXFA_FFDoc* hDoc,
-    ByteStringView szPropName,
-    CFXJSE_Value* pValue) {
-  if (hDoc != m_pContext->GetXFADoc())
-    return false;
-
-  CPDFSDK_FormFillEnvironment* pFormFillEnv = m_pContext->GetFormFillEnv();
-  if (!pFormFillEnv)
-    return false;
-
-  IJS_Runtime* pIJSRuntime = pFormFillEnv->GetIJSRuntime();
-  IJS_Runtime::ScopedEventContext pContext(pIJSRuntime);
-  return pIJSRuntime->GetValueByNameFromGlobalObject(szPropName, pValue);
-}
