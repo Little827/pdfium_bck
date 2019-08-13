@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61fe5a51_0cc5a179",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T19:03:03Z",
+      "side": 1,
+      "message": "If there are multiple selections, i.e. /V [elem1 elem2], the PDF spec says nothing about whether the elements in the array have to be sorted or not. So it can potentially be /V [elem2 elem1], in which case GetValue() will return elem2, which is not the top option.",
+      "revId": "41e1c060850b99330f46049822bd8287442cd52d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "548c0398_9d0c1b21",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T19:03:03Z",
+      "side": 1,
+      "message": "Can this be private? There\u0027s no external callers.",
+      "revId": "41e1c060850b99330f46049822bd8287442cd52d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e5b20e5_687d219b",
+        "filename": "fpdfsdk/pwl/cpwl_list_impl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T19:03:03Z",
+      "side": 1,
+      "message": "nit: Remove to group line 447 with line 449, since the two are related.",
+      "revId": "41e1c060850b99330f46049822bd8287442cd52d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
