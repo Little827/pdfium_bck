@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87ca9833_df246ec7",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T01:42:08Z",
+      "side": 1,
+      "message": "It\u0027s a weird pattern for a getter method to internally be a setter.",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be783933_0f0786e0",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T01:42:08Z",
+      "side": 1,
+      "message": "No need for an else after an return. I would have written:\n\nint nTopIndex \u003d FindTopSelectedOption();\nif (nTopIndex \u003c 0)\n  return 0;\nSetTopVisibleIndex(nTopIndex);\nreturn nTopIndex;",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb652cd3_23847837",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T01:42:08Z",
+      "side": 1,
+      "message": "Why change existing tests?",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
