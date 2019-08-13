@@ -147,7 +147,9 @@ CJS_Result CJS_App::set_viewer_variation(CJS_Runtime* pRuntime,
 
 CJS_Result CJS_App::get_viewer_version(CJS_Runtime* pRuntime) {
 #ifdef PDF_ENABLE_XFA
-  if (pRuntime->GetFormFillEnv()->ContainsXFAForm())
+  CPDF_Document::Extension* pContext =
+      pRuntime->GetFormFillEnv()->GetDocExtension();
+  if (pContext->ContainsExtensionForm())
     return CJS_Result::Success(pRuntime->NewNumber(JS_NUM_VIEWERVERSION_XFA));
 #endif  // PDF_ENABLE_XFA
   return CJS_Result::Success(pRuntime->NewNumber(JS_NUM_VIEWERVERSION));
