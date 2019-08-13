@@ -27,10 +27,6 @@ class CPDFSDK_InteractiveForm;
 class CPDFSDK_PageView;
 class IJS_Runtime;
 
-#if defined(PDF_ENABLE_XFA)
-class CPDFXFA_Context;
-#endif  // defined(PDF_ENABLE_XFA)
-
 // NOTE: |bsUTF16LE| must outlive the use of the result. Care must be taken
 // since modifying the result would impact |bsUTF16LE|.
 FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE);
@@ -117,11 +113,9 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
 
 #ifdef PDF_ENABLE_V8
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Context* GetXFAContext() const;
+  CPDF_Document::Extension* GetXFAContext() const;
   int GetPageViewCount() const;
-  bool ContainsXFAForm() const;
-
-  void DisplayCaret(CPDFXFA_Page* page,
+  void DisplayCaret(IPDF_Page* page,
                     FPDF_BOOL bVisible,
                     double left,
                     double top,
@@ -135,12 +129,11 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
 
   WideString GetPlatform();
   void GotoURL(const WideString& wsURL);
-  FS_RECTF GetPageViewRect(CPDFXFA_Page* page);
-  bool PopupMenu(CPDFXFA_Page* page,
+  FS_RECTF GetPageViewRect(IPDF_Page* page);
+  bool PopupMenu(IPDF_Page* page,
                  FPDF_WIDGET hWidget,
                  int menuFlag,
                  const CFX_PointF& pt);
-
   void EmailTo(FPDF_FILEHANDLER* fileHandler,
                FPDF_WIDESTRING pTo,
                FPDF_WIDESTRING pSubject,
