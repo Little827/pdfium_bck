@@ -341,7 +341,7 @@ bool CPWL_ListBox::IsItemSelected(int32_t nItemIndex) const {
 }
 
 int32_t CPWL_ListBox::GetTopVisibleIndex() const {
-  m_pList->ScrollToListItem(m_pList->GetFirstSelected());
+  m_pList->ScrollToListItemForKillFocus(m_pList->GetFirstSelected());
   return m_pList->GetTopItem();
 }
 

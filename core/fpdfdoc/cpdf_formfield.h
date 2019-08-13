@@ -149,12 +149,14 @@ class CPDF_FormField {
   WideString GetOptionLabel(int index) const;
   WideString GetOptionValue(int index) const;
   int FindOption(const WideString& csOptValue) const;
+  int FindTopSelectedOption() const;
 
   bool CheckControl(int iControlIndex,
                     bool bChecked,
                     NotificationOption notify);
 
-  int GetTopVisibleIndex() const;
+  int GetTopVisibleIndex();
+  void SetTopVisibleIndex(int index);
   int CountSelectedOptions() const;
 
   int GetSelectedOptionIndex(int index) const;

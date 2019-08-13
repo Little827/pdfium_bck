@@ -700,6 +700,10 @@ int CPDF_FormField::FindOption(const WideString& csOptValue) const {
   return -1;
 }
 
+int CPDF_FormField::FindTopSelectedOption() const {
+  return FindOption(GetValue());
+}
+
 bool CPDF_FormField::CheckControl(int iControlIndex,
                                   bool bChecked,
                                   NotificationOption notify) {
@@ -793,9 +797,20 @@ bool CPDF_FormField::SetCheckValue(const WideString& value,
   return true;
 }
 
-int CPDF_FormField::GetTopVisibleIndex() const {
+int CPDF_FormField::GetTopVisibleIndex() {
   const CPDF_Object* pObj = FPDF_GetFieldAttr(m_pDict.Get(), "TI");
-  return pObj ? pObj->GetInteger() : 0;
+  if (!pObj) {
+    int nTopIndex = FindTopSelectedOption();
+    if (nTopIndex < 0)
+      return 0;
+    SetTopVisibleIndex(nTopIndex);
+    return nTopIndex;
+  }
+  return pObj->GetInteger();
+}
+
+void CPDF_FormField::SetTopVisibleIndex(int index) {
+  GetDict()->SetNewFor<CPDF_Number>("TI", index);
 }
 
 int CPDF_FormField::CountSelectedOptions() const {
