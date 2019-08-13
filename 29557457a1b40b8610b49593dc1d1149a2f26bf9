@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d999dc2d_01b22d37",
+        "filename": "xfa/fxfa/cxfa_ffbarcode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T16:29:10Z",
+      "side": 1,
+      "message": "Fair enough.  Oddly, that doc earlier gives an example like:\n\nTo pass an empty optional argument to another function, use base::nullopt where you would otherwise have used a nullptr:\n\nOtherFunction(42, base::nullopt);  // Supply an empty optional argument\n\nI\u0027ll make the caller do the test, then.",
+      "parentUuid": "a2ef6b05_ebd24477",
+      "revId": "29557457a1b40b8610b49593dc1d1149a2f26bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "536fd84e_3f741f8a",
         "filename": "xfa/fxfa/cxfa_ffbarcode.cpp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "29557457a1b40b8610b49593dc1d1149a2f26bf9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54746cca_82a85e99",
+        "filename": "xfa/fxfa/cxfa_ffbarcode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T16:29:10Z",
+      "side": 1,
+      "message": "riiiiiiight. Done",
+      "parentUuid": "536fd84e_3f741f8a",
+      "revId": "29557457a1b40b8610b49593dc1d1149a2f26bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
