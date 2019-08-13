@@ -42,15 +42,16 @@
 namespace {
 
 #ifdef PDF_ENABLE_XFA
-bool SaveXFADocumentData(CPDFXFA_Context* pContext,
+bool SaveXFADocumentData(CPDF_Document::Extension* pContext,
                          std::vector<RetainPtr<IFX_SeekableStream>>* fileList) {
   if (!pContext)
     return false;
 
-  if (!pContext->ContainsXFAForm())
+  if (!pContext->ContainsExtensionForm())
     return true;
 
-  CXFA_FFDocView* pXFADocView = pContext->GetXFADocView();
+  CXFA_FFDocView* pXFADocView =
+      static_cast<CPDFXFA_Context*>(pContext)->GetXFADocView();
   if (!pXFADocView)
     return true;
 
