@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bf1237e_13b925e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T15:08:36Z",
+      "side": 1,
+      "message": "Add a space after the first colon.",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a26d2fd_df2b7e68",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T15:08:36Z",
+      "side": 1,
+      "message": "If LoadSubstFont() gets called on line 396, is this still necessary?",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e60c910_ba3a585b",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T15:08:36Z",
+      "side": 1,
+      "message": "Is this ever going to evaluate to true? Line 830 above loads a horizontal CMap.",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca0066b_d4022119",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T15:08:36Z",
+      "side": 1,
+      "message": "Group this with IsVertical() above?",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
