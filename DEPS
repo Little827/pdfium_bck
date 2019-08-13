@@ -166,6 +166,18 @@ hooks = [
     'action': ['python', 'pdfium/build/vs_toolchain.py', 'update', '--force'],
   },
   {
+    'name': 'rc_win',
+    'pattern': '.',
+    'condition': 'checkout_win and host_os == "win"',
+    'action': [ 'python',
+                'pdfium/third_party/depot_tools/download_from_google_storage.py',
+                '--no_resume',
+                '--no_auth',
+                '--bucket', 'chromium-browser-clang/rc',
+                '-s', 'pdfium/build/toolchain/win/rc/win/rc.exe.sha1',
+    ],
+  },
+  {
     # Update the Mac toolchain if necessary.
     'name': 'mac_toolchain',
     'pattern': '.',
