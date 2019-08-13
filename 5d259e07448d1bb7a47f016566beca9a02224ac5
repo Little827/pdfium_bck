@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aac67c56_69411526",
+        "filename": "xfa/fgas/font/cfgas_gefont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T16:14:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d1058d_49bff9a1",
+      "revId": "5d259e07448d1bb7a47f016566beca9a02224ac5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60d4bf31_67fa065a",
         "filename": "xfa/fxfa/cxfa_fontmgr.cpp",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "5d259e07448d1bb7a47f016566beca9a02224ac5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431cf24f_c946a8a8",
+        "filename": "xfa/fxfa/cxfa_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T16:14:37Z",
+      "side": 1,
+      "message": "Follow-up, in case there is some idiosyncrasy exposed by the change.",
+      "parentUuid": "60d4bf31_67fa065a",
+      "revId": "5d259e07448d1bb7a47f016566beca9a02224ac5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
