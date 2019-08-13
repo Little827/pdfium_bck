@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74d1058d_49bff9a1",
+        "filename": "xfa/fgas/font/cfgas_gefont.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T00:04:19Z",
+      "side": 1,
+      "message": "nit: sort",
+      "revId": "5d259e07448d1bb7a47f016566beca9a02224ac5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d4bf31_67fa065a",
+        "filename": "xfa/fxfa/cxfa_fontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T00:04:19Z",
+      "side": 1,
+      "message": "BTW, this pre-existing WideString to ByteString conversion looks odd.",
+      "revId": "5d259e07448d1bb7a47f016566beca9a02224ac5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
