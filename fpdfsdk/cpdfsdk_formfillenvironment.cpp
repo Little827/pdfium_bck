@@ -24,10 +24,6 @@
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
-#ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#endif
-
 FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
   // Force a private version of the string, since we're about to hand it off
   // to the embedder. Should the embedder modify it by accident, it won't
@@ -350,7 +346,7 @@ void CPDFSDK_FormFillEnvironment::DoGoToAction(int nPageIndex,
 }
 
 #ifdef PDF_ENABLE_XFA
-void CPDFSDK_FormFillEnvironment::DisplayCaret(CPDFXFA_Page* page,
+void CPDFSDK_FormFillEnvironment::DisplayCaret(IPDF_Page* page,
                                                FPDF_BOOL bVisible,
                                                double left,
                                                double top,
@@ -403,7 +399,7 @@ void CPDFSDK_FormFillEnvironment::GotoURL(const WideString& wsURL) {
                        AsFPDFWideString(&bsTo));
 }
 
-FS_RECTF CPDFSDK_FormFillEnvironment::GetPageViewRect(CPDFXFA_Page* page) {
+FS_RECTF CPDFSDK_FormFillEnvironment::GetPageViewRect(IPDF_Page* page) {
   FS_RECTF rect = {0.0f, 0.0f, 0.0f, 0.0f};
   if (!m_pInfo || !m_pInfo->FFI_GetPageViewRect)
     return rect;
@@ -422,7 +418,7 @@ FS_RECTF CPDFSDK_FormFillEnvironment::GetPageViewRect(CPDFXFA_Page* page) {
   return rect;
 }
 
-bool CPDFSDK_FormFillEnvironment::PopupMenu(CPDFXFA_Page* page,
+bool CPDFSDK_FormFillEnvironment::PopupMenu(IPDF_Page* page,
                                             FPDF_WIDGET hWidget,
                                             int menuFlag,
                                             const CFX_PointF& pt) {
@@ -730,18 +726,12 @@ bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(uint32_t nFlag) {
 }
 
 #ifdef PDF_ENABLE_XFA
-CPDFXFA_Context* CPDFSDK_FormFillEnvironment::GetXFAContext() const {
-  if (!m_pCPDFDoc)
-    return nullptr;
-  return static_cast<CPDFXFA_Context*>(m_pCPDFDoc->GetExtension());
+CPDF_Document::Extension* CPDFSDK_FormFillEnvironment::GetDocExtension() const {
+  return m_pCPDFDoc ? m_pCPDFDoc->GetExtension() : nullptr;
 }
 
 int CPDFSDK_FormFillEnvironment::GetPageViewCount() const {
   return pdfium::CollectionSize<int>(m_PageMap);
-}
-
-bool CPDFSDK_FormFillEnvironment::ContainsXFAForm() const {
-  return GetXFAContext()->ContainsXFAForm();
 }
 #endif  // PDF_ENABLE_XFA
 
