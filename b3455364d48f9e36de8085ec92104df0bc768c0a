@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c00555f_6c1806aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T02:32:18Z",
+      "side": 1,
+      "message": "a valid",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b8d54fb_28296e16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T02:32:18Z",
+      "side": 1,
+      "message": "Which memory leak is that? I didn\u0027t see the word \"leak\" being mentioned on the bug report.",
+      "range": {
+        "startLine": 16,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 65
+      },
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "978cd9cb_79f4df9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T02:32:18Z",
+      "side": 1,
+      "message": "nit: Can you add a space after the first colon, like the next line?",
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd57d876_da5a01f6",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T02:32:18Z",
+      "side": 1,
+      "message": "Can we put this with SetFace() above?",
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "785c72be_c1170a15",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T02:32:18Z",
+      "side": 1,
+      "message": "- Do we also need to call LoadFontSpan() here?\n- Can you check to see if this SetFace() call is even necessary?",
+      "revId": "b3455364d48f9e36de8085ec92104df0bc768c0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
