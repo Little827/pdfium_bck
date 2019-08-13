@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565723695 -0700\nnonce AC6AUtNmqIjb0tVMR+3uPr9k8/yQF+8zLM1JWwqH9//8xi9UB4NCLu3WBQLD/wrmAnEXdhV2SRoN\n\n0000000000000000000000000000000000000000 8da8e6b094d848dd4760fd815629ad7e981da3aa refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1TDC8ACgkQqzYtYVpm\n/Xtfkgf/UdRNBycOcbKwQKu3euqO6kpb1CLWXLu3BD2AA6Y4DNcxRc4SeW5uVFM9\nTGZ8aQ+hyJzNYxNBWR/c29xdnoiRqV/3gHA/CNE0e/UCA7M2XmGqxOu36DyaEFG+\ndQu1f8ul030mYHqxokKXCnrTn/fM1IJf2LbZ1fSaqYgcdmNxM7s32b3pJqPbBOIZ\n6+LVQyVJfOcESoMksCvmV5uRZalRZWF96TttDbm3IV7kes4VRq97LcWsoaFxyPJq\nPigjn6Hu9j60qZy8i2sjXt4tWu7I5rLbeu8WwpAbfN06lUmNPwgFgQKkvBSijDa0\nlawufoky6kfjv1roSgDKejK3qpUJaQ\u003d\u003d\n\u003dUR7o\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee1444ef_c4136818",
+        "filename": "fpdfsdk/pwl/cpwl_list_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-13T22:13:06Z",
+      "side": 1,
+      "message": "Yep, looks like this is the only place we add to the vector, and we immediately de-ref\u0027d the item being added before adding it.",
+      "range": {
+        "startLine": 568,
+        "startChar": 14,
+        "endLine": 568,
+        "endChar": 23
+      },
+      "revId": "8da8e6b094d848dd4760fd815629ad7e981da3aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
