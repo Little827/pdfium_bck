@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d02f6034_7d975927",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-13T02:22:12Z",
+      "side": 1,
+      "message": "I justified it as getting and setting a default value when the value doesn\u0027t already exist.",
+      "parentUuid": "87ca9833_df246ec7",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be783933_0f0786e0",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c204e3b7_f2bf6e72",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-13T02:22:12Z",
+      "side": 1,
+      "message": "I agree. Will change.",
+      "parentUuid": "be783933_0f0786e0",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb652cd3_23847837",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2019-08-13T01:42:08Z",
       "side": 1,
       "message": "Why change existing tests?",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4a690c_abcec43b",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2129,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-13T02:22:12Z",
+      "side": 1,
+      "message": "Because the Multiselect field is set to \u0027Banana\u0027 upon opening and the field is consequently scrolled down to \u0027Banana\u0027, ClickOnMultiSelectFormOption(0) would only click on something that\u0027s already selected. The existing test attempts to select something that isn\u0027t selected (\u0027Apple\u0027), so I replicate that test by selecting \u0027Cherry\u0027 instead.",
+      "parentUuid": "cb652cd3_23847837",
       "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
