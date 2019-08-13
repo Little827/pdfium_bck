@@ -51,13 +51,6 @@ CPDFSDK_Annot* CPDFSDK_BAAnnotHandler::NewAnnot(CPDF_Annot* pAnnot,
   return new CPDFSDK_BAAnnot(pAnnot, pPage);
 }
 
-#ifdef PDF_ENABLE_XFA
-CPDFSDK_Annot* CPDFSDK_BAAnnotHandler::NewAnnot(CXFA_FFWidget* hWidget,
-                                                CPDFSDK_PageView* pPage) {
-  return nullptr;
-}
-#endif  // PDF_ENABLE_XFA
-
 void CPDFSDK_BAAnnotHandler::ReleaseAnnot(
     std::unique_ptr<CPDFSDK_Annot> pAnnot) {
   // pAnnot deleted by unique_ptr going out of scope.
@@ -192,14 +185,6 @@ bool CPDFSDK_BAAnnotHandler::IsIndexSelected(ObservedPtr<CPDFSDK_Annot>* pAnnot,
                                              int index) {
   return false;
 }
-
-#ifdef PDF_ENABLE_XFA
-bool CPDFSDK_BAAnnotHandler::OnXFAChangedFocus(
-    ObservedPtr<CPDFSDK_Annot>* pOldAnnot,
-    ObservedPtr<CPDFSDK_Annot>* pNewAnnot) {
-  return true;
-}
-#endif  // PDF_ENABLE_XFA
 
 CFX_FloatRect CPDFSDK_BAAnnotHandler::GetViewBBox(CPDFSDK_PageView* pPageView,
                                                   CPDFSDK_Annot* pAnnot) {
