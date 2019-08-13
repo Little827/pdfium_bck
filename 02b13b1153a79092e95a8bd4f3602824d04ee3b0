@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67ccdcaf_3671dbfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T21:43:12Z",
+      "side": 1,
+      "message": "phrasing is a bit awkward",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "02b13b1153a79092e95a8bd4f3602824d04ee3b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eadcd26_5f08c220",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T21:43:12Z",
+      "side": 1,
+      "message": "Just say \"... the temporary CFX_Font\", since it ...\" because we never referred to the variable by its name prior to this. Thus readers have no knowledge of what |FxFont| is.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "02b13b1153a79092e95a8bd4f3602824d04ee3b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
