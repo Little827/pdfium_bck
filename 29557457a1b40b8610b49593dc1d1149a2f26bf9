@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2ef6b05_ebd24477",
+        "filename": "xfa/fxfa/cxfa_ffbarcode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T00:22:07Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromium/src/+/HEAD/docs/optional.md says not to pass in Optional parameters. So if we follow that, we can either deal with it manually, or import base::OptionalOrNullptr.",
+      "revId": "29557457a1b40b8610b49593dc1d1149a2f26bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "536fd84e_3f741f8a",
+        "filename": "xfa/fxfa/cxfa_ffbarcode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T00:22:07Z",
+      "side": 1,
+      "message": "Pre-existing issue: These don\u0027t need braces, right?",
+      "revId": "29557457a1b40b8610b49593dc1d1149a2f26bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
