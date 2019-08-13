@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a84664cc_3322b5a7",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T18:50:35Z",
+      "side": 1,
+      "message": "Can you see if it is possible to keep GetTopVisibleIndex() as a getter?",
+      "parentUuid": "d02f6034_7d975927",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be783933_0f0786e0",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Because the Multiselect field is set to \u0027Banana\u0027 upon opening and the field is consequently scrolled down to \u0027Banana\u0027, ClickOnMultiSelectFormOption(0) would only click on something that\u0027s already selected. The existing test attempts to select something that isn\u0027t selected (\u0027Apple\u0027), so I replicate that test by selecting \u0027Cherry\u0027 instead.",
       "parentUuid": "cb652cd3_23847837",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "face74ea_010451f9",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-13T18:50:35Z",
+      "side": 1,
+      "message": "Can you add a comment to describe what\u0027s happening? It\u0027s not obvious at all. Whereas before, even without the comment, it mostly makes sense that clicking item 0 makes the item at index 0 selected.",
+      "parentUuid": "cc4a690c_abcec43b",
       "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
