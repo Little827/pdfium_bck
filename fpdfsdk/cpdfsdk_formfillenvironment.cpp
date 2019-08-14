@@ -695,6 +695,13 @@ bool CPDFSDK_FormFillEnvironment::SetFocusAnnot(
   if (m_pFocusAnnot)
     return false;
 
+  if (m_pInfo && m_pInfo->FFI_SetFocusRect) {
+    CFX_FloatRect annot_rect = (*pAnnot)->GetRect();
+    m_pInfo->FFI_SetFocusRect(m_pInfo, annot_rect.Left(), annot_rect.Top(),
+                              annot_rect.Right(), annot_rect.Bottom(),
+                              pPageView->GetPageIndex());
+  }
+
   m_pFocusAnnot.Reset(pAnnot->Get());
   return true;
 }

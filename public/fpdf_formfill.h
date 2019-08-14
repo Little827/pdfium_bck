@@ -676,6 +676,37 @@ typedef struct _FPDF_FORMFILLINFO {
                                 FPDF_BOOL is_focus);
 
   /**
+   * Method: FFI_SetFocusRect
+   *     Called when the focus rect is updated.
+   * Interface Version:
+   *     1
+   * Implementation Required:
+   *     No
+   * Parameters:
+   *     param           -   Pointer to the interface structure itself.
+   *     left            -   Left position of the focus rect in client area in
+   *                         PDF page coordinates.
+   *     top             -   Top position of the focus rect in
+   *                         client area in PDF page coordinates.
+   *     right           -   Right position of the focus rect in client area in
+   *                         PDF page coordinates.
+   *     bottom          -   Bottom position of the focus rect in client area in
+   *                         PDF page coordinates.
+   *     page_index      -   The index of the PDF page.
+   * Return value:
+   *     None.
+   * Comments:
+   *     This callback function is useful for implementing any view based action
+   *     such as scrolling the annotation rect into view.
+   */
+  void (*FFI_SetFocusRect)(struct _FPDF_FORMFILLINFO* param,
+                           double left,
+                           double top,
+                           double right,
+                           double bottom,
+                           int page_index);
+
+  /**
    * Method: FFI_DoURIAction
    *     Ask the implementation to navigate to a uniform resource identifier.
    * Interface Version:
