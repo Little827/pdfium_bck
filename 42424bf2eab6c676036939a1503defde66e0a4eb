@@ -16,6 +16,24 @@
       "revId": "42424bf2eab6c676036939a1503defde66e0a4eb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0914f087_3df8c714",
+        "filename": "fxjs/cjs_app.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-14T17:06:16Z",
+      "side": 0,
+      "message": "Homogenizing the behaviour between xfa and non-xfa cases. I should mention that the overarching goal is to is to someday get to a runtime toggle between xfa and non-xfa, where the \"built with xfa but running without it\" behaves the same as the baseline \"built without xfa\".  In this case, I don\u0027t think we ever hit the bad object path in practice, but it isn\u0027t possible in the non-xfa case, and I didn\u0027t want that to change just because XFA is enabled at build time.",
+      "parentUuid": "cc02cf7c_46e9ee25",
+      "revId": "42424bf2eab6c676036939a1503defde66e0a4eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
