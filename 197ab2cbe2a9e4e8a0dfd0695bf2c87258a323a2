@@ -23,6 +23,30 @@
       "revId": "197ab2cbe2a9e4e8a0dfd0695bf2c87258a323a2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270b3f59_1e4c694b",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T19:38:09Z",
+      "side": 1,
+      "message": "I think this CL stalled because I wasn\u0027t sure if I should try to change all the existing uint32_t variables below to size_t. How does PS 2 look as is?",
+      "parentUuid": "6f964adf_c4cc0d55",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "197ab2cbe2a9e4e8a0dfd0695bf2c87258a323a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
