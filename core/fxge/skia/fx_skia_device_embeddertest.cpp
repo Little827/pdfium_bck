@@ -138,6 +138,7 @@ void Harness(void (*Test)(CFX_SkiaDeviceDriver*, const State&),
   if (!driver)  // force dump to be linked in so it can be called from debugger
     driver->Dump();
 #endif
+  FPDFBitmap_Destroy(bitmap);
 }
 
 }  // namespace
