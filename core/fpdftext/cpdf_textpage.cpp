@@ -16,6 +16,7 @@
 #include "core/fpdfapi/page/cpdf_formobject.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
+#include "core/fpdfapi/page/cpdf_pathobject.h"
 #include "core/fpdfapi/page/cpdf_textobject.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
@@ -227,6 +228,7 @@ CPDF_TextPage::CPDF_TextPage(const CPDF_Page* pPage, FPDFText_Direction flags)
   const FX_RECT rect(0, 0, static_cast<int>(pPage->GetPageWidth()),
                      static_cast<int>(pPage->GetPageHeight()));
   m_DisplayMatrix = pPage->GetDisplayMatrix(rect, 0);
+  InitPathObjectVector();
 }
 
 CPDF_TextPage::~CPDF_TextPage() {}
@@ -244,6 +246,19 @@ bool CPDF_TextPage::IsControlChar(const PAGECHAR_INFO& charInfo) {
       return charInfo.m_Flag != FPDFTEXT_CHAR_HYPHEN;
     default:
       return false;
+  }
+}
+
+void CPDF_TextPage::InitPathObjectVector() {
+  m_PathObjects.clear();
+  const CPDF_PageObjectHolder* pObjList = m_pPage.Get();
+
+  CPDF_PageObjectHolder::const_iterator iter = pObjList->begin();
+  while (iter != pObjList->end()) {
+    const CPDF_PageObject* pObj = iter->get();
+    if (pObj->IsPath())
+      m_PathObjects.push_back(static_cast<const CPDF_PathObject*>(pObj));
+    ++iter;
   }
 }
 
@@ -935,6 +950,15 @@ void CPDF_TextPage::SwapTempTextBuf(int32_t iCharListStartAppend,
     std::swap(pTempBuffer[i], pTempBuffer[j]);
 }
 
+void CPDF_TextPage::SetTextDecorationFlags(CPDF_TextObject* pTextObj) {
+  if (!m_PathObjects.empty()) {
+    // TODO(bebeaudr): implementation for underline, strikethrough and overline.
+    return;
+  }
+
+  pTextObj->SetTextDecorationFlags(0);
+}
+
 void CPDF_TextPage::ProcessTextObject(PDFTEXT_Obj Obj) {
   CPDF_TextObject* pTextObj = Obj.m_pTextObj.Get();
   if (fabs(pTextObj->GetRect().Width()) < kSizeEpsilon)
@@ -1023,6 +1047,8 @@ void CPDF_TextPage::ProcessTextObject(PDFTEXT_Obj Obj) {
   int32_t iBufStartAppend = m_TempTextBuf.GetLength();
   int32_t iCharListStartAppend =
       pdfium::CollectionSize<int32_t>(m_TempCharList);
+
+  SetTextDecorationFlags(pTextObj);
 
   float spacing = 0;
   const size_t nItems = pTextObj->CountItems();

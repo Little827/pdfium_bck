@@ -344,6 +344,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFText_GetSchResultIndex);
     CHK(FPDFText_GetStrokeColor);
     CHK(FPDFText_GetText);
+    CHK(FPDFText_GetTextDecoration);
     CHK(FPDFText_GetUnicode);
     CHK(FPDFText_LoadPage);
 

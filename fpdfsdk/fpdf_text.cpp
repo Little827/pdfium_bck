@@ -185,6 +185,25 @@ FPDFText_GetStrokeColor(FPDF_TEXTPAGE text_page,
   return true;
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetTextDecoration(FPDF_TEXTPAGE text_page,
+                           int index,
+                           FPDF_BOOL* has_underline,
+                           FPDF_BOOL* has_strikethrough,
+                           FPDF_BOOL* has_overline) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+  // uint8_t text_decoration_flags =
+  // charinfo.m_pTextObj->GetTextDecorationFlags();
+  // TODO(bebeaudr): set out parameters from set flags.
+
+  return true;
+}
+
 FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetCharAngle(FPDF_TEXTPAGE text_page,
                                                        int index) {
   CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);

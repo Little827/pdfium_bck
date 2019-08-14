@@ -154,6 +154,27 @@ FPDFText_GetStrokeColor(FPDF_TEXTPAGE text_page,
                         unsigned int* color,
                         FPDF_BOOL* isRendered);
 
+// Function: FPDFText_GetTextDecoration
+//          Get the text decoration of a particular character.
+// Parameters:
+//          text_page          -   Handle to a text page information structure.
+//                                 Returned by FPDFText_LoadPage function.
+//          index              -   Zero-based index of the character.
+//          has_underline      -   Pointer to a boolean receiving if the text is
+//          underlined has_strikethrough  -   Pointer to a boolean receiving if
+//          the text is struck-through has_overline       -   Pointer to a
+//          boolean receiving if the text is overlined
+// Return value:
+//          Whether the call succeeded. If false, has_underline,
+//          has_strikethrough and has_overline are unchanged.
+//
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetTextDecoration(FPDF_TEXTPAGE text_page,
+                           int index,
+                           FPDF_BOOL* has_underline,
+                           FPDF_BOOL* has_strikethrough,
+                           FPDF_BOOL* has_overline);
+
 // Experimental API.
 // Function: FPDFText_GetCharAngle
 //          Get character rotation angle.

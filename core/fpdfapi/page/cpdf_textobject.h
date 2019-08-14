@@ -60,6 +60,9 @@ class CPDF_TextObject final : public CPDF_PageObject {
 
   TextRenderingMode GetTextRenderingMode() const;
 
+  uint8_t GetTextDecorationFlags() const;
+  void SetTextDecorationFlags(uint8_t flags);
+
   void SetText(const ByteString& str);
   void SetPosition(CFX_PointF pos) { m_Pos = pos; }
   void SetPosition(float x, float y);
@@ -78,6 +81,7 @@ class CPDF_TextObject final : public CPDF_PageObject {
   CFX_PointF m_Pos;
   std::vector<uint32_t> m_CharCodes;
   std::vector<float> m_CharPos;
+  uint8_t m_text_decoration_flags;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_TEXTOBJECT_H_

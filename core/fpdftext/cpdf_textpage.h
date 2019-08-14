@@ -22,6 +22,7 @@ class CPDF_Font;
 class CPDF_FormObject;
 class CPDF_Page;
 class CPDF_TextObject;
+class CPDF_PathObject;
 
 #define FPDFTEXT_CHAR_NORMAL 0
 #define FPDFTEXT_CHAR_GENERATED 1
@@ -122,6 +123,7 @@ class CPDF_TextPage {
 
   bool IsHyphen(wchar_t curChar) const;
   bool IsControlChar(const PAGECHAR_INFO& charInfo);
+  void InitPathObjectVector();
   void ProcessObject();
   void ProcessFormObject(CPDF_FormObject* pFormObj,
                          const CFX_Matrix& formMatrix);
@@ -149,6 +151,7 @@ class CPDF_TextPage {
   TextOrientation FindTextlineFlowOrientation() const;
   void AppendGeneratedCharacter(wchar_t unicode, const CFX_Matrix& formMatrix);
   void SwapTempTextBuf(int32_t iCharListStartAppend, int32_t iBufStartAppend);
+  void SetTextDecorationFlags(CPDF_TextObject* pTextObj);
   WideString GetTextByPredicate(
       const std::function<bool(const PAGECHAR_INFO&)>& predicate) const;
 
@@ -167,6 +170,7 @@ class CPDF_TextPage {
   std::vector<PDFTEXT_Obj> m_LineObj;
   TextOrientation m_TextlineDir = TextOrientation::Unknown;
   CFX_FloatRect m_CurlineRect;
+  std::vector<const CPDF_PathObject*> m_PathObjects;
 };
 
 #endif  // CORE_FPDFTEXT_CPDF_TEXTPAGE_H_

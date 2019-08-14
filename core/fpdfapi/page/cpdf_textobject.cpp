@@ -271,6 +271,14 @@ TextRenderingMode CPDF_TextObject::GetTextRenderingMode() const {
   return m_TextState.GetTextMode();
 }
 
+uint8_t CPDF_TextObject::GetTextDecorationFlags() const {
+  return m_text_decoration_flags;
+}
+
+void CPDF_TextObject::SetTextDecorationFlags(uint8_t flags) {
+  m_text_decoration_flags = flags;
+}
+
 CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   float curpos = 0;
   float min_x = 10000 * 1.0f;
