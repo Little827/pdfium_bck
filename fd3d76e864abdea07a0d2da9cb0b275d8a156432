@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "a528d414_cf8ac7d3",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-08-14T15:54:06Z",
+      "side": 1,
+      "message": "No, the current code is handling non-embedded fonts correctly. We only call LoadSubstFont() when CPDF_CIDFont is not embedded font and LoadSubstFont() will load the vertical flag correctly. No need to call SetVertical() for non-embedded case.",
+      "parentUuid": "4c46e33d_e95c6c15",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e60c910_ba3a585b",
         "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
         "patchSetId": 6
