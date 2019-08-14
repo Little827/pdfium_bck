@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d37585b_08ccabd5",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:51:43Z",
+      "side": 1,
+      "message": "Feels like a slight roundabout way of accessing |m_pXFAWidgetHandler|, but ok for now.",
+      "revId": "a4f2523d28d2034a56993769439543b84e9af4e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4277e49_3b3ddeba",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:51:43Z",
+      "side": 1,
+      "message": "Remove. Line 65 doesn\u0027t use the CPDFXFA_Context.",
+      "revId": "a4f2523d28d2034a56993769439543b84e9af4e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28bba154_349914f9",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:51:43Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "a4f2523d28d2034a56993769439543b84e9af4e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ae6750_3607023a",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:51:43Z",
+      "side": 1,
+      "message": "Still used on line 215.",
+      "revId": "a4f2523d28d2034a56993769439543b84e9af4e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "630e9a4e_ecb530b1",
+        "filename": "fpdfsdk/cpdfsdk_widgethandler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:51:43Z",
+      "side": 1,
+      "message": "Remove as well?",
+      "revId": "a4f2523d28d2034a56993769439543b84e9af4e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
