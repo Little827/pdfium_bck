@@ -13,13 +13,14 @@
 #include "xfa/fxfa/fxfa.h"
 
 class CPDFXFA_Context;
+class IJS_Runtime;
 
 class CPDFXFA_DocEnvironment final : public IXFA_DocEnvironment {
  public:
   explicit CPDFXFA_DocEnvironment(CPDFXFA_Context*);
   ~CPDFXFA_DocEnvironment() override;
 
-  // IXFA_DocEnvironment
+  // IXFA_DocEnvironment:
   void SetChangeMark(CXFA_FFDoc* hDoc) override;
   // Used in dynamic xfa.
   void InvalidateRect(CXFA_FFPageView* pPageView, const CFX_RectF& rt) override;
@@ -65,13 +66,7 @@ class CPDFXFA_DocEnvironment final : public IXFA_DocEnvironment {
   bool Submit(CXFA_FFDoc* hDoc, CXFA_Submit* submit) override;
 #endif  // PDF_XFA_ELEMENT_SUBMIT_ENABLED
 
-  bool GetPropertyFromNonXFAGlobalObject(CXFA_FFDoc* hDoc,
-                                         ByteStringView szPropName,
-                                         CFXJSE_Value* pValue) override;
-  bool SetPropertyInNonXFAGlobalObject(CXFA_FFDoc* hDoc,
-                                       ByteStringView szPropName,
-                                       CFXJSE_Value* pValue) override;
-
+  IJS_Runtime* GetIJSRuntime(CXFA_FFDoc* hDoc) const override;
   RetainPtr<IFX_SeekableReadStream> OpenLinkedFile(
       CXFA_FFDoc* hDoc,
       const WideString& wsLink) override;
