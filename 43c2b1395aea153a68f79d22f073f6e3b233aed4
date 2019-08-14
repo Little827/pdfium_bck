@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6cccba8_5dcbc6c6",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T00:03:36Z",
+      "side": 1,
+      "message": "|m_pCPDFDoc| is never nullptr, BTW.",
+      "revId": "43c2b1395aea153a68f79d22f073f6e3b233aed4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
