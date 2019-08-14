@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97223455_6ec59a22",
+        "filename": "testing/resources/javascript/xfa_specific/bug_993771.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:15:15Z",
+      "side": 1,
+      "message": "Is this object needed? /JS is empty...",
+      "revId": "d8ab1f2fb1ec440192f4f2c9ab5227cc85f00f3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
