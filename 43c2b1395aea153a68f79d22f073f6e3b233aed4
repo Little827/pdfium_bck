@@ -16,6 +16,23 @@
       "revId": "43c2b1395aea153a68f79d22f073f6e3b233aed4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "896c1df9_9dade7e9",
+        "filename": "fpdfsdk/fpdf_save.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T00:08:24Z",
+      "side": 1,
+      "message": "Why pass in a CPDFXFA_Context* as CPDF_Document::Extension*, only to cast it back?",
+      "revId": "43c2b1395aea153a68f79d22f073f6e3b233aed4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
