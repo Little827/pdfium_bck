@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "4c46e33d_e95c6c15",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T00:14:06Z",
+      "side": 1,
+      "message": "Are you trying to say the existing code above is buggy and does not handle non-embedded fonts correctly?",
+      "parentUuid": "8379bce2_f991e00f",
+      "revId": "fd3d76e864abdea07a0d2da9cb0b275d8a156432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e60c910_ba3a585b",
         "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
         "patchSetId": 6
