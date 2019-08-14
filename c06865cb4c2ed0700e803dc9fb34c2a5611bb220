@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "189cd8a1_410e8a4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:09:03Z",
+      "side": 1,
+      "message": "\"avoid a memory leak\" or \"avoid the memory leak\" or \"avoid leaking memory\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "c06865cb4c2ed0700e803dc9fb34c2a5611bb220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72aaffea_57b683a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:09:03Z",
+      "side": 1,
+      "message": "1 blank line too many.",
+      "revId": "c06865cb4c2ed0700e803dc9fb34c2a5611bb220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "817b5b41_6b3aef3e",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-14T23:09:03Z",
+      "side": 1,
+      "message": "FWIW, this one is rather tricky because the existing code is trying to (ab)use both public APIs and internal APIs. The CL is correct, it is not immediately obvious why. Consider the following:\n\nSo how does ownership work here? |bitmap| is a ScopedFPDFBitmap, so it thinks it owns |bitmap|. |pBitmap| is a RetainPtr that also thinks it has shared ownership of |bitmap|... You may want to look and see what FPDFBitmap_Create() and FPDFBitmap_Destroy() are doing in their implementations to understand why this works correctly.",
+      "revId": "c06865cb4c2ed0700e803dc9fb34c2a5611bb220",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
