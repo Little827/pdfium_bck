@@ -11,6 +11,7 @@
 #include <memory>
 #include <vector>
 
+#include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
@@ -120,7 +121,7 @@ class CXFA_FFDocView {
   std::unique_ptr<CXFA_FFWidgetHandler> m_pWidgetHandler;
   UnownedPtr<CXFA_LayoutProcessor> m_pXFADocLayout;
   UnownedPtr<CXFA_Node> m_pFocusNode;
-  UnownedPtr<CXFA_FFWidget> m_pFocusWidget;
+  ObservedPtr<CXFA_FFWidget> m_pFocusWidget;
   std::deque<CXFA_Node*> m_ValidateNodes;
   std::vector<CXFA_Node*> m_CalculateNodes;
   std::deque<CXFA_BindItems*> m_BindItems;
