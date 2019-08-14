@@ -15,12 +15,12 @@
 #include "core/fxge/fx_dib.h"
 #include "xfa/fxfa/fxfa_basic.h"
 
-class CFXJSE_Value;
 class CXFA_FFDoc;
 class CXFA_FFPageView;
 class CXFA_FFWidget;
 class CXFA_Submit;
 class IFX_SeekableReadStream;
+class IJS_Runtime;
 
 // Note, values must match fpdf_formfill.h JSPLATFORM_ALERT_BUTTON_* flags.
 enum class AlertButton {
@@ -264,12 +264,7 @@ class IXFA_DocEnvironment {
   virtual bool Submit(CXFA_FFDoc* hDoc, CXFA_Submit* submit) = 0;
 #endif  // PDF_XFA_ELEMENT_SUBMIT_ENABLED
 
-  virtual bool GetPropertyFromNonXFAGlobalObject(CXFA_FFDoc* hDoc,
-                                                 ByteStringView szPropName,
-                                                 CFXJSE_Value* pValue) = 0;
-  virtual bool SetPropertyInNonXFAGlobalObject(CXFA_FFDoc* hDoc,
-                                               ByteStringView szPropName,
-                                               CFXJSE_Value* pValue) = 0;
+  virtual IJS_Runtime* GetIJSRuntime(CXFA_FFDoc* hDoc) const = 0;
   virtual RetainPtr<IFX_SeekableReadStream> OpenLinkedFile(
       CXFA_FFDoc* hDoc,
       const WideString& wsLink) = 0;
