@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46cf56f6_87fd4794",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T08:12:14Z",
+      "side": 1,
+      "message": "nit: SetFocusWidget() ...\n\nSame nit in the CL description. See: https://chromium.googlesource.com/chromium/src/+/master/styleguide/c++/c++-dos-and-donts.md#comment-style",
+      "revId": "41ac97570c40e4a7cfc2d66ff7adc9c533a6a327",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
