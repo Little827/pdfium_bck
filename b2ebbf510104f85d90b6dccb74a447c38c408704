@@ -157,6 +157,30 @@
       "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635a7ec4_81094f7f",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-15T23:45:12Z",
+      "side": 1,
+      "message": "Ah right, my faulty recollection was that it was memcpying it into a static buffer.",
+      "parentUuid": "edb134c4_47ec5ae8",
+      "range": {
+        "startLine": 160,
+        "startChar": 37,
+        "endLine": 160,
+        "endChar": 44
+      },
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
