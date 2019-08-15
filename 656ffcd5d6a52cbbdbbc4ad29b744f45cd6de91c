@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565900617 -0700\nnonce AC6AUtNuBkHYHS2eKUcxQfZbPUpgklecdV6QntsGcXHeFJb82I6iLAYgh/nyNWzLyRKWQkxUQawa\n\n0000000000000000000000000000000000000000 656ffcd5d6a52cbbdbbc4ad29b744f45cd6de91c refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dremove-an-impossible-condition-in-cpdf-cmapparser\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1Vv0kACgkQqzYtYVpm\n/XtPTQf/VTjRaTVMy5REfM0q865nLRESaA2i2OoLqHDPn8iCyAg0+f1hd43Gj8c4\nkMxqWb3YaFEd/Ju9YATIUV2gAq64TypaWAGHWChc0a5AiSoHnqQVjQDzCjUp7sT6\npq+bufbgccIKViPyN3nNKS7D4x4mO+VewKXba7rD4sF/mBde35LxkqjUiFny5UXr\n8VnS6s5p2F0BNW3kI2UGBDgoR5JCHkgAJB1STjfMjN4hOzw4mCZgykBrClvdp+/M\nSEhF0C36lsvrXc7q6mp1JQ9sGiO35MOTi48L42sDh/pMuVGCZWa/1/GR0bk1MDpz\n0FPCc7MFyZ5exaCZL8UvkTodmjZEEA\u003d\u003d\n\u003dLrf3\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
