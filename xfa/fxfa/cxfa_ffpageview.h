@@ -36,7 +36,7 @@ class CXFA_FFPageView : public Observable {
  private:
   UnownedPtr<CXFA_Node> const m_pPageArea;
   UnownedPtr<CXFA_FFDocView> const m_pDocView;
-  UnownedPtr<CXFA_ViewLayoutItem> m_pLayoutItem;
+  UnownedPtr<CXFA_ViewLayoutItem> m_pLayoutItem;  // Backpointer to owner.
 };
 
 class CXFA_FFPageWidgetIterator final : public IXFA_WidgetIterator {
