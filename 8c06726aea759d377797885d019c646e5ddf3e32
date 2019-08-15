@@ -16,6 +16,24 @@
       "revId": "8c06726aea759d377797885d019c646e5ddf3e32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c231878_2a646e48",
+        "filename": "xfa/fxfa/fxfa.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-15T19:11:42Z",
+      "side": 1,
+      "message": "I re-ordered things to make the ifdef special case come last, and then made all three files obey the same order (I think).\n\nI also moved the comments that still made sense to the IXFA file and dropped the ones that were redundant or referred to non-existent parameters.",
+      "parentUuid": "c44d61e8_0ce3e599",
+      "revId": "8c06726aea759d377797885d019c646e5ddf3e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
