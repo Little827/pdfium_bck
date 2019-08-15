@@ -77,18 +77,17 @@ class CXFA_NodeIteratorTemplate {
 
  private:
   bool RootReachableFromNode(NodeType* pNode) {
-    return pNode && (pNode == m_pRoot.Get() ||
+    return pNode && (pNode == m_pRoot ||
                      RootReachableFromNode(TraverseStrategy::GetParent(pNode)));
   }
 
   NodeType* ParentWithinSubtree(NodeType* pNode) {
-    return pNode && pNode != m_pRoot.Get() ? TraverseStrategy::GetParent(pNode)
-                                           : nullptr;
+    return pNode && pNode != m_pRoot ? TraverseStrategy::GetParent(pNode)
+                                     : nullptr;
   }
 
   NodeType* NextSiblingWithinSubtree(NodeType* pNode) {
-    return pNode != m_pRoot.Get() ? TraverseStrategy::GetNextSibling(pNode)
-                                  : nullptr;
+    return pNode != m_pRoot ? TraverseStrategy::GetNextSibling(pNode) : nullptr;
   }
 
   NodeType* PreviousSiblingWithinSubtree(NodeType* pNode) {

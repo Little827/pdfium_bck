@@ -139,7 +139,7 @@ void CPDF_StreamAcc::ProcessFilteredData(uint32_t estimated_size,
   }
 
   if (pDecodedData) {
-    ASSERT(pDecodedData.get() != pSrcData.Get());
+    ASSERT(pDecodedData.get() != pSrcData);
     m_pData = std::move(pDecodedData);
     m_dwSize = dwDecodedSize;
   } else {
