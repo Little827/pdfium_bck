@@ -16,6 +16,24 @@
       "revId": "d8ab1f2fb1ec440192f4f2c9ab5227cc85f00f3f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35a2420_140ad3d1",
+        "filename": "testing/resources/javascript/xfa_specific/bug_993771.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-15T18:02:07Z",
+      "side": 1,
+      "message": "Nope, confirmed test still fails on old version even without this object.",
+      "parentUuid": "97223455_6ec59a22",
+      "revId": "d8ab1f2fb1ec440192f4f2c9ab5227cc85f00f3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
