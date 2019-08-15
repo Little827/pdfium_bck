@@ -20,6 +20,23 @@
     },
     {
       "key": {
+        "uuid": "8aec38d3_eb19f340",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-15T20:26:40Z",
+      "side": 1,
+      "message": "Genuinely curious, does it make more sense to use size_t instead of uint32_t here? And for |index| and |len|?",
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c0b0430_01919715",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 7
