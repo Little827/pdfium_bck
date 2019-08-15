@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "a2dd3517_f5e1468e",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T22:15:31Z",
+      "side": 1,
+      "message": "Pass a pointer.",
+      "parentUuid": "ba81579f_c8e6a8c6",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa594c78_3bd5310c",
         "filename": "core/fpdfdoc/cpvt_generateap.cpp",
         "patchSetId": 1
@@ -206,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "6356fafd_8637a0e7",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T22:15:31Z",
+      "side": 1,
+      "message": "How about we side-step the issue and pass in |pDRDict| instead, and then adjust line 1039?",
+      "parentUuid": "7174debc_3352c214",
+      "range": {
+        "startLine": 1013,
+        "startChar": 54,
+        "endLine": 1013,
+        "endChar": 62
+      },
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bd82a79_b56fd834",
         "filename": "core/fpdfdoc/cpvt_generateap.cpp",
         "patchSetId": 1
@@ -235,6 +277,24 @@
       "side": 1,
       "message": "The future use case will not have a matrix to pass. I can replace the Optional parameter with a pointer though, and then check for a nullptr.",
       "parentUuid": "2bd82a79_b56fd834",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c9ba072_2ec889e3",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T22:15:31Z",
+      "side": 1,
+      "message": "I get that\u0027s the case in the (near) future. Can we make the change in the future CL instead of here, so there is no transition period in the middle where there\u0027s a pointer and a check for pointer !\u003d nullptr, and that check never fails?",
+      "parentUuid": "0146f5ee_27406e56",
       "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
