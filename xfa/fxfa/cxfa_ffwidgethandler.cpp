@@ -50,7 +50,7 @@ bool CXFA_FFWidgetHandler::OnLButtonDown(CXFA_FFWidget* hWidget,
   bool bRet = hWidget->AcceptsFocusOnButtonDown(
       dwFlags, hWidget->Rotate2Normal(point), FWL_MouseCommand::LeftButtonDown);
   if (bRet) {
-    if (m_pDocView->SetFocus(hWidget)) {
+    if (m_pDocView->SetFocusWidget(hWidget)) {
       m_pDocView->GetDoc()->GetDocEnvironment()->SetFocusWidget(
           m_pDocView->GetDoc(), hWidget);
     }
@@ -102,7 +102,7 @@ bool CXFA_FFWidgetHandler::OnRButtonDown(CXFA_FFWidget* hWidget,
       hWidget->AcceptsFocusOnButtonDown(dwFlags, hWidget->Rotate2Normal(point),
                                         FWL_MouseCommand::RightButtonDown);
   if (bRet) {
-    if (m_pDocView->SetFocus(hWidget)) {
+    if (m_pDocView->SetFocusWidget(hWidget)) {
       m_pDocView->GetDoc()->GetDocEnvironment()->SetFocusWidget(
           m_pDocView->GetDoc(), hWidget);
     }

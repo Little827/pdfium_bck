@@ -24,6 +24,7 @@ class CXFA_FFWidgetHandler;
 class CXFA_Node;
 class CXFA_ReadyNodeIterator;
 class CXFA_Subform;
+class CXFA_ContentLayoutItem;
 class CXFA_ViewLayoutItem;
 
 extern const XFA_AttributeValue gs_EventActivity[];
@@ -61,8 +62,8 @@ class CXFA_FFDocView {
   void ResetNode(CXFA_Node* pNode);
   CXFA_FFWidgetHandler* GetWidgetHandler();
   std::unique_ptr<CXFA_ReadyNodeIterator> CreateReadyNodeIterator();
-  CXFA_FFWidget* GetFocusWidget() const { return m_pFocusWidget.Get(); }
-  bool SetFocus(CXFA_FFWidget* pNewFocus);
+  CXFA_FFWidget* GetFocusWidget() const;
+  bool SetFocusWidget(CXFA_FFWidget* pNewFocus);
   CXFA_FFWidget* GetWidgetForNode(CXFA_Node* node);
   CXFA_FFWidget* GetWidgetByName(const WideString& wsName,
                                  CXFA_FFWidget* pRefWidget);
@@ -73,15 +74,11 @@ class CXFA_FFDocView {
   void InvalidateRect(CXFA_FFPageView* pPageView,
                       const CFX_RectF& rtInvalidate);
   void RunDocClose();
-
   void ProcessValueChanged(CXFA_Node* node);
-
   void SetChangeMark();
-
   void AddValidateNode(CXFA_Node* node);
   void AddCalculateNodeNotify(CXFA_Node* pNodeChange);
   void AddCalculateNode(CXFA_Node* node);
-
   bool RunLayout();
   void AddNewFormNode(CXFA_Node* pNode);
   void AddIndexChangedSubform(CXFA_Node* pNode);
@@ -121,7 +118,7 @@ class CXFA_FFDocView {
   std::unique_ptr<CXFA_FFWidgetHandler> m_pWidgetHandler;
   UnownedPtr<CXFA_LayoutProcessor> m_pXFADocLayout;
   UnownedPtr<CXFA_Node> m_pFocusNode;
-  ObservedPtr<CXFA_FFWidget> m_pFocusWidget;
+  RetainPtr<CXFA_ContentLayoutItem> m_pFocusItem;
   std::deque<CXFA_Node*> m_ValidateNodes;
   std::vector<CXFA_Node*> m_CalculateNodes;
   std::deque<CXFA_BindItems*> m_BindItems;

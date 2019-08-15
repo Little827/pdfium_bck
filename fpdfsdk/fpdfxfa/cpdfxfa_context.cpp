@@ -88,9 +88,10 @@ void CPDFXFA_Context::SetFormFillEnv(
     // owned by the CXFA_Document. The Layout Processor will be freed with the
     // ClearLayoutData() call. Make sure the doc view has already released the
     // pointer.
-    if (m_pXFADocView)
+    if (m_pXFADocView) {
+      m_pXFADocView->SetFocusWidget(nullptr);
       m_pXFADocView->ResetLayoutProcessor();
-
+    }
     m_pXFADoc->GetXFADoc()->ClearLayoutData();
   }
 

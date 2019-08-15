@@ -137,7 +137,7 @@ void CXFA_FFDocView::StopLayout() {
     ExecEventActivityByDeepFirst(pRootItem, XFA_EVENT_Ready, false, true);
 
   m_CalculateNodes.clear();
-  if (m_pFocusNode && !m_pFocusWidget)
+  if (m_pFocusNode && !m_pFocusItem)
     SetFocusNode(m_pFocusNode.Get());
 
   m_iStatus = XFA_DOCVIEW_LAYOUTSTATUS_End;
@@ -268,9 +268,12 @@ CXFA_FFDocView::CreateReadyNodeIterator() {
                    : nullptr;
 }
 
-bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
-  CXFA_FFWidget* pOldFocus = m_pFocusWidget.Get();
+CXFA_FFWidget* CXFA_FFDocView::GetFocusWidget() const {
+  return m_pFocusItem ? m_pFocusItem->GetFFWidget() : nullptr;
+}
 
+bool CXFA_FFDocView::SetFocusWidget(CXFA_FFWidget* pNewFocus) {
+  CXFA_FFWidget* pOldFocus = GetFocusWidget();
   if (pOldFocus == pNewFocus)
     return false;
 
@@ -300,12 +303,11 @@ bool CXFA_FFDocView::SetFocus(CXFA_FFWidget* pNewFocus) {
   if (pNewFocus) {
     CXFA_Node* node = pNewFocus->GetNode();
     m_pFocusNode = node->IsWidgetReady() ? node : nullptr;
-    m_pFocusWidget.Reset(pNewFocus);
+    m_pFocusItem.Reset(pNewFocus->GetLayoutItem());
   } else {
     m_pFocusNode = nullptr;
-    m_pFocusWidget.Reset();
+    m_pFocusItem.Reset();
   }
-
   return true;
 }
 
@@ -313,15 +315,14 @@ void CXFA_FFDocView::SetFocusNode(CXFA_Node* node) {
   CXFA_FFWidget* pNewFocus = nullptr;
   if (node)
     pNewFocus = GetWidgetForNode(node);
-  if (!SetFocus(pNewFocus))
+  if (!SetFocusWidget(pNewFocus))
     return;
 
   m_pFocusNode = node;
   if (m_iStatus != XFA_DOCVIEW_LAYOUTSTATUS_End)
     return;
 
-  m_pDoc->GetDocEnvironment()->SetFocusWidget(m_pDoc.Get(),
-                                              m_pFocusWidget.Get());
+  m_pDoc->GetDocEnvironment()->SetFocusWidget(m_pDoc.Get(), GetFocusWidget());
 }
 
 void CXFA_FFDocView::DeleteLayoutItem(CXFA_FFWidget* pWidget) {
@@ -329,7 +330,7 @@ void CXFA_FFDocView::DeleteLayoutItem(CXFA_FFWidget* pWidget) {
     return;
 
   m_pFocusNode = nullptr;
-  m_pFocusWidget.Reset();
+  m_pFocusItem.Reset();
 }
 
 static XFA_EventError XFA_ProcessEvent(CXFA_FFDocView* pDocView,

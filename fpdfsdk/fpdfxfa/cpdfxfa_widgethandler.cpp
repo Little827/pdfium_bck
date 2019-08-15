@@ -511,7 +511,7 @@ bool CPDFXFA_WidgetHandler::OnKillFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (!pXFAPageView)
     return true;
 
-  pXFAPageView->GetDocView()->SetFocus(nullptr);
+  pXFAPageView->GetDocView()->SetFocusWidget(nullptr);
   return true;
 }
 
@@ -536,7 +536,7 @@ bool CPDFXFA_WidgetHandler::OnXFAChangedFocus(
     return true;
 
   ObservedPtr<CXFA_FFPageView> pObservedXFAPageView(pXFAPageView);
-  bool bRet = pXFAPageView->GetDocView()->SetFocus(hWidget);
+  bool bRet = pXFAPageView->GetDocView()->SetFocusWidget(hWidget);
 
   // Check |pXFAPageView| again because |SetFocus| can trigger JS to destroy it.
   if (pObservedXFAPageView &&
