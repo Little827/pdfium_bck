@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6737fc8_73844ba0",
+        "filename": "xfa/fxfa/parser/cxfa_nodeiteratortemplate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T22:46:12Z",
+      "side": 1,
+      "message": "Still needed after https://pdfium-review.googlesource.com/c/pdfium/+/59470 ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 37,
+        "endLine": 80,
+        "endChar": 43
+      },
+      "revId": "5f074ead82c4836b564d640f8d2eab46ad3425b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
