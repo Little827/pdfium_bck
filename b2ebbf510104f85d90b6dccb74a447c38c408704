@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "e5e88030_67b09b48",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-15T22:14:55Z",
+      "side": 1,
+      "message": "There\u0027s an interesting way to iterate with size_t given that we know that it is unsigned and that unsigned underflow is well-defined *unlike signed types*\n\nfor (size_t i \u003d len - 1; i \u003c len; --i) \n\nin that we know len can never be \u003c 0, so all we need is the exact same bounds check we\u0027d use to see if a random index is good, and underflow takes it out of range ...\n\nbut I like the \"i points to one past the current item\" model as well.",
+      "parentUuid": "22275108_5deefd58",
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8aec38d3_eb19f340",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 7
@@ -92,6 +110,29 @@
       "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7cea3ac_a44104b2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-15T22:14:55Z",
+      "side": 1,
+      "message": "this call probably invalidates the bytestringview returned at 156.  And so forth for the subsequent getword calls. Still OK?",
+      "range": {
+        "startLine": 160,
+        "startChar": 37,
+        "endLine": 160,
+        "endChar": 44
+      },
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
