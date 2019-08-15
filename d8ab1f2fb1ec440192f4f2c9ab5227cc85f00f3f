@@ -34,6 +34,24 @@
       "revId": "d8ab1f2fb1ec440192f4f2c9ab5227cc85f00f3f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eb5ba8f_e635fb1a",
+        "filename": "testing/resources/javascript/xfa_specific/bug_993771.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-15T18:02:56Z",
+      "side": 1,
+      "message": "Nope \u003d\u003d object not needed, that is.",
+      "parentUuid": "b35a2420_140ad3d1",
+      "revId": "d8ab1f2fb1ec440192f4f2c9ab5227cc85f00f3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
