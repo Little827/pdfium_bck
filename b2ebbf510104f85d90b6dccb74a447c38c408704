@@ -1,4 +1,62 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565851444 -0700\nnonce AC6AUtPaXBW27xS6Iw0ofuYQmFZTGvIAEVTT7CDzaZLQ49KTTJDWCBvmrQVrGhbvzufVsaPZQgem\n\n0000000000000000000000000000000000000000 b2ebbf510104f85d90b6dccb74a447c38c408704 refs/for/refs/heads/master%notify\u003dNONE,m\u003dnits,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1U/zQACgkQqzYtYVpm\n/XsJUQf+N7QnPC5WEBaFvO/2EJlhfsRMtI81MMllqT91fYosADMw0ZTbdxG3IDIb\ns96yZpyjo9LjmVmkoofoK8PbsevP2rwKgnOdYiX1bS4Z1puH+cR/IYD5d91/5UDa\nqQjELy6Ws/z78E5nsuk0ctWtgZzgpvD862FPPlMUCEpmX8HUcd8DvZgA6Ucl857L\nLjllJm1XgoL1+GSSyMvEzmi4159dJPy/gQRCAtCA4+CMQpQIT2B0y04EschQK7gD\nfsRou2vZDqOGgJXMHXYAjs4ME2hAKNWmZqU1QvAcBKGYw7HzaJI3Q+TD1sJ/HJA4\nQIqj4OOaINB9l/N8gHJc3xKb0eR4nQ\u003d\u003d\n\u003diGBm\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "22275108_5deefd58",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T20:08:32Z",
+      "side": 1,
+      "message": "This can\u0027t keep the original logic, because size_t never goes negative.",
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c0b0430_01919715",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T20:08:32Z",
+      "side": 1,
+      "message": "For consistency with the ChatAt() calls above on lines 92 and 97.",
+      "range": {
+        "startLine": 112,
+        "startChar": 42,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71eae5aa_fd15c7c9",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T20:08:32Z",
+      "side": 1,
+      "message": "parser.GetWord() returns a ByteStringView, so just take that instead of converting it to a ByteString.",
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
