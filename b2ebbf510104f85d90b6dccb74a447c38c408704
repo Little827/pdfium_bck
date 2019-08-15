@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4980891e_ad40fe12",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T20:33:15Z",
+      "side": 1,
+      "message": "It probably should, but I don\u0027t want to muck with the logic here too much in this CL. e.g. line 69 has a subtle check for an integer overflow. I\u0027ll follow up and address this in a separate CL.",
+      "parentUuid": "8aec38d3_eb19f340",
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c0b0430_01919715",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 7
