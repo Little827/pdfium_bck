@@ -133,6 +133,30 @@
       "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb134c4_47ec5ae8",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T22:32:21Z",
+      "side": 1,
+      "message": "I don\u0027t think this would invalidate |low|. Underneath it\u0027s |parser| handing out spans from its const pdfium::span\u003cconst uint8_t\u003e data_;. Unless there\u0027s some special property of span that I\u0027m not aware of?\n\nPlus this code has test coverage. I would think some test would have failed if |low| became invalid.",
+      "parentUuid": "c7cea3ac_a44104b2",
+      "range": {
+        "startLine": 160,
+        "startChar": 37,
+        "endLine": 160,
+        "endChar": 44
+      },
+      "revId": "b2ebbf510104f85d90b6dccb74a447c38c408704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
