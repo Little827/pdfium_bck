@@ -173,7 +173,7 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   bool IsButtonDown();
   void SetButtonDown(bool bSet);
 
-  UnownedPtr<CXFA_ContentLayoutItem> m_pLayoutItem;
+  UnownedPtr<CXFA_ContentLayoutItem> m_pLayoutItem;  // Backpointer to owner.
   UnownedPtr<CXFA_FFDocView> m_pDocView;
   UnownedPtr<CXFA_FFPageView> m_pPageView;
   UnownedPtr<CXFA_Node> const m_pNode;
