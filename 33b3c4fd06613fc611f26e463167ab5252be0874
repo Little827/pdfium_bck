@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acdda25e_38d97c93",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-15T17:39:05Z",
+      "side": 0,
+      "message": "NOTE: this probe was actually only required in the case where we were changing something, otherwise the value remains intact and we\u0027d eventually probe for it at a subsequent assignment or destruction.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "33b3c4fd06613fc611f26e463167ab5252be0874",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
