@@ -911,87 +911,36 @@ bool GenerateStrikeOutAP(CPDF_Document* pDoc, CPDF_Dictionary* pAnnotDict) {
 
 }  // namespace
 
-// static
-void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
-                                     CPDF_Dictionary* pAnnotDict,
-                                     FormType type) {
-  CPDF_Dictionary* pRootDict = pDoc->GetRoot();
-  if (!pRootDict)
-    return;
-
-  CPDF_Dictionary* pFormDict = pRootDict->GetDictFor("AcroForm");
-  if (!pFormDict)
-    return;
-
-  ByteString DA;
-  if (CPDF_Object* pDAObj = FPDF_GetFieldAttr(pAnnotDict, "DA"))
-    DA = pDAObj->GetString();
-  if (DA.IsEmpty())
-    DA = pFormDict->GetStringFor("DA");
-  if (DA.IsEmpty())
-    return;
-
-  CPDF_DefaultAppearance appearance(DA);
-
-  float fFontSize = 0;
-  Optional<ByteString> font = appearance.GetFont(&fFontSize);
-  if (!font)
-    return;
-
-  ByteString font_name = *font;
-  CFX_Color crText = fpdfdoc::CFXColorFromString(DA);
-  CPDF_Dictionary* pDRDict = pFormDict->GetDictFor("DR");
+CPDF_Dictionary* GetOrSetNewFontFromDR(CPDF_Document* pDoc,
+                                       CPDF_Dictionary* pDRDict,
+                                       ByteString sFontName) {
   if (!pDRDict)
-    return;
+    return nullptr;
 
   CPDF_Dictionary* pDRFontDict = pDRDict->GetDictFor("Font");
   if (!pDRFontDict)
-    return;
+    pDRFontDict = pDRDict->SetNewFor<CPDF_Dictionary>("Font");
 
-  CPDF_Dictionary* pFontDict = pDRFontDict->GetDictFor(font_name);
+  if (!pDRFontDict)
+    return nullptr;
+
+  CPDF_Dictionary* pFontDict = pDRFontDict->GetDictFor(sFontName);
   if (!pFontDict) {
     pFontDict = pDoc->NewIndirect<CPDF_Dictionary>();
     pFontDict->SetNewFor<CPDF_Name>("Type", "Font");
     pFontDict->SetNewFor<CPDF_Name>("Subtype", "Type1");
     pFontDict->SetNewFor<CPDF_Name>("BaseFont", CFX_Font::kDefaultAnsiFontName);
     pFontDict->SetNewFor<CPDF_Name>("Encoding", "WinAnsiEncoding");
-    pDRFontDict->SetNewFor<CPDF_Reference>(font_name, pDoc,
+    pDRFontDict->SetNewFor<CPDF_Reference>(sFontName, pDoc,
                                            pFontDict->GetObjNum());
   }
-  auto* pData = CPDF_DocPageData::FromDocument(pDoc);
-  RetainPtr<CPDF_Font> pDefFont = pData->GetFont(pFontDict);
-  if (!pDefFont)
-    return;
 
-  CFX_FloatRect rcAnnot = pAnnotDict->GetRectFor(pdfium::annotation::kRect);
-  CPDF_Dictionary* pMKDict = pAnnotDict->GetDictFor("MK");
-  int32_t nRotate = pMKDict ? pMKDict->GetIntegerFor("R") : 0;
+  return pFontDict;
+}
 
-  CFX_FloatRect rcBBox;
-  CFX_Matrix matrix;
-  switch (nRotate % 360) {
-    case 0:
-      rcBBox = CFX_FloatRect(0, 0, rcAnnot.right - rcAnnot.left,
-                             rcAnnot.top - rcAnnot.bottom);
-      break;
-    case 90:
-      matrix = CFX_Matrix(0, 1, -1, 0, rcAnnot.right - rcAnnot.left, 0);
-      rcBBox = CFX_FloatRect(0, 0, rcAnnot.top - rcAnnot.bottom,
-                             rcAnnot.right - rcAnnot.left);
-      break;
-    case 180:
-      matrix = CFX_Matrix(-1, 0, 0, -1, rcAnnot.right - rcAnnot.left,
-                          rcAnnot.top - rcAnnot.bottom);
-      rcBBox = CFX_FloatRect(0, 0, rcAnnot.right - rcAnnot.left,
-                             rcAnnot.top - rcAnnot.bottom);
-      break;
-    case 270:
-      matrix = CFX_Matrix(0, -1, 1, 0, 0, rcAnnot.top - rcAnnot.bottom);
-      rcBBox = CFX_FloatRect(0, 0, rcAnnot.top - rcAnnot.bottom,
-                             rcAnnot.right - rcAnnot.left);
-      break;
-  }
-
+CFX_FloatRect SetupAppStreamAndGetBodyRect(CPDF_Dictionary* pAnnotDict,
+                                           CFX_FloatRect rcBBox,
+                                           std::ostringstream& sAppStream) {
   BorderStyle nBorderStyle = BorderStyle::SOLID;
   float fBorderWidth = 1;
   CPVT_Dash dsBorder(3, 0, 0);
@@ -1033,13 +982,12 @@ void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
   }
   CFX_Color crBorder;
   CFX_Color crBG;
-  if (pMKDict) {
+  if (CPDF_Dictionary* pMKDict = pAnnotDict->GetDictFor("MK")) {
     if (CPDF_Array* pArray = pMKDict->GetArrayFor("BC"))
       crBorder = fpdfdoc::CFXColorFromArray(*pArray);
     if (CPDF_Array* pArray = pMKDict->GetArrayFor("BG"))
       crBG = fpdfdoc::CFXColorFromArray(*pArray);
   }
-  std::ostringstream sAppStream;
   ByteString sBG = GenerateColorAP(crBG, PaintOperation::FILL);
   if (sBG.GetLength() > 0) {
     sAppStream << "q\n"
@@ -1058,10 +1006,16 @@ void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
                     rcBBox.right - fBorderWidth, rcBBox.top - fBorderWidth);
   rcBody.Normalize();
 
-  CPDF_Dictionary* pAPDict = pAnnotDict->GetDictFor(pdfium::annotation::kAP);
-  if (!pAPDict)
-    pAPDict = pAnnotDict->SetNewFor<CPDF_Dictionary>(pdfium::annotation::kAP);
+  return rcBody;
+}
 
+CPDF_Stream* GetOrSetNewNormalStream(CPDF_Document* pDoc,
+                                     CPDF_Dictionary* pObjDict,
+                                     CPDF_Dictionary* pAPDict,
+                                     CPDF_Dictionary* pFontDict,
+                                     const ByteString& sFontName,
+                                     const CFX_FloatRect& rcBBox,
+                                     Optional<CFX_Matrix> matrix) {
   CPDF_Stream* pNormalStream = pAPDict->GetStreamFor("N");
   if (!pNormalStream) {
     pNormalStream = pDoc->NewIndirect<CPDF_Stream>();
@@ -1069,21 +1023,109 @@ void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
   }
   CPDF_Dictionary* pStreamDict = pNormalStream->GetDict();
   if (pStreamDict) {
-    pStreamDict->SetMatrixFor("Matrix", matrix);
+    if (matrix.has_value())
+      pStreamDict->SetMatrixFor("Matrix", matrix.value());
     pStreamDict->SetRectFor("BBox", rcBBox);
     CPDF_Dictionary* pStreamResList = pStreamDict->GetDictFor("Resources");
     if (pStreamResList) {
       CPDF_Dictionary* pStreamResFontList = pStreamResList->GetDictFor("Font");
       if (!pStreamResFontList)
         pStreamResFontList = pStreamResList->SetNewFor<CPDF_Dictionary>("Font");
-      if (!pStreamResFontList->KeyExist(font_name)) {
-        pStreamResFontList->SetNewFor<CPDF_Reference>(font_name, pDoc,
+      if (!pStreamResFontList->KeyExist(sFontName)) {
+        pStreamResFontList->SetNewFor<CPDF_Reference>(sFontName, pDoc,
                                                       pFontDict->GetObjNum());
       }
     } else {
-      pStreamDict->SetFor("Resources", pFormDict->GetDictFor("DR")->Clone());
+      pStreamDict->SetFor("Resources", pObjDict->GetDictFor("DR")->Clone());
     }
   }
+
+  return pNormalStream;
+}
+
+// static
+void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
+                                     CPDF_Dictionary* pAnnotDict,
+                                     FormType type) {
+  CPDF_Dictionary* pRootDict = pDoc->GetRoot();
+  if (!pRootDict)
+    return;
+
+  CPDF_Dictionary* pFormDict = pRootDict->GetDictFor("AcroForm");
+  if (!pFormDict)
+    return;
+
+  ByteString DA;
+  if (CPDF_Object* pDAObj = FPDF_GetFieldAttr(pAnnotDict, "DA"))
+    DA = pDAObj->GetString();
+  if (DA.IsEmpty())
+    DA = pFormDict->GetStringFor("DA");
+  if (DA.IsEmpty())
+    return;
+
+  CPDF_DefaultAppearance appearance(DA);
+
+  float fFontSize = 0;
+  Optional<ByteString> font = appearance.GetFont(&fFontSize);
+  if (!font)
+    return;
+
+  ByteString sFontName = *font;
+  CFX_Color crText = fpdfdoc::CFXColorFromString(DA);
+  CPDF_Dictionary* pDRDict = pFormDict->GetDictFor("DR");
+  if (!pDRDict)
+    return;
+
+  CPDF_Dictionary* pFontDict = GetOrSetNewFontFromDR(pDoc, pDRDict, sFontName);
+
+  auto* pData = CPDF_DocPageData::FromDocument(pDoc);
+  RetainPtr<CPDF_Font> pDefFont = pData->GetFont(pFontDict);
+  if (!pDefFont)
+    return;
+
+  CFX_FloatRect rcAnnot = pAnnotDict->GetRectFor(pdfium::annotation::kRect);
+  CPDF_Dictionary* pMKDict = pAnnotDict->GetDictFor("MK");
+  int32_t nRotate = pMKDict ? pMKDict->GetIntegerFor("R") : 0;
+
+  CFX_FloatRect rcBBox;
+  CFX_Matrix matrix;
+  switch (nRotate % 360) {
+    case 0:
+      rcBBox = CFX_FloatRect(0, 0, rcAnnot.right - rcAnnot.left,
+                             rcAnnot.top - rcAnnot.bottom);
+      break;
+    case 90:
+      matrix = CFX_Matrix(0, 1, -1, 0, rcAnnot.right - rcAnnot.left, 0);
+      rcBBox = CFX_FloatRect(0, 0, rcAnnot.top - rcAnnot.bottom,
+                             rcAnnot.right - rcAnnot.left);
+      break;
+    case 180:
+      matrix = CFX_Matrix(-1, 0, 0, -1, rcAnnot.right - rcAnnot.left,
+                          rcAnnot.top - rcAnnot.bottom);
+      rcBBox = CFX_FloatRect(0, 0, rcAnnot.right - rcAnnot.left,
+                             rcAnnot.top - rcAnnot.bottom);
+      break;
+    case 270:
+      matrix = CFX_Matrix(0, -1, 1, 0, 0, rcAnnot.top - rcAnnot.bottom);
+      rcBBox = CFX_FloatRect(0, 0, rcAnnot.top - rcAnnot.bottom,
+                             rcAnnot.right - rcAnnot.left);
+      break;
+  }
+
+  std::ostringstream sAppStream;
+  CFX_FloatRect rcBody =
+      SetupAppStreamAndGetBodyRect(pAnnotDict, rcBBox, sAppStream);
+
+  CPDF_Dictionary* pAPDict = pAnnotDict->GetDictFor(pdfium::annotation::kAP);
+  if (!pAPDict)
+    pAPDict = pAnnotDict->SetNewFor<CPDF_Dictionary>(pdfium::annotation::kAP);
+
+  CPDF_Stream* pNormalStream = GetOrSetNewNormalStream(
+      pDoc, pFormDict, pAPDict, pFontDict, sFontName, rcBBox, matrix);
+  if (!pNormalStream)
+    return;
+  CPDF_Dictionary* pStreamDict = pNormalStream->GetDict();
+
   switch (type) {
     case CPVT_GenerateAP::kTextField: {
       const CPDF_Object* pV =
@@ -1098,7 +1140,7 @@ void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       uint32_t dwMaxLen = pMaxLen ? pMaxLen->GetInteger() : 0;
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
-          pDefFont, font_name);
+          pDefFont, sFontName);
       CPDF_VariableText::Provider prd(&map);
       CPDF_VariableText vt;
       vt.SetProvider(&prd);
@@ -1158,7 +1200,7 @@ void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       WideString swValue = pV ? pV->GetUnicodeText() : WideString();
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
-          pDefFont, font_name);
+          pDefFont, sFontName);
       CPDF_VariableText::Provider prd(&map);
       CPDF_VariableText vt;
       vt.SetProvider(&prd);
@@ -1226,7 +1268,7 @@ void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
     case CPVT_GenerateAP::kListBox: {
       CPVT_FontMap map(
           pDoc, pStreamDict ? pStreamDict->GetDictFor("Resources") : nullptr,
-          pDefFont, font_name);
+          pDefFont, sFontName);
       CPDF_VariableText::Provider prd(&map);
       CPDF_Array* pOpts = ToArray(FPDF_GetFieldAttr(pAnnotDict, "Opt"));
       CPDF_Array* pSels = ToArray(FPDF_GetFieldAttr(pAnnotDict, "I"));
@@ -1320,8 +1362,8 @@ void CPVT_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
           pStreamResFontList =
               pStreamResList->SetNewFor<CPDF_Dictionary>("Font");
         }
-        if (!pStreamResFontList->KeyExist(font_name)) {
-          pStreamResFontList->SetNewFor<CPDF_Reference>(font_name, pDoc,
+        if (!pStreamResFontList->KeyExist(sFontName)) {
+          pStreamResFontList->SetNewFor<CPDF_Reference>(sFontName, pDoc,
                                                         pFontDict->GetObjNum());
         }
       } else {
