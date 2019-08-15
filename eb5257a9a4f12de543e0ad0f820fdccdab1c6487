@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9335d25_3d5cbf32",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Put these in the anonymous namespace, since they are only used in this file?",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94cd3d96_10bae41e",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Be consistent with line 1016.",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56953f5a_294a250b",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Pass by const-ref, like line 1017.",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081c06a9_be7f0c8b",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Don\u0027t pass by non-const ref. Maybe also consider splitting this function into GetBodyRect() and SetupAppStream().",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa594c78_3bd5310c",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Alternatively, have the caller pass in |pMKDict| and |pBSDict|, instead of |pAnnotDict|. The caller already has |pMKDict|.",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c7104e_cd7070c6",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Can this retain the |pFormDict| name from the caller? Knowning this is the form dictionary is more helpful than only knowing it\u0027s some dictionary object. As seen with the two parameters below, there are several objects here.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 54,
+        "endLine": 1013,
+        "endChar": 62
+      },
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bd82a79_b56fd834",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Don\u0027t use Optional parameters. See https://chromium.googlesource.com/chromium/src/+/HEAD/docs/optional.md#when-not-to-use\n\nAlso, the only caller does not pass in something optional, so this refactoring is getting slightly ahead of itself?",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e28ca05a_03e5a91b",
+        "filename": "core/fpdfdoc/cpvt_generateap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-15T02:05:19Z",
+      "side": 1,
+      "message": "Since we are refactoring, these case statements look like natural parts of CPVT_GenerateAP::GenerateFormAP() to split off into their own functions.",
+      "revId": "eb5257a9a4f12de543e0ad0f820fdccdab1c6487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
