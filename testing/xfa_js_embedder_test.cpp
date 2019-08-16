@@ -6,8 +6,8 @@
 
 #include <string>
 
-#include "fpdfsdk/cpdfsdk_helpers.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
+#include "fpdfsdk/xfa/cpdfxfa_context.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "testing/gtest/include/gtest/gtest.h"

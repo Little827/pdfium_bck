@@ -26,7 +26,7 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/fx_font.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "public/fpdf_edit.h"
 #include "third_party/base/ptr_util.h"
 

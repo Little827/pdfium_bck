@@ -32,15 +32,15 @@
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fpdfdoc/cpdf_annotlist.h"
 #include "core/fxcrt/fx_extension.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/logging.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
+#include "fpdfsdk/xfa/cpdfxfa_context.h"
+#include "fpdfsdk/xfa/cpdfxfa_page.h"
 #endif  // PDF_ENABLE_XFA
 
 namespace {

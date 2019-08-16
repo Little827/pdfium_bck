@@ -22,7 +22,7 @@
 #include "core/fpdfdoc/cpdf_nametree.h"
 #include "core/fxcrt/cfx_datetime.h"
 #include "core/fxcrt/fx_extension.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "third_party/base/ptr_util.h"
 
 namespace {

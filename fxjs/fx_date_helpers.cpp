@@ -13,7 +13,7 @@
 #include "build/build_config.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_system.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 
 namespace fxjs {
 namespace {

@@ -6,7 +6,7 @@
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFCatalog_IsTagged(FPDF_DOCUMENT document) {

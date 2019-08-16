@@ -157,7 +157,6 @@ jumbo_component("pdfium") {
     "core/fxcrt",
     "core/fxge",
     "fpdfsdk",
-    "fpdfsdk/formfiller",
     "fxjs",
     "third_party:pdfium_base",
     "third_party:skia_shared",
@@ -167,10 +166,8 @@ jumbo_component("pdfium") {
     ":pdfium_public_headers_impl",
     "core/fxcrt",
   ]
-
   if (pdf_enable_xfa) {
     deps += [
-      "fpdfsdk/fpdfxfa",
       "xfa/fxfa",
       "xfa/fxfa/parser",
     ]
@@ -333,7 +330,7 @@ test("pdfium_embeddertests") {
 
   if (pdf_enable_xfa) {
     deps += [
-      "fpdfsdk/fpdfxfa:embeddertests",
+      "fpdfsdk/xfa:embeddertests",
       "xfa/fwl:embeddertests",
       "xfa/fxfa/layout:embeddertests",
       "xfa/fxfa/parser:embeddertests",

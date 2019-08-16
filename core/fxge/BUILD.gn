@@ -225,7 +225,7 @@ pdfium_embeddertest_source_set("embeddertests") {
     sources += [ "skia/fx_skia_device_embeddertest.cpp" ]
     deps += [
       ":fxge",
-      "../../fpdfsdk",
+      "../../fpdfsdk/pdf",
       "//skia",
     ]
   }

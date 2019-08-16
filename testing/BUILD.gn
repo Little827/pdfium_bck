@@ -115,7 +115,8 @@ jumbo_source_set("embedder_test_support") {
       ]
       deps += [
         "../fpdfsdk",
-        "../fpdfsdk/fpdfxfa",
+        "../fpdfsdk/pdf",
+        "../fpdfsdk/xfa",
         "../xfa/fxfa",
         "../xfa/fxfa/parser",
       ]

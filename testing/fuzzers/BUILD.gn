@@ -372,7 +372,8 @@ if (pdf_enable_v8) {
         "../../:pdfium_public_headers",
         "../../core/fxcrt",
         "../../fpdfsdk",
-        "../../fpdfsdk/fpdfxfa",
+        "../../fpdfsdk/pdf",
+        "../../fpdfsdk/xfa",
         "../../fxjs",
         "../../xfa/fxfa",
       ]

@@ -20,7 +20,7 @@
 #include "core/fpdfdoc/cpdf_dest.h"
 #include "core/fpdfdoc/cpdf_linklist.h"
 #include "core/fpdfdoc/cpdf_pagelabel.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
