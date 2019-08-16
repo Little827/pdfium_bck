@@ -42,7 +42,7 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
 
 #ifdef PDF_ENABLE_XFA
   bool DeleteAnnot(CPDFSDK_Annot* pAnnot);
-  CPDFSDK_Annot* AddAnnot(CXFA_FFWidget* pPDFAnnot);
+  CPDFSDK_Annot* AddAnnot_(CXFA_FFWidget* pPDFAnnot);
   CPDFSDK_Annot* GetAnnotByXFAWidget(CXFA_FFWidget* hWidget);
   CPDFXFA_Page* GetPDFXFAPage() { return ToXFAPage(m_page); }
 #endif  // PDF_ENABLE_XFA

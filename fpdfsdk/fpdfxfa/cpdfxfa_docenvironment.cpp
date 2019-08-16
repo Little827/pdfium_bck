@@ -320,7 +320,7 @@ void CPDFXFA_DocEnvironment::WidgetPostAdd(CXFA_FFWidget* hWidget) {
 
   m_pContext->GetFormFillEnv()
       ->GetPageView(pXFAPage.Get(), true)
-      ->AddAnnot(hWidget);
+      ->AddAnnot_(hWidget);
 }
 
 void CPDFXFA_DocEnvironment::WidgetPreRemove(CXFA_FFWidget* hWidget) {

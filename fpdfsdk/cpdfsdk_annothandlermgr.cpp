@@ -49,7 +49,7 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::NewAnnot(CPDF_Annot* pAnnot,
 }
 
 #ifdef PDF_ENABLE_XFA
-CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::NewAnnot(CXFA_FFWidget* pAnnot,
+CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::NewAnnot_(CXFA_FFWidget* pAnnot,
                                                  CPDFSDK_PageView* pPageView) {
   ASSERT(pAnnot);
   ASSERT(pPageView);
