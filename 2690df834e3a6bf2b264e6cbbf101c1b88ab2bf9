@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565853704 -0700\nnonce AC6AUtPtluRtlbHH4FsHuUdmJFjkB8/p0s6+Dgl9o0BagTQ2ltD4QzPx18T1ZWvUop7+IAeBNWxL\n\n0000000000000000000000000000000000000000 2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1VCAgACgkQqzYtYVpm\n/XuM3wgAjd1UvuZU3LqzSFckOxY/yLXF4XyKOp753vTU92hOU5LpqtOQTQ/OaXoT\n1LVOikqAEoYp4tJpO7iGWsftJosD3KLB5rpLkWir5PHjphAiP7ldIR0I2EnIfnGG\n4hGDNUvp9ibcgd9r2RVCYrCK6TQHJNcwp/ucBHFDLl/ZJIiuYxnCrb/ZATpuaDW1\n7I316MAac3UYPCqX/QAXblR9vtp/WTtNwjj8r4qasGwIy8ZEEP+52eS+hFEJJvxX\nHCO61eMSsPLeqTtFXp2YpDKPuJNCL0Xvdb5t4Ywq9wCu+DwndgT3lp9MGglkZDe5\naVpvuEJF9d3ut5UWhMj0SCmTKJWa9w\u003d\u003d\n\u003dzIkT\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "93d44b50_26fb3558",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-16T15:38:31Z",
+      "side": 1,
+      "message": "I know that this is a just a refactoring CL, but can this be changed? Is there any upper limit you can place on the iterations of this while loop to safeguard against an infinite loop?\n\nI guess this is just parsing through words, and the parser should theoretically traverse through all the words and definitively stop, but what if there\u0027s a bug later introduced in the parser?\n\nSame for line 163.",
+      "revId": "2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
