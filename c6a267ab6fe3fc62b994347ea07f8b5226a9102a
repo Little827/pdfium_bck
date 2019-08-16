@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94deed09_1fe47c84",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-16T23:57:03Z",
+      "side": 1,
+      "message": "And use ASSERT() to back up the comments.",
+      "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e776db_71c88b0e",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-16T23:57:03Z",
+      "side": 1,
+      "message": "Or use #ifdef ?",
+      "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f5a7c1_cac8f59b",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-16T23:57:03Z",
+      "side": 1,
+      "message": "Add a comment to say the first 2 are always present, while the 3rd one is only present in XFA mode?",
+      "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
