@@ -53,6 +53,24 @@
       "revId": "2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a9b5c3_606858b6",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-16T17:32:27Z",
+      "side": 1,
+      "message": "Feel free to send a CL for that if you think that\u0027s the right thing to do.",
+      "parentUuid": "bdfe0bfa_c3459ce2",
+      "revId": "2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
