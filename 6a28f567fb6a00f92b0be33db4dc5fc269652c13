@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565900662 -0700\nnonce AC6AUtP0qwzjnfird0DyK1uiUSpeefMvenRi2Zo4jHDYd0+Qeh76joLyhGflBvipYg2ewmv9M0VS\n\n0000000000000000000000000000000000000000 6a28f567fb6a00f92b0be33db4dc5fc269652c13 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1Vv3YACgkQqzYtYVpm\n/XvP3AgAvWHTH3zErXnxN8VRtFjXLO0NWiR6wsY2lHyYHXrpAvE/jXHe5y/1UGbt\nszn6I/ZATbRAyrNRcvZ1i22X+Q9KYCU4dU0RcFXmwsiaoeQw3ovpL9DlhdUeO0nl\nw6OQ4aC+bKoHXPKPZ3LZqp8QH8EB3oeO2Nm28WKC1QNnDU3UfKfel1Pq/2PFeGMP\nBo7qDPJzVP73N6R3PxE5nuS41WmRpZmjjBe1U8cEpPR4tcXVsxtQFAosKeroHI1z\nRO3FcV/2tASowDAHubfxmSaWhnVC/SkLHEfulSMOI8tuytb0iLhfSovawC3SWGhn\nWqGJ+3KAsnX03pb0elgjrC7olMZpww\u003d\u003d\n\u003dExHW\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d936e2a_2d4ee021",
+        "filename": "core/fpdfapi/font/cpdf_cmapparser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-16T19:29:11Z",
+      "side": 1,
+      "message": "nit: for reasons I can\u0027t barely explain or justify, can m_Ranges come before m_PendingRanges?  It seems to read better that way  .. \"we have ranges and we also have pending ranges\" vs. \"we have pending ranges and we also have ranges\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "6a28f567fb6a00f92b0be33db4dc5fc269652c13",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
