@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565935776 -0700\nnonce AC6AUtPCtVulcQJgmvIqcY01C7UhQWf6PRY4Pj6k66U9+K3eZY+kUzFd79GcqfZfXrhQm4lt10uk\n\n0000000000000000000000000000000000000000 fdb9288628fc0bf088aeb77ad36b4f53ad85aaa9 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dsimplify-cpdf-tounicodemap\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1WSKAACgkQqzYtYVpm\n/XsIDggAoZqbA8sPGC/YL8z9Jv9Vj3Pt1EuF7nWcyBJKxafN57ZrZMP1AOI9P3Ku\nYsoTVH7UtPZtGWMEphQKS6hiOtMefzW7a6pdthkSOR0otaRd+CpAKJI15gPAvTHN\nkhn04edLH39yaVDN7OSDmj4r/PgfDwIglok4hvfM4pjvnmOdH8c8Mqs9uK0a4z38\n696wzt/gzkzvcGZFIE0llGRYlhWit/aAXREpB+DloKWICqNvkp313z9DHgLexpbx\n/D5aRx9iX/ffBMbU9wc1Xk9dHuO4tVdrQPuqsEmLRvrp/Vqk67fXSlPqh5ZtFnxM\neAwK38bF4qNXgLWu/O0N5VlleILr8A\u003d\u003d\n\u003d3fsS\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "25d4d0e3_71887c6e",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-16T19:45:35Z",
+      "side": 1,
+      "message": "does Mid() cover this case as well.  Also maybe comment that we rely on Mid() being bulletproof.",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "fdb9288628fc0bf088aeb77ad36b4f53ad85aaa9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
