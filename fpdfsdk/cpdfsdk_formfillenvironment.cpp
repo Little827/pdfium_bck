@@ -14,15 +14,21 @@
 #include "core/fpdfdoc/cpdf_docjsactions.h"
 #include "fpdfsdk/cpdfsdk_actionhandler.h"
 #include "fpdfsdk/cpdfsdk_annothandlermgr.h"
+#include "fpdfsdk/cpdfsdk_baannothandler.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgethandler.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fxjs/ijs_runtime.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
+
+#ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.h"
+#endif
 
 FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
   // Force a private version of the string, since we're about to hand it off
@@ -35,7 +41,17 @@ FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE) {
 CPDFSDK_FormFillEnvironment::CPDFSDK_FormFillEnvironment(
     CPDF_Document* pDoc,
     FPDF_FORMFILLINFO* pFFinfo)
-    : m_pInfo(pFFinfo), m_pCPDFDoc(pDoc) {
+    : m_pInfo(pFFinfo),
+      m_pCPDFDoc(pDoc),
+      m_pAnnotHandlerMgr(pdfium::MakeUnique<CPDFSDK_AnnotHandlerMgr>(
+          pdfium::MakeUnique<CPDFSDK_BAAnnotHandler>(),
+          pdfium::MakeUnique<CPDFSDK_WidgetHandler>(this),
+#ifdef PDF_ENABLE_XFA
+          pdfium::MakeUnique<CPDFXFA_WidgetHandler>(this)
+#else
+          nullptr
+#endif
+              )) {
   ASSERT(m_pCPDFDoc);
 }
 
@@ -316,8 +332,6 @@ IJS_Runtime* CPDFSDK_FormFillEnvironment::GetIJSRuntime() {
 }
 
 CPDFSDK_AnnotHandlerMgr* CPDFSDK_FormFillEnvironment::GetAnnotHandlerMgr() {
-  if (!m_pAnnotHandlerMgr)
-    m_pAnnotHandlerMgr = pdfium::MakeUnique<CPDFSDK_AnnotHandlerMgr>(this);
   return m_pAnnotHandlerMgr.get();
 }
 
