@@ -71,6 +71,24 @@
       "revId": "2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a5764c_48e54e27",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-16T19:41:50Z",
+      "side": 1,
+      "message": "The problem with the suggestion is that there won\u0027t be an easy way to test it, so we\u0027d be introducing another uncovered code path unless we added a mechanism to mock the simpleparser so that it misbehaves ... I\u0027d be reluctant to approve such a CL.",
+      "parentUuid": "e7a9b5c3_606858b6",
+      "revId": "2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
