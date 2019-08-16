@@ -57,6 +57,7 @@ pdfium_embeddertest_source_set("embeddertests") {
     ":pwl",
     "../:fpdfsdk",
     "../formfiller",
+    "../pdf",
   ]
   pdfium_root_dir = "../../"
 }

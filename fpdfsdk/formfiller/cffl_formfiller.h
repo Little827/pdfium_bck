@@ -12,9 +12,9 @@
 
 #include "core/fxcrt/cfx_timer.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "fpdfsdk/cpdfsdk_fieldaction.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
+#include "fpdfsdk/pdf/cpdfsdk_fieldaction.h"
+#include "fpdfsdk/pdf/cpdfsdk_widget.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 

@@ -29,7 +29,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "third_party/base/ptr_util.h"
 

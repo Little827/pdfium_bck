@@ -37,19 +37,19 @@
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/cfx_renderdevice.h"
-#include "fpdfsdk/cpdfsdk_customaccess.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
-#include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/ipdfsdk_pauseadapter.h"
+#include "fpdfsdk/pdf/cpdfsdk_customaccess.h"
+#include "fpdfsdk/pdf/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_pageview.h"
+#include "fpdfsdk/pdf/ipdfsdk_pauseadapter.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
+#include "fpdfsdk/xfa/cpdfxfa_context.h"
+#include "fpdfsdk/xfa/cpdfxfa_page.h"
 #include "fxbarcode/BC_Library.h"
 #endif  // PDF_ENABLE_XFA
 

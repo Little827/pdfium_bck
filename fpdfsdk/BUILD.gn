@@ -8,42 +8,6 @@ import("../testing/test.gni")
 
 jumbo_source_set("fpdfsdk") {
   sources = [
-    "cpdf_annotcontext.cpp",
-    "cpdf_annotcontext.h",
-    "cpdfsdk_actionhandler.cpp",
-    "cpdfsdk_actionhandler.h",
-    "cpdfsdk_annot.cpp",
-    "cpdfsdk_annot.h",
-    "cpdfsdk_annothandlermgr.cpp",
-    "cpdfsdk_annothandlermgr.h",
-    "cpdfsdk_annotiteration.cpp",
-    "cpdfsdk_annotiteration.h",
-    "cpdfsdk_annotiterator.cpp",
-    "cpdfsdk_annotiterator.h",
-    "cpdfsdk_appstream.cpp",
-    "cpdfsdk_appstream.h",
-    "cpdfsdk_baannot.cpp",
-    "cpdfsdk_baannot.h",
-    "cpdfsdk_baannothandler.cpp",
-    "cpdfsdk_baannothandler.h",
-    "cpdfsdk_customaccess.cpp",
-    "cpdfsdk_customaccess.h",
-    "cpdfsdk_fieldaction.cpp",
-    "cpdfsdk_fieldaction.h",
-    "cpdfsdk_filewriteadapter.cpp",
-    "cpdfsdk_filewriteadapter.h",
-    "cpdfsdk_formfillenvironment.cpp",
-    "cpdfsdk_formfillenvironment.h",
-    "cpdfsdk_helpers.cpp",
-    "cpdfsdk_helpers.h",
-    "cpdfsdk_interactiveform.cpp",
-    "cpdfsdk_interactiveform.h",
-    "cpdfsdk_pageview.cpp",
-    "cpdfsdk_pageview.h",
-    "cpdfsdk_widget.cpp",
-    "cpdfsdk_widget.h",
-    "cpdfsdk_widgethandler.cpp",
-    "cpdfsdk_widgethandler.h",
     "fpdf_annot.cpp",
     "fpdf_attachment.cpp",
     "fpdf_catalog.cpp",
@@ -67,11 +31,7 @@ jumbo_source_set("fpdfsdk") {
     "fpdf_thumbnail.cpp",
     "fpdf_transformpage.cpp",
     "fpdf_view.cpp",
-    "ipdfsdk_annothandler.h",
-    "ipdfsdk_pauseadapter.cpp",
-    "ipdfsdk_pauseadapter.h",
   ]
-
   configs += [ "../:pdfium_core_config" ]
   deps = [
     "../:pdfium_public_headers",
@@ -87,28 +47,17 @@ jumbo_source_set("fpdfsdk") {
     "../core/fxcrt",
     "../core/fxge",
     "../fxjs",
-    "formfiller",
-    "pwl",
-  ]
-  allow_circular_includes_from = [
-    "../fxjs",
-    "formfiller",
+    "pdf",
   ]
   visibility = [ "../*" ]
 
   if (pdf_enable_xfa) {
-    sources += [
-      "cpdfsdk_xfawidget.cpp",
-      "cpdfsdk_xfawidget.h",
-    ]
-
     deps += [
       "../fxbarcode",
       "../xfa/fxfa",
       "../xfa/fxfa/parser",
-      "fpdfxfa",
+      "xfa",
     ]
-    allow_circular_includes_from += [ "fpdfxfa" ]
   }
 }
 
@@ -126,13 +75,13 @@ pdfium_unittest_source_set("unittests") {
     "../core/fpdfapi/parser",
     "../core/fpdfapi/render",
     "../core/fpdfdoc",
+    "pdf",
   ]
   pdfium_root_dir = "../"
 }
 
 pdfium_embeddertest_source_set("embeddertests") {
   sources = [
-    "cpdfsdk_annotiterator_embeddertest.cpp",
     "fpdf_annot_embeddertest.cpp",
     "fpdf_attachment_embeddertest.cpp",
     "fpdf_dataavail_embeddertest.cpp",
@@ -163,6 +112,7 @@ pdfium_embeddertest_source_set("embeddertests") {
     "../core/fpdfapi/page",
     "../core/fpdfapi/parser",
     "../core/fxge",
+    "pdf",
   ]
   pdfium_root_dir = "../"
 }

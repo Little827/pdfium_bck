@@ -9,7 +9,7 @@
 
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_string.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdf_edit.h"

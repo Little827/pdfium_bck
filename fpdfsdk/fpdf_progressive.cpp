@@ -13,8 +13,8 @@
 #include "core/fpdfapi/render/cpdf_progressiverenderer.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_renderdevice.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
-#include "fpdfsdk/ipdfsdk_pauseadapter.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/ipdfsdk_pauseadapter.h"
 #include "public/fpdfview.h"
 #include "third_party/base/ptr_util.h"
 

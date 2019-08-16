@@ -8,7 +8,7 @@
 
 #include <algorithm>
 
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/pdf/cpdfsdk_formfillenvironment.h"
 #include "fxjs/cfx_globaldata.h"
 #include "fxjs/cjs_annot.h"
 #include "fxjs/cjs_app.h"
