@@ -15,7 +15,6 @@
 
 class CFX_Matrix;
 class CFX_RenderDevice;
-class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_BAAnnotHandler;
 class CPDFSDK_WidgetHandler;
 class CPDFSDK_PageView;
@@ -28,7 +27,11 @@ class CXFA_FFWidget;
 
 class CPDFSDK_AnnotHandlerMgr {
  public:
-  explicit CPDFSDK_AnnotHandlerMgr(CPDFSDK_FormFillEnvironment* pFormFillEnv);
+  CPDFSDK_AnnotHandlerMgr(
+      std::unique_ptr<CPDFSDK_BAAnnotHandler> pBAAnnotHandler,
+      std::unique_ptr<CPDFSDK_WidgetHandler> pWidgetHandler,
+      std::unique_ptr<IPDFSDK_AnnotHandler> pXFAWidgetHandler);
+
   ~CPDFSDK_AnnotHandlerMgr();
 
   CPDFSDK_Annot* NewAnnot(CPDF_Annot* pAnnot, CPDFSDK_PageView* pPageView);
@@ -118,9 +121,7 @@ class CPDFSDK_AnnotHandlerMgr {
 
   std::unique_ptr<CPDFSDK_BAAnnotHandler> const m_pBAAnnotHandler;
   std::unique_ptr<CPDFSDK_WidgetHandler> const m_pWidgetHandler;
-#ifdef PDF_ENABLE_XFA
-  std::unique_ptr<CPDFXFA_WidgetHandler> const m_pXFAWidgetHandler;
-#endif  // PDF_ENABLE_XFA
+  std::unique_ptr<IPDFSDK_AnnotHandler> const m_pXFAWidgetHandler;
 };
 
 #endif  // FPDFSDK_CPDFSDK_ANNOTHANDLERMGR_H_
