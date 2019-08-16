@@ -1676,7 +1676,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
         if (0 == cp.m_AdjustMatrix[1] && 0 == cp.m_AdjustMatrix[2] &&
             1 == cp.m_AdjustMatrix[3]) {
           font.setScaleX(cp.m_AdjustMatrix[0]);
-          auto blob = SkTextBlob::MakeFromText(&glyphs[index], 1, font,
+          auto blob = SkTextBlob::MakeFromText(&glyphs[index], 2, font,
                                                SkTextEncoding::kGlyphID);
           m_pCanvas->drawTextBlob(blob, positions[index].fX,
                                   positions[index].fY, paint);
@@ -1691,12 +1691,12 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
           adjust.setScaleY(cp.m_AdjustMatrix[3]);
           adjust.preTranslate(positions[index].fX, positions[index].fY);
           m_pCanvas->concat(adjust);
-          auto blob = SkTextBlob::MakeFromText(&glyphs[index], 1, font,
+          auto blob = SkTextBlob::MakeFromText(&glyphs[index], 2, font,
                                                SkTextEncoding::kGlyphID);
           m_pCanvas->drawTextBlob(blob, 0, 0, paint);
         }
       } else {
-        auto blob = SkTextBlob::MakeFromText(&glyphs[index], 1, font,
+        auto blob = SkTextBlob::MakeFromText(&glyphs[index], 2, font,
                                              SkTextEncoding::kGlyphID);
         m_pCanvas->drawTextBlob(blob, positions[index].fX, positions[index].fY,
                                 paint);
