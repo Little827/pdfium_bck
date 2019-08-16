@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1565922812 -0700\nnonce AC6AUtMczCu0XgncEq8TilysKfnQ9/Snr4oo4NHqgjojkoDy5x39qVp3KMz5fjeI+zSGJpArlwRu\n\n0000000000000000000000000000000000000000 33a812bcef5bc0ae57c611fba19c0db1fe183755 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl1WFfwACgkQqzYtYVpm\n/Xt1CggA08/W2pPFovSqRzlN5RtUpb7CEaVVZsG5Z3lJN+CpQO6ZgeeGJF6sjvf0\nl79SAdrGzhE334NwJYgZyLTESZ00JUazmC1K6TDCmtY6ceVQ8oyKX+goAFAeAGuW\nJhwQ/SZw54bCW4ytz+5xaRxibZIowjZ4zNf4P5owXliJL7ctgLUEEGgF6gyAEZxo\noRWK3WGZ8Kbny03cmeD/2BP3floCdLxjK35ZVqj2ezQkZXJpJG/pjt7KXIR0U+xY\nqeSUN0bTXqsqy/GYZwuyXKuqbIi+KtH9HirDuJuLqB6RBUzHrT9gXTG6vZfVOP3/\nGHy1bJ7Nw0GUzxKwGeBTm7c6eZpKqg\u003d\u003d\n\u003dfi0X\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "76cec540_975fc3f3",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-16T18:45:52Z",
+      "side": 1,
+      "message": "yeah, ok, how do you feel about keeping \"struct\" for PoD classes?",
+      "range": {
+        "startLine": 332,
+        "startChar": 6,
+        "endLine": 332,
+        "endChar": 7
+      },
+      "revId": "33a812bcef5bc0ae57c611fba19c0db1fe183755",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
