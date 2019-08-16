@@ -17,6 +17,24 @@
       "revId": "2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32ee36c3_5601c31a",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-16T17:18:38Z",
+      "side": 1,
+      "message": "Maybe, but that falls out of the scope of this refactoring CL.\n\nThe contract between CPDF_SimpleParser and its callers is that CPDF_SimpleParser::GetWord() will eventually finish. If CPDF_SimpleParser can\u0027t hold its end of the bargain, that\u0027s not the caller\u0027s problem.",
+      "parentUuid": "93d44b50_26fb3558",
+      "revId": "2690df834e3a6bf2b264e6cbbf101c1b88ab2bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
