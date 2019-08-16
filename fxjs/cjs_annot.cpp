@@ -7,7 +7,7 @@
 #include "fxjs/cjs_annot.h"
 
 #include "constants/annotation_flags.h"
-#include "fpdfsdk/cpdfsdk_baannot.h"
+#include "fpdfsdk/pdf/cpdfsdk_baannot.h"
 #include "fxjs/cjs_event_context.h"
 #include "fxjs/cjs_object.h"
 #include "fxjs/js_define.h"

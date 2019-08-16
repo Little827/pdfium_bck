@@ -243,6 +243,7 @@ if (pdf_enable_v8) {
     deps = [
       ":fxjs",
       "../fpdfsdk",
+      "../fpdfsdk/pdf",
     ]
     pdfium_root_dir = "../"
 

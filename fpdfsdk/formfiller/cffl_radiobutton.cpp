@@ -9,9 +9,9 @@
 #include <utility>
 
 #include "core/fpdfdoc/cpdf_formcontrol.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
+#include "fpdfsdk/pdf/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/pdf/cpdfsdk_widget.h"
 #include "fpdfsdk/pwl/cpwl_special_button.h"
 #include "public/fpdf_fwlevent.h"
 

@@ -17,8 +17,8 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
-#include "fpdfsdk/cpdfsdk_customaccess.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_customaccess.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "third_party/base/ptr_util.h"
 
 namespace {

@@ -13,7 +13,7 @@
 
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "fpdfsdk/cpdfsdk_annot.h"
+#include "fpdfsdk/pdf/cpdfsdk_annot.h"
 #include "fpdfsdk/pwl/cpwl_edit.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"

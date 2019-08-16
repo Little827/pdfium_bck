@@ -10,7 +10,7 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfdoc/cpdf_action.h"
 #include "core/fpdfdoc/cpdf_nametree.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "third_party/base/ptr_util.h"
 
 struct CPDF_JavaScript {

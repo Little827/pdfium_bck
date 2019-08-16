@@ -9,7 +9,7 @@
 #include "core/fxge/cfx_renderdevice.h"
 #include "core/fxge/skia/fx_skia_device.h"
 #include "core/fxge/text_char_pos.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdfview.h"
 #include "testing/gtest/include/gtest/gtest.h"

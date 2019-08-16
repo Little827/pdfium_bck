@@ -10,8 +10,8 @@
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "fpdfsdk/cpdfsdk_annot.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/pdf/cpdfsdk_annot.h"
+#include "fpdfsdk/pdf/cpdfsdk_formfillenvironment.h"
 
 class CPDF_Bookmark;
 class CPDF_FormField;

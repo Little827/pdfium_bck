@@ -7,7 +7,7 @@
 #include "public/fpdf_searchex.h"
 
 #include "core/fpdftext/cpdf_textpage.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFText_GetCharIndexFromTextIndex(FPDF_TEXTPAGE text_page, int nTextIndex) {

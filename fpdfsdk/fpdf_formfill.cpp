@@ -18,17 +18,17 @@
 #include "core/fpdfdoc/cpdf_formfield.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
-#include "fpdfsdk/cpdfsdk_actionhandler.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
-#include "fpdfsdk/cpdfsdk_interactiveform.h"
-#include "fpdfsdk/cpdfsdk_pageview.h"
+#include "fpdfsdk/pdf/cpdfsdk_actionhandler.h"
+#include "fpdfsdk/pdf/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_interactiveform.h"
+#include "fpdfsdk/pdf/cpdfsdk_pageview.h"
 #include "public/fpdfview.h"
 #include "third_party/base/ptr_util.h"
 
 #ifdef PDF_ENABLE_XFA
-#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
+#include "fpdfsdk/xfa/cpdfxfa_context.h"
+#include "fpdfsdk/xfa/cpdfxfa_page.h"
 
 static_assert(static_cast<int>(AlertButton::kDefault) ==
                   JSPLATFORM_ALERT_BUTTON_DEFAULT,

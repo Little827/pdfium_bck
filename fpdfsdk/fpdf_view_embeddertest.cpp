@@ -10,8 +10,8 @@
 
 #include "build/build_config.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/fpdf_view_c_api_test.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"

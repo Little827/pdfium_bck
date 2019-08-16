@@ -18,7 +18,7 @@
 #include "core/fpdftext/cpdf_linkextract.h"
 #include "core/fpdftext/cpdf_textpage.h"
 #include "core/fpdftext/cpdf_textpagefind.h"
-#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/pdf/cpdfsdk_helpers.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
