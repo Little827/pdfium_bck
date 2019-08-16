@@ -23,6 +23,30 @@
       "revId": "33a812bcef5bc0ae57c611fba19c0db1fe183755",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2461f7_ea2e857a",
+        "filename": "xfa/fxfa/layout/cxfa_viewlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-16T19:49:48Z",
+      "side": 1,
+      "message": "If the usage for the POD class does not require encapsulation, and the class satisfies the C++ style guide\u0027s guidance on class vs struct, then making is a struct should be fine.",
+      "parentUuid": "76cec540_975fc3f3",
+      "range": {
+        "startLine": 332,
+        "startChar": 6,
+        "endLine": 332,
+        "endChar": 7
+      },
+      "revId": "33a812bcef5bc0ae57c611fba19c0db1fe183755",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
