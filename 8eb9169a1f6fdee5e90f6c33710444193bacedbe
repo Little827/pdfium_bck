@@ -22,6 +22,30 @@
       "revId": "8eb9169a1f6fdee5e90f6c33710444193bacedbe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c652f9_76643aef",
+        "filename": "fxjs/xfa/cjx_hostpseudomodel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 7326
+      },
+      "writtenOn": "2019-08-16T03:12:19Z",
+      "side": 1,
+      "message": "I tested it out and the widget was still remain but there is an use-after-free of CXFA_FFPageView object (|CXFA_FFWidget::m_pPageView|) when RetainPtr |pLayoutItem| is destructed at the end of openList() function.",
+      "parentUuid": "81c32d63_f2b60954",
+      "range": {
+        "startLine": 305,
+        "startChar": 2,
+        "endLine": 305,
+        "endChar": 30
+      },
+      "revId": "8eb9169a1f6fdee5e90f6c33710444193bacedbe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
