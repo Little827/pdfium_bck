@@ -23,6 +23,30 @@
       "revId": "fdb9288628fc0bf088aeb77ad36b4f53ad85aaa9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff78bd91_e37d044c",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-17T00:27:32Z",
+      "side": 1,
+      "message": "This is for reading out of |buf| in the latter half of line 63, which happens before calling Mid().",
+      "parentUuid": "25d4d0e3_71887c6e",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "fdb9288628fc0bf088aeb77ad36b4f53ad85aaa9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
