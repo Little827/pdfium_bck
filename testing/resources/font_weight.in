@@ -1,0 +1,84 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /MediaBox [ 0 0 200 200 ]
+  /Count 1
+  /Kids [ 3 0 R ]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <<
+      /F1 4 0 R
+      /F2 6 0 R
+    >>
+  >>
+  /Contents 8 0 R
+>>
+endobj
+{{object 4 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica-Bold
+  /FontDescriptor 5 0 R
+>>
+endobj
+{{object 5 0}} <<
+  /Type /FontDescriptor
+  /FontName /Helvetica-Bold
+  /FontWeight 600
+  /StemV 10
+  /ItalicAngle 0
+  /Ascent 776
+  /Flags 0
+  /FontBBox [-250 -236 2827 1000]
+  /CapHeight 763
+  /Descent -223
+>>
+endobj
+{{object 6 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+  /FontDescriptor 7 0 R
+>>
+endobj
+{{object 7 0}} <<
+  /Type /FontDescriptor
+  /FontName /Helvetica
+  /StemV 80
+  /ItalicAngle 0
+  /Ascent 776
+  /Flags 0
+  /FontBBox [-250 -236 2827 1000]
+  /CapHeight 763
+  /Descent -223
+>>
+endobj
+{{object 8 0}} <<
+  {{streamlen}}
+>>
+stream
+BT
+20 50 Td
+% This font specifies both FontWeight & StemV; FontWeight should be prioritized.
+/F1 12 Tf
+(1) Tj
+0 -20 Td
+% This font only specifies StemV; FontWeight should be calculated.
+/F2 12 Tf
+(2) Tj
+ET
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
