@@ -1251,3 +1251,87 @@ TEST_F(FPDFTextEmbedderTest, GetCharAngle) {
   FPDFText_ClosePage(text_page);
   UnloadPage(page);
 }
+
+TEST_F(FPDFTextEmbedderTest, GetFillColor) {
+  ASSERT_TRUE(OpenDocument("text_color.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  ASSERT_EQ(2, FPDFText_CountChars(text_page));
+
+  unsigned int color0;
+  ASSERT_EQ(0, FPDFText_GetFillColor(nullptr, 0, &color0, nullptr));
+  ASSERT_EQ(0, FPDFText_GetFillColor(text_page, -1, &color0, nullptr));
+  ASSERT_EQ(0, FPDFText_GetFillColor(text_page, 314, &color0, nullptr));
+  ASSERT_EQ(0, FPDFText_GetFillColor(text_page, 0, nullptr, nullptr));
+
+  const unsigned int RED_VALUE = 255;
+
+  // Fill color is red and rendering mode is 0 (MODE_FILL).
+  unsigned int color1;
+  FPDF_BOOL isRendered1;
+  ASSERT_EQ(1, FPDFText_GetFillColor(text_page, 0, &color1, &isRendered1));
+  ASSERT_EQ(RED_VALUE, color1);
+  ASSERT_EQ(1, isRendered1);
+
+  // Fill color is red and rendering mode is 1 (MODE_STROKE).
+  unsigned int color2;
+  FPDF_BOOL isRendered2;
+  ASSERT_EQ(1, FPDFText_GetFillColor(text_page, 1, &color2, &isRendered2));
+  ASSERT_EQ(RED_VALUE, color2);
+  ASSERT_EQ(0, isRendered2);
+
+  // Fill color is red and rendering mode is 1 (MODE_STROKE), but not
+  // |isRendered| is passed.
+  unsigned int color3;
+  ASSERT_EQ(1, FPDFText_GetFillColor(text_page, 1, &color3, nullptr));
+  ASSERT_EQ(RED_VALUE, color3);
+
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}
+
+TEST_F(FPDFTextEmbedderTest, GetStrokeColor) {
+  ASSERT_TRUE(OpenDocument("text_color.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  ASSERT_EQ(2, FPDFText_CountChars(text_page));
+
+  unsigned int color0;
+  ASSERT_EQ(0, FPDFText_GetStrokeColor(nullptr, 0, &color0, nullptr));
+  ASSERT_EQ(0, FPDFText_GetStrokeColor(text_page, -1, &color0, nullptr));
+  ASSERT_EQ(0, FPDFText_GetStrokeColor(text_page, 314, &color0, nullptr));
+  ASSERT_EQ(0, FPDFText_GetStrokeColor(text_page, 0, nullptr, nullptr));
+
+  const unsigned int GREEN_VALUE = 65280;
+
+  // Stroke color is green and rendering mode is 0 (MODE_FILL).
+  unsigned int color1;
+  FPDF_BOOL isRendered1;
+  ASSERT_EQ(1, FPDFText_GetStrokeColor(text_page, 0, &color1, &isRendered1));
+  ASSERT_EQ(GREEN_VALUE, color1);
+  ASSERT_EQ(0, isRendered1);
+
+  // Stroke color is green and rendering mode is 1 (MODE_STROKE).
+  unsigned int color2;
+  FPDF_BOOL isRendered2;
+  ASSERT_EQ(1, FPDFText_GetStrokeColor(text_page, 1, &color2, &isRendered2));
+  ASSERT_EQ(GREEN_VALUE, color2);
+  ASSERT_EQ(1, isRendered2);
+
+  // Stroke color is green and rendering mode is 1 (MODE_STROKE), but no
+  // |isRendered| is passed.
+  unsigned int color3;
+  ASSERT_EQ(1, FPDFText_GetStrokeColor(text_page, 1, &color3, nullptr));
+  ASSERT_EQ(GREEN_VALUE, color3);
+
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}
