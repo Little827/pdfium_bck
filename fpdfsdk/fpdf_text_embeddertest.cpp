@@ -771,7 +771,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   for (size_t i = 0; i < num_chars1; i++) {
     int flags = -1;
     unsigned long length =
-        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags);
+        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags, nullptr);
     static constexpr unsigned long expected_length = sizeof(kExpectedFontName1);
     ASSERT_EQ(expected_length, length);
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
@@ -780,7 +780,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
     flags = -1;
     EXPECT_EQ(expected_length,
               FPDFText_GetFontInfo(textpage, i, font_name.data(),
-                                   font_name.size(), &flags));
+                                   font_name.size(), &flags, nullptr));
     EXPECT_STREQ(kExpectedFontName1, font_name.data());
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
   }
@@ -790,23 +790,23 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   std::fill(font_name.begin(), font_name.end(), 'a');
   EXPECT_EQ(sizeof(kExpectedFontName1),
             FPDFText_GetFontInfo(textpage, 0, font_name.data(),
-                                 font_name.size(), nullptr));
+                                 font_name.size(), nullptr, nullptr));
   for (char a : font_name)
     EXPECT_EQ('a', a);
 
   // The text is "Hello, world!\r\nGoodbye, world!", so the next two characters
   // do not have any font information.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, num_chars1, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, num_chars1 + 1, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
 
   size_t num_chars2 = strlen("Goodbye, world!");
   const char kExpectedFontName2[] = "Helvetica";
   for (size_t i = num_chars1 + 2; i < num_chars1 + num_chars2 + 2; i++) {
     int flags = -1;
     unsigned long length =
-        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags);
+        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags, nullptr);
     static constexpr unsigned long expected_length = sizeof(kExpectedFontName2);
     ASSERT_EQ(expected_length, length);
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
@@ -815,7 +815,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
     flags = -1;
     EXPECT_EQ(expected_length,
               FPDFText_GetFontInfo(textpage, i, font_name.data(),
-                                   font_name.size(), &flags));
+                                   font_name.size(), &flags, nullptr));
     EXPECT_STREQ(kExpectedFontName2, font_name.data());
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
   }
@@ -824,16 +824,16 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   // crash.
   // No textpage.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(nullptr, 0, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
   // No buffer.
   EXPECT_EQ(sizeof(kExpectedFontName1),
-            FPDFText_GetFontInfo(textpage, 0, nullptr, 0, nullptr));
+            FPDFText_GetFontInfo(textpage, 0, nullptr, 0, nullptr, nullptr));
   // Negative index.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, -1, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
   // Out of bounds index.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, 1000, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
 
   FPDFText_ClosePage(textpage);
   UnloadPage(page);
