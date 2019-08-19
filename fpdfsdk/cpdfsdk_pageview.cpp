@@ -25,6 +25,7 @@
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
+#include "fpdfsdk/fpdfxfa/cpdfxfa_widget.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
 #include "xfa/fxfa/cxfa_ffpageview.h"
 #endif  // PDF_ENABLE_XFA
@@ -193,8 +194,9 @@ CPDFSDK_Annot* CPDFSDK_PageView::GetAnnotByXFAWidget(CXFA_FFWidget* hWidget) {
     return nullptr;
 
   for (CPDFSDK_Annot* pAnnot : m_SDKAnnotArray) {
-    if (pAnnot->GetXFAWidget() == hWidget)
-      return pAnnot;
+    CPDFXFA_Widget* pXFAWidget = ToXFAWidget(pAnnot);
+    if (pXFAWidget && pXFAWidget->GetXFAFFWidget() == hWidget)
+      return pXFAWidget;
   }
   return nullptr;
 }
