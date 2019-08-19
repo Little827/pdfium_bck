@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef FPDFSDK_FPDFXFA_CPDFXFA_WIDGETHANDLER_H_
-#define FPDFSDK_FPDFXFA_CPDFXFA_WIDGETHANDLER_H_
+#ifndef FPDFSDK_FPDFXFA_CPDFXFA_ANNOTHANDLER_H_
+#define FPDFSDK_FPDFXFA_CPDFXFA_ANNOTHANDLER_H_
 
 #include <memory>
 
@@ -22,10 +22,10 @@ class CPDFSDK_PageView;
 class CXFA_FFWidget;
 class CXFA_FFWidgetHandler;
 
-class CPDFXFA_WidgetHandler final : public IPDFSDK_AnnotHandler {
+class CPDFXFA_AnnotHandler final : public IPDFSDK_AnnotHandler {
  public:
-  CPDFXFA_WidgetHandler();
-  ~CPDFXFA_WidgetHandler() override;
+  CPDFXFA_AnnotHandler();
+  ~CPDFXFA_AnnotHandler() override;
 
   // IPDFSDK_AnnotHandler:
   void SetFormFillEnvironment(
@@ -105,10 +105,10 @@ class CPDFXFA_WidgetHandler final : public IPDFSDK_AnnotHandler {
                          ObservedPtr<CPDFSDK_Annot>* pNewAnnot);
 
  private:
-  CXFA_FFWidgetHandler* GetXFAWidgetHandler(CPDFSDK_Annot* pAnnot);
+  CXFA_FFWidgetHandler* GetXFAAnnotHandler(CPDFSDK_Annot* pAnnot);
   uint32_t GetFWLFlags(uint32_t dwFlag);
 
   UnownedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
 };
 
-#endif  // FPDFSDK_FPDFXFA_CPDFXFA_WIDGETHANDLER_H_
+#endif  // FPDFSDK_FPDFXFA_CPDFXFA_ANNOTHANDLER_H_
