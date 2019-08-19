@@ -12,10 +12,10 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
+#include "xfa/fxfa/cxfa_ffwidget.h"
 
 class CPDFSDK_InteractiveForm;
 class CPDFSDK_PageView;
-class CXFA_FFWidget;
 
 class CPDFXFA_Annot final : public CPDFSDK_Annot {
  public:
@@ -25,11 +25,11 @@ class CPDFXFA_Annot final : public CPDFSDK_Annot {
   ~CPDFXFA_Annot() override;
 
   // CPDFSDK_Annot:
-  bool IsXFAField() const override;
-  CXFA_FFWidget* GetXFAWidget() const override;
+  CPDFXFA_Annot* AsXFAAnnot() override;
   CPDF_Annot::Subtype GetAnnotSubtype() const override;
   CFX_FloatRect GetRect() const override;
 
+  CXFA_FFWidget* GetXFAWidget() const { return m_pXFAWidget.Get(); }
   CPDFSDK_InteractiveForm* GetInteractiveForm() const {
     return m_pInteractiveForm.Get();
   }
@@ -38,11 +38,5 @@ class CPDFXFA_Annot final : public CPDFSDK_Annot {
   UnownedPtr<CPDFSDK_InteractiveForm> const m_pInteractiveForm;
   ObservedPtr<CXFA_FFWidget> const m_pXFAWidget;
 };
-
-inline CPDFXFA_Annot* ToXFAWidget(CPDFSDK_Annot* pAnnot) {
-  return pAnnot && pAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::XFAWIDGET
-             ? static_cast<CPDFXFA_Annot*>(pAnnot)
-             : nullptr;
-}
 
 #endif  // FPDFSDK_FPDFXFA_CPDFXFA_ANNOT_H_

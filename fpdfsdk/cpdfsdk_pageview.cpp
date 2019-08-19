@@ -24,6 +24,7 @@
 #include "third_party/base/stl_util.h"
 
 #ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_annot.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
 #include "xfa/fxfa/cxfa_ffpageview.h"
@@ -193,8 +194,9 @@ CPDFSDK_Annot* CPDFSDK_PageView::GetAnnotByXFAWidget(CXFA_FFWidget* hWidget) {
     return nullptr;
 
   for (CPDFSDK_Annot* pAnnot : m_SDKAnnotArray) {
-    if (pAnnot->GetXFAWidget() == hWidget)
-      return pAnnot;
+    CPDFXFA_Annot* pXFAAnnot = ToXFAAnnot(pAnnot);
+    if (pXFAAnnot && pXFAAnnot->GetXFAWidget() == hWidget)
+      return pXFAAnnot;
   }
   return nullptr;
 }
