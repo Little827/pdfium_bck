@@ -259,6 +259,26 @@ float CPDF_TextObject::GetFontSize() const {
   return m_TextState.GetFontSize();
 }
 
+FX_ARGB CPDF_TextObject::GetFillColorRGB() const {
+  int r, g, b = 0;
+  m_ColorState.GetFillColor()->GetRGB(&r, &g, &b);
+  FX_ARGB rgb = r;
+  rgb = (rgb << 8) + g;
+  return (rgb << 8) + b;
+}
+
+FX_ARGB CPDF_TextObject::GetStrokeColorRGB() const {
+  int r, g, b = 0;
+  m_ColorState.GetStrokeColor()->GetRGB(&r, &g, &b);
+  FX_ARGB rgb = r;
+  rgb = (rgb << 8) + g;
+  return (rgb << 8) + b;
+}
+
+TextRenderingMode CPDF_TextObject::GetTextRenderingMode() const {
+  return m_TextState.GetTextMode();
+}
+
 CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   float curpos = 0;
   float min_x = 10000 * 1.0f;
