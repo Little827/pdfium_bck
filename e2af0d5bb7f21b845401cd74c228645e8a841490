@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9fe7c16_76172403",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-19T18:42:04Z",
+      "side": 1,
+      "message": "This part looks similar to line 144-148, so casting is not needed?",
+      "revId": "e2af0d5bb7f21b845401cd74c228645e8a841490",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
