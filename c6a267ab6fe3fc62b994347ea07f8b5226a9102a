@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e1b14da_77d3187b",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-19T16:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94deed09_1fe47c84",
+      "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7e776db_71c88b0e",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-16T23:57:03Z",
       "side": 1,
       "message": "Or use #ifdef ?",
+      "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a157f9_e994f24e",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-19T16:41:40Z",
+      "side": 1,
+      "message": "Actually, my desire is to move to a world where both are present.  Much like we did with javascript (but never tested), we need to have the #ifdef to keep code size down for, say, android, but runtime tests to be able to finch this on and off (someday).\n\nTo that end, unless there\u0027s a significatn codesize bloat, I\u0027d prefer the runtime test, because it minimizes the deltas and hence the risk of a build with XFA included but shipped with it finched off configuration.",
+      "parentUuid": "e7e776db_71c88b0e",
       "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e01b543_75447de7",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-19T16:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4f5a7c1_cac8f59b",
+      "revId": "c6a267ab6fe3fc62b994347ea07f8b5226a9102a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
