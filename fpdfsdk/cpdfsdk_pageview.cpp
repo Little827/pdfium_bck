@@ -24,6 +24,7 @@
 #include "third_party/base/stl_util.h"
 
 #ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "xfa/fxfa/cxfa_ffdocview.h"
 #include "xfa/fxfa/cxfa_ffpageview.h"
@@ -68,11 +69,12 @@ void CPDFSDK_PageView::PageView_OnDraw(CFX_RenderDevice* pDevice,
   m_curMatrix = mtUser2Device;
 
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Page* pPage = GetPDFXFAPage();
+  auto* pPage = static_cast<CPDFXFA_Page*>(GetXFAPage());
   if (!pPage)
     return;
 
-  auto* pContext = pPage->GetDocumentExtension();
+  auto* pContext =
+      static_cast<CPDFXFA_Context*>(pPage->GetDocument()->GetExtension());
   if (pContext->ContainsExtensionFullForm()) {
     pPage->DrawFocusAnnot(pDevice, GetFocusAnnot(), mtUser2Device, pClip);
     return;
@@ -141,11 +143,11 @@ bool CPDFSDK_PageView::DeleteAnnot(CPDFSDK_Annot* pAnnot) {
   if (!pAnnot)
     return false;
 
-  CPDFXFA_Page* pPage = pAnnot->GetPDFXFAPage();
+  IPDF_Page* pPage = pAnnot->GetXFAPage();
   if (!pPage)
     return false;
 
-  CPDF_Document::Extension* pContext = pPage->GetDocumentExtension();
+  CPDF_Document::Extension* pContext = pPage->GetDocument()->GetExtension();
   if (!pContext->ContainsExtensionForm())
     return false;
 
@@ -196,6 +198,10 @@ CPDFSDK_Annot* CPDFSDK_PageView::GetAnnotByXFAWidget(CXFA_FFWidget* hWidget) {
       return pAnnot;
   }
   return nullptr;
+}
+
+IPDF_Page* CPDFSDK_PageView::GetXFAPage() {
+  return ToXFAPage(m_page);
 }
 #endif  // PDF_ENABLE_XFA
 
@@ -529,7 +535,7 @@ void CPDFSDK_PageView::UpdateView(CPDFSDK_Annot* pAnnot) {
 
 int CPDFSDK_PageView::GetPageIndex() const {
 #ifdef PDF_ENABLE_XFA
-  auto* pContext = m_page->AsXFAPage()->GetDocumentExtension();
+  CPDF_Document::Extension* pContext = m_page->GetDocument()->GetExtension();
   if (pContext->ContainsExtensionFullForm()) {
     CXFA_FFPageView* pPageView = m_page->AsXFAPage()->GetXFAPageView();
     return pPageView ? pPageView->GetLayoutItem()->GetPageIndex() : -1;
