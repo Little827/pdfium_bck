@@ -103,9 +103,13 @@ bool CXFA_FFComboBox::OnRButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
 }
 
 bool CXFA_FFComboBox::OnKillFocus(CXFA_FFWidget* pNewWidget) {
+  ObservedPtr<CXFA_FFWidget> pNewWatched(pNewWidget);
+
   if (!ProcessCommittedData())
     UpdateFWLData();
 
+  if (!pNewWatched)
+    return false;
   return CXFA_FFField::OnKillFocus(pNewWidget);
 }
 

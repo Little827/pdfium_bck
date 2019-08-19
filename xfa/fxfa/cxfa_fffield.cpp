@@ -513,12 +513,17 @@ bool CXFA_FFField::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 }
 
 bool CXFA_FFField::OnKillFocus(CXFA_FFWidget* pNewWidget) {
+  ObservedPtr<CXFA_FFWidget> pNewWatched(pNewWidget);
+
   if (m_pNormalWidget) {
     CFWL_MessageKillFocus ms(nullptr, m_pNormalWidget.get());
     TranslateFWLMessage(&ms);
     GetLayoutItem()->ClearStatusBits(XFA_WidgetStatus_Focused);
     InvalidateRect();
   }
+
+  if (!pNewWatched)
+    return false;
   return CXFA_FFWidget::OnKillFocus(pNewWidget);
 }
 

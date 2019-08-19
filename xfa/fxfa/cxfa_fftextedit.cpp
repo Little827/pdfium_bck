@@ -173,6 +173,8 @@ bool CXFA_FFTextEdit::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 }
 
 bool CXFA_FFTextEdit::OnKillFocus(CXFA_FFWidget* pNewWidget) {
+  ObservedPtr<CXFA_FFWidget> pNewWatched(pNewWidget);
+
   {
     // Message can't outlive the OnKillFocus call.
     CFWL_MessageKillFocus ms(nullptr, m_pNormalWidget.get());
@@ -184,6 +186,8 @@ bool CXFA_FFTextEdit::OnKillFocus(CXFA_FFWidget* pNewWidget) {
   UpdateFWLData();
   InvalidateRect();
 
+  if (!pNewWatched)
+    return false;
   if (!CXFA_FFWidget::OnKillFocus(pNewWidget))
     return false;
 
