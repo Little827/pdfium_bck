@@ -18,12 +18,8 @@ CPDFXFA_Annot::CPDFXFA_Annot(CXFA_FFWidget* pAnnot,
 
 CPDFXFA_Annot::~CPDFXFA_Annot() = default;
 
-bool CPDFXFA_Annot::IsXFAField() const {
-  return true;
-}
-
-CXFA_FFWidget* CPDFXFA_Annot::GetXFAWidget() const {
-  return m_pXFAWidget.Get();
+CPDFXFA_Annot* CPDFXFA_Annot::AsXFAAnnot() {
+  return this;
 }
 
 CPDF_Annot::Subtype CPDFXFA_Annot::GetAnnotSubtype() const {
