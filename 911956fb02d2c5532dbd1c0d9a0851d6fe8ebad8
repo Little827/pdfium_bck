@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92c47223_8e2d4d66",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-19T22:15:48Z",
+      "side": 1,
+      "message": "I think this is always true. There are only 2 places that appends to |m_SDKAnnotArray| and they only append annots from CPDFSDK_AnnotHandlerMgr::NewXFAAnnot().",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 18
+      },
+      "revId": "911956fb02d2c5532dbd1c0d9a0851d6fe8ebad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd820e32_db3c4b54",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-19T22:15:48Z",
+      "side": 1,
+      "message": "Is this due to line 32? Can we keep the CXFA_FFWidget forward declaration if we moved the implementation to the .cpp file?",
+      "revId": "911956fb02d2c5532dbd1c0d9a0851d6fe8ebad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
