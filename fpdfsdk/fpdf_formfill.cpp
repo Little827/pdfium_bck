@@ -30,9 +30,9 @@
 #include "third_party/base/ptr_util.h"
 
 #ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_annothandler.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.h"
 
 static_assert(static_cast<int>(AlertButton::kDefault) ==
                   JSPLATFORM_ALERT_BUTTON_DEFAULT,
@@ -310,7 +310,7 @@ FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
 
   std::unique_ptr<IPDFSDK_AnnotHandler> pXFAHandler;
 #ifdef PDF_ENABLE_XFA
-  pXFAHandler = pdfium::MakeUnique<CPDFXFA_WidgetHandler>();
+  pXFAHandler = pdfium::MakeUnique<CPDFXFA_AnnotHandler>();
 #endif  // PDF_ENABLE_XFA
 
   auto pFormFillEnv = pdfium::MakeUnique<CPDFSDK_FormFillEnvironment>(

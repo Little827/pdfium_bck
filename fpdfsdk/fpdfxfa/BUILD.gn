@@ -10,16 +10,16 @@ assert(pdf_enable_xfa)
 
 jumbo_source_set("fpdfxfa") {
   sources = [
+    "cpdfxfa_annot.cpp",
+    "cpdfxfa_annot.h",
+    "cpdfxfa_annothandler.cpp",
+    "cpdfxfa_annothandler.h",
     "cpdfxfa_context.cpp",
     "cpdfxfa_context.h",
     "cpdfxfa_docenvironment.cpp",
     "cpdfxfa_docenvironment.h",
     "cpdfxfa_page.cpp",
     "cpdfxfa_page.h",
-    "cpdfxfa_widget.cpp",
-    "cpdfxfa_widget.h",
-    "cpdfxfa_widgethandler.cpp",
-    "cpdfxfa_widgethandler.h",
   ]
   deps = [
     "../../:pdfium_public_headers",
