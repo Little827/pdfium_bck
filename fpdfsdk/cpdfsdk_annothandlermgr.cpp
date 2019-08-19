@@ -24,6 +24,7 @@
 #include "third_party/base/ptr_util.h"
 
 #ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_annot.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_annothandler.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #endif  // PDF_ENABLE_XFA
@@ -286,8 +287,10 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_IsIndexSelected(
 bool CPDFSDK_AnnotHandlerMgr::Annot_OnChangeFocus(
     ObservedPtr<CPDFSDK_Annot>* pSetAnnot,
     ObservedPtr<CPDFSDK_Annot>* pKillAnnot) {
-  bool bXFA = (*pSetAnnot && (*pSetAnnot)->GetXFAWidget()) ||
-              (*pKillAnnot && (*pKillAnnot)->GetXFAWidget());
+  CPDFXFA_Annot* pSetXFAAnnot = ToXFAAnnot(pSetAnnot->Get());
+  CPDFXFA_Annot* pKillXFAAnnot = ToXFAAnnot(pKillAnnot->Get());
+  bool bXFA = (pSetXFAAnnot && (pSetXFAAnnot)->GetXFAWidget()) ||
+              (pKillXFAAnnot && (pKillXFAAnnot)->GetXFAWidget());
 
   return !bXFA || static_cast<CPDFXFA_AnnotHandler*>(m_pXFAAnnotHandler.get())
                       ->OnXFAChangedFocus(pKillAnnot, pSetAnnot);

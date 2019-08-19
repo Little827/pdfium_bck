@@ -19,6 +19,7 @@ class CPDF_Page;
 class CPDF_RenderOptions;
 class CPDFSDK_BAAnnot;
 class CPDFSDK_PageView;
+class CPDFXFA_Annot;
 class IPDF_Page;
 
 #ifdef PDF_ENABLE_XFA
@@ -31,11 +32,7 @@ class CPDFSDK_Annot : public Observable {
   virtual ~CPDFSDK_Annot();
 
   virtual CPDFSDK_BAAnnot* AsBAAnnot();
-
-#ifdef PDF_ENABLE_XFA
-  virtual bool IsXFAField() const;
-  virtual CXFA_FFWidget* GetXFAWidget() const;
-#endif  // PDF_ENABLE_XFA
+  virtual CPDFXFA_Annot* AsXFAAnnot();
 
   virtual int GetLayoutOrder() const;
   virtual CPDF_Annot* GetPDFAnnot() const;
@@ -57,6 +54,10 @@ class CPDFSDK_Annot : public Observable {
 
 inline CPDFSDK_BAAnnot* ToBAAnnot(CPDFSDK_Annot* pAnnot) {
   return pAnnot ? pAnnot->AsBAAnnot() : nullptr;
+}
+
+inline CPDFXFA_Annot* ToXFAAnnot(CPDFSDK_Annot* pAnnot) {
+  return pAnnot ? pAnnot->AsXFAAnnot() : nullptr;
 }
 
 #endif  // FPDFSDK_CPDFSDK_ANNOT_H_
