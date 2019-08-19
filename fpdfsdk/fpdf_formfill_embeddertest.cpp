@@ -382,6 +382,10 @@ class FPDFFormFillListBoxFormEmbedderTest
               GetFormTypeAtPoint(MultiSelectFirstVisibleOption()));
     EXPECT_EQ(GetFormType(),
               GetFormTypeAtPoint(MultiSelectSecondVisibleOption()));
+    EXPECT_EQ(GetFormType(),
+              GetFormTypeAtPoint(TopIndexMultiSelectFirstVisibleOption()));
+    EXPECT_EQ(GetFormType(),
+              GetFormTypeAtPoint(TopIndexMultiSelectSecondVisibleOption()));
   }
 
   void ClickOnSingleSelectFormOption(int item_index) {
@@ -408,12 +412,28 @@ class FPDFFormFillListBoxFormEmbedderTest
     }
   }
 
+  void ClickOnTopIndexMultiSelectFormOption(int item_index) {
+    // Only two indices are visible so can only click on those
+    // without scrolling.
+    ASSERT(item_index >= 0);
+    ASSERT(item_index < 2);
+    if (item_index == 0) {
+      ClickOnFormFieldAtPoint(TopIndexMultiSelectFirstVisibleOption());
+    } else {
+      ClickOnFormFieldAtPoint(TopIndexMultiSelectSecondVisibleOption());
+    }
+  }
+
   void FocusOnSingleSelectForm() {
     FocusOnPoint(SingleSelectFirstVisibleOption());
   }
 
   void FocusOnMultiSelectForm() {
     FocusOnPoint(MultiSelectFirstVisibleOption());
+  }
+
+  void FocusOnTopIndexMultiSelectForm() {
+    FocusOnPoint(TopIndexMultiSelectFirstVisibleOption());
   }
 
   void FocusOnPoint(const CFX_PointF& point) {
@@ -440,12 +460,26 @@ class FPDFFormFillListBoxFormEmbedderTest
     return point;
   }
 
+  const CFX_PointF& TopIndexMultiSelectFirstVisibleOption() const {
+    static const CFX_PointF point(kFormBeginX,
+                                  kTopIndexMultiFormYFirstVisibleOption);
+    return point;
+  }
+
+  const CFX_PointF& TopIndexMultiSelectSecondVisibleOption() const {
+    static const CFX_PointF point(kFormBeginX,
+                                  kTopIndexMultiFormYSecondVisibleOption);
+    return point;
+  }
+
  private:
   static constexpr float kFormBeginX = 102.0;
   static constexpr float kSingleFormYFirstVisibleOption = 371.0;
   static constexpr float kSingleFormYSecondVisibleOption = 358.0;
   static constexpr float kMultiFormYFirstVisibleOption = 423.0;
   static constexpr float kMultiFormYSecondVisibleOption = 408.0;
+  static constexpr float kTopIndexMultiFormYFirstVisibleOption = 223.0;
+  static constexpr float kTopIndexMultiFormYSecondVisibleOption = 208.0;
 };
 
 TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
@@ -2126,9 +2160,12 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
     CheckIsIndexSelected(i, expected);
   }
 
-  ClickOnMultiSelectFormOption(0);
+  // Multiselect field set to 'Cherry' (index 2), which is index 1 among the
+  // visible form options because the listbox is scrolled down to have 'Banana'
+  // (index 1) at the top.
+  ClickOnMultiSelectFormOption(1);
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 0;
+    bool expected = i == 2;
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -2263,12 +2300,32 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
 
   // Check that above actions are interchangeable with click actions, should be
   // able to use a combination of both.
-  ClickOnMultiSelectFormOption(1);
+  ClickOnMultiSelectFormOption(0);
   for (int i = 0; i < 26; i++) {
     bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
   }
   CheckFocusedFieldText(L"Banana");
+}
+
+TEST_F(FPDFFormFillListBoxFormEmbedderTest,
+       CheckIfVerticalScrollIsAtFirstSelected) {
+  // Multiselect field set to 'Gamma' (index 2) and 'Epsilon' (index 4) upon
+  // opening.
+  FocusOnTopIndexMultiSelectForm();
+  for (int i = 0; i < 5; i++) {
+    bool expected = (i == 2 || i == 4);
+    printf("%d\n", i);
+    CheckIsIndexSelected(i, expected);
+  }
+
+  // The top visible option is 'Gamma' (index 2), so the first selection should
+  // not change. The second selection should be unselected.
+  ClickOnTopIndexMultiSelectFormOption(0);
+  for (int i = 0; i < 5; i++) {
+    bool expected = i == 2;
+    CheckIsIndexSelected(i, expected);
+  }
 }
 
 TEST_F(FPDFFormFillTextFormEmbedderTest, ReplaceSelection) {

@@ -154,7 +154,8 @@ class CPDF_FormField {
                     bool bChecked,
                     NotificationOption notify);
 
-  int GetTopVisibleIndex() const;
+  int GetTopVisibleIndex();
+  void SetTopVisibleIndex(int index);
   int CountSelectedOptions() const;
 
   int GetSelectedOptionIndex(int index) const;
@@ -179,6 +180,7 @@ class CPDF_FormField {
   void InitFieldFlags();
   int FindListSel(CPDF_String* str);
   WideString GetOptionText(int index, int sub_index) const;
+  int FindTopSelectedOption() const;
   void LoadDA();
   bool SetCheckValue(const WideString& value,
                      bool bDefault,
