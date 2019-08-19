@@ -68,7 +68,7 @@ void CPDFSDK_PageView::PageView_OnDraw(CFX_RenderDevice* pDevice,
   m_curMatrix = mtUser2Device;
 
 #ifdef PDF_ENABLE_XFA
-  CPDFXFA_Page* pPage = GetPDFXFAPage();
+  auto* pPage = static_cast<CPDFXFA_Page*>(GetXFAPage());
   if (!pPage)
     return;
 
@@ -141,7 +141,7 @@ bool CPDFSDK_PageView::DeleteAnnot(CPDFSDK_Annot* pAnnot) {
   if (!pAnnot)
     return false;
 
-  CPDFXFA_Page* pPage = pAnnot->GetPDFXFAPage();
+  auto* pPage = static_cast<CPDFXFA_Page*>(pAnnot->GetXFAPage());
   if (!pPage)
     return false;
 
@@ -196,6 +196,10 @@ CPDFSDK_Annot* CPDFSDK_PageView::GetAnnotByXFAWidget(CXFA_FFWidget* hWidget) {
       return pAnnot;
   }
   return nullptr;
+}
+
+IPDF_Page* CPDFSDK_PageView::GetXFAPage() {
+  return ToXFAPage(m_page);
 }
 #endif  // PDF_ENABLE_XFA
 

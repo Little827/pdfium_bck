@@ -19,7 +19,6 @@ class CPDF_Page;
 class CPDF_RenderOptions;
 class CPDFSDK_BAAnnot;
 class CPDFSDK_PageView;
-class CPDFXFA_Page;
 class IPDF_Page;
 
 #ifdef PDF_ENABLE_XFA
@@ -47,9 +46,7 @@ class CPDFSDK_Annot : public Observable {
 
   IPDF_Page* GetPage();  // Returns XFA Page if possible, else PDF page.
   CPDF_Page* GetPDFPage();
-#ifdef PDF_ENABLE_XFA
-  CPDFXFA_Page* GetPDFXFAPage();
-#endif  // PDF_ENABLE_XFA
+  IPDF_Page* GetXFAPage();
 
   CPDFSDK_PageView* GetPageView() const { return m_pPageView.Get(); }
 
