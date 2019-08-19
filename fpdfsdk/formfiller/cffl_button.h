@@ -15,12 +15,12 @@ class CFX_Matrix;
 class CPDFSDK_Annot;
 class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_PageView;
-class CPDFSDK_Widget;
+class CPDFSDK_WidgetAnnot;
 
 class CFFL_Button : public CFFL_FormFiller {
  public:
   CFFL_Button(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-              CPDFSDK_Widget* pWidget);
+              CPDFSDK_WidgetAnnot* pWidget);
   ~CFFL_Button() override;
 
   // CFFL_FormFiller

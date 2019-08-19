@@ -4,7 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 
 #include <memory>
 #include <sstream>
@@ -41,16 +41,17 @@
 #include "xfa/fxfa/parser/cxfa_node.h"
 #endif  // PDF_ENABLE_XFA
 
-CPDFSDK_Widget::CPDFSDK_Widget(CPDF_Annot* pAnnot,
-                               CPDFSDK_PageView* pPageView,
-                               CPDFSDK_InteractiveForm* pInteractiveForm)
+CPDFSDK_WidgetAnnot::CPDFSDK_WidgetAnnot(
+    CPDF_Annot* pAnnot,
+    CPDFSDK_PageView* pPageView,
+    CPDFSDK_InteractiveForm* pInteractiveForm)
     : CPDFSDK_BAAnnot(pAnnot, pPageView),
       m_pInteractiveForm(pInteractiveForm) {}
 
-CPDFSDK_Widget::~CPDFSDK_Widget() = default;
+CPDFSDK_WidgetAnnot::~CPDFSDK_WidgetAnnot() = default;
 
 #ifdef PDF_ENABLE_XFA
-CXFA_FFWidget* CPDFSDK_Widget::GetMixXFAWidget() const {
+CXFA_FFWidget* CPDFSDK_WidgetAnnot::GetMixXFAWidget() const {
   auto* pContext = m_pPageView->GetFormFillEnv()->GetDocExtension();
   if (!pContext->ContainsExtensionForegroundForm())
     return nullptr;
@@ -75,7 +76,7 @@ CXFA_FFWidget* CPDFSDK_Widget::GetMixXFAWidget() const {
   return pDocView->GetWidgetByName(sName, nullptr);
 }
 
-CXFA_FFWidget* CPDFSDK_Widget::GetGroupMixXFAWidget() const {
+CXFA_FFWidget* CPDFSDK_WidgetAnnot::GetGroupMixXFAWidget() const {
   auto* pContext = m_pPageView->GetFormFillEnv()->GetDocExtension();
   if (!pContext->ContainsExtensionForegroundForm())
     return nullptr;
@@ -89,7 +90,7 @@ CXFA_FFWidget* CPDFSDK_Widget::GetGroupMixXFAWidget() const {
   return !sName.IsEmpty() ? pDocView->GetWidgetByName(sName, nullptr) : nullptr;
 }
 
-CXFA_FFWidgetHandler* CPDFSDK_Widget::GetXFAWidgetHandler() const {
+CXFA_FFWidgetHandler* CPDFSDK_WidgetAnnot::GetXFAWidgetHandler() const {
   auto* pContext = m_pPageView->GetFormFillEnv()->GetDocExtension();
   if (!pContext->ContainsExtensionForegroundForm())
     return nullptr;
@@ -178,7 +179,7 @@ static XFA_EVENTTYPE GetXFAEventType(CPDF_AAction::AActionType eAAT,
   return eEventType;
 }
 
-bool CPDFSDK_Widget::HasXFAAAction(PDFSDK_XFAAActionType eXFAAAT) const {
+bool CPDFSDK_WidgetAnnot::HasXFAAAction(PDFSDK_XFAAActionType eXFAAAT) const {
   ObservedPtr<CXFA_FFWidget> pWidget(GetMixXFAWidget());
   if (!pWidget)
     return false;
@@ -210,9 +211,9 @@ bool CPDFSDK_Widget::HasXFAAAction(PDFSDK_XFAAActionType eXFAAAT) const {
   return pXFAWidgetHandler->HasEvent(node, eEventType);
 }
 
-bool CPDFSDK_Widget::OnXFAAAction(PDFSDK_XFAAActionType eXFAAAT,
-                                  CPDFSDK_FieldAction* data,
-                                  CPDFSDK_PageView* pPageView) {
+bool CPDFSDK_WidgetAnnot::OnXFAAAction(PDFSDK_XFAAActionType eXFAAAT,
+                                       CPDFSDK_FieldAction* data,
+                                       CPDFSDK_PageView* pPageView) {
   auto* pContext = static_cast<CPDFXFA_Context*>(
       m_pPageView->GetFormFillEnv()->GetDocExtension());
 
@@ -270,7 +271,7 @@ bool CPDFSDK_Widget::OnXFAAAction(PDFSDK_XFAAActionType eXFAAAT,
   return nRet == XFA_EventError::kSuccess;
 }
 
-void CPDFSDK_Widget::Synchronize(bool bSynchronizeElse) {
+void CPDFSDK_WidgetAnnot::Synchronize(bool bSynchronizeElse) {
   CXFA_FFWidget* hWidget = GetMixXFAWidget();
   if (!hWidget)
     return;
@@ -317,7 +318,8 @@ void CPDFSDK_Widget::Synchronize(bool bSynchronizeElse) {
 }
 #endif  // PDF_ENABLE_XFA
 
-bool CPDFSDK_Widget::IsWidgetAppearanceValid(CPDF_Annot::AppearanceMode mode) {
+bool CPDFSDK_WidgetAnnot::IsWidgetAppearanceValid(
+    CPDF_Annot::AppearanceMode mode) {
   const CPDF_Dictionary* pAP =
       GetAnnotDict()->GetDictFor(pdfium::annotation::kAP);
   if (!pAP)
@@ -356,12 +358,12 @@ bool CPDFSDK_Widget::IsWidgetAppearanceValid(CPDF_Annot::AppearanceMode mode) {
   }
 }
 
-FormFieldType CPDFSDK_Widget::GetFieldType() const {
+FormFieldType CPDFSDK_WidgetAnnot::GetFieldType() const {
   CPDF_FormField* pField = GetFormField();
   return pField ? pField->GetFieldType() : FormFieldType::kUnknown;
 }
 
-bool CPDFSDK_Widget::IsAppearanceValid() {
+bool CPDFSDK_WidgetAnnot::IsAppearanceValid() {
 #ifdef PDF_ENABLE_XFA
   auto* pContext = m_pPageView->GetFormFillEnv()->GetDocExtension();
   if (pContext->ContainsExtensionFullForm())
@@ -370,41 +372,41 @@ bool CPDFSDK_Widget::IsAppearanceValid() {
   return CPDFSDK_BAAnnot::IsAppearanceValid();
 }
 
-int CPDFSDK_Widget::GetLayoutOrder() const {
+int CPDFSDK_WidgetAnnot::GetLayoutOrder() const {
   return 2;
 }
 
-int CPDFSDK_Widget::GetFieldFlags() const {
+int CPDFSDK_WidgetAnnot::GetFieldFlags() const {
   return GetFormField()->GetFieldFlags();
 }
 
-bool CPDFSDK_Widget::IsSignatureWidget() const {
+bool CPDFSDK_WidgetAnnot::IsSignatureWidget() const {
   return GetFieldType() == FormFieldType::kSignature;
 }
 
-CPDF_FormField* CPDFSDK_Widget::GetFormField() const {
+CPDF_FormField* CPDFSDK_WidgetAnnot::GetFormField() const {
   CPDF_FormControl* pControl = GetFormControl();
   return pControl ? pControl->GetField() : nullptr;
 }
 
-CPDF_FormControl* CPDFSDK_Widget::GetFormControl() const {
+CPDF_FormControl* CPDFSDK_WidgetAnnot::GetFormControl() const {
   CPDF_InteractiveForm* pPDFInteractiveForm =
       m_pInteractiveForm->GetInteractiveForm();
   return pPDFInteractiveForm->GetControlByDict(GetAnnotDict());
 }
 
-int CPDFSDK_Widget::GetRotate() const {
+int CPDFSDK_WidgetAnnot::GetRotate() const {
   CPDF_FormControl* pCtrl = GetFormControl();
   return pCtrl->GetRotation() % 360;
 }
 
 #ifdef PDF_ENABLE_XFA
-WideString CPDFSDK_Widget::GetName() const {
+WideString CPDFSDK_WidgetAnnot::GetName() const {
   return GetFormField()->GetFullName();
 }
 #endif  // PDF_ENABLE_XFA
 
-Optional<FX_COLORREF> CPDFSDK_Widget::GetFillColor() const {
+Optional<FX_COLORREF> CPDFSDK_WidgetAnnot::GetFillColor() const {
   CPDF_FormControl* pFormCtrl = GetFormControl();
   int iColorType = 0;
   FX_COLORREF color = ArgbToColorRef(pFormCtrl->GetBackgroundColor(iColorType));
@@ -413,7 +415,7 @@ Optional<FX_COLORREF> CPDFSDK_Widget::GetFillColor() const {
   return color;
 }
 
-Optional<FX_COLORREF> CPDFSDK_Widget::GetBorderColor() const {
+Optional<FX_COLORREF> CPDFSDK_WidgetAnnot::GetBorderColor() const {
   CPDF_FormControl* pFormCtrl = GetFormControl();
   int iColorType = 0;
   FX_COLORREF color = ArgbToColorRef(pFormCtrl->GetBorderColor(iColorType));
@@ -422,7 +424,7 @@ Optional<FX_COLORREF> CPDFSDK_Widget::GetBorderColor() const {
   return color;
 }
 
-Optional<FX_COLORREF> CPDFSDK_Widget::GetTextColor() const {
+Optional<FX_COLORREF> CPDFSDK_WidgetAnnot::GetTextColor() const {
   CPDF_FormControl* pFormCtrl = GetFormControl();
   CPDF_DefaultAppearance da = pFormCtrl->GetDefaultAppearance();
   FX_ARGB argb;
@@ -437,7 +439,7 @@ Optional<FX_COLORREF> CPDFSDK_Widget::GetTextColor() const {
   return color;
 }
 
-float CPDFSDK_Widget::GetFontSize() const {
+float CPDFSDK_WidgetAnnot::GetFontSize() const {
   CPDF_FormControl* pFormCtrl = GetFormControl();
   CPDF_DefaultAppearance pDa = pFormCtrl->GetDefaultAppearance();
   float fFontSize;
@@ -445,7 +447,7 @@ float CPDFSDK_Widget::GetFontSize() const {
   return fFontSize;
 }
 
-int CPDFSDK_Widget::GetSelectedIndex(int nIndex) const {
+int CPDFSDK_WidgetAnnot::GetSelectedIndex(int nIndex) const {
 #ifdef PDF_ENABLE_XFA
   if (CXFA_FFWidget* hWidget = GetMixXFAWidget()) {
     CXFA_Node* node = hWidget->GetNode();
@@ -459,7 +461,7 @@ int CPDFSDK_Widget::GetSelectedIndex(int nIndex) const {
   return pFormField->GetSelectedIndex(nIndex);
 }
 
-WideString CPDFSDK_Widget::GetValue() const {
+WideString CPDFSDK_WidgetAnnot::GetValue() const {
 #ifdef PDF_ENABLE_XFA
   if (CXFA_FFWidget* hWidget = GetMixXFAWidget()) {
     CXFA_Node* node = hWidget->GetNode();
@@ -471,22 +473,22 @@ WideString CPDFSDK_Widget::GetValue() const {
   return pFormField->GetValue();
 }
 
-WideString CPDFSDK_Widget::GetDefaultValue() const {
+WideString CPDFSDK_WidgetAnnot::GetDefaultValue() const {
   CPDF_FormField* pFormField = GetFormField();
   return pFormField->GetDefaultValue();
 }
 
-WideString CPDFSDK_Widget::GetOptionLabel(int nIndex) const {
+WideString CPDFSDK_WidgetAnnot::GetOptionLabel(int nIndex) const {
   CPDF_FormField* pFormField = GetFormField();
   return pFormField->GetOptionLabel(nIndex);
 }
 
-int CPDFSDK_Widget::CountOptions() const {
+int CPDFSDK_WidgetAnnot::CountOptions() const {
   CPDF_FormField* pFormField = GetFormField();
   return pFormField->CountOptions();
 }
 
-bool CPDFSDK_Widget::IsOptionSelected(int nIndex) const {
+bool CPDFSDK_WidgetAnnot::IsOptionSelected(int nIndex) const {
 #ifdef PDF_ENABLE_XFA
   if (CXFA_FFWidget* hWidget = GetMixXFAWidget()) {
     CXFA_Node* node = hWidget->GetNode();
@@ -502,12 +504,12 @@ bool CPDFSDK_Widget::IsOptionSelected(int nIndex) const {
   return pFormField->IsItemSelected(nIndex);
 }
 
-int CPDFSDK_Widget::GetTopVisibleIndex() const {
+int CPDFSDK_WidgetAnnot::GetTopVisibleIndex() const {
   CPDF_FormField* pFormField = GetFormField();
   return pFormField->GetTopVisibleIndex();
 }
 
-bool CPDFSDK_Widget::IsChecked() const {
+bool CPDFSDK_WidgetAnnot::IsChecked() const {
 #ifdef PDF_ENABLE_XFA
   if (CXFA_FFWidget* hWidget = GetMixXFAWidget()) {
     CXFA_Node* node = hWidget->GetNode();
@@ -519,17 +521,17 @@ bool CPDFSDK_Widget::IsChecked() const {
   return pFormCtrl->IsChecked();
 }
 
-int CPDFSDK_Widget::GetAlignment() const {
+int CPDFSDK_WidgetAnnot::GetAlignment() const {
   CPDF_FormControl* pFormCtrl = GetFormControl();
   return pFormCtrl->GetControlAlignment();
 }
 
-int CPDFSDK_Widget::GetMaxLen() const {
+int CPDFSDK_WidgetAnnot::GetMaxLen() const {
   CPDF_FormField* pFormField = GetFormField();
   return pFormField->GetMaxLen();
 }
 
-void CPDFSDK_Widget::SetCheck(bool bChecked, NotificationOption notify) {
+void CPDFSDK_WidgetAnnot::SetCheck(bool bChecked, NotificationOption notify) {
   CPDF_FormControl* pFormCtrl = GetFormControl();
   CPDF_FormField* pFormField = pFormCtrl->GetField();
   pFormField->CheckControl(pFormField->GetControlIndex(pFormCtrl), bChecked,
@@ -542,8 +544,8 @@ void CPDFSDK_Widget::SetCheck(bool bChecked, NotificationOption notify) {
 #endif  // PDF_ENABLE_XFA
 }
 
-void CPDFSDK_Widget::SetValue(const WideString& sValue,
-                              NotificationOption notify) {
+void CPDFSDK_WidgetAnnot::SetValue(const WideString& sValue,
+                                   NotificationOption notify) {
   CPDF_FormField* pFormField = GetFormField();
   pFormField->SetValue(sValue, notify);
 #ifdef PDF_ENABLE_XFA
@@ -552,9 +554,9 @@ void CPDFSDK_Widget::SetValue(const WideString& sValue,
 #endif  // PDF_ENABLE_XFA
 }
 
-void CPDFSDK_Widget::SetOptionSelection(int index,
-                                        bool bSelected,
-                                        NotificationOption notify) {
+void CPDFSDK_WidgetAnnot::SetOptionSelection(int index,
+                                             bool bSelected,
+                                             NotificationOption notify) {
   CPDF_FormField* pFormField = GetFormField();
   pFormField->SetItemSelection(index, bSelected, notify);
 #ifdef PDF_ENABLE_XFA
@@ -563,7 +565,7 @@ void CPDFSDK_Widget::SetOptionSelection(int index,
 #endif  // PDF_ENABLE_XFA
 }
 
-void CPDFSDK_Widget::ClearSelection(NotificationOption notify) {
+void CPDFSDK_WidgetAnnot::ClearSelection(NotificationOption notify) {
   CPDF_FormField* pFormField = GetFormField();
   pFormField->ClearSelection(notify);
 #ifdef PDF_ENABLE_XFA
@@ -572,22 +574,22 @@ void CPDFSDK_Widget::ClearSelection(NotificationOption notify) {
 #endif  // PDF_ENABLE_XFA
 }
 
-void CPDFSDK_Widget::SetTopVisibleIndex(int index) {}
+void CPDFSDK_WidgetAnnot::SetTopVisibleIndex(int index) {}
 
-void CPDFSDK_Widget::SetAppModified() {
+void CPDFSDK_WidgetAnnot::SetAppModified() {
   m_bAppModified = true;
 }
 
-void CPDFSDK_Widget::ClearAppModified() {
+void CPDFSDK_WidgetAnnot::ClearAppModified() {
   m_bAppModified = false;
 }
 
-bool CPDFSDK_Widget::IsAppModified() const {
+bool CPDFSDK_WidgetAnnot::IsAppModified() const {
   return m_bAppModified;
 }
 
 #ifdef PDF_ENABLE_XFA
-void CPDFSDK_Widget::ResetXFAAppearance(bool bValueChanged) {
+void CPDFSDK_WidgetAnnot::ResetXFAAppearance(bool bValueChanged) {
   switch (GetFieldType()) {
     case FormFieldType::kTextField:
     case FormFieldType::kComboBox: {
@@ -601,8 +603,8 @@ void CPDFSDK_Widget::ResetXFAAppearance(bool bValueChanged) {
 }
 #endif  // PDF_ENABLE_XFA
 
-void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
-                                     bool bValueChanged) {
+void CPDFSDK_WidgetAnnot::ResetAppearance(Optional<WideString> sValue,
+                                          bool bValueChanged) {
   SetAppModified();
 
   m_nAppearanceAge++;
@@ -636,22 +638,22 @@ void CPDFSDK_Widget::ResetAppearance(Optional<WideString> sValue,
   m_pAnnot->ClearCachedAP();
 }
 
-Optional<WideString> CPDFSDK_Widget::OnFormat() {
+Optional<WideString> CPDFSDK_WidgetAnnot::OnFormat() {
   CPDF_FormField* pFormField = GetFormField();
   ASSERT(pFormField);
   return m_pInteractiveForm->OnFormat(pFormField);
 }
 
-void CPDFSDK_Widget::ResetFieldAppearance() {
+void CPDFSDK_WidgetAnnot::ResetFieldAppearance() {
   CPDF_FormField* pFormField = GetFormField();
   ASSERT(pFormField);
   m_pInteractiveForm->ResetFieldAppearance(pFormField, pdfium::nullopt);
 }
 
-void CPDFSDK_Widget::DrawAppearance(CFX_RenderDevice* pDevice,
-                                    const CFX_Matrix& mtUser2Device,
-                                    CPDF_Annot::AppearanceMode mode,
-                                    const CPDF_RenderOptions* pOptions) {
+void CPDFSDK_WidgetAnnot::DrawAppearance(CFX_RenderDevice* pDevice,
+                                         const CFX_Matrix& mtUser2Device,
+                                         CPDF_Annot::AppearanceMode mode,
+                                         const CPDF_RenderOptions* pOptions) {
   FormFieldType fieldType = GetFieldType();
 
   if ((fieldType == FormFieldType::kCheckBox ||
@@ -670,14 +672,14 @@ void CPDFSDK_Widget::DrawAppearance(CFX_RenderDevice* pDevice,
   }
 }
 
-void CPDFSDK_Widget::UpdateField() {
+void CPDFSDK_WidgetAnnot::UpdateField() {
   CPDF_FormField* pFormField = GetFormField();
   ASSERT(pFormField);
   m_pInteractiveForm->UpdateField(pFormField);
 }
 
-void CPDFSDK_Widget::DrawShadow(CFX_RenderDevice* pDevice,
-                                CPDFSDK_PageView* pPageView) {
+void CPDFSDK_WidgetAnnot::DrawShadow(CFX_RenderDevice* pDevice,
+                                     CPDFSDK_PageView* pPageView) {
   FormFieldType fieldType = GetFieldType();
   if (!m_pInteractiveForm->IsNeedHighLight(fieldType))
     return;
@@ -701,7 +703,7 @@ void CPDFSDK_Widget::DrawShadow(CFX_RenderDevice* pDevice,
           m_pInteractiveForm->GetHighlightColor(fieldType)));
 }
 
-CFX_FloatRect CPDFSDK_Widget::GetClientRect() const {
+CFX_FloatRect CPDFSDK_WidgetAnnot::GetClientRect() const {
   CFX_FloatRect rcWindow = GetRotatedRect();
   float fBorderWidth = GetBorderWidth();
   switch (GetBorderStyle()) {
@@ -715,7 +717,7 @@ CFX_FloatRect CPDFSDK_Widget::GetClientRect() const {
   return rcWindow.GetDeflated(fBorderWidth, fBorderWidth);
 }
 
-CFX_FloatRect CPDFSDK_Widget::GetRotatedRect() const {
+CFX_FloatRect CPDFSDK_WidgetAnnot::GetRotatedRect() const {
   CFX_FloatRect rectAnnot = GetRect();
   float fWidth = rectAnnot.Width();
   float fHeight = rectAnnot.Height();
@@ -737,7 +739,7 @@ CFX_FloatRect CPDFSDK_Widget::GetRotatedRect() const {
   return rcPWLWindow;
 }
 
-CFX_Matrix CPDFSDK_Widget::GetMatrix() const {
+CFX_Matrix CPDFSDK_WidgetAnnot::GetMatrix() const {
   CFX_Matrix mt;
   CPDF_FormControl* pControl = GetFormControl();
   CFX_FloatRect rcAnnot = GetRect();
@@ -762,7 +764,7 @@ CFX_Matrix CPDFSDK_Widget::GetMatrix() const {
   return mt;
 }
 
-CFX_Color CPDFSDK_Widget::GetTextPWLColor() const {
+CFX_Color CPDFSDK_WidgetAnnot::GetTextPWLColor() const {
   CFX_Color crText = CFX_Color(CFX_Color::kGray, 0);
 
   CPDF_FormControl* pFormCtrl = GetFormControl();
@@ -776,7 +778,7 @@ CFX_Color CPDFSDK_Widget::GetTextPWLColor() const {
   return crText;
 }
 
-CFX_Color CPDFSDK_Widget::GetBorderPWLColor() const {
+CFX_Color CPDFSDK_WidgetAnnot::GetBorderPWLColor() const {
   CFX_Color crBorder;
 
   CPDF_FormControl* pFormCtrl = GetFormControl();
@@ -789,7 +791,7 @@ CFX_Color CPDFSDK_Widget::GetBorderPWLColor() const {
   return crBorder;
 }
 
-CFX_Color CPDFSDK_Widget::GetFillPWLColor() const {
+CFX_Color CPDFSDK_WidgetAnnot::GetFillPWLColor() const {
   CFX_Color crFill;
 
   CPDF_FormControl* pFormCtrl = GetFormControl();
@@ -802,9 +804,9 @@ CFX_Color CPDFSDK_Widget::GetFillPWLColor() const {
   return crFill;
 }
 
-bool CPDFSDK_Widget::OnAAction(CPDF_AAction::AActionType type,
-                               CPDFSDK_FieldAction* data,
-                               CPDFSDK_PageView* pPageView) {
+bool CPDFSDK_WidgetAnnot::OnAAction(CPDF_AAction::AActionType type,
+                                    CPDFSDK_FieldAction* data,
+                                    CPDFSDK_PageView* pPageView) {
   CPDFSDK_FormFillEnvironment* pFormFillEnv = pPageView->GetFormFillEnv();
 
 #ifdef PDF_ENABLE_XFA
@@ -852,7 +854,7 @@ bool CPDFSDK_Widget::OnAAction(CPDF_AAction::AActionType type,
   return false;
 }
 
-CPDF_Action CPDFSDK_Widget::GetAAction(CPDF_AAction::AActionType eAAT) {
+CPDF_Action CPDFSDK_WidgetAnnot::GetAAction(CPDF_AAction::AActionType eAAT) {
   switch (eAAT) {
     case CPDF_AAction::kCursorEnter:
     case CPDF_AAction::kCursorExit:
@@ -882,7 +884,7 @@ CPDF_Action CPDFSDK_Widget::GetAAction(CPDF_AAction::AActionType eAAT) {
   return CPDF_Action(nullptr);
 }
 
-WideString CPDFSDK_Widget::GetAlternateName() const {
+WideString CPDFSDK_WidgetAnnot::GetAlternateName() const {
   CPDF_FormField* pFormField = GetFormField();
   return pFormField->GetAlternateName();
 }

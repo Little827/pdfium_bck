@@ -9,7 +9,7 @@
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 
 CFFL_Button::CFFL_Button(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                         CPDFSDK_Widget* pWidget)
+                         CPDFSDK_WidgetAnnot* pWidget)
     : CFFL_FormFiller(pFormFillEnv, pWidget),
       m_bMouseIn(false),
       m_bMouseDown(false) {}
@@ -65,7 +65,7 @@ void CFFL_Button::OnDraw(CPDFSDK_PageView* pPageView,
                          CFX_RenderDevice* pDevice,
                          const CFX_Matrix& mtUser2Device) {
   ASSERT(pPageView);
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot);
   CPDF_FormControl* pCtrl = pWidget->GetFormControl();
   if (pCtrl->GetHighlightingMode() != CPDF_FormControl::Push) {
     pWidget->DrawAppearance(pDevice, mtUser2Device, CPDF_Annot::Normal,

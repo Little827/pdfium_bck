@@ -25,7 +25,7 @@ CPWL_Wnd* CFFL_TextObject::ResetPWLWindow(CPDFSDK_PageView* pPageView,
 }
 
 CFFL_TextObject::CFFL_TextObject(CPDFSDK_FormFillEnvironment* pApp,
-                                 CPDFSDK_Widget* pWidget)
+                                 CPDFSDK_WidgetAnnot* pWidget)
     : CFFL_FormFiller(pApp, pWidget) {}
 
 CFFL_TextObject::~CFFL_TextObject() {

@@ -17,7 +17,7 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
 
 CPDFSDK_WidgetHandler::CPDFSDK_WidgetHandler() = default;
@@ -31,7 +31,7 @@ void CPDFSDK_WidgetHandler::SetFormFillEnvironment(
 }
 
 bool CPDFSDK_WidgetHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot);
   if (pWidget->IsSignatureWidget())
     return false;
 
@@ -59,7 +59,7 @@ CPDFSDK_Annot* CPDFSDK_WidgetHandler::NewAnnot(CPDF_Annot* pAnnot,
   if (!pCtrl)
     return nullptr;
 
-  CPDFSDK_Widget* pWidget = new CPDFSDK_Widget(pAnnot, pPage, pForm);
+  CPDFSDK_WidgetAnnot* pWidget = new CPDFSDK_WidgetAnnot(pAnnot, pPage, pForm);
   pForm->AddMap(pCtrl, pWidget);
   if (pPDFForm->NeedConstructAP())
     pWidget->ResetAppearance(pdfium::nullopt, false);
@@ -71,7 +71,8 @@ void CPDFSDK_WidgetHandler::ReleaseAnnot(
   ASSERT(pAnnot);
   m_pFormFiller->OnDelete(pAnnot.get());
 
-  std::unique_ptr<CPDFSDK_Widget> pWidget(ToCPDFSDKWidget(pAnnot.release()));
+  std::unique_ptr<CPDFSDK_WidgetAnnot> pWidget(
+      ToCPDFSDKWidget(pAnnot.release()));
   CPDFSDK_InteractiveForm* pForm = pWidget->GetInteractiveForm();
   CPDF_FormControl* pControl = pWidget->GetFormControl();
   pForm->RemoveMap(pControl);
@@ -192,7 +193,7 @@ void CPDFSDK_WidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {
   if (pAnnot->IsSignatureWidget())
     return;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot);
   if (!pWidget->IsAppearanceValid())
     pWidget->ResetAppearance(pdfium::nullopt, false);
 

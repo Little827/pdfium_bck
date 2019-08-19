@@ -11,7 +11,7 @@
 #include "constants/form_flags.h"
 #include "core/fpdfdoc/cba_fontmap.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/pwl/cpwl_list_box.h"
 #include "third_party/base/ptr_util.h"
@@ -19,7 +19,7 @@
 #define FFL_DEFAULTLISTBOXFONTSIZE 12.0f
 
 CFFL_ListBox::CFFL_ListBox(CPDFSDK_FormFillEnvironment* pApp,
-                           CPDFSDK_Widget* pWidget)
+                           CPDFSDK_WidgetAnnot* pWidget)
     : CFFL_TextObject(pApp, pWidget) {}
 
 CFFL_ListBox::~CFFL_ListBox() {}
@@ -123,7 +123,7 @@ void CFFL_ListBox::SaveData(CPDFSDK_PageView* pPageView) {
     m_pWidget->SetOptionSelection(pListBox->GetCurSel(), true,
                                   NotificationOption::kDoNotNotify);
   }
-  ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget.Get());
+  ObservedPtr<CPDFSDK_WidgetAnnot> observed_widget(m_pWidget.Get());
   ObservedPtr<CFFL_ListBox> observed_this(this);
   m_pWidget->SetTopVisibleIndex(nNewTopIndex);
   if (!observed_widget)

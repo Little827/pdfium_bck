@@ -21,7 +21,7 @@
 class CFFL_FormFiller;
 class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_PageView;
-class CPDFSDK_Widget;
+class CPDFSDK_WidgetAnnot;
 
 class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
  public:
@@ -95,9 +95,9 @@ class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
   bool Undo(CPDFSDK_Annot* pAnnot);
   bool Redo(CPDFSDK_Annot* pAnnot);
 
-  static bool IsVisible(CPDFSDK_Widget* pWidget);
-  static bool IsReadOnly(CPDFSDK_Widget* pWidget);
-  static bool IsFillingAllowed(CPDFSDK_Widget* pWidget);
+  static bool IsVisible(CPDFSDK_WidgetAnnot* pWidget);
+  static bool IsReadOnly(CPDFSDK_WidgetAnnot* pWidget);
+  static bool IsFillingAllowed(CPDFSDK_WidgetAnnot* pWidget);
   static bool IsValidAnnot(CPDFSDK_PageView* pPageView, CPDFSDK_Annot* pAnnot);
 
   bool OnKeyStrokeCommit(ObservedPtr<CPDFSDK_Annot>* pAnnot,
@@ -182,9 +182,9 @@ class CFFL_PrivateData final : public IPWL_SystemHandler::PerWindowData {
   // CPWL_Wnd::PrivateData:
   std::unique_ptr<IPWL_SystemHandler::PerWindowData> Clone() const override;
 
-  CPDFSDK_Widget* GetWidget() const { return pWidget.Get(); }
+  CPDFSDK_WidgetAnnot* GetWidget() const { return pWidget.Get(); }
 
-  ObservedPtr<CPDFSDK_Widget> pWidget;
+  ObservedPtr<CPDFSDK_WidgetAnnot> pWidget;
   CPDFSDK_PageView* pPageView = nullptr;
   uint32_t nWidgetAppearanceAge = 0;
   uint32_t nWidgetValueAge = 0;

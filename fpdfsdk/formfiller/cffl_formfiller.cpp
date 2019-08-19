@@ -13,10 +13,10 @@
 #include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 
 CFFL_FormFiller::CFFL_FormFiller(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                                 CPDFSDK_Widget* pWidget)
+                                 CPDFSDK_WidgetAnnot* pWidget)
     : m_pFormFillEnv(pFormFillEnv), m_pWidget(pWidget) {
   ASSERT(m_pFormFillEnv);
 }
@@ -64,7 +64,7 @@ void CFFL_FormFiller::OnDraw(CPDFSDK_PageView* pPageView,
     return;
   }
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot);
   if (!CFFL_InteractiveFormFiller::IsVisible(pWidget))
     return;
 
@@ -283,7 +283,7 @@ bool CFFL_FormFiller::Redo() {
 }
 
 void CFFL_FormFiller::SetFocusForAnnot(CPDFSDK_Annot* pAnnot, uint32_t nFlag) {
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot);
   IPDF_Page* pPage = pWidget->GetPage();
   CPDFSDK_PageView* pPageView = m_pFormFillEnv->GetPageView(pPage, true);
   if (CPWL_Wnd* pWnd = GetPWLWindow(pPageView, true))

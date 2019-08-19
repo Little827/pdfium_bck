@@ -936,7 +936,7 @@ FPDFAnnot_GetFontSize(FPDF_FORMHANDLE hHandle,
   if (!pFormControl)
     return false;
 
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
+  CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl);
   if (!pWidget)
     return false;
 
@@ -968,6 +968,6 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_IsChecked(FPDF_FORMHANDLE hHandle,
   if (!pFormControl)
     return false;
 
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
+  CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl);
   return pWidget && pWidget->IsChecked();
 }

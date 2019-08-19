@@ -15,7 +15,7 @@
 #include "fxjs/js_define.h"
 
 class CPDF_FormControl;
-class CPDFSDK_Widget;
+class CPDFSDK_WidgetAnnot;
 struct CJS_DelayData;
 
 enum FIELD_PROP {

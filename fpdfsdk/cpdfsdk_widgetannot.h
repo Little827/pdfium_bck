@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef FPDFSDK_CPDFSDK_WIDGET_H_
-#define FPDFSDK_CPDFSDK_WIDGET_H_
+#ifndef FPDFSDK_CPDFSDK_WIDGETANNOT_H_
+#define FPDFSDK_CPDFSDK_WIDGETANNOT_H_
 
 #include "core/fpdfdoc/cpdf_aaction.h"
 #include "core/fpdfdoc/cpdf_action.h"
@@ -34,7 +34,7 @@ class CXFA_FFWidget;
 class CXFA_FFWidgetHandler;
 #endif  // PDF_ENABLE_XFA
 
-class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
+class CPDFSDK_WidgetAnnot final : public CPDFSDK_BAAnnot {
  public:
 #ifdef PDF_ENABLE_XFA
   CXFA_FFWidget* GetMixXFAWidget() const;
@@ -48,10 +48,10 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
   void Synchronize(bool bSynchronizeElse);
 #endif  // PDF_ENABLE_XFA
 
-  CPDFSDK_Widget(CPDF_Annot* pAnnot,
-                 CPDFSDK_PageView* pPageView,
-                 CPDFSDK_InteractiveForm* pInteractiveForm);
-  ~CPDFSDK_Widget() override;
+  CPDFSDK_WidgetAnnot(CPDF_Annot* pAnnot,
+                      CPDFSDK_PageView* pPageView,
+                      CPDFSDK_InteractiveForm* pInteractiveForm);
+  ~CPDFSDK_WidgetAnnot() override;
 
   bool IsSignatureWidget() const override;
   CPDF_Action GetAAction(CPDF_AAction::AActionType eAAT) override;
@@ -143,10 +143,10 @@ class CPDFSDK_Widget final : public CPDFSDK_BAAnnot {
 #endif  // PDF_ENABLE_XFA
 };
 
-inline CPDFSDK_Widget* ToCPDFSDKWidget(CPDFSDK_Annot* pAnnot) {
+inline CPDFSDK_WidgetAnnot* ToCPDFSDKWidget(CPDFSDK_Annot* pAnnot) {
   return pAnnot && pAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::WIDGET
-             ? static_cast<CPDFSDK_Widget*>(pAnnot)
+             ? static_cast<CPDFSDK_WidgetAnnot*>(pAnnot)
              : nullptr;
 }
 
-#endif  // FPDFSDK_CPDFSDK_WIDGET_H_
+#endif  // FPDFSDK_CPDFSDK_WIDGETANNOT_H_

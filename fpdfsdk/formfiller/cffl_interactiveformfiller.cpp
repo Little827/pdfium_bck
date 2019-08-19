@@ -16,7 +16,7 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/formfiller/cffl_checkbox.h"
 #include "fpdfsdk/formfiller/cffl_combobox.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
@@ -61,7 +61,7 @@ void CFFL_InteractiveFormFiller::OnDraw(CPDFSDK_PageView* pPageView,
                                         CFX_RenderDevice* pDevice,
                                         const CFX_Matrix& mtUser2Device) {
   ASSERT(pPageView);
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot);
   if (!IsVisible(pWidget))
     return;
 
@@ -118,7 +118,7 @@ void CFFL_InteractiveFormFiller::OnMouseEnter(
     uint32_t nFlag) {
   ASSERT((*pAnnot)->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
   if (!m_bNotifying) {
-    CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+    CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
     if (pWidget->GetAAction(CPDF_AAction::kCursorEnter).GetDict()) {
       m_bNotifying = true;
 
@@ -151,7 +151,7 @@ void CFFL_InteractiveFormFiller::OnMouseExit(CPDFSDK_PageView* pPageView,
                                              uint32_t nFlag) {
   ASSERT((*pAnnot)->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
   if (!m_bNotifying) {
-    CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+    CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
     if (pWidget->GetAAction(CPDF_AAction::kCursorExit).GetDict()) {
       m_bNotifying = true;
 
@@ -186,7 +186,7 @@ bool CFFL_InteractiveFormFiller::OnLButtonDown(
     const CFX_PointF& point) {
   ASSERT((*pAnnot)->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
   if (!m_bNotifying) {
-    CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+    CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
     if (Annot_HitTest(pPageView, pAnnot->Get(), point) &&
         pWidget->GetAAction(CPDF_AAction::kButtonDown).GetDict()) {
       m_bNotifying = true;
@@ -224,7 +224,7 @@ bool CFFL_InteractiveFormFiller::OnLButtonUp(CPDFSDK_PageView* pPageView,
                                              uint32_t nFlags,
                                              const CFX_PointF& point) {
   ASSERT((*pAnnot)->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
 
   bool bSetFocus;
   switch (pWidget->GetFieldType()) {
@@ -263,7 +263,7 @@ bool CFFL_InteractiveFormFiller::OnButtonUp(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return false;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->GetAAction(CPDF_AAction::kButtonUp).GetDict())
     return false;
 
@@ -385,7 +385,7 @@ bool CFFL_InteractiveFormFiller::OnSetFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot,
 
   ASSERT((*pAnnot)->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
   if (!m_bNotifying) {
-    CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+    CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
     if (pWidget->GetAAction(CPDF_AAction::kGetFocus).GetDict()) {
       m_bNotifying = true;
 
@@ -440,7 +440,7 @@ bool CFFL_InteractiveFormFiller::OnKillFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return true;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->GetAAction(CPDF_AAction::kLoseFocus).GetDict())
     return true;
 
@@ -459,16 +459,17 @@ bool CFFL_InteractiveFormFiller::OnKillFocus(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   return pAnnot->HasObservable();
 }
 
-bool CFFL_InteractiveFormFiller::IsVisible(CPDFSDK_Widget* pWidget) {
+bool CFFL_InteractiveFormFiller::IsVisible(CPDFSDK_WidgetAnnot* pWidget) {
   return pWidget->IsVisible();
 }
 
-bool CFFL_InteractiveFormFiller::IsReadOnly(CPDFSDK_Widget* pWidget) {
+bool CFFL_InteractiveFormFiller::IsReadOnly(CPDFSDK_WidgetAnnot* pWidget) {
   int nFieldFlags = pWidget->GetFieldFlags();
   return !!(nFieldFlags & pdfium::form_flags::kReadOnly);
 }
 
-bool CFFL_InteractiveFormFiller::IsFillingAllowed(CPDFSDK_Widget* pWidget) {
+bool CFFL_InteractiveFormFiller::IsFillingAllowed(
+    CPDFSDK_WidgetAnnot* pWidget) {
   if (pWidget->GetFieldType() == FormFieldType::kPushButton)
     return false;
 
@@ -491,7 +492,7 @@ CFFL_FormFiller* CFFL_InteractiveFormFiller::GetOrCreateFormFiller(
   if (result)
     return result;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot);
   std::unique_ptr<CFFL_FormFiller> pFormFiller;
   switch (pWidget->GetFieldType()) {
     case FormFieldType::kPushButton:
@@ -589,7 +590,7 @@ void CFFL_InteractiveFormFiller::QueryWherePopup(
     bool* bBottom,
     float* fPopupRet) {
   auto* pData = static_cast<const CFFL_PrivateData*>(pAttached);
-  CPDFSDK_Widget* pWidget = pData->pWidget.Get();
+  CPDFSDK_WidgetAnnot* pWidget = pData->pWidget.Get();
   CPDF_Page* pPage = pWidget->GetPDFPage();
 
   CFX_FloatRect rcPageView(0, pPage->GetPageHeight(), pPage->GetPageWidth(), 0);
@@ -650,7 +651,7 @@ bool CFFL_InteractiveFormFiller::OnKeyStrokeCommit(
   if (m_bNotifying)
     return true;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->GetAAction(CPDF_AAction::kKeyStroke).GetDict())
     return true;
 
@@ -682,7 +683,7 @@ bool CFFL_InteractiveFormFiller::OnValidate(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return true;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->GetAAction(CPDF_AAction::kValidate).GetDict())
     return true;
 
@@ -713,7 +714,7 @@ void CFFL_InteractiveFormFiller::OnCalculate(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (pWidget) {
     CPDFSDK_InteractiveForm* pForm =
         pPageView->GetFormFillEnv()->GetInteractiveForm();
@@ -728,7 +729,7 @@ void CFFL_InteractiveFormFiller::OnFormat(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   ASSERT(pWidget);
   CPDFSDK_InteractiveForm* pForm =
       pPageView->GetFormFillEnv()->GetInteractiveForm();
@@ -752,7 +753,7 @@ bool CFFL_InteractiveFormFiller::OnClick(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return false;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->HasXFAAAction(PDFSDK_XFA_Click))
     return false;
 
@@ -782,7 +783,7 @@ bool CFFL_InteractiveFormFiller::OnFull(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return false;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->HasXFAAAction(PDFSDK_XFA_Full))
     return false;
 
@@ -813,7 +814,7 @@ bool CFFL_InteractiveFormFiller::OnPreOpen(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return false;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->HasXFAAAction(PDFSDK_XFA_PreOpen))
     return false;
 
@@ -844,7 +845,7 @@ bool CFFL_InteractiveFormFiller::OnPostOpen(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (m_bNotifying)
     return false;
 
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
+  CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (!pWidget->HasXFAAAction(PDFSDK_XFA_PostOpen))
     return false;
 

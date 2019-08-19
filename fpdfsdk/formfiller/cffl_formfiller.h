@@ -13,7 +13,7 @@
 #include "core/fxcrt/cfx_timer.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_fieldaction.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
@@ -26,7 +26,7 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
                         public CFX_Timer::CallbackIface {
  public:
   CFFL_FormFiller(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                  CPDFSDK_Widget* pWidget);
+                  CPDFSDK_WidgetAnnot* pWidget);
   ~CFFL_FormFiller() override;
 
   virtual void OnDraw(CPDFSDK_PageView* pPageView,
@@ -155,7 +155,7 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
 
   bool m_bValid = false;
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
-  UnownedPtr<CPDFSDK_Widget> m_pWidget;
+  UnownedPtr<CPDFSDK_WidgetAnnot> m_pWidget;
   std::unique_ptr<CFX_Timer> m_pTimer;
   std::map<CPDFSDK_PageView*, std::unique_ptr<CPWL_Wnd>> m_Maps;
 };

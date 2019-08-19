@@ -22,7 +22,8 @@ class CFFL_TextObject : public CFFL_FormFiller {
                            bool bRestoreValue) override;
 
  protected:
-  CFFL_TextObject(CPDFSDK_FormFillEnvironment* pApp, CPDFSDK_Widget* pWidget);
+  CFFL_TextObject(CPDFSDK_FormFillEnvironment* pApp,
+                  CPDFSDK_WidgetAnnot* pWidget);
   ~CFFL_TextObject() override;
 
   CBA_FontMap* MaybeCreateFontMap();

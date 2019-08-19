@@ -31,7 +31,7 @@
 #include "fpdfsdk/cpdfsdk_annotiterator.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
 #include "fpdfsdk/ipdfsdk_annothandler.h"
 #include "fxjs/ijs_event_context.h"
@@ -122,12 +122,12 @@ CPDFSDK_InteractiveForm::CPDFSDK_InteractiveForm(
 
 CPDFSDK_InteractiveForm::~CPDFSDK_InteractiveForm() = default;
 
-CPDFSDK_Widget* CPDFSDK_InteractiveForm::GetWidget(
+CPDFSDK_WidgetAnnot* CPDFSDK_InteractiveForm::GetWidget(
     CPDF_FormControl* pControl) const {
   if (!pControl)
     return nullptr;
 
-  CPDFSDK_Widget* pWidget = nullptr;
+  CPDFSDK_WidgetAnnot* pWidget = nullptr;
   const auto it = m_Map.find(pControl);
   if (it != m_Map.end())
     pWidget = it->second;
@@ -170,7 +170,7 @@ void CPDFSDK_InteractiveForm::GetWidgets(
   for (int i = 0, sz = pField->CountControls(); i < sz; ++i) {
     CPDF_FormControl* pFormCtrl = pField->GetControl(i);
     ASSERT(pFormCtrl);
-    CPDFSDK_Widget* pWidget = GetWidget(pFormCtrl);
+    CPDFSDK_WidgetAnnot* pWidget = GetWidget(pFormCtrl);
     if (pWidget)
       widgets->emplace_back(pWidget);
   }
@@ -197,7 +197,7 @@ int CPDFSDK_InteractiveForm::GetPageIndexByAnnotDict(
 }
 
 void CPDFSDK_InteractiveForm::AddMap(CPDF_FormControl* pControl,
-                                     CPDFSDK_Widget* pWidget) {
+                                     CPDFSDK_WidgetAnnot* pWidget) {
   m_Map[pControl] = pWidget;
 }
 
@@ -232,7 +232,7 @@ void CPDFSDK_InteractiveForm::XfaSetValidationsEnabled(bool bEnabled) {
 void CPDFSDK_InteractiveForm::SynchronizeField(CPDF_FormField* pFormField) {
   for (int i = 0, sz = pFormField->CountControls(); i < sz; i++) {
     CPDF_FormControl* pFormCtrl = pFormField->GetControl(i);
-    if (CPDFSDK_Widget* pWidget = GetWidget(pFormCtrl))
+    if (CPDFSDK_WidgetAnnot* pWidget = GetWidget(pFormCtrl))
       pWidget->Synchronize(false);
   }
 }
@@ -323,7 +323,7 @@ void CPDFSDK_InteractiveForm::ResetFieldAppearance(
   for (int i = 0, sz = pFormField->CountControls(); i < sz; i++) {
     CPDF_FormControl* pFormCtrl = pFormField->GetControl(i);
     ASSERT(pFormCtrl);
-    if (CPDFSDK_Widget* pWidget = GetWidget(pFormCtrl))
+    if (CPDFSDK_WidgetAnnot* pWidget = GetWidget(pFormCtrl))
       pWidget->ResetAppearance(sValue, true);
   }
 }
@@ -334,7 +334,7 @@ void CPDFSDK_InteractiveForm::UpdateField(CPDF_FormField* pFormField) {
     CPDF_FormControl* pFormCtrl = pFormField->GetControl(i);
     ASSERT(pFormCtrl);
 
-    CPDFSDK_Widget* pWidget = GetWidget(pFormCtrl);
+    CPDFSDK_WidgetAnnot* pWidget = GetWidget(pFormCtrl);
     if (!pWidget)
       continue;
 
@@ -398,7 +398,7 @@ bool CPDFSDK_InteractiveForm::DoAction_Hide(const CPDF_Action& action) {
       CPDF_FormControl* pControl = pField->GetControl(i);
       ASSERT(pControl);
 
-      if (CPDFSDK_Widget* pWidget = GetWidget(pControl)) {
+      if (CPDFSDK_WidgetAnnot* pWidget = GetWidget(pControl)) {
         uint32_t nFlags = pWidget->GetFlags();
         nFlags &= ~pdfium::annotation_flags::kInvisible;
         nFlags &= ~pdfium::annotation_flags::kNoView;

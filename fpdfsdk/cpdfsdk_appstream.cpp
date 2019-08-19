@@ -24,7 +24,7 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/pwl/cpwl_edit.h"
 #include "fpdfsdk/pwl/cpwl_edit_impl.h"
 #include "fpdfsdk/pwl/cpwl_icon.h"
@@ -1118,7 +1118,7 @@ void SetDefaultIconName(CPDF_Stream* pIcon, const char* name) {
 
 }  // namespace
 
-CPDFSDK_AppStream::CPDFSDK_AppStream(CPDFSDK_Widget* widget,
+CPDFSDK_AppStream::CPDFSDK_AppStream(CPDFSDK_WidgetAnnot* widget,
                                      CPDF_Dictionary* dict)
     : widget_(widget), dict_(dict) {}
 

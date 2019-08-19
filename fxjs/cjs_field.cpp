@@ -18,7 +18,7 @@
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fxjs/cjs_color.h"
 #include "fxjs/cjs_delaydata.h"
 #include "fxjs/cjs_document.h"
@@ -84,7 +84,7 @@ void UpdateFormField(CPDFSDK_FormFillEnvironment* pFormFillEnv,
     // |GetFormFillEnv| out of the loop.
     for (auto& pObserved : widgets) {
       if (pObserved) {
-        CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pObserved.Get());
+        CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pObserved.Get());
         pWidget->GetInteractiveForm()->GetFormFillEnv()->UpdateAllViews(
             nullptr, pWidget);
       }
@@ -103,10 +103,10 @@ void UpdateFormControl(CPDFSDK_FormFillEnvironment* pFormFillEnv,
   ASSERT(pFormControl);
 
   CPDFSDK_InteractiveForm* pForm = pFormFillEnv->GetInteractiveForm();
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
+  CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl);
 
   if (pWidget) {
-    ObservedPtr<CPDFSDK_Widget> observed_widget(pWidget);
+    ObservedPtr<CPDFSDK_WidgetAnnot> observed_widget(pWidget);
     if (bResetAP) {
       FormFieldType fieldType = pWidget->GetFieldType();
       if (fieldType == FormFieldType::kComboBox ||
@@ -145,7 +145,7 @@ std::vector<CPDF_FormField*> GetFormFieldsForName(
   return fields;
 }
 
-bool SetWidgetDisplayStatus(CPDFSDK_Widget* pWidget, int value) {
+bool SetWidgetDisplayStatus(CPDFSDK_WidgetAnnot* pWidget, int value) {
   if (!pWidget)
     return false;
 
@@ -211,7 +211,8 @@ void SetBorderStyle(CPDFSDK_FormFillEnvironment* pFormFillEnv,
     if (nControlIndex < 0) {
       bool bSet = false;
       for (int i = 0, sz = pFormField->CountControls(); i < sz; ++i) {
-        CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormField->GetControl(i));
+        CPDFSDK_WidgetAnnot* pWidget =
+            pForm->GetWidget(pFormField->GetControl(i));
         if (pWidget) {
           if (pWidget->GetBorderStyle() != nBorderStyle) {
             pWidget->SetBorderStyle(nBorderStyle);
@@ -226,7 +227,7 @@ void SetBorderStyle(CPDFSDK_FormFillEnvironment* pFormFillEnv,
         return;
       if (CPDF_FormControl* pFormControl =
               pFormField->GetControl(nControlIndex)) {
-        CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
+        CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl);
         if (pWidget) {
           if (pWidget->GetBorderStyle() != nBorderStyle) {
             pWidget->SetBorderStyle(nBorderStyle);
@@ -279,7 +280,7 @@ void SetDisplay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
         CPDF_FormControl* pFormControl = pFormField->GetControl(i);
         ASSERT(pFormControl);
 
-        CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
+        CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl);
         if (SetWidgetDisplayStatus(pWidget, number))
           bAnySet = true;
       }
@@ -294,7 +295,7 @@ void SetDisplay(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       if (!pFormControl)
         return;
 
-      CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
+      CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl);
       if (SetWidgetDisplayStatus(pWidget, number))
         UpdateFormControl(pFormFillEnv, pFormControl, true, false, true);
     }
@@ -323,7 +324,7 @@ void SetLineWidth(CPDFSDK_FormFillEnvironment* pFormFillEnv,
         CPDF_FormControl* pFormControl = pFormField->GetControl(i);
         ASSERT(pFormControl);
 
-        if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
+        if (CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl)) {
           if (number != pWidget->GetBorderWidth()) {
             pWidget->SetBorderWidth(number);
             bSet = true;
@@ -337,7 +338,7 @@ void SetLineWidth(CPDFSDK_FormFillEnvironment* pFormFillEnv,
         return;
       if (CPDF_FormControl* pFormControl =
               pFormField->GetControl(nControlIndex)) {
-        if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
+        if (CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl)) {
           if (number != pWidget->GetBorderWidth()) {
             pWidget->SetBorderWidth(number);
             UpdateFormControl(pFormFillEnv, pFormControl, true, true, true);
@@ -362,7 +363,7 @@ void SetRect(CPDFSDK_FormFillEnvironment* pFormFillEnv,
         CPDF_FormControl* pFormControl = pFormField->GetControl(i);
         ASSERT(pFormControl);
 
-        if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
+        if (CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl)) {
           CFX_FloatRect crRect = rect;
 
           CPDF_Page* pPDFPage = pWidget->GetPDFPage();
@@ -389,7 +390,7 @@ void SetRect(CPDFSDK_FormFillEnvironment* pFormFillEnv,
       return;
     if (CPDF_FormControl* pFormControl =
             pFormField->GetControl(nControlIndex)) {
-      if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
+      if (CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl)) {
         CFX_FloatRect crRect = rect;
         CPDF_Page* pPDFPage = pWidget->GetPDFPage();
         crRect.Intersect(pPDFPage->GetBBox());
@@ -693,8 +694,9 @@ CJS_Result CJS_Field::get_border_style(CJS_Runtime* pRuntime) {
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  CPDFSDK_Widget* pWidget = m_pFormFillEnv->GetInteractiveForm()->GetWidget(
-      GetSmartFieldControl(pFormField));
+  CPDFSDK_WidgetAnnot* pWidget =
+      m_pFormFillEnv->GetInteractiveForm()->GetWidget(
+          GetSmartFieldControl(pFormField));
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -1147,7 +1149,8 @@ CJS_Result CJS_Field::get_display(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(GetSmartFieldControl(pFormField));
+  CPDFSDK_WidgetAnnot* pWidget =
+      pForm->GetWidget(GetSmartFieldControl(pFormField));
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -1341,7 +1344,8 @@ CJS_Result CJS_Field::get_hidden(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(GetSmartFieldControl(pFormField));
+  CPDFSDK_WidgetAnnot* pWidget =
+      pForm->GetWidget(GetSmartFieldControl(pFormField));
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -1416,7 +1420,7 @@ CJS_Result CJS_Field::get_line_width(CJS_Runtime* pRuntime) {
   if (!pFormField->CountControls())
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormField->GetControl(0));
+  CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormField->GetControl(0));
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -1570,7 +1574,8 @@ CJS_Result CJS_Field::get_print(CJS_Runtime* pRuntime) {
   if (!pFormField)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(GetSmartFieldControl(pFormField));
+  CPDFSDK_WidgetAnnot* pWidget =
+      pForm->GetWidget(GetSmartFieldControl(pFormField));
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -1592,7 +1597,7 @@ CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
     if (m_nFormControlIndex < 0) {
       bool bSet = false;
       for (int i = 0, sz = pFormField->CountControls(); i < sz; ++i) {
-        if (CPDFSDK_Widget* pWidget =
+        if (CPDFSDK_WidgetAnnot* pWidget =
                 pForm->GetWidget(pFormField->GetControl(i))) {
           uint32_t dwFlags = pWidget->GetFlags();
           if (pRuntime->ToBoolean(vp))
@@ -1618,7 +1623,7 @@ CJS_Result CJS_Field::set_print(CJS_Runtime* pRuntime,
 
     if (CPDF_FormControl* pFormControl =
             pFormField->GetControl(m_nFormControlIndex)) {
-      if (CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl)) {
+      if (CPDFSDK_WidgetAnnot* pWidget = pForm->GetWidget(pFormControl)) {
         uint32_t dwFlags = pWidget->GetFlags();
         if (pRuntime->ToBoolean(vp))
           dwFlags |= pdfium::annotation_flags::kPrint;
@@ -1685,7 +1690,8 @@ CJS_Result CJS_Field::get_rect(CJS_Runtime* pRuntime) {
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
-  CPDFSDK_Widget* pWidget = pForm->GetWidget(GetSmartFieldControl(pFormField));
+  CPDFSDK_WidgetAnnot* pWidget =
+      pForm->GetWidget(GetSmartFieldControl(pFormField));
   if (!pWidget)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
@@ -2502,7 +2508,7 @@ CJS_Result CJS_Field::setFocus(
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
   CPDFSDK_InteractiveForm* pForm = m_pFormFillEnv->GetInteractiveForm();
-  CPDFSDK_Widget* pWidget = nullptr;
+  CPDFSDK_WidgetAnnot* pWidget = nullptr;
   if (nCount == 1) {
     pWidget = pForm->GetWidget(pFormField->GetControl(0));
   } else {
@@ -2512,7 +2518,7 @@ CJS_Result CJS_Field::setFocus(
     if (CPDFSDK_PageView* pCurPageView =
             m_pFormFillEnv->GetPageView(pPage, true)) {
       for (int32_t i = 0; i < nCount; i++) {
-        if (CPDFSDK_Widget* pTempWidget =
+        if (CPDFSDK_WidgetAnnot* pTempWidget =
                 pForm->GetWidget(pFormField->GetControl(i))) {
           if (pTempWidget->GetPDFPage() == pCurPageView->GetPDFPage()) {
             pWidget = pTempWidget;

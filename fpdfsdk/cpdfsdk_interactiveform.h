@@ -15,7 +15,7 @@
 #include "core/fpdfdoc/ipdf_formnotify.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/fx_dib.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "third_party/base/optional.h"
 
 class CPDF_Dictionary;
@@ -37,13 +37,13 @@ class CPDFSDK_InteractiveForm final : public IPDF_FormNotify {
     return m_pFormFillEnv.Get();
   }
 
-  CPDFSDK_Widget* GetWidget(CPDF_FormControl* pControl) const;
+  CPDFSDK_WidgetAnnot* GetWidget(CPDF_FormControl* pControl) const;
   void GetWidgets(const WideString& sFieldName,
                   std::vector<ObservedPtr<CPDFSDK_Annot>>* widgets) const;
   void GetWidgets(CPDF_FormField* pField,
                   std::vector<ObservedPtr<CPDFSDK_Annot>>* widgets) const;
 
-  void AddMap(CPDF_FormControl* pControl, CPDFSDK_Widget* pWidget);
+  void AddMap(CPDF_FormControl* pControl, CPDFSDK_WidgetAnnot* pWidget);
   void RemoveMap(CPDF_FormControl* pControl);
 
   void EnableCalculate(bool bEnabled);
@@ -106,7 +106,7 @@ class CPDFSDK_InteractiveForm final : public IPDF_FormNotify {
 
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
   std::unique_ptr<CPDF_InteractiveForm> const m_pInteractiveForm;
-  std::map<CPDF_FormControl*, CPDFSDK_Widget*> m_Map;
+  std::map<CPDF_FormControl*, CPDFSDK_WidgetAnnot*> m_Map;
 #ifdef PDF_ENABLE_XFA
   bool m_bXfaCalculate = true;
   bool m_bXfaValidationsEnabled = true;

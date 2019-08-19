@@ -17,7 +17,7 @@
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fxjs/ijs_runtime.h"
@@ -67,7 +67,7 @@ CPDFSDK_FormFillEnvironment::~CPDFSDK_FormFillEnvironment() {
 void CPDFSDK_FormFillEnvironment::InvalidateRect(PerWindowData* pWidgetData,
                                                  const CFX_FloatRect& rect) {
   auto* pPrivateData = static_cast<CFFL_PrivateData*>(pWidgetData);
-  CPDFSDK_Widget* widget = pPrivateData->pWidget.Get();
+  CPDFSDK_WidgetAnnot* widget = pPrivateData->pWidget.Get();
   if (!widget)
     return;
 
@@ -725,7 +725,7 @@ bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(uint32_t nFlag) {
   }
 
   if (pFocusAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::WIDGET) {
-    CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pFocusAnnot.Get());
+    CPDFSDK_WidgetAnnot* pWidget = ToCPDFSDKWidget(pFocusAnnot.Get());
     FormFieldType fieldType = pWidget->GetFieldType();
     if (fieldType == FormFieldType::kTextField ||
         fieldType == FormFieldType::kComboBox) {

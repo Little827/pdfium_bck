@@ -10,13 +10,13 @@
 
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
 #include "fpdfsdk/pwl/cpwl_special_button.h"
 #include "public/fpdf_fwlevent.h"
 
 CFFL_RadioButton::CFFL_RadioButton(CPDFSDK_FormFillEnvironment* pApp,
-                                   CPDFSDK_Widget* pWidget)
+                                   CPDFSDK_WidgetAnnot* pWidget)
     : CFFL_Button(pApp, pWidget) {}
 
 CFFL_RadioButton::~CFFL_RadioButton() {}
@@ -104,7 +104,7 @@ void CFFL_RadioButton::SaveData(CPDFSDK_PageView* pPageView) {
       }
     }
   }
-  ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget.Get());
+  ObservedPtr<CPDFSDK_WidgetAnnot> observed_widget(m_pWidget.Get());
   ObservedPtr<CFFL_RadioButton> observed_this(this);
   m_pWidget->SetCheck(bNewChecked, NotificationOption::kDoNotNotify);
   if (!observed_widget)

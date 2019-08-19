@@ -11,12 +11,12 @@
 #include "constants/form_flags.h"
 #include "core/fpdfdoc/cba_fontmap.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
-#include "fpdfsdk/cpdfsdk_widget.h"
+#include "fpdfsdk/cpdfsdk_widgetannot.h"
 #include "public/fpdf_fwlevent.h"
 #include "third_party/base/ptr_util.h"
 
 CFFL_TextField::CFFL_TextField(CPDFSDK_FormFillEnvironment* pApp,
-                               CPDFSDK_Widget* pWidget)
+                               CPDFSDK_WidgetAnnot* pWidget)
     : CFFL_TextObject(pApp, pWidget) {}
 
 CFFL_TextField::~CFFL_TextField() {
@@ -141,7 +141,7 @@ void CFFL_TextField::SaveData(CPDFSDK_PageView* pPageView) {
 
   WideString sOldValue = m_pWidget->GetValue();
   WideString sNewValue = pWnd->GetText();
-  ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget.Get());
+  ObservedPtr<CPDFSDK_WidgetAnnot> observed_widget(m_pWidget.Get());
   ObservedPtr<CFFL_TextField> observed_this(this);
   m_pWidget->SetValue(sNewValue, NotificationOption::kDoNotNotify);
   if (!observed_widget)

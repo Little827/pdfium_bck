@@ -13,7 +13,7 @@
 #include "third_party/base/ptr_util.h"
 
 CFFL_PushButton::CFFL_PushButton(CPDFSDK_FormFillEnvironment* pApp,
-                                 CPDFSDK_Widget* pWidget)
+                                 CPDFSDK_WidgetAnnot* pWidget)
     : CFFL_Button(pApp, pWidget) {}
 
 CFFL_PushButton::~CFFL_PushButton() = default;

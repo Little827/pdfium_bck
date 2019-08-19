@@ -11,13 +11,13 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/optional.h"
 
-class CPDFSDK_Widget;
+class CPDFSDK_WidgetAnnot;
 class CPDF_Dictionary;
 class CPDF_Stream;
 
 class CPDFSDK_AppStream {
  public:
-  CPDFSDK_AppStream(CPDFSDK_Widget* widget, CPDF_Dictionary* dict);
+  CPDFSDK_AppStream(CPDFSDK_WidgetAnnot* widget, CPDF_Dictionary* dict);
   ~CPDFSDK_AppStream();
 
   void SetAsPushButton();
@@ -37,7 +37,7 @@ class CPDFSDK_AppStream {
   ByteString GetBackgroundAppStream() const;
   ByteString GetBorderAppStream() const;
 
-  UnownedPtr<CPDFSDK_Widget> const widget_;
+  UnownedPtr<CPDFSDK_WidgetAnnot> const widget_;
   RetainPtr<CPDF_Dictionary> const dict_;
 };
 
