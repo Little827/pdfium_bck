@@ -30,7 +30,7 @@ class CPDFSDK_AnnotHandlerMgr {
   CPDFSDK_AnnotHandlerMgr(
       std::unique_ptr<CPDFSDK_BAAnnotHandler> pBAAnnotHandler,
       std::unique_ptr<CPDFSDK_WidgetHandler> pWidgetHandler,
-      std::unique_ptr<IPDFSDK_AnnotHandler> pXFAWidgetHandler);
+      std::unique_ptr<IPDFSDK_AnnotHandler> pXFAAnnotHandler);
 
   ~CPDFSDK_AnnotHandlerMgr();
 
@@ -122,10 +122,10 @@ class CPDFSDK_AnnotHandlerMgr {
   CPDFSDK_Annot* GetNextAnnot(CPDFSDK_Annot* pSDKAnnot, bool bNext);
 
   // |m_pBAAnnotHandler| and |m_pWidgetHandler| are always present, but
-  // |m_pXFAWidgetHandler| is only present in XFA mode.
+  // |m_pXFAAnnotHandler| is only present in XFA mode.
   std::unique_ptr<CPDFSDK_BAAnnotHandler> const m_pBAAnnotHandler;
   std::unique_ptr<CPDFSDK_WidgetHandler> const m_pWidgetHandler;
-  std::unique_ptr<IPDFSDK_AnnotHandler> const m_pXFAWidgetHandler;
+  std::unique_ptr<IPDFSDK_AnnotHandler> const m_pXFAAnnotHandler;
 };
 
 #endif  // FPDFSDK_CPDFSDK_ANNOTHANDLERMGR_H_
