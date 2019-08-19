@@ -104,7 +104,7 @@ void CPDF_StructElement::LoadKid(uint32_t PageObjNum,
     return;
 
   if (pKidObj->IsNumber()) {
-    if (m_pTree->GetPage()->GetObjNum() != PageObjNum)
+    if (m_pTree->GetPage() && m_pTree->GetPage()->GetObjNum() != PageObjNum)
       return;
 
     pKid->m_Type = CPDF_StructKid::PageContent;
@@ -120,7 +120,7 @@ void CPDF_StructElement::LoadKid(uint32_t PageObjNum,
     PageObjNum = pRef->GetRefObjNum();
 
   ByteString type = pKidDict->GetStringFor("Type");
-  if ((type == "MCR" || type == "OBJR") &&
+  if ((type == "MCR" || type == "OBJR") && m_pTree->GetPage() &&
       m_pTree->GetPage()->GetObjNum() != PageObjNum) {
     return;
   }
@@ -144,5 +144,11 @@ void CPDF_StructElement::LoadKid(uint32_t PageObjNum,
 
   pKid->m_Type = CPDF_StructKid::Element;
   pKid->m_pDict.Reset(pKidDict);
-  pKid->m_pElement = nullptr;
+  if (m_pTree->GetPage()) {
+    pKid->m_pElement = nullptr;
+    return;
+  }
+
+  pKid->m_pElement =
+      pdfium::MakeRetain<CPDF_StructElement>(m_pTree.Get(), this, pKidDict);
 }
