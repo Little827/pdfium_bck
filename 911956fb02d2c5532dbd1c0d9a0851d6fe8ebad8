@@ -81,6 +81,24 @@
       "revId": "911956fb02d2c5532dbd1c0d9a0851d6fe8ebad8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8f63322_bd97b0c1",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_widget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-19T22:46:38Z",
+      "side": 1,
+      "message": "Apparently not.  Reverted.",
+      "parentUuid": "5d1555f6_5265063f",
+      "revId": "911956fb02d2c5532dbd1c0d9a0851d6fe8ebad8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
