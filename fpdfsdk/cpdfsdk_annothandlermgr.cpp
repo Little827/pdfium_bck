@@ -24,8 +24,8 @@
 #include "third_party/base/ptr_util.h"
 
 #ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_annothandler.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
-#include "fpdfsdk/fpdfxfa/cpdfxfa_widgethandler.h"
 #endif  // PDF_ENABLE_XFA
 
 CPDFSDK_AnnotHandlerMgr::CPDFSDK_AnnotHandlerMgr(
@@ -62,7 +62,7 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::NewXFAAnnot(
     CPDFSDK_PageView* pPageView) {
   ASSERT(pAnnot);
   ASSERT(pPageView);
-  return static_cast<CPDFXFA_WidgetHandler*>(m_pXFAWidgetHandler.get())
+  return static_cast<CPDFXFA_AnnotHandler*>(m_pXFAWidgetHandler.get())
       ->NewAnnotForXFA(pAnnot, pPageView);
 }
 #endif  // PDF_ENABLE_XFA
@@ -289,7 +289,7 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnChangeFocus(
   bool bXFA = (*pSetAnnot && (*pSetAnnot)->GetXFAWidget()) ||
               (*pKillAnnot && (*pKillAnnot)->GetXFAWidget());
 
-  return !bXFA || static_cast<CPDFXFA_WidgetHandler*>(m_pXFAWidgetHandler.get())
+  return !bXFA || static_cast<CPDFXFA_AnnotHandler*>(m_pXFAWidgetHandler.get())
                       ->OnXFAChangedFocus(pKillAnnot, pSetAnnot);
 }
 #endif  // PDF_ENABLE_XFA
