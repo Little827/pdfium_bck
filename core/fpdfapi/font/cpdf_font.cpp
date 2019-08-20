@@ -170,6 +170,11 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
     m_Flags |= FXFONT_ITALIC;
     m_ItalicAngle = ItalicAngle;
   }
+  bool bExistFontWeight = false;
+  if (pFontDesc->KeyExist("FontWeight")) {
+    m_FontWeight = pFontDesc->GetIntegerFor("FontWeight");
+    bExistFontWeight = true;
+  }
   bool bExistStemV = false;
   if (pFontDesc->KeyExist("StemV")) {
     m_StemV = pFontDesc->GetIntegerFor("StemV");
@@ -189,7 +194,7 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
   if (pFontDesc->KeyExist("CapHeight"))
     bExistCapHeight = true;
   if (bExistItalicAngle && bExistAscent && bExistCapHeight && bExistDescent &&
-      bExistStemV) {
+      (bExistStemV || bExistFontWeight)) {
     m_Flags |= FXFONT_USEEXTERNATTR;
   }
   if (m_Descent > 10)
@@ -435,4 +440,17 @@ bool CPDF_Font::FT_UseTTCharmap(FXFT_FaceRec* face,
     }
   }
   return false;
+}
+
+int CPDF_Font::GetFontWeight() const {
+  if (m_FontWeight)
+    return m_FontWeight;
+
+  // If not specified, we estimate the font weight from StemV
+  pdfium::base::CheckedNumeric<int> safeStemV(m_StemV);
+  if (m_StemV < 140)
+    safeStemV *= 5;
+  else
+    safeStemV = safeStemV * 4 + 140;
+  return safeStemV.ValueOrDefault(FXFONT_FW_NORMAL);
 }
