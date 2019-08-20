@@ -99,6 +99,15 @@ bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
   return true;
 }
 
+FX_ARGB CPDF_Color::GetARGB() const {
+  int r, g, b;
+  if (!GetRGB(&r, &g, &b))
+    return 0;
+  FX_ARGB argb = static_cast<FX_ARGB>(r);
+  argb = (argb << 8) + static_cast<FX_ARGB>(g);
+  return (argb << 8) + static_cast<FX_ARGB>(b);
+}
+
 CPDF_Pattern* CPDF_Color::GetPattern() const {
   ASSERT(IsPattern());
   return m_pValue ? m_pValue->GetPattern() : nullptr;

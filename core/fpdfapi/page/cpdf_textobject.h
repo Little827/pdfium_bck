@@ -55,6 +55,11 @@ class CPDF_TextObject final : public CPDF_PageObject {
   RetainPtr<CPDF_Font> GetFont() const;
   float GetFontSize() const;
 
+  FX_ARGB GetFillColorRGB() const;
+  FX_ARGB GetStrokeColorRGB() const;
+
+  TextRenderingMode GetTextRenderingMode() const;
+
   void SetText(const ByteString& str);
   void SetPosition(CFX_PointF pos) { m_Pos = pos; }
   void SetPosition(float x, float y);

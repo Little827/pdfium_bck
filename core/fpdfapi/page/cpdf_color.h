@@ -12,6 +12,7 @@
 
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxge/fx_dib.h"
 
 class CPDF_ColorSpace;
 class CPDF_Pattern;
@@ -35,6 +36,7 @@ class CPDF_Color {
   uint32_t CountComponents() const;
   bool IsColorSpaceRGB() const;
   bool GetRGB(int* R, int* G, int* B) const;
+  FX_ARGB GetARGB() const;
 
   // Should only be called if IsPattern() returns true.
   CPDF_Pattern* GetPattern() const;
