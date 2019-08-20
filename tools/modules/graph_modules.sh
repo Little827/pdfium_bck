@@ -15,7 +15,7 @@ function crunch {
       grep -v samples | grep -v matches | sed "s|\\(.*\\)|  \"$1\" -> \"\\1\"|"
   echo '  edge [color=red,constraint=false]'
   gn desc $BUILD_DIR $1 allow_circular_includes_from | grep -v '//:' | \
-      grep -v test | grep -v samples | grep -v matches | \
+      grep -v test | grep -v samples | grep -v matches | grep -v constants | \
       grep -v 'how to display' | sed "s|\\(.*\\)|  \"\\1\" -> \"$1\"|"
 }
 
