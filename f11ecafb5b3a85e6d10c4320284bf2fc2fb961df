@@ -22,6 +22,30 @@
       "revId": "f11ecafb5b3a85e6d10c4320284bf2fc2fb961df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220f068d_a3a88a3b",
+        "filename": "fpdfsdk/cpdfsdk_pauseadapter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-20T22:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c97392b_1db8bb3a",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "f11ecafb5b3a85e6d10c4320284bf2fc2fb961df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
