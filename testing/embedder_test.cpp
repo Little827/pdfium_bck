@@ -349,6 +349,10 @@ ScopedFPDFBitmap EmbedderTest::RenderLoadedPage(FPDF_PAGE page) {
   return RenderLoadedPageWithFlags(page, 0);
 }
 
+bool EmbedderTest::StartRenderLoadedPage(FPDF_PAGE page, IFSDK_PAUSE* pause) {
+  return StartRenderLoadedPageWithFlags(page, pause, 0);
+}
+
 ScopedFPDFBitmap EmbedderTest::RenderLoadedPageWithFlags(FPDF_PAGE page,
                                                          int flags) {
   if (GetPageNumberForLoadedPage(page) < 0) {
@@ -356,6 +360,16 @@ ScopedFPDFBitmap EmbedderTest::RenderLoadedPageWithFlags(FPDF_PAGE page,
     return nullptr;
   }
   return RenderPageWithFlags(page, form_handle_, flags);
+}
+
+bool EmbedderTest::StartRenderLoadedPageWithFlags(FPDF_PAGE page,
+                                                  IFSDK_PAUSE* pause,
+                                                  int flags) {
+  if (GetPageNumberForLoadedPage(page) < 0) {
+    NOTREACHED();
+    return false;
+  }
+  return StartRenderPageWithFlags(page, pause, flags);
 }
 
 ScopedFPDFBitmap EmbedderTest::RenderSavedPage(FPDF_PAGE page) {
@@ -369,6 +383,47 @@ ScopedFPDFBitmap EmbedderTest::RenderSavedPageWithFlags(FPDF_PAGE page,
     return nullptr;
   }
   return RenderPageWithFlags(page, saved_form_handle_, flags);
+}
+
+bool EmbedderTest::StartRenderPageWithFlags(FPDF_PAGE page,
+                                            IFSDK_PAUSE* pause,
+                                            int flags) {
+  int width = static_cast<int>(FPDF_GetPageWidth(page));
+  int height = static_cast<int>(FPDF_GetPageHeight(page));
+  progressive_render_flags_ = flags;
+  int alpha = FPDFPage_HasTransparency(page) ? 1 : 0;
+  progressive_render_bitmap_ =
+      ScopedFPDFBitmap(FPDFBitmap_Create(width, height, alpha));
+  FPDF_DWORD fill_color = alpha ? 0x00000000 : 0xFFFFFFFF;
+  FPDFBitmap_FillRect(progressive_render_bitmap_.get(), 0, 0, width, height,
+                      fill_color);
+  int rv = FPDF_RenderPageBitmap_Start(progressive_render_bitmap_.get(), page,
+                                       0, 0, width, height, 0,
+                                       progressive_render_flags_, pause);
+  return rv != FPDF_RENDER_TOBECONTINUED;
+}
+
+bool EmbedderTest::ContinueRenderPage(FPDF_PAGE page, IFSDK_PAUSE* pause) {
+  ASSERT(progressive_render_bitmap_);
+
+  int rv = FPDF_RenderPage_Continue(page, pause);
+  return rv != FPDF_RENDER_TOBECONTINUED;
+}
+
+ScopedFPDFBitmap EmbedderTest::FinishRenderPageWithForms(
+    FPDF_PAGE page,
+    FPDF_FORMHANDLE handle) {
+  ASSERT(progressive_render_bitmap_);
+  int width = static_cast<int>(FPDF_GetPageWidth(page));
+  int height = static_cast<int>(FPDF_GetPageHeight(page));
+  FPDF_FFLDraw(handle, progressive_render_bitmap_.get(), page, 0, 0, width,
+               height, 0, progressive_render_flags_);
+  FPDF_RenderPage_Close(page);
+  return std::move(progressive_render_bitmap_);
+}
+
+ScopedFPDFBitmap EmbedderTest::FinishRenderPage(FPDF_PAGE page) {
+  return FinishRenderPageWithForms(page, nullptr /*handle*/);
 }
 
 // static
