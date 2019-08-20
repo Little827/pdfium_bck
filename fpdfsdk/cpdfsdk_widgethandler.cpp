@@ -20,15 +20,19 @@
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
 
-CPDFSDK_WidgetHandler::CPDFSDK_WidgetHandler() = default;
+#ifdef PDF_ENABLE_XFA
+#include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"
+#endif  // PDF_ENABLE_XFA
+
+CPDFSDK_WidgetHandler::CPDFSDK_WidgetHandler(
+    CPDFSDK_FormFillEnvironment* pFormFillEnv)
+    : m_pFormFillEnv(pFormFillEnv),
+      m_pFormFiller(pFormFillEnv->GetInteractiveFormFiller()) {
+  ASSERT(m_pFormFillEnv);
+  ASSERT(m_pFormFiller);
+}
 
 CPDFSDK_WidgetHandler::~CPDFSDK_WidgetHandler() = default;
-
-void CPDFSDK_WidgetHandler::SetFormFillEnvironment(
-    CPDFSDK_FormFillEnvironment* pFormFillEnv) {
-  m_pFormFillEnv = pFormFillEnv;
-  m_pFormFiller = m_pFormFillEnv->GetInteractiveFormFiller();
-}
 
 bool CPDFSDK_WidgetHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot);
@@ -210,8 +214,9 @@ void CPDFSDK_WidgetHandler::OnLoad(CPDFSDK_Annot* pAnnot) {
 
 #ifdef PDF_ENABLE_XFA
   CPDFSDK_PageView* pPageView = pAnnot->GetPageView();
-  auto* pContext = pPageView->GetFormFillEnv()->GetDocExtension();
-  if (pContext->ContainsExtensionForegroundForm()) {
+  CPDFXFA_Context* pContext = static_cast<CPDFXFA_Context*>(
+      pPageView->GetFormFillEnv()->GetDocExtension());
+  if (pContext->GetFormType() == FormType::kXFAForeground) {
     if (!pWidget->IsAppearanceValid() && !pWidget->GetValue().IsEmpty())
       pWidget->ResetXFAAppearance(false);
   }

@@ -24,12 +24,10 @@ class CXFA_FFWidgetHandler;
 
 class CPDFXFA_WidgetHandler final : public IPDFSDK_AnnotHandler {
  public:
-  CPDFXFA_WidgetHandler();
+  explicit CPDFXFA_WidgetHandler(CPDFSDK_FormFillEnvironment* pApp);
   ~CPDFXFA_WidgetHandler() override;
 
   // IPDFSDK_AnnotHandler:
-  void SetFormFillEnvironment(
-      CPDFSDK_FormFillEnvironment* pFormFillEnv) override;
   bool CanAnswer(CPDFSDK_Annot* pAnnot) override;
   CPDFSDK_Annot* NewAnnot(CPDF_Annot* pAnnot, CPDFSDK_PageView* pPage) override;
   void ReleaseAnnot(std::unique_ptr<CPDFSDK_Annot> pAnnot) override;
@@ -105,10 +103,10 @@ class CPDFXFA_WidgetHandler final : public IPDFSDK_AnnotHandler {
                          ObservedPtr<CPDFSDK_Annot>* pNewAnnot);
 
  private:
-  CXFA_FFWidgetHandler* GetXFAFFWidgetHandler(CPDFSDK_Annot* pAnnot);
+  CXFA_FFWidgetHandler* GetXFAWidgetHandler(CPDFSDK_Annot* pAnnot);
   uint32_t GetFWLFlags(uint32_t dwFlag);
 
-  UnownedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
+  UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
 };
 
 #endif  // FPDFSDK_FPDFXFA_CPDFXFA_WIDGETHANDLER_H_

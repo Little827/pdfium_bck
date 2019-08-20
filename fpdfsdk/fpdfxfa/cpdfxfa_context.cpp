@@ -157,7 +157,7 @@ RetainPtr<CPDFXFA_Page> CPDFXFA_Context::GetXFAPage(int page_index) {
     m_XFAPageList.resize(m_nPageCount);
   }
 
-  auto pPage = pdfium::MakeRetain<CPDFXFA_Page>(GetPDFDoc(), page_index);
+  auto pPage = pdfium::MakeRetain<CPDFXFA_Page>(this, page_index);
   if (!pPage->LoadPage())
     return nullptr;
 
@@ -207,14 +207,6 @@ uint32_t CPDFXFA_Context::GetUserPermissions() const {
 bool CPDFXFA_Context::ContainsExtensionForm() const {
   return m_FormType == FormType::kXFAFull ||
          m_FormType == FormType::kXFAForeground;
-}
-
-bool CPDFXFA_Context::ContainsExtensionFullForm() const {
-  return m_FormType == FormType::kXFAFull;
-}
-
-bool CPDFXFA_Context::ContainsExtensionForegroundForm() const {
-  return m_FormType == FormType::kXFAForeground;
 }
 
 void CPDFXFA_Context::ClearChangeMark() {

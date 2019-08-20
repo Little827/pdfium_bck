@@ -38,11 +38,6 @@ CPDFSDK_BAAnnotHandler::CPDFSDK_BAAnnotHandler() {}
 
 CPDFSDK_BAAnnotHandler::~CPDFSDK_BAAnnotHandler() {}
 
-void CPDFSDK_BAAnnotHandler::SetFormFillEnvironment(
-    CPDFSDK_FormFillEnvironment* pFormFillEnv) {
-  // CPDFSDK_BAAnnotHandler does not need it.
-}
-
 bool CPDFSDK_BAAnnotHandler::CanAnswer(CPDFSDK_Annot* pAnnot) {
   return false;
 }
@@ -62,9 +57,10 @@ void CPDFSDK_BAAnnotHandler::OnDraw(CPDFSDK_PageView* pPageView,
                                     CFX_RenderDevice* pDevice,
                                     const CFX_Matrix& mtUser2Device,
                                     bool bDrawAnnots) {
-  if (pAnnot->AsXFAWidget())
+#ifdef PDF_ENABLE_XFA
+  if (pAnnot->IsXFAField())
     return;
-
+#endif  // PDF_ENABLE_XFA
   if (bDrawAnnots && pAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::POPUP) {
     pAnnot->AsBAAnnot()->DrawAppearance(pDevice, mtUser2Device,
                                         CPDF_Annot::Normal, nullptr);
