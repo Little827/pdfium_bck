@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c8b40d8_babf4b54",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-08-20T04:03:36Z",
+      "side": 1,
+      "message": "this is uint32_t, passing an int value to it.",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 265,
+        "endChar": 9
+      },
+      "revId": "a0342515862f5f2cfb0e7259f6c29d1ca7b53ba6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf309d8_9fcfda95",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-08-20T04:03:36Z",
+      "side": 1,
+      "message": "Repeated in both functions can be refactored to a separate helper function.",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 24
+      },
+      "revId": "a0342515862f5f2cfb0e7259f6c29d1ca7b53ba6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
