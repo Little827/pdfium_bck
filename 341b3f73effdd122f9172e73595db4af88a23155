@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37dad022_812277c0",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T17:45:27Z",
+      "side": 1,
+      "message": "This looks unrelated.",
+      "revId": "341b3f73effdd122f9172e73595db4af88a23155",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9945469a_d10da3cd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T17:45:27Z",
+      "side": 1,
+      "message": "Can we leave this back where it was, so all the SkTDArrays get resized at the same time?",
+      "revId": "341b3f73effdd122f9172e73595db4af88a23155",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9daeffe0_6dcc28d5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T17:45:27Z",
+      "side": 1,
+      "message": "Same question regarding whether to use a hard coded value of 2 vs. something else.",
+      "range": {
+        "startLine": 983,
+        "startChar": 67,
+        "endLine": 983,
+        "endChar": 68
+      },
+      "revId": "341b3f73effdd122f9172e73595db4af88a23155",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f64d78eb_b483d2b4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T17:45:27Z",
+      "side": 1,
+      "message": "Combine with previous line.",
+      "revId": "341b3f73effdd122f9172e73595db4af88a23155",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13fdce85_fc982753",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T17:45:27Z",
+      "side": 1,
+      "message": "\"m_charDetails\" ? Most of the other arrays, and the ones being replaced, are named with a plural.",
+      "range": {
+        "startLine": 1439,
+        "startChar": 24,
+        "endLine": 1439,
+        "endChar": 36
+      },
+      "revId": "341b3f73effdd122f9172e73595db4af88a23155",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af31ff3b_4754b1f0",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T17:45:27Z",
+      "side": 1,
+      "message": "Add this later.",
+      "revId": "341b3f73effdd122f9172e73595db4af88a23155",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91242371_6ad8fea3",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1719,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T17:45:27Z",
+      "side": 1,
+      "message": "Is this change related to the rest of the CL?",
+      "revId": "341b3f73effdd122f9172e73595db4af88a23155",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
