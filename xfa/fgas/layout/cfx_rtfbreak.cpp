@@ -711,12 +711,12 @@ void CFX_RTFBreak::SplitTextLine(CFX_BreakLine* pCurLine,
   pCurLine->m_iWidth = iEndPos;
   curChars[iCharPos - 1].m_eLineBreakType = FX_LINEBREAKTYPE::kUNKNOWN;
 
-  for (size_t i = 0; i < pNextLine->m_LineChars.size(); ++i) {
-    if (pNextLine->m_LineChars[i].GetCharType() >= FX_CHARTYPE::kArabicAlef) {
+  for (auto& ch : pNextLine->m_LineChars) {
+    if (ch.GetCharType() >= FX_CHARTYPE::kArabicAlef) {
       pCurLine->m_iArabicChars--;
       pNextLine->m_iArabicChars++;
     }
-    pNextLine->m_LineChars[i].m_dwStatus = CFX_BreakType::None;
+    ch.m_dwStatus = CFX_BreakType::None;
   }
 }
 
