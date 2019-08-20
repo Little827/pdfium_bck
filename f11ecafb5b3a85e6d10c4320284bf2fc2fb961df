@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c97392b_1db8bb3a",
+        "filename": "fpdfsdk/cpdfsdk_pauseadapter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-20T18:46:52Z",
+      "side": 1,
+      "message": "\u003d default; while we are at it?",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "f11ecafb5b3a85e6d10c4320284bf2fc2fb961df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
