@@ -155,6 +155,7 @@ class CPDF_Font : public Retainable, public Observable {
   int m_Ascent = 0;
   int m_Descent = 0;
   int m_ItalicAngle = 0;
+  int m_FontWeight = 0;
   FX_RECT m_FontBBox;
 };
 
