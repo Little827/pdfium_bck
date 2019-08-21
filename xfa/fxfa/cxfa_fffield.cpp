@@ -7,8 +7,10 @@
 #include "xfa/fxfa/cxfa_fffield.h"
 
 #include <algorithm>
+#include <utility>
 
 #include "core/fxge/render_defines.h"
+#include "third_party/base/ptr_util.h"
 #include "xfa/fwl/cfwl_edit.h"
 #include "xfa/fwl/cfwl_eventmouse.h"
 #include "xfa/fwl/cfwl_messagekey.h"
@@ -365,9 +367,10 @@ bool CXFA_FFField::OnMouseEnter() {
   if (!m_pNormalWidget)
     return false;
 
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::Enter;
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::Enter;
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -375,9 +378,10 @@ bool CXFA_FFField::OnMouseExit() {
   if (!m_pNormalWidget)
     return false;
 
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::Leave;
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::Leave;
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -401,11 +405,12 @@ bool CXFA_FFField::AcceptsFocusOnButtonDown(uint32_t dwFlags,
 
 void CXFA_FFField::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   SetButtonDown(true);
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::LeftButtonDown;
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::LeftButtonDown;
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  SendMessageToFWLWidget(std::move(ms));
 }
 
 bool CXFA_FFField::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
@@ -415,11 +420,12 @@ bool CXFA_FFField::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
     return false;
 
   SetButtonDown(false);
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::LeftButtonUp;
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::LeftButtonUp;
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -427,11 +433,12 @@ bool CXFA_FFField::OnLButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
   if (!m_pNormalWidget)
     return false;
 
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::LeftButtonDblClk;
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::LeftButtonDblClk;
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -439,11 +446,12 @@ bool CXFA_FFField::OnMouseMove(uint32_t dwFlags, const CFX_PointF& point) {
   if (!m_pNormalWidget)
     return false;
 
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::Move;
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::Move;
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -453,22 +461,24 @@ bool CXFA_FFField::OnMouseWheel(uint32_t dwFlags,
   if (!m_pNormalWidget)
     return false;
 
-  CFWL_MessageMouseWheel ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  ms.m_delta = CFX_PointF(zDelta, 0);
-  TranslateFWLMessage(&ms);
+  auto ms = pdfium::MakeUnique<CFWL_MessageMouseWheel>(nullptr,
+                                                       m_pNormalWidget.get());
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  ms->m_delta = CFX_PointF(zDelta, 0);
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
 void CXFA_FFField::OnRButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
   SetButtonDown(true);
 
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::RightButtonDown;
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::RightButtonDown;
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  SendMessageToFWLWidget(std::move(ms));
 }
 
 bool CXFA_FFField::OnRButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
@@ -478,11 +488,12 @@ bool CXFA_FFField::OnRButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
     return false;
 
   SetButtonDown(false);
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::RightButtonUp;
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::RightButtonUp;
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -490,11 +501,12 @@ bool CXFA_FFField::OnRButtonDblClk(uint32_t dwFlags, const CFX_PointF& point) {
   if (!m_pNormalWidget)
     return false;
 
-  CFWL_MessageMouse ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_MouseCommand::RightButtonDblClk;
-  ms.m_dwFlags = dwFlags;
-  ms.m_pos = FWLToClient(point);
-  TranslateFWLMessage(&ms);
+  auto ms =
+      pdfium::MakeUnique<CFWL_MessageMouse>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_MouseCommand::RightButtonDblClk;
+  ms->m_dwFlags = dwFlags;
+  ms->m_pos = FWLToClient(point);
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -505,8 +517,9 @@ bool CXFA_FFField::OnSetFocus(CXFA_FFWidget* pOldWidget) {
   if (!m_pNormalWidget)
     return false;
 
-  CFWL_MessageSetFocus ms(nullptr, m_pNormalWidget.get());
-  TranslateFWLMessage(&ms);
+  SendMessageToFWLWidget(
+      pdfium::MakeUnique<CFWL_MessageSetFocus>(nullptr, m_pNormalWidget.get()));
+
   GetLayoutItem()->SetStatusBits(XFA_WidgetStatus_Focused);
   InvalidateRect();
   return true;
@@ -514,8 +527,8 @@ bool CXFA_FFField::OnSetFocus(CXFA_FFWidget* pOldWidget) {
 
 bool CXFA_FFField::OnKillFocus(CXFA_FFWidget* pNewWidget) {
   if (m_pNormalWidget) {
-    CFWL_MessageKillFocus ms(nullptr, m_pNormalWidget.get());
-    TranslateFWLMessage(&ms);
+    SendMessageToFWLWidget(pdfium::MakeUnique<CFWL_MessageKillFocus>(
+        nullptr, m_pNormalWidget.get()));
     GetLayoutItem()->ClearStatusBits(XFA_WidgetStatus_Focused);
     InvalidateRect();
   }
@@ -526,11 +539,11 @@ bool CXFA_FFField::OnKeyDown(uint32_t dwKeyCode, uint32_t dwFlags) {
   if (!m_pNormalWidget || !GetDoc()->GetXFADoc()->IsInteractive())
     return false;
 
-  CFWL_MessageKey ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_KeyCommand::KeyDown;
-  ms.m_dwFlags = dwFlags;
-  ms.m_dwKeyCode = dwKeyCode;
-  TranslateFWLMessage(&ms);
+  auto ms = pdfium::MakeUnique<CFWL_MessageKey>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_KeyCommand::KeyDown;
+  ms->m_dwFlags = dwFlags;
+  ms->m_dwKeyCode = dwKeyCode;
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -538,11 +551,11 @@ bool CXFA_FFField::OnKeyUp(uint32_t dwKeyCode, uint32_t dwFlags) {
   if (!m_pNormalWidget || !GetDoc()->GetXFADoc()->IsInteractive())
     return false;
 
-  CFWL_MessageKey ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_KeyCommand::KeyUp;
-  ms.m_dwFlags = dwFlags;
-  ms.m_dwKeyCode = dwKeyCode;
-  TranslateFWLMessage(&ms);
+  auto ms = pdfium::MakeUnique<CFWL_MessageKey>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_KeyCommand::KeyUp;
+  ms->m_dwFlags = dwFlags;
+  ms->m_dwKeyCode = dwKeyCode;
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -556,11 +569,11 @@ bool CXFA_FFField::OnChar(uint32_t dwChar, uint32_t dwFlags) {
   if (!m_pNode->IsOpenAccess())
     return false;
 
-  CFWL_MessageKey ms(nullptr, m_pNormalWidget.get());
-  ms.m_dwCmd = FWL_KeyCommand::Char;
-  ms.m_dwFlags = dwFlags;
-  ms.m_dwKeyCode = dwChar;
-  TranslateFWLMessage(&ms);
+  auto ms = pdfium::MakeUnique<CFWL_MessageKey>(nullptr, m_pNormalWidget.get());
+  ms->m_dwCmd = FWL_KeyCommand::Char;
+  ms->m_dwFlags = dwFlags;
+  ms->m_dwKeyCode = dwChar;
+  SendMessageToFWLWidget(std::move(ms));
   return true;
 }
 
@@ -722,8 +735,9 @@ bool CXFA_FFField::IsDataChanged() {
   return false;
 }
 
-void CXFA_FFField::TranslateFWLMessage(CFWL_Message* pMessage) {
-  GetApp()->GetFWLWidgetMgr()->OnProcessMessageToForm(pMessage);
+void CXFA_FFField::SendMessageToFWLWidget(
+    std::unique_ptr<CFWL_Message> pMessage) {
+  GetApp()->GetFWLWidgetMgr()->OnProcessMessageToForm(pMessage.get());
 }
 
 void CXFA_FFField::OnProcessMessage(CFWL_Message* pMessage) {}
