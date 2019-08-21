@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4746d62b_db793aed",
+        "filename": "xfa/fwl/cfwl_message.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-21T21:54:48Z",
+      "side": 1,
+      "message": "Nah, its subclassed, and we have deletions via unique_ptr\u003cMessage\u003e going out of scope which won\u0027t invoke subclass dtor otherwise.",
+      "parentUuid": "099c6dec_22026ef4",
+      "revId": "f860fe6ad5b0f3f9b1114e40fd259376a69b4de3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3801e5b1_405b8fcc",
         "filename": "xfa/fwl/cfwl_message.h",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "f860fe6ad5b0f3f9b1114e40fd259376a69b4de3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64089879_d4c42a30",
+        "filename": "xfa/fwl/cfwl_message.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-21T21:54:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3801e5b1_405b8fcc",
+      "revId": "f860fe6ad5b0f3f9b1114e40fd259376a69b4de3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
