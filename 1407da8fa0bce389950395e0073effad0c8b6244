@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "37c20326_75eb6e6e",
+        "filename": "testing/resources/javascript/xfa_specific/bug_995712.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-21T23:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c15886_475ad785",
+      "revId": "1407da8fa0bce389950395e0073effad0c8b6244",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ece9b44_6fc0eefc",
         "filename": "testing/resources/javascript/xfa_specific/bug_995712.in",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "1407da8fa0bce389950395e0073effad0c8b6244",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97759327_07934f85",
+        "filename": "testing/resources/javascript/xfa_specific/bug_995712.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-08-21T23:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ece9b44_6fc0eefc",
+      "revId": "1407da8fa0bce389950395e0073effad0c8b6244",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
