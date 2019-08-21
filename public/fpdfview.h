@@ -68,6 +68,7 @@ typedef int FPDF_BOOL;
 typedef int FPDF_ERROR;
 typedef unsigned long FPDF_DWORD;
 typedef float FS_FLOAT;
+typedef unsigned int FPDF_COLORREF;
 
 #ifdef PDF_ENABLE_XFA
 typedef void* FPDF_LPVOID;
