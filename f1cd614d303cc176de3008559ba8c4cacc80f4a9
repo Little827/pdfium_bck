@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e15b4a0e_516178f0",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1679,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-21T01:29:12Z",
+      "side": 1,
+      "message": "Since all 3 modified call sites need the exact same text blob, can we just create it once around line 1674 instead?",
+      "revId": "f1cd614d303cc176de3008559ba8c4cacc80f4a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
