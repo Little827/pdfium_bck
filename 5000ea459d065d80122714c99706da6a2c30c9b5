@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b77656d_fd3f1c31",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1681,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-21T22:15:41Z",
+      "side": 1,
+      "message": "I just wanted to point out this assumption I made. I justify it in the CL description, but I would like your thoughts about it.",
+      "revId": "5000ea459d065d80122714c99706da6a2c30c9b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
