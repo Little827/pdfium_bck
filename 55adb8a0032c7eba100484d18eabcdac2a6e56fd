@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72d5c7b0_2ed5e9ae",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-21T01:14:21Z",
+      "side": 1,
+      "message": "Let\u0027s make this private, since it\u0027s not needed outside of this class. Clip and Accumulator above can also be private, but we can do that in a separate cleanup CL.",
+      "revId": "55adb8a0032c7eba100484d18eabcdac2a6e56fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da9ea467_a5729518",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-21T01:14:21Z",
+      "side": 1,
+      "message": "Let\u0027s leave this for later, but I should note the existing code, because it is not compiled by default, has bitrotted and does not actually compile. Thus this modification, though it looks correct, also does not compile. glyphsToUnichars() actually takes 4 parameters now.",
+      "revId": "55adb8a0032c7eba100484d18eabcdac2a6e56fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33832992_8f9bf615",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-21T01:14:21Z",
+      "side": 1,
+      "message": "I forget if we discussed the performance difference with looping 1 glyph at a time vs. the existing code which just makes a single MakeFromRSXform() call + drawTextBlob() call. If reed@ is busy, we can also try asking https://groups.google.com/forum/#!forum/skia-discuss for guidance.",
+      "revId": "55adb8a0032c7eba100484d18eabcdac2a6e56fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94fbeccf_3b2fcec5",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 1682,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-21T01:14:21Z",
+      "side": 1,
+      "message": "This and line 1720 also look like changes better done in a separate CL.",
+      "revId": "55adb8a0032c7eba100484d18eabcdac2a6e56fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
