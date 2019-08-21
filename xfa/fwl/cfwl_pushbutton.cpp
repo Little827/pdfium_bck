@@ -222,6 +222,8 @@ void CFWL_PushButton::OnKeyDown(CFWL_MessageKey* pMsg) {
   CFWL_EventMouse wmMouse(this);
   wmMouse.m_dwCmd = FWL_MouseCommand::LeftButtonUp;
   DispatchEvent(&wmMouse);
+  if (!wmMouse.GetSrcTarget())
+    return;
 
   CFWL_Event wmClick(CFWL_Event::Type::Click, this);
   DispatchEvent(&wmClick);
