@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ae02ab3f_54d3da16",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-22T00:02:56Z",
+      "side": 1,
+      "message": "The way I see it, there\u0027s a trade off. \n\nIf I keep is as it is, it\u0027s still essentially a \"getter\" because it\u0027s extracting a certain property from the form, and if it can\u0027t directly find it, it tries to calculate it and then \"caches\" it using the setter.\n\nIf I change it, I\u0027m going to have to replicate this logic anywhere the getter is called. \n\nMy personal philosophy is that variables are encapsulated so that added logic like this can be added, in addition to security, of course.",
+      "parentUuid": "a84664cc_3322b5a7",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be783933_0f0786e0",
         "filename": "core/fpdfdoc/cpdf_formfield.cpp",
         "patchSetId": 2
@@ -87,6 +105,24 @@
       "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5573bf2b_8b0acbab",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-22T00:02:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c204e3b7_f2bf6e72",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +176,24 @@
       "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb199f6_43992b29",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2129,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-22T00:02:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "face74ea_010451f9",
+      "revId": "056bce89900cc1c649b48e4376fc81f369e8de07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
