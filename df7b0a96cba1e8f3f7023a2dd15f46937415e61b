@@ -17,6 +17,24 @@
       "revId": "df7b0a96cba1e8f3f7023a2dd15f46937415e61b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5777fd42_7076ed18",
+        "filename": "xfa/fgas/layout/cfx_rtfbreak.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-22T18:49:30Z",
+      "side": 1,
+      "message": "We didn\u0027t write this code originally, so that\u0027s the way it was.\n\nAFAICT, it does not mess with anything else. IncrementArabicCharCount() changes |m_iArabicChars|. Since we encapsulated |m_iArabicChars| in a prior CL, we know it only affects HasArabicChar(). In CFX_RTFBreak, EndBreak_BidiLine() is the only caller to HasArabicChar(). In turn, only EndBreak() calls EndBreak_BidiLine(), and the EndBreak() does not happen until line 271. So doing this increment on line 202 vs. line 267 should not matter. Everything in-between is just char width calculations.",
+      "parentUuid": "70cf0b99_c0bec0db",
+      "revId": "df7b0a96cba1e8f3f7023a2dd15f46937415e61b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
