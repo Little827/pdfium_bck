@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7f965c0_adc5511f",
+        "filename": "testing/resources/listbox_form.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-22T22:57:27Z",
+      "side": 1,
+      "message": "Let\u0027s give these names that describe what they are, not what test they are being used for. That way, if we reuse the same widget in other tests, their names still make sense.",
+      "revId": "d1925c27deb4a43af942ec2f48a22fa136e23ef9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85032416_e60e8d1e",
+        "filename": "testing/resources/listbox_form.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-22T22:57:27Z",
+      "side": 1,
+      "message": "Object 11 0 is missing an endobj tag.",
+      "revId": "d1925c27deb4a43af942ec2f48a22fa136e23ef9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
