@@ -1260,13 +1260,19 @@ TEST_F(FPDFTextEmbedderTest, GetFontWeight) {
   FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
   ASSERT_TRUE(text_page);
 
-  EXPECT_EQ(1, FPDFText_CountChars(text_page));
+  EXPECT_EQ(2, FPDFText_CountChars(text_page));
+
+  // The font used for this text specifies both /FontWeight (600) & /StemV (10),
+  // which have conflicting values; FontWeight should be prioritized.
+  int weight1;
+  FPDFText_GetFontInfo(text_page, 0, nullptr, 0, nullptr, &weight1);
+  EXPECT_EQ(600, weight1);
 
   // The font used for this text only specifies /StemV (80); the weight value
   // that is returned should be calculated from that (80*5 == 400).
-  int weight;
-  FPDFText_GetFontInfo(text_page, 0, nullptr, 0, nullptr, &weight);
-  EXPECT_EQ(400, weight);
+  int weight2;
+  FPDFText_GetFontInfo(text_page, 1, nullptr, 0, nullptr, &weight2);
+  EXPECT_EQ(400, weight2);
 
   FPDFText_ClosePage(text_page);
   UnloadPage(page);
