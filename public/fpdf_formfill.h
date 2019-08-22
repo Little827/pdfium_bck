@@ -676,6 +676,27 @@ typedef struct _FPDF_FORMFILLINFO {
                                 FPDF_BOOL is_focus);
 
   /**
+   * Method: FFI_SetFocusAnnot
+   *     Called when the focused annotation is updated.
+   * Interface Version:
+   *     1
+   * Implementation Required:
+   *     No
+   * Parameters:
+   *     param           -   Pointer to the interface structure itself.
+   *     annot           -   The focused annotation.
+   *     page_index      -   The index of the PDF page.
+   * Return value:
+   *     None.
+   * Comments:
+   *     This callback function is useful for implementing any view based action
+   *     such as scrolling the annotation rect into view.
+   */
+  void (*FFI_SetFocusAnnot)(struct _FPDF_FORMFILLINFO* param,
+                            FPDF_ANNOTATION annot,
+                            int page_index);
+
+  /**
    * Method: FFI_DoURIAction
    *     Ask the implementation to navigate to a uniform resource identifier.
    * Interface Version:
