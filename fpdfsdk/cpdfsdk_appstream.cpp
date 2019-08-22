@@ -6,6 +6,7 @@
 
 #include "fpdfsdk/cpdfsdk_appstream.h"
 
+#include <algorithm>
 #include <utility>
 
 #include "constants/form_flags.h"
@@ -19,6 +20,7 @@
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfdoc/cba_fontmap.h"
+#include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "core/fpdfdoc/cpvt_word.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
@@ -1675,7 +1677,24 @@ void CPDFSDK_AppStream::SetAsListBox() {
   int32_t nCount = pField->CountOptions();
   int32_t nSelCount = pField->CountSelectedItems();
 
-  for (int32_t i = nTop; i < nCount; ++i) {
+  // First option is used to determine scroll
+  // Content height is assumed to be constant for all text
+  float fScroll = 0;
+  float fItemHeight = 0;
+  if (nCount > 0) {
+    pEdit->SetText(pField->GetOptionLabel(0));
+    CFX_FloatRect rcContent = pEdit->GetContentRect();
+    fItemHeight = rcContent.Height();
+    fScroll = fItemHeight * nTop;
+
+    float fRemainingScroll = (nCount - nTop) * fItemHeight;
+    if (fRemainingScroll < rcClient.Height()) {
+      fScroll -= (rcClient.Height() - fRemainingScroll);
+      fScroll = std::max(fScroll, 0.0f);
+    }
+  }
+
+  for (int32_t i = 0; i < nCount; ++i) {
     bool bSelected = false;
     for (int32_t j = 0; j < nSelCount; ++j) {
       if (pField->GetSelectedIndex(j) == i) {
@@ -1686,9 +1705,6 @@ void CPDFSDK_AppStream::SetAsListBox() {
 
     pEdit->SetText(pField->GetOptionLabel(i));
 
-    CFX_FloatRect rcContent = pEdit->GetContentRect();
-    float fItemHeight = rcContent.Height();
-
     if (bSelected) {
       CFX_FloatRect rcItem =
           CFX_FloatRect(rcClient.left, fy - fItemHeight, rcClient.right, fy);
@@ -1697,20 +1713,22 @@ void CPDFSDK_AppStream::SetAsListBox() {
         sList << GetColorAppStream(CFX_Color(CFX_Color::kRGB, 0, 51.0f / 255.0f,
                                              113.0f / 255.0f),
                                    true)
-              << rcItem.left << " " << rcItem.bottom << " " << rcItem.Width()
-              << " " << rcItem.Height() << " " << kAppendRectOperator << " "
-              << kFillOperator << "\n";
+              << rcItem.left << " " << (rcItem.bottom + fScroll) << " "
+              << rcItem.Width() << " " << rcItem.Height() << " "
+              << kAppendRectOperator << " " << kFillOperator << "\n";
       }
 
       AutoClosedCommand bt(&sList, kTextBeginOperator, kTextEndOperator);
       sList << GetColorAppStream(CFX_Color(CFX_Color::kGray, 1), true)
-            << GetEditAppStream(pEdit.get(), CFX_PointF(0.0f, fy), true, 0);
+            << GetEditAppStream(pEdit.get(), CFX_PointF(0.0f, fy + fScroll),
+                                true, 0);
     } else {
       CFX_Color crText = widget_->GetTextPWLColor();
 
       AutoClosedCommand bt(&sList, kTextBeginOperator, kTextEndOperator);
       sList << GetColorAppStream(crText, true)
-            << GetEditAppStream(pEdit.get(), CFX_PointF(0.0f, fy), true, 0);
+            << GetEditAppStream(pEdit.get(), CFX_PointF(0.0f, fy + fScroll),
+                                true, 0);
     }
 
     fy -= fItemHeight;
