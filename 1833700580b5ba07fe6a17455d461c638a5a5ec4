@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3de090bd_83d35d51",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2354,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-23T21:44:26Z",
+      "side": 1,
+      "message": "Do we need this test? It looks identical to the first half of the next test.",
+      "revId": "1833700580b5ba07fe6a17455d461c638a5a5ec4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0068f508_adff07eb",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2376,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-23T21:44:26Z",
+      "side": 1,
+      "message": "I\u0027m confused by the comment. It says the top visible option is index 2, so I would expect clicking the first visible option to select it. Yet line 2380 expects the option at index 0 to be selected.",
+      "revId": "1833700580b5ba07fe6a17455d461c638a5a5ec4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665915ab_25044e19",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-23T21:44:26Z",
+      "side": 1,
+      "message": "This one is also a bit confusing. Can you first describe what the top visible option is and why it is the top visible option, instead of option 0? Then it should be obvious to readers that clicking the top option selects it.",
+      "revId": "1833700580b5ba07fe6a17455d461c638a5a5ec4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
