@@ -479,7 +479,8 @@ void CFWL_ComboBox::OnProcessMessage(CFWL_Message* pMessage) {
     default:
       break;
   }
-  if (backDefault)
+  // Dst target could be |this|, continue only if not destroyed by above.
+  if (backDefault && pMessage->GetDstTarget())
     CFWL_Widget::OnProcessMessage(pMessage);
 }
 
