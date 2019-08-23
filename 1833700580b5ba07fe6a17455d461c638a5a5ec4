@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "37cc0505_0bc44f27",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2354,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-23T23:30:52Z",
+      "side": 1,
+      "message": "I would remove the copy in CheckIfVerticalScrollIsAtFirstSelected then.",
+      "parentUuid": "813295dc_8174c142",
+      "revId": "1833700580b5ba07fe6a17455d461c638a5a5ec4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0068f508_adff07eb",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 5
