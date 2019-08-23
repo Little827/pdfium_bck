@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa9293b2_0eb54ed9",
+        "filename": "xfa/fwl/cfwl_pushbutton.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-23T17:05:35Z",
+      "side": 1,
+      "message": "Does CFWL_ComboBox::EditModifyStylesEx() need this same check? (I looked through all the other DispatchEvent() callers already)",
+      "revId": "98b9d70da2b55d1d0e7a706f88b096ccad75d294",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
