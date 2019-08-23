@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "813295dc_8174c142",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2354,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-23T22:39:05Z",
+      "side": 1,
+      "message": "It is identical, and I didn\u0027t have it before, but I added it because of your earlier comment to have a test for multiple selected options. \n\nThere is value in keeping it as two separate tests, as the first one tests if multiselect can be read, and the second one merely checks if two options are selected as a sanity check. I\u0027m fine with keeping it, but I definitely see the redundancy and I would be fine with removing it.",
+      "parentUuid": "3de090bd_83d35d51",
+      "revId": "1833700580b5ba07fe6a17455d461c638a5a5ec4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0068f508_adff07eb",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-23T21:44:26Z",
       "side": 1,
       "message": "I\u0027m confused by the comment. It says the top visible option is index 2, so I would expect clicking the first visible option to select it. Yet line 2380 expects the option at index 0 to be selected.",
+      "revId": "1833700580b5ba07fe6a17455d461c638a5a5ec4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5a1aec_9aca4a02",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2376,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-23T22:39:05Z",
+      "side": 1,
+      "message": "This comment is more about intended behavior, so I\u0027ll add a TODO to make it clearer.",
+      "parentUuid": "0068f508_adff07eb",
       "revId": "1833700580b5ba07fe6a17455d461c638a5a5ec4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
