@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30347f9e_38845e7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T02:36:00Z",
+      "side": 1,
+      "message": "Add a meta tag below:\n\nBug: chromium:996770",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "23816d9a725191d4208396d546dd54b7d7d0ee8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47c56e2b_8627fc6e",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T02:36:00Z",
+      "side": 1,
+      "message": "- Given we are comparing against a vector size, use size_t everywhere.\n- When casting, use C++ casts, not C-style casts.\n- Given there\u0027s potential for overflows, can we use FX_SAFE_SIZE_T (and related types) to help make sure this does not overflow?",
+      "revId": "23816d9a725191d4208396d546dd54b7d7d0ee8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1c7230a_9726ae4f",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T02:36:00Z",
+      "side": 1,
+      "message": "If this code is going to do an unsigned comparison, then just call rgSpecifiedColumnWidths.size() here.",
+      "range": {
+        "startLine": 226,
+        "startChar": 12,
+        "endLine": 226,
+        "endChar": 69
+      },
+      "revId": "23816d9a725191d4208396d546dd54b7d7d0ee8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
