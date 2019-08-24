@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62cd7e2c_41d621c7",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T02:41:42Z",
+      "side": 1,
+      "message": "Break the long lines like this one and line 8.",
+      "revId": "277332991a05b6ee3b00ccc6d0f24a7df6e02c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c776b5ac_5146f176",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T02:41:42Z",
+      "side": 1,
+      "message": "Just inline object 4 0 and object 5 0, since they are so small.",
+      "revId": "277332991a05b6ee3b00ccc6d0f24a7df6e02c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dda1703_088d08b3",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T02:41:42Z",
+      "side": 1,
+      "message": "If it doesn\u0027t matter, can we shorten the list?",
+      "revId": "277332991a05b6ee3b00ccc6d0f24a7df6e02c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86bcc41_eb5b6d68",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T02:41:42Z",
+      "side": 1,
+      "message": "Can we add a second annotation where /V and /TI refer to different options? (Assuming that even make sense.)",
+      "revId": "277332991a05b6ee3b00ccc6d0f24a7df6e02c4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
