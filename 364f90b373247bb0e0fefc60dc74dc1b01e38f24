@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "dba4943c_f2802222",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2369,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-24T00:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e22404c8_b6159ffb",
+      "revId": "364f90b373247bb0e0fefc60dc74dc1b01e38f24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "320d8844_fa7fd8cd",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 6
@@ -53,6 +71,24 @@
       "writtenOn": "2019-08-24T00:16:47Z",
       "side": 1,
       "message": "Just to be clear, \"the first selection\" is at index 2 and \"the second selection\" is at index 4 ? i.e. Currently, the loop below shows option 0 selected, but the desired behavior is 2 and 4?",
+      "revId": "364f90b373247bb0e0fefc60dc74dc1b01e38f24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9149701_c9a4d15e",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2372,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-24T00:29:41Z",
+      "side": 1,
+      "message": "Sorry, the desired behavior is just 2. When you click on a listbox form with multiple options selected, every option deselects expect for the option you clicked on. I\u0027ll change it to be much clearer. \n\nCurrently, option 0 gets selected because the top visible option is 0.",
+      "parentUuid": "320d8844_fa7fd8cd",
       "revId": "364f90b373247bb0e0fefc60dc74dc1b01e38f24",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
