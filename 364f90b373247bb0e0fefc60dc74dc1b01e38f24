@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e22404c8_b6159ffb",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2369,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T00:16:47Z",
+      "side": 1,
+      "message": "Is this still needed? i.e. Will the click do the focus anyway?",
+      "revId": "364f90b373247bb0e0fefc60dc74dc1b01e38f24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320d8844_fa7fd8cd",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2372,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T00:16:47Z",
+      "side": 1,
+      "message": "Just to be clear, \"the first selection\" is at index 2 and \"the second selection\" is at index 4 ? i.e. Currently, the loop below shows option 0 selected, but the desired behavior is 2 and 4?",
+      "revId": "364f90b373247bb0e0fefc60dc74dc1b01e38f24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
