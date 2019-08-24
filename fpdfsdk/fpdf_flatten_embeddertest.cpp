@@ -37,6 +37,25 @@ TEST_F(FPDFFlattenEmbedderTest, FlatPrint) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFFlattenEmbedderTest, BUG_861842) {
+  static const char kCheckboxHash[] = "594265790b81df2d93120d33b72a6ada";
+  EXPECT_TRUE(OpenDocument("bug_861842.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  ScopedFPDFBitmap bitmap = RenderLoadedPageWithFlags(page, FPDF_ANNOT);
+  CompareBitmap(bitmap.get(), 100, 120, kCheckboxHash);
+
+  EXPECT_EQ(FLATTEN_SUCCESS, FPDFPage_Flatten(page, FLAT_PRINT));
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  UnloadPage(page);
+
+  // TODO(crbug.com/861842): This should not render blank.
+  static const char kBlankPageHash[] = "48400809c3862dae64b0cd00d51057a4";
+  VerifySavedDocument(100, 120, kBlankPageHash);
+}
+
 TEST_F(FPDFFlattenEmbedderTest, BUG_890322) {
   static const char md5_hash[] = "6c674642154408e877d88c6c082d67e9";
   EXPECT_TRUE(OpenDocument("bug_890322.pdf"));
