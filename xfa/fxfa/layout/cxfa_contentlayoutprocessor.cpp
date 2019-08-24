@@ -222,8 +222,8 @@ void RelocateTableRowCells(const RetainPtr<CXFA_ContentLayoutItem>& pLayoutRow,
     int32_t nColSpan = nOriginalColSpan;
     float fColSpanWidth = 0;
     if (nColSpan == -1 ||
-        nCurrentColIdx + nColSpan >
-            pdfium::CollectionSize<int32_t>(rgSpecifiedColumnWidths)) {
+        static_cast<size_t>(nCurrentColIdx) + static_cast<size_t>(nColSpan) >
+            rgSpecifiedColumnWidths.size()) {
       nColSpan = pdfium::CollectionSize<int32_t>(rgSpecifiedColumnWidths) -
                  nCurrentColIdx;
     }
