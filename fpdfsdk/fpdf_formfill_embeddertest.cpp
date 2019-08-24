@@ -2356,8 +2356,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckIfMultipleSelected) {
   // opening.
   FocusOnMultiSelectMultipleSelectedForm();
   for (int i = 0; i < 5; i++) {
-    // TODO(bug_1377): Should be selected at index 2 and index 4.
-    bool expected = false;
+    bool expected = (i == 2 || i == 4);
     CheckIsIndexSelected(i, expected);
   }
 }
