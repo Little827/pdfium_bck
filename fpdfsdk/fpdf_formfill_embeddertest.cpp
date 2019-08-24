@@ -2201,13 +2201,12 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
     CheckIsIndexSelected(i, expected);
   }
 
-  // TODO(bug_1377): Behavior should be changed to the one described below.
   // Multiselect field set to 'Cherry' (index 2), which is index 1 among the
   // visible form options because the listbox is scrolled down to have 'Banana'
   // (index 1) at the top.
   ClickOnMultiSelectFormOption(1);
   for (int i = 0; i < 26; i++) {
-    bool expected = i == 1;
+    bool expected = i == 2;
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -2342,8 +2341,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
 
   // Check that above actions are interchangeable with click actions, should be
   // able to use a combination of both.
-  // TODO(bug_1377): Change to click on form option 0 instead of form option 1
-  ClickOnMultiSelectFormOption(1);
+  ClickOnMultiSelectFormOption(0);
   for (int i = 0; i < 26; i++) {
     bool expected = i == 1;
     CheckIsIndexSelected(i, expected);
@@ -2356,8 +2354,7 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest, CheckIfMultipleSelected) {
   // opening.
   FocusOnMultiSelectMultipleSelectedForm();
   for (int i = 0; i < 5; i++) {
-    // TODO(bug_1377): Should be selected at index 2 and index 4.
-    bool expected = false;
+    bool expected = (i == 2 || i == 4);
     CheckIsIndexSelected(i, expected);
   }
 }
@@ -2367,12 +2364,11 @@ TEST_F(FPDFFormFillListBoxFormEmbedderTest,
   // Multiselect field set to 'Gamma' (index 2) and 'Epsilon' (index 4) upon
   // opening.
 
-  // TODO(bug_1377): Behavior should be changed to the one described below.
   // The top visible option is 'Gamma' (index 2), so the first selection should
   // not change. The second selection, 'Epsilon,' should be deselected.
   ClickOnMultiSelectMultipleSelectedFormOption(0);
   for (int i = 0; i < 5; i++) {
-    bool expected = i == 0;
+    bool expected = i == 2;
     CheckIsIndexSelected(i, expected);
   }
 }

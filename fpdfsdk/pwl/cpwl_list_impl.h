@@ -60,6 +60,7 @@ class CPWL_ListCtrl {
 
   void SetScrollPos(const CFX_PointF& point);
   void ScrollToListItem(int32_t nItemIndex);
+  void ScrollToListItemForKillFocus(int32_t nItemIndex);
   CFX_FloatRect GetItemRect(int32_t nIndex) const;
   int32_t GetCaret() const { return m_nCaretIndex; }
   int32_t GetSelect() const { return m_nSelItem; }
