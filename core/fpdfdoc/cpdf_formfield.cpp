@@ -223,11 +223,14 @@ bool CPDF_FormField::ResetField(NotificationOption notify) {
       if (pDV)
         csDValue = pDV->GetUnicodeText();
 
-      const CPDF_Object* pV =
-          FPDF_GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kV);
       WideString csValue;
-      if (pV)
-        csValue = pV->GetUnicodeText();
+      {
+        // Limit the scope of |pV| because it may get invalidated below.
+        const CPDF_Object* pV =
+            FPDF_GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kV);
+        if (pV)
+          csValue = pV->GetUnicodeText();
+      }
 
       const CPDF_Object* pRV = FPDF_GetFieldAttr(m_pDict.Get(), "RV");
       if (!pRV && (csDValue == csValue))
@@ -339,12 +342,8 @@ WideString CPDF_FormField::GetValue(bool bDefault) const {
       FPDF_GetFieldAttr(m_pDict.Get(), bDefault ? pdfium::form_fields::kDV
                                                 : pdfium::form_fields::kV);
   if (!pValue) {
-    if (!bDefault) {
-      if (m_Type == kRichText)
-        pValue = FPDF_GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kV);
-      if (!pValue && m_Type != kText)
-        pValue = FPDF_GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kDV);
-    }
+    if (!bDefault && m_Type != kText)
+      pValue = FPDF_GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kDV);
     if (!pValue)
       return WideString();
   }
