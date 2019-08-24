@@ -1,0 +1,64 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm <<
+    /Fields [ 5 0 R 6 0 R ] /DR 4 0 R
+  >>
+>>
+endobj
+{{object 2 0}} <<
+  /Count 1 /Kids [ 3 0 R ] /Type /Pages
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <<
+      /F1 4 0 R
+    >>
+  >>
+  /MediaBox [ 0 0 300 300 ]
+  /Annots [ 5 0 R 6 0 R]
+>>
+endobj
+{{object 4 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+>>
+endobj
+{{object 5 0}}
+<<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Ch
+  /Ff 0
+  /T (Listbox_LastSelected)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 210 200 240 ]
+  /Opt [(Northwest Territories) (Nunavut) (Yukon) ]
+  /V (Yukon)
+  /TI 2
+>>
+endobj
+{{object 6 0}}
+<<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Ch
+  /Ff 0
+  /T (Listbox_TopIndexNotSelected)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [ 100 60 200 90 ]
+  /Opt [(American Samoa) (Guam) (Northern Mariana Islands) (Puerto Rico)
+        (Virgin Islands) ]
+  /V (Virgin Islands)
+  /TI 3
+>>
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
