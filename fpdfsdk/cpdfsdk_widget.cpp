@@ -572,7 +572,10 @@ void CPDFSDK_Widget::ClearSelection(NotificationOption notify) {
 #endif  // PDF_ENABLE_XFA
 }
 
-void CPDFSDK_Widget::SetTopVisibleIndex(int index) {}
+void CPDFSDK_Widget::SetTopVisibleIndex(int index) {
+  CPDF_FormField* pFormField = GetFormField();
+  pFormField->SetTopVisibleIndex(index);
+}
 
 void CPDFSDK_Widget::SetAppModified() {
   m_bAppModified = true;

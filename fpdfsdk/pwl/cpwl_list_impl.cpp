@@ -440,6 +440,14 @@ void CPWL_ListCtrl::ScrollToListItem(int32_t nItemIndex) {
   }
 }
 
+void CPWL_ListCtrl::ScrollToListItemForKillFocus(int32_t nItemIndex) {
+  if (!IsValid(nItemIndex))
+    return;
+
+  CFX_FloatRect rcItem = GetItemRectInternal(nItemIndex);
+  SetScrollPosY(rcItem.top);
+}
+
 void CPWL_ListCtrl::SetScrollInfo() {
   if (m_pNotify) {
     CFX_FloatRect rcPlate = m_rcPlate;
