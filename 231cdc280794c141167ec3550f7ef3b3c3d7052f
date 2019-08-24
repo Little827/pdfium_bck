@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a6f4fe8_6e59167d",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T01:58:09Z",
+      "side": 1,
+      "message": "Put on the previous line, like braces in C++ code. Try to write it like hello_world.in.",
+      "revId": "231cdc280794c141167ec3550f7ef3b3c3d7052f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb3bd7a_5d1c8178",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T01:58:09Z",
+      "side": 1,
+      "message": "If this isn\u0027t relevant, then just leave the stream empty.",
+      "revId": "231cdc280794c141167ec3550f7ef3b3c3d7052f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "688b6d92_0ddd7549",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-24T01:58:09Z",
+      "side": 1,
+      "message": "Put after /Type so we can more easily tell what this is.",
+      "revId": "231cdc280794c141167ec3550f7ef3b3c3d7052f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
