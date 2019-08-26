@@ -16,6 +16,23 @@
       "revId": "523caaa37a6dc0fdb5126b3ecd6723e98dcaab8b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fedd9805_29d06eb6",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-26T16:40:54Z",
+      "side": 1,
+      "message": "I\u0027m still not sure this is the right solution. If this writes into the dictionary, I think it will affected the /TI value in saved PDFs. Do other PDF viewers change the /TI value on save?",
+      "revId": "523caaa37a6dc0fdb5126b3ecd6723e98dcaab8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
