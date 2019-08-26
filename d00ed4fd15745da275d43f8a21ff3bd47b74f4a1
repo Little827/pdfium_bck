@@ -34,6 +34,57 @@
       "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6afb2f_363d2703",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-26T22:34:06Z",
+      "side": 1,
+      "message": "Can you check and see if we can drop this /Resources dictionary and if everything still renders the same in PDFium and Acrobat? I suspect it may not be needed.",
+      "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f3cfcc_8a2bfabe",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-26T22:34:06Z",
+      "side": 1,
+      "message": "Merge with previous line, more below. Please look carefully at the changes being made in https://pdfium-review.googlesource.com/59939 and try to apply the same changes here.",
+      "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44bdcab7_a701cf5f",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-26T22:34:06Z",
+      "side": 1,
+      "message": "If I called this one \"Listbox_TopIndexNotSelected\" and object 7 0 \"Listbox_TopIndexNearSelected\", the names would still apply. Should we give them names that more distinctively describe them?",
+      "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
