@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d83b3324_0b829a31",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-26T19:01:59Z",
+      "side": 1,
+      "message": "For new .in files, we\u0027ve been typically only putting 1 key-value pair per line. I\u0027ve sent you https://pdfium-review.googlesource.com/59939 to update some of the existing forms PDFs you have been looking at to the preferred style. Let\u0027s do the same here.",
+      "revId": "8be4879eb4d32e6cd46ac0e989453e0d89a303de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d5d8e7_1cd07628",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-26T19:01:59Z",
+      "side": 1,
+      "message": "With this list box, even though the /V and /TI point to different options, it still renders like object 5 0, in that the second to last option is at the top. This is an interesting test case, which we should keep, but can we add another listbox where /V and /TI point to options that are further apart?",
+      "revId": "8be4879eb4d32e6cd46ac0e989453e0d89a303de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
