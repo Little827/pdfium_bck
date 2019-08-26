@@ -17,6 +17,24 @@
       "revId": "8e1fd122a9cf6c7d1ad5ae143ec243b4d8f3f2c2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b3e2fd3_157fa65f",
+        "filename": "testing/resources/rectangles.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-26T23:02:49Z",
+      "side": 1,
+      "message": "Yes, fixup_pdf_template.py wrote out rectangles.pdf. It\u0027s different because https://pdfium-review.googlesource.com/32571 changed the {{trailer}} formatting to the style we prefer.\n\nBased on the git history, this was checked in at the same time as rectangles.in. I don\u0027t think anyone would handwrite the PDF in a situation like that.",
+      "parentUuid": "1cb18d42_0a1e67e8",
+      "revId": "8e1fd122a9cf6c7d1ad5ae143ec243b4d8f3f2c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
