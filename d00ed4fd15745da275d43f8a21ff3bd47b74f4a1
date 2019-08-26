@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0989077d_bf319ba9",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-26T23:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69dede0d_0fb45215",
+      "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6afb2f_363d2703",
         "filename": "testing/resources/pixel/bug_1386.in",
         "patchSetId": 5
@@ -51,6 +69,24 @@
       "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40afedb4_a6735b4e",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-26T23:13:33Z",
+      "side": 1,
+      "message": "We\u0027ll keep it because Acrobat needs a font to render the form appearance stream.",
+      "parentUuid": "9a6afb2f_363d2703",
+      "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "04668edb_e1908061",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-26T23:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "141c1711_fc4ffab8",
+      "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44bdcab7_a701cf5f",
         "filename": "testing/resources/pixel/bug_1386.in",
         "patchSetId": 5
@@ -103,6 +157,24 @@
       "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f2c38e_0b54ebd3",
+        "filename": "testing/resources/pixel/bug_1386.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-26T23:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44bdcab7_a701cf5f",
+      "revId": "d00ed4fd15745da275d43f8a21ff3bd47b74f4a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
