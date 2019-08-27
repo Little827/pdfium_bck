@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a44e7733_fe5f77c4",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5540
+      },
+      "writtenOn": "2019-08-27T23:01:50Z",
+      "side": 1,
+      "message": "It seems like this expression could overflow, result in a small value, and pass this test. Thus there could still be an OOB index to `rgSpecifiedColumnWidths` later on anyway?\n\nAlso: Is it possible to just declare `nCurrentColIdx` and/or `nColSpan` to be `size_t` in the first place?\n\nYou are probably better off using checked_math.h?",
+      "revId": "4e98ba1941b693dc046838ed15a7a22b2a171e5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
