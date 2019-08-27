@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f27de9c_481aa8c6",
+        "filename": "third_party/agg23/agg_rasterizer_scanline_aa.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-08-27T18:25:35Z",
+      "side": 1,
+      "message": "It\u0027s a bit hard to follow, but can\u0027t this overflow the same way?",
+      "revId": "86a33a2e0f8c1aeaa9335318d1d0ab8d6e14be90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
