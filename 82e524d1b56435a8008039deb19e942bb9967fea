@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d604fd6d_52171760",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-08-27T23:03:07Z",
+      "side": 1,
+      "message": "My guess (given Lei\u0027s previous comments re: supporting old \u0026 new callers) is that this will have to be at the end of the structure.\n\nI don\u0027t know how that interacts with your v2 vs v4 stuff.  That stuff seems a bit odd.  (I\u0027d probably drop v4, and set the v2 pointers to NULL in v3 if XFA support isn\u0027t enabled... but Lei should probably chime in about this.)",
+      "range": {
+        "startLine": 681,
+        "startChar": 2,
+        "endLine": 701,
+        "endChar": 0
+      },
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
