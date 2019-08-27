@@ -16,6 +16,24 @@
       "revId": "86a33a2e0f8c1aeaa9335318d1d0ab8d6e14be90",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51615444_2c4bb15d",
+        "filename": "third_party/agg23/agg_rasterizer_scanline_aa.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-27T20:34:37Z",
+      "side": 1,
+      "message": "Thanks for catching that. I redid this change to have separate booleans to track |area| vs. |cover| overflow. For |area|, keep going in this while-loop, because |area| resets with every iteration. However, for |cover| break out of this while-loop on failure because |cover| is set one level higher.",
+      "parentUuid": "2f27de9c_481aa8c6",
+      "revId": "86a33a2e0f8c1aeaa9335318d1d0ab8d6e14be90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
