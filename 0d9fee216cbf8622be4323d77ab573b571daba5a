@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "404f5684_1059792b",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-08-27T22:23:44Z",
+      "side": 1,
+      "message": "Is it possible to get alpha here too? And if we\u0027re not retrieving it, shouldn\u0027t it be set to full alpha vs 0?",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03139967_adfea773",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-08-27T22:23:44Z",
+      "side": 1,
+      "message": "I see that CPDF_ColorState::SetColor sets 0xFFFFFFFF when GetRGB fails - is that worth returning here for consistency?",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df10e57e_0eb48efd",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-08-27T22:23:44Z",
+      "side": 1,
+      "message": "fx_dib.h has a handy ArgbEncode function that you can use here.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 47
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc714ba_c24773b0",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-08-27T22:23:44Z",
+      "side": 1,
+      "message": "These modes seem a bit arbitrary - is there a helper you can use instead? Like TextRenderingModeIsStrokeMode?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d48bc8_bd129c9b",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-08-27T22:23:44Z",
+      "side": 1,
+      "message": "Should these be in both the fill color and stroke color?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 52
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f73f781_1bf752a6",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-08-27T22:23:44Z",
+      "side": 1,
+      "message": "Let\u0027s add cases for  \n\ncase TextRenderingMode::MODE_FILL_STROKE:\ncase TextRenderingMode::MODE_FILL_STROKE_CLIP:",
+      "range": {
+        "startLine": 1351,
+        "startChar": 0,
+        "endLine": 1353,
+        "endChar": 33
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
