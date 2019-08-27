@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea0f452_7fb33f2e",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-27T18:11:12Z",
+      "side": 1,
+      "message": "The preferred style these days is to write the following, verbatim:\n\n/*handle\u003d*/nullptr",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 59
+      },
+      "revId": "42975c6aa2a610567915b82cb293eeb8135b84bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5f01e57_24101c82",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-27T18:11:12Z",
+      "side": 1,
+      "message": "We usually associate mocks with googlemock usage. Maybe rename to \"FakePause\" ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 15
+      },
+      "revId": "42975c6aa2a610567915b82cb293eeb8135b84bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1745c410_687f5875",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-27T18:11:12Z",
+      "side": 1,
+      "message": "Make this const since it never changes.",
+      "revId": "42975c6aa2a610567915b82cb293eeb8135b84bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d830356_3dd5c1c3",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-27T18:11:12Z",
+      "side": 1,
+      "message": "Not sure where you found this, but we have mostly moved away from _FX_PLATFORM_ usage, and standarized on the same way of doing platform checks as Chromium. You can also do win/mac/other if that order makes more sense to you. e.g.\n\n#include \"build/build_config.h\"\n\n...\n\n#if defined(OS_WIN)\n...\n#elif defined(OS_MACOSX)\n...\n#else\n...\n#endif",
+      "revId": "42975c6aa2a610567915b82cb293eeb8135b84bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
