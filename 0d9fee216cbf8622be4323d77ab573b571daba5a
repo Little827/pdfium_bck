@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "41a79ef2_d889db00",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-08-27T23:43:01Z",
+      "side": 1,
+      "message": "Looks OK to me.  These modes stroke the text (they also fill it).  If possible, though, replace with |*is_rendered \u003d TextRenderingModeIsStrokeMode(rendering_mode)|.",
+      "parentUuid": "91d48bc8_bd129c9b",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 52
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f73f781_1bf752a6",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 10
@@ -133,6 +157,29 @@
         "startChar": 0,
         "endLine": 1353,
         "endChar": 33
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe29bc95_a6a24400",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-08-27T23:43:01Z",
+      "side": 1,
+      "message": "Given what you know of the expected uses of these... would it make more sense to combine them into a single function?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 29
       },
       "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
