@@ -177,3 +177,22 @@ TEST_F(FPDFStructTreeEmbedderTest, GetTitle) {
 
   UnloadPage(page);
 }
+
+// Validate StructTree gets loaded if / StructTreeRoot object is
+// present in XRefStm for Linearized Tagged PDFs
+TEST_F(FPDFStructTreeEmbedderTest, CheckStructTreeForTaggedLinearizedPdf) {
+  ASSERT_TRUE(OpenDocument("linearized_tagged.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+    ASSERT_EQ(1, FPDF_StructTree_CountChildren(struct_tree.get()));
+    FPDF_STRUCTELEMENT element =
+        FPDF_StructTree_GetChildAtIndex(struct_tree.get(), 0);
+    ASSERT_TRUE(element);
+  }
+
+  UnloadPage(page);
+}
