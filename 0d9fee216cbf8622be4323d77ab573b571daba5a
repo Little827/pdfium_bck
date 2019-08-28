@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "faa5aff2_d894645a",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Done. I don\u0027t see any references to the alpha value. It\u0027s now set to full alpha instead of 0.",
+      "parentUuid": "404f5684_1059792b",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03139967_adfea773",
         "filename": "core/fpdfapi/page/cpdf_color.cpp",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f88f3c2a_b5d4a2c1",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03139967_adfea773",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5f746fbf_7b809436",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df10e57e_0eb48efd",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 47
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dc714ba_c24773b0",
         "filename": "fpdfsdk/fpdf_text.cpp",
         "patchSetId": 10
@@ -91,6 +163,54 @@
       "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed2aef21_18caa1f2",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc714ba_c24773b0",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c39ba5dc_67fc7350",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc714ba_c24773b0",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "189e20ae_d979079d",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a79ef2_d889db00",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 52
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f73f781_1bf752a6",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 10
@@ -164,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "c9f51a05_87ff687d",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f73f781_1bf752a6",
+      "range": {
+        "startLine": 1351,
+        "startChar": 0,
+        "endLine": 1353,
+        "endChar": 33
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe29bc95_a6a24400",
         "filename": "public/fpdf_text.h",
         "patchSetId": 10
@@ -184,6 +352,30 @@
       "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8385bb6_485653e4",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T19:08:13Z",
+      "side": 1,
+      "message": "Since we always call both (at the only place we make usage of it, in pdfium_page.cc), I agree with you it would make more sense to see them in a same function. Done.",
+      "parentUuid": "fe29bc95_a6a24400",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "0d9fee216cbf8622be4323d77ab573b571daba5a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
