@@ -117,6 +117,14 @@ TEST_F(FPDFTextEmbedderTest, Text) {
   EXPECT_NEAR(49.844, bottom, 0.001);
   EXPECT_NEAR(55.520, top, 0.001);
 
+  EXPECT_TRUE(
+      FPDFText_GetLooseCharBox(textpage, 4, &left, &right, &bottom, &top));
+  EXPECT_NEAR(40.664, left, 0.001);
+  EXPECT_NEAR(46.664, right, 0.001);
+  EXPECT_NEAR(47.272, bottom, 0.001);
+  EXPECT_NEAR(59.272, top, 0.001);
+  EXPECT_NEAR(12.000, top - bottom, 0.001);
+
   double x = 0.0;
   double y = 0.0;
   EXPECT_TRUE(FPDFText_GetCharOrigin(textpage, 4, &x, &y));
