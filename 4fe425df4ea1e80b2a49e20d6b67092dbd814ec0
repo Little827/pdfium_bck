@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "282fc02d_cf3be3ee",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T23:49:03Z",
+      "side": 1,
+      "message": "I don\u0027t think this is an issue since we use the font box of a character and not the character box itself, but just to be sure: if the character at |index| is a CTRL character (empty box, i.e. height\u003d0), could it crash due to a division by 0?\n\nAlso, what about PDFs with missing or bogus font sizes? In PDFiumPage::GetTextRunInfo(), we calculate an estimated font size to overcome this issue that is set based on some heuristics. I don\u0027t think it should be replicated here (wouldn\u0027t be possible either), but should we add a condition to the if statement to at least make sure we don\u0027t get here when font size is 0?",
+      "revId": "4fe425df4ea1e80b2a49e20d6b67092dbd814ec0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29db3308_ed12b87e",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-08-28T23:49:03Z",
+      "side": 1,
+      "message": "I know git cl format doesn\u0027t do it automatically, but in a past CL, Lei suggested to align the comments manually in order to have the \"Returned bu FPDFText_LoadPage...\" starts at the same place as \"Handle to a text page...\". Easier to read!\n\nLook at FPDFText_GetCharAngle to have an idea. It would be great if all comments of this file could be like this, but it\u0027s definitely out of the scope of this CL.",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "4fe425df4ea1e80b2a49e20d6b67092dbd814ec0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
