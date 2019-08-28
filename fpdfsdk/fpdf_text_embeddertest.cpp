@@ -771,7 +771,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   for (size_t i = 0; i < num_chars1; i++) {
     int flags = -1;
     unsigned long length =
-        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags);
+        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags, nullptr);
     static constexpr unsigned long expected_length = sizeof(kExpectedFontName1);
     ASSERT_EQ(expected_length, length);
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
@@ -780,7 +780,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
     flags = -1;
     EXPECT_EQ(expected_length,
               FPDFText_GetFontInfo(textpage, i, font_name.data(),
-                                   font_name.size(), &flags));
+                                   font_name.size(), &flags, nullptr));
     EXPECT_STREQ(kExpectedFontName1, font_name.data());
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
   }
@@ -790,23 +790,23 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   std::fill(font_name.begin(), font_name.end(), 'a');
   EXPECT_EQ(sizeof(kExpectedFontName1),
             FPDFText_GetFontInfo(textpage, 0, font_name.data(),
-                                 font_name.size(), nullptr));
+                                 font_name.size(), nullptr, nullptr));
   for (char a : font_name)
     EXPECT_EQ('a', a);
 
   // The text is "Hello, world!\r\nGoodbye, world!", so the next two characters
   // do not have any font information.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, num_chars1, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, num_chars1 + 1, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
 
   size_t num_chars2 = strlen("Goodbye, world!");
   const char kExpectedFontName2[] = "Helvetica";
   for (size_t i = num_chars1 + 2; i < num_chars1 + num_chars2 + 2; i++) {
     int flags = -1;
     unsigned long length =
-        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags);
+        FPDFText_GetFontInfo(textpage, i, nullptr, 0, &flags, nullptr);
     static constexpr unsigned long expected_length = sizeof(kExpectedFontName2);
     ASSERT_EQ(expected_length, length);
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
@@ -815,7 +815,7 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
     flags = -1;
     EXPECT_EQ(expected_length,
               FPDFText_GetFontInfo(textpage, i, font_name.data(),
-                                   font_name.size(), &flags));
+                                   font_name.size(), &flags, nullptr));
     EXPECT_STREQ(kExpectedFontName2, font_name.data());
     EXPECT_EQ(FXFONT_NONSYMBOLIC, flags);
   }
@@ -824,16 +824,16 @@ TEST_F(FPDFTextEmbedderTest, GetFontInfo) {
   // crash.
   // No textpage.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(nullptr, 0, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
   // No buffer.
   EXPECT_EQ(sizeof(kExpectedFontName1),
-            FPDFText_GetFontInfo(textpage, 0, nullptr, 0, nullptr));
+            FPDFText_GetFontInfo(textpage, 0, nullptr, 0, nullptr, nullptr));
   // Negative index.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, -1, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
   // Out of bounds index.
   EXPECT_EQ(0u, FPDFText_GetFontInfo(textpage, 1000, font_name.data(),
-                                     font_name.size(), nullptr));
+                                     font_name.size(), nullptr, nullptr));
 
   FPDFText_ClosePage(textpage);
   UnloadPage(page);
@@ -1247,6 +1247,98 @@ TEST_F(FPDFTextEmbedderTest, GetCharAngle) {
       FPDFText_GetCharAngle(text_page, kSubstringsSize[0] + kSubstringsSize[1] +
                                            kSubstringsSize[2]),
       0.001);
+
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}
+
+TEST_F(FPDFTextEmbedderTest, GetFontWeight) {
+  ASSERT_TRUE(OpenDocument("font_weight.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  EXPECT_EQ(1, FPDFText_CountChars(text_page));
+
+  // The font used for this text only specifies /StemV (80); the weight value
+  // that is returned should be calculated from that (80*5 == 400).
+  int weight;
+  FPDFText_GetFontInfo(text_page, 0, nullptr, 0, nullptr, &weight);
+  EXPECT_EQ(400, weight);
+
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}
+
+TEST_F(FPDFTextEmbedderTest, GetColors) {
+  ASSERT_TRUE(OpenDocument("text_color.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  ASSERT_EQ(5, FPDFText_CountChars(text_page));
+
+  ASSERT_EQ(0,
+            FPDFText_GetColors(nullptr, 0, nullptr, nullptr, nullptr, nullptr));
+  ASSERT_EQ(
+      0, FPDFText_GetColors(text_page, -1, nullptr, nullptr, nullptr, nullptr));
+  ASSERT_EQ(0, FPDFText_GetColors(text_page, 314, nullptr, nullptr, nullptr,
+                                  nullptr));
+  ASSERT_EQ(
+      1, FPDFText_GetColors(text_page, 0, nullptr, nullptr, nullptr, nullptr));
+
+  const unsigned int kRedValue = 4294901760;
+  const unsigned int kGreenValue = 4278255360;
+
+  unsigned int fill_color;
+  unsigned int stroke_color;
+  FPDF_BOOL is_fill_rendered;
+  FPDF_BOOL is_stroke_rendered;
+  // In this test, fill_color is always red and stroke color is always green.
+  // What changes is the rendering mode.
+  // Rendering mode is 0 (MODE_FILL)
+  ASSERT_EQ(1, FPDFText_GetColors(text_page, 0, &fill_color, &stroke_color,
+                                  &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_EQ(1, is_fill_rendered);
+  ASSERT_EQ(0, is_stroke_rendered);
+
+  // Rendering mode is 1 (MODE_STROKE).
+  ASSERT_EQ(1, FPDFText_GetColors(text_page, 1, &fill_color, &stroke_color,
+                                  &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_EQ(0, is_fill_rendered);
+  ASSERT_EQ(1, is_stroke_rendered);
+
+  // Rendering mode is 2 (MODE_FILL_STROKE).
+  ASSERT_EQ(1, FPDFText_GetColors(text_page, 2, &fill_color, &stroke_color,
+                                  &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_EQ(1, is_fill_rendered);
+  ASSERT_EQ(1, is_stroke_rendered);
+
+  // Rendering mode is 3 (MODE_INVISIBLE).
+  ASSERT_EQ(1, FPDFText_GetColors(text_page, 3, &fill_color, &stroke_color,
+                                  &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_EQ(0, is_fill_rendered);
+  ASSERT_EQ(0, is_stroke_rendered);
+
+  // Rendering mode is 6 (MODE_FILL_STROKE_CLIP).
+  ASSERT_EQ(1, FPDFText_GetColors(text_page, 4, &fill_color, &stroke_color,
+                                  &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_EQ(1, is_fill_rendered);
+  ASSERT_EQ(1, is_stroke_rendered);
 
   FPDFText_ClosePage(text_page);
   UnloadPage(page);
