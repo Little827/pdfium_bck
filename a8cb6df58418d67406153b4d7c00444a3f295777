@@ -88,6 +88,24 @@
       "revId": "a8cb6df58418d67406153b4d7c00444a3f295777",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c2408e_d0551159",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-08-29T20:46:36Z",
+      "side": 1,
+      "message": "Yeah, that seems like a good idea. I\u0027ll make a bug about polishing up the implementation of this function and add it to my queue. \n\nAs for what the new code in this CL should do: We should be able check if an item is selected if the /I array is missing. That might not 100% be the described behavior in the spec, but it\u0027s still better than what we have. WDYT?",
+      "parentUuid": "89089985_6a45c82a",
+      "revId": "a8cb6df58418d67406153b4d7c00444a3f295777",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
