@@ -1,0 +1,26 @@
+diff --git a/third_party/lcms/src/cmsopt.c b/third_party/lcms/src/cmsopt.c
+index df6065192..5ea1b4c85 100644
+--- a/third_party/lcms/src/cmsopt.c
++++ b/third_party/lcms/src/cmsopt.c
+@@ -1542,18 +1542,9 @@ void MatShaperEval16(register const cmsUInt16Number In[],
+     b = p->Shaper1B[bi];
+ 
+     // Evaluate the matrix in 1.14 fixed point
+-    l1 =  ((cmsInt64Number)p->Mat[0][0] * r +
+-           (cmsInt64Number)p->Mat[0][1] * g +
+-           (cmsInt64Number)p->Mat[0][2] * b +
+-           p->Off[0] + 0x2000) >> 14;
+-    l2 =  ((cmsInt64Number)p->Mat[1][0] * r +
+-           (cmsInt64Number)p->Mat[1][1] * g +
+-           (cmsInt64Number)p->Mat[1][2] * b +
+-           p->Off[1] + 0x2000) >> 14;
+-    l3 =  ((cmsInt64Number)p->Mat[2][0] * r +
+-           (cmsInt64Number)p->Mat[2][1] * g +
+-           (cmsInt64Number)p->Mat[2][2] * b +
+-           p->Off[2] + 0x2000) >> 14;
++    l1 =  (p->Mat[0][0] * r + p->Mat[0][1] * g + p->Mat[0][2] * b + p->Off[0] + 0x2000) >> 14;
++    l2 =  (p->Mat[1][0] * r + p->Mat[1][1] * g + p->Mat[1][2] * b + p->Off[1] + 0x2000) >> 14;
++    l3 =  (p->Mat[2][0] * r + p->Mat[2][1] * g + p->Mat[2][2] * b + p->Off[2] + 0x2000) >> 14;
+ 
+     // Now we have to clip to 0..1.0 range
+     ri = (l1 < 0) ? 0 : ((l1 > 16384) ? 16384U : (cmsUInt32Number) l1);
