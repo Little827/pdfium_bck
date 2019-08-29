@@ -225,6 +225,7 @@ void CPDF_Font::CheckFontMetrics() {
   if (m_FontBBox.top == 0 && m_FontBBox.bottom == 0 && m_FontBBox.left == 0 &&
       m_FontBBox.right == 0) {
     FXFT_FaceRec* face = m_Font.GetFaceRec();
+    fprintf(stderr, "metrics for: %s\n", GetBaseFontName().c_str());
     if (face) {
       m_FontBBox.left = TT2PDF(FXFT_Get_Face_xMin(face), face);
       m_FontBBox.bottom = TT2PDF(FXFT_Get_Face_yMin(face), face);
@@ -232,6 +233,7 @@ void CPDF_Font::CheckFontMetrics() {
       m_FontBBox.top = TT2PDF(FXFT_Get_Face_yMax(face), face);
       m_Ascent = TT2PDF(FXFT_Get_Face_Ascender(face), face);
       m_Descent = TT2PDF(FXFT_Get_Face_Descender(face), face);
+      fprintf(stderr, "face: %d, %d, %d, %d, %d, %d\n", m_FontBBox.left, m_FontBBox.top, m_FontBBox.right, m_FontBBox.top, m_Ascent, m_Descent);
     } else {
       bool bFirst = true;
       for (int i = 0; i < 256; i++) {
@@ -257,6 +259,7 @@ void CPDF_Font::CheckFontMetrics() {
           }
         }
       }
+      fprintf(stderr, "not face: %d, %d, %d, %d\n", m_FontBBox.left, m_FontBBox.top, m_FontBBox.right, m_FontBBox.top);
     }
   }
   if (m_Ascent == 0 && m_Descent == 0) {
@@ -264,6 +267,7 @@ void CPDF_Font::CheckFontMetrics() {
     m_Ascent = rect.bottom == rect.top ? m_FontBBox.top : rect.top;
     rect = GetCharBBox('g');
     m_Descent = rect.bottom == rect.top ? m_FontBBox.bottom : rect.bottom;
+    fprintf(stderr, "update ascent/descent: %d, %d\n", m_Ascent, m_Descent);
   }
 }
 
