@@ -531,10 +531,12 @@ bool CPDF_FormField::IsItemSelected(int index) const {
     return true;
 
   WideString opt_value = GetOptionValue(index);
+  bool bReadFromV = true;
   const CPDF_Object* pValue =
       FPDF_GetFieldAttr(m_pDict.Get(), pdfium::form_fields::kV);
   if (!pValue) {
     pValue = FPDF_GetFieldAttr(m_pDict.Get(), "I");
+    bReadFromV = false;
     if (!pValue)
       return false;
   }
@@ -551,6 +553,14 @@ bool CPDF_FormField::IsItemSelected(int index) const {
   const CPDF_Array* pArray = pValue->AsArray();
   if (!pArray)
     return false;
+
+  if (bReadFromV) {
+    CPDF_ArrayLocker locker(pArray);
+    for (const auto& pObj : locker) {
+      if (pObj && pObj->GetUnicodeText() == opt_value)
+        return true;
+    }
+  }
 
   for (int i = 0; i < CountSelectedOptions(); ++i) {
     if (GetSelectedOptionIndex(i) == index) {
