@@ -70,6 +70,24 @@
       "revId": "a8cb6df58418d67406153b4d7c00444a3f295777",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89089985_6a45c82a",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-29T20:27:01Z",
+      "side": 1,
+      "message": "To be clear, I said to put off making this function 100% correct, because that is non-trivial. I know you want this CL to go in, and I\u0027m fine with that, but I just want to make sure you have a good understanding of what /V and /I do.\n\nSo for this CL, our goal is to read from both /V and /I, assuming they are as arrays. CountSelectedOptions() already takes care of /I, so what should the new code in this CL do? Is CountSelectedItems() the best way to do that?",
+      "parentUuid": "6ce9391a_3cd4aac0",
+      "revId": "a8cb6df58418d67406153b4d7c00444a3f295777",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
