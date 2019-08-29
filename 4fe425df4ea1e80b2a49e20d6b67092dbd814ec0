@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3aa4c10a_a6292e23",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-08-29T00:40:18Z",
+      "side": 1,
+      "message": "It\u0027d be a pretty unusual font to have a zero-height font bbox.  I\u0027ve added a DCHECK for it, though.  I\u0027ve also added a condition for m_FontSize \u003d\u003d 0.",
+      "parentUuid": "282fc02d_cf3be3ee",
+      "revId": "4fe425df4ea1e80b2a49e20d6b67092dbd814ec0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29db3308_ed12b87e",
         "filename": "public/fpdf_text.h",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "4fe425df4ea1e80b2a49e20d6b67092dbd814ec0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf256bbd_2d0c4782",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-08-29T00:40:18Z",
+      "side": 1,
+      "message": "This makes me happy.  (Presumably some older version of cl format messed up all the comments; they\u0027re all really ugly.)",
+      "parentUuid": "29db3308_ed12b87e",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "4fe425df4ea1e80b2a49e20d6b67092dbd814ec0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
