@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e678d76c_745e35c9",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-29T20:46:16Z",
+      "side": 1,
+      "message": "Use |FX_PI| instead. (In Chromium. use constants from base/numerics/math_constants.h)",
+      "revId": "e75d86d05bf989ac5dc4c522b282a563ed73a8b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab78f9e3_91324c91",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-29T20:46:16Z",
+      "side": 1,
+      "message": "Why is this block slightly different from line 1612?",
+      "revId": "e75d86d05bf989ac5dc4c522b282a563ed73a8b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319f91ac_5cf9609e",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-08-29T20:46:16Z",
+      "side": 1,
+      "message": "What happens if the italic angle changes between two DrawText() calls if there is no FlushText() call in between? (See FontChanged())",
+      "revId": "e75d86d05bf989ac5dc4c522b282a563ed73a8b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
