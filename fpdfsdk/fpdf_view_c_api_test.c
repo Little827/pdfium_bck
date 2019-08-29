@@ -391,6 +391,7 @@ int CheckPDFiumCApi() {
     CHK(FPDF_ClosePage);
     CHK(FPDF_CountNamedDests);
     CHK(FPDF_DestroyLibrary);
+    CHK(FPDF_DeviceDoubleToPage);
     CHK(FPDF_DeviceToPage);
     CHK(FPDF_DocumentHasValidCrossReferenceTable);
     CHK(FPDF_GetDocPermissions);
@@ -414,6 +415,7 @@ int CheckPDFiumCApi() {
     CHK(FPDF_LoadMemDocument);
     CHK(FPDF_LoadPage);
     CHK(FPDF_PageToDevice);
+    CHK(FPDF_PageToDeviceDouble);
 #ifdef _WIN32
     CHK(FPDF_RenderPage);
 #endif
