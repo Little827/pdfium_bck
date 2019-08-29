@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71e0c657_f1ca3666",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2019-08-29T15:14:33Z",
+      "side": 1,
+      "message": "Parse /XRefStm for Linearized PDFs",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6676ae2_000403b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2019-08-29T15:14:33Z",
+      "side": 1,
+      "message": "Can be rewritten as -\n\"This CL adds the logic to load /XRefStm for Linearized PDFs if available. Added a new method CPDF_Parser::LoadLinearizedCrossRefStream(), which\nwill be called from CPDF_DataAvail::CheckLinearizedData() to load /XRefStm. The CL includes a test to verify /StructTreeRoot object present in /XRefStm is getting loaded for Linearized PDF.\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a94a50b_d3b77f1b",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2019-08-29T15:14:33Z",
+      "side": 1,
+      "message": "What will happen if XRefStm is not present? It\u0027s possible that a Linearized PDF doesn\u0027t have XRefStm and we should not throw an error in that case.",
+      "range": {
+        "startLine": 768,
+        "startChar": 4,
+        "endLine": 771,
+        "endChar": 22
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e068e91b_687595e9",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2019-08-29T15:14:33Z",
+      "side": 1,
+      "message": "/StructTreeRoot",
+      "range": {
+        "startLine": 181,
+        "startChar": 38,
+        "endLine": 181,
+        "endChar": 54
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5914c9_3e36bbcd",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2019-08-29T15:14:33Z",
+      "side": 1,
+      "message": "/XRefStm",
+      "range": {
+        "startLine": 182,
+        "startChar": 14,
+        "endLine": 182,
+        "endChar": 22
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
