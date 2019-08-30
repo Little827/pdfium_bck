@@ -8,6 +8,7 @@
 #define FPDFSDK_CPDFSDK_ANNOTHANDLERMGR_H_
 
 #include <memory>
+#include <vector>
 
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fxcrt/fx_coordinates.h"
