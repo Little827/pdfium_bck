@@ -93,7 +93,8 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
                      int index,
                      void* buffer,
                      unsigned long buflen,
-                     int* flags) {
+                     int* flags,
+                     int* weight) {
   CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
   if (!textpage)
     return 0;
@@ -109,6 +110,8 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
 
   if (flags)
     *flags = font->GetFontFlags();
+  if (weight)
+    *weight = font->GetFontWeight();
 
   ByteString basefont = font->GetBaseFontName();
   unsigned long length = basefont.GetLength() + 1;
@@ -116,6 +119,35 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
     memcpy(buffer, basefont.c_str(), length);
 
   return length;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetColors(FPDF_TEXTPAGE text_page,
+                   int index,
+                   FPDF_COLORREF* fill_color,
+                   FPDF_COLORREF* stroke_color,
+                   FPDF_BOOL* is_fill_rendered,
+                   FPDF_BOOL* is_stroke_rendered) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+  if (fill_color)
+    *fill_color =
+        static_cast<FPDF_COLORREF>(charinfo.m_pTextObj->GetFillColorARGB());
+  if (stroke_color)
+    *stroke_color =
+        static_cast<FPDF_COLORREF>(charinfo.m_pTextObj->GetStrokeColorARGB());
+  if (is_fill_rendered)
+    *is_fill_rendered = TextRenderingModeIsFillMode(
+        charinfo.m_pTextObj->GetTextRenderingMode());
+  if (is_stroke_rendered)
+    *is_stroke_rendered = TextRenderingModeIsStrokeMode(
+        charinfo.m_pTextObj->GetTextRenderingMode());
+
+  return true;
 }
 
 FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetCharAngle(FPDF_TEXTPAGE text_page,
