@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cafab11b_a0ad3387",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-08-30T19:42:55Z",
+      "side": 1,
+      "message": "Bug: 994500",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62a832b_5d157042",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-08-30T19:42:55Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 13
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d450b1f9_484c6258",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-08-30T19:42:55Z",
+      "side": 1,
+      "message": "Not needed",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
