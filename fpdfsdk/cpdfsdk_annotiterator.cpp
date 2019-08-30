@@ -39,10 +39,11 @@ CPDFSDK_AnnotIterator::TabOrder GetTabOrder(CPDFSDK_PageView* pPageView) {
 
 }  // namespace
 
-CPDFSDK_AnnotIterator::CPDFSDK_AnnotIterator(CPDFSDK_PageView* pPageView,
-                                             CPDF_Annot::Subtype nAnnotSubtype)
+CPDFSDK_AnnotIterator::CPDFSDK_AnnotIterator(
+    CPDFSDK_PageView* pPageView,
+    const std::vector<CPDF_Annot::Subtype>& subtypes_to_iterate)
     : m_pPageView(pPageView),
-      m_nAnnotSubtype(nAnnotSubtype),
+      subtypes_to_iterate_(subtypes_to_iterate),
       m_eTabOrder(GetTabOrder(pPageView)) {
   GenerateResults();
 }
@@ -76,9 +77,16 @@ CPDFSDK_Annot* CPDFSDK_AnnotIterator::GetPrevAnnot(CPDFSDK_Annot* pAnnot) {
   return *(--iter);
 }
 
+bool CPDFSDK_AnnotIterator::ShouldIterateOverAnnot(
+    const CPDF_Annot::Subtype& annot_type) {
+  auto itr = std::find(subtypes_to_iterate_.begin(), subtypes_to_iterate_.end(),
+                       annot_type);
+  return itr != subtypes_to_iterate_.end();
+}
+
 void CPDFSDK_AnnotIterator::CollectAnnots(std::vector<CPDFSDK_Annot*>* pArray) {
   for (auto* pAnnot : m_pPageView->GetAnnotList()) {
-    if (pAnnot->GetAnnotSubtype() == m_nAnnotSubtype &&
+    if (ShouldIterateOverAnnot(pAnnot->GetAnnotSubtype()) &&
         !pAnnot->IsSignatureWidget()) {
       pArray->push_back(pAnnot);
     }

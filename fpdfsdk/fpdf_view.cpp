@@ -43,6 +43,7 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_pauseadapter.h"
 #include "fxjs/ijs_runtime.h"
+#include "public/fpdf_annot.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
@@ -176,12 +177,28 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
   if (config && config->version >= 2)
     IJS_Runtime::Initialize(config->m_v8EmbedderSlot, config->m_pIsolate);
 
+  if (config && config->version >= 3 && config->m_pFocusableAnnotTypes &&
+      config->m_nCountFocusableAnnotTypes) {
+    SetFocusableAnnotSubtypes(config->m_pFocusableAnnotTypes,
+                              config->m_nCountFocusableAnnotTypes);
+  } else {
+    // If it is older version or
+    // If version:3 but host does not provide valid list of focusable annots
+    // then enable default focusable annot, i.e., widget
+    unsigned int defaultFocusableAnnotSubtypes[] = {FPDF_ANNOT_WIDGET};
+    SetFocusableAnnotSubtypes(defaultFocusableAnnotSubtypes,
+                              sizeof(defaultFocusableAnnotSubtypes) /
+                                  sizeof(defaultFocusableAnnotSubtypes[0]));
+  }
+
   g_bLibraryInitialized = true;
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   if (!g_bLibraryInitialized)
     return;
+
+  ResetFocusableAnnotSubtypes();
 
 #ifdef PDF_ENABLE_XFA
   BC_Library_Destroy();
