@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37e23d5b_59a312e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-08-30T10:24:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71e0c657_f1ca3666",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6676ae2_000403b9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "943625731e496660462c38f09508df4294871b28",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165487b0_444fac65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-08-30T10:24:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6676ae2_000403b9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f2ac010d_aa1ca6fb",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-08-30T10:24:07Z",
+      "side": 1,
+      "message": "xrefstm_offset will be zero in this case. So calling LoadLinearizedCrossRefStream() only when xrefstm_offset is non zero.",
+      "parentUuid": "2a94a50b_d3b77f1b",
+      "range": {
+        "startLine": 768,
+        "startChar": 4,
+        "endLine": 771,
+        "endChar": 22
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e068e91b_687595e9",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5a1bf984_1c1ce181",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-08-30T10:24:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e068e91b_687595e9",
+      "range": {
+        "startLine": 181,
+        "startChar": 38,
+        "endLine": 181,
+        "endChar": 54
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea5914c9_3e36bbcd",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "943625731e496660462c38f09508df4294871b28",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f36d09f_58b744eb",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-08-30T10:24:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea5914c9_3e36bbcd",
+      "range": {
+        "startLine": 182,
+        "startChar": 14,
+        "endLine": 182,
+        "endChar": 22
+      },
+      "revId": "943625731e496660462c38f09508df4294871b28",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
