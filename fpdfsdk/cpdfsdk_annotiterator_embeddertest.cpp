@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <vector>
+
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/cpdfsdk_annotiterator.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -42,10 +44,12 @@ TEST_F(CPDFSDK_AnnotIteratorTest, CPDFSDK_AnnotIterator) {
   CPDFSDK_FormFillEnvironment* pFormFillEnv =
       CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle());
 
+  std::vector<CPDF_Annot::Subtype> annot_subtypes(
+      {CPDF_Annot::Subtype::WIDGET});
+
   {
     // Page 0 specifies "row order".
-    CPDFSDK_AnnotIterator iter(pFormFillEnv->GetPageView(0),
-                               CPDF_Annot::Subtype::WIDGET);
+    CPDFSDK_AnnotIterator iter(pFormFillEnv->GetPageView(0), annot_subtypes);
     CPDFSDK_Annot* pAnnot = iter.GetFirstAnnot();
     CheckRect(pAnnot->GetRect(), RightTop);
     pAnnot = iter.GetNextAnnot(pAnnot);
@@ -70,8 +74,7 @@ TEST_F(CPDFSDK_AnnotIteratorTest, CPDFSDK_AnnotIterator) {
   }
   {
     // Page 1 specifies "column order"
-    CPDFSDK_AnnotIterator iter(pFormFillEnv->GetPageView(1),
-                               CPDF_Annot::Subtype::WIDGET);
+    CPDFSDK_AnnotIterator iter(pFormFillEnv->GetPageView(1), annot_subtypes);
     CPDFSDK_Annot* pAnnot = iter.GetFirstAnnot();
     CheckRect(pAnnot->GetRect(), RightTop);
     pAnnot = iter.GetNextAnnot(pAnnot);
@@ -96,8 +99,7 @@ TEST_F(CPDFSDK_AnnotIteratorTest, CPDFSDK_AnnotIterator) {
   }
   {
     // Page 2 specifies "struct order"
-    CPDFSDK_AnnotIterator iter(pFormFillEnv->GetPageView(2),
-                               CPDF_Annot::Subtype::WIDGET);
+    CPDFSDK_AnnotIterator iter(pFormFillEnv->GetPageView(2), annot_subtypes);
     CPDFSDK_Annot* pAnnot = iter.GetFirstAnnot();
     CheckRect(pAnnot->GetRect(), LeftBottom);
     pAnnot = iter.GetNextAnnot(pAnnot);
