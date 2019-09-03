@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3abf1842_a7476b17",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-03T21:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975e173b_5ece49b9",
+      "range": {
+        "startLine": 178,
+        "startChar": 45,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "62111e1a04b8247ec4d999c121312e6157a6d119",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c16612e4_10b5586b",
         "filename": "fpdfsdk/fpdf_text.cpp",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-03T21:18:14Z",
       "side": 1,
       "message": "Is this essentially an error case? Or is it for handling a valid font-size of 0? It seems a bit strange to combine them in one else block if that\u0027s the case.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "62111e1a04b8247ec4d999c121312e6157a6d119",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d870420f_7eacc95c",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-03T21:39:02Z",
+      "side": 1,
+      "message": "`charinfo.m_pTextObj` will legitimately be NULL in some scenarios (e.g., empty text objects), so it\u0027s not really an error case.\n\nHandling FontSize\u003d\u003d0 was one of Ben\u0027s suggestions.  I can remove it if you think that\u0027d be better, since it just results in font_scale\u003d0, and I\u0027d expect m_CharBox to be empty in that scenario anyway... so more or less the same result.",
+      "parentUuid": "c16612e4_10b5586b",
       "range": {
         "startLine": 186,
         "startChar": 0,
