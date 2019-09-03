@@ -25,6 +25,99 @@
     },
     {
       "key": {
+        "uuid": "16297187_820d4b7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-03T22:38:32Z",
+      "side": 1,
+      "message": "Probably still want to have \u0027chromium\u0027, since this is a pdfium review and other commits in this repo specify it.  But at a minimum, please remove the space so it\u0027ll be automatically linked, e.g.:\n\nBug: chromium:994500",
+      "parentUuid": "cafab11b_a0ad3387",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a90d644_7ac856ba",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-03T22:38:32Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5414861_17cd49e6",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-03T22:38:32Z",
+      "side": 1,
+      "message": "nit: Doesn\u0027t really need to be a const-ref... the value is just an enum value.",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5eaa951_0dcbe351",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-03T22:38:32Z",
+      "side": 1,
+      "message": "Isn\u0027t the type already `CPDF_Annot::Subtype`?  I think the cast here (and below) is unnecessary.\n\nIn fact, couldn\u0027t you just replace the entire loop with \"focusable_annot_types_ \u003d GetFocusableAnnotSubtypes()\"?\n\nBut why copy it at all?  It never appears to change.  Can\u0027t you just use `GetFocusableAnnotSubtypes` in `IsFocusableAnnot`?",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d62a832b_5d157042",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 3
