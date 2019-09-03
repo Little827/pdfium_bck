@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "137552da_2b33b639",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-03T20:48:26Z",
+      "side": 1,
+      "message": "The formatting for a TODO comment should look like: \"TODO(username):\"",
+      "range": {
+        "startLine": 968,
+        "startChar": 7,
+        "endLine": 968,
+        "endChar": 18
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc3a433_eb4ba6eb",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-03T20:48:26Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4241bf7c_9dda2f10",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-03T20:48:26Z",
+      "side": 1,
+      "message": "WDYT about having separate getter and setter methods?",
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d6c5af_1885d4f2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-03T20:48:26Z",
+      "side": 1,
+      "message": "Can we avoid Skia style in PDFium code? 3 styles in one code base is 2 too many.",
+      "range": {
+        "startLine": 1435,
+        "startChar": 24,
+        "endLine": 1435,
+        "endChar": 36
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1fed6b1_9942ddf2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-03T20:48:26Z",
+      "side": 1,
+      "message": "Not useful.",
+      "range": {
+        "startLine": 1441,
+        "startChar": 18,
+        "endLine": 1441,
+        "endChar": 23
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f728951_13a1cb14",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-03T20:48:26Z",
+      "side": 1,
+      "message": "members need to be |m_foo|.",
+      "range": {
+        "startLine": 1448,
+        "startChar": 23,
+        "endLine": 1448,
+        "endChar": 32
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af6f5a63_4f924e75",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-03T20:48:26Z",
+      "side": 1,
+      "message": "Add a blank line after.",
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
