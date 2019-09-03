@@ -159,6 +159,40 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetCharBox(FPDF_TEXTPAGE text_page,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetLooseCharBox(FPDF_TEXTPAGE text_page,
+                         int index,
+                         double* left,
+                         double* right,
+                         double* bottom,
+                         double* top) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+  if (charinfo.m_pTextObj && !IsFloatZero(charinfo.m_FontSize)) {
+    int ascent = charinfo.m_pTextObj->GetFont()->GetTypeAscent();
+    int descent = charinfo.m_pTextObj->GetFont()->GetTypeDescent();
+    DCHECK((ascent - descent) != 0);
+    float font_scale =
+        charinfo.m_FontSize / static_cast<float>(ascent - descent);
+    float width = charinfo.m_pTextObj->GetCharWidth(charinfo.m_Charcode);
+
+    *left = charinfo.m_Origin.x;
+    *right = charinfo.m_Origin.x + width;
+    *bottom = charinfo.m_Origin.y + static_cast<float>(descent) * font_scale;
+    *top = charinfo.m_Origin.y + static_cast<float>(ascent) * font_scale;
+  } else {
+    *left = charinfo.m_CharBox.left;
+    *right = charinfo.m_CharBox.right;
+    *bottom = charinfo.m_CharBox.bottom;
+    *top = charinfo.m_CharBox.top;
+  }
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFText_GetCharOrigin(FPDF_TEXTPAGE text_page,
                        int index,
                        double* x,
