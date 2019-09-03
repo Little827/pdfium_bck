@@ -876,8 +876,7 @@ class SkiaState {
       Flush();
     }
     if (Accumulator::kText != m_type) {
-      m_positions.setCount(0);
-      m_glyphs.setCount(0);
+      m_charDetails.setCount(0);
       m_rsxform.setCount(0);
       if (pFont->GetFaceRec())
         m_pTypeFace.reset(SkSafeRef(pFont->GetDeviceCache()));
@@ -893,9 +892,8 @@ class SkiaState {
     if (!hasRSX && !m_rsxform.isEmpty())
       FlushText();
 
-    int count = m_positions.count();
-    m_positions.setCount(nChars + count);
-    m_glyphs.setCount(nChars + count);
+    int count = m_charDetails.count();
+    m_charDetails.setCount(nChars + count);
     if (hasRSX)
       m_rsxform.setCount(nChars + count);
 
@@ -903,20 +901,22 @@ class SkiaState {
     SkScalar vFlip = flip;
     if (pFont->IsVertical())
       vFlip *= -1;
+    SkTDArray<SkPoint>& positions = m_charDetails.getPositions();
+    SkTDArray<uint16_t>& glyphs = m_charDetails.getGlyphs();
     for (int index = 0; index < nChars; ++index) {
       const TextCharPos& cp = pCharPos[index];
-      m_positions[index + count] = {cp.m_Origin.x * flip,
-                                    cp.m_Origin.y * vFlip};
-      m_glyphs[index + count] = static_cast<uint16_t>(cp.m_GlyphIndex);
+      positions[index + count] = {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip};
+      glyphs[index + count] = static_cast<uint16_t>(cp.m_GlyphIndex);
 #if defined(OS_MACOSX)
       if (cp.m_ExtGID)
-        m_glyphs[index + count] = static_cast<uint16_t>(cp.m_ExtGID);
+        glyphs[index + count] = static_cast<uint16_t>(cp.m_ExtGID);
 #endif
     }
     SkPoint delta;
     if (MatrixOffset(&matrix, &delta)) {
-      for (int index = 0; index < nChars; ++index)
-        m_positions[index + count].offset(delta.fX * flip, -delta.fY * flip);
+      for (int index = 0; index < nChars; ++index) {
+        positions[index + count].offset(delta.fX * flip, -delta.fY * flip);
+      }
     }
     if (hasRSX) {
       for (int index = 0; index < nChars; ++index) {
@@ -925,13 +925,13 @@ class SkiaState {
         if (cp.m_bGlyphAdjust) {
           rsxform->fSCos = cp.m_AdjustMatrix[0];
           rsxform->fSSin = cp.m_AdjustMatrix[1];
-          rsxform->fTx = cp.m_AdjustMatrix[0] * m_positions[index].fX;
-          rsxform->fTy = cp.m_AdjustMatrix[1] * m_positions[index].fY;
+          rsxform->fTx = cp.m_AdjustMatrix[0] * positions[index].fX;
+          rsxform->fTy = cp.m_AdjustMatrix[1] * positions[index].fY;
         } else {
           rsxform->fSCos = 1;
           rsxform->fSSin = 0;
-          rsxform->fTx = m_positions[index].fX;
-          rsxform->fTy = m_positions[index].fY;
+          rsxform->fTx = positions[index].fX;
+          rsxform->fTy = positions[index].fY;
         }
       }
     }
@@ -958,30 +958,32 @@ class SkiaState {
     SkScalar flip = m_fontSize < 0 ? -1 : 1;
     SkMatrix skMatrix = ToFlippedSkMatrix(m_drawMatrix, flip);
     skCanvas->concat(skMatrix);
+    SkTDArray<SkPoint>& positions = m_charDetails.getPositions();
+    SkTDArray<uint16_t>& glyphs = m_charDetails.getGlyphs();
 #ifdef _SKIA_SUPPORT_PATHS_
     m_pDriver->PreMultiply();
 #endif  // _SKIA_SUPPORT_PATHS_
 #if SHOW_TEXT_GLYPHS
     SkTDArray<SkUnichar> text;
+    // TODO (nigi) m_glyphs are deprecated and glyphToUnichars() takes 4
+    // parameters now.
     text.setCount(m_glyphs.count());
     skPaint.glyphsToUnichars(m_glyphs.begin(), m_glyphs.count(), text.begin());
     for (int i = 0; i < m_glyphs.count(); ++i)
       printf("%lc", m_glyphs[i]);
     printf("\n");
 #endif
-
     sk_sp<SkTextBlob> blob;
     if (m_rsxform.count()) {
-      blob = SkTextBlob::MakeFromRSXform(m_glyphs.begin(), m_glyphs.bytes(),
+      blob = SkTextBlob::MakeFromRSXform(glyphs.begin(), glyphs.bytes(),
                                          m_rsxform.begin(), font,
                                          SkTextEncoding::kGlyphID);
     } else {
-      blob = SkTextBlob::MakeFromPosText(m_glyphs.begin(), m_glyphs.bytes(),
-                                         m_positions.begin(), font,
+      blob = SkTextBlob::MakeFromPosText(glyphs.begin(), glyphs.bytes(),
+                                         positions.begin(), font,
                                          SkTextEncoding::kGlyphID);
     }
     skCanvas->drawTextBlob(blob, 0, 0, skPaint);
-
     m_drawIndex = INT_MAX;
     m_type = Accumulator::kNone;
     m_drawMatrix = CFX_Matrix();
@@ -1421,11 +1423,33 @@ class SkiaState {
 #endif  // SHOW_SKIA_PATH
 
  private:
+  class CharDetail {
+   public:
+    CharDetail() = default;
+    ~CharDetail() {
+      positions.reset();
+      glyphs.reset();
+    }
+    SkTDArray<SkPoint>& getPositions() { return positions; }
+    SkTDArray<uint16_t>& getGlyphs() { return glyphs; }
+    int count() const {
+      ASSERT(positions.count() == glyphs.count());
+      return glyphs.count();
+    }
+    void setCount(const int count) {
+      ASSERT(count >= 0);
+      positions.setCount(count);
+      glyphs.setCount(count);
+    }
+
+   private:
+    SkTDArray<SkPoint> positions;  // accumulator for text positions
+    SkTDArray<uint16_t> glyphs;    // accumulator for text glyphs
+  };
   SkTArray<SkPath> m_clips;        // stack of clips that may be reused
   SkTDArray<Clip> m_commands;      // stack of clip-related commands
-  SkTDArray<SkPoint> m_positions;  // accumulator for text positions
+  CharDetail m_charDetails;
   SkTDArray<SkRSXform> m_rsxform;  // accumulator for txt rotate/scale/translate
-  SkTDArray<uint16_t> m_glyphs;    // accumulator for text glyphs
   SkPath m_skPath;                 // accumulator for path contours
   SkPath m_skEmptyPath;            // used as placehold in the clips array
   CFX_Matrix m_drawMatrix;
@@ -1706,10 +1730,10 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
       }
     }
   } else {
-    m_pCanvas->drawTextBlob(SkTextBlob::MakeFromPosText(
-                                glyphs.begin(), nChars * 2, positions.begin(),
-                                font, SkTextEncoding::kGlyphID),
-                            0, 0, paint);
+    m_pCanvas->drawTextBlob(
+        SkTextBlob::MakeFromText(glyphs.begin(), nChars * 2, font,
+                                 SkTextEncoding::kGlyphID),
+        0, 0, paint);
   }
 
   return true;
