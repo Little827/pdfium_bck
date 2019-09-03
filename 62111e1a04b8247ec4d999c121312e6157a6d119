@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "975e173b_5ece49b9",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-09-03T21:18:14Z",
+      "side": 1,
+      "message": "I see both styles of casting used here, but I think we should stick to C++-style casting, per Google\u0027s C++ style guide - https://google.github.io/styleguide/cppguide.html#Casting",
+      "range": {
+        "startLine": 178,
+        "startChar": 45,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "62111e1a04b8247ec4d999c121312e6157a6d119",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c16612e4_10b5586b",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-09-03T21:18:14Z",
+      "side": 1,
+      "message": "Is this essentially an error case? Or is it for handling a valid font-size of 0? It seems a bit strange to combine them in one else block if that\u0027s the case.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "62111e1a04b8247ec4d999c121312e6157a6d119",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
