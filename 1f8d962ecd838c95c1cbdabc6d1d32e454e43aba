@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62da6d7b_85c4cc1c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:28:15Z",
+      "side": 1,
+      "message": "This new code is repeated 3 times. Let\u0027s write a small helper function() to get the italic angle.",
+      "revId": "1f8d962ecd838c95c1cbdabc6d1d32e454e43aba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c84221b_c156275c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:28:15Z",
+      "side": 1,
+      "message": "Let\u0027s do float math instead of double math, since setSkewX() takes a SkScalar, which is a float. tan() returns a double.",
+      "range": {
+        "startLine": 957,
+        "startChar": 18,
+        "endLine": 957,
+        "endChar": 21
+      },
+      "revId": "1f8d962ecd838c95c1cbdabc6d1d32e454e43aba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
