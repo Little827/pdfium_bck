@@ -93,6 +93,30 @@
       "revId": "62111e1a04b8247ec4d999c121312e6157a6d119",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e0546db_ef52fec2",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 7701
+      },
+      "writtenOn": "2019-09-04T18:08:07Z",
+      "side": 1,
+      "message": "That seems fine to me then.",
+      "parentUuid": "d870420f_7eacc95c",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "62111e1a04b8247ec4d999c121312e6157a6d119",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
