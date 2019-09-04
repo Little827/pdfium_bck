@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "92df7a58_4c5789d7",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-04T21:26:23Z",
+      "side": 1,
+      "message": "I have seen it. I\u0027m not sure why we sometimes do a \"simple\" font weight calculation and why we sometimes do this \"more complex\" (i.e. this if/else calculation). I am not an expert in font weight calculation, but on what would be the \"best\" approach to use, I\u0027d say this one would be preferable since it seems more complex and probably more accurate. \n\nIn CL:59631, I addressed this issue and standardized the way we calculate the font weight. In addition to calculate the font weight as we do here in every places, I added the parsing of the /Weight property which is more appropriate to use, when available. A lot of bots turned red though because of failing tests and I need to update them.",
+      "parentUuid": "083444a6_4aeba5de",
+      "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e22ad34_18da8f36",
         "filename": "public/fpdf_text.h",
         "patchSetId": 19
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "23ec7b7e_057ec596",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-04T21:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e22ad34_18da8f36",
+      "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "412364fb_8d4a5bfa",
         "filename": "public/fpdf_text.h",
         "patchSetId": 19
@@ -50,6 +86,24 @@
       "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e05125_a2c34d6d",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-04T21:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "412364fb_8d4a5bfa",
+      "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
