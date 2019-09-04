@@ -16,6 +16,24 @@
       "revId": "ce2de970d46cc7698450b63f5bb78c591a09891a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37adc6c_a5b35397",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-04T21:20:21Z",
+      "side": 1,
+      "message": "I originally thought they might be.\n\nBut looking again, there is a comment in [1] that says the shaper LUTs map to 0.0 to 1.0 - - so, no!!\n\nSimplified.\n\n[1] https://cs.chromium.org/chromium/src/third_party/pdfium/third_party/lcms/src/cmsopt.c?rcl\u003daea4bca2621bf6c614b9c4c606c4c06e5a968d03\u0026l\u003d79",
+      "parentUuid": "4691dbd3_cef23476",
+      "revId": "ce2de970d46cc7698450b63f5bb78c591a09891a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
