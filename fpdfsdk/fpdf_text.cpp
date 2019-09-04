@@ -93,7 +93,8 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
                      int index,
                      void* buffer,
                      unsigned long buflen,
-                     int* flags) {
+                     int* flags,
+                     int* weight) {
   CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
   if (!textpage)
     return 0;
@@ -109,6 +110,8 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
 
   if (flags)
     *flags = font->GetFontFlags();
+  if (weight)
+    *weight = font->GetFontWeight();
 
   ByteString basefont = font->GetBaseFontName();
   unsigned long length = basefont.GetLength() + 1;
