@@ -112,6 +112,18 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
                      unsigned long buflen,
                      int* flags);
 
+// Function: FPDFText_GetFontWeight
+//          Get the font weight of a particular character.
+// Parameters:
+//          text_page   -   Handle to a text page information structure.
+//                          Returned by FPDFText_LoadPage function.
+//          index       -   Zero-based index of the character.
+// Return value:
+//          The font weight of the particular character.
+//
+FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetFontWeight(FPDF_TEXTPAGE text_page,
+                                                     int index);
+
 // Experimental API.
 // Function: FPDFText_GetCharAngle
 //          Get character rotation angle.
