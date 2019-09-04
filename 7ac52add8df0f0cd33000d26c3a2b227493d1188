@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd29db7_8f40dad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T20:43:34Z",
+      "side": 1,
+      "message": "TrueType font",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "7ac52add8df0f0cd33000d26c3a2b227493d1188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15eb0bd6_8a2cf818",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T20:43:34Z",
+      "side": 1,
+      "message": "bug pdfium:1388",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "7ac52add8df0f0cd33000d26c3a2b227493d1188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a31148_2b7f65a8",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T20:43:34Z",
+      "side": 1,
+      "message": "Let\u0027s add 1 more \u0027Q\u0027 so the \u0027q\u0027 and \u0027Q\u0027 operators are balanaced.",
+      "revId": "7ac52add8df0f0cd33000d26c3a2b227493d1188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
