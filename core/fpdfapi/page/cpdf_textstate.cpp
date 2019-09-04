@@ -168,6 +168,18 @@ bool TextRenderingModeIsClipMode(const TextRenderingMode& mode) {
   }
 }
 
+bool TextRenderingModeIsFillMode(const TextRenderingMode& mode) {
+  switch (mode) {
+    case TextRenderingMode::MODE_FILL:
+    case TextRenderingMode::MODE_FILL_STROKE:
+    case TextRenderingMode::MODE_FILL_CLIP:
+    case TextRenderingMode::MODE_FILL_STROKE_CLIP:
+      return true;
+    default:
+      return false;
+  }
+}
+
 bool TextRenderingModeIsStrokeMode(const TextRenderingMode& mode) {
   switch (mode) {
     case TextRenderingMode::MODE_STROKE:
