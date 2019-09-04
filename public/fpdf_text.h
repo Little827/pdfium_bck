@@ -124,6 +124,32 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
 FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetFontWeight(FPDF_TEXTPAGE text_page,
                                                      int index);
 
+// Function: FPDFText_GetColors
+//          Get the fill and stroke colors of a particular character.
+// Parameters:
+//          text_page          -   Handle to a text page information structure.
+//                                 Returned by FPDFText_LoadPage function.
+//          index              -   Zero-based index of the character.
+//          fill_color         -   Pointer to an unsigned int number receiving
+//                                 the fill color value.
+//          stroke_color       -   Pointer to an unsigned int number receiving
+//                                 the stroke color value.
+//          is_fill_rendered   -   Optional pointer to a boolean value receiving
+//                                 if the fill is rendered.
+//          is_stroke_rendered -   Optional pointer to a boolean value receiving
+//                                 if the stroke is rendered.
+// Return value:
+//          Whether the call succeeded. If false, |fill_color|, |stroke_color|,
+//          |is_fill_rendered| and |is_stroke_rendered| are unchanged.
+//
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetColors(FPDF_TEXTPAGE text_page,
+                   int index,
+                   unsigned int* fill_color,
+                   unsigned int* stroke_color,
+                   FPDF_BOOL* is_fill_rendered,
+                   FPDF_BOOL* is_stroke_rendered);
+
 // Experimental API.
 // Function: FPDFText_GetCharAngle
 //          Get character rotation angle.
