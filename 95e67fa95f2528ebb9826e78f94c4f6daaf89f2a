@@ -16,6 +16,24 @@
       "revId": "95e67fa95f2528ebb9826e78f94c4f6daaf89f2a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a46b19a_ef10d28f",
+        "filename": "testing/resources/font_weight.in",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-04T18:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10379a28_86b8bdc6",
+      "revId": "95e67fa95f2528ebb9826e78f94c4f6daaf89f2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
