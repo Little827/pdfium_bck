@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b101583c_177ab971",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:15:37Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35766e55_143ed497",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:15:37Z",
+      "side": 1,
+      "message": "Move to previous line, like we do for braces in C++ code.",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80fafe9_618b61eb",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:15:37Z",
+      "side": 1,
+      "message": "No trailing spaces.",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea0965a_fa73b72f",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:15:37Z",
+      "side": 1,
+      "message": "Put the /Type first, so it is easier to tell what the object is.",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8643d423_90439167",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:15:37Z",
+      "side": 1,
+      "message": "Sort the objects. e.g. object 11 0 before 12 0.",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ada9aa6_ae750c86",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:15:37Z",
+      "side": 1,
+      "message": "Don\u0027t leave gaps in the object number space. e.g. there is no object 13 0, so make this 13 0.",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b8e03f0_b6d90450",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T00:15:37Z",
+      "side": 1,
+      "message": "This object has no references. Delete.",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
