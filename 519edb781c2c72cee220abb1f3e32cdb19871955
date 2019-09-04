@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "608008ac_a613ca31",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b101583c_177ab971",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35766e55_143ed497",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b4e682_37a9ff60",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35766e55_143ed497",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b6b9fade_79baccbc",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d80fafe9_618b61eb",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ea0965a_fa73b72f",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0846fe11_0f2a1e02",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea0965a_fa73b72f",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d77cf71d_282a8c6a",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8643d423_90439167",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ada9aa6_ae750c86",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 4
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "e43bb73d_a4824e44",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ada9aa6_ae750c86",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b8e03f0_b6d90450",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 4
@@ -118,6 +226,24 @@
       "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ac8e1b_2dbd52cf",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b8e03f0_b6d90450",
+      "revId": "519edb781c2c72cee220abb1f3e32cdb19871955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
