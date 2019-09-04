@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ec458a4_f54cdbfa",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T20:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8122bea5_c1d44d71",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb2c3991_07542285",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 5
@@ -59,6 +77,48 @@
     },
     {
       "key": {
+        "uuid": "76f06481_15f8ae3e",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T20:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2c3991_07542285",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2abfe041_61b48ea9",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T20:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8d68e2b_54f9acbe",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4420522e_5f4379e7",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 5
@@ -73,6 +133,24 @@
       "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17ead05_b169355e",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T20:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4420522e_5f4379e7",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "dd759eb9_3b091d55",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T20:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461598c2_17b58538",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "356682e2_9221e2ce",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 5
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "39e21675_878488a9",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T20:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "356682e2_9221e2ce",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f478c883_696ab989",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 5
@@ -124,6 +238,24 @@
       "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c44c1fd_b78c66d6",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T20:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f478c883_696ab989",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
