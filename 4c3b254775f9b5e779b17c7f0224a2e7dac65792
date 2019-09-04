@@ -16,6 +16,24 @@
       "revId": "4c3b254775f9b5e779b17c7f0224a2e7dac65792",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f24b3f3c_2c1c7dba",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-04T21:02:55Z",
+      "side": 1,
+      "message": "Giving what we know of the expected use of this function, I\u0027m not convince we should create two separate functions. It\u0027s used in pdfium_page.cc (see CL:1752165, line:457) to gather both fill and stroke color. \n\nAt first, I implemented it with two functions: FPDFText_GetStrokeColor() and FPDFText_GetFillColor(), but I received feedback on how unnecessary it is to have two functions when they are called only once and at the same place. \n\nBut if you see differently and would prefer to have two functions that all have separate parameters, I\u0027m not opposed to it!",
+      "parentUuid": "06f8ec97_d11b8276",
+      "revId": "4c3b254775f9b5e779b17c7f0224a2e7dac65792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
