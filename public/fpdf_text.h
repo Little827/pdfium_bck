@@ -103,14 +103,26 @@ FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetFontSize(FPDF_TEXTPAGE text_page,
 //          On success, return the length of the font name, including the
 //          trailing NUL character, in bytes. If this length is less than or
 //          equal to |length|, |buffer| is set to the font name, |flags| is
-//          set to the font flags. |buffer| is in UTF-8 encoding. Return 0 on
-//          failure.
+//          set to the font flags. |buffer|
+//          is in UTF-8 encoding. Return 0 on failure.
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
                      int index,
                      void* buffer,
                      unsigned long buflen,
                      int* flags);
+
+// Function: FPDFText_GetFontWeight
+//          Get the font weight of a particular character.
+// Parameters:
+//          text_page   -   Handle to a text page information structure.
+//                          Returned by FPDFText_LoadPage function.
+//          index       -   Zero-based index of the character.
+// Return value:
+//          The font weight of the particular character.
+//
+FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetFontWeight(FPDF_TEXTPAGE text_page,
+                                                     int index);
 
 // Experimental API.
 // Function: FPDFText_GetCharAngle

@@ -118,6 +118,24 @@ FPDFText_GetFontInfo(FPDF_TEXTPAGE text_page,
   return length;
 }
 
+FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetFontWeight(FPDF_TEXTPAGE text_page,
+                                                     int index) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage)
+    return 0;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+  if (!charinfo.m_pTextObj)
+    return 0;
+
+  RetainPtr<CPDF_Font> font = charinfo.m_pTextObj->GetFont();
+  if (!font)
+    return 0;
+
+  return font->GetFontWeight();
+}
+
 FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetCharAngle(FPDF_TEXTPAGE text_page,
                                                        int index) {
   CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
