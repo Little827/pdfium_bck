@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "083444a6_4aeba5de",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T20:51:18Z",
+      "side": 1,
+      "message": "BTW, I see some other places in the code that always do the multiply by 5 calculation, and does not have this branch. What are your thoughts on that? (Sorry if you discussed it on another CL and I missed it.)",
+      "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e22ad34_18da8f36",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T20:51:18Z",
+      "side": 1,
+      "message": "Add a comment to mark this as an experimental API.",
+      "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412364fb_8d4a5bfa",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T20:51:18Z",
+      "side": 1,
+      "message": "Can we explain this without describing the implementation details?",
+      "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
