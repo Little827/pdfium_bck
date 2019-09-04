@@ -1541,10 +1541,24 @@ void MatShaperEval16(register const cmsUInt16Number In[],
     g = p->Shaper1G[gi];
     b = p->Shaper1B[bi];
 
+    // Enforce that table input contains only 1.14 values.
+    r = (r < 0) ? (r & 0xFFFF) | 0xFFFF : (r & 0xFFFF);
+    g = (g < 0) ? (g & 0xFFFF) | 0xFFFF : (g & 0xFFFF);
+    b = (b < 0) ? (b & 0xFFFF) | 0xFFFF : (b & 0xFFFF);
+
     // Evaluate the matrix in 1.14 fixed point
-    l1 =  (p->Mat[0][0] * r + p->Mat[0][1] * g + p->Mat[0][2] * b + p->Off[0] + 0x2000) >> 14;
-    l2 =  (p->Mat[1][0] * r + p->Mat[1][1] * g + p->Mat[1][2] * b + p->Off[1] + 0x2000) >> 14;
-    l3 =  (p->Mat[2][0] * r + p->Mat[2][1] * g + p->Mat[2][2] * b + p->Off[2] + 0x2000) >> 14;
+    l1 =  ((cmsInt64Number)p->Mat[0][0] * r +
+           (cmsInt64Number)p->Mat[0][1] * g +
+           (cmsInt64Number)p->Mat[0][2] * b +
+           p->Off[0] + 0x2000) >> 14;
+    l2 =  ((cmsInt64Number)p->Mat[1][0] * r +
+           (cmsInt64Number)p->Mat[1][1] * g +
+           (cmsInt64Number)p->Mat[1][2] * b +
+           p->Off[1] + 0x2000) >> 14;
+    l3 =  ((cmsInt64Number)p->Mat[2][0] * r +
+           (cmsInt64Number)p->Mat[2][1] * g +
+           (cmsInt64Number)p->Mat[2][2] * b +
+           p->Off[2] + 0x2000) >> 14;
 
     // Now we have to clip to 0..1.0 range
     ri = (l1 < 0) ? 0 : ((l1 > 16384) ? 16384U : (cmsUInt32Number) l1);
