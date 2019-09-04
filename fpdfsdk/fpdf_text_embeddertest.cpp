@@ -1271,3 +1271,75 @@ TEST_F(FPDFTextEmbedderTest, GetFontWeight) {
   FPDFText_ClosePage(text_page);
   UnloadPage(page);
 }
+
+TEST_F(FPDFTextEmbedderTest, GetColors) {
+  ASSERT_TRUE(OpenDocument("text_color.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  ASSERT_EQ(5, FPDFText_CountChars(text_page));
+
+  ASSERT_FALSE(
+      FPDFText_GetColors(nullptr, 0, nullptr, nullptr, nullptr, nullptr));
+  ASSERT_FALSE(
+      FPDFText_GetColors(text_page, -1, nullptr, nullptr, nullptr, nullptr));
+  ASSERT_FALSE(
+      FPDFText_GetColors(text_page, 314, nullptr, nullptr, nullptr, nullptr));
+  ASSERT_TRUE(
+      FPDFText_GetColors(text_page, 0, nullptr, nullptr, nullptr, nullptr));
+
+  const unsigned int kRedValue = 0xFFFF0000;
+  const unsigned int kGreenValue = 0xFF00FF00;
+
+  unsigned int fill_color;
+  unsigned int stroke_color;
+  FPDF_BOOL is_fill_rendered;
+  FPDF_BOOL is_stroke_rendered;
+  // In this test, fill_color is always red and stroke color is always green.
+  // What changes is the rendering mode.
+  // Rendering mode is 0 (MODE_FILL)
+  ASSERT_TRUE(FPDFText_GetColors(text_page, 0, &fill_color, &stroke_color,
+                                 &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_TRUE(is_fill_rendered);
+  ASSERT_FALSE(is_stroke_rendered);
+
+  // Rendering mode is 1 (MODE_STROKE).
+  ASSERT_TRUE(FPDFText_GetColors(text_page, 1, &fill_color, &stroke_color,
+                                 &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_FALSE(is_fill_rendered);
+  ASSERT_TRUE(is_stroke_rendered);
+
+  // Rendering mode is 2 (MODE_FILL_STROKE).
+  ASSERT_TRUE(FPDFText_GetColors(text_page, 2, &fill_color, &stroke_color,
+                                 &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_TRUE(is_fill_rendered);
+  ASSERT_TRUE(is_stroke_rendered);
+
+  // Rendering mode is 3 (MODE_INVISIBLE).
+  ASSERT_TRUE(FPDFText_GetColors(text_page, 3, &fill_color, &stroke_color,
+                                 &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_FALSE(is_fill_rendered);
+  ASSERT_FALSE(is_stroke_rendered);
+
+  // Rendering mode is 6 (MODE_FILL_STROKE_CLIP).
+  ASSERT_TRUE(FPDFText_GetColors(text_page, 4, &fill_color, &stroke_color,
+                                 &is_fill_rendered, &is_stroke_rendered));
+  ASSERT_EQ(kRedValue, fill_color);
+  ASSERT_EQ(kGreenValue, stroke_color);
+  ASSERT_TRUE(is_fill_rendered);
+  ASSERT_TRUE(is_stroke_rendered);
+
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}

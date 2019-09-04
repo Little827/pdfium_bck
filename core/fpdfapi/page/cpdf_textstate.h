@@ -93,6 +93,7 @@ class CPDF_TextState {
 
 bool SetTextRenderingModeFromInt(int iMode, TextRenderingMode* mode);
 bool TextRenderingModeIsClipMode(const TextRenderingMode& mode);
+bool TextRenderingModeIsFillMode(const TextRenderingMode& mode);
 bool TextRenderingModeIsStrokeMode(const TextRenderingMode& mode);
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_TEXTSTATE_H_
