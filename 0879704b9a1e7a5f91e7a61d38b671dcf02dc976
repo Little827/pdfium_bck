@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "168cfc23_a1b37c08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T19:41:02Z",
+      "side": 1,
+      "message": "Update the CL description here.",
+      "revId": "0879704b9a1e7a5f91e7a61d38b671dcf02dc976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02fc6d78_19d53529",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T19:41:02Z",
+      "side": 1,
+      "message": "Let\u0027s also pass in some bad values, like we did with FPDFText_GetCharAngle() on lines 1233-1235.",
+      "revId": "0879704b9a1e7a5f91e7a61d38b671dcf02dc976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4027f6a_b084650f",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T19:41:02Z",
+      "side": 1,
+      "message": "Document what happens on error. Should we return 0 or -1?",
+      "revId": "0879704b9a1e7a5f91e7a61d38b671dcf02dc976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
