@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95e00eda_2f443cad",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T21:01:07Z",
+      "side": 1,
+      "message": "- DCHECK(ascent !\u003d descent) ?\n- Someone can probably easily craft a PDF to make this DCHECK fail, so let\u0027s just check for it and handle it.",
+      "revId": "e5cc173b4442d51cc5e058f5070975953dd1e565",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83abffc4_14e20eda",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T21:01:07Z",
+      "side": 1,
+      "message": "BTW, does this work correctly for vertical text?",
+      "revId": "e5cc173b4442d51cc5e058f5070975953dd1e565",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
