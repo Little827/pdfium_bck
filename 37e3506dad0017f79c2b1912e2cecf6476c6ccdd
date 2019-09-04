@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8a081bc_7b14610c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T04:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "137552da_2b33b639",
+      "range": {
+        "startLine": 968,
+        "startChar": 7,
+        "endLine": 968,
+        "endChar": 18
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc3a433_eb4ba6eb",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 27
@@ -39,6 +63,24 @@
       "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceeaf1f1_99799667",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T04:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc3a433_eb4ba6eb",
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,48 @@
     },
     {
       "key": {
+        "uuid": "45cd3590_1321fb13",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T04:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d6c5af_1885d4f2",
+      "range": {
+        "startLine": 1435,
+        "startChar": 24,
+        "endLine": 1435,
+        "endChar": 36
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db505b4_49ec9039",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T04:04:16Z",
+      "side": 1,
+      "message": "Do you mean having getter/setter for each individual element in the array? \nFor example:\n   SkPoint GetPositionAt(int index)\n   void SetPositionAt(int index, SkPoint point)",
+      "parentUuid": "4241bf7c_9dda2f10",
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1fed6b1_9942ddf2",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 27
@@ -102,6 +186,30 @@
       "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022ac2df_6e31e278",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T04:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1fed6b1_9942ddf2",
+      "range": {
+        "startLine": 1441,
+        "startChar": 18,
+        "endLine": 1441,
+        "endChar": 23
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "57fe6250_8aa9ada0",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T04:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f728951_13a1cb14",
+      "range": {
+        "startLine": 1448,
+        "startChar": 23,
+        "endLine": 1448,
+        "endChar": 32
+      },
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af6f5a63_4f924e75",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 27
@@ -142,6 +274,24 @@
       "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e01cd72_0cf295a7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-04T04:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af6f5a63_4f924e75",
+      "revId": "37e3506dad0017f79c2b1912e2cecf6476c6ccdd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
