@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8122bea5_c1d44d71",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:45:31Z",
+      "side": 1,
+      "message": "Let\u0027s move this after /Type, like in other .in files. Then the two boxes will also be next to each other.",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2c3991_07542285",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:45:31Z",
+      "side": 1,
+      "message": "Just combine the content of these 3 objects together. e.g. object 13 0 just as a single \u0027Q\u0027 operator inside.",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d68e2b_54f9acbe",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:45:31Z",
+      "side": 1,
+      "message": "Let\u0027s just inline this object on line 15.",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4420522e_5f4379e7",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:45:31Z",
+      "side": 1,
+      "message": "Put after /Type.",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461598c2_17b58538",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:45:31Z",
+      "side": 1,
+      "message": "Inline on line 37.",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356682e2_9221e2ce",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:45:31Z",
+      "side": 1,
+      "message": "Inline.",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f478c883_696ab989",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:45:31Z",
+      "side": 1,
+      "message": "Write this out as separate lines for the different operators, line in object 12 0. Instead of 1 long line.",
+      "revId": "16941b36222e1348c48a2e09bd38f983862c0317",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
