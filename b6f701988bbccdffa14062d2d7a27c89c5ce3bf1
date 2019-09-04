@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adcf595a_679e275d",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T01:09:30Z",
+      "side": 1,
+      "message": "Given a pattern of: a * b + c * d + e * f, where all 6 variables are int32_t. Assuming it is possible that they are all INT_MAX, even a 64-bit int can\u0027t hold the resulting calculation, right?",
+      "revId": "b6f701988bbccdffa14062d2d7a27c89c5ce3bf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
