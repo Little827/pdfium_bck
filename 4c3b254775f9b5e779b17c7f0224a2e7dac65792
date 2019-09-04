@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06f8ec97_d11b8276",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T19:47:42Z",
+      "side": 1,
+      "message": "FPDFAnnot_SetColor(), FPDFAnnot_GetColor(), FPDFPageObj_SetStrokeColor(), FPDFPageObj_GetStrokeColor(), FPDFPageObj_SetFillColor(), and FPDFPageObj_GetFillColor() all have separate parameters for RGBA. Should we stick with that pattern and have separate parameters per channel? If we do, that\u0027s a lot of parameters, we\u0027d want to split FPDFText_GetColors() into FPDFText_GetFillColor() and FPDFText_GetStrokeColor().",
+      "revId": "4c3b254775f9b5e779b17c7f0224a2e7dac65792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
