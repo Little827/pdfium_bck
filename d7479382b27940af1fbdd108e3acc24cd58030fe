@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "474cd58d_f80d11b7",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:40:22Z",
+      "side": 1,
+      "message": "Normally one never needs to call this-\u003eFunctionName().",
+      "range": {
+        "startLine": 412,
+        "startChar": 29,
+        "endLine": 412,
+        "endChar": 35
+      },
+      "revId": "d7479382b27940af1fbdd108e3acc24cd58030fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124ba0ae_928c6f96",
+        "filename": "core/fxge/cfx_font.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:40:22Z",
+      "side": 1,
+      "message": "Now that we are no longer in fx_skia_device.cpp, let\u0027s stop using Skia naming conventions.",
+      "range": {
+        "startLine": 412,
+        "startChar": 17,
+        "endLine": 412,
+        "endChar": 26
+      },
+      "revId": "d7479382b27940af1fbdd108e3acc24cd58030fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18442adb_44a850f5",
+        "filename": "core/fxge/cfx_font.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:40:22Z",
+      "side": 1,
+      "message": "- Let\u0027s name this GetSubstFontItalicAngle(), because it operates on |m_pSubstFont| whereas all the other getters here operate on |m_Face|.\n- Given the name change, let\u0027s put this next to GetSubstFont().\n- This can be used in core/fpdfapi/page/cpdf_docpagedata.cpp also.",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "d7479382b27940af1fbdd108e3acc24cd58030fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec6f81d_58207c16",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:40:22Z",
+      "side": 1,
+      "message": "No longer needed, since we moved the CFX_SubstFont usage out of this file.",
+      "revId": "d7479382b27940af1fbdd108e3acc24cd58030fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d1304c_dfc83e35",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:40:22Z",
+      "side": 1,
+      "message": "Drop this variable and just call pFont-\u003eGetItalicAngle() on line 1151.",
+      "range": {
+        "startLine": 1148,
+        "startChar": 8,
+        "endLine": 1148,
+        "endChar": 19
+      },
+      "revId": "d7479382b27940af1fbdd108e3acc24cd58030fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e71c83_e9ca1d7d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-04T17:40:22Z",
+      "side": 1,
+      "message": "Combine with line 1615.",
+      "revId": "d7479382b27940af1fbdd108e3acc24cd58030fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
