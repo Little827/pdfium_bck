@@ -408,6 +408,11 @@ int CFX_Font::GetDescent() const {
   return EM_ADJUST(FXFT_Get_Face_UnitsPerEM(m_Face->GetRec()), descender);
 }
 
+int CFX_Font::GetItalicAngle() const {
+  CFX_SubstFont* substFont = this->GetSubstFont();
+  return substFont ? substFont->m_ItalicAngle : 0;
+}
+
 bool CFX_Font::GetGlyphBBox(uint32_t glyph_index, FX_RECT* pBBox) {
   if (!m_Face)
     return false;

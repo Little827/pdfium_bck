@@ -81,6 +81,7 @@ class CFX_Font {
   uint32_t GetGlyphWidth(uint32_t glyph_index);
   int GetAscent() const;
   int GetDescent() const;
+  int GetItalicAngle() const;
   bool GetGlyphBBox(uint32_t glyph_index, FX_RECT* pBBox);
   bool IsItalic() const;
   bool IsBold() const;
