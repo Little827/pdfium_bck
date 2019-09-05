@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1409887_2c940db0",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-05T16:38:17Z",
+      "side": 1,
+      "message": "nit: spelling - \"character\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66285799_ee9ead87",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-05T16:38:17Z",
+      "side": 1,
+      "message": "This would just be zero, because of line above. Simpler to just put zero here too.",
+      "range": {
+        "startLine": 56,
+        "startChar": 18,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2274ede1_2918b002",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-05T16:38:17Z",
+      "side": 1,
+      "message": "This has changed the scope of this macOS-specific code.\n\nWhat should happen to charpos.m_ExtGID for the TrueType font fallback case?  Shouldn\u0027t it also get reset to m_GlyphIndex?",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
