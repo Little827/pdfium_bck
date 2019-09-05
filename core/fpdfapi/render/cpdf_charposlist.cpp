@@ -12,6 +12,19 @@
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/text_char_pos.h"
 
+namespace {
+
+uint32_t GetGlyphID(const TextCharPos& charpos) {
+#if defined(OS_MACOSX)
+  return charpos.m_ExtGID != static_cast<uint32_t>(-1) ? charpos.m_ExtGID
+                                                       : charpos.m_GlyphIndex;
+#else
+  return charpos.m_GlyphIndex;
+#endif
+}
+
+}  // namespace
+
 CPDF_CharPosList::CPDF_CharPosList(const std::vector<uint32_t>& charCodes,
                                    const std::vector<float>& charPos,
                                    CPDF_Font* pFont,
@@ -32,15 +45,11 @@ CPDF_CharPosList::CPDF_CharPosList(const std::vector<uint32_t>& charCodes,
     WideString unicode = pFont->UnicodeFromCharCode(CharCode);
     charpos.m_Unicode = !unicode.IsEmpty() ? unicode[0] : CharCode;
     charpos.m_GlyphIndex = pFont->GlyphFromCharCode(CharCode, &bVert);
-    uint32_t GlyphID = charpos.m_GlyphIndex;
 #if defined(OS_MACOSX)
     charpos.m_ExtGID = pFont->GlyphFromCharCodeExt(CharCode);
-    GlyphID = charpos.m_ExtGID != static_cast<uint32_t>(-1)
-                  ? charpos.m_ExtGID
-                  : charpos.m_GlyphIndex;
 #endif
     CFX_Font* pCurrentFont;
-    if (GlyphID != static_cast<uint32_t>(-1)) {
+    if (GetGlyphID(charpos) != static_cast<uint32_t>(-1)) {
       charpos.m_FallbackFontPosition = -1;
       pCurrentFont = pFont->GetFont();
     } else {
