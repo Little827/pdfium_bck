@@ -11,6 +11,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcrt/fx_safe_types.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/compiler_specific.h"
 #include "third_party/base/logging.h"
@@ -204,7 +205,7 @@ void RelocateTableRowCells(const RetainPtr<CXFA_ContentLayoutItem>& pLayoutRow,
   float fContentCalculatedWidth = 0;
   float fContentCalculatedHeight = 0;
   float fCurrentColX = 0;
-  int32_t nCurrentColIdx = 0;
+  size_t nCurrentColIdx = 0;
   bool bMetWholeRowCell = false;
 
   for (CXFA_LayoutItem* pIter = pLayoutRow->GetFirstChild(); pIter;
@@ -219,18 +220,17 @@ void RelocateTableRowCells(const RetainPtr<CXFA_ContentLayoutItem>& pLayoutRow,
     if (nOriginalColSpan <= 0 && nOriginalColSpan != -1)
       continue;
 
-    int32_t nColSpan = nOriginalColSpan;
+    size_t nColSpan = static_cast<size_t>(nOriginalColSpan);
     float fColSpanWidth = 0;
-    if (nColSpan == -1 ||
-        nCurrentColIdx + nColSpan >
-            pdfium::CollectionSize<int32_t>(rgSpecifiedColumnWidths)) {
-      nColSpan = pdfium::CollectionSize<int32_t>(rgSpecifiedColumnWidths) -
-                 nCurrentColIdx;
+    FX_SAFE_SIZE_T nSafeCurrentColIdx = nCurrentColIdx;
+    if (nOriginalColSpan == -1 || (nSafeCurrentColIdx + nColSpan).ValueOrDie() >
+                                      rgSpecifiedColumnWidths.size()) {
+      nColSpan = rgSpecifiedColumnWidths.size() - nCurrentColIdx;
     }
-    for (int32_t i = 0; i < nColSpan; i++)
+    for (size_t i = 0; i < nColSpan; i++)
       fColSpanWidth += rgSpecifiedColumnWidths[nCurrentColIdx + i];
 
-    if (nColSpan != nOriginalColSpan) {
+    if (nColSpan != static_cast<size_t>(nOriginalColSpan)) {
       fColSpanWidth = bMetWholeRowCell ? 0
                                        : std::max(fColSpanWidth,
                                                   pLayoutChild->m_sSize.height);
