@@ -140,6 +140,30 @@
       "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518eb002_58925da8",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-05T18:18:15Z",
+      "side": 1,
+      "message": "Got my head wrapped around it now - thx!",
+      "parentUuid": "29d4843a_5eeda79b",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
