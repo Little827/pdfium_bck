@@ -34,6 +34,24 @@
       "revId": "ce2de970d46cc7698450b63f5bb78c591a09891a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98a0d86b_4b176a3e",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-05T21:53:16Z",
+      "side": 1,
+      "message": "I guess there\u0027s really 2 questions:\n1) According to whatever spec we should be looking at and the comments in the code, are negative values even valid here?\n2) Aside from what the spec says, can this code actually encounter a negative number?",
+      "parentUuid": "d37adc6c_a5b35397",
+      "revId": "ce2de970d46cc7698450b63f5bb78c591a09891a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
