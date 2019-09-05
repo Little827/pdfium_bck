@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f4532d8c_525bbd14",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-05T17:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1409887_2c940db0",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66285799_ee9ead87",
         "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "444b41e5_57d57b0d",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-05T17:53:26Z",
+      "side": 1,
+      "message": "Will delete this line since GlyphID is no longer used after this line.",
+      "parentUuid": "66285799_ee9ead87",
+      "range": {
+        "startLine": 56,
+        "startChar": 18,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2274ede1_2918b002",
         "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-05T16:38:17Z",
       "side": 1,
       "message": "This has changed the scope of this macOS-specific code.\n\nWhat should happen to charpos.m_ExtGID for the TrueType font fallback case?  Shouldn\u0027t it also get reset to m_GlyphIndex?",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "c87f7ba88b266ad74b25005ead092a510cafeb99",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d4843a_5eeda79b",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-05T17:53:26Z",
+      "side": 1,
+      "message": "No need to set charpos.m_ExtGID. The value change for charpos.m_ExtGID is described as below:\n\ncase 1: \n  pFont-\u003eGlyphFromCharCodeExt(CharCode) returns a valid index as the value of charpos.m_ExtGID, and we won\u0027t reach the section from line 47 to 64.\n\ncase 2: \n  pFont-\u003eFallbackGlyphFromCharcode() at line 49 returns a valid index, program reaches line 62: charpos.m_ExtGID \u003d charpos.m_GlyphIndex. This is the same as the original code.\n\ncase 3: \n  font is TrueType and  pFont-\u003eFallbackGlyphFromCharcode() at line 49 returns -1. In this case, charpos.m_GlyphIndex \u003d\u003d -1 and charpos.m_ExtGID still remains -1. No need to refresh the value for charpos.m_ExtGID.",
+      "parentUuid": "2274ede1_2918b002",
       "range": {
         "startLine": 64,
         "startChar": 6,
