@@ -1,0 +1,89 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /MediaBox [ 0 0 200 200 ]
+  /Count 1
+  /Kids [ 3 0 R ]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font <<
+      /F1 4 0 R
+    >>
+  >>
+  /Contents 7 0 R
+>>
+endobj
+{{object 4 0}} <<
+  /Type /Font
+  /Subtype /Type0
+  /Encoding /UniGB-UCS2-V
+  /BaseFont /MS-Mincho
+  /DescendantFonts [6 0 R]
+>>
+endobj
+{{object 5 0}} <<
+  /Ascent 859
+  /CapHeight 500
+  /Descent -140
+  /Flags 32
+  /FontBBox [0 -140 996 855]
+  /FontName /MS-Mincho
+  /ItalicAngle 0
+  /StemV 100
+  /Type /FontDescriptor
+>>
+endobj
+{{object 6 0}} <<
+  /BaseFont /MS-Mincho
+  /CIDSystemInfo <</Registry (Adobe) /Ordering (GB1) /Supplement 4>>
+  /FontDescriptor 5 0 R
+  /Subtype /CIDFontType2
+  /Type /Font
+>>
+endobj
+{{object 7 0}} <<
+  {{streamlen}}
+>>
+stream
+BT
+/F1 12 Tf
+10 190 Td
+[<4e2d56fd4eba>] TJ
+-20 Ts [<4e2d56fd4eba>] TJ
+-40 Ts [(\000T)(\000e)(\000s)(\000t)] TJ
+ET
+
+% Draw some rectangles around some of our characters to visualize their bounds;
+% these are the values we're checking for in FPDFTextEmbedderTest.TextVertical.
+%   green = FPDF_GetCharBounds
+%   red = FPDF_GetLooseCharBounds
+q
+0.1 w
+
+% Character 4
+0 1 1 0 K
+4 109.758 12 12 re S
+1 0 1 0 K
+5.308 110 10.08 10.956 re S
+
+% Character 5
+0 1 1 0 K
+4 97.758 12 12 re S
+1 0 1 0 K
+4.516 98.468 11.016 10.2 re S
+Q
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
