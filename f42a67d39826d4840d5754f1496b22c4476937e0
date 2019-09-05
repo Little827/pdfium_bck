@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58d8a65f_a402a2f6",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-05T22:00:01Z",
+      "side": 1,
+      "message": "I haven\u0027t looked into the possible range for the elements of |p-\u003eMat|, but assuming the worst case, the calculation is now: (INT_MAX * RGB_MAX) * 3 ... \u003e\u003e 14. The math won\u0027t overflow, but then |l1| can\u0027t hold the result, which still leads to possibly weird behavior.\n\nGiven |l1| is used to calculate |r1|, maybe we should figure out a (sane-ish?) policy and use either 0 or 16384 when we encounter bad values. i.e. clip like lines 1560-1563.\n\nRGB_MAX \u003d 0xFFFF \u003d 65535",
+      "revId": "f42a67d39826d4840d5754f1496b22c4476937e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
