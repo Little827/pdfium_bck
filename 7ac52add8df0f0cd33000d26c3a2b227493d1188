@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9cbc6b35_9b440935",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-05T00:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbd29db7_8f40dad4",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "7ac52add8df0f0cd33000d26c3a2b227493d1188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15eb0bd6_8a2cf818",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7b45d012_af5964a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-05T00:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15eb0bd6_8a2cf818",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "7ac52add8df0f0cd33000d26c3a2b227493d1188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4a31148_2b7f65a8",
         "filename": "testing/resources/pixel/bug_1388.in",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "7ac52add8df0f0cd33000d26c3a2b227493d1188",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a5edd0_c0db4e6e",
+        "filename": "testing/resources/pixel/bug_1388.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-05T00:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a31148_2b7f65a8",
+      "revId": "7ac52add8df0f0cd33000d26c3a2b227493d1188",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
