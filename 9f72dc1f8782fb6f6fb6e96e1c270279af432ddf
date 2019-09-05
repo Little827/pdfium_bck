@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35048a0b_870ef71f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-05T21:47:03Z",
+      "side": 1,
+      "message": "pdfium:1335, otherwise it will be interpreted as chromium:1335 in some tools.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6bdc6a_d8f06fdc",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-05T21:47:03Z",
+      "side": 1,
+      "message": "|xrefstm_offset| probably should just be of type int, and line 770 probably should make sure it\u0027s non-negative.",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26374c1a_a282cc91",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-05T21:47:03Z",
+      "side": 1,
+      "message": "Can you explain why this line is here, and not say, on line 999, or 1032, or somewhere else?",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a99858b_d76b7f9a",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-05T21:47:03Z",
+      "side": 1,
+      "message": "Similarly, this probably should be an int as well.",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
