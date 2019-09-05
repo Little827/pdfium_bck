@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "511432b0_07405153",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-05T00:53:00Z",
+      "side": 1,
+      "message": "This sentence still reads a bit funny, sorry I didn\u0027t notice earlier. Also, \"TrueType\".",
+      "revId": "9652dbef5b9a25d01fcc7e17fdf44f0e093c1ed0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
