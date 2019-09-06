@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d15be67_ceac2814",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-09-06T08:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35048a0b_870ef71f",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee6bdc6a_d8f06fdc",
         "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada2cbe6_0c705557",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-09-06T08:57:56Z",
+      "side": 1,
+      "message": "LoadLinearizedAllCrossRefV4 and LoadLinearizedAllCrossRefV5 takes FX_FILESIZE as argument. And to make consistency with main_xref_offset using FX_SAFE_FILESIZE .",
+      "parentUuid": "ee6bdc6a_d8f06fdc",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "d780eeab_704c5992",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-09-06T08:57:56Z",
+      "side": 1,
+      "message": "Motivation to get the XrefStreamOffset before trailer gets change. So getting it just after m_CrossResfTable-\u003eSetTrailer();",
+      "parentUuid": "26374c1a_a282cc91",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a99858b_d76b7f9a",
         "filename": "core/fpdfapi/parser/cpdf_parser.h",
         "patchSetId": 4
@@ -73,6 +133,24 @@
       "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c4593c_e2e67f1c",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-09-06T08:57:56Z",
+      "side": 1,
+      "message": "LoadLinearizedAllCrossRefV4 and LoadLinearizedAllCrossRefV5 takes FX_FILESIZE as argument. So using FX_SAFE_FILESIZE .",
+      "parentUuid": "9a99858b_d76b7f9a",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
