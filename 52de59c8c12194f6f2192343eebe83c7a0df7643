@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1c6afa1f_25500910",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-09-06T06:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16297187_820d4b7e",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a90d644_7ac856ba",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
         "patchSetId": 3
@@ -69,6 +93,30 @@
       "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639f66f0_329b3d70",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-09-06T06:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a90d644_7ac856ba",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "3308ef73_2a2b928d",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-09-06T06:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5414861_17cd49e6",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5eaa951_0dcbe351",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 3
@@ -115,6 +187,30 @@
       "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9391ecd2_46e1ca6c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-09-06T06:58:05Z",
+      "side": 1,
+      "message": "You are right, cast should have been removed.\n\nAbout 2nd part of comment related to focusable_annot_types_.\nCPDF_Annot::Subtype is a set of various annotations (WIDGET, LINK, HIGHLIGHT etc) and are handled differently.\nCPDFSDK_WidgetHandler handles annotations of type \"CPDF_Annot::Subtype::WIDGET\" while CPDFSDK_BAAnotHandler handles other than widget (i.e. LINK, HIGHLIGHT etc).\n\nGetFocusableAnnotSubtypes() returns the complete set of supported annotation types however focusable_annot_types_ in CPDFSDK_BAAnotHandler is set of CPDF_Annot::Subtype other than CPDF_Annot::Subtype::WIDGET.\nIn this way, focsuable_annot_types_ has definite set of CPDF_Annot::Subtype handled by CPDFSDK_BAAnotHandler and thus not required to put extra check in \"IsFocusableAnnot\" after find result.",
+      "parentUuid": "c5eaa951_0dcbe351",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "07e3e68f_7e977d27",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-09-06T06:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d62a832b_5d157042",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 13
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d450b1f9_484c6258",
         "filename": "public/fpdfview.h",
         "patchSetId": 3
@@ -161,6 +281,30 @@
       "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0108a6f0_7cfe0b7a",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-09-06T06:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d450b1f9_484c6258",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "52de59c8c12194f6f2192343eebe83c7a0df7643",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
