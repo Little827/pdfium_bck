@@ -17,6 +17,9 @@
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fpdfdoc/cpdf_metadata.h"
+#include "core/fxge/cfx_graphstatedata.h"
+#include "core/fxge/cfx_pathdata.h"
+#include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 
 namespace {
@@ -27,6 +30,8 @@ constexpr char kQuadPoints[] = "QuadPoints";
 uint32_t g_sandbox_policy = 0xFFFFFFFF;
 
 UNSUPPORT_INFO* g_unsupport_info = nullptr;
+
+std::vector<CPDF_Annot::Subtype> g_focusable_annot_types;
 
 bool RaiseUnsupportedError(int nError) {
   if (!g_unsupport_info)
@@ -417,4 +422,46 @@ void ProcessParseError(CPDF_Parser::Error err) {
       break;
   }
   FXSYS_SetLastError(err_code);
+}
+
+void DrawFocusRect(CFX_RenderDevice* render_device,
+                   const CFX_Matrix& mtUser2Device,
+                   const CFX_FloatRect& view_bounding_box) {
+  ASSERT(render_device);
+  CFX_PathData path;
+  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.top),
+                   FXPT_TYPE::MoveTo, false /* closeFigure */);
+  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.bottom),
+                   FXPT_TYPE::LineTo, false /* closeFigure */);
+  path.AppendPoint(
+      CFX_PointF(view_bounding_box.right, view_bounding_box.bottom),
+      FXPT_TYPE::LineTo, false /* closeFigure */);
+  path.AppendPoint(CFX_PointF(view_bounding_box.right, view_bounding_box.top),
+                   FXPT_TYPE::LineTo, false /* closeFigure */);
+  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.top),
+                   FXPT_TYPE::LineTo, false /* closeFigure */);
+
+  CFX_GraphStateData graph_state_data;
+  graph_state_data.m_DashArray = {1.0f};
+  graph_state_data.m_DashPhase = 0;
+  graph_state_data.m_LineWidth = 1.0f;
+
+  render_device->DrawPath(&path, &mtUser2Device, &graph_state_data, 0,
+                          ArgbEncode(255, 0, 0, 0), FXFILL_ALTERNATE);
+}
+
+void SetFocusableAnnotSubtypes(const unsigned int* focusable_annot_types,
+                               unsigned int count_focusable_annot_types) {
+  for (unsigned int i = 0; i < count_focusable_annot_types; i++) {
+    g_focusable_annot_types.push_back(
+        static_cast<CPDF_Annot::Subtype>(focusable_annot_types[i]));
+  }
+}
+
+const std::vector<CPDF_Annot::Subtype>& GetFocusableAnnotSubtypes() {
+  return g_focusable_annot_types;
+}
+
+void ResetFocusableAnnotSubtypes() {
+  g_focusable_annot_types.clear();
 }
