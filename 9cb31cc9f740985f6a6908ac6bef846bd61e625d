@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3e33542_30b9451d",
+        "filename": "fpdfsdk/formfiller/cffl_listbox.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-09-06T15:46:35Z",
+      "side": 1,
+      "message": "nit: GetPWLWindow() already does this assert. Not sure we want to keep both.",
+      "revId": "9cb31cc9f740985f6a6908ac6bef846bd61e625d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
