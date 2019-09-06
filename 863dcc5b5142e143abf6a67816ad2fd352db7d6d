@@ -35,6 +35,24 @@
       "revId": "863dcc5b5142e143abf6a67816ad2fd352db7d6d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "506f2067_c0913ce4",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-06T22:36:22Z",
+      "side": 1,
+      "message": "Yes, but |pRV|\u0027s usage makes it a lot harder to put into a smaller scope. Let me go to the drawing board and get back to you on this.",
+      "parentUuid": "442ef9ec_20033333",
+      "revId": "863dcc5b5142e143abf6a67816ad2fd352db7d6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
