@@ -22,6 +22,30 @@
       "revId": "6fd08b2052d9782aa78b44e99d22873bec722769",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fa46fe2_bbe93eda",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-06T00:46:39Z",
+      "side": 1,
+      "message": "Hi Alan,\n\nThe value for vertical flag is from CPDF_Font struct instead of coming from data.\n\nSince in SkiaPaths, the DrawText() process only uses CFX_Font and CFX_Font |p_Font| is completely cut off from CPDF_Font struct (usually CPDF_Font has vertical flag \u003d true but CFX_Font doesn\u0027t necessarily have vertical flag \u003d true, the glyphs should still be displayed vertically ), that\u0027s why I am passing an extra parameter to set the flag for CFX_Font.\n\nThanks for mentioning about keeping it safe, I think I can implement the following check in LoadEmbedded() to avoid flipping |m_bVertical|\u0027s value from true back to false.\n\nbool CFX_Font::LoadEmbedded(pdfium::span\u003cconst uint8_t\u003e src_span,\n                            bool bVertical) {\n  if(!m_bVertical \u0026\u0026 bVertical)\n      m_bVertical \u003d true;\n  m_pFontDataAllocation \u003d\n      std::vector\u003cuint8_t\u003e(src_span.begin(), src_span.end());\n  ......\n}",
+      "parentUuid": "eeacc214_b4b29a3d",
+      "range": {
+        "startLine": 493,
+        "startChar": 33,
+        "endLine": 493,
+        "endChar": 38
+      },
+      "revId": "6fd08b2052d9782aa78b44e99d22873bec722769",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
