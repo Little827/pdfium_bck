@@ -105,6 +105,24 @@
       "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e39510_32293b61",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-06T21:58:15Z",
+      "side": 1,
+      "message": "Let me know if you need help with updating bug_1388.in.",
+      "parentUuid": "bc93d66f_4b7e13fb",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
