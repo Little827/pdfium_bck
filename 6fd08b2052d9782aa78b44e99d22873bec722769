@@ -46,6 +46,30 @@
       "revId": "6fd08b2052d9782aa78b44e99d22873bec722769",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fc9e43_34de13ec",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-06T15:03:18Z",
+      "side": 1,
+      "message": "Okay, thanks.  That\u0027s quite a bit of background needed to understand that, and it isn\u0027t clear to a developer looking only at the function definition.  What do you think about changing the name of the parameter to make this intention more obvious right there in the API?  E.g., like changing |bVertical| to something like |bForceAsVertical|?  Then the additional check would only need to be:\n\n  if (bForceAsVertical)\n    m_bVertical \u003d true;",
+      "parentUuid": "4fa46fe2_bbe93eda",
+      "range": {
+        "startLine": 493,
+        "startChar": 33,
+        "endLine": 493,
+        "endChar": 38
+      },
+      "revId": "6fd08b2052d9782aa78b44e99d22873bec722769",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
