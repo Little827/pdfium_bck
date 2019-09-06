@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee4ff7e8_643f0ced",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-06T14:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e979479_a58628b5",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "def3dd2c_2936df48",
         "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-05T22:55:59Z",
       "side": 1,
       "message": "Why is this set to 0?",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf0d0b1_84d8feb1",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-06T14:07:53Z",
+      "side": 1,
+      "message": "This is to keep it consistent with the code before previous fix https://pdfium-review.googlesource.com/c/pdfium/+/4055/ happened.\n\nBefore the previous fix, pFont-\u003eGlyphFromCharCode(CharCode, \u0026bVert) returns 0 for the TrueType font in bug_1388.in. And charpos.m_GlyphIndex \u003d\u003d 0 will help load_glyph() to render the glyph correctly, while if charpos.m_GlyphIndex\u003d\u003d-1, the output will be empty.",
+      "parentUuid": "def3dd2c_2936df48",
       "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
