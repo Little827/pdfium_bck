@@ -52,6 +52,24 @@
       "revId": "ce2de970d46cc7698450b63f5bb78c591a09891a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197322a2_26c280d7",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-06T19:37:16Z",
+      "side": 1,
+      "message": "Looking at previous patch sets, I\u0027m not sure what I was thinking.  It makes absolutely no sense, I can only think I was context switching too much before I hit Send. \u003cshame/\u003e\n\nWhen I originally looked at FillFirstShaper() I mistook the math into thinking it clamped it to be within 1.0 in 1.14 format.  But looking again I found that it allows values larger than that - - even though the comment for the definition implies the values should be in 0.0 to 1.0.  So I went down a bit of a rabbit hole with PS5, got misled by that comment.\n\nFurthermore:  Can it ever encounter a negative number?  Looking a little deeper into the callchain, yes - a huge negative number can happen, from when MINUS_INF propagates back from EvalSegmentedFn() if no matching segment can be found.\n\nGoing back to where the overflow originally happened, this once again gets into the situation of possibly overflowing the 64 bit number.  Given that the Shaper1 LUTs are only used in this location, and that they are supposedly intended to represent 0.0 to 1.0, it does not seem a huge tradeoff to further limit the max values accepted out of the table.  Clamping them to signed 30 bit should still satisfy the intent here, allow for values to be outside of 0.0-1.0, and avoid a potential overflow.",
+      "parentUuid": "98a0d86b_4b176a3e",
+      "revId": "ce2de970d46cc7698450b63f5bb78c591a09891a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }

@@ -16,6 +16,24 @@
       "revId": "f42a67d39826d4840d5754f1496b22c4476937e0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cedd99b_07e69086",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-06T19:37:16Z",
+      "side": 1,
+      "message": "As I mentioned in previous comment, my earlier bit math was majorly wonky.  You\u0027re absolutely right that  to note it exceeded.\n\nAgreed on the clamping part.  I\u0027m inclined to clamp the values out of Shaper1* at a slightly more restricted min/max, and let the rest of the math be as it was before (but still relying upon the .",
+      "parentUuid": "58d8a65f_a402a2f6",
+      "revId": "f42a67d39826d4840d5754f1496b22c4476937e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
