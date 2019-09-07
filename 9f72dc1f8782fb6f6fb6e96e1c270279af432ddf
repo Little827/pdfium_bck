@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "483d30bb_fef2034d",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-07T00:32:44Z",
+      "side": 1,
+      "message": "Consistency is good. Unfortunately that code is likely wrong, so let\u0027s not copy it.\n\nFor both /Prev and /XRefStm, would you agree that negative values are invalid. Is that what the IsValid() call is trying to check? If so, try setting |xrefstm_offset| to -1 here as a test, and see what happens on line 770.",
+      "parentUuid": "ada2cbe6_0c705557",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26374c1a_a282cc91",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 4
