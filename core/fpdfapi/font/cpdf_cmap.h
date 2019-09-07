@@ -11,6 +11,7 @@
 
 #include "core/fpdfapi/font/cpdf_cidfont.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/span.h"
 
 struct FXCMAP_CMap;
@@ -47,6 +48,27 @@ class CPDF_CMap final : public Retainable {
     uint16_t m_StartCID;
   };
 
+  class Initializer {
+   public:
+    void SetAdditionalMappings(std::vector<CPDF_CMap::CIDRange> mappings);
+    void SetCharset(CIDSet set);
+    void SetCodingScheme(CodingScheme scheme);
+    void SetDirectCharcodeToCIDTable(size_t idx, uint16_t val);
+    void SetMixedFourByteLeadingRanges(std::vector<CodeRange> ranges);
+    void SetVertical(bool vert);
+
+   private:
+    // Only let CPDF_CMap create/destroy this.
+    friend class CPDF_CMap;
+
+    explicit Initializer(CPDF_CMap* pCMap);
+    Initializer(const Initializer&) = delete;
+    Initializer& operator=(const Initializer&) = delete;
+    ~Initializer();
+
+    UnownedPtr<CPDF_CMap> const m_pCMap;
+  };
+
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
@@ -60,19 +82,9 @@ class CPDF_CMap final : public Retainable {
   size_t CountChar(ByteStringView pString) const;
   int AppendChar(char* str, uint32_t charcode) const;
 
-  void SetVertical(bool vert) { m_bVertical = vert; }
-  void SetCodingScheme(CodingScheme scheme) { m_CodingScheme = scheme; }
-  void SetAdditionalMappings(std::vector<CIDRange> mappings);
-  void SetMixedFourByteLeadingRanges(std::vector<CodeRange> ranges);
-
   int GetCoding() const { return m_Coding; }
   const FXCMAP_CMap* GetEmbedMap() const { return m_pEmbedMap.Get(); }
   CIDSet GetCharset() const { return m_Charset; }
-  void SetCharset(CIDSet set) { m_Charset = set; }
-
-  void SetDirectCharcodeToCIDTable(size_t idx, uint16_t val) {
-    m_DirectCharcodeToCIDTable[idx] = val;
-  }
   bool IsDirectCharcodeToCIDTableIsEmpty() const {
     return m_DirectCharcodeToCIDTable.empty();
   }
