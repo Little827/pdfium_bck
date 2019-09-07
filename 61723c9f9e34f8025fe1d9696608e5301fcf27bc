@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1208e6a8_3bc24731",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-07T06:51:29Z",
+      "side": 1,
+      "message": "s/his/this/ ?",
+      "range": {
+        "startLine": 125,
+        "startChar": 47,
+        "endLine": 125,
+        "endChar": 50
+      },
+      "revId": "61723c9f9e34f8025fe1d9696608e5301fcf27bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

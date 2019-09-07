@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4c816aa6_2ef0caf5",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-07T06:51:29Z",
+      "side": 1,
+      "message": "I haven\u0027t looked into it either. Let\u0027s go with this for now.",
+      "parentUuid": "92df7a58_4c5789d7",
+      "revId": "82b2051d93a497033b16919c7e90b82c89b75af6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e22ad34_18da8f36",
         "filename": "public/fpdf_text.h",
         "patchSetId": 19
