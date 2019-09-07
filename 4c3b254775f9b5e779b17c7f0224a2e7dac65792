@@ -34,6 +34,24 @@
       "revId": "4c3b254775f9b5e779b17c7f0224a2e7dac65792",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33df2642_5a2c0eb2",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-07T06:55:05Z",
+      "side": 1,
+      "message": "I treat PDFium as a standalone project and not something that caters only to Chromium. So I\u0027d like PDFium to have public APIs that are generally useful and consistent from a developer\u0027s perspective.",
+      "parentUuid": "f24b3f3c_2c1c7dba",
+      "revId": "4c3b254775f9b5e779b17c7f0224a2e7dac65792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
