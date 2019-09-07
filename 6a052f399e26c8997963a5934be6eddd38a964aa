@@ -123,6 +123,24 @@
       "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25129c99_cf2d5872",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-07T01:36:26Z",
+      "side": 1,
+      "message": "Annoyingly, FontForge won\u0027t generate a font that works like the original PDF. Why don\u0027t we just land this, and if we see another PDF with missing text that involves this code, we can deal with it then?",
+      "parentUuid": "25e39510_32293b61",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
