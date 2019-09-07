@@ -23,6 +23,30 @@
       "revId": "f2b1e3e8b5b6eda27d47d4356836273781254427",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc86909_72228b36",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-07T07:25:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b1c51e_af5151d9",
+      "range": {
+        "startLine": 478,
+        "startChar": 1,
+        "endLine": 478,
+        "endChar": 35
+      },
+      "revId": "f2b1e3e8b5b6eda27d47d4356836273781254427",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
