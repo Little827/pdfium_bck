@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4842983_0a4dc138",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T20:57:17Z",
+      "side": 1,
+      "message": "Add parens after.",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "92aed954ad4f46584e8a2230713587ec740730fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adb9c420_275e20d5",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T20:57:17Z",
+      "side": 1,
+      "message": "Probably needs to make sure CPDF_ColorState::GetFillColor() does not return nullptr.",
+      "revId": "92aed954ad4f46584e8a2230713587ec740730fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d53e95_ae59115e",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T20:57:17Z",
+      "side": 1,
+      "message": "In fpdf_text.h, my reading of the function documentation is that |r|, |g|, and |b| are required, and |is_rendered| is optional. Assuming I read it correctly, shouldn\u0027t this return false?",
+      "revId": "92aed954ad4f46584e8a2230713587ec740730fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab50c248_e45af39e",
+        "filename": "testing/resources/text_color.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T20:57:17Z",
+      "side": 1,
+      "message": "Can this just merge with the Td operator on line 36, since the a/b/c/d components of the transform is just the identity matrix?",
+      "revId": "92aed954ad4f46584e8a2230713587ec740730fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
