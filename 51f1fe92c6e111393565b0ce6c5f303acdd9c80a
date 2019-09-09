@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eef76ba_6809062f",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T20:19:49Z",
+      "side": 1,
+      "message": "Add a setter that sets the value at a particular index.",
+      "revId": "51f1fe92c6e111393565b0ce6c5f303acdd9c80a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c1bf86_970c2505",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T20:19:49Z",
+      "side": 1,
+      "message": "Let\u0027s make this a const method that returns const-ref, so line 987 can still conveniently get the entire array.",
+      "revId": "51f1fe92c6e111393565b0ce6c5f303acdd9c80a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
