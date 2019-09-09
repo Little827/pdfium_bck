@@ -132,6 +132,62 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetFontWeight(FPDF_TEXTPAGE text_page,
   return charinfo.m_pTextObj->GetFont()->GetFontWeight();
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetFillColor(FPDF_TEXTPAGE text_page,
+                      int index,
+                      int* r,
+                      int* g,
+                      int* b,
+                      FPDF_BOOL* is_rendered) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage || !r || !g || !b)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+
+  if (!charinfo.m_pTextObj)
+    return false;
+
+  if (!charinfo.m_pTextObj->GetFillColor(r, g, b))
+    return false;
+
+  if (is_rendered) {
+    *is_rendered = TextRenderingModeIsFillMode(
+        charinfo.m_pTextObj->GetTextRenderingMode());
+  }
+
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetStrokeColor(FPDF_TEXTPAGE text_page,
+                        int index,
+                        int* r,
+                        int* g,
+                        int* b,
+                        FPDF_BOOL* is_rendered) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage || !r || !g || !b)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+
+  if (!charinfo.m_pTextObj)
+    return false;
+
+  if (!charinfo.m_pTextObj->GetStrokeColor(r, g, b))
+    return false;
+
+  if (is_rendered) {
+    *is_rendered = TextRenderingModeIsStrokeMode(
+        charinfo.m_pTextObj->GetTextRenderingMode());
+  }
+
+  return true;
+}
+
 FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetCharAngle(FPDF_TEXTPAGE text_page,
                                                        int index) {
   CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
