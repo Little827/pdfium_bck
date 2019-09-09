@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb9d76e9_5f321904",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T21:33:16Z",
+      "side": 1,
+      "message": "I don\u0027t anticipate us adding more checks in this method, so let\u0027s write this is a more compact manner:\n\nreturn fill_color \u0026\u0026 fill_color-\u003eGetRGB(r, g, b);",
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8820c1_537740e8",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T21:33:16Z",
+      "side": 1,
+      "message": "Need to check if |m_pTextObj| is valid, like line 129.",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb6f9e8_08c34609",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T21:33:16Z",
+      "side": 1,
+      "message": "Mark these as experimental.",
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddec820f_0ed19fc5",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T21:33:16Z",
+      "side": 1,
+      "message": "Should we add a separate FPDFText_GetTextRenderMode() for this?\n\nhttps://pdfium.googlesource.com/pdfium.git/+/1448cc11 already added a function with that name. IMO, we should rename the existing experimental FPDFText_GetTextRenderMode() to FPDFTextObj_GetTextRenderMode(), and add a new FPDFText_GetTextRenderMode() for fpdf_text.h\n\nAdding folks from that CL for discussion.",
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
