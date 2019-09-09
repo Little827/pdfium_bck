@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79a38e2c_727aecc4",
+        "filename": "core/fpdfapi/page/cpdf_textobject.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-09T22:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb9d76e9_5f321904",
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a8820c1_537740e8",
         "filename": "fpdfsdk/fpdf_text.cpp",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "811cf75f_fff28f63",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-09T22:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a8820c1_537740e8",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eb6f9e8_08c34609",
         "filename": "public/fpdf_text.h",
         "patchSetId": 9
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "6ecc130a_db02b4d1",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-09T22:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eb6f9e8_08c34609",
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddec820f_0ed19fc5",
         "filename": "public/fpdf_text.h",
         "patchSetId": 9
@@ -70,6 +130,24 @@
       "writtenOn": "2019-09-09T21:33:16Z",
       "side": 1,
       "message": "Should we add a separate FPDFText_GetTextRenderMode() for this?\n\nhttps://pdfium.googlesource.com/pdfium.git/+/1448cc11 already added a function with that name. IMO, we should rename the existing experimental FPDFText_GetTextRenderMode() to FPDFTextObj_GetTextRenderMode(), and add a new FPDFText_GetTextRenderMode() for fpdf_text.h\n\nAdding folks from that CL for discussion.",
+      "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d00fe39_bc3107f5",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-09T22:23:04Z",
+      "side": 1,
+      "message": "If we decide to add a separate FPDFText_GetTextRenderMode() for this, we would be forced to add some implementation in Chromium to understand what is the text rendering mode. Since all the knowledge of TextRenderingMode is contained in PDFium for now, I feel like it would be overkill to move the logic of the functions like CPDF_TextState::TextRenderingModeIsStrokeMode() to Chromium for the scope of this task. Especially because it\u0027s relevant to query the render mode when querying the fill/stroke color.",
+      "parentUuid": "ddec820f_0ed19fc5",
       "revId": "54cffd4f80eefc1d36901cf9a92a0457f1c824b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
