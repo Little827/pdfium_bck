@@ -492,7 +492,8 @@ WideString PDF_DecodeText(pdfium::span<const uint8_t> span) {
           unicode = GetUnicodeFromBytes(unicode_str + i);
           if (unicode == 0x001B) {
             i += 2;
-            unicode = GetUnicodeFromBytes(unicode_str + i);
+            if (i < max_chars * 2)
+              unicode = GetUnicodeFromBytes(unicode_str + i);
             break;
           }
         }
