@@ -1,6 +1,7 @@
 // Copyright 2017 PDFium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+#include <vector>
 
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/cpdfsdk_annotiterator.h"
@@ -28,13 +29,16 @@ class CPWLComboBoxEditEmbedderTest : public EmbedderTest {
 
   void CreateAndInitializeFormComboboxPDF() {
     EXPECT_TRUE(OpenDocument("combobox_form.pdf"));
+
+    std::vector<CPDF_Annot::Subtype> annot_subtypes(
+        {CPDF_Annot::Subtype::WIDGET});
+
     m_page = LoadPage(0);
     ASSERT_TRUE(m_page);
 
     m_pFormFillEnv =
         CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle());
-    CPDFSDK_AnnotIterator iter(m_pFormFillEnv->GetPageView(0),
-                               CPDF_Annot::Subtype::WIDGET);
+    CPDFSDK_AnnotIterator iter(m_pFormFillEnv->GetPageView(0), annot_subtypes);
 
     // User editable combobox.
     m_pAnnotEditable = iter.GetFirstAnnot();
