@@ -16,6 +16,24 @@
       "revId": "20660c80e2704de711aaa5ae292cf284e8aa9ccf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6103892_2ab7307d",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-09T18:14:06Z",
+      "side": 1,
+      "message": "Line 473 checks the size is not 0 or 1. Let me see if it\u0027s easy to go with size_t here.",
+      "parentUuid": "f11a209b_3f7daf2d",
+      "revId": "20660c80e2704de711aaa5ae292cf284e8aa9ccf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
