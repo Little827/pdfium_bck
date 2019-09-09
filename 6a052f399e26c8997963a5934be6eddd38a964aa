@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "8ef0a50f_2be4596f",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-09T13:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60cdeadb_2d02e2bd",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "def3dd2c_2936df48",
         "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
         "patchSetId": 8
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "I did more testing, and this CL causes other PDFs with particular font characteristics to display tofu in places where no other PDF viewer would display tofu.",
       "parentUuid": "25129c99_cf2d5872",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356d4fbd_2c95f5c6",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-09T13:40:08Z",
+      "side": 1,
+      "message": "Thanks for finding the discrepancy on the PDFs which should not display tofu. Would you mind send me the files which caused such issue so that I can look into this issue more?",
+      "parentUuid": "55905f1d_43ee65d5",
       "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
