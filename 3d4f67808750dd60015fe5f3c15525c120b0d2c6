@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "260a10a7_52bb6863",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-09-09T22:47:17Z",
+      "side": 1,
+      "message": "The need for this condition isn\u0027t very self-explanatory. Is there a way to encapsulate this in a self-explanatory operation, or can we at least add an implementation comment?",
+      "revId": "3d4f67808750dd60015fe5f3c15525c120b0d2c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
