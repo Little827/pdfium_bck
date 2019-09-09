@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f11a209b_3f7daf2d",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 5540
+      },
+      "writtenOn": "2019-09-09T18:09:25Z",
+      "side": 1,
+      "message": "What happens if `span.size()` is 0 or 1?\n\nAlso, `size` returns `size_t`, which is not `uint32_t` on 64-bit. So it could be too huge to fit into `uint32_t`.",
+      "revId": "20660c80e2704de711aaa5ae292cf284e8aa9ccf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
