@@ -1452,7 +1452,7 @@ class SkiaState {
   bool m_fillFullCover = false;
   bool m_fillPath = false;
   bool m_groupKnockout = false;
-  bool m_debugDisable = false;  // turn off cache for debugging
+  bool m_debugDisable = true;  // turn off cache for debugging
 #if SHOW_SKIA_PATH
  public:
   mutable int m_debugSaveCounter = 0;
@@ -1983,9 +1983,12 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     const SkPath* fillPath = &skPath;
     if (is_paint_stroke) {
       if (m_bGroupKnockout) {
-        skPaint.getFillPath(skPath, &strokePath);
-        if (Op(skPath, strokePath, SkPathOp::kDifference_SkPathOp,
+        skPaint.getFillPath(skPath, &strokePath);  // xxx
+        if (Op(skPath, strokePath, SkPathOp::kUnion_SkPathOp,
+               /*kXOR_SkPathOp kReverseDifference_SkPathOp kIntersect_SkPathOpi
+                  kUnion_SkPathOp kDifference_SkPathOp*/
                &strokePath)) {
+          // strokePath.setFillType(skPath.getFillType());
           fillPath = &strokePath;
         }
       }
@@ -1998,7 +2001,7 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     DebugShowSkiaDrawPath(this, m_pCanvas, skPaint, *fillPath);
     m_pCanvas->drawPath(*fillPath, skPaint);
   }
-  if (is_paint_stroke) {
+  if (is_paint_stroke && stroke_color != fill_color) {
     skPaint.setStyle(SkPaint::kStroke_Style);
     skPaint.setColor(stroke_color);
 #ifdef _SKIA_SUPPORT_PATHS_
