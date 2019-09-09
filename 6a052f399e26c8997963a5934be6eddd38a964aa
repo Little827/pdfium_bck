@@ -231,6 +231,24 @@
       "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b5caa0_80d29cf0",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-09T17:55:37Z",
+      "side": 1,
+      "message": "Also bug_1388_2.in didn\u0027t pass the code that was modified in this CL. Since the failed bots in https://pdfium-review.googlesource.com/c/pdfium/+/60290 are for Windows OS or Mac, should we create a bug for solving this issue specifically for Mac and Windows?",
+      "parentUuid": "33a8ea18_d1353394",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
