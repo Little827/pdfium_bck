@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df3495a3_ab36e118",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T21:16:24Z",
+      "side": 1,
+      "message": "So if |r| is 0, it becomes 0xF0000000 ?",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af44d6de_137c5f7d",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T21:16:24Z",
+      "side": 1,
+      "message": "We do very similar things for |r|, |g|, and |b| here, and very similar calculations to get |l1|, |l2|, and |l3|. WDYT about adding helper functions for those?",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
