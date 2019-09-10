@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ca7bab6c_459b3411",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-09-10T22:15:33Z",
+      "side": 1,
+      "message": "Perhaps elaborate about the issue in the CM?",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0ce19bd_7335df1d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "6a3e1aea_203b3e34",
+        "filename": "core/fxcrt/fx_system_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-09-10T22:15:33Z",
+      "side": 1,
+      "message": "Specifically plus and minus std::numeric_limits\u003cfloat\u003e::min()",
+      "parentUuid": "67288dc4_38dacd49",
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bba65606_1a954a0f",
         "filename": "core/fxcrt/fx_system_unittest.cpp",
         "patchSetId": 2
@@ -53,6 +94,40 @@
       "writtenOn": "2019-09-10T21:56:01Z",
       "side": 1,
       "message": "Just merge with the next line? Even the longest call (lines 118-119) fits on a line.",
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd385d27_056db3a8",
+        "filename": "core/fxcrt/fx_system_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-09-10T22:15:33Z",
+      "side": 1,
+      "message": "Is there any specification/documentation about the type of rounding that is preferred? \n\nThe type we\u0027re used to is round half away from 0. There are different types of rounding, and they usually pertain to the tie breaking rules of negative numbers:\nhttps://en.wikipedia.org/wiki/Rounding#Rounding_to_the_nearest_integer\n\nPostScript specifies round half up. For example, -3.5 rounds to -3.",
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e817e7b_f0ce23e4",
+        "filename": "core/fxcrt/fx_system_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-09-10T22:15:33Z",
+      "side": 1,
+      "message": "Do we still want to test the behavior of std::numeric_limits\u003cfloat\u003e::max()?\nLikewise for negative rounding?",
       "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
