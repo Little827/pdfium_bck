@@ -132,6 +132,44 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetFontWeight(FPDF_TEXTPAGE text_page,
   return charinfo.m_pTextObj->GetFont()->GetFontWeight();
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetFillColor(FPDF_TEXTPAGE text_page,
+                      int index,
+                      int* r,
+                      int* g,
+                      int* b) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage || !r || !g || !b)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+
+  if (!charinfo.m_pTextObj)
+    return false;
+
+  return charinfo.m_pTextObj->GetFillColor(r, g, b);
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFText_GetStrokeColor(FPDF_TEXTPAGE text_page,
+                        int index,
+                        int* r,
+                        int* g,
+                        int* b) {
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage || !r || !g || !b)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+
+  if (!charinfo.m_pTextObj)
+    return false;
+
+  return charinfo.m_pTextObj->GetStrokeColor(r, g, b);
+}
+
 FPDF_EXPORT double FPDF_CALLCONV FPDFText_GetCharAngle(FPDF_TEXTPAGE text_page,
                                                        int index) {
   CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
