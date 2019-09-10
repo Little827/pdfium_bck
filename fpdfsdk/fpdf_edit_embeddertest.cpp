@@ -538,7 +538,7 @@ TEST_F(FPDFEditEmbedderTest, SetText) {
   FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, 0);
   ASSERT_TRUE(page_object);
   ScopedFPDFWideString text1 = GetFPDFWideString(L"Changed for SetText test");
-  EXPECT_TRUE(FPDFText_SetText(page_object, text1.get()));
+  EXPECT_TRUE(FPDFTextObj_SetText(page_object, text1.get()));
 
   // Verify the "Hello, world!" text is gone and "Changed for SetText test" is
   // now displayed.
@@ -1876,7 +1876,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
   EXPECT_TRUE(text_object1);
   ScopedFPDFWideString text1 =
       GetFPDFWideString(L"I'm at the bottom of the page");
-  EXPECT_TRUE(FPDFText_SetText(text_object1, text1.get()));
+  EXPECT_TRUE(FPDFTextObj_SetText(text_object1, text1.get()));
   FPDFPageObj_Transform(text_object1, 1, 0, 0, 1, 20, 20);
   FPDFPage_InsertObject(page, text_object1);
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
@@ -1901,7 +1901,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
   EXPECT_TRUE(text_object2);
   ScopedFPDFWideString text2 =
       GetFPDFWideString(L"Hi, I'm Bold. Times New Roman Bold.");
-  EXPECT_TRUE(FPDFText_SetText(text_object2, text2.get()));
+  EXPECT_TRUE(FPDFTextObj_SetText(text_object2, text2.get()));
   FPDFPageObj_Transform(text_object2, 1, 0, 0, 1, 100, 600);
   FPDFPage_InsertObject(page, text_object2);
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
@@ -1925,7 +1925,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
       FPDFPageObj_NewTextObj(document(), "Courier-Bold", 20.0f);
   EXPECT_TRUE(text_object3);
   ScopedFPDFWideString text3 = GetFPDFWideString(L"Can you read me? <:)>");
-  EXPECT_TRUE(FPDFText_SetText(text_object3, text3.get()));
+  EXPECT_TRUE(FPDFTextObj_SetText(text_object3, text3.get()));
   FPDFPageObj_Transform(text_object3, 1, 1.5, 2, 0.5, 200, 200);
   FPDFPage_InsertObject(page, text_object3);
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
@@ -1950,10 +1950,11 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText) {
   double matrix_d = 0;
   double matrix_e = 0;
   double matrix_f = 0;
-  EXPECT_FALSE(FPDFText_GetMatrix(nullptr, &matrix_a, &matrix_b, &matrix_c,
-                                  &matrix_d, &matrix_e, &matrix_f));
-  EXPECT_TRUE(FPDFText_GetMatrix(text_object3, &matrix_a, &matrix_b, &matrix_c,
-                                 &matrix_d, &matrix_e, &matrix_f));
+  EXPECT_FALSE(FPDFTextObj_GetMatrix(nullptr, &matrix_a, &matrix_b, &matrix_c,
+                                     &matrix_d, &matrix_e, &matrix_f));
+  EXPECT_TRUE(FPDFTextObj_GetMatrix(text_object3, &matrix_a, &matrix_b,
+                                    &matrix_c, &matrix_d, &matrix_e,
+                                    &matrix_f));
   EXPECT_EQ(1., matrix_a);
   EXPECT_EQ(1.5, matrix_b);
   EXPECT_EQ(2., matrix_c);
@@ -1975,13 +1976,13 @@ TEST_F(FPDFEditEmbedderTest, TestGetTextRenderMode) {
   ASSERT_TRUE(page);
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
 
-  ASSERT_EQ(-1, FPDFText_GetTextRenderMode(nullptr));
+  ASSERT_EQ(-1, FPDFTextObj_GetTextRenderMode(nullptr));
 
   FPDF_PAGEOBJECT fill = FPDFPage_GetObject(page, 0);
-  ASSERT_EQ(FPDF_TEXTRENDERMODE_FILL, FPDFText_GetTextRenderMode(fill));
+  ASSERT_EQ(FPDF_TEXTRENDERMODE_FILL, FPDFTextObj_GetTextRenderMode(fill));
 
   FPDF_PAGEOBJECT stroke = FPDFPage_GetObject(page, 1);
-  ASSERT_EQ(FPDF_TEXTRENDERMODE_STROKE, FPDFText_GetTextRenderMode(stroke));
+  ASSERT_EQ(FPDF_TEXTRENDERMODE_STROKE, FPDFTextObj_GetTextRenderMode(stroke));
 
   UnloadPage(page);
 }
@@ -2096,7 +2097,7 @@ TEST_F(FPDFEditEmbedderTest, AddStandardFontText2) {
   EXPECT_TRUE(text_object);
   ScopedFPDFWideString text =
       GetFPDFWideString(L"I'm at the bottom of the page");
-  EXPECT_TRUE(FPDFText_SetText(text_object, text.get()));
+  EXPECT_TRUE(FPDFTextObj_SetText(text_object, text.get()));
   FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 20, 20);
   FPDFPage_InsertObject(page.get(), text_object);
   ScopedFPDFBitmap page_bitmap = RenderPage(page.get());
@@ -2253,7 +2254,7 @@ TEST_F(FPDFEditEmbedderTest, DoubleGenerating) {
       FPDFPageObj_NewTextObj(document(), "Arial", 12.0f);
   ScopedFPDFWideString text =
       GetFPDFWideString(L"Something something #text# something");
-  EXPECT_TRUE(FPDFText_SetText(text_object, text.get()));
+  EXPECT_TRUE(FPDFTextObj_SetText(text_object, text.get()));
   FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 300, 300);
   FPDFPage_InsertObject(page, text_object);
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
@@ -2444,7 +2445,7 @@ TEST_F(FPDFEditEmbedderTest, AddTrueTypeFontText) {
     EXPECT_TRUE(text_object);
     ScopedFPDFWideString text =
         GetFPDFWideString(L"I am testing my loaded font, WEE.");
-    EXPECT_TRUE(FPDFText_SetText(text_object, text.get()));
+    EXPECT_TRUE(FPDFTextObj_SetText(text_object, text.get()));
     FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 400, 400);
     FPDFPage_InsertObject(page, text_object);
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
@@ -2461,7 +2462,7 @@ TEST_F(FPDFEditEmbedderTest, AddTrueTypeFontText) {
     FPDF_PAGEOBJECT text_object2 =
         FPDFPageObj_CreateTextObj(document(), font.get(), 15.0f);
     ScopedFPDFWideString text2 = GetFPDFWideString(L"Bigger font size");
-    EXPECT_TRUE(FPDFText_SetText(text_object2, text2.get()));
+    EXPECT_TRUE(FPDFTextObj_SetText(text_object2, text2.get()));
     FPDFPageObj_Transform(text_object2, 1, 0, 0, 1, 200, 200);
     FPDFPage_InsertObject(page, text_object2);
   }
@@ -2524,7 +2525,7 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
     ASSERT_TRUE(text_object);
     std::wstring wstr = L"ABCDEFGhijklmnop.";
     ScopedFPDFWideString text = GetFPDFWideString(wstr);
-    EXPECT_TRUE(FPDFText_SetText(text_object, text.get()));
+    EXPECT_TRUE(FPDFTextObj_SetText(text_object, text.get()));
     FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 200, 200);
     FPDFPage_InsertObject(page, text_object);
 
@@ -2536,7 +2537,7 @@ TEST_F(FPDFEditEmbedderTest, AddCIDFontText) {
         L"\u3053\u3093\u306B\u3061\u306f\u4e16\u754C\u3002\u3053\u3053\u306B1"
         L"\u756A";
     ScopedFPDFWideString text2 = GetFPDFWideString(wstr2);
-    EXPECT_TRUE(FPDFText_SetText(text_object2, text2.get()));
+    EXPECT_TRUE(FPDFTextObj_SetText(text_object2, text2.get()));
     FPDFPageObj_Transform(text_object2, 1, 0, 0, 1, 100, 500);
     FPDFPage_InsertObject(page, text_object2);
   }
@@ -2756,7 +2757,7 @@ TEST_F(FPDFEditEmbedderTest, AddMarkedText) {
   EXPECT_TRUE(text_object);
   ScopedFPDFWideString text1 =
       GetFPDFWideString(L"I am testing my loaded font, WEE.");
-  EXPECT_TRUE(FPDFText_SetText(text_object, text1.get()));
+  EXPECT_TRUE(FPDFTextObj_SetText(text_object, text1.get()));
   FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 400, 400);
   FPDFPage_InsertObject(page, text_object);
 

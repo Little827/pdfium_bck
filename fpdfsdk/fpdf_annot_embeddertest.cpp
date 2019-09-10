@@ -1013,7 +1013,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyText) {
     EXPECT_TRUE(text_object);
     ScopedFPDFWideString text =
         GetFPDFWideString(L"I'm a translucent text laying on other text.");
-    EXPECT_TRUE(FPDFText_SetText(text_object, text.get()));
+    EXPECT_TRUE(FPDFTextObj_SetText(text_object, text.get()));
     EXPECT_TRUE(FPDFPageObj_SetFillColor(text_object, 0, 0, 255, 150));
     FPDFPageObj_Transform(text_object, 1, 0, 0, 1, 200, 600);
     EXPECT_TRUE(FPDFAnnot_AppendObject(annot.get(), text_object));
@@ -1035,7 +1035,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyText) {
 
     // Modify the text in the new annotation.
     ScopedFPDFWideString new_text = GetFPDFWideString(L"New text!");
-    EXPECT_TRUE(FPDFText_SetText(text_object, new_text.get()));
+    EXPECT_TRUE(FPDFTextObj_SetText(text_object, new_text.get()));
     EXPECT_TRUE(FPDFAnnot_UpdateObject(annot.get(), text_object));
   }
 
