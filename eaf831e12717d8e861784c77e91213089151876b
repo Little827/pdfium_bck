@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca81340_4b06d40d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T19:22:19Z",
+      "side": 1,
+      "message": "Move this down to just above line 927, since it\u0027s only used there.",
+      "revId": "eaf831e12717d8e861784c77e91213089151876b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d4da174_072c7028",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T19:22:19Z",
+      "side": 1,
+      "message": "Needs braces now.",
+      "revId": "eaf831e12717d8e861784c77e91213089151876b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f34f6f_fe14e321",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T19:22:19Z",
+      "side": 1,
+      "message": "Ditto. Move down closer to where it\u0027s used.",
+      "revId": "eaf831e12717d8e861784c77e91213089151876b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ecfd71_cdb2c147",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T19:22:19Z",
+      "side": 1,
+      "message": "|m_glyphs| is",
+      "range": {
+        "startLine": 974,
+        "startChar": 19,
+        "endLine": 974,
+        "endChar": 31
+      },
+      "revId": "eaf831e12717d8e861784c77e91213089151876b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "418d924f_6fe67848",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T19:22:19Z",
+      "side": 1,
+      "message": "- \"\u003d default\", like the ctor.\n- add a blank space after this to separate the ctor/dtor from the other methods.",
+      "revId": "eaf831e12717d8e861784c77e91213089151876b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
