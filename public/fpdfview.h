@@ -152,6 +152,9 @@ typedef const FS_RECTF* FS_LPCRECTF;
 typedef int FPDF_ANNOTATION_SUBTYPE;
 typedef int FPDF_ANNOT_APPEARANCEMODE;
 
+// Text object enums.
+typedef int FPDF_TEXT_RENDERMODE;
+
 // Dictionary value types.
 typedef int FPDF_OBJECT_TYPE;
 

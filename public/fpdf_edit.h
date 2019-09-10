@@ -1173,7 +1173,8 @@ FPDFPageObj_CreateTextObj(FPDF_DOCUMENT document,
 // text     - the handle to the text object.
 //
 // Returns one of the FPDF_TEXTRENDERMODE_* flags on success, -1 on error.
-FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetTextRenderMode(FPDF_PAGEOBJECT text);
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFTextObj_GetTextRenderMode(FPDF_PAGEOBJECT text);
 
 // Experimental API.
 // Get the font name of a text object.
