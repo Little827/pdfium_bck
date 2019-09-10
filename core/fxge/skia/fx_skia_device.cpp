@@ -787,16 +787,19 @@ class SkiaState {
     SkCanvas* skCanvas = m_pDriver->SkiaCanvas();
     SkAutoCanvasRestore scoped_save_restore(skCanvas, /*doSave=*/true);
     skCanvas->concat(skMatrix);
+    bool skip_stroke = false;
     if (m_fillPath) {
       SkPath strokePath;
       const SkPath* fillPath = &m_skPath;
       if (stroke_alpha) {
         if (m_groupKnockout) {
           skPaint.getFillPath(m_skPath, &strokePath);
-          if (Op(m_skPath, strokePath, SkPathOp::kDifference_SkPathOp,
+          if (Op(m_skPath, strokePath, SkPathOp::kUnion_SkPathOp,
                  &strokePath)) {
             fillPath = &strokePath;
           }
+          if (m_strokeColor == m_fillColor)
+            skip_stroke = true;
         }
       }
       skPaint.setStyle(SkPaint::kFill_Style);
@@ -807,7 +810,7 @@ class SkiaState {
       DebugShowSkiaDrawPath(m_pDriver.Get(), skCanvas, skPaint, *fillPath);
       skCanvas->drawPath(*fillPath, skPaint);
     }
-    if (stroke_alpha) {
+    if (stroke_alpha && !skip_stroke) {
       skPaint.setStyle(SkPaint::kStroke_Style);
       skPaint.setColor(m_strokeColor);
 #ifdef _SKIA_SUPPORT_PATHS_
@@ -1977,6 +1980,7 @@ bool CFX_SkiaDeviceDriver::DrawPath(
   SkPath skPath = BuildPath(pPathData);
   SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
   m_pCanvas->concat(skMatrix);
+  bool skip_stroke = false;
   if (GetAlternateOrWindingFillMode(fill_mode) && fill_color) {
     skPath.setFillType(GetAlternateOrWindingFillType(fill_mode));
     SkPath strokePath;
@@ -1984,10 +1988,11 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     if (is_paint_stroke) {
       if (m_bGroupKnockout) {
         skPaint.getFillPath(skPath, &strokePath);
-        if (Op(skPath, strokePath, SkPathOp::kDifference_SkPathOp,
-               &strokePath)) {
+        if (Op(skPath, strokePath, SkPathOp::kUnion_SkPathOp, &strokePath)) {
           fillPath = &strokePath;
         }
+        if (stroke_color == fill_color)
+          skip_stroke = true;
       }
     }
     skPaint.setStyle(SkPaint::kFill_Style);
@@ -1998,7 +2003,7 @@ bool CFX_SkiaDeviceDriver::DrawPath(
     DebugShowSkiaDrawPath(this, m_pCanvas, skPaint, *fillPath);
     m_pCanvas->drawPath(*fillPath, skPaint);
   }
-  if (is_paint_stroke) {
+  if (is_paint_stroke && !skip_stroke) {
     skPaint.setStyle(SkPaint::kStroke_Style);
     skPaint.setColor(stroke_color);
 #ifdef _SKIA_SUPPORT_PATHS_
