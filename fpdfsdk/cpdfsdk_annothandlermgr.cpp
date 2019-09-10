@@ -230,9 +230,26 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnChar(CPDFSDK_Annot* pAnnot,
   return GetAnnotHandler(pAnnot)->OnChar(pAnnot, nChar, nFlags);
 }
 
-bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_Annot* pAnnot,
+bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_PageView* page_view,
+                                              CPDFSDK_Annot* pAnnot,
                                               int nKeyCode,
                                               int nFlag) {
+  // pAnnot is null & pressed key is other than tab then return
+  if (!pAnnot && nKeyCode != FWL_VKEY_Tab)
+    return false;
+
+  // pAnnot is null & pressed key is tab
+  if (!pAnnot && nKeyCode == FWL_VKEY_Tab) {
+    if (CPWL_Wnd::IsSHIFTKeyDown(nFlag)) {
+      ObservedPtr<CPDFSDK_Annot> last_annot(GetLastFocusableAnnot(page_view));
+      return (last_annot &&
+              page_view->GetFormFillEnv()->SetFocusAnnot(&last_annot));
+    }
+    ObservedPtr<CPDFSDK_Annot> first_annot(GetFirstFocusableAnnot(page_view));
+    return (first_annot &&
+            page_view->GetFormFillEnv()->SetFocusAnnot(&first_annot));
+  }
+
   if (CPWL_Wnd::IsCTRLKeyDown(nFlag) || CPWL_Wnd::IsALTKeyDown(nFlag)) {
     return GetAnnotHandler(pAnnot)->OnKeyDown(pAnnot, nKeyCode, nFlag);
   }
@@ -242,7 +259,9 @@ bool CPDFSDK_AnnotHandlerMgr::Annot_OnKeyDown(CPDFSDK_Annot* pAnnot,
   if (pFocusAnnot && (nKeyCode == FWL_VKEY_Tab)) {
     ObservedPtr<CPDFSDK_Annot> pNext(
         GetNextAnnot(pFocusAnnot, !CPWL_Wnd::IsSHIFTKeyDown(nFlag)));
-    if (pNext && pNext.Get() != pFocusAnnot) {
+    if (!pNext)
+      return false;
+    if (pNext.Get() != pFocusAnnot) {
       pPage->GetFormFillEnv()->SetFocusAnnot(&pNext);
       return true;
     }
@@ -329,4 +348,34 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetNextAnnot(CPDFSDK_Annot* pSDKAnnot,
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pSDKAnnot);
   CPDFSDK_AnnotIterator ai(pWidget->GetPageView(), pWidget->GetAnnotSubtype());
   return bNext ? ai.GetNextAnnot(pWidget) : ai.GetPrevAnnot(pWidget);
+}
+
+CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetFirstFocusableAnnot(
+    CPDFSDK_PageView* page_view) const {
+#ifdef PDF_ENABLE_XFA
+  IPDF_Page* page = page_view->GetXFAPage();
+  if (page && !page->AsPDFPage()) {
+    // For xfa annots in XFA pages not backed by PDF pages.
+    return static_cast<CPDFXFA_Page*>(page)->GetFirstXFAAnnot(page_view);
+  }
+#endif  // PDF_ENABLE_XFA
+
+  // Since only WIDGET types are focusable, return the first widget annotation.
+  CPDFSDK_AnnotIterator ai(page_view, CPDF_Annot::Subtype::WIDGET);
+  return ai.GetFirstAnnot();
+}
+
+CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetLastFocusableAnnot(
+    CPDFSDK_PageView* page_view) const {
+#ifdef PDF_ENABLE_XFA
+  IPDF_Page* page = page_view->GetXFAPage();
+  if (page && !page->AsPDFPage()) {
+    // For xfa annots in XFA pages not backed by PDF pages.
+    return static_cast<CPDFXFA_Page*>(page)->GetLastXFAAnnot(page_view);
+  }
+#endif  // PDF_ENABLE_XFA
+
+  // Since only WIDGET types are focusable, return the last widget annotation.
+  CPDFSDK_AnnotIterator ai(page_view, CPDF_Annot::Subtype::WIDGET);
+  return ai.GetLastAnnot();
 }
