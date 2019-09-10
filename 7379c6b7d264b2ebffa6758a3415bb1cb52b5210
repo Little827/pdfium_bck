@@ -23,6 +23,30 @@
       "revId": "7379c6b7d264b2ebffa6758a3415bb1cb52b5210",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c29f72_be73e79e",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T17:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce4bbecb_77a08432",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 92
+      },
+      "revId": "7379c6b7d264b2ebffa6758a3415bb1cb52b5210",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
