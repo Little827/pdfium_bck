@@ -77,6 +77,129 @@ TEST(fxstring, StringToFloat) {
   EXPECT_FLOAT_EQ(1.999999881f, StringToFloat("1.999999881"));
 }
 
+TEST(fxstring, FloatToString) {
+  size_t buflen;
+  char buf[256];
+
+  buflen = FloatToString(0.0f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("0", buf);
+
+  buflen = FloatToString(0.25f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("0.25", buf);
+  buflen = FloatToString(-0.25f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("-0.25", buf);
+
+  buflen = FloatToString(100.0f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("100", buf);
+  buflen = FloatToString(-100.0f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("-100", buf);
+
+  // FloatToString won't convert beyond the maximum integer, and values
+  // larger than that get converted to a string representing that.
+  buflen = FloatToString(3.402823e+38f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("2147483647", buf);
+
+  // FloatToString won't convert beyond the minimum integer, and values
+  // smaller than that get converted to a string representing that.
+  buflen = FloatToString(-3.402823e+38f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("-2147483647", buf);
+
+  // Conversion only acknowledges precision to 5 digit past decimal, and
+  // rounds beyond that.
+  buflen = FloatToString(1.000001119f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("1", buf);
+  buflen = FloatToString(1.000011119f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("1.00001", buf);
+  buflen = FloatToString(1.999988881f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("1.99999", buf);
+  buflen = FloatToString(1.999999881f, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("2", buf);
+}
+
+TEST(fxstring, StringToDouble) {
+  EXPECT_FLOAT_EQ(0.0, StringToDouble(""));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("0"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("0.0"));
+  EXPECT_FLOAT_EQ(0.0, StringToDouble("-0.0"));
+
+  EXPECT_FLOAT_EQ(0.25, StringToDouble("0.25"));
+  EXPECT_FLOAT_EQ(-0.25, StringToDouble("-0.25"));
+
+  EXPECT_FLOAT_EQ(100.0, StringToDouble("100"));
+  EXPECT_FLOAT_EQ(100.0, StringToDouble("100.0"));
+  EXPECT_FLOAT_EQ(100.0, StringToDouble("    100.0"));
+  EXPECT_FLOAT_EQ(-100.0, StringToDouble("-100.0000"));
+
+  EXPECT_FLOAT_EQ(3.402823e+38,
+                  StringToDouble("340282300000000000000000000000000000000"));
+  EXPECT_FLOAT_EQ(-3.402823e+38,
+                  StringToDouble("-340282300000000000000000000000000000000"));
+
+  EXPECT_FLOAT_EQ(1.000000119, StringToDouble("1.000000119"));
+  EXPECT_FLOAT_EQ(1.999999881, StringToDouble("1.999999881"));
+}
+
+TEST(fxstring, DoubleToString) {
+  size_t buflen;
+  char buf[256];
+
+  buflen = DoubleToString(0.0, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("0", buf);
+
+  buflen = DoubleToString(0.25, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("0.25", buf);
+  buflen = DoubleToString(-0.25, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("-0.25", buf);
+
+  buflen = DoubleToString(100.0, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("100", buf);
+  buflen = DoubleToString(-100.0, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("-100", buf);
+
+  // DoubleToString won't convert beyond the maximum integer, and values
+  // larger than that get converted to a string representing that.
+  buflen = DoubleToString(3.402823e+38, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("2147483647", buf);
+
+  // DoubleToString won't convert beyond the minimum integer, and values
+  // smaller than that get converted to a string representing that.
+  buflen = DoubleToString(-3.402823e+38, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("-2147483647", buf);
+
+  // Conversion only acknowledges precision to 5 digit past decimal, and
+  // rounds beyond that.
+  buflen = DoubleToString(1.000001119, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("1", buf);
+  buflen = DoubleToString(1.000011119, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("1.00001", buf);
+  buflen = DoubleToString(1.999988881, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("1.99999", buf);
+  buflen = DoubleToString(1.999999881, buf);
+  buf[buflen] = '\0';
+  EXPECT_STREQ("2", buf);
+}
+
 TEST(fxstring, SplitByteString) {
   std::vector<ByteString> result;
   result = fxcrt::Split(ByteString(""), ',');

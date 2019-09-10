@@ -44,6 +44,14 @@ float FractionalScale(size_t scale_factor, int value) {
   return fraction_scales[scale_factor] * value;
 }
 
+const double fraction_dscales[] = {
+    0.1,       0.01,       0.001,       0.0001,       0.00001,      0.000001,
+    0.0000001, 0.00000001, 0.000000001, 0.0000000001, 0.00000000001};
+
+double FractionalDScale(size_t scale_factor, int value) {
+  return fraction_dscales[scale_factor] * value;
+}
+
 }  // namespace
 
 float StringToFloat(ByteStringView strc) {
@@ -108,6 +116,96 @@ size_t FloatToString(float f, char* buf) {
     }
     scale *= 10;
     scaled = FXSYS_round(f * scale);
+  }
+  if (scaled == 0) {
+    return 1;
+  }
+  char buf2[32];
+  size_t buf_size = 0;
+  if (bNegative) {
+    buf[buf_size++] = '-';
+  }
+  int i = scaled / scale;
+  FXSYS_itoa(i, buf2, 10);
+  size_t len = strlen(buf2);
+  memcpy(buf + buf_size, buf2, len);
+  buf_size += len;
+  int fraction = scaled % scale;
+  if (fraction == 0) {
+    return buf_size;
+  }
+  buf[buf_size++] = '.';
+  scale /= 10;
+  while (fraction) {
+    buf[buf_size++] = '0' + fraction / scale;
+    fraction %= scale;
+    scale /= 10;
+  }
+  return buf_size;
+}
+
+double StringToDouble(ByteStringView strc) {
+  if (strc.IsEmpty())
+    return 0.0;
+
+  int cc = 0;
+  bool bNegative = false;
+  int len = strc.GetLength();
+  if (strc[0] == '+') {
+    cc++;
+  } else if (strc[0] == '-') {
+    bNegative = true;
+    cc++;
+  }
+  while (cc < len) {
+    if (strc[cc] != '+' && strc[cc] != '-')
+      break;
+    cc++;
+  }
+  double value = 0;
+  while (cc < len) {
+    if (strc[cc] == '.')
+      break;
+    value = value * 10 + FXSYS_DecimalCharToInt(strc.CharAt(cc));
+    cc++;
+  }
+  int scale = 0;
+  if (cc < len && strc[cc] == '.') {
+    cc++;
+    while (cc < len) {
+      value += FractionalDScale(scale, FXSYS_DecimalCharToInt(strc.CharAt(cc)));
+      scale++;
+      if (scale == FX_ArraySize(fraction_dscales))
+        break;
+      cc++;
+    }
+  }
+  return bNegative ? -value : value;
+}
+
+double StringToDouble(WideStringView wsStr) {
+  return StringToDouble(FX_UTF8Encode(wsStr).c_str());
+}
+
+size_t DoubleToString(double d, char* buf) {
+  buf[0] = '0';
+  buf[1] = '\0';
+  if (d == 0.0) {
+    return 1;
+  }
+  bool bNegative = false;
+  if (d < 0) {
+    bNegative = true;
+    d = -d;
+  }
+  int scale = 1;
+  int scaled = FXSYS_dround(d);
+  while (scaled < 100000) {
+    if (scale == 1000000) {
+      break;
+    }
+    scale *= 10;
+    scaled = FXSYS_dround(d * scale);
   }
   if (scaled == 0) {
     return 1;
