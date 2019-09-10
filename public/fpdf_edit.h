@@ -1081,7 +1081,7 @@ FPDFPageObj_NewTextObj(FPDF_DOCUMENT document,
 //
 // Returns TRUE on success
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFText_SetText(FPDF_PAGEOBJECT text_object, FPDF_WIDESTRING text);
+FPDFTextObj_SetText(FPDF_PAGEOBJECT text_object, FPDF_WIDESTRING text);
 
 // Returns a font object loaded from a stream of data. The font is loaded
 // into the document.

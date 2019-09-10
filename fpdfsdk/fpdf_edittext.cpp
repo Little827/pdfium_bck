@@ -458,7 +458,7 @@ FPDFPageObj_NewTextObj(FPDF_DOCUMENT document,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFText_SetText(FPDF_PAGEOBJECT text_object, FPDF_WIDESTRING text) {
+FPDFTextObj_SetText(FPDF_PAGEOBJECT text_object, FPDF_WIDESTRING text) {
   CPDF_TextObject* pTextObj = CPDFTextObjectFromFPDFPageObject(text_object);
   if (!pTextObj)
     return false;
