@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8479edd4_bc6adb5f",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-10T20:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eef76ba_6809062f",
+      "revId": "51f1fe92c6e111393565b0ce6c5f303acdd9c80a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7c1bf86_970c2505",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 29
@@ -33,6 +51,24 @@
       "revId": "51f1fe92c6e111393565b0ce6c5f303acdd9c80a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b468f9e2_6983179b",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-10T20:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7c1bf86_970c2505",
+      "revId": "51f1fe92c6e111393565b0ce6c5f303acdd9c80a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
