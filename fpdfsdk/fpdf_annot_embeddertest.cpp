@@ -1513,6 +1513,21 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotNull) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFAnnotEmbedderTest, GetFormField) {
+  // Open file with form text fields.
+  EXPECT_TRUE(OpenDocument("text_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+
+    EXPECT_EQ(4, FPDFAnnot_GetFormFieldType(form_handle(), annot.get()));
+  }
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbedderTest, GetFormAnnotAndCheckFlagsTextField) {
   // Open file with form text fields.
   EXPECT_TRUE(OpenDocument("text_form_multiple.pdf"));
