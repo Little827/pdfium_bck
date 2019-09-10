@@ -208,12 +208,12 @@ int CheckPDFiumCApi() {
     CHK(FPDFPath_SetMatrix);
     CHK(FPDFTextObj_GetFontName);
     CHK(FPDFTextObj_GetFontSize);
+    CHK(FPDFTextObj_GetMatrix);
     CHK(FPDFTextObj_GetText);
-    CHK(FPDFText_GetMatrix);
-    CHK(FPDFText_GetTextRenderMode);
+    CHK(FPDFTextObj_GetTextRenderMode);
+    CHK(FPDFTextObj_SetText);
     CHK(FPDFText_LoadFont);
     CHK(FPDFText_LoadStandardFont);
-    CHK(FPDFText_SetText);
     CHK(FPDF_CreateNewDocument);
 
     // fpdf_ext.h
