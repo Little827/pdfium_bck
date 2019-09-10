@@ -16,6 +16,24 @@
       "revId": "0bd683fffcfffff532e6913241d242c76fee120c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83e82ba_b6dee491",
+        "filename": "fpdfsdk/formfiller/cffl_textfield.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-10T18:04:39Z",
+      "side": 0,
+      "message": "I\u0027ve kept them in a few spots where |pPageView| is used in multiple places. For here, where |pPageView| is only passed to another function that does the assertion, I\u0027ve consistently removed the redundant assertion.",
+      "parentUuid": "af1179a8_e38642f7",
+      "revId": "0bd683fffcfffff532e6913241d242c76fee120c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
