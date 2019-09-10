@@ -209,8 +209,8 @@ int CheckPDFiumCApi() {
     CHK(FPDFTextObj_GetFontName);
     CHK(FPDFTextObj_GetFontSize);
     CHK(FPDFTextObj_GetText);
+    CHK(FPDFTextObj_GetTextRenderMode);
     CHK(FPDFText_GetMatrix);
-    CHK(FPDFText_GetTextRenderMode);
     CHK(FPDFText_LoadFont);
     CHK(FPDFText_LoadStandardFont);
     CHK(FPDFText_SetText);
@@ -343,6 +343,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFText_GetSchCount);
     CHK(FPDFText_GetSchResultIndex);
     CHK(FPDFText_GetText);
+    CHK(FPDFText_GetTextRenderMode);
     CHK(FPDFText_GetUnicode);
     CHK(FPDFText_LoadPage);
 
