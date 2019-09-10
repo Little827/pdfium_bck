@@ -12,7 +12,7 @@ vars = {
   'chromium_git': 'https://chromium.googlesource.com',
   'pdfium_git': 'https://pdfium.googlesource.com',
 
-  'android_ndk_revision': '4e2cea441bfd43f0863d14f57b1e1844260b9884',
+  'android_ndk_revision': '89e8db0cdf323af8bc24de875d7d2a43a66bf10e',
   'binutils_revision': '92bfa0a5dcee9dc01173e39e5bff226b09af0254',
   'build_revision': 'e7232efebc1d3d8f23f8509fd4262a19d05e012f',
   'buildtools_revision': 'aeda9c123d0d6811bcca4fa6703012f2f682941f',
