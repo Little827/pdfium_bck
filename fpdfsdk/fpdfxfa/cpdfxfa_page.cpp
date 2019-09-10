@@ -197,10 +197,40 @@ CPDFSDK_Annot* CPDFXFA_Page::GetNextXFAAnnot(CPDFSDK_Annot* pSDKAnnot,
 
   CXFA_FFWidget* hNextFocus =
       bNext ? pWidgetIterator->MoveToNext() : pWidgetIterator->MoveToPrevious();
-  if (!hNextFocus && pSDKAnnot)
-    hNextFocus = pWidgetIterator->MoveToFirst();
+  if (!hNextFocus)
+    return nullptr;
 
   return pPageView->GetAnnotByXFAWidget(hNextFocus);
+}
+
+CPDFSDK_Annot* CPDFXFA_Page::GetFirstXFAAnnot(
+    CPDFSDK_PageView* page_view) const {
+  CXFA_FFPageView* xfa_page_view = GetXFAPageView();
+  if (!xfa_page_view)
+    return nullptr;
+  std::unique_ptr<IXFA_WidgetIterator> pWidgetIterator(
+      xfa_page_view->CreateWidgetIterator(XFA_TRAVERSEWAY_Tranvalse,
+                                          XFA_WidgetStatus_Visible |
+                                              XFA_WidgetStatus_Viewable |
+                                              XFA_WidgetStatus_Focused));
+  if (pWidgetIterator)
+    return page_view->GetAnnotByXFAWidget(pWidgetIterator->MoveToFirst());
+  return nullptr;
+}
+
+CPDFSDK_Annot* CPDFXFA_Page::GetLastXFAAnnot(
+    CPDFSDK_PageView* page_view) const {
+  CXFA_FFPageView* xfa_page_view = GetXFAPageView();
+  if (!xfa_page_view)
+    return nullptr;
+  std::unique_ptr<IXFA_WidgetIterator> pWidgetIterator(
+      xfa_page_view->CreateWidgetIterator(XFA_TRAVERSEWAY_Tranvalse,
+                                          XFA_WidgetStatus_Visible |
+                                              XFA_WidgetStatus_Viewable |
+                                              XFA_WidgetStatus_Focused));
+  if (pWidgetIterator)
+    return page_view->GetAnnotByXFAWidget(pWidgetIterator->MoveToLast());
+  return nullptr;
 }
 
 int CPDFXFA_Page::HasFormFieldAtPoint(const CFX_PointF& point) const {
