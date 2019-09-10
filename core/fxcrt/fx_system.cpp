@@ -91,9 +91,9 @@ STR_T FXSYS_IntToStr(T value, STR_T str, int radix) {
 int FXSYS_round(float f) {
   if (std::isnan(f))
     return 0;
-  if (f < static_cast<float>(std::numeric_limits<int>::min()))
+  if (f <= static_cast<float>(std::numeric_limits<int>::min()))
     return std::numeric_limits<int>::min();
-  if (f > static_cast<float>(std::numeric_limits<int>::max()))
+  if (f >= static_cast<float>(std::numeric_limits<int>::max()))
     return std::numeric_limits<int>::max();
   return static_cast<int>(round(f));
 }
