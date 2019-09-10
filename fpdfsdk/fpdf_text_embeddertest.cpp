@@ -1274,3 +1274,27 @@ TEST_F(FPDFTextEmbedderTest, GetFontWeight) {
   FPDFText_ClosePage(text_page);
   UnloadPage(page);
 }
+
+TEST_F(FPDFTextEmbedderTest, GetTextRenderMode) {
+  EXPECT_TRUE(OpenDocument("text_render_mode.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  ASSERT_EQ(12, FPDFText_CountChars(text_page));
+
+  ASSERT_EQ(-1, FPDFText_GetTextRenderMode(nullptr, 0));
+  ASSERT_EQ(-1, FPDFText_GetTextRenderMode(text_page, -1));
+  ASSERT_EQ(-1, FPDFText_GetTextRenderMode(text_page, 314));
+
+  // Text rendering mode is MODE_FILL (= 0).
+  ASSERT_EQ(0, FPDFText_GetTextRenderMode(text_page, 0));
+
+  // Text rendering mode is MODE_STROKE (= 1).
+  ASSERT_EQ(1, FPDFText_GetTextRenderMode(text_page, 7));
+
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}
