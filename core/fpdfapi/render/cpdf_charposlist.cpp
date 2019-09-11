@@ -48,10 +48,19 @@ CPDF_CharPosList::CPDF_CharPosList(const std::vector<uint32_t>& charCodes,
           pFont->FallbackFontFromCharcode(CharCode);
       charpos.m_GlyphIndex = pFont->FallbackGlyphFromCharcode(
           charpos.m_FallbackFontPosition, CharCode);
-      pCurrentFont = pFont->GetFontFallback(charpos.m_FallbackFontPosition);
+      if (charpos.m_GlyphIndex == static_cast<uint32_t>(-1) &&
+          pFont->IsTrueTypeFont()) {
+        // For a TrueType font character, when failed at finding the glyph from
+        // the fallback font, switch back to using the original font.
+        charpos.m_GlyphIndex = 0;
+        charpos.m_FallbackFontPosition = -1;
+        pCurrentFont = pFont->GetFont();
+      } else {
+        pCurrentFont = pFont->GetFontFallback(charpos.m_FallbackFontPosition);
 #if defined(OS_MACOSX)
-      charpos.m_ExtGID = charpos.m_GlyphIndex;
+        charpos.m_ExtGID = charpos.m_GlyphIndex;
 #endif
+      }
     }
 
     if (!pFont->IsEmbedded() && !pFont->IsCIDFont())
