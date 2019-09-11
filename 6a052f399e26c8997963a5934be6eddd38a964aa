@@ -249,6 +249,24 @@
       "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b80cd6_a354b4af",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T15:35:45Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/60290 is all green now. On my machine, this CL renders a tofu box.",
+      "parentUuid": "e5b5caa0_80d29cf0",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
