@@ -770,6 +770,32 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
   return true;
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceDoubleToPage(FPDF_PAGE page,
+                                                            int start_x,
+                                                            int start_y,
+                                                            int size_x,
+                                                            int size_y,
+                                                            int rotate,
+                                                            double device_x,
+                                                            double device_y,
+                                                            double* page_x,
+                                                            double* page_y) {
+  if (!page || !page_x || !page_y)
+    return false;
+
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
+  const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
+  Optional<CFX_PointF> pos = pPage->DeviceToPage(
+      rect, rotate,
+      CFX_PointF(static_cast<float>(device_x), static_cast<float>(device_y)));
+  if (!pos)
+    return false;
+
+  *page_x = pos->x;
+  *page_y = pos->y;
+  return true;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
                                                       int start_x,
                                                       int start_y,
@@ -792,6 +818,31 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
 
   *device_x = FXSYS_round(pos->x);
   *device_y = FXSYS_round(pos->y);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDeviceDouble(FPDF_PAGE page,
+                                                            int start_x,
+                                                            int start_y,
+                                                            int size_x,
+                                                            int size_y,
+                                                            int rotate,
+                                                            double page_x,
+                                                            double page_y,
+                                                            double* device_x,
+                                                            double* device_y) {
+  if (!page || !device_x || !device_y)
+    return false;
+
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
+  const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
+  CFX_PointF page_point(static_cast<float>(page_x), static_cast<float>(page_y));
+  Optional<CFX_PointF> pos = pPage->PageToDevice(rect, rotate, page_point);
+  if (!pos)
+    return false;
+
+  *device_x = pos->x;
+  *device_y = pos->y;
   return true;
 }
 
