@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5517a157_986a73a7",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T20:25:44Z",
+      "side": 1,
+      "message": "No blank line here, like lines 128-129.",
+      "revId": "94e3682b98ad6c72662fa9a2b8cc86dd400b1fb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b01e5e6_b03189ab",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T20:25:44Z",
+      "side": 1,
+      "message": "No need for comments. Lines 1298-1300 immediately below effectively serves as the documentation.",
+      "revId": "94e3682b98ad6c72662fa9a2b8cc86dd400b1fb3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
