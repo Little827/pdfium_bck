@@ -16,6 +16,24 @@
       "revId": "d9820e30c84e14f52d1975c27f01b19b151a3781",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6b83e9_b084f738",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T22:24:26Z",
+      "side": 1,
+      "message": "in crbug/611744 the Javascript parsing code converts a string from a textbox into a single precision float.  That has enough floating point error that input like \"407.96\" gets changed into \"407.959991\".\n\nAs noted in https://crbug.com/611744#c3, there is no code to dictate forwarding, so any floating point error will show up.\n\nAlmost all the math in the Javascript code uses double except for that one initial parse, which is float.  Once this CL is in then it will facilitate using double for that too, and then \"407.96\" will still show up as \"407.96\".\n\nThere are of course other input cases where numerical inaccuracies could still arise, but at least with this it will ensure that Pdfium will behave like other readers.",
+      "parentUuid": "d82fa79e_c6a10f6f",
+      "revId": "d9820e30c84e14f52d1975c27f01b19b151a3781",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
