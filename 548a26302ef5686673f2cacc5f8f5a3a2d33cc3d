@@ -16,6 +16,24 @@
       "revId": "548a26302ef5686673f2cacc5f8f5a3a2d33cc3d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "facffa9a_0e387a7e",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T02:40:07Z",
+      "side": 0,
+      "message": "I\u0027m not a big fan of them for if statements, but they can be good for limiting the scope of variables, as shown on https://google.github.io/styleguide/cppguide.html#Local_Variables\n\nThough the main goal here is to reduce nesting. See: https://testing.googleblog.com/2017/06/code-health-reduce-nesting-reduce.html",
+      "parentUuid": "c1e5caf4_395ab989",
+      "revId": "548a26302ef5686673f2cacc5f8f5a3a2d33cc3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
