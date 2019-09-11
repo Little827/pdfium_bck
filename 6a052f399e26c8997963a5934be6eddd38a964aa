@@ -267,6 +267,24 @@
       "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08ed537_959f7fa2",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T19:09:09Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/60512 is a clone of this CL to show how it affects the new test in https://pdfium-review.googlesource.com/60290 .",
+      "parentUuid": "b3b80cd6_a354b4af",
+      "revId": "6a052f399e26c8997963a5934be6eddd38a964aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
