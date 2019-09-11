@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d2d6f3d_3e0ecbc1",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T19:06:24Z",
+      "side": 1,
+      "message": "Instead of casting from uint32_t to int, here, then retrieving it as an int array on line 933, and then converting that to uint32_t again on line 995, just store it as an array of uint32_ts.",
+      "revId": "e58cd7abeb53e11244f78119b628a7a3aad66bc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
