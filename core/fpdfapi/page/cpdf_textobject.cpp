@@ -259,6 +259,16 @@ float CPDF_TextObject::GetFontSize() const {
   return m_TextState.GetFontSize();
 }
 
+bool CPDF_TextObject::GetFillColor(int* r, int* g, int* b) const {
+  const CPDF_Color* fill_color = m_ColorState.GetFillColor();
+  return fill_color && fill_color->GetRGB(r, g, b);
+}
+
+bool CPDF_TextObject::GetStrokeColor(int* r, int* g, int* b) const {
+  const CPDF_Color* stroke_color = m_ColorState.GetStrokeColor();
+  return stroke_color && stroke_color->GetRGB(r, g, b);
+}
+
 CFX_PointF CPDF_TextObject::CalcPositionData(float horz_scale) {
   float curpos = 0;
   float min_x = 10000 * 1.0f;
