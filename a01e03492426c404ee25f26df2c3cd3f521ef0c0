@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51c41c7d_06b9713d",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T20:42:58Z",
+      "side": 1,
+      "message": "Sometimes when the ternary operator line gets too long, the wrapping makes it hard to read. In this case, I feel this is easier to read.\n\n  if (!pTextObj)\n    return -1;\n  return static_cast\u003cFPDF_TEXT_RENDERMODE\u003e(pTextObj-\u003em_TextState.GetTextMode());",
+      "revId": "a01e03492426c404ee25f26df2c3cd3f521ef0c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574b9884_f1c8ed98",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T20:42:58Z",
+      "side": 1,
+      "message": "Remove this blank line.",
+      "revId": "a01e03492426c404ee25f26df2c3cd3f521ef0c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e43df2e_1e738b25",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T20:42:58Z",
+      "side": 1,
+      "message": "Put |FPDF_TEXTRENDERMODE_FILL| here, then there\u0027s no need for the comment.",
+      "range": {
+        "startLine": 1293,
+        "startChar": 12,
+        "endLine": 1293,
+        "endChar": 13
+      },
+      "revId": "a01e03492426c404ee25f26df2c3cd3f521ef0c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d64fc80_750dcc2d",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T20:42:58Z",
+      "side": 1,
+      "message": "I think we should move these to fpdfview.h. It should be fine, since fpdf_edit.h, and nearly every other public header, includes fpdfview.h.",
+      "revId": "a01e03492426c404ee25f26df2c3cd3f521ef0c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d4972c5_fa68b753",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T20:42:58Z",
+      "side": 1,
+      "message": "FPDF_TEXT_RENDERMODE",
+      "range": {
+        "startLine": 139,
+        "startChar": 12,
+        "endLine": 139,
+        "endChar": 29
+      },
+      "revId": "a01e03492426c404ee25f26df2c3cd3f521ef0c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
