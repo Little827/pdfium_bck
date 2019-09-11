@@ -16,6 +16,75 @@
       "revId": "e58cd7abeb53e11244f78119b628a7a3aad66bc1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c41d3f_4c10145d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T21:23:39Z",
+      "side": 1,
+      "message": "Future proof this with:  static_cast\u003cSkScalar\u003e",
+      "range": {
+        "startLine": 1000,
+        "startChar": 37,
+        "endLine": 1000,
+        "endChar": 42
+      },
+      "revId": "e58cd7abeb53e11244f78119b628a7a3aad66bc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "695c6c1d_7e338e6b",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T21:23:39Z",
+      "side": 1,
+      "message": "static_cast\u003cSkScalar\u003e",
+      "range": {
+        "startLine": 1783,
+        "startChar": 23,
+        "endLine": 1783,
+        "endChar": 42
+      },
+      "revId": "e58cd7abeb53e11244f78119b628a7a3aad66bc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400f8b14_1fed6850",
+        "filename": "xfa/fde/cfde_textout.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T21:23:39Z",
+      "side": 1,
+      "message": "Seems like this is separate from the font overlapping issue, should probably go in its own CL.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 6
+      },
+      "revId": "e58cd7abeb53e11244f78119b628a7a3aad66bc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
