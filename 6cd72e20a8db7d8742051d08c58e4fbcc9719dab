@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "97286126_8270334a",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T18:05:37Z",
+      "side": 1,
+      "message": "Can you use a signed int constant in the comparision to help with readability?",
+      "parentUuid": "b712ef4b_0974386c",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af44d6de_137c5f7d",
         "filename": "third_party/lcms/src/cmsopt.c",
         "patchSetId": 6
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "This function will be invoked as an inner loop for pixel processing, and in particular is an optimization for speed.  My thoughts are that ideally we wouldn\u0027t want to have extra function calls out for programmer convenience/readability at this level.",
       "parentUuid": "af44d6de_137c5f7d",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "500f999b_532281d6",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-11T18:05:37Z",
+      "side": 1,
+      "message": "Can you see a measurable difference if you added helper functions? Would cmsINLINE help in that case? Can we have performance and readability?",
+      "parentUuid": "0509477a_4c08d4bd",
       "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
