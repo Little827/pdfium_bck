@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "856af49e_00d1c00a",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T22:13:48Z",
+      "side": 1,
+      "message": "Sure - done.",
+      "parentUuid": "97286126_8270334a",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af44d6de_137c5f7d",
         "filename": "third_party/lcms/src/cmsopt.c",
         "patchSetId": 6
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Can you see a measurable difference if you added helper functions? Would cmsINLINE help in that case? Can we have performance and readability?",
       "parentUuid": "0509477a_4c08d4bd",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bdf1e86_93e815ac",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T22:13:48Z",
+      "side": 1,
+      "message": "When I had originally wrote this I was thinking it was a candidate for std::clamp, but that is only in C++17.\n\nGoing inline is a great idea for letting the compiler cover this for that - done.",
+      "parentUuid": "500f999b_532281d6",
       "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
