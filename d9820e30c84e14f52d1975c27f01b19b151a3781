@@ -34,6 +34,24 @@
       "revId": "d9820e30c84e14f52d1975c27f01b19b151a3781",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cea480f7_93d61045",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-09-11T22:30:15Z",
+      "side": 1,
+      "message": "Thanks a ton. I glanced at the issue ticket, but I guess I didn\u0027t pick that up. \n\nIt might feel a tad pedantic, but feel free to include what you just told me in the CM. It never hurts to be too descriptive, especially if we need to look back on a CL in the future.",
+      "parentUuid": "ec6b83e9_b084f738",
+      "revId": "d9820e30c84e14f52d1975c27f01b19b151a3781",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
