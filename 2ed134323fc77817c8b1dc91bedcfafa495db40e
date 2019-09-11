@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9366e208_d8fc8796",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T13:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca7bab6c_459b3411",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0ce19bd_7335df1d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da25b60f_7bb3b9af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T13:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0ce19bd_7335df1d",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "701b5dc4_0c2c9bf3",
+        "filename": "core/fxcrt/fx_system_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T13:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3e1aea_203b3e34",
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bba65606_1a954a0f",
         "filename": "core/fxcrt/fx_system_unittest.cpp",
         "patchSetId": 2
@@ -97,6 +163,24 @@
       "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2469a792_80eea6a5",
+        "filename": "core/fxcrt/fx_system_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T13:48:51Z",
+      "side": 1,
+      "message": "I tried that; `git cl format` puts them on separate lines again.",
+      "parentUuid": "bba65606_1a954a0f",
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "f35e1284_249b5117",
+        "filename": "core/fxcrt/fx_system_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T13:48:51Z",
+      "side": 1,
+      "message": "Added comment to point out the type.",
+      "parentUuid": "fd385d27_056db3a8",
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e817e7b_f0ce23e4",
         "filename": "core/fxcrt/fx_system_unittest.cpp",
         "patchSetId": 2
@@ -131,6 +233,24 @@
       "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd58a34_7303968e",
+        "filename": "core/fxcrt/fx_system_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-11T13:48:51Z",
+      "side": 1,
+      "message": "Since that is beyond the edge cases of maximum int, should yield the same as at edge of max int.  Easy to include that - done.\n\nIncluded negative max as well.",
+      "parentUuid": "2e817e7b_f0ce23e4",
+      "revId": "2ed134323fc77817c8b1dc91bedcfafa495db40e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
