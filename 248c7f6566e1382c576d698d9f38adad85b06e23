@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f21b6b62_8f90e0f9",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-12T00:24:17Z",
+      "side": 1,
+      "message": "Can you move this to after FPDF_OBJECT_TYPE, so it\u0027s [object, text] here, the same as lines 25-45.",
+      "revId": "248c7f6566e1382c576d698d9f38adad85b06e23",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
