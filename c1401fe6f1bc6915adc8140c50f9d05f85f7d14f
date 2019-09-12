@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a0131f5_4e7b1afa",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-12T18:33:05Z",
+      "side": 1,
+      "message": "Rename to fillcolor or fill_color, ditto for strokeColor below.",
+      "range": {
+        "startLine": 151,
+        "startChar": 14,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "c1401fe6f1bc6915adc8140c50f9d05f85f7d14f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feeb7405_23bcf674",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-12T18:33:05Z",
+      "side": 1,
+      "message": "Just write 0xffu here? (u for unsigned, lowercase ff because all the other 0x hex values in the file are lowercase.)",
+      "revId": "c1401fe6f1bc6915adc8140c50f9d05f85f7d14f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
