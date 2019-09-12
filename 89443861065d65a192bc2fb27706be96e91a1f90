@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1c4d4bd_1f7080d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-12T18:57:43Z",
+      "side": 1,
+      "message": "crbug.com - so there\u0027s a better change of this being auto-link-a-fied.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "89443861065d65a192bc2fb27706be96e91a1f90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fcdfcf_c0b2e1dd",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-12T18:57:43Z",
+      "side": 1,
+      "message": "With both MS\u0027s CRT and POSIX, round() is the double version, and roundf() is the float version. We should stick wth that and not invent a new naming scheme.\n\nSo you likely want a separate CL to first name FXSYS_round() to FXSYS_roundf(). Then you can add FXSYS_dround() as FXSYS_round().",
+      "revId": "89443861065d65a192bc2fb27706be96e91a1f90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
