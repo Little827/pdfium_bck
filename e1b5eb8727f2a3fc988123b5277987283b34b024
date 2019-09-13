@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2518b1c3_b4974573",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-13T23:12:12Z",
+      "side": 1,
+      "message": "Can do.  Sorry, I thought \"flt\" and \"dbl\" were commonly understood abbreviations.",
+      "parentUuid": "318c26e2_16c1eb85",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f854cd4_7ec53cb4",
         "filename": "core/fxcrt/fx_string.cpp",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "76c8c1e5_61ded447",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-13T23:12:12Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "7f854cd4_7ec53cb4",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "952a4228_5dd2e304",
         "filename": "core/fxcrt/fx_string.cpp",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37606b69_a99e7058",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-13T23:12:12Z",
+      "side": 1,
+      "message": "Yes, can do that.  Still need to pass in the size of the array - compiler complained when I tried to determine that within the template.",
+      "parentUuid": "952a4228_5dd2e304",
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5995b8b7_617cb71d",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-13T23:12:12Z",
+      "side": 1,
+      "message": "Yeah, I agree that that sounds better. Done",
+      "parentUuid": "3db5f31b_ebd744cd",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
