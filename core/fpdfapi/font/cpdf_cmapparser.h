@@ -17,7 +17,7 @@
 
 class CPDF_CMapParser {
  public:
-  explicit CPDF_CMapParser(CPDF_CMap* pCMap);
+  explicit CPDF_CMapParser(CPDF_CMap::Initializer* pCMap);
   ~CPDF_CMapParser();
 
   void ParseWord(ByteStringView word);
@@ -48,7 +48,7 @@ class CPDF_CMapParser {
 
   Status m_Status = kStart;
   int m_CodeSeq = 0;
-  UnownedPtr<CPDF_CMap> const m_pCMap;
+  UnownedPtr<CPDF_CMap::Initializer> const m_pCMapInitializer;
   std::vector<CPDF_CMap::CodeRange> m_Ranges;
   std::vector<CPDF_CMap::CodeRange> m_PendingRanges;
   std::vector<CPDF_CMap::CIDRange> m_AdditionalCharcodeToCIDMappings;

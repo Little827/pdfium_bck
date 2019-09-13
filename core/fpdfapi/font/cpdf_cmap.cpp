@@ -286,7 +286,8 @@ CPDF_CMap::CPDF_CMap(const ByteString& bsPredefinedName)
 
 CPDF_CMap::CPDF_CMap(pdfium::span<const uint8_t> spEmbeddedData)
     : m_DirectCharcodeToCIDTable(65536) {
-  CPDF_CMapParser parser(this);
+  Initializer initializer(this);
+  CPDF_CMapParser parser(&initializer);
   CPDF_SimpleParser syntax(spEmbeddedData);
   while (1) {
     ByteStringView word = syntax.GetWord();
@@ -466,9 +467,14 @@ int CPDF_CMap::AppendChar(char* str, uint32_t charcode) const {
   return 0;
 }
 
-void CPDF_CMap::SetAdditionalMappings(std::vector<CIDRange> mappings) {
-  ASSERT(m_AdditionalCharcodeToCIDMappings.empty());
-  if (m_CodingScheme != MixedFourBytes || mappings.empty())
+CPDF_CMap::Initializer::Initializer(CPDF_CMap* pCMap) : m_pCMap(pCMap) {}
+
+CPDF_CMap::Initializer::~Initializer() = default;
+
+void CPDF_CMap::Initializer::SetAdditionalMappings(
+    std::vector<CPDF_CMap::CIDRange> mappings) {
+  ASSERT(m_pCMap->m_AdditionalCharcodeToCIDMappings.empty());
+  if (m_pCMap->m_CodingScheme != MixedFourBytes || mappings.empty())
     return;
 
   std::sort(
@@ -476,9 +482,28 @@ void CPDF_CMap::SetAdditionalMappings(std::vector<CIDRange> mappings) {
       [](const CPDF_CMap::CIDRange& arg1, const CPDF_CMap::CIDRange& arg2) {
         return arg1.m_EndCode < arg2.m_EndCode;
       });
-  m_AdditionalCharcodeToCIDMappings = std::move(mappings);
+  m_pCMap->m_AdditionalCharcodeToCIDMappings = std::move(mappings);
 }
 
-void CPDF_CMap::SetMixedFourByteLeadingRanges(std::vector<CodeRange> ranges) {
-  m_MixedFourByteLeadingRanges = std::move(ranges);
+void CPDF_CMap::Initializer::SetCharset(CIDSet charset) {
+  m_pCMap->m_Charset = charset;
+}
+
+void CPDF_CMap::Initializer::SetCodingScheme(CodingScheme scheme) {
+  ASSERT(m_pCMap->m_AdditionalCharcodeToCIDMappings.empty());
+  m_pCMap->m_CodingScheme = scheme;
+}
+
+void CPDF_CMap::Initializer::SetDirectCharcodeToCIDTable(size_t idx,
+                                                         uint16_t val) {
+  m_pCMap->m_DirectCharcodeToCIDTable[idx] = val;
+}
+
+void CPDF_CMap::Initializer::SetMixedFourByteLeadingRanges(
+    std::vector<CodeRange> ranges) {
+  m_pCMap->m_MixedFourByteLeadingRanges = std::move(ranges);
+}
+
+void CPDF_CMap::Initializer::SetVertical(bool vert) {
+  m_pCMap->m_bVertical = vert;
 }
