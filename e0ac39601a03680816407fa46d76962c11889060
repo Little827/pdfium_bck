@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ca0f4db_4d8b7592",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T00:12:46Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand. Which API should not know that sorting is required? Should we move the sorting to the parser?",
+      "parentUuid": "dd8120f3_9580cd7a",
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82c3c228_f6bc5993",
         "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cb9b4897_edee27d5",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T00:12:46Z",
+      "side": 1,
+      "message": "Done. Pre-existing issue.",
+      "parentUuid": "82c3c228_f6bc5993",
+      "range": {
+        "startLine": 488,
+        "startChar": 47,
+        "endLine": 488,
+        "endChar": 50
+      },
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f83753ae_0420e5eb",
         "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2019-09-11T15:57:12Z",
       "side": 1,
       "message": "It\u0027s a preexisting bug, but you can SetAdditionalMappings() then SetCodingScheme(anything but MixedFourBytes). Not sure this is worth addressing, _perhaps_ in a follow-up.",
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf601707_ba551abf",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T00:12:46Z",
+      "side": 1,
+      "message": "CPDF_CMapParser always calls SetAdditionalMappings() in its dtor as one of the last things it does. I added an ASSERT() to CPDF_CMap::Initializer::SetCodingScheme() to make sure there are no additional mappings.",
+      "parentUuid": "f83753ae_0420e5eb",
       "revId": "e0ac39601a03680816407fa46d76962c11889060",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "df6533f6_91fb7f91",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T00:12:46Z",
+      "side": 1,
+      "message": "|ranges| is consistently being std::move\u0027d around, so this is the right declaration.",
+      "parentUuid": "edb38f39_a017fe2e",
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1450e8b2_b54e3965",
         "filename": "core/fpdfapi/font/cpdf_cmapparser.h",
         "patchSetId": 2
@@ -87,6 +165,30 @@
       "writtenOn": "2019-09-11T15:57:12Z",
       "side": 1,
       "message": "m_pCMapInitializer",
+      "range": {
+        "startLine": 51,
+        "startChar": 43,
+        "endLine": 51,
+        "endChar": 50
+      },
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d9adfc6_6cdfdf86",
+        "filename": "core/fpdfapi/font/cpdf_cmapparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T00:12:46Z",
+      "side": 1,
+      "message": "The suggested name is a bit long, so I\u0027d prefer not to rename it. From CPDF_CMapParser\u0027s perspective, it\u0027s still initializing an CMap. Think of CPDF_CMap::Initializer as the well-defined interface for initialization.",
+      "parentUuid": "1450e8b2_b54e3965",
       "range": {
         "startLine": 51,
         "startChar": 43,
