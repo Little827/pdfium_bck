@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85fa2ba4_0c915760",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T21:09:16Z",
+      "side": 1,
+      "message": "If you are going to change them. can you make these constexpr type kFoo[] ?",
+      "revId": "cfb899203ef3c939735750922326029edcf4da5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e163155_578edf2a",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T21:09:16Z",
+      "side": 1,
+      "message": "There\u0027s a lot of duplicated code between StringToFloat() and StringToDouble() Do you think we can use some C++ template magic to deduplicate?",
+      "revId": "cfb899203ef3c939735750922326029edcf4da5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
