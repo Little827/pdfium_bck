@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b6993f3f_7ceacd6c",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-09-13T17:27:33Z",
+      "side": 1,
+      "message": "Sorry, too many leaps at the same time.\n\nI mean the param could be \"const std::vector\u003cCPDF_CMap::CIDRange\u003e\u0026 mappings\" to avoid the copy, and copy to a local non-const vector, then sort it like on line 480, then move it into m_pCMap-\u003em_AdditionalCharcodeToCIDMappings(). The fact that it\u0027s copied doesn\u0027t need to be known to the API, so the API should be \"const std::vector\u003cCPDF_CMap::CIDRange\u003e\u0026 mappings\"",
+      "parentUuid": "1ca0f4db_4d8b7592",
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82c3c228_f6bc5993",
         "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
         "patchSetId": 2
@@ -154,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "176cdb55_7699d6f2",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-09-13T17:27:33Z",
+      "side": 1,
+      "message": "As above, I don\u0027t think the API should know that. It\u0027s a nit though, feel free to ignore.",
+      "parentUuid": "df6533f6_91fb7f91",
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1450e8b2_b54e3965",
         "filename": "core/fpdfapi/font/cpdf_cmapparser.h",
         "patchSetId": 2
@@ -198,6 +234,30 @@
       "revId": "e0ac39601a03680816407fa46d76962c11889060",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505bf683_de8e4335",
+        "filename": "core/fpdfapi/font/cpdf_cmapparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-09-13T17:27:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d9adfc6_6cdfdf86",
+      "range": {
+        "startLine": 51,
+        "startChar": 43,
+        "endLine": 51,
+        "endChar": 50
+      },
+      "revId": "e0ac39601a03680816407fa46d76962c11889060",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
