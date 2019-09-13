@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a1aae4f_48b7f405",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-13T22:22:59Z",
+      "side": 1,
+      "message": "Done.  Renamed corresponding functions to use a similar convention as the rename applied here too.",
+      "parentUuid": "85fa2ba4_0c915760",
+      "revId": "cfb899203ef3c939735750922326029edcf4da5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e163155_578edf2a",
         "filename": "core/fxcrt/fx_string.cpp",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "cfb899203ef3c939735750922326029edcf4da5d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9f48e4_5acc896e",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-13T22:22:59Z",
+      "side": 1,
+      "message": "Done.  Also did it for the FloatToString() and DoubleToString() functions.",
+      "parentUuid": "0e163155_578edf2a",
+      "revId": "cfb899203ef3c939735750922326029edcf4da5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
