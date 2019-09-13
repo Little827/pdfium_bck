@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aad9cb30_f367adc8",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T23:39:07Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "6af2a9affef360ae7b11b05ce14a6471322a86aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1edbc1e_b5413d8a",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T23:39:07Z",
+      "side": 1,
+      "message": "size_t here and for |scale|.",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "6af2a9affef360ae7b11b05ce14a6471322a86aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b5168f8_9118c60d",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T23:39:07Z",
+      "side": 1,
+      "message": "Name this and |frac_scale| consistently.",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 37
+      },
+      "revId": "6af2a9affef360ae7b11b05ce14a6471322a86aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6819b3_f6b6e813",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T23:39:07Z",
+      "side": 1,
+      "message": "Put this before |fractional_scales_size| - in the same order as POSIX APIs like read().",
+      "revId": "6af2a9affef360ae7b11b05ce14a6471322a86aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
