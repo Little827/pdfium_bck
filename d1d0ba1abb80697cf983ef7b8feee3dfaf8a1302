@@ -22,6 +22,30 @@
       "revId": "d1d0ba1abb80697cf983ef7b8feee3dfaf8a1302",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299ca047_3a9a5e01",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-13T22:26:17Z",
+      "side": 1,
+      "message": "Naming changed to be consistent.\nCan\u0027t have an inline function be marked static.",
+      "parentUuid": "f323c732_4e6d5ed4",
+      "range": {
+        "startLine": 111,
+        "startChar": 29,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "d1d0ba1abb80697cf983ef7b8feee3dfaf8a1302",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
