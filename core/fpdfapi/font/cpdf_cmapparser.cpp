@@ -26,7 +26,8 @@ ByteStringView CMap_GetString(ByteStringView word) {
 
 }  // namespace
 
-CPDF_CMapParser::CPDF_CMapParser(CPDF_CMap* pCMap) : m_pCMap(pCMap) {}
+CPDF_CMapParser::CPDF_CMapParser(CPDF_CMap::Initializer* pCMap)
+    : m_pCMap(pCMap) {}
 
 CPDF_CMapParser::~CPDF_CMapParser() {
   m_pCMap->SetAdditionalMappings(std::move(m_AdditionalCharcodeToCIDMappings));
