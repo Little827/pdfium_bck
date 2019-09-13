@@ -104,6 +104,21 @@ typedef struct {
 // Simple optimizations ----------------------------------------------------------------------------------------------------------
 
 
+// Clamp a fixed point integer to signed 28 bits to avoid overflow in
+// calculations.  Clamp is intended for use with colorants, requiring one bit
+// for a colorant and another two bits to avoid overflow when combining the
+// colors.
+cmsINLINE cmsS1Fixed14Number _FixedClamp(cmsS1Fixed14Number n) {
+  const cmsS1Fixed14Number max_positive = 268435455;  // 0x0FFFFFFF;
+  const cmsS1Fixed14Number max_negative = -268435456; // 0xF0000000;
+
+  if (n < max_negative)
+     return max_negative;
+  if (n > max_positive)
+    return max_positive;
+  return n;
+}
+
 // Remove an element in linked chain
 static
 void _RemoveElement(cmsStage** head)
@@ -1536,15 +1551,25 @@ void MatShaperEval16(register const cmsUInt16Number In[],
     gi = In[1] & 0xFFU;
     bi = In[2] & 0xFFU;
 
-    // Across first shaper, which also converts to 1.14 fixed point
-    r = p->Shaper1R[ri];
-    g = p->Shaper1G[gi];
-    b = p->Shaper1B[bi];
+    // Across first shaper, which also converts to 1.14 fixed point.
+    // Clamp to ensure following calculations don't overflow.
+    r = _FixedClamp(p->Shaper1R[ri]);
+    g = _FixedClamp(p->Shaper1G[gi]);
+    b = _FixedClamp(p->Shaper1B[bi]);
 
     // Evaluate the matrix in 1.14 fixed point
-    l1 =  (p->Mat[0][0] * r + p->Mat[0][1] * g + p->Mat[0][2] * b + p->Off[0] + 0x2000) >> 14;
-    l2 =  (p->Mat[1][0] * r + p->Mat[1][1] * g + p->Mat[1][2] * b + p->Off[1] + 0x2000) >> 14;
-    l3 =  (p->Mat[2][0] * r + p->Mat[2][1] * g + p->Mat[2][2] * b + p->Off[2] + 0x2000) >> 14;
+    l1 =  ((cmsInt64Number)p->Mat[0][0] * r +
+           (cmsInt64Number)p->Mat[0][1] * g +
+           (cmsInt64Number)p->Mat[0][2] * b +
+           p->Off[0] + 0x2000) >> 14;
+    l2 =  ((cmsInt64Number)p->Mat[1][0] * r +
+           (cmsInt64Number)p->Mat[1][1] * g +
+           (cmsInt64Number)p->Mat[1][2] * b +
+           p->Off[1] + 0x2000) >> 14;
+    l3 =  ((cmsInt64Number)p->Mat[2][0] * r +
+           (cmsInt64Number)p->Mat[2][1] * g +
+           (cmsInt64Number)p->Mat[2][2] * b +
+           p->Off[2] + 0x2000) >> 14;
 
     // Now we have to clip to 0..1.0 range
     ri = (l1 < 0) ? 0 : ((l1 > 16384) ? 16384U : (cmsUInt32Number) l1);
