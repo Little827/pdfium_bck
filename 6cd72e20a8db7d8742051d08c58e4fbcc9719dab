@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "ea59adeb_d416d160",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T21:25:31Z",
+      "side": 1,
+      "message": "Missed this one. The numbers are still 0x... in the latest patch set.",
+      "parentUuid": "856af49e_00d1c00a",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af44d6de_137c5f7d",
         "filename": "third_party/lcms/src/cmsopt.c",
         "patchSetId": 6
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "When I had originally wrote this I was thinking it was a candidate for std::clamp, but that is only in C++17.\n\nGoing inline is a great idea for letting the compiler cover this for that - done.",
       "parentUuid": "500f999b_532281d6",
+      "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5737d87e_8e8be313",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T21:25:31Z",
+      "side": 1,
+      "message": "There are several suggestions that I wanted to make, but each time I realized this is not C++ code.",
+      "parentUuid": "5bdf1e86_93e815ac",
       "revId": "6cd72e20a8db7d8742051d08c58e4fbcc9719dab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
