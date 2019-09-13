@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "318c26e2_16c1eb85",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T22:33:36Z",
+      "side": 1,
+      "message": "It took 3-4 tries before I figured out what \"Flt\" stood for. Maybe just write it out? We can afford the 2-3 extra letters. :)",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f854cd4_7ec53cb4",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T22:33:36Z",
+      "side": 1,
+      "message": "No need for const here and on the next line.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952a4228_5dd2e304",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T22:33:36Z",
+      "side": 1,
+      "message": "I think we can pass in |kFractionScalesFlt| / |kFractionScalesDbl| here, remove FractionalScaleFlt() / FractionalScaleDbl(), and inline the access to the franction scales array around line 87.",
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db5f31b_ebd744cd",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T22:33:36Z",
+      "side": 1,
+      "message": "Maybe \"round_func\" ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "e1b5eb8727f2a3fc988123b5277987283b34b024",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
