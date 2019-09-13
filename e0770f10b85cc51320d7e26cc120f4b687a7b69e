@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2e9c35e_c574911d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-13T21:00:57Z",
+      "side": 1,
+      "message": "Instead of maybe calling this once before MakeFromText(), and always a second time after. Can you just always call it once before calling MakeFromText()? Unlike the loop that contains line 1751, there are no other |font| users in other branches within this while loop.",
+      "revId": "e0770f10b85cc51320d7e26cc120f4b687a7b69e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
