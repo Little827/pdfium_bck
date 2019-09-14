@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e15ad7c_d8bac2aa",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-14T01:16:41Z",
+      "side": 1,
+      "message": "Now we still always call setScaleX() once here, and maybe again below. One quick fix is to make this the else-clause for the if-block at line 998.",
+      "revId": "e9c77ccc40ddbd3a04a3af4119c07b83f23f5645",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f31e3b2_7b07f73c",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-14T01:16:41Z",
+      "side": 1,
+      "message": "Comments also apply here.",
+      "revId": "e9c77ccc40ddbd3a04a3af4119c07b83f23f5645",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
