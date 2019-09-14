@@ -329,6 +329,8 @@ void CXFA_FFTextEdit::OnProcessMessage(CFWL_Message* pMessage) {
 }
 
 void CXFA_FFTextEdit::OnProcessEvent(CFWL_Event* pEvent) {
+  // Processing event may destroy |this| widget inside JS callback.
+  ObservedPtr<CXFA_FFWidget> pWatched(this);
   CXFA_FFField::OnProcessEvent(pEvent);
   switch (pEvent->GetType()) {
     case CFWL_Event::Type::TextWillChange:
@@ -341,6 +343,9 @@ void CXFA_FFTextEdit::OnProcessEvent(CFWL_Event* pEvent) {
     default:
       break;
   }
+  if (!pWatched)
+    return;
+
   m_pOldDelegate->OnProcessEvent(pEvent);
 }
 

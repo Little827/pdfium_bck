@@ -301,6 +301,8 @@ void CXFA_FFCheckButton::OnProcessMessage(CFWL_Message* pMessage) {
 }
 
 void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
+  // Processing event may destroy |this| widget inside JS callback.
+  ObservedPtr<CXFA_FFWidget> pWatched(this);
   CXFA_FFField::OnProcessEvent(pEvent);
   switch (pEvent->GetType()) {
     case CFWL_Event::Type::CheckStateChanged: {
@@ -317,10 +319,16 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
           exclNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Change,
                                  &eParam);
         }
+        if (!pWatched)
+          return;
+
         eParam.m_pTarget = m_pNode.Get();
         m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Change,
                               &eParam);
       } else {
+        if (!pWatched)
+          return;
+
         SetFWLCheckState(m_pNode->GetCheckState());
       }
       if (exclNode) {
@@ -328,6 +336,9 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
         exclNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Click,
                                &eParam);
       }
+      if (!pWatched)
+        return;
+
       eParam.m_pTarget = m_pNode.Get();
       m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Click, &eParam);
       break;
@@ -335,6 +346,10 @@ void CXFA_FFCheckButton::OnProcessEvent(CFWL_Event* pEvent) {
     default:
       break;
   }
+
+  if (!pWatched)
+    return;
+
   m_pOldDelegate->OnProcessEvent(pEvent);
 }
 
