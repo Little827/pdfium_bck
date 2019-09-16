@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5eb4883_321eecd9",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-16T19:31:31Z",
+      "side": 1,
+      "message": "Not needed, since included in the condition to get into this block (and pFont can\u0027t have changed by time we reach here).",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "6370afeab550d2bd37b42177684c60c2b40ac3e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf954ca_b418f321",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-16T19:31:31Z",
+      "side": 1,
+      "message": "Based on preceding comment, it is unclear to me why resetting m_GlyphIndex is predicated on the \"ToUnicode\" key.  Perhaps comment needs clarifying?",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "6370afeab550d2bd37b42177684c60c2b40ac3e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
