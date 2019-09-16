@@ -47,7 +47,8 @@ int CPDF_SimpleFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
     return -1;
 
   int index = m_GlyphIndex[charcode];
-  if (index == 0xffff || (index == 0 && IsTrueTypeFont()))
+  bool bToUnicode = GetFontDict()->KeyExist("ToUnicode");
+  if (index == 0xffff || (index == 0 && IsTrueTypeFont() && !bToUnicode))
     return -1;
 
   return index;
