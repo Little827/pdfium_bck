@@ -148,6 +148,7 @@ class CPDF_Parser {
   bool LoadLinearizedAllCrossRefV4(FX_FILESIZE pos);
   bool LoadLinearizedAllCrossRefV5(FX_FILESIZE pos);
   Error LoadLinearizedMainXRefTable();
+  Error LoadLinearizedCrossRefStream();
   const CPDF_ObjectStream* GetObjectStream(uint32_t object_number);
   std::unique_ptr<CPDF_LinearizedHeader> ParseLinearizedHeader();
   void ShrinkObjectMap(uint32_t size);
@@ -178,6 +179,7 @@ class CPDF_Parser {
   bool m_bXRefStream = false;
   bool m_bXRefTableRebuilt = false;
   int m_FileVersion = 0;
+  int m_MainXRefStreamOffset;
   // m_CrossRefTable must be destroyed after m_pSecurityHandler due to the
   // ownership of the ID array data.
   std::unique_ptr<CPDF_CrossRefTable> m_CrossRefTable;
