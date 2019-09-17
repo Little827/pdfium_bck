@@ -19,6 +19,10 @@ char* TerminatedDoubleToString(double value, char* buf) {
   return buf;
 }
 
+#define TEST_STRING_TO_VALUE(func, val, str) \
+  EXPECT_FLOAT_EQ(val, func(str));           \
+  EXPECT_FLOAT_EQ(val, func(L##str));
+
 TEST(fxstring, FX_UTF8Encode) {
   EXPECT_EQ("", FX_UTF8Encode(WideStringView()));
   EXPECT_EQ(
@@ -69,26 +73,26 @@ TEST(fxstring, FX_UTF8EncodeDecodeConsistency) {
 }
 
 TEST(fxstring, StringToFloat) {
-  EXPECT_FLOAT_EQ(0.0f, StringToFloat(""));
-  EXPECT_FLOAT_EQ(0.0f, StringToFloat("0"));
-  EXPECT_FLOAT_EQ(0.0f, StringToFloat("0.0"));
-  EXPECT_FLOAT_EQ(0.0f, StringToFloat("-0.0"));
+  TEST_STRING_TO_VALUE(StringToFloat, 0.0f, "");
+  TEST_STRING_TO_VALUE(StringToFloat, 0.0f, "0");
+  TEST_STRING_TO_VALUE(StringToFloat, 0.0f, "0.0");
+  TEST_STRING_TO_VALUE(StringToFloat, 0.0f, "-0.0");
 
-  EXPECT_FLOAT_EQ(0.25f, StringToFloat("0.25"));
-  EXPECT_FLOAT_EQ(-0.25f, StringToFloat("-0.25"));
+  TEST_STRING_TO_VALUE(StringToFloat, 0.25f, "0.25");
+  TEST_STRING_TO_VALUE(StringToFloat, -0.25f, "-0.25");
 
-  EXPECT_FLOAT_EQ(100.0f, StringToFloat("100"));
-  EXPECT_FLOAT_EQ(100.0f, StringToFloat("100.0"));
-  EXPECT_FLOAT_EQ(100.0f, StringToFloat("    100.0"));
-  EXPECT_FLOAT_EQ(-100.0f, StringToFloat("-100.0000"));
+  TEST_STRING_TO_VALUE(StringToFloat, 100.0f, "100");
+  TEST_STRING_TO_VALUE(StringToFloat, 100.0f, "100.0");
+  TEST_STRING_TO_VALUE(StringToFloat, 100.0f, "    100.0");
+  TEST_STRING_TO_VALUE(StringToFloat, -100.0f, "-100.0000");
 
-  EXPECT_FLOAT_EQ(3.402823e+38f,
-                  StringToFloat("340282300000000000000000000000000000000"));
-  EXPECT_FLOAT_EQ(-3.402823e+38f,
-                  StringToFloat("-340282300000000000000000000000000000000"));
+  TEST_STRING_TO_VALUE(StringToFloat, 3.402823e+38f,
+                       "340282300000000000000000000000000000000");
+  TEST_STRING_TO_VALUE(StringToFloat, -3.402823e+38f,
+                       "-340282300000000000000000000000000000000");
 
-  EXPECT_FLOAT_EQ(1.000000119f, StringToFloat("1.000000119"));
-  EXPECT_FLOAT_EQ(1.999999881f, StringToFloat("1.999999881"));
+  TEST_STRING_TO_VALUE(StringToFloat, 1.000000119f, "1.000000119");
+  TEST_STRING_TO_VALUE(StringToFloat, 1.999999881f, "1.999999881");
 }
 
 TEST(fxstring, FloatToString) {
@@ -130,26 +134,26 @@ TEST(fxstring, FloatToString) {
 }
 
 TEST(fxstring, StringToDouble) {
-  EXPECT_FLOAT_EQ(0.0, StringToDouble(""));
-  EXPECT_FLOAT_EQ(0.0, StringToDouble("0"));
-  EXPECT_FLOAT_EQ(0.0, StringToDouble("0.0"));
-  EXPECT_FLOAT_EQ(0.0, StringToDouble("-0.0"));
+  TEST_STRING_TO_VALUE(StringToDouble, 0.0, "");
+  TEST_STRING_TO_VALUE(StringToDouble, 0.0, "0");
+  TEST_STRING_TO_VALUE(StringToDouble, 0.0, "0.0");
+  TEST_STRING_TO_VALUE(StringToDouble, 0.0, "-0.0");
 
-  EXPECT_FLOAT_EQ(0.25, StringToDouble("0.25"));
-  EXPECT_FLOAT_EQ(-0.25, StringToDouble("-0.25"));
+  TEST_STRING_TO_VALUE(StringToDouble, 0.25, "0.25");
+  TEST_STRING_TO_VALUE(StringToDouble, -0.25, "-0.25");
 
-  EXPECT_FLOAT_EQ(100.0, StringToDouble("100"));
-  EXPECT_FLOAT_EQ(100.0, StringToDouble("100.0"));
-  EXPECT_FLOAT_EQ(100.0, StringToDouble("    100.0"));
-  EXPECT_FLOAT_EQ(-100.0, StringToDouble("-100.0000"));
+  TEST_STRING_TO_VALUE(StringToDouble, 100.0, "100");
+  TEST_STRING_TO_VALUE(StringToDouble, 100.0, "100.0");
+  TEST_STRING_TO_VALUE(StringToDouble, 100.0, "    100.0");
+  TEST_STRING_TO_VALUE(StringToDouble, -100.0, "-100.0000");
 
-  EXPECT_FLOAT_EQ(3.402823e+38,
-                  StringToDouble("340282300000000000000000000000000000000"));
-  EXPECT_FLOAT_EQ(-3.402823e+38,
-                  StringToDouble("-340282300000000000000000000000000000000"));
+  TEST_STRING_TO_VALUE(StringToDouble, 3.402823e+38,
+                       "340282300000000000000000000000000000000");
+  TEST_STRING_TO_VALUE(StringToDouble, -3.402823e+38,
+                       "-340282300000000000000000000000000000000");
 
-  EXPECT_FLOAT_EQ(1.000000119, StringToDouble("1.000000119"));
-  EXPECT_FLOAT_EQ(1.999999881, StringToDouble("1.999999881"));
+  TEST_STRING_TO_VALUE(StringToDouble, 1.000000119, "1.000000119");
+  TEST_STRING_TO_VALUE(StringToDouble, 1.999999881, "1.999999881");
 }
 
 TEST(fxstring, DoubleToString) {
