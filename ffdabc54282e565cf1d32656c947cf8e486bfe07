@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad8aebf2_d9a633cc",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-17T22:08:50Z",
+      "side": 1,
+      "message": "Given line 771, this is always true.",
+      "revId": "ffdabc54282e565cf1d32656c947cf8e486bfe07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f04e9aa3_f722d8d7",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-17T22:08:50Z",
+      "side": 1,
+      "message": "Assuming we keep this variable, initialize it.",
+      "revId": "ffdabc54282e565cf1d32656c947cf8e486bfe07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
