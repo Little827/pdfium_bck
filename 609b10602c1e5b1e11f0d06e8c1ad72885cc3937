@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a479753_c04ac94d",
+        "filename": "third_party/lcms/0033-opt-integer-overflow.patch",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-17T23:59:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b61578_4d7763ec",
+      "revId": "609b10602c1e5b1e11f0d06e8c1ad72885cc3937",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "638f49a6_d87bbfe6",
         "filename": "third_party/lcms/src/cmsopt.c",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "609b10602c1e5b1e11f0d06e8c1ad72885cc3937",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73dccf2_7f46a6e1",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-17T23:59:41Z",
+      "side": 1,
+      "message": "Yup, you\u0027re right there on exceeding the bounds of |l1|.\n\nThe calculations for |l1| are immediately followed by a clamp calculation to set |ri|.  I don\u0027t think we gain anything by having two clamps in a row.  Just changing this intermediate representation of |l1| to 64 bit resolves this a little bit more efficiently.",
+      "parentUuid": "638f49a6_d87bbfe6",
+      "revId": "609b10602c1e5b1e11f0d06e8c1ad72885cc3937",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
