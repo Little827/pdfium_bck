@@ -16,6 +16,24 @@
       "revId": "1489c437d5dc99fbb29c8bf74d5d3368e814e57c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49a969b0_a6c3abe8",
+        "filename": "fxjs/cjs_publicmethods.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-17T23:58:23Z",
+      "side": 1,
+      "message": "Agreed.  Created https://crbug.com/pdfium/1398 to ensure this isn\u0027t forgotten.",
+      "parentUuid": "7880106d_97acb162",
+      "revId": "1489c437d5dc99fbb29c8bf74d5d3368e814e57c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
