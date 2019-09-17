@@ -213,6 +213,44 @@ TEST_F(CJS_PublicMethodsEmbedderTest, AFSimple_CalculateSum) {
   ASSERT_EQ(L"7", result);
 }
 
+TEST_F(CJS_PublicMethodsEmbedderTest, AFSimple_CalculatePrd) {
+  v8::Isolate::Scope isolate_scope(isolate());
+  v8::HandleScope handle_scope(isolate());
+  v8::Context::Scope context_scope(GetV8Context());
+
+  EXPECT_TRUE(OpenDocument("calculate.pdf"));
+  auto* page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  CJS_Runtime runtime(
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle()));
+  runtime.NewEventContext();
+
+  WideString result;
+  runtime.GetCurrentEventContext()->GetEventRecorder()->SetValueForTest(
+      &result);
+
+  auto ary = runtime.NewArray();
+  runtime.PutArrayElement(ary, 0, runtime.NewString("Calc2_A"));
+  runtime.PutArrayElement(ary, 1, runtime.NewString("Calc2_B"));
+
+  std::vector<v8::Local<v8::Value>> params;
+  params.push_back(runtime.NewString("PRD"));
+  params.push_back(ary);
+
+  CJS_Result ret = CJS_PublicMethods::AFSimple_Calculate(&runtime, params);
+  UnloadPage(page);
+
+  runtime.GetCurrentEventContext()->GetEventRecorder()->SetValueForTest(
+      nullptr);
+
+  ASSERT_TRUE(!ret.HasError());
+  ASSERT_TRUE(!ret.HasReturn());
+  // crbug.com/611744: AFSimple_Calculate has noticeable floating point
+  // precision error for 407.96 * 1.0.
+  ASSERT_EQ(L"407.959991", result);
+}
+
 TEST_F(CJS_PublicMethodsEmbedderTest, AFNumber_Keystroke) {
   v8::Isolate::Scope isolate_scope(isolate());
   v8::HandleScope handle_scope(isolate());
