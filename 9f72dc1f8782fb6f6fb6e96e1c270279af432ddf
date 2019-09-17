@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "4909d5d3_5db3314a",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-09-17T17:20:01Z",
+      "side": 1,
+      "message": "Replacing FX_SAFE_FILESIZE with int. and adding check if xrefstm_offset  is not negative.",
+      "parentUuid": "483d30bb_fef2034d",
+      "revId": "9f72dc1f8782fb6f6fb6e96e1c270279af432ddf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26374c1a_a282cc91",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 4
