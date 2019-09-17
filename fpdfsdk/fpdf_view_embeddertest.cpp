@@ -120,6 +120,8 @@ TEST_F(FPDFViewEmbedderTest, DeviceCoordinatesToPageCoordinates) {
   // Device coordinate to be converted
   int device_x = 10;
   int device_y = 10;
+  double device_x_double = 10.5;
+  double device_y_double = 10.5;
 
   double page_x = 0.0;
   double page_y = 0.0;
@@ -128,12 +130,24 @@ TEST_F(FPDFViewEmbedderTest, DeviceCoordinatesToPageCoordinates) {
   EXPECT_NEAR(9.5625, page_x, kTolerance);
   EXPECT_NEAR(775.5, page_y, kTolerance);
 
+  EXPECT_TRUE(FPDF_DeviceDoubleToPage(page, start_x, start_y, size_x, size_y,
+                                      rotate, device_x_double, device_y_double,
+                                      &page_x, &page_y));
+  EXPECT_NEAR(10.0406, page_x, kTolerance);
+  EXPECT_NEAR(774.6749, page_y, kTolerance);
+
   // Rotate 90 degrees clockwise
   rotate = 1;
   EXPECT_TRUE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, rotate,
                                 device_x, device_y, &page_x, &page_y));
   EXPECT_NEAR(12.75, page_x, kTolerance);
   EXPECT_NEAR(12.375, page_y, kTolerance);
+
+  EXPECT_TRUE(FPDF_DeviceDoubleToPage(page, start_x, start_y, size_x, size_y,
+                                      rotate, device_x_double, device_y_double,
+                                      &page_x, &page_y));
+  EXPECT_NEAR(13.3875, page_x, kTolerance);
+  EXPECT_NEAR(12.9937, page_y, kTolerance);
 
   // Rotate 180 degrees
   rotate = 2;
@@ -142,12 +156,24 @@ TEST_F(FPDFViewEmbedderTest, DeviceCoordinatesToPageCoordinates) {
   EXPECT_NEAR(602.4374, page_x, kTolerance);
   EXPECT_NEAR(16.5, page_y, kTolerance);
 
+  EXPECT_TRUE(FPDF_DeviceDoubleToPage(page, start_x, start_y, size_x, size_y,
+                                      rotate, device_x_double, device_y_double,
+                                      &page_x, &page_y));
+  EXPECT_NEAR(601.9593, page_x, kTolerance);
+  EXPECT_NEAR(17.3250, page_y, kTolerance);
+
   // Rotate 90 degrees counter-clockwise
   rotate = 3;
   EXPECT_TRUE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, rotate,
                                 device_x, device_y, &page_x, &page_y));
   EXPECT_NEAR(599.25, page_x, kTolerance);
   EXPECT_NEAR(779.625, page_y, kTolerance);
+
+  EXPECT_TRUE(FPDF_DeviceDoubleToPage(page, start_x, start_y, size_x, size_y,
+                                      rotate, device_x_double, device_y_double,
+                                      &page_x, &page_y));
+  EXPECT_NEAR(598.6125, page_x, kTolerance);
+  EXPECT_NEAR(779.0062, page_y, kTolerance);
 
   // FPDF_DeviceToPage() converts |rotate| into legal rotation by taking
   // modulo by 4. A value of 4 is expected to be converted into 0 (normal
@@ -158,6 +184,12 @@ TEST_F(FPDFViewEmbedderTest, DeviceCoordinatesToPageCoordinates) {
   EXPECT_NEAR(9.5625, page_x, kTolerance);
   EXPECT_NEAR(775.5, page_y, kTolerance);
 
+  EXPECT_TRUE(FPDF_DeviceDoubleToPage(page, start_x, start_y, size_x, size_y,
+                                      rotate, device_x_double, device_y_double,
+                                      &page_x, &page_y));
+  EXPECT_NEAR(10.0406, page_x, kTolerance);
+  EXPECT_NEAR(774.6749, page_y, kTolerance);
+
   // FPDF_DeviceToPage returns untransformed coordinates if |rotate| % 4 is
   // negative.
   rotate = -1;
@@ -166,18 +198,33 @@ TEST_F(FPDFViewEmbedderTest, DeviceCoordinatesToPageCoordinates) {
   EXPECT_NEAR(device_x, page_x, kTolerance);
   EXPECT_NEAR(device_y, page_y, kTolerance);
 
+  EXPECT_TRUE(FPDF_DeviceDoubleToPage(page, start_x, start_y, size_x, size_y,
+                                      rotate, device_x_double, device_y_double,
+                                      &page_x, &page_y));
+  EXPECT_NEAR(device_x_double, page_x, kTolerance);
+  EXPECT_NEAR(device_y_double, page_y, kTolerance);
+
   // Negative case - invalid page
   page_x = 1234.0;
   page_y = 5678.0;
   EXPECT_FALSE(FPDF_DeviceToPage(nullptr, start_x, start_y, size_x, size_y,
                                  rotate, device_x, device_y, &page_x, &page_y));
   // Out parameters are expected to remain unchanged
-  EXPECT_NEAR(1234.0, page_x, kTolerance);
-  EXPECT_NEAR(5678.0, page_y, kTolerance);
+  EXPECT_EQ(1234.0, page_x);
+  EXPECT_EQ(5678.0, page_y);
+
+  EXPECT_FALSE(FPDF_DeviceDoubleToPage(nullptr, start_x, start_y, size_x,
+                                       size_y, rotate, device_x_double,
+                                       device_y_double, &page_x, &page_y));
+  EXPECT_EQ(1234.0, page_x);
+  EXPECT_EQ(5678.0, page_y);
 
   // Negative case - invalid output parameters
   EXPECT_FALSE(FPDF_DeviceToPage(page, start_x, start_y, size_x, size_y, rotate,
                                  device_x, device_y, nullptr, nullptr));
+  EXPECT_FALSE(FPDF_DeviceDoubleToPage(page, start_x, start_y, size_x, size_y,
+                                       rotate, device_x_double, device_y_double,
+                                       nullptr, nullptr));
 
   UnloadPage(page);
 }
@@ -187,6 +234,9 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
   EXPECT_TRUE(OpenDocument("about_blank.pdf"));
   FPDF_PAGE page = LoadPage(0);
   EXPECT_NE(nullptr, page);
+
+  // Error tolerance for floating point comparison
+  const double kTolerance = 0.0001;
 
   // Display bounds in device coordinates
   int start_x = 0;
@@ -203,11 +253,18 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
 
   int device_x = 0;
   int device_y = 0;
+  double device_x_double = 0.0;
+  double device_y_double = 0.0;
   EXPECT_TRUE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, rotate,
                                 page_x, page_y, &device_x, &device_y));
-
   EXPECT_EQ(9, device_x);
   EXPECT_EQ(10, device_y);
+
+  EXPECT_TRUE(FPDF_PageToDeviceDouble(page, start_x, start_y, size_x, size_y,
+                                      rotate, page_x, page_y, &device_x_double,
+                                      &device_y_double));
+  EXPECT_NEAR(9.4117, device_x_double, kTolerance);
+  EXPECT_NEAR(10.3030, device_y_double, kTolerance);
 
   // Rotate 90 degrees clockwise
   rotate = 1;
@@ -216,6 +273,12 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
   EXPECT_EQ(626, device_x);
   EXPECT_EQ(7, device_y);
 
+  EXPECT_TRUE(FPDF_PageToDeviceDouble(page, start_x, start_y, size_x, size_y,
+                                      rotate, page_x, page_y, &device_x_double,
+                                      &device_y_double));
+  EXPECT_NEAR(626.2626, device_x_double, kTolerance);
+  EXPECT_NEAR(7.0588, device_y_double, kTolerance);
+
   // Rotate 180 degrees
   rotate = 2;
   EXPECT_TRUE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, rotate,
@@ -223,12 +286,24 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
   EXPECT_EQ(631, device_x);
   EXPECT_EQ(470, device_y);
 
+  EXPECT_TRUE(FPDF_PageToDeviceDouble(page, start_x, start_y, size_x, size_y,
+                                      rotate, page_x, page_y, &device_x_double,
+                                      &device_y_double));
+  EXPECT_NEAR(630.5883, device_x_double, kTolerance);
+  EXPECT_NEAR(469.6970, device_y_double, kTolerance);
+
   // Rotate 90 degrees counter-clockwise
   rotate = 3;
   EXPECT_TRUE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, rotate,
                                 page_x, page_y, &device_x, &device_y));
   EXPECT_EQ(14, device_x);
   EXPECT_EQ(473, device_y);
+
+  EXPECT_TRUE(FPDF_PageToDeviceDouble(page, start_x, start_y, size_x, size_y,
+                                      rotate, page_x, page_y, &device_x_double,
+                                      &device_y_double));
+  EXPECT_NEAR(13.7374, device_x_double, kTolerance);
+  EXPECT_NEAR(472.9412, device_y_double, kTolerance);
 
   // FPDF_PageToDevice() converts |rotate| into legal rotation by taking
   // modulo by 4. A value of 4 is expected to be converted into 0 (normal
@@ -239,6 +314,12 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
   EXPECT_EQ(9, device_x);
   EXPECT_EQ(10, device_y);
 
+  EXPECT_TRUE(FPDF_PageToDeviceDouble(page, start_x, start_y, size_x, size_y,
+                                      rotate, page_x, page_y, &device_x_double,
+                                      &device_y_double));
+  EXPECT_NEAR(9.4118, device_x_double, kTolerance);
+  EXPECT_NEAR(10.3030, device_y_double, kTolerance);
+
   // FPDF_PageToDevice() returns untransformed coordinates if |rotate| % 4 is
   // negative.
   rotate = -1;
@@ -246,6 +327,12 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
                                 page_x, page_y, &device_x, &device_y));
   EXPECT_EQ(start_x, device_x);
   EXPECT_EQ(start_y, device_y);
+
+  EXPECT_TRUE(FPDF_PageToDeviceDouble(page, start_x, start_y, size_x, size_y,
+                                      rotate, page_x, page_y, &device_x_double,
+                                      &device_y_double));
+  EXPECT_EQ(start_x, device_x_double);
+  EXPECT_EQ(start_y, device_y_double);
 
   // Negative case - invalid page
   device_x = 1234;
@@ -256,9 +343,20 @@ TEST_F(FPDFViewEmbedderTest, PageCoordinatesToDeviceCoordinates) {
   EXPECT_EQ(1234, device_x);
   EXPECT_EQ(5678, device_y);
 
+  device_x_double = 1234.0;
+  device_y_double = 5678.0;
+  EXPECT_FALSE(FPDF_PageToDeviceDouble(nullptr, start_x, start_y, size_x,
+                                       size_y, rotate, page_x, page_y,
+                                       &device_x_double, &device_y_double));
+  EXPECT_EQ(1234.0, device_x_double);
+  EXPECT_EQ(5678.0, device_y_double);
+
   // Negative case - invalid output parameters
   EXPECT_FALSE(FPDF_PageToDevice(page, start_x, start_y, size_x, size_y, rotate,
                                  page_x, page_y, nullptr, nullptr));
+  EXPECT_FALSE(FPDF_PageToDeviceDouble(page, start_x, start_y, size_x, size_y,
+                                       rotate, page_x, page_y, nullptr,
+                                       nullptr));
 
   UnloadPage(page);
 }
