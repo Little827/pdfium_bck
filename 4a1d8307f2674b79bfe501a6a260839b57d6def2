@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1673f26_5ea397db",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-17T21:33:58Z",
+      "side": 1,
+      "message": "For consistency, let\u0027s just write out the tests, like we do for the fxstring.SplitByteStringView test case vs fxstring.SplitWideStringView.",
+      "revId": "4a1d8307f2674b79bfe501a6a260839b57d6def2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
