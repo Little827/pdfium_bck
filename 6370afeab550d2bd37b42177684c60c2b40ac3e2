@@ -93,6 +93,30 @@
       "revId": "6370afeab550d2bd37b42177684c60c2b40ac3e2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97988613_f7a0d971",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-17T19:23:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32a15269_6cb4cebb",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "6370afeab550d2bd37b42177684c60c2b40ac3e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
