@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cba40635_42b1379b",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-17T15:25:50Z",
+      "side": 1,
+      "message": "FWIW, this only tests the ByteString version of StringToDouble() and not the WideString version. I don\u0027t expect much differences, but for completeness, let\u0027s test the WideString version. Do the same for StringToFloat().",
+      "revId": "c2da3ad9993bb1611691a18032a12306d0e378b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
