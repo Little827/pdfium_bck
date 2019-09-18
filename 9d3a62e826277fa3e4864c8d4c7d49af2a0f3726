@@ -16,6 +16,24 @@
       "revId": "9d3a62e826277fa3e4864c8d4c7d49af2a0f3726",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8d13fc_9c1a49e3",
+        "filename": "core/fpdfapi/page/cpdf_path.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-18T18:41:19Z",
+      "side": 0,
+      "message": "That makes sense to me.",
+      "parentUuid": "a173da3f_4d569669",
+      "revId": "9d3a62e826277fa3e4864c8d4c7d49af2a0f3726",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
