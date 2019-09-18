@@ -57,6 +57,30 @@
       "revId": "1489c437d5dc99fbb29c8bf74d5d3368e814e57c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c92359_65df72df",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-18T00:33:44Z",
+      "side": 1,
+      "message": "No, I don\u0027t think we can do that.  By replacing it with 123 * 407.96, THAT causes the test to fail, because AFSimple_Calculate() returns 50179.08, yet the python script says it expects 50179.079999999994.\n\nI think the thing to remember is that there is more happening here than just a simple multiply.  In [1] there is some extra number munching which can affect the result.\n\n[1] https://cs.chromium.org/chromium/src/third_party/pdfium/fxjs/cjs_publicmethods.cpp?rcl\u003dc6642beb8c78df9a7a85c2c431cde184a7e76ee5\u0026l\u003d1364",
+      "parentUuid": "cbceeb3e_39a7dfe3",
+      "range": {
+        "startLine": 489,
+        "startChar": 76,
+        "endLine": 489,
+        "endChar": 84
+      },
+      "revId": "1489c437d5dc99fbb29c8bf74d5d3368e814e57c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
