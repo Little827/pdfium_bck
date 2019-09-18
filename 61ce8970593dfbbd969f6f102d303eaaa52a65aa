@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "707dfdb7_4c57cd6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-18T22:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e2619a5_475d601c",
+      "revId": "61ce8970593dfbbd969f6f102d303eaaa52a65aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fa94f5b_b424edae",
         "filename": "third_party/lcms/src/cmsopt.c",
         "patchSetId": 12
@@ -39,6 +57,30 @@
       "revId": "61ce8970593dfbbd969f6f102d303eaaa52a65aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6901634_15c46338",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-18T22:49:31Z",
+      "side": 1,
+      "message": "Doh, yup - of course.",
+      "parentUuid": "9fa94f5b_b424edae",
+      "range": {
+        "startLine": 123,
+        "startChar": 66,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "61ce8970593dfbbd969f6f102d303eaaa52a65aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
