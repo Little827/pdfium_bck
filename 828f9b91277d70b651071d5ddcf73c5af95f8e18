@@ -22,6 +22,30 @@
       "revId": "828f9b91277d70b651071d5ddcf73c5af95f8e18",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e9c1b5_266fc925",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T19:23:57Z",
+      "side": 1,
+      "message": "It does not matter too much either way. I just like distinct names because they are easier to grep for, vs. overloads where one may need a tool that does cross-references to be able to figure out who calls what.\n\nThe C++ style guide discussion is here: https://google.github.io/styleguide/cppguide.html#Function_Overloading",
+      "parentUuid": "5a5e4066_822f1ee1",
+      "range": {
+        "startLine": 234,
+        "startChar": 19,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "828f9b91277d70b651071d5ddcf73c5af95f8e18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
