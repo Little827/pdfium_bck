@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d24c5883_15c5fbf6",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T01:19:56Z",
+      "side": 1,
+      "message": "when finding the glyph from the fallback font fails",
+      "range": {
+        "startLine": 58,
+        "startChar": 42,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "c6523b085a7c2686af47df5dd49be3f36c956e26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50295b8_0ee2067d",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T01:19:56Z",
+      "side": 1,
+      "message": "Add a space before the parenthesis, and fix the typo.",
+      "range": {
+        "startLine": 63,
+        "startChar": 48,
+        "endLine": 63,
+        "endChar": 62
+      },
+      "revId": "c6523b085a7c2686af47df5dd49be3f36c956e26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf565c4_5ec4cbba",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T01:19:56Z",
+      "side": 1,
+      "message": "No need to put URLs in quotes.",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "c6523b085a7c2686af47df5dd49be3f36c956e26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
