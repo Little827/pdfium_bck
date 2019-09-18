@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a173da3f_4d569669",
+        "filename": "core/fpdfapi/page/cpdf_path.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T17:33:01Z",
+      "side": 0,
+      "message": "Well, can\u0027t actually fully switch to the CFX_FloatRect version, since there are existing callers that pass in 4 separate floats, and I don\u0027t want to make those callers construct a CFX_FloatRect.",
+      "revId": "9d3a62e826277fa3e4864c8d4c7d49af2a0f3726",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
