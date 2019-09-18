@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5df099e4_b19e959b",
+        "filename": "fpdfsdk/cpdfsdk_customaccess.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T23:36:18Z",
+      "side": 1,
+      "message": "All the callers I see via xrefs on Code Search check the return value except for core/fpdfapi/page/cpdf_image.cpp:144. In that particular case, |buffer| is initialized to all zeros, so there is still predictable behavior on failure. I haven\u0027t checked all the other callers to see if they do the right thing after checking for a ReadBlockAtOffset() failure.",
+      "parentUuid": "194f2a0a_09d72865",
+      "revId": "6f208a250029cad1842b1662ee40fe44eeb811e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bef5e46_7030dc03",
         "filename": "fpdfsdk/fpdf_dataavail.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-18T23:22:54Z",
       "side": 1,
       "message": "Same question.",
+      "revId": "6f208a250029cad1842b1662ee40fe44eeb811e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "169bf61d_a0492834",
+        "filename": "fpdfsdk/fpdf_dataavail.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T23:36:18Z",
+      "side": 1,
+      "message": "It\u0027s the same override. There are no direct callers, so same answer.",
+      "parentUuid": "2bef5e46_7030dc03",
       "revId": "6f208a250029cad1842b1662ee40fe44eeb811e8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
