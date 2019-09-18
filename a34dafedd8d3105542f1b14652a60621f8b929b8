@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eef9eb08_86927882",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-18T22:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f32668ba_16fac1e2",
+      "revId": "a34dafedd8d3105542f1b14652a60621f8b929b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62997039_d286a475",
         "filename": "third_party/lcms/src/cmsopt.c",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-18T00:12:22Z",
       "side": 1,
       "message": "WDYT about adding another helper function to do the math in lines 1562-1565?",
+      "revId": "a34dafedd8d3105542f1b14652a60621f8b929b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faaf35cd_e58cc9b5",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-18T22:07:50Z",
+      "side": 1,
+      "message": "Well, it allows for the option to possibly nudge compiler into another optimization (which it most likely was already doing).  Whether this is more readable or not probably depends on the reader.",
+      "parentUuid": "62997039_d286a475",
       "revId": "a34dafedd8d3105542f1b14652a60621f8b929b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
