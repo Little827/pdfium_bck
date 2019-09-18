@@ -40,10 +40,7 @@ CPDF_CharPosList::CPDF_CharPosList(const std::vector<uint32_t>& charCodes,
                   : charpos.m_GlyphIndex;
 #endif
     CFX_Font* pCurrentFont;
-    if (GlyphID != static_cast<uint32_t>(-1)) {
-      charpos.m_FallbackFontPosition = -1;
-      pCurrentFont = pFont->GetFont();
-    } else {
+    if (GlyphID == static_cast<uint32_t>(-1)) {
       charpos.m_FallbackFontPosition =
           pFont->FallbackFontFromCharcode(CharCode);
       charpos.m_GlyphIndex = pFont->FallbackGlyphFromCharcode(
@@ -52,6 +49,35 @@ CPDF_CharPosList::CPDF_CharPosList(const std::vector<uint32_t>& charCodes,
 #if defined(OS_MACOSX)
       charpos.m_ExtGID = charpos.m_GlyphIndex;
 #endif
+    } else if (GlyphID == 0 && pFont->IsTrueTypeFont()) {
+      charpos.m_FallbackFontPosition =
+          pFont->FallbackFontFromCharcode(CharCode);
+      charpos.m_GlyphIndex = pFont->FallbackGlyphFromCharcode(
+          charpos.m_FallbackFontPosition, CharCode);
+      if (charpos.m_GlyphIndex == static_cast<uint32_t>(-1)) {
+        // For a TrueType font character, when finding the glyph from the
+        // fallback font fails, switch back to using the original font.
+
+        // When keyword "ToUnicode" exists in the PDF file, it indicates
+        // a "ToUnicode" mapping file is used to convert from CIDs (which
+        // begins at decimal 0) to Unicode code. (See ToUnicode Mapping File
+        // Tutorial - Adobe
+        // https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/5411.ToUnicode.pdf
+        // and
+        // https://www.freetype.org/freetype2/docs/tutorial/step1.html#section-6)
+        if (pFont->GetFontDict()->KeyExist("ToUnicode"))
+          charpos.m_GlyphIndex = 0;
+        charpos.m_FallbackFontPosition = -1;
+        pCurrentFont = pFont->GetFont();
+      } else {
+        pCurrentFont = pFont->GetFontFallback(charpos.m_FallbackFontPosition);
+#if defined(OS_MACOSX)
+        charpos.m_ExtGID = charpos.m_GlyphIndex;
+#endif
+      }
+    } else {
+      charpos.m_FallbackFontPosition = -1;
+      pCurrentFont = pFont->GetFont();
     }
 
     if (!pFont->IsEmbedded() && !pFont->IsCIDFont())
