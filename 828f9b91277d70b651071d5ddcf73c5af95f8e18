@@ -46,6 +46,30 @@
       "revId": "828f9b91277d70b651071d5ddcf73c5af95f8e18",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47406e31_ee1d16d1",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-09-18T21:07:54Z",
+      "side": 1,
+      "message": "I had seen that, and just wasn\u0027t seeing why it was necessary to change.  The guide didn\u0027t shed light on why this was needed, and also indicates a degree of leeway for the implementer to choose.  So this was more of an insight into your preference. :-)",
+      "parentUuid": "96e9c1b5_266fc925",
+      "range": {
+        "startLine": 234,
+        "startChar": 19,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "828f9b91277d70b651071d5ddcf73c5af95f8e18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
