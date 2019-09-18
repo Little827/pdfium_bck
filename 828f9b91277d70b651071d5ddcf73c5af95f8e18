@@ -70,6 +70,30 @@
       "revId": "828f9b91277d70b651071d5ddcf73c5af95f8e18",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c525cbb_d098cb9a",
+        "filename": "core/fxge/cfx_pathdata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T21:42:35Z",
+      "side": 1,
+      "message": "Yes, this is very much due to preference.",
+      "parentUuid": "47406e31_ee1d16d1",
+      "range": {
+        "startLine": 234,
+        "startChar": 19,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "828f9b91277d70b651071d5ddcf73c5af95f8e18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
