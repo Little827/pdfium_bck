@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0b0b1bd9_601e9a32",
+        "filename": "fpdfsdk/cpdfsdk_customaccess.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5540
+      },
+      "writtenOn": "2019-09-18T23:47:24Z",
+      "side": 1,
+      "message": "I think it\u0027s worth hammering that down, because the behavior you\u0027re replacing (crashing) is safe (tho annoying).",
+      "parentUuid": "5df099e4_b19e959b",
+      "revId": "6f208a250029cad1842b1662ee40fe44eeb811e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bef5e46_7030dc03",
         "filename": "fpdfsdk/fpdf_dataavail.cpp",
         "patchSetId": 3
