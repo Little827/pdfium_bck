@@ -69,6 +69,24 @@
       "revId": "a34dafedd8d3105542f1b14652a60621f8b929b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d56c1f2d_9e43325e",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T22:33:10Z",
+      "side": 1,
+      "message": "I really like the helper function. Thanks.",
+      "parentUuid": "faaf35cd_e58cc9b5",
+      "revId": "a34dafedd8d3105542f1b14652a60621f8b929b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
