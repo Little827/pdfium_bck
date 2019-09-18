@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f32668ba_16fac1e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T00:12:22Z",
+      "side": 1,
+      "message": "Needs an extra space after \"Bug:\".",
+      "revId": "a34dafedd8d3105542f1b14652a60621f8b929b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62997039_d286a475",
+        "filename": "third_party/lcms/src/cmsopt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-18T00:12:22Z",
+      "side": 1,
+      "message": "WDYT about adding another helper function to do the math in lines 1562-1565?",
+      "revId": "a34dafedd8d3105542f1b14652a60621f8b929b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
