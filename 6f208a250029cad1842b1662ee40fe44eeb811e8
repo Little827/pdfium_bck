@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a1769a0b_14dd9436",
+        "filename": "fpdfsdk/cpdfsdk_customaccess.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T01:31:33Z",
+      "side": 1,
+      "message": "Chained this CL to https://pdfium-review.googlesource.com/c/pdfium/+/60870",
+      "parentUuid": "0b0b1bd9_601e9a32",
+      "revId": "6f208a250029cad1842b1662ee40fe44eeb811e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bef5e46_7030dc03",
         "filename": "fpdfsdk/fpdf_dataavail.cpp",
         "patchSetId": 3
