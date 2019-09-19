@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8a88a55a_9814eb33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T17:41:25Z",
+      "side": 1,
+      "message": "index, i.e. when CPDF_SimpleFont::GlyphFromCharCode() returns 0",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18ad801d_b58b8955",
         "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
         "patchSetId": 20
