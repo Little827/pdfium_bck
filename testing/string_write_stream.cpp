@@ -18,10 +18,8 @@ bool StringWriteStream::Flush() {
   return true;
 }
 
-bool StringWriteStream::WriteBlockAtOffset(const void* pData,
-                                           FX_FILESIZE offset,
-                                           size_t size) {
-  ASSERT(offset == 0);
+bool StringWriteStream::WriteBlock(const void* pData, size_t size) {
+  ASSERT(GetSize() == 0);
   stream_.write(static_cast<const char*>(pData), size);
   return true;
 }

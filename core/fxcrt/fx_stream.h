@@ -54,13 +54,7 @@ class IFX_RetainableWriteStream : virtual public Retainable,
 class IFX_SeekableWriteStream : virtual public IFX_StreamWithSize,
                                 public IFX_RetainableWriteStream {
  public:
-  // IFX_WriteStream:
-  bool WriteBlock(const void* pData, size_t size) override;
-
   virtual bool Flush() = 0;
-  virtual bool WriteBlockAtOffset(const void* pData,
-                                  FX_FILESIZE offset,
-                                  size_t size) = 0;
 };
 
 class IFX_SeekableReadStream : virtual public Retainable,
@@ -89,7 +83,6 @@ class IFX_SeekableStream : public IFX_SeekableReadStream,
       uint32_t dwModes);
 
   // IFX_SeekableWriteStream:
-  bool WriteBlock(const void* buffer, size_t size) override;
   bool WriteString(ByteStringView str) override;
 };
 

@@ -55,10 +55,8 @@ class CFX_CRTFileStream final : public IFX_SeekableStream {
   size_t ReadBlock(void* buffer, size_t size) override {
     return m_pFile->Read(buffer, size);
   }
-  bool WriteBlockAtOffset(const void* buffer,
-                          FX_FILESIZE offset,
-                          size_t size) override {
-    return !!m_pFile->WritePos(buffer, size, offset);
+  bool WriteBlock(const void* buffer, size_t size) override {
+    return !!m_pFile->WritePos(buffer, size, GetSize());
   }
   bool Flush() override { return m_pFile->Flush(); }
 
@@ -98,10 +96,6 @@ RetainPtr<IFX_SeekableReadStream> IFX_SeekableReadStream::CreateFromFilename(
   return IFX_SeekableStream::CreateFromFilename(filename, FX_FILEMODE_ReadOnly);
 }
 
-bool IFX_SeekableWriteStream::WriteBlock(const void* pData, size_t size) {
-  return WriteBlockAtOffset(pData, GetSize(), size);
-}
-
 bool IFX_SeekableReadStream::IsEOF() {
   return false;
 }
@@ -112,10 +106,6 @@ FX_FILESIZE IFX_SeekableReadStream::GetPosition() {
 
 size_t IFX_SeekableReadStream::ReadBlock(void* buffer, size_t size) {
   return 0;
-}
-
-bool IFX_SeekableStream::WriteBlock(const void* buffer, size_t size) {
-  return WriteBlockAtOffset(buffer, GetSize(), size);
 }
 
 bool IFX_SeekableStream::WriteString(ByteStringView str) {

@@ -65,9 +65,8 @@ size_t CFX_MemoryStream::ReadBlock(void* buffer, size_t size) {
   return nRead;
 }
 
-bool CFX_MemoryStream::WriteBlockAtOffset(const void* buffer,
-                                          FX_FILESIZE offset,
-                                          size_t size) {
+bool CFX_MemoryStream::WriteBlock(const void* buffer, size_t size) {
+  const FX_FILESIZE offset = GetSize();
   if (!buffer || offset < 0 || !size)
     return false;
 
