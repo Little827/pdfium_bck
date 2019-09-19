@@ -443,8 +443,7 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
   RetainPtr<IFX_SeekableStream> fileWrite = MakeSeekableStream(pFileHandler);
   if (fileType == FXFA_SAVEAS_XML) {
     ByteString content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
-    fileWrite->WriteBlockAtOffset(content.c_str(), fileWrite->GetSize(),
-                                  content.GetLength());
+    fileWrite->WriteBlock(content.c_str(), content.GetLength());
     CXFA_FFDoc* ffdoc = m_pContext->GetXFADocView()->GetDoc();
     ffdoc->SavePackage(
         ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Data)), fileWrite);
@@ -497,13 +496,11 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
         static const char kFormat[] =
             "\n<pdf href=\"%s\" xmlns=\"http://ns.adobe.com/xdp/pdf/\"/>";
         ByteString content = ByteString::Format(kFormat, bPath.c_str());
-        fileWrite->WriteBlockAtOffset(content.c_str(), fileWrite->GetSize(),
-                                      content.GetLength());
+        fileWrite->WriteBlock(content.c_str(), content.GetLength());
       }
       auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
       pAcc->LoadAllDataFiltered();
-      fileWrite->WriteBlockAtOffset(pAcc->GetData(), fileWrite->GetSize(),
-                                    pAcc->GetSize());
+      fileWrite->WriteBlock(pAcc->GetData(), pAcc->GetSize());
     }
   }
   fileWrite->Flush();
@@ -715,7 +712,7 @@ bool CPDFXFA_DocEnvironment::ExportSubmitFile(FPDF_FILEHANDLER* pFileHandler,
   if (fileType == FXFA_SAVEAS_XML) {
     static constexpr char kContent[] =
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
-    fileStream->WriteBlockAtOffset(kContent, 0, strlen(kContent));
+    fileStream->WriteBlock(kContent, strlen(kContent));
 
     ffdoc->SavePackage(
         ToNode(ffdoc->GetXFADoc()->GetXFAObject(XFA_HASHCODE_Data)),
