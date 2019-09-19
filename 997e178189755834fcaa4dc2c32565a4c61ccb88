@@ -46,6 +46,30 @@
       "revId": "997e178189755834fcaa4dc2c32565a4c61ccb88",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291c5be1_bf4a5a99",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5540
+      },
+      "writtenOn": "2019-09-19T18:25:23Z",
+      "side": 1,
+      "message": "Why specifically -1 in\n\n  if (nOriginalColSpan \u003d\u003d -1)\n\n?",
+      "parentUuid": "43fba90a_bbe9796b",
+      "range": {
+        "startLine": 226,
+        "startChar": 66,
+        "endLine": 226,
+        "endChar": 76
+      },
+      "revId": "997e178189755834fcaa4dc2c32565a4c61ccb88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
