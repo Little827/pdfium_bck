@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cede626d_53b3222f",
+        "filename": "core/fpdfapi/page/cpdf_clippath.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2019-09-19T18:46:17Z",
+      "side": 1,
+      "message": "I\u0027m assuming this is the same value as the define was as I don\u0027t see it in the CL?",
+      "revId": "aa3de414c0ad2d107cac479b041c319956fc61f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
