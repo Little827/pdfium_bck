@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a160b40_24dc83bf",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T02:33:47Z",
+      "side": 1,
+      "message": "It would be nice to avoid the potential crash here. Thinking about this a bit more, maybe the following will do?\n\nif (nCurrentColIdx \u003e\u003d rgSpecifiedColumnWidths.size()) {\n  NOTREACHED();  // Probably????\n  break;\n}\n\nsize_t nMaxColSpan \u003d rgSpecifiedColumnWidths.size() - nCurrentColIdx;\nif (nOriginalColSpan \u003d\u003d -1)\n  nColSpan \u003d nMaxColSpan;\nelse\n  nColSpan \u003d std::min(nColSpan, nMaxColSpan);",
+      "range": {
+        "startLine": 226,
+        "startChar": 66,
+        "endLine": 226,
+        "endChar": 76
+      },
+      "revId": "997e178189755834fcaa4dc2c32565a4c61ccb88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
