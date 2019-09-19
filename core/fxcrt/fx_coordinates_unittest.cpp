@@ -4,6 +4,7 @@
 
 #include "core/fxcrt/fx_coordinates.h"
 
+#include <limits>
 #include <vector>
 
 #include "testing/gtest/include/gtest/gtest.h"
@@ -71,6 +72,50 @@ TEST(CFX_FloatRect, GetBBox) {
   EXPECT_FLOAT_EQ(-8.0f, rect.bottom);
   EXPECT_FLOAT_EQ(4.0f, rect.right);
   EXPECT_FLOAT_EQ(6.3f, rect.top);
+}
+
+TEST(CFX_FloatRect, GetClosestRect) {
+  {
+    CFX_FloatRect rect(1.1f, 3.0f, 4.5f, 9.49f);
+    FX_RECT closest_rect = rect.GetClosestRect();
+    EXPECT_EQ(1, closest_rect.left);
+    EXPECT_EQ(3, closest_rect.top);
+    EXPECT_EQ(5, closest_rect.right);
+    EXPECT_EQ(10, closest_rect.bottom);
+  }
+
+  {
+    CFX_FloatRect rect(-1.1f, -3.0f, -4.5f, -9.49f);
+    FX_RECT closest_rect = rect.GetClosestRect();
+    EXPECT_EQ(-4, closest_rect.left);
+    EXPECT_EQ(-9, closest_rect.top);
+    EXPECT_EQ(-1, closest_rect.right);
+    EXPECT_EQ(-3, closest_rect.bottom);
+  }
+
+  {
+    static constexpr float kFloat = 2147483046.0f;
+    static_assert(kFloat < std::numeric_limits<int32_t>::max(),
+                  "kFloat too large");
+    CFX_FloatRect rect(-kFloat, -kFloat, kFloat, kFloat);
+    FX_RECT closest_rect = rect.GetClosestRect();
+    EXPECT_EQ(-2147483008, closest_rect.left);
+    EXPECT_EQ(-2147483008, closest_rect.top);
+    EXPECT_EQ(2147483008, closest_rect.right);
+    EXPECT_EQ(2147483008, closest_rect.bottom);
+  }
+
+  {
+    static constexpr float kFloat = 3000000000.0f;
+    static_assert(kFloat > std::numeric_limits<int32_t>::max(),
+                  "kFloat not large enough");
+    CFX_FloatRect rect(-kFloat, -kFloat, kFloat, kFloat);
+    FX_RECT closest_rect = rect.GetClosestRect();
+    EXPECT_EQ(0, closest_rect.left);
+    EXPECT_EQ(0, closest_rect.top);
+    EXPECT_EQ(0, closest_rect.right);
+    EXPECT_EQ(0, closest_rect.bottom);
+  }
 }
 
 TEST(CFX_FloatRect, Normalize) {
