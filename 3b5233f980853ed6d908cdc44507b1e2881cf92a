@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0685076a_0da2f5ef",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T18:24:51Z",
+      "side": 1,
+      "message": "One declaration per line.",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c87acf_883cbe29",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T18:24:51Z",
+      "side": 1,
+      "message": "Delete this blank line.",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c594e1_b50314a4",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T18:24:51Z",
+      "side": 1,
+      "message": "No need for an else after a return.",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dba5f7b_51069582",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T18:24:51Z",
+      "side": 1,
+      "message": "Add a comment to mark this as an experimental API. Which also makes future (major) adjustments, if needed, more understandable.",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e12abba_bef0fbe7",
+        "filename": "testing/resources/vertical_text.in",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T18:24:51Z",
+      "side": 1,
+      "message": "Would you mind swapping and reordering object 5 0 and 6 0? Then object 4 0 references 5 0 which references 6 0.",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac99bd4_fa429c82",
+        "filename": "testing/resources/vertical_text.in",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T18:24:51Z",
+      "side": 1,
+      "message": "Balanace this with a \u0027q\u0027 operator at the start of the stream.",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

@@ -69,6 +69,24 @@
       "revId": "e5cc173b4442d51cc5e058f5070975953dd1e565",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ebd0dd8_692ce31a",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T18:24:51Z",
+      "side": 1,
+      "message": "Take a look at ChS_embeddedFont.pdf in https://code.google.com/archive/p/lumi-read/source/default/source",
+      "parentUuid": "cf51e34f_9e47f9b9",
+      "revId": "e5cc173b4442d51cc5e058f5070975953dd1e565",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
