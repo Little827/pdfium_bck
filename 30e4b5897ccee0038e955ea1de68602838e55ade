@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1568877620 -0700\nnonce AC6AUtMULE6gliKm9HZ9LaU9zFMCqtAisRCwzM3/ARGEhKGmxOfMgaNKp5rABTSJ30ftHR267b9R\n\n0000000000000000000000000000000000000000 30e4b5897ccee0038e955ea1de68602838e55ade refs/for/refs/heads/master%notify\u003dNONE,m\u003dupdate,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl2DLDQACgkQqzYtYVpm\n/XsclggAmu1ylMF4BThOgOjC/5Gd/wDXBWSp1Xe3AuVWjro/9CZY4AND0I8QPKH5\nMRxayMEzkbBVTWOdkKMBmXDjzyF39BsfMAX02iHYGcfkFbNhOunoFeJtMCvlrr79\nZl3rt+fR1lNbO+Gft287RU/+0Q3UJSA3DVVoIpFIi6J+ByfLC+C2q9ezKxF0XmiM\nhMWPKpQ6RdUIiTSjVlK9ft2WLeeQrm3tnLmWNcPaPZJH14BKa2Iidp0jIcB367Lu\nxqjLJF/V3xqki+N9FXvyVHdJ5cv/zDFrUNuX2yCdFYKsKKElaU0quYGpPPZl6BkX\naCgYHyepK6RtRLGvBfQ7FzU7mgLNNw\u003d\u003d\n\u003d+Bqu\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a35cd16_d8fe0ccc",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-09-19T21:20:00Z",
+      "side": 1,
+      "message": "Commentary: CFX_FloatRect constructor states the order should be left, bottom, right, top (standard coordinate system), while here, it appears to be right, top, left, bottom. (Also, the API comment at https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcrt/fx_coordinates.h?l\u003d226\u0026rcl\u003d3681d5f8b5d7978f3bd3123e1c97bb0b3de8e16d seems to be wrong about these being \"LTRB\" rectangles; presumably, they\u0027re LBRT rectangles?)\n\nI suppose it doesn\u0027t matter (GetClosestRect() still seems to return the right answer here), but it seems like negative coordinates and normalizing the parameter order are two different tests or sub-tests?",
+      "revId": "30e4b5897ccee0038e955ea1de68602838e55ade",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f20189bf_d79a4878",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-09-19T21:20:00Z",
+      "side": 1,
+      "message": "Nit: Do we care that kFloat !\u003d 2147483046 (rounds off to 2147483008)? Seems more obvious just to use the actual value.\n\nAlso, is there anything special about this value? It seems to be 2^31-602, which seems like a weird value to choose.",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "30e4b5897ccee0038e955ea1de68602838e55ade",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
