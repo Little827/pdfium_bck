@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18ad801d_b58b8955",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T16:10:45Z",
+      "side": 1,
+      "message": "Assuming we are settled on this approach and we are just adding tests at this point, here\u0027s a suggestion for avoiding some of the repeated code. WDTY of rearranging the code here this way? Please also check carefully and make sure I wrote this correctly.\n\nbool bIsInvalidGlyph \u003d GlyphID \u003d\u003d static_cast\u003cuint32_t\u003e(-1);\nbool bIsTrueTypeZeroGlyph \u003d GlyphID \u003d\u003d 0 \u0026\u0026 pFont-\u003eIsTrueTypeFont();\nbool bUseFallbackFont \u003d false;\nif (bIsInvalidGlyph || bIsTrueTypeZeroGlyph) {\n  charpos.m_FallbackFontPosition \u003d\n      pFont-\u003eFallbackFontFromCharcode(CharCode);\n  charpos.m_GlyphIndex \u003d pFont-\u003eFallbackGlyphFromCharcode(\n      charpos.m_FallbackFontPosition, CharCode);\n  if (bIsTrueTypeZeroGlyph \u0026\u0026\n      charpos.m_GlyphIndex \u003d\u003d static_cast\u003cuint32_t\u003e(-1)) {\n    // Comment goes here.\n    if (pFont-\u003eGetFontDict()-\u003eKeyExist(\"ToUnicode\"))\n      charpos.m_GlyphIndex \u003d 0;\n  } else {\n    bUseFallbackFont \u003d true;\n  }\n}\n\nCFX_Font* pCurrentFont;\nif (bUseFallbackFont) {\n  pCurrentFont \u003d pFont-\u003eGetFontFallback(charpos.m_FallbackFontPosition);\n#if defined(OS_MACOSX)\n  charpos.m_ExtGID \u003d charpos.m_GlyphIndex;\n#endif\n} else {\n  pCurrentFont \u003d pFont-\u003eGetFont();\n  charpos.m_FallbackFontPosition \u003d -1;\n}",
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a933dea2_b75fef2d",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-19T16:10:45Z",
+      "side": 1,
+      "message": "Would it be more accurate to call GetStreamFor() instead of KeyExist()?",
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
