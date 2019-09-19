@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a900e48_862e5e3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-19T18:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a88a55a_9814eb33",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18ad801d_b58b8955",
         "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
         "patchSetId": 20
