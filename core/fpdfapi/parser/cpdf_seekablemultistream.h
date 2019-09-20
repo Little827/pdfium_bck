@@ -21,7 +21,7 @@ class CPDF_SeekableMultiStream final : public IFX_SeekableStream {
       const std::vector<const CPDF_Stream*>& streams);
   ~CPDF_SeekableMultiStream() override;
 
-  // IFX_SeekableReadStream
+  // IFX_SeekableStream:
   FX_FILESIZE GetPosition() override;
   FX_FILESIZE GetSize() override;
   bool ReadBlockAtOffset(void* buffer,
@@ -30,9 +30,7 @@ class CPDF_SeekableMultiStream final : public IFX_SeekableStream {
   size_t ReadBlock(void* buffer, size_t size) override;
   bool IsEOF() override;
   bool Flush() override;
-  bool WriteBlockAtOffset(const void* pData,
-                          FX_FILESIZE offset,
-                          size_t size) override;
+  bool WriteBlock(const void* pData, size_t size) override;
 
  private:
   std::vector<RetainPtr<CPDF_StreamAcc>> m_Data;
