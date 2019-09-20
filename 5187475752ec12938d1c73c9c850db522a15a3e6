@@ -134,6 +134,24 @@
       "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370067ff_865949ce",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-20T20:20:15Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! Tested with \"/ToUnicode [500]\", KeyExist() did return a false positive result while GetStreamFor() returns negative.\nWill use GetStreamFor() instead in this CL.\n-----------------------------------------------------------------------------------------\nPS: Should we change other code where is using KeyExist() to detext \"ToUnicode\" (in a different CL)? Currently it\u0027s only showing up in core/fpdfapi/font/cpdf_truetypefont.cpp once.",
+      "parentUuid": "f4c50d67_13371cd2",
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
