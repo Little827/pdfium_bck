@@ -92,6 +92,9 @@ extern "C" {
 #define FPDF_FORMFLAG_CHOICE_COMBO (1 << 17)
 #define FPDF_FORMFLAG_CHOICE_EDIT (1 << 18)
 
+#define FPDF_FORM_UNKNOWN 0
+#define FPDF_FORM_TEXT 4
+
 typedef enum FPDFANNOT_COLORTYPE {
   FPDFANNOT_COLORTYPE_Color = 0,
   FPDFANNOT_COLORTYPE_InteriorColor
@@ -549,6 +552,14 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
                               FPDF_PAGE page,
                               double page_x,
                               double page_y);
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFAnnot_GetFormFieldType(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot);
+
+FPDF_EXPORT bool FPDF_CALLCONV
+FPDFAnnot_SetFormFieldFocus(FPDF_FORMHANDLE hHandle,
+                            FPDF_ANNOTATION annot,
+                            FPDF_PAGE page);
 
 // Experimental API.
 // Get the number of options in the |annot|'s "Opt" dictionary. Intended for

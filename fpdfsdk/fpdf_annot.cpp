@@ -26,8 +26,10 @@
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fpdfdoc/cpvt_generateap.h"
 #include "core/fxge/cfx_color.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
+#include "fpdfsdk/cpdfsdk_pageview.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
@@ -150,6 +152,11 @@ static_assert(static_cast<int>(CPDF_Object::Type::kNullobj) ==
 static_assert(static_cast<int>(CPDF_Object::Type::kReference) ==
                   FPDF_OBJECT_REFERENCE,
               "CPDF_Object::kReference value mismatch");
+
+// These checks ensure the consistency of form field types across core/
+// and public/.
+static_assert(static_cast<int>(CPDF_FormField::kText) == FPDF_FORM_TEXT,
+              "CPDF_FormField::kText value mismatch");
 
 bool HasAPStream(CPDF_Dictionary* pAnnotDict) {
   return !!GetAnnotAP(pAnnotDict, CPDF_Annot::AppearanceMode::Normal);
@@ -876,6 +883,51 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
   if (!pFormCtrl || annot_index == -1)
     return nullptr;
   return FPDFPage_GetAnnot(page, annot_index);
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFAnnot_GetFormFieldType(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
+    return FPDF_FORM_UNKNOWN;
+
+  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!pAnnotDict)
+    return FPDF_FORM_UNKNOWN;
+
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
+  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  if (!pFormField)
+    return FPDF_FORM_UNKNOWN;
+
+  return static_cast<int>(pFormField->GetType());
+}
+
+FPDF_EXPORT bool FPDF_CALLCONV
+FPDFAnnot_SetFormFieldFocus(FPDF_FORMHANDLE hHandle,
+                            FPDF_ANNOTATION annot,
+                            FPDF_PAGE page) {
+  // Get Formfill environment
+  // Set focus to the given annotation
+  // Get cpdfsdk_annot from FPDF_ANNOTATION
+  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!pAnnotDict)
+    return false;
+
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!pFormFillEnv)
+    return false;
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
+  if (!pPage)
+    return false;
+  CPDFSDK_PageView* pPageView = pFormFillEnv->GetPageView(pPage, true);
+  if (!pPageView)
+    return false;
+  ObservedPtr<CPDFSDK_Annot> cpdfsdk_annot(
+      pPageView->GetAnnotByDict(pAnnotDict));
+  pFormFillEnv->SetFocusAnnot(&cpdfsdk_annot);
+  return true;
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetOptionCount(FPDF_FORMHANDLE hHandle,
