@@ -116,6 +116,24 @@
       "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c50d67_13371cd2",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-20T18:23:35Z",
+      "side": 1,
+      "message": "A better test would be to add a bad /ToUnicode entry like: /ToUnicode /BadName, or /ToUnicode [1 2 3 4], where the value exists, but is not a stream.",
+      "parentUuid": "12ef356e_e1bc205c",
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
