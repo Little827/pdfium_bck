@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd9de30_a30b0168",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-09-20T18:25:33Z",
+      "side": 1,
+      "message": "nit: Let\u0027s set |pCurrentFont| first, and then |charpos| members, like the if block. To have consistent ordering.",
+      "revId": "495aa015a00e71c55b65213ae8e1a33edffb4633",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
