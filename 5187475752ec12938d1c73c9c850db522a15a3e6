@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9acaa51b_f4755dc0",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-20T14:44:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18ad801d_b58b8955",
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a933dea2_b75fef2d",
         "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
         "patchSetId": 20
@@ -77,6 +95,24 @@
       "writtenOn": "2019-09-19T16:10:45Z",
       "side": 1,
       "message": "Would it be more accurate to call GetStreamFor() instead of KeyExist()?",
+      "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ef356e_e1bc205c",
+        "filename": "core/fpdfapi/render/cpdf_charposlist.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-09-20T14:44:29Z",
+      "side": 1,
+      "message": "Both GetStreamFor() and KeyExist() have been used in current code base for detecting \"ToUnicode\" objects. I would assume it\u0027s the same using either one, and KeyExist() is more convenient since no raw pointer to be handled.\n\nFor safety concern, I added \"/ToUnicode\" to a test file without adding its object, both KeyExist() and GetStreamFor() returned negative results(false/nullptr), which were the expected results and KeyExist() didn\u0027t return true just simply because the string \"ToUnicode\" exists in the PDF file.",
+      "parentUuid": "a933dea2_b75fef2d",
       "revId": "5187475752ec12938d1c73c9c850db522a15a3e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
