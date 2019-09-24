@@ -336,7 +336,6 @@ bool CPDF_CIDFont::Load() {
   const CPDF_Dictionary* pCIDFontDict = pFonts->GetDictAt(0);
   if (!pCIDFontDict)
     return false;
-
   m_BaseFontName = pCIDFontDict->GetStringFor("BaseFont");
   if ((m_BaseFontName.Compare("CourierStd") == 0 ||
        m_BaseFontName.Compare("CourierStd-Bold") == 0 ||
@@ -594,7 +593,7 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
   if (pVertGlyph)
     *pVertGlyph = false;
 
-  if (!m_pFontFile && !m_pStreamAcc) {
+  if (!m_pFontFile) {
     uint16_t cid = CIDFromCharCode(charcode);
     wchar_t unicode = 0;
     if (m_bCIDIsGID) {
@@ -699,7 +698,6 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
 
   if (!m_Font.GetFaceRec())
     return -1;
-
   uint16_t cid = CIDFromCharCode(charcode);
   if (!m_pStreamAcc) {
     if (m_bType1)
