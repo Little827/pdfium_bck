@@ -837,6 +837,58 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
                                                       double* page_x,
                                                       double* page_y);
 
+// Function: FPDF_DeviceDoubleToPage
+//          Convert the screen coordinates of a point to page coordinates.
+// Parameters:
+//          page        -   Handle to the page. Returned by FPDF_LoadPage.
+//          start_x     -   Left pixel position of the display area in
+//                          device coordinates.
+//          start_y     -   Top pixel position of the display area in device
+//                          coordinates.
+//          size_x      -   Horizontal size (in pixels) for displaying the page.
+//          size_y      -   Vertical size (in pixels) for displaying the page.
+//          rotate      -   Page orientation:
+//                            0 (normal)
+//                            1 (rotated 90 degrees clockwise)
+//                            2 (rotated 180 degrees)
+//                            3 (rotated 90 degrees counter-clockwise)
+//          device_x    -   X value in device coordinates to be converted.
+//          device_y    -   Y value in device coordinates to be converted.
+//          page_x      -   A pointer to a double receiving the converted X
+//                          value in page coordinates.
+//          page_y      -   A pointer to a double receiving the converted Y
+//                          value in page coordinates.
+// Return value:
+//          Returns true if the conversion succeeds, and |page_x| and |page_y|
+//          successfully receives the converted coordinates.
+// Comments:
+//          The page coordinate system has its origin at the left-bottom corner
+//          of the page, with the X-axis on the bottom going to the right, and
+//          the Y-axis on the left side going up.
+//
+//          NOTE: this coordinate system can be altered when you zoom, scroll,
+//          or rotate a page, however, a point on the page should always have
+//          the same coordinate values in the page coordinate system.
+//
+//          The device coordinate system is device dependent. For screen device,
+//          its origin is at the left-top corner of the window. However this
+//          origin can be altered by the Windows coordinate transformation
+//          utilities.
+//
+//          You must make sure the start_x, start_y, size_x, size_y
+//          and rotate parameters have exactly same values as you used in
+//          the FPDF_RenderPage() function call.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceDoubleToPage(FPDF_PAGE page,
+                                                            int start_x,
+                                                            int start_y,
+                                                            int size_x,
+                                                            int size_y,
+                                                            int rotate,
+                                                            double device_x,
+                                                            double device_y,
+                                                            double* page_x,
+                                                            double* page_y);
+
 // Function: FPDF_PageToDevice
 //          Convert the page coordinates of a point to screen coordinates.
 // Parameters:
@@ -873,6 +925,43 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
                                                       double page_y,
                                                       int* device_x,
                                                       int* device_y);
+
+// Function: FPDF_PageToDeviceDouble
+//          Convert the page coordinates of a point to screen coordinates.
+// Parameters:
+//          page        -   Handle to the page. Returned by FPDF_LoadPage.
+//          start_x     -   Left pixel position of the display area in
+//                          device coordinates.
+//          start_y     -   Top pixel position of the display area in device
+//                          coordinates.
+//          size_x      -   Horizontal size (in pixels) for displaying the page.
+//          size_y      -   Vertical size (in pixels) for displaying the page.
+//          rotate      -   Page orientation:
+//                            0 (normal)
+//                            1 (rotated 90 degrees clockwise)
+//                            2 (rotated 180 degrees)
+//                            3 (rotated 90 degrees counter-clockwise)
+//          page_x      -   X value in page coordinates.
+//          page_y      -   Y value in page coordinate.
+//          device_x    -   A pointer to a double receiving the result X
+//                          value in device coordinates.
+//          device_y    -   A pointer to a double receiving the result Y
+//                          value in device coordinates.
+// Return value:
+//          Returns true if the conversion succeeds, and |device_x| and
+//          |device_y| successfully receives the converted coordinates.
+// Comments:
+//          See comments for FPDF_DeviceToPage().
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDeviceDouble(FPDF_PAGE page,
+                                                            int start_x,
+                                                            int start_y,
+                                                            int size_x,
+                                                            int size_y,
+                                                            int rotate,
+                                                            double page_x,
+                                                            double page_y,
+                                                            double* device_x,
+                                                            double* device_y);
 
 // Function: FPDFBitmap_Create
 //          Create a device independent bitmap (FXDIB).
