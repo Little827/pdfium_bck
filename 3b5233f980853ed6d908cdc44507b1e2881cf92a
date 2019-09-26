@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "0fdfc9ee_838b2da1",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-26T18:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dba5f7b_51069582",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e12abba_bef0fbe7",
         "filename": "testing/resources/vertical_text.in",
         "patchSetId": 19
@@ -87,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "f6821773_b42a3b8d",
+        "filename": "testing/resources/vertical_text.in",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-26T18:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e12abba_bef0fbe7",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eac99bd4_fa429c82",
         "filename": "testing/resources/vertical_text.in",
         "patchSetId": 19
@@ -101,6 +137,24 @@
       "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f7d9d5_f6f85bfb",
+        "filename": "testing/resources/vertical_text.in",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-26T18:33:21Z",
+      "side": 1,
+      "message": "Unnecessary \u0026 removed.  Good catch.",
+      "parentUuid": "eac99bd4_fa429c82",
+      "revId": "3b5233f980853ed6d908cdc44507b1e2881cf92a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
