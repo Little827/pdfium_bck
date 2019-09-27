@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63ff2bce_4d12ea59",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-27T18:35:45Z",
+      "side": 1,
+      "message": "// Experimental API.",
+      "revId": "7cacb5ef48f9c6caf0af4dfcb3608f5605d916b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c31f05a_5c63cd00",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-27T18:35:45Z",
+      "side": 1,
+      "message": "To be consistent with the other comments:\n\n\"|start_x|, |start_y|, |size_x|, |size_y| and |rotate|\"",
+      "revId": "7cacb5ef48f9c6caf0af4dfcb3608f5605d916b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aeab655_6e152376",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 7674
+      },
+      "writtenOn": "2019-09-27T18:35:45Z",
+      "side": 1,
+      "message": "// Experimental API.",
+      "revId": "7cacb5ef48f9c6caf0af4dfcb3608f5605d916b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
