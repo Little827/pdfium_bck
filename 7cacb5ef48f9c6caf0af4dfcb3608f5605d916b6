@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4aefdbc_83afbfea",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-27T18:47:51Z",
+      "side": 1,
+      "message": "I can add it... but *should* these be considered experimental?  They\u0027re functionally identical to the non-double versions... they just don\u0027t round to ints at the end.\n\nThoughts, Lei?",
+      "parentUuid": "63ff2bce_4d12ea59",
+      "revId": "7cacb5ef48f9c6caf0af4dfcb3608f5605d916b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c31f05a_5c63cd00",
         "filename": "public/fpdfview.h",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "599400dd_878e2c54",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-27T18:47:51Z",
+      "side": 1,
+      "message": "Done.  I also updated the comment this one was copied from.  :)",
+      "parentUuid": "2c31f05a_5c63cd00",
+      "revId": "7cacb5ef48f9c6caf0af4dfcb3608f5605d916b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aeab655_6e152376",
         "filename": "public/fpdfview.h",
         "patchSetId": 6
@@ -50,6 +86,24 @@
       "revId": "7cacb5ef48f9c6caf0af4dfcb3608f5605d916b6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38738f5_5bdf7875",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 7685
+      },
+      "writtenOn": "2019-09-27T18:47:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0aeab655_6e152376",
+      "revId": "7cacb5ef48f9c6caf0af4dfcb3608f5605d916b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
