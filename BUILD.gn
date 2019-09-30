@@ -103,7 +103,6 @@ config("pdfium_core_config") {
       "/wd4577",
     ]
   }
-  configs += [ "//build/config/compiler:no_size_t_to_int_warning" ]
 }
 
 jumbo_source_set("pdfium_public_headers_impl") {
