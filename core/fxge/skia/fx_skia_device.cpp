@@ -934,7 +934,8 @@ class SkiaState {
           rsxform->fSCos = cp.m_AdjustMatrix[0];
           rsxform->fSSin = cp.m_AdjustMatrix[1];
           rsxform->fTx = cp.m_AdjustMatrix[0] * positions[index].fX;
-          rsxform->fTy = cp.m_AdjustMatrix[1] * positions[index].fY;
+          rsxform->fTy = -cp.m_AdjustMatrix[3] * positions[index].fY;
+          // rsxform->fTy = cp.m_AdjustMatrix[1] * positions[index].fY;
         } else {
           rsxform->fSCos = 1;
           rsxform->fSSin = 0;
@@ -1512,7 +1513,7 @@ class SkiaState {
   bool m_fillFullCover = false;
   bool m_fillPath = false;
   bool m_groupKnockout = false;
-  bool m_debugDisable = false;  // turn off cache for debugging
+  bool m_debugDisable = true;  // turn off cache for debugging
 #if SHOW_SKIA_PATH
  public:
   mutable int m_debugSaveCounter = 0;
@@ -1649,7 +1650,6 @@ void CFX_SkiaDeviceDriver::Flush() {
 void CFX_SkiaDeviceDriver::PreMultiply() {
   m_pBitmap->PreMultiply();
 }
-
 bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
                                           const TextCharPos* pCharPos,
                                           CFX_Font* pFont,
@@ -1724,7 +1724,8 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
         rsxform->fSCos = cp.m_AdjustMatrix[0];
         rsxform->fSSin = cp.m_AdjustMatrix[1];
         rsxform->fTx = cp.m_AdjustMatrix[0] * positions[index].fX;
-        rsxform->fTy = cp.m_AdjustMatrix[1] * positions[index].fY;
+        rsxform->fTy = -cp.m_AdjustMatrix[3] * positions[index].fY;
+        // rsxform->fTy = cp.m_AdjustMatrix[1] * positions[index].fY;
       } else {
         rsxform->fSCos = 1;
         rsxform->fSSin = 0;
@@ -1742,6 +1743,7 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
       if (cp.m_bGlyphAdjust) {
         if (0 == cp.m_AdjustMatrix[1] && 0 == cp.m_AdjustMatrix[2] &&
             1 == cp.m_AdjustMatrix[3]) {
+          printf("case 1\n");
           font.setScaleX(cp.m_AdjustMatrix[0]);
           auto blob =
               SkTextBlob::MakeFromText(&glyphs[index], sizeof(glyphs[index]),
@@ -1750,14 +1752,16 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(int nChars,
                                   positions[index].fY, paint);
           font.setScaleX(SkIntToScalar(1));
         } else {
-          SkAutoCanvasRestore scoped_save_restore2(m_pCanvas, /*doSave=*/true);
+          SkAutoCanvasRestore scoped_save_restore2(m_pCanvas, true);
           SkMatrix adjust;
           adjust.reset();
           adjust.setScaleX(cp.m_AdjustMatrix[0]);
           adjust.setSkewX(cp.m_AdjustMatrix[1]);
           adjust.setSkewY(cp.m_AdjustMatrix[2]);
           adjust.setScaleY(cp.m_AdjustMatrix[3]);
-          adjust.preTranslate(positions[index].fX, positions[index].fY);
+          // TODO (nigi): what's the condition?
+          // adjust.preTranslate(positions[index].fX, positions[index].fY);
+          adjust.preTranslate(-positions[index].fY, -positions[index].fX);
           m_pCanvas->concat(adjust);
           auto blob =
               SkTextBlob::MakeFromText(&glyphs[index], sizeof(glyphs[index]),
