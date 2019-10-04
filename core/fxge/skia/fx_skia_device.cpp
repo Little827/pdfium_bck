@@ -1176,8 +1176,7 @@ class SkiaState {
     CFX_Matrix identityMatrix;
     if (!pMatrix)
       pMatrix = &identityMatrix;
-    return pMatrix->a != m_drawMatrix.a || pMatrix->b != m_drawMatrix.b ||
-           pMatrix->c != m_drawMatrix.c || pMatrix->d != m_drawMatrix.d;
+    return *pMatrix != m_drawMatrix;
   }
 
   bool StateChanged(const CFX_GraphStateData* pState,
