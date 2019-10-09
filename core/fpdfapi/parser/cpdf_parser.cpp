@@ -992,6 +992,7 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
       ShrinkObjectMap(xrefsize);
   }
 
+  m_MainXRefStreamOffset = GetTrailer()->GetIntegerFor("XRefStm");
   Error eRet = SetEncryptHandler();
   if (eRet != SUCCESS)
     return eRet;
@@ -1064,6 +1065,23 @@ CPDF_Parser::Error CPDF_Parser::LoadLinearizedMainXRefTable() {
 
   if (!LoadLinearizedAllCrossRefV4(main_xref_offset.ValueOrDie()) &&
       !LoadLinearizedAllCrossRefV5(main_xref_offset.ValueOrDie())) {
+    m_LastXRefOffset = 0;
+    return FORMAT_ERROR;
+  }
+
+  return SUCCESS;
+}
+
+CPDF_Parser::Error CPDF_Parser::LoadLinearizedCrossRefStream() {
+  if (m_MainXRefStreamOffset < 0)
+    return FORMAT_ERROR;
+
+  if (m_MainXRefStreamOffset == 0) {
+    return SUCCESS;
+  }
+
+  if (!LoadLinearizedAllCrossRefV4(m_MainXRefStreamOffset) &&
+      !LoadLinearizedAllCrossRefV5(m_MainXRefStreamOffset)) {
     m_LastXRefOffset = 0;
     return FORMAT_ERROR;
   }
