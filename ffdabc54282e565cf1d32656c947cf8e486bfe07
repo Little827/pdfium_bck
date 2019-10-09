@@ -86,6 +86,24 @@
       "revId": "ffdabc54282e565cf1d32656c947cf8e486bfe07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d94ebd91_f7a22840",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-10-09T09:40:09Z",
+      "side": 1,
+      "message": "Fix test, CheckDataRangeAndRequestIfUnavailable was missed for xref_offset.",
+      "parentUuid": "8b464a87_23e90136",
+      "revId": "ffdabc54282e565cf1d32656c947cf8e486bfe07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
