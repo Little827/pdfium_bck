@@ -877,7 +877,7 @@ TEST_F(FPDFFormFillEmbedderTest, MAYBE_FormText) {
   const char md5_3[] = "65c64a7c355388f719a752aa1e23f6fe";
 #elif defined(OS_WIN)
   const char md5_1[] = "d3204faa62b607f0bd3893c9c22cabcb";
-  const char md5_2[] = "29d1c3fd226ca6a69597f75937690320";
+  const char md5_2[] = "59d9304656cf625cf8672e1170596ca8";
   const char md5_3[] = "5e678a55912cb568fd677bf34abb8727";
 #else
   const char md5_1[] = "b890950d4b9bc163b1a96797f3004b53";

@@ -402,7 +402,8 @@ void CPWL_Edit::SetLimitChar(int32_t nLimitChar) {
 }
 
 CFX_FloatRect CPWL_Edit::GetFocusRect() const {
-  return CFX_FloatRect();
+  // Enable selection rect around editbox.
+  return CPWL_Wnd::GetFocusRect();
 }
 
 bool CPWL_Edit::IsVScrollBarVisible() const {
