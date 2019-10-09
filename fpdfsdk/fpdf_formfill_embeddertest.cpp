@@ -873,15 +873,15 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_765384) {
 TEST_F(FPDFFormFillEmbedderTest, MAYBE_FormText) {
 #if defined(OS_MACOSX)
   const char md5_1[] = "5f11dbe575fe197a37c3fb422559f8ff";
-  const char md5_2[] = "35b1a4b679eafc749a0b6fda750c0e8d";
+  const char md5_2[] = "1d7e468d471913f4338767da5f9926e9";
   const char md5_3[] = "65c64a7c355388f719a752aa1e23f6fe";
 #elif defined(OS_WIN)
   const char md5_1[] = "d3204faa62b607f0bd3893c9c22cabcb";
-  const char md5_2[] = "29d1c3fd226ca6a69597f75937690320";
+  const char md5_2[] = "59d9304656cf625cf8672e1170596ca8";
   const char md5_3[] = "5e678a55912cb568fd677bf34abb8727";
 #else
   const char md5_1[] = "b890950d4b9bc163b1a96797f3004b53";
-  const char md5_2[] = "11487d5597599a26e8912b9c1d9422cb";
+  const char md5_2[] = "78ce0677c1cfa67a601e7c99b4bb14c5";
   const char md5_3[] = "bffe0ecea9a533f217047ee41d6be466";
 #endif
   {
