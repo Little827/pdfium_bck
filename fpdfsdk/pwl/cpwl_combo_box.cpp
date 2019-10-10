@@ -427,7 +427,8 @@ void CPWL_ComboBox::SelectAll() {
 }
 
 CFX_FloatRect CPWL_ComboBox::GetFocusRect() const {
-  return CFX_FloatRect();
+  // Enable selection rect around combobox.
+  return CPWL_Wnd::GetFocusRect();
 }
 
 bool CPWL_ComboBox::SetPopup(bool bPopup) {
