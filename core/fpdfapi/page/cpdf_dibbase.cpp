@@ -670,7 +670,8 @@ CPDF_DIBBase::LoadState CPDF_DIBBase::StartLoadMask() {
 
   const CPDF_Array* pMatte = m_pMaskStream->GetDict()->GetArrayFor("Matte");
   if (pMatte && m_pColorSpace && m_Family != PDFCS_PATTERN &&
-      m_pColorSpace->CountComponents() <= m_nComponents) {
+      m_pColorSpace->CountComponents() <= m_nComponents &&
+      pMatte->size() >= m_nComponents) {
     std::vector<float> colors =
         ReadArrayElementsToVector(pMatte, m_nComponents);
 
