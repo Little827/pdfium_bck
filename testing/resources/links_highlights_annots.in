@@ -1,0 +1,141 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm 20 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /Kids [
+    10 0 R
+  ]
+>>
+endobj
+% Page number 0.
+{{object 10 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 5 0 R
+  /Resources <<
+    /Font <</F1 15 0 R>>
+  >>
+  /MediaBox [0 0 612 792]
+  /Annots [
+    22 0 R
+    23 0 R
+    24 0 R
+    25 0 R
+	17 0 R
+	19 0 R
+  ]
+  /Tabs /R
+>>
+endobj
+{{object 5 0}} <<
+  {{streamlen}}
+>>
+stream
+BT
+70 700 Td
+/F1 18 Tf
+(Link Annotations) Tj
+0 -65 Td
+/F2 14 Tf
+(External Link ) Tj
+0 -104 Td
+/F2 10 Tf
+(PDF Reference, Version 1.7, Section 8.4.5 defines Annotations) Tj
+ET
+endstream
+endobj
+{{object 17 0}} <<
+  /Type /Annot
+  /Subtype /Link
+  /BS <<
+    /W 0
+  >>
+  /Rect [69 633 542 653]
+  /A <<
+    /Type /Action
+    /URI (https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf)
+    /S /URI
+  >>
+  /F 4
+>>
+endobj
+% Forms
+{{object 20 0}} <<
+  /Fields [21 0 R]
+>>
+endobj
+% Fields
+{{object 21 0}} <<
+  /T (MyField)
+  /Type /Annot
+  /Subtype /Widget
+  /Rect [100 100 500 500]
+  /Kids [
+    22 0 R
+    23 0 R
+    24 0 R
+    25 0 R
+	19 0 R
+  ]
+>>
+endobj
+{{object 22 0}} <<
+  /FT /Tx
+  /Parent 5 0 R
+  /T (Sub_LeftBottom)
+  /Type /Annot
+  /Subtype /Widget
+  /Rect [69 670 220 690]
+>>
+endobj
+{{object 23 0}} <<
+  /FT /Tx
+  /Parent 5 0 R
+  /T (Sub_RightTop)
+  /Type /Annot
+  /Subtype /Widget
+  /Rect [69 440 220 460]
+>>
+endobj
+{{object 24 0}} <<
+  /FT /Tx
+  /Parent 5 0 R
+  /T (Sub_LeftTop)
+  /Type /Annot
+  /Subtype /Widget
+  /Rect [69 600 221 620]
+>>
+endobj
+{{object 25 0}} <<
+  /FT /Tx
+  /Parent 5 0 R
+  /T (Sub_RightBottom)
+  /Type /Annot
+  /Subtype /Widget
+  /Rect [69 400 220 420]
+>>
+endobj
+{{object 19 0}} <<
+  /Type /Annot
+  /Subtype /Highlight
+  /AP <<
+    /N 9 0 R
+  >>
+  /NM (Highlight-1)
+  /F 4
+  /QuadPoints [293 542 349 542 293 530 349 530]
+  /P 3 0 R
+  /C [1 0.90196 0]
+  /Rect [293 530 349 542]
+>>
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF

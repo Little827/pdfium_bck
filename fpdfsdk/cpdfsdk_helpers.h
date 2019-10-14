@@ -7,9 +7,12 @@
 #ifndef FPDFSDK_CPDFSDK_HELPERS_H_
 #define FPDFSDK_CPDFSDK_HELPERS_H_
 
+#include <vector>
+
 #include "build/build_config.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
+#include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdf_ext.h"
@@ -24,6 +27,7 @@
 #include <tchar.h>
 #endif
 
+class CFX_RenderDevice;
 class CPDF_Annot;
 class CPDF_AnnotContext;
 class CPDF_ClipPath;
@@ -277,5 +281,15 @@ UNSUPPORT_INFO* GetPDFUnssuportInto();
 void ReportUnsupportedFeatures(CPDF_Document* pDoc);
 void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot);
 void ProcessParseError(CPDF_Parser::Error err);
+
+void DrawFocusRect(CFX_RenderDevice* render_device,
+                   const CFX_Matrix& mtUser2Device,
+                   const CFX_FloatRect& view_bounding_box);
+
+void SetFocusableAnnotSubtypes(const unsigned int* focusable_annot_types,
+                               unsigned int size);
+const std::vector<CPDF_Annot::Subtype>& GetFocusableAnnotSubtypes();
+
+void ResetFocusableAnnotSubtypes();
 
 #endif  // FPDFSDK_CPDFSDK_HELPERS_H_
