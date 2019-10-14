@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2197f643_40cd677c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "Consider rephrasing as:\nMake FPDFAnnot_SetAP() generate standard compliant appearance stream",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1eadedd_a018fbcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "Consider rephrasing as:\nFPDFAnnot_SetAP()",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf21d82_90df4788",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "Consider rephrasing as:\nFPDFAnnot_SetAP() implementation",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1291a301_c34ed681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "Consider rephrasing as: \nthe steps below:",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0899a9f6_017e893b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "Consider rephrasing as: \nThe CL includes a newly added",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "920e55b4_3193a8a3",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "Consider rephrasing as:\nAnnotation object\u0027s non-empty bounding rect will be used as the /BBox for the associated /XObject object",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 69
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdcb90f7_23889329",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "This is redundant in presence of the two other conditions",
+      "range": {
+        "startLine": 777,
+        "startChar": 8,
+        "endLine": 777,
+        "endChar": 26
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "358c3463_57bf67a3",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "This comment seems redundant to me",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ff9075_8c283222",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "Consider rephrasing:\nNegative case: FPDFAnnot_SetAP() should fail",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8d5dbd_7fd595b7",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-14T12:02:16Z",
+      "side": 1,
+      "message": "EXPECT_TRUE(context);\nThis allows you to directly dereference |context| without null check on the next line.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 79
+      },
+      "revId": "820b32f32fa7baa6f6e5d78f823f8eb9a5d377f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
