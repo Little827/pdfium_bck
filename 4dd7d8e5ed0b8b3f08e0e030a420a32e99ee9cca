@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be84419_15e8fdaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-15T21:07:10Z",
+      "side": 1,
+      "message": "Remove the space after the colon, so Gerrit has a better chance of auto-linkifying it.",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50192fd8_f5eae9ea",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-15T21:07:10Z",
+      "side": 1,
+      "message": "BTW, if you don\u0027t mind, can you make |identityMatrix| \"static const\" or possibly \"static constexpr\" ?",
+      "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c5493d_8799e39c",
+        "filename": "testing/resources/pixel/bug_1402.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-15T21:07:10Z",
+      "side": 1,
+      "message": "Is a CID font really necessary to test this issue?",
+      "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
