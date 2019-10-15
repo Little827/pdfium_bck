@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "ec7f0b0d_2557fc90",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-15T21:14:18Z",
+      "side": 1,
+      "message": "The issue here is |pMatrix| may be nullptr. CFX_Matrix::IsIdentity() is not helpful when there\u0027s a nullptr.",
+      "parentUuid": "73c973b9_416f260b",
+      "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7c5493d_8799e39c",
         "filename": "testing/resources/pixel/bug_1402.in",
         "patchSetId": 7
