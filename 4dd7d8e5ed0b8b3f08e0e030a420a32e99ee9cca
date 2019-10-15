@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "58743ca9_897d0a4f",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-10-15T21:24:48Z",
+      "side": 1,
+      "message": "Right, the code would end up looking something like this:\n\n  return pMatrix ? *pMatrix !\u003d m_drawMatrix : !m_drawMatrix.IsIdentity();\n\nNot quite as tidy. And actually, I\u0027m not sure how this special behavior for nullptr is useful, but I assume there\u0027s a reason.",
+      "parentUuid": "ec7f0b0d_2557fc90",
+      "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7c5493d_8799e39c",
         "filename": "testing/resources/pixel/bug_1402.in",
         "patchSetId": 7
