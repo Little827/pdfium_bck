@@ -128,6 +128,24 @@
       "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b37fc0_d9f7d477",
+        "filename": "testing/resources/pixel/bug_1402.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-15T23:35:33Z",
+      "side": 1,
+      "message": "Let\u0027s work out what this test file should look like. I can help generate the missing platform-specific expectations after that.",
+      "parentUuid": "b7c5493d_8799e39c",
+      "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
