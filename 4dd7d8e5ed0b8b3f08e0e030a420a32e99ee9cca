@@ -114,6 +114,24 @@
     },
     {
       "key": {
+        "uuid": "e23b3a1b_b1659b04",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-10-16T00:19:16Z",
+      "side": 1,
+      "message": "I think my concern is a bit more high-level than that: The method is called \"MatrixChanged\", but is not being the identity matrix the same as being changed? I would argue that it\u0027s not really clear.\n\nIt\u0027s obvious that we\u0027re comparing against pMatrix when pMatrix !\u003d nullptr, but it\u0027s less clear that we want to compare against the identity matrix when pMatrix \u003d\u003d nullptr. It would be clearer to just pass in the identity matrix if that\u0027s what we actually want to test against, rather than nullptr. (Also, then we could make this parameter a const reference instead of a pointer.)\n\nThat said, I think it\u0027s more important not to change behavior than to worry about the design of this API. :-)\n\nTo try not to derail this thread too much, and return to your original point, the two main options at this point seem to be:\n\n1. \"static const\" or \"static constexpr\" identityMatrix. This should be compatible with https://google.github.io/styleguide/cppguide.html#Static_and_Global_Variables, since the destructor is trivial.\n\n2. Rewrite the logic to use CFX_MAtrix::IsIdentity() instead.",
+      "parentUuid": "0d758d7f_0f4a8813",
+      "revId": "4dd7d8e5ed0b8b3f08e0e030a420a32e99ee9cca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7c5493d_8799e39c",
         "filename": "testing/resources/pixel/bug_1402.in",
         "patchSetId": 7
