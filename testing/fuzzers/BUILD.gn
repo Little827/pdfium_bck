@@ -25,6 +25,7 @@ fuzzer_list = [
   "pdf_codec_rle_fuzzer",
   "pdf_font_fuzzer",
   "pdf_hint_table_fuzzer",
+  "pdf_nametree_fuzzer",
   "pdf_jpx_fuzzer",
   "pdf_psengine_fuzzer",
   "pdf_streamparser_fuzzer",
@@ -508,6 +509,18 @@ pdfium_fuzzer("pdf_jpx_fuzzer") {
     "../../core/fxcodec",
     "../../core/fxcrt",
     "../../core/fxge",
+  ]
+}
+
+pdfium_fuzzer("pdf_nametree_fuzzer") {
+  sources = [
+    "pdf_nametree_fuzzer.cc",
+  ]
+  deps = [
+    "../../core/fpdfapi/page",
+    "../../core/fpdfapi/parser",
+    "../../core/fpdfdoc",
+    "../../third_party:pdfium_base",
   ]
 }
 
