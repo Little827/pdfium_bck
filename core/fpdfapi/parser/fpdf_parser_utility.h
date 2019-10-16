@@ -55,6 +55,16 @@ ByteString PDF_NameEncode(const ByteString& orig);
 std::vector<float> ReadArrayElementsToVector(const CPDF_Array* pArray,
                                              size_t nCount);
 
+// Returns true if |dict| has a /Type name entry that matches |type|.
+bool ValidateDictType(const CPDF_Dictionary* dict, const ByteString& type);
+
+// Returns true if all entries in |dict| are dictionaries of |type|.
+// A null |dict| is considered invalid.
+bool ValidateResourceDict(const CPDF_Dictionary* dict, const ByteString& type);
+
+// Shorthand for ValidateResourceDict(dict, "Font").
+bool ValidateFontResourceDict(const CPDF_Dictionary* dict);
+
 std::ostream& operator<<(std::ostream& buf, const CPDF_Object* pObj);
 
 #endif  // CORE_FPDFAPI_PARSER_FPDF_PARSER_UTILITY_H_
