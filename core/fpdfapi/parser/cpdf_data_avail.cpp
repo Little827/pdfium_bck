@@ -765,10 +765,32 @@ CPDF_DataAvail::DocAvailStatus CPDF_DataAvail::CheckLinearizedData() {
             main_xref_offset.ValueOrDie(), data_size.ValueOrDie()))
       return DataNotAvailable;
 
-    CPDF_Parser::Error eRet =
+    int xrefstm_offset =
+        m_pDocument->GetParser()->GetTrailer()->GetIntegerFor("XRefStm");
+
+    if (xrefstm_offset < 0)
+      return DataError;
+
+    data_size = m_dwFileLen;
+    data_size -= xrefstm_offset;
+    if (!data_size.IsValid())
+      return DataError;
+
+    if (!GetValidator()->CheckDataRangeAndRequestIfUnavailable(
+            xrefstm_offset, data_size.ValueOrDie()))
+      return DataNotAvailable;
+
+    CPDF_Parser::Error xref_table_parse_status =
         m_pDocument->GetParser()->LoadLinearizedMainXRefTable();
+
     m_bMainXRefLoadTried = true;
-    if (eRet != CPDF_Parser::SUCCESS)
+    if (xref_table_parse_status != CPDF_Parser::SUCCESS)
+      return DataError;
+
+    CPDF_Parser::Error xrefstm_parse_status =
+        m_pDocument->GetParser()->LoadLinearizedCrossRefStream();
+
+    if (xrefstm_parse_status != CPDF_Parser::SUCCESS)
       return DataError;
 
     if (!PreparePageItem())

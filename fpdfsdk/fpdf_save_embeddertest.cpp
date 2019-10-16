@@ -78,7 +78,7 @@ TEST_F(FPDFSaveEmbedderTest, SaveLinearizedDoc) {
   EXPECT_THAT(GetString(), testing::StartsWith("%PDF-1.6\r\n"));
   EXPECT_THAT(GetString(), testing::HasSubstr("/Root "));
   EXPECT_THAT(GetString(), testing::HasSubstr("/Info "));
-  EXPECT_EQ(8219u, GetString().length());
+  EXPECT_EQ(11302u, GetString().length());
 
   // Make sure new document renders the same as the old one.
   ASSERT_TRUE(OpenSavedDocument());
