@@ -987,46 +987,64 @@ TEST(ByteString, OneCharReverseIterator) {
 TEST(ByteString, MultiCharReverseIterator) {
   ByteString multi_str("abcd");
   auto iter = multi_str.rbegin();
-  EXPECT_FALSE(iter == multi_str.rend());
+  EXPECT_NE(iter, multi_str.rend());
+  EXPECT_EQ(4u, multi_str.rend() - iter);
+  EXPECT_EQ(0u, iter - multi_str.rbegin());
 
   char ch = *iter++;
   EXPECT_EQ('d', ch);
   EXPECT_EQ('c', *iter);
-  EXPECT_FALSE(iter == multi_str.rend());
+  EXPECT_NE(iter, multi_str.rend());
+  EXPECT_EQ(3u, multi_str.rend() - iter);
+  EXPECT_EQ(1u, iter - multi_str.rbegin());
 
   ch = *(++iter);
   EXPECT_EQ('b', ch);
   EXPECT_EQ('b', *iter);
-  EXPECT_FALSE(iter == multi_str.rend());
+  EXPECT_NE(iter, multi_str.rend());
+  EXPECT_EQ(2u, multi_str.rend() - iter);
+  EXPECT_EQ(2u, iter - multi_str.rbegin());
 
   ch = *iter++;
   EXPECT_EQ('b', ch);
   EXPECT_EQ('a', *iter);
-  EXPECT_FALSE(iter == multi_str.rend());
+  EXPECT_NE(iter, multi_str.rend());
+  EXPECT_EQ(1u, multi_str.rend() - iter);
+  EXPECT_EQ(3u, iter - multi_str.rbegin());
 
   ch = *iter++;
   EXPECT_EQ('a', ch);
-  EXPECT_TRUE(iter == multi_str.rend());
+  EXPECT_EQ(iter, multi_str.rend());
+  EXPECT_EQ(0u, multi_str.rend() - iter);
+  EXPECT_EQ(4u, iter - multi_str.rbegin());
 
   ch = *(--iter);
   EXPECT_EQ('a', ch);
   EXPECT_EQ('a', *iter);
-  EXPECT_FALSE(iter == multi_str.rend());
+  EXPECT_NE(iter, multi_str.rend());
+  EXPECT_EQ(1u, multi_str.rend() - iter);
+  EXPECT_EQ(3u, iter - multi_str.rbegin());
 
   ch = *iter--;
   EXPECT_EQ('a', ch);
   EXPECT_EQ('b', *iter);
-  EXPECT_FALSE(iter == multi_str.rend());
+  EXPECT_NE(iter, multi_str.rend());
+  EXPECT_EQ(2u, multi_str.rend() - iter);
+  EXPECT_EQ(2u, iter - multi_str.rbegin());
 
   ch = *iter--;
   EXPECT_EQ('b', ch);
   EXPECT_EQ('c', *iter);
-  EXPECT_FALSE(iter == multi_str.rend());
+  EXPECT_NE(iter, multi_str.rend());
+  EXPECT_EQ(3u, multi_str.rend() - iter);
+  EXPECT_EQ(1u, iter - multi_str.rbegin());
 
   ch = *(--iter);
   EXPECT_EQ('d', ch);
   EXPECT_EQ('d', *iter);
-  EXPECT_TRUE(iter == multi_str.rbegin());
+  EXPECT_EQ(iter, multi_str.rbegin());
+  EXPECT_EQ(4u, multi_str.rend() - iter);
+  EXPECT_EQ(0u, iter - multi_str.rbegin());
 }
 
 TEST(ByteStringView, Null) {
