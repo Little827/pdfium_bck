@@ -521,6 +521,16 @@ pdfium_fuzzer("pdf_psengine_fuzzer") {
   ]
 }
 
+pdfium_fuzzer("pdf_scanlinecompositor_fuzzer") {
+  sources = [
+    "pdf_scanlinecompositor_fuzzer.cc",
+  ]
+  deps = [
+    "../../core/fxge",
+    "../../third_party:pdfium_base",
+  ]
+}
+
 pdfium_fuzzer("pdf_streamparser_fuzzer") {
   sources = [
     "pdf_streamparser_fuzzer.cc",
