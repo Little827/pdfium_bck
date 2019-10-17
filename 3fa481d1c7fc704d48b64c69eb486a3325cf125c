@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b30c5caf_a985753c",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2019-10-17T11:29:05Z",
+      "side": 1,
+      "message": "They are already covered in existing embedder test named FPDFAnnotEmbedderTest.GetSEtAP in file fpdf_annot_embedderTest.cpp",
+      "parentUuid": "da89f07f_0f535a64",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "3fa481d1c7fc704d48b64c69eb486a3325cf125c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a883bcb6_7ff0b739",
         "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "3fa481d1c7fc704d48b64c69eb486a3325cf125c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f790df86_e979efca",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2019-10-17T11:29:05Z",
+      "side": 1,
+      "message": "They are already covered in existing embedder test named FPDFAnnotEmbedderTest.GetSetAP in file fpdf_annot_embedderTest.cpp",
+      "parentUuid": "a883bcb6_7ff0b739",
+      "range": {
+        "startLine": 46,
+        "startChar": 43,
+        "endLine": 46,
+        "endChar": 75
+      },
+      "revId": "3fa481d1c7fc704d48b64c69eb486a3325cf125c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
