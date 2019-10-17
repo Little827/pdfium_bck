@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1571196293 -0700\nnonce AC6AUtMJlqNDIIJoCGfLKBUaMpZppe7EJoOcOOdUs0wgorr5qZrdh5zCzHYkEGBStVCzUmefKav0\n\n0000000000000000000000000000000000000000 b32c587e258160a0f139843cff461d7b901aee1e refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl2mjYUACgkQqzYtYVpm\n/XsnIAgAzIECC0vDXpneJ0XVwPbgQZhPQk2qWi8rVAOggAWCqJblpjCyDOTM+OO9\nmFSqZVymcNRsMpWA8Y0tCDNM1N5pTYzu4IV5NpQ6HKLbbecB5HOy966ppGQ5i9JO\nDSVjeh9jiJviwKVJj+TbxJkNNj6cVmUWjyDIpwifIweKl4iX5AYnEtvSVjPLB+vx\nZnW7RDJpu6GFq9OROcB0GGhoL8Oi/HjPl7MzbEEzido1LFQSBn5MlNwE7NELIaYM\nRaZyaugJhJue2qcBj0exfyb2dV29BUoLlj5BW1R5Cav8bnw2oK9T1V/Ky2e2tBwi\neyTcR/fTxK8FonWqsbuFMz5VtiXNvA\u003d\u003d\n\u003dF9Ug\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "19545f05_9589f7ac",
+        "filename": "core/fpdfapi/parser/fpdf_parser_utility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2019-10-17T13:35:49Z",
+      "side": 1,
+      "message": "s/invalid/non-matching/ ? invalid doesn\u0027t tell me if that means it throws an assert, or returns false.",
+      "revId": "b32c587e258160a0f139843cff461d7b901aee1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b94b6134_c4c3f891",
+        "filename": "core/fpdfapi/parser/fpdf_parser_utility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5965
+      },
+      "writtenOn": "2019-10-17T13:35:49Z",
+      "side": 1,
+      "message": "ValidateDictAllResourcesOfType()? The signature is very similar to |ValidateDictType| so should it be clear this validates all of them instead of just one of them?",
+      "revId": "b32c587e258160a0f139843cff461d7b901aee1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
