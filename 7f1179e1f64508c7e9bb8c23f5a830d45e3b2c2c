@@ -17,6 +17,24 @@
       "revId": "7f1179e1f64508c7e9bb8c23f5a830d45e3b2c2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "266bd208_3d9b12e4",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-18T18:21:11Z",
+      "side": 1,
+      "message": "FXFT_Is_Face_Bold is a #define to ask FreeType to check for FT_STYLE_FLAG_BOLD. FreeType has a different notion of bold vs. PDF spec\u0027s \"force bold\" flag. Given that, it should not be renamed.\n\nFWIW, this CL is just trying to do mass renaming where appropriate. Whether the affected code is correct or not is another story. :)",
+      "parentUuid": "b658c56f_5be37d27",
+      "revId": "7f1179e1f64508c7e9bb8c23f5a830d45e3b2c2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
