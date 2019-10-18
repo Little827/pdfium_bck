@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a8ef396_2cdd0ae3",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-10-18T18:01:43Z",
+      "side": 1,
+      "message": "What does it return if it is a widget?",
+      "revId": "de6acea39ad823b2ad7b0cbc2c1fd1cc61836492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "604a70f1_0ca28990",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-10-18T18:01:43Z",
+      "side": 1,
+      "message": "Can you document that strFieldName is an out parameter and what is returned, and that it is returned every time - even when the returned code is -1?",
+      "revId": "de6acea39ad823b2ad7b0cbc2c1fd1cc61836492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9591e5_59c2916f",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-10-18T18:01:43Z",
+      "side": 1,
+      "message": "optional: Could return a pair, instead.",
+      "revId": "de6acea39ad823b2ad7b0cbc2c1fd1cc61836492",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
