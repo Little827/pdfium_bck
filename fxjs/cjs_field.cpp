@@ -132,10 +132,9 @@ void UpdateFormControl(CPDFSDK_FormFillEnvironment* pFormFillEnv,
     pFormFillEnv->SetChangeMark();
 }
 
-// note: iControlNo = -1, means not a widget.
-void ParseFieldName(const WideString& strFieldNameParsed,
-                    WideString& strFieldName,
-                    int& iControlNo) {
+// Returns -1 if the field is not a widget.
+int ParseFieldName(const WideString& strFieldNameParsed,
+                   WideString* strFieldName) {
   auto reverse_it = strFieldNameParsed.rbegin();
   while (reverse_it != strFieldNameParsed.rend()) {
     if (*reverse_it == L'.')
@@ -143,23 +142,22 @@ void ParseFieldName(const WideString& strFieldNameParsed,
     ++reverse_it;
   }
   if (reverse_it == strFieldNameParsed.rend()) {
-    strFieldName = strFieldNameParsed;
-    iControlNo = -1;
-    return;
+    *strFieldName = strFieldNameParsed;
+    return -1;
   }
   WideString suffixal =
       strFieldNameParsed.Right(reverse_it - strFieldNameParsed.rbegin());
-  iControlNo = FXSYS_wtoi(suffixal.c_str());
+  int iControlNo = FXSYS_wtoi(suffixal.c_str());
   if (iControlNo == 0) {
     suffixal.TrimRight(L' ');
     if (suffixal != L"0") {
-      strFieldName = strFieldNameParsed;
-      iControlNo = -1;
-      return;
+      *strFieldName = strFieldNameParsed;
+      return -1;
     }
   }
-  strFieldName =
+  *strFieldName =
       strFieldNameParsed.Left(strFieldNameParsed.rend() - reverse_it - 1);
+  return iControlNo;
 }
 
 std::vector<CPDF_FormField*> GetFormFieldsForName(
@@ -217,19 +215,19 @@ bool SetWidgetDisplayStatus(CPDFSDK_Widget* pWidget, int value) {
 void SetBorderStyle(CPDFSDK_FormFillEnvironment* pFormFillEnv,
                     const WideString& swFieldName,
                     int nControlIndex,
-                    const ByteString& string) {
+                    const ByteString& type) {
   ASSERT(pFormFillEnv);
 
   BorderStyle nBorderStyle = BorderStyle::SOLID;
-  if (string == "solid")
+  if (type == "solid")
     nBorderStyle = BorderStyle::SOLID;
-  else if (string == "beveled")
+  else if (type == "beveled")
     nBorderStyle = BorderStyle::BEVELED;
-  else if (string == "dashed")
+  else if (type == "dashed")
     nBorderStyle = BorderStyle::DASH;
-  else if (string == "inset")
+  else if (type == "inset")
     nBorderStyle = BorderStyle::INSET;
-  else if (string == "underline")
+  else if (type == "underline")
     nBorderStyle = BorderStyle::UNDERLINE;
   else
     return;
@@ -621,8 +619,7 @@ bool CJS_Field::AttachField(CJS_Document* pDocument,
 
   if (pForm->CountFields(swFieldNameTemp) <= 0) {
     WideString strFieldName;
-    int iControlNo = -1;
-    ParseFieldName(swFieldNameTemp, strFieldName, iControlNo);
+    int iControlNo = ParseFieldName(swFieldNameTemp, &strFieldName);
     if (iControlNo == -1)
       return false;
 
