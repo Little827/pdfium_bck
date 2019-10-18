@@ -38,6 +38,24 @@
     },
     {
       "key": {
+        "uuid": "55a67ccf_e12c46fe",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-10-18T17:55:21Z",
+      "side": 1,
+      "message": "Yeah, even if it\u0027s just one usage for now, it\u0027s worth putting such a generic operation in WideString.",
+      "parentUuid": "474b5329_008c147f",
+      "revId": "cf7bd33143d7b47ccc9cbe17c52f4481427b08ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66980a0f_56340077",
         "filename": "fxjs/cjs_field.cpp",
         "patchSetId": 2
