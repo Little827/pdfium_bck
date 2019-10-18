@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "474b5329_008c147f",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-18T17:48:01Z",
+      "side": 1,
+      "message": "The string classes have Find(), but not reverse find. Care to file a bug to keep track of adding that?",
+      "parentUuid": "604980df_2a5a32ab",
+      "revId": "cf7bd33143d7b47ccc9cbe17c52f4481427b08ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66980a0f_56340077",
         "filename": "fxjs/cjs_field.cpp",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2019-10-18T17:31:31Z",
       "side": 1,
       "message": "I\u0027m starting to doubt the namings of Right() and Left(). It\u0027s certainly not as obvious as std::string::substr(). Perhaps comments would make that clearer here?\n\nMaybe in the future we can discuss renaming them.",
+      "revId": "cf7bd33143d7b47ccc9cbe17c52f4481427b08ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68121ffe_1a260f7a",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-18T17:48:01Z",
+      "side": 1,
+      "message": "Ditto. If you have ideas for better APIs / API names, please file a bug.",
+      "parentUuid": "66980a0f_56340077",
       "revId": "cf7bd33143d7b47ccc9cbe17c52f4481427b08ab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
