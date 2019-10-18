@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "281ff80c_94bba45c",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-18T23:53:33Z",
+      "side": 1,
+      "message": "Bonus points for converting these in a separate CL.",
+      "revId": "1ce2af98fa3acbca05d00127866664addcdc86e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d227df2_692a2bb4",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-18T23:53:33Z",
+      "side": 1,
+      "message": "This is based on ByteString::ReverseFind(), but that was written soon after pdfium::Optional became available and the author was not as familiar with pdfium::Optional. This line should be:\n\nreturn pdfium::nullopt;\n\nLike \"return nullptr;\" as nobody would write: return reinterpret_cast\u003cFoo*\u003e(nullptr);",
+      "revId": "1ce2af98fa3acbca05d00127866664addcdc86e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8dac5c6_5623145e",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-18T23:53:33Z",
+      "side": 1,
+      "message": "Just: return nLength;",
+      "revId": "1ce2af98fa3acbca05d00127866664addcdc86e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
