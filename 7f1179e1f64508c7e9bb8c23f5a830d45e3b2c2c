@@ -3,6 +3,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "26aef7b2_1d88bda4",
+        "filename": "core/fxge/fx_font.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-18T18:35:01Z",
+      "side": 1,
+      "message": "This part. https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf#page\u003d459",
+      "revId": "7f1179e1f64508c7e9bb8c23f5a830d45e3b2c2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b658c56f_5be37d27",
         "filename": "fpdfsdk/fpdf_edittext.cpp",
         "patchSetId": 1
