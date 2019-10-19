@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74bed1da_d53a504a",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-19T00:34:43Z",
+      "side": 1,
+      "message": "Can these be fixed as well? Maybe next CL...",
+      "range": {
+        "startLine": 544,
+        "startChar": 16,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "4db5e697a8d85026a4e57b149aee2c2e4111fea5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
