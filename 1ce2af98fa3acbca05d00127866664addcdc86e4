@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25db46ce_49e2c048",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-10-19T00:02:15Z",
+      "side": 1,
+      "message": "Sure why not? It\u0027s an easy enough CL.",
+      "parentUuid": "281ff80c_94bba45c",
+      "revId": "1ce2af98fa3acbca05d00127866664addcdc86e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d227df2_692a2bb4",
         "filename": "core/fxcrt/widestring.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6517b003_67c54c6f",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-10-19T00:02:15Z",
+      "side": 1,
+      "message": "I\u0027ll change these all in ByteString in a separate CL.",
+      "parentUuid": "2d227df2_692a2bb4",
+      "revId": "1ce2af98fa3acbca05d00127866664addcdc86e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8dac5c6_5623145e",
         "filename": "core/fxcrt/widestring.cpp",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "1ce2af98fa3acbca05d00127866664addcdc86e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc81997_e8000b92",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-10-19T00:02:15Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "f8dac5c6_5623145e",
+      "revId": "1ce2af98fa3acbca05d00127866664addcdc86e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
