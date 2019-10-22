@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d960203_8efdb09f",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T20:55:00Z",
+      "side": 0,
+      "message": "Should we preserve this existing check? e.g.\n\nuint32_t availableData \u003d m_pCodecMemory-\u003eGetSize() \u003e m_offSet ....;\navailableData +\u003d pBmpModule-\u003eGetAvailInput(pBmpContext.get());",
+      "revId": "9fa72471b87de2f4db6d13097519e6cc854e7620",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
