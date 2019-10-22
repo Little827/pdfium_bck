@@ -1,0 +1,296 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73cfe114_e9c02ba1",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "nit: new line after this.",
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea668f2_47d6f02a",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "nit: new line after this too. Please see https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes items (5) and (6).",
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c7b414_4828efc3",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "nit: Put blank lines after the start of a namespace and before the end.",
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e4231ed_694c6429",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782e8a87_089eba43",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "No need. The size can be auto-calculated from the array itself.",
+      "range": {
+        "startLine": 12,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36914f9_5163fcad",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "It\u0027s better to add to |data| and subtract from |size| at the same time, so they are consistent with each other.",
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139aa710_2360e74e",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "Don\u0027t hard code values:\n- Add a |BlendMode::kLast| enum value that\u0027s set equal to |BlendMode::kLuminosity|.\n- Use |BlendMode::kLast| + 1 here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 58,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a008d6a_5b9a1686",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "Don\u0027t hard code values. Use FX_ArraySize(kFormat) here.",
+      "range": {
+        "startLine": 30,
+        "startChar": 47,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04804332_a85b75e7",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "If you are going to use Chromium-style naming, then there\u0027s no Hungarian notation.",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e3f751_c72a25af",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "Name this |src_bitmap| for consistency.",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f2629a_022ae99c",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "Please abbreviate consistently. Either always use \"dst\" or always use \"dest\".",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc491a9_7d9bc26c",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "nit: Need braces. https://google.github.io/styleguide/cppguide.html#Conditionals",
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe92d004_58995be7",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "This never evaluate to true. Line 39 already dereferenced |bitmap|.",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225a24c1_4219de33",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-22T16:40:47Z",
+      "side": 1,
+      "message": "Are the hard coded 0 values here worth fuzzing?",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 36
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
