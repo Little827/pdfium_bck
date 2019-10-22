@@ -1,4 +1,45 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1571266422 -0700\nnonce AC6AUtO7XVFmlhpICdAED6hecHzeMSKN7pvyH+QvQm3r5eXj3L02CutjjGXS1draQ4CjEPObvZBa\n\n0000000000000000000000000000000000000000 cbd7321cec43f93aeccf7acced29456957ea02e8 refs/for/refs/heads/master%notify\u003dNONE,m\u003dmsvc\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl2nn3YACgkQqzYtYVpm\n/Xu/pAf+OMeaqntLAuvZATyR4xjtPEXrYbpt1atZnqBypKhrkmbWtI3k359pcaoC\n0dNDDPgMm6v9o1xRBbBXiWO22KhBXpnP/eNijoNQPuvy1PKCFakab9IAvkPwyotB\nVAeN9tvG7Bt0Z1g132o7O/18jQ/HZPgW8TZvNd/TvDzjuwiJdE+NLJBiyNfjfIru\n2ctgcA6Kg3v60bMHsF93RHY0Uw7IYQtGwYg4qHaWzpckaR7KMH3k1sPKqVypFfG3\nw+evVkj0jJY3PUYYpRVVcG4xik0Tpos6tyhGGoN28j3v9jIP8ANyVISRh9xWGUS3\nf1Ic4CR9a0RPLoSRoRRck+fr6ZJuMw\u003d\u003d\n\u003dDA+e\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c853607_63784a02",
+        "filename": "testing/fuzzers/pdf_nametree_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-10-22T19:42:46Z",
+      "side": 1,
+      "message": "Maybe make names be part of Params? They are just more consumed data, after all, with more complicated processing.",
+      "revId": "cbd7321cec43f93aeccf7acced29456957ea02e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497de018_4f5a4296",
+        "filename": "testing/fuzzers/pdf_nametree_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7035
+      },
+      "writtenOn": "2019-10-22T19:42:46Z",
+      "side": 1,
+      "message": "/*bAllowNestedArray\u003d*/ true, /*bInArray\u003d*/ false, /*dwRecursionLevel\u003d*/ 0",
+      "range": {
+        "startLine": 58,
+        "startChar": 55,
+        "endLine": 58,
+        "endChar": 69
+      },
+      "revId": "cbd7321cec43f93aeccf7acced29456957ea02e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
