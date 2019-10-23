@@ -16,6 +16,24 @@
       "revId": "9fa72471b87de2f4db6d13097519e6cc854e7620",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a1702f_4114acec",
+        "filename": "core/fxcodec/progressivedecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7622
+      },
+      "writtenOn": "2019-10-23T04:40:45Z",
+      "side": 0,
+      "message": "No, I feel it doesn\u0027t make sense to calculate \"m_pCodecMemory-\u003eGetSize() - m_offSet\" at all.\n\nAccording to https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcodec/progressivedecoder.cpp?q\u003dprogressivedecoder\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d1527\nIt reads |size| bytes from m_pFile to m_pCodecMemory and advanced m_offSet by |size|.\nIn other words, m_offSet denotes how many bytes already used in m_pFile.\n\nm_offSet is not an offset inside m_pCodecMemory, calculating \"m_pCodecMemory-\u003eGetSize() - m_offSet\" is meaningless.",
+      "parentUuid": "5d960203_8efdb09f",
+      "revId": "9fa72471b87de2f4db6d13097519e6cc854e7620",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
