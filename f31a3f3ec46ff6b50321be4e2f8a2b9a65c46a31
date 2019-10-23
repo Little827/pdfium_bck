@@ -99,6 +99,46 @@
     },
     {
       "key": {
+        "uuid": "26c896e1_8196166a",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-23T03:08:52Z",
+      "side": 1,
+      "message": "GetInteger() returns an int, and most of the uses of |width| expects a signed int, so give the variable the right type.",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe90f92_7065b927",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-23T03:08:52Z",
+      "side": 1,
+      "message": "Whereas |argb| can remain unsigned.",
+      "revId": "f31a3f3ec46ff6b50321be4e2f8a2b9a65c46a31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e36914f9_5163fcad",
         "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
         "patchSetId": 9
