@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bbfbd13_c2a2dbea",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-10-23T14:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50b7a038_15d39f5c",
+      "revId": "3923def39a1fca5d053eaf1003657a53e09e3179",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7981c0af_11aa009a",
         "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "3923def39a1fca5d053eaf1003657a53e09e3179",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a50613b_393d1a8a",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-10-23T14:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7981c0af_11aa009a",
+      "revId": "3923def39a1fca5d053eaf1003657a53e09e3179",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
