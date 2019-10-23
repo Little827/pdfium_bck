@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf135fd_6b1e16e0",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-23T16:52:05Z",
+      "side": 1,
+      "message": "This can be just: clip_rgn.get()",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 56
+      },
+      "revId": "640ef7d9534d02d8dec0190910beab7d5c037c8d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
