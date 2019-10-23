@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50b7a038_15d39f5c",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-23T05:29:44Z",
+      "side": 1,
+      "message": "Actually, this isn\u0027t needed?",
+      "revId": "3923def39a1fca5d053eaf1003657a53e09e3179",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7981c0af_11aa009a",
+        "filename": "testing/fuzzers/pdf_scanlinecompositor_fuzzer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-23T05:29:44Z",
+      "side": 1,
+      "message": "Let\u0027s do:\n\nstd::unique_ptr\u003cCFX_ClipRgn\u003e clip_rgn;\nif (is_clip)\n  clip_rgn \u003d pdfium::MakeUnique\u003cCFX_ClipRgn\u003e(width, height);\n\nThen lines 60 and 64 can always pass in clip_rgn.get().",
+      "revId": "3923def39a1fca5d053eaf1003657a53e09e3179",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
