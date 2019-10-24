@@ -23,6 +23,30 @@
       "revId": "7a886764ff9d42eae838283e45981ecc8a04e44d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56846e6e_7bb443b1",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-24T03:40:19Z",
+      "side": 1,
+      "message": "i.e. https://pdfium-review.googlesource.com/c/pdfium/+/61410 should have called Error() ? Sure, I will change that.",
+      "parentUuid": "7f613e10_f28fa92a",
+      "range": {
+        "startLine": 110,
+        "startChar": 30,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "7a886764ff9d42eae838283e45981ecc8a04e44d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
