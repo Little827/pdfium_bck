@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1571876046 -0700\nnonce AC6AUtPlvPKSi8YMtlINVtpaUgf0TKiNaDXPMM5KKxxVGH3Jdt2CapT7d9p2FgTxtC6wdZEo6PuF\n\n0000000000000000000000000000000000000000 7a886764ff9d42eae838283e45981ecc8a04e44d refs/for/refs/heads/master%notify\u003dNONE,m\u003dself_review\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl2w7M4ACgkQqzYtYVpm\n/XvN4gf+PDhnMrcTttA0Ub8FeEL42GbYKY+DMdGGw4Sr20wL37XcxZIgErbGAOWz\nkOQNCHF+qUiLP63qnD2k6BG+mMVZgXK0gyoJBKZO0PEYfKnGxQT4Q5i8cFy5z9DE\nogc2ry1s5yGTcS1nZdDcjjb/QV+ObQ5NCoBPvOqmoq6l11fefMmtx2X4rqpKLbPa\nkC2ERy8fACzyI7bnP/SZOoZncTTg53Vk9Xtfx9jpzmvVk+PonCIhB332jN+9NM2U\nAMjiaTiAnD7q97fgeAj2sMa7aYQbdmUxBxXtZ1T77/o/6tOMLf1zU14FqMPICeGX\nNZVnyMA+Gz0dvD6hH+4NdI355KG/kQ\u003d\u003d\n\u003dapvK\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f613e10_f28fa92a",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 7761
+      },
+      "writtenOn": "2019-10-24T01:45:24Z",
+      "side": 1,
+      "message": "This one is rewind, should be kFail when Seek failed.",
+      "range": {
+        "startLine": 110,
+        "startChar": 30,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "7a886764ff9d42eae838283e45981ecc8a04e44d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
