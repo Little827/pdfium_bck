@@ -17,6 +17,24 @@
       "revId": "4ddcb0b05773da9ea2fdc5de3062f6336e6285b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf272b2_dfa180fd",
+        "filename": "core/fxcodec/bmp/bmpmodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-24T22:27:30Z",
+      "side": 1,
+      "message": "Done. Was considering it but got lazy.",
+      "parentUuid": "5b4dc870_b59e5105",
+      "revId": "4ddcb0b05773da9ea2fdc5de3062f6336e6285b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
