@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1572389966 -0700\nnonce AC6AUtMhzglXRtbIV0vNiQIoFON/bI1z+XElCozt9WEP+Gc9cwPyE2Q1VeRULLyWIofxSex0PRpH\n\n0000000000000000000000000000000000000000 fcee66f83de96467305932bdf358ff1a3b756b80 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dproperly-handle-seek-failure-in-cfx-bmpdecompressor\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl24xE4ACgkQqzYtYVpm\n/XvQIAf/YM3mpt1Q/lcivfolg8wrpR+zhdN0G/FSGgnuApdt0zY+MNtYQArGDsSz\nYYeS2mzQF4UTbJi0puFEo8e1BZweeXQsOAA/nbAeMghUHLFf2BPe3P9eIRozJjaF\noFZhLXxlxR1jwjfHzr+8W6KAqrnGYkyfwfOFRaSmVm1Ovp8UjJptirJ9d71FuD+d\nF4x66MwTNy77mP5gEa9WQe1Ko/Q9BdcV3ZJ64yS2j16pMakOGeZDDCShTh1k/Air\n33Y7wJCsG22DwP7Iw49ax/F4tU6c499+pqjr+KtN8VnfBZk8M0PkPwwuI/5uRNPJ\ncqEubIndIFrkAaeo0Tg7weASoOkU9w\u003d\u003d\n\u003dgvzn\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
