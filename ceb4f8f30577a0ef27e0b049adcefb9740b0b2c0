@@ -23,6 +23,30 @@
       "revId": "ceb4f8f30577a0ef27e0b049adcefb9740b0b2c0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b124f2d6_e9f77498",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-10-31T17:40:34Z",
+      "side": 1,
+      "message": "CPDFSDK_PageView::DeleteAnnot() and ~CPDFSDK_PageView() do not delete the CPDFSDK_Annot in a straight-forward manner. So |m_SDKAnnotArray| holds raw pointers. Probably worth a follow-up.",
+      "parentUuid": "bdc71f92_5f9861f9",
+      "range": {
+        "startLine": 138,
+        "startChar": 28,
+        "endLine": 138,
+        "endChar": 47
+      },
+      "revId": "ceb4f8f30577a0ef27e0b049adcefb9740b0b2c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
