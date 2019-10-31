@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c0f5241_9a4aa2cd",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-31T12:15:33Z",
+      "side": 1,
+      "message": "Suggest using |pNewIndirectStream| as the variable name",
+      "range": {
+        "startLine": 789,
+        "startChar": 17,
+        "endLine": 789,
+        "endChar": 30
+      },
+      "revId": "a9aa38353ff93faa6c4484ac306b6b7b72671814",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce345802_97c684a1",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-10-31T12:15:33Z",
+      "side": 1,
+      "message": "Suggest using |newAPStream| or |newValue| (as was before your change) for the variable name",
+      "range": {
+        "startLine": 793,
+        "startChar": 15,
+        "endLine": 793,
+        "endChar": 30
+      },
+      "revId": "a9aa38353ff93faa6c4484ac306b6b7b72671814",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
