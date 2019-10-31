@@ -1,4 +1,62 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1572544526 -0700\nnonce AC6AUtOf7DWLTrzQSDRjdrvegM15qOZgqrJMJBZsCWqK6MucBeT07mmzHd7E6O08JFj0OoSyzkXN\n\n0000000000000000000000000000000000000000 37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl27IA4ACgkQqzYtYVpm\n/XsTSQf/WbTEIVJRY7yt0pfQe/rnJ6BWyuGfYQH7FulGBPShfrfeyA9kf9Ln7oJM\n3bLwWPrgrfbMUE3JN47liBdJ2toAWol/wU+Z65l5N3Ba6sYwcJ0Fv4arOYw5wNKl\nqOSgv84TMxhvk01Yopn4OjBTAvWJujIeAOKHRKbSco8rbDJ7F79UE97VmoxWAhn3\nCSg/scY2okCBhBMTgnJJnhyKbzBsQujqfNwTH3iToGMRYjUlhT7Q0m9/iLi5ufWq\n5x9uLvSD6bY5/CCcmqTxCzyMeez9EA9Bou5UJXDgDg/rge1MnXQR2mNteyIoXNIc\ngQlcG2zCgVlBlUDLEOyscNQTQCixMA\u003d\u003d\n\u003dXumh\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0187b23a_a296650d",
+        "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-10-31T19:45:16Z",
+      "side": 1,
+      "message": "This function (and the related enum) might benefit from more documentation, as the purpose of the logic isn\u0027t clear to me on first (or second, or third...) read.\n\nCan you explain what the high-level operation is here? Is it dealing with mismatches? Inferring color spaces when unspecified? \"Handle\" is pretty generic.",
+      "revId": "37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9285e1b0_eff05510",
+        "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-10-31T19:45:16Z",
+      "side": 1,
+      "message": "Minor: If the status is only being used in the switch, it seems like it\u0027d be better to inline the call to HandleJpxColorSpace() instead.",
+      "range": {
+        "startLine": 633,
+        "startChar": 22,
+        "endLine": 633,
+        "endChar": 28
+      },
+      "revId": "37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9ea27c_60c8d93b",
+        "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-10-31T19:45:16Z",
+      "side": 1,
+      "message": "Question: This seems like a minor change in behavior (m_nComponents wasn\u0027t set when m_pColorSpace was not null). Is this fine?",
+      "revId": "37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
