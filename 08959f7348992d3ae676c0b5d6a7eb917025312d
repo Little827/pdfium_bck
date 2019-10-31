@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfec7aa4_1997940e",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-10-31T18:24:42Z",
+      "side": 1,
+      "message": "note: I made this come last so its obvious this gets updated each time around, instead of being buried inside the two ++/-- statements.",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 31
+      },
+      "revId": "08959f7348992d3ae676c0b5d6a7eb917025312d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
