@@ -35,6 +35,24 @@
       "revId": "ae62a4f52a969805a36fcbadfcba69deae283976",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb89a25_afa67f66",
+        "filename": "testing/resources/pixel/bug_1012369.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-10-31T20:43:29Z",
+      "side": 1,
+      "message": "SGTM; I do think at least a little bit of local context is good to have, too.",
+      "parentUuid": "05b7712b_34c83942",
+      "revId": "ae62a4f52a969805a36fcbadfcba69deae283976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
