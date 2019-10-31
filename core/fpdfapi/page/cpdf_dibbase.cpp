@@ -92,6 +92,35 @@ CJPX_Decoder::ColorSpaceOption ColorSpaceOptionFromColorSpace(
   return CJPX_Decoder::kNormalColorSpace;
 }
 
+enum class JpxColorSpaceStatus {
+  kFail,
+  kDoNothing,
+  kUseRgb,
+  kUseCmyk,
+};
+
+JpxColorSpaceStatus HandleJpxColorSpace(
+    uint32_t jpx_components,
+    const RetainPtr<CPDF_ColorSpace>& pdf_colorspace) {
+  if (pdf_colorspace) {
+    if (jpx_components != pdf_colorspace->CountComponents())
+      return JpxColorSpaceStatus::kFail;
+
+    if (pdf_colorspace == CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB))
+      return JpxColorSpaceStatus::kUseRgb;
+
+    return JpxColorSpaceStatus::kDoNothing;
+  }
+
+  if (jpx_components == 3)
+    return JpxColorSpaceStatus::kUseRgb;
+
+  if (jpx_components == 4)
+    return JpxColorSpaceStatus::kUseCmyk;
+
+  return JpxColorSpaceStatus::kDoNothing;
+}
+
 }  // namespace
 
 CPDF_DIBBase::CPDF_DIBBase() = default;
@@ -600,23 +629,25 @@ RetainPtr<CFX_DIBitmap> CPDF_DIBBase::LoadJpxBitmap() {
   if (static_cast<int>(width) < m_Width || static_cast<int>(height) < m_Height)
     return nullptr;
 
-  bool bSwapRGB = false;
-  if (m_pColorSpace) {
-    if (components != m_pColorSpace->CountComponents())
+  bool swap_rgb = false;
+  JpxColorSpaceStatus status = HandleJpxColorSpace(components, m_pColorSpace);
+  switch (status) {
+    case JpxColorSpaceStatus::kFail:
       return nullptr;
 
-    if (m_pColorSpace == CPDF_ColorSpace::GetStockCS(PDFCS_DEVICERGB)) {
-      bSwapRGB = true;
+    case JpxColorSpaceStatus::kDoNothing:
+      break;
+
+    case JpxColorSpaceStatus::kUseRgb:
+      swap_rgb = true;
       m_pColorSpace = nullptr;
-    }
-  } else {
-    if (components == 3) {
-      bSwapRGB = true;
-    } else if (components == 4) {
+      break;
+
+    case JpxColorSpaceStatus::kUseCmyk:
       m_pColorSpace = CPDF_ColorSpace::GetStockCS(PDFCS_DEVICECMYK);
-    }
-    m_nComponents = components;
+      break;
   }
+  m_nComponents = components;
 
   FXDIB_Format format;
   if (components == 1) {
@@ -638,7 +669,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIBBase::LoadJpxBitmap() {
   // Fill |output_offsets| with 0, 1, ... N.
   std::vector<uint8_t> output_offsets(components);
   std::iota(output_offsets.begin(), output_offsets.end(), 0);
-  if (bSwapRGB)
+  if (swap_rgb)
     std::swap(output_offsets[0], output_offsets[2]);
   if (!decoder->Decode(pCachedBitmap->GetBuffer(), pCachedBitmap->GetPitch(),
                        output_offsets)) {
