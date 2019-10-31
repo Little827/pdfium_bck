@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1572547857 -0700\nnonce AC6AUtMVDzwPW5yg5ti4kF+KPVAEbN93azPHcHNob2oT/NcTiw01oTlTX/aA6mV3OLu7UyntL/uJ\n\n0000000000000000000000000000000000000000 ae62a4f52a969805a36fcbadfcba69deae283976 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl27LREACgkQqzYtYVpm\n/XvMigf/ejgE+zkpaNX9kKzsdEug1tpvcGvHKmGXXlc7udpsDvG+uzNOiXp8v+ME\nT15YLHEQ/tUGo44xFstqtitbyn5lzE3I8pOS/1/KJrnJAlgb4FKEajtFLm2fchUD\nEkPNhejeRYIPCtAh2mqwBqtvaKwekZ5Q3V6ocKcvZYrMOencD1s+wDfclvcOpDAs\nTHEmI0FLd57JZRlD4TbxUcK49DwDtvjLsMYtEq3SUFN2Uq0xC2OcJyPnwNodu7yb\n+SCjzVYHkX999nzSjzGGb+XdNWRpDO7nHx7m0rT42gi06alPGf6imO9TeGwblGzV\nf2wn0rFyIAd2yILn6USGR+NqP8S62g\u003d\u003d\n\u003dU3Y9\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e28db0b6_d36a318a",
+        "filename": "testing/resources/pixel/bug_1012369.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-10-31T20:36:23Z",
+      "side": 1,
+      "message": "Nit: Perhaps the names could mention the expected number of channels? Given the streams are opaque data (xxd -r -p is handy here), it may be hard to realize later that this was on purpose.\n\nSomething like \"/ImBlueActuallyRgba\", or \"/ImRedNotActuallyRgb\", or \"/ImBlueWithExtraAlpha\", for example.",
+      "revId": "ae62a4f52a969805a36fcbadfcba69deae283976",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
