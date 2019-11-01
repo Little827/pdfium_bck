@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c97ae30_48d7c5cb",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T21:33:45Z",
+      "side": 1,
+      "message": "FunctionName(), so no confusion with ClassName.",
+      "range": {
+        "startLine": 380,
+        "startChar": 5,
+        "endLine": 380,
+        "endChar": 15
+      },
+      "revId": "f3a3f9343d6e6c90dc5eaf50fdf4b87cd303a3ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
