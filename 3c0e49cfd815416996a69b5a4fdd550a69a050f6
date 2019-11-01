@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6b907ae_96dc7f05",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T20:47:25Z",
+      "side": 1,
+      "message": "This will never evaluate to true because line 754 effectively already did this check.",
+      "range": {
+        "startLine": 782,
+        "startChar": 8,
+        "endLine": 782,
+        "endChar": 22
+      },
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff57548_426eca23",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T20:47:25Z",
+      "side": 1,
+      "message": "This never evaluates to true either, as the comment for CPDF_AnnotContext::GetPage() says the returned pointer is never nullptr.",
+      "range": {
+        "startLine": 782,
+        "startChar": 0,
+        "endLine": 782,
+        "endChar": 51
+      },
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181a3feb_49cf6461",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T20:47:25Z",
+      "side": 1,
+      "message": "This can\u0027t eval to true either.",
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5b7b90_b2849545",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T20:47:25Z",
+      "side": 1,
+      "message": "Can you write this float as 206.0f? Same elsewhere.",
+      "range": {
+        "startLine": 1716,
+        "startChar": 16,
+        "endLine": 1716,
+        "endChar": 21
+      },
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d086c16_fb2a66fd",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T20:47:25Z",
+      "side": 1,
+      "message": "- Add a destructor with the override keyword.\n- Please remember to add public/protected/private keywords here as appropriate.",
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08781789_2520a90e",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T20:47:25Z",
+      "side": 1,
+      "message": "Make this const?",
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "295b16d9_eaeb71e2",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-01T20:47:25Z",
+      "side": 1,
+      "message": "ASSERT_TRUE, or else a failure means the unit test program crashes on the next line.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
