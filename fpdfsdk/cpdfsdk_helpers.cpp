@@ -247,6 +247,10 @@ bool GetQuadPointsAtIndex(const CPDF_Array* array,
   return true;
 }
 
+CFX_PointF CFXPointFFromFSPOINTF(const FS_POINTF& point) {
+  return CFX_PointF(point.x, point.y);
+}
+
 CFX_FloatRect CFXFloatRectFromFSRECTF(const FS_RECTF& rect) {
   return CFX_FloatRect(rect.left, rect.bottom, rect.right, rect.top);
 }
@@ -260,6 +264,15 @@ void FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect, FS_RECTF* out_rect) {
 
 CFX_Matrix CFXMatrixFromFSMatrix(const FS_MATRIX& matrix) {
   return CFX_Matrix(matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f);
+}
+
+void FSMatrixFromCFXMatrix(const CFX_Matrix& matrix, FS_MATRIX* out_matrix) {
+  out_matrix->a = matrix.a;
+  out_matrix->b = matrix.b;
+  out_matrix->c = matrix.c;
+  out_matrix->d = matrix.d;
+  out_matrix->e = matrix.e;
+  out_matrix->f = matrix.f;
 }
 
 unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
