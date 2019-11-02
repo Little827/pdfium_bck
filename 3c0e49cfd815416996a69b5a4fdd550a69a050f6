@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4cf5c5bd_2773a9bb",
+        "filename": "fpdfsdk/BUILD.gn",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-02T00:45:20Z",
+      "side": 1,
+      "message": "Need to depend on \"../constants\" to pass \"gn check\".",
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6b907ae_96dc7f05",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 10
