@@ -167,6 +167,15 @@ typedef struct _FS_SIZEF_ {
 // Const Pointer to FS_SIZEF structure.
 typedef const FS_SIZEF* FS_LPCSIZEF;
 
+// 2D Point. Coordinate system agnostic.
+typedef struct _FS_POINTF_ {
+  float x;
+  float y;
+} * FS_LPPOINTF, FS_POINTF;
+
+// Const Pointer to FS_POINTF structure.
+typedef const FS_POINTF* FS_LPCPOINTF;
+
 // Annotation enums.
 typedef int FPDF_ANNOTATION_SUBTYPE;
 typedef int FPDF_ANNOT_APPEARANCEMODE;

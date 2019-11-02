@@ -232,10 +232,13 @@ bool GetQuadPointsAtIndex(const CPDF_Array* array,
                           size_t quad_index,
                           FS_QUADPOINTSF* quad_points);
 
+CFX_PointF CFXPointFFromFSPOINTF(const FS_POINTF& point);
+
 CFX_FloatRect CFXFloatRectFromFSRECTF(const FS_RECTF& rect);
 void FSRECTFFromCFXFloatRect(const CFX_FloatRect& rect, FS_RECTF* out_rect);
 
 CFX_Matrix CFXMatrixFromFSMatrix(const FS_MATRIX& matrix);
+void FSMatrixFromCFXMatrix(const CFX_Matrix& matrix, FS_MATRIX* out_matrix);
 
 unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
                                                   void* buffer,

@@ -117,13 +117,12 @@ TEST_F(FPDFTextEmbedderTest, Text) {
   EXPECT_NEAR(49.844, bottom, 0.001);
   EXPECT_NEAR(55.520, top, 0.001);
 
-  EXPECT_TRUE(
-      FPDFText_GetLooseCharBox(textpage, 4, &left, &right, &bottom, &top));
-  EXPECT_NEAR(40.664, left, 0.001);
-  EXPECT_NEAR(46.664, right, 0.001);
-  EXPECT_NEAR(47.667, bottom, 0.001);
-  EXPECT_NEAR(59.667, top, 0.001);
-  EXPECT_NEAR(12.000, top - bottom, 0.001);
+  FS_RECTF rect;
+  EXPECT_TRUE(FPDFText_GetLooseCharBox(textpage, 4, &rect));
+  EXPECT_NEAR(40.664, rect.left, 0.001);
+  EXPECT_NEAR(46.664, rect.right, 0.001);
+  EXPECT_NEAR(47.667, rect.bottom, 0.001);
+  EXPECT_NEAR(59.667, rect.top, 0.001);
 
   double x = 0.0;
   double y = 0.0;
@@ -221,25 +220,18 @@ TEST_F(FPDFTextEmbedderTest, TextVertical) {
   EXPECT_NEAR(8.668, x, 0.001);
   EXPECT_NEAR(160.492, y, 0.001);
 
-  double left = 0.0;
-  double right = 0.0;
-  double bottom = 0.0;
-  double top = 0.0;
-  EXPECT_TRUE(
-      FPDFText_GetLooseCharBox(textpage, 1, &left, &right, &bottom, &top));
-  EXPECT_NEAR(4, left, 0.001);
-  EXPECT_NEAR(16, right, 0.001);
-  EXPECT_NEAR(178.984, bottom, 0.001);
-  EXPECT_NEAR(170.308, top, 0.001);
-  EXPECT_NEAR(12.000, right - left, 0.001);
+  FS_RECTF rect;
+  EXPECT_TRUE(FPDFText_GetLooseCharBox(textpage, 1, &rect));
+  EXPECT_NEAR(4, rect.left, 0.001);
+  EXPECT_NEAR(16, rect.right, 0.001);
+  EXPECT_NEAR(178.984, rect.bottom, 0.001);
+  EXPECT_NEAR(170.308, rect.top, 0.001);
 
-  EXPECT_TRUE(
-      FPDFText_GetLooseCharBox(textpage, 2, &left, &right, &bottom, &top));
-  EXPECT_NEAR(4, left, 0.001);
-  EXPECT_NEAR(16, right, 0.001);
-  EXPECT_NEAR(170.308, bottom, 0.001);
-  EXPECT_NEAR(159.292, top, 0.001);
-  EXPECT_NEAR(12.000, right - left, 0.001);
+  EXPECT_TRUE(FPDFText_GetLooseCharBox(textpage, 2, &rect));
+  EXPECT_NEAR(4, rect.left, 0.001);
+  EXPECT_NEAR(16, rect.right, 0.001);
+  EXPECT_NEAR(170.308, rect.bottom, 0.001);
+  EXPECT_NEAR(159.292, rect.top, 0.001);
 
   FPDFText_ClosePage(textpage);
   UnloadPage(page);
@@ -1282,9 +1274,10 @@ TEST_F(FPDFTextEmbedderTest, GetCharAngle) {
   // character.
   EXPECT_EQ(kHelloGoodbyeTextSize, FPDFText_CountChars(text_page));
 
-  EXPECT_EQ(-1, FPDFText_GetCharAngle(nullptr, 0));
-  EXPECT_EQ(-1, FPDFText_GetCharAngle(text_page, -1));
-  EXPECT_EQ(-1, FPDFText_GetCharAngle(text_page, kHelloGoodbyeTextSize + 1));
+  EXPECT_FLOAT_EQ(-1.0f, FPDFText_GetCharAngle(nullptr, 0));
+  EXPECT_FLOAT_EQ(-1.0f, FPDFText_GetCharAngle(text_page, -1));
+  EXPECT_FLOAT_EQ(-1.0f,
+                  FPDFText_GetCharAngle(text_page, kHelloGoodbyeTextSize + 1));
 
   // Test GetCharAngle for every quadrant
   EXPECT_NEAR(FX_PI / 4.0, FPDFText_GetCharAngle(text_page, 0), 0.001);
