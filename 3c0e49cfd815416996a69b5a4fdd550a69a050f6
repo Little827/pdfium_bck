@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "44c1d8a1_ef1846ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-04T22:49:22Z",
+      "side": 1,
+      "message": "FWIW, you can edit the CL description in the web interface, or run \"git cl description\" locally.",
+      "parentUuid": "ef387a1f_d1b157e2",
+      "revId": "3c0e49cfd815416996a69b5a4fdd550a69a050f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cf5c5bd_2773a9bb",
         "filename": "fpdfsdk/BUILD.gn",
         "patchSetId": 10
