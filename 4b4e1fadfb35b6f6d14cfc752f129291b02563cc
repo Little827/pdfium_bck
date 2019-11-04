@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2f3bd18f_1993e31d",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-04T22:56:46Z",
+      "side": 1,
+      "message": "https://en.cppreference.com/w/cpp/language/aggregate_initialization says designated initializers are a C++20 feature. Given it\u0027s 2019, and PDFium is on C++11, it\u0027s probably a bit too early to use this.",
+      "revId": "4b4e1fadfb35b6f6d14cfc752f129291b02563cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82530740_722b1c85",
         "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
         "patchSetId": 11
