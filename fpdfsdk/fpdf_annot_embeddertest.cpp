@@ -1712,6 +1712,9 @@ TEST_F(FPDFAnnotEmbedderTest, BUG_1212) {
   {
     ScopedFPDFAnnotation annot(FPDFPage_CreateAnnot(page, FPDF_ANNOT_STAMP));
     ASSERT_TRUE(annot);
+    FS_RECTF bounding_rect{
+        .left = 206.0f, .top = 753.0f, .right = 339.0f, .bottom = 709.0f};
+    EXPECT_TRUE(FPDFAnnot_SetRect(annot.get(), &bounding_rect));
     EXPECT_EQ(2, FPDFPage_GetAnnotCount(page));
     EXPECT_EQ(FPDF_ANNOT_STAMP, FPDFAnnot_GetSubtype(annot.get()));
     // Also do the same test for its appearance string.
