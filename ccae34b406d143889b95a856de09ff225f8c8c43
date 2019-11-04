@@ -22,6 +22,30 @@
       "revId": "ccae34b406d143889b95a856de09ff225f8c8c43",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a401fd2_5068d05a",
+        "filename": "core/fxcrt/observed_ptr.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-04T23:59:36Z",
+      "side": 1,
+      "message": "I think this helps when T is a sublcass of U, so that if the raw types are convertable, then the template matches.",
+      "parentUuid": "2ee2def5_fb37b868",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "ccae34b406d143889b95a856de09ff225f8c8c43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
