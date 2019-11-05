@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69a36733_f1f63c1d",
+        "filename": "core/fdrm/fx_crypt_sha.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-05T21:42:20Z",
+      "side": 0,
+      "message": "This is what was wrong and might have manifested on large input.",
+      "range": {
+        "startLine": 597,
+        "startChar": 31,
+        "endLine": 597,
+        "endChar": 33
+      },
+      "revId": "9b94ee446d9c52a7537e6bc00ffa9bfa7cbb8622",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
