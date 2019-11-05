@@ -22,6 +22,29 @@
       "revId": "9b94ee446d9c52a7537e6bc00ffa9bfa7cbb8622",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8201a0e_eef81e66",
+        "filename": "core/fdrm/fx_crypt_sha.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-05T21:55:11Z",
+      "side": 0,
+      "message": "note: these were some of the last uncovered branches in the code coverage report for this file ... yay.",
+      "range": {
+        "startLine": 457,
+        "startChar": 4,
+        "endLine": 457,
+        "endChar": 24
+      },
+      "revId": "9b94ee446d9c52a7537e6bc00ffa9bfa7cbb8622",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
