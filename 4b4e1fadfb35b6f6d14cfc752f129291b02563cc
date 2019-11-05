@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e27ff792_0770c74a",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2019-11-05T12:14:56Z",
+      "side": 1,
+      "message": "Removed designated initializers and followed same way as they are following in existing pdfium tests https://cs.chromium.org/chromium/src/third_party/pdfium/fpdfsdk/fpdf_transformpage_embeddertest.cpp?sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d380",
+      "parentUuid": "2f3bd18f_1993e31d",
+      "revId": "4b4e1fadfb35b6f6d14cfc752f129291b02563cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82530740_722b1c85",
         "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
         "patchSetId": 11
@@ -33,6 +51,24 @@
       "revId": "4b4e1fadfb35b6f6d14cfc752f129291b02563cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe9fe8d_a6bd4675",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2019-11-05T12:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82530740_722b1c85",
+      "revId": "4b4e1fadfb35b6f6d14cfc752f129291b02563cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "4b4e1fadfb35b6f6d14cfc752f129291b02563cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bd3a5b_08ca5144",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2019-11-05T12:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49c7c6e_bb507050",
+      "range": {
+        "startLine": 30,
+        "startChar": 21,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "4b4e1fadfb35b6f6d14cfc752f129291b02563cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
