@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdeb511f_a95a70af",
+        "filename": "core/fdrm/fx_crypt_sha.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-05T20:44:50Z",
+      "side": 1,
+      "message": "also here, but one botch at a time.",
+      "range": {
+        "startLine": 525,
+        "startChar": 2,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "dbbe93b6f33b246793651dff987a0018b21f2ccb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
