@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Originally from chromium's /src/base/md5_unittest.cc.
-
 #include "core/fdrm/fx_crypt.h"
 
 #include <memory>
@@ -31,6 +29,7 @@ void CheckArcFourContext(const CRYPT_rc4_context& context,
 
 }  // namespace
 
+// Originally from chromium's /src/base/md5_unittest.cc.
 TEST(FXCRYPT, CryptToBase16) {
   uint8_t data[] = {0xd4, 0x1d, 0x8c, 0xd9, 0x8f, 0x00, 0xb2, 0x04,
                     0xe9, 0x80, 0x09, 0x98, 0xec, 0xf8, 0x42, 0x7e};
@@ -194,6 +193,63 @@ TEST(FXCRYPT, ContextWithStringData) {
   std::string actual = CryptToBase16(digest);
   std::string expected = "900150983cd24fb0d6963f7d28e17f72";
   EXPECT_EQ(expected, actual);
+}
+
+TEST(FXCRYPT, Sha1Empty) {
+  const char* input = "";
+  const uint8_t kExpected[] = {0xda, 0x39, 0xa3, 0xee, 0x5e, 0x6b, 0x4b,
+                               0x0d, 0x32, 0x55, 0xbf, 0xef, 0x95, 0x60,
+                               0x18, 0x90, 0xaf, 0xd8, 0x07, 0x09};
+  uint8_t actual[20];
+  CRYPT_SHA1Generate(reinterpret_cast<const uint8_t*>(input), strlen(input),
+                     actual);
+
+  for (size_t i = 0; i < 20; i++)
+    EXPECT_EQ(kExpected[i], actual[i]) << " at byte " << i;
+}
+
+// Originally from chromium's /src/base/sha1_unittest.cc
+TEST(FXCRYPT, Sha1TestA1) {
+  // Example A.1 from FIPS 180-2: one-block message.
+  const char* input = "abc";
+  const uint8_t kExpected[] = {0xa9, 0x99, 0x3e, 0x36, 0x47, 0x06, 0x81,
+                               0x6a, 0xba, 0x3e, 0x25, 0x71, 0x78, 0x50,
+                               0xc2, 0x6c, 0x9c, 0xd0, 0xd8, 0x9d};
+  uint8_t actual[20];
+  CRYPT_SHA1Generate(reinterpret_cast<const uint8_t*>(input), strlen(input),
+                     actual);
+
+  for (size_t i = 0; i < 20; i++)
+    EXPECT_EQ(kExpected[i], actual[i]) << " at byte " << i;
+}
+
+TEST(FXCRYPT, Sha1TestA2) {
+  // Example A.2 from FIPS 180-2: multi-block message.
+  const char* input =
+      "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq";
+  const uint8_t kExpected[] = {0x84, 0x98, 0x3e, 0x44, 0x1c, 0x3b, 0xd2,
+                               0x6e, 0xba, 0xae, 0x4a, 0xa1, 0xf9, 0x51,
+                               0x29, 0xe5, 0xe5, 0x46, 0x70, 0xf1};
+
+  uint8_t actual[20];
+  CRYPT_SHA1Generate(reinterpret_cast<const uint8_t*>(input), strlen(input),
+                     actual);
+
+  for (size_t i = 0; i < 20; i++)
+    EXPECT_EQ(kExpected[i], actual[i]) << " at byte " << i;
+}
+
+TEST(FXCRYPT, Sha256Empty) {
+  const char* input = "";
+  const uint8_t expected[32] = {0xe3, 0xb0, 0xc4, 0x42, 0x98, 0xfc, 0x1c, 0x14,
+                                0x9a, 0xfb, 0xf4, 0xc8, 0x99, 0x6f, 0xb9, 0x24,
+                                0x27, 0xae, 0x41, 0xe4, 0x64, 0x9b, 0x93, 0x4c,
+                                0xa4, 0x95, 0x99, 0x1b, 0x78, 0x52, 0xb8, 0x55};
+  uint8_t actual[32];
+  CRYPT_SHA256Generate(reinterpret_cast<const uint8_t*>(input), strlen(input),
+                       actual);
+  for (size_t i = 0; i < 32; ++i)
+    EXPECT_EQ(expected[i], actual[i]) << " at byte " << i;
 }
 
 TEST(FXCRYPT, Sha256TestB1) {
@@ -485,6 +541,23 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
   }
 }
 
+// Verified against echo -n "..." | openssl sha384
+TEST(FXCRYPT, Sha384Test) {
+  const char* const input =
+      "This is a simple test. To see whether it is getting correct value.";
+  const uint8_t expected[48] = {
+      0x95, 0x54, 0xff, 0xd3, 0x89, 0xf0, 0xd6, 0x42, 0xe9, 0x33, 0xfe, 0x4c,
+      0x07, 0x81, 0x19, 0xca, 0xcb, 0xb3, 0x14, 0x46, 0xd8, 0xbd, 0xa4, 0xf4,
+      0x12, 0xd5, 0x54, 0x03, 0x79, 0x28, 0xe5, 0xdc, 0x12, 0xa5, 0x1b, 0xe9,
+      0xfe, 0x59, 0x25, 0x3c, 0x92, 0x30, 0x5e, 0xe5, 0x0e, 0x03, 0x58, 0x07};
+  uint8_t actual[48];
+  CRYPT_SHA384Generate(reinterpret_cast<const uint8_t*>(input), strlen(input),
+                       actual);
+  for (size_t i = 0; i < 48; ++i)
+    EXPECT_EQ(expected[i], actual[i]) << " at byte " << i;
+}
+
+// Verified against echo -n "..." | openssl sha512
 TEST(FXCRYPT, Sha512Test) {
   const char* const input =
       "This is a simple test. To see whether it is getting correct value.";
