@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdc825ee_aa59630f",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-11-05T10:58:49Z",
+      "side": 1,
+      "message": "Surrounding code follows Hungarian notation.",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99cdcd0_86d818d1",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-11-05T10:58:49Z",
+      "side": 1,
+      "message": "Initialize at declaration. Applicable to line 70 as well.",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4809324f_6362fd8b",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-11-05T10:58:49Z",
+      "side": 1,
+      "message": "CHECK(pAnnot) after this line.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee2ab96_413c8bdd",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-11-05T10:58:49Z",
+      "side": 1,
+      "message": "|config-\u003em_nCountFocusableAnnotTypes| is integer type. Please explicitly compare against 0.",
+      "range": {
+        "startLine": 181,
+        "startChar": 6,
+        "endLine": 181,
+        "endChar": 41
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313bf854_489e4511",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-11-05T10:58:49Z",
+      "side": 1,
+      "message": "Replace tabs by spaces. Occurs on line 31 and 84 as well.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
