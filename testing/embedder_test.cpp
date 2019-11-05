@@ -75,13 +75,17 @@ EmbedderTest::EmbedderTest()
 
 EmbedderTest::~EmbedderTest() {}
 
-void EmbedderTest::SetUp() {
+void EmbedderTest::SetConfig() {
   FPDF_LIBRARY_CONFIG config;
   config.version = 2;
   config.m_pUserFontPaths = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pIsolate = external_isolate_;
   FPDF_InitLibraryWithConfig(&config);
+}
+
+void EmbedderTest::SetUp() {
+  SetConfig();
 
   UNSUPPORT_INFO* info = static_cast<UNSUPPORT_INFO*>(this);
   memset(info, 0, sizeof(UNSUPPORT_INFO));

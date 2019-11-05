@@ -199,7 +199,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary();
 
 // Process-wide options for initializing the library.
 typedef struct FPDF_LIBRARY_CONFIG_ {
-  // Version number of the interface. Currently must be 2.
+  // Version number of the interface. Currently must be 3.
   int version;
 
   // Array of paths to scan in place of the defaults when using built-in
@@ -218,6 +218,14 @@ typedef struct FPDF_LIBRARY_CONFIG_ {
   // v8::Internals::kNumIsolateDataLots (exclusive). Note that 0 is fine
   // for most embedders.
   unsigned int m_v8EmbedderSlot;
+
+  // Version 3.
+  // List of focusable annot types provided by host.
+  // If list is empty, default focusable annot type is only widget.
+  const unsigned int* m_pFocusableAnnotTypes;
+
+  // count of list of focusable annot types provided by host
+  unsigned int m_nCountFocusableAnnotTypes;
 } FPDF_LIBRARY_CONFIG;
 
 // Function: FPDF_InitLibraryWithConfig
