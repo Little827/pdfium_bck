@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d51289e3_7c99146c",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-06T23:09:16Z",
+      "side": 0,
+      "message": "redundant given subsequent Setrendercontext call.",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 4
+      },
+      "revId": "762f11932e2419d59c3b0ecdc5c65817ec09d148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
