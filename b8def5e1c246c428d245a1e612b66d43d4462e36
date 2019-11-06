@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1573071617 -0800\nnonce AC6AUtMlHndNu/QganXhPywn9prZ2w69w1KwoMFr9hlS+9XyvHISdOvmZymM3zSZ9lealR7l1VkK\n\n0000000000000000000000000000000000000000 b8def5e1c246c428d245a1e612b66d43d4462e36 refs/for/refs/heads/master%notify\u003dNONE,m\u003dAdd_back_accidental_deletion\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3DKwEACgkQqzYtYVpm\n/XunaQf9HX+d0aWOy3cp1ej0GRX2RlZVTevAySUCAgW/GgM6hfB1FRvAhIQ8gKP7\nGIxNMu281pAM3E9vRmc7Ga6k5q/R2DMZ6ZIKtqOJEcxrZPWXUVkM/PVQgsw8Npo2\nAPcEvnsxmk1T/Mz1OfVnl1CT7BB46YcaU9D4tgfpyksiKGjnwdRbE1nuHk4idFmh\nW97nbjKlfv8lxrM/rJeB6aZQl3f7CDCb0fcW1zW0ZXw6lF/eU0JNXoC63K1y1b4y\nfKEWBuEtWtLqZoceMl/pFz7ix9Fyjo9cWwyBvNO1HrKlDeX2s50S42JxYIhjKmWc\nX3NPNAvOp5DKU74kGSRAGuax/Ur7Hw\u003d\u003d\n\u003d7l3L\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "4173a862_c9137845",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-06T21:16:01Z",
+      "side": 1,
+      "message": "meh, I\u0027d expect all bets are off for these values, but OK as above.  Maybe use a better sentinel than 0.0 to show they are unchanged (42.0f anyone?) and above.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "b8def5e1c246c428d245a1e612b66d43d4462e36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
