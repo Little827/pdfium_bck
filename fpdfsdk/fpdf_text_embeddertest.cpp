@@ -110,12 +110,47 @@ TEST_F(FPDFTextEmbedderTest, Text) {
   EXPECT_DOUBLE_EQ(0.0, right);
   EXPECT_DOUBLE_EQ(0.0, bottom);
   EXPECT_DOUBLE_EQ(0.0, top);
+  EXPECT_FALSE(
+      FPDFText_GetCharBox(textpage, 4, nullptr, &right, &bottom, &top));
+  EXPECT_FALSE(FPDFText_GetCharBox(textpage, 4, &left, nullptr, &bottom, &top));
+  EXPECT_FALSE(FPDFText_GetCharBox(textpage, 4, &left, &right, nullptr, &top));
+  EXPECT_FALSE(
+      FPDFText_GetCharBox(textpage, 4, &left, &right, &bottom, nullptr));
+  EXPECT_FALSE(
+      FPDFText_GetCharBox(textpage, 4, nullptr, nullptr, nullptr, nullptr));
 
-  EXPECT_TRUE(FPDFText_GetCharBox(textpage, 4, &left, &right, &bottom, &top));
-  EXPECT_NEAR(41.071, left, 0.001);
-  EXPECT_NEAR(46.243, right, 0.001);
-  EXPECT_NEAR(49.844, bottom, 0.001);
-  EXPECT_NEAR(55.520, top, 0.001);
+  left = 0.0;
+  right = 0.0;
+  bottom = 0.0;
+  top = 0.0;
+  EXPECT_FALSE(
+      FPDFText_GetLooseCharBox(nullptr, 4, &left, &right, &bottom, &top));
+  EXPECT_DOUBLE_EQ(0.0, left);
+  EXPECT_DOUBLE_EQ(0.0, right);
+  EXPECT_DOUBLE_EQ(0.0, bottom);
+  EXPECT_DOUBLE_EQ(0.0, top);
+  EXPECT_FALSE(
+      FPDFText_GetLooseCharBox(textpage, -1, &left, &right, &bottom, &top));
+  EXPECT_DOUBLE_EQ(0.0, left);
+  EXPECT_DOUBLE_EQ(0.0, right);
+  EXPECT_DOUBLE_EQ(0.0, bottom);
+  EXPECT_DOUBLE_EQ(0.0, top);
+  EXPECT_FALSE(
+      FPDFText_GetLooseCharBox(textpage, 55, &left, &right, &bottom, &top));
+  EXPECT_DOUBLE_EQ(0.0, left);
+  EXPECT_DOUBLE_EQ(0.0, right);
+  EXPECT_DOUBLE_EQ(0.0, bottom);
+  EXPECT_DOUBLE_EQ(0.0, top);
+  EXPECT_FALSE(
+      FPDFText_GetLooseCharBox(textpage, 4, nullptr, &right, &bottom, &top));
+  EXPECT_FALSE(
+      FPDFText_GetLooseCharBox(textpage, 4, &left, nullptr, &bottom, &top));
+  EXPECT_FALSE(
+      FPDFText_GetLooseCharBox(textpage, 4, &left, &right, nullptr, &top));
+  EXPECT_FALSE(
+      FPDFText_GetLooseCharBox(textpage, 4, &left, &right, &bottom, nullptr));
+  EXPECT_FALSE(FPDFText_GetLooseCharBox(textpage, 4, nullptr, nullptr, nullptr,
+                                        nullptr));
 
   EXPECT_TRUE(
       FPDFText_GetLooseCharBox(textpage, 4, &left, &right, &bottom, &top));
