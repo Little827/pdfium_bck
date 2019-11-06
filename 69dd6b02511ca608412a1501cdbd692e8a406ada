@@ -16,6 +16,24 @@
       "revId": "69dd6b02511ca608412a1501cdbd692e8a406ada",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d404947_ecd86a12",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-06T20:19:09Z",
+      "side": 0,
+      "message": "That looks like a cut and forgetting to paste error. I did not mean to do that.",
+      "parentUuid": "df603cb9_5d897953",
+      "revId": "69dd6b02511ca608412a1501cdbd692e8a406ada",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
