@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6b9972c_eebc4f52",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-07T00:09:46Z",
+      "side": 1,
+      "message": "const",
+      "revId": "04c1632cf369b633137cc7dcc5ce21e80cbf7ed3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb0375c_7a3f2980",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-07T00:09:46Z",
+      "side": 1,
+      "message": "Maybe set |pContext-\u003em_pDevice| directly and then grab the raw pointer from there?",
+      "revId": "04c1632cf369b633137cc7dcc5ce21e80cbf7ed3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28d566a_d2ba97d8",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-07T00:09:46Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "04c1632cf369b633137cc7dcc5ce21e80cbf7ed3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
