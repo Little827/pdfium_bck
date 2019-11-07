@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ffebc28_ff61c4eb",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-07T07:17:26Z",
+      "side": 1,
+      "message": "Use |pdfium::annotation::kType|, also use a constant for \"SubType\" below.",
+      "range": {
+        "startLine": 794,
+        "startChar": 38,
+        "endLine": 794,
+        "endChar": 44
+      },
+      "revId": "b54d7ad714257aadf331934849788b451a13dcd5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26f15b9b_b2cf6b08",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-07T07:17:26Z",
+      "side": 1,
+      "message": "- Make this const.\n- Also write out the float values with the 0 after the decimal point.",
+      "revId": "b54d7ad714257aadf331934849788b451a13dcd5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8887b0c1_e8f82a37",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-07T07:17:26Z",
+      "side": 1,
+      "message": "Use |pdfium::annotation::kType| here, also use a constant for \"SubType\" below.",
+      "revId": "b54d7ad714257aadf331934849788b451a13dcd5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
