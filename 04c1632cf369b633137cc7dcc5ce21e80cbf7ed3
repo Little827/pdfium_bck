@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "797ee315_934f04b6",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-07T00:23:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6b9972c_eebc4f52",
+      "revId": "04c1632cf369b633137cc7dcc5ce21e80cbf7ed3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fb0375c_7a3f2980",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-11-07T00:09:46Z",
       "side": 1,
       "message": "Maybe set |pContext-\u003em_pDevice| directly and then grab the raw pointer from there?",
+      "revId": "04c1632cf369b633137cc7dcc5ce21e80cbf7ed3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b7969a0_d0653471",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-07T00:23:04Z",
+      "side": 1,
+      "message": "m_pDevice is a pointer to the superclass, so we\u0027d have to static_cast back to the subclass under that approach.  Which is why we have this silly little dance here.",
+      "parentUuid": "6fb0375c_7a3f2980",
       "revId": "04c1632cf369b633137cc7dcc5ce21e80cbf7ed3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
