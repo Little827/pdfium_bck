@@ -123,8 +123,8 @@ std::unique_ptr<CBC_ReedSolomonGF256Poly> CBC_ReedSolomonGF256Poly::Multiply(
   return pdfium::MakeUnique<CBC_ReedSolomonGF256Poly>(m_field.Get(), product);
 }
 
-std::unique_ptr<CBC_ReedSolomonGF256Poly> CBC_ReedSolomonGF256Poly::Multiply(
-    int32_t scalar) {
+std::unique_ptr<CBC_ReedSolomonGF256Poly>
+CBC_ReedSolomonGF256Poly::MultiplyByScalar(int32_t scalar) {
   if (scalar == 0)
     return m_field->GetZero()->Clone();
   if (scalar == 1)
