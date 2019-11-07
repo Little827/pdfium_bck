@@ -4,6 +4,7 @@
 
 #include "core/fxcrt/fx_coordinates.h"
 
+#include <limits>
 #include <vector>
 
 #include "testing/gtest/include/gtest/gtest.h"
@@ -71,6 +72,69 @@ TEST(CFX_FloatRect, GetBBox) {
   EXPECT_FLOAT_EQ(-8.0f, rect.bottom);
   EXPECT_FLOAT_EQ(4.0f, rect.right);
   EXPECT_FLOAT_EQ(6.3f, rect.top);
+}
+
+TEST(CFX_FloatRect, GetOuterRect) {
+  FX_RECT rect;
+  CFX_FloatRect frect;
+
+  rect = frect.GetOuterRect();
+  EXPECT_EQ(0, rect.left);
+  EXPECT_EQ(0, rect.bottom);
+  EXPECT_EQ(0, rect.right);
+  EXPECT_EQ(0, rect.top);
+
+  // Function converts from float to int using floor() for left and top, and
+  // ceil() for right and bottom.
+  frect = CFX_FloatRect(
+      std::numeric_limits<float>::min(), std::numeric_limits<float>::min(),
+      std::numeric_limits<float>::min(), std::numeric_limits<float>::min());
+  rect = frect.GetOuterRect();
+  EXPECT_EQ(0, rect.left);
+  EXPECT_EQ(1, rect.bottom);
+  EXPECT_EQ(1, rect.right);
+  EXPECT_EQ(0, rect.top);
+
+  frect = CFX_FloatRect(
+      -std::numeric_limits<float>::min(), -std::numeric_limits<float>::min(),
+      -std::numeric_limits<float>::min(), -std::numeric_limits<float>::min());
+  rect = frect.GetOuterRect();
+  EXPECT_EQ(-1, rect.left);
+  EXPECT_EQ(0, rect.bottom);
+  EXPECT_EQ(0, rect.right);
+  EXPECT_EQ(-1, rect.top);
+
+  frect = CFX_FloatRect(-1.1f, 3.6f, 4.4f, -5.7f);
+  rect = frect.GetOuterRect();
+  EXPECT_EQ(-2, rect.left);
+  EXPECT_EQ(3, rect.bottom);
+  EXPECT_EQ(5, rect.right);
+  EXPECT_EQ(-5, rect.top);
+
+  // Check at limits of integer range. Would expect floating coordinates beyond
+  // range of integer to be clamped to limits of integer, but instead even at
+  // limit this is returning all negative values that represent a rectangle as a
+  // dot in a far reach of the negative coordinate space.  crbug.com/1019026
+  frect = CFX_FloatRect(static_cast<float>(std::numeric_limits<int>::min()),
+                        static_cast<float>(std::numeric_limits<int>::min()),
+                        static_cast<float>(std::numeric_limits<int>::max()),
+                        static_cast<float>(std::numeric_limits<int>::max()));
+  rect = frect.GetOuterRect();
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.left);
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.bottom);  // should be max()
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.right);   // should be max()
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.top);
+
+  frect =
+      CFX_FloatRect(static_cast<float>(std::numeric_limits<int>::min()) - 1.0f,
+                    static_cast<float>(std::numeric_limits<int>::min()) - 1.0f,
+                    static_cast<float>(std::numeric_limits<int>::max()) + 1.0f,
+                    static_cast<float>(std::numeric_limits<int>::max()) + 1.0f);
+  rect = frect.GetOuterRect();
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.left);
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.bottom);  // should be max()
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.right);   // should be max()
+  EXPECT_EQ(std::numeric_limits<int>::min(), rect.top);
 }
 
 TEST(CFX_FloatRect, Normalize) {
