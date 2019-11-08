@@ -16,6 +16,24 @@
       "revId": "6f7c233f83182ac04cb777621b92cbf0b5583110",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4745fdf_53c88415",
+        "filename": "testing/resources/javascript/public_methods.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-08T20:55:12Z",
+      "side": 1,
+      "message": "Good suggestion. Done",
+      "parentUuid": "42ae45e6_fc3c7b4c",
+      "revId": "6f7c233f83182ac04cb777621b92cbf0b5583110",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
