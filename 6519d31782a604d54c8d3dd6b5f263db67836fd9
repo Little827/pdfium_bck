@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "997dd940_80547f24",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T20:44:38Z",
+      "side": 1,
+      "message": "|kMaxInt|",
+      "range": {
+        "startLine": 123,
+        "startChar": 55,
+        "endLine": 123,
+        "endChar": 62
+      },
+      "revId": "6519d31782a604d54c8d3dd6b5f263db67836fd9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
