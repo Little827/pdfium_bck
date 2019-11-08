@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7af9d42_37415958",
+        "filename": "testing/resources/javascript/icons.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T18:04:30Z",
+      "side": 1,
+      "message": "Can we not declare |doc| and just use |this| everywhere?",
+      "revId": "5132dea2f2f1b4bc4b711266d1af0eb07195d85c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
