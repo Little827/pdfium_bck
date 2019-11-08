@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebed2634_90dbd879",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-08T22:36:35Z",
+      "side": 1,
+      "message": "Nit: This summary line is a little generic, but not sure there\u0027s too much room for improvement.",
+      "revId": "61edc9ced7270c6a2e756553a2a2770db976c3cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f36e2ea_5961f095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-08T22:36:35Z",
+      "side": 1,
+      "message": "Seems to be a typo: Should be \"GID\" here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "61edc9ced7270c6a2e756553a2a2770db976c3cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f65a0c_ad5642ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-08T22:36:35Z",
+      "side": 1,
+      "message": "I\u0027m a little unclear on what this means, in terms of what this file is testing. I would maybe start by describing what\u0027s in this test case first, and then explaining why it\u0027s that way second.",
+      "revId": "61edc9ced7270c6a2e756553a2a2770db976c3cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c85cb3_bc53d8d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-08T22:36:35Z",
+      "side": 1,
+      "message": "I would try to be more specific about what \"incorrectly\" means. \"Correctly\" and \"incorrectly\" don\u0027t mean anything without more context.",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 66
+      },
+      "revId": "61edc9ced7270c6a2e756553a2a2770db976c3cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
