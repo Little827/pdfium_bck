@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdbaec63_31ef9dc2",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T18:46:13Z",
+      "side": 1,
+      "message": "How about naming this one |outer_rect|, since that\u0027s what it always stores? Then |frect| can become |rect|.",
+      "revId": "5ff2a0957ec585c16736ae9a2d67afca731d36b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90329857_03a99ae5",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T18:46:13Z",
+      "side": 1,
+      "message": "Why don\u0027t we test some of these normal values first, before moving on to the numeric limits? i.e. Move this up to line 87.",
+      "revId": "5ff2a0957ec585c16736ae9a2d67afca731d36b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0179f11d_9129bb11",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T18:46:13Z",
+      "side": 1,
+      "message": "I think base/numerics code tend to call this \"saturated\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 28,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "5ff2a0957ec585c16736ae9a2d67afca731d36b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fc4c66_84eb6bf6",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T18:46:13Z",
+      "side": 1,
+      "message": "Maybe add float constants for std::numeric_limits\u003cint\u003e::min() and max(), to avoid so many lenghty static casts?",
+      "revId": "5ff2a0957ec585c16736ae9a2d67afca731d36b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
