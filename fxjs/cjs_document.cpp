@@ -1116,6 +1116,8 @@ CJS_Result CJS_Document::addIcon(
 }
 
 CJS_Result CJS_Document::get_icons(CJS_Runtime* pRuntime) {
+  // TODO(tsepez): Maybe make consistent with reader behavior which is
+  // to throw an exception here under default security settings.
   if (m_IconNames.empty())
     return CJS_Result::Success(pRuntime->NewUndefined());
 
