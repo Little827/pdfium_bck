@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbb7e52b_32603f98",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T21:11:20Z",
+      "side": 1,
+      "message": "\"Reader\" or \"Acrobat Reader\"",
+      "range": {
+        "startLine": 1119,
+        "startChar": 46,
+        "endLine": 1119,
+        "endChar": 52
+      },
+      "revId": "62a0de8ae07dc3f86ad1ccd89bee96503f6e7531",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
