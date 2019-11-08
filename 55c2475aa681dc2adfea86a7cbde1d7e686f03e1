@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e983c5f4_3bdb1e80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-08T21:27:18Z",
+      "side": 1,
+      "message": "No need to mention this CL. It never landed.",
+      "revId": "55c2475aa681dc2adfea86a7cbde1d7e686f03e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
