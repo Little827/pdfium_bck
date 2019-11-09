@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c934ed9_b8bb792e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-09T00:55:24Z",
+      "side": 1,
+      "message": "Minor: Not sure if it\u0027s important to have this context here. There\u0027s a lot of link-following, making the description less self-contained.\n\nMaybe just focus on what\u0027s in this test, the expected behavior, and the boundary condition you\u0027re trying to cover.",
+      "revId": "804148ad9e62d9d771ae719bb8e3dbf8ec0a8ca2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae3906d_04f6d3cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-09T00:55:24Z",
+      "side": 1,
+      "message": "So is the current behavior to render as bug_1308_1_expected.pdf.0.png? Or is it currently broken? It seems like this test has the correct behavior (renders U+25A1) if the CID-to-GID map is ignored (and just maps as if using /Identity), so I\u0027m still not sure what this test is doing differently.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 55
+      },
+      "revId": "804148ad9e62d9d771ae719bb8e3dbf8ec0a8ca2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a20f2a0_1efd91c7",
+        "filename": "testing/resources/pixel/bug_1308_1.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-09T00:55:24Z",
+      "side": 1,
+      "message": "Much better. :-)",
+      "revId": "804148ad9e62d9d771ae719bb8e3dbf8ec0a8ca2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
