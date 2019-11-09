@@ -653,14 +653,15 @@ bool RenderPage(const std::string& name,
       // progressive calls. The progressive calls are if you need to pause the
       // rendering to update the UI, the PDF renderer will break when possible.
       FPDF_RenderPageBitmap(bitmap.get(), page, 0, 0, width, height, 0,
-                            FPDF_ANNOT);
+                            FPDF_ANNOT | FPDF_RENDER_LIMITEDIMAGECACHE);
     } else {
       IFSDK_PAUSE pause;
       pause.version = 1;
       pause.NeedToPauseNow = &NeedToPauseNow;
 
-      int rv = FPDF_RenderPageBitmap_Start(bitmap.get(), page, 0, 0, width,
-                                           height, 0, FPDF_ANNOT, &pause);
+      int rv = FPDF_RenderPageBitmap_Start(
+          bitmap.get(), page, 0, 0, width, height, 0,
+          FPDF_ANNOT | FPDF_RENDER_LIMITEDIMAGECACHE, &pause);
       while (rv == FPDF_RENDER_TOBECONTINUED)
         rv = FPDF_RenderPage_Continue(page, &pause);
     }
