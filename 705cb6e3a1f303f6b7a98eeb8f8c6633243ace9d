@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "157404ed_84c5ed4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-11T18:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e4ec1e5_2ada33da",
+      "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88fa0674_5dd60eb0",
         "filename": "testing/tools/run_pixel_tests.py",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-11-11T18:29:22Z",
       "side": 1,
       "message": "Do we really want this to be the default for pixel tests?",
+      "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f09a40_7ffc7653",
+        "filename": "testing/tools/run_pixel_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-11T18:40:18Z",
+      "side": 1,
+      "message": "I think so, since these are trying to stress rendering. The current tests aren\u0027t big enough to trigger cache compaction, so there is no behaviour change. I know this because if I drop the cache limit size in the .cpp file, funny things happen. So what I\u0027d like to do is then add a new test with lotsa images to see if we can get this consistent again.",
+      "parentUuid": "88fa0674_5dd60eb0",
       "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
