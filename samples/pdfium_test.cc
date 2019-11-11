@@ -103,6 +103,7 @@ struct Options {
   bool show_config = false;
   bool show_metadata = false;
   bool send_events = false;
+  bool limit_cache = false;
   bool use_load_mem_document = false;
   bool render_oneshot = false;
   bool save_attachments = false;
@@ -348,6 +349,8 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       options->show_metadata = true;
     } else if (cur_arg == "--send-events") {
       options->send_events = true;
+    } else if (cur_arg == "--limit-cache") {
+      options->limit_cache = true;
     } else if (cur_arg == "--mem-document") {
       options->use_load_mem_document = true;
     } else if (cur_arg == "--render-oneshot") {
@@ -648,19 +651,22 @@ bool RenderPage(const std::string& name,
     FPDF_DWORD fill_color = alpha ? 0x00000000 : 0xFFFFFFFF;
     FPDFBitmap_FillRect(bitmap.get(), 0, 0, width, height, fill_color);
 
+    int flags = FPDF_ANNOT;
+    if (options.limit_cache)
+      flags |= FPDF_RENDER_LIMITEDIMAGECACHE;
+
     if (options.render_oneshot) {
       // Note, client programs probably want to use this method instead of the
       // progressive calls. The progressive calls are if you need to pause the
       // rendering to update the UI, the PDF renderer will break when possible.
-      FPDF_RenderPageBitmap(bitmap.get(), page, 0, 0, width, height, 0,
-                            FPDF_ANNOT);
+      FPDF_RenderPageBitmap(bitmap.get(), page, 0, 0, width, height, 0, flags);
     } else {
       IFSDK_PAUSE pause;
       pause.version = 1;
       pause.NeedToPauseNow = &NeedToPauseNow;
 
       int rv = FPDF_RenderPageBitmap_Start(bitmap.get(), page, 0, 0, width,
-                                           height, 0, FPDF_ANNOT, &pause);
+                                           height, 0, flags, &pause);
       while (rv == FPDF_RENDER_TOBECONTINUED)
         rv = FPDF_RenderPage_Continue(page, &pause);
     }
@@ -933,6 +939,7 @@ constexpr char kUsageString[] =
     "  --show-pageinfo      - print information about pages\n"
     "  --show-structure     - print the structure elements from the document\n"
     "  --send-events        - send input described by .evt file\n"
+    "  --limit-cache        - restrict size to which image cache can grow\n"
     "  --mem-document       - load document with FPDF_LoadMemDocument()\n"
     "  --render-oneshot     - render image without using progressive renderer\n"
     "  --save-attachments   - write embedded attachments "
