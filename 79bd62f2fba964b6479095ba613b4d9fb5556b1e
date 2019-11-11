@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d4c45123_a1d595e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T21:55:52Z",
+      "side": 1,
+      "message": "Be consistent with line 10.",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "79bd62f2fba964b6479095ba613b4d9fb5556b1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5572cb2_d7d932af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T21:55:52Z",
+      "side": 1,
+      "message": "contain CIDToGIDMap streams",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 60
+      },
+      "revId": "79bd62f2fba964b6479095ba613b4d9fb5556b1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac6cd785_bc8a6507",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
