@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac6cd785_bc8a6507",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-11T21:48:23Z",
+      "side": 1,
+      "message": "As discussed: I don\u0027t see anything related to \"CID2UnicodeMap\" in the 2 PDF files, so perhaps clarify that this is something you observed as a difference in behavior in the code.\n\nOne important difference might be that the first file (bug_1308.pdf) is using /CIDSystemInfo Adobe-Japan1-5, while this file is using Adobe-Identity-0. I don\u0027t know if that\u0027s the trigger, though, so I wouldn\u0027t mention it unless you can verify that.",
+      "range": {
+        "startLine": 17,
+        "startChar": 50,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "79bd62f2fba964b6479095ba613b4d9fb5556b1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "dfdd3f5c_b2d19b31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-11T21:48:23Z",
+      "side": 1,
+      "message": "Marking this resolved; offline, we decided this section was a bit speculative, and not to comment on the exact reason for the difference in behavior instead.",
+      "parentUuid": "96e69814_7cf87579",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 55
+      },
+      "revId": "804148ad9e62d9d771ae719bb8e3dbf8ec0a8ca2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a20f2a0_1efd91c7",
         "filename": "testing/resources/pixel/bug_1308_1.in",
         "patchSetId": 7
