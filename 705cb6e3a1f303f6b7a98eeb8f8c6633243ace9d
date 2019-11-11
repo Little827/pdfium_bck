@@ -87,6 +87,24 @@
       "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a98b2334_2ff85549",
+        "filename": "testing/tools/run_pixel_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-11T19:34:52Z",
+      "side": 1,
+      "message": "Well, that\u0027s the thing, I was trying to avoid the combinatorial explosion that occurs for each flag.  The alternative would be to add an embedder test for a few interesting cases and force it to pass the flag.",
+      "parentUuid": "2d662676_eb2a80fa",
+      "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
