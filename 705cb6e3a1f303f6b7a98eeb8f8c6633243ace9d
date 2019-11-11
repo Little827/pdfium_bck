@@ -105,6 +105,24 @@
       "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a655579_0325b4bc",
+        "filename": "testing/tools/run_pixel_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-11T19:40:44Z",
+      "side": 1,
+      "message": "Also, the change is essentially \"additive\" - run a cache compaction phase in  two places where it currently isn\u0027t.  \nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/render/cpdf_rendercontext.cpp?rcl\u003d5eb17d38f7f7021a08c13cf986f68a363a4d82f2\u0026l\u003d83\n\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/render/cpdf_progressiverenderer.cpp?rcl\u003d5eb17d38f7f7021a08c13cf986f68a363a4d82f2\u0026l\u003d101\n\nAnd I believe that this will then return immediately without doing any action for the current cases\n\nhttps://cs.chromium.org/chromium/src/third_party/pdfium/core/fpdfapi/render/cpdf_pagerendercache.cpp?rcl\u003d5eb17d38f7f7021a08c13cf986f68a363a4d82f2\u0026l\u003d37\n\nAs this line isn\u0027t even hit by the current coverage bots, so we don\u0027t lose any coverage.",
+      "parentUuid": "a98b2334_2ff85549",
+      "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
