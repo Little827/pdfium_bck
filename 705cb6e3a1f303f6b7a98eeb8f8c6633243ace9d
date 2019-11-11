@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e4ec1e5_2ada33da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T18:29:22Z",
+      "side": 1,
+      "message": "Maybe reword the summary line to mention the flag?",
+      "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88fa0674_5dd60eb0",
+        "filename": "testing/tools/run_pixel_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T18:29:22Z",
+      "side": 1,
+      "message": "Do we really want this to be the default for pixel tests?",
+      "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
