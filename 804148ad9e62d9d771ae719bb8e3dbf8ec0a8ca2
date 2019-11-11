@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69c175a2_6b551ab6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-11T15:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c934ed9_b8bb792e",
+      "revId": "804148ad9e62d9d771ae719bb8e3dbf8ec0a8ca2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ae3906d_04f6d3cf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2019-11-09T00:55:24Z",
       "side": 1,
       "message": "So is the current behavior to render as bug_1308_1_expected.pdf.0.png? Or is it currently broken? It seems like this test has the correct behavior (renders U+25A1) if the CID-to-GID map is ignored (and just maps as if using /Identity), so I\u0027m still not sure what this test is doing differently.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 55
+      },
+      "revId": "804148ad9e62d9d771ae719bb8e3dbf8ec0a8ca2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e69814_7cf87579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-11T15:24:01Z",
+      "side": 1,
+      "message": "bug_1308_1.in is currently rendered correctly because CIDToGIDMap is not ignored. The purpose for adding this test is to make sure try bots detect error for fix like https://pdfium-review.googlesource.com/c/pdfium/+/54930, since this is an edge case which is not specified in PDF reference.",
+      "parentUuid": "1ae3906d_04f6d3cf",
       "range": {
         "startLine": 25,
         "startChar": 5,
