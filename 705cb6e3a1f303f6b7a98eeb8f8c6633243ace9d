@@ -69,6 +69,24 @@
       "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d662676_eb2a80fa",
+        "filename": "testing/tools/run_pixel_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T19:21:28Z",
+      "side": 1,
+      "message": "As is, I feel this change has the potential to lose coverage for what Chromium uses in production.\n\nHow about we run the tests twice? Once with the cache limit and once without? Also do the same for corpus tests.",
+      "parentUuid": "64f09a40_7ffc7653",
+      "revId": "705cb6e3a1f303f6b7a98eeb8f8c6633243ace9d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
