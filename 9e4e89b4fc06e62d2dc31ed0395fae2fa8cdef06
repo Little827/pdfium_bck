@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5326a76_24092a92",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-11-11T11:03:05Z",
+      "side": 1,
+      "message": "Yes, it can be followed here as well.\nWould like to have opinion from @thestig , @mohitb too.",
+      "parentUuid": "bdc825ee_aa59630f",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f99cdcd0_86d818d1",
         "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196ebc1e_57e6467c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-11-11T11:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f99cdcd0_86d818d1",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bf4b118b_33f76c1c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-11-11T11:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4809324f_6362fd8b",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eee2ab96_413c8bdd",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 11
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a3abd4df_448dcb18",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-11-11T11:03:05Z",
+      "side": 1,
+      "message": "Explicit comparison is not necessity here because |config-\u003em_nCountFocusableAnnotTypes| is of type unsigned integer.",
+      "parentUuid": "eee2ab96_413c8bdd",
+      "range": {
+        "startLine": 181,
+        "startChar": 6,
+        "endLine": 181,
+        "endChar": 41
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "313bf854_489e4511",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 11
@@ -114,6 +210,30 @@
       "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e185951_46b03385",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-11-11T11:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "313bf854_489e4511",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "9e4e89b4fc06e62d2dc31ed0395fae2fa8cdef06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
