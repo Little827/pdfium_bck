@@ -83,6 +83,7 @@ void RenderPageImpl(CPDF_PageRenderContext* pContext,
                     const CFX_Matrix& matrix,
                     const FX_RECT& clipping_rect,
                     int flags,
+                    const FPDF_COLORSCHEME* color_scheme,
                     bool bNeedToRestore,
                     CPDFSDK_PauseAdapter* pause) {
   if (!pContext->m_pOptions)
@@ -96,10 +97,16 @@ void RenderPageImpl(CPDF_PageRenderContext* pContext,
   options.bNoTextSmooth = !!(flags & FPDF_RENDER_NO_SMOOTHTEXT);
   options.bNoImageSmooth = !!(flags & FPDF_RENDER_NO_SMOOTHIMAGE);
   options.bNoPathSmooth = !!(flags & FPDF_RENDER_NO_SMOOTHPATH);
+  options.bConvertFillToStroke = !!(flags & FPDF_CONVERT_FILL_TO_STROKE);
 
   // Grayscale output
   if (flags & FPDF_GRAYSCALE)
     pContext->m_pOptions->SetColorMode(CPDF_RenderOptions::kGray);
+
+  if (flags & FPDF_FORCEDCOLOR) {
+    pContext->m_pOptions->SetColorMode(CPDF_RenderOptions::kForcedColor);
+    SetColorFromScheme(pContext->m_pOptions.get(), color_scheme);
+  }
 
   const CPDF_OCContext::UsageType usage =
       (flags & FPDF_PRINTING) ? CPDF_OCContext::Print : CPDF_OCContext::View;
@@ -541,7 +548,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
   if (!bNewBitmap && !bHasMask) {
     pContext->m_pDevice = pdfium::MakeUnique<CPDF_WindowsRenderDevice>(dc);
     RenderPageWithContext(pPage, pContext, start_x, start_y, size_x, size_y,
-                          rotate, flags, true, nullptr);
+                          rotate, flags, /*color_scheme=*/nullptr, true,
+                          nullptr);
     return;
   }
 
@@ -559,7 +567,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
   }
 
   RenderPageWithContext(pPage, pContext, start_x, start_y, size_x, size_y,
-                        rotate, flags, true, nullptr);
+                        rotate, flags, /*color_scheme=*/nullptr, true, nullptr);
 
   if (!bHasMask) {
     CPDF_WindowsRenderDevice WinDC(dc);
@@ -600,7 +608,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
   pContext->m_pOptions->GetOptions().bBreakForMasks = true;
 
   RenderPageWithContext(pPage, pContext, start_x, start_y, size_x, size_y,
-                        rotate, flags, true, nullptr);
+                        rotate, flags, /*color_scheme=*/nullptr, true, nullptr);
 
   // Render masks
   for (size_t i = 0; i < mask_boxes.size(); i++) {
@@ -641,7 +649,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPageBitmap(FPDF_BITMAP bitmap,
   RetainPtr<CFX_DIBitmap> pBitmap(CFXDIBitmapFromFPDFBitmap(bitmap));
   pDevice->Attach(pBitmap, !!(flags & FPDF_REVERSE_BYTE_ORDER), nullptr, false);
   RenderPageWithContext(pPage, pContext, start_x, start_y, size_x, size_y,
-                        rotate, flags, true, nullptr);
+                        rotate, flags, /*color_scheme=*/nullptr, true, nullptr);
 
 #ifdef _SKIA_SUPPORT_PATHS_
   pDevice->Flush(true);
@@ -683,8 +691,8 @@ FPDF_RenderPageBitmapWithMatrix(FPDF_BITMAP bitmap,
   CFX_Matrix transform_matrix = pPage->GetDisplayMatrix(rect, 0);
   if (matrix)
     transform_matrix *= CFXMatrixFromFSMatrix(*matrix);
-  RenderPageImpl(pContext, pPage, transform_matrix, clip_rect, flags, true,
-                 nullptr);
+  RenderPageImpl(pContext, pPage, transform_matrix, clip_rect, flags,
+                 /*color_scheme=*/nullptr, true, nullptr);
 }
 
 #ifdef _SKIA_SUPPORT_
@@ -704,8 +712,8 @@ FPDF_EXPORT FPDF_RECORDER FPDF_CALLCONV FPDF_RenderPageSkp(FPDF_PAGE page,
   FPDF_RECORDER recorder = skDevice->CreateRecorder(size_x, size_y);
   pContext->m_pDevice = std::move(skDevice);
 
-  RenderPageWithContext(pPage, pContext, 0, 0, size_x, size_y, 0, 0, true,
-                        nullptr);
+  RenderPageWithContext(pPage, pContext, 0, 0, size_x, size_y, 0, 0,
+                        /*color_scheme=*/nullptr, true, nullptr);
   return recorder;
 }
 #endif  // _SKIA_SUPPORT_
@@ -904,11 +912,12 @@ void RenderPageWithContext(CPDF_Page* pPage,
                            int size_y,
                            int rotate,
                            int flags,
+                           const FPDF_COLORSCHEME* color_scheme,
                            bool bNeedToRestore,
                            CPDFSDK_PauseAdapter* pause) {
   const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
   RenderPageImpl(pContext, pPage, pPage->GetDisplayMatrix(rect, rotate), rect,
-                 flags, bNeedToRestore, pause);
+                 flags, color_scheme, bNeedToRestore, pause);
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,

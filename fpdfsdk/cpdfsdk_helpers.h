@@ -10,6 +10,7 @@
 #include "build/build_config.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
+#include "core/fpdfapi/render/cpdf_renderoptions.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdf_ext.h"
@@ -269,6 +270,7 @@ void RenderPageWithContext(CPDF_Page* pPage,
                            int size_y,
                            int rotate,
                            int flags,
+                           const FPDF_COLORSCHEME* pColorScheme,
                            bool bNeedToRestore,
                            CPDFSDK_PauseAdapter* pause);
 
@@ -277,5 +279,7 @@ UNSUPPORT_INFO* GetPDFUnssuportInto();
 void ReportUnsupportedFeatures(CPDF_Document* pDoc);
 void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot);
 void ProcessParseError(CPDF_Parser::Error err);
+void SetColorFromScheme(CPDF_RenderOptions* pRenderOptions,
+                        const FPDF_COLORSCHEME* pColorScheme);
 
 #endif  // FPDFSDK_CPDFSDK_HELPERS_H_
