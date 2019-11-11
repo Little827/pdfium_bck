@@ -418,3 +418,17 @@ void ProcessParseError(CPDF_Parser::Error err) {
   }
   FXSYS_SetLastError(err_code);
 }
+
+void SetColorFromScheme(CPDF_RenderOptions* pRenderOptions,
+                        const FPDF_COLORSCHEME* pColorScheme) {
+  CPDF_RenderOptions::ColorScheme colorScheme;
+  // Set color from the color scheme specified. If |pColorScheme| is empty
+  // the default color scheme will be used.
+  if (pColorScheme != nullptr) {
+    colorScheme.path_fill_color = pColorScheme->path_fill_color;
+    colorScheme.path_stroke_color = pColorScheme->path_stroke_color;
+    colorScheme.text_fill_color = pColorScheme->text_fill_color;
+    colorScheme.text_stroke_color = pColorScheme->text_stroke_color;
+  }
+  pRenderOptions->SetColorScheme(colorScheme);
+}

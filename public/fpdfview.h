@@ -670,6 +670,21 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_GetPageSizeByIndex(FPDF_DOCUMENT document,
 // Set whether to render in a reverse Byte order, this flag is only used when
 // rendering to a bitmap.
 #define FPDF_REVERSE_BYTE_ORDER 0x10
+// Forced color output.
+#define FPDF_FORCEDCOLOR 0x20
+// Set whether fill paths need to be stroked. This flag is only used when
+// FPDF_FORCEDCOLOR is set, since with a single fill color for paths the
+// boundaries of adjacent fill paths are no more visible.
+#define FPDF_CONVERT_FILL_TO_STROKE 0x8000
+
+// Struct for forced color scheme.
+// Each should be a 32-bit value specifing the color, in 8888 ARGB format.
+typedef struct _FPDF_COLORSCHEME {
+  FPDF_DWORD path_fill_color;
+  FPDF_DWORD path_stroke_color;
+  FPDF_DWORD text_fill_color;
+  FPDF_DWORD text_stroke_color;
+} FPDF_COLORSCHEME;
 
 #ifdef _WIN32
 // Function: FPDF_RenderPage
