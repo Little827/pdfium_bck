@@ -67,6 +67,7 @@ class EmbedderTest : public ::testing::Test,
 
   EmbedderTest();
   virtual ~EmbedderTest();
+  virtual void SetConfig();
 
   void SetUp() override;
   void TearDown() override;
