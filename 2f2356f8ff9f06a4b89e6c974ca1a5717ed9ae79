@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1af19fc_aca8f6ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T18:35:31Z",
+      "side": 1,
+      "message": "space after comma",
+      "range": {
+        "startLine": 11,
+        "startChar": 49,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "2f2356f8ff9f06a4b89e6c974ca1a5717ed9ae79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad4438ab_65b95d6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T18:35:31Z",
+      "side": 1,
+      "message": "Shorten the URL to https://pdfium-review.googlesource.com/61570 so it fits on the previous line.",
+      "revId": "2f2356f8ff9f06a4b89e6c974ca1a5717ed9ae79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db53281_2d6b85cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T18:35:31Z",
+      "side": 1,
+      "message": "\"a bug_1308.pdf pixel test\" or \"a pixel test named bug_1308.pdf\"",
+      "revId": "2f2356f8ff9f06a4b89e6c974ca1a5717ed9ae79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e87a89d6_46c4ac6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-11T18:35:31Z",
+      "side": 1,
+      "message": "I would suggest removing this line, because this paragraph talks about a CL that just adds a test, and this line makes it sound the CL is also trying to fix something.",
+      "revId": "2f2356f8ff9f06a4b89e6c974ca1a5717ed9ae79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
