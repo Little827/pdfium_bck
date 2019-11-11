@@ -57,6 +57,7 @@ class TestRunner:
     self.test_type = dirname
     self.delete_output_on_success = False
     self.enforce_expected_images = False
+    self.limit_cache = False
     self.oneshot_renderer = False
 
   # GenerateAndTest returns a tuple <success, outputfiles> where
@@ -158,6 +159,9 @@ class TestRunner:
 
     if self.oneshot_renderer:
       cmd_to_run.append('--render-oneshot')
+
+    if self.limit_cache:
+      cmd_to_run.append('--limit-cache')
 
     if use_ahem:
       cmd_to_run.append('--font-dir=%s' % self.font_dir)
@@ -381,6 +385,10 @@ class TestRunner:
   def SetEnforceExpectedImages(self, new_value):
     """Set whether to enforce that each test case provide an expected image."""
     self.enforce_expected_images = new_value
+
+  def SetLimitCache(self, new_value):
+    """Set whether to limit image cache size. """
+    self.limit_cache = new_value
 
   def SetOneShotRenderer(self, new_value):
     """Set whether to use the oneshot renderer. """
