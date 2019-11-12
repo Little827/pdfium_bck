@@ -47,6 +47,7 @@ class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
   int GetDeviceCaps(int caps_id) const override;
   void SaveState() override;
   void RestoreState(bool bKeepSaved) override;
+  void SetBaseClip(const FX_RECT& rect) override {}
   bool SetClip_PathFill(const CFX_PathData* pPathData,
                         const CFX_Matrix* pObject2Device,
                         int fill_mode) override;
