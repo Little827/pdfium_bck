@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "610f83f2_387b84a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-12T06:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5572cb2_d7d932af",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 60
+      },
+      "revId": "79bd62f2fba964b6479095ba613b4d9fb5556b1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71a43788_799260fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-12T06:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4c45123_a1d595e7",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "79bd62f2fba964b6479095ba613b4d9fb5556b1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac6cd785_bc8a6507",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -68,6 +116,30 @@
       "revId": "79bd62f2fba964b6479095ba613b4d9fb5556b1e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95883e8_27cd3abf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-12T06:38:29Z",
+      "side": 1,
+      "message": "CID2UnicodeMap is loaded from CMap. bug_1308.pdf have CID2UnicodeMap because of its specific encoding value \"90ms-RKSJ-H\", which is mapped to a predefined CMap and contains CID2UnicodeMap for m_Charset \u003d\u003d CIDSET_JAPAN1.\n\nIn a nutshell, whether CID2UnicodeMap is available is not visible by directly reading the PDF file. And the list of Encoding values that have predefined CMap are hardcoded.\n\nThis is too much information for the description of the ticket, I left the comment \"depending on Encoding value\" in the latest description patch. Hope it helps.",
+      "parentUuid": "ac6cd785_bc8a6507",
+      "range": {
+        "startLine": 17,
+        "startChar": 50,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "79bd62f2fba964b6479095ba613b4d9fb5556b1e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
