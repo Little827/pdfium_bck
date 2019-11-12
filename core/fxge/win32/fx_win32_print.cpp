@@ -428,6 +428,8 @@ void CPSPrinterDriver::RestoreState(bool bKeepSaved) {
   m_PSRenderer.RestoreState(bKeepSaved);
 }
 
+void CPSPrinterDriver::SetBaseClip(const FX_RECT& rect) {}
+
 bool CPSPrinterDriver::SetClip_PathFill(const CFX_PathData* pPathData,
                                         const CFX_Matrix* pObject2Device,
                                         int fill_mode) {
@@ -553,6 +555,8 @@ int CTextOnlyPrinterDriver::GetDeviceCaps(int caps_id) const {
       return 0;
   }
 }
+
+void CTextOnlyPrinterDriver::SetBaseClip(const FX_RECT& rect) {}
 
 bool CTextOnlyPrinterDriver::SetClip_PathFill(const CFX_PathData* pPathData,
                                               const CFX_Matrix* pObject2Device,

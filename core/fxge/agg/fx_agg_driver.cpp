@@ -1244,6 +1244,8 @@ void CFX_AggDeviceDriver::SetClipMask(agg::rasterizer_scanline_aa& rasterizer) {
   m_pClipRgn->IntersectMaskF(path_rect.left, path_rect.top, pThisLayer);
 }
 
+void CFX_AggDeviceDriver::SetBaseClip(const FX_RECT& rect) {}
+
 bool CFX_AggDeviceDriver::SetClip_PathFill(const CFX_PathData* pPathData,
                                            const CFX_Matrix* pObject2Device,
                                            int fill_mode) {

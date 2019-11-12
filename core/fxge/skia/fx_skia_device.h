@@ -43,6 +43,9 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   void SaveState() override;
   void RestoreState(bool bKeepSaved) override;
 
+  /** Set base rectangular clip **/
+  void SetBaseClip(const FX_RECT& rect) override;
+
   /** Set clipping path using filled region */
   bool SetClip_PathFill(
       const CFX_PathData* pPathData,     // path info

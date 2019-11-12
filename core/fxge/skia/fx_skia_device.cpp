@@ -1929,6 +1929,8 @@ void CFX_SkiaDeviceDriver::SetClipMask(const FX_RECT& clipBox,
 }
 #endif  // _SKIA_SUPPORT_PATHS_
 
+void CFX_SkiaDeviceDriver::SetBaseClip(const FX_RECT& rect) {}
+
 bool CFX_SkiaDeviceDriver::SetClip_PathFill(
     const CFX_PathData* pPathData,     // path info
     const CFX_Matrix* pObject2Device,  // flips object's y-axis
