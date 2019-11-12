@@ -22,6 +22,30 @@
       "revId": "a9baf8f82a18428827bb6967261feea8df6e28f4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b834c8d_044fc1aa",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-12T05:44:24Z",
+      "side": 1,
+      "message": "I added \"two-byte length\" in the comment to specify the length of the CID range values as the pdf reference specifies in the new patch. I think this should clarify the bit operation more. \nIn the new patch I kept the term \"first byte\", to keep it consistent with the pdf reference as well as what we can read directly from the PDF file about the CID range mapping.",
+      "parentUuid": "3d1bcc93_05fc423c",
+      "range": {
+        "startLine": 163,
+        "startChar": 66,
+        "endLine": 163,
+        "endChar": 76
+      },
+      "revId": "a9baf8f82a18428827bb6967261feea8df6e28f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
