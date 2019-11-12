@@ -74,6 +74,7 @@ class CFX_RenderDevice {
   bool SetClip_PathStroke(const CFX_PathData* pPathData,
                           const CFX_Matrix* pObject2Device,
                           const CFX_GraphStateData* pGraphState);
+  void SetBaseClip(const FX_RECT& rect);
   bool DrawPath(const CFX_PathData* pPathData,
                 const CFX_Matrix* pObject2Device,
                 const CFX_GraphStateData* pGraphState,
@@ -247,6 +248,7 @@ class CFX_RenderDevice {
   int m_RenderCaps = 0;
   DeviceType m_DeviceType = DeviceType::kUnknown;
   FX_RECT m_ClipBox;
+  FX_RECT m_BaseClipBox;
   std::unique_ptr<RenderDeviceDriverIface> m_pDeviceDriver;
 };
 
