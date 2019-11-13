@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cc90e254_1df2f8eb",
+        "filename": "core/fxge/agg/fx_agg_driver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-13T01:52:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0fe4bbd8_015d48a8",
+      "revId": "46cb3743457b42fb84b9c54e5fc0d144b746da3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f423687_60acade9",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3f3ac656_3c944629",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-13T01:52:36Z",
+      "side": 1,
+      "message": "Sure, no problem with that.",
+      "parentUuid": "8f423687_60acade9",
+      "revId": "46cb3743457b42fb84b9c54e5fc0d144b746da3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e0ebbee_8c212712",
         "filename": "core/fxge/cfx_renderdevice.h",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "46cb3743457b42fb84b9c54e5fc0d144b746da3c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "132f0765_84565bf1",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-13T01:52:36Z",
+      "side": 1,
+      "message": "Seems like a paste error, because it doesn\u0027t get used in the end, the value based into SetBaseClip() is propagated to the encapsulated device.  Removed.",
+      "parentUuid": "5e0ebbee_8c212712",
+      "revId": "46cb3743457b42fb84b9c54e5fc0d144b746da3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
