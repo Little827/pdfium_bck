@@ -92,6 +92,9 @@ extern "C" {
 #define FPDF_FORMFLAG_CHOICE_COMBO (1 << 17)
 #define FPDF_FORMFLAG_CHOICE_EDIT (1 << 18)
 
+#define FPDF_FORM_UNKNOWN 0
+#define FPDF_FORM_TEXT 4
+
 typedef enum FPDFANNOT_COLORTYPE {
   FPDFANNOT_COLORTYPE_Color = 0,
   FPDFANNOT_COLORTYPE_InteriorColor
@@ -376,6 +379,24 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetRect(FPDF_ANNOTATION annot,
                                                       FS_RECTF* rect);
 
 // Experimental API.
+// Get the content string of annotation. |buffer|
+// is only modified if |buflen| is longer than the length of contents. Note that
+// for empty string return value would be 2. On other errors, nothing would
+// be added to |buffer| and the return value would be 0.
+//
+//   annot  - handle to an annotation.
+//   buffer - buffer for holding the value string, encoded in UTF-16LE.
+//   buflen - length of the buffer in bytes.
+//
+// Returns the length of the string value in bytes.
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAnnot_GetContents(FPDF_FORMHANDLE hHandle,
+                      FPDF_ANNOTATION annot,
+                      FPDF_PAGE page,
+                      FPDF_WCHAR* buffer,
+                      unsigned long buflen);
+
+// Experimental API.
 // Check if |annot|'s dictionary has |key| as a key.
 //
 //   annot  - handle to an annotation.
@@ -549,6 +570,13 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
                               FPDF_PAGE page,
                               double page_x,
                               double page_y);
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFAnnot_GetFormFieldType(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot);
+FPDF_EXPORT bool FPDF_CALLCONV
+FPDFAnnot_SetFormFieldFocus(FPDF_FORMHANDLE hHandle,
+                            FPDF_ANNOTATION annot,
+                            FPDF_PAGE page);
 
 // Experimental API.
 // Get the number of options in the |annot|'s "Opt" dictionary. Intended for

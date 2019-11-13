@@ -195,10 +195,7 @@ bool CFFL_FormFiller::IsIndexSelected(int index) {
 }
 
 WideString CFFL_FormFiller::GetText() {
-  if (!IsValid())
-    return WideString();
-
-  CPWL_Wnd* pWnd = GetPWLWindow(GetCurPageView(true), false);
+  CPWL_Wnd* pWnd = GetPWLWindow(GetCurPageView(true), true);
   return pWnd ? pWnd->GetText() : WideString();
 }
 
