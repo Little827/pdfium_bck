@@ -530,7 +530,7 @@ CFFL_FormFiller* CFFL_InteractiveFormFiller::GetOrCreateFormFiller(
 
 WideString CFFL_InteractiveFormFiller::GetText(CPDFSDK_Annot* pAnnot) {
   ASSERT(pAnnot->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
-  CFFL_FormFiller* pFormFiller = GetFormFiller(pAnnot);
+  CFFL_FormFiller* pFormFiller = GetOrCreateFormFiller(pAnnot);
   return pFormFiller ? pFormFiller->GetText() : WideString();
 }
 

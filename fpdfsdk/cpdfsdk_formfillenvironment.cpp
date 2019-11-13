@@ -9,6 +9,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfdoc/cpdf_docjsactions.h"
@@ -668,6 +669,23 @@ void CPDFSDK_FormFillEnvironment::UpdateAllViews(CPDFSDK_PageView* pSender,
   }
 }
 
+bool CPDFSDK_FormFillEnvironment::OnSetTextAnnot(
+    ObservedPtr<CPDFSDK_Annot>* pAnnot) {
+  FPDF_PAGE fpdf_page = FPDFPageFromIPDFPage((*pAnnot)->GetPage());
+  if (!fpdf_page)
+    return true;
+  CPDF_Page* cpdf_page = CPDFPageFromFPDFPage(fpdf_page);
+  if (!cpdf_page)
+    return true;
+
+  CPDF_Dictionary* annot_dict = (*pAnnot)->GetPDFAnnot()->GetAnnotDict();
+  auto focused_annot =
+      pdfium::MakeUnique<CPDF_AnnotContext>(annot_dict, cpdf_page);
+  FPDF_ANNOTATION fpdf_annot =
+      FPDFAnnotationFromCPDFAnnotContext(focused_annot.release());
+  m_pInfo->FFI_SetTextAnnot(m_pInfo, fpdf_page, fpdf_annot);
+  return true;
+}
 bool CPDFSDK_FormFillEnvironment::SetFocusAnnot(
     ObservedPtr<CPDFSDK_Annot>* pAnnot) {
   if (m_bBeingDestroyed)

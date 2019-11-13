@@ -144,6 +144,9 @@ void CFFL_TextField::SaveData(CPDFSDK_PageView* pPageView) {
   ObservedPtr<CPDFSDK_Widget> observed_widget(m_pWidget.Get());
   ObservedPtr<CFFL_TextField> observed_this(this);
   m_pWidget->SetValue(sNewValue, NotificationOption::kDoNotNotify);
+
+  ObservedPtr<CPDFSDK_Annot> pAnnot(GetSDKAnnot());
+  m_pFormFillEnv->OnSetTextAnnot(&pAnnot);
   if (!observed_widget)
     return;
 
