@@ -47,6 +47,30 @@
       "revId": "4ea953435f055b53dc270f75d963ea99b36aa952",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c574ce9_ddc90849",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-14T22:43:05Z",
+      "side": 1,
+      "message": "I\u0027ll go ahead and fix FSRECTFFromCFXFloatRect() first in a separate CL. I haven\u0027t gotten back to this CL chain yet, since it probably breaks some embedders and I haven\u0027t looked to see how much impact there is.",
+      "parentUuid": "07980b4c_6071c803",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 26
+      },
+      "revId": "4ea953435f055b53dc270f75d963ea99b36aa952",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
