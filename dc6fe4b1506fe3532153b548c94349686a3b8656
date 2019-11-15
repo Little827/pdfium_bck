@@ -91,6 +91,23 @@
     },
     {
       "key": {
+        "uuid": "fbeaf58d_be07d5a2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T21:30:21Z",
+      "side": 1,
+      "message": "If we add: \"\u003c0B01\u003e \u003c0B01\u003e [ \u003c4321\u003e ]\\n\" after this line, what should Lookup(0x0B01) return?",
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24050ce7_c17b274a",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 16
@@ -208,6 +225,29 @@
     },
     {
       "key": {
+        "uuid": "d28f0c2d_0efe4217",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T21:30:21Z",
+      "side": 1,
+      "message": "Let\u0027s use 0x0013, which better matches line 42.",
+      "range": {
+        "startLine": 64,
+        "startChar": 35,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01a0cf36_e2753146",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 16
@@ -252,6 +292,52 @@
       "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73e6cfa3_d6a88bb5",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T21:30:21Z",
+      "side": 1,
+      "message": "Can hex numbers be more consistent? It\u0027s 0x09ff here, but 0x002F (\u0027F\u0027 in caps) on line 66.",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05ce8e0_ff137e85",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T21:30:21Z",
+      "side": 1,
+      "message": "EXPECT_TRUE() is probably fine as well.",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 15
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
