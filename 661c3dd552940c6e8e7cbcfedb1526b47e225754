@@ -39,6 +39,24 @@
       "revId": "661c3dd552940c6e8e7cbcfedb1526b47e225754",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d18e9811_1865bc4f",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T20:27:41Z",
+      "side": 1,
+      "message": "go/tott/520 is a good read on this topic.\n\nI need to look at this CL and the CPDF_ToUnicodeMap behavior a little closely. Depending on what I find, I may recommend we split up the test into smaller pieces.",
+      "parentUuid": "779a691d_a9420d28",
+      "revId": "661c3dd552940c6e8e7cbcfedb1526b47e225754",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
