@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "7d4e33d9_9ba4ba96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T23:21:19Z",
+      "side": 1,
+      "message": "It\u0027s a class, not a function.",
+      "parentUuid": "5115f4f8_70ab2362",
+      "revId": "a5f81661ee6ef21c8ef4f5199f5316c6026cbca1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72414a69_20ea3095",
         "filename": "xfa/fxfa/cxfa_ffdatetimeedit.cpp",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2019-11-15T23:03:58Z",
       "side": 1,
       "message": "nesting not needed?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "a5f81661ee6ef21c8ef4f5199f5316c6026cbca1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751d004a_2c7186d4",
+        "filename": "xfa/fxfa/cxfa_ffdatetimeedit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T23:21:19Z",
+      "side": 1,
+      "message": "UnlockUpdate() should be called before calling CXFA_FFField::LoadWidget(), so I think it\u0027s needed?",
+      "parentUuid": "72414a69_20ea3095",
       "range": {
         "startLine": 55,
         "startChar": 0,
