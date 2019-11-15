@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "565a9ca6_3da4b025",
+        "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-15T21:57:35Z",
+      "side": 1,
+      "message": "Ack.  I noticed some files had it before, others had it after (e.g., [1], Skia) and figured there might not be a hard-and-fast rule about it.\n\n[1] https://cs.chromium.org/chromium/src/third_party/pdfium/testing/image_diff/image_diff.cpp",
+      "parentUuid": "d2816992_7f006a3c",
+      "revId": "0cf5689b395bc2e891e98ee3a259729b472cdc95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90436c15_498d0cf3",
         "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "0cf5689b395bc2e891e98ee3a259729b472cdc95",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb61a40_4226e131",
+        "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-15T21:57:35Z",
+      "side": 1,
+      "message": "Done - - I had started out by plagiarizing from the nearby core/fxge/skia/fx_skia_device_embeddertest.cpp.",
+      "parentUuid": "90436c15_498d0cf3",
+      "revId": "0cf5689b395bc2e891e98ee3a259729b472cdc95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "0cf5689b395bc2e891e98ee3a259729b472cdc95",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5905936a_b8bf2025",
+        "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-15T21:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f20d6aa4_4637a8ea",
+      "range": {
+        "startLine": 67,
+        "startChar": 38,
+        "endLine": 67,
+        "endChar": 52
+      },
+      "revId": "0cf5689b395bc2e891e98ee3a259729b472cdc95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
