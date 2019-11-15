@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa02877d_d89a8fe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T22:37:25Z",
+      "side": 1,
+      "message": "SetClip_PathFill()",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "6715175554bdc4270515a237d9bdaea1aaf17d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52bf697_73d21139",
+        "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T22:37:25Z",
+      "side": 1,
+      "message": "~5 of these are no longer needed.",
+      "revId": "6715175554bdc4270515a237d9bdaea1aaf17d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693154e6_41c773ef",
+        "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T22:37:25Z",
+      "side": 1,
+      "message": "Would it make sense to continue if this fails? Maybe just ASSERT_TRUE(m_hDC) ?",
+      "revId": "6715175554bdc4270515a237d9bdaea1aaf17d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
