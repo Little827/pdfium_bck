@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27ecec78_48a44c6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-15T23:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa02877d_d89a8fe9",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "6715175554bdc4270515a237d9bdaea1aaf17d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a52bf697_73d21139",
         "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "f9331ca3_5df9f9dc",
+        "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-15T23:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a52bf697_73d21139",
+      "revId": "6715175554bdc4270515a237d9bdaea1aaf17d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "693154e6_41c773ef",
         "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "6715175554bdc4270515a237d9bdaea1aaf17d26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7953ecf8_48b2453e",
+        "filename": "core/fxge/win32/fx_win32_device_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-15T23:16:26Z",
+      "side": 1,
+      "message": "Need to have a Windows handle to continue, so ASSERT_TRUE sounds like a better choice -- done.",
+      "parentUuid": "693154e6_41c773ef",
+      "revId": "6715175554bdc4270515a237d9bdaea1aaf17d26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
