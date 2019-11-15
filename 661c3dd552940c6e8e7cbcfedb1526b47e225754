@@ -99,6 +99,24 @@
       "revId": "661c3dd552940c6e8e7cbcfedb1526b47e225754",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42578d66_69c91e4a",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-15T21:55:59Z",
+      "side": 1,
+      "message": "Just some test philosophy: The rule of thumb (for me) basically is coverage. If some piece of data isn\u0027t necessary to trigger an additional branch in the code, you probably don\u0027t need it in a unit test.\n\nGiven that the branches in question are relatively simple, my gut feeling is that a relatively simple test case (maybe just 2-3 ranges with a couple characters) should be sufficient. If you\u0027re worried about overly simplified test data not exercising certain cases, those should be separate tests. (go/tott/555 may also be relevant here.)",
+      "parentUuid": "27b01b90_be087f44",
+      "revId": "661c3dd552940c6e8e7cbcfedb1526b47e225754",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
