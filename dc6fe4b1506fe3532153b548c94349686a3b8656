@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fd2399a_a7208945",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T18:55:11Z",
+      "side": 1,
+      "message": "Can this be: static const char kBfRange[] ?",
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24050ce7_c17b274a",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T18:55:11Z",
+      "side": 1,
+      "message": "Since this variable is only used once, and passing pdfium::as_bytes(...) into InitStream() still looks reasonably simple, why don\u0027t we just drop this variable?",
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3649849f_1fa46e5b",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T18:55:11Z",
+      "side": 1,
+      "message": "This check is a bit late. The previous line already dereferenced |stream|. Also, it\u0027s safe to assume pdfium::MakeRetain(), like pdfium::MakeUnique(), will always succeed.",
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "879618e1_77b3d990",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T18:55:11Z",
+      "side": 1,
+      "message": "\"auto\" is fine here.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01a0cf36_e2753146",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-15T18:55:11Z",
+      "side": 1,
+      "message": "BTW, this doesn\u0027t matter here, but for some types, preincrement is preferred. One way to not have to remember this is to prefer preincrement. https://google.github.io/styleguide/cppguide.html#Preincrement_and_Predecrement",
+      "range": {
+        "startLine": 69,
+        "startChar": 63,
+        "endLine": 69,
+        "endChar": 73
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
