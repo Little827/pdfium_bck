@@ -228,4 +228,8 @@ pdfium_embeddertest_source_set("embeddertests") {
       "//skia",
     ]
   }
+
+  if (is_win) {
+    sources += [ "win32/fx_win32_device_embeddertest.cpp" ]
+  }
 }
