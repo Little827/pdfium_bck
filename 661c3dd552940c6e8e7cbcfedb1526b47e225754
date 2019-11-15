@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2e3688a_9ea9471d",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-15T20:59:15Z",
+      "side": 1,
+      "message": "Thanks for reminding me! I missed the separate section for const names in style guide, that\u0027s why I didn\u0027t fix it earlier.\nIt\u0027s fixed now.",
+      "parentUuid": "14fae161_f2bcf134",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "661c3dd552940c6e8e7cbcfedb1526b47e225754",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "779a691d_a9420d28",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 17
@@ -57,6 +81,24 @@
       "revId": "661c3dd552940c6e8e7cbcfedb1526b47e225754",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27b01b90_be087f44",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-15T20:59:15Z",
+      "side": 1,
+      "message": "I tried to reduce the size for the illegal ranges, but without both illegal ranges, this test won\u0027t successfully corrupt the mapping data inside the legal range (before the fix was implemented). Corruption happens at \u003c1E9B\u003e to \u003c20A2\u003e. I can try to shift the first illegal range forward to reduce the size more and see whether I can still trigger the mapping corruption.\n\nAs for the size of the legal bfrange, right now it covers from 0 to 9, some signs and A to L. Do you think shrinking down to 10 characters in the legal bfrange is a good size for verifying the parsing is done correctly? Or maybe this number should go lower?",
+      "parentUuid": "d18e9811_1865bc4f",
+      "revId": "661c3dd552940c6e8e7cbcfedb1526b47e225754",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
