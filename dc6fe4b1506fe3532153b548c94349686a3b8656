@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5e1b7319_7fab16f6",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-15T20:18:00Z",
+      "side": 1,
+      "message": "constexpr all the things? :-) (I think you could just replace the \"static const\" with \"constexpr\".)",
+      "parentUuid": "43e7da06_55ef8add",
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24050ce7_c17b274a",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 16
