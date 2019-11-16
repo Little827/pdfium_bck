@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e73186f0_d2048985",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-16T01:52:23Z",
+      "side": 1,
+      "message": "Filed pdfium:1422.",
+      "parentUuid": "c3ba27f0_046286ae",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0efddec0_d2b59a2c",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 20
