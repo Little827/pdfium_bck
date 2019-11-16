@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "269eda3f_e584dae9",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-16T01:35:47Z",
+      "side": 1,
+      "message": "As long as we\u0027re piling on with the test cases, I\u0027d worry about codes that are larger than a uint32_t can represent. As far as I can tell, there\u0027s no logic in CPDF_ToUnicodeMap::StringToCode() preventing parsing of an arbitrarily long integer.",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0efddec0_d2b59a2c",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 20
@@ -59,6 +76,40 @@
     },
     {
       "key": {
+        "uuid": "e3041e34_20fb8124",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-16T01:35:47Z",
+      "side": 1,
+      "message": "Possibly very minor: Seems like this could be a denial-of-service type problem if lowcode and highcode are very far apart, although that shouldn\u0027t happen in the case the ranges are legal (no more than 256 codes in the range).",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52ed4c2_a9d99c65",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-16T01:35:47Z",
+      "side": 1,
+      "message": "Very, very minor suggestion: I think it might make sense to hoist this branch out of the loop, and have two separate loops. Slightly more code that way, but I personally find it easier to reason about.",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c244f52_0c9ed41a",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 20
@@ -70,6 +121,40 @@
       "writtenOn": "2019-11-16T01:09:17Z",
       "side": 1,
       "message": "Given we are dealing with malformed bfranges, they may not even have the right number of values. It\u0027s not obvious how other PDF viewers react in such cases. e.g.\n\n\u003c0024\u003e \u003c0025\u003e [ \u003c0041\u003e ]\n\u003c0024\u003e \u003c0025\u003e [ \u003c0041\u003e 0042\u003e 0043\u003e ]\n\u003c00FF\u003e \u003c0100\u003e [ \u003c0041\u003e ]\n\u003c00FF\u003e \u003c0100\u003e [ \u003c0041\u003e 0042\u003e 0043\u003e ]",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab55064_b6fa0c05",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-16T01:35:47Z",
+      "side": 1,
+      "message": "Minor suggestion: When I start to see a lot of \"continue\" and \"break\" statements in a function, I start to wonder whether a subroutine or other larger refactoring would be useful.",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c9908a_771a84a9",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-16T01:35:47Z",
+      "side": 1,
+      "message": "Suggestion: It might be nice to use \\x escapes instead, so an ASCII table doesn\u0027t need to be consulted.",
       "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
