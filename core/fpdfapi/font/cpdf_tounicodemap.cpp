@@ -158,17 +158,33 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
 
     ByteStringView high = pParser->GetWord();
     uint32_t lowcode = StringToCode(low);
-    uint32_t highcode = (lowcode & 0xffffff00) | (StringToCode(high) & 0xff);
+    uint32_t highcode = StringToCode(high);
+
     if (highcode == 0xffffffff)
       return;
 
+    // Mark illegal mapping lines, in which the first bytes of the CID range
+    // values (two-byte length) are different (see 1.4.1 "Cautionary Notes" in
+    // Adobe Technical Note #5411 ToUnicode Mapping File Tutorial)
+    bool is_legal_range = true;
+    if ((lowcode & 0xffffff00) != (highcode & 0xffffff00)) {
+      is_legal_range = false;
+    }
+
     ByteStringView start = pParser->GetWord();
     if (start == "[") {
-      for (uint32_t code = lowcode; code <= highcode; code++)
-        SetCode(code, StringToWideString(pParser->GetWord()));
-      pParser->GetWord();
+      for (uint32_t code = lowcode; code <= highcode; code++) {
+        if (is_legal_range)
+          SetCode(code, StringToWideString(pParser->GetWord()));
+        else
+          pParser->GetWord();  // Skip all values inside current illegal range
+      }
+      auto res = pParser->GetWord();
       continue;
     }
+
+    if (!is_legal_range)
+      continue;
 
     WideString destcode = StringToWideString(start);
     if (destcode.GetLength() == 1) {
