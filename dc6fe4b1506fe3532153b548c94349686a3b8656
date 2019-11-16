@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "ac66ad17_44cb25ed",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-16T00:51:36Z",
+      "side": 1,
+      "message": "The previous fix apparently ditched the rest of the mappings within a bfrange once encountering an illegal range. So Lookup(0x0B01) will return empty string instead of a valid string matching unicode 4321.\n\nThe latest patch fixed this issue by only skipping the current high-low range. After ignoring the illegal mapping line, it will proceed on parsing the rest of the bfrange.",
+      "parentUuid": "fbeaf58d_be07d5a2",
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24050ce7_c17b274a",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 16
@@ -266,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "ed6043f2_0e8feb6e",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-16T00:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28f0c2d_0efe4217",
+      "range": {
+        "startLine": 64,
+        "startChar": 35,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01a0cf36_e2753146",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 16
@@ -336,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "29e0f542_685e52a8",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-16T00:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e6cfa3_d6a88bb5",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e05ce8e0_ff137e85",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 16
@@ -356,6 +422,30 @@
       "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5f0081_79f3f307",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-16T00:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e05ce8e0_ff137e85",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 15
+      },
+      "revId": "dc6fe4b1506fe3532153b548c94349686a3b8656",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
