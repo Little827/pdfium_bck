@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0efddec0_d2b59a2c",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-16T01:09:17Z",
+      "side": 1,
+      "message": "Given the assignment to |highcode| has changed, does this check still make sense?",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220a8df9_8e62ef17",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-16T01:09:17Z",
+      "side": 1,
+      "message": "This block reduces down to: bool is_legal_range \u003d ... \u003d\u003d ...;",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a95363c_23c2058e",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-16T01:09:17Z",
+      "side": 1,
+      "message": "Make this a constant.",
+      "range": {
+        "startLine": 170,
+        "startChar": 19,
+        "endLine": 170,
+        "endChar": 29
+      },
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c244f52_0c9ed41a",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-16T01:09:17Z",
+      "side": 1,
+      "message": "Given we are dealing with malformed bfranges, they may not even have the right number of values. It\u0027s not obvious how other PDF viewers react in such cases. e.g.\n\n\u003c0024\u003e \u003c0025\u003e [ \u003c0041\u003e ]\n\u003c0024\u003e \u003c0025\u003e [ \u003c0041\u003e 0042\u003e 0043\u003e ]\n\u003c00FF\u003e \u003c0100\u003e [ \u003c0041\u003e ]\n\u003c00FF\u003e \u003c0100\u003e [ \u003c0041\u003e 0042\u003e 0043\u003e ]",
+      "revId": "f579c72e9518c89cb88ba9dc3cefeecd49843fee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
