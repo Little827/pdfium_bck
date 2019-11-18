@@ -147,6 +147,10 @@ class TestRunner:
     with open(txt_path, 'w') as outfile:
       cmd_to_run = [self.pdfium_test_path, '--send-events',
                     '--time=' + TEST_SEED_TIME, pdf_path]
+
+      if self.options.disable_xfa:
+        cmd_to_run.append('--disable-xfa')
+
       subprocess.check_call(cmd_to_run, stdout=outfile)
 
     cmd = [sys.executable, self.text_diff_path, expected_txt_path, txt_path]
@@ -161,6 +165,12 @@ class TestRunner:
 
     if use_ahem:
       cmd_to_run.append('--font-dir=%s' % self.font_dir)
+
+    if self.options.disable_javascript:
+      cmd_to_run.append('--disable-javascript')
+
+    if self.options.disable_xfa:
+      cmd_to_run.append('--disable-xfa')
 
     cmd_to_run.append(pdf_path)
     return common.RunCommandExtractHashedFiles(cmd_to_run)
@@ -203,6 +213,19 @@ class TestRunner:
     parser.add_option('-j', default=multiprocessing.cpu_count(),
                       dest='num_workers', type='int',
                       help='run NUM_WORKERS jobs in parallel')
+
+    if self.test_type != 'javascript':
+      parser.add_option(
+          '--disable_javascript',
+          action="store_true",
+          dest="disable_javascript",
+          help='Prevents JavaScript from executing in PDF files.')
+
+    parser.add_option(
+        '--disable_xfa',
+        action="store_true",
+        dest="disable_xfa",
+        help='Prevents processing XFA forms.')
 
     parser.add_option('--gold_properties', default='', dest="gold_properties",
                       help='Key value pairs that are written to the top level '
