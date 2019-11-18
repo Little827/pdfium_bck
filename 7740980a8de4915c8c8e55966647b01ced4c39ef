@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26533401_529270a3",
+        "filename": "core/fxcrt/fx_memory.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-18T23:08:06Z",
+      "side": 0,
+      "message": "note: this comment goes away as a consequence of having to handle the sentinel.",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "7740980a8de4915c8c8e55966647b01ced4c39ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
