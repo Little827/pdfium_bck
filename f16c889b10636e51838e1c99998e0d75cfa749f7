@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "8bed5e49_c77756b6",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T19:34:33Z",
+      "side": 1,
+      "message": "CLs to fix up CPDF_Parser so this CL won\u0027t have to change it.\n\nhttps://pdfium-review.googlesource.com/62570\nhttps://pdfium-review.googlesource.com/62551\nhttps://pdfium-review.googlesource.com/62552",
+      "parentUuid": "64a07d61_ee366f94",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb826918_e4e03ec7",
         "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
         "patchSetId": 8
