@@ -156,6 +156,10 @@ class TestRunner:
           self.pdfium_test_path, '--send-events', '--time=' + TEST_SEED_TIME,
           pdf_path
       ]
+
+      if self.disable_xfa:
+        cmd_to_run.append('--disable-xfa')
+
       subprocess.check_call(cmd_to_run, stdout=outfile)
 
     if not os.path.exists(expected_txt_path):
@@ -188,6 +192,12 @@ class TestRunner:
 
     if use_ahem:
       cmd_to_run.append('--font-dir=%s' % self.font_dir)
+
+    if self.disable_javascript:
+      cmd_to_run.append('--disable-javascript')
+
+    if self.disable_xfa:
+      cmd_to_run.append('--disable-xfa')
 
     cmd_to_run.append(pdf_path)
     return common.RunCommandExtractHashedFiles(cmd_to_run)
@@ -238,6 +248,18 @@ class TestRunner:
         help='run NUM_WORKERS jobs in parallel')
 
     parser.add_option(
+        '--disable-javascript',
+        action="store_true",
+        dest="disable_javascript",
+        help='Prevents JavaScript from executing in PDF files.')
+
+    parser.add_option(
+        '--disable-xfa',
+        action="store_true",
+        dest="disable_xfa",
+        help='Prevents processing XFA forms.')
+
+    parser.add_option(
         '--gold_properties',
         default='',
         dest="gold_properties",
@@ -282,6 +304,9 @@ class TestRunner:
 
     self.options, self.args = parser.parse_args()
 
+    self.disable_javascript = self.options.disable_javascript
+    self.disable_xfa = self.options.disable_xfa
+
     if (self.options.regenerate_expected and
         self.options.regenerate_expected not in ['all', 'platform']):
       print 'FAILURE: --regenerate_expected must be "all" or "platform"'
@@ -310,7 +335,8 @@ class TestRunner:
 
     self.feature_string = subprocess.check_output(
         [self.pdfium_test_path, '--show-config'])
-    self.test_suppressor = suppressor.Suppressor(finder, self.feature_string)
+    self.test_suppressor = suppressor.Suppressor(
+        finder, self.feature_string, self.disable_javascript, self.disable_xfa)
     self.image_differ = pngdiffer.PNGDiffer(finder)
     error_message = self.image_differ.CheckMissingTools(
         self.options.regenerate_expected)
