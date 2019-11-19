@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "694fdda1_68ba0426",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T23:25:53Z",
+      "side": 1,
+      "message": "Also try to get the .h and .cpp file to match in ordering as much as possible. Sometimes they are already not in sync. In which case, try to create better ordering, not worse.",
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d114b73_52db41b0",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T23:25:53Z",
+      "side": 1,
+      "message": "In core/fxge/renderdevicedriver_iface.h, there exists a SetBaseClip() that\u0027s ordered above various other SetClip methods. Here, it\u0027s below. Can we order them consistently?",
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a952a86_97ed5d71",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T23:25:53Z",
+      "side": 1,
+      "message": "std::make_unique is C++14, so this should be pdfium::MakeUnique, since PDFium hasn\u0027t dropped C++11 support yet. Also, a std::make_unique snuck in to core/fxge/win32/fx_win32_device_embeddertest.cpp...",
+      "range": {
+        "startLine": 1082,
+        "startChar": 18,
+        "endLine": 1082,
+        "endChar": 34
+      },
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1302aa_8de0511b",
+        "filename": "core/fxge/win32/win32_int.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T23:25:53Z",
+      "side": 1,
+      "message": "Is there a sentinel value one can use to indicate \"|m_BaseClipBox| does not exist\" ? If yes, then change the type to just FX_RECT, otherwise use pdfium::Optional\u003cFX_RECT\u003e.",
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
