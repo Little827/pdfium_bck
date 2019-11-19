@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8dfca07d_a0dc07b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-11-19T18:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbbe9213_dcb51619",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "562a28b0fe0b6cdf6c221e2817772716ab0daaf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8b43d97_e29dcebe",
         "filename": "testing/tools/test_runner.py",
         "patchSetId": 1
