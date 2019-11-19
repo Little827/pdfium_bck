@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/font/cpdf_tounicodemap.h"
 
+#include <limits>
 #include <utility>
 
 #include "core/fpdfapi/font/cpdf_cid2unicodemap.h"
@@ -77,17 +78,22 @@ uint32_t CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
   if (len == 0)
     return 0;
 
-  uint32_t result = 0;
+  pdfium::base::CheckedNumeric<uint32_t> integer = 0;
   if (str[0] == '<') {
-    for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i)
-      result = result * 16 + FXSYS_HexCharToInt(str.CharAt(i));
-    return result;
+    for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i) {
+      integer = integer * 16 + FXSYS_HexCharToInt(str.CharAt(i));
+      if (!integer.IsValid())
+        break;
+    }
+  } else {
+    for (size_t i = 0; i < len && std::isdigit(str[i]); ++i) {
+      integer = integer * 10 + FXSYS_DecimalCharToInt(str.CharAt(i));
+      if (!integer.IsValid())
+        break;
+    }
   }
 
-  for (size_t i = 0; i < len && std::isdigit(str[i]); ++i)
-    result = result * 10 + FXSYS_DecimalCharToInt(str.CharAt(i));
-
-  return result;
+  return integer.ValueOrDefault(0u);
 }
 
 // static

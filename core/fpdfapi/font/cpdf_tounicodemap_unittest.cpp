@@ -8,11 +8,16 @@
 
 TEST(cpdf_tounicodemap, StringToCode) {
   EXPECT_EQ(0u, CPDF_ToUnicodeMap::StringToCode(""));
+  EXPECT_EQ(4294967295u, CPDF_ToUnicodeMap::StringToCode("<ffffffff>"));
+  EXPECT_EQ(0u, CPDF_ToUnicodeMap::StringToCode("<100000000>"));
   EXPECT_EQ(194u, CPDF_ToUnicodeMap::StringToCode("<c2"));
   EXPECT_EQ(162u, CPDF_ToUnicodeMap::StringToCode("<A2"));
   EXPECT_EQ(2802u, CPDF_ToUnicodeMap::StringToCode("<Af2"));
+
   EXPECT_EQ(12u, CPDF_ToUnicodeMap::StringToCode("12"));
   EXPECT_EQ(128u, CPDF_ToUnicodeMap::StringToCode("128"));
+  EXPECT_EQ(4294967295u, CPDF_ToUnicodeMap::StringToCode("4294967295"));
+  EXPECT_EQ(0u, CPDF_ToUnicodeMap::StringToCode("4294967296"));
 }
 
 TEST(cpdf_tounicodemap, StringToWideString) {
