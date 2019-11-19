@@ -872,6 +872,11 @@ bool CFX_DIBitmap::CompositeBitmap(int dest_left,
                                    BlendMode blend_type,
                                    const CFX_ClipRgn* pClipRgn,
                                    bool bRgbByteOrder) {
+  if (dest_left < 0 || dest_top < 0 || width <= 0 || height <= 0 ||
+      src_left < 0 || src_top < 0) {
+    return false;
+  }
+
   if (!m_pBuffer)
     return false;
 
@@ -945,6 +950,11 @@ bool CFX_DIBitmap::CompositeMask(int dest_left,
                                  BlendMode blend_type,
                                  const CFX_ClipRgn* pClipRgn,
                                  bool bRgbByteOrder) {
+  if (dest_left < 0 || dest_top < 0 || width <= 0 || height <= 0 ||
+      src_left < 0 || src_top < 0) {
+    return false;
+  }
+
   if (!m_pBuffer)
     return false;
 
