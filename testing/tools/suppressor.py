@@ -8,10 +8,11 @@ import os
 import common
 
 class Suppressor:
-  def __init__(self, finder, feature_string):
+
+  def __init__(self, finder, feature_string, js_disabled, xfa_disabled):
     feature_vector = feature_string.strip().split(",")
-    self.has_v8 = "V8" in feature_vector
-    self.has_xfa = "XFA" in feature_vector
+    self.has_v8 = not js_disabled and "V8" in feature_vector
+    self.has_xfa = not xfa_disabled and "XFA" in feature_vector
     self.suppression_set = self._LoadSuppressedSet('SUPPRESSIONS', finder)
     self.image_suppression_set = self._LoadSuppressedSet(
         'SUPPRESSIONS_IMAGE_DIFF',
