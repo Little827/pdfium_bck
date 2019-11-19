@@ -76,15 +76,6 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
   bool KillFocusAnnot(uint32_t nFlag);
   void ClearAllFocusedAnnots();
 
-  bool ExtractPages(const std::vector<uint16_t>& arrExtraPages,
-                    CPDF_Document* pDstDoc);
-  bool InsertPages(int nInsertAt,
-                   const CPDF_Document* pSrcDoc,
-                   const std::vector<uint16_t>& arrSrcPages);
-  bool ReplacePages(int nPage,
-                    const CPDF_Document* pSrcDoc,
-                    const std::vector<uint16_t>& arrSrcPages);
-
   int GetPageCount() const;
   bool GetPermissions(int nFlag) const;
 
