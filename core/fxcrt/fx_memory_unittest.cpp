@@ -5,6 +5,7 @@
 #include "core/fxcrt/fx_memory.h"
 
 #include <limits>
+#include <vector>
 
 #include "build/build_config.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -106,4 +107,17 @@ TEST(fxcrt, FXAlign) {
   EXPECT_EQ(512, FxAlignToBoundary<512>(i511));
   EXPECT_EQ(512, FxAlignToBoundary<512>(i512));
   EXPECT_EQ(-512, FxAlignToBoundary<512>(ineg));
+}
+
+TEST(fxcrt, FxAllocAllocator) {
+  std::vector<int, FxAllocAllocator<int>> vec;
+  vec.push_back(42);
+  vec.reserve(100);
+  vec.resize(20);
+  vec[11] = 42;
+
+  std::vector<int, FxAllocAllocator<int>> vec2 = vec;
+  vec = std::move(vec2);
+  vec2.resize(0);
+  vec2.push_back(42);
 }
