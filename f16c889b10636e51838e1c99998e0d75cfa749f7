@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "780d0b78_93586661",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T18:22:27Z",
+      "side": 1,
+      "message": "Typically, the main xref table is at the end of the file. e.g. For a 10 MB PDF, this might read the last 4 KB.",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d0a7cbe_61e47263",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T18:22:27Z",
+      "side": 1,
+      "message": "Whereas the first page\u0027s xref table is likely at the front of the PDF, so this call, for the same hypothetical 10 MB PDF, is at the front. This will request 9.9 MB of data. Can we avoid doing this, and only read what\u0027s needed?",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a07d61_ee366f94",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T18:22:27Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this method. The underlying problem is LoadLinearizedAllCrossRefV4() is broken. We should fix that, so it reads from /XRefStm correctly, rather than reading from /XRrefStm separately and calling LoadLinearizedAllCrossRefV4() again. I will send a couple CLs for that.",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb826918_e4e03ec7",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T18:22:27Z",
+      "side": 1,
+      "message": "Can you explain what\u0027s happening here?",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
