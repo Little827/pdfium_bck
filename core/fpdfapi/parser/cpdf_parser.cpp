@@ -402,6 +402,9 @@ bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE main_xref_offset) {
         std::move(m_CrossRefTable));
   }
 
+  if (XRefStreamList[0] && !LoadCrossRefV5(&XRefStreamList[0], false))
+    return false;
+
   for (size_t i = 1; i < CrossRefList.size(); ++i) {
     if (!LoadCrossRefV4(CrossRefList[i], false))
       return false;
