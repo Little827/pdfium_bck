@@ -12,6 +12,10 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/debug/alias.h"
 
+namespace {
+constexpr uintptr_t kZeroLengthMarker = 0x10;  // Non-null zero-page address.
+}  // namespace
+
 pdfium::base::PartitionAllocatorGeneric& GetArrayBufferPartitionAllocator() {
   static pdfium::base::PartitionAllocatorGeneric s_array_buffer_allocator;
   return s_array_buffer_allocator;
@@ -78,6 +82,9 @@ void* FX_SafeAlloc(size_t num_members, size_t member_size) {
   if (!total.IsValid())
     return nullptr;
 
+  if (total.ValueOrDie() == 0)
+    return reinterpret_cast<void*>(kZeroLengthMarker);
+
   constexpr int kFlags = pdfium::base::PartitionAllocReturnNull |
                          pdfium::base::PartitionAllocZeroFill;
   return pdfium::base::PartitionAllocGenericFlags(
@@ -91,6 +98,9 @@ void* FX_SafeRealloc(void* ptr, size_t num_members, size_t member_size) {
   if (!size.IsValid())
     return nullptr;
 
+  if (reinterpret_cast<uintptr_t>(ptr) == kZeroLengthMarker)
+    ptr = nullptr;
+
   return pdfium::base::PartitionReallocGenericFlags(
       GetGeneralPartitionAllocator().root(),
       pdfium::base::PartitionAllocReturnNull, ptr, size.ValueOrDie(),
@@ -98,7 +108,6 @@ void* FX_SafeRealloc(void* ptr, size_t num_members, size_t member_size) {
 }
 
 void* FX_AllocOrDie(size_t num_members, size_t member_size) {
-  // TODO(tsepez): See if we can avoid the implicit memset(0).
   void* result = FX_SafeAlloc(num_members, member_size);
   if (!result)
     FX_OutOfMemoryTerminate();  // Never returns.
@@ -122,14 +131,6 @@ void* FX_ReallocOrDie(void* ptr, size_t num_members, size_t member_size) {
 }
 
 void FX_Free(void* ptr) {
-  // TODO(palmer): Removing this check exposes crashes when PDFium callers
-  // attempt to free |nullptr|. Although libc's |free| allows freeing |NULL|, no
-  // other Partition Alloc callers need this tolerant behavior. Additionally,
-  // checking for |nullptr| adds a branch to |PartitionFree|, and it's nice to
-  // not have to have that.
-  //
-  // So this check is hiding (what I consider to be) bugs, and we should try to
-  // fix them. https://bugs.chromium.org/p/pdfium/issues/detail?id=690
-  if (ptr)
+  if (reinterpret_cast<uintptr_t>(ptr) > kZeroLengthMarker)
     pdfium::base::PartitionFree(ptr);
 }
