@@ -301,13 +301,10 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
   if (xrefsize > 0 && xrefsize <= kMaxXRefSize)
     ShrinkObjectMap(xrefsize);
 
-  std::vector<FX_FILESIZE> CrossRefList;
-  std::vector<FX_FILESIZE> XRefStreamList;
-  std::set<FX_FILESIZE> seen_xrefpos;
-
-  CrossRefList.push_back(xrefpos);
-  XRefStreamList.push_back(GetDirectInteger(GetTrailer(), "XRefStm"));
-  seen_xrefpos.insert(xrefpos);
+  std::vector<FX_FILESIZE> XRefStreamList{
+      GetDirectInteger(GetTrailer(), "XRefStm")};
+  std::vector<FX_FILESIZE> CrossRefList{xrefpos};
+  std::set<FX_FILESIZE> seen_xrefpos{xrefpos};
 
   // When the trailer doesn't have Prev entry or Prev entry value is not
   // numerical, GetDirectInteger() returns 0. Loading will end.
@@ -351,8 +348,8 @@ bool CPDF_Parser::LoadAllCrossRefV4(FX_FILESIZE xrefpos) {
   return true;
 }
 
-bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE xrefpos) {
-  if (!LoadCrossRefV4(xrefpos, false))
+bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE main_xref_offset) {
+  if (!LoadCrossRefV4(main_xref_offset, false))
     return false;
 
   RetainPtr<CPDF_Dictionary> trailer = LoadTrailerV4();
@@ -367,15 +364,12 @@ bool CPDF_Parser::LoadLinearizedAllCrossRefV4(FX_FILESIZE xrefpos) {
   if (xrefsize == 0)
     return false;
 
-  std::vector<FX_FILESIZE> CrossRefList;
-  std::vector<FX_FILESIZE> XRefStreamList;
-  std::set<FX_FILESIZE> seen_xrefpos;
+  std::vector<FX_FILESIZE> XRefStreamList{
+      GetDirectInteger(GetTrailer(), "XRefStm")};
+  std::vector<FX_FILESIZE> CrossRefList{main_xref_offset};
+  std::set<FX_FILESIZE> seen_xrefpos{main_xref_offset};
 
-  CrossRefList.push_back(xrefpos);
-  XRefStreamList.push_back(GetDirectInteger(GetTrailer(), "XRefStm"));
-  seen_xrefpos.insert(xrefpos);
-
-  xrefpos = GetDirectInteger(GetTrailer(), "Prev");
+  FX_FILESIZE xrefpos = GetDirectInteger(GetTrailer(), "Prev");
   while (xrefpos) {
     // Check for circular references.
     if (pdfium::ContainsKey(seen_xrefpos, xrefpos))
@@ -1031,7 +1025,8 @@ CPDF_Parser::Error CPDF_Parser::StartLinearizedParse(
   return SUCCESS;
 }
 
-bool CPDF_Parser::LoadLinearizedAllCrossRefV5(FX_FILESIZE xrefpos) {
+bool CPDF_Parser::LoadLinearizedAllCrossRefV5(FX_FILESIZE main_xref_offset) {
+  FX_FILESIZE xrefpos = main_xref_offset;
   if (!LoadCrossRefV5(&xrefpos, false))
     return false;
 
