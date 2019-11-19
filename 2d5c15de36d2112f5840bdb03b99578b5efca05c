@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4302cf_ad463230",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T00:32:25Z",
+      "side": 1,
+      "message": "Doesn\u0027t this still make FX_Free() tolerant of FX_Free(nullptr), which the comment wants to avoid doing?",
+      "revId": "2d5c15de36d2112f5840bdb03b99578b5efca05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
