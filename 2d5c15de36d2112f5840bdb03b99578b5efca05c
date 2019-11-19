@@ -34,6 +34,24 @@
       "revId": "2d5c15de36d2112f5840bdb03b99578b5efca05c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "395dbf01_e897aafd",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T19:02:30Z",
+      "side": 1,
+      "message": "On a related note, WDYT about the rare case of FX_Free(ptr), where |ptr| \u003d 0x09?",
+      "parentUuid": "e5315448_7f5a1222",
+      "revId": "2d5c15de36d2112f5840bdb03b99578b5efca05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
