@@ -52,6 +52,24 @@
       "revId": "2d5c15de36d2112f5840bdb03b99578b5efca05c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffa3093_ce5312cb",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-19T20:32:24Z",
+      "side": 1,
+      "message": "Ideally we\u0027d check, next best is a no-op to avoid corrupting the heap, worst case is to go through this and somehow produce corruption undetected til later.  I was trying be clever to avoid two comparisons.",
+      "parentUuid": "395dbf01_e897aafd",
+      "revId": "2d5c15de36d2112f5840bdb03b99578b5efca05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
