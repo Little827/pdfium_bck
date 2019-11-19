@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d58e27d_52430498",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-19T08:06:40Z",
+      "side": 1,
+      "message": "Can we do --disable-javascript? I actually find the --foo_bar switches below a bit annoying, because most switches in Chromium are --foo-bar, like --build-dir above.",
+      "revId": "14197b3b0cc531f0a04dbec61757561c3955c535",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
