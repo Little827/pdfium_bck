@@ -491,6 +491,10 @@ bool CFX_RenderDevice::SetClip_Rect(const FX_RECT& rect) {
   return true;
 }
 
+void CFX_RenderDevice::SetBaseClip(const FX_RECT& rect) {
+  m_pDeviceDriver->SetBaseClip(rect);
+}
+
 void CFX_RenderDevice::UpdateClipBox() {
   if (m_pDeviceDriver->GetClipBox(&m_ClipBox))
     return;
