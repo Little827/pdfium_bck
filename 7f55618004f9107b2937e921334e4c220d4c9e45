@@ -16,6 +16,24 @@
       "revId": "7f55618004f9107b2937e921334e4c220d4c9e45",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79c58fe_e46c9a9f",
+        "filename": "core/fxge/renderdevicedriver_iface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-19T23:04:39Z",
+      "side": 1,
+      "message": "Makes it simpler - nice, done.",
+      "parentUuid": "9278309b_8a3d6c93",
+      "revId": "7f55618004f9107b2937e921334e4c220d4c9e45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
