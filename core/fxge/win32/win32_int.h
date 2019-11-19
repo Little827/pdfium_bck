@@ -81,6 +81,7 @@ class CGdiDeviceDriver : public RenderDeviceDriverIface {
   int GetDeviceCaps(int caps_id) const override;
   void SaveState() override;
   void RestoreState(bool bKeepSaved) override;
+  void SetBaseClip(const FX_RECT& rect) override;
   bool SetClip_PathFill(const CFX_PathData* pPathData,
                         const CFX_Matrix* pObject2Device,
                         int fill_mode) override;
@@ -129,6 +130,7 @@ class CGdiDeviceDriver : public RenderDeviceDriverIface {
   int m_nBitsPerPixel;
   const DeviceType m_DeviceType;
   int m_RenderCaps;
+  pdfium::Optional<FX_RECT> m_BaseClipBox;
 };
 
 class CGdiDisplayDriver final : public CGdiDeviceDriver {
