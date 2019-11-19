@@ -1,0 +1,4 @@
+{
+  "pushCert": "certificate version 0.1\npusher 5A66FD7B 1574202219 -0800\nnonce AC6AUtNFiROzx4LSfYe//KgN14hD8w1enDgqeYgFhUjiKXAeqz0bOqRDRin7Eh66IoE6s0PgqW/3\n\n0000000000000000000000000000000000000000 73fac96a4a5e8cd7353e2b0851c4d941fb892622 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dcheck-input-values-to-cfx-dibitmap\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3Ua2sACgkQqzYtYVpm\n/XvSuwf/UjDr7g1ZN2ILHX94wBoYSL/BiQwheyF993LkNJNi2ba+BOtRvqw69MIS\nUXDynUMgHaq9KfM/nXWn/c5gHIdoaKmDPSKgLSZdXAtLA1QLS07lhCY0rIA8LbxO\nHWwkTkGbo1P5fgmvT2m/07ytx9LhlHNSnb/ydZVCGHOWzwLK4voLR+GOt35QUMVz\nMmXS6mXDUhjGuOBtHSXDgeVihkq+q5rYuERWSCPyYZy/EWbAH2/hcgd02PgVjREw\nb/C4GNnJumplA8/MSg0VI+PZwP7ipgM4w2hPpSJd2K0LUN6v+w/ggkwytzqgbT0t\nArb5zw+dAnPbjfFR78r5rGAJV/NcJg\u003d\u003d\n\u003dFYv8\n-----END PGP SIGNATURE-----\n",
+  "comments": []
+}
