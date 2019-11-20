@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "421e540f_b5b8dfa0",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T22:00:23Z",
+      "side": 1,
+      "message": "Probably don\u0027t need these, as any reference to |self.disable_javascript| can simply be |self.options.disable_javascript|.",
+      "revId": "01a8ffe313124ec1b2290b614bf22faae549ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
