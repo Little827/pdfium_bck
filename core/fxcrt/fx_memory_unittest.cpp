@@ -5,6 +5,7 @@
 #include "core/fxcrt/fx_memory.h"
 
 #include <limits>
+#include <vector>
 
 #include "build/build_config.h"
 #include "testing/gtest/include/gtest/gtest.h"
