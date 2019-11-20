@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d08e861d_7eb9498b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T21:49:35Z",
+      "side": 1,
+      "message": "... for text rendering with invalid CMap entry ? Assuming that accurately describes the problem.",
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55881a1c_32ededd0",
+        "filename": "testing/resources/pixel/bug_1021762.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T21:49:35Z",
+      "side": 1,
+      "message": "Can we order this as: /Registry, /Ordering, /Supplement, like in the PDF spec and with object 8 0?",
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
