@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a3f360_2940aeeb",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T23:26:53Z",
+      "side": 1,
+      "message": "Remove (and probably move to cjx_decoder.cpp?)",
+      "revId": "f19deaf40c5f124fa5c0fa9fdc8e07b57e922d06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
