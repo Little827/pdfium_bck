@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "0a6c455d_70f2cd40",
+        "filename": "testing/resources/pixel/bug_1021762.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-20T22:26:11Z",
+      "side": 1,
+      "message": "To answer my own question: In the Arial-Bold font, glyph 4 is mapped to \u0027!\u0027.",
+      "parentUuid": "98771896_013a2e8d",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55881a1c_32ededd0",
         "filename": "testing/resources/pixel/bug_1021762.in",
         "patchSetId": 4
