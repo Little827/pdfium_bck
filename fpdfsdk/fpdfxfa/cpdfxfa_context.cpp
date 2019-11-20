@@ -273,7 +273,7 @@ WideString CPDFXFA_Context::Response(const WideString& wsQuestion,
     return WideString();
 
   int nLength = 2048;
-  std::vector<uint8_t> pBuff(nLength);
+  std::vector<uint8_t, FxAllocAllocator<uint8_t>> pBuff(nLength);
   nLength = m_pFormFillEnv->JS_appResponse(wsQuestion, wsTitle, wsDefaultAnswer,
                                            WideString(), bMark, pBuff.data(),
                                            nLength);
