@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2f8bc767_03de7a4a",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-20T00:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "694fdda1_68ba0426",
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d114b73_52db41b0",
         "filename": "core/fxge/cfx_renderdevice.h",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560fa1b6_46aeae75",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-20T00:09:08Z",
+      "side": 1,
+      "message": "Done, and adjusted the clip definitions to be in alphabetical order in this section.",
+      "parentUuid": "6d114b73_52db41b0",
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "784f82ed_a50cbcf8",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-20T00:09:08Z",
+      "side": 1,
+      "message": "Fixed here and in core/fxge/win32/fx_win32_device_embeddertest.cpp.",
+      "parentUuid": "3a952a86_97ed5d71",
+      "range": {
+        "startLine": 1082,
+        "startChar": 18,
+        "endLine": 1082,
+        "endChar": 34
+      },
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f1302aa_8de0511b",
         "filename": "core/fxge/win32/win32_int.h",
         "patchSetId": 4
@@ -73,6 +133,24 @@
       "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f1b3160_7d41f3ad",
+        "filename": "core/fxge/win32/win32_int.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-20T00:09:08Z",
+      "side": 1,
+      "message": "I like the pdfium::Optional, makes the use cleaner in SetClip_PathFill().",
+      "parentUuid": "2f1302aa_8de0511b",
+      "revId": "e1c6890f74990d79979fddee725dd6ef1ee8c4d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
