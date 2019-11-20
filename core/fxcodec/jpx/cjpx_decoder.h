@@ -41,7 +41,7 @@ class CJPX_Decoder {
   bool StartDecode();
   bool Decode(uint8_t* dest_buf,
               uint32_t pitch,
-              const std::vector<uint8_t>& offsets);
+              pdfium::span<const uint8_t> offsets);
 
  private:
   const ColorSpaceOption m_ColorSpaceOption;
