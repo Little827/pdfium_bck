@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "19d2d5e8_6f60c74b",
+        "filename": "core/fxge/win32/fx_win32_device.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-20T15:30:27Z",
+      "side": 1,
+      "message": "Ack, \u0026 done.",
+      "parentUuid": "a3cb177d_e6209130",
+      "revId": "1ae4a30f3081ef546b87dec064af4a600e6822a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac10ecc7_a79e3236",
         "filename": "core/fxge/win32/win32_int.h",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "1ae4a30f3081ef546b87dec064af4a600e6822a2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbff4818_8576073e",
+        "filename": "core/fxge/win32/win32_int.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-11-20T15:30:27Z",
+      "side": 1,
+      "message": "Oops - done.",
+      "parentUuid": "ac10ecc7_a79e3236",
+      "revId": "1ae4a30f3081ef546b87dec064af4a600e6822a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
