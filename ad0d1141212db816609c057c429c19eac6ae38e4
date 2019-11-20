@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d3d7daa_fdb541cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T01:43:13Z",
+      "side": 1,
+      "message": "Can we just add a second constructor to CPDFSDK_AnnotIterator to accept multiple subtypes? Then we can avoid having to change all the existing CPDFSDK_AnnotIterator users.",
+      "revId": "ad0d1141212db816609c057c429c19eac6ae38e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d5c93a_cadf2e47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T01:43:13Z",
+      "side": 1,
+      "message": "Can we add something like:\n\nvoid FPDFAnnot_SetFocusableSubTypes(FPDF_FORMHANDLE handle, const FPDF_ANNOTATION_SUBTYPE* subtypes, size_t count);\n\nand a corresponding FPDFAnnot_GetFocusableSubTypes()\n\nto fpdf_annot.h instead?\n\nIt will be nicer to avoid changing PDFium initialization if we can.",
+      "revId": "ad0d1141212db816609c057c429c19eac6ae38e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a060cf76_cea8a76b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T01:43:13Z",
+      "side": 1,
+      "message": "This is good to have. Can we do this first as a separate CL, just to exercise the current behavior? The test should pass, and we can add TODOs for the spots where it is passing with the wrong results. We\u0027ll then fix the TODOs are we progress on this feature.",
+      "revId": "ad0d1141212db816609c057c429c19eac6ae38e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
