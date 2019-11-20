@@ -34,6 +34,24 @@
       "revId": "01a8ffe313124ec1b2290b614bf22faae549ee54",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87dfbc92_08559199",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-20T23:30:21Z",
+      "side": 1,
+      "message": "I did that with |self.options.reverse_byte_order|, so the consistency would be nice. In terms of brevity, taking my suggestion makes this file 2 lines shorter while not adding any real complexity.",
+      "parentUuid": "8808dc6f_5cc8940d",
+      "revId": "01a8ffe313124ec1b2290b614bf22faae549ee54",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
