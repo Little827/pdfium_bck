@@ -398,7 +398,7 @@ bool CPDF_CIDFont::Load() {
     if (const CPDF_Stream* pStream = pmap->AsStream()) {
       m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
       m_pStreamAcc->LoadAllDataFiltered();
-    } else if (m_pFontFile && pmap->GetString() == "Identity") {
+    } else if (pmap->GetString() == "Identity") {
       m_bCIDIsGID = true;
     }
   }
