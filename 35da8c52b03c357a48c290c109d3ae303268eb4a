@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "3efd68f2_e6429ba4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-20T22:15:44Z",
+      "side": 1,
+      "message": "Typo: \"text\" -\u003e \"test\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98771896_013a2e8d",
+        "filename": "testing/resources/pixel/bug_1021762.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-20T22:15:44Z",
+      "side": 1,
+      "message": "Not sure about something: How does \u003c0004\u003e get mapped to \u0027!\u0027 (U+0021)?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55881a1c_32ededd0",
         "filename": "testing/resources/pixel/bug_1021762.in",
         "patchSetId": 4
