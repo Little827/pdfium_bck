@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1574238053 -0800\nnonce AC6AUtOTJt/Faa6pRu/Vm1AQ2TfFL9qbOD8NJGfZnci1Z6OU6Nri97/RWHbpFfdCVTjOTQqkX7CB\n\n0000000000000000000000000000000000000000 61ebabc03f0dcee3093251c2fb8ca1abc1713b09 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com,hashtag\u003dsimplify-image-diff-png\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3U92UACgkQqzYtYVpm\n/Xt37QgAlb2Y1T49PQX8K/DCuvksmGZfmt5USu4VA4bsSsdlLmCEQ0ldTd5MhRAI\n622oxNVmQBqNSZHl2ibhnQrjGS5vod/4tt6kG46eMAlihfQZw2XJC4BMFK17KApt\nfJGy6550aRTex3+/2lKsUWJX/HIkiq/+XvjI9UMH0l2dpO4KZcPupLBu9RBCqcor\nHEgRrWwYC/ecZ18gmZmcy0exjwuvlhJ9bRxKz//iC/hFSNvlmN/CypnTD2GHPQO0\n/dJ5H1mndr9QwqhsMRChzm/n1OQ+zNA/f0fb6yCK0Higmh1FAQubbBn9TV7K06A3\nm+nkuMn/mZ6EuzoI8jdoikmIi0LCdQ\u003d\u003d\n\u003dmIif\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6882cf9_94a26118",
+        "filename": "testing/image_diff/image_diff_png.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-20T17:47:24Z",
+      "side": 1,
+      "message": "Ok, could also be a span into which a vector naturally decays when passed, but you might want to keep this free of pdfiumisms until c++20 or so when we have std::span ?",
+      "range": {
+        "startLine": 662,
+        "startChar": 37,
+        "endLine": 662,
+        "endChar": 76
+      },
+      "revId": "61ebabc03f0dcee3093251c2fb8ca1abc1713b09",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
