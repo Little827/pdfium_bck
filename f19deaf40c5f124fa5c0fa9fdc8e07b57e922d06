@@ -16,6 +16,24 @@
       "revId": "f19deaf40c5f124fa5c0fa9fdc8e07b57e922d06",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a8a34a1_cf52304a",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-20T23:41:51Z",
+      "side": 1,
+      "message": "Done (and moved as indicated).",
+      "parentUuid": "d0a3f360_2940aeeb",
+      "revId": "f19deaf40c5f124fa5c0fa9fdc8e07b57e922d06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
