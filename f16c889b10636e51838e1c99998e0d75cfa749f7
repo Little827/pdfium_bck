@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "41b45f7a_b9028e45",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-11-21T17:31:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "780d0b78_93586661",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d0a7cbe_61e47263",
         "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a4ef42d_5804f702",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-11-21T17:31:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d0a7cbe_61e47263",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "58652cb8_f3affb8f",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-11-21T17:31:04Z",
+      "side": 1,
+      "message": "Agreed this cls looks good to me and fix the scenarios.\nShould I abandon this cl? And I will review you cls.Thanks.",
+      "parentUuid": "8bed5e49_c77756b6",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb826918_e4e03ec7",
         "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
         "patchSetId": 8
@@ -85,6 +139,24 @@
       "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4033688a_d393b0a6",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2019-11-21T17:31:04Z",
+      "side": 1,
+      "message": "I think the same reason you told,requesting more data.",
+      "parentUuid": "bb826918_e4e03ec7",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
