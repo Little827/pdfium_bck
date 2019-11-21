@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1574191814 -0800\nnonce AC6AUtMVMam0G6OQxZ+t/KsvejjO7/TvuvxB4gzh1T5n/IL/bfcebugSdP1U+PrxJm4wP2BOnARE\n\n0000000000000000000000000000000000000000 690fb2103ed1894ac48a51148ac2ab1c6cbb9fd2 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3UQsYACgkQqzYtYVpm\n/XtQAQgAijcdo7r2YMF3ahmVp42jd1t11hx4MmC9ji6Jdooc9uVn6TZLTfGCOxDr\nb+CTtnqraNjpmSJ9iYE0djZN+KJ87UFmTcPwq+PZXHR4/GXgEwk7LyF1AL2UYMhU\ndl523rQNROl6d6/Irwfipo0ESQ8DqIpivQJUVdZiU6DNvwG4tVoCumJ7ygjAMEik\nqm/JcfFP7milnH05w+SzFmSZyUQyIPBlnlAjE52i+NnOgGM6S+leUHgUblb+ityc\nAsnGxQ5k8Uvyv57Hg3uN+WncaXkvnSxphO2nh+xF3VNzePdBth+UyDvtfYXNLDzb\nlHol3sJXH6gnn/Qi/gzrdhLOhEmeUQ\u003d\u003d\n\u003dvRmM\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "afc6e126_4de66428",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-21T20:29:19Z",
+      "side": 1,
+      "message": "do we know this always has a 0-th element?",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 70
+      },
+      "revId": "690fb2103ed1894ac48a51148ac2ab1c6cbb9fd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
