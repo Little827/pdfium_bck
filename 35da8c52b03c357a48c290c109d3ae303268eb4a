@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "299d5a70_935c6d7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-21T02:14:39Z",
+      "side": 1,
+      "message": "This case the ToUnicode mapping is valid, but it should be ignored.\nI did more digging after CL was up for review. Updated the latest commit message to contain more info about this bug.",
+      "parentUuid": "d08e861d_7eb9498b",
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3efd68f2_e6429ba4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a088f509_e8c7a3aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-21T02:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3efd68f2_e6429ba4",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
