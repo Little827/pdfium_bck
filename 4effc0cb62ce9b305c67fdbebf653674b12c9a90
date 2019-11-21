@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1574191045 -0800\nnonce AC6AUtOubpiuAeweYIm1JUHKdD6lz1W/d0tR4GToo4O6lXJ7TTTPr5wPmRaKrgwJ4pn7rFIWW6Yg\n\n0000000000000000000000000000000000000000 4effc0cb62ce9b305c67fdbebf653674b12c9a90 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3UP8UACgkQqzYtYVpm\n/XvNhggAx8buT0SGArK12/Pgtq2P96lh/uYqkJ8vLUyLfakBLb9O4powAL9es4/T\n46wJT4LUmiJoDGofsFZZh2v6DUa5WOOJ7fxR+ACvzdDXtEMZrRUPqqtwbGISa875\nZUhPNezcwcI0LOlQqUypBTbVDh8jcPNFuuJLMSE3SYGOuWAY3t5xLCEXZwDYLNn7\nMXKKA8V78EQZ5xo7Af4ciuwkTQn6avL2/Mzz0ndUb/isEfQwGczoh4byTHYNsySJ\n5mOuOG6EKtwaCpgnamSos7PGj4VIm2H8Ag+vJrm2yBxNFLKXY0AGzLOVQVCs+RpL\nIZxDG6mjIUi4cZhHpc3/fqwgntg3YA\u003d\u003d\n\u003dp/8B\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "b84398ed_c3126d86",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-21T20:32:33Z",
+      "side": 1,
+      "message": "nit: locals starting with a capital letter seem weird",
+      "range": {
+        "startLine": 367,
+        "startChar": 27,
+        "endLine": 367,
+        "endChar": 41
+      },
+      "revId": "4effc0cb62ce9b305c67fdbebf653674b12c9a90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456a5c16_64421452",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-21T20:32:33Z",
+      "side": 1,
+      "message": "nit: is this an offset, too?  or are xref_offsets different from xrefpos? If they are the same then maybe name consistently",
+      "range": {
+        "startLine": 142,
+        "startChar": 37,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "4effc0cb62ce9b305c67fdbebf653674b12c9a90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
