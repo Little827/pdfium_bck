@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "27daa4f0_a99d0a19",
+        "filename": "testing/resources/pixel/bug_1021762.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-21T01:39:23Z",
+      "side": 1,
+      "message": "Haha, that\u0027s right. This is another case that an non-embedded font has CIDToGIDMap object (has string value \"Identity\", instead of a stream). \"Identity\" basically means glyph index should be the same as char code, which should be the case here.\n\nIn CPDF_CIDFont::Load(), if I remove the check for |m_pFontFile| in the following line:\n\n    else if (m_pFontFile \u0026\u0026 pmap-\u003eGetString() \u003d\u003d \"Identity\")\n\nit will make sure glyph index \u003d charcode for this test case and renders correctly.\nBut at the same time, this will cause regression under corpus/fx/FRC_8.2.4_part1/ directory. I still need to do more digging on how to fix it.",
+      "parentUuid": "0a6c455d_70f2cd40",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55881a1c_32ededd0",
         "filename": "testing/resources/pixel/bug_1021762.in",
         "patchSetId": 4
@@ -103,6 +127,24 @@
       "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b206db36_b53b5ac3",
+        "filename": "testing/resources/pixel/bug_1021762.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-21T01:39:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55881a1c_32ededd0",
+      "revId": "35da8c52b03c357a48c290c109d3ae303268eb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
