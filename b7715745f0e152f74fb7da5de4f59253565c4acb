@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c9414e0_9c0589ec",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-22T17:35:36Z",
+      "side": 1,
+      "message": "Feels like this can be integrated into StringToCode().",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d4e0ad_b267bfbc",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-22T17:35:36Z",
+      "side": 1,
+      "message": "Easier to write FX_SAFE_UINT32",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad4abd10_60efa6e7",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-22T17:35:36Z",
+      "side": 1,
+      "message": "In this patch set isn\u0027t this always true?",
+      "range": {
+        "startLine": 115,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a839a8_059ddbf5",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-22T17:35:36Z",
+      "side": 1,
+      "message": "Another good test case is \"\u003c00NN\u003e\".",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
