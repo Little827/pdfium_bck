@@ -349,14 +349,13 @@ TEST_F(FPDFDocEmbedderTest, ActionNonesuch) {
 }
 
 TEST_F(FPDFDocEmbedderTest, NoBookmarks) {
+  unsigned short buf[128];
+
   // Open a file with no bookmarks.
   EXPECT_TRUE(OpenDocument("named_dests.pdf"));
 
-  // The non-existent top-level bookmark has no title.
-  unsigned short buf[128];
-  EXPECT_EQ(0u, FPDFBookmark_GetTitle(nullptr, buf, sizeof(buf)));
-
   // NULL argument cases.
+  EXPECT_EQ(0u, FPDFBookmark_GetTitle(nullptr, buf, sizeof(buf)));
   EXPECT_EQ(nullptr, FPDFBookmark_GetFirstChild(nullptr, nullptr));
   EXPECT_EQ(nullptr, FPDFBookmark_GetFirstChild(document(), nullptr));
   EXPECT_EQ(nullptr, FPDFBookmark_GetNextSibling(nullptr, nullptr));
@@ -369,19 +368,21 @@ TEST_F(FPDFDocEmbedderTest, NoBookmarks) {
 }
 
 TEST_F(FPDFDocEmbedderTest, Bookmarks) {
+  unsigned short buf[128];
+
   // Open a file with two bookmarks.
   EXPECT_TRUE(OpenDocument("bookmarks.pdf"));
-
-  // The existent top-level bookmark has no title.
-  unsigned short buf[128];
-  EXPECT_EQ(0u, FPDFBookmark_GetTitle(nullptr, buf, sizeof(buf)));
 
   FPDF_BOOKMARK child = FPDFBookmark_GetFirstChild(document(), nullptr);
   EXPECT_TRUE(child);
   EXPECT_EQ(34u, FPDFBookmark_GetTitle(child, buf, sizeof(buf)));
   EXPECT_EQ(WideString(L"A Good Beginning"), WideString::FromUTF16LE(buf, 16));
 
-  EXPECT_EQ(nullptr, FPDFBookmark_GetFirstChild(document(), child));
+  FPDF_DEST dest = FPDFBookmark_GetDest(document(), child);
+  EXPECT_FALSE(dest);  // TODO(tsepez): put real dest into bookmarks.pdf
+
+  FPDF_BOOKMARK grand_child = FPDFBookmark_GetFirstChild(document(), child);
+  EXPECT_EQ(nullptr, grand_child);
 
   FPDF_BOOKMARK sibling = FPDFBookmark_GetNextSibling(document(), child);
   EXPECT_TRUE(sibling);
@@ -392,6 +393,8 @@ TEST_F(FPDFDocEmbedderTest, Bookmarks) {
 }
 
 TEST_F(FPDFDocEmbedderTest, FindBookmarks) {
+  unsigned short buf[128];
+
   // Open a file with two bookmarks.
   EXPECT_TRUE(OpenDocument("bookmarks.pdf"));
 
@@ -401,7 +404,6 @@ TEST_F(FPDFDocEmbedderTest, FindBookmarks) {
   EXPECT_TRUE(child);
 
   // Check that the string matches.
-  unsigned short buf[128];
   EXPECT_EQ(34u, FPDFBookmark_GetTitle(child, buf, sizeof(buf)));
   EXPECT_EQ(WideString(L"A Good Beginning"), WideString::FromUTF16LE(buf, 16));
 
