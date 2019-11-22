@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "eafb3dba_05f37fab",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-22T01:26:52Z",
+      "side": 1,
+      "message": "I suppose this is a clean up CL, so now is a good time to rename them.",
+      "parentUuid": "b84398ed_c3126d86",
+      "range": {
+        "startLine": 367,
+        "startChar": 27,
+        "endLine": 367,
+        "endChar": 41
+      },
+      "revId": "4effc0cb62ce9b305c67fdbebf653674b12c9a90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "456a5c16_64421452",
         "filename": "core/fpdfapi/parser/cpdf_parser.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2019-11-21T20:32:33Z",
       "side": 1,
       "message": "nit: is this an offset, too?  or are xref_offsets different from xrefpos? If they are the same then maybe name consistently",
+      "range": {
+        "startLine": 142,
+        "startChar": 37,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "4effc0cb62ce9b305c67fdbebf653674b12c9a90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf5cfef3_26442474",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-11-22T01:26:52Z",
+      "side": 1,
+      "message": "The xref position are generally \"byte offset from the beginning of the file to the beginning of the xref keyword\". So yes, they are an offset, but one that\u0027s always in one direction. Since the represent value is roughly on the order of the file size, we use FX_FILESIZE to present them.\n\nThis entire file uses \"offset\" and \"pos\" interchangably, so I ended up doing that. I\u0027ll name these more consistently, using \"offset\" in more places.",
+      "parentUuid": "456a5c16_64421452",
       "range": {
         "startLine": 142,
         "startChar": 37,
