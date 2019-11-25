@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93a6cf28_4d01c904",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-11-25T18:59:26Z",
+      "side": 0,
+      "message": "NOTE: obviously, we could just swap lines 68 \u0026 69 to get the same effect, but this gets rid of more ifdefs ...",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "e87972e30da4cb87f0620baf32cea698f43dd093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
