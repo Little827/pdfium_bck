@@ -13,6 +13,11 @@
 
 namespace {
 
+constexpr auto kNamePlatformMac = 1;
+constexpr auto kNameMacEncodingRoman = 0;
+constexpr auto kNamePlatformWindows = 3;
+constexpr auto kNameWindowsEncodingUnicode = 1;
+
 ByteString GetStringFromTable(pdfium::span<const uint8_t> string_span,
                               uint16_t offset,
                               uint16_t length) {
@@ -88,11 +93,33 @@ ByteString GetNameFromTT(pdfium::span<const uint8_t> name_table,
 
   for (uint32_t i = 0; i < name_count;
        i++, name_table = name_table.subspan(12)) {
-    if (GET_TT_SHORT(&name_table[6]) == name_id &&
-        GET_TT_SHORT(&name_table[0]) == 1 &&
-        GET_TT_SHORT(&name_table[2]) == 0) {
-      return GetStringFromTable(string_span, GET_TT_SHORT(&name_table[10]),
-                                GET_TT_SHORT(&name_table[8]));
+    if (GET_TT_SHORT(&name_table[6]) == name_id) {
+      const auto platformIdentifier = GET_TT_SHORT(name_table);
+      const auto platformEncoding = GET_TT_SHORT(&name_table[2]);
+
+      if (platformIdentifier == kNamePlatformMac &&
+          platformEncoding == kNameMacEncodingRoman) {
+        return GetStringFromTable(string_span, GET_TT_SHORT(&name_table[10]),
+                                  GET_TT_SHORT(&name_table[8]));
+      } else if (platformIdentifier == kNamePlatformWindows &&
+                 platformEncoding == kNameWindowsEncodingUnicode) {
+        // This name is always UTF16-BE and we have to convert it to UTF8.
+        auto utf16Be =
+            GetStringFromTable(string_span, GET_TT_SHORT(&name_table[10]),
+                               GET_TT_SHORT(&name_table[8]));
+        if (utf16Be.IsEmpty()) {
+          return ByteString();
+        }
+        if ((utf16Be.GetLength() % 2) != 0) {
+          return ByteString();
+        }
+
+        const pdfium::span<const uint8_t> rawSpan = utf16Be.raw_span();
+        return WideString::FromUTF16BE(
+                   reinterpret_cast<const uint16_t*>(rawSpan.data()),
+                   rawSpan.size() / 2)
+            .ToUTF8();
+      }
     }
   }
   return ByteString();
