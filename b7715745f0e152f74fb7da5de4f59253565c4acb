@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "53a4eb27_dd4ebbf6",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "To eventually fix the parsing error that happens in HandleBeginBFRange(), the code strings need to be validated before calling StringToWideString() or within StringToWideString(). \n\nIf validation is done before calling StringToWideString(), the code will be something like:\n    ......\n    ByteStringView start \u003d pParser-\u003eGetWord();\n    if(start !\u003d \"[\" \u0026\u0026 !IsValidCodeString(start)) {\n        // ivalid character detected\n        return false;\n    }\n\n    if (start \u003d\u003d \"[\") {\n      for (uint32_t code \u003d lowcode; code \u003c\u003d highcode; code++) {\n        auto codestr \u003d pParser-\u003eGetWord();\n        if( !IsValidCodeString(codestr)) \n          return false;\n        SetCode(code, StringToWideString(codestr));\n    }\n      pParser-\u003eGetWord();\n      continue;\n    }\n\n    WideString destcode \u003d StringToWideString(start);\n    ......\n\nRight now I prefer to merge the string validation part into StringToWideString(), just like what we are doing in StringToCode(), and make StringToWideString() return a empty wide string when it detects error.\n\nSince the validation process needs to be included in both functions, maybe we should still keep IsValidCodeString() as a separate function to reduce redundancy?\n\nAnother question is maybe we can broaden the scope of this current CL to include making StringToWideString() more robust too?",
+      "parentUuid": "0359a162_aa783199",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d803b49e_9dea3e11",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 4
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "ade5bfc7_6bfc288e",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d803b49e_9dea3e11",
+      "range": {
+        "startLine": 102,
+        "startChar": 32,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5b0e737_d8a07400",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 4
@@ -74,6 +116,24 @@
       "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b6527ac_df5cacc0",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b0e737_d8a07400",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "29c713a7_a4c74d6e",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46d4e0ad_b267bfbc",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad4abd10_60efa6e7",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 4
@@ -120,6 +204,30 @@
       "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb822c9e_45f034a5",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4abd10_60efa6e7",
+      "range": {
+        "startLine": 115,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "2bc6db70_2a2c12eb",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a839a8_059ddbf5",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e2d2c8a_31ea7126",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 4
@@ -168,6 +294,24 @@
       "writtenOn": "2019-11-22T19:47:06Z",
       "side": 1,
       "message": "I would add a test for FFFFFFFF, too.\n\nAlso, it would be good to cover a few encoded UTF-16BE values that use surrogate pairs, like DBFFDFFF and D800DC00, as well as unpaired surrogates like D800-DBFF and DC00-DFFF (technically invalid, but good to have test coverage for).",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "327554ee_5387ea9c",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "Agree! Those technically invalid unicodes definitely need to go into the unit tests, but right now I still need to create a test case that ToUnicode map actually matters to unicode selection (See comment #11 in chromium:1021762, some ToUnicode mapping is not being used even it exists in the pdf file), so that we can observe how Acrobat is performing regarding to strings like \"FFFFFFFF\".",
+      "parentUuid": "9e2d2c8a_31ea7126",
       "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -188,6 +332,24 @@
       "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8c4820_e666c2f2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-25T17:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4788b0_34d1936d",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
