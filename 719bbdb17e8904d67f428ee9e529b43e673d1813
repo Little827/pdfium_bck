@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8548ec52_fa2a7904",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-25T22:17:14Z",
+      "side": 1,
+      "message": "I would briefly describe what pdfium:642 is about (1-2 sentences), so the reader doesn\u0027t necessarily have to look at the bug to know what this change is about.",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "719bbdb17e8904d67f428ee9e529b43e673d1813",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff201b2b_e1334391",
+        "filename": "testing/resources/pixel/bug_642.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-25T22:17:14Z",
+      "side": 1,
+      "message": "Optional: Stream is somewhat uninteresting (is just a content stream with inline image data that paints the letter \"A\"). Rather than encode the entire stream as ASCIIHexDecode, however, you can encode just the inline image data (BI/ID/EI operators; see section 8.9.7 of PDF 32000-1), using a \"/F /AHx\" entry in the BI section.\n\nGiven that we don\u0027t really care about the content stream, however, and it doesn\u0027t really shrink this section very much, I wouldn\u0027t worry about it. It\u0027d probably be more beneficial to find a Type 3 font with simpler glyphs.",
+      "revId": "719bbdb17e8904d67f428ee9e529b43e673d1813",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
