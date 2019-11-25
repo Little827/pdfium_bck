@@ -1308,6 +1308,15 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
                                                        double page_y);
 
 /**
+ * Function: FORM_OnRButtonDown
+ *          Same as above, execpt for the right mouse button.
+ */
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
+                                                       FPDF_PAGE page,
+                                                       int modifier,
+                                                       double page_x,
+                                                       double page_y);
+/**
  * Function: FORM_OnLButtonUp
  *          You can call this member function when the user releases the left
  *          mouse button.
@@ -1323,6 +1332,16 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
  *          TRUE indicates success; otherwise false.
  **/
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
+                                                     FPDF_PAGE page,
+                                                     int modifier,
+                                                     double page_x,
+                                                     double page_y);
+
+/**
+ * Function: FORM_OnRButtonUp
+ *          Same as above, execpt for the right mouse button.
+ */
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
                                                      FPDF_PAGE page,
                                                      int modifier,
                                                      double page_x,
@@ -1351,19 +1370,6 @@ FORM_OnLButtonDoubleClick(FPDF_FORMHANDLE hHandle,
                           int modifier,
                           double page_x,
                           double page_y);
-
-#ifdef PDF_ENABLE_XFA
-FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
-                                                       FPDF_PAGE page,
-                                                       int modifier,
-                                                       double page_x,
-                                                       double page_y);
-FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
-                                                     FPDF_PAGE page,
-                                                     int modifier,
-                                                     double page_x,
-                                                     double page_y);
-#endif  // PDF_ENABLE_XFA
 
 /**
  * Function: FORM_OnKeyDown
