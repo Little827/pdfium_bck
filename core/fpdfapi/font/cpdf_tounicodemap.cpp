@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/font/cpdf_tounicodemap.h"
 
+#include <limits>
 #include <utility>
 
 #include "core/fpdfapi/font/cpdf_cid2unicodemap.h"
@@ -33,6 +34,31 @@ WideString StringDataAdd(WideString str) {
   if (value)
     ret.InsertAtFront(value);
   return ret;
+}
+
+bool IsValidCodeString(ByteStringView str) {
+  size_t len = str.GetLength();
+  if (len == 0)
+    return true;
+
+  if (str[0] != '<' && !std::isxdigit(str[0]))
+    return false;
+
+  if (!(str[0] == '<') == (str[len - 1] == '>'))
+    return false;
+
+  if (str[0] == '<') {
+    for (size_t i = 1; i < len - 1; ++i) {
+      if (!std::isxdigit(str[i]))
+        return false;
+    }
+  } else {
+    for (size_t i = 0; i < len; ++i) {
+      if (!std::isdigit(str[i]))
+        return false;
+    }
+  }
+  return true;
 }
 
 }  // namespace
@@ -73,21 +99,29 @@ uint32_t CPDF_ToUnicodeMap::ReverseLookup(wchar_t unicode) const {
 
 // static
 uint32_t CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
+  if (!IsValidCodeString(str))
+    return kInvalidCode;
+
   size_t len = str.GetLength();
   if (len == 0)
     return 0;
 
-  uint32_t result = 0;
+  FX_SAFE_UINT32 integer = 0;
   if (str[0] == '<') {
-    for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i)
-      result = result * 16 + FXSYS_HexCharToInt(str.CharAt(i));
-    return result;
+    for (size_t i = 1; i < len - 1; ++i) {
+      integer = integer * 16 + FXSYS_HexCharToInt(str.CharAt(i));
+      if (!integer.IsValid())
+        break;
+    }
+  } else {
+    for (size_t i = 0; i < len; ++i) {
+      integer = integer * 10 + FXSYS_DecimalCharToInt(str.CharAt(i));
+      if (!integer.IsValid())
+        break;
+    }
   }
 
-  for (size_t i = 0; i < len && std::isdigit(str[i]); ++i)
-    result = result * 10 + FXSYS_DecimalCharToInt(str.CharAt(i));
-
-  return result;
+  return integer.ValueOrDefault(kInvalidCode);
 }
 
 // static
@@ -207,3 +241,6 @@ void CPDF_ToUnicodeMap::SetCode(uint32_t srccode, WideString destcode) {
     m_MultiCharBuf << destcode;
   }
 }
+
+const uint32_t CPDF_ToUnicodeMap::kInvalidCode =
+    std::numeric_limits<uint32_t>::max();

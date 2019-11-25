@@ -8,11 +8,32 @@
 
 TEST(cpdf_tounicodemap, StringToCode) {
   EXPECT_EQ(0u, CPDF_ToUnicodeMap::StringToCode(""));
-  EXPECT_EQ(194u, CPDF_ToUnicodeMap::StringToCode("<c2"));
-  EXPECT_EQ(162u, CPDF_ToUnicodeMap::StringToCode("<A2"));
-  EXPECT_EQ(2802u, CPDF_ToUnicodeMap::StringToCode("<Af2"));
+  EXPECT_EQ(194u, CPDF_ToUnicodeMap::StringToCode("<c2>"));
+  EXPECT_EQ(162u, CPDF_ToUnicodeMap::StringToCode("<A2>"));
+  EXPECT_EQ(2802u, CPDF_ToUnicodeMap::StringToCode("<Af2>"));
+
   EXPECT_EQ(12u, CPDF_ToUnicodeMap::StringToCode("12"));
   EXPECT_EQ(128u, CPDF_ToUnicodeMap::StringToCode("128"));
+
+  // TODO(nigi): Add more test cases in which unicode values exceed xDBFFDFFF
+
+  // Integer overflow
+  EXPECT_EQ(CPDF_ToUnicodeMap::kInvalidCode,
+            CPDF_ToUnicodeMap::StringToCode("<100000000>"));
+  EXPECT_EQ(CPDF_ToUnicodeMap::kInvalidCode,
+            CPDF_ToUnicodeMap::StringToCode("4294967296"));
+
+  // Invalid string
+  EXPECT_EQ(CPDF_ToUnicodeMap::kInvalidCode,
+            CPDF_ToUnicodeMap::StringToCode("<12"));
+  EXPECT_EQ(CPDF_ToUnicodeMap::kInvalidCode,
+            CPDF_ToUnicodeMap::StringToCode("12>"));
+  EXPECT_EQ(CPDF_ToUnicodeMap::kInvalidCode,
+            CPDF_ToUnicodeMap::StringToCode("1-7"));
+  EXPECT_EQ(CPDF_ToUnicodeMap::kInvalidCode,
+            CPDF_ToUnicodeMap::StringToCode("00AB"));
+  EXPECT_EQ(CPDF_ToUnicodeMap::kInvalidCode,
+            CPDF_ToUnicodeMap::StringToCode("<00NN>"));
 }
 
 TEST(cpdf_tounicodemap, StringToWideString) {
