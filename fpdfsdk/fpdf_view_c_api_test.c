@@ -46,6 +46,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_GetAttachmentPoints);
     CHK(FPDFAnnot_GetColor);
     CHK(FPDFAnnot_GetFlags);
+    CHK(FPDFAnnot_GetFocusableSubtypes);
     CHK(FPDFAnnot_GetFontSize);
     CHK(FPDFAnnot_GetFormFieldAtPoint);
     CHK(FPDFAnnot_GetFormFieldFlags);
@@ -69,6 +70,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_SetAttachmentPoints);
     CHK(FPDFAnnot_SetColor);
     CHK(FPDFAnnot_SetFlags);
+    CHK(FPDFAnnot_SetFocusableSubtypes);
     CHK(FPDFAnnot_SetRect);
     CHK(FPDFAnnot_SetStringValue);
     CHK(FPDFAnnot_UpdateObject);
@@ -78,6 +80,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFPage_GetAnnotCount);
     CHK(FPDFPage_GetAnnotIndex);
     CHK(FPDFPage_RemoveAnnot);
+    
 
     // fpdf_attachment.h
     CHK(FPDFAttachment_GetFile);
