@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c7aaf65_a9fc8287",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-26T20:22:46Z",
+      "side": 1,
+      "message": "\"test case\" -\u003e \"pixel test\" (and then you don\u0027t need to mention that this is a test for pdfium:642 twice)",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "7e13c87946f304c5466c767bf369f6fe58d207e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

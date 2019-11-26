@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22a88be1_2d6e7e8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-26T20:22:46Z",
+      "side": 1,
+      "message": "Better, although this could use some word-smithing. Maybe something along the lines of:\n\n\"pdfium:642 fixed a text extraction bug involving Type 3 fonts and misuse of the Encoding array, but did not add a corresponding test case.\"",
+      "parentUuid": "8548ec52_fa2a7904",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "719bbdb17e8904d67f428ee9e529b43e673d1813",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff201b2b_e1334391",
         "filename": "testing/resources/pixel/bug_642.in",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "719bbdb17e8904d67f428ee9e529b43e673d1813",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93dce2c2_fbfb7c8b",
+        "filename": "testing/resources/pixel/bug_642.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-26T20:22:46Z",
+      "side": 1,
+      "message": "Offline: We agreed there wasn\u0027t much value in pursuing this.",
+      "parentUuid": "ff201b2b_e1334391",
+      "revId": "719bbdb17e8904d67f428ee9e529b43e673d1813",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
