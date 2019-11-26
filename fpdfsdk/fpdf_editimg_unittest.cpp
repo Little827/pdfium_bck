@@ -7,6 +7,7 @@
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "testing/gtest/include/gtest/gtest.h"
+#include "testing/utils/file_util.h"
 
 class PDFEditImgTest : public testing::Test {
   void SetUp() override { CPDF_PageModule::Create(); }
@@ -66,6 +67,22 @@ TEST_F(PDFEditImgTest, NewImageObjGenerateContent) {
   EXPECT_TRUE(FPDFPage_GenerateContent(page));
 
   FPDFBitmap_Destroy(bitmap);
+  FPDF_ClosePage(page);
+  FPDF_CloseDocument(doc);
+}
+
+TEST_F(PDFEditImgTest, NewImageObjLoadJpeg) {
+  FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
+  FPDF_PAGE page = FPDFPage_New(doc, 0, 200, 200);
+  ASSERT_TRUE(page);
+
+  FPDF_PAGEOBJECT image = FPDFPageObj_NewImageObj(doc);
+  ASSERT_TRUE(image);
+
+  FileAccessForTesting file_access("mona_lisa.jpg");
+  EXPECT_TRUE(FPDFImageObj_LoadJpegFile(&page, 1, image, &file_access));
+  EXPECT_TRUE(FPDFImageObj_LoadJpegFileInline(&page, 1, image, &file_access));
+
   FPDF_ClosePage(page);
   FPDF_CloseDocument(doc);
 }
