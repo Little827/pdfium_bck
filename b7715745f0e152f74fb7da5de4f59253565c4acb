@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9799eb51_6965f373",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-26T03:36:31Z",
+      "side": 1,
+      "message": "We can check up front that the word is either a decimal or a hexadecimal string. From there, the per character checks are pretty simple, so I don\u0027t think we would gain much from having a separate IsValidCodeString() phase (which would boil down to the isdigit()/isxdigit() check).\n\nSide note: According to the CMap spec (technical note #5014), both StringToWideString() and StringToCode() should be consuming hexadecimal values only, which might simplify things. (We may have out-of-spec CMaps that use decimal, though; not sure how worried to be about that. Presumably, we have test cases where decimal was required?)\n\nMeta-comment: It\u0027d be nice if we could share code with CPDF_CMapParser. (In fact, the GetCode() function there already uses checked numerics.)\n\nEmbedded CMaps used for encoding are somewhat different from CMaps used for ToUnicode (different operators are allowed, and ToUnicode maps can have destination strings of up to 512 bytes; compare 9.7.5.4 vs. 9.10.3). Still, it seems like there\u0027d be a common subset of functionality that we could unify here.",
+      "parentUuid": "53a4eb27_dd4ebbf6",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d803b49e_9dea3e11",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 4
@@ -312,6 +330,24 @@
       "side": 1,
       "message": "Agree! Those technically invalid unicodes definitely need to go into the unit tests, but right now I still need to create a test case that ToUnicode map actually matters to unicode selection (See comment #11 in chromium:1021762, some ToUnicode mapping is not being used even it exists in the pdf file), so that we can observe how Acrobat is performing regarding to strings like \"FFFFFFFF\".",
       "parentUuid": "9e2d2c8a_31ea7126",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c082c17_5cfc376d",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-11-26T03:36:31Z",
+      "side": 1,
+      "message": "ToUnicode mapping is used for text extraction, so I wouldn\u0027t expect any visual differences. You\u0027ll need a test that does text extraction (something along the lines of copy-and-paste), or maybe the JavaScript API can detect the difference.",
+      "parentUuid": "327554ee_5387ea9c",
       "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
