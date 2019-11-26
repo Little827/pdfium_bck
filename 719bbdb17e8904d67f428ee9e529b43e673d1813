@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d9772fc3_ec17300f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-11-26T21:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8548ec52_fa2a7904",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "719bbdb17e8904d67f428ee9e529b43e673d1813",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff201b2b_e1334391",
         "filename": "testing/resources/pixel/bug_642.in",
         "patchSetId": 3
