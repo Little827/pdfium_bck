@@ -43,6 +43,7 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_pauseadapter.h"
 #include "fxjs/ijs_runtime.h"
+#include "public/fpdf_annot.h"
 #include "public/fpdf_formfill.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/span.h"
@@ -182,6 +183,8 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   if (!g_bLibraryInitialized)
     return;
+
+  ResetFocusableAnnotSubtypes();
 
 #ifdef PDF_ENABLE_XFA
   BC_Library_Destroy();
