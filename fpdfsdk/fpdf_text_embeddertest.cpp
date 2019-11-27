@@ -22,6 +22,8 @@ namespace {
 
 constexpr char kHelloGoodbyeText[] = "Hello, world!\r\nGoodbye, world!";
 constexpr int kHelloGoodbyeTextSize = FX_ArraySize(kHelloGoodbyeText);
+constexpr char kABCDText[] = "ABCD";
+constexpr int kABCDTextSize = FX_ArraySize(kABCDText);
 
 bool check_unsigned_shorts(const char* expected,
                            const unsigned short* actual,
@@ -1303,6 +1305,28 @@ TEST_F(FPDFTextEmbedderTest, Bug_1139) {
   ASSERT_EQ(kHelloGoodbyeTextSize, num_chars);
   EXPECT_TRUE(
       check_unsigned_shorts(kHelloGoodbyeText, buffer, kHelloGoodbyeTextSize));
+  FPDFText_ClosePage(text_page);
+  UnloadPage(page);
+}
+
+TEST_F(FPDFTextEmbedderTest, Bug_642) {
+  ASSERT_TRUE(OpenDocument("bug_642.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_TEXTPAGE text_page = FPDFText_LoadPage(page);
+  ASSERT_TRUE(text_page);
+
+  // -1 for CountChars not including the \0, but +1 for the extra control
+  // character.
+  EXPECT_EQ(kABCDTextSize - 1, FPDFText_CountChars(text_page));
+
+  // There is an extra control character at the beginning of the string, but it
+  // should not appear in the output nor prevent extracting the text.
+  unsigned short buffer[128];
+  int num_chars = FPDFText_GetText(text_page, 0, 128, buffer);
+  ASSERT_EQ(kABCDTextSize, num_chars);
+  EXPECT_TRUE(check_unsigned_shorts(kABCDText, buffer, kABCDTextSize));
   FPDFText_ClosePage(text_page);
   UnloadPage(page);
 }
