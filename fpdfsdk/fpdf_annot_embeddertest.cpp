@@ -2151,3 +2151,18 @@ TEST_F(FPDFAnnotEmbedderTest, IsCheckedInvalidWidgetType) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFAnnotEmbedderTest, SetFocusableAnnotSubtypes) {
+  constexpr FPDF_ANNOTATION_SUBTYPE focusableSubtypes[] = {FPDF_ANNOT_WIDGET};
+  constexpr unsigned int count =
+      sizeof(focusableSubtypes) / sizeof(focusableSubtypes[0]);
+
+  FPDFAnnot_SetFocusableSubtypes(focusableSubtypes, count);
+
+  size_t setSubtypeCount = 0;
+  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(nullptr, &setSubtypeCount));
+  EXPECT_EQ(count, setSubtypeCount);
+
+  FPDF_ANNOTATION_SUBTYPE setSubtypes[setSubtypeCount];
+  EXPECT_TRUE(FPDFAnnot_GetFocusableSubtypes(setSubtypes, &setSubtypeCount));
+}
