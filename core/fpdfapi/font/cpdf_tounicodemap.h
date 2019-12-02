@@ -40,6 +40,11 @@ class CPDF_ToUnicodeMap {
   std::map<uint32_t, uint32_t> m_Map;
   UnownedPtr<const CPDF_CID2UnicodeMap> m_pBaseMap;
   CFX_WideTextBuf m_MultiCharBuf;
+
+  // The highest unicode value is xDBFFDFFF and a valid charcode uses up to 16
+  // bits. Use the maximum value for uint32_t as the return value to indicate
+  // the input code string is invalid.
+  static const uint32_t kInvalidCode;
 };
 
 #endif  // CORE_FPDFAPI_FONT_CPDF_TOUNICODEMAP_H_
