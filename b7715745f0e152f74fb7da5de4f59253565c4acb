@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "5c595470_59af82d5",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-02T20:23:06Z",
+      "side": 1,
+      "message": "So far I haven\u0027t found test cases of bfrange with decimal numbers in bfrange yet. \n\nI manually mapped \u003c0024\u003e \u003c0024\u003e [\u003c0041\u003e] into 36 36 [\u003c0041\u003e] or \u003c0024\u003e \u003c0024\u003e [ 65 ], and tested that in acrobat on Windows and MacOS. The text extraction from acrobat became a tofu instead of \u0027A\u0027. Judging by this behavior, acrobat is not handling decimal numbers for bfrange.\n\nAs for CMaps, it can have decimal numbers (see technical note #5014 Example 12 for cidrange), StringToCode() is not called for parsing CMaps.\n\nSince StringToCode() is only used for parsing bfrange or bfchar in ToUnicode Map, I think we can remove the steps for parsing decimal numbers in StringToCode().",
+      "parentUuid": "9799eb51_6965f373",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d803b49e_9dea3e11",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 4
@@ -351,6 +369,24 @@
       "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3159a36_620fa053",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-02T20:23:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c082c17_5cfc376d",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
