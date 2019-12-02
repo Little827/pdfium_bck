@@ -6,6 +6,7 @@
 
 #include "core/fpdfapi/font/cpdf_tounicodemap.h"
 
+#include <limits>
 #include <utility>
 
 #include "core/fpdfapi/font/cpdf_cid2unicodemap.h"
@@ -77,29 +78,33 @@ uint32_t CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
   if (len == 0)
     return 0;
 
-  uint32_t result = 0;
-  if (str[0] == '<') {
-    for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i)
-      result = result * 16 + FXSYS_HexCharToInt(str.CharAt(i));
-    return result;
+  if ((str[0] != '<') || (str[len - 1] != '>'))
+    return kInvalidCode;
+
+  FX_SAFE_UINT32 integer = 0;
+
+  for (size_t i = 1; i < len - 1; ++i) {
+    if (!std::isxdigit(str[i])) {
+      return kInvalidCode;
+    }
+    integer = integer * 16 + FXSYS_HexCharToInt(str.CharAt(i));
+    if (!integer.IsValid())
+      break;
   }
 
-  for (size_t i = 0; i < len && std::isdigit(str[i]); ++i)
-    result = result * 10 + FXSYS_DecimalCharToInt(str.CharAt(i));
-
-  return result;
+  return integer.ValueOrDefault(kInvalidCode);
 }
 
 // static
 WideString CPDF_ToUnicodeMap::StringToWideString(ByteStringView str) {
   size_t len = str.GetLength();
-  if (len == 0 || str[0] != '<')
+  if (len == 0 || str[0] != '<' || str[len - 1] != '>')
     return WideString();
 
   WideString result;
   int byte_pos = 0;
   wchar_t ch = 0;
-  for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i) {
+  for (size_t i = 1; i < len - 1 && std::isxdigit(str[i]); ++i) {
     ch = ch * 16 + FXSYS_HexCharToInt(str.CharAt(i));
     byte_pos++;
     if (byte_pos == 4) {
@@ -207,3 +212,6 @@ void CPDF_ToUnicodeMap::SetCode(uint32_t srccode, WideString destcode) {
     m_MultiCharBuf << destcode;
   }
 }
+
+const uint32_t CPDF_ToUnicodeMap::kInvalidCode =
+    std::numeric_limits<uint32_t>::max();
