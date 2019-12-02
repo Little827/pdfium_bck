@@ -41,6 +41,19 @@ TEST_F(FXV8UnitTest, EmptyLocal) {
   EXPECT_EQ(L"", cfx_v8()->ToWideString(empty));
   EXPECT_TRUE(cfx_v8()->ToObject(empty).IsEmpty());
   EXPECT_TRUE(cfx_v8()->ToArray(empty).IsEmpty());
+
+  // Can't set properties on empty objects, but does not fault.
+  v8::Local<v8::Value> marker = cfx_v8()->NewNumber(2);
+  v8::Local<v8::Object> empty_object;
+  cfx_v8()->PutObjectProperty(empty_object, "clams", marker);
+  EXPECT_TRUE(cfx_v8()->GetObjectProperty(empty_object, "clams").IsEmpty());
+  EXPECT_EQ(0u, cfx_v8()->GetObjectPropertyNames(empty_object).size());
+
+  // Can't set elements in empty arrays, but does not fault.
+  v8::Local<v8::Array> empty_array;
+  cfx_v8()->PutArrayElement(empty_array, 0, marker);
+  EXPECT_TRUE(cfx_v8()->GetArrayElement(empty_array, 0).IsEmpty());
+  EXPECT_EQ(0u, cfx_v8()->GetArrayLength(empty_array));
 }
 
 TEST_F(FXV8UnitTest, NewNull) {
