@@ -2151,3 +2151,22 @@ TEST_F(FPDFAnnotEmbedderTest, IsCheckedInvalidWidgetType) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFAnnotEmbedderTest, SetFocusableAnnotSubtypes) {
+  constexpr FPDF_ANNOTATION_SUBTYPE focusable_subtypes[] = {FPDF_ANNOT_WIDGET};
+  constexpr unsigned int subtype_count =
+      sizeof(focusable_subtypes) / sizeof(focusable_subtypes[0]);
+
+  FPDFAnnot_SetFocusableSubtypes(focusable_subtypes, subtype_count);
+
+  size_t count = 0;
+  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(nullptr, &count));
+  EXPECT_EQ(subtype_count, count);
+
+  FPDF_ANNOTATION_SUBTYPE set_subtypes[count];
+  EXPECT_TRUE(FPDFAnnot_GetFocusableSubtypes(set_subtypes, &count));
+
+  for (unsigned int i = 0; i < subtype_count; i++) {
+    EXPECT_EQ(focusable_subtypes[i], set_subtypes[i]);
+  }
+}
