@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58441b5f_2570427c",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:46:34Z",
+      "side": 1,
+      "message": "Prefer to define test values close to their point of use, particularly if they\u0027re not used in more than one test. In many cases, it may be clearer to use the literal value, rather than defining a separate constant.",
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ac2ffa_a7fda091",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:46:34Z",
+      "side": 1,
+      "message": "Don\u0027t use underscores in a gtest name:\nhttps://github.com/google/googletest/blob/master/googletest/docs/faq.md#why-should-test-suite-names-and-test-names-not-contain-underscore\n\nIt may be worthwhile to update the other test names in this file, for consistency and correctness.",
+      "range": {
+        "startLine": 1312,
+        "startChar": 29,
+        "endLine": 1312,
+        "endChar": 36
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8f0a0c_524291b1",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:46:34Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this extra control character you\u0027re referring to is? I don\u0027t see it in the PDF, so this is pretty confusing.",
+      "range": {
+        "startLine": 1324,
+        "startChar": 17,
+        "endLine": 1324,
+        "endChar": 40
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eabdbf21_10926dda",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:46:34Z",
+      "side": 1,
+      "message": "The API specifies buffer should be this count + 1 (for an extra terminator), so I believe this should be 127 (or the buffer should be 129).",
+      "range": {
+        "startLine": 1327,
+        "startChar": 49,
+        "endLine": 1327,
+        "endChar": 52
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e38ecad_dafbf74a",
+        "filename": "testing/resources/bug_642.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:46:34Z",
+      "side": 1,
+      "message": "Maybe include a .in copy of this file, to make it easy to update in the future?",
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d226b98_76f2a951",
+        "filename": "testing/resources/bug_642.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:46:34Z",
+      "side": 1,
+      "message": "Optional: I think you might be able to get away with an arbitrary content stream here, assuming you don\u0027t care about the visual appearance in this test.",
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
