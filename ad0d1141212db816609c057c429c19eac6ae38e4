@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4163d4e6_56c51162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-02T10:56:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d3d7daa_fdb541cd",
+      "revId": "ad0d1141212db816609c057c429c19eac6ae38e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6d5c93a_cadf2e47",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "789e98bd_1b1f080e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-02T10:56:55Z",
+      "side": 1,
+      "message": "Done.\n\nCurrently, there is no usage of FPDFAnnot_GetFocusableSubTypes() other than in newly added test cases. Please let me know your opinion whether this API should be continued or not.",
+      "parentUuid": "e6d5c93a_cadf2e47",
+      "revId": "ad0d1141212db816609c057c429c19eac6ae38e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a060cf76_cea8a76b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -50,6 +86,24 @@
       "revId": "ad0d1141212db816609c057c429c19eac6ae38e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e87c23_79f19757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-02T10:56:55Z",
+      "side": 1,
+      "message": "Done.\n\nRelated CL:\nhttps://pdfium-review.googlesource.com/c/pdfium/+/62950",
+      "parentUuid": "a060cf76_cea8a76b",
+      "revId": "ad0d1141212db816609c057c429c19eac6ae38e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
