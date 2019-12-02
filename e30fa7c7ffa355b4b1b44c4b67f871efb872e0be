@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e95f1ee_d75875aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:04:51Z",
+      "side": 1,
+      "message": "\"heximal\" (base 6) -\u003e \"hexadecimal\" (base 16)",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce447fb_5851bbea",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:04:51Z",
+      "side": 1,
+      "message": "As per my other comment about this returning character codes (up to 32 bits), we\u0027ll need to go back to your original proposal, and replace kInvalidCode with an out-of-band mechanism like base::Optional, or a separate out parameter.",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

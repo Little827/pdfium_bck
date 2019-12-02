@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "fec4a7f9_e1044910",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-02T21:04:51Z",
+      "side": 1,
+      "message": "Yes, the (general) CMap specification is particular about what kind of integers you can use for which operator parameters, for some reason. Good to know that Acrobat doesn\u0027t silently treat these as valid. :-)\n\nThis may cause us to be incompatible with our previous behavior, but we\u0027ll be more compatible with Acrobat. I wonder if it\u0027d be worthwhile to compare our behavior to Foxit.",
+      "parentUuid": "5c595470_59af82d5",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d803b49e_9dea3e11",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 4
