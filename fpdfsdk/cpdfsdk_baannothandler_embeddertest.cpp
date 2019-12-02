@@ -1,0 +1,102 @@
+// Copyright 2019 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+#include <memory>
+
+#include "fpdfsdk/cpdfsdk_annotiterator.h"
+#include "fpdfsdk/cpdfsdk_baannothandler.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/cpdfsdk_helpers.h"
+#include "fpdfsdk/cpdfsdk_pageview.h"
+#include "public/fpdf_annot.h"
+#include "testing/embedder_test.h"
+#include "testing/gtest/include/gtest/gtest.h"
+
+class CPDFSDK_BAAnnotHandlerTest : public EmbedderTest {
+ public:
+  void SetUp() override {
+    // Test behaviour with currently supported annot i.e. Widget.
+    // TODO: Use API FPDFAnnot_SetFocusableSubtypes to set list of
+    // focusable subtypes once links and highlights are supported.
+    EmbedderTest::SetUp();
+    SetUpBAAnnotHandler();
+  }
+
+  void TearDown() override {
+    UnloadPage(GetPage());
+    EmbedderTest::TearDown();
+  }
+
+  void SetUpBAAnnotHandler() {
+    EXPECT_TRUE(OpenDocument("links_highlights_annots.pdf"));
+    m_page = LoadPage(0);
+    ASSERT_TRUE(m_page);
+
+    CPDFSDK_FormFillEnvironment* pFormFillEnv =
+        CPDFSDKFormFillEnvironmentFromFPDFFormHandle(form_handle());
+    IPDF_Page* pPage = IPDFPageFromFPDFPage(m_page);
+    m_pPageView = pFormFillEnv->GetPageView(pPage, true);
+    ASSERT_TRUE(m_pPageView);
+
+    CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
+        pFormFillEnv->GetAnnotHandlerMgr();
+    m_pBAAnnotHandler = pAnnotHandlerMgr->m_pBAAnnotHandler.get();
+    ASSERT_TRUE(m_pBAAnnotHandler);
+  }
+
+  FPDF_PAGE GetPage() const { return m_page; }
+  CPDFSDK_PageView* GetPageView() const { return m_pPageView; }
+  CPDFSDK_BAAnnotHandler* GetBAAnnotHandler() const {
+    return m_pBAAnnotHandler;
+  }
+
+ private:
+  FPDF_PAGE m_page = nullptr;
+  CPDFSDK_PageView* m_pPageView = nullptr;
+  CPDFSDK_BAAnnotHandler* m_pBAAnnotHandler = nullptr;
+};
+
+TEST_F(CPDFSDK_BAAnnotHandlerTest, TabToLinkOrHighlightAnnot) {
+  // TODO: Create annot iterator with list of supported focusable subtypes
+  // as provided by host.
+  CPDFSDK_AnnotIterator ai(GetPageView(), CPDF_Annot::Subtype::LINK);
+  CPDFSDK_Annot* pAnnot = ai.GetFirstAnnot();
+  ASSERT_TRUE(pAnnot);
+
+  // Skip all annot types other than link & highlight.
+  while ((pAnnot->GetAnnotSubtype() != CPDF_Annot::Subtype::LINK) &&
+         (pAnnot->GetAnnotSubtype() != CPDF_Annot::Subtype::HIGHLIGHT)) {
+    CPDFSDK_Annot* pNextAnnot = ai.GetNextAnnot(pAnnot);
+    pAnnot = pNextAnnot;
+  }
+
+  ObservedPtr<CPDFSDK_Annot> pNonWidgetAnnot(pAnnot);
+
+  // TODO: Change expected value as true once links & highlights are supported.
+  EXPECT_FALSE(GetBAAnnotHandler()->OnSetFocus(&pNonWidgetAnnot, 0));
+
+  EXPECT_FALSE(GetBAAnnotHandler()->OnKillFocus(&pNonWidgetAnnot, 0));
+}
+
+TEST_F(CPDFSDK_BAAnnotHandlerTest, TabToInvalidAnnot) {
+  // TODO: Create annot iterator with list of supported focusable subtypes
+  // as provided by host.
+  CPDFSDK_AnnotIterator ai(GetPageView(), CPDF_Annot::Subtype::WIDGET);
+  CPDFSDK_Annot* pAnnot = ai.GetFirstAnnot();
+  ASSERT_TRUE(pAnnot);
+
+  // Skip link & highlight annot types.
+  while ((pAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::LINK) ||
+         (pAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::HIGHLIGHT)) {
+    CPDFSDK_Annot* pNextAnnot = ai.GetNextAnnot(pAnnot);
+    pAnnot = pNextAnnot;
+  }
+
+  ObservedPtr<CPDFSDK_Annot> pWidgetAnnot(pAnnot);
+
+  // Passing wrong subtype to BAAnnotHandler, API should return false.
+  EXPECT_FALSE(GetBAAnnotHandler()->OnSetFocus(&pWidgetAnnot, 0));
+
+  EXPECT_FALSE(GetBAAnnotHandler()->OnKillFocus(&pWidgetAnnot, 0));
+}
