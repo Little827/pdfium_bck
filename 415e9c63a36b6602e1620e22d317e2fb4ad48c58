@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7722e4b_463fe770",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T22:35:01Z",
+      "side": 1,
+      "message": "- Can we flip this to: EXPECT_GT(len, 2u) ?\n- Or maybe add an IsDoubleNUL() helper and use that everywhere?",
+      "revId": "415e9c63a36b6602e1620e22d317e2fb4ad48c58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
