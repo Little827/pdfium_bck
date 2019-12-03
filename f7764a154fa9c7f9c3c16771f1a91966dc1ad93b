@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d2883c8_997d90b3",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "PDFium",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234421ab_a24b7f08",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "Not needed.",
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b64545_52cd170f",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "Not needed. testing/embedder_test.h will always include gtest.h.",
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8deaadd4_5a048c92",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "How about: TODO(crbug.com/994500) here and below for all the TODOs?",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3aeea6_9a992725",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "This doesn\u0027t exist yet. So in this standalone CL, the comment makes more sense if it said something like \"Add an API to ...\".",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f19147_237e7cf5",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "Not needed, as the only caller can access |m_page| directly.",
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5fd2105_2b3bef43",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "Can you order the objects, or renumber the objects so they are in increasing order?",
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ccefc20_1604d8e9",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "Let\u0027s put the type keys at the top, so objects are easier to identify. e.g. /Type /Subtype and /FT first here. (FT \u003d\u003d field type)",
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f8ca9e_219dcb21",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:57:10Z",
+      "side": 1,
+      "message": "Can we also number the objects 1 - 12, instead of having gaps in the number space?",
+      "revId": "f7764a154fa9c7f9c3c16771f1a91966dc1ad93b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
