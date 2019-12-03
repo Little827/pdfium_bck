@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91300110_a2c1b1e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-03T16:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e95f1ee_d75875aa",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dce447fb_5851bbea",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-02T21:04:51Z",
       "side": 1,
       "message": "As per my other comment about this returning character codes (up to 32 bits), we\u0027ll need to go back to your original proposal, and replace kInvalidCode with an out-of-band mechanism like base::Optional, or a separate out parameter.",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1cf35dc_78484cc1",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-03T16:02:28Z",
+      "side": 1,
+      "message": "I think using xFFFF as invalid will serve the purpose:\n1. if charcode is \u003cFFFF\u003e, then return value will be the same as its own value.\n2. if unicode is \u003cFFFF\u003e, xFFFF is an guaranteed invalid unicode.",
+      "parentUuid": "dce447fb_5851bbea",
       "range": {
         "startLine": 82,
         "startChar": 11,

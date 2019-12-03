@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "aa02da90_10024c68",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-03T16:02:28Z",
+      "side": 1,
+      "message": "For bfchar and bfrange operators only:\nAfter changing charcode or unicode into decimal number, foxit won\u0027t recognize the ToUnicode mapping during text extraction either. This is consistent with adobe. \nThe only difference between these two viewer is, adobe extracts tofu and foxit just treats the charcode as unicode and extract it.\nIt\u0027s safe to say that for bfrange and bfchar, we only need to process hexadecimal codes.",
+      "parentUuid": "fec4a7f9_e1044910",
+      "revId": "b7715745f0e152f74fb7da5de4f59253565c4acb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d803b49e_9dea3e11",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 4
