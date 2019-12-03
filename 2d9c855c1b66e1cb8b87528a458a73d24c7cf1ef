@@ -16,6 +16,24 @@
       "revId": "2d9c855c1b66e1cb8b87528a458a73d24c7cf1ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2445c9ba_ac3d006f",
+        "filename": "fxjs/cfx_v8_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-03T21:25:44Z",
+      "side": 1,
+      "message": "I couldn\u0027t find another way to do it. These have to be set from a JS callback (line 238) on top of a bunch of JIT\u0027d JS frames to indicate that the callback ran. It doesn\u0027t have the context to find much of anything, since we haven\u0027t bound anything on C++ side to |object| (line 233).",
+      "parentUuid": "c9f8864d_944e99a1",
+      "revId": "2d9c855c1b66e1cb8b87528a458a73d24c7cf1ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
