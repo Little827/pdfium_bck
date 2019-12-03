@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9f8864d_944e99a1",
+        "filename": "fxjs/cfx_v8_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T20:28:21Z",
+      "side": 1,
+      "message": "Do these have to be globals?",
+      "revId": "2d9c855c1b66e1cb8b87528a458a73d24c7cf1ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
