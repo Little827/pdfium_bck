@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d8442ef_4c56d5e1",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:23:55Z",
+      "side": 1,
+      "message": "So is this an int? uint32_t? Let\u0027s explicitly declare the type.",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "860e840b700e33dc8a37f4e1aa0b10c028a991f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4dfe331_a3d440d4",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:23:55Z",
+      "side": 1,
+      "message": "Ditto for most of the auto usage. Can\u0027t figure out what any of them are suppose to be. (Whereas I can for std::make_unique(), and don\u0027t want to ever write std::vector\u003csome_long_typ[e\u003e::iterator.)",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "860e840b700e33dc8a37f4e1aa0b10c028a991f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d679cbdb_1ae3e143",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:23:55Z",
+      "side": 1,
+      "message": "snake_case, like |name_table| and |string_span|.",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "860e840b700e33dc8a37f4e1aa0b10c028a991f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6f9bbfd_3ff331d6",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:23:55Z",
+      "side": 1,
+      "message": "No need for \"else\" after a return.",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 12
+      },
+      "revId": "860e840b700e33dc8a37f4e1aa0b10c028a991f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc74d4a_045c3d41",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:23:55Z",
+      "side": 1,
+      "message": "Combine with line 110.",
+      "revId": "860e840b700e33dc8a37f4e1aa0b10c028a991f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d905eb7f_6f893a7b",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T23:23:55Z",
+      "side": 1,
+      "message": "No need.",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "860e840b700e33dc8a37f4e1aa0b10c028a991f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
