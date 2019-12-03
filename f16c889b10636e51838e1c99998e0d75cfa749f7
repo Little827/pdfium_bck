@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "27f64000_65b57a86",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-03T20:25:45Z",
+      "side": 1,
+      "message": "This issue still exists in the latest patch set. Given the scenario I described, this CL currently fixes the issue in terms of correctness, but in terms of performance, it negates most of the benefits of having a linearized PDF by potentially reading in most of it.\n\nPlease take a look at the PDF spec and try to request a more appropriate amount of data here. https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/PDF32000_2008.pdf#page\u003d60",
+      "parentUuid": "7a4ef42d_5804f702",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64a07d61_ee366f94",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 8
