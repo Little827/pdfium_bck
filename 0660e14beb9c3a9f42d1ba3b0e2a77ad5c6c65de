@@ -227,6 +227,30 @@
     },
     {
       "key": {
+        "uuid": "483c2be2_a4b2dbb3",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T20:42:31Z",
+      "side": 1,
+      "message": "Ah, it looks like this comment predated the fix.",
+      "parentUuid": "6f45ca65_4812b811",
+      "range": {
+        "startLine": 1324,
+        "startChar": 17,
+        "endLine": 1324,
+        "endChar": 40
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eabdbf21_10926dda",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 3
