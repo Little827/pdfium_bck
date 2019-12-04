@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4cfab5_376ae8b4",
+        "filename": "testing/resources/javascript/xfa_specific/xfa_event_pseudomodel.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-04T00:22:46Z",
+      "side": 1,
+      "message": "happened",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "0334bbfa817a15beddc332c64b177d1083d996f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
