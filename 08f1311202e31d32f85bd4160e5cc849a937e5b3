@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "d47d6b4c_17ba24bf",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T21:27:42Z",
+      "side": 1,
+      "message": "The style guide allows this if it makes the code more readable (https://google.github.io/styleguide/cppguide.html#Boolean_Expressions), but I agree this probably would be more readable with fewer parentheses.",
+      "parentUuid": "7c983566_27f5e632",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 7
+      },
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "540c609b_bbf0fd11",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 10
@@ -99,6 +123,30 @@
       "writtenOn": "2019-12-04T03:08:27Z",
       "side": 1,
       "message": "What was wrong the prior \"result\" name?",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac79893_55693dae",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T21:27:42Z",
+      "side": 1,
+      "message": "Good point; \"integer\" is an unusual choice here. I might prefer \"code\" to either, though. (This method is called \"StringToCode\", after all.)\n\nI assume there\u0027s going to have to be a fair amount of rework to support 32-bit character codes, so I\u0027m taking a bit of a wait-and-see attitude towards the current patchset.",
+      "parentUuid": "540c609b_bbf0fd11",
       "range": {
         "startLine": 84,
         "startChar": 17,

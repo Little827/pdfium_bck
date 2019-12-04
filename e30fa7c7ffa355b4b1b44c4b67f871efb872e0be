@@ -117,6 +117,30 @@
       "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4ed37b_69106169",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T21:27:42Z",
+      "side": 1,
+      "message": "Also, as a less contrived example, 32-bit character codes likely are important to supporting UTF-16BE encodings (which require a pair of 16-bit code units, handled in the CMap as a single 32-bit value).",
+      "parentUuid": "9b49c4f8_ec469f81",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
