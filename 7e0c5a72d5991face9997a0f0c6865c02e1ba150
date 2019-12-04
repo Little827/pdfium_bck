@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c7e1451_7a383879",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-04T01:31:56Z",
+      "side": 1,
+      "message": "This fixed run_javascript_tests.py --disable_javascript, but --disable-xfa is still broken. Since you keep running into this gotcha, and you wanted to keep |self.disable_javascript| even though it\u0027s currently redundant, here\u0027s my suggestion on how we can make this all work better:\n\n- Have |self.options.disable_javascript| be what it is, the literal command line switch passed in.\n- Have |self.disable_javascript| represent whether JS is effectively enabled or not.\n- Similar concept for the \"disable_xfa\" variables.\n\nIn which case, |self.options.disable_javascript| set to true would mean self.disable_xfa \u003d true. Go from there and see if that simplifies this CL.",
+      "revId": "7e0c5a72d5991face9997a0f0c6865c02e1ba150",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
