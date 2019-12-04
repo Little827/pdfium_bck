@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1575502180 -0800\nnonce AC6AUtNJuO8TesqbSeo5WHWI1Np7KtINH3JaxwHWcmYnsoEoMGt62ARBVLTvqcq8NLNGGnM6NecH\n\n0000000000000000000000000000000000000000 02b73e5891a462bf2976719069d2f12c1457712a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3oQWQACgkQqzYtYVpm\n/XvJmAf+N3/Vrq0NaWzMelc/TzWFBgxeoKESTCDptRcGib60eiPey2++xFNMk6mB\n4bEm3JWd46egVn+oMUX/CXKPnHxVvpiVB3kcHsr2qT0Mj6s7YsZke6sODWKai1Fk\nIX48yEavNGRdM5LzGXHmvY1skapYS0Qo/JTK9XFCWQhvv3fvq6uQup4UrOJIk/o3\nszlSTTN/Fsds7VN9vkV1A7hPHFf8KBfw/fVZWmBJ6gMj8vlwBSj/CAs5veMqUHiq\nHy9Ta7EmDmqsEIir+PLlbX9DCuUVmavU7QvlrB+LGgvxEfZ0mwdcJSD4eh3LFXEZ\ni3dCu9VZh0beDFYrXqGzy/GRW2W4Dw\u003d\u003d\n\u003dj8Cw\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "f517e770_e743f328",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-04T23:57:23Z",
+      "side": 1,
+      "message": "nit: you could probably get away with in various places (if you were so inclined):\n\nCRYPT_ArcFourCryptBlock({dest_buf, dest_size}, {realkey, realkeylen});",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 28
+      },
+      "revId": "02b73e5891a462bf2976719069d2f12c1457712a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89fdfbde_b5f93f74",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-04T23:57:23Z",
+      "side": 1,
+      "message": "nit: just invoke ctor directly?\n  pdfium::span\u003cuint8_t\u003e okey_span(okeybuf, okeylen);",
+      "range": {
+        "startLine": 488,
+        "startChar": 33,
+        "endLine": 488,
+        "endChar": 53
+      },
+      "revId": "02b73e5891a462bf2976719069d2f12c1457712a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
