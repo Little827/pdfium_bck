@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "a3c82019_eafe9d2f",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-04T02:41:17Z",
+      "side": 1,
+      "message": "I feel the \"prohibited\" rules must be follow, whereas the \"more constraining than necessary\" rule is more like a recommendation.\n\nRealistically, I don\u0027t think we are going to have the type of problems the recommendation is trying to prevent. FWIW, Chromium has 7K+ TEST_F uses that break gtests\u0027s rule. (I didn\u0027t look at TEST.) If we really want to fully obey gtest\u0027s rule, we would want some mechanism to enforce it. Otherwise, there\u0027s no way to win and developers will keep piling in more underscores.",
+      "parentUuid": "46d9886b_a6ef3dde",
+      "range": {
+        "startLine": 1312,
+        "startChar": 29,
+        "endLine": 1312,
+        "endChar": 36
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8f0a0c_524291b1",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 3
