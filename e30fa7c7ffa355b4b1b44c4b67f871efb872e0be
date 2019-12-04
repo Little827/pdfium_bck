@@ -93,6 +93,30 @@
       "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b49c4f8_ec469f81",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T02:27:46Z",
+      "side": 1,
+      "message": "After much mucking around, I put together a test file to demonstrate the problem:\nhttps://pdfium-review.googlesource.com/c/pdfium/+/63070\n\nAcrobat Reader does process this file correctly (shows \"[ABCD]\", extracts \"[a(b)cd]\"), while every other PDF viewer I tried has some sort of problem with 32-bit character codes.\n\nGiven that, 32-bit character codes may not be common in the wild, but it\u0027d be nice to be as good as Acrobat Reader here. :-)",
+      "parentUuid": "c1cf35dc_78484cc1",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "e30fa7c7ffa355b4b1b44c4b67f871efb872e0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
