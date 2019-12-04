@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "62ca859c_fe1d771b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T20:38:25Z",
+      "side": 1,
+      "message": "I\u0027m OK with this, but I think it was clear enough before, too.",
+      "parentUuid": "69be46b8_7227d103",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "59def3c144961f21ec8b79fbe4536f226e35c75d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5821759_bf56f30b",
         "filename": "testing/resources/bug_642.in",
         "patchSetId": 6
@@ -59,6 +83,24 @@
       "writtenOn": "2019-12-04T02:49:34Z",
       "side": 1,
       "message": "Can we flate encode the data first, and then ASCII hex encode it?\n\nqpdf --compress-streams\u003dy in.pdf out.pdf\n\nwill produce a PDF with flate encoded streams.",
+      "revId": "59def3c144961f21ec8b79fbe4536f226e35c75d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b76f32_e1230548",
+        "filename": "testing/resources/bug_642.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T20:38:25Z",
+      "side": 1,
+      "message": "As an aside, we should add some scripts to make this whole process a little easier. Maybe I\u0027ll throw something together later...",
+      "parentUuid": "d5821759_bf56f30b",
       "revId": "59def3c144961f21ec8b79fbe4536f226e35c75d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true

@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "1930bc68_ec5bd1dc",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T20:38:25Z",
+      "side": 1,
+      "message": "Agreed; given the widespread violations of this rule, ignoring it seems fine, as any breakage would need a wide cleanup anyway. I think it\u0027s a good guideline to keep in mind when writing new tests, though.\n\nThe googletest authors also do make this claim: \"It also gives googletest some wiggle room in case its implementation needs to change in the future... If you violate the rule, there may not be immediate consequences, but your test may (just may) break with... a new version of googletest.\" So I see it as partly a correctness thing (although honestly, it seems like they could be more relaxed about this claim in the FAQ).\n\nIf we do want enforcement, it seems like a regex presubmit could enforce this pretty easily, since tests have fairly boilerplate declarations.",
+      "parentUuid": "a3c82019_eafe9d2f",
+      "range": {
+        "startLine": 1312,
+        "startChar": 29,
+        "endLine": 1312,
+        "endChar": 36
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8f0a0c_524291b1",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 3
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "This is confusing to me too. I don\u0027t understand what was done about it.",
       "parentUuid": "a74cf074_3f716154",
+      "range": {
+        "startLine": 1324,
+        "startChar": 17,
+        "endLine": 1324,
+        "endChar": 40
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f45ca65_4812b811",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-04T20:38:25Z",
+      "side": 1,
+      "message": "I think the string just doesn\u0027t have a control character anymore (the extra comment text was deleted), but agree that it would be good to clarify in this thread why this was done.",
+      "parentUuid": "a5795577_ae3e2cd5",
       "range": {
         "startLine": 1324,
         "startChar": 17,
