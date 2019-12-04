@@ -45,6 +45,23 @@
       "revId": "59def3c144961f21ec8b79fbe4536f226e35c75d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5821759_bf56f30b",
+        "filename": "testing/resources/bug_642.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-04T02:49:34Z",
+      "side": 1,
+      "message": "Can we flate encode the data first, and then ASCII hex encode it?\n\nqpdf --compress-streams\u003dy in.pdf out.pdf\n\nwill produce a PDF with flate encoded streams.",
+      "revId": "59def3c144961f21ec8b79fbe4536f226e35c75d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
