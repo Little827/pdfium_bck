@@ -1,0 +1,197 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /Kids [3 0 R]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 400 200]
+  /Resources <<
+    /ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+    /Font <<
+      /Ft0 5 0 R
+      /Ft1 6 0 R
+    >>
+  >>
+  /Contents 4 0 R
+>>
+endobj
+{{object 4 0}} <<
+  {{streamlen}}
+>>
+stream
+BT
+  100 100 Td
+  /Ft0 12 Tf
+  ([) Tj
+  /Ft1 12 Tf
+  <000000ff0000ffff> Tj
+  <00ffffffffffffff> Tj
+  /Ft0 12 Tf
+  (]) Tj
+ET
+endstream
+endobj
+{{object 5 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+>>
+endobj
+{{object 6 0}} <<
+  /Type /Font
+  /Subtype /Type0
+  /BaseFont /LCWNSE+Roboto-Regular
+  /Encoding 10 0 R
+  /DescendantFonts [8 0 R]
+  /ToUnicode 11 0 R
+>>
+endobj
+{{object 7 0}} <<
+  /Registry (Adobe)
+  /Ordering (Identity)
+  /Supplement 0
+>>
+endobj
+{{object 8 0}} <<
+  /Type /Font
+  /Subtype /CIDFontType2
+  /BaseFont /LCWNSE+Roboto-Regular
+  /CIDSystemInfo 7 0 R
+  /FontDescriptor 9 0 R
+  /W [38 [652 623 651 656]]
+>>
+endobj
+{{object 9 0}} <<
+  /Type /FontDescriptor
+  /FontName /LCWNSE+Roboto-Regular
+  /Flags 6
+  /FontBBox [-891 -271 2045 1056]
+  /ItalicAngle 0
+  /Ascent 1048
+  /Descent -271
+  /CapHeight 1048
+  /StemV 87
+  /FontFile2 12 0 R
+>>
+endobj
+{{object 10 0}} <<
+  /Type /CMap
+  /CMapName /Fake-UTF32-H
+  /CIDSystemInfo 7 0 R
+  {{streamlen}}
+>>
+stream
+%!PS-Adobe-3.0 Resource-CMap
+%%DocumentNeededResources: ProcSet (CIDInit)
+%%IncludeResource: ProcSet (CIDInit)
+%%BeginResource: CMap (Fake-UTF32-H)
+%%Title: (Fake-UTF32-H Adobe Identity 0)
+%%Version: 1.000
+%%EndComments
+/CIDInit /ProcSet findresource begin
+12 dict begin
+begincmap
+
+/CIDSystemInfo 3 dict dup begin
+  /Registry (Adobe) def
+  /Ordering (Identity) def
+  /Supplement 0 def
+end def
+
+/CMapName /Fake-UTF32-H def
+/CMapVersion 1.000 def
+/CMapType 1 def
+
+/WMode 0 def
+
+1 begincodespacerange
+  <00000000> <FFFFFFFF>
+endcodespacerange
+
+4 begincidchar
+  <000000ff> 38
+  <0000ffff> 39
+  <00ffffff> 40
+  <ffffffff> 41
+endcidchar
+
+endcmap
+CMapName currentdict /CMap defineresource pop
+end
+end
+%%EndResource
+%%EOF
+endstream
+endobj
+{{object 11 0}} <<
+  {{streamlen}}
+>>
+stream
+/CIDInit /ProcSet findresource begin
+12 dict begin
+begincmap
+
+/CIDSystemInfo 3 dict dup begin
+  /Registry (Adobe) def
+  /Ordering (Identity) def
+  /Supplement 0 def
+end def
+
+/CMapName /Fake-UTF32-H def
+/CMapType 2 def
+
+1 begincodespacerange
+  <00000000> <FFFFFFFF>
+endcodespacerange
+
+4 beginbfchar
+  <000000ff> <0061>
+  <0000ffff> <002800620029>
+  <00ffffff> <0063>
+  <ffffffff> <0064>
+endbfchar
+
+endcmap
+CMapName currentdict /CMap defineresource pop
+end
+end
+endstream
+endobj
+{{object 12 0}} <<
+  /Length1 1766
+  /Filter [/ASCII85Decode /FlateDecode]
+  {{streamlen}}
+>>
+stream
+Gb!#WDeN?T'`Xa$hJ8<,bEB#fP?FA3>,8Rj9U^-HDJg.?i`sYb-K:ssS$_";[%klN2X;G)_WEa-m";-8
+"u=g47B.Ftr?,$j=qnOXC53oP1-qUMU7IchF5seaO4k:4qS@Bdn,CVCkPXc:SpN*rJ.8\L"'Tp#"\0n(
+Wb0QpmeaWVa1A]CnOA-#*'e!sYt.i!/=m$`0`)c7f\oH+hSSt$[NFd+,ZF$HiYf2fftJ0hl\t'+H7>MH
+ZFr1/8KGfG$F-_q]tKOrD!ROB7fa>LY!U`9d1?`%(bn"-.e9>mKeC1JWoq._&@j^o?=W1tG"ZUd$ap)H
+S?4"tbo>pZ2."XT25`ANj(^I.Tn+Vu4i4X^,1tki=s2o"\a;^.\)A[Y7o>DjNfYC[R7acOaDjR\11uR'
+CGUu`h\Y\5p?\G\F"Fgh.bcT0Q)J`Sq]Kqq@hl=IM#<];>NaJX786t8IW[\uriHUb]V@IM'mW,^&/SK1
+L,<[-aa$X+:r0aqebq\@0Bai8/LpI=Lg`Z\raDh11>NE98bpsK;UCKV(C$TeT32#J.L1ajn'pjh3VaP0
+3AjJH^:S!9J,4$K]pd*i`?-ipfK3k"%NRd'SNk<i8EK"+CISLIfE`5.<s^JFJhMrWr)Hbr8l8Vi=q]h;
+emJ-lH$N3.$&pj,o+%nn>kST(^\HsO00a`;-7@mp*MV7b$<"Y:D.`Q1H/k641NI5(eO&ZfCYk6qlcdLt
+i@a.J1j:?M&e<M$J!rj+Ji`#*Eb](Cf=AF0@pH`"1XF1%*&:,%:6YG'o*\NloJ3%gO#k)nf04X&pY3oU
+ceQ,!<9*VW(E2bfAuAr3C]eM-QS&O+(!!-QE4bP`0)Xs[_.6aK<GQ6s4o#&*`[6r9Mb"dqUl9/jQDjcn
+gJ`>3j7j\kg/deint:t\D..jMbXsqd!T-`%m>Uk(>F>3)Zs-XObWuVPW(5"IqQ^q?<>`&]&K\_f$Q&D=
+]kLmo*#,W]*ECU"iRK?Qr>'Q-_eZK;Oqr4M%p_IWqJ[:ld#S:m7Lt[[eq;V2a1-EB_R"[WO!DZqe*'4J
+!fXRo-dLbTV5s^HMX_NnY*\o*jiC_th8)7r?-RQQ#j4W9@QAL.6(E-fA<Wjf&UR7?!FE*nPpi1(p4ojY
+S!R)5(3%g,i$r!pJ>kTH4iqaW<ZFKDN'"tl5'3p*5bPo-k'cun*(g-"9LX5UV,C;]W@Z9^A=UFFNpgMj
+f;r#;o8YMbRX%LuO'1l;HnH"kb?KZ\O0[s+Wj0r6M^2pnToRl)ZNZ`Z+0GUapTpSTf!LrgJ3?!hN19>_
+G%*E1C\+'G"&%fG8,~>
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
