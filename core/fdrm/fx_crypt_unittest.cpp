@@ -304,7 +304,7 @@ TEST(FXCRYPT, CRYPT_ArcFourSetup) {
         139, 24,  209, 251, 208, 28,  111, 89,  158, 155, 243, 107, 233, 169,
         117, 184, 31,  39};
     CRYPT_rc4_context context;
-    CRYPT_ArcFourSetup(&context, nullptr, 0);
+    CRYPT_ArcFourSetup(&context, {});
     CheckArcFourContext(context, 0, 0, kNullPermutation);
   }
   {
@@ -330,7 +330,8 @@ TEST(FXCRYPT, CRYPT_ArcFourSetup) {
         29,  45,  14,  111};
     CRYPT_rc4_context context;
     static const uint8_t kFooBar[] = "foobar";
-    CRYPT_ArcFourSetup(&context, kFooBar, FX_ArraySize(kFooBar) - 1);
+    CRYPT_ArcFourSetup(&context,
+                       pdfium::make_span(kFooBar, FX_ArraySize(kFooBar) - 1));
     CheckArcFourContext(context, 0, 0, kFoobarPermutation);
   }
 }
@@ -346,7 +347,7 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
       "!@#$%^&*()[]{};':\",.<>/?\\|\r\t\n";
   {
     CRYPT_rc4_context context;
-    CRYPT_ArcFourSetup(&context, nullptr, 0);
+    CRYPT_ArcFourSetup(&context, {});
 
     uint8_t data_short[FX_ArraySize(kDataShort)];
     memcpy(data_short, kDataShort, FX_ArraySize(kDataShort));
@@ -358,7 +359,7 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
     static_assert(
         FX_ArraySize(kExpectedEncryptedDataShort) == FX_ArraySize(data_short),
         "data_short mismatch");
-    CRYPT_ArcFourCrypt(&context, data_short, FX_ArraySize(data_short));
+    CRYPT_ArcFourCrypt(&context, data_short);
     for (size_t i = 0; i < FX_ArraySize(data_short); ++i)
       EXPECT_EQ(kExpectedEncryptedDataShort[i], data_short[i]) << i;
 
@@ -386,7 +387,7 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
   }
   {
     CRYPT_rc4_context context;
-    CRYPT_ArcFourSetup(&context, nullptr, 0);
+    CRYPT_ArcFourSetup(&context, {});
 
     uint8_t data_long[FX_ArraySize(kDataLong)];
     memcpy(data_long, kDataLong, FX_ArraySize(kDataLong));
@@ -415,7 +416,7 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
         FX_ArraySize(kExpectedEncryptedDataLong) == FX_ArraySize(data_long),
         "data_long mismatch");
     static_assert(FX_ArraySize(data_long) > 256, "too short");
-    CRYPT_ArcFourCrypt(&context, data_long, FX_ArraySize(data_long));
+    CRYPT_ArcFourCrypt(&context, data_long);
     for (size_t i = 0; i < FX_ArraySize(data_long); ++i)
       EXPECT_EQ(kExpectedEncryptedDataLong[i], data_long[i]) << i;
 
@@ -444,7 +445,8 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
   {
     CRYPT_rc4_context context;
     static const uint8_t kFooBar[] = "foobar";
-    CRYPT_ArcFourSetup(&context, kFooBar, FX_ArraySize(kFooBar) - 1);
+    CRYPT_ArcFourSetup(&context,
+                       pdfium::make_span(kFooBar, FX_ArraySize(kFooBar) - 1));
 
     uint8_t data_short[FX_ArraySize(kDataShort)];
     memcpy(data_short, kDataShort, FX_ArraySize(kDataShort));
@@ -456,7 +458,7 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
     static_assert(
         FX_ArraySize(kExpectedEncryptedDataShort) == FX_ArraySize(data_short),
         "data_short mismatch");
-    CRYPT_ArcFourCrypt(&context, data_short, FX_ArraySize(data_short));
+    CRYPT_ArcFourCrypt(&context, data_short);
     for (size_t i = 0; i < FX_ArraySize(data_short); ++i)
       EXPECT_EQ(kExpectedEncryptedDataShort[i], data_short[i]) << i;
 
@@ -485,7 +487,8 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
   {
     CRYPT_rc4_context context;
     static const uint8_t kFooBar[] = "foobar";
-    CRYPT_ArcFourSetup(&context, kFooBar, FX_ArraySize(kFooBar) - 1);
+    CRYPT_ArcFourSetup(&context,
+                       pdfium::make_span(kFooBar, FX_ArraySize(kFooBar) - 1));
 
     uint8_t data_long[FX_ArraySize(kDataLong)];
     memcpy(data_long, kDataLong, FX_ArraySize(kDataLong));
@@ -514,7 +517,7 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
         FX_ArraySize(kExpectedEncryptedDataLong) == FX_ArraySize(data_long),
         "data_long mismatch");
     static_assert(FX_ArraySize(data_long) > 256, "too short");
-    CRYPT_ArcFourCrypt(&context, data_long, FX_ArraySize(data_long));
+    CRYPT_ArcFourCrypt(&context, data_long);
     for (size_t i = 0; i < FX_ArraySize(data_long); ++i)
       EXPECT_EQ(kExpectedEncryptedDataLong[i], data_long[i]) << i;
 
