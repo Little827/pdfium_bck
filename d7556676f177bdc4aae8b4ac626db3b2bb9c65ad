@@ -16,6 +16,24 @@
       "revId": "d7556676f177bdc4aae8b4ac626db3b2bb9c65ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b10cae_2402f231",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-04T17:42:11Z",
+      "side": 1,
+      "message": "Sure.  But the larger question is whether we should expose this for non-xfa at all.  One of my \"missions\" is to get rid of PDF_ENABLE_XFA where there isn\u0027t unreasonable bloat. OTOH, there\u0027s no point in calling this at present as shipped in chromium ...",
+      "parentUuid": "d57c294a_c15b76a5",
+      "revId": "d7556676f177bdc4aae8b4ac626db3b2bb9c65ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
