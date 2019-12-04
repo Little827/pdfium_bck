@@ -22,6 +22,29 @@
       "revId": "e87972e30da4cb87f0620baf32cea698f43dd093",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c0b9f6_1b35f1f9",
+        "filename": "samples/pdfium_test_event_helper.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-04T17:43:49Z",
+      "side": 0,
+      "message": "In other words, this ifdef could just move down a line and we\u0027d accomplish the stated goal of the CL except for the removing ifdef where possible part.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "e87972e30da4cb87f0620baf32cea698f43dd093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
