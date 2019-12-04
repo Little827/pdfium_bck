@@ -13,7 +13,7 @@ import re
 import subprocess
 import sys
 
-from common import PrintErr
+from .common import PrintErr
 
 CALLGRIND_PROFILER = 'callgrind'
 PERFSTAT_PROFILER = 'perfstat'
@@ -113,7 +113,7 @@ class PerformanceRun(object):
       case, always return 1 since no profiler is being used.
     """
     cmd_to_run = self._BuildTestHarnessCommand()
-    output = subprocess.check_output(cmd_to_run, stderr=subprocess.STDOUT)
+    subprocess.check_output(cmd_to_run, stderr=subprocess.STDOUT)
 
     # Return 1 for every run.
     return 1
