@@ -15,10 +15,10 @@ import json
 import os
 import sys
 
-from common import PrintWithTime
-from common import RunCommandPropagateErr
-from githelper import GitHelper
-from safetynet_conclusions import PrintConclusionsDictHumanReadable
+from .common import PrintWithTime
+from .common import RunCommandPropagateErr
+from .githelper import GitHelper
+from .safetynet_conclusions import PrintConclusionsDictHumanReadable
 
 
 class JobContext(object):

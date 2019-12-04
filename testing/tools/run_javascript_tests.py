@@ -5,7 +5,7 @@
 
 import sys
 
-import test_runner
+from . import test_runner
 
 
 def main():
