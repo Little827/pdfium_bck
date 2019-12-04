@@ -52,6 +52,24 @@
       "revId": "d7556676f177bdc4aae8b4ac626db3b2bb9c65ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "981719d6_2a72f85f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-04T18:17:00Z",
+      "side": 1,
+      "message": "I\u0027m ok with this. This helps embedders that want to switch between XFA-enabled/disabled PDFium have less ifdefs.",
+      "parentUuid": "1c9c4bde_af98364c",
+      "revId": "d7556676f177bdc4aae8b4ac626db3b2bb9c65ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
