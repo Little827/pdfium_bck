@@ -12,10 +12,10 @@ import shutil
 import subprocess
 import sys
 
-import common
-import gold
-import pngdiffer
-import suppressor
+from . import common
+from . import gold
+from . import pngdiffer
+from . import suppressor
 
 # Arbitrary timestamp, expressed in seconds since the epoch, used to make sure
 # that tests that depend on the current time are stable. Happens to be the
@@ -95,7 +95,7 @@ class TestRunner:
       raised_exception = self.TestText(input_root, expected_txt_path, pdf_path)
     else:
       use_ahem = 'use_ahem' in source_dir
-      raised_exception, results = self.TestPixel(input_root, pdf_path, use_ahem)
+      raised_exception, results = self.TestPixel(pdf_path, use_ahem)
 
     if raised_exception is not None:
       print 'FAILURE: %s; %s' % (input_filename, raised_exception)
@@ -177,7 +177,7 @@ class TestRunner:
     except Exception as e:
       return e
 
-  def TestPixel(self, input_root, pdf_path, use_ahem):
+  def TestPixel(self, pdf_path, use_ahem):
     cmd_to_run = [
         self.pdfium_test_path, '--send-events', '--png', '--md5',
         '--time=' + TEST_SEED_TIME
@@ -226,6 +226,9 @@ class TestRunner:
         self.failures.append(input_path)
 
   def Run(self):
+    # Running a test defines a number of attributes on the fly.
+    # pylint: disable=attribute-defined-outside-init
+
     parser = optparse.OptionParser()
 
     parser.add_option(

@@ -5,7 +5,7 @@
 
 import subprocess
 
-from common import RunCommandPropagateErr
+from .common import RunCommandPropagateErr
 
 
 class GitHelper(object):
