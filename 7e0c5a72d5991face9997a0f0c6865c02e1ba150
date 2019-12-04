@@ -16,6 +16,24 @@
       "revId": "7e0c5a72d5991face9997a0f0c6865c02e1ba150",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052df226_96108623",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-04T01:49:26Z",
+      "side": 1,
+      "message": "... Maybe give |self.disable_javascript| a different name in that case, to better differentiate it from |self.options.disable_javascript|.",
+      "parentUuid": "0c7e1451_7a383879",
+      "revId": "7e0c5a72d5991face9997a0f0c6865c02e1ba150",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
