@@ -9,7 +9,7 @@ import os
 import shutil
 import sys
 
-import common
+from . import common
 
 
 class PNGDiffer():

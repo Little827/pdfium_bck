@@ -13,7 +13,7 @@ import subprocess
 import sys
 import webbrowser
 
-from common import DirectoryFinder
+from .common import DirectoryFinder
 
 
 def GenerateOneDiffParallel(image_comparison, image):
@@ -57,6 +57,9 @@ class ImageComparison(object):
     Returns:
         Exit status.
     """
+
+    # Running a test defines a number of attributes on the fly.
+    # pylint: disable=attribute-defined-outside-init
 
     if len(self.two_labels) != 2:
       print >> sys.stderr, 'two_labels must be a tuple of length 2'
