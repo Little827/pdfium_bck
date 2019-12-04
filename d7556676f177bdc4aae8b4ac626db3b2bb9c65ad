@@ -70,6 +70,24 @@
       "revId": "d7556676f177bdc4aae8b4ac626db3b2bb9c65ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "753840f4_370a4758",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-04T20:05:27Z",
+      "side": 1,
+      "message": "Agreed. Ideally the files in public/ wouldn\u0027t have any of these ifdefs",
+      "parentUuid": "981719d6_2a72f85f",
+      "revId": "d7556676f177bdc4aae8b4ac626db3b2bb9c65ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
