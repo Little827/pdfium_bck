@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d14c6a0_f90f9bd1",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-05T17:39:59Z",
+      "side": 1,
+      "message": "Can we use ScopedFPDFTextPage so we don\u0027t have to call this manually? The ScopedFPDFTextPage object will have to be scopped appropriately, so the FPDF_TEXTPAGE gets destroyed before the UnloadPage() call.",
+      "revId": "952c09959e9ecb723b5919dc8d7805c6b7a75afe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
