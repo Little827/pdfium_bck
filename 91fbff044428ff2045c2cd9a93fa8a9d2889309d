@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f05d786_d0368665",
+        "filename": "testing/tools/suppressor.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-05T23:36:43Z",
+      "side": 1,
+      "message": "Still need |xfa_disabled| here, otherwise XFA-only corpus tests don\u0027t get properly suppressed.\n\nAlternatively, we can split pdfium_test --show-config into --show-build-config and --show-config. The former shows what we built with. The latter takes --disable-javascript and friends into account. With that, we can avoid modifying the suppressor.",
+      "revId": "91fbff044428ff2045c2cd9a93fa8a9d2889309d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
