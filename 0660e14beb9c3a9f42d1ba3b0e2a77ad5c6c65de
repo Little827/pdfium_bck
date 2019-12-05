@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "6b008979_82680380",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-05T17:04:44Z",
+      "side": 1,
+      "message": "I will revert the name back to \"Bug_642\" then, just to keep it consistent with the rest of the embeddertests in the same file for now.",
+      "parentUuid": "a3c82019_eafe9d2f",
+      "range": {
+        "startLine": 1312,
+        "startChar": 29,
+        "endLine": 1312,
+        "endChar": 36
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8f0a0c_524291b1",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 3
@@ -239,6 +263,30 @@
       "side": 1,
       "message": "Ah, it looks like this comment predated the fix.",
       "parentUuid": "6f45ca65_4812b811",
+      "range": {
+        "startLine": 1324,
+        "startChar": 17,
+        "endLine": 1324,
+        "endChar": 40
+      },
+      "revId": "0660e14beb9c3a9f42d1ba3b0e2a77ad5c6c65de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8045a9_6d453b8a",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-05T17:04:44Z",
+      "side": 1,
+      "message": "Missed one spot to fix. It\u0027s removed now.\n\nThe control character comment was copied from some other embeddertests (Bug_1139 and GetCharAngle) in this file, which explain the reasons for both using \"-1\" and \"+1\" while only using \"-1\" or none of them.",
+      "parentUuid": "a5795577_ae3e2cd5",
       "range": {
         "startLine": 1324,
         "startChar": 17,

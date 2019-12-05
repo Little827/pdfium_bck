@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff849d6d_f9448096",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-05T17:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94944baf_9ca0cf70",
+      "range": {
+        "startLine": 1325,
+        "startChar": 24,
+        "endLine": 1325,
+        "endChar": 27
+      },
+      "revId": "274cee25fccae89be2635c10b950a6620ca70c30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09042a3a_e0f81f88",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f411ce2e_070a9bb1",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-05T17:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09042a3a_e0f81f88",
+      "range": {
+        "startLine": 1326,
+        "startChar": 49,
+        "endLine": 1326,
+        "endChar": 62
+      },
+      "revId": "274cee25fccae89be2635c10b950a6620ca70c30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4dbf6ea_5913ef0e",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "274cee25fccae89be2635c10b950a6620ca70c30",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0516ee3_47e43de9",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-05T17:04:44Z",
+      "side": 1,
+      "message": "This won\u0027t be an issue since inside FPDFText_GetText(), there is a step to only copy the mininum value of bytes between kTextSize-1 and the available character size.\n\nchar_count \u003d std::min(char_count, char_available);\n\nSo even the pdf file has a longer text, such as \"ABCDE\", we will only get \"ABCD\" by using FPDFText_GetText().\n\nRegarding to just pass \"num_chars\" without doing ASSERT_EQ(kTextSize, num_chars), this method would not work if we are not dealing with regular ASCII characters. For example, if we have one CJK character \"斷\" as kText, then kTextSize \u003d 4 (\u003d\u003d 3+1) and num_chars \u003d 2. So when using check_unsigned_shorts(), we should check the exact byte length instead of num_chars.",
+      "parentUuid": "f4dbf6ea_5913ef0e",
+      "range": {
+        "startLine": 1328,
+        "startChar": 51,
+        "endLine": 1328,
+        "endChar": 60
+      },
+      "revId": "274cee25fccae89be2635c10b950a6620ca70c30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
