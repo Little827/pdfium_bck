@@ -114,6 +114,25 @@ TEST(UnownedPtr, ReleaseOk) {
   }
 }
 
+TEST(UnownedPtr, MoveCtorOk) {
+  UnownedPtr<Clink> outer;
+  {
+    auto onwed = pdfium::MakeUnique<Clink>();
+    outer = onwed.get();
+    UnownedPtr<Clink> inner(std::move(outer));
+  }
+}
+
+TEST(UnownedPtr, MoveAssignOk) {
+  UnownedPtr<Clink> outer;
+  {
+    auto onwed = pdfium::MakeUnique<Clink>();
+    outer = onwed.get();
+    UnownedPtr<Clink> inner;
+    inner = std::move(outer);
+  }
+}
+
 TEST(UnownedPtr, ReleaseNotOk) {
 #if defined(ADDRESS_SANITIZER)
   EXPECT_DEATH(ReleaseDangling(), "");
