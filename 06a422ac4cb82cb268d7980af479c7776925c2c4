@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c14ece81_30673960",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-06T11:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f7acd7_af79c64d",
+      "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "065d9473_a3c96387",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7f455c_26a6ce4b",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-06T11:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "065d9473_a3c96387",
+      "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7da9c13c_29ec5f40",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-06T11:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7dc886c_f1b63e68",
+      "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd0d3554_431924eb",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f28fbb_df3172d4",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-06T11:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0d3554_431924eb",
+      "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
