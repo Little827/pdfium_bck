@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cd5825c_10f06b49",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-06T19:37:34Z",
+      "side": 1,
+      "message": "Over-parenthesized.",
+      "range": {
+        "startLine": 112,
+        "startChar": 34,
+        "endLine": 112,
+        "endChar": 35
+      },
+      "revId": "0223897238fa58eb3eeb949936001b106eb697f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00324357_d3a9db73",
+        "filename": "core/fxge/fx_font_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-06T19:37:34Z",
+      "side": 1,
+      "message": "Variable names in comments are out of sync. Also, |foo_var| and ClassName. See: https://chromium.googlesource.com/chromium/src/+/master/styleguide/c++/c++-dos-and-donts.md#comment-style",
+      "revId": "0223897238fa58eb3eeb949936001b106eb697f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
