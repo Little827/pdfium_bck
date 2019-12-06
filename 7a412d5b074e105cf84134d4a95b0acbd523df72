@@ -16,6 +16,24 @@
       "revId": "7a412d5b074e105cf84134d4a95b0acbd523df72",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa8c05ce_ed4c941b",
+        "filename": "testing/tools/encode_pdf_filter.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-06T20:16:19Z",
+      "side": 1,
+      "message": "My first attempt did use \"wb\" here (and \"rb\"), but that caused a problem because of how Python 3 treats text vs. binary I/O now: sys.stdout is a TextIOWrapper (str-only), while \"wb\" would create a BufferedIO (bytes-only), and these are incompatible.\n\nTo try and solve this, I made default\u003dsys.stdout.buffer (which is also a BufferedIO). This worked, but then passing \"-\" created a TextIOWrapper (regardless of this was \"wb\" or not).\n\nIt turns out the \"right\" answer was to always treat the parsed argument as a TextIOWrapper, and then use the .buffer property to get the wrapper\u0027s underlying binary I/O object. That\u0027s what I\u0027ve done throughout.\n\nOn the plus side, this separation by Python 3 means it\u0027s largely impossible to write binary accidentally as text.",
+      "parentUuid": "871cf249_e6448c61",
+      "revId": "7a412d5b074e105cf84134d4a95b0acbd523df72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
