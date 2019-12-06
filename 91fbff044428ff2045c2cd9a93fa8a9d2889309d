@@ -70,6 +70,24 @@
       "revId": "91fbff044428ff2045c2cd9a93fa8a9d2889309d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9b81c9_2cd88dfd",
+        "filename": "testing/tools/suppressor.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-06T00:34:43Z",
+      "side": 1,
+      "message": "Right now ShowConfig() is based solely on the build config. ShowConfig() can take some parameters, and then adjust its output accordingly.\n\ne.g. \"pdfium_test --show-config --disable-javascript\" would print out nothing, and \"pdfium_test --show-config --disable-xfa\" would print out \"V8,V8_EXTERNAL\".",
+      "parentUuid": "9cf13e93_fbd014d7",
+      "revId": "91fbff044428ff2045c2cd9a93fa8a9d2889309d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
