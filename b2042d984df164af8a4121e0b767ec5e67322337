@@ -16,6 +16,24 @@
       "revId": "b2042d984df164af8a4121e0b767ec5e67322337",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd15ce3a_085c66e2",
+        "filename": "testing/resources/javascript/property_test_helpers.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-06T22:33:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c64781f4_78164d78",
+      "revId": "b2042d984df164af8a4121e0b767ec5e67322337",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
