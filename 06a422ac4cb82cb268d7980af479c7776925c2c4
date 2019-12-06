@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "46de0384_c7811627",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-06T17:34:19Z",
+      "side": 1,
+      "message": "The content stream still references /F1 and /F2 though? For the PDF to have text, there should be properly defined font resources.",
+      "parentUuid": "5a7f455c_26a6ce4b",
+      "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7dc886c_f1b63e68",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 4
