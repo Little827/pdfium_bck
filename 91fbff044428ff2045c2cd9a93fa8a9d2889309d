@@ -52,6 +52,24 @@
       "revId": "91fbff044428ff2045c2cd9a93fa8a9d2889309d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf13e93_fbd014d7",
+        "filename": "testing/tools/suppressor.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-12-06T00:27:57Z",
+      "side": 1,
+      "message": "I\u0027m also not totally clear how --show-config would work. The current flag outputs a string based on the build flags. The following works by itself:\n\n $ pdfium_test --show-config\n V8,V8_EXTERNAL,XFA\n\nHowever, I don\u0027t see the point in a flag that returns information about run-time flags that are being passed along with it. The caller may not necessarily have build information, so the current flag makes sense. But, the caller should know what run-time flags it is passing.",
+      "parentUuid": "9db74893_d9cceaba",
+      "revId": "91fbff044428ff2045c2cd9a93fa8a9d2889309d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
