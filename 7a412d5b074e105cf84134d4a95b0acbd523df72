@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "871cf249_e6448c61",
+        "filename": "testing/tools/encode_pdf_filter.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5760
+      },
+      "writtenOn": "2019-12-06T19:46:17Z",
+      "side": 1,
+      "message": "Maybe \u0027wb\u0027 mode so we don\u0027t get newline differences on Windows?",
+      "revId": "7a412d5b074e105cf84134d4a95b0acbd523df72",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
