@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2412dece_d269fbad",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7602
+      },
+      "writtenOn": "2019-12-06T19:10:26Z",
+      "side": 1,
+      "message": "They are from the OpenType - name table specification. I added a comment.",
+      "parentUuid": "0a5c63ee_b96a5caf",
+      "revId": "4275a659bb49d962c6339a7bcc7623a02e8b3a43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e0c1ef7_79dc1d91",
         "filename": "core/fxge/fx_font.cpp",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "4275a659bb49d962c6339a7bcc7623a02e8b3a43",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7406b9ab_296ac727",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7602
+      },
+      "writtenOn": "2019-12-06T19:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e0c1ef7_79dc1d91",
+      "range": {
+        "startLine": 108,
+        "startChar": 19,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "4275a659bb49d962c6339a7bcc7623a02e8b3a43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "85b145c9_97fa0f01",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7602
+      },
+      "writtenOn": "2019-12-06T19:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec93892b_0483ef15",
+      "range": {
+        "startLine": 115,
+        "startChar": 36,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "4275a659bb49d962c6339a7bcc7623a02e8b3a43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78829048_c657525b",
         "filename": "core/fxge/fx_font_unittest.cpp",
         "patchSetId": 3
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "483591ac_196d7261",
+        "filename": "core/fxge/fx_font_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7602
+      },
+      "writtenOn": "2019-12-06T19:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78829048_c657525b",
+      "revId": "4275a659bb49d962c6339a7bcc7623a02e8b3a43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c10955b_26fc6bf5",
         "filename": "core/fxge/fx_font_unittest.cpp",
         "patchSetId": 3
@@ -96,6 +180,24 @@
       "revId": "4275a659bb49d962c6339a7bcc7623a02e8b3a43",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc77263_470d72d1",
+        "filename": "core/fxge/fx_font_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7602
+      },
+      "writtenOn": "2019-12-06T19:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c10955b_26fc6bf5",
+      "revId": "4275a659bb49d962c6339a7bcc7623a02e8b3a43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
