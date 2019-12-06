@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac136da5_79af1ebc",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-06T22:04:34Z",
+      "side": 1,
+      "message": "nit: maybe Point (mixed case) despite name of struct (see precedent in CFXMatrixFromFSMatrix where the class is FS_MATRIX) for readability.",
+      "range": {
+        "startLine": 250,
+        "startChar": 26,
+        "endLine": 250,
+        "endChar": 31
+      },
+      "revId": "39e2afbb52ba167780f889b4a3b42890824bf5d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f78ff4_f6fb2ae0",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-06T22:04:34Z",
+      "side": 1,
+      "message": "nit: no leading underscore (_CAP reseved for Preprocessor).",
+      "range": {
+        "startLine": 170,
+        "startChar": 15,
+        "endLine": 170,
+        "endChar": 16
+      },
+      "revId": "39e2afbb52ba167780f889b4a3b42890824bf5d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
