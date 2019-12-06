@@ -71,6 +71,30 @@
       "revId": "4ea953435f055b53dc270f75d963ea99b36aa952",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e5ce20b_0a8f1720",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-06T20:06:59Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/62494",
+      "parentUuid": "8c574ce9_ddc90849",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 26
+      },
+      "revId": "4ea953435f055b53dc270f75d963ea99b36aa952",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
