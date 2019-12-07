@@ -245,26 +245,27 @@ void CFX_PSRenderer::SetGraphState(const CFX_GraphStateData* pGraphState) {
   std::ostringstream buf;
   if (!m_bGraphStateSet ||
       m_CurGraphState.m_LineCap != pGraphState->m_LineCap) {
-    buf << pGraphState->m_LineCap << " J\n";
+    buf << static_cast<int>(pGraphState->m_LineCap) << " J\n";
   }
   if (!m_bGraphStateSet ||
       m_CurGraphState.m_DashArray != pGraphState->m_DashArray) {
     buf << "[";
-    for (const auto& dash : pGraphState->m_DashArray)
-      buf << dash << " ";
-    buf << "]" << pGraphState->m_DashPhase << " d\n";
+    for (float dash : pGraphState->m_DashArray)
+      WriteFloat(buf, dash);
+    buf << "]";
+    WriteFloat(buf, pGraphState->m_DashPhase) << " d\n";
   }
   if (!m_bGraphStateSet ||
       m_CurGraphState.m_LineJoin != pGraphState->m_LineJoin) {
-    buf << pGraphState->m_LineJoin << " j\n";
+    buf << static_cast<int>(pGraphState->m_LineJoin) << " j\n";
   }
   if (!m_bGraphStateSet ||
       m_CurGraphState.m_LineWidth != pGraphState->m_LineWidth) {
-    buf << pGraphState->m_LineWidth << " w\n";
+    WriteFloat(buf, pGraphState->m_LineWidth) << " w\n";
   }
   if (!m_bGraphStateSet ||
       m_CurGraphState.m_MiterLimit != pGraphState->m_MiterLimit) {
-    buf << pGraphState->m_MiterLimit << " M\n";
+    WriteFloat(buf, pGraphState->m_MiterLimit) << " M\n";
   }
   m_CurGraphState = *pGraphState;
   m_bGraphStateSet = true;
