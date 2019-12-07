@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a86c248_5b71b18c",
+        "filename": "testing/resources/javascript/mouse_events.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-07T00:14:18Z",
+      "side": 1,
+      "message": "Ordering: /Type, /Subtype, /FT (Field Type)",
+      "revId": "66a3dabce7873a1d67d51c95b4f73156f67b8c3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6421f66_78eea153",
+        "filename": "testing/resources/javascript/mouse_events.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-07T00:14:18Z",
+      "side": 1,
+      "message": "Duplicate object number - this should be 7?",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 10
+      },
+      "revId": "66a3dabce7873a1d67d51c95b4f73156f67b8c3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
