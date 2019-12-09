@@ -307,7 +307,8 @@ void ExampleDocSubmitForm(IPDF_JSPLATFORM*,
                           void* formData,
                           int length,
                           FPDF_WIDESTRING url) {
-  printf("Doc Submit Form: url=%ls\n", GetPlatformWString(url).c_str());
+  printf("Doc Submit Form: url=%ls + %d data bytes: %.*s\n",
+         GetPlatformWString(url).c_str(), length, length, formData);
 }
 
 void ExampleDocGotoPage(IPDF_JSPLATFORM*, int page_number) {
