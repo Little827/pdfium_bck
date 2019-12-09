@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcd4d494_79dec106",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-09T18:26:44Z",
+      "side": 1,
+      "message": "see the comments in the public/ header file about what the return value from these callaback actually means.",
+      "range": {
+        "startLine": 224,
+        "startChar": 49,
+        "endLine": 224,
+        "endChar": 61
+      },
+      "revId": "16c63ed89400b3598628aee6feb402233ed8566f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
