@@ -8,7 +8,15 @@ Alert: enter
 Alert: PASS: this.submitForm blocked with Document.submitForm: User gesture required.
 Alert: PASS: this.print blocked with Document.print: User gesture required.
 Alert: down
-Doc Submit Form: url=myform
+Doc Submit Form: url=https://example.com + 174 data bytes: %FDF-1.2
+1 0 obj
+<</FDF<</F<</F(myfile.pdf)/Type/Filespec/UF(myfile.pdf)>>/Fields[<</T(name)/V(Tralfaz)>><</T(age)/V(12)>>]>>>>
+endobj
+
+trailer
+<</Root 1 0 R>>
+%%EOF
+
 Doc Print: 1, 0, 0, 0, 0, 0, 0, 0
 Doc Print: 0, 1, 10, 1, 1, 1, 1, 1
 Doc Print: 1, 0, 0, 0, 0, 0, 0, 0
@@ -17,7 +25,7 @@ Alert: focus
 Alert: PASS: this.submitForm blocked with Document.submitForm: User gesture required.
 Alert: PASS: this.print blocked with Document.print: User gesture required.
 Alert: up
-Doc Submit Form: url=myform
+Doc Submit Form: url=https://example.com + 19 data bytes: name=Tralfaz&age=12
 Doc Print: 1, 0, 0, 0, 0, 0, 0, 0
 Alert: exit
 Alert: PASS: this.submitForm blocked with Document.submitForm: User gesture required.
