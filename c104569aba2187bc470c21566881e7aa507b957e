@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "844f3726_558a08a7",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Add ASSERT_TRUE for this.",
+      "range": {
+        "startLine": 33,
+        "startChar": 33,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a34c96_3319d0c8",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Add ASSERT_TRUE for this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d9b113_8412a702",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "nit: Move to single line as /Kids [3 0 R]",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6671994_ce0d9c19",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Can we do without this entry since it is empty?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c73392d_7e152c62",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Move this along with the other annotations as well and update object ids.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a7df213_ca14c6ef",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Can we instead use a simpler URL like www.google.com?",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 93
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fbf890_9a9c703e",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Not needed here.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e0c8792_2055b1a7",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Object 5 as defined above is a link annotation, and should not be a field.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 9
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0392555_5fed6de1",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "Object 4 is a content stream - I believe you meant object 7?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98e58c0_dd72218e",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "/T is an optional entry, and can be removed throughout, since the test does not validate this.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4bbb41_21d96a5f",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:52:31Z",
+      "side": 1,
+      "message": "This should not be in the fields dictionary, but only the annots array.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
