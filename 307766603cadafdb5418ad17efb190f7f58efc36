@@ -16,6 +16,24 @@
       "revId": "307766603cadafdb5418ad17efb190f7f58efc36",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3c046d8_a843d988",
+        "filename": "testing/resources/javascript/mouse_events.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-09T21:32:38Z",
+      "side": 1,
+      "message": "Might as well. Done.",
+      "parentUuid": "f7811a83_d7a182f9",
+      "revId": "307766603cadafdb5418ad17efb190f7f58efc36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
