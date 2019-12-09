@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4205676f_7e3507ea",
+        "filename": "testing/resources/javascript/mouse_events.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-09T18:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a86c248_5b71b18c",
+      "revId": "66a3dabce7873a1d67d51c95b4f73156f67b8c3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6421f66_78eea153",
         "filename": "testing/resources/javascript/mouse_events.in",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "66a3dabce7873a1d67d51c95b4f73156f67b8c3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633d3640_d980600a",
+        "filename": "testing/resources/javascript/mouse_events.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-09T18:24:51Z",
+      "side": 1,
+      "message": "Done. Gah.",
+      "parentUuid": "c6421f66_78eea153",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 10
+      },
+      "revId": "66a3dabce7873a1d67d51c95b4f73156f67b8c3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
