@@ -26,6 +26,13 @@ try {
             " and " + icon2_again.name);
   app.alert("but they are made anew each time since " +
              (icon1 == icon1_again) + " is returned from comparison");
+  app.alert("Prototype comparison is " + (icon1.__proto__ == icon1_again.__proto__));
+
+  // Icons are "dynamic" objects, so theoretically we can make them from
+  // the JS side as well, although they will not be bound on the fxjs side.
+  var dubious = new icon1.constructor();
+  app.alert("name is " + dubious.name);
+  app.alert("Prototype comparison is " + (dubious.__proto__ == icon1.__proto__));
 } catch (e) {
   app.alert("error: " + e);
 }
