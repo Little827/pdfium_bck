@@ -94,6 +94,53 @@
     },
     {
       "key": {
+        "uuid": "63faa7b4_4e7255ba",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:54:41Z",
+      "side": 1,
+      "message": "Actually, I see font being used. You\u0027d need to have a font entry in the resources.",
+      "parentUuid": "b6671994_ce0d9c19",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "886be4b6_b1fdc1c6",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7588
+      },
+      "writtenOn": "2019-12-09T11:54:41Z",
+      "side": 1,
+      "message": "Can be /F1 here as well as on line 46.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c73392d_7e152c62",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 5
