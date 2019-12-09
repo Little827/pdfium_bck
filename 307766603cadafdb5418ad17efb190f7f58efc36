@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7811a83_d7a182f9",
+        "filename": "testing/resources/javascript/mouse_events.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-09T21:27:25Z",
+      "side": 1,
+      "message": "BTW, did you want to put the object 6 0 and 7 0 at different locations?",
+      "revId": "307766603cadafdb5418ad17efb190f7f58efc36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
