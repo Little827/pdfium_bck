@@ -1050,7 +1050,7 @@ typedef struct _FPDF_FORMFILLINFO {
                                     FPDF_WIDESTRING wsContentType,
                                     FPDF_WIDESTRING wsEncode,
                                     FPDF_WIDESTRING wsHeader,
-                                    FPDF_BSTR* respone);
+                                    FPDF_BSTR* response);
 
   /**
   * Method: FFI_PutRequestURL
