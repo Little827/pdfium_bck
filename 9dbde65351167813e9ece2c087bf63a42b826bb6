@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ae9ee31_e5fab117",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-10T20:17:58Z",
+      "side": 1,
+      "message": "So ... arguments can change so long as the layout of the structure is intact?  V3, coming after v2, implies that new non-xfa methods to be added would have to appear after all this xfa stuff, right?",
+      "parentUuid": "380e8fcc_cccbdc7a",
+      "revId": "9dbde65351167813e9ece2c087bf63a42b826bb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "074d5d89_65e9e7fe",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 1
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "47fe3218_3af5d40b",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-10T20:17:58Z",
+      "side": 1,
+      "message": "Yea, I\u0027d like to do that, but do you suppose these might be used by embedders somewhere?",
+      "parentUuid": "e4a10823_40d4a7ee",
+      "revId": "9dbde65351167813e9ece2c087bf63a42b826bb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "180a3d0d_6323e4ea",
         "filename": "public/fpdfview.h",
         "patchSetId": 1
@@ -70,6 +106,30 @@
       "writtenOn": "2019-12-10T20:09:36Z",
       "side": 1,
       "message": "BTW, do you want to treat everything XFA as experimental, and fix the leading underscores?",
+      "range": {
+        "startLine": 106,
+        "startChar": 15,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "9dbde65351167813e9ece2c087bf63a42b826bb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d26d5fd7_f9c95ac9",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-10T20:17:58Z",
+      "side": 1,
+      "message": "sure.  This and the removal of the LPVOID changes can come first in a separate CL maybe.",
+      "parentUuid": "180a3d0d_6323e4ea",
       "range": {
         "startLine": 106,
         "startChar": 15,
