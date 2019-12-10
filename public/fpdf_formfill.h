@@ -723,7 +723,6 @@ typedef struct _FPDF_FORMFILLINFO {
    **/
   IPDF_JSPLATFORM* m_pJsPlatform;
 
-#ifdef PDF_ENABLE_XFA
   /* Version 2. */
   /**
    * Method: FFI_DisplayCaret
@@ -1072,7 +1071,6 @@ typedef struct _FPDF_FORMFILLINFO {
                                    FPDF_WIDESTRING wsURL,
                                    FPDF_WIDESTRING wsData,
                                    FPDF_WIDESTRING wsEncode);
-#endif  // PDF_ENABLE_XFA
 } FPDF_FORMFILLINFO;
 
 /**
