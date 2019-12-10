@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a633d4c1_83505893",
+        "filename": "core/fxcrt/fx_number_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T17:17:14Z",
+      "side": 0,
+      "message": "Plus this is entering undefined behaviors territory, at least with MSVC 2019 and 32-bit builds. So let\u0027s just avoid it altogether.",
+      "revId": "763d0d38ddae3c3ff08a721e17ea20268378c3cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
