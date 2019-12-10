@@ -723,7 +723,6 @@ typedef struct _FPDF_FORMFILLINFO {
    **/
   IPDF_JSPLATFORM* m_pJsPlatform;
 
-#ifdef PDF_ENABLE_XFA
   /* Version 2. */
   /**
    * Method: FFI_DisplayCaret
@@ -731,7 +730,7 @@ typedef struct _FPDF_FORMFILLINFO {
    * Interface Version:
    *     2
    * Implementation Required:
-   *     yes
+   *     Only required for XFA, otherwise set to NULL.
    * Parameters:
    *     pThis           -   Pointer to the interface structure itself.
    *     page            -   Handle to page. Returned by FPDF_LoadPage().
@@ -760,7 +759,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       document        -   Handle to document. Returned by FPDF_LoadDocument
@@ -777,7 +776,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       document        -   Handle to document. Returned by FPDF_LoadDocument
@@ -815,7 +814,7 @@ typedef struct _FPDF_FORMFILLINFO {
    * Interface Version:
    *     2
    * Implementation Required:
-   *     yes
+   *     Only required for XFA, otherwise set to NULL.
    * Parameters:
    *     pThis           -   Pointer to the interface structure itself.
    *     page            -   Handle to page. Returned by FPDF_LoadPage().
@@ -844,7 +843,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *     2
   * Implementation Required:
-  *     yes
+  *     Only required for XFA, otherwise set to NULL.
   * Parameters:
   *     pThis       -   Pointer to the interface structure itself.
   *     page_count  -   The number of pages to be added to or deleted from the
@@ -870,7 +869,7 @@ typedef struct _FPDF_FORMFILLINFO {
    * Interface Version:
    *     2
    * Implementation Required:
-   *     yes
+   *     Only required for XFA, otherwise set to NULL.
    * Parameters:
    *     pThis           -   Pointer to the interface structure itself.
    *     page            -   Handle to page. Returned by FPDF_LoadPage().
@@ -898,7 +897,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       fileFlag        -   The file flag.Please refer to macro definition of
@@ -921,7 +920,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       pFileHandler    -   Handle to the FPDF_FILEHANDLER.
@@ -952,7 +951,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       pFileHandler    -   Handle to the FPDF_FILEHANDLER.
@@ -973,7 +972,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       platform        -   Pointer to the data buffer to receive the
@@ -993,7 +992,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       language        -   Pointer to the data buffer to receive the current
@@ -1013,7 +1012,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       URL             -   The string value of the file URL, in UTF-16LE
@@ -1029,7 +1028,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       wsURL           -   The string value of the server URL, in UTF-16LE
@@ -1058,7 +1057,7 @@ typedef struct _FPDF_FORMFILLINFO {
   * Interface Version:
   *           2
   * Implementation Required:
-  *           yes
+  *           Only required for XFA, otherwise set to NULL.
   * Parameters:
   *       pThis           -   Pointer to the interface structure itself.
   *       wsURL           -   The string value of the server URL, in UTF-16LE
@@ -1072,7 +1071,6 @@ typedef struct _FPDF_FORMFILLINFO {
                                    FPDF_WIDESTRING wsURL,
                                    FPDF_WIDESTRING wsData,
                                    FPDF_WIDESTRING wsEncode);
-#endif  // PDF_ENABLE_XFA
 } FPDF_FORMFILLINFO;
 
 /**
