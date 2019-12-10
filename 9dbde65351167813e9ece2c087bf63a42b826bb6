@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "93d47791_8ef720cc",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T22:50:44Z",
+      "side": 1,
+      "message": "To keep it sane, I would say the ordering should be v1, v2, v3, etc. Ordering and parameters within a given version can change if the version is experimental. Just like with other public APIs.\n\nI would label v2 as experimental just so we have a chance to clean it up before freezing the API.\n\nMaybe we won\u0027t even need v3. New APIs can just be tacked on to v2.",
+      "parentUuid": "2ae9ee31_e5fab117",
+      "revId": "9dbde65351167813e9ece2c087bf63a42b826bb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "074d5d89_65e9e7fe",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 1
@@ -95,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "3409c9d1_9ad5aa09",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T22:50:44Z",
+      "side": 1,
+      "message": "Yes, but I\u0027d treat XFA as experimental. Looks like we will in https://pdfium-review.googlesource.com/63590 .",
+      "parentUuid": "47fe3218_3af5d40b",
+      "revId": "9dbde65351167813e9ece2c087bf63a42b826bb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "180a3d0d_6323e4ea",
         "filename": "public/fpdfview.h",
         "patchSetId": 1
@@ -139,6 +175,30 @@
       "revId": "9dbde65351167813e9ece2c087bf63a42b826bb6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e4513d_c84a95aa",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T22:50:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d26d5fd7_f9c95ac9",
+      "range": {
+        "startLine": 106,
+        "startChar": 15,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "9dbde65351167813e9ece2c087bf63a42b826bb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
