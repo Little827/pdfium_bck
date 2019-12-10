@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f656802_adfb4fc5",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-10T20:34:07Z",
+      "side": 1,
+      "message": "technically, this is non-xfa, but FPDF_ERROR is unused.",
+      "range": {
+        "startLine": 78,
+        "startChar": 12,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "b4b0b61c60c7c5b6fe6dce056d13f5c0e93def36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
