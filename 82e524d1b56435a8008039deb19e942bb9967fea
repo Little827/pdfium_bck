@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "84f55ebe_f78001c9",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T17:51:51Z",
+      "side": 1,
+      "message": "Isn\u0027t this leaking memeory? The public interface says nothing about who owns the focused annotation. It will be helpful to have tests to exercise the new code, so we can make sure it actually works.",
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d67416_6a0bc29c",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T17:51:51Z",
+      "side": 1,
+      "message": "As is, this should become 2 and 3.",
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b64617_fc85cc50",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T17:51:51Z",
+      "side": 1,
+      "message": "Use pdfium::ContainsValue().",
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad8c358_db6d5759",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T17:51:51Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment to mention version 3 is experimental. This will give you flexibility to change the interface, if you need to add more callbacks. Once development settles down, we can freeze the interface and bring it out of experimental.",
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fbaab0e_cd88aa64",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T17:51:51Z",
+      "side": 1,
+      "message": "You seemed to have dropped version 4 in the latest patch set, but there are still references to it. Assuming we decide to only add version 3, let\u0027s remove the references to v4.",
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d604fd6d_52171760",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 8
@@ -13,6 +98,30 @@
       "writtenOn": "2019-08-27T23:03:07Z",
       "side": 1,
       "message": "My guess (given Lei\u0027s previous comments re: supporting old \u0026 new callers) is that this will have to be at the end of the structure.\n\nI don\u0027t know how that interacts with your v2 vs v4 stuff.  That stuff seems a bit odd.  (I\u0027d probably drop v4, and set the v2 pointers to NULL in v3 if XFA support isn\u0027t enabled... but Lei should probably chime in about this.)",
+      "range": {
+        "startLine": 681,
+        "startChar": 2,
+        "endLine": 701,
+        "endChar": 0
+      },
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d58c54e5_c1a743c7",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-10T17:51:51Z",
+      "side": 1,
+      "message": "Yes, it would be nice to have it at the end.",
+      "parentUuid": "d604fd6d_52171760",
       "range": {
         "startLine": 681,
         "startChar": 2,
