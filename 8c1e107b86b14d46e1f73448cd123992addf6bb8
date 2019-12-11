@@ -1,4 +1,114 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576045125 -0800\nnonce AC6AUtOuB8nV/yhYoEDi8yab8nlXjPpDcfaA8duy/QR6PU54lCQj3Q3pfFM4AHg7fI5yno9FtoyE\n\n0000000000000000000000000000000000000000 8c1e107b86b14d46e1f73448cd123992addf6bb8 refs/for/refs/heads/master%notify\u003dNONE,m\u003dself_review\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3wikUACgkQqzYtYVpm\n/XuRwAf/SjmeFRZGTBoM1pa4sgUS7MutSbgGxBbczykKsQ876FOc2uT06rA1y/yA\ny7SKOq7ZS+Tvdi55Kk0DwPmqaV/DnNi9ADG6xCR8Niaa3Kx31QQDHN2K2TrMmQFW\nBx9D1igR/IetOm9Y73uk0ATWCzRH8zKb/d2XY1yh62nJj6dcgt0aOcnOSJY9hwcS\nuwApI+muWRvS4bZUUjJb7BXALZQ3MKEtxM+TomzD/n2VN+pzVR3EWHM8bcC+b8Xp\n6WTVCeO0Q5FWzaA8sLHENVFv6wGQtYGXxmu3ohKuNh7q2ujoQ2OP8e/2NBWtazDW\nWbLY4VNpbSNrQcZlUOAkDVPBNVTteA\u003d\u003d\n\u003dhlZh\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a49c13d_a932ec78",
+        "filename": "core/fxge/win32/cpsoutput.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-11T18:53:27Z",
+      "side": 1,
+      "message": "nit: maybe make this uint16_t?",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68452635_ea7751fe",
+        "filename": "core/fxge/win32/fx_win32_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-11T18:53:27Z",
+      "side": 1,
+      "message": "can we make these unsigned while we\u0027re at it?  We\u0027d have to do checks when extracting from the BITMAPINFO, but later on it avoids passing signed values as arg 3 to memcpy.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68991e32_fb9c86a8",
+        "filename": "core/fxge/win32/fx_win32_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-11T18:53:27Z",
+      "side": 1,
+      "message": "bleh, can we avoid doing the copy, and then recopying by swapping top to bottom?",
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524a749f_b727e9bd",
+        "filename": "core/fxge/win32/fx_win32_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-11T18:53:27Z",
+      "side": 1,
+      "message": "safe arithmetic?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19fef0d_088bd8af",
+        "filename": "core/fxge/win32/fx_win32_print.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-11T18:53:27Z",
+      "side": 1,
+      "message": "nit: return blend_type \u003d\u003d BlendMode::kNormal \u0026\u0026 ...",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 454,
+        "endChar": 7
+      },
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
