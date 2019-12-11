@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "11409b63_2945b894",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T17:58:40Z",
+      "side": 1,
+      "message": "We certainly can, but it would be better to do it in a separate CL, as this is applicable across the code base in many places. Care to file a bug on https://crbug.com/pdfium for this?",
+      "parentUuid": "a3ebde97_6d7eff86",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 278,
+        "endChar": 34
+      },
+      "revId": "7ae46b6698b3e28cade15304cde634714b5cf07c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8da77c7_74c718f8",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 6
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e1309a9b_3ec7b7e9",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T17:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8da77c7_74c718f8",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 18
+      },
+      "revId": "7ae46b6698b3e28cade15304cde634714b5cf07c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b72df104_956550f0",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2019-12-11T15:34:32Z",
       "side": 1,
       "message": "We can create a CompareFSRectF function to do this. Seems we are doing this again and again.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 34
+      },
+      "revId": "7ae46b6698b3e28cade15304cde634714b5cf07c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4cf51f_e1489261",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T17:58:40Z",
+      "side": 1,
+      "message": "We can similarly file another bug and do this separately.",
+      "parentUuid": "b72df104_956550f0",
       "range": {
         "startLine": 130,
         "startChar": 2,
