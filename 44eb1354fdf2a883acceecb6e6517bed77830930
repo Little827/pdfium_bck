@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e34b652_77670c26",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T05:57:18Z",
+      "side": 1,
+      "message": "Just merge with the next line, since |pPage| is never referenced again.",
+      "revId": "44eb1354fdf2a883acceecb6e6517bed77830930",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413361f7_8dd2d27b",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T05:57:18Z",
+      "side": 1,
+      "message": "Instead of doing this with a while loop, we should be able to test the exact behavior of CPDFSDK_AnnotIterator, since we know what links_highlights_annots.pdf contains. i.e. specify an exact number of calls to GetNextAnnot() and check the |pAnnot| annot subtype along the way.",
+      "revId": "44eb1354fdf2a883acceecb6e6517bed77830930",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
