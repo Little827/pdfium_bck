@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a605814_1be2aec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-11T10:44:47Z",
+      "side": 1,
+      "message": "Suggest rephrasing as follows:\n\nAnnotation\u0027s appearance stream data only supports RGB and CMYK color schemes and not RGBA. This makes it impossible to support for transparency through color values in the appearance stream. Transparency in annotation is supported through modifying Graphics State (/GS) for the entire object.\n \nThis CL adds support for specifying transparency in FPDFannot_SetAP for annotations by populating appropriate entries (e.g., /CA) in the Graphics State dictionary.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "253d2e501e8e10e185d86c04607ba5b00e8fdb85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "741f8b10_eb441660",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-11T10:44:47Z",
+      "side": 1,
+      "message": "1.0f",
+      "range": {
+        "startLine": 234,
+        "startChar": 67,
+        "endLine": 234,
+        "endChar": 69
+      },
+      "revId": "253d2e501e8e10e185d86c04607ba5b00e8fdb85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9adb0854_abfe49e6",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-11T10:44:47Z",
+      "side": 1,
+      "message": "Consider adding code comment explaining the need for transforming /CA values from [0.0f, 1.0f] to [0 - 255].",
+      "range": {
+        "startLine": 838,
+        "startChar": 36,
+        "endLine": 839,
+        "endChar": 13
+      },
+      "revId": "253d2e501e8e10e185d86c04607ba5b00e8fdb85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569897a9_15a02842",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-11T10:44:47Z",
+      "side": 1,
+      "message": "Consider extending SetAP() to include the completely opaque case instead.",
+      "range": {
+        "startLine": 129,
+        "startChar": 21,
+        "endLine": 129,
+        "endChar": 32
+      },
+      "revId": "253d2e501e8e10e185d86c04607ba5b00e8fdb85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
