@@ -46,6 +46,29 @@
       "revId": "a7689927a60d30512a52d4473bae074567f65578",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43051936_c27495a4",
+        "filename": "fxjs/cjs_util.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-11T23:56:24Z",
+      "side": 1,
+      "message": "If you\u0027re not a fan of Delete(0), we can probably use one of the sub-stringview methods to avoid a memcpy during the delete to shift all the text to the front of the buffer.",
+      "range": {
+        "startLine": 152,
+        "startChar": 49,
+        "endLine": 152,
+        "endChar": 69
+      },
+      "revId": "a7689927a60d30512a52d4473bae074567f65578",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
