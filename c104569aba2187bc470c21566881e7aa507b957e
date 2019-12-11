@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "db929f98_b827bd4d",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d9b113_8412a702",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6671994_ce0d9c19",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 5
@@ -118,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "e4b45822_21638859",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Resources is the required entry.\nHowever, here, font resource was missing, that has been added.\nDone",
+      "parentUuid": "63faa7b4_4e7255ba",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "886be4b6_b1fdc1c6",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 5
@@ -138,6 +186,30 @@
       "revId": "c104569aba2187bc470c21566881e7aa507b957e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60fec77_06948cb8",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886be4b6_b1fdc1c6",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "cda2398f_c7d823ae",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c73392d_7e152c62",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a7df213_ca14c6ef",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 5
@@ -184,6 +280,30 @@
       "revId": "c104569aba2187bc470c21566881e7aa507b957e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad55d217_b4d37f8e",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a7df213_ca14c6ef",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 93
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "f36655f4_c908de33",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74fbf890_9a9c703e",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e0c8792_2055b1a7",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 5
@@ -230,6 +374,30 @@
       "revId": "c104569aba2187bc470c21566881e7aa507b957e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8243aff4_fda9311d",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e0c8792_2055b1a7",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 9
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "114a910a_0d1a30c2",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0392555_5fed6de1",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e98e58c0_dd72218e",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 5
@@ -279,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "11f39455_03eceb40",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Without /T, TextBox is not visible with color and on tabbing, dotted lines also do not appear over the text box. So, keeping it intact for now.",
+      "parentUuid": "e98e58c0_dd72218e",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec4bbb41_21d96a5f",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 5
@@ -299,6 +515,30 @@
       "revId": "c104569aba2187bc470c21566881e7aa507b957e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7c4668_abbcbf0f",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec4bbb41_21d96a5f",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "c104569aba2187bc470c21566881e7aa507b957e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

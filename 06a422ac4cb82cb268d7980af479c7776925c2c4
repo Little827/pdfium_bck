@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "86296efc_37ea994b",
+        "filename": "testing/resources/links_highlights_annots.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-11T04:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46de0384_c7811627",
+      "revId": "06a422ac4cb82cb268d7980af479c7776925c2c4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7dc886c_f1b63e68",
         "filename": "testing/resources/links_highlights_annots.in",
         "patchSetId": 4
