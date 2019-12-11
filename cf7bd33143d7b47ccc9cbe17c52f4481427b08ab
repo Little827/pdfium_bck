@@ -110,6 +110,24 @@
     },
     {
       "key": {
+        "uuid": "ed3a6869_4ec1e833",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:40:34Z",
+      "side": 1,
+      "message": "FWIW, I did try to add test coverage, but then I noticed the PDFium behavior differs from Acrobat. Which means some of this code is likely wrong. I started trying to fix it but never finished.\n\nMeanwhile, https://pdfium-review.googlesource.com/63571 landed to test this code. So to make progress, I\u0027ll land this CL chain to refactor the code. We\u0027ll fix the behavior to better match Acrobat separately.",
+      "parentUuid": "2c7cfa6f_e4659507",
+      "revId": "cf7bd33143d7b47ccc9cbe17c52f4481427b08ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66980a0f_56340077",
         "filename": "fxjs/cjs_field.cpp",
         "patchSetId": 2
