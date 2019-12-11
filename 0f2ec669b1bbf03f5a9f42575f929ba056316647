@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a7acbdf_bf4aae66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "FPDFAnnot_SetAP() - \"annot\" needs to be capitalized to match the definition verbatim. Add parenthesis to distinguish FunctioName() from ClassName.",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd92999c_a21df4d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "FPDFAnnot_SetAP()",
+      "range": {
+        "startLine": 15,
+        "startChar": 52,
+        "endLine": 15,
+        "endChar": 67
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f092cc_97d2907b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "One blank line is fine. Remove this one?",
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244408e4_d3f08800",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "pdfium:1434",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633cea0f_3d356840",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "#include \u003ccmath\u003e",
+      "range": {
+        "startLine": 841,
+        "startChar": 26,
+        "endLine": 841,
+        "endChar": 35
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87925570_2fb877bb",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "Can we just check if the \"CA\" value is in range, i.e. not negative as well? Just check it as a float instead of converting to int and then checking.",
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c86c5e7_b306e9a4",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "Use an anonymous namespace, rather than the static keyword.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299a5a64_61d0c52f",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "wchar_t kStreamData[]\n\nSince std::wstring is a class and not Plain Old Data, this usage will add static initializers. Let\u0027s avoid adding SIs.",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e97077_3a1d5ba4",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "opaque",
+      "range": {
+        "startLine": 69,
+        "startChar": 64,
+        "endLine": 69,
+        "endChar": 70
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d804910c_268bb96a",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "non-existence",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d40eb01_0ab54fc8",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-11T18:36:15Z",
+      "side": 1,
+      "message": "Does EXPECT_FLOAT_EQ() work well here?",
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
