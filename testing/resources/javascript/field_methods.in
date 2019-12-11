@@ -10,12 +10,20 @@ stream
 
 function testGetField() {
   try {
+    var empty =  this.getField("");
+    app.alert("empty is " + empty.name);
     var field = this.getField("MyField");
     app.alert("field is " + field.name);
     var button = this.getField("MyField.MyPushButton");
     app.alert("button is " + button.name);
     var nonesuch = this.getField("MyField.nonesuch");
     app.alert("nonesuch is " + nonesuch);
+    var dotdot = this.getField("MyField..nonesuch");
+    app.alert("dotdot is " + dotdot.name);
+    var dotdot2 = this.getField("MyField..MyPushButton");
+    app.alert("dotdot2 is " + dotdot2.name);
+    var dotdot3 = this.getField("MyField..3");
+    app.alert("dotdot3 is " + dotdot3.name);
   } catch (e) {
     app.alert("Unexpected error: " + e);
   }
@@ -41,17 +49,6 @@ expect("this.getField('MyField.MyPushButton').buttonGetIcon()", "[object Object]
 expect("this.getField('MyField.MyPushButton').buttonImportIcon()", undefined);
 
 expect("this.getField('MyField.MyFile').browseForFileToSubmit()", undefined);
-
-expect("this.getField('MyField.MyMultiSelect').getItemAt(0)", "foo");
-expect("this.getField('MyField.MyMultiSelect').getItemAt(1, false)", "bar");
-expect("this.getField('MyField.MyMultiSelect').getItemAt(1, true)", "bar");
-expect("this.getField('MyField.MyMultiSelect').getItemAt(2, false)", "Qux");
-expect("this.getField('MyField.MyMultiSelect').getItemAt(2, true)", "qux");
-expect("this.getField('MyField.MyMultiSelect').getItemAt(3)", "");
-expect("this.getField('MyField.MyMultiSelect').getItemAt()", "qux");
-expect("this.getField('MyField.MyMultiSelect').getItemAt(172)", "qux");
-expect("this.getField('MyField.MyMultiSelect').getItemAt(-400)", "");
-expect("this.getField('MyField.MyMultiSelect').getItemAt('zzzz')", "foo");
 
 expectError("this.getField('MyField').checkThisBox()");
 expectError("this.getField('MyField').checkThisBox({})");
