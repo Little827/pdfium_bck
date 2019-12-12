@@ -289,6 +289,29 @@
     },
     {
       "key": {
+        "uuid": "def1abbd_94e2ac44",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T10:02:11Z",
+      "side": 1,
+      "message": "ASSERT_FALSE(resources_dict);",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d40eb01_0ab54fc8",
         "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
         "patchSetId": 5
