@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fb7ebbe_d6768b22",
+        "filename": "core/fdrm/fx_crypt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-12T19:48:10Z",
+      "side": 1,
+      "message": "Normally I agree with the ClangTidy change, but here, we need to call size() anyway. WDYT of doing something like this to make ClanTidy happy?\n\nsize_t size \u003d key.size();\nj \u003d (j + context-\u003em[i] + (size ? key[i % size] : 0)) \u0026 0xFF;",
+      "revId": "d7ea28c2efc03a2f78a0d2b887cbe7977bb8fbde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
