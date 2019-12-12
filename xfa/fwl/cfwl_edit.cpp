@@ -246,11 +246,11 @@ bool CFWL_Edit::Paste(const WideString& wsPaste) {
 }
 
 bool CFWL_Edit::Undo() {
-  return CanUndo() ? m_EdtEngine.Undo() : false;
+  return CanUndo() && m_EdtEngine.Undo();
 }
 
 bool CFWL_Edit::Redo() {
-  return CanRedo() ? m_EdtEngine.Redo() : false;
+  return CanRedo() && m_EdtEngine.Redo();
 }
 
 bool CFWL_Edit::CanUndo() {
