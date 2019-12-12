@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dea02bb0_5ce4e80c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "CPDFSDK_AnnotIterator",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe5f9df_cc51820e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "killing",
+      "range": {
+        "startLine": 17,
+        "startChar": 63,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2da3ff_4c4abc90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "setting",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fd30c0_e704800d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "https://crrev.com/c/1783695",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 66
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1161e12c_693413e3",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "period at the end.",
+      "range": {
+        "startLine": 998,
+        "startChar": 15,
+        "endLine": 998,
+        "endChar": 23
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b34a1da_b97e760b",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "for single line not needed.",
+      "range": {
+        "startLine": 999,
+        "startChar": 17,
+        "endLine": 999,
+        "endChar": 18
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb47d6a8_62befdaa",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "++i",
+      "range": {
+        "startLine": 1003,
+        "startChar": 40,
+        "endLine": 1003,
+        "endChar": 42
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75435c18_2e0cc83a",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "Lets avoid manual memory management.",
+      "range": {
+        "startLine": 2166,
+        "startChar": 42,
+        "endLine": 2166,
+        "endChar": 46
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5892dfee_fc0d78a6",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2169,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "++i",
+      "range": {
+        "startLine": 2169,
+        "startChar": 46,
+        "endLine": 2169,
+        "endChar": 49
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2865fe3a_4cb044ee",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2169,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "not needed for oneline loop.",
+      "range": {
+        "startLine": 2169,
+        "startChar": 51,
+        "endLine": 2169,
+        "endChar": 52
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd19d1a7_bd5af175",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "why are we including this?",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013fecc4_d6856c00",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "period",
+      "range": {
+        "startLine": 626,
+        "startChar": 51,
+        "endLine": 626,
+        "endChar": 55
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280d53b6_48e7ca31",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "write TODO(crbug.com/994500):",
+      "range": {
+        "startLine": 628,
+        "startChar": 3,
+        "endLine": 628,
+        "endChar": 7
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ffb782_eff5a3e0",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "Get",
+      "range": {
+        "startLine": 634,
+        "startChar": 3,
+        "endLine": 634,
+        "endChar": 8
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e96ebb17_0505b0c2",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "fix this comment line.",
+      "range": {
+        "startLine": 639,
+        "startChar": 6,
+        "endLine": 641,
+        "endChar": 28
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39b892c_08e33c45",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-12T11:02:07Z",
+      "side": 1,
+      "message": "Define success and failure.\nReturn true if list of annotation types were set in |subtypes|. Return false otherwise. Always set |count| to size of list of annotation types..",
+      "range": {
+        "startLine": 642,
+        "startChar": 3,
+        "endLine": 642,
+        "endChar": 13
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
