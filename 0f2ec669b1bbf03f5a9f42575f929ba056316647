@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "c33a0013_dc71c97c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2019-12-12T07:23:06Z",
+      "side": 1,
+      "message": "for is not needed?",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd92999c_a21df4d6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -81,6 +104,52 @@
         "startChar": 5,
         "endLine": 24,
         "endChar": 61
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d671c7_56bb3120",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2019-12-12T07:23:06Z",
+      "side": 1,
+      "message": "Will this be always true? given we are entering this method only after this check. Also, given the method name I am expecting callers will do a \"CA\" check before calling it.",
+      "range": {
+        "startLine": 234,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 33
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a4de34_960ba256",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2019-12-12T07:23:06Z",
+      "side": 1,
+      "message": "A small confusion, will pExtGStateDict and pGSDict pointing to the same byte stream pool? How does it work, I tried the code but could not understand it in details.",
+      "range": {
+        "startLine": 250,
+        "startChar": 7,
+        "endLine": 250,
+        "endChar": 22
       },
       "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
