@@ -46,6 +46,30 @@
       "revId": "580f5629f57d780e5de100794b028bf53f2b0256",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abf723f_064031c5",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T17:43:13Z",
+      "side": 1,
+      "message": "We\u0027d have to restructure the big block of if-else-if code in ParseCommandLine() to use Optional. I can do that in this CL if you\u0027d like.",
+      "parentUuid": "65e247d3_8a533fe6",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 5
+      },
+      "revId": "580f5629f57d780e5de100794b028bf53f2b0256",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
