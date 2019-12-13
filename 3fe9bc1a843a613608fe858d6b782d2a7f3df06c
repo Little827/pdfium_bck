@@ -23,6 +23,53 @@
       "revId": "3fe9bc1a843a613608fe858d6b782d2a7f3df06c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b0b059_5a528b9a",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T21:21:59Z",
+      "side": 1,
+      "message": "This is complicated because we can\u0027t use a lambda as a template arg, else  error: lambda-expression in template-argument is produced, so it would have to look like:\n\ninline uint16_t swerp(uint16_t x) { return (x \u003e\u003e 8) | (x \u003c\u003c 8); }\n\ntemplate \u003cuint16_t(*P)(uint16_t)\u003e\nvoid FromUTF16WithPredicate(uint16_t* buf, size_t len) {\n  ...\n      buf[i] \u003d P(wstr[i]);\n  ...\n\n}\n\nthen invoke like FromUTF16WithPredicate\u003cswerp\u003e(p, len) which looks more C++-like.",
+      "parentUuid": "2a8c886a_10c85a34",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 34
+      },
+      "revId": "3fe9bc1a843a613608fe858d6b782d2a7f3df06c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be48772f_91218be7",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T21:21:59Z",
+      "side": 1,
+      "message": "can we write this as ((wch \u003e\u003e 8) \u0026 0xff) | ((wch \u0026 0xff) \u003c\u003c 8)\n\nI worry about arguments silently promoted to ints, and wch is 32bits excecpt on win.",
+      "range": {
+        "startLine": 961,
+        "startChar": 50,
+        "endLine": 961,
+        "endChar": 73
+      },
+      "revId": "3fe9bc1a843a613608fe858d6b782d2a7f3df06c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
