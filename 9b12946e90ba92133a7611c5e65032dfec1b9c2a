@@ -23,6 +23,30 @@
       "revId": "9b12946e90ba92133a7611c5e65032dfec1b9c2a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be1a2a41_986c170c",
+        "filename": "fxbarcode/qrcode/BC_QRCoderVersion.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T17:32:06Z",
+      "side": 1,
+      "message": "Tweak. We\u0027d need ClangTidy to do the conversion automagically.",
+      "parentUuid": "e853081b_48481dd7",
+      "range": {
+        "startLine": 50,
+        "startChar": 44,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "9b12946e90ba92133a7611c5e65032dfec1b9c2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
