@@ -153,12 +153,24 @@ class TestRunner:
 
     with open(txt_path, 'w') as outfile:
       cmd_to_run = [
-          self.pdfium_test_path, '--send-events', '--time=' + TEST_SEED_TIME,
-          pdf_path
+          self.pdfium_test_path, '--send-events', '--time=' + TEST_SEED_TIME
       ]
+
+      if self.options.disable_javascript:
+        cmd_to_run.append('--disable-javascript')
+
+      cmd_to_run.append(pdf_path)
       subprocess.check_call(cmd_to_run, stdout=outfile)
 
+    # If the expected file does not exist, the output is expected to be empty.
     if not os.path.exists(expected_txt_path):
+      return self._VerifyEmptyText(txt_path)
+
+    # If JavaScript is disabled, the output should be empty.
+    # However, if the test is suppressed and JavaScript is disabled, do not
+    # verify that the text is empty so the suppressed test does not surprise.
+    if self.options.disable_javascript and not self.test_suppressor.IsResultSuppressed(
+        input_root + '.in'):
       return self._VerifyEmptyText(txt_path)
 
     cmd = [sys.executable, self.text_diff_path, expected_txt_path, txt_path]
@@ -188,6 +200,9 @@ class TestRunner:
 
     if use_ahem:
       cmd_to_run.append('--font-dir=%s' % self.font_dir)
+
+    if self.options.disable_javascript:
+      cmd_to_run.append('--disable-javascript')
 
     if self.options.reverse_byte_order:
       cmd_to_run.append('--reverse-byte-order')
@@ -239,6 +254,12 @@ class TestRunner:
         dest='num_workers',
         type='int',
         help='run NUM_WORKERS jobs in parallel')
+
+    parser.add_option(
+        '--disable-javascript',
+        action="store_true",
+        dest="disable_javascript",
+        help='Prevents JavaScript from executing in PDF files.')
 
     parser.add_option(
         '--gold_properties',
@@ -319,7 +340,8 @@ class TestRunner:
 
     self.feature_string = subprocess.check_output(
         [self.pdfium_test_path, '--show-config'])
-    self.test_suppressor = suppressor.Suppressor(finder, self.feature_string)
+    self.test_suppressor = suppressor.Suppressor(
+        finder, self.feature_string, self.options.disable_javascript)
     self.image_differ = pngdiffer.PNGDiffer(finder,
                                             self.options.reverse_byte_order)
     error_message = self.image_differ.CheckMissingTools(
