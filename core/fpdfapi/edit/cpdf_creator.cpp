@@ -619,11 +619,27 @@ void CPDF_Creator::InitID() {
   if (m_pEncryptDict) {
     ASSERT(m_pParser);
     if (m_pEncryptDict->GetStringFor("Filter") == "Standard") {
+      ByteString password = m_pParser->GetPassword();
+      switch (m_pParser->GetSecurityHandler()->password_encoding_conversion()) {
+        case CPDF_SecurityHandler::kNone:
+          // Do nothing.
+          break;
+        case CPDF_SecurityHandler::kLatin1ToUtf8:
+          password = WideString::FromLatin1(password.AsStringView()).ToUTF8();
+          break;
+        case CPDF_SecurityHandler::kUtf8toLatin1:
+          password = WideString::FromUTF8(password.AsStringView()).ToLatin1();
+          break;
+        default:
+          NOTREACHED();
+          break;
+      };
+
       m_pNewEncryptDict = ToDictionary(m_pEncryptDict->Clone());
       m_pEncryptDict = m_pNewEncryptDict;
       m_pSecurityHandler = pdfium::MakeRetain<CPDF_SecurityHandler>();
       m_pSecurityHandler->OnCreate(m_pNewEncryptDict.Get(), m_pIDArray.Get(),
-                                   m_pParser->GetPassword());
+                                   password);
       m_bSecurityChanged = true;
     }
   }

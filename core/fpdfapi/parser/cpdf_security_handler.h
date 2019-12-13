@@ -25,6 +25,13 @@ class CPDF_Parser;
 
 class CPDF_SecurityHandler : public Retainable {
  public:
+  enum PasswordEncodingConversion {
+    kUnknown,
+    kNone,
+    kLatin1ToUtf8,
+    kUtf8toLatin1,
+  };
+
   template <typename T, typename... Args>
   friend RetainPtr<T> pdfium::MakeRetain(Args&&... args);
 
@@ -44,6 +51,10 @@ class CPDF_SecurityHandler : public Retainable {
 
   CPDF_CryptoHandler* GetCryptoHandler() const {
     return m_pCryptoHandler.get();
+  }
+
+  PasswordEncodingConversion password_encoding_conversion() const {
+    return m_PasswordEncodingConversion;
   }
 
  private:
@@ -84,6 +95,7 @@ class CPDF_SecurityHandler : public Retainable {
   uint32_t m_Permissions = 0;
   int m_Cipher = FXCIPHER_NONE;
   size_t m_KeyLen = 0;
+  PasswordEncodingConversion m_PasswordEncodingConversion = kUnknown;
   ByteString m_FileId;
   RetainPtr<const CPDF_Dictionary> m_pEncryptDict;
   std::unique_ptr<CPDF_CryptoHandler> m_pCryptoHandler;
