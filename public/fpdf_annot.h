@@ -617,6 +617,31 @@ FPDFAnnot_GetFontSize(FPDF_FORMHANDLE hHandle,
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_IsChecked(FPDF_FORMHANDLE hHandle,
                                                         FPDF_ANNOTATION annot);
 
+// Experimental API.
+// Set the list of focusable annotation types.
+//
+//    subtypes   -   list of annotation types which can be tabbed over.
+//    count      -   number of annotation types in list.
+FPDF_EXPORT void FPDF_CALLCONV
+FPDFAnnot_SetFocusableSubtypes(const FPDF_ANNOTATION_SUBTYPE* subtypes,
+                               size_t count);
+
+// Experimental API.
+// Get the list of focusable annotation types as set by host.
+//
+//    subtypes   -   receives the list of annotation types which
+//                   can be tabbed over.
+//    count      -   host sets the count as per allocated memory to number of
+//                   subtypes. Receives the count of currently set annotation
+//                   types, if differ.
+// Returns true on success and set list of annotation types to |subtypes|.
+// Returns false on failure and |count| is updated with actual number of
+// annotate types which are tabbable.
+// Host can allocate |subtypes| as per the |count| and get the list.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFAnnot_GetFocusableSubtypes(FPDF_ANNOTATION_SUBTYPE* subtypes,
+                               size_t* count);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus

@@ -183,6 +183,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   if (!g_bLibraryInitialized)
     return;
 
+  ResetFocusableAnnotSubtypes();
+
 #ifdef PDF_ENABLE_XFA
   BC_Library_Destroy();
 #endif  // PDF_ENABLE_XFA
