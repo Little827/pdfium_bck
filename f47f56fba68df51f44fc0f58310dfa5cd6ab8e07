@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9bbf4ddf_e3343e86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea02bb0_5ce4e80c",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfe5f9df_cc51820e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1a25da_a63785f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe5f9df_cc51820e",
+      "range": {
+        "startLine": 17,
+        "startChar": 63,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "90ed4234_14b1377a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2da3ff_4c4abc90",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26fd30c0_e704800d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 19
@@ -91,6 +163,30 @@
       "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc0a0c4b_1a9d8a06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26fd30c0_e704800d",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 66
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1e3dc026_4175571c",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1161e12c_693413e3",
+      "range": {
+        "startLine": 998,
+        "startChar": 15,
+        "endLine": 998,
+        "endChar": 23
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b34a1da_b97e760b",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 19
@@ -137,6 +257,30 @@
       "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364dc587_6fb2879f",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "It is optional and I find it more explicit.",
+      "parentUuid": "4b34a1da_b97e760b",
+      "range": {
+        "startLine": 999,
+        "startChar": 17,
+        "endLine": 999,
+        "endChar": 18
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1bd984c0_5116cac5",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Changed but here either(pre or post increment) can be used for simple scalar values.",
+      "parentUuid": "cb47d6a8_62befdaa",
+      "range": {
+        "startLine": 1003,
+        "startChar": 40,
+        "endLine": 1003,
+        "endChar": 42
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75435c18_2e0cc83a",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 19
@@ -183,6 +351,30 @@
       "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56dc0544_063ca5d2",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Would like to know other opinions too. I saw the usage of new in PDFium,e.g. NewAnnot() API.\nIt is not harmful until delete is accompanied in the test case.",
+      "parentUuid": "75435c18_2e0cc83a",
+      "range": {
+        "startLine": 2166,
+        "startChar": 42,
+        "endLine": 2166,
+        "endChar": 46
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +424,54 @@
     },
     {
       "key": {
+        "uuid": "23046b7c_1e7657db",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2169,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Changed but here either(pre or post increment) can be used for simple scalar values .",
+      "parentUuid": "5892dfee_fc0d78a6",
+      "range": {
+        "startLine": 2169,
+        "startChar": 46,
+        "endLine": 2169,
+        "endChar": 49
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d50c824e_1a8f8f3d",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2169,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "I think that is optional, I find it more explicit.",
+      "parentUuid": "2865fe3a_4cb044ee",
+      "range": {
+        "startLine": 2169,
+        "startChar": 51,
+        "endLine": 2169,
+        "endChar": 52
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd19d1a7_bd5af175",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 19
@@ -252,6 +492,30 @@
       "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44fd74f_344765fe",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Not required, removed.",
+      "parentUuid": "fd19d1a7_bd5af175",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "5f9846c4_2a96e9c8",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013fecc4_d6856c00",
+      "range": {
+        "startLine": 626,
+        "startChar": 51,
+        "endLine": 626,
+        "endChar": 55
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "280d53b6_48e7ca31",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 19
@@ -298,6 +586,30 @@
       "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2af8db_767dbae1",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Tests are already present in CL.\nTODO is removed.",
+      "parentUuid": "280d53b6_48e7ca31",
+      "range": {
+        "startLine": 628,
+        "startChar": 3,
+        "endLine": 628,
+        "endChar": 7
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "fb76b5de_33e0d638",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ffb782_eff5a3e0",
+      "range": {
+        "startLine": 634,
+        "startChar": 3,
+        "endLine": 634,
+        "endChar": 8
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e96ebb17_0505b0c2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 19
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "ee2ae587_f7b32ab9",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e96ebb17_0505b0c2",
+      "range": {
+        "startLine": 639,
+        "startChar": 6,
+        "endLine": 641,
+        "endChar": 28
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f39b892c_08e33c45",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 19
@@ -367,6 +727,30 @@
       "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbeaf0d7_d871b1ec",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-13T12:26:25Z",
+      "side": 1,
+      "message": "As discussed, success \u0026 failure are defined.\nJust made it more aligned with current file format.",
+      "parentUuid": "f39b892c_08e33c45",
+      "range": {
+        "startLine": 642,
+        "startChar": 3,
+        "endLine": 642,
+        "endChar": 13
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
