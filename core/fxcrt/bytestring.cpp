@@ -144,8 +144,8 @@ ByteString::ByteString(const char* ptr)
 
 ByteString::ByteString(ByteStringView bstrc) {
   if (!bstrc.IsEmpty())
-    m_pData.Reset(StringData::Create(bstrc.unterminated_c_str(),
-                                     bstrc.GetLength()));
+    m_pData.Reset(
+        StringData::Create(bstrc.unterminated_c_str(), bstrc.GetLength()));
 }
 
 ByteString::ByteString(ByteStringView str1, ByteStringView str2) {
