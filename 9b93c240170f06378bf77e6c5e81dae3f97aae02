@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "483b9664_eaa3cf64",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T20:54:02Z",
+      "side": 1,
+      "message": "All the encrypted documents I\u0027m interested in testing right now are variants of hello_world.pdf. So there\u0027s no need to pass in the different dimensions as of right now. I also don\u0027t want to pass in the same parameters everywhere. e.g. |kExpectedHash| which is per-platform. It\u0027s more readable to just have a method dedicated to hello_world.pdf.",
+      "parentUuid": "1e3eeaae_6125377b",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "9b93c240170f06378bf77e6c5e81dae3f97aae02",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37635d99_7a17ad01",
         "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
         "patchSetId": 1
