@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09dd5df4_d1176ffd",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T05:14:43Z",
+      "side": 1,
+      "message": "This is over 80 chars / line, but yapf isn\u0027t rewriting it for some reason. You\u0027ll note my suggestion is written the way it is to wrap properly.",
+      "revId": "0f2e0b2ca2f367e38bcc15bbd48b9d80c29c292c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "536ab3ee_65dc828e",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T05:14:43Z",
+      "side": 1,
+      "message": "Probably should have the caller pass in |input_filename| instead of |input_root|. Then we won\u0027t have to make an assumption that |input_filename| ended in \".in\". i.e. This won\u0027t work if testing/resources/javascript/ contained a .pdf test file.",
+      "revId": "0f2e0b2ca2f367e38bcc15bbd48b9d80c29c292c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
