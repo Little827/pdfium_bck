@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "a26ac276_48534d19",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-13T14:07:08Z",
+      "side": 1,
+      "message": "While there is no memory leak here, the idea is to avoid manual memory management if possible. \nWe can declare the array on the stack.",
+      "parentUuid": "56dc0544_063ca5d2",
+      "range": {
+        "startLine": 2166,
+        "startChar": 42,
+        "endLine": 2166,
+        "endChar": 46
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5892dfee_fc0d78a6",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 19
