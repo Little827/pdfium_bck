@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576196696 -0800\nnonce AC6AUtPybSv6qAIeXJo5k2rSnWHceXX2AswszKkCHhWnhiECCW2rm0tVoHjGS4N2PupXCEnTkz26\n\n0000000000000000000000000000000000000000 9e275f573ce2e019a5b02758065158529a8eb516 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3y2lgACgkQqzYtYVpm\n/XvczAf9GNERpLSDoBv7TG087NDowb7U7fl67pu7vM4JT2KwDZw0E293cXda2qqE\naJmuBvZgOUUqdCy4whcipHa94esUM8hNb1LNO3UAGVFr3F42a+SOuBMFGIrrKpAp\nEeD+Yk5aP7PjKkrJBuolpfg6iaGdZDCzZ/9oH0KbOgLhO6F+YvgBHc5ArS4e1EII\nwO0O7PwN/mt6DzfdFvsFyRxe6CKD+2IGi22sVjxarFwqrIMnCGFcUPj7VFGyi9bt\nzZF1lcgTwZSvaaMvTPmz8NkXWQy6DRcFklNMSZOdeiaSiFa8j7qggBVL1HMjKphu\n4HN95RPAPGX94lKl7jK1bmfkDc8RWA\u003d\u003d\n\u003dHvWU\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "041a9dc8_aa762be2",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T17:34:55Z",
+      "side": 1,
+      "message": "nit: maybe enum Type { ... }; and move to line 23",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "9e275f573ce2e019a5b02758065158529a8eb516",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4bb57b_9ee7d168",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T17:34:55Z",
+      "side": 1,
+      "message": "nit: then Type m_Type \u003d kInvalid; here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "9e275f573ce2e019a5b02758065158529a8eb516",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f2ba60e_84410c6b",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T17:34:55Z",
+      "side": 1,
+      "message": "nit: then these can immediately follow m_Type to pack more tightly on 64-bits (4 x int fields together).",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "9e275f573ce2e019a5b02758065158529a8eb516",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
