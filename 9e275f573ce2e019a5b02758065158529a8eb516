@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "c07b257f_003e3fbb",
+        "filename": "core/fpdfdoc/cpdf_structelement.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T17:37:49Z",
+      "side": 1,
+      "message": "nit: pre-existing maybe add the word |types| to the end of each of these comments?  (if they still fit without wrap).",
+      "range": {
+        "startLine": 37,
+        "startChar": 71,
+        "endLine": 37,
+        "endChar": 72
+      },
+      "revId": "9e275f573ce2e019a5b02758065158529a8eb516",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f2ba60e_84410c6b",
         "filename": "core/fpdfdoc/cpdf_structelement.h",
         "patchSetId": 1
