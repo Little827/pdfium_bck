@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14fc8520_d414e631",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T01:40:18Z",
+      "side": 1,
+      "message": "Can this be separated into two checks?\n\nif not os.path.exists(expected_txt_path):\n  return self._VerifyEmptyText(txt_path)\n\nif (self.options.disable_javascript and\n    not self.test_suppressor.IsResultSuppressed(...)):\n  return self._VerifyEmptyText(txt_path)",
+      "revId": "22be1ff0be1738d3759b499e43c8a09c0278cebb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
