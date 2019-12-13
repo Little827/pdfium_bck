@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576266322 -0800\nnonce AC6AUtOIOrrLbMlZ2HC3S7XOLN+1C7gHd66ZEbVlk6BB+ofA3LYgeMV3UGQVim77kzG6dckUdob5\n\n0000000000000000000000000000000000000000 9b93c240170f06378bf77e6c5e81dae3f97aae02 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3z6lIACgkQqzYtYVpm\n/XuYfwf/dc0q5pPn5NeV9I+vHPKymjIFyIBxyb+gJqaJacjF7Q2k8j9cmCLMpFx9\nlBpHQrhMY5hP82yahE41YIUvxQdgxx8qb9GlW7ygrw6v4c7GIIsedligZ0FgxX9n\nurofWKzWS1XKsCExpl6u94YG58CBsgm93dN+BWFsMg+BQN5I90ji8xc1aAuOhjLn\n3wD2aUXL+rct/N/wGnZvWvV/7mxuUlOOK6tTmE6LFF4flpgdzVNpxSwe1F+ywcU6\nbJa/YePCzw5F5TqZsQ3plCJVNkr3pvPxTigt8ZzOiApj7vGWiF6cNmGtTk1VI+S+\n5cOlMxel6R9fgZTNxA8sKNsVbSPKvQ\u003d\u003d\n\u003dlbFe\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e3eeaae_6125377b",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T20:12:29Z",
+      "side": 1,
+      "message": "If we pass the width/height/hash as arguments as suggested below this becomes more general and we don\u0027t have to put the HelloWorld qualifier into its name .",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "9b93c240170f06378bf77e6c5e81dae3f97aae02",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37635d99_7a17ad01",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T20:12:29Z",
+      "side": 1,
+      "message": "can we pass these as 3 as arguments?  The kExpectedHash then becomes a static constant in anon namespace so the values only appear once in the file.",
+      "range": {
+        "startLine": 60,
+        "startChar": 38,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "9b93c240170f06378bf77e6c5e81dae3f97aae02",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
