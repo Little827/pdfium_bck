@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576260787 -0800\nnonce AC6AUtOroBWQ7YPVs4gSpNYQaNAukr1H8gwFbTtYaUvvv5B3ms0zvm+uF5vWkzYIlRx5MfGcUvnD\n\n0000000000000000000000000000000000000000 3fe9bc1a843a613608fe858d6b782d2a7f3df06c refs/for/refs/heads/master%notify\u003dNONE,m\u003dfix\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl3z1LMACgkQqzYtYVpm\n/XsFYQgAs14qtIa7JaXLMab7i89vhXSRrlnE6SWNkhektWf0EJ/M15y3bqeZxcnZ\nykocmWR3i47BryJU7tuqYn59FTuyRq17ILyIA7rBYptr0FxrOr2LP9tsRylIOHZk\nGbqa0UhMjaZH+mAIQvKI8zc5I6uQsSHJoWiVwKQEhawJLIgcNAL7HCjNQzaTMmeh\nPaQLNl9xEPzmQe/IkFh52KjolmrVb03iVCdVz4r1AHeH2LVkC1AROxnFxigiG5vq\nc3O1RrztuKmS4He7E8tw5wVbkSylxXNl/Wdoyc/L2FDEmre5hkO9MdF5cFyEKk/G\nyQ6oYgOepoynCqvBWK3R710m8T6KvQ\u003d\u003d\n\u003dSjds\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a8c886a_10c85a34",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-13T20:36:42Z",
+      "side": 1,
+      "message": "can we template this on a function rather than passing a lambda?  Debug builds might be really slow if it doesn\u0027t inline things.",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 34
+      },
+      "revId": "3fe9bc1a843a613608fe858d6b782d2a7f3df06c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
