@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "488486a1_8094a9e3",
+        "filename": "core/fxge/win32/cpsoutput.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T18:34:06Z",
+      "side": 1,
+      "message": "|buffer| holds a 16-bit length header followed by up to 1024 bytes of data. Changing it to uint16_t will just remove the cast on line 23 and add another one on line 32.",
+      "parentUuid": "3a49c13d_a932ec78",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68452635_ea7751fe",
         "filename": "core/fxge/win32/fx_win32_dib.cpp",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2019-12-11T18:53:27Z",
       "side": 1,
       "message": "can we make these unsigned while we\u0027re at it?  We\u0027d have to do checks when extracting from the BITMAPINFO, but later on it avoids passing signed values as arg 3 to memcpy.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7a6d0e_e89e5c90",
+        "filename": "core/fxge/win32/fx_win32_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T18:34:06Z",
+      "side": 1,
+      "message": "Will follow up...",
+      "parentUuid": "68452635_ea7751fe",
       "range": {
         "startLine": 62,
         "startChar": 2,
@@ -123,6 +171,30 @@
       "writtenOn": "2019-12-11T18:53:27Z",
       "side": 1,
       "message": "nit: return blend_type \u003d\u003d BlendMode::kNormal \u0026\u0026 ...",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 454,
+        "endChar": 7
+      },
+      "revId": "8c1e107b86b14d46e1f73448cd123992addf6bb8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a20e47_bd28331f",
+        "filename": "core/fxge/win32/fx_win32_print.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-13T18:34:06Z",
+      "side": 1,
+      "message": "We have the same pattern below. I can make another pass in this file later.",
+      "parentUuid": "e19fef0d_088bd8af",
       "range": {
         "startLine": 452,
         "startChar": 1,
