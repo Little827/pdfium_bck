@@ -377,6 +377,24 @@
     },
     {
       "key": {
+        "uuid": "43a67da2_4a97a045",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-13T04:27:31Z",
+      "side": 1,
+      "message": "But is the conversion of float into int necessary. Couldn\u0027t we do this instead.\npAnnotDict-\u003eGetNumberFor(\"CA\") \u003c\u003d 1.f\n\nThe CA value goes from [0,1] please take care of inclusive ends.",
+      "parentUuid": "b2428796_62c5a20c",
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c86c5e7_b306e9a4",
         "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
         "patchSetId": 5
