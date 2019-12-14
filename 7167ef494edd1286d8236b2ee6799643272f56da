@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a38049e5_f7e7fc47",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-14T01:07:36Z",
+      "side": 1,
+      "message": "nit: password encoding conversion.",
+      "range": {
+        "startLine": 49,
+        "startChar": 63,
+        "endLine": 50,
+        "endChar": 12
+      },
+      "revId": "7167ef494edd1286d8236b2ee6799643272f56da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
