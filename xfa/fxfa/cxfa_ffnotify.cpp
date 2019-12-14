@@ -249,7 +249,23 @@ CXFA_FFWidgetHandler* CXFA_FFNotify::GetWidgetHandler() {
   return pDocView ? pDocView->GetWidgetHandler() : nullptr;
 }
 
-void CXFA_FFNotify::OpenDropDownList(CXFA_FFWidget* hWidget) {
+void CXFA_FFNotify::OpenDropDownList(CXFA_Node* pNode) {
+  auto* pDocLayout = CXFA_LayoutProcessor::FromDocument(m_pDoc->GetXFADoc());
+  CXFA_LayoutItem* pLayoutItem = pDocLayout->GetLayoutItem(pNode);
+  if (!pLayoutItem)
+    return;
+
+  CXFA_FFWidget* hWidget = XFA_GetWidgetFromLayoutItem(pLayoutItem);
+  if (!hWidget)
+    return;
+
+  // SetFocusWidget() may destroy |hWidget| object by JS callback.
+  ObservedPtr<CXFA_FFWidget> pObservedWidget(hWidget);
+  CXFA_FFDoc* hDoc = GetHDOC();
+  hDoc->GetDocEnvironment()->SetFocusWidget(hDoc, hWidget);
+  if (!pObservedWidget)
+    return;
+
   if (hWidget->GetNode()->GetFFWidgetType() != XFA_FFWidgetType::kChoiceList)
     return;
 
@@ -412,8 +428,7 @@ void CXFA_FFNotify::OnValueChanged(CXFA_Node* pSender,
 }
 
 void CXFA_FFNotify::OnContainerChanged(CXFA_Node* pNode) {
-  auto* pLayout = CXFA_LayoutProcessor::FromDocument(m_pDoc->GetXFADoc());
-  pLayout->AddChangedContainer(pNode);
+  m_pDoc->GetXFADoc()->GetLayoutProcessor()->AddChangedContainer(pNode);
 }
 
 void CXFA_FFNotify::OnChildAdded(CXFA_Node* pSender) {
