@@ -16,6 +16,24 @@
       "revId": "da72482bc9b785f3a4bfa1b5476a4360b86e3a27",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da102095_c160a17f",
+        "filename": "core/fxcrt/fx_coordinates_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2019-12-14T05:37:25Z",
+      "side": 1,
+      "message": "Taking the ceiling of a negative number effectively just throws away the decimal part, so it becomes closer to zero.  The same behavior is shown in the example in [1], where ceil(-2.3) became -2.0 and ceil(-3.8) became -3.0.\n\nRegarding the comment - it was to reflect that [2] clearly shows taking the ceil() for |top|.\n\n[1] http://www.cplusplus.com/reference/cmath/ceil/\n[2] https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcrt/fx_coordinates.cpp?rcl\u003d068b907f128c014fac4bb2d459a5461b3fdeb20b\u0026l\u003d132",
+      "parentUuid": "12fb356d_87ea430c",
+      "revId": "da72482bc9b785f3a4bfa1b5476a4360b86e3a27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
