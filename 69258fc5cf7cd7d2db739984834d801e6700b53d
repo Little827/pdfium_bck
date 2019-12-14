@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d94c1c13_4e68212f",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-14T00:32:03Z",
+      "side": 1,
+      "message": "If you\u0027d like. maybe we can fold this logic back into the security handler itself so that we don\u0027t have to expose the K constants, so that we\u0027d write\nhere something like:\n\n   ByteString password \u003d m_pParser-\u003eGetSecurityHandler()-\u003epassword_encoding_conversion(m_pParser-\u003eGetPassword());",
+      "range": {
+        "startLine": 624,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 16
+      },
+      "revId": "69258fc5cf7cd7d2db739984834d801e6700b53d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
