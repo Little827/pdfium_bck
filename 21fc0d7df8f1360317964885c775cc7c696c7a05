@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86bdec81_8016c542",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-14T00:32:26Z",
+      "side": 1,
+      "message": "I assume some still remain, so there\u0027s no BUILD.gn changes.",
+      "revId": "21fc0d7df8f1360317964885c775cc7c696c7a05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
