@@ -171,9 +171,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFPath_GetDrawMode(FPDF_PAGEOBJECT path,
   if (!pPathObj || !fillmode || !stroke)
     return false;
 
-  if (pPathObj->filltype() == FXFILL_ALTERNATE)
+  if (pPathObj->has_alternate_filltype())
     *fillmode = FPDF_FILLMODE_ALTERNATE;
-  else if (pPathObj->filltype() == FXFILL_WINDING)
+  else if (pPathObj->has_winding_filltype())
     *fillmode = FPDF_FILLMODE_WINDING;
   else
     *fillmode = FPDF_FILLMODE_NONE;
