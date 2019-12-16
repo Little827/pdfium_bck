@@ -80,7 +80,6 @@ source_set("parser") {
     "../../fdrm",
     "../../fxcodec",
     "../../fxcrt",
-    "../../fxge",
   ]
   allow_circular_includes_from = []
   visibility = [ "../../../*" ]
