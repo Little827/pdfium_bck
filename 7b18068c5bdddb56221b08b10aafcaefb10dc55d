@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9860e21_1ee36d81",
+        "filename": "core/fpdfdoc/cpdf_icon.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3568363_4634a403",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ad99537_9ac59788",
         "filename": "core/fpdfdoc/cpdf_icon.cpp",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2a54ba_12732d2e",
+        "filename": "core/fpdfdoc/cpdf_icon.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ad99537_9ac59788",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d9b179c3_374a11cf",
+        "filename": "core/fpdfdoc/cpdf_iconfit.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:49:35Z",
+      "side": 1,
+      "message": "Done (2x)",
+      "parentUuid": "304d0393_29a39dc4",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d14e050f_cdfbb682",
         "filename": "fpdfsdk/pwl/cpwl_icon.cpp",
         "patchSetId": 9
@@ -67,6 +121,24 @@
       "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e11305_e4ec02e5",
+        "filename": "fpdfsdk/pwl/cpwl_icon.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14e050f_cdfbb682",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
