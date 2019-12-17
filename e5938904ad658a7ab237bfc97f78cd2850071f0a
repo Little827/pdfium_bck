@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f712889_c1b7db60",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:51:32Z",
+      "side": 1,
+      "message": "Then this becomes FPDF_TEXTRENDERMODE_FILL_UNKNOWN. Since it\u0027s an enum and not an enum class, this works and there\u0027s no need to write FPDF_TEXT_RENDERMODE::FPDF_TEXTRENDERMODE_FILL_UNKNOWN. @_@",
+      "range": {
+        "startLine": 2079,
+        "startChar": 12,
+        "endLine": 2079,
+        "endChar": 41
+      },
+      "revId": "e5938904ad658a7ab237bfc97f78cd2850071f0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b50120db_578f2dc8",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:51:32Z",
+      "side": 1,
+      "message": "And these changes aren\u0027t needed.",
+      "revId": "e5938904ad658a7ab237bfc97f78cd2850071f0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30e9725_eef5a7cd",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:51:32Z",
+      "side": 1,
+      "message": "the known FPDF_TEXTRENDERMODE enum values",
+      "range": {
+        "startLine": 1136,
+        "startChar": 18,
+        "endLine": 1136,
+        "endChar": 47
+      },
+      "revId": "e5938904ad658a7ab237bfc97f78cd2850071f0a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
