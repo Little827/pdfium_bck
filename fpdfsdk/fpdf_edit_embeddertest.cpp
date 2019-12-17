@@ -2076,13 +2076,15 @@ TEST_F(FPDFEditEmbedderTest, TestGetTextRenderMode) {
   ASSERT_TRUE(page);
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
 
-  ASSERT_EQ(-1, FPDFTextObj_GetTextRenderMode(nullptr));
+  ASSERT_EQ(FPDF_TEXT_RENDERMODE::UNKNOWN,
+            FPDFTextObj_GetTextRenderMode(nullptr));
 
   FPDF_PAGEOBJECT fill = FPDFPage_GetObject(page, 0);
-  ASSERT_EQ(FPDF_TEXTRENDERMODE_FILL, FPDFTextObj_GetTextRenderMode(fill));
+  ASSERT_EQ(FPDF_TEXT_RENDERMODE::FILL, FPDFTextObj_GetTextRenderMode(fill));
 
   FPDF_PAGEOBJECT stroke = FPDFPage_GetObject(page, 1);
-  ASSERT_EQ(FPDF_TEXTRENDERMODE_STROKE, FPDFTextObj_GetTextRenderMode(stroke));
+  ASSERT_EQ(FPDF_TEXT_RENDERMODE::STROKE,
+            FPDFTextObj_GetTextRenderMode(stroke));
 
   UnloadPage(page);
 }

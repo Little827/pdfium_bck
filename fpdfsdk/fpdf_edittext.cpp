@@ -31,30 +31,37 @@
 #include "third_party/base/ptr_util.h"
 
 // These checks are here because core/ and public/ cannot depend on each other.
+static_assert(static_cast<int>(TextRenderingMode::MODE_UNKNOWN) ==
+                  FPDF_TEXT_RENDERMODE::UNKNOWN,
+              "TextRenderingMode::MODE_UNKNOWN value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_FILL) ==
-                  FPDF_TEXTRENDERMODE_FILL,
+                  FPDF_TEXT_RENDERMODE::FILL,
               "TextRenderingMode::MODE_FILL value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_STROKE) ==
-                  FPDF_TEXTRENDERMODE_STROKE,
+                  FPDF_TEXT_RENDERMODE::STROKE,
               "TextRenderingMode::MODE_STROKE value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_FILL_STROKE) ==
-                  FPDF_TEXTRENDERMODE_FILL_STROKE,
+                  FPDF_TEXT_RENDERMODE::FILL_STROKE,
               "TextRenderingMode::MODE_FILL_STROKE value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_INVISIBLE) ==
-                  FPDF_TEXTRENDERMODE_INVISIBLE,
+                  FPDF_TEXT_RENDERMODE::INVISIBLE,
               "TextRenderingMode::MODE_INVISIBLE value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_FILL_CLIP) ==
-                  FPDF_TEXTRENDERMODE_FILL_CLIP,
+                  FPDF_TEXT_RENDERMODE::FILL_CLIP,
               "TextRenderingMode::MODE_FILL_CLIP value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_STROKE_CLIP) ==
-                  FPDF_TEXTRENDERMODE_STROKE_CLIP,
+                  FPDF_TEXT_RENDERMODE::STROKE_CLIP,
               "TextRenderingMode::MODE_STROKE_CLIP value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_FILL_STROKE_CLIP) ==
-                  FPDF_TEXTRENDERMODE_FILL_STROKE_CLIP,
+                  FPDF_TEXT_RENDERMODE::FILL_STROKE_CLIP,
               "TextRenderingMode::MODE_FILL_STROKE_CLIP value mismatch");
 static_assert(static_cast<int>(TextRenderingMode::MODE_CLIP) ==
-                  FPDF_TEXTRENDERMODE_CLIP,
+                  FPDF_TEXT_RENDERMODE::CLIP,
               "TextRenderingMode::MODE_CLIP value mismatch");
+static_assert(static_cast<int>(TextRenderingMode::MODE_LAST) ==
+                  FPDF_TEXT_RENDERMODE::LAST,
+              "TextRenderingMode::MODE_LAST value mismatch");
+
 namespace {
 
 CPDF_Dictionary* LoadFontDesc(CPDF_Document* pDoc,
@@ -589,6 +596,6 @@ FPDF_EXPORT FPDF_TEXT_RENDERMODE FPDF_CALLCONV
 FPDFTextObj_GetTextRenderMode(FPDF_PAGEOBJECT text) {
   CPDF_TextObject* pTextObj = CPDFTextObjectFromFPDFPageObject(text);
   if (!pTextObj)
-    return -1;
+    return FPDF_TEXT_RENDERMODE::UNKNOWN;
   return static_cast<FPDF_TEXT_RENDERMODE>(pTextObj->m_TextState.GetTextMode());
 }
