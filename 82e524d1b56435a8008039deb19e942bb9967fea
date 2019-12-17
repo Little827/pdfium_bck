@@ -155,6 +155,30 @@
       "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e655207_b11277fa",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2019-12-17T05:49:33Z",
+      "side": 1,
+      "message": "Just removing the fpdf_formfill v2 ifdefs is not sufficient as they use classes/structs which are also under ifdef PDF_ENABLE_XFA. So we would need to remove all the ifdef PDF_ENABLE_XFA in pdfium and replace them with a runtime flag which could be set by the embedder in FPDF_LIBRARY_CONFIG.\n\nThis will result in binary size increase and performance regression for non XFA embedders.\n\nI can work on doing the above mentioned change in a separate CL if the approach seems fine to you?",
+      "parentUuid": "a6a50a5c_207b6991",
+      "range": {
+        "startLine": 681,
+        "startChar": 2,
+        "endLine": 701,
+        "endChar": 0
+      },
+      "revId": "82e524d1b56435a8008039deb19e942bb9967fea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
