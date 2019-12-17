@@ -97,9 +97,9 @@ class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
 
   static bool IsVisible(CPDFSDK_Widget* pWidget);
   static bool IsReadOnly(CPDFSDK_Widget* pWidget);
-  static bool IsFillingAllowed(CPDFSDK_Widget* pWidget);
   static bool IsValidAnnot(CPDFSDK_PageView* pPageView, CPDFSDK_Annot* pAnnot);
 
+  bool IsFillingAllowed(CPDFSDK_Widget* pWidget);
   bool OnKeyStrokeCommit(ObservedPtr<CPDFSDK_Annot>* pAnnot,
                          CPDFSDK_PageView* pPageView,
                          uint32_t nFlag);
