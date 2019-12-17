@@ -8,7 +8,6 @@
 
 #include "constants/form_flags.h"
 #include "core/fpdfapi/page/cpdf_page.h"
-#include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
@@ -472,11 +471,9 @@ bool CFFL_InteractiveFormFiller::IsFillingAllowed(CPDFSDK_Widget* pWidget) {
   if (pWidget->GetFieldType() == FormFieldType::kPushButton)
     return false;
 
-  CPDF_Page* pPage = pWidget->GetPDFPage();
-  uint32_t dwPermissions = pPage->GetDocument()->GetUserPermissions();
-  return (dwPermissions & FPDFPERM_FILL_FORM) ||
-         (dwPermissions & FPDFPERM_ANNOT_FORM) ||
-         (dwPermissions & FPDFPERM_MODIFY);
+  return m_pFormFillEnv->GetPermissions(FPDFPERM_FILL_FORM) ||
+         m_pFormFillEnv->GetPermissions(FPDFPERM_ANNOT_FORM) ||
+         m_pFormFillEnv->GetPermissions(FPDFPERM_MODIFY);
 }
 
 CFFL_FormFiller* CFFL_InteractiveFormFiller::GetFormFiller(
