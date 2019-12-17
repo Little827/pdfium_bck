@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "322cfe03_8273ce84",
+        "filename": "core/fpdfdoc/cpdf_icon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:07:00Z",
+      "side": 1,
+      "message": "- These can probably all be const methods, if we use more const CPDF_Object pointers in the .cpp file.\n- Would CFX_SizeF be a better return type here?\n- #include \u003cutility\u003e for std::pair.",
+      "revId": "62abb7552dc74b2d4af02b4b609b336390d14c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c960357_6f456b58",
+        "filename": "core/fpdfdoc/cpdf_iconfit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:07:00Z",
+      "side": 1,
+      "message": "CFX_PointF?",
+      "revId": "62abb7552dc74b2d4af02b4b609b336390d14c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e02ef8f_e24c66d4",
+        "filename": "fpdfsdk/pwl/cpwl_icon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:07:00Z",
+      "side": 1,
+      "message": "Maybe some of these comments need to carry over into CPDF_Icon?",
+      "revId": "62abb7552dc74b2d4af02b4b609b336390d14c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
