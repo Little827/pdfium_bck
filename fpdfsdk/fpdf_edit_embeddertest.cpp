@@ -2089,6 +2089,31 @@ TEST_F(FPDFEditEmbedderTest, TestGetTextRenderMode) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbedderTest, TestSetTextRenderMode) {
+  EXPECT_TRUE(OpenDocument("text_render_mode.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(2, FPDFPage_CountObjects(page));
+
+  // Cannot set on a null object; cannot set UNKNOWN as a render mode.
+  ASSERT_FALSE(
+      FPDFTextObj_SetTextRenderMode(nullptr, FPDF_TEXT_RENDERMODE::UNKNOWN));
+  ASSERT_FALSE(
+      FPDFTextObj_SetTextRenderMode(nullptr, FPDF_TEXT_RENDERMODE::INVISIBLE));
+
+  FPDF_PAGEOBJECT fill_to_clip = FPDFPage_GetObject(page, 0);
+  ASSERT_EQ(FPDF_TEXT_RENDERMODE::FILL,
+            FPDFTextObj_GetTextRenderMode(fill_to_clip));
+  ASSERT_FALSE(FPDFTextObj_SetTextRenderMode(fill_to_clip,
+                                             FPDF_TEXT_RENDERMODE::UNKNOWN));
+  ASSERT_TRUE(
+      FPDFTextObj_SetTextRenderMode(fill_to_clip, FPDF_TEXT_RENDERMODE::CLIP));
+  ASSERT_EQ(FPDF_TEXT_RENDERMODE::CLIP,
+            FPDFTextObj_GetTextRenderMode(fill_to_clip));
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbedderTest, TestGetTextFontName) {
   EXPECT_TRUE(OpenDocument("text_font.pdf"));
   FPDF_PAGE page = LoadPage(0);
