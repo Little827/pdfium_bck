@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd9c2e2e_258f0a8f",
+        "filename": "core/fpdfdoc/cpdf_icon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:32:49Z",
+      "side": 1,
+      "message": "As it turns out GetScale() can be implemented entirely above this class and is removed. Making GetImageSize return SizeF removes dependence on utility.h",
+      "parentUuid": "322cfe03_8273ce84",
+      "revId": "62abb7552dc74b2d4af02b4b609b336390d14c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c960357_6f456b58",
         "filename": "core/fpdfdoc/cpdf_iconfit.h",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "404f60fa_a47cd8bf",
+        "filename": "core/fpdfdoc/cpdf_iconfit.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:32:49Z",
+      "side": 1,
+      "message": "Done. And avoids dragging in utility.",
+      "parentUuid": "6c960357_6f456b58",
+      "revId": "62abb7552dc74b2d4af02b4b609b336390d14c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e02ef8f_e24c66d4",
         "filename": "fpdfsdk/pwl/cpwl_icon.h",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2019-12-17T23:07:00Z",
       "side": 1,
       "message": "Maybe some of these comments need to carry over into CPDF_Icon?",
+      "revId": "62abb7552dc74b2d4af02b4b609b336390d14c0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc20ca63_3a2ee14b",
+        "filename": "fpdfsdk/pwl/cpwl_icon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:32:49Z",
+      "side": 1,
+      "message": "GetScale and getImageOffset are now contained here and don\u0027t appear in CPDF_Icon",
+      "parentUuid": "5e02ef8f_e24c66d4",
       "revId": "62abb7552dc74b2d4af02b4b609b336390d14c0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
