@@ -480,6 +480,23 @@ FPDFText_SetText(FPDF_PAGEOBJECT text_object, FPDF_WIDESTRING text) {
   return true;
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFTextObj_SetTextRenderMode(FPDF_PAGEOBJECT text,
+                              FPDF_TEXT_RENDERMODE render_mode) {
+  if (render_mode <= FPDF_TEXT_RENDERMODE::UNKNOWN ||
+      render_mode > FPDF_TEXT_RENDERMODE::LAST) {
+    return false;
+  }
+
+  CPDF_TextObject* pTextObj = CPDFTextObjectFromFPDFPageObject(text);
+  if (!pTextObj)
+    return false;
+
+  pTextObj->m_TextState.SetTextMode(
+      static_cast<TextRenderingMode>(render_mode));
+  return true;
+}
+
 FPDF_EXPORT FPDF_FONT FPDF_CALLCONV FPDFText_LoadFont(FPDF_DOCUMENT document,
                                                       const uint8_t* data,
                                                       uint32_t size,

@@ -1138,6 +1138,18 @@ FPDF_EXPORT FPDF_TEXT_RENDERMODE FPDF_CALLCONV
 FPDFTextObj_GetTextRenderMode(FPDF_PAGEOBJECT text);
 
 // Experimental API.
+// Set the text rendering mode of a text object.
+//
+// text         - the handle to the text object.
+// render_mode  - the FPDF_TEXTRENDERMODE enum to be set (cannot set to
+// UNKNOWN).
+//
+// Returns TRUE on success.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFTextObj_SetTextRenderMode(FPDF_PAGEOBJECT text,
+                              FPDF_TEXT_RENDERMODE render_mode);
+
+// Experimental API.
 // Get the font name of a text object.
 //
 // text             - the handle to the text object.
