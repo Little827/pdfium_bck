@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576624307 -0800\nnonce AC6AUtM6hzooLrGL8r4PzFnGTMZAUzPWyUYE/2/ky8XXzqRKQ3j7M+boNAJoSsKeVpQGx9ec7Bek\n\n0000000000000000000000000000000000000000 8c39768dbec3a31af52bd4d096baa143101f201e refs/for/refs/heads/master%notify\u003dNONE,m\u003dbuild\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl35YLMACgkQqzYtYVpm\n/XvFbQf+K9lIjYaZBtPbdBw7gJO/CqTy/hAmW58s+aEPOJU7EdGBYoLvZLpixVDc\n0R04CZbWiFMwiaQY2/17XIRVfhv6MBmS+XKRULctRcgnxV667OXMDl6tjHyPKTY3\nfoINnIis0NJW7oAPT3zk4Gd984yB393UCCr//18rPLz5yqXL4EHT5ZryO7YF9tU1\n/vEfdPZgrzgF3zCZnPwfI/Ln/MqVCUJuEUEKJEZkj8adcD67/IYzAXHRnO+nSQgG\nrMKu3+jO+0m8eMtHrSBqZdyunyrrm/dSvAdzAu/JwZeXopSODqOPpiUdTWx8A8dt\n86zLODxRBdTmHH89PHrycdnUgY+/1g\u003d\u003d\n\u003dwu9r\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "424f46ee_f71e413f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:40:44Z",
+      "side": 1,
+      "message": "\"fewer casts\" or \"less casting\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "8c39768dbec3a31af52bd4d096baa143101f201e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "968401a0_821c2ccf",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:40:44Z",
+      "side": 1,
+      "message": "uint8_t ?",
+      "range": {
+        "startLine": 387,
+        "startChar": 35,
+        "endLine": 387,
+        "endChar": 47
+      },
+      "revId": "8c39768dbec3a31af52bd4d096baa143101f201e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
