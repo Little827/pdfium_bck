@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0298f53_3585c0c9",
+        "filename": "core/fdrm/fx_crypt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T23:56:48Z",
+      "side": 1,
+      "message": "can you look at disassembly for an optimized build of this and see if the optimizer could avoid emitting ud2 traps?",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 4
+      },
+      "revId": "30f74ca73295a374a3ce09b706797615289fa25d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
