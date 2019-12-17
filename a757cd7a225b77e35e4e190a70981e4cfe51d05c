@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6298890_1b3648ba",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T18:33:37Z",
+      "side": 1,
+      "message": "nit: I\u0027d split this comment into two, and put each half directly above the test to which it corresponds.",
+      "range": {
+        "startLine": 2098,
+        "startChar": 5,
+        "endLine": 2098,
+        "endChar": 34
+      },
+      "revId": "a757cd7a225b77e35e4e190a70981e4cfe51d05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2885dc4_8d6b8982",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T18:33:37Z",
+      "side": 1,
+      "message": "So you\u0027d need to have a valid object here in order to be sure UNKNOWN is not allowed.",
+      "range": {
+        "startLine": 2100,
+        "startChar": 36,
+        "endLine": 2100,
+        "endChar": 43
+      },
+      "revId": "a757cd7a225b77e35e4e190a70981e4cfe51d05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd79c8c6_299d1567",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T18:33:37Z",
+      "side": 1,
+      "message": "nit: The use of ASSERT vs. EXPECT in this file is inconsistent, so if you based this on previous examples, then OK and there\u0027s a task to clean this up sometime.  Generally EXPECT is preferred except when continuing would result in a segv or such. So these can be EXPECT.",
+      "range": {
+        "startLine": 2101,
+        "startChar": 2,
+        "endLine": 2101,
+        "endChar": 14
+      },
+      "revId": "a757cd7a225b77e35e4e190a70981e4cfe51d05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316e2ebf_5ee47930",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2105,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T18:33:37Z",
+      "side": 1,
+      "message": "nit: so for instance, these 4 can be EXPECT.",
+      "range": {
+        "startLine": 2105,
+        "startChar": 2,
+        "endLine": 2105,
+        "endChar": 9
+      },
+      "revId": "a757cd7a225b77e35e4e190a70981e4cfe51d05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45588a36_8ce25314",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-17T18:33:37Z",
+      "side": 1,
+      "message": "there\u0027s no reason to believe that this argument is in range, the caller could have passed static_cast\u003cFPDF_TEXT_RENDERMODE\u003e(142).  So we probably need a helper here to do the range checking.\n\nAt which point, we\u0027re now casting between two enums because of layering, and it becomes unclear if we\u0027re gaining anything over just having public #defines (despite my bug saying \"too many #defines\").",
+      "range": {
+        "startLine": 494,
+        "startChar": 6,
+        "endLine": 494,
+        "endChar": 36
+      },
+      "revId": "a757cd7a225b77e35e4e190a70981e4cfe51d05c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
