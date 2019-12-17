@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31079ec1_187772f9",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T19:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e669fe3_5f126bd2",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "7fb88be62fdef4f52f76a732715e67c573fb9b0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "783e4621_2523f2f7",
         "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-17T18:50:02Z",
       "side": 1,
       "message": "pre-existing: why unit64_t ? Isn\u0027t there some FX_Mumble_DWORD macro that does this?",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "7fb88be62fdef4f52f76a732715e67c573fb9b0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7f424f_c0c9c5b0",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T19:59:29Z",
+      "side": 1,
+      "message": "It\u0027s on the list.",
+      "parentUuid": "783e4621_2523f2f7",
       "range": {
         "startLine": 93,
         "startChar": 10,
