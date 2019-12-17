@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3568363_4634a403",
+        "filename": "core/fpdfdoc/cpdf_icon.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:41:19Z",
+      "side": 1,
+      "message": "Are any of these C++ headers needed?",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad99537_9ac59788",
+        "filename": "core/fpdfdoc/cpdf_icon.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:41:19Z",
+      "side": 1,
+      "message": "Can this follow the logic in GetImageFoo() below, or flip those to check for !pDict?",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304d0393_29a39dc4",
+        "filename": "core/fpdfdoc/cpdf_iconfit.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:41:19Z",
+      "side": 1,
+      "message": "return CFX_PointF(); ?",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d14e050f_cdfbb682",
+        "filename": "fpdfsdk/pwl/cpwl_icon.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:41:19Z",
+      "side": 1,
+      "message": "Ditto, CFX_PointF().",
+      "revId": "7b18068c5bdddb56221b08b10aafcaefb10dc55d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
