@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576623561 -0800\nnonce AC6AUtOhzzs3zL/tNpEQoRq42lHpkP9t/N2jPfqJx7+fOyUK+a72vLneC+4+tvC/mZ7dGPWS0i4p\n\n0000000000000000000000000000000000000000 4860682834c3bd8d4d887836bf582eaec35875e5 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl35XckACgkQqzYtYVpm\n/XvwEAf9GmFJTcXJvN5VfnvLyvt9PapYIxI56XKv0UAYNw8CW1cvgSTtXsJvBHQb\nz0ya7JqXklI3VQoOJrIuDncpPG0Y6YuOO8PiYNGg61Pb4A7XnJ9FwRb6PAuGu4wP\nQXftB0s54v6LgJPMtjj/qQAuokmck1OxxRGUcvmL4DYjKS/HL4TEaSErPpHvzddg\n7rO3T8r/V/XXNQsGCO74YSlhJAGyLGUyOLSnZKQDEJEtxb1qDX/PE8jvacdpxJ40\nbmHm5TTDvjuupYkvRJorWBgQalJbNNFXOctbEqiAOdZSrPmDoFlTbZMhn39YzvxR\np6u+3G3sAxYXCvrqSr/btM8z0sn/1Q\u003d\u003d\n\u003d7Co7\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "10594745_4734bc26",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-17T23:37:04Z",
+      "side": 1,
+      "message": "Setting this up for span-ification.",
+      "revId": "4860682834c3bd8d4d887836bf582eaec35875e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
