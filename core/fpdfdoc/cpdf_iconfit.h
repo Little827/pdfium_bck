@@ -25,7 +25,7 @@ class CPDF_IconFit {
   bool IsProportionalScale() const;
   CFX_PointF GetIconBottomLeftPosition() const;
   bool GetFittingBounds() const;
-  const CPDF_Dictionary* GetDict() const { return m_pDict.Get(); }
+  std::pair<float, float> GetIconPosition() const;
 
  private:
   RetainPtr<const CPDF_Dictionary> const m_pDict;
