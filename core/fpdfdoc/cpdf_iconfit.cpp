@@ -61,3 +61,16 @@ CFX_PointF CPDF_IconFit::GetIconBottomLeftPosition() const {
 bool CPDF_IconFit::GetFittingBounds() const {
   return m_pDict && m_pDict->GetBooleanFor("FB", false);
 }
+
+std::pair<float, float> CPDF_IconFit::GetIconPosition() const {
+  if (!m_pDict)
+    return {0.0f, 0.0f};
+
+  const CPDF_Array* pA = m_pDict->GetArrayFor("A");
+  if (!pA)
+    return {0.0f, 0.0f};
+
+  size_t dwCount = pA->size();
+  return {dwCount > 0 ? pA->GetNumberAt(0) : 0.0f,
+          dwCount > 1 ? pA->GetNumberAt(1) : 0.0f};
+}
