@@ -52,6 +52,24 @@
       "revId": "7e0c5a72d5991face9997a0f0c6865c02e1ba150",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5a4619_2b6be785",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-12-18T17:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eddbf199_e94964b3",
+      "revId": "7e0c5a72d5991face9997a0f0c6865c02e1ba150",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
