@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f418b807_40e29e7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-18T23:58:28Z",
+      "side": 1,
+      "message": "Also, \"deprecate\" probably isn\u0027t the right word here, as that implies it still works, but is discouraged. In fact, it\u0027s being removed entirely.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "c7647cfe9e32f5127d37985b4912275c8d7b2935",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09079bb0_c742d17a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
