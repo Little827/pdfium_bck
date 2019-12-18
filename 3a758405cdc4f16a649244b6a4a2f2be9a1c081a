@@ -23,6 +23,53 @@
       "revId": "3a758405cdc4f16a649244b6a4a2f2be9a1c081a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c11f1206_0bfc54f3",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-18T22:20:44Z",
+      "side": 1,
+      "message": "Hmmm.  Does this actually depend upon a lot of state in |this|? If we can pass one or two additional args, does this become an ordinary function rather than a method?  In which case, all the code can live in the .cpp file and we won\u0027t have to forward declare it.",
+      "parentUuid": "22929142_609531d4",
+      "range": {
+        "startLine": 151,
+        "startChar": 21,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "3a758405cdc4f16a649244b6a4a2f2be9a1c081a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea5e76b_151b30f0",
+        "filename": "core/fxge/dib/cfx_imagetransformer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-18T22:20:44Z",
+      "side": 1,
+      "message": "same idea here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 21
+      },
+      "revId": "3a758405cdc4f16a649244b6a4a2f2be9a1c081a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
