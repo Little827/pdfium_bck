@@ -46,6 +46,30 @@
       "revId": "30f74ca73295a374a3ce09b706797615289fa25d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "093c6332_a8612974",
+        "filename": "core/fdrm/fx_crypt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-18T00:22:09Z",
+      "side": 1,
+      "message": "The only thing I might suggest is putting the subspan call right after the comparison\n  if (left \u0026\u0026 data.size() \u003e\u003d fill) {\n    next_pile \u003d data.subspan(fill);\n    ...\n    data \u003d next_pile;\n  }",
+      "parentUuid": "840c8137_15699193",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 4
+      },
+      "revId": "30f74ca73295a374a3ce09b706797615289fa25d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
