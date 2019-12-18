@@ -88,6 +88,31 @@ STR_T FXSYS_IntToStr(T value, STR_T str, int radix) {
 
 }  // namespace
 
+uint16_t FXSYS_GetWordLsbFirst(uint16_t word) {
+  uint8_t* p = reinterpret_cast<uint8_t*>(&word);
+  return (static_cast<uint16_t>(p[1]) << 8) | static_cast<uint16_t>(p[0]);
+}
+
+int32_t FXSYS_atoi(const char* str) {
+  return FXSYS_StrToInt<int32_t, char>(str);
+}
+
+uint32_t FXSYS_atoui(const char* str) {
+  return FXSYS_StrToInt<uint32_t>(str);
+}
+
+int32_t FXSYS_wtoi(const wchar_t* str) {
+  return FXSYS_StrToInt<int32_t, wchar_t>(str);
+}
+
+int64_t FXSYS_atoi64(const char* str) {
+  return FXSYS_StrToInt<int64_t, char>(str);
+}
+
+const char* FXSYS_i64toa(int64_t value, char* str, int radix) {
+  return FXSYS_IntToStr<int64_t, uint64_t, char*>(value, str, radix);
+}
+
 int FXSYS_roundf(float f) {
   if (std::isnan(f))
     return 0;
@@ -106,22 +131,6 @@ int FXSYS_round(double d) {
   if (d >= static_cast<double>(std::numeric_limits<int>::max()))
     return std::numeric_limits<int>::max();
   return static_cast<int>(round(d));
-}
-
-int32_t FXSYS_atoi(const char* str) {
-  return FXSYS_StrToInt<int32_t, char>(str);
-}
-uint32_t FXSYS_atoui(const char* str) {
-  return FXSYS_StrToInt<uint32_t>(str);
-}
-int32_t FXSYS_wtoi(const wchar_t* str) {
-  return FXSYS_StrToInt<int32_t, wchar_t>(str);
-}
-int64_t FXSYS_atoi64(const char* str) {
-  return FXSYS_StrToInt<int64_t, char>(str);
-}
-const char* FXSYS_i64toa(int64_t value, char* str, int radix) {
-  return FXSYS_IntToStr<int64_t, uint64_t, char*>(value, str, radix);
 }
 
 #if defined(OS_WIN)

@@ -170,9 +170,7 @@ void FXSYS_SetLastError(uint32_t err);
 uint32_t FXSYS_GetLastError();
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 
-#define FXWORD_GET_LSBFIRST(p)                                \
-  (static_cast<uint16_t>((static_cast<uint16_t>(p[1]) << 8) | \
-                         (static_cast<uint16_t>(p[0]))))
+uint16_t FXSYS_GetWordLsbFirst(uint16_t word);
 #define FXWORD_GET_MSBFIRST(p)                                \
   (static_cast<uint16_t>((static_cast<uint16_t>(p[0]) << 8) | \
                          (static_cast<uint16_t>(p[1]))))
@@ -182,6 +180,7 @@ uint32_t FXSYS_GetLastError();
 #define FXDWORD_GET_MSBFIRST(p)                                                \
   ((static_cast<uint32_t>(p[0]) << 24) | (static_cast<uint32_t>(p[1]) << 16) | \
    (static_cast<uint32_t>(p[2]) << 8) | (static_cast<uint32_t>(p[3])))
+
 int32_t FXSYS_atoi(const char* str);
 uint32_t FXSYS_atoui(const char* str);
 int32_t FXSYS_wtoi(const wchar_t* str);

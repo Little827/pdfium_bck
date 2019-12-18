@@ -93,8 +93,7 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeader() {
     return BmpModule::Status::kContinue;
   }
 
-  bmp_header.bfType =
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&bmp_header.bfType));
+  bmp_header.bfType = FXSYS_GetWordLsbFirst(bmp_header.bfType);
   bmp_header.bfOffBits =
       FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&bmp_header.bfOffBits));
   data_size_ =
@@ -129,12 +128,9 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
       return BmpModule::Status::kContinue;
     }
 
-    width_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_core_header.bcWidth));
-    height_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_core_header.bcHeight));
-    bit_counts_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_core_header.bcBitCount));
+    width_ = FXSYS_GetWordLsbFirst(bmp_core_header.bcWidth);
+    height_ = FXSYS_GetWordLsbFirst(bmp_core_header.bcHeight);
+    bit_counts_ = FXSYS_GetWordLsbFirst(bmp_core_header.bcBitCount);
     compress_flag_ = kBmpRgb;
     img_tb_flag_ = false;
     return BmpModule::Status::kSuccess;
@@ -151,8 +147,7 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
         reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
     int32_t signed_height = FXDWORD_GET_LSBFIRST(
         reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
-    bit_counts_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biBitCount));
+    bit_counts_ = FXSYS_GetWordLsbFirst(bmp_info_header.biBitCount);
     compress_flag_ = FXDWORD_GET_LSBFIRST(
         reinterpret_cast<uint8_t*>(&bmp_info_header.biCompression));
     color_used_ = FXDWORD_GET_LSBFIRST(
@@ -188,14 +183,12 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
       reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
   int32_t signed_height = FXDWORD_GET_LSBFIRST(
       reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
-  bit_counts_ = FXWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biBitCount));
+  bit_counts_ = FXSYS_GetWordLsbFirst(bmp_info_header.biBitCount);
   compress_flag_ = FXDWORD_GET_LSBFIRST(
       reinterpret_cast<uint8_t*>(&bmp_info_header.biCompression));
   color_used_ = FXDWORD_GET_LSBFIRST(
       reinterpret_cast<uint8_t*>(&bmp_info_header.biClrUsed));
-  bi_planes = FXWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biPlanes));
+  bi_planes = FXSYS_GetWordLsbFirst(bmp_info_header.biPlanes);
   dpi_x_ = FXDWORD_GET_LSBFIRST(
       reinterpret_cast<uint8_t*>(&bmp_info_header.biXPelsPerMeter));
   dpi_y_ = FXDWORD_GET_LSBFIRST(
@@ -412,7 +405,7 @@ BmpModule::Status CFX_BmpDecompressor::DecodeRGB() {
         green_bits -= 8;
         red_bits -= 8;
         for (uint32_t col = 0; col < width_; ++col) {
-          *buf = FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(buf));
+          *buf = FXSYS_GetWordLsbFirst(*buf);
           out_row_buffer_[idx++] =
               static_cast<uint8_t>((*buf & mask_blue_) << blue_bits);
           out_row_buffer_[idx++] =

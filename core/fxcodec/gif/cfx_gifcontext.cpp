@@ -399,10 +399,8 @@ CFX_GifDecodeStatus CFX_GifContext::ReadLogicalScreenDescriptor() {
     std::swap(global_palette_, palette);
   }
 
-  width_ = static_cast<int>(
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&lsd.width)));
-  height_ = static_cast<int>(
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&lsd.height)));
+  width_ = static_cast<int>(FXSYS_GetWordLsbFirst(lsd.width));
+  height_ = static_cast<int>(FXSYS_GetWordLsbFirst(lsd.height));
 
   return CFX_GifDecodeStatus::Success;
 }
@@ -445,7 +443,7 @@ CFX_GifDecodeStatus CFX_GifContext::DecodeExtension() {
       graphic_control_extension_->block_size = gif_gce.block_size;
       graphic_control_extension_->gce_flags = gif_gce.gce_flags;
       graphic_control_extension_->delay_time =
-          FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&gif_gce.delay_time));
+          FXSYS_GetWordLsbFirst(gif_gce.delay_time);
       graphic_control_extension_->trans_index = gif_gce.trans_index;
       break;
     }
@@ -473,14 +471,10 @@ CFX_GifDecodeStatus CFX_GifContext::DecodeImageInfo() {
     return CFX_GifDecodeStatus::Unfinished;
 
   auto gif_image = pdfium::MakeUnique<CFX_GifImage>();
-  gif_image->image_info.left =
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&img_info.left));
-  gif_image->image_info.top =
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&img_info.top));
-  gif_image->image_info.width =
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&img_info.width));
-  gif_image->image_info.height =
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&img_info.height));
+  gif_image->image_info.left = FXSYS_GetWordLsbFirst(img_info.left);
+  gif_image->image_info.top = FXSYS_GetWordLsbFirst(img_info.top);
+  gif_image->image_info.width = FXSYS_GetWordLsbFirst(img_info.width);
+  gif_image->image_info.height = FXSYS_GetWordLsbFirst(img_info.height);
   gif_image->image_info.local_flags = img_info.local_flags;
   if (gif_image->image_info.left + gif_image->image_info.width > width_ ||
       gif_image->image_info.top + gif_image->image_info.height > height_)
