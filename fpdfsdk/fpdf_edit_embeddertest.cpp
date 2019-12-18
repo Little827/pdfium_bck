@@ -2076,14 +2076,54 @@ TEST_F(FPDFEditEmbedderTest, GetTextRenderMode) {
   ASSERT_TRUE(page);
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
 
-  ASSERT_EQ(FPDF_TEXTRENDERMODE_UNKNOWN,
+  EXPECT_EQ(FPDF_TEXTRENDERMODE_UNKNOWN,
             FPDFTextObj_GetTextRenderMode(nullptr));
 
   FPDF_PAGEOBJECT fill = FPDFPage_GetObject(page, 0);
-  ASSERT_EQ(FPDF_TEXTRENDERMODE_FILL, FPDFTextObj_GetTextRenderMode(fill));
+  EXPECT_EQ(FPDF_TEXTRENDERMODE_FILL, FPDFTextObj_GetTextRenderMode(fill));
 
   FPDF_PAGEOBJECT stroke = FPDFPage_GetObject(page, 1);
-  ASSERT_EQ(FPDF_TEXTRENDERMODE_STROKE, FPDFTextObj_GetTextRenderMode(stroke));
+  EXPECT_EQ(FPDF_TEXTRENDERMODE_STROKE, FPDFTextObj_GetTextRenderMode(stroke));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFEditEmbedderTest, SetTextRenderMode) {
+  EXPECT_TRUE(OpenDocument("text_render_mode.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ASSERT_EQ(2, FPDFPage_CountObjects(page));
+
+  // Check the bitmap
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPage(page);
+    CompareBitmap(page_bitmap.get(), 612, 446,
+                  "5a012d2920ac075c39ffa9437ea42faa");
+  }
+
+  // Cannot set on a null object.
+  EXPECT_FALSE(
+      FPDFTextObj_SetTextRenderMode(nullptr, FPDF_TEXTRENDERMODE_UNKNOWN));
+  EXPECT_FALSE(
+      FPDFTextObj_SetTextRenderMode(nullptr, FPDF_TEXTRENDERMODE_INVISIBLE));
+
+  FPDF_PAGEOBJECT page_object = FPDFPage_GetObject(page, 0);
+  EXPECT_EQ(FPDF_TEXTRENDERMODE_FILL,
+            FPDFTextObj_GetTextRenderMode(page_object));
+  // Cannot set UNKNOWN as a render mode.
+  EXPECT_FALSE(
+      FPDFTextObj_SetTextRenderMode(page_object, FPDF_TEXTRENDERMODE_UNKNOWN));
+  EXPECT_TRUE(
+      FPDFTextObj_SetTextRenderMode(page_object, FPDF_TEXTRENDERMODE_CLIP));
+  EXPECT_EQ(FPDF_TEXTRENDERMODE_CLIP,
+            FPDFTextObj_GetTextRenderMode(page_object));
+
+  // Check that bitmap displays changed content
+  {
+    ScopedFPDFBitmap page_bitmap = RenderPage(page);
+    CompareBitmap(page_bitmap.get(), 612, 446,
+                  "f7626791e33a52be8bd54cd1e20d26a9");
+  }
 
   UnloadPage(page);
 }
