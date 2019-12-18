@@ -7,11 +7,6 @@
 #include "core/fdrm/fx_crypt.h"
 
 #define mulby2(x) (((x & 0x7F) << 1) ^ (x & 0x80 ? 0x1B : 0))
-#define GET_32BIT_MSB_FIRST(cp)                    \
-  (((unsigned long)(unsigned char)(cp)[3]) |       \
-   ((unsigned long)(unsigned char)(cp)[2] << 8) |  \
-   ((unsigned long)(unsigned char)(cp)[1] << 16) | \
-   ((unsigned long)(unsigned char)(cp)[0] << 24))
 #define PUT_32BIT_MSB_FIRST(cp, value) \
   do {                                 \
     (cp)[3] = (value);                 \
@@ -521,9 +516,10 @@ void aes_setup(CRYPT_aes_context* ctx, const unsigned char* key, int keylen) {
   ctx->Nb = 4;
   ctx->Nr = 6 + (ctx->Nb > Nk ? ctx->Nb : Nk);
   int rconst = 1;
+  const uint32_t* key32 = reinterpret_cast<const uint32_t*>(key);
   for (int i = 0; i < (ctx->Nr + 1) * ctx->Nb; i++) {
     if (i < Nk) {
-      ctx->keysched[i] = GET_32BIT_MSB_FIRST(key + 4 * i);
+      ctx->keysched[i] = FXSYS_GetDwordMsbFirst(key32[i]);
     } else {
       unsigned int temp = ctx->keysched[i - 1];
       if (i % Nk == 0) {
@@ -579,16 +575,18 @@ void aes_decrypt_cbc(unsigned char* dest,
                      const unsigned char* src,
                      int len,
                      CRYPT_aes_context* ctx) {
-  unsigned int iv[4], x[4], ct[4];
-  int i;
+  unsigned int iv[4];
   ASSERT((len & 15) == 0);
   memcpy(iv, ctx->iv, sizeof(iv));
   while (len > 0) {
-    for (i = 0; i < 4; i++) {
-      x[i] = ct[i] = GET_32BIT_MSB_FIRST(src + 4 * i);
-    }
+    const uint32_t* src32 = reinterpret_cast<const uint32_t*>(src);
+    unsigned int x[4];
+    unsigned int ct[4];
+    for (size_t i = 0; i < 4; i++)
+      x[i] = ct[i] = FXSYS_GetDwordMsbFirst(src32[i]);
+
     aes_decrypt(ctx, x);
-    for (i = 0; i < 4; i++) {
+    for (size_t i = 0; i < 4; i++) {
       PUT_32BIT_MSB_FIRST(dest + 4 * i, iv[i] ^ x[i]);
       iv[i] = ct[i];
     }
@@ -608,15 +606,15 @@ void aes_encrypt_cbc(unsigned char* dest,
                      int len,
                      CRYPT_aes_context* ctx) {
   unsigned int iv[4];
-  int i;
   ASSERT((len & 15) == 0);
   memcpy(iv, ctx->iv, sizeof(iv));
   while (len > 0) {
-    for (i = 0; i < 4; i++) {
-      iv[i] ^= GET_32BIT_MSB_FIRST(src + 4 * i);
-    }
+    const uint32_t* src32 = reinterpret_cast<const uint32_t*>(src);
+    for (size_t i = 0; i < 4; i++)
+      iv[i] ^= FXSYS_GetDwordMsbFirst(src32[i]);
+
     aes_encrypt(ctx, iv);
-    for (i = 0; i < 4; i++) {
+    for (size_t i = 0; i < 4; i++) {
       PUT_32BIT_MSB_FIRST(dest + 4 * i, iv[i]);
     }
     dest += 16;
@@ -636,8 +634,9 @@ void CRYPT_AESSetKey(CRYPT_aes_context* context,
 }
 
 void CRYPT_AESSetIV(CRYPT_aes_context* context, const uint8_t* iv) {
+  const uint32_t* iv32 = reinterpret_cast<const uint32_t*>(iv);
   for (int i = 0; i < context->Nb; i++)
-    context->iv[i] = GET_32BIT_MSB_FIRST(iv + 4 * i);
+    context->iv[i] = FXSYS_GetDwordMsbFirst(iv32[i]);
 }
 
 void CRYPT_AESDecrypt(CRYPT_aes_context* context,
