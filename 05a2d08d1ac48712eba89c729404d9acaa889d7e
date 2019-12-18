@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576700003 -0800\nnonce AC6AUtPcUV6ZZGMo3pNa+2DWQxIaZpYMhU5DPe5ovDX9qChR/B4sNFXqdCcs7CG1Tb1sOWmOKVC0\n\n0000000000000000000000000000000000000000 05a2d08d1ac48712eba89c729404d9acaa889d7e refs/for/refs/heads/master%notify\u003dNONE,m\u003dreinterpret%5Fcast_to_make_MSVC_happy%3F\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl36iGMACgkQqzYtYVpm\n/XvshAgAsCvTh/Bnx/tWbtFBsIXQWlH6xC80ulzMt4pHIrQ4tRvXAr5a60SZIhy1\ntK/vTybdONTiZjtAhL+70+G3oCtET+S8CnHES+NySpdNg+6roeape+4HYhIbiOlE\nTkqPHDYlZ+jF0ScSd8b6RtRAu91ee7AMekxpEF+OZMKDJhL8TThrVLAZ59v/zIN/\nOWO4n/ZXItk9X1YdP7mYmzC81soekTqBzDYUyYx8f1l+/vwdkijseDz9QcCJqwlX\npxiGfxm4zpxajWpFGX+OdK0RGQj78GZO0yCrdXElw1Z23CHhlv+BEsQd8OEyWy1K\n+uDnqw68kF1bMVSFerEqGNbVYacMNA\u003d\u003d\n\u003dJrxV\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1116763d_ad7bf34f",
+        "filename": "core/fxge/cfx_fontmapper_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-18T22:35:25Z",
+      "side": 1,
+      "message": "Pre-existing: does CFX_FontMapper::MakeTag(\u0027\\x255\u0027, \u0027\\x255\u0027, \u0027\\x255\u0027, \u0027\\x255\u0027) trip a ubsan warning?\n\nstatic_cast\u003cuint8_t\u003e(c1) \u003c\u003c 24 is evaluated by promoting the left hand side from uint8_t to signed int, since the range of values represented by uint8_t\nall fit within an int.  Then we get a signed shift into the sign bit when C1 \u003e 128.\n\nNow, I don\u0027t think we can just cast char to uint32_t to get around this either, with sign extension clobbering the high bits in the intermediate terms.\n\nI hate C.  \n\n\n return static_cast\u003cuint32_t\u003e(static_cast\u003cuint8_t\u003e(c1)) \u003c\u003c 24 | \n        static_case\u003cuint32_t\u003e(static_cast\u003cuint8_t\u003e(c2)) \u003c\u003c 16 |\n\t...\n \nis the most correct.  Alternatively, you could make the args be uint8_t,\nand have the compiler silently do the inner cast when passing \u0027x\u0027.",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "05a2d08d1ac48712eba89c729404d9acaa889d7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
