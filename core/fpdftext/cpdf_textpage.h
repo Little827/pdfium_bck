@@ -8,7 +8,6 @@
 #define CORE_FPDFTEXT_CPDF_TEXTPAGE_H_
 
 #include <deque>
-#include <functional>
 #include <vector>
 
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
@@ -149,8 +148,8 @@ class CPDF_TextPage {
   TextOrientation FindTextlineFlowOrientation() const;
   void AppendGeneratedCharacter(wchar_t unicode, const CFX_Matrix& formMatrix);
   void SwapTempTextBuf(int32_t iCharListStartAppend, int32_t iBufStartAppend);
-  WideString GetTextByPredicate(
-      const std::function<bool(const PAGECHAR_INFO&)>& predicate) const;
+  template <typename F>
+  WideString GetTextByPredicate(const F& predicate) const;
 
   UnownedPtr<const CPDF_Page> const m_pPage;
   std::vector<uint16_t> m_CharIndex;

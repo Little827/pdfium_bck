@@ -404,8 +404,8 @@ int CPDF_TextPage::GetIndexAtPos(const CFX_PointF& point,
   return pos < nCount ? pos : NearPos;
 }
 
-WideString CPDF_TextPage::GetTextByPredicate(
-    const std::function<bool(const PAGECHAR_INFO&)>& predicate) const {
+template <typename F>
+WideString CPDF_TextPage::GetTextByPredicate(const F& predicate) const {
   if (!m_bIsParsed)
     return WideString();
 

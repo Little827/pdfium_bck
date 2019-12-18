@@ -85,16 +85,12 @@ class CFX_ImageTransformer {
 
   void AdjustCoords(int* col, int* row) const;
 
-  void DoBilinearLoop(const CalcData& cdata,
-                      int increment,
-                      std::function<void(const BilinearData&, uint8_t*)> func);
-  void DoBicubicLoop(const CalcData& cdata,
-                     int increment,
-                     std::function<void(const BicubicData&, uint8_t*)> func);
-  void DoDownSampleLoop(
-      const CalcData& cdata,
-      int increment,
-      std::function<void(const DownSampleData&, uint8_t*)> func);
+  template <typename F>
+  void DoBilinearLoop(const CalcData& cdata, int increment, const F& func);
+  template <typename F>
+  void DoBicubicLoop(const CalcData& cdata, int increment, const F& func);
+  template <typename F>
+  void DoDownSampleLoop(const CalcData& cdata, int increment, const F& func);
 
   RetainPtr<CFX_DIBBase> const m_pSrc;
   const CFX_Matrix m_matrix;
