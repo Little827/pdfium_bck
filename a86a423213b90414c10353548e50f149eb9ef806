@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576631569 -0800\nnonce AC6AUtNsgLzW4MsECl5nVNsao89R53zYXCIQrlPbHVkHhXuDJ596cig1fBe6yCAWXMfvPiRT5JMV\n\n0000000000000000000000000000000000000000 a86a423213b90414c10353548e50f149eb9ef806 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl35fREACgkQqzYtYVpm\n/XsDEgf/a+n+6s39XIJ6H8SMqr0LZ+AI9xOqARnWcyAjCADpt+4vMspYkRtBd1j3\nxfb8dZ5eOUAM+Rv6dyNGSrmGJC/0dnlwTLRz/N+aX0cHujNR3dMuVCKsab1aQTns\n8mvjwNvggIMESi/oa10/W9yuTr6iGVrs4uIII4K98XNuD+kGnhfoIDIZcGFAnc63\nLSGS95f1JQObRHfBEGOpc/ZGjKIlvoUd6NZI4TiFm67G5sYSx4S/8cTWbhsz4O6c\n39DKS9fX2zRAx6TSE/pUhnU2crZp+EgvNG1zv9zTCUmK16WkWOLvR8ZIxAvvA9ML\n/bvmZWGml0HfQm/kynJnFQ0bD89F3Q\u003d\u003d\n\u003dwbRh\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "304ff2a2_effffd78",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-18T17:42:03Z",
+      "side": 1,
+      "message": "My feeling is this should take a const uint8_t* as an argument, because we might want to pick up a misalgined field from a buffer without first having to load it into a uint16_t lvalue.\n\nnit: FXSYS_GetUint16LSBFirst()\nnit: I\u0027d declare this |inline| function and implement it in the header to ensure debug builds don\u0027t crawl along.",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "a86a423213b90414c10353548e50f149eb9ef806",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
