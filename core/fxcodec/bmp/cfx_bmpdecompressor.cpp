@@ -94,10 +94,8 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeader() {
   }
 
   bmp_header.bfType = FXSYS_GetWordLsbFirst(bmp_header.bfType);
-  bmp_header.bfOffBits =
-      FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&bmp_header.bfOffBits));
-  data_size_ =
-      FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&bmp_header.bfSize));
+  bmp_header.bfOffBits = FXSYS_GetDwordLsbFirst(bmp_header.bfOffBits);
+  data_size_ = FXSYS_GetDwordLsbFirst(bmp_header.bfSize);
   if (bmp_header.bfType != kBmpSignature)
     return BmpModule::Status::kFail;
 
@@ -109,8 +107,7 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeader() {
   if (!input_buffer_->Seek(pos))
     return BmpModule::Status::kFail;
 
-  img_ifh_size_ =
-      FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&img_ifh_size_));
+  img_ifh_size_ = FXSYS_GetDwordLsbFirst(img_ifh_size_);
   pal_type_ = 0;
   BmpModule::Status status = ReadBmpHeaderIfh();
   if (status != BmpModule::Status::kSuccess)
@@ -143,19 +140,15 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
       return BmpModule::Status::kContinue;
     }
 
-    width_ = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
-    int32_t signed_height = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
+    width_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biWidth);
+    int32_t signed_height = FXSYS_GetDwordLsbFirst(bmp_info_header.biHeight);
     bit_counts_ = FXSYS_GetWordLsbFirst(bmp_info_header.biBitCount);
-    compress_flag_ = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biCompression));
-    color_used_ = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biClrUsed));
-    dpi_x_ = static_cast<int32_t>(FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biXPelsPerMeter)));
-    dpi_y_ = static_cast<int32_t>(FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biYPelsPerMeter)));
+    compress_flag_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biCompression);
+    color_used_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biClrUsed);
+    dpi_x_ = static_cast<int32_t>(
+        FXSYS_GetDwordLsbFirst(bmp_info_header.biXPelsPerMeter));
+    dpi_y_ = static_cast<int32_t>(
+        FXSYS_GetDwordLsbFirst(bmp_info_header.biYPelsPerMeter));
     if (!SetHeight(signed_height))
       return BmpModule::Status::kFail;
     return BmpModule::Status::kSuccess;
@@ -179,20 +172,14 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
     return BmpModule::Status::kContinue;
 
   uint16_t bi_planes;
-  width_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
-  int32_t signed_height = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
+  width_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biWidth);
+  int32_t signed_height = FXSYS_GetDwordLsbFirst(bmp_info_header.biHeight);
   bit_counts_ = FXSYS_GetWordLsbFirst(bmp_info_header.biBitCount);
-  compress_flag_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biCompression));
-  color_used_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biClrUsed));
+  compress_flag_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biCompression);
+  color_used_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biClrUsed);
   bi_planes = FXSYS_GetWordLsbFirst(bmp_info_header.biPlanes);
-  dpi_x_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biXPelsPerMeter));
-  dpi_y_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biYPelsPerMeter));
+  dpi_x_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biXPelsPerMeter);
+  dpi_y_ = FXSYS_GetDwordLsbFirst(bmp_info_header.biYPelsPerMeter);
   if (!SetHeight(signed_height))
     return BmpModule::Status::kFail;
   if (compress_flag_ != kBmpRgb || bi_planes != 1 || color_used_ != 0)
@@ -267,9 +254,9 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpBitfields() {
   if (!ReadData(reinterpret_cast<uint8_t*>(masks), sizeof(masks)))
     return BmpModule::Status::kContinue;
 
-  mask_red_ = FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&masks[0]));
-  mask_green_ = FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&masks[1]));
-  mask_blue_ = FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&masks[2]));
+  mask_red_ = FXSYS_GetDwordLsbFirst(masks[0]);
+  mask_green_ = FXSYS_GetDwordLsbFirst(masks[1]);
+  mask_blue_ = FXSYS_GetDwordLsbFirst(masks[2]);
   if (mask_red_ & mask_green_ || mask_red_ & mask_blue_ ||
       mask_green_ & mask_blue_) {
     return BmpModule::Status::kFail;
