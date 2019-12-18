@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "1b01467d_a156d479",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2019-12-18T07:05:19Z",
+      "side": 1,
+      "message": "Actually \"count\" is not constant here, because it has been queried via FPDFAnnot_GetFocusableSubtypes then array has been created, that means array length can vary, hence build fails for platform \"win_xfa_msvc\". That is why, patchset 15 which has array created on stack with variable length was reverted.",
+      "parentUuid": "a26ac276_48534d19",
+      "range": {
+        "startLine": 2166,
+        "startChar": 42,
+        "endLine": 2166,
+        "endChar": 46
+      },
+      "revId": "f47f56fba68df51f44fc0f58310dfa5cd6ab8e07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5892dfee_fc0d78a6",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 19
