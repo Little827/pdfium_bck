@@ -70,6 +70,30 @@
       "revId": "30f74ca73295a374a3ce09b706797615289fa25d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e69e33_a2c21c8c",
+        "filename": "core/fdrm/fx_crypt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T00:32:25Z",
+      "side": 1,
+      "message": "\\o/",
+      "parentUuid": "093c6332_a8612974",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 4
+      },
+      "revId": "30f74ca73295a374a3ce09b706797615289fa25d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
