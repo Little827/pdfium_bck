@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27f5a9be_315ca3ed",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2092,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T00:01:31Z",
+      "side": 1,
+      "message": "We can omit this. Same for the test named FPDFEditEmbedderTest.TestGetTextRenderMode above and some of the others here.",
+      "range": {
+        "startLine": 2092,
+        "startChar": 29,
+        "endLine": 2092,
+        "endChar": 33
+      },
+      "revId": "18d58a08b3c526245527ae1a411610ad97d2fe6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3802c1bd_df84f99c",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2096,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T00:01:31Z",
+      "side": 1,
+      "message": "I would also call RenderPage() here to make sure the page renders one way, and then call it again after line 2113, to make sure it renders differently. There may need to be a FPDFPage_GenerateContent() near the bottom as well.",
+      "revId": "18d58a08b3c526245527ae1a411610ad97d2fe6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d5cf90_26c525b3",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2104,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T00:01:31Z",
+      "side": 1,
+      "message": "How about just |page_object| ? \"fill_to_clip\" sounds like this is a \"fill\" that needs to be clipped, and I don\u0027t know what a \"fill\" is.",
+      "range": {
+        "startLine": 2104,
+        "startChar": 18,
+        "endLine": 2104,
+        "endChar": 30
+      },
+      "revId": "18d58a08b3c526245527ae1a411610ad97d2fe6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6532e452_01c5c4d5",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T00:01:31Z",
+      "side": 1,
+      "message": "Let\u0027s put this after FPDFTextObj_GetTextRenderMode(), to maintain the same relative ordering as the header.",
+      "revId": "18d58a08b3c526245527ae1a411610ad97d2fe6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058a6f29_44d7f6f4",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T00:01:31Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "18d58a08b3c526245527ae1a411610ad97d2fe6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
