@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "74735364_3f1d1c42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "This sentence looks redundant to me. Or consider rephrasing as: The corresponding colors are set by the caller.",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0323aa_70839d6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Consider rephrasing as: This CL adds support for only \u003clist of primitives\u003e.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a59a2166_e7c7b2dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Suggestion: Modifying",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f826350_ff1c09a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Convention to specify function is by adding () at the end, such as: GetFillArgbInternal()",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105821c3_a31a20ea",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Suggestion for variable name: |translatedColor|",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e8a413a_d21e6484",
         "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
         "patchSetId": 5
@@ -18,6 +133,29 @@
         "startChar": 8,
         "endLine": 66,
         "endChar": 31
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16b27f1_32161bc5",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "As per surrounding coding style, this could be |objectType|.",
+      "range": {
+        "startLine": 64,
+        "startChar": 47,
+        "endLine": 64,
+        "endChar": 58
       },
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
@@ -87,6 +225,98 @@
         "startChar": 1,
         "endLine": 20,
         "endChar": 44
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b01deb_8f07fedf",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Since the only constructor listed initializes |should_pause_|, initialization on declaration is not necessary.",
+      "range": {
+        "startLine": 38,
+        "startChar": 28,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad40353d_b055e712",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Do you mean StartRenderPageWithFlags() simply forwards the call to StartRenderPageWithFlagsAndColorScheme() without color scheme?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1c698d_cb4c971b",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Please spell out as: Utility",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df0a887_e8c35204",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Please add a null check for |pRenderOptions|",
+      "range": {
+        "startLine": 435,
+        "startChar": 44,
+        "endLine": 435,
+        "endChar": 58
       },
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
@@ -246,6 +476,29 @@
       "range": {
         "startLine": 76,
         "startChar": 75,
+        "endLine": 76,
+        "endChar": 79
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53eab958_9fb20223",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2019-12-18T11:29:52Z",
+      "side": 1,
+      "message": "Please call out that this parameter is optional. A null value implies default color scheme to be used.",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
         "endLine": 76,
         "endChar": 79
       },
