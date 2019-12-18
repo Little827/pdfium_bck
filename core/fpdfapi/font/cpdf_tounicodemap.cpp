@@ -77,16 +77,13 @@ uint32_t CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
   if (len == 0)
     return 0;
 
+  if (str[0] != '<')
+    return 0;
+
   uint32_t result = 0;
-  if (str[0] == '<') {
-    for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i)
-      result = result * 16 + FXSYS_HexCharToInt(str.CharAt(i));
-    return result;
+  for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i) {
+    result = result * 16 + FXSYS_HexCharToInt(str.CharAt(i));
   }
-
-  for (size_t i = 0; i < len && std::isdigit(str[i]); ++i)
-    result = result * 10 + FXSYS_DecimalCharToInt(str.CharAt(i));
-
   return result;
 }
 
