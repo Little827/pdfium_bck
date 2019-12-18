@@ -16,6 +16,24 @@
       "revId": "b1a68165b0431e8a9f908cbced534b3b13569cd8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9209ea2d_406a2ece",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-18T18:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b6a650_667ddb60",
+      "revId": "b1a68165b0431e8a9f908cbced534b3b13569cd8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
