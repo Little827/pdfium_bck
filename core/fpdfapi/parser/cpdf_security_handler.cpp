@@ -87,22 +87,15 @@ bool IsValidKeyLengthForCipher(int cipher, size_t keylen) {
   return false;
 }
 
-#define FX_GET_32WORD(n, b, i)                                        \
-  {                                                                   \
-    (n) = (uint32_t)(                                                 \
-        ((uint64_t)(b)[(i)] << 24) | ((uint64_t)(b)[(i) + 1] << 16) | \
-        ((uint64_t)(b)[(i) + 2] << 8) | ((uint64_t)(b)[(i) + 3]));    \
-  }
-int BigOrder64BitsMod3(uint8_t* data) {
+int BigOrder64BitsMod3(const uint8_t* data) {
   uint64_t ret = 0;
+  const uint32_t* data32 = reinterpret_cast<const uint32_t*>(data);
   for (int i = 0; i < 4; ++i) {
-    uint32_t value;
-    FX_GET_32WORD(value, data, 4 * i);
     ret <<= 32;
-    ret |= value;
+    ret |= FXSYS_GetDwordMsbFirst(data32[i]);
     ret %= 3;
   }
-  return (int)ret;
+  return static_cast<int>(ret);
 }
 
 void Revision6_Hash(const ByteString& password,
