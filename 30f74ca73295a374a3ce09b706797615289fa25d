@@ -22,6 +22,30 @@
       "revId": "30f74ca73295a374a3ce09b706797615289fa25d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840c8137_15699193",
+        "filename": "core/fdrm/fx_crypt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T00:16:15Z",
+      "side": 1,
+      "message": "There are 2 ud2 instructions, from the two subspan() calls. Is there a way to nudge the compiler here to convince it the subspan() calls are safe? I forget.",
+      "parentUuid": "b0298f53_3585c0c9",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 4
+      },
+      "revId": "30f74ca73295a374a3ce09b706797615289fa25d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
