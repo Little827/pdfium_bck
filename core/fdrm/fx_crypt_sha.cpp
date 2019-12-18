@@ -6,11 +6,6 @@
 
 #include "core/fdrm/fx_crypt.h"
 
-#define SHA_GET_UINT32(n, b, i)                                         \
-  {                                                                     \
-    (n) = ((uint32_t)(b)[(i)] << 24) | ((uint32_t)(b)[(i) + 1] << 16) | \
-          ((uint32_t)(b)[(i) + 2] << 8) | ((uint32_t)(b)[(i) + 3]);     \
-  }
 #define SHA_PUT_UINT32(n, b, i)          \
   {                                      \
     (b)[(i)] = (uint8_t)((n) >> 24);     \
@@ -143,23 +138,10 @@ void SHATransform(unsigned int* digest, unsigned int* block) {
 }
 
 void sha256_process(CRYPT_sha2_context* ctx, const uint8_t data[64]) {
+  const uint32_t* data32 = reinterpret_cast<const uint32_t*>(data);
   uint32_t W[64];
-  SHA_GET_UINT32(W[0], data, 0);
-  SHA_GET_UINT32(W[1], data, 4);
-  SHA_GET_UINT32(W[2], data, 8);
-  SHA_GET_UINT32(W[3], data, 12);
-  SHA_GET_UINT32(W[4], data, 16);
-  SHA_GET_UINT32(W[5], data, 20);
-  SHA_GET_UINT32(W[6], data, 24);
-  SHA_GET_UINT32(W[7], data, 28);
-  SHA_GET_UINT32(W[8], data, 32);
-  SHA_GET_UINT32(W[9], data, 36);
-  SHA_GET_UINT32(W[10], data, 40);
-  SHA_GET_UINT32(W[11], data, 44);
-  SHA_GET_UINT32(W[12], data, 48);
-  SHA_GET_UINT32(W[13], data, 52);
-  SHA_GET_UINT32(W[14], data, 56);
-  SHA_GET_UINT32(W[15], data, 60);
+  for (size_t i = 0; i < 16; ++i)
+    W[i] = FXSYS_GetDwordMsbFirst(data32[i]);
 
   uint32_t temp1;
   uint32_t temp2;
@@ -379,12 +361,9 @@ void CRYPT_SHA1Update(CRYPT_sha1_context* context,
     memcpy(context->block + context->blkused, data, 64 - context->blkused);
     data += 64 - context->blkused;
     size -= 64 - context->blkused;
-    for (int i = 0; i < 16; i++) {
-      wordblock[i] = (((uint32_t)context->block[i * 4 + 0]) << 24) |
-                     (((uint32_t)context->block[i * 4 + 1]) << 16) |
-                     (((uint32_t)context->block[i * 4 + 2]) << 8) |
-                     (((uint32_t)context->block[i * 4 + 3]) << 0);
-    }
+    const uint32_t* block32 = reinterpret_cast<const uint32_t*>(context->block);
+    for (int i = 0; i < 16; i++)
+      wordblock[i] = FXSYS_GetDwordMsbFirst(block32[i]);
     SHATransform(context->h, wordblock);
     context->blkused = 0;
   }

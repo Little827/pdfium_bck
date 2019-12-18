@@ -8,13 +8,8 @@
 
 #include <utility>
 
-#define GET_UINT32(n, b, i)                            \
-  {                                                    \
-    (n) = (uint32_t)((uint8_t*)b)[(i)] |               \
-          (((uint32_t)((uint8_t*)b)[(i) + 1]) << 8) |  \
-          (((uint32_t)((uint8_t*)b)[(i) + 2]) << 16) | \
-          (((uint32_t)((uint8_t*)b)[(i) + 3]) << 24);  \
-  }
+#include "core/fxcrt/fx_memory.h"
+
 #define PUT_UINT32(n, b, i)                                   \
   {                                                           \
     (((uint8_t*)b)[(i)]) = (uint8_t)(((n)) & 0xFF);           \
@@ -31,33 +26,21 @@ const uint8_t md5_padding[64] = {
     0,    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 void md5_process(CRYPT_md5_context* ctx, const uint8_t data[64]) {
-  uint32_t A, B, C, D, X[16];
-  GET_UINT32(X[0], data, 0);
-  GET_UINT32(X[1], data, 4);
-  GET_UINT32(X[2], data, 8);
-  GET_UINT32(X[3], data, 12);
-  GET_UINT32(X[4], data, 16);
-  GET_UINT32(X[5], data, 20);
-  GET_UINT32(X[6], data, 24);
-  GET_UINT32(X[7], data, 28);
-  GET_UINT32(X[8], data, 32);
-  GET_UINT32(X[9], data, 36);
-  GET_UINT32(X[10], data, 40);
-  GET_UINT32(X[11], data, 44);
-  GET_UINT32(X[12], data, 48);
-  GET_UINT32(X[13], data, 52);
-  GET_UINT32(X[14], data, 56);
-  GET_UINT32(X[15], data, 60);
+  uint32_t X[16];
+  const uint32_t* data32 = reinterpret_cast<const uint32_t*>(data);
+  for (size_t i = 0; i < FX_ArraySize(X); ++i)
+    X[i] = FXSYS_GetDwordLsbFirst(data32[i]);
+
 #define S(x, n) ((x << n) | ((x & 0xFFFFFFFF) >> (32 - n)))
 #define P(a, b, c, d, k, s, t)  \
   {                             \
     a += F(b, c, d) + X[k] + t; \
     a = S(a, s) + b;            \
   }
-  A = ctx->state[0];
-  B = ctx->state[1];
-  C = ctx->state[2];
-  D = ctx->state[3];
+  uint32_t A = ctx->state[0];
+  uint32_t B = ctx->state[1];
+  uint32_t C = ctx->state[2];
+  uint32_t D = ctx->state[3];
 #define F(x, y, z) (z ^ (x & (y ^ z)))
   P(A, B, C, D, 0, 7, 0xD76AA478);
   P(D, A, B, C, 1, 12, 0xE8C7B756);

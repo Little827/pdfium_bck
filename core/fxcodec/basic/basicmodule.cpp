@@ -326,10 +326,9 @@ bool BasicModule::A85Encode(pdfium::span<const uint8_t> src_span,
   uint32_t pos = 0;
   uint32_t line_length = 0;
   while (src_span.size() >= 4 && pos < src_span.size() - 3) {
-    uint32_t val = ((uint32_t)(src_span[pos]) << 24) +
-                   ((uint32_t)(src_span[pos + 1]) << 16) +
-                   ((uint32_t)(src_span[pos + 2]) << 8) +
-                   (uint32_t)(src_span[pos + 3]);
+    pdfium::span<const uint32_t> src_span32 = pdfium::make_span(
+        reinterpret_cast<const uint32_t*>(src_span.data()), 1);
+    uint32_t val = FXSYS_GetDwordMsbFirst(src_span[0]);
     pos += 4;
     if (val == 0) {  // All zero special case
       *out = 'z';
