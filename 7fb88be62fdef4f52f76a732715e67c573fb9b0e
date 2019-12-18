@@ -93,6 +93,30 @@
       "revId": "7fb88be62fdef4f52f76a732715e67c573fb9b0e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c7a78db_bbac1fe9",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T01:20:00Z",
+      "side": 1,
+      "message": "Of course, it would be good to get switch FXWORD_GET_LSBFIRST and friends away from being macros too...",
+      "parentUuid": "9d7f424f_c0c9c5b0",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "7fb88be62fdef4f52f76a732715e67c573fb9b0e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
