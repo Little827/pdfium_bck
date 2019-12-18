@@ -93,6 +93,25 @@ uint16_t FXSYS_GetWordLsbFirst(uint16_t word) {
   return (static_cast<uint16_t>(p[1]) << 8) | static_cast<uint16_t>(p[0]);
 }
 
+uint16_t FXSYS_GetWordMsbFirst(uint16_t word) {
+  uint8_t* p = reinterpret_cast<uint8_t*>(&word);
+  return (static_cast<uint16_t>(p[0]) << 8) | static_cast<uint16_t>(p[1]);
+}
+
+uint32_t FXSYS_GetDwordLsbFirst(uint32_t dword) {
+  uint8_t* p = reinterpret_cast<uint8_t*>(&dword);
+  return (static_cast<uint32_t>(p[3]) << 24) |
+         (static_cast<uint32_t>(p[2]) << 16) |
+         (static_cast<uint32_t>(p[1]) << 8) | static_cast<uint32_t>(p[0]);
+}
+
+uint32_t FXSYS_GetDwordMsbFirst(uint32_t dword) {
+  uint8_t* p = reinterpret_cast<uint8_t*>(&dword);
+  return (static_cast<uint32_t>(p[0]) << 24) |
+         (static_cast<uint32_t>(p[1]) << 16) |
+         (static_cast<uint32_t>(p[2]) << 8) | static_cast<uint32_t>(p[3]);
+}
+
 int32_t FXSYS_atoi(const char* str) {
   return FXSYS_StrToInt<int32_t, char>(str);
 }
