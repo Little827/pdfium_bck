@@ -23,6 +23,30 @@
       "revId": "a86a423213b90414c10353548e50f149eb9ef806",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ed3e0e_9d41225b",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-18T20:11:45Z",
+      "side": 1,
+      "message": "I really like avoiding casting in the callers, but I see Chromium\u0027s base::ReadBigEndian() takes a pointer too. So I suppose we can do it that way. But now I\u0027m also tempted to copy base::ReadBigEndian() ...",
+      "parentUuid": "304ff2a2_effffd78",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "a86a423213b90414c10353548e50f149eb9ef806",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
