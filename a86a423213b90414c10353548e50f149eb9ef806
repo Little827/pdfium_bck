@@ -119,6 +119,30 @@
       "revId": "a86a423213b90414c10353548e50f149eb9ef806",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74df45d1_d815b688",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-19T20:41:06Z",
+      "side": 1,
+      "message": "And, in fact, the compiler does that.  But where you get into trouble is when some image format has packed these fields together into its header like\n2 byte magic, 4 byte size, eg.\n\n  uint8_t buffer[512];\n  uint16_t magic \u003d GtUint16LSB(\u0026buffer[0]);\n  uint32_t size \u003d GetUint32LSB(\u0026buffer[2]);\n\nor\n  uint32_t* ptr \u003d static_cast\u003cuint32_t*\u003e(\u0026buffer[2]));\n\nat which point (*ptr) faults.",
+      "parentUuid": "27bd144f_c10b8f9f",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "a86a423213b90414c10353548e50f149eb9ef806",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
