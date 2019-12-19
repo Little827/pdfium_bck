@@ -1,4 +1,39 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576725625 -0800\nnonce AC6AUtOwjpoiCmnoD0wKvmqQXWIfsi4UodicvNthwUkgicNHcVOaDffEK7ZX20XigUu5UV6uqqmi\n\n0000000000000000000000000000000000000000 92e448dea83899005ffde7be81a60fd07ca2b1e6 refs/for/refs/heads/master%notify\u003dNONE,m\u003d0xffffffff\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl367HkACgkQqzYtYVpm\n/Xt+Bgf/SWMKDFHnjQd5BegpjgIZtPq+9jRpWCC3ibrYegVEEd+CyTtxAdSP63Pc\nkW8kf0suIhoX6qeKgkomCdYArmj05pkpFAM+/sphVpaDZA3Ub3E6BBm6p4f2AKkZ\nGcvPiBrE1PLtB2Pe2FMu9HCi1xzFdqzMYSi00AtQUHlfPfpw0XWayRFCWuE0U1gG\ngFWWfqJbTBSxAV4ODHjXumgXZ6/QN2ULeVJhLGCC6cw+b/fSVBIkA7VqUGSCZiyY\naKNde7yQqMrtjZ/zYTogB/DFbU+r8q3xBxSIu5iAQfbAHZLmzyTzpPC+FiYn4cU3\n5pBalvEpz2ZllqCA9yGOvxumvatQ2Q\u003d\u003d\n\u003dPF85\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "d47ef5b3_a1d1b930",
+        "filename": "core/fxge/cfx_fontmapper_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-19T17:55:27Z",
+      "side": 1,
+      "message": "just to beat a dead horse, what happens if we have a mutable global with extern linkage\n\nchar g_maybe_changes \u003d \u0027\\xff\u0027;",
+      "revId": "92e448dea83899005ffde7be81a60fd07ca2b1e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255ca692_2bcd01a9",
+        "filename": "core/fxge/cfx_fontmapper_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-19T17:55:27Z",
+      "side": 1,
+      "message": "then\n  EXPECT_EQ(0xffffffffu,\n            CFX_FontMapper::MakeTag(g_maybe_changes, \u0027\\xff\u0027, \u0027\\xff\u0027, \u0027\\xff\u0027));\n\nunder ubsan?",
+      "revId": "92e448dea83899005ffde7be81a60fd07ca2b1e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
