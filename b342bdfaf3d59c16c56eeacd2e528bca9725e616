@@ -17,6 +17,24 @@
       "revId": "b342bdfaf3d59c16c56eeacd2e528bca9725e616",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5520ac0a_d0b4081a",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T00:13:57Z",
+      "side": 1,
+      "message": "Sorry, but the entire Chromium project prefers the other way. e.g. There\u0027s no --foo-disabled switch anywhere on https://peter.sh/experiments/chromium-command-line-switches/",
+      "parentUuid": "83da4416_2fccceca",
+      "revId": "b342bdfaf3d59c16c56eeacd2e528bca9725e616",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
