@@ -53,6 +53,24 @@
       "revId": "b342bdfaf3d59c16c56eeacd2e528bca9725e616",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c55facf_fe332755",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T00:26:47Z",
+      "side": 1,
+      "message": "I really don\u0027t care. The only coverage_report.py user I know just runs coverage_report.py without any arguments. So the names can be just about anything here, as long as its unique, and coverage_report.py does the right thing.",
+      "parentUuid": "53185ef2_40867988",
+      "revId": "b342bdfaf3d59c16c56eeacd2e528bca9725e616",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
