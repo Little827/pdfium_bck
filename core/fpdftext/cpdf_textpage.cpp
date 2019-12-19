@@ -204,6 +204,41 @@ bool EndVerticalLine(const CFX_FloatRect& this_rect,
   return right <= left;
 }
 
+// Let the compiler deduce the type for |predicate|, which is cheaper than
+// specifying it with std::function.
+template <typename P>
+WideString GetTextByPredicate(const std::deque<PAGECHAR_INFO>& charlist,
+                              const P& predicate) {
+  float posy = 0;
+  bool IsContainPreChar = false;
+  bool IsAddLineFeed = false;
+  WideString strText;
+  for (const auto& charinfo : charlist) {
+    if (predicate(charinfo)) {
+      if (fabs(posy - charinfo.m_Origin.y) > 0 && !IsContainPreChar &&
+          IsAddLineFeed) {
+        posy = charinfo.m_Origin.y;
+        if (!strText.IsEmpty())
+          strText += L"\r\n";
+      }
+      IsContainPreChar = true;
+      IsAddLineFeed = false;
+      if (charinfo.m_Unicode)
+        strText += charinfo.m_Unicode;
+    } else if (charinfo.m_Unicode == L' ') {
+      if (IsContainPreChar) {
+        strText += L' ';
+        IsContainPreChar = false;
+        IsAddLineFeed = false;
+      }
+    } else {
+      IsContainPreChar = false;
+      IsAddLineFeed = true;
+    }
+  }
+  return strText;
+}
+
 }  // namespace
 
 PDFTEXT_Obj::PDFTEXT_Obj() {}
@@ -404,52 +439,24 @@ int CPDF_TextPage::GetIndexAtPos(const CFX_PointF& point,
   return pos < nCount ? pos : NearPos;
 }
 
-WideString CPDF_TextPage::GetTextByPredicate(
-    const std::function<bool(const PAGECHAR_INFO&)>& predicate) const {
+WideString CPDF_TextPage::GetTextByRect(const CFX_FloatRect& rect) const {
   if (!m_bIsParsed)
     return WideString();
 
-  float posy = 0;
-  bool IsContainPreChar = false;
-  bool IsAddLineFeed = false;
-  WideString strText;
-  for (const auto& charinfo : m_CharList) {
-    if (predicate(charinfo)) {
-      if (fabs(posy - charinfo.m_Origin.y) > 0 && !IsContainPreChar &&
-          IsAddLineFeed) {
-        posy = charinfo.m_Origin.y;
-        if (!strText.IsEmpty())
-          strText += L"\r\n";
-      }
-      IsContainPreChar = true;
-      IsAddLineFeed = false;
-      if (charinfo.m_Unicode)
-        strText += charinfo.m_Unicode;
-    } else if (charinfo.m_Unicode == L' ') {
-      if (IsContainPreChar) {
-        strText += L' ';
-        IsContainPreChar = false;
-        IsAddLineFeed = false;
-      }
-    } else {
-      IsContainPreChar = false;
-      IsAddLineFeed = true;
-    }
-  }
-  return strText;
-}
-
-WideString CPDF_TextPage::GetTextByRect(const CFX_FloatRect& rect) const {
-  return GetTextByPredicate([&rect](const PAGECHAR_INFO& charinfo) {
+  return GetTextByPredicate(m_CharList, [&rect](const PAGECHAR_INFO& charinfo) {
     return IsRectIntersect(rect, charinfo.m_CharBox);
   });
 }
 
 WideString CPDF_TextPage::GetTextByObject(
     const CPDF_TextObject* pTextObj) const {
-  return GetTextByPredicate([pTextObj](const PAGECHAR_INFO& charinfo) {
-    return charinfo.m_pTextObj == pTextObj;
-  });
+  if (!m_bIsParsed)
+    return WideString();
+
+  return GetTextByPredicate(m_CharList,
+                            [pTextObj](const PAGECHAR_INFO& charinfo) {
+                              return charinfo.m_pTextObj == pTextObj;
+                            });
 }
 
 void CPDF_TextPage::GetCharInfo(size_t index, FPDF_CHAR_INFO* info) const {
