@@ -123,7 +123,8 @@ void WriteMonoResult(uint32_t r_bgra_cmyk, FXDIB_Format format, uint8_t* dest) {
   }
 }
 
-void WriteColorResult(std::function<uint8_t(int offset)> func,
+template <typename F>
+void WriteColorResult(const F& func,
                       bool bHasAlpha,
                       FXDIB_Format format,
                       uint8_t* dest) {
@@ -494,10 +495,10 @@ void CFX_ImageTransformer::AdjustCoords(int* col, int* row) const {
     src_row--;
 }
 
-void CFX_ImageTransformer::DoBilinearLoop(
-    const CalcData& cdata,
-    int increment,
-    std::function<void(const BilinearData&, uint8_t*)> func) {
+template <typename F>
+void CFX_ImageTransformer::DoBilinearLoop(const CalcData& cdata,
+                                          int increment,
+                                          const F& func) {
   CFX_BilinearMatrix matrix_fix(cdata.matrix);
   for (int row = 0; row < m_result.Height(); row++) {
     uint8_t* dest = cdata.bitmap->GetWritableScanline(row);
@@ -523,10 +524,10 @@ void CFX_ImageTransformer::DoBilinearLoop(
   }
 }
 
-void CFX_ImageTransformer::DoBicubicLoop(
-    const CalcData& cdata,
-    int increment,
-    std::function<void(const BicubicData&, uint8_t*)> func) {
+template <typename F>
+void CFX_ImageTransformer::DoBicubicLoop(const CalcData& cdata,
+                                         int increment,
+                                         const F& func) {
   CFX_BilinearMatrix matrix_fix(cdata.matrix);
   for (int row = 0; row < m_result.Height(); row++) {
     uint8_t* dest = cdata.bitmap->GetWritableScanline(row);
@@ -550,10 +551,10 @@ void CFX_ImageTransformer::DoBicubicLoop(
   }
 }
 
-void CFX_ImageTransformer::DoDownSampleLoop(
-    const CalcData& cdata,
-    int increment,
-    std::function<void(const DownSampleData&, uint8_t*)> func) {
+template <typename F>
+void CFX_ImageTransformer::DoDownSampleLoop(const CalcData& cdata,
+                                            int increment,
+                                            const F& func) {
   CPDF_FixedMatrix matrix_fix(cdata.matrix);
   for (int row = 0; row < m_result.Height(); row++) {
     uint8_t* dest = cdata.bitmap->GetWritableScanline(row);
