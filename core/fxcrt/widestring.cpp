@@ -276,6 +276,24 @@ Optional<WideString> TryVSWPrintf(size_t size,
   return {str};
 }
 
+template <typename P>
+WideString FromUTF16WithPredicate(const unsigned short* wstr,
+                                  size_t wlen,
+                                  const P& predicate) {
+  if (!wstr || wlen == 0)
+    return WideString();
+
+  WideString result;
+  {
+    // Span's lifetime must end before ReleaseBuffer() below.
+    pdfium::span<wchar_t> buf = result.GetBuffer(wlen);
+    for (size_t i = 0; i < wlen; i++)
+      buf[i] = predicate(wstr[i]);
+  }
+  result.ReleaseBuffer(wlen);
+  return result;
+}
+
 }  // namespace
 
 namespace fxcrt {
@@ -933,36 +951,14 @@ WideString WideString::FromUTF8(ByteStringView str) {
 
 // static
 WideString WideString::FromUTF16LE(const unsigned short* wstr, size_t wlen) {
-  if (!wstr || wlen == 0)
-    return WideString();
-
-  WideString result;
-  {
-    // Span's lifetime must end before ReleaseBuffer() below.
-    pdfium::span<wchar_t> buf = result.GetBuffer(wlen);
-    for (size_t i = 0; i < wlen; i++)
-      buf[i] = wstr[i];
-  }
-  result.ReleaseBuffer(wlen);
-  return result;
+  return FromUTF16WithPredicate(wstr, wlen,
+                                [](unsigned short wch) { return wch; });
 }
 
 WideString WideString::FromUTF16BE(const unsigned short* wstr, size_t wlen) {
-  if (!wstr || wlen == 0)
-    return WideString();
-
-  WideString result;
-  {
-    // Span's lifetime must end before ReleaseBuffer() below.
-    pdfium::span<wchar_t> buf = result.GetBuffer(wlen);
-    for (size_t i = 0; i < wlen; i++) {
-      auto wch = wstr[i];
-      wch = (wch >> 8) | (wch << 8);
-      buf[i] = wch;
-    }
-  }
-  result.ReleaseBuffer(wlen);
-  return result;
+  return FromUTF16WithPredicate(wstr, wlen, [](unsigned short wch) {
+    return ((wch >> 8) & 0xff) | ((wch & 0xff) << 8);
+  });
 }
 
 void WideString::SetAt(size_t index, wchar_t c) {
