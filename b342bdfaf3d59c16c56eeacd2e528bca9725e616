@@ -35,6 +35,24 @@
       "revId": "b342bdfaf3d59c16c56eeacd2e528bca9725e616",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53185ef2_40867988",
+        "filename": "testing/tools/coverage/coverage_report.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-12-19T00:18:15Z",
+      "side": 1,
+      "message": "Ah that\u0027s good to know 😊\n\nMy question still stands though: do we want the suffixes to mirror the argument or the name of the step?",
+      "parentUuid": "5520ac0a_d0b4081a",
+      "revId": "b342bdfaf3d59c16c56eeacd2e528bca9725e616",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
