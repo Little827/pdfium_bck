@@ -20,6 +20,24 @@
     },
     {
       "key": {
+        "uuid": "f6d804ce_a71d424c",
+        "filename": "core/fxge/cfx_fontmapper_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T18:00:53Z",
+      "side": 1,
+      "message": "Test added.",
+      "parentUuid": "d47ef5b3_a1d1b930",
+      "revId": "92e448dea83899005ffde7be81a60fd07ca2b1e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "255ca692_2bcd01a9",
         "filename": "core/fxge/cfx_fontmapper_unittest.cpp",
         "patchSetId": 7
@@ -34,6 +52,24 @@
       "revId": "92e448dea83899005ffde7be81a60fd07ca2b1e6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f24174a_cc2d95fa",
+        "filename": "core/fxge/cfx_fontmapper_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T18:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255ca692_2bcd01a9",
+      "revId": "92e448dea83899005ffde7be81a60fd07ca2b1e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
