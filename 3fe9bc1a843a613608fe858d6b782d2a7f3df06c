@@ -50,6 +50,30 @@
     },
     {
       "key": {
+        "uuid": "9b00c3a3_84d3ba38",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T06:06:43Z",
+      "side": 1,
+      "message": "I wrote a micro benchmark just to test locally. This version is indeed 5x slower in debug builds. With the template optimization instead of std::function, the performance is about the same as the function pointer version.",
+      "parentUuid": "26b0b059_5a528b9a",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 34
+      },
+      "revId": "3fe9bc1a843a613608fe858d6b782d2a7f3df06c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be48772f_91218be7",
         "filename": "core/fxcrt/widestring.cpp",
         "patchSetId": 2
@@ -70,6 +94,30 @@
       "revId": "3fe9bc1a843a613608fe858d6b782d2a7f3df06c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31d1e2d_39150795",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T06:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be48772f_91218be7",
+      "range": {
+        "startLine": 961,
+        "startChar": 50,
+        "endLine": 961,
+        "endChar": 73
+      },
+      "revId": "3fe9bc1a843a613608fe858d6b782d2a7f3df06c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
