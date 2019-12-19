@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd6d2f14_5c9d69a1",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-19T22:53:56Z",
+      "side": 1,
+      "message": "nit: row_byte_size since getwidth is really \"GetPixelsPerRow\", and when we multiply Bytes/pixel * pixels/row we get bytes per row.\n\nOr maybe usable_bytes_per_row \u003d",
+      "range": {
+        "startLine": 609,
+        "startChar": 10,
+        "endLine": 609,
+        "endChar": 15
+      },
+      "revId": "057eaf2e9ea71ce3297e2bdf662d9f746c849bbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
