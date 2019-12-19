@@ -110,9 +110,9 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
                                    bool bRestoreValue);
   virtual void SaveState(CPDFSDK_PageView* pPageView);
   virtual void RestoreState(CPDFSDK_PageView* pPageView);
-  virtual CFX_FloatRect GetFocusBox(CPDFSDK_PageView* pPageView);
 
   CFX_Matrix GetCurMatrix();
+  CFX_FloatRect GetFocusBox(CPDFSDK_PageView* pPageView);
   CFX_FloatRect FFLtoPWL(const CFX_FloatRect& rect);
   CFX_FloatRect PWLtoFFL(const CFX_FloatRect& rect);
   CFX_PointF FFLtoPWL(const CFX_PointF& point);
