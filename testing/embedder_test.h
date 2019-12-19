@@ -191,8 +191,14 @@ class EmbedderTest : public ::testing::Test,
   FPDF_FORMHANDLE SetupFormFillEnvironment(FPDF_DOCUMENT doc,
                                            JavaScriptOption javascript_option);
 
-  // Return the hash of |bitmap|.
+  // Return the hash of only the pixels in |bitmap|. i.e. Excluding the gap, if
+  // any, at the end of a row where the stride is larger than width * bpp.
   static std::string HashBitmap(FPDF_BITMAP bitmap);
+
+  // Return the hash of all of |bitmap|.
+  // Deprecated. Use HashBitmap() above in new code.
+  // TODO(thestig): Remove this.
+  static std::string HashBitmapDeprecated(FPDF_BITMAP bitmap);
 
 #ifndef NDEBUG
   // For debugging purposes.
