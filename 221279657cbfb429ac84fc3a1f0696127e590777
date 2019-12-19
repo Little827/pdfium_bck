@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c27dfbae_ee685cf4",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2130,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T05:32:16Z",
+      "side": 1,
+      "message": "Curious what this renders to. All white pixels, perhaps? Want to try using WriteBitmapToPng() locally and find out? Maybe set it a second time to |FPDF_TEXTRENDERMODE_STROKE| and render again just so we get something interesting?",
+      "revId": "221279657cbfb429ac84fc3a1f0696127e590777",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
