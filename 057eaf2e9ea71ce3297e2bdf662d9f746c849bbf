@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b701a0bb_0dd2c00d",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-19T22:54:37Z",
+      "side": 1,
+      "message": "nit: move to right before line 614?",
+      "range": {
+        "startLine": 607,
+        "startChar": 2,
+        "endLine": 607,
+        "endChar": 19
+      },
+      "revId": "057eaf2e9ea71ce3297e2bdf662d9f746c849bbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd6d2f14_5c9d69a1",
         "filename": "testing/embedder_test.cpp",
         "patchSetId": 3
