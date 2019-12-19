@@ -170,9 +170,6 @@ void FXSYS_SetLastError(uint32_t err);
 uint32_t FXSYS_GetLastError();
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 
-#define FXWORD_GET_LSBFIRST(p)                                \
-  (static_cast<uint16_t>((static_cast<uint16_t>(p[1]) << 8) | \
-                         (static_cast<uint16_t>(p[0]))))
 #define FXWORD_GET_MSBFIRST(p)                                \
   (static_cast<uint16_t>((static_cast<uint16_t>(p[0]) << 8) | \
                          (static_cast<uint16_t>(p[1]))))
