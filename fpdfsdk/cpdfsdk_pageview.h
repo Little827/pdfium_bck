@@ -15,11 +15,11 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/cpdfsdk_annothandlermgr.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 
 class CFX_RenderDevice;
 class CPDF_AnnotList;
 class CPDF_RenderOptions;
-class CPDFSDK_FormFillEnvironment;
 
 class CPDFSDK_PageView final : public CPDF_Page::View {
  public:
@@ -51,6 +51,9 @@ class CPDFSDK_PageView final : public CPDF_Page::View {
   CPDF_Page* GetPDFPage() const;
   CPDF_Document* GetPDFDocument();
   CPDFSDK_FormFillEnvironment* GetFormFillEnv() const {
+    return m_pFormFillEnv.Get();
+  }
+  CFFL_InteractiveFormFiller::EnvironmentIface* GetFormFillEnvIface() const {
     return m_pFormFillEnv.Get();
   }
 

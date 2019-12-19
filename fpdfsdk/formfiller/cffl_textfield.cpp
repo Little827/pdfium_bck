@@ -10,13 +10,13 @@
 
 #include "constants/form_flags.h"
 #include "core/fpdfdoc/cba_fontmap.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "public/fpdf_fwlevent.h"
 #include "third_party/base/ptr_util.h"
 
-CFFL_TextField::CFFL_TextField(CPDFSDK_FormFillEnvironment* pApp,
-                               CPDFSDK_Widget* pWidget)
+CFFL_TextField::CFFL_TextField(
+    CFFL_InteractiveFormFiller::EnvironmentIface* pApp,
+    CPDFSDK_Widget* pWidget)
     : CFFL_TextObject(pApp, pWidget) {}
 
 CFFL_TextField::~CFFL_TextField() {

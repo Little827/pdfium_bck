@@ -18,7 +18,8 @@ class CPWL_ListBox;
 
 class CFFL_ListBox final : public CFFL_TextObject {
  public:
-  CFFL_ListBox(CPDFSDK_FormFillEnvironment* pApp, CPDFSDK_Widget* pWidget);
+  CFFL_ListBox(CFFL_InteractiveFormFiller::EnvironmentIface* pApp,
+               CPDFSDK_Widget* pWidget);
   ~CFFL_ListBox() override;
 
   // CFFL_TextObject:

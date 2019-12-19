@@ -376,8 +376,8 @@ void CPDFSDK_FormFillEnvironment::ExecuteNamedAction(const char* namedAction) {
 }
 
 void CPDFSDK_FormFillEnvironment::OnSetFieldInputFocus(
-    FPDF_WIDESTRING focusText,
-    FPDF_DWORD nTextLen,
+    const uint16_t* focusText,
+    uint32_t nTextLen,
     bool bFocus) {
   if (m_pInfo && m_pInfo->FFI_SetTextFieldFocus)
     m_pInfo->FFI_SetTextFieldFocus(m_pInfo, focusText, nTextLen, bFocus);
@@ -657,6 +657,14 @@ IPDF_Page* CPDFSDK_FormFillEnvironment::GetPage(int nIndex) {
       m_pInfo, FPDFDocumentFromCPDFDocument(m_pCPDFDoc.Get()), nIndex));
 }
 
+IPWL_SystemHandler* CPDFSDK_FormFillEnvironment::GetSysHandler() {
+  return this;
+}
+
+TimerHandlerIface* CPDFSDK_FormFillEnvironment::GetTimerHandler() {
+  return this;
+}
+
 CPDFSDK_InteractiveForm* CPDFSDK_FormFillEnvironment::GetInteractiveForm() {
   if (!m_pInteractiveForm)
     m_pInteractiveForm = pdfium::MakeUnique<CPDFSDK_InteractiveForm>(this);
@@ -670,6 +678,10 @@ void CPDFSDK_FormFillEnvironment::UpdateAllViews(CPDFSDK_PageView* pSender,
     if (pPageView != pSender)
       pPageView->UpdateView(pAnnot);
   }
+}
+
+CPDFSDK_Annot* CPDFSDK_FormFillEnvironment::GetFocusAnnot() const {
+  return m_pFocusAnnot.Get();
 }
 
 bool CPDFSDK_FormFillEnvironment::SetFocusAnnot(

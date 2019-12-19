@@ -19,13 +19,12 @@
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 
 class CPDFSDK_Annot;
-class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_PageView;
 
 class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
                         public CFX_Timer::CallbackIface {
  public:
-  CFFL_FormFiller(CPDFSDK_FormFillEnvironment* pFormFillEnv,
+  CFFL_FormFiller(CFFL_InteractiveFormFiller::EnvironmentIface* pFormFillEnv,
                   CPDFSDK_Widget* pWidget);
   ~CFFL_FormFiller() override;
 
@@ -149,7 +148,7 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
   void InvalidateRect(const FX_RECT& rect);
 
   bool m_bValid = false;
-  UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
+  UnownedPtr<CFFL_InteractiveFormFiller::EnvironmentIface> const m_pFormFillEnv;
   UnownedPtr<CPDFSDK_Widget> m_pWidget;
   std::unique_ptr<CFX_Timer> m_pTimer;
   std::map<CPDFSDK_PageView*, std::unique_ptr<CPWL_Wnd>> m_Maps;

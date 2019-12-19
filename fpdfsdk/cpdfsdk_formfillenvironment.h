@@ -16,10 +16,10 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/timerhandler_iface.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
+#include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 #include "public/fpdf_formfill.h"
 
-class CFFL_InteractiveFormFiller;
 class CPDFSDK_ActionHandler;
 class CPDFSDK_AnnotHandlerMgr;
 class CPDFSDK_InteractiveForm;
@@ -41,9 +41,11 @@ FPDF_WIDESTRING AsFPDFWideString(ByteString* bsUTF16LE);
 // hierarcy back to the form fill environment itself, so as to flag any
 // lingering lifetime issues via the memory tools.
 
-class CPDFSDK_FormFillEnvironment final : public Observable,
-                                          public TimerHandlerIface,
-                                          public IPWL_SystemHandler {
+class CPDFSDK_FormFillEnvironment final
+    : public Observable,
+      public TimerHandlerIface,
+      public IPWL_SystemHandler,
+      public CFFL_InteractiveFormFiller::EnvironmentIface {
  public:
   CPDFSDK_FormFillEnvironment(
       CPDF_Document* pDoc,
@@ -64,19 +66,31 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
   bool IsSelectionImplemented() const override;
   void SetCursor(int32_t nCursorType) override;
 
-  CPDFSDK_PageView* GetPageView(IPDF_Page* pUnderlyingPage, bool renew);
+  // CFFL_InteractiveFormFiller::EnvironmentIface:
+  CFFL_InteractiveFormFiller* GetInteractiveFormFiller() override;
+  IPWL_SystemHandler* GetSysHandler() override;
+  TimerHandlerIface* GetTimerHandler() override;
+  CPDFSDK_InteractiveForm* GetInteractiveForm() override;
+  CPDFSDK_PageView* GetPageView(IPDF_Page* pUnderlyingPage,
+                                bool renew) override;
+  bool GetPermissions(int nFlag) const override;
+  void Invalidate(IPDF_Page* page, const FX_RECT& rect) override;
+  void OnChange() override;
+  void OnSetFieldInputFocus(const uint16_t* focusText,
+                            uint32_t nTextLen,
+                            bool bFocus) override;
+  CPDFSDK_Annot* GetFocusAnnot() const override;
+  bool SetFocusAnnot(ObservedPtr<CPDFSDK_Annot>* pAnnot) override;
+
   CPDFSDK_PageView* GetPageView(int nIndex);
 
   void RemovePageView(IPDF_Page* pUnderlyingPage);
   void UpdateAllViews(CPDFSDK_PageView* pSender, CPDFSDK_Annot* pAnnot);
 
-  CPDFSDK_Annot* GetFocusAnnot() const { return m_pFocusAnnot.Get(); }
-  bool SetFocusAnnot(ObservedPtr<CPDFSDK_Annot>* pAnnot);
   bool KillFocusAnnot(uint32_t nFlag);
   void ClearAllFocusedAnnots();
 
   int GetPageCount() const;
-  bool GetPermissions(int nFlag) const;
 
   bool GetChangeMark() const { return m_bChangeMask; }
   void SetChangeMark() { m_bChangeMask = true; }
@@ -84,13 +98,8 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
 
   void ProcJavascriptFun();
   bool ProcOpenAction();
-  void Invalidate(IPDF_Page* page, const FX_RECT& rect);
 
-  void OnChange();
   void ExecuteNamedAction(const char* namedAction);
-  void OnSetFieldInputFocus(FPDF_WIDESTRING focusText,
-                            FPDF_DWORD nTextLen,
-                            bool bFocus);
   void DoURIAction(const char* bsURI);
   void DoGoToAction(int nPageIndex,
                     int zoomMode,
@@ -191,18 +200,14 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
 
   WideString GetFilePath() const;
   ByteString GetAppName() const { return ByteString(); }
-  TimerHandlerIface* GetTimerHandler() { return this; }
-  IPWL_SystemHandler* GetSysHandler() { return this; }
   FPDF_FORMFILLINFO* GetFormFillInfo() const { return m_pInfo; }
   void SubmitForm(pdfium::span<uint8_t> form_data, const WideString& URL);
 
   CPDFSDK_AnnotHandlerMgr* GetAnnotHandlerMgr();  // Always present.
 
   // Creates if not present.
-  CFFL_InteractiveFormFiller* GetInteractiveFormFiller();
   IJS_Runtime* GetIJSRuntime();                   // Creates if not present.
   CPDFSDK_ActionHandler* GetActionHandler();      // Creates if not present.
-  CPDFSDK_InteractiveForm* GetInteractiveForm();  // Creates if not present.
 
  private:
   IPDF_Page* GetPage(int nIndex);

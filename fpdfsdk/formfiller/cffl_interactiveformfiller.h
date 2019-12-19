@@ -19,14 +19,39 @@
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 
 class CFFL_FormFiller;
-class CPDFSDK_FormFillEnvironment;
+class CPDFSDK_Annot;
 class CPDFSDK_PageView;
 class CPDFSDK_Widget;
+class CPDFSDK_InteractiveForm;
+class IPDF_Page;
 
 class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
  public:
-  explicit CFFL_InteractiveFormFiller(
-      CPDFSDK_FormFillEnvironment* pFormFillEnv);
+  class EnvironmentIface {
+   public:
+    virtual ~EnvironmentIface() = default;
+
+    // Must create if not present.
+    virtual CFFL_InteractiveFormFiller* GetInteractiveFormFiller() = 0;
+
+    // Must create if not present.
+    virtual CPDFSDK_InteractiveForm* GetInteractiveForm() = 0;
+
+    virtual IPWL_SystemHandler* GetSysHandler() = 0;
+    virtual TimerHandlerIface* GetTimerHandler() = 0;
+    virtual CPDFSDK_PageView* GetPageView(IPDF_Page* pUnderlyingPage,
+                                          bool renew) = 0;
+    virtual bool GetPermissions(int nFlag) const = 0;
+    virtual void Invalidate(IPDF_Page* page, const FX_RECT& rect) = 0;
+    virtual void OnChange() = 0;
+    virtual void OnSetFieldInputFocus(const uint16_t* focusText,
+                                      uint32_t nTextLen,
+                                      bool bFocus) = 0;
+    virtual CPDFSDK_Annot* GetFocusAnnot() const = 0;
+    virtual bool SetFocusAnnot(ObservedPtr<CPDFSDK_Annot>* pAnnot) = 0;
+  };
+
+  explicit CFFL_InteractiveFormFiller(EnvironmentIface* pFormFillEnv);
   ~CFFL_InteractiveFormFiller() override;
 
   bool Annot_HitTest(CPDFSDK_PageView* pPageView,
@@ -165,7 +190,7 @@ class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
   CFFL_FormFiller* GetOrCreateFormFiller(CPDFSDK_Annot* pAnnot);
   void UnRegisterFormFiller(CPDFSDK_Annot* pAnnot);
 
-  UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
+  UnownedPtr<EnvironmentIface> const m_pFormFillEnv;
   WidgetToFormFillerMap m_Map;
   bool m_bNotifying = false;
 };

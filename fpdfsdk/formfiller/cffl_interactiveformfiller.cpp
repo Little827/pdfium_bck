@@ -8,11 +8,11 @@
 
 #include "constants/form_flags.h"
 #include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_pathdata.h"
 #include "core/fxge/cfx_renderdevice.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
@@ -28,7 +28,7 @@
 #include "third_party/base/stl_util.h"
 
 CFFL_InteractiveFormFiller::CFFL_InteractiveFormFiller(
-    CPDFSDK_FormFillEnvironment* pFormFillEnv)
+    CFFL_InteractiveFormFiller::EnvironmentIface* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv) {}
 
 CFFL_InteractiveFormFiller::~CFFL_InteractiveFormFiller() = default;
@@ -714,7 +714,7 @@ void CFFL_InteractiveFormFiller::OnCalculate(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   if (pWidget) {
     CPDFSDK_InteractiveForm* pForm =
-        pPageView->GetFormFillEnv()->GetInteractiveForm();
+        pPageView->GetFormFillEnvIface()->GetInteractiveForm();
     pForm->OnCalculate(pWidget->GetFormField());
   }
   m_bNotifying = false;
@@ -729,7 +729,7 @@ void CFFL_InteractiveFormFiller::OnFormat(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot->Get());
   ASSERT(pWidget);
   CPDFSDK_InteractiveForm* pForm =
-      pPageView->GetFormFillEnv()->GetInteractiveForm();
+      pPageView->GetFormFillEnvIface()->GetInteractiveForm();
 
   Optional<WideString> sValue = pForm->OnFormat(pWidget->GetFormField());
   if (!pAnnot->HasObservable())
@@ -906,8 +906,8 @@ std::pair<bool, bool> CFFL_InteractiveFormFiller::OnBeforeKeyStroke(
 
   uint32_t nAge = privateData.pWidget->GetAppearanceAge();
   uint32_t nValueAge = privateData.pWidget->GetValueAge();
-  CPDFSDK_FormFillEnvironment* pFormFillEnv =
-      privateData.pPageView->GetFormFillEnv();
+  CFFL_InteractiveFormFiller::EnvironmentIface* pFormFillEnv =
+      privateData.pPageView->GetFormFillEnvIface();
 
   CPDFSDK_FieldAction fa;
   fa.bModifier = CPWL_Wnd::IsCTRLKeyDown(nFlag);

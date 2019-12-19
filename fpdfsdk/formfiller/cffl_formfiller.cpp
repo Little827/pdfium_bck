@@ -11,12 +11,13 @@
 #include "constants/form_flags.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fxge/cfx_renderdevice.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
+#include "third_party/base/ptr_util.h"
 
-CFFL_FormFiller::CFFL_FormFiller(CPDFSDK_FormFillEnvironment* pFormFillEnv,
-                                 CPDFSDK_Widget* pWidget)
+CFFL_FormFiller::CFFL_FormFiller(
+    CFFL_InteractiveFormFiller::EnvironmentIface* pFormFillEnv,
+    CPDFSDK_Widget* pWidget)
     : m_pFormFillEnv(pFormFillEnv), m_pWidget(pWidget) {
   ASSERT(m_pFormFillEnv);
 }

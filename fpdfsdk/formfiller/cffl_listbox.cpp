@@ -10,13 +10,12 @@
 
 #include "constants/form_flags.h"
 #include "core/fpdfdoc/cba_fontmap.h"
-#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_interactiveformfiller.h"
 #include "fpdfsdk/pwl/cpwl_list_box.h"
 #include "third_party/base/ptr_util.h"
 
-CFFL_ListBox::CFFL_ListBox(CPDFSDK_FormFillEnvironment* pApp,
+CFFL_ListBox::CFFL_ListBox(CFFL_InteractiveFormFiller::EnvironmentIface* pApp,
                            CPDFSDK_Widget* pWidget)
     : CFFL_TextObject(pApp, pWidget) {}
 
