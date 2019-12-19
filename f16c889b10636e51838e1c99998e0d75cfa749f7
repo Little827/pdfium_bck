@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "e7ba2753_085b85bf",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2019-12-19T13:17:01Z",
+      "side": 1,
+      "message": "I agree, the current solution is not efficient for a Linearized PDF. It\u0027s challenging to fetch right amount of data as we don\u0027t know the length of XRefStm from the trailer dictionary. One approach could be to load chunks of data until XRefStm is completely loaded. Let me know your thoughts regarding this.",
+      "parentUuid": "27f64000_65b57a86",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64a07d61_ee366f94",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 8
