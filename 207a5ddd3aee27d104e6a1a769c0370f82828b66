@@ -46,6 +46,30 @@
       "revId": "207a5ddd3aee27d104e6a1a769c0370f82828b66",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbfb07c3_4816b061",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T19:33:28Z",
+      "side": 1,
+      "message": "Yes they are being used for the calculation. They are initialized, given the lack of red MSAN bots. We could go row by row, but it\u0027s more work. *shrug*",
+      "parentUuid": "4a5849ba_e1af5732",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 609,
+        "endChar": 28
+      },
+      "revId": "207a5ddd3aee27d104e6a1a769c0370f82828b66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
