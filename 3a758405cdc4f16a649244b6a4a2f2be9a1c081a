@@ -141,6 +141,30 @@
       "revId": "3a758405cdc4f16a649244b6a4a2f2be9a1c081a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77fdfbae_2117f843",
+        "filename": "core/fxge/dib/cfx_imagetransformer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T02:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea5e76b_151b30f0",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 21
+      },
+      "revId": "3a758405cdc4f16a649244b6a4a2f2be9a1c081a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
