@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "322f3d91_652dc9a4",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-19T22:40:35Z",
+      "side": 1,
+      "message": "Use/absence of {} for single-line branches is inconsistent in this function. (I probably would to choose to omit them consistently.)",
+      "revId": "fdda5723faf03adee82121650c33a197cd1474c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab8754c6_2fd82cb3",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-19T22:40:35Z",
+      "side": 1,
+      "message": "The static cast to uint32_t is a bit odd. I think this might be better as \"pdfium::Optional(code.ValueOrDefault(0u))\" instead.",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "fdda5723faf03adee82121650c33a197cd1474c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ad43ee_f752b4d9",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-19T22:40:35Z",
+      "side": 1,
+      "message": "EXPECT_FALSE, instead of ASSERT_FALSE?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "fdda5723faf03adee82121650c33a197cd1474c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
