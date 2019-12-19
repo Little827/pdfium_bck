@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "738f7b6a_5ff51a8a",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T02:14:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9907f0_4a9b860c",
+      "range": {
+        "startLine": 407,
+        "startChar": 9,
+        "endLine": 407,
+        "endChar": 21
+      },
+      "revId": "3a758405cdc4f16a649244b6a4a2f2be9a1c081a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22929142_609531d4",
         "filename": "core/fpdftext/cpdf_textpage.h",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Hmmm.  Does this actually depend upon a lot of state in |this|? If we can pass one or two additional args, does this become an ordinary function rather than a method?  In which case, all the code can live in the .cpp file and we won\u0027t have to forward declare it.",
       "parentUuid": "22929142_609531d4",
+      "range": {
+        "startLine": 151,
+        "startChar": 21,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "3a758405cdc4f16a649244b6a4a2f2be9a1c081a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc0c44ba_1ca98322",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T02:14:58Z",
+      "side": 1,
+      "message": "Sure. Split off into its own CL. https://pdfium-review.googlesource.com/64212",
+      "parentUuid": "c11f1206_0bfc54f3",
       "range": {
         "startLine": 151,
         "startChar": 21,
