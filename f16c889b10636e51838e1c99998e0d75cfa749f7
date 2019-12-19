@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "ec78480e_234499bb",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T17:48:48Z",
+      "side": 1,
+      "message": "I\u0027d have to re-read the PDF spec to see if I can give better advice here. Maybe we can do a series of CLs here to make progress:\n\n1) Check in the test, with a TODO to fix the behavior.\n2) Do something like reading just 1 KB of data, or read chunks until the objects load, as a quick fix.\n3) Figure out if there is a better way to read the appropriate amount of data and improve this if we can.",
+      "parentUuid": "e7ba2753_085b85bf",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64a07d61_ee366f94",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 8
