@@ -40,6 +40,30 @@
       "revId": "912d3ac65cdc8e99d09d27fa35e96b9a6b2b4542",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182462c8_5d4b0523",
+        "filename": "core/fxcrt/byteorder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-19T17:01:51Z",
+      "side": 1,
+      "message": "We can, but I was trying to drop the fx_ prefix, like with bytestring.h and friends. I don\u0027t think fxcrt/byteorder.h will conflict with sys/byteorder.h. If someone just includes byteorder.h, that\u0027s their problem.",
+      "parentUuid": "1ac81523_5fee2f9a",
+      "range": {
+        "startLine": 5,
+        "startChar": 19,
+        "endLine": 5,
+        "endChar": 31
+      },
+      "revId": "912d3ac65cdc8e99d09d27fa35e96b9a6b2b4542",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
