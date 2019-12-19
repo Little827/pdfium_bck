@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd5a913c_3318fe61",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-19T19:19:42Z",
+      "side": 1,
+      "message": "Are the bytes between GetWidth() and GetStride() on each row to be counted as part of the checksum?  There\u0027s no reason that they need to be even initialized, do they?\n\nI think we may have to operate in a loop, row by row, increment the start of the row by GetStride() each time but only adding GetWidth() bytes to the checksum.",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 609,
+        "endChar": 28
+      },
+      "revId": "207a5ddd3aee27d104e6a1a769c0370f82828b66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
