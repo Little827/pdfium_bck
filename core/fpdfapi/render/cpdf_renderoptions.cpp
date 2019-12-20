@@ -17,6 +17,10 @@ CPDF_RenderOptions::Options::Options() = default;
 CPDF_RenderOptions::Options::Options(const CPDF_RenderOptions::Options& rhs) =
     default;
 
+CPDF_RenderOptions::ColorScheme::ColorScheme() = default;
+
+CPDF_RenderOptions::ColorScheme::ColorScheme(const ColorScheme& rhs) = default;
+
 CPDF_RenderOptions::CPDF_RenderOptions() {
   // TODO(thestig): Make constexpr to initialize |m_Options| once C++14 is
   // available.
@@ -40,6 +44,26 @@ FX_ARGB CPDF_RenderOptions::TranslateColor(FX_ARGB argb) const {
   std::tie(a, r, g, b) = ArgbDecode(argb);
   int gray = FXRGB2GRAY(r, g, b);
   return ArgbEncode(a, gray, gray, gray);
+}
+
+FX_ARGB CPDF_RenderOptions::TranslateColor(FX_ARGB argb,
+                                           CPDF_PageObject::Type objectType,
+                                           RenderType renderType) const {
+  if (ColorModeIs(kForcedColor)) {
+    switch (objectType) {
+      case CPDF_PageObject::Type::PATH:
+        return (renderType == RenderType::kFill)
+                   ? m_ColorScheme.path_fill_color
+                   : m_ColorScheme.path_stroke_color;
+      case CPDF_PageObject::Type::TEXT:
+        return (renderType == RenderType::kFill)
+                   ? m_ColorScheme.text_fill_color
+                   : m_ColorScheme.text_stroke_color;
+      default:
+        return argb;
+    }
+  }
+  return TranslateColor(argb);
 }
 
 uint32_t CPDF_RenderOptions::GetCacheSizeLimit() const {
