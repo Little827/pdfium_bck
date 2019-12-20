@@ -167,6 +167,30 @@
       "revId": "a86a423213b90414c10353548e50f149eb9ef806",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f83768_41489fa2",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-20T20:03:54Z",
+      "side": 1,
+      "message": "That\u0027s OK.  The question becomes, how did you get the uint16_t in the wrong order?  Usually by either mapping a structure directly on top of a uint8_t buffer, or by doing a *(uint16_t)(buffer + n);  In the later case, we probably wanted to be using the macros themselves.\n\nIf you wanted to make FXWORD_GET_LSBFIRST() an inline function taking a uint8_t* ptr argument, that would be better as we can be sure that the macro isn\u0027t being applied to something that isn\u0027t already uint8_t *",
+      "parentUuid": "7677a783_d326e54a",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "a86a423213b90414c10353548e50f149eb9ef806",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
