@@ -6,13 +6,8 @@
 
 #include "build/build_config.h"
 #include "third_party/base/allocator/partition_allocator/spin_lock.h"
-
-#if defined(OS_WIN)
-#include <windows.h>
-#else
-#include <sys/time.h>
-#include <unistd.h>
-#endif
+#include "third_party/base/no_destructor.h"
+#include "third_party/base/rand_util.h"
 
 namespace pdfium {
 namespace base {
@@ -30,24 +25,20 @@ struct RandomContext {
 
 namespace {
 
-#define rot(x, k) (((x) << (k)) | ((x) >> (32 - (k))))
-
-uint32_t RandomValueInternal(RandomContext* x) {
-  uint32_t e = x->a - rot(x->b, 27);
-  x->a = x->b ^ rot(x->c, 17);
-  x->b = x->c + x->d;
-  x->c = x->d + e;
-  x->d = e + x->a;
-  return x->d;
-}
-
-#undef rot
-
 RandomContext* GetRandomContext() {
-  static RandomContext* s_RandomContext = nullptr;
-  if (!s_RandomContext)
-    s_RandomContext = new RandomContext();
-  return s_RandomContext;
+  static NoDestructor<RandomContext> g_random_context;
+  RandomContext* x = g_random_context.get();
+  subtle::SpinLock::Guard guard(x->lock);
+  if (UNLIKELY(!x->initialized)) {
+    const uint64_t r1 = RandUint64();
+    const uint64_t r2 = RandUint64();
+    x->a = static_cast<uint32_t>(r1);
+    x->b = static_cast<uint32_t>(r1 >> 32);
+    x->c = static_cast<uint32_t>(r2);
+    x->d = static_cast<uint32_t>(r2 >> 32);
+    x->initialized = true;
+  }
+  return x;
 }
 
 }  // namespace
@@ -55,36 +46,17 @@ RandomContext* GetRandomContext() {
 uint32_t RandomValue() {
   RandomContext* x = GetRandomContext();
   subtle::SpinLock::Guard guard(x->lock);
-  if (UNLIKELY(!x->initialized)) {
-    x->initialized = true;
-    char c;
-    uint32_t seed = static_cast<uint32_t>(reinterpret_cast<uintptr_t>(&c));
-    uint32_t pid;
-    uint32_t usec;
-#if defined(OS_WIN)
-    pid = GetCurrentProcessId();
-    SYSTEMTIME st;
-    GetSystemTime(&st);
-    usec = static_cast<uint32_t>(st.wMilliseconds * 1000);
-#else
-    pid = static_cast<uint32_t>(getpid());
-    struct timeval tv;
-    gettimeofday(&tv, 0);
-    usec = static_cast<uint32_t>(tv.tv_usec);
-#endif
-    seed ^= pid;
-    seed ^= usec;
-    x->a = 0xf1ea5eed;
-    x->b = x->c = x->d = seed;
-    for (int i = 0; i < 20; ++i) {
-      RandomValueInternal(x);
-    }
-  }
-
-  return RandomValueInternal(x);
+#define rot(x, k) (((x) << (k)) | ((x) >> (32 - (k))))
+  uint32_t e = x->a - rot(x->b, 27);
+  x->a = x->b ^ rot(x->c, 17);
+  x->b = x->c + x->d;
+  x->c = x->d + e;
+  x->d = e + x->a;
+  return x->d;
+#undef rot
 }
 
-void SetMmapSeedForTesting(int64_t seed) {
+void SetMmapSeedForTesting(uint64_t seed) {
   RandomContext* x = GetRandomContext();
   subtle::SpinLock::Guard guard(x->lock);
   x->a = x->b = static_cast<uint32_t>(seed);
