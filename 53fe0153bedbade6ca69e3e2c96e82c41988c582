@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef8f7442_7e8fd5e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-20T23:40:48Z",
+      "side": 1,
+      "message": "Update comment?",
+      "revId": "53fe0153bedbade6ca69e3e2c96e82c41988c582",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d1e3d83_0345cd68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-20T23:40:48Z",
+      "side": 1,
+      "message": "This really should say something like \"Change StringToCode() to return Optional\u003cuint32_t\u003e, since ...\"\n\nCan we do that step first in a separate CL? As is, this CL is still trying to do several things all at once, and it would be easier to review if we take it one step at a time.",
+      "revId": "53fe0153bedbade6ca69e3e2c96e82c41988c582",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
