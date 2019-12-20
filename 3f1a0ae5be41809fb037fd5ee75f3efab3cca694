@@ -848,6 +848,30 @@
     },
     {
       "key": {
+        "uuid": "3bb642bb_2a09a428",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-20T10:51:40Z",
+      "side": 1,
+      "message": "Ah just saw the guide: https://google.github.io/styleguide/cppguide.html#Function_Argument_Comments\nI was going with the current code, new guidelines mention this as the preferred format.",
+      "parentUuid": "c2d5a308_3c2656cd",
+      "range": {
+        "startLine": 562,
+        "startChar": 41,
+        "endLine": 562,
+        "endChar": 58
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "467f3412_18663156",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 5
