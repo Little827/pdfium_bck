@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08a99813_63bc5c63",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-20T16:47:33Z",
+      "side": 1,
+      "message": "nit: invert and early return will save some indentation.",
+      "range": {
+        "startLine": 711,
+        "startChar": 1,
+        "endLine": 711,
+        "endChar": 71
+      },
+      "revId": "1d06dca7767d4adb9a1c401d2de791cfd8fc65c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350df3e3_31fa7714",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-20T16:47:33Z",
+      "side": 1,
+      "message": "for now, we can insist on a \u003c\u003d comparison.",
+      "range": {
+        "startLine": 293,
+        "startChar": 18,
+        "endLine": 293,
+        "endChar": 78
+      },
+      "revId": "1d06dca7767d4adb9a1c401d2de791cfd8fc65c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
