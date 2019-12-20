@@ -143,6 +143,30 @@
       "revId": "a86a423213b90414c10353548e50f149eb9ef806",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7677a783_d326e54a",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-20T19:48:10Z",
+      "side": 1,
+      "message": "So it sounds like we should use byteorder.h when we already have a uint16_t, and have something else for buffers with potentially unaligned data. How about I leave FXWORD_GET_LSBFIRST() and friends alone for now, but remove as many uses as possible?",
+      "parentUuid": "74df45d1_d815b688",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "a86a423213b90414c10353548e50f149eb9ef806",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
