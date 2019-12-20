@@ -278,12 +278,12 @@ TEST(RetainPtr, Bool) {
 
 TEST(RetainPtr, MakeRetained) {
   auto ptr = pdfium::MakeRetain<Retainable>();
-  EXPECT_TRUE(ptr->HasOneRef());
+  EXPECT_TRUE(ptr.IsUnique());
   {
     RetainPtr<Retainable> other = ptr;
-    EXPECT_FALSE(ptr->HasOneRef());
+    EXPECT_FALSE(ptr.IsUnique());
   }
-  EXPECT_TRUE(ptr->HasOneRef());
+  EXPECT_TRUE(ptr.IsUnique());
 }
 
 TEST(RetainPtr, VectorMove) {

@@ -371,7 +371,7 @@ RetainPtr<CPDF_Image> CPDF_DocPageData::GetImage(uint32_t dwStreamObjNum) {
 void CPDF_DocPageData::MaybePurgeImage(uint32_t dwStreamObjNum) {
   ASSERT(dwStreamObjNum);
   auto it = m_ImageMap.find(dwStreamObjNum);
-  if (it != m_ImageMap.end() && it->second->HasOneRef())
+  if (it != m_ImageMap.end() && it->second.IsUnique())
     m_ImageMap.erase(it);
 }
 
@@ -432,7 +432,7 @@ void CPDF_DocPageData::MaybePurgeFontFileStreamAcc(
     return;
 
   auto it = m_FontFileMap.find(pFontStream);
-  if (it != m_FontFileMap.end() && it->second->HasOneRef())
+  if (it != m_FontFileMap.end() && it->second.IsUnique())
     m_FontFileMap.erase(it);
 }
 

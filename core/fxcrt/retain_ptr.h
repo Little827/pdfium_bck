@@ -24,6 +24,12 @@ struct ReleaseDeleter {
 template <class T>
 class RetainPtr {
  public:
+  class Local : public RetainPtr<T> {
+   public:
+    Local(const RetainPtr<T>& that) : RetainPtr<T>(that) {}
+    T* operator->() const { return RetainPtr<T>::m_pObj.get(); }
+  };
+
   explicit RetainPtr(T* pObj) : m_pObj(pObj) {
     if (m_pObj)
       m_pObj->Retain();
@@ -52,6 +58,7 @@ class RetainPtr {
   }
 
   T* Get() const { return m_pObj.get(); }
+  bool IsUnique() const { return m_pObj->HasOneRef(); }
   UnownedPtr<T> BackPointer() const { return UnownedPtr<T>(Get()); }
   void Swap(RetainPtr& that) { m_pObj.swap(that.m_pObj); }
 
@@ -92,7 +99,7 @@ class RetainPtr {
 
   explicit operator bool() const { return !!m_pObj; }
   T& operator*() const { return *m_pObj; }
-  T* operator->() const { return m_pObj.get(); }
+  Local operator->() const { return Local(*this); }
 
  private:
   std::unique_ptr<T, ReleaseDeleter<T>> m_pObj;

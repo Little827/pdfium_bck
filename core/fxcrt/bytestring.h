@@ -69,12 +69,12 @@ class ByteString {
 
   // Explicit conversion to C-style string.
   // Note: Any subsequent modification of |this| will invalidate the result.
-  const char* c_str() const { return m_pData ? m_pData->m_String : ""; }
+  const char* c_str() const { return m_pData ? (*m_pData).m_String : ""; }
 
   // Explicit conversion to uint8_t*.
   // Note: Any subsequent modification of |this| will invalidate the result.
   const uint8_t* raw_str() const {
-    return m_pData ? reinterpret_cast<const uint8_t*>(m_pData->m_String)
+    return m_pData ? reinterpret_cast<const uint8_t*>((*m_pData).m_String)
                    : nullptr;
   }
 
@@ -87,7 +87,7 @@ class ByteString {
   // Explicit conversion to span.
   // Note: Any subsequent modification of |this| will invalidate the result.
   pdfium::span<const char> span() const {
-    return pdfium::make_span(m_pData ? m_pData->m_String : nullptr,
+    return pdfium::make_span(m_pData ? (*m_pData).m_String : nullptr,
                              GetLength());
   }
   pdfium::span<const uint8_t> raw_span() const {
@@ -95,9 +95,11 @@ class ByteString {
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
-  const_iterator begin() const { return m_pData ? m_pData->m_String : nullptr; }
+  const_iterator begin() const {
+    return m_pData ? (*m_pData).m_String : nullptr;
+  }
   const_iterator end() const {
-    return m_pData ? m_pData->m_String + m_pData->m_nDataLength : nullptr;
+    return m_pData ? (*m_pData).m_String + (*m_pData).m_nDataLength : nullptr;
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
@@ -108,9 +110,9 @@ class ByteString {
     return const_reverse_iterator(begin());
   }
 
-  size_t GetLength() const { return m_pData ? m_pData->m_nDataLength : 0; }
+  size_t GetLength() const { return m_pData ? (*m_pData).m_nDataLength : 0; }
   size_t GetStringLength() const {
-    return m_pData ? strlen(m_pData->m_String) : 0;
+    return m_pData ? strlen((*m_pData).m_String) : 0;
   }
   bool IsEmpty() const { return !GetLength(); }
   bool IsValidIndex(size_t index) const { return index < GetLength(); }
@@ -143,7 +145,7 @@ class ByteString {
 
   CharType operator[](const size_t index) const {
     CHECK(IsValidIndex(index));
-    return m_pData->m_String[index];
+    return (*m_pData).m_String[index];
   }
 
   CharType First() const { return GetLength() ? (*this)[0] : 0; }
