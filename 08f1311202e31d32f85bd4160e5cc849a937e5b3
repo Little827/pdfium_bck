@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "19da70cd_4e0ed0d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-20T20:01:01Z",
+      "side": 1,
+      "message": "Yes, tested with Acrobat, decimal number results in rendering and text extraction both failing.\nCurrent CL was rebased after removing decimal number parsing CL landed.",
+      "parentUuid": "c4d39b3f_591a497f",
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "463cf661_5c5d4048",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3b806888_8c1b7cd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-20T20:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463cf661_5c5d4048",
+      "range": {
+        "startLine": 21,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe32d846_76aa8cac",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -62,6 +104,30 @@
       "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12285da_c6205478",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-20T20:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe32d846_76aa8cac",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "d7b71e2c_9221ae03",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-20T20:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47d6b4c_17ba24bf",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 7
+      },
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "540c609b_bbf0fd11",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 10
@@ -159,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "25b9a0f1_58ff3dfd",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-20T20:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cac79893_55693dae",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca0cf73f_1940f78b",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 10
@@ -170,6 +284,24 @@
       "writtenOn": "2019-12-04T03:08:27Z",
       "side": 1,
       "message": "How about \"\u003c\u003e\" ?",
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4be582_1b9e40ad",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2019-12-20T20:01:01Z",
+      "side": 1,
+      "message": "Tested with Acrobat, with \"\u003c\u003e\" in Encoding, the pdf file won\u0027t even render the character, therefore there is no way to check its text extraction value. It\u0027s safe to say \"\u003c\u003e\" is an invalid value.",
+      "parentUuid": "ca0cf73f_1940f78b",
       "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
