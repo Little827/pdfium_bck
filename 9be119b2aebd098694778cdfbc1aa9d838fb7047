@@ -17,6 +17,24 @@
       "revId": "9be119b2aebd098694778cdfbc1aa9d838fb7047",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3645c58_634e6e49",
+        "filename": "third_party/base/rand_util_posix.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-20T16:50:01Z",
+      "side": 1,
+      "message": "yeah, generally the sandbox code knows how to warm up the \"real\" on in base:: before imposing the restrictions, but this is a separate global.",
+      "parentUuid": "a1242e57_497773c2",
+      "revId": "9be119b2aebd098694778cdfbc1aa9d838fb7047",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
