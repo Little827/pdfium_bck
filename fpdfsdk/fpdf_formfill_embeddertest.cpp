@@ -529,6 +529,7 @@ TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
   EXPECT_CALL(mock, UnsupportedHandler(_)).Times(0);
   EXPECT_CALL(mock, SetTimer(_, _)).Times(0);
   EXPECT_CALL(mock, KillTimer(_)).Times(0);
+  EXPECT_CALL(mock, SetFocusAnnot(_, _, _)).Times(0);
   SetDelegate(&mock);
 
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
@@ -2018,6 +2019,15 @@ TEST_F(FPDFFormFillTextFormEmbedderTest, DoubleClickInTextField) {
   CheckSelection(L"");
   DoubleClickOnFormFieldAtPoint(RegularFormBegin());
   CheckSelection(L"Hello World");
+}
+
+TEST_F(FPDFFormFillTextFormEmbedderTest, FocusAnnotationUpdateToEmbedder) {
+  testing::NiceMock<EmbedderTestMockDelegate> mock;
+  SetDelegate(&mock);
+  CheckFocusedFieldText(L"");
+
+  EXPECT_CALL(mock, SetFocusAnnot(_, _, 0)).Times(1);
+  ClickOnFormFieldAtPoint(RegularFormBegin());
 }
 
 TEST_F(FPDFFormFillTextFormEmbedderTest, FocusChanges) {

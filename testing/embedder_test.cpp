@@ -262,7 +262,8 @@ FPDF_FORMHANDLE EmbedderTest::SetupFormFillEnvironment(
 #ifdef PDF_ENABLE_XFA
   formfillinfo->version = 2;
 #else   // PDF_ENABLE_XFA
-  formfillinfo->version = 1;
+  formfillinfo->version = 2;
+  formfillinfo->FFI_SetFocusAnnot = SetFocusAnnot;
 #endif  // PDF_ENABLE_XFA
   formfillinfo->FFI_SetTimer = SetTimerTrampoline;
   formfillinfo->FFI_KillTimer = KillTimerTrampoline;
@@ -599,6 +600,14 @@ void EmbedderTest::DoURIActionTrampoline(FPDF_FORMFILLINFO* info,
                                          FPDF_BYTESTRING uri) {
   EmbedderTest* test = static_cast<EmbedderTest*>(info);
   return test->delegate_->DoURIAction(uri);
+}
+
+// static
+void EmbedderTest::SetFocusAnnot(FPDF_FORMFILLINFO* info,
+                                 FPDF_ANNOTATION annot,
+                                 int page_index) {
+  EmbedderTest* test = static_cast<EmbedderTest*>(info);
+  return test->delegate_->SetFocusAnnot(info, annot, page_index);
 }
 
 // static

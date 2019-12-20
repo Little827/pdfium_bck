@@ -1062,6 +1062,28 @@ typedef struct _FPDF_FORMFILLINFO {
                                    FPDF_WIDESTRING wsURL,
                                    FPDF_WIDESTRING wsData,
                                    FPDF_WIDESTRING wsEncode);
+
+  /*
+   * Method: FFI_SetFocusAnnot
+   *     Called when the focused annotation is updated.
+   * Interface Version:
+   *     2
+   * Implementation Required:
+   *     No
+   * Parameters:
+   *     param           -   Pointer to the interface structure itself.
+   *     annot           -   The focused annotation.
+   *     page_index      -   The index of the PDF page.
+   * Return value:
+   *     None.
+   * Comments:
+   *     This callback function is useful for implementing any view based action
+   *     such as scrolling the annotation rect into view. The embedder should not
+   *     copy and store the annot as its scope is limited to this call only.
+   */
+  void (*FFI_SetFocusAnnot)(struct _FPDF_FORMFILLINFO* param,
+                            FPDF_ANNOTATION annot,
+                            int page_index);
 } FPDF_FORMFILLINFO;
 
 /*
