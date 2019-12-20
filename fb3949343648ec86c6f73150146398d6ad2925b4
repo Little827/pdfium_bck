@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "a65fe9e3_be221645",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-20T20:21:33Z",
+      "side": 1,
+      "message": "Updated CheckDImensions(). Can\u0027t use CheckedNumerics in samples/.",
+      "parentUuid": "5f635f39_9f49ac6f",
+      "range": {
+        "startLine": 387,
+        "startChar": 55,
+        "endLine": 387,
+        "endChar": 70
+      },
+      "revId": "fb3949343648ec86c6f73150146398d6ad2925b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7f5d852_9b6f3f7f",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 1
@@ -46,6 +70,47 @@
       "revId": "fb3949343648ec86c6f73150146398d6ad2925b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286c819a_8d82b6b5",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-20T20:21:33Z",
+      "side": 1,
+      "message": "More CheckDimensions() here.",
+      "parentUuid": "d7f5d852_9b6f3f7f",
+      "range": {
+        "startLine": 598,
+        "startChar": 6,
+        "endLine": 598,
+        "endChar": 21
+      },
+      "revId": "fb3949343648ec86c6f73150146398d6ad2925b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54caea2a_7e2ce157",
+        "filename": "testing/utils/bitmap_saver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-20T20:21:33Z",
+      "side": 1,
+      "message": "FX_SAFE_FILESIZE here.",
+      "revId": "fb3949343648ec86c6f73150146398d6ad2925b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
