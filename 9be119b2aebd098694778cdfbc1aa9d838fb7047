@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576814260 -0800\nnonce AC6AUtME+a8iXzwBScqA/Gy3L8o553NRxn+EnkOx9pZ64jpWJWiLb8biXxSp1B2IKef3tSzS+IF0\n\n0000000000000000000000000000000000000000 9be119b2aebd098694778cdfbc1aa9d838fb7047 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl38RrQACgkQqzYtYVpm\n/XvZJwgAvScXzkn5MvZsKr4SZ/rkIKttKqgWkQl6KGSsPpxSE+rMso9ugd8wqFmF\naLgSncrQOPWI6NlbPL/MGRAV9VLBPDTBCFjdtBiKuhU4WeSJ+AKH72QglMz/we5t\nl6JfLJpzr7pmrofWxk+z0UP5tZqxAHBwo30duyZIm6L4HwahIxsOSpqkqgeR13Cl\npO4uqN8XnE0UBtV2KJ/ESTGg3HJ8NwTlcCZXeT2nDxYcQiuL36fJ2ZbWOSN2Ehwn\n3Fl+s+Gq8d+cZk3gHeJTDmSm3b8yaoiWd736HVCeZ+6RKt4InSzcS/sVjg0XxjiB\ncUbNgpG4nkelwwlIsO6RRRr11ZcwEA\u003d\u003d\n\u003dFfJ2\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1242e57_497773c2",
+        "filename": "third_party/base/rand_util_posix.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2019-12-20T04:21:03Z",
+      "side": 1,
+      "message": "I need to check and see how Chromium reacts to this in sandboxed processes. Won\u0027t land until I do that. Plus this may affect any embedder that sandboxes PDFium.",
+      "revId": "9be119b2aebd098694778cdfbc1aa9d838fb7047",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
