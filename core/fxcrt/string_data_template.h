@@ -47,6 +47,7 @@ class StringDataTemplate {
     return result;
   }
 
+  bool HasOneRef() const { return m_nRefs == 1; }
   void Retain() { ++m_nRefs; }
   void Release() {
     if (--m_nRefs <= 0)

@@ -44,7 +44,7 @@ class SharedCopyOnWrite {
   ObjClass* GetPrivateCopy(Args... params) {
     if (!m_pObject)
       return Emplace(params...);
-    if (!m_pObject->HasOneRef())
+    if (!m_pObject.IsUnique())
       m_pObject = m_pObject->Clone();
     return m_pObject.Get();
   }

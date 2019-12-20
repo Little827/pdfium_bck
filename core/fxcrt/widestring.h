@@ -74,7 +74,7 @@ class WideString {
 
   // Explicit conversion to C-style wide string.
   // Note: Any subsequent modification of |this| will invalidate the result.
-  const wchar_t* c_str() const { return m_pData ? m_pData->m_String : L""; }
+  const wchar_t* c_str() const { return m_pData ? (*m_pData).m_String : L""; }
 
   // Explicit conversion to WideStringView.
   // Note: Any subsequent modification of |this| will invalidate the result.
@@ -85,14 +85,16 @@ class WideString {
   // Explicit conversion to span.
   // Note: Any subsequent modification of |this| will invalidate the result.
   pdfium::span<const wchar_t> span() const {
-    return pdfium::make_span(m_pData ? m_pData->m_String : nullptr,
+    return pdfium::make_span(m_pData ? (*m_pData).m_String : nullptr,
                              GetLength());
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
-  const_iterator begin() const { return m_pData ? m_pData->m_String : nullptr; }
+  const_iterator begin() const {
+    return m_pData ? (*m_pData).m_String : nullptr;
+  }
   const_iterator end() const {
-    return m_pData ? m_pData->m_String + m_pData->m_nDataLength : nullptr;
+    return m_pData ? (*m_pData).m_String + (*m_pData).m_nDataLength : nullptr;
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
@@ -105,9 +107,9 @@ class WideString {
 
   void clear() { m_pData.Reset(); }
 
-  size_t GetLength() const { return m_pData ? m_pData->m_nDataLength : 0; }
+  size_t GetLength() const { return m_pData ? (*m_pData).m_nDataLength : 0; }
   size_t GetStringLength() const {
-    return m_pData ? wcslen(m_pData->m_String) : 0;
+    return m_pData ? wcslen((*m_pData).m_String) : 0;
   }
   bool IsEmpty() const { return !GetLength(); }
   bool IsValidIndex(size_t index) const { return index < GetLength(); }
@@ -137,7 +139,7 @@ class WideString {
 
   CharType operator[](const size_t index) const {
     CHECK(IsValidIndex(index));
-    return m_pData->m_String[index];
+    return (*m_pData).m_String[index];
   }
 
   CharType First() const { return GetLength() ? (*this)[0] : 0; }
