@@ -16,14 +16,15 @@ void BitmapSaver::WriteBitmapToPng(FPDF_BITMAP bitmap,
   const int stride = FPDFBitmap_GetStride(bitmap);
   const int width = FPDFBitmap_GetWidth(bitmap);
   const int height = FPDFBitmap_GetHeight(bitmap);
-  const auto* buffer =
-      static_cast<const uint8_t*>(FPDFBitmap_GetBuffer(bitmap));
+  auto input = pdfium::make_span(
+      static_cast<const uint8_t*>(FPDFBitmap_GetBuffer(bitmap)),
+      stride * height);
 
   std::vector<uint8_t> png;
   if (FPDFBitmap_GetFormat(bitmap) == FPDFBitmap_Gray) {
-    png = image_diff_png::EncodeGrayPNG(buffer, width, height, stride);
+    png = image_diff_png::EncodeGrayPNG(input, width, height, stride);
   } else {
-    png = image_diff_png::EncodeBGRAPNG(buffer, width, height, stride,
+    png = image_diff_png::EncodeBGRAPNG(input, width, height, stride,
                                         /*discard_transparency=*/false);
   }
 
