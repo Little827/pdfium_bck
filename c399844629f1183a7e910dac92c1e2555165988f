@@ -91,6 +91,52 @@
       "revId": "c399844629f1183a7e910dac92c1e2555165988f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6195da1_eb80f805",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2019-12-20T12:29:36Z",
+      "side": 1,
+      "message": "In terms of actions, what is being done in pFormFiller-\u003eOnKeyDown and should be handle the event below if |handled| is true.",
+      "range": {
+        "startLine": 367,
+        "startChar": 7,
+        "endLine": 367,
+        "endChar": 15
+      },
+      "revId": "c399844629f1183a7e910dac92c1e2555165988f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e174950a_ac9cf6d4",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2019-12-20T12:29:36Z",
+      "side": 1,
+      "message": "It looks like we need functionality from OnButtonUp. I think better way would be to refactor what we need to Mouse/Keyboard agnostic code and then calling it from both OnButtonUp and OnKeyDown.",
+      "range": {
+        "startLine": 371,
+        "startChar": 25,
+        "endLine": 371,
+        "endChar": 35
+      },
+      "revId": "c399844629f1183a7e910dac92c1e2555165988f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
