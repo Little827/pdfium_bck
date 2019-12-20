@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fd50e27a_f3bb693e",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-20T20:12:16Z",
+      "side": 1,
+      "message": "and if we wanted to be really OCD about things, we wouldn\u0027t care about the alignment in the BmpFileHeader(and its pragma pack), instead give it a constructor like\n\n  BmpFileHeader(span\u003cuint8_t\u003e buf) :\n    m_pFoo(FXSYS_GetWordLsbFirst(buf)),\n    m_pBaz(FXSYS_GetWordLsbFirst(buf + 2)),",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "a86a423213b90414c10353548e50f149eb9ef806",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "304ff2a2_effffd78",
         "filename": "core/fxcrt/fx_system.h",
         "patchSetId": 1
