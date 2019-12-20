@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "785f69c0_59d49e73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-20T10:42:06Z",
+      "side": 1,
+      "message": "modifies",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "c399844629f1183a7e910dac92c1e2555165988f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9494c21f_57e90c96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-20T10:42:06Z",
+      "side": 1,
+      "message": "CFFL_InteractiveFormFiller, class name instead of file name",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "c399844629f1183a7e910dac92c1e2555165988f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b7abac_b4eee83a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-20T10:42:06Z",
+      "side": 1,
+      "message": "space before this.",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "c399844629f1183a7e910dac92c1e2555165988f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df5514d_035183ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-20T10:42:06Z",
+      "side": 1,
+      "message": "remove this, e.g. implies listing some of them. `so on` is not needed.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "c399844629f1183a7e910dac92c1e2555165988f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
