@@ -1,4 +1,51 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1576803029 -0800\nnonce AC6AUtPE9tqx7MxDlOGvwsKhJ3bttMwEHqavXVsESRmL0LP0zI7yZos22xbIfoscPyeiG25DQSh7\n\n0000000000000000000000000000000000000000 fb3949343648ec86c6f73150146398d6ad2925b4 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl38GtUACgkQqzYtYVpm\n/XuxgggAxiTxasQXbbKFpdPfOVMEqFqE/iEfCawhcs+qkCLFFBa1cedxaxHOMNQm\nTyFh1efkC4truTB7EjkYV09f6UoAmwpSICUdh6R8Y9F8ZUu7vw5g+KVhfPRVKeam\neA0gCKinOngrdM5xnLbcSZaBFUmTAsuMJl/ejT7wfTqZhAWZ+oBUrvPeR+fSQTlA\nyoMUApVj0HPsumlDk/Zd3k+A4+umPPRwg6lJYNl1KqQbcO+iH/3QZTxK7YtolJKu\ncXwWp8tph/XLMiM/tMnn5/IVe/RrNsdwupdXGOcHTOkc/56AKwbkCunHzIihDeib\nlx0kTrX4xw2291xe1/ggWLp5qy5yTQ\u003d\u003d\n\u003d35Xg\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f635f39_9f49ac6f",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-20T18:12:41Z",
+      "side": 1,
+      "message": "yeah, ok, if it overflows, then we\u0027ll check in the span operator[] later.\nSo maybe we fix or just comment?",
+      "range": {
+        "startLine": 387,
+        "startChar": 55,
+        "endLine": 387,
+        "endChar": 70
+      },
+      "revId": "fb3949343648ec86c6f73150146398d6ad2925b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f5d852_9b6f3f7f",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2019-12-20T18:12:41Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 598,
+        "startChar": 6,
+        "endLine": 598,
+        "endChar": 21
+      },
+      "revId": "fb3949343648ec86c6f73150146398d6ad2925b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
