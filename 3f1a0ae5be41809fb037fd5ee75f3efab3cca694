@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab0e7292_e797ffde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74735364_3f1d1c42",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0323aa_70839d6a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8045430_3cd5b150",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0323aa_70839d6a",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "38729a3f_39da6622",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f826350_ff1c09a3",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbcfa62a_583f3dec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a59a2166_e7c7b2dd",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105821c3_a31a20ea",
         "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
         "patchSetId": 5
@@ -114,6 +210,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826707fb_64c38754",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Realized I can return at each case, so no need of the extra variable.",
+      "parentUuid": "105821c3_a31a20ea",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7760f229_de9d0e78",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Realized I can return at each case, so no need of the extra variable.",
+      "parentUuid": "0e8a413a_d21e6484",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f16b27f1_32161bc5",
         "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
         "patchSetId": 5
@@ -160,6 +304,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5317f8a9_d42631d8",
+        "filename": "core/fpdfapi/render/cpdf_renderoptions.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f16b27f1_32161bc5",
+      "range": {
+        "startLine": 64,
+        "startChar": 47,
+        "endLine": 64,
+        "endChar": 58
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "ee5eef52_aa583dfa",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca94e518_56aa9556",
+      "range": {
+        "startLine": 416,
+        "startChar": 10,
+        "endLine": 416,
+        "endChar": 18
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da1a0706_4ce1bbda",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 5
@@ -206,6 +398,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73ed5ec_1dda6561",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da1a0706_4ce1bbda",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "f5770596_adde2bc8",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Sorted in order of color value.",
+      "parentUuid": "c3087f3d_00cf7fe0",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86b01deb_8f07fedf",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 5
@@ -252,6 +492,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f92fc6a3_f84db78a",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86b01deb_8f07fedf",
+      "range": {
+        "startLine": 38,
+        "startChar": 28,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "a9694a98_9fdb37c9",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "That was the initial design, but later changed it to call the FPDF_RenderPageBitmap_Start directly. Reverting back the comment.",
+      "parentUuid": "ad40353d_b055e712",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da1c698d_cb4c971b",
         "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
         "patchSetId": 5
@@ -298,6 +586,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791c66ca_7faeedcb",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da1c698d_cb4c971b",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "a1d5651c_bfadef53",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df0a887_e8c35204",
+      "range": {
+        "startLine": 435,
+        "startChar": 44,
+        "endLine": 435,
+        "endChar": 58
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33b14812_c626c680",
         "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
         "patchSetId": 5
@@ -344,6 +680,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f3c943_8a0b284b",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b14812_c626c680",
+      "range": {
+        "startLine": 435,
+        "startChar": 24,
+        "endLine": 436,
+        "endChar": 60
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "13fd9011_a8171b7f",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8104e8eb_682fe748",
+      "range": {
+        "startLine": 440,
+        "startChar": 6,
+        "endLine": 440,
+        "endChar": 29
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51dd68ab_7af5dc6a",
         "filename": "fpdfsdk/cpdfsdk_helpers.h",
         "patchSetId": 5
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "150969ff_958e68b7",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51dd68ab_7af5dc6a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bff24f02_4ca02c35",
         "filename": "fpdfsdk/fpdf_view.cpp",
         "patchSetId": 5
@@ -404,6 +812,30 @@
       "writtenOn": "2019-12-18T10:09:15Z",
       "side": 1,
       "message": "this should be after nullptr. Throughout the CL.",
+      "range": {
+        "startLine": 562,
+        "startChar": 41,
+        "endLine": 562,
+        "endChar": 58
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d5a308_3c2656cd",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "In a previous CL, a few months back, Lei had mentioned it should be this way. Has the directive changed recently?\nReference: https://pdfium-review.googlesource.com/c/pdfium/+/59730/3/core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp#84",
+      "parentUuid": "bff24f02_4ca02c35",
       "range": {
         "startLine": 562,
         "startChar": 41,
@@ -439,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "5eff88e2_ed84f7ab",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "467f3412_18663156",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 78
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7ec6b3e_0996b7b6",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 5
@@ -459,6 +915,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d26fc0_b8fd9b0d",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ec6b3e_0996b7b6",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -508,6 +988,54 @@
     },
     {
       "key": {
+        "uuid": "69f1a9f6_bb733772",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53eab958_9fb20223",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
+        "endLine": 76,
+        "endChar": 79
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc796353_880e26bd",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2af30ca_307326d5",
+      "range": {
+        "startLine": 76,
+        "startChar": 75,
+        "endLine": 76,
+        "endChar": 79
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1a723bc_2e1cbbf1",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 5
@@ -531,6 +1059,30 @@
     },
     {
       "key": {
+        "uuid": "1aff2560_1fb22faf",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a723bc_2e1cbbf1",
+      "range": {
+        "startLine": 77,
+        "startChar": 54,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4af92d25_b2f16ba8",
         "filename": "public/fpdf_progressive.h",
         "patchSetId": 5
@@ -551,6 +1103,30 @@
       "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba17017_a5973a1f",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 7586
+      },
+      "writtenOn": "2019-12-20T10:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4af92d25_b2f16ba8",
+      "range": {
+        "startLine": 78,
+        "startChar": 56,
+        "endLine": 78,
+        "endChar": 63
+      },
+      "revId": "3f1a0ae5be41809fb037fd5ee75f3efab3cca694",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
