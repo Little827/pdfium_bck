@@ -357,6 +357,26 @@ TimerHandlerIface* CPDFXFA_Context::GetTimerHandler() const {
   return m_pFormFillEnv ? m_pFormFillEnv->GetTimerHandler() : nullptr;
 }
 
+bool CPDFXFA_Context::SaveDatasetsPackage(
+    RetainPtr<IFX_SeekableStream>& pStream) {
+  return SavePackage(pStream, XFA_HASHCODE_Datasets);
+}
+
+bool CPDFXFA_Context::SaveFormPackage(RetainPtr<IFX_SeekableStream>& pStream) {
+  return SavePackage(pStream, XFA_HASHCODE_Form);
+}
+
+bool CPDFXFA_Context::SavePackage(RetainPtr<IFX_SeekableStream>& pStream,
+                                  XFA_HashCode code) {
+  CXFA_FFDocView* pXFADocView = GetXFADocView();
+  if (!pXFADocView)
+    return false;
+
+  CXFA_FFDoc* ffdoc = pXFADocView->GetDoc();
+  return ffdoc->SavePackage(ToNode(ffdoc->GetXFADoc()->GetXFAObject(code)),
+                            pStream);
+}
+
 void CPDFXFA_Context::SendPostSaveToXFADoc() {
   if (!ContainsExtensionForm())
     return;
