@@ -18,8 +18,8 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
-#include "core/fxcrt/fx_random.h"
 #include "third_party/base/ptr_util.h"
+#include "third_party/base/rand_util.h"
 
 namespace {
 
@@ -552,7 +552,7 @@ void CPDF_SecurityHandler::OnCreateInternal(CPDF_Dictionary* pEncryptDict,
 
   if (m_Revision >= 5) {
     uint32_t random[4];
-    FX_Random_GenerateMT(random, FX_ArraySize(random));
+    pdfium::base::RandBytes(random, sizeof(random));
     CRYPT_sha2_context sha;
     CRYPT_SHA256Start(&sha);
     CRYPT_SHA256Update(&sha, reinterpret_cast<uint8_t*>(random),
@@ -702,8 +702,7 @@ void CPDF_SecurityHandler::AES256_SetPerms(CPDF_Dictionary* pEncryptDict) {
 
   // In ISO 32000 Supplement for ExtensionLevel 3, Algorithm 3.10 says bytes 12
   // to 15 should be random data.
-  uint32_t* buf_random = reinterpret_cast<uint32_t*>(&buf[12]);
-  FX_Random_GenerateMT(buf_random, 1);
+  pdfium::base::RandBytes(&buf[12], 4);
 
   CRYPT_aes_context aes = {};
   CRYPT_AESSetKey(&aes, m_EncryptKey, sizeof(m_EncryptKey), true);

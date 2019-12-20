@@ -13,7 +13,6 @@
 
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
-#include "core/fxcrt/fx_random.h"
 #include "fxjs/xfa/cfxjse_arguments.h"
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_context.h"
@@ -21,6 +20,7 @@
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/ptr_util.h"
+#include "third_party/base/rand_util.h"
 #include "third_party/base/stl_util.h"
 #include "xfa/fgas/crt/cfgas_decimal.h"
 #include "xfa/fgas/crt/locale_iface.h"
@@ -478,7 +478,7 @@ bool IsPartOfNumberW(wchar_t ch) {
 
 ByteString GUIDString(bool bSeparator) {
   uint8_t data[16];
-  FX_Random_GenerateMT(reinterpret_cast<uint32_t*>(data), 4);
+  pdfium::base::RandBytes(data, sizeof(data));
   data[6] = (data[6] & 0x0F) | 0x40;
 
   ByteString bsGUID;

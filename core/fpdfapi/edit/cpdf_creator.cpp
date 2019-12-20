@@ -22,8 +22,8 @@
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
-#include "core/fxcrt/fx_random.h"
 #include "third_party/base/ptr_util.h"
+#include "third_party/base/rand_util.h"
 #include "third_party/base/stl_util.h"
 
 namespace {
@@ -116,16 +116,9 @@ bool CFX_FileBufferArchive::WriteString(ByteStringView str) {
   return WriteBlock(str.raw_str(), str.GetLength());
 }
 
-ByteString GenerateFileID(uint32_t dwSeed1, uint32_t dwSeed2) {
+ByteString GenerateFileID() {
   uint32_t buffer[4];
-  void* pContext1 = FX_Random_MT_Start(dwSeed1);
-  void* pContext2 = FX_Random_MT_Start(dwSeed2);
-  buffer[0] = FX_Random_MT_Generate(pContext1);
-  buffer[1] = FX_Random_MT_Generate(pContext1);
-  buffer[2] = FX_Random_MT_Generate(pContext2);
-  buffer[3] = FX_Random_MT_Generate(pContext2);
-  FX_Random_MT_Close(pContext1);
-  FX_Random_MT_Close(pContext2);
+  pdfium::base::RandBytes(buffer, sizeof(buffer));
   return ByteString(pdfium::as_bytes<uint32_t>(buffer));
 }
 
@@ -598,8 +591,7 @@ void CPDF_Creator::InitID() {
   if (pID1) {
     m_pIDArray->Add(pID1->Clone());
   } else {
-    ByteString bsBuffer =
-        GenerateFileID((uint32_t)(uintptr_t)this, m_dwLastObjNum);
+    ByteString bsBuffer = GenerateFileID();
     m_pIDArray->AddNew<CPDF_String>(bsBuffer, true);
   }
 
@@ -609,8 +601,7 @@ void CPDF_Creator::InitID() {
       m_pIDArray->Add(pID2->Clone());
       return;
     }
-    ByteString bsBuffer =
-        GenerateFileID((uint32_t)(uintptr_t)this, m_dwLastObjNum);
+    ByteString bsBuffer = GenerateFileID();
     m_pIDArray->AddNew<CPDF_String>(bsBuffer, true);
     return;
   }
