@@ -72,28 +72,35 @@ uint32_t CPDF_ToUnicodeMap::ReverseLookup(wchar_t unicode) const {
 }
 
 // static
-uint32_t CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
+pdfium::Optional<uint32_t> CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
   size_t len = str.GetLength();
-  if (len == 0 || str[0] != '<')
-    return 0;
+  if (len <= 2 || str[0] != '<' || str[len - 1] != '>')
+    return pdfium::nullopt;
 
-  uint32_t result = 0;
-  for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i) {
-    result = result * 16 + FXSYS_HexCharToInt(str.CharAt(i));
+  FX_SAFE_UINT32 code = 0;
+
+  for (size_t i = 1; i < len - 1; ++i) {
+    if (!std::isxdigit(str[i]))
+      return pdfium::nullopt;
+
+    code = code * 16 + FXSYS_HexCharToInt(str.CharAt(i));
+    if (!code.IsValid())
+      return pdfium::nullopt;
   }
-  return result;
+
+  return pdfium::Optional<uint32_t>(code.ValueOrDefault(0u));
 }
 
 // static
 WideString CPDF_ToUnicodeMap::StringToWideString(ByteStringView str) {
   size_t len = str.GetLength();
-  if (len == 0 || str[0] != '<')
+  if (len == 0 || str[0] != '<' || str[len - 1] != '>')
     return WideString();
 
   WideString result;
   int byte_pos = 0;
   wchar_t ch = 0;
-  for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i) {
+  for (size_t i = 1; i < len - 1 && std::isxdigit(str[i]); ++i) {
     ch = ch * 16 + FXSYS_HexCharToInt(str.CharAt(i));
     byte_pos++;
     if (byte_pos == 4) {
@@ -139,8 +146,10 @@ void CPDF_ToUnicodeMap::HandleBeginBFChar(CPDF_SimpleParser* pParser) {
     ByteStringView word = pParser->GetWord();
     if (word.IsEmpty() || word == "endbfchar")
       return;
-
-    SetCode(StringToCode(word), StringToWideString(pParser->GetWord()));
+    pdfium::Optional<uint32_t> code = StringToCode(word);
+    if (!code)
+      return;
+    SetCode(*code, StringToWideString(pParser->GetWord()));
   }
 }
 
@@ -149,16 +158,22 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
     ByteStringView low = pParser->GetWord();
     if (low.IsEmpty() || low == "endbfrange")
       return;
-
-    ByteStringView high = pParser->GetWord();
-    uint32_t lowcode = StringToCode(low);
-    uint32_t highcode = (lowcode & 0xffffff00) | (StringToCode(high) & 0xff);
-    if (highcode == 0xffffffff)
+    pdfium::Optional<uint32_t> lowcode = StringToCode(low);
+    if (!lowcode)
       return;
 
+    ByteStringView high = pParser->GetWord();
+    pdfium::Optional<uint32_t> highcode = StringToCode(high);
+    if (!highcode)
+      return;
+
+    // TODO(crbug.com/1021762): Find the correct behavior for parsing bfrange
+    // when the higher bytes of |lowcode| and |highcode| cross boundaries.
+    // Right now use |lowcode| and |highcode| as they are to prevent corrupting
+    // existing CMap values.
     ByteStringView start = pParser->GetWord();
     if (start == "[") {
-      for (uint32_t code = lowcode; code <= highcode; code++)
+      for (uint32_t code = *lowcode; code <= *highcode; code++)
         SetCode(code, StringToWideString(pParser->GetWord()));
       pParser->GetWord();
       continue;
@@ -166,13 +181,15 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
 
     WideString destcode = StringToWideString(start);
     if (destcode.GetLength() == 1) {
-      uint32_t value = StringToCode(start);
-      for (uint32_t code = lowcode; code <= highcode; code++)
-        m_Map[code] = value++;
+      pdfium::Optional<uint32_t> value = StringToCode(start);
+      if (!value)
+        return;
+      for (uint32_t code = *lowcode; code <= *highcode; code++)
+        m_Map[code] = (*value)++;
     } else {
-      for (uint32_t code = lowcode; code <= highcode; code++) {
+      for (uint32_t code = *lowcode; code <= *highcode; code++) {
         WideString retcode =
-            code == lowcode ? destcode : StringDataAdd(destcode);
+            code == *lowcode ? destcode : StringDataAdd(destcode);
         m_Map[code] = GetUnicode();
         m_MultiCharBuf.AppendChar(retcode.GetLength());
         m_MultiCharBuf << retcode;
