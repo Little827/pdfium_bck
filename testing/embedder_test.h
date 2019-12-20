@@ -64,6 +64,11 @@ class EmbedderTest : public ::testing::Test,
 
     // Equivalent to FPDF_FORMFILLINFO::FFI_DoURIAction().
     virtual void DoURIAction(FPDF_BYTESTRING uri) {}
+
+    // Equivalent to FPDF_FORMFILLINFO::FFI_SetFocusAnnot().
+    virtual void SetFocusAnnot(FPDF_FORMFILLINFO* info,
+                               FPDF_ANNOTATION annot,
+                               int page_index) {}
   };
 
   EmbedderTest();
@@ -277,6 +282,9 @@ class EmbedderTest : public ::testing::Test,
                                      int page_index);
   static void DoURIActionTrampoline(FPDF_FORMFILLINFO* info,
                                     FPDF_BYTESTRING uri);
+  static void SetFocusAnnot(FPDF_FORMFILLINFO* info,
+                            FPDF_ANNOTATION annot,
+                            int page_index);
   static int WriteBlockCallback(FPDF_FILEWRITE* pFileWrite,
                                 const void* data,
                                 unsigned long size);

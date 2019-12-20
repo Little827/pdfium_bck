@@ -286,11 +286,11 @@ FPDF_EXPORT FPDF_FORMHANDLE FPDF_CALLCONV
 FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
                                 FPDF_FORMFILLINFO* formInfo) {
 #ifdef PDF_ENABLE_XFA
-  constexpr int kRequiredVersion = 2;
+  constexpr int kRequiredVersions[] = {2};
 #else   // PDF_ENABLE_XFA
-  constexpr int kRequiredVersion = 1;
+  constexpr int kRequiredVersions[] = {1, 2};
 #endif  // PDF_ENABLE_XFA
-  if (!formInfo || formInfo->version != kRequiredVersion)
+  if (!formInfo || !pdfium::ContainsValue(kRequiredVersions, formInfo->version))
     return nullptr;
 
   auto* pDocument = CPDFDocumentFromFPDFDocument(document);
