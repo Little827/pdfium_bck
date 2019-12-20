@@ -14,6 +14,7 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
+#include "core/fpdfapi/render/cpdf_renderoptions.h"
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fpdfdoc/cpdf_metadata.h"
@@ -430,4 +431,21 @@ void ProcessParseError(CPDF_Parser::Error err) {
       break;
   }
   FXSYS_SetLastError(err_code);
+}
+
+void SetColorFromScheme(const FPDF_COLORSCHEME* pColorScheme,
+                        CPDF_RenderOptions* pRenderOptions) {
+  if (!pRenderOptions) {
+    return;
+  }
+  CPDF_RenderOptions::ColorScheme colorScheme;
+  // Set color from the color scheme specified. If |pColorScheme| is empty
+  // the default color scheme will be used.
+  if (pColorScheme) {
+    colorScheme.path_fill_color = pColorScheme->path_fill_color;
+    colorScheme.path_stroke_color = pColorScheme->path_stroke_color;
+    colorScheme.text_fill_color = pColorScheme->text_fill_color;
+    colorScheme.text_stroke_color = pColorScheme->text_stroke_color;
+  }
+  pRenderOptions->SetColorScheme(colorScheme);
 }

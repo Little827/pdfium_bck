@@ -29,15 +29,17 @@ static_assert(CPDF_ProgressiveRenderer::Done == FPDF_RENDER_DONE,
 static_assert(CPDF_ProgressiveRenderer::Failed == FPDF_RENDER_FAILED,
               "CPDF_ProgressiveRenderer::Failed value mismatch");
 
-FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPageBitmap_Start(FPDF_BITMAP bitmap,
-                                                          FPDF_PAGE page,
-                                                          int start_x,
-                                                          int start_y,
-                                                          int size_x,
-                                                          int size_y,
-                                                          int rotate,
-                                                          int flags,
-                                                          IFSDK_PAUSE* pause) {
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_RenderPageBitmapWithColorScheme_Start(FPDF_BITMAP bitmap,
+                                           FPDF_PAGE page,
+                                           int start_x,
+                                           int start_y,
+                                           int size_x,
+                                           int size_y,
+                                           int rotate,
+                                           int flags,
+                                           const FPDF_COLORSCHEME* color_scheme,
+                                           IFSDK_PAUSE* pause) {
   if (!bitmap || !pause || pause->version != 1)
     return FPDF_RENDER_FAILED;
 
@@ -57,7 +59,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPageBitmap_Start(FPDF_BITMAP bitmap,
 
   CPDFSDK_PauseAdapter pause_adapter(pause);
   RenderPageWithContext(pPage, pContext, start_x, start_y, size_x, size_y,
-                        rotate, flags, false, &pause_adapter);
+                        rotate, flags, color_scheme, false, &pause_adapter);
 
 #ifdef _SKIA_SUPPORT_PATHS_
   pDevice->Flush(false);
@@ -69,6 +71,20 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPageBitmap_Start(FPDF_BITMAP bitmap,
 
   return CPDF_ProgressiveRenderer::ToFPDFStatus(
       pContext->m_pRenderer->GetStatus());
+}
+
+FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPageBitmap_Start(FPDF_BITMAP bitmap,
+                                                          FPDF_PAGE page,
+                                                          int start_x,
+                                                          int start_y,
+                                                          int size_x,
+                                                          int size_y,
+                                                          int rotate,
+                                                          int flags,
+                                                          IFSDK_PAUSE* pause) {
+  return FPDF_RenderPageBitmapWithColorScheme_Start(
+      bitmap, page, start_x, start_y, size_x, size_y, rotate, flags,
+      /*color_scheme=*/nullptr, pause);
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPage_Continue(FPDF_PAGE page,
