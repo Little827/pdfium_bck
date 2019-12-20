@@ -364,7 +364,15 @@ bool CFFL_InteractiveFormFiller::OnKeyDown(CPDFSDK_Annot* pAnnot,
   ASSERT(pAnnot->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
 
   CFFL_FormFiller* pFormFiller = GetFormFiller(pAnnot);
-  return pFormFiller && pFormFiller->OnKeyDown(nKeyCode, nFlags);
+  bool handled = pFormFiller && pFormFiller->OnKeyDown(nKeyCode, nFlags);
+
+  if (nKeyCode == FWL_VKEY_Return) {
+    ObservedPtr<CPDFSDK_Annot> annot(pAnnot);
+    bool enter_handled = OnButtonUp(&annot, pAnnot->GetPageView(), nFlags);
+    return handled || enter_handled;
+  }
+
+  return handled;
 }
 
 bool CFFL_InteractiveFormFiller::OnChar(CPDFSDK_Annot* pAnnot,
