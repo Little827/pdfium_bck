@@ -108,6 +108,27 @@ int FXSYS_round(double d) {
   return static_cast<int>(round(d));
 }
 
+uint16_t FXWORD_GetLsbFirst(const uint8_t* data) {
+  return static_cast<uint16_t>((static_cast<uint16_t>(data[1]) << 8) |
+                               (static_cast<uint16_t>(data[0])));
+}
+uint16_t FXWORD_GetMsbFirst(const uint8_t* data) {
+  return static_cast<uint16_t>((static_cast<uint16_t>(data[0]) << 8) |
+                               (static_cast<uint16_t>(data[1])));
+}
+uint32_t FXDWORD_GetLsbFirst(const uint8_t* data) {
+  return (static_cast<uint32_t>(data[3]) << 24) |
+         (static_cast<uint32_t>(data[2]) << 16) |
+         (static_cast<uint32_t>(data[1]) << 8) |
+         (static_cast<uint32_t>(data[0]));
+}
+uint32_t FXDWORD_GetMsbFirst(const uint8_t* data) {
+  return (static_cast<uint32_t>(data[0]) << 24) |
+         (static_cast<uint32_t>(data[1]) << 16) |
+         (static_cast<uint32_t>(data[2]) << 8) |
+         (static_cast<uint32_t>(data[3]));
+}
+
 int32_t FXSYS_atoi(const char* str) {
   return FXSYS_StrToInt<int32_t, char>(str);
 }
