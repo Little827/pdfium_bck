@@ -152,7 +152,12 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
 
     ByteStringView high = pParser->GetWord();
     uint32_t lowcode = StringToCode(low);
-    uint32_t highcode = (lowcode & 0xffffff00) | (StringToCode(high) & 0xff);
+    uint32_t highcode = StringToCode(high);
+
+    // TODO(crbug.com/pdfium/1444): Find the correct behavior for parsing
+    // bfrange when the higher bytes of |lowcode| and |highcode| cross
+    // boundaries. Right now use |lowcode| and |highcode| as they are to prevent
+    // corrupting existing CMap values.
     if (highcode == 0xffffffff)
       return;
 
