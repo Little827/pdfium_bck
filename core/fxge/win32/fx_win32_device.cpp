@@ -10,6 +10,7 @@
 #include <memory>
 #include <vector>
 
+#include "core/fxcrt/byteorder.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
@@ -630,7 +631,7 @@ uint32_t CFX_Win32FontInfo::GetFontData(void* hFont,
                                         uint32_t table,
                                         pdfium::span<uint8_t> buffer) {
   HFONT hOldFont = (HFONT)::SelectObject(m_hDC, (HFONT)hFont);
-  table = FXDWORD_GET_MSBFIRST(reinterpret_cast<uint8_t*>(&table));
+  table = fxcrt::ByteSwapToBE32(table);
   uint32_t size = ::GetFontData(m_hDC, table, 0, buffer.data(), buffer.size());
   ::SelectObject(m_hDC, hOldFont);
   if (size == GDI_ERROR) {
