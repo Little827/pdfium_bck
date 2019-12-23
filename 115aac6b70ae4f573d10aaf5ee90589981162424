@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73ae7081_54649ab1",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-12-23T21:10:13Z",
+      "side": 1,
+      "message": "Exactly. Too many star operators.",
+      "parentUuid": "635887f3_69c29142",
+      "range": {
+        "startLine": 384,
+        "startChar": 17,
+        "endLine": 384,
+        "endChar": 27
+      },
+      "revId": "115aac6b70ae4f573d10aaf5ee90589981162424",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9164365_e6cf28d1",
         "filename": "core/fxcrt/fx_system.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-23T20:40:03Z",
       "side": 1,
       "message": "Why the aversion to using a build flag for this?  We already use that for similar performance improvements in places like [1].\n\nIs there a reason to not just use the functions from [1]?\n\n[1] https://cs.chromium.org/chromium/src/third_party/pdfium/core/fxcrt/byteorder.h?rcl\u003da919e1bd9dd0ed0f8fa7534dfe6659c511fe7a1c\u0026l\u003d25",
+      "range": {
+        "startLine": 112,
+        "startChar": 62,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "115aac6b70ae4f573d10aaf5ee90589981162424",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed94d63_519846ce",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2019-12-23T21:10:13Z",
+      "side": 1,
+      "message": "Hmm... I originally guessed that the two sets of functions exist because of C linkage. But digging a bit further, it seems like a CL [1] was recently submitted for the very purpose of replacing the macros. \n\nI didn\u0027t realize that because the CL did not label the related bug.\n\nI\u0027ll update this CL to use those functions.\n\n[1] https://pdfium.googlesource.com/pdfium.git/+/bf13f3f35965a8ee1a8321816b4d582470526806",
+      "parentUuid": "e9164365_e6cf28d1",
       "range": {
         "startLine": 112,
         "startChar": 62,
