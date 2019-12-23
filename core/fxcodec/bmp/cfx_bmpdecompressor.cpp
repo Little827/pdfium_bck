@@ -93,12 +93,9 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeader() {
     return BmpModule::Status::kContinue;
   }
 
-  bmp_header.bfType =
-      FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&bmp_header.bfType));
-  bmp_header.bfOffBits =
-      FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&bmp_header.bfOffBits));
-  data_size_ =
-      FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&bmp_header.bfSize));
+  bmp_header.bfType = FXWORD_GetLsbFirst(bmp_header.bfType);
+  bmp_header.bfOffBits = FXDWORD_GetLsbFirst(bmp_header.bfOffBits);
+  data_size_ = FXDWORD_GetLsbFirst(bmp_header.bfSize);
   if (bmp_header.bfType != kBmpSignature)
     return BmpModule::Status::kFail;
 
@@ -110,8 +107,7 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeader() {
   if (!input_buffer_->Seek(pos))
     return BmpModule::Status::kFail;
 
-  img_ifh_size_ =
-      FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&img_ifh_size_));
+  img_ifh_size_ = FXDWORD_GetLsbFirst(img_ifh_size_);
   pal_type_ = 0;
   BmpModule::Status status = ReadBmpHeaderIfh();
   if (status != BmpModule::Status::kSuccess)
@@ -129,12 +125,9 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
       return BmpModule::Status::kContinue;
     }
 
-    width_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_core_header.bcWidth));
-    height_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_core_header.bcHeight));
-    bit_counts_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_core_header.bcBitCount));
+    width_ = FXWORD_GetLsbFirst(bmp_core_header.bcWidth);
+    height_ = FXWORD_GetLsbFirst(bmp_core_header.bcHeight);
+    bit_counts_ = FXWORD_GetLsbFirst(bmp_core_header.bcBitCount);
     compress_flag_ = kBmpRgb;
     img_tb_flag_ = false;
     return BmpModule::Status::kSuccess;
@@ -147,20 +140,13 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
       return BmpModule::Status::kContinue;
     }
 
-    width_ = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
-    int32_t signed_height = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
-    bit_counts_ = FXWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biBitCount));
-    compress_flag_ = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biCompression));
-    color_used_ = FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biClrUsed));
-    dpi_x_ = static_cast<int32_t>(FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biXPelsPerMeter)));
-    dpi_y_ = static_cast<int32_t>(FXDWORD_GET_LSBFIRST(
-        reinterpret_cast<uint8_t*>(&bmp_info_header.biYPelsPerMeter)));
+    width_ = FXDWORD_GetLsbFirst(bmp_info_header.biWidth);
+    int32_t signed_height = FXDWORD_GetLsbFirst(bmp_info_header.biHeight);
+    bit_counts_ = FXWORD_GetLsbFirst(bmp_info_header.biBitCount);
+    compress_flag_ = FXDWORD_GetLsbFirst(bmp_info_header.biCompression);
+    color_used_ = FXDWORD_GetLsbFirst(bmp_info_header.biClrUsed);
+    dpi_x_ = FXDWORD_GetLsbFirst(bmp_info_header.biXPelsPerMeter);
+    dpi_y_ = FXDWORD_GetLsbFirst(bmp_info_header.biYPelsPerMeter);
     if (!SetHeight(signed_height))
       return BmpModule::Status::kFail;
     return BmpModule::Status::kSuccess;
@@ -184,22 +170,14 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpHeaderIfh() {
     return BmpModule::Status::kContinue;
 
   uint16_t bi_planes;
-  width_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biWidth));
-  int32_t signed_height = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biHeight));
-  bit_counts_ = FXWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biBitCount));
-  compress_flag_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biCompression));
-  color_used_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biClrUsed));
-  bi_planes = FXWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biPlanes));
-  dpi_x_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biXPelsPerMeter));
-  dpi_y_ = FXDWORD_GET_LSBFIRST(
-      reinterpret_cast<uint8_t*>(&bmp_info_header.biYPelsPerMeter));
+  width_ = FXDWORD_GetLsbFirst(bmp_info_header.biWidth);
+  int32_t signed_height = FXDWORD_GetLsbFirst(bmp_info_header.biHeight);
+  bit_counts_ = FXWORD_GetLsbFirst(bmp_info_header.biBitCount);
+  compress_flag_ = FXDWORD_GetLsbFirst(bmp_info_header.biCompression);
+  color_used_ = FXDWORD_GetLsbFirst(bmp_info_header.biClrUsed);
+  bi_planes = FXWORD_GetLsbFirst(bmp_info_header.biPlanes);
+  dpi_x_ = FXDWORD_GetLsbFirst(bmp_info_header.biXPelsPerMeter);
+  dpi_y_ = FXDWORD_GetLsbFirst(bmp_info_header.biYPelsPerMeter);
   if (!SetHeight(signed_height))
     return BmpModule::Status::kFail;
   if (compress_flag_ != kBmpRgb || bi_planes != 1 || color_used_ != 0)
@@ -274,9 +252,9 @@ BmpModule::Status CFX_BmpDecompressor::ReadBmpBitfields() {
   if (!ReadData(reinterpret_cast<uint8_t*>(masks), sizeof(masks)))
     return BmpModule::Status::kContinue;
 
-  mask_red_ = FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&masks[0]));
-  mask_green_ = FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&masks[1]));
-  mask_blue_ = FXDWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(&masks[2]));
+  mask_red_ = FXDWORD_GetLsbFirst(masks[0]);
+  mask_green_ = FXDWORD_GetLsbFirst(masks[1]);
+  mask_blue_ = FXDWORD_GetLsbFirst(masks[2]);
   if (mask_red_ & mask_green_ || mask_red_ & mask_blue_ ||
       mask_green_ & mask_blue_) {
     return BmpModule::Status::kFail;
@@ -412,7 +390,7 @@ BmpModule::Status CFX_BmpDecompressor::DecodeRGB() {
         green_bits -= 8;
         red_bits -= 8;
         for (uint32_t col = 0; col < width_; ++col) {
-          *buf = FXWORD_GET_LSBFIRST(reinterpret_cast<uint8_t*>(buf));
+          *buf = FXWORD_GetLsbFirst(*buf);
           out_row_buffer_[idx++] =
               static_cast<uint8_t>((*buf & mask_blue_) << blue_bits);
           out_row_buffer_[idx++] =

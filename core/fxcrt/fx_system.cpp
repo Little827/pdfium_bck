@@ -108,6 +108,34 @@ int FXSYS_round(double d) {
   return static_cast<int>(round(d));
 }
 
+// The following methodologies of casting the word and double word pointers to
+// byte pointers is agnostic to the endianness of the system. Using bitwise
+// operators would require build flags.
+uint16_t FXWORD_GetLsbFirst(const uint16_t word) {
+  const uint8_t* data = reinterpret_cast<const uint8_t*>(&word);
+  return (static_cast<uint16_t>(data[1]) << 8) |
+         (static_cast<uint16_t>(data[0]));
+}
+uint16_t FXWORD_GetMsbFirst(const uint16_t word) {
+  const uint8_t* data = reinterpret_cast<const uint8_t*>(&word);
+  return (static_cast<uint16_t>(data[0]) << 8) |
+         (static_cast<uint16_t>(data[1]));
+}
+uint32_t FXDWORD_GetLsbFirst(const uint32_t dword) {
+  const uint8_t* data = reinterpret_cast<const uint8_t*>(&dword);
+  return (static_cast<uint32_t>(data[3]) << 24) |
+         (static_cast<uint32_t>(data[2]) << 16) |
+         (static_cast<uint32_t>(data[1]) << 8) |
+         (static_cast<uint32_t>(data[0]));
+}
+uint32_t FXDWORD_GetMsbFirst(const uint32_t dword) {
+  const uint8_t* data = reinterpret_cast<const uint8_t*>(&dword);
+  return (static_cast<uint32_t>(data[0]) << 24) |
+         (static_cast<uint32_t>(data[1]) << 16) |
+         (static_cast<uint32_t>(data[2]) << 8) |
+         (static_cast<uint32_t>(data[3]));
+}
+
 int32_t FXSYS_atoi(const char* str) {
   return FXSYS_StrToInt<int32_t, char>(str);
 }

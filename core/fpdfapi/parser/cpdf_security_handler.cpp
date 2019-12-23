@@ -381,7 +381,8 @@ bool CPDF_SecurityHandler::AES256_CheckPassword(const ByteString& password,
   if (buf[9] != 'a' || buf[10] != 'd' || buf[11] != 'b')
     return false;
 
-  if (FXDWORD_GET_LSBFIRST(buf) != m_Permissions)
+  const uint32_t buf_dword = *reinterpret_cast<uint32_t*>(buf);
+  if (FXDWORD_GetLsbFirst(buf_dword) != m_Permissions)
     return false;
 
   // Relax this check as there appear to be some non-conforming documents
