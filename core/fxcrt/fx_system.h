@@ -170,18 +170,11 @@ void FXSYS_SetLastError(uint32_t err);
 uint32_t FXSYS_GetLastError();
 #endif  // _FX_PLATFORM_ == _FX_PLATFORM_WINDOWS_
 
-#define FXWORD_GET_LSBFIRST(p)                                \
-  (static_cast<uint16_t>((static_cast<uint16_t>(p[1]) << 8) | \
-                         (static_cast<uint16_t>(p[0]))))
-#define FXWORD_GET_MSBFIRST(p)                                \
-  (static_cast<uint16_t>((static_cast<uint16_t>(p[0]) << 8) | \
-                         (static_cast<uint16_t>(p[1]))))
-#define FXDWORD_GET_LSBFIRST(p)                                                \
-  ((static_cast<uint32_t>(p[3]) << 24) | (static_cast<uint32_t>(p[2]) << 16) | \
-   (static_cast<uint32_t>(p[1]) << 8) | (static_cast<uint32_t>(p[0])))
-#define FXDWORD_GET_MSBFIRST(p)                                                \
-  ((static_cast<uint32_t>(p[0]) << 24) | (static_cast<uint32_t>(p[1]) << 16) | \
-   (static_cast<uint32_t>(p[2]) << 8) | (static_cast<uint32_t>(p[3])))
+uint16_t FXWORD_GetLsbFirst(const uint16_t word);
+uint16_t FXWORD_GetMsbFirst(const uint16_t word);
+uint32_t FXDWORD_GetLsbFirst(const uint32_t dword);
+uint32_t FXDWORD_GetMsbFirst(const uint32_t dword);
+
 int32_t FXSYS_atoi(const char* str);
 uint32_t FXSYS_atoui(const char* str);
 int32_t FXSYS_wtoi(const wchar_t* str);
