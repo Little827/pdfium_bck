@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32b03532_75e475c2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2019-12-24T00:09:08Z",
+      "side": 1,
+      "message": "How does this prevent corruption of the CMap? Can you give an example?",
+      "range": {
+        "startLine": 159,
+        "startChar": 73,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "530283158a96f2431747d93548c2e0825999de63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
