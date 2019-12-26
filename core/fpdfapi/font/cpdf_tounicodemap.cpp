@@ -72,16 +72,16 @@ uint32_t CPDF_ToUnicodeMap::ReverseLookup(wchar_t unicode) const {
 }
 
 // static
-uint32_t CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
+pdfium::Optional<uint32_t> CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
   size_t len = str.GetLength();
   if (len == 0 || str[0] != '<')
-    return 0;
+    return pdfium::nullopt;
 
   uint32_t result = 0;
   for (size_t i = 1; i < len && std::isxdigit(str[i]); ++i) {
     result = result * 16 + FXSYS_HexCharToInt(str.CharAt(i));
   }
-  return result;
+  return pdfium::Optional<uint32_t>(result);
 }
 
 // static
@@ -140,7 +140,10 @@ void CPDF_ToUnicodeMap::HandleBeginBFChar(CPDF_SimpleParser* pParser) {
     if (word.IsEmpty() || word == "endbfchar")
       return;
 
-    SetCode(StringToCode(word), StringToWideString(pParser->GetWord()));
+    pdfium::Optional<uint32_t> code = StringToCode(word);
+    if (!code)
+      return;
+    SetCode(*code, StringToWideString(pParser->GetWord()));
   }
 }
 
@@ -150,11 +153,17 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
     if (low.IsEmpty() || low == "endbfrange")
       return;
 
-    ByteStringView high = pParser->GetWord();
-    uint32_t lowcode = StringToCode(low);
-    uint32_t highcode = (lowcode & 0xffffff00) | (StringToCode(high) & 0xff);
-    if (highcode == 0xffffffff)
+    pdfium::Optional<uint32_t> low_code = StringToCode(low);
+    if (!low_code)
       return;
+
+    ByteStringView high = pParser->GetWord();
+    pdfium::Optional<uint32_t> high_code = StringToCode(high);
+    if (!high_code)
+      return;
+
+    uint32_t lowcode = *low_code;
+    uint32_t highcode = (lowcode & 0xffffff00) | (*high_code & 0xff);
 
     ByteStringView start = pParser->GetWord();
     if (start == "[") {
@@ -166,9 +175,12 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
 
     WideString destcode = StringToWideString(start);
     if (destcode.GetLength() == 1) {
-      uint32_t value = StringToCode(start);
+      pdfium::Optional<uint32_t> value = StringToCode(start);
+      if (!value)
+        return;
+
       for (uint32_t code = lowcode; code <= highcode; code++)
-        m_Map[code] = value++;
+        m_Map[code] = (*value)++;
     } else {
       for (uint32_t code = lowcode; code <= highcode; code++) {
         WideString retcode =
