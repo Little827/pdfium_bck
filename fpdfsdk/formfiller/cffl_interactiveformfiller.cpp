@@ -257,9 +257,10 @@ bool CFFL_InteractiveFormFiller::OnLButtonUp(CPDFSDK_PageView* pPageView,
   return bRet;
 }
 
-bool CFFL_InteractiveFormFiller::OnButtonUp(ObservedPtr<CPDFSDK_Annot>* pAnnot,
-                                            CPDFSDK_PageView* pPageView,
-                                            uint32_t nFlag) {
+bool CFFL_InteractiveFormFiller::PerformAction(
+    ObservedPtr<CPDFSDK_Annot>* pAnnot,
+    CPDFSDK_PageView* pPageView,
+    uint32_t nFlag) {
   if (m_bNotifying)
     return false;
 
@@ -287,6 +288,12 @@ bool CFFL_InteractiveFormFiller::OnButtonUp(ObservedPtr<CPDFSDK_Annot>* pAnnot,
   if (pFormFiller)
     pFormFiller->ResetPWLWindow(pPageView, nValueAge == pWidget->GetValueAge());
   return true;
+}
+
+bool CFFL_InteractiveFormFiller::OnButtonUp(ObservedPtr<CPDFSDK_Annot>* pAnnot,
+                                            CPDFSDK_PageView* pPageView,
+                                            uint32_t nFlag) {
+  return PerformAction(pAnnot, pPageView, nFlag);
 }
 
 bool CFFL_InteractiveFormFiller::SetIndexSelected(
@@ -364,7 +371,14 @@ bool CFFL_InteractiveFormFiller::OnKeyDown(CPDFSDK_Annot* pAnnot,
   ASSERT(pAnnot->GetPDFAnnot()->GetSubtype() == CPDF_Annot::Subtype::WIDGET);
 
   CFFL_FormFiller* pFormFiller = GetFormFiller(pAnnot);
-  return pFormFiller && pFormFiller->OnKeyDown(nKeyCode, nFlags);
+  bool handled = pFormFiller && pFormFiller->OnKeyDown(nKeyCode, nFlags);
+
+  if ((nKeyCode == FWL_VKEY_Return) && (handled)) {
+    ObservedPtr<CPDFSDK_Annot> annot(pAnnot);
+    return PerformAction(&annot, pAnnot->GetPageView(), nFlags);
+  }
+
+  return handled;
 }
 
 bool CFFL_InteractiveFormFiller::OnChar(CPDFSDK_Annot* pAnnot,
