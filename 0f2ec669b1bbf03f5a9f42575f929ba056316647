@@ -295,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "e61fd9f6_b524cd94",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2019-12-27T10:23:42Z",
+      "side": 1,
+      "message": "Yes, pExtGStateDict and pGSDict are pointing to same string pool. But this string pool is only used to update the given key(string type) if equivalent is already present in string pool, which will be eventually used to create an entry in map and both of maps are independent of each other.",
+      "parentUuid": "43a4de34_960ba256",
+      "range": {
+        "startLine": 250,
+        "startChar": 7,
+        "endLine": 250,
+        "endChar": 22
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "633cea0f_3d356840",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 5
@@ -428,6 +452,30 @@
       "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b8c99d_04e3e5fd",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 7747
+      },
+      "writtenOn": "2019-12-27T10:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb863c54_92b3186e",
+      "range": {
+        "startLine": 841,
+        "startChar": 26,
+        "endLine": 841,
+        "endChar": 35
+      },
+      "revId": "0f2ec669b1bbf03f5a9f42575f929ba056316647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
