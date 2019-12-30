@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bde93ca_cc9053ab",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-30T08:08:16Z",
+      "side": 1,
+      "message": "Move the function to the new declaration order.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 21
+      },
+      "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37fc5f37_b72dee7f",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2019-12-30T08:08:16Z",
+      "side": 1,
+      "message": "extra parenthesis, not needed.",
+      "range": {
+        "startLine": 376,
+        "startChar": 39,
+        "endLine": 376,
+        "endChar": 40
+      },
+      "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
