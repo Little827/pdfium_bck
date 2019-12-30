@@ -660,6 +660,13 @@ typedef struct _FPDF_FORMFILLINFO {
                                 FPDF_DWORD valueLen,
                                 FPDF_BOOL is_focus);
 
+  void (*FFI_SetTextAnnot)(struct _FPDF_FORMFILLINFO* pThis,
+                           FPDF_PAGE page,
+                           FPDF_ANNOTATION annot);
+
+  void (*FFI_OnAnnotFocus)(struct _FPDF_FORMFILLINFO* pThis,
+                           FPDF_PAGE page,
+                           FPDF_ANNOTATION annot);
   /**
    * Method: FFI_DoURIAction
    *     Ask the implementation to navigate to a uniform resource identifier.

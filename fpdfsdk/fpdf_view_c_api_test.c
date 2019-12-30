@@ -45,16 +45,20 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_GetAP);
     CHK(FPDFAnnot_GetAttachmentPoints);
     CHK(FPDFAnnot_GetColor);
+    CHK(FPDFAnnot_GetContents);
     CHK(FPDFAnnot_GetFlags);
     CHK(FPDFAnnot_GetFontSize);
     CHK(FPDFAnnot_GetFormFieldAtPoint);
     CHK(FPDFAnnot_GetFormFieldFlags);
+    CHK(FPDFAnnot_GetFormFieldType);
     CHK(FPDFAnnot_GetLinkedAnnot);
     CHK(FPDFAnnot_GetNumberValue);
     CHK(FPDFAnnot_GetObject);
     CHK(FPDFAnnot_GetObjectCount);
     CHK(FPDFAnnot_GetOptionCount);
     CHK(FPDFAnnot_GetOptionLabel);
+    CHK(FPDFAnnot_GetSelectedOptionCount);
+    CHK(FPDFAnnot_GetSelectedOptionIndex);
     CHK(FPDFAnnot_GetRect);
     CHK(FPDFAnnot_GetStringValue);
     CHK(FPDFAnnot_GetSubtype);
@@ -62,6 +66,8 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_HasAttachmentPoints);
     CHK(FPDFAnnot_HasKey);
     CHK(FPDFAnnot_IsChecked);
+    CHK(FPDFAnnot_GetControlCount);
+    CHK(FPDFAnnot_GetControlIndex);
     CHK(FPDFAnnot_IsObjectSupportedSubtype);
     CHK(FPDFAnnot_IsSupportedSubtype);
     CHK(FPDFAnnot_RemoveObject);
@@ -69,6 +75,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_SetAttachmentPoints);
     CHK(FPDFAnnot_SetColor);
     CHK(FPDFAnnot_SetFlags);
+    CHK(FPDFAnnot_SetFormFieldFocus);
     CHK(FPDFAnnot_SetRect);
     CHK(FPDFAnnot_SetStringValue);
     CHK(FPDFAnnot_UpdateObject);
