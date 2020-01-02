@@ -202,7 +202,11 @@ void CXFA_FFDocView::UpdateUIDisplay(CXFA_Node* pNode, CXFA_FFWidget* pExcept) {
          pWidget->IsFocused())) {
       continue;
     }
+    ObservedPtr<CXFA_FFWidget> pWatched(pWidget);
     pWidget->UpdateFWLData();
+    if (!pWatched)
+      break;
+
     pWidget->InvalidateRect();
   }
 }
