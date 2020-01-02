@@ -196,14 +196,18 @@ void CXFA_FFDocView::UpdateDocView() {
 
 void CXFA_FFDocView::UpdateUIDisplay(CXFA_Node* pNode, CXFA_FFWidget* pExcept) {
   CXFA_FFWidget* pWidget = GetWidgetForNode(pNode);
-  for (; pWidget; pWidget = pWidget->GetNextFFWidget()) {
+  CXFA_FFWidget* pNext = nullptr;
+  for (; pWidget; pWidget = pNext) {
+    pNext = pWidget->GetNextFFWidget();
     if (pWidget == pExcept || !pWidget->IsLoaded() ||
         (pNode->GetFFWidgetType() != XFA_FFWidgetType::kCheckButton &&
          pWidget->IsFocused())) {
       continue;
     }
-    pWidget->UpdateFWLData();
-    pWidget->InvalidateRect();
+    ObservedPtr<CXFA_FFWidget> pWatched(pWidget);
+    pWatched->UpdateFWLData();
+    if (pWatched)
+      pWatched->InvalidateRect();
   }
 }
 
