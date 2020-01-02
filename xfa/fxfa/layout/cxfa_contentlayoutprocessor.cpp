@@ -645,11 +645,9 @@ CXFA_ContentLayoutProcessor::CreateContentLayoutItem(CXFA_Node* pFormNode) {
 
   CXFA_ContentLayoutItem* pPrevLayoutItem =
       ToContentLayoutItem(pFormNode->JSObject()->GetLayoutItem());
-  if (pPrevLayoutItem) {
+  if (pPrevLayoutItem)
     pPrevLayoutItem->GetLast()->InsertAfter(pNewLayoutItem.Get());
-  } else {
-    pFormNode->JSObject()->SetLayoutItem(pNewLayoutItem.Get());
-  }
+
   return pNewLayoutItem;
 }
 

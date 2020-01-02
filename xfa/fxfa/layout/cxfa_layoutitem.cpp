@@ -36,15 +36,13 @@ void XFA_ReleaseLayoutItem(const RetainPtr<CXFA_LayoutItem>& pLayoutItem) {
 }
 
 CXFA_LayoutItem::CXFA_LayoutItem(CXFA_Node* pNode, ItemType type)
-    : m_ItemType(type), m_pFormNode(pNode) {}
+    : m_ItemType(type) {
+  BindFormNode(pNode);
+}
 
 CXFA_LayoutItem::~CXFA_LayoutItem() {
   CHECK(!GetParent());
-  if (m_pFormNode) {
-    auto* pJSObj = m_pFormNode->JSObject();
-    if (pJSObj && pJSObj->GetLayoutItem() == this)
-      pJSObj->SetLayoutItem(nullptr);
-  }
+  BindFormNode(nullptr);
 }
 
 CXFA_ViewLayoutItem* CXFA_LayoutItem::AsViewLayoutItem() {
@@ -74,4 +72,18 @@ const CXFA_ViewLayoutItem* CXFA_LayoutItem::GetPage() const {
       return pCurNode->AsViewLayoutItem();
   }
   return nullptr;
+}
+
+void CXFA_LayoutItem::BindFormNode(CXFA_Node* pNode) {
+  if (m_pFormNode) {
+    CJX_Object* pJSObj = m_pFormNode->JSObject();
+    if (pJSObj)
+      pJSObj->SetLayoutItem(nullptr);
+  }
+  if (pNode) {
+    CJX_Object* pJSObj = pNode->JSObject();
+    if (pJSObj)
+      pJSObj->SetLayoutItem(this);
+  }
+  m_pFormNode = pNode;
 }

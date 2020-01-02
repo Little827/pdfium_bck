@@ -29,7 +29,7 @@ class CXFA_LayoutItem : public RetainedTreeNode<CXFA_LayoutItem> {
 
   const CXFA_ViewLayoutItem* GetPage() const;
   CXFA_Node* GetFormNode() const { return m_pFormNode.Get(); }
-  void SetFormNode(CXFA_Node* pNode) { m_pFormNode = pNode; }
+  void BindFormNode(CXFA_Node* pNode);
 
  protected:
   enum ItemType { kViewItem, kContentItem };
