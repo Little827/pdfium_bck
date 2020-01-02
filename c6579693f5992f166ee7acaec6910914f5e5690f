@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "c1c1ba4c_a9885746",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-02T17:57:41Z",
+      "side": 1,
+      "message": "Actually, you could just omit the constructor call entirely, and you should get the implicit conversion. Then when you change the type of \"result\" to FX_SAFE_UINT32 later, it\u0027ll be more obvious to the reviewer that something changed.",
+      "parentUuid": "aecddaad_e709bc4d",
+      "range": {
+        "startLine": 84,
+        "startChar": 9,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c272cf11_6daa62ba",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 2
