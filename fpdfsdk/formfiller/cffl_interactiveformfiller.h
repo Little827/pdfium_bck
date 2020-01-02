@@ -164,6 +164,9 @@ class CFFL_InteractiveFormFiller final : public IPWL_Filler_Notify {
   CFFL_FormFiller* GetFormFiller(CPDFSDK_Annot* pAnnot);
   CFFL_FormFiller* GetOrCreateFormFiller(CPDFSDK_Annot* pAnnot);
   void UnRegisterFormFiller(CPDFSDK_Annot* pAnnot);
+  bool PerformAction(ObservedPtr<CPDFSDK_Annot>* pAnnot,
+                     CPDFSDK_PageView* pPageView,
+                     uint32_t nFlag);
 
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
   WidgetToFormFillerMap m_Map;
