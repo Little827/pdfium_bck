@@ -658,7 +658,7 @@ void CXFA_ViewLayoutProcessor::AddPageAreaLayoutItem(
   RetainPtr<CXFA_ViewLayoutItem> pNewPageAreaLayoutItem;
   if (pdfium::IndexInBounds(m_PageArray, m_nAvailPages)) {
     RetainPtr<CXFA_ViewLayoutItem> pViewItem = m_PageArray[m_nAvailPages];
-    pViewItem->SetFormNode(pNewPageArea);
+    pViewItem->BindFormNode(pNewPageArea);
     m_nAvailPages++;
     pNewPageAreaLayoutItem = std::move(pViewItem);
   } else {
@@ -1675,11 +1675,7 @@ void CXFA_ViewLayoutProcessor::MergePageSetContents() {
         pPendingPageSet = pRootPageSetViewItem->GetFormNode();
       }
     }
-    if (pRootPageSetViewItem->GetFormNode()->JSObject()->GetLayoutItem() ==
-        pRootPageSetViewItem) {
-      pRootPageSetViewItem->GetFormNode()->JSObject()->SetLayoutItem(nullptr);
-    }
-    pRootPageSetViewItem->SetFormNode(pPendingPageSet);
+    pRootPageSetViewItem->BindFormNode(pPendingPageSet);
     pPendingPageSet->ClearFlag(XFA_NodeFlag_UnusedNode);
     for (CXFA_ViewLayoutItem* pViewItem = iterator.MoveToNext(); pViewItem;
          pViewItem = iterator.MoveToNext()) {
@@ -1690,7 +1686,7 @@ void CXFA_ViewLayoutProcessor::MergePageSetContents() {
       switch (pNode->GetElementType()) {
         case XFA_Element::PageSet: {
           CXFA_Node* pParentNode = pViewItem->GetParent()->GetFormNode();
-          pViewItem->SetFormNode(XFA_NodeMerge_CloneOrMergeContainer(
+          pViewItem->BindFormNode(XFA_NodeMerge_CloneOrMergeContainer(
               pDocument, pParentNode, pViewItem->GetFormNode(), true, nullptr));
           break;
         }
@@ -1737,7 +1733,7 @@ void CXFA_ViewLayoutProcessor::MergePageSetContents() {
             }
             pViewItem->m_pOldSubform = pNewSubform;
           }
-          pViewItem->SetFormNode(pDocument->DataMerge_CopyContainer(
+          pViewItem->BindFormNode(pDocument->DataMerge_CopyContainer(
               pViewItem->GetFormNode(), pParentNode,
               ToNode(pDocument->GetXFAObject(XFA_HASHCODE_Record)), true, true,
               true));
@@ -1751,7 +1747,7 @@ void CXFA_ViewLayoutProcessor::MergePageSetContents() {
                 pViewItem->GetFormNode()) {
               continue;
             }
-            pViewItem->SetFormNode(pChildNode);
+            pViewItem->BindFormNode(pChildNode);
             break;
           }
           break;
@@ -1976,7 +1972,7 @@ void CXFA_ViewLayoutProcessor::ProcessSimplexOrDuplexPageSets(
     CXFA_LayoutItem* pChildLayoutItem =
         pLastPageAreaLayoutItem->GetFirstChild();
     CXFA_Node* pContentAreaNode = pNode->GetFirstChild();
-    pLastPageAreaLayoutItem->SetFormNode(pNode);
+    pLastPageAreaLayoutItem->BindFormNode(pNode);
     while (pChildLayoutItem && pContentAreaNode) {
       if (pChildLayoutItem->GetFormNode()->GetElementType() !=
           XFA_Element::ContentArea) {
@@ -1987,7 +1983,7 @@ void CXFA_ViewLayoutProcessor::ProcessSimplexOrDuplexPageSets(
         pContentAreaNode = pContentAreaNode->GetNextSibling();
         continue;
       }
-      pChildLayoutItem->SetFormNode(pContentAreaNode);
+      pChildLayoutItem->BindFormNode(pContentAreaNode);
       pChildLayoutItem = pChildLayoutItem->GetNextSibling();
       pContentAreaNode = pContentAreaNode->GetNextSibling();
     }
