@@ -97,6 +97,7 @@ class CPDF_Font : public Retainable, public Observable {
 
   ByteString GetBaseFontName() const { return m_BaseFontName; }
   CFX_SubstFont* GetSubstFont() const { return m_Font.GetSubstFont(); }
+  bool EmbeddedFontPurged() const { return m_bFontFilePurged; }
   bool IsEmbedded() const { return IsType3Font() || m_pFontFile != nullptr; }
   CPDF_Dictionary* GetFontDict() const { return m_pFontDict.Get(); }
   void ClearFontDict() { m_pFontDict = nullptr; }
@@ -150,6 +151,7 @@ class CPDF_Font : public Retainable, public Observable {
   ByteString m_BaseFontName;
   mutable std::unique_ptr<CPDF_ToUnicodeMap> m_pToUnicodeMap;
   mutable bool m_bToUnicodeLoaded = false;
+  bool m_bFontFilePurged = false;
   int m_Flags = 0;
   int m_StemV = 0;
   int m_Ascent = 0;
