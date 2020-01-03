@@ -51,7 +51,6 @@ class CFX_Break {
 
   void SetCharSpace(float fCharSpace);
   void SetParagraphBreakChar(wchar_t wch);
-  void SetDefaultChar(wchar_t wch);
 
   int32_t CountBreakPieces() const;
   const CFX_BreakPiece* GetBreakPieceUnstable(int32_t index) const;
@@ -63,8 +62,9 @@ class CFX_Break {
   }
 
  protected:
-  static const int kMinimumTabWidth;
-  static const float kConversionFactor;
+  static constexpr int kMinimumTabWidth = 160000;
+  static constexpr float kConversionFactor = 20000.0f;
+  static constexpr wchar_t kDefChar = 0xFEFF;
 
   explicit CFX_Break(uint32_t dwLayoutStyles);
 
@@ -88,7 +88,6 @@ class CFX_Break {
   int32_t m_iTolerance = 0;
   int32_t m_iCharSpace = 0;
   int32_t m_iDefChar = 0;
-  wchar_t m_wDefChar = 0xFEFF;
   RetainPtr<CFGAS_GEFont> m_pFont;
   UnownedPtr<CFX_BreakLine> m_pCurLine;
   int8_t m_iReadyLineIndex = -1;
