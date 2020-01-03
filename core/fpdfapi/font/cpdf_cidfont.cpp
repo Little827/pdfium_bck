@@ -398,7 +398,7 @@ bool CPDF_CIDFont::Load() {
     if (const CPDF_Stream* pStream = pmap->AsStream()) {
       m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
       m_pStreamAcc->LoadAllDataFiltered();
-    } else if (m_pFontFile && pmap->GetString() == "Identity") {
+    } else if (pmap->GetString() == "Identity") {
       m_bCIDIsGID = true;
     }
   }
@@ -597,12 +597,12 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
   if (!m_pFontFile && (!m_pStreamAcc || m_pCID2UnicodeMap)) {
     uint16_t cid = CIDFromCharCode(charcode);
     wchar_t unicode = 0;
-    if (m_bCIDIsGID) {
+    if (m_bCIDIsGID && !EmbeddedFontPurged()) {
 #if defined(OS_MACOSX)
       if (FontStyleIsSymbolic(m_Flags))
         return cid;
 
-      WideString uni_str = UnicodeFromCharCode(charcode);
+      WideString uni_str = GetUnicodeFromCharCode(charcode);
       if (uni_str.IsEmpty())
         return cid;
 
