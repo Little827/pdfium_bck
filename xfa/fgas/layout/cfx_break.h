@@ -51,7 +51,6 @@ class CFX_Break {
 
   void SetCharSpace(float fCharSpace);
   void SetParagraphBreakChar(wchar_t wch);
-  void SetDefaultChar(wchar_t wch);
 
   int32_t CountBreakPieces() const;
   const CFX_BreakPiece* GetBreakPieceUnstable(int32_t index) const;

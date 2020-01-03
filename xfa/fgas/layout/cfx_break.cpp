@@ -108,19 +108,6 @@ void CFX_Break::SetTabWidth(float fTabWidth) {
       std::max(FXSYS_roundf(fTabWidth * kConversionFactor), kMinimumTabWidth);
 }
 
-void CFX_Break::SetDefaultChar(wchar_t wch) {
-  m_wDefChar = wch;
-  m_iDefChar = 0;
-  if (m_wDefChar == 0xFEFF || !m_pFont)
-    return;
-
-  m_pFont->GetCharWidth(m_wDefChar, &m_iDefChar);
-  if (m_iDefChar < 0)
-    m_iDefChar = 0;
-  else
-    m_iDefChar *= m_iFontSize;
-}
-
 void CFX_Break::SetParagraphBreakChar(wchar_t wch) {
   if (wch != L'\r' && wch != L'\n')
     return;
