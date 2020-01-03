@@ -13,9 +13,6 @@
 #include "third_party/base/stl_util.h"
 #include "xfa/fgas/font/cfgas_gefont.h"
 
-const float CFX_Break::kConversionFactor = 20000.0f;
-const int CFX_Break::kMinimumTabWidth = 160000;
-
 CFX_Break::CFX_Break(uint32_t dwLayoutStyles)
     : m_dwLayoutStyles(dwLayoutStyles), m_pCurLine(&m_Lines[0]) {}
 
@@ -91,14 +88,7 @@ FX_CHARTYPE CFX_Break::GetUnifiedCharType(FX_CHARTYPE chartype) const {
   return chartype >= FX_CHARTYPE::kArabicAlef ? FX_CHARTYPE::kArabic : chartype;
 }
 
-void CFX_Break::FontChanged() {
-  m_iDefChar = 0;
-  if (!m_pFont || m_wDefChar == 0xFEFF)
-    return;
-
-  m_pFont->GetCharWidth(m_wDefChar, &m_iDefChar);
-  m_iDefChar *= m_iFontSize;
-}
+void CFX_Break::FontChanged() {}
 
 void CFX_Break::SetTabWidth(float fTabWidth) {
   // Note, the use of max here was only done in the TxtBreak code. Leaving this
@@ -106,19 +96,6 @@ void CFX_Break::SetTabWidth(float fTabWidth) {
   // we may need to fix this.
   m_iTabWidth =
       std::max(FXSYS_roundf(fTabWidth * kConversionFactor), kMinimumTabWidth);
-}
-
-void CFX_Break::SetDefaultChar(wchar_t wch) {
-  m_wDefChar = wch;
-  m_iDefChar = 0;
-  if (m_wDefChar == 0xFEFF || !m_pFont)
-    return;
-
-  m_pFont->GetCharWidth(m_wDefChar, &m_iDefChar);
-  if (m_iDefChar < 0)
-    m_iDefChar = 0;
-  else
-    m_iDefChar *= m_iFontSize;
 }
 
 void CFX_Break::SetParagraphBreakChar(wchar_t wch) {
