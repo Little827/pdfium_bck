@@ -45,6 +45,29 @@
       "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b4387a_7230ef94",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-01-03T01:34:29Z",
+      "side": 1,
+      "message": "nit: if calculated conditions can be checked for result before nKeyCode.",
+      "range": {
+        "startLine": 376,
+        "startChar": 39,
+        "endLine": 376,
+        "endChar": 48
+      },
+      "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
