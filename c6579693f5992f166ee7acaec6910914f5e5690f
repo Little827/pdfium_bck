@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "9db711a0_0cb8dfa2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-06T20:19:16Z",
+      "side": 1,
+      "message": "The idea here is that:\n\n1. The current behavior is broken in this (rare) case.\n2. This change shouldn\u0027t necessarily fix the broken behavior, as fixing the behavior is, itself, a separate change.\n3. You want to avoid grouping unrelated behavior changes in a single change, since it can make pinpointing any unanticipated problems more difficult.\n\nI\u0027ll leave it up to you and your other reviewer if this warrants being broken up into a separate change. :-) It\u0027s maybe small enough not to worry about.",
+      "parentUuid": "46ec0d42_11bafb28",
+      "range": {
+        "startLine": 145,
+        "startChar": 6,
+        "endLine": 145,
+        "endChar": 12
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "852c1cc8_ffe39176",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 2
