@@ -34,9 +34,9 @@ CFWL_WidgetTP::CFWL_WidgetTP() = default;
 
 CFWL_WidgetTP::~CFWL_WidgetTP() = default;
 
-void CFWL_WidgetTP::Initialize() {}
+void CFWL_WidgetTP::Initialize_() {}
 
-void CFWL_WidgetTP::Finalize() {
+void CFWL_WidgetTP::Finalize_() {
   if (m_pTextOut)
     FinalizeTTO();
 }

@@ -15,8 +15,8 @@ class CFWL_MonthCalendarTP final : public CFWL_WidgetTP {
   ~CFWL_MonthCalendarTP() override;
 
   // CFWL_WidgetTP
-  void Initialize() override;
-  void Finalize() override;
+  void Initialize_() override;
+  void Finalize_() override;
   void DrawBackground(const CFWL_ThemeBackground& pParams) override;
   void DrawText(const CFWL_ThemeText& pParams) override;
 
