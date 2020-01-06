@@ -22,6 +22,30 @@
       "revId": "917c9243820ca75c5ce869e98302e4383c25b6cb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b61aae0b_a0a33de2",
+        "filename": "xfa/fwl/theme/cfwl_checkboxtp.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-06T21:25:22Z",
+      "side": 1,
+      "message": "See follow-up CL.",
+      "parentUuid": "50d92b30_79873dee",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "917c9243820ca75c5ce869e98302e4383c25b6cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
