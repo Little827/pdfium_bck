@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78539778_fa6db140",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-06T17:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f54019_851ed2f3",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6706cdde_22e33b09",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c82fc1_6fbc77a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-06T17:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6706cdde_22e33b09",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "09ec6201_3704e68e",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-06T17:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c1ba4c_a9885746",
+      "range": {
+        "startLine": 84,
+        "startChar": 9,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c272cf11_6daa62ba",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2020-01-02T17:53:18Z",
       "side": 1,
       "message": "To minimize behavioral changes in this CL, consider using \"code.value_or(0)\" to continue treating StringToCode() as if it returned 0 for errors (instead of nullopt).\n\nIt doesn\u0027t look like we have test coverage for HandleBeginBFChar(), so this isn\u0027t detectable currently. Let\u0027s make sure to add some sooner or later.",
+      "range": {
+        "startLine": 145,
+        "startChar": 6,
+        "endLine": 145,
+        "endChar": 12
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ec0d42_11bafb28",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-06T17:23:58Z",
+      "side": 1,
+      "message": "Since the whole range of uint32_t should be available as valid code as the CL\u0027s description states, I think I will avoid using 0 for indicating errors. Or else it will lose the purpose of changing the return type of StringToCode().\n\nI will have adding test coverage for HandleBeginBFChar() in my backlog and have a separate CL for it.",
+      "parentUuid": "c272cf11_6daa62ba",
       "range": {
         "startLine": 145,
         "startChar": 6,
@@ -138,6 +234,30 @@
       "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3303db62_c2680cd1",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-06T17:23:58Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! Ended up using |highcode_or_error| and |lowcode_or_error| since they can indicate errors. :D",
+      "parentUuid": "852c1cc8_ffe39176",
+      "range": {
+        "startLine": 166,
+        "startChar": 25,
+        "endLine": 166,
+        "endChar": 32
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
