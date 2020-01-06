@@ -41,6 +41,8 @@ class WideString {
 
   WideString();
   WideString(const WideString& other);
+
+  // Move-construct a WideString. After construction, |other| is empty.
   WideString(WideString&& other) noexcept;
 
   // Deliberately implicit to avoid calling on every string literal.
@@ -116,6 +118,8 @@ class WideString {
   WideString& operator=(const wchar_t* str);
   WideString& operator=(WideStringView str);
   WideString& operator=(const WideString& that);
+
+  // Move-assign a WideString. After assignment, |that| is empty.
   WideString& operator=(WideString&& that);
 
   WideString& operator+=(const wchar_t* str);
