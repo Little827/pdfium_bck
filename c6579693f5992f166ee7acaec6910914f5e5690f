@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "17d5b8ab_c9e844e3",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-06T21:30:53Z",
+      "side": 1,
+      "message": "If we only want to change the return type without changing any behavior of the process, I think I will use code.value_or(0) to replace everywhere that\u0027s doing a \"if (!code)\" check.",
+      "parentUuid": "9db711a0_0cb8dfa2",
+      "range": {
+        "startLine": 145,
+        "startChar": 6,
+        "endLine": 145,
+        "endChar": 12
+      },
+      "revId": "c6579693f5992f166ee7acaec6910914f5e5690f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "852c1cc8_ffe39176",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 2
