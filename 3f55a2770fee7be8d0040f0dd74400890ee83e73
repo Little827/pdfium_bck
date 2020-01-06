@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f31ba54f_8c3e4c12",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-06T21:55:50Z",
+      "side": 1,
+      "message": "Optional: I might inline some of the calls to StringToCode(low|high), as you did with \"value\".",
+      "revId": "3f55a2770fee7be8d0040f0dd74400890ee83e73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
