@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c2f97c9_9309727e",
+        "filename": "xfa/fwl/cfwl_datetimepicker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-06T21:43:10Z",
+      "side": 0,
+      "message": "if (x \u0026 0) \u003d\u003d 0 ...",
+      "range": {
+        "startLine": 225,
+        "startChar": 7,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "30f967d9bc743f894b4d2d82475ddeb656d3b216",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
