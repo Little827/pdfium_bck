@@ -184,7 +184,7 @@ Optional<std::string> ExpandDirectoryPath(const std::string& path) {
   return ret_val;
 #else
   return {path};
-#endif  // WORDEXP_AVAILABLE
+#endif  // defined(WORDEXP_AVAILABLE)
 }
 
 Optional<const char*> GetCustomFontPath(const Options& options) {
