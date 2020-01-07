@@ -140,6 +140,24 @@
       "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46895033_940415f9",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-07T19:12:56Z",
+      "side": 1,
+      "message": "Re: 2: Not sure which method you were referring to, but if we\u0027re talking about FPDFDOC_ExitFormFillEnvironment(), there\u0027s API documentation here:\nhttps://source.chromium.org/chromium/_/pdfium/pdfium.git/+/7d0916bb7588ca5f7f1ae7707edae7b02cbb5c26:public/fpdf_formfill.h;l\u003d1083\n\nIdeally, I think we would update this documentation to be more precise about the semantics here, but there seems to be at least an implied contract about ownership from the function name. (Otherwise, deleting here would be wrong entirely.)\n\nIf we\u0027re talking about CPDFSDKFormFillEnvironmentFromFPDFFormHandle(), that seems to be an internal API, and again, any contracts may only be implicit/conventional.\n\nWe can talk more about this offline, if you\u0027d like. :-)",
+      "parentUuid": "d5992112_cb17afa7",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
