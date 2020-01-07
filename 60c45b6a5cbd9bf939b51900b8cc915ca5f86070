@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9934035_6a02cb9a",
+        "filename": "xfa/fxfa/cxfa_ffdocview.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-07T22:03:53Z",
+      "side": 1,
+      "message": "Can this trigger side effects that affect |pNext|?",
+      "revId": "60c45b6a5cbd9bf939b51900b8cc915ca5f86070",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5802de91_d414d708",
+        "filename": "xfa/fxfa/cxfa_fffield.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-07T22:03:53Z",
+      "side": 1,
+      "message": "Should this be consistent with CXFA_FFListBox::OnKillFocus()?",
+      "revId": "60c45b6a5cbd9bf939b51900b8cc915ca5f86070",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
