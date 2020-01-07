@@ -330,8 +330,10 @@ FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
 
 FPDF_EXPORT void FPDF_CALLCONV
 FPDFDOC_ExitFormFillEnvironment(FPDF_FORMHANDLE hHandle) {
-  CPDFSDK_FormFillEnvironment* pFormFillEnv =
-      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  // Take back ownership of the form fill environment to ultimately throw it
+  // away.
+  std::unique_ptr<CPDFSDK_FormFillEnvironment> pFormFillEnv(
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle));
   if (!pFormFillEnv)
     return;
 
@@ -346,7 +348,6 @@ FPDFDOC_ExitFormFillEnvironment(FPDF_FORMHANDLE hHandle) {
   if (pContext)
     pContext->SetFormFillEnv(nullptr);
 #endif  // PDF_ENABLE_XFA
-  delete pFormFillEnv;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
