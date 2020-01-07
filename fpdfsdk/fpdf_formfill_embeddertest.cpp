@@ -977,6 +977,36 @@ TEST_F(FPDFFormFillEmbedderTest, MAYBE_BUG_1281) {
   UnloadPage(page);
 }
 
+#if !defined(_SKIA_SUPPORT_) && !defined(_SKIA_SUPPORT_PATHS_)
+TEST_F(FPDFFormFillEmbedderTest, RemoveFormFieldHighlight) {
+#if defined(OS_LINUX)
+  const char kMd5Normal[] = "b890950d4b9bc163b1a96797f3004b53";
+  const char kMd5NoHighlight[] = "006010c318457810a518aa5e0b33c498";
+#endif
+
+  EXPECT_TRUE(OpenDocument("text_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  ScopedFPDFBitmap bitmap1 = RenderLoadedPage(page);
+
+  // Removing the highlight changes the rendering.
+  FPDF_RemoveFormFieldHighlight(form_handle());
+  ScopedFPDFBitmap bitmap2 = RenderLoadedPage(page);
+
+  // Restoring it gives the original rendering.
+  SetInitialFormFieldHighlight(form_handle());
+  ScopedFPDFBitmap bitmap3 = RenderLoadedPage(page);
+
+#if defined(OS_LINUX)
+  CompareBitmap(bitmap1.get(), 300, 300, kMd5Normal);
+  CompareBitmap(bitmap2.get(), 300, 300, kMd5NoHighlight);
+  CompareBitmap(bitmap3.get(), 300, 300, kMd5Normal);
+#endif
+
+  UnloadPage(page);
+}
+#endif  // !defined(_SKIA_SUPPORT_) && !defined(_SKIA_SUPPORT_PATHS_)
+
 TEST_F(FPDFFormFillEmbedderTest, HasFormInfoNone) {
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
   EXPECT_EQ(FORMTYPE_NONE, FPDF_GetFormType(document_));
