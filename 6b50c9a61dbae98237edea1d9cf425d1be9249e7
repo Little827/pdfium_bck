@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e1f0689_4637d98d",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-07T19:37:15Z",
+      "side": 1,
+      "message": "Do you want to use \"MAYBE_\" here, like lines 956-960?",
+      "revId": "6b50c9a61dbae98237edea1d9cf425d1be9249e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80bf383_5b45ee75",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-07T19:37:15Z",
+      "side": 1,
+      "message": "Remove this temporarily and let the Mac/Windows bots fail and output the platform-specific hashes?",
+      "revId": "6b50c9a61dbae98237edea1d9cf425d1be9249e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
