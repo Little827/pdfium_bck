@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2ccb140_41281745",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutitem.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-07T23:59:38Z",
+      "side": 1,
+      "message": "BTW, if you want to add a cheap knockoff of CHECK_NE() to third_party/base/logging.h, like we did for CHECK_EQ(), be my guest.",
+      "revId": "f7a2fc2f69dcd4c5ac55ed5f5f633c384abb4f53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
