@@ -104,6 +104,24 @@
       "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0aa7330_2eff6c3b",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-07T18:43:57Z",
+      "side": 1,
+      "message": "A couple points:\n\n1. Is it reasonable for CPDFSDKFormFillEnvironmentFromFPDFFormHandle() to return a nullptr? Won\u0027t that result in the handle leaking, since it won\u0027t get deleted in that case?\n2. What is the contract of this method, and what is the contract of CPDFSDKFormFillEnvironmentFromFPDFFormHandle()? The two shouldn\u0027t be conflated.\n\n(As for moving the check inside the #ifdef, I think that would be premature optimization at best.)",
+      "parentUuid": "80bfefc0_65dbd747",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
