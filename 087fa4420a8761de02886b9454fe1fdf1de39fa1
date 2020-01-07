@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dae5564_e08d474b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-07T03:16:52Z",
+      "side": 1,
+      "message": "This seems like a lot of words to describe this change. Can you capture the same idea more concisely?\n\nFor example, I think all you need to say here is something to the effect of, \"Replace an explicit delete with std::unique_ptr.\" You can assume the reader understands common C++ idioms like std::unique_ptr.",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2319f03f_1cf4a0ad",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-07T03:16:52Z",
+      "side": 1,
+      "message": "I\u0027m going to assume there are no meaningful test changes required by this change.",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0697e8_52b115c2",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-07T03:16:52Z",
+      "side": 1,
+      "message": "I kinda wonder if it wouldn\u0027t be better to just check \"!hHandle\" instead (before doing anything else). This would more directly express the precondition.",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
