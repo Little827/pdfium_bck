@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9978c9eb_b52b154f",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-07T17:42:39Z",
+      "side": 1,
+      "message": "new values here, hard to tell what they actually correspond to.",
+      "range": {
+        "startLine": 1100,
+        "startChar": 2,
+        "endLine": 1100,
+        "endChar": 8
+      },
+      "revId": "0eb85506aa18d9a69d529987bf8f4043414484b5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
