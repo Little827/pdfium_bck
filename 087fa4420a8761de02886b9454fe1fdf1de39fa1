@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "14bbb54e_2ab8aa3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-07T03:18:30Z",
+      "side": 1,
+      "message": "(Do continue to be specific about which explicit delete you\u0027re replacing.)",
+      "parentUuid": "2dae5564_e08d474b",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2319f03f_1cf4a0ad",
         "filename": "fpdfsdk/fpdf_formfill.cpp",
         "patchSetId": 1
