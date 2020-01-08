@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e982caaa_b349c471",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T04:21:15Z",
+      "side": 1,
+      "message": "This function gets plenty of test coverage. e.g. Every embedder test calls FPDFDOC_ExitFormFillEnvironment(). In fact, it has 100% test coverage since there are implicit callers that pass in nullptr.",
+      "parentUuid": "2319f03f_1cf4a0ad",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a0697e8_52b115c2",
         "filename": "fpdfsdk/fpdf_formfill.cpp",
         "patchSetId": 1
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "Re: 2: Not sure which method you were referring to, but if we\u0027re talking about FPDFDOC_ExitFormFillEnvironment(), there\u0027s API documentation here:\nhttps://source.chromium.org/chromium/_/pdfium/pdfium.git/+/7d0916bb7588ca5f7f1ae7707edae7b02cbb5c26:public/fpdf_formfill.h;l\u003d1083\n\nIdeally, I think we would update this documentation to be more precise about the semantics here, but there seems to be at least an implied contract about ownership from the function name. (Otherwise, deleting here would be wrong entirely.)\n\nIf we\u0027re talking about CPDFSDKFormFillEnvironmentFromFPDFFormHandle(), that seems to be an internal API, and again, any contracts may only be implicit/conventional.\n\nWe can talk more about this offline, if you\u0027d like. :-)",
       "parentUuid": "d5992112_cb17afa7",
+      "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b71b6a6a_98d0f0ce",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T04:21:15Z",
+      "side": 1,
+      "message": "- CPDFSDKFormFillEnvironmentFromFPDFFormHandle() is unlikely to change. If it changes, that means the public API would change, which would break compatibility, which we are unlikely to du.\n- Assuming we can stop worrying about CPDFSDKFormFillEnvironmentFromFPDFFormHandle() and understand it just does a cast and will stay that way, I would suggest doing what most functions in this file do. Which is to convert from FPDF types to CPDF types ASAP, and then work with CPDF types as much as possible.\n- If you want to document the contract for the various CPDF \u003c-\u003e FPDF conversion helpers, I would mention most of them are just straight up casts first, and then document the exceptions.",
+      "parentUuid": "46895033_940415f9",
       "revId": "087fa4420a8761de02886b9454fe1fdf1de39fa1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true

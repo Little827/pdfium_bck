@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26944260_8cbc0a64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T04:21:15Z",
+      "side": 1,
+      "message": "I saw the emails for this CL go by, where the email subject line is just this line. I was very puzzled by what this meant until I looked in the CL. How about \"Use std::unique_ptr inside FPDFDOC_ExitFormFillEnvironment()\" instead?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "16595e90051b21eca352ee4c754ceae9d5888fda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6191c6d9_f75c8713",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T04:21:15Z",
+      "side": 1,
+      "message": "There\u0027s room on this line, so how about we add \"The reverse of FPDFDOC_InitFormFillEnvironment() above.\" Then readers glance up and sees line 328 and it all makes sense.",
+      "revId": "16595e90051b21eca352ee4c754ceae9d5888fda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09c0844_530088ce",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T04:21:15Z",
+      "side": 1,
+      "message": "Here\u0027s another good place to beef up documentation. If you want to have a separate CL dedicated to improving documentation in this header, that\u0027s fine too.",
+      "revId": "16595e90051b21eca352ee4c754ceae9d5888fda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
