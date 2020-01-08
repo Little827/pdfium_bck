@@ -56,6 +56,24 @@
       "revId": "16595e90051b21eca352ee4c754ceae9d5888fda",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb304084_0101f5b1",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-01-08T07:20:52Z",
+      "side": 1,
+      "message": "I\u0027m currently working on a CL to alter the definition of FPDFDOC_InitFormFillEnvironment(), so I could probably just do it there.",
+      "parentUuid": "b09c0844_530088ce",
+      "revId": "16595e90051b21eca352ee4c754ceae9d5888fda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
