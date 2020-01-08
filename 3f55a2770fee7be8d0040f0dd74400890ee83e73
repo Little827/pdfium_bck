@@ -16,6 +16,41 @@
       "revId": "3f55a2770fee7be8d0040f0dd74400890ee83e73",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b67262a_74afd35c",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T06:54:23Z",
+      "side": 1,
+      "message": "+1, this also minimizes changes.",
+      "parentUuid": "f31ba54f_8c3e4c12",
+      "revId": "3f55a2770fee7be8d0040f0dd74400890ee83e73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a98278_7ef1c1ac",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T06:54:23Z",
+      "side": 1,
+      "message": "I\u0027m really surprised this works, given StringToCode() is returning an Optional. :O\n\nWith Optionals:\n- One should first check to make sure it contains a value, before accessing the value. Otherwise, there\u0027s a risk of crashing, just like dereferencing a pointer.\n- In PDFium, we have an undocumented preference for has_value() and value(), over operator bool and operator*. cl/284631624 agrees.\n\nSo let\u0027s try to update this test to use Optionals in the more conventional way.",
+      "revId": "3f55a2770fee7be8d0040f0dd74400890ee83e73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
