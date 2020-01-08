@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "98a36799_bad19039",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-08T20:35:26Z",
+      "side": 1,
+      "message": "Nit: \"to ultimately throw it away\" seems a bit redundant with \"take back ownership\"; we assume owners eventually destroy things they own. :-)",
+      "range": {
+        "startLine": 336,
+        "startChar": 54,
+        "endLine": 337,
+        "endChar": 9
+      },
+      "revId": "7f572415cb548acd10e2d291e73b1a6d92f871a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1680b07c_dc1e2475",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 6
@@ -13,6 +36,30 @@
       "writtenOn": "2020-01-08T20:25:22Z",
       "side": 1,
       "message": "\"Take\" to be consistent with the language in other public headers. There\u0027s no existing usage of \"assume\" here.",
+      "range": {
+        "startLine": 1084,
+        "startChar": 9,
+        "endLine": 1084,
+        "endChar": 15
+      },
+      "revId": "7f572415cb548acd10e2d291e73b1a6d92f871a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ddd1b6b_1a8095ab",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-08T20:35:26Z",
+      "side": 1,
+      "message": "+1; \"assume\" doesn\u0027t read clearly here. I expected this to be about an assumption in the API contract.\n\nOptional: You may or may not want to mention this is a no-op if the handle is null. (Personally, I think it\u0027d be cleaner to just crash, so maybe it\u0027s best to leave this ambiguous.)",
+      "parentUuid": "1680b07c_dc1e2475",
       "range": {
         "startLine": 1084,
         "startChar": 9,
