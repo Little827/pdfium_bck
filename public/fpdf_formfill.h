@@ -1081,7 +1081,7 @@ FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
 
 /*
  * Function: FPDFDOC_ExitFormFillEnvironment
- *       Exit form fill environment.
+ *       Assume ownership of |hHandle| and exit form fill environment.
  * Parameters:
  *       hHandle     -   Handle to the form fill module, as returned by
  *                       FPDFDOC_InitFormFillEnvironment().
