@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c91f676c_4043ae96",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-08T22:11:37Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "98a36799_bad19039",
+      "range": {
+        "startLine": 336,
+        "startChar": 54,
+        "endLine": 337,
+        "endChar": 9
+      },
+      "revId": "7f572415cb548acd10e2d291e73b1a6d92f871a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1680b07c_dc1e2475",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 6
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "+1 to mentioning \"no-op\"\n\nIn general, PDFium APIs try gracefully handle nullptr inputs, so no crashes please. :)",
       "parentUuid": "2ddd1b6b_1a8095ab",
+      "range": {
+        "startLine": 1084,
+        "startChar": 9,
+        "endLine": 1084,
+        "endChar": 15
+      },
+      "revId": "7f572415cb548acd10e2d291e73b1a6d92f871a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd50eff_23161132",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-08T22:11:37Z",
+      "side": 1,
+      "message": "I\u0027ll defer to Lei here as the PDFium expert, but often API documentation will assume the same null behavior across all parts of the API, unless otherwise noted (and won\u0027t bother documenting the common case).\n\nGo ahead and follow Lei\u0027s guidance here, of course. :-)",
+      "parentUuid": "9ea7f034_8aa3c9bb",
       "range": {
         "startLine": 1084,
         "startChar": 9,
