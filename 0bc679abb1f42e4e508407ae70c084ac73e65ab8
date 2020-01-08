@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25ed9d00_80338636",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T00:12:35Z",
+      "side": 1,
+      "message": "Test in ByteString.Assign?",
+      "revId": "0bc679abb1f42e4e508407ae70c084ac73e65ab8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad190e24_638f6e2c",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T00:12:35Z",
+      "side": 1,
+      "message": "Test in UnownedPtr.MoveCtorOk and UnownedPtr.MoveAssignOk?",
+      "revId": "0bc679abb1f42e4e508407ae70c084ac73e65ab8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e421e2_d984e82f",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T00:12:35Z",
+      "side": 1,
+      "message": "Test in WideString.Assign ?",
+      "revId": "0bc679abb1f42e4e508407ae70c084ac73e65ab8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
