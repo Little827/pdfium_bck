@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e68e8ace_ca7a3509",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-08T21:45:27Z",
+      "side": 1,
+      "message": "Can we mention the following? (Just to confirm the plan.)\n\nFor now, this CL treats nullopt as 0, but a future CL will handle 0 differently.",
+      "revId": "26381e26105427208fe99b0812d3ad5fe96b65ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34124819_338fbac1",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 8
