@@ -33,6 +33,24 @@
       "revId": "26381e26105427208fe99b0812d3ad5fe96b65ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3f7e78_b13c1416",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-08T21:58:14Z",
+      "side": 1,
+      "message": "If you want to get a bit fancy, you can use gMock matchers:\n\n  EXPECT_THAT(actual_optional, Optional(expected_value_matcher))\n\nhttps://github.com/google/googletest/blob/master/googlemock/docs/cheat_sheet.md#generic-comparison\n\nThe Optional() matcher only requires an optional that has the same API as std::optional (in particular, supports the \"!\" and \"*\" operators), so it should work with base::Optional/pdfium::Optional, too.\n\nThis doesn\u0027t help if the rest of the test requires that the optional is present, but should be a good fit for this case.",
+      "parentUuid": "34124819_338fbac1",
+      "revId": "26381e26105427208fe99b0812d3ad5fe96b65ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
