@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aece79da_0be1ff5c",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T21:35:47Z",
+      "side": 1,
+      "message": "\"the output PDF size\"",
+      "range": {
+        "startLine": 840,
+        "startChar": 12,
+        "endLine": 840,
+        "endChar": 23
+      },
+      "revId": "43890cb4a338b481a49c3c01023098324f0b2e18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ffd485c_391e3ae2",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T21:35:47Z",
+      "side": 1,
+      "message": "The braces that end namespaces need a matching comment. e.g. here, it\u0027s:\n\n}  // namespace\n\nRunning \"git cl lint\" on your local branch for this CL should tell you this.",
+      "revId": "43890cb4a338b481a49c3c01023098324f0b2e18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b86c19_49eceb7f",
+        "filename": "fpdfsdk/fpdf_annot_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T21:35:47Z",
+      "side": 1,
+      "message": "Does FX_ArraySize(kStreamData) work here?",
+      "revId": "43890cb4a338b481a49c3c01023098324f0b2e18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
