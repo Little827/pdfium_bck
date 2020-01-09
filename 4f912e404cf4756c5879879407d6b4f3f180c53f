@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56221ab6_0ad2a183",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-09T00:01:49Z",
+      "side": 1,
+      "message": "This may be where your lack of annotation drawing arises ...",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "4f912e404cf4756c5879879407d6b4f3f180c53f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
