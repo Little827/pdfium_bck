@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4650388d_9e29a3e3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-09T20:13:16Z",
+      "side": 1,
+      "message": "this would have to come at the end (or at least in the start of the v2 section) to maintain binary compatibility.",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 4
+      },
+      "revId": "8349358dd806af8e10373c602e54438bedbfe3fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
