@@ -278,6 +278,7 @@ void RenderPageWithContext(CPDF_Page* pPage,
 void SetPDFUnsupportInfo(UNSUPPORT_INFO* unsp_info);
 UNSUPPORT_INFO* GetPDFUnssuportInto();
 void ReportUnsupportedFeatures(CPDF_Document* pDoc);
+void ReportUnsupportedXFA(CPDF_Document* pDoc);
 void CheckForUnsupportedAnnot(const CPDF_Annot* pAnnot);
 void ProcessParseError(CPDF_Parser::Error err);
 
