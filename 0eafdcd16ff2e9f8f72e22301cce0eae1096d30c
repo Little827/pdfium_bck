@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "030abcc9_9657de8c",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-09T20:36:10Z",
+      "side": 1,
+      "message": "Optional: Wondering if we could use ByteStringView.First()/.Last() instead. (These functions will return 0 if the string doesn\u0027t have a first/last character.) This also returns an unsigned value. I was looking for something like a \"starts with\"/\"ends with\" function or method.\n\nFirst/Last() will also return the same character for a 1 character string, but the condition wouldn\u0027t pass for that case anyway.",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5887c164_e32521cb",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-09T20:36:10Z",
+      "side": 1,
+      "message": "Optional: This function is simple enough that it probably doesn\u0027t matter, but it might be beneficial to take a subrange of the ByteStringView (which is cheap) and iterate over that, rather than doing arithmetic on the ranges. (This would also allow use of a ranged for loop.)",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba31400_db28dd19",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-09T20:36:10Z",
+      "side": 1,
+      "message": "No action required: [i] and CharAt(i) only differ by the signedness of the result. Apparently, std::isxdigit() needs an unsigned char to work correctly (at least in theory), but it\u0027d be nice if these APIs somehow had fewer sharp edges...",
+      "range": {
+        "startLine": 85,
+        "startChar": 42,
+        "endLine": 85,
+        "endChar": 55
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64162a59_a17fc7bb",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 23
@@ -13,6 +70,29 @@
       "writtenOn": "2020-01-09T20:30:40Z",
       "side": 1,
       "message": "Just use ValueOrDie() here.",
+      "range": {
+        "startLine": 90,
+        "startChar": 41,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7a01a7_2c1c8292",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-09T20:36:10Z",
+      "side": 1,
+      "message": "It\u0027s not possible for IsValid() to be false here, right? ValueOrDie() seems like it would make more sense. ValueOrDefault(0) implies there are situations where we\u0027d return 0 instead of a nullopt for an invalid value, which doesn\u0027t seem right.",
       "range": {
         "startLine": 90,
         "startChar": 41,
