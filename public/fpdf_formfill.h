@@ -379,6 +379,13 @@ typedef struct _FPDF_FORMFILLINFO {
    */
   int version;
 
+  /*
+   * Whether the XFA module is disabled when built with the XFA module.
+   * Interface Version:
+   *       Ignored if |version| < 2.
+   */
+  FPDF_BOOL xfa_disabled;
+
   /* Version 1. */
   /*
    * Method: Release
