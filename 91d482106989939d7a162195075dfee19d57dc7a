@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f67417_ede3913f",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T21:23:55Z",
+      "side": 1,
+      "message": "Note this starts at |i| \u003d 1. That\u0027s because args[0] contains the executable name. Let\u0027s use that instead of hard coding it.",
+      "revId": "91d482106989939d7a162195075dfee19d57dc7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
