@@ -105,6 +105,30 @@
     },
     {
       "key": {
+        "uuid": "8f1819dc_7b12b482",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T20:38:52Z",
+      "side": 1,
+      "message": "i.e. ValueOrDie() is safe because it\u0027s no actual risk of dying.",
+      "parentUuid": "7a7a01a7_2c1c8292",
+      "range": {
+        "startLine": 90,
+        "startChar": 41,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a27bc54_0132a00a",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 23
