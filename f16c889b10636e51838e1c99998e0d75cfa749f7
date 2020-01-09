@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "685f1c18_b2174734",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T23:49:21Z",
+      "side": 1,
+      "message": "Unfortunately (2) does not work. For linearized_tagged.pdf, the value needs to be 23508 or greater. We still need to do more research into how loading works here, so I\u0027m changing my recommendation to skip (2) and do (1) followed by (3). A CL to just add a test to illustrate a problem can stand up on its own. Shall we do that?",
+      "parentUuid": "ec78480e_234499bb",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64a07d61_ee366f94",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 8
