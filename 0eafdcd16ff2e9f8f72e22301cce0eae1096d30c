@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64162a59_a17fc7bb",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T20:30:40Z",
+      "side": 1,
+      "message": "Just use ValueOrDie() here.",
+      "range": {
+        "startLine": 90,
+        "startChar": 41,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a27bc54_0132a00a",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T20:30:40Z",
+      "side": 1,
+      "message": "Add a blank line after, like lines 147-148.",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f393e8cb_acd3822e",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T20:30:40Z",
+      "side": 1,
+      "message": "WDYT of having |lowcode_str|, |lowcode_opt| and |lowcode|?",
+      "range": {
+        "startLine": 162,
+        "startChar": 31,
+        "endLine": 162,
+        "endChar": 47
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9a1064_c75fb817",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-09T20:30:40Z",
+      "side": 1,
+      "message": "Another potential issue, maybe to be addressed later: Can |value| overflow here?",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
