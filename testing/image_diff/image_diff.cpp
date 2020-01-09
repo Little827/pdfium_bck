@@ -27,14 +27,17 @@
 #include <windows.h>
 #endif
 
+// Binary name
+constexpr char kBinaryName[] = "pdfium_diff";
+
 // Return codes used by this utility.
-static const int kStatusSame = 0;
-static const int kStatusDifferent = 1;
-static const int kStatusError = 2;
+constexpr int kStatusSame = 0;
+constexpr int kStatusDifferent = 1;
+constexpr int kStatusError = 2;
 
 // Color codes.
-static const uint32_t RGBA_RED = 0x000000ff;
-static const uint32_t RGBA_ALPHA = 0xff000000;
+constexpr uint32_t RGBA_RED = 0x000000ff;
+constexpr uint32_t RGBA_ALPHA = 0xff000000;
 
 class Image {
  public:
@@ -197,15 +200,16 @@ void PrintHelp() {
   fprintf(
       stderr,
       "Usage:\n"
-      "  image_diff OPTIONS <compare file> <reference file>\n"
+      "  %s OPTIONS <compare file> <reference file>\n"
       "    Compares two files on disk, returning 0 when they are the same;\n"
       "    Passing \"--histogram\" additionally calculates a diff of the\n"
       "    RGBA value histograms. (which is resistant to shifts in layout)\n"
       "    Passing \"--reverse-byte-order\" additionally assumes the compare\n"
       "    file has BGRA byte ordering.\n"
-      "  image_diff --diff <compare file> <reference file> <output file>\n"
+      "  %s --diff <compare file> <reference file> <output file>\n"
       "    Compares two files on disk, outputs an image that visualizes the\n"
-      "    difference to <output file>\n");
+      "    difference to <output file>\n",
+      kBinaryName, kBinaryName);
 }
 
 int CompareImages(const std::string& file1,
@@ -220,11 +224,13 @@ int CompareImages(const std::string& file1,
           ? actual_image.CreateFromFilenameWithReverseByteOrder(file1)
           : actual_image.CreateFromFilename(file1);
   if (!actual_load_result) {
-    fprintf(stderr, "image_diff: Unable to open file \"%s\"\n", file1.c_str());
+    fprintf(stderr, "%s: Unable to open file \"%s\"\n", kBinaryName,
+            file1.c_str());
     return kStatusError;
   }
   if (!baseline_image.CreateFromFilename(file2)) {
-    fprintf(stderr, "image_diff: Unable to open file \"%s\"\n", file2.c_str());
+    fprintf(stderr, "%s: Unable to open file \"%s\"\n", kBinaryName,
+            file2.c_str());
     return kStatusError;
   }
 
@@ -282,11 +288,13 @@ int DiffImages(const std::string& file1,
   Image baseline_image;
 
   if (!actual_image.CreateFromFilename(file1)) {
-    fprintf(stderr, "image_diff: Unable to open file \"%s\"\n", file1.c_str());
+    fprintf(stderr, "%s: Unable to open file \"%s\"\n", kBinaryName,
+            file1.c_str());
     return kStatusError;
   }
   if (!baseline_image.CreateFromFilename(file2)) {
-    fprintf(stderr, "image_diff: Unable to open file \"%s\"\n", file2.c_str());
+    fprintf(stderr, "%s: Unable to open file \"%s\"\n", kBinaryName,
+            file2.c_str());
     return kStatusError;
   }
 
