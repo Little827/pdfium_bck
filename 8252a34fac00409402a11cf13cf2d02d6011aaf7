@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be3e672_f84c2ae8",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:51:48Z",
+      "side": 1,
+      "message": "If the executable is named \"pdfium_diff\" and it\u0027s in in the system PATH, then one can just type \"pdfium_diff\" on the command line to run it. In which case, argv[0] contains \"pdfium_diff\" with no path separator, and bad things happen...",
+      "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
