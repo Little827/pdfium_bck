@@ -105,6 +105,24 @@
       "revId": "36307b058cb253cdf2822e7cd96bf0a9dacb2ca9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba0608a_e935f942",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T00:55:20Z",
+      "side": 1,
+      "message": "One good reason to do a helper function is you might be less tempted to try and make this a one-liner. :-) It seems Lei already found a potential bug.\n\nIt\u0027d be more idiomatic C++ to use something like std::string::rfind, too, rather than something from the C standard library.",
+      "parentUuid": "a287bd34_204a1a59",
+      "revId": "36307b058cb253cdf2822e7cd96bf0a9dacb2ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
