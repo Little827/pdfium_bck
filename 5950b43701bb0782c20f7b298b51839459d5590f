@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "870a7c5c_057ecb4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T22:08:08Z",
+      "side": 1,
+      "message": "Indeed, which is why we stopped using this code in https://pdfium-review.googlesource.com/c/44651",
+      "revId": "5950b43701bb0782c20f7b298b51839459d5590f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
