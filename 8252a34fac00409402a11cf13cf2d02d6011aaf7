@@ -16,6 +16,24 @@
       "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14df9f6_5cd708d0",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-01-10T01:09:21Z",
+      "side": 1,
+      "message": "... Silly me... I even thought about the nullptr returned by strrchr and that I need to handle it, and then I simply neglected to.",
+      "parentUuid": "0be3e672_f84c2ae8",
+      "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
