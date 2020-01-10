@@ -87,6 +87,24 @@
       "revId": "36307b058cb253cdf2822e7cd96bf0a9dacb2ca9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a287bd34_204a1a59",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-01-10T00:52:48Z",
+      "side": 1,
+      "message": "Lei and I just talked offline about this. We should keep it std::string because of consistency (in this CL at least).\n\nIn regards to the helper function, sounds like good follow-up idea.",
+      "parentUuid": "6bfa5e73_6a90ec58",
+      "revId": "36307b058cb253cdf2822e7cd96bf0a9dacb2ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
