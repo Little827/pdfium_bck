@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4de7152_b58b333b",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:22:09Z",
+      "side": 1,
+      "message": "Is it possible to use |PATH_SEPARATOR| from testing/utils/path_service.h here, instead of repeating the definition?",
+      "revId": "36307b058cb253cdf2822e7cd96bf0a9dacb2ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d0d970_150e089e",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:22:09Z",
+      "side": 1,
+      "message": "Since strrchr() returns char*, and we just use const char* in all the function parameters above, and pass the const char* to printf(), rather than doing the C-string -\u003e std::string -\u003e C-string dance?",
+      "revId": "36307b058cb253cdf2822e7cd96bf0a9dacb2ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
