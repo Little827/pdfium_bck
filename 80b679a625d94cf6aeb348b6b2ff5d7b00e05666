@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a785d352_81eece7f",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T19:41:17Z",
+      "side": 1,
+      "message": "Since hex_str is only referenced here, I think you can just put the str.Mid() call inline.",
+      "range": {
+        "startLine": 82,
+        "startChar": 16,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "80b679a625d94cf6aeb348b6b2ff5d7b00e05666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf174669_f02b94c3",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 26
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "There is a chance of causing undefined behavior if the int is not representable as unsigned char or not equal to EOF. \nI found a note from https://en.cppreference.com/w/cpp/string/byte/isxdigit \n\"To use these functions safely with plain chars (or signed chars), the argument should first be converted to unsigned char.\"",
       "parentUuid": "bf174669_f02b94c3",
+      "range": {
+        "startLine": 83,
+        "startChar": 23,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "80b679a625d94cf6aeb348b6b2ff5d7b00e05666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc1b64e_a7b65fac",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T19:41:17Z",
+      "side": 1,
+      "message": "I made a comment about the same thing (this needs to be unsigned char). :-)\n\nThe old way (without ranged for), ByteStringView[] returned an unsigned char, so that was OK already.\n\nIt might be better to have our own version of std::isxdigit() that takes a char, or have FXSYS_HexCharToInt() take an int/unsigned char.",
+      "parentUuid": "4e1cfa2f_fb8a805d",
       "range": {
         "startLine": 83,
         "startChar": 23,

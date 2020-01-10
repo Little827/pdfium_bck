@@ -312,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "fbcb61ba_2673e90d",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T19:41:17Z",
+      "side": 1,
+      "message": "Addressing in a follow-up CL SGTM.",
+      "parentUuid": "5c9ab485_915b3824",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45521021_123733e0",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
         "patchSetId": 23
@@ -341,6 +359,24 @@
       "side": 1,
       "message": "Might as well give it a try!\n\nFor valid code string tests, they were changed into: \nEXPECT_THAT(CPDF_ToUnicodeMap::StringToCode(\"\u003c0001\u003e\"), testing::Optional(1u));\n\nFor the invalid string tests, I didn\u0027t change anything so far. But I did a test on this example:\nEXPECT_THAT(CPDF_ToUnicodeMap::StringToCode(\"\u003c\u003e\"), testing::Eq(pdfium::nullopt));\nIt works like a charm :D.",
       "parentUuid": "45521021_123733e0",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea1d540_b278d65f",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T19:41:17Z",
+      "side": 1,
+      "message": "Glad to hear it. :-) It\u0027s probably fine to add \"using testing::Optional\" and \"using testing::Eq\" somewhere to make this slightly shorter, too.",
+      "parentUuid": "ab8f5f2d_bfa05b96",
       "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false

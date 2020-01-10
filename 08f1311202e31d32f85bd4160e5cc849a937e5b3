@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "689c0732_474d3c11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T19:41:17Z",
+      "side": 1,
+      "message": "Obsolete",
+      "parentUuid": "19da70cd_4e0ed0d7",
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "463cf661_5c5d4048",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -305,6 +323,24 @@
       "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb469ad7_87433ac7",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T19:41:17Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "dd4be582_1b9e40ad",
+      "revId": "08f1311202e31d32f85bd4160e5cc849a937e5b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
