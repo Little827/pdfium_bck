@@ -34,6 +34,24 @@
       "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c8af95_12f01f0f",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-10T22:50:50Z",
+      "side": 1,
+      "message": "(Wanted to flag that this seems to have been fixed in the latest patchset. Although I still think it\u0027d be slightly better to assign argv[0] to a std::string first, and then operate on it using C++ APIs, instead of using the C string libraries.)",
+      "parentUuid": "a14df9f6_5cd708d0",
+      "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
