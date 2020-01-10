@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5d23f83_ce209bda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T07:58:01Z",
+      "side": 1,
+      "message": "Please update the CL description.",
+      "revId": "cba1a7a789e68c7f8ccd6a92c930170a84b52bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848ec66b_44e93f73",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T07:58:01Z",
+      "side": 1,
+      "message": "This is going to fail, so we need to make the test pass, with a TODO comment.",
+      "revId": "cba1a7a789e68c7f8ccd6a92c930170a84b52bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
