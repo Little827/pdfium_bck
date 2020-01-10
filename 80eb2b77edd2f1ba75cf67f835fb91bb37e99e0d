@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34866396_d6e8ed06",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:34:42Z",
+      "side": 1,
+      "message": "Please use |iter| to be consistent with GetPrevAnnot() immediately above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "80eb2b77edd2f1ba75cf67f835fb91bb37e99e0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f307652c_f3860c36",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:34:42Z",
+      "side": 1,
+      "message": "Ditto. Please use |it| or |iter|, which are more common, and not introduce another abbreviation for \"iterator\". Personally, I like |it| because it\u0027s shorter.",
+      "range": {
+        "startLine": 196,
+        "startChar": 7,
+        "endLine": 196,
+        "endChar": 10
+      },
+      "revId": "80eb2b77edd2f1ba75cf67f835fb91bb37e99e0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41810a0e_3adadf0b",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:34:42Z",
+      "side": 1,
+      "message": "The latest, preferred syntax is the following, verbatim:\n\n/*closeFigure\u003d*/false",
+      "range": {
+        "startLine": 433,
+        "startChar": 38,
+        "endLine": 433,
+        "endChar": 61
+      },
+      "revId": "80eb2b77edd2f1ba75cf67f835fb91bb37e99e0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74ab04f_c7592f45",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:34:42Z",
+      "side": 1,
+      "message": "It\u0027ll be good to check |count| is not nullptr before dereferencing it. Given it\u0027s here as is means that\u0027s one more thing to add a test case for.",
+      "revId": "80eb2b77edd2f1ba75cf67f835fb91bb37e99e0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3f6891_b3d3853a",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T00:34:42Z",
+      "side": 1,
+      "message": "If there is a process with PDFium running inside, and multiple documents loaded within that process, this API sets a global variable that affects all documents. One can imagine some PDFium embedders may want the flexibility to change the annotation focus behavior on a per-document basis. To give them that flexibility, this API probably should take a FPDF_FORMHANDLE and set the focusable types for only that FPDF_FORMHANDLE.",
+      "revId": "80eb2b77edd2f1ba75cf67f835fb91bb37e99e0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
