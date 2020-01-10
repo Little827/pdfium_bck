@@ -53,7 +53,7 @@ class CFX_GlobalData {
   Element* GetAt(int index);
 
   // Exposed for testing.
-  Element* GetGlobalVariable(const ByteString& sPropname);
+  Element* GetGlobalVariable(const ByteString& sPropname) const;
 
  private:
   using iterator = std::vector<std::unique_ptr<Element>>::iterator;
