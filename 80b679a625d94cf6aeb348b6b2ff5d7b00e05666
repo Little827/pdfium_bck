@@ -93,6 +93,30 @@
       "revId": "80b679a625d94cf6aeb348b6b2ff5d7b00e05666",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15bcb914_c6e713f9",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T21:57:54Z",
+      "side": 1,
+      "message": "Maybe switch to FXSYS_IsHexDigit() here then?",
+      "parentUuid": "bfc1b64e_a7b65fac",
+      "range": {
+        "startLine": 83,
+        "startChar": 23,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "80b679a625d94cf6aeb348b6b2ff5d7b00e05666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
