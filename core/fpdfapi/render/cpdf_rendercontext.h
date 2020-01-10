@@ -15,7 +15,6 @@
 
 class CPDF_Dictionary;
 class CPDF_Document;
-class CPDF_Page;
 class CPDF_PageObject;
 class CPDF_PageObjectHolder;
 class CPDF_PageRenderCache;
@@ -36,8 +35,9 @@ class CPDF_RenderContext {
     CFX_Matrix m_Matrix;
   };
 
-  explicit CPDF_RenderContext(CPDF_Page* pPage);
-  CPDF_RenderContext(CPDF_Document* pDoc, CPDF_PageRenderCache* pPageCache);
+  CPDF_RenderContext(CPDF_Document* pDoc,
+                     CPDF_Dictionary* pPageResources,
+                     CPDF_PageRenderCache* pPageCache);
   ~CPDF_RenderContext();
 
   void AppendLayer(CPDF_PageObjectHolder* pObjectHolder,
