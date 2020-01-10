@@ -27,27 +27,21 @@ bool CPDF_ImageLoader::Start(CPDF_ImageObject* pImage,
                              CPDF_RenderStatus* pRenderStatus) {
   m_pCache = pCache;
   m_pImageObject = pImage;
-  bool ret;
-  if (pCache) {
-    ret = pCache->StartGetCachedBitmap(m_pImageObject->GetImage(), bStdCS,
-                                       GroupFamily, bLoadMask, pRenderStatus);
-  } else {
-    ret = m_pImageObject->GetImage()->StartLoadDIBBase(
-        pRenderStatus->GetFormResource(), pRenderStatus->GetPageResource(),
-        bStdCS, GroupFamily, bLoadMask);
-  }
-  if (!ret)
+  if (!m_pCache->StartGetCachedBitmap(m_pImageObject->GetImage(), bStdCS,
+                                      GroupFamily, bLoadMask, pRenderStatus)) {
     HandleFailure();
-  return ret;
+    return false;
+  }
+  return true;
 }
 
 bool CPDF_ImageLoader::Continue(PauseIndicatorIface* pPause,
                                 CPDF_RenderStatus* pRenderStatus) {
-  bool ret = m_pCache ? m_pCache->Continue(pPause, pRenderStatus)
-                      : m_pImageObject->GetImage()->Continue(pPause);
-  if (!ret)
+  if (!m_pCache->Continue(pPause, pRenderStatus)) {
     HandleFailure();
-  return ret;
+    return false;
+  }
+  return true;
 }
 
 RetainPtr<CFX_DIBBase> CPDF_ImageLoader::TranslateImage(
@@ -63,17 +57,9 @@ RetainPtr<CFX_DIBBase> CPDF_ImageLoader::TranslateImage(
 }
 
 void CPDF_ImageLoader::HandleFailure() {
-  if (m_pCache) {
-    CPDF_ImageCacheEntry* entry = m_pCache->GetCurImageCacheEntry();
-    m_bCached = true;
-    m_pBitmap = entry->DetachBitmap();
-    m_pMask = entry->DetachMask();
-    m_MatteColor = entry->m_MatteColor;
-    return;
-  }
-  RetainPtr<CPDF_Image> pImage = m_pImageObject->GetImage();
-  m_bCached = false;
-  m_pBitmap = pImage->DetachBitmap();
-  m_pMask = pImage->DetachMask();
-  m_MatteColor = pImage->m_MatteColor;
+  CPDF_ImageCacheEntry* entry = m_pCache->GetCurImageCacheEntry();
+  m_bCached = true;
+  m_pBitmap = entry->DetachBitmap();
+  m_pMask = entry->DetachMask();
+  m_MatteColor = entry->m_MatteColor;
 }
