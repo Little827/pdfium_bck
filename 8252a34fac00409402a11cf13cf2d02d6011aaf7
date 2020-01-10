@@ -52,6 +52,24 @@
       "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e3172cf_4968f44d",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-01-10T23:00:39Z",
+      "side": 1,
+      "message": "I\u0027d agree, but IMO all the std::strings in this file should be C strings to begin with. Maybe a future CL will get rid of the std::string dance. I\u0027m tempted to do it, but also afraid I\u0027ll be wasting my time on low-value work. \n\nHaha, at this point I\u0027m just throwing my arms in the air and I\u0027ll be fine with anything. 😋",
+      "parentUuid": "49c8af95_12f01f0f",
+      "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
