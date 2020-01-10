@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "740b218e_c7a80662",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-10T06:29:35Z",
+      "side": 1,
+      "message": "To understand it better,\nBy (1) you mean the change in this CL with a TODO. Or you meant that we should just add a test where /StructTreeRoot object is not loaded and remove rest of the change?",
+      "parentUuid": "685f1c18_b2174734",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64a07d61_ee366f94",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 8
