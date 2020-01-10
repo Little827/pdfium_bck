@@ -78,13 +78,13 @@ CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp,
       m_pNotify(pdfium::MakeUnique<CXFA_FFNotify>(this)),
       m_pDocument(pdfium::MakeUnique<CXFA_Document>(
           m_pNotify.get(),
-          pdfium::MakeUnique<CXFA_LayoutProcessor>())) {}
+          pdfium::MakeUnique<CXFA_LayoutProcessor>())),
+      m_pDocView(pdfium::MakeUnique<CXFA_FFDocView>(this)) {}
 
 CXFA_FFDoc::~CXFA_FFDoc() {
-  if (m_DocView) {
-    m_DocView->RunDocClose();
-    m_DocView.reset();
-  }
+  m_pDocView->RunDocClose();
+  m_pDocView.reset();
+
   if (m_pDocument)
     m_pDocument->ClearLayoutData();
 
@@ -112,20 +112,9 @@ bool CXFA_FFDoc::ParseDoc(const RetainPtr<IFX_SeekableStream>& stream) {
   return true;
 }
 
-CXFA_FFDocView* CXFA_FFDoc::CreateDocView() {
-  if (!m_DocView)
-    m_DocView = pdfium::MakeUnique<CXFA_FFDocView>(this);
-
-  return m_DocView.get();
-}
-
-CXFA_FFDocView* CXFA_FFDoc::GetDocView(CXFA_LayoutProcessor* pLayout) {
-  return m_DocView && m_DocView->GetXFALayout() == pLayout ? m_DocView.get()
-                                                           : nullptr;
-}
-
-CXFA_FFDocView* CXFA_FFDoc::GetDocView() {
-  return m_DocView.get();
+CXFA_FFDocView* CXFA_FFDoc::GetDocViewForProcessor(
+    CXFA_LayoutProcessor* pLayout) {
+  return m_pDocView->GetXFALayout() == pLayout ? m_pDocView.get() : nullptr;
 }
 
 bool CXFA_FFDoc::OpenDoc(const RetainPtr<IFX_SeekableStream>& stream) {

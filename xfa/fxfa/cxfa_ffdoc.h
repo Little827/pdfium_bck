@@ -54,14 +54,14 @@ class CXFA_FFDoc {
   }
   FormType GetFormType() const { return m_FormType; }
   CFX_XMLDocument* GetXMLDocument() const { return m_pXMLDoc.get(); }
-
-  CXFA_FFDocView* CreateDocView();
-
   CXFA_Document* GetXFADoc() const { return m_pDocument.get(); }
   CXFA_FFApp* GetApp() const { return m_pApp.Get(); }
   CPDF_Document* GetPDFDoc() const { return m_pPDFDoc.Get(); }
-  CXFA_FFDocView* GetDocView(CXFA_LayoutProcessor* pLayout);
-  CXFA_FFDocView* GetDocView();
+
+  // Non-null except in dtor.
+  CXFA_FFDocView* GetDocView() const { return m_pDocView.get(); }
+
+  CXFA_FFDocView* GetDocViewForProcessor(CXFA_LayoutProcessor* pLayout);
   RetainPtr<CFX_DIBitmap> GetPDFNamedImage(WideStringView wsName,
                                            int32_t& iImageXDpi,
                                            int32_t& iImageYDpi);
@@ -83,7 +83,7 @@ class CXFA_FFDoc {
   std::unique_ptr<CFX_XMLDocument> m_pXMLDoc;
   std::unique_ptr<CXFA_FFNotify> m_pNotify;
   std::unique_ptr<CXFA_Document> m_pDocument;
-  std::unique_ptr<CXFA_FFDocView> m_DocView;
+  std::unique_ptr<CXFA_FFDocView> m_pDocView;
   std::unique_ptr<CFGAS_PDFFontMgr> m_pPDFFontMgr;
   std::map<uint32_t, FX_IMAGEDIB_AND_DPI> m_HashToDibDpiMap;
   FormType m_FormType = FormType::kXFAForeground;

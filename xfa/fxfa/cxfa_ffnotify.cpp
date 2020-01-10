@@ -61,7 +61,8 @@ CXFA_FFNotify::~CXFA_FFNotify() {}
 
 void CXFA_FFNotify::OnPageEvent(CXFA_ViewLayoutItem* pSender,
                                 uint32_t dwEvent) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView(pSender->GetLayout());
+  CXFA_FFDocView* pDocView =
+      m_pDoc->GetDocViewForProcessor(pSender->GetLayout());
   if (pDocView)
     pDocView->OnPageEvent(pSender, dwEvent);
 }
@@ -97,8 +98,8 @@ std::unique_ptr<CXFA_FFPageView> CXFA_FFNotify::OnCreateViewLayoutItem(
     return nullptr;
 
   auto* pLayout = CXFA_LayoutProcessor::FromDocument(m_pDoc->GetXFADoc());
-  return pdfium::MakeUnique<CXFA_FFPageView>(m_pDoc->GetDocView(pLayout),
-                                             pNode);
+  return pdfium::MakeUnique<CXFA_FFPageView>(
+      m_pDoc->GetDocViewForProcessor(pLayout), pNode);
 }
 
 std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
@@ -196,7 +197,7 @@ std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
   }
   ASSERT(pWidget);
   auto* pLayout = CXFA_LayoutProcessor::FromDocument(m_pDoc->GetXFADoc());
-  pWidget->SetDocView(m_pDoc->GetDocView(pLayout));
+  pWidget->SetDocView(m_pDoc->GetDocViewForProcessor(pLayout));
   return pWidget;
 }
 
@@ -207,16 +208,14 @@ void CXFA_FFNotify::StartFieldDrawLayout(CXFA_Node* pItem,
 }
 
 bool CXFA_FFNotify::RunScript(CXFA_Script* script, CXFA_Node* item) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return false;
-
   CXFA_EventParam EventParam;
   EventParam.m_eType = XFA_EVENT_Unknown;
 
   XFA_EventError iRet;
   bool bRet;
-  std::tie(iRet, bRet) = item->ExecuteBoolScript(pDocView, script, &EventParam);
+  std::tie(iRet, bRet) =
+      item->ExecuteBoolScript(m_pDoc->GetDocView(), script, &EventParam);
+
   return iRet == XFA_EventError::kSuccess && bRet;
 }
 
@@ -224,18 +223,12 @@ XFA_EventError CXFA_FFNotify::ExecEventByDeepFirst(CXFA_Node* pFormNode,
                                                    XFA_EVENTTYPE eEventType,
                                                    bool bIsFormReady,
                                                    bool bRecursive) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return XFA_EventError::kNotExist;
-  return pDocView->ExecEventActivityByDeepFirst(pFormNode, eEventType,
-                                                bIsFormReady, bRecursive);
+  return m_pDoc->GetDocView()->ExecEventActivityByDeepFirst(
+      pFormNode, eEventType, bIsFormReady, bRecursive);
 }
 
 void CXFA_FFNotify::AddCalcValidate(CXFA_Node* pNode) {
   CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
   pDocView->AddCalculateNode(pNode);
   pDocView->AddValidateNode(pNode);
 }
@@ -245,8 +238,7 @@ IXFA_AppProvider* CXFA_FFNotify::GetAppProvider() {
 }
 
 CXFA_FFWidgetHandler* CXFA_FFNotify::GetWidgetHandler() {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  return pDocView ? pDocView->GetWidgetHandler() : nullptr;
+  return m_pDoc->GetDocView()->GetWidgetHandler();
 }
 
 void CXFA_FFNotify::OpenDropDownList(CXFA_Node* pNode) {
@@ -280,59 +272,37 @@ void CXFA_FFNotify::OpenDropDownList(CXFA_Node* pNode) {
 }
 
 void CXFA_FFNotify::ResetData(CXFA_Node* pNode) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
-  pDocView->ResetNode(pNode);
+  m_pDoc->GetDocView()->ResetNode(pNode);
 }
 
 int32_t CXFA_FFNotify::GetLayoutStatus() {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  return pDocView ? pDocView->GetLayoutStatus() : 0;
+  return m_pDoc->GetDocView()->GetLayoutStatus();
 }
 
 void CXFA_FFNotify::RunNodeInitialize(CXFA_Node* pNode) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
-  pDocView->AddNewFormNode(pNode);
+  m_pDoc->GetDocView()->AddNewFormNode(pNode);
 }
 
 void CXFA_FFNotify::RunSubformIndexChange(CXFA_Node* pSubformNode) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
-  pDocView->AddIndexChangedSubform(pSubformNode);
+  m_pDoc->GetDocView()->AddIndexChangedSubform(pSubformNode);
 }
 
 CXFA_Node* CXFA_FFNotify::GetFocusWidgetNode() {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  return pDocView ? pDocView->GetFocusNode() : nullptr;
+  return m_pDoc->GetDocView()->GetFocusNode();
 }
 
 void CXFA_FFNotify::SetFocusWidgetNode(CXFA_Node* pNode) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-  pDocView->SetFocusNode(pNode);
+  m_pDoc->GetDocView()->SetFocusNode(pNode);
 }
 
 void CXFA_FFNotify::OnNodeReady(CXFA_Node* pNode) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
   if (pNode->HasCreatedUIWidget()) {
     pNode->SetWidgetReady();
     return;
   }
-
   switch (pNode->GetElementType()) {
     case XFA_Element::BindItems:
-      pDocView->AddBindItem(static_cast<CXFA_BindItems*>(pNode));
+      m_pDoc->GetDocView()->AddBindItem(static_cast<CXFA_BindItems*>(pNode));
       break;
     case XFA_Element::Validate:
       pNode->SetFlag(XFA_NodeFlag_NeedsInitApp);
@@ -351,12 +321,10 @@ void CXFA_FFNotify::OnValueChanging(CXFA_Node* pSender, XFA_Attribute eAttr) {
     return;
 
   CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
   if (pDocView->GetLayoutStatus() < XFA_DOCVIEW_LAYOUTSTATUS_End)
     return;
 
-  CXFA_FFWidget* pWidget = m_pDoc->GetDocView()->GetWidgetForNode(pSender);
+  CXFA_FFWidget* pWidget = pDocView->GetWidgetForNode(pSender);
   for (; pWidget; pWidget = pWidget->GetNextFFWidget()) {
     if (pWidget->IsLoaded())
       pWidget->InvalidateRect();
@@ -368,9 +336,6 @@ void CXFA_FFNotify::OnValueChanged(CXFA_Node* pSender,
                                    CXFA_Node* pParentNode,
                                    CXFA_Node* pWidgetNode) {
   CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
   if (pSender->GetPacketType() != XFA_PacketType::Form) {
     if (eAttr == XFA_Attribute::Value)
       pDocView->AddCalculateNodeNotify(pSender);
@@ -436,9 +401,6 @@ void CXFA_FFNotify::OnChildAdded(CXFA_Node* pSender) {
     return;
 
   CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
   bool bLayoutReady =
       !(pDocView->m_bInLayoutStatus) &&
       (pDocView->GetLayoutStatus() == XFA_DOCVIEW_LAYOUTSTATUS_End);
@@ -448,9 +410,6 @@ void CXFA_FFNotify::OnChildAdded(CXFA_Node* pSender) {
 
 void CXFA_FFNotify::OnChildRemoved() {
   CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
-  if (!pDocView)
-    return;
-
   bool bLayoutReady =
       !(pDocView->m_bInLayoutStatus) &&
       (pDocView->GetLayoutStatus() == XFA_DOCVIEW_LAYOUTSTATUS_End);
@@ -462,7 +421,7 @@ void CXFA_FFNotify::OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
                                       CXFA_LayoutItem* pSender,
                                       int32_t iPageIdx,
                                       uint32_t dwStatus) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView(pLayout);
+  CXFA_FFDocView* pDocView = m_pDoc->GetDocViewForProcessor(pLayout);
   if (!pDocView)
     return;
 
@@ -496,7 +455,7 @@ void CXFA_FFNotify::OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
 
 void CXFA_FFNotify::OnLayoutItemRemoving(CXFA_LayoutProcessor* pLayout,
                                          CXFA_LayoutItem* pSender) {
-  CXFA_FFDocView* pDocView = m_pDoc->GetDocView(pLayout);
+  CXFA_FFDocView* pDocView = m_pDoc->GetDocViewForProcessor(pLayout);
   if (!pDocView)
     return;
 

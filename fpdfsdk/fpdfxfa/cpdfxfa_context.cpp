@@ -159,13 +159,11 @@ bool CPDFXFA_Context::LoadXFADoc() {
   else
     m_FormType = FormType::kXFAForeground;
 
-  m_pXFADocView = m_pXFADoc->CreateDocView();
   if (m_pXFADocView->StartLayout() < 0) {
     CloseXFADoc();
     FXSYS_SetLastError(FPDF_ERR_XFALAYOUT);
     return false;
   }
-
   m_pXFADocView->DoLayout();
   m_pXFADocView->StopLayout();
   m_nLoadStatus = FXFA_LOADSTATUS_LOADED;
