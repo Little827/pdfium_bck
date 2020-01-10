@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "35bf9146_ff3b007b",
+        "filename": "core/fpdfapi/parser/cpdf_data_avail.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-10T07:18:15Z",
+      "side": 1,
+      "message": "If you are going to work on (1), then I would suggest making a new CL to just check in linearized_tagged.pdf and update fpdf_structtree_embeddertest.cpp with the a test that loads linearized_tagged.pdf but can\u0027t get to the struct tree yet.",
+      "parentUuid": "740b218e_c7a80662",
+      "revId": "f16c889b10636e51838e1c99998e0d75cfa749f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64a07d61_ee366f94",
         "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
         "patchSetId": 8
