@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b9029cc3_dd01a617",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-10T18:22:35Z",
+      "side": 1,
+      "message": "Changed this section into something like:\n\n  ByteStringView hex_str \u003d str.Mid(1, len - 2);\n  for (char c : hex_str) {\n    if (!std::isxdigit(static_cast\u003cunsigned char\u003e(c)))\n      return pdfium::nullopt;\n\n    code \u003d code * 16 + FXSYS_HexCharToInt(c);\n    if (!code.IsValid())\n      return pdfium::nullopt;\n  }\n\ndhoss reminded me that there is a current discussion about changing the method name for ByteStringView::Mid(). But that should be just a simple fix in the future once the method name changes.\n\nIf we are going to use a subrange of the string here, we might as well change that in CPDF_ToUnicodeMap::StringToWideString() to keep it consistent.",
+      "parentUuid": "5887c164_e32521cb",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ba31400_db28dd19",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 23
@@ -129,6 +147,54 @@
     },
     {
       "key": {
+        "uuid": "0b731521_753206a9",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-10T18:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64162a59_a17fc7bb",
+      "range": {
+        "startLine": 90,
+        "startChar": 41,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50dd12c6_1525bbb2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-10T18:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f1819dc_7b12b482",
+      "range": {
+        "startLine": 90,
+        "startChar": 41,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a27bc54_0132a00a",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 23
@@ -143,6 +209,24 @@
       "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be2a5ae_c9b3e9b2",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-10T18:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a27bc54_0132a00a",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -169,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "8d358498_1b058544",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-10T18:22:35Z",
+      "side": 1,
+      "message": "The code is definitely more readable this way. :D",
+      "parentUuid": "f393e8cb_acd3822e",
+      "range": {
+        "startLine": 162,
+        "startChar": 31,
+        "endLine": 162,
+        "endChar": 47
+      },
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a9a1064_c75fb817",
         "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
         "patchSetId": 23
@@ -180,6 +288,24 @@
       "writtenOn": "2020-01-09T20:30:40Z",
       "side": 1,
       "message": "Another potential issue, maybe to be addressed later: Can |value| overflow here?",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9ab485_915b3824",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-10T18:22:35Z",
+      "side": 1,
+      "message": "Yes! |value| can definitely overflow here and the fuzzer for this function is not implemented yet. I can fix it in another CL so that this CL doesn\u0027t get too big.",
+      "parentUuid": "7a9a1064_c75fb817",
       "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -200,6 +326,24 @@
       "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab8f5f2d_bfa05b96",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap_unittest.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-10T18:22:35Z",
+      "side": 1,
+      "message": "Might as well give it a try!\n\nFor valid code string tests, they were changed into: \nEXPECT_THAT(CPDF_ToUnicodeMap::StringToCode(\"\u003c0001\u003e\"), testing::Optional(1u));\n\nFor the invalid string tests, I didn\u0027t change anything so far. But I did a test on this example:\nEXPECT_THAT(CPDF_ToUnicodeMap::StringToCode(\"\u003c\u003e\"), testing::Eq(pdfium::nullopt));\nIt works like a charm :D.",
+      "parentUuid": "45521021_123733e0",
+      "revId": "0eafdcd16ff2e9f8f72e22301cce0eae1096d30c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
