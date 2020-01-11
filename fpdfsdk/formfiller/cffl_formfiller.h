@@ -18,6 +18,7 @@
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 
+class CBA_FontMap;
 class CPDFSDK_Annot;
 class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_PageView;
@@ -138,20 +139,18 @@ class CFFL_FormFiller : public CPWL_Wnd::ProviderIface,
   CPDFSDK_Annot* GetSDKAnnot() const { return m_pWidget.Get(); }
 
  protected:
-  // If the inheriting widget has its own fontmap and a PWL_Edit widget that
-  // access that fontmap then you have to call DestroyWindows before destroying
-  // the font map in order to not get a use-after-free.
-  //
-  // The font map should be stored somewhere more appropriate so it will live
-  // until the PWL_Edit is done with it. pdfium:566
-  void DestroyWindows();
-
   void InvalidateRect(const FX_RECT& rect);
 
   bool m_bValid = false;
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
   UnownedPtr<CPDFSDK_Widget> m_pWidget;
   std::unique_ptr<CFX_Timer> m_pTimer;
+  std::unique_ptr<CBA_FontMap> m_pFontMap;
+
+ private:
+  void DestroyWindows();
+
+  // Must be last.
   std::map<CPDFSDK_PageView*, std::unique_ptr<CPWL_Wnd>> m_Maps;
 };
 

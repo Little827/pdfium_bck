@@ -19,15 +19,7 @@ CFFL_TextField::CFFL_TextField(CPDFSDK_FormFillEnvironment* pApp,
                                CPDFSDK_Widget* pWidget)
     : CFFL_TextObject(pApp, pWidget) {}
 
-CFFL_TextField::~CFFL_TextField() {
-  for (const auto& it : m_Maps)
-    it.second->InvalidateFocusHandler(this);
-
-  // See comment in cffl_formfiller.h.
-  // The font map should be stored somewhere more appropriate so it will live
-  // until the PWL_Edit is done with it. pdfium:566
-  DestroyWindows();
-}
+CFFL_TextField::~CFFL_TextField() = default;
 
 CPWL_Wnd::CreateParams CFFL_TextField::GetCreateParam() {
   CPWL_Wnd::CreateParams cp = CFFL_TextObject::GetCreateParam();

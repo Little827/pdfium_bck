@@ -24,15 +24,7 @@ CFFL_ComboBox::CFFL_ComboBox(CPDFSDK_FormFillEnvironment* pApp,
   m_State.nEnd = 0;
 }
 
-CFFL_ComboBox::~CFFL_ComboBox() {
-  for (const auto& it : m_Maps)
-    it.second->InvalidateFocusHandler(this);
-
-  // See comment in cffl_formfiller.h.
-  // The font map should be stored somewhere more appropriate so it will live
-  // until the PWL_Edit is done with it. pdfium:566
-  DestroyWindows();
-}
+CFFL_ComboBox::~CFFL_ComboBox() = default;
 
 CPWL_Wnd::CreateParams CFFL_ComboBox::GetCreateParam() {
   CPWL_Wnd::CreateParams cp = CFFL_TextObject::GetCreateParam();
