@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1578712069 -0800\nnonce AC6AUtMtRtE2ewHZUklampCKeDuBXRTheYt9Yi7plJFmwV4MP6USY/mxABPakjpmKQrtSC/NBwV7\n\n0000000000000000000000000000000000000000 83339c7e246fee85e276b3a2bb27ac03228715bb refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4ZPAUACgkQqzYtYVpm\n/XvY7Af9GhGO4HbKupav8OYw2wbDJ7bSFtACEZ2vminipTxkwx7bZGiMHei88Vbf\nuWoxADptIcARdElyK0CgseEX07MGaCMYrQ78QF7Z4iZLwIeS8pN2SaiS/74HQVYx\n4AduIQc5Jhb3MJVOwybzzRe/y6OfYpQ7eqF2vi9jAg9C6wJT62BTF8jbbvLEqiee\niQ2e6h1eScy3IIub3m6cSTyFq0FPEnLgwm5YvjPWKzFVQpaRBhx4wiQsogwOu4xw\nbhNbYyF37QnF1DqaIq77PsrYVRVhu6hMTqTaajUu9aiBkjAGxbdJddlgiG8zGnyp\nedndhnToE/TYV4To0/dHUtDkw2jpoQ\u003d\u003d\n\u003dIyVJ\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea51276b_9cfead41",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-13T18:18:53Z",
+      "side": 1,
+      "message": "I\u0027m surprised we didn\u0027t get the \"complex struct needs an out-of-line ctor\" noise here (not that it should have one).",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "83339c7e246fee85e276b3a2bb27ac03228715bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
