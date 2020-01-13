@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ea9b583_129495b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-13T19:13:29Z",
+      "side": 1,
+      "message": "\"Provide initializers for scalars\" ?\n\"Initialize scalars\" ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc9eb1a_91c9655c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-13T19:13:29Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c4f366_c5c45ffb",
+        "filename": "xfa/fwl/cfwl_barcode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-13T19:13:29Z",
+      "side": 1,
+      "message": "bools first?",
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1a7fd5_645b9832",
+        "filename": "xfa/fwl/cfwl_themetext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-13T19:13:29Z",
+      "side": 1,
+      "message": "\u003d default;",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
