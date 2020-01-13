@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d060461_061e741b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-13T19:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea9b583_129495b2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dc9eb1a_91c9655c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1dc9b1db_00786491",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-13T19:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc9eb1a_91c9655c",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84c4f366_c5c45ffb",
         "filename": "xfa/fwl/cfwl_barcode.h",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2020-01-13T19:13:29Z",
       "side": 1,
       "message": "bools first?",
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9188b891_dc5858fd",
+        "filename": "xfa/fwl/cfwl_barcode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-13T19:21:32Z",
+      "side": 1,
+      "message": "Yea, except the 4 preceding mebers are all now single-byte values, and the |m_type| describes the \"variant\" and should come first, and the rest of the BC stuff seems to follow ... I guess there aren\u0027t really any rules ...",
+      "parentUuid": "84c4f366_c5c45ffb",
       "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -85,6 +151,30 @@
       "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a31fafc_e68cf006",
+        "filename": "xfa/fwl/cfwl_themetext.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-13T19:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa1a7fd5_645b9832",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "04dd60d1bd3a1d17e41a5d5a63441d83fbdf3761",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
