@@ -310,6 +310,10 @@ void* CFX_FolderFontInfo::FindFont(int weight,
     if (bMatchName && !bsName.Contains(family))
       continue;
 
+    // If an exact match is found, return the font face.
+    if (bMatchName && (strlen(family) == bsName.GetLength()))
+      return pFont;
+
     int32_t iSimilarValue =
         GetSimilarValue(weight, bItalic, pitch_family, pFont->m_Styles);
     if (iSimilarValue > iBestSimilar) {
