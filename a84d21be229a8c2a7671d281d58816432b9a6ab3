@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "487350a0_6c548cc1",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-13T22:05:34Z",
+      "side": 1,
+      "message": "Try bots failed because this is at the wrong scope.",
+      "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a309d50_57fab8dd",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-13T22:05:34Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 1295,
+        "startChar": 12,
+        "endLine": 1295,
+        "endChar": 15
+      },
+      "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c6beb09_dfa58393",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-13T22:05:34Z",
+      "side": 1,
+      "message": "FX_ArraySize(kText) means |kTextSize| has the value 5. Do you feel that\u0027s more intuitive, or for |kTextSize| to have value 4?",
+      "range": {
+        "startLine": 1295,
+        "startChar": 28,
+        "endLine": 1295,
+        "endChar": 47
+      },
+      "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
