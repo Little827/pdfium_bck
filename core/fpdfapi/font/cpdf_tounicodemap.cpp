@@ -184,13 +184,14 @@ void CPDF_ToUnicodeMap::HandleBeginBFRange(CPDF_SimpleParser* pParser) {
 
     WideString destcode = StringToWideString(start);
     if (destcode.GetLength() == 1) {
-      pdfium::Optional<uint32_t> value_or_error = StringToCode(start);
-      if (!value_or_error.has_value())
+      pdfium::Optional<uint32_t> value_opt = StringToCode(start);
+      if (!value_opt.has_value())
         return;
 
-      uint32_t value = value_or_error.value();
-      for (uint32_t code = lowcode; code <= highcode; code++)
-        m_Map[code] = value++;
+      FX_SAFE_UINT32 value = value_opt.value();
+      for (uint32_t code = lowcode; code <= highcode && value.IsValid();
+           code++, value++)
+        m_Map[code] = value.ValueOrDie();
     } else {
       for (uint32_t code = lowcode; code <= highcode; code++) {
         WideString retcode =
