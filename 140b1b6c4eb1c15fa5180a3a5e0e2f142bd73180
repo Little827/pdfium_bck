@@ -69,6 +69,30 @@
       "revId": "140b1b6c4eb1c15fa5180a3a5e0e2f142bd73180",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b42c65_d27703bc",
+        "filename": "core/fpdfapi/page/cpdf_dibtransferfunc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-14T22:41:59Z",
+      "side": 1,
+      "message": "Whoops. I was aware of this issue but still managed to reverse the ordering.",
+      "parentUuid": "d3c8ab7b_0bb251a7",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "140b1b6c4eb1c15fa5180a3a5e0e2f142bd73180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
