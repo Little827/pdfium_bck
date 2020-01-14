@@ -1283,6 +1283,29 @@ TEST_F(FPDFTextEmbedderTest, Bug_1139) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFTextEmbedderTest, Bug_642) {
+  ASSERT_TRUE(OpenDocument("bug_642.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  {
+    ScopedFPDFTextPage text_page(FPDFText_LoadPage(page));
+    ASSERT_TRUE(text_page);
+
+    constexpr char kText[] = "ABCD";
+    constexpr int kTextSize = static_cast<int>(FX_ArraySize(kText));
+    // -1 for CountChars not including the \0
+    EXPECT_EQ(kTextSize - 1, FPDFText_CountChars(text_page.get()));
+
+    unsigned short buffer[kTextSize];
+    int num_chars =
+        FPDFText_GetText(text_page.get(), 0, FX_ArraySize(buffer) - 1, buffer);
+    ASSERT_EQ(kTextSize, num_chars);
+    EXPECT_TRUE(check_unsigned_shorts(kText, buffer, kTextSize));
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFTextEmbedderTest, GetCharAngle) {
   ASSERT_TRUE(OpenDocument("rotated_text.pdf"));
   FPDF_PAGE page = LoadPage(0);
