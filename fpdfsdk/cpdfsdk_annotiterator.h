@@ -23,6 +23,11 @@ class CPDFSDK_AnnotIterator {
 
   CPDFSDK_AnnotIterator(CPDFSDK_PageView* pPageView,
                         CPDF_Annot::Subtype nAnnotSubtype);
+
+  CPDFSDK_AnnotIterator(
+      CPDFSDK_PageView* pPageView,
+      const std::vector<CPDF_Annot::Subtype>& subtypes_to_iterate);
+
   ~CPDFSDK_AnnotIterator();
 
   CPDFSDK_Annot* GetFirstAnnot();
@@ -36,9 +41,10 @@ class CPDFSDK_AnnotIterator {
   CFX_FloatRect AddToAnnotsList(std::vector<CPDFSDK_Annot*>* sa, size_t idx);
   void AddSelectedToAnnots(std::vector<CPDFSDK_Annot*>* sa,
                            std::vector<size_t>* aSelect);
+  bool ShouldIterateOverAnnot(const CPDF_Annot::Subtype& annot_type);
 
   UnownedPtr<CPDFSDK_PageView> const m_pPageView;
-  CPDF_Annot::Subtype m_nAnnotSubtype;
+  std::vector<CPDF_Annot::Subtype> subtypes_to_iterate_;
   const TabOrder m_eTabOrder;
   std::vector<CPDFSDK_Annot*> m_Annots;
 };

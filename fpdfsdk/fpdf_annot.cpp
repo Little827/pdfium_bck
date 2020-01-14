@@ -6,6 +6,7 @@
 
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "constants/annotation_common.h"
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
@@ -970,4 +971,58 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_IsChecked(FPDF_FORMHANDLE hHandle,
 
   CPDFSDK_Widget* pWidget = pForm->GetWidget(pFormControl);
   return pWidget && pWidget->IsChecked();
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFAnnot_SetFocusableSubtypes(FPDF_FORMHANDLE hHandle,
+                               const FPDF_ANNOTATION_SUBTYPE* subtypes,
+                               size_t count) {
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
+    return false;
+
+  if (!subtypes)
+    return false;
+
+  pForm->SetFocusableAnnotSubtypes(subtypes, count);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFAnnot_GetFocusableSubtypes(FPDF_FORMHANDLE hHandle,
+                               FPDF_ANNOTATION_SUBTYPE* subtypes,
+                               size_t* count) {
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
+    return false;
+
+  // If null pointer is passed as count then return false.
+  if (!count) {
+    return false;
+  }
+
+  const std::vector<CPDF_Annot::Subtype>& focusable_annot_types =
+      pForm->GetFocusableAnnotSubtypes();
+
+  // If passed count by host & count of currently set focusable subtypes differ
+  // then update the count and return false.
+  if (*count != focusable_annot_types.size()) {
+    *count = focusable_annot_types.size();
+    return false;
+  }
+
+  *count = focusable_annot_types.size();
+
+  // Host should allocate enough memory to get the list of currently supported
+  // focusable subtypes.
+  if (!subtypes) {
+    return false;
+  }
+
+  for (unsigned int i = 0; i < *count; ++i) {
+    subtypes[i] =
+        static_cast<FPDF_ANNOTATION_SUBTYPE>(focusable_annot_types[i]);
+  }
+
+  return true;
 }

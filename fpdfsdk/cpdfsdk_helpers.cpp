@@ -17,6 +17,9 @@
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fpdfdoc/cpdf_metadata.h"
+#include "core/fxge/cfx_graphstatedata.h"
+#include "core/fxge/cfx_pathdata.h"
+#include "core/fxge/cfx_renderdevice.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 
 namespace {
@@ -417,4 +420,30 @@ void ProcessParseError(CPDF_Parser::Error err) {
       break;
   }
   FXSYS_SetLastError(err_code);
+}
+
+void DrawFocusRect(CFX_RenderDevice* render_device,
+                   const CFX_Matrix& mtUser2Device,
+                   const CFX_FloatRect& view_bounding_box) {
+  ASSERT(render_device);
+  CFX_PathData path;
+  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.top),
+                   FXPT_TYPE::MoveTo, /*closeFigure=*/false);
+  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.bottom),
+                   FXPT_TYPE::LineTo, /*closeFigure=*/false);
+  path.AppendPoint(
+      CFX_PointF(view_bounding_box.right, view_bounding_box.bottom),
+      FXPT_TYPE::LineTo, /*closeFigure=*/false);
+  path.AppendPoint(CFX_PointF(view_bounding_box.right, view_bounding_box.top),
+                   FXPT_TYPE::LineTo, /*closeFigure=*/false);
+  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.top),
+                   FXPT_TYPE::LineTo, /*closeFigure=*/false);
+
+  CFX_GraphStateData graph_state_data;
+  graph_state_data.m_DashArray = {1.0f};
+  graph_state_data.m_DashPhase = 0;
+  graph_state_data.m_LineWidth = 1.0f;
+
+  render_device->DrawPath(&path, &mtUser2Device, &graph_state_data, 0,
+                          ArgbEncode(255, 0, 0, 0), FXFILL_ALTERNATE);
 }

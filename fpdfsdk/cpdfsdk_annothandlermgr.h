@@ -121,6 +121,7 @@ class CPDFSDK_AnnotHandlerMgr {
       CPDF_Annot::Subtype nAnnotSubtype) const;
   CPDFSDK_Annot* GetNextAnnot(CPDFSDK_Annot* pSDKAnnot, bool bNext);
 
+  UnownedPtr<CPDFSDK_FormFillEnvironment> m_pFormFillEnv;
   // |m_pBAAnnotHandler| and |m_pWidgetHandler| are always present, but
   // |m_pXFAWidgetHandler| is only present in XFA mode.
   std::unique_ptr<CPDFSDK_BAAnnotHandler> const m_pBAAnnotHandler;
