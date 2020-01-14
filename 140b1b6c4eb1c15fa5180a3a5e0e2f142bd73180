@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1578981499 -0800\nnonce AC6AUtOLB5V2R/Ceh9l4sxusxMwUuQ790lKAePTfqPjqLb40sD97wDi+ZOLTN3xZPulFjrRmxawL\n\n0000000000000000000000000000000000000000 140b1b6c4eb1c15fa5180a3a5e0e2f142bd73180 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4dWHsACgkQqzYtYVpm\n/Xvp8AgAxaKY2JWHfXK3JyAMUMAhX3v8sguYQ63EsviZVnL3FuCtqrt0hLX2+UuE\n11PlTOxzNCZKQezjeVrwsgVeA+ckKnVtGkFfPxiUAPq35j6i3geOuiZuoINjRRP3\nEEC57JG8+85NO3ZmiHyGnW4O3wIkR/4E4SuWjhgp3kV6xvGEXryKnr8K1B/S1suU\n5eifGzys26ltwi7QPZAZ2hEwAXhF/0jjIPKfGpp2kmhTweDWpUFmf1TL7GnGPmUn\naGiO0i11+D92TNVb0yWVQOQA/VgIN9M6G8UaAkehI33utOsFPDTWCEloprHYY+N+\nFRP7+8Cfn+ZdBirR96+wFCXlzi9lLQ\u003d\u003d\n\u003dKzdN\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c8c3f1c_bd6a9436",
+        "filename": "core/fpdfapi/page/cpdf_dibtransferfunc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-14T18:54:25Z",
+      "side": 1,
+      "message": "follow-up: do we call this multiple times on the same DIBTransferFunc? Can these move to ctors and be const?",
+      "range": {
+        "startLine": 183,
+        "startChar": 27,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "140b1b6c4eb1c15fa5180a3a5e0e2f142bd73180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ea52f1_0ddd75a1",
+        "filename": "core/fpdfapi/page/cpdf_dibtransferfunc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-14T18:54:25Z",
+      "side": 1,
+      "message": "Follow-up: Naming while we\u0027re at it - A \"DIB transfer func\" sounds like a function that operates on a DIB. But this is a DIB that automatically applies a func, not a function, right?  So ... CPDF_TransferFuncDIB for consistency with the the erstwhile CFX_FilteredDIB or CPDF_DIBWithTransferFunc()?",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "140b1b6c4eb1c15fa5180a3a5e0e2f142bd73180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3c8ab7b_0bb251a7",
+        "filename": "core/fpdfapi/page/cpdf_dibtransferfunc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-14T18:54:25Z",
+      "side": 1,
+      "message": "should these come before m_pTransferFunc to keep destruction order consistent?",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "140b1b6c4eb1c15fa5180a3a5e0e2f142bd73180",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
