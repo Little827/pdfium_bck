@@ -199,6 +199,30 @@
       "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1236ad1f_4a87e51d",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-14T04:58:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "302007d2_e7c95d9c",
+      "range": {
+        "startLine": 1295,
+        "startChar": 28,
+        "endLine": 1295,
+        "endChar": 47
+      },
+      "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
