@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1578984824 -0800\nnonce AC6AUtPfhWzyDknoiDi9nZPmc48ehFSjfzWJ88dstWjsrkgqTmul88EXiTsLI66PkLE3VsQ+fV8K\n\n0000000000000000000000000000000000000000 f1a5292856103adcb3950bad98bbd052cd325094 refs/for/refs/heads/master%notify\u003dNONE,m\u003dlint\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4dZXgACgkQqzYtYVpm\n/XvYPAgAk/0I10cDpAtJ4tYbLElRa/R3kNn7rHmYrvP2sZdZx8mTaI8Nk/u+XDDe\ntcTTPg1YtGVke7Jct5XH/F9paGyzCfShk7wFTgyzK9K5qoyieLuLSM7me5xJUtlF\nTzly971heUnRhj9Sj0jmA7za+ROXKaq8DbQZ3hdheoDwsZze9HJS/P9o/1DziwaL\np2pWV9cs0maL/UDo0Uq9NNh9zNLYPXEUmSpI3CuAZQyQPCeGJvdyOp+lXcffNzwx\ngxMcBEfo2xgfG2p3SZzc0IEYHY3j+/golbNG8eJlw6THjhlgaY9RZl0C93/5BFVJ\nEjatok8hNE6qKA36S6c5opGvy4To1Q\u003d\u003d\n\u003dKloM\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "e99a45ef_88cc191e",
+        "filename": "core/fpdfapi/page/cpdf_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-14T18:34:02Z",
+      "side": 1,
+      "message": "pre/nit: maybe a comment about cycles don\u0027t occur, really, trust us.",
+      "range": {
+        "startLine": 152,
+        "startChar": 22,
+        "endLine": 152,
+        "endChar": 29
+      },
+      "revId": "f1a5292856103adcb3950bad98bbd052cd325094",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
