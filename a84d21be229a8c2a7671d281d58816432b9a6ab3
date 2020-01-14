@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "96a55964_76fe8180",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-14T02:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487350a0_6c548cc1",
+      "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a309d50_57fab8dd",
         "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
         "patchSetId": 12
@@ -85,6 +103,54 @@
       "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302007d2_e7c95d9c",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-14T02:39:48Z",
+      "side": 1,
+      "message": "I feel that it\u0027s more intuitive to keep it as 5, and this also helps keep the whole file more consistent (similar to |kHelloGoodbyeTextSize|).",
+      "parentUuid": "7c6beb09_dfa58393",
+      "range": {
+        "startLine": 1295,
+        "startChar": 28,
+        "endLine": 1295,
+        "endChar": 47
+      },
+      "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee568943_e8199d70",
+        "filename": "fpdfsdk/fpdf_text_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-14T02:39:48Z",
+      "side": 1,
+      "message": "|kTextSize| needs to be int type to be used in EXPECT_EQ(). In the latest patch I changed FX_ArraySize(kText) to static_cast\u003cint\u003e(FX_ArraySize(kText)).\n\nThis issue also exists in the same file for |kHelloGoodbyeTextSize|.",
+      "parentUuid": "6a309d50_57fab8dd",
+      "range": {
+        "startLine": 1295,
+        "startChar": 12,
+        "endLine": 1295,
+        "endChar": 15
+      },
+      "revId": "a84d21be229a8c2a7671d281d58816432b9a6ab3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
