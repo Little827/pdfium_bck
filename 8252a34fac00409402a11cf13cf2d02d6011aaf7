@@ -70,6 +70,24 @@
       "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5d4069_b3e6a1ce",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-14T22:23:56Z",
+      "side": 1,
+      "message": "My two cents: You want to get away from a C string as fast as you can, as there\u0027s too many ways to get things wrong with C strings.\n\nAnyway, I think you\u0027re just waiting on a +1 from Lei at this point...",
+      "parentUuid": "3e3172cf_4968f44d",
+      "revId": "8252a34fac00409402a11cf13cf2d02d6011aaf7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
