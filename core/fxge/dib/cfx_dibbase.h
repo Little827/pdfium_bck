@@ -58,10 +58,7 @@ class CFX_DIBBase : public Retainable {
   uint32_t* GetPalette() const { return m_pPalette.get(); }
   int GetBPP() const { return m_bpp; }
 
-  // TODO(thestig): Investigate this. Given the possible values of FXDIB_Format,
-  // it feels as though this should be implemented as !!(m_AlphaFlag & 1) and
-  // IsOpaqueImage() below should never be able to return true.
-  bool IsAlphaMask() const { return m_AlphaFlag == 1; }
+  bool IsAlphaMask() const { return !!(m_AlphaFlag & 1); }
   bool HasAlpha() const { return !!(m_AlphaFlag & 2); }
   bool IsOpaqueImage() const { return !(m_AlphaFlag & 3); }
   bool IsCmykImage() const { return !!(m_AlphaFlag & 4); }
