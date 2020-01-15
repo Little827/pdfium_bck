@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1579050445 -0800\nnonce AC6AUtPSne1No+Ce5VEon4u2k/bB/DMo5fTvtwt5igjiC5IRxb5U3ObeUDsSOC/LDSDfxf+FGrlx\n\n0000000000000000000000000000000000000000 a4fc3230050017b8ebe0c90fe1e982222d59cbdc refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4eZc0ACgkQqzYtYVpm\n/Xv7gAf9G2KLkkRZGo561Tc+lby3v9ZiHK7Lq3qwrJd0T624NMh8Krmeik1m7TyG\nfRdq8uj1Br8fPlrXE+jfCEYODMTCGvGRQ5heQLo+ZQ/YDgJi9HjdlhI7TkdrmMFI\n152rRVojn2T6OxUSDQN7Ep8Qo4tLApo96SqYcgrr6Nfo6YyKPZ8fbdvFFIJCRv7u\nr0GLzqg2sOYb4M7Kx6aBb0k5RwPKliYj8+RdBfU60D3dDAqmMoqxXaTOvv9VlDo/\nz/RKK/ThCIMZlO74JPFJoUIP/PIEgzRNcqLvMU4XlpYHTV/FDj7mwJU/DRuFd0S9\njmiKSrn/oHnD9K4iJFGePlrMMT+jYg\u003d\u003d\n\u003dWDRs\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "a96b93db_8992e697",
+        "filename": "core/fpdfapi/page/cpdf_transferfuncdib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-15T01:31:18Z",
+      "side": 1,
+      "message": "We would need another CFX_DIBBase ctor to set these CFX_DIBBase members using an initializer list.",
+      "revId": "a4fc3230050017b8ebe0c90fe1e982222d59cbdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
