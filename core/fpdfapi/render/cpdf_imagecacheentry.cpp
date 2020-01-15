@@ -18,6 +18,7 @@
 #include "core/fpdfapi/render/cpdf_pagerendercache.h"
 #include "core/fpdfapi/render/cpdf_rendercontext.h"
 #include "core/fpdfapi/render/cpdf_renderstatus.h"
+#include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 
 CPDF_ImageCacheEntry::CPDF_ImageCacheEntry(CPDF_Document* pDoc,
@@ -97,7 +98,9 @@ void CPDF_ImageCacheEntry::ContinueGetCachedBitmap(
   CPDF_RenderContext* pContext = pRenderStatus->GetContext();
   CPDF_PageRenderCache* pPageRenderCache = pContext->GetPageCache();
   m_dwTimeCount = pPageRenderCache->GetTimeCount();
-  if (m_pCurBitmap->GetPitch() * m_pCurBitmap->GetHeight() < kHugeImageSize) {
+  FX_SAFE_SIZE_T size = m_pCurBitmap->GetPitch();
+  size *= m_pCurBitmap->GetHeight();
+  if (size.ValueOrDie() < kHugeImageSize) {
     m_pCachedBitmap = m_pCurBitmap->Clone(nullptr);
     m_pCurBitmap.Reset();
   } else {
