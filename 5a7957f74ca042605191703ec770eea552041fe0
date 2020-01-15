@@ -23,6 +23,30 @@
       "revId": "5a7957f74ca042605191703ec770eea552041fe0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d153e5_ca7ea018",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-15T20:32:21Z",
+      "side": 1,
+      "message": "If instead of having a variable named \"m_type\", we had a variable named \"type\" or some other English word. Does the CL description still make sense? Does \"enum StretchType |m_type|\" make it clearer?\n\nAs an example of where pipes are definitely needed, consider \"type is of type int\" vs. \"|type| is of type int\".",
+      "parentUuid": "c7c54427_01a94eed",
+      "range": {
+        "startLine": 14,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
