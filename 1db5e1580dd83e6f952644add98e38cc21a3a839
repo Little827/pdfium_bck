@@ -70,6 +70,30 @@
       "revId": "1db5e1580dd83e6f952644add98e38cc21a3a839",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a29b408_51989a01",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-15T17:41:55Z",
+      "side": 1,
+      "message": "Offline discussion with kmoon@chromium.org:\n\nInside a bfrange, if (uint32_t)overflow happens, Okular and Acrobat have different behaviors:\n(1)Okular will still recognize the already filled ToUnicode mapping and ignore the ones with integer overflow.\n(2)Acrobat will consider the whole bfrange invalid and no text extraction is successful for character within the same bfrange.  \n\nRight now the question is which behavior we want to follow. Early loop termination will fit the Okular behavior and extract more text and cause fewer behavior changes for pdfium.\n\nSide notes on edge cases:\n(1)Behavior of valid range when an invalid range appears in the same bfrange.\n(2)Behavior of valid range when an invalid range appears in a different bfrange.\n(3)Valid range and invalid range overlaps (maybe doing a range check before start filling out/overwritting the mappings.).\nPerhaps for adding the test cases, we will need multiple PDFs and make a decision how pdfium is going to behave. :P",
+      "parentUuid": "30c4e797_98656f1e",
+      "range": {
+        "startLine": 192,
+        "startChar": 56,
+        "endLine": 192,
+        "endChar": 71
+      },
+      "revId": "1db5e1580dd83e6f952644add98e38cc21a3a839",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
