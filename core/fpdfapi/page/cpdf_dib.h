@@ -19,7 +19,6 @@
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "third_party/base/span.h"
 
-class CPDF_Color;
 class CPDF_Dictionary;
 class CPDF_Document;
 class CPDF_Stream;
@@ -37,7 +36,7 @@ class Jbig2Context;
 class ScanlineDecoder;
 }  // namespace fxcodec
 
-#define FPDF_HUGE_IMAGE_SIZE 60000000
+constexpr size_t kHugeImageSize = 60000000;
 
 class CPDF_DIB final : public CFX_DIBBase {
  public:
@@ -48,7 +47,7 @@ class CPDF_DIB final : public CFX_DIBBase {
 
   bool Load(CPDF_Document* pDoc, const CPDF_Stream* pStream);
 
-  // CFX_DIBBase
+  // CFX_DIBBase:
   bool SkipToScanline(int line, PauseIndicatorIface* pPause) const override;
   uint8_t* GetBuffer() const override;
   const uint8_t* GetScanline(int line) const override;
@@ -149,6 +148,7 @@ class CPDF_DIB final : public CFX_DIBBase {
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pLineBuf;
   std::unique_ptr<uint8_t, FxFreeDeleter> m_pMaskedLine;
   RetainPtr<CFX_DIBitmap> m_pCachedBitmap;
+  // Note: When non-null, This is always a separate instance and not |this|.
   RetainPtr<CPDF_DIB> m_pMask;
   RetainPtr<CPDF_StreamAcc> m_pGlobalAcc;
   std::unique_ptr<fxcodec::ScanlineDecoder> m_pDecoder;
