@@ -46,6 +46,30 @@
       "revId": "1db5e1580dd83e6f952644add98e38cc21a3a839",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54e7d1c_192c556f",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-15T03:45:04Z",
+      "side": 1,
+      "message": "Results for a more \"moderate\" example (bfrange \u003c00\u003e \u003c01\u003e \u003c01FF\u003e):\n\n1. Adobe Acrobat Reader DC (Mac): U+01FF U+2000 U+0201 U+0202\n2. Preview (Mac): U+10FC00 U+10FC01 U+10FC02 U+10FC03\n3. Evince/Okular (Linux): U+01FF U+0200 U+0201 U+0202\n4. Chrome (Linux): U+01FF U+0200 U+0201 U+0202\n\nFor completeness, I went back and tested Foxit Reader (Mac):\n5a. \"Extreme\" bfrange: U+0001 U+0001\n5b. \"Moderate\" bfrange: U+01FF U+0200 U+0201 U+0202\n\nMost of the readers (Evince/Okular/Chrome/Foxit) seem to increment a 16-bit unit, rather than an 8-bit unit. This is contrary to the PDF specification (although again, this situation is undefined, so perhaps we\u0027re free to pursue this for consistency).\n\nAdobe still does something weird for the 0x200 case (turning it into U+2000; I double checked several times), but otherwise seems similar to the other readers.\n\nPreview is still doing its own thing in the Private Use Area. Actually, I went back and used a completely non-controversial bfrange, and it gave the same output every time. Preview does do text extraction on some PDFs; I suspect it might be linked to font tables, rather than anything in the PDF data structures.\n\nI\u0027m unclear what Foxit is doing in the \"extreme\" case: It seems to map FFFF+0 and FFFF+3 to nothing, and FFFF+1 and FFFF+2 to 0x1.",
+      "parentUuid": "12b17eda_0557d543",
+      "range": {
+        "startLine": 192,
+        "startChar": 56,
+        "endLine": 192,
+        "endChar": 71
+      },
+      "revId": "1db5e1580dd83e6f952644add98e38cc21a3a839",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
