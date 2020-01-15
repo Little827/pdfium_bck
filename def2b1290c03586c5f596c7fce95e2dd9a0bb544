@@ -16,6 +16,24 @@
       "revId": "def2b1290c03586c5f596c7fce95e2dd9a0bb544",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd0460d_86ee5926",
+        "filename": "fpdfsdk/cpdfsdk_widget.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-15T22:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b2e5298_f73f67d2",
+      "revId": "def2b1290c03586c5f596c7fce95e2dd9a0bb544",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
