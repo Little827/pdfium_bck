@@ -71,6 +71,75 @@
       "revId": "5a7957f74ca042605191703ec770eea552041fe0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f482cdc7_89fc18ae",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-15T21:25:22Z",
+      "side": 1,
+      "message": "can this happen?",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 4
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd93e5d_45dfbf16",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-15T21:25:22Z",
+      "side": 1,
+      "message": "nit: ... since then the kNormal case would come first and we wouldn\u0027t have a no-op between two do-something cases.",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 4
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595f2e0e_7b944175",
+        "filename": "core/fxge/dib/cfx_imagetransformer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-15T21:25:22Z",
+      "side": 1,
+      "message": "nit: does the value matter? Otherwise, I\u0027d be happier if kNormal came before rotate and other ...",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
