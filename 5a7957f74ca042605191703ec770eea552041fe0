@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9f822e51_7245a830",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-15T21:48:16Z",
+      "side": 1,
+      "message": "Yes, because the use for CFX_ImageTransformer tends to be: instantiate; call Continue(). e.g. at the top of CFX_DIBBase::TransformTo(). There\u0027s no bool Start() method, like in some other classes.",
+      "parentUuid": "f482cdc7_89fc18ae",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 4
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdd93e5d_45dfbf16",
         "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
         "patchSetId": 2
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "e36299fe_adf3b023",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-15T21:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdd93e5d_45dfbf16",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 4
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595f2e0e_7b944175",
         "filename": "core/fxge/dib/cfx_imagetransformer.h",
         "patchSetId": 2
@@ -140,6 +188,30 @@
       "revId": "5a7957f74ca042605191703ec770eea552041fe0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad41b28_e607eb3a",
+        "filename": "core/fxge/dib/cfx_imagetransformer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-15T21:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595f2e0e_7b944175",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
