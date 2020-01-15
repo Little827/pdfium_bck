@@ -47,6 +47,30 @@
       "revId": "f1a5292856103adcb3950bad98bbd052cd325094",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4d31d0_bef799d7",
+        "filename": "core/fpdfapi/page/cpdf_dib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-15T00:48:34Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/65092",
+      "parentUuid": "85ee6b68_af839556",
+      "range": {
+        "startLine": 152,
+        "startChar": 22,
+        "endLine": 152,
+        "endChar": 29
+      },
+      "revId": "f1a5292856103adcb3950bad98bbd052cd325094",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
