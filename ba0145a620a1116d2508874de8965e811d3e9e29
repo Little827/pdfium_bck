@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1579048993 -0800\nnonce AC6AUtNjRV23un628uVbjzdaHUsU2dYz8pdKZbofJR525J9zsm2M+UHbPqlP0dh8kjqNZ5q9z1uR\n\n0000000000000000000000000000000000000000 ba0145a620a1116d2508874de8965e811d3e9e29 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4eYCEACgkQqzYtYVpm\n/Xth7ggAgsYaWdkbgbva88Jqc388W4JBlbmoK+ISr3eC71hEvcQRoOyHMW/H4XbT\nZJcDidOetvkWVtcYWKXCBs6BmBeIvJ2RZrJyY8RI9PJMXWbIdMnxel9yqch0cwNy\n6bl4xtjwOmN267Ga++f00x5WSzZJiapb+R7QBh9iyzFs5daojATkLKpqeScGCcEv\ncmWm4YXd7Lz8TQAFtZlRM9eImogzbgJ3tm+veAJKnKF6WA37XjDF3Ik8cScAvpwA\nZ549FWArOysiJhXoFfqLJgSOczoaHP45uUYe3cuoiDcgBWvMUPti/m0TUtuwY+Ez\ny+dopPxfKCOnAUBD8cmDwuwtvGhX/A\u003d\u003d\n\u003d45sL\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "888a0339_f59161e0",
+        "filename": "core/fpdfapi/page/cpdf_dib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-15T04:17:58Z",
+      "side": 1,
+      "message": "It actually is stronger than this, m_pMask !\u003d this, m_pMask-\u003em_pMask !\u003d this, m_pMask-\u003em_pMask-\u003em_pMask !\u003d this, and so on, otherwise we\u0027ll leak. Not sure how to  describe that.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 76
+      },
+      "revId": "ba0145a620a1116d2508874de8965e811d3e9e29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
