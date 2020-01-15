@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1579078123 -0800\nnonce AC6AUtMjhHPnHM1SlR1b1O6KlViv3iTNOBEFGtM5Os7cGppLFhlCM7V1mfBZPVYxwsJNJU2ZX/Xk\n\n0000000000000000000000000000000000000000 5a7957f74ca042605191703ec770eea552041fe0 refs/for/refs/heads/master%notify\u003dNONE,m\u003dFix_labels\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4e0esACgkQqzYtYVpm\n/XsumAf/RAp/bgwkvIgiivXuW54RysK3DtBu+id5cObl7Mw3UBNGL5aqn4irCS0X\nrmi0+GgtVOELigR1mZzHJTU7Cmics7y686H7Qe0u74mIATSlFA0X27nlaKCqrJZd\nHzlKodm8LGouOkrScmxSLlN2j+ylgKRiayNbWVS8eir2Z7z1kBFND3QEQMMHBdyO\nUeJfr8j5Y7fcKoklozuZE9hVYImiZiZ7rzDsKQqL031im9KfxfeYjBwL+qhCahKV\n9J3VOSlAM4L5iGfX2dg6sqju1I1+2rVGlkUz7akwqQq5FUdAG/oj6QL8VccSuMEb\n7L7gyvGQ02rfTFp9vVbSP+8gpzhfNw\u003d\u003d\n\u003dwGLA\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7c54427_01a94eed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-15T19:59:00Z",
+      "side": 1,
+      "message": "For \"m_Status\" and \"m_type\", since they are variables, should they always be inside \"||\" for comments?",
+      "range": {
+        "startLine": 14,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "5a7957f74ca042605191703ec770eea552041fe0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
