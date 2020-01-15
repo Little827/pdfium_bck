@@ -22,6 +22,30 @@
       "revId": "1db5e1580dd83e6f952644add98e38cc21a3a839",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b17eda_0557d543",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-15T03:10:18Z",
+      "side": 1,
+      "message": "Spent some more time looking into what might be the \"right\" behavior.\n\nTL;DR: This code is wrong even for \"in range\" bfranges, and for \"overflowing\" bfranges, the behavior across readers is not consistent (but also shouldn\u0027t trigger integer overflow).\n\nPDF 1.7, 9.10.3 states that the /ToUnicode map is a mapping from character codes (up to 32 bits) to UTF-16BE strings (multiple units of 16 bits, up to 512 bytes \u003d 256 units). (I think nigi@ was trying to tell me something like this earlier today, but I hadn\u0027t looked at the definition of /ToUnicode in a while.)\n\nThe current code is wrong in two ways:\n\n1. p.295 states that the \"bfrange\" operator increments the last byte of the string. So it doesn\u0027t actually matter if destcode.GetLength() \u003d\u003d 1 or not; we\u0027re supposed to always increment the last byte of the string.\n\n2. p.295 also states that the last byte of the string must be \u003c\u003d 255 - (highcode - lowcode); otherwise, the result is undefined. The intent is that the \"bfrange\" operator never increments the last byte past 0xFF.\n\nSo we don\u0027t need to be worried about integer overflow after all, but we need to be a lot stricter about the input we\u0027re willing to accept (keeping it within a byte). We also need to fix (1). We probably should file another follow-up bug for this. :-(\n\nAs far as the \"undefined\" behavior goes, the readers I\u0027ve tested this with have behaved as follows, given an input of \"bfrange \u003c00\u003e \u003c03\u003e \u003cFFFF\u003e\":\n\n1. Adobe Acrobat Reader DC (Mac): U+FFFF U+2000\n2. Preview (Mac): U+10FC00 U+10FC01 U+10FC02 U+10FC03\n3. Evince/Okular (Linux): U+FFFD U+10000 U+10001 U+10002\n4. Chrome (Linux): 0x01\n\n(\"pbpaste\" (Mac)/\"xsel\" (Linux) | \"iconv -f UTF-8 -t UTF-32BE\"  were helpful in this part.)\n\nAcrobat keeps U+FFFF, completely mangles 0x10000 to U+2000, and then drops the subsequent values. Preview seems to map these characters to U+10FC00 + value. Evince/Okular seem to map 0xFFFF to the replacement character (U+FFFD), but then recognize 0x10000 onward (internal calculations seem to be uint32_t). I don\u0027t know what Chrome is doing.\n\nAlthough each reader does nonsense things once you overflow the \"last\" byte, they mostly seem to treat the earlier characters as real. So rejecting the entire bfrange doesn\u0027t seem to be the right solution, at least.\n\nI\u0027m going to run some additional tests that just examine the issue of overflowing the last byte, rather than uint16_t.",
+      "parentUuid": "30c4e797_98656f1e",
+      "range": {
+        "startLine": 192,
+        "startChar": 56,
+        "endLine": 192,
+        "endChar": 71
+      },
+      "revId": "1db5e1580dd83e6f952644add98e38cc21a3a839",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
