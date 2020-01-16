@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "17675e98_3e582d97",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-16T19:47:56Z",
+      "side": 1,
+      "message": "Is\u0027n tit already the case in patch set 8 that only at most one skia path operation is processed successfully? i.e. Having a second if statement doesn\u0027t change anything.",
+      "parentUuid": "e1581c3e_979a3284",
+      "revId": "8ff3fc5c138eab47339f5c31708fe6a07f89251f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6627346_17b53360",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 8
