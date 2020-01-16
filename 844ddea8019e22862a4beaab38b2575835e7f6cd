@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29a08b66_5f5c4765",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5960
+      },
+      "writtenOn": "2020-01-16T21:20:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is correct. In the example given above where I\u0027ve typed `123456789` and we reformatted to `123-45-6789` you\u0027ll increase the character limit by two, so if I go back and re-type can I now enter `12345678900` and keep expanding the limit by 2?",
+      "revId": "844ddea8019e22862a4beaab38b2575835e7f6cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
