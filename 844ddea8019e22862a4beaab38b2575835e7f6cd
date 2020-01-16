@@ -16,6 +16,24 @@
       "revId": "844ddea8019e22862a4beaab38b2575835e7f6cd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c32f13b3_418f4393",
+        "filename": "xfa/fde/cfde_texteditengine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-16T21:25:52Z",
+      "side": 1,
+      "message": "My feeling is that in this case, the reformatting would have to reject the 11 digit number, or truncate it to  123-45-6789, not 123-45-678900.\n\nThe alternative is that if I make a typo, I can delete a digit but I can\u0027t re-enter it.",
+      "parentUuid": "29a08b66_5f5c4765",
+      "revId": "844ddea8019e22862a4beaab38b2575835e7f6cd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
