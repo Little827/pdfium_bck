@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1581c3e_979a3284",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-16T18:32:20Z",
+      "side": 1,
+      "message": "If union operation fails, it will still make sense to keep trying the kDifference_SkPathOp as a backup (the rendering result will not be ideal but better than nothing).\nI can add a |do_stroke| check for the kDifference_SkPathOp so that at most one skia path  operation is processed successfully.\n\nif (m_strokeColor \u003d\u003d m_fillColor \u0026\u0026\n    Op(m_skPath, strokePath, SkPathOp::kUnion_SkPathOp,\n       \u0026strokePath)) {\n   fillPath \u003d \u0026strokePath;\n   do_stroke \u003d false;\n}\nif (do_stroke \u0026\u0026 Op(m_skPath, strokePath,\n                    SkPathOp::kDifference_SkPathOp, \u0026strokePath)) {\n  fillPath \u003d \u0026strokePath;\n}",
+      "parentUuid": "f54c2d6e_8f028f9b",
+      "revId": "8ff3fc5c138eab47339f5c31708fe6a07f89251f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6627346_17b53360",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "8ff3fc5c138eab47339f5c31708fe6a07f89251f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a23774_a531b807",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-16T18:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6627346_17b53360",
+      "range": {
+        "startLine": 816,
+        "startChar": 24,
+        "endLine": 816,
+        "endChar": 36
+      },
+      "revId": "8ff3fc5c138eab47339f5c31708fe6a07f89251f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
