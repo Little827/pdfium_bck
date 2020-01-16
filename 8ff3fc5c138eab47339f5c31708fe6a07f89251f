@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f54c2d6e_8f028f9b",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-16T05:38:16Z",
+      "side": 1,
+      "message": "If the union operation fails, does it still make sense to continue and try to perform the difference operation?",
+      "revId": "8ff3fc5c138eab47339f5c31708fe6a07f89251f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6627346_17b53360",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-16T05:38:16Z",
+      "side": 1,
+      "message": "\"not skip\" is a double negative. How about changing the variable to |do_stroke|?",
+      "range": {
+        "startLine": 816,
+        "startChar": 24,
+        "endLine": 816,
+        "endChar": 36
+      },
+      "revId": "8ff3fc5c138eab47339f5c31708fe6a07f89251f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
