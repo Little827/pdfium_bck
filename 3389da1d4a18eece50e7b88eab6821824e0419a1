@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28125776_8ecc0877",
+        "filename": "xfa/fxfa/parser/cxfa_nodeowner.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-17T23:34:51Z",
+      "side": 1,
+      "message": "Also not needed. Was included for FakeUniquePtr.",
+      "revId": "3389da1d4a18eece50e7b88eab6821824e0419a1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
