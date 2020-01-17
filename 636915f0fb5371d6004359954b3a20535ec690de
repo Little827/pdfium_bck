@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d61b1b58_9cde7fe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "CL not PR.",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54cd22c3_80d9a3f4",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986d96a7_26a57ff6",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "mark this function const.",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c7157b_8606118c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 11
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a91099_3520389f",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "Use m_FocusableAnnotTypes.assign(focusableAnnotTypes, focusableAnnotTypes + countFocusableAnnotTypes) in filling the vector here. Or Let\u0027s create a vector in fpdf_annot using assign method and pass that instead of array pointer and count.",
+      "range": {
+        "startLine": 640,
+        "startChar": 4,
+        "endLine": 641,
+        "endChar": 41
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f5f9232_5f7cfe77",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 999,
+        "startChar": 8,
+        "endLine": 999,
+        "endChar": 20
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d046f9c_adf563eb",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "is this assignment needed given we can only reach here if *count \u003d focusable_annot_types.size() is true",
+      "range": {
+        "startLine": 1014,
+        "startChar": 2,
+        "endLine": 1014,
+        "endChar": 40
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865e3753_22452148",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-17T10:55:24Z",
+      "side": 1,
+      "message": "Couldn\u0027t we do this instead \nstd::copy(focusable_annot_types.begin(), focusable_annot_types.end(), subtypes);",
+      "range": {
+        "startLine": 1022,
+        "startChar": 2,
+        "endLine": 1026,
+        "endChar": 0
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
