@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9056235_59c6d75b",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-17T19:37:30Z",
+      "side": 1,
+      "message": "Nit: I kinda prefer this pattern when we have to keep an unowned reference to a moved, newly-created object:\n\nauto new_thing \u003d pdfium::MakeUnique\u003cThing\u003e();\nThing* thing \u003d new_thing.get();\nother-\u003eSetThing(std::move(new_thing));\n\nrather than calling static_cast\u003cThing\u003e(other-\u003eGetThing()) esp. when GetThing() returns a superclass of Thing.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 2
+      },
+      "revId": "4905eccb1866a39657eddc629a9f1e79a8d01b90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b45d7d_d08bc5a9",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-17T19:37:30Z",
+      "side": 1,
+      "message": "NOTE: One other thing to consider is that we\u0027ll want to do a manual roll into chromium so that we can set this in pdf/pdfium/pdfium_form_filler.cc in the same chromium CL that advances the dependent PDF version, so ping Lei about how to pause the autoroller before landing this.",
+      "range": {
+        "startLine": 727,
+        "startChar": 12,
+        "endLine": 727,
+        "endChar": 24
+      },
+      "revId": "4905eccb1866a39657eddc629a9f1e79a8d01b90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
