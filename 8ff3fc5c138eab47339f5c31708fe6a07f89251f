@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "af130c55_7f4384a2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-17T16:16:04Z",
+      "side": 1,
+      "message": "Oooops, I wasn\u0027t thinking straight. I will revert the last patch set.\n\nAs for the question whether to perform a kDifference_SkPathOp, it is still necessary. If we skip using kDifference_SkPathOp, the code would be like:\n\nif (Op(m_skPath, strokePath, SkPathOp::kUnion_SkPathOp, \u0026strokePath)) {\n   fillPath \u003d \u0026strokePath;\n   if(m_strokeColor \u003d\u003d m_fillColor)\n     do_stroke \u003d false;\n}\n\nThis will still improve the rendering result for bug_1286.in. But it will cause other cases to fail. \n\nConsidering a case like testing/corpus/fx/path/transparent1.pdf. The path is oval and we need to fill |m_fillColor|(black with transparency) inside the oval, while there is a different stroke color |m_strokeColor|(red with transparency) for the thick edge (stroke width is wider than default) of the oval.\n\nSo far in pdfium rendering process, we do stroke and fill in two separate process. If we use union operation all the time and |m_strokeColor| !\u003d |m_fillColor|, |m_fillColor| will be filled in the thick edge as well, and the transparency will make the thick edge looks darker that its original stroke color.",
+      "parentUuid": "17675e98_3e582d97",
+      "revId": "8ff3fc5c138eab47339f5c31708fe6a07f89251f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6627346_17b53360",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 8
