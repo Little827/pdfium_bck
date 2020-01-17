@@ -22,16 +22,6 @@ CXFA_Node* CXFA_NodeOwner::AddOwnedNode(std::unique_ptr<CXFA_Node> node) {
     return nullptr;
 
   CXFA_Node* ret = node.get();
-  nodes_.insert(std::move(node));
+  nodes_.push_back(std::move(node));
   return ret;
-}
-
-void CXFA_NodeOwner::FreeOwnedNode(CXFA_Node* node) {
-  if (!node)
-    return;
-
-  pdfium::FakeUniquePtr<CXFA_Node> search(node);
-  auto it = nodes_.find(search);
-  ASSERT(it != nodes_.end());
-  nodes_.erase(it);
 }
