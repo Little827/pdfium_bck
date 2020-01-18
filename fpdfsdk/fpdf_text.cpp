@@ -294,6 +294,22 @@ FPDFText_GetLooseCharBox(FPDF_TEXTPAGE text_page, int index, FS_RECTF* rect) {
   return true;
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFText_GetMatrix(FPDF_TEXTPAGE text_page,
+                                                       int index,
+                                                       FS_MATRIX* matrix) {
+  if (!matrix)
+    return false;
+
+  CPDF_TextPage* textpage = GetTextPageForValidIndex(text_page, index);
+  if (!textpage)
+    return false;
+
+  FPDF_CHAR_INFO charinfo;
+  textpage->GetCharInfo(index, &charinfo);
+  *matrix = FSMatrixFromCFXMatrix(charinfo.m_Matrix);
+  return true;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFText_GetCharOrigin(FPDF_TEXTPAGE text_page,
                        int index,
@@ -310,7 +326,6 @@ FPDFText_GetCharOrigin(FPDF_TEXTPAGE text_page,
   return true;
 }
 
-// select
 FPDF_EXPORT int FPDF_CALLCONV
 FPDFText_GetCharIndexAtPos(FPDF_TEXTPAGE text_page,
                            double x,
