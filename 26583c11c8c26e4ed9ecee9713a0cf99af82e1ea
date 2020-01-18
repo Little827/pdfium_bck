@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb4b8b46_1bc343d3",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-18T05:56:44Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 334,
+        "startChar": 34,
+        "endLine": 334,
+        "endChar": 44
+      },
+      "revId": "26583c11c8c26e4ed9ecee9713a0cf99af82e1ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
