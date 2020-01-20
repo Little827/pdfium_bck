@@ -123,9 +123,6 @@ CPDFSDK_Annot* CPDFSDK_PageView::GetFXWidgetAtPoint(const CFX_PointF& point) {
 
 #ifdef PDF_ENABLE_XFA
 CPDFSDK_Annot* CPDFSDK_PageView::AddAnnot(CXFA_FFWidget* pPDFAnnot) {
-  if (!pPDFAnnot)
-    return nullptr;
-
   CPDFSDK_Annot* pSDKAnnot = GetAnnotByXFAWidget(pPDFAnnot);
   if (pSDKAnnot)
     return pSDKAnnot;
@@ -142,9 +139,6 @@ CPDFSDK_Annot* CPDFSDK_PageView::AddAnnot(CXFA_FFWidget* pPDFAnnot) {
 }
 
 bool CPDFSDK_PageView::DeleteAnnot(CPDFSDK_Annot* pAnnot) {
-  if (!pAnnot)
-    return false;
-
   IPDF_Page* pPage = pAnnot->GetXFAPage();
   if (!pPage)
     return false;
@@ -491,13 +485,9 @@ void CPDFSDK_PageView::LoadFXAnnots() {
   auto* pContext = m_pFormFillEnv->GetDocExtension();
   if (pContext->ContainsExtensionFullForm()) {
     CXFA_FFPageView* pageView = protector->GetXFAPageView();
-    std::unique_ptr<IXFA_WidgetIterator> pWidgetHandler(
-        pageView->CreateWidgetIterator(
-            XFA_TRAVERSEWAY_Form,
-            XFA_WidgetStatus_Visible | XFA_WidgetStatus_Viewable));
-    if (!pWidgetHandler) {
-      return;
-    }
+    std::unique_ptr<IXFA_WidgetIterator> pWidgetHandler =
+        pageView->CreateFormWidgetIterator(XFA_WidgetStatus_Visible |
+                                           XFA_WidgetStatus_Viewable);
 
     while (CXFA_FFWidget* pXFAAnnot = pWidgetHandler->MoveToNext()) {
       std::unique_ptr<CPDFSDK_Annot> pNewAnnot =

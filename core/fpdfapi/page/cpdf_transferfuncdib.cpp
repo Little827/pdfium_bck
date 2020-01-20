@@ -4,7 +4,7 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#include "core/fpdfapi/page/cpdf_dibtransferfunc.h"
+#include "core/fpdfapi/page/cpdf_transferfuncdib.h"
 
 #include <vector>
 
@@ -13,31 +13,38 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "third_party/base/compiler_specific.h"
 
-CPDF_DIBTransferFunc::CPDF_DIBTransferFunc(
+CPDF_TransferFuncDIB::CPDF_TransferFuncDIB(
+    const RetainPtr<CFX_DIBBase>& pSrc,
     const RetainPtr<CPDF_TransferFunc>& pTransferFunc)
-    : m_pTransferFunc(pTransferFunc),
+    : m_pSrc(pSrc),
+      m_pTransferFunc(pTransferFunc),
       m_RampR(pTransferFunc->GetSamplesR()),
       m_RampG(pTransferFunc->GetSamplesG()),
-      m_RampB(pTransferFunc->GetSamplesB()) {}
+      m_RampB(pTransferFunc->GetSamplesB()) {
+  m_Width = pSrc->GetWidth();
+  m_Height = pSrc->GetHeight();
+  FXDIB_Format format = GetDestFormat();
+  m_bpp = GetBppFromFormat(format);
+  m_AlphaFlag = GetAlphaFlagFromFormat(format);
+  m_Pitch = (m_Width * m_bpp + 31) / 32 * 4;
+  m_pPalette.reset();
+  m_Scanline.resize(m_Pitch);
+}
 
-CPDF_DIBTransferFunc::~CPDF_DIBTransferFunc() = default;
+CPDF_TransferFuncDIB::~CPDF_TransferFuncDIB() = default;
 
-FXDIB_Format CPDF_DIBTransferFunc::GetDestFormat() {
+FXDIB_Format CPDF_TransferFuncDIB::GetDestFormat() const {
   if (m_pSrc->IsAlphaMask())
     return FXDIB_8bppMask;
 
 #if defined(OS_MACOSX)
-  return (m_pSrc->HasAlpha()) ? FXDIB_Argb : FXDIB_Rgb32;
+  return m_pSrc->HasAlpha() ? FXDIB_Argb : FXDIB_Rgb32;
 #else
-  return (m_pSrc->HasAlpha()) ? FXDIB_Argb : FXDIB_Rgb;
+  return m_pSrc->HasAlpha() ? FXDIB_Argb : FXDIB_Rgb;
 #endif
 }
 
-FX_ARGB* CPDF_DIBTransferFunc::GetDestPalette() {
-  return nullptr;
-}
-
-void CPDF_DIBTransferFunc::TranslateScanline(
+void CPDF_TransferFuncDIB::TranslateScanline(
     const uint8_t* src_buf,
     std::vector<uint8_t>* dest_buf) const {
   bool bSkip = false;
@@ -143,7 +150,7 @@ void CPDF_DIBTransferFunc::TranslateScanline(
   }
 }
 
-void CPDF_DIBTransferFunc::TranslateDownSamples(uint8_t* dest_buf,
+void CPDF_TransferFuncDIB::TranslateDownSamples(uint8_t* dest_buf,
                                                 const uint8_t* src_buf,
                                                 int pixels,
                                                 int Bpp) const {
@@ -178,4 +185,21 @@ void CPDF_DIBTransferFunc::TranslateDownSamples(uint8_t* dest_buf,
     }
 #endif
   }
+}
+
+const uint8_t* CPDF_TransferFuncDIB::GetScanline(int line) const {
+  TranslateScanline(m_pSrc->GetScanline(line), &m_Scanline);
+  return m_Scanline.data();
+}
+
+void CPDF_TransferFuncDIB::DownSampleScanline(int line,
+                                              uint8_t* dest_scan,
+                                              int dest_bpp,
+                                              int dest_width,
+                                              bool bFlipX,
+                                              int clip_left,
+                                              int clip_width) const {
+  m_pSrc->DownSampleScanline(line, dest_scan, dest_bpp, dest_width, bFlipX,
+                             clip_left, clip_width);
+  TranslateDownSamples(dest_scan, dest_scan, clip_width, dest_bpp);
 }

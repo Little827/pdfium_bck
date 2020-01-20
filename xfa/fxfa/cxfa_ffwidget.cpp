@@ -384,7 +384,9 @@ bool CXFA_FFWidget::AcceptsFocusOnButtonDown(uint32_t dwFlags,
   return false;
 }
 
-void CXFA_FFWidget::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {}
+bool CXFA_FFWidget::OnLButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
+  return false;
+}
 
 bool CXFA_FFWidget::OnLButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
   return false;
@@ -404,7 +406,9 @@ bool CXFA_FFWidget::OnMouseWheel(uint32_t dwFlags,
   return false;
 }
 
-void CXFA_FFWidget::OnRButtonDown(uint32_t dwFlags, const CFX_PointF& point) {}
+bool CXFA_FFWidget::OnRButtonDown(uint32_t dwFlags, const CFX_PointF& point) {
+  return false;
+}
 
 bool CXFA_FFWidget::OnRButtonUp(uint32_t dwFlags, const CFX_PointF& point) {
   return false;
@@ -431,10 +435,8 @@ bool CXFA_FFWidget::OnSetFocus(CXFA_FFWidget* pOldWidget) {
   eParam.m_eType = XFA_EVENT_Enter;
   eParam.m_pTarget = m_pNode.Get();
   m_pNode->ProcessEvent(GetDocView(), XFA_AttributeValue::Enter, &eParam);
-  if (!pWatched)
-    return false;
 
-  return true;
+  return !!pWatched;
 }
 
 bool CXFA_FFWidget::OnKillFocus(CXFA_FFWidget* pNewWidget) {
@@ -473,7 +475,7 @@ bool CXFA_FFWidget::OnChar(uint32_t dwChar, uint32_t dwFlags) {
   return false;
 }
 
-FWL_WidgetHit CXFA_FFWidget::OnHitTest(const CFX_PointF& point) {
+FWL_WidgetHit CXFA_FFWidget::HitTest(const CFX_PointF& point) {
   return FWL_WidgetHit::Unknown;
 }
 

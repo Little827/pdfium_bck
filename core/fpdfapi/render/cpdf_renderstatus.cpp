@@ -108,7 +108,7 @@ RetainPtr<CFX_DIBitmap> DrawPatternBitmap(
   options.GetOptions() = draw_options;
   options.GetOptions().bForceHalftone = true;
 
-  CPDF_RenderContext context(pDoc, pCache);
+  CPDF_RenderContext context(pDoc, nullptr, pCache);
   context.AppendLayer(pPatternForm, &mtPattern2Bitmap);
   context.Render(&bitmap_device, &options, nullptr);
 #if defined _SKIA_SUPPORT_PATHS_
@@ -999,7 +999,6 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
       CPDF_RenderOptions options = m_Options;
       options.GetOptions().bForceHalftone = true;
       options.GetOptions().bRectAA = true;
-      options.GetOptions().bForceDownsample = false;
 
       const auto* pForm = static_cast<const CPDF_Form*>(pType3Char->form());
       const CPDF_Dictionary* pFormResource =
