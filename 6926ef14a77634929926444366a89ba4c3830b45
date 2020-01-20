@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6541e8df_34f6d0e1",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-20T05:11:30Z",
+      "side": 1,
+      "message": "would this ever be null if pForm is not NULL.",
+      "range": {
+        "startLine": 987,
+        "startChar": 9,
+        "endLine": 987,
+        "endChar": 19
+      },
+      "revId": "6926ef14a77634929926444366a89ba4c3830b45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500059a5_499a4a78",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2262,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-20T05:11:30Z",
+      "side": 1,
+      "message": "lets scope them as well instead of declaring here. Declare just before use.\nSame in the next test.",
+      "range": {
+        "startLine": 2261,
+        "startChar": 2,
+        "endLine": 2262,
+        "endChar": 30
+      },
+      "revId": "6926ef14a77634929926444366a89ba4c3830b45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
