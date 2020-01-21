@@ -23,6 +23,30 @@
       "revId": "c67b7d876259f9ff8dbda85b4dae25fc542b9d27",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624a7882_990ecaba",
+        "filename": "core/fpdftext/cpdf_linkextract.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-21T20:11:27Z",
+      "side": 1,
+      "message": "It\u0027s used on line 139 below.",
+      "parentUuid": "5c890c55_5aa75d05",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "c67b7d876259f9ff8dbda85b4dae25fc542b9d27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
