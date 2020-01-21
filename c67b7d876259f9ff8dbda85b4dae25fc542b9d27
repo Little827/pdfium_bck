@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "287a8333_0bd90ee5",
+        "filename": "core/fpdftext/cpdf_linkextract.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-21T20:29:08Z",
+      "side": 1,
+      "message": "can this happen?",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "c67b7d876259f9ff8dbda85b4dae25fc542b9d27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c890c55_5aa75d05",
         "filename": "core/fpdftext/cpdf_linkextract.cpp",
         "patchSetId": 1
