@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "058e7a42_859c3a38",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-21T18:16:36Z",
+      "side": 1,
+      "message": "I thought float num \u003d 0 was Ok as long as it\u0027s not float num \u003d 0.0?\nI guess 0.0f or 0.f will increase readability.",
+      "parentUuid": "8b64f53f_0e0c833a",
+      "range": {
+        "startLine": 1047,
+        "startChar": 24,
+        "endLine": 1047,
+        "endChar": 26
+      },
+      "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b2cedb4_f529fb1f",
         "filename": "core/fpdftext/cpdf_textpage.cpp",
         "patchSetId": 1
