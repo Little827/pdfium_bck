@@ -10,6 +10,7 @@
 
 #include "build/build_config.h"
 #include "constants/annotation_common.h"
+#include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_system.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
@@ -2215,6 +2216,57 @@ TEST_F(FPDFAnnotEmbedderTest, IsCheckedInvalidWidgetType) {
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
     ASSERT_TRUE(annot);
     ASSERT_FALSE(FPDFAnnot_IsChecked(form_handle(), annot.get()));
+  }
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFAnnotEmbedderTest, SetFocusableAnnotSubtypes) {
+  ASSERT_TRUE(OpenDocument("text_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  constexpr FPDF_ANNOTATION_SUBTYPE focusable_subtypes[] = {FPDF_ANNOT_WIDGET};
+  constexpr unsigned int subtype_count = FX_ArraySize(focusable_subtypes);
+
+  EXPECT_FALSE(FPDFAnnot_SetFocusableSubtypes(nullptr, focusable_subtypes,
+                                              subtype_count));
+  EXPECT_FALSE(
+      FPDFAnnot_SetFocusableSubtypes(form_handle(), nullptr, subtype_count));
+
+  EXPECT_TRUE(FPDFAnnot_SetFocusableSubtypes(form_handle(), focusable_subtypes,
+                                             subtype_count));
+
+  size_t count = 0;
+  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(form_handle(), nullptr, &count));
+  EXPECT_EQ(subtype_count, count);
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFAnnotEmbedderTest, GetFocusableAnnotSubtypes) {
+  ASSERT_TRUE(OpenDocument("text_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  constexpr FPDF_ANNOTATION_SUBTYPE focusable_subtypes[] = {FPDF_ANNOT_WIDGET};
+  constexpr unsigned int subtype_count = FX_ArraySize(focusable_subtypes);
+
+  FPDFAnnot_SetFocusableSubtypes(form_handle(), focusable_subtypes,
+                                 subtype_count);
+
+  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(form_handle(), nullptr, nullptr));
+
+  size_t count = 0;
+  EXPECT_FALSE(FPDFAnnot_GetFocusableSubtypes(form_handle(), nullptr, &count));
+  EXPECT_EQ(subtype_count, count);
+
+  std::vector<FPDF_ANNOTATION_SUBTYPE> set_subtypes(count, FPDF_ANNOT_UNKNOWN);
+  EXPECT_TRUE(FPDFAnnot_GetFocusableSubtypes(form_handle(), set_subtypes.data(),
+                                             &count));
+
+  for (unsigned int i = 0; i < subtype_count; ++i) {
+    EXPECT_EQ(focusable_subtypes[i], set_subtypes[i]);
   }
 
   UnloadPage(page);
