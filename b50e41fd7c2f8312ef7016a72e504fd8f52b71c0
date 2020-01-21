@@ -69,6 +69,29 @@
       "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ddffc8_b0d75e93",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-21T18:09:13Z",
+      "side": 1,
+      "message": "I suppose some compiler might have warned in the historical past that conversion of int to float may lose accuracy but it doesn\u0027t look like we get these warnings ...",
+      "range": {
+        "startLine": 1320,
+        "startChar": 21,
+        "endLine": 1320,
+        "endChar": 30
+      },
+      "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
