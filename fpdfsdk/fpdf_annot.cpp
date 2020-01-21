@@ -30,6 +30,7 @@
 #include "core/fxge/cfx_color.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
+#include "public/fpdf_formfill.h"
 #include "third_party/base/ptr_util.h"
 #include "third_party/base/stl_util.h"
 
@@ -951,6 +952,57 @@ FPDFAnnot_GetFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
   if (!pFormCtrl || annot_index == -1)
     return nullptr;
   return FPDFPage_GetAnnot(page, annot_index);
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAnnot_GetFormFieldName(FPDF_FORMHANDLE hHandle,
+                           FPDF_ANNOTATION annot,
+                           FPDF_WCHAR* buffer,
+                           unsigned long buflen) {
+  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!pAnnotDict)
+    return 0;
+
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
+    return 0;
+
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
+  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  return pFormField ? Utf16EncodeMaybeCopyAndReturnLength(
+                          pFormField->GetFullName(), buffer, buflen)
+                    : 0;
+}
+
+FPDF_EXPORT int FPDF_CALLCONV
+FPDFAnnot_GetFormFieldType(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {
+  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!pAnnotDict)
+    return -1;
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
+    return -1;
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
+  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  return pFormField ? static_cast<int>(pFormField->GetFieldType()) : -1;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAnnot_GetFormFieldValue(FPDF_FORMHANDLE hHandle,
+                            FPDF_ANNOTATION annot,
+                            FPDF_WCHAR* buffer,
+                            unsigned long buflen) {
+  CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
+  if (!pAnnotDict)
+    return 0;
+  CPDFSDK_InteractiveForm* pForm = FormHandleToInteractiveForm(hHandle);
+  if (!pForm)
+    return 0;
+  CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
+  CPDF_FormField* pFormField = pPDFForm->GetFieldByDict(pAnnotDict);
+  return pFormField ? Utf16EncodeMaybeCopyAndReturnLength(
+                          pFormField->GetValue(), buffer, buflen)
+                    : 0;
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetOptionCount(FPDF_FORMHANDLE hHandle,
