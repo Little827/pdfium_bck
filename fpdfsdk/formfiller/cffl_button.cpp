@@ -60,6 +60,10 @@ bool CFFL_Button::OnMouseMove(CPDFSDK_PageView* pPageView,
   return true;
 }
 
+bool CFFL_Button::OnKeyDown(uint32_t nKeyCode, uint32_t nFlags) {
+  return true;
+}
+
 void CFFL_Button::OnDraw(CPDFSDK_PageView* pPageView,
                          CPDFSDK_Annot* pAnnot,
                          CFX_RenderDevice* pDevice,

@@ -37,6 +37,7 @@ class CFFL_Button : public CFFL_FormFiller {
   bool OnMouseMove(CPDFSDK_PageView* pPageView,
                    uint32_t nFlags,
                    const CFX_PointF& point) override;
+  bool OnKeyDown(uint32_t nKeyCode, uint32_t nFlags) override;
   void OnDraw(CPDFSDK_PageView* pPageView,
               CPDFSDK_Annot* pAnnot,
               CFX_RenderDevice* pDevice,
