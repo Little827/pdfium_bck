@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9c770cb1_1e11283f",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-21T08:27:25Z",
+      "side": 1,
+      "message": "My bad, this header is not required.",
+      "parentUuid": "40f8394e_f5fcf45f",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "636915f0fb5371d6004359954b3a20535ec690de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "986d96a7_26a57ff6",
         "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
         "patchSetId": 22
