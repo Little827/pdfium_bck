@@ -90,6 +90,24 @@ void SendMouseUpEvent(FPDF_FORMHANDLE form,
     fprintf(stderr, "mouseup: bad button name\n");
 }
 
+void SendDoubleClickEvent(FPDF_FORMHANDLE form,
+                          FPDF_PAGE page,
+                          const std::vector<std::string>& tokens) {
+  if (tokens.size() != 4 && tokens.size() != 5) {
+    fprintf(stderr, "doubleclick: bad args\n");
+    return;
+  }
+
+  int x = atoi(tokens[2].c_str());
+  int y = atoi(tokens[3].c_str());
+  int modifiers = tokens.size() >= 5 ? GetModifiers(tokens[4]) : 0;
+  if (tokens[1] != "left") {
+    fprintf(stderr, "mouseup: bad button name\n");
+    return;
+  }
+  FORM_OnLButtonDoubleClick(form, page, modifiers, x, y);
+}
+
 void SendMouseMoveEvent(FPDF_FORMHANDLE form,
                         FPDF_PAGE page,
                         const std::vector<std::string>& tokens) {
@@ -136,6 +154,8 @@ void SendPageEvents(FPDF_FORMHANDLE form,
       SendMouseUpEvent(form, page, tokens);
     } else if (tokens[0] == "mousemove") {
       SendMouseMoveEvent(form, page, tokens);
+    } else if (tokens[0] == "doubleclick") {
+      SendDoubleClickEvent(form, page, tokens);
     } else if (tokens[0] == "focus") {
       SendFocusEvent(form, page, tokens);
     } else {
