@@ -50,6 +50,30 @@
     },
     {
       "key": {
+        "uuid": "ca3a5eb2_0f8089d0",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-21T22:27:08Z",
+      "side": 1,
+      "message": "There\u0027s a lot of float usage in this file. Without some guidance from the compiler or some other tool, it\u0027s going to be a bit hard to consistently use float constants. I\u0027m going to leave these alone for now.",
+      "parentUuid": "058e7a42_859c3a38",
+      "range": {
+        "startLine": 1047,
+        "startChar": 24,
+        "endLine": 1047,
+        "endChar": 26
+      },
+      "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b2cedb4_f529fb1f",
         "filename": "core/fpdftext/cpdf_textpage.cpp",
         "patchSetId": 1
@@ -107,6 +131,30 @@
       "writtenOn": "2020-01-21T18:09:13Z",
       "side": 1,
       "message": "I suppose some compiler might have warned in the historical past that conversion of int to float may lose accuracy but it doesn\u0027t look like we get these warnings ...",
+      "range": {
+        "startLine": 1320,
+        "startChar": 21,
+        "endLine": 1320,
+        "endChar": 30
+      },
+      "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a699a6_a9939086",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-21T22:27:08Z",
+      "side": 1,
+      "message": "Possible. Though I can\u0027t seem to find a MSVC warning for that. The only one I found is C4244 for going in the opposite direction. Similarly, on https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html there\u0027s -Wfloat-conversion for going in the other direction.",
+      "parentUuid": "99ddffc8_b0d75e93",
       "range": {
         "startLine": 1320,
         "startChar": 21,
