@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09921b06_dcf969bb",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-21T14:45:22Z",
+      "side": 1,
+      "message": "As discussed offline, there is no order followed in the implementation file and moving the method anywhere does not provide any better readability. So resolving this comment.",
+      "parentUuid": "7bde93ca_cc9053ab",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 21
+      },
+      "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37fc5f37_b72dee7f",
         "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
         "patchSetId": 6
@@ -68,6 +92,54 @@
       "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f9a78c_2eb3d29a",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-21T14:45:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37fc5f37_b72dee7f",
+      "range": {
+        "startLine": 376,
+        "startChar": 39,
+        "endLine": 376,
+        "endChar": 40
+      },
+      "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b34d0cb_23f66e35",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-21T14:45:22Z",
+      "side": 1,
+      "message": "Modified the code flow. Now, calculated conditions and nKeyCode wont be checked in the same line.",
+      "parentUuid": "f8b4387a_7230ef94",
+      "range": {
+        "startLine": 376,
+        "startChar": 39,
+        "endLine": 376,
+        "endChar": 48
+      },
+      "revId": "c42add04a23a304ee54b2d49be8cbf1b18a746aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
