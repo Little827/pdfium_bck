@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1579289237 -0800\nnonce AC6AUtNYX+yswLx77vkNW/7yORm4v3phkDQ4FLK0Z1pZAKpqa7Xvskh8SWdIH6oFs00TdGdxBqOz\n\n0000000000000000000000000000000000000000 b50e41fd7c2f8312ef7016a72e504fd8f52b71c0 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4iCpUACgkQqzYtYVpm\n/Xu7HAgAjeAjM7vyuNtuXQnNpIYi7AxJI7XD2tqv8tHG2wksrf4vPtzoX/hRmRIG\nRYVj5fVyGafK/co5aiy5kdqR8z71RSBNaZNIl+E9dz2M4gTI0ThvPKDABf97ph20\n964haZx5SfPjx/LZl2nv+1L3z8zSprQueLbaBU5OujKc+P+YUeew9JmHdeJ6uPA+\nRMEw2494wsNf22ouKvGQz5Tn8iBqG1I0uiEeWoflBvf3E5c+4zQOx10Jo9bmgakq\nnTwX+k/mlGKmglGIGxqzwcxDY19SuHg4rGgyOP8r5coSL1zZJlMKPzN0JjaXqFFl\nROWQto1qVjtIK4h7VzMXq5bEU90JYA\u003d\u003d\n\u003dJBU/\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b64f53f_0e0c833a",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-21T18:07:22Z",
+      "side": 1,
+      "message": "0.0f ?",
+      "range": {
+        "startLine": 1047,
+        "startChar": 24,
+        "endLine": 1047,
+        "endChar": 26
+      },
+      "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b2cedb4_f529fb1f",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-21T18:07:22Z",
+      "side": 1,
+      "message": "0.0f ?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 19,
+        "endLine": 1051,
+        "endChar": 22
+      },
+      "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec140b7_5aa105a7",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-21T18:07:22Z",
+      "side": 1,
+      "message": "2.0f ?",
+      "range": {
+        "startLine": 1053,
+        "startChar": 20,
+        "endLine": 1053,
+        "endChar": 23
+      },
+      "revId": "b50e41fd7c2f8312ef7016a72e504fd8f52b71c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
