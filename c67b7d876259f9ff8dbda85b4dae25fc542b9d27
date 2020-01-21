@@ -47,6 +47,30 @@
       "revId": "c67b7d876259f9ff8dbda85b4dae25fc542b9d27",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d73b78a5_23e366d9",
+        "filename": "core/fpdftext/cpdf_linkextract.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-21T20:13:34Z",
+      "side": 1,
+      "message": "Sorry, my bad... I must have searched \"page_text \" or something earlier.",
+      "parentUuid": "624a7882_990ecaba",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "c67b7d876259f9ff8dbda85b4dae25fc542b9d27",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
