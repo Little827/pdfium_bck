@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d66dfbbc_5bc9b58a",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-21T11:02:26Z",
+      "side": 1,
+      "message": "I don\u0027t think it can be refactored as the return values in the code varies across methods.",
+      "parentUuid": "d48ae540_d2b223af",
+      "range": {
+        "startLine": 962,
+        "startChar": 2,
+        "endLine": 971,
+        "endChar": 68
+      },
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c6213fa_bb6c7fa6",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "59773924_f4a70e44",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-21T11:02:26Z",
+      "side": 1,
+      "message": "I am not sure. It could be null if |pAnnotDict| is invalid. But I\u0027m not sure how we can emulate it in embedder tests.",
+      "parentUuid": "8c6213fa_bb6c7fa6",
+      "range": {
+        "startLine": 972,
+        "startChar": 9,
+        "endLine": 972,
+        "endChar": 20
+      },
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a9e953d_d758413c",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95bec2ec_3617b455",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-21T11:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a9e953d_d758413c",
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "7adcc8e3_19a9fec0",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-21T11:02:26Z",
+      "side": 1,
+      "message": "|buflen| is used in many different APIs in fpdf_annot.h. Using the same terminology here to be consistent.",
+      "parentUuid": "e9b6f672_bbf9be50",
+      "range": {
+        "startLine": 994,
+        "startChar": 42,
+        "endLine": 994,
+        "endChar": 48
+      },
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb9e0096_45d7164a",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 2
@@ -108,6 +198,30 @@
       "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "410f209c_7afa75f7",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-21T11:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb9e0096_45d7164a",
+      "range": {
+        "startLine": 2286,
+        "startChar": 16,
+        "endLine": 2286,
+        "endChar": 43
+      },
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
