@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd766e51_618c4895",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2020-01-22T08:42:49Z",
+      "side": 1,
+      "message": "Suggested edit:\nFor the case in question, incorrect font whose name is a prefix of desired font is being picked up due to GetSimilarValue() yielding the same result.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a5f9814_7252a4a5",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2020-01-22T08:42:49Z",
+      "side": 1,
+      "message": "I suggest following Chromium coding convention in new file.",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c963512d_a4e318b8",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2020-01-22T08:42:49Z",
+      "side": 1,
+      "message": "As per Chromium convention, this should be /*filePath\u003d*/\"\"",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da649ab6_315ec4c2",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2020-01-22T08:42:49Z",
+      "side": 1,
+      "message": "Suggestion for function name: VerifyFaceName()",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb5a59f_0d6d416a",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7541
+      },
+      "writtenOn": "2020-01-22T08:42:49Z",
+      "side": 1,
+      "message": "Consider: ASSERT_NE(pFont, nullptr);",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
