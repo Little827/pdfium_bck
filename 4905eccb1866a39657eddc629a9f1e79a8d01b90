@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "dda429f0_f08f8601",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T00:42:39Z",
+      "side": 1,
+      "message": "Maybe just add a brief note about this in the CL description?",
+      "parentUuid": "d10ce51b_7c1b2884",
+      "revId": "4905eccb1866a39657eddc629a9f1e79a8d01b90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8b45d7d_d08bc5a9",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 5
@@ -191,6 +209,30 @@
       "side": 1,
       "message": "As of now, PDFiumFuzzerHelper::RenderPdf() uses form callback version 1, so would it even make sense to set |xfa_disabled|?\n\nAnd I\u0027d be happy to speak offline to learn how to do a manual rollout.",
       "parentUuid": "1cde85ad_f6f5af04",
+      "range": {
+        "startLine": 727,
+        "startChar": 12,
+        "endLine": 727,
+        "endChar": 24
+      },
+      "revId": "4905eccb1866a39657eddc629a9f1e79a8d01b90",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac857c3_e5576205",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T00:42:39Z",
+      "side": 1,
+      "message": "PDFiumFuzzerHelper::RenderPdf() calls GetFormCallbackVersion(), but some GetFormCallbackVersion() overrides, which are not cross-referenced, set it to 2. I think both of those two callsites are ok if we left them as is for now. So the \"BTW\" comment is just FYI.",
+      "parentUuid": "4c41a02a_ab241fc7",
       "range": {
         "startLine": 727,
         "startChar": 12,
