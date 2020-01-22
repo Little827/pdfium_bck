@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65282298_b9eb9328",
+        "filename": "fpdfsdk/formfiller/cffl_button.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-22T12:39:44Z",
+      "side": 1,
+      "message": "This change is not required. So removing it in the latest Patchset.",
+      "parentUuid": "0912051e_5c0a7093",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "067fc303_6945dd17",
         "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b6732c7_6cb5c9fb",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-22T12:39:44Z",
+      "side": 1,
+      "message": "For any keypress, following events are triggered in the following order.\n1. OnKeyDown\n2. OnChar\n3. OnKeyUp\n\nIt makes more sense to handle Enter key press in OnChar. Also in multiple pixel tests, we give Enter key as input using charcode and not keycode. So moved the implementation to OnChar().",
+      "parentUuid": "067fc303_6945dd17",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e3b01b59_f30b0a86",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-22T12:39:44Z",
+      "side": 1,
+      "message": "Fixed in latest patchset",
+      "parentUuid": "bd863acb_11d0ac07",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d845d96_8f2f0379",
         "filename": "testing/resources/annots_action_handling.in",
         "patchSetId": 8
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "b9089ef7_3ff8da0c",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-22T12:39:44Z",
+      "side": 1,
+      "message": "Fixed in latest patchset",
+      "parentUuid": "5d845d96_8f2f0379",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3a043b_53fe43ec",
         "filename": "testing/resources/annots_action_handling.in",
         "patchSetId": 8
@@ -84,6 +156,24 @@
       "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae81bac5_e3f42496",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-22T12:39:44Z",
+      "side": 1,
+      "message": "Fixed in latest patchset",
+      "parentUuid": "3f3a043b_53fe43ec",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
