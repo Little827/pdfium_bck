@@ -47,6 +47,30 @@
       "revId": "980e6e8738059bfa1b23a6f58500a042cee47fc8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aec4250_b025f529",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T22:39:06Z",
+      "side": 1,
+      "message": "Done. Renamed to Init() so it\u0027s obvious that it\u0027s not something to randomly call. I\u0027ll try to remove |m_bIsParsed| in a later CL, but I haven\u0027t convinced myself it\u0027s safe to remove yet.",
+      "parentUuid": "e17f09eb_00142de8",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 7
+      },
+      "revId": "980e6e8738059bfa1b23a6f58500a042cee47fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
