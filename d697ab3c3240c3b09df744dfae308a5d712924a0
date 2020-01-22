@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "64cfff98_9f43ebda",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T22:44:41Z",
+      "side": 1,
+      "message": "https://google.github.io/styleguide/cppguide.html#Declaration_Order currently says factory functions first, before ctors/dtor. Since these aren\u0027t factory functions, I put them after.",
+      "parentUuid": "abadeb3e_1571020f",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "d697ab3c3240c3b09df744dfae308a5d712924a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01fb3ba2_4c8f78b3",
         "filename": "core/fpdfdoc/cpdf_formfield.h",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "d697ab3c3240c3b09df744dfae308a5d712924a0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a33c824_1778ed68",
+        "filename": "core/fpdfdoc/cpdf_formfield.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T22:44:41Z",
+      "side": 1,
+      "message": "I removed a bunch, but kept a few for grouping.",
+      "parentUuid": "01fb3ba2_4c8f78b3",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "d697ab3c3240c3b09df744dfae308a5d712924a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
