@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1579730197 -0800\nnonce AC6AUtMiyU2N1Ik4Is3Hhktz5N84BgkPTEPPooO1IPw/94B8H+1cgO66z++MHBXcLbUDhznnXOVm\n\n0000000000000000000000000000000000000000 980e6e8738059bfa1b23a6f58500a042cee47fc8 refs/for/refs/heads/master%notify\u003dNONE,m\u003dconst\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4oxRUACgkQqzYtYVpm\n/XtxVQf/UpictG44YpLegL8q47l+9hrf37Qpjbd0XYpVy53mYqWlZmPN8mAFToYe\ngEqBqWART7nZV2XWO/AGkxrRS6FpQgk02VttzAq2Ba3H0GrhUhKGTf0JPCOHgmX4\nATGQ9Yrollyhvl4VhTbogkU7cHOWUP/HW9WFZVXk2ZB5OeWCSauXAddn7GJzTOed\nCdLbeervAEj5ljyDKaJjCb8x2Zg1BQaj62zkUF6SOq5NpXqDBpDP9YqkXQzo4Ksz\nEsWFsibMCPl7ORFV2N1WPc77gyHbMbL3NiUCxm7jVN6z/zmxKTsGiNBRf0bNQjuN\nmhtAPYxmd1c23kezXZWqDKw4POarfw\u003d\u003d\n\u003dHgTW\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "0681bfe9_d13d21b4",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-22T22:01:06Z",
+      "side": 1,
+      "message": "maybe keep as a function and just call from ctor?  kinda lotta code to do in ctor.  can assert !m_bIsParsed if you are worried about stray calls.",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 7
+      },
+      "revId": "980e6e8738059bfa1b23a6f58500a042cee47fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
