@@ -49,10 +49,6 @@ CXFA_FFDropDown* ToDropDown(CXFA_FFWidget* widget) {
   return static_cast<CXFA_FFDropDown*>(widget);
 }
 
-CXFA_FFComboBox* ToComboBox(CXFA_FFWidget* widget) {
-  return static_cast<CXFA_FFComboBox*>(widget);
-}
-
 }  // namespace
 
 CXFA_FFNotify::CXFA_FFNotify(CXFA_FFDoc* pDoc) : m_pDoc(pDoc) {}
@@ -255,7 +251,8 @@ void CXFA_FFNotify::OpenDropDownList(CXFA_Node* pNode) {
   if (!pLayoutItem)
     return;
 
-  CXFA_FFWidget* hWidget = XFA_GetWidgetFromLayoutItem(pLayoutItem);
+  CXFA_FFComboBox* hWidget =
+      ToComboBox(ToDropDown(XFA_GetWidgetFromLayoutItem(pLayoutItem)));
   if (!hWidget)
     return;
 
@@ -274,7 +271,7 @@ void CXFA_FFNotify::OpenDropDownList(CXFA_Node* pNode) {
 
   CXFA_FFDocView* pDocView = m_pDoc->GetDocView();
   pDocView->LockUpdate();
-  ToComboBox(hWidget)->OpenDropDownList();
+  hWidget->OpenDropDownList();
   pDocView->UnlockUpdate();
   pDocView->UpdateDocView();
 }
