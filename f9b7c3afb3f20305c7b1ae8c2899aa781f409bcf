@@ -1,0 +1,260 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd116e21_13fe4e61",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "It may be possible to avoid adding this. In CPDFSDK_AnnotHandlerMgr::GetNextAnnot(), where |m_pFormFillEnv| is being read from, pSDKAnnot-\u003eGetPageView()-\u003eGetFormFillEnv() should return the same pointer.",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca7db951_a41c238a",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Instead of having duplicate code between the two constructors, have this ctor delegate to the other. Something like the following:\n\nCPDFSDK_AnnotIterator::CPDFSDK_AnnotIterator(CPDFSDK_PageView* pPageView,\n                                             CPDF_Annot::Subtype nAnnotSubtype)\n    : CPDFSDK_AnnotIterator(pPageView, std::vector\u003cCPDF_Annot::Subtype\u003e(1, nAnnotSubtype) {}",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceac90be_60c80bb6",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Actually, the code here can just be: pdfium::ContainsValue(subtypes_to_iterate_, annot_type). (From third_party/base/stl_util.h)",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d53ae5a_82139191",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Can we rename this to \"ShouldIterateOverAnnotSubType\" since the parameter is a type and not an annot instance?",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff20dba_dde00b21",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "As much as I would like this, we should be consistent with the surrounding code for now. So maybe just |m_subtypes| for now?",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 55
+      },
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb62f20_83db66f9",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Whereas this doesn\u0027t have any \"m_foo\" variables to clash with, so go with \"trailing_underscore_\".",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9dabf9b7_594726f7",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Not needed?",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4306ff5a_38b01f3a",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "There\u0027s very little drawing code here, so I would suggest not adding this here. At the same time, I don\u0027t have a better suggestion just yet. Maybe I need to take care of the TODO on line 270 first...",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9543bc5d_47e6d1db",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Let\u0027s make the parameter const std::vector\u003cCPDF_Annot::Subtype\u003e\u0026, to better mirror the getter. Let the caller work out how to build a vector.",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72cbcc33_dd57e693",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "- const method\n- just inline, assuming it\u0027s only ever going to return |m_FocusableAnnotTypes|.",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f01c5a69_30ce0bd0",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "This is a bit weird, because FPDFAnnot_GetFocusableSubtypes() returns false, yet the caller should know that |*count| has a new value to read. How does the caller differentiate that from returning false on line 1072, or any other error condition that can occur?\n\nI would suggest only have the following be valid uses of this API for the caller:\n\n// Ask PDFium for the |count|. Here, |count| is effectively an out parameter.\n// Return true if |count| has been written to to indicate success.\nFPDFAnnot_GetFocusableSubtypes(valid_handle, nullptr, \u0026count);\n\n// Ask PDFium to fill |types|. Here, |count| is effectively an in parameter.\n// Return true if |types| has been written to to indicate success.\nFPDFAnnot_GetFocusableSubtypes(valid_handle, \u0026types, \u0026count);\n\n\nAn alternative is to split this into 2 APIs:\n\n// Return -1 on error.\n// Using int is ok since there\u0027s a limited number of subtypes.\nint FPDFAnnot_GetFocusableSubtypesCount(FPDF_FORMHANDLE handle);\n\n// Now |subtypes| is required, and |count| only has 1 use.\nFPDF_BOOL FPDFAnnot_GetFocusableSubtypes(FPDF_FORMHANDLE handle,\n                                         FPDF_ANNOTATION_SUBTYPE* subtypes,\n                                         int count);",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1505f861_4150bb32",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 2229,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Can we name constants kFoo?",
+      "range": {
+        "startLine": 2229,
+        "startChar": 36,
+        "endLine": 2229,
+        "endChar": 54
+      },
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32e0ebb_a145eff0",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "Would it be reasonable for a caller to call: FPDFAnnot_SetFocusableSubtypes(handle, nullptr, 0) to indicate they want nothing to have focus?",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da96de83_19db70d2",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T03:38:09Z",
+      "side": 1,
+      "message": "This sentence is a bit hard to parse. Let\u0027s iron out the appropriate conditions for returning true and false. Once we do that, we can rewrite this accordingly.",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
