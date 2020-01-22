@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "31353baa_8b7a344b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:50:11Z",
+      "side": 1,
+      "message": "Just drop this. Readers can quickly pick up this describes the issue.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd766e51_618c4895",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -19,6 +42,46 @@
         "endLine": 25,
         "endChar": 45
       },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9aa77a4_5e672563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:50:11Z",
+      "side": 1,
+      "message": "\"To fix this, check if the ...\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b1f6ba_cbe7af7f",
+        "filename": "core/fxge/cfx_folderfontinfo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:50:11Z",
+      "side": 1,
+      "message": "How about adding: FontFaceInfo* GetFontFaceInfoForTesting()? Then there\u0027s no need for a friend, and the test does not need to cast void*.",
       "revId": "05a9170381c938e5d9997b17b518054b15427831",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -94,6 +157,29 @@
     },
     {
       "key": {
+        "uuid": "aed4301a_efd2ecf0",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:50:11Z",
+      "side": 1,
+      "message": "Similarly, with a brand new file, use Chromium style (foo_var_) names.",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acb5a59f_0d6d416a",
         "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
         "patchSetId": 4
@@ -111,6 +197,64 @@
         "endLine": 71,
         "endChar": 13
       },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fbc3224_b3714031",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:50:11Z",
+      "side": 1,
+      "message": "Or just: ASSERT_TRUE(pFont);\n\nBasically, Chromium/PDFium code prefers to never have \"foo !\u003d nullptr\" or \"foo \u003d\u003d nullptr\".",
+      "parentUuid": "acb5a59f_0d6d416a",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b8d80b6_6506f611",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:50:11Z",
+      "side": 1,
+      "message": "Once GetFontFaceInfoForTesting() exists, this can become: EXPECT_EQ(pFont-\u003em_FaceName, kFoo), and EXPECT_EQ() can give better diagnostic output on failure than EXPECT_TRUE().",
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53828f6b_072cf517",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:50:11Z",
+      "side": 1,
+      "message": "Similarly, does EXPECT_FALSE(FindFont(...)); work here?",
       "revId": "05a9170381c938e5d9997b17b518054b15427831",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
