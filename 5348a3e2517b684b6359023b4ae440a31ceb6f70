@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2ab04730_0682c1c1",
+        "filename": "xfa/fde/cfde_wordbreak_data.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-22T17:38:28Z",
+      "side": 1,
+      "message": "follow-up: any idea why we didn\u0027t just write\n\n kWordBreakValueNone \u003d 1 \u003c\u003c static_cast\u003cint\u003e(WordBreakProperty::kNone),\n\netc., and lose the asserts below?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "5348a3e2517b684b6359023b4ae440a31ceb6f70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93a6cd45_d253241a",
         "filename": "xfa/fde/cfde_wordbreak_data.cpp",
         "patchSetId": 2
@@ -16,6 +39,24 @@
       "revId": "5348a3e2517b684b6359023b4ae440a31ceb6f70",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79465a59_53d7eb1c",
+        "filename": "xfa/fde/cfde_wordbreak_data.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2864,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-22T17:38:28Z",
+      "side": 1,
+      "message": "Indeed. Done.",
+      "parentUuid": "93a6cd45_d253241a",
+      "revId": "5348a3e2517b684b6359023b4ae440a31ceb6f70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
