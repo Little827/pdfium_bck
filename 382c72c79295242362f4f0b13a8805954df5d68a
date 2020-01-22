@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1c47908_1423f82c",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-22T18:53:24Z",
+      "side": 1,
+      "message": "follow-up: Isn\u0027t this nearly identical to CharInfo? Should it just contain one?",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "382c72c79295242362f4f0b13a8805954df5d68a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
