@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c1d3cc54_19176df7",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T07:54:47Z",
+      "side": 1,
+      "message": "CPDF_FormField* GetPDFFormField(FPDF_FORMHANDLE hHandle, FPDF_ANNOTATION annot) {\n  CPDF_Dictionary* pAnnotDict \u003d GetAnnotDictFromFPDFAnnotation(annot);\n  if (!pAnnotDict)\n    return nullptr;\n  CPDFSDK_InteractiveForm* pForm \u003d FormHandleToInteractiveForm(hHandle);\n  if (!pForm)\n    return nullptr;\n  CPDF_InteractiveForm* pPDFForm \u003d pForm-\u003eGetInteractiveForm();\n  return pPDFForm-\u003eGetFieldByDict(pAnnotDict);\n}\n\nnullptr means return 0 or -1 based on the caller, else the case of success.\n\nWon\u0027t the above work.",
+      "parentUuid": "d66dfbbc_5bc9b58a",
+      "range": {
+        "startLine": 962,
+        "startChar": 2,
+        "endLine": 971,
+        "endChar": 68
+      },
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c6213fa_bb6c7fa6",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I am not sure. It could be null if |pAnnotDict| is invalid. But I\u0027m not sure how we can emulate it in embedder tests.",
       "parentUuid": "8c6213fa_bb6c7fa6",
+      "range": {
+        "startLine": 972,
+        "startChar": 9,
+        "endLine": 972,
+        "endChar": 20
+      },
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce15ab1f_6da16f7a",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T07:54:47Z",
+      "side": 1,
+      "message": "Ack, I don\u0027t have an in-depth knowledge of this area so i can\u0027t recommend a resolution. I will try looking into this.\nLei might have some context, will probably ask him when he is added as a reviewer.",
+      "parentUuid": "59773924_f4a70e44",
       "range": {
         "startLine": 972,
         "startChar": 9,
@@ -166,6 +214,30 @@
       "side": 1,
       "message": "|buflen| is used in many different APIs in fpdf_annot.h. Using the same terminology here to be consistent.",
       "parentUuid": "e9b6f672_bbf9be50",
+      "range": {
+        "startLine": 994,
+        "startChar": 42,
+        "endLine": 994,
+        "endChar": 48
+      },
+      "revId": "bd49494b3a1a80fc1ad94cfb1f2ff9b87e3cd666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6df2706a_67c45699",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T07:54:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7adcc8e3_19a9fec0",
       "range": {
         "startLine": 994,
         "startChar": 42,
