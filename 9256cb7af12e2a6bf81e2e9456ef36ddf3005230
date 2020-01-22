@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f9d46f0_09583b99",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:57:13Z",
+      "side": 0,
+      "message": "Private method where the only caller already does this check.",
+      "revId": "9256cb7af12e2a6bf81e2e9456ef36ddf3005230",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
+}
