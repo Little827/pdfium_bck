@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0912051e_5c0a7093",
+        "filename": "fpdfsdk/formfiller/cffl_button.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T02:01:29Z",
+      "side": 1,
+      "message": "Should this always return true, or should this take |nKeyCode| and/or |nFlags| into account?",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067fc303_6945dd17",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T02:01:29Z",
+      "side": 1,
+      "message": "This seems a bit weird. I don\u0027t know for sure, but intuitively this doesn\u0027t feel right. I would suggest investigating what actually triggers actions for the keyboard. e.g. It may be in OnChar().",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd863acb_11d0ac07",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T02:01:29Z",
+      "side": 1,
+      "message": "No blank lines for consistency.",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d845d96_8f2f0379",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T02:01:29Z",
+      "side": 1,
+      "message": "Object 5 0 can be inlined, like in reset_button.in.",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f3a043b_53fe43ec",
+        "filename": "testing/resources/annots_action_handling.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T02:01:29Z",
+      "side": 1,
+      "message": "Let\u0027s keep /Type, /Subtype, and /FT as the first entries, in that order. Like object 8 0 below. So readers can easily identify what this object is.",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
