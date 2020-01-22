@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1c39e53_ae2ffebf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T23:42:53Z",
+      "side": 1,
+      "message": "because  https://pdfium-review.googlesource.com/62550 added more validations when ...",
+      "revId": "3af48470de93506b12143b21ef7fabc013cf311c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faafd63f_d9227506",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T23:42:53Z",
+      "side": 1,
+      "message": "Needs \"chromium:\" prefix.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "3af48470de93506b12143b21ef7fabc013cf311c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
