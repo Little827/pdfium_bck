@@ -40,10 +40,10 @@ enum class FPDFText_MarkedContent { Pass = 0, Done, Delay };
 
 enum class FPDFText_Direction { Left = -1, Right = 1 };
 
-class FPDF_CHAR_INFO {
+class CharInfo {
  public:
-  FPDF_CHAR_INFO();
-  ~FPDF_CHAR_INFO();
+  CharInfo();
+  ~CharInfo();
 
   wchar_t m_Unicode = 0;
   wchar_t m_Charcode = 0;
@@ -91,7 +91,7 @@ class CPDF_TextPage {
   int TextIndexFromCharIndex(int CharIndex) const;
   size_t size() const { return m_CharList.size(); }
   int CountChars() const;
-  void GetCharInfo(size_t index, FPDF_CHAR_INFO* info) const;
+  void GetCharInfo(size_t index, CharInfo* info) const;
   std::vector<CFX_FloatRect> GetRectArray(int start, int nCount) const;
   int GetIndexAtPos(const CFX_PointF& point, const CFX_SizeF& tolerance) const;
   WideString GetTextByRect(const CFX_FloatRect& rect) const;

@@ -122,7 +122,7 @@ void CPDF_LinkExtract::ExtractLinks() {
   const int nTotalChar = m_pTextPage->CountChars();
   const WideString page_text = m_pTextPage->GetAllPageText();
   while (pos < nTotalChar) {
-    FPDF_CHAR_INFO pageChar;
+    CharInfo pageChar;
     m_pTextPage->GetCharInfo(pos, &pageChar);
     if (pageChar.m_Flag != FPDFTEXT_CHAR_GENERATED &&
         pageChar.m_Unicode != TEXT_SPACE_CHAR && pos != nTotalChar - 1) {
