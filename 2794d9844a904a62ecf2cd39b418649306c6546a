@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1579654558 -0800\nnonce AC6AUtPTnGI3iU0kaePmAFE6176MloganloAfGZwY1rxPB/c1um/oEurbnEBc6bfWS3ahChH+9Ny\n\n0000000000000000000000000000000000000000 2794d9844a904a62ecf2cd39b418649306c6546a refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4nnZ4ACgkQqzYtYVpm\n/XtZlQgAqU4fROkH7pvlQ/MC1fHPuB+PE5jVpbOLy05HTO65rOXt+804DbMPsItp\nLoc7tKD1bq7sd8OkRkaCTWbFWJU4oVU4oIgLvPBEhnh3zlOiGLx8tRurNDnWlEsy\niOCH9oX7tPPT8YzDD9ufRuu/ldns1ddHQ0E724t26mBffRrXAxrqwjStaCgR7RSb\nDrYyC5M+I6jKTln2wAIAbv6VfqLNGda2xQBrKRyWQHTSUKgdQx3A8OvXlp2MTQlp\nq4tzs/c4rU56sWsEPMdUSUksF2mCq3J9JcqPiTLH7MoDou1VFosS5Y4x1H3UCrRG\nmLRbpaMsFgczGpSiNecrbfsYtERCeg\u003d\u003d\n\u003djnFd\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bd96b43_dfa95d1c",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-22T18:36:41Z",
+      "side": 1,
+      "message": "Kinda low entropy identifier for something in the global namespace, wonder if any of our embedders might get link-time collisions with their own CharInfo() ctors, etc?  Nest inside CPDF_TextPage?",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "2794d9844a904a62ecf2cd39b418649306c6546a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
