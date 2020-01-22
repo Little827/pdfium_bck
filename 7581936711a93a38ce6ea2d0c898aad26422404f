@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "9d30b418_cfe5f9f8",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:28:40Z",
+      "side": 1,
+      "message": "Can we add this function in a separate refactoring CL and switch the other GetInteractiveForm() callers in this file to use this function?",
+      "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c346ebb_62322656",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:28:40Z",
+      "side": 1,
+      "message": "I like the ternary operator usage on line 984, but here, it\u0027s a bit unwieldy. Let\u0027s write it without the ternary operator instead:\n\nif (!pFormField)\n  return 0;\nreturn Utf16EncodeMaybeCopyAndReturnLength(...);",
+      "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ad10b6f_096076ec",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 4
@@ -19,6 +53,23 @@
         "endLine": 566,
         "endChar": 60
       },
+      "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18dc15b6_091aefa3",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T21:28:40Z",
+      "side": 1,
+      "message": "It will also be helpful to mention that on success, the returned type is one of the FPDF_FORMFIELD_* values.",
       "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
