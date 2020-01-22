@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93a6cd45_d253241a",
+        "filename": "xfa/fde/cfde_wordbreak_data.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2864,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-22T00:51:22Z",
+      "side": 1,
+      "message": "Should this just return |WordBreakProperty::kNone|? Doesn\u0027t |kWordBreakValueNone| cast into |WordBreakProperty::kCR| ?",
+      "revId": "5348a3e2517b684b6359023b4ae440a31ceb6f70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
