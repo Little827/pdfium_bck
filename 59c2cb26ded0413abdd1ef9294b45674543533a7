@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10829f60_23b2e434",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "Update this test as well.",
+      "range": {
+        "startLine": 1196,
+        "startChar": 0,
+        "endLine": 1196,
+        "endChar": 47
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6505314_faae5b37",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "EXPECT_FALSE(flags \u0026 FPDF_FORMFLAG_TEXT_PASSWORD);",
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a048f97c_ff87fbc6",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "user-editable password",
+      "range": {
+        "startLine": 1497,
+        "startChar": 39,
+        "endLine": 1497,
+        "endChar": 47
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90d0cb1_4b8755da",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1504,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "EXPECT_FALSE(flags \u0026 FPDF_FORMFLAG_READONLY);",
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9dacb07_c7b9e50f",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "Update this test as well.",
+      "range": {
+        "startLine": 1582,
+        "startChar": 0,
+        "endLine": 1582,
+        "endChar": 67
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6475e5c5_000f76cf",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "Update this test as well.",
+      "range": {
+        "startLine": 2029,
+        "startChar": 0,
+        "endLine": 2029,
+        "endChar": 53
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be451ed_4230a72e",
+        "filename": "testing/resources/text_form_multiple.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "space after this.",
+      "range": {
+        "startLine": 6,
+        "startChar": 49,
+        "endLine": 6,
+        "endChar": 50
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb76a487_768b4d95",
+        "filename": "testing/resources/text_form_multiple.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "space after this.",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5fb542d_0e0fa0cd",
+        "filename": "testing/resources/text_form_multiple.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-01-22T11:15:41Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
