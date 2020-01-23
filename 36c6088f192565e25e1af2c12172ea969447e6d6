@@ -46,6 +46,30 @@
       "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44515aca_500445bd",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-01-23T19:55:46Z",
+      "side": 0,
+      "message": "The char_index \u003d -3 will be passed up to some functions in pdfium_engine.cc, but I don\u0027t see anywhere in pdfium_engine.cc that\u0027s checking the error value -3.\nSince |m_bIsParsed| has always been true, I think it\u0027s still good to remove these lines?",
+      "parentUuid": "35e117d1_81ad6d96",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 14
+      },
+      "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
