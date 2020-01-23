@@ -38,6 +38,7 @@ class CFX_FolderFontInfo : public SystemFontInfoIface {
   bool GetFontCharset(void* hFont, int* charset) override;
 
  protected:
+  friend class CFX_FolderFontInfoTest;
   class FontFaceInfo {
    public:
     FontFaceInfo(ByteString filePath,
