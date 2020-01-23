@@ -118,6 +118,30 @@
       "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdea1fe0_b308654a",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-23T20:30:42Z",
+      "side": 0,
+      "message": "fpdf_text.h, line 301 calls out -3 as a special return which may no longer be possible if I understand correctly.",
+      "parentUuid": "6b3d7a7d_f5a4d307",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 14
+      },
+      "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
