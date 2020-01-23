@@ -255,7 +255,6 @@ void CPDF_TextPage::Init() {
   m_TextBuf.SetAllocStep(10240);
   ProcessObject();
 
-  m_bIsParsed = true;
   const int nCount = CountChars();
   if (nCount)
     m_CharIndex.push_back(0);
@@ -320,7 +319,7 @@ int CPDF_TextPage::TextIndexFromCharIndex(int CharIndex) const {
 std::vector<CFX_FloatRect> CPDF_TextPage::GetRectArray(int start,
                                                        int nCount) const {
   std::vector<CFX_FloatRect> rects;
-  if (start < 0 || nCount == 0 || !m_bIsParsed)
+  if (start < 0 || nCount == 0)
     return rects;
 
   const int nCharListSize = CountChars();
@@ -364,9 +363,6 @@ std::vector<CFX_FloatRect> CPDF_TextPage::GetRectArray(int start,
 
 int CPDF_TextPage::GetIndexAtPos(const CFX_PointF& point,
                                  const CFX_SizeF& tolerance) const {
-  if (!m_bIsParsed)
-    return -3;
-
   int pos;
   int NearPos = -1;
   double xdif = 5000;
@@ -404,9 +400,6 @@ int CPDF_TextPage::GetIndexAtPos(const CFX_PointF& point,
 
 WideString CPDF_TextPage::GetTextByPredicate(
     const std::function<bool(const PAGECHAR_INFO&)>& predicate) const {
-  if (!m_bIsParsed)
-    return WideString();
-
   float posy = 0;
   bool IsContainPreChar = false;
   bool IsAddLineFeed = false;
@@ -451,7 +444,7 @@ WideString CPDF_TextPage::GetTextByObject(
 }
 
 void CPDF_TextPage::GetCharInfo(size_t index, CharInfo* info) const {
-  if (!m_bIsParsed || index >= size())
+  if (index >= size())
     return;
 
   const PAGECHAR_INFO& charinfo = m_CharList[index];
@@ -468,8 +461,8 @@ void CPDF_TextPage::GetCharInfo(size_t index, CharInfo* info) const {
 }
 
 WideString CPDF_TextPage::GetPageText(int start, int count) const {
-  if (start < 0 || start >= CountChars() || count <= 0 || !m_bIsParsed ||
-      m_CharList.empty() || m_TextBuf.GetLength() == 0) {
+  if (start < 0 || start >= CountChars() || count <= 0 || m_CharList.empty() ||
+      m_TextBuf.GetLength() == 0) {
     return WideString();
   }
 
@@ -511,7 +504,7 @@ WideString CPDF_TextPage::GetPageText(int start, int count) const {
 }
 
 int CPDF_TextPage::CountRects(int start, int nCount) {
-  if (!m_bIsParsed || start < 0)
+  if (start < 0)
     return -1;
 
   m_SelRects = GetRectArray(start, nCount);
@@ -519,7 +512,7 @@ int CPDF_TextPage::CountRects(int start, int nCount) {
 }
 
 bool CPDF_TextPage::GetRect(int rectIndex, CFX_FloatRect* pRect) const {
-  if (!m_bIsParsed || !pdfium::IndexInBounds(m_SelRects, rectIndex))
+  if (!pdfium::IndexInBounds(m_SelRects, rectIndex))
     return false;
 
   *pRect = m_SelRects[rectIndex];
