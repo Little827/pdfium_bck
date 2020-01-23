@@ -94,6 +94,30 @@
       "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3d7a7d_f5a4d307",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-23T20:27:40Z",
+      "side": 0,
+      "message": "nigi: Whether Chromium PDF code checks the return value or not is a separate discussion. (See below) For this CL, I\u0027m saying the code being removed here is not reachable. CPDF_TextPage::GetIndexAtPos() only has one caller, and that caller can only have an initialized CPDF_TextPage instance where |m_bIsParsed| is true.\n\nPDFiumPage::GetCharIndex() is the direct caller to FPDFText_GetCharIndexAtPos(). It interprets -1 (no chars) and -3 (error) the same way and returns |NONSELECTABLE_AREA|. PDFiumPage::GetCharIndex() doesn\u0027t have another return value to indicate error, so |NONSELECTABLE_AREA| is the best it can do. Most callers see |NONSELECTABLE_AREA| as not interesting and do nothing.\n\ntsepez: To be clear, what public header file changes are you think of?",
+      "parentUuid": "d65035cc_c52a0fdd",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 14
+      },
+      "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
