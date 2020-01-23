@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c7ed7ab_22b519c9",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "Updated the comment, but I don\u0027t think adding a test case another annotation without MaxLen parameter adds a value here.",
+      "parentUuid": "10829f60_23b2e434",
+      "range": {
+        "startLine": 1196,
+        "startChar": 0,
+        "endLine": 1196,
+        "endChar": 47
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6505314_faae5b37",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eedb489d_52cc9eec",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6505314_faae5b37",
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "867e7a38_7b192af9",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a048f97c_ff87fbc6",
+      "range": {
+        "startLine": 1497,
+        "startChar": 39,
+        "endLine": 1497,
+        "endChar": 47
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c90d0cb1_4b8755da",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183b54ef_6bba8451",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1504,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90d0cb1_4b8755da",
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "18573787_cf8bc325",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "I don\u0027t think adding new test case adds any value here, considering password flag has already been tested in GetFormFieldFlagsTextField. Also, FPDFAnnot_GetFormFieldAtPoint does not need test cases specific to password text fields.",
+      "parentUuid": "e9dacb07_c7b9e50f",
+      "range": {
+        "startLine": 1582,
+        "startChar": 0,
+        "endLine": 1582,
+        "endChar": 67
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6475e5c5_000f76cf",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 1
@@ -125,6 +233,30 @@
       "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e52afd_f2574cfe",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6475e5c5_000f76cf",
+      "range": {
+        "startLine": 2029,
+        "startChar": 0,
+        "endLine": 2029,
+        "endChar": 53
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "70275280_120f5cb6",
+        "filename": "testing/resources/text_form_multiple.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be451ed_4230a72e",
+      "range": {
+        "startLine": 6,
+        "startChar": 49,
+        "endLine": 6,
+        "endChar": 50
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb76a487_768b4d95",
         "filename": "testing/resources/text_form_multiple.in",
         "patchSetId": 1
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "a5c8cfb2_c57634cc",
+        "filename": "testing/resources/text_form_multiple.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb76a487_768b4d95",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5fb542d_0e0fa0cd",
         "filename": "testing/resources/text_form_multiple.in",
         "patchSetId": 1
@@ -194,6 +374,30 @@
       "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab848994_0e4997de",
+        "filename": "testing/resources/text_form_multiple.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T10:36:06Z",
+      "side": 1,
+      "message": "It\u0027s not needed. Will remove it.",
+      "parentUuid": "a5fb542d_0e0fa0cd",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "59c2cb26ded0413abdd1ef9294b45674543533a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
