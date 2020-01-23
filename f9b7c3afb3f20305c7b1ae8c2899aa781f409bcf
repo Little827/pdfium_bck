@@ -150,6 +150,24 @@
     },
     {
       "key": {
+        "uuid": "0582dd8f_bfde5223",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-23T18:25:44Z",
+      "side": 1,
+      "message": "I would suggest moving this code to core/fxge/cfx_drawutils.h, with an associated .cpp file. Also rename the function to DrawFocusedRect().",
+      "parentUuid": "4306ff5a_38b01f3a",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9543bc5d_47e6d1db",
         "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
         "patchSetId": 26
