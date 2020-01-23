@@ -22,6 +22,30 @@
       "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e117d1_81ad6d96",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-23T19:40:05Z",
+      "side": 0,
+      "message": "FPDFText_GetCharIndexAtPos() is the only caller, and there\u0027s a return -3 there as well. It\u0027s documented in fpdf_text.h.",
+      "parentUuid": "15b179c5_cafaea5a",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 14
+      },
+      "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
