@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "4e811393_134ec3f6",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-23T00:49:10Z",
+      "side": 1,
+      "message": "My earlier suggestion to do this in OnChar() is just intuition. i.e. I was thinking the event sequence for holding down a key is:\n\n1. OnKeyDown\n2a. OnChar\n2b. OnChar\n...\n2z. OnChar\n3. OnKeyUp\n\nHowever, Chromium\u0027s PDF Viewer doesn\u0027t behave like that. It instead sends:\n\n1a. OnKeyDown\n1b. OnChar\n2a. OnKeyDown\n2b. OnChar\n...\nN-1 a. OnKeyDown\nN-1 b. OnChar\nN. OnKeyUp\n\nThe main difference is OnKeyDown fires for keys like Ctrl and up arrow, but OnChar does not. Given we are interested in the enter/return key, which does generate a character, I guess OnChar() is the better place.",
+      "parentUuid": "7b6732c7_6cb5c9fb",
+      "revId": "1299525bc8b381787513ae64696fc2d5c620d084",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd863acb_11d0ac07",
         "filename": "testing/resources/annots_action_handling.in",
         "patchSetId": 8

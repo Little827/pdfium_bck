@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c8100c7_5d9959eb",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-23T00:49:10Z",
+      "side": 1,
+      "message": "I\u0027m still a bit concerned this may trigger 2 actions. Once inside OnChar() above on line 387, and a second time here.\n\nIn general, I think PDFium needs more test coverage for this code, to help give up more confidence that these changes are heading in the right direction.",
+      "revId": "db33891e62b3bcabff6198c9ba311108ccd35daf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
