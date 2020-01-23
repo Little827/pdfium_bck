@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0301144_81d6f739",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T12:45:49Z",
+      "side": 1,
+      "message": "Done. Here is the CL for the refactoring - https://pdfium-review.googlesource.com/c/pdfium/+/65470",
+      "parentUuid": "9d30b418_cfe5f9f8",
+      "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c346ebb_62322656",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a00b55b_4c6497ec",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T12:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c346ebb_62322656",
+      "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +109,48 @@
       "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9211994_e6bd1039",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T12:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad10b6f_096076ec",
+      "range": {
+        "startLine": 566,
+        "startChar": 3,
+        "endLine": 566,
+        "endChar": 60
+      },
+      "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eb3e58a_368a3c00",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-23T12:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18dc15b6_091aefa3",
+      "revId": "7581936711a93a38ce6ea2d0c898aad26422404f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
