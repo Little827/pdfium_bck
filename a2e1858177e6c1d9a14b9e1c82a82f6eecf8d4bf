@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1579769071 -0800\nnonce AC6AUtMWo9hyTWeFAtUPa2MBYigttrsOzVxzF3W4Xq5mQ33AA6S8g8VoDMAJTyEsQ/eaDBlCRG60\n\n0000000000000000000000000000000000000000 a2e1858177e6c1d9a14b9e1c82a82f6eecf8d4bf refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4pXO8ACgkQqzYtYVpm\n/XsosggAsGexJ59PPydqt6H+bRsLtYDMCtSx0l0V7snhwrpDv9FfCK/PBSoKZLZd\nLJL7ktnlcseyozeFstJGbAq40LiAKfx3surixUzd4kxE8SGxy2fUGlRrYVZ3bV2p\npPoXYzFgaOVFM4OVxjTLcZBSNOTIWSKt6EvGRAJd/NkcrMLfBwxsxS4Zuc62O6i+\nnK5TCi5hC2/mz9kVaXtGD3Lzjz411RzcKKNdq/hsrLalrwVxIEjDV8XxsapHfgmK\nctO1UeEWqNfbnuhV69swKeXXYMeZEsi8wK2jIJ6yWrX6woz89zKauSnlk0gI/WVP\nDHCuUj8SAWTssIlxGE45rnU+QX3bBw\u003d\u003d\n\u003dc1da\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "7298a0d2_9951b35e",
+        "filename": "fpdfsdk/cpdfsdk_renderpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-23T19:33:58Z",
+      "side": 1,
+      "message": "Naming: both of these take a context argument, so the |withContext| part is misleading.  What\u0027s really the difference? PauseAdapter plus some loose arguments. Maybe RenderPageWithPause() and the pause arg comes after the page? \n\nFollow-on: make the caller give us a rect as above? Then, do they converge?",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 34
+      },
+      "revId": "a2e1858177e6c1d9a14b9e1c82a82f6eecf8d4bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
