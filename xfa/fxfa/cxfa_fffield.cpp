@@ -37,17 +37,17 @@
 #include "xfa/fxgraphics/cxfa_gecolor.h"
 #include "xfa/fxgraphics/cxfa_gepath.h"
 
-namespace {
-
-CXFA_FFField* ToField(CXFA_ContentLayoutItem* pItem) {
-  return pItem ? static_cast<CXFA_FFField*>(pItem->GetFFWidget()) : nullptr;
-}
-
-}  // namespace
-
 CXFA_FFField::CXFA_FFField(CXFA_Node* pNode) : CXFA_FFWidget(pNode) {}
 
 CXFA_FFField::~CXFA_FFField() = default;
+
+CXFA_FFDropDown* CXFA_FFField::AsDropDown() {
+  return nullptr;
+}
+
+CXFA_FFField* CXFA_FFField::AsField() {
+  return this;
+}
 
 CFX_RectF CXFA_FFField::GetBBox(FocusOption focus) {
   if (focus == kDoNotDrawFocus)
@@ -160,13 +160,13 @@ void CXFA_FFField::SetEditScrollOffset() {
   }
 
   float fScrollOffset = 0;
-  CXFA_FFField* pPrev = ToField(GetLayoutItem()->GetPrev());
+  CXFA_FFField* pPrev = ToField(GetLayoutItem()->GetPrev()->GetFFWidget());
   if (pPrev)
     fScrollOffset = -(m_pNode->GetUIMargin().top);
 
   while (pPrev) {
     fScrollOffset += pPrev->m_rtUI.height;
-    pPrev = ToField(pPrev->GetLayoutItem()->GetPrev());
+    pPrev = ToField(pPrev->GetLayoutItem()->GetPrev()->GetFFWidget());
   }
   static_cast<CFWL_Edit*>(GetNormalWidget())->SetScrollOffset(fScrollOffset);
 }
