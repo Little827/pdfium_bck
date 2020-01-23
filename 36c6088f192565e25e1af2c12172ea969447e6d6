@@ -142,6 +142,30 @@
       "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68afc9c_54e83c4a",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-23T21:54:50Z",
+      "side": 0,
+      "message": "FPDFText_GetCharIndexAtPos() itself can still return -3.",
+      "parentUuid": "fdea1fe0_b308654a",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 14
+      },
+      "revId": "36c6088f192565e25e1af2c12172ea969447e6d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
