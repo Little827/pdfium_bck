@@ -46,6 +46,30 @@
       "revId": "836eb53f6d2d6f75a1c057f530884be1cbf7f1e1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811fce9a_67419a99",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-24T19:46:27Z",
+      "side": 1,
+      "message": "would involve a copy later on when we make the stream.  The CFX_MemoryStream takes a FX_Alloc\u0027d buffer, presumably so it might be TryAlloc\u0027d then passed without a copy, though I\u0027m not sure if we actually do that.  Seems like we should, since streams might be large if we dont.",
+      "parentUuid": "2b4bcd0c_3ce042f0",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "836eb53f6d2d6f75a1c057f530884be1cbf7f1e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
