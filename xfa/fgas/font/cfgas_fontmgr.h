@@ -18,10 +18,10 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/fx_freetype.h"
-#include "core/fxge/systemfontinfo_iface.h"
 #include "xfa/fgas/font/cfgas_pdffontmgr.h"
 
 class CFGAS_GEFont;
+class CFX_Face;
 class CFX_FontMapper;
 class CFX_FontSourceEnum_File;
 class IFX_SeekableReadStream;
