@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c77c9fb_8f07ce67",
+        "filename": "xfa/fgas/font/cfgas_fontmgr.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-24T22:40:47Z",
+      "side": 1,
+      "message": "FYI, all the callers pass in a signed int.",
+      "revId": "4a41bb6c51c575f5b471bae8bcbbcbbcae7a06a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
