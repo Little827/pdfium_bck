@@ -23,6 +23,30 @@
       "revId": "d2585d512c247cfafb7fb179eb62f6f2ce01637a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f2317cf_1208e9a5",
+        "filename": "core/fpdftext/cpdf_textpagefind.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-24T17:57:52Z",
+      "side": 1,
+      "message": "I just don\u0027t have that in my head as I do with \\r, \\n, or even \\b.",
+      "parentUuid": "e85537bf_26b3ddfe",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "d2585d512c247cfafb7fb179eb62f6f2ce01637a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
