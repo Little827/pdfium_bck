@@ -22,6 +22,30 @@
       "revId": "98d4f3d92c0287b828c13f31a48f764e59116463",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e27f346_cc7b1911",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-01-24T09:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6f9be8_ec00c2e3",
+      "range": {
+        "startLine": 566,
+        "startChar": 37,
+        "endLine": 566,
+        "endChar": 38
+      },
+      "revId": "98d4f3d92c0287b828c13f31a48f764e59116463",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
