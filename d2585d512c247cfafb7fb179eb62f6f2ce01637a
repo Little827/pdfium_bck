@@ -47,6 +47,30 @@
       "revId": "d2585d512c247cfafb7fb179eb62f6f2ce01637a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4bf3b3_51f237fa",
+        "filename": "core/fpdftext/cpdf_textpagefind.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-24T18:38:42Z",
+      "side": 1,
+      "message": "fair enough (I\u0027ve seen too many \u0026nbsp;s I guess).",
+      "parentUuid": "2f2317cf_1208e9a5",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "d2585d512c247cfafb7fb179eb62f6f2ce01637a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
