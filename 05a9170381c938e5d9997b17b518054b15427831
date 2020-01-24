@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c23305f1_cb779255",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31353baa_8b7a344b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd766e51_618c4895",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "05a9170381c938e5d9997b17b518054b15427831",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5909c067_35140e9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd766e51_618c4895",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "41bc8c28_765fd7ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9aa77a4_5e672563",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8b1f6ba_cbe7af7f",
         "filename": "core/fxge/cfx_folderfontinfo.h",
         "patchSetId": 4
@@ -82,6 +154,24 @@
       "writtenOn": "2020-01-22T21:50:11Z",
       "side": 1,
       "message": "How about adding: FontFaceInfo* GetFontFaceInfoForTesting()? Then there\u0027s no need for a friend, and the test does not need to cast void*.",
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f4bda0_09bd52aa",
+        "filename": "core/fxge/cfx_folderfontinfo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "I am not able to understand this.\nShould I make  FontFaceInfo* GetFontFaceInfoForTesting() public?\nFriend class is necessary as FontFaceInfo is protected\nand the test requires two functions\n1. Constructor for FontFaceInfo\n2. FindFont\n\nFindFont() returns void* so the cast will be performed in the test code.",
+      "parentUuid": "e8b1f6ba_cbe7af7f",
       "revId": "05a9170381c938e5d9997b17b518054b15427831",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "fad68d95_345c0544",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5f9814_7252a4a5",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c963512d_a4e318b8",
         "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
         "patchSetId": 4
@@ -131,6 +245,30 @@
       "revId": "05a9170381c938e5d9997b17b518054b15427831",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ee9776_a2ddace5",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c963512d_a4e318b8",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "a1c9f333_1dc56e7e",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da649ab6_315ec4c2",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aed4301a_efd2ecf0",
         "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
         "patchSetId": 4
@@ -177,6 +339,30 @@
       "revId": "05a9170381c938e5d9997b17b518054b15427831",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3fe7ddd_87cdd8a3",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed4301a_efd2ecf0",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -227,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "925592a2_3214a6db",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fbc3224_b3714031",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8d80b6_6506f611",
         "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
         "patchSetId": 4
@@ -244,6 +454,24 @@
     },
     {
       "key": {
+        "uuid": "b1c881c0_c18ca410",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8d80b6_6506f611",
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53828f6b_072cf517",
         "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
         "patchSetId": 4
@@ -258,6 +486,24 @@
       "revId": "05a9170381c938e5d9997b17b518054b15427831",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "676d726f_4e53cfde",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-01-24T17:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53828f6b_072cf517",
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
