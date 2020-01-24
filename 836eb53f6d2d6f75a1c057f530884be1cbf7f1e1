@@ -22,6 +22,30 @@
       "revId": "836eb53f6d2d6f75a1c057f530884be1cbf7f1e1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4bcd0c_3ce042f0",
+        "filename": "core/fxge/cfx_fontmapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-24T19:44:26Z",
+      "side": 1,
+      "message": "WDYT of a returning vector?",
+      "parentUuid": "5f4c3362_ffb55550",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "836eb53f6d2d6f75a1c057f530884be1cbf7f1e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
