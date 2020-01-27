@@ -16,6 +16,24 @@
       "revId": "db33891e62b3bcabff6198c9ba311108ccd35daf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67dcce95_13b85772",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-01-27T09:17:51Z",
+      "side": 1,
+      "message": "Call to OnChar() on line 387 is done to PWLWindow and checks like IsEnabled/IsVisible/IsValid is done. Similar checks are done in other mouse event implementations also.\nPerformAction() is the main implementation of Enter key press over buttons.\n\nWe have added embedder tests which checks whether action is invoked successfully and true value is returned. Similarly, we also added a pixel test which reset the checkbox on Enter key press over Reset button.\n\nWe have plans of adding \u0027action handling for links\u0027 using Enter keypress during which more tests related to action handling will be added. Kindly let us know if you feel we need to add more tests here. Also let us know what type of tests can be added other than what we have already added here.",
+      "parentUuid": "8c8100c7_5d9959eb",
+      "revId": "db33891e62b3bcabff6198c9ba311108ccd35daf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
