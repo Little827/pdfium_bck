@@ -89,6 +89,12 @@ class CPDFSDK_InteractiveForm final
   void SetHighlightColor(FX_COLORREF clr, FormFieldType fieldType);
   void SetAllHighlightColors(FX_COLORREF clr);
   FX_COLORREF GetHighlightColor(FormFieldType fieldType);
+  void SetFocusableAnnotSubtypes(
+      const std::vector<CPDF_Annot::Subtype>& focusableAnnotTypes);
+  inline const std::vector<CPDF_Annot::Subtype>& GetFocusableAnnotSubtypes()
+      const {
+    return m_FocusableAnnotTypes;
+  }
 
  private:
   // CPDF_InteractiveForm::NotifierIface:
@@ -107,6 +113,10 @@ class CPDFSDK_InteractiveForm final
   UnownedPtr<CPDFSDK_FormFillEnvironment> const m_pFormFillEnv;
   std::unique_ptr<CPDF_InteractiveForm> const m_pInteractiveForm;
   std::map<CPDF_FormControl*, CPDFSDK_Widget*> m_Map;
+
+  // Holds the list of focusable annot types.
+  // Annotations of type WIDGET are by default focusable.
+  std::vector<CPDF_Annot::Subtype> m_FocusableAnnotTypes;
 #ifdef PDF_ENABLE_XFA
   bool m_bXfaCalculate = true;
   bool m_bXfaValidationsEnabled = true;
