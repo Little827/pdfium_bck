@@ -124,6 +124,17 @@ uint32_t CPDF_Action::GetFlags() const {
   return m_pDict->GetIntegerFor("Flags");
 }
 
+const CPDF_Object* CPDF_Action::GetFields() const {
+  if (!m_pDict)
+    return nullptr;
+
+  ByteString csType = m_pDict->GetStringFor("S");
+  if (csType == "Hide")
+    return m_pDict->GetDirectObjectFor("T");
+
+  return m_pDict->GetArrayFor("Fields");
+}
+
 Optional<WideString> CPDF_Action::MaybeGetJavaScript() const {
   const CPDF_Object* pObject = GetJavaScriptObject();
   if (!pObject)

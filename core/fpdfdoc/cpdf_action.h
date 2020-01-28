@@ -54,8 +54,11 @@ class CPDF_Action {
   ByteString GetNamedAction() const;
   uint32_t GetFlags() const;
 
+  const CPDF_Object* GetFields() const;
+
   // Differentiates between empty JS entry and no JS entry.
   Optional<WideString> MaybeGetJavaScript() const;
+
   // Returns empty string for empty JS entry and no JS entry.
   WideString GetJavaScript() const;
 
