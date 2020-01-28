@@ -22,6 +22,30 @@
       "revId": "3f51ce506836c3385d42b568ce3201a05e3a2c37",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34d3220_c4a09647",
+        "filename": "core/fpdfdoc/cpdf_actionfields.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:17:11Z",
+      "side": 1,
+      "message": "I thought about that, but decided that part of the problem with this code might be that it is probing at the dictionary directly rather than using CPDF_Action methods to get the same information. For example, actionfields code shouldn\u0027t know that a particular value is bound to a /T key, for instance -- action should abstract that.  So I moved the dictionary code to action itself.\n\nfoo_ : done.",
+      "parentUuid": "21112bd9_653b9769",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "3f51ce506836c3385d42b568ce3201a05e3a2c37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
