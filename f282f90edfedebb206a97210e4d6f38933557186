@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99ef29ef_e3dce175",
+        "filename": "fxjs/cjs_document.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:38:07Z",
+      "side": 1,
+      "message": "nit: Although it is a pain in the neck, can we scope these to only the N functions that need them?",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "f282f90edfedebb206a97210e4d6f38933557186",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
