@@ -61,6 +61,30 @@
     },
     {
       "key": {
+        "uuid": "58be7773_096a38d3",
+        "filename": "core/fpdfapi/cmaps/fpdf_cmaps.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-28T21:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2213e990_855fc0b4",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "ec300ce12ce3d23c289a634358bffb5d31b3073e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "496d4aaa_c88f2c85",
         "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
         "patchSetId": 2
