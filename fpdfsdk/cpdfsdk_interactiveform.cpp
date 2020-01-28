@@ -385,7 +385,7 @@ bool CPDFSDK_InteractiveForm::OnValidate(CPDF_FormField* pFormField,
 bool CPDFSDK_InteractiveForm::DoAction_Hide(const CPDF_Action& action) {
   ASSERT(action.GetDict());
 
-  CPDF_ActionFields af(&action);
+  CPDF_ActionFields af(action);
   std::vector<const CPDF_Object*> fieldObjects = af.GetAllFields();
   std::vector<CPDF_FormField*> fields = GetFieldFromObjects(fieldObjects);
 
@@ -422,7 +422,7 @@ bool CPDFSDK_InteractiveForm::DoAction_SubmitForm(const CPDF_Action& action) {
 
   const CPDF_Dictionary* pActionDict = action.GetDict();
   if (pActionDict->KeyExist("Fields")) {
-    CPDF_ActionFields af(&action);
+    CPDF_ActionFields af(action);
     uint32_t dwFlags = action.GetFlags();
     std::vector<const CPDF_Object*> fieldObjects = af.GetAllFields();
     std::vector<CPDF_FormField*> fields = GetFieldFromObjects(fieldObjects);
@@ -502,7 +502,7 @@ void CPDFSDK_InteractiveForm::DoAction_ResetForm(const CPDF_Action& action) {
     m_pInteractiveForm->ResetForm(NotificationOption::kNotify);
     return;
   }
-  CPDF_ActionFields af(&action);
+  CPDF_ActionFields af(action);
   uint32_t dwFlags = action.GetFlags();
   std::vector<const CPDF_Object*> fieldObjects = af.GetAllFields();
   std::vector<CPDF_FormField*> fields = GetFieldFromObjects(fieldObjects);

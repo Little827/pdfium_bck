@@ -11,21 +11,21 @@
 
 #include <vector>
 
+#include "core/fpdfdoc/cpdf_action.h"
 #include "core/fxcrt/unowned_ptr.h"
 
-class CPDF_Action;
 class CPDF_Object;
 
 class CPDF_ActionFields {
  public:
-  explicit CPDF_ActionFields(const CPDF_Action* pAction);
+  explicit CPDF_ActionFields(const CPDF_Action& action);
   ~CPDF_ActionFields();
 
   std::vector<const CPDF_Object*> GetAllFields() const;
   const CPDF_Object* GetField(size_t iIndex) const;
 
  private:
-  UnownedPtr<const CPDF_Action> const m_pAction;
+  const CPDF_Action m_Action;
 };
 
 #endif  // CORE_FPDFDOC_CPDF_ACTIONFIELDS_H_
