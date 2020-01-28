@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "31f203a6_8cf80160",
+        "filename": "core/fpdfapi/render/cpdf_imagecacheentry.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-28T18:51:04Z",
+      "side": 1,
+      "message": "Actually, we may want to check this one too. I\u0027ll pile that on the bug.",
+      "revId": "e5dad3fef33a7cf8b62e774a4bf970db028c0f1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "395e7c70_9c5ae9c5",
         "filename": "core/fpdfapi/render/cpdf_imagecacheentry.cpp",
         "patchSetId": 3
