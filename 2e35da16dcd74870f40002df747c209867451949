@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580171154 -0800\nnonce AC6AUtOe56MLF1JmhZpmFjdZvGeUXdEOpYRe+Fzme1NaWKe3wyC+6nnys81W5xdLxfk4sm/mNTQZ\n\n0000000000000000000000000000000000000000 2e35da16dcd74870f40002df747c209867451949 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4vf5IACgkQqzYtYVpm\n/XtJvQgAo7zEt3lq7HJtaMB6ZOnDsur0YrKWSkR2XGf6k1yvAe7j5mo+TVcqeIji\n5XLeaUf1S1J8F+xApY4Swzm8oDj9hWFoqfHXkE1tQbcKoOGlVEAd9omNn36SzkP2\nrq2X9tK3eaNPb80LmGtqUgtCRDYJnAAiudQexoYW6qRSrAWFWWWZMTHuKXodbISV\n6jn3R2lZBbe917M1bZPa7Pn1bziq1S9W+s6pWs7TCGx868DOALXp4n/ZzcgCCtTo\na8XvimIlo3Uxcpinl4DMhq2Gnw0vCz57sl6naqZAhluEQkY7frVYIqmvFNlXIMr7\nwNQ5VLuQDkx90mhf9p/rI8fkutlunw\u003d\u003d\n\u003dHD+4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "1227515c_2806c0b8",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:33:56Z",
+      "side": 1,
+      "message": "wouldn\u0027t this be true if any of the bits are set?  (x \u0026 flags) \u003d\u003d flags checks for all of them.",
+      "range": {
+        "startLine": 748,
+        "startChar": 12,
+        "endLine": 748,
+        "endChar": 52
+      },
+      "revId": "2e35da16dcd74870f40002df747c209867451949",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
