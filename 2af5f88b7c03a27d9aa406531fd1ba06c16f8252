@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0b341a9_078dea0c",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:43:41Z",
+      "side": 1,
+      "message": "nit: I might intersperse these with the  m_pDict-\u003eGetIntegerFor() calls so that we avoid looking up the Height if we know the width is bad.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 33
+      },
+      "revId": "2af5f88b7c03a27d9aa406531fd1ba06c16f8252",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0cf546a_1db71831",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:43:41Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 224,
+        "startChar": 24,
+        "endLine": 224,
+        "endChar": 31
+      },
+      "revId": "2af5f88b7c03a27d9aa406531fd1ba06c16f8252",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
