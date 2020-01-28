@@ -181,12 +181,12 @@ constexpr PredefinedCMap kPredefinedCMaps[] = {
     {"UniKS-UTF16", CIDSET_KOREA1, CIDCODING_UTF16, CPDF_CMap::TwoBytes, 0, {}},
 };
 
-const PredefinedCMap* GetPredefinedCMap(const ByteString& bsPredefinedName) {
-  ByteString cmapid = bsPredefinedName;
+const PredefinedCMap* GetPredefinedCMap(ByteStringView bsPredefinedName) {
+  ByteStringView cmapid = bsPredefinedName;
   if (cmapid.GetLength() > 2)
     cmapid = cmapid.Left(cmapid.GetLength() - 2);
   for (const auto& map : kPredefinedCMaps) {
-    if (cmapid == ByteStringView(map.m_pName))
+    if (cmapid == map.m_pName)
       return &map;
   }
   return nullptr;
@@ -258,7 +258,7 @@ size_t GetFourByteCharSizeImpl(
 
 }  // namespace
 
-CPDF_CMap::CPDF_CMap(const ByteString& bsPredefinedName)
+CPDF_CMap::CPDF_CMap(ByteStringView bsPredefinedName)
     : m_bVertical(bsPredefinedName.Last() == 'V') {
   if (bsPredefinedName == "Identity-H" || bsPredefinedName == "Identity-V") {
     m_Coding = CIDCODING_CID;
