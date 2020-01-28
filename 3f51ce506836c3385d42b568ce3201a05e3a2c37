@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21112bd9_653b9769",
+        "filename": "core/fpdfdoc/cpdf_actionfields.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-28T00:53:24Z",
+      "side": 1,
+      "message": "How about just taking a RetainPtr to m_Action.GetDict(), since that\u0027s pretty much the only thing inside a CPDF_Action?\n\nAlso, rename to \"foo_underscore_\" while we are at it?",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "3f51ce506836c3385d42b568ce3201a05e3a2c37",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
