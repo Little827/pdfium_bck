@@ -20,7 +20,7 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
-#include "core/fpdfdoc/cpdf_actionfields.h"
+#include "core/fpdfdoc/cpdf_action.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxcrt/autorestorer.h"
@@ -384,11 +384,8 @@ bool CPDFSDK_InteractiveForm::OnValidate(CPDF_FormField* pFormField,
 
 bool CPDFSDK_InteractiveForm::DoAction_Hide(const CPDF_Action& action) {
   ASSERT(action.GetDict());
-
-  CPDF_ActionFields af(&action);
-  std::vector<const CPDF_Object*> fieldObjects = af.GetAllFields();
+  std::vector<const CPDF_Object*> fieldObjects = action.GetAllFields();
   std::vector<CPDF_FormField*> fields = GetFieldFromObjects(fieldObjects);
-
   bool bHide = action.GetHideStatus();
   bool bChanged = false;
 
@@ -422,9 +419,8 @@ bool CPDFSDK_InteractiveForm::DoAction_SubmitForm(const CPDF_Action& action) {
 
   const CPDF_Dictionary* pActionDict = action.GetDict();
   if (pActionDict->KeyExist("Fields")) {
-    CPDF_ActionFields af(&action);
     uint32_t dwFlags = action.GetFlags();
-    std::vector<const CPDF_Object*> fieldObjects = af.GetAllFields();
+    std::vector<const CPDF_Object*> fieldObjects = action.GetAllFields();
     std::vector<CPDF_FormField*> fields = GetFieldFromObjects(fieldObjects);
     if (!fields.empty()) {
       bool bIncludeOrExclude = !(dwFlags & 0x01);
@@ -502,9 +498,8 @@ void CPDFSDK_InteractiveForm::DoAction_ResetForm(const CPDF_Action& action) {
     m_pInteractiveForm->ResetForm(NotificationOption::kNotify);
     return;
   }
-  CPDF_ActionFields af(&action);
   uint32_t dwFlags = action.GetFlags();
-  std::vector<const CPDF_Object*> fieldObjects = af.GetAllFields();
+  std::vector<const CPDF_Object*> fieldObjects = action.GetAllFields();
   std::vector<CPDF_FormField*> fields = GetFieldFromObjects(fieldObjects);
   m_pInteractiveForm->ResetForm(fields, !(dwFlags & 0x01),
                                 NotificationOption::kNotify);
