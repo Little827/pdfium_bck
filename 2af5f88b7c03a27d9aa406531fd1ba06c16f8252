@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23e04884_c7964340",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:45:05Z",
+      "side": 1,
+      "message": "NM. Just noticed they were members not locals.  Might need em later. Still, seems wrong to set members that violate a representation constraint.",
+      "parentUuid": "b0b341a9_078dea0c",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 33
+      },
+      "revId": "2af5f88b7c03a27d9aa406531fd1ba06c16f8252",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0cf546a_1db71831",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 2
