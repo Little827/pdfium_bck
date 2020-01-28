@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f3592bb_048f217d",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 7699
+      },
+      "writtenOn": "2020-01-28T19:33:52Z",
+      "side": 1,
+      "message": "Correct me if I am wrong, it seems we want to just get the exact font family name match, if there is one? If yes, is breaking from this for loop at that instant with that font not more appropriate?",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 68
+      },
+      "revId": "5a8f8437a5e89457ad38075e90cbdd88a6329e8f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
