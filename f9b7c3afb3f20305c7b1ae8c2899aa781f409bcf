@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6634d8bd_c3dc75c4",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd116e21_13fe4e61",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca7db951_a41c238a",
         "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
         "patchSetId": 26
@@ -36,6 +54,42 @@
     },
     {
       "key": {
+        "uuid": "b825cbba_c5a51976",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca7db951_a41c238a",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09bc7a85_a12c3fdb",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca7db951_a41c238a",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ceac90be_60c80bb6",
         "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
         "patchSetId": 26
@@ -50,6 +104,42 @@
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d9d63c_219a5b17",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceac90be_60c80bb6",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4fb4a1f_3dd260f1",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceac90be_60c80bb6",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "db99d6a4_7ec63530",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "This function is currently removed from code, as it did not have much value addition after resolving other review comment.",
+      "parentUuid": "2d53ae5a_82139191",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bff20dba_dde00b21",
         "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
         "patchSetId": 26
@@ -99,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ffc78c7d_8d9686ee",
+        "filename": "fpdfsdk/cpdfsdk_annotiterator.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff20dba_dde00b21",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 55
+      },
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebb62f20_83db66f9",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
         "patchSetId": 26
@@ -110,6 +248,24 @@
       "writtenOn": "2020-01-22T03:38:09Z",
       "side": 1,
       "message": "Whereas this doesn\u0027t have any \"m_foo\" variables to clash with, so go with \"trailing_underscore_\".",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a169d96_37dd8b1d",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "variable name has trailing underscore. Did I miss something in understanding about this comment ?",
+      "parentUuid": "ebb62f20_83db66f9",
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
@@ -130,6 +286,24 @@
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88abfef3_7e115aca",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dabf9b7_594726f7",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +342,24 @@
     },
     {
       "key": {
+        "uuid": "c5628697_a88e4a23",
+        "filename": "fpdfsdk/cpdfsdk_helpers.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0582dd8f_bfde5223",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9543bc5d_47e6d1db",
         "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
         "patchSetId": 26
@@ -182,6 +374,24 @@
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb00d77_ccfcab7f",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9543bc5d_47e6d1db",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +412,24 @@
     },
     {
       "key": {
+        "uuid": "210b57a8_4c2b8280",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72cbcc33_dd57e693",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f01c5a69_30ce0bd0",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 26
@@ -216,6 +444,24 @@
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18aca39_c636b016",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Have split into two API.",
+      "parentUuid": "f01c5a69_30ce0bd0",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -242,6 +488,30 @@
     },
     {
       "key": {
+        "uuid": "5da71eb8_e9dccd81",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 2229,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1505f861_4150bb32",
+      "range": {
+        "startLine": 2229,
+        "startChar": 36,
+        "endLine": 2229,
+        "endChar": 54
+      },
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d32e0ebb_a145eff0",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26
@@ -259,6 +529,24 @@
     },
     {
       "key": {
+        "uuid": "8c4a4a1f_88c35a27",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "By default widget subtype is still focusable. Hence making such call \"FPDFAnnot_SetFocusableSubtypes(handle, nullptr, 0)\" is not useful. Related checks will return false if such values are used.",
+      "parentUuid": "d32e0ebb_a145eff0",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da96de83_19db70d2",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 26
@@ -273,6 +561,24 @@
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394b877b_e0729192",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-28T05:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da96de83_19db70d2",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
