@@ -20,6 +20,47 @@
     },
     {
       "key": {
+        "uuid": "e862fcea_297d1901",
+        "filename": "core/fpdfapi/cmaps/CNS1/cmaps_cns1.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:53:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a6859bc_045b792b",
+      "revId": "ec300ce12ce3d23c289a634358bffb5d31b3073e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2213e990_855fc0b4",
+        "filename": "core/fpdfapi/cmaps/fpdf_cmaps.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:53:33Z",
+      "side": 1,
+      "message": "nit: generally prefer fx_string.h over string_view_template.h.  My feeling is that the template is an implementation detail of sorts.",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "ec300ce12ce3d23c289a634358bffb5d31b3073e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "496d4aaa_c88f2c85",
         "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
         "patchSetId": 2
@@ -31,6 +72,24 @@
       "writtenOn": "2020-01-28T18:01:30Z",
       "side": 1,
       "message": "CPDF_StreamAcc::GetSpan() returns pdfium::span\u003cuint8_t\u003e, but as it was, the compiler couldn\u0027t pick the right ctor. Yet doing this makes the compiler happy.",
+      "revId": "ec300ce12ce3d23c289a634358bffb5d31b3073e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95896498_767332da",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-28T18:53:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "496d4aaa_c88f2c85",
       "revId": "ec300ce12ce3d23c289a634358bffb5d31b3073e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
