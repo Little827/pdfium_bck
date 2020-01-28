@@ -8,28 +8,15 @@
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
-#include "core/fpdfdoc/cpdf_action.h"
 
-CPDF_ActionFields::CPDF_ActionFields(const CPDF_Action* pAction)
-    : m_pAction(pAction) {
-  ASSERT(m_pAction);
-}
+CPDF_ActionFields::CPDF_ActionFields(const CPDF_Action& action)
+    : action_(action) {}
 
 CPDF_ActionFields::~CPDF_ActionFields() = default;
 
 std::vector<const CPDF_Object*> CPDF_ActionFields::GetAllFields() const {
   std::vector<const CPDF_Object*> fields;
-  const CPDF_Dictionary* pDict = m_pAction->GetDict();
-  if (!pDict)
-    return fields;
-
-  ByteString csType = pDict->GetStringFor("S");
-  const CPDF_Object* pFields;
-  if (csType == "Hide")
-    pFields = pDict->GetDirectObjectFor("T");
-  else
-    pFields = pDict->GetArrayFor("Fields");
-
+  const CPDF_Object* pFields = action_.GetFields();
   if (!pFields)
     return fields;
 
@@ -46,17 +33,7 @@ std::vector<const CPDF_Object*> CPDF_ActionFields::GetAllFields() const {
 }
 
 const CPDF_Object* CPDF_ActionFields::GetField(size_t iIndex) const {
-  const CPDF_Dictionary* pDict = m_pAction->GetDict();
-  if (!pDict)
-    return nullptr;
-
-  ByteString csType = pDict->GetStringFor("S");
-  const CPDF_Object* pFields;
-  if (csType == "Hide")
-    pFields = pDict->GetDirectObjectFor("T");
-  else
-    pFields = pDict->GetArrayFor("Fields");
-
+  const CPDF_Object* pFields = action_.GetFields();
   if (!pFields)
     return nullptr;
 
