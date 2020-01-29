@@ -56,6 +56,24 @@
     },
     {
       "key": {
+        "uuid": "694aa00f_0f2b0f56",
+        "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T18:59:35Z",
+      "side": 1,
+      "message": "I did some renaming and added some comments. Let me know if there are still unclear bits.",
+      "parentUuid": "2921b628_993c5708",
+      "revId": "37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9285e1b0_eff05510",
         "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
         "patchSetId": 1
@@ -103,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "d5ce7388_4f979b0d",
+        "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T18:59:35Z",
+      "side": 1,
+      "message": "Inlined. I like to keep |swap_rgb| for now.",
+      "parentUuid": "9f91c94f_846ebbdf",
+      "range": {
+        "startLine": 633,
+        "startChar": 22,
+        "endLine": 633,
+        "endChar": 28
+      },
+      "revId": "37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c9ea27c_60c8d93b",
         "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
         "patchSetId": 1
@@ -117,6 +159,24 @@
       "revId": "37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640eba02_3da23268",
+        "filename": "core/fpdfapi/page/cpdf_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T18:59:35Z",
+      "side": 1,
+      "message": "I think it is, but just to be conservative, I \"changed it back\".",
+      "parentUuid": "4c9ea27c_60c8d93b",
+      "revId": "37b6cca2edd5f19fcca9ef3d12ce52ec2a9ca279",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
