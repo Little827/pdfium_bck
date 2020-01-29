@@ -290,6 +290,24 @@
     },
     {
       "key": {
+        "uuid": "b21220cf_e95ef3dc",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-29T17:24:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e750a86c_f5b393d0",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dabf9b7_594726f7",
         "filename": "fpdfsdk/cpdfsdk_helpers.h",
         "patchSetId": 26
@@ -580,6 +598,24 @@
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc7c336e_5491fff5",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-01-29T17:24:42Z",
+      "side": 1,
+      "message": "a) True. Currently, Widgets are focusable items without any API call so I thought its better to continue with current existing behavior until it is overridden by any new list.\n\nb) If caller provides new list which does not have FPDF_ANNOT_WIDGET then FPDF_ANNOT_WIDGET won\u0027t be focusable.\n\nPlease share your suggestions.",
+      "parentUuid": "69ddff23_3fc5c51a",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
