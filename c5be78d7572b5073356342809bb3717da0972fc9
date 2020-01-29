@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580328885 -0800\nnonce AC6AUtPGHRYMDVIKF4eru7ibbdScW27U+C0SBhm1iAIAEFiT1QHN7ezycuPeCWH8Rg9aqTGnIfyf\n\n0000000000000000000000000000000000000000 c5be78d7572b5073356342809bb3717da0972fc9 refs/for/refs/heads/master%notify\u003dNONE,m\u003drebase\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4x57UACgkQqzYtYVpm\n/XvEdgf/YTKKLgkfu/cxzX0u+/SakdZXenN+s5AGml65rTzt4I2p/snCYJN1bzQ3\nhG3HIxQzwmno+OqBW2GpjzJqkEn08bn4Nra79nlRnwY+w6NusVIxX98Bq/oy/Tnc\nuKUFikmwpcQ61ox4CIrsqX7Qu4DHnRyD+i7iLeAMsbGYjWHdf1CwoRl86Ms6NP/O\nmaQdo5YpiPnJ66/JjyXjg1RT17iAeCE2SeCAvhVYsp2Mi46nU/2jOHwTIVLgJPI2\ndGqHgTBJyjaw7r1m5D7Y+KhskqRgJZMJn3H1cHsHANXZVABZCwo+MLnYUz1wLQBo\nldD1WZ0g8maLm8LC9aiNqsVC1STumQ\u003d\u003d\n\u003d8bq3\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "61437506_2af597c9",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-29T20:19:06Z",
+      "side": 1,
+      "message": "It might be natural to switch on jpx_components here.",
+      "revId": "c5be78d7572b5073356342809bb3717da0972fc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
