@@ -272,6 +272,24 @@
     },
     {
       "key": {
+        "uuid": "e750a86c_f5b393d0",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "I was contrasting this with cpdfsdk_annotiterator.h where we wanted \"m_foo\" for consistency with existing variable.",
+      "parentUuid": "0a169d96_37dd8b1d",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dabf9b7_594726f7",
         "filename": "fpdfsdk/cpdfsdk_helpers.h",
         "patchSetId": 26
@@ -544,6 +562,24 @@
       "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69ddff23_3fc5c51a",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "To be clear, are you saying:\n\na) FPDFAnnot_GetFocusableSubtypes() will return FPDF_ANNOT_WIDGET by default, if there has been no prior FPDFAnnot_SetFocusableSubtypes() call.\nor\nb) No matter how one calls FPDFAnnot_SetFocusableSubtypes(), widgets will always be focusable.",
+      "parentUuid": "8c4a4a1f_88c35a27",
+      "revId": "f9b7c3afb3f20305c7b1ae8c2899aa781f409bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     },
     {
       "key": {

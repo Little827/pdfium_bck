@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de961e25_ba68419a",
+        "filename": "core/fxge/cfx_drawutils.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Since this class has no member variables, and it\u0027s likely just going to be a collection of functions, there\u0027s no need for a constructor. So go with:\n\nCFX_DrawUtils() \u003d delete;\nCFX_DrawUtils(const CFX_DrawUtils\u0026) \u003d delete;\nCFX_DrawUtils\u0026 operator\u003d(const CFX_DrawUtils\u0026) \u003d delete;",
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57fabd02_b1ad1f12",
+        "filename": "core/fxge/cfx_drawutils.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Make this static.",
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1d062d_0605bb5a",
+        "filename": "core/fxge/cfx_drawutils.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "user_to_device",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b664ef5c_95e61290",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "No need. Line 332 does this for \"free\".\n\nSame for line 333.",
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ebc331d_8a475745",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Just: CFX_DrawUtils::DrawFocusRect(...);\n\nSee other comment.",
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2912357a_1e3cc864",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "No need for the inline keyword though. The compiler can figure it out.",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f302c5cf_7d51b3aa",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Would it return something different if FPDFAnnot_SetFocusableSubtypes() has never been called? Maybe just omit this?",
+      "range": {
+        "startLine": 674,
+        "startChar": 50,
+        "endLine": 674,
+        "endChar": 64
+      },
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25cc021_4763dc97",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Does this ever return 0?",
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc68117e_d1a1c61f",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Caller",
+      "range": {
+        "startLine": 690,
+        "startChar": 16,
+        "endLine": 690,
+        "endChar": 20
+      },
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e739a90_614d06aa",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Pipes are only for variables. How about just: FPDFAnnot_GetFocusableSubtypesCount()",
+      "range": {
+        "startLine": 691,
+        "startChar": 17,
+        "endLine": 691,
+        "endChar": 57
+      },
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dca563a_50609614",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T10:12:57Z",
+      "side": 1,
+      "message": "Let\u0027s do size_t to be consistent with FPDFAnnot_SetFocusableSubtypes(). Presumably, the caller checked FPDFAnnot_GetFocusableSubtypesCount() did not return -1, so the int it would pass in here should be \u003e\u003d 0. Thus signed to unsigned conversion is fine.",
+      "range": {
+        "startLine": 698,
+        "startChar": 31,
+        "endLine": 698,
+        "endChar": 34
+      },
+      "revId": "4b2472edb2d71e9ef553cfc7f0b62ca7675ce859",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
