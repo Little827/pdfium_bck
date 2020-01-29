@@ -1,4 +1,90 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580290760 -0800\nnonce AC6AUtPaIPXDYNo8dOwNsxscEq9OsU+JFpRucuovoH5/BZOJ2itC2jOx3XyqFjUuA8HujKLxNXDZ\n\n0000000000000000000000000000000000000000 3488cf9e309c9d742a2c714684ac415d3a471b10 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4xUsgACgkQqzYtYVpm\n/XsJ8Af+Mc5MGR734R0yCqaP6boBtQsgB3LpFeYW1cps4yf6bLWrkATAROvFGNmP\nb19rnRECNDZOnPa7Ol/1hSnn0ICtPF2dJSkyzIqMS+IEeP+7Iu+LPVj5LUgkSZn7\nvXN1oUVNZUH3HOFACMW/dIB/UcmatP7GPNkp0HT+ke/5rTbCPFmmputplxYcyAum\n7pjbO0XwMZKvq1ys+yI04PSKzuofYB4KF5O5af6Gn0VCSW6xWVINFlPetXseZp1Q\nNegh1LJi6TKMLwuuXCCmid7LDLTRti7nSHRvf3jsK7LG2p7Z3onPJ2QK3Kjo2OXb\n1/Vg6mj4y599Lbki0Cimf7PQzsim+A\u003d\u003d\n\u003d9aP6\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ff313f6_9f562f50",
+        "filename": "third_party/libtiff/tif_aux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T16:58:50Z",
+      "side": 1,
+      "message": "Upstream\u0027s version of 0006 and 0008 patch.",
+      "revId": "3488cf9e309c9d742a2c714684ac415d3a471b10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcb99d5f_fd1fdfb8",
+        "filename": "third_party/libtiff/tif_dir.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T16:58:50Z",
+      "side": 1,
+      "message": "0030 patch applied cleanly.",
+      "revId": "3488cf9e309c9d742a2c714684ac415d3a471b10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ab449df_442503f7",
+        "filename": "third_party/libtiff/tif_dirwrite.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T16:58:50Z",
+      "side": 1,
+      "message": "0029 patch applied cleanly.",
+      "revId": "3488cf9e309c9d742a2c714684ac415d3a471b10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "712050c3_7e66713c",
+        "filename": "third_party/libtiff/tif_getimage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T16:58:50Z",
+      "side": 1,
+      "message": "Upstream\u0027s version of 0031 fix. We can see how fuzzers, including oss-fuzzer react to this.",
+      "revId": "3488cf9e309c9d742a2c714684ac415d3a471b10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a68f4820_3264e4af",
+        "filename": "third_party/libtiff/tif_ojpeg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T16:58:50Z",
+      "side": 1,
+      "message": "0032 patch mostly applied cleanly.",
+      "revId": "3488cf9e309c9d742a2c714684ac415d3a471b10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
