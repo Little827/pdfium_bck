@@ -22,6 +22,30 @@
       "revId": "2fbb944a8bfb321e14585c20694a7cc49c4e41ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ef714b_3a64e5e4",
+        "filename": "core/fpdfdoc/cpdf_formfield.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T23:44:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62d6645c_56a8c033",
+      "range": {
+        "startLine": 42,
+        "startChar": 60,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "2fbb944a8bfb321e14585c20694a7cc49c4e41ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
