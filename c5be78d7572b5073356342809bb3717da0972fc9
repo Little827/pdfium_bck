@@ -17,6 +17,24 @@
       "revId": "c5be78d7572b5073356342809bb3717da0972fc9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f87dd89c_0882f16c",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T20:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61437506_2af597c9",
+      "revId": "c5be78d7572b5073356342809bb3717da0972fc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
