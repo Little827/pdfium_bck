@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580336892 -0800\nnonce AC6AUtNs3ev4o6OD6U2WM5AjWKvUqSibGzz+wTNiFJY7Qv46eoohnhL/FzyrI+gUCKae+DaaDRw2\n\n0000000000000000000000000000000000000000 a90d42444f7409b270efdc14994d207e15192894 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4yBvwACgkQqzYtYVpm\n/Xu2dwf9HR9NLzhw9T7Ag2ywINKAGflEaQ2JC3agLtDUiOKzqARMAA8U/Ux5b9M0\npUrlKxzkdd8pi4kximjOjDz68GmecekSZUq5rI2Id8/Flx2K2lCCUvZ3dMU1Y2So\nB8peWdME5aeoOucoMzgBDKNufza2PxDE/yEvly8t2mJCytL1Ol3dnmUkDb9NmwD0\nTvQUTzrZgoIhzxIOXFZLk72UBdkhvOgJV8kEmdFayxxBkFCEiEs48SkrbFqcgpMW\ntWSzSttdgTCX+/hQ6+pFnNj9qIVP5cYtmOPg57iQUa6NbY83Xeh4jGYOFlEXJYBd\niq6qqjqEjCZwtvE7Cw9selUmFnxAKw\u003d\u003d\n\u003d+8n2\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dffb079_21fbb7d6",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T23:50:16Z",
+      "side": 1,
+      "message": "Note: I tried putting a CHECK() here, rebuilt, ran pdfium_test on 10K+ PDFs, and didn\u0027t ever hit the CHECK(). Given the lack of PDFs from the wild to test with, I\u0027m just handling this one particular condition that we do have a test PDF for. I\u0027m going to try generating some of my own PDFs later to see if we can do more here, but for now, this is all I want to do.",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
