@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0dfc8c2_d1af7add",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T21:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f9f1d8_516f4a8d",
+      "range": {
+        "startLine": 493,
+        "startChar": 11,
+        "endLine": 493,
+        "endChar": 20
+      },
+      "revId": "0459fcf7c2fb2935568c7a5716653956c9a1451e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f3a9ec1_19d9338f",
         "filename": "core/fxcodec/jpx/cjpx_decoder.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0459fcf7c2fb2935568c7a5716653956c9a1451e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f18eb4_1c90c966",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-29T21:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3a9ec1_19d9338f",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "0459fcf7c2fb2935568c7a5716653956c9a1451e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
