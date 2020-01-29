@@ -417,7 +417,12 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
   bool bHasComma = false;
   bool bHasHyphen = false;
   {
-    Optional<size_t> pos = SubstName.Find(",", 0);
+    Optional<size_t> pos = SubstName.Find("+", 0);
+    if (pos.has_value()) {
+      SubstName = SubstName.Right(SubstName.GetLength() - (pos.value() + 1));
+    }
+
+    pos = SubstName.Find(",", 0);
     if (pos.has_value()) {
       family = SubstName.Left(pos.value());
       GetStandardFontName(&family);
