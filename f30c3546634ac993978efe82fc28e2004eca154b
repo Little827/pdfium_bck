@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9417dbc5_ab81260d",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T18:34:19Z",
+      "side": 1,
+      "message": "Do we still need this comment? I do find std::iota to not be a very clear name, but perhaps the overall purpose of this function is fairly self-explanatory now.",
+      "revId": "f30c3546634ac993978efe82fc28e2004eca154b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
