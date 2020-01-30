@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "0d9bb8c1_cdea7612",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7ae7699_732d4f24",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dffb079_21fbb7d6",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -78,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "2ee141e3_13222ba8",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "Added to limit the fix. When we get more samples, we can adjust as necessary.",
+      "parentUuid": "cafc892f_c98d1cf5",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70a80e5e_ce5af257",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -95,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "4c7be293_980334d8",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "Feels a bit disconnected - slightly harder to see when the condition is true. I\u0027m going to leave this as is for now.",
+      "parentUuid": "70a80e5e_ce5af257",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8421bb8c_070a089d",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -106,6 +166,24 @@
       "writtenOn": "2020-01-30T00:12:54Z",
       "side": 1,
       "message": "Speculation: This function keeps getting longer. I wonder if any of this can be broken out into helper functions? (Like a, \"convert bitmap from ARGB-to-RGB\" function, for example.)",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad97992_bb402e9b",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "I\u0027ll follow up on this, and try to see if there\u0027s more opportunities to consolidate similar code.",
+      "parentUuid": "8421bb8c_070a089d",
       "revId": "a90d42444f7409b270efdc14994d207e15192894",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -135,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "40e63e19_26837e27",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "|pCachedBitmap| is also assigned to using MakeRetain() on the next line, but I\u0027ll remove the auto. That\u0027s just lazy copy + pasting.",
+      "parentUuid": "0b58ef6d_87070b5d",
+      "range": {
+        "startLine": 706,
+        "startChar": 4,
+        "endLine": 706,
+        "endChar": 8
+      },
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21413064_363b3f9b",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -146,6 +248,24 @@
       "writtenOn": "2020-01-30T00:12:54Z",
       "side": 1,
       "message": "Optional: Maybe using swap (RetainedPtr::Swap?) with original_bitmap and pCachedBitmap would make this a bit clearer?\n\nThe idea of doing a swap also suggests to me that it might make sense to do the conversion into a new bitmap, and then swap the new bitmap pointer over the cached bitmap pointer at the end (rather than doing the swap first, and then writing to pCachedBitmap).\n\nI think this depends on what you want the final state to be on an error, though. For example, if the Create() on line 708 fails, is it better to have an empty pCachedBitmap, or whatever was there before?\n\nNit: It\u0027s also a little confusing to have Hungarian notation for pCachedBitmap, and then not for original_bitmap.",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc14588_c590b615",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "It feels sufficiently straightforward to me. Roughly the Unix cmdline equivalent is:\n\nmv existing.txt new.txt\ntouch existing.txt\n\nCan you explain how Swap() makes this clearer?\n\nAs for Hungarian notation - this method is already mixing them. So I\u0027m just goint to write new code here in the preferred style. Will switch Hungarian notation names over later.",
+      "parentUuid": "21413064_363b3f9b",
       "revId": "a90d42444f7409b270efdc14994d207e15192894",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -187,6 +307,24 @@
     },
     {
       "key": {
+        "uuid": "587a9cd4_f536bd40",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "I believe the 4th component is the alpha. I can add a TODO to check and see how that\u0027s handled.\n\nI\u0027m hoping we can consolidate the code first, and then optimize.",
+      "parentUuid": "bf3d01f3_1659ec36",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "828612c9_af20b452",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -198,6 +336,24 @@
       "writtenOn": "2020-01-30T00:12:54Z",
       "side": 1,
       "message": "Optional: Might be better if these magic numbers (3/4/3) could be replaced with symbolic constants, if there are any convenient ones. If there aren\u0027t, it\u0027s probably clear enough...",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ded3d60_d13395b9",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T00:45:10Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "828612c9_af20b452",
       "revId": "a90d42444f7409b270efdc14994d207e15192894",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
