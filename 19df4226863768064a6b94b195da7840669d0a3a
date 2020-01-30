@@ -17,6 +17,24 @@
       "revId": "19df4226863768064a6b94b195da7840669d0a3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc50f71a_d0806c01",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T20:29:29Z",
+      "side": 1,
+      "message": "I was going to work on that next. I suppose this CL should move in the right direction, so I changed the parameter to a RetainPtr here.",
+      "parentUuid": "e326ffb7_fea3a2c3",
+      "revId": "19df4226863768064a6b94b195da7840669d0a3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
