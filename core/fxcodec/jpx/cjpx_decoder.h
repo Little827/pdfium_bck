@@ -8,6 +8,7 @@
 #define CORE_FXCODEC_JPX_CJPX_DECODER_H_
 
 #include <memory>
+#include <vector>
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/span.h"
@@ -35,6 +36,9 @@ class CJPX_Decoder {
     uint32_t height;
     uint32_t components;
   };
+
+  static std::vector<uint8_t> GetDecodeOffsets(uint32_t components,
+                                               bool swap_rgb);
 
   static void Sycc420ToRgbForTesting(opj_image_t* img);
 

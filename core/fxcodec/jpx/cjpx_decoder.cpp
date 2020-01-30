@@ -8,8 +8,8 @@
 
 #include <algorithm>
 #include <limits>
+#include <numeric>
 #include <utility>
-#include <vector>
 
 #include "core/fxcodec/jpx/jpx_decode_utils.h"
 #include "core/fxcrt/fx_safe_types.h"
@@ -384,6 +384,19 @@ void color_sycc_to_rgb(opj_image_t* img) {
 }
 
 }  // namespace
+
+// static
+std::vector<uint8_t> CJPX_Decoder::GetDecodeOffsets(uint32_t components,
+                                                    bool swap_rgb) {
+  // Fill |offsets| with 0, 1, ... N.
+  std::vector<uint8_t> offsets(components);
+  std::iota(offsets.begin(), offsets.end(), 0);
+  if (swap_rgb) {
+    DCHECK(offsets.size() >= 3);
+    std::swap(offsets[0], offsets[2]);
+  }
+  return offsets;
+}
 
 // static
 void CJPX_Decoder::Sycc420ToRgbForTesting(opj_image_t* img) {
