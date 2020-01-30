@@ -66,14 +66,6 @@ float CPDF_TextState::GetFontSizeH() const {
   return m_Ref.GetObject()->GetFontSizeH();
 }
 
-float CPDF_TextState::GetBaselineAngle() const {
-  return m_Ref.GetObject()->GetBaselineAngle();
-}
-
-float CPDF_TextState::GetShearAngle() const {
-  return m_Ref.GetObject()->GetShearAngle();
-}
-
 TextRenderingMode CPDF_TextState::GetTextMode() const {
   return m_Ref.GetObject()->m_TextMode;
 }
@@ -139,14 +131,6 @@ float CPDF_TextState::TextData::GetFontSizeV() const {
 
 float CPDF_TextState::TextData::GetFontSizeH() const {
   return fabs(FXSYS_sqrt2(m_Matrix[0], m_Matrix[2]) * m_FontSize);
-}
-
-float CPDF_TextState::TextData::GetBaselineAngle() const {
-  return atan2(m_Matrix[2], m_Matrix[0]);
-}
-
-float CPDF_TextState::TextData::GetShearAngle() const {
-  return GetBaselineAngle() + atan2(m_Matrix[1], m_Matrix[3]);
 }
 
 bool SetTextRenderingModeFromInt(int iMode, TextRenderingMode* mode) {
