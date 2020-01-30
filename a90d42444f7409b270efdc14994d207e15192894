@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "151b844d_e90862dc",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T01:13:41Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "4c7be293_980334d8",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8421bb8c_070a089d",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -272,6 +290,24 @@
     },
     {
       "key": {
+        "uuid": "82679244_4425083e",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T01:13:41Z",
+      "side": 1,
+      "message": "I think the more important question I had is what the correct state should be if Create() fails. To use your analogy, what should we do if this happens:\n\n1. mv existing.txt new.txt\n2. touch existing.txt\n3. edit existing.txt # fail without modifying\n\nShould existing.txt be empty (option A), or should it have the old contents from new.txt (option B)? If the former, the current code is fine. If the latter, the code needs to be different (more like the atomic rename performed when editing a file in place).\n\nWith regards to using RetainPtr::Swap(), I think I find the existing code slightly less readable because of this:\n\n  auto original_bitmap \u003d std::move(pCachedBitmap);  // pCachedBitmap invalidated\n\nI then have to read the following line to know what happens to pCachedBitmap:\n\n  pCachedBitmap \u003d MakeRetain\u003cCFX_DIBitmap\u003e();  // oh, going to use it as a new bitmap now\n\nSomething like this feels slightly more readable to me:\n\n  auto original_bitmap \u003d MakeRetain\u003cCFX_DIBitmap\u003e();  // creating a new bitmap\n  pCachedBitmap.Swap(original_bitmap);  // old and new bitmaps exchange places\n\nIt\u0027s a very, very minor thing, though. Also, if we go with option B, I don\u0027t know if swapping still makes sense anyway:\n\n  auto new_bitmap \u003d MakeRetain\u003cCFX_DIBitmap\u003e();\n  CopyRgbToNewBitmap(pCachedBitmap, new_bitmap);\n  pCachedBitmap \u003d std::move(new_bitmap);  // don\u0027t care about new_bitmap, won\u0027t use again",
+      "parentUuid": "8fc14588_c590b615",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf3d01f3_1659ec36",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -319,6 +355,24 @@
       "side": 1,
       "message": "I believe the 4th component is the alpha. I can add a TODO to check and see how that\u0027s handled.\n\nI\u0027m hoping we can consolidate the code first, and then optimize.",
       "parentUuid": "bf3d01f3_1659ec36",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d15c83e_42cfff15",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T01:13:41Z",
+      "side": 1,
+      "message": "I went ahead and filed crbug.com/pdfium/1469 for adding /SMaskInData support. (It looks like the only reference to this in the code base currently is for fuzzing.)",
+      "parentUuid": "587a9cd4_f536bd40",
       "revId": "a90d42444f7409b270efdc14994d207e15192894",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
