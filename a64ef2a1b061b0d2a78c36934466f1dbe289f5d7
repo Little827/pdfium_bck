@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580362376 -0800\nnonce AC6AUtPDNlv/431t7/PDA4Yt33vjlD2ktjHgAa2L6llcs0tSsvclkA+idqq+oHBqRKeg0YzQA4nf\n\n0000000000000000000000000000000000000000 a64ef2a1b061b0d2a78c36934466f1dbe289f5d7 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4yaogACgkQqzYtYVpm\n/XvHJwgAi4K00foqmJxQXA0e/+4s/Axruk2QSGUrkv5r7ZC8QIhgCgvOXw+n/iH0\nYmlV0V8qOjNEd9mrDV4T8ycVUze0+WIV92yrbddGh1EOka9mPfvk30CG4V7dXArB\nGw2FQO/pvC+mCUlnRUuzKBikaEzSECR0pCnn3w22lmCeGHtAo2MQ1380poCVybZZ\nhd7clKP0uhfoAyCXC3R/9a8skz+Hs1zT6RkWwMvmOJiCdwUXMaeSdZpbXM/rIAas\nY/eB8Sxwi5vSGTRYdM0EgRJ8HrG2ond1I2yIt2SIQLWgp+GqIJ6F90bVnwYKuzWt\nqG6OfrT3B147b2JA5BaiCybcR5JPMg\u003d\u003d\n\u003dpIg+\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "594633ad_025760d0",
+        "filename": "core/fxcodec/jpeg/jpegmodule.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-30T17:59:17Z",
+      "side": 1,
+      "message": "nit: can any of these be unsigned?",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "a64ef2a1b061b0d2a78c36934466f1dbe289f5d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
