@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "195cd12b_15063453",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-30T18:57:11Z",
+      "side": 1,
+      "message": "nit: is really some sort of permutation rather than offsets as such?",
+      "range": {
+        "startLine": 140,
+        "startChar": 33,
+        "endLine": 140,
+        "endChar": 41
+      },
+      "revId": "f30c3546634ac993978efe82fc28e2004eca154b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9417dbc5_ab81260d",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 3
@@ -31,6 +54,24 @@
       "side": 1,
       "message": "We added it when switching to std::iota() in https://pdfium-review.googlesource.com/c/pdfium/+/61070\n\nI agree with the sentiments there, and I imagine 8 out of 10 people sitting near you won\u0027t know what std::iota() does.",
       "parentUuid": "9417dbc5_ab81260d",
+      "revId": "f30c3546634ac993978efe82fc28e2004eca154b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131ad937_e3c2d2ee",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-30T18:57:11Z",
+      "side": 1,
+      "message": "FYI, I didn\u0027t until I looked it up 😊 😊 😊",
+      "parentUuid": "0716d40c_02d850af",
       "revId": "f30c3546634ac993978efe82fc28e2004eca154b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
