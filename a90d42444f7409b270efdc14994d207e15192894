@@ -308,6 +308,24 @@
     },
     {
       "key": {
+        "uuid": "855bffb9_0734c330",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T01:38:02Z",
+      "side": 1,
+      "message": "I just realized that we\u0027re throwing away pCachedBitmap in any case (I wasn\u0027t thinking about it being the return value), so I think this comes down to what order of operations seems most logical to you...",
+      "parentUuid": "82679244_4425083e",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf3d01f3_1659ec36",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
