@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7ae7699_732d4f24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "\"Unsuppress\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dffb079_21fbb7d6",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -14,6 +37,149 @@
       "writtenOn": "2020-01-29T23:50:16Z",
       "side": 1,
       "message": "Note: I tried putting a CHECK() here, rebuilt, ran pdfium_test on 10K+ PDFs, and didn\u0027t ever hit the CHECK(). Given the lack of PDFs from the wild to test with, I\u0027m just handling this one particular condition that we do have a test PDF for. I\u0027m going to try generating some of my own PDFs later to see if we can do more here, but for now, this is all I want to do.",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79b3b828_676c4fb9",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "9dffb079_21fbb7d6",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cafc892f_c98d1cf5",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "Does this require that pdf_colorspace-\u003eCountComponents() \u003d\u003d 3, or is that not required?",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a80e5e_ce5af257",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "Idea: Not going to push hard for this, but another way to refactor this could be to replace \"swap_rgb\" and \"convert_argb_to_rgb\" with helper functions per dimension that map from an enumerator to a boolean.\n\nExample:\n\n  IsSwapRgb(JpxDecodeAction action) \u003d\u003e true if kUseRgb, kConvertArgbToRgb...\n  IsConvertArgbToRgb(...) \u003d\u003e true if kConvertArgbToRgb...",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8421bb8c_070a089d",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "Speculation: This function keeps getting longer. I wonder if any of this can be broken out into helper functions? (Like a, \"convert bitmap from ARGB-to-RGB\" function, for example.)",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b58ef6d_87070b5d",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "Nit: This seems like a poor use of auto. I need to refer back to pCachedBitmap, which was also defined using auto, and then finally read the type from MakeRetain\u003cCFX_DIBitmap\u003e.",
+      "range": {
+        "startLine": 706,
+        "startChar": 4,
+        "endLine": 706,
+        "endChar": 8
+      },
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21413064_363b3f9b",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "Optional: Maybe using swap (RetainedPtr::Swap?) with original_bitmap and pCachedBitmap would make this a bit clearer?\n\nThe idea of doing a swap also suggests to me that it might make sense to do the conversion into a new bitmap, and then swap the new bitmap pointer over the cached bitmap pointer at the end (rather than doing the swap first, and then writing to pCachedBitmap).\n\nI think this depends on what you want the final state to be on an error, though. For example, if the Create() on line 708 fails, is it better to have an empty pCachedBitmap, or whatever was there before?\n\nNit: It\u0027s also a little confusing to have Hungarian notation for pCachedBitmap, and then not for original_bitmap.",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf3d01f3_1659ec36",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "Just making sure: ARGB is A as the 4th component?\n\n(Also, I\u0027d like to think there\u0027s some SIMD instruction that can do this, but no need to micro-optimize right now...)",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "828612c9_af20b452",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T00:12:54Z",
+      "side": 1,
+      "message": "Optional: Might be better if these magic numbers (3/4/3) could be replaced with symbolic constants, if there are any convenient ones. If there aren\u0027t, it\u0027s probably clear enough...",
       "revId": "a90d42444f7409b270efdc14994d207e15192894",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
