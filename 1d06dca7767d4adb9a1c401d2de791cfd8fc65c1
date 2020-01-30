@@ -93,6 +93,30 @@
       "revId": "1d06dca7767d4adb9a1c401d2de791cfd8fc65c1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "678f6ba4_9aa7c365",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-01-30T09:17:51Z",
+      "side": 1,
+      "message": "Tom, making this change means removing the kRequiredVersions array. Do you think that is something that we should do?",
+      "parentUuid": "a9248d63_9e03fa43",
+      "range": {
+        "startLine": 293,
+        "startChar": 18,
+        "endLine": 293,
+        "endChar": 78
+      },
+      "revId": "1d06dca7767d4adb9a1c401d2de791cfd8fc65c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
