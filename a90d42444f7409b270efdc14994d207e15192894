@@ -344,6 +344,24 @@
     },
     {
       "key": {
+        "uuid": "39597ea6_f49a251b",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T04:54:17Z",
+      "side": 1,
+      "message": "I changed this CL to a CL that renames |pCachedBitmap|. I ended up roughly taking your suggestion.",
+      "parentUuid": "3163a1e6_9adacb02",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf3d01f3_1659ec36",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
