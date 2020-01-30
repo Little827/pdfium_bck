@@ -120,7 +120,11 @@ CXFA_FFDocView* CXFA_FFPageView::GetDocView() const {
 }
 
 CFX_RectF CXFA_FFPageView::GetPageViewRect() const {
-  return CFX_RectF(0, 0, GetLayoutItem()->GetPageSize());
+  auto* pItem = GetLayoutItem();
+  if (!pItem)
+    return CFX_RectF();
+
+  return CFX_RectF(0, 0, pItem->GetPageSize());
 }
 
 CFX_Matrix CXFA_FFPageView::GetDisplayMatrix(const FX_RECT& rtDisp,
