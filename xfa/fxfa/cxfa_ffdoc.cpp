@@ -81,16 +81,17 @@ CXFA_FFDoc::CXFA_FFDoc(CXFA_FFApp* pApp,
           pdfium::MakeUnique<CXFA_LayoutProcessor>())) {}
 
 CXFA_FFDoc::~CXFA_FFDoc() {
-  if (m_DocView) {
+  if (m_DocView)
     m_DocView->RunDocClose();
-    m_DocView.reset();
-  }
+
+  m_pNotify.reset();
+  m_DocView.reset();
+
   if (m_pDocument)
     m_pDocument->ClearLayoutData();
 
   m_pDocument.reset();
   m_pXMLDoc.reset();
-  m_pNotify.reset();
   m_pPDFFontMgr.reset();
   m_HashToDibDpiMap.clear();
   m_pApp->ClearEventTargets();

@@ -20,7 +20,7 @@ class CXFA_ViewLayoutItem : public CXFA_LayoutItem {
 
   ~CXFA_ViewLayoutItem() override;
 
-  CXFA_FFPageView* GetPageView() const { return m_pFFPageView.get(); }
+  CXFA_FFPageView* GetPageView() const { return m_pFFPageView.Get(); }
   CXFA_LayoutProcessor* GetLayout() const;
   int32_t GetPageIndex() const;
   CFX_SizeF GetPageSize() const;
@@ -29,10 +29,9 @@ class CXFA_ViewLayoutItem : public CXFA_LayoutItem {
   UnownedPtr<CXFA_Node> m_pOldSubform;
 
  private:
-  CXFA_ViewLayoutItem(CXFA_Node* pNode,
-                      std::unique_ptr<CXFA_FFPageView> pPageView);
+  CXFA_ViewLayoutItem(CXFA_Node* pNode, CXFA_FFPageView* pPageView);
 
-  std::unique_ptr<CXFA_FFPageView> const m_pFFPageView;
+  UnownedPtr<CXFA_FFPageView> const m_pFFPageView;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_VIEWLAYOUTITEM_H_
