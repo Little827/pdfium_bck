@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580416717 -0800\nnonce AC6AUtNKW96oMpxx3mjlrhHnlREFvLJ5cthLaulfuogeBBC4UEnzJkqV7vacq9VCNUxd4052iywb\n\n0000000000000000000000000000000000000000 c267c746c686eb846aebb3217bcbb1a0d312b032 refs/for/refs/heads/master%notify\u003dNONE,m\u003dunify\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl4zPs0ACgkQqzYtYVpm\n/XurlwgAqLTWkisTVY17S9OHuv25AJBO82uALlYn+VlHKsDxhp0gjxxfXyx4oaG0\nJ19w5qKdjnWDqdFmJEYHp8mnfbSAWasBGsJqs5AsZxl447Tiekqa9ftW44PhYP4p\noOlz6srZ4AxuNuBtgT2+VhA3iajEN4dujBPnGkex82LAaJx6jij2M0MkhAmDfXB0\nqHM5+XNO+P1T9IPREb3u0E3X2RqVdKIV6M5cXgmJAuYmMC2mbeOuKOZb1sdrXn2L\nlyhgaFTqNriBVTs2xg9zCm5g5MzHBjU11J+68LOYvGkPBL5zcAYZOADBhWDwpALh\nXsslrJNmJR/hki0kwnndhg4009tkTg\u003d\u003d\n\u003dlQWV\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "95fa1a75_dbd24f00",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-30T20:51:41Z",
+      "side": 1,
+      "message": "perhaps just \u0026\u0026 this check into the conditional above and it becomes safe always.",
+      "range": {
+        "startLine": 395,
+        "startChar": 12,
+        "endLine": 395,
+        "endChar": 30
+      },
+      "revId": "c267c746c686eb846aebb3217bcbb1a0d312b032",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
