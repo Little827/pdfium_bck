@@ -490,7 +490,7 @@ bool CJPX_Decoder::StartDecode() {
 }
 
 CJPX_Decoder::JpxImageInfo CJPX_Decoder::GetInfo() const {
-  return {m_Image->x1, m_Image->y1, m_Image->numcomps};
+  return {m_Image->x1, m_Image->y1, m_Image->numcomps, m_Image->color_space};
 }
 
 bool CJPX_Decoder::Decode(uint8_t* dest_buf,
