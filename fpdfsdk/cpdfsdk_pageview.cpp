@@ -459,12 +459,10 @@ bool CPDFSDK_PageView::OnChar(int nChar, uint32_t nFlag) {
 }
 
 bool CPDFSDK_PageView::OnKeyDown(int nKeyCode, int nFlag) {
-  if (CPDFSDK_Annot* pAnnot = GetFocusAnnot()) {
-    CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
-        m_pFormFillEnv->GetAnnotHandlerMgr();
-    return pAnnotHandlerMgr->Annot_OnKeyDown(pAnnot, nKeyCode, nFlag);
-  }
-  return false;
+  CPDFSDK_Annot* annot = GetFocusAnnot();
+  CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr =
+      m_pFormFillEnv->GetAnnotHandlerMgr();
+  return pAnnotHandlerMgr->Annot_OnKeyDown(this, annot, nKeyCode, nFlag);
 }
 
 bool CPDFSDK_PageView::OnKeyUp(int nKeyCode, int nFlag) {

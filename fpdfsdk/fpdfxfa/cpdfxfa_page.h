@@ -13,6 +13,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fpdfsdk/cpdfsdk_pageview.h"
 #include "third_party/base/optional.h"
 
 class CFX_RenderDevice;
@@ -48,6 +49,8 @@ class CPDFXFA_Page final : public IPDF_Page {
   void SetXFAPageViewIndex(int index) { m_iPageIndex = index; }
   CXFA_FFPageView* GetXFAPageView() const;
   CPDFSDK_Annot* GetNextXFAAnnot(CPDFSDK_Annot* pSDKAnnot, bool bNext);
+  CPDFSDK_Annot* GetFirstXFAAnnot(CPDFSDK_PageView* page_view) const;
+  CPDFSDK_Annot* GetLastXFAAnnot(CPDFSDK_PageView* page_view) const;
   int HasFormFieldAtPoint(const CFX_PointF& point) const;
   void DrawFocusAnnot(CFX_RenderDevice* pDevice,
                       CPDFSDK_Annot* pAnnot,
