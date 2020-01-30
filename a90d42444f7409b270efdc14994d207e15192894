@@ -326,6 +326,24 @@
     },
     {
       "key": {
+        "uuid": "3163a1e6_9adacb02",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T02:26:43Z",
+      "side": 1,
+      "message": "Yes, failure means everything gets thrown away. So I\u0027m going to leave this as is because the existing code seems more logical to me.",
+      "parentUuid": "855bffb9_0734c330",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf3d01f3_1659ec36",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
@@ -391,6 +409,24 @@
       "side": 1,
       "message": "I went ahead and filed crbug.com/pdfium/1469 for adding /SMaskInData support. (It looks like the only reference to this in the code base currently is for fuzzing.)",
       "parentUuid": "587a9cd4_f536bd40",
+      "revId": "a90d42444f7409b270efdc14994d207e15192894",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ddfb0f1_e97af37f",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-30T02:26:43Z",
+      "side": 1,
+      "message": "Thanks!\n\nIt turns out https://crbug.com/pdfium/1453 provides another example that this CL does not render correctly. Not sure how bug reporters managed to be so timely, but I now have another PDF to investigate. Will follow up on that and continue making incremental improvements here.",
+      "parentUuid": "8d15c83e_42cfff15",
       "revId": "a90d42444f7409b270efdc14994d207e15192894",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
