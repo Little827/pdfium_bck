@@ -55,8 +55,6 @@ CFWL_Edit::CFWL_Edit(const CFWL_App* app,
 
 CFWL_Edit::~CFWL_Edit() {
   m_pEditEngine->SetDelegate(nullptr);
-  if (m_pProperties->m_dwStates & FWL_WGTSTATE_Focused)
-    HideCaret(nullptr);
 }
 
 FWL_Type CFWL_Edit::GetClassID() const {
