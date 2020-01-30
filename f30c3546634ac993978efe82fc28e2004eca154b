@@ -75,6 +75,24 @@
       "revId": "f30c3546634ac993978efe82fc28e2004eca154b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1a4becc_68a78b3e",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-01-30T19:36:13Z",
+      "side": 1,
+      "message": "I also had to look it up, but my point is that I understood the overall purpose of \"GetJpxDecodeOffsets\" without knowing exactly what std::iota did, too. (If std::iota is that unclear, I would have just stuck with the for loop in the first place, personally...)\n\nAnyway, feel free to leave it as it is. The comment just struck me as very much a \"how\" rather than \"why\" comment; I think it\u0027d be more useful to spend a comment documenting what the overall function did, rather than on what std::iota does.",
+      "parentUuid": "131ad937_e3c2d2ee",
+      "revId": "f30c3546634ac993978efe82fc28e2004eca154b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
