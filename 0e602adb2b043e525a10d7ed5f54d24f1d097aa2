@@ -34,6 +34,23 @@
       "revId": "0e602adb2b043e525a10d7ed5f54d24f1d097aa2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b2ea25_365618c8",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-31T20:09:12Z",
+      "side": 1,
+      "message": "\"Note that the text render mode should be set to |FPDF_TEXTRENDERMODE_STROKE|, but isn\u0027t.\"\n\nThen the TODO comment below can be shortened to remove redundant info.",
+      "revId": "0e602adb2b043e525a10d7ed5f54d24f1d097aa2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
