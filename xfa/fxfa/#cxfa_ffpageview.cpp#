@@ -156,7 +156,7 @@ CXFA_FFPageWidgetIterator::CXFA_FFPageWidgetIterator(CXFA_FFPageView* pPageView,
 
 CXFA_FFPageWidgetIterator::~CXFA_FFPageWidgetIterator() {}
 
-void CXFA_FFPageWidgetIterator::Reset() {
+void CXFA_FFPageWidgetIterator::Reset_() {
   m_sIterator.Reset();
 }
 
@@ -201,7 +201,7 @@ CXFA_FFWidget* CXFA_FFPageWidgetIterator::GetCurrentWidget() {
   return pLayoutItem ? XFA_GetWidgetFromLayoutItem(pLayoutItem) : nullptr;
 }
 
-bool CXFA_FFPageWidgetIterator::SetCurrentWidget(CXFA_FFWidget* pWidget) {
+bool CXFA_FFPageWidgetIterator::SetCurrentWidget_(CXFA_FFWidget* pWidget) {
   return pWidget && m_sIterator.SetCurrent(pWidget->GetLayoutItem());
 }
 
@@ -239,12 +239,12 @@ CXFA_FFTabOrderPageWidgetIterator::CXFA_FFTabOrderPageWidgetIterator(
   m_bIgnoreRelevant =
       m_pPageView->GetDocView()->GetDoc()->GetXFADoc()->GetCurVersionMode() <
       XFA_VERSION_205;
-  Reset();
+  Reset_();
 }
 
 CXFA_FFTabOrderPageWidgetIterator::~CXFA_FFTabOrderPageWidgetIterator() {}
 
-void CXFA_FFTabOrderPageWidgetIterator::Reset() {
+void CXFA_FFTabOrderPageWidgetIterator::Reset_() {
   CreateTabOrderWidgetArray();
   m_iCurWidget = -1;
 }
@@ -303,7 +303,7 @@ CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::GetCurrentWidget() {
                            : nullptr;
 }
 
-bool CXFA_FFTabOrderPageWidgetIterator::SetCurrentWidget(
+bool CXFA_FFTabOrderPageWidgetIterator::SetCurrentWidget_(
     CXFA_FFWidget* hWidget) {
   auto it = std::find(m_TabOrderWidgetArray.begin(),
                       m_TabOrderWidgetArray.end(), hWidget);

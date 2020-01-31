@@ -17,6 +17,7 @@
 #include "xfa/fwl/cfwl_messagemouse.h"
 #include "xfa/fwl/cfwl_widget.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
+#include "xfa/fxfa/cxfa_ffpageview.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
 
@@ -26,7 +27,6 @@ class CXFA_FFApp;
 class CXFA_FFDoc;
 class CXFA_FFDocView;
 class CXFA_FFField;
-class CXFA_FFPageView;
 class CXFA_FFWidgetHandler;
 class CXFA_Graphics;
 class CXFA_Image;
@@ -146,7 +146,7 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
   CXFA_ContentLayoutItem* GetLayoutItem() const { return m_pLayoutItem.Get(); }
   void SetLayoutItem(CXFA_ContentLayoutItem* pItem) { m_pLayoutItem = pItem; }
   CXFA_FFPageView* GetPageView() const { return m_pPageView.Get(); }
-  void SetPageView(CXFA_FFPageView* pPageView) { m_pPageView = pPageView; }
+  void SetPageView(CXFA_FFPageView* pPageView) { m_pPageView.Reset(pPageView); }
   CXFA_FFDocView* GetDocView() const { return m_pDocView.Get(); }
   void SetDocView(CXFA_FFDocView* pDocView) { m_pDocView = pDocView; }
 
@@ -194,7 +194,7 @@ class CXFA_FFWidget : public Observable, public CFWL_Widget::AdapterIface {
 
   UnownedPtr<CXFA_ContentLayoutItem> m_pLayoutItem;
   UnownedPtr<CXFA_FFDocView> m_pDocView;
-  UnownedPtr<CXFA_FFPageView> m_pPageView;
+  ObservedPtr<CXFA_FFPageView> m_pPageView;
   UnownedPtr<CXFA_Node> const m_pNode;
   mutable CFX_RectF m_rtWidget;
 };
