@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abd275e2_66f27b28",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-31T17:30:45Z",
+      "side": 1,
+      "message": "nit: no braces on single-line if with single line bodies.",
+      "range": {
+        "startLine": 711,
+        "startChar": 73,
+        "endLine": 711,
+        "endChar": 74
+      },
+      "revId": "d56ef9203f0cfda1f0a0b6fd840f798325fd14f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7074bd48_e745f35b",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-31T17:30:45Z",
+      "side": 1,
+      "message": "nit: overparenthesized.",
+      "range": {
+        "startLine": 711,
+        "startChar": 43,
+        "endLine": 711,
+        "endChar": 71
+      },
+      "revId": "d56ef9203f0cfda1f0a0b6fd840f798325fd14f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b41bc4_0a261989",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-31T17:30:45Z",
+      "side": 1,
+      "message": "nit: maybe move to line 710, as this also applies to the return true on line 712.",
+      "range": {
+        "startLine": 714,
+        "startChar": 2,
+        "endLine": 714,
+        "endChar": 5
+      },
+      "revId": "d56ef9203f0cfda1f0a0b6fd840f798325fd14f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef1e28db_fa579912",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-01-31T17:30:45Z",
+      "side": 1,
+      "message": "nit: 80 columns",
+      "range": {
+        "startLine": 1088,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 9
+      },
+      "revId": "d56ef9203f0cfda1f0a0b6fd840f798325fd14f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
