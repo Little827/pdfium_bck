@@ -23,6 +23,30 @@
       "revId": "a96246a23231c6548e2c88d89c28cb94e4b974ac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f14db4_6d73282e",
+        "filename": "core/fpdfapi/render/cpdf_imageloader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-31T22:52:20Z",
+      "side": 1,
+      "message": "Yes, and then I realized we can keep applying this change to more of the call stack. PTAL.",
+      "parentUuid": "29a989b1_c8bfa545",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "a96246a23231c6548e2c88d89c28cb94e4b974ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

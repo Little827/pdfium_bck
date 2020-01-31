@@ -1,4 +1,22 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580510944 -0800\nnonce AC6AUtNknC3W12cvR/N66Of9ti4j5HYSRDioqmUS2riIILzhsdtLIdqZLuNUS0RAJJiDeNgodykG\n\n0000000000000000000000000000000000000000 a77a4ba5d82c1606278c2c5dcdad3184c16a9db2 refs/for/refs/heads/master%notify\u003dNONE,m\u003dmore\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl40ruAACgkQqzYtYVpm\n/XsOMgf7BMfyvvy+TAwMTrSC8KIX0q1yymG4sdTR2G7tazExr4Lt/Mu5t2YAilpC\ngd1r+VHjA4b3+sQEfMjROy7DVu46UF8rigmqA71RnUV3GfJ9seIXc/CAfCfviCnF\n6ifynUF+8pV0dO0b4vrfdFDnxbdNDYGBSphyi/BGzaOloYdCm28COaz0piW033kZ\nxhaIOuwcVA4qvXPX9Sa4Y2KPe2FG/Kzp+e00ZPoAoVlld5lsVGqcOjCJ4W+0I0/n\n4slU+Jg7WSQ1KnLy08DPBLAQxGp7XxCvLCHIt1xwQzbCgjEQ8lIXJcPH24WG7G6E\ni0g+w49YnePmaYbjDBmQ6jcxzBemng\u003d\u003d\n\u003dgjl4\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7c4ef0e_2a8d3564",
+        "filename": "core/fpdfapi/render/cpdf_imagecacheentry.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-01-31T22:52:20Z",
+      "side": 1,
+      "message": "StartLoadDIBBase() has several callers, so I\u0027ll have to look at it separately.",
+      "revId": "a77a4ba5d82c1606278c2c5dcdad3184c16a9db2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    }
+  ]
 }
