@@ -22,7 +22,7 @@ class CXFA_ContentLayoutItem : public CXFA_LayoutItem {
 
   ~CXFA_ContentLayoutItem() override;
 
-  CXFA_FFWidget* GetFFWidget() { return m_pFFWidget.get(); }
+  CXFA_FFWidget* GetFFWidget() { return m_pFFWidget.Get(); }
 
   CXFA_ContentLayoutItem* GetFirst();
   CXFA_ContentLayoutItem* GetLast();
@@ -43,15 +43,14 @@ class CXFA_ContentLayoutItem : public CXFA_LayoutItem {
   CFX_SizeF m_sSize;
 
  private:
-  CXFA_ContentLayoutItem(CXFA_Node* pNode,
-                         std::unique_ptr<CXFA_FFWidget> pFFWidget);
+  CXFA_ContentLayoutItem(CXFA_Node* pNode, CXFA_FFWidget* pFFWidget);
 
   void RemoveSelf();
 
   mutable uint32_t m_dwStatus = 0;
   UnownedPtr<CXFA_ContentLayoutItem> m_pPrev;
   UnownedPtr<CXFA_ContentLayoutItem> m_pNext;
-  std::unique_ptr<CXFA_FFWidget> const m_pFFWidget;
+  UnownedPtr<CXFA_FFWidget> const m_pFFWidget;
 };
 
 inline CXFA_FFWidget* GetFFWidget(CXFA_ContentLayoutItem* item) {

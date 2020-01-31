@@ -43,8 +43,9 @@ class CXFA_FFNotify {
   void OnChildAdded(CXFA_Node* pSender);
   void OnChildRemoved();
 
-  std::unique_ptr<CXFA_FFPageView> OnCreateViewLayoutItem(CXFA_Node* pNode);
-  std::unique_ptr<CXFA_FFWidget> OnCreateContentLayoutItem(CXFA_Node* pNode);
+  // Returns new objects that live for the duration of |this|.
+  CXFA_FFPageView* OnCreateViewLayoutItem(CXFA_Node* pNode);
+  CXFA_FFWidget* OnCreateContentLayoutItem(CXFA_Node* pNode);
 
   void OnLayoutItemAdded(CXFA_LayoutProcessor* pLayout,
                          CXFA_LayoutItem* pSender,
@@ -75,6 +76,8 @@ class CXFA_FFNotify {
 
  private:
   UnownedPtr<CXFA_FFDoc> const m_pDoc;
+  std::vector<std::unique_ptr<CXFA_FFPageView>> m_ViewArena;
+  std::vector<std::unique_ptr<CXFA_FFWidget>> m_ContentArena;
 };
 
 #endif  // XFA_FXFA_CXFA_FFNOTIFY_H_

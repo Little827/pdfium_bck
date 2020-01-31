@@ -115,6 +115,7 @@ class CXFA_Document final : public CXFA_NodeOwner {
   void DataMerge_UpdateBindingRelations(CXFA_Node* pFormUpdateRoot);
 
   void ClearLayoutData();
+  void ClearNotify() { notify_ = nullptr; }
 
   CXFA_Node* GetGlobalBinding(uint32_t dwNameHash);
   void RegisterGlobalBinding(uint32_t dwNameHash, CXFA_Node* pDataNode);
@@ -123,7 +124,7 @@ class CXFA_Document final : public CXFA_NodeOwner {
   std::vector<CXFA_Node*> m_pPendingPageSet;
 
  private:
-  UnownedPtr<CXFA_FFNotify> const notify_;
+  UnownedPtr<CXFA_FFNotify> notify_;
   CXFA_Node* m_pRootNode = nullptr;
   std::map<uint32_t, CXFA_Node*> m_rgGlobalBinding;
   std::unique_ptr<CFXJSE_Engine> m_pScriptContext;

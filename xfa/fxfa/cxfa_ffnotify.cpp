@@ -45,7 +45,9 @@
 
 CXFA_FFNotify::CXFA_FFNotify(CXFA_FFDoc* pDoc) : m_pDoc(pDoc) {}
 
-CXFA_FFNotify::~CXFA_FFNotify() {}
+CXFA_FFNotify::~CXFA_FFNotify() {
+  m_pDoc->GetXFADoc()->ClearNotify();
+}
 
 void CXFA_FFNotify::OnPageEvent(CXFA_ViewLayoutItem* pSender,
                                 uint32_t dwEvent) {
@@ -79,18 +81,18 @@ void CXFA_FFNotify::OnWidgetListItemRemoved(CXFA_Node* pSender,
   }
 }
 
-std::unique_ptr<CXFA_FFPageView> CXFA_FFNotify::OnCreateViewLayoutItem(
-    CXFA_Node* pNode) {
+CXFA_FFPageView* CXFA_FFNotify::OnCreateViewLayoutItem(CXFA_Node* pNode) {
   if (pNode->GetElementType() != XFA_Element::PageArea)
     return nullptr;
 
   auto* pLayout = CXFA_LayoutProcessor::FromDocument(m_pDoc->GetXFADoc());
-  return pdfium::MakeUnique<CXFA_FFPageView>(m_pDoc->GetDocView(pLayout),
-                                             pNode);
+  m_ViewArena.push_back(
+      pdfium::MakeUnique<CXFA_FFPageView>(m_pDoc->GetDocView(pLayout), pNode));
+
+  return m_ViewArena.back().get();
 }
 
-std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
-    CXFA_Node* pNode) {
+CXFA_FFWidget* CXFA_FFNotify::OnCreateContentLayoutItem(CXFA_Node* pNode) {
   ASSERT(pNode->GetElementType() != XFA_Element::ContentArea);
   ASSERT(pNode->GetElementType() != XFA_Element::PageArea);
 
@@ -185,7 +187,8 @@ std::unique_ptr<CXFA_FFWidget> CXFA_FFNotify::OnCreateContentLayoutItem(
   ASSERT(pWidget);
   auto* pLayout = CXFA_LayoutProcessor::FromDocument(m_pDoc->GetXFADoc());
   pWidget->SetDocView(m_pDoc->GetDocView(pLayout));
-  return pWidget;
+  m_ContentArena.push_back(std::move(pWidget));
+  return m_ContentArena.back().get();
 }
 
 void CXFA_FFNotify::StartFieldDrawLayout(CXFA_Node* pItem,
