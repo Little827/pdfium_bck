@@ -51,6 +51,24 @@
       "revId": "0e602adb2b043e525a10d7ed5f54d24f1d097aa2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1175cb70_5783a78d",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-01-31T20:16:18Z",
+      "side": 1,
+      "message": "Are the pipes (||) used for values as well as variables?",
+      "parentUuid": "15b2ea25_365618c8",
+      "revId": "0e602adb2b043e525a10d7ed5f54d24f1d097aa2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
