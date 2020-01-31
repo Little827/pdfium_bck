@@ -285,12 +285,7 @@ FPDFPage_FormFieldZOrderAtPoint(FPDF_FORMHANDLE hHandle,
 FPDF_EXPORT FPDF_FORMHANDLE FPDF_CALLCONV
 FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document,
                                 FPDF_FORMFILLINFO* formInfo) {
-#ifdef PDF_ENABLE_XFA
-  constexpr int kRequiredVersion = 2;
-#else   // PDF_ENABLE_XFA
-  constexpr int kRequiredVersion = 1;
-#endif  // PDF_ENABLE_XFA
-  if (!formInfo || formInfo->version != kRequiredVersion)
+  if (!formInfo || formInfo->version > 2)
     return nullptr;
 
   auto* pDocument = CPDFDocumentFromFPDFDocument(document);
