@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "88ebdbba_3f7b130b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-01T00:35:27Z",
+      "side": 1,
+      "message": "Is this CL going to directly address this bug? Or does it address another possibly related issue found while researching this bug?\n\nIt looks like this is really about the handling of FRC_1_8.2.4__original.pdf, not the PDF on the bug. FRC_1_8.2.4__original.pdf has an embedded, subsetted font, whereas the PDF for bug 1021762 does not have any embedded font at all, and the fonts it requests don\u0027t have this prefix.",
+      "revId": "84ef66645ace8b473a0d1a7d30c527c27d9658f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2df944fa_9d40e39b",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 2
