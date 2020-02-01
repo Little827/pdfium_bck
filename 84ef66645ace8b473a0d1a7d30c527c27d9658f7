@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3c11898_e26f75e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-01T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4911bb48_3a474b6d",
+      "range": {
+        "startLine": 7,
+        "startChar": 68,
+        "endLine": 7,
+        "endChar": 69
+      },
+      "revId": "84ef66645ace8b473a0d1a7d30c527c27d9658f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88ebdbba_3f7b130b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "84ef66645ace8b473a0d1a7d30c527c27d9658f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92bed90e_2ebb6ce8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-01T01:28:31Z",
+      "side": 1,
+      "message": "This CL is related to an issue found while researching crbug.com/1021762, specifically related to comment #23.\nI created a new issue crbug.com/pdfium/1475 to match this CL.",
+      "parentUuid": "88ebdbba_3f7b130b",
+      "revId": "84ef66645ace8b473a0d1a7d30c527c27d9658f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "cef4b735_23da94bc",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-01T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfcd1c9b_73c1cad8",
+      "range": {
+        "startLine": 420,
+        "startChar": 47,
+        "endLine": 420,
+        "endChar": 48
+      },
+      "revId": "84ef66645ace8b473a0d1a7d30c527c27d9658f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a728805_5a14762d",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 2
@@ -109,6 +175,30 @@
       "revId": "84ef66645ace8b473a0d1a7d30c527c27d9658f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39777f1_42ce47e5",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-01T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a728805_5a14762d",
+      "range": {
+        "startLine": 422,
+        "startChar": 28,
+        "endLine": 422,
+        "endChar": 33
+      },
+      "revId": "84ef66645ace8b473a0d1a7d30c527c27d9658f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
