@@ -3,6 +3,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "09c73167_9d8da661",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-03T17:48:31Z",
+      "side": 1,
+      "message": "nit: stan",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "35c7dc0eea4aca07b62768e28ca67cb127cb2851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81d37023_548ee1b8",
         "filename": "core/fpdftext/cpdf_textpage.h",
         "patchSetId": 1
