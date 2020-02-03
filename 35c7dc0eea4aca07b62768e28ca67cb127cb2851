@@ -1,4 +1,28 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1580520230 -0800\nnonce AC6AUtMriTwEgw18WoJkQ+dX6UhI0qe94uxuuaNg0nIxohTzkiecTOXKczN8SHDDy36AhyN5L182\n\n0000000000000000000000000000000000000000 35c7dc0eea4aca07b62768e28ca67cb127cb2851 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl400yYACgkQqzYtYVpm\n/XspdAf/d5WcvYp918vMk/ySq80eM6ZB1t5rGq/yEAkw7zaYS6FXds5GVYhlVoLL\nq/F0YRVFfZqc3UkawUP4StXzhDUfgVYB9t3VsPlw4BOBS+JznNIx4RXHc4E9UwSj\nnXO5DDwBn64W20bbkg+NYgBv3AUIz96UqWQRvEqI53WGVwfv00HwOe+yQKqvC2qL\nMaCEAWKD/2Z7x+2VR7ZRGTEIDst6fG52cE2cC38sZALMwT0WBPcTeZt+e0WAnzVD\nl+z421x/EcdlHOZ6xHkPxhdzCEu7yb6fJBFXlHgvC/fUR0EpeXx9v6LQ+MUPpWWT\n/LRXKFOfYpPOrLGmS2Cy0jPP3emQ/A\u003d\u003d\n\u003dfqke\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "81d37023_548ee1b8",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-03T17:44:43Z",
+      "side": 1,
+      "message": "nit: so why StreamObj?  Looks like the difference between this and a CPDF_TextObject is the transform matrix.  Is this a |TransformedTextObject| in reality?  Or is that just a representation curiosity as these arise only from some sort of stream?",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "35c7dc0eea4aca07b62768e28ca67cb127cb2851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
