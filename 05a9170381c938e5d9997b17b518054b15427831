@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "0a92a222_454b4e2f",
+        "filename": "core/fxge/cfx_folderfontinfo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-04T09:28:01Z",
+      "side": 1,
+      "message": "Sorry, I missed there are other places where CFX_FolderFontInfoTest reaches into CFX_FolderFontInfo, as well as the fact that FontFaceInfo is also protected. Let\u0027s leave this as is then.",
+      "parentUuid": "d5f4bda0_09bd52aa",
+      "revId": "05a9170381c938e5d9997b17b518054b15427831",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a5f9814_7252a4a5",
         "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
         "patchSetId": 4

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5b1b2d_7cfee081",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-04T09:28:01Z",
+      "side": 1,
+      "message": "|iSimilarValue| \u003c- no spaces.",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "d830d6dab831a16dd5790bb0b94204ca7282c409",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fce11a9_9e8f111e",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-04T09:28:01Z",
+      "side": 1,
+      "message": "If you move the cast from line 59 to here, and have CFX_FolderFontInfoTest::FindFont() return the actual type instead of void*, then GetFaceName() becomes unnecessary.",
+      "revId": "d830d6dab831a16dd5790bb0b94204ca7282c409",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
