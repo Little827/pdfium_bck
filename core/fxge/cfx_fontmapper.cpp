@@ -15,6 +15,7 @@
 
 #include "build/build_config.h"
 #include "core/fxcrt/fx_codepage.h"
+#include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxge/cfx_fontmgr.h"
 #include "core/fxge/cfx_substfont.h"
@@ -256,6 +257,17 @@ void UpdatePitchFamily(uint32_t flags, int* PitchFamily) {
     *PitchFamily |= FXFONT_FF_FIXEDPITCH;
 }
 
+bool IsStrUpper(ByteString& str) {
+  if (str.GetLength() == 0)
+    return false;
+
+  for (size_t index = 0; index < str.GetLength(); ++index) {
+    if (!FXSYS_iswupper(str[index]))
+      return false;
+  }
+  return true;
+}
+
 }  // namespace
 
 CFX_FontMapper::CFX_FontMapper(CFX_FontMgr* mgr) : m_pFontMgr(mgr) {}
@@ -417,7 +429,15 @@ RetainPtr<CFX_Face> CFX_FontMapper::FindSubstFont(const ByteString& name,
   bool bHasComma = false;
   bool bHasHyphen = false;
   {
-    Optional<size_t> pos = SubstName.Find(",", 0);
+    Optional<size_t> pos = SubstName.Find("+");
+    if (pos.has_value() && pos.value() == 6) {
+      ByteString prefix = SubstName.First(pos.value());
+      if (IsStrUpper(prefix)) {
+        SubstName = SubstName.Last(SubstName.GetLength() - (pos.value() + 1));
+      }
+    }
+
+    pos = SubstName.Find(",");
     if (pos.has_value()) {
       family = SubstName.First(pos.value());
       GetStandardFontName(&family);
