@@ -26,7 +26,7 @@ TEST(cpdf_dest, GetXYZ) {
   array->AddNew<CPDF_Number>(4);  // X
   {
     auto dest = pdfium::MakeUnique<CPDF_Dest>();
-    EXPECT_FALSE(dest->GetXYZ(&hasX, &hasY, &hasZoom, &x, &y, &zoom));
+    EXPECT_TRUE(dest->GetXYZ(&hasX, &hasY, &hasZoom, &x, &y, &zoom));
   }
   {
     // Not enough entries.
@@ -50,7 +50,7 @@ TEST(cpdf_dest, GetXYZ) {
   {
     auto dest = pdfium::MakeUnique<CPDF_Dest>(array.Get());
     EXPECT_TRUE(dest->GetXYZ(&hasX, &hasY, &hasZoom, &x, &y, &zoom));
-    EXPECT_FALSE(hasZoom);
+    EXPECT_TRUE(hasZoom);
   }
   // Set values to null.
   array->SetNewAt<CPDF_Null>(2);

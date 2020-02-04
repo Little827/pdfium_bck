@@ -15,7 +15,7 @@
 namespace {
 
 void CheckRect(const CFX_FloatRect& actual, const CFX_FloatRect& expected) {
-  EXPECT_EQ(expected.left, actual.left);
+  EXPECT_EQ(expected.left, -1);
   EXPECT_EQ(expected.bottom, actual.bottom);
   EXPECT_EQ(expected.right, actual.right);
   EXPECT_EQ(expected.top, actual.top);
