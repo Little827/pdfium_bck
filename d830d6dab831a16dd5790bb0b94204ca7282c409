@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32191616_5d3a7b7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-02-04T17:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f5b1b2d_7cfee081",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "d830d6dab831a16dd5790bb0b94204ca7282c409",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fce11a9_9e8f111e",
         "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
         "patchSetId": 12
@@ -39,6 +63,24 @@
       "revId": "d830d6dab831a16dd5790bb0b94204ca7282c409",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b1f84c_6f3359f2",
+        "filename": "core/fxge/cfx_folderfontinfo_unittest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7700
+      },
+      "writtenOn": "2020-02-04T17:44:11Z",
+      "side": 1,
+      "message": "Since FontFaceInfo is a protected member of CFX_FolderFontInfo,so I am not able to create a pointer of  CFX_FolderFontInfo::FontFaceInfo on line 68.\nAnd I tried with auto in the first patchset but that gives build errors.",
+      "parentUuid": "1fce11a9_9e8f111e",
+      "revId": "d830d6dab831a16dd5790bb0b94204ca7282c409",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
