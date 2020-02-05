@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b01c966a_38a553c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-05T10:22:59Z",
+      "side": 1,
+      "message": "nit: form field types",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18f6ef94_f3dba5c4",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 1
@@ -89,6 +112,52 @@
       "writtenOn": "2020-02-05T09:59:22Z",
       "side": 1,
       "message": "Use FX_ArraySize()",
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd6d98d_a86ce2ec",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-05T10:22:59Z",
+      "side": 1,
+      "message": "The file seems to have form controls with different flags set. Can we just add basic form fields with minimal properties set to avoid the complexity.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 10
+      },
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877a0c0d_a4cae6c7",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-05T10:22:59Z",
+      "side": 1,
+      "message": "nit:\n\n{{object 4 0}} \u003c\u003c\n  /Font 5 0 R \u003c\u003c\n    /F1 6 0 R\n  \u003e\u003e\n\u003e\u003e\nendobj",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
       "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
