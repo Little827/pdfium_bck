@@ -34,6 +34,138 @@
       "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af47d557_4ffae845",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T09:59:22Z",
+      "side": 1,
+      "message": "Sure. Let\u0027s do that. In which case, do we still need the two tests above? Merge them into this one?",
+      "parentUuid": "ec738800_1c4b4347",
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb79e30d_baf6eff3",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T09:59:22Z",
+      "side": 1,
+      "message": "kFoo",
+      "range": {
+        "startLine": 2279,
+        "startChar": 16,
+        "endLine": 2279,
+        "endChar": 36
+      },
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8096f49f_a4a4bb03",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T09:59:22Z",
+      "side": 1,
+      "message": "Use FX_ArraySize()",
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e18579_ad3b9b7e",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T09:59:22Z",
+      "side": 1,
+      "message": "Missing \"endobj\" keyword.",
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a4163b_7371ae22",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T09:59:22Z",
+      "side": 1,
+      "message": "Extra angle brackets.",
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f054b8_9bb13264",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T09:59:22Z",
+      "side": 1,
+      "message": "consistent spacing",
+      "range": {
+        "startLine": 135,
+        "startChar": 15,
+        "endLine": 135,
+        "endChar": 16
+      },
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabafaa7_8a740a1b",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T09:59:22Z",
+      "side": 1,
+      "message": "Can you check if this is required? If not, let\u0027s make the checkbox simpler and not bother with custom buttons.",
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
