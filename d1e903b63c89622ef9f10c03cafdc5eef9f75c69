@@ -22,6 +22,30 @@
       "revId": "d1e903b63c89622ef9f10c03cafdc5eef9f75c69",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5dffb52_65256018",
+        "filename": "testing/resources/javascript/xfa_specific/instance_manager_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-05T20:24:02Z",
+      "side": 1,
+      "message": "Meh. I was going to fix this, but it doesn\u0027t seem worth it.  Lets go as is.",
+      "parentUuid": "58573215_9964a6ca",
+      "range": {
+        "startLine": 38,
+        "startChar": 67,
+        "endLine": 38,
+        "endChar": 87
+      },
+      "revId": "d1e903b63c89622ef9f10c03cafdc5eef9f75c69",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
