@@ -16,6 +16,24 @@
       "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec738800_1c4b4347",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-05T09:27:14Z",
+      "side": 1,
+      "message": "This is to have a single PDF with multiple form filed types. Currently i see that we have PDFs with one single type of form field. This file would also be useful when we land changes for screen reader accessibility and keyboard tabbing for form fields.",
+      "parentUuid": "18f6ef94_f3dba5c4",
+      "revId": "1dc753c23a6be46641a37bb6814684fb1b7f4842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
