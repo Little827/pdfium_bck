@@ -72,6 +72,7 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
 
   CPDFSDK_Annot* GetFocusAnnot() const { return m_pFocusAnnot.Get(); }
   bool SetFocusAnnot(ObservedPtr<CPDFSDK_Annot>* pAnnot);
+  void SendSetFocusAnnot(ObservedPtr<CPDFSDK_Annot>* pAnnot);
   bool KillFocusAnnot(uint32_t nFlag);
   void ClearAllFocusedAnnots();
 

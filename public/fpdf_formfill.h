@@ -374,8 +374,9 @@ typedef struct _FPDF_SYSTEMTIME {
 
 typedef struct _FPDF_FORMFILLINFO {
   /*
-   * Version number of the interface. Currently must be 1 (when PDFium is built
-   *  without the XFA module) or must be 2 (when built with the XFA module).
+   * Version number of the interface. Currently must be 1 or 2 (when PDFium
+   * is built without the XFA module, version 2 has additional experimental
+   * interfaces) or must be 2 (when built with the XFA module).
    */
   int version;
 
@@ -1069,6 +1070,29 @@ typedef struct _FPDF_FORMFILLINFO {
                                    FPDF_WIDESTRING wsURL,
                                    FPDF_WIDESTRING wsData,
                                    FPDF_WIDESTRING wsEncode);
+
+  /*
+   * Method: FFI_SetFocusAnnot
+   *     Called when the focused annotation is updated.
+   * Interface Version:
+   *     Ignored if |version| < 2.
+   * Implementation Required:
+   *     No
+   * Parameters:
+   *     param           -   Pointer to the interface structure itself.
+   *     annot           -   The focused annotation.
+   *     page_index      -   Index number of the page. 0 for the first page.
+   * Return value:
+   *     None.
+   * Comments:
+   *     This callback function is useful for implementing any view based
+   *     action such as scrolling the annotation rect into view. The
+   *     embedder should not copy and store the annot as its scope is
+   *     limited to this call only.
+   */
+  void (*FFI_SetFocusAnnot)(struct _FPDF_FORMFILLINFO* param,
+                            FPDF_ANNOTATION annot,
+                            int page_index);
 } FPDF_FORMFILLINFO;
 
 /*

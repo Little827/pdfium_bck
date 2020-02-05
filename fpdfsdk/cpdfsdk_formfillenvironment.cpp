@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfdoc/cpdf_nametree.h"
@@ -706,7 +707,32 @@ bool CPDFSDK_FormFillEnvironment::SetFocusAnnot(
     return false;
 
   m_pFocusAnnot.Reset(pAnnot->Get());
+
+  // If we are not able to inform the client about the focus change, it
+  // shouldn't be considered as failure.
+  SendSetFocusAnnot(pAnnot);
   return true;
+}
+
+void CPDFSDK_FormFillEnvironment::SendSetFocusAnnot(
+    ObservedPtr<CPDFSDK_Annot>* pAnnot) {
+  if (!m_pInfo || m_pInfo->version < 2 || !m_pInfo->FFI_SetFocusAnnot)
+    return;
+  CPDF_Page* cpdf_page =
+      CPDFPageFromFPDFPage(FPDFPageFromIPDFPage((*pAnnot)->GetPage()));
+  if (!cpdf_page)
+    return;
+
+  CPDF_Dictionary* annot_dict = (*pAnnot)->GetPDFAnnot()->GetAnnotDict();
+
+  auto focused_annot =
+      pdfium::MakeUnique<CPDF_AnnotContext>(annot_dict, cpdf_page);
+  FPDF_ANNOTATION fpdf_annot =
+      FPDFAnnotationFromCPDFAnnotContext(focused_annot.get());
+  CPDFSDK_PageView* pPageView = (*pAnnot)->GetPageView();
+  if (!pPageView || !pPageView->IsValid())
+    return;
+  m_pInfo->FFI_SetFocusAnnot(m_pInfo, fpdf_annot, pPageView->GetPageIndex());
 }
 
 bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(uint32_t nFlag) {
