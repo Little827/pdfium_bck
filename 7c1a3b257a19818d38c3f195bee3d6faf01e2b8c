@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f9fc0ef_45d856d9",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "Why don\u0027t we split all the new code here into its own helper method that can just have a void return type? Then we don\u0027t need to have several \"return true\" statements, where the reader has to remember this comment applies.",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd1ed8a_c6165681",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "This GetPage() call may be replaceable with GetPDFPage(), but one needs to check and make sure it\u0027s equivalent when XFA is enabled.",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02856859_08fc063c",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "CPDFPageFromFPDFPage() can handle a nullptr argument, so the code as written can be combined into:\n\nCPDF_Page* cpdf_page \u003d CPDFPageFromFPDFPage(FPDFPageFromIPDFPage(...));",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7e96d4_37cccc44",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "What if |version| is set to -1?",
+      "range": {
+        "startLine": 288,
+        "startChar": 29,
+        "endLine": 288,
+        "endChar": 36
+      },
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d141660_4d5f0987",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "Now that the version requirement check above has been loosened, the rest of FPDFDOC_InitFormFillEnvironment() needs to carefully make sure it is accessing fields with the right version. Here, |xfa_disabled| should only be accessed if |version| is 2.",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40794107_f2768db6",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "This needs to be updated, given the changes in fpdf_formfill.cpp.",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38f19339_c02e7913",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "Would it be better do write \"Ignored if |version| \u003c 2.\" here, like in other version 2 function pointers above? It is what the code in cpdfsdk_formfillenvironment.cpp actually does.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 9,
+        "endLine": 1077,
+        "endChar": 10
+      },
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db1926d_14f662d7",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-05T08:36:31Z",
+      "side": 1,
+      "message": "Please add \"Trampoline\" to the function name, like the ones above. For consistency and to make searching for this function by name easier.",
+      "range": {
+        "startLine": 292,
+        "startChar": 14,
+        "endLine": 292,
+        "endChar": 27
+      },
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
