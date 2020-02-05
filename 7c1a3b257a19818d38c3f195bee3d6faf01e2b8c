@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a0a0b54_1c92dd2f",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f9fc0ef_45d856d9",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd1ed8a_c6165681",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 16
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "865e783b_53766a16",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "GetPDFPage() returns nullptr if XFA is enabled otherwise behaves the same as GetPage(). In XFA GetPage() will not return nullptr.",
+      "parentUuid": "2dd1ed8a_c6165681",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02856859_08fc063c",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 16
@@ -50,6 +86,24 @@
       "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9d43e9_7c6e1bb1",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02856859_08fc063c",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "e16e215f_2f8b78e1",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Added a check for version \u003c 1",
+      "parentUuid": "5c7e96d4_37cccc44",
+      "range": {
+        "startLine": 288,
+        "startChar": 29,
+        "endLine": 288,
+        "endChar": 36
+      },
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d141660_4d5f0987",
         "filename": "fpdfsdk/fpdf_formfill.cpp",
         "patchSetId": 16
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "4ded57e5_80f2269a",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Added a check here for version \u003d\u003d 2",
+      "parentUuid": "4d141660_4d5f0987",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40794107_f2768db6",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 16
@@ -107,6 +203,24 @@
       "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ad2a68_012a2f68",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Added a comment mentioning that Version 2 has additional experimental interfaces",
+      "parentUuid": "40794107_f2768db6",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "960b698e_9a2bd9d3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f19339_c02e7913",
+      "range": {
+        "startLine": 1077,
+        "startChar": 9,
+        "endLine": 1077,
+        "endChar": 10
+      },
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51c593d2_c67a5bed",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 16
@@ -147,6 +285,24 @@
       "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e6231d_e2cc1779",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Updated the comment for more clarity. PDF is not needed.",
+      "parentUuid": "51c593d2_c67a5bed",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -170,6 +326,30 @@
       "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c374b8_4fb23828",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-05T13:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db1926d_14f662d7",
+      "range": {
+        "startLine": 292,
+        "startChar": 14,
+        "endLine": 292,
+        "endChar": 27
+      },
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
