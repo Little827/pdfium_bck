@@ -2271,6 +2271,28 @@ TEST_F(FPDFAnnotEmbedderTest, GetFormFieldTypeComboBox) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFAnnotEmbedderTest, GetFormFieldTypeMultipleTypes) {
+  EXPECT_TRUE(OpenDocument("multiple_form_types.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  constexpr int expected_annot_types[] = {-1,
+                                          FPDF_FORMFIELD_COMBOBOX,
+                                          FPDF_FORMFIELD_LISTBOX,
+                                          FPDF_FORMFIELD_TEXTFIELD,
+                                          FPDF_FORMFIELD_CHECKBOX,
+                                          FPDF_FORMFIELD_RADIOBUTTON};
+  constexpr int annot_count = sizeof(expected_annot_types) / sizeof(int);
+
+  for (int i = 0; i < annot_count; ++i) {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, i));
+    ASSERT_TRUE(annot);
+    EXPECT_EQ(expected_annot_types[i],
+              FPDFAnnot_GetFormFieldType(form_handle(), annot.get()));
+  }
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbedderTest, GetFormFieldValueTextField) {
   ASSERT_TRUE(OpenDocument("text_form_multiple.pdf"));
   FPDF_PAGE page = LoadPage(0);

@@ -1,0 +1,337 @@
+%PDF-1.7
+% ò¤ô
+1 0 obj <<
+  /Type /Catalog
+  /Pages 2 0 R
+  /AcroForm <<
+    /Fields [9 0 R 10 0 R 11 0 R 12 0 R 13 0 R]
+    /DR 4 0 R
+  >>
+>>
+endobj
+2 0 obj <<
+  /Type /Pages
+  /Count 1
+  /Kids [3 0 R]
+>>
+endobj
+3 0 obj <<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources 4 0 R
+  /MediaBox [0 0 300 600]
+  /Contents 7 0 R
+  /Annots [8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 14 0 R]
+>>
+endobj
+4 0 obj <<
+  /Font 5 0 R
+>>
+endobj
+5 0 obj <<
+  /F1 6 0 R
+>>
+endobj
+6 0 obj <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+>>
+endobj
+7 0 obj <<
+  /Length 57
+>>
+stream
+BT
+0 0 0 rg
+/F1 12 Tf
+100 450 Td
+(Test Form) Tj
+ET
+endstream
+endobj
+8 0 obj <<
+  /Type /Annot
+  /Subtype /Link
+  /BS <<
+    /W 0
+  >>
+  /Rect [100 450 160 460]
+  /A <<
+    /Type /Action
+    /URI (https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf)
+    /S /URI
+  >>
+  /F 4
+>>
+9 0 obj <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Ch
+  /Ff 393216
+  /T (Combo_Editable)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [100 400 200 430]
+  /Opt [[(foo) (Foo)] [(bar) (Bar)] [(qux) (Qux)]]
+>>
+endobj
+10 0 obj <<
+<<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Ch
+  /Ff 2097152
+  /T (Listbox_MultiSelectMultipleSelected)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [100 350 200 380]
+  /Opt [(Alpha) (Beta) (Gamma) (Delta) (Epsilon)]
+  /V [(Epsilon) (Gamma)]
+>>
+endobj
+11 0 obj <<
+<<
+  /Type /Annot
+  /FT /Tx
+  /T (Text Box)
+  /DA (0 0 0 rg /F1 12 Tf)
+  /Rect [100 300 200 330]
+  /Subtype /Widget
+>>
+endobj
+12 0 obj <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Btn
+  /F 4
+  /Ff 1
+  /P 3 0 R
+  /Rect [135 250 155 270]
+  /T (readOnlyCheckbox)
+  /TU (readOnlyCheckbox)
+  /AP <<
+    /N <<
+      /Yes 15 0 R
+      /Off 16 0 R
+    >>
+  >>
+  /AS /Yes
+  /BS <<
+    /S /S
+    /W 1
+  >>
+  /H /N
+  /MK <<
+    /BC [1 0 1]
+    /BG [1 .752941 .796078]
+    /CA (4)
+  >>
+  /V /Yes
+>>
+endobj
+13 0 obj <<
+  /FT /Btn
+  /Ff 49154
+  /T (radioButton)
+  /TU (radioButton1)
+  /Kids [14 0 R ]
+  /V /value3
+>>
+endobj
+14 0 obj <<
+  /Type /Annot
+  /Subtype /Widget
+  /FT /Btn
+  /F 4
+  /P 3 0 R
+  /Parent 13 0 R
+  /Rect [85 50 105 70]
+  /AP <<
+    /N <<
+      /value1 17 0 R
+      /Off 18 0 R
+    >>
+  >>
+  /AS /Off
+  /BS <<
+    /S /S
+    /W 2
+  >>
+  /H /N
+  /MK <<
+    /BC [0 .501961 0]
+    /BG [0 0 1]
+    /CA (5)
+  >>
+>>
+endobj
+15 0 obj <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /BBox [0 0 20 20]
+  /Resources <<
+    /ProcSet [/PDF]
+  >>
+  /Length 930
+>>
+stream
+q
+1 g 1 G 1 .752941 .796078 rg 0 0 20 20 re f
+1 0 1 RG 1 w 0.5 0.5 19 19 re s
+Q
+q
+0 0 1 rg 0 0 1 RG
+11.90655 14.48997 m
+13.73412 16.72368 l
+14.54638 17.62618 16.37396 18.07744 17.59234 18.07744 c
+17.75028 17.71643 l
+15.65195 15.23454 l
+10.95891 9.029805 l
+7.709889 3.998329 l
+6.920195 2.644568 l
+6.807382 2.418942 6.672006 2.148189 6.446379 2.012813 c
+6.153064 1.877437 5.476184 1.877437 5.160306 1.877437 c
+4.438301 1.877437 4.280362 1.877437 4.122423 1.990251 c
+3.896797 2.148189 3.783983 2.464067 3.626045 2.779944 c
+3.129666 3.817827 2.249721 6.074095 2.249721 7.202228 c
+2.249721 7.585794 2.475348 7.766295 2.768663 7.969359 c
+3.242479 8.307799 3.919359 8.691365 4.505989 8.691365 c
+4.957242 8.691365 5.002368 8.307799 5.137744 7.946797 c
+5.588997 6.886351 l
+5.656685 6.70585 5.859749 6.074095 6.107939 6.074095 c
+6.333565 6.074095 6.604318 6.593036 6.694568 6.750975 c
+11.90655 14.48997 l
+h
+f
+Q
+endstream
+endobj
+16 0 obj <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /BBox [0 0 20 20]
+  /Resources <<
+    /ProcSet [/PDF]
+  >>
+  /Length 84
+>>
+stream
+q
+1 g 1 G 1 .752941 .796078 rg 0 0 20 20 re f
+1 0 1 RG 1 w 0.5 0.5 19 19 re s
+Q
+endstream
+endobj
+17 0 obj <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /BBox [0 0 20 20]
+  /Resources <<
+    /ProcSet [/PDF]
+  >>
+  /Length 611
+>>
+stream
+q
+1 g 1 G 0 0 1 rg
+1 0 0 1 10 10 cm
+10 0 m
+10 5.5231 5.5231 10 0 10 c
+-5.5231 10 -10 5.5231 -10 0 c
+-10 -5.5231 -5.5231 -10 0 -10 c
+5.5231 -10 10 -5.5231 10 0 c
+f
+Q
+q
+0 .501961 0 RG 2 w
+1 0 0 1 10 10 cm
+9 0 m
+9 4.97079 4.97079 9 0 9 c
+-4.97079 9 -9 4.97079 -9 0 c
+-9 -4.97079 -4.97079 -9 0 -9 c
+4.97079 -9 9 -4.97079 9 0 c
+s
+Q
+q
+1 .752941 .796078 rg 1 .752941 .796078 RG
+17.2 15.95145 m
+11.20694 10 l
+17.2 4.027746 l
+15.97225 2.8 l
+10 8.793064 l
+4.027746 2.8 l
+2.8 4.027746 l
+8.813873 10 l
+2.8 15.97225 l
+4.027746 17.2 l
+10 11.20694 l
+15.97225 17.2 l
+17.2 15.95145 l
+h
+f
+Q
+endstream
+endobj
+18 0 obj <<
+  /Type /XObject
+  /Subtype /Form
+  /FormType 1
+  /BBox [0 0 20 20]
+  /Resources <<
+    /ProcSet [/PDF]
+  >>
+  /Length 347
+>>
+stream
+q
+1 g 1 G 0 0 1 rg
+1 0 0 1 10 10 cm
+10 0 m
+10 5.5231 5.5231 10 0 10 c
+-5.5231 10 -10 5.5231 -10 0 c
+-10 -5.5231 -5.5231 -10 0 -10 c
+5.5231 -10 10 -5.5231 10 0 c
+f
+Q
+q
+0 .501961 0 RG 2 w
+1 0 0 1 10 10 cm
+9 0 m
+9 4.97079 4.97079 9 0 9 c
+-4.97079 9 -9 4.97079 -9 0 c
+-9 -4.97079 -4.97079 -9 0 -9 c
+4.97079 -9 9 -4.97079 9 0 c
+s
+Q
+endstream
+endobj
+xref
+0 19
+0000000000 65535 f 
+0000000016 00000 n 
+0000000160 00000 n 
+0000000229 00000 n 
+0000000404 00000 n 
+0000000443 00000 n 
+0000000480 00000 n 
+0000000562 00000 n 
+0000000676 00000 n 
+0000000930 00000 n 
+0000001145 00000 n 
+0000001412 00000 n 
+0000001560 00000 n 
+0000001957 00000 n 
+0000002082 00000 n 
+0000002420 00000 n 
+0000003525 00000 n 
+0000003783 00000 n 
+0000004569 00000 n 
+trailer <<
+  /Root 1 0 R
+  /Size 19
+>>
+startxref
+5091
+%%EOF
