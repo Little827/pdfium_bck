@@ -14,6 +14,7 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_fontmapper.h"
 #include "core/fxge/systemfontinfo_iface.h"
+#include "testing/gtest/include/gtest/gtest_prod.h"
 
 class CFX_FolderFontInfo : public SystemFontInfoIface {
  public:
@@ -38,6 +39,9 @@ class CFX_FolderFontInfo : public SystemFontInfoIface {
   bool GetFontCharset(void* hFont, int* charset) override;
 
  protected:
+  friend class CFX_FolderFontInfoTest;
+  FRIEND_TEST(CFX_FolderFontInfoTest, TestFindFont);
+
   class FontFaceInfo {
    public:
     FontFaceInfo(ByteString filePath,
