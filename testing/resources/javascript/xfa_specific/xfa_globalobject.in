@@ -22,6 +22,13 @@ stream
     </pageSet>
     <event activity="docReady" ref="$host">
       <script contentType="application/x-javascript">
+        {{include ../expect.js}}
+        app.alert('globalThis is ' + globalThis);
+        app.alert('globalThis.constructor is ' + globalThis.constructor);
+        app.alert('But Root is ' + Root);
+        // TODO(tsepez): should produce illegal invocation error.
+        // expectError('globalThis.constructor()');
+        expect('new globalThis.constructor()', '[object Root]');
         app.alert('We search non-xfa global space on missing prop: ' + (app == xfa.app));
         app.alert('Global toString says ' + toString());
         app.alert('toString.apply to bad object is ' + toString.apply(xfa));
