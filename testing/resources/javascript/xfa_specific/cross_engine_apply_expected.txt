@@ -1,3 +1,4 @@
+Alert: We search non-xfa global space on missing prop: true
 Alert: Applying app method to xfa.host
 Alert: Caught: TypeError: CreateListFromArrayLike called on non-object
 Alert: Applying xfa.host method to app
