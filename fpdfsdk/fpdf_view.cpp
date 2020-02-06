@@ -496,6 +496,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
     pContext->m_pDevice = pdfium::MakeUnique<CPDF_WindowsRenderDevice>(dc);
     CPDFSDK_RenderPageWithContext(pContext, pPage, start_x, start_y, size_x,
                                   size_y, rotate, flags,
+                                  /*color_scheme=*/nullptr,
                                   /*need_to_restore=*/true, /*pause=*/nullptr);
     return;
   }
@@ -514,7 +515,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
   }
 
   CPDFSDK_RenderPageWithContext(pContext, pPage, start_x, start_y, size_x,
-                                size_y, rotate, flags, /*need_to_restore=*/true,
+                                size_y, rotate, flags, /*color_scheme=*/nullptr,
+                                /*need_to_restore=*/true,
                                 /*pause=*/nullptr);
 
   if (!bHasMask) {
@@ -556,7 +558,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
   pContext->m_pOptions->GetOptions().bBreakForMasks = true;
 
   CPDFSDK_RenderPageWithContext(pContext, pPage, start_x, start_y, size_x,
-                                size_y, rotate, flags, /*need_to_restore=*/true,
+                                size_y, rotate, flags, /*color_scheme=*/nullptr,
+                                /*need_to_restore=*/true,
                                 /*pause=*/nullptr);
 
   // Render masks
@@ -598,7 +601,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPageBitmap(FPDF_BITMAP bitmap,
   RetainPtr<CFX_DIBitmap> pBitmap(CFXDIBitmapFromFPDFBitmap(bitmap));
   pDevice->Attach(pBitmap, !!(flags & FPDF_REVERSE_BYTE_ORDER), nullptr, false);
   CPDFSDK_RenderPageWithContext(pContext, pPage, start_x, start_y, size_x,
-                                size_y, rotate, flags, /*need_to_restore=*/true,
+                                size_y, rotate, flags, /*color_scheme=*/nullptr,
+                                /*need_to_restore=*/true,
                                 /*pause=*/nullptr);
 
 #ifdef _SKIA_SUPPORT_PATHS_
@@ -641,7 +645,8 @@ FPDF_RenderPageBitmapWithMatrix(FPDF_BITMAP bitmap,
   CFX_Matrix transform_matrix = pPage->GetDisplayMatrix(rect, 0);
   if (matrix)
     transform_matrix *= CFXMatrixFromFSMatrix(*matrix);
-  CPDFSDK_RenderPage(pContext, pPage, transform_matrix, clip_rect, flags);
+  CPDFSDK_RenderPage(pContext, pPage, transform_matrix, clip_rect, flags,
+                     /*color_scheme=*/nullptr);
 }
 
 #ifdef _SKIA_SUPPORT_
@@ -662,7 +667,9 @@ FPDF_EXPORT FPDF_RECORDER FPDF_CALLCONV FPDF_RenderPageSkp(FPDF_PAGE page,
   pContext->m_pDevice = std::move(skDevice);
 
   CPDFSDK_RenderPageWithContext(pContext, pPage, 0, 0, size_x, size_y, 0, 0,
+                                /*color_scheme=*/nullptr,
                                 /*need_to_restore=*/true, /*pause=*/nullptr);
+
   return recorder;
 }
 #endif  // _SKIA_SUPPORT_
