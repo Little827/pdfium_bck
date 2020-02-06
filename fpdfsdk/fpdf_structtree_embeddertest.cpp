@@ -177,3 +177,15 @@ TEST_F(FPDFStructTreeEmbedderTest, GetTitle) {
 
   UnloadPage(page);
 }
+
+TEST_F(FPDFStructTreeEmbedderTest, GetStructTreeForNestedTaggedPDF) {
+  ASSERT_TRUE(OpenDocument("tagged_nested.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  {
+    ScopedFPDFStructTree struct_tree(FPDF_StructTree_GetForPage(page));
+    ASSERT_TRUE(struct_tree);
+  }
+  UnloadPage(page);
+}
