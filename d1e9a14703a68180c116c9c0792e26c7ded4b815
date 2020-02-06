@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "029731da_ea3e9968",
+        "filename": "fxjs/cjs_global.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-06T18:13:25Z",
+      "side": 1,
+      "message": "note: inlining as follow-up.",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 20
+      },
+      "revId": "d1e9a14703a68180c116c9c0792e26c7ded4b815",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
