@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56f8fee6_b45a267d",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-06T00:38:58Z",
+      "side": 1,
+      "message": "Do this check earlier. i.e. Group all the checks together, and then do work after all the checks have passed.",
+      "revId": "c9347117324420e71b0eb1cde6608013d293f6ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6c2256_2357a247",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-06T00:38:58Z",
+      "side": 1,
+      "message": "Move down to the private section please.",
+      "revId": "c9347117324420e71b0eb1cde6608013d293f6ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0032299c_46a829d9",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-06T00:38:58Z",
+      "side": 1,
+      "message": "The ordering inside the conditional should be flipped. i.e. Only when |version| is set appropriately, do we check |xfa_disabled|.",
+      "revId": "c9347117324420e71b0eb1cde6608013d293f6ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
