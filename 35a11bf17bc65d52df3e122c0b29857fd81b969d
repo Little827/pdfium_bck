@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "471b4350_db050831",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-06T06:09:55Z",
+      "side": 1,
+      "message": "GetFormFieldType",
+      "range": {
+        "startLine": 2242,
+        "startChar": 46,
+        "endLine": 2242,
+        "endChar": 59
+      },
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e386ea_1b742e6e",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2254,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-06T06:09:55Z",
+      "side": 1,
+      "message": "calculate it outside of the loop.",
+      "range": {
+        "startLine": 2254,
+        "startChar": 25,
+        "endLine": 2254,
+        "endChar": 58
+      },
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f8c652b_3b42f0a3",
         "filename": "testing/resources/multiple_form_types.in",
         "patchSetId": 3
