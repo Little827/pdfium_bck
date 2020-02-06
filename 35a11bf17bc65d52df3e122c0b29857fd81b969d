@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13b3e318_f7e7f0c0",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T11:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "471b4350_db050831",
+      "range": {
+        "startLine": 2242,
+        "startChar": 46,
+        "endLine": 2242,
+        "endChar": 59
+      },
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08e386ea_1b742e6e",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "376cbb8f_df949e45",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2254,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T11:47:21Z",
+      "side": 1,
+      "message": "Keeping as is.",
+      "parentUuid": "354c811e_ab5524f1",
+      "range": {
+        "startLine": 2254,
+        "startChar": 25,
+        "endLine": 2254,
+        "endChar": 58
+      },
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f8c652b_3b42f0a3",
         "filename": "testing/resources/multiple_form_types.in",
         "patchSetId": 3
@@ -92,6 +140,30 @@
       "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d842130_471a833b",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T11:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f8c652b_3b42f0a3",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "297c4e68_529473c5",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T11:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8201775e_789948e8",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65c42118_f3f5b76d",
         "filename": "testing/resources/multiple_form_types.in",
         "patchSetId": 3
@@ -132,6 +228,24 @@
       "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e909f3c3_62125938",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T11:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65c42118_f3f5b76d",
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "0d5bf21b_78ba5ddd",
+        "filename": "testing/resources/multiple_form_types.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T11:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c0112d_d4b8ef26",
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1e537d3_5219934a",
         "filename": "testing/resources/multiple_form_types.pdf",
         "patchSetId": 3
@@ -163,6 +295,24 @@
       "writtenOn": "2020-02-05T23:49:07Z",
       "side": 1,
       "message": "BTW, this file ended up with CRLF line endings. Can we avoid that since most of the PDFs in this directory have LF line endings? Unfortunately, we can\u0027t just straight-up remove them, as that would change the offset values in the xref section. Maybe we need to improve fixup_pdf_template.py to work better on Windows.",
+      "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d109c62e_b033ebe4",
+        "filename": "testing/resources/multiple_form_types.pdf",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T11:47:21Z",
+      "side": 1,
+      "message": "The issue is that the new line in windows in CRLF instead of LF in linux. The template uses the same for newline in the pdf file. We should probably update the fixup_pdf_template.py to ensure before parsing the .in that the line endings are changed.\nBug: https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1479",
+      "parentUuid": "d1e537d3_5219934a",
       "revId": "35a11bf17bc65d52df3e122c0b29857fd81b969d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
