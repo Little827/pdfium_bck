@@ -22,6 +22,7 @@ stream
     </pageSet>
     <event activity="docReady" ref="$host">
       <script contentType="application/x-javascript">
+        app.alert('We search non-xfa global space on missing prop: ' + (app == xfa.app));
         app.alert('Applying app method to xfa.host');
         try {
           var result = app.setTimeOut.apply(xfa.host, 'var x = 3;', 10);
