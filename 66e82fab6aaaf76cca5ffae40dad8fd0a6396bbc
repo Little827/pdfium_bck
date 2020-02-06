@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d89e55f_79c5379c",
+        "filename": "core/fpdfapi/render/fpdf_progressive_render_embeddertest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T14:25:08Z",
+      "side": 1,
+      "message": "See public/fpdfview.h for the list of page rendering flags and the list of colors in the scheme.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "66e82fab6aaaf76cca5ffae40dad8fd0a6396bbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "259efbcc_a0d5c7e5",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T14:25:08Z",
+      "side": 1,
+      "message": "nullptr instead?",
+      "range": {
+        "startLine": 435,
+        "startChar": 69,
+        "endLine": 435,
+        "endChar": 74
+      },
+      "revId": "66e82fab6aaaf76cca5ffae40dad8fd0a6396bbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd66c558_feb110bc",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T14:25:08Z",
+      "side": 1,
+      "message": "Bring this on the same line.",
+      "range": {
+        "startLine": 55,
+        "startChar": 43,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "66e82fab6aaaf76cca5ffae40dad8fd0a6396bbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab632c6c_5a8787a2",
+        "filename": "public/fpdf_progressive.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-06T14:25:08Z",
+      "side": 1,
+      "message": "Handle to the page, as returned by FPDF_LoadPage().",
+      "range": {
+        "startLine": 58,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "66e82fab6aaaf76cca5ffae40dad8fd0a6396bbc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
