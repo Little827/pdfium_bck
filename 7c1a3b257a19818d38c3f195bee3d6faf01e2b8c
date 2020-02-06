@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "984b03da_5339ea5c",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-06T11:13:57Z",
+      "side": 1,
+      "message": "Upon further investigation i found out that GetPDFPage can be used instead of GetPage.\nFor XFA: GetXFAPage() is called first which returns nullptr which i mentioned earlier. I missed the conditional return of this nullptr here: https://cs.chromium.org/chromium/src/third_party/pdfium/fpdfsdk/cpdfsdk_annot.cpp?l\u003d59\nSince this returns nullptr that value is not returned instead GetPDFPage() is called.",
+      "parentUuid": "6cf465e3_01d13ef7",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02856859_08fc063c",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 16
@@ -260,6 +278,24 @@
     },
     {
       "key": {
+        "uuid": "b0c7d0ec_6ba720c6",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-06T11:13:57Z",
+      "side": 1,
+      "message": "I have updated the comment to be more descriptive.\nThere are still 3 combinations right? version 1 or 2 without XFA and version 2 with XFA.",
+      "parentUuid": "01570466_607209f6",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38f19339_c02e7913",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 16
@@ -354,6 +390,24 @@
       "side": 1,
       "message": "To clarify my question, the ambiguity here is not whether |page_index| is 0-based or not. Let\u0027s say we have a 3 page document, I imagine the potential |page_index| values are 0, 1, and 2. When would PDFium run the callback with a value of 0, vs 2?",
       "parentUuid": "10e6231d_e2cc1779",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bdac0bf_11bb2e25",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 7688
+      },
+      "writtenOn": "2020-02-06T11:13:57Z",
+      "side": 1,
+      "message": "The page index is of the page on which the annotation is present. I see the vagueness of the comment. I have updated the comment to mention the page index is of the page which contains the focused annotation.\nLet me know if you still think something more should be added for clarity.",
+      "parentUuid": "02a1f786_0d854e20",
       "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
