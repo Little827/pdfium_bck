@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54bcdc1a_09339846",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2243,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T07:57:22Z",
+      "side": 1,
+      "message": "I don\u0027t know how we got EXPECT_TRUE(OpenDocument()) in the first place, but it\u0027s been copy+pasted all over. I think ASSERT_TRUE() makes more sense because if the document didn\u0027t load, why even bother continuing?",
+      "range": {
+        "startLine": 2243,
+        "startChar": 2,
+        "endLine": 2243,
+        "endChar": 13
+      },
+      "revId": "22841e83710305d977c1184cf880ae6fd45d3019",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b074f117_a7ac62f7",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T07:57:22Z",
+      "side": 1,
+      "message": "To preserve the intention of the original test, can you switch to 1 here? As seen with |kExpectedAnnotTypes| below, annotation 0 in multiple_form_types.pdf will always end up returning -1.",
+      "range": {
+        "startLine": 2250,
+        "startChar": 60,
+        "endLine": 2250,
+        "endChar": 61
+      },
+      "revId": "22841e83710305d977c1184cf880ae6fd45d3019",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8f4b05_b0d94d9d",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T07:57:22Z",
+      "side": 1,
+      "message": "- Let\u0027s make sure |annotation| is valid, so the next line is not FPDFAnnot_GetFormFieldType(nullptr, nullptr);\n- Let\u0027s name it |annot| like before, and like line 2262 below.",
+      "revId": "22841e83710305d977c1184cf880ae6fd45d3019",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
