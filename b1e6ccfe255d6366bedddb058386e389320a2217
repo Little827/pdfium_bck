@@ -128,6 +128,24 @@
       "revId": "b1e6ccfe255d6366bedddb058386e389320a2217",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0a92079_c20e7d64",
+        "filename": "testing/resources/javascript/constructor_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T21:29:43Z",
+      "side": 1,
+      "message": "The \"let\" version didn\u0027t execute JS. The \"var\" version got the failures.",
+      "parentUuid": "07e0d64b_61fff080",
+      "revId": "b1e6ccfe255d6366bedddb058386e389320a2217",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
