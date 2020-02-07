@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bccd0af_90c5c66d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T21:10:35Z",
+      "side": 1,
+      "message": "There\u0027s a double CL description here.",
+      "revId": "bf62369b65c072ba62731a4af375e35cdf6fe7c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
