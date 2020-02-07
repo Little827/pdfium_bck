@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "09c0ab29_9e329f1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T17:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09c73167_9d8da661",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "35c7dc0eea4aca07b62768e28ca67cb127cb2851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81d37023_548ee1b8",
         "filename": "core/fpdftext/cpdf_textpage.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-02-03T17:44:43Z",
       "side": 1,
       "message": "nit: so why StreamObj?  Looks like the difference between this and a CPDF_TextObject is the transform matrix.  Is this a |TransformedTextObject| in reality?  Or is that just a representation curiosity as these arise only from some sort of stream?",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "35c7dc0eea4aca07b62768e28ca67cb127cb2851",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeaa6bae_51c6fc7b",
+        "filename": "core/fpdftext/cpdf_textpage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T17:47:47Z",
+      "side": 1,
+      "message": "I misunderstood what CPDF_TextObject is when I wrote this CL. Renamed.",
+      "parentUuid": "81d37023_548ee1b8",
       "range": {
         "startLine": 94,
         "startChar": 9,
