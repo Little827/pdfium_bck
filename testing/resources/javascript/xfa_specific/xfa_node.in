@@ -7,6 +7,7 @@
   {{streamlen}}
 >>
 stream
+<goop viscosity="sludge">Spurious Nonsense</goop>
 <template>
   <subform layout="tb" name="my_doc">
     <pageSet id="page" relation="orderedOccurrence">
@@ -78,6 +79,15 @@ stream
         // Test free-form attributes outside of the XFA schema.
         expect("my_doc.setAttribute('fake_value', 'fake_attr')", undefined);
         expect("my_doc.getAttribute('fake_attr')", 'fake_value');
+
+        // Test "packet" nodes which correspond to unrecognized tags at XDP level.
+        expect("goop", undefined);
+        var goop = this.resolveNode('#packet');
+        expect("goop.className", "packet");
+        expect("goop.viscosity", undefined);
+        expect("goop.getAttribute('nonesuch')", "");
+        expect("goop.getAttribute('viscosity')", "sludge");
+        expect("goop.content", "Spurious Nonsense");
       ]]></script>
     </event>
   </subform>
