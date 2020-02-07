@@ -1,0 +1,56 @@
+Alert: items
+Alert: | arc
+Alert: | boolean
+Alert: | boolean
+Alert: | boolean
+Alert: | boolean
+Alert: | date
+Alert: | date
+Alert: | | #text
+Alert: | date
+Alert: | | #text
+Alert: | date
+Alert: | | #text
+Alert: | dateTime
+Alert: | dateTime
+Alert: | | #text
+Alert: | dateTime
+Alert: | | #text
+Alert: | dateTime
+Alert: | | #text
+Alert: | decimal
+Alert: | decimal
+Alert: | decimal
+Alert: | exData
+Alert: | exData
+Alert: | float
+Alert: | float
+Alert: | float
+Alert: | image
+Alert: | | #text
+Alert: | image
+Alert: | | #text
+Alert: | integer
+Alert: | integer
+Alert: | integer
+Alert: | line
+Alert: | rectangle
+Alert: | text
+Alert: | text
+Alert: | time
+Alert: | time
+Alert: PASS: bool0.value = false
+Alert: PASS: bool0.value = true
+Alert: PASS: bool1.value = true
+Alert: PASS: bool1.value = false
+Alert: PASS: boolbad.value = false
+Alert: PASS: booltruenottrue.value = false
+Alert: PASS: booltruenottrue.value = false
+Alert: PASS: booltruenottrue.value = false
+Alert: PASS: booltruenottrue.value = true
+Alert: PASS: booltruenottrue.value = true
+Alert: PASS: booltruenottrue.value = true
+Alert: PASS: date0.value = null
+Alert: PASS: date1.value = 2020-02-02
+Alert: PASS: date2.value = 2039-12-01
+Alert: PASS: datebad.value = bad
