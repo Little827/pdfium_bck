@@ -17,6 +17,24 @@
       "revId": "19ea75d70ca761950c62e55089928c034090b4b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73c88cc5_4701333c",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7818
+      },
+      "writtenOn": "2020-02-07T15:54:39Z",
+      "side": 1,
+      "message": "I have no idea. I’ve never heard of Mac SDKs being referred to like that.",
+      "parentUuid": "0b719a40_6633d711",
+      "revId": "19ea75d70ca761950c62e55089928c034090b4b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
