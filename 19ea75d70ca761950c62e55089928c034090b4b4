@@ -35,6 +35,24 @@
       "revId": "19ea75d70ca761950c62e55089928c034090b4b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066dc5f4_b14fdab2",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7819
+      },
+      "writtenOn": "2020-02-07T16:08:44Z",
+      "side": 1,
+      "message": "We sometimes use those versions to identify SDK revisions, since they identify even minor revisions accurately - see https://xcodereleases.com/ for a big table of them.\n\nNote that we recently rolled the official version from 10b61 to 11b53: https://chromium-review.googlesource.com/c/chromium/src/+/2024490/3/build/mac_toolchain.py#32",
+      "parentUuid": "73c88cc5_4701333c",
+      "revId": "19ea75d70ca761950c62e55089928c034090b4b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
