@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24e943c2_1ac74294",
+        "filename": "testing/resources/javascript/constructor.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T07:28:14Z",
+      "side": 1,
+      "message": "Eventually we get a complain about this.",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "b1e6ccfe255d6366bedddb058386e389320a2217",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0416dfb9_00d0f1f2",
+        "filename": "testing/resources/javascript/constructor.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T07:28:14Z",
+      "side": 1,
+      "message": "Switch to \"var\" ? \"let\" is too new for Acrobat JS. Ditto on line 30.",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "b1e6ccfe255d6366bedddb058386e389320a2217",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8dc2137_44cc685c",
+        "filename": "testing/resources/javascript/constructor_expected.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-07T07:28:14Z",
+      "side": 1,
+      "message": "This line passes, all the lines above fail.",
+      "revId": "b1e6ccfe255d6366bedddb058386e389320a2217",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
