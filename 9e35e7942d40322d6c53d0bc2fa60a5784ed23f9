@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5f9ab7e_67b1e452",
+        "filename": "core/fpdfdoc/cpdf_structtree.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-10T13:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e54d693_754b00c5",
+      "revId": "9e35e7942d40322d6c53d0bc2fa60a5784ed23f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "509d4533_c7e9e9c7",
         "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e152d1d0_f53f16ee",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-10T13:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "509d4533_c7e9e9c7",
+      "revId": "9e35e7942d40322d6c53d0bc2fa60a5784ed23f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ee5aeb0_a74af47e",
         "filename": "testing/resources/tagged_nested.pdf",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "9e35e7942d40322d6c53d0bc2fa60a5784ed23f9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f862e684_8303ece7",
+        "filename": "testing/resources/tagged_nested.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-10T13:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ee5aeb0_a74af47e",
+      "revId": "9e35e7942d40322d6c53d0bc2fa60a5784ed23f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
