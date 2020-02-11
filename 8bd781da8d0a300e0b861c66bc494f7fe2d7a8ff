@@ -22,6 +22,30 @@
       "revId": "8bd781da8d0a300e0b861c66bc494f7fe2d7a8ff",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59dd3ba_fd73206f",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-11T23:34:18Z",
+      "side": 1,
+      "message": "Depends on whether we want Front() to be what it is now, or if we want to change it to be more like std::string::front(). Why don\u0027t we leave this as is for now?",
+      "parentUuid": "6af36891_ed751151",
+      "range": {
+        "startLine": 1123,
+        "startChar": 10,
+        "endLine": 1123,
+        "endChar": 19
+      },
+      "revId": "8bd781da8d0a300e0b861c66bc494f7fe2d7a8ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
