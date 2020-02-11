@@ -64,6 +64,11 @@ class EmbedderTest : public ::testing::Test,
 
     // Equivalent to FPDF_FORMFILLINFO::FFI_DoURIAction().
     virtual void DoURIAction(FPDF_BYTESTRING uri) {}
+
+    // Equivalent to FPDF_FORMFILLINFO::FFI_OnFocusChange().
+    virtual void OnFocusChange(FPDF_FORMFILLINFO* info,
+                               FPDF_ANNOTATION annot,
+                               int page_index) {}
   };
 
   EmbedderTest();
@@ -80,6 +85,8 @@ class EmbedderTest : public ::testing::Test,
   void SetDelegate(Delegate* delegate) {
     delegate_ = delegate ? delegate : default_delegate_.get();
   }
+
+  void SetVersion(int version) { version_ = version; }
 
   FPDF_DOCUMENT document() const { return document_; }
   FPDF_FORMHANDLE form_handle() const { return form_handle_; }
@@ -248,6 +255,12 @@ class EmbedderTest : public ::testing::Test,
   std::unique_ptr<Delegate> default_delegate_;
   Delegate* delegate_;
 
+#ifdef PDF_ENABLE_XFA
+  int version_ = 2;
+#else   // PDF_ENABLE_XFA
+  int version_ = 1;
+#endif  // PDF_ENABLE_XFA
+
   FPDF_DOCUMENT document_ = nullptr;
   FPDF_FORMHANDLE form_handle_ = nullptr;
   FPDF_AVAIL avail_ = nullptr;
@@ -284,6 +297,9 @@ class EmbedderTest : public ::testing::Test,
                                      int page_index);
   static void DoURIActionTrampoline(FPDF_FORMFILLINFO* info,
                                     FPDF_BYTESTRING uri);
+  static void OnFocusChangeTrampoline(FPDF_FORMFILLINFO* info,
+                                      FPDF_ANNOTATION annot,
+                                      int page_index);
   static int WriteBlockCallback(FPDF_FILEWRITE* pFileWrite,
                                 const void* data,
                                 unsigned long size);
