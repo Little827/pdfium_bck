@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "6328628b_233549c4",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-11T07:41:15Z",
+      "side": 1,
+      "message": "I\u0027m still concerned we are not getting the XFA case right. In the interest of moving forward on this, can you file a new PDFium bug for making sure SendOnFocusChange() can handle XFA widgets? We can fix the XFA case later. Since nobody, AFAIK, is shipping with XFA turned on.\n\nAs another sign of potential trouble, CPDFSDK_BAAnnot implements CPDFSDK_Annot::GetPDFAnnot(), but CPDFXFA_Widget does not. So if this code ever receives a CPDFXFA_Widget, the GetPDFAnnot() call below will crash.",
+      "parentUuid": "984b03da_5339ea5c",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02856859_08fc063c",
         "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
         "patchSetId": 16
@@ -290,6 +308,24 @@
       "side": 1,
       "message": "I have updated the comment to be more descriptive.\nThere are still 3 combinations right? version 1 or 2 without XFA and version 2 with XFA.",
       "parentUuid": "01570466_607209f6",
+      "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b11680cb_f215a41a",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-11T07:41:15Z",
+      "side": 1,
+      "message": "Looking at patch set 20, the documentation says 3 combinations, but the code in FPDFDOC_InitFormFillEnvironment() seems to accept all 4 combinations. i.e. When XFA is enabled, FPDFDOC_InitFormFillEnvironment() seems to accept version 1 and version 2. Did I read that correctly?\n\nWith regards to what to accept. I\u0027m ok 3 combinations, as long as FPDFDOC_InitFormFillEnvironment() matches the documentation.",
+      "parentUuid": "b0c7d0ec_6ba720c6",
       "revId": "7c1a3b257a19818d38c3f195bee3d6faf01e2b8c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
