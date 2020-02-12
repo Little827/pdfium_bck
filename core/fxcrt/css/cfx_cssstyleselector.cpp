@@ -142,8 +142,10 @@ void CFX_CSSStyleSelector::AppendInlineStyle(CFX_CSSDeclaration* pDecl,
   ASSERT(pDecl);
   ASSERT(!style.IsEmpty());
 
-  auto pSyntax = pdfium::MakeUnique<CFX_CSSSyntaxParser>(
-      style.c_str(), style.GetLength(), 32, true);
+  auto pSyntax =
+      pdfium::MakeUnique<CFX_CSSSyntaxParser>(style.c_str(), style.GetLength());
+  pSyntax->SetParseOnlyDeclarations();
+
   int32_t iLen2 = 0;
   const CFX_CSSData::Property* property = nullptr;
   WideString wsName;
