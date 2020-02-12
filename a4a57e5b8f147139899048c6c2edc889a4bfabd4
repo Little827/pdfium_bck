@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "739be8c9_04669746",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-12T07:29:43Z",
+      "side": 1,
+      "message": "It would be nicer to keep all the code that checks the version field in the same place. Add a new helper function perhaps?",
+      "revId": "a4a57e5b8f147139899048c6c2edc889a4bfabd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8b1ced_541efdad",
+        "filename": "testing/embedder_test.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-12T07:29:43Z",
+      "side": 1,
+      "message": "There\u0027s many things in the code and in the PDF spec that have version numbers. It\u0027s obvious to us what this refers to, because we have been reading/writing this CL. Someone reading this for the first time will find this confusing. How about SetFormFillInfoVersion() and |form_fill_info_version_| ?",
+      "revId": "a4a57e5b8f147139899048c6c2edc889a4bfabd4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
