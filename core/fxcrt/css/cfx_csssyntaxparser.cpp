@@ -25,31 +25,22 @@ bool IsSelectorStart(wchar_t wch) {
 }  // namespace
 
 CFX_CSSSyntaxParser::CFX_CSSSyntaxParser(const wchar_t* pBuffer,
-                                         int32_t iBufferSize)
-    : CFX_CSSSyntaxParser(pBuffer, iBufferSize, 32, false) {}
-
-CFX_CSSSyntaxParser::CFX_CSSSyntaxParser(const wchar_t* pBuffer,
-                                         int32_t iBufferSize,
-                                         int32_t iTextDatSize,
-                                         bool bOnlyDeclaration)
-    : m_iTextDataLen(0),
-      m_eStatus(CFX_CSSSyntaxStatus::None) {
+                                         int32_t iBufferSize) {
   ASSERT(pBuffer);
-  ASSERT(iTextDatSize > 0);
-
-  m_eMode = bOnlyDeclaration ? CFX_CSSSyntaxMode::PropertyName
-                             : CFX_CSSSyntaxMode::RuleSet;
-  m_TextData.InitWithSize(iTextDatSize);
+  m_TextData.InitWithSize(32);
   m_TextPlane.AttachBuffer(pBuffer, iBufferSize);
 }
 
 CFX_CSSSyntaxParser::~CFX_CSSSyntaxParser() = default;
 
+void CFX_CSSSyntaxParser::SetParseOnlyDeclarations() {
+  m_eMode = SyntaxMode::PropertyName;
+}
+
 CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
   while (m_eStatus >= CFX_CSSSyntaxStatus::None) {
     if (m_TextPlane.IsEOF()) {
-      if (m_eMode == CFX_CSSSyntaxMode::PropertyValue &&
-          m_TextData.GetLength() > 0) {
+      if (m_eMode == SyntaxMode::PropertyValue && m_TextData.GetLength() > 0) {
         SaveTextData();
         m_eStatus = CFX_CSSSyntaxStatus::PropertyValue;
         return m_eStatus;
@@ -61,7 +52,7 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
     while (!m_TextPlane.IsEOF()) {
       wch = m_TextPlane.GetChar();
       switch (m_eMode) {
-        case CFX_CSSSyntaxMode::RuleSet:
+        case SyntaxMode::RuleSet:
           switch (wch) {
             case '}':
               m_TextPlane.MoveNext();
@@ -73,7 +64,7 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
             case '/':
               if (m_TextPlane.GetNextChar() == '*') {
                 m_ModeStack.push(m_eMode);
-                SwitchMode(CFX_CSSSyntaxMode::Comment);
+                SwitchMode(SyntaxMode::Comment);
                 break;
               }
               FALLTHROUGH;
@@ -81,7 +72,7 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
               if (wch <= ' ') {
                 m_TextPlane.MoveNext();
               } else if (IsSelectorStart(wch)) {
-                SwitchMode(CFX_CSSSyntaxMode::Selector);
+                SwitchMode(SyntaxMode::Selector);
                 return CFX_CSSSyntaxStatus::StyleRule;
               } else {
                 m_eStatus = CFX_CSSSyntaxStatus::Error;
@@ -90,11 +81,11 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
               break;
           }
           break;
-        case CFX_CSSSyntaxMode::Selector:
+        case SyntaxMode::Selector:
           switch (wch) {
             case ',':
               m_TextPlane.MoveNext();
-              SwitchMode(CFX_CSSSyntaxMode::Selector);
+              SwitchMode(SyntaxMode::Selector);
               if (m_iTextDataLen > 0)
                 return CFX_CSSSyntaxStatus::Selector;
               break;
@@ -104,8 +95,8 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
                 return CFX_CSSSyntaxStatus::Selector;
               }
               m_TextPlane.MoveNext();
-              m_ModeStack.push(CFX_CSSSyntaxMode::RuleSet);
-              SwitchMode(CFX_CSSSyntaxMode::PropertyName);
+              m_ModeStack.push(SyntaxMode::RuleSet);
+              SwitchMode(SyntaxMode::PropertyName);
               return CFX_CSSSyntaxStatus::DeclOpen;
             case '/':
               if (m_TextPlane.GetNextChar() == '*') {
@@ -120,11 +111,11 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
               break;
           }
           break;
-        case CFX_CSSSyntaxMode::PropertyName:
+        case SyntaxMode::PropertyName:
           switch (wch) {
             case ':':
               m_TextPlane.MoveNext();
-              SwitchMode(CFX_CSSSyntaxMode::PropertyValue);
+              SwitchMode(SyntaxMode::PropertyValue);
               return CFX_CSSSyntaxStatus::PropertyName;
             case '}':
               m_TextPlane.MoveNext();
@@ -146,13 +137,13 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
               break;
           }
           break;
-        case CFX_CSSSyntaxMode::PropertyValue:
+        case SyntaxMode::PropertyValue:
           switch (wch) {
             case ';':
               m_TextPlane.MoveNext();
               FALLTHROUGH;
             case '}':
-              SwitchMode(CFX_CSSSyntaxMode::PropertyName);
+              SwitchMode(SyntaxMode::PropertyName);
               return CFX_CSSSyntaxStatus::PropertyValue;
             case '/':
               if (m_TextPlane.GetNextChar() == '*') {
@@ -167,7 +158,7 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
               break;
           }
           break;
-        case CFX_CSSSyntaxMode::Comment:
+        case SyntaxMode::Comment:
           if (wch == '/' && m_TextData.GetLength() > 0 &&
               m_TextData.GetBuffer()[m_TextData.GetLength() - 1] == '*') {
             RestoreMode();
@@ -176,9 +167,9 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
           }
           m_TextPlane.MoveNext();
           break;
-        case CFX_CSSSyntaxMode::UnknownRule:
+        case SyntaxMode::UnknownRule:
           if (wch == ';')
-            SwitchMode(CFX_CSSSyntaxMode::RuleSet);
+            SwitchMode(SyntaxMode::RuleSet);
           m_TextPlane.MoveNext();
           break;
         default:
@@ -200,7 +191,7 @@ void CFX_CSSSyntaxParser::SaveTextData() {
   m_TextData.Clear();
 }
 
-void CFX_CSSSyntaxParser::SwitchMode(CFX_CSSSyntaxMode eMode) {
+void CFX_CSSSyntaxParser::SwitchMode(SyntaxMode eMode) {
   m_eMode = eMode;
   SaveTextData();
 }
@@ -208,7 +199,7 @@ void CFX_CSSSyntaxParser::SwitchMode(CFX_CSSSyntaxMode eMode) {
 int32_t CFX_CSSSyntaxParser::SwitchToComment() {
   int32_t iLength = m_TextData.GetLength();
   m_ModeStack.push(m_eMode);
-  SwitchMode(CFX_CSSSyntaxMode::Comment);
+  SwitchMode(SyntaxMode::Comment);
   return iLength;
 }
 
