@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e549eba_a04fb22f",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-13T01:16:18Z",
+      "side": 0,
+      "message": "I\u0027m just looking at the diff and not the entire class. In the existing code, it looks like the star character is already in |m_Output|, whereas the new code won\u0027t put the star character in |m_Output| at all. This feels like slightly different behavior, yet tests are still passing. Did I miss something, or do we not have sufficient tests?",
+      "revId": "c38724c0f17bb7bc2d6dc3a336231b03711d6b7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
