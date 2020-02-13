@@ -7,16 +7,11 @@
 #ifndef FPDFSDK_CPDFSDK_ANNOT_H_
 #define FPDFSDK_CPDFSDK_ANNOT_H_
 
-#include "core/fpdfdoc/cpdf_aaction.h"
 #include "core/fpdfdoc/cpdf_annot.h"
-#include "core/fpdfdoc/cpdf_defaultappearance.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 
-class CFX_Matrix;
-class CFX_RenderDevice;
 class CPDF_Page;
-class CPDF_RenderOptions;
 class CPDFSDK_BAAnnot;
 class CPDFSDK_PageView;
 class CPDFXFA_Widget;
