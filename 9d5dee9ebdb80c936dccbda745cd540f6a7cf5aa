@@ -23,6 +23,30 @@
       "revId": "9d5dee9ebdb80c936dccbda745cd540f6a7cf5aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69614ab6_0a920ee5",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-13T19:13:04Z",
+      "side": 1,
+      "message": "Feel free to follow up on |m_SDKAnnotArray| if you\u0027d like.",
+      "parentUuid": "34215cac_20dd244c",
+      "range": {
+        "startLine": 519,
+        "startChar": 4,
+        "endLine": 519,
+        "endChar": 22
+      },
+      "revId": "9d5dee9ebdb80c936dccbda745cd540f6a7cf5aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
