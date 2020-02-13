@@ -1532,9 +1532,6 @@ CJS_Result CJS_Field::get_page(CJS_Runtime* pRuntime) {
 
     auto* pWidget = ToCPDFSDKWidget(pObserved.Get());
     CPDFSDK_PageView* pPageView = pWidget->GetPageView();
-    if (!pPageView)
-      return CJS_Result::Failure(JSMessage::kBadObjectError);
-
     pRuntime->PutArrayElement(
         PageArray, i,
         pRuntime->NewNumber(static_cast<int32_t>(pPageView->GetPageIndex())));

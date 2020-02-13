@@ -76,7 +76,7 @@ void CPDFSDK_FormFillEnvironment::InvalidateRect(PerWindowData* pWidgetData,
 
   CPDFSDK_PageView* pPageView = widget->GetPageView();
   IPDF_Page* pPage = widget->GetPage();
-  if (!pPage || !pPageView)
+  if (!pPage)
     return;
 
   CFX_Matrix device2page = pPageView->GetCurrentMatrix().GetInverse();
@@ -685,7 +685,7 @@ bool CPDFSDK_FormFillEnvironment::SetFocusAnnot(
     return false;
 
   CPDFSDK_PageView* pPageView = (*pAnnot)->GetPageView();
-  if (!pPageView || !pPageView->IsValid())
+  if (!pPageView->IsValid())
     return false;
 
   CPDFSDK_AnnotHandlerMgr* pAnnotHandler = GetAnnotHandlerMgr();
@@ -764,7 +764,7 @@ void CPDFSDK_FormFillEnvironment::SendOnFocusChange(
   }
 
   CPDFSDK_PageView* pPageView = (*pAnnot)->GetPageView();
-  if (!pPageView || !pPageView->IsValid())
+  if (!pPageView->IsValid())
     return;
 
   CPDF_Page* cpdf_page = (*pAnnot)->GetPDFPage();
