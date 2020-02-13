@@ -1,4 +1,74 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1581589503 -0800\nnonce AC6AUtOzs7XRIWFDtbt4z74/0gHwPD5DktNwxJvXdsKRmK5h2xtAxZTx1tXJHMKZzcc7zZgVSrjB\n\n0000000000000000000000000000000000000000 0705fcbebfe895a95fa74f7f6089d0e3e1b87167 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl5FI/8ACgkQqzYtYVpm\n/XuJxwf/ZgeGndiS0ClwHJR8SZYoncPan6b0kbV0XewobRast7nhpVLcO371XmNN\nirT+nE3kjArnauM8nakNt21T5eMRbXPj7VoBypkk0oazCuVpYI2YWUI8LWLiV2qz\ndurWGnl3EO4K1cUbhSUN414Pyqrx6NrY0R9eQ1jAIokKrX/GwIxkcKf5fZ6lTK3y\nIVfiCTi1GraFV76jsKMfuCgW4j00JWnCZzoGVG6U05DUaLuE9kU3RWbgcls3gSaR\nkiTaIfOtH0XJIjU+ngDzhUPI6pKqqENS9QN35ThSL/fYx++h82hw12DmiklytZJv\n2LRBSEH2H0IAeQxF+cpsyPmlVtKE3A\u003d\u003d\n\u003dSri6\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b29d44c_c90ff061",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T17:43:50Z",
+      "side": 1,
+      "message": "nit: move to line 81 since now unchecked/unused if we short-circuit at line 80.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "0705fcbebfe895a95fa74f7f6089d0e3e1b87167",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde03a62_69cd2bbb",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T17:43:50Z",
+      "side": 1,
+      "message": "ni: local not needed?",
+      "range": {
+        "startLine": 687,
+        "startChar": 20,
+        "endLine": 687,
+        "endChar": 29
+      },
+      "revId": "0705fcbebfe895a95fa74f7f6089d0e3e1b87167",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849077aa_d47887d4",
+        "filename": "fxjs/cjs_field.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T17:43:50Z",
+      "side": 1,
+      "message": "nit: local not needed?",
+      "range": {
+        "startLine": 1534,
+        "startChar": 22,
+        "endLine": 1534,
+        "endChar": 31
+      },
+      "revId": "0705fcbebfe895a95fa74f7f6089d0e3e1b87167",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
 }
