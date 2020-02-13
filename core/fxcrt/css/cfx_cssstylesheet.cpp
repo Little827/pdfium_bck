@@ -16,14 +16,7 @@
 
 CFX_CSSStyleSheet::CFX_CSSStyleSheet() {}
 
-CFX_CSSStyleSheet::~CFX_CSSStyleSheet() {
-  Reset();
-}
-
-void CFX_CSSStyleSheet::Reset() {
-  m_RuleArray.clear();
-  m_StringCache.clear();
-}
+CFX_CSSStyleSheet::~CFX_CSSStyleSheet() = default;
 
 size_t CFX_CSSStyleSheet::CountRules() const {
   return m_RuleArray.size();
@@ -36,8 +29,8 @@ CFX_CSSStyleRule* CFX_CSSStyleSheet::GetRule(size_t index) const {
 bool CFX_CSSStyleSheet::LoadBuffer(const wchar_t* pBuffer, int32_t iBufSize) {
   ASSERT(pBuffer);
 
+  m_RuleArray.clear();
   auto pSyntax = pdfium::MakeUnique<CFX_CSSSyntaxParser>(pBuffer, iBufSize);
-  Reset();
   CFX_CSSSyntaxStatus eStatus;
   do {
     switch (eStatus = pSyntax->DoSyntaxParse()) {
@@ -49,7 +42,6 @@ bool CFX_CSSStyleSheet::LoadBuffer(const wchar_t* pBuffer, int32_t iBufSize) {
     }
   } while (eStatus >= CFX_CSSSyntaxStatus::kNone);
 
-  m_StringCache.clear();
   return eStatus != CFX_CSSSyntaxStatus::kError;
 }
 

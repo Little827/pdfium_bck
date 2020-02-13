@@ -22,19 +22,16 @@ class CFX_CSSStyleSheet {
   ~CFX_CSSStyleSheet();
 
   bool LoadBuffer(const wchar_t* pBuffer, int32_t iBufSize);
-
   size_t CountRules() const;
   CFX_CSSStyleRule* GetRule(size_t index) const;
 
  private:
-  void Reset();
   CFX_CSSSyntaxStatus LoadStyleRule(
       CFX_CSSSyntaxParser* pSyntax,
       std::vector<std::unique_ptr<CFX_CSSStyleRule>>* ruleArray);
   void SkipRuleSet(CFX_CSSSyntaxParser* pSyntax);
 
   std::vector<std::unique_ptr<CFX_CSSStyleRule>> m_RuleArray;
-  std::map<uint32_t, wchar_t*> m_StringCache;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSSTYLESHEET_H_
