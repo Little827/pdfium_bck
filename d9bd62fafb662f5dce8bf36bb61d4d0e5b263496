@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e79f3c_a9e1f22f",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T17:23:14Z",
+      "side": 1,
+      "message": "So to fix this, I\u0027d propose returning Optional\u003cCheckStyle\u003e and returning nullopt from the default case.  Then down below, using either .vaule_or(kCricle) or .value_or(kSquare) as appropriate restores the goodness.  SG?",
+      "range": {
+        "startLine": 1118,
+        "startChar": 0,
+        "endLine": 1118,
+        "endChar": 10
+      },
+      "revId": "d9bd62fafb662f5dce8bf36bb61d4d0e5b263496",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
