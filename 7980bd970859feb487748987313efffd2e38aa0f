@@ -16,6 +16,24 @@
       "revId": "7980bd970859feb487748987313efffd2e38aa0f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e29aa93_bef00ef2",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-13T05:53:15Z",
+      "side": 0,
+      "message": "https://pdfium-review.googlesource.com/66391 - will try to write a regression test as well.",
+      "parentUuid": "89e58c6c_51bc98b6",
+      "revId": "7980bd970859feb487748987313efffd2e38aa0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
