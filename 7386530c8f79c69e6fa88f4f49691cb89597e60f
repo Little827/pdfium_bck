@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb51582e_a6334e15",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T19:53:49Z",
+      "side": 0,
+      "message": "Upon entry, two special cases to consider for m_eStatus: error and eof.\nIf error, we immediately return as before, but if m_eStatus is EOF, we\u0027re now going to retest the stream eof.  No matter, it will still be eof and the loop at new line 44 is skipped.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "7386530c8f79c69e6fa88f4f49691cb89597e60f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6545e0ae_be68398d",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T19:53:49Z",
+      "side": 0,
+      "message": "combined w/line 53, reassigned each time through loop.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "7386530c8f79c69e6fa88f4f49691cb89597e60f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00122cf0_7b969791",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T19:53:49Z",
+      "side": 0,
+      "message": "The only way out of this loop and remaining in the the method is EOF.  All the breaks are inside switches and don\u0027t apply, or there are direct returns.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "7386530c8f79c69e6fa88f4f49691cb89597e60f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

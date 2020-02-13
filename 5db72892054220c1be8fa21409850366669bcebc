@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b6f041_718a4f94",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T19:53:49Z",
+      "side": 1,
+      "message": "straight re-indent minus two spaces here.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "5db72892054220c1be8fa21409850366669bcebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a3efb3_9b991a81",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T19:53:49Z",
+      "side": 1,
+      "message": "here\u0027s the test from above.  The thing to note is that SaveTextData causes m_Output.GetLength() to become 0 (really) but without actually overwriting any data, latching the previous length into the m_something member variable in this class for later use along with the non-overwritten data whose length is now 0.  So regardless of m_eMode, there\u0027s only one shot where this could return the last buffered token prior to EOF -- and if it isn\u0027t a value, then the statement is syntactially incomplete, so it doesn\u0027t bother returning.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 2
+      },
+      "revId": "5db72892054220c1be8fa21409850366669bcebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0550fa0c_3363f23e",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T19:53:49Z",
+      "side": 1,
+      "message": "No need to actually set EOS, the input will continually test as EOF at top of the big loop, and we just return here.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "5db72892054220c1be8fa21409850366669bcebc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
