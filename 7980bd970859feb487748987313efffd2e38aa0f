@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89e58c6c_51bc98b6",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-13T05:36:05Z",
+      "side": 0,
+      "message": "Oh but they are not exactly the same. This is |kCheck| and the one below is |kCircle|.",
+      "revId": "7980bd970859feb487748987313efffd2e38aa0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
