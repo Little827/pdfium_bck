@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbdc0362_8bb897fe",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-13T20:00:26Z",
+      "side": 1,
+      "message": "Diffing against PS3, we see the only values now assigned to this are None and Error, so it might as well just be an error flag.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "72fa0e1bb56cbf63f4e6da0c8882848610af9dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
