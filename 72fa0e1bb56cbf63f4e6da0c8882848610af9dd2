@@ -22,6 +22,30 @@
       "revId": "72fa0e1bb56cbf63f4e6da0c8882848610af9dd2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a5a5d6e_5f21539c",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-14T02:21:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dbdc0362_8bb897fe",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "72fa0e1bb56cbf63f4e6da0c8882848610af9dd2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
