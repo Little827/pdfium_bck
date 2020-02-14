@@ -46,12 +46,8 @@ class CFX_CSSSyntaxParser {
     kPropertyValue,
   };
 
-  void SwitchMode(SyntaxMode eMode);
-  int32_t SwitchToComment();
-
+  void SaveMode(SyntaxMode eMode);
   bool RestoreMode();
-  void AppendCharIfNotLeadingBlank(wchar_t wch);
-  void SaveTextData();
 
   bool m_bError = false;
   SyntaxMode m_eMode = SyntaxMode::kRuleSet;
