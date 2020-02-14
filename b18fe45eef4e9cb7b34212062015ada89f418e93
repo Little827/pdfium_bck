@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6758edc_78fabfd5",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:38:37Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dfef93c_1c67456d",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:38:37Z",
+      "side": 1,
+      "message": "This file is not currently in the CL - should it be?",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c42bb43d_e09baa60",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:38:37Z",
+      "side": 1,
+      "message": "If I\u0027m following correctly, this isn\u0027t actually advancing four steps after m_pAnnotReadOnlyRadioButton - it\u0027s advancing one step after m_pAnnotReadOnlyRadioButton, four times.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 73
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c7f0ee9_094daedd",
+        "filename": "testing/resources/pixel/click_form.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:38:37Z",
+      "side": 1,
+      "message": "This test file is enormous - please simplify if possible.",
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
