@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8aed2660_bfd6fb8a",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:49:32Z",
+      "side": 1,
+      "message": "EXPECT_FALSE since there\u0027s no reason to stop the test from continuing if these fail.\nI would also add a comment above explaining what these calls are doing.",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 657,
+        "endChar": 0
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e55572_05fa3e1d",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:49:32Z",
+      "side": 1,
+      "message": "An API call to set focus explicitly, if one exists, would be preferable to relying on mouse events.",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 49
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7589b494_912a35e9",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:49:32Z",
+      "side": 1,
+      "message": "EXPECT_FALSE since there\u0027s no reason to stop the test from continuing if these fail.\nI would also add a comment above explaining what these calls are doing.",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 71
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6c68ce_a5b05318",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-14T19:49:32Z",
+      "side": 1,
+      "message": "Consider flipping the order on these to be consistent with FORM_SetFocusedAnnot and other APIs which are page-first.",
+      "range": {
+        "startLine": 1559,
+        "startChar": 0,
+        "endLine": 1560,
+        "endChar": 43
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
