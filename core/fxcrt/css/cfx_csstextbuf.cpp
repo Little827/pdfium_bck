@@ -6,44 +6,22 @@
 
 #include "core/fxcrt/css/cfx_csstextbuf.h"
 
-#include "core/fxcrt/fx_memory.h"
+#include <utility>
 
-CFX_CSSTextBuf::CFX_CSSTextBuf()
-    : m_pBuffer(nullptr), m_iBufLen(0), m_iDatLen(0) {}
+CFX_CSSTextBuf::CFX_CSSTextBuf() = default;
 
-CFX_CSSTextBuf::~CFX_CSSTextBuf() {
-  FX_Free(m_pBuffer);
-  m_pBuffer = nullptr;
-  m_iDatLen = m_iBufLen;
+CFX_CSSTextBuf::~CFX_CSSTextBuf() = default;
+
+void CFX_CSSTextBuf::AppendCharIfNotLeadingSpace(wchar_t wch) {
+  if (m_iDatLen >= m_iBufLen) {
+    size_t iDesiredSize = std::max<size_t>(32, 2 * m_iBufLen);
+    m_pBuffer.reset(FX_Realloc(wchar_t, m_pBuffer.release(), iDesiredSize));
+    m_iBufLen = iDesiredSize;
+  }
+  if (m_iDatLen || wch != ' ')
+    m_pBuffer.get()[m_iDatLen++] = wch;
 }
 
-void CFX_CSSTextBuf::InitWithSize(int32_t iAllocSize) {
-  ExpandBuf(iAllocSize);
-}
-
-void CFX_CSSTextBuf::AppendChar(wchar_t wch) {
-  if (m_iDatLen >= m_iBufLen)
-    ExpandBuf(m_iBufLen * 2);
-
-  m_pBuffer[m_iDatLen++] = wch;
-}
-
-int32_t CFX_CSSTextBuf::TrimEnd() {
-  while (m_iDatLen > 0 && m_pBuffer[m_iDatLen - 1] <= ' ')
-    --m_iDatLen;
-  AppendChar(0);
-  return --m_iDatLen;
-}
-
-void CFX_CSSTextBuf::ExpandBuf(int32_t iDesiredSize) {
-  ASSERT(iDesiredSize > 0);
-  if (m_pBuffer && m_iBufLen == iDesiredSize)
-    return;
-
-  if (m_pBuffer)
-    m_pBuffer = FX_Realloc(wchar_t, m_pBuffer, iDesiredSize);
-  else
-    m_pBuffer = FX_Alloc(wchar_t, iDesiredSize);
-
-  m_iBufLen = iDesiredSize;
+WideStringView CFX_CSSTextBuf::GetTrailingSpaceTrimmedString() const {
+  return WideStringView(m_pBuffer.get(), m_iDatLen).TrimmedRight(L' ');
 }
