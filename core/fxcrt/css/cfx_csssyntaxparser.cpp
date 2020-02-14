@@ -38,6 +38,7 @@ void CFX_CSSSyntaxParser::SetParseOnlyDeclarations() {
 }
 
 CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
+  m_Output.Clear();
   if (m_bError)
     return CFX_CSSSyntaxStatus::kError;
 
@@ -47,9 +48,6 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
       case SyntaxMode::kRuleSet:
         switch (wch) {
           case '}':
-            m_Input.MoveNext();
-            if (RestoreMode())
-              return CFX_CSSSyntaxStatus::kDeclClose;
             m_bError = true;
             return CFX_CSSSyntaxStatus::kError;
           case '/':
@@ -77,7 +75,7 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
           case ',':
             m_Input.MoveNext();
             SwitchMode(SyntaxMode::kSelector);
-            if (m_iTextDataLen > 0)
+            if (m_Output.GetLength() > 0)
               return CFX_CSSSyntaxStatus::kSelector;
             break;
           case '{':
@@ -156,11 +154,6 @@ CFX_CSSSyntaxStatus CFX_CSSSyntaxParser::DoSyntaxParse() {
         }
         m_Input.MoveNext();
         break;
-      case SyntaxMode::kUnknownRule:
-        if (wch == ';')
-          SwitchMode(SyntaxMode::kRuleSet);
-        m_Input.MoveNext();
-        break;
       default:
         NOTREACHED();
         break;
@@ -179,8 +172,7 @@ void CFX_CSSSyntaxParser::AppendCharIfNotLeadingBlank(wchar_t wch) {
 }
 
 void CFX_CSSSyntaxParser::SaveTextData() {
-  m_iTextDataLen = m_Output.TrimEnd();
-  m_Output.Clear();
+  m_Output.TrimEnd();
 }
 
 void CFX_CSSSyntaxParser::SwitchMode(SyntaxMode eMode) {
@@ -205,5 +197,5 @@ bool CFX_CSSSyntaxParser::RestoreMode() {
 }
 
 WideStringView CFX_CSSSyntaxParser::GetCurrentString() const {
-  return WideStringView(m_Output.GetBuffer(), m_iTextDataLen);
+  return WideStringView(m_Output.GetBuffer(), m_Output.GetLength());
 }
