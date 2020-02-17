@@ -1572,6 +1572,43 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_Redo(FPDF_FORMHANDLE hHandle,
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FORM_ForceToKillFocus(FPDF_FORMHANDLE hHandle);
 
+/*
+ * Experimental API.
+ * Function: FORM_GetFocusedAnnot.
+ *       Call this member function to get the currently focused annotation.
+ * Parameters:
+ *       hHandle     -   Handle to the form fill module, as returned by
+ *                       FPDFDOC_InitFormFillEnvironment().
+ *       page_index  -   buffer to hold the index number of the page which contains the
+ *                       focused annotation. 0 for the first page.
+ *       annot       -   buffer to hold the focused annotation.
+ * Return Value:
+ *       True indicates success; otherwise false.
+ * Comments:
+ *       Not currently supported for XFA forms - will return false.
+ */
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FORM_GetFocusedAnnot(FPDF_FORMHANDLE hHandle,
+                          int* page_index,
+                          FPDF_ANNOTATION* annot);
+
+/*
+ * Experimental API.
+ * Function: FORM_SetFocusedAnnot.
+ *       Call this member function to get the currently focused annotation.
+ * Parameters:
+ *       hHandle     -   Handle to the form fill module, as returned by
+ *                       FPDFDOC_InitFormFillEnvironment().
+ *       page        -   handle to a page.
+ *       annot       -   handle to an annotation.
+ * Return Value:
+ *       True indicates success; otherwise false.
+ */
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FORM_SetFocusedAnnot(FPDF_FORMHANDLE hHandle,
+                          FPDF_PAGE page,
+                          FPDF_ANNOTATION annot);
+
 // Form Field Types
 // The names of the defines are stable, but the specific values associated with
 // them are not, so do not hardcode their values.

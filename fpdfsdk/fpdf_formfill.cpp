@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/page/cpdf_occontext.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -20,6 +21,7 @@
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "fpdfsdk/cpdfsdk_actionhandler.h"
+#include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/cpdfsdk_baannothandler.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
@@ -569,6 +571,69 @@ FORM_ForceToKillFocus(FPDF_FORMHANDLE hHandle) {
   if (!pFormFillEnv)
     return false;
   return pFormFillEnv->KillFocusAnnot(0);
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FORM_GetFocusedAnnot(FPDF_FORMHANDLE hHandle,
+                     int* page_index,
+                     FPDF_ANNOTATION* annot) {
+  if (!annot || !page_index)
+    return false;
+
+  CPDFSDK_FormFillEnvironment* form_fill_env =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!form_fill_env)
+    return false;
+
+  ObservedPtr<CPDFSDK_Annot> cpdfsdk_annot(form_fill_env->GetFocusAnnot());
+  if (!cpdfsdk_annot)
+    return false;
+
+  CPDFSDK_PageView* page_view = cpdfsdk_annot->GetPageView();
+  if (!page_view)
+    return false;
+
+  CPDF_Page* page = cpdfsdk_annot->GetPDFPage();
+  if (!page)
+    return false;
+
+  CPDF_Dictionary* annot_dict = cpdfsdk_annot->GetPDFAnnot()->GetAnnotDict();
+  auto cpdf_annotContext =
+      pdfium::MakeUnique<CPDF_AnnotContext>(annot_dict, page);
+
+  *annot = FPDFAnnotationFromCPDFAnnotContext(cpdf_annotContext.release());
+  *page_index = page_view->GetPageIndex();
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FORM_SetFocusedAnnot(FPDF_FORMHANDLE hHandle,
+                     FPDF_PAGE page,
+                     FPDF_ANNOTATION annot) {
+  CPDFSDK_FormFillEnvironment* form_fill_env =
+      CPDFSDKFormFillEnvironmentFromFPDFFormHandle(hHandle);
+  if (!form_fill_env)
+    return false;
+
+  CPDF_AnnotContext* cpdf_context = CPDFAnnotContextFromFPDFAnnotation(annot);
+  if (!cpdf_context)
+    return false;
+
+  CPDF_Dictionary* annot_dict = cpdf_context->GetAnnotDict();
+  if (!annot_dict)
+    return false;
+
+  IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
+  if (!pPage)
+    return false;
+
+  CPDFSDK_PageView* pPageView = form_fill_env->GetPageView(pPage, true);
+  if (!pPageView)
+    return false;
+
+  ObservedPtr<CPDFSDK_Annot> cpdfsdk_annot(
+      pPageView->GetAnnotByDict(annot_dict));
+  return form_fill_env->SetFocusAnnot(&cpdfsdk_annot);
 }
 
 FPDF_EXPORT void FPDF_CALLCONV FPDF_FFLDraw(FPDF_FORMHANDLE hHandle,
