@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d695be5_3d88350b",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-17T05:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aed2660_bfd6fb8a",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 657,
+        "endChar": 0
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02e55572_05fa3e1d",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-14T19:49:32Z",
       "side": 1,
       "message": "An API call to set focus explicitly, if one exists, would be preferable to relying on mouse events.",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 49
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff78542_0804a74d",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-17T05:06:33Z",
+      "side": 1,
+      "message": "FORM_SetFocusedAnnot is being added in this CL itself to set a focused annotation which is being tested in SetFocusedAnnotation.\n\nCurrently an embedder can have some mouse movements which could lead to a focused annotation. This test is validating that after using mouse we set a focused annotation, we pass the same annotation as the focused annotation to an embedder.",
+      "parentUuid": "02e55572_05fa3e1d",
       "range": {
         "startLine": 662,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c5ee28db_bf3bf69a",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-17T05:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7589b494_912a35e9",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 71
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e6c68ce_a5b05318",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a056d5b9_cefa3ea3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-17T05:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e6c68ce_a5b05318",
+      "range": {
+        "startLine": 1559,
+        "startChar": 0,
+        "endLine": 1560,
+        "endChar": 43
+      },
+      "revId": "9ce447daee3d60dd8e37014120ecc721ed818fc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
