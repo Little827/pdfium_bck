@@ -638,6 +638,181 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_901654_2) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFFormFillEmbedderTest, FormFillFirstTab) {
+  EXPECT_TRUE(OpenDocument("annotiter.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFFormFillEmbedderTest, FormFillFirstShiftTab) {
+  EXPECT_TRUE(OpenDocument("annotiter.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first shift-tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFFormFillEmbedderTest, FormFillContinuousTab) {
+  EXPECT_TRUE(OpenDocument("annotiter.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  // Subsequent tabs should move focus over annotations.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  // Tab should not be handled as the last annotation of the page is in focus.
+  ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFFormFillEmbedderTest, FormFillContinuousShiftTab) {
+  EXPECT_TRUE(OpenDocument("annotiter.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first shift-tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+
+  // Subsequent shift-tabs should move focus over annotations.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+
+  // Shift-tab should not be handled as the first annotation of the page is in
+  // focus.
+  ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                              FWL_EVENTFLAG_ShiftKey));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFFormFillEmbedderTest, TabWithModifiers) {
+  EXPECT_TRUE(OpenDocument("annotiter.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                              FWL_EVENTFLAG_ControlKey));
+
+  ASSERT_FALSE(
+      FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, FWL_EVENTFLAG_AltKey));
+
+  ASSERT_FALSE(
+      FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                     (FWL_EVENTFLAG_ControlKey | FWL_EVENTFLAG_ShiftKey)));
+
+  ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                              (FWL_EVENTFLAG_AltKey | FWL_EVENTFLAG_ShiftKey)));
+
+  UnloadPage(page);
+}
+
+#ifdef PDF_ENABLE_XFA
+TEST_F(FPDFFormFillEmbedderTest, XFAFormFillFirstTab) {
+  EXPECT_TRUE(OpenDocument("xfa/email_recommended.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFFormFillEmbedderTest, XFAFormFillFirstShiftTab) {
+  EXPECT_TRUE(OpenDocument("xfa/email_recommended.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first shift-tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFFormFillEmbedderTest, XFAFormFillContinuousTab) {
+  EXPECT_TRUE(OpenDocument("xfa/email_recommended.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  // Subsequent tabs should move focus over annotations.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  // Tab should not be handled as the last annotation of the page is in focus.
+  ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFFormFillEmbedderTest, XFAFormFillContinuousShiftTab) {
+  EXPECT_TRUE(OpenDocument("xfa/email_recommended.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Invoking first shift-tab on the page.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+
+  // Subsequent shift-tabs should move focus over annotations.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+
+  // Shift-tab should not be handled as the first annotation of the page is in
+  // focus.
+  ASSERT_FALSE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                              FWL_EVENTFLAG_ShiftKey));
+
+  UnloadPage(page);
+}
+#endif  // PDF_ENABLE_XFA
+
 class DoURIActionBlockedDelegate final : public EmbedderTest::Delegate {
  public:
   void DoURIAction(FPDF_BYTESTRING uri) override {
