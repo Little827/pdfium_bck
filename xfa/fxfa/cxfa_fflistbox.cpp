@@ -148,9 +148,13 @@ bool CXFA_FFListBox::UpdateFWLData() {
   std::transform(iSelArray.begin(), iSelArray.end(), selItemArray.begin(),
                  [pListBox](int32_t val) { return pListBox->GetSelItem(val); });
 
+  ObservedPtr<CXFA_FFListBox> watched(this);
   pListBox->SetSelItem(pListBox->GetSelItem(-1), false);
   for (CFWL_ListItem* pItem : selItemArray)
     pListBox->SetSelItem(pItem, true);
+
+  if (!watched)
+    return false;
 
   GetNormalWidget()->Update();
   return true;

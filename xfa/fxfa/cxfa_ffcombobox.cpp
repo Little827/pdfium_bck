@@ -201,6 +201,7 @@ bool CXFA_FFComboBox::UpdateFWLData() {
   if (!pComboBox)
     return false;
 
+  ObservedPtr<CXFA_FFComboBox> watched(this);
   std::vector<int32_t> iSelArray = m_pNode->GetSelectedItems();
   if (!iSelArray.empty()) {
     pComboBox->SetCurSel(iSelArray.front());
@@ -208,6 +209,9 @@ bool CXFA_FFComboBox::UpdateFWLData() {
     pComboBox->SetCurSel(-1);
     pComboBox->SetEditText(m_pNode->GetValue(XFA_VALUEPICTURE_Raw));
   }
+  if (!watched)
+    return false;
+
   pComboBox->Update();
   return true;
 }
