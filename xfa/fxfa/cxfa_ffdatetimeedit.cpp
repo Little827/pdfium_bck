@@ -152,6 +152,7 @@ bool CXFA_FFDateTimeEdit::CommitData() {
 }
 
 bool CXFA_FFDateTimeEdit::UpdateFWLData() {
+  ObservedPtr<CXFA_FFDateTimeEdit> watcher(this);
   if (!GetNormalWidget())
     return false;
 
@@ -162,12 +163,18 @@ bool CXFA_FFDateTimeEdit::UpdateFWLData() {
   WideString wsText = m_pNode->GetValue(eType);
   CFWL_DateTimePicker* pPicker = GetPickerWidget();
   pPicker->SetEditText(wsText);
+  if (!watcher)
+    return false;
+
   if (IsFocused() && !wsText.IsEmpty()) {
     CXFA_LocaleValue lcValue = XFA_GetLocaleValue(m_pNode.Get());
     CFX_DateTime date = lcValue.GetDate();
     if (lcValue.IsValid()) {
-      if (date.IsSet())
+      if (date.IsSet()) {
         pPicker->SetCurSel(date.GetYear(), date.GetMonth(), date.GetDay());
+        if (!watcher)
+          return false;
+      }
     }
   }
   GetNormalWidget()->Update();
