@@ -287,6 +287,7 @@ bool CXFA_FFTextEdit::UpdateFWLData() {
   if (IsFocused())
     eType = XFA_VALUEPICTURE_Edit;
 
+  ObservedPtr<CXFA_FFTextEdit> watcher(this);
   bool bUpdate = false;
   if (m_pNode->GetFFWidgetType() == XFA_FFWidgetType::kTextEdit &&
       !m_pNode->GetNumberOfCells()) {
@@ -310,6 +311,8 @@ bool CXFA_FFTextEdit::UpdateFWLData() {
     pEdit->SetLimit(nDataLen);
     bUpdate = true;
   }
+  if (!watcher)
+    return false;
 
   WideString wsText = m_pNode->GetValue(eType);
   WideString wsOldText = pEdit->GetText();
@@ -317,6 +320,9 @@ bool CXFA_FFTextEdit::UpdateFWLData() {
     pEdit->SetTextSkipNotify(wsText);
     bUpdate = true;
   }
+  if (!watcher)
+    return false;
+
   if (bUpdate)
     GetNormalWidget()->Update();
 

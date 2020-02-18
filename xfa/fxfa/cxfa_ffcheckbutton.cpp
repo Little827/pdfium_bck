@@ -289,11 +289,15 @@ void CXFA_FFCheckButton::SetFWLCheckState(XFA_CHECKSTATE eCheckState) {
 }
 
 bool CXFA_FFCheckButton::UpdateFWLData() {
+  ObservedPtr<CXFA_FFCheckButton> watched(this);
   if (!GetNormalWidget())
     return false;
 
   XFA_CHECKSTATE eState = m_pNode->GetCheckState();
   SetFWLCheckState(eState);
+  if (!watched)
+    return false;
+
   GetNormalWidget()->Update();
   return true;
 }
