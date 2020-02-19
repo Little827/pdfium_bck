@@ -16,6 +16,24 @@
       "revId": "c38724c0f17bb7bc2d6dc3a336231b03711d6b7f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bad3c4b_3e3c5ef6",
+        "filename": "testing/resources/pixel/click_form_expected.pdf.0.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 0,
+      "message": "In my recent CL(https://pdfium-review.googlesource.com/c/pdfium/+/64390) where I was trying to test \"Implementing enter key press over reset button\", Lei have suggested to add embeddertest and pixel test. I understand pixel test is for testing rendering. As we are moving focus over different form control \u0026 press Enter there, we do render inside checkbox/radio buttons and draw dotted lines over the control on moving focus. So I believe this pixel test can be added.\n\nKindly let me know if you have other thoughts or if my understanding is incorrect.",
+      "parentUuid": "9037649b_696811b1",
+      "revId": "c38724c0f17bb7bc2d6dc3a336231b03711d6b7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }

@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "aba93f38_98085dd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6f8fe89_4b3bfb65",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a858a9e_dcb299ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0b4bdf0_0f9e1f21",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6758edc_78fabfd5",
         "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2fb30f2_991bb355",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6758edc_78fabfd5",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "b471e039_17ad7dce",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Kevin, click_form.in and click_form.pdf file is already available inside pdfium/testing/resources and is being used by existing tests.\nYou might be doubted about the presence of click_form.in inside pdfium/testing/resources/pixel. click_form.in file is added inside for pixel tests.",
+      "parentUuid": "5dfef93c_1c67456d",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbd476_88fd8282",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f488a2ad_1fb34e16",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52900bad_a3a1cbdb",
         "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b9cb8f_1cbdb913",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52900bad_a3a1cbdb",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,54 @@
     },
     {
       "key": {
+        "uuid": "cc6ad1b7_d72e11e8",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a1275df_645af509",
+      "range": {
+        "startLine": 40,
+        "startChar": 23,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6be902_5f94ae1a",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00e9ce1d_eae45ff4",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c42bb43d_e09baa60",
         "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
         "patchSetId": 1
@@ -232,6 +424,54 @@
     },
     {
       "key": {
+        "uuid": "2eeb647c_11c32aa5",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e5b9ae2_4aadb7e5",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 73
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a17e8a14_6d60fffb",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c42bb43d_e09baa60",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 73
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0104023a_12e1e8d7",
         "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
         "patchSetId": 1
@@ -252,6 +492,30 @@
       "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47449fba_6fccedb7",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0104023a_12e1e8d7",
+      "range": {
+        "startLine": 104,
+        "startChar": 73,
+        "endLine": 105,
+        "endChar": 70
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "cef958b3_2960ff74",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0ddcbd2_86d09905",
+      "range": {
+        "startLine": 137,
+        "startChar": 20,
+        "endLine": 137,
+        "endChar": 49
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7357fa6b_ac3ef1d4",
         "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
         "patchSetId": 1
@@ -298,6 +586,30 @@
       "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d9599e_2330daf0",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7357fa6b_ac3ef1d4",
+      "range": {
+        "startLine": 138,
+        "startChar": 31,
+        "endLine": 139,
+        "endChar": 29
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "f505fd8b_49b87d59",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "These are not expected to return nullptr. This is already been used in few test files. So I expect this should be fine. Kindly let me know if you have different thoughts.",
+      "parentUuid": "cdc2490b_93b3489c",
+      "range": {
+        "startLine": 145,
+        "startChar": 14,
+        "endLine": 146,
+        "endChar": 41
+      },
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c7f0ee9_094daedd",
         "filename": "testing/resources/pixel/click_form.in",
         "patchSetId": 1
@@ -341,6 +677,24 @@
     },
     {
       "key": {
+        "uuid": "0221f064_72910b0f",
+        "filename": "testing/resources/pixel/click_form.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "I have tried to simplify it by removing additional appearance stream. Kindly let me know if it has to be simplified further.",
+      "parentUuid": "2c7f0ee9_094daedd",
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6fb4cb6_23083c3c",
         "filename": "testing/resources/pixel/click_form.in",
         "patchSetId": 1
@@ -355,6 +709,24 @@
       "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a4737d_6fb0a1dd",
+        "filename": "testing/resources/pixel/click_form.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-19T15:43:58Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "d6fb4cb6_23083c3c",
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
