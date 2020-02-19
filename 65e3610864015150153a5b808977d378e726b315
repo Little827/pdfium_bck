@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51e2b447_2e039969",
+        "filename": "core/fxcrt/css/cfx_csssyntaxparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-19T22:28:58Z",
+      "side": 0,
+      "message": "This one is hard to eyeball, but https://chromium-coverage.appspot.com/reports/741842_fuzzers_only/linux/chromium/src/third_party/pdfium/core/fxcrt/css/cfx_csssyntaxparser.cpp.html says this is dead code.",
+      "revId": "65e3610864015150153a5b808977d378e726b315",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
