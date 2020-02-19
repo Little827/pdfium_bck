@@ -16,6 +16,24 @@
       "revId": "e8923161e3d5e36bbd0fb55b838a61e3e22df5ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b92fb22a_6f8d7487",
+        "filename": "xfa/fxfa/cxfa_ffcheckbutton.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-19T18:11:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2682f4b_7f22f750",
+      "revId": "e8923161e3d5e36bbd0fb55b838a61e3e22df5ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
