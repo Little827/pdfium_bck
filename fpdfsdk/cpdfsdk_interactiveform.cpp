@@ -114,7 +114,8 @@ CPDFSDK_InteractiveForm::CPDFSDK_InteractiveForm(
     CPDFSDK_FormFillEnvironment* pFormFillEnv)
     : m_pFormFillEnv(pFormFillEnv),
       m_pInteractiveForm(pdfium::MakeUnique<CPDF_InteractiveForm>(
-          m_pFormFillEnv->GetPDFDocument())) {
+          m_pFormFillEnv->GetPDFDocument())),
+      m_FocusableAnnotTypes{CPDF_Annot::Subtype::WIDGET} {
   m_pInteractiveForm->SetNotifierIface(this);
   RemoveAllHighLights();
 }
@@ -629,4 +630,11 @@ FX_COLORREF CPDFSDK_InteractiveForm::GetHighlightColor(
   }
 #endif  // PDF_ENABLE_XFA
   return m_HighlightColor[static_cast<size_t>(fieldType)];
+}
+
+void CPDFSDK_InteractiveForm::SetFocusableAnnotSubtypes(
+    const std::vector<CPDF_Annot::Subtype>& focusableAnnotTypes) {
+  m_FocusableAnnotTypes.clear();
+  m_FocusableAnnotTypes.assign(focusableAnnotTypes.begin(),
+                               focusableAnnotTypes.end());
 }

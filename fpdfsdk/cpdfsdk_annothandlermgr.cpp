@@ -16,6 +16,7 @@
 #include "fpdfsdk/cpdfsdk_baannot.h"
 #include "fpdfsdk/cpdfsdk_baannothandler.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
+#include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/cpdfsdk_widgethandler.h"
@@ -325,9 +326,12 @@ CPDFSDK_Annot* CPDFSDK_AnnotHandlerMgr::GetNextAnnot(CPDFSDK_Annot* pSDKAnnot,
     return static_cast<CPDFXFA_Page*>(pPage)->GetNextXFAAnnot(pSDKAnnot, bNext);
   }
 #endif  // PDF_ENABLE_XFA
+  CPDFSDK_FormFillEnvironment* pFormFillEnv =
+      pSDKAnnot->GetPageView()->GetFormFillEnv();
+  CPDFSDK_InteractiveForm* pForm = pFormFillEnv->GetInteractiveForm();
 
   // For PDF annots.
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pSDKAnnot);
-  CPDFSDK_AnnotIterator ai(pWidget->GetPageView(), pWidget->GetAnnotSubtype());
-  return bNext ? ai.GetNextAnnot(pWidget) : ai.GetPrevAnnot(pWidget);
+  CPDFSDK_AnnotIterator ai(pSDKAnnot->GetPageView(),
+                           pForm->GetFocusableAnnotSubtypes());
+  return bNext ? ai.GetNextAnnot(pSDKAnnot) : ai.GetPrevAnnot(pSDKAnnot);
 }
