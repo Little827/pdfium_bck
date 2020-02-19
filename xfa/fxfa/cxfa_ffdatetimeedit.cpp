@@ -155,6 +155,8 @@ bool CXFA_FFDateTimeEdit::UpdateFWLData() {
   if (!GetNormalWidget())
     return false;
 
+  // Prevents destruction of the CXFA_ContentLayoutItem that owns |this|.
+  RetainPtr<CXFA_ContentLayoutItem> retainer(m_pLayoutItem.Get());
   XFA_VALUEPICTURE eType = XFA_VALUEPICTURE_Display;
   if (IsFocused())
     eType = XFA_VALUEPICTURE_Edit;
@@ -166,8 +168,9 @@ bool CXFA_FFDateTimeEdit::UpdateFWLData() {
     CXFA_LocaleValue lcValue = XFA_GetLocaleValue(m_pNode.Get());
     CFX_DateTime date = lcValue.GetDate();
     if (lcValue.IsValid()) {
-      if (date.IsSet())
+      if (date.IsSet()) {
         pPicker->SetCurSel(date.GetYear(), date.GetMonth(), date.GetDay());
+      }
     }
   }
   GetNormalWidget()->Update();
