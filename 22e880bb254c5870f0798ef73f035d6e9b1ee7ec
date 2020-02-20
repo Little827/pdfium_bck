@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd72c7e1_9346db6e",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1040329.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-20T22:30:24Z",
+      "side": 1,
+      "message": "Page shouldn\u0027t be inlined.",
+      "revId": "22e880bb254c5870f0798ef73f035d6e9b1ee7ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71058d8b_2c2bd3bb",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1052651.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-20T22:30:24Z",
+      "side": 1,
+      "message": "Delete?",
+      "revId": "22e880bb254c5870f0798ef73f035d6e9b1ee7ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a93a9e_0aa39263",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1052651.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-20T22:30:24Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "22e880bb254c5870f0798ef73f035d6e9b1ee7ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce397993_df74dba4",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1052786.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-20T22:30:24Z",
+      "side": 1,
+      "message": "Delete?",
+      "revId": "22e880bb254c5870f0798ef73f035d6e9b1ee7ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed21b8f_2e74d7e7",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1052786.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-20T22:30:24Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "22e880bb254c5870f0798ef73f035d6e9b1ee7ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e819cf0_5570e86b",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1052786.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-20T22:30:24Z",
+      "side": 1,
+      "message": "Key without a value.",
+      "revId": "22e880bb254c5870f0798ef73f035d6e9b1ee7ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8222a69_ac427ba6",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1052786.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-20T22:30:24Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 13
+      },
+      "revId": "22e880bb254c5870f0798ef73f035d6e9b1ee7ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
