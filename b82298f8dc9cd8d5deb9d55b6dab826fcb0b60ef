@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c002dd51_a6bf2926",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1040329.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-20T23:02:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda0012a_e45c2205",
+      "revId": "b82298f8dc9cd8d5deb9d55b6dab826fcb0b60ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae333cbc_620affc3",
         "filename": "testing/resources/javascript/xfa_specific/bug_1040329.in",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "f8186be4_ca519ea2",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1040329.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-20T23:02:56Z",
+      "side": 1,
+      "message": "Done.  And I went an reconfirmed that this triggers error on old version since it seems I can\u0027t trust my editing skills.",
+      "parentUuid": "ae333cbc_620affc3",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "b82298f8dc9cd8d5deb9d55b6dab826fcb0b60ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c817c4a8_acff3532",
         "filename": "testing/resources/javascript/xfa_specific/bug_1052786.in",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "b82298f8dc9cd8d5deb9d55b6dab826fcb0b60ef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b55334_188201ec",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1052786.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-02-20T23:02:56Z",
+      "side": 1,
+      "message": "Done. Reconfirmed this produces error against old version as well.",
+      "parentUuid": "c817c4a8_acff3532",
+      "revId": "b82298f8dc9cd8d5deb9d55b6dab826fcb0b60ef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
