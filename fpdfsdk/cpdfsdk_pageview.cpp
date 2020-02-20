@@ -403,12 +403,18 @@ void CPDFSDK_PageView::ExitWidget(CPDFSDK_AnnotHandlerMgr* pAnnotHandlerMgr,
                                   bool callExitCallback,
                                   uint32_t nFlag) {
   m_bOnWidget = false;
-  if (m_pCaptureWidget) {
-    if (callExitCallback)
-      pAnnotHandlerMgr->Annot_OnMouseExit(this, &m_pCaptureWidget, nFlag);
+  if (!m_pCaptureWidget)
+    return;
 
-    m_pCaptureWidget.Reset();
+  if (callExitCallback) {
+    // Annot_OnMouseExit() may have invalidated |this|.
+    ObservedPtr<CPDFSDK_PageView> pThis(this);
+    pAnnotHandlerMgr->Annot_OnMouseExit(this, &m_pCaptureWidget, nFlag);
+    if (!pThis)
+      return;
   }
+
+  m_pCaptureWidget.Reset();
 }
 
 bool CPDFSDK_PageView::OnMouseWheel(double deltaX,
