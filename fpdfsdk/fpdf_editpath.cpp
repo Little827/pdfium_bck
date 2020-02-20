@@ -209,13 +209,12 @@ FPDFPath_SetMatrix(FPDF_PAGEOBJECT path, const FS_MATRIX* matrix) {
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFPathSegment_GetPoint(FPDF_PATHSEGMENT segment, float* x, float* y) {
+FPDFPathSegment_GetPoint(FPDF_PATHSEGMENT segment, FS_POINTF* point) {
   auto* pPathPoint = FXPathPointFromFPDFPathSegment(segment);
-  if (!pPathPoint || !x || !y)
+  if (!pPathPoint || !point)
     return false;
 
-  *x = pPathPoint->m_Point.x;
-  *y = pPathPoint->m_Point.y;
+  *point = FSPointFFromCFXPointF(pPathPoint->m_Point);
   return true;
 }
 

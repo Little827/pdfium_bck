@@ -119,24 +119,12 @@ FPDFImageObj_LoadJpegFileInline(FPDF_PAGE* pages,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFImageObj_GetMatrix(FPDF_PAGEOBJECT image_object,
-                       double* a,
-                       double* b,
-                       double* c,
-                       double* d,
-                       double* e,
-                       double* f) {
+FPDFImageObj_GetMatrix(FPDF_PAGEOBJECT image_object, FS_MATRIX* matrix) {
   CPDF_ImageObject* pImgObj = CPDFImageObjectFromFPDFPageObject(image_object);
-  if (!pImgObj || !a || !b || !c || !d || !e || !f)
+  if (!pImgObj || !matrix)
     return false;
 
-  const CFX_Matrix& matrix = pImgObj->matrix();
-  *a = matrix.a;
-  *b = matrix.b;
-  *c = matrix.c;
-  *d = matrix.d;
-  *e = matrix.e;
-  *f = matrix.f;
+  *matrix = FSMatrixFromCFXMatrix(pImgObj->matrix());
   return true;
 }
 

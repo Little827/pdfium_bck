@@ -127,58 +127,28 @@ TEST_F(PDFEditImgTest, GetSetImageMatrix) {
   FPDF_DOCUMENT doc = FPDF_CreateNewDocument();
   FPDF_PAGEOBJECT image = FPDFPageObj_NewImageObj(doc);
 
-  double a;
-  double b;
-  double c;
-  double d;
-  double e;
-  double f;
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, nullptr, nullptr, nullptr,
-                                      nullptr, nullptr, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, &a, nullptr, nullptr, nullptr,
-                                      nullptr, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, &a, &b, nullptr, nullptr,
-                                      nullptr, nullptr));
-  EXPECT_FALSE(
-      FPDFImageObj_GetMatrix(nullptr, &a, &b, &c, nullptr, nullptr, nullptr));
-  EXPECT_FALSE(
-      FPDFImageObj_GetMatrix(nullptr, &a, &b, &c, nullptr, nullptr, nullptr));
-  EXPECT_FALSE(
-      FPDFImageObj_GetMatrix(nullptr, &a, &b, &c, &d, nullptr, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, &a, &b, &c, &d, &e, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, &a, &b, &c, &d, &e, &f));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, &a, nullptr, &c, &d, &e, &f));
+  FS_MATRIX matrix;
+  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, nullptr));
+  EXPECT_FALSE(FPDFImageObj_GetMatrix(nullptr, &matrix));
 
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(image, nullptr, nullptr, nullptr, nullptr,
-                                      nullptr, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(image, &a, nullptr, nullptr, nullptr,
-                                      nullptr, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(image, &a, &b, nullptr, nullptr, nullptr,
-                                      nullptr));
-  EXPECT_FALSE(
-      FPDFImageObj_GetMatrix(image, &a, &b, &c, nullptr, nullptr, nullptr));
-  EXPECT_FALSE(
-      FPDFImageObj_GetMatrix(image, &a, &b, &c, nullptr, nullptr, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(image, &a, &b, &c, &d, nullptr, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(image, &a, &b, &c, &d, &e, nullptr));
-  EXPECT_FALSE(FPDFImageObj_GetMatrix(image, &a, nullptr, &c, &d, &e, &f));
+  EXPECT_FALSE(FPDFImageObj_GetMatrix(image, nullptr));
 
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(image, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(1.0, a);
-  EXPECT_DOUBLE_EQ(0.0, b);
-  EXPECT_DOUBLE_EQ(0.0, c);
-  EXPECT_DOUBLE_EQ(1.0, d);
-  EXPECT_DOUBLE_EQ(0.0, e);
-  EXPECT_DOUBLE_EQ(0.0, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(image, &matrix));
+  EXPECT_FLOAT_EQ(1.0f, matrix.a);
+  EXPECT_FLOAT_EQ(0.0f, matrix.b);
+  EXPECT_FLOAT_EQ(0.0f, matrix.c);
+  EXPECT_FLOAT_EQ(1.0f, matrix.d);
+  EXPECT_FLOAT_EQ(0.0f, matrix.e);
+  EXPECT_FLOAT_EQ(0.0f, matrix.f);
 
   EXPECT_TRUE(FPDFImageObj_SetMatrix(image, 1, 2, 3, 4, 5, 6));
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(image, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(1.0, a);
-  EXPECT_DOUBLE_EQ(2.0, b);
-  EXPECT_DOUBLE_EQ(3.0, c);
-  EXPECT_DOUBLE_EQ(4.0, d);
-  EXPECT_DOUBLE_EQ(5.0, e);
-  EXPECT_DOUBLE_EQ(6.0, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(image, &matrix));
+  EXPECT_FLOAT_EQ(1.0f, matrix.a);
+  EXPECT_FLOAT_EQ(2.0f, matrix.b);
+  EXPECT_FLOAT_EQ(3.0f, matrix.c);
+  EXPECT_FLOAT_EQ(4.0f, matrix.d);
+  EXPECT_FLOAT_EQ(5.0f, matrix.e);
+  EXPECT_FLOAT_EQ(6.0f, matrix.f);
 
   FPDFPageObj_Destroy(image);
   FPDF_CloseDocument(doc);

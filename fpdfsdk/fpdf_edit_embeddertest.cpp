@@ -311,35 +311,34 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddPaths) {
   ASSERT_EQ(5, FPDFPath_CountSegments(green_rect));
   // Verify actual coordinates.
   FPDF_PATHSEGMENT segment = FPDFPath_GetPathSegment(green_rect, 0);
-  float x;
-  float y;
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(100, x);
-  EXPECT_EQ(100, y);
+  FS_POINTF point;
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(100.0f, point.x);
+  EXPECT_FLOAT_EQ(100.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_MOVETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
   segment = FPDFPath_GetPathSegment(green_rect, 1);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(100, x);
-  EXPECT_EQ(140, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(100.0f, point.x);
+  EXPECT_FLOAT_EQ(140.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
   segment = FPDFPath_GetPathSegment(green_rect, 2);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(140, x);
-  EXPECT_EQ(140, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(140.0f, point.x);
+  EXPECT_FLOAT_EQ(140.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
   segment = FPDFPath_GetPathSegment(green_rect, 3);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(140, x);
-  EXPECT_EQ(100, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(140.0f, point.x);
+  EXPECT_FLOAT_EQ(100.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
   segment = FPDFPath_GetPathSegment(green_rect, 4);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(100, x);
-  EXPECT_EQ(100, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(100.0f, point.x);
+  EXPECT_FLOAT_EQ(100.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_TRUE(FPDFPathSegment_GetClose(segment));
 
@@ -364,21 +363,21 @@ TEST_F(FPDFEditEmbedderTest, MAYBE_AddPaths) {
   ASSERT_EQ(3, FPDFPath_CountSegments(black_path));
   // Verify actual coordinates.
   segment = FPDFPath_GetPathSegment(black_path, 0);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(400, x);
-  EXPECT_EQ(100, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(400.0f, point.x);
+  EXPECT_FLOAT_EQ(100.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_MOVETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
   segment = FPDFPath_GetPathSegment(black_path, 1);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(400, x);
-  EXPECT_EQ(200, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(400.0f, point.x);
+  EXPECT_FLOAT_EQ(200.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
   segment = FPDFPath_GetPathSegment(black_path, 2);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(300, x);
-  EXPECT_EQ(100, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(300.0f, point.x);
+  EXPECT_FLOAT_EQ(100.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_TRUE(FPDFPathSegment_GetClose(segment));
   // Make sure out of bounds index access fails properly.
@@ -432,30 +431,29 @@ TEST_F(FPDFEditEmbedderTest, ClipPath) {
   ASSERT_EQ(4, FPDFPath_CountSegments(triangle));
 
   FPDF_PATHSEGMENT segment = FPDFPath_GetPathSegment(triangle, 0);
-  float x;
-  float y;
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(10, x);
-  EXPECT_EQ(10, y);
+  FS_POINTF point;
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(10.0f, point.x);
+  EXPECT_FLOAT_EQ(10.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_MOVETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
   segment = FPDFPath_GetPathSegment(triangle, 1);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(25, x);
-  EXPECT_EQ(40, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(25.0f, point.x);
+  EXPECT_FLOAT_EQ(40.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
   segment = FPDFPath_GetPathSegment(triangle, 2);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(40, x);
-  EXPECT_EQ(10, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(40.0f, point.x);
+  EXPECT_FLOAT_EQ(10.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
   segment = FPDFPath_GetPathSegment(triangle, 3);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
   EXPECT_TRUE(FPDFPathSegment_GetClose(segment));
 
   // Test FPDFPageObj_GetClipPath().
@@ -483,30 +481,30 @@ TEST_F(FPDFEditEmbedderTest, ClipPath) {
 
   // FPDFClipPath_GetPathSegment() positive testing.
   segment = FPDFClipPath_GetPathSegment(clip_path, 0, 0);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(10, x);
-  EXPECT_EQ(15, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(10.0f, point.x);
+  EXPECT_FLOAT_EQ(15.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_MOVETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
   segment = FPDFClipPath_GetPathSegment(clip_path, 0, 1);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(40, x);
-  EXPECT_EQ(15, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(40.0f, point.x);
+  EXPECT_FLOAT_EQ(15.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
   segment = FPDFClipPath_GetPathSegment(clip_path, 0, 2);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(40, x);
-  EXPECT_EQ(35, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(40.0f, point.x);
+  EXPECT_FLOAT_EQ(35.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
   segment = FPDFClipPath_GetPathSegment(clip_path, 0, 3);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_EQ(10, x);
-  EXPECT_EQ(35, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(10.0f, point.x);
+  EXPECT_FLOAT_EQ(35.0f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
@@ -527,18 +525,17 @@ TEST_F(FPDFEditEmbedderTest, BUG_1399) {
   ASSERT_EQ(2, FPDFPath_CountSegments(obj));
 
   FPDF_PATHSEGMENT segment = FPDFPath_GetPathSegment(obj, 0);
-  float x;
-  float y;
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_FLOAT_EQ(107.718f, x);
-  EXPECT_FLOAT_EQ(719.922f, y);
+  FS_POINTF point;
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(107.718f, point.x);
+  EXPECT_FLOAT_EQ(719.922f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_MOVETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
   segment = FPDFPath_GetPathSegment(obj, 1);
-  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &x, &y));
-  EXPECT_FLOAT_EQ(394.718f, x);
-  EXPECT_FLOAT_EQ(719.922f, y);
+  EXPECT_TRUE(FPDFPathSegment_GetPoint(segment, &point));
+  EXPECT_FLOAT_EQ(394.718f, point.x);
+  EXPECT_FLOAT_EQ(719.922f, point.y);
   EXPECT_EQ(FPDF_SEGMENT_LINETO, FPDFPathSegment_GetType(segment));
   EXPECT_FALSE(FPDFPathSegment_GetClose(segment));
 
@@ -1784,10 +1781,9 @@ TEST_F(FPDFEditEmbedderTest, PathsPoints) {
   ASSERT_EQ(nullptr, FPDFPath_GetPathSegment(img, 0));
   // FPDFPath_GetPathSegment() with a NULL path.
   ASSERT_EQ(nullptr, FPDFPath_GetPathSegment(nullptr, 0));
-  float x;
-  float y;
+  FS_POINTF point;
   // FPDFPathSegment_GetPoint() with a NULL segment.
-  EXPECT_FALSE(FPDFPathSegment_GetPoint(nullptr, &x, &y));
+  EXPECT_FALSE(FPDFPathSegment_GetPoint(nullptr, &point));
 
   // FPDFPathSegment_GetType() with a NULL segment.
   ASSERT_EQ(FPDF_SEGMENT_UNKNOWN, FPDFPathSegment_GetType(nullptr));
@@ -3346,72 +3342,67 @@ TEST_F(FPDFEditEmbedderTest, GetImageMatrix) {
   ASSERT_EQ(39, FPDFPage_CountObjects(page));
 
   FPDF_PAGEOBJECT obj;
-  double a;
-  double b;
-  double c;
-  double d;
-  double e;
-  double f;
+  FS_MATRIX matrix;
 
   obj = FPDFPage_GetObject(page, 33);
   ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(53.0, a);
-  EXPECT_DOUBLE_EQ(0.0, b);
-  EXPECT_DOUBLE_EQ(0.0, c);
-  EXPECT_DOUBLE_EQ(43.0, d);
-  EXPECT_DOUBLE_EQ(72.0, e);
-  EXPECT_DOUBLE_EQ(646.510009765625, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &matrix));
+  EXPECT_FLOAT_EQ(53.0f, matrix.a);
+  EXPECT_FLOAT_EQ(0.0f, matrix.b);
+  EXPECT_FLOAT_EQ(0.0f, matrix.c);
+  EXPECT_FLOAT_EQ(43.0f, matrix.d);
+  EXPECT_FLOAT_EQ(72.0f, matrix.e);
+  EXPECT_FLOAT_EQ(646.510009765625f, matrix.f);
 
   obj = FPDFPage_GetObject(page, 34);
   ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(70.0, a);
-  EXPECT_DOUBLE_EQ(0.0, b);
-  EXPECT_DOUBLE_EQ(0.0, c);
-  EXPECT_DOUBLE_EQ(51.0, d);
-  EXPECT_DOUBLE_EQ(216.0, e);
-  EXPECT_DOUBLE_EQ(646.510009765625, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &matrix));
+  EXPECT_FLOAT_EQ(70.0f, matrix.a);
+  EXPECT_FLOAT_EQ(0.0f, matrix.b);
+  EXPECT_FLOAT_EQ(0.0f, matrix.c);
+  EXPECT_FLOAT_EQ(51.0f, matrix.d);
+  EXPECT_FLOAT_EQ(216.0f, matrix.e);
+  EXPECT_FLOAT_EQ(646.510009765625f, matrix.f);
 
   obj = FPDFPage_GetObject(page, 35);
   ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(69.0, a);
-  EXPECT_DOUBLE_EQ(0.0, b);
-  EXPECT_DOUBLE_EQ(0.0, c);
-  EXPECT_DOUBLE_EQ(51.0, d);
-  EXPECT_DOUBLE_EQ(360.0, e);
-  EXPECT_DOUBLE_EQ(646.510009765625, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &matrix));
+  EXPECT_FLOAT_EQ(69.0f, matrix.a);
+  EXPECT_FLOAT_EQ(0.0f, matrix.b);
+  EXPECT_FLOAT_EQ(0.0f, matrix.c);
+  EXPECT_FLOAT_EQ(51.0f, matrix.d);
+  EXPECT_FLOAT_EQ(360.0f, matrix.e);
+  EXPECT_FLOAT_EQ(646.510009765625f, matrix.f);
 
   obj = FPDFPage_GetObject(page, 36);
   ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(59.0, a);
-  EXPECT_DOUBLE_EQ(0.0, b);
-  EXPECT_DOUBLE_EQ(0.0, c);
-  EXPECT_DOUBLE_EQ(45.0, d);
-  EXPECT_DOUBLE_EQ(72.0, e);
-  EXPECT_DOUBLE_EQ(553.510009765625, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &matrix));
+  EXPECT_FLOAT_EQ(59.0f, matrix.a);
+  EXPECT_FLOAT_EQ(0.0f, matrix.b);
+  EXPECT_FLOAT_EQ(0.0f, matrix.c);
+  EXPECT_FLOAT_EQ(45.0f, matrix.d);
+  EXPECT_FLOAT_EQ(72.0f, matrix.e);
+  EXPECT_FLOAT_EQ(553.510009765625f, matrix.f);
 
   obj = FPDFPage_GetObject(page, 37);
   ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(55.94000244140625, a);
-  EXPECT_DOUBLE_EQ(0.0, b);
-  EXPECT_DOUBLE_EQ(0.0, c);
-  EXPECT_DOUBLE_EQ(46.950000762939453, d);
-  EXPECT_DOUBLE_EQ(216.0, e);
-  EXPECT_DOUBLE_EQ(552.510009765625, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &matrix));
+  EXPECT_FLOAT_EQ(55.94000244140625f, matrix.a);
+  EXPECT_FLOAT_EQ(0.0f, matrix.b);
+  EXPECT_FLOAT_EQ(0.0f, matrix.c);
+  EXPECT_FLOAT_EQ(46.950000762939453f, matrix.d);
+  EXPECT_FLOAT_EQ(216.0f, matrix.e);
+  EXPECT_FLOAT_EQ(552.510009765625f, matrix.f);
 
   obj = FPDFPage_GetObject(page, 38);
   ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
-  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &a, &b, &c, &d, &e, &f));
-  EXPECT_DOUBLE_EQ(70.528999328613281, a);
-  EXPECT_DOUBLE_EQ(0.0, b);
-  EXPECT_DOUBLE_EQ(0.0, c);
-  EXPECT_DOUBLE_EQ(43.149997711181641, d);
-  EXPECT_DOUBLE_EQ(360.0, e);
-  EXPECT_DOUBLE_EQ(553.3599853515625, f);
+  EXPECT_TRUE(FPDFImageObj_GetMatrix(obj, &matrix));
+  EXPECT_FLOAT_EQ(70.528999328613281f, matrix.a);
+  EXPECT_FLOAT_EQ(0.0f, matrix.b);
+  EXPECT_FLOAT_EQ(0.0f, matrix.c);
+  EXPECT_FLOAT_EQ(43.149997711181641f, matrix.d);
+  EXPECT_FLOAT_EQ(360.0f, matrix.e);
+  EXPECT_FLOAT_EQ(553.3599853515625f, matrix.f);
 
   UnloadPage(page);
 }

@@ -231,6 +231,7 @@ bool GetQuadPointsAtIndex(const CPDF_Array* array,
                           FS_QUADPOINTSF* quad_points);
 
 CFX_PointF CFXPointFFromFSPointF(const FS_POINTF& point);
+FS_POINTF FSPointFFromCFXPointF(const CFX_PointF& point);
 
 CFX_FloatRect CFXFloatRectFromFSRectF(const FS_RECTF& rect);
 FS_RECTF FSRectFFromCFXFloatRect(const CFX_FloatRect& rect);

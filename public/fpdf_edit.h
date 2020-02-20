@@ -560,12 +560,7 @@ FPDFImageObj_LoadJpegFileInline(FPDF_PAGE* pages,
 // Get the transform matrix of an image object.
 //
 //   image_object - handle to an image object.
-//   a            - matrix value.
-//   b            - matrix value.
-//   c            - matrix value.
-//   d            - matrix value.
-//   e            - matrix value.
-//   f            - matrix value.
+//   matrix       - pointer to struct to receive the matrix value.
 //
 // The matrix is composed as:
 //   |a c e|
@@ -574,13 +569,7 @@ FPDFImageObj_LoadJpegFileInline(FPDF_PAGE* pages,
 //
 // Returns TRUE on success.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFImageObj_GetMatrix(FPDF_PAGEOBJECT image_object,
-                       double* a,
-                       double* b,
-                       double* c,
-                       double* d,
-                       double* e,
-                       double* f);
+FPDFImageObj_GetMatrix(FPDF_PAGEOBJECT image_object, FS_MATRIX* matrix);
 
 // Set the transform matrix of |image_object|.
 //
@@ -899,12 +888,11 @@ FPDFPath_GetPathSegment(FPDF_PAGEOBJECT path, int index);
 // Get coordinates of |segment|.
 //
 //   segment  - handle to a segment.
-//   x      - the horizontal position of the segment.
-//   y      - the vertical position of the segment.
+//   point    - the position of the segment.
 //
 // Returns TRUE on success, otherwise |x| and |y| is not set.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDFPathSegment_GetPoint(FPDF_PATHSEGMENT segment, float* x, float* y);
+FPDFPathSegment_GetPoint(FPDF_PATHSEGMENT segment, FS_POINTF* point);
 
 // Experimental API.
 // Get type of |segment|.

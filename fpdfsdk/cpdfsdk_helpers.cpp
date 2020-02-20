@@ -251,6 +251,10 @@ CFX_PointF CFXPointFFromFSPointF(const FS_POINTF& point) {
   return CFX_PointF(point.x, point.y);
 }
 
+FS_POINTF FSPointFFromCFXPointF(const CFX_PointF& point) {
+  return {point.x, point.y};
+}
+
 CFX_FloatRect CFXFloatRectFromFSRectF(const FS_RECTF& rect) {
   return CFX_FloatRect(rect.left, rect.bottom, rect.right, rect.top);
 }
