@@ -23,6 +23,30 @@
       "revId": "65576880908db2c67595d0a02c1f3587f5e5b03c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064ce42a_7d430b6c",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-21T00:02:01Z",
+      "side": 1,
+      "message": "Moved the comment down, to be consistent with CPDFSDK_PageView::OnMouseMove().",
+      "parentUuid": "599fb85e_9fcbfdb8",
+      "range": {
+        "startLine": 410,
+        "startChar": 31,
+        "endLine": 410,
+        "endChar": 35
+      },
+      "revId": "65576880908db2c67595d0a02c1f3587f5e5b03c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
