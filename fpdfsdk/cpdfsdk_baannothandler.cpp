@@ -22,6 +22,7 @@
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/formfiller/cffl_formfiller.h"
+#include "public/fpdf_fwlevent.h"
 
 namespace {
 
@@ -181,7 +182,22 @@ bool CPDFSDK_BAAnnotHandler::OnKeyDown(CPDFSDK_Annot* pAnnot,
 bool CPDFSDK_BAAnnotHandler::OnKeyUp(CPDFSDK_Annot* pAnnot,
                                      int nKeyCode,
                                      int nFlag) {
-  return false;
+  ASSERT(pAnnot);
+
+  // OnKeyUp() is implemented only for Link for now. Once OnKeyUp() is
+  // implemented for other subtypes, following if check should go away.
+  if (pAnnot->GetAnnotSubtype() != CPDF_Annot::Subtype::LINK)
+    return false;
+
+  if (nKeyCode != FWL_VKEY_Return)
+    return false;
+
+  CPDFSDK_BAAnnot* ba_annot = static_cast<CPDFSDK_BAAnnot*>(pAnnot);
+  if (!ba_annot->GetAAction(CPDF_AAction::kKeyStroke).GetDict())
+    return false;
+
+  CPDFSDK_PageView* page_view = ba_annot->GetPageView();
+  return ba_annot->DoAAction(CPDF_AAction::kKeyStroke, page_view, nFlag);
 }
 
 void CPDFSDK_BAAnnotHandler::OnLoad(CPDFSDK_Annot* pAnnot) {}

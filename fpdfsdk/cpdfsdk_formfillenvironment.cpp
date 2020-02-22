@@ -384,9 +384,10 @@ void CPDFSDK_FormFillEnvironment::OnSetFieldInputFocus(
     m_pInfo->FFI_SetTextFieldFocus(m_pInfo, focusText, nTextLen, bFocus);
 }
 
-void CPDFSDK_FormFillEnvironment::DoURIAction(const char* bsURI) {
-  if (m_pInfo && m_pInfo->FFI_DoURIAction)
-    m_pInfo->FFI_DoURIAction(m_pInfo, bsURI);
+void CPDFSDK_FormFillEnvironment::DoURIAction(const char* bsURI,
+                                              uint32_t modifiers) {
+  if (m_pInfo && m_pInfo->FFI_DoURIActionWithKeyboardModifier)
+    m_pInfo->FFI_DoURIActionWithKeyboardModifier(m_pInfo, bsURI, modifiers);
 }
 
 void CPDFSDK_FormFillEnvironment::DoGoToAction(int nPageIndex,
