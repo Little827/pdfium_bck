@@ -21,6 +21,8 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 using testing::_;
+using testing::InSequence;
+using testing::NiceMock;
 
 using FPDFFormFillEmbedderTest = EmbedderTest;
 
@@ -538,6 +540,8 @@ TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
   EXPECT_CALL(mock, SetTimer(_, _)).Times(0);
   EXPECT_CALL(mock, KillTimer(_)).Times(0);
   EXPECT_CALL(mock, OnFocusChange(_, _, _)).Times(0);
+  EXPECT_CALL(mock, DoURIAction(_)).Times(0);
+  EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, _)).Times(0);
   SetDelegate(&mock);
 
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
@@ -636,6 +640,85 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_901654_2) {
                                 nullptr);
   }
   UnloadPage(page);
+}
+
+class FPDFFormFillActionUriTest : public EmbedderTest {
+ protected:
+  FPDFFormFillActionUriTest() = default;
+  ~FPDFFormFillActionUriTest() override = default;
+
+  void SetUp() override {
+    EmbedderTest::SetUp();
+    // Set Widget, Link and Highlight as supported annots
+    // tabbing should iterate over these annot subtypes via GetNextAnnot API.
+    constexpr FPDF_ANNOTATION_SUBTYPE supported_annot_subtypes[] = {
+        FPDF_ANNOT_WIDGET, FPDF_ANNOT_LINK, FPDF_ANNOT_HIGHLIGHT};
+    constexpr unsigned int supported_annot_subtypes_count =
+        FX_ArraySize(supported_annot_subtypes);
+
+    FPDFAnnot_SetFocusableSubtypes(form_handle(), supported_annot_subtypes,
+                                   supported_annot_subtypes_count);
+    ASSERT_TRUE(OpenDocument("links_highlights_annots.pdf"));
+    page_ = LoadPage(0);
+    ASSERT_TRUE(page_);
+  }
+
+  void TearDown() override {
+    UnloadPage(page_);
+    EmbedderTest::TearDown();
+  }
+
+  FPDF_PAGE page() { return page_; }
+
+ private:
+  FPDF_PAGE page_ = nullptr;
+};
+
+TEST_F(FPDFFormFillActionUriTest, LinkKeyboardActionInvokeTest) {
+  NiceMock<EmbedderTestMockDelegate> mock;
+  {
+    InSequence sequence;
+
+    EXPECT_CALL(mock, DoURIAction(_)).Times(0);
+    // TODO(crbug.com/994500): Following comments has to be removed after the
+    // implementation of Action handling of links through keyboard when
+    // different modifiers are down.
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 0));
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 2));
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 1));
+    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 3));
+  }
+  SetDelegate(&mock);
+
+  constexpr FPDF_ANNOTATION_SUBTYPE focusable_subtypes[] = {FPDF_ANNOT_WIDGET,
+                                                            FPDF_ANNOT_LINK};
+  constexpr unsigned int subtype_count = FX_ArraySize(focusable_subtypes);
+
+  FPDFAnnot_SetFocusableSubtypes(form_handle(), focusable_subtypes,
+                                 subtype_count);
+
+  // Click on the textfield
+  EXPECT_EQ(FPDF_FORMFIELD_TEXTFIELD,
+            FPDFPage_HasFormFieldAtPoint(form_handle(), page(), 150, 680));
+
+  ASSERT_TRUE(FORM_OnMouseMove(form_handle(), page(), 0, 150, 680));
+  ASSERT_TRUE(FORM_OnLButtonDown(form_handle(), page(), 0, 150, 680));
+  ASSERT_TRUE(FORM_OnLButtonUp(form_handle(), page(), 0, 150, 680));
+
+  // Invoking tab once on the page to bring link annotation to focus.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Tab, 0));
+
+  int modifier = 0;
+  // TODO(crbug.com/994500): Following checks has to be changed to ASSERT_TRUE
+  // after the implementation of Action handling of links through keyboard when
+  // different modifiers are down.
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier = FWL_EVENTFLAG_ControlKey;
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier = FWL_EVENTFLAG_ShiftKey;
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  modifier |= FWL_EVENTFLAG_ControlKey;
+  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
 }
 
 class DoURIActionBlockedDelegate final : public EmbedderTest::Delegate {
