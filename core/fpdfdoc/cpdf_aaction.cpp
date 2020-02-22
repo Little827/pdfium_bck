@@ -65,3 +65,13 @@ bool CPDF_AAction::IsUserClick(AActionType eType) {
       return false;
   }
 }
+
+// static
+bool CPDF_AAction::IsUserPress(AActionType type) {
+  switch (type) {
+    case kKeyStroke:
+      return true;
+    default:
+      return false;
+  }
+}

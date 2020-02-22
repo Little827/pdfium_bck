@@ -20,6 +20,7 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_pageview.h"
 
 CPDFSDK_BAAnnot::CPDFSDK_BAAnnot(CPDF_Annot* pAnnot,
@@ -213,7 +214,7 @@ CPDF_Action CPDFSDK_BAAnnot::GetAAction(CPDF_AAction::AActionType eAAT) {
   if (AAction.ActionExist(eAAT))
     return AAction.GetAction(eAAT);
 
-  if (eAAT == CPDF_AAction::kButtonUp)
+  if ((eAAT == CPDF_AAction::kButtonUp) || (eAAT == CPDF_AAction::kKeyStroke))
     return GetAction();
 
   return CPDF_Action(nullptr);
@@ -222,6 +223,20 @@ CPDF_Action CPDFSDK_BAAnnot::GetAAction(CPDF_AAction::AActionType eAAT) {
 void CPDFSDK_BAAnnot::SetOpenState(bool bOpenState) {
   if (CPDF_Annot* pAnnot = m_pAnnot->GetPopupAnnot())
     pAnnot->SetOpenState(bOpenState);
+}
+
+bool CPDFSDK_BAAnnot::DoAAction(CPDF_AAction::AActionType type,
+                                CPDFSDK_PageView* page_view,
+                                int modifier) {
+  CPDFSDK_FormFillEnvironment* formfill_env = page_view->GetFormFillEnv();
+  ASSERT(formfill_env);
+  CPDF_Action action = GetAAction(type);
+  if (action.GetType() == CPDF_Action::URI) {
+    return formfill_env->GetActionHandler()->DoAction_LinkInvocation(
+        action, type, formfill_env, modifier);
+  }
+
+  return false;
 }
 
 int CPDFSDK_BAAnnot::GetLayoutOrder() const {

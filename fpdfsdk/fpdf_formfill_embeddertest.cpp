@@ -680,13 +680,10 @@ TEST_F(FPDFFormFillActionUriTest, LinkKeyboardActionInvokeTest) {
     InSequence sequence;
 
     EXPECT_CALL(mock, DoURIAction(_)).Times(0);
-    // TODO(crbug.com/994500): Following comments has to be removed after the
-    // implementation of Action handling of links through keyboard when
-    // different modifiers are down.
-    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 0));
-    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 2));
-    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 1));
-    // EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 3));
+    EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 0));
+    EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 2));
+    EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 1));
+    EXPECT_CALL(mock, DoURIActionWithKeyboardModifier(_, _, 3));
   }
   SetDelegate(&mock);
 
@@ -709,16 +706,14 @@ TEST_F(FPDFFormFillActionUriTest, LinkKeyboardActionInvokeTest) {
   ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Tab, 0));
 
   int modifier = 0;
-  // TODO(crbug.com/994500): Following checks has to be changed to ASSERT_TRUE
-  // after the implementation of Action handling of links through keyboard when
-  // different modifiers are down.
-  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+
+  ASSERT_TRUE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
   modifier = FWL_EVENTFLAG_ControlKey;
-  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  ASSERT_TRUE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
   modifier = FWL_EVENTFLAG_ShiftKey;
-  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  ASSERT_TRUE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
   modifier |= FWL_EVENTFLAG_ControlKey;
-  ASSERT_FALSE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
+  ASSERT_TRUE(FORM_OnKeyUp(form_handle(), page(), FWL_VKEY_Return, modifier));
 }
 
 class DoURIActionBlockedDelegate final : public EmbedderTest::Delegate {

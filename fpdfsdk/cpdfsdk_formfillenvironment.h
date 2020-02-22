@@ -15,12 +15,12 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/timerhandler_iface.h"
+#include "fpdfsdk/cpdfsdk_actionhandler.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
 #include "fpdfsdk/pwl/ipwl_systemhandler.h"
 #include "public/fpdf_formfill.h"
 
 class CFFL_InteractiveFormFiller;
-class CPDFSDK_ActionHandler;
 class CPDFSDK_AnnotHandlerMgr;
 class CPDFSDK_InteractiveForm;
 class CPDFSDK_PageView;
@@ -94,7 +94,7 @@ class CPDFSDK_FormFillEnvironment final : public Observable,
   void OnSetFieldInputFocus(FPDF_WIDESTRING focusText,
                             FPDF_DWORD nTextLen,
                             bool bFocus);
-  void DoURIAction(const char* bsURI);
+  void DoURIAction(const char* bsURI, uint32_t modifiers);
   void DoGoToAction(int nPageIndex,
                     int zoomMode,
                     float* fPosArray,
