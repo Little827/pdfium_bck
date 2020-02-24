@@ -757,6 +757,54 @@ TEST_F(FPDFFormFillEmbedderTest, BUG_851821) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFFormFillEmbedderTest, CheckReadOnlyInCheckBoxAndRadioButton) {
+  EmbedderTestTimerHandlingDelegate delegate;
+  SetDelegate(&delegate);
+
+  EXPECT_TRUE(OpenDocument("click_form.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  EXPECT_TRUE(page);
+
+  // Check for ReadOnly CheckBox button
+  ScopedFPDFAnnotation focused_annot(FPDFPage_GetAnnot(page, 1));
+  EXPECT_TRUE(FORM_SetFocusedAnnot(form_handle(), page, focused_annot.get()));
+
+  // Shift-tab to previous control
+  EXPECT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab,
+                             FWL_EVENTFLAG_ShiftKey));
+  FPDF_ANNOTATION annot = nullptr;
+  int page_index = -1;
+  EXPECT_TRUE(FORM_GetFocusedAnnot(form_handle(), &page_index, &annot));
+  ScopedFPDFAnnotation scoped_annot(annot);
+  EXPECT_EQ(0, FPDFPage_GetAnnotIndex(page, annot));
+
+  EXPECT_TRUE(FPDFAnnot_IsChecked(form_handle(), annot));
+
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page, FWL_VKEY_Return, 0));
+
+  EXPECT_TRUE(FPDFAnnot_IsChecked(form_handle(), annot));
+
+  // Check for ReadOnly Radio Button
+  focused_annot.reset(FPDFPage_GetAnnot(page, 1));
+  EXPECT_TRUE(FORM_SetFocusedAnnot(form_handle(), page, focused_annot.get()));
+
+  // Tab to next control
+  EXPECT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+  // Tab to next control
+  EXPECT_TRUE(FORM_OnKeyDown(form_handle(), page, FWL_VKEY_Tab, 0));
+
+  EXPECT_TRUE(FORM_GetFocusedAnnot(form_handle(), &page_index, &annot));
+  scoped_annot.reset(annot);
+  EXPECT_EQ(3, FPDFPage_GetAnnotIndex(page, annot));
+  EXPECT_FALSE(FPDFAnnot_IsChecked(form_handle(), annot));
+
+  EXPECT_TRUE(FORM_OnChar(form_handle(), page, FWL_VKEY_Return, 0));
+
+  EXPECT_FALSE(FPDFAnnot_IsChecked(form_handle(), annot));
+
+  UnloadPage(page);
+}
+
 #ifdef PDF_ENABLE_V8
 TEST_F(FPDFFormFillEmbedderTest, DisableJavaScript) {
   // Test that timers and intervals can't fire without JS.
