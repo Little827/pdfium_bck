@@ -21,6 +21,7 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 using testing::_;
+using testing::NiceMock;
 
 using FPDFFormFillEmbedderTest = EmbedderTest;
 
@@ -531,6 +532,49 @@ class FPDFFormFillTextFormEmbedderTestVersion2
   }
 };
 
+class FPDFFormFillActionUriTest : public EmbedderTest {
+ protected:
+  FPDFFormFillActionUriTest() = default;
+  ~FPDFFormFillActionUriTest() override = default;
+
+  void SetUp() override {
+    EmbedderTest::SetUp();
+    ASSERT_TRUE(OpenDocument("annots_action_handling.pdf"));
+    page_ = LoadPage(0);
+    ASSERT_TRUE(page_);
+  }
+
+  void TearDown() override {
+    UnloadPage(page_);
+    EmbedderTest::TearDown();
+  }
+
+  void SetFocusOnFirstForm() {
+    FORM_OnMouseMove(form_handle(), page_, /* modifier = */ 0, 100, 680);
+    FORM_OnLButtonDown(form_handle(), page(), /* modifier = */ 0, 100, 680);
+    FORM_OnLButtonUp(form_handle(), page_, /* modifier = */ 0, 100, 680);
+  }
+
+  FPDF_PAGE page() { return page_; }
+
+ private:
+  FPDF_PAGE page_ = nullptr;
+};
+
+TEST_F(FPDFFormFillActionUriTest, ButtonActionInvokeTest) {
+  NiceMock<EmbedderTestMockDelegate> mock;
+  EXPECT_CALL(mock, DoURIAction(_)).Times(1);
+  SetDelegate(&mock);
+
+  SetFocusOnFirstForm();
+
+  // Tab once from first form to go to button widget.
+  ASSERT_TRUE(FORM_OnKeyDown(form_handle(), page(), FWL_VKEY_Tab, 0));
+
+  int modifier = 0;
+  ASSERT_TRUE(FORM_OnChar(form_handle(), page(), FWL_VKEY_Return, modifier));
+}
+
 TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
   EmbedderTestMockDelegate mock;
   EXPECT_CALL(mock, Alert(_, _, _, _)).Times(0);
@@ -538,6 +582,7 @@ TEST_F(FPDFFormFillEmbedderTest, FirstTest) {
   EXPECT_CALL(mock, SetTimer(_, _)).Times(0);
   EXPECT_CALL(mock, KillTimer(_)).Times(0);
   EXPECT_CALL(mock, OnFocusChange(_, _, _)).Times(0);
+  EXPECT_CALL(mock, DoURIAction(_)).Times(0);
   SetDelegate(&mock);
 
   EXPECT_TRUE(OpenDocument("hello_world.pdf"));
