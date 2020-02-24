@@ -695,6 +695,24 @@
     },
     {
       "key": {
+        "uuid": "da47bf84_57a3f937",
+        "filename": "testing/resources/pixel/click_form.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7675
+      },
+      "writtenOn": "2020-02-24T23:21:58Z",
+      "side": 1,
+      "message": "I\u0027m not a PDF expert and haven\u0027t scrutinized the file, but in general, test files should be as small as possible while still providing the content needed to run the test. That makes it easier for future readers to grasp what is going on.",
+      "parentUuid": "0221f064_72910b0f",
+      "revId": "b18fe45eef4e9cb7b34212062015ada89f418e93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6fb4cb6_23083c3c",
         "filename": "testing/resources/pixel/click_form.in",
         "patchSetId": 1
