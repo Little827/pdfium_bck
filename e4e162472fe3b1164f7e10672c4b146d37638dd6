@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec60bd36_ad06997f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-25T09:43:27Z",
+      "side": 1,
+      "message": "with the specified modifier.",
+      "range": {
+        "startLine": 692,
+        "startChar": 11,
+        "endLine": 692,
+        "endChar": 52
+      },
+      "revId": "e4e162472fe3b1164f7e10672c4b146d37638dd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88e23663_e0792f2c",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-25T09:43:27Z",
+      "side": 1,
+      "message": "I would expect this to be 2.",
+      "range": {
+        "startLine": 694,
+        "startChar": 11,
+        "endLine": 694,
+        "endChar": 12
+      },
+      "revId": "e4e162472fe3b1164f7e10672c4b146d37638dd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b8b41c_ba45fa8f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-25T09:43:27Z",
+      "side": 1,
+      "message": "variable names should use new format instead.",
+      "range": {
+        "startLine": 698,
+        "startChar": 11,
+        "endLine": 698,
+        "endChar": 27
+      },
+      "revId": "e4e162472fe3b1164f7e10672c4b146d37638dd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
