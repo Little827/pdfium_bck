@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f3b9034_5a74d1a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-25T21:15:49Z",
+      "side": 1,
+      "message": "FPDFBitmap_BGR(24bpp) - this looks like a function call. Is that what you meant to write?",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "9ff047190fac6d8e0ee1de5eddd6694c97f9f854",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
