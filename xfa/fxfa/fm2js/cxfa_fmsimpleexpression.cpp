@@ -70,10 +70,58 @@ const XFA_FMSOMMethod gs_FMSomMethods[] = {
 
 }  // namespace
 
-CXFA_FMSimpleExpression::CXFA_FMSimpleExpression(XFA_FM_TOKEN op) : m_op(op) {}
+CXFA_FMSimpleExpression::CXFA_FMSimpleExpression(XFA_FM_TOKEN op,
+                                                 bool chainable)
+    : m_op(op), m_bChainable(chainable) {}
 
 XFA_FM_TOKEN CXFA_FMSimpleExpression::GetOperatorToken() const {
   return m_op;
+}
+
+CXFA_FMChainableExpression::CXFA_FMChainableExpression(
+    XFA_FM_TOKEN op,
+    std::unique_ptr<CXFA_FMSimpleExpression> pExp1,
+    std::unique_ptr<CXFA_FMSimpleExpression> pExp2)
+    : CXFA_FMSimpleExpression(op, /*chainable=*/true),
+      m_pExp1(std::move(pExp1)),
+      m_pExp2(std::move(pExp2)) {}
+
+// Iteratively delete a chainable expression tree in linear time and constant
+// space.
+void CXFA_FMChainableExpression::DeleteChain(
+    std::unique_ptr<CXFA_FMSimpleExpression> pRoot) {
+  while (pRoot && pRoot->chainable()) {
+    CXFA_FMChainableExpression* pRootChain =
+        static_cast<CXFA_FMChainableExpression*>(pRoot.get());
+
+    // If the root has no left child, delete the root and promote the right
+    // child to the root.
+    if (!pRootChain->m_pExp1) {
+      pRoot = std::move(pRootChain->m_pExp2);
+      continue;
+    }
+
+    // If the left child is not a chainable expression (i.e. a leaf node),
+    // simply delete it.
+    if (!pRootChain->m_pExp1->chainable()) {
+      pRootChain->m_pExp1.reset();
+      continue;
+    }
+
+    // Otherwise, perform a right tree rotation.
+    std::unique_ptr<CXFA_FMSimpleExpression> pPivot =
+        std::move(pRootChain->m_pExp1);
+    CXFA_FMChainableExpression* pPivotChain =
+        static_cast<CXFA_FMChainableExpression*>(pPivot.get());
+    pRootChain->m_pExp1 = std::move(pPivotChain->m_pExp2);
+    pPivotChain->m_pExp2 = std::move(pRoot);
+    pRoot = std::move(pPivot);
+  }
+}
+
+CXFA_FMChainableExpression::~CXFA_FMChainableExpression() {
+  DeleteChain(std::move(m_pExp1));
+  DeleteChain(std::move(m_pExp2));
 }
 
 CXFA_FMNullExpression::CXFA_FMNullExpression()
@@ -182,9 +230,7 @@ CXFA_FMAssignExpression::CXFA_FMAssignExpression(
     XFA_FM_TOKEN op,
     std::unique_ptr<CXFA_FMSimpleExpression> pExp1,
     std::unique_ptr<CXFA_FMSimpleExpression> pExp2)
-    : CXFA_FMSimpleExpression(op),
-      m_pExp1(std::move(pExp1)),
-      m_pExp2(std::move(pExp2)) {}
+    : CXFA_FMChainableExpression(op, std::move(pExp1), std::move(pExp2)) {}
 
 CXFA_FMAssignExpression::~CXFA_FMAssignExpression() = default;
 
@@ -226,10 +272,8 @@ CXFA_FMBinExpression::CXFA_FMBinExpression(
     XFA_FM_TOKEN op,
     std::unique_ptr<CXFA_FMSimpleExpression> pExp1,
     std::unique_ptr<CXFA_FMSimpleExpression> pExp2)
-    : CXFA_FMSimpleExpression(op),
-      m_OpName(opName),
-      m_pExp1(std::move(pExp1)),
-      m_pExp2(std::move(pExp2)) {}
+    : CXFA_FMChainableExpression(op, std::move(pExp1), std::move(pExp2)),
+      m_OpName(opName) {}
 
 CXFA_FMBinExpression::~CXFA_FMBinExpression() = default;
 
@@ -530,10 +574,10 @@ CXFA_FMDotAccessorExpression::CXFA_FMDotAccessorExpression(
     XFA_FM_TOKEN op,
     WideStringView wsIdentifier,
     std::unique_ptr<CXFA_FMSimpleExpression> pIndexExp)
-    : CXFA_FMSimpleExpression(op),
-      m_wsIdentifier(wsIdentifier),
-      m_pExp1(std::move(pAccessor)),
-      m_pExp2(std::move(pIndexExp)) {}
+    : CXFA_FMChainableExpression(op,
+                                 std::move(pAccessor),
+                                 std::move(pIndexExp)),
+      m_wsIdentifier(wsIdentifier) {}
 
 CXFA_FMDotAccessorExpression::~CXFA_FMDotAccessorExpression() = default;
 
@@ -627,10 +671,10 @@ CXFA_FMDotDotAccessorExpression::CXFA_FMDotDotAccessorExpression(
     XFA_FM_TOKEN op,
     WideStringView wsIdentifier,
     std::unique_ptr<CXFA_FMSimpleExpression> pIndexExp)
-    : CXFA_FMSimpleExpression(op),
-      m_wsIdentifier(wsIdentifier),
-      m_pExp1(std::move(pAccessor)),
-      m_pExp2(std::move(pIndexExp)) {}
+    : CXFA_FMChainableExpression(op,
+                                 std::move(pAccessor),
+                                 std::move(pIndexExp)),
+      m_wsIdentifier(wsIdentifier) {}
 
 CXFA_FMDotDotAccessorExpression::~CXFA_FMDotDotAccessorExpression() = default;
 
@@ -660,9 +704,9 @@ bool CXFA_FMDotDotAccessorExpression::ToJavaScript(CFX_WideTextBuf* js,
 CXFA_FMMethodCallExpression::CXFA_FMMethodCallExpression(
     std::unique_ptr<CXFA_FMSimpleExpression> pAccessorExp1,
     std::unique_ptr<CXFA_FMSimpleExpression> pCallExp)
-    : CXFA_FMSimpleExpression(TOKdot),
-      m_pExp1(std::move(pAccessorExp1)),
-      m_pExp2(std::move(pCallExp)) {}
+    : CXFA_FMChainableExpression(TOKdot,
+                                 std::move(pAccessorExp1),
+                                 std::move(pCallExp)) {}
 
 CXFA_FMMethodCallExpression::~CXFA_FMMethodCallExpression() = default;
 
