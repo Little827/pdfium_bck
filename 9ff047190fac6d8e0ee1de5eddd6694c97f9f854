@@ -22,6 +22,30 @@
       "revId": "9ff047190fac6d8e0ee1de5eddd6694c97f9f854",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987c6446_5749e009",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-25T21:21:16Z",
+      "side": 1,
+      "message": "I meant this format stands for a 24 bit per pixel format. I think I can just remove the parenthesis to avoid the confusion.",
+      "parentUuid": "3f3b9034_5a74d1a6",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "9ff047190fac6d8e0ee1de5eddd6694c97f9f854",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
