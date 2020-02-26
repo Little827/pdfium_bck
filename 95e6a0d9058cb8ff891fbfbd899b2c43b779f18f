@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4b4c60b_7041911e",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-26T16:45:53Z",
+      "side": 1,
+      "message": "To loop through normal radio buttons, assigning the value from read only button which is the current annot.",
+      "parentUuid": "ae5ddaf7_d273d4a4",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "95e6a0d9058cb8ff891fbfbd899b2c43b779f18f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32366103_7b1b3b6e",
         "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "95e6a0d9058cb8ff891fbfbd899b2c43b779f18f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc866a60_840ea250",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 7802
+      },
+      "writtenOn": "2020-02-26T16:45:53Z",
+      "side": 1,
+      "message": "Not required. Removed.",
+      "parentUuid": "32366103_7b1b3b6e",
+      "range": {
+        "startLine": 104,
+        "startChar": 19,
+        "endLine": 104,
+        "endChar": 36
+      },
+      "revId": "95e6a0d9058cb8ff891fbfbd899b2c43b779f18f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
