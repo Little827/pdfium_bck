@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "e9b2a80d_d1798eb3",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-26T19:23:04Z",
+      "side": 1,
+      "message": "We want to ultimately move away from Hungarian notation. One way to do that is to not use Hungarian notation in new code, like here. One need to take into consideration uniformity with existing code. Here, the functions immediately above and below are mostly not using Hungarian notation.",
+      "parentUuid": "79c5c5a2_d55e1455",
+      "range": {
+        "startLine": 41,
+        "startChar": 36,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "90520a171e371e8317efaffab647e65e6a472a73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "348ba0c4_7dd72984",
         "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2020-02-26T18:33:32Z",
       "side": 1,
       "message": "Optional: call this |pRootDict| to keep consistent with ReportUnsupportedFeatures().\n\nOr at least |pRoot| to maintain the Hungarian convention in this file.",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "90520a171e371e8317efaffab647e65e6a472a73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3cc4866_28cddf14",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-26T19:23:04Z",
+      "side": 1,
+      "message": "- Don\u0027t want Hungarian notation.\n- This function is nice and short and will probably remain that way. It\u0027s already easy to see |root| is a dict.",
+      "parentUuid": "348ba0c4_7dd72984",
       "range": {
         "startLine": 42,
         "startChar": 25,
