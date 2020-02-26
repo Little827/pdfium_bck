@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b22fddf4_5fa7926d",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-26T12:41:44Z",
+      "side": 1,
+      "message": "cpdf_annotContext",
+      "range": {
+        "startLine": 618,
+        "startChar": 21,
+        "endLine": 618,
+        "endChar": 34
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6bb801_6d75815d",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-26T12:41:44Z",
+      "side": 1,
+      "message": "Can you call this once before FORM_SetFocusedAnnot too? This way we will be able to validate before and after values.",
+      "range": {
+        "startLine": 730,
+        "startChar": 16,
+        "endLine": 730,
+        "endChar": 36
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f53fba79_11b2d711",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-26T12:41:44Z",
+      "side": 1,
+      "message": "Correct indentation here as well below.",
+      "range": {
+        "startLine": 1591,
+        "startChar": 21,
+        "endLine": 1593,
+        "endChar": 48
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ee8dd3_3813be0f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1605,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-26T12:41:44Z",
+      "side": 1,
+      "message": "Don\u0027t you need to add XFA comment here too like above method?",
+      "range": {
+        "startLine": 1604,
+        "startChar": 3,
+        "endLine": 1605,
+        "endChar": 49
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
