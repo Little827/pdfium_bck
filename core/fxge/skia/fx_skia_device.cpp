@@ -1609,11 +1609,21 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(
 #endif  // _SKIA_SUPPORT_PATHS_
       m_bGroupKnockout(bGroupKnockout) {
   SkBitmap skBitmap;
-  ASSERT(pBitmap->GetBPP() == 8 || pBitmap->GetBPP() == 32);
-  SkImageInfo imageInfo = SkImageInfo::Make(
-      pBitmap->GetWidth(), pBitmap->GetHeight(),
-      pBitmap->GetBPP() == 8 ? kAlpha_8_SkColorType : kN32_SkColorType,
-      kOpaque_SkAlphaType);
+  const int bpp = pBitmap->GetBPP();
+  ASSERT(bpp == 8 || bpp == 32);
+
+  SkColorType color_type;
+  if (bpp == 8) {
+    color_type = GetIsAlphaFromFormat(pBitmap->GetFormat())
+                     ? kAlpha_8_SkColorType
+                     : kGray_8_SkColorType;
+  } else {
+    color_type = kN32_SkColorType;
+  }
+
+  SkImageInfo imageInfo =
+      SkImageInfo::Make(pBitmap->GetWidth(), pBitmap->GetHeight(), color_type,
+                        kOpaque_SkAlphaType);
   skBitmap.installPixels(imageInfo, pBitmap->GetBuffer(), pBitmap->GetPitch());
   m_pCanvas = new SkCanvas(skBitmap);
 }
