@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6dab136a_da1f0db1",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-26T16:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22fddf4_5fa7926d",
+      "range": {
+        "startLine": 618,
+        "startChar": 21,
+        "endLine": 618,
+        "endChar": 34
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd6bb801_6d75815d",
         "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a092ecc6_a07e69ea",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-26T16:17:37Z",
+      "side": 1,
+      "message": "Is this needed, the loop checks the focused annotation before values in the previous iteration for every iteration except i \u003d 0 which is checked at line 710.",
+      "parentUuid": "bd6bb801_6d75815d",
+      "range": {
+        "startLine": 730,
+        "startChar": 16,
+        "endLine": 730,
+        "endChar": 36
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dc3c1088_cc83303a",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-26T16:17:37Z",
+      "side": 1,
+      "message": "Done. For some reason git cl format didn\u0027t work.",
+      "parentUuid": "f53fba79_11b2d711",
+      "range": {
+        "startLine": 1591,
+        "startChar": 21,
+        "endLine": 1593,
+        "endChar": 48
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48ee8dd3_3813be0f",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d001b69_b578f759",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1605,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-26T16:17:37Z",
+      "side": 1,
+      "message": "Set Focus works for XFA annotations as well",
+      "parentUuid": "48ee8dd3_3813be0f",
+      "range": {
+        "startLine": 1604,
+        "startChar": 3,
+        "endLine": 1605,
+        "endChar": 49
+      },
+      "revId": "1b2e20dad54ce5e290a030361a8a24104cfb121d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
