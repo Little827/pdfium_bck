@@ -71,6 +71,23 @@
     },
     {
       "key": {
+        "uuid": "ddeaf72e_bb8a0a55",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-26T22:28:23Z",
+      "side": 1,
+      "message": "If you\u0027d like, you can simplify this to:\n\nif (bpp \u003d\u003d 8) {\n  ...\n} else {\n  ASSERT(bpp \u003d\u003d 32);\n  ...\n}",
+      "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be3243a6_4bc61b0d",
         "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
         "patchSetId": 3
@@ -91,6 +108,30 @@
       "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14e6cf50_8426d608",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-26T22:28:23Z",
+      "side": 1,
+      "message": "Does this mean PDFium users cannot call FPDFBitmap_CreateEx() with FPDFBitmap_CreateEx when Skia is enabled?",
+      "parentUuid": "be3243a6_4bc61b0d",
+      "range": {
+        "startLine": 1111,
+        "startChar": 47,
+        "endLine": 1111,
+        "endChar": 61
+      },
+      "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
