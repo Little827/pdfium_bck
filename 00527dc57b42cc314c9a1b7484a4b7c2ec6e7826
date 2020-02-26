@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "b806c71f_8901645b",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-02-26T19:04:12Z",
+      "side": 1,
+      "message": "- Are you suggesting I reorder them instead of combining them?\n- Ack, I really like that second suggestion. Thanks.",
+      "parentUuid": "02820726_2e3751ee",
+      "revId": "00527dc57b42cc314c9a1b7484a4b7c2ec6e7826",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5f22e65_ab4a411f",
         "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.h",
         "patchSetId": 4
@@ -122,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "51dd9d17_4a380da3",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-02-26T19:04:12Z",
+      "side": 1,
+      "message": "I thought about that, but the name conflicts with CXFA_FMBinExpression. I found this name to be less conflicting and more descriptive.",
+      "parentUuid": "acd578cf_abf6f278",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "00527dc57b42cc314c9a1b7484a4b7c2ec6e7826",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad896366_0cac8a5f",
         "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.h",
         "patchSetId": 4
@@ -133,6 +175,24 @@
       "writtenOn": "2020-02-26T06:20:43Z",
       "side": 1,
       "message": "Not needed?",
+      "revId": "00527dc57b42cc314c9a1b7484a4b7c2ec6e7826",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200af8ea_5c093ad0",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-02-26T19:04:12Z",
+      "side": 1,
+      "message": "I was deliberating adding this, and I found arguments for both sides.\n\n1) Keeping the pure virtual function is a clear reminder to the reader that this class is abstract. \n\n2) Removing the pure virtual function ensures that this class stays consistent with the base class. i.e., its abstraction is dependent on that of the base class.\n\nI have no strong preference. I went with choice (1) for readability.",
+      "parentUuid": "ad896366_0cac8a5f",
       "revId": "00527dc57b42cc314c9a1b7484a4b7c2ec6e7826",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
