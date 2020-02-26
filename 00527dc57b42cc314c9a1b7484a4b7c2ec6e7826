@@ -316,6 +316,24 @@
       "revId": "00527dc57b42cc314c9a1b7484a4b7c2ec6e7826",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f4d52b_96ea92aa",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-26T22:03:37Z",
+      "side": 1,
+      "message": "You may want to verify this comment, but I think the legit use case for \"override \u003d 0\" is when the base class has a non-pure method, but a derived class wants to force its own subclasses to implement it and ignore the base class\u0027s impl.",
+      "parentUuid": "abaf5d33_590f7322",
+      "revId": "00527dc57b42cc314c9a1b7484a4b7c2ec6e7826",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
