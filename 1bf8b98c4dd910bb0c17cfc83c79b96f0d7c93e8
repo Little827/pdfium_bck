@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1191836e_5808a270",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-26T22:47:07Z",
+      "side": 1,
+      "message": "Make these private. Add accessors to get the CXFA_FMSimpleExpression*, since no subclass directly assigns or resets these.",
+      "revId": "1bf8b98c4dd910bb0c17cfc83c79b96f0d7c93e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
