@@ -26,6 +26,30 @@
     },
     {
       "key": {
+        "uuid": "90be468b_abdef0d9",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-27T01:44:38Z",
+      "side": 1,
+      "message": "Ya, I just wanted to patch up what\u0027s already here.",
+      "parentUuid": "36a3c153_da63a2ab",
+      "range": {
+        "startLine": 1151,
+        "startChar": 11,
+        "endLine": 1151,
+        "endChar": 35
+      },
+      "revId": "0f29a9046f12b18388ad7d0a443a948a39ef811a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ba909db_1e799272",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
@@ -46,6 +70,30 @@
       "revId": "0f29a9046f12b18388ad7d0a443a948a39ef811a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209b4b19_f794dcba",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-27T01:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba909db_1e799272",
+      "range": {
+        "startLine": 1153,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 5
+      },
+      "revId": "0f29a9046f12b18388ad7d0a443a948a39ef811a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
