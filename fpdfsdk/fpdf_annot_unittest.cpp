@@ -9,6 +9,7 @@
 #include "constants/annotation_common.h"
 #include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
+#include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
@@ -134,4 +135,93 @@ TEST_F(PDFAnnotTest, SetAPWithOpacity) {
   EXPECT_EQ("Normal", blend_mode);
   bool alpha_source_flag = gs_dict->GetBooleanFor("AIS", true);
   EXPECT_FALSE(alpha_source_flag);
+}
+
+TEST_F(PDFAnnotTest, InkListAPIValidations) {
+  ScopedFPDFDocument doc(FPDF_CreateNewDocument());
+  ASSERT_TRUE(doc);
+  ScopedFPDFPage page(FPDFPage_New(doc.get(), 0, 100, 100));
+  ASSERT_TRUE(page);
+
+  // Create a new Ink Annotation.
+  ScopedFPDFAnnotation ink_annot1(
+      FPDFPage_CreateAnnot(page.get(), FPDF_ANNOT_INK));
+  ASSERT_TRUE(ink_annot1);
+  CPDF_AnnotContext* context =
+      CPDFAnnotContextFromFPDFAnnotation(ink_annot1.get());
+  ASSERT_TRUE(context);
+  CPDF_Dictionary* annot_dict = context->GetAnnotDict();
+  ASSERT_TRUE(annot_dict);
+
+  static constexpr int stroke_count = 3;
+  static constexpr unsigned long point_count = 6;
+  static constexpr FS_POINTF ink_strokes[stroke_count][point_count] = {
+      {{80.0f, 90.0f},
+       {81.0f, 91.0f},
+       {82.0f, 92.0f},
+       {83.0f, 93.0f},
+       {84.0f, 94.0f},
+       {85.0f, 95.0f}},
+
+      {{70.0f, 90.0f},
+       {71.0f, 91.0f},
+       {72.0f, 92.0f},
+       {73.0f, 93.0f},
+       {74.0f, 94.0f},
+       {75.0f, 95.0f}},
+
+      {{60.0f, 90.0f},
+       {61.0f, 91.0f},
+       {62.0f, 92.0f},
+       {63.0f, 93.0f},
+       {64.0f, 94.0f},
+       {65.0f, 95.0f}}};
+
+  // Negative test: |annot| is passed as nullptr.
+  EXPECT_EQ(-1,
+            FPDFAnnot_AddInkStroke(nullptr, point_count, &ink_strokes[1][0]));
+
+  // Negative test: |annot| is not Ink annotation.
+  // Create a new Highlight Annotation.
+  ScopedFPDFAnnotation highlight_annot(
+      FPDFPage_CreateAnnot(page.get(), FPDF_ANNOT_HIGHLIGHT));
+  ASSERT_TRUE(highlight_annot);
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(highlight_annot.get(), point_count,
+                                       &ink_strokes[0][0]));
+
+  // Negative test: passing |point_count| as  0.
+  EXPECT_EQ(-1,
+            FPDFAnnot_AddInkStroke(ink_annot1.get(), 0, &ink_strokes[0][0]));
+
+  // Negative test: passing |points| array as nullptr.
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(ink_annot1.get(), point_count, nullptr));
+
+  // Negative test: passing |point_count| more than ULONG_MAX/2.
+  EXPECT_EQ(-1, FPDFAnnot_AddInkStroke(ink_annot1.get(), ULONG_MAX / 2 + 1,
+                                       &ink_strokes[2][0]));
+
+  // InkStroke should get added to ink annotation. Also Inklist should get
+  // created.
+  EXPECT_EQ(0, FPDFAnnot_AddInkStroke(ink_annot1.get(), point_count,
+                                      &ink_strokes[0][0]));
+
+  CPDF_Array* inkList = annot_dict->GetArrayFor("InkList");
+  // EXPECT_EQ(0, static_cast<int64_t>(inkList->size()));
+  EXPECT_EQ(1, static_cast<int64_t>(inkList->size()));
+  EXPECT_EQ(12, static_cast<int64_t>(inkList->GetArrayAt(0)->size()));
+
+  // Adding another InkStroke to ink annotation with all valid paremeters.
+  // InkList already exists in ink_annot1.
+  EXPECT_EQ(1, FPDFAnnot_AddInkStroke(ink_annot1.get(), point_count,
+                                      &ink_strokes[1][0]));
+  EXPECT_EQ(2, static_cast<int64_t>(inkList->size()));
+  EXPECT_EQ(12, static_cast<int64_t>(inkList->GetArrayAt(1)->size()));
+
+  // Adding one more InkStroke to the ink annotation. |point_count| passed is
+  // less than the data available in |buffer|.
+  EXPECT_EQ(2, FPDFAnnot_AddInkStroke(ink_annot1.get(), point_count - 1,
+                                      &ink_strokes[2][0]));
+
+  EXPECT_EQ(3, static_cast<int64_t>(inkList->size()));
+  EXPECT_EQ(10, static_cast<int64_t>(inkList->GetArrayAt(2)->size()));
 }

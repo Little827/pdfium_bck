@@ -193,6 +193,23 @@ FPDFAnnot_IsObjectSupportedSubtype(FPDF_ANNOTATION_SUBTYPE subtype);
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFAnnot_UpdateObject(FPDF_ANNOTATION annot, FPDF_PAGEOBJECT obj);
 
+// InkStroke is an array of points in PDF page coordinates, that represents a
+// stroked path in an InkList as defined by PDF Reference.
+
+// Experimental API.
+// Add a new InkStroke, represented by an array of points, to the InkList of
+// |annot|. The API creates a InkList if one doesn't already exist in |annot|.
+//
+//   annot       - handle to an annotation.
+//   point_count - number of elements in |points| array.
+//   points      - pointer to a FS_POINTF array representing input points.
+//
+// Returns the index at which the new InkStroke is added in the InkList of the
+// |annot|. Returns -1 on failure.
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_AddInkStroke(FPDF_ANNOTATION annot,
+                                                     size_t point_count,
+                                                     const FS_POINTF* points);
+
 // Experimental API.
 // Add |obj| to |annot|. |obj| must have been created by
 // FPDFPageObj_CreateNew{Path|Rect}() or FPDFPageObj_New{Text|Image}Obj(), and
