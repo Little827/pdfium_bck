@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7863c54_4fbd9a62",
+        "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7644
+      },
+      "writtenOn": "2020-02-27T06:26:33Z",
+      "side": 1,
+      "message": "In this and the others, I wanted to keep the usage consistent with GetFirstExpression(). I.e. either inline both or don\u0027t. \n\nI have no strong preference. Should I still change it?",
+      "parentUuid": "352ecbd3_8cbeb0d9",
+      "revId": "7bd892de7bf5278e35d0e09645c6c39d92468562",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef39b769_7f4e8f18",
         "filename": "xfa/fxfa/fm2js/cxfa_fmsimpleexpression.cpp",
         "patchSetId": 1
