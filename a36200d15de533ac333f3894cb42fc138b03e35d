@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38678f75_e9e7179f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-27T02:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0773576_d367f273",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da0af048_4655bf82",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f186b40_e195da36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-27T02:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da0af048_4655bf82",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "317a7bef_a53d3558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-27T02:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835f85d0_9977a1e9",
+      "range": {
+        "startLine": 21,
+        "startChar": 46,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddeaf72e_bb8a0a55",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 3
@@ -85,6 +157,24 @@
       "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4cc68ff_73150208",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-27T02:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddeaf72e_bb8a0a55",
+      "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +213,30 @@
       "side": 1,
       "message": "Does this mean PDFium users cannot call FPDFBitmap_CreateEx() with FPDFBitmap_CreateEx when Skia is enabled?",
       "parentUuid": "be3243a6_4bc61b0d",
+      "range": {
+        "startLine": 1111,
+        "startChar": 47,
+        "endLine": 1111,
+        "endChar": 61
+      },
+      "revId": "a36200d15de533ac333f3894cb42fc138b03e35d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526db863_8e2c1925",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-02-27T02:26:33Z",
+      "side": 1,
+      "message": "We can still call FPDFBitmap_CreateEx() but we just cannot use the FPDFBitmap_BGR format for now.\n\nSome thoughts on solutions:\n\nMaybe we can have a SkColorType \"kBGR_888x_SkColorType\", which is similar to\nkRGB_888x_SkColorType (pixel with 8 bits each for red, green, blue; in 32-bit word), and do some operation before rendering to bump up the bpp value to 32.\n\nOr could there be any SkColorType that\u0027s for 24 bpp format? Since BGR24 is a common format.\n\n@reed: Could you give us some input on this issue?",
+      "parentUuid": "14e6cf50_8426d608",
       "range": {
         "startLine": 1111,
         "startChar": 47,
