@@ -114,10 +114,6 @@ CXFA_FMToken::CXFA_FMToken(XFA_FM_TOKEN token) : m_type(token) {}
 
 CXFA_FMToken::CXFA_FMToken() : CXFA_FMToken(TOKreserver) {}
 
-CXFA_FMToken::CXFA_FMToken(const CXFA_FMToken&) = default;
-
-CXFA_FMToken::~CXFA_FMToken() = default;
-
 #ifndef NDEBUG
 WideString CXFA_FMToken::ToDebugString() const {
   WideString str = WideString::FromASCII("type = ");
@@ -130,8 +126,6 @@ WideString CXFA_FMToken::ToDebugString() const {
 
 CXFA_FMLexer::CXFA_FMLexer(WideStringView wsFormCalc)
     : m_spInput(wsFormCalc.span()) {}
-
-CXFA_FMLexer::~CXFA_FMLexer() = default;
 
 CXFA_FMToken CXFA_FMLexer::NextToken() {
   if (m_bLexerError)

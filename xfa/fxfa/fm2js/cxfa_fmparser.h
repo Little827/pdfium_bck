@@ -16,7 +16,7 @@
 class CXFA_FMParser {
  public:
   explicit CXFA_FMParser(WideStringView wsFormcalc);
-  ~CXFA_FMParser();
+  ~CXFA_FMParser() = default;
 
   std::unique_ptr<CXFA_FMAST> Parse();
   bool HasError() const;

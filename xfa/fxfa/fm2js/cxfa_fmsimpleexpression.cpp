@@ -151,8 +151,6 @@ bool CXFA_FMNullExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
 CXFA_FMNumberExpression::CXFA_FMNumberExpression(WideStringView wsNumber)
     : CXFA_FMSimpleExpression(TOKnumber), m_wsNumber(wsNumber) {}
 
-CXFA_FMNumberExpression::~CXFA_FMNumberExpression() = default;
-
 bool CXFA_FMNumberExpression::ToJavaScript(CFX_WideTextBuf* js,
                                            ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -165,8 +163,6 @@ bool CXFA_FMNumberExpression::ToJavaScript(CFX_WideTextBuf* js,
 
 CXFA_FMStringExpression::CXFA_FMStringExpression(WideStringView wsString)
     : CXFA_FMSimpleExpression(TOKstring), m_wsString(wsString) {}
-
-CXFA_FMStringExpression::~CXFA_FMStringExpression() = default;
 
 bool CXFA_FMStringExpression::ToJavaScript(CFX_WideTextBuf* js,
                                            ReturnType type) {
@@ -206,8 +202,6 @@ CXFA_FMIdentifierExpression::CXFA_FMIdentifierExpression(
     WideStringView wsIdentifier)
     : CXFA_FMSimpleExpression(TOKidentifier), m_wsIdentifier(wsIdentifier) {}
 
-CXFA_FMIdentifierExpression::~CXFA_FMIdentifierExpression() = default;
-
 bool CXFA_FMIdentifierExpression::ToJavaScript(CFX_WideTextBuf* js,
                                                ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -243,8 +237,6 @@ CXFA_FMAssignExpression::CXFA_FMAssignExpression(
     std::unique_ptr<CXFA_FMSimpleExpression> pExp1,
     std::unique_ptr<CXFA_FMSimpleExpression> pExp2)
     : CXFA_FMChainableExpression(op, std::move(pExp1), std::move(pExp2)) {}
-
-CXFA_FMAssignExpression::~CXFA_FMAssignExpression() = default;
 
 bool CXFA_FMAssignExpression::ToJavaScript(CFX_WideTextBuf* js,
                                            ReturnType type) {
@@ -288,8 +280,6 @@ CXFA_FMBinExpression::CXFA_FMBinExpression(
     std::unique_ptr<CXFA_FMSimpleExpression> pExp2)
     : CXFA_FMChainableExpression(op, std::move(pExp1), std::move(pExp2)),
       m_OpName(opName) {}
-
-CXFA_FMBinExpression::~CXFA_FMBinExpression() = default;
 
 bool CXFA_FMBinExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -420,8 +410,6 @@ CXFA_FMUnaryExpression::CXFA_FMUnaryExpression(
     std::unique_ptr<CXFA_FMSimpleExpression> pExp)
     : CXFA_FMSimpleExpression(op), m_OpName(opName), m_pExp(std::move(pExp)) {}
 
-CXFA_FMUnaryExpression::~CXFA_FMUnaryExpression() = default;
-
 bool CXFA_FMUnaryExpression::ToJavaScript(CFX_WideTextBuf* js,
                                           ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -455,8 +443,6 @@ CXFA_FMCallExpression::CXFA_FMCallExpression(
       m_pExp(std::move(pExp)),
       m_bIsSomMethod(bIsSomMethod),
       m_Arguments(std::move(pArguments)) {}
-
-CXFA_FMCallExpression::~CXFA_FMCallExpression() {}
 
 bool CXFA_FMCallExpression::IsBuiltInFunc(CFX_WideTextBuf* funcName) {
   if (funcName->GetLength() > g_BuiltInFuncsMaxLen)
@@ -593,8 +579,6 @@ CXFA_FMDotAccessorExpression::CXFA_FMDotAccessorExpression(
                                  std::move(pIndexExp)),
       m_wsIdentifier(wsIdentifier) {}
 
-CXFA_FMDotAccessorExpression::~CXFA_FMDotAccessorExpression() = default;
-
 bool CXFA_FMDotAccessorExpression::ToJavaScript(CFX_WideTextBuf* js,
                                                 ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -645,8 +629,6 @@ CXFA_FMIndexExpression::CXFA_FMIndexExpression(
       m_accessorIndex(accessorIndex),
       m_bIsStarIndex(bIsStarIndex) {}
 
-CXFA_FMIndexExpression::~CXFA_FMIndexExpression() = default;
-
 bool CXFA_FMIndexExpression::ToJavaScript(CFX_WideTextBuf* js,
                                           ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -692,8 +674,6 @@ CXFA_FMDotDotAccessorExpression::CXFA_FMDotDotAccessorExpression(
                                  std::move(pIndexExp)),
       m_wsIdentifier(wsIdentifier) {}
 
-CXFA_FMDotDotAccessorExpression::~CXFA_FMDotDotAccessorExpression() = default;
-
 bool CXFA_FMDotDotAccessorExpression::ToJavaScript(CFX_WideTextBuf* js,
                                                    ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -725,8 +705,6 @@ CXFA_FMMethodCallExpression::CXFA_FMMethodCallExpression(
     : CXFA_FMChainableExpression(TOKdot,
                                  std::move(pAccessorExp1),
                                  std::move(pCallExp)) {}
-
-CXFA_FMMethodCallExpression::~CXFA_FMMethodCallExpression() = default;
 
 bool CXFA_FMMethodCallExpression::ToJavaScript(CFX_WideTextBuf* js,
                                                ReturnType type) {

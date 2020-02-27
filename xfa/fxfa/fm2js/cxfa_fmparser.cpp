@@ -27,8 +27,6 @@ CXFA_FMParser::CXFA_FMParser(WideStringView wsFormcalc)
       m_parse_depth(0),
       m_max_parse_depth(kMaxParseDepth) {}
 
-CXFA_FMParser::~CXFA_FMParser() = default;
-
 std::unique_ptr<CXFA_FMAST> CXFA_FMParser::Parse() {
   m_token = m_lexer->NextToken();
   if (HasError())

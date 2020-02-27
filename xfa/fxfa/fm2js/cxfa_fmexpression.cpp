@@ -29,8 +29,6 @@ WideString IdentifierToName(WideStringView ident) {
 
 }  // namespace
 
-CXFA_FMExpression::CXFA_FMExpression() = default;
-
 CXFA_FMFunctionDefinition::CXFA_FMFunctionDefinition(
     WideStringView wsName,
     std::vector<WideStringView>&& arguments,
@@ -41,8 +39,6 @@ CXFA_FMFunctionDefinition::CXFA_FMFunctionDefinition(
       m_pExpressions(std::move(expressions)) {
   ASSERT(!wsName.IsEmpty());
 }
-
-CXFA_FMFunctionDefinition::~CXFA_FMFunctionDefinition() = default;
 
 bool CXFA_FMFunctionDefinition::ToJavaScript(CFX_WideTextBuf* js,
                                              ReturnType type) {
@@ -80,8 +76,6 @@ CXFA_FMAST::CXFA_FMAST(
     std::vector<std::unique_ptr<CXFA_FMExpression>> expressions)
     : expressions_(std::move(expressions)) {}
 
-CXFA_FMAST::~CXFA_FMAST() = default;
-
 bool CXFA_FMAST::ToJavaScript(CFX_WideTextBuf* js) {
   if (expressions_.empty()) {
     *js << "// comments only";
@@ -118,8 +112,6 @@ CXFA_FMVarExpression::CXFA_FMVarExpression(
     std::unique_ptr<CXFA_FMSimpleExpression> pInit)
     : CXFA_FMExpression(), m_wsName(wsName), m_pInit(std::move(pInit)) {}
 
-CXFA_FMVarExpression::~CXFA_FMVarExpression() = default;
-
 bool CXFA_FMVarExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
@@ -146,8 +138,6 @@ bool CXFA_FMVarExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
 CXFA_FMExpExpression::CXFA_FMExpExpression(
     std::unique_ptr<CXFA_FMSimpleExpression> pExpression)
     : CXFA_FMExpression(), m_pExpression(std::move(pExpression)) {}
-
-CXFA_FMExpExpression::~CXFA_FMExpExpression() = default;
 
 bool CXFA_FMExpExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -190,8 +180,6 @@ CXFA_FMBlockExpression::CXFA_FMBlockExpression(
     std::vector<std::unique_ptr<CXFA_FMExpression>>&& pExpressionList)
     : CXFA_FMExpression(), m_ExpressionList(std::move(pExpressionList)) {}
 
-CXFA_FMBlockExpression::~CXFA_FMBlockExpression() = default;
-
 bool CXFA_FMBlockExpression::ToJavaScript(CFX_WideTextBuf* js,
                                           ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -220,8 +208,6 @@ CXFA_FMDoExpression::CXFA_FMDoExpression(
     std::unique_ptr<CXFA_FMExpression> pList)
     : CXFA_FMExpression(), m_pList(std::move(pList)) {}
 
-CXFA_FMDoExpression::~CXFA_FMDoExpression() = default;
-
 bool CXFA_FMDoExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
   if (CXFA_IsTooBig(js) || !depthManager.IsWithinMaxDepth())
@@ -242,8 +228,6 @@ CXFA_FMIfExpression::CXFA_FMIfExpression(
       m_pElseExpression(std::move(pElseExpression)) {
   ASSERT(m_pExpression);
 }
-
-CXFA_FMIfExpression::~CXFA_FMIfExpression() = default;
 
 bool CXFA_FMIfExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -289,8 +273,6 @@ CXFA_FMWhileExpression::CXFA_FMWhileExpression(
       m_pCondition(std::move(pCondition)),
       m_pExpression(std::move(pExpression)) {}
 
-CXFA_FMWhileExpression::~CXFA_FMWhileExpression() = default;
-
 bool CXFA_FMWhileExpression::ToJavaScript(CFX_WideTextBuf* js,
                                           ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -316,8 +298,6 @@ bool CXFA_FMWhileExpression::ToJavaScript(CFX_WideTextBuf* js,
 
 CXFA_FMBreakExpression::CXFA_FMBreakExpression() : CXFA_FMExpression() {}
 
-CXFA_FMBreakExpression::~CXFA_FMBreakExpression() = default;
-
 bool CXFA_FMBreakExpression::ToJavaScript(CFX_WideTextBuf* js,
                                           ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -329,8 +309,6 @@ bool CXFA_FMBreakExpression::ToJavaScript(CFX_WideTextBuf* js,
 }
 
 CXFA_FMContinueExpression::CXFA_FMContinueExpression() : CXFA_FMExpression() {}
-
-CXFA_FMContinueExpression::~CXFA_FMContinueExpression() = default;
 
 bool CXFA_FMContinueExpression::ToJavaScript(CFX_WideTextBuf* js,
                                              ReturnType type) {
@@ -356,8 +334,6 @@ CXFA_FMForExpression::CXFA_FMForExpression(
       m_bDirection(iDirection == 1),
       m_pStep(std::move(pStep)),
       m_pList(std::move(pList)) {}
-
-CXFA_FMForExpression::~CXFA_FMForExpression() = default;
 
 bool CXFA_FMForExpression::ToJavaScript(CFX_WideTextBuf* js, ReturnType type) {
   CXFA_FMToJavaScriptDepth depthManager;
@@ -411,8 +387,6 @@ CXFA_FMForeachExpression::CXFA_FMForeachExpression(
       m_wsIdentifier(wsIdentifier),
       m_pAccessors(std::move(pAccessors)),
       m_pList(std::move(pList)) {}
-
-CXFA_FMForeachExpression::~CXFA_FMForeachExpression() = default;
 
 bool CXFA_FMForeachExpression::ToJavaScript(CFX_WideTextBuf* js,
                                             ReturnType type) {

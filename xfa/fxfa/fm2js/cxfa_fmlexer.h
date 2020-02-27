@@ -89,8 +89,8 @@ class CXFA_FMToken {
  public:
   CXFA_FMToken();
   explicit CXFA_FMToken(XFA_FM_TOKEN token);
-  CXFA_FMToken(const CXFA_FMToken&);
-  ~CXFA_FMToken();
+  CXFA_FMToken(const CXFA_FMToken&) = default;
+  ~CXFA_FMToken() = default;
 
 #ifndef NDEBUG
   WideString ToDebugString() const;
@@ -103,7 +103,7 @@ class CXFA_FMToken {
 class CXFA_FMLexer {
  public:
   explicit CXFA_FMLexer(WideStringView wsFormcalc);
-  ~CXFA_FMLexer();
+  ~CXFA_FMLexer() = default;
 
   CXFA_FMToken NextToken();
   bool IsComplete() const { return m_nCursor >= m_spInput.size(); }
