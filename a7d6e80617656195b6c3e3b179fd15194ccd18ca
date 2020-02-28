@@ -2,6 +2,154 @@
   "comments": [
     {
       "key": {
+        "uuid": "6945874e_4ca1ed02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "pdfium:1431 now?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97a2fc2_c8dea721",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Not used? Remove this header, or use FWL_VKEY_Return.",
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a015fb_e3475466",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Not needed when embedder_test.h is already included.",
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d829072_5d8cc620",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "The function name does not make sense. It should be SetUpFormFillerAndCheckBox() or FormFillerAndCheckBoxSetup().\n\n- Since \"AndWindow\" refers to |window|, isn\u0027t |window| really just |check_box_|? In the existing test this test is based off of, the name is FormFillerAndWindowSetup(), because it performance the setup for |form_filler_| and |window|.\n- Note the subtle difference in capitalization. \"SetUp\" expands to \"set up\", as in \"I\u0027m going to set up the computer.\" \"Setup\" expands to \"setup\", as \"The computer has a great setup.\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b70971_83e7413d",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Most of this method is the same as the one above. Refactor out the common bits?",
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f1efc5_3233e187",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Just use |page_| directly in the only caller.",
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a23248_1835558c",
+        "filename": "fpdfsdk/pwl/cpwl_special_button_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Should the bug numbers be updated?",
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009371dc_03dbdbdd",
+        "filename": "testing/resources/pixel/click_form.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Can you give this file a different name, so there\u0027s no confusion with testing/resources/click_form.in?",
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6dcfbb4c_27c13143",
         "filename": "testing/resources/pixel/click_form.in",
         "patchSetId": 6
@@ -19,6 +167,40 @@
         "endLine": 74,
         "endChar": 10
       },
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df4739c1_3f81aebf",
+        "filename": "testing/resources/pixel/click_form.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Remove unneeded blank line.",
+      "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a6fa12_36ac1d14",
+        "filename": "testing/resources/pixel/click_form_expected.pdf.0.png",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T08:52:06Z",
+      "side": 1,
+      "message": "Please run this file through optipng. It can be half the size.",
       "revId": "a7d6e80617656195b6c3e3b179fd15194ccd18ca",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
