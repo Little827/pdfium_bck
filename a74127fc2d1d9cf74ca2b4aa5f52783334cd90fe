@@ -540,6 +540,24 @@
     },
     {
       "key": {
+        "uuid": "ffd8ab39_e8255cbf",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-28T10:49:25Z",
+      "side": 1,
+      "message": "Removed it in patchset 9 but XFA\u0027s started failing, seems like we need it.\nCPDFSDK_PageView created using CPDF_Page stored by CPDF_AnnotContext returns false on IsValid().",
+      "parentUuid": "f07f5d82_6e9fc825",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1532ed35_02b5c25e",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 7
