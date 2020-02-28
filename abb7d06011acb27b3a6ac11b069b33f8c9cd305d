@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d4fdbfc_0c1da64e",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T17:58:13Z",
+      "side": 1,
+      "message": "Style guide disallows passing by non-const ref. \"git cl lint\" should warn about this. This should be const-ref, since |str| isn\u0027t being modified.",
+      "revId": "abb7d06011acb27b3a6ac11b069b33f8c9cd305d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908cfba0_428b1c74",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T17:58:13Z",
+      "side": 1,
+      "message": "This can\u0027t happen given the only caller will always pass in a string of length 6.",
+      "revId": "abb7d06011acb27b3a6ac11b069b33f8c9cd305d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b04a2ea2_8aa17148",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T17:58:13Z",
+      "side": 1,
+      "message": "- I would put all the new code here into a separate void RemoveSubsettedFontPrefix(ByteString*) function. Then it\u0027s easier for readers to understand what this code is doing.\n- Just check the 7th character instead of using Find(). It\u0027s faster.",
+      "revId": "abb7d06011acb27b3a6ac11b069b33f8c9cd305d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
