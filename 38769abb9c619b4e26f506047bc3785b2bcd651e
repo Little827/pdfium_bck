@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e1ff189_e93e7637",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-28T11:57:24Z",
+      "side": 1,
+      "message": "Refer to line 347-349. Keeping the same for consistency.",
+      "parentUuid": "74e5d3af_6b4e562d",
+      "range": {
+        "startLine": 363,
+        "startChar": 34,
+        "endLine": 363,
+        "endChar": 35
+      },
+      "revId": "38769abb9c619b4e26f506047bc3785b2bcd651e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45bacdde_ee12648b",
         "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "38769abb9c619b4e26f506047bc3785b2bcd651e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ac9b57_d7a55e55",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-02-28T11:57:24Z",
+      "side": 1,
+      "message": "Refer to line 347-349. Keeping the same for consistency.",
+      "parentUuid": "45bacdde_ee12648b",
+      "range": {
+        "startLine": 364,
+        "startChar": 10,
+        "endLine": 364,
+        "endChar": 14
+      },
+      "revId": "38769abb9c619b4e26f506047bc3785b2bcd651e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
