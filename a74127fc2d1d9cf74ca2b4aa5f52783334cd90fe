@@ -1,0 +1,283 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26b661d8_ce3b0ed8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "In PDFium, add the project prefix to all bugs. e.g. chromium:1023284 here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56396295_445547c7",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "No need for an ObservedPtr, because:\na) This isn\u0027t an event handler. Nothing happening here is going to cause it to be deleted.\nb) With an ObservedPtr, one would check its validity later, when it suspects the Observable object is deleted. This function isn\u0027t taking advantage of this capability.",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd292c0f_d81fe617",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "GetPageView() never returns nullptr. Let\u0027s check IsValid() instead.",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "618e0069_7d08709b",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "Rename to annot_context, also in FORM_SetFocusedAnnot().",
+      "range": {
+        "startLine": 601,
+        "startChar": 7,
+        "endLine": 601,
+        "endChar": 24
+      },
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f28adc_720484e7",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "GetAnnotDict() never returns nullptr.",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e8b9c8_1fc848e8",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "Never nullptr when calling GetPageView(pPage, true);",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae290ea_55b94680",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "Just save the LoadPage() result directly in |pages| and don\u0027t bother with variables like |page0|.",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a2a340_2e050c05",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "410.0f - as is, this assigns a double to a float.",
+      "range": {
+        "startLine": 668,
+        "startChar": 44,
+        "endLine": 668,
+        "endChar": 49
+      },
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f720269d_c294faa4",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "kFoo",
+      "range": {
+        "startLine": 669,
+        "startChar": 16,
+        "endLine": 669,
+        "endChar": 36
+      },
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244f56ea_ea9ad1e1",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "Are both out parameters required, or can the caller pass in NULL here? Please add more comments.",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80e1c45_ea3d6965",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "Who owns the FPDF_ANNOTATION? Is it always going to remain valid? Please add more comments.",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb432683_72b7178a",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "This function will return false when:\n1) There has been an error.\n2) There is no focused annotation.\n\nShould case (2) instead return true and just set |page_index| to -1, and |annot| to NULL?",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7aa818_d114cd17",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "We recently added FFI_OnFocusChange above. Is this function still necessary?",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d991790_298e0c9f",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "Is this necessary, or does |annot| already carry this information?",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1532ed35_02b5c25e",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T07:59:01Z",
+      "side": 1,
+      "message": "Given this is required, it may be helpful to note that FORM_SetFocusedAnnot() cannot be called with |annot| \u003d NULL, as a way to kill focus. One must use FORM_ForceToKillFocus() instead.",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
