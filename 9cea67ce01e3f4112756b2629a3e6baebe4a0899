@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a40c17e7_b6baa8b9",
+        "filename": "fpdfsdk/fpdf_formfill.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T22:12:52Z",
+      "side": 1,
+      "message": "Do this before line 618. i.e. No need to initialize |annot_dict| if the function ends up failing.",
+      "revId": "9cea67ce01e3f4112756b2629a3e6baebe4a0899",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52480289_6ff82cc5",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T22:12:52Z",
+      "side": 1,
+      "message": "pages.push_back(LoadPage(i));\nASSERT_TRUE(pages.back());",
+      "revId": "9cea67ce01e3f4112756b2629a3e6baebe4a0899",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc3a318_4e553aa5",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T22:12:52Z",
+      "side": 1,
+      "message": "This is a C header, thus NULL and not nullptr. Which is why all my comments for this header refer to NULL.",
+      "range": {
+        "startLine": 1584,
+        "startChar": 34,
+        "endLine": 1584,
+        "endChar": 41
+      },
+      "revId": "9cea67ce01e3f4112756b2629a3e6baebe4a0899",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}

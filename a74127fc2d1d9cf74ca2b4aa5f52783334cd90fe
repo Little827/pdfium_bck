@@ -470,6 +470,24 @@
     },
     {
       "key": {
+        "uuid": "cf81b851_214a22c3",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T22:12:52Z",
+      "side": 1,
+      "message": "In functions that return a boolean, with the interesting information is in the out parameters, the return value indicates whether the out parameters contain valid data or not.\n\nFor example, FPDFPage_HasFormFieldAtPoint() has no out parameters. So its return value is the yes/no answer. Whereas FPDFAnnot_GetRect() returning true/false indicates whether its out parameter has been filled in with a rect or not.\n\nAnother way to define this API is:\nFPDF_ANNOTATION FORM_GetFocusedAnnot(FPDF_FORMHANDLE handle, int* page_index);\n\nWhere |page_index| is only set if the returned FPDF_ANNOTATION is not NULL.",
+      "parentUuid": "ef80e605_0592c316",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a7aa818_d114cd17",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 7
@@ -499,6 +517,24 @@
       "side": 1,
       "message": "When an embedder is losing focus, storing the last focused annot is needed for restoring focus. https://crrev.com/c/2061579 is an example of its need.",
       "parentUuid": "4a7aa818_d114cd17",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d81cdd41_b9f1cc89",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T22:12:52Z",
+      "side": 1,
+      "message": "In FFI_OnFocusChange, the FPDF_ANNOTATION has a very short lifetime. If we changed FFI_OnFocusChange to give the caller ownership of the FPDF_ANNOTATION, would that remove the need for FORM_GetFocusedAnnot()?\n\nI\u0027m just thinking out loud and want to bring this up for discussion. No need to remove FORM_GetFocusedAnnot() from the CL just yet.",
+      "parentUuid": "cc8cf913_b82e4918",
       "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -555,6 +591,24 @@
       "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5dc538b_faa9a32b",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-02-28T22:12:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffd8ab39_e8255cbf",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
