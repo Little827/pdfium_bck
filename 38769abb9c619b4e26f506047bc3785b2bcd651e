@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74e5d3af_6b4e562d",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-28T09:43:53Z",
+      "side": 1,
+      "message": "Don\u0027t use { for single line if block.\nPut the comment outside of if statement.\nSame in line 378.",
+      "range": {
+        "startLine": 363,
+        "startChar": 34,
+        "endLine": 363,
+        "endChar": 35
+      },
+      "revId": "38769abb9c619b4e26f506047bc3785b2bcd651e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45bacdde_ee12648b",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 7703
+      },
+      "writtenOn": "2020-02-28T09:43:53Z",
+      "side": 1,
+      "message": "XFA - Use consistent capitalization everywhere.",
+      "range": {
+        "startLine": 364,
+        "startChar": 10,
+        "endLine": 364,
+        "endChar": 14
+      },
+      "revId": "38769abb9c619b4e26f506047bc3785b2bcd651e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
