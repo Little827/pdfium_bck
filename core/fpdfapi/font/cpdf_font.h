@@ -20,6 +20,8 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_font.h"
+#include "core/fxge/fx_font.h"
+#include "third_party/base/optional.h"
 
 class CFX_DIBitmap;
 class CFX_SubstFont;
@@ -112,6 +114,7 @@ class CPDF_Font : public Retainable, public Observable {
   int FallbackGlyphFromCharcode(int fallbackFont, uint32_t charcode);
   int GetFontFlags() const { return m_Flags; }
   int GetFontWeight() const;
+  int GetCalculatedFontWeight() const;
 
   virtual uint32_t GetCharWidthF(uint32_t charcode) = 0;
   virtual FX_RECT GetCharBBox(uint32_t charcode) = 0;
@@ -155,6 +158,7 @@ class CPDF_Font : public Retainable, public Observable {
   int m_Ascent = 0;
   int m_Descent = 0;
   int m_ItalicAngle = 0;
+  Optional<int> m_FontWeight;
   FX_RECT m_FontBBox;
 };
 

@@ -1360,14 +1360,8 @@ TEST_F(FPDFTextEmbedderTest, GetFontWeight) {
   EXPECT_EQ(-1, FPDFText_GetFontWeight(text_page, -1));
   EXPECT_EQ(-1, FPDFText_GetFontWeight(text_page, 314));
 
-  // The font used for this text only specifies /StemV (80); the weight value
-  // that is returned should be calculated from that (80*5 == 400).
   EXPECT_EQ(400, FPDFText_GetFontWeight(text_page, 0));
-
-  // Using a /StemV value of 82, the estimate comes out to 410, even though
-  // /FontWeight is 400.
-  // TODO(crbug.com/pdfium/1420): Fix this the return value here.
-  EXPECT_EQ(410, FPDFText_GetFontWeight(text_page, 1));
+  EXPECT_EQ(400, FPDFText_GetFontWeight(text_page, 1));
 
   FPDFText_ClosePage(text_page);
   UnloadPage(page);

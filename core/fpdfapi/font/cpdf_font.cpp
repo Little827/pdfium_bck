@@ -27,7 +27,6 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxge/cfx_fontmapper.h"
-#include "core/fxge/fx_font.h"
 #include "core/fxge/fx_freetype.h"
 #include "third_party/base/logging.h"
 #include "third_party/base/ptr_util.h"
@@ -42,6 +41,24 @@ const uint8_t kChineseFontNames[][kChineseFontNameSize] = {
     {0xBA, 0xDA, 0xCC, 0xE5},
     {0xB7, 0xC2, 0xCB, 0xCE},
     {0xD0, 0xC2, 0xCB, 0xCE}};
+
+// Per PDF 32000-1:2008 spec, table 122.
+bool IsValidFontWeight(int weight) {
+  switch (weight) {
+    case 100:
+    case 200:
+    case 300:
+    case 400:
+    case 500:
+    case 600:
+    case 700:
+    case 800:
+    case 900:
+      return true;
+    default:
+      return false;
+  }
+}
 
 }  // namespace
 
@@ -201,6 +218,10 @@ void CPDF_Font::LoadFontDescriptor(const CPDF_Dictionary* pFontDesc) {
     m_FontBBox.right = pBBox->GetIntegerAt(2);
     m_FontBBox.top = pBBox->GetIntegerAt(3);
   }
+
+  int nFontWeight = pFontDesc->GetIntegerFor("FontWeight");
+  if (IsValidFontWeight(nFontWeight))
+    m_FontWeight = nFontWeight;
 
   const CPDF_Stream* pFontFile = pFontDesc->GetStreamFor("FontFile");
   if (!pFontFile)
@@ -437,6 +458,10 @@ bool CPDF_Font::FT_UseTTCharmap(FXFT_FaceRec* face,
 }
 
 int CPDF_Font::GetFontWeight() const {
+  return m_FontWeight.value_or(GetCalculatedFontWeight());
+}
+
+int CPDF_Font::GetCalculatedFontWeight() const {
   pdfium::base::CheckedNumeric<int> safeStemV(m_StemV);
   if (m_StemV < 140)
     safeStemV *= 5;
