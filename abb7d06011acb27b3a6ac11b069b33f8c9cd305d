@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "876248bd_88152d08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:23:34Z",
+      "side": 1,
+      "message": "Optional: \"spec\" could be considered to be implicit when you mentioned \"PDF 32000-1:2008\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "abb7d06011acb27b3a6ac11b069b33f8c9cd305d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8012e5be_035c108a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:23:34Z",
+      "side": 1,
+      "message": "Comma splice; just start a new sentence instead.",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "abb7d06011acb27b3a6ac11b069b33f8c9cd305d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d4fdbfc_0c1da64e",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 17
@@ -30,6 +76,24 @@
       "writtenOn": "2020-02-28T17:58:13Z",
       "side": 1,
       "message": "This can\u0027t happen given the only caller will always pass in a string of length 6.",
+      "revId": "abb7d06011acb27b3a6ac11b069b33f8c9cd305d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342e5fc6_ec8a7448",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:23:34Z",
+      "side": 1,
+      "message": "One might argue that considering the empty string to be \"all upper\" (return true)\" would be fine, too. As Lei said, it won\u0027t make any difference for the actual strings we check (always length 6).",
+      "parentUuid": "908cfba0_428b1c74",
       "revId": "abb7d06011acb27b3a6ac11b069b33f8c9cd305d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
