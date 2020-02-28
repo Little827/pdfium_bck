@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de49b697_0ebfe7d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "\"preceding\"\n\nAlso, I would think we\u0027d generate an appearance for all the subsequent options, not the preceding ones?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd92e4c8_e502fb80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "Can you be more precise about what you mean by \"over-scroll\"? I\u0027m a little unclear what this sentence is describing.",
+      "range": {
+        "startLine": 13,
+        "startChar": 61,
+        "endLine": 13,
+        "endChar": 72
+      },
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17240a81_d1a234ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "Not familiar with this terminology; I think I know what you mean, but is there a plainer way to say this?",
+      "range": {
+        "startLine": 15,
+        "startChar": 53,
+        "endLine": 15,
+        "endChar": 58
+      },
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460dab70_a3f9358f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "Out of curiosity, which height is used for this?",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e10af2_8b8d6a51",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "Is there any way to unit test this?",
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b70642d_5302da9e",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "This method keeps getting longer. Is there a way to break this out into a helper function?",
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971a3aa7_9e5847a1",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "Would it be meaningful to test this with a 0 options example?",
+      "range": {
+        "startLine": 1662,
+        "startChar": 6,
+        "endLine": 1662,
+        "endChar": 12
+      },
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dc22a2b_d38c5963",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "Having some trouble picking apart what these calculations do; it\u0027s certainly not obvious by quick inspection. I feel like this all could benefit from some pictures. :-)",
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1592306b_6d281a05",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-02-28T22:46:16Z",
+      "side": 1,
+      "message": "Could you explain a bit more what the effect of adding fScroll to each of these rectangles is? \"fy\" is particularly mysterious; I suppose it advances by fItemHeight each item, but it\u0027s a terrible name for a variable in a function this large...\n\nI\u0027m also wondering right now to what extent we could solve any of this by adding to fy at the beginning.",
+      "range": {
+        "startLine": 1694,
+        "startChar": 54,
+        "endLine": 1694,
+        "endChar": 63
+      },
+      "revId": "f3be83df302f154943cb1e8748fd569dbcc5ac94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
