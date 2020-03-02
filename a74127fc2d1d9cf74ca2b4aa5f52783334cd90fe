@@ -488,6 +488,24 @@
     },
     {
       "key": {
+        "uuid": "058627e6_66cc5dc7",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-02T06:11:55Z",
+      "side": 1,
+      "message": "\u003e In functions that return a boolean, with the interesting information is in the out parameters, the return value indicates whether the out parameters contain valid data or not.\n\nIn this scenario, we return false if there is no focused annot which meets this criteria.\n\nIs the argument for differentiating between whether we have no focused annot and an error scenario?",
+      "parentUuid": "cf81b851_214a22c3",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a7aa818_d114cd17",
         "filename": "public/fpdf_formfill.h",
         "patchSetId": 7
@@ -535,6 +553,24 @@
       "side": 1,
       "message": "In FFI_OnFocusChange, the FPDF_ANNOTATION has a very short lifetime. If we changed FFI_OnFocusChange to give the caller ownership of the FPDF_ANNOTATION, would that remove the need for FORM_GetFocusedAnnot()?\n\nI\u0027m just thinking out loud and want to bring this up for discussion. No need to remove FORM_GetFocusedAnnot() from the CL just yet.",
       "parentUuid": "cc8cf913_b82e4918",
+      "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abe0096_40245c6a",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-02T06:11:55Z",
+      "side": 1,
+      "message": "I would say this is push vs pull model. Transferring annotation ownership in FFI_OnFocusChange creates a push model and here we have a pull model. Within the context of current design on why this data is needed i would say pull is a better model.\n\nThe data is requested by the embedder before its losing focus to restore when focus is regained. The embedder losing focus pulls the data. In the push model, we provide this ownership every time the annotation is changed.\n\nBut disregarding the utility of the same in chromium, what should be the better approach in push vs pull for this scenario from pdfium?",
+      "parentUuid": "d81cdd41_b9f1cc89",
       "revId": "a74127fc2d1d9cf74ca2b4aa5f52783334cd90fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
