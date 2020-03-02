@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6da4e01b_878158d3",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-02T18:45:29Z",
+      "side": 1,
+      "message": "|i| is shorter?",
+      "range": {
+        "startLine": 261,
+        "startChar": 14,
+        "endLine": 261,
+        "endChar": 19
+      },
+      "revId": "51c73a16573f9fbf58a8924417820d21f79a809e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb8b235_0cb2b39a",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-02T18:45:29Z",
+      "side": 1,
+      "message": "Since this is a private function with only one caller, this conditional will never be evaluate to false. So let\u0027s remove it. It\u0027s the same reason as why we don\u0027t check for empty strings in IsStrUpper().",
+      "range": {
+        "startLine": 270,
+        "startChar": 6,
+        "endLine": 270,
+        "endChar": 21
+      },
+      "revId": "51c73a16573f9fbf58a8924417820d21f79a809e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f11d44d0_4175c272",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-02T18:45:29Z",
+      "side": 1,
+      "message": "Just combine this with the other checks above?",
+      "revId": "51c73a16573f9fbf58a8924417820d21f79a809e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeeae299_900fa0c5",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-02T18:45:29Z",
+      "side": 1,
+      "message": "This block is scoped as such, so |pos| does not shadow any other variables with the same name in the function. The new call function has nothing to do with the rest of this block, so let\u0027s move it out.",
+      "revId": "51c73a16573f9fbf58a8924417820d21f79a809e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
