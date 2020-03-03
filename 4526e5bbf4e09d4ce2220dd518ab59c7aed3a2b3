@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "7bbadeb2_def3ba1f",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-03T01:25:16Z",
+      "side": 1,
+      "message": "Interesting history! It looks like that CL also changed some of the calls to use tolower()/toupper() from ctype.h; these functions are locale-sensitive, which might be surprising in some cases.",
+      "parentUuid": "242fc1ba_715eac22",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "4526e5bbf4e09d4ce2220dd518ab59c7aed3a2b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68a59089_978f2f43",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 24
