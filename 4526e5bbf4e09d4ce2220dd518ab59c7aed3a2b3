@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "409cd477_7c3a62b8",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-03T01:14:35Z",
+      "side": 1,
+      "message": "Tackling this separately SGTM.",
+      "parentUuid": "2fc59d6e_df84d2cf",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "4526e5bbf4e09d4ce2220dd518ab59c7aed3a2b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a59089_978f2f43",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 24
@@ -93,6 +117,30 @@
       "revId": "4526e5bbf4e09d4ce2220dd518ab59c7aed3a2b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8f0a8c_e57e2797",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2020-03-03T01:14:35Z",
+      "side": 1,
+      "message": "I agree that there\u0027s not a strong performance reason here to use a ByteStringView; I think a more persuasive reason would be to get into the habit of writing non-mutating string handling in terms of string views.\n\nAs an aside, I think ByteString doesn\u0027t have a small string optimization (SSO), so it\u0027ll always allocate from the heap. By contrast, a compiler is likely to optimize ByteStringViews to registers, so creating multiple ByteStringViews may well be measurably faster (although the absolute numbers will be tiny). I wouldn\u0027t sweat it in this case, though.",
+      "parentUuid": "5ac1d547_c900b4cb",
+      "range": {
+        "startLine": 272,
+        "startChar": 29,
+        "endLine": 272,
+        "endChar": 34
+      },
+      "revId": "4526e5bbf4e09d4ce2220dd518ab59c7aed3a2b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
