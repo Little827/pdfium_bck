@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52cd447b_a07d049a",
+        "filename": "core/fxge/cfx_drawutils.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-03T20:16:55Z",
+      "side": 1,
+      "message": "Add a comment above this to indicate this is a static method: // static",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbfe7a36_dd72aaf0",
+        "filename": "core/fxge/cfx_drawutils.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-03T20:16:55Z",
+      "side": 1,
+      "message": "Please sort this list in alphabetical order.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a5fe47_66474be1",
+        "filename": "core/fxge/cfx_drawutils.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-03T20:16:55Z",
+      "side": 1,
+      "message": "No need to declare a destructor.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "191fd2ca_2867b787",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-03T20:16:55Z",
+      "side": 1,
+      "message": "No longer used? Same for core/fxge/cfx_renderdevice.h and core/fxge/cfx_renderdevice.h.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
