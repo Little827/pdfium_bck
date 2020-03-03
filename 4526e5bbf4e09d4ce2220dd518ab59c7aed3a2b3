@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2fc59d6e_df84d2cf",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-03T01:02:55Z",
+      "side": 1,
+      "message": "There actually isn\u0027t a common ASCII \"isupper\" function in fxcrt at the moment. Given how many patch sets we\u0027ve gone through, I want to just land this and follow up on consolidating various \"A-Z\" checks after.",
+      "parentUuid": "809da330_ac416686",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "4526e5bbf4e09d4ce2220dd518ab59c7aed3a2b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68a59089_978f2f43",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 24
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-03T00:56:00Z",
       "side": 1,
       "message": "Optional: ByteString::First() creates a (small) copy, which could be avoided here by using a span/ByteStringView. I don\u0027t know if we care enough to fix it, though; I imagine this operation will be pretty rare.",
+      "range": {
+        "startLine": 272,
+        "startChar": 29,
+        "endLine": 272,
+        "endChar": 34
+      },
+      "revId": "4526e5bbf4e09d4ce2220dd518ab59c7aed3a2b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac1d547_c900b4cb",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-03T01:02:55Z",
+      "side": 1,
+      "message": "Right now, the alternative is to create a ByteStringView for |subst_name| and then create a second ByteStringView with its First() call. It\u0027s not obvious whether that\u0027s better or worth than just copying 6 bytes. I don\u0027t think the effort to investigate that is worth it.",
+      "parentUuid": "68a59089_978f2f43",
       "range": {
         "startLine": 272,
         "startChar": 29,
