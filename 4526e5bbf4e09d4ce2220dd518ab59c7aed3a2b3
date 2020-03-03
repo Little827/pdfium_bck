@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "242fc1ba_715eac22",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-03T01:15:44Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/28530 removed FXSYS_isASCIIupper() and FXSYS_isASCIIupper(), because the only caller to those passed in a wchar_t. We can bring those back if we find a sufficient number of potential callers.",
+      "parentUuid": "2fc59d6e_df84d2cf",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "4526e5bbf4e09d4ce2220dd518ab59c7aed3a2b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68a59089_978f2f43",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 24
