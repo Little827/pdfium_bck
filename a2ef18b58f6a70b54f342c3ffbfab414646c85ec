@@ -96,6 +96,54 @@
     },
     {
       "key": {
+        "uuid": "cf5195f8_1eec97aa",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-03-03T21:25:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b83a662a_fcf37e59",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "a2ef18b58f6a70b54f342c3ffbfab414646c85ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f8d2ad0_a7488dcc",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-03-03T21:25:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf23cae5_dd4a2f62",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "a2ef18b58f6a70b54f342c3ffbfab414646c85ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9727f6eb_877db6d8",
         "filename": "core/fxcrt/fx_extension.h",
         "patchSetId": 5
@@ -167,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "2875854a_f3c36263",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-03-03T21:25:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d229ee3_a3acb2fb",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "a2ef18b58f6a70b54f342c3ffbfab414646c85ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5668d6c9_f867cc7c",
         "filename": "core/fxge/cfx_fontmapper.cpp",
         "patchSetId": 5
@@ -199,6 +271,24 @@
       "revId": "a2ef18b58f6a70b54f342c3ffbfab414646c85ec",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acb18d5_5fcc829e",
+        "filename": "core/fxge/cfx_fontmapper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2020-03-03T21:25:07Z",
+      "side": 1,
+      "message": "In another CL SGTM.",
+      "parentUuid": "7236d544_b4eb14a4",
+      "revId": "a2ef18b58f6a70b54f342c3ffbfab414646c85ec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
