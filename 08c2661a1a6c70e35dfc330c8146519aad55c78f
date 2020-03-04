@@ -203,6 +203,132 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dddf7a33_26be3445",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:05:22Z",
+      "side": 1,
+      "message": "Combine the next 2 checks with this one, since they are all very simple.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c59cdab_63dcceba",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:05:22Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 1086,
+        "startChar": 7,
+        "endLine": 1086,
+        "endChar": 19
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419015d4_c4433721",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:05:22Z",
+      "side": 1,
+      "message": "Use pdfium::CollectionSize()\u003e",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec6874d_4a25bb01",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:05:22Z",
+      "side": 1,
+      "message": "Just use size_t here?",
+      "range": {
+        "startLine": 2392,
+        "startChar": 12,
+        "endLine": 2392,
+        "endChar": 24
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3337548_14a65466",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2403,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:05:22Z",
+      "side": 1,
+      "message": "Use static_cast() instead of C-style casting.",
+      "range": {
+        "startLine": 2403,
+        "startChar": 12,
+        "endLine": 2403,
+        "endChar": 17
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc762d2_598a940c",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2413,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:05:22Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 2413,
+        "startChar": 52,
+        "endLine": 2413,
+        "endChar": 56
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
     }
   ]
 }
