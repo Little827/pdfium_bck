@@ -5745,20 +5745,18 @@ void CFXJSE_FormCalcContext::DotAccessorCommon(CFXJSE_Value* pThis,
     }
 
     std::vector<std::unique_ptr<CFXJSE_Value>> values;
-    for (int32_t i = 0; i < iCounter + 2; i++)
-      values.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
-
-    values[0]->SetInteger(1);
+    values.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
+    values.back()->SetInteger(1);
+    values.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
     if (bAttribute)
-      values[1]->SetString(bsName.AsStringView());
+      values.back()->SetString(bsName.AsStringView());
     else
-      values[1]->SetNull();
+      values.back()->SetNull();
 
-    int32_t iIndex = 2;
     for (int32_t i = 0; i < iLength - 2; i++) {
       for (size_t j = 0; j < resolveValues[i].size(); j++) {
-        values[iIndex]->Assign(resolveValues[i][j].get());
-        iIndex++;
+        values.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
+        values.back()->Assign(resolveValues[i][j].get());
       }
     }
     args.GetReturnValue()->SetArray(values);
