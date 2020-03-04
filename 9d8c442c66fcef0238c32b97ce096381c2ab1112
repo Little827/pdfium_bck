@@ -16,6 +16,24 @@
       "revId": "9d8c442c66fcef0238c32b97ce096381c2ab1112",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9edd9e84_ffcd0023",
+        "filename": "xfa/fxfa/cxfa_fftextedit.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-04T17:31:05Z",
+      "side": 1,
+      "message": "Sure.  I wanted to have all the functions that do retention to be clumped together. Done.",
+      "parentUuid": "4b8cc731_2ebd0c0f",
+      "revId": "9d8c442c66fcef0238c32b97ce096381c2ab1112",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
