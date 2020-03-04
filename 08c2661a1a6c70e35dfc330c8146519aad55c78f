@@ -53,6 +53,142 @@
     },
     {
       "key": {
+        "uuid": "efa2deff_5937cebd",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "Also check here for unnecessary includes.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1452b1a9_0b307c98",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "Does this drawing code handle hidden / invisible annotations? i.e. Ones where CPDFSDK_BAAnnot::IsVisible() returns false.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6aa7c08_d512cc43",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "Please use AsBAAnnot() to do the conversion, rather than a static_cast. Be consistent with the other methods in this file that does the same operation.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ce467f0_8f934db6",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "I don\u0027t think this ever evaluates to true. Can we turn this into an ASSERT instead?",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae87185_79758563",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "This is another opportunity to use pdfium::ContainsValue().",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bfd00f_bb77b7b7",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "Not needed?",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4b4874_448a259c",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "Why clear() and assign()? Isn\u0027t this more straight forward?\n\nm_FocusableAnnotTypes \u003d focusableAnnotTypes;",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a9900b_f72e9dcd",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-04T00:00:58Z",
+      "side": 1,
+      "message": "Curious what your thoughts are regarding putting this vector, along with its getter/setter in CPDFSDK_InteractiveForm vs. in CPDFSDK_FormFillEnvironment.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "191fd2ca_2867b787",
         "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
         "patchSetId": 32
