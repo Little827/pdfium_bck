@@ -5156,38 +5156,23 @@ void CFXJSE_FormCalcContext::concat_fm_object(CFXJSE_Value* pThis,
                                               ByteStringView bsFuncName,
                                               CFXJSE_Arguments& args) {
   v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetScriptRuntime();
-  uint32_t iLength = 0;
-  int32_t argc = args.GetLength();
   std::vector<std::unique_ptr<CFXJSE_Value>> argValues;
-  for (int32_t i = 0; i < argc; i++) {
+  for (int32_t i = 0; i < args.GetLength(); ++i)
     argValues.push_back(args.GetValue(i));
-    if (argValues[i]->IsArray()) {
-      auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
-      argValues[i]->GetObjectProperty("length", lengthValue.get());
-      int32_t length = lengthValue->ToInteger();
-      iLength = iLength + ((length > 2) ? (length - 2) : 0);
-    }
-    ++iLength;
-  }
 
   std::vector<std::unique_ptr<CFXJSE_Value>> returnValues;
-  for (int32_t i = 0; i < (int32_t)iLength; i++)
-    returnValues.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
-
-  int32_t index = 0;
-  for (int32_t i = 0; i < argc; i++) {
+  for (size_t i = 0; i < argValues.size(); ++i) {
     if (argValues[i]->IsArray()) {
       auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
       argValues[i]->GetObjectProperty("length", lengthValue.get());
-
       int32_t length = lengthValue->ToInteger();
       for (int32_t j = 2; j < length; j++) {
-        argValues[i]->GetObjectPropertyByIdx(j, returnValues[index].get());
-        index++;
+        returnValues.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
+        argValues[i]->GetObjectPropertyByIdx(j, returnValues.back().get());
       }
     }
-    returnValues[index]->Assign(argValues[i].get());
-    index++;
+    returnValues.push_back(pdfium::MakeUnique<CFXJSE_Value>(pIsolate));
+    returnValues.back()->Assign(argValues[i].get());
   }
   args.GetReturnValue()->SetArray(returnValues);
 }
