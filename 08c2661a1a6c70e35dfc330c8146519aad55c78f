@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0d27eed_753719ed",
+        "filename": "core/fxge/cfx_drawutils.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52cd447b_a07d049a",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbfe7a36_dd72aaf0",
         "filename": "core/fxge/cfx_drawutils.h",
         "patchSetId": 32
@@ -33,6 +51,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c98dd889_5f9fb80d",
+        "filename": "core/fxge/cfx_drawutils.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cbfe7a36_dd72aaf0",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5c49d32d_f636b030",
+        "filename": "core/fxge/cfx_drawutils.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70a5fe47_66474be1",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efa2deff_5937cebd",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "2e7e908d_4a3c149c",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Done. Will check for the same across all files.",
+      "parentUuid": "efa2deff_5937cebd",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1452b1a9_0b307c98",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
@@ -81,6 +153,24 @@
       "writtenOn": "2020-03-04T00:00:58Z",
       "side": 1,
       "message": "Does this drawing code handle hidden / invisible annotations? i.e. Ones where CPDFSDK_BAAnnot::IsVisible() returns false.",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b10be55_9759cd49",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "It does not handle hidden/invisible non widget annotations. Now I have added the check here. After this fix, we won\u0027t be drawing bounded rect over any annot which returns false for CPDFSDK_BAAnnot::IsVisible().\n\nI want to mention few problems here.\n1. With /F value as 2, highlighted annots wont be visible. But still with our current implementation, we will still be tabbing over it. This problem already exists today for all widget types.\n2. If a highlight annot have /F value as 2 and have a popup associated with it, when we hover over those invisible highlighted annots, popup is still showing up.\n3. If a Link annot have /F value as 2, when we hover over this annot, mouse pointer becomes hand pointer. I am not sure if that is the right behavior.\n\nWe can add a check in CPDFSDK_AnnotIterator::CollectAnnots and fix the problem 1. But problem 2 and 3 still exists.\n\nI can either fix all three of them as part of a different Issue. Or I can fix the problem 1 as part of this CL and take care of remaining two as part of different Issue.\n\nKindly share your thoughts here.",
+      "parentUuid": "1452b1a9_0b307c98",
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "d7fd9d96_2b0bae83",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6aa7c08_d512cc43",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ce467f0_8f934db6",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
         "patchSetId": 32
@@ -118,6 +226,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa55804_53927347",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ce467f0_8f934db6",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "804947b7_e768e49e",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ae87185_79758563",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86bfd00f_bb77b7b7",
         "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
         "patchSetId": 32
@@ -152,6 +296,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e80fe3_4a158d4e",
+        "filename": "fpdfsdk/cpdfsdk_baannothandler.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86bfd00f_bb77b7b7",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "2f78485b_f09ba137",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb4b4874_448a259c",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86a9900b_f72e9dcd",
         "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
         "patchSetId": 32
@@ -186,6 +366,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88cc88a_02cbae22",
+        "filename": "fpdfsdk/cpdfsdk_interactiveform.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Yes. It makes sense to have this in CPDFSDK_FormFillEnvironment. InteractiveForm is specific to widget types and FocusableAnnotTypes can hold non widget types also. So moving this to CPDFSDK_FormFillEnvironment.",
+      "parentUuid": "86a9900b_f72e9dcd",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "281e091f_308b2406",
+        "filename": "fpdfsdk/formfiller/cffl_interactiveformfiller.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "191fd2ca_2867b787",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dddf7a33_26be3445",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 32
@@ -220,6 +436,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48cb5beb_fb46fdcc",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dddf7a33_26be3445",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -246,6 +480,30 @@
     },
     {
       "key": {
+        "uuid": "cb67d59e_35e55d4a",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c59cdab_63dcceba",
+      "range": {
+        "startLine": 1086,
+        "startChar": 7,
+        "endLine": 1086,
+        "endChar": 19
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "419015d4_c4433721",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 32
@@ -260,6 +518,24 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90e427e9_63e233b2",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "419015d4_c4433721",
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     },
     {
       "key": {
@@ -286,6 +562,30 @@
     },
     {
       "key": {
+        "uuid": "069d67d6_90a363ec",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ec6874d_4a25bb01",
+      "range": {
+        "startLine": 2392,
+        "startChar": 12,
+        "endLine": 2392,
+        "endChar": 24
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3337548_14a65466",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 32
@@ -309,6 +609,30 @@
     },
     {
       "key": {
+        "uuid": "2d5ec6c9_22cc7570",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2403,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3337548_14a65466",
+      "range": {
+        "startLine": 2403,
+        "startChar": 12,
+        "endLine": 2403,
+        "endChar": 17
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bc762d2_598a940c",
         "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
         "patchSetId": 32
@@ -329,6 +653,30 @@
       "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b754a779_adeb6f62",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 2413,
+      "author": {
+        "id": 7705
+      },
+      "writtenOn": "2020-03-05T17:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bc762d2_598a940c",
+      "range": {
+        "startLine": 2413,
+        "startChar": 52,
+        "endLine": 2413,
+        "endChar": 56
+      },
+      "revId": "08c2661a1a6c70e35dfc330c8146519aad55c78f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": false
     }
   ]
 }
