@@ -2560,13 +2560,26 @@ class FPDFXFAFormEmbedderTest : public FPDFFormFillInteractiveEmbedderTest {
   ~FPDFXFAFormEmbedderTest() override = default;
 
   const char* GetDocumentName() const override { return "bug_1055869.pdf"; }
-
   int GetFormType() const override { return FORMTYPE_XFA_FULL; }
 };
 
 TEST_F(FPDFXFAFormEmbedderTest, Paste) {
-  CFX_PointF where(100, 100);
   ScopedFPDFWideString text_to_insert = GetFPDFWideString(L"XYZ");
-  DoubleClickOnFormFieldAtPoint(where);
+  DoubleClickOnFormFieldAtPoint(CFX_PointF(100, 100));
+  FORM_ReplaceSelection(form_handle(), page(), text_to_insert.get());
+}
+
+class FPDFXFAFormEmbedderTest2 : public FPDFFormFillInteractiveEmbedderTest {
+ protected:
+  FPDFXFAFormEmbedderTest2() = default;
+  ~FPDFXFAFormEmbedderTest2() override = default;
+
+  const char* GetDocumentName() const override { return "bug_1058653.pdf"; }
+  int GetFormType() const override { return FORMTYPE_XFA_FULL; }
+};
+
+TEST_F(FPDFXFAFormEmbedderTest2, Paste) {
+  ScopedFPDFWideString text_to_insert = GetFPDFWideString(L"");
+  DoubleClickOnFormFieldAtPoint(CFX_PointF(22, 22));
   FORM_ReplaceSelection(form_handle(), page(), text_to_insert.get());
 }
