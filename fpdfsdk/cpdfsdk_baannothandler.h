@@ -8,6 +8,7 @@
 #define FPDFSDK_CPDFSDK_BAANNOTHANDLER_H_
 
 #include <memory>
+#include <vector>
 
 #include "core/fxcrt/fx_coordinates.h"
 #include "fpdfsdk/ipdfsdk_annothandler.h"
@@ -99,6 +100,13 @@ class CPDFSDK_BAAnnotHandler final : public IPDFSDK_AnnotHandler {
                         int index,
                         bool selected) override;
   bool IsIndexSelected(ObservedPtr<CPDFSDK_Annot>* pAnnot, int index) override;
+
+ private:
+  void InvalidateRect(CPDFSDK_Annot* annot);
+  bool IsFocusableAnnot(const CPDF_Annot::Subtype& annot_type) const;
+
+  UnownedPtr<CPDFSDK_FormFillEnvironment> form_fill_environment_;
+  bool is_annotation_focused_ = false;
 };
 
 #endif  // FPDFSDK_CPDFSDK_BAANNOTHANDLER_H_
