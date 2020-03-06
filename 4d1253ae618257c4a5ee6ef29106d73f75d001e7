@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b42a7a35_e1cb0a8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T04:51:56Z",
+      "side": 1,
+      "message": "class CFX_DrawUtils",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "4d1253ae618257c4a5ee6ef29106d73f75d001e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae253def_72dd713d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T04:51:56Z",
+      "side": 1,
+      "message": "Lets not mention that this is a follow up of something rather what we are trying to achieve. In this case its a refactor so that other classes and objects can reuse the utility function where one such example is the CL in which the follow up comment came.",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "4d1253ae618257c4a5ee6ef29106d73f75d001e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
