@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dbce1c8_d423883a",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "Whats the need for this one?",
+      "range": {
+        "startLine": 209,
+        "startChar": 30,
+        "endLine": 209,
+        "endChar": 34
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5de2a4_1cbfdd44",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "modifier or modifiers?",
+      "range": {
+        "startLine": 211,
+        "startChar": 8,
+        "endLine": 211,
+        "endChar": 16
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbd6b8b_a9968ef0",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "Any reason for not clubbing them.",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 47
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c3b95f_70505f0d",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "We could use DoAction_URI() instead.",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 217,
+        "endChar": 55
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d607ee4_2214c5bc",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "Multi line if should be wrapped in {}",
+      "range": {
+        "startLine": 237,
+        "startChar": 6,
+        "endLine": 238,
+        "endChar": 44
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4494da31_d5e8406e",
+        "filename": "fpdfsdk/cpdfsdk_actionhandler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "fix variable name foo instead of kFoo",
+      "range": {
+        "startLine": 49,
+        "startChar": 60,
+        "endLine": 49,
+        "endChar": 72
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3b1aa4_c4a33c77",
+        "filename": "fpdfsdk/cpdfsdk_annothandlermgr.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "use new conventions for variable naming.",
+      "range": {
+        "startLine": 101,
+        "startChar": 36,
+        "endLine": 101,
+        "endChar": 42
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3608a0_2119070c",
+        "filename": "fpdfsdk/cpdfsdk_baannot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "Is the check need given that page_view-\u003eGetFormFillEnv(); doesn\u0027t return nullptr.",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 8
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aff4b7c_a739bd8b",
+        "filename": "fpdfsdk/cpdfsdk_baannot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "new convention instead page_view.",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd52df2e_58c0c82c",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7659
+      },
+      "writtenOn": "2020-03-06T05:19:54Z",
+      "side": 1,
+      "message": "Any reason for include instead of forward declaration?",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "bef8a292419e472dcc1930eb9bcba828d36ece61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
