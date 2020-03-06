@@ -271,6 +271,11 @@ void CFXJSE_Engine::GlobalPropertyGetter(CFXJSE_Value* pObject,
     return;
   }
 
+  // Last chance is to try to get object from the non-XFA side, but don't
+  // let these object pollute formcalc scripts.
+  if (lpScriptContext->GetType() == CXFA_Script::Type::Formcalc)
+    return;
+
   CXFA_FFNotify* pNotify = pDoc->GetNotify();
   if (!pNotify)
     return;
