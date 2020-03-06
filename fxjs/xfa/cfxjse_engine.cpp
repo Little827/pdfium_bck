@@ -202,6 +202,12 @@ void CFXJSE_Engine::GlobalPropertySetter(CFXJSE_Value* pObject,
     pObject->DeleteObjectProperty(szPropName);
     return;
   }
+
+  // Last chance is to try to set object into the non-XFA side, but don't
+  // let formcalc scripts pollute these objects.
+  if (lpScriptContext->GetType() == CXFA_Script::Type::Formcalc)
+    return;
+
   CXFA_FFNotify* pNotify = pDoc->GetNotify();
   if (!pNotify)
     return;
@@ -270,6 +276,11 @@ void CFXJSE_Engine::GlobalPropertyGetter(CFXJSE_Value* pObject,
                            pScriptObject->AsNode(), szPropName, pValue, true)) {
     return;
   }
+
+  // Last chance is to try to get object from the non-XFA side, but don't
+  // let these object pollute formcalc scripts.
+  if (lpScriptContext->GetType() == CXFA_Script::Type::Formcalc)
+    return;
 
   CXFA_FFNotify* pNotify = pDoc->GetNotify();
   if (!pNotify)
