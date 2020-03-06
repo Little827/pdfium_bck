@@ -11,6 +11,7 @@
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
+#include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdf_ext.h"
 #include "public/fpdfview.h"
@@ -37,7 +38,6 @@ class CPDF_StructElement;
 class CPDF_StructTree;
 class CPDF_TextPage;
 class CPDF_TextPageFind;
-class CPDFSDK_FormFillEnvironment;
 class CPDFSDK_InteractiveForm;
 class FX_PATHPOINT;
 struct CPDF_JavaScript;
