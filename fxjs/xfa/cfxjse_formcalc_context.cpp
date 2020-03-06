@@ -14,7 +14,6 @@
 #include "core/fxcrt/cfx_widetextbuf.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_random.h"
-#include "fxjs/xfa/cfxjse_arguments.h"
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_context.h"
 #include "fxjs/xfa/cfxjse_engine.h"
@@ -1340,17 +1339,19 @@ const FXJSE_CLASS_DESCRIPTOR kFormCalcFM2JSDescriptor = {
 };
 
 // static
-void CFXJSE_FormCalcContext::Abs(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Abs(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Abs");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -1358,16 +1359,18 @@ void CFXJSE_FormCalcContext::Abs(CFXJSE_Value* pThis,
   if (dValue < 0)
     dValue = -dValue;
 
-  args.GetReturnValue()->SetDouble(dValue);
+  pRetValue->SetDouble(dValue);
 }
 
 // static
-void CFXJSE_FormCalcContext::Avg(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Avg(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -1375,7 +1378,8 @@ void CFXJSE_FormCalcContext::Avg(CFXJSE_Value* pThis,
   uint32_t uCount = 0;
   double dSum = 0.0;
   for (int32_t i = 0; i < argc; i++) {
-    std::unique_ptr<CFXJSE_Value> argValue = args.GetValue(i);
+    auto argValue =
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[i]);
     if (argValue->IsNull())
       continue;
 
@@ -1421,40 +1425,45 @@ void CFXJSE_FormCalcContext::Avg(CFXJSE_Value* pThis,
     }
   }
   if (uCount == 0) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
-  args.GetReturnValue()->SetDouble(dSum / uCount);
+  pRetValue->SetDouble(dSum / uCount);
 }
 
 // static
-void CFXJSE_FormCalcContext::Ceil(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Ceil(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Ceil");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argValue = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argValue.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
-  args.GetReturnValue()->SetFloat(ceil(ValueToFloat(pThis, argValue.get())));
+  pRetValue->SetFloat(ceil(ValueToFloat(pThis, argValue.get())));
 }
 
 // static
-void CFXJSE_FormCalcContext::Count(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Count(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
   int32_t iCount = 0;
-  for (int32_t i = 0; i < args.GetLength(); i++) {
-    std::unique_ptr<CFXJSE_Value> argValue = args.GetValue(i);
+  for (int32_t i = 0; i < info.Length(); i++) {
+    auto argValue =
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[i]);
     if (argValue->IsNull())
       continue;
 
@@ -1497,37 +1506,42 @@ void CFXJSE_FormCalcContext::Count(CFXJSE_Value* pThis,
       iCount++;
     }
   }
-  args.GetReturnValue()->SetInteger(iCount);
+  pRetValue->SetInteger(iCount);
 }
 
 // static
-void CFXJSE_FormCalcContext::Floor(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Floor(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Floor");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argValue = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argValue.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
-  args.GetReturnValue()->SetFloat(floor(ValueToFloat(pThis, argValue.get())));
+  pRetValue->SetFloat(floor(ValueToFloat(pThis, argValue.get())));
 }
 
 // static
-void CFXJSE_FormCalcContext::Max(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Max(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
   uint32_t uCount = 0;
   double dMaxValue = 0.0;
-  for (int32_t i = 0; i < args.GetLength(); i++) {
-    std::unique_ptr<CFXJSE_Value> argValue = args.GetValue(i);
+  for (int32_t i = 0; i < info.Length(); i++) {
+    auto argValue =
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[i]);
     if (argValue->IsNull())
       continue;
 
@@ -1585,23 +1599,26 @@ void CFXJSE_FormCalcContext::Max(CFXJSE_Value* pThis,
     }
   }
   if (uCount == 0) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
-  args.GetReturnValue()->SetDouble(dMaxValue);
+  pRetValue->SetDouble(dMaxValue);
 }
 
 // static
-void CFXJSE_FormCalcContext::Min(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Min(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
   uint32_t uCount = 0;
   double dMinValue = 0.0;
-  for (int32_t i = 0; i < args.GetLength(); i++) {
-    std::unique_ptr<CFXJSE_Value> argValue = args.GetValue(i);
+  for (int32_t i = 0; i < info.Length(); i++) {
+    auto argValue =
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[i]);
     if (argValue->IsNull())
       continue;
 
@@ -1659,27 +1676,29 @@ void CFXJSE_FormCalcContext::Min(CFXJSE_Value* pThis,
     }
   }
   if (uCount == 0) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
-  args.GetReturnValue()->SetDouble(dMinValue);
+  pRetValue->SetDouble(dMinValue);
 }
 
 // static
-void CFXJSE_FormCalcContext::Mod(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Mod(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 2) {
+  if (info.Length() != 2) {
     pContext->ThrowParamCountMismatchException(L"Mod");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
-  std::unique_ptr<CFXJSE_Value> argTwo = args.GetValue(1);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
+  auto argTwo = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[1]);
   if (argOne->IsNull() || argTwo->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -1697,24 +1716,25 @@ void CFXJSE_FormCalcContext::Mod(CFXJSE_Value* pThis,
     return;
   }
 
-  args.GetReturnValue()->SetDouble(dDividend -
-                                   dDivisor * (int32_t)(dDividend / dDivisor));
+  pRetValue->SetDouble(dDividend - dDivisor * (int32_t)(dDividend / dDivisor));
 }
 
 // static
-void CFXJSE_FormCalcContext::Round(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Round(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  int32_t argc = args.GetLength();
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 2) {
     pContext->ThrowParamCountMismatchException(L"Round");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (argOne->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -1727,9 +1747,9 @@ void CFXJSE_FormCalcContext::Round(CFXJSE_Value* pThis,
 
   uint8_t uPrecision = 0;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> argTwo = args.GetValue(1);
+    auto argTwo = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[1]);
     if (argTwo->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
 
@@ -1744,16 +1764,18 @@ void CFXJSE_FormCalcContext::Round(CFXJSE_Value* pThis,
   }
 
   CFGAS_Decimal decimalValue(static_cast<float>(dValue), uPrecision);
-  args.GetReturnValue()->SetDouble(decimalValue.ToDouble());
+  pRetValue->SetDouble(decimalValue.ToDouble());
 }
 
 // static
-void CFXJSE_FormCalcContext::Sum(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Sum(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc == 0) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -1762,7 +1784,8 @@ void CFXJSE_FormCalcContext::Sum(CFXJSE_Value* pThis,
   uint32_t uCount = 0;
   double dSum = 0.0;
   for (int32_t i = 0; i < argc; i++) {
-    std::unique_ptr<CFXJSE_Value> argValue = args.GetValue(i);
+    auto argValue =
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[i]);
     if (argValue->IsNull())
       continue;
 
@@ -1815,18 +1838,20 @@ void CFXJSE_FormCalcContext::Sum(CFXJSE_Value* pThis,
     }
   }
   if (uCount == 0) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
-  args.GetReturnValue()->SetDouble(dSum);
+  pRetValue->SetDouble(dSum);
 }
 
 // static
-void CFXJSE_FormCalcContext::Date(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
-  if (args.GetLength() != 0) {
+void CFXJSE_FormCalcContext::Date(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 0) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Date");
     return;
   }
@@ -1835,34 +1860,36 @@ void CFXJSE_FormCalcContext::Date(CFXJSE_Value* pThis,
   FXSYS_time(&currentTime);
   struct tm* pTmStruct = gmtime(&currentTime);
 
-  args.GetReturnValue()->SetInteger(DateString2Num(
+  pRetValue->SetInteger(DateString2Num(
       ByteString::Format("%d%02d%02d", pTmStruct->tm_year + 1900,
                          pTmStruct->tm_mon + 1, pTmStruct->tm_mday)
           .AsStringView()));
 }
 
 // static
-void CFXJSE_FormCalcContext::Date2Num(CFXJSE_Value* pThis,
-                                      ByteStringView bsFuncName,
-                                      CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Date2Num(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Date2Num");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> dateValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> dateValue = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, dateValue.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsDate = ValueToUTF8String(dateValue.get());
   ByteString bsFormat;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, info, 1);
     if (ValueIsNull(pThis, formatValue.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsFormat = ValueToUTF8String(formatValue.get());
@@ -1870,9 +1897,9 @@ void CFXJSE_FormCalcContext::Date2Num(CFXJSE_Value* pThis,
 
   ByteString bsLocale;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, info, 2);
     if (ValueIsNull(pThis, localeValue.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(localeValue.get());
@@ -1881,14 +1908,16 @@ void CFXJSE_FormCalcContext::Date2Num(CFXJSE_Value* pThis,
   ByteString bsIsoDate =
       Local2IsoDate(pThis, bsDate.AsStringView(), bsFormat.AsStringView(),
                     bsLocale.AsStringView());
-  args.GetReturnValue()->SetInteger(DateString2Num(bsIsoDate.AsStringView()));
+  pRetValue->SetInteger(DateString2Num(bsIsoDate.AsStringView()));
 }
 
 // static
-void CFXJSE_FormCalcContext::DateFmt(CFXJSE_Value* pThis,
-                                     ByteStringView bsFuncName,
-                                     CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::DateFmt(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Date2Num");
     return;
@@ -1896,22 +1925,22 @@ void CFXJSE_FormCalcContext::DateFmt(CFXJSE_Value* pThis,
 
   int32_t iStyle = 0;
   if (argc > 0) {
-    std::unique_ptr<CFXJSE_Value> argStyle = GetSimpleValue(pThis, args, 0);
-    if (argStyle->IsNull()) {
-      args.GetReturnValue()->SetNull();
+    std::unique_ptr<CFXJSE_Value> infotyle = GetSimpleValue(pThis, info, 0);
+    if (infotyle->IsNull()) {
+      pRetValue->SetNull();
       return;
     }
 
-    iStyle = (int32_t)ValueToFloat(pThis, argStyle.get());
+    iStyle = (int32_t)ValueToFloat(pThis, infotyle.get());
     if (iStyle < 0 || iStyle > 4)
       iStyle = 0;
   }
 
   ByteString bsLocale;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, info, 1);
     if (argLocale->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(argLocale.get());
@@ -1919,39 +1948,43 @@ void CFXJSE_FormCalcContext::DateFmt(CFXJSE_Value* pThis,
 
   ByteString bsFormat =
       GetStandardDateFormat(pThis, iStyle, bsLocale.AsStringView());
-  args.GetReturnValue()->SetString(bsFormat.AsStringView());
+  pRetValue->SetString(bsFormat.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::IsoDate2Num(CFXJSE_Value* pThis,
-                                         ByteStringView bsFuncName,
-                                         CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::IsoDate2Num(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"IsoDate2Num");
     return;
   }
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (argOne->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
   ByteString bsArg = ValueToUTF8String(argOne.get());
-  args.GetReturnValue()->SetInteger(DateString2Num(bsArg.AsStringView()));
+  pRetValue->SetInteger(DateString2Num(bsArg.AsStringView()));
 }
 
 // static
-void CFXJSE_FormCalcContext::IsoTime2Num(CFXJSE_Value* pThis,
-                                         ByteStringView bsFuncName,
-                                         CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::IsoTime2Num(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 1) {
+  if (info.Length() != 1) {
     pContext->ThrowParamCountMismatchException(L"IsoTime2Num");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -1960,7 +1993,7 @@ void CFXJSE_FormCalcContext::IsoTime2Num(CFXJSE_Value* pThis,
   ByteString bsArg = ValueToUTF8String(argOne.get());
   auto pos = bsArg.Find('T', 0);
   if (!pos.has_value() || pos.value() == bsArg.GetLength() - 1) {
-    args.GetReturnValue()->SetInteger(0);
+    pRetValue->SetInteger(0);
     return;
   }
   bsArg = bsArg.Last(bsArg.GetLength() - (pos.value() + 1));
@@ -1968,7 +2001,7 @@ void CFXJSE_FormCalcContext::IsoTime2Num(CFXJSE_Value* pThis,
   CXFA_LocaleValue timeValue(XFA_VT_TIME,
                              WideString::FromUTF8(bsArg.AsStringView()), pMgr);
   if (!timeValue.IsValid()) {
-    args.GetReturnValue()->SetInteger(0);
+    pRetValue->SetInteger(0);
     return;
   }
 
@@ -1989,15 +2022,17 @@ void CFXJSE_FormCalcContext::IsoTime2Num(CFXJSE_Value* pThis,
   hour = mins / 60;
   min = mins % 60;
 
-  args.GetReturnValue()->SetInteger(hour * 3600000 + min * 60000 +
-                                    second * 1000 + milSecond + 1);
+  pRetValue->SetInteger(hour * 3600000 + min * 60000 + second * 1000 +
+                        milSecond + 1);
 }
 
 // static
-void CFXJSE_FormCalcContext::LocalDateFmt(CFXJSE_Value* pThis,
-                                          ByteStringView bsFuncName,
-                                          CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::LocalDateFmt(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"LocalDateFmt");
     return;
@@ -2005,21 +2040,21 @@ void CFXJSE_FormCalcContext::LocalDateFmt(CFXJSE_Value* pThis,
 
   int32_t iStyle = 0;
   if (argc > 0) {
-    std::unique_ptr<CFXJSE_Value> argStyle = GetSimpleValue(pThis, args, 0);
-    if (argStyle->IsNull()) {
-      args.GetReturnValue()->SetNull();
+    std::unique_ptr<CFXJSE_Value> infotyle = GetSimpleValue(pThis, info, 0);
+    if (infotyle->IsNull()) {
+      pRetValue->SetNull();
       return;
     }
-    iStyle = (int32_t)ValueToFloat(pThis, argStyle.get());
+    iStyle = (int32_t)ValueToFloat(pThis, infotyle.get());
     if (iStyle > 4 || iStyle < 0)
       iStyle = 0;
   }
 
   ByteString bsLocale;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, info, 1);
     if (argLocale->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(argLocale.get());
@@ -2027,14 +2062,16 @@ void CFXJSE_FormCalcContext::LocalDateFmt(CFXJSE_Value* pThis,
 
   ByteString bsFormat =
       GetLocalDateFormat(pThis, iStyle, bsLocale.AsStringView(), false);
-  args.GetReturnValue()->SetString(bsFormat.AsStringView());
+  pRetValue->SetString(bsFormat.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::LocalTimeFmt(CFXJSE_Value* pThis,
-                                          ByteStringView bsFuncName,
-                                          CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::LocalTimeFmt(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"LocalTimeFmt");
     return;
@@ -2042,21 +2079,21 @@ void CFXJSE_FormCalcContext::LocalTimeFmt(CFXJSE_Value* pThis,
 
   int32_t iStyle = 0;
   if (argc > 0) {
-    std::unique_ptr<CFXJSE_Value> argStyle = GetSimpleValue(pThis, args, 0);
-    if (argStyle->IsNull()) {
-      args.GetReturnValue()->SetNull();
+    std::unique_ptr<CFXJSE_Value> infotyle = GetSimpleValue(pThis, info, 0);
+    if (infotyle->IsNull()) {
+      pRetValue->SetNull();
       return;
     }
-    iStyle = (int32_t)ValueToFloat(pThis, argStyle.get());
+    iStyle = (int32_t)ValueToFloat(pThis, infotyle.get());
     if (iStyle > 4 || iStyle < 0)
       iStyle = 0;
   }
 
   ByteString bsLocale;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, info, 1);
     if (argLocale->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(argLocale.get());
@@ -2064,35 +2101,37 @@ void CFXJSE_FormCalcContext::LocalTimeFmt(CFXJSE_Value* pThis,
 
   ByteString bsFormat =
       GetLocalTimeFormat(pThis, iStyle, bsLocale.AsStringView(), false);
-  args.GetReturnValue()->SetString(bsFormat.AsStringView());
+  pRetValue->SetString(bsFormat.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Num2Date(CFXJSE_Value* pThis,
-                                      ByteStringView bsFuncName,
-                                      CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Num2Date(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Num2Date");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> dateValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> dateValue = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, dateValue.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
   int32_t dDate = (int32_t)ValueToFloat(pThis, dateValue.get());
   if (dDate < 1) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsFormat;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, info, 1);
     if (ValueIsNull(pThis, formatValue.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsFormat = ValueToUTF8String(formatValue.get());
@@ -2100,9 +2139,9 @@ void CFXJSE_FormCalcContext::Num2Date(CFXJSE_Value* pThis,
 
   ByteString bsLocale;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, info, 2);
     if (ValueIsNull(pThis, localeValue.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(localeValue.get());
@@ -2204,35 +2243,37 @@ void CFXJSE_FormCalcContext::Num2Date(CFXJSE_Value* pThis,
       pThis,
       ByteString::Format("%d%02d%02d", iYear + i, iMonth, iDay).AsStringView(),
       bsFormat.AsStringView(), bsLocale.AsStringView());
-  args.GetReturnValue()->SetString(bsLocalDate.AsStringView());
+  pRetValue->SetString(bsLocalDate.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Num2GMTime(CFXJSE_Value* pThis,
-                                        ByteStringView bsFuncName,
-                                        CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Num2GMTime(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Num2GMTime");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> timeValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> timeValue = GetSimpleValue(pThis, info, 0);
   if (timeValue->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
   int32_t iTime = (int32_t)ValueToFloat(pThis, timeValue.get());
   if (abs(iTime) < 1.0) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsFormat;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, info, 1);
     if (formatValue->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsFormat = ValueToUTF8String(formatValue.get());
@@ -2240,9 +2281,9 @@ void CFXJSE_FormCalcContext::Num2GMTime(CFXJSE_Value* pThis,
 
   ByteString bsLocale;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, info, 2);
     if (localeValue->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(localeValue.get());
@@ -2250,35 +2291,37 @@ void CFXJSE_FormCalcContext::Num2GMTime(CFXJSE_Value* pThis,
 
   ByteString bsGMTTime = Num2AllTime(pThis, iTime, bsFormat.AsStringView(),
                                      bsLocale.AsStringView(), true);
-  args.GetReturnValue()->SetString(bsGMTTime.AsStringView());
+  pRetValue->SetString(bsGMTTime.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Num2Time(CFXJSE_Value* pThis,
-                                      ByteStringView bsFuncName,
-                                      CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Num2Time(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Num2Time");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> timeValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> timeValue = GetSimpleValue(pThis, info, 0);
   if (timeValue->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
   float fTime = ValueToFloat(pThis, timeValue.get());
   if (fabs(fTime) < 1.0) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsFormat;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, info, 1);
     if (formatValue->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsFormat = ValueToUTF8String(formatValue.get());
@@ -2286,9 +2329,9 @@ void CFXJSE_FormCalcContext::Num2Time(CFXJSE_Value* pThis,
 
   ByteString bsLocale;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, info, 2);
     if (localeValue->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(localeValue.get());
@@ -2297,49 +2340,52 @@ void CFXJSE_FormCalcContext::Num2Time(CFXJSE_Value* pThis,
   ByteString bsLocalTime =
       Num2AllTime(pThis, static_cast<int32_t>(fTime), bsFormat.AsStringView(),
                   bsLocale.AsStringView(), false);
-  args.GetReturnValue()->SetString(bsLocalTime.AsStringView());
+  pRetValue->SetString(bsLocalTime.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Time(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
-  if (args.GetLength() != 0) {
+void CFXJSE_FormCalcContext::Time(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 0) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Time");
     return;
   }
 
   time_t now;
   FXSYS_time(&now);
-
   struct tm* pGmt = gmtime(&now);
-  args.GetReturnValue()->SetInteger(
+  pRetValue->SetInteger(
       (pGmt->tm_hour * 3600 + pGmt->tm_min * 60 + pGmt->tm_sec) * 1000);
 }
 
 // static
-void CFXJSE_FormCalcContext::Time2Num(CFXJSE_Value* pThis,
-                                      ByteStringView bsFuncName,
-                                      CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Time2Num(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Time2Num");
     return;
   }
 
   ByteString bsTime;
-  std::unique_ptr<CFXJSE_Value> timeValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> timeValue = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, timeValue.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
   bsTime = ValueToUTF8String(timeValue.get());
 
   ByteString bsFormat;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> formatValue = GetSimpleValue(pThis, info, 1);
     if (ValueIsNull(pThis, formatValue.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsFormat = ValueToUTF8String(formatValue.get());
@@ -2347,9 +2393,9 @@ void CFXJSE_FormCalcContext::Time2Num(CFXJSE_Value* pThis,
 
   ByteString bsLocale;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, info, 2);
     if (ValueIsNull(pThis, localeValue.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(localeValue.get());
@@ -2377,7 +2423,7 @@ void CFXJSE_FormCalcContext::Time2Num(CFXJSE_Value* pThis,
                                WideString::FromUTF8(bsTime.AsStringView()),
                                wsFormat, pLocale, pMgr);
   if (!localeValue.IsValid()) {
-    args.GetReturnValue()->SetInteger(0);
+    pRetValue->SetInteger(0);
     return;
   }
 
@@ -2397,15 +2443,17 @@ void CFXJSE_FormCalcContext::Time2Num(CFXJSE_Value* pThis,
 
   hour = mins / 60;
   min = mins % 60;
-  args.GetReturnValue()->SetInteger(hour * 3600000 + min * 60000 +
-                                    second * 1000 + milSecond + 1);
+  pRetValue->SetInteger(hour * 3600000 + min * 60000 + second * 1000 +
+                        milSecond + 1);
 }
 
 // static
-void CFXJSE_FormCalcContext::TimeFmt(CFXJSE_Value* pThis,
-                                     ByteStringView bsFuncName,
-                                     CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::TimeFmt(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"TimeFmt");
     return;
@@ -2413,21 +2461,21 @@ void CFXJSE_FormCalcContext::TimeFmt(CFXJSE_Value* pThis,
 
   int32_t iStyle = 0;
   if (argc > 0) {
-    std::unique_ptr<CFXJSE_Value> argStyle = GetSimpleValue(pThis, args, 0);
-    if (argStyle->IsNull()) {
-      args.GetReturnValue()->SetNull();
+    std::unique_ptr<CFXJSE_Value> infotyle = GetSimpleValue(pThis, info, 0);
+    if (infotyle->IsNull()) {
+      pRetValue->SetNull();
       return;
     }
-    iStyle = (int32_t)ValueToFloat(pThis, argStyle.get());
+    iStyle = (int32_t)ValueToFloat(pThis, infotyle.get());
     if (iStyle > 4 || iStyle < 0)
       iStyle = 0;
   }
 
   ByteString bsLocale;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> argLocale = GetSimpleValue(pThis, info, 1);
     if (argLocale->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(argLocale.get());
@@ -2435,7 +2483,7 @@ void CFXJSE_FormCalcContext::TimeFmt(CFXJSE_Value* pThis,
 
   ByteString bsFormat =
       GetStandardTimeFormat(pThis, iStyle, bsLocale.AsStringView());
-  args.GetReturnValue()->SetString(bsFormat.AsStringView());
+  pRetValue->SetString(bsFormat.AsStringView());
 }
 
 // static
@@ -2577,21 +2625,23 @@ ByteString CFXJSE_FormCalcContext::Num2AllTime(CFXJSE_Value* pThis,
 }
 
 // static
-void CFXJSE_FormCalcContext::Apr(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Apr(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 3) {
+  if (info.Length() != 3) {
     pContext->ThrowParamCountMismatchException(L"Apr");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2615,7 +2665,7 @@ void CFXJSE_FormCalcContext::Apr(CFXJSE_Value* pThis,
          (r * nTemp * nPeriods * (nTemp / (1 + r)))) /
         ((nTemp - 1) * (nTemp - 1));
     if (nDerivative == 0) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
 
@@ -2626,25 +2676,27 @@ void CFXJSE_FormCalcContext::Apr(CFXJSE_Value* pThis,
     }
     nRet = r * nTemp / (nTemp - 1) - nPayment / nPrincipal;
   }
-  args.GetReturnValue()->SetDouble(r * 12);
+  pRetValue->SetDouble(r * 12);
 }
 
 // static
-void CFXJSE_FormCalcContext::CTerm(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::CTerm(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 3) {
+  if (info.Length() != 3) {
     pContext->ThrowParamCountMismatchException(L"CTerm");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2656,26 +2708,27 @@ void CFXJSE_FormCalcContext::CTerm(CFXJSE_Value* pThis,
     return;
   }
 
-  args.GetReturnValue()->SetFloat(log((float)(nFutureValue / nInitAmount)) /
-                                  log((float)(1 + nRate)));
+  pRetValue->SetFloat(log((float)(nFutureValue / nInitAmount)) /
+                      log((float)(1 + nRate)));
 }
 
 // static
 void CFXJSE_FormCalcContext::FV(CFXJSE_Value* pThis,
                                 ByteStringView bsFuncName,
-                                CFXJSE_Arguments& args) {
+                                const v8::FunctionCallbackInfo<v8::Value>& info,
+                                CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 3) {
+  if (info.Length() != 3) {
     pContext->ThrowParamCountMismatchException(L"FV");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2698,28 +2751,30 @@ void CFXJSE_FormCalcContext::FV(CFXJSE_Value* pThis,
     dResult = nAmount * nPeriod;
   }
 
-  args.GetReturnValue()->SetDouble(dResult);
+  pRetValue->SetDouble(dResult);
 }
 
 // static
-void CFXJSE_FormCalcContext::IPmt(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::IPmt(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 5) {
+  if (info.Length() != 5) {
     pContext->ThrowParamCountMismatchException(L"IPmt");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
-  std::unique_ptr<CFXJSE_Value> argFour = GetSimpleValue(pThis, args, 3);
-  std::unique_ptr<CFXJSE_Value> argFive = GetSimpleValue(pThis, args, 4);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
+  std::unique_ptr<CFXJSE_Value> argFour = GetSimpleValue(pThis, info, 3);
+  std::unique_ptr<CFXJSE_Value> argFive = GetSimpleValue(pThis, info, 4);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get()) || ValueIsNull(pThis, argFour.get()) ||
       ValueIsNull(pThis, argFive.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2742,7 +2797,7 @@ void CFXJSE_FormCalcContext::IPmt(CFXJSE_Value* pThis,
   int32_t iEnd = std::min((int32_t)(nFirstMonth + nNumberOfMonths - 1), iNums);
 
   if (nPayment < nPrincipalAmount * nRateOfMonth) {
-    args.GetReturnValue()->SetFloat(0);
+    pRetValue->SetFloat(0);
     return;
   }
 
@@ -2755,15 +2810,17 @@ void CFXJSE_FormCalcContext::IPmt(CFXJSE_Value* pThis,
     nSum += nPrincipalAmount * nRateOfMonth;
     nPrincipalAmount -= nPayment - nPrincipalAmount * nRateOfMonth;
   }
-  args.GetReturnValue()->SetFloat(nSum);
+  pRetValue->SetFloat(nSum);
 }
 
 // static
-void CFXJSE_FormCalcContext::NPV(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::NPV(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  int32_t argc = args.GetLength();
+  int32_t argc = info.Length();
   if (argc < 3) {
     pContext->ThrowParamCountMismatchException(L"NPV");
     return;
@@ -2771,9 +2828,9 @@ void CFXJSE_FormCalcContext::NPV(CFXJSE_Value* pThis,
 
   std::vector<std::unique_ptr<CFXJSE_Value>> argValues;
   for (int32_t i = 0; i < argc; i++) {
-    argValues.push_back(GetSimpleValue(pThis, args, i));
+    argValues.push_back(GetSimpleValue(pThis, info, i));
     if (ValueIsNull(pThis, argValues[i].get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
   }
@@ -2798,25 +2855,27 @@ void CFXJSE_FormCalcContext::NPV(CFXJSE_Value* pThis,
     double nNum = data[iIndex++];
     nSum += nNum / nTemp;
   }
-  args.GetReturnValue()->SetDouble(nSum);
+  pRetValue->SetDouble(nSum);
 }
 
 // static
-void CFXJSE_FormCalcContext::Pmt(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Pmt(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 3) {
+  if (info.Length() != 3) {
     pContext->ThrowParamCountMismatchException(L"Pmt");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2833,28 +2892,30 @@ void CFXJSE_FormCalcContext::Pmt(CFXJSE_Value* pThis,
   for (int32_t i = 0; i < nPeriods - 1; ++i)
     nSum *= nTmp;
 
-  args.GetReturnValue()->SetFloat((nPrincipal * nRate * nSum) / (nSum - 1));
+  pRetValue->SetFloat((nPrincipal * nRate * nSum) / (nSum - 1));
 }
 
 // static
-void CFXJSE_FormCalcContext::PPmt(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::PPmt(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 5) {
+  if (info.Length() != 5) {
     pContext->ThrowParamCountMismatchException(L"PPmt");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
-  std::unique_ptr<CFXJSE_Value> argFour = GetSimpleValue(pThis, args, 3);
-  std::unique_ptr<CFXJSE_Value> argFive = GetSimpleValue(pThis, args, 4);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
+  std::unique_ptr<CFXJSE_Value> argFour = GetSimpleValue(pThis, info, 3);
+  std::unique_ptr<CFXJSE_Value> argFive = GetSimpleValue(pThis, info, 4);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get()) || ValueIsNull(pThis, argFour.get()) ||
       ValueIsNull(pThis, argFive.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2891,25 +2952,26 @@ void CFXJSE_FormCalcContext::PPmt(CFXJSE_Value* pThis,
     nSum += nTemp;
     nPrincipalAmount -= nTemp;
   }
-  args.GetReturnValue()->SetFloat(nSum);
+  pRetValue->SetFloat(nSum);
 }
 
 // static
 void CFXJSE_FormCalcContext::PV(CFXJSE_Value* pThis,
                                 ByteStringView bsFuncName,
-                                CFXJSE_Arguments& args) {
+                                const v8::FunctionCallbackInfo<v8::Value>& info,
+                                CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 3) {
+  if (info.Length() != 3) {
     pContext->ThrowParamCountMismatchException(L"PV");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2926,25 +2988,27 @@ void CFXJSE_FormCalcContext::PV(CFXJSE_Value* pThis,
     nTemp *= 1 + nRate;
 
   nTemp = 1 / nTemp;
-  args.GetReturnValue()->SetDouble(nAmount * ((1 - nTemp) / nRate));
+  pRetValue->SetDouble(nAmount * ((1 - nTemp) / nRate));
 }
 
 // static
-void CFXJSE_FormCalcContext::Rate(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Rate(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 3) {
+  if (info.Length() != 3) {
     pContext->ThrowParamCountMismatchException(L"Rate");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2956,26 +3020,28 @@ void CFXJSE_FormCalcContext::Rate(CFXJSE_Value* pThis,
     return;
   }
 
-  args.GetReturnValue()->SetFloat(
+  pRetValue->SetFloat(
       FXSYS_pow((float)(nFuture / nPresent), (float)(1 / nTotalNumber)) - 1);
 }
 
 // static
-void CFXJSE_FormCalcContext::Term(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Term(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 3) {
+  if (info.Length() != 3) {
     pContext->ThrowParamCountMismatchException(L"Term");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get()) ||
       ValueIsNull(pThis, argThree.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -2987,30 +3053,32 @@ void CFXJSE_FormCalcContext::Term(CFXJSE_Value* pThis,
     return;
   }
 
-  args.GetReturnValue()->SetFloat(log((float)(nFuture / nMount * nRate) + 1) /
-                                  log((float)(1 + nRate)));
+  pRetValue->SetFloat(log((float)(nFuture / nMount * nRate) + 1) /
+                      log((float)(1 + nRate)));
 }
 
 // static
-void CFXJSE_FormCalcContext::Choose(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Choose(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  int32_t argc = args.GetLength();
+  int32_t argc = info.Length();
   if (argc < 2) {
     pContext->ThrowParamCountMismatchException(L"Choose");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   int32_t iIndex = (int32_t)ValueToFloat(pThis, argOne.get());
   if (iIndex < 1) {
-    args.GetReturnValue()->SetString("");
+    pRetValue->SetString("");
     return;
   }
 
@@ -3020,7 +3088,8 @@ void CFXJSE_FormCalcContext::Choose(CFXJSE_Value* pThis,
   int32_t iValueIndex = 0;
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
   while (!bFound && !bStopCounterFlags && (iArgIndex < argc)) {
-    std::unique_ptr<CFXJSE_Value> argIndexValue = args.GetValue(iArgIndex);
+    auto argIndexValue =
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[iArgIndex]);
     if (argIndexValue->IsArray()) {
       auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
       argIndexValue->GetObjectProperty("length", lengthValue.get());
@@ -3043,68 +3112,74 @@ void CFXJSE_FormCalcContext::Choose(CFXJSE_Value* pThis,
               propertyValue->ToString().AsStringView(), newPropertyValue.get());
         }
         ByteString bsChosen = ValueToUTF8String(newPropertyValue.get());
-        args.GetReturnValue()->SetString(bsChosen.AsStringView());
+        pRetValue->SetString(bsChosen.AsStringView());
         bFound = true;
       }
     } else {
       iValueIndex++;
       if (iValueIndex == iIndex) {
         ByteString bsChosen = ValueToUTF8String(argIndexValue.get());
-        args.GetReturnValue()->SetString(bsChosen.AsStringView());
+        pRetValue->SetString(bsChosen.AsStringView());
         bFound = true;
       }
     }
     iArgIndex++;
   }
   if (!bFound)
-    args.GetReturnValue()->SetString("");
+    pRetValue->SetString("");
 }
 
 // static
-void CFXJSE_FormCalcContext::Exists(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Exists(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Exists");
     return;
   }
-  args.GetReturnValue()->SetInteger(args.GetValue(0)->IsObject());
+  auto temp = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
+  pRetValue->SetInteger(temp->IsObject());
 }
 
 // static
-void CFXJSE_FormCalcContext::HasValue(CFXJSE_Value* pThis,
-                                      ByteStringView bsFuncName,
-                                      CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::HasValue(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"HasValue");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (!argOne->IsString()) {
-    args.GetReturnValue()->SetInteger(argOne->IsNumber() ||
-                                      argOne->IsBoolean());
+    pRetValue->SetInteger(argOne->IsNumber() || argOne->IsBoolean());
     return;
   }
 
   ByteString bsValue = argOne->ToString();
   bsValue.TrimLeft();
-  args.GetReturnValue()->SetInteger(!bsValue.IsEmpty());
+  pRetValue->SetInteger(!bsValue.IsEmpty());
 }
 
 // static
-void CFXJSE_FormCalcContext::Oneof(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  if (args.GetLength() < 2) {
+void CFXJSE_FormCalcContext::Oneof(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() < 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Oneof");
     return;
   }
 
   bool bFlags = false;
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   std::vector<std::unique_ptr<CFXJSE_Value>> parameterValues =
-      unfoldArgs(pThis, args);
+      unfoldArgs(pThis, info);
   for (const auto& value : parameterValues) {
     if (simpleValueCompare(pThis, argOne.get(), value.get())) {
       bFlags = true;
@@ -3112,72 +3187,76 @@ void CFXJSE_FormCalcContext::Oneof(CFXJSE_Value* pThis,
     }
   }
 
-  args.GetReturnValue()->SetInteger(bFlags);
+  pRetValue->SetInteger(bFlags);
 }
 
 // static
-void CFXJSE_FormCalcContext::Within(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
-  if (args.GetLength() != 3) {
+void CFXJSE_FormCalcContext::Within(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Within");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (argOne->IsNull()) {
-    args.GetReturnValue()->SetUndefined();
+    pRetValue->SetUndefined();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argLow = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> argHigh = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> argLow = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> argHigh = GetSimpleValue(pThis, info, 2);
   if (argOne->IsNumber()) {
     float oneNumber = ValueToFloat(pThis, argOne.get());
     float lowNumber = ValueToFloat(pThis, argLow.get());
     float heightNumber = ValueToFloat(pThis, argHigh.get());
-    args.GetReturnValue()->SetInteger((oneNumber >= lowNumber) &&
-                                      (oneNumber <= heightNumber));
+    pRetValue->SetInteger((oneNumber >= lowNumber) &&
+                          (oneNumber <= heightNumber));
     return;
   }
 
   ByteString bsOne = ValueToUTF8String(argOne.get());
   ByteString bsLow = ValueToUTF8String(argLow.get());
   ByteString bsHeight = ValueToUTF8String(argHigh.get());
-  args.GetReturnValue()->SetInteger(
-      (bsOne.Compare(bsLow.AsStringView()) >= 0) &&
-      (bsOne.Compare(bsHeight.AsStringView()) <= 0));
+  pRetValue->SetInteger((bsOne.Compare(bsLow.AsStringView()) >= 0) &&
+                        (bsOne.Compare(bsHeight.AsStringView()) <= 0));
 }
 
 // static
 void CFXJSE_FormCalcContext::If(CFXJSE_Value* pThis,
                                 ByteStringView bsFuncName,
-                                CFXJSE_Arguments& args) {
-  if (args.GetLength() != 3) {
+                                const v8::FunctionCallbackInfo<v8::Value>& info,
+                                CFXJSE_Value* pRetValue) {
+  if (info.Length() != 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"If");
     return;
   }
 
-  args.GetReturnValue()->Assign(GetSimpleValue(pThis, args, 0)->ToBoolean()
-                                    ? GetSimpleValue(pThis, args, 1).get()
-                                    : GetSimpleValue(pThis, args, 2).get());
+  pRetValue->Assign(GetSimpleValue(pThis, info, 0)->ToBoolean()
+                        ? GetSimpleValue(pThis, info, 1).get()
+                        : GetSimpleValue(pThis, info, 2).get());
 }
 
 // static
-void CFXJSE_FormCalcContext::Eval(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Eval(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 1) {
+  if (info.Length() != 1) {
     pContext->ThrowParamCountMismatchException(L"Eval");
     return;
   }
 
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
-  std::unique_ptr<CFXJSE_Value> scriptValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> scriptValue = GetSimpleValue(pThis, info, 0);
   ByteString bsUtf8Script = ValueToUTF8String(scriptValue.get());
   if (bsUtf8Script.IsEmpty()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -3197,21 +3276,23 @@ void CFXJSE_FormCalcContext::Eval(CFXJSE_Value* pThis,
       FX_UTF8Encode(wsJavaScriptBuf.AsStringView()).c_str(), returnValue.get(),
       nullptr);
 
-  args.GetReturnValue()->Assign(returnValue.get());
+  pRetValue->Assign(returnValue.get());
 }
 
 // static
-void CFXJSE_FormCalcContext::Ref(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Ref(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
-  if (args.GetLength() != 1) {
+  if (info.Length() != 1) {
     pContext->ThrowParamCountMismatchException(L"Ref");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (!argOne->IsArray() && !argOne->IsObject() && !argOne->IsBoolean() &&
       !argOne->IsString() && !argOne->IsNull() && !argOne->IsNumber()) {
     pContext->ThrowArgumentMismatchException();
@@ -3219,7 +3300,7 @@ void CFXJSE_FormCalcContext::Ref(CFXJSE_Value* pThis,
   }
 
   if (argOne->IsBoolean() || argOne->IsString() || argOne->IsNumber()) {
-    args.GetReturnValue()->Assign(argOne.get());
+    pRetValue->Assign(argOne.get());
     return;
   }
 
@@ -3255,27 +3336,29 @@ void CFXJSE_FormCalcContext::Ref(CFXJSE_Value* pThis,
 
   values[0]->SetInteger(intVal);
   values[1]->SetNull();
-  args.GetReturnValue()->SetArray(values);
+  pRetValue->SetArray(values);
 }
 
 // static
-void CFXJSE_FormCalcContext::UnitType(CFXJSE_Value* pThis,
-                                      ByteStringView bsFuncName,
-                                      CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::UnitType(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"UnitType");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> unitspanValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> unitspanValue = GetSimpleValue(pThis, info, 0);
   if (unitspanValue->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsUnitspan = ValueToUTF8String(unitspanValue.get());
   if (bsUnitspan.IsEmpty()) {
-    args.GetReturnValue()->SetString("in");
+    pRetValue->SetString("in");
     return;
   }
 
@@ -3348,43 +3431,45 @@ void CFXJSE_FormCalcContext::UnitType(CFXJSE_Value* pThis,
   }
   switch (eParserStatus) {
     case VALUETYPE_ISCM:
-      args.GetReturnValue()->SetString("cm");
+      pRetValue->SetString("cm");
       break;
     case VALUETYPE_ISMM:
-      args.GetReturnValue()->SetString("mm");
+      pRetValue->SetString("mm");
       break;
     case VALUETYPE_ISPT:
-      args.GetReturnValue()->SetString("pt");
+      pRetValue->SetString("pt");
       break;
     case VALUETYPE_ISMP:
-      args.GetReturnValue()->SetString("mp");
+      pRetValue->SetString("mp");
       break;
     default:
-      args.GetReturnValue()->SetString("in");
+      pRetValue->SetString("in");
       break;
   }
 }
 
 // static
-void CFXJSE_FormCalcContext::UnitValue(CFXJSE_Value* pThis,
-                                       ByteStringView bsFuncName,
-                                       CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::UnitValue(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"UnitValue");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> unitspanValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> unitspanValue = GetSimpleValue(pThis, info, 0);
   if (unitspanValue->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsUnitspan = ValueToUTF8String(unitspanValue.get());
   const char* pData = bsUnitspan.c_str();
   if (!pData) {
-    args.GetReturnValue()->SetInteger(0);
+    pRetValue->SetInteger(0);
     return;
   }
 
@@ -3416,7 +3501,7 @@ void CFXJSE_FormCalcContext::UnitValue(CFXJSE_Value* pThis,
 
   ByteString bsUnit;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> unitValue = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> unitValue = GetSimpleValue(pThis, info, 1);
     ByteString bsUnitTemp = ValueToUTF8String(unitValue.get());
     const char* pChar = bsUnitTemp.c_str();
     size_t uVal = 0;
@@ -3501,41 +3586,44 @@ void CFXJSE_FormCalcContext::UnitValue(CFXJSE_Value* pThis,
     else
       dResult = dFirstNumber / 72000;
   }
-  args.GetReturnValue()->SetDouble(dResult);
+  pRetValue->SetDouble(dResult);
 }
 
 // static
 void CFXJSE_FormCalcContext::At(CFXJSE_Value* pThis,
                                 ByteStringView bsFuncName,
-                                CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+                                const v8::FunctionCallbackInfo<v8::Value>& info,
+                                CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"At");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString stringTwo = ValueToUTF8String(argTwo.get());
   if (stringTwo.IsEmpty()) {
-    args.GetReturnValue()->SetInteger(1);
+    pRetValue->SetInteger(1);
     return;
   }
 
   ByteString stringOne = ValueToUTF8String(argOne.get());
   auto pos = stringOne.Find(stringTwo.AsStringView());
-  args.GetReturnValue()->SetInteger(pos.has_value() ? pos.value() + 1 : 0);
+  pRetValue->SetInteger(pos.has_value() ? pos.value() + 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::Concat(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Concat(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Concat");
     return;
@@ -3544,7 +3632,7 @@ void CFXJSE_FormCalcContext::Concat(CFXJSE_Value* pThis,
   ByteString bsResult;
   bool bAllNull = true;
   for (int32_t i = 0; i < argc; i++) {
-    std::unique_ptr<CFXJSE_Value> value = GetSimpleValue(pThis, args, i);
+    std::unique_ptr<CFXJSE_Value> value = GetSimpleValue(pThis, info, i);
     if (ValueIsNull(pThis, value.get()))
       continue;
 
@@ -3553,42 +3641,43 @@ void CFXJSE_FormCalcContext::Concat(CFXJSE_Value* pThis,
   }
 
   if (bAllNull) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
-  args.GetReturnValue()->SetString(bsResult.AsStringView());
+  pRetValue->SetString(bsResult.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Decode(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Decode(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Decode");
     return;
   }
 
   if (argc == 1) {
-    std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+    std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
     if (ValueIsNull(pThis, argOne.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
 
     WideString decoded = DecodeURL(
         WideString::FromUTF8(ValueToUTF8String(argOne.get()).AsStringView()));
 
-    args.GetReturnValue()->SetString(
-        FX_UTF8Encode(decoded.AsStringView()).AsStringView());
+    pRetValue->SetString(FX_UTF8Encode(decoded.AsStringView()).AsStringView());
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -3605,37 +3694,37 @@ void CFXJSE_FormCalcContext::Decode(CFXJSE_Value* pThis,
   else
     decoded = DecodeURL(wsToDecode);
 
-  args.GetReturnValue()->SetString(
-      FX_UTF8Encode(decoded.AsStringView()).AsStringView());
+  pRetValue->SetString(FX_UTF8Encode(decoded.AsStringView()).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Encode(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Encode(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Encode");
     return;
   }
 
   if (argc == 1) {
-    std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+    std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
     if (ValueIsNull(pThis, argOne.get())) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
 
     WideString encoded = EncodeURL(ValueToUTF8String(argOne.get()));
-    args.GetReturnValue()->SetString(
-        FX_UTF8Encode(encoded.AsStringView()).AsStringView());
+    pRetValue->SetString(FX_UTF8Encode(encoded.AsStringView()).AsStringView());
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   if (ValueIsNull(pThis, argOne.get()) || ValueIsNull(pThis, argTwo.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -3649,24 +3738,25 @@ void CFXJSE_FormCalcContext::Encode(CFXJSE_Value* pThis,
   else
     encoded = EncodeURL(bsToEncode);
 
-  args.GetReturnValue()->SetString(
-      FX_UTF8Encode(encoded.AsStringView()).AsStringView());
+  pRetValue->SetString(FX_UTF8Encode(encoded.AsStringView()).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Format(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Format(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() < 2) {
+  if (info.Length() < 2) {
     pContext->ThrowParamCountMismatchException(L"Format");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   ByteString bsPattern = ValueToUTF8String(argOne.get());
 
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   ByteString bsValue = ValueToUTF8String(argTwo.get());
 
   CXFA_Document* pDoc = pContext->GetDocument();
@@ -3684,7 +3774,7 @@ void CFXJSE_FormCalcContext::Format(CFXJSE_Value* pThis,
       case XFA_VT_DATETIME: {
         auto iTChar = wsPattern.Find(L'T');
         if (!iTChar.has_value()) {
-          args.GetReturnValue()->SetString("");
+          pRetValue->SetString("");
           return;
         }
         WideString wsDatePattern(L"date{");
@@ -3726,67 +3816,73 @@ void CFXJSE_FormCalcContext::Format(CFXJSE_Value* pThis,
   WideString wsRet;
   if (!localeValue.FormatPatterns(wsRet, wsPattern, pLocale,
                                   XFA_VALUEPICTURE_Display)) {
-    args.GetReturnValue()->SetString("");
+    pRetValue->SetString("");
     return;
   }
 
-  args.GetReturnValue()->SetString(wsRet.ToUTF8().AsStringView());
+  pRetValue->SetString(wsRet.ToUTF8().AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Left(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::Left(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Left");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   if ((ValueIsNull(pThis, argOne.get())) ||
       (ValueIsNull(pThis, argTwo.get()))) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsSource = ValueToUTF8String(argOne.get());
   int32_t count = std::max(0, ValueToInteger(pThis, argTwo.get()));
-  args.GetReturnValue()->SetString(bsSource.First(count).AsStringView());
+  pRetValue->SetString(bsSource.First(count).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Len(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Len(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Len");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsSource = ValueToUTF8String(argOne.get());
-  args.GetReturnValue()->SetInteger(bsSource.GetLength());
+  pRetValue->SetInteger(bsSource.GetLength());
 }
 
 // static
-void CFXJSE_FormCalcContext::Lower(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Lower(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Lower");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -3802,44 +3898,47 @@ void CFXJSE_FormCalcContext::Lower(CFXJSE_Value* pThis,
   }
   szLowBuf.AppendChar(0);
 
-  args.GetReturnValue()->SetString(
-      FX_UTF8Encode(szLowBuf.AsStringView()).AsStringView());
+  pRetValue->SetString(FX_UTF8Encode(szLowBuf.AsStringView()).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Ltrim(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Ltrim(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Ltrim");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsSource = ValueToUTF8String(argOne.get());
   bsSource.TrimLeft();
-  args.GetReturnValue()->SetString(bsSource.AsStringView());
+  pRetValue->SetString(bsSource.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Parse(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 2) {
+  if (info.Length() != 2) {
     pContext->ThrowParamCountMismatchException(L"Parse");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   if (ValueIsNull(pThis, argTwo.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -3859,11 +3958,10 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
     CXFA_LocaleValue localeValue(dwPatternType, wsValue, wsPattern, pLocale,
                                  pMgr);
     if (!localeValue.IsValid()) {
-      args.GetReturnValue()->SetString("");
+      pRetValue->SetString("");
       return;
     }
-    args.GetReturnValue()->SetString(
-        localeValue.GetValue().ToUTF8().AsStringView());
+    pRetValue->SetString(localeValue.GetValue().ToUTF8().AsStringView());
     return;
   }
 
@@ -3871,7 +3969,7 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
     case XFA_VT_DATETIME: {
       auto iTChar = wsPattern.Find(L'T');
       if (!iTChar.has_value()) {
-        args.GetReturnValue()->SetString("");
+        pRetValue->SetString("");
         return;
       }
       WideString wsDatePattern(L"date{" + wsPattern.First(iTChar.value()) +
@@ -3883,11 +3981,10 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
       CXFA_LocaleValue localeValue(dwPatternType, wsValue, wsPattern, pLocale,
                                    pMgr);
       if (!localeValue.IsValid()) {
-        args.GetReturnValue()->SetString("");
+        pRetValue->SetString("");
         return;
       }
-      args.GetReturnValue()->SetString(
-          localeValue.GetValue().ToUTF8().AsStringView());
+      pRetValue->SetString(localeValue.GetValue().ToUTF8().AsStringView());
       return;
     }
     case XFA_VT_DATE: {
@@ -3895,11 +3992,10 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
       CXFA_LocaleValue localeValue(dwPatternType, wsValue, wsPattern, pLocale,
                                    pMgr);
       if (!localeValue.IsValid()) {
-        args.GetReturnValue()->SetString("");
+        pRetValue->SetString("");
         return;
       }
-      args.GetReturnValue()->SetString(
-          localeValue.GetValue().ToUTF8().AsStringView());
+      pRetValue->SetString(localeValue.GetValue().ToUTF8().AsStringView());
       return;
     }
     case XFA_VT_TIME: {
@@ -3907,11 +4003,10 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
       CXFA_LocaleValue localeValue(dwPatternType, wsValue, wsPattern, pLocale,
                                    pMgr);
       if (!localeValue.IsValid()) {
-        args.GetReturnValue()->SetString("");
+        pRetValue->SetString("");
         return;
       }
-      args.GetReturnValue()->SetString(
-          localeValue.GetValue().ToUTF8().AsStringView());
+      pRetValue->SetString(localeValue.GetValue().ToUTF8().AsStringView());
       return;
     }
     case XFA_VT_TEXT: {
@@ -3919,11 +4014,10 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
       CXFA_LocaleValue localeValue(XFA_VT_TEXT, wsValue, wsPattern, pLocale,
                                    pMgr);
       if (!localeValue.IsValid()) {
-        args.GetReturnValue()->SetString("");
+        pRetValue->SetString("");
         return;
       }
-      args.GetReturnValue()->SetString(
-          localeValue.GetValue().ToUTF8().AsStringView());
+      pRetValue->SetString(localeValue.GetValue().ToUTF8().AsStringView());
       return;
     }
     case XFA_VT_FLOAT: {
@@ -3931,10 +4025,10 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
       CXFA_LocaleValue localeValue(XFA_VT_FLOAT, wsValue, wsPattern, pLocale,
                                    pMgr);
       if (!localeValue.IsValid()) {
-        args.GetReturnValue()->SetString("");
+        pRetValue->SetString("");
         return;
       }
-      args.GetReturnValue()->SetDouble(localeValue.GetDoubleNum());
+      pRetValue->SetDouble(localeValue.GetDoubleNum());
       return;
     }
     default: {
@@ -3943,7 +4037,7 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
         CXFA_LocaleValue localeValue(XFA_VT_FLOAT, wsValue, wsTestPattern,
                                      pLocale, pMgr);
         if (localeValue.IsValid()) {
-          args.GetReturnValue()->SetDouble(localeValue.GetDoubleNum());
+          pRetValue->SetDouble(localeValue.GetDoubleNum());
           return;
         }
       }
@@ -3953,29 +4047,30 @@ void CFXJSE_FormCalcContext::Parse(CFXJSE_Value* pThis,
         CXFA_LocaleValue localeValue(XFA_VT_TEXT, wsValue, wsTestPattern,
                                      pLocale, pMgr);
         if (localeValue.IsValid()) {
-          args.GetReturnValue()->SetString(
-              localeValue.GetValue().ToUTF8().AsStringView());
+          pRetValue->SetString(localeValue.GetValue().ToUTF8().AsStringView());
           return;
         }
       }
-      args.GetReturnValue()->SetString("");
+      pRetValue->SetString("");
       return;
     }
   }
 }
 
 // static
-void CFXJSE_FormCalcContext::Replace(CFXJSE_Value* pThis,
-                                     ByteStringView bsFuncName,
-                                     CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Replace(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 2 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Replace");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   ByteString bsOne;
   ByteString bsTwo;
   if (!ValueIsNull(pThis, argOne.get()) && !ValueIsNull(pThis, argTwo.get())) {
@@ -3985,7 +4080,7 @@ void CFXJSE_FormCalcContext::Replace(CFXJSE_Value* pThis,
 
   ByteString bsThree;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
     bsThree = ValueToUTF8String(argThree.get());
   }
 
@@ -4020,63 +4115,69 @@ void CFXJSE_FormCalcContext::Replace(CFXJSE_Value* pThis,
     }
   }
   szResult << '\0';
-  args.GetReturnValue()->SetString(ByteStringView(szResult.str().c_str()));
+  pRetValue->SetString(ByteStringView(szResult.str().c_str()));
 }
 
 // static
-void CFXJSE_FormCalcContext::Right(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::Right(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Right");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   if ((ValueIsNull(pThis, argOne.get())) ||
       (ValueIsNull(pThis, argTwo.get()))) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsSource = ValueToUTF8String(argOne.get());
   int32_t count = std::max(0, ValueToInteger(pThis, argTwo.get()));
-  args.GetReturnValue()->SetString(bsSource.Last(count).AsStringView());
+  pRetValue->SetString(bsSource.Last(count).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Rtrim(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Rtrim(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Rtrim");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsSource = ValueToUTF8String(argOne.get());
   bsSource.TrimRight();
-  args.GetReturnValue()->SetString(bsSource.AsStringView());
+  pRetValue->SetString(bsSource.AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Space(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::Space(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Space");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (argOne->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -4088,36 +4189,38 @@ void CFXJSE_FormCalcContext::Space(CFXJSE_Value* pThis,
     index++;
   }
   spaceString << '\0';
-  args.GetReturnValue()->SetString(ByteStringView(spaceString.str().c_str()));
+  pRetValue->SetString(ByteStringView(spaceString.str().c_str()));
 }
 
 // static
-void CFXJSE_FormCalcContext::Str(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Str(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Str");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> numberValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> numberValue = GetSimpleValue(pThis, info, 0);
   if (numberValue->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
   float fNumber = ValueToFloat(pThis, numberValue.get());
 
   int32_t iWidth = 10;
   if (argc > 1) {
-    std::unique_ptr<CFXJSE_Value> widthValue = GetSimpleValue(pThis, args, 1);
+    std::unique_ptr<CFXJSE_Value> widthValue = GetSimpleValue(pThis, info, 1);
     iWidth = static_cast<int32_t>(ValueToFloat(pThis, widthValue.get()));
   }
 
   int32_t iPrecision = 0;
   if (argc > 2) {
     std::unique_ptr<CFXJSE_Value> precisionValue =
-        GetSimpleValue(pThis, args, 2);
+        GetSimpleValue(pThis, info, 2);
     iPrecision = std::max(
         0, static_cast<int32_t>(ValueToFloat(pThis, precisionValue.get())));
   }
@@ -4148,7 +4251,7 @@ void CFXJSE_FormCalcContext::Str(CFXJSE_Value* pThis,
       ++i;
     }
     resultBuf << '\0';
-    args.GetReturnValue()->SetString(ByteStringView(resultBuf.str().c_str()));
+    pRetValue->SetString(ByteStringView(resultBuf.str().c_str()));
     return;
   }
 
@@ -4167,7 +4270,7 @@ void CFXJSE_FormCalcContext::Str(CFXJSE_Value* pThis,
       }
       resultBuf << pData;
     }
-    args.GetReturnValue()->SetString(ByteStringView(resultBuf.str().c_str()));
+    pRetValue->SetString(ByteStringView(resultBuf.str().c_str()));
     return;
   }
 
@@ -4203,14 +4306,16 @@ void CFXJSE_FormCalcContext::Str(CFXJSE_Value* pThis,
     ++i;
   }
   resultBuf << '\0';
-  args.GetReturnValue()->SetString(ByteStringView(resultBuf.str().c_str()));
+  pRetValue->SetString(ByteStringView(resultBuf.str().c_str()));
 }
 
 // static
-void CFXJSE_FormCalcContext::Stuff(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Stuff(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 3 || argc > 4) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Stuff");
     return;
@@ -4221,9 +4326,9 @@ void CFXJSE_FormCalcContext::Stuff(CFXJSE_Value* pThis,
   int32_t iLength = 0;
   int32_t iStart = 0;
   int32_t iDelete = 0;
-  std::unique_ptr<CFXJSE_Value> sourceValue = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> startValue = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> deleteValue = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> sourceValue = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> startValue = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> deleteValue = GetSimpleValue(pThis, info, 2);
   if (!sourceValue->IsNull() && !startValue->IsNull() &&
       !deleteValue->IsNull()) {
     bsSource = ValueToUTF8String(sourceValue.get());
@@ -4236,7 +4341,7 @@ void CFXJSE_FormCalcContext::Stuff(CFXJSE_Value* pThis,
   }
 
   if (argc > 3) {
-    std::unique_ptr<CFXJSE_Value> insertValue = GetSimpleValue(pThis, args, 3);
+    std::unique_ptr<CFXJSE_Value> insertValue = GetSimpleValue(pThis, info, 3);
     bsInsert = ValueToUTF8String(insertValue.get());
   }
 
@@ -4254,32 +4359,34 @@ void CFXJSE_FormCalcContext::Stuff(CFXJSE_Value* pThis,
     ++i;
   }
   szResult << '\0';
-  args.GetReturnValue()->SetString(ByteStringView(szResult.str().c_str()));
+  pRetValue->SetString(ByteStringView(szResult.str().c_str()));
 }
 
 // static
-void CFXJSE_FormCalcContext::Substr(CFXJSE_Value* pThis,
-                                    ByteStringView bsFuncName,
-                                    CFXJSE_Arguments& args) {
-  if (args.GetLength() != 3) {
+void CFXJSE_FormCalcContext::Substr(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Substr");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> string_value = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> start_value = GetSimpleValue(pThis, args, 1);
-  std::unique_ptr<CFXJSE_Value> end_value = GetSimpleValue(pThis, args, 2);
+  std::unique_ptr<CFXJSE_Value> string_value = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> start_value = GetSimpleValue(pThis, info, 1);
+  std::unique_ptr<CFXJSE_Value> end_value = GetSimpleValue(pThis, info, 2);
   if (ValueIsNull(pThis, string_value.get()) ||
       ValueIsNull(pThis, start_value.get()) ||
       ValueIsNull(pThis, end_value.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   ByteString bsSource = ValueToUTF8String(string_value.get());
   size_t iLength = bsSource.GetLength();
   if (iLength == 0) {
-    args.GetReturnValue()->SetString("");
+    pRetValue->SetString("");
     return;
   }
 
@@ -4287,22 +4394,23 @@ void CFXJSE_FormCalcContext::Substr(CFXJSE_Value* pThis,
   // than 1, per spec. Subtract 1 since |iStart| is 0-based.
   size_t iStart = std::max(ValueToInteger(pThis, start_value.get()), 1) - 1;
   if (iStart >= iLength) {
-    args.GetReturnValue()->SetString("");
+    pRetValue->SetString("");
     return;
   }
 
   // Negative values are treated as 0. Can't clamp() due to sign mismatches.
   size_t iCount = std::max(ValueToInteger(pThis, end_value.get()), 0);
   iCount = std::min(iCount, iLength - iStart);
-  args.GetReturnValue()->SetString(
-      bsSource.Substr(iStart, iCount).AsStringView());
+  pRetValue->SetString(bsSource.Substr(iStart, iCount).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Uuid(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Uuid(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 0 || argc > 1) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Uuid");
     return;
@@ -4310,25 +4418,27 @@ void CFXJSE_FormCalcContext::Uuid(CFXJSE_Value* pThis,
 
   int32_t iNum = 0;
   if (argc > 0) {
-    std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+    std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
     iNum = static_cast<int32_t>(ValueToFloat(pThis, argOne.get()));
   }
-  args.GetReturnValue()->SetString(GUIDString(!!iNum).AsStringView());
+  pRetValue->SetString(GUIDString(!!iNum).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Upper(CFXJSE_Value* pThis,
-                                   ByteStringView bsFuncName,
-                                   CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::Upper(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 2) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"Upper");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (ValueIsNull(pThis, argOne.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -4349,23 +4459,25 @@ void CFXJSE_FormCalcContext::Upper(CFXJSE_Value* pThis,
   }
   upperStringBuf.AppendChar(0);
 
-  args.GetReturnValue()->SetString(
+  pRetValue->SetString(
       FX_UTF8Encode(upperStringBuf.AsStringView()).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::WordNum(CFXJSE_Value* pThis,
-                                     ByteStringView bsFuncName,
-                                     CFXJSE_Arguments& args) {
-  int32_t argc = args.GetLength();
+void CFXJSE_FormCalcContext::WordNum(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  int32_t argc = info.Length();
   if (argc < 1 || argc > 3) {
     ToFormCalcContext(pThis)->ThrowParamCountMismatchException(L"WordNum");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> numberValue = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> numberValue = GetSimpleValue(pThis, info, 0);
   if (numberValue->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
   float fNumber = ValueToFloat(pThis, numberValue.get());
@@ -4373,9 +4485,9 @@ void CFXJSE_FormCalcContext::WordNum(CFXJSE_Value* pThis,
   int32_t iIdentifier = 0;
   if (argc > 1) {
     std::unique_ptr<CFXJSE_Value> identifierValue =
-        GetSimpleValue(pThis, args, 1);
+        GetSimpleValue(pThis, info, 1);
     if (identifierValue->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     iIdentifier =
@@ -4384,9 +4496,9 @@ void CFXJSE_FormCalcContext::WordNum(CFXJSE_Value* pThis,
 
   ByteString bsLocale;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> localeValue = GetSimpleValue(pThis, info, 2);
     if (localeValue->IsNull()) {
-      args.GetReturnValue()->SetNull();
+      pRetValue->SetNull();
       return;
     }
     bsLocale = ValueToUTF8String(localeValue.get());
@@ -4394,20 +4506,22 @@ void CFXJSE_FormCalcContext::WordNum(CFXJSE_Value* pThis,
 
   if (std::isnan(fNumber) || fNumber < 0.0f ||
       fNumber > 922337203685477550.0f) {
-    args.GetReturnValue()->SetString("*");
+    pRetValue->SetString("*");
     return;
   }
 
-  args.GetReturnValue()->SetString(
+  pRetValue->SetString(
       WordUS(ByteString::Format("%.2f", fNumber), iIdentifier).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Get(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Get(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 1) {
+  if (info.Length() != 1) {
     pContext->ThrowParamCountMismatchException(L"Get");
     return;
   }
@@ -4420,7 +4534,7 @@ void CFXJSE_FormCalcContext::Get(CFXJSE_Value* pThis,
   if (!pAppProvider)
     return;
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   ByteString bsUrl = ValueToUTF8String(argOne.get());
   RetainPtr<IFX_SeekableReadStream> pFile =
       pAppProvider->DownloadURL(WideString::FromUTF8(bsUrl.AsStringView()));
@@ -4430,15 +4544,17 @@ void CFXJSE_FormCalcContext::Get(CFXJSE_Value* pThis,
   int32_t size = pFile->GetSize();
   std::vector<uint8_t> dataBuf(size);
   pFile->ReadBlock(dataBuf.data(), size);
-  args.GetReturnValue()->SetString(ByteStringView(dataBuf));
+  pRetValue->SetString(ByteStringView(dataBuf));
 }
 
 // static
-void CFXJSE_FormCalcContext::Post(CFXJSE_Value* pThis,
-                                  ByteStringView bsFuncName,
-                                  CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Post(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  int32_t argc = args.GetLength();
+  int32_t argc = info.Length();
   if (argc < 2 || argc > 5) {
     pContext->ThrowParamCountMismatchException(L"Post");
     return;
@@ -4452,27 +4568,27 @@ void CFXJSE_FormCalcContext::Post(CFXJSE_Value* pThis,
   if (!pAppProvider)
     return;
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   ByteString bsURL = ValueToUTF8String(argOne.get());
 
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   ByteString bsData = ValueToUTF8String(argTwo.get());
 
   ByteString bsContentType;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
     bsContentType = ValueToUTF8String(argThree.get());
   }
 
   ByteString bsEncode;
   if (argc > 3) {
-    std::unique_ptr<CFXJSE_Value> argFour = GetSimpleValue(pThis, args, 3);
+    std::unique_ptr<CFXJSE_Value> argFour = GetSimpleValue(pThis, info, 3);
     bsEncode = ValueToUTF8String(argFour.get());
   }
 
   ByteString bsHeader;
   if (argc > 4) {
-    std::unique_ptr<CFXJSE_Value> argFive = GetSimpleValue(pThis, args, 4);
+    std::unique_ptr<CFXJSE_Value> argFive = GetSimpleValue(pThis, info, 4);
     bsHeader = ValueToUTF8String(argFive.get());
   }
 
@@ -4486,15 +4602,17 @@ void CFXJSE_FormCalcContext::Post(CFXJSE_Value* pThis,
     pContext->ThrowServerDeniedException();
     return;
   }
-  args.GetReturnValue()->SetString(decodedResponse.ToUTF8().AsStringView());
+  pRetValue->SetString(decodedResponse.ToUTF8().AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::Put(CFXJSE_Value* pThis,
-                                 ByteStringView bsFuncName,
-                                 CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::Put(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  int32_t argc = args.GetLength();
+  int32_t argc = info.Length();
   if (argc < 2 || argc > 3) {
     pContext->ThrowParamCountMismatchException(L"Put");
     return;
@@ -4508,15 +4626,15 @@ void CFXJSE_FormCalcContext::Put(CFXJSE_Value* pThis,
   if (!pAppProvider)
     return;
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   ByteString bsURL = ValueToUTF8String(argOne.get());
 
-  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argTwo = GetSimpleValue(pThis, info, 1);
   ByteString bsData = ValueToUTF8String(argTwo.get());
 
   ByteString bsEncode;
   if (argc > 2) {
-    std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, args, 2);
+    std::unique_ptr<CFXJSE_Value> argThree = GetSimpleValue(pThis, info, 2);
     bsEncode = ValueToUTF8String(argThree.get());
   }
 
@@ -4528,21 +4646,23 @@ void CFXJSE_FormCalcContext::Put(CFXJSE_Value* pThis,
     return;
   }
 
-  args.GetReturnValue()->SetString("");
+  pRetValue->SetString("");
 }
 
 // static
-void CFXJSE_FormCalcContext::assign_value_operator(CFXJSE_Value* pThis,
-                                                   ByteStringView bsFuncName,
-                                                   CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::assign_value_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 2) {
+  if (info.Length() != 2) {
     pContext->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> lValue = args.GetValue(0);
-  std::unique_ptr<CFXJSE_Value> rValue = GetSimpleValue(pThis, args, 1);
+  auto lValue = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
+  std::unique_ptr<CFXJSE_Value> rValue = GetSimpleValue(pThis, info, 1);
   if (lValue->IsArray()) {
     v8::Isolate* pIsolate = pContext->GetScriptRuntime();
     auto leftLengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
@@ -4572,122 +4692,127 @@ void CFXJSE_FormCalcContext::assign_value_operator(CFXJSE_Value* pThis,
       return;
     }
   }
-  args.GetReturnValue()->Assign(rValue.get());
+  pRetValue->Assign(rValue.get());
 }
 
 // static
-void CFXJSE_FormCalcContext::logical_or_operator(CFXJSE_Value* pThis,
-                                                 ByteStringView bsFuncName,
-                                                 CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::logical_or_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
-  if (argFirst->IsNull() && argSecond->IsNull()) {
-    args.GetReturnValue()->SetNull();
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> infoecond = GetSimpleValue(pThis, info, 1);
+  if (argFirst->IsNull() && infoecond->IsNull()) {
+    pRetValue->SetNull();
     return;
   }
 
   float first = ValueToFloat(pThis, argFirst.get());
-  float second = ValueToFloat(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger((first || second) ? 1 : 0);
+  float second = ValueToFloat(pThis, infoecond.get());
+  pRetValue->SetInteger((first || second) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::logical_and_operator(CFXJSE_Value* pThis,
-                                                  ByteStringView bsFuncName,
-                                                  CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::logical_and_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
-  if (argFirst->IsNull() && argSecond->IsNull()) {
-    args.GetReturnValue()->SetNull();
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> infoecond = GetSimpleValue(pThis, info, 1);
+  if (argFirst->IsNull() && infoecond->IsNull()) {
+    pRetValue->SetNull();
     return;
   }
 
   float first = ValueToFloat(pThis, argFirst.get());
-  float second = ValueToFloat(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger((first && second) ? 1 : 0);
+  float second = ValueToFloat(pThis, infoecond.get());
+  pRetValue->SetInteger((first && second) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::equality_operator(CFXJSE_Value* pThis,
-                                               ByteStringView bsFuncName,
-                                               CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::equality_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  if (fm_ref_equal(pThis, args)) {
-    args.GetReturnValue()->SetInteger(1);
+  if (fm_ref_equal(pThis, info)) {
+    pRetValue->SetInteger(1);
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
-  if (argFirst->IsNull() || argSecond->IsNull()) {
-    args.GetReturnValue()->SetInteger(
-        (argFirst->IsNull() && argSecond->IsNull()) ? 1 : 0);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> infoecond = GetSimpleValue(pThis, info, 1);
+  if (argFirst->IsNull() || infoecond->IsNull()) {
+    pRetValue->SetInteger((argFirst->IsNull() && infoecond->IsNull()) ? 1 : 0);
     return;
   }
 
-  if (argFirst->IsString() && argSecond->IsString()) {
-    args.GetReturnValue()->SetInteger(argFirst->ToString() ==
-                                      argSecond->ToString());
+  if (argFirst->IsString() && infoecond->IsString()) {
+    pRetValue->SetInteger(argFirst->ToString() == infoecond->ToString());
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
-  double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger((first == second) ? 1 : 0);
+  double second = ValueToDouble(pThis, infoecond.get());
+  pRetValue->SetInteger((first == second) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::notequality_operator(CFXJSE_Value* pThis,
-                                                  ByteStringView bsFuncName,
-                                                  CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::notequality_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  if (fm_ref_equal(pThis, args)) {
-    args.GetReturnValue()->SetInteger(0);
+  if (fm_ref_equal(pThis, info)) {
+    pRetValue->SetInteger(0);
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
-  if (argFirst->IsNull() || argSecond->IsNull()) {
-    args.GetReturnValue()->SetInteger(
-        (argFirst->IsNull() && argSecond->IsNull()) ? 0 : 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> infoecond = GetSimpleValue(pThis, info, 1);
+  if (argFirst->IsNull() || infoecond->IsNull()) {
+    pRetValue->SetInteger((argFirst->IsNull() && infoecond->IsNull()) ? 0 : 1);
     return;
   }
 
-  if (argFirst->IsString() && argSecond->IsString()) {
-    args.GetReturnValue()->SetInteger(argFirst->ToString() !=
-                                      argSecond->ToString());
+  if (argFirst->IsString() && infoecond->IsString()) {
+    pRetValue->SetInteger(argFirst->ToString() != infoecond->ToString());
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
-  double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger(first != second);
+  double second = ValueToDouble(pThis, infoecond.get());
+  pRetValue->SetInteger(first != second);
 }
 
 // static
-bool CFXJSE_FormCalcContext::fm_ref_equal(CFXJSE_Value* pThis,
-                                          CFXJSE_Arguments& args) {
-  std::unique_ptr<CFXJSE_Value> argFirst = args.GetValue(0);
-  std::unique_ptr<CFXJSE_Value> argSecond = args.GetValue(1);
+bool CFXJSE_FormCalcContext::fm_ref_equal(
+    CFXJSE_Value* pThis,
+    const v8::FunctionCallbackInfo<v8::Value>& info) {
+  auto argFirst = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
+  auto argSecond = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[1]);
   if (!argFirst->IsArray() || !argSecond->IsArray())
     return false;
 
@@ -4710,197 +4835,211 @@ bool CFXJSE_FormCalcContext::fm_ref_equal(CFXJSE_Value* pThis,
 }
 
 // static
-void CFXJSE_FormCalcContext::less_operator(CFXJSE_Value* pThis,
-                                           ByteStringView bsFuncName,
-                                           CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::less_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, info, 1);
   if (argFirst->IsNull() || argSecond->IsNull()) {
-    args.GetReturnValue()->SetInteger(0);
+    pRetValue->SetInteger(0);
     return;
   }
 
   if (argFirst->IsString() && argSecond->IsString()) {
     int result =
         argFirst->ToString().Compare(argSecond->ToString().AsStringView()) < 0;
-    args.GetReturnValue()->SetInteger(result);
+    pRetValue->SetInteger(result);
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
   double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger((first < second) ? 1 : 0);
+  pRetValue->SetInteger((first < second) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::lessequal_operator(CFXJSE_Value* pThis,
-                                                ByteStringView bsFuncName,
-                                                CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::lessequal_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, info, 1);
   if (argFirst->IsNull() || argSecond->IsNull()) {
-    args.GetReturnValue()->SetInteger(
-        (argFirst->IsNull() && argSecond->IsNull()) ? 1 : 0);
+    pRetValue->SetInteger((argFirst->IsNull() && argSecond->IsNull()) ? 1 : 0);
     return;
   }
 
   if (argFirst->IsString() && argSecond->IsString()) {
     int result =
         argFirst->ToString().Compare(argSecond->ToString().AsStringView()) <= 0;
-    args.GetReturnValue()->SetInteger(result);
+    pRetValue->SetInteger(result);
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
   double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger((first <= second) ? 1 : 0);
+  pRetValue->SetInteger((first <= second) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::greater_operator(CFXJSE_Value* pThis,
-                                              ByteStringView bsFuncName,
-                                              CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::greater_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, info, 1);
   if (argFirst->IsNull() || argSecond->IsNull()) {
-    args.GetReturnValue()->SetInteger(0);
+    pRetValue->SetInteger(0);
     return;
   }
 
   if (argFirst->IsString() && argSecond->IsString()) {
     int result =
         argFirst->ToString().Compare(argSecond->ToString().AsStringView()) > 0;
-    args.GetReturnValue()->SetInteger(result);
+    pRetValue->SetInteger(result);
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
   double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger((first > second) ? 1 : 0);
+  pRetValue->SetInteger((first > second) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::greaterequal_operator(CFXJSE_Value* pThis,
-                                                   ByteStringView bsFuncName,
-                                                   CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::greaterequal_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, info, 1);
   if (argFirst->IsNull() || argSecond->IsNull()) {
-    args.GetReturnValue()->SetInteger(
-        (argFirst->IsNull() && argSecond->IsNull()) ? 1 : 0);
+    pRetValue->SetInteger((argFirst->IsNull() && argSecond->IsNull()) ? 1 : 0);
     return;
   }
 
   if (argFirst->IsString() && argSecond->IsString()) {
     int result =
         argFirst->ToString().Compare(argSecond->ToString().AsStringView()) >= 0;
-    args.GetReturnValue()->SetInteger(result);
+    pRetValue->SetInteger(result);
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
   double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetInteger((first >= second) ? 1 : 0);
+  pRetValue->SetInteger((first >= second) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::plus_operator(CFXJSE_Value* pThis,
-                                           ByteStringView bsFuncName,
-                                           CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::plus_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = args.GetValue(0);
-  std::unique_ptr<CFXJSE_Value> argSecond = args.GetValue(1);
+  auto argFirst = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
+  auto argSecond = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[1]);
   if (ValueIsNull(pThis, argFirst.get()) &&
       ValueIsNull(pThis, argSecond.get())) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
   double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetDouble(first + second);
+  pRetValue->SetDouble(first + second);
 }
 
 // static
-void CFXJSE_FormCalcContext::minus_operator(CFXJSE_Value* pThis,
-                                            ByteStringView bsFuncName,
-                                            CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::minus_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, info, 1);
   if (argFirst->IsNull() && argSecond->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
   double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetDouble(first - second);
+  pRetValue->SetDouble(first - second);
 }
 
 // static
-void CFXJSE_FormCalcContext::multiple_operator(CFXJSE_Value* pThis,
-                                               ByteStringView bsFuncName,
-                                               CFXJSE_Arguments& args) {
-  if (args.GetLength() != 2) {
+void CFXJSE_FormCalcContext::multiple_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 2) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, info, 1);
   if (argFirst->IsNull() && argSecond->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
   double second = ValueToDouble(pThis, argSecond.get());
-  args.GetReturnValue()->SetDouble(first * second);
+  pRetValue->SetDouble(first * second);
 }
 
 // static
-void CFXJSE_FormCalcContext::divide_operator(CFXJSE_Value* pThis,
-                                             ByteStringView bsFuncName,
-                                             CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::divide_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 2) {
+  if (info.Length() != 2) {
     pContext->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, args, 0);
-  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, args, 1);
+  std::unique_ptr<CFXJSE_Value> argFirst = GetSimpleValue(pThis, info, 0);
+  std::unique_ptr<CFXJSE_Value> argSecond = GetSimpleValue(pThis, info, 1);
   if (argFirst->IsNull() && argSecond->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
@@ -4911,87 +5050,99 @@ void CFXJSE_FormCalcContext::divide_operator(CFXJSE_Value* pThis,
   }
 
   double first = ValueToDouble(pThis, argFirst.get());
-  args.GetReturnValue()->SetDouble(first / second);
+  pRetValue->SetDouble(first / second);
 }
 
 // static
-void CFXJSE_FormCalcContext::positive_operator(CFXJSE_Value* pThis,
-                                               ByteStringView bsFuncName,
-                                               CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::positive_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (argOne->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
-  args.GetReturnValue()->SetDouble(0.0 + ValueToDouble(pThis, argOne.get()));
+  pRetValue->SetDouble(0.0 + ValueToDouble(pThis, argOne.get()));
 }
 
 // static
-void CFXJSE_FormCalcContext::negative_operator(CFXJSE_Value* pThis,
-                                               ByteStringView bsFuncName,
-                                               CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::negative_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (argOne->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
-  args.GetReturnValue()->SetDouble(0.0 - ValueToDouble(pThis, argOne.get()));
+  pRetValue->SetDouble(0.0 - ValueToDouble(pThis, argOne.get()));
 }
 
 // static
-void CFXJSE_FormCalcContext::logical_not_operator(CFXJSE_Value* pThis,
-                                                  ByteStringView bsFuncName,
-                                                  CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::logical_not_operator(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   if (argOne->IsNull()) {
-    args.GetReturnValue()->SetNull();
+    pRetValue->SetNull();
     return;
   }
 
   double first = ValueToDouble(pThis, argOne.get());
-  args.GetReturnValue()->SetInteger((first == 0.0) ? 1 : 0);
+  pRetValue->SetInteger((first == 0.0) ? 1 : 0);
 }
 
 // static
-void CFXJSE_FormCalcContext::dot_accessor(CFXJSE_Value* pThis,
-                                          ByteStringView bsFuncName,
-                                          CFXJSE_Arguments& args) {
-  DotAccessorCommon(pThis, bsFuncName, args, /*bDotAccessor=*/true);
+void CFXJSE_FormCalcContext::dot_accessor(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  DotAccessorCommon(pThis, bsFuncName, info, pRetValue, /*bDotAccessor=*/true);
 }
 
 // static
-void CFXJSE_FormCalcContext::dotdot_accessor(CFXJSE_Value* pThis,
-                                             ByteStringView bsFuncName,
-                                             CFXJSE_Arguments& args) {
-  DotAccessorCommon(pThis, bsFuncName, args, /*bDotAccessor=*/false);
+void CFXJSE_FormCalcContext::dotdot_accessor(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  DotAccessorCommon(pThis, bsFuncName, info, pRetValue, /*bDotAccessor=*/false);
 }
 
 // static
-void CFXJSE_FormCalcContext::eval_translation(CFXJSE_Value* pThis,
-                                              ByteStringView bsFuncName,
-                                              CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::eval_translation(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 1) {
+  if (info.Length() != 1) {
     pContext->ThrowParamCountMismatchException(L"Eval");
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, args, 0);
+  std::unique_ptr<CFXJSE_Value> argOne = GetSimpleValue(pThis, info, 0);
   ByteString bsArg = ValueToUTF8String(argOne.get());
   if (bsArg.IsEmpty()) {
     pContext->ThrowArgumentMismatchException();
@@ -5006,47 +5157,53 @@ void CFXJSE_FormCalcContext::eval_translation(CFXJSE_Value* pThis,
     return;
   }
 
-  args.GetReturnValue()->SetString(
+  pRetValue->SetString(
       FX_UTF8Encode(wsJavaScriptBuf.AsStringView()).AsStringView());
 }
 
 // static
-void CFXJSE_FormCalcContext::is_fm_object(CFXJSE_Value* pThis,
-                                          ByteStringView bsFuncName,
-                                          CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
-    args.GetReturnValue()->SetBoolean(false);
+void CFXJSE_FormCalcContext::is_fm_object(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
+    pRetValue->SetBoolean(false);
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
-  args.GetReturnValue()->SetBoolean(argOne->IsObject());
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
+  pRetValue->SetBoolean(argOne->IsObject());
 }
 
 // static
-void CFXJSE_FormCalcContext::is_fm_array(CFXJSE_Value* pThis,
-                                         ByteStringView bsFuncName,
-                                         CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
-    args.GetReturnValue()->SetBoolean(false);
+void CFXJSE_FormCalcContext::is_fm_array(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
+    pRetValue->SetBoolean(false);
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
-  args.GetReturnValue()->SetBoolean(argOne->IsArray());
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
+  pRetValue->SetBoolean(argOne->IsArray());
 }
 
 // static
-void CFXJSE_FormCalcContext::get_fm_value(CFXJSE_Value* pThis,
-                                          ByteStringView bsFuncName,
-                                          CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::get_fm_value(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 1) {
+  if (info.Length() != 1) {
     pContext->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (argOne->IsArray()) {
     v8::Isolate* pIsolate = pContext->GetScriptRuntime();
     auto propertyValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
@@ -5054,35 +5211,37 @@ void CFXJSE_FormCalcContext::get_fm_value(CFXJSE_Value* pThis,
     argOne->GetObjectPropertyByIdx(1, propertyValue.get());
     argOne->GetObjectPropertyByIdx(2, jsObjectValue.get());
     if (propertyValue->IsNull()) {
-      GetObjectDefaultValue(jsObjectValue.get(), args.GetReturnValue());
+      GetObjectDefaultValue(jsObjectValue.get(), pRetValue);
       return;
     }
 
     jsObjectValue->GetObjectProperty(propertyValue->ToString().AsStringView(),
-                                     args.GetReturnValue());
+                                     pRetValue);
     return;
   }
 
   if (argOne->IsObject()) {
-    GetObjectDefaultValue(argOne.get(), args.GetReturnValue());
+    GetObjectDefaultValue(argOne.get(), pRetValue);
     return;
   }
 
-  args.GetReturnValue()->Assign(argOne.get());
+  pRetValue->Assign(argOne.get());
 }
 
 // static
-void CFXJSE_FormCalcContext::get_fm_jsobj(CFXJSE_Value* pThis,
-                                          ByteStringView bsFuncName,
-                                          CFXJSE_Arguments& args) {
-  if (args.GetLength() != 1) {
+void CFXJSE_FormCalcContext::get_fm_jsobj(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
+  if (info.Length() != 1) {
     ToFormCalcContext(pThis)->ThrowCompilerErrorException();
     return;
   }
 
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (!argOne->IsArray()) {
-    args.GetReturnValue()->Assign(argOne.get());
+    pRetValue->Assign(argOne.get());
     return;
   }
 
@@ -5094,24 +5253,26 @@ void CFXJSE_FormCalcContext::get_fm_jsobj(CFXJSE_Value* pThis,
   ASSERT(lengthValue->ToInteger() >= 3);
 #endif
 
-  argOne->GetObjectPropertyByIdx(2, args.GetReturnValue());
+  argOne->GetObjectPropertyByIdx(2, pRetValue);
 }
 
 // static
-void CFXJSE_FormCalcContext::fm_var_filter(CFXJSE_Value* pThis,
-                                           ByteStringView bsFuncName,
-                                           CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::fm_var_filter(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
-  if (args.GetLength() != 1) {
+  if (info.Length() != 1) {
     pContext->ThrowCompilerErrorException();
     return;
   }
 
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
-  std::unique_ptr<CFXJSE_Value> argOne = args.GetValue(0);
+  auto argOne = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (!argOne->IsArray()) {
-    std::unique_ptr<CFXJSE_Value> simpleValue = GetSimpleValue(pThis, args, 0);
-    args.GetReturnValue()->Assign(simpleValue.get());
+    std::unique_ptr<CFXJSE_Value> simpleValue = GetSimpleValue(pThis, info, 0);
+    pRetValue->Assign(simpleValue.get());
     return;
   }
 
@@ -5125,8 +5286,8 @@ void CFXJSE_FormCalcContext::fm_var_filter(CFXJSE_Value* pThis,
   argOne->GetObjectPropertyByIdx(0, flagsValue.get());
   int32_t iFlags = flagsValue->ToInteger();
   if (iFlags != 3 && iFlags != 4) {
-    std::unique_ptr<CFXJSE_Value> simpleValue = GetSimpleValue(pThis, args, 0);
-    args.GetReturnValue()->Assign(simpleValue.get());
+    std::unique_ptr<CFXJSE_Value> simpleValue = GetSimpleValue(pThis, info, 0);
+    pRetValue->Assign(simpleValue.get());
     return;
   }
 
@@ -5138,7 +5299,7 @@ void CFXJSE_FormCalcContext::fm_var_filter(CFXJSE_Value* pThis,
     values[0]->SetInteger(3);
     values[1]->SetNull();
     values[2]->SetNull();
-    args.GetReturnValue()->SetArray(values);
+    pRetValue->SetArray(values);
     return;
   }
 
@@ -5148,19 +5309,22 @@ void CFXJSE_FormCalcContext::fm_var_filter(CFXJSE_Value* pThis,
     pContext->ThrowCompilerErrorException();
     return;
   }
-  args.GetReturnValue()->Assign(argOne.get());
+  pRetValue->Assign(argOne.get());
 }
 
 // static
-void CFXJSE_FormCalcContext::concat_fm_object(CFXJSE_Value* pThis,
-                                              ByteStringView bsFuncName,
-                                              CFXJSE_Arguments& args) {
+void CFXJSE_FormCalcContext::concat_fm_object(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue) {
   v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetScriptRuntime();
   uint32_t iLength = 0;
-  int32_t argc = args.GetLength();
+  int32_t argc = info.Length();
   std::vector<std::unique_ptr<CFXJSE_Value>> argValues;
   for (int32_t i = 0; i < argc; i++) {
-    argValues.push_back(args.GetValue(i));
+    argValues.push_back(
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[i]));
     if (argValues[i]->IsArray()) {
       auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
       argValues[i]->GetObjectProperty("length", lengthValue.get());
@@ -5189,18 +5353,19 @@ void CFXJSE_FormCalcContext::concat_fm_object(CFXJSE_Value* pThis,
     returnValues[index]->Assign(argValues[i].get());
     index++;
   }
-  args.GetReturnValue()->SetArray(returnValues);
+  pRetValue->SetArray(returnValues);
 }
 
 // static
 std::unique_ptr<CFXJSE_Value> CFXJSE_FormCalcContext::GetSimpleValue(
     CFXJSE_Value* pThis,
-    CFXJSE_Arguments& args,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
     uint32_t index) {
   v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetScriptRuntime();
-  ASSERT(index < (uint32_t)args.GetLength());
+  ASSERT(index < (uint32_t)info.Length());
 
-  std::unique_ptr<CFXJSE_Value> argIndex = args.GetValue(index);
+  auto argIndex =
+      pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[index]);
   if (!argIndex->IsArray() && !argIndex->IsObject())
     return argIndex;
 
@@ -5307,19 +5472,20 @@ bool CFXJSE_FormCalcContext::simpleValueCompare(CFXJSE_Value* pThis,
 // static
 std::vector<std::unique_ptr<CFXJSE_Value>> CFXJSE_FormCalcContext::unfoldArgs(
     CFXJSE_Value* pThis,
-    CFXJSE_Arguments& args) {
+    const v8::FunctionCallbackInfo<v8::Value>& info) {
   std::vector<std::unique_ptr<CFXJSE_Value>> results;
 
   int32_t iCount = 0;
   v8::Isolate* pIsolate = ToFormCalcContext(pThis)->GetScriptRuntime();
-  int32_t argc = args.GetLength();
-  std::vector<std::unique_ptr<CFXJSE_Value>> argsValue;
+  int32_t argc = info.Length();
+  std::vector<std::unique_ptr<CFXJSE_Value>> infoValue;
   static constexpr int kStart = 1;
   for (int32_t i = 0; i < argc - kStart; i++) {
-    argsValue.push_back(args.GetValue(i + kStart));
-    if (argsValue[i]->IsArray()) {
+    infoValue.push_back(
+        pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[i + kStart]));
+    if (infoValue[i]->IsArray()) {
       auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
-      argsValue[i]->GetObjectProperty("length", lengthValue.get());
+      infoValue[i]->GetObjectProperty("length", lengthValue.get());
       int32_t iLength = lengthValue->ToInteger();
       iCount += ((iLength > 2) ? (iLength - 2) : 0);
     } else {
@@ -5332,35 +5498,35 @@ std::vector<std::unique_ptr<CFXJSE_Value>> CFXJSE_FormCalcContext::unfoldArgs(
 
   int32_t index = 0;
   for (int32_t i = 0; i < argc - kStart; i++) {
-    if (argsValue[i]->IsArray()) {
+    if (infoValue[i]->IsArray()) {
       auto lengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
-      argsValue[i]->GetObjectProperty("length", lengthValue.get());
+      infoValue[i]->GetObjectProperty("length", lengthValue.get());
       int32_t iLength = lengthValue->ToInteger();
       if (iLength < 3)
         continue;
 
       auto propertyValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
       auto jsObjectValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
-      argsValue[i]->GetObjectPropertyByIdx(1, propertyValue.get());
+      infoValue[i]->GetObjectPropertyByIdx(1, propertyValue.get());
       if (propertyValue->IsNull()) {
         for (int32_t j = 2; j < iLength; j++) {
-          argsValue[i]->GetObjectPropertyByIdx(j, jsObjectValue.get());
+          infoValue[i]->GetObjectPropertyByIdx(j, jsObjectValue.get());
           GetObjectDefaultValue(jsObjectValue.get(), results[index].get());
           index++;
         }
       } else {
         for (int32_t j = 2; j < iLength; j++) {
-          argsValue[i]->GetObjectPropertyByIdx(j, jsObjectValue.get());
+          infoValue[i]->GetObjectPropertyByIdx(j, jsObjectValue.get());
           jsObjectValue->GetObjectProperty(
               propertyValue->ToString().AsStringView(), results[index].get());
           index++;
         }
       }
-    } else if (argsValue[i]->IsObject()) {
-      GetObjectDefaultValue(argsValue[i].get(), results[index].get());
+    } else if (infoValue[i]->IsObject()) {
+      GetObjectDefaultValue(infoValue[i].get(), results[index].get());
       index++;
     } else {
-      results[index]->Assign(argsValue[i].get());
+      results[index]->Assign(infoValue[i].get());
       index++;
     }
   }
@@ -5728,13 +5894,15 @@ void CFXJSE_FormCalcContext::GlobalPropertyGetter(CFXJSE_Value* pValue) {
 }
 
 // static
-void CFXJSE_FormCalcContext::DotAccessorCommon(CFXJSE_Value* pThis,
-                                               ByteStringView bsFuncName,
-                                               CFXJSE_Arguments& args,
-                                               bool bDotAccessor) {
+void CFXJSE_FormCalcContext::DotAccessorCommon(
+    CFXJSE_Value* pThis,
+    ByteStringView bsFuncName,
+    const v8::FunctionCallbackInfo<v8::Value>& info,
+    CFXJSE_Value* pRetValue,
+    bool bDotAccessor) {
   CFXJSE_FormCalcContext* pContext = ToFormCalcContext(pThis);
   v8::Isolate* pIsolate = pContext->GetScriptRuntime();
-  int32_t argc = args.GetLength();
+  int32_t argc = info.Length();
   if (argc < 4 || argc > 5) {
     pContext->ThrowCompilerErrorException();
     return;
@@ -5744,15 +5912,19 @@ void CFXJSE_FormCalcContext::DotAccessorCommon(CFXJSE_Value* pThis,
   int32_t iIndexValue = 0;
   if (argc > 4) {
     bIsStar = false;
-    iIndexValue = ValueToInteger(pThis, args.GetValue(4).get());
+    auto temp = pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[4]);
+    iIndexValue = ValueToInteger(pThis, temp.get());
   }
 
-  const ByteString bsName = args.GetUTF8String(2);
+  const ByteString bsName =
+      CFX_V8::ToByteStringHelper(info.GetIsolate(), info[2]);
   const bool bHasNoResolveName = bDotAccessor && bsName.IsEmpty();
   ByteString bsSomExp = GenerateSomExpression(
-      bsName.AsStringView(), args.GetInt32(3), iIndexValue, bIsStar);
+      bsName.AsStringView(), CFX_V8::ToInt32Helper(info.GetIsolate(), info[3]),
+      iIndexValue, bIsStar);
 
-  std::unique_ptr<CFXJSE_Value> argAccessor = args.GetValue(0);
+  auto argAccessor =
+      pdfium::MakeUnique<CFXJSE_Value>(info.GetIsolate(), info[0]);
   if (argAccessor->IsArray()) {
     auto pLengthValue = pdfium::MakeUnique<CFXJSE_Value>(pIsolate);
     argAccessor->GetObjectProperty("length", pLengthValue.get());
@@ -5801,13 +5973,14 @@ void CFXJSE_FormCalcContext::DotAccessorCommon(CFXJSE_Value* pThis,
         iIndex++;
       }
     }
-    args.GetReturnValue()->SetArray(values);
+    pRetValue->SetArray(values);
     return;
   }
 
   XFA_RESOLVENODE_RS resolveNodeRS;
   bool bRet = false;
-  ByteString bsAccessorName = args.GetUTF8String(1);
+  ByteString bsAccessorName =
+      CFX_V8::ToByteStringHelper(info.GetIsolate(), info[1]);
   if (argAccessor->IsObject() ||
       (argAccessor->IsNull() && bsAccessorName.IsEmpty())) {
     bRet = ResolveObjects(pThis, argAccessor.get(), bsSomExp.AsStringView(),
@@ -5843,7 +6016,7 @@ void CFXJSE_FormCalcContext::DotAccessorCommon(CFXJSE_Value* pThis,
   for (size_t i = 0; i < resolveValues.size(); i++)
     values[i + 2]->Assign(resolveValues[i].get());
 
-  args.GetReturnValue()->SetArray(values);
+  pRetValue->SetArray(values);
 }
 
 void CFXJSE_FormCalcContext::ThrowNoDefaultPropertyException(
