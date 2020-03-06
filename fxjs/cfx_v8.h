@@ -61,6 +61,19 @@ class CFX_V8 {
   void DisposeIsolate();
 
  private:
+  friend class CFXJSE_Arguments;
+  friend class CFXJSE_Value;
+
+  static int ToInt32Helper(v8::Isolate* pIsolate, v8::Local<v8::Value> pValue);
+  static bool ToBooleanHelper(v8::Isolate* pIsolate,
+                              v8::Local<v8::Value> pValue);
+  static double ToDoubleHelper(v8::Isolate* pIsolate,
+                               v8::Local<v8::Value> pValue);
+  static WideString ToWideStringHelper(v8::Isolate* pIsolate,
+                                       v8::Local<v8::Value> pValue);
+  static ByteString ToByteStringHelper(v8::Isolate* pIsolate,
+                                       v8::Local<v8::Value> pValue);
+
   UnownedPtr<v8::Isolate> m_pIsolate;
 };
 
