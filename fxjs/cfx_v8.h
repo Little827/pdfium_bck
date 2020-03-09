@@ -15,6 +15,8 @@
 
 class CFX_V8 {
  public:
+  static v8::Local<v8::String> NewStringHelper(v8::Isolate* pIsolate,
+                                               ByteStringView str);
   static int ToInt32Helper(v8::Isolate* pIsolate, v8::Local<v8::Value> pValue);
   static bool ToBooleanHelper(v8::Isolate* pIsolate,
                               v8::Local<v8::Value> pValue);
