@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36234d3b_aa4fc087",
+        "filename": "core/fpdfdoc/cpdf_interactiveform.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2020-03-10T23:44:46Z",
+      "side": 1,
+      "message": "WideStringView, then we just need a single AsStringView() call in the ctor, instead of on every GetNext() call. As is, the input WideString will always outlive the CFieldNameExtractor instance.",
+      "range": {
+        "startLine": 340,
+        "startChar": 8,
+        "endLine": 340,
+        "endChar": 18
+      },
+      "revId": "1360d0c1905dcd90454bd3ca28eaa8bbe6f5f10f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
