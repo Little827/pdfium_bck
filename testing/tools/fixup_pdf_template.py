@@ -41,8 +41,11 @@ class TemplateProcessor:
   # XREF rows must be exactly 20 bytes - space required.
   assert len(XREF_REPLACEMENT_F) == 20
 
+  SIZE_TOKEN = '{{size}}'
+  SIZE_REPLACEMENT = '/Size %d'
+
   TRAILER_TOKEN = '{{trailer}}'
-  TRAILER_REPLACEMENT = 'trailer <<\n  /Root 1 0 R\n  /Size %d\n>>'
+  TRAILER_REPLACEMENT = 'trailer <<\n  /Root 1 0 R\n  {{size}}\n>>'
 
   STARTXREF_TOKEN = '{{startxref}}'
   STARTXREF_REPLACEMENT = 'startxref\n%d'
@@ -102,8 +105,10 @@ class TemplateProcessor:
       self.xref_offset = self.offset
       line = self.generate_xref_table()
     if self.TRAILER_TOKEN in line:
-      replacement = self.TRAILER_REPLACEMENT % (self.max_object_number + 1)
-      line = line.replace(self.TRAILER_TOKEN, replacement)
+      line = line.replace(self.TRAILER_TOKEN, self.TRAILER_REPLACEMENT)
+    if self.SIZE_TOKEN in line:
+      replacement = self.SIZE_REPLACEMENT % (self.max_object_number + 1)
+      line = line.replace(self.SIZE_TOKEN, replacement)
     if self.STARTXREF_TOKEN in line:
       replacement = self.STARTXREF_REPLACEMENT % self.xref_offset
       line = line.replace(self.STARTXREF_TOKEN, replacement)
