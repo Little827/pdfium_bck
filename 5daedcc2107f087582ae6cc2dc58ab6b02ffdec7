@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2b943ce_db7dd4aa",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-10T21:46:55Z",
+      "side": 1,
+      "message": "do we really need to special case this?  The arithmetic below should be correct but slower. Is it measurable ?",
+      "range": {
+        "startLine": 726,
+        "startChar": 12,
+        "endLine": 726,
+        "endChar": 18
+      },
+      "revId": "5daedcc2107f087582ae6cc2dc58ab6b02ffdec7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2f1670_3d528a8d",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2020-03-10T21:46:55Z",
+      "side": 1,
+      "message": "do we need locals here?  Or is there a self-intersecting case to worry about?",
+      "range": {
+        "startLine": 729,
+        "startChar": 20,
+        "endLine": 729,
+        "endChar": 21
+      },
+      "revId": "5daedcc2107f087582ae6cc2dc58ab6b02ffdec7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b",
+      "unresolved": true
+    }
+  ]
+}
